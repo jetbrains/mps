@@ -108,6 +108,7 @@ public class ReloadableModuleBase extends AbstractModule implements ReloadableMo
   @Override
   protected void dependenciesChanged() {
     super.dependenciesChanged();
+    // XXX quite questionable code, why would I want to reload code when design dependency changes?
     if (canLoadClasses()) {
       fireDependenciesChanged();
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -137,7 +137,7 @@ public class ModulesReloadTest extends ModuleMpsTest {
     Assert.assertNull(safeGetClass(language, CLASS_TO_LOAD));
     addClassTo(language);
     getModelAccess().runWriteAction(() -> {
-      language.reload();
+      myManager.reloadModule(language);
       Assert.assertTrue(classIsLoadableFromModule(language));
     });
   }
@@ -148,7 +148,7 @@ public class ModulesReloadTest extends ModuleMpsTest {
     Assert.assertNull(safeGetClass(generator, CLASS_TO_LOAD));
     addClassTo(generator);
     getModelAccess().runWriteAction(() -> {
-      generator.reload();
+      myManager.reloadModule(generator);
       Assert.assertTrue(classIsLoadableFromModule(generator));
     });
   }
@@ -160,7 +160,7 @@ public class ModulesReloadTest extends ModuleMpsTest {
     getModelAccess().runWriteAction(new Runnable() {
       @Override
       public void run() {
-        solution.reload();
+        myManager.reloadModule(solution);
       }
     });
     Assert.assertTrue(classIsLoadableFromModule(solution));
@@ -198,13 +198,7 @@ public class ModulesReloadTest extends ModuleMpsTest {
   @Test
   public void testReloadNonLoadableSolution() {
     final Solution solution = createSolution(SolutionKind.NONE);
-    getModelAccess().runWriteAction(new Runnable() {
-      @Override
-      public void run() {
-        solution.reload();
-        myManager.reloadModule(solution);
-      }
-    });
+    getModelAccess().runWriteAction(() -> myManager.reloadModule(solution));
   }
 
   @Test
@@ -240,8 +234,9 @@ public class ModulesReloadTest extends ModuleMpsTest {
       @Override
       public void run() {
         addClassTo(l2);
-        l2.reload();
+        myManager.reloadModule(l2);
         l1.addDependency(l2.getModuleReference(), false);
+        // XXX generally, adding a dependency should not make any CL change, revisit
         Assert.assertTrue(classIsLoadableFromModule(l1)); // the class must be available already here
       }
     });
@@ -259,7 +254,7 @@ public class ModulesReloadTest extends ModuleMpsTest {
 //        Assert.assertFalse(classIsLoadableFromModule(l)); FIXME turn on after 3.2
         SolutionDescriptor moduleDescriptor = s.getModuleDescriptor();
         moduleDescriptor.setKind(SolutionKind.PLUGIN_CORE);
-        s.reload();
+        myManager.reloadModule(s);
         Assert.assertTrue(classIsLoadableFromModule(l)); // the class must be available already here
       }
     });
@@ -287,14 +282,14 @@ public class ModulesReloadTest extends ModuleMpsTest {
       @Override
       public void run() {
         l1.addDependency(l2.getModuleReference(), false);
-        l1.reload();
+        myManager.reloadModule(l1);
       }
     });
     getModelAccess().runWriteAction(new Runnable() {
       @Override
       public void run() {
         addClassTo(l2);
-        l2.reload();
+        myManager.reloadModule(l2);
         Assert.assertTrue(classIsLoadableFromModule(l1));
         Assert.assertTrue(classIsLoadableFromModule(l2));
       }
@@ -338,7 +333,7 @@ public class ModulesReloadTest extends ModuleMpsTest {
         l1.addDependency(l2.getModuleReference(), false);
         l2.addDependency(l3.getModuleReference(), false);
         addClassTo(l2);
-        l2.reload();
+        myManager.reloadModule(l2);
         Assert.assertTrue(classIsLoadableFromModule(l1));
         removeModule(l3);
         Assert.assertFalse(classIsLoadableFromModule(l1));
@@ -356,7 +351,7 @@ public class ModulesReloadTest extends ModuleMpsTest {
       @Override
       public void run() {
         addClassTo(l1);
-        l1.reload();
+        myManager.reloadModule(l1);
         Assert.assertTrue(classIsLoadableFromModule(l1));
         removeModule(l1);
         l2[0] = createLanguage(l1.getModuleDescriptor().getId(), l1.getModuleName()); // the same
@@ -374,7 +369,7 @@ public class ModulesReloadTest extends ModuleMpsTest {
       public void run() {
         l[0] = createLanguage();
         addClassTo(l[0]);
-        l[0].reload();
+        myManager.reloadModule(l[0]);
         Assert.assertTrue(classIsLoadableFromModule(l[0]));
         removeModule(l[0]);
       }
@@ -394,7 +389,7 @@ public class ModulesReloadTest extends ModuleMpsTest {
         removeModule(l[1]);
         l[2] = createLanguage(l[1].getModuleDescriptor().getId(), l[1].getModuleName()); // the same
         addClassTo(l[2]);
-        l[2].reload();
+        myManager.reloadModule(l[2]);
         Assert.assertTrue(classIsLoadableFromModule(l[0]));
       }
     });
@@ -414,7 +409,7 @@ public class ModulesReloadTest extends ModuleMpsTest {
         addClassTo(runtime.get());
         // if anyone took module's classloader prior to TestJavaModuleFacet got classpath, there would be no proper classpath entry,
         // hence have to reload module to pick the changes up. Tests above do this for languages and generators, why not for solutions?
-        runtime.get().reload();
+        myManager.reloadModule(runtime.get());
         Assert.assertTrue(classIsLoadableFromModule(runtime.get()));
       }
     });
@@ -432,7 +427,7 @@ public class ModulesReloadTest extends ModuleMpsTest {
     getModelAccess().runWriteAction(new Runnable() {
       @Override
       public void run() {
-        solution.get().reload();
+        myManager.reloadModule(solution.get());
         Assert.assertTrue(classIsLoadableFromModule(solution.get()));
       }
     });
@@ -449,14 +444,14 @@ public class ModulesReloadTest extends ModuleMpsTest {
       public void run() {
         runtime.set(createSolution(SolutionKind.PLUGIN_OTHER));
         addClassTo(runtime.get());
-        runtime.get().reload(); // see testLanguageRuntimeIsLoadable() above for reasons to reload module here
+        myManager.reloadModule(runtime.get()); // see testLanguageRuntimeIsLoadable() above for reasons to reload module here
         Assert.assertTrue(classIsLoadableFromModule(runtime.get()));
         language.set(createLanguage(runtime.get().getModuleReference()));
         solution.set(createSolution(SolutionKind.PLUGIN_OTHER));
         addUsedLanguage(solution.get(), language.get());
         removeModule(language.get());
         Language sameLanguage = createLanguage(language.get().getModuleDescriptor().getId(), language.get().getModuleName(), runtime.get().getModuleReference()); // the same
-        solution.get().reload();
+        myManager.reloadModule(solution.get());
         Assert.assertTrue(classIsLoadableFromModule(solution.get()));
       }
     });
@@ -472,7 +467,7 @@ public class ModulesReloadTest extends ModuleMpsTest {
         l[1] = createLanguage();
         l[0].addDependency(l[1].getModuleReference(), false);
         addClassTo(l[1]);
-        l[1].reload();
+        myManager.reloadModule(l[1]);
         Assert.assertTrue(classIsLoadableFromModule(l[0]));
       }
     });
