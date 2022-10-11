@@ -94,6 +94,7 @@ public class ReloadableModuleBase extends AbstractModule implements ReloadableMo
       LOG.warning(String.format("The module %s can not load classes -- impossible to reload the module", this));
       return;
     }
+    LOG.warnDeprecatedUse("ReloadableModule#reload() is deprecated and scheduled for removal, stop using it.");
     LOG.info("Reloading module " + this);
     myManager.reloadModule(this);
   }
