@@ -138,10 +138,13 @@ public final class StaticReference extends SReferenceBase {
       sb.append("\ntarget node id = ");
       sb.append(targetNodeId);
       // sourceNode.getName() above ensures ModelAccess.instance().canRead() == true
-      sb.append("\nstack trace of model disposing is: ");
-      for (StackTraceElement ste : ((ModelWithDisposeInfo) targetModel).getDisposedStacktrace()) {
-        sb.append(ste);
-        sb.append('\n');
+      final StackTraceElement[] disposedStacktrace = ((ModelWithDisposeInfo) targetModel).getDisposedStacktrace();
+      if (disposedStacktrace != null) {
+        sb.append("\nstack trace of model disposing is: ");
+        for (StackTraceElement ste : disposedStacktrace) {
+          sb.append(ste);
+          sb.append('\n');
+        }
       }
       log.error(sb.toString());
       log.errorWithTrace("=============current trace:=============");

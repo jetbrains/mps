@@ -277,16 +277,6 @@ public abstract class SModelDescriptorStub implements SModelInternal, SModel, Fa
     // intentionally no-op
   }
 
-    @Override
-  public boolean isDisposed() {
-    return getDisposedStacktrace() != null;
-  }
-
-  @Override
-  public final StackTraceElement[] getDisposedStacktrace() {
-    return getSModel().getDisposedStacktrace();
-  }
-
   @Override
   public FastNodeFinder createNodeFinder(@NotNull SModel model) {
     assert model == this;

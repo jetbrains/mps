@@ -419,6 +419,26 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
     myModelReference = newModelReference;
   }
 
+  @Override
+  public boolean isDisposed() {
+    final jetbrains.mps.smodel.SModel mi = getCurrentModelInternal();
+    if (mi == null) {
+      return false;
+    }
+    return mi.isDisposed();
+  }
+
+  @Override
+  @Nullable
+  public final StackTraceElement[] getDisposedStacktrace() {
+    final jetbrains.mps.smodel.SModel mi = getCurrentModelInternal();
+    if (mi == null) {
+      return null;
+    }
+    return mi.getDisposedStacktrace();
+  }
+
+
   /**
    * This method does nothing about model load state, it updates model descriptor of the models passed and dispatches a notification.
    * Seems reasonable to dispatch proper modelUnloaded/modelLoaded events in addition to modelReplaced as there are listeners that

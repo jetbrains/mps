@@ -60,6 +60,7 @@ import jetbrains.mps.editor.runtime.commands.EditorCommand;
 import jetbrains.mps.editor.runtime.commands.EditorCommandAdapter;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.errors.item.IssueKindReportItem;
+import jetbrains.mps.extapi.model.ModelWithDisposeInfo;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.actions.MPSActions;
@@ -1646,9 +1647,9 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
 
   private String getNodeDisposedMessage(SModel model) {
     StringBuilder sb = new StringBuilder("editor (" + this + ") is invalid");
-    if (myNode != null) {
+    if (myNode != null && model instanceof ModelWithDisposeInfo) {
       sb.append(", myNode is disposed");
-      StackTraceElement[] modelDisposedTrace = ((jetbrains.mps.smodel.SModelInternal) model).getDisposedStacktrace();
+      StackTraceElement[] modelDisposedTrace = ((ModelWithDisposeInfo) model).getDisposedStacktrace();
       if (modelDisposedTrace != null) {
         for (StackTraceElement element : modelDisposedTrace) {
           sb.append("\nat ");
