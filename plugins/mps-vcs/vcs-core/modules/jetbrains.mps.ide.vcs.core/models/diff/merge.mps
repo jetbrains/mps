@@ -7777,7 +7777,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="35oJ7ckDP0V" role="2OqNvi">
-                  <ref role="37wK5l" to="g3l6:~SModelDescriptorStub.getSModel()" resolve="getSModel" />
+                  <ref role="37wK5l" to="w1kc:~RegularModelDescriptor.getSModel()" resolve="getSModel" />
                 </node>
               </node>
             </node>

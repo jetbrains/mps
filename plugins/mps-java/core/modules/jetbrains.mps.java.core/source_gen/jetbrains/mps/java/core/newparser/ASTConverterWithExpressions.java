@@ -571,11 +571,11 @@ public class ASTConverterWithExpressions extends ASTConverter {
 
     } else if (SNodeOperations.isInstanceOf(argType, CONCEPTS.ArrayType$rh)) {
       SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x115f7830a32a65e7L, "jetbrains.mps.baseLanguage.structure.ArrayClassExpression"));
-      SLinkOperations.setTarget(result, LINKS.arrayType$G7IM, argType);
+      SLinkOperations.setTarget(result, LINKS.arrayType$G7IM, SNodeOperations.cast(argType, CONCEPTS.ArrayType$rh));
       return result;
     } else if (SNodeOperations.isInstanceOf(argType, CONCEPTS.PrimitiveType$sR)) {
       SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3f57ea36bd70a4e1L, "jetbrains.mps.baseLanguage.structure.PrimitiveClassExpression"));
-      SLinkOperations.setTarget(result, LINKS.primitiveType$wvbi, argType);
+      SLinkOperations.setTarget(result, LINKS.primitiveType$wvbi, SNodeOperations.cast(argType, CONCEPTS.PrimitiveType$sR));
       return result;
     } else {
       throw new JavaParseException("Type in class literal access is expected to be classifier or array type");

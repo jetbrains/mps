@@ -3433,7 +3433,7 @@
       <node id="8312519168222600999" at="109,25,110,0" concept="15" />
       <node id="8312519168222600972" at="110,0,111,113" concept="12" />
       <node id="8312519168222600987" at="111,113,112,43" concept="14" />
-      <node id="8183587472723115752" at="113,54,114,74" concept="6" />
+      <node id="8183587472723115752" at="113,54,114,120" concept="6" />
       <node id="7866619034968083914" at="115,9,116,75" concept="6" />
       <node id="8312519168222608428" at="116,75,117,0" concept="15" />
       <node id="8312519168222600969" at="117,0,118,14" concept="2" />
@@ -3581,18 +3581,19 @@
       <node id="1172665404464022888" at="361,55,362,0" concept="15" />
       <node id="1172665404463983143" at="362,0,363,47" concept="12" />
       <node id="1172665404464023679" at="364,99,365,81" concept="6" />
-      <node id="3493766494546492073" at="372,0,373,0" concept="16" trace="statement$53DE" />
-      <node id="3493766494546492073" at="373,0,374,0" concept="16" trace="part$QuzQ" />
-      <node id="3493766494546492073" at="374,0,375,0" concept="16" trace="body$OAGp" />
-      <node id="3493766494546492073" at="375,0,376,0" concept="16" trace="lines$lpTr" />
-      <node id="3493766494546492073" at="376,0,377,0" concept="16" trace="entries$neZo" />
-      <node id="3493766494546492073" at="377,0,378,0" concept="16" trace="smodelAttribute$KJ43" />
-      <node id="3493766494546492073" at="381,0,382,0" concept="16" trace="text$aOLd" />
-      <node id="3493766494546492073" at="382,0,383,0" concept="16" trace="onDemand$Gmdi" />
-      <node id="3493766494546492073" at="383,0,384,0" concept="16" trace="static$JAuQ" />
-      <node id="3493766494546492073" at="384,0,385,0" concept="16" trace="tokens$J1uk" />
-      <node id="3493766494546492073" at="388,0,389,0" concept="16" trace="SingleLineComment$Kw" />
-      <node id="3493766494546492073" at="389,0,390,0" concept="16" trace="MultiLineComment$_e" />
+      <node id="3493766494546492073" at="372,0,373,0" concept="16" trace="Classifier$Ix" />
+      <node id="3493766494546492073" at="373,0,374,0" concept="16" trace="SingleLineComment$Kw" />
+      <node id="3493766494546492073" at="374,0,375,0" concept="16" trace="MultiLineComment$_e" />
+      <node id="3493766494546492073" at="378,0,379,0" concept="16" trace="statement$53DE" />
+      <node id="3493766494546492073" at="379,0,380,0" concept="16" trace="part$QuzQ" />
+      <node id="3493766494546492073" at="380,0,381,0" concept="16" trace="body$OAGp" />
+      <node id="3493766494546492073" at="381,0,382,0" concept="16" trace="lines$lpTr" />
+      <node id="3493766494546492073" at="382,0,383,0" concept="16" trace="entries$neZo" />
+      <node id="3493766494546492073" at="383,0,384,0" concept="16" trace="smodelAttribute$KJ43" />
+      <node id="3493766494546492073" at="387,0,388,0" concept="16" trace="text$aOLd" />
+      <node id="3493766494546492073" at="388,0,389,0" concept="16" trace="onDemand$Gmdi" />
+      <node id="3493766494546492073" at="389,0,390,0" concept="16" trace="static$JAuQ" />
+      <node id="3493766494546492073" at="390,0,391,0" concept="16" trace="tokens$J1uk" />
       <node id="3493766494546492317" at="49,0,51,0" concept="3" trace="JavaParser#()V" />
       <node id="8621647035051356316" at="213,14,215,9" concept="1" />
       <node id="554369471807284812" at="225,16,227,11" concept="1" />
@@ -3657,7 +3658,7 @@
       <scope id="5616839344933920208" at="53,86,54,54" />
       <scope id="8312519168222600825" at="75,17,76,23" />
       <scope id="8312519168222600849" at="80,30,81,47" />
-      <scope id="8312519168222608324" at="113,54,114,74" />
+      <scope id="8312519168222608324" at="113,54,114,120" />
       <scope id="8312519168222601022" at="123,32,124,47" />
       <scope id="8312519168222600821" at="150,14,151,108" />
       <scope id="3101780938065653527" at="176,26,177,19" />
@@ -3871,11 +3872,11 @@
         <var name="what" id="3493766494546492312" />
       </scope>
       <unit id="3671703302989071279" at="202,108,206,9" name="jetbrains.mps.java.core.newparser.JavaParser$1" />
-      <unit id="3493766494546492073" at="387,0,391,0" name="jetbrains.mps.java.core.newparser.JavaParser$CONCEPTS" />
-      <unit id="3493766494546492073" at="380,0,386,0" name="jetbrains.mps.java.core.newparser.JavaParser$PROPS" />
-      <unit id="3493766494546492073" at="371,0,379,0" name="jetbrains.mps.java.core.newparser.JavaParser$LINKS" />
+      <unit id="3493766494546492073" at="371,0,376,0" name="jetbrains.mps.java.core.newparser.JavaParser$CONCEPTS" />
+      <unit id="3493766494546492073" at="386,0,392,0" name="jetbrains.mps.java.core.newparser.JavaParser$PROPS" />
+      <unit id="3493766494546492073" at="377,0,385,0" name="jetbrains.mps.java.core.newparser.JavaParser$LINKS" />
       <unit id="5616839344933920215" at="306,0,340,0" name="jetbrains.mps.java.core.newparser.JavaParser$JavaParseResult" />
-      <unit id="3493766494546492073" at="46,0,392,0" name="jetbrains.mps.java.core.newparser.JavaParser" />
+      <unit id="3493766494546492073" at="46,0,393,0" name="jetbrains.mps.java.core.newparser.JavaParser" />
     </file>
   </root>
   <root nodeRef="r:b1598fca-3527-4718-b3ee-193781dbf052(jetbrains.mps.java.core.newparser)/3493766494546492981">
@@ -4436,11 +4437,11 @@
       <node id="3493766494546491206" at="569,117,570,20" concept="13" />
       <node id="8066046915366538074" at="570,20,571,0" concept="15" />
       <node id="8066046915366805068" at="572,78,573,209" concept="12" />
-      <node id="8066046915367916479" at="573,209,574,71" concept="6" />
-      <node id="8066046915366805091" at="574,71,575,20" concept="13" />
+      <node id="8066046915367916479" at="573,209,574,116" concept="6" />
+      <node id="8066046915366805091" at="574,116,575,20" concept="13" />
       <node id="6017027209338673159" at="576,82,577,213" concept="12" />
-      <node id="6017027209338758350" at="577,213,578,75" concept="6" />
-      <node id="6017027209338762885" at="578,75,579,20" concept="13" />
+      <node id="6017027209338758350" at="577,213,578,124" concept="6" />
+      <node id="6017027209338762885" at="578,124,579,20" concept="13" />
       <node id="8066046915367444635" at="580,12,581,110" concept="21" />
       <node id="3493766494546491213" at="584,84,585,78" concept="12" />
       <node id="3493766494546491235" at="587,29,588,205" concept="12" />
