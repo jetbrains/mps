@@ -25,7 +25,7 @@ import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.kotlin.behavior.IStaticType__BehaviorDescriptor;
 import jetbrains.mps.generator.template.TemplateArgumentContext;
-import jetbrains.mps.classloading.IdeaPluginModuleFacet;
+import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -324,7 +324,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.method$yYmq), CONCEPTS.ConceptMethodDeclaration$N0);
   }
   public static Object templateArgumentQuery_0_3(final TemplateArgumentContext _context) {
-    return _context.getOriginalInputModel().getModule().getFacet(IdeaPluginModuleFacet.class) != null;
+    return !(SModuleOperations.classloadingManagedByMPS(_context.getOriginalInputModel().getModule()));
   }
   public static Object templateArgumentQuery_0_4(final TemplateArgumentContext _context) {
     return INavigationTarget__BehaviorDescriptor.getNavigationOperand_id2gj5XQXMv4y.invoke(_context.getNode());
@@ -333,7 +333,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.target$C6zp), CONCEPTS.JavaMethodCall$gD), LINKS.method$yYmq), CONCEPTS.ConceptMethodDeclaration$N0);
   }
   public static Object templateArgumentQuery_0_6(final TemplateArgumentContext _context) {
-    return _context.getOriginalInputModel().getModule().getFacet(IdeaPluginModuleFacet.class) != null;
+    return !(SModuleOperations.classloadingManagedByMPS(_context.getOriginalInputModel().getModule()));
   }
   public static Object templateArgumentQuery_0_7(final TemplateArgumentContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.operand$YS5t);
@@ -850,10 +850,10 @@ public class QueriesGenerated extends QueryProviderBase {
     caqMethods.put("4428092019773443397", new CAQ(0));
     caqMethods.put("419267039277560486", new CAQ(1));
     caqMethods.put("6573432175635331494", new CAQ(2));
-    caqMethods.put("6573432175635331499", new CAQ(3));
+    caqMethods.put("7850929727111391507", new CAQ(3));
     caqMethods.put("6573432175635331510", new CAQ(4));
     caqMethods.put("6573432175633726830", new CAQ(5));
-    caqMethods.put("6573432175633770931", new CAQ(6));
+    caqMethods.put("7850929727111401595", new CAQ(6));
     caqMethods.put("6573432175635383200", new CAQ(7));
     caqMethods.put("419267039278515985", new CAQ(8));
   }

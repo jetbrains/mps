@@ -116,6 +116,23 @@ public class SModuleOperations {
     // FWIW, generators and devkits are perfectly legal modules for extensions
   }
 
+  /**
+   * Transitional method to capture scenario when MPS cares about CL kind of module, e.g. to generate reflective/direct calls for
+   * behavior methods
+   *
+   * @return false when module doesn't have CL management or CL is managed by some external mechanism (not MPS module CL)
+   * @since 2022.3
+   */
+  public static boolean classloadingManagedByMPS(@Nullable SModule module) {
+    if (module == null) {
+      return false;
+    }
+    if (module.getFacet(JavaModuleFacet.class) == null) {
+      return false;
+    }
+    return module.getFacet(CustomClassLoadingFacet.class) == null;
+  }
+
   public static Set<String> getAllSourcePaths(SModule module) {
     // todo: get rid from source paths?
     ArrayList<String> paths = new ArrayList<>(4);

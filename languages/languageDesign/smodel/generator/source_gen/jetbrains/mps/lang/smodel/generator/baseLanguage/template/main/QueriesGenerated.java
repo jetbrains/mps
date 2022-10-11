@@ -21,7 +21,7 @@ import jetbrains.mps.lang.structure.behavior.LinkDeclaration__BehaviorDescriptor
 import jetbrains.mps.lang.structure.behavior.AttributeDesignTimeOperations;
 import jetbrains.mps.lang.smodel.behavior.AttributeQualifier__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.classloading.IdeaPluginModuleFacet;
+import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.lang.smodel.generator.baseLanguage.util.QueriesUtil;
 import jetbrains.mps.lang.smodel.behavior.Node_GetChildrenOperation__BehaviorDescriptor;
 import jetbrains.mps.generator.template.PropertyMacroContext;
@@ -236,8 +236,7 @@ public class QueriesGenerated {
   }
   public static boolean rule_Condition_58_1(final BaseMappingRuleContext _context) {
     SModule module = _context.getOriginalInputModel().getModule();
-    IdeaPluginModuleFacet facet = module.getFacet(IdeaPluginModuleFacet.class);
-    return facet != null;
+    return !(SModuleOperations.classloadingManagedByMPS(module));
   }
   public static boolean rule_Condition_60_0(final BaseMappingRuleContext _context) {
     return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.OfConceptOperation$uJ);

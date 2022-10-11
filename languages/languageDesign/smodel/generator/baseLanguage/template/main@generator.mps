@@ -35,7 +35,6 @@
     <import index="2k9e" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)" />
     <import index="pjrh" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter(MPS.Core/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
-    <import index="3qmy" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.classloading(MPS.Core/)" />
     <import index="9r19" ref="d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.core.aspects.behaviour.api(jetbrains.mps.lang.behavior.api/)" />
     <import index="manl" ref="d936855b-48da-4812-a8a0-2bfddd633ac4/java:jetbrains.mps.core.aspects.behaviour(jetbrains.mps.lang.behavior.runtime/)" />
     <import index="cm63" ref="d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.smodel.behaviour(jetbrains.mps.lang.behavior.api/)" />
@@ -44,6 +43,7 @@
     <import index="xlb7" ref="r:cf42fd0a-68d2-493b-8b77-961658617704(jetbrains.mps.lang.modelapi.behavior)" />
     <import index="tpeq" ref="r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)" />
     <import index="bok1" ref="r:7e967a7c-8f21-4c1f-a331-9afa31a24388(jetbrains.mps.lang.smodel.util)" />
+    <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" implicit="true" />
     <import index="dvox" ref="r:9dfd3567-3b1f-4edb-85a0-3981ca2bfd8c(jetbrains.mps.lang.modelapi.structure)" implicit="true" />
   </imports>
@@ -9471,30 +9471,14 @@
               </node>
             </node>
           </node>
-          <node concept="3cpWs8" id="24JB88Kml8L" role="3cqZAp">
-            <node concept="3cpWsn" id="24JB88Kml8M" role="3cpWs9">
-              <property role="TrG5h" value="facet" />
-              <node concept="3uibUv" id="24JB88Kml8$" role="1tU5fm">
-                <ref role="3uigEE" to="3qmy:~IdeaPluginModuleFacet" resolve="IdeaPluginModuleFacet" />
-              </node>
-              <node concept="2OqwBi" id="24JB88Kml8N" role="33vP2m">
-                <node concept="37vLTw" id="24JB88Kml8O" role="2Oq$k0">
+          <node concept="3cpWs6" id="24JB88Kl0My" role="3cqZAp">
+            <node concept="3fqX7Q" id="6NO6JQ_25B5" role="3cqZAk">
+              <node concept="2YIFZM" id="6NO6JQ_25B7" role="3fr31v">
+                <ref role="37wK5l" to="z1c3:~SModuleOperations.classloadingManagedByMPS(org.jetbrains.mps.openapi.module.SModule)" resolve="classloadingManagedByMPS" />
+                <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
+                <node concept="37vLTw" id="6NO6JQ_25Lt" role="37wK5m">
                   <ref role="3cqZAo" node="24JB88KmOHO" resolve="module" />
                 </node>
-                <node concept="liA8E" id="24JB88Kml8P" role="2OqNvi">
-                  <ref role="37wK5l" to="lui2:~SModule.getFacet(java.lang.Class)" resolve="getFacet" />
-                  <node concept="3VsKOn" id="24JB88Kml8Q" role="37wK5m">
-                    <ref role="3VsUkX" to="3qmy:~IdeaPluginModuleFacet" resolve="IdeaPluginModuleFacet" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3cpWs6" id="24JB88Kl0My" role="3cqZAp">
-            <node concept="3y3z36" id="24JB88Kl30L" role="3cqZAk">
-              <node concept="10Nm6u" id="24JB88Kl36E" role="3uHU7w" />
-              <node concept="37vLTw" id="24JB88Kml8R" role="3uHU7B">
-                <ref role="3cqZAo" node="24JB88Kml8M" resolve="facet" />
               </node>
             </node>
           </node>

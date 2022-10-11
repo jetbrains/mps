@@ -17,7 +17,6 @@
     <import index="u65r" ref="r:9e83cf56-72a5-4ab3-ab14-b980b399f4ca(jetbrains.mps.lang.behavior.generator.template.util)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="hcm8" ref="r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)" />
-    <import index="3qmy" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.classloading(MPS.Core/)" />
     <import index="vciu" ref="r:42fb31e7-122b-4950-aa58-2f5f6e5595ce(jetbrains.mps.kotlin.overloading)" />
     <import index="cm63" ref="d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.smodel.behaviour(jetbrains.mps.lang.behavior.api/)" />
     <import index="csvn" ref="r:a91e42c5-728b-4866-86c4-d97454f4aee4(jetbrains.mps.lang.behavior.behavior)" />
@@ -31,10 +30,10 @@
     <import index="e5ny" ref="r:e7177f0b-8b8c-411f-9659-a58450157abe(jetbrains.mps.kotlin.smodel.generator.util)" />
     <import index="jglh" ref="r:33cf0272-b8b8-41da-be98-c3a20883dfcf(jetbrains.mps.kotlin.smodel.behavior)" />
     <import index="1p8r" ref="r:966de44c-de72-437f-889f-78347a061f0c(jetbrains.mps.kotlin.api.declaration)" />
+    <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" implicit="true" />
     <import index="5m2i" ref="r:13d34207-1d05-4df8-92a6-7cde496142db(jetbrains.mps.kotlin.javaRefs.structure)" implicit="true" />
     <import index="hez" ref="r:b038209d-51a9-4919-b6e5-4fafce96fa00(jetbrains.mps.kotlin.behavior)" implicit="true" />
-    <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" implicit="true" />
     <import index="tpcn" ref="r:00000000-0000-4000-0000-011c8959028b(jetbrains.mps.lang.structure.behavior)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
     <import index="0" ref="b50d89c0-0fb9-4105-b652-222148c26a9b/kotlin:kotlin(jetbrains.mps.kotlin.stdlib/)" implicit="true" />
@@ -133,7 +132,6 @@
         <child id="8276990574895933173" name="catchBody" index="1zc67A" />
         <child id="8276990574895933172" name="throwable" index="1zc67B" />
       </concept>
-      <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="nn" index="3J1_TO">
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
@@ -148,9 +146,6 @@
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="8356039341262087992" name="line" index="1aUNEU" />
-      </concept>
-      <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
-        <reference id="1116615189566" name="classifier" index="3VsUkX" />
       </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
@@ -676,24 +671,19 @@
                 </node>
               </node>
             </node>
-            <node concept="3y3z36" id="5GTxrLRRvAF" role="v9R3O">
-              <node concept="10Nm6u" id="5GTxrLRRvAG" role="3uHU7w" />
-              <node concept="2OqwBi" id="5GTxrLRRvAH" role="3uHU7B">
-                <node concept="2OqwBi" id="5GTxrLRRvAI" role="2Oq$k0">
-                  <node concept="2JrnkZ" id="5GTxrLRRvAJ" role="2Oq$k0">
-                    <node concept="2OqwBi" id="5GTxrLRRvAK" role="2JrQYb">
-                      <node concept="1iwH7S" id="5GTxrLRRvAL" role="2Oq$k0" />
-                      <node concept="1st3f0" id="5GTxrLRRvAM" role="2OqNvi" />
+            <node concept="3fqX7Q" id="6NO6JQ_1Q$j" role="v9R3O">
+              <node concept="2YIFZM" id="6NO6JQ_1Q$l" role="3fr31v">
+                <ref role="37wK5l" to="z1c3:~SModuleOperations.classloadingManagedByMPS(org.jetbrains.mps.openapi.module.SModule)" resolve="classloadingManagedByMPS" />
+                <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
+                <node concept="2OqwBi" id="6NO6JQ_1Q$m" role="37wK5m">
+                  <node concept="2JrnkZ" id="6NO6JQ_1Q$n" role="2Oq$k0">
+                    <node concept="2OqwBi" id="6NO6JQ_1Q$o" role="2JrQYb">
+                      <node concept="1iwH7S" id="6NO6JQ_1Q$p" role="2Oq$k0" />
+                      <node concept="1st3f0" id="6NO6JQ_1Q$q" role="2OqNvi" />
                     </node>
                   </node>
-                  <node concept="liA8E" id="5GTxrLRRvAN" role="2OqNvi">
+                  <node concept="liA8E" id="6NO6JQ_1Q$r" role="2OqNvi">
                     <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
-                  </node>
-                </node>
-                <node concept="liA8E" id="5GTxrLRRvAO" role="2OqNvi">
-                  <ref role="37wK5l" to="lui2:~SModule.getFacet(java.lang.Class)" resolve="getFacet" />
-                  <node concept="3VsKOn" id="5GTxrLRRvAP" role="37wK5m">
-                    <ref role="3VsUkX" to="3qmy:~IdeaPluginModuleFacet" resolve="IdeaPluginModuleFacet" />
                   </node>
                 </node>
               </node>
@@ -774,24 +764,19 @@
                 </node>
               </node>
             </node>
-            <node concept="3y3z36" id="5GTxrLRLyAN" role="v9R3O">
-              <node concept="10Nm6u" id="5GTxrLRLyKU" role="3uHU7w" />
-              <node concept="2OqwBi" id="5GTxrLRLx$U" role="3uHU7B">
-                <node concept="2OqwBi" id="5GTxrLRLxcl" role="2Oq$k0">
-                  <node concept="2JrnkZ" id="5GTxrLRLx1x" role="2Oq$k0">
-                    <node concept="2OqwBi" id="5GTxrLRLw90" role="2JrQYb">
-                      <node concept="1iwH7S" id="5GTxrLRLvZI" role="2Oq$k0" />
-                      <node concept="1st3f0" id="5GTxrLRLwhI" role="2OqNvi" />
+            <node concept="3fqX7Q" id="6NO6JQ_1T1V" role="v9R3O">
+              <node concept="2YIFZM" id="6NO6JQ_1T1X" role="3fr31v">
+                <ref role="37wK5l" to="z1c3:~SModuleOperations.classloadingManagedByMPS(org.jetbrains.mps.openapi.module.SModule)" resolve="classloadingManagedByMPS" />
+                <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
+                <node concept="2OqwBi" id="6NO6JQ_1T1Y" role="37wK5m">
+                  <node concept="2JrnkZ" id="6NO6JQ_1T1Z" role="2Oq$k0">
+                    <node concept="2OqwBi" id="6NO6JQ_1T20" role="2JrQYb">
+                      <node concept="1iwH7S" id="6NO6JQ_1T21" role="2Oq$k0" />
+                      <node concept="1st3f0" id="6NO6JQ_1T22" role="2OqNvi" />
                     </node>
                   </node>
-                  <node concept="liA8E" id="5GTxrLRLxsu" role="2OqNvi">
+                  <node concept="liA8E" id="6NO6JQ_1T23" role="2OqNvi">
                     <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
-                  </node>
-                </node>
-                <node concept="liA8E" id="5GTxrLRLxUk" role="2OqNvi">
-                  <ref role="37wK5l" to="lui2:~SModule.getFacet(java.lang.Class)" resolve="getFacet" />
-                  <node concept="3VsKOn" id="5GTxrLRLyeA" role="37wK5m">
-                    <ref role="3VsUkX" to="3qmy:~IdeaPluginModuleFacet" resolve="IdeaPluginModuleFacet" />
                   </node>
                 </node>
               </node>
