@@ -17,6 +17,7 @@
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="b0pz" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.facets(MPS.Core/)" />
+    <import index="3qmy" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.classloading(MPS.Core/)" />
     <import index="356a" ref="r:3b7ed80f-6cfd-45bc-b051-2f66c620dd27(jetbrains.mps.lang.traceable.structure)" implicit="true" />
     <import index="if8w" ref="r:95397225-9080-48bc-b1aa-0ce7c4f3d2ce(jetbrains.mps.lang.traceable.behavior)" implicit="true" />
   </imports>
@@ -47,6 +48,9 @@
       </concept>
       <concept id="4952749571008284462" name="jetbrains.mps.baseLanguage.structure.CatchVariable" flags="ng" index="XOnhg" />
       <concept id="1081236700938" name="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" flags="ig" index="2YIFZL" />
+      <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
+        <reference id="1144433194310" name="classConcept" index="1Pybhc" />
+      </concept>
       <concept id="1164991038168" name="jetbrains.mps.baseLanguage.structure.ThrowStatement" flags="nn" index="YS8fn">
         <child id="1164991057263" name="throwable" index="YScLw" />
       </concept>
@@ -294,9 +298,14 @@
             <node concept="3uibUv" id="1BOVr2ZeTza" role="1tU5fm">
               <ref role="3uigEE" to="j8aq:~ReloadableModule$DeploymentStatus" resolve="ReloadableModule.DeploymentStatus" />
             </node>
-            <node concept="2OqwBi" id="1BOVr2ZeOi2" role="33vP2m">
-              <node concept="1eOMI4" id="1BOVr2ZeOi6" role="2Oq$k0">
-                <node concept="10QFUN" id="1BOVr2ZeOi3" role="1eOMHV">
+            <node concept="2OqwBi" id="2rTnW2A6DW4" role="33vP2m">
+              <node concept="2YIFZM" id="2rTnW2A6Dxx" role="2Oq$k0">
+                <ref role="37wK5l" to="3qmy:~ClassLoaderManager.getInstance()" resolve="getInstance" />
+                <ref role="1Pybhc" to="3qmy:~ClassLoaderManager" resolve="ClassLoaderManager" />
+              </node>
+              <node concept="liA8E" id="2rTnW2A6Ey5" role="2OqNvi">
+                <ref role="37wK5l" to="3qmy:~ClassLoaderManager.getStatus(jetbrains.mps.module.ReloadableModule)" resolve="getStatus" />
+                <node concept="10QFUN" id="1BOVr2ZeOi3" role="37wK5m">
                   <node concept="37vLTw" id="1BOVr2ZeOi4" role="10QFUP">
                     <ref role="3cqZAo" node="1BOVr2ZeOgN" resolve="module" />
                   </node>
@@ -304,9 +313,6 @@
                     <ref role="3uigEE" to="j8aq:~ReloadableModule" resolve="ReloadableModule" />
                   </node>
                 </node>
-              </node>
-              <node concept="liA8E" id="1BOVr2ZeOi7" role="2OqNvi">
-                <ref role="37wK5l" to="j8aq:~ReloadableModule.getStatus()" resolve="getStatus" />
               </node>
             </node>
           </node>

@@ -89,12 +89,6 @@ public class ReloadableModuleBase extends AbstractModule implements ReloadableMo
     return myManager.getClassLoader(this);
   }
 
-  @NotNull
-  @Override
-  public final DeploymentStatus getStatus() {
-    return myManager.getStatus(this);
-  }
-
   @Override
   protected void dependenciesChanged() {
     super.dependenciesChanged();

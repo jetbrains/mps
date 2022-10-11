@@ -155,7 +155,9 @@ public interface ReloadableModule extends SModule {
    */
   @NotNull
   @Deprecated(forRemoval = true, since = "2022.2")
-  DeploymentStatus getStatus();
+  default DeploymentStatus getStatus() {
+    throw new UnsupportedOperationException();
+  }
 
   interface DeploymentStatus {
     /**

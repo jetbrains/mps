@@ -75,12 +75,7 @@ public class CopyTraceInfo_Facet extends IFacet.Stub {
                 final List<Tuples._2<IFile, IFile>> toCopy = ListSequence.fromList(new ArrayList<Tuples._2<IFile, IFile>>());
                 for (TResource tres : Sequence.fromIterable(input)) {
                   JavaModuleFacet facet = tres.module().getFacet(JavaModuleFacet.class);
-                  if (facet == null) {
-                    // not java module
-                    // todo: do something?!
-                    continue;
-                  }
-                  if (!(facet.isCompileInMps())) {
+                  if (facet == null || !(facet.isCompileInMps())) {
                     // idea copies trace.info files
                     continue;
                   }
@@ -106,6 +101,8 @@ public class CopyTraceInfo_Facet extends IFacet.Stub {
 
                   _output_zgz0lb_a0a = Sequence.fromIterable(_output_zgz0lb_a0a).concat(Sequence.fromIterable(Sequence.<IResource>singleton(tres)));
                 }
+                // XXX likely, this facet has to report files, and leave it up to subsequent facets to 
+                // perform actual copy
                 FileSystem.getInstance().runWriteTransaction(() -> {
                   ListSequence.fromList(toCreate).visitAll(new IVisitor<IFile>() {
                     public void visit(IFile it) {
