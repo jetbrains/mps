@@ -127,7 +127,9 @@ public interface ReloadableModule extends SModule {
    * Call it to replace the old class loader of this module with a new one.
    * To reload more than one module all together
    * check out {@link ClassLoaderManager#reloadModules(Iterable, org.jetbrains.mps.openapi.util.ProgressMonitor)} method.
+   * @deprecated Scheduled for removal, use CLM directly, if necessary.
    */
+  @Deprecated(forRemoval = true, since = "2022.2")
   void reload();
 
   /**
