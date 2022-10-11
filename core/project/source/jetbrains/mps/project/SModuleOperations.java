@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -132,34 +132,6 @@ public class SModuleOperations {
     model.save();
 
     return model;
-  }
-
-  /**
-   * @deprecated unused, of dubious value. Guess, it's SLibrary responsibility to track changed in module descriptors
-   *             no direct replacement, FS changes has to be tracked by FS listeners.
-   */
-  @Deprecated(since = "2021.3", forRemoval = true)
-  public static boolean needReloading(AbstractModule module) {
-    // used to check model read for module's repository, now
-    // intentionally do not check any longer, as EditableSModel.needsReloading() doesn't require model read, so why would SModule do?
-
-    IFile descriptorFile = module.getDescriptorFile();
-    if ((descriptorFile == null) || !descriptorFile.exists()) {
-      return false;
-    }
-
-    final ModuleDescriptor descriptor = module.getModuleDescriptor();
-    if (descriptor == null) {
-      return false;
-    }
-
-    String timestampString = descriptor.getTimestamp();
-
-    if (timestampString == null) {
-      return true;
-    }
-    long timestamp = Long.decode(timestampString);
-    return timestamp != descriptorFile.lastModified();
   }
 
   /**

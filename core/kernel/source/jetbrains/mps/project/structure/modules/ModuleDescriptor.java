@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -109,8 +109,13 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     return PersistenceFacade.getInstance().createModuleReference(getId(), getNamespace());
   }
 
+
+  /**
+   * @deprecated no uses in MPS, nor any reasonable usage scenario in mind
+   */
   // FIXME document what's that and what format it is in
   //       ANY REASON TO BE STRING?
+  @Deprecated(since = "2022.3")
   public final String getTimestamp() {
     return myTimestamp;
   }
