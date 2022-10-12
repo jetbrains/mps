@@ -20,7 +20,9 @@ import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import java.util.Map;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
+import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import java.util.Objects;
 import java.util.HashMap;
@@ -131,7 +133,7 @@ public final class ModuleDependencyVersions {
    * @param dryRun true means the changes shouldn't be committed to the module
    * @return true if the module differs from updated one
    */
-  private boolean doUpdateImportVersions(SModule module, final boolean dryRun) {
+  private boolean doUpdateImportVersions(final SModule module, final boolean dryRun) {
     // FIXME I don't like this method, but don't want to bother refactoring it now
     AbstractModule abstractModule = (AbstractModule) module;
     final ModuleDescriptor md = abstractModule.getModuleDescriptor();
@@ -156,7 +158,7 @@ public final class ModuleDependencyVersions {
 
     final Wrappers._boolean changed = new Wrappers._boolean(false);
 
-    Map<SModuleReference, Integer> newDepVersions = collectActualDependencyVersions(abstractModule, oldDepsFiltered);
+    final Map<SModuleReference, Integer> newDepVersions = collectActualDependencyVersions(abstractModule, oldDepsFiltered);
     if (!(oldDepsFiltered.equals(newDepVersions))) {
       if (myRemoveOddImports) {
         Iterable<SModuleReference> keysToRemove = oldDepsFiltered.keySet();
@@ -167,14 +169,32 @@ public final class ModuleDependencyVersions {
               md.getDependencyVersions().remove(it);
             }
           });
+        } else {
+          if (LOG.isDebugLevel()) {
+            LOG.debug(String.format("Existing dependencies to remove in %s: %s", module.getModuleName(), IterableUtils.join(Sequence.fromIterable(keysToRemove).where(new IWhereFilter<SModuleReference>() {
+              public boolean accept(SModuleReference it) {
+                return !(MapSequence.fromMap(newDepVersions).containsKey(it));
+              }
+            }).select(new ISelector<SModuleReference, String>() {
+              public String select(SModuleReference it) {
+                return it.getModuleName();
+              }
+            }).toListSequence(), ",")));
+          }
         }
       }
       MapSequence.fromMap(newDepVersions).visitAll(new IVisitor<IMapping<SModuleReference, Integer>>() {
         public void visit(IMapping<SModuleReference, Integer> it) {
           boolean willBeChanged = !(Objects.equals(md.getDependencyVersions().get(it.key()), it.value()));
           changed.value = changed.value || willBeChanged;
-          if (willBeChanged && !(dryRun)) {
-            md.getDependencyVersions().put(it.key(), it.value());
+          if (willBeChanged) {
+            if (!(dryRun)) {
+              md.getDependencyVersions().put(it.key(), it.value());
+            } else {
+              if (LOG.isDebugLevel()) {
+                LOG.debug(String.format("Dependency to update in %s: %s", module.getModuleName(), it.key().getModuleName()));
+              }
+            }
           }
         }
       });
