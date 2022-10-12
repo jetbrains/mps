@@ -5,9 +5,7 @@ package jetbrains.mps.make.facet.constraints;
 import jetbrains.mps.lang.scopes.runtime.SimpleScope;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.module.ReloadableModule;
-import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.structure.modules.SolutionKind;
+import jetbrains.mps.project.SModuleOperations;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
@@ -35,13 +33,7 @@ public class FacetsScope extends SimpleScope {
    * probably it makes sense to declare all facets only in languages
    */
   private static boolean hackCondition(SModule module) {
-    if (module instanceof ReloadableModule) {
-      if (!(module instanceof Solution)) {
-        return true;
-      }
-      return ((Solution) module).getKind() != SolutionKind.NONE;
-    }
-    return false;
+    return SModuleOperations.canSupplyExtensionsForMPS(module);
   }
 
   public static Iterable<SNode> getAvailableFacets(SNode contextNode) {

@@ -20,7 +20,6 @@ import com.intellij.util.xmlb.annotations.Attribute;
 import com.intellij.util.xmlb.annotations.MapAnnotation;
 import com.intellij.util.xmlb.annotations.Tag;
 import com.intellij.util.xmlb.annotations.Transient;
-import jetbrains.mps.classloading.IdeaPluginModuleFacet;
 import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.persistence.MementoUtil;
 import jetbrains.mps.project.ModuleId;
@@ -72,8 +71,12 @@ public final class MPSConfigurationBean {
     sd.setId(ModuleId.fromString(myState.UUID));
     sd.setOutputPath(myState.generatorOutputPath);
     sd.setCompileInMPS(false);
-    // XXX there's SingleModuleMPSSupport which constructs SolutionDescriptor for SolutionIdea, too and it doesn't add any module facets?!
-    sd.getModuleFacetDescriptors().add(new ModuleFacetDescriptor(IdeaPluginModuleFacet.FACET_TYPE, new MementoImpl()));
+    // XXX there's SingleModuleMPSSupport which constructs SolutionDescriptor for SolutionIdea, too, and it doesn't add any module facets?!
+    // XXX Here we used to add IdeaPluginModuleFacet (ecde62c5), which I don't quite understand the reason for.
+    //     to my best knowledge, we use MPS to write code IDEA can use like any other hand-written code, and we
+    //     don't care for MPS to load it. Compile - yes, but we don't need CustomClassLoadingFacet for that, IMO.
+    //     There's a new change in MPS, where we treat modules with CL capability (including that of CCLF) as
+    //     "capable to provide extensions into MPS", which I don't believe is the case for IDEA modules with MPS facet.
     sd.getModuleFacetDescriptors().add(new ModuleFacetDescriptor(JavaModuleFacet.FACET_TYPE, new MementoImpl()));
     Map<SLanguage, Integer> languageVersions = sd.getLanguageVersions();
     final PersistenceFacade pf = PersistenceFacade.getInstance();

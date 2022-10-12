@@ -20,8 +20,6 @@
     <import index="fnmy" ref="r:89c0fb70-0977-4113-a076-5906f9d8630f(jetbrains.mps.baseLanguage.scopes)" />
     <import index="gp7a" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.dependency(MPS.Core/)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
-    <import index="j8aq" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.module(MPS.Core/)" />
-    <import index="w0gx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.structure.modules(MPS.Core/)" />
     <import index="o8zo" ref="r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)" />
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" />
     <import index="cx9y" ref="r:309aeee7-bee8-445c-b31d-35928d1da75f(jetbrains.mps.baseLanguage.tuples.structure)" implicit="true" />
@@ -61,16 +59,8 @@
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
       </concept>
-      <concept id="1081256982272" name="jetbrains.mps.baseLanguage.structure.InstanceOfExpression" flags="nn" index="2ZW3vV">
-        <child id="1081256993305" name="classType" index="2ZW6by" />
-        <child id="1081256993304" name="leftExpression" index="2ZW6bz" />
-      </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
-      <concept id="1070534934090" name="jetbrains.mps.baseLanguage.structure.CastExpression" flags="nn" index="10QFUN">
-        <child id="1070534934091" name="type" index="10QFUM" />
-        <child id="1070534934092" name="expression" index="10QFUP" />
-      </concept>
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
         <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
@@ -1068,65 +1058,13 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="7I3kEDGOGbT" role="3clF47">
-        <node concept="3clFbJ" id="7I3kEDGOIAc" role="3cqZAp">
-          <node concept="3clFbS" id="7I3kEDGOIAd" role="3clFbx">
-            <node concept="3clFbJ" id="7I3kEDGORbl" role="3cqZAp">
-              <node concept="3clFbS" id="7I3kEDGORbo" role="3clFbx">
-                <node concept="3cpWs6" id="7I3kEDGOR_O" role="3cqZAp">
-                  <node concept="3clFbT" id="7I3kEDGORAU" role="3cqZAk">
-                    <property role="3clFbU" value="true" />
-                  </node>
-                </node>
-              </node>
-              <node concept="3fqX7Q" id="7I3kEDGORyP" role="3clFbw">
-                <node concept="1eOMI4" id="7I3kEDGORyR" role="3fr31v">
-                  <node concept="2ZW3vV" id="7I3kEDGORzJ" role="1eOMHV">
-                    <node concept="3uibUv" id="7I3kEDGORzK" role="2ZW6by">
-                      <ref role="3uigEE" to="z1c3:~Solution" resolve="Solution" />
-                    </node>
-                    <node concept="37vLTw" id="7I3kEDGORzL" role="2ZW6bz">
-                      <ref role="3cqZAo" node="7I3kEDGOGBY" resolve="module" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3cpWs6" id="7I3kEDGOJ$k" role="3cqZAp">
-              <node concept="3y3z36" id="7I3kEDGOOvX" role="3cqZAk">
-                <node concept="Rm8GO" id="7I3kEDGOPCC" role="3uHU7w">
-                  <ref role="1Px2BO" to="w0gx:~SolutionKind" resolve="SolutionKind" />
-                  <ref role="Rm8GQ" to="w0gx:~SolutionKind.NONE" resolve="NONE" />
-                </node>
-                <node concept="2OqwBi" id="7I3kEDGOMS5" role="3uHU7B">
-                  <node concept="1eOMI4" id="7I3kEDGOKoV" role="2Oq$k0">
-                    <node concept="10QFUN" id="7I3kEDGOKoW" role="1eOMHV">
-                      <node concept="37vLTw" id="7I3kEDGOKoU" role="10QFUP">
-                        <ref role="3cqZAo" node="7I3kEDGOGBY" resolve="module" />
-                      </node>
-                      <node concept="3uibUv" id="7I3kEDGOMq$" role="10QFUM">
-                        <ref role="3uigEE" to="z1c3:~Solution" resolve="Solution" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="7I3kEDGONXv" role="2OqNvi">
-                    <ref role="37wK5l" to="z1c3:~Solution.getKind()" resolve="getKind" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="2ZW3vV" id="7I3kEDGOBqj" role="3clFbw">
-            <node concept="3uibUv" id="7I3kEDGOB$I" role="2ZW6by">
-              <ref role="3uigEE" to="j8aq:~ReloadableModule" resolve="ReloadableModule" />
-            </node>
-            <node concept="37vLTw" id="7I3kEDGOJ2C" role="2ZW6bz">
+        <node concept="3cpWs6" id="4V$6IO6TYdh" role="3cqZAp">
+          <node concept="2YIFZM" id="4V$6IO6U0mD" role="3cqZAk">
+            <ref role="37wK5l" to="z1c3:~SModuleOperations.canSupplyExtensionsForMPS(org.jetbrains.mps.openapi.module.SModule)" resolve="canSupplyExtensionsForMPS" />
+            <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
+            <node concept="37vLTw" id="4V$6IO6U18M" role="37wK5m">
               <ref role="3cqZAo" node="7I3kEDGOGBY" resolve="module" />
             </node>
-          </node>
-        </node>
-        <node concept="3cpWs6" id="7I3kEDGOICi" role="3cqZAp">
-          <node concept="3clFbT" id="7I3kEDGOIHN" role="3cqZAk">
-            <property role="3clFbU" value="false" />
           </node>
         </node>
       </node>

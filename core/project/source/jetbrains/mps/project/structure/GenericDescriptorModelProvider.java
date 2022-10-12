@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,10 @@
  */
 package jetbrains.mps.project.structure;
 
+import jetbrains.mps.classloading.CustomClassLoadingFacet;
 import jetbrains.mps.extapi.module.SModuleBase;
+import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.structure.modules.SolutionKind;
 import jetbrains.mps.smodel.BootstrapLanguages;
 import jetbrains.mps.smodel.SModelId.IntegerSModelId;
 import jetbrains.mps.smodel.SModelStereotype;
@@ -58,11 +59,19 @@ public class GenericDescriptorModelProvider extends DescriptorModelProvider {
     if (false == module instanceof Solution) {
       return false;
     }
-    if (((Solution) module).getKind() == SolutionKind.NONE) {
-      // For solutions not managed by MPS, no reason to assume generation of descriptor class intended for MPS management.
-      return false;
-    }
-    return true;
+    // For solutions not managed by MPS, no reason to assume generation of descriptor class intended for MPS management.
+    return SModuleOperations.canSupplyExtensionsForMPS(module) && module.getFacet(CustomClassLoadingFacet.class) == null;
+    // FIXME CCLF == null is a quick HACK to get solutions like bl.runtime, closures.rt and collections.rt to generate
+    //       without any difference. Likely, canSupplyExtensionsForMPS() shall cease to use CCLF != as a condition,
+    //       IDEA-loaded modules that need to contribute into MPS shall use explicit SolutionKind (it's a guess, seems
+    //       to be "state of the art" now, but not 100% sure), otherwise we get for bootstrap runtimes an MPS.Annotation
+    //       dependency (check history of this class for details) and @Generated annotation. Which is not bad per se,
+    //       as these classes are indeed generated, and mps-annotations.jar is there in CP anyway, but it constitutes
+    //       a change I can't do lightly. E.g. what if these basic runtimes are engaged outside of MPS, for a code
+    //       generated with use of BL but not intended for use with MPS?
+    //   FWIW, with this hack we don't need MPSConfigurationBean change that removes IdeaPluginModuleFacet for
+    //   MPSFacet solutions, but as I don't quite understand if there's any need for this facet in MPS-as-IDEA-plugin
+    //   scenario, I just leave this comment here for later re-consideration.
   }
 
   @Override
