@@ -438,7 +438,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
 
     protected List<String> getPropertyValues(SNode node, EditorContext editorContext) {
-      return Arrays.asList(new String[]{"1.5", "1.6", "1.7", "1.8", "9", "10", "11"});
+      return Arrays.asList(new String[]{"1.5", "1.6", "1.7", "1.8", "9", "10", "11", "12", "13", "14", "15", "16", "17"});
     }
   }
   private EditorCell createConstant_7() {
