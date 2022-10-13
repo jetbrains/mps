@@ -8,6 +8,7 @@
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="-1" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
+    <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
   </languages>
   <imports>
     <import index="ge2m" ref="r:bd8551c6-e2e3-4499-a261-45b0c886d1d1(jetbrains.mps.refactoring.framework)" />
@@ -54,7 +55,8 @@
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
     <import index="57ty" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.messages(MPS.Platform/)" />
     <import index="et5u" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.messages(MPS.Core/)" />
-    <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" implicit="true" />
+    <import index="zn9m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util(MPS.IDEA/)" />
+    <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -2315,9 +2317,12 @@
                 <ref role="3cqZAo" node="6iwuqdL$7ZW" resolve="myValidator" />
               </node>
               <node concept="liA8E" id="6iwuqdL$qrK" role="2OqNvi">
-                <ref role="37wK5l" node="6iwuqdLyKsJ" resolve="validate" />
+                <ref role="37wK5l" node="CBwdDm0sNf" resolve="validateForRename" />
                 <node concept="1rXfSq" id="6iwuqdL$qrL" role="37wK5m">
                   <ref role="37wK5l" to="u42p:WWy1UWgXzO" resolve="getCurrentValue" />
+                </node>
+                <node concept="37vLTw" id="CBwdDm0JKj" role="37wK5m">
+                  <ref role="3cqZAo" node="29N7xYwTG4w" resolve="myModelDescriptor" />
                 </node>
               </node>
             </node>
@@ -5519,115 +5524,146 @@
         <node concept="1Ciki9" id="4Ym$GAXgYj6" role="3nqlJM" />
       </node>
     </node>
-    <node concept="2tJIrI" id="6iwuqdL$eXJ" role="jymVt" />
-    <node concept="3clFb_" id="6iwuqdLyKsJ" role="jymVt">
-      <property role="TrG5h" value="validate" />
-      <node concept="37vLTG" id="6iwuqdLyJmL" role="3clF46">
+    <node concept="2tJIrI" id="6iwuqdLyLPQ" role="jymVt" />
+    <node concept="3clFb_" id="CBwdDm0sNf" role="jymVt">
+      <property role="TrG5h" value="validateForRename" />
+      <node concept="2AHcQZ" id="CBwdDm0sNg" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+      </node>
+      <node concept="37vLTG" id="CBwdDm0sNh" role="3clF46">
         <property role="TrG5h" value="modelName" />
         <property role="3TUv4t" value="true" />
-        <node concept="17QB3L" id="6iwuqdLyJqu" role="1tU5fm" />
-        <node concept="2AHcQZ" id="6iwuqdLzoBF" role="2AJF6D">
+        <node concept="2AHcQZ" id="CBwdDm0sNi" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
+        <node concept="3uibUv" id="CBwdDm0sNj" role="1tU5fm">
+          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+        </node>
       </node>
-      <node concept="3clFbS" id="6iwuqdLyKsM" role="3clF47">
-        <node concept="3cpWs8" id="6iwuqdLyM1j" role="3cqZAp">
-          <node concept="3cpWsn" id="6iwuqdLyM1k" role="3cpWs9">
+      <node concept="37vLTG" id="CBwdDm0sNk" role="3clF46">
+        <property role="TrG5h" value="currentModelDescriptor" />
+        <node concept="2AHcQZ" id="CBwdDm0sNl" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+        <node concept="3uibUv" id="CBwdDm0sNm" role="1tU5fm">
+          <ref role="3uigEE" to="mhbf:~EditableSModel" resolve="EditableSModel" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="CBwdDm0sNn" role="3clF47">
+        <node concept="3cpWs8" id="CBwdDm0sNp" role="3cqZAp">
+          <node concept="3cpWsn" id="CBwdDm0sNo" role="3cpWs9">
             <property role="TrG5h" value="check" />
-            <node concept="3uibUv" id="6iwuqdLyM1l" role="1tU5fm">
+            <node concept="3uibUv" id="CBwdDm0sNq" role="1tU5fm">
               <ref role="3uigEE" to="mhbf:~SModelName$SModelNameCheck" resolve="SModelName.SModelNameCheck" />
             </node>
-            <node concept="2YIFZM" id="6iwuqdLyM1m" role="33vP2m">
+            <node concept="2YIFZM" id="CBwdDm0tSQ" role="33vP2m">
               <ref role="1Pybhc" to="mhbf:~SModelName" resolve="SModelName" />
               <ref role="37wK5l" to="mhbf:~SModelName.checkModelName(java.lang.String)" resolve="checkModelName" />
-              <node concept="37vLTw" id="6iwuqdLyMeh" role="37wK5m">
-                <ref role="3cqZAo" node="6iwuqdLyJmL" resolve="modelName" />
+              <node concept="37vLTw" id="CBwdDm0tSR" role="37wK5m">
+                <ref role="3cqZAo" node="CBwdDm0sNh" resolve="modelName" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbJ" id="6iwuqdLyM1n" role="3cqZAp">
-          <node concept="3clFbS" id="6iwuqdLyM1o" role="3clFbx">
-            <node concept="3cpWs6" id="2L8Xy_oDz1f" role="3cqZAp">
-              <node concept="2OqwBi" id="6iwuqdLyM1p" role="3cqZAk">
-                <node concept="37vLTw" id="6iwuqdLyM1q" role="2Oq$k0">
-                  <ref role="3cqZAo" node="6iwuqdLyM1k" resolve="check" />
+        <node concept="3clFbJ" id="CBwdDm0sNt" role="3cqZAp">
+          <node concept="3y3z36" id="CBwdDm0sNu" role="3clFbw">
+            <node concept="37vLTw" id="CBwdDm0sNv" role="3uHU7B">
+              <ref role="3cqZAo" node="CBwdDm0sNo" resolve="check" />
+            </node>
+            <node concept="Rm8GO" id="CBwdDm0tT4" role="3uHU7w">
+              <ref role="1Px2BO" to="mhbf:~SModelName$SModelNameCheck" resolve="SModelNameCheck" />
+              <ref role="Rm8GQ" to="mhbf:~SModelName$SModelNameCheck.Pass" resolve="Pass" />
+            </node>
+          </node>
+          <node concept="3clFbS" id="CBwdDm0sNy" role="3clFbx">
+            <node concept="3cpWs6" id="CBwdDm0sNz" role="3cqZAp">
+              <node concept="2OqwBi" id="CBwdDm0ugn" role="3cqZAk">
+                <node concept="37vLTw" id="CBwdDm0tSH" role="2Oq$k0">
+                  <ref role="3cqZAo" node="CBwdDm0sNo" resolve="check" />
                 </node>
-                <node concept="liA8E" id="6iwuqdLyM1r" role="2OqNvi">
+                <node concept="liA8E" id="CBwdDm0ugo" role="2OqNvi">
                   <ref role="37wK5l" to="mhbf:~SModelName$SModelNameCheck.getProblemDescription()" resolve="getProblemDescription" />
                 </node>
               </node>
             </node>
           </node>
-          <node concept="3y3z36" id="6iwuqdLyM1s" role="3clFbw">
-            <node concept="Rm8GO" id="6iwuqdLyM1t" role="3uHU7w">
-              <ref role="1Px2BO" to="mhbf:~SModelName$SModelNameCheck" resolve="SModelName.SModelNameCheck" />
-              <ref role="Rm8GQ" to="mhbf:~SModelName$SModelNameCheck.Pass" resolve="Pass" />
-            </node>
-            <node concept="37vLTw" id="6iwuqdLyM1u" role="3uHU7B">
-              <ref role="3cqZAo" node="6iwuqdLyM1k" resolve="check" />
-            </node>
-          </node>
         </node>
-        <node concept="3clFbH" id="6iwuqdLyN55" role="3cqZAp" />
-        <node concept="3cpWs6" id="6iwuqdLyMPd" role="3cqZAp">
-          <node concept="1rXfSq" id="6iwuqdLyN1s" role="3cqZAk">
+        <node concept="3cpWs6" id="CBwdDm0sN_" role="3cqZAp">
+          <node concept="1rXfSq" id="CBwdDm0sNA" role="3cqZAk">
             <ref role="37wK5l" node="6iwuqdLyLND" resolve="validate" />
-            <node concept="2ShNRf" id="6iwuqdLyNdO" role="37wK5m">
-              <node concept="1pGfFk" id="6iwuqdLzbYm" role="2ShVmc">
+            <node concept="2ShNRf" id="CBwdDm0tT6" role="37wK5m">
+              <node concept="1pGfFk" id="CBwdDm0tWg" role="2ShVmc">
                 <ref role="37wK5l" to="mhbf:~SModelName.&lt;init&gt;(java.lang.String)" resolve="SModelName" />
-                <node concept="37vLTw" id="6iwuqdLzcar" role="37wK5m">
-                  <ref role="3cqZAo" node="6iwuqdLyJmL" resolve="modelName" />
+                <node concept="37vLTw" id="CBwdDm0tWh" role="37wK5m">
+                  <ref role="3cqZAo" node="CBwdDm0sNh" resolve="modelName" />
                 </node>
               </node>
             </node>
+            <node concept="37vLTw" id="CBwdDm0sND" role="37wK5m">
+              <ref role="3cqZAo" node="CBwdDm0sNk" resolve="currentModelDescriptor" />
+            </node>
           </node>
         </node>
       </node>
-      <node concept="3Tm1VV" id="6iwuqdLyKq8" role="1B3o_S" />
-      <node concept="17QB3L" id="6iwuqdLyKsA" role="3clF45" />
-      <node concept="2AHcQZ" id="6iwuqdLyMDg" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+      <node concept="3Tm1VV" id="CBwdDm0sNE" role="1B3o_S" />
+      <node concept="3uibUv" id="CBwdDm0sNF" role="3clF45">
+        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
       </node>
-      <node concept="P$JXv" id="4Ym$GAXgX6M" role="lGtFl">
-        <node concept="TZ5HA" id="4Ym$GAXgXwX" role="TZ5H$">
-          <node concept="1dT_AC" id="4Ym$GAXgXwY" role="1dT_Ay">
+      <node concept="P$JXv" id="CBwdDm0uEW" role="lGtFl">
+        <node concept="TZ5HA" id="CBwdDm0uEX" role="TZ5H$">
+          <node concept="1dT_AC" id="CBwdDm0uEY" role="1dT_Ay">
             <property role="1dT_AB" value="Try to construct SModelName from input and validate it." />
           </node>
         </node>
-        <node concept="TZ5HA" id="6UnbCUe9AV8" role="TZ5H$">
-          <node concept="1dT_AC" id="6UnbCUe9AV9" role="1dT_Ay">
+        <node concept="TZ5HA" id="CBwdDm0uYN" role="TZ5H$">
+          <node concept="1dT_AC" id="CBwdDm0uYO" role="1dT_Ay">
+            <property role="1dT_AB" value="When renaming on case-insensitive file systems it should be permitted to rename to a name that differs from existing names in capitalization." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="CBwdDm0vVB" role="TZ5H$">
+          <node concept="1dT_AC" id="CBwdDm0vVC" role="1dT_Ay">
+            <property role="1dT_AB" value="When creating new models this should not be allowed." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="CBwdDm0wGI" role="TZ5H$">
+          <node concept="1dT_AC" id="CBwdDm0wGJ" role="1dT_Ay">
             <property role="1dT_AB" value="&lt;br&gt;" />
           </node>
         </node>
-        <node concept="TZ5HA" id="4Ym$GAXgXNG" role="TZ5H$">
-          <node concept="1dT_AC" id="4Ym$GAXgXNH" role="1dT_Ay">
+        <node concept="TZ5HA" id="CBwdDm0xpX" role="TZ5H$">
+          <node concept="1dT_AC" id="CBwdDm0xqb" role="1dT_Ay">
             <property role="1dT_AB" value="See " />
           </node>
-          <node concept="1dT_AA" id="4Ym$GAXgXwZ" role="1dT_Ay">
-            <node concept="92FcH" id="4Ym$GAXgXx0" role="qph3F">
-              <node concept="TZ5HA" id="4Ym$GAXgXx1" role="2XjZqd" />
-              <node concept="VXe0Z" id="4Ym$GAXgXx2" role="92FcQ">
+          <node concept="1dT_AA" id="CBwdDm0xqc" role="1dT_Ay">
+            <node concept="92FcH" id="CBwdDm0xqd" role="qph3F">
+              <node concept="TZ5HA" id="CBwdDm0xqe" role="2XjZqd" />
+              <node concept="VXe0Z" id="CBwdDm0xqf" role="92FcQ">
                 <ref role="VXe0S" node="6iwuqdLyLND" resolve="validate" />
               </node>
             </node>
           </node>
-          <node concept="1dT_AC" id="4Ym$GAXgXx3" role="1dT_Ay">
+          <node concept="1dT_AC" id="CBwdDm0xpY" role="1dT_Ay">
             <property role="1dT_AB" value="" />
           </node>
         </node>
-        <node concept="TUZQ0" id="4Ym$GAXgX6P" role="3nqlJM">
+        <node concept="TUZQ0" id="CBwdDm0uEZ" role="3nqlJM">
           <property role="TUZQ4" value="string containing fully qualified model name" />
-          <node concept="zr_55" id="4Ym$GAXgX6R" role="zr_5Q">
-            <ref role="zr_51" node="6iwuqdLyJmL" resolve="modelName" />
+          <node concept="zr_55" id="CBwdDm0uF1" role="zr_5Q">
+            <ref role="zr_51" node="CBwdDm0sNh" resolve="modelName" />
           </node>
         </node>
-        <node concept="x79VA" id="4Ym$GAXgX6S" role="3nqlJM">
+        <node concept="TUZQ0" id="CBwdDm0uF2" role="3nqlJM">
+          <property role="TUZQ4" value="The current model that is going to be renamed" />
+          <node concept="zr_55" id="CBwdDm0uF4" role="zr_5Q">
+            <ref role="zr_51" node="CBwdDm0sNk" resolve="currentModelDescriptor" />
+          </node>
+        </node>
+        <node concept="x79VA" id="CBwdDm0uF5" role="3nqlJM">
           <property role="x79VB" value="validation error text or null if name is valid" />
         </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="6iwuqdLyLPQ" role="jymVt" />
+    <node concept="2tJIrI" id="CBwdDm0s2V" role="jymVt" />
     <node concept="3clFb_" id="6iwuqdL_l7M" role="jymVt">
       <property role="TrG5h" value="validate" />
       <node concept="37vLTG" id="6iwuqdL_l7N" role="3clF46">
@@ -5703,6 +5739,7 @@
                 </node>
               </node>
             </node>
+            <node concept="10Nm6u" id="CBwdDm0CFW" role="37wK5m" />
           </node>
         </node>
       </node>
@@ -5766,6 +5803,13 @@
         </node>
         <node concept="2AHcQZ" id="6iwuqdLzlzQ" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="CBwdDm0yD9" role="3clF46">
+        <property role="TrG5h" value="currentModelDescriptor" />
+        <property role="3TUv4t" value="true" />
+        <node concept="3uibUv" id="CBwdDm0$Gf" role="1tU5fm">
+          <ref role="3uigEE" to="mhbf:~EditableSModel" resolve="EditableSModel" />
         </node>
       </node>
       <node concept="3clFbS" id="6iwuqdLyLNK" role="3clF47">
@@ -5929,42 +5973,91 @@
             <ref role="3cqZAo" node="6iwuqdLzrIy" resolve="duplicatesExistingModel" />
           </node>
         </node>
-        <node concept="3clFbH" id="6iwuqdLzefR" role="3cqZAp" />
+        <node concept="3clFbH" id="1W57URyfQ1k" role="3cqZAp" />
         <node concept="3cpWs8" id="4JxpWR_OWHx" role="3cqZAp">
           <node concept="3cpWsn" id="4JxpWR_OWHy" role="3cpWs9">
             <property role="TrG5h" value="canCreateModel" />
             <node concept="10P_77" id="4JxpWR_OSp2" role="1tU5fm" />
           </node>
         </node>
-        <node concept="1QHqEK" id="4JxpWR_OYax" role="3cqZAp">
-          <node concept="1QHqEC" id="4JxpWR_OYay" role="1QHqEI">
-            <node concept="3clFbS" id="4JxpWR_OYaz" role="1bW5cS">
-              <node concept="3clFbF" id="4JxpWR_OXCi" role="3cqZAp">
-                <node concept="37vLTI" id="4JxpWR_OXCk" role="3clFbG">
-                  <node concept="2OqwBi" id="4JxpWR_OWHz" role="37vLTx">
-                    <node concept="liA8E" id="4JxpWR_OWH$" role="2OqNvi">
-                      <ref role="37wK5l" to="dush:~ModelRoot.canCreateModel(org.jetbrains.mps.openapi.model.SModelName)" resolve="canCreateModel" />
-                      <node concept="37vLTw" id="6iwuqdLzDrG" role="37wK5m">
-                        <ref role="3cqZAo" node="6iwuqdLyLNE" resolve="modelName" />
+        <node concept="3clFbJ" id="CBwdDm1hC5" role="3cqZAp">
+          <node concept="3clFbS" id="CBwdDm1hC7" role="3clFbx">
+            <node concept="1QHqEK" id="4JxpWR_OYax" role="3cqZAp">
+              <node concept="1QHqEC" id="4JxpWR_OYay" role="1QHqEI">
+                <node concept="3clFbS" id="4JxpWR_OYaz" role="1bW5cS">
+                  <node concept="3clFbF" id="4JxpWR_OXCi" role="3cqZAp">
+                    <node concept="37vLTI" id="4JxpWR_OXCk" role="3clFbG">
+                      <node concept="2OqwBi" id="4JxpWR_OWHz" role="37vLTx">
+                        <node concept="liA8E" id="4JxpWR_OWH$" role="2OqNvi">
+                          <ref role="37wK5l" to="dush:~ModelRoot.canCreateModel(org.jetbrains.mps.openapi.model.SModelName)" resolve="canCreateModel" />
+                          <node concept="37vLTw" id="6iwuqdLzDrG" role="37wK5m">
+                            <ref role="3cqZAo" node="6iwuqdLyLNE" resolve="modelName" />
+                          </node>
+                        </node>
+                        <node concept="37vLTw" id="6iwuqdL$ijG" role="2Oq$k0">
+                          <ref role="3cqZAo" node="6iwuqdL$dwW" resolve="myModelRoot" />
+                        </node>
+                      </node>
+                      <node concept="37vLTw" id="4JxpWR_OXCo" role="37vLTJ">
+                        <ref role="3cqZAo" node="4JxpWR_OWHy" resolve="canCreateModel" />
                       </node>
                     </node>
-                    <node concept="37vLTw" id="6iwuqdL$ijG" role="2Oq$k0">
-                      <ref role="3cqZAo" node="6iwuqdL$dwW" resolve="myModelRoot" />
-                    </node>
                   </node>
-                  <node concept="37vLTw" id="4JxpWR_OXCo" role="37vLTJ">
-                    <ref role="3cqZAo" node="4JxpWR_OWHy" resolve="canCreateModel" />
-                  </node>
+                </node>
+              </node>
+              <node concept="2OqwBi" id="4JxpWR_OYaE" role="ukAjM">
+                <node concept="37vLTw" id="6iwuqdLzCUg" role="2Oq$k0">
+                  <ref role="3cqZAo" node="6iwuqdLzFxM" resolve="module" />
+                </node>
+                <node concept="liA8E" id="6iwuqdLzD1o" role="2OqNvi">
+                  <ref role="37wK5l" to="lui2:~SModule.getRepository()" resolve="getRepository" />
                 </node>
               </node>
             </node>
           </node>
-          <node concept="2OqwBi" id="4JxpWR_OYaE" role="ukAjM">
-            <node concept="37vLTw" id="6iwuqdLzCUg" role="2Oq$k0">
-              <ref role="3cqZAo" node="6iwuqdLzFxM" resolve="module" />
+          <node concept="3clFbC" id="CBwdDm1iD7" role="3clFbw">
+            <node concept="10Nm6u" id="CBwdDm1j6r" role="3uHU7w" />
+            <node concept="37vLTw" id="CBwdDm1ibK" role="3uHU7B">
+              <ref role="3cqZAo" node="CBwdDm0yD9" resolve="currentModelDescriptor" />
             </node>
-            <node concept="liA8E" id="6iwuqdLzD1o" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SModule.getRepository()" resolve="getRepository" />
+          </node>
+          <node concept="9aQIb" id="CBwdDm1jLL" role="9aQIa">
+            <node concept="3clFbS" id="CBwdDm1jLM" role="9aQI4">
+              <node concept="1QHqEK" id="CBwdDm1jpg" role="3cqZAp">
+                <node concept="1QHqEC" id="CBwdDm1jph" role="1QHqEI">
+                  <node concept="3clFbS" id="CBwdDm1jpi" role="1bW5cS">
+                    <node concept="3clFbF" id="CBwdDm1jpj" role="3cqZAp">
+                      <node concept="37vLTI" id="CBwdDm1jpk" role="3clFbG">
+                        <node concept="2OqwBi" id="CBwdDm1jpl" role="37vLTx">
+                          <node concept="liA8E" id="CBwdDm1jpm" role="2OqNvi">
+                            <ref role="37wK5l" to="dush:~ModelRoot.canRenameModel(org.jetbrains.mps.openapi.model.SModelName,org.jetbrains.mps.openapi.model.EditableSModel)" resolve="canRenameModel" />
+                            <node concept="37vLTw" id="CBwdDm1jpn" role="37wK5m">
+                              <ref role="3cqZAo" node="6iwuqdLyLNE" resolve="modelName" />
+                            </node>
+                            <node concept="37vLTw" id="CBwdDm1mh4" role="37wK5m">
+                              <ref role="3cqZAo" node="CBwdDm0yD9" resolve="currentModelDescriptor" />
+                            </node>
+                          </node>
+                          <node concept="37vLTw" id="CBwdDm1jpo" role="2Oq$k0">
+                            <ref role="3cqZAo" node="6iwuqdL$dwW" resolve="myModelRoot" />
+                          </node>
+                        </node>
+                        <node concept="37vLTw" id="CBwdDm1jpp" role="37vLTJ">
+                          <ref role="3cqZAo" node="4JxpWR_OWHy" resolve="canCreateModel" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="2OqwBi" id="CBwdDm1jpq" role="ukAjM">
+                  <node concept="37vLTw" id="CBwdDm1jpr" role="2Oq$k0">
+                    <ref role="3cqZAo" node="6iwuqdLzFxM" resolve="module" />
+                  </node>
+                  <node concept="liA8E" id="CBwdDm1jps" role="2OqNvi">
+                    <ref role="37wK5l" to="lui2:~SModule.getRepository()" resolve="getRepository" />
+                  </node>
+                </node>
+              </node>
             </node>
           </node>
         </node>
@@ -6039,6 +6132,12 @@
           <property role="TUZQ4" value="SModelName for validation" />
           <node concept="zr_55" id="4Ym$GAXgE4w" role="zr_5Q">
             <ref role="zr_51" node="6iwuqdLyLNE" resolve="modelName" />
+          </node>
+        </node>
+        <node concept="TUZQ0" id="CBwdDm1nr7" role="3nqlJM">
+          <property role="TUZQ4" value="The current model that is going to be renamed, null if a new model is being created" />
+          <node concept="zr_55" id="CBwdDm1nHs" role="zr_5Q">
+            <ref role="zr_51" node="CBwdDm0yD9" resolve="currentModelDescriptor" />
           </node>
         </node>
         <node concept="x79VA" id="4Ym$GAXgE4x" role="3nqlJM">

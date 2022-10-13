@@ -103,7 +103,7 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
     }
     if (dataSource instanceof FileSystemBasedDataSource) {
       if (((FileSystemBasedDataSource) dataSource).exists()) {
-        return () -> "Some of the data source paths already exist on the disk";
+          return () -> "Some of the data source paths already exist on the disk";
       }
     }
     return NO_PROBLEM;

@@ -35,7 +35,7 @@ public class RenameModelDialog extends RenameDialog {
   @Nullable
   @Override
   protected String checkValue() {
-    String validationResult = myValidator.validate(getCurrentValue());
+    String validationResult = myValidator.validateForRename(getCurrentValue(), myModelDescriptor);
     if (validationResult != null) {
       return validationResult;
     }

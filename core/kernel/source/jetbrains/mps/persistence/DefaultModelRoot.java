@@ -22,6 +22,7 @@ import jetbrains.mps.extapi.persistence.CopyableModelRoot;
 import jetbrains.mps.extapi.persistence.DefaultSourceRoot;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.extapi.persistence.FileDataSource;
+import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import jetbrains.mps.extapi.persistence.ModelFactoryRegistry;
 import jetbrains.mps.extapi.persistence.SourceRoot;
 import jetbrains.mps.extapi.persistence.SourceRootKind;
@@ -42,6 +43,7 @@ import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.DataSource;
+import org.jetbrains.mps.openapi.persistence.DataSourceNotSupportedProblem;
 import org.jetbrains.mps.openapi.persistence.MFProblem;
 import org.jetbrains.mps.openapi.persistence.Memento;
 import org.jetbrains.mps.openapi.persistence.ModelCreationException;
@@ -58,6 +60,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.jetbrains.mps.openapi.persistence.MFProblem.NO_PROBLEM;
 
@@ -174,8 +179,16 @@ public final class DefaultModelRoot extends FileBasedModelRoot implements Copyab
     return super.canCreateModels() && !getSourceRoots(SourceRootKinds.SOURCES).isEmpty();
   }
 
-  @Override
-  public boolean canCreateModel(@NotNull SModelName modelName) {
+  private interface ModelNameRejectionHandler {
+    boolean handleRejection(DataSource dataSource);
+  }
+
+  /**
+   * Checks if a model with this name can be created. Calls the rejectionHandler, if it cannot be created because some model files collide with existing files.
+   * When renaming a model, the handler may investigate further to detect whether the colliding files belong to the model being renamed.
+   * @return True, if the model can be created.
+   */
+  private boolean processCanModelBeCreated(@NotNull SModelName modelName, ModelNameRejectionHandler rejectionHandler) {
     if (!canCreateModels()) {
       return false;
     }
@@ -194,10 +207,64 @@ public final class DefaultModelRoot extends FileBasedModelRoot implements Copyab
                                                                                  Defaults.DATA_SOURCE_TYPE);
       DataSource dataSource = result.getDataSource();
       ModelLoadingOption[] modelLoadingOptions = result.getOptions().convertToLoadingOptions();
-      return NO_PROBLEM == defaultMF.canCreate(dataSource, modelName, modelLoadingOptions);
+
+      final MFProblem mfProblem = defaultMF.canCreate(dataSource, modelName, modelLoadingOptions);
+      if (mfProblem instanceof DataSourceNotSupportedProblem) return false;
+      final boolean canBeCreated = NO_PROBLEM == mfProblem;
+      if (canBeCreated) return true;
+
+      return rejectionHandler.handleRejection(dataSource);
+
     } catch (NoSourceRootsInModelRootException | DataSourceFactoryNotFoundException | SourceRootDoesNotExistException ignored) {
     }
     return false;
+
+  }
+  @Override
+  public boolean canCreateModel(@NotNull SModelName modelName) {
+    return processCanModelBeCreated(modelName, null);
+  }
+
+  @Override
+  public boolean canRenameModel(@NotNull SModelName modelName, EditableSModel currentModelDescriptor) {
+    return processCanModelBeCreated(modelName, new ModelNameRejectionHandler() {
+      @Override
+      public boolean handleRejection(DataSource dataSource) {
+        // When renaming a model the fact that its datasource already exists should not stop us renaming.
+        // On case-insensitive systems it may be an indication that the new model's name differs from the old name only in capitalization.
+        // Since there is no way to reliably detect a case-insensitive system, we have to grab all files (minus the existing model's files, i.e. before rename)
+        // that may collide with the new model's files and manually check whether any of them equalsIgnoreCase() with any of the new model's files.
+        final DataSource currentModelSource = currentModelDescriptor.getSource();
+        if (dataSource instanceof FileSystemBasedDataSource && currentModelSource instanceof FileSystemBasedDataSource) {
+          if (((FileSystemBasedDataSource) dataSource).exists()) {
+            final FileSystemBasedDataSource currentModelDS = (FileSystemBasedDataSource) currentModelSource;
+            final Set<IFile> currentModelFiles = currentModelDS.getAffectedFilesWithDirsExtracted().collect(Collectors.toSet());
+
+            final FileSystemBasedDataSource newModelDS = (FileSystemBasedDataSource) dataSource;
+            final Stream<IFile> involvedDirs =
+                newModelDS.getAffectedFilesWithDirsExtracted().map(IFile::getParent).filter(iFile -> iFile != null && iFile.isDirectory()).distinct();
+            //All files that do not belong to the current model
+            final List<IFile> allOtherFiles = involvedDirs.flatMap(dir -> dir.getChildren().stream())
+                                                          .filter(iFile -> !iFile.isDirectory())
+                                                          .filter(iFile -> currentModelFiles.stream()
+                                                                                            .noneMatch(currentModelF -> currentModelF.getName()
+                                                                                                                                     .equals(iFile.getName())))
+                                                          .collect(Collectors.toList());
+
+            // On case-sensitive systems we deduce that since the datasource returns true from "exists()", there must be a colliding file.
+            // If it is a file of the current model, we would be renaming a model to the same name, so we may disregard that option.
+            // If the collision is with a file that does not belong to the current model, the equalsIgnoreCase() will find it.
+            // In either case the renaming will not happen for case-sensitive systems.
+            return newModelDS.getAffectedFiles().stream().allMatch(iFile -> {
+              return allOtherFiles.stream().noneMatch(originalFile -> {
+                return iFile.getName().equalsIgnoreCase(originalFile.getName());
+              });
+            });
+          }
+        }
+        return false;
+      }
+    });
   }
 
   /**

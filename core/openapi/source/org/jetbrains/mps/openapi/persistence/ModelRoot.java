@@ -17,6 +17,7 @@ package org.jetbrains.mps.openapi.persistence;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelName;
@@ -112,6 +113,20 @@ public interface ModelRoot {
    */
   default boolean canCreateModel(@NotNull SModelName modelName) {
     return false;
+  }
+
+  /**
+   * Default implementation answers "no" to any model name.
+   * The rules for renaming models are a bit looser thann for creating new models.
+   * On case-insensitive systems you can rename to a name with different capitalization
+   * while you are not allowed to create a new model that differs from another model only in name capitalization.
+   * On case-sensitive systems you can both create and rename to names that differ in capitalization from existing models.
+   * There is no reliable way to tell whether the file system storing the current model is case-sensitive or not.
+   *
+   * @return {@code true} if the model root rename the given model to the supplied name
+   */
+  default boolean canRenameModel(SModelName modelName, EditableSModel currentModelDescriptor) {
+    return canCreateModel(modelName);
   }
 
   /**
