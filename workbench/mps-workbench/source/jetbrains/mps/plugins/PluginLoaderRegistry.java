@@ -597,6 +597,7 @@ public class PluginLoaderRegistry implements Disposable {
                   .collect(toCollection(LinkedHashSet::new));
   }
 
+  // FIXME there's special hack for PluginLoaderRegistry scenario inside SModuleOperations.canSupplyExtensionsForMPS()
   private static boolean isPluginModule(ReloadableModule module) {
     // XXX previous version ignored modules with no explicit SolutionKind, and we got some
     // canSupplyExtensionsForMPS() == true solutions without kind specified (e.g. actions.runtime or
