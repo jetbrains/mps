@@ -106,14 +106,21 @@ public final class FacetRegistry implements CoreComponent {
     if (langReg != null) {
       LanguageRuntime lr = langReg.getLanguage(fn.getNamespace());
       if (lr != null) {
-        IFacetManifest fm = lr.getAspect(MakeAspectDescriptor.class).getManifest();
-        IFacet fct = fm.lookup(fn);
-        if (fct != null) {
-          return fct;
+        MakeAspectDescriptor makeAspect = lr.getAspect(MakeAspectDescriptor.class);
+        if (makeAspect != null) {
+          IFacetManifest fm = makeAspect.getManifest();
+          IFacet fct = fm.lookup(fn);
+          if (fct != null) {
+            return fct;
+          }
+        } else {
+          LOG.info(String.format("Language %s doesn't provide MakeAspectDescriptor for %s", lr.getNamespace(), fn.getName()));
         }
       }
     }
     // fallback to the "old" mechanism
+    // XXX Note, with IFacet.Name not always matching language (e.g. for facets coming from a solution
+    //     like j.m.make.facets), the mechanism is the only one to obtain facet instance
     LOG.debug("facet not found, loading using deprecated mechanism " + fn);
     return MapSequence.fromMap(facetMap).get(fn);
   }
