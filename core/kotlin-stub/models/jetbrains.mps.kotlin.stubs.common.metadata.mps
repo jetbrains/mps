@@ -5180,6 +5180,96 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="3clFb_" id="2Aaqzls3UqJ" role="jymVt">
+      <property role="TrG5h" value="visitSealedSubclass" />
+      <node concept="3Tm1VV" id="2Aaqzls3UqK" role="1B3o_S" />
+      <node concept="3cqZAl" id="2Aaqzls3UqM" role="3clF45" />
+      <node concept="37vLTG" id="2Aaqzls3UqN" role="3clF46">
+        <property role="TrG5h" value="name" />
+        <node concept="17QB3L" id="2Aaqzls8oMM" role="1tU5fm" />
+        <node concept="2AHcQZ" id="2Aaqzls3UqP" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="2Aaqzls3UqQ" role="3clF47">
+        <node concept="3SKdUt" id="4Y_TwufoqwC" role="3cqZAp">
+          <node concept="1PaTwC" id="4Y_TwufoqwD" role="1aUNEU">
+            <node concept="3oM_SD" id="4Y_TwufoqwH" role="1PaTwD">
+              <property role="3oM_SC" value="no-op:" />
+            </node>
+            <node concept="3oM_SD" id="4Y_TwufowLE" role="1PaTwD">
+              <property role="3oM_SC" value="unlike" />
+            </node>
+            <node concept="3oM_SD" id="4Y_TwufowMd" role="1PaTwD">
+              <property role="3oM_SC" value="previous" />
+            </node>
+            <node concept="3oM_SD" id="4Y_TwufowNs" role="1PaTwD">
+              <property role="3oM_SC" value="options," />
+            </node>
+            <node concept="3oM_SD" id="4Y_TwufowNL" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="4Y_TwufowNR" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="4Y_TwufowOe" role="1PaTwD">
+              <property role="3oM_SC" value="only" />
+            </node>
+            <node concept="3oM_SD" id="4Y_TwufowPG" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="4Y_TwufowPP" role="1PaTwD">
+              <property role="3oM_SC" value="pointer" />
+            </node>
+            <node concept="3oM_SD" id="4Y_TwufowQf" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="4Y_TwufowQq" role="1PaTwD">
+              <property role="3oM_SC" value="classes" />
+            </node>
+            <node concept="3oM_SD" id="4Y_TwufowQQ" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="4Y_TwufowRj" role="1PaTwD">
+              <property role="3oM_SC" value="are" />
+            </node>
+            <node concept="3oM_SD" id="4Y_TwufowRx" role="1PaTwD">
+              <property role="3oM_SC" value="compiled," />
+            </node>
+            <node concept="3oM_SD" id="4Y_TwufowS0" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="4Y_TwufowSw" role="1PaTwD">
+              <property role="3oM_SC" value="an" />
+            </node>
+            <node concept="3oM_SD" id="4Y_TwufowT1" role="1PaTwD">
+              <property role="3oM_SC" value="indication" />
+            </node>
+            <node concept="3oM_SD" id="4Y_TwufowTN" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="4Y_TwufowUm" role="1PaTwD">
+              <property role="3oM_SC" value="some" />
+            </node>
+            <node concept="3oM_SD" id="4Y_TwufowUU" role="1PaTwD">
+              <property role="3oM_SC" value="class" />
+            </node>
+            <node concept="3oM_SD" id="4Y_TwufowYb" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="4Y_TwufowYL" role="1PaTwD">
+              <property role="3oM_SC" value="nested" />
+            </node>
+            <node concept="3oM_SD" id="4Y_TwufowZ8" role="1PaTwD">
+              <property role="3oM_SC" value="there" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="2Aaqzls3UqR" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
     <node concept="3clFb_" id="2Aaqzls3Uqz" role="jymVt">
       <property role="TrG5h" value="visitEnumEntry" />
       <node concept="3Tm1VV" id="2Aaqzls3Uq$" role="1B3o_S" />
@@ -5292,31 +5382,6 @@
       </node>
     </node>
     <node concept="2tJIrI" id="2Aaqzls3Xh4" role="jymVt" />
-    <node concept="3clFb_" id="2Aaqzls3UqJ" role="jymVt">
-      <property role="TrG5h" value="visitSealedSubclass" />
-      <node concept="3Tm1VV" id="2Aaqzls3UqK" role="1B3o_S" />
-      <node concept="3cqZAl" id="2Aaqzls3UqM" role="3clF45" />
-      <node concept="37vLTG" id="2Aaqzls3UqN" role="3clF46">
-        <property role="TrG5h" value="name" />
-        <node concept="17QB3L" id="2Aaqzls8oMM" role="1tU5fm" />
-        <node concept="2AHcQZ" id="2Aaqzls3UqP" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-        </node>
-      </node>
-      <node concept="3clFbS" id="2Aaqzls3UqQ" role="3clF47">
-        <node concept="3clFbF" id="6UEu$_UKRwD" role="3cqZAp">
-          <node concept="1rXfSq" id="6UEu$_UKRwC" role="3clFbG">
-            <ref role="37wK5l" node="6UEu$_UHKlB" resolve="addClass" />
-            <node concept="37vLTw" id="6UEu$_UKVK$" role="37wK5m">
-              <ref role="3cqZAo" node="2Aaqzls3UqN" resolve="name" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="2Aaqzls3UqR" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
     <node concept="2tJIrI" id="2Aaqzls3XzL" role="jymVt" />
     <node concept="3clFb_" id="2Aaqzls3UqV" role="jymVt">
       <property role="TrG5h" value="visitInlineClassUnderlyingPropertyName" />
