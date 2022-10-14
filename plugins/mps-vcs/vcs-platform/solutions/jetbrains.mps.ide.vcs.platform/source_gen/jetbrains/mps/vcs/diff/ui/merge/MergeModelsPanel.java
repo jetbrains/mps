@@ -9,7 +9,6 @@ import com.intellij.icons.AllIcons;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.vcs.diff.merge.MergeSession;
-import jetbrains.mps.vcs.diff.merge.MergeSessionState;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.model.SModel;
 import com.intellij.ui.JBSplitter;
@@ -71,8 +70,8 @@ public class MergeModelsPanel extends JPanel {
   private final SRepository myProjectRepository;
   private MergeSession myMergeSession;
   private MergeSession myMetadataMergeSession;
-  private MergeSessionState myInitialState;
-  private MergeSessionState myMetadataInitialState;
+  private MergeSession.MergeSessionFullState myInitialState;
+  private MergeSession.MergeSessionFullState myMetadataInitialState;
   private SNodeId myRootId;
 
   private ISaveMergedModel mySaver = (MergeModelsPanel dialog, SModel resultModel) -> false;
@@ -126,7 +125,7 @@ public class MergeModelsPanel extends JPanel {
         SModel repoMetaModel = MetadataUtil.createMetadataModel(myRepoModel, "metadata_repo", false);
         myMetadataMergeSession = MergeSession.createMergeSession(baseMetaModel, mineMetaModel, repoMetaModel);
         DiffModelUtil.renameModelAndRegister(myMetadataMergeSession.getResultModel(), "metadata_result");
-        myMetadataInitialState = myMetadataMergeSession.getCurrentState();
+        myMetadataInitialState = myMetadataMergeSession.getCurrentFullState();
       });
     }
     myProjectRepository.getModelAccess().runWriteAction(() -> {
@@ -134,7 +133,7 @@ public class MergeModelsPanel extends JPanel {
       DiffModelUtil.renameModelAndRegister(myMineModel, "mine", fixReferences);
       DiffModelUtil.renameModelAndRegister(myRepoModel, "repo", fixReferences);
       DiffModelUtil.renameModelAndRegister(myResultModel, "result", fixReferences);
-      myInitialState = myMergeSession.getCurrentState();
+      myInitialState = myMergeSession.getCurrentFullState();
     });
 
     myMergeSession.installResultModelListener();
@@ -164,10 +163,10 @@ public class MergeModelsPanel extends JPanel {
     myMergeModeIsChanging = true;
 
     new ModelAccessHelper(myProjectRepository).runReadAction(() -> {
-      myMergeSession.restoreState(myInitialState);
+      myMergeSession.restoreFullState(myInitialState);
       myMergeSession = MergeSession.createMergeSession(myBaseModel, myMineModel, myRepoModel, myResultModel, !(trackMovedNodes));
       if (myMetadataMergeSession != null) {
-        myMetadataMergeSession.restoreState(myMetadataInitialState);
+        myMetadataMergeSession.restoreFullState(myMetadataInitialState);
       }
       MergeSession session = (myRootId == null ? myMetadataMergeSession : myMergeSession);
       myMergeRootsPane.setMergeSession(session);
@@ -444,9 +443,9 @@ public class MergeModelsPanel extends JPanel {
   }
 
   public void resetState() {
-    myMergeSession.restoreState(myInitialState);
+    myMergeSession.restoreFullState(myInitialState);
     if (myMetadataMergeSession != null) {
-      myMetadataMergeSession.restoreState(myMetadataInitialState);
+      myMetadataMergeSession.restoreFullState(myMetadataInitialState);
     }
     rebuildLater();
   }

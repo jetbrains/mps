@@ -142,4 +142,14 @@ public class StructChangeSetImpl implements StructChangeSet {
   public SNodeId mapToOldId(SNodeId idNew) {
     return MapSequence.fromMap(myNewToOldMap).get(idNew);
   }
+
+  @NotNull
+  @Override
+  public ChangeSet getChangeSetCopy(boolean withOpposite) {
+    throw new Error("Not implemented");
+  }
+  @Override
+  public void restoreChangeSetByCopy(@NotNull ChangeSet copy, boolean withOpposite) {
+    throw new Error("Not implemented");
+  }
 }

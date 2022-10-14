@@ -7,7 +7,6 @@ import java.beans.PropertyChangeListener;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.vcs.diff.merge.MergeSession;
 import org.jetbrains.mps.openapi.model.SNodeId;
-import jetbrains.mps.vcs.diff.merge.MergeSessionState;
 import jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessage;
 import java.util.List;
 import jetbrains.mps.vcs.diff.ui.common.DiffEditor;
@@ -73,7 +72,7 @@ public class MergeRootsPane implements PropertyChangeListener {
   private Project myProject;
   private MergeSession myMergeSession;
   private SNodeId myRootId;
-  private MergeSessionState myStateToRestore;
+  private MergeSession.MergeSessionFullState myStateToRestore;
   private boolean myDisposed = false;
 
   private ChangeEditorMessage.ConflictChecker myConflictChecker;
@@ -110,7 +109,7 @@ public class MergeRootsPane implements PropertyChangeListener {
     myProject = project;
     myMergeSession = mergeSession;
     myRootId = rootId;
-    myStateToRestore = myMergeSession.getCurrentState();
+    myStateToRestore = myMergeSession.getCurrentFullState();
     myTitles = titles;
     myTitleCustomizers = titleCustomizers;
     myConflictChecker = (ModelChange ch) -> Sequence.fromIterable(myMergeSession.getConflictedWith(ch)).isNotEmpty();
@@ -359,7 +358,7 @@ public class MergeRootsPane implements PropertyChangeListener {
 
   public void setRootId(SNodeId rootId) {
     myRootId = rootId;
-    myStateToRestore = myMergeSession.getCurrentState();
+    myStateToRestore = myMergeSession.getCurrentFullState();
     myMineEditor.editRoot(getRootNodeId(myMergeSession.getMyModel()), myMergeSession.getMyModel());
     myResultEditor.editRoot(getRootNodeId(myMergeSession.getResultModel()), myMergeSession.getResultModel());
     myRepositoryEditor.editRoot(getRootNodeId(myMergeSession.getRepositoryModel()), myMergeSession.getRepositoryModel());
@@ -517,7 +516,7 @@ public class MergeRootsPane implements PropertyChangeListener {
   }
 
   public void restoreState() {
-    myMergeSession.restoreState(myStateToRestore);
+    myMergeSession.restoreFullState(myStateToRestore);
   }
 
   public void dispose() {

@@ -35,6 +35,7 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.vcs.util.MergeStrategy;
 import jetbrains.mps.vcs.diff.ChangeSetImpl;
+import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.persistence.PersistenceVersionAware;
 import jetbrains.mps.smodel.SModelAdapter;
 import jetbrains.mps.smodel.event.SModelEvent;
@@ -356,10 +357,103 @@ public final class MergeSession {
     return change.getChangeSet() == myMineChangeSet;
   }
 
+  @NotNull
+  public MergeSessionFullState getCurrentFullState() {
+    final MergeSessionFullState state = new MergeSessionFullState();
+    state.myResultModel = MergeTemporaryModel.readonlyCloneOf(myResultModel);
+    state.myMineChangeSet = myMineChangeSet.getChangeSetCopy(true);
+    state.myRepositoryChangeSet = myRepositoryChangeSet.getChangeSetCopy(true);
+    state.myConflictingChanges = MapSequence.fromMap(new HashMap<ModelChange, List<ModelChange>>(MapSequence.fromMap(myConflictingChanges).count()));
+    MapSequence.fromMap(myConflictingChanges).visitAll(new IVisitor<IMapping<ModelChange, List<ModelChange>>>() {
+      public void visit(IMapping<ModelChange, List<ModelChange>> it) {
+        MapSequence.fromMap(state.myConflictingChanges).put(it.key(), ListSequence.fromListWithValues(new ArrayList<ModelChange>(), it.value()));
+      }
+    });
+    state.mySymmetricChanges = MapSequence.fromMap(new HashMap<ModelChange, List<ModelChange>>(MapSequence.fromMap(mySymmetricChanges).count()));
+    MapSequence.fromMap(mySymmetricChanges).visitAll(new IVisitor<IMapping<ModelChange, List<ModelChange>>>() {
+      public void visit(IMapping<ModelChange, List<ModelChange>> it) {
+        MapSequence.fromMap(state.mySymmetricChanges).put(it.key(), ListSequence.fromListWithValues(new ArrayList<ModelChange>(), it.value()));
+      }
+    });
+    state.myRootToChanges = MapSequence.fromMap(new HashMap<SNodeId, List<ModelChange>>(MapSequence.fromMap(myRootToChanges).count()));
+    MapSequence.fromMap(myRootToChanges).visitAll(new IVisitor<IMapping<SNodeId, List<ModelChange>>>() {
+      public void visit(IMapping<SNodeId, List<ModelChange>> it) {
+        MapSequence.fromMap(state.myRootToChanges).put(it.key(), ListSequence.fromListWithValues(new ArrayList<ModelChange>(), it.value()));
+      }
+    });
+    state.myNodeToChanges = MapSequence.fromMap(new HashMap<SNodeId, List<ModelChange>>(MapSequence.fromMap(myNodeToChanges).count()));
+    MapSequence.fromMap(myNodeToChanges).visitAll(new IVisitor<IMapping<SNodeId, List<ModelChange>>>() {
+      public void visit(IMapping<SNodeId, List<ModelChange>> it) {
+        MapSequence.fromMap(state.myNodeToChanges).put(it.key(), ListSequence.fromListWithValues(new ArrayList<ModelChange>(), it.value()));
+      }
+    });
+    state.myMetadataChanges = ListSequence.fromListWithValues(new ArrayList<ModelChange>(), myMetadataChanges);
+    state.myResolvedChanges = SetSequence.fromSetWithValues(new HashSet<ModelChange>(), myResolvedChanges);
+    state.myIdReplacementCache = MapSequence.fromMap(new HashMap<SNodeId, SNodeId>(MapSequence.fromMap(myNodeCopier.getState()).count()));
+    MapSequence.fromMap(myNodeCopier.getState()).visitAll(new IVisitor<IMapping<SNodeId, SNodeId>>() {
+      public void visit(IMapping<SNodeId, SNodeId> it) {
+        MapSequence.fromMap(state.myIdReplacementCache).put(it.key(), it.value());
+      }
+    });
+    return state;
+  }
+  public void restoreFullState(@NotNull MergeSessionFullState state) {
+    myResultModel.setSModelInternal(MergeTemporaryModel.readonlyCloneOf(state.myResultModel).getSModel());
+    myMineChangeSet.restoreChangeSetByCopy(state.myMineChangeSet, true);
+    myRepositoryChangeSet.restoreChangeSetByCopy(state.myRepositoryChangeSet, true);
+    MapSequence.fromMap(myConflictingChanges).clear();
+    MapSequence.fromMap(state.myConflictingChanges).visitAll(new IVisitor<IMapping<ModelChange, List<ModelChange>>>() {
+      public void visit(IMapping<ModelChange, List<ModelChange>> it) {
+        MapSequence.fromMap(myConflictingChanges).put(it.key(), ListSequence.fromListWithValues(new ArrayList<ModelChange>(), it.value()));
+      }
+    });
+    MapSequence.fromMap(mySymmetricChanges).clear();
+    MapSequence.fromMap(state.mySymmetricChanges).visitAll(new IVisitor<IMapping<ModelChange, List<ModelChange>>>() {
+      public void visit(IMapping<ModelChange, List<ModelChange>> it) {
+        MapSequence.fromMap(mySymmetricChanges).put(it.key(), ListSequence.fromListWithValues(new ArrayList<ModelChange>(), it.value()));
+      }
+    });
+    MapSequence.fromMap(myRootToChanges).clear();
+    MapSequence.fromMap(state.myRootToChanges).visitAll(new IVisitor<IMapping<SNodeId, List<ModelChange>>>() {
+      public void visit(IMapping<SNodeId, List<ModelChange>> it) {
+        MapSequence.fromMap(myRootToChanges).put(it.key(), ListSequence.fromListWithValues(new ArrayList<ModelChange>(), it.value()));
+      }
+    });
+    MapSequence.fromMap(myNodeToChanges).clear();
+    MapSequence.fromMap(state.myNodeToChanges).visitAll(new IVisitor<IMapping<SNodeId, List<ModelChange>>>() {
+      public void visit(IMapping<SNodeId, List<ModelChange>> it) {
+        MapSequence.fromMap(myNodeToChanges).put(it.key(), ListSequence.fromListWithValues(new ArrayList<ModelChange>(), it.value()));
+      }
+    });
+    ListSequence.fromList(myMetadataChanges).clear();
+    ListSequence.fromList(myMetadataChanges).addSequence(ListSequence.fromList(state.myMetadataChanges));
+    SetSequence.fromSet(myResolvedChanges).clear();
+    SetSequence.fromSet(myResolvedChanges).addSequence(SetSequence.fromSet(state.myResolvedChanges));
+    final Map<SNodeId, SNodeId> idReplacementCache = MapSequence.fromMap(new HashMap<SNodeId, SNodeId>(MapSequence.fromMap(state.myIdReplacementCache).count()));
+    MapSequence.fromMap(state.myIdReplacementCache).visitAll(new IVisitor<IMapping<SNodeId, SNodeId>>() {
+      public void visit(IMapping<SNodeId, SNodeId> it) {
+        MapSequence.fromMap(idReplacementCache).put(it.key(), it.value());
+      }
+    });
+    myNodeCopier.setState(idReplacementCache, myResultModel);
+  }
+
+  /**
+   * Use getCurrentFullState()
+   * 
+   * @deprecated 
+   */
+  @Deprecated
   public MergeSessionState getCurrentState() {
     return new MergeSessionState(myResultModel, myResolvedChanges, myNodeCopier.getState());
   }
 
+  /**
+   * Use restoreFullState()
+   * 
+   * @deprecated 
+   */
+  @Deprecated
   public void restoreState(MergeSessionState state) {
     MergeSessionState stateCopy = new MergeSessionState(state);
     myResultModel.setSModelInternal(stateCopy.myResultModel.getSModel());
@@ -370,11 +464,21 @@ public final class MergeSession {
     myNodeCopier.setState(stateCopy.myIdReplacementCache, myResultModel);
   }
 
+  /**
+   * 
+   * @deprecated 
+   */
+  @Deprecated
   private void restoreHierarchicalChanges() {
     setHierarchicalChangesNotApplied(myMineChangeSet, myResultModel);
     setHierarchicalChangesNotApplied(myRepositoryChangeSet, myResultModel);
   }
 
+  /**
+   * 
+   * @deprecated 
+   */
+  @Deprecated
   private static void setHierarchicalChangesNotApplied(ChangeSet changeSet, final SModel model) {
     ListSequence.fromList(changeSet.getModelChanges()).ofType(HierarchicalNodeGroupChange.class).visitAll(new IVisitor<HierarchicalNodeGroupChange>() {
       public void visit(HierarchicalNodeGroupChange it) {
@@ -516,6 +620,19 @@ public final class MergeSession {
       invalidateDeletedRoot(event);
       invalidateChanges();
     }
+  }
+
+  public static class MergeSessionFullState {
+    private MergeTemporaryModel myResultModel;
+    private ChangeSet myMineChangeSet;
+    private ChangeSet myRepositoryChangeSet;
+    private Map<ModelChange, List<ModelChange>> myConflictingChanges;
+    private Map<ModelChange, List<ModelChange>> mySymmetricChanges;
+    private Map<SNodeId, List<ModelChange>> myRootToChanges;
+    private Map<SNodeId, List<ModelChange>> myNodeToChanges;
+    private List<ModelChange> myMetadataChanges;
+    private Set<ModelChange> myResolvedChanges;
+    private Map<SNodeId, SNodeId> myIdReplacementCache;
   }
   private static <T> T as_bow6nj_a0a2a5a3a95(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);

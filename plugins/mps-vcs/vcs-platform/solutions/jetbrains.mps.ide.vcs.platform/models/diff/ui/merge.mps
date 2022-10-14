@@ -2399,7 +2399,7 @@
       <property role="TrG5h" value="myStateToRestore" />
       <node concept="3Tm6S6" id="2jv$fqwev88" role="1B3o_S" />
       <node concept="3uibUv" id="2jv$fqwev89" role="1tU5fm">
-        <ref role="3uigEE" to="bmv6:3$YpntjF4u2" resolve="MergeSessionState" />
+        <ref role="3uigEE" to="bmv6:2KMWrOXsf9T" resolve="MergeSessionFullState" />
       </node>
     </node>
     <node concept="312cEg" id="2jv$fqwev6W" role="jymVt">
@@ -2697,7 +2697,7 @@
                 <ref role="3cqZAo" node="2jv$fqwev6T" resolve="myMergeSession" />
               </node>
               <node concept="liA8E" id="2jv$fqwev96" role="2OqNvi">
-                <ref role="37wK5l" to="bmv6:3$YpntjF4tl" resolve="getCurrentState" />
+                <ref role="37wK5l" to="bmv6:2KMWrOXoI3m" resolve="getCurrentFullState" />
               </node>
             </node>
             <node concept="37vLTw" id="2BHiRxeuKj4" role="37vLTJ">
@@ -4888,7 +4888,7 @@
           <node concept="37vLTI" id="2jv$fqwevdk" role="3clFbG">
             <node concept="2OqwBi" id="2jv$fqwevdl" role="37vLTx">
               <node concept="liA8E" id="2jv$fqwevdm" role="2OqNvi">
-                <ref role="37wK5l" to="bmv6:3$YpntjF4tl" resolve="getCurrentState" />
+                <ref role="37wK5l" to="bmv6:2KMWrOXoI3m" resolve="getCurrentFullState" />
               </node>
               <node concept="37vLTw" id="2jv$fqwevdn" role="2Oq$k0">
                 <ref role="3cqZAo" node="2jv$fqwev6T" resolve="myMergeSession" />
@@ -6357,7 +6357,7 @@
         <node concept="3clFbF" id="2jv$fqwevnF" role="3cqZAp">
           <node concept="2OqwBi" id="2jv$fqwevnG" role="3clFbG">
             <node concept="liA8E" id="2jv$fqwevnH" role="2OqNvi">
-              <ref role="37wK5l" to="bmv6:3$YpntjF4ty" resolve="restoreState" />
+              <ref role="37wK5l" to="bmv6:2KMWrOXq2tx" resolve="restoreFullState" />
               <node concept="37vLTw" id="2jv$fqwevnI" role="37wK5m">
                 <ref role="3cqZAo" node="2jv$fqwev87" resolve="myStateToRestore" />
               </node>
@@ -6870,14 +6870,14 @@
       <property role="TrG5h" value="myInitialState" />
       <node concept="3Tm6S6" id="2jv$fqwD$oQ" role="1B3o_S" />
       <node concept="3uibUv" id="2jv$fqwD$oR" role="1tU5fm">
-        <ref role="3uigEE" to="bmv6:3$YpntjF4u2" resolve="MergeSessionState" />
+        <ref role="3uigEE" to="bmv6:2KMWrOXsf9T" resolve="MergeSessionFullState" />
       </node>
     </node>
     <node concept="312cEg" id="2jv$fqwD$oS" role="jymVt">
       <property role="TrG5h" value="myMetadataInitialState" />
       <node concept="3Tm6S6" id="2jv$fqwD$oT" role="1B3o_S" />
       <node concept="3uibUv" id="2jv$fqwD$oU" role="1tU5fm">
-        <ref role="3uigEE" to="bmv6:3$YpntjF4u2" resolve="MergeSessionState" />
+        <ref role="3uigEE" to="bmv6:2KMWrOXsf9T" resolve="MergeSessionFullState" />
       </node>
     </node>
     <node concept="312cEg" id="2jv$fqwD$pd" role="jymVt">
@@ -7654,7 +7654,7 @@
                           <ref role="3cqZAo" node="2jv$fqwD$oM" resolve="myMetadataMergeSession" />
                         </node>
                         <node concept="liA8E" id="2jv$fqwD$rr" role="2OqNvi">
-                          <ref role="37wK5l" to="bmv6:3$YpntjF4tl" resolve="getCurrentState" />
+                          <ref role="37wK5l" to="bmv6:2KMWrOXoI3m" resolve="getCurrentFullState" />
                         </node>
                       </node>
                     </node>
@@ -7737,7 +7737,7 @@
                       <ref role="3cqZAo" node="2jv$fqwD$oJ" resolve="myMergeSession" />
                     </node>
                     <node concept="liA8E" id="2jv$fqwD$qF" role="2OqNvi">
-                      <ref role="37wK5l" to="bmv6:3$YpntjF4tl" resolve="getCurrentState" />
+                      <ref role="37wK5l" to="bmv6:2KMWrOXoI3m" resolve="getCurrentFullState" />
                     </node>
                   </node>
                   <node concept="37vLTw" id="2BHiRxeukvE" role="37vLTJ">
@@ -8007,7 +8007,7 @@
                         <ref role="3cqZAo" node="2jv$fqwD$oJ" resolve="myMergeSession" />
                       </node>
                       <node concept="liA8E" id="44EradnLlTi" role="2OqNvi">
-                        <ref role="37wK5l" to="bmv6:3$YpntjF4ty" resolve="restoreState" />
+                        <ref role="37wK5l" to="bmv6:2KMWrOXq2tx" resolve="restoreFullState" />
                         <node concept="37vLTw" id="44EradnLlTj" role="37wK5m">
                           <ref role="3cqZAo" node="2jv$fqwD$oP" resolve="myInitialState" />
                         </node>
@@ -8053,7 +8053,7 @@
                       <node concept="3clFbF" id="44EradnLlTz" role="3cqZAp">
                         <node concept="2OqwBi" id="44EradnLlT$" role="3clFbG">
                           <node concept="liA8E" id="44EradnLlT_" role="2OqNvi">
-                            <ref role="37wK5l" to="bmv6:3$YpntjF4ty" resolve="restoreState" />
+                            <ref role="37wK5l" to="bmv6:2KMWrOXq2tx" resolve="restoreFullState" />
                             <node concept="37vLTw" id="44EradnLlTA" role="37wK5m">
                               <ref role="3cqZAo" node="2jv$fqwD$oS" resolve="myMetadataInitialState" />
                             </node>
@@ -10570,7 +10570,7 @@
               <ref role="3cqZAo" node="2jv$fqwD$oJ" resolve="myMergeSession" />
             </node>
             <node concept="liA8E" id="2jv$fqwD$Dr" role="2OqNvi">
-              <ref role="37wK5l" to="bmv6:3$YpntjF4ty" resolve="restoreState" />
+              <ref role="37wK5l" to="bmv6:2KMWrOXq2tx" resolve="restoreFullState" />
               <node concept="37vLTw" id="2jv$fqwD$Ds" role="37wK5m">
                 <ref role="3cqZAo" node="2jv$fqwD$oP" resolve="myInitialState" />
               </node>
@@ -10588,7 +10588,7 @@
             <node concept="3clFbF" id="2jv$fqwD$Dy" role="3cqZAp">
               <node concept="2OqwBi" id="2jv$fqwD$Dz" role="3clFbG">
                 <node concept="liA8E" id="2jv$fqwD$D$" role="2OqNvi">
-                  <ref role="37wK5l" to="bmv6:3$YpntjF4ty" resolve="restoreState" />
+                  <ref role="37wK5l" to="bmv6:2KMWrOXq2tx" resolve="restoreFullState" />
                   <node concept="37vLTw" id="2jv$fqwD$D_" role="37wK5m">
                     <ref role="3cqZAo" node="2jv$fqwD$oS" resolve="myMetadataInitialState" />
                   </node>

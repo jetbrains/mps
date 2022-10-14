@@ -32,6 +32,8 @@ import jetbrains.mps.vcs.diff.changes.DeleteRootChange;
 import jetbrains.mps.vcs.diff.changes.NodeGroupChange;
 import jetbrains.mps.vcs.diff.changes.NodeIdChange;
 import jetbrains.mps.vcs.diff.changes.HierarchicalNodeGroupChange;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.internal.collections.runtime.IMapping;
 
 @GeneratedClass(node = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)/7082523601896740167", model = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)")
 public class ChangeSetImpl implements ModelChangeSet {
@@ -232,5 +234,38 @@ public class ChangeSetImpl implements ModelChangeSet {
   @Override
   public Iterable<SNodeId> getAffectedRoots() {
     return (ListSequence.fromList(myMetadataChanges).isEmpty() ? MapSequence.fromMap(myRootToChanges).keySet() : SetSequence.fromSet(MapSequence.fromMap(myRootToChanges).keySet()).concat(ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<SNodeId>(), null))));
+  }
+
+  @Override
+  public ChangeSet getChangeSetCopy(boolean withOpposite) {
+    final ChangeSetImpl copy = new ChangeSetImpl(myOldModel, myNewModel);
+    ListSequence.fromList(copy.myModelChanges).addSequence(ListSequence.fromList(myModelChanges));
+    MapSequence.fromMap(myRootToChanges).visitAll(new IVisitor<IMapping<SNodeId, List<ModelChange>>>() {
+      public void visit(IMapping<SNodeId, List<ModelChange>> it) {
+        MapSequence.fromMap(copy.myRootToChanges).put(it.key(), it.value());
+      }
+    });
+    ListSequence.fromList(copy.myMetadataChanges).addSequence(ListSequence.fromList(myMetadataChanges));
+    if (withOpposite && myOppositeChangeSet != null) {
+      copy.myOppositeChangeSet = (ChangeSetImpl) myOppositeChangeSet.getChangeSetCopy(false);
+    }
+    return copy;
+  }
+  @Override
+  public void restoreChangeSetByCopy(@NotNull ChangeSet copy, boolean withOpposite) {
+    ChangeSetImpl copyImpl = (ChangeSetImpl) copy;
+    ListSequence.fromList(myModelChanges).clear();
+    ListSequence.fromList(myModelChanges).addSequence(ListSequence.fromList(copyImpl.myModelChanges));
+    MapSequence.fromMap(myRootToChanges).clear();
+    MapSequence.fromMap(copyImpl.myRootToChanges).visitAll(new IVisitor<IMapping<SNodeId, List<ModelChange>>>() {
+      public void visit(IMapping<SNodeId, List<ModelChange>> it) {
+        MapSequence.fromMap(myRootToChanges).put(it.key(), it.value());
+      }
+    });
+    ListSequence.fromList(myMetadataChanges).clear();
+    ListSequence.fromList(myMetadataChanges).addSequence(ListSequence.fromList(copyImpl.myMetadataChanges));
+    if (withOpposite && copyImpl.myOppositeChangeSet != null) {
+      myOppositeChangeSet.restoreChangeSetByCopy(copyImpl.myOppositeChangeSet, false);
+    }
   }
 }
