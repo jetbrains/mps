@@ -49353,15 +49353,9 @@
           <node concept="398BVA" id="6wLf4lx9D_f" role="25ysHA">
             <ref role="398BVh" node="6IJvZDkyhr7" resolve="projectHome" />
             <node concept="2Ry0Ak" id="6wLf4lx9D_g" role="iGT6I">
-              <property role="2Ry0Am" value="plugins" />
-              <node concept="2Ry0Ak" id="6wLf4lx9D_h" role="2Ry0An">
-                <property role="2Ry0Am" value="mps-core" />
-                <node concept="2Ry0Ak" id="6wLf4lx9D_i" role="2Ry0An">
-                  <property role="2Ry0Am" value="lib" />
-                  <node concept="2Ry0Ak" id="6wLf4lx9D_j" role="2Ry0An">
-                    <property role="2Ry0Am" value="kotlinx-metadata-jvm-0.4.2.jar" />
-                  </node>
-                </node>
+              <property role="2Ry0Am" value="lib" />
+              <node concept="2Ry0Ak" id="6wLf4lx9D_j" role="2Ry0An">
+                <property role="2Ry0Am" value="kotlinx-metadata-jvm-0.4.2.jar" />
               </node>
             </node>
           </node>
@@ -49375,15 +49369,9 @@
           <node concept="398BVA" id="3lXF82mbBh4" role="25ysHA">
             <ref role="398BVh" node="6IJvZDkyhr7" resolve="projectHome" />
             <node concept="2Ry0Ak" id="3lXF82mbBh5" role="iGT6I">
-              <property role="2Ry0Am" value="plugins" />
-              <node concept="2Ry0Ak" id="3lXF82mbBh6" role="2Ry0An">
-                <property role="2Ry0Am" value="mps-core" />
-                <node concept="2Ry0Ak" id="3lXF82mbBh7" role="2Ry0An">
-                  <property role="2Ry0Am" value="lib" />
-                  <node concept="2Ry0Ak" id="3lXF82mbBja" role="2Ry0An">
-                    <property role="2Ry0Am" value="kotlin-compiler-client-embeddable-1.7.0.jar" />
-                  </node>
-                </node>
+              <property role="2Ry0Am" value="lib" />
+              <node concept="2Ry0Ak" id="3lXF82mbBja" role="2Ry0An">
+                <property role="2Ry0Am" value="kotlin-compiler-client-embeddable-1.7.0.jar" />
               </node>
             </node>
           </node>
@@ -50544,15 +50532,9 @@
         <node concept="398BVA" id="342RIYSThyE" role="28jJRO">
           <ref role="398BVh" node="6IJvZDkyhr7" resolve="projectHome" />
           <node concept="2Ry0Ak" id="342RIYSThyF" role="iGT6I">
-            <property role="2Ry0Am" value="plugins" />
-            <node concept="2Ry0Ak" id="342RIYSThyG" role="2Ry0An">
-              <property role="2Ry0Am" value="mps-core" />
-              <node concept="2Ry0Ak" id="342RIYSThyH" role="2Ry0An">
-                <property role="2Ry0Am" value="lib" />
-                <node concept="2Ry0Ak" id="342RIYSThEH" role="2Ry0An">
-                  <property role="2Ry0Am" value="kotlin-compiler-client-embeddable-1.7.0.jar" />
-                </node>
-              </node>
+            <property role="2Ry0Am" value="lib" />
+            <node concept="2Ry0Ak" id="342RIYSThEH" role="2Ry0An">
+              <property role="2Ry0Am" value="kotlin-compiler-client-embeddable-1.7.0.jar" />
             </node>
           </node>
         </node>
@@ -50561,15 +50543,9 @@
         <node concept="398BVA" id="2ZkYPo74Wvh" role="28jJRO">
           <ref role="398BVh" node="6IJvZDkyhr7" resolve="projectHome" />
           <node concept="2Ry0Ak" id="2ZkYPo74Wvi" role="iGT6I">
-            <property role="2Ry0Am" value="plugins" />
-            <node concept="2Ry0Ak" id="2ZkYPo74Wvj" role="2Ry0An">
-              <property role="2Ry0Am" value="mps-core" />
-              <node concept="2Ry0Ak" id="2ZkYPo74Wvk" role="2Ry0An">
-                <property role="2Ry0Am" value="lib" />
-                <node concept="2Ry0Ak" id="2ZkYPo74Wvl" role="2Ry0An">
-                  <property role="2Ry0Am" value="kotlinx-metadata-jvm-0.4.2.jar" />
-                </node>
-              </node>
+            <property role="2Ry0Am" value="lib" />
+            <node concept="2Ry0Ak" id="2ZkYPo74Wvl" role="2Ry0An">
+              <property role="2Ry0Am" value="kotlinx-metadata-jvm-0.4.2.jar" />
             </node>
           </node>
         </node>

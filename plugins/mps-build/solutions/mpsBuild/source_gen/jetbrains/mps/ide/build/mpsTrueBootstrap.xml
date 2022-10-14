@@ -65,11 +65,11 @@
   </path>
   
   <path id="path.java.library.kotlin-metadata">
-    <fileset file="${projectHome}/plugins/mps-core/lib/kotlinx-metadata-jvm-0.4.2.jar" />
+    <fileset file="${projectHome}/lib/kotlinx-metadata-jvm-0.4.2.jar" />
   </path>
   
   <path id="path.java.library.kotlin-compiler-client-embeddable">
-    <fileset file="${projectHome}/plugins/mps-core/lib/kotlin-compiler-client-embeddable-1.7.0.jar" />
+    <fileset file="${projectHome}/lib/kotlin-compiler-client-embeddable-1.7.0.jar" />
   </path>
   
   <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" />
@@ -132,10 +132,10 @@
       <fileset dir="${build.tmp}/java/out/mps-tool-convertModels" />
     </jar>
     <copy todir="${build.layout}">
-      <fileset file="${projectHome}/plugins/mps-core/lib/kotlin-compiler-client-embeddable-1.7.0.jar" />
+      <fileset file="${projectHome}/lib/kotlin-compiler-client-embeddable-1.7.0.jar" />
     </copy>
     <copy todir="${build.layout}">
-      <fileset file="${projectHome}/plugins/mps-core/lib/kotlinx-metadata-jvm-0.4.2.jar" />
+      <fileset file="${projectHome}/lib/kotlinx-metadata-jvm-0.4.2.jar" />
     </copy>
     <mkdir dir="${build.layout}/to-be-imported" />
     <jar destfile="${build.layout}/to-be-imported/core-components.jar" duplicate="preserve">

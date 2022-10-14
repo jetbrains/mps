@@ -44,7 +44,7 @@
     <import index="hcm8" ref="r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)" />
     <import index="f1as" ref="6944825c-ddc2-4099-8cc7-5e6dbbf7f0be/java:kotlinx.metadata.internal.protobuf(jetbrains.mps.kotlin.stubs/)" />
     <import index="nfiy" ref="6944825c-ddc2-4099-8cc7-5e6dbbf7f0be/java:kotlinx.metadata.impl.extensions(jetbrains.mps.kotlin.stubs/)" />
-    <import index="x2yc" ref="6944825c-ddc2-4099-8cc7-5e6dbbf7f0be/java:kotlin.jvm(jetbrains.mps.kotlin.stubs/)" />
+    <import index="x2yc" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:kotlin.jvm(MPS.IDEA/)" />
     <import index="w827" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.openapi(MPS.Core/)" implicit="true" />
     <import index="hez" ref="r:b038209d-51a9-4919-b6e5-4fafce96fa00(jetbrains.mps.kotlin.behavior)" implicit="true" />
   </imports>
@@ -479,6 +479,10 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+      <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7">
+        <property id="8575328350543493365" name="message" index="huDt6" />
+        <property id="2423417345669755629" name="filter" index="1eyWvh" />
       </concept>
       <concept id="709746936026466394" name="jetbrains.mps.lang.core.structure.ChildAttribute" flags="ng" index="3VBwX9">
         <property id="709746936026609031" name="linkId" index="3V$3ak" />
@@ -12063,14 +12067,18 @@
         <node concept="1pGfFk" id="49UfAr1DcoW" role="2ShVmc">
           <property role="373rjd" value="true" />
           <ref role="37wK5l" to="z352:~KmExtensionType.&lt;init&gt;(kotlin.reflect.KClass)" resolve="KmExtensionType" />
-          <node concept="2YIFZM" id="3mCKIhpkCTP" role="37wK5m">
+          <node concept="2YIFZM" id="4G6sgCc8fIq" role="37wK5m">
             <ref role="37wK5l" to="x2yc:~JvmClassMappingKt.getKotlinClass(java.lang.Class)" resolve="getKotlinClass" />
             <ref role="1Pybhc" to="x2yc:~JvmClassMappingKt" resolve="JvmClassMappingKt" />
-            <node concept="3VsKOn" id="3mCKIhpkCTQ" role="37wK5m">
+            <node concept="3VsKOn" id="4G6sgCc8fIr" role="37wK5m">
               <ref role="3VsUkX" node="2bJGON6Qcs0" resolve="AnnotationVisitor" />
             </node>
           </node>
         </node>
+      </node>
+      <node concept="15s5l7" id="4G6sgCc8B0z" role="lGtFl">
+        <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;" />
+        <property role="huDt6" value="all typesystem messages" />
       </node>
     </node>
     <node concept="2tJIrI" id="49UfAr1DaPC" role="jymVt" />
