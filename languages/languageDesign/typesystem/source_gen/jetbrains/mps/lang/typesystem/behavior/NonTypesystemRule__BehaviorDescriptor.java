@@ -27,6 +27,7 @@ import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
+import java.util.Collections;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -63,11 +64,13 @@ public final class NonTypesystemRule__BehaviorDescriptor extends BaseBHDescripto
     return ListSequence.fromList(allSuperConcepts).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode superConcept) {
         Iterable<SModel> models = SNodeOperations.getModel(superConcept).getModule().getModels();
-        return SNodeOperations.ofConcept(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspects_id4G9PD8$NvPM.invoke(superConcept, Sequence.fromIterable(models).where(new IWhereFilter<SModel>() {
+        SModel typesystemModel = Sequence.fromIterable(models).where(new IWhereFilter<SModel>() {
           public boolean accept(SModel it) {
             return SModuleOperations.isAspect(it, "typesystem");
           }
-        }).first()), CONCEPTS.NonTypesystemRule$um);
+        }).first();
+        // typesystem aspect model is not mandatory for a language!
+        return (typesystemModel != null ? SNodeOperations.ofConcept(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspects_id4G9PD8$NvPM.invoke(superConcept, typesystemModel), CONCEPTS.NonTypesystemRule$um) : Sequence.fromIterable(Collections.<SNode>emptyList()));
       }
     });
   }
