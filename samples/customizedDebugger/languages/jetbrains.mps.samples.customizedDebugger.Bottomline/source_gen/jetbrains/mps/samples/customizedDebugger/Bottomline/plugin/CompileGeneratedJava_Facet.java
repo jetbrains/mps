@@ -45,7 +45,7 @@ public class CompileGeneratedJava_Facet extends IFacet.Stub {
     return Sequence.fromArray(new IFacet.Name[]{new IFacet.Name("jetbrains.mps.lang.resources.Binaries")});
   }
   public Iterable<IFacet.Name> required() {
-    return Sequence.fromArray(new IFacet.Name[]{new IFacet.Name("jetbrains.mps.lang.core.TextGen"), new IFacet.Name("jetbrains.mps.make.facets.Make")});
+    return Sequence.fromArray(new IFacet.Name[]{new IFacet.Name("jetbrains.mps.make.facets.TextGen"), new IFacet.Name("jetbrains.mps.make.facets.Make")});
   }
   public Iterable<IFacet.Name> extended() {
     return null;
@@ -125,7 +125,7 @@ public class CompileGeneratedJava_Facet extends IFacet.Stub {
       return null;
     }
     public Iterable<ITarget.Name> after() {
-      return Sequence.fromArray(new ITarget.Name[]{new ITarget.Name("jetbrains.mps.lang.core.TextGen.textGen"), new ITarget.Name("jetbrains.mps.lang.resources.Binaries.copyBinaries")});
+      return Sequence.fromArray(new ITarget.Name[]{new ITarget.Name("jetbrains.mps.make.facets.TextGen.textGen"), new ITarget.Name("jetbrains.mps.lang.resources.Binaries.copyBinaries")});
     }
     public Iterable<ITarget.Name> notBefore() {
       return null;

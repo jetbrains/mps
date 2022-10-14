@@ -17,8 +17,6 @@ import jetbrains.mps.openapi.intentions.IntentionAspectDescriptor;
 import jetbrains.mps.lang.core.intentions.IntentionsDescriptor;
 import jetbrains.mps.lang.migration.runtime.base.MigrationAspectDescriptor;
 import jetbrains.mps.lang.core.migration.MigrationDescriptor;
-import jetbrains.mps.smodel.runtime.MakeAspectDescriptor;
-import jetbrains.mps.lang.core.plugin.FacetAspectDescriptor;
 import jetbrains.mps.refactoring.runtime.RefactoringAspect;
 import jetbrains.mps.lang.core.refactorings.RefactoringAspectDescriptor;
 import jetbrains.mps.lang.script.runtime.ScriptAspectDescriptor;
@@ -75,9 +73,6 @@ public class Language extends LanguageRuntime {
     }
     if (aspectClass == MigrationAspectDescriptor.class) {
       return aspectClass.cast(new MigrationDescriptor());
-    }
-    if (aspectClass == MakeAspectDescriptor.class) {
-      return aspectClass.cast(new FacetAspectDescriptor());
     }
     if (aspectClass == RefactoringAspect.class) {
       return aspectClass.cast(new RefactoringAspectDescriptor());

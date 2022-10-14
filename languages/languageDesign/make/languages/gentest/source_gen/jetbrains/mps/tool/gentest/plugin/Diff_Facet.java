@@ -50,7 +50,7 @@ public class Diff_Facet extends IFacet.Stub {
     return null;
   }
   public Iterable<IFacet.Name> required() {
-    return Sequence.fromArray(new IFacet.Name[]{new IFacet.Name("jetbrains.mps.lang.core.TextGen"), new IFacet.Name("jetbrains.mps.make.facets.Make")});
+    return Sequence.fromArray(new IFacet.Name[]{new IFacet.Name("jetbrains.mps.make.facets.TextGen"), new IFacet.Name("jetbrains.mps.make.facets.Make")});
   }
   public Iterable<IFacet.Name> extended() {
     return null;

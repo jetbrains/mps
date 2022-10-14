@@ -54,7 +54,7 @@ public class Makeup_Facet extends IFacet.Stub {
     return null;
   }
   public Iterable<IFacet.Name> required() {
-    return Sequence.fromArray(new IFacet.Name[]{new IFacet.Name("jetbrains.mps.lang.core.TextGen")});
+    return Sequence.fromArray(new IFacet.Name[]{new IFacet.Name("jetbrains.mps.make.facets.TextGen")});
   }
   public Iterable<IFacet.Name> extended() {
     return null;
@@ -160,7 +160,7 @@ public class Makeup_Facet extends IFacet.Stub {
       return null;
     }
     public Iterable<ITarget.Name> after() {
-      return Sequence.fromArray(new ITarget.Name[]{new ITarget.Name("jetbrains.mps.lang.core.TextGen.textGen")});
+      return Sequence.fromArray(new ITarget.Name[]{new ITarget.Name("jetbrains.mps.make.facets.TextGen.textGen")});
     }
     public Iterable<ITarget.Name> notBefore() {
       return null;
