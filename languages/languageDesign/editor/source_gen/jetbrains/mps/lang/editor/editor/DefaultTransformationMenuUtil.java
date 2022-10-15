@@ -8,7 +8,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
-import jetbrains.mps.smodel.LanguageAspect;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.editor.behavior.IMenu_Concept__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -25,7 +25,7 @@ public class DefaultTransformationMenuUtil {
   }
 
   private static SNode findDefaultMenu(@NotNull SNode concept, SAbstractConcept menuConcept) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspectCollection_id1n18fON7w20.invoke(concept, LanguageAspect.EDITOR), SNodeOperations.asSConcept(menuConcept))).findFirst(new IWhereFilter<SNode>() {
+    return Sequence.fromIterable(SNodeOperations.ofConcept(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspects_id4G9PD8$NvPM.invoke(concept, SModuleOperations.getAspect(SNodeOperations.getModel(concept).getModule(), "editor")), SNodeOperations.asSConcept(menuConcept))).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return (boolean) IMenu_Concept__BehaviorDescriptor.isDefault_id5N_GIFFh1P5.invoke(it);
       }

@@ -29,12 +29,12 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kernel.language.ConceptAspectsHelper;
 import jetbrains.mps.smodel.LanguageAspect;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.editor.runtime.cells.CellIdManager;
@@ -162,7 +162,7 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
 
           @Override
           public boolean canExecute(@NotNull String pattern) {
-            if (ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspectCollection_id1n18fON7w20.invoke(_context.getNode(), LanguageAspect.EDITOR)).any(new IWhereFilter<SNode>() {
+            if (Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspects_id4G9PD8$NvPM.invoke(_context.getNode(), SModuleOperations.getAspect(SNodeOperations.getModel(_context.getNode()).getModule(), "editor"))).any(new IWhereFilter<SNode>() {
               public boolean accept(SNode a) {
                 return SNodeOperations.isInstanceOf(a, CONCEPTS.ConceptEditorDeclaration$BH);
               }
@@ -175,7 +175,7 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
               // concept has no own features -> looking for an editor defined for structurally-equal super-concept
               if (ListSequence.fromList(new ConceptDeclarationAssistantUtil(_context.getNode()).getStructurallyEqualSuperConcepts()).any(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
-                  return ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspectCollection_id1n18fON7w20.invoke(it, LanguageAspect.EDITOR)).any(new IWhereFilter<SNode>() {
+                  return Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspects_id4G9PD8$NvPM.invoke(it, SModuleOperations.getAspect(SNodeOperations.getModel(it).getModule(), "editor"))).any(new IWhereFilter<SNode>() {
                     public boolean accept(SNode a) {
                       return SNodeOperations.isInstanceOf(a, CONCEPTS.ConceptEditorDeclaration$BH);
                     }
@@ -194,7 +194,7 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
                 }
               }).any(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
-                  return ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspectCollection_id1n18fON7w20.invoke(it, LanguageAspect.EDITOR)).any(new IWhereFilter<SNode>() {
+                  return Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspects_id4G9PD8$NvPM.invoke(it, SModuleOperations.getAspect(SNodeOperations.getModel(it).getModule(), "editor"))).any(new IWhereFilter<SNode>() {
                     public boolean accept(SNode a) {
                       return SNodeOperations.isInstanceOf(a, CONCEPTS.ConceptEditorDeclaration$BH);
                     }
@@ -266,7 +266,7 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
             if (ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.propertyDeclaration$YUgg)).isNotEmpty() || ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.linkDeclaration$YU1f)).isNotEmpty()) {
               return false;
             }
-            if (ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspectCollection_id1n18fON7w20.invoke(_context.getNode(), LanguageAspect.EDITOR)).any(new IWhereFilter<SNode>() {
+            if (Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspects_id4G9PD8$NvPM.invoke(_context.getNode(), SModuleOperations.getAspect(SNodeOperations.getModel(_context.getNode()).getModule(), "editor"))).any(new IWhereFilter<SNode>() {
               public boolean accept(SNode a) {
                 return SNodeOperations.isInstanceOf(a, CONCEPTS.ConceptEditorDeclaration$BH);
               }
@@ -277,9 +277,9 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
 
             List<SNode> superConcepts = new ConceptDeclarationAssistantUtil(_context.getNode()).getStructurallyEqualSuperConcepts();
             return ListSequence.fromList(superConcepts).isNotEmpty() && ListSequence.fromList(superConcepts).all(new IWhereFilter<SNode>() {
-              public boolean accept(SNode superCocept) {
-                List<SNode> aspects = AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspectCollection_id1n18fON7w20.invoke(superCocept, LanguageAspect.EDITOR);
-                return ListSequence.fromList(aspects).all(new IWhereFilter<SNode>() {
+              public boolean accept(SNode superConcept) {
+                Iterable<SNode> aspects = AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspects_id4G9PD8$NvPM.invoke(superConcept, SModuleOperations.getAspect(SNodeOperations.getModel(superConcept).getModule(), "editor"));
+                return Sequence.fromIterable(aspects).all(new IWhereFilter<SNode>() {
                   public boolean accept(SNode aspect) {
                     return !(SNodeOperations.isInstanceOf(aspect, CONCEPTS.ConceptEditorDeclaration$BH));
                   }
@@ -344,15 +344,11 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
         public boolean canExecute(@NotNull String pattern) {
           // Suggesting to make the concept rootable if:
           // 1. Concept has no super-concepts
-          // 2. There is no other ceoncepts in this model with the containment link to this concept
+          // 2. There are no other concepts in this model with the containment link to this concept
           if (SPropertyOperations.getBoolean(_context.getNode(), PROPS.rootable$_9pz) || SPropertyOperations.getBoolean(_context.getNode(), PROPS.abstract$ibpT)) {
             return false;
           }
-          return ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(_context.getNode()), CONCEPTS.AbstractConceptDeclaration$KA)).translate(new ITranslator2<SNode, SNode>() {
-            public Iterable<SNode> translate(SNode it) {
-              return SLinkOperations.getChildren(it, LINKS.linkDeclaration$YU1f);
-            }
-          }).where(new IWhereFilter<SNode>() {
+          return Sequence.fromIterable(SLinkOperations.collectMany(SModelOperations.roots(SNodeOperations.getModel(_context.getNode()), CONCEPTS.AbstractConceptDeclaration$KA), LINKS.linkDeclaration$YU1f)).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
               return SLinkOperations.getTarget(it, LINKS.target$m40F) != null && SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b9L);
             }

@@ -14,9 +14,10 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
-import jetbrains.mps.smodel.LanguageAspect;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -43,13 +44,7 @@ public final class ConceptEditorDeclaration__BehaviorDescriptor extends BaseBHDe
     SLinkOperations.setTarget(__thisNode__, LINKS.conceptDeclaration$HJmJ, baseConcept);
   }
   /*package*/ static boolean isApplicable_id6NcFj35FbEV(@NotNull SNode __thisNode__, SNode candidate) {
-    List<SNode> createdEditors = AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspectCollection_id1n18fON7w20.invoke(candidate, LanguageAspect.EDITOR);
-    for (SNode createdEditor : createdEditors) {
-      if (SNodeOperations.isInstanceOf(createdEditor, CONCEPTS.ConceptEditorDeclaration$BH)) {
-        return false;
-      }
-    }
-    return true;
+    return Sequence.fromIterable(SNodeOperations.ofConcept(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspects_id4G9PD8$NvPM.invoke(candidate, SModuleOperations.getAspect(SNodeOperations.getModel(candidate).getModule(), "editor")), CONCEPTS.ConceptEditorDeclaration$BH)).isEmpty();
   }
   /*package*/ static void createDefaultEditor_id2$SWsiCt8Y$(@NotNull SNode __thisNode__, boolean multiline) {
     if (multiline) {

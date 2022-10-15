@@ -15,18 +15,19 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Queue;
 import jetbrains.mps.internal.collections.runtime.QueueSequence;
 import java.util.LinkedList;
-import java.util.List;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
-import jetbrains.mps.smodel.LanguageAspect;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.kernel.language.ConceptAspectsHelper;
+import jetbrains.mps.smodel.LanguageAspect;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -57,12 +58,8 @@ public class CreateDefaultEditor_Action extends BaseAction {
     QueueSequence.fromQueue(toCheck).addLastElement(conceptDeclaration);
     while (QueueSequence.fromQueue(toCheck).isNotEmpty()) {
       SNode acd = QueueSequence.fromQueue(toCheck).removeFirstElement();
-      List<SNode> aspects = ((List<SNode>) BHReflection.invoke0(acd, CONCEPTS.AbstractConceptDeclaration$KA, SMethodIdV2.create("findConceptAspectCollection", 1567570417158062208L, 0x44a456bea0df1cf0L), LanguageAspect.EDITOR));
-      if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(acd), CONCEPTS.BaseConcept$gP)) && ListSequence.fromList(aspects).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode a) {
-          return SNodeOperations.isInstanceOf(a, CONCEPTS.ConceptEditorDeclaration$BH);
-        }
-      })) {
+      Iterable<SNode> aspects = ((Iterable<SNode>) BHReflection.invoke0(acd, CONCEPTS.AbstractConceptDeclaration$KA, SMethodIdV2.create("findConceptAspects", 5407088750806039922L, 0x44a456bea0df1cf0L), SModuleOperations.getAspect(SNodeOperations.getModel(acd).getModule(), "editor")));
+      if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(acd), CONCEPTS.BaseConcept$gP)) && Sequence.fromIterable(SNodeOperations.ofConcept(aspects, CONCEPTS.ConceptEditorDeclaration$BH)).isNotEmpty()) {
         return false;
       }
       QueueSequence.fromQueue(toCheck).addSequence(ListSequence.fromList(((List<SNode>) BHReflection.invoke0(acd, CONCEPTS.AbstractConceptDeclaration$KA, SMethodIdV2.create("getImmediateSuperconcepts", 1222430305282L, 0x44a456bea0df1cf0L)))));
