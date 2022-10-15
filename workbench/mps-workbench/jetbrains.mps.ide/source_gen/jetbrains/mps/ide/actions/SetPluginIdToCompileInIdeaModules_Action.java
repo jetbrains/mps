@@ -12,7 +12,7 @@ import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.project.SModuleOperations;
 import com.intellij.ide.plugins.PluginManagerCore;
 import jetbrains.mps.classloading.RootClassloaderLookup;
 import com.intellij.ide.plugins.cl.PluginClassLoader;
@@ -53,7 +53,7 @@ public class SetPluginIdToCompileInIdeaModules_Action extends BaseAction {
         continue;
       }
 
-      if (module.getFacet(JavaModuleFacet.class) == null || module.getFacet(JavaModuleFacet.class).isCompileInMps()) {
+      if (!(SModuleOperations.isJavaModuleCompiledExternally(module))) {
         continue;
       }
 

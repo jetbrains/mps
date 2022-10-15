@@ -37585,40 +37585,17 @@
             <node concept="3clFbJ" id="660$8$yyufM" role="3cqZAp">
               <property role="TyiWK" value="true" />
               <property role="TyiWL" value="false" />
-              <node concept="22lmx$" id="660$8$yyufQ" role="3clFbw">
-                <node concept="3clFbC" id="660$8$yyufT" role="3uHU7B">
-                  <node concept="2OqwBi" id="660$8$yyufU" role="3uHU7B">
-                    <node concept="37vLTw" id="660$8$yyufW" role="2Oq$k0">
-                      <ref role="3cqZAo" node="5ACi1uVdoSe" resolve="module" />
-                    </node>
-                    <node concept="liA8E" id="660$8$yyufX" role="2OqNvi">
-                      <ref role="37wK5l" to="lui2:~SModule.getFacet(java.lang.Class)" resolve="getFacet" />
-                      <node concept="3VsKOn" id="660$8$yyug8" role="37wK5m">
-                        <ref role="3VsUkX" to="b0pz:~JavaModuleFacet" resolve="JavaModuleFacet" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="10Nm6u" id="660$8$yyug9" role="3uHU7w" />
-                </node>
-                <node concept="2OqwBi" id="660$8$yyuga" role="3uHU7w">
-                  <node concept="2OqwBi" id="660$8$yyugb" role="2Oq$k0">
-                    <node concept="37vLTw" id="660$8$yyugd" role="2Oq$k0">
-                      <ref role="3cqZAo" node="5ACi1uVdoSe" resolve="module" />
-                    </node>
-                    <node concept="liA8E" id="660$8$yyuge" role="2OqNvi">
-                      <ref role="37wK5l" to="lui2:~SModule.getFacet(java.lang.Class)" resolve="getFacet" />
-                      <node concept="3VsKOn" id="660$8$yyugf" role="37wK5m">
-                        <ref role="3VsUkX" to="b0pz:~JavaModuleFacet" resolve="JavaModuleFacet" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="660$8$yyugg" role="2OqNvi">
-                    <ref role="37wK5l" to="b0pz:~JavaModuleFacet.isCompileInMps()" resolve="isCompileInMps" />
-                  </node>
-                </node>
-              </node>
               <node concept="3clFbS" id="660$8$yyugi" role="3clFbx">
                 <node concept="3N13vt" id="660$8$yyvjf" role="3cqZAp" />
+              </node>
+              <node concept="3fqX7Q" id="F6gkAZbjfx" role="3clFbw">
+                <node concept="2YIFZM" id="F6gkAZbjhM" role="3fr31v">
+                  <ref role="37wK5l" to="z1c3:~SModuleOperations.isJavaModuleCompiledExternally(org.jetbrains.mps.openapi.module.SModule)" resolve="isJavaModuleCompiledExternally" />
+                  <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
+                  <node concept="37vLTw" id="F6gkAZbjvp" role="37wK5m">
+                    <ref role="3cqZAo" node="5ACi1uVdoSe" resolve="module" />
+                  </node>
+                </node>
               </node>
             </node>
             <node concept="3clFbH" id="660$8$yyrBB" role="3cqZAp" />

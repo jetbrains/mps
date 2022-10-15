@@ -64,10 +64,6 @@
       </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
-      <concept id="1070534934090" name="jetbrains.mps.baseLanguage.structure.CastExpression" flags="nn" index="10QFUN">
-        <child id="1070534934091" name="type" index="10QFUM" />
-        <child id="1070534934092" name="expression" index="10QFUP" />
-      </concept>
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu" />
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <child id="1068431790190" name="initializer" index="33vP2m" />
@@ -145,13 +141,7 @@
         <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
-      <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
-        <reference id="1116615189566" name="classifier" index="3VsUkX" />
-      </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
-    </language>
-    <language id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots">
-      <concept id="4079382982702596667" name="jetbrains.mps.baseLanguage.checkedDots.structure.CheckedDotExpression" flags="nn" index="2EnYce" />
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
       <concept id="1199542442495" name="jetbrains.mps.baseLanguage.closures.structure.FunctionType" flags="in" index="1ajhzC">
@@ -2346,22 +2336,6 @@
           <node concept="3cpWs6" id="29Zn1T7WDkO" role="3cqZAp" />
         </node>
       </node>
-      <node concept="3cpWs8" id="15xzdwHyd$H" role="3cqZAp">
-        <node concept="3cpWsn" id="15xzdwHyd$I" role="3cpWs9">
-          <property role="TrG5h" value="solution" />
-          <node concept="3uibUv" id="15xzdwHyd$J" role="1tU5fm">
-            <ref role="3uigEE" to="z1c3:~Solution" resolve="Solution" />
-          </node>
-          <node concept="10QFUN" id="15xzdwHyd$K" role="33vP2m">
-            <node concept="37vLTw" id="15xzdwHyd$L" role="10QFUP">
-              <ref role="3cqZAo" node="15xzdwHyd$v" resolve="module" />
-            </node>
-            <node concept="3uibUv" id="15xzdwHyd$M" role="10QFUM">
-              <ref role="3uigEE" to="z1c3:~Solution" resolve="Solution" />
-            </node>
-          </node>
-        </node>
-      </node>
       <node concept="3clFbJ" id="15xzdwHyZOt" role="3cqZAp">
         <node concept="3clFbS" id="15xzdwHyZOv" role="3clFbx">
           <node concept="a7r0C" id="15xzdwHz09C" role="3cqZAp">
@@ -2382,20 +2356,11 @@
               <ref role="3TsBF5" to="tp4k:5xxKcMGfQZ8" resolve="isPluginXmlGroup" />
             </node>
           </node>
-          <node concept="2EnYce" id="15xzdwHysGt" role="3uHU7B">
-            <node concept="2OqwBi" id="15xzdwHysGu" role="2Oq$k0">
-              <node concept="37vLTw" id="15xzdwHysGv" role="2Oq$k0">
-                <ref role="3cqZAo" node="15xzdwHyd$I" resolve="solution" />
-              </node>
-              <node concept="liA8E" id="15xzdwHysGw" role="2OqNvi">
-                <ref role="37wK5l" to="z1c3:~AbstractModule.getFacet(java.lang.Class)" resolve="getFacet" />
-                <node concept="3VsKOn" id="15xzdwHysGx" role="37wK5m">
-                  <ref role="3VsUkX" to="b0pz:~JavaModuleFacet" resolve="JavaModuleFacet" />
-                </node>
-              </node>
-            </node>
-            <node concept="liA8E" id="15xzdwHysGy" role="2OqNvi">
-              <ref role="37wK5l" to="b0pz:~JavaModuleFacet.isCompileInMps()" resolve="isCompileInMps" />
+          <node concept="2YIFZM" id="2lBeYkt_it9" role="3uHU7B">
+            <ref role="37wK5l" to="z1c3:~SModuleOperations.isCompileInMps(org.jetbrains.mps.openapi.module.SModule)" resolve="isCompileInMps" />
+            <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
+            <node concept="37vLTw" id="2lBeYkt_mHq" role="37wK5m">
+              <ref role="3cqZAo" node="15xzdwHyd$v" resolve="module" />
             </node>
           </node>
         </node>

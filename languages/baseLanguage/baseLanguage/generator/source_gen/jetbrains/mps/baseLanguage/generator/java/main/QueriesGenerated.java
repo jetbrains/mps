@@ -11,7 +11,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.project.SModuleOperations;
 import java.util.Collection;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
@@ -71,8 +71,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean rule_Condition_0_3(final BaseMappingRuleContext _context) {
     SModule originalModule = _context.getOriginalInputModel().getModule();
-    JavaModuleFacet javaFacet = originalModule.getFacet(JavaModuleFacet.class);
-    if (javaFacet == null || javaFacet.isCompileInMps()) {
+    if (!(SModuleOperations.isJavaModuleCompiledExternally(originalModule))) {
       return false;
     }
     Collection<SModule> visibleModules = new GlobalModuleDependenciesManager(originalModule).getModules(GlobalModuleDependenciesManager.Deptype.COMPILE);

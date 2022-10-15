@@ -56,14 +56,31 @@ public class SModuleOperations {
     }
   }
 
+  /**
+   * There's {@code JavaModuleFacet} and it demands compiling of the module with MPS
+   * AKA {@code isJavaModuleCompiledWithMPS()}, as opposed to {@link #isJavaModuleCompiledExternally(SModule)}
+   * <p>
+   *   {@code !isJavaModuleCompiledWithMPS()} is equivalent to {@code facet == null || !facet.isCompileInMPS()}
+   * </p>
+   *
+   */
   public static boolean isCompileInMps(SModule module) {
     JavaModuleFacet facet = module.getFacet(JavaModuleFacet.class);
     return facet != null && facet.isCompileInMps();
   }
 
   /**
+   * There's {@code JavaModuleFacet} and it demands NOT TO compile the module with MPS
+   * {@code !isJavaModuleCompiledExternally()} is equivalent to {@code facet == null || facet.isCompileInMPS()}
+   */
+  public static boolean isJavaModuleCompiledExternally(SModule module) {
+    JavaModuleFacet facet = module.getFacet(JavaModuleFacet.class);
+    return facet != null && !facet.isCompileInMps();
+  }
+
+  /**
    * @param module non-null
-   * @return true iff module has java facet, doesn't require MPS compilation and _expilictly_ demands external compilation with IDEA
+   * @return true iff module has java facet, doesn't require MPS compilation and _explicitly_ demands external compilation with IDEA
    */
   public static boolean isCompileInIdea(SModule module) {
     JavaModuleFacet facet = module.getFacet(JavaModuleFacet.class);

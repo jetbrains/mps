@@ -1099,59 +1099,48 @@
     <file name="check_ActionGroupDeclaration_NonTypesystemRule.java">
       <node id="1252437031490476318" at="26,118,27,65" concept="6" />
       <node id="2485806804457657652" at="28,40,29,13" concept="7" />
-      <node id="1252437031490476333" at="30,5,31,42" concept="6" />
-      <node id="1252437031490683496" at="33,7,34,66" concept="6" />
-      <node id="1252437031490683496" at="34,66,35,303" concept="6" />
-      <node id="1252437031490516217" at="39,50,40,46" concept="7" />
-      <node id="1252437031490516217" at="42,68,43,102" concept="7" />
-      <node id="1252437031490516217" at="45,30,46,17" concept="7" />
-      <node id="1252437031490538269" at="49,36,50,48" concept="7" />
-      <node id="1252437031490538269" at="51,5,52,17" concept="7" />
-      <node id="1252437031490516217" at="56,0,57,0" concept="10" trace="isPluginXmlGroup$KLjg" />
-      <node id="1252437031490516217" at="60,0,61,0" concept="10" trace="ActionGroupDeclaration$VO" />
+      <node id="1252437031490683496" at="32,7,33,66" concept="6" />
+      <node id="1252437031490683496" at="33,66,34,303" concept="6" />
+      <node id="1252437031490516217" at="38,50,39,46" concept="7" />
+      <node id="1252437031490516217" at="41,68,42,102" concept="7" />
+      <node id="1252437031490516217" at="44,30,45,17" concept="7" />
+      <node id="1252437031490516217" at="49,0,50,0" concept="10" trace="isPluginXmlGroup$KLjg" />
+      <node id="1252437031490516217" at="53,0,54,0" concept="10" trace="ActionGroupDeclaration$VO" />
       <node id="1252437031490516217" at="24,0,26,0" concept="2" trace="check_ActionGroupDeclaration_NonTypesystemRule#()V" />
       <node id="1252437031490525607" at="27,65,30,5" concept="4" />
-      <node id="1252437031490516217" at="39,0,42,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="1252437031490516217" at="42,0,45,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="1252437031490516217" at="45,0,48,0" concept="5" trace="overrides#()Z" />
-      <node id="1252437031490538269" at="48,80,51,5" concept="4" />
-      <node id="1252437031490683496" at="32,141,36,7" concept="1" />
-      <node id="1252437031490682141" at="31,42,37,5" concept="4" />
-      <node id="1252437031490538269" at="48,0,54,0" concept="11" trace="check_77ohot_a0d0b#(Ljetbrains/mps/project/facets/JavaModuleFacet;)Z" />
-      <node id="1252437031490516217" at="26,0,39,0" concept="5" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <node id="1252437031490516217" at="38,0,41,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1252437031490516217" at="41,0,44,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="1252437031490516217" at="44,0,47,0" concept="5" trace="overrides#()Z" />
+      <node id="1252437031490683496" at="31,121,35,7" concept="1" />
+      <node id="1252437031490682141" at="30,5,36,5" concept="4" />
+      <node id="1252437031490516217" at="26,0,38,0" concept="5" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="1252437031490516217" at="24,59,24,59" />
       <scope id="2485806804457657425" at="28,40,29,13" />
-      <scope id="1252437031490516217" at="39,50,40,46" />
-      <scope id="1252437031490516217" at="42,68,43,102" />
-      <scope id="1252437031490516217" at="45,30,46,17" />
-      <scope id="1252437031490538269" at="49,36,50,48" />
+      <scope id="1252437031490516217" at="38,50,39,46" />
+      <scope id="1252437031490516217" at="41,68,42,102" />
+      <scope id="1252437031490516217" at="44,30,45,17" />
       <scope id="1252437031490516217" at="24,0,26,0" />
-      <scope id="1252437031490683496" at="33,7,35,303">
+      <scope id="1252437031490683496" at="32,7,34,303">
         <var name="_reporter_2309309498" id="1252437031490683496" />
         <var name="errorTarget" id="1252437031490683496" />
       </scope>
-      <scope id="1252437031490516217" at="39,0,42,0" />
-      <scope id="1252437031490516217" at="42,0,45,0">
+      <scope id="1252437031490516217" at="38,0,41,0" />
+      <scope id="1252437031490516217" at="41,0,44,0">
         <var name="argument" id="1252437031490516217" />
       </scope>
-      <scope id="1252437031490516217" at="45,0,48,0" />
-      <scope id="1252437031490682143" at="32,141,36,7" />
-      <scope id="1252437031490538269" at="48,80,52,17" />
-      <scope id="1252437031490538269" at="48,0,54,0">
-        <var name="checkedDotOperand" id="1252437031490538269" />
-      </scope>
-      <scope id="1252437031490516218" at="26,118,37,5">
+      <scope id="1252437031490516217" at="44,0,47,0" />
+      <scope id="1252437031490682143" at="31,121,35,7" />
+      <scope id="1252437031490516218" at="26,118,36,5">
         <var name="module" id="1252437031490476319" />
-        <var name="solution" id="1252437031490476334" />
       </scope>
-      <scope id="1252437031490516217" at="26,0,39,0">
+      <scope id="1252437031490516217" at="26,0,38,0">
         <var name="group" id="1252437031490516217" />
         <var name="status" id="1252437031490516217" />
         <var name="typeCheckingContext" id="1252437031490516217" />
       </scope>
-      <unit id="1252437031490516217" at="55,0,58,0" name="jetbrains.mps.lang.plugin.typesystem.check_ActionGroupDeclaration_NonTypesystemRule$PROPS" />
-      <unit id="1252437031490516217" at="59,0,62,0" name="jetbrains.mps.lang.plugin.typesystem.check_ActionGroupDeclaration_NonTypesystemRule$CONCEPTS" />
-      <unit id="1252437031490516217" at="23,0,63,0" name="jetbrains.mps.lang.plugin.typesystem.check_ActionGroupDeclaration_NonTypesystemRule" />
+      <unit id="1252437031490516217" at="48,0,51,0" name="jetbrains.mps.lang.plugin.typesystem.check_ActionGroupDeclaration_NonTypesystemRule$PROPS" />
+      <unit id="1252437031490516217" at="52,0,55,0" name="jetbrains.mps.lang.plugin.typesystem.check_ActionGroupDeclaration_NonTypesystemRule$CONCEPTS" />
+      <unit id="1252437031490516217" at="23,0,56,0" name="jetbrains.mps.lang.plugin.typesystem.check_ActionGroupDeclaration_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)/1821622352985039164">

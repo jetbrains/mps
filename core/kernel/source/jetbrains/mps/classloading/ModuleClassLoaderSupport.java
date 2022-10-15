@@ -60,6 +60,8 @@ public class ModuleClassLoaderSupport {
    */
   public static boolean canCreate(@NotNull ReloadableModule module) {
     JavaModuleFacet facet = module.getFacet(JavaModuleFacet.class);
+    // first part is equivalent to SModuleOperations.isCompileInMPS(), just don't want to introduce another [kernel]-[project]
+    // dependency. XXX perhaps, SModuleOperations shall move to kernel?
     return facet != null && facet.isCompileInMps() && module.getFacet(CustomClassLoadingFacet.class) == null;
   }
 

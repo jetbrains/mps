@@ -8,10 +8,10 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import jetbrains.mps.project.SModuleOperations;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.util.JavaNameUtil;
@@ -72,13 +72,13 @@ public final class StubClassDiscovery {
 
 
   public List<SNode> findStubClassifiers(SNode nodeClassifier) {
-    JavaModuleFacet javaFacet = check_h9urwj_a0a0j(check_h9urwj_a0a0a9(SNodeOperations.getModel(nodeClassifier)));
+    SModule mpsModule = check_h9urwj_a0a0j(SNodeOperations.getModel(nodeClassifier));
     List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
-    if (javaFacet == null || javaFacet.isCompileInMps()) {
+    if (!(SModuleOperations.isJavaModuleCompiledExternally(mpsModule))) {
       return result;
     }
-    SModule mpsModule = check_h9urwj_a0d0j(SNodeOperations.getModel(nodeClassifier));
-    SRepository repository = check_h9urwj_a0e0j(mpsModule);
+    assert mpsModule != null : "SModuleOperations.isJavaModuleCompiledExternally contract";
+    SRepository repository = mpsModule.getRepository();
     if (repository == null) {
       return null;
     }
@@ -88,7 +88,7 @@ public final class StubClassDiscovery {
     SModelId stubModelId = new JavaPackageNameStub(packageName).asModelId();
     SNodeId nodeId = new jetbrains.mps.smodel.SNodeId.Foreign(jetbrains.mps.smodel.SNodeId.Foreign.ID_PREFIX + nestedShortName);
 
-    for (SModule m : Sequence.fromIterable(modulesWithStubModels(javaFacet.getModule()))) {
+    for (SModule m : Sequence.fromIterable(modulesWithStubModels(mpsModule))) {
       SModel model = m.getModel(stubModelId);
       if (model == null) {
         continue;
@@ -198,27 +198,9 @@ public final class StubClassDiscovery {
     return ListSequence.fromList(firstMirrors).contains(c2) || ListSequence.fromList(secondMirrors).contains(c1);
   }
 
-  private static JavaModuleFacet check_h9urwj_a0a0j(SModule checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getFacet(JavaModuleFacet.class);
-    }
-    return null;
-  }
-  private static SModule check_h9urwj_a0a0a9(SModel checkedDotOperand) {
+  private static SModule check_h9urwj_a0a0j(SModel checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModule();
-    }
-    return null;
-  }
-  private static SModule check_h9urwj_a0d0j(SModel checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getModule();
-    }
-    return null;
-  }
-  private static SRepository check_h9urwj_a0e0j(SModule checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getRepository();
     }
     return null;
   }

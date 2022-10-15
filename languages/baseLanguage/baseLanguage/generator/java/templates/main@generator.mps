@@ -22,6 +22,7 @@
     <import index="gp7a" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.dependency(MPS.Core/)" />
     <import index="b0pz" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.facets(MPS.Core/)" />
     <import index="9eha" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.annotations(Annotations/)" />
+    <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -64,6 +65,9 @@
       </concept>
       <concept id="4952749571008284462" name="jetbrains.mps.baseLanguage.structure.CatchVariable" flags="ng" index="XOnhg" />
       <concept id="1081236700938" name="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" flags="ig" index="2YIFZL" />
+      <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
+        <reference id="1144433194310" name="classConcept" index="1Pybhc" />
+      </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534934090" name="jetbrains.mps.baseLanguage.structure.CastExpression" flags="nn" index="10QFUN">
         <child id="1070534934091" name="type" index="10QFUM" />
@@ -719,25 +723,6 @@
               </node>
             </node>
           </node>
-          <node concept="3cpWs8" id="8it8ufEveD" role="3cqZAp">
-            <node concept="3cpWsn" id="8it8ufEveE" role="3cpWs9">
-              <property role="TrG5h" value="javaFacet" />
-              <node concept="3uibUv" id="8it8ufEvew" role="1tU5fm">
-                <ref role="3uigEE" to="b0pz:~JavaModuleFacet" resolve="JavaModuleFacet" />
-              </node>
-              <node concept="2OqwBi" id="8it8ufEveF" role="33vP2m">
-                <node concept="37vLTw" id="8it8ufEveG" role="2Oq$k0">
-                  <ref role="3cqZAo" node="8it8ufE3jY" resolve="originalModule" />
-                </node>
-                <node concept="liA8E" id="8it8ufEveH" role="2OqNvi">
-                  <ref role="37wK5l" to="lui2:~SModule.getFacet(java.lang.Class)" resolve="getFacet" />
-                  <node concept="3VsKOn" id="8it8ufEveI" role="37wK5m">
-                    <ref role="3VsUkX" to="b0pz:~JavaModuleFacet" resolve="JavaModuleFacet" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
           <node concept="3clFbJ" id="8it8ufEtkN" role="3cqZAp">
             <node concept="3clFbS" id="8it8ufEtkP" role="3clFbx">
               <node concept="3cpWs6" id="8it8ufEvD5" role="3cqZAp">
@@ -746,19 +731,12 @@
                 </node>
               </node>
             </node>
-            <node concept="22lmx$" id="8it8ufEPB1" role="3clFbw">
-              <node concept="3clFbC" id="8it8ufEvCP" role="3uHU7B">
-                <node concept="37vLTw" id="8it8ufEveJ" role="3uHU7B">
-                  <ref role="3cqZAo" node="8it8ufEveE" resolve="javaFacet" />
-                </node>
-                <node concept="10Nm6u" id="8it8ufEvCZ" role="3uHU7w" />
-              </node>
-              <node concept="2OqwBi" id="8it8ufEw2w" role="3uHU7w">
-                <node concept="37vLTw" id="8it8ufEvEx" role="2Oq$k0">
-                  <ref role="3cqZAo" node="8it8ufEveE" resolve="javaFacet" />
-                </node>
-                <node concept="liA8E" id="8it8ufEwQK" role="2OqNvi">
-                  <ref role="37wK5l" to="b0pz:~JavaModuleFacet.isCompileInMps()" resolve="isCompileInMps" />
+            <node concept="3fqX7Q" id="F6gkAZhXvg" role="3clFbw">
+              <node concept="2YIFZM" id="F6gkAZhXvi" role="3fr31v">
+                <ref role="37wK5l" to="z1c3:~SModuleOperations.isJavaModuleCompiledExternally(org.jetbrains.mps.openapi.module.SModule)" resolve="isJavaModuleCompiledExternally" />
+                <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
+                <node concept="37vLTw" id="F6gkAZhXvj" role="37wK5m">
+                  <ref role="3cqZAo" node="8it8ufE3jY" resolve="originalModule" />
                 </node>
               </node>
             </node>

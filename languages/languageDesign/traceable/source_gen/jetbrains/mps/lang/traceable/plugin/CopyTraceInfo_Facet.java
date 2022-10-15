@@ -20,6 +20,7 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.smodel.resources.TResource;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
+import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.make.delta.IDelta;
@@ -74,12 +75,11 @@ public class CopyTraceInfo_Facet extends IFacet.Stub {
                 final List<IFile> toCreate = ListSequence.fromList(new ArrayList<IFile>());
                 final List<Tuples._2<IFile, IFile>> toCopy = ListSequence.fromList(new ArrayList<Tuples._2<IFile, IFile>>());
                 for (TResource tres : Sequence.fromIterable(input)) {
-                  JavaModuleFacet facet = tres.module().getFacet(JavaModuleFacet.class);
-                  if (facet == null || !(facet.isCompileInMps())) {
+                  if (!(SModuleOperations.isCompileInMps(tres.module()))) {
                     // idea copies trace.info files
                     continue;
                   }
-
+                  JavaModuleFacet facet = tres.module().getFacet(JavaModuleFacet.class);
                   final IFile destination = facet.getClassesLocation(tres.modelDescriptor());
                   if (destination != null && !(destination.exists())) {
                     ListSequence.fromList(toCreate).addElement(destination);
