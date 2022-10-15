@@ -21,6 +21,8 @@ import jetbrains.mps.module.ReloadableModule;
 /**
  * Any MPS module which has a java facet is a subject to MPS custom class loading.
  *
+ * If necessary, may provide access to original {@code SModule} (to justify name/existence)
+ *
  * @see ReloadableModule#getClassLoader()
  *
  * @author apyshkin

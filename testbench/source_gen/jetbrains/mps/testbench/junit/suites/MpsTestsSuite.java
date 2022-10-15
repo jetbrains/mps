@@ -141,13 +141,7 @@ public class MpsTestsSuite extends BaseMpsSuite {
     final List<Runner> result = new ArrayList<Runner>();
     project.getModelAccess().runReadAction(() -> {
       for (SModule module : ListSequence.fromList(myContextProject.getProjectModules())) {
-        ClassLoader moduleCL = ((ReloadableModule) module).getClassLoader0();
-        if (moduleCL == null) {
-          if (LOG.isErrorLevel()) {
-            LOG.error("Classloader is not found for the " + module);
-          }
-          continue;
-        }
+        ClassLoader moduleCL = ((ReloadableModule) module).getClassLoader();
         for (SModel model : Sequence.fromIterable(module.getModels())) {
           for (SNode testCase : ListSequence.fromList(SModelOperations.roots(((SModel) model), CONCEPTS.ITestCase$Fp))) {
             String testClassName = ((String) BHReflection.invoke0(testCase, CONCEPTS.ITestCase$Fp, SMethodIdV2.create("getClassName", 1216136193905L, 0x4f991fba9b1d8000L)));

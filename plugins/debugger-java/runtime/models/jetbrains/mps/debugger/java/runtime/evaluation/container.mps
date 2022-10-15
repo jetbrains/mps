@@ -2533,7 +2533,7 @@
                                             </node>
                                           </node>
                                           <node concept="liA8E" id="3uNHdNFtEQI" role="2OqNvi">
-                                            <ref role="37wK5l" to="j8aq:~ReloadableModule.getClassLoader0()" resolve="getClassLoader0" />
+                                            <ref role="37wK5l" to="j8aq:~ReloadableModule.getClassLoader()" resolve="getClassLoader" />
                                           </node>
                                         </node>
                                         <node concept="liA8E" id="3uNHdNFtG1K" role="2OqNvi">

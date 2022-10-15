@@ -50,7 +50,7 @@ public class GeneratorUtil {
           Class<?> rv = new ModelAccessHelper(model.getRepository()).runReadAction(() -> {
             try {
               // although model.getModule doesn't require model read, module classloader deep down there does
-              return ((ReloadableModule) model.getModule()).getClassLoader0().loadClass(fullClassName);
+              return ((ReloadableModule) model.getModule()).getClassLoader().loadClass(fullClassName);
             } catch (ClassNotFoundException ex) {
               // ignore
             }

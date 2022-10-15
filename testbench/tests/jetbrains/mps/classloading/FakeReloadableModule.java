@@ -76,7 +76,7 @@ public class FakeReloadableModule implements ReloadableModule {
 
   @NotNull
   @Override
-  public MPSModuleClassLoader getClassLoader0() {
+  public MPSModuleClassLoader getClassLoader() {
     throw new UnsupportedOperationException("Not implemented");
   }
 

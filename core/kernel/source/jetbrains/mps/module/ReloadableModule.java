@@ -17,8 +17,8 @@ package jetbrains.mps.module;
 
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.classloading.MPSModuleClassLoader;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
 
 /**
@@ -92,19 +92,15 @@ public interface ReloadableModule extends SModule {
   Class<?> getOwnClass(@NotNull String classFqName) throws ClassNotFoundException;
 
   /**
-   * @return the class loader associated with the module.
-   * Currently it can be either MPS ModuleClassLoader or IdeaPlugin PluginClassLoader.
+   * Currently there are MPS ModuleClassLoader, dealing with regular MPS-managed modules and their generated classes,
+   * and a ClassLoader backed by module origin (generally, contributed by IDEA plugin), where classes are supplied
+   * by external means and are not directly controlled by MPS.
+   * If a module doesn't have classloading known to MPS, we fall back to system classloader here.
    *
-   * The latter is returned in the case when IDEA plugin manages the module's classes.
-   * Use it if you want to get a class from the module with IdeaPluginFacet.
-   * warning: this method is lazy implemented!
-   * if getStatus().isDeployed() || getStatus().canBeDeployed() is true then the return value is guaranteed to be not null
-   *
-   * @deprecated use {@link #getClassLoader0()}
+   * @return not null classloader associated with the module; if a specific module-related class loader is not found than the system classloader is returned
    */
-  @Nullable
-@Deprecated(since = "192", forRemoval = true)
-  default ClassLoader getClassLoader() {
+  @NotNull
+  default MPSModuleClassLoader getClassLoader() {
     return getClassLoader0();
   }
 
@@ -118,10 +114,13 @@ public interface ReloadableModule extends SModule {
   @NotNull ClassLoaderManager getCLM();
 
   /**
-   * @return not null classloader, if a specific module-related class loader is not found than the system classloader is returned
+   * @deprecated {@link #getClassLoader()} has been updated, use it instead
    */
   @NotNull
-  MPSModuleClassLoader getClassLoader0();
+  default MPSModuleClassLoader getClassLoader0() {
+    Logger.getLogger(getClass()).warnDeprecatedUse("use getClassLoader() directly");
+    return getClassLoader();
+  }
 
   /**
    * Call it to replace the old class loader of this module with a new one.

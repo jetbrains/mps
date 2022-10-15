@@ -69,7 +69,6 @@ import static java.lang.String.format;
  *
  * evgeny, 3/11/11
  */
-@SuppressWarnings("UnstableApiUsage")
 public final class LanguageRegistry implements CoreComponent, DeployListener {
   private static final Logger LOG = Logger.getLogger(LanguageRegistry.class);
 
@@ -95,7 +94,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
    *
    * @return collection of languages available in the given context
    */
-  public static LanguageRegistry getInstance(@NotNull SRepository repository) {
+  public static LanguageRegistry getInstance(@SuppressWarnings("unused") @NotNull SRepository repository) {
     return INSTANCE;
   }
 
@@ -269,7 +268,6 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
           }
           Class<?>[] parameterTypes = cons.getParameterTypes();
           if (parameterTypes[0] == LanguageRegistry.class && parameterTypes[1] == LanguageRuntime.class && parameterTypes[2] == Generator.class) {
-            //noinspection JavaReflectionMemberAccess
             Constructor<? extends GeneratorRuntime> c = aClass.getConstructor(LanguageRegistry.class, LanguageRuntime.class, Generator.class);
             return c.newInstance(this, sourceLanguageRuntime, g);
           }
@@ -281,7 +279,6 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
           }
           Class<?>[] parameterTypes = cons.getParameterTypes();
           if (parameterTypes[0] == LanguageRegistry.class && parameterTypes[1] == LanguageRuntime.class) {
-            //noinspection JavaReflectionMemberAccess
             Constructor<? extends GeneratorRuntime> c = aClass.getConstructor(LanguageRegistry.class, LanguageRuntime.class);
             return c.newInstance(this, sourceLanguageRuntime);
           }
@@ -316,7 +313,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
 
   @Nullable
   private ModuleRuntime createRuntime(Solution solution) {
-    return new ModuleRuntime(solution.getModuleReference(), solution.getClassLoader0());
+    return new ModuleRuntime(solution.getModuleReference(), solution.getClassLoader());
   }
 
   public String toString() {
@@ -349,7 +346,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
   }
 
   /**
-   * Pretty much what {@link #withAvailableLanguages(Consumer<LanguageRuntime>) does, except for a designated subset.
+   * Pretty much what {@link #withAvailableLanguages(Consumer)} does, except for a designated subset.
    * @since 2021.2
    */
   public void withAvailableLanguages(@NotNull Stream<SLanguage> languages, @NotNull Consumer<LanguageRuntime> operation) {
@@ -639,7 +636,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
     langRuntime.setGeneratesIntoTargets(generatesInto);
   }
 
-  /*package*/ final LanguageExtensionRegistry getExtensionRegistry() {
+  /*package*/ LanguageExtensionRegistry getExtensionRegistry() {
     // provisionally expose the registry. shall keep all the operations over the registry local to this class and guard them with myRuntimeInstanceAccess lock
     return myExtensionRegistry;
   }
