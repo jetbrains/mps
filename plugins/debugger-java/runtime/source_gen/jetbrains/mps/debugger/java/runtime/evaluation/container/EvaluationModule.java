@@ -71,11 +71,6 @@ public final class EvaluationModule extends ReloadableModuleBase {
     }
 
     @Override
-    public boolean isCompileInMps() {
-      return true;
-    }
-
-    @Override
     public JavaLanguageLevel getLanguageLevel() {
       // why not, after all?
       return JavaLanguageLevel.JAVA_10;
@@ -119,6 +114,21 @@ public final class EvaluationModule extends ReloadableModuleBase {
     @Override
     public IFile getOutputRoot(@NotNull SModel model) {
       return getOutputRoot();
+    }
+
+    @NotNull
+    @Override
+    public JavaModuleFacet.Compile getCompile() {
+      return JavaModuleFacet.Compile.MPS;
+    }
+    @NotNull
+    @Override
+    public JavaModuleFacet.LoadClasses getLoadClasses() {
+      return JavaModuleFacet.LoadClasses.ManagedByMPS;
+    }
+    @Override
+    public JavaModuleFacet.LoadExtensions getLoadExtensions() {
+      return JavaModuleFacet.LoadExtensions.NotAvailable;
     }
   };
 

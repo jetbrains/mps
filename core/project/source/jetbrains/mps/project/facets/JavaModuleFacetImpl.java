@@ -15,14 +15,18 @@
  */
 package jetbrains.mps.project.facets;
 
+import jetbrains.mps.classloading.IdeaPluginModuleFacet;
 import jetbrains.mps.extapi.module.ModuleFacetBase;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.MementoWithFS;
-import jetbrains.mps.project.ProjectPathUtil;
+import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
+import jetbrains.mps.project.structure.modules.SolutionDescriptor;
+import jetbrains.mps.project.structure.modules.SolutionKind;
 import jetbrains.mps.smodel.Generator;
+import jetbrains.mps.smodel.Language;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.openapi.FileSystem;
 import org.jetbrains.annotations.NotNull;
@@ -55,18 +59,15 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
   //     unlikely need IDEA VFS services for)
   private IFile myGeneratedClassesLocation = null;
 
+  private Compile myCompile = Compile.MPS;
+  private LoadClasses myLoadClasses = LoadClasses.ManagedByMPS;
+  private LoadExtensions myLoadExtensions = LoadExtensions.NotAvailable;
+
   @Nullable
   private JavaLanguageLevel myJavaLanguageLevel = null;
 
   public JavaModuleFacetImpl(@NotNull SModule module) {
     super(FACET_TYPE, module);
-  }
-
-  @Override
-  public boolean isCompileInMps() {
-    AbstractModule module = getAbstractModule();
-    ModuleDescriptor descriptor = module.getModuleDescriptor();
-    return descriptor != null && descriptor.getCompileInMPS();
   }
 
   @Override
@@ -219,49 +220,70 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     } else {
       // FIXME LEHA
       FileSystem fs = memento instanceof MementoWithFS ? ((MementoWithFS) memento).getFileSystem() : getAbstractModule().getFileSystem();
-      boolean hasClassesGenSerialized = false;
       // JFTR, intentionally pretty much the same logic is below in classGenPath
       // FIXME what about pure stub modules that claim to be 'java' but don't have any generated classes
       //       seems odd to keep <classes generated=true> there.
       for (Memento m : memento.getChildren(CLASSES_KEY)) {
         if (Boolean.parseBoolean(m.get(GENERATED_KEY))) {
-          hasClassesGenSerialized = true;
           final String v = m.get(PATH_KEY);
           myGeneratedClassesLocation = v == null ? null : fs.getFile(v);
           break;
         }
       }
-      if (!hasClassesGenSerialized) {
-        myGeneratedClassesLocation = legacyClassesGenLocation(fs);
+    }
+    AbstractModule module = getAbstractModule();
+    ModuleDescriptor descriptor = module.getModuleDescriptor();
+    if (descriptor != null) {
+      if (descriptor.getCompileInMPS()) {
+        myCompile = Compile.MPS;
+        myLoadClasses = LoadClasses.ManagedByMPS;
+      } else if (descriptor.getModuleFacetDescriptors().stream().anyMatch(d -> IdeaPluginModuleFacet.FACET_TYPE.equals(d.getType()))) {
+        myCompile = Compile.External;
+        myLoadClasses = LoadClasses.ManagedByContributor;
+      } else {
+        myCompile = Compile.None;
+        myLoadClasses = LoadClasses.NotAvailable;
       }
+      if (module instanceof Language) {
+        myLoadExtensions = LoadExtensions.Plugin;
+      } else if (module instanceof Solution) {
+        // this is provisional hack to get ready to migration, to capture scenario when MPS relied on some assumptions
+        if (((Solution) module).getKind() != SolutionKind.NONE) {
+          myLoadExtensions = LoadExtensions.Plugin;
+        } else {
+          // we've got plain stub modules, with ideaPlugin and no extensions,
+          // as well as 3 modules that got ideaPlugin and contribute extensions (either with <mps.PluginComponentContributor>
+          // ext-point or through lang.extensions). I'm not quite sure we have to support this scenario as it's quite rare,
+          // nevertheless, if I could, why not?
+          final boolean roStub = ((SolutionDescriptor) descriptor).isReadOnlyStubModule();
+          myLoadExtensions = myLoadClasses == LoadClasses.ManagedByContributor && !roStub ? LoadExtensions.Plugin : LoadExtensions.NotAvailable;
+        }
+      } else {
+        // XXX revisit Generator/Devkit scenario. Generator can load classes, but not extensions. Devkit is capable of neither at the moment.
+        myLoadExtensions = LoadExtensions.NotAvailable;
+      }
+    } else {
+      myCompile = Compile.None;
+      myLoadClasses = LoadClasses.NotAvailable;
+      myLoadExtensions = LoadExtensions.NotAvailable;
     }
   }
 
-  // fallback for legacy module descriptors that don't keep the setting
-  // guess, with facet persistence in a wild for a year now, could drop this fallback
-  private IFile legacyClassesGenLocation(FileSystem fs) {
-    if (isAtDeployedModule()) {
-      // generally, shall never get here, there's guard outside of this method that handles deployed scenario
-      return null;
-    }
-    ModuleDescriptor moduleDescriptor = getAbstractModule().getModuleDescriptor();
-    if (moduleDescriptor == null) {
-      // this facet implementation doesn't know how to handle modules not based on ModuleDescriptor
-      return null;
-    }
-    if (!moduleDescriptor.getCompileInMPS()) {
-      // Though MPS used to answer getClassesGen() for modules with !compileInMPS, I see no reason to keep this value
-      // Why would anyone care to find out classes_gen for a module that is compiled outside of MPS?
-      return null;
-    }
-    // XXX there's same code in MM, shall refactor, likely move to ModuleDescriptor
-    String sourceGenPath = ProjectPathUtil.getGeneratorOutputPath(moduleDescriptor);
-    if (sourceGenPath == null) {
-      // a kind of a module without generated sources, no classes_gen then.
-      return null;
-    }
-    // XXX would adore IFile from ModuleDescriptor, not String.
-    return fs.getFile(sourceGenPath).getParent().findChild(AbstractModule.CLASSES_GEN);
+  @NotNull
+  @Override
+  public Compile getCompile() {
+    return myCompile;
+  }
+
+  @NotNull
+  @Override
+  public LoadClasses getLoadClasses() {
+    return myLoadClasses;
+  }
+
+  @Override
+  public LoadExtensions getLoadExtensions() {
+    return myLoadExtensions;
   }
 
 

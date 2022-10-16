@@ -18,7 +18,6 @@ package jetbrains.mps.project;
 import jetbrains.mps.classloading.CustomClassLoadingFacet;
 import jetbrains.mps.kernel.model.MissingDependenciesFixer;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.facets.JavaModuleFacet.Compile;
 import jetbrains.mps.project.facets.TestsFacet;
@@ -143,8 +142,9 @@ public class SModuleOperations {
     // need to account for TempModule + NaiveJavaModuleFacet scenario, although not clear if we need to allow
     // extensions from these. Definitely classloading. Perhaps, that's the case when we need MPS module classloading but no
     // extensions support (to my question whether MPS module CL implies "capable to contribute extensions")
-    return module instanceof ReloadableModule;
-    // FWIW, generators and devkits are perfectly legal modules for extensions
+    // However, NaiveJavaModuleFacet has to get covered by jmf != null branch, above. Here we deal with a PluginLoaderRegistry hack scenario
+    //     and I don't see any reason to bother with ReloadableModule
+    return false;
   }
 
   /**

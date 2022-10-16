@@ -19,7 +19,6 @@ import jetbrains.mps.classloading.ErrorContainer.SearchError;
 import jetbrains.mps.classloading.GraphHolder.Graph;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
-import jetbrains.mps.project.dependency.UsedModulesCollector;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -282,6 +281,8 @@ public class ModuleUpdater {
     for (SModule dep : directlyUsedModules) {
       if (dep instanceof ReloadableModule) {
         ReloadableModule reloadableModule = (ReloadableModule) dep;
+        // FIXME now, myWatchableCondition shall respect JMF.LoadClasses only,
+        //       just need to review myWatchableCondition uses carefully
         if (myWatchableCondition.met(reloadableModule)) {
           deps.add(reloadableModule);
         }

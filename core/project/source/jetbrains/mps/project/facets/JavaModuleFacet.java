@@ -43,6 +43,7 @@ import java.util.Set;
  *  - access to classes/resources {@link #getLoadClasses()}
  *  - contributing extensions to MPS {@link #getLoadExtensions()}
  */
+@SuppressWarnings("removal")
 public interface JavaModuleFacet extends SModuleFacet, GenerationTargetFacet {
   String FACET_TYPE = "java";
 
@@ -52,7 +53,9 @@ public interface JavaModuleFacet extends SModuleFacet, GenerationTargetFacet {
    * Use {@link #getCompile()} and {@link Compile#MPS} instead
    */
   @Deprecated(since = "2022.3", forRemoval = true)
-  boolean isCompileInMps();
+  default boolean isCompileInMps() {
+    return getCompile() == Compile.MPS;
+  }
 
   JavaLanguageLevel getLanguageLevel();
 
@@ -328,6 +331,10 @@ public interface JavaModuleFacet extends SModuleFacet, GenerationTargetFacet {
    *
    * Setting {@link #NotAvailable} comes handy for MPS modules like language runtime solution.
    * Setting {@link #Plugin} is for pluginSolution scenario, or Language/Generator modules that are implicitly 'MPS-extension'-capable
+   *
+   * XXX However, event as generators and devkits are perfectly legal modules for extensions, perhaps we shall make a distinction between
+   *     activator/runtime class and lang.plugin/lang.extensions contributions, to avoid unnecessary CL attempts for modules we don't use for
+   *     contributions anyway.
    */
   enum LoadExtensions {
     /**

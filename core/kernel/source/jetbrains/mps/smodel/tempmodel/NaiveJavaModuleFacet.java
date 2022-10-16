@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -63,11 +63,6 @@ public final class NaiveJavaModuleFacet implements JavaModuleFacet {
   }
 
   @Override
-  public boolean isCompileInMps() {
-    return true;
-  }
-
-  @Override
   public JavaLanguageLevel getLanguageLevel() {
     return JavaLanguageLevel.getDefault(true);
   }
@@ -113,5 +108,25 @@ public final class NaiveJavaModuleFacet implements JavaModuleFacet {
   @Override
   public void load(Memento memento) {
     throw new UnsupportedOperationException();
+  }
+
+  @NotNull
+  @Override
+  public Compile getCompile() {
+    // as long as isCompileInMPS() === true, keep MPS, although
+    // I'm not sure every use of this facet needs compilation with MPS. Some, perhaps, would be ok with External (if classes are provided)
+    return Compile.MPS;
+  }
+
+  @NotNull
+  @Override
+  public LoadClasses getLoadClasses() {
+    return LoadClasses.ManagedByMPS;
+  }
+
+  @Override
+  public LoadExtensions getLoadExtensions() {
+    // unless requested, assume nobody loads extensions from temp modules
+    return LoadExtensions.NotAvailable;
   }
 }

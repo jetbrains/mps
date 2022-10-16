@@ -546,11 +546,6 @@ public class ModulesReloadTest extends ModuleMpsTest {
     }
 
     @Override
-    public boolean isCompileInMps() {
-      return myCompileInMps;
-    }
-
-    @Override
     public JavaLanguageLevel getLanguageLevel() {
       return JavaLanguageLevel.getDefault(true);
     }
@@ -590,6 +585,21 @@ public class ModulesReloadTest extends ModuleMpsTest {
 
     public void setCompileInMps(boolean value) {
       myCompileInMps = value;
+    }
+
+    @NotNull
+    @Override
+    public Compile getCompile() {
+      return myCompileInMps ? Compile.MPS : Compile.None;
+    }
+    @NotNull
+    @Override
+    public LoadClasses getLoadClasses() {
+      return LoadClasses.ManagedByMPS;
+    }
+    @Override
+    public LoadExtensions getLoadExtensions() {
+      return LoadExtensions.NotAvailable;
     }
   }
 

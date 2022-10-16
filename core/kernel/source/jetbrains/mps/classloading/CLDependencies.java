@@ -133,7 +133,10 @@ public class CLDependencies {
           // fall through
         }
       }
-      // legacy
+      // legacy  and source-only modules (like stub-only modules)
+      // XXX perhaps, for stub-only scenario (LoadClasses.ManagedByContributor; or generally for external CL) can use 'direct dependencies' only
+      //     to avoid calculating runtimes. All we can care of in stub-only case is that external code provides correct classes, no reason not to
+      //     trust author that he specified sufficient dependencies. May save us time parsing stub models on startup
       rv = myModulesCollector.directlyUsedModules(module, errorContainer, true, true);
     }
     if (errorContainer.hasErrors()) {
