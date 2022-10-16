@@ -20,6 +20,7 @@ import jetbrains.mps.kernel.model.MissingDependenciesFixer;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.project.facets.JavaModuleFacet.Compile;
 import jetbrains.mps.project.facets.TestsFacet;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionKind;
@@ -66,7 +67,7 @@ public class SModuleOperations {
    */
   public static boolean isCompileInMps(SModule module) {
     JavaModuleFacet facet = module.getFacet(JavaModuleFacet.class);
-    return facet != null && facet.isCompileInMps();
+    return facet != null && facet.getCompile() == Compile.MPS;
   }
 
   /**
@@ -75,7 +76,7 @@ public class SModuleOperations {
    */
   public static boolean isJavaModuleCompiledExternally(SModule module) {
     JavaModuleFacet facet = module.getFacet(JavaModuleFacet.class);
-    return facet != null && !facet.isCompileInMps();
+    return facet != null && facet.getCompile() == Compile.External;
   }
 
   /**
@@ -84,7 +85,7 @@ public class SModuleOperations {
    */
   public static boolean isCompileInIdea(SModule module) {
     JavaModuleFacet facet = module.getFacet(JavaModuleFacet.class);
-    if (facet == null || facet.isCompileInMps() || !(module instanceof AbstractModule)) {
+    if (facet == null || facet.getCompile() != Compile.External || !(module instanceof AbstractModule)) {
       return false;
     }
     final ModuleDescriptor md = ((AbstractModule) module).getModuleDescriptor();
@@ -108,26 +109,22 @@ public class SModuleOperations {
       return false;
     }
     final JavaModuleFacet jmf = module.getFacet(JavaModuleFacet.class);
-    final boolean compileInMps;
-    if (jmf == null) {
-      // FIXME this is a HACK to deal with PluginLoaderRegistry perverse logic to remove contribution
-      //       not the moment module is unloaded, but to collect a module delta and remove respective 'isPluginModule' modules
-      //       on next update, which may happen late. E.g. NoPendingMigrationsTest with 2 projects, "MPS" and "customAspects",
-      //       one may notice removal of App/Project contributions the moment second project is opened, not the moment the first one goes away.
-      //       With module unregistered, its facet instances g
-      //       The hack here is to check for a possibility for a module to have JMF
-      ModuleDescriptor md = module instanceof AbstractModule ? ((AbstractModule) module).getModuleDescriptor() : null;
-      if (md == null && md.getModuleFacetDescriptors().stream().noneMatch(d -> JavaModuleFacet.FACET_TYPE.equals(d.getType()))) {
-        // no descriptor for JMF
-        return false;
-      }
-      // else fall through
-      compileInMps = true;
-      // true: just not to obstruct any further progress, don't want to extract value from ModuleFacetDescriptor,
-      // as I'm going to remove this code anyway
-    } else {
-      compileInMps = jmf.isCompileInMps();
+    if (jmf != null) {
+      return jmf.getLoadExtensions().contributesExtensions();
     }
+    // FIXME this is a HACK to deal with PluginLoaderRegistry perverse logic to remove contribution
+    //       not the moment module is unloaded, but to collect a module delta and remove respective 'isPluginModule' modules
+    //       on next update, which may happen late. E.g. NoPendingMigrationsTest with 2 projects, "MPS" and "customAspects",
+    //       one may notice removal of App/Project contributions the moment second project is opened, not the moment the first one goes away.
+    //       With module unregistered, its facet instances g
+    //       The hack here is to check for a possibility for a module to have JMF
+    ModuleDescriptor md = module instanceof AbstractModule ? ((AbstractModule) module).getModuleDescriptor() : null;
+    if (md == null && md.getModuleFacetDescriptors().stream().noneMatch(d -> JavaModuleFacet.FACET_TYPE.equals(d.getType()))) {
+      // no descriptor for JMF
+      return false;
+    }
+    // just not to obstruct any further progress - don't want to extract exact isCompileInMPS value from ModuleFacetDescriptor, assume it's true
+    // as I'm going to remove this code anyway
     // there was a lot of legacy logic around isCompileInMPS to decide whether code is MPS-managed, but I don't quite understand
     // if it's still relevant.
     if (module instanceof Language) {
@@ -146,13 +143,15 @@ public class SModuleOperations {
     // need to account for TempModule + NaiveJavaModuleFacet scenario, although not clear if we need to allow
     // extensions from these. Definitely classloading. Perhaps, that's the case when we need MPS module classloading but no
     // extensions support (to my question whether MPS module CL implies "capable to contribute extensions")
-    return compileInMps && module instanceof ReloadableModule;
+    return module instanceof ReloadableModule;
     // FWIW, generators and devkits are perfectly legal modules for extensions
   }
 
   /**
    * Transitional method to capture scenario when MPS cares about CL kind of module, e.g. to generate reflective/direct calls for
    * behavior methods
+   *
+   * XXX what's the difference with ModuleClassLoaderSupport.canCreate() and why don't we check for specific compilation kind here?
    *
    * @return false when module doesn't have CL management or CL is managed by some external mechanism (not MPS module CL)
    * @since 2022.3

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,11 @@
  */
 package jetbrains.mps.classloading;
 
-import jetbrains.mps.reloading.ClassBytesProvider.ClassBytes;
-import jetbrains.mps.reloading.IClassPathItem;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.project.facets.JavaModuleFacet.Compile;
+import jetbrains.mps.reloading.ClassBytesProvider.ClassBytes;
+import jetbrains.mps.reloading.IClassPathItem;
 import org.jetbrains.annotations.NotNull;
 
 import java.net.URL;
@@ -62,7 +63,8 @@ public class ModuleClassLoaderSupport {
     JavaModuleFacet facet = module.getFacet(JavaModuleFacet.class);
     // first part is equivalent to SModuleOperations.isCompileInMPS(), just don't want to introduce another [kernel]-[project]
     // dependency. XXX perhaps, SModuleOperations shall move to kernel?
-    return facet != null && facet.isCompileInMps() && module.getFacet(CustomClassLoadingFacet.class) == null;
+    // FTR, I leave 'getFacet(CCLF) == null' for future work, to investigate an alternative where CL is supplied neither from MPS nor deployment provider
+    return facet != null && facet.getCompile() == Compile.MPS && module.getFacet(CustomClassLoadingFacet.class) == null;
   }
 
   public static ModuleClassLoaderSupport create(@NotNull ReloadableModule module,

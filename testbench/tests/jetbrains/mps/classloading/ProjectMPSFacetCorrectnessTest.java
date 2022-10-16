@@ -22,6 +22,7 @@ import jetbrains.mps.library.contributor.LibraryContributor;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.project.facets.JavaModuleFacet.Compile;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.tool.environment.Environment;
@@ -51,9 +52,7 @@ import java.util.Set;
 public class ProjectMPSFacetCorrectnessTest implements EnvironmentAware {
   private static final Logger LOG = Logger.getLogger(ProjectMPSFacetCorrectnessTest.class);
 
-  private List<String> EXCLUDES = Arrays.asList("jetbrains.mps.ide.java.workbench.actions",
-                                                "jetbrains.mps.ide.java.platform.actions",
-                                                "jetbrains.mps.ide.build"); // these are waiting for the java facet to be disabled (not possible for now)
+  private List<String> EXCLUDES = Arrays.asList("jetbrains.mps.ide.build"); // these are waiting for the java facet to be disabled (not possible for now)
   private Environment myEnvironment;
 
   /**
@@ -86,12 +85,15 @@ public class ProjectMPSFacetCorrectnessTest implements EnvironmentAware {
         if (facet != null) {
           Assert.assertTrue("Unknown kind of facet " + facet + " in module " + module, facet instanceof IdeaPluginModuleFacet);
           Assert.assertTrue("Facet of the module " + module + " is not valid", facet.isValid());
-          Assert.assertTrue("The module " + module + " has enabled both idea plugin facet and java compilation in MPS",
-              !javaModuleFacet.isCompileInMps());
+          Assert.assertFalse("The module " + module + " has enabled both idea plugin facet and java compilation in MPS",
+                             javaModuleFacet.getCompile() == Compile.MPS);
+          Assert.assertEquals(Compile.External, javaModuleFacet.getCompile());
         } else {
+          // FIXME with new distinct compile/cl setting, no need to enforce compileInMPS == true for a JMF facet, although
+          //    generaly it's right not to use JMF for such module
           if (!EXCLUDES.contains(module.getModuleName())) {
-            Assert.assertTrue("The module which " + module + " has neither idea plugin facet nor java compilation enabled must have no java facet",
-                              javaModuleFacet.isCompileInMps());
+            Assert.assertTrue("The module " + module + " has neither idea plugin facet nor java compilation enabled - must have no java facet",
+                              javaModuleFacet.getCompile() == Compile.MPS);
           }
         }
       }

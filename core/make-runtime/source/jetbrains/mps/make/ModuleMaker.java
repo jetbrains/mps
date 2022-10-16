@@ -34,6 +34,7 @@ import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager.Deptype;
 import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.project.facets.JavaModuleFacet.Compile;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.performance.IPerformanceTracer;
@@ -804,6 +805,7 @@ public final class ModuleMaker {
           // we may depend on deployed modules that got classesGen == null, ModulesContainer.isExcluded would give wrong result here
           continue;
         }
+        // FIXME JMF != null might not be enough, seems that jmf.getCompile().isCompiled() better reflects the idea here.
         JM djm = initial.findJM(d);
         // if forceCompile, don't need to record dependencies outside? Guess, still needs them.
         // else, make(M1,M2), M1 -> [M2, M3]; M1 & M2 clean, but M3 isDirty ==> I'd like to compile M1 then
@@ -1048,8 +1050,11 @@ public final class ModuleMaker {
     return new MPSCompilationResult(errorCount, warnCount, false, changedModules);
   }
 
+  // XXX revisit. Use of the method in 2 different scenarios, to clean generated classes and to build a set of modules for compilation
+  //    indeed, we compile modules with Compile.MPS, but I suspect we can use modules with Compile.External in classpath.
+  //    However, seems that isExcluded is for initial set of modules, and for their dependencies we make no distinction, just check JMF is there
   /*package*/ static boolean isExcluded(@NotNull SModule m) {
     JavaModuleFacet facet = m.getFacet(JavaModuleFacet.class);
-    return m.isReadOnly() || facet == null || facet.getClassesGen() == null || !facet.isCompileInMps();
+    return m.isReadOnly() || facet == null || facet.getClassesGen() == null || facet.getCompile() != Compile.MPS;
   }
 }
