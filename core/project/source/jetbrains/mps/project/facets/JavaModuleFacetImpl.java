@@ -286,6 +286,21 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     return myLoadExtensions;
   }
 
+  @Override
+  public void setCompile(Compile compile) {
+    myCompile = compile;
+  }
+
+  @Override
+  public void setLoadClasses(LoadClasses loadClasses) {
+    myLoadClasses = loadClasses;
+  }
+
+  @Override
+  public void setLoadExtensions(LoadExtensions loadExtensions) {
+    myLoadExtensions = myLoadExtensions;
+  }
+
 
   private boolean isAtDeployedModule() {
     if (getModule().isPackaged()) {

@@ -16,6 +16,7 @@
 package jetbrains.mps.ide.java.ui;
 
 import com.intellij.icons.AllIcons;
+import com.intellij.ide.BrowserUtil;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
@@ -28,13 +29,19 @@ import com.intellij.ui.ColoredTableCellRenderer;
 import com.intellij.ui.IdeBorderFactory;
 import com.intellij.ui.SimpleTextAttributes;
 import com.intellij.ui.TableUtil;
+import com.intellij.ui.TitledSeparator;
 import com.intellij.ui.ToolbarDecorator;
+import com.intellij.ui.components.ActionLink;
+import com.intellij.ui.components.JBBox;
 import com.intellij.ui.components.JBCheckBox;
 import com.intellij.ui.components.JBLabel;
+import com.intellij.ui.components.JBRadioButton;
+import com.intellij.ui.dsl.builder.impl.CollapsibleTitledSeparatorImpl;
 import com.intellij.ui.table.JBTable;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.util.ui.ItemRemovable;
+import com.intellij.util.ui.JBUI;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.icons.MPSIcons.General;
 import jetbrains.mps.ide.ui.dialogs.properties.MPSPropertiesConfigurable;
@@ -43,25 +50,28 @@ import jetbrains.mps.ide.ui.dialogs.properties.tabs.BaseTab;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.facets.JavaLanguageLevel;
+import jetbrains.mps.project.facets.JavaModuleFacet.Compile;
+import jetbrains.mps.project.facets.JavaModuleFacet.LoadClasses;
+import jetbrains.mps.project.facets.JavaModuleFacet.LoadExtensions;
 import jetbrains.mps.project.facets.JavaModuleFacetImpl;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
-import jetbrains.mps.project.structure.modules.SolutionKind;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
 import org.jetbrains.mps.openapi.ui.persistence.FacetTab;
 
 import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.io.File;
@@ -78,9 +88,12 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
   private boolean mySourcePathsChanged = false;
   private FilesTableModel myLibrariesTableModel;
   private boolean myLibrariesChanged = false;
-  private JBCheckBox myCompileInMPS;
-  private JBCheckBox myExternalIdeaCompile;
-  private ComboBox<SolutionKind> mySolutionKind;
+  private TitledSeparator myUsageScenarioLabel;
+  private JBCheckBox myCompileIDEA;
+  private JBRadioButton myCompileNone, myCompileInMPS, myCompileExternal;
+  private JBRadioButton myClassLoadNone, myClassLoadMPS, myClassLoadContributor;
+  private JBRadioButton myExtNone, myExtPlugin;
+
   private ComboBox<LanguageLevelPresentation> myLanguageLevel;
   private JBLabel myUpdateModelRoots;
 
@@ -127,63 +140,139 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
   @Override
   public void init() {
     JPanel advancedTab = new JPanel();
-    advancedTab.setLayout(new GridLayoutManager((myJavaModuleFacet.getModule() instanceof Solution ? 6 : 4), 2, MPSPropertiesConfigurable.INSETS, -1, -1));
+    advancedTab.setLayout(new GridLayoutManager((myJavaModuleFacet.getModule() instanceof Solution ? 7 : 4), 2, MPSPropertiesConfigurable.INSETS, -1, -1));
 
     int row = 0;
 
     if (myJavaModuleFacet.getModule() instanceof Solution) {
+      final JBBox jmfSettings = JBBox.createVerticalBox();
+      final CollapsibleTitledSeparatorImpl ll = new CollapsibleTitledSeparatorImpl("");
+      ll.onAction((b) -> {
+        jmfSettings.setVisible(b);
+        return null;
+      });
+      ll.setExpanded(false);
+      myUsageScenarioLabel = ll;
+      myUsageScenarioLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+      advancedTab.add(myUsageScenarioLabel, new GridConstraints(0, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL,
+                                            GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+      advancedTab.add(jmfSettings, new GridConstraints(1, 0, 2, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_GROW,
+                                                       GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+      row += 3;
       SolutionDescriptor descriptor = ((Solution) myJavaModuleFacet.getModule()).getModuleDescriptor();
       assert descriptor != null;
 
-      JBLabel solutionKindLabel = new JBLabel(PropertiesBundle.message("facet.java.solutionkind"));
-      mySolutionKind = new ComboBox<>(new DefaultComboBoxModel<>(SolutionKind.values()));
-      mySolutionKind.setSelectedItem(descriptor.getKind());
-
-      advancedTab.add(solutionKindLabel,
-                      new GridConstraints(row, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED,
-                                          GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-      advancedTab.add(mySolutionKind,
-                      new GridConstraints(row++, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_GROW,
-                                          GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-
-      myCompileInMPS = new JBCheckBox(PropertiesBundle.message("facet.java.compileinmps"), descriptor.getCompileInMPS());
-      Component compileFlags = null;
-      if (RuntimeFlags.isInternalMode()) {
-        myExternalIdeaCompile = new JBCheckBox(PropertiesBundle.message("facet.java.compileinidea"), descriptor.needsExternalIdeaCompile());
-        myExternalIdeaCompile.setEnabled(!myCompileInMPS.isSelected());
-        JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT), false);
-        p.add(myCompileInMPS);
-        p.add(myExternalIdeaCompile);
-        compileFlags = p;
-      } else {
-        compileFlags = myCompileInMPS;
-      }
-      advancedTab.add(compileFlags,
-                      new GridConstraints(row++, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_GROW,
-                                          GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-
-      JBLabel languageLevelLabel = new JBLabel("Language level:");
+      JBLabel languageLevelLabel = new JBLabel(PropertiesBundle.message("facet.java.langlevel"));
       List<LanguageLevelPresentation> values = new ArrayList<>();
       values.add(new LanguageLevelPresentation(null));
       for (JavaLanguageLevel value : JavaLanguageLevel.values()) {
         values.add(new LanguageLevelPresentation(value));
       }
       myLanguageLevel = new ComboBox<>(new DefaultComboBoxModel<>(values.toArray(new LanguageLevelPresentation[]{})));
-      myLanguageLevel.setSelectedItem(new LanguageLevelPresentation(myJavaModuleFacet.getLanguageLevel()));
 
-      myCompileInMPS.addChangeListener(e -> {
-        if (RuntimeFlags.isInternalMode()) {
-          myExternalIdeaCompile.setEnabled(!myCompileInMPS.isSelected());
-        }
-        myLanguageLevel.setModel(myLanguageLevel.getModel());
+      final JBBox b2 = JBBox.createHorizontalBox();
+      b2.setAlignmentX(Component.LEFT_ALIGNMENT);
+      b2.setBorder(JBUI.Borders.empty(5,5,0,0));
+//      b2.add(JBBox.createRigidArea(new Dimension(5,0)));
+      b2.add(languageLevelLabel);
+      b2.add(myLanguageLevel);
+      jmfSettings.add(b2);
+
+      final JBBox pn1 = JBBox.createHorizontalBox();
+      pn1.setAlignmentX(Component.LEFT_ALIGNMENT);
+      pn1.setBorder(JBUI.Borders.empty(5,5,0,0));
+//      pn1.add(JBBox.createRigidArea(new Dimension(5,0)));
+      pn1.add(new JBLabel(PropertiesBundle.message("facet.java.compile")));
+      ButtonGroup bg1 = new ButtonGroup();
+      bg1.add(myCompileInMPS = new JBRadioButton(PropertiesBundle.message("facet.java.compile.mps")));
+      myCompileInMPS.setToolTipText(PropertiesBundle.message("facet.java.compile.mps.hint"));
+      pn1.add(JBBox.createRigidArea(new Dimension(10,0)));
+      pn1.add(myCompileInMPS);
+      bg1.add(myCompileExternal = new JBRadioButton(PropertiesBundle.message("facet.java.compile.ext")));
+      myCompileExternal.setToolTipText(PropertiesBundle.message("facet.java.compile.ext.hint"));
+      pn1.add(JBBox.createRigidArea(new Dimension(10,0)));
+      pn1.add(myCompileExternal);
+      if (RuntimeFlags.isInternalMode()) {
+        myCompileIDEA = new JBCheckBox(PropertiesBundle.message("facet.java.compileinidea"), descriptor.needsExternalIdeaCompile());
+        pn1.add(myCompileIDEA);
+        myCompileExternal.addChangeListener(changeEvent -> {
+          myCompileIDEA.setEnabled(myCompileExternal.isSelected());
+        });
+      }
+      bg1.add(myCompileNone = new JBRadioButton(PropertiesBundle.message("facet.java.compile.off")));
+      myCompileNone.setToolTipText(PropertiesBundle.message("facet.java.compile.off.hint"));
+      pn1.add(JBBox.createRigidArea(new Dimension(10,0)));
+      pn1.add(myCompileNone);
+      myCompileInMPS.setSelected(myJavaModuleFacet.getCompile() == Compile.MPS);
+      myCompileExternal.setSelected(myJavaModuleFacet.getCompile() == Compile.External);
+      myCompileNone.setSelected(myJavaModuleFacet.getCompile() == Compile.None);
+      jmfSettings.add(pn1);
+
+      myCompileInMPS.addChangeListener(e -> myLanguageLevel.setModel(myLanguageLevel.getModel()));
+
+      final JBBox pn2 = JBBox.createHorizontalBox();
+      pn2.setAlignmentX(Component.LEFT_ALIGNMENT);
+      pn2.setBorder(JBUI.Borders.empty(5,5,0,0));
+//      pn2.add(JBBox.createRigidArea(new Dimension(5,0)));
+      pn2.add(new JBLabel(PropertiesBundle.message("facet.java.classload")));
+      ButtonGroup bg2 = new ButtonGroup();
+      bg2.add(myClassLoadMPS = new JBRadioButton(PropertiesBundle.message("facet.java.classload.mps")));
+      myClassLoadMPS.setToolTipText(PropertiesBundle.message("facet.java.classload.mps.hint"));
+      pn2.add(JBBox.createRigidArea(new Dimension(10,0)));
+      pn2.add(myClassLoadMPS);
+      bg2.add(myClassLoadContributor = new JBRadioButton(PropertiesBundle.message("facet.java.classload.ext")));
+      myClassLoadContributor.setToolTipText(PropertiesBundle.message("facet.java.classload.ext.hint"));
+      pn2.add(JBBox.createRigidArea(new Dimension(10,0)));
+      pn2.add(myClassLoadContributor);
+      bg2.add(myClassLoadNone = new JBRadioButton(PropertiesBundle.message("facet.java.classload.off")));
+      myClassLoadNone.setToolTipText(PropertiesBundle.message("facet.java.classload.off.hint"));
+      pn2.add(JBBox.createRigidArea(new Dimension(10,0)));
+      pn2.add(myClassLoadNone);
+      myClassLoadMPS.setSelected(myJavaModuleFacet.getLoadClasses() == LoadClasses.ManagedByMPS);
+      myClassLoadContributor.setSelected(myJavaModuleFacet.getLoadClasses() == LoadClasses.ManagedByContributor);
+      myClassLoadNone.setSelected(myJavaModuleFacet.getLoadClasses() == LoadClasses.NotAvailable);
+      jmfSettings.add(pn2);
+
+      final JBBox pn3 = JBBox.createHorizontalBox();
+      pn3.setAlignmentX(Component.LEFT_ALIGNMENT);
+      pn3.setBorder(JBUI.Borders.empty(5,5,0,0));
+//      pn3.add(JBBox.createRigidArea(new Dimension(5,0)));
+      pn3.add(new JBLabel(PropertiesBundle.message("facet.java.mpsext")));
+      ButtonGroup bg3 = new ButtonGroup();
+      bg3.add(myExtPlugin = new JBRadioButton(PropertiesBundle.message("facet.java.mpsext.plugin")));
+      myExtPlugin.setToolTipText(PropertiesBundle.message("facet.java.mpsext.plugin.hint"));
+      pn3.add(JBBox.createRigidArea(new Dimension(10,0)));
+      pn3.add(myExtPlugin);
+      bg3.add(myExtNone = new JBRadioButton(PropertiesBundle.message("facet.java.mpsext.off")));
+      myExtNone.setToolTipText(PropertiesBundle.message("facet.java.mpsext.off.hint"));
+      pn3.add(JBBox.createRigidArea(new Dimension(10,0)));
+      pn3.add(myExtNone);
+      myExtPlugin.setSelected(myJavaModuleFacet.getLoadExtensions() == LoadExtensions.Plugin);
+      myExtNone.setSelected(myJavaModuleFacet.getLoadExtensions() == LoadExtensions.NotAvailable);
+      jmfSettings.add(pn3);
+      final ActionLink al = new ActionLink("Help: get dependencies right", (e) -> {
+        BrowserUtil.browse("https://www.jetbrains.com/help/mps/getting-the-dependencies-right.html");
       });
+      al.setBorder(JBUI.Borders.empty(5,5,0,0));
+      jmfSettings.add(al);
 
-      advancedTab.add(languageLevelLabel,
-                      new GridConstraints(row, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED,
-                                          GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-      advancedTab.add(myLanguageLevel,
-                      new GridConstraints(row++, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_GROW,
-                                          GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+      ChangeListener updTitle = (e) -> {
+        final String usageText = detectKnownUsageMode();
+        myUsageScenarioLabel.setText(usageText == null ? "Custom usage scenario" : usageText);
+        jmfSettings.invalidate();
+      };
+      updTitle.stateChanged(null);
+      myCompileInMPS.addChangeListener(updTitle);
+      myCompileExternal.addChangeListener(updTitle);
+      myCompileNone.addChangeListener(updTitle);
+      myClassLoadMPS.addChangeListener(updTitle);
+      myClassLoadContributor.addChangeListener(updTitle);
+      myClassLoadNone.addChangeListener(updTitle);
+      myExtPlugin.addChangeListener(updTitle);
+      myExtNone.addChangeListener(updTitle);
+
+      // LanguageLevelPresentation.toString(), invoked from setSelectedItem, needs access to initialized myCompileInMPS
+      myLanguageLevel.setSelectedItem(new LanguageLevelPresentation(myJavaModuleFacet.getLanguageLevel()));
     }
 
     advancedTab.add(getSourcePathsTable(), new GridConstraints(row++, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
@@ -302,11 +391,36 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     if (myJavaModuleFacet.getModule() instanceof Solution) {
       SolutionDescriptor descriptor = (SolutionDescriptor) myJavaModuleFacet.getAbstractModule().getModuleDescriptor();
       assert descriptor != null;
-      solutionCheck = descriptor.getCompileInMPS() != myCompileInMPS.isSelected() || descriptor.getKind() != mySolutionKind.getSelectedItem();
-      if (myExternalIdeaCompile != null) {
-        solutionCheck |= descriptor.needsExternalIdeaCompile() != myExternalIdeaCompile.isSelected();
+      final Compile c = myJavaModuleFacet.getCompile();
+      if (myCompileInMPS.isSelected()) {
+        solutionCheck |= c != Compile.MPS;
+      }
+      if (myCompileExternal.isSelected()) {
+        solutionCheck |= c != Compile.External;
+      }
+      if (myCompileNone.isSelected()) {
+        solutionCheck |= c != Compile.None;
+      }
+      if (myCompileIDEA != null) {
+        solutionCheck |= descriptor.needsExternalIdeaCompile() != myCompileIDEA.isSelected();
       }
       solutionCheck |= !new LanguageLevelPresentation(myJavaModuleFacet.getLanguageLevel()).equals(myLanguageLevel.getSelectedItem());
+      final LoadClasses l = myJavaModuleFacet.getLoadClasses();
+      if (myClassLoadMPS.isSelected()) {
+        solutionCheck |= l != LoadClasses.ManagedByMPS;
+      }
+      if (myClassLoadContributor.isSelected()) {
+        solutionCheck |= l != LoadClasses.ManagedByContributor;
+      }
+      if (myClassLoadNone.isSelected()) {
+        solutionCheck |= l != LoadClasses.NotAvailable;
+      }
+      final LoadExtensions e = myJavaModuleFacet.getLoadExtensions();
+      if (myExtPlugin.isSelected()) {
+        solutionCheck |= e != LoadExtensions.Plugin;
+      } else if (myExtNone.isSelected()) {
+        solutionCheck |= e != LoadExtensions.NotAvailable;
+      }
     }
 
     // Any change in table model will require re-save, even if state in the end is the same, to simplify this check.
@@ -318,14 +432,32 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     if (myJavaModuleFacet.getModule() instanceof Solution) {
       SolutionDescriptor descriptor = (SolutionDescriptor) myJavaModuleFacet.getAbstractModule().getModuleDescriptor();
       assert descriptor != null;
-      if (!descriptor.getCompileInMPS() && myCompileInMPS.isSelected()) {
-        myJavaModuleFacet.setGeneratedClassesLocation(myJavaModuleFacet.getAbstractModule().getModuleSourceDir().findChild(AbstractModule.CLASSES_GEN));
+      if (myCompileInMPS.isSelected()) {
+        if (myJavaModuleFacet.getClassesGen() == null) {
+          myJavaModuleFacet.setGeneratedClassesLocation(myJavaModuleFacet.getAbstractModule().getModuleSourceDir().findChild(AbstractModule.CLASSES_GEN));
+        }
+        myJavaModuleFacet.setCompile(Compile.MPS);
+      } else if (myCompileExternal.isSelected()) {
+        myJavaModuleFacet.setCompile(Compile.External);
+      } else {
+        myJavaModuleFacet.setCompile(Compile.None);
       }
-      descriptor.setCompileInMPS(myCompileInMPS.isSelected());
-      descriptor.setKind((SolutionKind) mySolutionKind.getSelectedItem());
+      if (myClassLoadMPS.isSelected()) {
+        myJavaModuleFacet.setLoadClasses(LoadClasses.ManagedByMPS);
+      } else if (myClassLoadContributor.isSelected()) {
+        myJavaModuleFacet.setLoadClasses(LoadClasses.ManagedByContributor);
+      } else {
+        myJavaModuleFacet.setLoadClasses(LoadClasses.NotAvailable);
+      }
       myJavaModuleFacet.setLanguageLevel(((LanguageLevelPresentation) myLanguageLevel.getSelectedItem()).myValue);
-      if (myExternalIdeaCompile != null) {
-        descriptor.setNeedsExternalIdeaCompile(myExternalIdeaCompile.isSelected());
+      if (myCompileIDEA != null) {
+        descriptor.setNeedsExternalIdeaCompile(myCompileIDEA.isSelected());
+      }
+      // guard with myExtPlugin.isEnabled()?
+      if (myExtPlugin.isSelected()) {
+        myJavaModuleFacet.setLoadExtensions(LoadExtensions.Plugin);
+      } else {
+        myJavaModuleFacet.setLoadExtensions(LoadExtensions.NotAvailable);
       }
     }
 
@@ -368,6 +500,32 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
   @Override
   public SModuleFacet getFacet() {
     return myJavaModuleFacet;
+  }
+
+  @Nullable
+  private String detectKnownUsageMode() {
+    if (myCompileInMPS.isSelected() && myClassLoadMPS.isSelected()) {
+      if (myExtPlugin.isSelected()) {
+        return "Regular MPS module contributing extensions to MPS";
+      } else {
+        return "Regular MPS module without contributions of MPS extensions";
+      }
+    }
+    if (myCompileExternal.isSelected() && myClassLoadContributor.isSelected()) {
+      if (myExtPlugin.isSelected()) {
+        return "Module contributes extensions to MPS through IDEA Platform";
+      } else {
+        return "Module contributes classes and/or stub models to MPS";
+      }
+    }
+    if (myCompileNone.isSelected() && myClassLoadNone.isSelected()) {
+      if (myExtNone.isSelected()) {
+        return "Solution with code to use outside MPS or a sandbox module";
+      } else {
+        return null; // quite an odd combination
+      }
+    }
+    return null;
   }
 
   private static class FilesTableModel extends AbstractTableModel implements ItemRemovable {
