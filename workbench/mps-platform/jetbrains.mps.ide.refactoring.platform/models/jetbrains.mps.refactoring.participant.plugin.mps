@@ -33,7 +33,6 @@
     <import index="dxuu" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing(JDK/)" />
     <import index="z60i" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt(JDK/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
-    <import index="ncw5" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" implicit="true" />
   </imports>
   <registry>
@@ -271,9 +270,6 @@
       </concept>
     </language>
     <language id="c0080a47-7e37-4558-bee9-9ae18e690549" name="jetbrains.mps.lang.extension">
-      <concept id="3729007189729192406" name="jetbrains.mps.lang.extension.structure.ExtensionPointDeclaration" flags="ng" index="vrV6u">
-        <child id="8029776554053057803" name="objectType" index="luc8K" />
-      </concept>
       <concept id="6626851894249711936" name="jetbrains.mps.lang.extension.structure.ExtensionPointExpression" flags="nn" index="2O5UvJ">
         <reference id="6626851894249712469" name="extensionPoint" index="2O5UnU" />
       </concept>
@@ -356,13 +352,6 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
-      </concept>
-      <concept id="709746936026466394" name="jetbrains.mps.lang.core.structure.ChildAttribute" flags="ng" index="3VBwX9">
-        <property id="709746936026609031" name="linkId" index="3V$3ak" />
-        <property id="709746936026609029" name="role_DebugInfo" index="3V$3am" />
-      </concept>
-      <concept id="4452961908202556907" name="jetbrains.mps.lang.core.structure.BaseCommentAttribute" flags="ng" index="1X3_iC">
-        <child id="3078666699043039389" name="commentedNode" index="8Wnug" />
       </concept>
     </language>
     <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
@@ -5242,32 +5231,6 @@
       <ref role="3uigEE" to="5nvm:2EZTs$tsIo8" resolve="RefactoringProcessor.RefactoringBody" />
       <node concept="3Tqbb2" id="1knX_y6nhI3" role="11_B2D" />
       <node concept="17QB3L" id="1knX_y6nhMo" role="11_B2D" />
-    </node>
-  </node>
-  <node concept="vrV6u" id="1F5g4zQqSPo">
-    <property role="TrG5h" value="MoveNodesActionEP" />
-    <node concept="1X3_iC" id="5ErAoTCv5L4" role="lGtFl">
-      <property role="3V$3am" value="objectType" />
-      <property role="3V$3ak" value="c0080a47-7e37-4558-bee9-9ae18e690549/3729007189729192406/8029776554053057803" />
-      <node concept="3SKdUt" id="5ErAoTCv5L_" role="8Wnug">
-        <node concept="1PaTwC" id="5ErAoTCv5LA" role="1aUNEU">
-          <node concept="3oM_SD" id="5ErAoTCv5LC" role="1PaTwD">
-            <property role="3oM_SC" value="todo:" />
-          </node>
-          <node concept="3oM_SD" id="5ErAoTCv5LH" role="1PaTwD">
-            <property role="3oM_SC" value="remove" />
-          </node>
-          <node concept="3oM_SD" id="5ErAoTCv5LK" role="1PaTwD">
-            <property role="3oM_SC" value="after" />
-          </node>
-          <node concept="3oM_SD" id="5ErAoTCv5LO" role="1PaTwD">
-            <property role="3oM_SC" value="2019.3" />
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="3uibUv" id="5ErAoTCv5Lb" role="luc8K">
-      <ref role="3uigEE" node="1F5g4zQqSPt" resolve="MoveNodesAction" />
     </node>
   </node>
 </model>
