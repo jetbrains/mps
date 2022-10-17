@@ -7,8 +7,7 @@
     </modelRoot>
   </models>
   <facets>
-    <facet pluginId="com.intellij" type="ideaPlugin" />
-    <facet type="java">
+    <facet type="java" compile="ext" classes="provided" ext="no">
       <classes generated="true" />
     </facet>
   </facets>

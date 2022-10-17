@@ -6,7 +6,7 @@
     </modelRoot>
   </models>
   <facets>
-    <facet type="java">
+    <facet type="java" compile="off" classes="off" ext="no">
       <classes generated="true" />
     </facet>
   </facets>

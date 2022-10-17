@@ -10,10 +10,9 @@
     </modelRoot>
   </models>
   <facets>
-    <facet type="java">
+    <facet type="java" compile="ext" classes="provided" ext="yes">
       <classes generated="true" />
     </facet>
-    <facet pluginId="jetbrains.mps.kotlin" type="ideaPlugin" />
   </facets>
   <stubModelEntries>
     <stubModelEntry path="${mps_home}/lib/kotlinx-metadata-jvm-0.4.2.jar" />

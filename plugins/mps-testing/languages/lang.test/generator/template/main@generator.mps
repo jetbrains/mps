@@ -2183,7 +2183,7 @@
             </node>
             <node concept="2ShNRf" id="BYb1OG1y_G" role="2Oq$k0">
               <node concept="1pGfFk" id="BYb1OG1Bvc" role="2ShVmc">
-                <ref role="37wK5l" node="BYb1OG11qm" resolve="TestBody" />
+                <ref role="37wK5l" node="BYb1OG11qm" resolve="NodesTestCase.TestBody" />
                 <node concept="Xjq3P" id="BYb1OG1BzQ" role="37wK5m" />
               </node>
             </node>

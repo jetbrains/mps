@@ -7,10 +7,9 @@
     </modelRoot>
   </models>
   <facets>
-    <facet languageLevel="JAVA_8" type="java">
+    <facet languageLevel="JAVA_8" type="java" compile="ext" classes="provided" ext="no">
       <classes generated="true" path="${module}/classes_gen" />
     </facet>
-    <facet pluginId="jetbrains.mps.kotlin" type="ideaPlugin" />
   </facets>
   <sourcePath />
   <dependencies>

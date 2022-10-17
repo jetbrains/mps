@@ -3,17 +3,16 @@
   <compileInIDEA />
   <models>
     <modelRoot type="java_classes">
-      <sourceRoot path="${mps_home}/lib/mps-references.jar" />
+      <sourceRoot path="${platform_lib}/mps-references.jar" />
     </modelRoot>
   </models>
   <facets>
-    <facet pluginId="com.intellij" type="ideaPlugin" />
-    <facet type="java">
+    <facet type="java" compile="ext" classes="provided" ext="no">
       <classes generated="true" />
     </facet>
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${mps_home}/lib/mps-references.jar" />
+    <stubModelEntry path="${platform_lib}/mps-references.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>

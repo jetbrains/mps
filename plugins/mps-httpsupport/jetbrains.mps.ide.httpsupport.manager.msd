@@ -7,8 +7,7 @@
     </modelRoot>
   </models>
   <facets>
-    <facet type="ideaPlugin" pluginId="jetbrains.mps.ide.httpsupport" />
-    <facet type="java">
+    <facet type="java" compile="ext" classes="provided" ext="yes">
       <classes generated="true" />
     </facet>
   </facets>

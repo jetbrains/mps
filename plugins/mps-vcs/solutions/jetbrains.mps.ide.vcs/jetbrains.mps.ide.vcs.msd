@@ -7,8 +7,7 @@
     </modelRoot>
   </models>
   <facets>
-    <facet pluginId="jetbrains.mps.vcs" type="ideaPlugin" />
-    <facet type="java">
+    <facet type="java" compile="ext" classes="provided" ext="yes">
       <classes generated="true" />
     </facet>
   </facets>

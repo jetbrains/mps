@@ -7,10 +7,9 @@
     </modelRoot>
   </models>
   <facets>
-    <facet type="java">
+    <facet type="java" compile="ext" classes="provided" ext="yes">
       <classes generated="true" />
     </facet>
-    <facet pluginId="Git4Idea" type="ideaPlugin" />
   </facets>
   <stubModelEntries>
     <stubModelEntry path="${mps_home}/plugins/git4idea/lib/git4idea-rt.jar" />

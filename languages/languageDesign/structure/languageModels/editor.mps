@@ -8837,7 +8837,7 @@
                                 </node>
                                 <node concept="2OqwBi" id="7Hlf$KPlF15" role="33vP2m">
                                   <node concept="37vLTw" id="7Hlf$KPlG4U" role="2Oq$k0">
-                                    <ref role="3cqZAo" node="7Hlf$KPlzGx" resolve="superCocept" />
+                                    <ref role="3cqZAo" node="7Hlf$KPlzGx" resolve="superConcept" />
                                   </node>
                                   <node concept="2qgKlT" id="7Hlf$KPlF17" role="2OqNvi">
                                     <ref role="37wK5l" to="tpcn:4G9PD8$NvPM" resolve="findConceptAspects" />

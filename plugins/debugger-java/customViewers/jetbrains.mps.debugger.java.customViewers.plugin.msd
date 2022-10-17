@@ -7,11 +7,10 @@
     </modelRoot>
   </models>
   <facets>
-    <facet type="java">
+    <facet type="java" compile="ext" classes="provided" ext="no">
       <classes generated="true" />
     </facet>
     <facet type="tests" />
-    <facet pluginId="jetbrains.mps.debugger.java" type="ideaPlugin" />
   </facets>
   <stubModelEntries>
     <stubModelEntry path="${module}/classes" />
