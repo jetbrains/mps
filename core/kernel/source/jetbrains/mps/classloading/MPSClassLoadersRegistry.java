@@ -18,6 +18,8 @@ package jetbrains.mps.classloading;
 import jetbrains.mps.classloading.DeployListener.ResourceTrackerCallback;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
+import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.project.facets.JavaModuleFacet.LoadClasses;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -53,7 +55,7 @@ class MPSClassLoadersRegistry {
   private static final Logger LOG = Logger.getLogger(MPSClassLoadersRegistry.class);
 
   private final Map<SModuleReference, ModuleClassLoader> myMPSClassLoaders = new HashMap<>();
-  private final Map<SModuleReference, IDEADelegatingModuleClassLoader> myIDEAClassLoaders = new HashMap<>();
+  private final Map<SModuleReference, MPSModuleClassLoader> myIDEAClassLoaders = new HashMap<>();
   private final Map<SModuleReference, ClassLoadingProgress> myMPSLoadableModules = new HashMap<>();
   private final ModulesWatcher myModulesWatcher;
   private final ModuleClassLoaderDisposer myModuleClassLoaderDisposer = new ModuleClassLoaderDisposer(this);
@@ -81,7 +83,7 @@ class MPSClassLoadersRegistry {
    */
   @Nullable
   private synchronized MPSModuleClassLoader getNonReloadableClassLoader(@NotNull ReloadableModule module) {
-    return myIDEAClassLoaders.computeIfAbsent(module.getModuleReference(), (ref) -> createIDEADelegateClassLoader(module));
+    return myIDEAClassLoaders.computeIfAbsent(module.getModuleReference(), (ref) -> createDelegateClassLoader(module));
   }
 
   /**
@@ -187,14 +189,20 @@ class MPSClassLoadersRegistry {
   }
 
   @Nullable
-  private IDEADelegatingModuleClassLoader createIDEADelegateClassLoader(@NotNull ReloadableModule module) {
-    LOG.debug("Creating IDEADelegateClassLoader for " + module);
+  private MPSModuleClassLoader createDelegateClassLoader(@NotNull ReloadableModule module) {
+    LOG.debug("Creating DelegateClassLoader for " + module);
+    final JavaModuleFacet jmf = module.getFacet(JavaModuleFacet.class);
+    if (jmf != null && jmf.getLoadClasses() == LoadClasses.ManagedByContributor) {
+      // FIXME refactor this code to avoid unnecessary nesting of classloaders (if possible)
+      final ClassLoader classLoader = new RootClassloaderLookup(module).get();
+      return new IDEADelegatingModuleClassLoader(classLoader);
+    }
+    // FIXME this piece of code is to address uses of IPMF still out there, e.g. in MPS-as-IDEA-plugin scenario
     CustomClassLoadingFacet customClassLoadingFacet = module.getFacet(CustomClassLoadingFacet.class);
     if (customClassLoadingFacet != null) {
-      if (customClassLoadingFacet.isValid()) {
-        // FIXME refactor this code to avoid unnecessary nesting of classloaders (if possible)
-        final ClassLoader classLoader = new RootClassloaderLookup(module).get();
-        return new IDEADelegatingModuleClassLoader(classLoader);
+      ClassLoader dd;
+      if (customClassLoadingFacet.isValid() && (dd = customClassLoadingFacet.getClassLoader()) != null) {
+        return new IDEADelegatingModuleClassLoader(dd);
       }
     }
     return null;

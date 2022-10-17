@@ -15,11 +15,11 @@
  */
 package jetbrains.mps.project;
 
-import jetbrains.mps.classloading.CustomClassLoadingFacet;
 import jetbrains.mps.kernel.model.MissingDependenciesFixer;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.facets.JavaModuleFacet.Compile;
+import jetbrains.mps.project.facets.JavaModuleFacet.LoadClasses;
 import jetbrains.mps.project.facets.TestsFacet;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionKind;
@@ -132,12 +132,15 @@ public class SModuleOperations {
     if (module instanceof Solution) {
       // generally, getKind() doesn't return null, but doesn't hurt to account for null
       final SolutionKind kind = ((Solution) module).getKind();
+      // FIXME this is the place we still have to keep SolutionKind persisted in SolutionDescriptor for.
+      //       If we clean it (see ExplicitJavaFacetSettings migration), we'd be unable to tell pluginSolution module here
       if (kind != null && kind != SolutionKind.NONE) {
         return true;
       }
       // we've got quite a lot IDEA-managed solutions with no 'kind' specified, need to treat them as 'extension-capable'
-      // see Solution.canLoadClasses()
-      return module.getFacet(CustomClassLoadingFacet.class) != null;
+      // see Solution.canLoadClasses(). However, right now we are in a branch with no facets (unregistered module), and
+      // looking for CCLF doesn't make any sense here
+      return false;
     }
     // need to account for TempModule + NaiveJavaModuleFacet scenario, although not clear if we need to allow
     // extensions from these. Definitely classloading. Perhaps, that's the case when we need MPS module classloading but no
@@ -160,10 +163,11 @@ public class SModuleOperations {
     if (module == null) {
       return false;
     }
-    if (module.getFacet(JavaModuleFacet.class) == null) {
+    final JavaModuleFacet jmf = module.getFacet(JavaModuleFacet.class);
+    if (jmf == null) {
       return false;
     }
-    return module.getFacet(CustomClassLoadingFacet.class) == null;
+    return jmf.getLoadClasses() == LoadClasses.ManagedByMPS;
   }
 
   public static Set<String> getAllSourcePaths(SModule module) {

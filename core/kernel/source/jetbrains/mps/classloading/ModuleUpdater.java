@@ -200,6 +200,7 @@ public class ModuleUpdater {
   }
 
   private boolean comesWithInvalidIdeaPluginFacet(ReloadableModule module) {
+    // keep it for a while. once our project is migrated and there are not ideaPlugin facets, we should not get this message, ever.
     var facet = module.getFacet(IdeaPluginModuleFacet.class);
     if (facet != null && !facet.isValid()) {
       SearchError error = ErrorContainer.SearchError.of("The module '" + module.getModuleReference() + "' comes with invalid idea plugin facet '" + facet.getPluginId() + "'");

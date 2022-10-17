@@ -15,10 +15,11 @@
  */
 package jetbrains.mps.project.structure;
 
-import jetbrains.mps.classloading.CustomClassLoadingFacet;
 import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.project.Solution;
+import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.project.facets.JavaModuleFacet.LoadClasses;
 import jetbrains.mps.smodel.BootstrapLanguages;
 import jetbrains.mps.smodel.SModelId.IntegerSModelId;
 import jetbrains.mps.smodel.SModelStereotype;
@@ -60,9 +61,9 @@ public class GenericDescriptorModelProvider extends DescriptorModelProvider {
       return false;
     }
     // For solutions not managed by MPS, no reason to assume generation of descriptor class intended for MPS management.
-    return SModuleOperations.canSupplyExtensionsForMPS(module) && module.getFacet(CustomClassLoadingFacet.class) == null;
-    // FIXME CCLF == null is a quick HACK to get solutions like bl.runtime, closures.rt and collections.rt to generate
-    //       without any difference. Likely, canSupplyExtensionsForMPS() shall cease to use CCLF != as a condition,
+    return SModuleOperations.canSupplyExtensionsForMPS(module) && module.getFacet(JavaModuleFacet.class).getLoadClasses() == LoadClasses.ManagedByMPS;
+    // FIXME LoadClasses.ManagedByMPS is a quick HACK to get solutions like bl.runtime, closures.rt and collections.rt to generate
+    //       without any difference. canSupplyExtensionsForMPS() ceased to use CCLF != as a condition,
     //       IDEA-loaded modules that need to contribute into MPS shall use explicit SolutionKind (it's a guess, seems
     //       to be "state of the art" now, but not 100% sure), otherwise we get for bootstrap runtimes an MPS.Annotation
     //       dependency (check history of this class for details) and @Generated annotation. Which is not bad per se,

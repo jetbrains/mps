@@ -18,6 +18,7 @@ package jetbrains.mps.classloading;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.facets.JavaModuleFacet.Compile;
+import jetbrains.mps.project.facets.JavaModuleFacet.LoadClasses;
 import jetbrains.mps.reloading.ClassBytesProvider.ClassBytes;
 import jetbrains.mps.reloading.IClassPathItem;
 import org.jetbrains.annotations.NotNull;
@@ -63,8 +64,10 @@ public class ModuleClassLoaderSupport {
     JavaModuleFacet facet = module.getFacet(JavaModuleFacet.class);
     // first part is equivalent to SModuleOperations.isCompileInMPS(), just don't want to introduce another [kernel]-[project]
     // dependency. XXX perhaps, SModuleOperations shall move to kernel?
-    // FTR, I leave 'getFacet(CCLF) == null' for future work, to investigate an alternative where CL is supplied neither from MPS nor deployment provider
-    return facet != null && facet.getCompile() == Compile.MPS && module.getFacet(CustomClassLoadingFacet.class) == null;
+    // FTR, we used to have 'getFacet(CCLF) == null' here. If we ever get to an alternative where CL is supplied
+    // neither from MPS nor deployment provider, but by third-party means (i.e. true CustomClassLoadingFacet, not just its rudimentary
+    // IDEA lackey), we'd need another LoadClasses constant anyway (not ManagedByMPS)
+    return facet != null && facet.getLoadClasses() == LoadClasses.ManagedByMPS;
   }
 
   public static ModuleClassLoaderSupport create(@NotNull ReloadableModule module,

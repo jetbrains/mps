@@ -22,7 +22,6 @@ import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
 import jetbrains.mps.classloading.IdeaPluginModuleFacet;
-import jetbrains.mps.ide.project.facets.IdeaPluginModuleFacetImpl;
 import jetbrains.mps.ide.ui.dialogs.properties.tabs.BaseTab;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
 import org.jetbrains.mps.openapi.ui.persistence.FacetTab;
@@ -56,6 +55,7 @@ public class IdeaPluginModuleFacetTab extends BaseTab implements FacetTab {
         GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
 
     myTextField = new JTextField(myIdeaPluginModuleFacet.getPluginId());
+    myTextField.setEditable(false);
 
     content.add(myTextField, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_GROW,
         GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
@@ -71,14 +71,11 @@ public class IdeaPluginModuleFacetTab extends BaseTab implements FacetTab {
 
   @Override
   public boolean isModified() {
-    return !myTextField.getText().equals(myIdeaPluginModuleFacet.getPluginId());
+    return false;
   }
 
   @Override
   public void apply() {
-    if (myIdeaPluginModuleFacet instanceof IdeaPluginModuleFacetImpl) {
-      ((IdeaPluginModuleFacetImpl) myIdeaPluginModuleFacet).setPluginId(myTextField.getText());
-    }
   }
 
   @Override
