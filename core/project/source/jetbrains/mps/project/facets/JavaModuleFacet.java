@@ -258,7 +258,7 @@ public interface JavaModuleFacet extends SModuleFacet, GenerationTargetFacet {
      * For MPS, there are no classes in these modules.
      * Intended use: sandbox solutions that are intended to try a language without imposing any consequences for MPS itself.
      */
-    None(false),
+    None(false, "off"),
     /**
      * MPS is responsible to compile code with a Java (and, perhaps, Kotlin, too) compiler.
      * Modules with this level can serve as dependency targets for other modules with {@code MPS} compile setting and can depend on modules with
@@ -266,7 +266,7 @@ public interface JavaModuleFacet extends SModuleFacet, GenerationTargetFacet {
      * Note, this setting doesn't imply there's MPS classloading for the module. Module with this setting may utilize MPS to compile Java code but
      * may target environment other than MPS (e.g. third-party Java framework)
      */
-    MPS(true),
+    MPS(true, "mps"),
     /**
      * MPS shall expect classes in modules with this setting; respects modules for classpath calculation for modules that depend on this one.
      * Modules with this setting generally shall not depend on modules with {@code MPS} setting, although there are scenarios when MPS tolerates this
@@ -276,15 +276,31 @@ public interface JavaModuleFacet extends SModuleFacet, GenerationTargetFacet {
      * When modules with this setting are part of compilation/execution classpath (as a dependency target of another compiled module), their java libraries
      * are taken into account.
      */
-    External(true);
-    Compile(boolean compiled) {
+    External(true, "ext");
+    Compile(boolean compiled, String persistenceValue) {
       myIsCompiled = compiled;
+      myPersistenceValue = persistenceValue;
     }
 
     public boolean isCompiled() {
       return myIsCompiled;
     }
+
+    public String toPersistenceValue() {
+      return myPersistenceValue;
+    }
+
+    public static Compile fromPersistenceValue(String value, Compile defValue) {
+      for(Compile c : Compile.values()) {
+        if (c.myPersistenceValue.equals(value)) {
+          return c;
+        }
+      }
+      return defValue;
+    }
+
     private final boolean myIsCompiled;
+    private final String myPersistenceValue;
   }
 
   /**
@@ -294,7 +310,7 @@ public interface JavaModuleFacet extends SModuleFacet, GenerationTargetFacet {
     /**
      * Modules with {@code NotAvailable} are ignored by MPS classloading logic
      */
-    NotAvailable(false),
+    NotAvailable(false, "off"),
     /**
      * Regular MPS-managed classloader. MPS is capable to reload classes of this module when the module changes.
      * Only {@link Compile#isCompiled()} modules can get this setting.
@@ -302,23 +318,39 @@ public interface JavaModuleFacet extends SModuleFacet, GenerationTargetFacet {
      * be sure they get updated once module changes), however, technically it shouldn't be an issue to create an MPS-managed CL for code compiled elsewhere.
      * With this setting, MPS respects java library dependencies specified for the module, as well as own module classes (generated or hand-written).
      */
-    ManagedByMPS(true),
+    ManagedByMPS(true, "mps"),
     /**
      * Tells MPS to consult module origin (e.g. {@link jetbrains.mps.library.SLibrary}) for a classloader for module classes. MPS makes no further assumptions
      * about what's in the classpath, and doesn't augment classpath with java libraries or anything else specified for the module (assumes contributor takes
      * care of this).
      */
-    ManagedByContributor(true);
+    ManagedByContributor(true, "provided");
 
-    LoadClasses(boolean classesAvailable) {
+    LoadClasses(boolean classesAvailable, String persistenceValue) {
       myClassesAvailable = classesAvailable;
+      myPersistenceValue = persistenceValue;
     }
 
     public boolean classesAvailable() {
       return myClassesAvailable;
     }
 
+
+    public String toPersistenceValue() {
+      return myPersistenceValue;
+    }
+
+    public static LoadClasses fromPersistenceValue(String value, LoadClasses defValue) {
+      for(LoadClasses lc : LoadClasses.values()) {
+        if (lc.myPersistenceValue.equals(value)) {
+          return lc;
+        }
+      }
+      return defValue;
+    }
+
     private final boolean myClassesAvailable;
+    private final String myPersistenceValue;
   }
 
   /**
@@ -340,22 +372,37 @@ public interface JavaModuleFacet extends SModuleFacet, GenerationTargetFacet {
     /**
      * Module doesn't supply any extensions to MPS
      */
-    NotAvailable(false),
+    NotAvailable(false, "no"),
     // Activator,  XXX Perhaps, can make use of dedicated setting for ModuleActivator (aka module runtime) scenarios?
     /**
      * Module can supply extensions to MPS (what's known as {@code SolutionKind.PLUGIN_CORE}, {@code SolutionKind.PLUGIN_EDITOR} or {@code SolutionKind.PLUGIN_OTHER}
      * If necessary, we can add compatibility/migration literals for CORE, EDITOR, OTHER cases (with accessor to give respective SolutionKind)
      */
-    Plugin(true);
+    Plugin(true, "yes");
 
-    LoadExtensions(boolean contributesExtensions) {
+    LoadExtensions(boolean contributesExtensions, String persistenceValue) {
       myExtensions = contributesExtensions;
+      myPersistenceValue = persistenceValue;
     }
 
     public boolean contributesExtensions() {
       return myExtensions;
     }
 
+    public String toPersistenceValue() {
+      return myPersistenceValue;
+    }
+
+    public static LoadExtensions fromPersistenceValue(String value, LoadExtensions defValue) {
+      for(LoadExtensions le : LoadExtensions.values()) {
+        if (le.myPersistenceValue.equals(value)) {
+          return le;
+        }
+      }
+      return defValue;
+    }
+
     private final boolean myExtensions;
+    private final String myPersistenceValue;
   }
 }

@@ -23,7 +23,6 @@ import jetbrains.mps.project.MementoWithFS;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
-import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionKind;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
@@ -42,6 +41,7 @@ import java.util.Set;
 /**
  * todo: divide into two parts: JavaModuleFacetSrcImpl && JavaModuleFacetPackagedImpl
  */
+@SuppressWarnings("removal")
 public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFacet {
   private static final Logger LOG = Logger.getLogger(JavaModuleFacetImpl.class);
   private static final String CLASSES_KEY = "classes";
@@ -54,11 +54,16 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
 
   private static final String JAVA_LANGUAGE_LEVEL = "languageLevel";
 
+  private static final String KEY_COMPILE = "compile";
+  private static final String KEY_CLASSLOADER = "classes";
+  private static final String KEY_EXTENSION = "ext";
+
   // XXX perhaps, shall keep String and translate to IFile the moment asked. However, feel right to use IFile (well, *not String*) for FS locations
   //     and shall rather deal with String uses for files in MD. Uses of the value suggest we can use java.io.File (this is a location we
   //     unlikely need IDEA VFS services for)
   private IFile myGeneratedClassesLocation = null;
 
+  private boolean myTransitionalNewValues = false;
   private Compile myCompile = Compile.MPS;
   private LoadClasses myLoadClasses = LoadClasses.ManagedByMPS;
   private LoadExtensions myLoadExtensions = LoadExtensions.NotAvailable;
@@ -203,6 +208,11 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
       toUpdate.put(GENERATED_KEY, Boolean.toString(true));
     }
     toUpdate.put(PATH_KEY, myGeneratedClassesLocation != null ? myGeneratedClassesLocation.getPath() : null);
+    if (!myTransitionalNewValues) {
+      memento.put(KEY_COMPILE, myCompile.toPersistenceValue());
+      memento.put(KEY_CLASSLOADER, myLoadClasses.toPersistenceValue());
+      memento.put(KEY_EXTENSION, myLoadExtensions.toPersistenceValue());
+    }
   }
 
   @Override
@@ -231,6 +241,8 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
         }
       }
     }
+    // configure defaults for transition
+    myTransitionalNewValues = true;
     AbstractModule module = getAbstractModule();
     ModuleDescriptor descriptor = module.getModuleDescriptor();
     if (descriptor != null) {
@@ -252,11 +264,12 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
           myLoadExtensions = LoadExtensions.Plugin;
         } else {
           // we've got plain stub modules, with ideaPlugin and no extensions,
+          // quite some modules like language runtimes that are compiled in IDEA (e.g. behavior rt),
           // as well as 3 modules that got ideaPlugin and contribute extensions (either with <mps.PluginComponentContributor>
-          // ext-point or through lang.extensions). I'm not quite sure we have to support this scenario as it's quite rare,
-          // nevertheless, if I could, why not?
-          final boolean roStub = ((SolutionDescriptor) descriptor).isReadOnlyStubModule();
-          myLoadExtensions = myLoadClasses == LoadClasses.ManagedByContributor && !roStub ? LoadExtensions.Plugin : LoadExtensions.NotAvailable;
+          // ext-point or through lang.extensions). I don't feel we have to detect this scenario as it's quite rare,
+          // not it is easy to accomplish. I'd say users could go and fix one argument in Java facet tab if they encounter troubles
+          // (there are checking rules for lang.plugin and lang.extensions)
+          myLoadExtensions = LoadExtensions.NotAvailable;
         }
       } else {
         // XXX revisit Generator/Devkit scenario. Generator can load classes, but not extensions. Devkit is capable of neither at the moment.
@@ -266,6 +279,23 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
       myCompile = Compile.None;
       myLoadClasses = LoadClasses.NotAvailable;
       myLoadExtensions = LoadExtensions.NotAvailable;
+    }
+    //
+    // if there are serialized values, use them
+    final String compileValue = memento.get(KEY_COMPILE);
+    if (compileValue != null) {
+      myTransitionalNewValues = false;
+      myCompile = Compile.fromPersistenceValue(compileValue, Compile.None);
+    }
+    final String clValue = memento.get(KEY_CLASSLOADER);
+    if (clValue != null) {
+      myTransitionalNewValues = false;
+      myLoadClasses = LoadClasses.fromPersistenceValue(clValue, LoadClasses.NotAvailable);
+    }
+    final String extValue = memento.get(KEY_EXTENSION);
+    if (extValue != null) {
+      myTransitionalNewValues = false;
+      myLoadExtensions = LoadExtensions.fromPersistenceValue(extValue, LoadExtensions.NotAvailable);
     }
   }
 
@@ -288,17 +318,20 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
 
   @Override
   public void setCompile(Compile compile) {
+    myTransitionalNewValues = false;
     myCompile = compile;
   }
 
   @Override
   public void setLoadClasses(LoadClasses loadClasses) {
+    myTransitionalNewValues = false;
     myLoadClasses = loadClasses;
   }
 
   @Override
   public void setLoadExtensions(LoadExtensions loadExtensions) {
-    myLoadExtensions = myLoadExtensions;
+    myTransitionalNewValues = false;
+    myLoadExtensions = loadExtensions;
   }
 
 
