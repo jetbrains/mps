@@ -26,6 +26,10 @@
     </present>
     <!-- these projects require IDE and MPS project due to dependencies not available for migrate task -->
     <!-- Perhaps, can extend dependencies of migrate task with nested plugin or library? -->
+    <!--
+         FIXME figure out what's exactly prevents automatic migration, it's very tedious activity
+            to update these once there's new migration. I didn't notice anything suspicious when did this recently.
+     -->
     <exclude name="generator_demo" />
     <exclude name="messagesCustomization" />
     <exclude name="customizedDebugger" />
