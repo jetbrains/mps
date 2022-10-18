@@ -88,18 +88,29 @@ public class ProjectMPSFacetCorrectnessTest implements EnvironmentAware {
         }
         CustomClassLoadingFacet facet = module.getFacet(CustomClassLoadingFacet.class);
         if (facet != null) {
+          // XXX FWIW, next checks were not thoroughly reviewed once IPMF instances gone from module
           myErrors.checkThat("Unknown kind of facet " + facet + " in module " + module, facet, CoreMatchers.instanceOf(IdeaPluginModuleFacet.class));
           myErrors.checkThat("Facet of the module " + module + " is not valid", facet.isValid(), CoreMatchers.equalTo(true));
           myErrors.checkThat("The module " + module + " has enabled both idea plugin facet and java compilation in MPS",
                              javaModuleFacet.getCompile(), CoreMatchers.not(Compile.MPS));
           myErrors.checkThat(javaModuleFacet.getCompile(), CoreMatchers.equalTo(Compile.External));
         } else {
-          // FIXME with new distinct compile/cl setting, no need to enforce compileInMPS == true for a JMF facet, although
-          //    generaly it's right not to use JMF for such module
+          // generally there's no reason to use JMF for a module that is not compiled, but we still use JMF as GenerationTargetFacet
+          // surrogate in few scenarios
           if (!EXCLUDES.contains(module.getModuleName())) {
-            myErrors.checkThat("The module " + module + " has neither idea plugin facet nor java compilation enabled - must have no java facet",
-                               javaModuleFacet.getCompile(),
-                               CoreMatchers.equalTo(Compile.MPS));
+            myErrors.checkThat("The module " + module + " has java compilation disabled - no reason to bear java facet",
+                               javaModuleFacet.getCompile().isCompiled(),
+                               CoreMatchers.equalTo(true));
+          }
+          if (!javaModuleFacet.getCompile().isCompiled()) {
+            myErrors.checkThat("The module " + module + " has java compilation disabled, but classes made available to MPS",
+                               javaModuleFacet.getLoadClasses().classesAvailable(),
+                               CoreMatchers.equalTo(false));
+          }
+          if (javaModuleFacet.getLoadExtensions().contributesExtensions()) {
+            myErrors.checkThat("The module " + module + " claims to contribute extensions to MPS, but classes are not available to MPS",
+                               javaModuleFacet.getLoadClasses().classesAvailable(),
+                               CoreMatchers.equalTo(true));
           }
         }
       }
