@@ -7,8 +7,7 @@
   </models>
   <facets>
     <facet planModel="r:785f2a6c-c64a-4974-9501-91ce4789a01c(FACETS.genplan@genplan)" type="generator" />
-    <facet pluginId="test.plugin.id" type="ideaPlugin" />
-    <facet type="java">
+    <facet type="java" compile="mps" classes="provided" ext="no">
       <classes generated="true" path="${module}/classes_gen" />
     </facet>
   </facets>

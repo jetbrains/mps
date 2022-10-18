@@ -7,7 +7,7 @@
     <modelRoot contentPath="${module}/source_gen/PER_ROOT" type="java_source_stubs" />
   </models>
   <facets>
-    <facet type="java">
+    <facet type="java" compile="mps" classes="mps" ext="no">
       <classes generated="true" path="${module}/classes_gen" />
     </facet>
   </facets>
