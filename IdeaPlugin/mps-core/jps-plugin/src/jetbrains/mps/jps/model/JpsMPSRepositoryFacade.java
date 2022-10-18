@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package jetbrains.mps.jps.model;
 
 import jetbrains.mps.baseLanguage.search.MPSBaseLanguage;
-import jetbrains.mps.classloading.CustomClassLoadingFacet;
 import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.core.platform.PlatformFactory;
 import jetbrains.mps.core.platform.PlatformOptionsBuilder;
@@ -36,6 +35,7 @@ import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.project.ModuleId;
+import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.smodel.MPSModuleOwner;
@@ -323,7 +323,7 @@ public class JpsMPSRepositoryFacade implements MPSModuleOwner {
       SModule existingModule = myRepository.getModule(jdkId);
       if (existingModule != null) {
         desc.setNamespace(existingModule.getModuleName());
-        CustomClassLoadingFacet facet = existingModule.getFacet(CustomClassLoadingFacet.class);
+        JavaModuleFacet facet = existingModule.getFacet(JavaModuleFacet.class);
         assert facet != null;
         Memento memento = new MementoImpl();
         facet.save(memento);
