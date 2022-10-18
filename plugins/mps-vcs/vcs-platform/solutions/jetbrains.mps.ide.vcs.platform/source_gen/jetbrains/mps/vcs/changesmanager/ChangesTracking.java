@@ -180,6 +180,9 @@ public final class ChangesTracking {
   /*package*/ void update(final boolean force) {
     myQueue.assertSoftlyIsCommandThread();
 
+    if (myProject.isDisposed()) {
+      return;
+    }
     SRepository repo = ProjectHelper.fromIdeaProject(myProject).getRepository();
     final Wrappers._boolean doNotContinue = new Wrappers._boolean(true);
     final Wrappers._boolean useEmptyBaseModel = new Wrappers._boolean(false);

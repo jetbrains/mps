@@ -7729,6 +7729,19 @@
           </node>
         </node>
         <node concept="3clFbH" id="43LPOOeGBo7" role="3cqZAp" />
+        <node concept="3clFbJ" id="6n1cCC6u4hc" role="3cqZAp">
+          <node concept="3clFbS" id="6n1cCC6u4he" role="3clFbx">
+            <node concept="3cpWs6" id="6n1cCC6uHxa" role="3cqZAp" />
+          </node>
+          <node concept="2OqwBi" id="6n1cCC6uomA" role="3clFbw">
+            <node concept="37vLTw" id="6n1cCC6ubqM" role="2Oq$k0">
+              <ref role="3cqZAo" node="2JwSLRbzlnZ" resolve="myProject" />
+            </node>
+            <node concept="liA8E" id="6n1cCC6uw8v" role="2OqNvi">
+              <ref role="37wK5l" to="1m72:~ComponentManager.isDisposed()" resolve="isDisposed" />
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="43LPOOeGBSP" role="3cqZAp">
           <node concept="3cpWsn" id="43LPOOeGBSQ" role="3cpWs9">
             <property role="TrG5h" value="repo" />
