@@ -81,7 +81,12 @@ public class CopyTraceInfo_Facet extends IFacet.Stub {
                   }
                   JavaModuleFacet facet = tres.module().getFacet(JavaModuleFacet.class);
                   final IFile destination = facet.getClassesLocation(tres.modelDescriptor());
-                  if (destination != null && !(destination.exists())) {
+                  if (destination == null) {
+                    // not sure if it's ok to face model w/o classes location here, but destination.exists and destination.findChild
+                    // don't tolerate null. Seems that this relates to JMF.getClassesGen() == null (removed legacy default in 5e979634)
+                    continue;
+                  }
+                  if (!(destination.exists())) {
                     ListSequence.fromList(toCreate).addElement(destination);
                   }
                   Sequence.fromIterable(tres.delta()).visitAll(new IVisitor<IDelta>() {
