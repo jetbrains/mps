@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<solution name="jetbrains.mps.persistence" uuid="9ef82768-a1b1-451e-b136-5a86b2b5fdbb" moduleVersion="0" pluginKind="PLUGIN_CORE" compileInMPS="false">
+<solution name="jetbrains.mps.persistence" uuid="9ef82768-a1b1-451e-b136-5a86b2b5fdbb" moduleVersion="0" compileInMPS="false">
   <compileInIDEA />
   <models>
     <modelRoot contentPath="${module}" type="default">
@@ -7,7 +7,7 @@
     </modelRoot>
   </models>
   <facets>
-    <facet type="java" compile="ext" classes="provided" ext="yes">
+    <facet type="java" compile="ext" classes="provided" ext="no">
       <classes generated="true" />
     </facet>
   </facets>

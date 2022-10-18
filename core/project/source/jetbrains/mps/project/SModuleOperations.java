@@ -170,6 +170,19 @@ public class SModuleOperations {
     return jmf.getLoadClasses() == LoadClasses.ManagedByMPS;
   }
 
+  /**
+   * Answers if MPS can expect classes for the module. Unlike {@link #canSupplyExtensionsForMPS(SModule)}, this doesn't mean
+   * MPS would like to load them directly for the purposes of contributing extensions. It's more like
+   * "participates in MPS module classloading story"
+   */
+  public static boolean classesAvailableToMPS(@Nullable SModule module) {
+    if (module == null) {
+      return false;
+    }
+    final JavaModuleFacet jmf = module.getFacet(JavaModuleFacet.class);
+    return jmf != null && jmf.getLoadClasses().classesAvailable();
+  }
+
   public static Set<String> getAllSourcePaths(SModule module) {
     // todo: get rid from source paths?
     ArrayList<String> paths = new ArrayList<>(4);

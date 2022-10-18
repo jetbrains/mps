@@ -109,7 +109,7 @@ public class QueriesGenerated extends QueryProviderBase {
     if (model == null) {
       return false;
     }
-    return SModuleOperations.canSupplyExtensionsForMPS(model.getModule());
+    return SModuleOperations.classesAvailableToMPS(model.getModule());
   }
   public static boolean ifMacro_Condition_0_1(final IfMacroContext _context) {
     return false;
@@ -201,7 +201,7 @@ public class QueriesGenerated extends QueryProviderBase {
     if (model == null) {
       return false;
     }
-    return SModuleOperations.canSupplyExtensionsForMPS(model.getModule());
+    return SModuleOperations.classesAvailableToMPS(model.getModule());
   }
   public static SNode sourceNodeQuery_0_0(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.root$ACJu), LINKS.type$AvMt);

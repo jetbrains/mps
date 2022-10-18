@@ -472,14 +472,14 @@
               </node>
             </node>
             <node concept="3cpWs6" id="5JmWGdvpy$I" role="3cqZAp">
-              <node concept="2YIFZM" id="2rTnW2A4_I4" role="3cqZAk">
-                <ref role="37wK5l" to="z1c3:~SModuleOperations.canSupplyExtensionsForMPS(org.jetbrains.mps.openapi.module.SModule)" resolve="canSupplyExtensionsForMPS" />
+              <node concept="2YIFZM" id="2YUIXYG3DQZ" role="3cqZAk">
+                <ref role="37wK5l" to="z1c3:~SModuleOperations.classesAvailableToMPS(org.jetbrains.mps.openapi.module.SModule)" resolve="classesAvailableToMPS" />
                 <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
-                <node concept="2OqwBi" id="2rTnW2A4Aar" role="37wK5m">
-                  <node concept="liA8E" id="2rTnW2A4Aas" role="2OqNvi">
+                <node concept="2OqwBi" id="2YUIXYG3DR0" role="37wK5m">
+                  <node concept="liA8E" id="2YUIXYG3DR1" role="2OqNvi">
                     <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
                   </node>
-                  <node concept="37vLTw" id="2rTnW2A4Aat" role="2Oq$k0">
+                  <node concept="37vLTw" id="2YUIXYG3DR2" role="2Oq$k0">
                     <ref role="3cqZAo" node="6aStqPyPqyd" resolve="model" />
                   </node>
                 </node>
@@ -4700,14 +4700,14 @@
                           </node>
                         </node>
                         <node concept="3cpWs6" id="5JmWGdvp7gS" role="3cqZAp">
-                          <node concept="2YIFZM" id="2rTnW2A4mDD" role="3cqZAk">
-                            <ref role="37wK5l" to="z1c3:~SModuleOperations.canSupplyExtensionsForMPS(org.jetbrains.mps.openapi.module.SModule)" resolve="canSupplyExtensionsForMPS" />
+                          <node concept="2YIFZM" id="2YUIXYG3DTX" role="3cqZAk">
+                            <ref role="37wK5l" to="z1c3:~SModuleOperations.classesAvailableToMPS(org.jetbrains.mps.openapi.module.SModule)" resolve="classesAvailableToMPS" />
                             <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
-                            <node concept="2OqwBi" id="2rTnW2A4mKV" role="37wK5m">
-                              <node concept="liA8E" id="2rTnW2A4mKW" role="2OqNvi">
+                            <node concept="2OqwBi" id="2YUIXYG3DTY" role="37wK5m">
+                              <node concept="liA8E" id="2YUIXYG3DTZ" role="2OqNvi">
                                 <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
                               </node>
-                              <node concept="37vLTw" id="2rTnW2A4mKX" role="2Oq$k0">
+                              <node concept="37vLTw" id="2YUIXYG3DU0" role="2Oq$k0">
                                 <ref role="3cqZAo" node="6aStqPyPqF8" resolve="model" />
                               </node>
                             </node>
