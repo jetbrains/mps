@@ -246,15 +246,18 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     AbstractModule module = getAbstractModule();
     ModuleDescriptor descriptor = module.getModuleDescriptor();
     if (descriptor != null) {
+      final boolean ideaFacetPresent = descriptor.getModuleFacetDescriptors().stream().anyMatch(d -> IdeaPluginModuleFacet.FACET_TYPE.equals(d.getType()));
       if (descriptor.getCompileInMPS()) {
         myCompile = Compile.MPS;
-        myLoadClasses = LoadClasses.ManagedByMPS;
-      } else if (descriptor.getModuleFacetDescriptors().stream().anyMatch(d -> IdeaPluginModuleFacet.FACET_TYPE.equals(d.getType()))) {
-        myCompile = Compile.External;
-        myLoadClasses = LoadClasses.ManagedByContributor;
+        myLoadClasses = ideaFacetPresent ? LoadClasses.ManagedByContributor : LoadClasses.ManagedByMPS;
       } else {
-        myCompile = Compile.None;
-        myLoadClasses = LoadClasses.NotAvailable;
+        if (ideaFacetPresent) {
+          myCompile = Compile.External;
+          myLoadClasses = LoadClasses.ManagedByContributor;
+        } else {
+          myCompile = Compile.None;
+          myLoadClasses = LoadClasses.NotAvailable;
+        }
       }
       if (module instanceof Language) {
         myLoadExtensions = LoadExtensions.Plugin;
