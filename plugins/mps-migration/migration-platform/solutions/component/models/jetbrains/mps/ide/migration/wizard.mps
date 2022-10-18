@@ -12658,21 +12658,12 @@
                   <node concept="37vLTw" id="4O8MFM2D3zE" role="37vLTJ">
                     <ref role="3cqZAo" node="6IIoMkRV5yC" resolve="allModules" />
                   </node>
-                  <node concept="2YIFZM" id="4O8MFM2CYH5" role="37vLTx">
-                    <ref role="37wK5l" to="18ew:~IterableUtil.asList(java.lang.Iterable)" resolve="asList" />
-                    <ref role="1Pybhc" to="18ew:~IterableUtil" resolve="IterableUtil" />
-                    <node concept="2OqwBi" id="4O8MFM2CYH6" role="37wK5m">
-                      <node concept="2OqwBi" id="4O8MFM2CYH7" role="2Oq$k0">
-                        <node concept="37vLTw" id="4O8MFM2CYH8" role="2Oq$k0">
-                          <ref role="3cqZAo" node="6IIoMkRV5yG" resolve="project" />
-                        </node>
-                        <node concept="liA8E" id="4O8MFM2CYH9" role="2OqNvi">
-                          <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
-                        </node>
-                      </node>
-                      <node concept="liA8E" id="4O8MFM2CYHa" role="2OqNvi">
-                        <ref role="37wK5l" to="lui2:~SRepository.getModules()" resolve="getModules" />
-                      </node>
+                  <node concept="2OqwBi" id="4O8MFM2CYH7" role="37vLTx">
+                    <node concept="37vLTw" id="4O8MFM2CYH8" role="2Oq$k0">
+                      <ref role="3cqZAo" node="6IIoMkRV5yG" resolve="project" />
+                    </node>
+                    <node concept="liA8E" id="2Z81NTQWiwY" role="2OqNvi">
+                      <ref role="37wK5l" to="z1c3:~Project.getProjectModulesWithGenerators()" resolve="getProjectModulesWithGenerators" />
                     </node>
                   </node>
                 </node>
@@ -12820,6 +12811,40 @@
                                   <node concept="1QHqEO" id="6IIoMkRV5zT" role="3cqZAp">
                                     <node concept="1QHqEC" id="6IIoMkRV5zU" role="1QHqEI">
                                       <node concept="3clFbS" id="6IIoMkRV5zV" role="1bW5cS">
+                                        <node concept="3SKdUt" id="2Z81NTQWu0H" role="3cqZAp">
+                                          <node concept="1PaTwC" id="2Z81NTQWu0I" role="1aUNEU">
+                                            <node concept="3oM_SD" id="2Z81NTQWwoA" role="1PaTwD">
+                                              <property role="3oM_SC" value="FIXME" />
+                                            </node>
+                                            <node concept="3oM_SD" id="2Z81NTQWwoC" role="1PaTwD">
+                                              <property role="3oM_SC" value="model" />
+                                            </node>
+                                            <node concept="3oM_SD" id="2Z81NTQWN_b" role="1PaTwD">
+                                              <property role="3oM_SC" value="command," />
+                                            </node>
+                                            <node concept="3oM_SD" id="2Z81NTQWB9Y" role="1PaTwD">
+                                              <property role="3oM_SC" value="o'rly?" />
+                                            </node>
+                                            <node concept="3oM_SD" id="2Z81NTQWSg4" role="1PaTwD">
+                                              <property role="3oM_SC" value="Cast" />
+                                            </node>
+                                            <node concept="3oM_SD" id="2Z81NTQWVFI" role="1PaTwD">
+                                              <property role="3oM_SC" value="to" />
+                                            </node>
+                                            <node concept="3oM_SD" id="2Z81NTQWVFP" role="1PaTwD">
+                                              <property role="3oM_SC" value="AM?" />
+                                            </node>
+                                            <node concept="3oM_SD" id="2Z81NTQWXnU" role="1PaTwD">
+                                              <property role="3oM_SC" value="Individual" />
+                                            </node>
+                                            <node concept="3oM_SD" id="2Z81NTQX4q6" role="1PaTwD">
+                                              <property role="3oM_SC" value="per" />
+                                            </node>
+                                            <node concept="3oM_SD" id="2Z81NTQX4qg" role="1PaTwD">
+                                              <property role="3oM_SC" value="module?" />
+                                            </node>
+                                          </node>
+                                        </node>
                                         <node concept="3clFbF" id="4O8MFM2$0Aw" role="3cqZAp">
                                           <node concept="2OqwBi" id="4O8MFM2$gon" role="3clFbG">
                                             <node concept="1eOMI4" id="4O8MFM2$dMs" role="2Oq$k0">

@@ -37,7 +37,6 @@ import jetbrains.mps.migration.global.CleanupProjectMigration;
 import java.util.HashMap;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.errors.item.IssueKindReportItem;
-import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.project.AbstractModule;
 import java.util.concurrent.atomic.AtomicReference;
 import jetbrains.mps.lang.migration.runtime.base.BaseScriptReference;
@@ -333,7 +332,7 @@ public class MigrationTask {
   private void runForceSave(final ProgressMonitor m) {
     final Wrappers._T<List<SModule>> allModules = new Wrappers._T<List<SModule>>();
     final Project project = mySession.getProject();
-    project.getRepository().getModelAccess().runReadAction(() -> allModules.value = IterableUtil.asList(project.getRepository().getModules()));
+    project.getRepository().getModelAccess().runReadAction(() -> allModules.value = project.getProjectModulesWithGenerators());
     String caption = "Force-saving project modules, models...";
     m.start(caption, ListSequence.fromList(allModules.value).count() + 10);
     runLocalHistoryRecord(caption, () -> {
@@ -343,7 +342,10 @@ public class MigrationTask {
 
         for (final SModule module : ListSequence.fromList(allModules.value)) {
           m.advance(1);
-          ApplicationManager.getApplication().invokeAndWait(() -> project.getRepository().getModelAccess().executeCommand(() -> ((AbstractModule) module).forceSaveRecursively()), modalityState);
+          ApplicationManager.getApplication().invokeAndWait(() -> project.getRepository().getModelAccess().executeCommand(() -> {
+            // FIXME model command, o'rly? Cast to AM? Individual per module?
+            ((AbstractModule) module).forceSaveRecursively();
+          }), modalityState);
         }
       } finally {
         m.done();
