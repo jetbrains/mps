@@ -5,9 +5,9 @@ package jetbrains.mps.ide.refactoring;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.EditableSModel;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.language.LanguageAspectSupport;
@@ -28,6 +28,21 @@ public final class ModelNameValidator {
    */
   public ModelNameValidator(@NotNull ModelRoot modelRoot) {
     myModelRoot = modelRoot;
+  }
+
+  /**
+   * Try to construct SModelName from input and validate it.
+   * 
+   * @param modelName string containing fully qualified model name
+   * @return validation error text or null if name is valid
+   */
+  @Nullable
+  public String validate(@NotNull final String modelName) {
+    SModelName.SModelNameCheck check = SModelName.checkModelName(modelName);
+    if (check != SModelName.SModelNameCheck.Pass) {
+      return check.getProblemDescription();
+    }
+    return validate(new SModelName(modelName), null);
   }
 
   /**
@@ -79,7 +94,7 @@ public final class ModelNameValidator {
    * @return validation error text or null if name is valid
    */
   @Nullable
-  public String validate(@NotNull final SModelName modelName, final EditableSModel currentModelDescriptor) {
+  public String validate(@NotNull final SModelName modelName, @Nullable final EditableSModel currentModelDescriptor) {
     final SModule module = myModelRoot.getModule();
 
     if (module instanceof Language) {
@@ -95,11 +110,13 @@ public final class ModelNameValidator {
     }
 
     final Wrappers._boolean canCreateModel = new Wrappers._boolean();
-    if (currentModelDescriptor == null) {
-      module.getRepository().getModelAccess().runReadAction(() -> canCreateModel.value = myModelRoot.canCreateModel(modelName));
-    } else {
-      module.getRepository().getModelAccess().runReadAction(() -> canCreateModel.value = myModelRoot.canRenameModel(modelName, currentModelDescriptor));
-    }
+    module.getRepository().getModelAccess().runReadAction(() -> {
+      if (currentModelDescriptor == null) {
+        canCreateModel.value = myModelRoot.canCreateModel(modelName);
+      } else {
+        canCreateModel.value = myModelRoot.canRenameModel(modelName, currentModelDescriptor);
+      }
+    });
     if (!(canCreateModel.value)) {
       return IdeBundle.message("dialogs.model.new.error.unable.create.under.model.root");
     }

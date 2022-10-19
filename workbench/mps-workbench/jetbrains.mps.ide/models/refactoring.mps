@@ -55,7 +55,6 @@
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
     <import index="57ty" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.messages(MPS.Platform/)" />
     <import index="et5u" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.messages(MPS.Core/)" />
-    <import index="zn9m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util(MPS.IDEA/)" />
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" />
   </imports>
   <registry>
@@ -2317,7 +2316,7 @@
                 <ref role="3cqZAo" node="6iwuqdL$7ZW" resolve="myValidator" />
               </node>
               <node concept="liA8E" id="6iwuqdL$qrK" role="2OqNvi">
-                <ref role="37wK5l" node="CBwdDm0sNf" resolve="validateForRename" />
+                <ref role="37wK5l" node="5i4P_m2jae6" resolve="validateForRename" />
                 <node concept="1rXfSq" id="6iwuqdL$qrL" role="37wK5m">
                   <ref role="37wK5l" to="u42p:WWy1UWgXzO" resolve="getCurrentValue" />
                 </node>
@@ -5525,8 +5524,8 @@
       </node>
     </node>
     <node concept="2tJIrI" id="6iwuqdLyLPQ" role="jymVt" />
-    <node concept="3clFb_" id="CBwdDm0sNf" role="jymVt">
-      <property role="TrG5h" value="validateForRename" />
+    <node concept="3clFb_" id="6iwuqdLyKsJ" role="jymVt">
+      <property role="TrG5h" value="validate" />
       <node concept="2AHcQZ" id="CBwdDm0sNg" role="2AJF6D">
         <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
       </node>
@@ -5538,15 +5537,6 @@
         </node>
         <node concept="3uibUv" id="CBwdDm0sNj" role="1tU5fm">
           <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="CBwdDm0sNk" role="3clF46">
-        <property role="TrG5h" value="currentModelDescriptor" />
-        <node concept="2AHcQZ" id="CBwdDm0sNl" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-        </node>
-        <node concept="3uibUv" id="CBwdDm0sNm" role="1tU5fm">
-          <ref role="3uigEE" to="mhbf:~EditableSModel" resolve="EditableSModel" />
         </node>
       </node>
       <node concept="3clFbS" id="CBwdDm0sNn" role="3clF47">
@@ -5599,9 +5589,7 @@
                 </node>
               </node>
             </node>
-            <node concept="37vLTw" id="CBwdDm0sND" role="37wK5m">
-              <ref role="3cqZAo" node="CBwdDm0sNk" resolve="currentModelDescriptor" />
-            </node>
+            <node concept="10Nm6u" id="5i4P_m2jjLY" role="37wK5m" />
           </node>
         </node>
       </node>
@@ -5615,50 +5603,152 @@
             <property role="1dT_AB" value="Try to construct SModelName from input and validate it." />
           </node>
         </node>
-        <node concept="TZ5HA" id="CBwdDm0uYN" role="TZ5H$">
-          <node concept="1dT_AC" id="CBwdDm0uYO" role="1dT_Ay">
-            <property role="1dT_AB" value="When renaming on case-insensitive file systems it should be permitted to rename to a name that differs from existing names in capitalization." />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="CBwdDm0vVB" role="TZ5H$">
-          <node concept="1dT_AC" id="CBwdDm0vVC" role="1dT_Ay">
-            <property role="1dT_AB" value="When creating new models this should not be allowed." />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="CBwdDm0wGI" role="TZ5H$">
-          <node concept="1dT_AC" id="CBwdDm0wGJ" role="1dT_Ay">
-            <property role="1dT_AB" value="&lt;br&gt;" />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="CBwdDm0xpX" role="TZ5H$">
-          <node concept="1dT_AC" id="CBwdDm0xqb" role="1dT_Ay">
-            <property role="1dT_AB" value="See " />
-          </node>
-          <node concept="1dT_AA" id="CBwdDm0xqc" role="1dT_Ay">
-            <node concept="92FcH" id="CBwdDm0xqd" role="qph3F">
-              <node concept="TZ5HA" id="CBwdDm0xqe" role="2XjZqd" />
-              <node concept="VXe0Z" id="CBwdDm0xqf" role="92FcQ">
-                <ref role="VXe0S" node="6iwuqdLyLND" resolve="validate" />
-              </node>
-            </node>
-          </node>
-          <node concept="1dT_AC" id="CBwdDm0xpY" role="1dT_Ay">
-            <property role="1dT_AB" value="" />
-          </node>
-        </node>
         <node concept="TUZQ0" id="CBwdDm0uEZ" role="3nqlJM">
           <property role="TUZQ4" value="string containing fully qualified model name" />
           <node concept="zr_55" id="CBwdDm0uF1" role="zr_5Q">
             <ref role="zr_51" node="CBwdDm0sNh" resolve="modelName" />
           </node>
         </node>
-        <node concept="TUZQ0" id="CBwdDm0uF2" role="3nqlJM">
-          <property role="TUZQ4" value="The current model that is going to be renamed" />
-          <node concept="zr_55" id="CBwdDm0uF4" role="zr_5Q">
-            <ref role="zr_51" node="CBwdDm0sNk" resolve="currentModelDescriptor" />
+        <node concept="x79VA" id="CBwdDm0uF5" role="3nqlJM">
+          <property role="x79VB" value="validation error text or null if name is valid" />
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="5i4P_m2jbgC" role="jymVt" />
+    <node concept="3clFb_" id="5i4P_m2jae6" role="jymVt">
+      <property role="TrG5h" value="validateForRename" />
+      <node concept="2AHcQZ" id="5i4P_m2jae7" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+      </node>
+      <node concept="37vLTG" id="5i4P_m2jae8" role="3clF46">
+        <property role="TrG5h" value="modelName" />
+        <property role="3TUv4t" value="true" />
+        <node concept="2AHcQZ" id="5i4P_m2jae9" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+        <node concept="3uibUv" id="5i4P_m2jaea" role="1tU5fm">
+          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="5i4P_m2jaeb" role="3clF46">
+        <property role="TrG5h" value="currentModelDescriptor" />
+        <node concept="2AHcQZ" id="5i4P_m2jaec" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+        <node concept="3uibUv" id="5i4P_m2jaed" role="1tU5fm">
+          <ref role="3uigEE" to="mhbf:~EditableSModel" resolve="EditableSModel" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="5i4P_m2jaee" role="3clF47">
+        <node concept="3cpWs8" id="5i4P_m2jaef" role="3cqZAp">
+          <node concept="3cpWsn" id="5i4P_m2jaeg" role="3cpWs9">
+            <property role="TrG5h" value="check" />
+            <node concept="3uibUv" id="5i4P_m2jaeh" role="1tU5fm">
+              <ref role="3uigEE" to="mhbf:~SModelName$SModelNameCheck" resolve="SModelNameCheck" />
+            </node>
+            <node concept="2YIFZM" id="5i4P_m2jaei" role="33vP2m">
+              <ref role="1Pybhc" to="mhbf:~SModelName" resolve="SModelName" />
+              <ref role="37wK5l" to="mhbf:~SModelName.checkModelName(java.lang.String)" resolve="checkModelName" />
+              <node concept="37vLTw" id="5i4P_m2jaej" role="37wK5m">
+                <ref role="3cqZAo" node="5i4P_m2jae8" resolve="modelName" />
+              </node>
+            </node>
           </node>
         </node>
-        <node concept="x79VA" id="CBwdDm0uF5" role="3nqlJM">
+        <node concept="3clFbJ" id="5i4P_m2jaek" role="3cqZAp">
+          <node concept="3y3z36" id="5i4P_m2jael" role="3clFbw">
+            <node concept="37vLTw" id="5i4P_m2jaem" role="3uHU7B">
+              <ref role="3cqZAo" node="5i4P_m2jaeg" resolve="check" />
+            </node>
+            <node concept="Rm8GO" id="5i4P_m2jaen" role="3uHU7w">
+              <ref role="1Px2BO" to="mhbf:~SModelName$SModelNameCheck" resolve="SModelNameCheck" />
+              <ref role="Rm8GQ" to="mhbf:~SModelName$SModelNameCheck.Pass" resolve="Pass" />
+            </node>
+          </node>
+          <node concept="3clFbS" id="5i4P_m2jaeo" role="3clFbx">
+            <node concept="3cpWs6" id="5i4P_m2jaep" role="3cqZAp">
+              <node concept="2OqwBi" id="5i4P_m2jaeq" role="3cqZAk">
+                <node concept="37vLTw" id="5i4P_m2jaer" role="2Oq$k0">
+                  <ref role="3cqZAo" node="5i4P_m2jaeg" resolve="check" />
+                </node>
+                <node concept="liA8E" id="5i4P_m2jaes" role="2OqNvi">
+                  <ref role="37wK5l" to="mhbf:~SModelName$SModelNameCheck.getProblemDescription()" resolve="getProblemDescription" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="5i4P_m2jaet" role="3cqZAp">
+          <node concept="1rXfSq" id="5i4P_m2jaeu" role="3cqZAk">
+            <ref role="37wK5l" node="6iwuqdLyLND" resolve="validate" />
+            <node concept="2ShNRf" id="5i4P_m2jaev" role="37wK5m">
+              <node concept="1pGfFk" id="5i4P_m2jaew" role="2ShVmc">
+                <ref role="37wK5l" to="mhbf:~SModelName.&lt;init&gt;(java.lang.String)" resolve="SModelName" />
+                <node concept="37vLTw" id="5i4P_m2jaex" role="37wK5m">
+                  <ref role="3cqZAo" node="5i4P_m2jae8" resolve="modelName" />
+                </node>
+              </node>
+            </node>
+            <node concept="37vLTw" id="5i4P_m2jaey" role="37wK5m">
+              <ref role="3cqZAo" node="5i4P_m2jaeb" resolve="currentModelDescriptor" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="5i4P_m2jaez" role="1B3o_S" />
+      <node concept="3uibUv" id="5i4P_m2jae$" role="3clF45">
+        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+      </node>
+      <node concept="P$JXv" id="5i4P_m2jae_" role="lGtFl">
+        <node concept="TZ5HA" id="5i4P_m2jaeA" role="TZ5H$">
+          <node concept="1dT_AC" id="5i4P_m2jaeB" role="1dT_Ay">
+            <property role="1dT_AB" value="Try to construct SModelName from input and validate it." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5i4P_m2jaeC" role="TZ5H$">
+          <node concept="1dT_AC" id="5i4P_m2jaeD" role="1dT_Ay">
+            <property role="1dT_AB" value="When renaming on case-insensitive file systems it should be permitted to rename to a name that differs from existing names in capitalization." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5i4P_m2jaeE" role="TZ5H$">
+          <node concept="1dT_AC" id="5i4P_m2jaeF" role="1dT_Ay">
+            <property role="1dT_AB" value="When creating new models this should not be allowed." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5i4P_m2jaeG" role="TZ5H$">
+          <node concept="1dT_AC" id="5i4P_m2jaeH" role="1dT_Ay">
+            <property role="1dT_AB" value="&lt;br&gt;" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5i4P_m2jaeI" role="TZ5H$">
+          <node concept="1dT_AC" id="5i4P_m2jaeJ" role="1dT_Ay">
+            <property role="1dT_AB" value="See " />
+          </node>
+          <node concept="1dT_AA" id="5i4P_m2jaeK" role="1dT_Ay">
+            <node concept="92FcH" id="5i4P_m2jaeL" role="qph3F">
+              <node concept="TZ5HA" id="5i4P_m2jaeM" role="2XjZqd" />
+              <node concept="VXe0Z" id="5i4P_m2jaeN" role="92FcQ">
+                <ref role="VXe0S" node="6iwuqdLyLND" resolve="validate" />
+              </node>
+            </node>
+          </node>
+          <node concept="1dT_AC" id="5i4P_m2jaeO" role="1dT_Ay">
+            <property role="1dT_AB" value="" />
+          </node>
+        </node>
+        <node concept="TUZQ0" id="5i4P_m2jaeP" role="3nqlJM">
+          <property role="TUZQ4" value="string containing fully qualified model name" />
+          <node concept="zr_55" id="5i4P_m2jaeQ" role="zr_5Q">
+            <ref role="zr_51" node="5i4P_m2jae8" resolve="modelName" />
+          </node>
+        </node>
+        <node concept="TUZQ0" id="5i4P_m2jaeR" role="3nqlJM">
+          <property role="TUZQ4" value="The current model that is going to be renamed" />
+          <node concept="zr_55" id="5i4P_m2jaeS" role="zr_5Q">
+            <ref role="zr_51" node="5i4P_m2jaeb" resolve="currentModelDescriptor" />
+          </node>
+        </node>
+        <node concept="x79VA" id="5i4P_m2jaeT" role="3nqlJM">
           <property role="x79VB" value="validation error text or null if name is valid" />
         </node>
       </node>
@@ -5810,6 +5900,9 @@
         <property role="3TUv4t" value="true" />
         <node concept="3uibUv" id="CBwdDm0$Gf" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~EditableSModel" resolve="EditableSModel" />
+        </node>
+        <node concept="2AHcQZ" id="5i4P_m2jg1i" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
         </node>
       </node>
       <node concept="3clFbS" id="6iwuqdLyLNK" role="3clF47">
@@ -5980,11 +6073,11 @@
             <node concept="10P_77" id="4JxpWR_OSp2" role="1tU5fm" />
           </node>
         </node>
-        <node concept="3clFbJ" id="CBwdDm1hC5" role="3cqZAp">
-          <node concept="3clFbS" id="CBwdDm1hC7" role="3clFbx">
-            <node concept="1QHqEK" id="4JxpWR_OYax" role="3cqZAp">
-              <node concept="1QHqEC" id="4JxpWR_OYay" role="1QHqEI">
-                <node concept="3clFbS" id="4JxpWR_OYaz" role="1bW5cS">
+        <node concept="1QHqEK" id="4JxpWR_OYax" role="3cqZAp">
+          <node concept="1QHqEC" id="4JxpWR_OYay" role="1QHqEI">
+            <node concept="3clFbS" id="4JxpWR_OYaz" role="1bW5cS">
+              <node concept="3clFbJ" id="CBwdDm1hC5" role="3cqZAp">
+                <node concept="3clFbS" id="CBwdDm1hC7" role="3clFbx">
                   <node concept="3clFbF" id="4JxpWR_OXCi" role="3cqZAp">
                     <node concept="37vLTI" id="4JxpWR_OXCk" role="3clFbG">
                       <node concept="2OqwBi" id="4JxpWR_OWHz" role="37vLTx">
@@ -6004,28 +6097,14 @@
                     </node>
                   </node>
                 </node>
-              </node>
-              <node concept="2OqwBi" id="4JxpWR_OYaE" role="ukAjM">
-                <node concept="37vLTw" id="6iwuqdLzCUg" role="2Oq$k0">
-                  <ref role="3cqZAo" node="6iwuqdLzFxM" resolve="module" />
+                <node concept="3clFbC" id="CBwdDm1iD7" role="3clFbw">
+                  <node concept="10Nm6u" id="CBwdDm1j6r" role="3uHU7w" />
+                  <node concept="37vLTw" id="CBwdDm1ibK" role="3uHU7B">
+                    <ref role="3cqZAo" node="CBwdDm0yD9" resolve="currentModelDescriptor" />
+                  </node>
                 </node>
-                <node concept="liA8E" id="6iwuqdLzD1o" role="2OqNvi">
-                  <ref role="37wK5l" to="lui2:~SModule.getRepository()" resolve="getRepository" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbC" id="CBwdDm1iD7" role="3clFbw">
-            <node concept="10Nm6u" id="CBwdDm1j6r" role="3uHU7w" />
-            <node concept="37vLTw" id="CBwdDm1ibK" role="3uHU7B">
-              <ref role="3cqZAo" node="CBwdDm0yD9" resolve="currentModelDescriptor" />
-            </node>
-          </node>
-          <node concept="9aQIb" id="CBwdDm1jLL" role="9aQIa">
-            <node concept="3clFbS" id="CBwdDm1jLM" role="9aQI4">
-              <node concept="1QHqEK" id="CBwdDm1jpg" role="3cqZAp">
-                <node concept="1QHqEC" id="CBwdDm1jph" role="1QHqEI">
-                  <node concept="3clFbS" id="CBwdDm1jpi" role="1bW5cS">
+                <node concept="9aQIb" id="CBwdDm1jLL" role="9aQIa">
+                  <node concept="3clFbS" id="CBwdDm1jLM" role="9aQI4">
                     <node concept="3clFbF" id="CBwdDm1jpj" role="3cqZAp">
                       <node concept="37vLTI" id="CBwdDm1jpk" role="3clFbG">
                         <node concept="2OqwBi" id="CBwdDm1jpl" role="37vLTx">
@@ -6049,15 +6128,15 @@
                     </node>
                   </node>
                 </node>
-                <node concept="2OqwBi" id="CBwdDm1jpq" role="ukAjM">
-                  <node concept="37vLTw" id="CBwdDm1jpr" role="2Oq$k0">
-                    <ref role="3cqZAo" node="6iwuqdLzFxM" resolve="module" />
-                  </node>
-                  <node concept="liA8E" id="CBwdDm1jps" role="2OqNvi">
-                    <ref role="37wK5l" to="lui2:~SModule.getRepository()" resolve="getRepository" />
-                  </node>
-                </node>
               </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="4JxpWR_OYaE" role="ukAjM">
+            <node concept="37vLTw" id="6iwuqdLzCUg" role="2Oq$k0">
+              <ref role="3cqZAo" node="6iwuqdLzFxM" resolve="module" />
+            </node>
+            <node concept="liA8E" id="6iwuqdLzD1o" role="2OqNvi">
+              <ref role="37wK5l" to="lui2:~SModule.getRepository()" resolve="getRepository" />
             </node>
           </node>
         </node>
