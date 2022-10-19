@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -172,9 +172,8 @@ public class ModuleDependenciesTest extends ModuleMpsTest {
     testDependency(solutions[0], solutions[1], true, 1);  //runtime dependencies
     testDependency(solutions[0], solutions[2], true, 1);  //runtime dependencies can pass through extended language
     testDependency(solutions[0], solutions[3], true, 0);  //runtime dependencies can not pass through used language
-    testDependency(solutions[0], solutions[5], true, 2);  //runtime dependencies can pass through devkits:
-    // (1) runtime dependency as AbstractModule reports solutions of its devkits as 'declared dependency (WTF?)
-    // (2) Devkit exports the solution[5]
+    testDependency(solutions[0], solutions[5], true, 1);  //runtime dependencies can pass through devkits:
+    // (used) Devkit exports the solution[5]
     testDependency(solutions[0], solutions[6], true, 1);  //runtime dependencies can pass through devkits
     testDependency(solutions[0], solutions[7], true, 1);  //runtime dependencies can pass through devkits and language
     testDependency(solutions[0], languages[3], true, 0);  //devkit language is not dependency
