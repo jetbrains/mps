@@ -11,6 +11,7 @@ import jetbrains.mps.module.SDependencyImpl;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.dependency.UsedModulesCollector;
 import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.project.facets.JavaModuleFacet.LoadClasses;
 import jetbrains.mps.project.structure.modules.Dependency;
 import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
@@ -18,6 +19,7 @@ import jetbrains.mps.smodel.Language;
 import jetbrains.mps.util.JDOMUtil;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.module.SDependency;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -134,10 +136,24 @@ public class CLDependencies {
         }
       }
       // legacy  and source-only modules (like stub-only modules)
-      // XXX perhaps, for stub-only scenario (LoadClasses.ManagedByContributor; or generally for external CL) can use 'direct dependencies' only
-      //     to avoid calculating runtimes. All we can care of in stub-only case is that external code provides correct classes, no reason not to
-      //     trust author that he specified sufficient dependencies. May save us time parsing stub models on startup
-      rv = myModulesCollector.directlyUsedModules(module, errorContainer, true, true);
+      if (jmf != null && jmf.getLoadClasses() == LoadClasses.ManagedByContributor) {
+        // for stub-only scenario (LoadClasses.ManagedByContributor) or generally for any external CL, use 'direct dependencies' only
+        //     to avoid calculating runtimes. All we can care of in stub-only case is that external code provides correct classes, no reason not to
+        //     trust author that he specified sufficient dependencies.
+        //     Would save us time parsing stub models on startup, once we manage not to consult collectLanguagesAndDevkits() in getDeclaredDependencies().
+        //     Otherwise, would need additional hacks with hardcoded/recorded 'used languages', etc.
+        rv = new LinkedHashSet<>();
+        for (SDependency dep : module.getDeclaredDependencies()) {
+          final SModule target = dep.getTargetModule().resolve(myRepository);
+          if (target == null) {
+            errorContainer.depCannotBeResolved(module, dep);
+          } else {
+            rv.add(target);
+          }
+        }
+      } else {
+        rv = myModulesCollector.directlyUsedModules(module, errorContainer, true, true);
+      }
     }
     if (errorContainer.hasErrors()) {
       myModulesWithAbsentDeps.put(module, errorContainer.getErrors());
