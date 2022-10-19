@@ -182,6 +182,13 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     }
 
     // add dependencies provided by devkits as nonreexport dependencies
+    /*
+    FIXME collectLanguagesAndDevkits() here likely causes more harm than good.
+       To me, get_Declared_Dependencies() mean explicitly declared, not 'derived' through some obscure logic
+       We've got scopes, GMDM and UsedModulesCollector to cover more intricate dependency scenarios. Forcing a
+       module to guess what it is asked dependencies for is too much, imo.
+       Check 754e7d88, when this code was added. Seems that it could be moved back to ModuleDependenciesManager
+       (UsedModulesCollector, its present counterpart) for scenarios when we thoroughly collect all dependencies
     for (SModuleReference usedDevkit : collectLanguagesAndDevkits().devkits) {
       final SModule devkit = usedDevkit.resolve(repo);
       if (DevKit.class.isInstance(devkit)) {
@@ -189,7 +196,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
           result.add(new SDependencyImpl(solution.getModuleReference(), repo, SDependencyScope.DEFAULT, false));
         }
       }
-    }
+    }*/
     return result;
   }
 

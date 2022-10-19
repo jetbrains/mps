@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -80,6 +80,7 @@ public final class UsedModulesCollector {
     collectModuleDependencies(module, includeNonReexport, result);
 
     if (includeNonReexport) {
+      // XXX always wondered why is this double if. Check 754e7d88 for answer. Perhaps, it's time to bring this code back here?
       if (runtimes) {
         collectRuntimeOfUsedLanguages(module, result);
       }
