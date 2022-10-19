@@ -400,7 +400,7 @@ public class PluginLoaderRegistry implements Disposable {
       LOG.trace("running with the new");
       // This task is instance of UpdatingTask => instance of Task.Modal
       // As result method Task#queue require to be invoked inside write thread: see CoreProgressManager#run(Task)
-      ApplicationManager.getApplication().invokeLaterOnWriteThread(() -> task.queue());
+      ApplicationManager.getApplication().invokeLaterOnWriteThread(task::queue);
     }
   }
 
@@ -478,8 +478,8 @@ public class PluginLoaderRegistry implements Disposable {
               }
               monitor.advance(1);
 
-              Set<PluginContributor> toUnloadContributors = calcContributorsToUnload(myCurrentContributors, getPluginModules(moduleDelta.toUnload));
-              Set<PluginContributor> toLoadContributors = createPluginContributors(getPluginModules(moduleDelta.toLoad));
+              Set<PluginContributor> toUnloadContributors = calcContributorsToUnload(myCurrentContributors, moduleDelta.toUnload);
+              Set<PluginContributor> toLoadContributors = createPluginContributors(moduleDelta.toLoad);
               Delta<PluginContributor> contributorsDelta = new Delta<>(toLoadContributors, toUnloadContributors);
 
               LOG.info("Running Update Task : loaders " + loadersDelta + "; contributors : " + contributorsDelta + "; " + Thread.currentThread());
@@ -591,7 +591,7 @@ public class PluginLoaderRegistry implements Disposable {
     }
   }
 
-  private Set<ReloadableModule> getPluginModules(Collection<ReloadableModule> modules) {
+  private static Set<ReloadableModule> getPluginModules(Collection<ReloadableModule> modules) {
     return modules.stream()
                   .filter(PluginLoaderRegistry::isPluginModule)
                   .collect(toCollection(LinkedHashSet::new));
@@ -618,6 +618,7 @@ public class PluginLoaderRegistry implements Disposable {
       Set<ModuleClassLoader> classLoaders2Dispose = callback.acquire2(PluginLoaderRegistry.this);
       myAccumulation.onUnload(classLoaders2Dispose);
       myAccumulation.schedulePostRunnable(() -> callback.release(PluginLoaderRegistry.this));
+      update();
     }
 
     @Override
@@ -644,7 +645,7 @@ public class PluginLoaderRegistry implements Disposable {
     }
 
     public void onLoad(Set<ReloadableModule> loadedModules) {
-      myDelta.load(loadedModules);
+      myDelta.load(getPluginModules(loadedModules));
     }
 
     public synchronized void schedulePostRunnable(@NotNull Runnable r) {
@@ -652,9 +653,9 @@ public class PluginLoaderRegistry implements Disposable {
     }
 
     public synchronized EventAccumulation.Snapshot reset() {
-      List<Runnable> postRunnablesToRun = shapshotPostRunnables();
-      Delta<ReloadableModule> delta0 = shapshotDelta();
-      List<ModuleClassLoader> cls2dispose = snapshotCLs();
+      final List<Runnable> postRunnablesToRun = shapshotPostRunnables();
+      final Delta<ReloadableModule> delta0 = snapshotModules();
+      final List<ModuleClassLoader> cls2dispose = snapshotCLs();
       return new Snapshot() {
         @NotNull
         @Override
@@ -685,7 +686,7 @@ public class PluginLoaderRegistry implements Disposable {
     }
 
     @NotNull
-    private Delta<ReloadableModule> shapshotDelta() {
+    private Delta<ReloadableModule> snapshotModules() {
       return myDelta.reset();
     }
 

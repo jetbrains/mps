@@ -22,8 +22,6 @@ import jetbrains.mps.project.facets.JavaModuleFacet.Compile;
 import jetbrains.mps.project.facets.JavaModuleFacet.LoadClasses;
 import jetbrains.mps.project.facets.TestsFacet;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
-import jetbrains.mps.project.structure.modules.SolutionKind;
-import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.vfs.IFile;
@@ -111,41 +109,10 @@ public class SModuleOperations {
     if (jmf != null) {
       return jmf.getLoadExtensions().contributesExtensions();
     }
-    // FIXME this is a HACK to deal with PluginLoaderRegistry perverse logic to remove contribution
-    //       not the moment module is unloaded, but to collect a module delta and remove respective 'isPluginModule' modules
-    //       on next update, which may happen late. E.g. NoPendingMigrationsTest with 2 projects, "MPS" and "customAspects",
-    //       one may notice removal of App/Project contributions the moment second project is opened, not the moment the first one goes away.
-    //       With module unregistered, its facet instances g
-    //       The hack here is to check for a possibility for a module to have JMF
-    ModuleDescriptor md = module instanceof AbstractModule ? ((AbstractModule) module).getModuleDescriptor() : null;
-    if (md == null && md.getModuleFacetDescriptors().stream().noneMatch(d -> JavaModuleFacet.FACET_TYPE.equals(d.getType()))) {
-      // no descriptor for JMF
-      return false;
-    }
-    // just not to obstruct any further progress - don't want to extract exact isCompileInMPS value from ModuleFacetDescriptor, assume it's true
-    // as I'm going to remove this code anyway
-    // there was a lot of legacy logic around isCompileInMPS to decide whether code is MPS-managed, but I don't quite understand
-    // if it's still relevant.
-    if (module instanceof Language) {
-      return true;
-    }
-    if (module instanceof Solution) {
-      // generally, getKind() doesn't return null, but doesn't hurt to account for null
-      final SolutionKind kind = ((Solution) module).getKind();
-      // FIXME this is the place we still have to keep SolutionKind persisted in SolutionDescriptor for.
-      //       If we clean it (see ExplicitJavaFacetSettings migration), we'd be unable to tell pluginSolution module here
-      if (kind != null && kind != SolutionKind.NONE) {
-        return true;
-      }
-      // we've got quite a lot IDEA-managed solutions with no 'kind' specified, need to treat them as 'extension-capable'
-      // see Solution.canLoadClasses(). However, right now we are in a branch with no facets (unregistered module), and
-      // looking for CCLF doesn't make any sense here
-      return false;
-    }
     // need to account for TempModule + NaiveJavaModuleFacet scenario, although not clear if we need to allow
     // extensions from these. Definitely classloading. Perhaps, that's the case when we need MPS module classloading but no
     // extensions support (to my question whether MPS module CL implies "capable to contribute extensions")
-    // However, NaiveJavaModuleFacet has to get covered by jmf != null branch, above. Here we deal with a PluginLoaderRegistry hack scenario
+    // However, NaiveJavaModuleFacet has to get covered by jmf != null branch, above. Here we deal with a PluginLoaderRegistry hack scenario,
     //     and I don't see any reason to bother with ReloadableModule
     return false;
   }
