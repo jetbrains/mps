@@ -28,6 +28,9 @@ import org.jetbrains.mps.openapi.persistence.Memento;
 /**
  * @deprecated Remove once no uses in MPS code. It's our own implementation, nobody shall care.
  *             Need to deal with {@code IdeaPluginModuleFacetTab} first
+ *             Keep this class for one release and remove once 2022.3 is out, just in case there's direct instantiation of the class.
+ *             For MPS itself, it's sufficient to go on with DumbIdeaPluginFacet (for another release or two, until
+ *             ideaPlugin facet is complete history)
  *
  * IMPLEMENTATION NOTE: due to the need to keep actual facet intact (idea plugin facet shall answer
  * old id for classloading purposes), facet keeps both value, the one for classloading, and another for serialization.

@@ -94,7 +94,6 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new SafeDelete_Action());
     addAction(new SetBookmarkNoNumber_Action());
     addAction(new SetNodePackage_Action());
-    addAction(new SetPluginIdToCompileInIdeaModules_Action());
     addAction(new SetVirtualFolder_Action());
     addAction(new ShowBookmarksDialog_Action());
     addAction(new ShowBookmarks_Action());
