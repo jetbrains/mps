@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<solution name="jetbrains.mps.git4idea.stubs" uuid="f57286e3-4e19-4d8d-8045-3900761f6530" moduleVersion="0" pluginKind="PLUGIN_OTHER" compileInMPS="false">
+<solution name="jetbrains.mps.git4idea.stubs" uuid="f57286e3-4e19-4d8d-8045-3900761f6530" moduleVersion="0" compileInMPS="false">
   <models>
     <modelRoot contentPath="${mps_home}/plugins/git4idea/lib" type="java_classes">
       <sourceRoot location="git4idea-rt.jar" />
@@ -7,7 +7,7 @@
     </modelRoot>
   </models>
   <facets>
-    <facet type="java" compile="ext" classes="provided" ext="yes">
+    <facet type="java" compile="ext" classes="provided" ext="no">
       <classes generated="true" />
     </facet>
   </facets>
