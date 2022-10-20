@@ -19,6 +19,7 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.GeneralModuleFactory;
+import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
@@ -88,6 +89,7 @@ public class LanguageAndSolutionsProducer {
     if (myRuntime) {
       SolutionProducer sp = new SolutionProducer(myProject);
       String moduleName = namespace + ".runtime";
+      // SolutionProducer comes with 'regular' java defaults, no need to modify
       myRuntimeModule = sp.create(moduleName, (myRuntimeLocation != null ? myRuntimeLocation : moduleDir.getParent().findChild(moduleName)));
       l.getModuleDescriptor().getRuntimeModules().add(myRuntimeModule.getModuleReference());
       // XXX perhaps, can configure SolutionProducer with an extra code to create a model, not to perform ModuleDependencyVersions.update twice?
@@ -118,6 +120,11 @@ public class LanguageAndSolutionsProducer {
 
       mySandboxModule = (Solution) new GeneralModuleFactory().instantiate(descriptor, descriptorFile);
       myProject.addModule(mySandboxModule);
+      // SP.createSD crates Java facet for a module by default
+      JavaModuleFacet jmf = mySandboxModule.getFacet(JavaModuleFacet.class);
+      jmf.setCompile(JavaModuleFacet.Compile.None);
+      jmf.setLoadClasses(JavaModuleFacet.LoadClasses.NotAvailable);
+      jmf.setLoadExtensions(JavaModuleFacet.LoadExtensions.NotAvailable);
       mySandboxModule.save();
 
       SModelInternal sandboxModel = (SModelInternal) createModel(mySandboxModule, moduleName);

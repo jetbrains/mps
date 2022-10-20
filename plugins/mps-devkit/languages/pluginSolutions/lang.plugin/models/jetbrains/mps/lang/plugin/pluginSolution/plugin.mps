@@ -22,7 +22,6 @@
     <import index="jkm4" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui(MPS.IDEA/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="3s15" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.workbench(MPS.Workbench/)" />
-    <import index="w0gx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.structure.modules(MPS.Core/)" />
     <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
@@ -93,10 +92,6 @@
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
-      </concept>
-      <concept id="1083260308424" name="jetbrains.mps.baseLanguage.structure.EnumConstantReference" flags="nn" index="Rm8GO">
-        <reference id="1083260308426" name="enumConstantDeclaration" index="Rm8GQ" />
-        <reference id="1144432896254" name="enumClass" index="1Px2BO" />
       </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
@@ -826,6 +821,16 @@
                       </node>
                     </node>
                   </node>
+                  <node concept="3clFbF" id="1DUV2IOFMDK" role="3cqZAp">
+                    <node concept="2OqwBi" id="1DUV2IOFN10" role="3clFbG">
+                      <node concept="37vLTw" id="1DUV2IOFMDI" role="2Oq$k0">
+                        <ref role="3cqZAo" node="2AzpHdO4iPY" resolve="sp" />
+                      </node>
+                      <node concept="liA8E" id="1kRpwI5OIc1" role="2OqNvi">
+                        <ref role="37wK5l" to="mqhh:1kRpwI5NX8K" resolve="withPluginJavaFacet" />
+                      </node>
+                    </node>
+                  </node>
                   <node concept="3cpWs8" id="7G8zgmvNOF9" role="3cqZAp">
                     <node concept="3cpWsn" id="7G8zgmvNOFa" role="3cpWs9">
                       <property role="TrG5h" value="result" />
@@ -857,25 +862,6 @@
                               </node>
                             </node>
                           </node>
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="3clFbF" id="7zVxj5AYom0" role="3cqZAp">
-                    <node concept="2OqwBi" id="7zVxj5AYpwl" role="3clFbG">
-                      <node concept="2OqwBi" id="7zVxj5AYoPr" role="2Oq$k0">
-                        <node concept="liA8E" id="7zVxj5AYreO" role="2OqNvi">
-                          <ref role="37wK5l" to="z1c3:~Solution.getModuleDescriptor()" resolve="getModuleDescriptor" />
-                        </node>
-                        <node concept="37vLTw" id="3mo93YU98od" role="2Oq$k0">
-                          <ref role="3cqZAo" node="7G8zgmvNOFa" resolve="result" />
-                        </node>
-                      </node>
-                      <node concept="liA8E" id="7zVxj5AYrwf" role="2OqNvi">
-                        <ref role="37wK5l" to="w0gx:~SolutionDescriptor.setKind(jetbrains.mps.project.structure.modules.SolutionKind)" resolve="setKind" />
-                        <node concept="Rm8GO" id="7zVxj5AYrB8" role="37wK5m">
-                          <ref role="1Px2BO" to="w0gx:~SolutionKind" resolve="SolutionKind" />
-                          <ref role="Rm8GQ" to="w0gx:~SolutionKind.PLUGIN_OTHER" resolve="PLUGIN_OTHER" />
                         </node>
                       </node>
                     </node>

@@ -347,24 +347,35 @@
   </root>
   <root nodeRef="r:4e47f84d-850f-4838-ad49-d37c376b2080(jetbrains.mps.lang.plugin.standalone.typesystem)/7318816821275132711">
     <file name="ActivatePluginSolution_QuickFix.java">
-      <node id="7318816821275132711" at="12,44,13,142" concept="9" />
-      <node id="7318816821275133355" at="15,44,16,44" concept="6" />
-      <node id="7318816821275134743" at="18,35,19,133" concept="2" />
-      <node id="7318816821275205409" at="19,133,20,83" concept="2" />
-      <node id="7318816821275132711" at="12,0,15,0" concept="1" trace="ActivatePluginSolution_QuickFix#()V" />
-      <node id="7318816821275132711" at="15,0,18,0" concept="4" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="7318816821275132711" at="18,0,22,0" concept="4" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <scope id="7318816821275132711" at="12,44,13,142" />
-      <scope id="7318816821275133057" at="15,44,16,44" />
-      <scope id="7318816821275132713" at="18,35,20,83" />
-      <scope id="7318816821275132711" at="12,0,15,0" />
-      <scope id="7318816821275132711" at="15,0,18,0">
+      <node id="7318816821275132711" at="13,0,14,0" concept="7" trace="LOG" />
+      <node id="7318816821275132711" at="14,44,15,142" concept="9" />
+      <node id="7318816821275133355" at="17,44,18,56" concept="6" />
+      <node id="1528802798191471318" at="20,35,21,130" concept="5" />
+      <node id="1528802798191473982" at="22,22,23,67" concept="2" />
+      <node id="7318816821275205409" at="23,67,24,85" concept="2" />
+      <node id="1528802798191477645" at="26,33,27,193" concept="2" />
+      <node id="7318816821275132711" at="14,0,17,0" concept="1" trace="ActivatePluginSolution_QuickFix#()V" />
+      <node id="7318816821275132711" at="17,0,20,0" concept="4" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="1528802798191477645" at="25,12,28,7" concept="3" />
+      <node id="1528802798191477479" at="25,10,29,5" concept="0" />
+      <node id="1528802798191471897" at="21,130,29,5" concept="3" />
+      <node id="7318816821275132711" at="20,0,31,0" concept="4" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <scope id="7318816821275132711" at="14,44,15,142" />
+      <scope id="7318816821275133057" at="17,44,18,56" />
+      <scope id="1528802798191477645" at="26,33,27,193" />
+      <scope id="1528802798191471899" at="22,22,24,85" />
+      <scope id="7318816821275132711" at="14,0,17,0" />
+      <scope id="7318816821275132711" at="17,0,20,0">
         <var name="node" id="7318816821275132711" />
       </scope>
-      <scope id="7318816821275132711" at="18,0,22,0">
+      <scope id="1528802798191477480" at="25,12,28,7" />
+      <scope id="7318816821275132713" at="20,35,29,5">
+        <var name="jmf" id="1528802798191471319" />
+      </scope>
+      <scope id="7318816821275132711" at="20,0,31,0">
         <var name="node" id="7318816821275132711" />
       </scope>
-      <unit id="7318816821275132711" at="11,0,23,0" name="jetbrains.mps.lang.plugin.standalone.typesystem.ActivatePluginSolution_QuickFix" />
+      <unit id="7318816821275132711" at="12,0,32,0" name="jetbrains.mps.lang.plugin.standalone.typesystem.ActivatePluginSolution_QuickFix" />
     </file>
   </root>
 </debug-info>

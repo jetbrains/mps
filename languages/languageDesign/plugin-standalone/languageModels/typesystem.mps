@@ -13,12 +13,15 @@
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
-    <import index="w0gx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.structure.modules(MPS.Core/)" />
+    <import index="b0pz" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.facets(MPS.Core/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
+      </concept>
+      <concept id="7485977462274819189" name="jetbrains.mps.baseLanguage.structure.FormatOperation" flags="ng" index="2cAKMz">
+        <child id="7485977462274819664" name="arguments" index="2cAKU6" />
       </concept>
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
@@ -42,6 +45,7 @@
         <child id="1081256993305" name="classType" index="2ZW6by" />
         <child id="1081256993304" name="leftExpression" index="2ZW6bz" />
       </concept>
+      <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534934090" name="jetbrains.mps.baseLanguage.structure.CastExpression" flags="nn" index="10QFUN">
         <child id="1070534934091" name="type" index="10QFUM" />
         <child id="1070534934092" name="expression" index="10QFUP" />
@@ -79,6 +83,14 @@
       </concept>
       <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
         <reference id="1107535924139" name="classifier" index="3uigEE" />
+      </concept>
+      <concept id="1081773326031" name="jetbrains.mps.baseLanguage.structure.BinaryOperation" flags="nn" index="3uHJSO">
+        <child id="1081773367579" name="rightExpression" index="3uHU7w" />
+        <child id="1081773367580" name="leftExpression" index="3uHU7B" />
+      </concept>
+      <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
+      <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
+        <reference id="1116615189566" name="classifier" index="3VsUkX" />
       </concept>
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
@@ -157,6 +169,12 @@
       <concept id="1174660718586" name="jetbrains.mps.lang.typesystem.structure.AbstractEquationStatement" flags="nn" index="1Zf1VF">
         <child id="1174660783413" name="leftExpression" index="1ZfhK$" />
         <child id="1174660783414" name="rightExpression" index="1ZfhKB" />
+      </concept>
+    </language>
+    <language id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging">
+      <concept id="2034914114981261497" name="jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement" flags="ng" index="RRSsy">
+        <property id="2034914114981261751" name="severity" index="RRSoG" />
+        <child id="2034914114981261753" name="message" index="RRSoy" />
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
@@ -410,32 +428,78 @@
     </node>
     <node concept="Q5ZZ6" id="6mhEhX8gwcC" role="Q6x$H">
       <node concept="3clFbS" id="6mhEhX8gwcD" role="2VODD2">
-        <node concept="3clFbF" id="6mhEhX8gwGn" role="3cqZAp">
-          <node concept="2OqwBi" id="6mhEhX8gy5Y" role="3clFbG">
-            <node concept="2OqwBi" id="6mhEhX8gx8M" role="2Oq$k0">
-              <node concept="QwW4i" id="6mhEhX8gwGm" role="2Oq$k0">
+        <node concept="3cpWs8" id="1kRpwI5OQFm" role="3cqZAp">
+          <node concept="3cpWsn" id="1kRpwI5OQFn" role="3cpWs9">
+            <property role="TrG5h" value="jmf" />
+            <node concept="3uibUv" id="1kRpwI5OQBh" role="1tU5fm">
+              <ref role="3uigEE" to="b0pz:~JavaModuleFacet" resolve="JavaModuleFacet" />
+            </node>
+            <node concept="2OqwBi" id="1kRpwI5OQFo" role="33vP2m">
+              <node concept="QwW4i" id="1kRpwI5OQFp" role="2Oq$k0">
                 <ref role="QwW4h" node="6mhEhX8gwcU" resolve="module" />
               </node>
-              <node concept="liA8E" id="6mhEhX8gxuO" role="2OqNvi">
-                <ref role="37wK5l" to="z1c3:~Solution.getModuleDescriptor()" resolve="getModuleDescriptor" />
-              </node>
-            </node>
-            <node concept="liA8E" id="6mhEhX8gyvO" role="2OqNvi">
-              <ref role="37wK5l" to="w0gx:~SolutionDescriptor.setKind(jetbrains.mps.project.structure.modules.SolutionKind)" resolve="setKind" />
-              <node concept="Rm8GO" id="6mhEhX8gy_D" role="37wK5m">
-                <ref role="Rm8GQ" to="w0gx:~SolutionKind.PLUGIN_OTHER" resolve="PLUGIN_OTHER" />
-                <ref role="1Px2BO" to="w0gx:~SolutionKind" resolve="SolutionKind" />
+              <node concept="liA8E" id="1kRpwI5OQFq" role="2OqNvi">
+                <ref role="37wK5l" to="z1c3:~AbstractModule.getFacet(java.lang.Class)" resolve="getFacet" />
+                <node concept="3VsKOn" id="1kRpwI5OQFr" role="37wK5m">
+                  <ref role="3VsUkX" to="b0pz:~JavaModuleFacet" resolve="JavaModuleFacet" />
+                </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="6mhEhX8gLWx" role="3cqZAp">
-          <node concept="2OqwBi" id="6mhEhX8gMkM" role="3clFbG">
-            <node concept="QwW4i" id="6mhEhX8gLWv" role="2Oq$k0">
-              <ref role="QwW4h" node="6mhEhX8gwcU" resolve="module" />
+        <node concept="3clFbJ" id="1kRpwI5OQOp" role="3cqZAp">
+          <node concept="3clFbS" id="1kRpwI5OQOr" role="3clFbx">
+            <node concept="3clFbF" id="1kRpwI5ORkY" role="3cqZAp">
+              <node concept="2OqwBi" id="1kRpwI5ORp2" role="3clFbG">
+                <node concept="37vLTw" id="1kRpwI5ORkW" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1kRpwI5OQFn" resolve="jmf" />
+                </node>
+                <node concept="liA8E" id="1kRpwI5ORSf" role="2OqNvi">
+                  <ref role="37wK5l" to="b0pz:~JavaModuleFacet.setLoadExtensions(jetbrains.mps.project.facets.JavaModuleFacet$LoadExtensions)" resolve="setLoadExtensions" />
+                  <node concept="Rm8GO" id="1kRpwI5ORVA" role="37wK5m">
+                    <ref role="Rm8GQ" to="b0pz:~JavaModuleFacet$LoadExtensions.Plugin" resolve="Plugin" />
+                    <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$LoadExtensions" resolve="LoadExtensions" />
+                  </node>
+                </node>
+              </node>
             </node>
-            <node concept="liA8E" id="6mhEhX8gMFx" role="2OqNvi">
-              <ref role="37wK5l" to="z1c3:~Solution.save()" resolve="save" />
+            <node concept="3clFbF" id="6mhEhX8gLWx" role="3cqZAp">
+              <node concept="2OqwBi" id="6mhEhX8gMkM" role="3clFbG">
+                <node concept="QwW4i" id="6mhEhX8gLWv" role="2Oq$k0">
+                  <ref role="QwW4h" node="6mhEhX8gwcU" resolve="module" />
+                </node>
+                <node concept="liA8E" id="6mhEhX8gMFx" role="2OqNvi">
+                  <ref role="37wK5l" to="z1c3:~Solution.save()" resolve="save" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3y3z36" id="1kRpwI5ORaZ" role="3clFbw">
+            <node concept="10Nm6u" id="1kRpwI5ORjp" role="3uHU7w" />
+            <node concept="37vLTw" id="1kRpwI5OQSd" role="3uHU7B">
+              <ref role="3cqZAo" node="1kRpwI5OQFn" resolve="jmf" />
+            </node>
+          </node>
+          <node concept="9aQIb" id="1kRpwI5OSbB" role="9aQIa">
+            <node concept="3clFbS" id="1kRpwI5OSbC" role="9aQI4">
+              <node concept="RRSsy" id="1kRpwI5OSed" role="3cqZAp">
+                <property role="RRSoG" value="gZ5fksE/warn" />
+                <node concept="2OqwBi" id="1kRpwI5OSEo" role="RRSoy">
+                  <node concept="Xl_RD" id="1kRpwI5OSef" role="2Oq$k0">
+                    <property role="Xl_RC" value="Module %s got no 'Java' facet, can't contribute extensions to MPS" />
+                  </node>
+                  <node concept="2cAKMz" id="1kRpwI5OT6F" role="2OqNvi">
+                    <node concept="2OqwBi" id="1kRpwI5OTxE" role="2cAKU6">
+                      <node concept="QwW4i" id="1kRpwI5OT7n" role="2Oq$k0">
+                        <ref role="QwW4h" node="6mhEhX8gwcU" resolve="module" />
+                      </node>
+                      <node concept="liA8E" id="1kRpwI5OU0t" role="2OqNvi">
+                        <ref role="37wK5l" to="z1c3:~AbstractModule.getModuleName()" resolve="getModuleName" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
             </node>
           </node>
         </node>
@@ -445,7 +509,7 @@
       <node concept="3clFbS" id="6mhEhX8gwi1" role="2VODD2">
         <node concept="3clFbF" id="6mhEhX8gwmF" role="3cqZAp">
           <node concept="Xl_RD" id="6mhEhX8gwmE" role="3clFbG">
-            <property role="Xl_RC" value="Mark solution as 'plugin' kind" />
+            <property role="Xl_RC" value="Mark solution capable to contribute to MPS" />
           </node>
         </node>
       </node>

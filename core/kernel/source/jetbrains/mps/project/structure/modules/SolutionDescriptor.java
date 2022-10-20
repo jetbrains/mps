@@ -37,16 +37,22 @@ public class SolutionDescriptor extends ModuleDescriptor {
     myOutputPath = outputPath;
   }
 
+  /**
+   * @deprecated no direct replacement, check {@link jetbrains.mps.project.facets.JavaModuleFacet.LoadExtensions}
+   */
   // seems to be not null, although doesn't manifest explicitly.
+  @Deprecated(since = "2022.3", forRemoval = true)
   public final SolutionKind getKind() {
     return myKind;
   }
 
+  @Deprecated(since = "2022.3", forRemoval = true)
   public final void setKind(@NotNull SolutionKind kind) {
     myKind = kind;
   }
 
   @Override
+  @Deprecated(since = "2022.3", forRemoval = true)
   public final boolean getCompileInMPS() {
     return myCompileInMPS;
   }
@@ -66,6 +72,10 @@ public class SolutionDescriptor extends ModuleDescriptor {
     myRequestCompileIDEA = value;
   }
 
+  /**
+   * @deprecated no direct replacement, check {@link jetbrains.mps.project.facets.JavaModuleFacet.Compile}
+   */
+  @Deprecated(since = "2022.3", forRemoval = true)
   public final void setCompileInMPS(boolean compileInMPS) {
     myCompileInMPS = compileInMPS;
   }

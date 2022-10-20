@@ -10,13 +10,13 @@ import jetbrains.mps.project.Solution;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
+import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
+import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.smodel.GeneralModuleFactory;
 import jetbrains.mps.smodel.ModuleDependencyVersions;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.persistence.DefaultModelRoot;
-import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
-import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.project.ProjectPathUtil;
 
@@ -24,6 +24,8 @@ import jetbrains.mps.project.ProjectPathUtil;
 public class SolutionProducer {
   private static final Logger LOG = Logger.getLogger(SolutionProducer.class);
   private final MPSProject myProject;
+
+  private JavaFacetLevel myJavaFacetLevel = JavaFacetLevel.Regular;
 
   public SolutionProducer(@NotNull MPSProject mpsProject) {
     myProject = mpsProject;
@@ -34,11 +36,44 @@ public class SolutionProducer {
     // FIXME error reporting
 
     SolutionDescriptor descriptor = createSolutionDescriptor(namespace, descriptorFile);
+    if (myJavaFacetLevel == JavaFacetLevel.Off) {
+      descriptor.getModuleFacetDescriptors().removeIf((ModuleFacetDescriptor d) -> JavaModuleFacet.FACET_TYPE.equals(d.getType()));
+    }
     Solution module = (Solution) new GeneralModuleFactory().instantiate(descriptor, descriptorFile);
     myProject.addModule(module);
     new ModuleDependencyVersions(myProject.getComponent(LanguageRegistry.class), myProject.getRepository()).update(module);
+    final JavaModuleFacet jmf = module.getFacet(JavaModuleFacet.class);
+    if (myJavaFacetLevel != JavaFacetLevel.Off && jmf != null) {
+      switch (myJavaFacetLevel) {
+        case Sandbox:
+          jmf.setCompile(JavaModuleFacet.Compile.None);
+          jmf.setLoadClasses(JavaModuleFacet.LoadClasses.NotAvailable);
+          jmf.setLoadExtensions(JavaModuleFacet.LoadExtensions.NotAvailable);
+          break;
+        case Regular:
+          jmf.setCompile(JavaModuleFacet.Compile.MPS);
+          jmf.setLoadClasses(JavaModuleFacet.LoadClasses.ManagedByMPS);
+          jmf.setLoadExtensions(JavaModuleFacet.LoadExtensions.NotAvailable);
+          break;
+        case Contributor:
+          jmf.setCompile(JavaModuleFacet.Compile.MPS);
+          jmf.setLoadClasses(JavaModuleFacet.LoadClasses.ManagedByMPS);
+          jmf.setLoadExtensions(JavaModuleFacet.LoadExtensions.Plugin);
+          break;
+      }
+    }
     module.save();
     return module;
+  }
+
+  public void withoutJavaFacet() {
+    myJavaFacetLevel = JavaFacetLevel.Off;
+  }
+  public void withPluginJavaFacet() {
+    myJavaFacetLevel = JavaFacetLevel.Contributor;
+  }
+  public void withSandboxJavaFacet() {
+    myJavaFacetLevel = JavaFacetLevel.Sandbox;
   }
 
   public static SolutionDescriptor createSolutionDescriptor(String namespace, IFile descriptorFile) {
@@ -60,9 +95,16 @@ public class SolutionProducer {
     }
 
     descriptor.getModelRootDescriptors().add(DefaultModelRoot.createDescriptor(modelsDir.getParent(), modelsDir));
+    // XXX perhaps, worth adding a JMF factory method to produce pre-configured MFD with necessary settings?
     descriptor.getModuleFacetDescriptors().add(new ModuleFacetDescriptor(JavaModuleFacet.FACET_TYPE, new MementoImpl()));
     ProjectPathUtil.setGeneratorOutputPath(descriptor, moduleLocation.findChild("source_gen").getPath());
     return descriptor;
   }
 
+  private enum JavaFacetLevel {
+    Off(),
+    Sandbox(),
+    Regular(),
+    Contributor()
+  }
 }

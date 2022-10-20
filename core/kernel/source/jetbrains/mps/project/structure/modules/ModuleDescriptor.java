@@ -120,10 +120,17 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     return myTimestamp;
   }
 
+  @Deprecated(since = "2022.3")
   public final void setTimestamp(String timestamp) {
     myTimestamp = timestamp;
   }
 
+  /**
+   * @deprecated no direct replacement, depending on usage scenario, mihgt mean compilation or classloading story.
+   *             check {@link jetbrains.mps.project.facets.JavaModuleFacet.Compile} and
+   *             check {@link jetbrains.mps.project.facets.JavaModuleFacet.LoadClasses}
+   */
+  @Deprecated(since = "2022.3", forRemoval = true)
   public boolean getCompileInMPS() {
     throw new UnsupportedOperationException(this + " does not support 'compile in mps'");
   }

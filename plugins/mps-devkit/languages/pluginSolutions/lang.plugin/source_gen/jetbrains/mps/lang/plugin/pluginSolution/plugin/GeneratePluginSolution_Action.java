@@ -18,7 +18,6 @@ import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
 import jetbrains.mps.project.MPSExtentions;
 import java.io.File;
 import jetbrains.mps.project.modules.SolutionProducer;
-import jetbrains.mps.project.structure.modules.SolutionKind;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -68,8 +67,8 @@ public class GeneratePluginSolution_Action extends BaseAction {
       String moduleName = cfg.getModuleName();
       File moduleLocation = cfg.getModuleLocation();
       SolutionProducer sp = new SolutionProducer(mpsProject);
+      sp.withPluginJavaFacet();
       Solution result = sp.create(moduleName, mpsProject.getFileSystem().getFile(moduleLocation));
-      result.getModuleDescriptor().setKind(SolutionKind.PLUGIN_OTHER);
       GeneratePluginSolution_Action.this.createModel(result, event);
       mpsProject.setVirtualFolder(result, virtualFolder);
       mpsProject.save();
