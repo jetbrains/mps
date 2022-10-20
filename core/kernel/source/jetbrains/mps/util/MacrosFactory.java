@@ -148,7 +148,7 @@ public final class MacrosFactory implements MacroHelper.Source {
       }
       // don't care to account for modules at the root, like c:/mymodule/
       final String grandParentPrefix = anchorFolder.getParent().getParent().getPath();
-      if (pathStartsWith(absolutePath, parentPrefix)) {
+      if (pathStartsWith(absolutePath, grandParentPrefix)) {
         return MODULE + "/../.." + shrink(absolutePath, grandParentPrefix);
       }
       return tryPathVars;

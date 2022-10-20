@@ -68,6 +68,7 @@ public final class VirtualFileUtils {
     if (file instanceof IdeaFile) {
       return ((IdeaFile) file).getVirtualFile();
     } else {
+      // what about non-existent files?
       return LocalFileSystem.getInstance().findFileByPath(file.getPath());
     }
   }

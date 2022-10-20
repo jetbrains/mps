@@ -28,6 +28,7 @@ import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.roots.ui.configuration.actions.IconWithTextAction;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.util.io.FileUtil;
+import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.ScrollPaneFactory;
 import com.intellij.ui.TreeSpeedSearch;
@@ -183,7 +184,15 @@ public class FileBasedModelRootEditor implements ModelRootEntryEditor {
     if (file != null) {
       @SuppressWarnings("removal")
       VirtualFile vf = myFileBasedModelRootEntry.getProject().getFileSystem().asVirtualFile(file);
-      myDescriptor.setRoots(vf);
+      if (vf == null) {
+        // JavaModuleFacetTab.convertStringPaths2VirtualFile() suggests (f76e27f0)
+        // it's not reasonable to expect LFS to find a non-existent file. However, this is what
+        // was in original VirtualFileUtils.getProjectVirtualFile
+        vf = LocalFileSystem.getInstance().findFileByPath(file.getPath());
+      }
+      if (vf != null) {
+        myDescriptor.setRoots(vf);
+      }
       myDescriptor.setTitle(FileUtil.toSystemDependentName(file.getPath()));
     }
   }

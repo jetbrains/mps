@@ -613,6 +613,8 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
   private static Collection<VirtualFile> convertStringPaths2VirtualFile(Collection<String> paths) {
     final Collection<VirtualFile> result = new ArrayList<>(paths.size());
     for (String path : paths) {
+      // contrary to what commit comment suggests here, findFileByPath seems to work
+      // fine for FileBasedModelRootEditor
       final VirtualFile fileByPath = LocalFileSystem.getInstance().findFileByPath(path);
       if (fileByPath != null) {
         result.add(fileByPath);
