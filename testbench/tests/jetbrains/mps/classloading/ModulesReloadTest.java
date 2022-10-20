@@ -22,9 +22,8 @@ import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.facets.JavaLanguageLevel;
 import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.project.facets.JavaModuleFacet.LoadExtensions;
 import jetbrains.mps.project.structure.modules.Dependency;
-import jetbrains.mps.project.structure.modules.SolutionDescriptor;
-import jetbrains.mps.project.structure.modules.SolutionKind;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.testbench.ModuleMpsTest;
@@ -155,20 +154,15 @@ public class ModulesReloadTest extends ModuleMpsTest {
 
   @Test
   public void testPluginSolutionIsLoadable() {
-    final Solution solution = createSolution(SolutionKind.PLUGIN_CORE);
+    final Solution solution = createSolution(LoadExtensions.Plugin);
     addClassTo(solution);
-    getModelAccess().runWriteAction(new Runnable() {
-      @Override
-      public void run() {
-        myManager.reloadModule(solution);
-      }
-    });
+    getModelAccess().runWriteAction(() -> myManager.reloadModule(solution));
     Assert.assertTrue(classIsLoadableFromModule(solution));
   }
 
   @Test
   public void testNotLoadableDepsAreNotLoadable() {
-    final Solution solution = createSolution(SolutionKind.NONE);
+    final Solution solution = createSolution(LoadExtensions.NotAvailable);
     addClassTo(solution);
     final Language l1 = createLanguage();
     getModelAccess().runWriteAction(new Runnable() {
@@ -183,7 +177,7 @@ public class ModulesReloadTest extends ModuleMpsTest {
   }
   @Test
   public void testNonPluginSolutionIsNotLoadable() {
-    final Solution solution = createSolution(SolutionKind.NONE);
+    final Solution solution = createSolution(LoadExtensions.NotAvailable);
     addClassTo(solution);
     getModelAccess().runWriteAction(new Runnable() {
       @Override
@@ -197,28 +191,28 @@ public class ModulesReloadTest extends ModuleMpsTest {
 
   @Test
   public void testReloadNonLoadableSolution() {
-    final Solution solution = createSolution(SolutionKind.NONE);
+    final Solution solution = createSolution(LoadExtensions.NotAvailable);
     getModelAccess().runWriteAction(() -> myManager.reloadModule(solution));
   }
 
   @Test
   public void testReloadingSolutionKinds() {
-    final Solution solution = createSolution(SolutionKind.NONE);
+    final Solution solution = createSolution(LoadExtensions.NotAvailable);
     addClassTo(solution);
     getModelAccess().runWriteAction(new Runnable() {
       @Override
       public void run() {
-        SolutionDescriptor moduleDescriptor = solution.getModuleDescriptor();
-        assert moduleDescriptor != null;
-        moduleDescriptor.setKind(SolutionKind.NONE);
+        // FIXME again, no idea why PLUGIN_CORE/OTHER were employed as trigger for classes to become available
+        //        through module CL
+        solution.getFacet(JavaModuleFacet.class).setLoadExtensions(LoadExtensions.NotAvailable);
         myManager.reloadModule(solution);
         Assert.assertTrue(myManager.getModulesWatcher().isModuleWatched(solution));
 //        Assert.assertFalse(classIsLoadableFromModule(solution)); FIXME: enable after 3.2
-        moduleDescriptor.setKind(SolutionKind.PLUGIN_CORE);
+        solution.getFacet(JavaModuleFacet.class).setLoadExtensions(LoadExtensions.Plugin);
         myManager.reloadModule(solution);
         Assert.assertTrue(classIsLoadableFromModule(solution));
         Assert.assertTrue(myManager.getModulesWatcher().isModuleWatched(solution));
-        moduleDescriptor.setKind(SolutionKind.NONE);
+        solution.getFacet(JavaModuleFacet.class).setLoadExtensions(LoadExtensions.NotAvailable);
         myManager.reloadModule(solution);
         Assert.assertTrue(myManager.getModulesWatcher().isModuleWatched(solution));
         //        Assert.assertFalse(classIsLoadableFromModule(solution)); FIXME: enable after 3.2
@@ -252,8 +246,10 @@ public class ModulesReloadTest extends ModuleMpsTest {
         addClassTo(s);
         l.addDependency(s.getModuleReference(), false);
 //        Assert.assertFalse(classIsLoadableFromModule(l)); FIXME turn on after 3.2
-        SolutionDescriptor moduleDescriptor = s.getModuleDescriptor();
-        moduleDescriptor.setKind(SolutionKind.PLUGIN_CORE);
+        // FIXME ^^^ not sure l can't load classes from s; provided s was a regular MPS solution
+        //      (based on createSolution() defaults), and PLUGIN_OTHER/PLUGIN_NONE shall not have any effect on that.
+        //   Now, I just mechanically refactored this code, likely, worth another visit.
+        s.getFacet(JavaModuleFacet.class).setLoadExtensions(LoadExtensions.Plugin);
         myManager.reloadModule(s);
         Assert.assertTrue(classIsLoadableFromModule(l)); // the class must be available already here
       }
@@ -263,14 +259,11 @@ public class ModulesReloadTest extends ModuleMpsTest {
   @Test
   public void testNonLoadableDepsThrows() {
     final Language l = createLanguage();
-    final Solution s = createSolution(SolutionKind.NONE);
-    getModelAccess().runWriteAction(new Runnable() {
-      @Override
-      public void run() {
-        addClassTo(s);
-        l.addDependency(s.getModuleReference(), false);
+    final Solution s = createSolution(LoadExtensions.NotAvailable);
+    getModelAccess().runWriteAction(() -> {
+      addClassTo(s);
+      l.addDependency(s.getModuleReference(), false);
 //        Assert.assertFalse(classIsLoadableFromModule(l)); // the class must be available already here FIXME: enable after 3.2
-      }
     });
   }
 
@@ -314,9 +307,8 @@ public class ModulesReloadTest extends ModuleMpsTest {
       @Override
       public void run() {
         removeModule(l1);
-        Assert.assertSame(l1.getClassLoader(),
-                          defaultCL());
-        Assert.assertTrue(!myManager.getModulesWatcher().isModuleWatched(l1));
+        Assert.assertSame(l1.getClassLoader(), defaultCL());
+        Assert.assertFalse(myManager.getModulesWatcher().isModuleWatched(l1));
       }
     });
     Assert.assertSame(l1.getClassLoader(), defaultCL());
@@ -405,7 +397,7 @@ public class ModulesReloadTest extends ModuleMpsTest {
       @SuppressWarnings("ConstantConditions")
       @Override
       public void run() {
-        runtime.set(createSolution(SolutionKind.PLUGIN_OTHER));
+        runtime.set(createSolution(LoadExtensions.Plugin));
         addClassTo(runtime.get());
         // if anyone took module's classloader prior to TestJavaModuleFacet got classpath, there would be no proper classpath entry,
         // hence have to reload module to pick the changes up. Tests above do this for languages and generators, why not for solutions?
@@ -420,7 +412,7 @@ public class ModulesReloadTest extends ModuleMpsTest {
       @Override
       public void run() {
         language.set(createLanguage(runtime.get().getModuleReference()));
-        solution.set(createSolution(SolutionKind.PLUGIN_OTHER));
+        solution.set(createSolution(LoadExtensions.Plugin));
         addUsedLanguage(solution.get(), language.get());
       }
     });
@@ -442,12 +434,12 @@ public class ModulesReloadTest extends ModuleMpsTest {
       @SuppressWarnings("ConstantConditions")
       @Override
       public void run() {
-        runtime.set(createSolution(SolutionKind.PLUGIN_OTHER));
+        runtime.set(createSolution(LoadExtensions.Plugin));
         addClassTo(runtime.get());
         myManager.reloadModule(runtime.get()); // see testLanguageRuntimeIsLoadable() above for reasons to reload module here
         Assert.assertTrue(classIsLoadableFromModule(runtime.get()));
         language.set(createLanguage(runtime.get().getModuleReference()));
-        solution.set(createSolution(SolutionKind.PLUGIN_OTHER));
+        solution.set(createSolution(LoadExtensions.Plugin));
         addUsedLanguage(solution.get(), language.get());
         removeModule(language.get());
         Language sameLanguage = createLanguage(language.get().getModuleDescriptor().getId(), language.get().getModuleName(), runtime.get().getModuleReference()); // the same
@@ -599,14 +591,20 @@ public class ModulesReloadTest extends ModuleMpsTest {
     }
     @Override
     public LoadExtensions getLoadExtensions() {
-      return LoadExtensions.NotAvailable;
+      return myLoadExt;
     }
+
+    @Override
+    public void setLoadExtensions(LoadExtensions loadExtensions) {
+      myLoadExt = loadExtensions;
+    }
+
+    private LoadExtensions myLoadExt = LoadExtensions.NotAvailable;
   }
 
-  private Solution createSolution(SolutionKind kind) {
+  private Solution createSolution(LoadExtensions ext) {
     Solution solution = super.createSolution();
-    SolutionDescriptor moduleDescriptor = solution.getModuleDescriptor();
-    moduleDescriptor.setKind(kind);
+    solution.getFacet(JavaModuleFacet.class).setLoadExtensions(ext);
     return solution;
   }
 }
