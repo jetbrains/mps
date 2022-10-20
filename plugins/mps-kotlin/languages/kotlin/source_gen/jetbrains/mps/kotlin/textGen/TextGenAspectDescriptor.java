@@ -92,8 +92,6 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new DoWhileStatement_TextGen();
       case LanguageConceptSwitch.DynamicType:
         return new DynamicType_TextGen();
-      case LanguageConceptSwitch.EmptyClassMemberDeclaration:
-        return new EmptyClassMemberDeclaration_TextGen();
       case LanguageConceptSwitch.EmptyDeclaration:
         return new EmptyDeclaration_TextGen();
       case LanguageConceptSwitch.EmptyStatement:
@@ -172,14 +170,10 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new LambdaLiteral_TextGen();
       case LanguageConceptSwitch.LocalPropertyDeclaration:
         return new LocalPropertyDeclaration_TextGen();
-      case LanguageConceptSwitch.LongLiteral:
-        return new LongLiteral_TextGen();
       case LanguageConceptSwitch.MemberNavigationOperation:
         return new MemberNavigationOperation_TextGen();
       case LanguageConceptSwitch.MultiLambdaParameter:
         return new MultiLambdaParameter_TextGen();
-      case LanguageConceptSwitch.MultiLineStringLiteral:
-        return new MultiLineStringLiteral_TextGen();
       case LanguageConceptSwitch.NavigationOperation:
         return new NavigationOperation_TextGen();
       case LanguageConceptSwitch.NoinlineParameterModifier:
@@ -282,8 +276,6 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new TypeProjection_TextGen();
       case LanguageConceptSwitch.TypeTest:
         return new TypeTest_TextGen();
-      case LanguageConceptSwitch.UnsignedLiteral:
-        return new UnsignedLiteral_TextGen();
       case LanguageConceptSwitch.ValueArgument:
         return new ValueArgument_TextGen();
       case LanguageConceptSwitch.VariableDeclaration:
@@ -311,10 +303,34 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         outline.registerTextUnit(createTextUnit0((ext == null ? fname : (fname + '.' + ext)), root));
         continue;
       }
+      if (root.getConcept().equals(CONCEPTS.InterfaceDeclaration$fL)) {
+        String fname = getFileName_InterfaceDeclaration(root);
+        String ext = getFileExtension_InterfaceDeclaration(root);
+        outline.registerTextUnit((ext == null ? fname : (fname + '.' + ext)), root);
+        continue;
+      }
       if (root.getConcept().equals(CONCEPTS.KotlinFile$4h)) {
         String fname = getFileName_KotlinFile(root);
         String ext = getFileExtension_KotlinFile(root);
         outline.registerTextUnit(createTextUnit1((ext == null ? fname : (fname + '.' + ext)), root));
+        continue;
+      }
+      if (root.getConcept().equals(CONCEPTS.ClassDeclaration$Jm)) {
+        String fname = getFileName_ClassDeclaration(root);
+        String ext = getFileExtension_ClassDeclaration(root);
+        outline.registerTextUnit((ext == null ? fname : (fname + '.' + ext)), root);
+        continue;
+      }
+      if (root.getConcept().equals(CONCEPTS.EnumClassDeclaration$xK)) {
+        String fname = getFileName_EnumClassDeclaration(root);
+        String ext = getFileExtension_EnumClassDeclaration(root);
+        outline.registerTextUnit((ext == null ? fname : (fname + '.' + ext)), root);
+        continue;
+      }
+      if (root.getConcept().equals(CONCEPTS.ObjectDeclaration$LN)) {
+        String fname = getFileName_ObjectDeclaration(root);
+        String ext = getFileExtension_ObjectDeclaration(root);
+        outline.registerTextUnit((ext == null ? fname : (fname + '.' + ext)), root);
         continue;
       }
     }
@@ -322,14 +338,38 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
   private static String getFileName_KtScript(SNode node) {
     return node.getName();
   }
+  private static String getFileName_InterfaceDeclaration(SNode node) {
+    return node.getName();
+  }
   private static String getFileName_KotlinFile(SNode node) {
+    return node.getName();
+  }
+  private static String getFileName_ClassDeclaration(SNode node) {
+    return node.getName();
+  }
+  private static String getFileName_EnumClassDeclaration(SNode node) {
+    return node.getName();
+  }
+  private static String getFileName_ObjectDeclaration(SNode node) {
     return node.getName();
   }
   private static String getFileExtension_KtScript(SNode node) {
     return "kts";
   }
+  private static String getFileExtension_InterfaceDeclaration(SNode node) {
+    return null;
+  }
   private static String getFileExtension_KotlinFile(SNode node) {
     return "kt";
+  }
+  private static String getFileExtension_ClassDeclaration(SNode node) {
+    return null;
+  }
+  private static String getFileExtension_EnumClassDeclaration(SNode node) {
+    return null;
+  }
+  private static String getFileExtension_ObjectDeclaration(SNode node) {
+    return null;
   }
   private static TextUnit createTextUnit0(String filename, SNode node) {
     BufferLayoutBuilder lb = new BufferLayoutBuilder();
@@ -356,6 +396,10 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept KtScript$OG = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3efL, "jetbrains.mps.kotlin.structure.KtScript");
+    /*package*/ static final SConcept InterfaceDeclaration$fL = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7554886bfL, "jetbrains.mps.kotlin.structure.InterfaceDeclaration");
     /*package*/ static final SConcept KotlinFile$4h = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af529L, "jetbrains.mps.kotlin.structure.KotlinFile");
+    /*package*/ static final SConcept ClassDeclaration$Jm = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af469L, "jetbrains.mps.kotlin.structure.ClassDeclaration");
+    /*package*/ static final SConcept EnumClassDeclaration$xK = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d75547b5aaL, "jetbrains.mps.kotlin.structure.EnumClassDeclaration");
+    /*package*/ static final SConcept ObjectDeclaration$LN = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af364L, "jetbrains.mps.kotlin.structure.ObjectDeclaration");
   }
 }

@@ -8,7 +8,7 @@ import org.jetbrains.mps.openapi.persistence.SModelIdFactory;
 import org.jetbrains.mps.openapi.model.SModelId;
 
 @GeneratedClass(node = "r:3391afe4-c131-4e6c-87cf-990834a43a93(jetbrains.mps.kotlin.stubs.common)/400506772121978370", model = "r:3391afe4-c131-4e6c-87cf-990834a43a93(jetbrains.mps.kotlin.stubs.common)")
-public final class KotlinPackageModelId extends PackageModelId {
+public class KotlinPackageModelId extends PackageModelId {
   private final int kotlinSalt = "kotlin".hashCode();
 
   public KotlinPackageModelId(String packageName) {
@@ -17,11 +17,12 @@ public final class KotlinPackageModelId extends PackageModelId {
 
   @Override
   protected String getStereotype() {
-    return KotlinLanguage.MODEL_STEREOTYPE;
+    return KotlinLanguage.ModelKind.COMMON.stereotype;
   }
+
   @Override
   public String getType() {
-    return KotlinLanguage.LANGUAGE_ID;
+    return KotlinLanguage.ModelKind.COMMON.name;
   }
 
   @Override

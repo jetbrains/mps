@@ -6,7 +6,6 @@ import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
-import jetbrains.mps.kotlin.signatures.MemberSignature;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
@@ -24,28 +23,22 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class IIdentifier__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af330L, "jetbrains.mps.kotlin.structure.IIdentifier");
 
-  public static final SMethod<Class<? extends MemberSignature>> getMemberSignatureKind_id5q426iHFtTk = new SMethodBuilder<Class<? extends MemberSignature>>(new SJavaCompoundTypeImpl(Class.class)).name("getMemberSignatureKind").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6234117012691213908L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<String> getNestedName_id1d2BQ0ZyA$g = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getNestedName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1387846870915246352L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(KtEnvironmentConfig.class, ""));
   public static final SMethod<SNode> getImportRoot_id1d2BQ0ZAmKw = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getImportRoot").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1387846870916230176L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(KtEnvironmentConfig.class, ""));
   public static final SMethod<Boolean> isRegular_idnhyiqtKtUT = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isRegular").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(419267039270657721L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMemberSignatureKind_id5q426iHFtTk, getNestedName_id1d2BQ0ZyA$g, getImportRoot_id1d2BQ0ZAmKw, isRegular_idnhyiqtKtUT);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getNestedName_id1d2BQ0ZyA$g, getImportRoot_id1d2BQ0ZAmKw, isRegular_idnhyiqtKtUT);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  @Deprecated
-  /*package*/ static Class<? extends MemberSignature> getMemberSignatureKind_id5q426iHFtTk(@NotNull SAbstractConcept __thisConcept__) {
-    // Any kind of signature by default
-    return MemberSignature.class;
-  }
   /*package*/ static String getNestedName_id1d2BQ0ZyA$g(@NotNull SNode __thisNode__, KtEnvironmentConfig configuration) {
-    SNode ancestor = SNodeOperations.getNodeAncestorWhereConceptInList(__thisNode__, new SAbstractConcept[]{CONCEPTS.IIdentifier$wg, CONCEPTS.IKotlinRoot$wS}, false, false);
+    SNode ancestor = SNodeOperations.getNodeAncestorWhereConceptInList(__thisNode__, new SAbstractConcept[]{CONCEPTS.IIdentifier$wg, CONCEPTS.IKotlinFile$wS}, false, false);
     String parentName;
     String thisName = configuration.getName(__thisNode__);
     if (configuration.isImportRoot(__thisNode__, ancestor)) {
       return thisName;
-    } else if (SNodeOperations.isInstanceOf(ancestor, CONCEPTS.IKotlinRoot$wS)) {
+    } else if (SNodeOperations.isInstanceOf(ancestor, CONCEPTS.IKotlinFile$wS)) {
       parentName = configuration.getName(ancestor);
     } else {
       parentName = IIdentifier__BehaviorDescriptor.getNestedName_id1d2BQ0ZyA$g.invoke(SNodeOperations.cast(ancestor, CONCEPTS.IIdentifier$wg), configuration);
@@ -54,10 +47,10 @@ public final class IIdentifier__BehaviorDescriptor extends BaseBHDescriptor {
     return ((parentName == null || parentName.length() == 0) ? thisName : parentName + "." + thisName);
   }
   /*package*/ static SNode getImportRoot_id1d2BQ0ZAmKw(@NotNull SNode __thisNode__, KtEnvironmentConfig configuration) {
-    SNode ancestor = SNodeOperations.getNodeAncestorWhereConceptInList(__thisNode__, new SAbstractConcept[]{CONCEPTS.IIdentifier$wg, CONCEPTS.IKotlinRoot$wS}, false, false);
+    SNode ancestor = SNodeOperations.getNodeAncestorWhereConceptInList(__thisNode__, new SAbstractConcept[]{CONCEPTS.IIdentifier$wg, CONCEPTS.IKotlinFile$wS}, false, false);
     if (configuration.isImportRoot(__thisNode__, ancestor)) {
       return __thisNode__;
-    } else if (SNodeOperations.isInstanceOf(ancestor, CONCEPTS.IKotlinRoot$wS)) {
+    } else if (SNodeOperations.isInstanceOf(ancestor, CONCEPTS.IKotlinFile$wS)) {
       return ancestor;
     }
 
@@ -82,9 +75,9 @@ public final class IIdentifier__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
-      case 1:
+      case 0:
         return (T) ((String) getNestedName_id1d2BQ0ZyA$g(node, (KtEnvironmentConfig) parameters[0]));
-      case 2:
+      case 1:
         return (T) ((SNode) getImportRoot_id1d2BQ0ZAmKw(node, (KtEnvironmentConfig) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -98,9 +91,7 @@ public final class IIdentifier__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
-      case 0:
-        return (T) ((Class<? extends MemberSignature>) getMemberSignatureKind_id5q426iHFtTk(concept));
-      case 3:
+      case 2:
         return (T) ((Boolean) isRegular_idnhyiqtKtUT(concept, (String) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -121,6 +112,6 @@ public final class IIdentifier__BehaviorDescriptor extends BaseBHDescriptor {
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept IIdentifier$wg = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af330L, "jetbrains.mps.kotlin.structure.IIdentifier");
-    /*package*/ static final SInterfaceConcept IKotlinRoot$wS = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0xad71950af90e8f8L, "jetbrains.mps.kotlin.structure.IKotlinRoot");
+    /*package*/ static final SInterfaceConcept IKotlinFile$wS = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0xad71950af90e8f8L, "jetbrains.mps.kotlin.structure.IKotlinFile");
   }
 }

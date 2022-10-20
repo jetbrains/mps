@@ -44,8 +44,8 @@ public class FunctionInheritance extends MigrationScriptBase {
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.FunctionDeclaration$oD, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          if ((SLinkOperations.getTarget(it, LINKS.inheritance_$Geug) != null)) {
-            SLinkOperations.setTarget(it, LINKS.inheritance$TFvr, SLinkOperations.getTarget(it, LINKS.inheritance_$Geug));
+          if ((SLinkOperations.getTarget(it, LINKS._inheritance$Geug) != null)) {
+            SLinkOperations.setTarget(it, LINKS.inheritance$TFvr, SLinkOperations.getTarget(it, LINKS._inheritance$Geug));
           } else if ((SLinkOperations.getTarget(it, LINKS.inheritance$TFvr) == null)) {
             SLinkOperations.setTarget(it, LINKS.inheritance$TFvr, SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(IInheritable__BehaviorDescriptor.getDefaultInheritance_id7uO8z1Cfao7.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(it)), it))));
           }
@@ -63,6 +63,6 @@ public class FunctionInheritance extends MigrationScriptBase {
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink inheritance$TFvr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x537372687dd3bcdaL, 0x537372687dd3bcdbL, "inheritance");
-    /*package*/ static final SContainmentLink inheritance_$Geug = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af434L, 0x441fd2709ecea6b9L, "inheritance_");
+    /*package*/ static final SContainmentLink _inheritance$Geug = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af434L, 0x441fd2709ecea6b9L, "_inheritance");
   }
 }

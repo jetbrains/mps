@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-1hh374307ultskzul255u3fbtxsyg3b">
-  <files names="FinalSupertype_Test.java:OperatorPriority_Test.java:PropertyNotInitialized_Test.java:SupertypeWithConstructor_Test.java" />
+<product version="3" modelHash="-apk14s2uuk4dzd81qqjtwbeaw3zofhs">
+  <files names="FinalSupertype_Test.java:LambdaInCallParenthesis_Test.java:OperatorPriority_Test.java:PropertyNotInitialized_Test.java:SupertypeWithConstructor_Test.java" />
 </product>
 

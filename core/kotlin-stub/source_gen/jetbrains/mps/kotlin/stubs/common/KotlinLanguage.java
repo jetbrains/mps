@@ -14,12 +14,24 @@ import org.jetbrains.mps.openapi.model.SModelId;
  */
 @GeneratedClass(node = "r:3391afe4-c131-4e6c-87cf-990834a43a93(jetbrains.mps.kotlin.stubs.common)/2728382324536352273", model = "r:3391afe4-c131-4e6c-87cf-990834a43a93(jetbrains.mps.kotlin.stubs.common)")
 public class KotlinLanguage {
-  public static final String LANGUAGE_ID = "kotlin";
-  public static final String MODEL_STEREOTYPE = SModelStereotype.getStubStereotypeForId(LANGUAGE_ID);
+  public enum ModelKind {
+    COMMON("kotlin", "kotlin_common"),
+    JVM("kotlinJvm", "kotlin_jvm");
 
-  public static SModelReference createSModelReference(String packageName, SModuleReference moduleRef) {
+    public final String name;
+    public final String stereotype;
+    public final String rootName;
+
+    ModelKind(String name, String rootName) {
+      this.name = name;
+      this.stereotype = SModelStereotype.getStubStereotypeForId(name);
+      this.rootName = rootName;
+    }
+  }
+
+  public static SModelReference createSModelReference(String packageName, SModuleReference moduleRef, ModelKind kind) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SModelId modelId = facade.createModelId(LANGUAGE_ID + ':' + packageName);
+    SModelId modelId = facade.createModelId(kind.name + ':' + packageName);
     SModelReference ref = facade.createModelReference(moduleRef, modelId, modelId.getModelName());
     return ref;
   }

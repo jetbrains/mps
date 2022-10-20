@@ -69,16 +69,6 @@ public interface FunctionDeclaration {
    */
   SNode getReturnType();
 
-
-  /**
-   * 
-   * @deprecated replaced with getReceiverType
-   */
-  @Deprecated
-  default FunctionReceiver getReceiver() {
-    return null;
-  }
-
   /**
    * Returns the declared receiver type of the function if applicable.
    */

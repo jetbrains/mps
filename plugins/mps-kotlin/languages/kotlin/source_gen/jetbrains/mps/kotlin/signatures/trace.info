@@ -439,10 +439,5 @@
       <unit id="6234117012687327736" at="6,0,10,0" name="jetbrains.mps.kotlin.signatures.AccessorKind" />
     </file>
   </root>
-  <root nodeRef="r:f44f82b0-1fd9-4105-a80c-2fa6e5033003(jetbrains.mps.kotlin.signatures)/6234117012691218729">
-    <file name="_VariableSignature.java">
-      <unit id="6234117012691218729" at="11,0,15,0" name="jetbrains.mps.kotlin.signatures._VariableSignature" />
-    </file>
-  </root>
 </debug-info>
 

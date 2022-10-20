@@ -4,13 +4,7 @@ package jetbrains.mps.kotlin.idePlugin.fileTypes;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.lang.Language;
-import com.intellij.openapi.fileTypes.SyntaxHighlighterFactory;
 import org.jetbrains.annotations.NotNull;
-import com.intellij.openapi.fileTypes.SyntaxHighlighter;
-import org.jetbrains.annotations.Nullable;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.ide.highlighter.JavaFileHighlighter;
 
 @GeneratedClass(node = "r:91eb39d8-e8a0-4f7f-a1c1-123c488c7158(jetbrains.mps.kotlin.idePlugin.fileTypes)/6964872868600310251", model = "r:91eb39d8-e8a0-4f7f-a1c1-123c488c7158(jetbrains.mps.kotlin.idePlugin.fileTypes)")
 public class KotlinLanguage extends Language {
@@ -18,16 +12,6 @@ public class KotlinLanguage extends Language {
   protected KotlinLanguage() {
     // TODO remove mime types?
     super("KOTLIN", "application/x-kotlin", "text/x-kotlin");
-
-    // Add highlighter for kotlin
-    SyntaxHighlighterFactory.LANGUAGE_FACTORY.addExplicitExtension(this, new SyntaxHighlighterFactory() {
-      @NotNull
-      @Override
-      public SyntaxHighlighter getSyntaxHighlighter(@Nullable Project p1, @Nullable VirtualFile p2) {
-        // TODO kotlin file highlighter
-        return new JavaFileHighlighter();
-      }
-    });
   }
 
   @NotNull

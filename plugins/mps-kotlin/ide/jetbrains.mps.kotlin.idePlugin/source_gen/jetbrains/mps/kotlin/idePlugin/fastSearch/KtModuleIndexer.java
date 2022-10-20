@@ -15,14 +15,14 @@ import kotlinx.metadata.KmClassVisitor;
 import kotlinx.metadata.KmPackageVisitor;
 import kotlinx.metadata.KmFunctionVisitor;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.kotlin.ide.commonStubs.EnumFlags;
+import jetbrains.mps.kotlin.stubs.common.metadata.EnumFlags;
 import kotlinx.metadata.internal.metadata.deserialization.Flags;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import kotlinx.metadata.KmPropertyVisitor;
 import kotlinx.metadata.KmTypeAliasVisitor;
 import kotlinx.metadata.KmPackageExtensionVisitor;
 import kotlinx.metadata.KmExtensionType;
-import jetbrains.mps.kotlin.ide.commonStubs.AnnotationVisitor;
+import jetbrains.mps.kotlin.stubs.common.metadata.AnnotationVisitor;
 import kotlinx.metadata.KmAnnotation;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import kotlinx.metadata.KmAnnotationArgument;
@@ -78,7 +78,7 @@ public class KtModuleIndexer extends KmModuleFragmentVisitor {
   }
 
   private void putModelRef(String packageName) {
-    entries.put(new IdIndexEntry(packageName + "@" + KotlinLanguage.MODEL_STEREOTYPE, true), 0);
+    entries.put(new IdIndexEntry(packageName + "@" + KotlinLanguage.ModelKind.COMMON.stereotype, true), 0);
   }
 
   @Nullable

@@ -9,6 +9,7 @@ import org.jetbrains.annotations.NonNls;
 import com.intellij.openapi.util.NlsContexts;
 import com.intellij.openapi.util.NlsSafe;
 import javax.swing.Icon;
+import jetbrains.mps.ide.projectPane.fileSystem.FileIcons;
 
 @GeneratedClass(node = "r:91eb39d8-e8a0-4f7f-a1c1-123c488c7158(jetbrains.mps.kotlin.idePlugin.fileTypes)/6964872868600160944", model = "r:91eb39d8-e8a0-4f7f-a1c1-123c488c7158(jetbrains.mps.kotlin.idePlugin.fileTypes)")
 public class KotlinFileType extends LanguageFileType {
@@ -40,6 +41,6 @@ public class KotlinFileType extends LanguageFileType {
   @Override
   public Icon getIcon() {
     // TODO kotlin icon
-    return null;
+    return FileIcons.JAVA_ICON;
   }
 }

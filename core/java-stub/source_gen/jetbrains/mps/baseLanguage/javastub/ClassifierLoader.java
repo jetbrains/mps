@@ -38,9 +38,9 @@ public class ClassifierLoader {
 
   private final boolean mySkipPrivate;
   private final boolean myOnlyPublic;
-  private final IFile myFile;
-  private ClassReader myClassReader;
-  private InnerClassNode myInnerClassDescriptor;
+  protected final IFile myFile;
+  protected ClassReader myClassReader;
+  protected InnerClassNode myInnerClassDescriptor;
 
   public ClassifierLoader(IFile file, boolean onlyPublic, boolean skipPrivate) {
     mySkipPrivate = skipPrivate;
@@ -59,7 +59,7 @@ public class ClassifierLoader {
     }
   }
 
-  private ClassifierLoader(IFile file, ClassifierLoader outer, InnerClassNode innerClassStruct) {
+  protected ClassifierLoader(IFile file, ClassifierLoader outer, InnerClassNode innerClassStruct) {
     this(file, outer.myOnlyPublic, outer.mySkipPrivate);
     myInnerClassDescriptor = innerClassStruct;
   }
@@ -120,7 +120,7 @@ public class ClassifierLoader {
     return rv;
   }
 
-  private Iterable<ClassifierLoader> getInnerClassifiers(ASMClass ac) {
+  protected Iterable<ClassifierLoader> getInnerClassifiers(ASMClass ac) {
     List<InnerClassNode> innerClasses = ac.getInnerClasses();
     if (innerClasses.isEmpty()) {
       return Collections.emptyList();
@@ -156,10 +156,14 @@ public class ClassifierLoader {
         name = name.substring(index + 1);
       }
 
-      ClassifierLoader inner = new ClassifierLoader(parent.findChild(name + ".class"), this, cn);
+      ClassifierLoader inner = createChildClassifierLoader(parent, name, cn);
       rv.add(inner);
     }
     return rv;
+  }
+
+  protected ClassifierLoader createChildClassifierLoader(IFile parent, String name, InnerClassNode cn) {
+    return new ClassifierLoader(parent.findChild(name + ".class"), this, cn);
   }
 
   public void updateClassifier(SNode classifier, ReferenceFactory refFactory, Function<ASMClass, Documentation> docSupplier) {
@@ -191,6 +195,10 @@ public class ClassifierLoader {
   public static String getClassName(IFile file) {
     String name = file.getName();
     return name.substring(0, name.indexOf('.'));
+  }
+
+  public ClassReader getClassReader() {
+    return this.myClassReader;
   }
   private static SNode createProtectedVisibility_eoyrbu_a0a0h0l0n() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ProtectedVisibility$hr);

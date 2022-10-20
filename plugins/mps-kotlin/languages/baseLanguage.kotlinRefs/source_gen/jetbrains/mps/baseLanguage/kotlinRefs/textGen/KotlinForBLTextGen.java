@@ -43,7 +43,7 @@ public abstract class KotlinForBLTextGen extends BaseLanguageTextGen {
 
     // Get the root to be import, its package name
     SNode root = IIdentifier__BehaviorDescriptor.getImportRoot_id1d2BQ0ZAmKw.invoke(classifier, configuration);
-    String packageName = IKotlinRoot__BehaviorDescriptor.getPackageName_id4f4W8JpDCGu.invoke(SNodeOperations.getNodeAncestor(root, CONCEPTS.IKotlinRoot$wS, true, false));
+    String packageName = IKotlinRoot__BehaviorDescriptor.getPackageName_id74Z9X$ygjTm.invoke(SNodeOperations.getNodeAncestor(root, CONCEPTS.IKotlinRoot$xV, true, false));
 
     // Then add the import
     BaseLanguageTextGen.appendImport(packageName, configuration.getName(root), classifier, ctx);
@@ -53,7 +53,7 @@ public abstract class KotlinForBLTextGen extends BaseLanguageTextGen {
   public static void kotlinFileRef(SNode file, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     String name = KtEnvironmentConfig.Jvm.getName(file);
-    BaseLanguageTextGen.appendImport(IKotlinRoot__BehaviorDescriptor.getPackageName_id4f4W8JpDCGu.invoke(file), name, file, ctx);
+    BaseLanguageTextGen.appendImport(IKotlinRoot__BehaviorDescriptor.getPackageName_id74Z9X$ygjTm.invoke(file), name, file, ctx);
     tgs.append(name);
   }
   public static void kotlinFunction(SNode call, final TextGenContext ctx) {
@@ -125,7 +125,7 @@ public abstract class KotlinForBLTextGen extends BaseLanguageTextGen {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IKotlinRoot$wS = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0xad71950af90e8f8L, "jetbrains.mps.kotlin.structure.IKotlinRoot");
+    /*package*/ static final SInterfaceConcept IKotlinRoot$xV = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x713f27d92240e539L, "jetbrains.mps.kotlin.structure.IKotlinRoot");
     /*package*/ static final SConcept AbstractConstructorDeclaration$GC = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x63c34deca482d827L, "jetbrains.mps.kotlin.structure.AbstractConstructorDeclaration");
   }
 

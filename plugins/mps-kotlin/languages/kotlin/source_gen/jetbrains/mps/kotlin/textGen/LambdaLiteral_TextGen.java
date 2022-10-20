@@ -7,7 +7,6 @@ import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.kotlin.behavior.IStatementHolder__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -20,30 +19,23 @@ public class LambdaLiteral_TextGen extends TextGenDescriptorBase {
       tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.label$EneV));
     }
 
-    tgs.append("{");
+    tgs.append("{ ");
 
     if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.parameters$hLEY)).isNotEmpty()) {
       KotlinTextGen.arguments(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.parameters$hLEY), ctx);
-      tgs.append("-> ");
+      tgs.append(" -> ");
     }
 
     if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.statements$R3pt)).isNotEmpty()) {
-      if ((boolean) IStatementHolder__BehaviorDescriptor.isOneLiner_idCy8Bus23OC.invoke(ctx.getPrimaryInput())) {
-        tgs.appendNode(ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.statements$R3pt)).first());
-        tgs.append(" ");
-      } else {
-        tgs.newLine();
-        ctx.getBuffer().area().increaseIndent();
-        for (SNode statement : ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.statements$R3pt))) {
-          tgs.indent();
-          tgs.appendNode(statement);
-          if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.statements$R3pt)).count() > 1) {
-            tgs.newLine();
-          }
-        }
-        ctx.getBuffer().area().decreaseIndent();
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      for (SNode statement : ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.statements$R3pt))) {
         tgs.indent();
+        tgs.appendNode(statement);
+        tgs.newLine();
       }
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
     }
 
     tgs.append("}");

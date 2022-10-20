@@ -166,33 +166,6 @@
       <unit id="2420378304467493805" at="13,0,52,0" name="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaParameterDeclaration" />
     </file>
   </root>
-  <root nodeRef="r:13fdb710-e0ae-40a1-880c-e26a8ee8d411(jetbrains.mps.kotlin.baseLanguage.toKotlin)/2420378304467668230">
-    <file name="JavaClassFunctionReceiver.java">
-      <node id="2420378304467679216" at="21,0,22,0" concept="3" trace="myClassifier" />
-      <node id="2420378304467679220" at="24,54,25,30" concept="2" />
-      <node id="7710522878635340000" at="28,41,29,94" concept="7" />
-      <node id="7087553310364867791" at="34,60,35,52" concept="7" />
-      <node id="7087553310364867214" at="34,0,37,0" concept="5" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/kotlin/baseLanguage/toKotlin/JavaTypeParameterDeclaration;" />
-      <node id="2420378304467678848" at="23,0,27,0" concept="1" trace="JavaClassFunctionReceiver#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="2420378304467668316" at="27,0,31,0" concept="5" trace="getClassifier#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="2420378304467681799" at="32,65,37,7" concept="7" />
-      <node id="2420378304467668322" at="31,0,39,0" concept="5" trace="getTypeParameters#()Ljava/lang/Iterable;" />
-      <scope id="2420378304467678852" at="24,54,25,30" />
-      <scope id="2420378304467668320" at="28,41,29,94" />
-      <scope id="7087553310364867215" at="34,60,35,52" />
-      <scope id="7087553310364867214" at="34,0,37,0">
-        <var name="it" id="7087553310364867214" />
-      </scope>
-      <scope id="2420378304467678848" at="23,0,27,0">
-        <var name="classifier" id="2420378304467679033" />
-      </scope>
-      <scope id="2420378304467668316" at="27,0,31,0" />
-      <scope id="2420378304467668327" at="32,65,37,7" />
-      <scope id="2420378304467668322" at="31,0,39,0" />
-      <unit id="7087553310364867214" at="33,129,37,5" name="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaClassFunctionReceiver$1" />
-      <unit id="2420378304467668230" at="19,0,40,0" name="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaClassFunctionReceiver" />
-    </file>
-  </root>
   <root nodeRef="r:13fdb710-e0ae-40a1-880c-e26a8ee8d411(jetbrains.mps.kotlin.baseLanguage.toKotlin)/3848791341541293972">
     <file name="JavaVariableHelper.java">
       <node id="3848791341541440927" at="11,53,12,73" concept="6" />
@@ -378,19 +351,6 @@
       <unit id="6585624606749950533" at="39,121,43,5" name="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaDefaultConstructorDeclaration$1" />
       <unit id="6585624606749943178" at="65,0,69,0" name="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaDefaultConstructorDeclaration$CONCEPTS" />
       <unit id="6585624606749943178" at="23,0,74,0" name="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaDefaultConstructorDeclaration" />
-    </file>
-  </root>
-  <root nodeRef="r:13fdb710-e0ae-40a1-880c-e26a8ee8d411(jetbrains.mps.kotlin.baseLanguage.toKotlin)/7565185111015721371">
-    <file name="JavaToKtEngine.java">
-      <node id="5019502120965517297" at="19,27,20,61" concept="12" />
-      <node id="7565185111015721371" at="24,0,25,0" concept="10" trace="ClassifierType$bL" />
-      <node id="7565185111015721371" at="28,0,29,0" concept="10" trace="classifier$cxMr" />
-      <node id="5019502120965517280" at="18,0,22,0" concept="1" trace="JavaToKtEngine#()V" />
-      <scope id="5019502120965517296" at="19,27,20,61" />
-      <scope id="5019502120965517280" at="18,0,22,0" />
-      <unit id="7565185111015721371" at="23,0,26,0" name="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtEngine$CONCEPTS" />
-      <unit id="7565185111015721371" at="27,0,30,0" name="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtEngine$LINKS" />
-      <unit id="7565185111015721371" at="16,0,31,0" name="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtEngine" />
     </file>
   </root>
   <root nodeRef="r:13fdb710-e0ae-40a1-880c-e26a8ee8d411(jetbrains.mps.kotlin.baseLanguage.toKotlin)/8206368354800957709">

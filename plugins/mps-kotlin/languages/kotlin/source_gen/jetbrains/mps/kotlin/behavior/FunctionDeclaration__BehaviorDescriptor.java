@@ -154,7 +154,7 @@ public final class FunctionDeclaration__BehaviorDescriptor extends BaseBHDescrip
     if (!((boolean) IKotlinRunnable__BehaviorDescriptor.isRunnable_idoITd3IthrB.invoke(__thisNode__))) {
       return null;
     }
-    return IKotlinRoot__BehaviorDescriptor.getFqName_id5M0hl5mCfjP.invoke(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.KotlinFile$4h, false, false), envConfig);
+    return IKotlinRoot__BehaviorDescriptor.getFqName_id74Z9X$ygjSa.invoke(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.KotlinFile$4h, false, false), envConfig);
   }
 
   /*package*/ FunctionDeclaration__BehaviorDescriptor() {

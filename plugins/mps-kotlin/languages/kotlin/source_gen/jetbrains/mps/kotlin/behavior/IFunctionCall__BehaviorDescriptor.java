@@ -33,7 +33,6 @@ public final class IFunctionCall__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<String> getFunctionName_id4nn3FPlEjh5 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFunctionName").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5032507314958578757L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<SReferenceLink> getTargetLink_id5D4bOjrrcOr = new SMethodBuilder<SReferenceLink>(new SJavaCompoundTypeImpl(SReferenceLink.class)).name("getTargetLink").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6504375734615461147L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<CallReceiver> getReceiver_id5D4bOjrrgiZ = new SMethodBuilder<CallReceiver>(new SJavaCompoundTypeImpl(CallReceiver.class)).name("getReceiver").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6504375734615475391L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<Boolean> isReceiverExternal_id4bAAzIAVSHE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isReceiverExternal").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4820710032141159274L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<SAbstractConcept> getModifierFilter_id5D4bOjruyUS = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl((Class<SAbstractConcept>) ((Class) Object.class))).name("getModifierFilter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6504375734616338104L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Iterable<Argument>> getArguments_id1VI7K1jROBX = new SMethodBuilder<Iterable<Argument>>(new SJavaCompoundTypeImpl((Class<Iterable<Argument>>) ((Class) Object.class))).name("getArguments").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2228752951862577661L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Iterable<SNode>> getTypeArguments_id5JfKd21NW9H = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getTypeArguments").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6615718379394155117L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
@@ -41,17 +40,13 @@ public final class IFunctionCall__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> isNullSafe_idAd0bnVTsgC = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isNullSafe").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(688207099672773672L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Iterable<SignatureScope>> getFunctionScopeParts_id6dAo8EmAhT7 = new SMethodBuilder<Iterable<SignatureScope>>(new SJavaCompoundTypeImpl((Class<Iterable<SignatureScope>>) ((Class) Object.class))).name("getFunctionScopeParts").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7162518405727723079L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(SContainmentLink.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFunctionName_id4nn3FPlEjh5, getTargetLink_id5D4bOjrrcOr, getReceiver_id5D4bOjrrgiZ, isReceiverExternal_id4bAAzIAVSHE, getModifierFilter_id5D4bOjruyUS, getArguments_id1VI7K1jROBX, getTypeArguments_id5JfKd21NW9H, getFunctionDescriptor_id26mUjU3xhgD, isNullSafe_idAd0bnVTsgC, getFunctionScopeParts_id6dAo8EmAhT7);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFunctionName_id4nn3FPlEjh5, getTargetLink_id5D4bOjrrcOr, getReceiver_id5D4bOjrrgiZ, getModifierFilter_id5D4bOjruyUS, getArguments_id1VI7K1jROBX, getTypeArguments_id5JfKd21NW9H, getFunctionDescriptor_id26mUjU3xhgD, isNullSafe_idAd0bnVTsgC, getFunctionScopeParts_id6dAo8EmAhT7);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
   /*package*/ static CallReceiver getReceiver_id5D4bOjrrgiZ(@NotNull SNode __thisNode__) {
     return null;
-  }
-  @Deprecated
-  /*package*/ static boolean isReceiverExternal_id4bAAzIAVSHE(@NotNull SNode __thisNode__) {
-    return false;
   }
   /*package*/ static SAbstractConcept getModifierFilter_id5D4bOjruyUS(@NotNull SNode __thisNode__) {
     return null;
@@ -92,12 +87,10 @@ public final class IFunctionCall__BehaviorDescriptor extends BaseBHDescriptor {
       case 2:
         return (T) ((CallReceiver) getReceiver_id5D4bOjrrgiZ(node));
       case 3:
-        return (T) ((Boolean) isReceiverExternal_id4bAAzIAVSHE(node));
-      case 4:
         return (T) ((SAbstractConcept) getModifierFilter_id5D4bOjruyUS(node));
-      case 6:
+      case 5:
         return (T) ((Iterable<SNode>) getTypeArguments_id5JfKd21NW9H(node));
-      case 8:
+      case 7:
         return (T) ((Boolean) isNullSafe_idAd0bnVTsgC(node));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -111,7 +104,7 @@ public final class IFunctionCall__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
-      case 9:
+      case 8:
         return (T) ((Iterable<SignatureScope>) getFunctionScopeParts_id6dAo8EmAhT7(concept, (SNode) parameters[0], (SNode) parameters[1], (SContainmentLink) parameters[2]));
       default:
         throw new BHMethodNotFoundException(this, method);

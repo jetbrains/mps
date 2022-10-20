@@ -32,7 +32,7 @@
       <node id="1179778492883721502" at="56,50,57,141" concept="7" />
       <node id="1179778492883721502" at="61,0,62,0" concept="10" trace="FunctionDeclaration$oD" />
       <node id="1179778492883721502" at="65,0,66,0" concept="10" trace="inheritance$TFvr" />
-      <node id="1179778492883721502" at="66,0,67,0" concept="10" trace="inheritance_$Geug" />
+      <node id="1179778492883721502" at="66,0,67,0" concept="10" trace="_inheritance$Geug" />
       <node id="1179778492883721502" at="25,0,28,0" concept="5" trace="getCaption#()Ljava/lang/String;" />
       <node id="1179778492883726018" at="41,0,44,0" concept="5" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
       <node id="1179778492883721502" at="56,0,59,0" concept="5" trace="getReference#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
@@ -76,6 +76,62 @@
       <unit id="1179778492883721502" at="64,0,68,0" name="jetbrains.mps.kotlin.migration.FunctionInheritance$LINKS" />
       <unit id="1179778492883731774" at="45,156,53,7" name="jetbrains.mps.kotlin.migration.FunctionInheritance$2" />
       <unit id="1179778492883721502" at="23,0,69,0" name="jetbrains.mps.kotlin.migration.FunctionInheritance" />
+    </file>
+  </root>
+  <root nodeRef="r:592fb406-61fe-4956-8649-3a4b44896273(jetbrains.mps.kotlin.migration)/1837995998116339893">
+    <file name="RemoveLocalPropertyTypeParameters.java">
+      <node id="1837995998116339893" at="22,0,23,0" concept="2" trace="description" />
+      <node id="1837995998116339893" at="23,30,24,23" concept="7" />
+      <node id="1837995998116339893" at="27,33,28,16" concept="7" />
+      <node id="1837995998116339893" at="30,41,31,17" concept="1" />
+      <node id="1837995998116339893" at="31,17,32,16" concept="7" />
+      <node id="1837995998116385152" at="35,5,36,64" concept="6" />
+      <node id="1837995998116385152" at="36,64,37,90" concept="6" />
+      <node id="1837995998116385152" at="39,52,40,36" concept="7" />
+      <node id="1837995998116406655" at="44,37,45,100" concept="1" />
+      <node id="1837995998116339893" at="50,50,51,141" concept="7" />
+      <node id="1837995998116339893" at="55,0,56,0" concept="10" trace="LocalPropertyDeclaration$eD" />
+      <node id="1837995998116339893" at="59,0,60,0" concept="10" trace="typeParameters$eq6K" />
+      <node id="1837995998116339893" at="23,0,26,0" concept="5" trace="getCaption#()Ljava/lang/String;" />
+      <node id="1837995998116385152" at="39,0,42,0" concept="5" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
+      <node id="1837995998116405677" at="44,0,47,0" concept="5" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="1837995998116339893" at="50,0,53,0" concept="5" trace="getReference#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
+      <node id="1837995998116339893" at="26,0,30,0" concept="5" trace="isRerunnable#()Z" />
+      <node id="1837995998116339893" at="30,0,34,0" concept="5" trace="execute#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="1837995998116385152" at="37,90,42,8" concept="6" />
+      <node id="1837995998116400853" at="42,8,47,9" concept="1" />
+      <node id="1837995998116385152" at="34,42,48,5" concept="0" />
+      <node id="1837995998116339893" at="34,0,50,0" concept="5" trace="doExecute#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
+      <scope id="1837995998116339893" at="23,30,24,23" />
+      <scope id="1837995998116339893" at="27,33,28,16" />
+      <scope id="1837995998116385152" at="39,52,40,36" />
+      <scope id="1837995998116405678" at="44,37,45,100" />
+      <scope id="1837995998116339893" at="50,50,51,141" />
+      <scope id="1837995998116339893" at="30,41,32,16" />
+      <scope id="1837995998116339893" at="23,0,26,0" />
+      <scope id="1837995998116385152" at="39,0,42,0" />
+      <scope id="1837995998116405677" at="44,0,47,0">
+        <var name="it" id="1837995998116405677" />
+      </scope>
+      <scope id="1837995998116339893" at="50,0,53,0" />
+      <scope id="1837995998116339893" at="26,0,30,0" />
+      <scope id="1837995998116339893" at="30,0,34,0">
+        <var name="m" id="1837995998116339893" />
+      </scope>
+      <scope id="1837995998116385152" at="35,5,47,9">
+        <var name="context" id="1837995998116385152" />
+        <var name="scope_qtmi2o_a0e" id="1837995998116385152" />
+        <var name="scope_qtmi2o_a0e_0" id="1837995998116385152" />
+      </scope>
+      <scope id="1837995998116339893" at="34,42,48,5" />
+      <scope id="1837995998116339893" at="34,0,50,0">
+        <var name="m" id="1837995998116339893" />
+      </scope>
+      <unit id="1837995998116339893" at="54,0,57,0" name="jetbrains.mps.kotlin.migration.RemoveLocalPropertyTypeParameters$CONCEPTS" />
+      <unit id="1837995998116339893" at="58,0,61,0" name="jetbrains.mps.kotlin.migration.RemoveLocalPropertyTypeParameters$LINKS" />
+      <unit id="1837995998116385152" at="38,42,42,7" name="jetbrains.mps.kotlin.migration.RemoveLocalPropertyTypeParameters$1" />
+      <unit id="1837995998116405677" at="43,161,47,7" name="jetbrains.mps.kotlin.migration.RemoveLocalPropertyTypeParameters$2" />
+      <unit id="1837995998116339893" at="21,0,62,0" name="jetbrains.mps.kotlin.migration.RemoveLocalPropertyTypeParameters" />
     </file>
   </root>
   <root nodeRef="r:592fb406-61fe-4956-8649-3a4b44896273(jetbrains.mps.kotlin.migration)/2461357008637365413">
@@ -306,64 +362,60 @@
       <node id="1781658014488561279" at="125,33,126,39" concept="6" />
       <node id="1781658014492176858" at="126,39,127,164" concept="8" />
       <node id="1781658014488561285" at="128,11,129,37" concept="6" />
-      <node id="1781658014488561288" at="130,81,131,193" concept="1" />
+      <node id="1781658014488561288" at="130,84,131,193" concept="1" />
       <node id="1781658014506206962" at="131,193,132,48" concept="1" />
       <node id="1781658014506297631" at="134,11,135,0" concept="9" />
       <node id="1781658014488797926" at="136,11,137,42" concept="6" />
       <node id="1781658014488882536" at="138,83,139,122" concept="1" />
-      <node id="1781658014506315140" at="141,11,142,0" concept="9" />
-      <node id="1781658014503063918" at="143,11,144,44" concept="6" />
-      <node id="1781658014503140183" at="145,87,146,200" concept="1" />
-      <node id="1781658014503325417" at="146,200,147,55" concept="1" />
-      <node id="7342564606698146937" at="155,50,156,90" concept="6" />
-      <node id="7342564606698146943" at="156,90,157,119" concept="1" />
-      <node id="7342564606698146951" at="157,119,158,182" concept="1" />
-      <node id="7342564606698146960" at="158,182,159,190" concept="1" />
-      <node id="4787009421625770137" at="163,0,164,0" concept="10" trace="IfExpression$TD" />
-      <node id="4787009421625770137" at="164,0,165,0" concept="10" trace="AbstractConditionalLoop$w2" />
-      <node id="4787009421625770137" at="165,0,166,0" concept="10" trace="AnonymousInitializer$mg" />
-      <node id="4787009421625770137" at="166,0,167,0" concept="10" trace="CatchBlock$el" />
-      <node id="4787009421625770137" at="167,0,168,0" concept="10" trace="FinallyBlock$6e" />
-      <node id="4787009421625770137" at="168,0,169,0" concept="10" trace="ForStatement$7d" />
-      <node id="4787009421625770137" at="169,0,170,0" concept="10" trace="SecondaryConstructor$Lg" />
-      <node id="4787009421625770137" at="170,0,171,0" concept="10" trace="TryExpression$Oi" />
-      <node id="4787009421625770137" at="171,0,172,0" concept="10" trace="WhenEntry$Ki" />
-      <node id="4787009421625770137" at="172,0,173,0" concept="10" trace="AnonymousFunction$9D" />
-      <node id="4787009421625770137" at="173,0,174,0" concept="10" trace="FunctionDeclaration$oD" />
-      <node id="4787009421625770137" at="174,0,175,0" concept="10" trace="PropertyGetter$Im" />
-      <node id="4787009421625770137" at="175,0,176,0" concept="10" trace="PropertySetter$s8" />
-      <node id="4787009421625770137" at="176,0,177,0" concept="10" trace="LambdaLiteral$Bd" />
-      <node id="4787009421625770137" at="177,0,178,0" concept="10" trace="IStatement$fj" />
-      <node id="4787009421625770137" at="178,0,179,0" concept="10" trace="FlexibleBlock$KO" />
-      <node id="4787009421625770137" at="179,0,180,0" concept="10" trace="EmptyClassMemberDeclaration$Ab" />
-      <node id="4787009421625770137" at="180,0,181,0" concept="10" trace="EmptyDeclaration$V" />
-      <node id="4787009421625770137" at="181,0,182,0" concept="10" trace="AnnotationList$je" />
-      <node id="4787009421625770137" at="182,0,183,0" concept="10" trace="ConstructorSuperSpecifier$SH" />
-      <node id="4787009421625770137" at="183,0,184,0" concept="10" trace="FileAnnotationList$h" />
-      <node id="4787009421625770137" at="184,0,185,0" concept="10" trace="FunctionBody$7Q" />
-      <node id="4787009421625770137" at="185,0,186,0" concept="10" trace="Annotation$q5" />
-      <node id="4787009421625770137" at="189,0,190,0" concept="10" trace="body_$2bz9" />
-      <node id="4787009421625770137" at="190,0,191,0" concept="10" trace="block_$KaUn" />
-      <node id="4787009421625770137" at="191,0,192,0" concept="10" trace="body_$g161" />
-      <node id="4787009421625770137" at="192,0,193,0" concept="10" trace="block_$GcPT" />
-      <node id="4787009421625770137" at="193,0,194,0" concept="10" trace="body_$_8Ij" />
-      <node id="4787009421625770137" at="194,0,195,0" concept="10" trace="body_$$TIK" />
-      <node id="4787009421625770137" at="195,0,196,0" concept="10" trace="body_$jT7X" />
-      <node id="4787009421625770137" at="196,0,197,0" concept="10" trace="block_$N0hs" />
-      <node id="4787009421625770137" at="197,0,198,0" concept="10" trace="body_$jLAv" />
-      <node id="4787009421625770137" at="198,0,199,0" concept="10" trace="_body$UbWV" />
-      <node id="4787009421625770137" at="199,0,200,0" concept="10" trace="_body$4ZBW" />
-      <node id="4787009421625770137" at="200,0,201,0" concept="10" trace="_body$jE43" />
-      <node id="4787009421625770137" at="201,0,202,0" concept="10" trace="_body$JAlR" />
-      <node id="4787009421625770137" at="202,0,203,0" concept="10" trace="statements$R3pt" />
-      <node id="4787009421625770137" at="203,0,204,0" concept="10" trace="statements_$Kpvh" />
-      <node id="4787009421625770137" at="204,0,205,0" concept="10" trace="else$$UEO" />
-      <node id="4787009421625770137" at="205,0,206,0" concept="10" trace="annotations$HTS_" />
-      <node id="4787009421625770137" at="206,0,207,0" concept="10" trace="annotations$zNfA" />
-      <node id="4787009421625770137" at="207,0,208,0" concept="10" trace="constructor$F_F2" />
-      <node id="4787009421625770137" at="208,0,209,0" concept="10" trace="target$VUYb" />
-      <node id="4787009421625770137" at="209,0,210,0" concept="10" trace="arguments$zJyV" />
-      <node id="4787009421625770137" at="210,0,211,0" concept="10" trace="typeArguments$86s6" />
+      <node id="7342564606698146937" at="147,50,148,90" concept="6" />
+      <node id="7342564606698146943" at="148,90,149,119" concept="1" />
+      <node id="7342564606698146951" at="149,119,150,182" concept="1" />
+      <node id="7342564606698146960" at="150,182,151,190" concept="1" />
+      <node id="4787009421625770137" at="155,0,156,0" concept="10" trace="IfExpression$TD" />
+      <node id="4787009421625770137" at="156,0,157,0" concept="10" trace="AbstractConditionalLoop$w2" />
+      <node id="4787009421625770137" at="157,0,158,0" concept="10" trace="AnonymousInitializer$mg" />
+      <node id="4787009421625770137" at="158,0,159,0" concept="10" trace="CatchBlock$el" />
+      <node id="4787009421625770137" at="159,0,160,0" concept="10" trace="FinallyBlock$6e" />
+      <node id="4787009421625770137" at="160,0,161,0" concept="10" trace="ForStatement$7d" />
+      <node id="4787009421625770137" at="161,0,162,0" concept="10" trace="SecondaryConstructor$Lg" />
+      <node id="4787009421625770137" at="162,0,163,0" concept="10" trace="TryExpression$Oi" />
+      <node id="4787009421625770137" at="163,0,164,0" concept="10" trace="WhenEntry$Ki" />
+      <node id="4787009421625770137" at="164,0,165,0" concept="10" trace="AnonymousFunction$9D" />
+      <node id="4787009421625770137" at="165,0,166,0" concept="10" trace="FunctionDeclaration$oD" />
+      <node id="4787009421625770137" at="166,0,167,0" concept="10" trace="PropertyGetter$Im" />
+      <node id="4787009421625770137" at="167,0,168,0" concept="10" trace="PropertySetter$s8" />
+      <node id="4787009421625770137" at="168,0,169,0" concept="10" trace="LambdaLiteral$Bd" />
+      <node id="4787009421625770137" at="169,0,170,0" concept="10" trace="IStatement$fj" />
+      <node id="4787009421625770137" at="170,0,171,0" concept="10" trace="FlexibleBlock$KO" />
+      <node id="4787009421625770137" at="171,0,172,0" concept="10" trace="EmptyClassMemberDeclaration$Ab" />
+      <node id="4787009421625770137" at="172,0,173,0" concept="10" trace="EmptyDeclaration$V" />
+      <node id="4787009421625770137" at="173,0,174,0" concept="10" trace="AnnotationList$je" />
+      <node id="4787009421625770137" at="174,0,175,0" concept="10" trace="ConstructorSuperSpecifier$SH" />
+      <node id="4787009421625770137" at="175,0,176,0" concept="10" trace="FileAnnotationList$h" />
+      <node id="4787009421625770137" at="176,0,177,0" concept="10" trace="IStatementHolder$84" />
+      <node id="4787009421625770137" at="177,0,178,0" concept="10" trace="Annotation$q5" />
+      <node id="4787009421625770137" at="181,0,182,0" concept="10" trace="_body$2bz9" />
+      <node id="4787009421625770137" at="182,0,183,0" concept="10" trace="_block$KaUn" />
+      <node id="4787009421625770137" at="183,0,184,0" concept="10" trace="body_$g161" />
+      <node id="4787009421625770137" at="184,0,185,0" concept="10" trace="_block$GcPT" />
+      <node id="4787009421625770137" at="185,0,186,0" concept="10" trace="_body$_8Ij" />
+      <node id="4787009421625770137" at="186,0,187,0" concept="10" trace="_body$$TIK" />
+      <node id="4787009421625770137" at="187,0,188,0" concept="10" trace="_body$jT7X" />
+      <node id="4787009421625770137" at="188,0,189,0" concept="10" trace="_block$N0hs" />
+      <node id="4787009421625770137" at="189,0,190,0" concept="10" trace="_body$jLAv" />
+      <node id="4787009421625770137" at="190,0,191,0" concept="10" trace="_body$UbWV" />
+      <node id="4787009421625770137" at="191,0,192,0" concept="10" trace="_body$4ZBW" />
+      <node id="4787009421625770137" at="192,0,193,0" concept="10" trace="_body$jE43" />
+      <node id="4787009421625770137" at="193,0,194,0" concept="10" trace="_body$JAlR" />
+      <node id="4787009421625770137" at="194,0,195,0" concept="10" trace="statements$R3pt" />
+      <node id="4787009421625770137" at="195,0,196,0" concept="10" trace="_statements$Kpvh" />
+      <node id="4787009421625770137" at="196,0,197,0" concept="10" trace="else$$UEO" />
+      <node id="4787009421625770137" at="197,0,198,0" concept="10" trace="annotations$HTS_" />
+      <node id="4787009421625770137" at="198,0,199,0" concept="10" trace="annotations$zNfA" />
+      <node id="4787009421625770137" at="199,0,200,0" concept="10" trace="constructor$F_F2" />
+      <node id="4787009421625770137" at="200,0,201,0" concept="10" trace="target$VUYb" />
+      <node id="4787009421625770137" at="201,0,202,0" concept="10" trace="arguments$zJyV" />
+      <node id="4787009421625770137" at="202,0,203,0" concept="10" trace="typeArguments$86s6" />
       <node id="4787009421625770137" at="30,0,33,0" concept="5" trace="getCaption#()Ljava/lang/String;" />
       <node id="1781658014488296743" at="46,0,49,0" concept="5" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
       <node id="1781658014495083018" at="79,0,82,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -378,22 +430,20 @@
       <node id="4787009421625770137" at="37,0,41,0" concept="5" trace="execute#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1781658014490998225" at="71,0,75,0" concept="5" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1781658014488561285" at="129,37,133,13" concept="4" />
-      <node id="1781658014503063918" at="144,44,148,13" concept="4" />
       <node id="1781658014488296743" at="44,90,49,8" concept="6" />
       <node id="1781658014495095141" at="83,0,88,0" concept="5" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1806979145045278335" at="89,0,94,9" concept="1" />
       <node id="1781658014490991916" at="69,65,75,9" concept="1" />
       <node id="1781658014488797926" at="135,0,141,11" concept="0" />
-      <node id="7342564606698142857" at="155,0,161,0" concept="11" trace="migrateAnnotation#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="7342564606698142857" at="147,0,153,0" concept="11" trace="migrateAnnotation#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1781658014488561285" at="127,164,134,11" concept="0" />
-      <node id="1781658014503063918" at="142,0,149,11" concept="0" />
       <node id="4929770680975342957" at="96,67,105,9" concept="1" />
       <node id="7342564606698113281" at="105,9,114,9" concept="1" />
       <node id="1781658014495074622" at="77,92,88,9" concept="1" />
-      <node id="1781658014488561268" at="124,89,150,9" concept="4" />
-      <node id="1781658014488668812" at="123,0,152,0" concept="5" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="1781658014488666075" at="121,92,152,7" concept="1" />
-      <node id="1781658014488309706" at="121,0,154,0" concept="11" trace="migrate#(Ljava/util/Collection;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)V" />
+      <node id="1781658014488561268" at="124,89,142,9" concept="4" />
+      <node id="1781658014488668812" at="123,0,144,0" concept="5" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="1781658014488666075" at="121,92,144,7" concept="1" />
+      <node id="1781658014488309706" at="121,0,146,0" concept="11" trace="migrate#(Ljava/util/Collection;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)V" />
       <node id="1781658014488296743" at="41,42,115,5" concept="0" />
       <node id="4787009421625770137" at="41,0,117,0" concept="5" trace="doExecute#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
       <scope id="4787009421625770137" at="30,30,31,23" />
@@ -409,8 +459,7 @@
       <scope id="1781658014488797930" at="138,83,139,122" />
       <scope id="4787009421625770137" at="37,41,39,16" />
       <scope id="1781658014490998226" at="71,37,73,97" />
-      <scope id="1781658014488561287" at="130,81,132,48" />
-      <scope id="1781658014503063922" at="145,87,147,55" />
+      <scope id="1781658014488561287" at="130,84,132,48" />
       <scope id="4787009421625770137" at="30,0,33,0" />
       <scope id="1781658014488296743" at="46,0,49,0" />
       <scope id="1781658014495083018" at="79,0,82,0">
@@ -446,7 +495,7 @@
       <scope id="1781658014488797926" at="136,11,140,13">
         <var name="expression" id="1781658014488797926" />
       </scope>
-      <scope id="7342564606698142860" at="155,50,159,190">
+      <scope id="7342564606698142860" at="147,50,151,190">
         <var name="newAnnotation" id="7342564606698146938" />
       </scope>
       <scope id="1781658014495095141" at="83,0,88,0">
@@ -455,23 +504,20 @@
       <scope id="1781658014488561285" at="128,11,133,13">
         <var name="block" id="1781658014488561285" />
       </scope>
-      <scope id="1781658014503063918" at="143,11,148,13">
-        <var name="functionBody" id="1781658014503063918" />
-      </scope>
-      <scope id="7342564606698142857" at="155,0,161,0">
+      <scope id="7342564606698142857" at="147,0,153,0">
         <var name="it" id="7342564606698172865" />
       </scope>
-      <scope id="1781658014488561278" at="125,33,149,11">
+      <scope id="1781658014488561278" at="125,33,141,11">
         <var name="next" id="1781658014488561280" />
       </scope>
-      <scope id="1781658014488668813" at="123,42,150,9">
+      <scope id="1781658014488668813" at="123,42,142,9">
         <var name="iterator" id="1781658014488561257" />
       </scope>
-      <scope id="1781658014488668812" at="123,0,152,0">
+      <scope id="1781658014488668812" at="123,0,144,0">
         <var name="container" id="1781658014488668812" />
       </scope>
-      <scope id="1781658014488309709" at="121,92,152,7" />
-      <scope id="1781658014488309706" at="121,0,154,0">
+      <scope id="1781658014488309709" at="121,92,144,7" />
+      <scope id="1781658014488309706" at="121,0,146,0">
         <var name="blockLink" id="1781658014488311006" />
         <var name="elements" id="1781658014488310445" />
       </scope>
@@ -494,10 +540,10 @@
       <unit id="7342564606698435033" at="110,22,114,7" name="jetbrains.mps.kotlin.migration.MoveControlStructureStatements$9" />
       <unit id="1781658014490998225" at="70,150,75,7" name="jetbrains.mps.kotlin.migration.MoveControlStructureStatements$2" />
       <unit id="1781658014495095141" at="82,22,88,7" name="jetbrains.mps.kotlin.migration.MoveControlStructureStatements$4" />
-      <unit id="4787009421625770137" at="188,0,212,0" name="jetbrains.mps.kotlin.migration.MoveControlStructureStatements$LINKS" />
-      <unit id="4787009421625770137" at="162,0,187,0" name="jetbrains.mps.kotlin.migration.MoveControlStructureStatements$CONCEPTS" />
-      <unit id="1781658014488668812" at="122,61,152,5" name="jetbrains.mps.kotlin.migration.MoveControlStructureStatements$10" />
-      <unit id="4787009421625770137" at="28,0,213,0" name="jetbrains.mps.kotlin.migration.MoveControlStructureStatements" />
+      <unit id="1781658014488668812" at="122,61,144,5" name="jetbrains.mps.kotlin.migration.MoveControlStructureStatements$10" />
+      <unit id="4787009421625770137" at="180,0,204,0" name="jetbrains.mps.kotlin.migration.MoveControlStructureStatements$LINKS" />
+      <unit id="4787009421625770137" at="154,0,179,0" name="jetbrains.mps.kotlin.migration.MoveControlStructureStatements$CONCEPTS" />
+      <unit id="4787009421625770137" at="28,0,205,0" name="jetbrains.mps.kotlin.migration.MoveControlStructureStatements" />
     </file>
   </root>
   <root nodeRef="r:592fb406-61fe-4956-8649-3a4b44896273(jetbrains.mps.kotlin.migration)/5401033615062809121">
@@ -515,7 +561,7 @@
       <node id="5401033615064092659" at="56,141,57,0" concept="9" />
       <node id="5401033615064091741" at="57,0,58,139" concept="6" />
       <node id="5401033615064052265" at="58,139,59,47" concept="1" />
-      <node id="5401033615064082383" at="60,67,61,140" concept="1" />
+      <node id="5401033615064082383" at="60,67,61,141" concept="1" />
       <node id="5401033615062810696" at="63,5,64,0" concept="9" />
       <node id="5401033615062809121" at="66,50,67,141" concept="7" />
       <node id="5401033615063319990" at="70,76,71,87" concept="6" />
@@ -546,7 +592,7 @@
       <node id="5401033615062809121" at="120,0,121,0" concept="10" trace="variables$EO9Z" />
       <node id="5401033615062809121" at="121,0,122,0" concept="10" trace="target$xQFr" />
       <node id="5401033615062809121" at="125,0,126,0" concept="10" trace="forceDeconstructing$1mec" />
-      <node id="5401033615062809121" at="126,0,127,0" concept="10" trace="isDeconstructing$FQve" />
+      <node id="5401033615062809121" at="126,0,127,0" concept="10" trace="_isDeconstructing$FQve" />
       <node id="5401033615062809121" at="127,0,128,0" concept="10" trace="name$MnvL" />
       <node id="5401033615062809121" at="35,0,38,0" concept="5" trace="getCaption#()Ljava/lang/String;" />
       <node id="5401033615062830425" at="51,0,54,0" concept="5" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
@@ -570,7 +616,7 @@
       <scope id="5401033615062809121" at="35,30,36,23" />
       <scope id="5401033615062809121" at="39,33,40,16" />
       <scope id="5401033615062830425" at="51,52,52,36" />
-      <scope id="5401033615064079928" at="60,67,61,140" />
+      <scope id="5401033615064079928" at="60,67,61,141" />
       <scope id="5401033615062809121" at="66,50,67,141" />
       <scope id="5401033615063726419" at="91,107,92,145" />
       <scope id="5401033615063980475" at="98,54,99,47" />

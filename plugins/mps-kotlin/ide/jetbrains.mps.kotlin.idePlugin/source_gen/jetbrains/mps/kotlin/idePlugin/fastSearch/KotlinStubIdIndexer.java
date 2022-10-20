@@ -10,7 +10,7 @@ import java.util.Map;
 import com.intellij.psi.impl.cache.impl.id.IdIndexEntry;
 import com.intellij.util.indexing.FileContent;
 import java.io.ByteArrayInputStream;
-import jetbrains.mps.kotlin.ide.commonStubs.KotlinCommonConstants;
+import jetbrains.mps.kotlin.stubs.commonStubs.KotlinCommonConstants;
 import kotlinx.metadata.internal.metadata.deserialization.BinaryVersion;
 import kotlinx.metadata.internal.metadata.builtins.BuiltInsBinaryVersion;
 import java.util.Collections;

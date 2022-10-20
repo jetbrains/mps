@@ -32,7 +32,7 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.kotlin.stubs.common.KotlinLanguage;
 import jetbrains.mps.findUsages.ModelImportLookup;
 import java.util.function.Function;
-import jetbrains.mps.kotlin.ide.commonStubs.KotlinCommonStubModelDescriptor;
+import jetbrains.mps.kotlin.stubs.commonStubs.KotlinCommonStubModelDescriptor;
 import java.util.Collections;
 import jetbrains.mps.util.containers.ManyToManyMap;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -50,7 +50,7 @@ import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.IndexNotReadyException;
 
 /**
- * Support of fast find operations for kotlin, using indexes. It operates as follow:
+ * Support of fast find operations for kotlin, using indexes. The whole process is as follow:
  * - KotlinMetadataFileType is declared to IDEA (from mps kotlin plugin plugin.xml)
  * - IndexableRootCalculator declares files to IDEA indexer mechanism (kotlin files have a file type,
  *   so they are taken into account)
@@ -151,7 +151,7 @@ public class KotlinStubModelsFastFindSupport implements FindUsagesParticipant, D
 
     modelReferences = SetSequence.fromSetWithValues(new HashSet<SModelReference>(), SetSequence.fromSet(modelReferences).where(new IWhereFilter<SModelReference>() {
       public boolean accept(SModelReference it) {
-        return KotlinLanguage.MODEL_STEREOTYPE.equals(it.getName().getStereotype());
+        return KotlinLanguage.ModelKind.COMMON.stereotype.equals(it.getName().getStereotype());
       }
     }));
     Set<SModel> candidates = findCandidates(scope, modelReferences, processedConsumer, (SModelReference key) -> key.getModelName());
@@ -235,15 +235,7 @@ public class KotlinStubModelsFastFindSupport implements FindUsagesParticipant, D
       String nodeId = id.apply(elem);
 
       try {
-        /*
-          Use id indexes to get the matching files. Indexes are built using few mechanisms:
-          * IndexableRootCalculator declares files to IDEA indexer mechanism (.kotlin_metadata)
-          * Kotlin metadata files are given their correct file type (see corresponding LanguageFileType implementations)
-          * KotlinStubIdIndexer is assigned this particular file type (extension point points the name of the file type)
-          * This findUsage participant gets called after indexes are built.
-
-        */
-
+        // Use id indexes to get the matching files
         Collection<VirtualFile> matchingFiles = FileBasedIndex.getInstance().getContainingFiles(IdIndex.NAME, new IdIndexEntry(nodeId, true), allFiles);
         for (VirtualFile vf : matchingFiles) {
           // back-transform

@@ -62,7 +62,7 @@ public class ClassifierUpdater {
   private SNode myClassifier;
   private final boolean mySkipPrivate;
   private final ReferenceFactory myHandler;
-  private final ASMClass myParsedClass;
+  protected final ASMClass myParsedClass;
   private final Documentation myJavadocSupplier;
 
   public ClassifierUpdater(ASMClass asmClass, boolean skipPrivate, ReferenceFactory handler, @Nullable Documentation doc) {
@@ -224,16 +224,16 @@ public class ClassifierUpdater {
   }
   private void updateExtendsForInterface(SNode intfc) {
     for (ASMType type : myParsedClass.getGenericInterfaces()) {
-      ListSequence.fromList(SLinkOperations.getChildren(intfc, LINKS.extendedInterface$PDVO)).addElement(SNodeOperations.cast(getTypeByASMType(type, null, intfc), CONCEPTS.ClassifierType$bL));
+      ListSequence.fromList(SLinkOperations.getChildren(intfc, LINKS.extendedInterface$PDVO)).addElement(SNodeOperations.as(getTypeByASMType(type, null, intfc), CONCEPTS.ClassifierType$bL));
     }
   }
   private void updateExtendsAndImplements(SNode cls) {
     ASMType refSuperclass = myParsedClass.getGenericSuperclass();
     if (refSuperclass != null) {
-      SLinkOperations.setTarget(cls, LINKS.superclass$Mp9$, SNodeOperations.cast(getTypeByASMType(refSuperclass, null, cls), CONCEPTS.ClassifierType$bL));
+      SLinkOperations.setTarget(cls, LINKS.superclass$Mp9$, SNodeOperations.as(getTypeByASMType(refSuperclass, null, cls), CONCEPTS.ClassifierType$bL));
     }
     for (ASMType type : myParsedClass.getGenericInterfaces()) {
-      ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.implementedInterface$rujG)).addElement(SNodeOperations.cast(getTypeByASMType(type, null, cls), CONCEPTS.ClassifierType$bL));
+      ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.implementedInterface$rujG)).addElement(SNodeOperations.as(getTypeByASMType(type, null, cls), CONCEPTS.ClassifierType$bL));
     }
   }
   private void updateInstanceFields(SNode cls) {
@@ -523,7 +523,7 @@ public class ClassifierUpdater {
       }
     }));
   }
-  private SNode createAnnotation(ASMAnnotation annotation) {
+  protected SNode createAnnotation(ASMAnnotation annotation) {
     SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, "jetbrains.mps.baseLanguage.structure.AnnotationInstance"));
     ASMClassType c = (ASMClassType) annotation.getType();
     addClassifierReference(result, LINKS.annotation$12Ek, c);
@@ -535,7 +535,7 @@ public class ClassifierUpdater {
     }
     return result;
   }
-  private SNode getValueAsExpression(Object value) {
+  protected SNode getValueAsExpression(Object value) {
     if (value == null) {
       return null;
     }
@@ -612,7 +612,7 @@ public class ClassifierUpdater {
     }
     return null;
   }
-  private SNode getTypeByASMType(ASMType type, SNode method, SNode classifier) {
+  protected SNode getTypeByASMType(ASMType type, SNode method, SNode classifier) {
     if (type == ASMPrimitiveType.BOOLEAN) {
       return createBooleanType_ol94f8_a0a0a64();
     }
@@ -691,7 +691,7 @@ public class ClassifierUpdater {
     }
     return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type"));
   }
-  private void addTypeParameters(List<? extends ASMType> typeParameters, SNode method, SNode classifier, SNode result) {
+  protected void addTypeParameters(List<? extends ASMType> typeParameters, SNode method, SNode classifier, SNode result) {
     List<SNode> toAdd = new ArrayList<SNode>();
     for (ASMType tv : typeParameters) {
       SNode type = getTypeByASMType(tv, method, classifier);
@@ -703,7 +703,7 @@ public class ClassifierUpdater {
     }
     ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.parameter$oqG$)).addSequence(ListSequence.fromList(toAdd));
   }
-  private void addClassifierReference(SNode sourceNode, SReferenceLink role, ASMClassType clsType) {
+  protected void addClassifierReference(SNode sourceNode, SReferenceLink role, ASMClassType clsType) {
     if (sourceNode.getReference(role) != null) {
       return;
     }
@@ -714,7 +714,7 @@ public class ClassifierUpdater {
     SNodeId nodeId = ASMNodeId.createId(clsType.getName());
     myHandler.create(sourceNode, pack, nodeId, role, resolve, getTopClassifierNodeId(clsType));
   }
-  private void addAnnotationMethodReference(SNode sourceNode, SReferenceLink role, ASMClassType annotationType, String method) {
+  protected void addAnnotationMethodReference(SNode sourceNode, SReferenceLink role, ASMClassType annotationType, String method) {
     if (sourceNode.getReference(role) != null) {
       return;
     }

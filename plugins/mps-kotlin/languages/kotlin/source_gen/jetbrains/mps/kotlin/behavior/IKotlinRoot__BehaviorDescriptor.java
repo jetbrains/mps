@@ -9,46 +9,64 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import jetbrains.mps.kotlin.scopes.signed.ScopeCollector;
+import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.kotlin.scopes.signed.CompositeSignatureScope;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
-import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class IKotlinRoot__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0xad71950af90e8f8L, "jetbrains.mps.kotlin.structure.IKotlinRoot");
+  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x713f27d92240e539L, "jetbrains.mps.kotlin.structure.IKotlinRoot");
 
-  public static final SMethod<String> getPackageName_id4f4W8JpDCGu = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPackageName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4883292379419151134L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<String> getFqName_id5M0hl5mCfjP = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFqName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6665403664156390645L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(KtEnvironmentConfig.class, ""));
+  public static final SMethod<String> getPackageName_id74Z9X$ygjTm = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPackageName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8160284863354715734L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<String> getFqName_id74Z9X$ygjSa = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFqName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8160284863354715658L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(KtEnvironmentConfig.class, ""));
   public static final SMethod<String> getFqName_idhEwIO9y = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFqName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877404258L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  public static final SMethod<Boolean> collectScope_id7DyvjiA20yV = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("collectScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8818748685422168251L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(ScopeCollector.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Void> getLocalSignatureScope_id58ySuOXQyMi = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("getLocalSignatureScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5918541269379460242L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(ScopeCollector.class, ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPackageName_id4f4W8JpDCGu, getFqName_id5M0hl5mCfjP, getFqName_idhEwIO9y);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPackageName_id74Z9X$ygjTm, getFqName_id74Z9X$ygjSa, getFqName_idhEwIO9y, collectScope_id7DyvjiA20yV, getLocalSignatureScope_id58ySuOXQyMi);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static String getPackageName_id4f4W8JpDCGu(@NotNull SNode __thisNode__) {
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.header$Q2G5) == null)) {
-      return SModelOperations.getModelName(SNodeOperations.getModel(__thisNode__));
-    }
-
-    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.header$Q2G5), PROPS.packageName$Mxdm);
+  /*package*/ static String getPackageName_id74Z9X$ygjTm(@NotNull SNode __thisNode__) {
+    return SModelOperations.getModelName(SNodeOperations.getModel(__thisNode__));
   }
-  /*package*/ static String getFqName_id5M0hl5mCfjP(@NotNull SNode __thisNode__, KtEnvironmentConfig config) {
-    String packageName = IKotlinRoot__BehaviorDescriptor.getPackageName_id4f4W8JpDCGu.invoke(__thisNode__);
+  /*package*/ static String getFqName_id74Z9X$ygjSa(@NotNull SNode __thisNode__, KtEnvironmentConfig config) {
+    String packageName = IKotlinRoot__BehaviorDescriptor.getPackageName_id74Z9X$ygjTm.invoke(__thisNode__);
     String name = config.getName(__thisNode__);
     return ((packageName == null || packageName.length() == 0) ? name : packageName + "." + name);
   }
   /*package*/ static String getFqName_idhEwIO9y(@NotNull SNode __thisNode__) {
-    return IKotlinRoot__BehaviorDescriptor.getFqName_id5M0hl5mCfjP.invoke(__thisNode__, KtEnvironmentConfig.Kotlin);
+    return IKotlinRoot__BehaviorDescriptor.getFqName_id74Z9X$ygjSa.invoke(__thisNode__, KtEnvironmentConfig.Kotlin);
+  }
+  /*package*/ static boolean collectScope_id7DyvjiA20yV(@NotNull final SNode __thisNode__, ScopeCollector collector, SNode childNode) {
+    IKotlinRoot__BehaviorDescriptor.getLocalSignatureScope_id58ySuOXQyMi.invoke(__thisNode__, collector, ((boolean) true));
+
+    // Declare all as a single scope: same priority during resolution
+    final ScopeCollector subCollector = new ScopeCollector(collector.getFilter());
+    ListSequence.fromList(SModelOperations.rootsIncludingImported(SNodeOperations.getModel(__thisNode__), CONCEPTS.IKotlinRoot$xV)).visitAll(new IVisitor<SNode>() {
+      public void visit(SNode it) {
+        if (it != __thisNode__) {
+          IKotlinRoot__BehaviorDescriptor.getLocalSignatureScope_id58ySuOXQyMi.invoke(it, subCollector, ((boolean) false));
+        }
+      }
+    });
+    collector.declareScope(CompositeSignatureScope.of(subCollector.getScopes()));
+
+    return true;
+  }
+  /*package*/ static void getLocalSignatureScope_id58ySuOXQyMi(@NotNull SNode __thisNode__, ScopeCollector collector, boolean fromSelf) {
+    // Default: no-op
   }
 
   /*package*/ IKotlinRoot__BehaviorDescriptor() {
@@ -67,11 +85,16 @@ public final class IKotlinRoot__BehaviorDescriptor extends BaseBHDescriptor {
     }
     switch (methodIndex) {
       case 0:
-        return (T) ((String) getPackageName_id4f4W8JpDCGu(node));
+        return (T) ((String) getPackageName_id74Z9X$ygjTm(node));
       case 1:
-        return (T) ((String) getFqName_id5M0hl5mCfjP(node, (KtEnvironmentConfig) parameters[0]));
+        return (T) ((String) getFqName_id74Z9X$ygjSa(node, (KtEnvironmentConfig) parameters[0]));
       case 2:
         return (T) ((String) getFqName_idhEwIO9y(node));
+      case 3:
+        return (T) ((Boolean) collectScope_id7DyvjiA20yV(node, (ScopeCollector) parameters[0], (SNode) parameters[1]));
+      case 4:
+        getLocalSignatureScope_id58ySuOXQyMi(node, (ScopeCollector) parameters[0], ((boolean) (Boolean) parameters[1]));
+        return null;
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -101,11 +124,7 @@ public final class IKotlinRoot__BehaviorDescriptor extends BaseBHDescriptor {
     return CONCEPT;
   }
 
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink header$Q2G5 = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0xad71950af90e8f8L, 0x28bef6d7551af887L, "header");
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty packageName$Mxdm = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4b6L, 0x11400bb790e02802L, "packageName");
+  private static final class CONCEPTS {
+    /*package*/ static final SInterfaceConcept IKotlinRoot$xV = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x713f27d92240e539L, "jetbrains.mps.kotlin.structure.IKotlinRoot");
   }
 }

@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NonNls;
 import com.intellij.openapi.util.NlsContexts;
 import com.intellij.openapi.util.NlsSafe;
-import jetbrains.mps.kotlin.ide.commonStubs.KotlinCommonConstants;
+import jetbrains.mps.kotlin.stubs.commonStubs.KotlinCommonConstants;
 import javax.swing.Icon;
 
 @GeneratedClass(node = "r:91eb39d8-e8a0-4f7f-a1c1-123c488c7158(jetbrains.mps.kotlin.idePlugin.fileTypes)/464236014669184618", model = "r:91eb39d8-e8a0-4f7f-a1c1-123c488c7158(jetbrains.mps.kotlin.idePlugin.fileTypes)")

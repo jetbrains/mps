@@ -4,7 +4,7 @@ package jetbrains.mps.kotlin.idePlugin.rootEntry;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.ui.persistence.ModelRootEntryFactory;
-import jetbrains.mps.kotlin.ide.commonStubs.KotlinCommonStubModelRoot;
+import jetbrains.mps.kotlin.stubs.commonStubs.KotlinCommonStubModelRoot;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.project.ProjectHelper;

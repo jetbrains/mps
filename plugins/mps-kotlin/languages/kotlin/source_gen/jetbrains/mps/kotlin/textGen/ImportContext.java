@@ -23,12 +23,12 @@ public class ImportContext {
   private final String myPackage;
 
   public ImportContext(SNode root) {
-    myPackage = IKotlinRoot__BehaviorDescriptor.getPackageName_id4f4W8JpDCGu.invoke(root);
+    myPackage = IKotlinRoot__BehaviorDescriptor.getPackageName_id74Z9X$ygjTm.invoke(root);
   }
 
   public void add(SNode ref) {
     // Same package, no need to bother
-    if (Objects.equals(IKotlinRoot__BehaviorDescriptor.getPackageName_id4f4W8JpDCGu.invoke(SNodeOperations.getNodeAncestor(ref, CONCEPTS.IKotlinRoot$wS, false, false)), myPackage)) {
+    if (Objects.equals(IKotlinRoot__BehaviorDescriptor.getPackageName_id74Z9X$ygjTm.invoke(SNodeOperations.getNodeAncestor(ref, CONCEPTS.IKotlinRoot$xV, true, false)), myPackage)) {
       return;
     }
 
@@ -46,7 +46,7 @@ public class ImportContext {
   public Iterable<String> getImports() {
     return SetSequence.fromSet(importedRefs).select(new ISelector<SNode, String>() {
       public String select(SNode it) {
-        String packageName = IKotlinRoot__BehaviorDescriptor.getPackageName_id4f4W8JpDCGu.invoke(SNodeOperations.getNodeAncestor(it, CONCEPTS.IKotlinRoot$wS, false, false));
+        String packageName = IKotlinRoot__BehaviorDescriptor.getPackageName_id74Z9X$ygjTm.invoke(SNodeOperations.getNodeAncestor(it, CONCEPTS.IKotlinRoot$xV, true, false));
         String name = ((boolean) IIdentifier__BehaviorDescriptor.isRegular_idnhyiqtKtUT.invoke(SNodeOperations.asSConcept(CONCEPTS.IIdentifier$wg), SPropertyOperations.getString(it, PROPS.name$MnvL)) ? SPropertyOperations.getString(it, PROPS.name$MnvL) : "`" + SPropertyOperations.getString(it, PROPS.name$MnvL) + "`");
 
         if ((packageName == null || packageName.length() == 0)) {
@@ -62,7 +62,7 @@ public class ImportContext {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IKotlinRoot$wS = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0xad71950af90e8f8L, "jetbrains.mps.kotlin.structure.IKotlinRoot");
+    /*package*/ static final SInterfaceConcept IKotlinRoot$xV = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x713f27d92240e539L, "jetbrains.mps.kotlin.structure.IKotlinRoot");
     /*package*/ static final SInterfaceConcept IIdentifier$wg = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af330L, "jetbrains.mps.kotlin.structure.IIdentifier");
   }
 

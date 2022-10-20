@@ -408,7 +408,7 @@ public abstract class KotlinTextGen {
     } else {
       tgs.pushTextArea("header");
       tgs.append("package ");
-      tgs.append(IKotlinRoot__BehaviorDescriptor.getPackageName_id4f4W8JpDCGu.invoke(node));
+      tgs.append(IKotlinRoot__BehaviorDescriptor.getPackageName_id74Z9X$ygjTm.invoke(node));
       tgs.newLine();
       tgs.popTextArea();
     }

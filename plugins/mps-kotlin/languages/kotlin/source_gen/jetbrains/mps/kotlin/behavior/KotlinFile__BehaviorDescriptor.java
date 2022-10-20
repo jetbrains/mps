@@ -15,33 +15,27 @@ import jetbrains.mps.kotlin.scopes.signed.ScopeCollector;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.kotlin.scopes.signed.CompositeSignatureScope;
 import jetbrains.mps.kotlin.scopes.SignatureFilter;
 import jetbrains.mps.kotlin.signatures.FunctionSignature;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.kotlin.scopes.signed.SignatureScope;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class KotlinFile__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af529L, "jetbrains.mps.kotlin.structure.KotlinFile");
 
   public static final SMethod<List<SNode>> getMembers_id213J8chg2xy = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMembers").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2324909103769462882L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<Boolean> collectScope_id7DyvjiA20yV = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("collectScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8818748685422168251L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(ScopeCollector.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Void> getLocalSignatureScope_id1pHfrwYSTGL = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("getLocalSignatureScope").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1616015702834256689L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(ScopeCollector.class, ""));
+  public static final SMethod<Void> getLocalSignatureScope_id58ySuOXQyMi = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("getLocalSignatureScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5918541269379460242L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(ScopeCollector.class, ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
   public static final SMethod<Boolean> isRunnable_idoITd3IthrB = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isRunnable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(445544999161239271L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<String> getClassName_id7klTmOSHg_9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8436901734214076745L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(KtEnvironmentConfig.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMembers_id213J8chg2xy, collectScope_id7DyvjiA20yV, getLocalSignatureScope_id1pHfrwYSTGL, isRunnable_idoITd3IthrB, getClassName_id7klTmOSHg_9);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMembers_id213J8chg2xy, getLocalSignatureScope_id58ySuOXQyMi, isRunnable_idoITd3IthrB, getClassName_id7klTmOSHg_9);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -49,23 +43,7 @@ public final class KotlinFile__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static List<SNode> getMembers_id213J8chg2xy(@NotNull SNode __thisNode__) {
     return SLinkOperations.getChildren(__thisNode__, LINKS.declarations$NgHw);
   }
-  /*package*/ static boolean collectScope_id7DyvjiA20yV(@NotNull final SNode __thisNode__, ScopeCollector collector, SNode childNode) {
-    KotlinFile__BehaviorDescriptor.getLocalSignatureScope_id1pHfrwYSTGL.invoke(__thisNode__, collector);
-
-    // Declare all as a single scope: same priority during resolution
-    final ScopeCollector subCollector = new ScopeCollector(collector.getFilter());
-    ListSequence.fromList(SModelOperations.rootsIncludingImported(SNodeOperations.getModel(__thisNode__), CONCEPTS.KotlinFile$4h)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        if (it != __thisNode__) {
-          KotlinFile__BehaviorDescriptor.getLocalSignatureScope_id1pHfrwYSTGL.invoke(it, subCollector);
-        }
-      }
-    });
-    collector.declareScope(CompositeSignatureScope.of(subCollector.getScopes()));
-
-    return true;
-  }
-  /*package*/ static void getLocalSignatureScope_id1pHfrwYSTGL(@NotNull SNode __thisNode__, ScopeCollector collector) {
+  /*package*/ static void getLocalSignatureScope_id58ySuOXQyMi(@NotNull SNode __thisNode__, ScopeCollector collector, boolean fromSelf) {
     ISignatureScopeProvider__BehaviorDescriptor.collectScope_id7DyvjiA20yV.invoke0(__thisNode__, CONCEPTS.IDeclarationHolder$mj, collector, null);
   }
   /*package*/ static boolean isRunnable_idoITd3IthrB(@NotNull SNode __thisNode__) {
@@ -79,7 +57,7 @@ public final class KotlinFile__BehaviorDescriptor extends BaseBHDescriptor {
     };
 
     ScopeCollector collector = new ScopeCollector(filter);
-    KotlinFile__BehaviorDescriptor.getLocalSignatureScope_id1pHfrwYSTGL.invoke(__thisNode__, collector);
+    IKotlinRoot__BehaviorDescriptor.getLocalSignatureScope_id58ySuOXQyMi.invoke(__thisNode__, collector, ((boolean) false));
     return ListSequence.fromList(collector.getScopes()).any(new IWhereFilter<SignatureScope>() {
       public boolean accept(SignatureScope it) {
         return Sequence.fromIterable(it.getElements("main")).isNotEmpty();
@@ -87,7 +65,7 @@ public final class KotlinFile__BehaviorDescriptor extends BaseBHDescriptor {
     });
   }
   /*package*/ static String getClassName_id7klTmOSHg_9(@NotNull SNode __thisNode__, KtEnvironmentConfig envConfig) {
-    return IKotlinRoot__BehaviorDescriptor.getFqName_id5M0hl5mCfjP.invoke(__thisNode__, envConfig);
+    return IKotlinRoot__BehaviorDescriptor.getFqName_id74Z9X$ygjSa.invoke(__thisNode__, envConfig);
   }
 
   /*package*/ KotlinFile__BehaviorDescriptor() {
@@ -108,13 +86,11 @@ public final class KotlinFile__BehaviorDescriptor extends BaseBHDescriptor {
       case 0:
         return (T) ((List<SNode>) getMembers_id213J8chg2xy(node));
       case 1:
-        return (T) ((Boolean) collectScope_id7DyvjiA20yV(node, (ScopeCollector) parameters[0], (SNode) parameters[1]));
-      case 2:
-        getLocalSignatureScope_id1pHfrwYSTGL(node, (ScopeCollector) parameters[0]);
+        getLocalSignatureScope_id58ySuOXQyMi(node, (ScopeCollector) parameters[0], ((boolean) (Boolean) parameters[1]));
         return null;
-      case 3:
+      case 2:
         return (T) ((Boolean) isRunnable_idoITd3IthrB(node));
-      case 4:
+      case 3:
         return (T) ((String) getClassName_id7klTmOSHg_9(node, (KtEnvironmentConfig) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -150,7 +126,6 @@ public final class KotlinFile__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept KotlinFile$4h = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af529L, "jetbrains.mps.kotlin.structure.KotlinFile");
     /*package*/ static final SInterfaceConcept IDeclarationHolder$mj = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8311401b49L, "jetbrains.mps.kotlin.structure.IDeclarationHolder");
   }
 }

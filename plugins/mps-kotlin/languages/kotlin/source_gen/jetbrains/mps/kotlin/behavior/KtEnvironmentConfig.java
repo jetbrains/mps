@@ -55,13 +55,13 @@ public interface KtEnvironmentConfig {
     @Override
     public boolean isImportRoot(SNode current, SNode parent) {
       // From JVM point of view, everything that is not a class is imported from the file...
-      return SNodeOperations.isInstanceOf(current, CONCEPTS.IClassLike$go) && SNodeOperations.isInstanceOf(parent, CONCEPTS.IKotlinRoot$wS);
+      return SNodeOperations.isInstanceOf(current, CONCEPTS.IClassLike$go) && SNodeOperations.isInstanceOf(parent, CONCEPTS.IKotlinFile$wS);
     }
 
     @Override
     public String getName(SNode named) {
       // TODO support JvmName annotation (+ do we need to sanitize the JvmName?)
-      if (SNodeOperations.isInstanceOf(named, CONCEPTS.IKotlinRoot$wS)) {
+      if (SNodeOperations.isInstanceOf(named, CONCEPTS.IKotlinFile$wS)) {
         // Reference class for this behavior: org.jetbrains.kotlin.name.NameUtils
         String name = KtEnvironmentConfig.jvmForbiddenChars.matcher(SPropertyOperations.getString(named, PROPS.name$MnvL)).replaceAll("_");
         if ((name == null || name.length() == 0)) {
@@ -88,8 +88,8 @@ public interface KtEnvironmentConfig {
 
     @Override
     public boolean isImportRoot(SNode current, SNode parent) {
-      // In kotlin, the name of the file does not matter at all
-      return SNodeOperations.isInstanceOf(parent, CONCEPTS.IKotlinRoot$wS);
+      // In kotlin, the name of the file does not matter at all (why is why we check for parent here)
+      return SNodeOperations.isInstanceOf(parent, CONCEPTS.IKotlinFile$wS);
     }
 
     @Override
@@ -100,7 +100,7 @@ public interface KtEnvironmentConfig {
   };
 
   final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IKotlinRoot$wS = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0xad71950af90e8f8L, "jetbrains.mps.kotlin.structure.IKotlinRoot");
+    /*package*/ static final SInterfaceConcept IKotlinFile$wS = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0xad71950af90e8f8L, "jetbrains.mps.kotlin.structure.IKotlinFile");
     /*package*/ static final SInterfaceConcept IClassLike$go = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x298a6a355c110274L, "jetbrains.mps.kotlin.structure.IClassLike");
     /*package*/ static final SInterfaceConcept IIdentifier$wg = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af330L, "jetbrains.mps.kotlin.structure.IIdentifier");
   }

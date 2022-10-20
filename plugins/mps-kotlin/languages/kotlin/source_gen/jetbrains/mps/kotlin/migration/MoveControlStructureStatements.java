@@ -50,15 +50,15 @@ public class MoveControlStructureStatements extends MigrationScriptBase {
       Collection<SNode> ifExpressions = CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IfExpression$TD, false);
 
       // Concepts whose block structure has been internalized
-      migrate(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AbstractConditionalLoop$w2, false), LINKS.body_$2bz9);
-      migrate(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AnonymousInitializer$mg, false), LINKS.block_$KaUn);
+      migrate(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AbstractConditionalLoop$w2, false), LINKS._body$2bz9);
+      migrate(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AnonymousInitializer$mg, false), LINKS._block$KaUn);
       migrate(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.CatchBlock$el, false), LINKS.body_$g161);
-      migrate(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.FinallyBlock$6e, false), LINKS.block_$GcPT);
-      migrate(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ForStatement$7d, false), LINKS.body_$_8Ij);
-      migrate(ifExpressions, LINKS.body_$$TIK);
-      migrate(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SecondaryConstructor$Lg, false), LINKS.body_$jT7X);
-      migrate(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.TryExpression$Oi, false), LINKS.block_$N0hs);
-      migrate(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.WhenEntry$Ki, false), LINKS.body_$jLAv);
+      migrate(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.FinallyBlock$6e, false), LINKS._block$GcPT);
+      migrate(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ForStatement$7d, false), LINKS._body$_8Ij);
+      migrate(ifExpressions, LINKS._body$$TIK);
+      migrate(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SecondaryConstructor$Lg, false), LINKS._body$jT7X);
+      migrate(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.TryExpression$Oi, false), LINKS._block$N0hs);
+      migrate(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.WhenEntry$Ki, false), LINKS._body$jLAv);
 
       // Concepts whose function body is deprecated
       migrate(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AnonymousFunction$9D, false), LINKS._body$UbWV);
@@ -69,8 +69,8 @@ public class MoveControlStructureStatements extends MigrationScriptBase {
       // Same for lambda literal but it had its own body handling
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LambdaLiteral$Bd, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.statements$R3pt)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.statements_$Kpvh)));
-          ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.statements_$Kpvh)).clear();
+          ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.statements$R3pt)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS._statements$Kpvh)));
+          ListSequence.fromList(SLinkOperations.getChildren(it, LINKS._statements$Kpvh)).clear();
         }
       });
 
@@ -127,7 +127,7 @@ public class MoveControlStructureStatements extends MigrationScriptBase {
           // Used to be some IControlStructureBody that could contain either block or statement (now regrouped as statement list, and visually a block if necessary)
           {
             final SNode block = next;
-            if (SNodeOperations.isInstanceOf(block, CONCEPTS.FlexibleBlock$KO)) {
+            if (SNodeOperations.isInstanceOf(block, CONCEPTS.IStatementHolder$84)) {
               ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.statements$R3pt)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.statements$R3pt)));
               SNodeOperations.deleteNode(block);
             }
@@ -137,14 +137,6 @@ public class MoveControlStructureStatements extends MigrationScriptBase {
             final SNode expression = next;
             if (SNodeOperations.isInstanceOf(expression, CONCEPTS.IStatement$fj)) {
               ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.statements$R3pt)).addElement(expression);
-            }
-          }
-
-          {
-            final SNode functionBody = next;
-            if (SNodeOperations.isInstanceOf(functionBody, CONCEPTS.FunctionBody$7Q)) {
-              ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.statements$R3pt)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(functionBody, LINKS.statements$R3pt)));
-              SNodeOperations.deleteNode(functionBody);
             }
           }
         }
@@ -181,26 +173,26 @@ public class MoveControlStructureStatements extends MigrationScriptBase {
     /*package*/ static final SConcept AnnotationList$je = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af37fL, "jetbrains.mps.kotlin.structure.AnnotationList");
     /*package*/ static final SConcept ConstructorSuperSpecifier$SH = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4f6L, "jetbrains.mps.kotlin.structure.ConstructorSuperSpecifier");
     /*package*/ static final SConcept FileAnnotationList$h = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af39dL, "jetbrains.mps.kotlin.structure.FileAnnotationList");
-    /*package*/ static final SConcept FunctionBody$7Q = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b7f03b2L, "jetbrains.mps.kotlin.structure.FunctionBody");
+    /*package*/ static final SInterfaceConcept IStatementHolder$84 = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b8869eeL, "jetbrains.mps.kotlin.structure.IStatementHolder");
     /*package*/ static final SConcept Annotation$q5 = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x446a1050b763ccb9L, "jetbrains.mps.kotlin.structure.Annotation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body_$2bz9 = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x47de42ea4e1d0294L, 0x28bef6d7551af742L, "body_");
-    /*package*/ static final SContainmentLink block_$KaUn = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af509L, 0x28bef6d7551af84aL, "block_");
+    /*package*/ static final SContainmentLink _body$2bz9 = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x47de42ea4e1d0294L, 0x28bef6d7551af742L, "_body");
+    /*package*/ static final SContainmentLink _block$KaUn = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af509L, 0x28bef6d7551af84aL, "_block");
     /*package*/ static final SContainmentLink body_$g161 = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af320L, 0x28bef6d7551af5c6L, "body_");
-    /*package*/ static final SContainmentLink block_$GcPT = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4a8L, 0x28bef6d7551af7caL, "block_");
-    /*package*/ static final SContainmentLink body_$_8Ij = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af425L, 0x28bef6d7551af70aL, "body_");
-    /*package*/ static final SContainmentLink body_$$TIK = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af41eL, 0x28bef6d7551af6f5L, "body_");
-    /*package*/ static final SContainmentLink body_$jT7X = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af393L, 0x28bef6d7551af640L, "body_");
-    /*package*/ static final SContainmentLink block_$N0hs = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af51dL, 0x28bef6d7551af86eL, "block_");
-    /*package*/ static final SContainmentLink body_$jLAv = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af391L, 0x28bef6d7551af635L, "body_");
+    /*package*/ static final SContainmentLink _block$GcPT = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4a8L, 0x28bef6d7551af7caL, "_block");
+    /*package*/ static final SContainmentLink _body$_8Ij = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af425L, 0x28bef6d7551af70aL, "_body");
+    /*package*/ static final SContainmentLink _body$$TIK = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af41eL, 0x28bef6d7551af6f5L, "_body");
+    /*package*/ static final SContainmentLink _body$jT7X = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af393L, 0x28bef6d7551af640L, "_body");
+    /*package*/ static final SContainmentLink _block$N0hs = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af51dL, 0x28bef6d7551af86eL, "_block");
+    /*package*/ static final SContainmentLink _body$jLAv = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af391L, 0x28bef6d7551af635L, "_body");
     /*package*/ static final SContainmentLink _body$UbWV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af589L, 0x28bef6d7551af93cL, "_body");
     /*package*/ static final SContainmentLink _body$4ZBW = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af434L, 0x28bef6d755909986L, "_body");
     /*package*/ static final SContainmentLink _body$jE43 = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af38dL, 0x28bef6d7551af62aL, "_body");
     /*package*/ static final SContainmentLink _body$JAlR = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4e5L, 0x28bef6d7551af81bL, "_body");
     /*package*/ static final SContainmentLink statements$R3pt = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b8869eeL, 0x123d0b402b8869f1L, "statements");
-    /*package*/ static final SContainmentLink statements_$Kpvh = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af517L, 0x28bef6d7551af85dL, "statements_");
+    /*package*/ static final SContainmentLink _statements$Kpvh = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af517L, 0x28bef6d7551af85dL, "_statements");
     /*package*/ static final SContainmentLink else$$UEO = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af41eL, 0x28bef6d7551af6f9L, "else");
     /*package*/ static final SContainmentLink annotations$HTS_ = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af37fL, 0x1ba36e493dc8425cL, "annotations");
     /*package*/ static final SContainmentLink annotations$zNfA = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af39dL, 0x5c7be90f2463b602L, "annotations");

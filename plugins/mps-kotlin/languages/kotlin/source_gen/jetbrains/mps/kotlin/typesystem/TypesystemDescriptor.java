@@ -56,6 +56,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_IRegularFunctionCall_LambdaInParenthesis_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_IType_bounds_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }

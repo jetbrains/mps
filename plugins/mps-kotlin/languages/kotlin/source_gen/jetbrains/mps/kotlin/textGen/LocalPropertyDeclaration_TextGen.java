@@ -23,8 +23,6 @@ public class LocalPropertyDeclaration_TextGen extends TextGenDescriptorBase {
       tgs.append("var ");
     }
 
-    KotlinTextGen.typeParameters(ctx.getPrimaryInput(), ctx);
-
     if ((boolean) IDeconstructingDeclarations__BehaviorDescriptor.isDeconstructed_id4FOkRjXxnrt.invoke(ctx.getPrimaryInput())) {
       tgs.append("(");
     }

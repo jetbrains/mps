@@ -267,7 +267,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     private EditorCell createReadOnlyModelAccessor_0() {
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
         public String getText() {
-          return IKotlinRoot__BehaviorDescriptor.getPackageName_id4f4W8JpDCGu.invoke(myNode);
+          return IKotlinRoot__BehaviorDescriptor.getPackageName_id74Z9X$ygjTm.invoke(myNode);
         }
       }, myNode);
       editorCell.setAction(CellActionType.DELETE, EmptyCellAction.getInstance());
@@ -278,7 +278,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       style.set(StyleAttributes.EDITABLE, true);
       new LINE_COMMENT_StyleKey().apply(style);
       editorCell.getStyle().putAll(style);
-      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.IKotlinRoot$wS, "jetbrains.mps.kotlin.editor.KotlinRoot_SetPackage"));
+      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.IKotlinFile$wS, "jetbrains.mps.kotlin.editor.KotlinRoot_SetPackage"));
       return editorCell;
     }
   }
@@ -372,7 +372,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
-    /*package*/ static final SInterfaceConcept IKotlinRoot$wS = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0xad71950af90e8f8L, "jetbrains.mps.kotlin.structure.IKotlinRoot");
+    /*package*/ static final SInterfaceConcept IKotlinFile$wS = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0xad71950af90e8f8L, "jetbrains.mps.kotlin.structure.IKotlinFile");
     /*package*/ static final SConcept ImportHeader$qU = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3aaL, "jetbrains.mps.kotlin.structure.ImportHeader");
   }
 }

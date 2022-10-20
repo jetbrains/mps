@@ -58,7 +58,7 @@ public class DeconstructingVariables extends MigrationScriptBase {
       Collection<SNode> props = CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LocalPropertyDeclaration$eD, false);
       migrate(props, LINKS._declarations$pA8V);
       for (SNode prop : CollectionSequence.fromCollection(props)) {
-        SPropertyOperations.assign(prop, PROPS.forceDeconstructing$1mec, SPropertyOperations.getBoolean(prop, PROPS.isDeconstructing$FQve));
+        SPropertyOperations.assign(prop, PROPS.forceDeconstructing$1mec, SPropertyOperations.getBoolean(prop, PROPS._isDeconstructing$FQve));
       }
     }
 
@@ -123,7 +123,7 @@ public class DeconstructingVariables extends MigrationScriptBase {
 
   private static final class PROPS {
     /*package*/ static final SProperty forceDeconstructing$1mec = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5aee73f62d23451L, 0x4af45374fd85b3d3L, "forceDeconstructing");
-    /*package*/ static final SProperty isDeconstructing$FQve = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b9a90b9L, 0x123d0b402b9a9097L, "isDeconstructing");
+    /*package*/ static final SProperty _isDeconstructing$FQve = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b9a90b9L, 0x123d0b402b9a9097L, "_isDeconstructing");
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

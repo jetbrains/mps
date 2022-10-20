@@ -22,21 +22,16 @@ public final class IVariableIdentifier__BehaviorDescriptor extends BaseBHDescrip
 
   public static final SMethod<Boolean> isLocal_id1vYW8S3rTh_ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLocal").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1729083799690515557L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Boolean> isAssignable_idCy8Bus9oGm = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAssignable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(730183986703600406L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<Object> getVariableTypeTarget_id4ioyjZZDftn = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("getVariableTypeTarget").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4942851499004065623L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<TypeReference> getType_id1TQsu41FTV5 = new SMethodBuilder<TypeReference>(new SJavaCompoundTypeImpl(TypeReference.class)).name("getType").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2195067079599562437L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<SNode> getReceiverType_id75chmMYh8YE = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReceiverType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8163976557866815402L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLocal_id1vYW8S3rTh_, isAssignable_idCy8Bus9oGm, getVariableTypeTarget_id4ioyjZZDftn, getType_id1TQsu41FTV5, getReceiverType_id75chmMYh8YE);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLocal_id1vYW8S3rTh_, isAssignable_idCy8Bus9oGm, getType_id1TQsu41FTV5, getReceiverType_id75chmMYh8YE);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
   /*package*/ static boolean isAssignable_idCy8Bus9oGm(@NotNull SNode __thisNode__) {
     return true;
-  }
-  @Deprecated
-  /*package*/ static Object getVariableTypeTarget_id4ioyjZZDftn(@NotNull SNode __thisNode__) {
-    return null;
   }
   /*package*/ static SNode getReceiverType_id75chmMYh8YE(@NotNull SNode __thisNode__) {
     return null;
@@ -59,9 +54,7 @@ public final class IVariableIdentifier__BehaviorDescriptor extends BaseBHDescrip
     switch (methodIndex) {
       case 1:
         return (T) ((Boolean) isAssignable_idCy8Bus9oGm(node));
-      case 2:
-        return (T) ((Object) getVariableTypeTarget_id4ioyjZZDftn(node));
-      case 4:
+      case 3:
         return (T) ((SNode) getReceiverType_id75chmMYh8YE(node));
       default:
         throw new BHMethodNotFoundException(this, method);
