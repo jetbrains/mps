@@ -83,9 +83,7 @@
       <concept id="1164914519156" name="jetbrains.mps.lang.editor.structure.CellMenuPart_ReplaceNode_CustomNodeConcept" flags="ng" index="UkePV">
         <reference id="1164914727930" name="replacementConcept" index="Ul1FP" />
       </concept>
-      <concept id="1186403751766" name="jetbrains.mps.lang.editor.structure.FontStyleStyleClassItem" flags="ln" index="Vb9p2">
-        <property id="1186403771423" name="style" index="Vbekb" />
-      </concept>
+      <concept id="1186403751766" name="jetbrains.mps.lang.editor.structure.FontStyleStyleClassItem" flags="ln" index="Vb9p2" />
       <concept id="1186414536763" name="jetbrains.mps.lang.editor.structure.BooleanStyleSheetItem" flags="ln" index="VOi$J">
         <property id="1186414551515" name="flag" index="VOm3f" />
       </concept>
@@ -429,7 +427,7 @@
     <property role="3GE5qa" value="functionCall.duplicated" />
     <ref role="1h_SK9" to="48vp:UG7NftKS3N" resolve="IKotlinFunctionLikeCall" />
     <node concept="1hA7zw" id="4k0WLUKaHDL" role="1h_SK8">
-      <property role="1hAc7j" value="delete_action_id" />
+      <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="4k0WLUKaHDM" role="1hA7z_">
         <node concept="3clFbS" id="4k0WLUKaHDN" role="2VODD2">
           <node concept="3SKdUt" id="UG7NftLqgh" role="3cqZAp">
@@ -475,9 +473,7 @@
               <node concept="0IXxy" id="4ZFm$8SQS1m" role="2Oq$k0" />
               <node concept="1OKiuA" id="4ZFm$8SQV9P" role="2OqNvi">
                 <node concept="1Q80Hx" id="4ZFm$8SQVbR" role="lBI5i" />
-                <node concept="2B6iha" id="4ZFm$8SQVdS" role="lGT1i">
-                  <property role="1lyBwo" value="first" />
-                </node>
+                <node concept="2B6iha" id="4ZFm$8SQVdS" role="lGT1i" />
                 <node concept="3cmrfG" id="4ZFm$8SQVfW" role="3dN3m$">
                   <property role="3cmrfH" value="-1" />
                 </node>
@@ -493,7 +489,7 @@
     <property role="TrG5h" value="AddDeleteKotlinFunctionCallArgument" />
     <ref role="1h_SK9" to="tpee:fz3vP1J" resolve="Expression" />
     <node concept="1hA7zw" id="7i0B12v20lU" role="1h_SK8">
-      <property role="1hAc7j" value="delete_action_id" />
+      <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="7i0B12v20lV" role="1hA7z_">
         <node concept="3clFbS" id="7i0B12v20lW" role="2VODD2">
           <node concept="3cpWs8" id="7i0B12v20lZ" role="3cqZAp">
@@ -577,9 +573,7 @@
                   </node>
                   <node concept="1OKiuA" id="7i0B12v20mv" role="2OqNvi">
                     <node concept="1Q80Hx" id="7i0B12v20mw" role="lBI5i" />
-                    <node concept="2B6iha" id="7i0B12v20mx" role="lGT1i">
-                      <property role="1lyBwo" value="first" />
-                    </node>
+                    <node concept="2B6iha" id="7i0B12v20mx" role="lGT1i" />
                     <node concept="3cmrfG" id="7i0B12v20my" role="3dN3m$">
                       <property role="3cmrfH" value="0" />
                     </node>
@@ -648,7 +642,7 @@
       </node>
     </node>
     <node concept="1hA7zw" id="7i0B12v20n1" role="1h_SK8">
-      <property role="1hAc7j" value="backspace_action_id" />
+      <property role="1hAc7j" value="7P1WhNABvta/backspace_action_id" />
       <node concept="1hAIg9" id="7i0B12v20n2" role="1hA7z_">
         <node concept="3clFbS" id="7i0B12v20n3" role="2VODD2">
           <node concept="3cpWs8" id="7i0B12v20n6" role="3cqZAp">
@@ -733,7 +727,7 @@
                   <node concept="1OKiuA" id="7i0B12v20nA" role="2OqNvi">
                     <node concept="1Q80Hx" id="7i0B12v20nB" role="lBI5i" />
                     <node concept="2B6iha" id="7i0B12v20nC" role="lGT1i">
-                      <property role="1lyBwo" value="last" />
+                      <property role="1lyBwo" value="1S2pyLby17K/last" />
                     </node>
                     <node concept="3cmrfG" id="7i0B12v20nD" role="3dN3m$">
                       <property role="3cmrfH" value="-1" />
@@ -803,7 +797,7 @@
       </node>
     </node>
     <node concept="1hA7zw" id="7i0B12v20o8" role="1h_SK8">
-      <property role="1hAc7j" value="insert_action_id" />
+      <property role="1hAc7j" value="13S4mXuSN7V/insert_action_id" />
       <node concept="1hAIg9" id="7i0B12v20o9" role="1hA7z_">
         <node concept="3clFbS" id="7i0B12v20oa" role="2VODD2">
           <node concept="3cpWs8" id="7i0B12vhC2T" role="3cqZAp">
@@ -972,7 +966,7 @@
                     <property role="3cmrfH" value="-1" />
                   </node>
                   <node concept="2B6iha" id="25imKQRoMP9" role="lGT1i">
-                    <property role="1lyBwo" value="lastEditable" />
+                    <property role="1lyBwo" value="1S2pyLby17D/lastEditable" />
                   </node>
                 </node>
               </node>
@@ -1166,7 +1160,7 @@
     <property role="TrG5h" value="KotlinFunctionCallArguments_ListSeparator" />
     <ref role="1chiOs" to="tpee:fz3vP1J" resolve="Expression" />
     <node concept="2PxR9H" id="6lWnjhKiPzc" role="2QnnpI">
-      <property role="2IlM53" value="caret_at_last_position" />
+      <property role="2IlM53" value="gAIlx3c/LAST_POSITION" />
       <property role="3ArL7W" value="true" />
       <node concept="2Py5lD" id="6lWnjhKiPzd" role="2PyaAO">
         <property role="2PWKIS" value="," />
@@ -1423,7 +1417,7 @@
     <property role="TrG5h" value="AddFirstKotlinFunctionCallArgument" />
     <ref role="1h_SK9" to="48vp:UG7NftKS3N" resolve="IKotlinFunctionLikeCall" />
     <node concept="1hA7zw" id="25imKQS3uIc" role="1h_SK8">
-      <property role="1hAc7j" value="insert_action_id" />
+      <property role="1hAc7j" value="13S4mXuSN7V/insert_action_id" />
       <node concept="1hAIg9" id="25imKQS3uId" role="1hA7z_">
         <node concept="3clFbS" id="25imKQS3uIe" role="2VODD2">
           <node concept="3cpWs8" id="7i0B12v2lA6" role="3cqZAp">
@@ -1679,12 +1673,10 @@
       <node concept="3F0ifn" id="h5nk5Qm" role="3EZMnx">
         <property role="3F0ifm" value="(" />
         <ref role="1k5W1q" to="tpen:hY9fg1G" resolve="LeftParenAfterName" />
-        <node concept="Vb9p2" id="hEUNQWt" role="3F10Kt">
-          <property role="Vbekb" value="PLAIN" />
-        </node>
+        <node concept="Vb9p2" id="hEUNQWt" role="3F10Kt" />
       </node>
       <node concept="3F2HdR" id="h5nk5Qn" role="3EZMnx">
-        <property role="1cu_pB" value="2" />
+        <property role="1cu_pB" value="gtguBGO/firstEditableCell" />
         <ref role="APP_o" node="7i0B12v20lT" resolve="AddDeleteKotlinFunctionCallArgument" />
         <ref role="34QXea" node="6lWnjhKiKW4" resolve="KotlinFunctionCallArguments_ListSeparator" />
         <ref role="1ERwB7" node="KgjTrBt58U" resolve="AddFirstKotlinFunctionCallArgument" />
@@ -1734,7 +1726,7 @@
       </node>
       <node concept="3F0ifn" id="h5nk5Qp" role="3EZMnx">
         <property role="3F0ifm" value=")" />
-        <property role="1cu_pB" value="1" />
+        <property role="1cu_pB" value="gtgu$YJ/attractsFocus" />
         <ref role="1k5W1q" to="tpen:hFCSUmN" resolve="RightParen" />
         <node concept="pkWqt" id="hsdTu_e" role="cStSX">
           <node concept="3clFbS" id="hsdTu_f" role="2VODD2">
@@ -1772,9 +1764,7 @@
         <node concept="VPM3Z" id="hEU$Q2r" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
-        <node concept="Vb9p2" id="hEUNQWy" role="3F10Kt">
-          <property role="Vbekb" value="PLAIN" />
-        </node>
+        <node concept="Vb9p2" id="hEUNQWy" role="3F10Kt" />
         <node concept="VPxyj" id="hEZKQxW" role="3F10Kt">
           <property role="VOm3f" value="false" />
         </node>
