@@ -84,6 +84,7 @@ public final class VirtualFileUtils {
     if (file instanceof IdeaFile) {
       return ((IdeaFile) file).getVirtualFile();
     } else {
+      // what about non-existent files?
       if (FileSystemExtPoint.getFS() instanceof IdeaFileSystem) {
         LOG.warn("File " + file + " is supposed to be in project and tracked by Idea FS");
       }
