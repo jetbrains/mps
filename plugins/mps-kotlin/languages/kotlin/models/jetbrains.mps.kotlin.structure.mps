@@ -1353,6 +1353,9 @@
       <property role="20kJfa" value="setter" />
       <ref role="20lvS9" node="2yYXHtl6Jj_" resolve="PropertySetter" />
     </node>
+    <node concept="PrWs8" id="1A1RTX6k2JZ" role="PzmwI">
+      <ref role="PrY4T" node="2yYXHtlq$RP" resolve="ITypeParameters" />
+    </node>
     <node concept="PrWs8" id="2mD64u3niJD" role="PzmwI">
       <ref role="PrY4T" node="7Iv8Cw7qLdE" resolve="IDataFlowSource" />
     </node>
@@ -2971,9 +2974,6 @@
     </node>
     <node concept="PrWs8" id="2yYXHtlqddj" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtlqd9D" resolve="ITypeConstrained" />
-    </node>
-    <node concept="PrWs8" id="2yYXHtlq_q$" role="PzmwI">
-      <ref role="PrY4T" node="2yYXHtlq$RP" resolve="ITypeParameters" />
     </node>
     <node concept="PrWs8" id="Cy8Bus9xWr" role="PzmwI">
       <ref role="PrY4T" node="Cy8Bus9qe6" resolve="IVariableConstraintHolder" />

@@ -6,6 +6,8 @@
     <use id="90746344-04fd-4286-97d5-b46ae6a81709" name="jetbrains.mps.lang.migration" version="2" />
     <use id="c7d5b9dd-a05f-4be2-bc73-f2e16994cc67" name="jetbrains.mps.baseLanguage.lightweightdsl" version="1" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
+    <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="5" />
+    <use id="d4615e3b-d671-4ba9-af01-2b78369b0ba7" name="jetbrains.mps.lang.pattern" version="2" />
     <devkit ref="2787ae0c-1f54-4fbf-b0b7-caf2b5beecbc(jetbrains.mps.devkit.aspect.migration)" />
   </languages>
   <imports>
@@ -15,6 +17,7 @@
     <import index="slm6" ref="90746344-04fd-4286-97d5-b46ae6a81709/r:52a3d974-bd4f-4651-ba6e-a2de5e336d95(jetbrains.mps.lang.migration/jetbrains.mps.lang.migration.methods)" />
     <import index="ni5j" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.regex(JDK/)" />
     <import index="hcm8" ref="r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)" />
+    <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
     <import index="hez" ref="r:b038209d-51a9-4919-b6e5-4fafce96fa00(jetbrains.mps.kotlin.behavior)" implicit="true" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
@@ -271,9 +274,14 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
+        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+      <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7">
+        <property id="8575328350543493365" name="message" index="huDt6" />
+        <property id="2423417345669755629" name="filter" index="1eyWvh" />
       </concept>
     </language>
     <language id="90746344-04fd-4286-97d5-b46ae6a81709" name="jetbrains.mps.lang.migration">
@@ -3407,6 +3415,110 @@
       <ref role="3tTeZr" to="slm6:1JWcQ2VeXpD" resolve="check" />
     </node>
     <node concept="3uibUv" id="3vP7I8ftW3m" role="1zkMxy">
+      <ref role="3uigEE" to="slm6:5TUCQr2ybBO" resolve="HasMigrationScriptReference" />
+    </node>
+  </node>
+  <node concept="3SyAh_" id="1A1RTX6k62P">
+    <property role="qMTe8" value="8" />
+    <property role="TrG5h" value="RemoveLocalPropertyTypeParameters" />
+    <node concept="3Tm1VV" id="1A1RTX6k62Q" role="1B3o_S" />
+    <node concept="3tTeZs" id="1A1RTX6k62R" role="jymVt">
+      <property role="3tTeZt" value="&lt;no execute after&gt;" />
+      <ref role="3tTeZr" to="slm6:7ay_HjIMt1a" resolve="execute after" />
+    </node>
+    <node concept="3tTeZs" id="1A1RTX6k62S" role="jymVt">
+      <property role="3tTeZt" value="&lt;no required data&gt;" />
+      <ref role="3tTeZr" to="slm6:5TUCQr2FPTh" resolve="requires annotation data" />
+    </node>
+    <node concept="3tTeZs" id="1A1RTX6k62T" role="jymVt">
+      <property role="3tTeZt" value="&lt;no produced data&gt;" />
+      <ref role="3tTeZr" to="slm6:5TUCQr2C271" resolve="produces annotation data" />
+    </node>
+    <node concept="2tJIrI" id="1A1RTX6k62U" role="jymVt" />
+    <node concept="3tYpMH" id="1A1RTX6k62V" role="jymVt">
+      <property role="TrG5h" value="isRerunnable" />
+      <property role="3tYpME" value="true" />
+      <ref role="25KYV2" to="slm6:1JWcQ2VeWIs" resolve="isRerunnable" />
+      <node concept="3Tm1VV" id="1A1RTX6k62W" role="1B3o_S" />
+      <node concept="10P_77" id="1A1RTX6k62X" role="1tU5fm" />
+    </node>
+    <node concept="3tYpXE" id="1A1RTX6l8w2" role="jymVt">
+      <property role="TrG5h" value="description" />
+      <property role="3tYpXF" value="Remove type parameters on local properties" />
+      <ref role="25KYV2" to="slm6:1_lSsE3RFpE" resolve="description" />
+      <node concept="3Tm1VV" id="1A1RTX6l8w4" role="1B3o_S" />
+      <node concept="17QB3L" id="1A1RTX6l8w5" role="1tU5fm" />
+    </node>
+    <node concept="q3mfD" id="1A1RTX6k62Z" role="jymVt">
+      <property role="TrG5h" value="execute" />
+      <ref role="2VtyIY" to="slm6:4ubqdNOF9cA" resolve="execute" />
+      <node concept="3Tm1VV" id="1A1RTX6k631" role="1B3o_S" />
+      <node concept="3clFbS" id="1A1RTX6k633" role="3clF47">
+        <node concept="L3pyB" id="1A1RTX6kh60" role="3cqZAp">
+          <node concept="3clFbS" id="1A1RTX6kh61" role="L3pyw">
+            <node concept="3clFbF" id="1A1RTX6kkVl" role="3cqZAp">
+              <node concept="2OqwBi" id="1A1RTX6kl_M" role="3clFbG">
+                <node concept="qVDSY" id="1A1RTX6kkVj" role="2Oq$k0">
+                  <node concept="chp4Y" id="1A1RTX6kkZ5" role="qVDSX">
+                    <ref role="cht4Q" to="hcm8:18X2O0FAD2T" resolve="LocalPropertyDeclaration" />
+                  </node>
+                </node>
+                <node concept="2es0OD" id="1A1RTX6km6F" role="2OqNvi">
+                  <node concept="1bVj0M" id="1A1RTX6km6H" role="23t8la">
+                    <node concept="3clFbS" id="1A1RTX6km6I" role="1bW5cS">
+                      <node concept="3clFbF" id="1A1RTX6kmlZ" role="3cqZAp">
+                        <node concept="15s5l7" id="1A1RTX6k$9i" role="lGtFl">
+                          <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;reference scopes (reference scopes)&quot;;FLAVOUR_MESSAGE=&quot;The reference  typeParameters (link) is out of search scope&quot;;FLAVOUR_NODE_FEATURE=&quot;link&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902fb(jetbrains.mps.lang.smodel.constraints)/6836281137582802222]&quot;;" />
+                          <property role="huDt6" value="The reference  typeParameters (link) is out of search scope" />
+                        </node>
+                        <node concept="15s5l7" id="1A1RTX6kxv4" role="lGtFl">
+                          <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: access to link 'typeParameters' is not expected here&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)/1226070777621]&quot;;" />
+                          <property role="huDt6" value="Error: access to link 'typeParameters' is not expected here" />
+                        </node>
+                        <node concept="2OqwBi" id="1A1RTX6kpYG" role="3clFbG">
+                          <node concept="2OqwBi" id="1A1RTX6kn0M" role="2Oq$k0">
+                            <node concept="37vLTw" id="1A1RTX6kmlY" role="2Oq$k0">
+                              <ref role="3cqZAo" node="1A1RTX6km6J" resolve="it" />
+                            </node>
+                            <node concept="3Tsc0h" id="1A1RTX6knoq" role="2OqNvi">
+                              <ref role="3TtcxE" to="hcm8:2yYXHtlq$RQ" resolve="typeParameters" />
+                            </node>
+                          </node>
+                          <node concept="2Kehj3" id="1A1RTX6ksb2" role="2OqNvi" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="Rh6nW" id="1A1RTX6km6J" role="1bW2Oz">
+                      <property role="TrG5h" value="it" />
+                      <node concept="2jxLKc" id="1A1RTX6km6K" role="1tU5fm" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="37vLTw" id="1A1RTX6kkOM" role="L3pyr">
+            <ref role="3cqZAo" node="1A1RTX6k635" resolve="m" />
+          </node>
+        </node>
+      </node>
+      <node concept="ffn8J" id="1A1RTX6k635" role="3clF46">
+        <property role="TrG5h" value="m" />
+        <ref role="ffrpq" to="slm6:7fCCGqboj9J" resolve="m" />
+        <node concept="3uibUv" id="1A1RTX6k634" role="1tU5fm">
+          <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
+        </node>
+      </node>
+      <node concept="q3mfm" id="1A1RTX6k636" role="3clF45">
+        <ref role="q3mfh" to="slm6:4F5w8gPXEEe" />
+        <ref role="1QQUv3" node="1A1RTX6k62Z" resolve="execute" />
+      </node>
+    </node>
+    <node concept="3tTeZs" id="1A1RTX6k637" role="jymVt">
+      <property role="3tTeZt" value="&lt;no result checking&gt;" />
+      <ref role="3tTeZr" to="slm6:1JWcQ2VeXpD" resolve="check" />
+    </node>
+    <node concept="3uibUv" id="1A1RTX6k63a" role="1zkMxy">
       <ref role="3uigEE" to="slm6:5TUCQr2ybBO" resolve="HasMigrationScriptReference" />
     </node>
   </node>

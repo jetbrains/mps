@@ -33997,7 +33997,7 @@
       <node concept="3clFbS" id="58ySuOXQyLh" role="3clF47">
         <node concept="3clFbF" id="58ySuOXQyLi" role="3cqZAp">
           <node concept="BsUDl" id="58ySuOXQyLj" role="3clFbG">
-            <ref role="37wK5l" node="58ySuOXQyMi" />
+            <ref role="37wK5l" node="58ySuOXQyMi" resolve="getLocalSignatureScope" />
             <node concept="37vLTw" id="58ySuOXQyLk" role="37wK5m">
               <ref role="3cqZAo" node="58ySuOXQyMe" resolve="collector" />
             </node>
@@ -34086,7 +34086,7 @@
                             <ref role="3cqZAo" node="58ySuOXQyLZ" resolve="it" />
                           </node>
                           <node concept="2qgKlT" id="58ySuOXQyLU" role="2OqNvi">
-                            <ref role="37wK5l" node="58ySuOXQyMi" />
+                            <ref role="37wK5l" node="58ySuOXQyMi" resolve="getLocalSignatureScope" />
                             <node concept="37vLTw" id="58ySuOXQyLV" role="37wK5m">
                               <ref role="3cqZAo" node="58ySuOXQyLz" resolve="subCollector" />
                             </node>
@@ -34200,7 +34200,7 @@
   </node>
   <node concept="13h7C7" id="75KWrCgUSLd">
     <property role="3GE5qa" value="root" />
-    <ref role="13h7C2" to="hcm8:Fn6l2J$ezS" resolve="IKotlinRoot" />
+    <ref role="13h7C2" to="hcm8:Fn6l2J$ezS" resolve="IKotlinFile" />
     <node concept="13hLZK" id="75KWrCgUSLe" role="13h7CW">
       <node concept="3clFbS" id="75KWrCgUSLf" role="2VODD2" />
     </node>
