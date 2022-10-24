@@ -638,7 +638,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
   }
 
   public final void updateModelsSet() {
-    for (SModel model : getModels()) {
+    forEachRegisteredModel(model -> {
       if (model instanceof EditableSModel && ((EditableSModel) model).isChanged()) {
         LOG.warning(
             "Trying to reload module " + getModuleName() + " which contains a non-saved model '" +
@@ -650,8 +650,10 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
         }
         return;
       }
-    }
+    });
     doUpdateModelRoots();
+    // XXX why do I force model loading in this scenario now? I know
+    // it's historic aprpoach, but, perhaps, we could do better now?
     ensureModelsReady(); // == doUpdateModelsSet(), guarded with myModels lock
   }
 
@@ -703,8 +705,17 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     }
     toUpdate.removeAll(toRemove);
 
-    for (ModelRoot modelRoot : toRemove) {
-      ((ModelRootBase) modelRoot).dispose();
+    if (!toRemove.isEmpty()) {
+      HashSet<SModel> registeredModels = new HashSet<>();
+      forEachRegisteredModel(registeredModels::add);
+      HashSet<SModel> toUnregisterModels = new HashSet<>();
+      for (ModelRoot modelRoot : toRemove) {
+        registeredModels.stream().filter(m -> m.getModelRoot() == modelRoot).forEach(toUnregisterModels::add);
+        ((ModelRootBase) modelRoot).dispose();
+      }
+      if (!toUnregisterModels.isEmpty()) {
+        changeModelSet(Collections.emptyList(), toUnregisterModels);
+      }
     }
     mySModelRoots.removeAll(toRemove);
     for (ModelRoot modelRoot : toAttach) {

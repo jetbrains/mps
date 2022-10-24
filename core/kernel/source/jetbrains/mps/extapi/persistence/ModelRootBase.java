@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.extapi.persistence;
 
-import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.module.ModelDiscoveryDelta;
 import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.logging.Logger;
@@ -29,8 +28,8 @@ import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
@@ -181,6 +180,12 @@ public abstract class ModelRootBase implements ModelRoot {
   //       combine results with present SModuleBase state. I plan to switch to that code with the help of MDD.
   public void doLoadModels(ModelDiscoveryDelta mdd) {
     Set<SModelId> loaded = new HashSet<>();
+    // Can't use getModels() as triggers loading of *ALL* models in the module, definitely not what we need here.
+    // Collect all models known to the module right now, being careful not to trigger load.
+    // Here, we don't make distinction whether these existing models from this or other model root (just in case they move
+    // from one to another). Later, processing leftovers (unmatched), we would take only those with this MR origin.
+    HashMap<SModelId, SModel> presentRegisteredModels = new HashMap<>();
+    mdd.module().forEachRegisteredModel(m -> presentRegisteredModels.put(m.getModelId(), m));
     Iterable<SModel> allModels = loadModels();
     for (SModel model : allModels) {
       if (loaded.contains(model.getModelId())) {
@@ -188,7 +193,7 @@ public abstract class ModelRootBase implements ModelRoot {
         continue;
       }
       loaded.add(model.getModelId());
-      SModel oldModel = mdd.module().getModel(model.getModelId());
+      SModel oldModel = presentRegisteredModels.remove(model.getModelId());
       // in most scenarios, we are reloading exactly the same set of models we already have loaded in the module.
       if (oldModel != null) {
         // XXX not sure comment on loadModels() to return existing model, if possible, is reasonable. Perhaps, shall strive to have its
@@ -237,11 +242,11 @@ public abstract class ModelRootBase implements ModelRoot {
         mdd.registerModel(model, this);
       }
     }
-    // FIXME getModels() triggers loading of *ALL* models in the module. Is it what we want here?
-    //       Perhaps myModule.forEachRegisteredModel() is better alternative?
-    Collection<SModel> models = new ArrayList<>(getModels());
-    for (SModel model : models) {
-      if (!loaded.contains(model.getModelId())) {
+
+    for (SModel model : presentRegisteredModels.values()) {
+      // we already removed all models recorded in 'loaded' from 'presentRegisteredModels'
+      assert !loaded.contains(model.getModelId());
+      if (model.getModelRoot() == this) {
         mdd.unregisterModel(model);
       }
     }
