@@ -69,6 +69,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.jetbrains.mps.openapi.module.FacetsFacade.FacetFactory;
 
@@ -638,6 +639,11 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
   }
 
   public final void updateModelsSet() {
+    // FIXME this is very, very suspicious code, but DiskMemoryConflictTest.deleteDisk_XXX() tests
+    //   heavily rely on the fact updateModelsSet() doesn't reload model roots when there's changed
+    //   model, and instead let conflict resolver to jump in and to deal with the conflict.
+    //   However, I don't like whole conflict resolution story, and likely need to refactor this, too.
+    final AtomicBoolean ignoreUpdate = new AtomicBoolean(false);
     forEachRegisteredModel(model -> {
       if (model instanceof EditableSModel && ((EditableSModel) model).isChanged()) {
         LOG.warning(
@@ -648,12 +654,16 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
         if (model instanceof EditableSModelBase) {
           ((EditableSModelBase) model).resolveDiskConflict();
         }
-        return;
+        ignoreUpdate.set(true);
       }
     });
+    if (ignoreUpdate.get()) {
+      return;
+    }
+    LOG.warning("about to doUpdateModelRoots():" + Thread.currentThread().getName());
     doUpdateModelRoots();
     // XXX why do I force model loading in this scenario now? I know
-    // it's historic aprpoach, but, perhaps, we could do better now?
+    // it's historic approach, but, perhaps, we could do better now?
     ensureModelsReady(); // == doUpdateModelsSet(), guarded with myModels lock
   }
 
@@ -770,6 +780,9 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
 
       @Override
       public void unregisterModel(SModel model) {
+        if (model instanceof EditableSModel && ((EditableSModel) model).isChanged()) {
+          model.unload();
+        }
         out.add(model);
       }
       void apply() {
