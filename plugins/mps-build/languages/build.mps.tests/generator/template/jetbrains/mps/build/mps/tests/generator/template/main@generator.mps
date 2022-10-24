@@ -2518,6 +2518,36 @@
                   <node concept="2pNUuL" id="4zcjQqfL1Cp" role="2pNNFR">
                     <property role="2pNUuO" value="value" />
                     <node concept="2pMdtt" id="4zcjQqfL1Cq" role="2pMdts">
+                      <property role="2pMdty" value="--add-opens=java.desktop/com.apple.eawt=ALL-UNNAMED" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="2pNNFK" id="6h7VLsOhYvo" role="3o6s8t">
+                  <property role="qg3DV" value="true" />
+                  <property role="2pNNFO" value="jvmarg" />
+                  <node concept="2pNUuL" id="6h7VLsOhYvp" role="2pNNFR">
+                    <property role="2pNUuO" value="value" />
+                    <node concept="2pMdtt" id="6h7VLsOhYvq" role="2pMdts">
+                      <property role="2pMdty" value="--add-opens=java.desktop/com.apple.eawt.event=ALL-UNNAMED" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="2pNNFK" id="6h7VLsOhZSF" role="3o6s8t">
+                  <property role="qg3DV" value="true" />
+                  <property role="2pNNFO" value="jvmarg" />
+                  <node concept="2pNUuL" id="6h7VLsOhZSG" role="2pNNFR">
+                    <property role="2pNUuO" value="value" />
+                    <node concept="2pMdtt" id="6h7VLsOhZSH" role="2pMdts">
+                      <property role="2pMdty" value="--add-opens=java.desktop/com.apple.laf=ALL-UNNAMED" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="2pNNFK" id="6h7VLsOi0wW" role="3o6s8t">
+                  <property role="qg3DV" value="true" />
+                  <property role="2pNNFO" value="jvmarg" />
+                  <node concept="2pNUuL" id="6h7VLsOi0wX" role="2pNNFR">
+                    <property role="2pNUuO" value="value" />
+                    <node concept="2pMdtt" id="6h7VLsOi0wY" role="2pMdts">
                       <property role="2pMdty" value="--add-opens=java.desktop/java.awt=ALL-UNNAMED" />
                     </node>
                   </node>
