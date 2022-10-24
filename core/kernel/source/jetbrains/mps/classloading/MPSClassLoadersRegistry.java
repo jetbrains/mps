@@ -244,8 +244,9 @@ class MPSClassLoadersRegistry {
                                                             .filter(Objects::nonNull)
                                                             .collect(Collectors.toList());
 
-      // FIXME why don't we add new session ot mySessions? How come destroy() works?
-      return new DisposeSession(modulesToUnload, classLoaders, onDisposed);
+      final DisposeSession ds = new DisposeSession(modulesToUnload, classLoaders, onDisposed);
+      mySessions.add(ds);
+      return ds;
     }
 
     public void destroy() {
