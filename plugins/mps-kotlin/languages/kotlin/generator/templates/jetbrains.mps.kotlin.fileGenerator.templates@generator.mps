@@ -2,7 +2,7 @@
 <model ref="r:e6b7d8c4-184e-4875-a204-ccde4dbdedab(jetbrains.mps.kotlin.fileGenerator.templates@generator)">
   <persistence version="9" />
   <languages>
-    <use id="6b3888c1-9802-44d8-8baf-f8e6c33ed689" name="jetbrains.mps.kotlin" version="8" />
+    <use id="6b3888c1-9802-44d8-8baf-f8e6c33ed689" name="jetbrains.mps.kotlin" version="9" />
     <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="4" />
     <devkit ref="a2eb3a43-fcc2-4200-80dc-c60110c4862d(jetbrains.mps.devkit.templates)" />
   </languages>
@@ -103,7 +103,7 @@
     <node concept="3lhOvk" id="74Z9X$ywh0$" role="3lj3bC">
       <property role="36QftV" value="true" />
       <ref role="30HIoZ" to="hcm8:2yYXHtlhVlH" resolve="IClassDeclaration" />
-      <ref role="3lhOvi" node="74Z9X$ywhSe" resolve="map_IClassDeclaration" />
+      <ref role="3lhOvi" node="74Z9X$ywhSe" resolve="map_IClassLike_KotlinFile" />
       <node concept="30G5F_" id="74Z9X$zcFTh" role="30HLyM">
         <node concept="3clFbS" id="74Z9X$zcFTi" role="2VODD2">
           <node concept="3SKdUt" id="74Z9X$zcGfc" role="3cqZAp">
@@ -145,7 +145,7 @@
     </node>
     <node concept="3lhOvk" id="74Z9X$ywl1v" role="3lj3bC">
       <ref role="30HIoZ" to="hcm8:2yYXHtl6Jd$" resolve="ObjectDeclaration" />
-      <ref role="3lhOvi" node="74Z9X$ywhSe" resolve="map_IClassDeclaration_File" />
+      <ref role="3lhOvi" node="74Z9X$ywhSe" resolve="map_IClassLike_KotlinFile" />
       <node concept="30G5F_" id="74Z9X$yJe0S" role="30HLyM">
         <node concept="3clFbS" id="74Z9X$yJe0T" role="2VODD2">
           <node concept="3SKdUt" id="74Z9X$zcGpy" role="3cqZAp">

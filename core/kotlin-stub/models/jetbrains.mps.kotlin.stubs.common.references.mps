@@ -342,7 +342,7 @@
       <property role="TrG5h" value="myModel" />
       <property role="3TUv4t" value="true" />
       <node concept="3uibUv" id="5HBSc0eNr_2" role="1tU5fm">
-        <ref role="3uigEE" node="5HBSc0eNrzZ" resolve="VisibleModel" />
+        <ref role="3uigEE" node="5HBSc0eNrzZ" resolve="KotlinJvmReferenceSolver.VisibleModel" />
       </node>
       <node concept="3Tm6S6" id="5HBSc0eNr_3" role="1B3o_S" />
     </node>
@@ -372,7 +372,7 @@
         <node concept="3uibUv" id="5HBSc0eNr_l" role="11_B2D">
           <ref role="3uigEE" to="33ny:~List" resolve="List" />
           <node concept="3uibUv" id="5HBSc0eNr_m" role="11_B2D">
-            <ref role="3uigEE" node="5HBSc0eNrzZ" resolve="VisibleModel" />
+            <ref role="3uigEE" node="5HBSc0eNrzZ" resolve="KotlinJvmReferenceSolver.VisibleModel" />
           </node>
         </node>
       </node>
@@ -440,7 +440,7 @@
             </node>
             <node concept="2ShNRf" id="5HBSc0eNBHF" role="37vLTx">
               <node concept="1pGfFk" id="5HBSc0eNBHQ" role="2ShVmc">
-                <ref role="37wK5l" node="5HBSc0eNr$b" resolve="VisibleModel" />
+                <ref role="37wK5l" node="5HBSc0eNr$b" resolve="KotlinJvmReferenceSolver.VisibleModel" />
                 <node concept="37vLTw" id="5HBSc0eNBHR" role="37wK5m">
                   <ref role="3cqZAo" node="5HBSc0eNr_$" resolve="model" />
                 </node>
@@ -563,7 +563,7 @@
                                   <ref role="2Gs0qQ" node="1Uhah3iEU1q" resolve="stereotype" />
                                 </node>
                                 <node concept="liA8E" id="1Uhah3iEU1f" role="2OqNvi">
-                                  <ref role="37wK5l" node="1Uhah3ieQPi" />
+                                  <ref role="37wK5l" node="1Uhah3ieQPi" resolve="getTargetNodeId" />
                                 </node>
                               </node>
                             </node>
@@ -573,7 +573,7 @@
                               <ref role="2Gs0qQ" node="1Uhah3iEU1q" resolve="stereotype" />
                             </node>
                             <node concept="liA8E" id="1Uhah3iTLKX" role="2OqNvi">
-                              <ref role="37wK5l" node="1Uhah3iSWxy" />
+                              <ref role="37wK5l" node="1Uhah3iSWxy" resolve="getResolveInfo" />
                             </node>
                           </node>
                         </node>
@@ -594,7 +594,7 @@
                           <ref role="2Gs0qQ" node="1Uhah3iEU1q" resolve="stereotype" />
                         </node>
                         <node concept="liA8E" id="1Uhah3iEU1m" role="2OqNvi">
-                          <ref role="37wK5l" node="1Uhah3ieQPq" />
+                          <ref role="37wK5l" node="1Uhah3ieQPq" resolve="getTopClassifierId" />
                         </node>
                       </node>
                     </node>
@@ -674,7 +674,7 @@
             <property role="TrG5h" value="fallBackModels" />
             <node concept="_YKpA" id="1Uhah3iAUAN" role="1tU5fm">
               <node concept="3uibUv" id="1Uhah3iAYK7" role="_ZDj9">
-                <ref role="3uigEE" node="5HBSc0eNrzZ" resolve="VisibleModel" />
+                <ref role="3uigEE" node="5HBSc0eNrzZ" resolve="KotlinJvmReferenceSolver.VisibleModel" />
               </node>
             </node>
             <node concept="10Nm6u" id="1Uhah3iBs8K" role="33vP2m" />
@@ -742,7 +742,7 @@
                             <property role="TrG5h" value="possibleModels" />
                             <node concept="_YKpA" id="1Uhah3iMH41" role="1tU5fm">
                               <node concept="3uibUv" id="1Uhah3iMH42" role="_ZDj9">
-                                <ref role="3uigEE" node="5HBSc0eNrzZ" resolve="VisibleModel" />
+                                <ref role="3uigEE" node="5HBSc0eNrzZ" resolve="KotlinJvmReferenceSolver.VisibleModel" />
                               </node>
                             </node>
                             <node concept="2OqwBi" id="1Uhah3iMH43" role="33vP2m">
@@ -752,7 +752,7 @@
                                     <ref role="3cqZAo" node="1Uhah3iMH6Y" resolve="stereotype" />
                                   </node>
                                   <node concept="liA8E" id="1Uhah3iMH47" role="2OqNvi">
-                                    <ref role="37wK5l" node="1Uhah3ieQP9" />
+                                    <ref role="37wK5l" node="1Uhah3ieQP9" resolve="getModelStereotypes" />
                                   </node>
                                 </node>
                                 <node concept="3goQfb" id="1Uhah3iMH48" role="2OqNvi">
@@ -885,7 +885,7 @@
                                       <ref role="3cqZAo" node="1Uhah3iMH6Y" resolve="stereotype" />
                                     </node>
                                     <node concept="liA8E" id="1Uhah3iMH4Y" role="2OqNvi">
-                                      <ref role="37wK5l" node="1Uhah3ieQPq" />
+                                      <ref role="37wK5l" node="1Uhah3ieQPq" resolve="getTopClassifierId" />
                                     </node>
                                   </node>
                                 </node>
@@ -898,7 +898,7 @@
                                 <node concept="3cpWsn" id="1Uhah3iMH52" role="1Duv9x">
                                   <property role="TrG5h" value="vm" />
                                   <node concept="3uibUv" id="1Uhah3iMH53" role="1tU5fm">
-                                    <ref role="3uigEE" node="5HBSc0eNrzZ" resolve="VisibleModel" />
+                                    <ref role="3uigEE" node="5HBSc0eNrzZ" resolve="KotlinJvmReferenceSolver.VisibleModel" />
                                   </node>
                                 </node>
                                 <node concept="3clFbS" id="1Uhah3iMH54" role="2LFqv$">
@@ -976,7 +976,7 @@
                                                     <ref role="3cqZAo" node="1Uhah3iMH6Y" resolve="stereotype" />
                                                   </node>
                                                   <node concept="liA8E" id="1Uhah3iMH5u" role="2OqNvi">
-                                                    <ref role="37wK5l" node="1Uhah3ieQPi" />
+                                                    <ref role="37wK5l" node="1Uhah3ieQPi" resolve="getTargetNodeId" />
                                                   </node>
                                                 </node>
                                               </node>
@@ -986,7 +986,7 @@
                                                 <ref role="3cqZAo" node="1Uhah3iMH6Y" resolve="stereotype" />
                                               </node>
                                               <node concept="liA8E" id="1Uhah3iUEvv" role="2OqNvi">
-                                                <ref role="37wK5l" node="1Uhah3iSWxy" />
+                                                <ref role="37wK5l" node="1Uhah3iSWxy" resolve="getResolveInfo" />
                                               </node>
                                             </node>
                                           </node>
@@ -1121,7 +1121,7 @@
                                           <ref role="3cqZAo" node="1Uhah3iMH6Y" resolve="stereotype" />
                                         </node>
                                         <node concept="liA8E" id="1Uhah3iULET" role="2OqNvi">
-                                          <ref role="37wK5l" node="1Uhah3ieQPi" />
+                                          <ref role="37wK5l" node="1Uhah3ieQPi" resolve="getTargetNodeId" />
                                         </node>
                                       </node>
                                     </node>
@@ -1131,7 +1131,7 @@
                                       <ref role="3cqZAo" node="1Uhah3iMH6Y" resolve="stereotype" />
                                     </node>
                                     <node concept="liA8E" id="1Uhah3iVngs" role="2OqNvi">
-                                      <ref role="37wK5l" node="1Uhah3iSWxy" />
+                                      <ref role="37wK5l" node="1Uhah3iSWxy" resolve="getResolveInfo" />
                                     </node>
                                   </node>
                                 </node>
@@ -1353,7 +1353,7 @@
                     <ref role="37Ijqf" node="5HBSc0eNr$O" resolve="getModelReference" />
                     <node concept="2FaPjH" id="1Uhah3iG9HR" role="wWaWy">
                       <node concept="3uibUv" id="1Uhah3iG9HS" role="2FaQuo">
-                        <ref role="3uigEE" node="5HBSc0eNrzZ" resolve="VisibleModel" />
+                        <ref role="3uigEE" node="5HBSc0eNrzZ" resolve="KotlinJvmReferenceSolver.VisibleModel" />
                       </node>
                     </node>
                   </node>
@@ -1379,7 +1379,7 @@
                   <ref role="3cqZAo" node="1Uhah3iKviv" resolve="fallBackStereotype" />
                 </node>
                 <node concept="liA8E" id="1Uhah3iW4b_" role="2OqNvi">
-                  <ref role="37wK5l" node="1Uhah3iSWxy" />
+                  <ref role="37wK5l" node="1Uhah3iSWxy" resolve="getResolveInfo" />
                 </node>
               </node>
             </node>
@@ -1456,7 +1456,7 @@
       <node concept="16euLQ" id="1Uhah3iX6xR" role="16eVyc">
         <property role="TrG5h" value="T" />
         <node concept="3uibUv" id="1Uhah3iXgwJ" role="3ztrMU">
-          <ref role="3uigEE" node="1Uhah3iQ7if" />
+          <ref role="3uigEE" node="1Uhah3iQ7if" resolve="StereotypeReference" />
         </node>
       </node>
     </node>
@@ -1570,7 +1570,7 @@
             <node concept="3uibUv" id="5HBSc0eNrFC" role="1tU5fm">
               <ref role="3uigEE" to="33ny:~List" resolve="List" />
               <node concept="3uibUv" id="5HBSc0eNrFD" role="11_B2D">
-                <ref role="3uigEE" node="5HBSc0eNrzZ" resolve="VisibleModel" />
+                <ref role="3uigEE" node="5HBSc0eNrzZ" resolve="KotlinJvmReferenceSolver.VisibleModel" />
               </node>
             </node>
             <node concept="2OqwBi" id="5HBSc0eNVa9" role="33vP2m">
@@ -1598,7 +1598,7 @@
               <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
               <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
               <node concept="3uibUv" id="5HBSc0eWAoU" role="3PaCim">
-                <ref role="3uigEE" node="5HBSc0eNrzZ" resolve="VisibleModel" />
+                <ref role="3uigEE" node="5HBSc0eNrzZ" resolve="KotlinJvmReferenceSolver.VisibleModel" />
               </node>
             </node>
             <node concept="2YIFZM" id="5HBSc0eNyqY" role="3K4GZi">
@@ -1615,7 +1615,7 @@
       <node concept="3uibUv" id="5HBSc0eNrFP" role="3clF45">
         <ref role="3uigEE" to="33ny:~List" resolve="List" />
         <node concept="3uibUv" id="5HBSc0eNrFQ" role="11_B2D">
-          <ref role="3uigEE" node="5HBSc0eNrzZ" resolve="VisibleModel" />
+          <ref role="3uigEE" node="5HBSc0eNrzZ" resolve="KotlinJvmReferenceSolver.VisibleModel" />
         </node>
       </node>
       <node concept="P$JXv" id="5HBSc0eNrFR" role="lGtFl">
@@ -1721,7 +1721,7 @@
             <node concept="liA8E" id="5HBSc0ePCmh" role="2OqNvi">
               <ref role="37wK5l" to="gp7a:~GlobalModuleDependenciesManager.getModules(jetbrains.mps.project.dependency.GlobalModuleDependenciesManager$Deptype)" resolve="getModules" />
               <node concept="Rm8GO" id="5HBSc0ePCmi" role="37wK5m">
-                <ref role="1Px2BO" to="gp7a:~GlobalModuleDependenciesManager$Deptype" resolve="Deptype" />
+                <ref role="1Px2BO" to="gp7a:~GlobalModuleDependenciesManager$Deptype" resolve="GlobalModuleDependenciesManager.Deptype" />
                 <ref role="Rm8GQ" to="gp7a:~GlobalModuleDependenciesManager$Deptype.VISIBLE" resolve="VISIBLE" />
               </node>
             </node>
@@ -1791,7 +1791,7 @@
                 <node concept="3uibUv" id="5HBSc0eNrGq" role="1tU5fm">
                   <ref role="3uigEE" to="33ny:~List" resolve="List" />
                   <node concept="3uibUv" id="5HBSc0eNrGr" role="11_B2D">
-                    <ref role="3uigEE" node="5HBSc0eNrzZ" resolve="VisibleModel" />
+                    <ref role="3uigEE" node="5HBSc0eNrzZ" resolve="KotlinJvmReferenceSolver.VisibleModel" />
                   </node>
                 </node>
                 <node concept="2OqwBi" id="5HBSc0ePwp4" role="33vP2m">
@@ -1853,7 +1853,7 @@
                   <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
                   <node concept="2ShNRf" id="5HBSc0ePOR1" role="37wK5m">
                     <node concept="1pGfFk" id="5HBSc0ePORc" role="2ShVmc">
-                      <ref role="37wK5l" node="5HBSc0eNr$b" resolve="VisibleModel" />
+                      <ref role="37wK5l" node="5HBSc0eNr$b" resolve="KotlinJvmReferenceSolver.VisibleModel" />
                       <node concept="37vLTw" id="5HBSc0ePORd" role="37wK5m">
                         <ref role="3cqZAo" node="5HBSc0eNrGJ" resolve="model" />
                       </node>
@@ -2026,7 +2026,7 @@
         <node concept="VUp57" id="4vxAdYG04tr" role="3nqlJM">
           <property role="VUp50" value="documentation for description" />
           <node concept="VXe08" id="4vxAdYG07RH" role="VUp5m">
-            <ref role="VXe09" to="i290:~StubReferenceFactory$VisibleModel" resolve="VisibleModel" />
+            <ref role="VXe09" to="i290:~StubReferenceFactory$VisibleModel" resolve="StubReferenceFactory.VisibleModel" />
           </node>
         </node>
       </node>
@@ -2446,14 +2446,14 @@
             </node>
           </node>
           <node concept="XkiVB" id="1Uhah3iRpf1" role="3cqZAp">
-            <ref role="37wK5l" node="1Uhah3iWZD0" resolve="ClassStereotype" />
+            <ref role="37wK5l" node="1Uhah3iWZD0" resolve="StereotypeReference.ClassStereotype" />
             <node concept="2ShNRf" id="6hYzBiUOvcU" role="37wK5m">
               <node concept="1pGfFk" id="6hYzBiUOvcV" role="2ShVmc">
-                <ref role="37wK5l" to="w1kc:~SNodeId$Foreign.&lt;init&gt;(java.lang.String)" resolve="Foreign" />
+                <ref role="37wK5l" to="w1kc:~SNodeId$Foreign.&lt;init&gt;(java.lang.String)" resolve="SNodeId.Foreign" />
                 <node concept="3cpWs3" id="6hYzBiUOvcW" role="37wK5m">
                   <node concept="10M0yZ" id="6hYzBiUOvcX" role="3uHU7B">
                     <ref role="3cqZAo" to="w1kc:~SNodeId$Foreign.ID_PREFIX" resolve="ID_PREFIX" />
-                    <ref role="1PxDUh" to="w1kc:~SNodeId$Foreign" resolve="Foreign" />
+                    <ref role="1PxDUh" to="w1kc:~SNodeId$Foreign" resolve="SNodeId.Foreign" />
                   </node>
                   <node concept="2OqwBi" id="673yl1uHoOk" role="3uHU7w">
                     <node concept="2OqwBi" id="5VFMxke0si_" role="2Oq$k0">
@@ -2489,11 +2489,11 @@
             </node>
             <node concept="2ShNRf" id="5VFMxkdZRGA" role="37wK5m">
               <node concept="1pGfFk" id="5VFMxkdZRGB" role="2ShVmc">
-                <ref role="37wK5l" to="w1kc:~SNodeId$Foreign.&lt;init&gt;(java.lang.String)" resolve="Foreign" />
+                <ref role="37wK5l" to="w1kc:~SNodeId$Foreign.&lt;init&gt;(java.lang.String)" resolve="SNodeId.Foreign" />
                 <node concept="3cpWs3" id="5VFMxkdZRGC" role="37wK5m">
                   <node concept="10M0yZ" id="5VFMxkdZRGD" role="3uHU7B">
                     <ref role="3cqZAo" to="w1kc:~SNodeId$Foreign.ID_PREFIX" resolve="ID_PREFIX" />
-                    <ref role="1PxDUh" to="w1kc:~SNodeId$Foreign" resolve="Foreign" />
+                    <ref role="1PxDUh" to="w1kc:~SNodeId$Foreign" resolve="SNodeId.Foreign" />
                   </node>
                   <node concept="2OqwBi" id="673yl1uHO5Q" role="3uHU7w">
                     <node concept="2OqwBi" id="673yl1uHKFP" role="2Oq$k0">
@@ -2541,7 +2541,7 @@
                 <node concept="2OqwBi" id="8NCMfkdN5h" role="HW$Y0">
                   <node concept="Rm8GO" id="8NCMfkdMm_" role="2Oq$k0">
                     <ref role="Rm8GQ" to="747n:8NCMfkd5My" resolve="JVM" />
-                    <ref role="1Px2BO" to="747n:8NCMfkd50w" resolve="ModelKind" />
+                    <ref role="1Px2BO" to="747n:8NCMfkd50w" resolve="KotlinLanguage.ModelKind" />
                   </node>
                   <node concept="2OwXpG" id="8NCMfkdOzV" role="2OqNvi">
                     <ref role="2Oxat5" to="747n:8NCMfkd7OX" resolve="stereotype" />
@@ -2587,7 +2587,7 @@
       </node>
       <node concept="3Tm1VV" id="1Uhah3iRoQK" role="1B3o_S" />
       <node concept="3uibUv" id="1Uhah3iWXPj" role="1zkMxy">
-        <ref role="3uigEE" node="1Uhah3iWXyo" resolve="ClassStereotype" />
+        <ref role="3uigEE" node="1Uhah3iWXyo" resolve="StereotypeReference.ClassStereotype" />
       </node>
       <node concept="2tJIrI" id="1Uhah3iS$ET" role="jymVt" />
       <node concept="3clFb_" id="1Uhah3iXCGI" role="jymVt">
@@ -3084,7 +3084,7 @@
         <node concept="3Tm1VV" id="1Uhah3iSIYk" role="1B3o_S" />
         <node concept="3clFbS" id="1Uhah3iSIYl" role="3clF47">
           <node concept="XkiVB" id="1Uhah3iSJhe" role="3cqZAp">
-            <ref role="37wK5l" node="1Uhah3iWZD0" resolve="ClassStereotype" />
+            <ref role="37wK5l" node="1Uhah3iWZD0" resolve="StereotypeReference.ClassStereotype" />
             <node concept="2YIFZM" id="1Uhah3iSJmi" role="37wK5m">
               <ref role="37wK5l" to="747n:2b3dSh2xvQs" resolve="kotlinId" />
               <ref role="1Pybhc" to="747n:Fn6l2Jy2sz" resolve="KotlinId" />
@@ -3109,7 +3109,7 @@
                 <node concept="2OqwBi" id="8NCMfkdOQr" role="HW$Y0">
                   <node concept="Rm8GO" id="8NCMfkdPAL" role="2Oq$k0">
                     <ref role="Rm8GQ" to="747n:8NCMfkd5iE" resolve="COMMON" />
-                    <ref role="1Px2BO" to="747n:8NCMfkd50w" resolve="ModelKind" />
+                    <ref role="1Px2BO" to="747n:8NCMfkd50w" resolve="KotlinLanguage.ModelKind" />
                   </node>
                   <node concept="2OwXpG" id="8NCMfkdOQt" role="2OqNvi">
                     <ref role="2Oxat5" to="747n:8NCMfkd7OX" resolve="stereotype" />
@@ -3118,7 +3118,7 @@
                 <node concept="2OqwBi" id="8NCMfkdP4G" role="HW$Y0">
                   <node concept="Rm8GO" id="8NCMfkdP4H" role="2Oq$k0">
                     <ref role="Rm8GQ" to="747n:8NCMfkd5My" resolve="JVM" />
-                    <ref role="1Px2BO" to="747n:8NCMfkd50w" resolve="ModelKind" />
+                    <ref role="1Px2BO" to="747n:8NCMfkd50w" resolve="KotlinLanguage.ModelKind" />
                   </node>
                   <node concept="2OwXpG" id="8NCMfkdP4I" role="2OqNvi">
                     <ref role="2Oxat5" to="747n:8NCMfkd7OX" resolve="stereotype" />
@@ -3525,7 +3525,7 @@
       </node>
       <node concept="3Tm1VV" id="1Uhah3iSAPy" role="1B3o_S" />
       <node concept="3uibUv" id="1Uhah3iWXV$" role="1zkMxy">
-        <ref role="3uigEE" node="1Uhah3iWXyo" resolve="ClassStereotype" />
+        <ref role="3uigEE" node="1Uhah3iWXyo" resolve="StereotypeReference.ClassStereotype" />
       </node>
       <node concept="3clFb_" id="3kLGH8AE5g1" role="jymVt">
         <property role="TrG5h" value="createJavaClassQualifierReference" />

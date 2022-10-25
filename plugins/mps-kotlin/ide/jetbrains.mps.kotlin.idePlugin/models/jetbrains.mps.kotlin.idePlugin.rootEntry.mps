@@ -685,7 +685,7 @@
       <node concept="37vLTG" id="10KGttbTQrl" role="3clF46">
         <property role="TrG5h" value="listener" />
         <node concept="3uibUv" id="10KGttbTQrm" role="1tU5fm">
-          <ref role="3uigEE" to="3fr7:~ModelRootEntry$ModelRootEntryListener" resolve="ModelRootEntryListener" />
+          <ref role="3uigEE" to="3fr7:~ModelRootEntry$ModelRootEntryListener" resolve="ModelRootEntry.ModelRootEntryListener" />
         </node>
         <node concept="2AHcQZ" id="10KGttbTQrn" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
@@ -717,7 +717,7 @@
       <node concept="37vLTG" id="10KGttbTQry" role="3clF46">
         <property role="TrG5h" value="listener" />
         <node concept="3uibUv" id="10KGttbTQrz" role="1tU5fm">
-          <ref role="3uigEE" to="3fr7:~ModelRootEntry$ModelRootEntryListener" resolve="ModelRootEntryListener" />
+          <ref role="3uigEE" to="3fr7:~ModelRootEntry$ModelRootEntryListener" resolve="ModelRootEntry.ModelRootEntryListener" />
         </node>
         <node concept="2AHcQZ" id="10KGttbTQr$" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
@@ -907,7 +907,7 @@
         <node concept="3cpWs6" id="10KGttbTQsL" role="3cqZAp">
           <node concept="2ShNRf" id="10KGttbTQsM" role="3cqZAk">
             <node concept="1pGfFk" id="10KGttbTQsN" role="2ShVmc">
-              <ref role="37wK5l" node="10KGttbTQqp" resolve="KotlinCommonStubModelRootEntry" />
+              <ref role="37wK5l" node="10KGttbTQqp" resolve="KotlinJvmStubModelRootEntry" />
               <node concept="37vLTw" id="10KGttbTQsO" role="37wK5m">
                 <ref role="3cqZAo" node="10KGttbTQso" resolve="myProject" />
               </node>

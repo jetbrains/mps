@@ -410,7 +410,7 @@
         <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
         <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
         <node concept="3VsKOn" id="2hdoiXOQYb4" role="37wK5m">
-          <ref role="3VsUkX" node="2ntakj1pRh8" resolve="KotlinCommonStubModelDescriptor" />
+          <ref role="3VsUkX" node="2ntakj1pRh8" resolve="KotlinJvmStubModelDescriptor" />
         </node>
       </node>
     </node>
@@ -444,7 +444,7 @@
       </node>
       <node concept="3clFbS" id="2ntakj1pRhP" role="3clF47">
         <node concept="XkiVB" id="2ntakj1pRir" role="3cqZAp">
-          <ref role="37wK5l" to="747n:2ntakj1pRhi" resolve="KotlinStubModelRoot" />
+          <ref role="37wK5l" to="747n:2ntakj1pRhi" resolve="KotlinStubModelDescriptor" />
           <node concept="37vLTw" id="2ntakj1pRiX" role="37wK5m">
             <ref role="3cqZAo" node="2ntakj1pRhN" resolve="modelReference" />
           </node>
@@ -566,7 +566,7 @@
       <node concept="3clFbS" id="7dIZ$DPu1h4" role="3clF47">
         <node concept="3clFbF" id="k9v0TRuDkA" role="3cqZAp">
           <node concept="1rXfSq" id="k9v0TRuDk_" role="3clFbG">
-            <ref role="37wK5l" node="k9v0TRunev" resolve="load" />
+            <ref role="37wK5l" node="k9v0TRunev" resolve="loadFromFile" />
             <node concept="37vLTw" id="k9v0TRuEFh" role="37wK5m">
               <ref role="3cqZAo" node="7dIZ$DPu1h1" resolve="file" />
             </node>
@@ -578,7 +578,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="7dIZ$DPu1h5" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="k9v0TRuiZf" role="jymVt" />
@@ -773,7 +773,7 @@
                       <node concept="1eOMI4" id="k9v0TR$30e" role="2Oq$k0">
                         <node concept="10QFUN" id="k9v0TR$30b" role="1eOMHV">
                           <node concept="3uibUv" id="k9v0TR$30g" role="10QFUM">
-                            <ref role="3uigEE" to="otax:~KotlinClassMetadata$Class" resolve="Class" />
+                            <ref role="3uigEE" to="otax:~KotlinClassMetadata$Class" resolve="KotlinClassMetadata.Class" />
                           </node>
                           <node concept="37vLTw" id="k9v0TR$30h" role="10QFUP">
                             <ref role="3cqZAo" node="k9v0TRwXib" resolve="metadata" />
@@ -817,7 +817,7 @@
                 </node>
                 <node concept="2ZW3vV" id="k9v0TRzTz4" role="3eO9$A">
                   <node concept="3uibUv" id="k9v0TRzTz5" role="2ZW6by">
-                    <ref role="3uigEE" to="otax:~KotlinClassMetadata$Class" resolve="Class" />
+                    <ref role="3uigEE" to="otax:~KotlinClassMetadata$Class" resolve="KotlinClassMetadata.Class" />
                   </node>
                   <node concept="37vLTw" id="k9v0TRzTz6" role="2ZW6bz">
                     <ref role="3cqZAo" node="k9v0TRwXib" resolve="metadata" />
@@ -827,7 +827,7 @@
               <node concept="3eNFk2" id="k9v0TR$MNJ" role="3eNLev">
                 <node concept="2ZW3vV" id="k9v0TR$Qz1" role="3eO9$A">
                   <node concept="3uibUv" id="k9v0TR$SvG" role="2ZW6by">
-                    <ref role="3uigEE" to="otax:~KotlinClassMetadata$FileFacade" resolve="FileFacade" />
+                    <ref role="3uigEE" to="otax:~KotlinClassMetadata$FileFacade" resolve="KotlinClassMetadata.FileFacade" />
                   </node>
                   <node concept="37vLTw" id="k9v0TR$OJx" role="2ZW6bz">
                     <ref role="3cqZAo" node="k9v0TRwXib" resolve="metadata" />
@@ -873,7 +873,7 @@
                       <node concept="1eOMI4" id="k9v0TRy2dk" role="2Oq$k0">
                         <node concept="10QFUN" id="k9v0TRy2dh" role="1eOMHV">
                           <node concept="3uibUv" id="k9v0TRy2dm" role="10QFUM">
-                            <ref role="3uigEE" to="otax:~KotlinClassMetadata$FileFacade" resolve="FileFacade" />
+                            <ref role="3uigEE" to="otax:~KotlinClassMetadata$FileFacade" resolve="KotlinClassMetadata.FileFacade" />
                           </node>
                           <node concept="37vLTw" id="k9v0TRy2dn" role="10QFUP">
                             <ref role="3cqZAo" node="k9v0TRwXib" resolve="metadata" />
@@ -912,7 +912,7 @@
               <node concept="3eNFk2" id="7k0Xl9V154$" role="3eNLev">
                 <node concept="2ZW3vV" id="7k0Xl9V19QS" role="3eO9$A">
                   <node concept="3uibUv" id="7k0Xl9V1bRI" role="2ZW6by">
-                    <ref role="3uigEE" to="otax:~KotlinClassMetadata$MultiFileClassFacade" resolve="MultiFileClassFacade" />
+                    <ref role="3uigEE" to="otax:~KotlinClassMetadata$MultiFileClassFacade" resolve="KotlinClassMetadata.MultiFileClassFacade" />
                   </node>
                   <node concept="37vLTw" id="7k0Xl9V18Oy" role="2ZW6bz">
                     <ref role="3cqZAo" node="k9v0TRwXib" resolve="metadata" />
@@ -1006,7 +1006,7 @@
                         <node concept="1eOMI4" id="7k0Xl9V1e$I" role="2Oq$k0">
                           <node concept="10QFUN" id="7k0Xl9V1e$J" role="1eOMHV">
                             <node concept="3uibUv" id="7k0Xl9V1e$K" role="10QFUM">
-                              <ref role="3uigEE" to="otax:~KotlinClassMetadata$MultiFileClassFacade" resolve="MultiFileClassFacade" />
+                              <ref role="3uigEE" to="otax:~KotlinClassMetadata$MultiFileClassFacade" resolve="KotlinClassMetadata.MultiFileClassFacade" />
                             </node>
                             <node concept="37vLTw" id="7k0Xl9V1e$L" role="10QFUP">
                               <ref role="3cqZAo" node="k9v0TRwXib" resolve="metadata" />
@@ -1148,7 +1148,7 @@
                                     <node concept="1gVbGN" id="7k0Xl9V4fWs" role="3cqZAp">
                                       <node concept="2ZW3vV" id="7k0Xl9V4jUc" role="1gVkn0">
                                         <node concept="3uibUv" id="7k0Xl9V4maj" role="2ZW6by">
-                                          <ref role="3uigEE" to="otax:~KotlinClassMetadata$MultiFileClassPart" resolve="MultiFileClassPart" />
+                                          <ref role="3uigEE" to="otax:~KotlinClassMetadata$MultiFileClassPart" resolve="KotlinClassMetadata.MultiFileClassPart" />
                                         </node>
                                         <node concept="37vLTw" id="7k0Xl9V4iat" role="2ZW6bz">
                                           <ref role="3cqZAo" node="7k0Xl9V46yL" resolve="metadata" />
@@ -1160,7 +1160,7 @@
                                         <node concept="1eOMI4" id="7k0Xl9V4qyC" role="2Oq$k0">
                                           <node concept="10QFUN" id="7k0Xl9V4qy_" role="1eOMHV">
                                             <node concept="3uibUv" id="7k0Xl9V4s8B" role="10QFUM">
-                                              <ref role="3uigEE" to="otax:~KotlinClassMetadata$MultiFileClassPart" resolve="MultiFileClassPart" />
+                                              <ref role="3uigEE" to="otax:~KotlinClassMetadata$MultiFileClassPart" resolve="KotlinClassMetadata.MultiFileClassPart" />
                                             </node>
                                             <node concept="37vLTw" id="7k0Xl9V4tSk" role="10QFUP">
                                               <ref role="3cqZAo" node="7k0Xl9V46yL" resolve="metadata" />
@@ -1307,7 +1307,7 @@
               </node>
               <node concept="3cpWs6" id="k9v0TRutHr" role="3cqZAp">
                 <node concept="37vLTw" id="k9v0TRuKJY" role="3cqZAk">
-                  <ref role="3cqZAo" node="k9v0TRuKJU" resolve="createClassifier" />
+                  <ref role="3cqZAo" node="k9v0TRuKJU" resolve="classifier" />
                 </node>
               </node>
             </node>
@@ -1373,7 +1373,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="7dIZ$DPxOh9" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="7dIZ$DPy0t$" role="jymVt" />
@@ -1488,7 +1488,7 @@
       </node>
     </node>
     <node concept="3uibUv" id="7dIZ$DPtqLS" role="1zkMxy">
-      <ref role="3uigEE" to="747n:7dIZ$DPqtwm" resolve="KotlinStubModelRoot" />
+      <ref role="3uigEE" to="747n:7dIZ$DPqtwm" resolve="KotlinStubModelDescriptor" />
       <node concept="3Tqbb2" id="7dIZ$DPvcZI" role="11_B2D" />
     </node>
   </node>
@@ -1637,7 +1637,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="5UPRnUow_NV" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="5UPRnUowCtr" role="jymVt" />
@@ -1648,12 +1648,12 @@
           <node concept="3cpWsn" id="5UPRnUowNjk" role="3cpWs9">
             <property role="TrG5h" value="visitor" />
             <node concept="3uibUv" id="5UPRnUowN90" role="1tU5fm">
-              <ref role="3uigEE" node="5UPRnUow_jU" resolve="KotlinMetadataChecker" />
+              <ref role="3uigEE" node="5UPRnUow_jU" resolve="KotlinMetadataLazyExtractor" />
             </node>
             <node concept="2ShNRf" id="5UPRnUowNjl" role="33vP2m">
               <node concept="1pGfFk" id="5UPRnUowNjm" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="37wK5l" node="5UPRnUow_Ab" resolve="KotlinMetadataChecker" />
+                <ref role="37wK5l" node="5UPRnUow_Ab" resolve="KotlinMetadataLazyExtractor" />
               </node>
             </node>
           </node>
@@ -1807,7 +1807,7 @@
                 <node concept="1eOMI4" id="1VBAlDJMp0a" role="2Oq$k0">
                   <node concept="10QFUN" id="1VBAlDJMp0b" role="1eOMHV">
                     <node concept="3uibUv" id="1VBAlDJMp0c" role="10QFUM">
-                      <ref role="3uigEE" to="otax:~KotlinClassMetadata$Class" resolve="Class" />
+                      <ref role="3uigEE" to="otax:~KotlinClassMetadata$Class" resolve="KotlinClassMetadata.Class" />
                     </node>
                     <node concept="37vLTw" id="1VBAlDJMp0d" role="10QFUP">
                       <ref role="3cqZAo" node="1VBAlDJLW$d" resolve="metadata" />
@@ -1966,7 +1966,7 @@
           </node>
           <node concept="2ZW3vV" id="73fjtryTWPB" role="3clFbw">
             <node concept="3uibUv" id="73fjtryTX3n" role="2ZW6by">
-              <ref role="3uigEE" to="otax:~KotlinClassMetadata$Class" resolve="Class" />
+              <ref role="3uigEE" to="otax:~KotlinClassMetadata$Class" resolve="KotlinClassMetadata.Class" />
             </node>
             <node concept="37vLTw" id="73fjtryTWye" role="2ZW6bz">
               <ref role="3cqZAo" node="1VBAlDJLW$d" resolve="metadata" />
@@ -2095,7 +2095,7 @@
             <node concept="22lmx$" id="5aKf707eIMw" role="3eO9$A">
               <node concept="2ZW3vV" id="5aKf707eJEW" role="3uHU7w">
                 <node concept="3uibUv" id="5aKf707eKdk" role="2ZW6by">
-                  <ref role="3uigEE" to="otax:~KotlinClassMetadata$MultiFileClassFacade" resolve="MultiFileClassFacade" />
+                  <ref role="3uigEE" to="otax:~KotlinClassMetadata$MultiFileClassFacade" resolve="KotlinClassMetadata.MultiFileClassFacade" />
                 </node>
                 <node concept="37vLTw" id="5aKf707eJam" role="2ZW6bz">
                   <ref role="3cqZAo" node="1VBAlDJLW$d" resolve="metadata" />
@@ -2103,7 +2103,7 @@
               </node>
               <node concept="2ZW3vV" id="3AyArVJMWGa" role="3uHU7B">
                 <node concept="3uibUv" id="3AyArVJMY1E" role="2ZW6by">
-                  <ref role="3uigEE" to="otax:~KotlinClassMetadata$FileFacade" resolve="FileFacade" />
+                  <ref role="3uigEE" to="otax:~KotlinClassMetadata$FileFacade" resolve="KotlinClassMetadata.FileFacade" />
                 </node>
                 <node concept="37vLTw" id="3AyArVJMWdD" role="2ZW6bz">
                   <ref role="3cqZAo" node="1VBAlDJLW$d" resolve="metadata" />
@@ -2470,7 +2470,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="7dIZ$DP_y15" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="7dIZ$DPAcqI" role="jymVt" />
@@ -2938,7 +2938,7 @@
                     <node concept="1eOMI4" id="3kLGH8ABpCW" role="2Oq$k0">
                       <node concept="10QFUN" id="3kLGH8ABobk" role="1eOMHV">
                         <node concept="3uibUv" id="3kLGH8ABqav" role="10QFUM">
-                          <ref role="3uigEE" node="3kLGH8A6aep" resolve="JavaWithKotlinClassLoader" />
+                          <ref role="3uigEE" node="3kLGH8A6aep" resolve="KotlinAwareClassifierLoader" />
                         </node>
                         <node concept="37vLTw" id="3Eq_PkMaPwo" role="10QFUP">
                           <ref role="3cqZAo" node="3Eq_PkMaPwv" resolve="innerLoader" />
@@ -3025,7 +3025,7 @@
           <node concept="2ShNRf" id="3kLGH8ABdjn" role="3cqZAk">
             <node concept="1pGfFk" id="3kLGH8ABfGK" role="2ShVmc">
               <property role="373rjd" value="true" />
-              <ref role="37wK5l" node="3kLGH8ABaqm" resolve="JavaWithKotlinClassLoader" />
+              <ref role="37wK5l" node="3kLGH8ABaqm" resolve="KotlinAwareClassifierLoader" />
               <node concept="2OqwBi" id="3kLGH8AAOC5" role="37wK5m">
                 <node concept="37vLTw" id="3kLGH8AAOC6" role="2Oq$k0">
                   <ref role="3cqZAo" node="3kLGH8AB5E0" resolve="parent" />
@@ -3051,7 +3051,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="3kLGH8AB5E7" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="3Tm1VV" id="3kLGH8A6aeq" role="1B3o_S" />
@@ -3133,10 +3133,10 @@
         <node concept="3clFbF" id="3kLGH8A89YR" role="3cqZAp">
           <node concept="37vLTI" id="3kLGH8A89YT" role="3clFbG">
             <node concept="37vLTw" id="3kLGH8A89YW" role="37vLTJ">
-              <ref role="3cqZAo" node="3kLGH8A89YN" resolve="myReferenceSolver" />
+              <ref role="3cqZAo" node="3kLGH8A89YN" resolve="mySolvingContext" />
             </node>
             <node concept="37vLTw" id="3kLGH8A89YX" role="37vLTx">
-              <ref role="3cqZAo" node="3kLGH8A89NP" resolve="referenceSolver" />
+              <ref role="3cqZAo" node="3kLGH8A89NP" resolve="solvingContext" />
             </node>
           </node>
         </node>
@@ -3457,7 +3457,7 @@
                                       <node concept="1eOMI4" id="4wP929ROB0C" role="2Oq$k0">
                                         <node concept="10QFUN" id="4wP929ROB0D" role="1eOMHV">
                                           <node concept="3uibUv" id="4wP929ROB0E" role="10QFUM">
-                                            <ref role="3uigEE" to="mhbf:~ResolveInfo$PS" resolve="PS" />
+                                            <ref role="3uigEE" to="mhbf:~ResolveInfo$PS" resolve="ResolveInfo.PS" />
                                           </node>
                                           <node concept="37vLTw" id="4wP929ROB0F" role="10QFUP">
                                             <ref role="3cqZAo" node="4wP929RMfzs" resolve="resolveInfo" />
@@ -3525,7 +3525,7 @@
                             <node concept="1Wc70l" id="4wP929RQa_6" role="3clFbw">
                               <node concept="2ZW3vV" id="4wP929ROnNF" role="3uHU7B">
                                 <node concept="3uibUv" id="4wP929ROpAJ" role="2ZW6by">
-                                  <ref role="3uigEE" to="mhbf:~ResolveInfo$PS" resolve="PS" />
+                                  <ref role="3uigEE" to="mhbf:~ResolveInfo$PS" resolve="ResolveInfo.PS" />
                                 </node>
                                 <node concept="37vLTw" id="4wP929ROlXy" role="2ZW6bz">
                                   <ref role="3cqZAo" node="4wP929RMfzs" resolve="resolveInfo" />
@@ -3538,7 +3538,7 @@
                                     <node concept="1eOMI4" id="4wP929RQcMm" role="2Oq$k0">
                                       <node concept="10QFUN" id="4wP929RQcMn" role="1eOMHV">
                                         <node concept="3uibUv" id="4wP929RQcMo" role="10QFUM">
-                                          <ref role="3uigEE" to="mhbf:~ResolveInfo$PS" resolve="PS" />
+                                          <ref role="3uigEE" to="mhbf:~ResolveInfo$PS" resolve="ResolveInfo.PS" />
                                         </node>
                                         <node concept="37vLTw" id="4wP929RQcMp" role="10QFUP">
                                           <ref role="3cqZAo" node="4wP929RMfzs" resolve="resolveInfo" />
@@ -3993,7 +3993,7 @@
                     <ref role="37Ijqf" to="t3el:3kLGH8Az_B6" resolve="createJavaClassQualifierReference" />
                     <node concept="2FaPjH" id="3kLGH8A$i3u" role="wWaWy">
                       <node concept="3uibUv" id="3kLGH8A$i3v" role="2FaQuo">
-                        <ref role="3uigEE" to="t3el:1Uhah3iWXyo" resolve="ClassStereotype" />
+                        <ref role="3uigEE" to="t3el:1Uhah3iWXyo" resolve="StereotypeReference.ClassStereotype" />
                       </node>
                     </node>
                   </node>
@@ -4013,7 +4013,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="3kLGH8AaoIx" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="3clFb_" id="2esXIF0VXrX" role="jymVt">
@@ -4094,7 +4094,7 @@
                       <ref role="37Ijqf" to="t3el:1Uhah3iXxYs" resolve="createJavaType" />
                       <node concept="2FaPjH" id="3kLGH8AbBTB" role="wWaWy">
                         <node concept="3uibUv" id="3kLGH8AbBTC" role="2FaQuo">
-                          <ref role="3uigEE" to="t3el:1Uhah3iWXyo" resolve="ClassStereotype" />
+                          <ref role="3uigEE" to="t3el:1Uhah3iWXyo" resolve="StereotypeReference.ClassStereotype" />
                         </node>
                       </node>
                     </node>
@@ -4495,7 +4495,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="3kLGH8A7uIw" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="3UR2Jj" id="4vxAdYG1AQv" role="lGtFl">
@@ -4532,7 +4532,7 @@
           <node concept="2OqwBi" id="55ogKyAFQhD" role="3cqZAk">
             <node concept="Rm8GO" id="55ogKyAFQhE" role="2Oq$k0">
               <ref role="Rm8GQ" to="747n:8NCMfkd5My" resolve="JVM" />
-              <ref role="1Px2BO" to="747n:8NCMfkd50w" resolve="ModelKind" />
+              <ref role="1Px2BO" to="747n:8NCMfkd50w" resolve="KotlinLanguage.ModelKind" />
             </node>
             <node concept="2OwXpG" id="55ogKyAFQhF" role="2OqNvi">
               <ref role="2Oxat5" to="747n:8NCMfkeo0I" resolve="rootName" />
@@ -4627,7 +4627,7 @@
             </node>
             <node concept="Rm8GO" id="55ogKyAFQih" role="37wK5m">
               <ref role="Rm8GQ" to="747n:8NCMfkd5My" resolve="JVM" />
-              <ref role="1Px2BO" to="747n:8NCMfkd50w" resolve="ModelKind" />
+              <ref role="1Px2BO" to="747n:8NCMfkd50w" resolve="KotlinLanguage.ModelKind" />
             </node>
           </node>
         </node>
@@ -4766,7 +4766,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="2VNsrd6nd9B" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="3clFb_" id="2VNsrd6n223" role="jymVt">
@@ -4788,7 +4788,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="2VNsrd6n22g" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="3clFb_" id="55ogKyAFQiS" role="jymVt">
@@ -4870,7 +4870,7 @@
       <ref role="3uigEE" to="ends:~FileBasedModelRoot" resolve="FileBasedModelRoot" />
     </node>
     <node concept="3uibUv" id="55ogKyAFQjo" role="EKbjA">
-      <ref role="3uigEE" to="747n:50HO3UpBVIJ" resolve="ModelDescriptorProducer" />
+      <ref role="3uigEE" to="747n:50HO3UpBVIJ" resolve="JarHelper.ModelDescriptorProducer" />
     </node>
     <node concept="2YIFZL" id="55ogKyAFQjp" role="jymVt">
       <property role="TrG5h" value="isClass" />
@@ -5037,7 +5037,7 @@
       <node concept="3Tmbuc" id="7L_qhxF3fDC" role="1B3o_S" />
       <node concept="_YKpA" id="7L_qhxF3fDD" role="3clF45">
         <node concept="3uibUv" id="7L_qhxF3fDE" role="_ZDj9">
-          <ref role="3uigEE" to="t3el:1Uhah3iWXyo" resolve="ClassStereotype" />
+          <ref role="3uigEE" to="t3el:1Uhah3iWXyo" resolve="StereotypeReference.ClassStereotype" />
         </node>
       </node>
       <node concept="37vLTG" id="7L_qhxF3fDF" role="3clF46">
@@ -5068,12 +5068,12 @@
           <node concept="2ShNRf" id="1Uhah3j3Mfj" role="3cqZAk">
             <node concept="Tc6Ow" id="1Uhah3j3NMJ" role="2ShVmc">
               <node concept="3uibUv" id="1Uhah3j3Phg" role="HW$YZ">
-                <ref role="3uigEE" to="t3el:1Uhah3iWXyo" />
+                <ref role="3uigEE" to="t3el:1Uhah3iWXyo" resolve="StereotypeReference.ClassStereotype" />
               </node>
               <node concept="2ShNRf" id="1Uhah3j3QlF" role="HW$Y0">
                 <node concept="1pGfFk" id="1Uhah3j3QlG" role="2ShVmc">
                   <property role="373rjd" value="true" />
-                  <ref role="37wK5l" to="t3el:1Uhah3iSIYh" />
+                  <ref role="37wK5l" to="t3el:1Uhah3iSIYh" resolve="StereotypeReference.KotlinClassReference" />
                   <node concept="37vLTw" id="1Uhah3j3QlH" role="37wK5m">
                     <ref role="3cqZAo" node="7L_qhxF3fDF" resolve="fqName" />
                   </node>
@@ -5082,7 +5082,7 @@
               <node concept="2ShNRf" id="1Uhah3j3QsT" role="HW$Y0">
                 <node concept="1pGfFk" id="1Uhah3j3QsU" role="2ShVmc">
                   <property role="373rjd" value="true" />
-                  <ref role="37wK5l" to="t3el:1Uhah3iRp4m" />
+                  <ref role="37wK5l" to="t3el:1Uhah3iRp4m" resolve="StereotypeReference.JavaClassReference" />
                   <node concept="37vLTw" id="1Uhah3j3QsV" role="37wK5m">
                     <ref role="3cqZAo" node="7L_qhxF3fDF" resolve="fqName" />
                   </node>
@@ -5093,7 +5093,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="7L_qhxF3fDI" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="3clFb_" id="7L_qhxF3_Tf" role="jymVt">
@@ -5176,7 +5176,7 @@
                         <node concept="3cpWs3" id="ET9GRkw9jN" role="3uHU7B">
                           <node concept="2OqwBi" id="ET9GRkw9jO" role="3uHU7B">
                             <node concept="37vLTw" id="ET9GRkwc4M" role="2Oq$k0">
-                              <ref role="3cqZAo" node="ET9GRkwc4I" resolve="name" />
+                              <ref role="3cqZAo" node="ET9GRkwc4I" resolve="fileName" />
                             </node>
                             <node concept="liA8E" id="ET9GRkw9jS" role="2OqNvi">
                               <ref role="37wK5l" to="wyt6:~String.substring(int,int)" resolve="substring" />
@@ -5185,7 +5185,7 @@
                               </node>
                               <node concept="2OqwBi" id="ET9GRkw9jU" role="37wK5m">
                                 <node concept="37vLTw" id="ET9GRkwc4N" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="ET9GRkwc4I" resolve="name" />
+                                  <ref role="3cqZAo" node="ET9GRkwc4I" resolve="fileName" />
                                 </node>
                                 <node concept="liA8E" id="ET9GRkw9jY" role="2OqNvi">
                                   <ref role="37wK5l" to="wyt6:~String.indexOf(java.lang.String)" resolve="indexOf" />
@@ -5357,7 +5357,7 @@
                             <node concept="1eOMI4" id="ET9GRkwAG6" role="2Oq$k0">
                               <node concept="10QFUN" id="ET9GRkwAG7" role="1eOMHV">
                                 <node concept="3uibUv" id="ET9GRkwAG8" role="10QFUM">
-                                  <ref role="3uigEE" to="otax:~KotlinClassMetadata$Class" resolve="Class" />
+                                  <ref role="3uigEE" to="otax:~KotlinClassMetadata$Class" resolve="KotlinClassMetadata.Class" />
                                 </node>
                                 <node concept="37vLTw" id="ET9GRkwAG9" role="10QFUP">
                                   <ref role="3cqZAo" node="ET9GRkwAFu" resolve="metadata" />
@@ -5431,7 +5431,7 @@
                       </node>
                       <node concept="2ZW3vV" id="ET9GRkx0OW" role="3clFbw">
                         <node concept="3uibUv" id="ET9GRkx0OX" role="2ZW6by">
-                          <ref role="3uigEE" to="otax:~KotlinClassMetadata$Class" resolve="Class" />
+                          <ref role="3uigEE" to="otax:~KotlinClassMetadata$Class" resolve="KotlinClassMetadata.Class" />
                         </node>
                         <node concept="37vLTw" id="ET9GRkx0OY" role="2ZW6bz">
                           <ref role="3cqZAo" node="ET9GRkwAFu" resolve="metadata" />
@@ -5488,7 +5488,7 @@
               </node>
               <node concept="2OqwBi" id="ET9GRkwbBy" role="3clFbw">
                 <node concept="37vLTw" id="ET9GRkwb0m" role="2Oq$k0">
-                  <ref role="3cqZAo" node="ET9GRkw9jF" resolve="classFile" />
+                  <ref role="3cqZAo" node="ET9GRkw9jF" resolve="child" />
                 </node>
                 <node concept="liA8E" id="ET9GRkwbTK" role="2OqNvi">
                   <ref role="37wK5l" to="3ju5:~IFile.exists()" resolve="exists" />
@@ -5511,7 +5511,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="7L_qhxF3_Tq" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
   </node>

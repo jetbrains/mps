@@ -288,7 +288,7 @@
           <node concept="2OqwBi" id="8NCMfkesLM" role="3cqZAk">
             <node concept="Rm8GO" id="8NCMfkeseF" role="2Oq$k0">
               <ref role="Rm8GQ" to="747n:8NCMfkd5iE" resolve="COMMON" />
-              <ref role="1Px2BO" to="747n:8NCMfkd50w" resolve="ModelKind" />
+              <ref role="1Px2BO" to="747n:8NCMfkd50w" resolve="KotlinLanguage.ModelKind" />
             </node>
             <node concept="2OwXpG" id="8NCMfkeuvV" role="2OqNvi">
               <ref role="2Oxat5" to="747n:8NCMfkeo0I" resolve="rootName" />
@@ -389,7 +389,7 @@
             </node>
             <node concept="Rm8GO" id="8NCMfkevr1" role="37wK5m">
               <ref role="Rm8GQ" to="747n:8NCMfkd5iE" resolve="COMMON" />
-              <ref role="1Px2BO" to="747n:8NCMfkd50w" resolve="ModelKind" />
+              <ref role="1Px2BO" to="747n:8NCMfkd50w" resolve="KotlinLanguage.ModelKind" />
             </node>
           </node>
         </node>
@@ -527,7 +527,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="2VNsrd6nd9B" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="3clFb_" id="2VNsrd6n223" role="jymVt">
@@ -549,7 +549,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="2VNsrd6n22g" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="3clFb_" id="2ntakj1pRcs" role="jymVt">
@@ -672,7 +672,7 @@
       </node>
       <node concept="3clFbS" id="2ntakj1pRhP" role="3clF47">
         <node concept="XkiVB" id="2ntakj1pRir" role="3cqZAp">
-          <ref role="37wK5l" to="747n:2ntakj1pRhi" resolve="KotlinStubModelRoot" />
+          <ref role="37wK5l" to="747n:2ntakj1pRhi" resolve="KotlinStubModelDescriptor" />
           <node concept="37vLTw" id="2ntakj1pRiX" role="37wK5m">
             <ref role="3cqZAo" node="2ntakj1pRhN" resolve="modelReference" />
           </node>
@@ -740,7 +740,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="7dIZ$DPwOKs" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="7dIZ$DPw61T" role="jymVt" />
@@ -833,7 +833,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="7dIZ$DPwaui" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="2b3dSh2rQsL" role="jymVt" />
@@ -1276,7 +1276,7 @@
       </node>
     </node>
     <node concept="3uibUv" id="7dIZ$DPvs6P" role="1zkMxy">
-      <ref role="3uigEE" to="747n:7dIZ$DPqtwm" resolve="KotlinStubModelRoot" />
+      <ref role="3uigEE" to="747n:7dIZ$DPqtwm" resolve="KotlinStubModelDescriptor" />
       <node concept="3Tqbb2" id="7dIZ$DPv_Af" role="11_B2D">
         <ref role="ehGHo" to="hcm8:2yYXHtl6JkD" resolve="KotlinFile" />
       </node>

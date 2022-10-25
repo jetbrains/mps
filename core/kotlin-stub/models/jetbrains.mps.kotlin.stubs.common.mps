@@ -1150,7 +1150,7 @@
       <node concept="3Tm1VV" id="8NCMfkd50x" role="1B3o_S" />
       <node concept="QsSxf" id="8NCMfkd5iE" role="Qtgdg">
         <property role="TrG5h" value="COMMON" />
-        <ref role="37wK5l" node="8NCMfkd6eS" resolve="ModelKind" />
+        <ref role="37wK5l" node="8NCMfkd6eS" resolve="KotlinLanguage.ModelKind" />
         <node concept="Xl_RD" id="8NCMfkd5w4" role="37wK5m">
           <property role="Xl_RC" value="kotlin" />
         </node>
@@ -1160,7 +1160,7 @@
       </node>
       <node concept="QsSxf" id="8NCMfkd5My" role="Qtgdg">
         <property role="TrG5h" value="JVM" />
-        <ref role="37wK5l" node="8NCMfkd6eS" resolve="ModelKind" />
+        <ref role="37wK5l" node="8NCMfkd6eS" resolve="KotlinLanguage.ModelKind" />
         <node concept="Xl_RD" id="8NCMfkd63W" role="37wK5m">
           <property role="Xl_RC" value="kotlinJvm" />
         </node>
@@ -1348,7 +1348,7 @@
       <node concept="37vLTG" id="8NCMfkd4xZ" role="3clF46">
         <property role="TrG5h" value="kind" />
         <node concept="3uibUv" id="8NCMfkdbCk" role="1tU5fm">
-          <ref role="3uigEE" node="8NCMfkd50w" resolve="ModelKind" />
+          <ref role="3uigEE" node="8NCMfkd50w" resolve="KotlinLanguage.ModelKind" />
         </node>
       </node>
     </node>
@@ -1409,7 +1409,7 @@
           <node concept="2OqwBi" id="8NCMfkdh$6" role="3clFbG">
             <node concept="Rm8GO" id="8NCMfkdh$7" role="2Oq$k0">
               <ref role="Rm8GQ" node="8NCMfkd5iE" resolve="COMMON" />
-              <ref role="1Px2BO" node="8NCMfkd50w" resolve="ModelKind" />
+              <ref role="1Px2BO" node="8NCMfkd50w" resolve="KotlinLanguage.ModelKind" />
             </node>
             <node concept="2OwXpG" id="8NCMfkdh$8" role="2OqNvi">
               <ref role="2Oxat5" node="8NCMfkd7OX" resolve="stereotype" />
@@ -1431,7 +1431,7 @@
           <node concept="2OqwBi" id="8NCMfkdg7k" role="3clFbG">
             <node concept="Rm8GO" id="8NCMfkdf3p" role="2Oq$k0">
               <ref role="Rm8GQ" node="8NCMfkd5iE" resolve="COMMON" />
-              <ref role="1Px2BO" node="8NCMfkd50w" resolve="ModelKind" />
+              <ref role="1Px2BO" node="8NCMfkd50w" resolve="KotlinLanguage.ModelKind" />
             </node>
             <node concept="2OwXpG" id="8NCMfkdhjm" role="2OqNvi">
               <ref role="2Oxat5" node="8NCMfkd6vf" resolve="name" />
@@ -2407,7 +2407,7 @@
       <node concept="37vLTG" id="7dIZ$DPn2y5" role="3clF46">
         <property role="TrG5h" value="descriptorProducer" />
         <node concept="3uibUv" id="7dIZ$DPn53c" role="1tU5fm">
-          <ref role="3uigEE" node="50HO3UpBVIJ" resolve="ModelDescriptorProducer" />
+          <ref role="3uigEE" node="50HO3UpBVIJ" resolve="JarHelper.ModelDescriptorProducer" />
         </node>
       </node>
       <node concept="37vLTG" id="7dIZ$DPn0FC" role="3clF46">
@@ -3382,7 +3382,7 @@
               </node>
             </node>
             <node concept="1rXfSq" id="6ZbwqG7YXqw" role="33vP2m">
-              <ref role="37wK5l" node="2b3dSh2tu0C" />
+              <ref role="37wK5l" node="2b3dSh2tu0C" resolve="getTopFiles" />
             </node>
           </node>
         </node>
@@ -3832,7 +3832,7 @@
                       <node concept="2ShNRf" id="5nTz9jRZl5O" role="37wK5m">
                         <node concept="1pGfFk" id="5nTz9jRZl5P" role="2ShVmc">
                           <property role="373rjd" value="true" />
-                          <ref role="37wK5l" to="w1kc:~SModel$ImportElement.&lt;init&gt;(org.jetbrains.mps.openapi.model.SModelReference)" resolve="ImportElement" />
+                          <ref role="37wK5l" to="w1kc:~SModel$ImportElement.&lt;init&gt;(org.jetbrains.mps.openapi.model.SModelReference)" resolve="SModel.ImportElement" />
                           <node concept="2GrUjf" id="5nTz9jRZl5Q" role="37wK5m">
                             <ref role="2Gs0qQ" node="5nTz9jRZl5I" resolve="ref" />
                           </node>
@@ -4033,7 +4033,7 @@
           <node concept="2OqwBi" id="8NCMfkdic$" role="3clFbG">
             <node concept="Rm8GO" id="8NCMfkdisn" role="2Oq$k0">
               <ref role="Rm8GQ" node="8NCMfkd5My" resolve="JVM" />
-              <ref role="1Px2BO" node="8NCMfkd50w" resolve="ModelKind" />
+              <ref role="1Px2BO" node="8NCMfkd50w" resolve="KotlinLanguage.ModelKind" />
             </node>
             <node concept="2OwXpG" id="8NCMfkdicA" role="2OqNvi">
               <ref role="2Oxat5" node="8NCMfkd7OX" resolve="stereotype" />
@@ -4055,7 +4055,7 @@
           <node concept="2OqwBi" id="8NCMfkdicI" role="3clFbG">
             <node concept="Rm8GO" id="8NCMfkdiBc" role="2Oq$k0">
               <ref role="Rm8GQ" node="8NCMfkd5My" resolve="JVM" />
-              <ref role="1Px2BO" node="8NCMfkd50w" resolve="ModelKind" />
+              <ref role="1Px2BO" node="8NCMfkd50w" resolve="KotlinLanguage.ModelKind" />
             </node>
             <node concept="2OwXpG" id="8NCMfkdicK" role="2OqNvi">
               <ref role="2Oxat5" node="8NCMfkd6vf" resolve="name" />

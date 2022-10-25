@@ -272,7 +272,7 @@
   <node concept="1TIwiD" id="5HBSc0f5OBl">
     <property role="EcuMT" value="6586480095544166869" />
     <property role="TrG5h" value="JavaAnnotation" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="4hE452RsWTh" role="PzmwI">
       <ref role="PrY4T" to="hcm8:4hE452RoXme" resolve="IAnnotation" />
     </node>
@@ -295,7 +295,7 @@
   <node concept="1TIwiD" id="1Uhah3hCk$v">
     <property role="EcuMT" value="2202586844974106911" />
     <property role="TrG5h" value="JavaEnumConstantReference" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="1Uhah3hD0Ru" role="PzmwI">
       <ref role="PrY4T" to="hcm8:6563FJLeShn" resolve="IStaticType" />
     </node>
