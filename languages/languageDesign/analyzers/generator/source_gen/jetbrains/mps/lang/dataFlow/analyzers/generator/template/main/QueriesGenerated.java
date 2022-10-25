@@ -82,7 +82,7 @@ public class QueriesGenerated extends QueryProviderBase {
     SNode classifier = SLinkOperations.getTarget(SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.target$X3H5)), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr);
     // it's the same Instruction rt class, just different references, regular and stub.
     // XXX remove stub once release with migration stub->regular is out.
-    return !(SNodeOperations.is(classifier, new SNodePointer("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow.framework.instructions(MPS.Core/)", "~Instruction"))) && !(SNodeOperations.is(classifier, new SNodePointer("r:48cf50db-7ea3-4b1e-ab16-c3d84cbcf0df(jetbrains.mps.lang.dataFlow.framework.instructions)", "4074113095384030632")));
+    return !(SNodeOperations.is(classifier, new SNodePointer("r:48cf50db-7ea3-4b1e-ab16-c3d84cbcf0df(jetbrains.mps.lang.dataFlow.framework.instructions)", "4074113095384030632"))) && !(SNodeOperations.is(classifier, new SNodePointer("r:48cf50db-7ea3-4b1e-ab16-c3d84cbcf0df(jetbrains.mps.lang.dataFlow.framework.instructions)", "4074113095384030632")));
   }
   public static boolean rule_Condition_12_1(final BaseMappingRuleContext _context) {
     if (ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Rule$N8, false, false), LINKS.modes$N0by)).isNotEmpty()) {
@@ -90,7 +90,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }
     SNode classifier = SLinkOperations.getTarget(SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.target$X3H5)), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr);
     // two different references to same class, see above
-    return SNodeOperations.is(classifier, new SNodePointer("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow.framework.instructions(MPS.Core/)", "~Instruction")) || SNodeOperations.is(classifier, new SNodePointer("r:48cf50db-7ea3-4b1e-ab16-c3d84cbcf0df(jetbrains.mps.lang.dataFlow.framework.instructions)", "4074113095384030632"));
+    return SNodeOperations.is(classifier, new SNodePointer("r:48cf50db-7ea3-4b1e-ab16-c3d84cbcf0df(jetbrains.mps.lang.dataFlow.framework.instructions)", "4074113095384030632")) || SNodeOperations.is(classifier, new SNodePointer("r:48cf50db-7ea3-4b1e-ab16-c3d84cbcf0df(jetbrains.mps.lang.dataFlow.framework.instructions)", "4074113095384030632"));
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
     return (String) Analyzer__BehaviorDescriptor.getAnalyzerRunnerName_id9V7Nft_oXD.invoke(_context.getNode());

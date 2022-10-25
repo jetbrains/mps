@@ -17,12 +17,12 @@
     <import index="mu20" ref="r:fc94574f-a075-45e6-9927-48e7e87153e6(jetbrains.mps.analyzers.runtime.framework)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
-    <import index="dau9" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow.framework.instructions(MPS.Core/)" />
-    <import index="1fjm" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow.framework(MPS.Core/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="tp2q" ref="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="aplb" ref="2af156ab-65c1-4a62-bd0d-ea734f71eab6/r:a1d8bbbf-d4f0-431f-8dcd-a6badc777315(jetbrains.mps.dataFlow.runtime/jetbrains.mps.lang.dataFlow)" />
+    <import index="9fia" ref="r:48cf50db-7ea3-4b1e-ab16-c3d84cbcf0df(jetbrains.mps.lang.dataFlow.framework.instructions)" />
+    <import index="8qxk" ref="r:3dddb2c7-b2ba-4381-896a-2e702ca1fb6e(jetbrains.mps.lang.dataFlow.framework)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
@@ -3838,12 +3838,12 @@
           <node concept="3cpWsn" id="5XiNbvoyw5e" role="3cpWs9">
             <property role="TrG5h" value="instruction" />
             <node concept="3uibUv" id="5XiNbvoyw5f" role="1tU5fm">
-              <ref role="3uigEE" to="dau9:~Instruction" resolve="Instruction" />
+              <ref role="3uigEE" to="9fia:3yaa4ph8tQC" resolve="Instruction" />
             </node>
             <node concept="2OqwBi" id="5XiNbvoyw5g" role="33vP2m">
               <node concept="1fK8h6" id="5XiNbvoyw5h" role="2Oq$k0" />
               <node concept="liA8E" id="5XiNbvoyw5i" role="2OqNvi">
-                <ref role="37wK5l" to="1fjm:~ProgramState.getInstruction()" resolve="getInstruction" />
+                <ref role="37wK5l" to="8qxk:3yaa4ph8tq3" resolve="getInstruction" />
               </node>
             </node>
           </node>
@@ -4045,11 +4045,11 @@
               <node concept="3cpWsn" id="5XiNbvoyw6t" role="3cpWs9">
                 <property role="TrG5h" value="write" />
                 <node concept="3uibUv" id="5XiNbvoyw6u" role="1tU5fm">
-                  <ref role="3uigEE" to="dau9:~WriteInstruction" resolve="WriteInstruction" />
+                  <ref role="3uigEE" to="9fia:3yaa4ph8uM7" resolve="WriteInstruction" />
                 </node>
                 <node concept="10QFUN" id="5XiNbvoyw6v" role="33vP2m">
                   <node concept="3uibUv" id="5XiNbvoyw6w" role="10QFUM">
-                    <ref role="3uigEE" to="dau9:~WriteInstruction" resolve="WriteInstruction" />
+                    <ref role="3uigEE" to="9fia:3yaa4ph8uM7" resolve="WriteInstruction" />
                   </node>
                   <node concept="37vLTw" id="3GM_nagTttI" role="10QFUP">
                     <ref role="3cqZAo" node="5XiNbvoyw5e" resolve="instruction" />
@@ -4070,7 +4070,7 @@
                       <ref role="3cqZAo" node="5XiNbvoyw6t" resolve="write" />
                     </node>
                     <node concept="liA8E" id="5XiNbvoyw6D" role="2OqNvi">
-                      <ref role="37wK5l" to="dau9:~WriteInstruction.getValue()" resolve="getValue" />
+                      <ref role="37wK5l" to="9fia:3yaa4ph8uNk" resolve="getValue" />
                     </node>
                   </node>
                 </node>
@@ -4164,7 +4164,7 @@
                         <ref role="3cqZAo" node="5XiNbvoyw6t" resolve="write" />
                       </node>
                       <node concept="liA8E" id="5XiNbvoyw7f" role="2OqNvi">
-                        <ref role="37wK5l" to="dau9:~WriteInstruction.getVariable()" resolve="getVariable" />
+                        <ref role="37wK5l" to="9fia:3yaa4ph8uN8" resolve="getVariable" />
                       </node>
                     </node>
                   </node>
@@ -4177,7 +4177,7 @@
           </node>
           <node concept="2ZW3vV" id="5XiNbvoyw7h" role="3clFbw">
             <node concept="3uibUv" id="5XiNbvoyw7i" role="2ZW6by">
-              <ref role="3uigEE" to="dau9:~WriteInstruction" resolve="WriteInstruction" />
+              <ref role="3uigEE" to="9fia:3yaa4ph8uM7" resolve="WriteInstruction" />
             </node>
             <node concept="37vLTw" id="3GM_nagTvl2" role="2ZW6bz">
               <ref role="3cqZAo" node="5XiNbvoyw5e" resolve="instruction" />
@@ -6061,7 +6061,7 @@
                 <ref role="3cqZAo" node="3oRAjlII0fW" resolve="instruction" />
               </node>
               <node concept="3uibUv" id="3ivm4e3BUdj" role="2ZW6by">
-                <ref role="3uigEE" to="dau9:~ReadInstruction" resolve="ReadInstruction" />
+                <ref role="3uigEE" to="9fia:3yaa4ph8uFE" resolve="ReadInstruction" />
               </node>
             </node>
             <node concept="1eOMI4" id="3ivm4e3BUdl" role="3uHU7w">
@@ -6097,7 +6097,7 @@
       <node concept="37vLTG" id="3oRAjlII0fW" role="3clF46">
         <property role="TrG5h" value="instruction" />
         <node concept="3uibUv" id="3oRAjlII0fV" role="1tU5fm">
-          <ref role="3uigEE" to="dau9:~Instruction" resolve="Instruction" />
+          <ref role="3uigEE" to="9fia:3yaa4ph8tQC" resolve="Instruction" />
         </node>
       </node>
       <node concept="37vLTG" id="3oRAjlII29L" role="3clF46">
@@ -6124,13 +6124,13 @@
       <node concept="37vLTG" id="3oRAjlIIvN0" role="3clF46">
         <property role="TrG5h" value="writeInstruction" />
         <node concept="3uibUv" id="6zWdVBhUm5s" role="1tU5fm">
-          <ref role="3uigEE" to="dau9:~WriteInstruction" resolve="WriteInstruction" />
+          <ref role="3uigEE" to="9fia:3yaa4ph8uM7" resolve="WriteInstruction" />
         </node>
       </node>
       <node concept="37vLTG" id="3oRAjlIItT7" role="3clF46">
         <property role="TrG5h" value="result" />
         <node concept="3uibUv" id="3ivm4e3BU9Y" role="1tU5fm">
-          <ref role="3uigEE" to="1fjm:~AnalysisResult" resolve="AnalysisResult" />
+          <ref role="3uigEE" to="8qxk:3yaa4ph8trJ" resolve="AnalysisResult" />
           <node concept="3uibUv" id="3ivm4e3BU9Z" role="11_B2D">
             <ref role="3uigEE" to="33ny:~Map" resolve="Map" />
             <node concept="3Tqbb2" id="3ivm4e3BUa0" role="11_B2D" />
@@ -6159,7 +6159,7 @@
                       <ref role="3cqZAo" node="3oRAjlIIvN0" resolve="writeInstruction" />
                     </node>
                     <node concept="liA8E" id="3ivm4e3BUdK" role="2OqNvi">
-                      <ref role="37wK5l" to="dau9:~WriteInstruction.getVariable()" resolve="getVariable" />
+                      <ref role="37wK5l" to="9fia:3yaa4ph8uN8" resolve="getVariable" />
                     </node>
                   </node>
                 </node>
@@ -6183,7 +6183,7 @@
                       <ref role="3cqZAo" node="3oRAjlIIvN0" resolve="writeInstruction" />
                     </node>
                     <node concept="liA8E" id="3ivm4e3BUdV" role="2OqNvi">
-                      <ref role="37wK5l" to="dau9:~WriteInstruction.getValue()" resolve="getValue" />
+                      <ref role="37wK5l" to="9fia:3yaa4ph8uNk" resolve="getValue" />
                     </node>
                   </node>
                 </node>
@@ -6237,7 +6237,7 @@
                           <ref role="3cqZAo" node="3oRAjlIIvN0" resolve="writeInstruction" />
                         </node>
                         <node concept="liA8E" id="3oRAjlIIEeE" role="2OqNvi">
-                          <ref role="37wK5l" to="dau9:~WriteInstruction.getValue()" resolve="getValue" />
+                          <ref role="37wK5l" to="9fia:3yaa4ph8uNk" resolve="getValue" />
                         </node>
                       </node>
                     </node>
@@ -6253,7 +6253,7 @@
                       <ref role="3cqZAo" node="3oRAjlIItT7" resolve="result" />
                     </node>
                     <node concept="liA8E" id="5XiNbvoywOu" role="2OqNvi">
-                      <ref role="37wK5l" to="1fjm:~AnalysisResult.get(jetbrains.mps.lang.dataFlow.framework.instructions.Instruction)" resolve="get" />
+                      <ref role="37wK5l" to="8qxk:3yaa4ph8tsB" resolve="get" />
                       <node concept="37vLTw" id="3GM_nagTzbW" role="37wK5m">
                         <ref role="3cqZAo" node="3oRAjlIIvN0" resolve="writeInstruction" />
                       </node>
@@ -8544,7 +8544,7 @@
                         <node concept="3cpWsn" id="2okrWkj3I6o" role="3cpWs9">
                           <property role="TrG5h" value="program" />
                           <node concept="3uibUv" id="2okrWkj3I6p" role="1tU5fm">
-                            <ref role="3uigEE" to="1fjm:~Program" resolve="Program" />
+                            <ref role="3uigEE" to="8qxk:3yaa4ph8tzc" resolve="Program" />
                           </node>
                           <node concept="2YIFZM" id="2okrWkj3I6q" role="33vP2m">
                             <ref role="37wK5l" to="aplb:3HJD4JbIw9P" resolve="buildProgram" />
@@ -8561,7 +8561,7 @@
                           <node concept="3uibUv" id="2okrWkj3I6u" role="1tU5fm">
                             <ref role="3uigEE" to="33ny:~List" resolve="List" />
                             <node concept="3uibUv" id="2okrWkj3I6v" role="11_B2D">
-                              <ref role="3uigEE" to="dau9:~Instruction" resolve="Instruction" />
+                              <ref role="3uigEE" to="9fia:3yaa4ph8tQC" resolve="Instruction" />
                             </node>
                           </node>
                           <node concept="2OqwBi" id="2okrWkj3I6w" role="33vP2m">
@@ -8569,7 +8569,7 @@
                               <ref role="3cqZAo" node="2okrWkj3I6o" resolve="program" />
                             </node>
                             <node concept="liA8E" id="2okrWkj3I6y" role="2OqNvi">
-                              <ref role="37wK5l" to="1fjm:~Program.getInstructions()" resolve="getInstructions" />
+                              <ref role="37wK5l" to="8qxk:3yaa4ph8t$L" resolve="getInstructions" />
                             </node>
                           </node>
                         </node>
@@ -8601,7 +8601,7 @@
                             <node concept="1Wc70l" id="2okrWkj3I6J" role="3clFbw">
                               <node concept="2ZW3vV" id="2okrWkj3I6K" role="3uHU7B">
                                 <node concept="3uibUv" id="2okrWkj3I6L" role="2ZW6by">
-                                  <ref role="3uigEE" to="dau9:~WriteInstruction" resolve="WriteInstruction" />
+                                  <ref role="3uigEE" to="9fia:3yaa4ph8uM7" resolve="WriteInstruction" />
                                 </node>
                                 <node concept="37vLTw" id="2okrWkj3I6M" role="2ZW6bz">
                                   <ref role="3cqZAo" node="2okrWkj3I6V" resolve="ins" />
@@ -8613,12 +8613,12 @@
                                 </node>
                                 <node concept="2OqwBi" id="2okrWkj3I6P" role="3uHU7w">
                                   <node concept="liA8E" id="2okrWkj3I6Q" role="2OqNvi">
-                                    <ref role="37wK5l" to="dau9:~WriteInstruction.getVariable()" resolve="getVariable" />
+                                    <ref role="37wK5l" to="9fia:3yaa4ph8uN8" resolve="getVariable" />
                                   </node>
                                   <node concept="1eOMI4" id="2okrWkj3I6R" role="2Oq$k0">
                                     <node concept="10QFUN" id="2okrWkj3I6S" role="1eOMHV">
                                       <node concept="3uibUv" id="2okrWkj3I6T" role="10QFUM">
-                                        <ref role="3uigEE" to="dau9:~WriteInstruction" resolve="WriteInstruction" />
+                                        <ref role="3uigEE" to="9fia:3yaa4ph8uM7" resolve="WriteInstruction" />
                                       </node>
                                       <node concept="37vLTw" id="2okrWkj3I6U" role="10QFUP">
                                         <ref role="3cqZAo" node="2okrWkj3I6V" resolve="ins" />
@@ -8633,7 +8633,7 @@
                         <node concept="3cpWsn" id="2okrWkj3I6V" role="1Duv9x">
                           <property role="TrG5h" value="ins" />
                           <node concept="3uibUv" id="2okrWkj3I6W" role="1tU5fm">
-                            <ref role="3uigEE" to="dau9:~Instruction" resolve="Instruction" />
+                            <ref role="3uigEE" to="9fia:3yaa4ph8tQC" resolve="Instruction" />
                           </node>
                         </node>
                         <node concept="37vLTw" id="2okrWkj3I6X" role="1DdaDG">

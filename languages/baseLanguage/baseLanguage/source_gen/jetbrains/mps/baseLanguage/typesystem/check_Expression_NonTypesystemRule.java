@@ -44,6 +44,7 @@ public class check_Expression_NonTypesystemRule extends AbstractNonTypesystemRul
               isInfiniteLoop = false;
               break;
             }
+
           }
           if (isInfiniteLoop) {
             {

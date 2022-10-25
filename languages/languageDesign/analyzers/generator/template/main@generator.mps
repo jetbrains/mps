@@ -27,8 +27,6 @@
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="7jhi" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.pattern(MPS.Core/)" />
-    <import index="dau9" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow.framework.instructions(MPS.Core/)" />
-    <import index="8ov6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow(MPS.Core/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="tp42" ref="r:00000000-0000-4000-0000-011c8959037e(jetbrains.mps.lang.dataFlow.generator.baseLanguage.template.main@generator)" />
@@ -4115,7 +4113,7 @@
                   </node>
                   <node concept="1QLmlb" id="5iUdt5bPcjS" role="2OqNvi">
                     <node concept="ZC_QK" id="5iUdt5bPcjQ" role="1QLmnL">
-                      <ref role="2aWVGs" to="dau9:~Instruction" resolve="Instruction" />
+                      <ref role="2aWVGs" to="9fia:3yaa4ph8tQC" resolve="Instruction" />
                     </node>
                   </node>
                 </node>
@@ -4222,7 +4220,7 @@
                 </node>
                 <node concept="1QLmlb" id="3XR0QgXpz_m" role="2OqNvi">
                   <node concept="ZC_QK" id="3XR0QgXpz_k" role="1QLmnL">
-                    <ref role="2aWVGs" to="dau9:~Instruction" resolve="Instruction" />
+                    <ref role="2aWVGs" to="9fia:3yaa4ph8tQC" resolve="Instruction" />
                   </node>
                 </node>
               </node>
@@ -4829,7 +4827,7 @@
     <ref role="3gUMe" to="tp41:6UdHCtZMvVk" resolve="IBuilderMode" />
     <node concept="2ShNRf" id="7yFOv7agf0L" role="13RCb5">
       <node concept="1pGfFk" id="7yFOv7agf0M" role="2ShVmc">
-        <ref role="37wK5l" to="8ov6:~MPSProgramFactory.&lt;init&gt;(java.util.Collection)" resolve="MPSProgramFactory" />
+        <ref role="37wK5l" to="aplb:7e7F6PQDk2Q" resolve="MPSProgramFactory" />
         <node concept="2YIFZM" id="7yFOv7agf0N" role="37wK5m">
           <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
           <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
@@ -4924,7 +4922,7 @@
       <node concept="gft3U" id="7yFOv7agck9" role="1lVwrX">
         <node concept="2ShNRf" id="3$rhkpxTqzO" role="gfFT$">
           <node concept="1pGfFk" id="3$rhkpxTqzP" role="2ShVmc">
-            <ref role="37wK5l" to="8ov6:~MPSProgramFactory.&lt;init&gt;(java.util.Collection)" resolve="MPSProgramFactory" />
+            <ref role="37wK5l" to="aplb:7e7F6PQDk2Q" resolve="MPSProgramFactory" />
             <node concept="10Nm6u" id="7yFOv7agfGg" role="37wK5m">
               <node concept="5jKBG" id="7yFOv7agfGR" role="lGtFl">
                 <ref role="v9R2y" node="7yFOv7ageOS" resolve="template_CollectModes" />
@@ -4937,7 +4935,7 @@
     <node concept="gft3U" id="7yFOv7agevA" role="jxRDz">
       <node concept="2ShNRf" id="7yFOv7agfHs" role="gfFT$">
         <node concept="1pGfFk" id="7yFOv7agfHt" role="2ShVmc">
-          <ref role="37wK5l" to="8ov6:~MPSProgramFactory.&lt;init&gt;(java.util.Collection)" resolve="MPSProgramFactory" />
+          <ref role="37wK5l" to="aplb:7e7F6PQDk2Q" resolve="MPSProgramFactory" />
           <node concept="10Nm6u" id="7yFOv7agfHu" role="37wK5m">
             <node concept="5jKBG" id="7yFOv7agfHv" role="lGtFl">
               <ref role="v9R2y" node="7yFOv7ageOS" resolve="template_CollectModes" />

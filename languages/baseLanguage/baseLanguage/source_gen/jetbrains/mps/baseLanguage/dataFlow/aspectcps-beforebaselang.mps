@@ -12,11 +12,9 @@
     <import index="ksn4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)" />
     <import index="9fia" ref="r:48cf50db-7ea3-4b1e-ab16-c3d84cbcf0df(jetbrains.mps.lang.dataFlow.framework.instructions)" />
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
-    <import index="1fjm" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow.framework(MPS.Core/)" />
     <import index="7jhi" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.pattern(MPS.Core/)" />
     <import index="9r19" ref="d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.core.aspects.behaviour.api(jetbrains.mps.lang.behavior.api/)" />
     <import index="i51s" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel.generator.smodelAdapter(MPS.Core/)" />
-    <import index="dau9" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow.framework.instructions(MPS.Core/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="1ka" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking(MPS.Core/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
@@ -6044,7 +6042,7 @@
                           <property role="TrG5h" value="program" />
                           <uo k="s:originTrace" v="n:1122" />
                           <node concept="3uibUv" id="ok" role="1tU5fm">
-                            <ref role="3uigEE" to="1fjm:~Program" resolve="Program" />
+                            <ref role="3uigEE" to="8qxk:3yaa4ph8tzc" resolve="Program" />
                             <uo k="s:originTrace" v="n:1123" />
                           </node>
                           <node concept="2YIFZM" id="ol" role="33vP2m">
@@ -6067,7 +6065,7 @@
                             <ref role="3uigEE" to="33ny:~List" resolve="List" />
                             <uo k="s:originTrace" v="n:1127" />
                             <node concept="3uibUv" id="oq" role="11_B2D">
-                              <ref role="3uigEE" to="dau9:~Instruction" resolve="Instruction" />
+                              <ref role="3uigEE" to="9fia:3yaa4ph8tQC" resolve="Instruction" />
                               <uo k="s:originTrace" v="n:1129" />
                             </node>
                           </node>
@@ -6078,7 +6076,7 @@
                               <uo k="s:originTrace" v="n:1130" />
                             </node>
                             <node concept="liA8E" id="os" role="2OqNvi">
-                              <ref role="37wK5l" to="1fjm:~Program.getInstructions()" resolve="getInstructions" />
+                              <ref role="37wK5l" to="8qxk:3yaa4ph8t$L" resolve="getInstructions" />
                               <uo k="s:originTrace" v="n:1131" />
                             </node>
                           </node>
@@ -6126,7 +6124,7 @@
                               <node concept="2ZW3vV" id="oE" role="3uHU7B">
                                 <uo k="s:originTrace" v="n:1145" />
                                 <node concept="3uibUv" id="oG" role="2ZW6by">
-                                  <ref role="3uigEE" to="dau9:~WriteInstruction" resolve="WriteInstruction" />
+                                  <ref role="3uigEE" to="9fia:3yaa4ph8uM7" resolve="WriteInstruction" />
                                   <uo k="s:originTrace" v="n:1147" />
                                 </node>
                                 <node concept="37vLTw" id="oH" role="2ZW6bz">
@@ -6143,7 +6141,7 @@
                                 <node concept="2OqwBi" id="oJ" role="3uHU7w">
                                   <uo k="s:originTrace" v="n:1150" />
                                   <node concept="liA8E" id="oK" role="2OqNvi">
-                                    <ref role="37wK5l" to="dau9:~WriteInstruction.getVariable()" resolve="getVariable" />
+                                    <ref role="37wK5l" to="9fia:3yaa4ph8uN8" resolve="getVariable" />
                                     <uo k="s:originTrace" v="n:1151" />
                                   </node>
                                   <node concept="1eOMI4" id="oL" role="2Oq$k0">
@@ -6151,7 +6149,7 @@
                                     <node concept="10QFUN" id="oM" role="1eOMHV">
                                       <uo k="s:originTrace" v="n:1153" />
                                       <node concept="3uibUv" id="oN" role="10QFUM">
-                                        <ref role="3uigEE" to="dau9:~WriteInstruction" resolve="WriteInstruction" />
+                                        <ref role="3uigEE" to="9fia:3yaa4ph8uM7" resolve="WriteInstruction" />
                                         <uo k="s:originTrace" v="n:1154" />
                                       </node>
                                       <node concept="37vLTw" id="oO" role="10QFUP">
@@ -6169,7 +6167,7 @@
                           <property role="TrG5h" value="ins" />
                           <uo k="s:originTrace" v="n:1136" />
                           <node concept="3uibUv" id="oP" role="1tU5fm">
-                            <ref role="3uigEE" to="dau9:~Instruction" resolve="Instruction" />
+                            <ref role="3uigEE" to="9fia:3yaa4ph8tQC" resolve="Instruction" />
                             <uo k="s:originTrace" v="n:1156" />
                           </node>
                         </node>
@@ -17016,7 +17014,7 @@
               <property role="TrG5h" value="instruction" />
               <uo k="s:originTrace" v="n:3752" />
               <node concept="3uibUv" id="17H" role="1tU5fm">
-                <ref role="3uigEE" to="dau9:~Instruction" resolve="Instruction" />
+                <ref role="3uigEE" to="9fia:3yaa4ph8tQC" resolve="Instruction" />
                 <uo k="s:originTrace" v="n:3753" />
               </node>
               <node concept="2OqwBi" id="17I" role="33vP2m">
@@ -17025,7 +17023,7 @@
                   <uo k="s:originTrace" v="n:3755" />
                 </node>
                 <node concept="liA8E" id="17K" role="2OqNvi">
-                  <ref role="37wK5l" to="1fjm:~ProgramState.getInstruction()" resolve="getInstruction" />
+                  <ref role="37wK5l" to="8qxk:3yaa4ph8tq3" resolve="getInstruction" />
                   <uo k="s:originTrace" v="n:3756" />
                 </node>
               </node>
@@ -17393,13 +17391,13 @@
                   <property role="TrG5h" value="write" />
                   <uo k="s:originTrace" v="n:3844" />
                   <node concept="3uibUv" id="19o" role="1tU5fm">
-                    <ref role="3uigEE" to="dau9:~WriteInstruction" resolve="WriteInstruction" />
+                    <ref role="3uigEE" to="9fia:3yaa4ph8uM7" resolve="WriteInstruction" />
                     <uo k="s:originTrace" v="n:3845" />
                   </node>
                   <node concept="10QFUN" id="19p" role="33vP2m">
                     <uo k="s:originTrace" v="n:3846" />
                     <node concept="3uibUv" id="19q" role="10QFUM">
-                      <ref role="3uigEE" to="dau9:~WriteInstruction" resolve="WriteInstruction" />
+                      <ref role="3uigEE" to="9fia:3yaa4ph8uM7" resolve="WriteInstruction" />
                       <uo k="s:originTrace" v="n:3847" />
                     </node>
                     <node concept="37vLTw" id="19r" role="10QFUP">
@@ -17431,7 +17429,7 @@
                         <uo k="s:originTrace" v="n:3854" />
                       </node>
                       <node concept="liA8E" id="19y" role="2OqNvi">
-                        <ref role="37wK5l" to="dau9:~WriteInstruction.getValue()" resolve="getValue" />
+                        <ref role="37wK5l" to="9fia:3yaa4ph8uNk" resolve="getValue" />
                         <uo k="s:originTrace" v="n:3855" />
                       </node>
                     </node>
@@ -17633,7 +17631,7 @@
                           <uo k="s:originTrace" v="n:3890" />
                         </node>
                         <node concept="liA8E" id="1al" role="2OqNvi">
-                          <ref role="37wK5l" to="dau9:~WriteInstruction.getVariable()" resolve="getVariable" />
+                          <ref role="37wK5l" to="9fia:3yaa4ph8uN8" resolve="getVariable" />
                           <uo k="s:originTrace" v="n:3891" />
                         </node>
                       </node>
@@ -17649,7 +17647,7 @@
             <node concept="2ZW3vV" id="19g" role="3clFbw">
               <uo k="s:originTrace" v="n:3837" />
               <node concept="3uibUv" id="1am" role="2ZW6by">
-                <ref role="3uigEE" to="dau9:~WriteInstruction" resolve="WriteInstruction" />
+                <ref role="3uigEE" to="9fia:3yaa4ph8uM7" resolve="WriteInstruction" />
                 <uo k="s:originTrace" v="n:3892" />
               </node>
               <node concept="37vLTw" id="1an" role="2ZW6bz">
@@ -20556,7 +20554,7 @@
                 <uo k="s:originTrace" v="n:4445" />
               </node>
               <node concept="3uibUv" id="1mO" role="2ZW6by">
-                <ref role="3uigEE" to="dau9:~ReadInstruction" resolve="ReadInstruction" />
+                <ref role="3uigEE" to="9fia:3yaa4ph8uFE" resolve="ReadInstruction" />
                 <uo k="s:originTrace" v="n:4446" />
               </node>
             </node>
@@ -20649,7 +20647,7 @@
         <property role="TrG5h" value="instruction" />
         <uo k="s:originTrace" v="n:4250" />
         <node concept="3uibUv" id="1n7" role="1tU5fm">
-          <ref role="3uigEE" to="dau9:~Instruction" resolve="Instruction" />
+          <ref role="3uigEE" to="9fia:3yaa4ph8tQC" resolve="Instruction" />
           <uo k="s:originTrace" v="n:4457" />
         </node>
       </node>
@@ -20695,7 +20693,7 @@
         <property role="TrG5h" value="writeInstruction" />
         <uo k="s:originTrace" v="n:4463" />
         <node concept="3uibUv" id="1ni" role="1tU5fm">
-          <ref role="3uigEE" to="dau9:~WriteInstruction" resolve="WriteInstruction" />
+          <ref role="3uigEE" to="9fia:3yaa4ph8uM7" resolve="WriteInstruction" />
           <uo k="s:originTrace" v="n:4468" />
         </node>
       </node>
@@ -20703,7 +20701,7 @@
         <property role="TrG5h" value="result" />
         <uo k="s:originTrace" v="n:4464" />
         <node concept="3uibUv" id="1nj" role="1tU5fm">
-          <ref role="3uigEE" to="1fjm:~AnalysisResult" resolve="AnalysisResult" />
+          <ref role="3uigEE" to="8qxk:3yaa4ph8trJ" resolve="AnalysisResult" />
           <uo k="s:originTrace" v="n:4469" />
           <node concept="3uibUv" id="1nk" role="11_B2D">
             <ref role="3uigEE" to="33ny:~Map" resolve="Map" />
@@ -20755,7 +20753,7 @@
                       <uo k="s:originTrace" v="n:4485" />
                     </node>
                     <node concept="liA8E" id="1n_" role="2OqNvi">
-                      <ref role="37wK5l" to="dau9:~WriteInstruction.getVariable()" resolve="getVariable" />
+                      <ref role="37wK5l" to="9fia:3yaa4ph8uN8" resolve="getVariable" />
                       <uo k="s:originTrace" v="n:4486" />
                     </node>
                   </node>
@@ -20813,7 +20811,7 @@
                       <uo k="s:originTrace" v="n:4497" />
                     </node>
                     <node concept="liA8E" id="1nR" role="2OqNvi">
-                      <ref role="37wK5l" to="dau9:~WriteInstruction.getValue()" resolve="getValue" />
+                      <ref role="37wK5l" to="9fia:3yaa4ph8uNk" resolve="getValue" />
                       <uo k="s:originTrace" v="n:4498" />
                     </node>
                   </node>
@@ -20959,7 +20957,7 @@
                           <uo k="s:originTrace" v="n:4520" />
                         </node>
                         <node concept="liA8E" id="1ot" role="2OqNvi">
-                          <ref role="37wK5l" to="dau9:~WriteInstruction.getValue()" resolve="getValue" />
+                          <ref role="37wK5l" to="9fia:3yaa4ph8uNk" resolve="getValue" />
                           <uo k="s:originTrace" v="n:4521" />
                         </node>
                       </node>
@@ -20980,7 +20978,7 @@
                       <uo k="s:originTrace" v="n:4525" />
                     </node>
                     <node concept="liA8E" id="1oy" role="2OqNvi">
-                      <ref role="37wK5l" to="1fjm:~AnalysisResult.get(jetbrains.mps.lang.dataFlow.framework.instructions.Instruction)" resolve="get" />
+                      <ref role="37wK5l" to="8qxk:3yaa4ph8tsB" resolve="get" />
                       <uo k="s:originTrace" v="n:4526" />
                       <node concept="37vLTw" id="1oz" role="37wK5m">
                         <ref role="3cqZAo" node="1nd" resolve="writeInstruction" />
