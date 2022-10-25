@@ -18,7 +18,6 @@ package jetbrains.mps.smodel;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.AssociationData.DirectNode;
 import jetbrains.mps.smodel.AssociationData.IndirectNodePtr;
-import jetbrains.mps.util.InternUtil;
 import jetbrains.mps.util.WeakSet;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -290,14 +289,17 @@ public abstract class SReference implements org.jetbrains.mps.openapi.model.SRef
       if (srcNodePresentation == null) {
         srcNodePresentation = String.format("<unnamed> %s[%s] (%s)", sourceNode.getConcept().getName(), sourceNode.getNodeId(), model == null ? "detached" : model.getName());
       }
-      String msg = String.format("Could not resolve reference '%s' from %s.", myRef.getRole(), srcNodePresentation);
+      String msg = String.format("Could not resolve reference '%s' from %s.", myRef.getLink().getName(), srcNodePresentation);
       msg += "\n" + sourceNode.getReference();
       if (message != null) {
         msg += "\n" + " -- " + message;
       }
       // fixme AP: multiline log messages is a bad style
       final Logger log = log();
-      log.error(msg);
+      // don't remove SNodeReference hint from the message! Generator tracks errors/warnings
+      // with dedicated log listener, and if there's no hint to an element of transient model, it doesn't record the message!
+      // see GenerationSession.TrackHintObjectsInLog
+      log.error(msg, sourceNode.getReference());
       if (problems != null) {
         for (ProblemDescription pd : problems) {
           log.error(pd.getMessage(), pd.getNode());
