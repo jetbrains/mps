@@ -52138,6 +52138,42 @@
           </node>
         </node>
       </node>
+      <node concept="1E1JtA" id="5MjKXSeu3D$" role="2G$12L">
+        <property role="BnDLt" value="true" />
+        <property role="TrG5h" value="jetbrains.mps.kotin.ui.dsl" />
+        <property role="3LESm3" value="398d67d2-c2e9-11e2-ad49-6cf049e62ea4" />
+        <property role="2GAjPV" value="true" />
+        <node concept="398BVA" id="5MjKXSeu3Iw" role="3LF7KH">
+          <ref role="398BVh" node="1fy59xXoa5p" resolve="plugin_home" />
+          <node concept="2Ry0Ak" id="5MjKXSeu3Jq" role="iGT6I">
+            <property role="2Ry0Am" value="solutions" />
+            <node concept="2Ry0Ak" id="5MjKXSeu3JT" role="2Ry0An">
+              <property role="2Ry0Am" value="kotlin.ui.dsl" />
+              <node concept="2Ry0Ak" id="5MjKXSeu3KM" role="2Ry0An">
+                <property role="2Ry0Am" value="jetbrains.mps.kotlin.ui.dsl.msd" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="5MjKXSeu3Oh" role="3bR37C">
+          <node concept="3bR9La" id="5MjKXSeu3Oi" role="1SiIV1">
+            <property role="3bR36h" value="true" />
+            <ref role="3bR37D" node="mXGwHwhVPj" resolve="JDK" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="5MjKXSeu3Oj" role="3bR37C">
+          <node concept="3bR9La" id="5MjKXSeu3Ok" role="1SiIV1">
+            <property role="3bR36h" value="true" />
+            <ref role="3bR37D" node="1ia2VB5guYy" resolve="MPS.IDEA" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="5MjKXSeu3Ol" role="3bR37C">
+          <node concept="3bR9La" id="5MjKXSeu3Om" role="1SiIV1">
+            <property role="3bR36h" value="true" />
+            <ref role="3bR37D" node="Ye$g8PO9xV" resolve="jetbrains.mps.kotlin.stdlib" />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="398rNT" id="1fy59xXoa5m" role="1l3spd">
       <property role="TrG5h" value="idea_home" />
@@ -52155,6 +52191,15 @@
           <node concept="2Ry0Ak" id="Ye$g8PO8TY" role="2Ry0An">
             <property role="2Ry0Am" value="mps-kotlin" />
           </node>
+        </node>
+      </node>
+    </node>
+    <node concept="398rNT" id="5MjKXSexX$G" role="1l3spd">
+      <property role="TrG5h" value="platform_lib" />
+      <node concept="398BVA" id="5MjKXSexXAu" role="398pKh">
+        <ref role="398BVh" node="1fy59xXoa5n" resolve="mps_home" />
+        <node concept="2Ry0Ak" id="5MjKXSexXDw" role="iGT6I">
+          <property role="2Ry0Am" value="lib" />
         </node>
       </node>
     </node>

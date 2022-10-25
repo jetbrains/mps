@@ -6,6 +6,7 @@
   <property name="idea_home" location="" />
   <property name="mps_home" location="${basedir}" />
   <property name="plugin_home" location="${mps_home}/plugins/mps-kotlin" />
+  <property name="platform_lib" location="${mps_home}/lib" />
   <property name="artifacts.mpsJava" location="${build.dir}/artifacts/mpsJava" />
   <property name="artifacts.mpsBootstrapCore" location="${build.dir}/artifacts/mpsBootstrapCore" />
   <property name="artifacts.mpsWorkbench" location="${build.dir}/artifacts/mpsWorkbench" />
@@ -915,6 +916,23 @@
       <zipfileset file="${plugin_home}/solutions/kotlin.stdlib/jetbrains.mps.kotlin.stdlib.msd" prefix="module" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.kotlin.stdlib.jar" />
     </jar>
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.kotin.ui.dsl.jar" />
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.kotin.ui.dsl.jar/META-INF" />
+    <echoxml file="${build.tmp}/default/jetbrains.mps.kotin.ui.dsl.jar/META-INF/module.xml">
+      <module namespace="jetbrains.mps.kotin.ui.dsl" type="solution" uuid="398d67d2-c2e9-11e2-ad49-6cf049e62ea4">
+        <dependencies>
+          <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
+          <module ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5(MPS.IDEA)" kind="cl" />
+          <module ref="b50d89c0-0fb9-4105-b652-222148c26a9b(jetbrains.mps.kotlin.stdlib)" kind="cl" />
+        </dependencies>
+        <uses />
+        <sources jar="." descriptor="jetbrains.mps.kotlin.ui.dsl.msd" />
+      </module>
+    </echoxml>
+    <jar destfile="${build.layout}/mps-kotlin/languages/kotlin/jetbrains.mps.kotin.ui.dsl.jar" duplicate="preserve">
+      <zipfileset file="${plugin_home}/solutions/kotlin.ui.dsl/jetbrains.mps.kotlin.ui.dsl.msd" prefix="module" />
+      <fileset dir="${build.tmp}/default/jetbrains.mps.kotin.ui.dsl.jar" />
+    </jar>
     <mkdir dir="${build.layout}/mps-kotlin/kotlinc" />
     <copy todir="${build.layout}/mps-kotlin/kotlinc">
       <fileset dir="${plugin_home}/kotlinc" />
@@ -1108,6 +1126,7 @@
         <module file="${plugin_home}/languages/baseLanguage.kotlinRefs/jetbrains.mps.baseLanguage.kotlinRefs.mpl" />
         <module file="${plugin_home}/devkits/kotlin.devkit/jetbrains.mps.devkit.kotlin.devkit" />
         <module file="${plugin_home}/devkits/kotlin.devkit.jvm/jetbrains.mps.devkit.kotlin.jvm.devkit" />
+        <module file="${plugin_home}/solutions/kotlin.ui.dsl/jetbrains.mps.kotlin.ui.dsl.msd" />
         <module file="${plugin_home}/languages/kotlin/jetbrains.mps.kotlin.mpl" />
         <module file="${plugin_home}/solutions/kotlin.baseLanguage.runtime/jetbrains.mps.kotlin.baseLanguage.runtime.msd" />
         <module file="${plugin_home}/languages/kotlin.internal/jetbrains.mps.kotlin.internal.mpl" />
@@ -1125,6 +1144,7 @@
       <macro name="idea_home" path="${idea_home}" />
       <macro name="mps_home" path="${mps_home}" />
       <macro name="plugin_home" path="${plugin_home}" />
+      <macro name="platform_lib" path="${platform_lib}" />
     </generate>
   </target>
   
