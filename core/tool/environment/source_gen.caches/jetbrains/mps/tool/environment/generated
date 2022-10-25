@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-a4bx5k2s0rjxn6ucsuiee5wizo55anc">
+<product version="3" modelHash="aewa9bv3eh43laq7wqbh2tsymw8g3nu">
   <files names="AbstractEnvironment.java:CompositeProjectStrategy.java:Environment.java:EnvironmentAware.java:EnvironmentBase.java:EnvironmentConfig.java:EnvironmentSetupException.java:LibraryContributorHelper.java:Log4jInitializer.java:MpsEnvironment.java:PlatformPlugins.java:ProjectContainer.java:ProjectModulesFiller.java:ProjectStrategy.java:ProjectStrategyBase.java" />
 </product>
 

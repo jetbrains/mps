@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.make.ModuleMaker;
 import jetbrains.mps.messages.MessageKind;
+import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import java.util.Set;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -55,7 +56,11 @@ public abstract class ProjectStrategyBase implements ProjectStrategy {
     }
     MessageCollector mc = new MessageCollector(new ArrayList<IMessage>());
     final ModuleMaker mm = new ModuleMaker(mc.restrict(MessageKind.ERROR));
-    project.getModelAccess().runReadAction(() -> mm.prepare(project.getProjectModulesWithGenerators(), false, new EmptyProgressMonitor()));
+    project.getModelAccess().runReadAction(() -> {
+      // FIXME figure out why project.getProjectModulesWithGenerators() instead of all repo modules
+      //      fails few MPS tests. Likely, wrong project specification.
+      mm.prepare(IterableUtil.asCollection(project.getRepository().getModules()), false, new EmptyProgressMonitor());
+    });
     MPSCompilationResult rv = mm.make(new EmptyProgressMonitor());
     if (!(rv.isOk())) {
       // regardless of what's in the log (and whether it's turned on at all(, I care to see errors
