@@ -28,7 +28,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.io.FileInputStream;
 import org.jetbrains.annotations.Nullable;
-import java.util.LinkedHashSet;
 import java.io.InputStream;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -443,23 +442,19 @@ public class MpsLoadTask extends Task {
    * Generally, subclasses use properties of the {@link org.apache.tools.ant.Target#getProject() ant project} to access information about environment
    */
   protected Set<File> calculateClassPath(boolean fork) {
-    List<File> classPathRoots;
+    MPSClasspathUtil classPathRoots = new MPSClasspathUtil(getProject());
     if (myMpsHome != null) {
       // if user set mps home location explicitly, assume he knows what he's doing and wishes to force it
       // XXX perhaps, would be better to have nested <mps> element with rich set of options?
-      classPathRoots = Collections.singletonList(new File(myMpsHome, "lib/"));
+      classPathRoots.fillClassPath(new File(myMpsHome, "lib/"));
     } else {
-      classPathRoots = MPSClasspathUtil.getClassPathRootsFromDependencies(getProject());
-      if (classPathRoots.isEmpty()) {
-        String m = "Dependency on MPS build scripts (e.g. 'mps', 'mpsWorkbench' or 'mpsPlugin' is required to generate MPS modules in project %s.";
-        throw new BuildException(String.format(m, getProject().getName()));
-      }
+      classPathRoots.fillClassPathRootsFromProjectDependencies();
     }
-    Set<File> classPath = new LinkedHashSet<File>();
-    for (File file : classPathRoots) {
-      MPSClasspathUtil.gatherAllClassesAndJarsUnder(getProject(), file, classPath);
+    if (!(classPathRoots.hasClasspathRoots())) {
+      String m = "Dependency on MPS build scripts (e.g. 'mps', 'mpsWorkbench' or 'mpsPlugin' is required to generate MPS modules in project %s.";
+      throw new BuildException(String.format(m, getProject().getName()));
     }
-    return classPath;
+    return classPathRoots.getAllClassesAndJars();
   }
 
   /**

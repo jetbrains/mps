@@ -539,8 +539,8 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getTemplateValue();
   }
   public static Object propertyMacro_GetValue_10_1(final PropertyMacroContext _context) {
-    if (isNotEmptyString(((String) _context.getVariable("var:util")))) {
-      return ((String) _context.getVariable("var:util"));
+    if (isNotEmptyString(((String) _context.getVariable("var:orgJdom")))) {
+      return ((String) _context.getVariable("var:orgJdom"));
     }
     return _context.getTemplateValue();
   }
@@ -1904,9 +1904,9 @@ public class QueriesGenerated extends QueryProviderBase {
     if ((jmAntJar != null)) {
       return helper.getLocation(jmAntJar);
     }
-    if (!(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.macros$r8_A)).any(new IWhereFilter<SNode>() {
+    if (!(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.macros$r8_A), CONCEPTS.BuildFolderMacro$mR)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildFolderMacro$mR) && "mps_home".equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.BuildFolderMacro$mR), PROPS.name$MnvL));
+        return "mps_home".equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
       }
     }))) {
       _context.showErrorMessage(null, "${mps_home} macro is required to create `generate' task");
@@ -1916,16 +1916,18 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object varMacro_Value_10_1(final TemplateVarContext _context) {
     DependenciesHelper helper = DependenciesHelper.get(_context, _context.getNode(), "build.mps");
     String artifact = "org.jdom";
-    // as of 22.2, org.jdom gives 3rd-party-rt.jar ([ant-mps-common] dependency),
-    // and we assume util.jar that hosts com.intellij.openapi...PathManager, necessary for ant-mps.jar, is next to 3rd-party-rt.jar
+    // as of 22.2, org.jdom ([ant-mps-common] dependency), lives in util.jar
+    // XXX I wonder why we don't add org.jdom classes right into ant-mps.jar?
     SNode jar = helper.getArtifact(artifact);
     if ((jar != null)) {
       String libLocation = helper.getLocation(jar);
       return libLocation.substring(0, libLocation.lastIndexOf('/'));
     }
-    if (!(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.macros$r8_A)).any(new IWhereFilter<SNode>() {
+    // in fact, [ant-mps] uses annotations and we might need IDEA/lib/annotations.jar dependency,
+    // but so far it works without this dependency
+    if (!(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.macros$r8_A), CONCEPTS.BuildFolderMacro$mR)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildFolderMacro$mR) && "mps_home".equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.BuildFolderMacro$mR), PROPS.name$MnvL));
+        return "mps_home".equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
       }
     }))) {
       _context.showErrorMessage(null, "${mps_home} macro is required to create `generate' task");
