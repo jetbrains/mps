@@ -9,20 +9,14 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.ide.findusages.model.SearchTask;
 
+/**
+ * FIXME Quite suspicious API - the only client is RefactoringProcessor, although we pass this class
+ * to a lot of different locations (where it seems to be of no use)
+ */
 @GeneratedClass(node = "r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)/5532289631191885613", model = "r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)")
 public interface RefactoringUI {
   void prepare(Runnable task);
   List<RefactoringParticipant.Option> selectParticipants(List<RefactoringParticipant.Option> options);
   void runSearch(final _FunctionTypes._void_P1_E0<? super ProgressMonitor> task);
-  /**
-   * 
-   * @deprecated 
-   */
-  @Deprecated(since = "2019.3", forRemoval = true)
-  default void showRefactoringView(final Runnable task, String refactoringName, SearchResults searchResults, SearchTask searchTask, RefactoringSession session) {
-    showRefactoringView(task, searchResults, searchTask, session);
-  }
-  default void showRefactoringView(final Runnable task, SearchResults searchResults, SearchTask searchTask, RefactoringSession session) {
-    showRefactoringView(task, "Refactoring", searchResults, searchTask, session);
-  }
+  void showRefactoringView(final Runnable task, SearchResults searchResults, SearchTask searchTask, RefactoringSession session);
 }
