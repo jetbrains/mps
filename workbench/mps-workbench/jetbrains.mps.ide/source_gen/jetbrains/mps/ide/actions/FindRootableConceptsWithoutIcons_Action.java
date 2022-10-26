@@ -5,34 +5,29 @@ package jetbrains.mps.ide.actions;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
+import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.actionSystem.CommonDataKeys;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.module.ModelAccess;
-import com.intellij.openapi.progress.ProgressManager;
-import com.intellij.openapi.progress.Task;
-import com.intellij.openapi.progress.ProgressIndicator;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.ide.findusages.model.SearchResults;
-import org.jetbrains.mps.openapi.model.SNode;
-import java.util.List;
-import jetbrains.mps.ide.findusages.model.SearchResult;
-import jetbrains.mps.ide.findusages.view.FindUtils;
-import jetbrains.mps.progress.EmptyProgressMonitor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.ide.findusages.model.scopes.ProjectScope;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.ide.findusages.model.IResultProvider;
+import jetbrains.mps.ide.findusages.view.FindUtils;
+import jetbrains.mps.ide.findusages.findalgorithm.resultproviders.treenodes.BaseNode;
+import jetbrains.mps.ide.findusages.model.SearchQuery;
+import jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
+import jetbrains.mps.ide.findusages.model.SearchResult;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import com.intellij.openapi.application.ApplicationManager;
-import jetbrains.mps.ide.platform.refactoring.RefactoringAccessEx;
-import jetbrains.mps.ide.platform.refactoring.RefactoringViewAction;
-import jetbrains.mps.ide.platform.refactoring.RefactoringViewItem;
+import jetbrains.mps.ide.findusages.findalgorithm.finders.SearchedObjects;
+import org.jetbrains.mps.openapi.module.SearchScope;
+import jetbrains.mps.ide.findusages.view.UsageToolOptions;
+import jetbrains.mps.ide.findusages.model.SearchObjectResolver;
+import jetbrains.mps.ide.findusages.model.holders.GenericHolder;
+import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.ide.findusages.view.UsagesViewTool;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -44,7 +39,7 @@ public class FindRootableConceptsWithoutIcons_Action extends BaseAction {
   public FindRootableConceptsWithoutIcons_Action() {
     super("Find Rootable Concepts without Icons", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(true);
+    this.setActionAccess(ActionAccess.NONE);
   }
   @Override
   public boolean isDumbAware() {
@@ -56,15 +51,7 @@ public class FindRootableConceptsWithoutIcons_Action extends BaseAction {
       return false;
     }
     {
-      Project p = event.getData(CommonDataKeys.PROJECT);
-      MapSequence.fromMap(_params).put("ideaProject", p);
-      if (p == null) {
-        return false;
-      }
-    }
-    {
       MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-      MapSequence.fromMap(_params).put("project", p);
       if (p == null) {
         return false;
       }
@@ -73,38 +60,38 @@ public class FindRootableConceptsWithoutIcons_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
-
-    ProgressManager.getInstance().run(new Task.Modal(((Project) MapSequence.fromMap(_params).get("ideaProject")), "Finding Usages", true) {
+    final MPSProject mpsProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+    ProjectScope scope = mpsProject.getModelAccess().computeReadAction(() -> new ProjectScope(mpsProject));
+    final IResultProvider rp0 = FindUtils.makeProvider("jetbrains.mps.lang.structure.findUsages.ConceptInstances_Finder");
+    // FIXME desperately need filtering IResultProvider
+    IResultProvider rpFilter = new BaseNode() {
       @Override
-      public void run(@NotNull ProgressIndicator p0) {
-        final Wrappers._T<SearchResults<SNode>> concepts = new Wrappers._T<SearchResults<SNode>>();
-        final Wrappers._T<List<SearchResult<SNode>>> results = new Wrappers._T<List<SearchResult<SNode>>>();
-
-        modelAccess.runReadAction(() -> {
-          concepts.value = FindUtils.getSearchResults(new EmptyProgressMonitor(), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)", "1071489090640"), new ProjectScope(((MPSProject) MapSequence.fromMap(_params).get("project"))), "jetbrains.mps.lang.structure.findUsages.ConceptInstances_Finder");
-          results.value = ListSequence.fromList(((List<SearchResult<SNode>>) concepts.value.getSearchResults())).where(new IWhereFilter<SearchResult<SNode>>() {
-            public boolean accept(SearchResult<SNode> it) {
-              SNode node = (SNode) it.getObject();
-              return SPropertyOperations.getBoolean(node, PROPS.rootable$_9pz) && (SLinkOperations.getTarget(node, LINKS.icon$HKhR) == null);
+      protected void doFindResults(@NotNull SearchQuery query, @NotNull final IFinder.FindCallback callback, @NotNull ProgressMonitor monitor) {
+        rp0.findResults(query, new IFinder.FindCallback() {
+          @Override
+          public void onUsageFound(@NotNull SearchResult<?> result) {
+            SNode node = (SNode) result.getObject();
+            if (SPropertyOperations.getBoolean(node, PROPS.rootable$_9pz) && (SLinkOperations.getTarget(node, LINKS.icon$HKhR) == null)) {
+              callback.onUsageFound(result);
             }
-          }).toListSequence();
-        });
+          }
 
-        if (p0.isCanceled()) {
-          return;
-        }
-
-        ApplicationManager.getApplication().invokeLater(() -> {
-          RefactoringAccessEx.getInstance().showRefactoringView(((Project) MapSequence.fromMap(_params).get("ideaProject")), new RefactoringViewAction() {
-            @Override
-            public void performAction(RefactoringViewItem refactoringViewItem) {
-              refactoringViewItem.close();
-            }
-          }, null, new SearchResults<SNode>(concepts.value.getSearchedObjects(), results.value), null, "Safe Delete");
-        });
+          @Override
+          public void onSearchedObjectsCalculated(@NotNull SearchedObjects<?> searchedObjects) {
+            callback.onSearchedObjectsCalculated(searchedObjects);
+          }
+        }, monitor);
       }
-    });
+
+      @Override
+      public long getEstimatedTime(SearchScope scope) {
+        return rp0.getEstimatedTime(scope);
+      }
+    };
+    UsageToolOptions opt = new UsageToolOptions().allowRunAgain(true).navigateIfSingle(true).forceNewTab(true).notFoundMessage("no concepts without icons");
+    SearchObjectResolver.BasicResolver soResolver = new SearchObjectResolver.BasicResolver(mpsProject.getRepository());
+    SearchQuery sq = new SearchQuery(new GenericHolder<>(new SNodePointer("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)", "1071489090640"), "ConceptDeclaration"), soResolver, scope);
+    UsagesViewTool.showUsages(mpsProject.getProject(), rpFilter, sq, opt);
   }
 
   private static final class LINKS {
