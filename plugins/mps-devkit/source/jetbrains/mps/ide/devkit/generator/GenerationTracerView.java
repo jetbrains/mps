@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -111,6 +111,7 @@ final class GenerationTracerView {
     ActionGroup group = ActionUtils.groupFromActions(autoscrollAction, closeAction, new PresentationSettings());
     ActionManager manager = ActionManager.getInstance();
     ActionToolbar toolbar = manager.createActionToolbar(ActionPlaces.USAGE_VIEW_TOOLBAR, group, false);
+    toolbar.setTargetComponent(myTree); // myPanel, perhaps?
     return toolbar.getComponent();
   }
 

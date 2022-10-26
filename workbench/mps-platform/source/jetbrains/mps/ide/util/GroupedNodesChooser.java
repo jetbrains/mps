@@ -19,6 +19,7 @@ import com.intellij.ide.IdeBundle;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
+import com.intellij.openapi.actionSystem.ActionToolbar;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CustomShortcutSet;
@@ -40,7 +41,6 @@ import com.intellij.ui.TreeSpeedSearch;
 import com.intellij.ui.speedSearch.SpeedSearchUtil;
 import com.intellij.ui.treeStructure.Tree;
 import com.intellij.util.PlatformIcons;
-import com.intellij.util.containers.Convertor;
 import com.intellij.util.containers.FactoryMap;
 import com.intellij.util.containers.HashMap;
 import com.intellij.util.ui.UIUtil;
@@ -81,8 +81,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -293,8 +291,9 @@ public class GroupedNodesChooser extends DialogWrapper {
       myTree);
     group.add(collapseAllAction);
 
-    panel.add(ActionManager.getInstance().createActionToolbar(ActionPlaces.POPUP, group, true).getComponent(),
-      BorderLayout.NORTH);
+    final ActionToolbar actionToolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.POPUP, group, true);
+    actionToolbar.setTargetComponent(panel);
+    panel.add(actionToolbar.getComponent(), BorderLayout.NORTH);
 
     // Tree
 
