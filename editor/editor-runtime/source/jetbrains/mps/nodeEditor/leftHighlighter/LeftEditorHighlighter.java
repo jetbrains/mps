@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,10 +26,13 @@ import com.intellij.openapi.actionSystem.ActionPopupMenu;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataContext;
+import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.editor.colors.EditorColorsListener;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.ui.popup.Balloon;
 import com.intellij.openapi.ui.popup.Balloon.Position;
+import com.intellij.ui.JBColor;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.UIUtil;
 import gnu.trove.THashMap;
@@ -37,7 +40,6 @@ import jetbrains.mps.ide.actions.MPSActions;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.actions.SNodeActionData;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
-import jetbrains.mps.ide.tooltips.TooltipComponent;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.EditorMessageIconRenderer;
 import jetbrains.mps.nodeEditor.EditorMessageIconRenderer.IconRendererType;
@@ -70,7 +72,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashSet;
@@ -100,17 +101,17 @@ public final class LeftEditorHighlighter extends JComponent {
   @Nullable
   private MessageBusConnection myMessageBusConnection;
 
-  private EditorComponent myEditorComponent;
-  private NavigableSet<AbstractFoldingAreaPainter> myFoldingAreaPainters = new TreeSet<>(PAINTERS_COMPARATOR);
-  private BracketsPainter myBracketsPainter;
-  private FoldingButtonsPainter myFoldingButtonsPainter;
+  private final EditorComponent myEditorComponent;
+  private final NavigableSet<AbstractFoldingAreaPainter> myFoldingAreaPainters = new TreeSet<>(PAINTERS_COMPARATOR);
+  private final BracketsPainter myBracketsPainter;
+  private final FoldingButtonsPainter myFoldingButtonsPainter;
 
-  private NavigableSet<AbstractHighlighterPainter> myBackgroundPainters = new TreeSet<>(PAINTERS_COMPARATOR);
-  private SelectedCellAreaPainter mySelectedCellAreaPainter;
+  private final NavigableSet<AbstractHighlighterPainter> myBackgroundPainters = new TreeSet<>(PAINTERS_COMPARATOR);
+  private final SelectedCellAreaPainter mySelectedCellAreaPainter;
 
-  private List<AbstractLeftColumn> myLeftColumns = new ArrayList<>();
+  private final List<AbstractLeftColumn> myLeftColumns = new ArrayList<>();
 
-  private Set<EditorMessageIconRenderer> myIconRenderers = new HashSet<>();
+  private final Set<EditorMessageIconRenderer> myIconRenderers = new HashSet<>();
   private THashMap<EditorMessageIconRenderer, IntLocation> myRendererToCoord;
   private EditorMessageIconRenderer myRendererUnderMouse;
   private int myMaxIconHeight = 0;
@@ -124,7 +125,7 @@ public final class LeftEditorHighlighter extends JComponent {
   private int myRightFoldingAreaWidth;
   private int myWidth;
   private int myHeight;
-  private boolean myRightToLeft;
+  private final boolean myRightToLeft;
   private EditorTooltipProvider myTooltipProvider = new MyTooltipProvider();
 
   public LeftEditorHighlighter(@NotNull EditorComponent editorComponent, boolean rightToLeft) {
@@ -179,7 +180,7 @@ public final class LeftEditorHighlighter extends JComponent {
     });
     editorComponent.getUpdater().addListener(new UpdaterListenerAdapter() {
       @Override
-      public void editorUpdated(jetbrains.mps.openapi.editor.EditorComponent editorComponent) {
+      public void editorUpdated(jetbrains.mps.openapi.editor.EditorComponent ec) {
         assert SwingUtilities.isEventDispatchThread() : "LeftEditorHighlighter$RebuildListener should be called in eventDispatchThread";
         myFoldingAreaPainters.forEach(AbstractFoldingAreaPainter::editorRebuilt);
         myLeftColumns.forEach(AbstractLeftColumn::editorRebuilt);
@@ -199,7 +200,7 @@ public final class LeftEditorHighlighter extends JComponent {
     if (ApplicationManager.getApplication() != null) {
       myMessageBusConnection = ApplicationManager.getApplication().getMessageBus().connect();
       myMessageBusConnection.subscribe(
-          EditorColorsManager.TOPIC, scheme -> LeftEditorHighlighter.this.setBackground(EditorSettings.getInstance().getLeftHighlighterBackgroundColor())
+          EditorColorsManager.TOPIC, (EditorColorsListener) scheme -> LeftEditorHighlighter.this.setBackground(EditorSettings.getInstance().getLeftHighlighterBackgroundColor())
       );
     }
   }
@@ -379,7 +380,7 @@ public final class LeftEditorHighlighter extends JComponent {
       column.paint(g);
       //  COLORS: find out where it is and remove hardcoded color
       UIUtil.drawVDottedLine((Graphics2D) g, myRightToLeft ? column.getX() : column.getX() + column.getWidth() - 1,
-                             (int) clipBounds.getMinY(), (int) clipBounds.getMaxY(), getBackground(), Color.GRAY);
+                             (int) clipBounds.getMinY(), (int) clipBounds.getMaxY(), getBackground(), JBColor.GRAY);
     }
   }
 
@@ -639,7 +640,7 @@ public final class LeftEditorHighlighter extends JComponent {
     @Override
     public TooltipRenderer getTooltipRenderer(MouseEvent e) {
       String text = getToolTipTextInternal(e);
-      return (text == null || text.isEmpty()) ? null : new LineTooltipRenderer(text, new Object[]{Arrays.asList(text)});
+      return (text == null || text.isEmpty()) ? null : new LineTooltipRenderer(text, new Object[]{List.of(text)});
     }
 
     @Override
@@ -708,10 +709,12 @@ public final class LeftEditorHighlighter extends JComponent {
       AnAction action = iconRenderer.getClickAction();
       if (e.getButton() == MouseEvent.BUTTON1 && action != null) {
         if (e.getID() == MouseEvent.MOUSE_CLICKED) {
-          AnActionEvent actionEvent =
-              new AnActionEvent(e, new LeftEditorHighlighterDataContext(myEditorComponent, iconRenderer), ICON_AREA, action.getTemplatePresentation(),
-                                ActionManager.getInstance(), e.getModifiers());
+          final DataContext dc = new LeftEditorHighlighterDataContext(myEditorComponent, iconRenderer);
+          @SuppressWarnings("UseOfClone")
+          final Presentation presentation = action.getTemplatePresentation().clone();
+          AnActionEvent actionEvent = new AnActionEvent(e, dc, ICON_AREA, presentation, ActionManager.getInstance(), e.getModifiersEx());
           action.update(actionEvent);
+          // XXX I wonder why we ignore the fact action might declare it's disabled during update()
           action.actionPerformed(actionEvent);
         }
         e.consume();
