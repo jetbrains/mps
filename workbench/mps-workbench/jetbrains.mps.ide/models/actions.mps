@@ -1985,6 +1985,47 @@
       <node concept="3Tm6S6" id="hIVTXbW" role="1B3o_S" />
       <node concept="2I9FWS" id="hIVTZFU" role="1tU5fm" />
     </node>
+    <node concept="2ScWuX" id="2bSgqEdyydz" role="tmbBb">
+      <node concept="3clFbS" id="2bSgqEdyyd$" role="2VODD2">
+        <node concept="3clFbF" id="2bSgqEdz8W8" role="3cqZAp">
+          <node concept="2OqwBi" id="2bSgqEdzaFP" role="3clFbG">
+            <node concept="2OqwBi" id="2bSgqEdz8W2" role="2Oq$k0">
+              <node concept="2WthIp" id="2bSgqEdz8W5" role="2Oq$k0" />
+              <node concept="3gHZIF" id="2bSgqEdz8W7" role="2OqNvi">
+                <ref role="2WH_rO" node="hIVTXbV" resolve="nodes" />
+              </node>
+            </node>
+            <node concept="2HxqBE" id="2bSgqEdzkdf" role="2OqNvi">
+              <node concept="1bVj0M" id="2bSgqEdzkdh" role="23t8la">
+                <node concept="3clFbS" id="2bSgqEdzkdi" role="1bW5cS">
+                  <node concept="3clFbF" id="2bSgqEdzkdj" role="3cqZAp">
+                    <node concept="3fqX7Q" id="2bSgqEdzkhJ" role="3clFbG">
+                      <node concept="2OqwBi" id="2bSgqEdzkhL" role="3fr31v">
+                        <node concept="2JrnkZ" id="2bSgqEdzkhM" role="2Oq$k0">
+                          <node concept="2OqwBi" id="2bSgqEdzkhN" role="2JrQYb">
+                            <node concept="37vLTw" id="2bSgqEdzkhO" role="2Oq$k0">
+                              <ref role="3cqZAo" node="2bSgqEdzkdq" resolve="it" />
+                            </node>
+                            <node concept="I4A8Y" id="2bSgqEdzkhP" role="2OqNvi" />
+                          </node>
+                        </node>
+                        <node concept="liA8E" id="2bSgqEdzkhQ" role="2OqNvi">
+                          <ref role="37wK5l" to="mhbf:~SModel.isReadOnly()" resolve="isReadOnly" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="Rh6nW" id="2bSgqEdzkdq" role="1bW2Oz">
+                  <property role="TrG5h" value="it" />
+                  <node concept="2jxLKc" id="2bSgqEdzkdr" role="1tU5fm" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
   </node>
   <node concept="sE7Ow" id="hGoorIk">
     <property role="TrG5h" value="ExpandNode" />
