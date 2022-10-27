@@ -68,6 +68,7 @@ public final class NodesTestCase__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static String getTestBodyName_idhOw0ICJ(@NotNull SAbstractConcept __thisConcept__) {
     return "TestBody";
   }
+  @Deprecated(forRemoval = true)
   /*package*/ static boolean needsWriteAction_id5vTxdEzuQjU(@NotNull SNode __thisNode__) {
     return !(SPropertyOperations.getBoolean(__thisNode__, PROPS.needsNoWriteAction$Edij));
   }
