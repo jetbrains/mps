@@ -72,11 +72,14 @@ public final class NodesTestCase__BehaviorDescriptor extends BaseBHDescriptor {
     return !(SPropertyOperations.getBoolean(__thisNode__, PROPS.needsNoWriteAction$Edij));
   }
   /*package*/ static SEnumerationLiteral calcAccessMode_id4wHm_MSTUi_(@NotNull SNode __thisNode__) {
-    if (SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, PROPS.accessMode$uiyo), 0x2451232bcdee06b9L)) {
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, PROPS.accessMode$uiyo), 0x4bf9938bddc2d016L)) {
       if (((boolean) NodesTestCase__BehaviorDescriptor.needsWriteAction_id5vTxdEzuQjU.invoke(__thisNode__))) {
         return SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x2451232bcdee06b8L, "jetbrains.mps.lang.test.structure.ExecutionModelAccessMode"), 0x2451232bcdee06bdL, "command");
+
+      } else {
+        // legacy flag set to "true"
+        return SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x2451232bcdee06b8L, "jetbrains.mps.lang.test.structure.ExecutionModelAccessMode"), 0x2451232bcdee06b9L, "none");
       }
-      return SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x2451232bcdee06b8L, "jetbrains.mps.lang.test.structure.ExecutionModelAccessMode"), 0x2451232bcdee06b9L, "none");
     }
     return SPropertyOperations.getEnum(__thisNode__, PROPS.accessMode$uiyo);
   }
