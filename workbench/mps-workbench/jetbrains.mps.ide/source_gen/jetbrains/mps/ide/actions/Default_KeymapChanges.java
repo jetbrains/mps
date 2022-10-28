@@ -37,7 +37,6 @@ public final class Default_KeymapChanges extends BaseKeymapChanges {
     add("jetbrains.mps.ide.actions.NewElement_Action", "ctrl alt INSERT");
     add("jetbrains.mps.ide.actions.PasteNode_Action", "ctrl V");
     add("jetbrains.mps.ide.actions.RenameFileOrDirectory_Action", "shift F6");
-    add("jetbrains.mps.ide.actions.RenameModel_Action", "shift F6");
     add("jetbrains.mps.ide.actions.RenameModelsNamespace_Action", "shift F6");
     add("jetbrains.mps.ide.actions.RenameModulesVirtualFolder_Action", "shift F6");
     add("jetbrains.mps.ide.actions.RenamePackage_Action", "shift F6");

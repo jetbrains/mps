@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-b4a8lstcfmu2q1ijovgry4cgnlza9ju">
-  <files names="ModelNameValidator.java:RefactoringSettings.java:RefactoringView.java:RefactoringViewItemImpl.java:RenameModelDialog.java" />
+<product version="3" modelHash="8kc9qtr9j10sbfl1nqm01ovc549f3ye">
+  <files names="ModelNameValidator.java:RefactoringSettings.java:RefactoringView.java:RefactoringViewItemImpl.java" />
 </product>
 

@@ -216,20 +216,21 @@
       <node id="2580894021251553866" at="60,92,61,83" concept="6" />
     </file>
     <file name="Refactoring_Default_KeymapChanges.java">
-      <node id="7000507154716606432" at="8,46,9,69" concept="6" />
-      <node id="7000507154716606324" at="9,69,10,77" concept="6" />
-      <node id="8047970061512463295" at="10,77,11,72" concept="6" />
-      <node id="830211401282059665" at="11,72,12,72" concept="6" />
-      <node id="6573807532044017012" at="12,72,13,78" concept="6" />
-      <node id="6573807532044017016" at="13,78,14,80" concept="6" />
-      <node id="2580894021251553866" at="17,29,18,22" concept="13" />
-      <node id="2580894021251553866" at="16,0,20,0" concept="11" trace="getScheme#()Ljava/lang/String;" />
-      <node id="2580894021251553866" at="8,0,16,0" concept="4" trace="Refactoring_Default_KeymapChanges#()V" />
-      <scope id="2580894021251553866" at="17,29,18,22" />
-      <scope id="2580894021251553866" at="16,0,20,0" />
-      <scope id="2580894021251553866" at="8,46,14,80" />
-      <scope id="2580894021251553866" at="8,0,16,0" />
-      <unit id="2580894021251553866" at="7,0,22,0" name="jetbrains.mps.ide.refactoring.plugin.Refactoring_Default_KeymapChanges" />
+      <node id="7000507154716606438" at="8,46,9,68" concept="6" />
+      <node id="7000507154716606432" at="9,68,10,69" concept="6" />
+      <node id="7000507154716606324" at="10,69,11,77" concept="6" />
+      <node id="8047970061512463295" at="11,77,12,72" concept="6" />
+      <node id="830211401282059665" at="12,72,13,72" concept="6" />
+      <node id="6573807532044017012" at="13,72,14,78" concept="6" />
+      <node id="6573807532044017016" at="14,78,15,80" concept="6" />
+      <node id="2580894021251553866" at="18,29,19,22" concept="13" />
+      <node id="2580894021251553866" at="17,0,21,0" concept="11" trace="getScheme#()Ljava/lang/String;" />
+      <node id="2580894021251553866" at="8,0,17,0" concept="4" trace="Refactoring_Default_KeymapChanges#()V" />
+      <scope id="2580894021251553866" at="18,29,19,22" />
+      <scope id="2580894021251553866" at="17,0,21,0" />
+      <scope id="2580894021251553866" at="8,46,15,80" />
+      <scope id="2580894021251553866" at="8,0,17,0" />
+      <unit id="2580894021251553866" at="7,0,23,0" name="jetbrains.mps.ide.refactoring.plugin.Refactoring_Default_KeymapChanges" />
     </file>
   </root>
   <root nodeRef="r:97d6b60a-b381-42e8-9ea4-402ec93eaf11(jetbrains.mps.ide.refactoring.plugin)/2823756435693909189">

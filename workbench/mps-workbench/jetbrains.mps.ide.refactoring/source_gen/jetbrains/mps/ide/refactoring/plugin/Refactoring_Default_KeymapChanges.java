@@ -6,6 +6,7 @@ import jetbrains.mps.plugins.actions.BaseKeymapChanges;
 
 public final class Refactoring_Default_KeymapChanges extends BaseKeymapChanges {
   public Refactoring_Default_KeymapChanges() {
+    add("jetbrains.mps.ide.actions.RenameModel_Action", "shift F6");
     add("jetbrains.mps.ide.actions.RenameModule_Action", "shift F6");
     add("jetbrains.mps.ide.refactoring.plugin.DeleteNode_Action", " DELETE");
     add("jetbrains.mps.ide.refactoring.plugin.MoveModel_Action", " F6");

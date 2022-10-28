@@ -736,6 +736,13 @@
         <property role="pLAjc" value="shift" />
       </node>
     </node>
+    <node concept="Zd509" id="64AN2EWtFZ_" role="Zd508">
+      <ref role="1bYAoF" to="dmhh:5VIEYrBjMRo" resolve="RenameModel" />
+      <node concept="pLAjd" id="64AN2EWtFZA" role="Zd501">
+        <property role="pLAjf" value="VK_F6" />
+        <property role="pLAjc" value="shift" />
+      </node>
+    </node>
     <node concept="Zd509" id="64AN2EWtFZv" role="Zd508">
       <ref role="1bYAoF" to="dmhh:3fhZBTge84q" resolve="RenameModule" />
       <node concept="pLAjd" id="64AN2EWtFZw" role="Zd501">
@@ -3003,7 +3010,7 @@
     <property role="1rdrE6" value="true" />
     <node concept="ftmFs" id="hMfdXE6" role="ftER_">
       <node concept="tCFHf" id="3kZk24KeQRn" role="ftvYc">
-        <ref role="tCJdB" to="tprs:5VIEYrBjMRo" resolve="RenameModel" />
+        <ref role="tCJdB" to="dmhh:5VIEYrBjMRo" resolve="RenameModel" />
       </node>
       <node concept="tCFHf" id="2fhbn0FCh41" role="ftvYc">
         <ref role="tCJdB" node="6YK8y67o2Yu" resolve="MoveModel" />
@@ -3603,7 +3610,7 @@
     <property role="3GE5qa" value="TouchBar" />
     <node concept="ftmFs" id="2LI6gbERWA4" role="ftER_">
       <node concept="tCFHf" id="kmdkKUw9dF" role="ftvYc">
-        <ref role="tCJdB" to="tprs:5VIEYrBjMRo" resolve="RenameModel" />
+        <ref role="tCJdB" to="dmhh:5VIEYrBjMRo" resolve="RenameModel" />
       </node>
       <node concept="tCFHf" id="kmdkKUw9dN" role="ftvYc">
         <ref role="tCJdB" to="dmhh:3fhZBTge84q" resolve="RenameModule" />

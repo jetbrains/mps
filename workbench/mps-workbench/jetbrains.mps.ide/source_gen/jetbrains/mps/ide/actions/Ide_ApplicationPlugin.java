@@ -80,7 +80,6 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new RemoveTransientModels_Action());
     addAction(new RemoveVirtualFolder_Action());
     addAction(new RenameFileOrDirectory_Action());
-    addAction(new RenameModel_Action());
     addAction(new RenameModelsNamespace_Action());
     addAction(new RenameModulesVirtualFolder_Action());
     addAction(new RenamePackage_Action());
