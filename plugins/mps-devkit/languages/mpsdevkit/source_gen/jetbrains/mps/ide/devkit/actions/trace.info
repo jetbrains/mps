@@ -2881,6 +2881,9 @@
       </scope>
       <unit id="7162597690968047817" at="13,0,24,0" name="jetbrains.mps.ide.devkit.actions.Mpsdevkit_ProjectPlugin" />
     </file>
+    <file name="startup.properties">
+      <unit id="7162597690968047817" at="1,0,6,0" name="jetbrains.mps.ide.devkit.actions.startup" />
+    </file>
   </root>
   <root nodeRef="r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/7219111183925476988">
     <file name="FindModuleUsage_Action.java">

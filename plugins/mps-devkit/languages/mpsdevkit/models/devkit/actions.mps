@@ -265,7 +265,9 @@
       </concept>
     </language>
     <language id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone">
-      <concept id="7520713872864775836" name="jetbrains.mps.lang.plugin.standalone.structure.StandalonePluginDescriptor" flags="ng" index="2DaZZR" />
+      <concept id="7520713872864775836" name="jetbrains.mps.lang.plugin.standalone.structure.StandalonePluginDescriptor" flags="ng" index="2DaZZR">
+        <property id="6862207549896125199" name="needInitConfig" index="3_H9TB" />
+      </concept>
       <concept id="681855071694758165" name="jetbrains.mps.lang.plugin.standalone.structure.GetToolInProjectOperation" flags="nn" index="LR4U6">
         <reference id="681855071694758166" name="tool" index="LR4U5" />
       </concept>
@@ -8399,7 +8401,9 @@
       </node>
     </node>
   </node>
-  <node concept="2DaZZR" id="6dAEaqvbK39" />
+  <node concept="2DaZZR" id="6dAEaqvbK39">
+    <property role="3_H9TB" value="true" />
+  </node>
   <node concept="sE7Ow" id="1Sc0ct1qjs1">
     <property role="TrG5h" value="CreateDefaultEditor" />
     <property role="2uzpH1" value="Generate Default Editor (Expression-like)" />

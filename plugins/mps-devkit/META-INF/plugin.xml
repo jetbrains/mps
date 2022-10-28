@@ -70,7 +70,6 @@
     <mps.IntentionActionsProvider implementation="jetbrains.mps.ide.devkit.editor.IntentionActionsProviderImpl" />
     <mps.projectGroupTemplateEP implementation="jetbrains.mps.workbench.dialogs.project.newproject.LanguageProjectsGroup"/>
     <mps.languageProjectTemplateEP implementation="jetbrains.mps.workbench.dialogs.project.newproject.DefaultLanguageProjectTemplate"/>
-    <mps.PluginComponentContributor application="jetbrains.mps.ide.devkit.actions.Mpsdevkit_ApplicationPlugin" project="jetbrains.mps.ide.devkit.actions.Mpsdevkit_ProjectPlugin" />
   </extensions>
   <actions>
     <!--  Insert MPS actions between IntelliJ Help group actions  -->
