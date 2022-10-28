@@ -74,6 +74,7 @@
     <import index="g1qu" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.ui(MPS.IDEA/)" />
     <import index="ekwn" ref="r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)" />
     <import index="6tbz" ref="r:e7c3bc1e-bce9-494c-bef3-a2cbdbbaff66(jetbrains.mps.ide.refactoring)" />
+    <import index="dmhh" ref="r:920dec42-16dc-48ef-94fb-e72ec6bd1696(jetbrains.mps.ide.actions)" />
     <import index="exr9" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor(MPS.Editor/)" implicit="true" />
   </imports>
   <registry>
@@ -731,6 +732,13 @@
     <node concept="Zd509" id="7BBQIYkR472" role="Zd508">
       <ref role="1bYAoF" node="7BBQIYkR45T" resolve="RenameNode" />
       <node concept="pLAjd" id="5GUQLVLhlPO" role="Zd501">
+        <property role="pLAjf" value="VK_F6" />
+        <property role="pLAjc" value="shift" />
+      </node>
+    </node>
+    <node concept="Zd509" id="64AN2EWtFZv" role="Zd508">
+      <ref role="1bYAoF" to="dmhh:3fhZBTge84q" resolve="RenameModule" />
+      <node concept="pLAjd" id="64AN2EWtFZw" role="Zd501">
         <property role="pLAjf" value="VK_F6" />
         <property role="pLAjc" value="shift" />
       </node>
@@ -3594,6 +3602,12 @@
     <property role="TrG5h" value="TouchBarDefault_shift_rename" />
     <property role="3GE5qa" value="TouchBar" />
     <node concept="ftmFs" id="2LI6gbERWA4" role="ftER_">
+      <node concept="tCFHf" id="kmdkKUw9dF" role="ftvYc">
+        <ref role="tCJdB" to="tprs:5VIEYrBjMRo" resolve="RenameModel" />
+      </node>
+      <node concept="tCFHf" id="kmdkKUw9dN" role="ftvYc">
+        <ref role="tCJdB" to="dmhh:3fhZBTge84q" resolve="RenameModule" />
+      </node>
       <node concept="tCFHf" id="2LI6gbERWA7" role="ftvYc">
         <ref role="tCJdB" node="7BBQIYkR45T" resolve="RenameNode" />
       </node>
@@ -5955,6 +5969,23 @@
             </node>
           </node>
         </node>
+      </node>
+    </node>
+  </node>
+  <node concept="tC5Ba" id="kmdkKUw9JM">
+    <property role="3GE5qa" value="Menu.ProjectPane.Module" />
+    <property role="TrG5h" value="Contribute2ModuleActions" />
+    <node concept="tT9cl" id="kmdkKUw9JO" role="2f5YQi">
+      <ref role="tU$_T" to="tprs:miYJQAr2Uj" resolve="CommonModuleActions" />
+      <ref role="2f8Tey" to="tprs:miYJQAr2UA" resolve="refactoring" />
+    </node>
+    <node concept="tT9cl" id="kmdkKUw9VX" role="2f5YQi">
+      <ref role="tU$_T" to="tprs:hyf4J_e" resolve="DevkitActions" />
+      <ref role="2f8Tey" to="tprs:1Yktpp4ptFW" resolve="refactoring" />
+    </node>
+    <node concept="ftmFs" id="kmdkKUw9JV" role="ftER_">
+      <node concept="tCFHf" id="kmdkKUw9JY" role="ftvYc">
+        <ref role="tCJdB" to="dmhh:3fhZBTge84q" resolve="RenameModule" />
       </node>
     </node>
   </node>

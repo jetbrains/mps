@@ -15,7 +15,6 @@ public class SolutionRefactoring_ActionGroup extends GeneratedActionGroup {
     super("Refactoring", ID, plugin);
     setIsInternal(false);
     setPopup(false);
-    SolutionRefactoring_ActionGroup.this.addAction("jetbrains.mps.ide.actions.RenameModule_Action");
     SolutionRefactoring_ActionGroup.this.addAction("jetbrains.mps.ide.actions.CloneModule_Action");
   }
 }

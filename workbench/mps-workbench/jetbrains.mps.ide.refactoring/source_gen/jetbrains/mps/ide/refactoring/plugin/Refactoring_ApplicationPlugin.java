@@ -7,6 +7,8 @@ import com.intellij.openapi.extensions.PluginId;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.actions.ModelActions_ActionGroup;
 import jetbrains.mps.ide.actions.TouchBarDefault_shift_ActionGroup;
+import jetbrains.mps.ide.actions.CommonModuleActions_ActionGroup;
+import jetbrains.mps.ide.actions.DevkitActions_ActionGroup;
 import jetbrains.mps.ide.actions.NodeActions_ActionGroup;
 import jetbrains.mps.ide.actions.PackageActions_ActionGroup;
 import java.util.List;
@@ -35,6 +37,7 @@ public class Refactoring_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new SafeDelete_Action());
     // groups
     addGroup(new Contribite2NodeActions_ActionGroup(this));
+    addGroup(new Contribute2ModuleActions_ActionGroup(this));
     addGroup(new Contribute2PackageActions_ActionGroup(this));
     addGroup(new CoreNodeRefactorings_ActionGroup(this));
     addGroup(new EditorActionsAddition_ActionGroup(this));
@@ -46,6 +49,8 @@ public class Refactoring_ApplicationPlugin extends BaseApplicationPlugin {
     insertGroupIntoAnother(ModelRefactoring_ActionGroup.ID, ModelActions_ActionGroup.ID, ModelActions_ActionGroup.LABEL_ID_refactoring);
     insertGroupIntoAnother(TouchBarDefault_shift_rename_ActionGroup.ID, TouchBarDefault_shift_ActionGroup.ID, TouchBarDefault_shift_ActionGroup.LABEL_ID_rename);
     insertGroupIntoAnother(TouchBarDefault_shift_move_ActionGroup.ID, TouchBarDefault_shift_ActionGroup.ID, TouchBarDefault_shift_ActionGroup.LABEL_ID_move);
+    insertGroupIntoAnother(Contribute2ModuleActions_ActionGroup.ID, CommonModuleActions_ActionGroup.ID, CommonModuleActions_ActionGroup.LABEL_ID_refactoring);
+    insertGroupIntoAnother(Contribute2ModuleActions_ActionGroup.ID, DevkitActions_ActionGroup.ID, DevkitActions_ActionGroup.LABEL_ID_refactoring);
     insertGroupIntoAnother(Contribite2NodeActions_ActionGroup.ID, NodeActions_ActionGroup.ID, NodeActions_ActionGroup.LABEL_ID_deletion);
     insertGroupIntoAnother(Contribute2PackageActions_ActionGroup.ID, PackageActions_ActionGroup.ID, PackageActions_ActionGroup.LABEL_ID_deletion);
     insertGroupIntoAnother(CoreNodeRefactorings_ActionGroup.ID, "jetbrains.mps.ide.platform.actions.NodeRefactoring_ActionGroup", null);

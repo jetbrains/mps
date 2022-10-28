@@ -39,7 +39,6 @@ public final class Default_KeymapChanges extends BaseKeymapChanges {
     add("jetbrains.mps.ide.actions.RenameFileOrDirectory_Action", "shift F6");
     add("jetbrains.mps.ide.actions.RenameModel_Action", "shift F6");
     add("jetbrains.mps.ide.actions.RenameModelsNamespace_Action", "shift F6");
-    add("jetbrains.mps.ide.actions.RenameModule_Action", "shift F6");
     add("jetbrains.mps.ide.actions.RenameModulesVirtualFolder_Action", "shift F6");
     add("jetbrains.mps.ide.actions.RenamePackage_Action", "shift F6");
     add("jetbrains.mps.ide.actions.SetBookmarkNoNumber_Action", " F11");

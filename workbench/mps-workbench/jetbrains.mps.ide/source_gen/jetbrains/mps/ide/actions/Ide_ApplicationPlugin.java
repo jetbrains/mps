@@ -82,7 +82,6 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new RenameFileOrDirectory_Action());
     addAction(new RenameModel_Action());
     addAction(new RenameModelsNamespace_Action());
-    addAction(new RenameModule_Action());
     addAction(new RenameModulesVirtualFolder_Action());
     addAction(new RenamePackage_Action());
     addAction(new RevertMemoryChanges_Action());

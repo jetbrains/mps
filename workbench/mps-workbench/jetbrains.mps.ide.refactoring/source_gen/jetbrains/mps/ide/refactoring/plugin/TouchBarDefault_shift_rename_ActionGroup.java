@@ -13,6 +13,8 @@ public class TouchBarDefault_shift_rename_ActionGroup extends GeneratedActionGro
     super("TouchBarDefault_shift_rename", ID, plugin);
     setIsInternal(false);
     setPopup(false);
+    TouchBarDefault_shift_rename_ActionGroup.this.addAction("jetbrains.mps.ide.actions.RenameModel_Action");
+    TouchBarDefault_shift_rename_ActionGroup.this.addAction("jetbrains.mps.ide.actions.RenameModule_Action");
     TouchBarDefault_shift_rename_ActionGroup.this.addAction("jetbrains.mps.ide.refactoring.plugin.RenameNode_Action");
   }
 }
