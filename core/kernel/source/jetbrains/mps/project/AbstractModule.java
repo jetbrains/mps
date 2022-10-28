@@ -675,7 +675,6 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     if (ignoreUpdate.get()) {
       return;
     }
-    LOG.warning("about to doUpdateModelRoots():" + Thread.currentThread().getName());
     doUpdateModelRoots();
     // XXX why do I force model loading in this scenario now? I know
     // it's historic approach, but, perhaps, we could do better now?

@@ -18,7 +18,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class ExecutionModeNodesTestCase extends MigrationScriptBase {
-  private final String description = "ExecutionModeNodesTestCase";
+  private final String description = "Replace the deprecated needNoWriteAction property with accessMode";
   public String getCaption() {
     return description;
   }
