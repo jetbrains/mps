@@ -16,7 +16,7 @@
     <facet type="tests" />
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${module}../../classes" />
+    <stubModelEntry path="${module}/../../classes" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>

@@ -196,6 +196,7 @@ public class FileUtil {
 
   @NotNull
   //replaces /xx/.. with /. Use with already-normalized paths
+  // FIXME a/b//c/../../x gives a/b/x, not a/x, as // is treated as fs level, which is wrong, IMO.
   public static String resolveParentDirs(@NotNull String path) {
     new PathFormatChecker(path).absolute().osIndependentPath();
 

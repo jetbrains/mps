@@ -11,7 +11,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.vfs.util.PathFormatChecker;
 import jetbrains.mps.util.MacrosFactory;
-import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
@@ -21,6 +20,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.build.behavior.BuildFolderMacro__BehaviorDescriptor;
+import jetbrains.mps.vfs.IFileSystem;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -48,10 +48,10 @@ public class ModuleLoaderUtils {
       new PathFormatChecker(path).osIndependentPath();
 
       if (moduleSourceDir != null && path.startsWith(MacrosFactory.MODULE)) {
-        String relPath = path.substring(path.indexOf('}') + 1);
+        // FTR, pretty much the same code is in MacrosFactory.ModuleMacros. Can't we avoid duplication?
         // after migration to new FS, protocol should be passed here and the corresponding FS should do path simplification
-        String fullPath = moduleSourceDir.getPath() + IFileSystem.SEPARATOR + relPath;
-        return FileUtil.resolveParentDirs(fullPath);
+        String expanded = path.replace(MacrosFactory.MODULE, moduleSourceDir.getPath());
+        return FileUtil.resolveParentDirs(expanded);
       }
       if (path.startsWith("${")) {
         int index = path.indexOf("}");
