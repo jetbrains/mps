@@ -884,7 +884,7 @@
     <delete dir="${build.layout}" />
   </target>
   
-  <target name="compileJava" depends="java.compile.mps-devkit, java.compile.jetbrains.mps.lang.plugin.pluginSolution, java.compile.jetbrains.mps.lang.generator.pluginSolution, java.compile.jetbrains.mps.lang.quotation.pluginSolution, java.compile.jetbrains.mps.lang.test.pluginSolution, java.compile.jetbrains.mps.lang.migration.pluginSolution, java.compile.jetbrains.mps.lang.structure.pluginSolution, java.compile.jetbrains.mps.lang.actions.pluginSolution, java.compile.jetbrains.mps.lang.dataFlow.pluginSolution, java.compile.jetbrains.mps.lang.typesystem.devkit.pluginSolution, java.compile.jetbrains.mps.baseLanguage.pluginSolution, java.compile.jetbrains.mps.ide.devkit.editor" />
+  <target name="compileJava" depends="java.compile.mps-devkit, java.compile.jetbrains.mps.lang.plugin.pluginSolution, java.compile.jetbrains.mps.lang.generator.pluginSolution, java.compile.jetbrains.mps.lang.quotation.pluginSolution, java.compile.jetbrains.mps.lang.test.pluginSolution, java.compile.jetbrains.mps.lang.migration.pluginSolution, java.compile.jetbrains.mps.lang.structure.pluginSolution, java.compile.jetbrains.mps.lang.actions.pluginSolution, java.compile.jetbrains.mps.lang.dataFlow.pluginSolution, java.compile.jetbrains.mps.lang.typesystem.devkit.pluginSolution, java.compile.jetbrains.mps.baseLanguage.pluginSolution, java.compile.jetbrains.mps.ide.mpsdevkit, java.compile.jetbrains.mps.ide.devkit.editor" />
   
   <target name="processResources" />
   
@@ -1074,10 +1074,7 @@
     <mkdir dir="${build.tmp}/java/out/mps-devkit" />
     <javac2 destdir="${build.tmp}/java/out/mps-devkit" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <compilerarg value="-Xlint:none" />
-      <src>
-        <pathelement path="${mps_home}/plugins/mps-devkit/source" />
-        <pathelement path="${mps_home}/plugins/mps-devkit/source_gen" />
-      </src>
+      <src path="${mps_home}/plugins/mps-devkit/source" />
       <classpath>
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-generator.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-annotations.jar" />
@@ -1115,7 +1112,6 @@
     </javac2>
     <copy todir="${build.tmp}/java/out/mps-devkit">
       <fileset dir="${mps_home}/plugins/mps-devkit/source" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${mps_home}/plugins/mps-devkit/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1707,6 +1703,72 @@
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.pluginSolution">
       <fileset dir="${mps_home}/plugins/mps-devkit/languages/pluginSolutions/baseLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+    </copy>
+  </target>
+  
+  <target name="java.compile.jetbrains.mps.ide.mpsdevkit" depends="java.compile.mps-devkit, fetchDependencies">
+    <mkdir dir="${mps_home}/plugins/mps-devkit/languages/mpsdevkit/source_gen" />
+    <mkdir dir="${build.tmp}/java/out/jetbrains.mps.ide.mpsdevkit" />
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.ide.mpsdevkit" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+      <compilerarg value="-Xlint:none" />
+      <src>
+        <path location="${mps_home}/plugins/mps-devkit/languages/mpsdevkit/source_gen" />
+      </src>
+      <classpath>
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-core.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-platform.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-behavior-api.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-behavior-runtime.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-closures.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-collections.jar" />
+        <pathelement path="${build.tmp}/java/out/mps-devkit" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-openapi.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-logging.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-tuples.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-references.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-context.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-constraints-runtime.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-editor.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-editor-api.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-editor-runtime.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-environment.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-persistence.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-generator.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-project-check.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-icons.jar" />
+        <fileset file="${artifacts.mpsWorkbench}/lib/mps-workbench.jar" />
+        <fileset file="${artifacts.IDEA}/lib/app.jar" />
+        <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
+        <fileset file="${artifacts.IDEA}/lib/forms_rt.jar" />
+        <fileset file="${artifacts.IDEA}/lib/java-impl.jar" />
+        <fileset file="${artifacts.IDEA}/lib/jps-model.jar" />
+        <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
+        <fileset file="${artifacts.IDEA}/lib/stats.jar" />
+        <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.classifiers.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.closures.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.collections.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.scopes.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.behavior.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.core.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.editor.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.generator.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.modelapi.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.scopes.runtime.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.smodel.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.lang.smodel.query.runtime.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.structure.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.traceable.jar" />
+        <path refid="path.jdk.classpath" />
+      </classpath>
+    </javac2>
+    <copy todir="${build.tmp}/java/out/jetbrains.mps.ide.mpsdevkit">
+      <fileset dir="${mps_home}/plugins/mps-devkit/languages/mpsdevkit/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   

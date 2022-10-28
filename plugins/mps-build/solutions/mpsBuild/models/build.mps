@@ -38672,10 +38672,6 @@
           <property role="nFU4j" value="source" />
           <property role="3LZaj6" value="source" />
         </node>
-        <node concept="nFU4i" id="5sovPIfS$mR" role="nFU4p">
-          <property role="nFU4j" value="source_gen" />
-          <property role="3LZaj6" value="source" />
-        </node>
       </node>
       <node concept="nCB5N" id="5sovPIfS$mX" role="nCB5Z">
         <ref role="nCB5Y" node="2eDSGe9d1oD" resolve="mps-workbench" />
@@ -40024,7 +40020,6 @@
       <property role="BnDLt" value="true" />
       <property role="TrG5h" value="jetbrains.mps.ide.mpsdevkit" />
       <property role="3LESm3" value="cac2fef0-41a6-4fcd-923f-f893d536b2ab" />
-      <property role="2GAjPV" value="true" />
       <node concept="3rtmxn" id="EpEP7iii3B" role="3bR31x">
         <node concept="3LXTmp" id="EpEP7iii3C" role="3rtmxm">
           <node concept="3qWCbU" id="EpEP7iii3D" role="3LXTna">
@@ -40172,7 +40167,7 @@
         </node>
       </node>
       <node concept="1BupzO" id="73GUf$umt$o" role="3bR31x">
-        <property role="3ZfqAx" value="solution" />
+        <property role="3ZfqAx" value="models" />
         <property role="1Hdu6h" value="true" />
         <property role="1HemKv" value="true" />
         <node concept="3LXTmp" id="73GUf$umt$p" role="1HemKq">

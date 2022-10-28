@@ -334,7 +334,7 @@
       <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/solutions/kotlin.smodel.runtime/jetbrains.mps.kotlin.smodel.runtime.msd" folder="core.languages.kotlin.smodel" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/solutions/kotlin.stdlib/jetbrains.mps.kotlin.stdlib.msd" folder="core.languages.kotlin" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/solutions/kotlin.tests.editor/jetbrains.mps.kotlin.tests.editor.msd" folder="core.languages.kotlin" />
-      <modulePath path="$PROJECT_DIR$/plugins/mps-make/jetbrains.mps.ide.make.msd" folder="platform" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-make/jetbrains.mps.ide.make.msd" folder="workbench" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-migration/migration-platform/solutions/component/jetbrains.mps.migration.component.msd" folder="platform.migration" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-migration/solutions/migration.workbench/jetbrains.mps.migration.workbench.msd" folder="platform.migration" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-modelchecker/platform/jetbrains.mps.ide.modelchecker.platform.msd" folder="platform.modelchecker" />
