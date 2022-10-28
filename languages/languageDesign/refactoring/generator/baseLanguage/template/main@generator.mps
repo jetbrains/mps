@@ -421,11 +421,6 @@
         <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
-    <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
-      <concept id="1151688443754" name="jetbrains.mps.baseLanguage.collections.structure.ListType" flags="in" index="_YKpA">
-        <child id="1151688676805" name="elementType" index="_ZDj9" />
-      </concept>
-    </language>
   </registry>
   <node concept="13MO4I" id="htf7YlN">
     <property role="TrG5h" value="reduce_MoveNodeToModelExpression" />
@@ -1133,61 +1128,6 @@
                     <ref role="3Tt5mk" to="tpee:gyVODHa" resolve="body" />
                   </node>
                 </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="3clFb_" id="yernCaFKmk" role="jymVt">
-      <property role="TrG5h" value="getModelsToGenerate" />
-      <node concept="37vLTG" id="yernCaFQ7Y" role="3clF46">
-        <property role="TrG5h" value="refactoringContext" />
-        <property role="3TUv4t" value="true" />
-        <node concept="3uibUv" id="6QdonRgYfRn" role="1tU5fm">
-          <ref role="3uigEE" to="ge2m:4a0HOMfn8yn" resolve="RefactoringContext" />
-        </node>
-      </node>
-      <node concept="_YKpA" id="yernCaFQ7m" role="3clF45">
-        <node concept="H_c77" id="yernCaFQ7o" role="_ZDj9" />
-      </node>
-      <node concept="3Tm1VV" id="yernCaFKmm" role="1B3o_S" />
-      <node concept="3clFbS" id="yernCaFKmn" role="3clF47">
-        <node concept="29HgVG" id="yernCaFQ7s" role="lGtFl">
-          <node concept="3NFfHV" id="yernCaFQ7t" role="3NFExx">
-            <node concept="3clFbS" id="yernCaFQ7u" role="2VODD2">
-              <node concept="3clFbF" id="yernCaFQ7y" role="3cqZAp">
-                <node concept="2OqwBi" id="yernCaFQ7D" role="3clFbG">
-                  <node concept="2OqwBi" id="yernCaFQ7$" role="2Oq$k0">
-                    <node concept="30H73N" id="yernCaFQ7z" role="2Oq$k0" />
-                    <node concept="3TrEf2" id="yernCaFQ7C" role="2OqNvi">
-                      <ref role="3Tt5mk" to="tp1h:yernCaFpFv" resolve="modelsToGenerateBlock" />
-                    </node>
-                  </node>
-                  <node concept="3TrEf2" id="yernCaFQ7H" role="2OqNvi">
-                    <ref role="3Tt5mk" to="tpee:gyVODHa" resolve="body" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs6" id="yernCaFQ7v" role="3cqZAp">
-          <node concept="10Nm6u" id="yernCaFQ7x" role="3cqZAk" />
-        </node>
-      </node>
-      <node concept="1W57fq" id="yernCaFQ7J" role="lGtFl">
-        <node concept="3IZrLx" id="yernCaFQ7K" role="3IZSJc">
-          <node concept="3clFbS" id="yernCaFQ7L" role="2VODD2">
-            <node concept="3clFbF" id="yernCaFQ7M" role="3cqZAp">
-              <node concept="2OqwBi" id="yernCaFQ7T" role="3clFbG">
-                <node concept="2OqwBi" id="yernCaFQ7O" role="2Oq$k0">
-                  <node concept="30H73N" id="yernCaFQ7N" role="2Oq$k0" />
-                  <node concept="3TrEf2" id="yernCaFQ7S" role="2OqNvi">
-                    <ref role="3Tt5mk" to="tp1h:yernCaFpFv" resolve="modelsToGenerateBlock" />
-                  </node>
-                </node>
-                <node concept="3x8VRR" id="yernCaFQ7X" role="2OqNvi" />
               </node>
             </node>
           </node>

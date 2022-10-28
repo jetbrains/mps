@@ -34,6 +34,8 @@
         <child id="4531786690998636240" name="actualArgument" index="kdiOG" />
       </concept>
       <concept id="1237303669825" name="jetbrains.mps.lang.editor.structure.CellLayout_Indent" flags="nn" index="l2Vlx" />
+      <concept id="1142886221719" name="jetbrains.mps.lang.editor.structure.QueryFunction_NodeCondition" flags="in" index="pkWqt" />
+      <concept id="1142886811589" name="jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_node" flags="nn" index="pncrf" />
       <concept id="1080736578640" name="jetbrains.mps.lang.editor.structure.BaseEditorComponent" flags="ig" index="2wURMF">
         <child id="1080736633877" name="cellModel" index="2wV5jI" />
       </concept>
@@ -77,6 +79,9 @@
         <property id="1139852716018" name="noTargetText" index="1$x2rV" />
         <property id="1140017977771" name="readOnly" index="1Intyy" />
         <reference id="1140103550593" name="relationDeclaration" index="1NtTu8" />
+      </concept>
+      <concept id="1073389214265" name="jetbrains.mps.lang.editor.structure.EditorCellModel" flags="ng" index="3EYTF0">
+        <child id="1142887637401" name="renderingCondition" index="pqm2j" />
       </concept>
       <concept id="1073389446423" name="jetbrains.mps.lang.editor.structure.CellModel_Collection" flags="sn" stub="3013115976261988961" index="3EZMnI">
         <child id="1106270802874" name="cellLayout" index="2iSdaV" />
@@ -204,6 +209,7 @@
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
       </concept>
       <concept id="6870613620390542976" name="jetbrains.mps.lang.smodel.structure.ConceptAliasOperation" flags="ng" index="3n3YKJ" />
+      <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
       <concept id="1140137987495" name="jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression" flags="nn" index="1PxgMI" />
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
         <reference id="1138405853777" name="concept" index="ehGHo" />
@@ -458,6 +464,24 @@
       </node>
       <node concept="3F1sOY" id="yernCaFKm4" role="3EZMnx">
         <ref role="1NtTu8" to="tp1h:yernCaFpFv" resolve="modelsToGenerateBlock" />
+        <node concept="pkWqt" id="jWK6aBOa$Q" role="pqm2j">
+          <node concept="3clFbS" id="jWK6aBOa$R" role="2VODD2">
+            <node concept="3clFbF" id="jWK6aBOaEh" role="3cqZAp">
+              <node concept="2OqwBi" id="jWK6aBObIs" role="3clFbG">
+                <node concept="2OqwBi" id="jWK6aBOaZ6" role="2Oq$k0">
+                  <node concept="pncrf" id="jWK6aBOaEg" role="2Oq$k0" />
+                  <node concept="3TrEf2" id="jWK6aBObsr" role="2OqNvi">
+                    <ref role="3Tt5mk" to="tp1h:yernCaFpFv" resolve="modelsToGenerateBlock" />
+                  </node>
+                </node>
+                <node concept="3x8VRR" id="jWK6aBOc7q" role="2OqNvi" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3nxI2P" id="jWK6aBOci1" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
       </node>
       <node concept="3F0ifn" id="yernCaFKm2" role="3EZMnx">
         <node concept="VPM3Z" id="yernCaFKm3" role="3F10Kt">

@@ -233,6 +233,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.ModelsToGenerateClause:
         if (props_ModelsToGenerateClause == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.rawPresentation("models to generate");
           props_ModelsToGenerateClause = cpb.create();
         }
@@ -313,10 +314,11 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_ProjectOperation;
       case LanguageConceptSwitch.Refactoring:
         if (props_Refactoring == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L);
+          cpb.deprecateAggregation(0x88e6d7a0aad9adfL, "modelsToGenerateBlock");
           cpb.presentationByName();
           cpb.helpUrl(HELP_URL);
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a53b0xb);
+          cpb.icon(IconContainer.RESOURCE_a0a4a0a53b0xb);
           props_Refactoring = cpb.create();
         }
         return props_Refactoring;

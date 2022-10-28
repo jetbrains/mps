@@ -159,12 +159,9 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.initBlock$_rXo) != null);
   }
   public static boolean ifMacro_Condition_6_2(final IfMacroContext _context) {
-    return (SLinkOperations.getTarget(_context.getNode(), LINKS.modelsToGenerateBlock$bor4) != null);
-  }
-  public static boolean ifMacro_Condition_6_3(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.doWhenDoneBlock$E7Ju) != null);
   }
-  public static boolean ifMacro_Condition_6_4(final IfMacroContext _context) {
+  public static boolean ifMacro_Condition_6_3(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.affectedNodesBlock$vQno) != null);
   }
   public static boolean ifMacro_Condition_8_0(final IfMacroContext _context) {
@@ -207,12 +204,9 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.doRefactorBlock$fv0V), LINKS.body$e68K);
   }
   public static SNode sourceNodeQuery_6_2(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.modelsToGenerateBlock$bor4), LINKS.body$e68K);
-  }
-  public static SNode sourceNodeQuery_6_3(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.doWhenDoneBlock$E7Ju), LINKS.body$e68K);
   }
-  public static SNode sourceNodeQuery_6_4(final SourceSubstituteMacroNodeContext _context) {
+  public static SNode sourceNodeQuery_6_3(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.affectedNodesBlock$vQno), LINKS.body$e68K);
   }
   public static SNode sourceNodeQuery_8_0(final SourceSubstituteMacroNodeContext _context) {
@@ -342,7 +336,6 @@ public class QueriesGenerated extends QueryProviderBase {
     snqMethods.put("1199623869841", new SNQ(i++));
     snqMethods.put("7573235936722711758", new SNQ(i++));
     snqMethods.put("7573235936722711151", new SNQ(i++));
-    snqMethods.put("616550569929040349", new SNQ(i++));
     snqMethods.put("7573235936722711835", new SNQ(i++));
     snqMethods.put("1347577327951505972", new SNQ(i++));
     snqMethods.put("7573235936722758760", new SNQ(i++));
@@ -398,24 +391,22 @@ public class QueriesGenerated extends QueryProviderBase {
         case 13:
           return QueriesGenerated.sourceNodeQuery_6_3(ctx);
         case 14:
-          return QueriesGenerated.sourceNodeQuery_6_4(ctx);
-        case 15:
           return QueriesGenerated.sourceNodeQuery_8_0(ctx);
-        case 16:
+        case 15:
           return QueriesGenerated.sourceNodeQuery_9_0(ctx);
-        case 17:
+        case 16:
           return QueriesGenerated.sourceNodeQuery_11_0(ctx);
-        case 18:
+        case 17:
           return QueriesGenerated.sourceNodeQuery_12_0(ctx);
-        case 19:
+        case 18:
           return QueriesGenerated.sourceNodeQuery_14_0(ctx);
-        case 20:
+        case 19:
           return QueriesGenerated.sourceNodeQuery_14_1(ctx);
-        case 21:
+        case 20:
           return QueriesGenerated.sourceNodeQuery_21_0(ctx);
-        case 22:
+        case 21:
           return QueriesGenerated.sourceNodeQuery_21_1(ctx);
-        case 23:
+        case 22:
           return QueriesGenerated.sourceNodeQuery_22_0(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
@@ -534,7 +525,6 @@ public class QueriesGenerated extends QueryProviderBase {
     int i = 0;
     imcMethods.put("478744034994714857", new IfMC(i++));
     imcMethods.put("7573235936722711768", new IfMC(i++));
-    imcMethods.put("616550569929040367", new IfMC(i++));
     imcMethods.put("7573235936722711845", new IfMC(i++));
     imcMethods.put("1347577327951505983", new IfMC(i++));
     imcMethods.put("7573235936722758694", new IfMC(i++));
@@ -562,8 +552,6 @@ public class QueriesGenerated extends QueryProviderBase {
         case 3:
           return QueriesGenerated.ifMacro_Condition_6_3(ctx);
         case 4:
-          return QueriesGenerated.ifMacro_Condition_6_4(ctx);
-        case 5:
           return QueriesGenerated.ifMacro_Condition_8_0(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for if macro %s (key: #%d)", ctx.getTemplateReference(), methodKey));
@@ -625,7 +613,6 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
     /*package*/ static final SReferenceLink refactoring$WUC4 = MetaAdapterFactory.getReferenceLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x1fe4fcef62d0186cL, 0x1fe4fcef62d01873L, "refactoring");
     /*package*/ static final SContainmentLink initBlock$_rXo = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, 0x4c4b92003e4d77d8L, "initBlock");
-    /*package*/ static final SContainmentLink modelsToGenerateBlock$bor4 = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, 0x88e6d7a0aad9adfL, "modelsToGenerateBlock");
     /*package*/ static final SContainmentLink doWhenDoneBlock$E7Ju = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, 0x1c9210c7226dbbf9L, "doWhenDoneBlock");
     /*package*/ static final SContainmentLink affectedNodesBlock$vQno = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, 0x12b38e70a3eb6027L, "affectedNodesBlock");
     /*package*/ static final SContainmentLink isApplicableBlock$X4Wp = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a0569L, 0x4c4b92003e4d7817L, "isApplicableBlock");

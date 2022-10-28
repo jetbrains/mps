@@ -27,48 +27,42 @@
   </root>
   <root nodeRef="r:bd8551c6-e2e3-4499-a261-45b0c886d1d1(jetbrains.mps.refactoring.framework)/4792031542972804556">
     <file name="BaseRefactoring.java">
-      <node id="4792031542972804559" at="15,0,16,0" concept="5" trace="myTransientParameters" />
-      <node id="4792031542972804576" at="18,58,19,41" concept="4" />
-      <node id="4792031542972804586" at="21,47,22,33" concept="10" />
-      <node id="4792031542972804698" at="25,47,26,16" concept="10" />
-      <node id="4792031542972804706" at="29,62,30,16" concept="10" />
-      <node id="4792031542972804715" at="33,82,34,35" concept="10" />
-      <node id="4792031542972804731" at="40,80,41,31" concept="10" />
-      <node id="4792031542972804566" at="16,0,18,0" concept="3" trace="BaseRefactoring#()V" />
-      <node id="4792031542972804570" at="18,0,21,0" concept="8" trace="addTransientParameter#(Ljava/lang/String;)V" />
-      <node id="4792031542972804581" at="21,0,24,0" concept="8" trace="getTransientParameters#()Ljava/util/Set;" />
-      <node id="4792031542972804719" at="36,0,39,0" concept="8" trace="doWhenDone#(Ljetbrains/mps/refactoring/framework/RefactoringContext;)V" />
-      <node id="4792031542972804694" at="24,0,28,0" concept="8" trace="getOverridenRefactoringClass#()Ljava/lang/Class;" />
-      <node id="4792031542972804700" at="28,0,32,0" concept="8" trace="init#(Ljetbrains/mps/refactoring/framework/RefactoringContext;)Z" />
-      <node id="4792031542972804708" at="32,0,36,0" concept="8" trace="getModelsToGenerate#(Ljetbrains/mps/refactoring/framework/RefactoringContext;)Ljava/util/List;" />
-      <node id="4792031542972804725" at="39,0,43,0" concept="8" trace="getAffectedNodes#(Ljetbrains/mps/refactoring/framework/RefactoringContext;)Ljetbrains/mps/ide/findusages/model/SearchResults;" />
-      <scope id="4792031542972804569" at="16,28,16,28" />
-      <scope id="4792031542972804724" at="37,65,37,65" />
-      <scope id="4792031542972804575" at="18,58,19,41" />
-      <scope id="4792031542972804585" at="21,47,22,33" />
-      <scope id="4792031542972804697" at="25,47,26,16" />
-      <scope id="4792031542972804705" at="29,62,30,16" />
-      <scope id="4792031542972804714" at="33,82,34,35" />
-      <scope id="4792031542972804730" at="40,80,41,31" />
-      <scope id="4792031542972804566" at="16,0,18,0" />
-      <scope id="4792031542972804570" at="18,0,21,0">
+      <node id="4792031542972804559" at="12,0,13,0" concept="5" trace="myTransientParameters" />
+      <node id="4792031542972804576" at="15,58,16,41" concept="4" />
+      <node id="4792031542972804586" at="18,47,19,33" concept="10" />
+      <node id="4792031542972804698" at="22,47,23,16" concept="10" />
+      <node id="4792031542972804706" at="26,62,27,16" concept="10" />
+      <node id="4792031542972804731" at="33,80,34,31" concept="10" />
+      <node id="4792031542972804566" at="13,0,15,0" concept="3" trace="BaseRefactoring#()V" />
+      <node id="4792031542972804570" at="15,0,18,0" concept="8" trace="addTransientParameter#(Ljava/lang/String;)V" />
+      <node id="4792031542972804581" at="18,0,21,0" concept="8" trace="getTransientParameters#()Ljava/util/Set;" />
+      <node id="4792031542972804719" at="29,0,32,0" concept="8" trace="doWhenDone#(Ljetbrains/mps/refactoring/framework/RefactoringContext;)V" />
+      <node id="4792031542972804694" at="21,0,25,0" concept="8" trace="getOverridenRefactoringClass#()Ljava/lang/Class;" />
+      <node id="4792031542972804700" at="25,0,29,0" concept="8" trace="init#(Ljetbrains/mps/refactoring/framework/RefactoringContext;)Z" />
+      <node id="4792031542972804725" at="32,0,36,0" concept="8" trace="getAffectedNodes#(Ljetbrains/mps/refactoring/framework/RefactoringContext;)Ljetbrains/mps/ide/findusages/model/SearchResults;" />
+      <scope id="4792031542972804569" at="13,28,13,28" />
+      <scope id="4792031542972804724" at="30,65,30,65" />
+      <scope id="4792031542972804575" at="15,58,16,41" />
+      <scope id="4792031542972804585" at="18,47,19,33" />
+      <scope id="4792031542972804697" at="22,47,23,16" />
+      <scope id="4792031542972804705" at="26,62,27,16" />
+      <scope id="4792031542972804730" at="33,80,34,31" />
+      <scope id="4792031542972804566" at="13,0,15,0" />
+      <scope id="4792031542972804570" at="15,0,18,0">
         <var name="parameter" id="4792031542972804573" />
       </scope>
-      <scope id="4792031542972804581" at="21,0,24,0" />
-      <scope id="4792031542972804719" at="36,0,39,0">
+      <scope id="4792031542972804581" at="18,0,21,0" />
+      <scope id="4792031542972804719" at="29,0,32,0">
         <var name="refactoringContext" id="4792031542972804722" />
       </scope>
-      <scope id="4792031542972804694" at="24,0,28,0" />
-      <scope id="4792031542972804700" at="28,0,32,0">
+      <scope id="4792031542972804694" at="21,0,25,0" />
+      <scope id="4792031542972804700" at="25,0,29,0">
         <var name="refactoringContext" id="4792031542972804703" />
       </scope>
-      <scope id="4792031542972804708" at="32,0,36,0">
-        <var name="refactoringContext" id="4792031542972804712" />
-      </scope>
-      <scope id="4792031542972804725" at="39,0,43,0">
+      <scope id="4792031542972804725" at="32,0,36,0">
         <var name="refactoringContext" id="4792031542972804728" />
       </scope>
-      <unit id="4792031542972804556" at="13,0,44,0" name="jetbrains.mps.refactoring.framework.BaseRefactoring" />
+      <unit id="4792031542972804556" at="10,0,37,0" name="jetbrains.mps.refactoring.framework.BaseRefactoring" />
     </file>
   </root>
   <root nodeRef="r:bd8551c6-e2e3-4499-a261-45b0c886d1d1(jetbrains.mps.refactoring.framework)/4792031542972804734">
@@ -503,33 +497,35 @@
   </root>
   <root nodeRef="r:bd8551c6-e2e3-4499-a261-45b0c886d1d1(jetbrains.mps.refactoring.framework)/4792031542972815662">
     <file name="IRefactoring.java">
-      <node id="4792031542972815664" at="13,0,14,0" concept="8" trace="getUserFriendlyName#()Ljava/lang/String;" />
-      <node id="4792031542972815672" at="14,0,15,0" concept="8" trace="getOverridenRefactoringClass#()Ljava/lang/Class;" />
-      <node id="4792031542972815676" at="15,0,16,0" concept="8" trace="getRefactoringTarget#()Ljetbrains/mps/refactoring/framework/IRefactoringTarget;" />
-      <node id="4792031542972815680" at="16,0,17,0" concept="8" trace="init#(Ljetbrains/mps/refactoring/framework/RefactoringContext;)Z" />
-      <node id="4792031542972815686" at="17,0,18,0" concept="8" trace="refactor#(Ljetbrains/mps/refactoring/framework/RefactoringContext;)V" />
-      <node id="4792031542972815692" at="18,0,19,0" concept="8" trace="getModelsToGenerate#(Ljetbrains/mps/refactoring/framework/RefactoringContext;)Ljava/util/List;" />
-      <node id="4792031542972815699" at="19,0,20,0" concept="8" trace="doWhenDone#(Ljetbrains/mps/refactoring/framework/RefactoringContext;)V" />
-      <node id="4792031542972815705" at="20,0,22,0" concept="8" trace="getAffectedNodes#(Ljetbrains/mps/refactoring/framework/RefactoringContext;)Ljetbrains/mps/ide/findusages/model/SearchResults;" />
-      <scope id="4792031542972815664" at="13,0,14,0" />
-      <scope id="4792031542972815672" at="14,0,15,0" />
-      <scope id="4792031542972815676" at="15,0,16,0" />
-      <scope id="4792031542972815680" at="16,0,17,0">
+      <node id="4792031542972815664" at="14,0,15,0" concept="8" trace="getUserFriendlyName#()Ljava/lang/String;" />
+      <node id="4792031542972815672" at="15,0,16,0" concept="8" trace="getOverridenRefactoringClass#()Ljava/lang/Class;" />
+      <node id="4792031542972815676" at="16,0,17,0" concept="8" trace="getRefactoringTarget#()Ljetbrains/mps/refactoring/framework/IRefactoringTarget;" />
+      <node id="4792031542972815680" at="17,0,18,0" concept="8" trace="init#(Ljetbrains/mps/refactoring/framework/RefactoringContext;)Z" />
+      <node id="4792031542972815686" at="18,0,19,0" concept="8" trace="refactor#(Ljetbrains/mps/refactoring/framework/RefactoringContext;)V" />
+      <node id="359373600237578885" at="24,83,25,35" concept="10" />
+      <node id="4792031542972815699" at="27,0,28,0" concept="8" trace="doWhenDone#(Ljetbrains/mps/refactoring/framework/RefactoringContext;)V" />
+      <node id="4792031542972815705" at="28,0,30,0" concept="8" trace="getAffectedNodes#(Ljetbrains/mps/refactoring/framework/RefactoringContext;)Ljetbrains/mps/ide/findusages/model/SearchResults;" />
+      <node id="4792031542972815692" at="23,0,27,0" concept="8" trace="getModelsToGenerate#(Ljetbrains/mps/refactoring/framework/RefactoringContext;)Ljava/util/List;" />
+      <scope id="4792031542972815664" at="14,0,15,0" />
+      <scope id="4792031542972815672" at="15,0,16,0" />
+      <scope id="4792031542972815676" at="16,0,17,0" />
+      <scope id="4792031542972815680" at="17,0,18,0">
         <var name="refactoringContext" id="4792031542972815683" />
       </scope>
-      <scope id="4792031542972815686" at="17,0,18,0">
+      <scope id="4792031542972815686" at="18,0,19,0">
         <var name="refactoringContext" id="4792031542972815689" />
       </scope>
-      <scope id="4792031542972815692" at="18,0,19,0">
-        <var name="refactoringContext" id="4792031542972815696" />
-      </scope>
-      <scope id="4792031542972815699" at="19,0,20,0">
+      <scope id="4792031542972815698" at="24,83,25,35" />
+      <scope id="4792031542972815699" at="27,0,28,0">
         <var name="refactoringContext" id="4792031542972815702" />
       </scope>
-      <scope id="4792031542972815705" at="20,0,22,0">
+      <scope id="4792031542972815705" at="28,0,30,0">
         <var name="refactoringContext" id="4792031542972815708" />
       </scope>
-      <unit id="4792031542972815662" at="11,0,23,0" name="jetbrains.mps.refactoring.framework.IRefactoring" />
+      <scope id="4792031542972815692" at="23,0,27,0">
+        <var name="refactoringContext" id="4792031542972815696" />
+      </scope>
+      <unit id="4792031542972815662" at="12,0,31,0" name="jetbrains.mps.refactoring.framework.IRefactoring" />
     </file>
   </root>
 </debug-info>

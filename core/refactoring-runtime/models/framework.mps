@@ -28,14 +28,23 @@
         <child id="1068498886297" name="rValue" index="37vLTx" />
         <child id="1068498886295" name="lValue" index="37vLTJ" />
       </concept>
+      <concept id="2323553266850475941" name="jetbrains.mps.baseLanguage.structure.IHasModifiers" flags="ng" index="2frcj7">
+        <child id="2323553266850475953" name="modifiers" index="2frcjj" />
+      </concept>
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
+        <child id="1188214630783" name="value" index="2B76xF" />
       </concept>
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
+      <concept id="1188214545140" name="jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue" flags="ng" index="2B6LJw">
+        <reference id="1188214555875" name="key" index="2B6OnR" />
+        <child id="1188214607812" name="value" index="2B70Vg" />
+      </concept>
+      <concept id="4678410916365116210" name="jetbrains.mps.baseLanguage.structure.DefaultModifier" flags="ng" index="2JFqV2" />
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
       </concept>
@@ -329,37 +338,6 @@
       <node concept="10P_77" id="4a0HOMfn6Tu" role="3clF45" />
       <node concept="3Tm1VV" id="4a0HOMfn6Tt" role="1B3o_S" />
       <node concept="2AHcQZ" id="3tYsUK_p700" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="3clFb_" id="4a0HOMfn6T$" role="jymVt">
-      <property role="TrG5h" value="getModelsToGenerate" />
-      <node concept="3Tm1VV" id="4a0HOMfn6T_" role="1B3o_S" />
-      <node concept="3uibUv" id="4a0HOMfn6TA" role="3clF45">
-        <ref role="3uigEE" to="33ny:~List" resolve="List" />
-        <node concept="3uibUv" id="4a0HOMfn6TB" role="11_B2D">
-          <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="4a0HOMfn6TC" role="3clF46">
-        <property role="TrG5h" value="refactoringContext" />
-        <node concept="3uibUv" id="4a0HOMfn6TD" role="1tU5fm">
-          <ref role="3uigEE" node="4a0HOMfn8yn" resolve="RefactoringContext" />
-        </node>
-      </node>
-      <node concept="3clFbS" id="4a0HOMfn6TE" role="3clF47">
-        <node concept="3cpWs6" id="4a0HOMfn6TF" role="3cqZAp">
-          <node concept="2ShNRf" id="4a0HOMfn6TG" role="3cqZAk">
-            <node concept="1pGfFk" id="4a0HOMfn6TH" role="2ShVmc">
-              <ref role="37wK5l" to="33ny:~ArrayList.&lt;init&gt;()" resolve="ArrayList" />
-              <node concept="3uibUv" id="4a0HOMfn6TI" role="1pMfVU">
-                <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="3tYsUK_p70f" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
@@ -2758,11 +2736,43 @@
         </node>
       </node>
       <node concept="3Tm1VV" id="4a0HOMfn9_d" role="1B3o_S" />
-      <node concept="3clFbS" id="4a0HOMfn9_i" role="3clF47" />
+      <node concept="3clFbS" id="4a0HOMfn9_i" role="3clF47">
+        <node concept="3clFbF" id="jWK6aBO6E5" role="3cqZAp">
+          <node concept="2YIFZM" id="jWK6aBO6Lt" role="3clFbG">
+            <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
+            <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
+          </node>
+        </node>
+      </node>
       <node concept="37vLTG" id="4a0HOMfn9_g" role="3clF46">
         <property role="TrG5h" value="refactoringContext" />
         <node concept="3uibUv" id="4a0HOMfn9_h" role="1tU5fm">
           <ref role="3uigEE" node="4a0HOMfn8yn" resolve="RefactoringContext" />
+        </node>
+      </node>
+      <node concept="2JFqV2" id="jWK6aBO5VJ" role="2frcjj" />
+      <node concept="P$JXv" id="jWK6aBO5Y6" role="lGtFl">
+        <node concept="TZ5HI" id="jWK6aBO60G" role="3nqlJM">
+          <node concept="TZ5HA" id="jWK6aBO60H" role="3HnX3l">
+            <node concept="1dT_AC" id="jWK6aBO6AE" role="1dT_Ay">
+              <property role="1dT_AB" value="method is not in use by refactoring framework" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="jWK6aBO60I" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <node concept="2B6LJw" id="jWK6aBO63p" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+          <node concept="Xl_RD" id="jWK6aBO6P4" role="2B70Vg">
+            <property role="Xl_RC" value="2022.3" />
+          </node>
+        </node>
+        <node concept="2B6LJw" id="jWK6aBO6uO" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+          <node concept="3clFbT" id="jWK6aBO6xf" role="2B70Vg">
+            <property role="3clFbU" value="true" />
+          </node>
         </node>
       </node>
     </node>
