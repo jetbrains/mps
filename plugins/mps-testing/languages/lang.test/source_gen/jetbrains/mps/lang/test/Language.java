@@ -12,6 +12,8 @@ import jetbrains.mps.core.aspects.feedback.api.FeedbackAspect;
 import jetbrains.mps.lang.test.constraints.GeneratedFeedbackAspectConstraints;
 import jetbrains.mps.core.aspects.constraints.rules.RulesConstraintsAspect;
 import jetbrains.mps.lang.test.constraints.GeneratedRulesConstraintsAspect;
+import jetbrains.mps.openapi.actions.descriptor.ActionAspectDescriptor;
+import jetbrains.mps.lang.test.actions.ActionAspectDescriptorImpl;
 import jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor;
 import jetbrains.mps.lang.dataFlow.framework.DataFlowAspectDescriptor;
@@ -67,6 +69,9 @@ public class Language extends LanguageRuntime {
     }
     if (aspectClass.isAssignableFrom(RulesConstraintsAspect.class)) {
       return aspectClass.cast(new GeneratedRulesConstraintsAspect());
+    }
+    if (aspectClass == ActionAspectDescriptor.class) {
+      return aspectClass.cast(new ActionAspectDescriptorImpl());
     }
     if (aspectClass == BehaviorAspectDescriptor.class) {
       return aspectClass.cast(new jetbrains.mps.lang.test.behavior.BehaviorAspectDescriptor());

@@ -144,7 +144,8 @@ public class ClosureLiteralTarget {
       while (funThrIt.hasNext() && methThrIt.hasNext()) {
         matcher.matchType(methThrIt.next(), funThrIt.next());
       }
-      if (funThrIt.hasNext() || methThrIt.hasNext()) {
+      if (funThrIt.hasNext()) {
+        // method can declare extra thrown types, it's alright to ignore these
         genContext.showWarningMessage(literal, "Closure generic throws types count doesn't match method '" + SPropertyOperations.getString(meth, PROPS.name$MnvL) + "' in " + JavaNameUtil.fqClassName(SLinkOperations.getTarget(targetIfaceErase, LINKS.classifier$cxMr), SPropertyOperations.getString(SLinkOperations.getTarget(targetIfaceErase, LINKS.classifier$cxMr), PROPS.name$MnvL)));
       }
     }

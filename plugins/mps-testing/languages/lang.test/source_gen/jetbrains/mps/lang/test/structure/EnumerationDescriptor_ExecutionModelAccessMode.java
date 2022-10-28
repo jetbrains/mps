@@ -15,17 +15,18 @@ public class EnumerationDescriptor_ExecutionModelAccessMode extends EnumerationD
     super(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x2451232bcdee06b8L, "ExecutionModelAccessMode", "r:00000000-0000-4000-0000-011c89590388(jetbrains.mps.lang.test.structure)/2616911529524463288");
   }
 
+  private final EnumerationDescriptor.MemberDescriptor myMember_unset_0 = new EnumerationDescriptor.MemberDescriptor("unset", "unset", 0x4bf9938bddc2d016L, "r:00000000-0000-4000-0000-011c89590388(jetbrains.mps.lang.test.structure)/5474569050975817750");
   private final EnumerationDescriptor.MemberDescriptor myMember_none_0 = new EnumerationDescriptor.MemberDescriptor("none", "none", 0x2451232bcdee06b9L, "r:00000000-0000-4000-0000-011c89590388(jetbrains.mps.lang.test.structure)/2616911529524463289");
   private final EnumerationDescriptor.MemberDescriptor myMember_read_0 = new EnumerationDescriptor.MemberDescriptor("read", "read", 0x2451232bcdee06baL, "r:00000000-0000-4000-0000-011c89590388(jetbrains.mps.lang.test.structure)/2616911529524463290");
   private final EnumerationDescriptor.MemberDescriptor myMember_command_0 = new EnumerationDescriptor.MemberDescriptor("command", "command", 0x2451232bcdee06bdL, "r:00000000-0000-4000-0000-011c89590388(jetbrains.mps.lang.test.structure)/2616911529524463293");
 
-  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x2451232bcdee06b8L, 0x2451232bcdee06b9L, 0x2451232bcdee06baL, 0x2451232bcdee06bdL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_none_0, myMember_read_0, myMember_command_0);
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x2451232bcdee06b8L, 0x4bf9938bddc2d016L, 0x2451232bcdee06b9L, 0x2451232bcdee06baL, 0x2451232bcdee06bdL);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_unset_0, myMember_none_0, myMember_read_0, myMember_command_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return myMember_none_0;
+    return myMember_unset_0;
   }
 
   @NotNull
@@ -41,6 +42,8 @@ public class EnumerationDescriptor_ExecutionModelAccessMode extends EnumerationD
       return null;
     }
     switch (memberName) {
+      case "unset":
+        return myMember_unset_0;
       case "none":
         return myMember_none_0;
       case "read":

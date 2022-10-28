@@ -392,6 +392,9 @@
       <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
         <child id="1144230900587" name="variable" index="1Duv9x" />
       </concept>
+      <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
+      </concept>
     </language>
     <language id="c0080a47-7e37-4558-bee9-9ae18e690549" name="jetbrains.mps.lang.extension">
       <concept id="6626851894249711936" name="jetbrains.mps.lang.extension.structure.ExtensionPointExpression" flags="nn" index="2O5UvJ">
@@ -422,6 +425,12 @@
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
+      <concept id="4705942098322609812" name="jetbrains.mps.lang.smodel.structure.EnumMember_IsOperation" flags="ng" index="21noJN">
+        <child id="4705942098322609813" name="member" index="21noJM" />
+      </concept>
+      <concept id="4705942098322467729" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference" flags="ng" index="21nZrQ">
+        <reference id="4705942098322467736" name="decl" index="21nZrZ" />
+      </concept>
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
@@ -470,6 +479,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="nn" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="nn" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -2062,6 +2079,44 @@
           </node>
           <node concept="3nxI2P" id="2hh8MJdXePr" role="3F10Kt">
             <property role="VOm3f" value="true" />
+          </node>
+        </node>
+        <node concept="pkWqt" id="4JT$SJtuYum" role="pqm2j">
+          <node concept="3clFbS" id="4JT$SJtuYun" role="2VODD2">
+            <node concept="3SKdUt" id="4JT$SJtxsCG" role="3cqZAp">
+              <node concept="1PaTwC" id="4JT$SJtxsCH" role="1aUNEU">
+                <node concept="3oM_SD" id="4JT$SJtxsMK" role="1PaTwD">
+                  <property role="3oM_SC" value="show" />
+                </node>
+                <node concept="3oM_SD" id="4JT$SJtxsNg" role="1PaTwD">
+                  <property role="3oM_SC" value="only" />
+                </node>
+                <node concept="3oM_SD" id="4JT$SJtxsOK" role="1PaTwD">
+                  <property role="3oM_SC" value="if" />
+                </node>
+                <node concept="3oM_SD" id="4JT$SJtxsR3" role="1PaTwD">
+                  <property role="3oM_SC" value="not" />
+                </node>
+                <node concept="3oM_SD" id="4JT$SJtxsUm" role="1PaTwD">
+                  <property role="3oM_SC" value="migrated" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="4JT$SJtuYLJ" role="3cqZAp">
+              <node concept="2OqwBi" id="4JT$SJtKUCD" role="3clFbG">
+                <node concept="2OqwBi" id="4JT$SJtGMhD" role="2Oq$k0">
+                  <node concept="pncrf" id="4JT$SJtGMhE" role="2Oq$k0" />
+                  <node concept="3TrcHB" id="4JT$SJtKUjw" role="2OqNvi">
+                    <ref role="3TsBF5" to="tp5g:2hh8MJdUWcZ" resolve="accessMode" />
+                  </node>
+                </node>
+                <node concept="21noJN" id="4JT$SJtKUZj" role="2OqNvi">
+                  <node concept="21nZrQ" id="4JT$SJtKUZl" role="21noJM">
+                    <ref role="21nZrZ" to="tp5g:4JT$SJtKH0m" resolve="unset" />
+                  </node>
+                </node>
+              </node>
+            </node>
           </node>
         </node>
       </node>
