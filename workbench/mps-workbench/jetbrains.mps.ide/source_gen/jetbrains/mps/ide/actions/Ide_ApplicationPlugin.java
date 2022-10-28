@@ -26,7 +26,6 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
   public void createGroups() {
     // actions w/o parameters
     addAction(new AnalyzeModuleDependencies_Action());
-    addAction(new CalcSNodeStatistic_Action());
     addAction(new CloneModel_Action());
     addAction(new CloneModule_Action());
     addAction(new CloneRoot_Action());
@@ -46,10 +45,8 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new FastFindNodeUsages_Action());
     addAction(new FindConceptInstances_Action());
     addAction(new FindModelUsages_Action());
-    addAction(new FindRootableConceptsWithoutIcons_Action());
     addAction(new FindSpecificNodeUsages_Action());
     addAction(new FindTextInProject_Action());
-    addAction(new FindUnusedAndDeprecatedConcepts_Action());
     addAction(new FixModuleImportsInProject_Action());
     addAction(new FixModuleImports_Action());
     addAction(new ForceSaveAll_Action());

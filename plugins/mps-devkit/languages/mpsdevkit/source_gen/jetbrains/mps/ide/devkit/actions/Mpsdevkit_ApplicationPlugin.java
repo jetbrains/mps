@@ -17,6 +17,7 @@ import jetbrains.mps.ide.actions.LanguageActions_ActionGroup;
 import jetbrains.mps.ide.actions.DevkitActions_ActionGroup;
 import jetbrains.mps.ide.actions.GeneratorActions_ActionGroup;
 import jetbrains.mps.ide.actions.SolutionActions_ActionGroup;
+import jetbrains.mps.ide.actions.ToolsInternal_ActionGroup;
 import jetbrains.mps.ide.actions.NodeActions_ActionGroup;
 import java.util.List;
 import jetbrains.mps.plugins.actions.BaseKeymapChanges;
@@ -37,11 +38,14 @@ public class Mpsdevkit_ApplicationPlugin extends BaseApplicationPlugin {
   public void createGroups() {
     // actions w/o parameters
     addAction(new AddAccessoryModel_Action());
+    addAction(new CalcSNodeStatistic_Action());
     addAction(new CellProperties_Action());
     addAction(new CreateDefaultEditor_Action());
     addAction(new DeleteGenerator_Action());
     addAction(new FindLanguageConceptsUsages_Action());
     addAction(new FindModuleUsage_Action());
+    addAction(new FindRootableConceptsWithoutIcons_Action());
+    addAction(new FindUnusedAndDeprecatedConcepts_Action());
     addAction(new GoToConceptDeclaration_Action());
     addAction(new GoToEditorDeclaration_Action());
     addAction(new GoToRules_Action());
@@ -71,6 +75,8 @@ public class Mpsdevkit_ApplicationPlugin extends BaseApplicationPlugin {
     // groups
     addGroup(new AccessoriesGroupActions_ActionGroup(this));
     addGroup(new BehaviorCodeOverrideImplementMenuGroup_ActionGroup(this));
+    addGroup(new Contribute2ToolsInternalA_ActionGroup(this));
+    addGroup(new Contribute2ToolsInternalC_ActionGroup(this));
     addGroup(new ContributeModuleUsage_ActionGroup(this));
     addGroup(new DevKitTools_ActionGroup(this));
     addGroup(new EditorInternalEx_ActionGroup(this));
@@ -115,6 +121,8 @@ public class Mpsdevkit_ApplicationPlugin extends BaseApplicationPlugin {
     insertGroupIntoAnother(ContributeModuleUsage_ActionGroup.ID, GeneratorActions_ActionGroup.ID, GeneratorActions_ActionGroup.LABEL_ID_find_usages);
     insertGroupIntoAnother(ContributeModuleUsage_ActionGroup.ID, SolutionActions_ActionGroup.ID, SolutionActions_ActionGroup.LABEL_ID_find_usages);
     insertGroupIntoAnother(PullGeneratorUp_Contrib_ActionGroup.ID, CommonModuleActions_ActionGroup.ID, CommonModuleActions_ActionGroup.LABEL_ID_refactoring);
+    insertGroupIntoAnother(Contribute2ToolsInternalC_ActionGroup.ID, ToolsInternal_ActionGroup.ID, ToolsInternal_ActionGroup.LABEL_ID_C);
+    insertGroupIntoAnother(Contribute2ToolsInternalA_ActionGroup.ID, ToolsInternal_ActionGroup.ID, ToolsInternal_ActionGroup.LABEL_ID_A);
     insertGroupIntoAnother(TraceActions_ActionGroup.ID, DebugActions_ActionGroup.ID, DebugActions_ActionGroup.LABEL_ID_trace);
     insertGroupIntoAnother(ShowNodeIn_ActionGroup.ID, NodeActions_ActionGroup.ID, NodeActions_ActionGroup.LABEL_ID_showIn);
     insertGroupIntoAnother(ShowNodeIn_ActionGroup.ID, "EditorPopup_ActionGroupshowIn", null);
