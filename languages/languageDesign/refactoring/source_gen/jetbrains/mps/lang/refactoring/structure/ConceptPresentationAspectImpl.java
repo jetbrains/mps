@@ -225,6 +225,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.ModelsToGenerateByDefault:
         if (props_ModelsToGenerateByDefault == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.rawPresentation("models from usages");
           props_ModelsToGenerateByDefault = cpb.create();
         }

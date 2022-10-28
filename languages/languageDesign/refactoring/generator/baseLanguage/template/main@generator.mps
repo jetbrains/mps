@@ -91,7 +91,6 @@
         <property id="1240249534625" name="isVolatile" index="34CwA1" />
       </concept>
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
-        <property id="1075300953594" name="abstractClass" index="1sVAO0" />
         <child id="1095933932569" name="implementedInterface" index="EKbjA" />
         <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
@@ -172,7 +171,6 @@
       </concept>
       <concept id="1212685548494" name="jetbrains.mps.baseLanguage.structure.ClassCreator" flags="nn" index="1pGfFk" />
       <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
-        <property id="521412098689998745" name="nonStatic" index="2bfB8j" />
         <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
       </concept>
       <concept id="7812454656619025416" name="jetbrains.mps.baseLanguage.structure.MethodDeclaration" flags="ng" index="1rXfSm">
@@ -313,6 +311,10 @@
       </concept>
     </language>
     <language id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext">
+      <concept id="1217960314443" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_ShowMessageBase" flags="nn" index="2k5Stg">
+        <child id="1217960314448" name="messageText" index="2k5Stb" />
+      </concept>
+      <concept id="1217969995796" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_ShowWarningMessage" flags="nn" index="2kEO4f" />
       <concept id="1216860049627" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetOutputByLabelAndInput" flags="nn" index="1iwH70">
         <reference id="1216860049628" name="label" index="1iwH77" />
         <child id="1216860049632" name="inputNode" index="1iwH7V" />
@@ -2245,8 +2247,30 @@
     </node>
     <node concept="3aamgX" id="3LlWHEPrkM$" role="3acgRq">
       <ref role="30HIoZ" to="tp1h:3LlWHEPrkgt" resolve="ModelsToGenerateByDefault" />
-      <node concept="j$656" id="3LlWHEPrkMA" role="1lVwrX">
-        <ref role="v9R2y" node="3LlWHEPrkMy" resolve="reduce_ModelsToGenerateByDefault" />
+      <node concept="gft3U" id="jWK6aBNnfG" role="1lVwrX">
+        <node concept="2YIFZM" id="jWK6aBNX6t" role="gfFT$">
+          <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
+          <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
+        </node>
+      </node>
+      <node concept="30G5F_" id="jWK6aBNMwx" role="30HLyM">
+        <node concept="3clFbS" id="jWK6aBNMwy" role="2VODD2">
+          <node concept="3clFbF" id="jWK6aBNM_p" role="3cqZAp">
+            <node concept="2OqwBi" id="jWK6aBNMMP" role="3clFbG">
+              <node concept="1iwH7S" id="jWK6aBNM_o" role="2Oq$k0" />
+              <node concept="2kEO4f" id="jWK6aBNPPe" role="2OqNvi">
+                <node concept="Xl_RD" id="jWK6aBNPPg" role="2k5Stb">
+                  <property role="Xl_RC" value="Instances of 'models from usage' (ModelsToGenerateByDefault) are no-op, please remove" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="jWK6aBNNfX" role="3cqZAp">
+            <node concept="3clFbT" id="jWK6aBNNfW" role="3clFbG">
+              <property role="3clFbU" value="true" />
+            </node>
+          </node>
+        </node>
       </node>
     </node>
     <node concept="3aamgX" id="4WjcdlXSrHs" role="3acgRq">
@@ -2513,60 +2537,6 @@
         <property role="TrG5h" value="refactoringContext" />
         <node concept="3uibUv" id="6QdonRgYiJP" role="1tU5fm">
           <ref role="3uigEE" to="ge2m:4a0HOMfn8yn" resolve="RefactoringContext" />
-        </node>
-      </node>
-    </node>
-  </node>
-  <node concept="13MO4I" id="3LlWHEPrkMy">
-    <property role="TrG5h" value="reduce_ModelsToGenerateByDefault" />
-    <property role="3GE5qa" value="RefDecl.Methods" />
-    <ref role="3gUMe" to="tp1h:3LlWHEPrkgt" resolve="ModelsToGenerateByDefault" />
-    <node concept="312cEu" id="3LlWHEPrkMB" role="13RCb5">
-      <property role="TrG5h" value="RefactoringClass1" />
-      <property role="2bfB8j" value="true" />
-      <property role="1sVAO0" value="true" />
-      <node concept="3Tm1VV" id="3LlWHEPrkMC" role="1B3o_S" />
-      <node concept="3uibUv" id="6QdonRgYiJT" role="1zkMxy">
-        <ref role="3uigEE" to="ge2m:4a0HOMfn6Rc" resolve="BaseRefactoring" />
-      </node>
-      <node concept="3clFb_" id="3LlWHEPrkMH" role="jymVt">
-        <property role="TrG5h" value="getModelsToGenerate" />
-        <node concept="_YKpA" id="3LlWHEPrkMN" role="3clF45">
-          <node concept="H_c77" id="3LlWHEPrkMP" role="_ZDj9" />
-        </node>
-        <node concept="3Tm1VV" id="3LlWHEPrkMJ" role="1B3o_S" />
-        <node concept="3clFbS" id="3LlWHEPrkMK" role="3clF47">
-          <node concept="3cpWs6" id="1ZYs8MRuNe7" role="3cqZAp">
-            <node concept="10QFUN" id="1ZYs8MRuNeg" role="3cqZAk">
-              <node concept="_YKpA" id="1ZYs8MRuNej" role="10QFUM">
-                <node concept="H_c77" id="1ZYs8MRuNel" role="_ZDj9" />
-              </node>
-              <node concept="2OqwBi" id="1ZYs8MRuNe8" role="10QFUP">
-                <node concept="37vLTw" id="2BHiRxgm83L" role="2Oq$k0">
-                  <ref role="3cqZAo" node="3LlWHEPrkMQ" resolve="refactoringContext" />
-                </node>
-                <node concept="liA8E" id="1ZYs8MRuNea" role="2OqNvi">
-                  <ref role="37wK5l" to="ge2m:4a0HOMfn97D" resolve="getModelsFromUsages" />
-                  <node concept="2OqwBi" id="1ZYs8MRuNec" role="37wK5m">
-                    <node concept="37vLTw" id="2BHiRxgmCPN" role="2Oq$k0">
-                      <ref role="3cqZAo" node="3LlWHEPrkMQ" resolve="refactoringContext" />
-                    </node>
-                    <node concept="liA8E" id="1ZYs8MRuNee" role="2OqNvi">
-                      <ref role="37wK5l" to="ge2m:4a0HOMfn9wo" resolve="getSelectedModel" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="raruj" id="1ZYs8MRuNem" role="lGtFl" />
-            </node>
-          </node>
-        </node>
-        <node concept="37vLTG" id="3LlWHEPrkMQ" role="3clF46">
-          <property role="TrG5h" value="refactoringContext" />
-          <property role="3TUv4t" value="true" />
-          <node concept="3uibUv" id="6QdonRgYiJW" role="1tU5fm">
-            <ref role="3uigEE" to="ge2m:4a0HOMfn8yn" resolve="RefactoringContext" />
-          </node>
         </node>
       </node>
     </node>
