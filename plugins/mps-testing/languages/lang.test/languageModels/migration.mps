@@ -2180,9 +2180,12 @@
       <node concept="3Tm1VV" id="2hh8MJdYfA4" role="1B3o_S" />
       <node concept="10P_77" id="2hh8MJdYfA5" role="1tU5fm" />
     </node>
-    <node concept="3tTeZs" id="2hh8MJdYfA6" role="jymVt">
-      <property role="3tTeZt" value="&lt;description&gt;" />
-      <ref role="3tTeZr" to="slm6:1_lSsE3RFpE" resolve="description" />
+    <node concept="3tYpXE" id="3EpRXOXz$Hf" role="jymVt">
+      <property role="TrG5h" value="description" />
+      <property role="3tYpXF" value="Replace the deprecated needNoWriteAction property with accessMode" />
+      <ref role="25KYV2" to="slm6:1_lSsE3RFpE" resolve="description" />
+      <node concept="3Tm1VV" id="3EpRXOXz$Hh" role="1B3o_S" />
+      <node concept="17QB3L" id="3EpRXOXz$Hi" role="1tU5fm" />
     </node>
     <node concept="q3mfD" id="2hh8MJdYfA7" role="jymVt">
       <property role="TrG5h" value="execute" />

@@ -137,7 +137,7 @@
   
   <target name="generate" depends="declare-mps-tasks, fetchDependencies">
     <echo message="generating" />
-    <generate fork="true" logLevel="${mps.ant.log}">      
+    <generate fork="true" targetJavaVersion="11" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
       <library file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/closures.runtime.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/collections.runtime.jar" />
@@ -284,7 +284,7 @@
   <target name="java.compile.jetbrains.mps.editor.spellcheck" depends="fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-spellcheck/modules/spellcheck/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.editor.spellcheck" />
-    <javac destdir="${build.tmp}/java/out/jetbrains.mps.editor.spellcheck" fork="true" encoding="utf8" includeantruntime="false" debug="true">
+    <javac destdir="${build.tmp}/java/out/jetbrains.mps.editor.spellcheck" fork="true" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/plugins/mps-spellcheck/modules/spellcheck/source_gen" />
