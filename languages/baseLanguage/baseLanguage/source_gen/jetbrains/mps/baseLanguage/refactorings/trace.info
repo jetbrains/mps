@@ -127,44 +127,38 @@
       <node id="3051706240924250145" at="19,52,20,54" concept="2" />
     </file>
     <file name="SafeDeleteConceptMethod.java">
-      <node id="3051706240924250145" at="21,52,22,48" concept="8" />
-      <node id="3051706240924250145" at="24,39,25,40" concept="8" />
-      <node id="3051706240924250167" at="27,69,28,56" concept="7" />
-      <node id="3051706240924250176" at="28,56,29,84" concept="2" />
-      <node id="3051706240924250215" at="31,88,32,104" concept="8" />
-      <node id="3051706240924250189" at="34,86,35,116" concept="7" />
-      <node id="3051706240924250198" at="35,116,36,245" concept="8" />
-      <node id="3051706240924250145" at="40,0,41,0" concept="11" trace="ConceptMethodDeclaration$N0" />
-      <node id="3051706240924250145" at="19,0,21,0" concept="1" trace="SafeDeleteConceptMethod#()V" />
-      <node id="3051706240924250145" at="21,0,24,0" concept="6" trace="getRefactoringTarget#()Ljetbrains/mps/refactoring/framework/IRefactoringTarget;" />
-      <node id="3051706240924250145" at="24,0,27,0" concept="6" trace="getUserFriendlyName#()Ljava/lang/String;" />
-      <node id="3051706240924250145" at="31,0,34,0" concept="6" trace="getModelsToGenerate#(Ljetbrains/mps/refactoring/framework/RefactoringContext;)Ljava/util/List;" />
-      <node id="3051706240924250145" at="27,0,31,0" concept="6" trace="refactor#(Ljetbrains/mps/refactoring/framework/RefactoringContext;)V" />
-      <node id="3051706240924250145" at="34,0,38,0" concept="6" trace="getAffectedNodes#(Ljetbrains/mps/refactoring/framework/RefactoringContext;)Ljetbrains/mps/ide/findusages/model/SearchResults;" />
-      <scope id="3051706240924250145" at="19,36,19,36" />
-      <scope id="3051706240924250145" at="21,52,22,48" />
-      <scope id="3051706240924250145" at="24,39,25,40" />
-      <scope id="3051706240924250214" at="31,88,32,104" />
-      <scope id="3051706240924250145" at="19,0,21,0" />
-      <scope id="3051706240924250166" at="27,69,29,84">
+      <node id="3051706240924250145" at="19,52,20,48" concept="8" />
+      <node id="3051706240924250145" at="22,39,23,40" concept="8" />
+      <node id="3051706240924250167" at="25,69,26,56" concept="7" />
+      <node id="3051706240924250176" at="26,56,27,84" concept="2" />
+      <node id="3051706240924250189" at="29,86,30,116" concept="7" />
+      <node id="3051706240924250198" at="30,116,31,245" concept="8" />
+      <node id="3051706240924250145" at="35,0,36,0" concept="11" trace="ConceptMethodDeclaration$N0" />
+      <node id="3051706240924250145" at="17,0,19,0" concept="1" trace="SafeDeleteConceptMethod#()V" />
+      <node id="3051706240924250145" at="19,0,22,0" concept="6" trace="getRefactoringTarget#()Ljetbrains/mps/refactoring/framework/IRefactoringTarget;" />
+      <node id="3051706240924250145" at="22,0,25,0" concept="6" trace="getUserFriendlyName#()Ljava/lang/String;" />
+      <node id="3051706240924250145" at="25,0,29,0" concept="6" trace="refactor#(Ljetbrains/mps/refactoring/framework/RefactoringContext;)V" />
+      <node id="3051706240924250145" at="29,0,33,0" concept="6" trace="getAffectedNodes#(Ljetbrains/mps/refactoring/framework/RefactoringContext;)Ljetbrains/mps/ide/findusages/model/SearchResults;" />
+      <scope id="3051706240924250145" at="17,36,17,36" />
+      <scope id="3051706240924250145" at="19,52,20,48" />
+      <scope id="3051706240924250145" at="22,39,23,40" />
+      <scope id="3051706240924250145" at="17,0,19,0" />
+      <scope id="3051706240924250166" at="25,69,27,84">
         <var name="method" id="3051706240924250168" />
       </scope>
-      <scope id="3051706240924250188" at="34,86,36,245">
+      <scope id="3051706240924250188" at="29,86,31,245">
         <var name="method" id="3051706240924250190" />
       </scope>
-      <scope id="3051706240924250145" at="21,0,24,0" />
-      <scope id="3051706240924250145" at="24,0,27,0" />
-      <scope id="3051706240924250145" at="31,0,34,0">
+      <scope id="3051706240924250145" at="19,0,22,0" />
+      <scope id="3051706240924250145" at="22,0,25,0" />
+      <scope id="3051706240924250145" at="25,0,29,0">
         <var name="refactoringContext" id="3051706240924250145" />
       </scope>
-      <scope id="3051706240924250145" at="27,0,31,0">
+      <scope id="3051706240924250145" at="29,0,33,0">
         <var name="refactoringContext" id="3051706240924250145" />
       </scope>
-      <scope id="3051706240924250145" at="34,0,38,0">
-        <var name="refactoringContext" id="3051706240924250145" />
-      </scope>
-      <unit id="3051706240924250145" at="39,0,42,0" name="jetbrains.mps.baseLanguage.refactorings.SafeDeleteConceptMethod$CONCEPTS" />
-      <unit id="3051706240924250145" at="18,0,43,0" name="jetbrains.mps.baseLanguage.refactorings.SafeDeleteConceptMethod" />
+      <unit id="3051706240924250145" at="34,0,37,0" name="jetbrains.mps.baseLanguage.refactorings.SafeDeleteConceptMethod$CONCEPTS" />
+      <unit id="3051706240924250145" at="16,0,38,0" name="jetbrains.mps.baseLanguage.refactorings.SafeDeleteConceptMethod" />
     </file>
     <file name="SafeDeleteConceptMethod_Target.java">
       <node id="3051706240924250146" at="14,52,15,46" concept="8" />
