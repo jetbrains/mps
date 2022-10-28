@@ -13,6 +13,7 @@ import java.util.List;
 import jetbrains.mps.plugins.actions.BaseKeymapChanges;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import jetbrains.mps.plugins.part.ApplicationPluginPart;
 
 public class Refactoring_ApplicationPlugin extends BaseApplicationPlugin {
   private final PluginId myId = PluginId.getId("jetbrains.mps.ide.refactoring");
@@ -56,5 +57,9 @@ public class Refactoring_ApplicationPlugin extends BaseApplicationPlugin {
     ListSequence.fromList(res).addElement(new Refactoring_Mac_10_5_KeymapChanges());
     ListSequence.fromList(res).addElement(new Refactoring_Mac_KeymapChanges());
     return res;
+  }
+  @Override
+  public void fillCustomParts(List<ApplicationPluginPart> parts) {
+    parts.add(new AccessImpl_AppPluginPart());
   }
 }
