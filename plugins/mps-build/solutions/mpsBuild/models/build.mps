@@ -38528,7 +38528,10 @@
                       <node concept="2Ry0Ak" id="2w57fuMpaDQ" role="2Ry0An">
                         <property role="2Ry0Am" value="mps-devkit" />
                         <node concept="2Ry0Ak" id="2w57fuMpaDR" role="2Ry0An">
-                          <property role="2Ry0Am" value="classes" />
+                          <property role="2Ry0Am" value="lib" />
+                          <node concept="2Ry0Ak" id="6TSglUdUQQF" role="2Ry0An">
+                            <property role="2Ry0Am" value="mpsdevkit.jar" />
+                          </node>
                         </node>
                       </node>
                     </node>
@@ -40069,8 +40072,11 @@
             <property role="2Ry0Am" value="plugins" />
             <node concept="2Ry0Ak" id="6mTG60y64ck" role="2Ry0An">
               <property role="2Ry0Am" value="mps-devkit" />
-              <node concept="2Ry0Ak" id="6mTG60y64cp" role="2Ry0An">
-                <property role="2Ry0Am" value="classes" />
+              <node concept="2Ry0Ak" id="6TSglUdUQQd" role="2Ry0An">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="6TSglUdUQQs" role="2Ry0An">
+                  <property role="2Ry0Am" value="mpsdevkit.jar" />
+                </node>
               </node>
             </node>
           </node>

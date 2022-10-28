@@ -82,6 +82,7 @@ teamcity-info.xml
 /plugins/platform-images
 /plugins/laf-macos
 /plugins/laf-win10
+/plugins/mps-devkit/lib
 
 # Main libraries folder: dependencies are downloaded before complilation with task 'install' from build/getDependencies.xml
 /lib/

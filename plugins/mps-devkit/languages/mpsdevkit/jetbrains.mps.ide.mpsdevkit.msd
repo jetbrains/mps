@@ -6,7 +6,7 @@
       <sourceRoot location="models" />
     </modelRoot>
     <modelRoot contentPath="${module}" type="java_classes">
-      <sourceRoot location="../../classes" />
+      <sourceRoot location="../../lib/mpsdevkit.jar" />
     </modelRoot>
   </models>
   <facets>
@@ -15,7 +15,7 @@
     </facet>
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${module}/../../classes" />
+    <stubModelEntry path="${module}/../../lib/mpsdevkit.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>
