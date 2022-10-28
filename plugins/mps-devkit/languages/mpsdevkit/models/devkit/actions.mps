@@ -132,15 +132,6 @@
       </concept>
     </language>
     <language id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin">
-      <concept id="5023285075122009364" name="jetbrains.mps.lang.plugin.structure.IdeaInitializerDescriptor" flags="ng" index="9BnSX">
-        <property id="5023285075122009369" name="version" index="9BnSK" />
-        <property id="5023285075122009368" name="descripttion" index="9BnSL" />
-        <property id="5023285075122009371" name="vendor" index="9BnSM" />
-        <property id="5023285075122009373" name="ideaVersion" index="9BnSO" />
-        <property id="5023285075122009372" name="vendorUrl" index="9BnSP" />
-        <property id="5023285075122009366" name="id" index="9BnSZ" />
-        <property id="1573568368168371217" name="handleErrors" index="3FCvg6" />
-      </concept>
       <concept id="1207145163717" name="jetbrains.mps.lang.plugin.structure.ElementListContents" flags="ng" index="ftmFs">
         <child id="1207145201301" name="reference" index="ftvYc" />
       </concept>
@@ -735,16 +726,6 @@
         <property role="pLAjf" value="VK_B" />
       </node>
     </node>
-  </node>
-  <node concept="9BnSX" id="7sF2r9CiRc9">
-    <property role="9BnSZ" value="jetbrains.mps.ide.mpsdevkit" />
-    <property role="3FCvg6" value="true" />
-    <property role="9BnSP" value="http://www.jetbrains.com/mps/" />
-    <property role="9BnSL" value="Allows to develop new MPS languages" />
-    <property role="9BnSM" value="JetBrains" />
-    <property role="TrG5h" value="MPS Languages DevKit" />
-    <property role="9BnSO" value="222.1" />
-    <property role="9BnSK" value="2022.2" />
   </node>
   <node concept="tC5Ba" id="56$IWKxe1aW">
     <property role="TrG5h" value="ProjectNewActionsEx" />
