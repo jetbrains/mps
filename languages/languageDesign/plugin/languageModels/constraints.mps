@@ -8,15 +8,11 @@
   <imports>
     <import index="tp4k" ref="r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
-    <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" />
-    <import index="qkt" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.actionSystem(MPS.IDEA/)" />
     <import index="o8zo" ref="r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)" />
-    <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="tp2c" ref="r:00000000-0000-4000-0000-011c89590338(jetbrains.mps.baseLanguage.closures.structure)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
-    <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
     <import index="tp4s" ref="r:00000000-0000-4000-0000-011c89590360(jetbrains.mps.lang.plugin.behavior)" implicit="true" />
@@ -202,9 +198,6 @@
         <reference id="1145383142433" name="elementConcept" index="2I9WkF" />
       </concept>
       <concept id="1171305280644" name="jetbrains.mps.lang.smodel.structure.Node_GetDescendantsOperation" flags="nn" index="2Rf3mk" />
-      <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
-      </concept>
       <concept id="1145567426890" name="jetbrains.mps.lang.smodel.structure.SNodeListCreator" flags="nn" index="2T8Vx0">
         <child id="1145567471833" name="createdType" index="2T96Bj" />
       </concept>
@@ -765,30 +758,6 @@
   <node concept="1M2fIO" id="5nN2_Ou2mLZ">
     <property role="3GE5qa" value="Actions.Keymaps.ShortcutChange" />
     <ref role="1M2myG" to="tp4k:5nN2_Ou2i9S" resolve="ShortcutChange" />
-    <node concept="1N5Pfh" id="5nN2_Ou2mM0" role="1Mr941">
-      <ref role="1N5Vy1" to="tp4k:5nN2_Ou2mLQ" resolve="action" />
-      <node concept="3dgokm" id="5Vvmn_QkQVu" role="1N6uqs">
-        <node concept="3clFbS" id="5Vvmn_QkQVv" role="2VODD2">
-          <node concept="3clFbF" id="5Vvmn_QkQVw" role="3cqZAp">
-            <node concept="2YIFZM" id="5Vvmn_QkQXc" role="3clFbG">
-              <ref role="37wK5l" to="o8zo:3jEbQoczdCs" resolve="forResolvableElements" />
-              <ref role="1Pybhc" to="o8zo:4IP40Bi3e_R" resolve="ListScope" />
-              <node concept="2OqwBi" id="5Vvmn_QkQXd" role="37wK5m">
-                <node concept="2OqwBi" id="5Vvmn_QkQXe" role="2Oq$k0">
-                  <node concept="2rP1CM" id="5Vvmn_QkQXf" role="2Oq$k0" />
-                  <node concept="I4A8Y" id="5Vvmn_QkQXg" role="2OqNvi" />
-                </node>
-                <node concept="2RRcyG" id="5Vvmn_QkQXh" role="2OqNvi">
-                  <node concept="chp4Y" id="5QK5AMJp7wv" role="3MHsoP">
-                    <ref role="cht4Q" to="tp4k:hwsE7KS" resolve="ActionDeclaration" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
   </node>
   <node concept="1M2fIO" id="6Cd7IRTRmFC">
     <property role="3GE5qa" value="Actions.Action.Methods" />
