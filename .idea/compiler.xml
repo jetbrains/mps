@@ -603,9 +603,6 @@
       <directory url="file://$PROJECT_DIR$/samples/xmlPersistence/languages/jetbrains.mps.samples.xmlPersistence.ideaPlugin/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/xmlPersistence/languages/jetbrains.mps.samples.xmlPersistence/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/jetbrains.mps.build.mps.testModules/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/testbench/testbench.suite/generator/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/testbench/testbench.suite.pluginSolution/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/testbench/testbench.suite/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/modules/build.mps.runner.test/jetbrains.mps.build.mps.runner.test.buildscript/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/modules/build.mps.runner.test/jetbrains.mps.build.mps.runner.test.test1/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/modules/build.mps.runner.test/jetbrains.mps.build.mps.runner.test.test2/source_gen" includeSubdirectories="true" />
@@ -697,6 +694,9 @@
       <directory url="file://$PROJECT_DIR$/testbench/modules/textgen.folders/sandbox/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/modules/xmodel.build/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/modules/xmodel.build/test_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/testbench/testbench.suite.pluginSolution/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/testbench/testbench.suite/generator/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/testbench/testbench.suite/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/testsolutions/JavaCompilationXmlConflict.test/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/testsolutions/JavaCompilationXmlConflict.test/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/testsolutions/actions.test/source_gen" includeSubdirectories="true" />
@@ -722,6 +722,8 @@
       <directory url="file://$PROJECT_DIR$/testbench/testsolutions/collections_unittest/tests_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/testsolutions/console.tests/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/testsolutions/console.tests/test_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/testbench/testsolutions/depanalyzer/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/testbench/testsolutions/depanalyzer/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/testsolutions/editor.forms.test/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/testsolutions/editor.forms.test/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/testsolutions/editor.menus.contextAssistant.tests/source_gen" includeSubdirectories="true" />

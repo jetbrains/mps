@@ -589,6 +589,7 @@
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/collections_trove.test/collections_trove.test.msd" folder="core.baseLanguage.collections" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/collections_unittest/collections_unittest.msd" folder="core.baseLanguage.collections" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/console.tests/jetbrains.mps.console.tests.msd" folder="platform.console" />
+      <modulePath path="$PROJECT_DIR$/testbench/testsolutions/depanalyzer/jetbrains.mps.ide.depanalyzer.test.msd" folder="tests" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/editor.forms.test/jetbrains.mps.lang.editor.forms.tests.msd" folder="core.aspects.editor" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/editor.menus.contextAssistant.tests/jetbrains.mps.lang.editor.menus.contextAssistant.tests.msd" folder="core.aspects.editor.menus.contextAssistant.tests" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/editor.menus.extras.tests/jetbrains.mps.lang.editor.menus.extras.tests.msd" folder="core.aspects.editor.menus.extras.tests" />
