@@ -3,7 +3,7 @@
   <compileInIDEA />
   <models>
     <modelRoot contentPath="${module}" type="default">
-      <sourceRoot location="." />
+      <sourceRoot location="models" />
     </modelRoot>
   </models>
   <facets>
