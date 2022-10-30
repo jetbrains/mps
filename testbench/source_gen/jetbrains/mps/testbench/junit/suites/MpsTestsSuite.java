@@ -40,10 +40,17 @@ import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.util.JavaNameUtil;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 /**
  * Currently used for ant tests
@@ -165,6 +172,32 @@ public class MpsTestsSuite extends BaseMpsSuite {
               }
             }
           }
+          for (SNode cc : ListSequence.fromList(SModelOperations.roots(((SModel) model), CONCEPTS.ClassConcept$bK))) {
+            // exclude BTestCase which is ClassConcept and ITestCase
+            if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(cc)), CONCEPTS.ClassConcept$bK))) {
+              continue;
+            }
+            // FWIW, there's JUnit4TestWrapper with similar logic (for use in execution plugin). Why not the same?
+            Iterable<SNode> imd = SNodeOperations.ofConcept(SLinkOperations.getChildren(cc, LINKS.member$L_2d), CONCEPTS.InstanceMethodDeclaration$39);
+            if (Sequence.fromIterable(SLinkOperations.collectMany(Sequence.fromIterable(imd).where(new IWhereFilter<SNode>() {
+              public boolean accept(SNode it) {
+                return !(SPropertyOperations.getBoolean(it, PROPS.isAbstract$VtH_)) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$Yyua), CONCEPTS.PublicVisibility$R0);
+              }
+            }), LINKS.annotation$K49I)).any(new IWhereFilter<SNode>() {
+              public boolean accept(SNode an) {
+                return SLinkOperations.hasPointer(an, LINKS.annotation$12Ek, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~Test"));
+              }
+            })) {
+              String testClassName = ((String) BHReflection.invoke0(cc, CONCEPTS.INamedConcept$Kd, SMethodIdV2.create("getFqName", 1213877404258L, 0x553941aeb020c32eL)));
+              try {
+                result.add(builder.safeRunnerForClass(moduleCL.loadClass(testClassName)));
+              } catch (ClassNotFoundException ex) {
+                if (LOG.isWarningLevel()) {
+                  LOG.warning("Cannot find the test class " + testClassName);
+                }
+              }
+            }
+          }
         }
       }
     });
@@ -174,9 +207,21 @@ public class MpsTestsSuite extends BaseMpsSuite {
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept ITestCase$Fp = MetaAdapterFactory.getInterfaceConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L, "jetbrains.mps.baseLanguage.unitTest.structure.ITestCase");
     /*package*/ static final SConcept GeneratorTest$C3 = MetaAdapterFactory.getConcept(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf092beL, "jetbrains.mps.lang.test.generator.structure.GeneratorTest");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept PublicVisibility$R0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility");
   }
 
   private static final class PROPS {
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isAbstract$VtH_ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink member$L_2d = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink visibility$Yyua = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink annotation$K49I = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SReferenceLink annotation$12Ek = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
   }
 }
