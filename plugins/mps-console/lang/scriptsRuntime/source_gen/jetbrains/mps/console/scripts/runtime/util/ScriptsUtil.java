@@ -16,7 +16,6 @@ import jetbrains.mps.ide.platform.refactoring.RefactoringAccessEx;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.platform.refactoring.RefactoringViewAction;
 import jetbrains.mps.ide.platform.refactoring.RefactoringViewItem;
-import jetbrains.mps.ide.refactoring.RefactoringViewItemImpl;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.Collections;
@@ -44,8 +43,8 @@ public class ScriptsUtil {
       public void performAction(final RefactoringViewItem refactoringViewItem) {
         projectRepo.getModelAccess().executeCommand(() -> {
           Iterable<SNode> includedNodes;
-          if (refactoringViewItem instanceof RefactoringViewItemImpl) {
-            List<SNodeReference> nodeRefs = as_bb8vid_a0a0a0a1a0a0a0a0a1a0c0f(refactoringViewItem, RefactoringViewItemImpl.class).getUsagesView().getIncludedResultNodes();
+          if (refactoringViewItem instanceof RefactoringViewItem.RefactoringViewItemEx) {
+            List<SNodeReference> nodeRefs = as_bb8vid_a0a0a0b0a0a0a0a0b0a2a5(refactoringViewItem, RefactoringViewItem.RefactoringViewItemEx.class).getIncludedResultNodes();
             includedNodes = ListSequence.fromList(nodeRefs).select(new ISelector<SNodeReference, SNode>() {
               public SNode select(SNodeReference it) {
                 return it.resolve(projectRepo);
@@ -73,7 +72,7 @@ public class ScriptsUtil {
       }
     }).toListSequence());
   }
-  private static <T> T as_bb8vid_a0a0a0a1a0a0a0a0a1a0c0f(Object o, Class<T> type) {
+  private static <T> T as_bb8vid_a0a0a0b0a0a0a0a0b0a2a5(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

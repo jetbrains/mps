@@ -12,14 +12,12 @@
     <import index="2e2z" ref="r:330bc565-6764-4368-b8fa-04f1a782e337(jetbrains.mps.console.scripts.behavior)" />
     <import index="z2sp" ref="r:e712f353-5c3c-4288-adce-87c956a52ffb(jetbrains.mps.console.scripts.structure)" />
     <import index="u42p" ref="r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)" />
-    <import index="o2jy" ref="r:5a764b6f-e05f-4050-b22c-cbcad1577f1b(jetbrains.mps.ide.refactoring)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="g4jo" ref="r:d98d04fb-4a60-4106-81cf-6cb40b67de4d(jetbrains.mps.ide.findusages.model)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
-    <import index="ngmm" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.findusages.view(MPS.Platform/)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -552,21 +550,16 @@
                                         <node concept="3cpWsn" id="5KpVuOe4lyM" role="3cpWs9">
                                           <property role="TrG5h" value="nodeRefs" />
                                           <node concept="2OqwBi" id="2Pn89z5hVMp" role="33vP2m">
-                                            <node concept="2OqwBi" id="2Pn89z5hUy0" role="2Oq$k0">
-                                              <node concept="0kSF2" id="5KpVuOe3YP9" role="2Oq$k0">
-                                                <node concept="3uibUv" id="5KpVuOe3ZP6" role="0kSFW">
-                                                  <ref role="3uigEE" to="o2jy:29N7xYwTFW8" resolve="RefactoringViewItemImpl" />
-                                                </node>
-                                                <node concept="37vLTw" id="5KpVuOe3XL3" role="0kSFX">
-                                                  <ref role="3cqZAo" node="6nZLqty3x$q" resolve="refactoringViewItem" />
-                                                </node>
+                                            <node concept="0kSF2" id="5KpVuOe3YP9" role="2Oq$k0">
+                                              <node concept="3uibUv" id="5KpVuOe3ZP6" role="0kSFW">
+                                                <ref role="3uigEE" to="u42p:6gEjUfBDWeY" resolve="RefactoringViewItemEx" />
                                               </node>
-                                              <node concept="liA8E" id="2Pn89z5hV1B" role="2OqNvi">
-                                                <ref role="37wK5l" to="o2jy:29N7xYwTG1s" resolve="getUsagesView" />
+                                              <node concept="37vLTw" id="5KpVuOe3XL3" role="0kSFX">
+                                                <ref role="3cqZAo" node="6nZLqty3x$q" resolve="refactoringViewItem" />
                                               </node>
                                             </node>
                                             <node concept="liA8E" id="2Pn89z5hW_X" role="2OqNvi">
-                                              <ref role="37wK5l" to="ngmm:~UsagesView.getIncludedResultNodes()" resolve="getIncludedResultNodes" />
+                                              <ref role="37wK5l" to="u42p:6gEjUfBDWfV" resolve="getIncludedResultNodes" />
                                             </node>
                                           </node>
                                           <node concept="_YKpA" id="5KpVuOe4B$H" role="1tU5fm">
@@ -614,7 +607,7 @@
                                     </node>
                                     <node concept="2ZW3vV" id="5KpVuOe3yjA" role="3clFbw">
                                       <node concept="3uibUv" id="5KpVuOe3V5l" role="2ZW6by">
-                                        <ref role="3uigEE" to="o2jy:29N7xYwTFW8" resolve="RefactoringViewItemImpl" />
+                                        <ref role="3uigEE" to="u42p:6gEjUfBDWeY" resolve="RefactoringViewItemEx" />
                                       </node>
                                       <node concept="37vLTw" id="2Pn89z5hTOk" role="2ZW6bz">
                                         <ref role="3cqZAo" node="6nZLqty3x$q" resolve="refactoringViewItem" />
