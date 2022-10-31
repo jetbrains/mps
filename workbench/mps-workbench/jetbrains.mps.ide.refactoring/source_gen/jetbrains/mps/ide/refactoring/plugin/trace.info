@@ -213,51 +213,51 @@
   </root>
   <root nodeRef="r:97d6b60a-b381-42e8-9ea4-402ec93eaf11(jetbrains.mps.ide.refactoring.plugin)/2482070339556101376">
     <file name="RefactoringView_Tool.java">
-      <node id="2482070339556101376" at="20,0,21,0" concept="16" trace="ICON" />
-      <node id="2482070339556101376" at="21,48,22,81" concept="18" />
-      <node id="2482070339556345636" at="27,27,28,59" concept="6" />
-      <node id="3823707511746539385" at="32,34,33,28" concept="6" />
-      <node id="3823707511746539392" at="34,7,35,21" concept="6" />
-      <node id="2482070339556318964" at="41,27,42,59" concept="6" />
-      <node id="3823707511746530515" at="46,34,47,28" concept="6" />
-      <node id="3823707511746488259" at="48,7,49,21" concept="6" />
-      <node id="2482070339556101376" at="21,0,24,0" concept="4" trace="RefactoringView_Tool#(Lcom/intellij/openapi/project/Project;)V" />
-      <node id="3823707511746539383" at="31,144,34,7" concept="10" />
-      <node id="3823707511746505672" at="45,91,48,7" concept="10" />
-      <node id="2482070339556343003" at="26,0,30,0" concept="11" trace="close#()V" />
-      <node id="2482070339556294875" at="40,0,44,0" concept="11" trace="close#()V" />
-      <node id="2482360940803570904" at="24,220,30,6" concept="12" />
-      <node id="2482070339556228724" at="30,6,36,13" concept="6" />
-      <node id="2482360940803570950" at="38,198,44,6" concept="12" />
-      <node id="2482070339556246653" at="44,6,50,13" concept="6" />
-      <node id="2482070339556117693" at="24,0,38,0" concept="11" trace="showRefactoringView#(Ljetbrains/mps/refactoring/framework/RefactoringContext;Ljetbrains/mps/ide/platform/refactoring/RefactoringViewAction;Ljava/lang/Runnable;Ljetbrains/mps/ide/findusages/model/SearchResults;Ljetbrains/mps/ide/findusages/model/SearchTask;)V" />
-      <node id="2482070339556132286" at="38,0,52,0" concept="11" trace="showRefactoringView#(Lcom/intellij/openapi/project/Project;Ljetbrains/mps/ide/platform/refactoring/RefactoringViewAction;Ljava/lang/Runnable;Ljetbrains/mps/ide/findusages/model/SearchResults;Ljetbrains/mps/ide/findusages/model/SearchTask;Ljava/lang/String;)V" />
-      <scope id="2482070339556101376" at="21,48,22,81" />
-      <scope id="2482070339556343016" at="27,27,28,59" />
-      <scope id="3823707511746539384" at="32,34,33,28" />
-      <scope id="2482070339556294888" at="41,27,42,59" />
-      <scope id="3823707511746505674" at="46,34,47,28" />
-      <scope id="2482070339556101376" at="21,0,24,0">
+      <node id="2482070339556101376" at="21,0,22,0" concept="16" trace="ICON" />
+      <node id="2482070339556101376" at="22,48,23,81" concept="18" />
+      <node id="2482070339556345636" at="28,27,29,59" concept="6" />
+      <node id="3823707511746539385" at="33,34,34,28" concept="6" />
+      <node id="3823707511746539392" at="35,7,36,21" concept="6" />
+      <node id="2482070339556318964" at="42,27,43,59" concept="6" />
+      <node id="3823707511746530515" at="47,34,48,28" concept="6" />
+      <node id="3823707511746488259" at="49,7,50,21" concept="6" />
+      <node id="2482070339556101376" at="22,0,25,0" concept="4" trace="RefactoringView_Tool#(Lcom/intellij/openapi/project/Project;)V" />
+      <node id="3823707511746539383" at="32,144,35,7" concept="10" />
+      <node id="3823707511746505672" at="46,91,49,7" concept="10" />
+      <node id="2482070339556343003" at="27,0,31,0" concept="11" trace="close#()V" />
+      <node id="2482070339556294875" at="41,0,45,0" concept="11" trace="close#()V" />
+      <node id="2482360940803570904" at="25,220,31,6" concept="12" />
+      <node id="2482070339556228724" at="31,6,37,13" concept="6" />
+      <node id="2482360940803570950" at="39,198,45,6" concept="12" />
+      <node id="2482070339556246653" at="45,6,51,13" concept="6" />
+      <node id="2482070339556117693" at="25,0,39,0" concept="11" trace="showRefactoringView#(Ljetbrains/mps/refactoring/framework/RefactoringContext;Ljetbrains/mps/ide/platform/refactoring/RefactoringViewAction;Ljava/lang/Runnable;Ljetbrains/mps/ide/findusages/model/SearchResults;Ljetbrains/mps/ide/findusages/model/SearchTask;)V" />
+      <node id="2482070339556132286" at="39,0,53,0" concept="11" trace="showRefactoringView#(Lcom/intellij/openapi/project/Project;Ljetbrains/mps/ide/platform/refactoring/RefactoringViewAction;Ljava/lang/Runnable;Ljetbrains/mps/ide/findusages/model/SearchResults;Ljetbrains/mps/ide/findusages/model/SearchTask;Ljava/lang/String;)V" />
+      <scope id="2482070339556101376" at="22,48,23,81" />
+      <scope id="2482070339556343016" at="28,27,29,59" />
+      <scope id="3823707511746539384" at="33,34,34,28" />
+      <scope id="2482070339556294888" at="42,27,43,59" />
+      <scope id="3823707511746505674" at="47,34,48,28" />
+      <scope id="2482070339556101376" at="22,0,25,0">
         <var name="project" id="2482070339556101376" />
       </scope>
-      <scope id="2482070339556343003" at="26,0,30,0" />
-      <scope id="2482070339556230954" at="31,144,35,21" />
-      <scope id="2482070339556294875" at="40,0,44,0" />
-      <scope id="2482070339556254366" at="45,91,49,21" />
-      <scope id="2482070339556117695" at="24,220,36,13">
+      <scope id="2482070339556343003" at="27,0,31,0" />
+      <scope id="2482070339556230954" at="32,144,36,21" />
+      <scope id="2482070339556294875" at="41,0,45,0" />
+      <scope id="2482070339556254366" at="46,91,50,21" />
+      <scope id="2482070339556117695" at="25,220,37,13">
         <var name="item" id="2482360940803570905" />
       </scope>
-      <scope id="2482070339556132300" at="38,198,50,13">
+      <scope id="2482070339556132300" at="39,198,51,13">
         <var name="item" id="2482360940803570951" />
       </scope>
-      <scope id="2482070339556117693" at="24,0,38,0">
+      <scope id="2482070339556117693" at="25,0,39,0">
         <var name="disposeAction" id="1693697818228933612" />
         <var name="refactoringContext" id="2482360940803570894" />
         <var name="refactoringViewAction" id="2482360940803570896" />
         <var name="searchResults" id="2482360940803570899" />
         <var name="searchTask" id="8821602715294885723" />
       </scope>
-      <scope id="2482070339556132286" at="38,0,52,0">
+      <scope id="2482070339556132286" at="39,0,53,0">
         <var name="disposeAction" id="1693697818228786968" />
         <var name="name" id="3748064186690643306" />
         <var name="p" id="2482360940803570940" />
@@ -265,9 +265,9 @@
         <var name="searchResults" id="2482360940803570945" />
         <var name="searchTask" id="8821602715294888373" />
       </scope>
-      <unit id="2482070339556341578" at="25,45,30,5" name="jetbrains.mps.ide.refactoring.plugin.RefactoringView_Tool$1" />
-      <unit id="2482070339556294549" at="39,45,44,5" name="jetbrains.mps.ide.refactoring.plugin.RefactoringView_Tool$2" />
-      <unit id="2482070339556101376" at="19,0,53,0" name="jetbrains.mps.ide.refactoring.plugin.RefactoringView_Tool" />
+      <unit id="2482070339556341578" at="26,45,31,5" name="jetbrains.mps.ide.refactoring.plugin.RefactoringView_Tool$1" />
+      <unit id="2482070339556294549" at="40,45,45,5" name="jetbrains.mps.ide.refactoring.plugin.RefactoringView_Tool$2" />
+      <unit id="2482070339556101376" at="20,0,54,0" name="jetbrains.mps.ide.refactoring.plugin.RefactoringView_Tool" />
     </file>
     <file name="Refactoring_ProjectPlugin.java">
       <node id="2482070339556101376" at="16,76,17,79" concept="6" />
