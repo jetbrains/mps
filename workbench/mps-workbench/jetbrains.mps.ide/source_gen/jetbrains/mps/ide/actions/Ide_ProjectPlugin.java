@@ -18,7 +18,6 @@ public class Ide_ProjectPlugin extends BaseProjectPlugin {
   }
   public List<BaseTool> initAllTools1(Project project) {
     List<BaseTool> tools = ListSequence.fromList(new ArrayList<BaseTool>());
-    ListSequence.fromList(tools).addElement(new ModuleDependenies_Tool(project));
     ListSequence.fromList(tools).addElement(new TodoViewer_Tool(project));
     return tools;
   }

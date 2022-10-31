@@ -322,6 +322,7 @@
       <directory url="file://$PROJECT_DIR$/plugins/mps-core/languages/languageDesign/table/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-core/languages/languageDesign/table/runtime/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-core/languages/languageDesign/table/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-devkit/languages/depanalyzer/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-devkit/languages/editor/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-devkit/languages/mpsdevkit/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-devkit/languages/pluginSolutions/baseLanguage/source_gen" includeSubdirectories="true" />

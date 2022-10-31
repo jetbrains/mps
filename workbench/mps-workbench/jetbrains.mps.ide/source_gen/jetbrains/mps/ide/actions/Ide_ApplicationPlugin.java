@@ -25,7 +25,6 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
 
   public void createGroups() {
     // actions w/o parameters
-    addAction(new AnalyzeModuleDependencies_Action());
     addAction(new CloneModel_Action());
     addAction(new CloneModule_Action());
     addAction(new CloneRoot_Action());
@@ -84,7 +83,6 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new RenameModulesVirtualFolder_Action());
     addAction(new RenamePackage_Action());
     addAction(new RevertMemoryChanges_Action());
-    addAction(new SafeDeleteModuleDependency_Action());
     addAction(new SetBookmarkNoNumber_Action());
     addAction(new SetNodePackage_Action());
     addAction(new SetVirtualFolder_Action());
@@ -94,9 +92,7 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new ShowConceptInHierarchy_Action());
     addAction(new ShowDefinitionInMenu_Action());
     addAction(new ShowDefinition_Action());
-    addAction(new ShowDependenciesInViewer_Action());
     addAction(new ShowErrorMessage_Action());
-    addAction(new ShowInDependenciesViewer_Action());
     addAction(new ShowInLogicalView_Action());
     addAction(new ShowNodeInInspector_Action());
     addAction(new ShowNodeInfo_Action());
@@ -245,7 +241,6 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
   public List<BaseKeymapChanges> initKeymaps() {
     List<BaseKeymapChanges> res = ListSequence.fromList(new ArrayList<BaseKeymapChanges>());
     ListSequence.fromList(res).addElement(new Default_KeymapChanges());
-    ListSequence.fromList(res).addElement(new DependenciesKeyMap_KeymapChanges());
     ListSequence.fromList(res).addElement(new GnomeActionsKeymap_KeymapChanges());
     ListSequence.fromList(res).addElement(new Mac_10_5_KeymapChanges());
     ListSequence.fromList(res).addElement(new Mac_KeymapChanges());
