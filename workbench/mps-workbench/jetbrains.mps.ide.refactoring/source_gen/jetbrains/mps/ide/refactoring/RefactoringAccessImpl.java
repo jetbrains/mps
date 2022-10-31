@@ -11,6 +11,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.platform.refactoring.RefactoringViewAction;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.ide.findusages.model.SearchTask;
+import jetbrains.mps.ide.refactoring.plugin.RefactoringView_Tool;
+import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
 import jetbrains.mps.refactoring.framework.RefactoringContext;
 import jetbrains.mps.ide.project.ProjectHelper;
 import com.intellij.openapi.ui.Messages;
@@ -51,14 +53,16 @@ public class RefactoringAccessImpl extends RefactoringAccessEx {
 
   @Override
   public void showRefactoringView(Project project, RefactoringViewAction refactoringViewAction, Runnable disposeAction, SearchResults searchResults, SearchTask searchTask, String name) {
-    RefactoringView refactoringView = project.getComponent(RefactoringView.class);
+    RefactoringView_Tool refactoringView = project.getComponent(ProjectPluginManager.class).getTool(RefactoringView_Tool.class);
     refactoringView.showRefactoringView(project, refactoringViewAction, disposeAction, truncateSearchResults(project, searchResults), searchTask, name);
   }
 
   @Override
   public void showRefactoringView(RefactoringContext refactoringContext, RefactoringViewAction refactoringViewAction, Runnable disposeAction, SearchResults searchResults, SearchTask searchTask, String name) {
-    RefactoringView refactoringView = refactoringContext.getSelectedProject().getComponent(RefactoringView.class);
-    refactoringView.showRefactoringView(refactoringContext, refactoringViewAction, disposeAction, truncateSearchResults(ProjectHelper.toIdeaProject(refactoringContext.getSelectedProject()), searchResults), searchTask);
+    jetbrains.mps.project.Project mpsProject = refactoringContext.getSelectedProject();
+    Project ideaProject = ProjectHelper.toIdeaProject(mpsProject);
+    RefactoringView_Tool refactoringView = ideaProject.getComponent(ProjectPluginManager.class).getTool(RefactoringView_Tool.class);
+    refactoringView.showRefactoringView(refactoringContext, refactoringViewAction, disposeAction, truncateSearchResults(ideaProject, searchResults), searchTask);
   }
 
   private SearchResults truncateSearchResults(Project project, SearchResults searchResults) {

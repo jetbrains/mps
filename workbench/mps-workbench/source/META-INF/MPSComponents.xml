@@ -64,9 +64,6 @@
       <implementation-class>jetbrains.mps.ide.bookmark.BookmarksTool</implementation-class>
     </component>
     <component>
-      <implementation-class>jetbrains.mps.ide.refactoring.RefactoringView</implementation-class>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.ide.hierarchy.BaseLanguageHierarchyViewTool</implementation-class>
     </component>
     <component>

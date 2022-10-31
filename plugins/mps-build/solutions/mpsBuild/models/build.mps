@@ -25554,6 +25554,16 @@
             <ref role="3bR37D" node="1TaHNgiIbJ$" resolve="jetbrains.mps.ide.editor" />
           </node>
         </node>
+        <node concept="1SiIV0" id="29M5tb0UkYJ" role="3bR37C">
+          <node concept="3bR9La" id="29M5tb0UkYK" role="1SiIV1">
+            <ref role="3bR37D" node="7Kfy9QB6Lh2" resolve="jetbrains.mps.refactoring.runtime" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="29M5tb0Ul0f" role="3bR37C">
+          <node concept="3bR9La" id="29M5tb0Ul0g" role="1SiIV1">
+            <ref role="3bR37D" node="1TaHNgiIbJb" resolve="MPS.Platform" />
+          </node>
+        </node>
         <node concept="1BupzO" id="73GUf$umQpn" role="3bR31x">
           <property role="3ZfqAx" value="models" />
           <property role="1Hdu6h" value="true" />
