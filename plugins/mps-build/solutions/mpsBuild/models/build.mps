@@ -24731,12 +24731,6 @@
             <ref role="3bR37D" node="7Kfy9QB6Lc2" resolve="jetbrains.mps.lang.typesystem" />
           </node>
         </node>
-        <node concept="1SiIV0" id="2a9bszgrvbv" role="3bR37C">
-          <node concept="3bR9La" id="2a9bszgrvbu" role="1SiIV1">
-            <property role="3bR36h" value="true" />
-            <ref role="3bR37D" node="7Kfy9QB6LgV" resolve="jetbrains.mps.make.runtime" />
-          </node>
-        </node>
         <node concept="1SiIV0" id="2a9bszgrvbx" role="3bR37C">
           <node concept="3bR9La" id="2a9bszgrvbw" role="1SiIV1">
             <ref role="3bR37D" node="7Kfy9QB6Lh2" resolve="jetbrains.mps.refactoring.runtime" />
@@ -40132,6 +40126,11 @@
           <ref role="3bR37D" node="7KapL9OABnm" resolve="jetbrains.mps.ide.ui" />
         </node>
       </node>
+      <node concept="1SiIV0" id="4WrOZoZJJjq" role="3bR37C">
+        <node concept="3bR9La" id="4WrOZoZJJjr" role="1SiIV1">
+          <ref role="3bR37D" node="7Kfy9QB6LgV" resolve="jetbrains.mps.make.runtime" />
+        </node>
+      </node>
       <node concept="1SiIV0" id="6IZ_b08qDN0" role="3bR37C">
         <node concept="3bR9La" id="6IZ_b08qDN1" role="1SiIV1">
           <ref role="3bR37D" node="1ia2VB5guYy" resolve="MPS.IDEA" />
@@ -40840,16 +40839,6 @@
       <node concept="1SiIV0" id="71aLKqdK$lK" role="3bR37C">
         <node concept="3bR9La" id="71aLKqdK$lL" role="1SiIV1">
           <ref role="3bR37D" node="1TaHNgiIbIQ" resolve="MPS.Core" />
-        </node>
-      </node>
-      <node concept="1SiIV0" id="6Bo45a6O2Oc" role="3bR37C">
-        <node concept="3bR9La" id="6Bo45a6O2Od" role="1SiIV1">
-          <ref role="3bR37D" node="1jjYQYSj2TY" resolve="Ant" />
-        </node>
-      </node>
-      <node concept="1SiIV0" id="5PXIvO3oTPx" role="3bR37C">
-        <node concept="3bR9La" id="5PXIvO3oTPy" role="1SiIV1">
-          <ref role="3bR37D" node="7Kfy9QB6KXW" resolve="jetbrains.mps.lang.core" />
         </node>
       </node>
       <node concept="1SiIV0" id="5PXIvO3oTPz" role="3bR37C">

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-wu0ket39b5t4cchyxq3y7tk2k95bq4" parametersHash="-71teww635a0v22q9t7gojfr7i3rx2yu">
+<product version="3" modelHash="-wu0ket39b5t4cchyxq3y7tk2k95bq4">
   <files names="AddToToolsInternal_ActionGroup.java:AnalyzeClasspath_Action.java:AnalyzeJavaActions_ActionGroup.java:CalcClassifiersInRootsStatistic_Action.java:ChangeMethodSignatureDialog.java:ChangeMethodSignature_Action.java:Default_KeymapChanges.java:MigrateSourcesToMPS_Action.java:ModelNewActions_ActionGroup.java:NewModelFromSource_Action.java:ParamDefaultValueEditor.java:ParamDefautValueSectionPanel.java:RefactoringAdditions_ActionGroup.java:SizedEmbeddableEditor.java:SolutionActionsEx_ActionGroup.java:TouchBarDefault_shift_ActionGroup.java:Workbench_ApplicationPlugin.java:startup.properties" />
 </product>
 
