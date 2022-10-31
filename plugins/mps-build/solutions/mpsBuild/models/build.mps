@@ -364,7 +364,6 @@
         <reference id="7655580649838764661" name="module" index="1kK7hZ" />
         <child id="7477562766051177430" name="sourceDescriptorFile" index="2JVP1x" />
         <child id="6654070855063054711" name="libraryEntries" index="1622H7" />
-        <child id="4356762679305686649" name="jarLocations" index="3yLTFF" />
         <child id="506537499308757750" name="sourcesJarLocation" index="3SGgvt" />
       </concept>
       <concept id="763829979718664966" name="jetbrains.mps.build.mps.structure.BuildMps_ModuleResources" flags="ng" index="3rtmxn">
@@ -38470,24 +38469,6 @@
               </node>
               <node concept="1kK7hY" id="496s5VbGNvj" role="39821P">
                 <ref role="1kK7hZ" node="5sovPIfS$nd" resolve="jetbrains.mps.ide.mpsdevkit" />
-                <node concept="3yLZsm" id="2w57fuMpaDC" role="3yLTFF">
-                  <property role="3yLZsk" value="../lib/mpsdevkit.jar" />
-                  <node concept="398BVA" id="2w57fuMpaDO" role="3yLZsn">
-                    <ref role="398BVh" node="4O0hKJpjIUX" resolve="mps_home" />
-                    <node concept="2Ry0Ak" id="2w57fuMpaDP" role="iGT6I">
-                      <property role="2Ry0Am" value="plugins" />
-                      <node concept="2Ry0Ak" id="2w57fuMpaDQ" role="2Ry0An">
-                        <property role="2Ry0Am" value="mps-devkit" />
-                        <node concept="2Ry0Ak" id="2w57fuMpaDR" role="2Ry0An">
-                          <property role="2Ry0Am" value="lib" />
-                          <node concept="2Ry0Ak" id="6TSglUdUQQF" role="2Ry0An">
-                            <property role="2Ry0Am" value="mpsdevkit.jar" />
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
                 <node concept="1cIVw3" id="496s5VbGNvl" role="3SGgvt">
                   <property role="1cIVw0" value="." />
                 </node>
@@ -38548,6 +38529,27 @@
           <node concept="L2wRC" id="6S_FNWXEK$S" role="39821P">
             <ref role="L2wRA" node="6S_FNWXEKkg" resolve="jetbrains.mps.ide.depanalyzer" />
           </node>
+          <node concept="L2wRC" id="6fdGXD4LAhE" role="39821P">
+            <ref role="L2wRA" node="6fdGXD4LA1J" resolve="jetbrains.mps.ide.mpsdevkit.cp" />
+            <node concept="3yLZsm" id="2w57fuMpaDC" role="3yL2VB">
+              <property role="3yLZsk" value="../lib/mpsdevkit.jar" />
+              <node concept="398BVA" id="2w57fuMpaDO" role="3yLZsn">
+                <ref role="398BVh" node="4O0hKJpjIUX" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="2w57fuMpaDP" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="2w57fuMpaDQ" role="2Ry0An">
+                    <property role="2Ry0Am" value="mps-devkit" />
+                    <node concept="2Ry0Ak" id="2w57fuMpaDR" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="6TSglUdUQQF" role="2Ry0An">
+                        <property role="2Ry0Am" value="mpsdevkit.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
         </node>
       </node>
     </node>
@@ -38592,6 +38594,9 @@
       </node>
       <node concept="m$_yB" id="4SfURgQoX49" role="m$_yh">
         <ref role="m$_yA" node="5sovPIfS$nd" resolve="jetbrains.mps.ide.mpsdevkit" />
+      </node>
+      <node concept="m$_yB" id="2G_d5$2LcPq" role="m$_yh">
+        <ref role="m$_yA" node="6fdGXD4LA1J" resolve="jetbrains.mps.ide.mpsdevkit.cp" />
       </node>
       <node concept="m$_yC" id="4O0hKJpjIVJ" role="m$_yJ">
         <ref role="m$_y1" node="4k71ibbKLe8" resolve="jetbrains.mps.core" />
@@ -40022,25 +40027,6 @@
           </node>
         </node>
       </node>
-      <node concept="1E1SXE" id="1lMM4owEDpm" role="3bR37C">
-        <property role="1E1SXH" value="true" />
-        <ref role="1E1SXG" node="5sovPIfS$mJ" resolve="mps-devkit" />
-        <node concept="398BVA" id="6mTG60y64bx" role="17Grwy">
-          <ref role="398BVh" node="4O0hKJpjIUX" resolve="mps_home" />
-          <node concept="2Ry0Ak" id="6mTG60y64bZ" role="iGT6I">
-            <property role="2Ry0Am" value="plugins" />
-            <node concept="2Ry0Ak" id="6mTG60y64ck" role="2Ry0An">
-              <property role="2Ry0Am" value="mps-devkit" />
-              <node concept="2Ry0Ak" id="6TSglUdUQQd" role="2Ry0An">
-                <property role="2Ry0Am" value="lib" />
-                <node concept="2Ry0Ak" id="6TSglUdUQQs" role="2Ry0An">
-                  <property role="2Ry0Am" value="mpsdevkit.jar" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
       <node concept="1SiIV0" id="2a9bszgrw3l" role="3bR37C">
         <node concept="3bR9La" id="2a9bszgrw3k" role="1SiIV1">
           <ref role="3bR37D" node="44LXwdzyvTi" resolve="Annotations" />
@@ -40136,6 +40122,12 @@
           <ref role="3bR37D" node="1ia2VB5guYy" resolve="MPS.IDEA" />
         </node>
       </node>
+      <node concept="1SiIV0" id="6fdGXD4LAfJ" role="3bR37C">
+        <node concept="3bR9La" id="6fdGXD4LAfK" role="1SiIV1">
+          <property role="3bR36h" value="true" />
+          <ref role="3bR37D" node="6fdGXD4LA1J" resolve="jetbrains.mps.ide.mpsdevkit.cp" />
+        </node>
+      </node>
       <node concept="1BupzO" id="73GUf$umt$o" role="3bR31x">
         <property role="3ZfqAx" value="models" />
         <property role="1Hdu6h" value="true" />
@@ -40161,6 +40153,49 @@
           </node>
           <node concept="3qWCbU" id="73GUf$umt$q" role="3LXTna">
             <property role="3qWCbO" value="**/*.mps, **/*.mpsr, **/.model" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1E1JtA" id="6fdGXD4LA1J" role="3989C9">
+      <property role="BnDLt" value="true" />
+      <property role="TrG5h" value="jetbrains.mps.ide.mpsdevkit.cp" />
+      <property role="3LESm3" value="3362c68c-9a29-468f-94d0-93cd46ab6ca8" />
+      <property role="2GAjPV" value="true" />
+      <node concept="398BVA" id="6fdGXD4LAc6" role="3LF7KH">
+        <ref role="398BVh" node="4O0hKJpjIUX" resolve="mps_home" />
+        <node concept="2Ry0Ak" id="6fdGXD4LAca" role="iGT6I">
+          <property role="2Ry0Am" value="plugins" />
+          <node concept="2Ry0Ak" id="6fdGXD4LAcf" role="2Ry0An">
+            <property role="2Ry0Am" value="mps-devkit" />
+            <node concept="2Ry0Ak" id="6fdGXD4LAck" role="2Ry0An">
+              <property role="2Ry0Am" value="languages" />
+              <node concept="2Ry0Ak" id="6fdGXD4LAcp" role="2Ry0An">
+                <property role="2Ry0Am" value="cp" />
+                <node concept="2Ry0Ak" id="6fdGXD4LAcu" role="2Ry0An">
+                  <property role="2Ry0Am" value="jetbrains.mps.ide.mpsdevkit.cp.msd" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1E1SXE" id="5LF9H$MrEpQ" role="3bR37C">
+        <property role="1E1SXH" value="true" />
+        <ref role="1E1SXG" node="5sovPIfS$mJ" resolve="mps-devkit" />
+        <node concept="398BVA" id="5LF9H$MrEqg" role="17Grwy">
+          <ref role="398BVh" node="4O0hKJpjIUX" resolve="mps_home" />
+          <node concept="2Ry0Ak" id="5LF9H$MrEqE" role="iGT6I">
+            <property role="2Ry0Am" value="plugins" />
+            <node concept="2Ry0Ak" id="5LF9H$MrEqT" role="2Ry0An">
+              <property role="2Ry0Am" value="mps-devkit" />
+              <node concept="2Ry0Ak" id="5LF9H$MrEr8" role="2Ry0An">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="5LF9H$MrErx" role="2Ry0An">
+                  <property role="2Ry0Am" value="mpsdevkit.jar" />
+                </node>
+              </node>
+            </node>
           </node>
         </node>
       </node>

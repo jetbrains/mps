@@ -98,6 +98,7 @@
           <module ref="86441d7a-e194-42da-81a5-2161ec62a379(MPS.Workbench)" kind="cl" />
           <module ref="019b622b-0aef-4dd3-86d0-4eef01f3f6bb(jetbrains.mps.ide)" kind="cl" />
           <module ref="5b1f863d-65a0-41a6-a801-33896be24202(jetbrains.mps.ide.editor)" kind="cl" />
+          <module ref="3362c68c-9a29-468f-94d0-93cd46ab6ca8(jetbrains.mps.ide.mpsdevkit.cp)" kind="cl" />
           <module ref="8d29d73f-ed99-4652-ae0a-083cdfe53c34(jetbrains.mps.ide.platform)" kind="cl" />
           <module ref="25092e07-e655-497c-92fb-558a8e3080ed(jetbrains.mps.ide.ui)" kind="cl" />
           <module ref="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="cl" />
@@ -127,7 +128,6 @@
           <language id="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" />
           <language id="l:c7fb639f-be78-4307-89b0-b5959c3fa8c8:jetbrains.mps.lang.text" />
         </uses>
-        <library jar="../lib/mpsdevkit.jar" />
         <sources jar="." descriptor="jetbrains.mps.ide.mpsdevkit.msd" />
       </module>
     </echoxml>
@@ -930,6 +930,20 @@
       <zipfileset file="${mps_home}/plugins/mps-devkit/languages/depanalyzer/jetbrains.mps.ide.depanalyzer.msd" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-devkit-languages-depanalyzer-models" prefix="module/models" />
     </jar>
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.ide.mpsdevkit.cp.jar" />
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.ide.mpsdevkit.cp.jar/META-INF" />
+    <echoxml file="${build.tmp}/default/jetbrains.mps.ide.mpsdevkit.cp.jar/META-INF/module.xml">
+      <module namespace="jetbrains.mps.ide.mpsdevkit.cp" type="solution" uuid="3362c68c-9a29-468f-94d0-93cd46ab6ca8">
+        <dependencies />
+        <uses />
+        <library jar="../lib/mpsdevkit.jar" />
+        <sources jar="." descriptor="jetbrains.mps.ide.mpsdevkit.cp.msd" />
+      </module>
+    </echoxml>
+    <jar destfile="${build.layout}/mps-devkit/languages/jetbrains.mps.ide.mpsdevkit.cp.jar" duplicate="preserve">
+      <zipfileset file="${mps_home}/plugins/mps-devkit/languages/cp/jetbrains.mps.ide.mpsdevkit.cp.msd" prefix="module" />
+      <fileset dir="${build.tmp}/default/jetbrains.mps.ide.mpsdevkit.cp.jar" />
+    </jar>
     <echo file="${build.layout}/build.properties">mpsBootstrapCore.version.major=${mpsBootstrapCore.version.major}${line.separator}mpsBootstrapCore.version.minor=${mpsBootstrapCore.version.minor}${line.separator}mpsBootstrapCore.version.bugfixNr=${mpsBootstrapCore.version.bugfixNr}${line.separator}mpsBootstrapCore.version.eap=${mpsBootstrapCore.version.eap}${line.separator}mpsBootstrapCore.version=${mpsBootstrapCore.version}</echo>
   </target>
   
@@ -1094,6 +1108,7 @@
         <module file="${mps_home}/plugins/mps-devkit/languages/depanalyzer/jetbrains.mps.ide.depanalyzer.msd" />
         <module file="${mps_home}/plugins/mps-devkit/languages/editor/jetbrains.mps.ide.devkit.editor.msd" />
         <module file="${mps_home}/plugins/mps-devkit/languages/mpsdevkit/jetbrains.mps.ide.mpsdevkit.msd" />
+        <module file="${mps_home}/plugins/mps-devkit/languages/cp/jetbrains.mps.ide.mpsdevkit.cp.msd" />
         <module file="${mps_home}/plugins/mps-devkit/languages/pluginSolutions/lang.actions/jetbrains.mps.lang.actions.pluginSolution.msd" />
         <module file="${mps_home}/plugins/mps-devkit/languages/pluginSolutions/lang.dataFlow/jetbrains.mps.lang.dataFlow.pluginSolution.msd" />
         <module file="${mps_home}/plugins/mps-devkit/languages/pluginSolutions/lang.generator/jetbrains.mps.lang.generator.pluginSolution.msd" />
