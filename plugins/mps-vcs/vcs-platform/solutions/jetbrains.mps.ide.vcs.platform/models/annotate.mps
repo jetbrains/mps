@@ -3651,9 +3651,9 @@
               </node>
               <node concept="liA8E" id="1dz1DQscPHB" role="2OqNvi">
                 <ref role="37wK5l" to="qkt:~ActionManager.createActionPopupMenu(java.lang.String,com.intellij.openapi.actionSystem.ActionGroup)" resolve="createActionPopupMenu" />
-                <node concept="10M0yZ" id="1dz1DQscPHC" role="37wK5m">
+                <node concept="10M0yZ" id="6bjUeYPvbda" role="37wK5m">
+                  <ref role="3cqZAo" to="qkt:~ActionPlaces.EDITOR_GUTTER_POPUP" resolve="EDITOR_GUTTER_POPUP" />
                   <ref role="1PxDUh" to="qkt:~ActionPlaces" resolve="ActionPlaces" />
-                  <ref role="3cqZAo" to="qkt:~ActionPlaces.UNKNOWN" resolve="UNKNOWN" />
                 </node>
                 <node concept="2YIFZM" id="4zPruQLuQ7l" role="37wK5m">
                   <ref role="37wK5l" to="7bx7:~ActionUtils.groupFromActions(com.intellij.openapi.actionSystem.AnAction...)" resolve="groupFromActions" />
