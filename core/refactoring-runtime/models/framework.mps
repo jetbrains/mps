@@ -2529,7 +2529,10 @@
             <node concept="2OqwBi" id="6CS$e10CRlP" role="33vP2m">
               <node concept="2YIFZM" id="6CS$e10CRgi" role="2Oq$k0">
                 <ref role="1Pybhc" to="y38:3dEPKBAxz0O" resolve="RefactoringAccess" />
-                <ref role="37wK5l" to="y38:1dH5fOG2bPt" resolve="getInstance" />
+                <ref role="37wK5l" to="y38:4xB7mi2r8bh" resolve="getInstance" />
+                <node concept="37vLTw" id="4xB7mi2rWen" role="37wK5m">
+                  <ref role="3cqZAo" node="5lCz6ko41HC" resolve="project" />
+                </node>
               </node>
               <node concept="liA8E" id="6CS$e10CRuz" role="2OqNvi">
                 <ref role="37wK5l" to="y38:10tOJLdhm35" resolve="getRefactoringByClassName" />

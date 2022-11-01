@@ -270,7 +270,7 @@ public class RefactoringContext {
     return result;
   }
   public static RefactoringContext createRefactoringContextByName(String refName, List names, List parameters, Object target, Project project) {
-    IRefactoring refactoring = RefactoringAccess.getInstance().getRefactoringByClassName(refName);
+    IRefactoring refactoring = RefactoringAccess.getInstance(project).getRefactoringByClassName(refName);
     return createRefactoringContext(refactoring, names, parameters, target, project);
   }
 }

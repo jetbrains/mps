@@ -423,6 +423,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(3);
     b.associate("refactoring", 0x5b9318cd86fd917eL).target(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L).optional(false).origin("6598645150040035710").done();
     b.aggregate("target", 0x5b9318cd86fd94a6L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("6598645150040036518").done();
+    b.aggregate("project", 0x48671d64826fc4edL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(true).ordered(true).multiple(false).origin("5217171010854307053").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("is applicable refactoring");
     return b.create();

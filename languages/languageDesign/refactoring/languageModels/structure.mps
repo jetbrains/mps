@@ -33,6 +33,9 @@
         <property id="1225118929411" name="build" index="YLPcu" />
         <property id="1225118933224" name="comment" index="YLQ7P" />
       </concept>
+      <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
+        <property id="7862711839422615217" name="text" index="t5JxN" />
+      </concept>
       <concept id="1082978164218" name="jetbrains.mps.lang.structure.structure.DataTypeDeclaration" flags="ng" index="AxPO6">
         <property id="7791109065626895363" name="datatypeId" index="3F6X1D" />
       </concept>
@@ -734,6 +737,15 @@
       <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="6598645150040036518" />
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+    </node>
+    <node concept="1TJgyj" id="4xB7mi2rWjH" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="project" />
+      <property role="IQ2ns" value="5217171010854307053" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+      <node concept="t5JxF" id="4xB7mi2rWjP" role="lGtFl">
+        <property role="t5JxN" value="FIXME make mandatory once mbeddr switches to MPS 2022.3" />
+      </node>
     </node>
     <node concept="1TJgyj" id="5Ij6cQ6Zp5Y" role="1TKVEi">
       <property role="20kJfa" value="refactoring" />
