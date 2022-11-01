@@ -33,7 +33,8 @@ public class BaseProjectsTest {
 
   @Parameterized.Parameters
   public static List<Object[]> testParameters() throws InvocationTargetException, InterruptedException {
-    EnvironmentConfig config = EnvironmentConfig.defaultConfig().setCreatePluginClassLoaders(false).withJavaPlugin().withKotlinPlugin().withMigrationPlugin().withTestModeOn();
+    // At the moment, there's only IDEA-started test, and seems that set of plugins is controlled by 'testbench' module classpath
+    EnvironmentConfig config = EnvironmentConfig.defaultConfig().setCreatePluginClassLoaders(true).withAutomaticPluginDiscovery().withTestModeOn();
 
     ourEnv = new IdeaEnvironment(config);
     ourEnv.init();

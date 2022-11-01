@@ -83,5 +83,6 @@
     <orderEntry type="module" module-name="messages-api" />
     <orderEntry type="module" module-name="mps-httpsupport" />
     <orderEntry type="module" module-name="vfs-tracking" scope="TEST" />
+    <orderEntry type="module" module-name="mps-devkit" scope="TEST" />
   </component>
 </module>
