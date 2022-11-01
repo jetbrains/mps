@@ -8,12 +8,12 @@ import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.refactoring.runtime.access.RefactoringAccess;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.project.MPSProject;
 import java.awt.Frame;
 import com.intellij.featureStatistics.FeatureUsageTracker;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
@@ -47,7 +47,7 @@ public class RenameNode_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return RefactoringAccess.getInstance().isApplicable("jetbrains.mps.lang.core.refactorings.Rename", ((SNode) MapSequence.fromMap(_params).get("target")));
+    return RefactoringAccess.getInstance(((MPSProject) MapSequence.fromMap(_params).get("project"))).isApplicable("jetbrains.mps.lang.core.refactorings.Rename", ((SNode) MapSequence.fromMap(_params).get("target")));
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {

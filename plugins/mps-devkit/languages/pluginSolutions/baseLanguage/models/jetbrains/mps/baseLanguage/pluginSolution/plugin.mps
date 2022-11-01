@@ -508,6 +508,7 @@
     <language id="3ecd7c84-cde3-45de-886c-135ecc69b742" name="jetbrains.mps.lang.refactoring">
       <concept id="6598645150040035709" name="jetbrains.mps.lang.refactoring.structure.IsRefactoringApplicable" flags="nn" index="3trCAK">
         <reference id="6598645150040035710" name="refactoring" index="3trCAN" />
+        <child id="5217171010854307053" name="project" index="3a2dA9" />
         <child id="6598645150040036518" name="target" index="3trCLF" />
       </concept>
       <concept id="2298239814950983788" name="jetbrains.mps.lang.refactoring.structure.ExecuteRefactoringStatement" flags="nn" index="1Xdei3">
@@ -8874,6 +8875,12 @@
                 <ref role="2WH_rO" node="cvGLnZnRnB" resolve="target" />
               </node>
             </node>
+            <node concept="2OqwBi" id="7Ir98aEdG9W" role="3a2dA9">
+              <node concept="2WthIp" id="7Ir98aEdG9Z" role="2Oq$k0" />
+              <node concept="1DTwFV" id="7Ir98aEdGa1" role="2OqNvi">
+                <ref role="2WH_rO" node="cvGLnZnRnF" resolve="project" />
+              </node>
+            </node>
           </node>
         </node>
       </node>
@@ -8985,6 +8992,12 @@
               <node concept="2WthIp" id="cvGLnZnRot" role="2Oq$k0" />
               <node concept="3gHZIF" id="cvGLnZnRou" role="2OqNvi">
                 <ref role="2WH_rO" node="cvGLnZnRov" resolve="target" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="7Ir98aEdGGM" role="3a2dA9">
+              <node concept="2WthIp" id="7Ir98aEdGGP" role="2Oq$k0" />
+              <node concept="1DTwFV" id="7Ir98aEdGGR" role="2OqNvi">
+                <ref role="2WH_rO" node="cvGLnZnRoz" resolve="project" />
               </node>
             </node>
           </node>
@@ -9776,6 +9789,12 @@
               <node concept="2WthIp" id="2o0RM2fztZt" role="2Oq$k0" />
               <node concept="3gHZIF" id="2o0RM2fztZu" role="2OqNvi">
                 <ref role="2WH_rO" node="2o0RM2fztWG" resolve="target" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="7Ir98aEdHdi" role="3a2dA9">
+              <node concept="2WthIp" id="7Ir98aEdHdl" role="2Oq$k0" />
+              <node concept="1DTwFV" id="7Ir98aEdHdn" role="2OqNvi">
+                <ref role="2WH_rO" node="2o0RM2fztWK" resolve="project" />
               </node>
             </node>
           </node>

@@ -204,6 +204,7 @@
     <language id="3ecd7c84-cde3-45de-886c-135ecc69b742" name="jetbrains.mps.lang.refactoring">
       <concept id="6598645150040035709" name="jetbrains.mps.lang.refactoring.structure.IsRefactoringApplicable" flags="nn" index="3trCAK">
         <reference id="6598645150040035710" name="refactoring" index="3trCAN" />
+        <child id="5217171010854307053" name="project" index="3a2dA9" />
         <child id="6598645150040036518" name="target" index="3trCLF" />
       </concept>
       <concept id="2298239814950983788" name="jetbrains.mps.lang.refactoring.structure.ExecuteRefactoringStatement" flags="nn" index="1Xdei3">
@@ -397,6 +398,12 @@
               <node concept="2WthIp" id="4KDfkUwM8V4" role="2Oq$k0" />
               <node concept="3gHZIF" id="4KDfkUwM8V5" role="2OqNvi">
                 <ref role="2WH_rO" node="4KDfkUwM8UK" resolve="target" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="7Ir98aEgipd" role="3a2dA9">
+              <node concept="2WthIp" id="7Ir98aEgipg" role="2Oq$k0" />
+              <node concept="1DTwFV" id="7Ir98aEgipi" role="2OqNvi">
+                <ref role="2WH_rO" node="4KDfkUwM8UO" resolve="project" />
               </node>
             </node>
           </node>
