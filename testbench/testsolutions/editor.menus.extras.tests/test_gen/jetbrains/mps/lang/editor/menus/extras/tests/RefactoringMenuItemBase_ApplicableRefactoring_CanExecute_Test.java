@@ -40,10 +40,10 @@ public class RefactoringMenuItemBase_ApplicableRefactoring_CanExecute_Test exten
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("6820996345401023608", "");
-      final SRepository repository = getEditorComponent().getEditorContext().getRepository();
+      SRepository repository = getEditorComponent().getEditorContext().getRepository();
 
       repository.getModelAccess().runReadAction(() -> {
-        IRefactoring refactoring = ActionLookupUtils.getRefactoring(repository, new SNodePointer("r:2f49f947-e2b6-4dd2-87ae-7938deb42899(jetbrains.mps.lang.editor.menus.extras.testLanguage.refactorings)", "6820996345401025745"));
+        IRefactoring refactoring = ActionLookupUtils.getRefactoring(myProject, new SNodePointer("r:2f49f947-e2b6-4dd2-87ae-7938deb42899(jetbrains.mps.lang.editor.menus.extras.testLanguage.refactorings)", "6820996345401025745"));
 
         DefaultTransformationMenuContext context = DefaultTransformationMenuContext.createInitialContextForCell(getEditorComponent().getSelectedCell(), "irrelevant location");
 
