@@ -203,30 +203,24 @@ public final class ModuleDependencyVersions {
 
     Map<SLanguage, Integer> newLangVersions = collectActualLanguageVersions(abstractModule, langVersions);
     if (!(langVersions.equals(newLangVersions))) {
-      if (myRemoveOddImports) {
-        Iterable<SLanguage> keysToRemove = SetSequence.fromSet(((Set<SLanguage>) langVersions.keySet())).where(new IWhereFilter<SLanguage>() {
-          public boolean accept(SLanguage it) {
-            return it.isValid();
-          }
-        });
-        changed.value = changed.value || Sequence.fromIterable(keysToRemove).isNotEmpty();
-        if (!(dryRun)) {
+      changed.value = true;
+      if (!(dryRun)) {
+        if (myRemoveOddImports) {
+          Iterable<SLanguage> keysToRemove = langVersions.keySet();
           Sequence.fromIterable(keysToRemove).visitAll(new IVisitor<SLanguage>() {
             public void visit(SLanguage it) {
               md.getLanguageVersions().remove(it);
             }
           });
         }
-      }
-      MapSequence.fromMap(newLangVersions).visitAll(new IVisitor<IMapping<SLanguage, Integer>>() {
-        public void visit(IMapping<SLanguage, Integer> it) {
-          boolean willBeChanged = !(Objects.equals(md.getLanguageVersions().get(it.key()), it.value()));
-          changed.value = changed.value || willBeChanged;
-          if (willBeChanged && !(dryRun)) {
-            md.getLanguageVersions().put(it.key(), it.value());
+        MapSequence.fromMap(newLangVersions).visitAll(new IVisitor<IMapping<SLanguage, Integer>>() {
+          public void visit(IMapping<SLanguage, Integer> it) {
+            if (!(Objects.equals(md.getLanguageVersions().get(it.key()), it.value()))) {
+              md.getLanguageVersions().put(it.key(), it.value());
+            }
           }
-        }
-      });
+        });
+      }
     }
 
     // TODO move this check somewhere else

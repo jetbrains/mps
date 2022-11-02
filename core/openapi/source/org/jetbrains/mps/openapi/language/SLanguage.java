@@ -56,7 +56,7 @@ public interface SLanguage {
    * @deprecated {@code SLanguage} is an identity object, consult {@code LanguageRegistry} instead
    */
   @Deprecated(since = "2022.3")
-  boolean isValid();
+  boolean isValid(); // FWIW, no uses in mbeddr
 
   /**
    * All the runtime dependencies that a language needs after generation to run the generated code.
@@ -94,5 +94,5 @@ public interface SLanguage {
    * @return non-negative version of the language, or -1 the version could not be deduced.
    */
   @Deprecated //normally, one shouldn't have used it. If you had, switch to getting version from LanguageRuntime
-  int getLanguageVersion();
+  int getLanguageVersion(); // FWIW, no uses in mbeddr
 }
