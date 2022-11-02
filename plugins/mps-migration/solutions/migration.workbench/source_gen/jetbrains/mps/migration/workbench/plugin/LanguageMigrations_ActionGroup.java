@@ -21,9 +21,10 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.smodel.SLanguageHierarchy;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.smodel.SLanguageHierarchy;
 import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.smodel.language.LanguageRuntime;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScript;
@@ -51,22 +52,28 @@ public class LanguageMigrations_ActionGroup extends GeneratedActionGroup {
       return;
     }
 
-    List<SLanguage> languages = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(mpsProject)).translate(new ITranslator2<SModule, SLanguage>() {
-      public Iterable<SLanguage> translate(SModule module) {
-        return new SLanguageHierarchy(mpsProject.getComponent(LanguageRegistry.class), module.getUsedLanguages()).getExtended();
+    List<SLanguage> allUsedLanguages = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(mpsProject)).translate(new ITranslator2<SModule, SLanguage>() {
+      public Iterable<SLanguage> translate(SModule this0) {
+        return this0.getUsedLanguages();
       }
-    }).distinct().sort(new ISelector<SLanguage, String>() {
+    }).distinct().toListSequence();
+    final LanguageRegistry languageRegistry = mpsProject.getComponent(LanguageRegistry.class);
+    // calculate extended once, not per-module 
+    Set<SLanguage> allUsedWithExtended = new SLanguageHierarchy(languageRegistry, allUsedLanguages).getExtended();
+
+    List<SLanguage> languages = SetSequence.fromSet(allUsedWithExtended).sort(new ISelector<SLanguage, String>() {
       public String select(SLanguage it) {
         return it.getQualifiedName();
       }
     }, true).toListSequence();
 
-    for (SLanguage language : languages) {
-      String name = language.getQualifiedName();
+    languageRegistry.withAvailableLanguages(languages.stream(), (LanguageRuntime lr) -> {
+      String name = lr.getNamespace();
       DefaultActionGroup langRootsGroup = new DefaultActionGroup(NameUtil.compactNamespace(name), true);
 
-      for (int ver = 0; ver < language.getLanguageVersion(); ver++) {
-        MigrationScript script = new MigrationScriptReference(language, ver).resolve(mpsProject, true);
+      for (int ver = 0; ver < lr.getVersion(); ver++) {
+        // FIXME MSR.resolve basically needs LanguageRuntme we already got here!
+        MigrationScript script = new MigrationScriptReference(lr.getIdentity(), ver).resolve(mpsProject, true);
         if (script == null) {
           continue;
         }
@@ -76,7 +83,7 @@ public class LanguageMigrations_ActionGroup extends GeneratedActionGroup {
       if (langRootsGroup.getChildrenCount() > 0) {
         LanguageMigrations_ActionGroup.this.add(langRootsGroup);
       }
-    }
+    });
     for (Pair<ActionPlace, Condition<BaseAction>> p : this.myPlaces) {
       this.addPlace(p.first, p.second);
     }

@@ -19,13 +19,13 @@ import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.progress.ProgressIndicator;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
+import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.util.WaitForProgressToShow;
 import java.util.Set;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.SLanguageHierarchy;
-import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
+import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScript;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 
@@ -64,29 +64,29 @@ public class ExecuteRerunnableMigrations_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final List<SModule>[] modules = new List[1];
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(() -> {
-      jetbrains.mps.project.Project p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-      modules[0] = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(p)).toListSequence();
-    });
+    final MPSProject mpsProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(() -> modules[0] = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(mpsProject)).toListSequence());
     ProgressManager.getInstance().run(new Task.Modal(event.getData(CommonDataKeys.PROJECT), "Run Migrations", true) {
       public void run(@NotNull ProgressIndicator progressIndicator) {
         ProgressMonitorAdapter progressMonitor = new ProgressMonitorAdapter(progressIndicator);
         int steps = modules[0].size();
         progressMonitor.start("Running...", steps);
-        final MPSProject mpsProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+        final LanguageRegistry languageRegistry = mpsProject.getComponent(LanguageRegistry.class);
         for (final SModule module : ListSequence.fromList(modules[0])) {
           progressMonitor.step(module.getModuleName());
           WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(() -> mpsProject.getRepository().getModelAccess().executeCommand(() -> {
-            Set<SLanguage> languages = new SLanguageHierarchy(mpsProject.getComponent(LanguageRegistry.class), module.getUsedLanguages()).getExtended();
-            for (SLanguage language : SetSequence.fromSet(languages)) {
-              for (int ver = 0; ver < language.getLanguageVersion(); ver++) {
-                MigrationScript script = new MigrationScriptReference(language, ver).resolve(mpsProject, true);
+            Set<SLanguage> languages = new SLanguageHierarchy(languageRegistry, module.getUsedLanguages()).getExtended();
+            languageRegistry.withAvailableLanguages(languages.stream(), (LanguageRuntime lr) -> {
+              for (int ver = 0; ver < lr.getVersion(); ver++) {
+                // FIXME, MSR.resolve and LanguageRegistry!
+                MigrationScript script = new MigrationScriptReference(lr.getIdentity(), ver).resolve(mpsProject, true);
                 if (script != null && Sequence.fromIterable(script.requiresData()).isEmpty() && script.isRerunnable()) {
                   script.execute(module);
-                  RunMigration.updateModelVesionsIfPossible(module, language, ver, ver + 1);
+                  RunMigration.updateModelVesionsIfPossible(module, lr.getIdentity(), ver, ver + 1);
                 }
               }
-            }
+
+            });
           }));
           progressMonitor.advance(1);
           if (progressMonitor.isCanceled()) {

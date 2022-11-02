@@ -26,6 +26,7 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import java.util.Objects;
 import java.util.HashMap;
+import jetbrains.mps.smodel.language.LanguageRuntime;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.LinkedHashSet;
@@ -237,36 +238,33 @@ public final class ModuleDependencyVersions {
     return changed.value;
   }
 
-  private Map<SLanguage, Integer> filterValidLanguageVersions(Map<SLanguage, Integer> langVersions) {
-    final Map<SLanguage, Integer> versions = new HashMap<SLanguage, Integer>(langVersions);
-    List<SLanguage> missed = SetSequence.fromSet(MapSequence.fromMap(versions).keySet()).where(new IWhereFilter<SLanguage>() {
-      public boolean accept(SLanguage it) {
-        return !(it.isValid());
-      }
-    }).toListSequence();
-    ListSequence.fromList(missed).visitAll(new IVisitor<SLanguage>() {
-      public void visit(SLanguage it) {
-        MapSequence.fromMap(versions).removeKey(it);
-      }
+  private Map<SLanguage, Integer> filterValidLanguageVersions(final Map<SLanguage, Integer> langVersions) {
+    // this is quite suspicious code, why do we care to see "valid" languages only?
+    // OTOH, the result is compared with collectActualLanguageVersions() outcome, where we use actual/present
+    // languages, and filtering "invalid" here is on par with the new state. Is it right, however?
+    final Map<SLanguage, Integer> versions = new HashMap<SLanguage, Integer>();
+    // copy pairs that have active LanguageRuntime (i.e. "valid" language)
+    myLanguageRegistry.withAvailableLanguages(langVersions.keySet().stream(), (LanguageRuntime lr) -> {
+      SLanguage lid = lr.getIdentity();
+      // assert langVersions.contains(lid) : how come we got 'available' language, then
+      versions.put(lid, langVersions.get(lid));
     });
     return versions;
   }
 
-  private Map<SLanguage, Integer> collectActualLanguageVersions(SModule module, Map<SLanguage, Integer> oldLangVersions) {
-    Map<SLanguage, Integer> newLangVersions = new HashMap<SLanguage, Integer>();
+  private Map<SLanguage, Integer> collectActualLanguageVersions(SModule module, final Map<SLanguage, Integer> oldLangVersions) {
+    final Map<SLanguage, Integer> newLangVersions = new HashMap<SLanguage, Integer>();
     Set<SLanguage> usedLanguages = module.getUsedLanguages();
     SLanguageHierarchy languageHierarchy = new SLanguageHierarchy(myLanguageRegistry, usedLanguages);
     Set<SLanguage> extendingLangsClosure = languageHierarchy.getExtended();
-    for (SLanguage lang : extendingLangsClosure) {
-      if (!(lang.isValid())) {
-        continue;
-      }
+    myLanguageRegistry.withAvailableLanguages(extendingLangsClosure.stream(), (LanguageRuntime lr) -> {
+      SLanguage lang = lr.getIdentity();
       if (oldLangVersions.containsKey(lang)) {
         newLangVersions.put(lang, oldLangVersions.get(lang));
       } else {
-        newLangVersions.put(lang, lang.getLanguageVersion());
+        newLangVersions.put(lang, lr.getVersion());
       }
-    }
+    });
     return newLangVersions;
   }
 
