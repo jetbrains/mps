@@ -30,6 +30,7 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.ide.migration.ModuleVersionUpdate;
+import jetbrains.mps.migration.global.ProjectMigrationsRegistry;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -220,7 +221,7 @@ public interface MigrationSession {
     @Override
     public void completed() {
       if (getError() == null && requires(MigrationStepKind.MIGRATE)) {
-        ((MigrationSetup) getConfiguration()).markMigratedProjectVersion();
+        ProjectMigrationsRegistry.getInstance().markMigratedToActualVersion(getProject());
       }
     }
 

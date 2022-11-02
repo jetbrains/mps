@@ -6811,20 +6811,17 @@
         <node concept="3clFbS" id="6b$YhINoPzn" role="3clF47">
           <node concept="3clFbJ" id="6b$YhINpHES" role="3cqZAp">
             <node concept="3clFbS" id="6b$YhINpHEU" role="3clFbx">
-              <node concept="3clFbF" id="6b$YhINoTZQ" role="3cqZAp">
-                <node concept="2OqwBi" id="6b$YhINoXma" role="3clFbG">
-                  <node concept="1eOMI4" id="6b$YhINpv2F" role="2Oq$k0">
-                    <node concept="10QFUN" id="6b$YhINpwSp" role="1eOMHV">
-                      <node concept="3uibUv" id="6b$YhINpBO3" role="10QFUM">
-                        <ref role="3uigEE" to="bim2:36$CdjYcVqX" resolve="MigrationSetup" />
-                      </node>
-                      <node concept="1rXfSq" id="6b$YhINoTZP" role="10QFUP">
-                        <ref role="37wK5l" node="4vZEdvrqAMN" resolve="getConfiguration" />
-                      </node>
-                    </node>
+              <node concept="3clFbF" id="1guuOICUqXg" role="3cqZAp">
+                <node concept="2OqwBi" id="1guuOICUut2" role="3clFbG">
+                  <node concept="2YIFZM" id="64uPopzcraN" role="2Oq$k0">
+                    <ref role="37wK5l" to="bdll:~ProjectMigrationsRegistry.getInstance()" resolve="getInstance" />
+                    <ref role="1Pybhc" to="bdll:~ProjectMigrationsRegistry" resolve="ProjectMigrationsRegistry" />
                   </node>
-                  <node concept="liA8E" id="6b$YhINpEKT" role="2OqNvi">
-                    <ref role="37wK5l" to="bim2:6b$YhINp4Zk" resolve="markMigratedProjectVersion" />
+                  <node concept="liA8E" id="1guuOICUwab" role="2OqNvi">
+                    <ref role="37wK5l" to="bdll:~ProjectMigrationsRegistry.markMigratedToActualVersion(jetbrains.mps.project.Project)" resolve="markMigratedToActualVersion" />
+                    <node concept="1rXfSq" id="1guuOICUzSn" role="37wK5m">
+                      <ref role="37wK5l" node="4hH4xQoNqF2" resolve="getProject" />
+                    </node>
                   </node>
                 </node>
               </node>
