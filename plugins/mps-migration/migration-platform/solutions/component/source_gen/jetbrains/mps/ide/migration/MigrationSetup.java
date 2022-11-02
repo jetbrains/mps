@@ -11,15 +11,17 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.migration.global.ProjectMigrationsRegistry;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.smodel.ModuleDependencyVersions;
-import jetbrains.mps.smodel.language.LanguageRegistry;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
+import jetbrains.mps.smodel.SLanguageHierarchy;
+import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.lang.migration.runtime.base.RefactoringScriptReference;
@@ -44,6 +46,7 @@ public class MigrationSetup {
    * Requires model read
    */
   public MigrationSetup(@NotNull final Project mpsProject, @NotNull final Iterable<SModule> modules) {
+    final LanguageRegistry languageRegistry = mpsProject.getComponent(LanguageRegistry.class);
     List<ProjectMigration> migrations = ProjectMigrationsRegistry.getInstance().getMigrations(mpsProject);
     ListSequence.fromList(myProjectMigrations).addSequence(ListSequence.fromList(migrations).where(new IWhereFilter<ProjectMigration>() {
       public boolean accept(ProjectMigration it) {
@@ -52,14 +55,14 @@ public class MigrationSetup {
     }));
     ListSequence.fromList(myModuleMigrations).addSequence(Sequence.fromIterable(modules).translate(new ITranslator2<SModule, ScriptApplied>() {
       public Iterable<ScriptApplied> translate(SModule module) {
-        return getAllSteps(module);
+        return getAllSteps(languageRegistry, module);
       }
     }));
 
     myBrokenDepsOfProjectModules = false;
     myNeedImportVersionUpdate = false;
     // not to check once for every module later
-    ModuleDependencyVersions mv = new ModuleDependencyVersions(mpsProject.getComponent(LanguageRegistry.class), mpsProject.getRepository());
+    ModuleDependencyVersions mv = new ModuleDependencyVersions(languageRegistry, mpsProject.getRepository());
     for (SModule module : ListSequence.fromList(mpsProject.getProjectModulesWithGenerators())) {
       if (!(mv.dependenciesPresent(module))) {
         myBrokenDepsOfProjectModules = true;
@@ -106,11 +109,11 @@ public class MigrationSetup {
     return !(myBrokenDepsOfProjectModules) && myNeedImportVersionUpdate;
   }
 
-  private Iterable<ScriptApplied> getAllSteps(SModule module) {
+  private static Iterable<ScriptApplied> getAllSteps(LanguageRegistry languageRegistry, SModule module) {
     List<ScriptApplied> result = ListSequence.fromList(new ArrayList<ScriptApplied>());
-    for (SLanguage lang : SetSequence.fromSet(MigrationModuleUtil.getUsedLanguages(module))) {
-      // XXX shall use LanguageRegistry to figure out actual lang version, instead?
-      int currentLangVersion = lang.getLanguageVersion();
+    for (SLanguage lang : SetSequence.fromSet(new SLanguageHierarchy(languageRegistry, module.getUsedLanguages()).getExtended())) {
+      LanguageRuntime lr = languageRegistry.getLanguage(lang);
+      int currentLangVersion = (lr == null ? -1 : lr.getVersion());
       int ver = ((AbstractModule) module).getUsedLanguageVersion(lang, false);
 
       ver = Math.max(ver, 0);
