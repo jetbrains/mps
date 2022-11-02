@@ -6676,6 +6676,25 @@
           </node>
         </node>
         <node concept="3clFbS" id="4vZEdvrost8" role="3clF47">
+          <node concept="3SKdUt" id="1guuOICFh5s" role="3cqZAp">
+            <node concept="1PaTwC" id="1guuOICFh5t" role="1aUNEU">
+              <node concept="3oM_SD" id="1guuOICFh65" role="1PaTwD">
+                <property role="3oM_SC" value="needs" />
+              </node>
+              <node concept="3oM_SD" id="1guuOICFiV7" role="1PaTwD">
+                <property role="3oM_SC" value="model" />
+              </node>
+              <node concept="3oM_SD" id="1guuOICFiVa" role="1PaTwD">
+                <property role="3oM_SC" value="write," />
+              </node>
+              <node concept="3oM_SD" id="1guuOICFiVe" role="1PaTwD">
+                <property role="3oM_SC" value="I" />
+              </node>
+              <node concept="3oM_SD" id="1guuOICFiVz" role="1PaTwD">
+                <property role="3oM_SC" value="suppose" />
+              </node>
+            </node>
+          </node>
           <node concept="3cpWs8" id="4vZEdvro_Tw" role="3cqZAp">
             <node concept="3cpWsn" id="4vZEdvro_Tx" role="3cpWs9">
               <property role="TrG5h" value="modules" />
@@ -6715,6 +6734,23 @@
               </node>
             </node>
           </node>
+          <node concept="3cpWs8" id="1guuOICG8Ag" role="3cqZAp">
+            <node concept="3cpWsn" id="1guuOICG8Ah" role="3cpWs9">
+              <property role="TrG5h" value="mv" />
+              <node concept="3uibUv" id="1guuOICG6h4" role="1tU5fm">
+                <ref role="3uigEE" to="bim2:1guuOICD4Tu" resolve="ModuleVersionUpdate" />
+              </node>
+              <node concept="2ShNRf" id="1guuOICG8Ai" role="33vP2m">
+                <node concept="1pGfFk" id="1guuOICG8Aj" role="2ShVmc">
+                  <property role="373rjd" value="true" />
+                  <ref role="37wK5l" to="bim2:1guuOICDkbM" resolve="ModuleVersionUpdate" />
+                  <node concept="1rXfSq" id="1guuOICG8Ak" role="37wK5m">
+                    <ref role="37wK5l" node="4hH4xQoNqF2" resolve="getProject" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
           <node concept="2Gpval" id="4vZEdvrow14" role="3cqZAp">
             <node concept="2GrKxI" id="4vZEdvrow16" role="2Gsz3X">
               <property role="TrG5h" value="m" />
@@ -6722,11 +6758,11 @@
             <node concept="3clFbS" id="4vZEdvrow1a" role="2LFqv$">
               <node concept="3clFbF" id="4vZEdvrotKB" role="3cqZAp">
                 <node concept="2OqwBi" id="4vZEdvroujP" role="3clFbG">
-                  <node concept="1rXfSq" id="4vZEdvrotKA" role="2Oq$k0">
-                    <ref role="37wK5l" node="4vZEdvrqAMN" resolve="getConfiguration" />
+                  <node concept="37vLTw" id="1guuOICGh$C" role="2Oq$k0">
+                    <ref role="3cqZAo" node="1guuOICG8Ah" resolve="mv" />
                   </node>
                   <node concept="liA8E" id="4vZEdvrouU3" role="2OqNvi">
-                    <ref role="37wK5l" to="bim2:2V3ml1v0Uym" resolve="doUpdateImportVersions" />
+                    <ref role="37wK5l" to="bim2:1guuOICDItz" resolve="updateImportVersions" />
                     <node concept="2GrUjf" id="4vZEdvroxYg" role="37wK5m">
                       <ref role="2Gs0qQ" node="4vZEdvrow16" resolve="m" />
                     </node>

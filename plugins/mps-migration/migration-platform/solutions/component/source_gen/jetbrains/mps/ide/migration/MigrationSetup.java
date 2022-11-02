@@ -18,11 +18,10 @@ import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.smodel.ModuleDependencyVersions;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import java.util.Collection;
-import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.util.IStatus;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
+import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.lang.migration.runtime.base.RefactoringScriptReference;
 
@@ -108,24 +107,6 @@ public class MigrationSetup {
    */
   public boolean importVersionsUpdateRequired() {
     return !(myBrokenDepsOfProjectModules) && myNeedImportVersionUpdate;
-  }
-
-  public void doUpdateImportVersions(SModule module) {
-    ModuleDependencyVersions mv = new ModuleDependencyVersions(myProject.getComponent(LanguageRegistry.class), myProject.getRepository());
-    mv.resetVersions();
-    if (!(mv.dependenciesPresent(module))) {
-      return;
-    }
-    if (!(module instanceof AbstractModule)) {
-      return;
-    }
-    ModuleDescriptor descriptor = ((AbstractModule) module).getModuleDescriptor();
-    if (descriptor != null && descriptor.getLoadException() != null) {
-      return;
-    }
-
-    mv.update(module);
-    ((AbstractModule) module).save();
   }
 
   public IStatus checkProjectVersion() {

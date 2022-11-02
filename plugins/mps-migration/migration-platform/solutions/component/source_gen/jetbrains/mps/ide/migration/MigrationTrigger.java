@@ -149,7 +149,8 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
 
       @Override
       protected void updateImportVersionsIfNeeded(SModule module) {
-        myProjectMigrationSetup.doUpdateImportVersions(module);
+        // XXX one by one only? can't get modules to update all at once?
+        new ModuleVersionUpdate(myMpsProject).updateImportVersions(module);
       }
     };
   }

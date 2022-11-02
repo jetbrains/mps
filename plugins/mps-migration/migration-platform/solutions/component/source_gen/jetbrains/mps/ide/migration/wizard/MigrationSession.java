@@ -29,6 +29,7 @@ import java.util.List;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.ide.migration.ModuleVersionUpdate;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -204,10 +205,12 @@ public interface MigrationSession {
 
     @Override
     public void updateModuleImports(ProgressMonitor progress) {
+      // needs model write, I suppose
       List<SModule> modules = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(getProject())).toListSequence();
       progress.start("Updating versions...", ListSequence.fromList(modules).count());
+      ModuleVersionUpdate mv = new ModuleVersionUpdate(getProject());
       for (SModule m : ListSequence.fromList(modules)) {
-        getConfiguration().doUpdateImportVersions(m);
+        mv.updateImportVersions(m);
         progress.advance(1);
       }
       progress.done();
