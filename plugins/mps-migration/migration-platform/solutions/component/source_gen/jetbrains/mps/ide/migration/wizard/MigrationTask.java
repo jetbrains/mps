@@ -24,9 +24,6 @@ import java.awt.Color;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import javax.swing.JComponent;
-import com.intellij.openapi.wm.impl.status.InlineProgressIndicator;
-import com.intellij.openapi.application.ModalityState;
 import jetbrains.mps.project.ProjectBase;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.configurationStore.StoreUtil;
@@ -205,14 +202,10 @@ public class MigrationTask {
   }
 
   private boolean executeSingleStep(final ProgressMonitor m, final String localHistCaption, final _FunctionTypes._void_P0_E0 execute, final _FunctionTypes._return_P0_E0<? extends Boolean> merge) {
+    // FIXME 'merge' step is to "group" module migrations by migration script. Just need to change MigrationSetup API
+    //     to group ScriptApplied by script and invoke executeSingleStep for a group of related script references
     final Wrappers._boolean noException = new Wrappers._boolean(true);
 
-    // todo pass ModalityState to constructor/via session?
-    // in tests, we have EmptyProgressIndicator and use NON_MODAL
-    // FIXME with proper modality for an indicator initialized in MigrationStep, likely this code is not needed, as invokeAndWait
-    //      would pick proper modality (the one from PI) for us. But don't want to touch this in 21.3 RC
-    JComponent modalityComponent = check_ajmasp_a0g0eb(as_ajmasp_a0a0g0fb(myMonitor.getIndicator(), InlineProgressIndicator.class));
-    ModalityState modalityState = (modalityComponent == null ? ModalityState.NON_MODAL : ModalityState.stateForComponent(modalityComponent));
     ApplicationManager.getApplication().invokeAndWait(() -> {
       if (myCurrentChange == null) {
         myCurrentChange = LocalHistory.getInstance().startAction(APPLY + localHistCaption);
@@ -239,7 +232,7 @@ public class MigrationTask {
         myCurrentChange.finish();
         myCurrentChange = null;
       }
-    }, modalityState);
+    });
 
     return noException.value;
   }
@@ -318,15 +311,14 @@ public class MigrationTask {
   private void runVersionsUpdate(final ProgressMonitor m) {
     final Project project = mySession.getProject();
     String caption = "Updating versions...";
-    runLocalHistoryRecord(caption, () -> {
-      JComponent modalityComponent = check_ajmasp_a0a0b0c0qb(as_ajmasp_a0a0a0b0c0rb(myMonitor.getIndicator(), InlineProgressIndicator.class));
-      ModalityState modalityState = (modalityComponent == null ? ModalityState.NON_MODAL : ModalityState.stateForComponent(modalityComponent));
-
-      ApplicationManager.getApplication().invokeAndWait(() -> project.getRepository().getModelAccess().executeCommand(() -> {
-        // XXX why there's a command, not just write? Commit 076c27f6adce doesn't help to understand.
-        mySession.updateModuleImports(m);
-      }), modalityState);
-    });
+    // FIXME can't I combine runLocalHistoryRecord into plain runnable and invoke it inside invokeAndWait?
+    //      at least executeSingleStep does the same inside invokeAndWait, seems to be not an issue
+    runLocalHistoryRecord(caption, () -> ApplicationManager.getApplication().invokeAndWait(() -> project.getRepository().getModelAccess().executeCommand(() -> {
+      // XXX why there's a command, not just write? Commit 076c27f6adce doesn't help to understand.
+      // FIXME present implementation of updateModuleImports() doesn't take into account actual set of modules
+      //   supplied by MigrationSetup. Perhaps, shall move the code here (or start using modules from MigrationSetup?)
+      mySession.updateModuleImports(m);
+    })));
   }
 
   private void runForceSave(final ProgressMonitor m) {
@@ -337,15 +329,13 @@ public class MigrationTask {
     m.start(caption, ListSequence.fromList(allModules.value).count() + 10);
     runLocalHistoryRecord(caption, () -> {
       try {
-        JComponent modalityComponent = check_ajmasp_a0a0a0b0f0sb(as_ajmasp_a0a0a0a0b0f0tb(myMonitor.getIndicator(), InlineProgressIndicator.class));
-        ModalityState modalityState = (modalityComponent == null ? ModalityState.NON_MODAL : ModalityState.stateForComponent(modalityComponent));
-
         for (final SModule module : ListSequence.fromList(allModules.value)) {
           m.advance(1);
           ApplicationManager.getApplication().invokeAndWait(() -> project.getRepository().getModelAccess().executeCommand(() -> {
             // FIXME model command, o'rly? Cast to AM? Individual per module?
+            // dates back to 076c27f6, likely with no proper justification
             ((AbstractModule) module).forceSaveRecursively();
-          }), modalityState);
+          }));
         }
       } finally {
         m.done();
@@ -395,6 +385,9 @@ public class MigrationTask {
     final AtomicBoolean success = new AtomicBoolean(true);
 
     final AtomicReference<BaseScriptReference> preferredId = new AtomicReference<BaseScriptReference>();
+    // FIXME why non-reloadable section when we don't compile any module here and can't deploy anything?
+    //     perhaps, as fixed module could let some language complete its deps and make it loadable?
+    //     Anyway, need to figure out better approach as the method is deprecated
     mySession.getProject().getComponent(ClassLoaderManager.class).runNonReloadableSection(new Runnable() {
       @Override
       public void run() {
@@ -451,32 +444,5 @@ public class MigrationTask {
       res.value = (isCleanup ? cleanupSize : Sequence.fromIterable(migrations).count() - cleanupSize);
     });
     return res.value;
-  }
-  private static JComponent check_ajmasp_a0g0eb(InlineProgressIndicator checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getComponent();
-    }
-    return null;
-  }
-  private static JComponent check_ajmasp_a0a0b0c0qb(InlineProgressIndicator checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getComponent();
-    }
-    return null;
-  }
-  private static JComponent check_ajmasp_a0a0a0b0f0sb(InlineProgressIndicator checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getComponent();
-    }
-    return null;
-  }
-  private static <T> T as_ajmasp_a0a0g0fb(Object o, Class<T> type) {
-    return (type.isInstance(o) ? (T) o : null);
-  }
-  private static <T> T as_ajmasp_a0a0a0b0c0rb(Object o, Class<T> type) {
-    return (type.isInstance(o) ? (T) o : null);
-  }
-  private static <T> T as_ajmasp_a0a0a0a0b0f0tb(Object o, Class<T> type) {
-    return (type.isInstance(o) ? (T) o : null);
   }
 }
