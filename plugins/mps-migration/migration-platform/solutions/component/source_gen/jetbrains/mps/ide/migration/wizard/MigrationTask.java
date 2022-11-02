@@ -9,11 +9,10 @@ import java.util.List;
 import jetbrains.mps.ide.migration.ScriptApplied;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.progress.ProgressMonitorAdapter;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.project.Project;
 import com.intellij.openapi.application.ApplicationManager;
-import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import java.util.Map;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -56,30 +55,27 @@ public class MigrationTask {
   private final List<ScriptApplied> myWereRun = ListSequence.fromList(new ArrayList<ScriptApplied>());
   private final boolean myHaltOnFailedPrecheck;
 
-  private final ProgressMonitorAdapter myMonitor;
-
-  public MigrationTask(MigrationSession session, ProgressMonitorAdapter monitor) {
-    this(session, monitor, true);
+  public MigrationTask(MigrationSession session) {
+    this(session, true);
   }
 
-  public MigrationTask(MigrationSession session, ProgressMonitorAdapter monitor, boolean haltOnFailedPrecheck) {
+  public MigrationTask(MigrationSession session, boolean haltOnFailedPrecheck) {
     mySession = session;
-    myMonitor = monitor;
     mySession.setCurrentStage(0);
     myHaltOnFailedPrecheck = haltOnFailedPrecheck;
   }
 
-  public void run() {
+  public void run(ProgressMonitor pm) {
     PersistenceRegistry.getInstance().disableFastFindUsages();
     try {
-      myMonitor.start("Migrating...", 10);
-      doRun(myMonitor.subTask(9));
+      pm.start("Migrating...", 10);
+      doRun(pm.subTask(9));
       myIsComplete = true;
-      myMonitor.step("Done!");
-      myMonitor.advance(0);
+      pm.step("Done!");
+      pm.advance(0);
     } catch (MigrationError me) {
-      myMonitor.step(me.getShortMessage());
-      myMonitor.advance(0);
+      pm.step(me.getShortMessage());
+      pm.advance(0);
       error(me);
     } finally {
       final Project project = mySession.getProject();
@@ -89,7 +85,7 @@ public class MigrationTask {
       //     it just hangs.
       // FIXME I hate saveProject(): its argument, invokeAndWait(), the fact it's invoked for each step and uses internal IDEA stuff.
       ApplicationManager.getApplication().invokeAndWait(() -> saveProject(project));
-      myMonitor.done();
+      pm.done();
       // yeah, and I hate this enableFFU, too!
       PersistenceRegistry.getInstance().enableFastFindUsages();
     }

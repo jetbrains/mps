@@ -7,7 +7,6 @@ import jetbrains.mps.logging.Logger;
 import com.intellij.openapi.wm.impl.status.InlineProgressIndicator;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
-import jetbrains.mps.progress.ProgressMonitorAdapter;
 import javax.swing.JComponent;
 import java.awt.BorderLayout;
 import javax.swing.BorderFactory;
@@ -15,6 +14,7 @@ import com.intellij.ui.IdeBorderFactory;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.progress.ProgressManager;
+import jetbrains.mps.progress.ProgressMonitorAdapter;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.progress.TaskInfo;
 import org.jetbrains.annotations.NotNull;
@@ -37,7 +37,7 @@ public class MigrationStep extends BaseStep {
     super("Migration in Progress", ID);
     mySession = session;
     myProgress = new MyInlineProgressIndicator();
-    myTask = new MigrationTask(session, new ProgressMonitorAdapter(myProgress));
+    myTask = new MigrationTask(session);
   }
 
   @Override
@@ -63,6 +63,8 @@ public class MigrationStep extends BaseStep {
     // FIXME I can not do it earlier as both cons and doCreateComponent are invoked without any UI shown,
     //      it's weird and bad design, but I can't fix it right now. And don't forget to fix this 
     //      odd "run from ui init" approach. It's bad, too.
+    // XXX unless there's mps code to invoke getComponent(), seems that IDEA invokes _init() prior to doCreateComponent(),
+    //     so we can create myProgress here, if necessary.
     myProgress.setModalityProgress(null);
     super._init();
     executeToFirstError();
@@ -73,7 +75,8 @@ public class MigrationStep extends BaseStep {
       mySession.setError(null);
 
       try {
-        myTask.run();
+        // PM.runProcess() contract states getProgressIndicator() gives myProgress argument.
+        myTask.run(new ProgressMonitorAdapter(ProgressManager.getInstance().getProgressIndicator()));
       } catch (Throwable t) {
         String errMsg = "Exception occurred in migration wizard";
         myProgress.setText(errMsg);
@@ -85,6 +88,7 @@ public class MigrationStep extends BaseStep {
       }
 
       if (mySession.getError() != null) {
+        // XXX seems that I don't need MS.stateForComponent() here, see 23fef404a4bc
         ApplicationManager.getApplication().invokeLater(() -> {
           StringBuilder sb = new StringBuilder();
           sb.append("<html>").append(mySession.getError().getMessage().replaceAll("\n", "<br>"));
