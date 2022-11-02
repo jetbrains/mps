@@ -67,7 +67,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import com.intellij.openapi.application.Application;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.progress.EmptyProgressMonitor;
-import jetbrains.mps.ide.platform.watching.ReloadListener;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 
 /**
@@ -94,7 +93,6 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   private final MigrationProperties myProperties;
 
   private final SilentModuleVersionUpdater myVersionUpdater;
-  private final MyReloadListener myReloadListener = new MyReloadListener();
   private final MyPropertiesListener myPropertiesListener = new MyPropertiesListener();
   private final LanguageRegistryListener myLanguageDeployListener = new MyLangDeployListener();
   private boolean myListenersAdded = false;
@@ -141,16 +139,10 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
         scheduleMigration(true);
       }
     };
-    this.myVersionUpdater = new SilentModuleVersionUpdater(myMpsProject, () -> myReloadListener.isIsUnderReload(), () -> myMigrationRunning) {
+    this.myVersionUpdater = new SilentModuleVersionUpdater(myMpsProject, () -> myMigrationRunning) {
       @Override
       protected void runMigrationsIfNeeded(List<SModule> toUpdate) {
         checkMigrationNeededOnModuleChange(toUpdate);
-      }
-
-      @Override
-      protected void updateImportVersionsIfNeeded(SModule module) {
-        // XXX one by one only? can't get modules to update all at once?
-        new ModuleVersionUpdate(myMpsProject).updateImportVersions(module);
       }
     };
   }
@@ -194,7 +186,6 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     myLanguageRegistry.addRegistryListener(myLanguageDeployListener);
     myVersionUpdater.attach();
     myProperties.addListener(myPropertiesListener);
-    myReloadManager.addReloadListener(myReloadListener);
     myMake.addListener(myMakeListener);
   }
 
@@ -205,7 +196,6 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     myMake.removeListener(myMakeListener);
     myProperties.removeListener(myPropertiesListener);
     myVersionUpdater.detach();
-    myReloadManager.removeReloadListener(myReloadListener);
     myLanguageRegistry.removeRegistryListener(myLanguageDeployListener);
     return false;
   }
@@ -512,21 +502,6 @@ __switch__:
       myMigrationBlock.ensureUnblocked(MigrationNotificationsSupport.NOT_DEPLOYED);
     } else {
       myMigrationBlock.ensureBlocked(MigrationNotificationsSupport.NOT_DEPLOYED);
-    }
-  }
-
-  private class MyReloadListener implements ReloadListener {
-    private boolean myUnderReload = false;
-    @Override
-    public void reloadStarted() {
-      myUnderReload = true;
-    }
-    @Override
-    public void reloadFinished() {
-      myUnderReload = false;
-    }
-    public boolean isIsUnderReload() {
-      return myUnderReload;
     }
   }
 
