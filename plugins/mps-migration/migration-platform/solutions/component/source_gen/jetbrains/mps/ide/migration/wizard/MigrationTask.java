@@ -66,18 +66,20 @@ public class MigrationTask {
     mySession = session;
     myMonitor = monitor;
     mySession.setCurrentStage(0);
-    myMonitor.start("Migrating...", 100);
     myHaltOnFailedPrecheck = haltOnFailedPrecheck;
   }
 
   public void run() {
     PersistenceRegistry.getInstance().disableFastFindUsages();
     try {
-      doRun();
+      myMonitor.start("Migrating...", 10);
+      doRun(myMonitor.subTask(9));
       myIsComplete = true;
       myMonitor.step("Done!");
       myMonitor.advance(0);
     } catch (MigrationError me) {
+      myMonitor.step(me.getShortMessage());
+      myMonitor.advance(0);
       error(me);
     } finally {
       final Project project = mySession.getProject();
@@ -93,14 +95,15 @@ public class MigrationTask {
     }
   }
 
-  protected void doRun() throws MigrationError {
+  protected void doRun(ProgressMonitor monitor) throws MigrationError {
+    monitor.start("Migrating...", 100);
 
     boolean save = mySession.requires(MigrationSession.MigrationStepKind.FORCE_SAVE);
     boolean update = mySession.requires(MigrationSession.MigrationStepKind.UPDATE_VERSIONS);
     boolean migrate = mySession.requires(MigrationSession.MigrationStepKind.MIGRATE);
 
     if (checkAndIncStage(0)) {
-      ProgressMonitor m = myMonitor.subTask(20);
+      ProgressMonitor m = monitor.subTask(20);
       m.start("Saving project...", 100);
       try {
         runForceSave(m.subTask((save ? 80 : 100)));
@@ -117,20 +120,20 @@ public class MigrationTask {
     }
 
     if (checkAndIncStage(1)) {
-      if (!(runCleanupMigrations(myMonitor.subTask(10)))) {
+      if (!(runCleanupMigrations(monitor.subTask(10)))) {
         throw new MigrationExceptionError();
       }
     }
 
     if (checkAndIncStage(2)) {
-      List<ScriptApplied> missingMigrations = findMissingMigrations(myMonitor.subTask(5));
+      List<ScriptApplied> missingMigrations = findMissingMigrations(monitor.subTask(5));
       if (ListSequence.fromList(missingMigrations).isNotEmpty()) {
         throw new MigrationsMissingError(missingMigrations, mySession.getProject().getRepository());
       }
     }
 
     if (checkAndIncStage(3)) {
-      Map<SModule, SModule> errsToShow = checkMigratedLibs(myMonitor.subTask(5));
+      Map<SModule, SModule> errsToShow = checkMigratedLibs(monitor.subTask(5));
       if (MapSequence.fromMap(errsToShow).isNotEmpty()) {
         throw new NotMigratedLibsError(errsToShow);
       }
@@ -138,7 +141,7 @@ public class MigrationTask {
 
     if (checkAndIncStage(4)) {
       // null - no error, true - must stop, false - can ignore
-      boolean errors = checkModels(myMonitor.subTask(10));
+      boolean errors = checkModels(monitor.subTask(10));
       if (errors) {
         final PreCheckError preCheckError = new PreCheckError(mySession, errors);
         if (myHaltOnFailedPrecheck) {
@@ -159,18 +162,19 @@ public class MigrationTask {
 
     // from here, we don't ignore errors
     addGlobalLabel(mySession.getProject(), STARTED);
-    if (!(runProjectMigrations(myMonitor.subTask(5)))) {
+    if (!(runProjectMigrations(monitor.subTask(5)))) {
       throw new MigrationExceptionError();
     }
-    if (!(runLanguageMigrations(myMonitor.subTask(30)))) {
+    if (!(runLanguageMigrations(monitor.subTask(30)))) {
       throw new MigrationExceptionError();
     }
     addGlobalLabel(mySession.getProject(), FINISHED);
 
     // todo move from here to migration annotations
-    if (findNotMigrated(myMonitor.subTask(15))) {
+    if (findNotMigrated(monitor.subTask(15))) {
       throw new PostCheckError(mySession.getProject(), myWereRun, false, mySession.getChecker());
     }
+    monitor.done();
   }
 
   private boolean checkAndIncStage(int stage) {
@@ -186,14 +190,11 @@ public class MigrationTask {
   }
 
   protected void error(@NotNull MigrationError error) {
-    myMonitor.step(error.getShortMessage());
-    myMonitor.advance(0);
     myIsComplete = !(error.canIgnore());
     mySession.setError(error);
   }
 
   public boolean forceComplete() {
-    myMonitor.done();
     return myIsComplete = true;
   }
 
