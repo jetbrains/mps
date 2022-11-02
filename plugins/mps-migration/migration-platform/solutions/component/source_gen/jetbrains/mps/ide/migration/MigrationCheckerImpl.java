@@ -187,6 +187,7 @@ public class MigrationCheckerImpl implements MigrationChecker {
   }
   @Override
   public void findNotMigrated(final ProgressMonitor m, final Iterable<ScriptApplied> migrationsToCheck, final Processor<Problem> processor) {
+    // FIXME MigrationTrigger calls this with model read. What about MigrationTask and PostCheckError cases?
     myProject.getRepository().getModelAccess().runReadAction(() -> {
       Iterable<SModule> modules = Sequence.fromIterable(migrationsToCheck).select(new ISelector<ScriptApplied, SModule>() {
         public SModule select(ScriptApplied it) {

@@ -30,6 +30,7 @@ import com.intellij.openapi.startup.StartupManager;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.util.IStatus;
+import jetbrains.mps.migration.global.ProjectMigrationsRegistry;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import java.util.Set;
@@ -37,10 +38,10 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.migration.global.ProjectMigration;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.migration.global.CleanupProjectMigration;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.progress.ProgressIndicator;
@@ -51,7 +52,6 @@ import java.util.function.BinaryOperator;
 import com.intellij.openapi.application.ModalityState;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.smodel.SLanguageHierarchy;
@@ -86,7 +86,6 @@ import jetbrains.mps.smodel.language.LanguageRuntime;
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/6781485246382122239", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 public class MigrationTrigger extends AbstractProjectComponent implements IStartupMigrationExecutor {
   private final MPSProject myMpsProject;
-  private final MigrationSetup myProjectMigrationSetup;
   private final ReloadManager myReloadManager;
   private final LanguageRegistry myLanguageRegistry;
 
@@ -129,9 +128,6 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     myLanguageRegistry = mpsCore.getPlatform().findComponent(LanguageRegistry.class);
     myMake = mpsCore.getPlatform().findComponent(MakeServiceComponent.class).get();
     myReloadManager = ApplicationManager.getApplication().getComponent(ReloadManager.class);
-    // FIXME odd model read grab, but need it as MS walks project modules. Have to move this field initialization away
-    //      from cons (or fix this crap otherwise; just need to deal with myVersionUpdater first)
-    myProjectMigrationSetup = myMpsProject.getModelAccess().computeReadAction(() -> new MigrationSetup(myMpsProject));
     myNotifications = new MigrationNotificationsSupport(ideaProject, myMpsProject, myLanguageRegistry) {
       @Override
       public void runAssistant() {
@@ -207,11 +203,12 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   }
 
   /*package*/ void checkMigrationNeeded() {
-    IStatus checkProjectVersion = myProjectMigrationSetup.checkProjectVersion();
+    IStatus checkProjectVersion = ProjectMigrationsRegistry.getInstance().checkMigratedToNewerVersion(myMpsProject);
     if (checkProjectVersion.isError()) {
       myNotifications.showProjectVersionError(checkProjectVersion.getMessage());
+    } else {
+      myMpsProject.getRepository().getModelAccess().runReadAction(() -> checkMigrationNeededOnModuleChange(MigrationModuleUtil.getMigrateableModulesFromProject(myMpsProject)));
     }
-    myMpsProject.getRepository().getModelAccess().runReadAction(() -> checkMigrationNeededOnModuleChange(MigrationModuleUtil.getMigrateableModulesFromProject(myMpsProject)));
   }
 
   private void checkMigrationNeededOnLanguageReload(final List<SLanguage> addedLanguages) {
@@ -239,11 +236,19 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     if (myMigrationBlock.isMigrationForbidden()) {
       // the "not deployed" languages case
       // FIXME isMigrationForbidden here implies BlockCause is about non-deployed languages, why, oh, why?!
-      myNotifications.showDeployWarn(CollectionSequence.fromCollection(myProjectMigrationSetup.getProjectMigrations()).any(new IWhereFilter<ProjectMigration>() {
-        public boolean accept(ProjectMigration it) {
-          return it instanceof CleanupProjectMigration;
+      // next code is a replacement for MigrationSetup.getProjectMigration().any(is CPM). I feel it's wrong to keep
+      // migration setup instance in MT just for this purpose, although don't feel great about exposing this functionality here
+      // I hope to fix showDeployWarn(boolean) some day to avoid this code here.
+      // Anyway, instance of MigrationSetup, with all module migrations collected, is way too much here.
+      List<ProjectMigration> projectMigrations = ProjectMigrationsRegistry.getInstance().getMigrations(myMpsProject);
+      // generally, shouldBeExecuted has fixed implementation which checks project properties if it was already applied
+      // hence, no model read
+      boolean hasCleanups = ListSequence.fromList(projectMigrations).ofType(CleanupProjectMigration.class).any(new IWhereFilter<CleanupProjectMigration>() {
+        public boolean accept(CleanupProjectMigration it) {
+          return it.shouldBeExecuted(myMpsProject);
         }
-      }));
+      });
+      myNotifications.showDeployWarn(hasCleanups);
       return;
     }
 
@@ -424,7 +429,9 @@ __switch__:
       });
       progress.advance(3);
 
-      new MigrationCheckerImpl(myMpsProject, myProjectMigrationSetup).findNotMigrated(progress.subTask(7), checks, (Problem p) -> {
+      // we're in model read here, safe to instantiate MigrationSetup
+      MigrationSetup migrationSetup = new MigrationSetup(myMpsProject);
+      new MigrationCheckerImpl(myMpsProject, migrationSetup).findNotMigrated(progress.subTask(7), checks, (Problem p) -> {
         ListSequence.fromList(problems).addElement(p);
         return ListSequence.fromList(problems).count() < 1000;
       });
