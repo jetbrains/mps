@@ -1744,9 +1744,6 @@
     <node concept="398rNT" id="ymnOULASEM" role="1l3spd">
       <property role="TrG5h" value="idea_home" />
     </node>
-    <node concept="398rNT" id="4eqhh3Jali8" role="1l3spd">
-      <property role="TrG5h" value="mps_home" />
-    </node>
     <node concept="13uUGR" id="ymnOULAT58" role="1l3spa">
       <ref role="13uUGO" to="ffeo:6eCuTcwOnJO" resolve="IDEA" />
       <node concept="398BVA" id="ymnOULAT59" role="13uUGP">
@@ -1780,30 +1777,6 @@
             </node>
             <node concept="Saw0i" id="1mh_ZUORikW" role="39821P">
               <ref role="Saw0g" node="1mh_ZUORihS" resolve="mps-tesing-plugin" />
-            </node>
-            <node concept="398223" id="4eqhh3JalhN" role="39821P">
-              <node concept="3_J27D" id="4eqhh3JalhP" role="Nbhlr">
-                <node concept="3Mxwew" id="4eqhh3JalhU" role="3MwsjC">
-                  <property role="3MwjfP" value="META-INF" />
-                </node>
-              </node>
-              <node concept="28jJK3" id="4eqhh3JalhW" role="39821P">
-                <node concept="398BVA" id="1PJjTHbvc9F" role="28jJRO">
-                  <ref role="398BVh" node="4eqhh3Jali8" resolve="mps_home" />
-                  <node concept="2Ry0Ak" id="1PJjTHbvcd9" role="iGT6I">
-                    <property role="2Ry0Am" value="plugins" />
-                    <node concept="2Ry0Ak" id="1PJjTHbvck3" role="2Ry0An">
-                      <property role="2Ry0Am" value="mps-testing" />
-                      <node concept="2Ry0Ak" id="1PJjTHbvcqX" role="2Ry0An">
-                        <property role="2Ry0Am" value="META-INF" />
-                        <node concept="2Ry0Ak" id="1PJjTHbvcxR" role="2Ry0An">
-                          <property role="2Ry0Am" value="plugin.xml" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
             </node>
           </node>
         </node>

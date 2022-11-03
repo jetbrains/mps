@@ -2,7 +2,7 @@
 <debug-info version="2">
   <root nodeRef="r:5c70a88b-9c77-4970-b930-a9ff601a03a0(jetbrains.mps.ide.idea.plugin.build)/1554190466631410773">
     <file name="mpsPluginTesting.xml">
-      <unit id="1554190466631410773" at="1,0,118,10" name="jetbrains.mps.ide.idea.plugin.build.mpsPluginTesting" />
+      <unit id="1554190466631410773" at="1,0,116,10" name="jetbrains.mps.ide.idea.plugin.build.mpsPluginTesting" />
     </file>
   </root>
   <root nodeRef="r:5c70a88b-9c77-4970-b930-a9ff601a03a0(jetbrains.mps.ide.idea.plugin.build)/2773971779181619526">
