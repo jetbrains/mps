@@ -7,7 +7,7 @@
     </facet>
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${module}/../../lib/mpsdevkit.jar" />
+    <stubModelEntry path="${mps_home}/plugins/mps-devkit/lib/mpsdevkit.jar" />
   </stubModelEntries>
   <sourcePath />
   <languageVersions />
