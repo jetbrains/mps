@@ -198,7 +198,6 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
       return myConflictResolver.resolveConflict(this)
                                .thenApply(EditableSModelBase::convert)
                                .handle((saveResult, throwable) -> {
-                                 LOG.warning("HANDLED");
                                  myResolveConflictInProgress.set(false);
                                  return saveResult;
                                });
