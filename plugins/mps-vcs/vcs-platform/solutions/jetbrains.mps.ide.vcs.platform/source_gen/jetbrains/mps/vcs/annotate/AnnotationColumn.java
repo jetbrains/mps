@@ -422,7 +422,7 @@ public final class AnnotationColumn extends AbstractLeftColumn {
     ListSequence.fromList(actions).addElement(Separator.getInstance());
     ListSequence.fromList(actions).addElement(createAnnotatedCellsHighlightingGroup());
     ListSequence.fromList(actions).addElement(createShowTooltipsAction());
-    return ActionManager.getInstance().createActionPopupMenu(ActionPlaces.UNKNOWN, ActionUtils.groupFromActions(ListSequence.fromList(actions).toGenericArray(AnAction.class))).getComponent();
+    return ActionManager.getInstance().createActionPopupMenu(ActionPlaces.EDITOR_GUTTER_POPUP, ActionUtils.groupFromActions(ListSequence.fromList(actions).toGenericArray(AnAction.class))).getComponent();
   }
 
   private AnAction createCopyRevisionNumberAction(final VcsFileRevision revision) {

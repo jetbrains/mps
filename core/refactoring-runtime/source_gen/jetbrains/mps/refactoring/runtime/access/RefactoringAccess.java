@@ -151,7 +151,7 @@ public abstract class RefactoringAccess {
    * 
    * @deprecated use getInstance(Project) instead. Remove once mbeddr switches to 2022.3 and can use new API
    */
-  @Deprecated(forRemoval = true, since = "2022.3")
+  @Deprecated(forRemoval = true, since = "2022.2")
   public static RefactoringAccess getInstance() {
     // I don't expect RA instance to be different per project, just need context to access component instance
     List<Project> openedProjects = ProjectManager.getInstance().getOpenedProjects();
