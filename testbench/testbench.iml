@@ -9,7 +9,6 @@
       <sourceFolder url="file://$MODULE_DIR$/tests_gen" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/source_gen" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/ideatestsolutions/ide.vcs.test/test_gen" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/ideatestsolutions/migration.test/test_gen" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/ideatestsolutions/ide.vcs.test/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/sources" isTestSource="false" />
     </content>
@@ -83,6 +82,15 @@
     <orderEntry type="module" module-name="messages-api" />
     <orderEntry type="module" module-name="mps-httpsupport" />
     <orderEntry type="module" module-name="vfs-tracking" scope="TEST" />
-    <orderEntry type="module" module-name="mps-devkit" scope="TEST" />
+    <orderEntry type="module" module-name="mps-devkit" scope="RUNTIME" />
+    <orderEntry type="module-library" scope="RUNTIME">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../plugins/mps-java" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
