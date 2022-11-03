@@ -751,7 +751,7 @@
     <property role="9BnSM" value="JetBrains" />
     <property role="TrG5h" value="MPS Languages DevKit" />
     <property role="9BnSO" value="213.1" />
-    <property role="9BnSK" value="2021.3.1" />
+    <property role="9BnSK" value="2021.3.2" />
   </node>
   <node concept="tC5Ba" id="56$IWKxe1aW">
     <property role="TrG5h" value="ProjectNewActionsEx" />
