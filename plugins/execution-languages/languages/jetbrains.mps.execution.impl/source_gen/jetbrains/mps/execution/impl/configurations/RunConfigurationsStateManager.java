@@ -58,7 +58,7 @@ public class RunConfigurationsStateManager implements ProjectComponent, PluginRe
   @Override
   public void afterPluginsLoaded(List<PluginContributor> contributors) {
     // this can be executed in "later", so we check that the project is not yet closed
-    if (myProject.isDisposed() || contributors.isEmpty()) {
+    if (myProject.isDisposed()) {
       return;
     }
 
@@ -68,7 +68,7 @@ public class RunConfigurationsStateManager implements ProjectComponent, PluginRe
   @Override
   public void beforePluginsUnloaded(List<PluginContributor> contributors) {
     // same here
-    if (myProject.isDisposed() || contributors.isEmpty()) {
+    if (myProject.isDisposed()) {
       return;
     }
 

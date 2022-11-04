@@ -20,17 +20,12 @@
     <import index="cjdg" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.execution.ui(MPS.IDEA/)" />
     <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" />
     <import index="9ti4" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.extensions(MPS.IDEA/)" />
-    <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="3qmy" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.classloading(MPS.Core/)" />
-    <import index="xj2j" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.plugins.projectplugins(MPS.Workbench/)" />
-    <import index="t6h5" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang.reflect(JDK/)" />
-    <import index="hq8m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.options(MPS.IDEA/)" />
     <import index="3a50" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide(MPS.Platform/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
-      <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
       </concept>
@@ -410,22 +405,12 @@
           <node concept="3clFbS" id="4tDMPuHd$Qd" role="3clFbx">
             <node concept="3cpWs6" id="4tDMPuHd$Qe" role="3cqZAp" />
           </node>
-          <node concept="22lmx$" id="1rm1p2$kT4v" role="3clFbw">
-            <node concept="2OqwBi" id="1rm1p2$kY9X" role="3uHU7w">
-              <node concept="37vLTw" id="1rm1p2$kWUN" role="2Oq$k0">
-                <ref role="3cqZAo" node="2dPl3A21des" resolve="contributors" />
-              </node>
-              <node concept="liA8E" id="1rm1p2$kZlA" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:~List.isEmpty()" resolve="isEmpty" />
-              </node>
+          <node concept="2OqwBi" id="4tDMPuHd$Qa" role="3clFbw">
+            <node concept="37vLTw" id="2BHiRxeuq92" role="2Oq$k0">
+              <ref role="3cqZAo" node="4tDMPuHd$PD" resolve="myProject" />
             </node>
-            <node concept="2OqwBi" id="4tDMPuHd$Qa" role="3uHU7B">
-              <node concept="37vLTw" id="2BHiRxeuq92" role="2Oq$k0">
-                <ref role="3cqZAo" node="4tDMPuHd$PD" resolve="myProject" />
-              </node>
-              <node concept="liA8E" id="4tDMPuHd$Qc" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.isDisposed()" resolve="isDisposed" />
-              </node>
+            <node concept="liA8E" id="4tDMPuHd$Qc" role="2OqNvi">
+              <ref role="37wK5l" to="1m72:~ComponentManager.isDisposed()" resolve="isDisposed" />
             </node>
           </node>
         </node>
@@ -485,22 +470,12 @@
           <node concept="3clFbS" id="7rb2_bmZtsO" role="3clFbx">
             <node concept="3cpWs6" id="7rb2_bmZtsP" role="3cqZAp" />
           </node>
-          <node concept="22lmx$" id="1rm1p2$l0IQ" role="3clFbw">
-            <node concept="2OqwBi" id="1rm1p2$l2Vh" role="3uHU7w">
-              <node concept="37vLTw" id="1rm1p2$l1Dm" role="2Oq$k0">
-                <ref role="3cqZAo" node="2dPl3A21gq5" resolve="contributors" />
-              </node>
-              <node concept="liA8E" id="1rm1p2$l45$" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:~List.isEmpty()" resolve="isEmpty" />
-              </node>
+          <node concept="2OqwBi" id="7rb2_bmZtsL" role="3clFbw">
+            <node concept="37vLTw" id="7rb2_bmZtsM" role="2Oq$k0">
+              <ref role="3cqZAo" node="4tDMPuHd$PD" resolve="myProject" />
             </node>
-            <node concept="2OqwBi" id="7rb2_bmZtsL" role="3uHU7B">
-              <node concept="37vLTw" id="7rb2_bmZtsM" role="2Oq$k0">
-                <ref role="3cqZAo" node="4tDMPuHd$PD" resolve="myProject" />
-              </node>
-              <node concept="liA8E" id="7rb2_bmZtsN" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.isDisposed()" resolve="isDisposed" />
-              </node>
+            <node concept="liA8E" id="7rb2_bmZtsN" role="2OqNvi">
+              <ref role="37wK5l" to="1m72:~ComponentManager.isDisposed()" resolve="isDisposed" />
             </node>
           </node>
         </node>
