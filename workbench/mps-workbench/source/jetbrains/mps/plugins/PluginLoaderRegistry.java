@@ -344,6 +344,9 @@ public class PluginLoaderRegistry implements Disposable {
    */
   private void update() {
     if (myUpdateIsScheduledInEDT.compareAndSet(false, true)) {
+      // FIXME this is quite suspicious code, I believe assert in runTaskLater() from 350d930e
+      //       was about assumptions at the time of the writing ("Do I understand invocation scenario right?"),
+      //       rather than "we need to have platform read access here to satisfy API X".
       ApplicationManager.getApplication().runReadAction(this::runTaskLater);
     }
   }
@@ -481,7 +484,6 @@ public class PluginLoaderRegistry implements Disposable {
             Snapshot snapshot = myAccumulation.reset();
             try {
               // this is in clm transaction, so we do not get any updates on the delta with modules
-              // FIXME module delta shall give delta of PLUGIN modules, rather than keep unnecessary reference to modules w/o plugins
               Delta<ReloadableModule> moduleDelta = snapshot.getModuleDelta();
               Delta<PluginLoader> loadersDelta = snapshot.getLoaderDelta();
 
@@ -491,8 +493,8 @@ public class PluginLoaderRegistry implements Disposable {
               }
               monitor.advance(1);
 
-              Set<PluginContributor> toUnloadContributors = calcContributorsToUnload(myCurrentContributors, getPluginModules(moduleDelta.toUnload));
-              Set<PluginContributor> toLoadContributors = createPluginContributors(getPluginModules(moduleDelta.toLoad));
+              Set<PluginContributor> toUnloadContributors = calcContributorsToUnload(myCurrentContributors, moduleDelta.toUnload);
+              Set<PluginContributor> toLoadContributors = createPluginContributors(moduleDelta.toLoad);
               List<PluginContributor> notifyToUnload;
               List<PluginContributor> notifyToLoad;
               if (loadersDelta.isEmpty()) {
@@ -588,7 +590,11 @@ public class PluginLoaderRegistry implements Disposable {
       for (ModuleClassLoader cl : classLoadersToBeDisposed) {
         IconLoader.detachClassLoader(cl);
       }
-      for (Project project : ProjectManager.getInstanceIfCreated().getOpenProjects()) {
+      final ProjectManager pm = ProjectManager.getInstanceIfCreated();
+      if (pm == null) {
+        return;
+      }
+      for (Project project : pm.getOpenProjects()) {
         FileEditorManagerEx.getInstanceEx(project).refreshIcons();
       }
     }
@@ -622,13 +628,13 @@ public class PluginLoaderRegistry implements Disposable {
     }
   }
 
-  private Set<ReloadableModule> getPluginModules(Collection<ReloadableModule> modules) {
+  private static Set<ReloadableModule> getPluginModules(Collection<ReloadableModule> modules) {
     return modules.stream()
-                  .filter(this::isPluginModule)
+                  .filter(PluginLoaderRegistry::isPluginModule)
                   .collect(toCollection(LinkedHashSet::new));
   }
 
-  private boolean isPluginModule(SModule module) {
+  private static boolean isPluginModule(SModule module) {
     if (module instanceof ReloadableModule) {
       if (module instanceof Language) {
         return true;
@@ -649,15 +655,34 @@ public class PluginLoaderRegistry implements Disposable {
 
   private class SchedulingUpdateListener implements DeployListener {
     @Override
-    public void onUnloaded(@NotNull ResourceTrackerCallback callback, @NotNull ProgressMonitor monitor) {
+    public void onUnloaded(@NotNull final ResourceTrackerCallback callback, @NotNull ProgressMonitor monitor) {
       Set<ModuleClassLoader> classLoaders2Dispose = callback.acquire2(PluginLoaderRegistry.this);
-      myAccumulation.onUnload(classLoaders2Dispose, () -> callback.release(PluginLoaderRegistry.this));
+      // XXX here we "resurrect" modules otherwise being removed from the repository!
+      Set<ReloadableModule> unloadedModules = classLoaders2Dispose.stream()
+                                                          .map(ModuleClassLoader::getModule)
+                                                          .collect(Collectors.toSet());
+      final Set<ReloadableModule> pm = getPluginModules(unloadedModules);
+      if (pm.isEmpty()) {
+        // fine, there's nothing for us to do here, well except for clearIDEAIconsGlobalCache() considerations,
+        // but I don't feel it's right to assume PluginLoaderRegistry, responsible for MPS plugin management, to
+        // be responsible for general CL come and go story.
+        callback.release(PluginLoaderRegistry.this);
+        return;
+      }
+      // I don't filter classLoaders2Dispose to match plugin modules as there's no way to 'release' subset only.
+      // Besides, these CLs are likely dependant between each other anyway, why bother.
+      // Moreover, update() uses these to refresh various caches, so it's highly likely we need to clear all these.
+      myAccumulation.onUnload(pm, classLoaders2Dispose, () -> callback.release(PluginLoaderRegistry.this));
+      update();
     }
 
     @Override
     public void onLoaded(@NotNull Set<ReloadableModule> loadedModules, @NotNull ProgressMonitor monitor) {
-      myAccumulation.onLoad(loadedModules);
-      update();
+      final Set<ReloadableModule> pm = getPluginModules(loadedModules);
+      if (!pm.isEmpty()) {
+        myAccumulation.onLoad(pm);
+        update();
+      }
     }
   }
 
@@ -671,11 +696,7 @@ public class PluginLoaderRegistry implements Disposable {
 
     private final Delta<PluginLoader> myLoaderDelta = new Delta<>();
 
-    synchronized void onUnload(@NotNull Set<ModuleClassLoader> disposingCLs, @Nullable Runnable postRunnable) {
-      // XXX here we "resurrect" modules otherwise being removed from the repository!
-      Set<ReloadableModule> unloadedModules = disposingCLs.stream()
-                                                          .map(ModuleClassLoader::getModule)
-                                                          .collect(Collectors.toSet());
+    synchronized void onUnload(Set<ReloadableModule> unloadedModules, @NotNull Set<ModuleClassLoader> disposingCLs, @Nullable Runnable postRunnable) {
       myDelta.unload(unloadedModules);
       myCLsToBeDisposed.addAll(disposingCLs);
       if (postRunnable != null) {
