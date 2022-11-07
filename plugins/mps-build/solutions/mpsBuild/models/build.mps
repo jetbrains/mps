@@ -41926,11 +41926,6 @@
               <ref role="3bR37D" node="1TaHNgiIbIQ" resolve="MPS.Core" />
             </node>
           </node>
-          <node concept="1SiIV0" id="7YI57w6Ksjv" role="3bR37C">
-            <node concept="3bR9La" id="7YI57w6Ksjw" role="1SiIV1">
-              <ref role="3bR37D" node="1TaHNgiIbIZ" resolve="MPS.Editor" />
-            </node>
-          </node>
           <node concept="1SiIV0" id="7YI57w6Ksjx" role="3bR37C">
             <node concept="3bR9La" id="7YI57w6Ksjy" role="1SiIV1">
               <ref role="3bR37D" node="1H905DlDUSw" resolve="MPS.OpenAPI" />
@@ -42255,6 +42250,11 @@
             <ref role="1E1Vl2" node="7Kfy9QB6L9O" resolve="jetbrains.mps.lang.smodel" />
           </node>
         </node>
+        <node concept="1SiIV0" id="1Lkmzjtt6eP" role="3bR37C">
+          <node concept="3bR9La" id="1Lkmzjtt6eQ" role="1SiIV1">
+            <ref role="3bR37D" node="3qkjbZn7Ykj" resolve="jetbrains.mps.lang.constraints.rules" />
+          </node>
+        </node>
       </node>
       <node concept="1E1JtA" id="ymnOULAU1u" role="2G$12L">
         <property role="BnDLt" value="true" />
@@ -42566,6 +42566,9 @@
         </node>
         <node concept="3LEDTy" id="3NsKwMhtd6d" role="3LEDUa">
           <ref role="3LEDTV" node="7Kfy9QB6KXW" resolve="jetbrains.mps.lang.core" />
+        </node>
+        <node concept="3LEDTy" id="1Lkmzjtt6fH" role="3LEDUa">
+          <ref role="3LEDTV" node="7Kfy9QB6L9O" resolve="jetbrains.mps.lang.smodel" />
         </node>
       </node>
     </node>
