@@ -82,7 +82,6 @@ import static java.util.stream.Collectors.toCollection;
  * It listens for class loading events, calculate the plugin contributors which need to be updated and notifies these managers.
  * <p>
  */
-@SuppressWarnings("UnstableApiUsage")
 public class PluginLoaderRegistry implements Disposable {
   private static final Logger LOG = Logger.getLogger(PluginLoaderRegistry.class);
 
@@ -147,7 +146,7 @@ public class PluginLoaderRegistry implements Disposable {
   }
 
   private void fireAfterPluginsLoaded(List<PluginContributor> contributorsToLoad) {
-    if (LOG.isDebugEnabled()) {
+    if (LOG.isDebugLevel()) {
       final String m = "Dispatch %d contributors loaded to %d listeners";
       LOG.debug(String.format(m, contributorsToLoad.size(), myReloadingListeners.size()));
     }
@@ -160,7 +159,7 @@ public class PluginLoaderRegistry implements Disposable {
   }
 
   private void fireBeforePluginsUnloaded(List<PluginContributor> contributorsToUnload) {
-    if (LOG.isDebugEnabled()) {
+    if (LOG.isDebugLevel()) {
       final String m = "Dispatch %d contributors unloaded to %d listeners";
       LOG.debug(String.format(m, contributorsToUnload.size(), myReloadingListeners.size()));
     }
@@ -513,7 +512,7 @@ public class PluginLoaderRegistry implements Disposable {
                 notifyToUnload = new ArrayList<>(myCurrentContributors);
               }
 
-              if (LOG.isInfoEnabled()) {
+              if (LOG.isInfoLevel()) {
                 final String m = "Running Update Task : loaders %s; contributors : [+%d / -%d]; %s";
                 LOG.info(String.format(m, loadersDelta, toLoadContributors.size(), toUnloadContributors.size(), Thread.currentThread()));
               }
