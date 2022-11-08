@@ -403,9 +403,7 @@ public class PluginLoaderRegistry implements Disposable {
       // usually this section is called after rebuild/make
       // we have no indicator -- lets create one
       LOG.trace("running with the new");
-      // This task is instance of UpdatingTask => instance of Task.Modal
-      // As result method Task#queue require to be invoked inside write thread: see CoreProgressManager#run(Task)
-      ApplicationManager.getApplication().invokeLaterOnWriteThread(task::queue);
+      task.queue();
     }
   }
 
