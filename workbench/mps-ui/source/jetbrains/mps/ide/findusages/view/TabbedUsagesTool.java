@@ -15,22 +15,15 @@
  */
 package jetbrains.mps.ide.findusages.view;
 
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ToolWindowAnchor;
 import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentManager;
 import com.intellij.ui.content.ContentManagerAdapter;
 import com.intellij.ui.content.ContentManagerEvent;
-import jetbrains.mps.classloading.ClassLoaderManager;
-import jetbrains.mps.classloading.DeployListener;
-import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.tools.BaseProjectTool;
-import jetbrains.mps.module.ReloadableModule;
-import org.jetbrains.annotations.NotNull;
 
 import javax.swing.Icon;
-import java.util.Set;
 
 /**
  * @deprecated not very great for sub-classing, proper MPS tools shall subclass e.g.
@@ -46,14 +39,8 @@ import java.util.Set;
 @Deprecated(since = "2022.1", forRemoval = true)
 public abstract class TabbedUsagesTool extends BaseProjectTool {
 
-  private final ClassLoaderManager myClassLoaderManager;
-  private ContentManagerAdapter myContentListener;
-  private DeployListener myClassesListener;
-  private ContentManager myContentManager;
-
   public TabbedUsagesTool(Project project, String id, int number, Icon icon, ToolWindowAnchor anchor, boolean canCloseContent) {
     super(project, id, shortcutsFromNumber(number), icon, anchor, false, canCloseContent);
-    myClassLoaderManager = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getClassLoaderManager();
   }
 
   @Override
@@ -63,7 +50,7 @@ public abstract class TabbedUsagesTool extends BaseProjectTool {
 
   @Override
   public void doRegister() {
-    myContentListener = new ContentManagerAdapter() {
+    ContentManagerAdapter contentListener = new ContentManagerAdapter() {
       @Override
       public void contentRemoved(ContentManagerEvent event) {
         int index = event.getIndex();
@@ -73,32 +60,7 @@ public abstract class TabbedUsagesTool extends BaseProjectTool {
       }
     };
 
-    myContentManager = getContentManager();
-
-    myContentManager.addContentManagerListener(myContentListener);
-
-    if (forceCloseOnReload()) {
-      myClassesListener = new DeployListener() {
-        @Override
-        public void onUnloaded(@NotNull Set<ReloadableModule> modules, @NotNull org.jetbrains.mps.openapi.util.ProgressMonitor monitor) {
-          ApplicationManager.getApplication().invokeLater(() -> {
-            if (getProject().isDisposed()) return;
-            myContentManager.removeAllContents(true);
-          });
-        }
-      };
-      myClassLoaderManager.addListener(myClassesListener);
-    }
-  }
-
-  @Override
-  public void doUnregister() {
-    //this is done automatically on content manager dispose, otherwise a dependency UVT->CM must be added
-    //getContentManager().removeContentManagerListener(myContentListener);
-
-    if (myClassesListener != null) {
-      myClassLoaderManager.removeListener(myClassesListener);
-    }
+    getContentManager().addContentManagerListener(contentListener);
   }
 
   protected void closeTab(int index) {
@@ -120,8 +82,4 @@ public abstract class TabbedUsagesTool extends BaseProjectTool {
   protected abstract UsagesView getUsagesView(int index);
 
   protected abstract void onRemove(int index);
-
-  protected boolean forceCloseOnReload() {
-    return false;
-  }
 }

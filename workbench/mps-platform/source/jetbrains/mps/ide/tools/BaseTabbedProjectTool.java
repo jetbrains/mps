@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentManager;
 import com.intellij.ui.content.ContentManagerAdapter;
 import com.intellij.ui.content.ContentManagerEvent;
+import com.intellij.ui.content.ContentManagerListener;
 import jetbrains.mps.plugins.tool.IComponentDisposer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -139,7 +140,8 @@ public abstract class BaseTabbedProjectTool extends BaseProjectTool {
       return;
     }
 
-    this.getContentManager().addContentManagerListener(new ContentManagerAdapter() {
+    // the listener is removed automatically on content manager dispose
+    this.getContentManager().addContentManagerListener(new ContentManagerListener() {
       @Override
       public void contentRemoved(ContentManagerEvent event) {
         int index = event.getIndex();
