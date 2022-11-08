@@ -290,7 +290,7 @@ class MPSClassLoadersRegistry {
         @Override
         public void release(@NotNull Object requestor) {
           myBlockingRequestors.remove(requestor);
-          synchronized (this) {
+          synchronized (DisposeSession.this) {
             if (isNotBlocked() && isReadyToDispose()) {
               doDispose();
             }
