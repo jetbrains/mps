@@ -36,7 +36,6 @@ import com.intellij.openapi.startup.StartupManager;
 import com.intellij.openapi.ui.MessageType;
 import com.intellij.openapi.wm.ToolWindowAnchor;
 import com.intellij.openapi.wm.ToolWindowManager;
-import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentManager;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.actions.MPSActions;
@@ -54,10 +53,11 @@ import jetbrains.mps.ide.findusages.view.treeholder.tree.DataTreeChangesNotifier
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.INodeRepresentator;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.ViewOptions;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.ide.tools.BaseTabbedProjectTool;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
-import jetbrains.mps.logging.Logger;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -74,7 +74,7 @@ import java.util.List;
     name = "UsagesViewTool",
     storages = @Storage(StoragePathMacros.WORKSPACE_FILE)
 )
-public class UsagesViewTool extends TabbedUsagesTool implements PersistentStateComponent<Element> {
+public class UsagesViewTool extends BaseTabbedProjectTool implements PersistentStateComponent<Element> {
 
   private static final String VERSION_NUMBER = "1";
   private static final String VERSION = "version";
@@ -93,34 +93,24 @@ public class UsagesViewTool extends TabbedUsagesTool implements PersistentStateC
   //----CONSTRUCT STUFF----
 
   public UsagesViewTool(Project project) {
-    super(project, TOOL_WINDOW_ID, 3, Toolwindows.ToolWindowFind, ToolWindowAnchor.BOTTOM, true);
+    super(project, TOOL_WINDOW_ID, shortcutsFromNumber(3), Toolwindows.ToolWindowFind, ToolWindowAnchor.BOTTOM, true);
   }
 
-  @Override
-  protected UsagesView getUsagesView(int index) {
-    return myUsageViewsData.get(index).myUsagesView;
-  }
-
-  private void register(UsageViewData viewData) {
+  /*package*/ void register(UsageViewData viewData) {
     if (myUsageViewsData.isEmpty()) {
       new RepoListenerRegistrar(ProjectHelper.getProjectRepository(getProject()), myChangeTracker).attach();
     }
     myUsageViewsData.add(viewData);
   }
 
-  @Override
-  protected void onRemove(int index) {
-    myUsageViewsData.remove(index);
+  /*package*/ void unregister(UsageViewData viewData) {
+    myUsageViewsData.remove(viewData);
     if (myUsageViewsData.isEmpty()) {
       new RepoListenerRegistrar(ProjectHelper.getProjectRepository(getProject()), myChangeTracker).detach();
     }
   }
 
   //----TOOL STUFF----
-
-  public int getPriority() {
-    return 0;
-  }
 
   @Override
   protected boolean isInitiallyAvailable() {
@@ -181,10 +171,9 @@ public class UsagesViewTool extends TabbedUsagesTool implements PersistentStateC
       }
       // FALL THROUGH (single result we can't navigate to)
     }
-    int index = getCurrentTabIndex();
     UsagesView usagesView = createUsageView(options.myRunAgain ? searchTask : null);
     usagesView.setCustomNodeRepresentator(representator);
-    UsageViewData usageViewData = new UsageViewData(usagesView, options.myRunAgain ? searchTask : null);
+    final UsageViewData usageViewData = new UsageViewData(usagesView, options.myRunAgain ? searchTask : null);
     usageViewData.setTransientView(options.myTransientView);
     register(usageViewData);
 
@@ -193,13 +182,14 @@ public class UsagesViewTool extends TabbedUsagesTool implements PersistentStateC
     Icon icon = usagesView.getIcon();
     String caption = usagesView.getCaption();
     JComponent component = usagesView.getComponent();
-    Content content = addContent(component, caption, icon, true);
-    getContentManager().setSelectedContent(content);
-
-    if (!options.myForceNewTab) {
-      closeLastUnpinnedTab(index);
-    }
-    openTool(true);
+    addTab(new Tab(component, caption, icon) {
+      @Override
+      public void disposeTab() {
+        UsagesView uv = usageViewData.myUsagesView;
+        unregister(usageViewData);
+        uv.dispose();
+      }
+    }, options.myForceNewTab, true);
   }
 
   //---END FIND STUFF----
@@ -277,7 +267,7 @@ public class UsagesViewTool extends TabbedUsagesTool implements PersistentStateC
 
   @Override
   public Element getState() {
-    final jetbrains.mps.project.Project mpsProject = ProjectHelper.toMPSProject(getProject());
+    final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
     final Element state = new Element("state");
     mpsProject.getModelAccess().runReadAction(() -> write(state, mpsProject));
     return state;
@@ -309,14 +299,7 @@ public class UsagesViewTool extends TabbedUsagesTool implements PersistentStateC
     actions.add(new AnAction("Close", "", Actions.Cancel) {
       @Override
       public void actionPerformed(@NotNull AnActionEvent e) {
-        int i = 0;
-        for (UsageViewData vd : myUsageViewsData) {
-          if (vd.myUsagesView == view) {
-            UsagesViewTool.this.closeTab(i);
-            break;
-          }
-          i++;
-        }
+        closeTab(view.getComponent());
       }
     });
     actions.add(new PinActiveTabAction.TW());
