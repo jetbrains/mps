@@ -20,7 +20,6 @@ import com.intellij.ide.ApplicationInitializedListener;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.extensions.ExtensionPoint;
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
 import com.intellij.openapi.progress.EmptyProgressIndicator;
 import com.intellij.openapi.progress.ProcessCanceledException;
@@ -115,18 +114,14 @@ public class PluginLoaderRegistry implements Disposable {
     myModelAccess = repo.getModelAccess();
 
     myClassLoaderManager.addListener(myClassesListener);
-    registerAppInitListener();
     assert myCurrentContributors.isEmpty();
   }
 
-  private void registerAppInitListener() {
-    ApplicationInitializedListener applicationInitializedListener = new MyApplicationInitializedListener();
-    getExtensionPoint().registerExtension(applicationInitializedListener);
-  }
-
-  @NotNull
-  private static ExtensionPoint<Object> getExtensionPoint() {
-    return ApplicationManager.getApplication().getExtensionArea().getExtensionPoint("com.intellij.applicationInitializedListener");
+  private void signalAppInitialized() {
+    myAppInitialized.set(true);
+    // XXX invoked from ApplicationInitializedListener which "doesn't guarantee EDT", but OTOH doesn't
+    //     guarantee NOT EDT, while run() here asserts !EDT
+    new UpdatingTask(null).run(new EmptyProgressIndicator());
   }
 
   private Set<PluginContributor> createPluginContributors(Collection<ReloadableModule> modules) {
@@ -341,11 +336,12 @@ public class PluginLoaderRegistry implements Disposable {
    */
   private void update() {
     if (myUpdateIsScheduledInEDT.compareAndSet(false, true)) {
+      // doesn't make sense to ask PI from pooled thread, the only chance to get not null, imo, is here.
+      final ProgressIndicator globalProgressIndicator = ProgressManager.getGlobalProgressIndicator();
       // no idea which executor/thread pool to use, e.g. seen uses of AppExecutorUtil.getAppExecutorService()
       ApplicationManager.getApplication().executeOnPooledThread(() -> {
         // we need to get out of application read since it is impossible to #invokeAndWait from read, lets postpone
         LOG.debug("running the task later");
-        ProgressIndicator globalProgressIndicator = ProgressManager.getGlobalProgressIndicator();
         // trying to pass the current indicator, for example this helps us to reload plugins within the global project open indicator
         runTask(globalProgressIndicator);
       });
@@ -416,6 +412,8 @@ public class PluginLoaderRegistry implements Disposable {
 
   /**
    * This task flushes all added/removed loaders and added/removed contributors
+   * It's executed from a pooled thread (regular Task behavior), with progress window (isModal() == true).
+   * For MPS needs, it fires update() in EDT thread and pooled thread waits for EDT activity to complete.
    * @see #update
    */
   private class UpdatingTask extends Task.Modal {
@@ -465,6 +463,10 @@ public class PluginLoaderRegistry implements Disposable {
         myUpdateIsScheduledInEDT.compareAndSet(true, false);
         monitor.start("Reloading MPS Plugins", 6);
         ProgressManager.checkCanceled();
+        // model access here is for MPSModuleRepository singleton. While it's ok now, when project repo
+        // shares MA with the global one, it's not quite good as generally we load plugins from project modules, too
+        // and MA of global repo is not the one to lock here. However, if we eventually move to MPSModuleRepository
+        // being the one responsible for modules with CL (aka 'deployed'), this approach might be still valid.
         myModelAccess.runReadAction(() -> {
           myClassLoaderManager.runTransaction(() -> {
             // NOTE: when we call #reset we are bound to process those changes, otherwise we lose them
@@ -805,16 +807,15 @@ public class PluginLoaderRegistry implements Disposable {
     }
   }
 
-  private class MyApplicationInitializedListener implements ApplicationInitializedListener {
+  @SuppressWarnings("UnstableApiUsage")
+  public static class MyApplicationInitializedListener implements ApplicationInitializedListener {
     /**
      * Somehow TaskModal#queue does not work properly during app initialization (see #runTask).
      * So I call UpdatingTask#run explicitly
      */
     @Override
     public void componentsInitialized() {
-      myAppInitialized.set(true);
-      new UpdatingTask(null).run(new EmptyProgressIndicator());
-//      getExtensionPoint().unregisterExtension(MyApplicationInitializedListener.class); // cleared up by IJ
+      PluginLoaderRegistry.getInstance().signalAppInitialized();
     }
   }
 }

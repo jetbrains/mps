@@ -115,6 +115,7 @@
 
     <notificationGroup id="jetbrains.mps.ide.make.StartupModuleMaker" displayType="STICKY_BALLOON" key="smm.group.name" bundle="jetbrains.mps.ide.make.Messages"/>
     <applicationService serviceImplementation="jetbrains.mps.ide.generator.GeneratorCacheComponent"/>
+    <applicationInitializedListener implementation="jetbrains.mps.plugins.PluginLoaderRegistry$MyApplicationInitializedListener"/>
   </extensions>
 
   <extensions defaultExtensionNs="jetbrains.mps">
