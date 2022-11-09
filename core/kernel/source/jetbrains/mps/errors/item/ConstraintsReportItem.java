@@ -16,9 +16,11 @@
 package jetbrains.mps.errors.item;
 
 import jetbrains.mps.errors.MessageStatus;
+import jetbrains.mps.errors.messageTargets.MessageTarget;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Internal;
+import org.jetbrains.mps.openapi.language.SConceptFeature;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -70,10 +72,23 @@ public abstract class ConstraintsReportItem extends NodeReportItemBase implement
     }
   }
 
-  @Internal
-  public static class CanBeChildFailedReportItem extends ConstraintsReportItem {
-    public CanBeChildFailedReportItem(@NotNull SNode node, @NotNull String message, @NotNull TypesystemRuleId ruleNode) {
+  static abstract class ConstraintsReportItemWithMessage extends ConstraintsReportItem {
+    private MessageTarget messageTarget = null;
+
+    public ConstraintsReportItemWithMessage(@NotNull SNode node, @NotNull String message, @NotNull TypesystemRuleId ruleNode, @Nullable MessageTarget messageTarget) {
       super(node, message, ruleNode);
+      this.messageTarget = messageTarget;
+    }
+
+    @Override
+    public MessageTarget getMessageTarget() {
+      return (messageTarget == null) ? super.getMessageTarget() : messageTarget;
+    }
+  }
+  @Internal
+  public static class CanBeChildFailedReportItem extends ConstraintsReportItemWithMessage {
+    public CanBeChildFailedReportItem(@NotNull SNode node, @NotNull String message, @NotNull TypesystemRuleId ruleNode, @Nullable MessageTarget messageTarget) {
+      super(node, message, ruleNode, messageTarget);
     }
 
     @Override
@@ -83,9 +98,9 @@ public abstract class ConstraintsReportItem extends NodeReportItemBase implement
   }
 
   @Internal
-  public static class CanBeRootFailedReportItem extends ConstraintsReportItem {
-    public CanBeRootFailedReportItem(@NotNull SNode node, @NotNull String message, @NotNull TypesystemRuleId ruleNode) {
-      super(node, message, ruleNode);
+  public static class CanBeRootFailedReportItem extends ConstraintsReportItemWithMessage {
+    public CanBeRootFailedReportItem(@NotNull SNode node, @NotNull String message, @NotNull TypesystemRuleId ruleNode, @Nullable MessageTarget messageTarget) {
+      super(node, message, ruleNode, messageTarget);
     }
 
     @Override
@@ -94,9 +109,9 @@ public abstract class ConstraintsReportItem extends NodeReportItemBase implement
     }
   }
 
-  public static class CanBeParentFailedReportItem extends ConstraintsReportItem {
-    public CanBeParentFailedReportItem(@NotNull SNode node, @NotNull String message, @NotNull TypesystemRuleId ruleNode) {
-      super(node, message, ruleNode);
+  public static class CanBeParentFailedReportItem extends ConstraintsReportItemWithMessage {
+    public CanBeParentFailedReportItem(@NotNull SNode node, @NotNull String message, @NotNull TypesystemRuleId ruleNode, @Nullable MessageTarget messageTarget) {
+      super(node, message, ruleNode, messageTarget);
     }
 
     @Override
@@ -105,10 +120,10 @@ public abstract class ConstraintsReportItem extends NodeReportItemBase implement
     }
   }
 
-  public static class CanBeAncestorFailedReportItem extends ConstraintsReportItem {
+  public static class CanBeAncestorFailedReportItem extends ConstraintsReportItemWithMessage {
     public CanBeAncestorFailedReportItem(@NotNull SNode ancestor, @NotNull SNode child, @NotNull String message,
-                                         @NotNull TypesystemRuleId ruleNode) {
-      super(child, message, ruleNode);
+                                         @NotNull TypesystemRuleId ruleNode, @Nullable MessageTarget messageTarget) {
+      super(child, message, ruleNode, messageTarget);
     }
 
     @Override

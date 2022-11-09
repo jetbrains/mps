@@ -117,7 +117,7 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
         FailingConstraintsMessagesFacade facade = getMessageFacade();
         List<String> messages = facade.findTextMessagesForRule(context.getAncestorNode().getConcept(), rule, context);
         for (String message : messages) {
-          errorsCollector.addError(new CanBeAncestorFailedReportItem(ancestor, child, message, ruleId));
+          errorsCollector.addError(new CanBeAncestorFailedReportItem(ancestor, child, message, ruleId, rule.getMessageTarget()));
         }
       }
 
@@ -136,7 +136,7 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
         FailingConstraintsMessagesFacade facade = getMessageFacade();
         List<String> messages = facade.findTextMessagesForRule(concept, rule, context);
         for (String message : messages) {
-          errorsCollector.addError(new CanBeRootFailedReportItem(node, message, ruleId));
+          errorsCollector.addError(new CanBeRootFailedReportItem(node, message, ruleId, rule.getMessageTarget()));
         }
       }
     }
@@ -166,7 +166,7 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
       FailingConstraintsMessagesFacade facade = getMessageFacade();
       List<String> messages = facade.findTextMessagesForRule(childNode.getConcept(), rule, context);
       for (String message : messages) {
-        errorsCollector.addError(new CanBeChildFailedReportItem(childNode, message, ruleId));
+        errorsCollector.addError(new CanBeChildFailedReportItem(childNode, message, ruleId, rule.getMessageTarget()));
       }
     }
   }
@@ -179,7 +179,7 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
       FailingConstraintsMessagesFacade facade = getMessageFacade();
       List<String> messages = facade.findTextMessagesForRule(context.getParentConcept(), rule, context);
       for (String message : messages) {
-        errorsCollector.addError(new CanBeParentFailedReportItem(context.getParentNode(), message, ruleId));
+        errorsCollector.addError(new CanBeParentFailedReportItem(context.getParentNode(), message, ruleId, rule.getMessageTarget()));
       }
     }
   }

@@ -16,6 +16,8 @@
 package jetbrains.mps.core.aspects.constraints.rules;
 
 import jetbrains.mps.core.context.Context;
+import jetbrains.mps.errors.messageTargets.MessageTarget;
+import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -73,5 +75,13 @@ public interface Rule<C extends Context> {
   default boolean appliesTo(@NotNull C context) {
     return true;
 //    return Objects.equals(getKind().getLinkedContextGenre(), context.getCategory());
+  }
+
+  /**
+   *
+   * @return the message target (the whole node, a property or a reference)
+   */
+  default MessageTarget getMessageTarget() {
+    return new NodeMessageTarget();
   }
 }
