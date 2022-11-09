@@ -16,6 +16,8 @@ import util.KindUtil;
 import jetbrains.mps.lang.constraints.rules.skeleton.behavior.RuleBlockMember__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.structure.behavior.PropertyDeclaration__BehaviorDescriptor;
+import jetbrains.mps.lang.structure.behavior.LinkDeclaration__BehaviorDescriptor;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
@@ -111,6 +113,18 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object referenceMacro_GetReferent_3_2(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "ruleField");
   }
+  public static Object referenceMacro_GetReferent_4_0(final ReferenceMacroContext _context) {
+    return (SNode) PropertyDeclaration__BehaviorDescriptor.getConceptDeclaration_id2OF3rgRewqT.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.propertyDeclaration$akvy));
+  }
+  public static Object referenceMacro_GetReferent_4_1(final ReferenceMacroContext _context) {
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.propertyDeclaration$akvy);
+  }
+  public static Object referenceMacro_GetReferent_4_2(final ReferenceMacroContext _context) {
+    return (SNode) LinkDeclaration__BehaviorDescriptor.getConceptDeclaration_id7jb4LXpbWaP.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.linkDeclaration$5oG8));
+  }
+  public static Object referenceMacro_GetReferent_4_3(final ReferenceMacroContext _context) {
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.linkDeclaration$5oG8);
+  }
   public static boolean ifMacro_Condition_1_0(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.condition$h$Ae), LINKS.expr$ZgCK) != null);
   }
@@ -119,6 +133,9 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean ifMacro_Condition_2_1(final IfMacroContext _context) {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.condition$h$Ae), LINKS.expr$ZgCK) != null;
+  }
+  public static boolean ifMacro_Condition_2_2(final IfMacroContext _context) {
+    return (SLinkOperations.getTarget(_context.getNode(), LINKS.messageTarget$vaD9) != null);
   }
   public static SNode sourceNodeQuery_0_0(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.expression$aVsE);
@@ -144,6 +161,15 @@ public class QueriesGenerated extends QueryProviderBase {
   public static SNode sourceNodeQuery_2_2(final SourceSubstituteMacroNodeContext _context) {
 
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.condition$h$Ae), LINKS.expr$ZgCK);
+  }
+  public static SNode sourceNodeQuery_2_3(final SourceSubstituteMacroNodeContext _context) {
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.messageTarget$vaD9);
+  }
+  public static SNode sourceNodeQuery_4_0(final SourceSubstituteMacroNodeContext _context) {
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.propertySpec$wjsm);
+  }
+  public static SNode sourceNodeQuery_4_1(final SourceSubstituteMacroNodeContext _context) {
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.referenceRole$bN08);
   }
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
     return new RequiredDefsCalculator().calculate(_context.getNode());
@@ -275,6 +301,9 @@ public class QueriesGenerated extends QueryProviderBase {
     snqMethods.put("4117535957049240562", new SNQ(i++));
     snqMethods.put("7291380803376490849", new SNQ(i++));
     snqMethods.put("3562920471664415511", new SNQ(i++));
+    snqMethods.put("7761397261974673221", new SNQ(i++));
+    snqMethods.put("3036427283674707372", new SNQ(i++));
+    snqMethods.put("3036427283674706993", new SNQ(i++));
   }
   @NotNull
   @Override
@@ -306,6 +335,12 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.sourceNodeQuery_2_1(ctx);
         case 7:
           return QueriesGenerated.sourceNodeQuery_2_2(ctx);
+        case 8:
+          return QueriesGenerated.sourceNodeQuery_2_3(ctx);
+        case 9:
+          return QueriesGenerated.sourceNodeQuery_4_0(ctx);
+        case 10:
+          return QueriesGenerated.sourceNodeQuery_4_1(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -397,6 +432,7 @@ public class QueriesGenerated extends QueryProviderBase {
     imcMethods.put("2554379189374153843", new IfMC(i++));
     imcMethods.put("4117535957049204727", new IfMC(i++));
     imcMethods.put("2554379189374044010", new IfMC(i++));
+    imcMethods.put("5171428101396092644", new IfMC(i++));
   }
   @NotNull
   @Override
@@ -418,6 +454,8 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.ifMacro_Condition_2_0(ctx);
         case 2:
           return QueriesGenerated.ifMacro_Condition_2_1(ctx);
+        case 3:
+          return QueriesGenerated.ifMacro_Condition_2_2(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for if macro %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -436,6 +474,10 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("1867733327985372373", new RTQ(8, "ContainmentContext"));
     rtqMethods.put("1867733327985372405", new RTQ(9, "RuleClass"));
     rtqMethods.put("1867733327985608762", new RTQ(10, "RULE"));
+    rtqMethods.put("3036427283674689532", new RTQ(11, "BaseConcept"));
+    rtqMethods.put("3036427283674695622", new RTQ(12, "virtualPackage"));
+    rtqMethods.put("3036427283674699429", new RTQ(13, "ReferenceMessageTarget"));
+    rtqMethods.put("3036427283674699494", new RTQ(14, "linkDeclaration"));
   }
   @NotNull
   @Override
@@ -474,6 +516,14 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.referenceMacro_GetReferent_3_1(ctx);
         case 10:
           return QueriesGenerated.referenceMacro_GetReferent_3_2(ctx);
+        case 11:
+          return QueriesGenerated.referenceMacro_GetReferent_4_0(ctx);
+        case 12:
+          return QueriesGenerated.referenceMacro_GetReferent_4_1(ctx);
+        case 13:
+          return QueriesGenerated.referenceMacro_GetReferent_4_2(ctx);
+        case 14:
+          return QueriesGenerated.referenceMacro_GetReferent_4_3(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -550,13 +600,18 @@ public class QueriesGenerated extends QueryProviderBase {
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink declaration$xU6a = MetaAdapterFactory.getReferenceLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration");
+    /*package*/ static final SReferenceLink propertyDeclaration$akvy = MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x11db4a6a000L, 0x11db4a6fbeeL, "propertyDeclaration");
+    /*package*/ static final SReferenceLink linkDeclaration$5oG8 = MetaAdapterFactory.getReferenceLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x11db4a87c94L, 0x11db4a8e070L, "linkDeclaration");
     /*package*/ static final SContainmentLink condition$h$Ae = MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x3bd18bf4b10c3c4aL, 0x6e175e60d98b9c4cL, "condition");
     /*package*/ static final SContainmentLink expr$ZgCK = MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x3172094ab484cd2cL, 0x126f1320a26d8256L, "expr");
     /*package*/ static final SContainmentLink traceStatement$IiZ_ = MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, 0x39246d2325d0a4bfL, "traceStatement");
+    /*package*/ static final SContainmentLink messageTarget$vaD9 = MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, 0x40d3dbef2f42c67eL, "messageTarget");
     /*package*/ static final SContainmentLink expression$aVsE = MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x126f1320a26cf7f1L, 0x126f1320a26d350dL, "expression");
     /*package*/ static final SContainmentLink expr$mUyW = MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359366e9d5L, 0x126f1320a26da4abL, "expr");
     /*package*/ static final SContainmentLink type$S49v = MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359366e9d5L, 0x4bf59690bc00f6afL, "type");
     /*package*/ static final SContainmentLink expr$45_Z = MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, 0x126f1320a26da4b8L, "expr");
+    /*package*/ static final SContainmentLink propertySpec$wjsm = MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x11db54b106bL, 0x11db54c4ff3L, "propertySpec");
+    /*package*/ static final SContainmentLink referenceRole$bN08 = MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x11db54de8fdL, 0x11db54e3613L, "referenceRole");
     /*package*/ static final SContainmentLink block$zsJD = MetaAdapterFactory.getContainmentLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8daL, 0x19eb8590edaff8dbL, "block");
     /*package*/ static final SContainmentLink members$9HnD = MetaAdapterFactory.getContainmentLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL, 0x19eb8590edb5174bL, "members");
     /*package*/ static final SContainmentLink member$L_2d = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");

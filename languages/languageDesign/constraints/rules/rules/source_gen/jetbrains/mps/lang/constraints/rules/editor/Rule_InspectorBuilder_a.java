@@ -65,6 +65,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setGridLayout(true);
     editorCell.addEditorCell(createCollection_1());
     editorCell.addEditorCell(createCollection_2());
+    editorCell.addEditorCell(createCollection_3());
     return editorCell;
   }
   private EditorCell createCollection_1() {
@@ -182,6 +183,77 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return "<no traceStatement>";
     }
   }
+  private EditorCell createCollection_3() {
+    EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
+    editorCell.setCellId("Collection_z0m96w_3");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.SELECTABLE, false);
+    editorCell.getStyle().putAll(style);
+    editorCell.addEditorCell(createConstant_2());
+    editorCell.addEditorCell(createRefNode_1());
+    return editorCell;
+  }
+  private EditorCell createConstant_2() {
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "feature to highlight:");
+    editorCell.setCellId("Constant_z0m96w_2");
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createRefNode_1() {
+    SingleRoleCellProvider provider = new messageTargetSingleRoleHandler_z0m96w_b2a(myNode, LINKS.messageTarget$vaD9, getEditorContext());
+    return provider.createCell();
+  }
+  private static class messageTargetSingleRoleHandler_z0m96w_b2a extends SingleRoleCellProvider {
+    @NotNull
+    private SNode myNode;
+
+    public messageTargetSingleRoleHandler_z0m96w_b2a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+      super(containmentLink, context);
+      myNode = ownerNode;
+    }
+
+    @Override
+    @NotNull
+    public SNode getNode() {
+      return myNode;
+    }
+
+    protected EditorCell createChildCell(SNode child) {
+      EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.messageTarget$vaD9, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.messageTarget$vaD9, child));
+      installCellInfo(child, editorCell, false);
+      return editorCell;
+    }
+
+
+
+    private void installCellInfo(SNode child, EditorCell editorCell, boolean isEmpty) {
+      if (editorCell.getSubstituteInfo() == null || editorCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
+        editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
+      }
+      if (editorCell.getSRole() == null) {
+        editorCell.setSRole(LINKS.messageTarget$vaD9);
+      }
+    }
+    @Override
+    protected EditorCell createEmptyCell() {
+      getCellFactory().pushCellContext();
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.messageTarget$vaD9));
+      try {
+        EditorCell editorCell = super.createEmptyCell();
+        editorCell.setCellId("empty_messageTarget");
+        installCellInfo(null, editorCell, true);
+        setCellContext(editorCell);
+        return editorCell;
+      } finally {
+        getCellFactory().popCellContext();
+      }
+    }
+    protected String getNoTargetText() {
+      return "<no messageTarget>";
+    }
+  }
 
   private static final class PROPS {
     /*package*/ static final SProperty ruleId$WGdw = MetaAdapterFactory.getProperty(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL, 0x5d2e6079771f8cc0L, "ruleId");
@@ -193,5 +265,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink traceStatement$IiZ_ = MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, 0x39246d2325d0a4bfL, "traceStatement");
+    /*package*/ static final SContainmentLink messageTarget$vaD9 = MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, 0x40d3dbef2f42c67eL, "messageTarget");
   }
 }

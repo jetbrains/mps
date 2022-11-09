@@ -11,6 +11,9 @@ import jetbrains.mps.smodel.runtime.ILanguageAspect;
 import jetbrains.mps.openapi.actions.descriptor.ActionAspectDescriptor;
 import jetbrains.mps.lang.constraints.rules.actions.ActionAspectDescriptorImpl;
 import jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor;
+import jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor;
+import jetbrains.mps.lang.dataFlow.framework.DataFlowAspectDescriptor;
+import jetbrains.mps.lang.constraints.rules.dataFlow.DataFlowAspectDescriptorImpl;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import jetbrains.mps.lang.constraints.rules.editor.EditorAspectDescriptorImpl;
 import jetbrains.mps.openapi.intentions.IntentionAspectDescriptor;
@@ -57,6 +60,12 @@ public class Language extends LanguageRuntime {
     }
     if (aspectClass == BehaviorAspectDescriptor.class) {
       return aspectClass.cast(new jetbrains.mps.lang.constraints.rules.behavior.BehaviorAspectDescriptor());
+    }
+    if (aspectClass == ConstraintsAspectDescriptor.class) {
+      return aspectClass.cast(new jetbrains.mps.lang.constraints.rules.constraints.ConstraintsAspectDescriptor());
+    }
+    if (aspectClass == DataFlowAspectDescriptor.class) {
+      return aspectClass.cast(new DataFlowAspectDescriptorImpl());
     }
     if (aspectClass == EditorAspectDescriptor.class) {
       return aspectClass.cast(new EditorAspectDescriptorImpl());

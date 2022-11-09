@@ -37,6 +37,8 @@
   <uses module="dada761c-8e21-4cc0-b68c-7043bd551489(jetbrains.mps.lang.context.defs#01)" kind="dp" />
   <uses module="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" kind="dp" />
   <uses module="9e98f4e2-decf-4e97-bf80-9109e8b759aa(jetbrains.mps.lang.feedback.context)" kind="dp" />
+  <uses module="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="dp" />
+  <uses module="c72da2b9-7cce-4447-8389-f407dc1158b7(jetbrains.mps.lang.structure)" kind="dp" />
   <uses module="9ded098b-ad6a-4657-bfd9-48636cfe8bc3(jetbrains.mps.lang.traceable)" kind="dp" />
   <uses module="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt+dp" />
 </dependenciesRoot>
