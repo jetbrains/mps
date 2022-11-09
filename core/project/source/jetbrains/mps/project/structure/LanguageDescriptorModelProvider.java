@@ -347,7 +347,10 @@ public class LanguageDescriptorModelProvider extends DescriptorModelProvider {
         // there is a need to re-init descriptor model.
         return;
       }
-      changeModelReference(getSModelReference(myModule));
+      final SModelReference actualMR = getSModelReference(myModule);
+      if (!actualMR.equals(getReference())) {
+        changeModelReference(actualMR);
+      }
       myHash = null;
     }
   }
