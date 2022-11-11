@@ -147,7 +147,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:83f25986-cdbc-469a-a327-db97a2ec5a39(jetbrains.mps.lang.constraints.rules.structure)/1227107274859");
     b.version(3);
     b.aggregate("propertySpec", 0x11db54c4ff3L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1227107356659").done();
-    b.alias("property");
+    b.alias("property specification");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForReferenceMessageTarget() {

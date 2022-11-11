@@ -2098,7 +2098,7 @@
     <ref role="1XX52x" to="bm42:hQPiL1F" resolve="PropertyNameTarget" />
     <node concept="3EZMnI" id="hQPji_n" role="2wV5jI">
       <node concept="3F0ifn" id="hQPjj3A" role="3EZMnx">
-        <property role="3F0ifm" value="property" />
+        <property role="3F0ifm" value="property specification" />
         <node concept="A1WHr" id="7n8vHNSX6fO" role="3vIgyS">
           <ref role="2ZyFGn" to="bm42:hQPiL1F" resolve="PropertyNameTarget" />
         </node>

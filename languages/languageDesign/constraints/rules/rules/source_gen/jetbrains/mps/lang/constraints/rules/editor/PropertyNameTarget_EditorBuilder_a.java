@@ -55,7 +55,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private EditorCell createConstant_0() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "property");
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "property specification");
     editorCell.setCellId("Constant_mqpyhp_a0");
     editorCell.setTransformationMenuLookup(new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.PropertyNameTarget$cw));
     editorCell.setDefaultText("");

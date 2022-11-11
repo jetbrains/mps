@@ -823,7 +823,7 @@
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.rawPresentation(java.lang.String)" resolve="rawPresentation" />
                         <uo k="s:originTrace" v="n:1227107274859" />
                         <node concept="Xl_RD" id="3S" role="37wK5m">
-                          <property role="Xl_RC" value="property" />
+                          <property role="Xl_RC" value="property specification" />
                           <uo k="s:originTrace" v="n:1227107274859" />
                         </node>
                       </node>
@@ -3439,7 +3439,7 @@
             <node concept="liA8E" id="jl" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.alias(java.lang.String)" resolve="alias" />
               <node concept="Xl_RD" id="jm" role="37wK5m">
-                <property role="Xl_RC" value="property" />
+                <property role="Xl_RC" value="property specification" />
               </node>
             </node>
           </node>

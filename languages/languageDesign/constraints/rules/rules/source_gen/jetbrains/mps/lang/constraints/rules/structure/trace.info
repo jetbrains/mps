@@ -127,8 +127,8 @@
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1227107274859" at="18,0,19,0" concept="1" trace="props_PropertyNameTarget" />
       <node id="1227107274859" at="73,47,74,76" concept="3" />
-      <node id="1227107274859" at="74,76,75,42" concept="0" />
-      <node id="1227107274859" at="75,42,76,50" concept="0" />
+      <node id="1227107274859" at="74,76,75,56" concept="0" />
+      <node id="1227107274859" at="75,56,76,50" concept="0" />
       <node id="1227107274859" at="77,9,78,40" concept="4" />
       <node id="1227107274859" at="72,52,77,9" concept="2" />
       <scope id="1227107274859" at="73,47,76,50">
@@ -150,8 +150,8 @@
       <node id="1227107274859" at="146,71,147,117" concept="0" />
       <node id="1227107274859" at="147,117,148,17" concept="0" />
       <node id="1227107356659" at="148,17,149,189" concept="0" />
-      <node id="1227107274859" at="149,189,150,24" concept="0" />
-      <node id="1227107274859" at="150,24,151,22" concept="4" />
+      <node id="1227107274859" at="149,189,150,38" concept="0" />
+      <node id="1227107274859" at="150,38,151,22" concept="4" />
       <node id="1227107274859" at="142,0,153,0" concept="7" trace="createDescriptorForPropertyNameTarget#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="1227107274859" at="64,52,65,43" />
       <scope id="1227107274859" at="142,76,151,22">
