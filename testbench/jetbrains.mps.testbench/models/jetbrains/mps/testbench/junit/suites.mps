@@ -64,7 +64,6 @@
     <import index="y49u" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.util(MPS.OpenAPI/)" />
     <import index="zf81" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.net(JDK/)" />
     <import index="7x5y" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.nio.charset(JDK/)" />
-    <import index="u132" ref="49808fad-9d41-4b96-83fa-9231640f6b2b/java:junit.framework(JUnit/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" implicit="true" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
@@ -4609,7 +4608,7 @@
               <ref role="3cqZAo" node="2SnxzQPEmTF" resolve="ourEnv" />
             </node>
             <node concept="liA8E" id="3Y8TONRH5pJ" role="2OqNvi">
-              <ref role="37wK5l" to="79ha:3hj1t46fASQ" resolve="closeProject" />
+              <ref role="37wK5l" to="cky9:9GeULsOzVi" resolve="closeProject" />
               <node concept="37vLTw" id="3Y8TONRH5ri" role="37wK5m">
                 <ref role="3cqZAo" node="2SnxzQPEmgY" resolve="myProject" />
               </node>

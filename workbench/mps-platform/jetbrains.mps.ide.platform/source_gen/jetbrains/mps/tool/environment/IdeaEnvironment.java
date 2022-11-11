@@ -23,11 +23,13 @@ import com.intellij.openapi.Disposable;
 import com.intellij.openapi.vfs.newvfs.impl.VfsRootAccess;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.util.Disposer;
+import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
+import com.intellij.openapi.project.ex.ProjectManagerEx;
+import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.application.Application;
 import jetbrains.mps.project.ProjectManager;
 import java.util.List;
 import java.util.ArrayList;
-import com.intellij.openapi.application.ModalityState;
 import jetbrains.mps.ide.ThreadUtils;
 import com.intellij.util.ui.UIUtil;
 import com.intellij.openapi.vfs.impl.jar.JarFileSystemImpl;
@@ -35,7 +37,6 @@ import com.intellij.openapi.application.impl.LaterInvocator;
 import jetbrains.mps.library.LibraryInitializer;
 import java.util.Collections;
 import jetbrains.mps.util.FileUtil;
-import com.intellij.openapi.project.ex.ProjectManagerEx;
 import jetbrains.mps.util.Reference;
 import java.util.concurrent.TimeUnit;
 import jetbrains.mps.vfs.refresh.CachingFileSystem;
@@ -219,6 +220,23 @@ public final class IdeaEnvironment extends EnvironmentBase {
     File dummyProjectFile = createDummyProjectFile();
     Project dummyProject = openProject(dummyProjectFile);
     return dummyProject;
+  }
+
+
+  @Override
+  public void closeProject(@NotNull Project project) {
+    if (project instanceof MPSProject) {
+      // For MPSProject as ProjectComponent for IDEA's Project, use platform means to close
+      // the project.
+      checkInitialized();
+      final com.intellij.openapi.project.Project ideaProject = ((MPSProject) project).getProject();
+      ApplicationManager.getApplication().invokeAndWait(() -> {
+        FileEditorManagerEx.getInstanceEx(ideaProject).closeAllFiles();
+        ProjectManagerEx.getInstanceEx().closeAndDispose(ideaProject);
+      }, ModalityState.NON_MODAL);
+    } else {
+      super.closeProject(project);
+    }
   }
 
   @Override
