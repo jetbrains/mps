@@ -211,7 +211,7 @@
         <ref role="1NtTu8" to="t16r:hyoMxHKcU6" resolve="messageProvider" />
       </node>
       <node concept="3F0ifn" id="60nu8cesouJ" role="3EZMnx">
-        <property role="3F0ifm" value="" />
+        <property role="3F0ifm" value=";" />
       </node>
       <node concept="l2Vlx" id="60nu8cese7$" role="2iSdaV" />
     </node>
