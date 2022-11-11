@@ -65,6 +65,7 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 public abstract class ChangesTestBase implements EnvironmentAware {
   protected static boolean ourEnabled;
   protected Environment myEnv;
+  private static Environment ourProjectEnv;
   protected static MPSProject ourProject;
 
   protected Project myIdeaProject;
@@ -92,9 +93,11 @@ public abstract class ChangesTestBase implements EnvironmentAware {
   @AfterClass
   public static void tearDown() {
     ourEnabled = false;
-    // the right way to close project is Environment.closeProject(myProject), but at the moment PushEnvironmentRunnerBuilder does it with instance method only
-    ourProject.dispose();
+    // the right way to close project is Environment.closeProject(myProject),
+    // PushEnvironmentRunnerBuilder comes through instance method, we cache env value in ourProjectEnv
+    ourProjectEnv.closeProject(ourProject);
     ourProject = null;
+    ourProjectEnv = null;
   }
 
   private void refreshFS(@NotNull VirtualFile file) {
@@ -116,6 +119,7 @@ public abstract class ChangesTestBase implements EnvironmentAware {
     if (ourProject == null) {
       // Point to current directory with MPS project
       File mpsProject = new File("").getAbsoluteFile();
+      ourProjectEnv = myEnv;
       ourProject = ((MPSProject) myEnv.openProject(mpsProject));
       // For whatever reason, tests with this superclass work only if there's 1 project dispose per class (open/close of the project in Before/After doesn't work)
       // Given there's odd magic with ourEnabled and the fact it's VCS, I don't want to dive into this sh!t now.
@@ -208,7 +212,7 @@ public abstract class ChangesTestBase implements EnvironmentAware {
       ListSequence.fromList(SModelOperations.roots(model, null)).visitAll(new IVisitor<SNode>() {
         public void visit(final SNode r) {
           FileStatus actual = fsm.getStatus(r);
-          FileStatus expected = check_l1nwgz_a0b0a0a0a0g0mb(Sequence.fromIterable(Sequence.fromArray(statuses)).findFirst(new IWhereFilter<RootStatusItem>() {
+          FileStatus expected = check_l1nwgz_a0b0a0a0a0g0nb(Sequence.fromIterable(Sequence.fromArray(statuses)).findFirst(new IWhereFilter<RootStatusItem>() {
             public boolean accept(RootStatusItem it) {
               return it.rootName().equals(r.getName());
             }
@@ -232,7 +236,7 @@ public abstract class ChangesTestBase implements EnvironmentAware {
     myEnv.flushAllEvents();
     myWaitHelper.waitForDiffRegistry();
     if (withAsserts) {
-      Assert.assertTrue(ListSequence.fromList(check_l1nwgz_a0a0a3a04(myDiff.getChangeSet())).isEmpty());
+      Assert.assertTrue(ListSequence.fromList(check_l1nwgz_a0a0a3a14(myDiff.getChangeSet())).isEmpty());
     }
   }
 
@@ -257,7 +261,7 @@ public abstract class ChangesTestBase implements EnvironmentAware {
       updateChangeListManager();
       myWaitHelper.waitForDiffRegistry();
       if (withAsserts) {
-        Assert.assertTrue(ListSequence.fromList(check_l1nwgz_a0a0a01a4a24(myDiff.getChangeSet())).isEmpty());
+        Assert.assertTrue(ListSequence.fromList(check_l1nwgz_a0a0a01a4a34(myDiff.getChangeSet())).isEmpty());
       }
     }
   }
@@ -291,19 +295,19 @@ public abstract class ChangesTestBase implements EnvironmentAware {
       }
     }, true), "|");
   }
-  private static FileStatus check_l1nwgz_a0b0a0a0a0g0mb(RootStatusItem checkedDotOperand) {
+  private static FileStatus check_l1nwgz_a0b0a0a0a0g0nb(RootStatusItem checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.status();
     }
     return null;
   }
-  private static List<ModelChange> check_l1nwgz_a0a0a3a04(ChangeSet checkedDotOperand) {
+  private static List<ModelChange> check_l1nwgz_a0a0a3a14(ChangeSet checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModelChanges();
     }
     return null;
   }
-  private static List<ModelChange> check_l1nwgz_a0a0a01a4a24(ChangeSet checkedDotOperand) {
+  private static List<ModelChange> check_l1nwgz_a0a0a01a4a34(ChangeSet checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModelChanges();
     }
