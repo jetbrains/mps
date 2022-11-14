@@ -2563,8 +2563,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForLongLiteral() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "LongLiteral", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d6L);
     b.class_(false, false, false);
-    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L);
-    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x61460ebbf13b8457L);
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798373334");
     b.version(3);
     b.property("value", 0x28bef6d7551af68dL).type(MetaIdFactory.dataTypeId(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af68cL)).origin("2936055411798374029").done();
@@ -2607,8 +2605,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForMultiLineStringLiteral() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "MultiLineStringLiteral", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af45eL);
     b.class_(false, false, false);
-    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L);
-    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x33194cc2307f2e7dL);
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798373470");
     b.version(3);
     b.aggregate("content___", 0x28bef6d7551af753L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af476L).optional(false).ordered(true).multiple(true).origin("2936055411798374227").done();
