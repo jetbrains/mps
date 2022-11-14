@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -100,8 +100,8 @@ public class UsagesView implements IExternalizeable {
   private final ViewOptions myOptions2Update;
 
   //my components
-  private JPanel myPanel;
-  private UsagesTreeComponent myTreeComponent;
+  private final JPanel myPanel;
+  private final UsagesTreeComponent myTreeComponent;
   private String myCaption = "Usages";
   private Icon myIcon = Toolwindows.ToolWindowFind;
 
@@ -114,7 +114,7 @@ public class UsagesView implements IExternalizeable {
   private final OccurenceNavigatorSupport myOccurrenceNavigator;
 
   public UsagesView(com.intellij.openapi.project.Project project, ViewOptions defaultOptions) {
-    this(ProjectHelper.toMPSProject(project), defaultOptions);
+    this(ProjectHelper.fromIdeaProject(project), defaultOptions);
   }
 
   public UsagesView(Project mpsProject, ViewOptions defaultOptions) {
@@ -232,6 +232,8 @@ public class UsagesView implements IExternalizeable {
 
   @Nullable
   public SearchResults getSearchResults() {
+    // FIXME the only use is in ModelCheckerViewer, which is likely plain wrong. Clients of MCV shall use
+    //       ModelCheckerIssueFinder directly, not through viewer
     return myLastResults;
   }
 
@@ -347,13 +349,13 @@ public class UsagesView implements IExternalizeable {
     actionGroup.add(new ToggleAction("Autoscroll to source", "", Icons.AUTOSCROLL_ICON) {
 
       @Override
-      public void setSelected(AnActionEvent e, boolean state) {
+      public void setSelected(@NotNull AnActionEvent e, boolean state) {
         myTree.setAutoscroll(state);
         myOptions2Update.setValues(myTreeComponent.getComponentsViewOptions());
       }
 
       @Override
-      public boolean isSelected(AnActionEvent e) {
+      public boolean isSelected(@NotNull AnActionEvent e) {
         return myTree.isAutoscroll();
       }
     });

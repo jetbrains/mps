@@ -36,7 +36,6 @@ import com.intellij.openapi.startup.StartupManager;
 import com.intellij.openapi.ui.MessageType;
 import com.intellij.openapi.wm.ToolWindowAnchor;
 import com.intellij.openapi.wm.ToolWindowManager;
-import com.intellij.ui.content.ContentManager;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.actions.MPSActions;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
@@ -156,7 +155,7 @@ public class UsagesViewTool extends BaseTabbedProjectTool implements PersistentS
     if (options.myRunAgain && searchTask == null) {
       throw new IllegalStateException("Search task should be provided to allow rerunning.");
     }
-    final jetbrains.mps.project.Project mpsProject = ProjectHelper.toMPSProject(getProject());
+    final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
     int resCount = searchResults.getSearchResults2().size();
     if (resCount == 0) {
       final ToolWindowManager manager = ToolWindowManager.getInstance(getProject());
@@ -179,6 +178,11 @@ public class UsagesViewTool extends BaseTabbedProjectTool implements PersistentS
 
     usagesView.setContents(searchResults);
 
+    addTab(usageViewData, options.myForceNewTab, true);
+  }
+
+  private void addTab(final UsageViewData usageViewData, boolean forceNewTab, boolean openTool) {
+    UsagesView usagesView = usageViewData.myUsagesView;
     Icon icon = usagesView.getIcon();
     String caption = usagesView.getCaption();
     JComponent component = usagesView.getComponent();
@@ -189,7 +193,7 @@ public class UsagesViewTool extends BaseTabbedProjectTool implements PersistentS
         unregister(usageViewData);
         uv.dispose();
       }
-    }, options.myForceNewTab, true);
+    }, forceNewTab, openTool);
   }
 
   //---END FIND STUFF----
@@ -217,27 +221,25 @@ public class UsagesViewTool extends BaseTabbedProjectTool implements PersistentS
           continue;
         }
         register(usageViewData);
-
-        ApplicationManager.getApplication().invokeLater(() -> {
-          final String caption = usageViewData.myUsagesView.getCaption();
-          final Icon icon = usageViewData.myUsagesView.getIcon();
-          addContent(usageViewData.myUsagesView.getComponent(), caption, icon, true);
-        });
       }
     }
 
     Element defaultViewOptionsXML = element.getChild(DEFAULT_VIEW_OPTIONS);
     myDefaultViewOptions.read(defaultViewOptionsXML, project);
 
-    ApplicationManager.getApplication().invokeLater(() -> {
-      ContentManager cm = getContentManager();
-      if (cm == null) {
-        return;
-      }
-      if (cm.getContentCount() == 0) {
-        makeUnavailableLater();
-      }
-    });
+    if (!myUsageViewsData.isEmpty()) {
+      // XXX not really nice to assume myUsagesViewData doesn't change between here and EDT when we add tabs,
+      //     but I'm not ready for a thorough refactoring of this piece now. Likely, need to collect UVD
+      //     into a list here, and register+addTab later from EDT to ensure the state is consistent
+      ApplicationManager.getApplication().invokeLater(() -> {
+        for (UsageViewData d : myUsageViewsData) {
+          // we re-open tabs here, shall force new tab for each restored data element, but no need to bring tool to front
+          UsagesViewTool.this.addTab(d, true, false);
+        }
+      });
+    } else {
+      makeUnavailableLater();
+    }
   }
 
   private void write(Element element, jetbrains.mps.project.Project project) {

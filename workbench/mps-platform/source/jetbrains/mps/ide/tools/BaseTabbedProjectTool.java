@@ -149,9 +149,8 @@ public abstract class BaseTabbedProjectTool extends BaseProjectTool {
       @Override
       public void contentRemoved(@NotNull ContentManagerEvent event) {
         int index = event.getIndex();
-        IDisposableTab tab = myTabList.get(index);
+        IDisposableTab tab = myTabList.remove(index);
         tab.disposeTab();
-        myTabList.remove(index);
       }
     });
     myContentRemovedListenerAdded = true;
