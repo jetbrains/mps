@@ -465,8 +465,13 @@ public class UsagesView implements IExternalizeable {
       return getSearchResults();
     }
 
-    public SearchResults getSearchResults() {
+    public SearchResults<?> getSearchResults() {
       return myLastResults;
+    }
+
+    @Nullable
+    public String getCaption() {
+      return mySearchQuery.getCaption();
     }
 
     @Nullable

@@ -296,6 +296,7 @@ public class UsagesViewTool extends BaseTabbedProjectTool implements PersistentS
       final RerunAction rerunAction = new RerunAction(view, "Run again");
       rerunAction.setRunOptions(searchTask);
       actions.add(rerunAction);
+      view.setCaption(searchTask.getCaption());
     }
     actions.add(new RebuildAction(view));
     actions.add(new AnAction("Close", "", Actions.Cancel) {
