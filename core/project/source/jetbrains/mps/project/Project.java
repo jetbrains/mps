@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.project;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.BaseScope;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.MPSModuleOwner;
@@ -139,7 +140,7 @@ public abstract class Project implements MPSModuleOwner, IProject {
 
   /**
    * Note, call {@code #getProjectModules(SModule.class)} is ambiguous, as it doesn't return generators that live under a project's language despite the fact
-   * Generator is instaoce of SModule, indeed.
+   * Generator is instance of SModule, indeed.
    */
   // AP todo transfer from Project to ProjectBase; helping method -- no need to be here
   @NotNull
@@ -224,10 +225,10 @@ public abstract class Project implements MPSModuleOwner, IProject {
     @NotNull
     @Override
     public Iterable<SModule> getModules() {
-      // XXX access ProjectManager from ProjectBase. Too many superclasses for Project, imo
-      List<Project> openProjects = ProjectManager.getInstance().getOpenedProjects();
-      assert openProjects.contains(Project.this) : "trying to get scope on a not-yet-loaded project";
-
+      if (!isOpened()) {
+        String m = isDisposed() ? "trying to get scope of already disposed project %s" : "trying to get scope on a not-yet-loaded project %s";
+        Logger.getLogger(Project.class).error(String.format(m, Project.this));
+      }
       return getProjectModulesWithGenerators();
     }
   }

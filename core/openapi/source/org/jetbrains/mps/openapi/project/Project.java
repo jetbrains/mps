@@ -66,5 +66,5 @@ public interface Project {
    * Project has two states -- #opened and #closed.
    * @return whether this project is opened.
    */
-  boolean isOpened();
+  boolean isOpened(); // API method of dubious value
 }

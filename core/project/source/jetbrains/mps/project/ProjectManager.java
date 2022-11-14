@@ -25,14 +25,13 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
- * Evgeny Gryaznov, 9/29/11
- *
- * TODO must be core component not singleton
+ * Records all MPS-related open projects
  */
 public final class ProjectManager implements CoreComponent {
   private static ProjectManager INSTANCE;
   private final List<ProjectManagerListener> myListeners = new CopyOnWriteArrayList<>();
 
+  @Deprecated(since = "2022.3", forRemoval = true)
   public static ProjectManager getInstance() {
     Logger.getLogger(ProjectManager.class).warnDeprecatedUse("ProjectManager is CoreComponent, use ComponentHost to access its instance");
     return INSTANCE;
