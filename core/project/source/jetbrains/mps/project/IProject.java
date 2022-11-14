@@ -15,11 +15,8 @@
  */
 package jetbrains.mps.project;
 
-import jetbrains.mps.project.Project.ProjectScope;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.List;
 
@@ -27,17 +24,16 @@ import java.util.List;
  * MPS project interface
  *
  * fixme remove
+ * @deprecated use {@link org.jetbrains.mps.openapi.project.Project} or {@link jetbrains.mps.project.Project}
  *
  * Created by apyshkin on 11/3/15.
  */
+@Deprecated(forRemoval = true, since = "2022.3")
 public interface IProject extends org.jetbrains.mps.openapi.project.Project {
-  /**
-   * @return scope with all the modules from the project, including generators.
-   */
-  @NotNull ProjectScope getScope();
 
   /**
    * Generic extension mechanism
+   * XXX likely, shall be part of openapi.project.Project interface
    *
    * @return component instance or <code>null</code> if no extension of specified kind found.
    */
@@ -46,30 +42,17 @@ public interface IProject extends org.jetbrains.mps.openapi.project.Project {
   /**
    * api for the external project change : adding the module to the project
    */
-  void addModule(@NotNull SModule module);
+  void addModule(@NotNull SModule module); // in use from mbeddr
 
   /**
    * api for the external project change : removing the module from the project
    */
   void removeModule(@NotNull SModule module);
 
-  // not to fix the broken refs
-  @NotNull
-  @Override
-  SRepository getRepository();
-
-  @NotNull
-  @Override
-  ModelAccess getModelAccess();
-
-  @NotNull
-  @Override
-  String getName();
-
   /**
    * @see org.jetbrains.mps.openapi.project.Project#getProjectModules()
    */
   @NotNull
   @Override
-  List<SModule> getProjectModules();
+  List<SModule> getProjectModules(); // in use from mbeddr
 }

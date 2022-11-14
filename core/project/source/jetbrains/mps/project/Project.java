@@ -63,9 +63,12 @@ public abstract class Project implements MPSModuleOwner, IProject {
     myRepository = repository;
   }
 
+  /**
+   * @return scope with all the modules from the project, including generators.
+   */
   @NotNull
-  @Override
   public final ProjectScope getScope() {
+    // XXX perhaps, worth exposing in openapi.Project, with openapi.SearchScope as return type?
     return myScope;
   }
 

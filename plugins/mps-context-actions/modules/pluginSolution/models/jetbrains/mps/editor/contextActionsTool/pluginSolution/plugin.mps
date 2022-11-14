@@ -17,7 +17,6 @@
   </languages>
   <imports>
     <import index="3a50" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide(MPS.Platform/)" />
-    <import index="b9kz" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.wm.ex(MPS.IDEA/)" />
     <import index="qkt" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.actionSystem(MPS.IDEA/)" />
     <import index="alof" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.project(MPS.Platform/)" />
     <import index="z1c3" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
@@ -2284,7 +2283,7 @@
       <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="5Xa7gk5cNo9" role="1B3o_S" />
       <node concept="3uibUv" id="7pClCNYafOI" role="1tU5fm">
-        <ref role="3uigEE" to="z1c4:~IProject" resolve="IProject" />
+        <ref role="3uigEE" to="z1c3:~MPSProject" resolve="MPSProject" />
       </node>
     </node>
     <node concept="312cEg" id="7pClCNY9s$3" role="jymVt">
@@ -2440,7 +2439,7 @@
                 <ref role="3cqZAo" node="7pClCNYafOO" resolve="myProject" />
               </node>
               <node concept="liA8E" id="7pClCNYaqM8" role="2OqNvi">
-                <ref role="37wK5l" to="z1c4:~IProject.getComponent(java.lang.Class)" resolve="getComponent" />
+                <ref role="37wK5l" to="z1c3:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
                 <node concept="3VsKOn" id="7pClCNYar0Q" role="37wK5m">
                   <ref role="3VsUkX" to="wvnl:~EditorExtensionRegistry" resolve="EditorExtensionRegistry" />
                 </node>
@@ -2469,7 +2468,7 @@
       <node concept="37vLTG" id="7pClCNY9_s_" role="3clF46">
         <property role="TrG5h" value="project" />
         <node concept="3uibUv" id="7pClCNYagVY" role="1tU5fm">
-          <ref role="3uigEE" to="z1c4:~IProject" resolve="IProject" />
+          <ref role="3uigEE" to="z1c3:~MPSProject" resolve="MPSProject" />
         </node>
       </node>
       <node concept="37vLTG" id="7pClCNY9sYP" role="3clF46">
@@ -2509,7 +2508,7 @@
                 <ref role="3cqZAo" node="7pClCNYafOO" resolve="myProject" />
               </node>
               <node concept="liA8E" id="7pClCNYat2X" role="2OqNvi">
-                <ref role="37wK5l" to="z1c4:~IProject.getComponent(java.lang.Class)" resolve="getComponent" />
+                <ref role="37wK5l" to="z1c3:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
                 <node concept="3VsKOn" id="7pClCNYathN" role="37wK5m">
                   <ref role="3VsUkX" to="wvnl:~EditorExtensionRegistry" resolve="EditorExtensionRegistry" />
                 </node>
@@ -2750,7 +2749,7 @@
                             <ref role="3cqZAo" node="7pClCNYafOO" resolve="myProject" />
                           </node>
                           <node concept="liA8E" id="7pClCNYahY4" role="2OqNvi">
-                            <ref role="37wK5l" to="z1c4:~IProject.getRepository()" resolve="getRepository" />
+                            <ref role="37wK5l" to="z1c4:~Project.getRepository()" resolve="getRepository" />
                           </node>
                         </node>
                       </node>

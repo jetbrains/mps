@@ -10770,7 +10770,7 @@
                 <node concept="3clFbS" id="42hl10VHazB" role="1bW5cS">
                   <node concept="3clFbF" id="2crodf9Sdup" role="3cqZAp">
                     <node concept="2YIFZM" id="2crodf9SdGM" role="3clFbG">
-                      <ref role="37wK5l" to="wvnl:~EditorExtensionUtil.extendUsingProject(jetbrains.mps.openapi.editor.EditorComponent,jetbrains.mps.project.IProject)" resolve="extendUsingProject" />
+                      <ref role="37wK5l" to="wvnl:~EditorExtensionUtil.extendUsingProject(jetbrains.mps.openapi.editor.EditorComponent,org.jetbrains.mps.openapi.project.Project)" resolve="extendUsingProject" />
                       <ref role="1Pybhc" to="wvnl:~EditorExtensionUtil" resolve="EditorExtensionUtil" />
                       <node concept="37vLTw" id="2crodf9SdUs" role="37wK5m">
                         <ref role="3cqZAo" node="42hl10VHazH" resolve="ec" />

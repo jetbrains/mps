@@ -1023,7 +1023,7 @@
       <node id="8532164657612727509" at="33,0,34,0" concept="5" trace="myNextSelection" />
       <node id="8532164657612804993" at="36,49,37,33" concept="4" />
       <node id="8532164657612939815" at="40,0,41,0" concept="5" trace="mySelectionListener" />
-      <node id="8532164657612744583" at="42,108,43,24" concept="4" />
+      <node id="8532164657612744583" at="42,110,43,24" concept="4" />
       <node id="8532164657612705718" at="43,24,44,36" concept="4" />
       <node id="6866332489279030160" at="44,36,45,34" concept="4" />
       <node id="8532164657612804111" at="45,34,46,0" concept="12" />
@@ -1104,7 +1104,7 @@
       <node id="8532164657612813592" at="172,0,178,0" concept="14" trace="check_ae45oa_a0c0s#(Ljetbrains/mps/openapi/editor/selection/Selection;)Ljetbrains/mps/openapi/editor/EditorComponent;" />
       <node id="8532164657612813599" at="178,0,184,0" concept="14" trace="check_ae45oa_a0d0s#(Ljetbrains/mps/openapi/editor/selection/Selection;)Ljetbrains/mps/openapi/editor/EditorComponent;" />
       <node id="8532164657612813607" at="184,0,190,0" concept="14" trace="check_ae45oa_a0e0s#(Ljetbrains/mps/openapi/editor/selection/Selection;)Ljetbrains/mps/openapi/editor/EditorComponent;" />
-      <node id="8532164657612705710" at="42,0,51,0" concept="2" trace="ToolController#(Ljetbrains/mps/project/IProject;Ljetbrains/mps/editor/contextActionsTool/pluginSolution/plugin/ToolComponent;Ljetbrains/mps/nodeEditor/assist/SelectionMenuProvider;)V" />
+      <node id="8532164657612705710" at="42,0,51,0" concept="2" trace="ToolController#(Ljetbrains/mps/project/MPSProject;Ljetbrains/mps/editor/contextActionsTool/pluginSolution/plugin/ToolComponent;Ljetbrains/mps/nodeEditor/assist/SelectionMenuProvider;)V" />
       <node id="7951930939826785194" at="81,46,90,36" concept="4" />
       <node id="8532164657612977430" at="158,0,169,0" concept="8" trace="selectionChanged#(Ljetbrains/mps/openapi/editor/EditorComponent;Ljetbrains/mps/openapi/editor/selection/Selection;Ljetbrains/mps/openapi/editor/selection/Selection;)V" />
       <node id="8532164657612699523" at="79,110,91,11" concept="4" />
@@ -1188,7 +1188,7 @@
       <scope id="8532164657612813607" at="184,0,190,0">
         <var name="checkedDotOperand" id="8532164657612813607" />
       </scope>
-      <scope id="8532164657612705714" at="42,108,49,42" />
+      <scope id="8532164657612705714" at="42,110,49,42" />
       <scope id="8532164657612977439" at="159,138,167,7" />
       <scope id="8532164657612705710" at="42,0,51,0">
         <var name="menuProvider" id="6866332489279029211" />
