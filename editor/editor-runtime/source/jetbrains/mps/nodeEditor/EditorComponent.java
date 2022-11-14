@@ -217,12 +217,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
                                                                     jetbrains.mps.openapi.editor.EditorComponent {
 
   private static final Logger LOG = Logger.getLogger(EditorComponent.class);
-  /**
-   * @deprecated use {@link MPSActions#EDITOR_POPUP_GROUP} directly
-   */
-  @ScheduledForRemoval(inVersion = "2021.1")
-  @Deprecated(since = "2020.3", forRemoval = true)
-  public static final String EDITOR_POPUP_MENU_ACTIONS = MPSActions.EDITOR_POPUP_GROUP;
 
   private static final int SCROLL_GAP = 15;
   private ClassLoaderManager myClassLoaderManager = null;
@@ -865,6 +859,14 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   }
 
   protected void notifyCreation() {
+    // FIXME This notification doesn't seem to be responsibility of this base class, rather
+    //       of the subclass dedicated to IDE editors. OTOH, the contract of EditorComponentCreateListener
+    //       doesn't tell exactly what kind of EC notifies about their creation. Moreover, I think it should
+    //       be code *external* to EC to send out IDEA project-related notifications.
+    //       FWIW, I don't understand commit f1c88fba (therefore, don't agree), and think IDE-editor related
+    //       subclass shall send out events and this base class shall not care at all, even about notifiesCreation().
+    //       Check UIEditorComponent subclass uses. While UIEditorComponent doesn't send these notifications,
+    //       InspectorEditorComponent it receives as argument does.
     jetbrains.mps.project.Project project = ProjectHelper.getProject(myRepository);
     if (project == null) {
       return;

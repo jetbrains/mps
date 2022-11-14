@@ -9,13 +9,12 @@ import jetbrains.mps.logging.Logger;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.fileEditor.FileEditor;
-import jetbrains.mps.nodeEditor.UIEditorComponent;
+import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.Highlighter;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import org.jdom.Element;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.nodeEditor.EditorComponent;
 import javax.swing.JScrollBar;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -23,6 +22,7 @@ import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.ide.PasteProvider;
 import jetbrains.mps.nodeEditor.commands.CommandContextImpl;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import javax.swing.KeyStroke;
 import jetbrains.mps.openapi.editor.extensions.EditorExtensionUtil;
 import jetbrains.mps.smodel.tempmodel.TemporaryModels;
 import jetbrains.mps.smodel.tempmodel.TempModuleOptions;
@@ -47,7 +47,6 @@ import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.project.ImportUtil;
 import jetbrains.mps.workbench.action.BaseAction;
 import com.intellij.openapi.actionSystem.CustomShortcutSet;
-import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
 import com.intellij.openapi.actionSystem.MouseShortcut;
 import java.awt.event.MouseEvent;
@@ -94,7 +93,7 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
   private SModel myModel;
   private MPSProject myProject;
   private FileEditor myFileEditor;
-  private UIEditorComponent myEditor;
+  private EditorComponent myEditor;
   private Highlighter myHighlighter;
   private String myTabTitle;
 
@@ -147,7 +146,7 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
   }
 
   protected void createEditor() {
-    this.myEditor = new UIEditorComponent(myProject.getRepository(), null) {
+    this.myEditor = new EditorComponent(myProject.getRepository()) {
       @Nullable
       @Override
       public Object getData(@NonNls @NotNull String key) {
@@ -181,6 +180,7 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
         };
       }
     };
+    myEditor.unregisterKeyboardAction(KeyStroke.getKeyStroke("ESCAPE"));
     EditorExtensionUtil.extendUsingProject(myEditor, myProject);
     myEditor.editNode(myRoot);
     scrollToBottom();
@@ -514,7 +514,7 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
     BHReflection.invoke0(SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs), LINKS.command$RGil), CONCEPTS.Command$6M, SMethodIdV2.create("execute", 6854397602732226506L, 0x6d1c0cbc11348977L), getConsoleContext(), consoleStream, beforeCommandClosure, afterCommandClosure);
   }
 
-  private static void check_6q36mf_a41a43(Highlighter checkedDotOperand, UIEditorComponent myEditor) {
+  private static void check_6q36mf_a41a43(Highlighter checkedDotOperand, EditorComponent myEditor) {
     if (null != checkedDotOperand) {
       checkedDotOperand.addAdditionalEditorComponent(myEditor);
     }

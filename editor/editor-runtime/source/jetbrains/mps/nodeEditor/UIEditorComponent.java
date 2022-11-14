@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,12 @@ import org.jetbrains.mps.openapi.module.SRepository;
 
 import javax.swing.KeyStroke;
 
+/**
+ * FIXME please document intended use of the class. Seems that it's intended for embedded node editors, however there are
+ *       uses of a NodeEditorComponent, configured in a custom way, in PopupWithNodeEditorUI.
+ *       Besides, the code suggests we can accomplish the same (unregister action and access seleciton manager)
+ *       without the need for dedicated class
+ */
 public class UIEditorComponent extends EditorComponent {
   private InspectorEditorComponent myInspector;
 

@@ -4523,7 +4523,7 @@
       <property role="TrG5h" value="myEditor" />
       <node concept="3Tm6S6" id="758rrhN6Cvp" role="1B3o_S" />
       <node concept="3uibUv" id="6ysF3v1j_8B" role="1tU5fm">
-        <ref role="3uigEE" to="exr9:~UIEditorComponent" resolve="UIEditorComponent" />
+        <ref role="3uigEE" to="exr9:~EditorComponent" resolve="EditorComponent" />
       </node>
     </node>
     <node concept="312cEg" id="4gO8GruCdfs" role="jymVt">
@@ -4854,8 +4854,8 @@
               <node concept="YeOm9" id="6ysF3v1j_cF" role="2ShVmc">
                 <node concept="1Y3b0j" id="6ysF3v1j_cG" role="YeSDq">
                   <property role="2bfB8j" value="true" />
-                  <ref role="37wK5l" to="exr9:~UIEditorComponent.&lt;init&gt;(org.jetbrains.mps.openapi.module.SRepository,jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent)" resolve="UIEditorComponent" />
-                  <ref role="1Y3XeK" to="exr9:~UIEditorComponent" resolve="UIEditorComponent" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.&lt;init&gt;(org.jetbrains.mps.openapi.module.SRepository)" resolve="EditorComponent" />
+                  <ref role="1Y3XeK" to="exr9:~EditorComponent" resolve="EditorComponent" />
                   <node concept="3clFb_" id="6ysF3v1j_cH" role="jymVt">
                     <property role="1EzhhJ" value="false" />
                     <property role="TrG5h" value="getData" />
@@ -5111,7 +5111,6 @@
                       <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
                     </node>
                   </node>
-                  <node concept="10Nm6u" id="6ysF3v1j_dj" role="37wK5m" />
                 </node>
               </node>
             </node>
@@ -5119,6 +5118,23 @@
               <node concept="Xjq3P" id="6ysF3v1j_eL" role="2Oq$k0" />
               <node concept="2OwXpG" id="6ysF3v1j_eM" role="2OqNvi">
                 <ref role="2Oxat5" node="6ysF3v1j_8_" resolve="myEditor" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2XLNzKQwSs$" role="3cqZAp">
+          <node concept="2OqwBi" id="2XLNzKQwX$Q" role="3clFbG">
+            <node concept="37vLTw" id="2XLNzKQwSsy" role="2Oq$k0">
+              <ref role="3cqZAo" node="6ysF3v1j_8_" resolve="myEditor" />
+            </node>
+            <node concept="liA8E" id="2XLNzKQx73S" role="2OqNvi">
+              <ref role="37wK5l" to="dxuu:~JComponent.unregisterKeyboardAction(javax.swing.KeyStroke)" resolve="unregisterKeyboardAction" />
+              <node concept="2YIFZM" id="2XLNzKQx$X7" role="37wK5m">
+                <ref role="37wK5l" to="dxuu:~KeyStroke.getKeyStroke(java.lang.String)" resolve="getKeyStroke" />
+                <ref role="1Pybhc" to="dxuu:~KeyStroke" resolve="KeyStroke" />
+                <node concept="Xl_RD" id="2XLNzKQxDEw" role="37wK5m">
+                  <property role="Xl_RC" value="ESCAPE" />
+                </node>
               </node>
             </node>
           </node>
@@ -5545,7 +5561,7 @@
                                 <ref role="3cqZAo" node="6ysF3v1j_8_" resolve="myEditor" />
                               </node>
                               <node concept="liA8E" id="6ysF3v1j_kt" role="2OqNvi">
-                                <ref role="37wK5l" to="exr9:~UIEditorComponent.dispose()" resolve="dispose" />
+                                <ref role="37wK5l" to="exr9:~EditorComponent.dispose()" resolve="dispose" />
                               </node>
                             </node>
                           </node>
