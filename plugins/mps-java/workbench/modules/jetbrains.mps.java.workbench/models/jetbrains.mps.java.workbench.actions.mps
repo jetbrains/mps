@@ -774,7 +774,7 @@
                           <node concept="3K4zz7" id="52Mq1bfbmSe" role="33vP2m">
                             <node concept="2OqwBi" id="52Mq1bfbDWK" role="3K4Cdx">
                               <node concept="37vLTw" id="52Mq1bfd9Z2" role="2Oq$k0">
-                                <ref role="3cqZAo" node="52Mq1bfd9YX" resolve="parent" />
+                                <ref role="3cqZAo" node="52Mq1bfd9YX" resolve="baseClass" />
                               </node>
                               <node concept="1mIQ4w" id="52Mq1bfbEUY" role="2OqNvi">
                                 <node concept="chp4Y" id="52Mq1bfbFr1" role="cj9EA">
@@ -847,7 +847,7 @@
                                 <ref role="cht4Q" to="tpck:h0TrEE$" resolve="INamedConcept" />
                               </node>
                               <node concept="37vLTw" id="52Mq1bfd9Z1" role="1m5AlR">
-                                <ref role="3cqZAo" node="52Mq1bfd9YX" resolve="parent" />
+                                <ref role="3cqZAo" node="52Mq1bfd9YX" resolve="baseClass" />
                               </node>
                             </node>
                             <node concept="3TrcHB" id="52Mq1bfc_ZA" role="2OqNvi">
@@ -873,7 +873,7 @@
                                         <ref role="cht4Q" to="tpee:fz12cDA" resolve="ClassConcept" />
                                       </node>
                                       <node concept="37vLTw" id="52Mq1bfdcpq" role="1m5AlR">
-                                        <ref role="3cqZAo" node="52Mq1bfdcpj" resolve="parent" />
+                                        <ref role="3cqZAo" node="52Mq1bfdcpj" resolve="methodClass" />
                                       </node>
                                     </node>
                                     <node concept="3TrcHB" id="52Mq1bfcQx7" role="2OqNvi">
@@ -883,7 +883,7 @@
                                 </node>
                                 <node concept="2OqwBi" id="52Mq1bfcu_e" role="3uHU7B">
                                   <node concept="37vLTw" id="52Mq1bfdcpp" role="2Oq$k0">
-                                    <ref role="3cqZAo" node="52Mq1bfdcpj" resolve="parent" />
+                                    <ref role="3cqZAo" node="52Mq1bfdcpj" resolve="methodClass" />
                                   </node>
                                   <node concept="1mIQ4w" id="52Mq1bfcvDj" role="2OqNvi">
                                     <node concept="chp4Y" id="52Mq1bfcvVz" role="cj9EA">
@@ -1347,7 +1347,7 @@
       <property role="TrG5h" value="myConstraintChecker" />
       <node concept="3Tm6S6" id="7xk0Gq044K7" role="1B3o_S" />
       <node concept="3uibUv" id="7xk0Gq04m6G" role="1tU5fm">
-        <ref role="3uigEE" to="k2t0:~IChecker$AbstractRootChecker" resolve="AbstractRootChecker" />
+        <ref role="3uigEE" to="k2t0:~IChecker$AbstractRootChecker" resolve="IChecker.AbstractRootChecker" />
         <node concept="3uibUv" id="4seDjeNppn6" role="11_B2D">
           <ref role="3uigEE" to="d6hs:~NodeReportItem" resolve="NodeReportItem" />
         </node>
@@ -2379,7 +2379,7 @@
             </node>
           </node>
           <node concept="37vLTw" id="4osL9SmVUL8" role="3clFbw">
-            <ref role="3cqZAo" node="4osL9SmUBRF" resolve="triedStatic" />
+            <ref role="3cqZAo" node="4osL9SmUBRF" resolve="myTriedStatic" />
           </node>
         </node>
         <node concept="3clFbH" id="4osL9SnrPBC" role="3cqZAp" />
@@ -2390,7 +2390,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="4osL9SmUJUN" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="4osL9SmSvna" role="jymVt" />
@@ -2867,7 +2867,7 @@
                                             </node>
                                             <node concept="2pIyA9" id="wCH7Eoi1wp" role="2OqNvi">
                                               <node concept="1pGfFk" id="wCH7Eoi1zh" role="2ShVmc">
-                                                <ref role="37wK5l" to="z1c3:~Project$ProjectScope.&lt;init&gt;(jetbrains.mps.project.Project)" resolve="ProjectScope" />
+                                                <ref role="37wK5l" to="z1c3:~Project$ProjectScope.&lt;init&gt;(jetbrains.mps.project.Project)" resolve="Project.ProjectScope" />
                                               </node>
                                             </node>
                                           </node>
@@ -6990,10 +6990,10 @@
         <node concept="3clFbF" id="3GMkPCUj1WL" role="3cqZAp">
           <node concept="37vLTI" id="3GMkPCUj1WN" role="3clFbG">
             <node concept="37vLTw" id="3GMkPCUj1WQ" role="37vLTJ">
-              <ref role="3cqZAo" node="3GMkPCUj1WH" resolve="myDialog" />
+              <ref role="3cqZAo" node="3GMkPCUj1WH" resolve="myUpdatedCallback" />
             </node>
             <node concept="37vLTw" id="3GMkPCUj1WR" role="37vLTx">
-              <ref role="3cqZAo" node="3GMkPCUj0O0" resolve="dialog" />
+              <ref role="3cqZAo" node="3GMkPCUj0O0" resolve="updatedCallback" />
             </node>
           </node>
         </node>
@@ -7563,7 +7563,7 @@
           <node concept="3fqX7Q" id="52Mq1bftfRA" role="3clFbw">
             <node concept="3JuTUA" id="52Mq1bft1ix" role="3fr31v">
               <node concept="37vLTw" id="52Mq1bftzpM" role="3JuY14">
-                <ref role="3cqZAo" node="52Mq1bftzpG" resolve="type" />
+                <ref role="3cqZAo" node="52Mq1bftzpG" resolve="right" />
               </node>
               <node concept="2OqwBi" id="52Mq1bfta0F" role="3JuZjQ">
                 <node concept="37vLTw" id="52Mq1bft93R" role="2Oq$k0">
@@ -7683,7 +7683,7 @@
         <node concept="3clFbF" id="3GMkPCUj5MF" role="3cqZAp">
           <node concept="2OqwBi" id="3GMkPCUj7bJ" role="3clFbG">
             <node concept="37vLTw" id="3GMkPCUj5MD" role="2Oq$k0">
-              <ref role="3cqZAo" node="3GMkPCUj1WH" resolve="myDialog" />
+              <ref role="3cqZAo" node="3GMkPCUj1WH" resolve="myUpdatedCallback" />
             </node>
             <node concept="1Bd96e" id="3GMkPCUk1_v" role="2OqNvi" />
           </node>

@@ -4103,8 +4103,8 @@
               <node concept="YeOm9" id="3bEtkqd2bnZ" role="2ShVmc">
                 <node concept="1Y3b0j" id="3bEtkqd2bo2" role="YeSDq">
                   <property role="2bfB8j" value="true" />
-                  <ref role="37wK5l" to="w1kc:~UndoRunnable$Base.&lt;init&gt;(java.lang.String,java.lang.String)" resolve="Base" />
-                  <ref role="1Y3XeK" to="w1kc:~UndoRunnable$Base" resolve="Base" />
+                  <ref role="37wK5l" to="w1kc:~UndoRunnable$Base.&lt;init&gt;(java.lang.String,java.lang.String)" resolve="UndoRunnable.Base" />
+                  <ref role="1Y3XeK" to="w1kc:~UndoRunnable$Base" resolve="UndoRunnable.Base" />
                   <node concept="2tJIrI" id="3bEtkqd2c15" role="jymVt" />
                   <node concept="3Tm1VV" id="3bEtkqd2bo3" role="1B3o_S" />
                   <node concept="Xl_RD" id="3bEtkqd2bCM" role="37wK5m">
@@ -4965,8 +4965,8 @@
                 <node concept="YeOm9" id="4nCd7enwVzL" role="2ShVmc">
                   <node concept="1Y3b0j" id="4nCd7enwVzM" role="YeSDq">
                     <property role="2bfB8j" value="true" />
-                    <ref role="1Y3XeK" to="xygl:~Task$Modal" resolve="Modal" />
-                    <ref role="37wK5l" to="xygl:~Task$Modal.&lt;init&gt;(com.intellij.openapi.project.Project,java.lang.String,boolean)" resolve="Modal" />
+                    <ref role="1Y3XeK" to="xygl:~Task$Modal" resolve="Task.Modal" />
+                    <ref role="37wK5l" to="xygl:~Task$Modal.&lt;init&gt;(com.intellij.openapi.project.Project,java.lang.String,boolean)" resolve="Task.Modal" />
                     <node concept="37vLTw" id="3GM_nagTvlC" role="37wK5m">
                       <ref role="3cqZAo" node="5evy$7ca$IM" resolve="ideaProject" />
                     </node>
@@ -5554,11 +5554,11 @@
           <node concept="3cpWsn" id="7OWEUve5Yua" role="3cpWs9">
             <property role="TrG5h" value="safeOption" />
             <node concept="3uibUv" id="7OWEUve5Yub" role="1tU5fm">
-              <ref role="3uigEE" to="52hy:~DeleteDialog$DeleteOption" resolve="DeleteOption" />
+              <ref role="3uigEE" to="52hy:~DeleteDialog$DeleteOption" resolve="DeleteDialog.DeleteOption" />
             </node>
             <node concept="2ShNRf" id="7OWEUve5Yuc" role="33vP2m">
               <node concept="1pGfFk" id="7OWEUve5Yud" role="2ShVmc">
-                <ref role="37wK5l" to="52hy:~DeleteDialog$DeleteOption.&lt;init&gt;(java.lang.String,boolean,boolean)" resolve="DeleteOption" />
+                <ref role="37wK5l" to="52hy:~DeleteDialog$DeleteOption.&lt;init&gt;(java.lang.String,boolean,boolean)" resolve="DeleteDialog.DeleteOption" />
                 <node concept="2YIFZM" id="4TYmXmb_dLj" role="37wK5m">
                   <ref role="1Pybhc" to="g1qu:~UIUtil" resolve="UIUtil" />
                   <ref role="37wK5l" to="g1qu:~UIUtil.replaceMnemonicAmpersand(java.lang.String)" resolve="replaceMnemonicAmpersand" />
@@ -5584,11 +5584,11 @@
           <node concept="3cpWsn" id="7OWEUve6oBd" role="3cpWs9">
             <property role="TrG5h" value="aspectsOption" />
             <node concept="3uibUv" id="7OWEUve6oBe" role="1tU5fm">
-              <ref role="3uigEE" to="52hy:~DeleteDialog$DeleteOption" resolve="DeleteOption" />
+              <ref role="3uigEE" to="52hy:~DeleteDialog$DeleteOption" resolve="DeleteDialog.DeleteOption" />
             </node>
             <node concept="2ShNRf" id="7OWEUve6oBf" role="33vP2m">
               <node concept="1pGfFk" id="7OWEUve6oBg" role="2ShVmc">
-                <ref role="37wK5l" to="52hy:~DeleteDialog$DeleteOption.&lt;init&gt;(java.lang.String,boolean,boolean)" resolve="DeleteOption" />
+                <ref role="37wK5l" to="52hy:~DeleteDialog$DeleteOption.&lt;init&gt;(java.lang.String,boolean,boolean)" resolve="DeleteDialog.DeleteOption" />
                 <node concept="2YIFZM" id="4TYmXmb_ed5" role="37wK5m">
                   <ref role="1Pybhc" to="g1qu:~UIUtil" resolve="UIUtil" />
                   <ref role="37wK5l" to="g1qu:~UIUtil.replaceMnemonicAmpersand(java.lang.String)" resolve="replaceMnemonicAmpersand" />
@@ -5651,7 +5651,7 @@
                   <node concept="2ShNRf" id="4ZiYHj9vLcN" role="3K4E3e">
                     <node concept="3g6Rrh" id="4ZiYHj9wqNP" role="2ShVmc">
                       <node concept="3uibUv" id="4ZiYHj9vLqn" role="3g7fb8">
-                        <ref role="3uigEE" to="52hy:~DeleteDialog$DeleteOption" resolve="DeleteOption" />
+                        <ref role="3uigEE" to="52hy:~DeleteDialog$DeleteOption" resolve="DeleteDialog.DeleteOption" />
                       </node>
                       <node concept="37vLTw" id="4ZiYHj9wqQu" role="3g7hyw">
                         <ref role="3cqZAo" node="7OWEUve5Yua" resolve="safeOption" />
@@ -5664,7 +5664,7 @@
                   <node concept="2ShNRf" id="4ZiYHj9wrHT" role="3K4GZi">
                     <node concept="3g6Rrh" id="4ZiYHj9wrHU" role="2ShVmc">
                       <node concept="3uibUv" id="4ZiYHj9wrHV" role="3g7fb8">
-                        <ref role="3uigEE" to="52hy:~DeleteDialog$DeleteOption" resolve="DeleteOption" />
+                        <ref role="3uigEE" to="52hy:~DeleteDialog$DeleteOption" resolve="DeleteDialog.DeleteOption" />
                       </node>
                       <node concept="37vLTw" id="4ZiYHj9wrHW" role="3g7hyw">
                         <ref role="3cqZAo" node="7OWEUve5Yua" resolve="safeOption" />
@@ -6730,7 +6730,7 @@
     <node concept="1QGGSu" id="5dxWOHy$a85" role="1nVCmq">
       <node concept="10M0yZ" id="5dxWOHy$yX4" role="3xaMm5">
         <ref role="3cqZAo" to="l7us:~MPSIcons$ToolWindows.Default" resolve="Default" />
-        <ref role="1PxDUh" to="l7us:~MPSIcons$ToolWindows" resolve="ToolWindows" />
+        <ref role="1PxDUh" to="l7us:~MPSIcons$ToolWindows" resolve="MPSIcons.ToolWindows" />
       </node>
     </node>
   </node>

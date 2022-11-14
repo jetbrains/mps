@@ -11690,8 +11690,8 @@
                 <node concept="YeOm9" id="7QCr3uXSlJd" role="2ShVmc">
                   <node concept="1Y3b0j" id="7QCr3uXSlJe" role="YeSDq">
                     <property role="2bfB8j" value="true" />
-                    <ref role="37wK5l" to="xygl:~Task$Modal.&lt;init&gt;(com.intellij.openapi.project.Project,java.lang.String,boolean)" resolve="Modal" />
-                    <ref role="1Y3XeK" to="xygl:~Task$Modal" resolve="Modal" />
+                    <ref role="37wK5l" to="xygl:~Task$Modal.&lt;init&gt;(com.intellij.openapi.project.Project,java.lang.String,boolean)" resolve="Task.Modal" />
+                    <ref role="1Y3XeK" to="xygl:~Task$Modal" resolve="Task.Modal" />
                     <node concept="2OqwBi" id="7QCr3uXSpQ6" role="37wK5m">
                       <node concept="2OqwBi" id="7QCr3uXSppa" role="2Oq$k0">
                         <node concept="2WthIp" id="7QCr3uXSppd" role="2Oq$k0" />
@@ -12236,7 +12236,7 @@
       <property role="TrG5h" value="mockSession" />
       <node concept="3Tm6S6" id="1MoLHx0BRhF" role="1B3o_S" />
       <node concept="3uibUv" id="1MoLHx0BY2f" role="1tU5fm">
-        <ref role="3uigEE" node="1MoLHx0BSqZ" />
+        <ref role="3uigEE" node="1MoLHx0BSqZ" resolve="MockMakeSessionProvider" />
       </node>
       <node concept="2K2imR" id="1MoLHx0BRBU" role="2K2Cet">
         <node concept="3clFbS" id="1MoLHx0BRBV" role="2VODD2">
@@ -12322,7 +12322,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="1MoLHx0Cg9g" role="2OqNvi">
-                      <ref role="37wK5l" node="1MoLHx0CdJA" />
+                      <ref role="37wK5l" node="1MoLHx0CdJA" resolve="remove" />
                       <node concept="2OqwBi" id="3w24WrBka7H" role="37wK5m">
                         <node concept="2WthIp" id="3w24WrBk9Rz" role="2Oq$k0" />
                         <node concept="1DTwFV" id="3w24WrBkaE4" role="2OqNvi">
@@ -12343,7 +12343,7 @@
               </node>
             </node>
             <node concept="liA8E" id="1MoLHx0CjhX" role="2OqNvi">
-              <ref role="37wK5l" node="1MoLHx0Ci44" />
+              <ref role="37wK5l" node="1MoLHx0Ci44" resolve="isActive" />
             </node>
           </node>
           <node concept="9aQIb" id="1MoLHx0C7bA" role="9aQIa">
@@ -12363,7 +12363,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="1MoLHx0Cgya" role="2OqNvi">
-                        <ref role="37wK5l" node="1MoLHx0Cc93" />
+                        <ref role="37wK5l" node="1MoLHx0Cc93" resolve="create" />
                         <node concept="2OqwBi" id="1MoLHx0ChKN" role="37wK5m">
                           <node concept="2WthIp" id="1MoLHx0ChKQ" role="2Oq$k0" />
                           <node concept="1DTwFV" id="1MoLHx0ChKS" role="2OqNvi">
@@ -12437,7 +12437,7 @@
               </node>
             </node>
             <node concept="liA8E" id="1MoLHx0Cjjt" role="2OqNvi">
-              <ref role="37wK5l" node="1MoLHx0Ci44" />
+              <ref role="37wK5l" node="1MoLHx0Ci44" resolve="isActive" />
             </node>
           </node>
           <node concept="9aQIb" id="1MoLHx0C3dD" role="9aQIa">
@@ -12619,7 +12619,7 @@
                         <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
                       </node>
                       <node concept="3uibUv" id="47EQkcJhaje" role="1tU5fm">
-                        <ref role="3uigEE" to="b2d5:4riYepdjUu5" resolve="FindCallback" />
+                        <ref role="3uigEE" to="b2d5:4riYepdjUu5" resolve="IFinder.FindCallback" />
                       </node>
                     </node>
                     <node concept="37vLTG" id="47EQkcJhajf" role="3clF46">
@@ -12649,7 +12649,7 @@
                                 <node concept="1Y3b0j" id="47EQkcJiaB9" role="YeSDq">
                                   <property role="2bfB8j" value="true" />
                                   <property role="373rjd" value="true" />
-                                  <ref role="1Y3XeK" to="b2d5:4riYepdjUu5" resolve="FindCallback" />
+                                  <ref role="1Y3XeK" to="b2d5:4riYepdjUu5" resolve="IFinder.FindCallback" />
                                   <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                                   <node concept="3Tm1VV" id="47EQkcJiaBa" role="1B3o_S" />
                                   <node concept="3clFb_" id="47EQkcJiaBp" role="jymVt">
@@ -12869,12 +12869,12 @@
           <node concept="3cpWsn" id="47EQkcJgPUn" role="3cpWs9">
             <property role="TrG5h" value="soResolver" />
             <node concept="3uibUv" id="47EQkcJgPT_" role="1tU5fm">
-              <ref role="3uigEE" to="g4jo:7rEOvdELBy1" resolve="BasicResolver" />
+              <ref role="3uigEE" to="g4jo:7rEOvdELBy1" resolve="SearchObjectResolver.BasicResolver" />
             </node>
             <node concept="2ShNRf" id="47EQkcJgPUo" role="33vP2m">
               <node concept="1pGfFk" id="47EQkcJgPUp" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="37wK5l" to="g4jo:7rEOvdELBy7" resolve="BasicResolver" />
+                <ref role="37wK5l" to="g4jo:7rEOvdELBy7" resolve="SearchObjectResolver.BasicResolver" />
                 <node concept="2OqwBi" id="47EQkcJgPUq" role="37wK5m">
                   <node concept="37vLTw" id="47EQkcJj0C2" role="2Oq$k0">
                     <ref role="3cqZAo" node="47EQkcJiWSu" resolve="mpsProject" />
@@ -13266,14 +13266,14 @@
           <node concept="3cpWsn" id="UiMTdytqhF" role="3cpWs9">
             <property role="TrG5h" value="modal" />
             <node concept="3uibUv" id="UiMTdytqhD" role="1tU5fm">
-              <ref role="3uigEE" to="xygl:~Task$Modal" resolve="Modal" />
+              <ref role="3uigEE" to="xygl:~Task$Modal" resolve="Task.Modal" />
             </node>
             <node concept="2ShNRf" id="UiMTdytqhG" role="33vP2m">
               <node concept="YeOm9" id="UiMTdytqhH" role="2ShVmc">
                 <node concept="1Y3b0j" id="UiMTdytqhI" role="YeSDq">
                   <property role="2bfB8j" value="true" />
-                  <ref role="37wK5l" to="xygl:~Task$Modal.&lt;init&gt;(com.intellij.openapi.project.Project,java.lang.String,boolean)" resolve="Modal" />
-                  <ref role="1Y3XeK" to="xygl:~Task$Modal" resolve="Modal" />
+                  <ref role="37wK5l" to="xygl:~Task$Modal.&lt;init&gt;(com.intellij.openapi.project.Project,java.lang.String,boolean)" resolve="Task.Modal" />
+                  <ref role="1Y3XeK" to="xygl:~Task$Modal" resolve="Task.Modal" />
                   <node concept="2OqwBi" id="UiMTdytqhJ" role="37wK5m">
                     <node concept="2WthIp" id="UiMTdytqhK" role="2Oq$k0">
                       <ref role="32nkFo" node="3uqRiOwKs1p" resolve="FindUnusedAndDeprecatedConcepts" />
@@ -14245,14 +14245,14 @@
       <property role="TrG5h" value="myActive" />
       <node concept="3Tm6S6" id="1MoLHx0CbV_" role="1B3o_S" />
       <node concept="3uibUv" id="1MoLHx0CbBs" role="1tU5fm">
-        <ref role="3uigEE" node="1MoLHx0CaXD" resolve="MockMakeSession" />
+        <ref role="3uigEE" node="1MoLHx0CaXD" resolve="MockMakeSessionProvider.MockMakeSession" />
       </node>
       <node concept="10Nm6u" id="1MoLHx0CbP5" role="33vP2m" />
     </node>
     <node concept="3clFb_" id="1MoLHx0Cc93" role="jymVt">
       <property role="TrG5h" value="create" />
       <node concept="3uibUv" id="1MoLHx0CcP9" role="3clF45">
-        <ref role="3uigEE" node="1MoLHx0CaXD" resolve="MockMakeSession" />
+        <ref role="3uigEE" node="1MoLHx0CaXD" resolve="MockMakeSessionProvider.MockMakeSession" />
       </node>
       <node concept="3Tm1VV" id="1MoLHx0Cc96" role="1B3o_S" />
       <node concept="3clFbS" id="1MoLHx0Cc97" role="3clF47">
@@ -14260,7 +14260,7 @@
           <node concept="37vLTI" id="1MoLHx0Cd9l" role="3clFbG">
             <node concept="2ShNRf" id="1MoLHx0Cdli" role="37vLTx">
               <node concept="1pGfFk" id="1MoLHx0Cdgj" role="2ShVmc">
-                <ref role="37wK5l" node="1MoLHx0BSuW" resolve="MockMakeSession" />
+                <ref role="37wK5l" node="1MoLHx0BSuW" resolve="MockMakeSessionProvider.MockMakeSession" />
                 <node concept="37vLTw" id="1MoLHx0CdFB" role="37wK5m">
                   <ref role="3cqZAo" node="1MoLHx0CduD" resolve="mpsProject" />
                 </node>
@@ -14310,7 +14310,7 @@
     <node concept="3clFb_" id="1MoLHx0CdJA" role="jymVt">
       <property role="TrG5h" value="remove" />
       <node concept="3uibUv" id="1MoLHx0CdJB" role="3clF45">
-        <ref role="3uigEE" node="1MoLHx0CaXD" resolve="MockMakeSession" />
+        <ref role="3uigEE" node="1MoLHx0CaXD" resolve="MockMakeSessionProvider.MockMakeSession" />
       </node>
       <node concept="3Tm1VV" id="1MoLHx0CdJC" role="1B3o_S" />
       <node concept="3clFbS" id="1MoLHx0CdJD" role="3clF47">
@@ -14318,7 +14318,7 @@
           <node concept="3cpWsn" id="1MoLHx0CeCK" role="3cpWs9">
             <property role="TrG5h" value="result" />
             <node concept="3uibUv" id="1MoLHx0CeCz" role="1tU5fm">
-              <ref role="3uigEE" node="1MoLHx0CaXD" resolve="MockMakeSession" />
+              <ref role="3uigEE" node="1MoLHx0CaXD" resolve="MockMakeSessionProvider.MockMakeSession" />
             </node>
             <node concept="37vLTw" id="1MoLHx0CeCL" role="33vP2m">
               <ref role="3cqZAo" node="1MoLHx0BWdf" resolve="myActive" />

@@ -8127,7 +8127,7 @@
           <node concept="3clFbC" id="6I8tQNTD1zD" role="3clFbw">
             <node concept="10Nm6u" id="6I8tQNTD4Cw" role="3uHU7w" />
             <node concept="37vLTw" id="6I8tQNTDkPB" role="3uHU7B">
-              <ref role="3cqZAo" node="6I8tQNTDkPz" resolve="plain" />
+              <ref role="3cqZAo" node="6I8tQNTDkPz" resolve="result" />
             </node>
           </node>
           <node concept="3clFbS" id="6I8tQNTCQhS" role="3clFbx">
@@ -20182,14 +20182,14 @@
             <node concept="3K4zz7" id="42hl10VHb2l" role="37wK5m">
               <node concept="10M0yZ" id="4mp1052s4qN" role="3K4E3e">
                 <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.Forward" resolve="Forward" />
-                <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="Actions" />
+                <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
               </node>
               <node concept="37vLTw" id="2BHiRxgmC4w" role="3K4Cdx">
                 <ref role="3cqZAo" node="42hl10VHb2z" resolve="next" />
               </node>
               <node concept="10M0yZ" id="4mp1052s4Zu" role="3K4GZi">
                 <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.Back" resolve="Back" />
-                <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="Actions" />
+                <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
               </node>
             </node>
           </node>

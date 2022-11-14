@@ -378,14 +378,14 @@
     <property role="TrG5h" value="Default" />
     <property role="Z2u3V" value="true" />
     <node concept="Zd509" id="5r8P7BwuyLp" role="Zd508">
-      <ref role="1bYAoF" node="6KwcZ1G3PmN" />
+      <ref role="1bYAoF" node="6KwcZ1G3PmN" resolve="TurnBold" />
       <node concept="pLAjd" id="5r8P7BwuyLr" role="Zd501">
         <property role="pLAjc" value="ctrl" />
         <property role="pLAjf" value="VK_B" />
       </node>
     </node>
     <node concept="Zd509" id="1aoaL$$_7Bm" role="Zd508">
-      <ref role="1bYAoF" node="1aoaL$$$Phf" />
+      <ref role="1bYAoF" node="1aoaL$$$Phf" resolve="TurnItalics" />
       <node concept="pLAjd" id="1aoaL$$_7Bn" role="Zd501">
         <property role="pLAjc" value="ctrl" />
         <property role="pLAjf" value="VK_I" />
@@ -641,7 +641,7 @@
     <property role="TrG5h" value="MacOSX" />
     <property role="Zd52Q" value="1mJS7WEAV1T/Mac_OS_X" />
     <node concept="Zd509" id="1aoaL$$_7Vi" role="Zd508">
-      <ref role="1bYAoF" node="6KwcZ1G3PmN" />
+      <ref role="1bYAoF" node="6KwcZ1G3PmN" resolve="TurnBold" />
       <node concept="pLAjd" id="1aoaL$$_7Vj" role="Zd501">
         <property role="pLAjc" value="ctrl" />
         <property role="pLAjf" value="VK_B" />
@@ -669,7 +669,7 @@
     <property role="TrG5h" value="MacOSX105" />
     <property role="Zd52Q" value="2HiVo5PakU7/Mac_OS_X_Plus" />
     <node concept="Zd509" id="1aoaL$$_7Vk" role="Zd508">
-      <ref role="1bYAoF" node="6KwcZ1G3PmN" />
+      <ref role="1bYAoF" node="6KwcZ1G3PmN" resolve="TurnBold" />
       <node concept="pLAjd" id="1aoaL$$_7Vl" role="Zd501">
         <property role="pLAjc" value="ctrl" />
         <property role="pLAjf" value="VK_B" />

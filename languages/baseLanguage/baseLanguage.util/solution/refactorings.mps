@@ -7318,7 +7318,7 @@
               <ref role="3cqZAo" node="3Ka6WCsNCiz" resolve="newVisibilityConcept" />
             </node>
             <node concept="37vLTw" id="3Ka6WCsOwaj" role="3uHU7B">
-              <ref role="3cqZAo" node="3Ka6WCsN$v5" resolve="targetVisibility" />
+              <ref role="3cqZAo" node="3Ka6WCsN$v5" resolve="currentVisibility" />
             </node>
           </node>
           <node concept="3clFbS" id="3Ka6WCsN_cx" role="3clFbx">
@@ -7386,7 +7386,7 @@
             <node concept="10P_77" id="3Ka6WCsO1y7" role="1tU5fm" />
             <node concept="2OqwBi" id="3Ka6WCsObHM" role="33vP2m">
               <node concept="37vLTw" id="3Ka6WCsO1H5" role="2Oq$k0">
-                <ref role="3cqZAo" node="3Ka6WCsN$v5" resolve="targetVisibility" />
+                <ref role="3cqZAo" node="3Ka6WCsN$v5" resolve="currentVisibility" />
               </node>
               <node concept="3O6GUB" id="3Ka6WCsOcQi" role="2OqNvi">
                 <node concept="chp4Y" id="3Ka6WCsOdAD" role="3QVz_e">
@@ -7447,7 +7447,7 @@
             <node concept="10P_77" id="3Ka6WCsO7fo" role="1tU5fm" />
             <node concept="2OqwBi" id="3Ka6WCsOzCH" role="33vP2m">
               <node concept="37vLTw" id="3Ka6WCsO9rB" role="2Oq$k0">
-                <ref role="3cqZAo" node="3Ka6WCsN$v5" resolve="targetVisibility" />
+                <ref role="3cqZAo" node="3Ka6WCsN$v5" resolve="currentVisibility" />
               </node>
               <node concept="3O6GUB" id="3Ka6WCsO$iL" role="2OqNvi">
                 <node concept="chp4Y" id="3Ka6WCsO$ug" role="3QVz_e">
@@ -7519,7 +7519,7 @@
             <node concept="3clFbC" id="3Ka6WCsOGFi" role="33vP2m">
               <node concept="10Nm6u" id="3Ka6WCsOH4M" role="3uHU7w" />
               <node concept="37vLTw" id="3Ka6WCsOFT6" role="3uHU7B">
-                <ref role="3cqZAo" node="3Ka6WCsN$v5" resolve="targetVisibility" />
+                <ref role="3cqZAo" node="3Ka6WCsN$v5" resolve="currentVisibility" />
               </node>
             </node>
           </node>
@@ -7572,7 +7572,7 @@
         <node concept="TUZQ0" id="3GMkPCUudYD" role="3nqlJM">
           <property role="TUZQ4" value="visibility before change" />
           <node concept="zr_55" id="3GMkPCUudYF" role="zr_5Q">
-            <ref role="zr_51" node="3Ka6WCsN$v5" resolve="targetVisibility" />
+            <ref role="zr_51" node="3Ka6WCsN$v5" resolve="currentVisibility" />
           </node>
         </node>
         <node concept="x79VA" id="3GMkPCUudYG" role="3nqlJM">
@@ -7714,8 +7714,8 @@
                       <node concept="1Y3b0j" id="7xk0GpZVGxv" role="YeSDq">
                         <property role="2bfB8j" value="true" />
                         <property role="373rjd" value="true" />
-                        <ref role="37wK5l" to="w1kc:~SNodeMatcher$SameOrderChildMatch.&lt;init&gt;()" resolve="SameOrderChildMatch" />
-                        <ref role="1Y3XeK" to="w1kc:~SNodeMatcher$SameOrderChildMatch" resolve="SameOrderChildMatch" />
+                        <ref role="37wK5l" to="w1kc:~SNodeMatcher$SameOrderChildMatch.&lt;init&gt;()" resolve="SNodeMatcher.SameOrderChildMatch" />
+                        <ref role="1Y3XeK" to="w1kc:~SNodeMatcher$SameOrderChildMatch" resolve="SNodeMatcher.SameOrderChildMatch" />
                         <node concept="3Tm1VV" id="7xk0GpZVGxw" role="1B3o_S" />
                         <node concept="3clFb_" id="7xk0GpZVHgx" role="jymVt">
                           <property role="TrG5h" value="match" />
@@ -7804,7 +7804,7 @@
                             </node>
                           </node>
                           <node concept="2AHcQZ" id="7xk0GpZVHgP" role="2AJF6D">
-                            <ref role="2AI5Lk" to="wyt6:~Override" />
+                            <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                           </node>
                         </node>
                       </node>
@@ -28618,7 +28618,7 @@
                   <node concept="liA8E" id="3Ka6WCsT1gd" role="2OqNvi">
                     <ref role="37wK5l" node="3Ka6WCsNzI6" resolve="isMandatoryVisibilityUpdate" />
                     <node concept="37vLTw" id="3Ka6WCsVueW" role="37wK5m">
-                      <ref role="3cqZAo" node="3Ka6WCsVueM" resolve="concept" />
+                      <ref role="3cqZAo" node="3Ka6WCsVueM" resolve="currentMethodConcept" />
                     </node>
                   </node>
                 </node>

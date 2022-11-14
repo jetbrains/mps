@@ -13464,7 +13464,7 @@
     </node>
     <node concept="1l3spV" id="7R9PHlpRsrG" role="1l3spN">
       <node concept="L2wRC" id="7R9PHlpRsrH" role="39821P">
-        <ref role="L2wRA" node="7R9PHlpRsrh" resolve="jetbrains.mps.lang.test.test" />
+        <ref role="L2wRA" node="7R9PHlpRsrh" resolve="jetbrains.mps.ide.depanalyzer.test" />
       </node>
     </node>
     <node concept="10PD9b" id="7R9PHlpRsrI" role="10PD9s" />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="ea6ch0dnejumjkt00z477p5o4vq337v" parametersHash="-71teww635a0v22q9t7gojfr7i3rx2yu">
+<product version="3" modelHash="ea6ch0dnejumjkt00z477p5o4vq337v">
   <files names="AnnotateFile_Intention.java:AnnotateNode_Intention.java:IntentionsDescriptor.java:LabelNode_Intention.java:SetClassModifier_Intention.java:ToggleArgumentVarArg_Intention.java:ToggleParameterVarArg_Intention.java:TurnToDeconstructed_Intention.java" />
 </product>
 

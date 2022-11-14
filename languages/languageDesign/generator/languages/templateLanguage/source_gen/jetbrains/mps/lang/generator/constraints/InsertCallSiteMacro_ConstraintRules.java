@@ -73,6 +73,7 @@ public final class InsertCallSiteMacro_ConstraintRules extends BaseRulesConstrai
     public boolean appliesTo(@NotNull ContainmentContext context) {
       return SNodeOperations.isInstanceOf(Def_Root8259557992565001785.getValue(context), CONCEPTS.TemplateDeclaration$5G);
     }
+
   }
 
   public static final class Rule_inSwitch extends BaseRule<ContainmentContext> {
@@ -92,6 +93,7 @@ public final class InsertCallSiteMacro_ConstraintRules extends BaseRulesConstrai
     public boolean appliesTo(@NotNull ContainmentContext context) {
       return SNodeOperations.isInstanceOf(Def_Root8259557992565001785.getValue(context), CONCEPTS.TemplateSwitch$j_);
     }
+
   }
 
   /*package*/ InsertCallSiteMacro_ConstraintRules() {

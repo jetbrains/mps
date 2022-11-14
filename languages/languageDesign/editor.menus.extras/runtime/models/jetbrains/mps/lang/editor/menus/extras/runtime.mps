@@ -989,7 +989,7 @@
           </node>
           <node concept="3y3z36" id="7Ir98aEcWKI" role="3clFbw">
             <node concept="Rm8GO" id="7Ir98aEcWKJ" role="3uHU7w">
-              <ref role="1Px2BO" to="ge2m:4a0HOMfn8wY" resolve="TargetType" />
+              <ref role="1Px2BO" to="ge2m:4a0HOMfn8wY" resolve="IRefactoringTarget.TargetType" />
               <ref role="Rm8GQ" to="ge2m:4a0HOMfn9yM" resolve="NODE" />
             </node>
             <node concept="2OqwBi" id="7Ir98aEcWKK" role="3uHU7B">

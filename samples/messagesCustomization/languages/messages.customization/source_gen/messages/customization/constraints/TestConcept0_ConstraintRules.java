@@ -74,6 +74,7 @@ public final class TestConcept0_ConstraintRules extends BaseRulesConstraintsDesc
       }
       return isNotEmptyString(SPropertyOperations.getString(context.getChildNode(), PROPS.name$MnvL)) && isNotEmptyString(SPropertyOperations.getString(Def_Parent2884486869351404345.getValue(context), PROPS.name$MnvL));
     }
+
     private static boolean isNotEmptyString(String str) {
       return str != null && str.length() > 0;
     }

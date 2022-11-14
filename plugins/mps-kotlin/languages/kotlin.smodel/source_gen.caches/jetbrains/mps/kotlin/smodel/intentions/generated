@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-5v0k27x3n06qthl5z6lfhc4u5kr8jcc" parametersHash="1r1xn4yazzu2aibvykz5sdw2hipnmph">
+<product version="3" modelHash="-5v0k27x3n06qthl5z6lfhc4u5kr8jcc">
   <files names="ExpandShortNodeType_Intention.java:IntentionsDescriptor.java:ShortNodeType_ToConceptType_Intention.java" />
 </product>
 

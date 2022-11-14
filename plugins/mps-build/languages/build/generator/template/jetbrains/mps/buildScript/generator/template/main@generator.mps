@@ -8947,7 +8947,7 @@
                   <node concept="2OqwBi" id="6EK__xlRh1n" role="3clFbG">
                     <node concept="30H73N" id="6EK__xlRf6M" role="2Oq$k0" />
                     <node concept="3TrcHB" id="6EK__xlRiUn" role="2OqNvi">
-                      <ref role="3TsBF5" to="3ior:6EK__xlPv4N" resolve="containsKotlin" />
+                      <ref role="3TsBF5" to="3ior:6EK__xlPv4N" resolve="withKotlin" />
                     </node>
                   </node>
                 </node>

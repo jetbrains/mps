@@ -2044,7 +2044,7 @@
           <node concept="22lmx$" id="4LaDHKJg5J1" role="3cqZAk">
             <node concept="2OqwBi" id="4LaDHKJgojt" role="3uHU7w">
               <node concept="37vLTw" id="4LaDHKJgbBA" role="2Oq$k0">
-                <ref role="3cqZAo" node="1IX8Z60nQBg" resolve="twoMirrors" />
+                <ref role="3cqZAo" node="1IX8Z60nQBg" resolve="secondMirrors" />
               </node>
               <node concept="3JPx81" id="4LaDHKJgPj0" role="2OqNvi">
                 <node concept="37vLTw" id="4LaDHKJgTyX" role="25WWJ7">
@@ -2054,7 +2054,7 @@
             </node>
             <node concept="2OqwBi" id="4LaDHKJfMKw" role="3uHU7B">
               <node concept="37vLTw" id="4LaDHKJfDd7" role="2Oq$k0">
-                <ref role="3cqZAo" node="1IX8Z602GjY" resolve="oneMirrors" />
+                <ref role="3cqZAo" node="1IX8Z602GjY" resolve="firstMirrors" />
               </node>
               <node concept="3JPx81" id="4LaDHKJfYMz" role="2OqNvi">
                 <node concept="37vLTw" id="4LaDHKJg2em" role="25WWJ7">

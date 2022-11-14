@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-41ttkz84rjpuxjo98lah78r085cpmy7" parametersHash="-71teww635a0v22q9t7gojfr7i3rx2yu">
+<product version="3" modelHash="-41ttkz84rjpuxjo98lah78r085cpmy7">
   <files names="ActionAspectDescriptorImpl.java:MembersFactories.java:NumericFactories.java:ParametersFactories.java:StructureFactories.java" />
 </product>
 

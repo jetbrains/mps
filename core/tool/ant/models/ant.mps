@@ -6182,7 +6182,7 @@
               <ref role="3cqZAo" node="gQDJKN6Qjw" resolve="classPathRoots" />
             </node>
             <node concept="liA8E" id="3eyCFyRx4ve" role="2OqNvi">
-              <ref role="37wK5l" node="3eyCFyRwzjX" resolve="collectAllClassesAndJars" />
+              <ref role="37wK5l" node="3eyCFyRwzjX" resolve="getAllClassesAndJars" />
             </node>
           </node>
         </node>

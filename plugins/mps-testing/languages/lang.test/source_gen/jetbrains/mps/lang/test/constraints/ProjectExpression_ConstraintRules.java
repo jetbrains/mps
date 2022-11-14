@@ -71,6 +71,7 @@ public final class ProjectExpression_ConstraintRules extends BaseRulesConstraint
     public boolean appliesTo(@NotNull ContainmentContext context) {
       return true;
     }
+
   }
 
   /*package*/ ProjectExpression_ConstraintRules() {

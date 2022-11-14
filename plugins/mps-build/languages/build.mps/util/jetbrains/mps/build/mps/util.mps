@@ -16183,7 +16183,7 @@
                   <ref role="37wK5l" to="18ew:~FileUtil.resolveParentDirs(java.lang.String)" resolve="resolveParentDirs" />
                   <ref role="1Pybhc" to="18ew:~FileUtil" resolve="FileUtil" />
                   <node concept="37vLTw" id="2Io6JCDdEgu" role="37wK5m">
-                    <ref role="3cqZAo" node="33n7u4mNQvn" resolve="fullPath" />
+                    <ref role="3cqZAo" node="33n7u4mNQvn" resolve="expanded" />
                   </node>
                 </node>
               </node>
@@ -29062,7 +29062,7 @@
                   <property role="TrG5h" value="ex" />
                   <node concept="nSUau" id="3FFAlh7gzV4" role="1tU5fm">
                     <node concept="3uibUv" id="3FFAlh7hc0Q" role="nSUat">
-                      <ref role="3uigEE" node="2hkCNA7Z0QY" resolve="PathConvertException" />
+                      <ref role="3uigEE" node="2hkCNA7Z0QY" resolve="PathConverter.PathConvertException" />
                     </node>
                   </node>
                 </node>

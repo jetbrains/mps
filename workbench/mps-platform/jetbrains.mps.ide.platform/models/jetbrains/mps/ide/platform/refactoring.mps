@@ -1628,7 +1628,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="3Ka6WCt5Z6g" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="4osL9SmPXJl" role="jymVt" />
@@ -1670,7 +1670,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="4osL9SmPT1H" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
       </node>
     </node>
     <node concept="3clFb_" id="1t_LRy89k4S" role="jymVt">
@@ -1703,7 +1703,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="4osL9SmPTDI" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
       </node>
     </node>
     <node concept="2tJIrI" id="3Ka6WCt69fr" role="jymVt" />

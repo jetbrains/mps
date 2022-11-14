@@ -583,7 +583,7 @@
           <node concept="10Nm6u" id="7$NO6fvW1RF" role="37wK5m" />
           <node concept="10M0yZ" id="4mp1052uZXX" role="37wK5m">
             <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.Rollback" resolve="Rollback" />
-            <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="Actions" />
+            <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
           </node>
         </node>
         <node concept="3clFbF" id="3AEFUta0IoD" role="3cqZAp">

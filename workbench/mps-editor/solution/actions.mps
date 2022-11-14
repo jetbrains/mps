@@ -7922,7 +7922,7 @@
                 </node>
                 <node concept="Rm8GO" id="2M3H3BXpUEj" role="37wK5m">
                   <ref role="Rm8GQ" to="gspm:~JBPopupFactory$ActionSelectionAid.NUMBERING" resolve="NUMBERING" />
-                  <ref role="1Px2BO" to="gspm:~JBPopupFactory$ActionSelectionAid" resolve="ActionSelectionAid" />
+                  <ref role="1Px2BO" to="gspm:~JBPopupFactory$ActionSelectionAid" resolve="JBPopupFactory.ActionSelectionAid" />
                 </node>
                 <node concept="3clFbT" id="2M3H3BXpUEk" role="37wK5m">
                   <property role="3clFbU" value="false" />

@@ -573,7 +573,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="6Pc129LDuL9" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
         <node concept="2B6LJw" id="6Pc129LDwBy" role="2B76xF">
           <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
           <node concept="Xl_RD" id="6Pc129LDwEj" role="2B70Vg">
@@ -1073,7 +1073,7 @@
                   <node concept="2OqwBi" id="75qA1j03kLt" role="25WWJ7">
                     <node concept="2OqwBi" id="75qA1j03hu0" role="2Oq$k0">
                       <node concept="2GrUjf" id="75qA1j03gyh" role="2Oq$k0">
-                        <ref role="2Gs0qQ" node="75qA1j02SQ2" resolve="sourceNode" />
+                        <ref role="2Gs0qQ" node="75qA1j02SQ2" resolve="copiedSourceNode" />
                       </node>
                       <node concept="liA8E" id="75qA1j03k7K" role="2OqNvi">
                         <ref role="37wK5l" to="mhbf:~SNode.getConcept()" resolve="getConcept" />
@@ -1092,7 +1092,7 @@
                 <node concept="3Tqbb2" id="75qA1j07Oys" role="1tU5fm" />
                 <node concept="3EllGN" id="6uOEOYR7EoY" role="33vP2m">
                   <node concept="2GrUjf" id="6uOEOYR7H5A" role="3ElVtu">
-                    <ref role="2Gs0qQ" node="75qA1j02SQ2" resolve="targetNode" />
+                    <ref role="2Gs0qQ" node="75qA1j02SQ2" resolve="copiedSourceNode" />
                   </node>
                   <node concept="37vLTw" id="75qA1j07Zc7" role="3ElQJh">
                     <ref role="3cqZAo" node="2OF_YfjrHa0" resolve="newNodesToSourceNodes" />
@@ -1338,7 +1338,7 @@
                 <node concept="3clFbF" id="6uOEOYR8t9a" role="3cqZAp">
                   <node concept="37vLTI" id="6uOEOYR8_Sh" role="3clFbG">
                     <node concept="2GrUjf" id="6uOEOYR8UDZ" role="37vLTx">
-                      <ref role="2Gs0qQ" node="75qA1j02SQ2" resolve="targetNode" />
+                      <ref role="2Gs0qQ" node="75qA1j02SQ2" resolve="copiedSourceNode" />
                     </node>
                     <node concept="37vLTw" id="6uOEOYR8t98" role="37vLTJ">
                       <ref role="3cqZAo" node="6uOEOYR8j_p" resolve="sourceNode" />
@@ -2431,7 +2431,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="75qA1j02cpJ" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
         <node concept="2B6LJw" id="75qA1j02Dyf" role="2B76xF">
           <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
           <node concept="3clFbT" id="75qA1j02DFv" role="2B70Vg">

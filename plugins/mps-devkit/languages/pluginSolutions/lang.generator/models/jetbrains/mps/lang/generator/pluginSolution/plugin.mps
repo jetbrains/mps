@@ -5953,7 +5953,7 @@
               <ref role="1Pybhc" to="exr9:~CreateFromUsageUtil" resolve="CreateFromUsageUtil" />
               <ref role="37wK5l" to="exr9:~CreateFromUsageUtil.getText(jetbrains.mps.openapi.editor.EditorContext)" resolve="getText" />
               <node concept="37vLTw" id="3eu_V9oANIh" role="37wK5m">
-                <ref role="3cqZAo" node="3eu_V9oANId" resolve="context" />
+                <ref role="3cqZAo" node="3eu_V9oANId" resolve="editorContext" />
               </node>
             </node>
           </node>
@@ -6013,7 +6013,7 @@
             <ref role="1Pybhc" to="exr9:~CreateFromUsageUtil" resolve="CreateFromUsageUtil" />
             <ref role="37wK5l" to="exr9:~CreateFromUsageUtil.showCreateNewRootMenu(jetbrains.mps.openapi.editor.EditorContext,jetbrains.mps.util.Setter,org.jetbrains.mps.util.Condition)" resolve="showCreateNewRootMenu" />
             <node concept="37vLTw" id="3eu_V9oANIi" role="37wK5m">
-              <ref role="3cqZAo" node="3eu_V9oANId" resolve="context" />
+              <ref role="3cqZAo" node="3eu_V9oANId" resolve="editorContext" />
             </node>
             <node concept="1bVj0M" id="5PsMh9oEh_9" role="37wK5m">
               <node concept="3clFbS" id="5PsMh9oEh_a" role="1bW5cS">
@@ -6104,7 +6104,7 @@
                     </node>
                     <node concept="1OKiuA" id="5PsMh9oEh_E" role="2OqNvi">
                       <node concept="37vLTw" id="3eu_V9oANIj" role="lBI5i">
-                        <ref role="3cqZAo" node="3eu_V9oANId" resolve="context" />
+                        <ref role="3cqZAo" node="3eu_V9oANId" resolve="editorContext" />
                       </node>
                       <node concept="2TlHUq" id="1GoWtC0zppH" role="lGT1i">
                         <ref role="2TlMyj" to="tpfj:1GoWtC0zoa6" resolve="templateName" />

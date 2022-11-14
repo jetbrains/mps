@@ -2399,7 +2399,7 @@
       <property role="TrG5h" value="myStateToRestore" />
       <node concept="3Tm6S6" id="2jv$fqwev88" role="1B3o_S" />
       <node concept="3uibUv" id="2jv$fqwev89" role="1tU5fm">
-        <ref role="3uigEE" to="bmv6:2KMWrOXsf9T" resolve="MergeSessionFullState" />
+        <ref role="3uigEE" to="bmv6:2KMWrOXsf9T" resolve="MergeSession.MergeSessionFullState" />
       </node>
     </node>
     <node concept="312cEg" id="2jv$fqwev6W" role="jymVt">
@@ -6870,14 +6870,14 @@
       <property role="TrG5h" value="myInitialState" />
       <node concept="3Tm6S6" id="2jv$fqwD$oQ" role="1B3o_S" />
       <node concept="3uibUv" id="2jv$fqwD$oR" role="1tU5fm">
-        <ref role="3uigEE" to="bmv6:2KMWrOXsf9T" resolve="MergeSessionFullState" />
+        <ref role="3uigEE" to="bmv6:2KMWrOXsf9T" resolve="MergeSession.MergeSessionFullState" />
       </node>
     </node>
     <node concept="312cEg" id="2jv$fqwD$oS" role="jymVt">
       <property role="TrG5h" value="myMetadataInitialState" />
       <node concept="3Tm6S6" id="2jv$fqwD$oT" role="1B3o_S" />
       <node concept="3uibUv" id="2jv$fqwD$oU" role="1tU5fm">
-        <ref role="3uigEE" to="bmv6:2KMWrOXsf9T" resolve="MergeSessionFullState" />
+        <ref role="3uigEE" to="bmv6:2KMWrOXsf9T" resolve="MergeSession.MergeSessionFullState" />
       </node>
     </node>
     <node concept="312cEg" id="2jv$fqwD$pd" role="jymVt">

@@ -156,7 +156,7 @@
             </node>
             <node concept="3clFbC" id="5Vvmn_QkTHg" role="3clFbw">
               <node concept="37vLTw" id="5Vvmn_QkTHh" role="3uHU7B">
-                <ref role="3cqZAo" node="5Vvmn_QkTH2" resolve="messageStatement" />
+                <ref role="3cqZAo" node="5Vvmn_QkTH2" resolve="rulesRoot" />
               </node>
               <node concept="10Nm6u" id="5Vvmn_QkTHi" role="3uHU7w" />
             </node>

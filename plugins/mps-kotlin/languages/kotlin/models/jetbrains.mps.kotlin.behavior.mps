@@ -7623,7 +7623,7 @@
           <node concept="22lmx$" id="5aV8UnajyrD" role="3cqZAk">
             <node concept="17R0WA" id="5aV8UnajGWe" role="3uHU7B">
               <node concept="37vLTw" id="5aV8UnajU99" role="3uHU7B">
-                <ref role="3cqZAo" node="5aV8UnajU91" resolve="type" />
+                <ref role="3cqZAo" node="5aV8UnajU91" resolve="firstType" />
               </node>
               <node concept="37vLTw" id="5aV8UnajwF0" role="3uHU7w">
                 <ref role="3cqZAo" node="5aV8UnaiNe2" resolve="stringArrayType" />
@@ -7647,7 +7647,7 @@
                     <node concept="3clFbF" id="3kV$hYp4sfW" role="3cqZAp">
                       <node concept="3JuTUA" id="5aV8UnaiviS" role="3clFbG">
                         <node concept="37vLTw" id="5aV8UnajU9a" role="3JuY14">
-                          <ref role="3cqZAo" node="5aV8UnajU91" resolve="type" />
+                          <ref role="3cqZAo" node="5aV8UnajU91" resolve="firstType" />
                         </node>
                         <node concept="37vLTw" id="5aV8UnaiNe6" role="3JuZjQ">
                           <ref role="3cqZAo" node="5aV8UnaiNe2" resolve="stringArrayType" />
@@ -25917,7 +25917,7 @@
                           <node concept="2OqwBi" id="2LySi8S$nNu" role="2Oq$k0">
                             <node concept="10M0yZ" id="2LySi8SIV4d" role="2Oq$k0">
                               <ref role="1PxDUh" node="1d2BQ0ZzpqZ" resolve="KtEnvironmentConfig" />
-                              <ref role="3cqZAo" node="2LySi8Sz224" resolve="Jvm" />
+                              <ref role="3cqZAo" node="2LySi8Sz224" resolve="jvmForbiddenChars" />
                             </node>
                             <node concept="liA8E" id="2LySi8S$nNv" role="2OqNvi">
                               <ref role="37wK5l" to="ni5j:~Pattern.matcher(java.lang.CharSequence)" resolve="matcher" />

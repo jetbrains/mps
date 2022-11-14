@@ -1714,13 +1714,13 @@
                 <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
               </node>
               <node concept="3uibUv" id="6qMqnXmlGb4" role="3clF45">
-                <ref role="3uigEE" to="b0pz:~JavaModuleFacet$Compile" resolve="Compile" />
+                <ref role="3uigEE" to="b0pz:~JavaModuleFacet$Compile" resolve="JavaModuleFacet.Compile" />
               </node>
               <node concept="3clFbS" id="6qMqnXmlGb6" role="3clF47">
                 <node concept="3cpWs6" id="6qMqnXmlSav" role="3cqZAp">
                   <node concept="Rm8GO" id="6qMqnXmlWtP" role="3cqZAk">
                     <ref role="Rm8GQ" to="b0pz:~JavaModuleFacet$Compile.MPS" resolve="MPS" />
-                    <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$Compile" resolve="Compile" />
+                    <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$Compile" resolve="JavaModuleFacet.Compile" />
                   </node>
                 </node>
               </node>
@@ -1735,36 +1735,36 @@
                 <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
               </node>
               <node concept="3uibUv" id="6qMqnXmlGaR" role="3clF45">
-                <ref role="3uigEE" to="b0pz:~JavaModuleFacet$LoadClasses" resolve="LoadClasses" />
+                <ref role="3uigEE" to="b0pz:~JavaModuleFacet$LoadClasses" resolve="JavaModuleFacet.LoadClasses" />
               </node>
               <node concept="3clFbS" id="6qMqnXmlGaT" role="3clF47">
                 <node concept="3cpWs6" id="6qMqnXmlY7g" role="3cqZAp">
                   <node concept="Rm8GO" id="6qMqnXmm0KH" role="3cqZAk">
                     <ref role="Rm8GQ" to="b0pz:~JavaModuleFacet$LoadClasses.ManagedByMPS" resolve="ManagedByMPS" />
-                    <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$LoadClasses" resolve="LoadClasses" />
+                    <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$LoadClasses" resolve="JavaModuleFacet.LoadClasses" />
                   </node>
                 </node>
               </node>
               <node concept="2AHcQZ" id="6qMqnXmlGaU" role="2AJF6D">
-                <ref role="2AI5Lk" to="wyt6:~Override" />
+                <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
               </node>
             </node>
             <node concept="3clFb_" id="6qMqnXmlGbc" role="jymVt">
               <property role="TrG5h" value="getLoadExtensions" />
               <node concept="3Tm1VV" id="6qMqnXmlGbe" role="1B3o_S" />
               <node concept="3uibUv" id="6qMqnXmlGbg" role="3clF45">
-                <ref role="3uigEE" to="b0pz:~JavaModuleFacet$LoadExtensions" resolve="LoadExtensions" />
+                <ref role="3uigEE" to="b0pz:~JavaModuleFacet$LoadExtensions" resolve="JavaModuleFacet.LoadExtensions" />
               </node>
               <node concept="3clFbS" id="6qMqnXmlGbi" role="3clF47">
                 <node concept="3cpWs6" id="6qMqnXmm2Gs" role="3cqZAp">
                   <node concept="Rm8GO" id="6qMqnXmm5O8" role="3cqZAk">
                     <ref role="Rm8GQ" to="b0pz:~JavaModuleFacet$LoadExtensions.NotAvailable" resolve="NotAvailable" />
-                    <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$LoadExtensions" resolve="LoadExtensions" />
+                    <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$LoadExtensions" resolve="JavaModuleFacet.LoadExtensions" />
                   </node>
                 </node>
               </node>
               <node concept="2AHcQZ" id="6qMqnXmlGbj" role="2AJF6D">
-                <ref role="2AI5Lk" to="wyt6:~Override" />
+                <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
               </node>
             </node>
           </node>

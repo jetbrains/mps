@@ -3006,7 +3006,7 @@
                     <ref role="3cqZAo" node="B5MI4_r$Qd" resolve="r" />
                   </node>
                   <node concept="37vLTw" id="B5MI4_tyx_" role="37wK5m">
-                    <ref role="3cqZAo" node="B5MI4_tyxz" resolve="string" />
+                    <ref role="3cqZAo" node="B5MI4_tyxz" resolve="title" />
                   </node>
                   <node concept="3clFbT" id="B5MI4_s9Pf" role="37wK5m">
                     <property role="3clFbU" value="true" />

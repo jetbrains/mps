@@ -678,7 +678,7 @@
               <node concept="37vLTI" id="34XUxf_41eq" role="3clFbG">
                 <node concept="2ShNRf" id="1F5g4zQtLRx" role="37vLTx">
                   <node concept="1pGfFk" id="1F5g4zQuRFx" role="2ShVmc">
-                    <ref role="37wK5l" to="u42p:1F5g4zQtI41" resolve="NodeLocationChild" />
+                    <ref role="37wK5l" to="u42p:1F5g4zQtI41" resolve="NodeLocation.NodeLocationChild" />
                     <node concept="2OqwBi" id="34XUxf_41er" role="37wK5m">
                       <node concept="1eOMI4" id="34XUxf_41es" role="2Oq$k0">
                         <node concept="10QFUN" id="34XUxf_41et" role="1eOMHV">
@@ -724,7 +724,7 @@
                 <node concept="37vLTI" id="34XUxf_41eF" role="3clFbG">
                   <node concept="2ShNRf" id="1F5g4zQuROc" role="37vLTx">
                     <node concept="1pGfFk" id="1F5g4zQuSF4" role="2ShVmc">
-                      <ref role="37wK5l" to="u42p:1F5g4zQtJYF" resolve="NodeLocationRoot" />
+                      <ref role="37wK5l" to="u42p:1F5g4zQtJYF" resolve="NodeLocation.NodeLocationRoot" />
                       <node concept="2OqwBi" id="34XUxf_41eI" role="37wK5m">
                         <node concept="1eOMI4" id="34XUxf_41eJ" role="2Oq$k0">
                           <node concept="10QFUN" id="34XUxf_41eK" role="1eOMHV">
@@ -1244,7 +1244,7 @@
               <ref role="37wK5l" to="alof:~ProjectHelper.toIdeaProject(jetbrains.mps.project.Project)" resolve="toIdeaProject" />
               <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
               <node concept="37vLTw" id="29M5tb0NbQC" role="37wK5m">
-                <ref role="3cqZAo" node="29M5tb0N1XA" resolve="selectedProject" />
+                <ref role="3cqZAo" node="29M5tb0N1XA" resolve="mpsProject" />
               </node>
             </node>
           </node>
@@ -1284,7 +1284,7 @@
               <node concept="1rXfSq" id="3$KqHszOY1L" role="2XxRq1">
                 <ref role="37wK5l" node="3$KqHszOH_n" resolve="truncateSearchResults" />
                 <node concept="37vLTw" id="29M5tb0NbQD" role="37wK5m">
-                  <ref role="3cqZAo" node="29M5tb0NbQA" resolve="toIdeaProject" />
+                  <ref role="3cqZAo" node="29M5tb0NbQA" resolve="ideaProject" />
                 </node>
                 <node concept="37vLTw" id="3$KqHszOYdO" role="37wK5m">
                   <ref role="3cqZAo" node="6q$OdKd99DD" resolve="searchResults" />
@@ -1453,7 +1453,7 @@
       <property role="TrG5h" value="myTree" />
       <node concept="3Tm6S6" id="5nwF1Zq1bZR" role="1B3o_S" />
       <node concept="3uibUv" id="5nwF1Zq42$Z" role="1tU5fm">
-        <ref role="3uigEE" node="5nwF1Zq3LCt" resolve="MyHierarchyTree" />
+        <ref role="3uigEE" node="5nwF1Zq3LCt" resolve="NodeHierarchyChooser.MyHierarchyTree" />
       </node>
     </node>
     <node concept="2tJIrI" id="2z9SX9bup6A" role="jymVt" />
@@ -1502,7 +1502,7 @@
           <node concept="37vLTI" id="5nwF1Zq1bYA" role="3clFbG">
             <node concept="2ShNRf" id="5nwF1Zq1bYB" role="37vLTx">
               <node concept="1pGfFk" id="4EjvGwcZPOW" role="2ShVmc">
-                <ref role="37wK5l" node="5nwF1Zq3LCv" resolve="MyHierarchyTree" />
+                <ref role="37wK5l" node="5nwF1Zq3LCv" resolve="NodeHierarchyChooser.MyHierarchyTree" />
                 <node concept="2OqwBi" id="2z9SX9btz0Y" role="37wK5m">
                   <node concept="37vLTw" id="2z9SX9btyFG" role="2Oq$k0">
                     <ref role="3cqZAo" node="2z9SX9btsKt" resolve="mpsProject" />
@@ -2425,7 +2425,7 @@
             <node concept="3uibUv" id="3hOGm7r3$nT" role="1tU5fm">
               <ref role="3uigEE" to="82uw:~Consumer" resolve="Consumer" />
               <node concept="3uibUv" id="3hOGm7r3zD0" role="11_B2D">
-                <ref role="3uigEE" to="smoa:~Renamer$RenameProblem" resolve="RenameProblem" />
+                <ref role="3uigEE" to="smoa:~Renamer$RenameProblem" resolve="Renamer.RenameProblem" />
               </node>
             </node>
             <node concept="2ShNRf" id="3hOGm7r3$nW" role="33vP2m">
@@ -2466,7 +2466,7 @@
                     <node concept="37vLTG" id="3hOGm7r3$o3" role="3clF46">
                       <property role="TrG5h" value="p" />
                       <node concept="3uibUv" id="3hOGm7r3$o4" role="1tU5fm">
-                        <ref role="3uigEE" to="smoa:~Renamer$RenameProblem" resolve="RenameProblem" />
+                        <ref role="3uigEE" to="smoa:~Renamer$RenameProblem" resolve="Renamer.RenameProblem" />
                       </node>
                     </node>
                     <node concept="3clFbS" id="3hOGm7r3$o5" role="3clF47">
@@ -2482,7 +2482,7 @@
                         <node concept="3clFbC" id="3hOGm7r4u33" role="3clFbw">
                           <node concept="Rm8GO" id="3hOGm7r4xas" role="3uHU7w">
                             <ref role="Rm8GQ" to="smoa:~Renamer$RenameProblem$Severity.CRITICAL" resolve="CRITICAL" />
-                            <ref role="1Px2BO" to="smoa:~Renamer$RenameProblem$Severity" resolve="Severity" />
+                            <ref role="1Px2BO" to="smoa:~Renamer$RenameProblem$Severity" resolve="Renamer.RenameProblem.Severity" />
                           </node>
                           <node concept="2OqwBi" id="3hOGm7r4r1W" role="3uHU7B">
                             <node concept="37vLTw" id="3hOGm7r4pYx" role="2Oq$k0">
@@ -2535,7 +2535,7 @@
                             </node>
                             <node concept="Rm8GO" id="3hOGm7r55qe" role="3uHU7w">
                               <ref role="Rm8GQ" to="smoa:~Renamer$RenameProblem$Severity.NON_CRITICAL" resolve="NON_CRITICAL" />
-                              <ref role="1Px2BO" to="smoa:~Renamer$RenameProblem$Severity" resolve="Severity" />
+                              <ref role="1Px2BO" to="smoa:~Renamer$RenameProblem$Severity" resolve="Renamer.RenameProblem.Severity" />
                             </node>
                           </node>
                           <node concept="3clFbS" id="3hOGm7r4SaX" role="3eOfB_">
@@ -2621,7 +2621,7 @@
                     </node>
                   </node>
                   <node concept="3uibUv" id="3hOGm7r3$o7" role="2Ghqu4">
-                    <ref role="3uigEE" to="smoa:~Renamer$RenameProblem" resolve="RenameProblem" />
+                    <ref role="3uigEE" to="smoa:~Renamer$RenameProblem" resolve="Renamer.RenameProblem" />
                   </node>
                 </node>
               </node>
@@ -2877,7 +2877,7 @@
                   <ref role="37wK5l" to="dxuu:~JComponent.setBorder(javax.swing.border.Border)" resolve="setBorder" />
                   <node concept="2YIFZM" id="4N51ibjGV2a" role="37wK5m">
                     <ref role="37wK5l" to="g1qu:~JBUI$Borders.emptyLeft(int)" resolve="emptyLeft" />
-                    <ref role="1Pybhc" to="g1qu:~JBUI$Borders" resolve="Borders" />
+                    <ref role="1Pybhc" to="g1qu:~JBUI$Borders" resolve="JBUI.Borders" />
                     <node concept="3cmrfG" id="4N51ibjGVRK" role="37wK5m">
                       <property role="3cmrfH" value="2" />
                     </node>
@@ -3353,7 +3353,7 @@
     <property role="1sVAO0" value="true" />
     <property role="1EXbeo" value="false" />
     <node concept="3uibUv" id="6gEjUfBDX5b" role="EKbjA">
-      <ref role="3uigEE" to="u42p:6gEjUfBDWeY" resolve="RefactoringViewItemEx" />
+      <ref role="3uigEE" to="u42p:6gEjUfBDWeY" resolve="RefactoringViewItem.RefactoringViewItemEx" />
     </node>
     <node concept="312cEg" id="3pNk_u$hZej" role="jymVt">
       <property role="34CwA1" value="false" />
@@ -3728,11 +3728,11 @@
               <node concept="3cpWsn" id="7DGCeT2KPz2" role="3cpWs9">
                 <property role="TrG5h" value="rerunAction" />
                 <node concept="3uibUv" id="7DGCeT2KPyX" role="1tU5fm">
-                  <ref role="3uigEE" to="ngmm:~UsagesView$RerunAction" resolve="RerunAction" />
+                  <ref role="3uigEE" to="ngmm:~UsagesView$RerunAction" resolve="UsagesView.RerunAction" />
                 </node>
                 <node concept="2ShNRf" id="7DGCeT2KPz3" role="33vP2m">
                   <node concept="1pGfFk" id="7DGCeT2KPz4" role="2ShVmc">
-                    <ref role="37wK5l" to="ngmm:~UsagesView$RerunAction.&lt;init&gt;(jetbrains.mps.ide.findusages.view.UsagesView,java.lang.String)" resolve="RerunAction" />
+                    <ref role="37wK5l" to="ngmm:~UsagesView$RerunAction.&lt;init&gt;(jetbrains.mps.ide.findusages.view.UsagesView,java.lang.String)" resolve="UsagesView.RerunAction" />
                     <node concept="37vLTw" id="7DGCeT2KPz5" role="37wK5m">
                       <ref role="3cqZAo" node="29N7xYwTFWS" resolve="myUsagesView" />
                     </node>
@@ -3824,7 +3824,7 @@
                       <property role="Xl_RC" value="" />
                     </node>
                     <node concept="10M0yZ" id="6Qwue3HJ8v8" role="37wK5m">
-                      <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="Actions" />
+                      <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
                       <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.Cancel" resolve="Cancel" />
                     </node>
                   </node>
@@ -4130,7 +4130,7 @@
               <ref role="37wK5l" to="z60i:~Container.setFocusTraversalPolicy(java.awt.FocusTraversalPolicy)" resolve="setFocusTraversalPolicy" />
               <node concept="2ShNRf" id="29N7xYwTG0t" role="37wK5m">
                 <node concept="1pGfFk" id="29N7xYwTG0u" role="2ShVmc">
-                  <ref role="37wK5l" node="29N7xYwTFWg" resolve="MyFocusTraversalPolicy" />
+                  <ref role="37wK5l" node="29N7xYwTFWg" resolve="RefactoringViewItemImpl.MyFocusTraversalPolicy" />
                   <node concept="37vLTw" id="3GM_nagT$wC" role="37wK5m">
                     <ref role="3cqZAo" node="29N7xYwTG0k" resolve="ftp" />
                   </node>

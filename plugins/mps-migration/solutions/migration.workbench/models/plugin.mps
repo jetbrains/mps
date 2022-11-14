@@ -4006,7 +4006,7 @@
                                                   <node concept="1pGfFk" id="5$zfhXzqIMP" role="2ShVmc">
                                                     <ref role="37wK5l" to="w1kc:~SLanguageHierarchy.&lt;init&gt;(jetbrains.mps.smodel.language.LanguageRegistry,java.util.Collection)" resolve="SLanguageHierarchy" />
                                                     <node concept="37vLTw" id="1guuOIDbB7z" role="37wK5m">
-                                                      <ref role="3cqZAo" node="1guuOIDbB7u" resolve="component" />
+                                                      <ref role="3cqZAo" node="1guuOIDbB7u" resolve="languageRegistry" />
                                                     </node>
                                                     <node concept="2OqwBi" id="5$zfhXzqIMQ" role="37wK5m">
                                                       <node concept="2GrUjf" id="5$zfhXzqIMR" role="2Oq$k0">

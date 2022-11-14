@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-928o5srl4j4pbeslt2ggau53w5gb5jh" parametersHash="-71teww635a0v22q9t7gojfr7i3rx2yu">
+<product version="3" modelHash="-928o5srl4j4pbeslt2ggau53w5gb5jh">
   <files names="ConceptPresentationAspectImpl.java:EnumerationDescriptor_AssignmentOperator.java:EnumerationDescriptor_VarianceModifier.java:IconContainer.java:LanguageConceptSwitch.java:StructureAspectDescriptor.java" />
 </product>
 

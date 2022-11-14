@@ -589,25 +589,25 @@
       <node id="8259557992564995366" at="63,30,64,87" concept="10" />
       <node id="8259557992564995366" at="68,63,69,174" concept="5" />
       <node id="8259557992564995366" at="73,67,74,122" concept="5" />
-      <node id="8259557992565065996" at="79,0,80,0" concept="8" trace="SOURCE_NODE_REF" />
-      <node id="8259557992565065996" at="80,0,81,0" concept="8" trace="ID_inSwitch" />
-      <node id="8259557992565065996" at="82,28,83,85" concept="10" />
-      <node id="8259557992565065996" at="87,63,88,174" concept="5" />
-      <node id="8259557992565065996" at="92,67,93,117" concept="5" />
-      <node id="8259557992564995085" at="97,53,98,19" concept="10" />
-      <node id="8259557992564995085" at="102,0,103,0" concept="8" trace="IParameterizedTemplate$6i" />
-      <node id="8259557992564995085" at="103,0,104,0" concept="8" trace="TemplateDeclaration$5G" />
-      <node id="8259557992564995085" at="104,0,105,0" concept="8" trace="TemplateSwitch$j_" />
-      <node id="8259557992564995085" at="108,0,109,0" concept="8" trace="needCallSite$fSr_" />
+      <node id="8259557992565065996" at="80,0,81,0" concept="8" trace="SOURCE_NODE_REF" />
+      <node id="8259557992565065996" at="81,0,82,0" concept="8" trace="ID_inSwitch" />
+      <node id="8259557992565065996" at="83,28,84,85" concept="10" />
+      <node id="8259557992565065996" at="88,63,89,174" concept="5" />
+      <node id="8259557992565065996" at="93,67,94,117" concept="5" />
+      <node id="8259557992564995085" at="99,53,100,19" concept="10" />
+      <node id="8259557992564995085" at="104,0,105,0" concept="8" trace="IParameterizedTemplate$6i" />
+      <node id="8259557992564995085" at="105,0,106,0" concept="8" trace="TemplateDeclaration$5G" />
+      <node id="8259557992564995085" at="106,0,107,0" concept="8" trace="TemplateSwitch$j_" />
+      <node id="8259557992564995085" at="110,0,111,0" concept="8" trace="needCallSite$fSr_" />
       <node id="8259557992565001785" at="47,71,50,7" concept="2" />
       <node id="8259557992565001785" at="54,0,57,0" concept="9" trace="isDefined#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
       <node id="8259557992564995366" at="63,0,66,0" concept="0" trace="Rule_inTemplate#()V" />
-      <node id="8259557992565065996" at="82,0,85,0" concept="0" trace="Rule_inSwitch#()V" />
-      <node id="8259557992564995085" at="97,0,100,0" concept="0" trace="InsertCallSiteMacro_ConstraintRules#()V" />
+      <node id="8259557992565065996" at="83,0,86,0" concept="0" trace="Rule_inSwitch#()V" />
+      <node id="8259557992564995085" at="99,0,102,0" concept="0" trace="InsertCallSiteMacro_ConstraintRules#()V" />
       <node id="8259557992564995366" at="67,0,71,0" concept="3" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
       <node id="8259557992564995366" at="72,0,76,0" concept="3" trace="appliesTo#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
-      <node id="8259557992565065996" at="86,0,90,0" concept="3" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
-      <node id="8259557992565065996" at="91,0,95,0" concept="3" trace="appliesTo#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
+      <node id="8259557992565065996" at="87,0,91,0" concept="3" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
+      <node id="8259557992565065996" at="92,0,96,0" concept="3" trace="appliesTo#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
       <node id="8259557992564995085" at="35,0,40,0" concept="3" trace="getDeclaredRules#()Ljava/util/List;" />
       <node id="8259557992565001785" at="46,0,53,0" concept="9" trace="getValue#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="8259557992564995085" at="37,43,38,17" />
@@ -616,16 +616,16 @@
       <scope id="8259557992564995366" at="63,30,64,87" />
       <scope id="8259557992564995366" at="68,63,69,174" />
       <scope id="8259557992564995366" at="73,67,74,122" />
-      <scope id="8259557992565065996" at="82,28,83,85" />
-      <scope id="8259557992565065996" at="87,63,88,174" />
-      <scope id="8259557992565065996" at="92,67,93,117" />
-      <scope id="8259557992564995085" at="97,53,98,19" />
+      <scope id="8259557992565065996" at="83,28,84,85" />
+      <scope id="8259557992565065996" at="88,63,89,174" />
+      <scope id="8259557992565065996" at="93,67,94,117" />
+      <scope id="8259557992564995085" at="99,53,100,19" />
       <scope id="8259557992565001785" at="54,0,57,0">
         <var name="context" id="8259557992565001785" />
       </scope>
       <scope id="8259557992564995366" at="63,0,66,0" />
-      <scope id="8259557992565065996" at="82,0,85,0" />
-      <scope id="8259557992564995085" at="97,0,100,0" />
+      <scope id="8259557992565065996" at="83,0,86,0" />
+      <scope id="8259557992564995085" at="99,0,102,0" />
       <scope id="8259557992565001785" at="47,71,51,80" />
       <scope id="8259557992564995366" at="67,0,71,0">
         <var name="context" id="8259557992564995366" />
@@ -633,22 +633,22 @@
       <scope id="8259557992564995366" at="72,0,76,0">
         <var name="context" id="8259557992564995366" />
       </scope>
-      <scope id="8259557992565065996" at="86,0,90,0">
+      <scope id="8259557992565065996" at="87,0,91,0">
         <var name="context" id="8259557992565065996" />
       </scope>
-      <scope id="8259557992565065996" at="91,0,95,0">
+      <scope id="8259557992565065996" at="92,0,96,0">
         <var name="context" id="8259557992565065996" />
       </scope>
       <scope id="8259557992564995085" at="35,0,40,0" />
       <scope id="8259557992565001785" at="46,0,53,0">
         <var name="context" id="8259557992565001785" />
       </scope>
-      <unit id="8259557992564995085" at="107,0,110,0" name="jetbrains.mps.lang.generator.constraints.InsertCallSiteMacro_ConstraintRules$PROPS" />
-      <unit id="8259557992564995085" at="101,0,106,0" name="jetbrains.mps.lang.generator.constraints.InsertCallSiteMacro_ConstraintRules$CONCEPTS" />
+      <unit id="8259557992564995085" at="109,0,112,0" name="jetbrains.mps.lang.generator.constraints.InsertCallSiteMacro_ConstraintRules$PROPS" />
+      <unit id="8259557992564995085" at="103,0,108,0" name="jetbrains.mps.lang.generator.constraints.InsertCallSiteMacro_ConstraintRules$CONCEPTS" />
       <unit id="8259557992565001785" at="41,0,58,0" name="jetbrains.mps.lang.generator.constraints.InsertCallSiteMacro_ConstraintRules$Def_Root8259557992565001785" />
-      <unit id="8259557992564995366" at="59,0,77,0" name="jetbrains.mps.lang.generator.constraints.InsertCallSiteMacro_ConstraintRules$Rule_inTemplate" />
-      <unit id="8259557992565065996" at="78,0,96,0" name="jetbrains.mps.lang.generator.constraints.InsertCallSiteMacro_ConstraintRules$Rule_inSwitch" />
-      <unit id="8259557992564995085" at="27,0,111,0" name="jetbrains.mps.lang.generator.constraints.InsertCallSiteMacro_ConstraintRules" />
+      <unit id="8259557992564995366" at="59,0,78,0" name="jetbrains.mps.lang.generator.constraints.InsertCallSiteMacro_ConstraintRules$Rule_inTemplate" />
+      <unit id="8259557992565065996" at="79,0,98,0" name="jetbrains.mps.lang.generator.constraints.InsertCallSiteMacro_ConstraintRules$Rule_inSwitch" />
+      <unit id="8259557992564995085" at="27,0,113,0" name="jetbrains.mps.lang.generator.constraints.InsertCallSiteMacro_ConstraintRules" />
     </file>
     <file name="InsertCallSiteMacro_ConstraintsFeedback.java">
       <node id="8259557992564995085" at="20,0,21,0" concept="8" trace="CONCEPT" />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="81ctoi8gv8x2uuxjwo5y6v6qy2p30db" parametersHash="-71teww635a0v22q9t7gojfr7i3rx2yu">
+<product version="3" modelHash="81ctoi8gv8x2uuxjwo5y6v6qy2p30db">
   <files names="ClassTypeKey.java:FunctionType.java:IdBasedType.java:TypeKey.java:UnmatchableType.java" />
 </product>
 

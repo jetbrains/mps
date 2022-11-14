@@ -48,6 +48,7 @@ public final class SometimesRootableConcept_ConstraintRules extends BaseRulesCon
     public boolean appliesTo(@NotNull CanBeRootContext context) {
       return true;
     }
+
   }
 
   /*package*/ SometimesRootableConcept_ConstraintRules() {

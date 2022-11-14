@@ -442,13 +442,13 @@
           </node>
           <node concept="2Hmddi" id="1xOvOib6c7Z" role="3cqZAp">
             <node concept="37vLTw" id="1xOvOib6dVL" role="2Hmdds">
-              <ref role="3cqZAo" node="1xOvOib67o9" resolve="ideaPluginModuleFacet" />
+              <ref role="3cqZAo" node="1xOvOib67o9" resolve="jmf" />
             </node>
           </node>
           <node concept="3vlDli" id="1xOvOib6jZt" role="3cqZAp">
             <node concept="2OqwBi" id="6IFtpuMk5Me" role="3tpDZA">
               <node concept="37vLTw" id="6IFtpuMk5AV" role="2Oq$k0">
-                <ref role="3cqZAo" node="1xOvOib67o9" resolve="ideaPluginModuleFacet" />
+                <ref role="3cqZAo" node="1xOvOib67o9" resolve="jmf" />
               </node>
               <node concept="liA8E" id="6IFtpuMk7Ve" role="2OqNvi">
                 <ref role="37wK5l" to="b0pz:~JavaModuleFacet.getCompile()" resolve="getCompile" />
@@ -456,7 +456,7 @@
             </node>
             <node concept="Rm8GO" id="2Z81NTQQZTj" role="3tpDZB">
               <ref role="Rm8GQ" to="b0pz:~JavaModuleFacet$Compile.MPS" resolve="MPS" />
-              <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$Compile" resolve="Compile" />
+              <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$Compile" resolve="JavaModuleFacet.Compile" />
             </node>
           </node>
           <node concept="3SKdUt" id="2Z81NTQR0Xc" role="3cqZAp">
@@ -513,7 +513,7 @@
             </node>
             <node concept="Rm8GO" id="2Z81NTQR0Hf" role="3tpDZB">
               <ref role="Rm8GQ" to="b0pz:~JavaModuleFacet$LoadClasses.ManagedByContributor" resolve="ManagedByContributor" />
-              <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$LoadClasses" resolve="LoadClasses" />
+              <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$LoadClasses" resolve="JavaModuleFacet.LoadClasses" />
             </node>
           </node>
           <node concept="3clFbH" id="6IFtpuMkaDE" role="3cqZAp" />

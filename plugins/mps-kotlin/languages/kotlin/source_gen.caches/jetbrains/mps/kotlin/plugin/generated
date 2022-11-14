@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-9lf8xz1v0stt5dlenf26wya2r81vcme" parametersHash="-71teww635a0v22q9t7gojfr7i3rx2yu">
+<product version="3" modelHash="-9lf8xz1v0stt5dlenf26wya2r81vcme">
   <files names="ExtensionDescriptor.java:ExtensionsHelper.java" />
 </product>
 

@@ -6942,7 +6942,7 @@
                       <node concept="liA8E" id="1guuOIDh7yk" role="2OqNvi">
                         <ref role="37wK5l" to="33ny:~Map.put(java.lang.Object,java.lang.Object)" resolve="put" />
                         <node concept="37vLTw" id="1guuOIDh$fC" role="37wK5m">
-                          <ref role="3cqZAo" node="1guuOIDh$f$" resolve="identity" />
+                          <ref role="3cqZAo" node="1guuOIDh$f$" resolve="lid" />
                         </node>
                         <node concept="2OqwBi" id="1guuOIDhs0h" role="37wK5m">
                           <node concept="37vLTw" id="1guuOIDholQ" role="2Oq$k0">

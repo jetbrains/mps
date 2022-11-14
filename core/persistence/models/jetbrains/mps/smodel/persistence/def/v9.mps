@@ -3596,7 +3596,7 @@
                     <ref role="3cqZAo" node="4XryHMumNt0" resolve="association" />
                   </node>
                   <node concept="37vLTw" id="6t2BHuRF65V" role="1Lso8e">
-                    <ref role="3cqZAo" node="6t2BHuRF65M" resolve="of" />
+                    <ref role="3cqZAo" node="6t2BHuRF65M" resolve="ri" />
                   </node>
                 </node>
               </node>

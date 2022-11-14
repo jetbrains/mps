@@ -8457,7 +8457,7 @@
                       <node concept="3cpWs6" id="6ESy0uAv0zb" role="3cqZAp">
                         <node concept="10M0yZ" id="6ESy0uAv0$c" role="3cqZAk">
                           <ref role="3cqZAo" to="z2i8:~AllIcons$RunConfigurations.TestError" resolve="TestError" />
-                          <ref role="1PxDUh" to="z2i8:~AllIcons$RunConfigurations" resolve="RunConfigurations" />
+                          <ref role="1PxDUh" to="z2i8:~AllIcons$RunConfigurations" resolve="AllIcons.RunConfigurations" />
                         </node>
                       </node>
                     </node>

@@ -1286,7 +1286,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="41knGUSGcZ1" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
         <node concept="2B6LJw" id="41knGUSI9on" role="2B76xF">
           <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
           <node concept="3clFbT" id="41knGUSI9qv" role="2B70Vg">

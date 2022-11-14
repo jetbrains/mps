@@ -7725,11 +7725,11 @@
           <node concept="3cpWsn" id="2KMWrOXp17t" role="3cpWs9">
             <property role="TrG5h" value="state" />
             <node concept="3uibUv" id="2KMWrOXp17u" role="1tU5fm">
-              <ref role="3uigEE" node="2KMWrOXsf9T" resolve="MergeSessionFullState" />
+              <ref role="3uigEE" node="2KMWrOXsf9T" resolve="MergeSession.MergeSessionFullState" />
             </node>
             <node concept="2ShNRf" id="2KMWrOXpoRc" role="33vP2m">
               <node concept="HV5vD" id="2KMWrOXsATU" role="2ShVmc">
-                <ref role="HV5vE" node="2KMWrOXsf9T" resolve="MergeSessionFullState" />
+                <ref role="HV5vE" node="2KMWrOXsf9T" resolve="MergeSession.MergeSessionFullState" />
               </node>
             </node>
           </node>
@@ -8252,7 +8252,7 @@
       </node>
       <node concept="3Tm1VV" id="2KMWrOXoyEM" role="1B3o_S" />
       <node concept="3uibUv" id="2KMWrOXoHmB" role="3clF45">
-        <ref role="3uigEE" node="2KMWrOXsf9T" resolve="MergeSessionFullState" />
+        <ref role="3uigEE" node="2KMWrOXsf9T" resolve="MergeSession.MergeSessionFullState" />
       </node>
       <node concept="2AHcQZ" id="2KMWrOYA5_O" role="2AJF6D">
         <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
@@ -8697,7 +8697,7 @@
             <node concept="liA8E" id="2KMWrOYj1rC" role="2OqNvi">
               <ref role="37wK5l" to="btf5:69abr3GmYsh" resolve="setState" />
               <node concept="37vLTw" id="2KMWrOYkOS4" role="37wK5m">
-                <ref role="3cqZAo" node="2KMWrOYkOS0" resolve="myIdReplacementCache" />
+                <ref role="3cqZAo" node="2KMWrOYkOS0" resolve="idReplacementCache" />
               </node>
               <node concept="37vLTw" id="2KMWrOYjR4R" role="37wK5m">
                 <ref role="3cqZAo" node="3$YpntjF4rf" resolve="myResultModel" />
@@ -8711,7 +8711,7 @@
       <node concept="37vLTG" id="2KMWrOXqcu2" role="3clF46">
         <property role="TrG5h" value="state" />
         <node concept="3uibUv" id="2KMWrOXqcu1" role="1tU5fm">
-          <ref role="3uigEE" node="2KMWrOXsf9T" resolve="MergeSessionFullState" />
+          <ref role="3uigEE" node="2KMWrOXsf9T" resolve="MergeSession.MergeSessionFullState" />
         </node>
         <node concept="2AHcQZ" id="2KMWrOYArOa" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
@@ -8749,7 +8749,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="2KMWrOYAJNJ" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
       </node>
       <node concept="P$JXv" id="2KMWrOYAJNG" role="lGtFl">
         <node concept="TZ5HI" id="2KMWrOYAJNH" role="3nqlJM">
@@ -8867,7 +8867,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="2KMWrOYqbx0" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
       </node>
       <node concept="P$JXv" id="2KMWrOYqbwX" role="lGtFl">
         <node concept="TZ5HI" id="2KMWrOYqbwY" role="3nqlJM">
@@ -9005,7 +9005,7 @@
         <node concept="H_c77" id="6ucU9nat7I4" role="1tU5fm" />
       </node>
       <node concept="2AHcQZ" id="2KMWrOYqOhx" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
       </node>
       <node concept="P$JXv" id="2KMWrOYqOhu" role="lGtFl">
         <node concept="TZ5HI" id="2KMWrOYqOhv" role="3nqlJM">
@@ -10125,7 +10125,7 @@
       </node>
     </node>
     <node concept="2AHcQZ" id="2KMWrOYBhCd" role="2AJF6D">
-      <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+      <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
     </node>
     <node concept="3UR2Jj" id="2KMWrOYBhCa" role="lGtFl">
       <node concept="TZ5HI" id="2KMWrOYBhCb" role="3nqlJM">

@@ -410,7 +410,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="3dFdplxLzJ1" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
         <node concept="2B6LJw" id="3dFdplxMR7N" role="2B76xF">
           <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
           <node concept="3clFbT" id="3dFdplxMR9r" role="2B70Vg">
@@ -454,7 +454,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="3dFdplxMRcy" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
         <node concept="2B6LJw" id="3dFdplxMVLs" role="2B76xF">
           <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
           <node concept="3clFbT" id="3dFdplxMVMO" role="2B70Vg">
@@ -501,7 +501,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="3dFdplxMVPw" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
         <node concept="2B6LJw" id="3dFdplxN0kc" role="2B76xF">
           <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
           <node concept="3clFbT" id="3dFdplxN0l$" role="2B70Vg">
@@ -554,7 +554,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="3dFdplxN0qO" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
         <node concept="2B6LJw" id="3dFdplxN4XV" role="2B76xF">
           <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
           <node concept="3clFbT" id="3dFdplxN4Zj" role="2B70Vg">
@@ -1645,7 +1645,7 @@
             </node>
           </node>
           <node concept="37vLTw" id="oflSGAvbZT" role="1DdaDG">
-            <ref role="3cqZAo" node="oflSGAvbZO" resolve="children" />
+            <ref role="3cqZAo" node="oflSGAvbZO" resolve="wholeModelNewDeps" />
           </node>
           <node concept="3cpWsn" id="4dXFBzEo2YC" role="1Duv9x">
             <property role="TrG5h" value="e" />
@@ -1912,7 +1912,7 @@
             </node>
           </node>
           <node concept="37vLTw" id="oflSGAuHCG" role="1DdaDG">
-            <ref role="3cqZAo" node="oflSGAuHCB" resolve="children" />
+            <ref role="3cqZAo" node="oflSGAuHCB" resolve="legacyPerRootDependencies" />
           </node>
           <node concept="3cpWsn" id="E2BH9lAYiC" role="1Duv9x">
             <property role="TrG5h" value="e" />

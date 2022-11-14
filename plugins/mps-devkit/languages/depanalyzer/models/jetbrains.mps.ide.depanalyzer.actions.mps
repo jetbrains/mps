@@ -317,7 +317,7 @@
     <property role="1teQrl" value="true" />
     <node concept="1QGGSu" id="6XsdSpi8eWj" role="3Uehp1">
       <node concept="10M0yZ" id="6XsdSpi8f2g" role="3xaMm5">
-        <ref role="1PxDUh" to="z2i8:~AllIcons$Toolwindows" resolve="Toolwindows" />
+        <ref role="1PxDUh" to="z2i8:~AllIcons$Toolwindows" resolve="AllIcons.Toolwindows" />
         <ref role="3cqZAo" to="z2i8:~AllIcons$Toolwindows.ToolWindowModuleDependencies" resolve="ToolWindowModuleDependencies" />
       </node>
     </node>
@@ -337,7 +337,7 @@
           <node concept="3cpWsn" id="4K0u7uB3vj4" role="3cpWs9">
             <property role="TrG5h" value="tool" />
             <node concept="1xUVSX" id="4K0u7uB3vj5" role="1tU5fm">
-              <ref role="1xYkEM" node="4K0u7uB3vjg" />
+              <ref role="1xYkEM" node="4K0u7uB3vjg" resolve="ModuleDependenies" />
             </node>
             <node concept="2OqwBi" id="4K0u7uB3vj6" role="33vP2m">
               <node concept="2OqwBi" id="4K0u7uB3vj7" role="2Oq$k0">
@@ -347,7 +347,7 @@
                 </node>
               </node>
               <node concept="LR4U6" id="4K0u7uB3vja" role="2OqNvi">
-                <ref role="LR4U5" node="4K0u7uB3vjg" />
+                <ref role="LR4U5" node="4K0u7uB3vjg" resolve="ModuleDependenies" />
               </node>
             </node>
           </node>
@@ -358,7 +358,7 @@
               <ref role="3cqZAo" node="4K0u7uB3vj4" resolve="tool" />
             </node>
             <node concept="2XshWL" id="3YtP95zXO5q" role="2OqNvi">
-              <ref role="2WH_rO" node="3YtP95zXLfI" />
+              <ref role="2WH_rO" node="3YtP95zXLfI" resolve="setModules" />
               <node concept="2OqwBi" id="3YtP95zXO5r" role="2XxRq1">
                 <node concept="2WthIp" id="3YtP95zXO5s" role="2Oq$k0" />
                 <node concept="1DTwFV" id="3YtP95zXO5t" role="2OqNvi">
@@ -387,7 +387,7 @@
   <node concept="Zd50a" id="4ivPiovDO02">
     <property role="TrG5h" value="DependenciesKeyMap" />
     <node concept="Zd509" id="4ivPiovDO05" role="Zd508">
-      <ref role="1bYAoF" node="yXzhPPCIr5" />
+      <ref role="1bYAoF" node="yXzhPPCIr5" resolve="SafeDeleteModuleDependency" />
       <node concept="pLAjd" id="4ivPiovDO06" role="Zd501">
         <property role="pLAjf" value="VK_DELETE" />
         <property role="pLAjc" value="ctrl" />
@@ -400,7 +400,7 @@
     <node concept="1QGGSu" id="6XsdSpivWhJ" role="1nVCmq">
       <node concept="10M0yZ" id="6XsdSpivWqK" role="3xaMm5">
         <ref role="3cqZAo" to="z2i8:~AllIcons$Toolwindows.ToolWindowModuleDependencies" resolve="ToolWindowModuleDependencies" />
-        <ref role="1PxDUh" to="z2i8:~AllIcons$Toolwindows" resolve="Toolwindows" />
+        <ref role="1PxDUh" to="z2i8:~AllIcons$Toolwindows" resolve="AllIcons.Toolwindows" />
       </node>
     </node>
     <node concept="2XrIbr" id="3YtP95zXLfI" role="2XNbBy">
@@ -1030,7 +1030,7 @@
               </node>
               <node concept="Rm8GO" id="3YX357bjrv7" role="3uHU7w">
                 <ref role="Rm8GQ" to="g6cj:6F582lFlfym" resolve="Depends" />
-                <ref role="1Px2BO" to="g6cj:6F582lFlfyl" resolve="LinkType" />
+                <ref role="1Px2BO" to="g6cj:6F582lFlfyl" resolve="DependencyUtil.LinkType" />
               </node>
             </node>
           </node>
@@ -1418,7 +1418,7 @@
                             <node concept="3clFbC" id="1O8DjCqMgf_" role="37wK5m">
                               <node concept="Rm8GO" id="1O8DjCqMgfA" role="3uHU7w">
                                 <ref role="Rm8GQ" to="g6cj:6F582lFlfyo" resolve="UsesLanguage" />
-                                <ref role="1Px2BO" to="g6cj:6F582lFlfyl" resolve="LinkType" />
+                                <ref role="1Px2BO" to="g6cj:6F582lFlfyl" resolve="DependencyUtil.LinkType" />
                               </node>
                               <node concept="2OqwBi" id="1O8DjCqMgfB" role="3uHU7B">
                                 <node concept="2OqwBi" id="1O8DjCqMgfC" role="2Oq$k0">
@@ -1474,7 +1474,7 @@
           <node concept="3cpWsn" id="2aKxXDo5Ogt" role="3cpWs9">
             <property role="TrG5h" value="linktype" />
             <node concept="3uibUv" id="2aKxXDo5Ogu" role="1tU5fm">
-              <ref role="3uigEE" to="g6cj:6F582lFlfyl" resolve="LinkType" />
+              <ref role="3uigEE" to="g6cj:6F582lFlfyl" resolve="DependencyUtil.LinkType" />
             </node>
             <node concept="2OqwBi" id="2aKxXDo5Ogw" role="33vP2m">
               <node concept="2OqwBi" id="61cJvQSHaKy" role="2Oq$k0">
@@ -1512,7 +1512,7 @@
                     </node>
                     <node concept="Rm8GO" id="5HJn1LSQyId" role="3uHU7w">
                       <ref role="Rm8GQ" to="g6cj:6F582lFlfym" resolve="Depends" />
-                      <ref role="1Px2BO" to="g6cj:6F582lFlfyl" resolve="LinkType" />
+                      <ref role="1Px2BO" to="g6cj:6F582lFlfyl" resolve="DependencyUtil.LinkType" />
                     </node>
                   </node>
                   <node concept="3clFbC" id="2aKxXDo5Ohp" role="3uHU7w">
@@ -1521,7 +1521,7 @@
                     </node>
                     <node concept="Rm8GO" id="5HJn1LSQz4S" role="3uHU7w">
                       <ref role="Rm8GQ" to="g6cj:6F582lFlfyn" resolve="ReexportsDep" />
-                      <ref role="1Px2BO" to="g6cj:6F582lFlfyl" resolve="LinkType" />
+                      <ref role="1Px2BO" to="g6cj:6F582lFlfyl" resolve="DependencyUtil.LinkType" />
                     </node>
                   </node>
                 </node>
@@ -1531,7 +1531,7 @@
                   </node>
                   <node concept="Rm8GO" id="5HJn1LSQzep" role="3uHU7w">
                     <ref role="Rm8GQ" to="g6cj:6F582lFlfyp" resolve="ExtendsLanguage" />
-                    <ref role="1Px2BO" to="g6cj:6F582lFlfyl" resolve="LinkType" />
+                    <ref role="1Px2BO" to="g6cj:6F582lFlfyl" resolve="DependencyUtil.LinkType" />
                   </node>
                 </node>
               </node>
@@ -1541,7 +1541,7 @@
                 </node>
                 <node concept="Rm8GO" id="3SjivkpPKBs" role="3uHU7w">
                   <ref role="Rm8GQ" to="g6cj:6F582lFlfyq" resolve="ExportsRuntime" />
-                  <ref role="1Px2BO" to="g6cj:6F582lFlfyl" resolve="LinkType" />
+                  <ref role="1Px2BO" to="g6cj:6F582lFlfyl" resolve="DependencyUtil.LinkType" />
                 </node>
               </node>
             </node>
@@ -1551,7 +1551,7 @@
               </node>
               <node concept="Rm8GO" id="3SjivkpPKCp" role="3uHU7w">
                 <ref role="Rm8GQ" to="g6cj:6F582lFlfyo" resolve="UsesLanguage" />
-                <ref role="1Px2BO" to="g6cj:6F582lFlfyl" resolve="LinkType" />
+                <ref role="1Px2BO" to="g6cj:6F582lFlfyl" resolve="DependencyUtil.LinkType" />
               </node>
             </node>
           </node>

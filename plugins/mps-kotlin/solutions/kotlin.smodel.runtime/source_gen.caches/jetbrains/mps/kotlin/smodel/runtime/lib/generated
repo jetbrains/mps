@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-ci23w8dq033juhr2clr829a8kxa211g" parametersHash="-71teww635a0v22q9t7gojfr7i3rx2yu">
+<product version="3" modelHash="-ci23w8dq033juhr2clr829a8kxa211g">
   <files names="SConceptKotlinOperations.kt:SLinkKotlinOperations.kt:SNodeKotlinOperations.kt" />
 </product>
 

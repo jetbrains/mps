@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="b1onjhtkc6f7xtacm9ghkmhj7itxq31" parametersHash="-71teww635a0v22q9t7gojfr7i3rx2yu">
+<product version="3" modelHash="b1onjhtkc6f7xtacm9ghkmhj7itxq31">
   <files names="AccessorKind.java:ClassSignature.java:FunctionSignature.java:MemberSignature.java:PropertySignature.java:_VariableSignature.java" />
 </product>
 

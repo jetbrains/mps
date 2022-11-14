@@ -552,7 +552,7 @@
                                           <node concept="2OqwBi" id="2Pn89z5hVMp" role="33vP2m">
                                             <node concept="0kSF2" id="5KpVuOe3YP9" role="2Oq$k0">
                                               <node concept="3uibUv" id="5KpVuOe3ZP6" role="0kSFW">
-                                                <ref role="3uigEE" to="u42p:6gEjUfBDWeY" resolve="RefactoringViewItemEx" />
+                                                <ref role="3uigEE" to="u42p:6gEjUfBDWeY" resolve="RefactoringViewItem.RefactoringViewItemEx" />
                                               </node>
                                               <node concept="37vLTw" id="5KpVuOe3XL3" role="0kSFX">
                                                 <ref role="3cqZAo" node="6nZLqty3x$q" resolve="refactoringViewItem" />
@@ -607,7 +607,7 @@
                                     </node>
                                     <node concept="2ZW3vV" id="5KpVuOe3yjA" role="3clFbw">
                                       <node concept="3uibUv" id="5KpVuOe3V5l" role="2ZW6by">
-                                        <ref role="3uigEE" to="u42p:6gEjUfBDWeY" resolve="RefactoringViewItemEx" />
+                                        <ref role="3uigEE" to="u42p:6gEjUfBDWeY" resolve="RefactoringViewItem.RefactoringViewItemEx" />
                                       </node>
                                       <node concept="37vLTw" id="2Pn89z5hTOk" role="2ZW6bz">
                                         <ref role="3cqZAo" node="6nZLqty3x$q" resolve="refactoringViewItem" />

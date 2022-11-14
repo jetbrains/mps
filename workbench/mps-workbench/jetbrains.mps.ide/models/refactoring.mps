@@ -471,7 +471,7 @@
               <ref role="3cqZAo" node="CBwdDm0sNo" resolve="check" />
             </node>
             <node concept="Rm8GO" id="CBwdDm0tT4" role="3uHU7w">
-              <ref role="1Px2BO" to="mhbf:~SModelName$SModelNameCheck" resolve="SModelNameCheck" />
+              <ref role="1Px2BO" to="mhbf:~SModelName$SModelNameCheck" resolve="SModelName.SModelNameCheck" />
               <ref role="Rm8GQ" to="mhbf:~SModelName$SModelNameCheck.Pass" resolve="Pass" />
             </node>
           </node>
@@ -554,7 +554,7 @@
           <node concept="3cpWsn" id="5i4P_m2jaeg" role="3cpWs9">
             <property role="TrG5h" value="check" />
             <node concept="3uibUv" id="5i4P_m2jaeh" role="1tU5fm">
-              <ref role="3uigEE" to="mhbf:~SModelName$SModelNameCheck" resolve="SModelNameCheck" />
+              <ref role="3uigEE" to="mhbf:~SModelName$SModelNameCheck" resolve="SModelName.SModelNameCheck" />
             </node>
             <node concept="2YIFZM" id="5i4P_m2jaei" role="33vP2m">
               <ref role="1Pybhc" to="mhbf:~SModelName" resolve="SModelName" />
@@ -571,7 +571,7 @@
               <ref role="3cqZAo" node="5i4P_m2jaeg" resolve="check" />
             </node>
             <node concept="Rm8GO" id="5i4P_m2jaen" role="3uHU7w">
-              <ref role="1Px2BO" to="mhbf:~SModelName$SModelNameCheck" resolve="SModelNameCheck" />
+              <ref role="1Px2BO" to="mhbf:~SModelName$SModelNameCheck" resolve="SModelName.SModelNameCheck" />
               <ref role="Rm8GQ" to="mhbf:~SModelName$SModelNameCheck.Pass" resolve="Pass" />
             </node>
           </node>

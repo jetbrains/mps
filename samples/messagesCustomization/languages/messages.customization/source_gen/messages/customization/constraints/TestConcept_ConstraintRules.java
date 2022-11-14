@@ -62,6 +62,7 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
     public boolean appliesTo(@NotNull CanBeRootContext context) {
       return true;
     }
+
   }
 
   public static final class Def_Depth2802122285522081733 {
@@ -112,6 +113,7 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
       }
       return true;
     }
+
   }
 
   public static final class Def_ChildName2802122285522074390 {
@@ -152,6 +154,7 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
       }
       return true;
     }
+
   }
 
   public static final class Def_Root3071492597344669935 {
@@ -189,6 +192,7 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
     public boolean appliesTo(@NotNull ContainmentContext context) {
       return true;
     }
+
   }
 
   /*package*/ TestConcept_ConstraintRules() {

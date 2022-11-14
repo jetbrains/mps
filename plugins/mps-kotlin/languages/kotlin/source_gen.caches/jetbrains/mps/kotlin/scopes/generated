@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="8gat3b39tu3pj9eyz1g7qx02m3zqx9y" parametersHash="-71teww635a0v22q9t7gojfr7i3rx2yu">
+<product version="3" modelHash="8gat3b39tu3pj9eyz1g7qx02m3zqx9y">
   <files names="ClassScopeHelper.java:NavigationScopeHelper.java:SignatureFilter.java:SuperTypesGenericVisitor.java:SuperTypesVisitorImpl.java:TypeMembersVisitor.java:_ConstructorScope.java:_DeclarationCollector.java:_ReceiverTypeScope.java:_ScopeContext.java:_SignedDeclarationFilter.java" />
 </product>
 

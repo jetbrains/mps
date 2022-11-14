@@ -4997,7 +4997,7 @@
                   <ref role="37wK5l" to="dxuu:~JComponent.setBorder(javax.swing.border.Border)" resolve="setBorder" />
                   <node concept="2YIFZM" id="1guuOID9ZiW" role="37wK5m">
                     <ref role="37wK5l" to="g1qu:~JBUI$Borders.empty(int,int,int,int)" resolve="empty" />
-                    <ref role="1Pybhc" to="g1qu:~JBUI$Borders" resolve="Borders" />
+                    <ref role="1Pybhc" to="g1qu:~JBUI$Borders" resolve="JBUI.Borders" />
                     <node concept="3cmrfG" id="45bCy0j06mS" role="37wK5m">
                       <property role="3cmrfH" value="0" />
                     </node>
@@ -9931,7 +9931,7 @@
             <node concept="3clFbF" id="61n5glKhr_X" role="3cqZAp">
               <node concept="2OqwBi" id="61n5glKhr_Y" role="3clFbG">
                 <node concept="37vLTw" id="61n5glKhr_Z" role="2Oq$k0">
-                  <ref role="3cqZAo" node="1guuOID6NF0" resolve="myMonitor" />
+                  <ref role="3cqZAo" node="1guuOID6NF0" resolve="pm" />
                 </node>
                 <node concept="liA8E" id="61n5glKhrA0" role="2OqNvi">
                   <ref role="37wK5l" to="yyf4:~ProgressMonitor.start(java.lang.String,int)" resolve="start" />
@@ -9949,7 +9949,7 @@
                 <ref role="37wK5l" node="5SsFeroaax$" resolve="doRun" />
                 <node concept="2OqwBi" id="1guuOID5eBT" role="37wK5m">
                   <node concept="37vLTw" id="1guuOID5cFi" role="2Oq$k0">
-                    <ref role="3cqZAo" node="1guuOID6NF0" resolve="myMonitor" />
+                    <ref role="3cqZAo" node="1guuOID6NF0" resolve="pm" />
                   </node>
                   <node concept="liA8E" id="1guuOID5h6H" role="2OqNvi">
                     <ref role="37wK5l" to="yyf4:~ProgressMonitor.subTask(int)" resolve="subTask" />
@@ -9979,14 +9979,14 @@
                   </node>
                 </node>
                 <node concept="37vLTw" id="5cfG2XjDwL4" role="2Oq$k0">
-                  <ref role="3cqZAo" node="1guuOID6NF0" resolve="myMonitor" />
+                  <ref role="3cqZAo" node="1guuOID6NF0" resolve="pm" />
                 </node>
               </node>
             </node>
             <node concept="3clFbF" id="5cfG2XjDZL1" role="3cqZAp">
               <node concept="2OqwBi" id="5cfG2XjE02n" role="3clFbG">
                 <node concept="37vLTw" id="5cfG2XjDZKZ" role="2Oq$k0">
-                  <ref role="3cqZAo" node="1guuOID6NF0" resolve="myMonitor" />
+                  <ref role="3cqZAo" node="1guuOID6NF0" resolve="pm" />
                 </node>
                 <node concept="liA8E" id="5cfG2XjE0qt" role="2OqNvi">
                   <ref role="37wK5l" to="yyf4:~ProgressMonitor.advance(int)" resolve="advance" />
@@ -10022,7 +10022,7 @@
                     </node>
                   </node>
                   <node concept="37vLTw" id="5cfG2XjDXEu" role="2Oq$k0">
-                    <ref role="3cqZAo" node="1guuOID6NF0" resolve="myMonitor" />
+                    <ref role="3cqZAo" node="1guuOID6NF0" resolve="pm" />
                   </node>
                 </node>
               </node>
@@ -10035,7 +10035,7 @@
                     </node>
                   </node>
                   <node concept="37vLTw" id="5cfG2XjDXRs" role="2Oq$k0">
-                    <ref role="3cqZAo" node="1guuOID6NF0" resolve="myMonitor" />
+                    <ref role="3cqZAo" node="1guuOID6NF0" resolve="pm" />
                   </node>
                 </node>
               </node>
@@ -10276,7 +10276,7 @@
               <node concept="3clFbF" id="3c6oXHAqX2e" role="3cqZAp">
                 <node concept="2OqwBi" id="3c6oXHAqX2f" role="3clFbG">
                   <node concept="37vLTw" id="1zaRC58yy5i" role="2Oq$k0">
-                    <ref role="3cqZAo" node="1guuOID6NF0" resolve="myMonitor" />
+                    <ref role="3cqZAo" node="1guuOID6NF0" resolve="pm" />
                   </node>
                   <node concept="liA8E" id="3c6oXHAqX2h" role="2OqNvi">
                     <ref role="37wK5l" to="yyf4:~ProgressMonitor.done()" resolve="done" />
