@@ -175,7 +175,7 @@ public class NodeEditorComponent extends EditorComponent {
   @Nullable
   @Override
   public Object getData(@NotNull @NonNls String dataId) {
-    if (dataId.equals(PlatformDataKeys.VIRTUAL_FILE_ARRAY.getName())) {
+    if (PlatformDataKeys.VIRTUAL_FILE_ARRAY.is(dataId)) {
       return getVirtualFile() != null ? new VirtualFile[]{getVirtualFile()} : new VirtualFile[0];
     }
     return super.getData(dataId);

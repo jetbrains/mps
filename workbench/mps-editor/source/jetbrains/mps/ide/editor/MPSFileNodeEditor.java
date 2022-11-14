@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,14 +33,11 @@ import jetbrains.mps.openapi.editor.EditorState;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.AbstractComputeRunnable;
-import jetbrains.mps.util.Computable;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.module.SRepository;
-import org.jetbrains.mps.openapi.repository.CommandListener;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -61,23 +58,8 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
   private EditorState myDelayedState = null;
   private boolean mySelected;
 
-  public MPSFileNodeEditor(@NotNull MPSProject project, SRepository repository, @NotNull Computable<MPSNodeVirtualFile> nodeFileComputable) {
-    this(project, null);
-    // we expect new models (that may come from the file) could show up in the repository only as a command(repository modification) result
-    repository.getModelAccess().addCommandListener(new CommandListener() {
-      @Override
-      public void commandFinished() {
-        MPSNodeVirtualFile mpsNodeVirtualFile = nodeFileComputable.compute();
-        if (mpsNodeVirtualFile != null) {
-          myFile = mpsNodeVirtualFile;
-          MPSFileNodeEditor.this.initEditor();
-          repository.getModelAccess().removeCommandListener(this);
-        }
-      }
-    });
-  }
-
   public MPSFileNodeEditor(@NotNull MPSProject project, MPSNodeVirtualFile file) {
+    // there's at least 1 scenario when file == null, although I'd like it to become @NotNull
     myProject = project;
     myFile = file;
 

@@ -191,6 +191,7 @@ public abstract class BaseNodeEditor implements Editor {
         return data;
       }
       // fixme kind of strange to delegate to descendant in this framework though I am scared to remove this
+      // +100500, quite odd for EC to care about VIRTUAL_FILE_ARRAY
       NodeEditorComponent editorComponent = getCurrentEditorComponent();
       return editorComponent == null ? null : editorComponent.getData(dataId);
     }
