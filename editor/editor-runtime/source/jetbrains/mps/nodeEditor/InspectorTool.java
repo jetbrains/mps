@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.nodeEditor;
 
-import com.intellij.ide.DataManager;
 import com.intellij.ide.actions.ActivateToolWindowAction;
 import com.intellij.ide.favoritesTreeView.FavoritesViewTreeBuilder;
 import com.intellij.openapi.actionSystem.ActionManager;
@@ -163,7 +162,7 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
     StartupManager.getInstance(getProject()).registerStartupActivity(() -> ApplicationManager.getApplication().invokeLater(() -> {
       InspectorTool.this.myMessagePanel = new MyMessagePanel();
       myComponent = new MyPanel();
-      jetbrains.mps.project.Project project = ProjectHelper.toMPSProject(getProject());
+      jetbrains.mps.project.Project project = ProjectHelper.fromIdeaProject(getProject());
       myInspectorComponent = new InspectorEditorComponent(project.getRepository(),
                                                           new EditorConfigurationBuilder().editorPanelManager(new EditorPanelManagerImpl(project)).build());
       EditorExtensionUtil.extendUsingProject(myInspectorComponent, project);

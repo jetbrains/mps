@@ -26,7 +26,6 @@ import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
@@ -93,19 +92,6 @@ public abstract class Project implements MPSModuleOwner, IProject {
   }
 
   public abstract <T> T getComponent(Class<T> t);
-
-  /**
-   * @deprecated the project is not necessarily backed up by file. Left for compatibility
-   * @see FileBasedProject
-   */
-@Deprecated(since = "3.3", forRemoval = true)
-  public File getProjectFile() {
-    if (this instanceof FileBasedProject) {
-      FileBasedProject fileBasedProject = (FileBasedProject) this;
-      return fileBasedProject.getProjectFile();
-    }
-    return null;
-  }
 
   /**
    * @deprecated use {@link #getProjectModules)} instead
