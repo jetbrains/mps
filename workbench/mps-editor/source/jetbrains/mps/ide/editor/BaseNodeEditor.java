@@ -204,11 +204,7 @@ public abstract class BaseNodeEditor implements Editor {
     }
     NodeEditorComponent editorComponent =
         new NodeEditorComponent(myProject.getRepository(), new EditorConfigurationBuilder().editorPanelManager(new EditorPanelManagerImpl(myProject)));
-    try {
-      EditorExtensionUtil.extendUsingProject(editorComponent, myProject);
-    } catch (LinkageError le) {
-      LOG.error("Caught while trying to apply extensions to the editor component " + editorComponent, le);
-    }
+    EditorExtensionUtil.extendUsingProject(editorComponent, myProject);
 
     setEditorComponent(editorComponent);
   }

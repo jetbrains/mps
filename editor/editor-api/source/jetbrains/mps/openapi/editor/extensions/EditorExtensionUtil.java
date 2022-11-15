@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.openapi.editor.extensions;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.project.Project;
@@ -27,6 +28,10 @@ public class EditorExtensionUtil {
     if (registry == null) {
       return;
     }
-    registry.extend(editorComponent);
+    try {
+      registry.extend(editorComponent);
+    } catch (LinkageError le) {
+      Logger.getLogger(EditorExtensionUtil.class).error("Caught while trying to apply extensions to the editor component " + editorComponent, le);
+    }
   }
 }
