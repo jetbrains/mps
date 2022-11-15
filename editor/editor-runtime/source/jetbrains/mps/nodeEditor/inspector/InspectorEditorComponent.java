@@ -16,8 +16,6 @@
 package jetbrains.mps.nodeEditor.inspector;
 
 import jetbrains.mps.nodeEditor.EditorComponent;
-import jetbrains.mps.nodeEditor.EditorContext;
-import jetbrains.mps.nodeEditor.InspectorEditorContext;
 import jetbrains.mps.nodeEditor.Memento;
 import jetbrains.mps.nodeEditor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
@@ -25,8 +23,6 @@ import jetbrains.mps.nodeEditor.configuration.EditorConfiguration;
 import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
 import jetbrains.mps.openapi.editor.EditorComponentState;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SRepository;
 
@@ -41,12 +37,6 @@ public class InspectorEditorComponent extends EditorComponent {
     myNode = null;
     myNodePointer = null;
     myRootCell = createEmptyCell();
-  }
-
-  @NotNull
-  @Override
-  protected EditorContext createEditorContext(@Nullable SModel model, @NotNull SRepository repository) {
-    return new InspectorEditorContext(this, model, repository, getEditorConfiguration(), createContextAssistantManager(repository));
   }
 
   @Override

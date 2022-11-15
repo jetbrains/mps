@@ -88,13 +88,13 @@ public class ConsoleFileEditor implements DocumentsEditor {
   @NotNull
   public FileEditorState getState(@NotNull FileEditorStateLevel level) {
     final Wrappers._T<EditorComponentState> memento = new Wrappers._T<EditorComponentState>(null);
-    myEditor.getEditorContext().getRepository().getModelAccess().runReadAction(() -> memento.value = myEditor.getEditorContext().getEditorComponentState());
+    myEditor.getEditorContext().getRepository().getModelAccess().runReadAction(() -> memento.value = myEditor.captureState());
     return new MyFileEditorState(memento.value);
   }
   public void setState(@NotNull final FileEditorState state) {
     if (state instanceof MyFileEditorState) {
       myEditor.getEditorContext().getRepository().getModelAccess().runWriteAction(() -> {
-        myEditor.getEditorContext().restoreEditorComponentState(((MyFileEditorState) state).getMemento());
+        myEditor.restoreState(((MyFileEditorState) state).getMemento());
         myEditor.rebuildEditorContent();
       });
     }

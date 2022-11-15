@@ -1033,16 +1033,11 @@
               <node concept="3clFbF" id="3qXhgcQKUgL" role="3cqZAp">
                 <node concept="37vLTI" id="3qXhgcQKUgN" role="3clFbG">
                   <node concept="2OqwBi" id="3qXhgcQKQCV" role="37vLTx">
-                    <node concept="2OqwBi" id="3qXhgcQKQCW" role="2Oq$k0">
-                      <node concept="37vLTw" id="5NspvO9F79h" role="2Oq$k0">
-                        <ref role="3cqZAo" node="2Y6GhaXyDRD" resolve="myEditor" />
-                      </node>
-                      <node concept="liA8E" id="3qXhgcQKQCY" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
-                      </node>
+                    <node concept="37vLTw" id="5NspvO9F79h" role="2Oq$k0">
+                      <ref role="3cqZAo" node="2Y6GhaXyDRD" resolve="myEditor" />
                     </node>
                     <node concept="liA8E" id="3qXhgcQKQCZ" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:~EditorContext.getEditorComponentState()" resolve="getEditorComponentState" />
+                      <ref role="37wK5l" to="exr9:~EditorComponent.captureState()" resolve="captureState" />
                     </node>
                   </node>
                   <node concept="37vLTw" id="3qXhgcQKUgR" role="37vLTJ">
@@ -1109,16 +1104,11 @@
                 <node concept="3clFbS" id="mFGiHOEPKy" role="1bW5cS">
                   <node concept="3clFbF" id="mFGiHOEy7n" role="3cqZAp">
                     <node concept="2OqwBi" id="mFGiHOEy7o" role="3clFbG">
-                      <node concept="2OqwBi" id="mFGiHOEy7A" role="2Oq$k0">
-                        <node concept="37vLTw" id="mFGiHOEy7_" role="2Oq$k0">
-                          <ref role="3cqZAo" node="2Y6GhaXyDRD" resolve="myEditor" />
-                        </node>
-                        <node concept="liA8E" id="mFGiHOEy7B" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
-                        </node>
+                      <node concept="37vLTw" id="mFGiHOEy7_" role="2Oq$k0">
+                        <ref role="3cqZAo" node="2Y6GhaXyDRD" resolve="myEditor" />
                       </node>
                       <node concept="liA8E" id="mFGiHOEy7q" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorContext.restoreEditorComponentState(jetbrains.mps.openapi.editor.EditorComponentState)" resolve="restoreEditorComponentState" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.restoreState(jetbrains.mps.openapi.editor.EditorComponentState)" resolve="restoreState" />
                         <node concept="2OqwBi" id="mFGiHOEy7r" role="37wK5m">
                           <node concept="1eOMI4" id="mFGiHOEy7v" role="2Oq$k0">
                             <node concept="10QFUN" id="mFGiHOEy7s" role="1eOMHV">

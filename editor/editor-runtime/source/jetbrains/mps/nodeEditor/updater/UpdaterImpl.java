@@ -110,9 +110,9 @@ public class UpdaterImpl implements Updater {
     if (editedNode == null || editedNode.getModel() == null) {
       myEditorComponent.setRootCell(myEditorComponent.createEmptyCell());
     } else {
-      EditorComponentState state = getEditorContext().getEditorComponentState();
+      EditorComponentState state = myEditorComponent.captureState();
       myEditorComponent.setRootCell(updateRootCell(editedNode, events));
-      getEditorContext().restoreEditorComponentState(state);
+      myEditorComponent.restoreState(state);
     }
   }
 

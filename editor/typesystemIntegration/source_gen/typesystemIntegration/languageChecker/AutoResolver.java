@@ -38,7 +38,6 @@ import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.nodeEditor.cells.EditorCell;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.HashSet;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.openapi.editor.EditorComponentState;
@@ -118,7 +117,7 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
     Set<EditorCell> editorErrorCells = editorComponent.getCellTracker().getErrorCells();
     boolean hasWork = SetSequence.fromSet(badReferences.brokenReferences()).isNotEmpty() || !(editorErrorCells.isEmpty());
     if (hasWork && isAutofix(SNodeOperations.getModel(rootNode), editorComponent.getEditorContext().getRepository())) {
-      runAutofix(badReferences.brokenReferences(), editorComponent.getEditorContext());
+      runAutofix(badReferences.brokenReferences(), editorComponent);
     } else {
       myForceAutofix = false;
     }
@@ -131,8 +130,7 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
     }
     MapSequence.fromMap(nodesToErrors).get(key).add(new LanguageErrorsComponent.ApprovableError(reportItem, true));
   }
-  private void runAutofix(final Set<SReference> badReferences, final EditorContext editorContext) {
-    final EditorComponent editorComponent = (EditorComponent) editorContext.getEditorComponent();
+  private void runAutofix(final Set<SReference> badReferences, final EditorComponent editorComponent) {
     Set<EditorCell> editorErrorCells = editorComponent.getCellTracker().getErrorCells();
     final Set<jetbrains.mps.openapi.editor.cells.EditorCell> errorCells = SetSequence.fromSetWithValues(new HashSet<jetbrains.mps.openapi.editor.cells.EditorCell>(), SetSequence.fromSet(editorErrorCells).ofType(jetbrains.mps.openapi.editor.cells.EditorCell.class));
 
@@ -143,18 +141,18 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
       myProject.getModelAccess().executeUndoTransparentCommand(new Runnable() {
         @Override
         public void run() {
-          if (editorContext.getEditorComponent().isDisposed()) {
+          if (editorComponent.isDisposed()) {
             return;
           }
-          EditorComponentState state = editorContext.getEditorComponentState();
+          EditorComponentState state = editorComponent.captureState();
 
-          ReferenceResolveInEditor refResolve = new ReferenceResolveInEditor(editorContext.getEditorComponent());
+          ReferenceResolveInEditor refResolve = new ReferenceResolveInEditor(editorComponent);
 
           // in case this becomes a performance bottleneck, consider reusing the editor's typechecking context
           boolean doRecheckEditor = false;
           // Trying to resolve all broken references using scope and then using substitute actions.
           for (SReference brokenRef : SetSequence.fromSet(badReferences)) {
-            boolean resolvedByScope = ResolverComponent.getInstance().resolveScopesOnly(brokenRef, editorContext.getRepository());
+            boolean resolvedByScope = ResolverComponent.getInstance().resolveScopesOnly(brokenRef, editorComponent.getEditorContext().getRepository());
 
             final jetbrains.mps.openapi.editor.cells.EditorCell cellWithRole;
             if (resolvedByScope) {
@@ -190,7 +188,7 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
 
           if (doRecheckEditor) {
             // Something has changed in the editor, restore the previous state to avoid selection jump if possible
-            editorContext.restoreEditorComponentState(state);
+            editorComponent.restoreState(state);
 
             if (wasForceAutofix) {
               // re-running next checker in force autofix mode
