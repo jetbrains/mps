@@ -867,7 +867,8 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     //       FWIW, I don't understand commit f1c88fba (therefore, don't agree), and think IDE-editor related
     //       subclass shall send out events and this base class shall not care at all, even about notifiesCreation().
     //       Check UIEditorComponent subclass uses. While UIEditorComponent doesn't send these notifications,
-    //       InspectorEditorComponent it receives as argument does.
+    //       InspectorEditorComponent it receives as argument does. Now, with EditorConfiguration.notifyCreateDispose,
+    //       we fixed this issue, but generally it's better to keep this notification outside of EC.
     jetbrains.mps.project.Project project = ProjectHelper.getProject(myRepository);
     if (project == null) {
       return;
@@ -1179,7 +1180,11 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     return messages.stream().map(HighlighterMessage::getReportItem).collect(Collectors.toList());
   }
 
-  protected boolean notifiesCreation() {
+  /**
+   * @deprecated unused, replaced with {@link EditorConfiguration#notifyCreateDispose}. left final as a heads-up for potential overrides.
+   */
+  @Deprecated(forRemoval = true, since = "2022.3")
+  protected final boolean notifiesCreation() {
     return false;
   }
 
@@ -1198,7 +1203,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
             "editNode() accepts nodes from its own repository only (model = " + node.getModel() + ", repository = " + node.getModel().getRepository() + ")";
       }
 
-      if (myNode != null && notifiesCreation()) {
+      if (myNode != null && myEditorConfiguration.notifyCreateDispose) {
         notifyDisposal();
       }
 
@@ -1230,7 +1235,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
         refreshContentHighlighter();
       }
 
-      if (myNode != null && notifiesCreation()) {
+      if (myNode != null && myEditorConfiguration.notifyCreateDispose) {
         notifyCreation();
       }
     });

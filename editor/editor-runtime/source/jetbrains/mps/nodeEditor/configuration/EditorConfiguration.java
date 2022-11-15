@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,6 +37,13 @@ public class EditorConfiguration {
   public final boolean hasContextMenu;
   public final boolean showSelectionLine;
 
+  /**
+   * Tell {@link jetbrains.mps.openapi.editor.EditorComponent} to send out
+   * {@link jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener} notifications.
+   * Generally, {@code true} for MPS IDE editors and inspector, and {@code false} for other scenarios.
+   */
+  public final boolean notifyCreateDispose;
+
   protected EditorConfiguration(
       boolean rightToLeft,
       boolean showLightBulb,
@@ -47,7 +54,8 @@ public class EditorConfiguration {
       boolean hasContextMenu,
       boolean showSelectionLine,
       EditorPanelManager editorPanelManager,
-      @NotNull CaretManager caretManager) {
+      @NotNull CaretManager caretManager,
+      boolean notifies) {
     this.rightToLeft = rightToLeft;
     this.showLightBulb = showLightBulb;
     this.showErrorsGutter = showErrorsGutter;
@@ -58,5 +66,6 @@ public class EditorConfiguration {
     this.showSelectionLine = showSelectionLine;
     this.editorPanelManager = editorPanelManager;
     this.caretManager = caretManager;
+    this.notifyCreateDispose = notifies;
   }
 }

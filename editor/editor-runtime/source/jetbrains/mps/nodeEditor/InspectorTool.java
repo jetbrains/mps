@@ -164,7 +164,7 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
       myComponent = new MyPanel();
       jetbrains.mps.project.Project project = ProjectHelper.fromIdeaProject(getProject());
       myInspectorComponent = new InspectorEditorComponent(project.getRepository(),
-                                                          new EditorConfigurationBuilder().editorPanelManager(new EditorPanelManagerImpl(project)).build());
+                                                          new EditorConfigurationBuilder().editorPanelManager(new EditorPanelManagerImpl(project)).notifies(true).build());
       EditorExtensionUtil.extendUsingProject(myInspectorComponent, project);
       myComponent.setContent(myInspectorComponent.getExternalComponent());
       myMessagePanel.setNode(null);

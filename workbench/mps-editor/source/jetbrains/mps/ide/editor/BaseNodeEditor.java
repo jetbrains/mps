@@ -203,7 +203,7 @@ public abstract class BaseNodeEditor implements Editor {
       myReplace = null;
     }
     NodeEditorComponent editorComponent =
-        new NodeEditorComponent(myProject.getRepository(), new EditorConfigurationBuilder().editorPanelManager(new EditorPanelManagerImpl(myProject)));
+        new NodeEditorComponent(myProject.getRepository(), new EditorConfigurationBuilder().editorPanelManager(new EditorPanelManagerImpl(myProject)).notifies(true));
     EditorExtensionUtil.extendUsingProject(editorComponent, myProject);
 
     setEditorComponent(editorComponent);

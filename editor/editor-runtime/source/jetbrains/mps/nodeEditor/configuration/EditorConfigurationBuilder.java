@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,6 +34,9 @@ public class EditorConfigurationBuilder {
   private boolean myShowSelectionLine = true;
   private EditorPanelManager myEditorPanelManager;
   private CaretManager myCaretManager = CaretManager.getInstance();
+
+  // true to tell EC it needs to dispatch EditorComponentCreateListener events; by default false
+  private boolean myNotify = false;
 
   public static EditorConfiguration buildDefault() {
     return new EditorConfigurationBuilder().build();
@@ -89,6 +92,11 @@ public class EditorConfigurationBuilder {
     return this;
   }
 
+  public EditorConfigurationBuilder notifies(boolean notifyCreateDispose) {
+    myNotify = notifyCreateDispose;
+    return this;
+  }
+
   public EditorConfiguration build() {
     return new EditorConfiguration(
         myRightToLeft,
@@ -100,6 +108,7 @@ public class EditorConfigurationBuilder {
         myHasContextMenu,
         myShowSelectionLine,
         myEditorPanelManager,
-        myCaretManager);
+        myCaretManager,
+        myNotify);
   }
 }

@@ -37,11 +37,6 @@ public class InspectorEditorComponent extends EditorComponent {
     myRootCell = createEmptyCell();
   }
 
-  @Override
-  protected boolean notifiesCreation() {
-    return true;
-  }
-
   public EditorCell createEmptyCell() {
     return new EditorCell_Constant(getEditorContext(), null, "<no inspect info>");
   }

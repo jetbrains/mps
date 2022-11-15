@@ -76,11 +76,6 @@ public class NodeEditorComponent extends EditorComponent {
     });
   }
 
-  @Override
-  protected boolean notifiesCreation() {
-    return true;
-  }
-
   private void adjustInspector() {
     getRepository().getModelAccess().runReadAction(() -> {
       SNode selectedNode = getSelectedNode();
