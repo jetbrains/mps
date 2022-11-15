@@ -1179,10 +1179,11 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   }
 
   /**
-   * @deprecated unused, replaced with {@link EditorConfiguration#notifyCreateDispose}. left final as a heads-up for potential overrides.
+   * @deprecated unused, replaced with {@link EditorConfiguration#notifyCreateDispose}.
+   *             I'd like to make it final as a heads-up for potential overrides, but can't due to use in mbeddr
    */
   @Deprecated(forRemoval = true, since = "2022.3")
-  protected final boolean notifiesCreation() {
+  protected boolean notifiesCreation() {
     return false;
   }
 
@@ -1201,7 +1202,9 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
             "editNode() accepts nodes from its own repository only (model = " + node.getModel() + ", repository = " + node.getModel().getRepository() + ")";
       }
 
-      if (myNode != null && myEditorConfiguration.notifyCreateDispose) {
+      // respect notifiesCreation() for the sake of mbeddr.SPreferencesEditorComponent (until it migrates to 22.3)
+      final boolean notifyCreateDispose = myEditorConfiguration.notifyCreateDispose || notifiesCreation();
+      if (myNode != null && notifyCreateDispose) {
         notifyDisposal();
       }
 
@@ -1233,7 +1236,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
         refreshContentHighlighter();
       }
 
-      if (myNode != null && myEditorConfiguration.notifyCreateDispose) {
+      if (myNode != null && notifyCreateDispose) {
         notifyCreation();
       }
     });
