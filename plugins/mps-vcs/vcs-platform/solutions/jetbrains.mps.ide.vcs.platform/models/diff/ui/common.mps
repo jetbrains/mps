@@ -13112,6 +13112,7 @@
     <node concept="312cEu" id="1UUFr_mXe2t" role="jymVt">
       <property role="2bfB8j" value="true" />
       <property role="TrG5h" value="MyInspectorEditorComponent" />
+      <property role="1EXbeo" value="true" />
       <node concept="3Tm1VV" id="1UUFr_mXbVc" role="1B3o_S" />
       <node concept="3uibUv" id="1UUFr_mXgNZ" role="1zkMxy">
         <ref role="3uigEE" to="zyr2:~InspectorEditorComponent" resolve="InspectorEditorComponent" />
@@ -13134,23 +13135,6 @@
         <node concept="3Tm6S6" id="7mKZPtWNK2p" role="1B3o_S" />
         <node concept="3uibUv" id="7mKZPtWNK2q" role="1tU5fm">
           <ref role="3uigEE" to="dxuu:~JScrollPane" resolve="JScrollPane" />
-        </node>
-      </node>
-      <node concept="312cEg" id="3oSjOhxPJIa" role="jymVt">
-        <property role="TrG5h" value="myTooltipProvider" />
-        <property role="3TUv4t" value="true" />
-        <node concept="3Tm6S6" id="3oSjOhxPxmB" role="1B3o_S" />
-        <node concept="3uibUv" id="3oSjOhxPIfk" role="1tU5fm">
-          <ref role="3uigEE" to="exr9:~EditorTooltipProvider" resolve="EditorTooltipProvider" />
-        </node>
-        <node concept="2ShNRf" id="3oSjOhxPSil" role="33vP2m">
-          <node concept="1pGfFk" id="3oSjOhxQrWO" role="2ShVmc">
-            <property role="373rjd" value="true" />
-            <ref role="37wK5l" node="6mNCvHSfBy0" resolve="DiffEditor.MyTooltipProvider" />
-            <node concept="3clFbT" id="3oSjOhxQyHc" role="37wK5m">
-              <property role="3clFbU" value="true" />
-            </node>
-          </node>
         </node>
       </node>
       <node concept="2tJIrI" id="7poVolquPXC" role="jymVt" />
@@ -13209,27 +13193,20 @@
               </node>
             </node>
           </node>
-        </node>
-      </node>
-      <node concept="2tJIrI" id="1WhnszxOEn3" role="jymVt" />
-      <node concept="3clFb_" id="1WhnszxOMeo" role="jymVt">
-        <property role="TrG5h" value="getTooltipProvider" />
-        <node concept="3Tmbuc" id="1WhnszxOMep" role="1B3o_S" />
-        <node concept="2AHcQZ" id="1WhnszxOMer" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
-        </node>
-        <node concept="3uibUv" id="1WhnszxOMes" role="3clF45">
-          <ref role="3uigEE" to="exr9:~EditorTooltipProvider" resolve="EditorTooltipProvider" />
-        </node>
-        <node concept="3clFbS" id="1WhnszxOMeu" role="3clF47">
-          <node concept="3clFbF" id="1WhnszxP$YH" role="3cqZAp">
-            <node concept="37vLTw" id="1WhnszxP$YG" role="3clFbG">
-              <ref role="3cqZAo" node="3oSjOhxPJIa" resolve="myTooltipProvider" />
+          <node concept="3clFbF" id="IMgjkcx2N5" role="3cqZAp">
+            <node concept="1rXfSq" id="IMgjkcx2N3" role="3clFbG">
+              <ref role="37wK5l" to="exr9:~EditorComponent.setTooltipProvider(jetbrains.mps.nodeEditor.EditorTooltipProvider)" resolve="setTooltipProvider" />
+              <node concept="2ShNRf" id="3oSjOhxPSil" role="37wK5m">
+                <node concept="1pGfFk" id="3oSjOhxQrWO" role="2ShVmc">
+                  <property role="373rjd" value="true" />
+                  <ref role="37wK5l" node="6mNCvHSfBy0" resolve="MyTooltipProvider" />
+                  <node concept="3clFbT" id="3oSjOhxQyHc" role="37wK5m">
+                    <property role="3clFbU" value="true" />
+                  </node>
+                </node>
+              </node>
             </node>
           </node>
-        </node>
-        <node concept="2AHcQZ" id="1WhnszxOMev" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
       <node concept="2tJIrI" id="1I2O4_rhaEe" role="jymVt" />
@@ -13414,6 +13391,7 @@
     <node concept="312cEu" id="42hl10VHay5" role="jymVt">
       <property role="TrG5h" value="MainEditorComponent" />
       <property role="2bfB8j" value="true" />
+      <property role="1EXbeo" value="true" />
       <node concept="312cEg" id="DusLnP8fZc" role="jymVt">
         <property role="34CwA1" value="false" />
         <property role="eg7rD" value="false" />
@@ -13453,21 +13431,6 @@
           <ref role="3uigEE" to="dxuu:~JScrollPane" resolve="JScrollPane" />
         </node>
       </node>
-      <node concept="312cEg" id="3oSjOhxR$Ou" role="jymVt">
-        <property role="TrG5h" value="myTooltipProvider" />
-        <node concept="3Tm6S6" id="3oSjOhxR$Ov" role="1B3o_S" />
-        <node concept="3uibUv" id="3oSjOhxR$Ow" role="1tU5fm">
-          <ref role="3uigEE" to="exr9:~EditorTooltipProvider" resolve="EditorTooltipProvider" />
-        </node>
-        <node concept="2ShNRf" id="3oSjOhxR$Ox" role="33vP2m">
-          <node concept="1pGfFk" id="3oSjOhxR$Oy" role="2ShVmc">
-            <property role="373rjd" value="true" />
-            <ref role="37wK5l" node="6mNCvHSfBy0" resolve="DiffEditor.MyTooltipProvider" />
-            <node concept="3clFbT" id="3oSjOhxR$Oz" role="37wK5m" />
-          </node>
-        </node>
-      </node>
-      <node concept="2tJIrI" id="3oSjOhxR$KD" role="jymVt" />
       <node concept="2tJIrI" id="4CGE8md9hY1" role="jymVt" />
       <node concept="3clFbW" id="6dXf3jYXvmm" role="jymVt">
         <property role="DiZV1" value="false" />
@@ -13579,6 +13542,18 @@
               </node>
             </node>
           </node>
+          <node concept="3clFbF" id="IMgjkcxG8i" role="3cqZAp">
+            <node concept="1rXfSq" id="IMgjkcxXsW" role="3clFbG">
+              <ref role="37wK5l" to="exr9:~EditorComponent.setTooltipProvider(jetbrains.mps.nodeEditor.EditorTooltipProvider)" resolve="setTooltipProvider" />
+              <node concept="2ShNRf" id="3oSjOhxR$Ox" role="37wK5m">
+                <node concept="1pGfFk" id="3oSjOhxR$Oy" role="2ShVmc">
+                  <property role="373rjd" value="true" />
+                  <ref role="37wK5l" node="6mNCvHSfBy0" resolve="MyTooltipProvider" />
+                  <node concept="3clFbT" id="3oSjOhxR$Oz" role="37wK5m" />
+                </node>
+              </node>
+            </node>
+          </node>
         </node>
         <node concept="3Tm1VV" id="6dXf3jYXvmC" role="1B3o_S" />
       </node>
@@ -13586,27 +13561,6 @@
         <ref role="3uigEE" to="exr9:~EditorComponent" resolve="EditorComponent" />
       </node>
       <node concept="3Tm1VV" id="42hl10VHayA" role="1B3o_S" />
-      <node concept="2tJIrI" id="1WhnszxPS21" role="jymVt" />
-      <node concept="3clFb_" id="1WhnszxQ15U" role="jymVt">
-        <property role="TrG5h" value="getTooltipProvider" />
-        <node concept="3Tmbuc" id="1WhnszxQ15V" role="1B3o_S" />
-        <node concept="2AHcQZ" id="1WhnszxQ15X" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
-        </node>
-        <node concept="3uibUv" id="1WhnszxQ15Y" role="3clF45">
-          <ref role="3uigEE" to="exr9:~EditorTooltipProvider" resolve="EditorTooltipProvider" />
-        </node>
-        <node concept="3clFbS" id="1WhnszxQ15Z" role="3clF47">
-          <node concept="3clFbF" id="1WhnszxQvaw" role="3cqZAp">
-            <node concept="37vLTw" id="1WhnszxQvav" role="3clFbG">
-              <ref role="3cqZAo" node="3oSjOhxR$Ou" resolve="myTooltipProvider" />
-            </node>
-          </node>
-        </node>
-        <node concept="2AHcQZ" id="1WhnszxQ160" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-        </node>
-      </node>
       <node concept="2tJIrI" id="4CGE8md84Dc" role="jymVt" />
       <node concept="3clFb_" id="6zJKhveZsoL" role="jymVt">
         <property role="TrG5h" value="createScrollPane" />

@@ -383,22 +383,16 @@ public class DiffEditor implements EditorMessageOwner {
     return (inspector ? myInspectorComponent.getScrollPane() : myMainEditorComponent.getScrollPane());
   }
 
-  public class MyInspectorEditorComponent extends InspectorEditorComponent implements LayersHolder {
+  public final class MyInspectorEditorComponent extends InspectorEditorComponent implements LayersHolder {
 
     @Nullable
     private List<DiffEditorChangeLayer> myLayers;
     private JScrollPane myScrollPane;
-    private final EditorTooltipProvider myTooltipProvider = new MyTooltipProvider(true);
 
 
     public MyInspectorEditorComponent(@NotNull SRepository repository, boolean rightToLeft) {
       super(repository, new EditorConfigurationBuilder().rightToLeft(rightToLeft).showSelectionLine(false).showLightBulb(false).build());
-    }
-
-    @Nullable
-    @Override
-    protected EditorTooltipProvider getTooltipProvider() {
-      return myTooltipProvider;
+      setTooltipProvider(new MyTooltipProvider(true));
     }
 
     @Override
@@ -434,26 +428,19 @@ public class DiffEditor implements EditorMessageOwner {
     }
   }
 
-  public class MainEditorComponent extends EditorComponent implements LayersHolder {
+  public final class MainEditorComponent extends EditorComponent implements LayersHolder {
     private DiffFileEditor myDiffFileEditor;
     private CommandContextWithVF myCommandContext;
     @Nullable
     private List<DiffEditorChangeLayer> myLayers;
     private JScrollPane myScrollPane;
-    private EditorTooltipProvider myTooltipProvider = new MyTooltipProvider(false);
-
 
     public MainEditorComponent(SRepository repository, boolean rightToLeft) {
       super(repository, new EditorConfigurationBuilder().showErrorsGutter(true).showSelectionLine(false).rightToLeft(rightToLeft).showLightBulb(false).build());
       myDiffFileEditor = new DiffFileEditor(this);
       setDefaultPopupGroupId(((String) BHReflection.invoke0(SNodeOperations.getNode("r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)", "426251916200108583"), CONCEPTS.ActionGroupDeclaration$VO, SMethodIdV2.create("getGeneratedClassFQName", 1213877494288L, 0x8643ee8702577820L))));
       getMessagesGutter().setMessageThicknessProvider((SimpleEditorMessage m) -> false);
-    }
-
-    @Nullable
-    @Override
-    protected EditorTooltipProvider getTooltipProvider() {
-      return myTooltipProvider;
+      setTooltipProvider(new MyTooltipProvider(false));
     }
 
     @Override
