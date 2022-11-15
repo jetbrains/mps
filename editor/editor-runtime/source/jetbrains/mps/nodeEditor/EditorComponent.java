@@ -360,7 +360,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   private BracesHighlighter myBracesHighlighter = new BracesHighlighter(this);
   private HighlightUsagesSupport myHighlightUsagesSupport;
   private final CompletionHelper myCompletionHelper = new CompletionHelper(this);
-  private boolean myPopupMenuEnabled;
   private boolean myIsInFiguresHierarchy = false;
 
   private KeymapHandler<KeyEvent> myKeymapHandler = new AWTKeymapHandler();
@@ -387,7 +386,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     myRepository = repository;
     myEditorConfiguration = configuration;
     myReadOnly = myEditorConfiguration.readOnly;
-    myPopupMenuEnabled = configuration.hasContextMenu;
     myCommandContext = createCommandContext();
     myUpdater = createUpdater(myCommandContext);
     myHighlightManager = new NodeHighlightManager(this);
@@ -1422,13 +1420,13 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   }
 
   private void processPopupMenu(final MouseEvent e) {
+    if (!myEditorConfiguration.hasContextMenu) {
+      return;
+    }
     getModelAccess().runReadAction(() -> showPopupMenu(e));
   }
 
   private void showPopupMenu(MouseEvent e) {
-    if (!myPopupMenuEnabled) {
-      return;
-    }
     ActionGroup baseGroup = ActionUtils.getDefaultGroup(myDefaultPopupGroupId);
     if (baseGroup == null) {
       return;
@@ -2837,14 +2835,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   @Override
   public boolean isReadOnly() {
     return myReadOnly;
-  }
-
-  /**
-   * @deprecated use {@link EditorConfigurationBuilder#hasContextMenu(boolean)} instead.
-   */
-  @Deprecated
-  public void setPopupMenuEnabled(boolean popupMenuEnabled) {
-    myPopupMenuEnabled = popupMenuEnabled;
   }
 
   @Override
