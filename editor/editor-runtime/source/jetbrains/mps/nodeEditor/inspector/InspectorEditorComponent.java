@@ -18,10 +18,12 @@ package jetbrains.mps.nodeEditor.inspector;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.EditorContext;
 import jetbrains.mps.nodeEditor.InspectorEditorContext;
+import jetbrains.mps.nodeEditor.Memento;
 import jetbrains.mps.nodeEditor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.nodeEditor.configuration.EditorConfiguration;
 import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
+import jetbrains.mps.openapi.editor.EditorComponentState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -67,5 +69,11 @@ public class InspectorEditorComponent extends EditorComponent {
       return null;
     }
     return editedNode.getModel() != null ? editedNode.getContainingRoot() : null;
+  }
+
+  @NotNull
+  @Override
+  public EditorComponentState captureState() {
+    return new Memento(this, true);
   }
 }

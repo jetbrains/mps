@@ -137,4 +137,33 @@ public interface EditorComponent {
   IMessageHandler getMessageHandler();
 
   boolean isAutomaticSubstitutionEnabled();
+
+  /**
+   * @return Description of this {@code EditorComponent} state one can use to {@link #restoreState(EditorComponentState) restore} later.
+   * @since 2022.3
+   */
+  @NotNull
+  default EditorComponentState captureState() {
+    // default implementation provided for transition period, remove once all subclasses get a chance to implement (mbeddr?)
+    return new EditorComponentState() {
+      @Override
+      public void clearSessionState() {
+        // no-op
+      }
+
+      @Override
+      public boolean hasErrors() {
+        return false;
+      }
+    };
+  }
+
+  /**
+   * Bring this {@code EditorComponent} to the state {@link #captureState() captured} earlier
+   * @since 2022.3
+   */
+  default void restoreState(@NotNull EditorComponentState state) {
+    // no-op, default impl just for smooth transition
+  }
+
 }

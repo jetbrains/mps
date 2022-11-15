@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -82,8 +82,16 @@ public interface EditorContext {
 
   boolean isEditable();
 
+  /**
+   * @deprecated use {@link EditorComponent#captureState()}
+   */
+  @Deprecated(since = "2022.3", forRemoval = true)
   EditorComponentState getEditorComponentState();
 
+  /**
+   * @deprecated use {@link EditorComponent#restoreState(EditorComponentState)}
+   */
+  @Deprecated(since = "2022.3", forRemoval = true)
   void restoreEditorComponentState(EditorComponentState state);
 
   void runWithContextCell(EditorCell contextCell, Runnable r);

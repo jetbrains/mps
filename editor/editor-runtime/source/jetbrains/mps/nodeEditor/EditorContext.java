@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package jetbrains.mps.nodeEditor;
 import com.intellij.openapi.wm.IdeFocusManager;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.assist.DisabledContextAssistantManager;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 import jetbrains.mps.nodeEditor.configuration.EditorConfiguration;
@@ -170,19 +171,15 @@ public class EditorContext implements jetbrains.mps.openapi.editor.EditorContext
 
   @Override
   public EditorComponentState getEditorComponentState() {
-    return new Memento(this, false);
+    Logger.getLogger(getClass()).warnDeprecatedUse("This functionality has been replaced with respective methods in EditorComponent");
+    return myNodeEditorComponent.captureState();
   }
 
   @Override
   public void restoreEditorComponentState(EditorComponentState state) {
-    if (state instanceof Memento) {
-      Memento memento = (Memento) state;
-      myRepository.getModelAccess().runReadAction(() -> {
-        myNodeEditorComponent.relayout();
-        memento.restore(myNodeEditorComponent);
-      });
-
-      myNodeEditorComponent.getUpdater().flushModelEvents();
+    Logger.getLogger(getClass()).warnDeprecatedUse("This functionality has been replaced with respective methods in EditorComponent");
+    if (state != null) {
+      myNodeEditorComponent.restoreState(state);
     }
   }
 

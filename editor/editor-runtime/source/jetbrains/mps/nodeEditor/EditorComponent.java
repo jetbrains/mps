@@ -106,6 +106,7 @@ import jetbrains.mps.nodeEditor.updater.UpdaterImpl;
 import jetbrains.mps.openapi.editor.ActionHandler;
 import jetbrains.mps.openapi.editor.DeletionApprover;
 import jetbrains.mps.openapi.editor.EditorComponentSettings;
+import jetbrains.mps.openapi.editor.EditorComponentState;
 import jetbrains.mps.openapi.editor.assist.ContextAssistant;
 import jetbrains.mps.openapi.editor.assist.ContextAssistantManager;
 import jetbrains.mps.openapi.editor.cells.CellAction;
@@ -1631,6 +1632,25 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   @Override
   public boolean isDisposed() {
     return myDisposed;
+  }
+
+  @NotNull
+  @Override
+  public EditorComponentState captureState() {
+    return new Memento(this, false);
+  }
+
+  @Override
+  public void restoreState(@NotNull EditorComponentState state) {
+    if (state instanceof Memento) {
+      Memento memento = (Memento) state;
+      myRepository.getModelAccess().runReadAction(() -> {
+        relayout();
+        memento.restore(this);
+      });
+
+      getUpdater().flushModelEvents();
+    }
   }
 
   public void assertModelNotDisposed() {
