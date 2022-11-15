@@ -53,4 +53,12 @@ public class InspectorEditorComponent extends EditorComponent {
     }
     return editedNode.getModel() != null ? editedNode.getContainingRoot() : null;
   }
+
+  /**
+   * listens target component for selection changes and reveal selected node in this inspector
+   * @param target
+   */
+  public void installRevealNodeListener(EditorComponent target) {
+    target.getSelectionManager().addSelectionListener(new RevealNodeListener(this));
+  }
 }
