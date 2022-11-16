@@ -298,11 +298,12 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
 
     @Override
     public Object getData(@NotNull String dataId) {
+      // FIXME what's behind this logic? What does getParent() == null mean?
       if (getParent() == null) {
-        if (dataId.equals(PlatformDataKeys.FILE_EDITOR.getName())) {
+        if (PlatformDataKeys.FILE_EDITOR.is(dataId)) {
           return MPSFileNodeEditor.this;
         }
-        if (dataId.equals(PlatformDataKeys.PROJECT.getName())) {
+        if (PlatformDataKeys.PROJECT.is(dataId)) {
           return myProject.getProject();
         }
       } else {
@@ -312,6 +313,14 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
             return data;
           }
         }
+      }
+      if (PlatformDataKeys.VIRTUAL_FILE.is(dataId)) {
+        // MPS-15532, seems that IDEA doesn't expect VF of an editor to change. For MPS tabbed editor,
+        //  can't use VF based on SNode of active tab (aspect). Using something like
+        //  NodeEditorComponent.getVirtualFile() or CommandContextWithVF.getContextVirtualFile() would lead to
+        //  changing VF for an editor (as it used to be with EC.getData(), removed by otherwise erroneous
+        //  commit 1fa2b4a8 (original MPS-15532 fix))
+        return MPSFileNodeEditor.this.getFile();
       }
       return null;
     }
