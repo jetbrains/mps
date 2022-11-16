@@ -22,7 +22,6 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.IdeActions;
-import com.intellij.openapi.actionSystem.LangDataKeys;
 import com.intellij.openapi.actionSystem.Separator;
 import com.intellij.openapi.actionSystem.impl.ActionButton;
 import com.intellij.openapi.editor.Document;
@@ -111,7 +110,7 @@ public class TabbedEditor extends BaseNodeEditor {
   private final TabChangedListener myEventPublisher;
 
   public TabbedEditor(SNodeReference baseNode, Set<RelationDescriptor> possibleTabs, @NotNull Project mpsProject) {
-    super(mpsProject, baseNode);
+    super(mpsProject);
     myBaseNode = baseNode;
     myPossibleTabs = possibleTabs;
 
@@ -284,10 +283,6 @@ public class TabbedEditor extends BaseNodeEditor {
     if (MPSEditorDataKeys.EDITOR_CREATE_GROUP.is(dataId)) {
       return getCreateGroup();
     }
-    if (LangDataKeys.VIRTUAL_FILE.is(dataId)) {
-      return getVirtualFile();
-    }
-
     return null;
   }
 
