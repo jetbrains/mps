@@ -46,11 +46,14 @@ public class MPSFileNodeEditorProvider implements FileEditorProvider, DumbAware 
     if (!(file instanceof MPSNodeVirtualFile)) {
       throw new IllegalArgumentException("expecting only our node virtual files");
     }
-    return new MPSFileNodeEditor(mpsProject, (MPSNodeVirtualFile) file);
+    final MPSFileNodeEditor mpsFileNodeEditor = new MPSFileNodeEditor(mpsProject, (MPSNodeVirtualFile) file);
+    EditorTrackService.getInstance(project).editorCreated(mpsFileNodeEditor);
+    return mpsFileNodeEditor;
   }
 
   @Override
   public void disposeEditor(@NotNull FileEditor editor) {
+    // I'd love to notify EditorTrackService, but there's no project to get its instance, and I don't want any hacks to get one
     Disposer.dispose(editor);
   }
 

@@ -65,7 +65,6 @@ import java.util.Set;
 public abstract class BaseNodeEditor implements Editor {
   private static final Logger LOG = Logger.getLogger(BaseNodeEditor.class);
 
-  private final DeployListener myDeployListener = new MyDeployListener();
   private NodeEditorComponent myEditorComponent;
   private final JComponent myComponent = new EditorPanel();
   private final JComponent myEditorPanel = new JPanel();
@@ -83,10 +82,10 @@ public abstract class BaseNodeEditor implements Editor {
     myEditorPanel.setBorder(new EmptyBorder(JBUI.emptyInsets()));
     myComponent.add(myEditorPanel, BorderLayout.CENTER);
     showEditor();
-    mpsProject.getComponent(ClassLoaderManager.class).addListener(myDeployListener);
   }
 
   public BaseNodeEditor(@NotNull Project mpsProject, @Nullable SNodeReference nodeRef) {
+    // FIXME nodeRef has to be NotNull!!!
     this(mpsProject, NodeVirtualFileSystem.getInstance().getFileFor(mpsProject.getRepository(), nodeRef));
   }
 
@@ -95,6 +94,7 @@ public abstract class BaseNodeEditor implements Editor {
    */
   @Deprecated
   public BaseNodeEditor(@NotNull Project mpsProject) {
+    // FIXME likely, cast to MPSNodeVirtualFile, otherwise NPE in NodeVirtualFileSystem.getFileFor
     this(mpsProject, (SNodeReference) null);
   }
 
@@ -155,7 +155,6 @@ public abstract class BaseNodeEditor implements Editor {
 
   @Override
   public void dispose() {
-    myProject.getComponent(ClassLoaderManager.class).removeListener(myDeployListener);
     setEditorComponent(null);
   }
 
@@ -166,7 +165,7 @@ public abstract class BaseNodeEditor implements Editor {
 
   protected abstract Object getData(@NonNls String dataId);
 
-  private class EditorPanel extends JPanel implements DataProvider {
+  private final class EditorPanel extends JPanel implements DataProvider {
     private EditorPanel() {
       setLayout(new BorderLayout());
       setBorder(new EmptyBorder(JBUI.emptyInsets()));
@@ -463,26 +462,6 @@ public abstract class BaseNodeEditor implements Editor {
       BaseEditorState that = (BaseEditorState) o;
       return Objects.equals(that.memento, memento) && Objects.equals(that.inspectorMemento, inspectorMemento) &&
              that.isEditorFocused == isEditorFocused && that.isInspectorFocused == isInspectorFocused;
-    }
-  }
-
-  private final class MyDeployListener implements DeployListener {
-    @Override
-    public void onLoaded(@NotNull Set<ReloadableModule> loadedModules, @NotNull ProgressMonitor monitor) {
-      myProject.getModelAccess().runReadInEDT(() -> {
-        MPSNodeVirtualFile virtualFile = getVirtualFile();
-        if (virtualFile != null) {
-          final com.intellij.openapi.project.Project project = ((MPSProject) myProject).getProject();
-          // FIXME first, it has to me WorkbenchModelAccess not to start read/write for disposed project
-          //       second, I don't think DeployListener is the right way to address editor title update, too low-level, imo.
-          //       Besides, DeployListener per editor is an overkill anyway.
-          if (project.isDisposed()) {
-            return;
-          }
-          FileEditorManagerEx manager = FileEditorManagerEx.getInstanceEx(project);
-          manager.updateFilePresentation(virtualFile);
-        }
-      });
     }
   }
 

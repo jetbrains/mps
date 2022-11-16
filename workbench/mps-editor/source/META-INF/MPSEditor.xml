@@ -85,6 +85,7 @@
     <applicationService serviceImplementation="jetbrains.mps.nodeEditor.EditorSettings"/>
     <applicationService serviceImplementation="jetbrains.mps.intentions.IntentionsManager"/>
     <projectService serviceImplementation="jetbrains.mps.nodeEditor.hintsSettings.ConceptEditorHintSettingsComponent" />
+    <projectService serviceImplementation="jetbrains.mps.ide.editor.EditorTrackService" />
 
     <fileEditorProvider implementation="jetbrains.mps.ide.editor.MPSFileNodeEditorProvider"/>
 
