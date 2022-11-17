@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -757,4 +757,46 @@ public class NodeEditorActions {
     }
   }
 
+  public static class FindTextInEditor extends AbstractCellAction {
+    public FindTextInEditor() {
+      super(false);
+    }
+
+    @Override
+    public void execute(EditorContext context) {
+      ((jetbrains.mps.nodeEditor.EditorComponent) context.getEditorComponent()).getSearchPanel().activate();
+    }
+  }
+
+  public static class FindNextTextInEditor extends AbstractCellAction {
+    public FindNextTextInEditor() {
+      super(false);
+    }
+
+    @Override
+    public boolean canExecute(EditorContext context) {
+      return ((jetbrains.mps.nodeEditor.EditorComponent) context.getEditorComponent()).getSearchPanel().isVisible();
+    }
+
+    @Override
+    public void execute(EditorContext context) {
+      ((jetbrains.mps.nodeEditor.EditorComponent) context.getEditorComponent()).getSearchPanel().goToNext();
+    }
+  }
+
+  public static final class FindPrevTextInEditor extends AbstractCellAction {
+    public FindPrevTextInEditor() {
+      super(false);
+    }
+
+    @Override
+    public boolean canExecute(EditorContext context) {
+      return ((jetbrains.mps.nodeEditor.EditorComponent) context.getEditorComponent()).getSearchPanel().isVisible();
+    }
+
+    @Override
+    public void execute(EditorContext context) {
+      ((jetbrains.mps.nodeEditor.EditorComponent) context.getEditorComponent()).getSearchPanel().goToPrevious();
+    }
+  }
 }

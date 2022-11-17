@@ -393,6 +393,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     myReadOnly = myEditorConfiguration.readOnly;
     myCommandContext = createCommandContext();
     myUpdater = createUpdater(myCommandContext);
+    // XXX NodeHighlightManager accesses myUpdater, not quite good for an incomplete this object (still in cons here)
     myHighlightManager = new NodeHighlightManager(this);
 
 
@@ -904,7 +905,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   public int getScrollPaneOffset() {
     // XXX likely need to move whole method into EditorComponentDecoration
     int offset = 0;
-    if (mySearchPanel != null && mySearchPanel.isVisible()) {
+    if (isSearchPanelVisible()) {
       offset += mySearchPanel.getPreferredSize().height;
     }
     offset += myContainer.getMessagePanelHeight();
@@ -1341,6 +1342,8 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
 
   @NotNull
   public SearchPanel getSearchPanel() {
+    // FIXME seems that need to introduce an abstraction of SearchPanel, like EditorInspector, with no ties to Swing or
+    //  [mps-ui].AbstractSearchPanel
     assert hasUI();
     if (mySearchPanel == null) {
       mySearchPanel = new SearchPanel(this);
@@ -1882,7 +1885,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     }
     revalidate();
     myLeftHighlighter.relayout(true);
-    if (mySearchPanel != null && mySearchPanel.isVisible()) {
+    if (isSearchPanelVisible()) {
       mySearchPanel.search(false);
     }
   }
@@ -2817,7 +2820,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       return null;
     }
 
-    boolean isInSearchPanel = mySearchPanel != null && mySearchPanel.isVisible() && mySearchPanel.isTextFieldFocused();
+    boolean isInSearchPanel = isSearchPanelVisible() && mySearchPanel.isTextFieldFocused();
     boolean isInSubstituteChooser = myNodeSubstituteChooser.isVisible();
 
     //MPSDK
@@ -2884,7 +2887,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     if (dataId.equals(PlatformDataKeys.COPY_PROVIDER.getName())) {
       return new MyCopyProvider();
     }
-    if (dataId.equals(PlatformDataKeys.PASTE_PROVIDER.getName()) && (isFocusOwner() || mySearchPanel == null || !mySearchPanel.isVisible())) {
+    if (dataId.equals(PlatformDataKeys.PASTE_PROVIDER.getName()) && (isFocusOwner() || !isSearchPanelVisible())) {
       return new MyPasteProvider();
     }
 
