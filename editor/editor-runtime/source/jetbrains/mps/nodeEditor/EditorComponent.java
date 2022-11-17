@@ -2016,57 +2016,12 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   public void rebuildEditorContent() {
     assertInEDT();
 
-    ViewportState wps = new ViewportState();
+    // XXX is myScrollPane == null possible here? perhaps, for !hasUI() case?
+    ViewportState vps = new ViewportState(myScrollPane == null ? null : myScrollPane.getViewport());
     getUpdater().update();
     relayout();
-    wps.restore();
-  }
-
-  private class ViewportState {
-
-    private Dimension viewSize;
-    private Rectangle viewRect;
-    private double xCenter;
-    private double yCenter;
-
-    ViewportState() {
-      if (myScrollPane != null) {
-        JViewport viewport = myScrollPane.getViewport();
-        viewRect = viewport.getViewRect();
-        viewSize = viewport.getViewSize();
-        yCenter = (viewRect.y + viewRect.height / 2.0) / viewSize.height;
-        // center horizontally only if already displaced
-        xCenter = viewRect.x == 0 ? 0 : (viewRect.x + viewRect.width / 2.0) / viewSize.width;
-      }
-    }
-
-    void restore() {
-      if (viewSize != null) {
-        Dimension newSize = getPreferredSize();
-        if (!newSize.equals(viewSize)) {
-          JViewport viewport = myScrollPane.getViewport();
-
-          int newYCenter = (int) (yCenter * newSize.height);
-          int yValue = newYCenter - viewRect.height / 2;
-          if (yValue < 0) {
-            yValue = 0;
-          }
-
-          int xValue;
-          if (xCenter == 0) {
-            xValue = viewport.getViewPosition().x;
-          } else {
-            int newXCenter = (int) (xCenter * newSize.width);
-            xValue = newXCenter - viewRect.width / 2;
-            if (xValue < 0) {
-              xValue = 0;
-            }
-          }
-
-          viewport.setViewPosition(new Point(xValue, yValue));
-        }
-      }
-    }
+    // JFTR, this (EC) is Viewport's View component
+    vps.restore(this.getPreferredSize());
   }
 
   private void refreshHighlighter() {
