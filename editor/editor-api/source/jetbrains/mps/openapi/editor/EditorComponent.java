@@ -33,7 +33,8 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.List;
 
 /**
- * evgeny, 11/17/11
+ * This is a platform-agnostic UI (Swing, SWT) component to host node editing.
+ * Note, clients generally shall interact with {@code EditorComponent} and {@link Editor} through {@link EditorContext}
  */
 public interface EditorComponent {
   SNode getEditedNode();

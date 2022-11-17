@@ -181,7 +181,6 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.GridLayout;
 import java.awt.KeyboardFocusManager;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -212,8 +211,22 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
+/*
+ * There are a lot of casts of {@code openapi.EditorComponent} to {@code nodeEditor.EditorComponent} implementation.
+ * To get rid of odd "hierarchy inversion" with {@link #getExternalComponent()}, there are two possible approaches:
+ *  1. Keep this EC extends JComponent + openapi.EC, extract 'EditorComponentDecorator' == myContainer
+ *     ECD to aggregate EC (as it's now)
+ *  2. Make this nodeEditor.EC == myContainer (panel with scrollpane) + openapi.EC,
+ *     extract 'AbstractEditorComponent', JComponent+Scrollable. Aggregate AEC.
+ *  3. This class not JComponent, aggregate UI. Makes it right as removes confusion of EC being Swing element (it's rather a
+ *     'controller' for UI element
+ *  Keep in mind headless EC story and a need to keep DataProvider separate (preferably, not in
+ *  [editor-runtime] but in [mps-editor]
+ *  Both (1) and (2) have drawback tha
+ */
 public abstract class EditorComponent extends JComponent implements Scrollable, DataProvider,
                                                                     jetbrains.mps.openapi.editor.EditorComponent {
 
@@ -310,7 +323,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   //TODO: make @NotNull after separating UI-less logic into AbstractEditorComponent class
   private MyScrollBar myVerticalScrollBar;
   //TODO: make @NotNull after separating UI-less logic into AbstractEditorComponent class
-  private JComponent myContainer;
+  private EditorComponentDecoration myContainer;
   private final EditorMessagesPanel myMessageHandler;
 
   protected EditorCell myRootCell;
@@ -338,7 +351,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   private LeftEditorHighlighter myLeftHighlighter;
   @Nullable
   protected SNode myNode;
-  private boolean myNoVirtualFile;
 
   @Nullable
   protected SNodeReference myNodePointer;
@@ -353,14 +365,11 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   @SuppressWarnings({"UnusedDeclaration"})
   private AutoValidator myAutoValidator;
   private SearchPanel mySearchPanel = null;
-  private JPanel myUpperPanel = null;
-  private Map<String, JComponent> myUpperComponents = new HashMap<>();
   @SuppressWarnings({"UnusedDeclaration"})
   private ReferenceUnderliner myReferenceUnderliner = new ReferenceUnderliner();
   private BracesHighlighter myBracesHighlighter = new BracesHighlighter(this);
   private HighlightUsagesSupport myHighlightUsagesSupport;
   private final CompletionHelper myCompletionHelper = new CompletionHelper(this);
-  private boolean myIsInFiguresHierarchy = false;
 
   private KeymapHandler<KeyEvent> myKeymapHandler = new AWTKeymapHandler();
   private ActionHandler myActionHandler = new ActionHandlerImpl(this);
@@ -408,36 +417,37 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     }
 
     setFocusCycleRoot(true);
+    final Supplier<Boolean> myIsInFiguresHierarchy = () -> myContainer != null && myContainer.isInFiguresHierarchy();
     setFocusTraversalPolicy(new FocusTraversalPolicy() {
       @Override
       public Component getComponentAfter(Container aContainer, Component aComponent) {
-        if (myIsInFiguresHierarchy) {
+        if (myIsInFiguresHierarchy.get()) {
           executeComponentAction(CellActionType.NEXT);
         }
-        return myIsInFiguresHierarchy ? aContainer : null;
+        return myIsInFiguresHierarchy.get() ? aContainer : null;
       }
 
       @Override
       public Component getComponentBefore(Container aContainer, Component aComponent) {
-        if (myIsInFiguresHierarchy) {
+        if (myIsInFiguresHierarchy.get()) {
           executeComponentAction(CellActionType.PREV);
         }
-        return myIsInFiguresHierarchy ? aContainer : null;
+        return myIsInFiguresHierarchy.get() ? aContainer : null;
       }
 
       @Override
       public Component getFirstComponent(Container aContainer) {
-        return myIsInFiguresHierarchy ? aContainer : null;
+        return myIsInFiguresHierarchy.get() ? aContainer : null;
       }
 
       @Override
       public Component getLastComponent(Container aContainer) {
-        return myIsInFiguresHierarchy ? aContainer : null;
+        return myIsInFiguresHierarchy.get() ? aContainer : null;
       }
 
       @Override
       public Component getDefaultComponent(Container aContainer) {
-        return myIsInFiguresHierarchy ? aContainer : null;
+        return myIsInFiguresHierarchy.get() ? aContainer : null;
       }
     });
     setFocusTraversalKeysEnabled(false);
@@ -689,21 +699,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       }
     });
 
-    myContainer = new JPanel() {
-      @Override
-      public void addNotify() {
-        super.addNotify();
-        myIsInFiguresHierarchy = true;
-      }
-
-      @Override
-      public void removeNotify() {
-        myIsInFiguresHierarchy = false;
-        super.removeNotify();
-      }
-    };
-    myContainer.setMinimumSize(new Dimension(0, 0));
-    myContainer.setLayout(new BorderLayout());
+    myContainer = new EditorComponentDecoration();
 
     myMessageHandler.init();
     JPanel contentAndMessages = new JPanel(new BorderLayout());
@@ -1362,42 +1358,52 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     return mySearchPanel != null && mySearchPanel.isVisible();
   }
 
+  /**
+   * @deprecated please justify exposure of internal UI element structure.
+   *             seems to be poorly designed API with single intended usecase (SearchPanel), therefore not actively employed.
+   *             there are no uses in MPS or mbeddr, remove once 2022.3 is out.
+   */
+  @Deprecated(since = "2022.3", forRemoval = true)
   public JPanel getUpperPanel() {
     assert hasUI();
-    if (myUpperPanel == null) {
-      myUpperPanel = new JPanel();
-      myUpperPanel.setLayout(new GridLayout(0, 1));
-      myContainer.add(myUpperPanel, BorderLayout.NORTH);
-    }
-    return myUpperPanel;
+    return myContainer.getUpperPanel();
   }
 
+  /**
+   * @deprecated see {@link #getUpperPanel()} for explanation
+   */
+  @Deprecated(since = "2022.3", forRemoval = true)
   public void addUpperComponent(JComponent component) {
-    getUpperPanel().add(component);
+    addUpperComponent(component, null);
   }
 
+  /**
+   * @deprecated see {@link #getUpperPanel()} for explanation
+   *             moreover, due to defect in {@link #removeUpperComponent(JComponent)}, there was a memory leak
+   *             that never cleared components added with id.
+   */
+  @Deprecated(since = "2022.3", forRemoval = true)
   public void addUpperComponent(JComponent component, String id) {
-    getUpperPanel().add(component);
-    myUpperComponents.put(id, component);
+    assert hasUI();
+    myContainer.addTopPanel(component, id);
   }
 
+  /**
+   * @deprecated see {@link #getUpperPanel()} for explanation
+   */
+  @Deprecated(since = "2022.3", forRemoval = true)
   public void removeUpperComponent(JComponent component) {
-    if (myUpperPanel == null) {
-      return;
-    }
-    getUpperPanel().remove(component);
-    for (String key : new HashSet<>(myUpperComponents.keySet())) {
-      if (component == myUpperComponents) {
-        myUpperComponents.remove(key);
-      }
-    }
+    assert hasUI();
+    myContainer.removeTopPanel(component);
   }
 
+  /**
+   * @deprecated see {@link #getUpperPanel()} for explanation
+   */
+  @Deprecated(since = "2022.3", forRemoval = true)
   public void removeUpperComponent(String id) {
-    JComponent component = myUpperComponents.get(id);
-    if (component != null) {
-      removeUpperComponent(component);
-    }
+    assert hasUI();
+    myContainer.removeTopPanel(id);
   }
 
   protected Set<SimpleEditorMessage> getMessages() {

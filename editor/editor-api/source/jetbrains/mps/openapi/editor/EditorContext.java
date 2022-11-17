@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.List;
 
 /**
- * evgeny, 11/17/11
+ * Interface for client interaction with node editor.
  */
 public interface EditorContext {
 
