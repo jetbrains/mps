@@ -908,7 +908,9 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     if (isSearchPanelVisible()) {
       offset += mySearchPanel.getPreferredSize().height;
     }
-    offset += myContainer.getMessagePanelHeight();
+    if (hasUI()) {
+      offset += myContainer.getMessagePanelHeight();
+    }
     return offset;
   }
 
@@ -1184,7 +1186,9 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     }
     myEditorComponentSettings.reset();
     clearModelDisposedTrace();
-    myContainer.getMessagePanel().clearAndHide();
+    if (hasUI()) {
+      myContainer.getMessagePanel().clearAndHide();
+    }
 
     getModelAccess().runReadAction(() -> {
       if (node != null) {
