@@ -4349,7 +4349,7 @@
                     <ref role="3cqZAo" node="42hl10VHa2h" resolve="editor" />
                   </node>
                   <node concept="liA8E" id="4CkRKoaV4ba" role="2OqNvi">
-                    <ref role="37wK5l" to="z60i:~Component.getBackground()" resolve="getBackground" />
+                    <ref role="37wK5l" to="exr9:~EditorComponent.getBackground()" resolve="getBackground" />
                   </node>
                 </node>
                 <node concept="37vLTw" id="4CkRKoaVdJW" role="37wK5m">
@@ -14736,6 +14736,43 @@
                                   </node>
                                 </node>
                               </node>
+                              <node concept="3SKdUt" id="4aBS9C_5B8Z" role="3cqZAp">
+                                <node concept="1PaTwC" id="4aBS9C_5B90" role="1aUNEU">
+                                  <node concept="3oM_SD" id="4aBS9C_5DjD" role="1PaTwD">
+                                    <property role="3oM_SC" value="XXX" />
+                                  </node>
+                                  <node concept="3oM_SD" id="4aBS9C_5En$" role="1PaTwD">
+                                    <property role="3oM_SC" value="likely," />
+                                  </node>
+                                  <node concept="3oM_SD" id="4aBS9C_5GxC" role="1PaTwD">
+                                    <property role="3oM_SC" value="can" />
+                                  </node>
+                                  <node concept="3oM_SD" id="4aBS9C_5GxG" role="1PaTwD">
+                                    <property role="3oM_SC" value="use" />
+                                  </node>
+                                  <node concept="3oM_SD" id="4aBS9C_5IBi" role="1PaTwD">
+                                    <property role="3oM_SC" value="getViewport().getView().getBounds()" />
+                                  </node>
+                                  <node concept="3oM_SD" id="4aBS9C_6acx" role="1PaTwD">
+                                    <property role="3oM_SC" value="to" />
+                                  </node>
+                                  <node concept="3oM_SD" id="4aBS9C_6acC" role="1PaTwD">
+                                    <property role="3oM_SC" value="replace" />
+                                  </node>
+                                  <node concept="3oM_SD" id="4aBS9C_6acK" role="1PaTwD">
+                                    <property role="3oM_SC" value="width" />
+                                  </node>
+                                  <node concept="3oM_SD" id="4aBS9C_6dWm" role="1PaTwD">
+                                    <property role="3oM_SC" value="and" />
+                                  </node>
+                                  <node concept="3oM_SD" id="4aBS9C_6dWw" role="1PaTwD">
+                                    <property role="3oM_SC" value="height" />
+                                  </node>
+                                  <node concept="3oM_SD" id="4aBS9C_6mP$" role="1PaTwD">
+                                    <property role="3oM_SC" value="access?" />
+                                  </node>
+                                </node>
+                              </node>
                               <node concept="3cpWs8" id="3KoCsI2B$WT" role="3cqZAp">
                                 <node concept="3cpWsn" id="3KoCsI2B$WU" role="3cpWs9">
                                   <property role="TrG5h" value="newX" />
@@ -14764,7 +14801,7 @@
                                       </node>
                                       <node concept="2OqwBi" id="3KoCsI2B$X5" role="3uHU7B">
                                         <node concept="liA8E" id="3KoCsI2B$X6" role="2OqNvi">
-                                          <ref role="37wK5l" to="dxuu:~JComponent.getWidth()" resolve="getWidth" />
+                                          <ref role="37wK5l" to="exr9:~EditorComponent.getWidth()" resolve="getWidth" />
                                         </node>
                                         <node concept="37vLTw" id="3KoCsI2B$X7" role="2Oq$k0">
                                           <ref role="3cqZAo" node="3ZTTsGEoqHw" resolve="otherEditor" />
@@ -14809,7 +14846,7 @@
                                           <ref role="3cqZAo" node="3ZTTsGEoqHw" resolve="otherEditor" />
                                         </node>
                                         <node concept="liA8E" id="3KoCsI2B$Xo" role="2OqNvi">
-                                          <ref role="37wK5l" to="dxuu:~JComponent.getHeight()" resolve="getHeight" />
+                                          <ref role="37wK5l" to="exr9:~EditorComponent.getHeight()" resolve="getHeight" />
                                         </node>
                                       </node>
                                     </node>
@@ -27794,7 +27831,7 @@
                                         <ref role="3cqZAo" node="4CGE8md8VPb" resolve="editor" />
                                       </node>
                                       <node concept="liA8E" id="4CGE8md8VPr" role="2OqNvi">
-                                        <ref role="37wK5l" to="dxuu:~JComponent.getWidth()" resolve="getWidth" />
+                                        <ref role="37wK5l" to="exr9:~EditorComponent.getWidth()" resolve="getWidth" />
                                       </node>
                                     </node>
                                     <node concept="2OqwBi" id="4CGE8md8VPs" role="37wK5m">
@@ -27802,7 +27839,7 @@
                                         <ref role="3cqZAo" node="4CGE8md8VPb" resolve="editor" />
                                       </node>
                                       <node concept="liA8E" id="4CGE8md8VPu" role="2OqNvi">
-                                        <ref role="37wK5l" to="z60i:~Component.getBackground()" resolve="getBackground" />
+                                        <ref role="37wK5l" to="exr9:~EditorComponent.getBackground()" resolve="getBackground" />
                                       </node>
                                     </node>
                                   </node>
@@ -27933,7 +27970,7 @@
                                         <ref role="3cqZAo" node="4CGE8md9YD9" resolve="editor" />
                                       </node>
                                       <node concept="liA8E" id="4CGE8md9YDp" role="2OqNvi">
-                                        <ref role="37wK5l" to="dxuu:~JComponent.getWidth()" resolve="getWidth" />
+                                        <ref role="37wK5l" to="exr9:~EditorComponent.getWidth()" resolve="getWidth" />
                                       </node>
                                     </node>
                                     <node concept="2OqwBi" id="4CGE8md9YDq" role="37wK5m">
@@ -27941,7 +27978,7 @@
                                         <ref role="3cqZAo" node="4CGE8md9YD9" resolve="editor" />
                                       </node>
                                       <node concept="liA8E" id="4CGE8md9YDs" role="2OqNvi">
-                                        <ref role="37wK5l" to="z60i:~Component.getBackground()" resolve="getBackground" />
+                                        <ref role="37wK5l" to="exr9:~EditorComponent.getBackground()" resolve="getBackground" />
                                       </node>
                                     </node>
                                   </node>
@@ -28020,7 +28057,7 @@
                                         <ref role="3cqZAo" node="4CGE8md9YD9" resolve="editor" />
                                       </node>
                                       <node concept="liA8E" id="4CGE8md9YDQ" role="2OqNvi">
-                                        <ref role="37wK5l" to="dxuu:~JComponent.getWidth()" resolve="getWidth" />
+                                        <ref role="37wK5l" to="exr9:~EditorComponent.getWidth()" resolve="getWidth" />
                                       </node>
                                     </node>
                                     <node concept="2OqwBi" id="4CGE8md9YDR" role="37wK5m">
@@ -28028,7 +28065,7 @@
                                         <ref role="3cqZAo" node="4CGE8md9YD9" resolve="editor" />
                                       </node>
                                       <node concept="liA8E" id="4CGE8md9YDT" role="2OqNvi">
-                                        <ref role="37wK5l" to="z60i:~Component.getBackground()" resolve="getBackground" />
+                                        <ref role="37wK5l" to="exr9:~EditorComponent.getBackground()" resolve="getBackground" />
                                       </node>
                                     </node>
                                   </node>
@@ -28349,7 +28386,7 @@
                             <ref role="37wK5l" to="px75:~AbstractHighlighterPainter.getEditorComponent()" resolve="getEditorComponent" />
                           </node>
                           <node concept="liA8E" id="5eAF82hkZ$p" role="2OqNvi">
-                            <ref role="37wK5l" to="z60i:~Component.getBackground()" resolve="getBackground" />
+                            <ref role="37wK5l" to="exr9:~EditorComponent.getBackground()" resolve="getBackground" />
                           </node>
                         </node>
                       </node>

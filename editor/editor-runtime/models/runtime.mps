@@ -594,7 +594,7 @@
       <property role="34CwA1" value="false" />
       <property role="eg7rD" value="false" />
       <property role="TrG5h" value="myCaretState" />
-      <property role="3TUv4t" value="false" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="WuSeI5njw2" role="1B3o_S" />
       <node concept="3uibUv" id="WuSeI5nnGK" role="1tU5fm">
         <ref role="3uigEE" to="3ahc:~CaretState" resolve="CaretState" />
@@ -722,7 +722,7 @@
                     <ref role="37wK5l" to="g51k:~EditorCell_Basic.getEditor()" resolve="getEditor" />
                   </node>
                   <node concept="liA8E" id="7dwhomQPrBk" role="2OqNvi">
-                    <ref role="37wK5l" to="z60i:~Component.hasFocus()" resolve="hasFocus" />
+                    <ref role="37wK5l" to="exr9:~EditorComponent.isFocusOwner()" resolve="isFocusOwner" />
                   </node>
                 </node>
                 <node concept="1Wc70l" id="7dwhomQPrBl" role="3uHU7B">

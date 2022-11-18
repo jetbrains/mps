@@ -4946,7 +4946,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="3oes4j$xtLl" role="2OqNvi">
-                  <ref role="37wK5l" to="z60i:~Component.isFocusOwner()" resolve="isFocusOwner" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.isFocusOwner()" resolve="isFocusOwner" />
                 </node>
               </node>
               <node concept="3fqX7Q" id="53rxPrsP0JB" role="3uHU7w">
@@ -5047,7 +5047,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="5cNd8zsQMow" role="2OqNvi">
-                  <ref role="37wK5l" to="z60i:~Component.isFocusOwner()" resolve="isFocusOwner" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.isFocusOwner()" resolve="isFocusOwner" />
                 </node>
               </node>
               <node concept="3fqX7Q" id="5cNd8zsQMox" role="3uHU7w">
@@ -5148,7 +5148,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="5cNd8zsQLGa" role="2OqNvi">
-                  <ref role="37wK5l" to="z60i:~Component.isFocusOwner()" resolve="isFocusOwner" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.isFocusOwner()" resolve="isFocusOwner" />
                 </node>
               </node>
               <node concept="3fqX7Q" id="5cNd8zsQLGb" role="3uHU7w">
@@ -5249,7 +5249,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="5cNd8zsQKPm" role="2OqNvi">
-                  <ref role="37wK5l" to="z60i:~Component.isFocusOwner()" resolve="isFocusOwner" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.isFocusOwner()" resolve="isFocusOwner" />
                 </node>
               </node>
               <node concept="3fqX7Q" id="5cNd8zsQKPn" role="3uHU7w">
@@ -5669,7 +5669,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="6hkUHZdn5KA" role="2OqNvi">
-                <ref role="37wK5l" to="z60i:~Component.isFocusOwner()" resolve="isFocusOwner" />
+                <ref role="37wK5l" to="exr9:~EditorComponent.isFocusOwner()" resolve="isFocusOwner" />
               </node>
             </node>
           </node>
@@ -12970,7 +12970,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="3emwrjqk68B" role="2OqNvi">
-                  <ref role="37wK5l" to="z60i:~Component.isFocusOwner()" resolve="isFocusOwner" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.isFocusOwner()" resolve="isFocusOwner" />
                 </node>
               </node>
               <node concept="3y3z36" id="3emwrjqk68C" role="3uHU7w">

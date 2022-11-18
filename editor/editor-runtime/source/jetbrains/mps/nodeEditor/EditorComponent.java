@@ -1065,6 +1065,51 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     return rv.get();
   }
 
+  @Override
+  public boolean isFocusOwner() {
+    // intentional override of JComponent method to facilitate split of EC and JComponent
+    // Once split, review usages and decide whether need to expose the method in API
+    return super.isFocusOwner();
+  }
+
+  /**
+   * @deprecated use {@link #isFocusOwner()}
+   */
+  @Deprecated(forRemoval = true)
+  @Override
+  public boolean hasFocus() {
+    // intentional override of JComponent method to facilitate split of EC and JComponent
+    // keep this method for couple of releases (once EC no longer extends JComponent), then remove
+    return super.hasFocus();
+  }
+
+  @Override
+  public Color getBackground() {
+    // intentional override of JComponent method to facilitate split of EC and JComponent
+    // review uses and decide whether the method has to be part of this class API, EC API or cease to exist
+    return super.getBackground();
+  }
+
+  /**
+   * @deprecated don't assume {@code EditorComponent} is {@link JComponent}
+   */
+  @Deprecated(forRemoval = true)
+  @Override
+  public int getWidth() {
+    // intentional override of JComponent method to facilitate split of EC and JComponent
+    return super.getWidth();
+  }
+
+  /**
+   * @deprecated don't assume {@code EditorComponent} is {@link JComponent}
+   */
+  @Deprecated(forRemoval = true)
+  @Override
+  public int getHeight() {
+    // intentional override of JComponent method to facilitate split of EC and JComponent
+    return super.getHeight();
+  }
+
   private jetbrains.mps.openapi.editor.cells.EditorCell getCellAtPoint(Point point) {
     final Reference<jetbrains.mps.openapi.editor.cells.EditorCell> rv = new Reference<>(null);
     getModelAccess().runReadAction(new CancellableReadAction() {

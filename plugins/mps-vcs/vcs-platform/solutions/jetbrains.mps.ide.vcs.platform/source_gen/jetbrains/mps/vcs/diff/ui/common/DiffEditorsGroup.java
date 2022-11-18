@@ -133,6 +133,7 @@ public class DiffEditorsGroup {
           Point position = thisEditor.getViewport().getViewPosition();
           if (otherCell != null) {
             Rectangle viewRect = otherEditor.getViewport().getViewRect();
+            // XXX likely, can use getViewport().getView().getBounds() to replace width and height access?
             int newX = Math.min((int) position.getX(), otherEditor.getWidth() - viewRect.width);
             int newY = Math.min(newRelativePos + otherCell.getY(), otherEditor.getHeight() - viewRect.height);
             otherEditor.getViewport().setViewPosition(new Point(newX, newY));

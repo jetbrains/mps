@@ -5340,52 +5340,7 @@
       </node>
       <node concept="17QB3L" id="lIjSl53CVc" role="3clF45" />
       <node concept="3Tm1VV" id="lIjSl53fqP" role="1B3o_S" />
-      <node concept="3clFbS" id="lIjSl53fqQ" role="3clF47">
-        <node concept="1X3_iC" id="4dFfXeBWRln" role="lGtFl">
-          <property role="3V$3am" value="statement" />
-          <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
-          <node concept="3clFbJ" id="CRlyEVvpQr" role="8Wnug">
-            <node concept="3clFbS" id="CRlyEVvpQs" role="3clFbx">
-              <node concept="3cpWs6" id="CRlyEVvpQJ" role="3cqZAp">
-                <node concept="1rXfSq" id="4hiugqysnWD" role="3cqZAk">
-                  <ref role="37wK5l" node="CRlyEVvpM0" resolve="shortenName" />
-                  <node concept="37vLTw" id="4ifB3TiTT7W" role="37wK5m">
-                    <ref role="3cqZAo" node="4ifB3TiTy1v" resolve="value" />
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="1Wc70l" id="CRlyEVvpQD" role="3clFbw">
-              <node concept="3clFbC" id="CRlyEVvpQ_" role="3uHU7B">
-                <node concept="37vLTw" id="30Bv66KR2Bb" role="3uHU7B">
-                  <ref role="3cqZAo" node="30Bv66KQYfS" resolve="myAspectId" />
-                </node>
-                <node concept="10M0yZ" id="CRlyEVvpQC" role="3uHU7w">
-                  <ref role="1PxDUh" to="8voc:~LineAnnotationAspect" resolve="LineAnnotationAspect" />
-                  <ref role="3cqZAo" to="8voc:~LineAnnotationAspect.AUTHOR" resolve="AUTHOR" />
-                </node>
-              </node>
-              <node concept="2YIFZM" id="CRlyEVvpQH" role="3uHU7w">
-                <ref role="37wK5l" node="CRlyEVv4SA" resolve="isSet" />
-                <ref role="1Pybhc" node="CRlyEVv4S_" resolve="ViewAction" />
-                <node concept="10M0yZ" id="CRlyEVvpQI" role="37wK5m">
-                  <ref role="1PxDUh" node="CRlyEVv4S_" resolve="ViewAction" />
-                  <ref role="3cqZAo" node="CRlyEVv4SN" resolve="SHORTEN_NAMES" />
-                </node>
-              </node>
-            </node>
-            <node concept="9aQIb" id="CRlyEVvpQV" role="9aQIa">
-              <node concept="3clFbS" id="CRlyEVvpQW" role="9aQI4">
-                <node concept="3cpWs6" id="CRlyEVvpQX" role="3cqZAp">
-                  <node concept="37vLTw" id="4ifB3TiTTsk" role="3cqZAk">
-                    <ref role="3cqZAo" node="4ifB3TiTy1v" resolve="value" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
+      <node concept="3clFbS" id="lIjSl53fqQ" role="3clF47" />
     </node>
     <node concept="2tJIrI" id="7OXN7mb$eU6" role="jymVt" />
     <node concept="3clFb_" id="lIjSl53CXw" role="jymVt">
@@ -19363,7 +19318,7 @@
             <node concept="3cpWs6" id="2vSFuLt2HhV" role="3cqZAp">
               <node concept="2OqwBi" id="2vSFuLt2RFy" role="3cqZAk">
                 <node concept="liA8E" id="2vSFuLt2RFz" role="2OqNvi">
-                  <ref role="37wK5l" to="z60i:~Component.getBackground()" resolve="getBackground" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getBackground()" resolve="getBackground" />
                 </node>
                 <node concept="37vLTw" id="2vSFuLt2RF$" role="2Oq$k0">
                   <ref role="3cqZAo" node="1jG3ZCapnvz" resolve="myEditorComponent" />
@@ -19486,7 +19441,7 @@
             </node>
             <node concept="2OqwBi" id="4RIoMIZEKVv" role="3K4GZi">
               <node concept="liA8E" id="4RIoMIZEKVw" role="2OqNvi">
-                <ref role="37wK5l" to="z60i:~Component.getBackground()" resolve="getBackground" />
+                <ref role="37wK5l" to="exr9:~EditorComponent.getBackground()" resolve="getBackground" />
               </node>
               <node concept="37vLTw" id="4RIoMIZEKVx" role="2Oq$k0">
                 <ref role="3cqZAo" node="1jG3ZCapnvz" resolve="myEditorComponent" />

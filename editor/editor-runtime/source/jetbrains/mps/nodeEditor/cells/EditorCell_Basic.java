@@ -762,7 +762,7 @@ public abstract class EditorCell_Basic implements EditorCell, Entry<jetbrains.mp
   public void paintSelection(Graphics g, Color c, boolean drawBorder, ParentSettings parentSettings) {
     g.setColor(c);
     g.fillRect(getX(), getY() + getTopInset(), getWidth(), getHeight() - getTopInset() - getBottomInset());
-    if (getEditor().hasFocus() && drawBorder) {
+    if (getEditor().isFocusOwner() && drawBorder) {
       g.setColor(c.darker());
       g.drawRect(getX(), getY() + getTopInset(), getWidth(), getHeight());
     }

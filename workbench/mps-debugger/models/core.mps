@@ -14,7 +14,6 @@
     <import index="exr9" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor(MPS.Editor/)" />
     <import index="g51k" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor.cells(MPS.Editor/)" />
     <import index="cj4x" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor(MPS.Editor/)" />
-    <import index="dxuu" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing(JDK/)" />
     <import index="rlg8" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor.highlighter(MPS.Editor/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
@@ -3693,7 +3692,7 @@
                     <ref role="3cqZAo" node="7jEVj$vY0Cq" resolve="editorComponent" />
                   </node>
                   <node concept="liA8E" id="7jEVj$vY0CP" role="2OqNvi">
-                    <ref role="37wK5l" to="dxuu:~JComponent.getWidth()" resolve="getWidth" />
+                    <ref role="37wK5l" to="exr9:~EditorComponent.getWidth()" resolve="getWidth" />
                   </node>
                 </node>
                 <node concept="37vLTw" id="2BHiRxeom6K" role="3uHU7w">
