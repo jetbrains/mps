@@ -177,9 +177,14 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
       if (message instanceof EditorMessage) {
         ((EditorMessage) message).doNavigate(myEditorComponent);
       } else {
-        // (markY - y) / markHeight = (realY - start) / height
-        int realY = message.getStart(myEditorComponent) + (mark.getY() - y) * message.getHeight(myEditorComponent) / mark.getHeight();
-        EditorCell editorCell = myEditorComponent.findCellWeak(1, realY + 1);
+        // I assume y comes within scrollable area, where some space is occupied by decrement button,
+        // and area with messages starts right after the button.
+        // Perhaps, the ratio constant shall be part of GutterMark?
+        int scrollableY = (int) Math.round((y - getMessagesAreaShift()) / scrollBar2ScrollableRatio());
+        // I don't expect any negative value here, provided we found the mark, but there's some range tolerated for
+        // discovery in getGutterMarksAt(int), max() is for extra safety here.
+        // +1 is legacy, I suppose it's to deal with rounding and the EditorCell_Collection trick in calculateHeight()
+        EditorCell editorCell = myEditorComponent.findCellWeak(1, Math.max(0, scrollableY + 1));
         if (editorCell != null) {
           myEditorComponent.changeSelection(editorCell);
         }
@@ -324,19 +329,26 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
   }
 
   private int getMessagesAreaShift() {
-    return Math.max(0, getDecrementButtonHeight() - scrollbar.getBounds().y);
+    // XXX why not (getDecrementButtonHeight() + scrollBar.Y) if we try to find first position *after* decrement button?
+    return Math.max(0, getDecrementButtonHeight() - scrollbar.getY());
   }
 
   private int getMessagesAreaHeight() {
-    return scrollbar.getHeight() - getIncrementButtonHeight() - Math.max(getDecrementButtonHeight(), scrollbar.getBounds().y);
+    return scrollbar.getHeight() - getIncrementButtonHeight() - Math.max(getDecrementButtonHeight(), scrollbar.getY());
   }
 
   private int calculateY(SimpleEditorMessage message, double areaRatio) {
     return getMessagesAreaShift() + (int) (message.getStart(myEditorComponent) * areaRatio);
   }
 
+  // to translate Y position inside Scrollable to Y position in scroll bar.
+  // 1/value translates Y in scroll bar to Y in Scrollable
+  private double scrollBar2ScrollableRatio() {
+    return ((double) getMessagesAreaHeight()) / myScrollable.getHeight();
+  }
+
   private Rectangle calculateMessageBounds(SimpleEditorMessage message, Rectangle rect) {
-    final double areaRatio = ((double) getMessagesAreaHeight()) / myScrollable.getHeight();
+    final double areaRatio = scrollBar2ScrollableRatio();
     int x = myRightToLeft ? -2 : 4;
     int w = General.InspectionsOK.getIconWidth() - 1;
     // FIXME I don't like approach with finction to tell horizontal mark from vertical
