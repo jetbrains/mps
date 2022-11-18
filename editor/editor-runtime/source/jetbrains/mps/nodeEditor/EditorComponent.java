@@ -3077,7 +3077,11 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   @NotNull
   @Override
   public IMessageHandler getMessageHandler() {
-    return myContainer.getMessagePanel();
+    if (hasUI()) {
+      return myContainer.getMessagePanel();
+    }
+    // XXX perhaps, shall split message handling from UI component to handle messages?
+    return IMessageHandler.NULL_HANDLER;
   }
 
   private static class MyBaseAction extends BaseAction implements DumbAware {
