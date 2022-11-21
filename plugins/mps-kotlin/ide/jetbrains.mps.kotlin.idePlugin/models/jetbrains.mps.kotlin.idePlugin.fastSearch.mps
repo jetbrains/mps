@@ -5657,6 +5657,39 @@
                 <node concept="10Oyi0" id="2Aaqzls38sZ" role="1tU5fm" />
               </node>
               <node concept="3clFbS" id="2Aaqzls38t0" role="3clF47">
+                <node concept="3SKdUt" id="zqSFHNzeum" role="3cqZAp">
+                  <node concept="1PaTwC" id="zqSFHNzeun" role="1aUNEU">
+                    <node concept="3oM_SD" id="zqSFHNzhm4" role="1PaTwD">
+                      <property role="3oM_SC" value="We" />
+                    </node>
+                    <node concept="3oM_SD" id="zqSFHNzhme" role="1PaTwD">
+                      <property role="3oM_SC" value="may" />
+                    </node>
+                    <node concept="3oM_SD" id="zqSFHNzhmh" role="1PaTwD">
+                      <property role="3oM_SC" value="not" />
+                    </node>
+                    <node concept="3oM_SD" id="zqSFHNzhml" role="1PaTwD">
+                      <property role="3oM_SC" value="always" />
+                    </node>
+                    <node concept="3oM_SD" id="zqSFHNzhmq" role="1PaTwD">
+                      <property role="3oM_SC" value="have" />
+                    </node>
+                    <node concept="3oM_SD" id="zqSFHNzhmC" role="1PaTwD">
+                      <property role="3oM_SC" value="it" />
+                    </node>
+                    <node concept="3oM_SD" id="zqSFHNzhmJ" role="1PaTwD">
+                      <property role="3oM_SC" value="though" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbF" id="zqSFHNyL7S" role="3cqZAp">
+                  <node concept="1rXfSq" id="zqSFHNyL7Q" role="3clFbG">
+                    <ref role="37wK5l" node="1u8LXP7R1ei" resolve="putConcepts" />
+                    <node concept="35c_gC" id="zqSFHNyU7P" role="37wK5m">
+                      <ref role="35c_gD" to="hcm8:2yYXHtl6Jks" resolve="TypeConstraint" />
+                    </node>
+                  </node>
+                </node>
                 <node concept="3cpWs6" id="2Aaqzls3FR8" role="3cqZAp">
                   <node concept="37vLTw" id="7qDCdpGyos3" role="3cqZAk">
                     <ref role="3cqZAo" node="7qDCdpGwlWl" resolve="KT_TYPE_INDEXER" />
