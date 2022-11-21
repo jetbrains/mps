@@ -52,6 +52,7 @@
     <import index="hyam" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt.event(JDK/)" />
     <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
     <import index="pexp" ref="r:97d6b60a-b381-42e8-9ea4-402ec93eaf11(jetbrains.mps.ide.refactoring.plugin)" />
+    <import index="emwx" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.lang.model(JDK/)" />
   </imports>
   <registry>
     <language id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin">
@@ -184,7 +185,9 @@
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
-      <concept id="1068580123137" name="jetbrains.mps.baseLanguage.structure.BooleanConstant" flags="nn" index="3clFbT" />
+      <concept id="1068580123137" name="jetbrains.mps.baseLanguage.structure.BooleanConstant" flags="nn" index="3clFbT">
+        <property id="1068580123138" name="value" index="3clFbU" />
+      </concept>
       <concept id="1068580123140" name="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" flags="ig" index="3clFbW" />
       <concept id="1068580320020" name="jetbrains.mps.baseLanguage.structure.IntegerConstant" flags="nn" index="3cmrfG">
         <property id="1068580320021" name="value" index="3cmrfH" />
@@ -2051,7 +2054,9 @@
         <node concept="3clFbF" id="4N51ibjGJsu" role="3cqZAp">
           <node concept="1rXfSq" id="4N51ibjGJss" role="3clFbG">
             <ref role="37wK5l" to="jkm4:~DialogWrapper.setResizable(boolean)" resolve="setResizable" />
-            <node concept="3clFbT" id="4N51ibjGJEK" role="37wK5m" />
+            <node concept="3clFbT" id="4N51ibjGJEK" role="37wK5m">
+              <property role="3clFbU" value="true" />
+            </node>
           </node>
         </node>
       </node>
@@ -2099,86 +2104,10 @@
             </node>
           </node>
         </node>
-        <node concept="3SKdUt" id="2sW0iTYsjZS" role="3cqZAp">
-          <node concept="1PaTwC" id="2sW0iTYsjZT" role="1aUNEU">
-            <node concept="3oM_SD" id="2sW0iTYslfC" role="1PaTwD">
-              <property role="3oM_SC" value="don't" />
-            </node>
-            <node concept="3oM_SD" id="2sW0iTYslfE" role="1PaTwD">
-              <property role="3oM_SC" value="want" />
-            </node>
-            <node concept="3oM_SD" id="2sW0iTYslfH" role="1PaTwD">
-              <property role="3oM_SC" value="to" />
-            </node>
-            <node concept="3oM_SD" id="2sW0iTYslE$" role="1PaTwD">
-              <property role="3oM_SC" value="force" />
-            </node>
-            <node concept="3oM_SD" id="2sW0iTYslED" role="1PaTwD">
-              <property role="3oM_SC" value="'java" />
-            </node>
-            <node concept="3oM_SD" id="2sW0iTYslEJ" role="1PaTwD">
-              <property role="3oM_SC" value="package'" />
-            </node>
-            <node concept="3oM_SD" id="2sW0iTYslEQ" role="1PaTwD">
-              <property role="3oM_SC" value="semantics" />
-            </node>
-            <node concept="3oM_SD" id="2sW0iTYslEY" role="1PaTwD">
-              <property role="3oM_SC" value="on" />
-            </node>
-            <node concept="3oM_SD" id="2sW0iTYslF7" role="1PaTwD">
-              <property role="3oM_SC" value="module" />
-            </node>
-            <node concept="3oM_SD" id="2sW0iTYslFh" role="1PaTwD">
-              <property role="3oM_SC" value="name" />
-            </node>
-          </node>
-        </node>
-        <node concept="3SKdUt" id="2sW0iTYsmTW" role="3cqZAp">
-          <node concept="1PaTwC" id="2sW0iTYsmTX" role="1aUNEU">
-            <node concept="3oM_SD" id="2sW0iTYsmVN" role="1PaTwD">
-              <property role="3oM_SC" value="but" />
-            </node>
-            <node concept="3oM_SD" id="2sW0iTYsnFs" role="1PaTwD">
-              <property role="3oM_SC" value="demand" />
-            </node>
-            <node concept="3oM_SD" id="2sW0iTYsnFJ" role="1PaTwD">
-              <property role="3oM_SC" value="reasonable" />
-            </node>
-            <node concept="3oM_SD" id="2sW0iTYsnH3" role="1PaTwD">
-              <property role="3oM_SC" value="first" />
-            </node>
-            <node concept="3oM_SD" id="2sW0iTYsnHo" role="1PaTwD">
-              <property role="3oM_SC" value="and" />
-            </node>
-            <node concept="3oM_SD" id="2sW0iTYsnHY" role="1PaTwD">
-              <property role="3oM_SC" value="last" />
-            </node>
-            <node concept="3oM_SD" id="2sW0iTYsnI_" role="1PaTwD">
-              <property role="3oM_SC" value="character" />
-            </node>
-            <node concept="3oM_SD" id="2sW0iTYsnIX" role="1PaTwD">
-              <property role="3oM_SC" value="at" />
-            </node>
-            <node concept="3oM_SD" id="2sW0iTYsnJ6" role="1PaTwD">
-              <property role="3oM_SC" value="least" />
-            </node>
-            <node concept="3oM_SD" id="2sW0iTYsnJg" role="1PaTwD">
-              <property role="3oM_SC" value="(prevent" />
-            </node>
-            <node concept="3oM_SD" id="2sW0iTYsnJF" role="1PaTwD">
-              <property role="3oM_SC" value="names" />
-            </node>
-            <node concept="3oM_SD" id="2sW0iTYsnKn" role="1PaTwD">
-              <property role="3oM_SC" value="like" />
-            </node>
-            <node concept="3oM_SD" id="2sW0iTYsnKO" role="1PaTwD">
-              <property role="3oM_SC" value="'.')" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="2sW0iTYrZ3a" role="3cqZAp">
-          <node concept="3clFbS" id="2sW0iTYrZ3c" role="3clFbx">
-            <node concept="3cpWs6" id="2sW0iTYs3CL" role="3cqZAp">
+        <node concept="3clFbH" id="3NRWN5GHMBZ" role="3cqZAp" />
+        <node concept="3clFbJ" id="7$5DhTHXCBV" role="3cqZAp">
+          <node concept="3clFbS" id="7$5DhTHXCBW" role="3clFbx">
+            <node concept="3cpWs6" id="7$5DhTHXEHg" role="3cqZAp">
               <node concept="2OqwBi" id="2sW0iTYs7e0" role="3cqZAk">
                 <node concept="Xl_RD" id="2sW0iTYs5Fb" role="2Oq$k0">
                   <property role="Xl_RC" value="Namespace can't start with '%c'" />
@@ -2199,7 +2128,7 @@
               </node>
             </node>
           </node>
-          <node concept="3fqX7Q" id="2sW0iTYs0Su" role="3clFbw">
+          <node concept="3fqX7Q" id="22Pxzk1xV_4" role="3clFbw">
             <node concept="2YIFZM" id="2sW0iTYrTD_" role="3fr31v">
               <ref role="37wK5l" to="wyt6:~Character.isJavaIdentifierStart(char)" resolve="isJavaIdentifierStart" />
               <ref role="1Pybhc" to="wyt6:~Character" resolve="Character" />
@@ -2278,6 +2207,26 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbH" id="3NRWN5GHQHk" role="3cqZAp" />
+        <node concept="3clFbJ" id="6pIW5O9ZDLV" role="3cqZAp">
+          <node concept="3clFbS" id="6pIW5O9ZDLW" role="3clFbx">
+            <node concept="3cpWs6" id="6pIW5O9ZDLX" role="3cqZAp">
+              <node concept="Xl_RD" id="6pIW5O9ZDLY" role="3cqZAk">
+                <property role="Xl_RC" value="Module namespace should be a valid Java package" />
+              </node>
+            </node>
+          </node>
+          <node concept="3fqX7Q" id="6pIW5O9ZDLZ" role="3clFbw">
+            <node concept="2YIFZM" id="51cMXQKR652" role="3fr31v">
+              <ref role="37wK5l" to="emwx:~SourceVersion.isName(java.lang.CharSequence)" resolve="isName" />
+              <ref role="1Pybhc" to="emwx:~SourceVersion" resolve="SourceVersion" />
+              <node concept="37vLTw" id="2BHiRxgmiYp" role="37wK5m">
+                <ref role="3cqZAo" node="2XQ6n0kZ7Ay" resolve="fqName" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="3NRWN5GHKpv" role="3cqZAp" />
         <node concept="3cpWs8" id="2XQ6n0kZih3" role="3cqZAp">
           <node concept="3cpWsn" id="2XQ6n0kZih6" role="3cpWs9">
             <property role="TrG5h" value="checkResult" />

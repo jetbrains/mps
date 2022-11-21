@@ -161,8 +161,8 @@ public class NewModuleUtil {
   }
 
   public static String check(@Nullable MPSProject mpsProject, String extension, final String namespace, String rootPath) {
-    if (MPSExtentions.DOT_LANGUAGE.equals(extension) && !(SourceVersion.isName(namespace))) {
-      return "Language namespace should be a valid Java package";
+    if (!(SourceVersion.isName(namespace))) {
+      return "Module namespace should be a valid Java package";
     }
     if (rootPath.length() == 0) {
       return "Path should be specified";

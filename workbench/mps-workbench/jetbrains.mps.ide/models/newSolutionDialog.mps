@@ -1553,30 +1553,16 @@
           <node concept="3clFbS" id="7$5DhTHXCBW" role="3clFbx">
             <node concept="3cpWs6" id="7$5DhTHXEHg" role="3cqZAp">
               <node concept="Xl_RD" id="7$5DhTHXEHf" role="3cqZAk">
-                <property role="Xl_RC" value="Language namespace should be a valid Java package" />
+                <property role="Xl_RC" value="Module namespace should be a valid Java package" />
               </node>
             </node>
           </node>
-          <node concept="1Wc70l" id="2cpuuPkgf6z" role="3clFbw">
-            <node concept="2OqwBi" id="3QPy7gt$74_" role="3uHU7B">
-              <node concept="10M0yZ" id="3QPy7gt$74o" role="2Oq$k0">
-                <ref role="1PxDUh" to="z1c3:~MPSExtentions" resolve="MPSExtentions" />
-                <ref role="3cqZAo" to="z1c3:~MPSExtentions.DOT_LANGUAGE" resolve="DOT_LANGUAGE" />
-              </node>
-              <node concept="liA8E" id="3QPy7gt$7fj" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
-                <node concept="37vLTw" id="2BHiRxgmeX9" role="37wK5m">
-                  <ref role="3cqZAo" node="3WcIkZau4TG" resolve="extension" />
-                </node>
-              </node>
-            </node>
-            <node concept="3fqX7Q" id="22Pxzk1xV_4" role="3uHU7w">
-              <node concept="2YIFZM" id="51cMXQKR652" role="3fr31v">
-                <ref role="37wK5l" to="emwx:~SourceVersion.isName(java.lang.CharSequence)" resolve="isName" />
-                <ref role="1Pybhc" to="emwx:~SourceVersion" resolve="SourceVersion" />
-                <node concept="37vLTw" id="2BHiRxgmiYp" role="37wK5m">
-                  <ref role="3cqZAo" node="3WcIkZau4TI" resolve="namespace" />
-                </node>
+          <node concept="3fqX7Q" id="22Pxzk1xV_4" role="3clFbw">
+            <node concept="2YIFZM" id="51cMXQKR652" role="3fr31v">
+              <ref role="37wK5l" to="emwx:~SourceVersion.isName(java.lang.CharSequence)" resolve="isName" />
+              <ref role="1Pybhc" to="emwx:~SourceVersion" resolve="SourceVersion" />
+              <node concept="37vLTw" id="2BHiRxgmiYp" role="37wK5m">
+                <ref role="3cqZAo" node="3WcIkZau4TI" resolve="namespace" />
               </node>
             </node>
           </node>

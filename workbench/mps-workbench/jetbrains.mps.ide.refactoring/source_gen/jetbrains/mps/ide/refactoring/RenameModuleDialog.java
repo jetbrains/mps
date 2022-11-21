@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import java.awt.HeadlessException;
 import jetbrains.mps.ide.IdeBundle;
 import org.jetbrains.annotations.Nullable;
+import javax.lang.model.SourceVersion;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.module.SModule;
 import java.util.function.Consumer;
@@ -35,7 +36,7 @@ public class RenameModuleDialog extends RenameDialog {
     myProject = project;
     updateCentralPanel();
     setTitle(IdeBundle.message("actions.module.rename.title"));
-    setResizable(false);
+    setResizable(true);
   }
 
   @Nullable
@@ -45,14 +46,18 @@ public class RenameModuleDialog extends RenameDialog {
     if (fqName.isBlank()) {
       return "Invalid namespace";
     }
-    // don't want to force 'java package' semantics on module name
-    // but demand reasonable first and last character at least (prevent names like '.')
+
     if (!(Character.isJavaIdentifierStart(fqName.charAt(0)))) {
       return String.format("Namespace can't start with '%c'", fqName.charAt(0));
     }
     if (!(Character.isJavaIdentifierPart(fqName.charAt(fqName.length() - 1)))) {
       return String.format("Namespace can't end with '%c'", fqName.charAt(fqName.length() - 1));
     }
+
+    if (!(SourceVersion.isName(fqName))) {
+      return "Module namespace should be a valid Java package";
+    }
+
     final Wrappers._T<String> checkResult = new Wrappers._T<String>(null);
     myProject.getRepository().getModelAccess().runReadAction(() -> {
       for (final SModule module : myProject.getRepository().getModules()) {
