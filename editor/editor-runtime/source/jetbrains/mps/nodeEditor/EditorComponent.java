@@ -72,7 +72,6 @@ import jetbrains.mps.nodeEditor.assist.DefaultContextAssistantManager;
 import jetbrains.mps.nodeEditor.assist.DisabledContextAssistantManager;
 import jetbrains.mps.nodeEditor.cellMenu.CompletionHelper;
 import jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser;
-import jetbrains.mps.nodeEditor.cells.APICellAdapter;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil.Finder;
 import jetbrains.mps.nodeEditor.cells.EditorCell;
@@ -166,7 +165,6 @@ import java.awt.Adjustable;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FocusTraversalPolicy;
 import java.awt.Font;
@@ -186,7 +184,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.im.InputMethodRequests;
 import java.util.ArrayList;
@@ -3136,98 +3133,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   @NotNull
   public EditorComponentFocusTracker getFocusTracker() {
     return myFocusTracker;
-  }
-
-  private static class ReferenceUnderliner {
-    private EditorCell myLastReferenceCell;
-    private final EditorComponent myEditorComponent;
-
-    private ReferenceUnderliner(EditorComponent editorComponent) {
-      myEditorComponent = editorComponent;
-      myEditorComponent.addKeyListener(new KeyAdapter() {
-        @Override
-        public void keyPressed(KeyEvent e) {
-          if (e.getKeyCode() == getKeyCode()) {
-            setControlOver();
-          }
-        }
-
-        @Override
-        public void keyReleased(KeyEvent e) {
-          if (e.getKeyCode() == getKeyCode()) {
-            clearControlOver();
-          }
-        }
-
-        private int getKeyCode() {
-          return com.intellij.openapi.util.SystemInfo.isMac ? KeyEvent.VK_META : KeyEvent.VK_CONTROL;
-        }
-      });
-      myEditorComponent.addMouseMotionListener(new MouseMotionListener() {
-        @Override
-        public void mouseDragged(MouseEvent e) {
-        }
-
-        @Override
-        public void mouseMoved(MouseEvent e) {
-          if (!myEditorComponent.isFocusOwner()) {
-            return;
-          }
-          if (myEditorComponent.isDisposed()) {
-            myLastReferenceCell = null;
-            return;
-          }
-
-          clearControlOver();
-          if (!(com.intellij.openapi.util.SystemInfo.isMac ? e.isMetaDown() : e.isControlDown())) {
-            myLastReferenceCell = null;
-            return;
-          }
-
-          final jetbrains.mps.openapi.editor.cells.EditorCell editorCell = myEditorComponent.getRootCell().findLeaf(e.getX(), e.getY());
-          if (editorCell == null) {
-            myLastReferenceCell = null;
-            return;
-          }
-          SNode snodeWRTReference = myEditorComponent.runRead(() -> myEditorComponent.isInvalid() ? null : APICellAdapter.getSNodeWRTReference(editorCell));
-          String url = editorCell.getStyle().get(StyleAttributes.URL);
-          if (editorCell.getSNode() == snodeWRTReference && url == null) {
-            myLastReferenceCell = null;
-            return;
-          }
-          myLastReferenceCell = (EditorCell) editorCell;
-
-          setControlOver();
-        }
-      });
-      myEditorComponent.addFocusListener(new FocusListener() {
-        @Override
-        public void focusGained(FocusEvent e) {
-        }
-
-        @Override
-        public void focusLost(FocusEvent e) {
-          clearControlOver();
-          myLastReferenceCell = null;
-        }
-      });
-    }
-
-    private void clearControlOver() {
-      if (myLastReferenceCell != null) {
-        myLastReferenceCell.getStyle().set(StyleAttributes.CONTROL_OVERED_REFERENCE, false);
-        myEditorComponent.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-        myEditorComponent.repaintExternalComponent();
-      }
-    }
-
-    private void setControlOver() {
-      if (myLastReferenceCell != null) {
-        myLastReferenceCell.getStyle().set(StyleAttributes.CONTROL_OVERED_REFERENCE, true);
-        myEditorComponent.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        myEditorComponent.repaintExternalComponent();
-      }
-    }
   }
 
   private class MyCutProvider implements CutProvider {
