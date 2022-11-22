@@ -33,7 +33,6 @@ import com.intellij.openapi.editor.ex.EditorSettingsExternalizable;
 import com.intellij.openapi.editor.ex.util.EditorUtil;
 import com.intellij.openapi.keymap.KeymapManager;
 import com.intellij.openapi.project.DumbAware;
-import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.popup.Balloon;
 import com.intellij.openapi.ui.popup.Balloon.Position;
 import com.intellij.openapi.vfs.VirtualFileManager;
@@ -48,6 +47,7 @@ import com.intellij.util.ui.UIUtil;
 import gnu.trove.THashSet;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.classloading.DeployListener;
+import jetbrains.mps.editor.EditorComponentTrackService;
 import jetbrains.mps.editor.intentions.IntentionMenuProducer;
 import jetbrains.mps.editor.runtime.HighlightUsagesSupport;
 import jetbrains.mps.editor.runtime.cells.ReadOnlyUtil;
@@ -85,7 +85,6 @@ import jetbrains.mps.nodeEditor.commands.CommandContextWrapper;
 import jetbrains.mps.nodeEditor.configuration.EditorConfiguration;
 import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
 import jetbrains.mps.nodeEditor.deletionApprover.DeletionApproverImpl;
-import jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener;
 import jetbrains.mps.nodeEditor.highlighter.EditorHighlighter;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
 import jetbrains.mps.nodeEditor.keymaps.AWTKeymapHandler;
@@ -836,16 +835,16 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     //       Check UIEditorComponent subclass uses. While UIEditorComponent doesn't send these notifications,
     //       InspectorEditorComponent it receives as argument does. Now, with EditorConfiguration.notifyCreateDispose,
     //       we fixed this issue, but generally it's better to keep this notification outside of EC.
+    //   Update: EditorComponentTrackService moves notification outside of [editor-runtime] to [mps-editor] (platform
+    //   integration code). Still, I feel this method should be in a dedicated subclass rather that in generic component.
     jetbrains.mps.project.Project project = ProjectHelper.getProject(myRepository);
     if (project == null) {
       return;
     }
-    Project ideaProject = ProjectHelper.toIdeaProject(project);
-    if (ideaProject == null) {
-      return;
+    final EditorComponentTrackService ecTracker = project.getComponent(EditorComponentTrackService.class);
+    if (ecTracker != null) {
+      ecTracker.editorComponentCreated(project, this);
     }
-    EditorComponentCreateListener listener = ideaProject.getMessageBus().syncPublisher(EditorComponentCreateListener.EDITOR_COMPONENT_CREATION);
-    listener.editorComponentCreated(EditorComponent.this);
   }
 
   protected void notifyDisposal() {
@@ -857,12 +856,10 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       LOG.error("Trying to notify disposal of EditorComponent related to disposed project. This may cause memory leaks.");
       return;
     }
-    Project ideaProject = ProjectHelper.toIdeaProject(project);
-    if (ideaProject == null) {
-      return;
+    final EditorComponentTrackService ecTracker = project.getComponent(EditorComponentTrackService.class);
+    if (ecTracker != null) {
+      ecTracker.editorComponentDisposed(project, this);
     }
-    EditorComponentCreateListener listener = ideaProject.getMessageBus().syncPublisher(EditorComponentCreateListener.EDITOR_COMPONENT_CREATION);
-    listener.editorComponentDisposed(this);
   }
 
   public boolean onEscape() {
