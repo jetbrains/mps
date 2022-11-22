@@ -4,6 +4,8 @@
 package jetbrains.mps.persistence.kotlin;
 
 import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.kotlin.stubs.common.KtFunctionNodeId;
+import jetbrains.mps.kotlin.stubs.common.KtFunctionNodeId.Factory;
 import jetbrains.mps.kotlin.stubs.commonStubs.KotlinCommonStubModelRootFactory;
 import jetbrains.mps.kotlin.stubs.common.KotlinJvmPackageModelId;
 import jetbrains.mps.kotlin.stubs.common.KotlinLanguage.ModelKind;
@@ -28,6 +30,9 @@ public class KotlinClassesPersistence implements CoreComponent {
     // Kotlin/JVM
     myFacade.setModelIdFactory(ModelKind.JVM.name, new KotlinJvmPackageModelId.Factory());
     myFacade.setModelRootFactory(ModelKind.JVM.rootName, new KotlinJvmStubModelRootFactory());
+
+    // Kotlin functions node ids
+    myFacade.setNodeIdFactory("ktfun", new Factory());
   }
 
   @Override
