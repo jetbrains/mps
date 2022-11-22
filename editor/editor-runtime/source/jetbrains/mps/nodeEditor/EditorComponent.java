@@ -353,8 +353,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   @SuppressWarnings({"UnusedDeclaration"})
   private AutoValidator myAutoValidator;
   private SearchPanel mySearchPanel = null;
-  @SuppressWarnings({"UnusedDeclaration"})
-  private ReferenceUnderliner myReferenceUnderliner = new ReferenceUnderliner();
   private BracesHighlighter myBracesHighlighter = new BracesHighlighter(this);
   private HighlightUsagesSupport myHighlightUsagesSupport;
   private final CompletionHelper myCompletionHelper = new CompletionHelper(this);
@@ -751,6 +749,8 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       myLeftHighlighter.selectionChanged();
       myLeftHighlighter.repaint();
     });
+    new ReferenceUnderliner(this);
+
     UISettings.setupEditorAntialiasing(this);
   }
 
@@ -3138,11 +3138,13 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     return myFocusTracker;
   }
 
-  private class ReferenceUnderliner {
+  private static class ReferenceUnderliner {
     private EditorCell myLastReferenceCell;
+    private final EditorComponent myEditorComponent;
 
-    private ReferenceUnderliner() {
-      addKeyListener(new KeyAdapter() {
+    private ReferenceUnderliner(EditorComponent editorComponent) {
+      myEditorComponent = editorComponent;
+      myEditorComponent.addKeyListener(new KeyAdapter() {
         @Override
         public void keyPressed(KeyEvent e) {
           if (e.getKeyCode() == getKeyCode()) {
@@ -3161,17 +3163,17 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
           return com.intellij.openapi.util.SystemInfo.isMac ? KeyEvent.VK_META : KeyEvent.VK_CONTROL;
         }
       });
-      addMouseMotionListener(new MouseMotionListener() {
+      myEditorComponent.addMouseMotionListener(new MouseMotionListener() {
         @Override
         public void mouseDragged(MouseEvent e) {
         }
 
         @Override
         public void mouseMoved(MouseEvent e) {
-          if (!myEditorContext.getNodeEditorComponent().isFocusOwner()) {
+          if (!myEditorComponent.isFocusOwner()) {
             return;
           }
-          if (isDisposed()) {
+          if (myEditorComponent.isDisposed()) {
             myLastReferenceCell = null;
             return;
           }
@@ -3182,12 +3184,12 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
             return;
           }
 
-          final jetbrains.mps.openapi.editor.cells.EditorCell editorCell = myRootCell.findLeaf(e.getX(), e.getY());
+          final jetbrains.mps.openapi.editor.cells.EditorCell editorCell = myEditorComponent.getRootCell().findLeaf(e.getX(), e.getY());
           if (editorCell == null) {
             myLastReferenceCell = null;
             return;
           }
-          SNode snodeWRTReference = runRead(() -> isInvalid() ? null : APICellAdapter.getSNodeWRTReference(editorCell));
+          SNode snodeWRTReference = myEditorComponent.runRead(() -> myEditorComponent.isInvalid() ? null : APICellAdapter.getSNodeWRTReference(editorCell));
           String url = editorCell.getStyle().get(StyleAttributes.URL);
           if (editorCell.getSNode() == snodeWRTReference && url == null) {
             myLastReferenceCell = null;
@@ -3198,7 +3200,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
           setControlOver();
         }
       });
-      addFocusListener(new FocusListener() {
+      myEditorComponent.addFocusListener(new FocusListener() {
         @Override
         public void focusGained(FocusEvent e) {
         }
@@ -3214,16 +3216,16 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     private void clearControlOver() {
       if (myLastReferenceCell != null) {
         myLastReferenceCell.getStyle().set(StyleAttributes.CONTROL_OVERED_REFERENCE, false);
-        setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-        repaintExternalComponent();
+        myEditorComponent.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+        myEditorComponent.repaintExternalComponent();
       }
     }
 
     private void setControlOver() {
       if (myLastReferenceCell != null) {
         myLastReferenceCell.getStyle().set(StyleAttributes.CONTROL_OVERED_REFERENCE, true);
-        setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        repaintExternalComponent();
+        myEditorComponent.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        myEditorComponent.repaintExternalComponent();
       }
     }
   }
