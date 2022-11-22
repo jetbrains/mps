@@ -12,7 +12,6 @@ import com.intellij.ide.CopyProvider;
 import com.intellij.ide.CutProvider;
 import com.intellij.ide.DataManager;
 import com.intellij.ide.PasteProvider;
-import com.intellij.ide.SelectInContext;
 import com.intellij.ide.ui.AntialiasingType;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.openapi.actionSystem.ActionGroup;
@@ -64,7 +63,6 @@ import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.actions.SNodeActionData;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.ide.projectView.ProjectViewSelectInProvider;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.messages.IMessageHandler;
@@ -2932,16 +2930,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     if (dataId.equals(PlatformDataKeys.PASTE_PROVIDER.getName()) && (isFocusOwner() || !isSearchPanelVisible())) {
       return new MyPasteProvider();
     }
-
-    if (SelectInContext.DATA_KEY.is(dataId)) {
-      ProjectViewSelectInProvider selectInHelper =
-          ApplicationManager.getApplication() == null ? null : ApplicationManager.getApplication().getService(ProjectViewSelectInProvider.class);
-      if (selectInHelper == null) {
-        return null;
-      }
-      return selectInHelper.getContext(ProjectHelper.getProject(myRepository), myNodePointer);
-    }
-
     //not found
     return null;
   }
