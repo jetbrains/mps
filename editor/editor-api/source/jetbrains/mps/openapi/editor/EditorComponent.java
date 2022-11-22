@@ -139,6 +139,7 @@ public interface EditorComponent {
    */
   void touch();
 
+  // FIXME not part of EditorComponent (swing/ui), rather EditorContext (interaction wuth user)
   default DeletionApprover getDeletionApprover() {
     return new DummyDeletionApprover();
   }
@@ -147,7 +148,7 @@ public interface EditorComponent {
    * Shows error/warning messages inside the editor pane.
    */
   @NotNull
-  IMessageHandler getMessageHandler();
+  IMessageHandler getMessageHandler(); // XXX perhaps, part of EditorContext, too?
 
   boolean isAutomaticSubstitutionEnabled();
 

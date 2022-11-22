@@ -213,13 +213,16 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
       public void run() {
         GutterStatus status = GutterStatus.OK;
         List<GutterMark> marks = new ArrayList<>();
-        // XXX I wonder if myScrollable.getHeight() == scrollbar.getHeight() (value from getMessagesAreaHeight())
         Rectangle msgBounds = new Rectangle();
+        final double areaRatio = scrollBar2ScrollableRatio();
+        final int xx = myRightToLeft ? -2 : 4;
+        final int ww = General.InspectionsOK.getIconWidth() - 1;
         for (SimpleEditorMessage message : myMessages) {
           if (!GutterMark.isValid(message, myEditorComponent)) {
             continue;
           }
-          GutterMark mark = new GutterMark(message, calculateMessageBounds(message, msgBounds));
+          msgBounds.setBounds(xx, calculateY(message, areaRatio), ww, calculateHeight(message, areaRatio));
+          GutterMark mark = new GutterMark(message, adjustBounds(message, msgBounds));
 
           GutterStatus messageStatus = GutterStatus.getStatus(message.getStatus());
           if (messageStatus.ordinal() > status.ordinal()) {
@@ -329,12 +332,15 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
   }
 
   private int getMessagesAreaShift() {
-    // XXX why not (getDecrementButtonHeight() + scrollBar.Y) if we try to find first position *after* decrement button?
-    return Math.max(0, getDecrementButtonHeight() - scrollbar.getY());
+    // we need to find first position *after* decrement button.
+    // there's no need to take scrollbar.Y into account (nether + nor -) as we position message marks relative
+    // to the scrollbar, and its position within its parent (that's what scrollbar.Y is) doesn't affect
+    // positions of the marks.
+    return getDecrementButtonHeight();
   }
 
   private int getMessagesAreaHeight() {
-    return scrollbar.getHeight() - getIncrementButtonHeight() - Math.max(getDecrementButtonHeight(), scrollbar.getY());
+    return scrollbar.getHeight() - getIncrementButtonHeight() - getMessagesAreaShift();
   }
 
   private int calculateY(SimpleEditorMessage message, double areaRatio) {
@@ -347,16 +353,13 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
     return ((double) getMessagesAreaHeight()) / myScrollable.getHeight();
   }
 
-  private Rectangle calculateMessageBounds(SimpleEditorMessage message, Rectangle rect) {
-    final double areaRatio = scrollBar2ScrollableRatio();
-    int x = myRightToLeft ? -2 : 4;
-    int w = General.InspectionsOK.getIconWidth() - 1;
-    // FIXME I don't like approach with finction to tell horizontal mark from vertical
+  // magic around right-to-left and horizontal/vertical shape
+  private Rectangle adjustBounds(SimpleEditorMessage message, Rectangle rect) {
+    // FIXME I don't like approach with function to tell horizontal mark from vertical
     if (myIsMessageThin.test(message)) {
-      x = myRightToLeft ? w : 0;
-      w = 2;
+      rect.x = myRightToLeft ? rect.width : 0;
+      rect.width = 2;
     }
-    rect.setBounds(x, calculateY(message, areaRatio), w, calculateHeight(message, areaRatio));
     return rect;
   }
 
