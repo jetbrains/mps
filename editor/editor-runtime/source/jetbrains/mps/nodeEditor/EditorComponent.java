@@ -45,8 +45,6 @@ import com.intellij.util.io.URLUtil;
 import com.intellij.util.ui.ButtonlessScrollBarUI;
 import com.intellij.util.ui.UIUtil;
 import gnu.trove.THashSet;
-import jetbrains.mps.classloading.ClassLoaderManager;
-import jetbrains.mps.classloading.DeployListener;
 import jetbrains.mps.editor.EditorComponentTrackService;
 import jetbrains.mps.editor.intentions.IntentionMenuProducer;
 import jetbrains.mps.editor.runtime.HighlightUsagesSupport;
@@ -56,7 +54,6 @@ import jetbrains.mps.editor.runtime.commands.EditorCommandAdapter;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.extapi.model.ModelWithDisposeInfo;
-import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.actions.MPSActions;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
@@ -66,7 +63,6 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.messages.IMessageHandler;
-import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.nodeEditor.actions.ActionHandlerImpl;
 import jetbrains.mps.nodeEditor.assist.DefaultContextAssistantManager;
 import jetbrains.mps.nodeEditor.assist.DisabledContextAssistantManager;
@@ -143,7 +139,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.module.SRepository;
-import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.mps.util.Condition;
 
 import javax.swing.AbstractAction;
@@ -222,7 +217,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   private static final Logger LOG = Logger.getLogger(EditorComponent.class);
 
   private static final int SCROLL_GAP = 15;
-  private ClassLoaderManager myClassLoaderManager = null;
 
   private String myDefaultPopupGroupId = MPSActions.EDITOR_POPUP_GROUP;
   private InputMethodRequests myInputMethodRequests;
@@ -281,23 +275,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     refreshContentHighlighter();
     refreshHighlighter();
   });
-
-  private final DeployListener myClassesListener = new DeployListener() {
-    @Override
-    public void onUnloaded(@NotNull Set<ReloadableModule> unloadedModules, @NotNull ProgressMonitor monitor) {
-    }
-
-    @Override
-    public void onLoaded(@NotNull Set<ReloadableModule> loadedModules, @NotNull ProgressMonitor monitor) {
-      getModelAccess().runReadInEDT(() -> {
-        if (isDisposed() || isModuleDisposed() || isProjectDisposed() || isNodeDisposed()) {
-          return;
-        }
-        rebuildEditorContent();
-        myNodeSubstituteChooser.clearContent();
-      });
-    }
-  };
 
   private boolean myReadOnly;
   private String myLastWrittenStatus = "";
@@ -381,13 +358,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     myUpdater = createUpdater(myCommandContext);
     // XXX NodeHighlightManager accesses myUpdater, not quite good for an incomplete this object (still in cons here)
     myHighlightManager = new NodeHighlightManager(this);
-
-
-    if (ApplicationManager.getApplication() != null && ApplicationManager.getApplication().getComponent(MPSCoreComponents.class) != null) {
-      myClassLoaderManager = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getClassLoaderManager();
-    } else {
-      LOG.warning("ClassloaderManager is not found, the reload will be switched off");
-    }
 
     setLayout(new EditorComponentLayoutManager(this));
     setEditorContext(null, repository);
@@ -820,9 +790,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
 
   protected void attachListeners() {
     EditorSettings.getInstance().addEditorSettingsListener(mySettingsListener);
-    if (myClassLoaderManager != null) {
-      myClassLoaderManager.addListener(myClassesListener);
-    }
   }
 
   protected void notifyCreation() {
@@ -1665,7 +1632,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
 
   protected void detachListeners() {
     EditorSettings.getInstance().removeEditorSettingsListener(mySettingsListener);
-    myClassLoaderManager.removeListener(myClassesListener);
   }
 
   public boolean hasValidSelectedNode() {
@@ -2996,26 +2962,10 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     }
   }
 
-  /**
-   * It's possible that associated module was already removed from MPSModuleRepository (for example - transient models
-   * modules are currently removed from MPSModuleRepository before next code generation session). In this case currently
-   * open editor should be closed as a result of another notification processing. We need to suppress editor update
-   * process in this case because an editor is not in valid state right now.
-   */
-  private boolean isModuleDisposed() {
-    // TODO review
-    return false; // myOperationContext != null && myOperationContext.getModule() == null;
-  }
-
   private boolean isProjectDisposed() {
     final jetbrains.mps.project.Project p = getCurrentProject();
     // XXX NOTE, we check the project is there, i.e. missing project is not treated as disposed. Is it right?
     return p != null && p.isDisposed();
-  }
-
-  private boolean isNodeDisposed() {
-    SNode node = getEditedNode();
-    return node != null && !SNodeUtil.isAccessible(node, myEditorContext.getRepository());
   }
 
   public CellTracker getCellTracker() {
