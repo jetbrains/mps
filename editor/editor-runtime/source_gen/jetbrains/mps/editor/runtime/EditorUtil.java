@@ -34,13 +34,6 @@ import jetbrains.mps.util.FileUtil;
 import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.util.IFileUtil;
 import java.awt.Dimension;
-import java.beans.PropertyChangeListener;
-import java.io.File;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
-import java.beans.PropertyChangeEvent;
-import java.awt.Image;
-import java.awt.Graphics;
 
 @GeneratedClass(node = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)/7973955287399271868", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
 public class EditorUtil {
@@ -126,67 +119,6 @@ public class EditorUtil {
     button.setPreferredSize(new Dimension(20, 20));
     button.setEnabled(!(context.getEditorComponent().isReadOnly()));
     return button;
-  }
-
-  private static class ImagePreview extends JComponent implements PropertyChangeListener {
-    private File myFile;
-    private ImageIcon myIcon;
-    private static final int MAX_UNSCALED_ICON_SIZE = 128;
-
-    private ImagePreview(JFileChooser fileChooser) {
-      int borders = 4;
-      setPreferredSize(new Dimension(MAX_UNSCALED_ICON_SIZE + borders, MAX_UNSCALED_ICON_SIZE + borders));
-      fileChooser.addPropertyChangeListener(this);
-    }
-
-    @Override
-    public void propertyChange(PropertyChangeEvent event) {
-      String propertyName = event.getPropertyName();
-
-      if (JFileChooser.DIRECTORY_CHANGED_PROPERTY.equals(propertyName)) {
-        myFile = null;
-      } else if (JFileChooser.SELECTED_FILE_CHANGED_PROPERTY.equals(propertyName)) {
-        myFile = (File) event.getNewValue();
-      } else {
-        return;
-      }
-
-      myIcon = getIcon();
-      if (isShowing()) {
-        repaint();
-      }
-    }
-
-    private ImageIcon getIcon() {
-      if (myFile == null) {
-        return null;
-      }
-
-      ImageIcon icon = new ImageIcon(myFile.getPath());
-      if (icon != null) {
-        int iconHeight = icon.getIconHeight();
-        int iconWidth = icon.getIconWidth();
-        if (iconHeight > MAX_UNSCALED_ICON_SIZE || iconWidth > MAX_UNSCALED_ICON_SIZE) {
-          int scaledWidth = (iconHeight > iconWidth ? MAX_UNSCALED_ICON_SIZE * iconWidth / iconHeight : MAX_UNSCALED_ICON_SIZE);
-          int scaledHeight = (iconHeight > iconWidth ? MAX_UNSCALED_ICON_SIZE : MAX_UNSCALED_ICON_SIZE * iconHeight / iconWidth);
-          icon = new ImageIcon(icon.getImage().getScaledInstance(scaledWidth, scaledHeight, Image.SCALE_FAST));
-        }
-      }
-      return icon;
-    }
-
-    @Override
-    protected void paintComponent(Graphics graphics) {
-      if (myIcon == null) {
-        myIcon = getIcon();
-      }
-      if (myIcon != null) {
-        int x = (getWidth() - getIcon().getIconWidth()) / 2;
-        int y = (getHeight() - getIcon().getIconHeight()) / 2;
-
-        myIcon.paintIcon(this, graphics, x, y);
-      }
-    }
   }
   private static String check_3m4h3r_a0a3a1a4(MacroHelper checkedDotOperand, String fullPath) {
     if (null != checkedDotOperand) {
