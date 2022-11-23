@@ -15,11 +15,13 @@ import java.util.logging.Logger;
   private final String mySender;
   private final Throwable myException;
   private final Project myProject;
+  private final Object myHint;
 
-  /*package*/ LogCtx(@NotNull String sender, @Nullable Throwable exception, @Nullable Project project) {
+  /*package*/ LogCtx(@NotNull String sender, @Nullable Throwable exception, @Nullable Project project, @Nullable Object hint) {
     mySender = sender;
     myException = exception;
     myProject = project;
+    myHint = hint;
   }
 
   private void _log(Level level, Object msg) {
@@ -27,11 +29,7 @@ import java.util.logging.Logger;
     // j.m.logging.Logger wrap
     LogRecord lr = new LogRecord(level, String.valueOf(msg));
     lr.setThrown(myException);
-    if (myProject == null) {
-      lr.setParameters(new Object[]{mySender});
-    } else {
-      lr.setParameters(new Object[]{mySender, myProject});
-    }
+    lr.setParameters(new Object[]{mySender, myProject, myHint});
     Logger.getLogger(MSG_VIEW_TOKEN).log(lr);
   }
 
