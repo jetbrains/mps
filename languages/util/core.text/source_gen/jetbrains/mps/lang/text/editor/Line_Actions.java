@@ -7,12 +7,12 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.nodeEditor.selection.EditorCellLabelSelection;
-import java.util.List;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import java.util.List;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
 import java.util.Objects;
@@ -37,9 +37,8 @@ public class Line_Actions {
         SelectionManager selectionManager = editorContext.getSelectionManager();
         EditorCellLabelSelection selection = as_h5gcex_a0a1a1a0a0a1(selectionManager.getSelection(), EditorCellLabelSelection.class);
 
-        List<SNode> selectedNodes = selection.getSelectedNodes();
         EditorCell cell = selection.getEditorCell();
-        SNode currentWord = SNodeOperations.as(selectedNodes.get(0), CONCEPTS.TextElement$WN);
+        SNode currentWord = TextEditorHelper.getOrCreateSelectedWord(editorContext, selection.getSelectedNodes(), 0);
         SNode currentLine = SNodeOperations.as(SNodeOperations.getParent(currentWord), CONCEPTS.Line$yC);
         SNode previousLine = SNodeOperations.as(SNodeOperations.getPrevSibling(currentLine), CONCEPTS.Line$yC);
         boolean includeCurrentLineInSelection = selection.getSelectionEnd() != selection.getSelectionStart() || !(cell instanceof EditorCell_Property) || selection.getSelectionStart() != 0 || (SNodeOperations.getPrevSibling(currentWord) != null) || (previousLine == null);
@@ -62,8 +61,7 @@ public class Line_Actions {
         SelectionManager selectionManager = editorContext.getSelectionManager();
         EditorCellLabelSelection selection = as_h5gcex_a0a1a1a0a0a2(selectionManager.getSelection(), EditorCellLabelSelection.class);
 
-        List<SNode> selectedNodes = selection.getSelectedNodes();
-        SNode currentWord = SNodeOperations.as(selectedNodes.get(0), CONCEPTS.TextElement$WN);
+        SNode currentWord = TextEditorHelper.getOrCreateSelectedWord(editorContext, selection.getSelectedNodes(), 0);
         boolean includeCurrentNodeInSelection = selection.getSelectionEnd() != selection.getSelectionStart();
 
         SNode prevNode = SNodeOperations.as(SNodeOperations.getPrevSibling(currentWord), CONCEPTS.TextElement$WN);
@@ -86,9 +84,8 @@ public class Line_Actions {
         SelectionManager selectionManager = editorContext.getSelectionManager();
         EditorCellLabelSelection selection = as_h5gcex_a0a1a1a0a0a3(selectionManager.getSelection(), EditorCellLabelSelection.class);
 
-        List<SNode> selectedNodes = selection.getSelectedNodes();
         EditorCell cell = selection.getEditorCell();
-        SNode currentWord = SNodeOperations.as(selectedNodes.get(0), CONCEPTS.TextElement$WN);
+        SNode currentWord = TextEditorHelper.getOrCreateSelectedWord(editorContext, selection.getSelectedNodes(), 0);
         SNode currentLine = SNodeOperations.as(SNodeOperations.getParent(currentWord), CONCEPTS.Line$yC);
         SNode nextLine = SNodeOperations.as(SNodeOperations.getNextSibling(currentLine), CONCEPTS.Line$yC);
 
@@ -114,7 +111,7 @@ public class Line_Actions {
         EditorCellLabelSelection selection = as_h5gcex_a0a1a1a0a0a4(selectionManager.getSelection(), EditorCellLabelSelection.class);
 
         List<SNode> selectedNodes = selection.getSelectedNodes();
-        SNode currentWord = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextElement$WN);
+        SNode currentWord = TextEditorHelper.getOrCreateSelectedWord(editorContext, selectedNodes, selectedNodes.size() - 1);
         boolean includeCurrentNodeInSelection = selection.getSelectionEnd() != selection.getSelectionStart();
 
         SNode nextNode = SNodeOperations.as(SNodeOperations.getNextSibling(currentWord), CONCEPTS.TextElement$WN);
@@ -139,7 +136,7 @@ public class Line_Actions {
         EditorCellLabelSelection selection = as_h5gcex_a0a1a1a0a0a5(selectionManager.getSelection(), EditorCellLabelSelection.class);
 
         List<SNode> selectedNodes = selection.getSelectedNodes();
-        SNode currentWord = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextElement$WN);
+        SNode currentWord = TextEditorHelper.getOrCreateSelectedWord(editorContext, selectedNodes, selectedNodes.size() - 1);
 
         Iterable<SNode> lines = SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(SNodeOperations.getParent(currentWord), true), CONCEPTS.Line$yC);
         SNode f = Sequence.fromIterable(Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(Sequence.fromIterable(lines).first())).first();
@@ -161,7 +158,7 @@ public class Line_Actions {
         EditorCellLabelSelection selection = as_h5gcex_a0a1a1a0a0a6(selectionManager.getSelection(), EditorCellLabelSelection.class);
 
         List<SNode> selectedNodes = selection.getSelectedNodes();
-        SNode currentWord = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextElement$WN);
+        SNode currentWord = TextEditorHelper.getOrCreateSelectedWord(editorContext, selectedNodes, selectedNodes.size() - 1);
         SNode f = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getPrevSiblings(currentWord, true), CONCEPTS.TextElement$WN)).first();
 
         WordRangeSelection ws = new WordRangeSelection(editorContext.getEditorComponent(), f, currentWord, false);
@@ -180,7 +177,7 @@ public class Line_Actions {
         EditorCellLabelSelection selection = as_h5gcex_a0a1a1a0a0a7(selectionManager.getSelection(), EditorCellLabelSelection.class);
 
         List<SNode> selectedNodes = selection.getSelectedNodes();
-        SNode currentWord = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextElement$WN);
+        SNode currentWord = TextEditorHelper.getOrCreateSelectedWord(editorContext, selectedNodes, selectedNodes.size() - 1);
         SNode nextNode = SNodeOperations.as(SNodeOperations.getNextSibling(currentWord), CONCEPTS.TextElement$WN);
         SNode w = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getNextSiblings(currentWord, true), CONCEPTS.TextElement$WN)).last();
 
@@ -200,7 +197,7 @@ public class Line_Actions {
         EditorCellLabelSelection selection = as_h5gcex_a0a1a1a0a0a8(selectionManager.getSelection(), EditorCellLabelSelection.class);
 
         List<SNode> selectedNodes = selection.getSelectedNodes();
-        SNode currentWord = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextElement$WN);
+        SNode currentWord = TextEditorHelper.getOrCreateSelectedWord(editorContext, selectedNodes, selectedNodes.size() - 1);
 
         SNode previousWord = null;
         if ((SNodeOperations.getPrevSibling(currentWord) == null)) {
@@ -229,7 +226,7 @@ public class Line_Actions {
         EditorCellLabelSelection selection = as_h5gcex_a0a1a1a0a0a9(selectionManager.getSelection(), EditorCellLabelSelection.class);
 
         List<SNode> selectedNodes = selection.getSelectedNodes();
-        SNode currentWord = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextElement$WN);
+        SNode currentWord = TextEditorHelper.getOrCreateSelectedWord(editorContext, selectedNodes, selectedNodes.size() - 1);
         SNode nextWord = null;
         if ((SNodeOperations.getNextSibling(currentWord) == null)) {
           // cursor at the end of a line
@@ -259,7 +256,7 @@ public class Line_Actions {
         return this.canExecute_internal(editorContext, node);
       }
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
-        return Sequence.fromIterable(Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(node)).count() == 1 && Objects.equals(SPropertyOperations.getString(SNodeOperations.as(Sequence.fromIterable(Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(node)).first(), CONCEPTS.Word$Dn), PROPS.value$zQr_), "");
+        return Sequence.fromIterable(Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(node)).isEmpty() || (Sequence.fromIterable(Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(node)).count() == 1 && Objects.equals(SPropertyOperations.getString(SNodeOperations.as(Sequence.fromIterable(Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(node)).first(), CONCEPTS.Word$Dn), PROPS.value$zQr_), ""));
       }
 
     };
@@ -389,8 +386,8 @@ public class Line_Actions {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TextElement$WN = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L, "jetbrains.mps.lang.text.structure.TextElement");
     /*package*/ static final SConcept Line$yC = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
+    /*package*/ static final SConcept TextElement$WN = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L, "jetbrains.mps.lang.text.structure.TextElement");
     /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
   }
 
