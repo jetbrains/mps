@@ -5,6 +5,9 @@ package jetbrains.mps.baseLanguage.logging.rt;
 import org.jetbrains.mps.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.module.SModule;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
@@ -21,7 +24,17 @@ import java.util.logging.Logger;
     mySender = sender;
     myException = exception;
     myProject = project;
-    myHint = hint;
+    if (hint instanceof SNode) {
+      myHint = ((SNode) hint).getReference();
+    } else
+    if (hint instanceof SModel) {
+      myHint = ((SModel) hint).getReference();
+    } else
+    if (hint instanceof SModule) {
+      myHint = ((SModule) hint).getModuleReference();
+    } else {
+      myHint = hint;
+    }
   }
 
   private void _log(Level level, Object msg) {
