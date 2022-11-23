@@ -1043,7 +1043,7 @@
                             <node concept="2OqwBi" id="1OpKexXQwt9" role="3uHU7B">
                               <node concept="30H73N" id="1OpKexXQwta" role="2Oq$k0" />
                               <node concept="3TrEf2" id="1OpKexXQwtb" role="2OqNvi">
-                                <ref role="3Tt5mk" to="tpib:1OpKexXBmv2" resolve="hintObject" />
+                                <ref role="3Tt5mk" to="tpib:1OpKexXBmv2" resolve="hint" />
                               </node>
                             </node>
                           </node>
