@@ -11,6 +11,9 @@ import org.jetbrains.mps.openapi.project.Project;
  */
 public class LogContext {
   public static Log with(@NotNull Class<?> sender, @Nullable Throwable throwable, @Nullable Project project) {
-    return new LogCtx(sender.toString(), throwable, project);
+    return new LogCtx(sender.toString(), throwable, project, null);
+  }
+  public static Log with(@NotNull Class<?> sender, @Nullable Throwable throwable, @Nullable Project project, @Nullable Object hint) {
+    return new LogCtx(sender.toString(), throwable, project, hint);
   }
 }
