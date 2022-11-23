@@ -11,7 +11,7 @@
   <imports>
     <import index="tpib" ref="r:00000000-0000-4000-0000-011c8959057f(jetbrains.mps.baseLanguage.logging.structure)" />
     <import index="tpen" ref="r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)" />
-    <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" implicit="true" />
+    <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
   </imports>
   <registry>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
@@ -820,9 +820,24 @@
           </node>
         </node>
         <node concept="3F1sOY" id="5vyNLjQPtma" role="3EZMnx">
-          <ref role="1NtTu8" to="tpib:4XBaoL6ccco" resolve="project" />
+          <ref role="1NtTu8" to="tpib:1OpKexXBmv2" resolve="hint" />
         </node>
         <node concept="l2Vlx" id="5vyNLjQPtmb" role="2iSdaV" />
+      </node>
+      <node concept="3EZMnI" id="1OpKexXBrrF" role="3EZMnx">
+        <node concept="3F0ifn" id="1OpKexXBrrG" role="3EZMnx">
+          <property role="3F0ifm" value="," />
+          <node concept="VPM3Z" id="1OpKexXBrrH" role="3F10Kt">
+            <property role="VOm3f" value="false" />
+          </node>
+          <node concept="11L4FC" id="1OpKexXBrrI" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
+        <node concept="3F1sOY" id="1OpKexXBrrJ" role="3EZMnx">
+          <ref role="1NtTu8" to="tpib:4XBaoL6ccco" resolve="project" />
+        </node>
+        <node concept="l2Vlx" id="1OpKexXBrrK" role="2iSdaV" />
       </node>
       <node concept="3EZMnI" id="5vyNLjQPtmc" role="3EZMnx">
         <node concept="VPM3Z" id="5vyNLjQPtmj" role="3F10Kt">
