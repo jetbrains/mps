@@ -72,7 +72,7 @@ public class TransferCustomPackagingToLayout extends MigrationScriptBase {
             }
             ListSequence.fromList(groupsToPackage).addElement(SNodeOperations.cast(content, CONCEPTS.BuildMps_IdeaPluginGroup$_R));
           } else {
-            LogContext.with(TransferCustomPackagingToLayout.class, null, null).error("Discovered unknown content in the BuildMps_IdeaPlugin instance");
+            LogContext.with(TransferCustomPackagingToLayout.class, null, null, null).error("Discovered unknown content in the BuildMps_IdeaPlugin instance");
           }
         }
         if (autoPackaging) {

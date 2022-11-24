@@ -57,7 +57,7 @@ public final class ProblemPointsToKindRoot__BehaviorDescriptor extends BaseBHDes
       }
       LanguageAspectDescriptor feedbackAspect = LanguageAspectSupport.getAspectDescriptorById("feedback");
       if (feedbackAspect == null) {
-        LogContext.with(ProblemPointsToKindRoot__BehaviorDescriptor.class, null, null).error("Feedback aspect is not found, aspect not deployed");
+        LogContext.with(ProblemPointsToKindRoot__BehaviorDescriptor.class, null, null, null).error("Feedback aspect is not found, aspect not deployed");
         return null;
       }
       SModel feedbackModel = Objects.requireNonNull(feedbackAspect).getAspectModels(lang).stream().findAny().orElse(null);

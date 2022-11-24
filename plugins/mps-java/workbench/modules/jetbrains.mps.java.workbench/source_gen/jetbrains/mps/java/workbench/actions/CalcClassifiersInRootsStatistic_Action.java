@@ -97,7 +97,7 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
         });
       }
     });
-    LogContext.with(CalcClassifiersInRootsStatistic_Action.class, null, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject"))).info(String.format("Members average time: %.3f", membersOverallTime.value * 0.001 / rootsCount.value));
+    LogContext.with(CalcClassifiersInRootsStatistic_Action.class, null, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), null).info(String.format("Members average time: %.3f", membersOverallTime.value * 0.001 / rootsCount.value));
   }
   /*package*/ long analyzeClassifiersInRoot(final SNode node, final Map<String, Object> _params) {
     String nodeName = SNodeOperations.present(node) + "@" + SModelOperations.getModelName(SNodeOperations.getModel(node));
@@ -128,7 +128,7 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
       sb.append(String.format("%s: members calc time = %.3f%n", nodeName, membersCalcTime * 0.001));
     }
     if (sb.length() > 0) {
-      LogContext.with(CalcClassifiersInRootsStatistic_Action.class, null, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject"))).info(sb.toString());
+      LogContext.with(CalcClassifiersInRootsStatistic_Action.class, null, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), null).info(sb.toString());
     }
     return membersCalcTime;
   }
@@ -156,7 +156,7 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
       try {
         ListSequence.fromList(result).addSequence(Sequence.fromIterable(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(classifier))));
       } catch (Exception e) {
-        LogContext.with(CalcClassifiersInRootsStatistic_Action.class, e, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject"))).error("Error calculating type");
+        LogContext.with(CalcClassifiersInRootsStatistic_Action.class, e, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), null).error("Error calculating type");
       }
     }
 
@@ -167,7 +167,7 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
     try {
       toRun.invoke();
     } catch (Exception e) {
-      LogContext.with(CalcClassifiersInRootsStatistic_Action.class, e, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject"))).error("Error calculating time");
+      LogContext.with(CalcClassifiersInRootsStatistic_Action.class, e, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), null).error("Error calculating time");
     } finally {
       return System.currentTimeMillis() - startTime;
     }

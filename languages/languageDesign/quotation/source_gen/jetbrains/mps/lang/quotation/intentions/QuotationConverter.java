@@ -158,7 +158,7 @@ public class QuotationConverter {
       return ListSequence.fromListAndArray(new ArrayList<SNode>(), createNodeBuilderInitLink_aytayy_a0a3a6a7(linkDeclaration, childrenBuilderExpression));
     } else {
       if (ListSequence.fromList(childBuildersIsList).contains(true)) {
-        LogContext.with(QuotationConverter.class, null, null).error("Converting invalid quotation to light quotation may lead to unexpected results");
+        LogContext.with(QuotationConverter.class, null, null, null).error("Converting invalid quotation to light quotation may lead to unexpected results");
       }
       return ListSequence.fromList(childBuilders).select(new ISelector<SNode, SNode>() {
         public SNode select(SNode childBuilder) {
