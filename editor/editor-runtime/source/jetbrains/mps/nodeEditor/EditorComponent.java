@@ -80,7 +80,6 @@ import jetbrains.mps.nodeEditor.commands.CommandContextImpl;
 import jetbrains.mps.nodeEditor.commands.CommandContextWrapper;
 import jetbrains.mps.nodeEditor.configuration.EditorConfiguration;
 import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
-import jetbrains.mps.nodeEditor.deletionApprover.DeletionApproverImpl;
 import jetbrains.mps.nodeEditor.highlighter.EditorHighlighter;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
 import jetbrains.mps.nodeEditor.keymaps.AWTKeymapHandler;
@@ -249,8 +248,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   // additional debugging field
   private StackTraceElement[] myModelDisposedStackTrace = null;
   private Throwable myDisposedTrace = null;
-
-  private DeletionApproverImpl myDeletionApprover;
 
   private final Set<AdditionalPainter> myAdditionalPainters = new TreeSet<>((o1, o2) -> {
     if (o1.isAbove(o2, EditorComponent.this)) {
@@ -1620,6 +1617,10 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     if (myNodeSubstituteChooser != null) {
       myNodeSubstituteChooser.dispose();
     }
+    if (myEditorContext != null) {
+      // there's no 'dispose()', but reset clears all we care about
+      myEditorContext.reset();
+    }
     if (myRootCell != null) {
       ((EditorCell_Basic) myRootCell).onRemove();
       myRootCell = null;
@@ -1629,10 +1630,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     myLeftMarginPressListeners.clear();
 
     myFocusTracker.dispose();
-
-    if (myDeletionApprover != null) {
-      myDeletionApprover.dispose();
-    }
   }
 
   protected void detachListeners() {
@@ -3207,15 +3204,9 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
    *
    * @return deletion approver instance
    */
-  public synchronized DeletionApprover getDeletionApprover() {
-    if (EditorSettings.getInstance().isUseTwoStepDeletion()) {
-      if (myDeletionApprover == null) {
-        myDeletionApprover = new DeletionApproverImpl(this);
-        myDeletionApprover.initialize();
-      }
-      return myDeletionApprover;
-    } else {
-      return jetbrains.mps.openapi.editor.EditorComponent.super.getDeletionApprover();
-    }
+  public DeletionApprover getDeletionApprover() {
+    // keep the method to avoid broken references from MPS code.
+    // I admire javadoc, btw ;)
+    return getEditorContext().getDeletionOfficer();
   }
 }

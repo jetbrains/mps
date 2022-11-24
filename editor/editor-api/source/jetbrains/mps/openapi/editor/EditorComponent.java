@@ -139,9 +139,13 @@ public interface EditorComponent {
    */
   void touch();
 
-  // FIXME not part of EditorComponent (swing/ui), rather EditorContext (interaction wuth user)
+  /**
+   * @deprecated not part of EditorComponent (swing/ui), rather EditorContext (interaction with user),
+   *             use {@link EditorContext#getDeletionOfficer()} instead
+   */
+  @Deprecated(since = "2022.3", forRemoval = true)
   default DeletionApprover getDeletionApprover() {
-    return new DummyDeletionApprover();
+    return getEditorContext().getDeletionOfficer();
   }
 
   /**

@@ -5478,11 +5478,11 @@
               <node concept="2OqwBi" id="4QKZ3CWHF6a" role="2Oq$k0">
                 <node concept="2WthIp" id="4QKZ3CWHF6b" role="2Oq$k0" />
                 <node concept="1DTwFV" id="4QKZ3CWHF6c" role="2OqNvi">
-                  <ref role="2WH_rO" node="5QmTFjQZTY3" resolve="editorComponent" />
+                  <ref role="2WH_rO" node="4xT8egpzrhR" resolve="editorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="4QKZ3CWHF6d" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getSelectionManager()" resolve="getSelectionManager" />
+                <ref role="37wK5l" to="cj4x:~EditorContext.getSelectionManager()" resolve="getSelectionManager" />
               </node>
             </node>
           </node>
@@ -5555,22 +5555,31 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="77HFTazQECy" role="3cqZAp">
+          <node concept="3cpWsn" id="77HFTazQECz" role="3cpWs9">
+            <property role="TrG5h" value="da" />
+            <node concept="3uibUv" id="77HFTazQEwG" role="1tU5fm">
+              <ref role="3uigEE" to="cj4x:~DeletionApprover" resolve="DeletionApprover" />
+            </node>
+            <node concept="2OqwBi" id="77HFTazQEC$" role="33vP2m">
+              <node concept="2OqwBi" id="77HFTazQEC_" role="2Oq$k0">
+                <node concept="2WthIp" id="77HFTazQECA" role="2Oq$k0" />
+                <node concept="1DTwFV" id="77HFTazQECB" role="2OqNvi">
+                  <ref role="2WH_rO" node="4xT8egpzrhR" resolve="editorContext" />
+                </node>
+              </node>
+              <node concept="liA8E" id="77HFTazQECC" role="2OqNvi">
+                <ref role="37wK5l" to="cj4x:~EditorContext.getDeletionOfficer()" resolve="getDeletionOfficer" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbJ" id="6IcVGWoPrOE" role="3cqZAp">
           <node concept="3clFbS" id="6IcVGWoPrOG" role="3clFbx">
             <node concept="3clFbF" id="6IcVGWoPMCq" role="3cqZAp">
               <node concept="2OqwBi" id="6IcVGWoPRAM" role="3clFbG">
-                <node concept="1eOMI4" id="6IcVGWoPMCo" role="2Oq$k0">
-                  <node concept="2OqwBi" id="6IcVGWoPON8" role="1eOMHV">
-                    <node concept="2OqwBi" id="6IcVGWoPNtG" role="2Oq$k0">
-                      <node concept="2WthIp" id="6IcVGWoPNaJ" role="2Oq$k0" />
-                      <node concept="1DTwFV" id="6IcVGWoPNXS" role="2OqNvi">
-                        <ref role="2WH_rO" node="5QmTFjQZTY3" resolve="editorComponent" />
-                      </node>
-                    </node>
-                    <node concept="liA8E" id="6IcVGWoPRtx" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:~EditorComponent.getDeletionApprover()" resolve="getDeletionApprover" />
-                    </node>
-                  </node>
+                <node concept="37vLTw" id="77HFTazR56K" role="2Oq$k0">
+                  <ref role="3cqZAo" node="77HFTazQECz" resolve="da" />
                 </node>
                 <node concept="liA8E" id="6IcVGWoPSlq" role="2OqNvi">
                   <ref role="37wK5l" to="cj4x:~DeletionApprover.clear()" resolve="clear" />
@@ -5581,19 +5590,11 @@
           <node concept="3eOSWO" id="iz0IZTxRGr" role="3clFbw">
             <node concept="2OqwBi" id="iz0IZTxRGs" role="3uHU7B">
               <node concept="2OqwBi" id="iz0IZTxRGt" role="2Oq$k0">
-                <node concept="2OqwBi" id="iz0IZTxRGu" role="2Oq$k0">
-                  <node concept="2OqwBi" id="iz0IZTxRGv" role="2Oq$k0">
-                    <node concept="2WthIp" id="iz0IZTxRGw" role="2Oq$k0" />
-                    <node concept="1DTwFV" id="iz0IZTxRGx" role="2OqNvi">
-                      <ref role="2WH_rO" node="5QmTFjQZTY3" resolve="editorComponent" />
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="iz0IZTxRGy" role="2OqNvi">
-                    <ref role="37wK5l" to="exr9:~EditorComponent.getDeletionApprover()" resolve="getDeletionApprover" />
-                  </node>
-                </node>
                 <node concept="liA8E" id="iz0IZTxRGz" role="2OqNvi">
                   <ref role="37wK5l" to="cj4x:~DeletionApprover.getCellsApprovedForDeletion()" resolve="getCellsApprovedForDeletion" />
+                </node>
+                <node concept="37vLTw" id="77HFTazQECD" role="2Oq$k0">
+                  <ref role="3cqZAo" node="77HFTazQECz" resolve="deletionOfficer" />
                 </node>
               </node>
               <node concept="liA8E" id="iz0IZTxRG$" role="2OqNvi">
@@ -5674,6 +5675,25 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="77HFTazR70j" role="3cqZAp">
+          <node concept="3cpWsn" id="77HFTazR70k" role="3cpWs9">
+            <property role="TrG5h" value="selectionManager" />
+            <node concept="3uibUv" id="77HFTazR6ST" role="1tU5fm">
+              <ref role="3uigEE" to="lwvz:~SelectionManager" resolve="SelectionManager" />
+            </node>
+            <node concept="2OqwBi" id="77HFTazR70l" role="33vP2m">
+              <node concept="2OqwBi" id="77HFTazR70m" role="2Oq$k0">
+                <node concept="1DTwFV" id="77HFTazR70n" role="2OqNvi">
+                  <ref role="2WH_rO" node="4xT8egpzrhR" resolve="editorContext" />
+                </node>
+                <node concept="2WthIp" id="77HFTazR70o" role="2Oq$k0" />
+              </node>
+              <node concept="liA8E" id="77HFTazR70p" role="2OqNvi">
+                <ref role="37wK5l" to="cj4x:~EditorContext.getSelectionManager()" resolve="getSelectionManager" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="4QKZ3CW_W5X" role="3cqZAp">
           <node concept="3cpWsn" id="4QKZ3CW_W5Y" role="3cpWs9">
             <property role="TrG5h" value="selection" />
@@ -5684,16 +5704,8 @@
               <node concept="liA8E" id="4QKZ3CW_W60" role="2OqNvi">
                 <ref role="37wK5l" to="lwvz:~SelectionManager.getSelection()" resolve="getSelection" />
               </node>
-              <node concept="2OqwBi" id="4QKZ3CW_W61" role="2Oq$k0">
-                <node concept="2OqwBi" id="4QKZ3CW_W62" role="2Oq$k0">
-                  <node concept="1DTwFV" id="4QKZ3CW_W63" role="2OqNvi">
-                    <ref role="2WH_rO" node="5QmTFjQZTY3" resolve="editorComponent" />
-                  </node>
-                  <node concept="2WthIp" id="4QKZ3CW_W64" role="2Oq$k0" />
-                </node>
-                <node concept="liA8E" id="4QKZ3CW_W65" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getSelectionManager()" resolve="getSelectionManager" />
-                </node>
+              <node concept="37vLTw" id="77HFTazR70q" role="2Oq$k0">
+                <ref role="3cqZAo" node="77HFTazR70k" resolve="selectionManager" />
               </node>
             </node>
           </node>
@@ -5706,16 +5718,8 @@
               <node concept="liA8E" id="4QKZ3CWFhQI" role="2OqNvi">
                 <ref role="37wK5l" to="lwvz:~SelectionManager.getSelectionStackSize()" resolve="getSelectionStackSize" />
               </node>
-              <node concept="2OqwBi" id="4QKZ3CWFhQJ" role="2Oq$k0">
-                <node concept="2OqwBi" id="4QKZ3CWFhQK" role="2Oq$k0">
-                  <node concept="2WthIp" id="4QKZ3CWFhQL" role="2Oq$k0" />
-                  <node concept="1DTwFV" id="4QKZ3CWFhQM" role="2OqNvi">
-                    <ref role="2WH_rO" node="5QmTFjQZTY3" resolve="editorComponent" />
-                  </node>
-                </node>
-                <node concept="liA8E" id="4QKZ3CWFhQN" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getSelectionManager()" resolve="getSelectionManager" />
-                </node>
+              <node concept="37vLTw" id="77HFTazR70r" role="2Oq$k0">
+                <ref role="3cqZAo" node="77HFTazR70k" resolve="selectionManager" />
               </node>
             </node>
           </node>
@@ -5830,11 +5834,11 @@
                     <node concept="2OqwBi" id="6IcVGWoPV9U" role="2Oq$k0">
                       <node concept="2WthIp" id="6IcVGWoPU$m" role="2Oq$k0" />
                       <node concept="1DTwFV" id="6IcVGWoPW2C" role="2OqNvi">
-                        <ref role="2WH_rO" node="5QmTFjQZTY3" resolve="editorComponent" />
+                        <ref role="2WH_rO" node="4xT8egpzrhR" resolve="editorContext" />
                       </node>
                     </node>
                     <node concept="liA8E" id="6IcVGWoQ05b" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:~EditorComponent.getDeletionApprover()" resolve="getDeletionApprover" />
+                      <ref role="37wK5l" to="cj4x:~EditorContext.getDeletionOfficer()" resolve="getDeletionOfficer" />
                     </node>
                   </node>
                   <node concept="liA8E" id="4ogYUrdiOA0" role="2OqNvi">
@@ -14531,6 +14535,24 @@
               <ref role="37wK5l" to="33ny:~Optional.ifPresent(java.util.function.Consumer)" resolve="ifPresent" />
               <node concept="1bVj0M" id="4Otqc4bkvgr" role="37wK5m">
                 <node concept="3clFbS" id="4Otqc4bkvgs" role="1bW5cS">
+                  <node concept="3clFbF" id="3T6cOs0CnaX" role="3cqZAp">
+                    <node concept="2OqwBi" id="3T6cOs0Cohs" role="3clFbG">
+                      <node concept="2OqwBi" id="3T6cOs0CnSZ" role="2Oq$k0">
+                        <node concept="37vLTw" id="3T6cOs0Cp9f" role="2Oq$k0">
+                          <ref role="3cqZAo" node="4Otqc4bkuub" resolve="editorContext" />
+                        </node>
+                        <node concept="liA8E" id="3T6cOs0Co73" role="2OqNvi">
+                          <ref role="37wK5l" to="cj4x:~EditorContext.getDeletionOfficer()" resolve="getDeletionOfficer" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="3T6cOs0CoxC" role="2OqNvi">
+                        <ref role="37wK5l" to="cj4x:~DeletionApprover.approveForDeletion(jetbrains.mps.openapi.editor.cells.EditorCell)" resolve="approveForDeletion" />
+                        <node concept="37vLTw" id="3T6cOs0CoNx" role="37wK5m">
+                          <ref role="3cqZAo" node="4Otqc4bkLj9" resolve="cellToDelete" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
                   <node concept="3cpWs8" id="3T6cOs0Cp9a" role="3cqZAp">
                     <node concept="3cpWsn" id="3T6cOs0Cp9b" role="3cpWs9">
                       <property role="TrG5h" value="editorComponent" />
@@ -14543,24 +14565,6 @@
                         </node>
                         <node concept="liA8E" id="3T6cOs0Cp9e" role="2OqNvi">
                           <ref role="37wK5l" to="cj4x:~EditorContext.getEditorComponent()" resolve="getEditorComponent" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="3clFbF" id="3T6cOs0CnaX" role="3cqZAp">
-                    <node concept="2OqwBi" id="3T6cOs0Cohs" role="3clFbG">
-                      <node concept="2OqwBi" id="3T6cOs0CnSZ" role="2Oq$k0">
-                        <node concept="37vLTw" id="3T6cOs0Cp9f" role="2Oq$k0">
-                          <ref role="3cqZAo" node="3T6cOs0Cp9b" resolve="editorComponent" />
-                        </node>
-                        <node concept="liA8E" id="3T6cOs0Co73" role="2OqNvi">
-                          <ref role="37wK5l" to="cj4x:~EditorComponent.getDeletionApprover()" resolve="getDeletionApprover" />
-                        </node>
-                      </node>
-                      <node concept="liA8E" id="3T6cOs0CoxC" role="2OqNvi">
-                        <ref role="37wK5l" to="cj4x:~DeletionApprover.approveForDeletion(jetbrains.mps.openapi.editor.cells.EditorCell)" resolve="approveForDeletion" />
-                        <node concept="37vLTw" id="3T6cOs0CoNx" role="37wK5m">
-                          <ref role="3cqZAo" node="4Otqc4bkLj9" resolve="cellToDelete" />
                         </node>
                       </node>
                     </node>

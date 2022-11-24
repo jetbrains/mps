@@ -10,13 +10,14 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
+import jetbrains.mps.openapi.editor.selection.SelectionManager;
+import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.selection.Selection;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.openapi.editor.cells.CellAction;
-import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
-import jetbrains.mps.openapi.editor.selection.SelectionManager;
+import jetbrains.mps.openapi.editor.DeletionApprover;
 
 @GeneratedClass(node = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)/6743831156946309831", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
 public class Escape_Action extends BaseAction {
@@ -39,8 +40,9 @@ public class Escape_Action extends BaseAction {
     if (!(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).isFocusOwner())) {
       return false;
     }
-    Selection selection = ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getSelectionManager().getSelection();
-    int selectionStackSize = ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getSelectionManager().getSelectionStackSize();
+    SelectionManager selectionManager = ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getSelectionManager();
+    Selection selection = selectionManager.getSelection();
+    int selectionStackSize = selectionManager.getSelectionStackSize();
     if (selectionStackSize > 1) {
       return true;
     }
@@ -51,7 +53,7 @@ public class Escape_Action extends BaseAction {
     if (cancelFindAction != null && cancelFindAction.canExecute(((EditorContext) MapSequence.fromMap(_params).get("editorContext")))) {
       return true;
     }
-    return ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getHighlightManager().hasMessages(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getHighlightMessagesOwner()) || ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getDeletionApprover().getCellsApprovedForDeletion().size() > 0;
+    return ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getHighlightManager().hasMessages(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getHighlightMessagesOwner()) || ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getDeletionOfficer().getCellsApprovedForDeletion().size() > 0;
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -91,7 +93,7 @@ public class Escape_Action extends BaseAction {
       ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getHighlightManager().clearForOwner(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getHighlightMessagesOwner());
     }
     ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).onEscape();
-    SelectionManager selectionManager = ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getSelectionManager();
+    SelectionManager selectionManager = ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getSelectionManager();
     int selectionStackSize = selectionManager.getSelectionStackSize();
 
     if (selectionStackSize > 1) {
@@ -99,8 +101,9 @@ public class Escape_Action extends BaseAction {
     } else {
       check_h8krww_a0a0h0a(selectionManager.getSelection());
     }
-    if (((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getDeletionApprover().getCellsApprovedForDeletion().size() > 0) {
-      (((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getDeletionApprover()).clear();
+    DeletionApprover da = ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getDeletionOfficer();
+    if (da.getCellsApprovedForDeletion().size() > 0) {
+      da.clear();
     }
   }
   private CellAction getCancelFindAction(final Map<String, Object> _params) {

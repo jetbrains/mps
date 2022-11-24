@@ -23,7 +23,9 @@ import jetbrains.mps.nodeEditor.assist.DisabledContextAssistantManager;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 import jetbrains.mps.nodeEditor.configuration.EditorConfiguration;
 import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
+import jetbrains.mps.nodeEditor.deletionApprover.DeletionApproverImpl;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
+import jetbrains.mps.openapi.editor.DeletionApprover;
 import jetbrains.mps.openapi.editor.EditorComponentState;
 import jetbrains.mps.openapi.editor.EditorInspector;
 import jetbrains.mps.openapi.editor.EditorPanelManager;
@@ -67,6 +69,8 @@ public class EditorContext implements jetbrains.mps.openapi.editor.EditorContext
 
   @NotNull
   private final ContextAssistantManager myContextAssistantManager;
+
+  private DeletionApproverImpl myDeletionApprover;
 
   public EditorContext(@NotNull EditorComponent editorComponent, @Nullable SModel model, @NotNull SRepository repository) {
     this(editorComponent, model, repository, EditorConfigurationBuilder.buildDefault(), new DisabledContextAssistantManager());
@@ -323,6 +327,10 @@ public class EditorContext implements jetbrains.mps.openapi.editor.EditorContext
 
   void reset() {
     myEditorManager = null;
+    if (myDeletionApprover != null) {
+      myDeletionApprover.dispose();
+      myDeletionApprover = null;
+    }
     myIconCache.clear();
   }
 
@@ -330,5 +338,20 @@ public class EditorContext implements jetbrains.mps.openapi.editor.EditorContext
   @Override
   public EditorPanelManager getEditorPanelManager() {
     return myConfiguration.editorPanelManager;
+  }
+
+  @Override
+  public DeletionApprover getDeletionOfficer() {
+    // impl in EditorComponent was synchronized over EC instance. I don't see a point.
+    // We access editor code mainly in EDT, especially user-interaction code like deletion.
+    if (EditorSettings.getInstance().isUseTwoStepDeletion()) {
+      if (myDeletionApprover == null) {
+        myDeletionApprover = new DeletionApproverImpl(this, myNodeEditorComponent.getHighlightManager());
+        myDeletionApprover.initialize();
+      }
+      return myDeletionApprover;
+    } else {
+      return jetbrains.mps.openapi.editor.EditorContext.super.getDeletionOfficer();
+    }
   }
 }
