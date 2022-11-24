@@ -505,6 +505,16 @@
         <property role="3qWCbO" value="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
       </node>
     </node>
+    <node concept="PiPfp" id="29qIO8qoDGR" role="3989C9">
+      <property role="TrG5h" value="tasks" />
+      <node concept="25yagZ" id="29qIO8qTG_x" role="PiKyV">
+        <node concept="3yqu4x" id="29qIO8qTG_v" role="25yagT">
+          <node concept="3yrxFa" id="29qIO8qTG_w" role="3yqu4I">
+            <ref role="3yrxFb" node="7ad8nWle5X5" />
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="PiPfp" id="1s0vtrx9Ne8" role="3989C9">
       <property role="TrG5h" value="javac2" />
       <node concept="25yagZ" id="1s0vtrx9Rb5" role="PiKyV">
@@ -720,9 +730,6 @@
       </node>
       <node concept="nCB5N" id="4Wqyp$2_Whg" role="nCB5Z">
         <ref role="nCB5Y" node="47JXWa7IVSW" resolve="pattern-runtime" />
-      </node>
-      <node concept="2sjeV3" id="4YmhUESdX3j" role="nCB5Z">
-        <ref role="2sjeV2" node="6FsijxbeQd3" resolve="gnu.trove" />
       </node>
     </node>
     <node concept="398b33" id="4_qKb05xiaz" role="3989C9">
@@ -1527,6 +1534,10 @@
       <node concept="2sjeV3" id="TfcoydlS8a" role="nCB5Z">
         <property role="2a2d0E" value="true" />
         <ref role="2sjeV2" node="16Vg0jOcomR" resolve="idea-libraries" />
+      </node>
+      <node concept="2sjeV3" id="29qIO8r3mc_" role="nCB5Z">
+        <property role="2a2d0E" value="true" />
+        <ref role="2sjeV2" node="29qIO8qoDGR" resolve="tasks" />
       </node>
     </node>
     <node concept="398b33" id="4Iq3ixqvAFF" role="3989C9">
@@ -26554,7 +26565,7 @@
       <node concept="398223" id="4tNwrSpam8_" role="39821P">
         <node concept="3_J27D" id="4tNwrSpam8A" role="Nbhlr">
           <node concept="3Mxwew" id="4tNwrSpam8B" role="3MwsjC">
-            <property role="3MwjfP" value="git4idea" />
+            <property role="3MwjfP" value="tasks" />
           </node>
         </node>
         <node concept="398223" id="4tNwrSpam8C" role="39821P">
@@ -26563,16 +26574,37 @@
               <property role="3MwjfP" value="lib" />
             </node>
           </node>
-          <node concept="13uQ2_" id="4tNwrSpam8F" role="39821P">
-            <node concept="3_J27D" id="4tNwrSpam8G" role="13uQ07">
-              <node concept="3Mxwew" id="4tNwrSpam8H" role="3MwsjC">
-                <property role="3MwjfP" value="git4idea.jar" />
-              </node>
-            </node>
-          </node>
           <node concept="13uQ2_" id="7ad8nWle5X5" role="39821P">
             <node concept="3_J27D" id="7ad8nWle5X7" role="13uQ07">
               <node concept="3Mxwew" id="7ad8nWle60o" role="3MwsjC">
+                <property role="3MwjfP" value="tasks-core.jar" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="398223" id="29qIO8qTH7X" role="39821P">
+        <node concept="3_J27D" id="29qIO8qTH7Y" role="Nbhlr">
+          <node concept="3Mxwew" id="29qIO8qTH7Z" role="3MwsjC">
+            <property role="3MwjfP" value="vcs-git" />
+          </node>
+        </node>
+        <node concept="398223" id="29qIO8qTH80" role="39821P">
+          <node concept="3_J27D" id="29qIO8qTH81" role="Nbhlr">
+            <node concept="3Mxwew" id="29qIO8qTH82" role="3MwsjC">
+              <property role="3MwjfP" value="lib" />
+            </node>
+          </node>
+          <node concept="13uQ2_" id="29qIO8qTH83" role="39821P">
+            <node concept="3_J27D" id="29qIO8qTH84" role="13uQ07">
+              <node concept="3Mxwew" id="29qIO8qTH85" role="3MwsjC">
+                <property role="3MwjfP" value="vcs-git.jar" />
+              </node>
+            </node>
+          </node>
+          <node concept="13uQ2_" id="29qIO8qTH86" role="39821P">
+            <node concept="3_J27D" id="29qIO8qTH87" role="13uQ07">
+              <node concept="3Mxwew" id="29qIO8qTH88" role="3MwsjC">
                 <property role="3MwjfP" value="git4idea-rt.jar" />
               </node>
             </node>
@@ -26582,7 +26614,7 @@
       <node concept="398223" id="4tNwrSpam8n" role="39821P">
         <node concept="3_J27D" id="4tNwrSpam8o" role="Nbhlr">
           <node concept="3Mxwew" id="4tNwrSpam8p" role="3MwsjC">
-            <property role="3MwjfP" value="svn4idea" />
+            <property role="3MwjfP" value="vcs-svn" />
           </node>
         </node>
         <node concept="398223" id="4tNwrSpam8q" role="39821P">
@@ -26594,7 +26626,7 @@
           <node concept="13uQ2_" id="7Kvxa_ngN5n" role="39821P">
             <node concept="3_J27D" id="7Kvxa_ngN5p" role="13uQ07">
               <node concept="3Mxwew" id="7Kvxa_ngN5A" role="3MwsjC">
-                <property role="3MwjfP" value="svn4idea.jar" />
+                <property role="3MwjfP" value="vcs-svn.jar" />
               </node>
             </node>
           </node>
@@ -29761,18 +29793,6 @@
           </node>
         </node>
       </node>
-      <node concept="398BVA" id="4xYibpYKR3" role="3LF7KH">
-        <ref role="398BVh" node="5lGJ4TaqfAJ" resolve="plugin_home" />
-        <node concept="2Ry0Ak" id="4xYibpYKRa" role="iGT6I">
-          <property role="2Ry0Am" value="mps-modelchecker" />
-          <node concept="2Ry0Ak" id="4xYibpYKRb" role="2Ry0An">
-            <property role="2Ry0Am" value="platform" />
-            <node concept="2Ry0Ak" id="4xYibpYKRc" role="2Ry0An">
-              <property role="2Ry0Am" value="jetbrains.mps.ide.modelchecker.platform.msd" />
-            </node>
-          </node>
-        </node>
-      </node>
       <node concept="1SiIV0" id="4IP11oWmBUA" role="3bR37C">
         <node concept="3bR9La" id="4IP11oWmBUB" role="1SiIV1">
           <ref role="3bR37D" node="mXGwHwhVPj" resolve="JDK" />
@@ -29871,6 +29891,18 @@
       <node concept="1SiIV0" id="2dGZeUusbsC" role="3bR37C">
         <node concept="3bR9La" id="2dGZeUusbsD" role="1SiIV1">
           <ref role="3bR37D" node="HHlBn9$wJ2" resolve="org.jdom" />
+        </node>
+      </node>
+      <node concept="398BVA" id="4xYibpYKR3" role="3LF7KH">
+        <ref role="398BVh" node="5lGJ4TaqfAJ" resolve="plugin_home" />
+        <node concept="2Ry0Ak" id="4xYibpYKRa" role="iGT6I">
+          <property role="2Ry0Am" value="mps-modelchecker" />
+          <node concept="2Ry0Ak" id="4xYibpYKRb" role="2Ry0An">
+            <property role="2Ry0Am" value="platform" />
+            <node concept="2Ry0Ak" id="4xYibpYKRc" role="2Ry0An">
+              <property role="2Ry0Am" value="jetbrains.mps.ide.modelchecker.platform.msd" />
+            </node>
+          </node>
         </node>
       </node>
     </node>
@@ -45400,8 +45432,8 @@
         </node>
       </node>
       <node concept="3_J27D" id="I6XuqGYf8O" role="m_cZH">
-        <node concept="3Mxwew" id="I6XuqGYffH" role="3MwsjC">
-          <property role="3MwjfP" value="git4idea" />
+        <node concept="3Mxwew" id="29qIO8p9RYg" role="3MwsjC">
+          <property role="3MwjfP" value="vcs-git" />
         </node>
       </node>
       <node concept="3_J27D" id="I6XuqGYf8Q" role="m$_w8">
@@ -45439,47 +45471,41 @@
           <ref role="3bR37D" node="44LXwdzyvTi" resolve="Annotations" />
         </node>
       </node>
-      <node concept="1SiIV0" id="4wxeloVug3G" role="3bR37C">
-        <node concept="1BurEX" id="4wxeloVug3H" role="1SiIV1">
-          <node concept="398BVA" id="4wxeloVug3y" role="1BurEY">
+      <node concept="1SiIV0" id="29qIO8p7vvH" role="3bR37C">
+        <node concept="1BurEX" id="29qIO8p7vvI" role="1SiIV1">
+          <node concept="398BVA" id="29qIO8p7vvz" role="1BurEY">
             <ref role="398BVh" node="6ifcnI8$2ke" resolve="mps_home" />
-            <node concept="2Ry0Ak" id="4wxeloVug3z" role="iGT6I">
+            <node concept="2Ry0Ak" id="29qIO8p7vv$" role="iGT6I">
               <property role="2Ry0Am" value="plugins" />
-              <node concept="2Ry0Ak" id="4wxeloVug3$" role="2Ry0An">
-                <property role="2Ry0Am" value="git4idea" />
-                <node concept="2Ry0Ak" id="4wxeloVug3_" role="2Ry0An">
+              <node concept="2Ry0Ak" id="29qIO8p7vv_" role="2Ry0An">
+                <property role="2Ry0Am" value="vcs-git" />
+                <node concept="2Ry0Ak" id="29qIO8p7vvA" role="2Ry0An">
                   <property role="2Ry0Am" value="lib" />
-                  <node concept="2Ry0Ak" id="4wxeloVug3A" role="2Ry0An">
-                    <property role="2Ry0Am" value="git4idea.jar" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3yrxFa" id="2NYcxOd6q79" role="2gdwQb">
-            <ref role="3yrxFb" node="4tNwrSpam8F" />
-          </node>
-        </node>
-      </node>
-      <node concept="1SiIV0" id="4wxeloVug3w" role="3bR37C">
-        <node concept="1BurEX" id="4wxeloVug3x" role="1SiIV1">
-          <node concept="398BVA" id="4wxeloVug3m" role="1BurEY">
-            <ref role="398BVh" node="6ifcnI8$2ke" resolve="mps_home" />
-            <node concept="2Ry0Ak" id="4wxeloVug3n" role="iGT6I">
-              <property role="2Ry0Am" value="plugins" />
-              <node concept="2Ry0Ak" id="4wxeloVug3o" role="2Ry0An">
-                <property role="2Ry0Am" value="git4idea" />
-                <node concept="2Ry0Ak" id="4wxeloVug3p" role="2Ry0An">
-                  <property role="2Ry0Am" value="lib" />
-                  <node concept="2Ry0Ak" id="2NYcxOd6q74" role="2Ry0An">
+                  <node concept="2Ry0Ak" id="29qIO8p7vvB" role="2Ry0An">
                     <property role="2Ry0Am" value="git4idea-rt.jar" />
                   </node>
                 </node>
               </node>
             </node>
           </node>
-          <node concept="3yrxFa" id="2NYcxOd6q76" role="2gdwQb">
-            <ref role="3yrxFb" node="7ad8nWle5X5" />
+        </node>
+      </node>
+      <node concept="1SiIV0" id="29qIO8p7vvT" role="3bR37C">
+        <node concept="1BurEX" id="29qIO8p7vvU" role="1SiIV1">
+          <node concept="398BVA" id="29qIO8p7vvJ" role="1BurEY">
+            <ref role="398BVh" node="6ifcnI8$2ke" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="29qIO8p7vvK" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="29qIO8p7vvL" role="2Ry0An">
+                <property role="2Ry0Am" value="vcs-git" />
+                <node concept="2Ry0Ak" id="29qIO8p7vvM" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="29qIO8p7vvN" role="2Ry0An">
+                    <property role="2Ry0Am" value="vcs-git.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
           </node>
         </node>
       </node>
@@ -45520,8 +45546,8 @@
         </node>
       </node>
       <node concept="3_J27D" id="3nGzrDDNo$r" role="m_cZH">
-        <node concept="3Mxwew" id="3nGzrDDNo$s" role="3MwsjC">
-          <property role="3MwjfP" value="svn4idea" />
+        <node concept="3Mxwew" id="29qIO8p9S5Q" role="3MwsjC">
+          <property role="3MwjfP" value="vcs-svn" />
         </node>
       </node>
       <node concept="3_J27D" id="3nGzrDDNo$t" role="m$_w8">
@@ -45543,8 +45569,8 @@
           <node concept="55IIr" id="3nGzrDDNoFl" role="2HvfZ0">
             <node concept="2Ry0Ak" id="3nGzrDDNoFm" role="iGT6I">
               <property role="2Ry0Am" value="plugins" />
-              <node concept="2Ry0Ak" id="3nGzrDDNoFn" role="2Ry0An">
-                <property role="2Ry0Am" value="svn4idea" />
+              <node concept="2Ry0Ak" id="29qIO8p9Say" role="2Ry0An">
+                <property role="2Ry0Am" value="vcs-svn" />
               </node>
             </node>
           </node>
@@ -45560,8 +45586,8 @@
           <node concept="55IIr" id="1diLdO26H8g" role="2HvfZ0">
             <node concept="2Ry0Ak" id="1diLdO26H8h" role="iGT6I">
               <property role="2Ry0Am" value="plugins" />
-              <node concept="2Ry0Ak" id="1diLdO26H8i" role="2Ry0An">
-                <property role="2Ry0Am" value="git4idea" />
+              <node concept="2Ry0Ak" id="29qIO8p9Seg" role="2Ry0An">
+                <property role="2Ry0Am" value="vcs-git" />
               </node>
             </node>
           </node>
@@ -45581,17 +45607,17 @@
           <node concept="L2wRC" id="GF9IugXStk" role="39821P">
             <ref role="L2wRA" node="4wxeloVufXp" resolve="jetbrains.mps.git4idea.stubs" />
             <node concept="3yLZsm" id="GF9IugXSvy" role="3yL2VB">
-              <property role="3yLZsk" value="../../git4idea/lib/git4idea.jar" />
+              <property role="3yLZsk" value="../../vcs-git/lib/git4idea.jar" />
               <node concept="398BVA" id="GF9IugYBPZ" role="3yLZsn">
                 <ref role="398BVh" node="6ifcnI8$2ke" resolve="mps_home" />
                 <node concept="2Ry0Ak" id="GF9IugYBQ5" role="iGT6I">
                   <property role="2Ry0Am" value="plugins" />
                   <node concept="2Ry0Ak" id="GF9IugYBQ6" role="2Ry0An">
-                    <property role="2Ry0Am" value="git4idea" />
+                    <property role="2Ry0Am" value="vcs-git" />
                     <node concept="2Ry0Ak" id="GF9IugYBQ7" role="2Ry0An">
                       <property role="2Ry0Am" value="lib" />
-                      <node concept="2Ry0Ak" id="GF9IugYBQ8" role="2Ry0An">
-                        <property role="2Ry0Am" value="git4idea.jar" />
+                      <node concept="2Ry0Ak" id="29qIO8pc8h5" role="2Ry0An">
+                        <property role="2Ry0Am" value="vcs-git.jar" />
                       </node>
                     </node>
                   </node>
@@ -45599,13 +45625,13 @@
               </node>
             </node>
             <node concept="3yLZsm" id="GF9IugZbc$" role="3yL2VB">
-              <property role="3yLZsk" value="../../git4idea/lib/git4idea-rt.jar" />
+              <property role="3yLZsk" value="../../vcs-git/lib/git4idea-rt.jar" />
               <node concept="398BVA" id="GF9IugZbc_" role="3yLZsn">
                 <ref role="398BVh" node="6ifcnI8$2ke" resolve="mps_home" />
                 <node concept="2Ry0Ak" id="GF9IugZbcA" role="iGT6I">
                   <property role="2Ry0Am" value="plugins" />
                   <node concept="2Ry0Ak" id="GF9IugZbcB" role="2Ry0An">
-                    <property role="2Ry0Am" value="git4idea" />
+                    <property role="2Ry0Am" value="vcs-git" />
                     <node concept="2Ry0Ak" id="GF9IugZbcC" role="2Ry0An">
                       <property role="2Ry0Am" value="lib" />
                       <node concept="2Ry0Ak" id="GF9IugZbcD" role="2Ry0An">
@@ -48390,10 +48416,10 @@
       </node>
     </node>
     <node concept="1E1JtA" id="7gQEwkA7nSV" role="3989C9">
-      <property role="BnDLt" value="true" />
       <property role="TrG5h" value="jetbrains.mps.console" />
       <property role="3LESm3" value="a8de7923-dc6f-4aa1-b8a9-2d19ffee3edd" />
       <property role="2GAjPV" value="true" />
+      <property role="BnDLt" value="true" />
       <node concept="1E1SXE" id="1KUoCioUeUO" role="3bR37C">
         <property role="1E1SXH" value="true" />
         <ref role="1E1SXG" node="7gQEwkA7l8u" resolve="consoleTool" />
@@ -49988,7 +50014,7 @@
       <node concept="25yagZ" id="6FsijxbeQd4" role="PiKyV">
         <node concept="3yqu4x" id="6FsijxbeQd5" role="25yagT">
           <node concept="3yrxFa" id="6FsijxbeQd6" role="3yqu4I">
-            <ref role="3yrxFb" node="5DAo_J9amU0" />
+            <ref role="3yrxFb" node="1w78goyRV4e" />
           </node>
         </node>
       </node>
@@ -50361,6 +50387,7 @@
         <ref role="nCB5Y" node="1s0vtrwURQP" resolve="mps-annotations" />
       </node>
       <node concept="2sjeV3" id="4YmhUESdXIh" role="nCB5Z">
+        <property role="2a2d0E" value="true" />
         <ref role="2sjeV2" node="6FsijxbeQd3" resolve="gnu.trove" />
       </node>
       <node concept="398b2D" id="3vjn6$4rsZi" role="398b2p">
@@ -50415,8 +50442,8 @@
       <node concept="nCB5N" id="3vjn6$4v68Q" role="nCB5Z">
         <ref role="nCB5Y" node="3vjn6$4rsZc" resolve="util-core" />
       </node>
-      <node concept="2sjeV3" id="6FsijxbeQk7" role="nCB5Z">
-        <ref role="2sjeV2" node="6FsijxbeQd3" resolve="gnu.trove" />
+      <node concept="2sjeV3" id="29qIO8plFxO" role="nCB5Z">
+        <ref role="2sjeV2" node="4YmhUESdVsA" resolve="com.intellij.openapi" />
       </node>
     </node>
     <node concept="398b33" id="42Iv58Wf3Ei" role="3989C9">
@@ -50436,9 +50463,6 @@
       <node concept="nCB5N" id="3vjn6$4z3_x" role="nCB5Z">
         <property role="1Sh$E4" value="true" />
         <ref role="nCB5Y" node="3vjn6$4rsZc" resolve="util-core" />
-      </node>
-      <node concept="2sjeV3" id="4YmhUESdXIM" role="nCB5Z">
-        <ref role="2sjeV2" node="6FsijxbeQd3" resolve="gnu.trove" />
       </node>
       <node concept="398b2D" id="42Iv58WeTIy" role="398b2p">
         <node concept="398BVA" id="42Iv58WeV$i" role="398b2C">
@@ -50774,6 +50798,7 @@
         <ref role="nCB5Y" node="SHPhCCYuJN" resolve="messages-for-legacy-constraints" />
       </node>
       <node concept="2sjeV3" id="6FsijxbeQnr" role="nCB5Z">
+        <property role="2a2d0E" value="true" />
         <ref role="2sjeV2" node="6FsijxbeQd3" resolve="gnu.trove" />
       </node>
       <node concept="2sjeV3" id="6FsijxbeQo1" role="nCB5Z">

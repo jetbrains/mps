@@ -122,16 +122,17 @@
         <fileset file="${artifacts.mpsVcsPlatform}/lib/vcs-platform.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/app.jar" />
-        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/forms_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/java-impl.jar" />
         <fileset file="${artifacts.IDEA}/lib/jps-model.jar" />
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
-        <fileset dir="${artifacts.IDEA}/plugins/git4idea/lib" includes="*.jar" />
-        <fileset dir="${artifacts.IDEA}/plugins/svn4idea/lib" includes="*.jar" />
+        <fileset file="${artifacts.IDEA}/plugins/tasks/lib/tasks-core.jar" />
+        <fileset dir="${artifacts.IDEA}/plugins/tasks/lib" includes="*.jar" />
+        <fileset dir="${artifacts.IDEA}/plugins/vcs-svn/lib" includes="*.jar" />
         <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>

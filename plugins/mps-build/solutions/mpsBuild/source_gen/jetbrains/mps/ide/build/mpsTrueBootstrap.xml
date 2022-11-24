@@ -61,7 +61,7 @@
   </path>
   
   <path id="path.java.library.gnu.trove">
-    <fileset file="${artifacts.IDEA}/lib/util.jar" />
+    <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
   </path>
   
   <path id="path.java.library.kotlin-metadata">
@@ -385,6 +385,7 @@
         <path refid="path.java.library.annotations-lib" />
         <path refid="path.java.library.org.apache.log4j" />
         <path refid="path.java.library.gnu.trove" />
+        <path refid="path.java.library.com.intellij.openapi" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -426,8 +427,8 @@
       <classpath>
         <path refid="path.java.library.annotations-lib" />
         <path refid="path.java.library.org.apache.log4j" />
-        <path refid="path.java.library.org.jdom" />
         <path refid="path.java.library.gnu.trove" />
+        <path refid="path.java.library.org.jdom" />
         <pathelement path="${build.tmp}/java/out/mps-annotations" />
         <pathelement path="${build.tmp}/java/out/mps-openapi" />
         <pathelement path="${build.tmp}/java/out/mps-logging" />
@@ -474,6 +475,7 @@
         <pathelement path="${build.tmp}/java/out/vfs" />
         <path refid="path.java.library.annotations-lib" />
         <path refid="path.java.library.org.apache.log4j" />
+        <path refid="path.java.library.gnu.trove" />
         <path refid="path.java.library.org.jdom" />
         <pathelement path="${build.tmp}/java.modules.cycle.1" />
         <path refid="path.jdk.classpath" />
@@ -498,6 +500,7 @@
         <pathelement path="${build.tmp}/java/out/mps-smodel" />
         <path refid="path.java.library.annotations-lib" />
         <path refid="path.java.library.org.apache.log4j" />
+        <path refid="path.java.library.gnu.trove" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -528,6 +531,7 @@
         <pathelement path="${build.tmp}/java/out/vfs" />
         <path refid="path.java.library.annotations-lib" />
         <path refid="path.java.library.org.apache.log4j" />
+        <path refid="path.java.library.gnu.trove" />
         <path refid="path.java.library.org.jdom" />
         <pathelement path="${build.tmp}/java.modules.cycle.1" />
         <path refid="path.jdk.classpath" />
@@ -653,6 +657,7 @@
         <pathelement path="${build.tmp}/java/out/vfs" />
         <path refid="path.java.library.annotations-lib" />
         <path refid="path.java.library.org.apache.log4j" />
+        <path refid="path.java.library.gnu.trove" />
         <path refid="path.java.library.org.jdom" />
         <pathelement path="${build.tmp}/java.modules.cycle.1" />
         <path refid="path.jdk.classpath" />
@@ -700,6 +705,7 @@
         <pathelement path="${build.tmp}/java/out/mps-boot-util" />
         <path refid="path.java.library.annotations-lib" />
         <path refid="path.java.library.org.apache.log4j" />
+        <path refid="path.java.library.gnu.trove" />
         <path refid="path.java.library.org.jdom" />
         <path refid="path.java.library.eclipse.ecj" />
         <path refid="path.java.library.objectweb.asm" />
@@ -742,6 +748,7 @@
         <pathelement path="${build.tmp}/java/out/mps-persistence" />
         <path refid="path.java.library.annotations-lib" />
         <path refid="path.java.library.org.apache.log4j" />
+        <path refid="path.java.library.gnu.trove" />
         <path refid="path.java.library.org.jdom" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -779,6 +786,7 @@
         <pathelement path="${build.tmp}/java/out/platform-persistence-only" />
         <path refid="path.java.library.annotations-lib" />
         <path refid="path.java.library.org.apache.log4j" />
+        <path refid="path.java.library.gnu.trove" />
         <path refid="path.java.library.org.jdom" />
         <path refid="path.jdk.classpath" />
       </classpath>

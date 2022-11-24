@@ -41,8 +41,8 @@
   </path>
   
   <path id="path.java.library.idea-vcs">
-    <fileset dir="${artifacts.IDEA}/plugins/git4idea/lib" includes="*.jar" />
-    <fileset dir="${artifacts.IDEA}/plugins/svn4idea/lib" includes="*.jar" />
+    <fileset dir="${artifacts.IDEA}/plugins/tasks/lib" includes="*.jar" />
+    <fileset dir="${artifacts.IDEA}/plugins/vcs-svn/lib" includes="*.jar" />
     <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
   </path>
   
@@ -60,15 +60,15 @@
   <generator-settings id="m2m-defaults" strictMode="true" parallelThreads="8" inplaceTransform="false" warnWrongChild="true" createStaticRefs="true" skipUnmodifiedModels="${mps.generator.skipUnmodifiedModels}" />
   
   <target name="assemble" depends="declare-mps-tasks, classes">
-    <mkdir dir="${build.layout}/svn4idea" />
-    <copy todir="${build.layout}/svn4idea">
-      <fileset dir="${basedir}/plugins/svn4idea">
+    <mkdir dir="${build.layout}/vcs-svn" />
+    <copy todir="${build.layout}/vcs-svn">
+      <fileset dir="${basedir}/plugins/vcs-svn">
         <exclude name="**/*.zip" />
       </fileset>
     </copy>
-    <mkdir dir="${build.layout}/git4idea" />
-    <copy todir="${build.layout}/git4idea">
-      <fileset dir="${basedir}/plugins/git4idea">
+    <mkdir dir="${build.layout}/vcs-git" />
+    <copy todir="${build.layout}/vcs-git">
+      <fileset dir="${basedir}/plugins/vcs-git">
         <exclude name="**/*.zip" />
       </fileset>
     </copy>
@@ -116,8 +116,8 @@
           <module ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5(MPS.IDEA)" kind="cl" />
         </dependencies>
         <uses />
-        <library jar="../../git4idea/lib/git4idea.jar" />
-        <library jar="../../git4idea/lib/git4idea-rt.jar" />
+        <library jar="../../vcs-git/lib/git4idea-rt.jar" />
+        <library jar="../../vcs-git/lib/git4idea.jar" />
         <sources jar="." descriptor="jetbrains.mps.git4idea.stubs.msd" />
       </module>
     </echoxml>
@@ -631,6 +631,7 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-persistence.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-vcs" />
         <path refid="path.jdk.classpath" />
@@ -671,14 +672,15 @@
         <pathelement path="${build.tmp}/java/out/vcs-core" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/app.jar" />
-        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/forms_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/java-impl.jar" />
         <fileset file="${artifacts.IDEA}/lib/jps-model.jar" />
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
+        <fileset file="${artifacts.IDEA}/plugins/tasks/lib/tasks-core.jar" />
         <path refid="path.java.library.idea-vcs" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -732,6 +734,7 @@
         <fileset file="${artifacts.IDEA}/lib/jps-model.jar" />
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
+        <fileset file="${artifacts.IDEA}/plugins/tasks/lib/tasks-core.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.analyzers.runtime.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.logging.runtime.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.core.jar" />

@@ -173,17 +173,17 @@
     <copy todir="${build.layout}/plugins/mps-vcs">
       <fileset dir="${artifacts.mpsVcs}/mps-vcs" />
     </copy>
-    <mkdir dir="${build.layout}/plugins/git4idea" />
-    <copy todir="${build.layout}/plugins/git4idea">
-      <fileset dir="${artifacts.mpsVcs}/git4idea" />
+    <mkdir dir="${build.layout}/plugins/vcs-git" />
+    <copy todir="${build.layout}/plugins/vcs-git">
+      <fileset dir="${artifacts.mpsVcs}/vcs-git" />
     </copy>
     <mkdir dir="${build.layout}/plugins/mps-git4idea" />
     <copy todir="${build.layout}/plugins/mps-git4idea">
       <fileset dir="${artifacts.mpsVcs}/mps-git4idea" />
     </copy>
-    <mkdir dir="${build.layout}/plugins/svn4idea" />
-    <copy todir="${build.layout}/plugins/svn4idea">
-      <fileset dir="${artifacts.mpsVcs}/svn4idea" />
+    <mkdir dir="${build.layout}/plugins/vcs-svn" />
+    <copy todir="${build.layout}/plugins/vcs-svn">
+      <fileset dir="${artifacts.mpsVcs}/vcs-svn" />
     </copy>
     <mkdir dir="${build.layout}/plugins/mps-migration" />
     <copy todir="${build.layout}/plugins/mps-migration">
