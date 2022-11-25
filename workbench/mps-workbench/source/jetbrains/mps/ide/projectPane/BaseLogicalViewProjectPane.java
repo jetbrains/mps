@@ -433,7 +433,12 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
     for (TreePath path : paths) {
       if (path.getLastPathComponent() instanceof PackageNode) {
         PackageNode pn = (PackageNode) path.getLastPathComponent();
-        result.add(new Pair<>(pn.getModelReference().resolve(projectRepo), pn.getFullPackage()));
+        projectRepo.getModelAccess().runReadAction(new Runnable() {
+          @Override
+          public void run() {
+            result.add(new Pair<>(pn.getModelReference().resolve(projectRepo), pn.getFullPackage()));
+          }
+        });
       }
     }
     return result;
