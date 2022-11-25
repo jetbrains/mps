@@ -18,6 +18,7 @@ package jetbrains.mps.typesystem.checking;
 import com.intellij.openapi.Disposable;
 import jetbrains.mps.core.platform.DynamicComponentWarden;
 import jetbrains.mps.core.platform.DynamicComponentWarden.Token;
+import jetbrains.mps.editor.EditorComponentLifecycleListener;
 import jetbrains.mps.editor.EditorComponentTrackService;
 import jetbrains.mps.errors.CheckerRegistry;
 import jetbrains.mps.ide.MPSCoreComponents;
@@ -33,13 +34,16 @@ import jetbrains.mps.typesystemEngine.checker.NonTypesystemChecker;
 import jetbrains.mps.typesystemEngine.checker.TypesystemChecker;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.project.Project;
 import typesystemIntegration.languageChecker.RefScopeCheckerInEditor;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.LinkedHashSet;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 // XXX this one could be ProjectComponent if needs to pass context down to checkers (e.g. TypesystemChecker)
 public class EditorCheckerComponent implements Disposable {
@@ -87,6 +91,7 @@ public class EditorCheckerComponent implements Disposable {
   // FIXME find proper place for the class ([mps-editor]). Need a place where can register a CoreComponent impl
   private static class EditorComponentTracker implements EditorComponentTrackService {
     private final LinkedHashSet<EditorComponent> myEditorComponents = new LinkedHashSet<>();
+    private final CopyOnWriteArrayList<EditorComponentLifecycleListener> myListeners = new CopyOnWriteArrayList<>();
 
     private LanguageRegistryListener myReloadListener;
 
@@ -95,7 +100,15 @@ public class EditorCheckerComponent implements Disposable {
       if (myEditorComponents.isEmpty()) {
         installReloadListener();
       }
+      myListeners.forEach(l -> l.editorComponentCreated(project, editorComponent));
       myEditorComponents.add(editorComponent);
+      if (editorComponent.getEditedNode() != null) {
+        // condition derived from myNode != null in EditorComponent.editNode()
+        fireCreatedMessage(project, editorComponent);
+      }
+    }
+
+    private void fireCreatedMessage(Project project, EditorComponent editorComponent) {
       final com.intellij.openapi.project.Project ideaProject = ProjectHelper.toIdeaProject((jetbrains.mps.project.Project) project);
       if (ideaProject != null && editorComponent instanceof jetbrains.mps.nodeEditor.EditorComponent) {
         EditorComponentCreateListener listener = ideaProject.getMessageBus().syncPublisher(EditorComponentCreateListener.EDITOR_COMPONENT_CREATION);
@@ -110,11 +123,40 @@ public class EditorCheckerComponent implements Disposable {
       if (myEditorComponents.isEmpty()) {
         uninstallReloadListener();
       }
+      myListeners.forEach(l -> l.editorComponentDisposed(project, editorComponent));
+      fireDisposedMessage(project, editorComponent);
+    }
+
+    private void fireDisposedMessage(Project project, EditorComponent editorComponent) {
       final com.intellij.openapi.project.Project ideaProject = ProjectHelper.toIdeaProject((jetbrains.mps.project.Project) project);
       if (ideaProject != null && editorComponent instanceof jetbrains.mps.nodeEditor.EditorComponent) {
         EditorComponentCreateListener listener = ideaProject.getMessageBus().syncPublisher(EditorComponentCreateListener.EDITOR_COMPONENT_CREATION);
         listener.editorComponentDisposed((jetbrains.mps.nodeEditor.EditorComponent) editorComponent);
       }
+    }
+
+    @Override
+    public void editorComponentNodeChanged(@NotNull Project project, @NotNull EditorComponent editorComponent, @Nullable SNode oldValue, @Nullable SNode newValue) {
+      myListeners.forEach(l -> l.editorComponentNodeChanged(project, editorComponent, oldValue, newValue));
+      fireDisposedMessage(project, editorComponent);
+      fireCreatedMessage(project, editorComponent);
+    }
+
+    @Override
+    public Collection<EditorComponent> tracked() {
+      return new ArrayList<>(myEditorComponents);
+    }
+
+    @Override
+    public void addListener(@Nullable EditorComponentLifecycleListener listener) {
+      if (listener != null) {
+        myListeners.add(listener);
+      }
+    }
+
+    @Override
+    public void removeListener(@Nullable EditorComponentLifecycleListener listener) {
+      myListeners.remove(listener);
     }
 
     private void installReloadListener() {

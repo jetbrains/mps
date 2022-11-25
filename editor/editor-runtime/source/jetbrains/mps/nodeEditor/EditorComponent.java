@@ -829,6 +829,20 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     }
   }
 
+  private void notifyNodeChange(SNode oldValue, SNode newValue) {
+    if (oldValue == newValue) {
+      return; // don't see a reason to trigger an update, although there's no such logic before my changes.
+    }
+    jetbrains.mps.project.Project project = ProjectHelper.getProject(myRepository);
+    if (project == null) {
+      return;
+    }
+    final EditorComponentTrackService ecTracker = project.getComponent(EditorComponentTrackService.class);
+    if (ecTracker != null) {
+      ecTracker.editorComponentNodeChanged(project, this, oldValue, newValue);
+    }
+  }
+
   public boolean onEscape() {
     return false;
   }
@@ -1188,6 +1202,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
 
       // respect notifiesCreation() for the sake of mbeddr.SPreferencesEditorComponent (until it migrates to 22.3)
       final boolean notifyCreateDispose = myEditorConfiguration.notifyCreateDispose || notifiesCreation();
+      final SNode originalNode = myNode;
 
       final boolean needNewTypecheckingSession = updateContainingRoot(node);
       if (needNewTypecheckingSession) {
@@ -1217,9 +1232,13 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
         refreshContentHighlighter();
       }
 
-      if (!myCreateNotified && myNode != null && notifyCreateDispose) {
-        notifyCreation();
-        myCreateNotified = true;
+      if (notifyCreateDispose) {
+        if (!myCreateNotified) {
+          notifyCreation();
+          myCreateNotified = true;
+        }
+        assert myCreateNotified;
+        notifyNodeChange(originalNode, myNode);
       }
     });
   }
