@@ -4592,7 +4592,7 @@
       <node id="1177070335244" at="36,119,37,114" concept="6" />
       <node id="3506061427592180499" at="39,79,40,92" concept="6" />
       <node id="8327569827253894762" at="41,7,42,92" concept="12" />
-      <node id="8327569827253915758" at="43,85,44,85" concept="6" />
+      <node id="7695787290378550879" at="43,85,44,120" concept="6" />
       <node id="1177070341621" at="46,5,47,18" concept="13" />
       <node id="1177070067544" at="49,50,50,33" concept="13" />
       <node id="1177070067544" at="52,68,53,102" concept="13" />
@@ -4628,10 +4628,13 @@
       <node id="3506061427592190442" at="96,35,97,215" concept="6" />
       <node id="3506061427592190442" at="97,215,98,168" concept="6" />
       <node id="3506061427592190442" at="98,168,99,24" concept="13" />
-      <node id="1177070067544" at="103,0,104,0" concept="16" trace="componentType$F$Gi" />
-      <node id="1177070067544" at="107,0,108,0" concept="16" trace="Type$bu" />
-      <node id="1177070067544" at="108,0,109,0" concept="16" trace="ArrayType$rh" />
-      <node id="1177070067544" at="109,0,110,0" concept="16" trace="PrimitiveType$sR" />
+      <node id="7695787290378551818" at="101,68,102,69" concept="12" />
+      <node id="7695787290378551818" at="102,69,103,79" concept="6" />
+      <node id="7695787290378551818" at="103,79,104,26" concept="13" />
+      <node id="1177070067544" at="108,0,109,0" concept="16" trace="componentType$F$Gi" />
+      <node id="1177070067544" at="112,0,113,0" concept="16" trace="Type$bu" />
+      <node id="1177070067544" at="113,0,114,0" concept="16" trace="ArrayType$rh" />
+      <node id="1177070067544" at="114,0,115,0" concept="16" trace="PrimitiveType$sR" />
       <node id="1177070067544" at="26,0,28,0" concept="3" trace="subtyping_arrayType_SubtypingRule#()V" />
       <node id="2306374661015081567" at="30,89,33,5" concept="10" />
       <node id="1177070212112" at="35,149,38,7" concept="9" />
@@ -4641,6 +4644,7 @@
       <node id="1177070067544" at="52,0,55,0" concept="11" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="1177070067544" at="55,0,58,0" concept="11" trace="isWeak#()Z" />
       <node id="1196777955227" at="84,39,87,5" concept="10" />
+      <node id="7695787290378551818" at="101,0,106,0" concept="17" trace="createArrayType_ny91lb_a0a0a3a4a1#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="2306374661015112617" at="58,0,65,0" concept="17" trace="_quotation_createNode_ny91lb_a0a0c0b#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="2306374661015112619" at="65,0,72,0" concept="17" trace="_quotation_createNode_ny91lb_b0a0c0b#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="2306374661015112621" at="72,0,79,0" concept="17" trace="_quotation_createNode_ny91lb_c0a0c0b#()Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -4652,7 +4656,7 @@
       <scope id="2306374661015081569" at="31,130,32,147" />
       <scope id="1177070212116" at="36,119,37,114" />
       <scope id="3506061427592145366" at="39,79,40,92" />
-      <scope id="8327569827253906964" at="43,85,44,85" />
+      <scope id="8327569827253906964" at="43,85,44,120" />
       <scope id="1177070067544" at="49,50,50,33" />
       <scope id="1177070067544" at="52,68,53,102" />
       <scope id="1177070067544" at="55,27,56,17" />
@@ -4666,6 +4670,9 @@
         <var name="argument" id="1177070067544" />
       </scope>
       <scope id="1177070067544" at="55,0,58,0" />
+      <scope id="7695787290378551818" at="101,68,104,26">
+        <var name="n0" id="7695787290378551818" />
+      </scope>
       <scope id="2306374661015112617" at="58,63,63,24">
         <var name="nb" id="2306374661015112617" />
         <var name="quotedNode_1" id="2306374661015112617" />
@@ -4677,6 +4684,9 @@
       <scope id="2306374661015112621" at="72,63,77,24">
         <var name="nb" id="2306374661015112621" />
         <var name="quotedNode_1" id="2306374661015112621" />
+      </scope>
+      <scope id="7695787290378551818" at="101,0,106,0">
+        <var name="p0" id="7695787290378551818" />
       </scope>
       <scope id="2306374661015112617" at="58,0,65,0" />
       <scope id="2306374661015112619" at="65,0,72,0" />
@@ -4708,9 +4718,9 @@
         <var name="status" id="1177070067544" />
         <var name="typeCheckingContext" id="1177070067544" />
       </scope>
-      <unit id="1177070067544" at="102,0,105,0" name="jetbrains.mps.baseLanguage.typesystem.subtyping_arrayType_SubtypingRule$LINKS" />
-      <unit id="1177070067544" at="106,0,111,0" name="jetbrains.mps.baseLanguage.typesystem.subtyping_arrayType_SubtypingRule$CONCEPTS" />
-      <unit id="1177070067544" at="25,0,112,0" name="jetbrains.mps.baseLanguage.typesystem.subtyping_arrayType_SubtypingRule" />
+      <unit id="1177070067544" at="107,0,110,0" name="jetbrains.mps.baseLanguage.typesystem.subtyping_arrayType_SubtypingRule$LINKS" />
+      <unit id="1177070067544" at="111,0,116,0" name="jetbrains.mps.baseLanguage.typesystem.subtyping_arrayType_SubtypingRule$CONCEPTS" />
+      <unit id="1177070067544" at="25,0,117,0" name="jetbrains.mps.baseLanguage.typesystem.subtyping_arrayType_SubtypingRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/1177073488008">

@@ -41,7 +41,7 @@ public class subtyping_arrayType_SubtypingRule extends SubtypingRule_Runtime imp
       }
       SNode javaType = Type__BehaviorDescriptor.getJavaType_idhEwIzO1.invoke(componentType);
       if (javaType != null && !(new SNodeMatcher().match(componentType, javaType))) {
-        ListSequence.fromList(result).addElement(SNodeOperations.copyNode(javaType));
+        ListSequence.fromList(result).addElement(createArrayType_ny91lb_a0a0a3a4a1(SNodeOperations.copyNode(javaType)));
       }
     }
     return result;
@@ -97,6 +97,11 @@ public class subtyping_arrayType_SubtypingRule extends SubtypingRule_Runtime imp
     nb1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~Object");
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType"), quotedNode_2);
     return quotedNode_1;
+  }
+  private static SNode createArrayType_ny91lb_a0a0a3a4a1(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ArrayType$rh);
+    n0.forChild(LINKS.componentType$F$Gi).initNode(p0, CONCEPTS.Type$bu, true);
+    return n0.getResult();
   }
 
   private static final class LINKS {
