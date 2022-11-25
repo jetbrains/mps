@@ -2867,7 +2867,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       });
     }
     if (dataId.equals(MPSEditorDataKeys.EDITOR_CONTEXT.getName())) {
-      return createEditorContextForActions();
+      return getEditorContext();
     }
     if (dataId.equals(MPSEditorDataKeys.EDITOR_CELL.getName())) {
       return isInSubstituteChooser || isInSearchPanel ? null : getSelectedCell();
