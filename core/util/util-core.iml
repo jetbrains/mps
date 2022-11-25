@@ -15,5 +15,6 @@
     <orderEntry type="library" name="gnu.trove" level="project" />
     <orderEntry type="library" scope="TEST" name="JUnit4" level="project" />
     <orderEntry type="library" name="Kotlin" level="project" />
+    <orderEntry type="library" name="Idea-platform" level="project" />
   </component>
 </module>
