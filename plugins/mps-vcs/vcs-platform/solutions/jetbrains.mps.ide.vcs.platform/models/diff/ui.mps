@@ -4157,7 +4157,9 @@
       <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="59GNzBi3gFF" role="1B3o_S" />
       <node concept="10P_77" id="59GNzBi3gFG" role="1tU5fm" />
-      <node concept="3clFbT" id="59GNzBi3gFH" role="33vP2m" />
+      <node concept="3clFbT" id="59GNzBi3gFH" role="33vP2m">
+        <property role="3clFbU" value="true" />
+      </node>
     </node>
     <node concept="312cEg" id="3SMO48FTf02" role="jymVt">
       <property role="TrG5h" value="myMpsProject" />
@@ -4228,8 +4230,8 @@
           <node concept="37vLTw" id="6HpunfUDKey" role="37wK5m">
             <ref role="3cqZAo" node="6HpunfUDqhj" resolve="PARAM_SHOW_INSPECTOR" />
           </node>
-          <node concept="3clFbT" id="6HpunfUBnp3" role="37wK5m">
-            <property role="3clFbU" value="true" />
+          <node concept="37vLTw" id="5Q5Z6WFj1z$" role="37wK5m">
+            <ref role="3cqZAo" node="59GNzBi3gFE" resolve="INSPECTOR_SHOWN_BY_DEFAULT" />
           </node>
         </node>
         <node concept="2YIFZM" id="6HpunfUA$Dp" role="2Oq$k0">
@@ -7574,21 +7576,9 @@
     <node concept="3clFb_" id="59GNzBi3A$H" role="jymVt">
       <property role="TrG5h" value="isInspectorShown" />
       <node concept="3clFbS" id="59GNzBi3A$I" role="3clF47">
-        <node concept="3clFbF" id="59GNzBi3A$J" role="3cqZAp">
-          <node concept="2OqwBi" id="59GNzBi3A$K" role="3clFbG">
-            <node concept="liA8E" id="59GNzBi3A$L" role="2OqNvi">
-              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getBoolean(java.lang.String,boolean)" resolve="getBoolean" />
-              <node concept="37vLTw" id="59GNzBi3A$M" role="37wK5m">
-                <ref role="3cqZAo" node="6HpunfUDqhj" resolve="PARAM_SHOW_INSPECTOR" />
-              </node>
-              <node concept="37vLTw" id="59GNzBi3A$N" role="37wK5m">
-                <ref role="3cqZAo" node="59GNzBi3gFE" resolve="INSPECTOR_SHOWN_BY_DEFAULT" />
-              </node>
-            </node>
-            <node concept="2YIFZM" id="59GNzBi3A$O" role="2Oq$k0">
-              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getInstance()" resolve="getInstance" />
-              <ref role="1Pybhc" to="jmi8:~PropertiesComponent" resolve="PropertiesComponent" />
-            </node>
+        <node concept="3clFbF" id="5Q5Z6WFiPoC" role="3cqZAp">
+          <node concept="37vLTw" id="5Q5Z6WFiPoA" role="3clFbG">
+            <ref role="3cqZAo" node="f$Zk9J99Td" resolve="isInspectorShown" />
           </node>
         </node>
       </node>

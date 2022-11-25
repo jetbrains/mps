@@ -64,7 +64,7 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
   private static final String PARAM_SHOW_INSPECTOR = RootDifferencePaneBase.class.getName() + "ShowInspector";
   private static final String PARAM_INSPECTOR_SPLITTER_POSITION = RootDifferencePaneBase.class.getName() + "InspectorSplitterPosition";
   private static final String PARAM_ENABLE_EDITORS_SCROLL_SYNC = RootDifferencePaneBase.class.getName() + "_EnableSync";
-  private static final boolean INSPECTOR_SHOWN_BY_DEFAULT = false;
+  private static final boolean INSPECTOR_SHOWN_BY_DEFAULT = true;
   private final MPSProject myMpsProject;
   private SNodeId myRootId;
 
@@ -75,7 +75,7 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
   private DiffEditorsGroup myDiffEditorsGroup;
 
   private JPanel myPanel;
-  private boolean isInspectorShown = PropertiesComponent.getInstance().getBoolean(PARAM_SHOW_INSPECTOR, true);
+  private boolean isInspectorShown = PropertiesComponent.getInstance().getBoolean(PARAM_SHOW_INSPECTOR, INSPECTOR_SHOWN_BY_DEFAULT);
 
   private final List<ModelChangeSet> myChangeSets;
   private final List<ModelChangeSet> myMetadataChangeSets;
@@ -502,7 +502,7 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
   }
 
   protected boolean isInspectorShown() {
-    return PropertiesComponent.getInstance().getBoolean(PARAM_SHOW_INSPECTOR, INSPECTOR_SHOWN_BY_DEFAULT);
+    return isInspectorShown;
   }
 
   protected ChangeEditorMessage.ConflictChecker getConflictChecker() {
