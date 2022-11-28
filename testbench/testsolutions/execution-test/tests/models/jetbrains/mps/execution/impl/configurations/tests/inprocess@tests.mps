@@ -38,6 +38,7 @@
       </concept>
       <concept id="1225467090849" name="jetbrains.mps.lang.test.structure.ProjectExpression" flags="nn" index="1jxXqW" />
       <concept id="1216913645126" name="jetbrains.mps.lang.test.structure.NodesTestCase" flags="lg" index="1lH9Xt">
+        <property id="2616911529524314943" name="accessMode" index="3DII0k" />
         <property id="6339244025081158986" name="needsNoWriteAction" index="3OwPAg" />
         <child id="1216993439383" name="methods" index="1qtyYc" />
         <child id="1217501895093" name="testMethods" index="1SL9yI" />
@@ -302,6 +303,7 @@
     <property role="TrG5h" value="JUnitInProcess" />
     <property role="3OwPAg" value="true" />
     <property role="26Nn1l" value="true" />
+    <property role="3DII0k" value="2hh8MJdVwqT/none" />
     <node concept="2XrIbr" id="5vTxdEzyTYn" role="1qtyYc">
       <property role="TrG5h" value="checkTests" />
       <node concept="3cqZAl" id="5vTxdEzyTYo" role="3clF45" />
@@ -1009,6 +1011,7 @@
     <property role="TrG5h" value="JUnitInProcessTermination" />
     <property role="3OwPAg" value="true" />
     <property role="26Nn1l" value="true" />
+    <property role="3DII0k" value="2hh8MJdVwqT/none" />
     <node concept="2XrIbr" id="5vTxdEzz100" role="1qtyYc">
       <property role="TrG5h" value="startAndTerminate" />
       <node concept="3cqZAl" id="5vTxdEzz101" role="3clF45" />
@@ -1633,6 +1636,7 @@
     <property role="TrG5h" value="JUnitInProcessUndo" />
     <property role="3OwPAg" value="true" />
     <property role="26Nn1l" value="true" />
+    <property role="3DII0k" value="2hh8MJdVwqT/none" />
     <node concept="2XrIbr" id="5XEoQWrnKZ" role="1qtyYc">
       <property role="TrG5h" value="getMyModel" />
       <node concept="H_c77" id="5XEoQWrnL0" role="3clF45" />
