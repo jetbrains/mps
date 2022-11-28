@@ -30,7 +30,6 @@
   <uses language="l:c72da2b9-7cce-4447-8389-f407dc1158b7:jetbrains.mps.lang.structure" />
   <uses language="l:c7fb639f-be78-4307-89b0-b5959c3fa8c8:jetbrains.mps.lang.text" />
   <uses language="l:7a5dda62-9140-4668-ab76-d5ed1746f2b2:jetbrains.mps.lang.typesystem" />
-  <uses language="l:662a9f2b-5802-4d16-9558-72c65c7a681e:org.jetbrains.mps.samples.Money" />
   <uses module="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" kind="dp" />
   <uses module="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="rt+dp" />
   <uses module="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="rt+dp" />
@@ -61,6 +60,6 @@
   <uses module="9ded098b-ad6a-4657-bfd9-48636cfe8bc3(jetbrains.mps.lang.traceable)" kind="dp" />
   <uses module="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt+dp" />
   <uses module="662a9f2b-5802-4d16-9558-72c65c7a681e(org.jetbrains.mps.samples.Money)" kind="dp" />
-  <uses module="562eff3e-65ac-4df8-98d2-6cf36850139c(org.jetbrains.mps.samples.MoneyRuntime)" kind="rt+dp" />
+  <uses module="562eff3e-65ac-4df8-98d2-6cf36850139c(org.jetbrains.mps.samples.MoneyRuntime)" kind="dp" />
 </dependenciesRoot>
 
