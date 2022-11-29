@@ -9,6 +9,7 @@
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="f4zo" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.cells(MPS.Editor/)" />
     <import index="22ra" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.update(MPS.Editor/)" />
+    <import index="hox0" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.style(MPS.Editor/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
   <registry>
@@ -31,6 +32,9 @@
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
+      </concept>
+      <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
+        <reference id="1144433194310" name="classConcept" index="1Pybhc" />
       </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1068390468200" name="jetbrains.mps.baseLanguage.structure.FieldDeclaration" flags="ig" index="312cEg" />
@@ -229,6 +233,25 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="av3ZwHUDZ8" role="jymVt" />
+    <node concept="3clFb_" id="av3ZwHUEfZ" role="jymVt">
+      <property role="TrG5h" value="getStyleRegistry" />
+      <node concept="3Tm1VV" id="av3ZwHUEg1" role="1B3o_S" />
+      <node concept="3uibUv" id="av3ZwHUEg2" role="3clF45">
+        <ref role="3uigEE" to="hox0:~StyleRegistry" resolve="StyleRegistry" />
+      </node>
+      <node concept="3clFbS" id="av3ZwHUEg3" role="3clF47">
+        <node concept="3cpWs6" id="av3ZwHUEz4" role="3cqZAp">
+          <node concept="2YIFZM" id="av3ZwHUF0o" role="3cqZAk">
+            <ref role="37wK5l" to="hox0:~StyleRegistry.getInstance()" resolve="getInstance" />
+            <ref role="1Pybhc" to="hox0:~StyleRegistry" resolve="StyleRegistry" />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="av3ZwHUEg4" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="5qiU$K_u9En" role="jymVt" />
     <node concept="3clFb_" id="5qiU$K_ua67" role="jymVt">
       <property role="1EzhhJ" value="false" />
@@ -361,6 +384,14 @@
       <node concept="3Tm1VV" id="7fcz_bZtWOC" role="1B3o_S" />
       <node concept="3uibUv" id="7fcz_bZtWO1" role="3clF45">
         <ref role="3uigEE" to="22ra:~UpdateSession" resolve="UpdateSession" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="av3ZwHUDrR" role="jymVt">
+      <property role="TrG5h" value="getStyleRegistry" />
+      <node concept="3clFbS" id="av3ZwHUDrU" role="3clF47" />
+      <node concept="3Tm1VV" id="av3ZwHUDrV" role="1B3o_S" />
+      <node concept="3uibUv" id="av3ZwHUDqm" role="3clF45">
+        <ref role="3uigEE" to="hox0:~StyleRegistry" resolve="StyleRegistry" />
       </node>
     </node>
     <node concept="3Tm1VV" id="6OQfiPCHBbF" role="1B3o_S" />
