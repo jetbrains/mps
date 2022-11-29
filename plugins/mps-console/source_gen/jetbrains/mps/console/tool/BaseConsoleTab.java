@@ -17,6 +17,7 @@ import org.jdom.Element;
 import jetbrains.mps.project.Project;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.ide.PasteProvider;
 import jetbrains.mps.nodeEditor.commands.CommandContextImpl;
@@ -147,6 +148,9 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
       @Nullable
       @Override
       public Object getData(@NonNls @NotNull String key) {
+        if (MPSEditorDataKeys.MPS_PROJECT.is(key)) {
+          return myProject;
+        }
         if (MPSConsoleDataKeys.CONSOLE_TAB.is(key)) {
           return BaseConsoleTab.this;
         }
@@ -154,7 +158,7 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
           return myFileEditor;
         }
         if (PlatformDataKeys.PASTE_PROVIDER.is(key)) {
-          PasteProvider parentPasteProvider = as_6q36mf_a0a0a2a0a0a0a0fb(super.getData(key), PasteProvider.class);
+          PasteProvider parentPasteProvider = as_6q36mf_a0a0a3a0a0a0a0fb(super.getData(key), PasteProvider.class);
           return (myTool.getPasteAsRef() ? new MyPasteProvider(parentPasteProvider) : parentPasteProvider);
         }
         return super.getData(key);
@@ -553,7 +557,7 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
     }
 
   }
-  private static <T> T as_6q36mf_a0a0a2a0a0a0a0fb(Object o, Class<T> type) {
+  private static <T> T as_6q36mf_a0a0a3a0a0a0a0fb(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 

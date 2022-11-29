@@ -21,11 +21,11 @@
     <import index="b8lf" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor.selection(MPS.Editor/)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="lzb2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui(MPS.IDEA/)" implicit="true" />
+    <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
+    <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" implicit="true" />
     <import index="3xdn" ref="r:935ba0ee-7291-4caa-a807-d76e8fc69391(jetbrains.mps.lang.smodel.query.structure)" implicit="true" />
     <import index="fq2o" ref="r:11d950c0-cabb-4b20-860f-4f2898171c08(jetbrains.mps.lang.smodel.query.behavior)" implicit="true" />
     <import index="tpen" ref="r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)" implicit="true" />
-    <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" implicit="true" />
-    <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
   <registry>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
@@ -106,7 +106,9 @@
         <property id="1186403713874" name="color" index="Vb096" />
         <child id="1186403803051" name="query" index="VblUZ" />
       </concept>
-      <concept id="1186403751766" name="jetbrains.mps.lang.editor.structure.FontStyleStyleClassItem" flags="ln" index="Vb9p2" />
+      <concept id="1186403751766" name="jetbrains.mps.lang.editor.structure.FontStyleStyleClassItem" flags="ln" index="Vb9p2">
+        <property id="1186403771423" name="style" index="Vbekb" />
+      </concept>
       <concept id="1186404549998" name="jetbrains.mps.lang.editor.structure.ForegroundColorStyleClassItem" flags="ln" index="VechU" />
       <concept id="1186404574412" name="jetbrains.mps.lang.editor.structure.BackgroundColorStyleClassItem" flags="ln" index="Veino" />
       <concept id="615427434521884870" name="jetbrains.mps.lang.editor.structure.SubstituteMenuPart_Subconcepts" flags="ng" index="2VfDsV" />
@@ -126,6 +128,7 @@
         <reference id="6591946374543067572" name="conceptDeclaration" index="aqKnT" />
         <child id="5991739802479788259" name="type" index="22hAXT" />
       </concept>
+      <concept id="1233758997495" name="jetbrains.mps.lang.editor.structure.PunctuationLeftStyleClassItem" flags="ln" index="11L4FC" />
       <concept id="1233759184865" name="jetbrains.mps.lang.editor.structure.PunctuationRightStyleClassItem" flags="ln" index="11LMrY" />
       <concept id="3383245079137382180" name="jetbrains.mps.lang.editor.structure.StyleClass" flags="ig" index="14StLt">
         <child id="3383245079137422296" name="dominates" index="14Sbyx" />
@@ -358,6 +361,11 @@
       <concept id="1081773326031" name="jetbrains.mps.baseLanguage.structure.BinaryOperation" flags="nn" index="3uHJSO">
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
+      </concept>
+      <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
+        <child id="1163668914799" name="condition" index="3K4Cdx" />
+        <child id="1163668922816" name="ifTrue" index="3K4E3e" />
+        <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="8356039341262087992" name="line" index="1aUNEU" />
@@ -789,13 +797,111 @@
         <property role="3F0ifm" value="Type ? for a list of commands." />
         <node concept="Vb9p2" id="5S_9tvHG7KZ" role="3F10Kt" />
       </node>
-      <node concept="3F0ifn" id="5S_9tvHG3g9" role="3EZMnx">
-        <property role="3F0ifm" value="Press Ctrl+Enter to execute command." />
-        <node concept="Vb9p2" id="5S_9tvHG7Ef" role="3F10Kt" />
+      <node concept="3EZMnI" id="4GOTRGT5FVc" role="3EZMnx">
+        <node concept="Vb9p2" id="4GOTRGT6gNh" role="3F10Kt" />
+        <node concept="l2Vlx" id="4GOTRGT6OOL" role="2iSdaV" />
+        <node concept="3F0ifn" id="4GOTRGT5FVe" role="3EZMnx">
+          <property role="3F0ifm" value="Press" />
+          <node concept="Vb9p2" id="4GOTRGT5FVf" role="3F10Kt" />
+        </node>
+        <node concept="1HlG4h" id="4GOTRGT5FXc" role="3EZMnx">
+          <node concept="1HfYo3" id="4GOTRGT5FXe" role="1HlULh">
+            <node concept="3TQlhw" id="4GOTRGT5FXg" role="1Hhtcw">
+              <node concept="3clFbS" id="4GOTRGT5FXi" role="2VODD2">
+                <node concept="3clFbF" id="4GOTRGT5HQX" role="3cqZAp">
+                  <node concept="3K4zz7" id="4GOTRGT5Y5g" role="3clFbG">
+                    <node concept="Xl_RD" id="4GOTRGT5Y8g" role="3K4E3e">
+                      <property role="Xl_RC" value="Cmd" />
+                    </node>
+                    <node concept="Xl_RD" id="4GOTRGT5Yc_" role="3K4GZi">
+                      <property role="Xl_RC" value="Ctrl" />
+                    </node>
+                    <node concept="2OqwBi" id="4GOTRGT5W$y" role="3K4Cdx">
+                      <node concept="2OqwBi" id="4GOTRGT5TQK" role="2Oq$k0">
+                        <node concept="2YIFZM" id="4GOTRGT5Tbm" role="2Oq$k0">
+                          <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
+                          <ref role="37wK5l" to="wyt6:~System.getProperty(java.lang.String)" resolve="getProperty" />
+                          <node concept="Xl_RD" id="4GOTRGT5Tbn" role="37wK5m">
+                            <property role="Xl_RC" value="os.name" />
+                          </node>
+                        </node>
+                        <node concept="liA8E" id="4GOTRGT5VOf" role="2OqNvi">
+                          <ref role="37wK5l" to="wyt6:~String.toLowerCase(java.util.Locale)" resolve="toLowerCase" />
+                          <node concept="10M0yZ" id="4GOTRGT5VTm" role="37wK5m">
+                            <ref role="3cqZAo" to="33ny:~Locale.ENGLISH" resolve="ENGLISH" />
+                            <ref role="1PxDUh" to="33ny:~Locale" resolve="Locale" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="4GOTRGT5Xuq" role="2OqNvi">
+                        <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String)" resolve="startsWith" />
+                        <node concept="Xl_RD" id="4GOTRGT5X_l" role="37wK5m">
+                          <property role="Xl_RC" value="mac" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="Vb9p2" id="4GOTRGT6ONy" role="3F10Kt">
+            <property role="Vbekb" value="g1_kEg4/ITALIC" />
+          </node>
+        </node>
+        <node concept="3F0ifn" id="4GOTRGT5FWm" role="3EZMnx">
+          <property role="3F0ifm" value="+Enter" />
+          <node concept="Vb9p2" id="4GOTRGT5FWn" role="3F10Kt">
+            <property role="Vbekb" value="g1_kEg4/ITALIC" />
+          </node>
+          <node concept="11L4FC" id="4GOTRGT6t7Q" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
+        <node concept="3F0ifn" id="4GOTRGT5FVm" role="3EZMnx">
+          <property role="3F0ifm" value="to execute command" />
+          <node concept="Vb9p2" id="4GOTRGT5FVn" role="3F10Kt" />
+        </node>
       </node>
-      <node concept="3F0ifn" id="24$Ek5A4lMi" role="3EZMnx">
-        <property role="3F0ifm" value="Use Ctrl+M, Ctrl+R and Ctrl+L to add imports and languages." />
-        <node concept="Vb9p2" id="24$Ek5A4qnG" role="3F10Kt" />
+      <node concept="3EZMnI" id="4GOTRGT6OQ0" role="3EZMnx">
+        <node concept="l2Vlx" id="4GOTRGT6OQ1" role="2iSdaV" />
+        <node concept="3F0ifn" id="4GOTRGT6ORV" role="3EZMnx">
+          <property role="3F0ifm" value="Use" />
+          <node concept="Vb9p2" id="4GOTRGT6OS0" role="3F10Kt" />
+        </node>
+        <node concept="3F0ifn" id="4GOTRGT6OT$" role="3EZMnx">
+          <property role="3F0ifm" value="Ctrl+M" />
+          <node concept="Vb9p2" id="4GOTRGT6OTN" role="3F10Kt">
+            <property role="Vbekb" value="g1_kEg4/ITALIC" />
+          </node>
+        </node>
+        <node concept="3F0ifn" id="24$Ek5A4lMi" role="3EZMnx">
+          <property role="3F0ifm" value="," />
+          <node concept="Vb9p2" id="24$Ek5A4qnG" role="3F10Kt" />
+          <node concept="11L4FC" id="4GOTRGT6OTS" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
+        <node concept="3F0ifn" id="4GOTRGT6OT7" role="3EZMnx">
+          <property role="3F0ifm" value="Ctrl+R" />
+          <node concept="Vb9p2" id="4GOTRGT6OTk" role="3F10Kt">
+            <property role="Vbekb" value="g1_kEg4/ITALIC" />
+          </node>
+        </node>
+        <node concept="3F0ifn" id="4GOTRGT6OSI" role="3EZMnx">
+          <property role="3F0ifm" value="and" />
+          <node concept="Vb9p2" id="4GOTRGT6OST" role="3F10Kt" />
+        </node>
+        <node concept="3F0ifn" id="4GOTRGT6OSp" role="3EZMnx">
+          <property role="3F0ifm" value="Ctrl+L" />
+          <node concept="Vb9p2" id="4GOTRGT6OSy" role="3F10Kt">
+            <property role="Vbekb" value="g1_kEg4/ITALIC" />
+          </node>
+        </node>
+        <node concept="3F0ifn" id="4GOTRGT6OS8" role="3EZMnx">
+          <property role="3F0ifm" value="to add imports and languages." />
+          <node concept="Vb9p2" id="4GOTRGT6OSf" role="3F10Kt" />
+        </node>
       </node>
       <node concept="3F1sOY" id="1nVd0kvsDRA" role="3EZMnx">
         <ref role="1NtTu8" to="eynw:1nVd0kvs_IJ" resolve="history" />

@@ -877,6 +877,10 @@
         <property role="pLAjf" value="VK_UP" />
         <property role="3hacHL" value="5SFo3Mf0QpD/replace_all" />
       </node>
+      <node concept="pLAjd" id="4BsAsmr$nXY" role="Zd501">
+        <property role="pLAjc" value="meta+alt" />
+        <property role="pLAjf" value="VK_UP" />
+      </node>
     </node>
     <node concept="Zd509" id="10GFfN5VrgA" role="Zd508">
       <ref role="1bYAoF" node="6QZWsVDzvm_" resolve="ConsoleNext" />
@@ -884,6 +888,10 @@
         <property role="pLAjf" value="VK_DOWN" />
         <property role="pLAjc" value="meta" />
         <property role="3hacHL" value="5SFo3Mf0QpD/replace_all" />
+      </node>
+      <node concept="pLAjd" id="1PJVeJmxOIL" role="Zd501">
+        <property role="pLAjc" value="meta+alt" />
+        <property role="pLAjf" value="VK_DOWN" />
       </node>
     </node>
   </node>
