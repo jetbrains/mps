@@ -1034,62 +1034,38 @@
   </root>
   <root nodeRef="r:328ff5ee-9330-4068-906e-6e3bb50e6e1d(jetbrains.mps.execution.settings.editor)/943668161921781814">
     <file name="ExecutionSettings_StyleSheet.java">
-      <node id="943668161921783088" at="20,91,21,69" concept="7" />
-      <node id="943668161921783088" at="21,69,22,88" concept="7" />
-      <node id="943668161921783088" at="22,88,23,91" concept="2" />
-      <node id="943668161921783090" at="30,101,31,69" concept="7" />
-      <node id="943668161921783090" at="31,69,32,88" concept="7" />
-      <node id="943668161921783090" at="32,88,33,101" concept="2" />
-      <node id="943668161921783088" at="37,90,38,33" concept="13" />
-      <node id="943668161921783089" at="42,59,43,112" concept="2" />
-      <node id="943668161921783090" at="48,100,49,33" concept="13" />
-      <node id="943668161921783091" at="53,59,54,112" concept="2" />
-      <node id="943668161921783093" at="54,112,55,50" concept="2" />
-      <node id="943668161921783088" at="37,0,40,0" concept="1" trace="persistentConfigurationRefStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="943668161921783090" at="48,0,51,0" concept="1" trace="persistentConfigurationRefDeprecatedStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="943668161921783088" at="41,0,45,0" concept="6" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <node id="943668161921783090" at="52,0,57,0" concept="6" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <node id="943668161921783088" at="19,0,25,0" concept="12" trace="apply_persistentConfigurationRef#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <node id="943668161921783090" at="29,0,35,0" concept="12" trace="apply_persistentConfigurationRefDeprecated#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <scope id="943668161921783088" at="37,90,38,33" />
-      <scope id="943668161921783088" at="42,59,43,112" />
-      <scope id="943668161921783090" at="48,100,49,33" />
-      <scope id="943668161921783090" at="53,59,55,50" />
-      <scope id="943668161921783088" at="20,91,23,91">
+      <node id="943668161921783088" at="16,90,17,33" concept="13" />
+      <node id="943668161921783089" at="21,59,22,112" concept="2" />
+      <node id="943668161921783090" at="27,100,28,33" concept="13" />
+      <node id="943668161921783091" at="32,59,33,112" concept="2" />
+      <node id="943668161921783093" at="33,112,34,50" concept="2" />
+      <node id="943668161921783088" at="16,0,19,0" concept="1" trace="persistentConfigurationRefStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="943668161921783090" at="27,0,30,0" concept="1" trace="persistentConfigurationRefDeprecatedStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="943668161921783088" at="20,0,24,0" concept="6" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="943668161921783090" at="31,0,36,0" concept="6" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <scope id="943668161921783088" at="16,90,17,33" />
+      <scope id="943668161921783088" at="21,59,22,112" />
+      <scope id="943668161921783090" at="27,100,28,33" />
+      <scope id="943668161921783090" at="32,59,34,50" />
+      <scope id="943668161921783088" at="16,0,19,0">
         <var name="editorContext" id="943668161921783088" />
         <var name="node" id="943668161921783088" />
       </scope>
-      <scope id="943668161921783090" at="30,101,33,101">
+      <scope id="943668161921783090" at="27,0,30,0">
         <var name="editorContext" id="943668161921783090" />
         <var name="node" id="943668161921783090" />
       </scope>
-      <scope id="943668161921783088" at="37,0,40,0">
-        <var name="editorContext" id="943668161921783088" />
-        <var name="node" id="943668161921783088" />
-      </scope>
-      <scope id="943668161921783090" at="48,0,51,0">
-        <var name="editorContext" id="943668161921783090" />
-        <var name="node" id="943668161921783090" />
-      </scope>
-      <scope id="943668161921783088" at="41,0,45,0">
+      <scope id="943668161921783088" at="20,0,24,0">
         <var name="editorCell" id="943668161921783088" />
         <var name="style" id="943668161921783088" />
       </scope>
-      <scope id="943668161921783090" at="52,0,57,0">
+      <scope id="943668161921783090" at="31,0,36,0">
         <var name="editorCell" id="943668161921783090" />
         <var name="style" id="943668161921783090" />
       </scope>
-      <scope id="943668161921783088" at="19,0,25,0">
-        <var name="editorCell" id="943668161921783088" />
-        <var name="style" id="943668161921783088" />
-      </scope>
-      <scope id="943668161921783090" at="29,0,35,0">
-        <var name="editorCell" id="943668161921783090" />
-        <var name="style" id="943668161921783090" />
-      </scope>
-      <unit id="943668161921783088" at="36,0,47,0" name="jetbrains.mps.execution.settings.editor.ExecutionSettings_StyleSheet$persistentConfigurationRefStyleClass" />
-      <unit id="943668161921783090" at="47,0,59,0" name="jetbrains.mps.execution.settings.editor.ExecutionSettings_StyleSheet$persistentConfigurationRefDeprecatedStyleClass" />
-      <unit id="943668161921781814" at="14,0,60,0" name="jetbrains.mps.execution.settings.editor.ExecutionSettings_StyleSheet" />
+      <unit id="943668161921783088" at="15,0,26,0" name="jetbrains.mps.execution.settings.editor.ExecutionSettings_StyleSheet$persistentConfigurationRefStyleClass" />
+      <unit id="943668161921783090" at="26,0,38,0" name="jetbrains.mps.execution.settings.editor.ExecutionSettings_StyleSheet$persistentConfigurationRefDeprecatedStyleClass" />
+      <unit id="943668161921781814" at="14,0,39,0" name="jetbrains.mps.execution.settings.editor.ExecutionSettings_StyleSheet" />
     </file>
   </root>
   <root nodeRef="r:328ff5ee-9330-4068-906e-6e3bb50e6e1d(jetbrains.mps.execution.settings.editor)/946964771156066344">

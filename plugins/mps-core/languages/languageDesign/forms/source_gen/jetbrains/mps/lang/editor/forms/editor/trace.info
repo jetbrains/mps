@@ -9,7 +9,6 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root>
@@ -19,34 +18,22 @@
   </root>
   <root nodeRef="r:c1ef22cb-79d9-43c5-a7c0-3497c3269866(jetbrains.mps.lang.editor.forms.editor)/1186415538255">
     <file name="FormsStylePack_StyleSheet.java">
-      <node id="1186415544875" at="18,72,19,69" concept="5" />
-      <node id="1186415544875" at="19,69,20,88" concept="5" />
-      <node id="1186415544875" at="20,88,21,72" concept="1" />
-      <node id="1186415544875" at="25,71,26,33" concept="10" />
-      <node id="4284599143868091278" at="30,59,31,42" concept="1" />
-      <node id="1186415544875" at="25,0,28,0" concept="0" trace="KeyWordStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="1186415544875" at="29,0,33,0" concept="4" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <node id="1186415544875" at="17,0,23,0" concept="9" trace="apply_KeyWord#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <scope id="1186415544875" at="25,71,26,33" />
-      <scope id="1186415544875" at="30,59,31,42" />
-      <scope id="1186415544875" at="18,72,21,72">
+      <node id="1186415544875" at="14,71,15,33" concept="9" />
+      <node id="4284599143868091278" at="19,59,20,42" concept="1" />
+      <node id="1186415544875" at="14,0,17,0" concept="0" trace="KeyWordStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="1186415544875" at="18,0,22,0" concept="4" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <scope id="1186415544875" at="14,71,15,33" />
+      <scope id="1186415544875" at="19,59,20,42" />
+      <scope id="1186415544875" at="14,0,17,0">
         <var name="editorContext" id="1186415544875" />
         <var name="node" id="1186415544875" />
       </scope>
-      <scope id="1186415544875" at="25,0,28,0">
-        <var name="editorContext" id="1186415544875" />
-        <var name="node" id="1186415544875" />
-      </scope>
-      <scope id="1186415544875" at="29,0,33,0">
+      <scope id="1186415544875" at="18,0,22,0">
         <var name="editorCell" id="1186415544875" />
         <var name="style" id="1186415544875" />
       </scope>
-      <scope id="1186415544875" at="17,0,23,0">
-        <var name="editorCell" id="1186415544875" />
-        <var name="style" id="1186415544875" />
-      </scope>
-      <unit id="1186415544875" at="24,0,35,0" name="jetbrains.mps.lang.editor.forms.editor.FormsStylePack_StyleSheet$KeyWordStyleClass" />
-      <unit id="1186415538255" at="12,0,36,0" name="jetbrains.mps.lang.editor.forms.editor.FormsStylePack_StyleSheet" />
+      <unit id="1186415544875" at="13,0,24,0" name="jetbrains.mps.lang.editor.forms.editor.FormsStylePack_StyleSheet$KeyWordStyleClass" />
+      <unit id="1186415538255" at="12,0,25,0" name="jetbrains.mps.lang.editor.forms.editor.FormsStylePack_StyleSheet" />
     </file>
   </root>
   <root nodeRef="r:c1ef22cb-79d9-43c5-a7c0-3497c3269866(jetbrains.mps.lang.editor.forms.editor)/1340057216891285332">
@@ -68,7 +55,7 @@
       <unit id="1340057216891285332" at="10,0,18,0" name="jetbrains.mps.lang.editor.forms.editor.CheckboxUI_Text_Editor" />
     </file>
     <file name="CheckboxUI_Text_EditorBuilder_a.java">
-      <node id="1340057216891285332" at="16,95,17,19" concept="10" />
+      <node id="1340057216891285332" at="16,95,17,19" concept="9" />
       <node id="1340057216891285332" at="17,19,18,18" concept="1" />
       <node id="1340057216891285332" at="23,26,24,18" concept="6" />
       <node id="1340057216891285332" at="27,39,28,31" concept="6" />
@@ -101,7 +88,7 @@
       <unit id="1340057216891285332" at="12,0,41,0" name="jetbrains.mps.lang.editor.forms.editor.CheckboxUI_Text_EditorBuilder_a" />
     </file>
     <file name="CheckboxUI_Text_InspectorBuilder_a.java">
-      <node id="1340057216891285332" at="39,98,40,19" concept="10" />
+      <node id="1340057216891285332" at="39,98,40,19" concept="9" />
       <node id="1340057216891285332" at="40,19,41,18" concept="1" />
       <node id="1340057216891285332" at="46,26,47,18" concept="6" />
       <node id="1340057216891285332" at="50,39,51,32" concept="6" />
@@ -223,8 +210,8 @@
       <node id="1340057216891285332" at="96,0,106,0" concept="4" trace="createCollection_1#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="1340057216891285332" at="143,0,153,0" concept="4" trace="createCollection_2#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="1340057216891285332" at="54,0,68,0" concept="4" trace="createCollection_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="1340057216891285373" at="116,39,141,5" concept="11" />
-      <node id="1340057216891285427" at="163,39,188,5" concept="11" />
+      <node id="1340057216891285373" at="116,39,141,5" concept="10" />
+      <node id="1340057216891285427" at="163,39,188,5" concept="10" />
       <node id="1340057216891285373" at="115,0,143,0" concept="4" trace="createProperty_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="1340057216891285427" at="162,0,190,0" concept="4" trace="createProperty_1#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <scope id="1340057216891285332" at="46,26,47,18" />
@@ -338,7 +325,7 @@
       <unit id="312429380032637971" at="10,0,18,0" name="jetbrains.mps.lang.editor.forms.editor.CellModel_Checkbox_Editor" />
     </file>
     <file name="CellModel_Checkbox_EditorBuilder_a.java">
-      <node id="312429380032637971" at="52,98,53,19" concept="10" />
+      <node id="312429380032637971" at="52,98,53,19" concept="9" />
       <node id="312429380032637971" at="53,19,54,18" concept="1" />
       <node id="312429380032637971" at="59,26,60,18" concept="6" />
       <node id="312429380032637971" at="63,39,64,32" concept="6" />
@@ -386,7 +373,7 @@
       <node id="2597883321844534828" at="116,34,117,22" concept="6" />
       <node id="312429380032637971" at="119,40,120,116" concept="5" />
       <node id="312429380032637971" at="120,116,121,33" concept="6" />
-      <node id="312429380032637971" at="127,117,128,38" concept="10" />
+      <node id="312429380032637971" at="127,117,128,38" concept="9" />
       <node id="312429380032637971" at="128,38,129,25" concept="1" />
       <node id="312429380032637971" at="134,28,135,20" concept="6" />
       <node id="312429380032637971" at="138,55,139,76" concept="5" />
@@ -453,7 +440,7 @@
       <node id="312429380032637971" at="236,87,237,145" concept="6" />
       <node id="312429380032637971" at="238,10,239,22" concept="6" />
       <node id="1140223082034" at="244,0,245,0" concept="2" trace="myReferencingNode" />
-      <node id="1140223082034" at="246,109,247,21" concept="10" />
+      <node id="1140223082034" at="246,109,247,21" concept="9" />
       <node id="1140223082034" at="247,21,248,42" concept="1" />
       <node id="1140223082034" at="248,42,249,20" concept="1" />
       <node id="1140223082034" at="252,41,253,32" concept="6" />
@@ -483,7 +470,7 @@
       <node id="2597883321844545355" at="296,34,297,22" concept="6" />
       <node id="312429380032637971" at="299,40,300,121" concept="5" />
       <node id="312429380032637971" at="300,121,301,33" concept="6" />
-      <node id="312429380032637971" at="307,119,308,38" concept="10" />
+      <node id="312429380032637971" at="307,119,308,38" concept="9" />
       <node id="312429380032637971" at="308,38,309,25" concept="1" />
       <node id="312429380032637971" at="314,28,315,20" concept="6" />
       <node id="312429380032637971" at="318,55,319,76" concept="5" />
@@ -550,10 +537,10 @@
       <node id="1340057216891286259" at="90,0,98,0" concept="4" trace="createComponent_1#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="312429380032637971" at="328,0,336,0" concept="4" trace="installCellInfo#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/cells/EditorCell;Z)V" />
       <node id="2597883321844534828" at="110,0,119,0" concept="4" trace="createConstant_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="312429380032637971" at="162,102,171,7" concept="11" />
+      <node id="312429380032637971" at="162,102,171,7" concept="10" />
       <node id="2597883321844534906" at="177,0,186,0" concept="4" trace="createConstant_1#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="312429380032637971" at="210,72,219,6" concept="5" />
-      <node id="312429380032637971" at="339,105,348,7" concept="11" />
+      <node id="312429380032637971" at="339,105,348,7" concept="10" />
       <node id="312429380032637971" at="148,0,159,0" concept="4" trace="installCellInfo#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/cells/EditorCell;Z)V" />
       <node id="5364344611674795511" at="198,0,209,0" concept="4" trace="createConstant_2#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="2597883321844545355" at="288,0,299,0" concept="4" trace="createConstant_3#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -562,7 +549,7 @@
       <node id="312429380032637971" at="159,0,173,0" concept="4" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="312429380032637971" at="336,0,350,0" concept="4" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="312429380032637971" at="67,0,83,0" concept="4" trace="createCollection_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="1140223090803" at="263,41,285,7" concept="11" />
+      <node id="1140223090803" at="263,41,285,7" concept="10" />
       <node id="1140223090803" at="262,0,287,0" concept="4" trace="createProperty_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="312429380032637971" at="209,0,241,0" concept="4" trace="createRefCell_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <scope id="312429380032637971" at="59,26,60,18" />
@@ -754,7 +741,7 @@
       <unit id="312429380032637971" at="48,0,377,0" name="jetbrains.mps.lang.editor.forms.editor.CellModel_Checkbox_EditorBuilder_a" />
     </file>
     <file name="CellModel_Checkbox_InspectorBuilder_a.java">
-      <node id="312429380032637971" at="20,101,21,19" concept="10" />
+      <node id="312429380032637971" at="20,101,21,19" concept="9" />
       <node id="312429380032637971" at="21,19,22,18" concept="1" />
       <node id="312429380032637971" at="27,26,28,18" concept="6" />
       <node id="312429380032637971" at="31,39,32,32" concept="6" />
@@ -808,7 +795,7 @@
       <unit id="312429380032858301" at="10,0,15,0" name="jetbrains.mps.lang.editor.forms.editor.StubCellModel_Checkbox_Editor" />
     </file>
     <file name="StubCellModel_Checkbox_EditorBuilder_a.java">
-      <node id="312429380032858301" at="16,102,17,19" concept="10" />
+      <node id="312429380032858301" at="16,102,17,19" concept="9" />
       <node id="312429380032858301" at="17,19,18,18" concept="1" />
       <node id="312429380032858301" at="23,26,24,18" concept="6" />
       <node id="312429380032858301" at="27,39,28,31" concept="6" />
@@ -853,7 +840,7 @@
       <unit id="7024409093146622670" at="10,0,15,0" name="jetbrains.mps.lang.editor.forms.editor.CheckboxUI_Platform_Editor" />
     </file>
     <file name="CheckboxUI_Platform_EditorBuilder_a.java">
-      <node id="7024409093146622670" at="16,99,17,19" concept="10" />
+      <node id="7024409093146622670" at="16,99,17,19" concept="9" />
       <node id="7024409093146622670" at="17,19,18,18" concept="1" />
       <node id="7024409093146622670" at="23,26,24,18" concept="6" />
       <node id="7024409093146622670" at="27,39,28,31" concept="6" />

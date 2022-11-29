@@ -5247,36 +5247,24 @@
   </root>
   <root nodeRef="r:18c202d7-badd-41dd-bd9e-9d42a045e4f4(jetbrains.mps.samples.Kaja.editor)/7446293342517118457">
     <file name="KajakStyles_StyleSheet.java">
-      <node id="7446293342517118458" at="22,72,23,69" concept="7" />
-      <node id="7446293342517118458" at="23,69,24,88" concept="7" />
-      <node id="7446293342517118458" at="24,88,25,72" concept="2" />
-      <node id="7446293342517118458" at="29,71,30,33" concept="13" />
-      <node id="4284599143868092505" at="34,59,35,84" concept="2" />
-      <node id="1186415551923" at="35,84,36,112" concept="2" />
-      <node id="7446293342517124151" at="36,112,37,66" concept="2" />
-      <node id="7446293342517118458" at="29,0,32,0" concept="1" trace="CommandStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="7446293342517118458" at="21,0,27,0" concept="12" trace="apply_Command#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <node id="7446293342517118458" at="33,0,39,0" concept="6" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <scope id="7446293342517118458" at="29,71,30,33" />
-      <scope id="7446293342517118458" at="22,72,25,72">
+      <node id="7446293342517118458" at="18,71,19,33" concept="13" />
+      <node id="4284599143868092505" at="23,59,24,84" concept="2" />
+      <node id="1186415551923" at="24,84,25,112" concept="2" />
+      <node id="7446293342517124151" at="25,112,26,66" concept="2" />
+      <node id="7446293342517118458" at="18,0,21,0" concept="1" trace="CommandStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="7446293342517118458" at="22,0,28,0" concept="6" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <scope id="7446293342517118458" at="18,71,19,33" />
+      <scope id="7446293342517118458" at="18,0,21,0">
         <var name="editorContext" id="7446293342517118458" />
         <var name="node" id="7446293342517118458" />
       </scope>
-      <scope id="7446293342517118458" at="29,0,32,0">
-        <var name="editorContext" id="7446293342517118458" />
-        <var name="node" id="7446293342517118458" />
-      </scope>
-      <scope id="7446293342517118458" at="34,59,37,66" />
-      <scope id="7446293342517118458" at="21,0,27,0">
+      <scope id="7446293342517118458" at="23,59,26,66" />
+      <scope id="7446293342517118458" at="22,0,28,0">
         <var name="editorCell" id="7446293342517118458" />
         <var name="style" id="7446293342517118458" />
       </scope>
-      <scope id="7446293342517118458" at="33,0,39,0">
-        <var name="editorCell" id="7446293342517118458" />
-        <var name="style" id="7446293342517118458" />
-      </scope>
-      <unit id="7446293342517118458" at="28,0,41,0" name="jetbrains.mps.samples.Kaja.editor.KajakStyles_StyleSheet$CommandStyleClass" />
-      <unit id="7446293342517118457" at="16,0,42,0" name="jetbrains.mps.samples.Kaja.editor.KajakStyles_StyleSheet" />
+      <unit id="7446293342517118458" at="17,0,30,0" name="jetbrains.mps.samples.Kaja.editor.KajakStyles_StyleSheet$CommandStyleClass" />
+      <unit id="7446293342517118457" at="16,0,31,0" name="jetbrains.mps.samples.Kaja.editor.KajakStyles_StyleSheet" />
     </file>
   </root>
   <root nodeRef="r:18c202d7-badd-41dd-bd9e-9d42a045e4f4(jetbrains.mps.samples.Kaja.editor)/7446293342517357220">

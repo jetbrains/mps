@@ -9,7 +9,6 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root>
@@ -36,7 +35,7 @@
       <unit id="2073504467207935114" at="10,0,15,0" name="jetbrains.mps.samples.Expressions.editor.NotSimpleMathExpression_Editor" />
     </file>
     <file name="NotSimpleMathExpression_EditorBuilder_a.java">
-      <node id="2073504467207935114" at="30,103,31,19" concept="10" />
+      <node id="2073504467207935114" at="30,103,31,19" concept="9" />
       <node id="2073504467207935114" at="31,19,32,18" concept="1" />
       <node id="2073504467207935114" at="37,26,38,18" concept="6" />
       <node id="2073504467207935114" at="41,39,42,32" concept="6" />
@@ -56,7 +55,7 @@
       <node id="2073504467207936497" at="60,34,61,22" concept="6" />
       <node id="2073504467207935114" at="63,40,64,127" concept="5" />
       <node id="2073504467207935114" at="64,127,65,33" concept="6" />
-      <node id="2073504467207935114" at="71,122,72,38" concept="10" />
+      <node id="2073504467207935114" at="71,122,72,38" concept="9" />
       <node id="2073504467207935114" at="72,38,73,25" concept="1" />
       <node id="2073504467207935114" at="78,28,79,20" concept="6" />
       <node id="2073504467207935114" at="82,55,83,76" concept="5" />
@@ -91,7 +90,7 @@
       <node id="2073504467207935114" at="92,0,100,0" concept="4" trace="installCellInfo#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/cells/EditorCell;Z)V" />
       <node id="2073504467207935114" at="45,0,54,0" concept="4" trace="createCollection_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="2073504467207936497" at="54,0,63,0" concept="4" trace="createConstant_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="2073504467207935114" at="103,108,112,7" concept="11" />
+      <node id="2073504467207935114" at="103,108,112,7" concept="10" />
       <node id="2073504467207935114" at="100,0,114,0" concept="4" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <scope id="2073504467207935114" at="37,26,38,18" />
       <scope id="2073504467207935114" at="41,39,42,32" />
@@ -152,63 +151,39 @@
   </root>
   <root nodeRef="r:e219e784-986b-4445-84f5-19e78ea5a924(jetbrains.mps.samples.Expressions.editor)/2073504467207936506">
     <file name="SimpleMath_StyleSheet.java">
-      <node id="2073504467207936507" at="21,72,22,69" concept="5" />
-      <node id="2073504467207936507" at="22,69,23,88" concept="5" />
-      <node id="2073504467207936507" at="23,88,24,72" concept="1" />
-      <node id="2073504467208093530" at="31,69,32,69" concept="5" />
-      <node id="2073504467208093530" at="32,69,33,88" concept="5" />
-      <node id="2073504467208093530" at="33,88,34,69" concept="1" />
-      <node id="2073504467207936507" at="38,71,39,33" concept="10" />
-      <node id="2073504467207936511" at="43,59,44,59" concept="1" />
-      <node id="2073504467207936517" at="44,59,45,112" concept="1" />
-      <node id="2073504467208093530" at="50,68,51,33" concept="10" />
-      <node id="2073504467208093537" at="55,59,56,61" concept="1" />
-      <node id="2073504467208093543" at="56,61,57,110" concept="1" />
-      <node id="2073504467207936507" at="38,0,41,0" concept="0" trace="KeyWordStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="2073504467208093530" at="50,0,53,0" concept="0" trace="typeStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="2073504467207936507" at="42,0,47,0" concept="4" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <node id="2073504467208093530" at="54,0,59,0" concept="4" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <node id="2073504467207936507" at="20,0,26,0" concept="9" trace="apply_KeyWord#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <node id="2073504467208093530" at="30,0,36,0" concept="9" trace="apply_type#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <scope id="2073504467207936507" at="38,71,39,33" />
-      <scope id="2073504467208093530" at="50,68,51,33" />
-      <scope id="2073504467207936507" at="43,59,45,112" />
-      <scope id="2073504467208093530" at="55,59,57,110" />
-      <scope id="2073504467207936507" at="21,72,24,72">
+      <node id="2073504467207936507" at="17,71,18,33" concept="9" />
+      <node id="2073504467207936511" at="22,59,23,59" concept="1" />
+      <node id="2073504467207936517" at="23,59,24,112" concept="1" />
+      <node id="2073504467208093530" at="29,68,30,33" concept="9" />
+      <node id="2073504467208093537" at="34,59,35,61" concept="1" />
+      <node id="2073504467208093543" at="35,61,36,110" concept="1" />
+      <node id="2073504467207936507" at="17,0,20,0" concept="0" trace="KeyWordStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="2073504467208093530" at="29,0,32,0" concept="0" trace="typeStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="2073504467207936507" at="21,0,26,0" concept="4" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="2073504467208093530" at="33,0,38,0" concept="4" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <scope id="2073504467207936507" at="17,71,18,33" />
+      <scope id="2073504467208093530" at="29,68,30,33" />
+      <scope id="2073504467207936507" at="22,59,24,112" />
+      <scope id="2073504467208093530" at="34,59,36,110" />
+      <scope id="2073504467207936507" at="17,0,20,0">
         <var name="editorContext" id="2073504467207936507" />
         <var name="node" id="2073504467207936507" />
       </scope>
-      <scope id="2073504467208093530" at="31,69,34,69">
+      <scope id="2073504467208093530" at="29,0,32,0">
         <var name="editorContext" id="2073504467208093530" />
         <var name="node" id="2073504467208093530" />
       </scope>
-      <scope id="2073504467207936507" at="38,0,41,0">
-        <var name="editorContext" id="2073504467207936507" />
-        <var name="node" id="2073504467207936507" />
-      </scope>
-      <scope id="2073504467208093530" at="50,0,53,0">
-        <var name="editorContext" id="2073504467208093530" />
-        <var name="node" id="2073504467208093530" />
-      </scope>
-      <scope id="2073504467207936507" at="42,0,47,0">
+      <scope id="2073504467207936507" at="21,0,26,0">
         <var name="editorCell" id="2073504467207936507" />
         <var name="style" id="2073504467207936507" />
       </scope>
-      <scope id="2073504467208093530" at="54,0,59,0">
+      <scope id="2073504467208093530" at="33,0,38,0">
         <var name="editorCell" id="2073504467208093530" />
         <var name="style" id="2073504467208093530" />
       </scope>
-      <scope id="2073504467207936507" at="20,0,26,0">
-        <var name="editorCell" id="2073504467207936507" />
-        <var name="style" id="2073504467207936507" />
-      </scope>
-      <scope id="2073504467208093530" at="30,0,36,0">
-        <var name="editorCell" id="2073504467208093530" />
-        <var name="style" id="2073504467208093530" />
-      </scope>
-      <unit id="2073504467207936507" at="37,0,49,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMath_StyleSheet$KeyWordStyleClass" />
-      <unit id="2073504467208093530" at="49,0,61,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMath_StyleSheet$typeStyleClass" />
-      <unit id="2073504467207936506" at="15,0,62,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMath_StyleSheet" />
+      <unit id="2073504467207936507" at="16,0,28,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMath_StyleSheet$KeyWordStyleClass" />
+      <unit id="2073504467208093530" at="28,0,40,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMath_StyleSheet$typeStyleClass" />
+      <unit id="2073504467207936506" at="15,0,41,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMath_StyleSheet" />
     </file>
   </root>
   <root nodeRef="r:e219e784-986b-4445-84f5-19e78ea5a924(jetbrains.mps.samples.Expressions.editor)/2073504467207965611">
@@ -223,7 +198,7 @@
       <unit id="2073504467207965611" at="10,0,15,0" name="jetbrains.mps.samples.Expressions.editor.LogicalSimpleMathExpression_Editor" />
     </file>
     <file name="LogicalSimpleMathExpression_EditorBuilder_a.java">
-      <node id="2073504467207965611" at="29,107,30,19" concept="10" />
+      <node id="2073504467207965611" at="29,107,30,19" concept="9" />
       <node id="2073504467207965611" at="30,19,31,18" concept="1" />
       <node id="2073504467207965611" at="36,26,37,18" concept="6" />
       <node id="2073504467207965611" at="40,39,41,32" concept="6" />
@@ -237,7 +212,7 @@
       <node id="2073504467207965611" at="51,48,52,22" concept="6" />
       <node id="2073504467207965611" at="54,40,55,119" concept="5" />
       <node id="2073504467207965611" at="55,119,56,33" concept="6" />
-      <node id="2073504467207965611" at="62,118,63,38" concept="10" />
+      <node id="2073504467207965611" at="62,118,63,38" concept="9" />
       <node id="2073504467207965611" at="63,38,64,25" concept="1" />
       <node id="2073504467207965611" at="69,28,70,20" concept="6" />
       <node id="2073504467207965611" at="73,55,74,76" concept="5" />
@@ -263,7 +238,7 @@
       <node id="2073504467208396239" at="113,40,114,22" concept="6" />
       <node id="2073504467207965611" at="116,40,117,121" concept="5" />
       <node id="2073504467207965611" at="117,121,118,33" concept="6" />
-      <node id="2073504467207965611" at="124,119,125,38" concept="10" />
+      <node id="2073504467207965611" at="124,119,125,38" concept="9" />
       <node id="2073504467207965611" at="125,38,126,25" concept="1" />
       <node id="2073504467207965611" at="131,28,132,20" concept="6" />
       <node id="2073504467207965611" at="135,55,136,76" concept="5" />
@@ -307,8 +282,8 @@
       <node id="2073504467207965611" at="135,0,142,0" concept="4" trace="createChildCell#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="2073504467207965611" at="83,0,91,0" concept="4" trace="installCellInfo#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/cells/EditorCell;Z)V" />
       <node id="2073504467207965611" at="145,0,153,0" concept="4" trace="installCellInfo#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/cells/EditorCell;Z)V" />
-      <node id="2073504467207965611" at="94,104,103,7" concept="11" />
-      <node id="2073504467207965611" at="156,105,165,7" concept="11" />
+      <node id="2073504467207965611" at="94,104,103,7" concept="10" />
+      <node id="2073504467207965611" at="156,105,165,7" concept="10" />
       <node id="2073504467207965611" at="44,0,54,0" concept="4" trace="createCollection_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="2073504467207965611" at="91,0,105,0" concept="4" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="2073504467207965611" at="153,0,167,0" concept="4" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -416,7 +391,7 @@
       <unit id="2073504467208093525" at="10,0,15,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMathBooleanType_Editor" />
     </file>
     <file name="SimpleMathBooleanType_EditorBuilder_a.java">
-      <node id="2073504467208093525" at="19,101,20,19" concept="10" />
+      <node id="2073504467208093525" at="19,101,20,19" concept="9" />
       <node id="2073504467208093525" at="20,19,21,18" concept="1" />
       <node id="2073504467208093525" at="26,26,27,18" concept="6" />
       <node id="2073504467208093525" at="30,39,31,30" concept="6" />
@@ -463,7 +438,7 @@
       <unit id="2073504467208335742" at="10,0,15,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMathWrapper_Editor" />
     </file>
     <file name="SimpleMathWrapper_EditorBuilder_a.java">
-      <node id="2073504467208335742" at="34,97,35,19" concept="10" />
+      <node id="2073504467208335742" at="34,97,35,19" concept="9" />
       <node id="2073504467208335742" at="35,19,36,18" concept="1" />
       <node id="2073504467208335742" at="41,26,42,18" concept="6" />
       <node id="2073504467208335742" at="45,39,46,32" concept="6" />
@@ -489,7 +464,7 @@
       <node id="2073504467208335742" at="72,58,73,40" concept="1" />
       <node id="2073504467208335742" at="73,40,74,51" concept="1" />
       <node id="2073504467208335742" at="74,51,75,22" concept="6" />
-      <node id="2073504467208335742" at="81,85,82,28" concept="10" />
+      <node id="2073504467208335742" at="81,85,82,28" concept="9" />
       <node id="2073504467208335742" at="82,28,83,25" concept="1" />
       <node id="2073504467208335742" at="87,28,88,20" concept="6" />
       <node id="2073504467208335742" at="90,40,91,36" concept="6" />
@@ -535,7 +510,7 @@
       <node id="2073504467208335742" at="130,7,136,7" concept="3" />
       <node id="2073504467208335742" at="49,0,58,0" concept="4" trace="createCollection_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="2073504467208335805" at="58,0,67,0" concept="4" trace="createConstant_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="2073504467208335742" at="104,149,113,7" concept="11" />
+      <node id="2073504467208335742" at="104,149,113,7" concept="10" />
       <node id="2073504467208335742" at="67,0,77,0" concept="4" trace="createRefNodeList_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="2073504467208335742" at="102,0,115,0" concept="4" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="2073504467208335742" at="118,0,143,0" concept="4" trace="installElementCellActions#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/cells/EditorCell;Z)V" />
@@ -618,7 +593,7 @@
       <unit id="2073504467208540140" at="10,0,15,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMathBooleanConstant_Editor" />
     </file>
     <file name="SimpleMathBooleanConstant_EditorBuilder_a.java">
-      <node id="2073504467208540140" at="30,105,31,19" concept="10" />
+      <node id="2073504467208540140" at="30,105,31,19" concept="9" />
       <node id="2073504467208540140" at="31,19,32,18" concept="1" />
       <node id="2073504467208540140" at="37,26,38,18" concept="6" />
       <node id="2073504467208540140" at="41,39,42,30" concept="6" />
@@ -647,7 +622,7 @@
       <node id="2073504467208540140" at="35,0,40,0" concept="4" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="2073504467208540193" at="57,155,62,9" concept="5" />
       <node id="2073504467208540193" at="62,9,67,24" concept="3" />
-      <node id="2073504467208540193" at="46,39,70,5" concept="11" />
+      <node id="2073504467208540193" at="46,39,70,5" concept="10" />
       <node id="2073504467208540193" at="45,0,72,0" concept="4" trace="createProperty_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <scope id="2073504467208540140" at="37,26,38,18" />
       <scope id="2073504467208540140" at="41,39,42,30" />
@@ -692,7 +667,7 @@
       <unit id="2073504467208541202" at="10,0,15,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMathIntegerConstant_Editor" />
     </file>
     <file name="SimpleMathIntegerConstant_EditorBuilder_a.java">
-      <node id="2073504467208541202" at="30,105,31,19" concept="10" />
+      <node id="2073504467208541202" at="30,105,31,19" concept="9" />
       <node id="2073504467208541202" at="31,19,32,18" concept="1" />
       <node id="2073504467208541202" at="37,26,38,18" concept="6" />
       <node id="2073504467208541202" at="41,39,42,30" concept="6" />
@@ -721,7 +696,7 @@
       <node id="2073504467208541202" at="35,0,40,0" concept="4" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="2073504467208541204" at="57,155,62,9" concept="5" />
       <node id="2073504467208541204" at="62,9,67,24" concept="3" />
-      <node id="2073504467208541204" at="46,39,70,5" concept="11" />
+      <node id="2073504467208541204" at="46,39,70,5" concept="10" />
       <node id="2073504467208541204" at="45,0,72,0" concept="4" trace="createProperty_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <scope id="2073504467208541202" at="37,26,38,18" />
       <scope id="2073504467208541202" at="41,39,42,30" />
@@ -766,7 +741,7 @@
       <unit id="2073504467208542770" at="10,0,15,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMathIntegerType_Editor" />
     </file>
     <file name="SimpleMathIntegerType_EditorBuilder_a.java">
-      <node id="2073504467208542770" at="19,101,20,19" concept="10" />
+      <node id="2073504467208542770" at="19,101,20,19" concept="9" />
       <node id="2073504467208542770" at="20,19,21,18" concept="1" />
       <node id="2073504467208542770" at="26,26,27,18" concept="6" />
       <node id="2073504467208542770" at="30,39,31,30" concept="6" />
@@ -813,7 +788,7 @@
       <unit id="2073504467208672497" at="10,0,15,0" name="jetbrains.mps.samples.Expressions.editor.ArithmeticSimpleMathExpression_Editor" />
     </file>
     <file name="ArithmeticSimpleMathExpression_EditorBuilder_a.java">
-      <node id="2073504467208672497" at="43,110,44,19" concept="10" />
+      <node id="2073504467208672497" at="43,110,44,19" concept="9" />
       <node id="2073504467208672497" at="44,19,45,18" concept="1" />
       <node id="2073504467208672497" at="50,26,51,18" concept="6" />
       <node id="2073504467208672497" at="54,39,55,32" concept="6" />
@@ -827,7 +802,7 @@
       <node id="2073504467208672497" at="65,48,66,22" concept="6" />
       <node id="2073504467208672497" at="68,40,69,119" concept="5" />
       <node id="2073504467208672497" at="69,119,70,33" concept="6" />
-      <node id="2073504467208672497" at="76,118,77,38" concept="10" />
+      <node id="2073504467208672497" at="76,118,77,38" concept="9" />
       <node id="2073504467208672497" at="77,38,78,25" concept="1" />
       <node id="2073504467208672497" at="83,28,84,20" concept="6" />
       <node id="2073504467208672497" at="87,55,88,76" concept="5" />
@@ -865,7 +840,7 @@
       <node id="2073504467208672562" at="147,15,148,40" concept="1" />
       <node id="2073504467208672497" at="151,40,152,121" concept="5" />
       <node id="2073504467208672497" at="152,121,153,33" concept="6" />
-      <node id="2073504467208672497" at="159,119,160,38" concept="10" />
+      <node id="2073504467208672497" at="159,119,160,38" concept="9" />
       <node id="2073504467208672497" at="160,38,161,25" concept="1" />
       <node id="2073504467208672497" at="166,28,167,20" concept="6" />
       <node id="2073504467208672497" at="170,55,171,76" concept="5" />
@@ -913,12 +888,12 @@
       <node id="2073504467208672497" at="170,0,177,0" concept="4" trace="createChildCell#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="2073504467208672497" at="97,0,105,0" concept="4" trace="installCellInfo#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/cells/EditorCell;Z)V" />
       <node id="2073504467208672497" at="180,0,188,0" concept="4" trace="installCellInfo#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/cells/EditorCell;Z)V" />
-      <node id="2073504467208672497" at="108,104,117,7" concept="11" />
-      <node id="2073504467208672497" at="191,105,200,7" concept="11" />
+      <node id="2073504467208672497" at="108,104,117,7" concept="10" />
+      <node id="2073504467208672497" at="191,105,200,7" concept="10" />
       <node id="2073504467208672497" at="58,0,68,0" concept="4" trace="createCollection_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="2073504467208672497" at="105,0,119,0" concept="4" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="2073504467208672497" at="188,0,202,0" concept="4" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="2073504467208672562" at="124,39,149,5" concept="11" />
+      <node id="2073504467208672562" at="124,39,149,5" concept="10" />
       <node id="2073504467208672562" at="123,0,151,0" concept="4" trace="createProperty_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <scope id="2073504467208672497" at="50,26,51,18" />
       <scope id="2073504467208672497" at="54,39,55,32" />
@@ -1039,7 +1014,7 @@
       <unit id="2073504467209342235" at="10,0,15,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMathVarDeclaration_Editor" />
     </file>
     <file name="SimpleMathVarDeclaration_EditorBuilder_a.java">
-      <node id="2073504467209342235" at="44,104,45,19" concept="10" />
+      <node id="2073504467209342235" at="44,104,45,19" concept="9" />
       <node id="2073504467209342235" at="45,19,46,18" concept="1" />
       <node id="2073504467209342235" at="51,26,52,18" concept="6" />
       <node id="2073504467209342235" at="55,39,56,32" concept="6" />
@@ -1079,7 +1054,7 @@
       <node id="2073504467209342350" at="107,34,108,22" concept="6" />
       <node id="2073504467209342235" at="110,40,111,133" concept="5" />
       <node id="2073504467209342235" at="111,133,112,33" concept="6" />
-      <node id="2073504467209342235" at="118,125,119,38" concept="10" />
+      <node id="2073504467209342235" at="118,125,119,38" concept="9" />
       <node id="2073504467209342235" at="119,38,120,25" concept="1" />
       <node id="2073504467209342235" at="125,28,126,20" concept="6" />
       <node id="2073504467209342235" at="129,55,130,76" concept="5" />
@@ -1119,10 +1094,10 @@
       <node id="2073504467209342235" at="129,0,136,0" concept="4" trace="createChildCell#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="2073504467209342235" at="139,0,147,0" concept="4" trace="installCellInfo#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/cells/EditorCell;Z)V" />
       <node id="2073504467209342337" at="70,0,79,0" concept="4" trace="createConstant_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="2073504467209342235" at="150,111,159,7" concept="11" />
+      <node id="2073504467209342235" at="150,111,159,7" concept="10" />
       <node id="2073504467209342235" at="59,0,70,0" concept="4" trace="createCollection_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="2073504467209342235" at="147,0,161,0" concept="4" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="2073504467209342343" at="80,39,102,5" concept="11" />
+      <node id="2073504467209342343" at="80,39,102,5" concept="10" />
       <node id="2073504467209342343" at="79,0,104,0" concept="4" trace="createProperty_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <scope id="2073504467209342235" at="51,26,52,18" />
       <scope id="2073504467209342235" at="55,39,56,32" />
@@ -1216,7 +1191,7 @@
       <unit id="2073504467209348329" at="10,0,15,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMathVarReference_Editor" />
     </file>
     <file name="SimpleMathVarReference_EditorBuilder_a.java">
-      <node id="2073504467209348329" at="44,102,45,19" concept="10" />
+      <node id="2073504467209348329" at="44,102,45,19" concept="9" />
       <node id="2073504467209348329" at="45,19,46,18" concept="1" />
       <node id="2073504467209348329" at="51,26,52,18" concept="6" />
       <node id="2073504467209348329" at="55,39,56,32" concept="6" />
@@ -1249,7 +1224,7 @@
       <node id="2073504467209348329" at="101,87,102,145" concept="6" />
       <node id="2073504467209348329" at="103,10,104,22" concept="6" />
       <node id="2073504467209348332" at="109,0,110,0" concept="2" trace="myReferencingNode" />
-      <node id="2073504467209348332" at="111,109,112,21" concept="10" />
+      <node id="2073504467209348332" at="111,109,112,21" concept="9" />
       <node id="2073504467209348332" at="112,21,113,42" concept="1" />
       <node id="2073504467209348332" at="113,42,114,20" concept="1" />
       <node id="2073504467209348332" at="117,41,118,32" concept="6" />
@@ -1294,7 +1269,7 @@
       <node id="2073504467209348329" at="77,0,84,0" concept="4" trace="createErrorCell#(Ljava/lang/String;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="2073504467209348329" at="59,0,67,0" concept="4" trace="createCollection_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="2073504467209348329" at="68,64,84,6" concept="5" />
-      <node id="2073504467209348337" at="128,41,153,7" concept="11" />
+      <node id="2073504467209348337" at="128,41,153,7" concept="10" />
       <node id="2073504467209348337" at="127,0,155,0" concept="4" trace="createProperty_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="2073504467209348329" at="67,0,106,0" concept="4" trace="createRefCell_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <scope id="2073504467209348329" at="51,26,52,18" />
@@ -1387,7 +1362,7 @@
       <unit id="2073504467209504192" at="10,0,15,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMathElementType_Editor" />
     </file>
     <file name="SimpleMathElementType_EditorBuilder_a.java">
-      <node id="2073504467209504192" at="19,101,20,19" concept="10" />
+      <node id="2073504467209504192" at="19,101,20,19" concept="9" />
       <node id="2073504467209504192" at="20,19,21,18" concept="1" />
       <node id="2073504467209504192" at="26,26,27,18" concept="6" />
       <node id="2073504467209504192" at="30,39,31,30" concept="6" />
@@ -1434,7 +1409,7 @@
       <unit id="2073504467209504617" at="10,0,15,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMathNumberType_Editor" />
     </file>
     <file name="SimpleMathNumberType_EditorBuilder_a.java">
-      <node id="2073504467209504617" at="19,100,20,19" concept="10" />
+      <node id="2073504467209504617" at="19,100,20,19" concept="9" />
       <node id="2073504467209504617" at="20,19,21,18" concept="1" />
       <node id="2073504467209504617" at="26,26,27,18" concept="6" />
       <node id="2073504467209504617" at="30,39,31,30" concept="6" />
@@ -1481,7 +1456,7 @@
       <unit id="2073504467209660642" at="10,0,15,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMathLongType_Editor" />
     </file>
     <file name="SimpleMathLongType_EditorBuilder_a.java">
-      <node id="2073504467209660642" at="19,98,20,19" concept="10" />
+      <node id="2073504467209660642" at="19,98,20,19" concept="9" />
       <node id="2073504467209660642" at="20,19,21,18" concept="1" />
       <node id="2073504467209660642" at="26,26,27,18" concept="6" />
       <node id="2073504467209660642" at="30,39,31,30" concept="6" />
@@ -1528,7 +1503,7 @@
       <unit id="2073504467209943077" at="10,0,15,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMathLongConstant_Editor" />
     </file>
     <file name="SimpleMathLongConstant_EditorBuilder_a.java">
-      <node id="2073504467209943077" at="33,102,34,19" concept="10" />
+      <node id="2073504467209943077" at="33,102,34,19" concept="9" />
       <node id="2073504467209943077" at="34,19,35,18" concept="1" />
       <node id="2073504467209943077" at="40,26,41,18" concept="6" />
       <node id="2073504467209943077" at="44,39,45,32" concept="6" />
@@ -1568,7 +1543,7 @@
       <node id="2073504467209943137" at="72,9,77,24" concept="3" />
       <node id="2073504467209943142" at="82,0,88,0" concept="4" trace="createConstant_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="2073504467209943077" at="48,0,57,0" concept="4" trace="createCollection_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="2073504467209943137" at="58,39,80,5" concept="11" />
+      <node id="2073504467209943137" at="58,39,80,5" concept="10" />
       <node id="2073504467209943137" at="57,0,82,0" concept="4" trace="createProperty_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <scope id="2073504467209943077" at="40,26,41,18" />
       <scope id="2073504467209943077" at="44,39,45,32" />
@@ -1621,7 +1596,7 @@
       <unit id="2073504467210944150" at="10,0,15,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMathFloatType_Editor" />
     </file>
     <file name="SimpleMathFloatType_EditorBuilder_a.java">
-      <node id="2073504467210944150" at="16,99,17,19" concept="10" />
+      <node id="2073504467210944150" at="16,99,17,19" concept="9" />
       <node id="2073504467210944150" at="17,19,18,18" concept="1" />
       <node id="2073504467210944150" at="23,26,24,18" concept="6" />
       <node id="2073504467210944150" at="27,39,28,30" concept="6" />
@@ -1664,7 +1639,7 @@
       <unit id="2073504467210944684" at="10,0,15,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMathFloatConstant_Editor" />
     </file>
     <file name="SimpleMathFloatConstant_EditorBuilder_a.java">
-      <node id="2073504467210944684" at="33,103,34,19" concept="10" />
+      <node id="2073504467210944684" at="33,103,34,19" concept="9" />
       <node id="2073504467210944684" at="34,19,35,18" concept="1" />
       <node id="2073504467210944684" at="40,26,41,18" concept="6" />
       <node id="2073504467210944684" at="44,39,45,32" concept="6" />
@@ -1704,7 +1679,7 @@
       <node id="2073504467210944693" at="72,9,77,24" concept="3" />
       <node id="2073504467210944698" at="82,0,88,0" concept="4" trace="createConstant_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="2073504467210944684" at="48,0,57,0" concept="4" trace="createCollection_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="2073504467210944693" at="58,39,80,5" concept="11" />
+      <node id="2073504467210944693" at="58,39,80,5" concept="10" />
       <node id="2073504467210944693" at="57,0,82,0" concept="4" trace="createProperty_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <scope id="2073504467210944684" at="40,26,41,18" />
       <scope id="2073504467210944684" at="44,39,45,32" />
@@ -1757,7 +1732,7 @@
       <unit id="8620208551721409672" at="10,0,15,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMathTypedVarDeclaration_Editor" />
     </file>
     <file name="SimpleMathTypedVarDeclaration_EditorBuilder_a.java">
-      <node id="8620208551721409672" at="41,109,42,19" concept="10" />
+      <node id="8620208551721409672" at="41,109,42,19" concept="9" />
       <node id="8620208551721409672" at="42,19,43,18" concept="1" />
       <node id="8620208551721409672" at="48,26,49,18" concept="6" />
       <node id="8620208551721409672" at="52,39,53,32" concept="6" />
@@ -1772,7 +1747,7 @@
       <node id="8620208551721409672" at="64,48,65,22" concept="6" />
       <node id="8620208551721409672" at="67,40,68,119" concept="5" />
       <node id="8620208551721409672" at="68,119,69,33" concept="6" />
-      <node id="8620208551721409672" at="75,118,76,38" concept="10" />
+      <node id="8620208551721409672" at="75,118,76,38" concept="9" />
       <node id="8620208551721409672" at="76,38,77,25" concept="1" />
       <node id="8620208551721409672" at="82,28,83,20" concept="6" />
       <node id="8620208551721409672" at="86,55,87,76" concept="5" />
@@ -1811,7 +1786,7 @@
       <node id="8620208551721419325" at="150,34,151,22" concept="6" />
       <node id="8620208551721409672" at="153,40,154,133" concept="5" />
       <node id="8620208551721409672" at="154,133,155,33" concept="6" />
-      <node id="8620208551721409672" at="161,125,162,38" concept="10" />
+      <node id="8620208551721409672" at="161,125,162,38" concept="9" />
       <node id="8620208551721409672" at="162,38,163,25" concept="1" />
       <node id="8620208551721409672" at="168,28,169,20" concept="6" />
       <node id="8620208551721409672" at="172,55,173,76" concept="5" />
@@ -1860,12 +1835,12 @@
       <node id="8620208551721409672" at="172,0,179,0" concept="4" trace="createChildCell#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="8620208551721409672" at="96,0,104,0" concept="4" trace="installCellInfo#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/cells/EditorCell;Z)V" />
       <node id="8620208551721409672" at="182,0,190,0" concept="4" trace="installCellInfo#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/cells/EditorCell;Z)V" />
-      <node id="8620208551721409672" at="107,104,116,7" concept="11" />
-      <node id="8620208551721409672" at="193,111,202,7" concept="11" />
+      <node id="8620208551721409672" at="107,104,116,7" concept="10" />
+      <node id="8620208551721409672" at="193,111,202,7" concept="10" />
       <node id="8620208551721409672" at="56,0,67,0" concept="4" trace="createCollection_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="8620208551721409672" at="104,0,118,0" concept="4" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="8620208551721409672" at="190,0,204,0" concept="4" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="8620208551721419318" at="123,39,145,5" concept="11" />
+      <node id="8620208551721419318" at="123,39,145,5" concept="10" />
       <node id="8620208551721419318" at="122,0,147,0" concept="4" trace="createProperty_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <scope id="8620208551721409672" at="48,26,49,18" />
       <scope id="8620208551721409672" at="52,39,53,32" />
@@ -1989,7 +1964,7 @@
       <unit id="930174696942541370" at="10,0,15,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMathAssignment_Editor" />
     </file>
     <file name="SimpleMathAssignment_EditorBuilder_a.java">
-      <node id="930174696942541370" at="27,100,28,19" concept="10" />
+      <node id="930174696942541370" at="27,100,28,19" concept="9" />
       <node id="930174696942541370" at="28,19,29,18" concept="1" />
       <node id="930174696942541370" at="34,26,35,18" concept="6" />
       <node id="930174696942541370" at="38,39,39,32" concept="6" />
@@ -2003,7 +1978,7 @@
       <node id="930174696942541370" at="49,48,50,22" concept="6" />
       <node id="930174696942541370" at="52,40,53,127" concept="5" />
       <node id="930174696942541370" at="53,127,54,33" concept="6" />
-      <node id="930174696942541370" at="60,122,61,38" concept="10" />
+      <node id="930174696942541370" at="60,122,61,38" concept="9" />
       <node id="930174696942541370" at="61,38,62,25" concept="1" />
       <node id="930174696942541370" at="67,28,68,20" concept="6" />
       <node id="930174696942541370" at="71,55,72,76" concept="5" />
@@ -2028,7 +2003,7 @@
       <node id="930174696942551192" at="110,34,111,22" concept="6" />
       <node id="930174696942541370" at="113,40,114,131" concept="5" />
       <node id="930174696942541370" at="114,131,115,33" concept="6" />
-      <node id="930174696942541370" at="121,124,122,38" concept="10" />
+      <node id="930174696942541370" at="121,124,122,38" concept="9" />
       <node id="930174696942541370" at="122,38,123,25" concept="1" />
       <node id="930174696942541370" at="128,28,129,20" concept="6" />
       <node id="930174696942541370" at="132,55,133,76" concept="5" />
@@ -2072,8 +2047,8 @@
       <node id="930174696942541370" at="132,0,139,0" concept="4" trace="createChildCell#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="930174696942541370" at="81,0,89,0" concept="4" trace="installCellInfo#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/cells/EditorCell;Z)V" />
       <node id="930174696942541370" at="142,0,150,0" concept="4" trace="installCellInfo#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/cells/EditorCell;Z)V" />
-      <node id="930174696942541370" at="92,108,101,7" concept="11" />
-      <node id="930174696942541370" at="153,110,162,7" concept="11" />
+      <node id="930174696942541370" at="92,108,101,7" concept="10" />
+      <node id="930174696942541370" at="153,110,162,7" concept="10" />
       <node id="930174696942541370" at="42,0,52,0" concept="4" trace="createCollection_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="930174696942541370" at="89,0,103,0" concept="4" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="930174696942541370" at="150,0,164,0" concept="4" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />

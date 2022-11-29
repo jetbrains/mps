@@ -1212,62 +1212,38 @@
   </root>
   <root nodeRef="r:8234d58c-a8a4-433b-96ca-0413d4ef8df8(jetbrains.mps.lang.textGen.editor)/1233677132994">
     <file name="TextGenStyles_StyleSheet.java">
-      <node id="1233682765482" at="21,81,22,69" concept="7" />
-      <node id="1233682765482" at="22,69,23,88" concept="7" />
-      <node id="1233682765482" at="23,88,24,81" concept="2" />
-      <node id="1237976670141" at="31,75,32,69" concept="7" />
-      <node id="1237976670141" at="32,69,33,88" concept="7" />
-      <node id="1237976670141" at="33,88,34,75" concept="2" />
-      <node id="1233682765482" at="38,80,39,33" concept="13" />
-      <node id="1233682779108" at="43,59,44,112" concept="2" />
-      <node id="1233682800705" at="44,112,45,59" concept="2" />
-      <node id="1237976670141" at="50,74,51,33" concept="13" />
-      <node id="1237976698363" at="55,59,56,60" concept="2" />
-      <node id="1233682765482" at="38,0,41,0" concept="1" trace="TextGenOperationStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="1237976670141" at="50,0,53,0" concept="1" trace="AppendPartStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="1237976670141" at="54,0,58,0" concept="6" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <node id="1233682765482" at="42,0,47,0" concept="6" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <node id="1233682765482" at="20,0,26,0" concept="12" trace="apply_TextGenOperation#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <node id="1237976670141" at="30,0,36,0" concept="12" trace="apply_AppendPart#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <scope id="1233682765482" at="38,80,39,33" />
-      <scope id="1237976670141" at="50,74,51,33" />
-      <scope id="1237976670141" at="55,59,56,60" />
-      <scope id="1233682765482" at="43,59,45,59" />
-      <scope id="1233682765482" at="21,81,24,81">
+      <node id="1233682765482" at="17,80,18,33" concept="13" />
+      <node id="1233682779108" at="22,59,23,112" concept="2" />
+      <node id="1233682800705" at="23,112,24,59" concept="2" />
+      <node id="1237976670141" at="29,74,30,33" concept="13" />
+      <node id="1237976698363" at="34,59,35,60" concept="2" />
+      <node id="1233682765482" at="17,0,20,0" concept="1" trace="TextGenOperationStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="1237976670141" at="29,0,32,0" concept="1" trace="AppendPartStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="1237976670141" at="33,0,37,0" concept="6" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="1233682765482" at="21,0,26,0" concept="6" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <scope id="1233682765482" at="17,80,18,33" />
+      <scope id="1237976670141" at="29,74,30,33" />
+      <scope id="1237976670141" at="34,59,35,60" />
+      <scope id="1233682765482" at="22,59,24,59" />
+      <scope id="1233682765482" at="17,0,20,0">
         <var name="editorContext" id="1233682765482" />
         <var name="node" id="1233682765482" />
       </scope>
-      <scope id="1237976670141" at="31,75,34,75">
+      <scope id="1237976670141" at="29,0,32,0">
         <var name="editorContext" id="1237976670141" />
         <var name="node" id="1237976670141" />
       </scope>
-      <scope id="1233682765482" at="38,0,41,0">
-        <var name="editorContext" id="1233682765482" />
-        <var name="node" id="1233682765482" />
-      </scope>
-      <scope id="1237976670141" at="50,0,53,0">
-        <var name="editorContext" id="1237976670141" />
-        <var name="node" id="1237976670141" />
-      </scope>
-      <scope id="1237976670141" at="54,0,58,0">
+      <scope id="1237976670141" at="33,0,37,0">
         <var name="editorCell" id="1237976670141" />
         <var name="style" id="1237976670141" />
       </scope>
-      <scope id="1233682765482" at="42,0,47,0">
+      <scope id="1233682765482" at="21,0,26,0">
         <var name="editorCell" id="1233682765482" />
         <var name="style" id="1233682765482" />
       </scope>
-      <scope id="1233682765482" at="20,0,26,0">
-        <var name="editorCell" id="1233682765482" />
-        <var name="style" id="1233682765482" />
-      </scope>
-      <scope id="1237976670141" at="30,0,36,0">
-        <var name="editorCell" id="1237976670141" />
-        <var name="style" id="1237976670141" />
-      </scope>
-      <unit id="1237976670141" at="49,0,60,0" name="jetbrains.mps.lang.textGen.editor.TextGenStyles_StyleSheet$AppendPartStyleClass" />
-      <unit id="1233682765482" at="37,0,49,0" name="jetbrains.mps.lang.textGen.editor.TextGenStyles_StyleSheet$TextGenOperationStyleClass" />
-      <unit id="1233677132994" at="15,0,61,0" name="jetbrains.mps.lang.textGen.editor.TextGenStyles_StyleSheet" />
+      <unit id="1237976670141" at="28,0,39,0" name="jetbrains.mps.lang.textGen.editor.TextGenStyles_StyleSheet$AppendPartStyleClass" />
+      <unit id="1233682765482" at="16,0,28,0" name="jetbrains.mps.lang.textGen.editor.TextGenStyles_StyleSheet$TextGenOperationStyleClass" />
+      <unit id="1233677132994" at="15,0,40,0" name="jetbrains.mps.lang.textGen.editor.TextGenStyles_StyleSheet" />
     </file>
   </root>
   <root nodeRef="r:8234d58c-a8a4-433b-96ca-0413d4ef8df8(jetbrains.mps.lang.textGen.editor)/1233751668642">

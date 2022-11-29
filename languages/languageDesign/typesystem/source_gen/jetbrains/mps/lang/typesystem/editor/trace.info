@@ -22548,65 +22548,41 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902b0(jetbrains.mps.lang.typesystem.editor)/4778346850551686267">
     <file name="TypesystemStyles_StyleSheet.java">
-      <node id="4778346850551686268" at="20,80,21,69" concept="7" />
-      <node id="4778346850551686268" at="21,69,22,88" concept="7" />
-      <node id="4778346850551686268" at="22,88,23,80" concept="2" />
-      <node id="1320713984677672377" at="30,87,31,69" concept="7" />
-      <node id="1320713984677672377" at="31,69,32,88" concept="7" />
-      <node id="1320713984677672377" at="32,88,33,87" concept="2" />
-      <node id="4778346850551686268" at="37,79,38,33" concept="13" />
-      <node id="4778346850551686270" at="42,59,43,116" concept="2" />
-      <node id="4778346850551686272" at="43,116,44,105" concept="2" />
-      <node id="7138124054060423566" at="44,105,45,114" concept="2" />
-      <node id="1320713984677672377" at="50,86,51,33" concept="13" />
-      <node id="1320713984677672378" at="55,59,56,118" concept="2" />
-      <node id="1320713984677672380" at="56,118,57,105" concept="2" />
-      <node id="1320713984677672381" at="57,105,58,114" concept="2" />
-      <node id="4778346850551686268" at="37,0,40,0" concept="1" trace="InequationLabelStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="1320713984677672377" at="50,0,53,0" concept="1" trace="InequationsGroupsLabelStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="4778346850551686268" at="19,0,25,0" concept="12" trace="apply_InequationLabel#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <node id="1320713984677672377" at="29,0,35,0" concept="12" trace="apply_InequationsGroupsLabel#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <node id="4778346850551686268" at="41,0,47,0" concept="6" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <node id="1320713984677672377" at="54,0,60,0" concept="6" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <scope id="4778346850551686268" at="37,79,38,33" />
-      <scope id="1320713984677672377" at="50,86,51,33" />
-      <scope id="4778346850551686268" at="20,80,23,80">
+      <node id="4778346850551686268" at="16,79,17,33" concept="13" />
+      <node id="4778346850551686270" at="21,59,22,116" concept="2" />
+      <node id="4778346850551686272" at="22,116,23,105" concept="2" />
+      <node id="7138124054060423566" at="23,105,24,114" concept="2" />
+      <node id="1320713984677672377" at="29,86,30,33" concept="13" />
+      <node id="1320713984677672378" at="34,59,35,118" concept="2" />
+      <node id="1320713984677672380" at="35,118,36,105" concept="2" />
+      <node id="1320713984677672381" at="36,105,37,114" concept="2" />
+      <node id="4778346850551686268" at="16,0,19,0" concept="1" trace="InequationLabelStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="1320713984677672377" at="29,0,32,0" concept="1" trace="InequationsGroupsLabelStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="4778346850551686268" at="20,0,26,0" concept="6" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="1320713984677672377" at="33,0,39,0" concept="6" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <scope id="4778346850551686268" at="16,79,17,33" />
+      <scope id="1320713984677672377" at="29,86,30,33" />
+      <scope id="4778346850551686268" at="16,0,19,0">
         <var name="editorContext" id="4778346850551686268" />
         <var name="node" id="4778346850551686268" />
       </scope>
-      <scope id="1320713984677672377" at="30,87,33,87">
+      <scope id="4778346850551686268" at="21,59,24,114" />
+      <scope id="1320713984677672377" at="29,0,32,0">
         <var name="editorContext" id="1320713984677672377" />
         <var name="node" id="1320713984677672377" />
       </scope>
-      <scope id="4778346850551686268" at="37,0,40,0">
-        <var name="editorContext" id="4778346850551686268" />
-        <var name="node" id="4778346850551686268" />
-      </scope>
-      <scope id="4778346850551686268" at="42,59,45,114" />
-      <scope id="1320713984677672377" at="50,0,53,0">
-        <var name="editorContext" id="1320713984677672377" />
-        <var name="node" id="1320713984677672377" />
-      </scope>
-      <scope id="1320713984677672377" at="55,59,58,114" />
-      <scope id="4778346850551686268" at="19,0,25,0">
+      <scope id="1320713984677672377" at="34,59,37,114" />
+      <scope id="4778346850551686268" at="20,0,26,0">
         <var name="editorCell" id="4778346850551686268" />
         <var name="style" id="4778346850551686268" />
       </scope>
-      <scope id="1320713984677672377" at="29,0,35,0">
+      <scope id="1320713984677672377" at="33,0,39,0">
         <var name="editorCell" id="1320713984677672377" />
         <var name="style" id="1320713984677672377" />
       </scope>
-      <scope id="4778346850551686268" at="41,0,47,0">
-        <var name="editorCell" id="4778346850551686268" />
-        <var name="style" id="4778346850551686268" />
-      </scope>
-      <scope id="1320713984677672377" at="54,0,60,0">
-        <var name="editorCell" id="1320713984677672377" />
-        <var name="style" id="1320713984677672377" />
-      </scope>
-      <unit id="4778346850551686268" at="36,0,49,0" name="jetbrains.mps.lang.typesystem.editor.TypesystemStyles_StyleSheet$InequationLabelStyleClass" />
-      <unit id="1320713984677672377" at="49,0,62,0" name="jetbrains.mps.lang.typesystem.editor.TypesystemStyles_StyleSheet$InequationsGroupsLabelStyleClass" />
-      <unit id="4778346850551686267" at="14,0,63,0" name="jetbrains.mps.lang.typesystem.editor.TypesystemStyles_StyleSheet" />
+      <unit id="4778346850551686268" at="15,0,28,0" name="jetbrains.mps.lang.typesystem.editor.TypesystemStyles_StyleSheet$InequationLabelStyleClass" />
+      <unit id="1320713984677672377" at="28,0,41,0" name="jetbrains.mps.lang.typesystem.editor.TypesystemStyles_StyleSheet$InequationsGroupsLabelStyleClass" />
+      <unit id="4778346850551686267" at="14,0,42,0" name="jetbrains.mps.lang.typesystem.editor.TypesystemStyles_StyleSheet" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902b0(jetbrains.mps.lang.typesystem.editor)/6005837154535148805">
