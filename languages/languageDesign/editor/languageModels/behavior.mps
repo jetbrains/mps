@@ -47,10 +47,8 @@
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="9anm" ref="r:6f374023-1b4e-4a80-8bf6-2cc3148faa52(jetbrains.mps.lang.editor.plugin)" />
     <import index="ze1i" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.runtime(MPS.Core/)" />
-    <import index="ncw5" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)" />
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
     <import index="av1m" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.menus.style(MPS.Editor/)" />
-    <import index="7a0s" ref="r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)" />
     <import index="fulz" ref="r:6f792c44-2a5d-40e8-9f05-33f7d4ae26ec(jetbrains.mps.editor.runtime.completion)" />
     <import index="9hsz" ref="r:16d53f5e-7835-4b72-9581-fafeae0db9b1(jetbrains.mps.lang.editor.enumMigration)" />
     <import index="tpc4" ref="r:00000000-0000-4000-0000-011c89590298(jetbrains.mps.lang.editor.constraints)" />
@@ -19119,26 +19117,6 @@
         <node concept="3cpWs6" id="2airAaTlupN" role="3cqZAp">
           <node concept="3clFbT" id="2airAaTluH0" role="3cqZAk">
             <property role="3clFbU" value="false" />
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="13i0hz" id="VHPC7elo9t" role="13h7CS">
-      <property role="TrG5h" value="getApplyMethodName" />
-      <node concept="3Tm1VV" id="VHPC7elo9u" role="1B3o_S" />
-      <node concept="17QB3L" id="VHPC7elo9v" role="3clF45" />
-      <node concept="3clFbS" id="VHPC7elo9w" role="3clF47">
-        <node concept="3cpWs6" id="VHPC7elo9x" role="3cqZAp">
-          <node concept="3cpWs3" id="VHPC7elo9y" role="3cqZAk">
-            <node concept="Xl_RD" id="VHPC7elo9z" role="3uHU7B">
-              <property role="Xl_RC" value="apply_" />
-            </node>
-            <node concept="2OqwBi" id="VHPC7elo9$" role="3uHU7w">
-              <node concept="13iPFW" id="VHPC7elo9_" role="2Oq$k0" />
-              <node concept="3TrcHB" id="VHPC7elo9A" role="2OqNvi">
-                <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
-              </node>
-            </node>
           </node>
         </node>
       </node>

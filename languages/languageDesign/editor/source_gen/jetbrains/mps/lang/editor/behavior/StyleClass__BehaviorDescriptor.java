@@ -38,12 +38,11 @@ public final class StyleClass__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> hasCycles_id6rIuTvxpF4l = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasCycles").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7417001528577667349L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
   public static final SMethod<Integer> getPriority_id1F_pHBEuveg = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getPriority").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1938068300780663696L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
   public static final SMethod<Boolean> hasApplyCycles_id2airAaTkVMd = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasApplyCycles").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2491174914184428685L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
-  public static final SMethod<String> getApplyMethodName_idVHPC7elo9t = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getApplyMethodName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1075751739012252253L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
   public static final SMethod<String> getStyleClassName_idVHPC7elo9B = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getStyleClassName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1075751739012252263L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
   public static final SMethod<String> getStyleClassFQName_id1OmL7qeocft = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getStyleClassFQName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2096078690061435869L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
   public static final SMethod<SNode> getStyleSheet_idVHPC7elo9L = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getStyleSheet").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1075751739012252273L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(hasCycles_id6rIuTvxpF4l, getPriority_id1F_pHBEuveg, hasApplyCycles_id2airAaTkVMd, getApplyMethodName_idVHPC7elo9t, getStyleClassName_idVHPC7elo9B, getStyleClassFQName_id1OmL7qeocft, getStyleSheet_idVHPC7elo9L);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(hasCycles_id6rIuTvxpF4l, getPriority_id1F_pHBEuveg, hasApplyCycles_id2airAaTkVMd, getStyleClassName_idVHPC7elo9B, getStyleClassFQName_id1OmL7qeocft, getStyleSheet_idVHPC7elo9L);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -111,9 +110,6 @@ public final class StyleClass__BehaviorDescriptor extends BaseBHDescriptor {
     }
     return false;
   }
-  /*package*/ static String getApplyMethodName_idVHPC7elo9t(@NotNull SNode __thisNode__) {
-    return "apply_" + SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL);
-  }
   /*package*/ static String getStyleClassName_idVHPC7elo9B(@NotNull SNode __thisNode__) {
     return SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL) + "StyleClass";
   }
@@ -146,12 +142,10 @@ public final class StyleClass__BehaviorDescriptor extends BaseBHDescriptor {
       case 2:
         return (T) ((Boolean) hasApplyCycles_id2airAaTkVMd(node));
       case 3:
-        return (T) ((String) getApplyMethodName_idVHPC7elo9t(node));
-      case 4:
         return (T) ((String) getStyleClassName_idVHPC7elo9B(node));
-      case 5:
+      case 4:
         return (T) ((String) getStyleClassFQName_id1OmL7qeocft(node));
-      case 6:
+      case 5:
         return (T) ((SNode) getStyleSheet_idVHPC7elo9L(node));
       default:
         throw new BHMethodNotFoundException(this, method);
