@@ -28,10 +28,9 @@ import jetbrains.mps.openapi.editor.cells.KeyMap;
 import jetbrains.mps.openapi.editor.cells.KeyMap.ActionKey;
 import jetbrains.mps.openapi.editor.cells.KeyMapAction;
 import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.smodel.ModelDependencyResolver;
 import jetbrains.mps.smodel.SLanguageHierarchy;
-import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.Pair;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -62,17 +61,14 @@ public abstract class KeymapHandler<E> {
   public Collection<Pair<KeyMapAction, EditorCell>> getActions(final EditorCell selectedCell, E event, final EditorContext context) {
     final Collection<ActionKey> actionKeys = getActionKeys(event);
     assert !actionKeys.isEmpty();
-    return new ModelAccessHelper(context.getRepository()).runReadAction(new Computable<List<Pair<KeyMapAction, EditorCell>>>() {
-      @Override
-      public List<Pair<KeyMapAction, EditorCell>> compute() {
-        // collect all keymaps available
-        List<Pair<KeyMap, EditorCell>> keymapsAndCells = KeymapHandler.this.getRegisteredKeymaps(selectedCell, context);
-        if (keymapsAndCells.isEmpty()) {
-          return Collections.emptyList();
-        }
-
-        return KeymapHandler.this.selectActionsFromKeymaps(selectedCell, actionKeys, context, keymapsAndCells);
+    return new ModelAccessHelper(context.getRepository()).runReadAction(() -> {
+      // collect all keymaps available
+      List<Pair<KeyMap, EditorCell>> keymapsAndCells = KeymapHandler.this.getRegisteredKeymaps(selectedCell, context);
+      if (keymapsAndCells.isEmpty()) {
+        return Collections.emptyList();
       }
+
+      return KeymapHandler.this.selectActionsFromKeymaps(selectedCell, actionKeys, context, keymapsAndCells);
     });
   }
 
@@ -93,8 +89,8 @@ public abstract class KeymapHandler<E> {
    * @return List of pairs keymap/ownerCell
    */
   private List<Pair<KeyMap, EditorCell>> getRegisteredKeymaps(EditorCell selectedCell, EditorContext editorContext) {
-    Set<Class> addedKeymaps = new HashSet<>(); // don't duplicate keymaps
-    List<Pair<KeyMap, EditorCell>> keyMapsAndCells = new ArrayList<>();
+    final Set<Class<?>> addedKeymaps = new HashSet<>(); // don't duplicate keymaps
+    final List<Pair<KeyMap, EditorCell>> keyMapsAndCells = new ArrayList<>();
 
     EditorCell keymapOwnerCell = selectedCell;
     while (keymapOwnerCell != null) {
@@ -113,11 +109,14 @@ public abstract class KeymapHandler<E> {
       // to find out possible editors/keymaps declared for super-concepts. This code has to change into generated
       // factory for keymaps, so that we don't need to walk hierarchy here.
       final LanguageRegistry languageRegistry = MPSCoreComponents.getInstance().getPlatform().findComponent(LanguageRegistry.class);
-      // FWIW, LanguagesKeymapManager has instance of LR, yet I hope to remove its listener code and LKM altogether.
-      for (SLanguage l : new SLanguageHierarchy(languageRegistry, SModelOperations.getAllLanguageImports(model)).getExtended()) {
-        // FIXME likely I don't need LanguagesKeymapManager here at all, may consult EAD directly.
-        //       I believe the longest operation here is to collect extended languages
-        List<KeyMap> keyMapsForNamespace = LanguagesKeymapManager.getInstance().getKeyMapsForLanguage(l);
+      // FWIW, LanguagesKeymapManager needs instance of LR, yet I hope to remove its listener code and LKM altogether.
+      //  Likely I don't need LanguagesKeymapManager here at all, may consult EAD directly.
+      final LanguagesKeymapManager lkm = new LanguagesKeymapManager(languageRegistry);
+      final ModelDependencyResolver mdr = new ModelDependencyResolver(languageRegistry, editorContext.getRepository());
+      final Set<SLanguage> extLangSet = new SLanguageHierarchy(languageRegistry, mdr.usedLanguages(model)).getExtended();
+      languageRegistry.withAvailableLanguages(extLangSet.stream(), l -> {
+        // FIXME use LanguageRuntime!
+        List<KeyMap> keyMapsForNamespace = lkm.getKeyMapsForLanguage(l.getIdentity());
         if (keyMapsForNamespace != null) {
           for (KeyMap keymap : keyMapsForNamespace) {
             if (!addedKeymaps.contains(keymap.getClass())) {
@@ -126,7 +125,7 @@ public abstract class KeymapHandler<E> {
             }
           }
         }
-      }
+      });
     }
 
     return keyMapsAndCells;
