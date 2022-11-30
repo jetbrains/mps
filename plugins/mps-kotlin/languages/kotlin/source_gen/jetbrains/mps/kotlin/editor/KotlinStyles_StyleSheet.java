@@ -22,7 +22,6 @@ import jetbrains.mps.kotlin.editor.KotlinKeyPack_KeyPack.LINE_COMMENT_StyleKey;
 import jetbrains.mps.kotlin.editor.KotlinKeyPack_KeyPack.TODO_StyleKey;
 import jetbrains.mps.kotlin.behavior.Comment__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -271,7 +270,7 @@ public class KotlinStyles_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.LIGHT_BLUE));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.LIGHT_BLUE));
     }
 
   }

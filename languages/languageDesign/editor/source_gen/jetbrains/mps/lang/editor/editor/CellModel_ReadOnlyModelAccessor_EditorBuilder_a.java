@@ -15,7 +15,6 @@ import jetbrains.mps.lang.editor.editor.Styles_StyleSheet.rootCellModelStyleStyl
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.lang.editor.editor.Styles_StyleSheet.borderedStyleClass;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import java.awt.Color;
 import jetbrains.mps.lang.editor.behavior.EditorCellModel__BehaviorDescriptor;
 
@@ -60,9 +59,9 @@ import jetbrains.mps.lang.editor.behavior.EditorCellModel__BehaviorDescriptor;
     editorCell.setCellId("Constant_fs6ae3_b0");
     Style style = new StyleImpl();
     new borderedStyleClass(this).apply(style, editorCell);
-    style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_fs6ae3_a0b0()));
-    style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_fs6ae3_a1b0()));
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_fs6ae3_a2b0()));
+    style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_fs6ae3_a0b0()));
+    style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_fs6ae3_a1b0()));
+    style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_fs6ae3_a2b0()));
     style.set(StyleAttributes.FONT_STYLE, _StyleParameter_QueryFunction_fs6ae3_a3b0());
     style.set(StyleAttributes.UNDERLINED, _StyleParameter_QueryFunction_fs6ae3_a4b0());
     editorCell.getStyle().putAll(style);

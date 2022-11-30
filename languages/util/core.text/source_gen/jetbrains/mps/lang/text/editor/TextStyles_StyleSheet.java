@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import java.awt.Color;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.nodeEditor.MPSColors;
@@ -56,7 +55,7 @@ public class TextStyles_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_vsrnlz_a0b()));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_vsrnlz_a0b()));
       style.set(StyleAttributes.FONT_STYLE, _StyleParameter_QueryFunction_vsrnlz_a1b());
     }
 
@@ -91,7 +90,7 @@ public class TextStyles_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      style.set(StyleAttributes.TEXT_COLOR, 1, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_vsrnlz_a0c()));
+      style.set(StyleAttributes.TEXT_COLOR, 1, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_vsrnlz_a0c()));
       style.set(StyleAttributes.FONT_STYLE, 1, _StyleParameter_QueryFunction_vsrnlz_a1c());
     }
 
