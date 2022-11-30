@@ -719,6 +719,7 @@
       <concept id="1174914042989" name="jetbrains.mps.baseLanguageInternal.structure.InternalClassifierType" flags="in" index="2eloPW">
         <property id="1174914081067" name="fqClassName" index="2ely0U" />
       </concept>
+      <concept id="1202838164916" name="jetbrains.mps.baseLanguageInternal.structure.InternalThisExpression" flags="nn" index="eJtiG" />
       <concept id="1100832983841311024" name="jetbrains.mps.baseLanguageInternal.structure.InternalClassCreator" flags="nn" index="xCZzO">
         <property id="1100832983841311026" name="fqClassName" index="xCZzQ" />
         <child id="1100832983841311029" name="type" index="xCZzL" />
@@ -29425,12 +29426,7 @@
                 <node concept="2OqwBi" id="1OmL7qfPhtJ" role="3clFbG">
                   <node concept="1nCR9W" id="1OmL7qfPhtK" role="2Oq$k0">
                     <property role="1nD$Q0" value="StyleClass" />
-                    <node concept="1rXfSq" id="1OmL7qfPhtL" role="2U2pNA">
-                      <ref role="37wK5l" to="qvne:6OQfiPCHBdf" resolve="getEditorContext" />
-                    </node>
-                    <node concept="1rXfSq" id="1OmL7qfPhtM" role="2U2pNA">
-                      <ref role="37wK5l" to="qvne:6OQfiPCHBgy" resolve="getNode" />
-                    </node>
+                    <node concept="eJtiG" id="21M1yPxzi4b" role="2U2pNA" />
                     <node concept="3uibUv" id="1OmL7qfPhtN" role="2lIhxL">
                       <ref role="3uigEE" to="i5c6:3sdr6u9asyM" resolve="AbstractStyleClass" />
                     </node>
@@ -47216,12 +47212,7 @@
               <node concept="2OqwBi" id="3AWl2CAaXZ6" role="3clFbG">
                 <node concept="1nCR9W" id="3AWl2CAaXZ7" role="2Oq$k0">
                   <property role="1nD$Q0" value="StyleClass" />
-                  <node concept="1rXfSq" id="3wekS$9akU4" role="2U2pNA">
-                    <ref role="37wK5l" to="qvne:6OQfiPCHBdf" resolve="getEditorContext" />
-                  </node>
-                  <node concept="1rXfSq" id="3wekS$9alMA" role="2U2pNA">
-                    <ref role="37wK5l" to="qvne:6OQfiPCHBgy" resolve="getNode" />
-                  </node>
+                  <node concept="eJtiG" id="21M1yPxzh9e" role="2U2pNA" />
                   <node concept="3uibUv" id="3AWl2CAaXZa" role="2lIhxL">
                     <ref role="3uigEE" to="i5c6:3sdr6u9asyM" resolve="AbstractStyleClass" />
                   </node>
