@@ -5,6 +5,7 @@ package jetbrains.mps.lang.constraints.rules.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -20,6 +21,9 @@ public class Rules_Styles_StyleSheet {
     public ContextReferenceStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public ContextReferenceStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -30,6 +34,9 @@ public class Rules_Styles_StyleSheet {
   public static class RuleStyleStyleClass extends AbstractStyleClass {
     public RuleStyleStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public RuleStyleStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -46,6 +53,9 @@ public class Rules_Styles_StyleSheet {
     public DefStyleStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public DefStyleStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -61,6 +71,9 @@ public class Rules_Styles_StyleSheet {
     public TypeOfDefStyleStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public TypeOfDefStyleStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -70,6 +83,9 @@ public class Rules_Styles_StyleSheet {
   public static class WhenHintStyleClass extends AbstractStyleClass {
     public WhenHintStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public WhenHintStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -81,6 +97,9 @@ public class Rules_Styles_StyleSheet {
   public static class AndDefsAreDefinedHintStyleClass extends AbstractStyleClass {
     public AndDefsAreDefinedHintStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public AndDefsAreDefinedHintStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -97,6 +116,9 @@ public class Rules_Styles_StyleSheet {
   public static class HintStyleClass extends AbstractStyleClass {
     public HintStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public HintStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

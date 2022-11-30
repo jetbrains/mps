@@ -5,6 +5,7 @@ package jetbrains.mps.lang.generator.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -18,6 +19,9 @@ public class Styles_StyleSheet {
     public GeneratorKeyWordStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public GeneratorKeyWordStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -29,6 +33,9 @@ public class Styles_StyleSheet {
   public static class referenceStyleClass extends AbstractStyleClass {
     public referenceStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public referenceStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -42,6 +49,9 @@ public class Styles_StyleSheet {
     public constantStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public constantStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -54,6 +64,9 @@ public class Styles_StyleSheet {
     public literalStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public literalStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -65,6 +78,9 @@ public class Styles_StyleSheet {
   public static class macroStartStyleClass extends AbstractStyleClass {
     public macroStartStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public macroStartStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -80,6 +96,9 @@ public class Styles_StyleSheet {
     public nodeUnderMacroStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public nodeUnderMacroStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -91,6 +110,9 @@ public class Styles_StyleSheet {
   public static class mappingLabelReferenceStyleClass extends AbstractStyleClass {
     public mappingLabelReferenceStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public mappingLabelReferenceStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -104,6 +126,9 @@ public class Styles_StyleSheet {
     public macroDescriptionTextStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public macroDescriptionTextStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -115,6 +140,9 @@ public class Styles_StyleSheet {
   public static class mappingRuleDeclarationStyleClass extends AbstractStyleClass {
     public mappingRuleDeclarationStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public mappingRuleDeclarationStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -128,6 +156,9 @@ public class Styles_StyleSheet {
     public mappingRuleReferenceStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public mappingRuleReferenceStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -138,6 +169,9 @@ public class Styles_StyleSheet {
   public static class ParenthesisStyleClass extends AbstractStyleClass {
     public ParenthesisStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public ParenthesisStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -152,6 +186,9 @@ public class Styles_StyleSheet {
     public LeftParenStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public LeftParenStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -165,6 +202,9 @@ public class Styles_StyleSheet {
     public RightParenStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public RightParenStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -176,6 +216,9 @@ public class Styles_StyleSheet {
   public static class VariableRefStyleClass extends AbstractStyleClass {
     public VariableRefStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public VariableRefStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -189,6 +232,9 @@ public class Styles_StyleSheet {
     public TemplateParameterRefStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public TemplateParameterRefStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -201,6 +247,9 @@ public class Styles_StyleSheet {
     public PatternRefStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public PatternRefStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -212,6 +261,9 @@ public class Styles_StyleSheet {
   public static class CommentStyleClass extends AbstractStyleClass {
     public CommentStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public CommentStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

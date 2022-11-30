@@ -5,6 +5,7 @@ package jetbrains.mps.ide.vcs.modelmetadata.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -16,6 +17,9 @@ public class MyStyles_StyleSheet {
   public static class keywordStyleClass extends AbstractStyleClass {
     public keywordStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public keywordStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

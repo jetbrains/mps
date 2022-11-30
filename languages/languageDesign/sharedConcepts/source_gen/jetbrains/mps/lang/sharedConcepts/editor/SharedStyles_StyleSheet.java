@@ -5,6 +5,7 @@ package jetbrains.mps.lang.sharedConcepts.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -16,6 +17,9 @@ public class SharedStyles_StyleSheet {
   public static class ReferenceDecoratedStyleClass extends AbstractStyleClass {
     public ReferenceDecoratedStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public ReferenceDecoratedStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -29,6 +33,9 @@ public class SharedStyles_StyleSheet {
     public ReferenceOnConceptStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public ReferenceOnConceptStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -39,6 +46,9 @@ public class SharedStyles_StyleSheet {
   public static class ReferenceOnConceptualFeatureStyleClass extends AbstractStyleClass {
     public ReferenceOnConceptualFeatureStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public ReferenceOnConceptualFeatureStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

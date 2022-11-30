@@ -5,6 +5,7 @@ package jetbrains.mps.lang.dataFlow.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -15,6 +16,9 @@ public class DataFlow_StyleSheet {
   public static class InstructionStyleClass extends AbstractStyleClass {
     public InstructionStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public InstructionStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -27,6 +31,9 @@ public class DataFlow_StyleSheet {
     public PositionStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public PositionStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -37,6 +44,9 @@ public class DataFlow_StyleSheet {
   public static class MayBeUnreachableStyleClass extends AbstractStyleClass {
     public MayBeUnreachableStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public MayBeUnreachableStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -50,6 +60,9 @@ public class DataFlow_StyleSheet {
     public LabelStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public LabelStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -60,6 +73,9 @@ public class DataFlow_StyleSheet {
   public static class InsertPositionStyleClass extends AbstractStyleClass {
     public InsertPositionStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public InsertPositionStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

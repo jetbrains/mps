@@ -5,6 +5,7 @@ package jetbrains.mps.lang.structure.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -22,6 +23,9 @@ public class structure_StyleSheet {
     public AnnotationNodeStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public AnnotationNodeStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -35,6 +39,9 @@ public class structure_StyleSheet {
     public KeywordStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public KeywordStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -45,6 +52,9 @@ public class structure_StyleSheet {
   public static class GrayOutStyleClass extends AbstractStyleClass {
     public GrayOutStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public GrayOutStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -57,6 +67,9 @@ public class structure_StyleSheet {
   public static class EnumMemberMigratedStyleClass extends AbstractStyleClass {
     public EnumMemberMigratedStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public EnumMemberMigratedStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -74,6 +87,9 @@ public class structure_StyleSheet {
     public EnumMigratedStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public EnumMigratedStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -89,6 +105,9 @@ public class structure_StyleSheet {
   public static class CommentStyleClass extends AbstractStyleClass {
     public CommentStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public CommentStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

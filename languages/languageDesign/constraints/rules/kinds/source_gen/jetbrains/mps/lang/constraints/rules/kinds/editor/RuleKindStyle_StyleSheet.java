@@ -5,6 +5,7 @@ package jetbrains.mps.lang.constraints.rules.kinds.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -15,6 +16,9 @@ public class RuleKindStyle_StyleSheet {
   public static class RuleKindStyleClass extends AbstractStyleClass {
     public RuleKindStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public RuleKindStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

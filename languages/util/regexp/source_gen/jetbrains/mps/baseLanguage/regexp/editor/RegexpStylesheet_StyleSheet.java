@@ -5,6 +5,7 @@ package jetbrains.mps.baseLanguage.regexp.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -15,6 +16,9 @@ public class RegexpStylesheet_StyleSheet {
   public static class RegexpBraceStyleClass extends AbstractStyleClass {
     public RegexpBraceStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public RegexpBraceStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -28,6 +32,9 @@ public class RegexpStylesheet_StyleSheet {
     public LeftRegexpBraceStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public LeftRegexpBraceStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -39,6 +46,9 @@ public class RegexpStylesheet_StyleSheet {
   public static class RightRegexpBraceStyleClass extends AbstractStyleClass {
     public RightRegexpBraceStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public RightRegexpBraceStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

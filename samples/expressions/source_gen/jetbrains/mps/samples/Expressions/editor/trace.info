@@ -151,39 +151,51 @@
   </root>
   <root nodeRef="r:e219e784-986b-4445-84f5-19e78ea5a924(jetbrains.mps.samples.Expressions.editor)/2073504467207936506">
     <file name="SimpleMath_StyleSheet.java">
-      <node id="2073504467207936507" at="17,71,18,33" concept="9" />
-      <node id="2073504467207936511" at="22,59,23,59" concept="1" />
-      <node id="2073504467207936517" at="23,59,24,112" concept="1" />
-      <node id="2073504467208093530" at="29,68,30,33" concept="9" />
-      <node id="2073504467208093537" at="34,59,35,61" concept="1" />
-      <node id="2073504467208093543" at="35,61,36,110" concept="1" />
-      <node id="2073504467207936507" at="17,0,20,0" concept="0" trace="KeyWordStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="2073504467208093530" at="29,0,32,0" concept="0" trace="typeStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="2073504467207936507" at="21,0,26,0" concept="4" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <node id="2073504467208093530" at="33,0,38,0" concept="4" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <scope id="2073504467207936507" at="17,71,18,33" />
-      <scope id="2073504467208093530" at="29,68,30,33" />
-      <scope id="2073504467207936507" at="22,59,24,112" />
-      <scope id="2073504467208093530" at="34,59,36,110" />
-      <scope id="2073504467207936507" at="17,0,20,0">
+      <node id="2073504467207936507" at="18,71,19,33" concept="9" />
+      <node id="2073504467207936507" at="21,67,22,24" concept="9" />
+      <node id="2073504467207936511" at="26,59,27,59" concept="1" />
+      <node id="2073504467207936517" at="27,59,28,112" concept="1" />
+      <node id="2073504467208093530" at="33,68,34,33" concept="9" />
+      <node id="2073504467208093530" at="36,64,37,24" concept="9" />
+      <node id="2073504467208093537" at="41,59,42,61" concept="1" />
+      <node id="2073504467208093543" at="42,61,43,110" concept="1" />
+      <node id="2073504467207936507" at="18,0,21,0" concept="0" trace="KeyWordStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="2073504467207936507" at="21,0,24,0" concept="0" trace="KeyWordStyleClass#(Ljetbrains/mps/editor/runtime/descriptor/EditorBuilderEnvironment;)V" />
+      <node id="2073504467208093530" at="33,0,36,0" concept="0" trace="typeStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="2073504467208093530" at="36,0,39,0" concept="0" trace="typeStyleClass#(Ljetbrains/mps/editor/runtime/descriptor/EditorBuilderEnvironment;)V" />
+      <node id="2073504467207936507" at="25,0,30,0" concept="4" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="2073504467208093530" at="40,0,45,0" concept="4" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <scope id="2073504467207936507" at="18,71,19,33" />
+      <scope id="2073504467207936507" at="21,67,22,24" />
+      <scope id="2073504467208093530" at="33,68,34,33" />
+      <scope id="2073504467208093530" at="36,64,37,24" />
+      <scope id="2073504467207936507" at="26,59,28,112" />
+      <scope id="2073504467208093530" at="41,59,43,110" />
+      <scope id="2073504467207936507" at="18,0,21,0">
         <var name="editorContext" id="2073504467207936507" />
         <var name="node" id="2073504467207936507" />
       </scope>
-      <scope id="2073504467208093530" at="29,0,32,0">
+      <scope id="2073504467207936507" at="21,0,24,0">
+        <var name="builderEnv" id="2073504467207936507" />
+      </scope>
+      <scope id="2073504467208093530" at="33,0,36,0">
         <var name="editorContext" id="2073504467208093530" />
         <var name="node" id="2073504467208093530" />
       </scope>
-      <scope id="2073504467207936507" at="21,0,26,0">
+      <scope id="2073504467208093530" at="36,0,39,0">
+        <var name="builderEnv" id="2073504467208093530" />
+      </scope>
+      <scope id="2073504467207936507" at="25,0,30,0">
         <var name="editorCell" id="2073504467207936507" />
         <var name="style" id="2073504467207936507" />
       </scope>
-      <scope id="2073504467208093530" at="33,0,38,0">
+      <scope id="2073504467208093530" at="40,0,45,0">
         <var name="editorCell" id="2073504467208093530" />
         <var name="style" id="2073504467208093530" />
       </scope>
-      <unit id="2073504467207936507" at="16,0,28,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMath_StyleSheet$KeyWordStyleClass" />
-      <unit id="2073504467208093530" at="28,0,40,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMath_StyleSheet$typeStyleClass" />
-      <unit id="2073504467207936506" at="15,0,41,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMath_StyleSheet" />
+      <unit id="2073504467207936507" at="17,0,32,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMath_StyleSheet$KeyWordStyleClass" />
+      <unit id="2073504467208093530" at="32,0,47,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMath_StyleSheet$typeStyleClass" />
+      <unit id="2073504467207936506" at="16,0,48,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMath_StyleSheet" />
     </file>
   </root>
   <root nodeRef="r:e219e784-986b-4445-84f5-19e78ea5a924(jetbrains.mps.samples.Expressions.editor)/2073504467207965611">

@@ -5,6 +5,7 @@ package jetbrains.mps.samples.fincalculator.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -16,6 +17,9 @@ public class Styles_StyleSheet {
   public static class KeyWordStyleClass extends AbstractStyleClass {
     public KeyWordStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public KeyWordStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -29,6 +33,9 @@ public class Styles_StyleSheet {
     public NumberStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public NumberStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -41,6 +48,9 @@ public class Styles_StyleSheet {
     public TextStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public TextStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -52,6 +62,9 @@ public class Styles_StyleSheet {
   public static class NameStyleClass extends AbstractStyleClass {
     public NameStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public NameStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

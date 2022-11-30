@@ -5,6 +5,7 @@ package jetbrains.mps.debugger.java.evaluation.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -17,6 +18,9 @@ public class EvaluationStyles_StyleSheet {
     public ContextKeywordStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public ContextKeywordStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -28,6 +32,9 @@ public class EvaluationStyles_StyleSheet {
   public static class HeaderStyleClass extends AbstractStyleClass {
     public HeaderStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public HeaderStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

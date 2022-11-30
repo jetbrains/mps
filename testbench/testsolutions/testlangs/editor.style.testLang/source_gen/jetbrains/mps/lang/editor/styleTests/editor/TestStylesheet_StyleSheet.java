@@ -5,6 +5,7 @@ package jetbrains.mps.lang.editor.styleTests.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -13,6 +14,9 @@ public class TestStylesheet_StyleSheet {
   public static class priorityStyleStyleClass extends AbstractStyleClass {
     public priorityStyleStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public priorityStyleStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -28,6 +32,9 @@ public class TestStylesheet_StyleSheet {
     public priorityStyleCopyStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public priorityStyleCopyStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -38,6 +45,9 @@ public class TestStylesheet_StyleSheet {
   public static class hugePriorityStyleStyleClass extends AbstractStyleClass {
     public hugePriorityStyleStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public hugePriorityStyleStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -52,6 +62,9 @@ public class TestStylesheet_StyleSheet {
   public static class unapplyPriorityStyleCopyStyleClass extends AbstractStyleClass {
     public unapplyPriorityStyleCopyStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public unapplyPriorityStyleCopyStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

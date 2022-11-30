@@ -5,6 +5,7 @@ package jetbrains.mps.lang.generator.generationContext.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -18,6 +19,9 @@ public class Styles_StyleSheet {
   public static class genContext_operationStyleClass extends AbstractStyleClass {
     public genContext_operationStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public genContext_operationStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -38,6 +42,9 @@ public class Styles_StyleSheet {
   public static class deprecatedStyleClass extends AbstractStyleClass {
     public deprecatedStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public deprecatedStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

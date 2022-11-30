@@ -5,6 +5,7 @@ package jetbrains.mps.console.base.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -13,6 +14,9 @@ public class ConsoleStyle_StyleSheet {
   public static class ReadOnlyStyleClass extends AbstractStyleClass {
     public ReadOnlyStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public ReadOnlyStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

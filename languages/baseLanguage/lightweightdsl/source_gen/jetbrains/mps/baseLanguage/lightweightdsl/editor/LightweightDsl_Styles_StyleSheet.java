@@ -5,6 +5,7 @@ package jetbrains.mps.baseLanguage.lightweightdsl.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -15,6 +16,9 @@ public class LightweightDsl_Styles_StyleSheet {
   public static class MethodInstanceStyleClass extends AbstractStyleClass {
     public MethodInstanceStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public MethodInstanceStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

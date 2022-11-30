@@ -5,6 +5,7 @@ package jetbrains.mps.baseLanguage.collections.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -14,6 +15,9 @@ public class Collections_Style_StyleSheet {
   public static class OperationStyleClass extends AbstractStyleClass {
     public OperationStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public OperationStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -25,6 +29,9 @@ public class Collections_Style_StyleSheet {
   public static class AngleBracketStyleClass extends AbstractStyleClass {
     public AngleBracketStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public AngleBracketStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -38,6 +45,9 @@ public class Collections_Style_StyleSheet {
     public LeftAngleBracketStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public LeftAngleBracketStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -50,6 +60,9 @@ public class Collections_Style_StyleSheet {
   public static class RightAngleBracketStyleClass extends AbstractStyleClass {
     public RightAngleBracketStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public RightAngleBracketStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

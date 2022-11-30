@@ -5,6 +5,7 @@ package jetbrains.mps.execution.settings.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -16,6 +17,9 @@ public class ExecutionSettings_StyleSheet {
     public persistentConfigurationRefStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public persistentConfigurationRefStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -26,6 +30,9 @@ public class ExecutionSettings_StyleSheet {
   public static class persistentConfigurationRefDeprecatedStyleClass extends AbstractStyleClass {
     public persistentConfigurationRefDeprecatedStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public persistentConfigurationRefDeprecatedStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

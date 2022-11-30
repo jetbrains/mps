@@ -5,6 +5,7 @@ package jetbrains.mps.kotlin.smodel.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -19,6 +20,9 @@ public class SModelStyles_StyleSheet {
     public ConceptRefStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public ConceptRefStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -29,6 +33,9 @@ public class SModelStyles_StyleSheet {
   public static class LinkStyleClass extends AbstractStyleClass {
     public LinkStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public LinkStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -41,6 +48,9 @@ public class SModelStyles_StyleSheet {
   public static class SModelKeyWordStyleClass extends AbstractStyleClass {
     public SModelKeyWordStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public SModelKeyWordStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

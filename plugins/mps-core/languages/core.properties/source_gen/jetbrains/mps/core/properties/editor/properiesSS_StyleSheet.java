@@ -5,6 +5,7 @@ package jetbrains.mps.core.properties.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -16,6 +17,9 @@ public class properiesSS_StyleSheet {
   public static class KeyStyleClass extends AbstractStyleClass {
     public KeyStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public KeyStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -29,6 +33,9 @@ public class properiesSS_StyleSheet {
     public CommentStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public CommentStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -41,6 +48,9 @@ public class properiesSS_StyleSheet {
     public SeparatorStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public SeparatorStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -51,6 +61,9 @@ public class properiesSS_StyleSheet {
   public static class ValueStyleClass extends AbstractStyleClass {
     public ValueStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public ValueStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

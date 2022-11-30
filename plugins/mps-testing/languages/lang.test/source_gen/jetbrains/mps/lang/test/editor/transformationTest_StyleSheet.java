@@ -5,6 +5,7 @@ package jetbrains.mps.lang.test.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -18,6 +19,9 @@ public class transformationTest_StyleSheet {
     public AssertStyleStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public AssertStyleStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -28,6 +32,9 @@ public class transformationTest_StyleSheet {
   public static class NodeAnnotationStyleClass extends AbstractStyleClass {
     public NodeAnnotationStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public NodeAnnotationStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -41,6 +48,9 @@ public class transformationTest_StyleSheet {
     public NodeOperationStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public NodeOperationStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -52,6 +62,9 @@ public class transformationTest_StyleSheet {
   public static class TestLabelStyleClass extends AbstractStyleClass {
     public TestLabelStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public TestLabelStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -66,6 +79,9 @@ public class transformationTest_StyleSheet {
     public EditorOperationStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public EditorOperationStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -76,6 +92,9 @@ public class transformationTest_StyleSheet {
   public static class AnyBracketStyleClass extends AbstractStyleClass {
     public AnyBracketStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public AnyBracketStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -88,6 +107,9 @@ public class transformationTest_StyleSheet {
   public static class ParenthesisStyleClass extends AbstractStyleClass {
     public ParenthesisStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public ParenthesisStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -102,6 +124,9 @@ public class transformationTest_StyleSheet {
     public LeftParenStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public LeftParenStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -114,6 +139,9 @@ public class transformationTest_StyleSheet {
     public RightParenStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public RightParenStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -125,6 +153,9 @@ public class transformationTest_StyleSheet {
   public static class LeftParenAfterNameStyleClass extends AbstractStyleClass {
     public LeftParenAfterNameStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public LeftParenAfterNameStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

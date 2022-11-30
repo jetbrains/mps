@@ -5,6 +5,7 @@ package jetbrains.mps.lang.textGen.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -17,6 +18,9 @@ public class TextGenStyles_StyleSheet {
     public TextGenOperationStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public TextGenOperationStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -28,6 +32,9 @@ public class TextGenStyles_StyleSheet {
   public static class AppendPartStyleClass extends AbstractStyleClass {
     public AppendPartStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public AppendPartStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

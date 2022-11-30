@@ -5,6 +5,7 @@ package jetbrains.mps.lang.text.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -23,6 +24,9 @@ public class TextStyles_StyleSheet {
   public static class WordTextStyleStyleClass extends AbstractStyleClass {
     public WordTextStyleStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public WordTextStyleStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -45,6 +49,9 @@ public class TextStyles_StyleSheet {
   public static class BaseWordTextStyleStyleClass extends AbstractStyleClass {
     public BaseWordTextStyleStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public BaseWordTextStyleStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -77,6 +84,9 @@ public class TextStyles_StyleSheet {
   public static class CommentWordTextStyleStyleClass extends AbstractStyleClass {
     public CommentWordTextStyleStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public CommentWordTextStyleStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

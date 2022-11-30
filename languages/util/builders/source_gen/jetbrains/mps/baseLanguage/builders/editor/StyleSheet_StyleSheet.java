@@ -5,6 +5,7 @@ package jetbrains.mps.baseLanguage.builders.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -17,6 +18,9 @@ public class StyleSheet_StyleSheet {
     public BuilderStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public BuilderStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -28,6 +32,9 @@ public class StyleSheet_StyleSheet {
   public static class ParameterStyleClass extends AbstractStyleClass {
     public ParameterStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public ParameterStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

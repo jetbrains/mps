@@ -5,6 +5,7 @@ package jetbrains.mps.core.xml.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -18,6 +19,9 @@ public class XmlSS_StyleSheet {
     public xmlTagNameStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public xmlTagNameStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -29,6 +33,9 @@ public class XmlSS_StyleSheet {
   public static class xmlExtensionNameStyleClass extends AbstractStyleClass {
     public xmlExtensionNameStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public xmlExtensionNameStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -42,6 +49,9 @@ public class XmlSS_StyleSheet {
     public xmlTagPunctuationStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public xmlTagPunctuationStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -53,6 +63,9 @@ public class XmlSS_StyleSheet {
     public xmlAttributeNameStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public xmlAttributeNameStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -63,6 +76,9 @@ public class XmlSS_StyleSheet {
   public static class xmlAttributeValueStyleClass extends AbstractStyleClass {
     public xmlAttributeValueStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public xmlAttributeValueStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -76,6 +92,9 @@ public class XmlSS_StyleSheet {
     public xmlAttrEntityRefValueStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public xmlAttrEntityRefValueStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -87,6 +106,9 @@ public class XmlSS_StyleSheet {
   public static class xmlAttrCharRefValueStyleClass extends AbstractStyleClass {
     public xmlAttrCharRefValueStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public xmlAttrCharRefValueStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -100,6 +122,9 @@ public class XmlSS_StyleSheet {
     public xmlNoNewLineStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public xmlNoNewLineStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -111,6 +136,9 @@ public class XmlSS_StyleSheet {
   public static class xmlEntityRefStyleClass extends AbstractStyleClass {
     public xmlEntityRefStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public xmlEntityRefStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -124,6 +152,9 @@ public class XmlSS_StyleSheet {
     public xmlCharRefStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public xmlCharRefStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -136,6 +167,9 @@ public class XmlSS_StyleSheet {
     public xmlCommentStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public xmlCommentStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -146,6 +180,9 @@ public class XmlSS_StyleSheet {
   public static class xmlPIStyleClass extends AbstractStyleClass {
     public xmlPIStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public xmlPIStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -158,6 +195,9 @@ public class XmlSS_StyleSheet {
     public xmlPITargetStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public xmlPITargetStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -168,6 +208,9 @@ public class XmlSS_StyleSheet {
   public static class xmlPIDataStyleClass extends AbstractStyleClass {
     public xmlPIDataStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public xmlPIDataStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

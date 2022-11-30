@@ -5,6 +5,7 @@ package jetbrains.mps.baseLanguageInternal.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -18,6 +19,9 @@ public class StyleSheet_StyleSheet {
     public InternalKeywordStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public InternalKeywordStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -30,6 +34,9 @@ public class StyleSheet_StyleSheet {
     public InternalNameStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public InternalNameStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -40,6 +47,9 @@ public class StyleSheet_StyleSheet {
   public static class SquareBracketStyleClass extends AbstractStyleClass {
     public SquareBracketStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public SquareBracketStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

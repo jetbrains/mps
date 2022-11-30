@@ -5,6 +5,7 @@ package jetbrains.mps.lang.project.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.lang.core.editor.BaseKeyPack_KeyPack.KEYWORD_StyleKey;
@@ -13,6 +14,9 @@ public class ProjectStructure_StyleSheet {
   public static class KeyWordStyleClass extends AbstractStyleClass {
     public KeyWordStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public KeyWordStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

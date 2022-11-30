@@ -5,6 +5,7 @@ package jetbrains.mps.baseLanguage.javadoc.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -18,6 +19,9 @@ public class DocumentationCommentStyleSheet_StyleSheet {
     public CommentStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public CommentStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -30,6 +34,9 @@ public class DocumentationCommentStyleSheet_StyleSheet {
     public CommentTagStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public CommentTagStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -40,6 +47,9 @@ public class DocumentationCommentStyleSheet_StyleSheet {
   public static class CommentHTMLTagStyleClass extends AbstractStyleClass {
     public CommentHTMLTagStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public CommentHTMLTagStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

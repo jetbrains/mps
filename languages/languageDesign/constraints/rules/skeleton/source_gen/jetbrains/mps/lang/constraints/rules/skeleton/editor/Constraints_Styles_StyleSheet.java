@@ -5,6 +5,7 @@ package jetbrains.mps.lang.constraints.rules.skeleton.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -17,6 +18,9 @@ public class Constraints_Styles_StyleSheet {
     public RootHeadingStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public RootHeadingStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -28,6 +32,9 @@ public class Constraints_Styles_StyleSheet {
   public static class RuleBlockDeclarationStyleClass extends AbstractStyleClass {
     public RuleBlockDeclarationStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public RuleBlockDeclarationStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

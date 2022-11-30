@@ -5,6 +5,7 @@ package jetbrains.mps.build.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -18,6 +19,9 @@ public class buildStyles_StyleSheet {
     public outputLayoutStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public outputLayoutStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -30,6 +34,9 @@ public class buildStyles_StyleSheet {
     public artifactKeywordStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public artifactKeywordStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -41,6 +48,9 @@ public class buildStyles_StyleSheet {
     public projectPartKeywordStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public projectPartKeywordStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -51,6 +61,9 @@ public class buildStyles_StyleSheet {
   public static class macroStyleClass extends AbstractStyleClass {
     public macroStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public macroStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -64,6 +77,9 @@ public class buildStyles_StyleSheet {
     public keywordStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public keywordStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -75,6 +91,9 @@ public class buildStyles_StyleSheet {
   public static class pluginStyleClass extends AbstractStyleClass {
     public pluginStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public pluginStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -88,6 +107,9 @@ public class buildStyles_StyleSheet {
     public keyword_4StyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public keyword_4StyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -99,6 +121,9 @@ public class buildStyles_StyleSheet {
   public static class stringStyleClass extends AbstractStyleClass {
     public stringStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public stringStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -112,6 +137,9 @@ public class buildStyles_StyleSheet {
     public hintStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public hintStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -124,6 +152,9 @@ public class buildStyles_StyleSheet {
   public static class commentStyleClass extends AbstractStyleClass {
     public commentStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public commentStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

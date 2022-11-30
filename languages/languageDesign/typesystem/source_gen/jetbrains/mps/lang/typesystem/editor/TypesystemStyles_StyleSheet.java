@@ -5,6 +5,7 @@ package jetbrains.mps.lang.typesystem.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -15,6 +16,9 @@ public class TypesystemStyles_StyleSheet {
   public static class InequationLabelStyleClass extends AbstractStyleClass {
     public InequationLabelStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public InequationLabelStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -28,6 +32,9 @@ public class TypesystemStyles_StyleSheet {
   public static class InequationsGroupsLabelStyleClass extends AbstractStyleClass {
     public InequationsGroupsLabelStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public InequationsGroupsLabelStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

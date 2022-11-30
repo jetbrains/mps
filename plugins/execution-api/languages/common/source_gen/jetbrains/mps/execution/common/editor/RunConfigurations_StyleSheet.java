@@ -5,6 +5,7 @@ package jetbrains.mps.execution.common.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -17,6 +18,9 @@ public class RunConfigurations_StyleSheet {
   public static class lessThenStyleClass extends AbstractStyleClass {
     public lessThenStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public lessThenStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -31,6 +35,9 @@ public class RunConfigurations_StyleSheet {
     public greaterThenStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public greaterThenStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -43,6 +50,9 @@ public class RunConfigurations_StyleSheet {
     public operationStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public operationStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -54,6 +64,9 @@ public class RunConfigurations_StyleSheet {
   public static class leftOperationBraceStyleClass extends AbstractStyleClass {
     public leftOperationBraceStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public leftOperationBraceStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -69,6 +82,9 @@ public class RunConfigurations_StyleSheet {
     public rightOperationBraceStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public rightOperationBraceStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -82,6 +98,9 @@ public class RunConfigurations_StyleSheet {
     public constructorParameterStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public constructorParameterStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -93,6 +112,9 @@ public class RunConfigurations_StyleSheet {
   public static class conceptFunctionHeaderStyleClass extends AbstractStyleClass {
     public conceptFunctionHeaderStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public conceptFunctionHeaderStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

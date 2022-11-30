@@ -5,6 +5,7 @@ package jetbrains.mps.kotlin.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.LeftParenStyleClass;
@@ -31,6 +32,9 @@ public class KotlinStyles_StyleSheet {
     public LParenthesisStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public LParenthesisStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -41,6 +45,9 @@ public class KotlinStyles_StyleSheet {
   public static class RParenthesisStyleClass extends AbstractStyleClass {
     public RParenthesisStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public RParenthesisStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -53,6 +60,9 @@ public class KotlinStyles_StyleSheet {
     public DotStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public DotStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -63,6 +73,9 @@ public class KotlinStyles_StyleSheet {
   public static class LBracketStyleClass extends AbstractStyleClass {
     public LBracketStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public LBracketStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -75,6 +88,9 @@ public class KotlinStyles_StyleSheet {
     public RBracketStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public RBracketStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -85,6 +101,9 @@ public class KotlinStyles_StyleSheet {
   public static class LBraceStyleClass extends AbstractStyleClass {
     public LBraceStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public LBraceStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -97,6 +116,9 @@ public class KotlinStyles_StyleSheet {
     public RBraceStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public RBraceStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -107,6 +129,9 @@ public class KotlinStyles_StyleSheet {
   public static class ArrowStyleClass extends AbstractStyleClass {
     public ArrowStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public ArrowStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -121,6 +146,9 @@ public class KotlinStyles_StyleSheet {
     public DotReferenceStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public DotReferenceStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -131,6 +159,9 @@ public class KotlinStyles_StyleSheet {
   public static class LDiamondStyleClass extends AbstractStyleClass {
     public LDiamondStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public LDiamondStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -144,6 +175,9 @@ public class KotlinStyles_StyleSheet {
     public RDiamondStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public RDiamondStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -154,6 +188,9 @@ public class KotlinStyles_StyleSheet {
   public static class ColonStyleClass extends AbstractStyleClass {
     public ColonStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public ColonStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -167,6 +204,9 @@ public class KotlinStyles_StyleSheet {
     public KeywordStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public KeywordStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -177,6 +217,9 @@ public class KotlinStyles_StyleSheet {
   public static class FieldStyleClass extends AbstractStyleClass {
     public FieldStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public FieldStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -189,6 +232,9 @@ public class KotlinStyles_StyleSheet {
     public CommentStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public CommentStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -199,6 +245,9 @@ public class KotlinStyles_StyleSheet {
   public static class TODOStyleClass extends AbstractStyleClass {
     public TODOStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public TODOStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
@@ -216,6 +265,9 @@ public class KotlinStyles_StyleSheet {
     public LabelStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
     }
+    public LabelStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
@@ -226,6 +278,9 @@ public class KotlinStyles_StyleSheet {
   public static class AnnotationStyleClass extends AbstractStyleClass {
     public AnnotationStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public AnnotationStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override

@@ -5,6 +5,7 @@ package jetbrains.mps.samples.Kaja.editor;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.KeyWordStyleClass;
@@ -17,6 +18,9 @@ public class KajakStyles_StyleSheet {
   public static class CommandStyleClass extends AbstractStyleClass {
     public CommandStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
+    }
+    public CommandStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
     }
 
     @Override
