@@ -34,6 +34,11 @@
     <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
   </path>
   
+  <path id="path.java.library.idea-runtime">
+    <fileset file="${artifacts.IDEA}/lib/app.jar" />
+    <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
+  </path>
+  
   <path id="path.java.library.idea-ant">
     <fileset dir="${artifacts.IDEA}/lib/ant/lib" includes="*.jar" />
   </path>
@@ -366,6 +371,7 @@
         <pathelement path="${build.tmp}/java/out/mps-openapi" />
         <path refid="path.java.library.annotations-lib" />
         <path refid="path.java.library.gnu.trove" />
+        <path refid="path.java.library.idea-runtime" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>

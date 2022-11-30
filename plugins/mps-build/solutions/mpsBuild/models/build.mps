@@ -49944,6 +49944,23 @@
         </node>
       </node>
     </node>
+    <node concept="PiPfp" id="5EtRBM7ROPA" role="3989C9">
+      <property role="TrG5h" value="idea-runtime" />
+      <node concept="25yagZ" id="5EtRBM7ROPB" role="PiKyV">
+        <node concept="3yqu4x" id="5EtRBM7ROPC" role="25yagT">
+          <node concept="3yrxFa" id="5EtRBM7ROPD" role="3yqu4I">
+            <ref role="3yrxFb" node="4LdE6kxkp0J" />
+          </node>
+        </node>
+      </node>
+      <node concept="25yagZ" id="5EtRBM7RP7t" role="PiKyV">
+        <node concept="3yqu4x" id="5EtRBM7RP7u" role="25yagT">
+          <node concept="3yrxFa" id="5EtRBM7RP7v" role="3yqu4I">
+            <ref role="3yrxFb" node="6Qz0a49QoDC" />
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="PiPfp" id="1FaKCGJSzMS" role="3989C9">
       <property role="TrG5h" value="idea-ant" />
       <node concept="25yagZ" id="2vaDE4tAX34" role="PiKyV">
@@ -50414,6 +50431,9 @@
           <property role="nFU4j" value="source" />
           <property role="3LZaj6" value="source" />
         </node>
+      </node>
+      <node concept="2sjeV3" id="5EtRBM7RPm8" role="nCB5Z">
+        <ref role="2sjeV2" node="5EtRBM7ROPA" resolve="idea-runtime" />
       </node>
     </node>
     <node concept="398b33" id="7FonrDkmRHZ" role="3989C9">

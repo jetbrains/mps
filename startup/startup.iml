@@ -18,11 +18,10 @@
     <orderEntry type="module" module-name="mps-tips" scope="RUNTIME" />
     <orderEntry type="module" module-name="vfs-tracking" scope="RUNTIME" />
     <orderEntry type="module" module-name="migrations-runtime" scope="RUNTIME" />
-    <orderEntry type="library" scope="RUNTIME" name="Kotlin" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="google.guava" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Runtime classpath" level="project" />
     <orderEntry type="module" module-name="psi" scope="RUNTIME" />
     <orderEntry type="library" scope="RUNTIME" name="jna" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="KotlinCoreLibs" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="kotlin_builtins" level="project" />
   </component>
 </module>
