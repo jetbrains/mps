@@ -15321,9 +15321,12 @@
                     </node>
                   </node>
                 </node>
-                <node concept="2YIFZM" id="4N_nDX8pJyp" role="2Oq$k0">
-                  <ref role="1Pybhc" to="hox0:~StyleRegistry" resolve="StyleRegistry" />
-                  <ref role="37wK5l" to="hox0:~StyleRegistry.getInstance()" resolve="getInstance" />
+                <node concept="1DoJHT" id="3BTYFETWlcd" role="2Oq$k0">
+                  <property role="1Dpdpm" value="getStyleRegistry" />
+                  <node concept="3uibUv" id="3BTYFETWlce" role="1Ez5kq">
+                    <ref role="3uigEE" to="hox0:~StyleRegistry" resolve="StyleRegistry" />
+                  </node>
+                  <node concept="eJtiG" id="3BTYFETWlcf" role="1EMhIo" />
                 </node>
               </node>
             </node>
@@ -15403,9 +15406,12 @@
               </node>
             </node>
           </node>
-          <node concept="2YIFZM" id="4N_nDX8pAj0" role="2Oq$k0">
-            <ref role="1Pybhc" to="hox0:~StyleRegistry" resolve="StyleRegistry" />
-            <ref role="37wK5l" to="hox0:~StyleRegistry.getInstance()" resolve="getInstance" />
+          <node concept="1DoJHT" id="3BTYFETWlqH" role="2Oq$k0">
+            <property role="1Dpdpm" value="getStyleRegistry" />
+            <node concept="3uibUv" id="3BTYFETWlqI" role="1Ez5kq">
+              <ref role="3uigEE" to="hox0:~StyleRegistry" resolve="StyleRegistry" />
+            </node>
+            <node concept="eJtiG" id="3BTYFETWlqJ" role="1EMhIo" />
           </node>
         </node>
       </node>
@@ -15509,9 +15515,12 @@
               </node>
             </node>
           </node>
-          <node concept="2YIFZM" id="3Ib5UJg3U6x" role="2Oq$k0">
-            <ref role="1Pybhc" to="hox0:~StyleRegistry" resolve="StyleRegistry" />
-            <ref role="37wK5l" to="hox0:~StyleRegistry.getInstance()" resolve="getInstance" />
+          <node concept="1DoJHT" id="3BTYFETWkQl" role="2Oq$k0">
+            <property role="1Dpdpm" value="getStyleRegistry" />
+            <node concept="3uibUv" id="3BTYFETWkQm" role="1Ez5kq">
+              <ref role="3uigEE" to="hox0:~StyleRegistry" resolve="StyleRegistry" />
+            </node>
+            <node concept="eJtiG" id="3BTYFETWkQn" role="1EMhIo" />
           </node>
         </node>
       </node>
@@ -15578,9 +15587,12 @@
               </node>
             </node>
           </node>
-          <node concept="2YIFZM" id="3Ib5UJg40tX" role="2Oq$k0">
-            <ref role="1Pybhc" to="hox0:~StyleRegistry" resolve="StyleRegistry" />
-            <ref role="37wK5l" to="hox0:~StyleRegistry.getInstance()" resolve="getInstance" />
+          <node concept="1DoJHT" id="3BTYFETWkO1" role="2Oq$k0">
+            <property role="1Dpdpm" value="getStyleRegistry" />
+            <node concept="3uibUv" id="3BTYFETWkO2" role="1Ez5kq">
+              <ref role="3uigEE" to="hox0:~StyleRegistry" resolve="StyleRegistry" />
+            </node>
+            <node concept="eJtiG" id="3BTYFETWkO3" role="1EMhIo" />
           </node>
         </node>
       </node>
@@ -15767,12 +15779,15 @@
                 </node>
                 <node concept="3fqX7Q" id="6xEob0NnK7j" role="3K4Cdx">
                   <node concept="2OqwBi" id="6xEob0NnK7k" role="3fr31v">
-                    <node concept="2YIFZM" id="6xEob0NnK7l" role="2Oq$k0">
-                      <ref role="1Pybhc" to="hox0:~StyleRegistry" resolve="StyleRegistry" />
-                      <ref role="37wK5l" to="hox0:~StyleRegistry.getInstance()" resolve="getInstance" />
-                    </node>
                     <node concept="liA8E" id="6xEob0NnK7m" role="2OqNvi">
                       <ref role="37wK5l" to="hox0:~StyleRegistry.isDarkTheme()" resolve="isDarkTheme" />
+                    </node>
+                    <node concept="1DoJHT" id="3BTYFETULM1" role="2Oq$k0">
+                      <property role="1Dpdpm" value="getStyleRegistry" />
+                      <node concept="3uibUv" id="3BTYFETULMf" role="1Ez5kq">
+                        <ref role="3uigEE" to="hox0:~StyleRegistry" resolve="StyleRegistry" />
+                      </node>
+                      <node concept="eJtiG" id="3BTYFETWkDM" role="1EMhIo" />
                     </node>
                   </node>
                 </node>
@@ -15843,9 +15858,12 @@
               </node>
             </node>
           </node>
-          <node concept="2YIFZM" id="3Ib5UJg4kEE" role="2Oq$k0">
-            <ref role="1Pybhc" to="hox0:~StyleRegistry" resolve="StyleRegistry" />
-            <ref role="37wK5l" to="hox0:~StyleRegistry.getInstance()" resolve="getInstance" />
+          <node concept="1DoJHT" id="3BTYFETWkMh" role="2Oq$k0">
+            <property role="1Dpdpm" value="getStyleRegistry" />
+            <node concept="3uibUv" id="3BTYFETWkMi" role="1Ez5kq">
+              <ref role="3uigEE" to="hox0:~StyleRegistry" resolve="StyleRegistry" />
+            </node>
+            <node concept="eJtiG" id="3BTYFETWkMj" role="1EMhIo" />
           </node>
         </node>
       </node>
