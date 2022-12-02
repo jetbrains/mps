@@ -259,6 +259,7 @@
       <concept id="4065387505485742749" name="jetbrains.mps.lang.smodel.structure.AbstractPointerResolveOperation" flags="ng" index="2yCiFS">
         <child id="3648723375513868575" name="repositoryArg" index="Vysub" />
       </concept>
+      <concept id="1173122760281" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorsOperation" flags="nn" index="z$bX8" />
       <concept id="2396822768958367367" name="jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression" flags="nn" index="$5XWr">
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
@@ -3211,6 +3212,35 @@
                   <ref role="37wK5l" to="wyt6:~String.endsWith(java.lang.String)" resolve="endsWith" />
                   <node concept="Xl_RD" id="1CUeZUolQLF" role="37wK5m">
                     <property role="Xl_RC" value="\\\&quot;" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1M2fIO" id="1h3cSlxZIsg">
+    <property role="3GE5qa" value="expression.this" />
+    <ref role="1M2myG" to="hcm8:2yYXHtl6Jmo" resolve="ThisExpression" />
+    <node concept="1N5Pfh" id="1h3cSlxZKtw" role="1Mr941">
+      <ref role="1N5Vy1" to="hcm8:6cg9X74hPTX" resolve="targetLabel" />
+      <node concept="3dgokm" id="1h3cSlxZKtA" role="1N6uqs">
+        <node concept="3clFbS" id="1h3cSlxZKtC" role="2VODD2">
+          <node concept="3cpWs6" id="1h3cSlxZS2k" role="3cqZAp">
+            <node concept="2ShNRf" id="1h3cSlxZS35" role="3cqZAk">
+              <node concept="1pGfFk" id="1h3cSly07Fz" role="2ShVmc">
+                <property role="373rjd" value="true" />
+                <ref role="37wK5l" to="6xgk:7lHSllLpTWM" resolve="NamedElementsScope" />
+                <node concept="2OqwBi" id="1h3cSlxZM9E" role="37wK5m">
+                  <node concept="2rP1CM" id="1h3cSlxZM9F" role="2Oq$k0" />
+                  <node concept="z$bX8" id="1h3cSly0hkc" role="2OqNvi">
+                    <node concept="1xMEDy" id="1h3cSly0l51" role="1xVPHs">
+                      <node concept="chp4Y" id="1h3cSly0l6q" role="ri$Ld">
+                        <ref role="cht4Q" to="hcm8:xpyqH1FtXg" resolve="IThisReceiverProvider" />
+                      </node>
+                    </node>
                   </node>
                 </node>
               </node>
