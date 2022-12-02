@@ -94,8 +94,8 @@
     <import index="phib" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.diff.requests(MPS.IDEA/)" />
     <import index="439w" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.codeInsight.hint(MPS.IDEA/)" />
     <import index="gspm" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui.popup(MPS.IDEA/)" />
+    <import index="8m69" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.editor.markup(MPS.IDEA/)" />
     <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" implicit="true" />
-    <import index="8m69" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.editor.markup(MPS.IDEA/)" implicit="true" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -2240,15 +2240,7 @@
         <node concept="3clFbF" id="5ZshaoOuelO" role="3cqZAp">
           <node concept="1rXfSq" id="5ZshaoOuelM" role="3clFbG">
             <ref role="37wK5l" node="3$C2wb7q2Fm" resolve="updateEditorColors" />
-            <node concept="2OqwBi" id="3$C2wb7q06e" role="37wK5m">
-              <node concept="2YIFZM" id="3$C2wb7q00w" role="2Oq$k0">
-                <ref role="37wK5l" to="drih:~EditorColorsManager.getInstance()" resolve="getInstance" />
-                <ref role="1Pybhc" to="drih:~EditorColorsManager" resolve="EditorColorsManager" />
-              </node>
-              <node concept="liA8E" id="3$C2wb7q0dA" role="2OqNvi">
-                <ref role="37wK5l" to="drih:~EditorColorsManager.getGlobalScheme()" resolve="getGlobalScheme" />
-              </node>
-            </node>
+            <node concept="10Nm6u" id="6gnWJiGyraL" role="37wK5m" />
           </node>
         </node>
         <node concept="3clFbF" id="42hl10VH9RW" role="3cqZAp">
@@ -2529,6 +2521,98 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="6gnWJiGx$JS" role="3cqZAp">
+          <node concept="3cpWsn" id="6gnWJiGx$JT" role="3cpWs9">
+            <property role="TrG5h" value="taDiffInsert" />
+            <node concept="3uibUv" id="6gnWJiGx$Eo" role="1tU5fm">
+              <ref role="3uigEE" to="8m69:~TextAttributes" resolve="TextAttributes" />
+            </node>
+            <node concept="2OqwBi" id="6gnWJiGx$JU" role="33vP2m">
+              <node concept="37vLTw" id="6gnWJiGx$JV" role="2Oq$k0">
+                <ref role="3cqZAo" node="3$C2wb7q2GY" resolve="scheme" />
+              </node>
+              <node concept="liA8E" id="6gnWJiGx$JW" role="2OqNvi">
+                <ref role="37wK5l" to="drih:~TextAttributesScheme.getAttributes(com.intellij.openapi.editor.colors.TextAttributesKey)" resolve="getAttributes" />
+                <node concept="2YIFZM" id="6gnWJiGx$JX" role="37wK5m">
+                  <ref role="37wK5l" to="drih:~TextAttributesKey.find(java.lang.String)" resolve="find" />
+                  <ref role="1Pybhc" to="drih:~TextAttributesKey" resolve="TextAttributesKey" />
+                  <node concept="Xl_RD" id="6gnWJiGx$JY" role="37wK5m">
+                    <property role="Xl_RC" value="DIFF_INSERTED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="6gnWJiGxDqh" role="3cqZAp">
+          <node concept="3cpWsn" id="6gnWJiGxDqi" role="3cpWs9">
+            <property role="TrG5h" value="taDiffDelete" />
+            <node concept="3uibUv" id="6gnWJiGxCUS" role="1tU5fm">
+              <ref role="3uigEE" to="8m69:~TextAttributes" resolve="TextAttributes" />
+            </node>
+            <node concept="2OqwBi" id="6gnWJiGxDqj" role="33vP2m">
+              <node concept="37vLTw" id="6gnWJiGxDqk" role="2Oq$k0">
+                <ref role="3cqZAo" node="3$C2wb7q2GY" resolve="scheme" />
+              </node>
+              <node concept="liA8E" id="6gnWJiGxDql" role="2OqNvi">
+                <ref role="37wK5l" to="drih:~TextAttributesScheme.getAttributes(com.intellij.openapi.editor.colors.TextAttributesKey)" resolve="getAttributes" />
+                <node concept="2YIFZM" id="6gnWJiGxDqm" role="37wK5m">
+                  <ref role="37wK5l" to="drih:~TextAttributesKey.find(java.lang.String)" resolve="find" />
+                  <ref role="1Pybhc" to="drih:~TextAttributesKey" resolve="TextAttributesKey" />
+                  <node concept="Xl_RD" id="6gnWJiGxDqn" role="37wK5m">
+                    <property role="Xl_RC" value="DIFF_DELETED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="6gnWJiGxGT2" role="3cqZAp">
+          <node concept="3cpWsn" id="6gnWJiGxGT3" role="3cpWs9">
+            <property role="TrG5h" value="taDiffChange" />
+            <node concept="3uibUv" id="6gnWJiGxGL4" role="1tU5fm">
+              <ref role="3uigEE" to="8m69:~TextAttributes" resolve="TextAttributes" />
+            </node>
+            <node concept="2OqwBi" id="6gnWJiGxGT4" role="33vP2m">
+              <node concept="37vLTw" id="6gnWJiGxGT5" role="2Oq$k0">
+                <ref role="3cqZAo" node="3$C2wb7q2GY" resolve="scheme" />
+              </node>
+              <node concept="liA8E" id="6gnWJiGxGT6" role="2OqNvi">
+                <ref role="37wK5l" to="drih:~TextAttributesScheme.getAttributes(com.intellij.openapi.editor.colors.TextAttributesKey)" resolve="getAttributes" />
+                <node concept="2YIFZM" id="6gnWJiGxGT7" role="37wK5m">
+                  <ref role="37wK5l" to="drih:~TextAttributesKey.find(java.lang.String)" resolve="find" />
+                  <ref role="1Pybhc" to="drih:~TextAttributesKey" resolve="TextAttributesKey" />
+                  <node concept="Xl_RD" id="6gnWJiGxGT8" role="37wK5m">
+                    <property role="Xl_RC" value="DIFF_MODIFIED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="6gnWJiGxLas" role="3cqZAp">
+          <node concept="3cpWsn" id="6gnWJiGxLat" role="3cpWs9">
+            <property role="TrG5h" value="taDiffConflict" />
+            <node concept="3uibUv" id="6gnWJiGxL64" role="1tU5fm">
+              <ref role="3uigEE" to="8m69:~TextAttributes" resolve="TextAttributes" />
+            </node>
+            <node concept="2OqwBi" id="6gnWJiGxLau" role="33vP2m">
+              <node concept="37vLTw" id="6gnWJiGxLav" role="2Oq$k0">
+                <ref role="3cqZAo" node="3$C2wb7q2GY" resolve="scheme" />
+              </node>
+              <node concept="liA8E" id="6gnWJiGxLaw" role="2OqNvi">
+                <ref role="37wK5l" to="drih:~TextAttributesScheme.getAttributes(com.intellij.openapi.editor.colors.TextAttributesKey)" resolve="getAttributes" />
+                <node concept="2YIFZM" id="6gnWJiGxLax" role="37wK5m">
+                  <ref role="37wK5l" to="drih:~TextAttributesKey.find(java.lang.String)" resolve="find" />
+                  <ref role="1Pybhc" to="drih:~TextAttributesKey" resolve="TextAttributesKey" />
+                  <node concept="Xl_RD" id="6gnWJiGxLay" role="37wK5m">
+                    <property role="Xl_RC" value="DIFF_CONFLICT" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbH" id="3$C2wb7q2FF" role="3cqZAp" />
         <node concept="3clFbF" id="3$C2wb7q2FG" role="3cqZAp">
           <node concept="37vLTI" id="3$C2wb7q2FH" role="3clFbG">
@@ -2541,25 +2625,12 @@
                 <ref role="3cqZAo" node="3$C2wb7q605" resolve="myDiffColors" />
               </node>
             </node>
-            <node concept="2OqwBi" id="3$C2wb7q2FL" role="37vLTx">
-              <node concept="liA8E" id="3$C2wb7q2FM" role="2OqNvi">
-                <ref role="37wK5l" to="hox0:~Style.get(jetbrains.mps.openapi.editor.style.StyleAttribute)" resolve="get" />
-                <node concept="10M0yZ" id="3$C2wb7q2FN" role="37wK5m">
-                  <ref role="3cqZAo" to="5ueo:~StyleAttributes.TEXT_BACKGROUND_COLOR" resolve="TEXT_BACKGROUND_COLOR" />
-                  <ref role="1PxDUh" to="5ueo:~StyleAttributes" resolve="StyleAttributes" />
-                </node>
+            <node concept="2OqwBi" id="6gnWJiGydv3" role="37vLTx">
+              <node concept="37vLTw" id="6gnWJiGycA7" role="2Oq$k0">
+                <ref role="3cqZAo" node="6gnWJiGx$JT" resolve="taDiffInsert" />
               </node>
-              <node concept="2OqwBi" id="3$C2wb7q2FO" role="2Oq$k0">
-                <node concept="liA8E" id="3$C2wb7q2FP" role="2OqNvi">
-                  <ref role="37wK5l" to="hox0:~StyleRegistry.getStyle(java.lang.String)" resolve="getStyle" />
-                  <node concept="Xl_RD" id="3$C2wb7q2FQ" role="37wK5m">
-                    <property role="Xl_RC" value="DIFF_INSERTED" />
-                  </node>
-                </node>
-                <node concept="2YIFZM" id="3$C2wb7q2FR" role="2Oq$k0">
-                  <ref role="1Pybhc" to="hox0:~StyleRegistry" resolve="StyleRegistry" />
-                  <ref role="37wK5l" to="hox0:~StyleRegistry.getInstance()" resolve="getInstance" />
-                </node>
+              <node concept="liA8E" id="6gnWJiGyflu" role="2OqNvi">
+                <ref role="37wK5l" to="8m69:~TextAttributes.getBackgroundColor()" resolve="getBackgroundColor" />
               </node>
             </node>
           </node>
@@ -2576,25 +2647,12 @@
                 <ref role="Rm8GQ" to="btf5:7inhnIFBpHU" resolve="DELETE" />
               </node>
             </node>
-            <node concept="2OqwBi" id="3$C2wb7q2FY" role="37vLTx">
-              <node concept="liA8E" id="3$C2wb7q2FZ" role="2OqNvi">
-                <ref role="37wK5l" to="hox0:~Style.get(jetbrains.mps.openapi.editor.style.StyleAttribute)" resolve="get" />
-                <node concept="10M0yZ" id="3$C2wb7q2G0" role="37wK5m">
-                  <ref role="3cqZAo" to="5ueo:~StyleAttributes.TEXT_BACKGROUND_COLOR" resolve="TEXT_BACKGROUND_COLOR" />
-                  <ref role="1PxDUh" to="5ueo:~StyleAttributes" resolve="StyleAttributes" />
-                </node>
+            <node concept="2OqwBi" id="6gnWJiGyhU5" role="37vLTx">
+              <node concept="37vLTw" id="6gnWJiGyh2h" role="2Oq$k0">
+                <ref role="3cqZAo" node="6gnWJiGxDqi" resolve="taDiffDelete" />
               </node>
-              <node concept="2OqwBi" id="3$C2wb7q2G1" role="2Oq$k0">
-                <node concept="liA8E" id="3$C2wb7q2G2" role="2OqNvi">
-                  <ref role="37wK5l" to="hox0:~StyleRegistry.getStyle(java.lang.String)" resolve="getStyle" />
-                  <node concept="Xl_RD" id="3$C2wb7q2G3" role="37wK5m">
-                    <property role="Xl_RC" value="DIFF_DELETED" />
-                  </node>
-                </node>
-                <node concept="2YIFZM" id="3$C2wb7q2G4" role="2Oq$k0">
-                  <ref role="37wK5l" to="hox0:~StyleRegistry.getInstance()" resolve="getInstance" />
-                  <ref role="1Pybhc" to="hox0:~StyleRegistry" resolve="StyleRegistry" />
-                </node>
+              <node concept="liA8E" id="6gnWJiGyiMg" role="2OqNvi">
+                <ref role="37wK5l" to="8m69:~TextAttributes.getBackgroundColor()" resolve="getBackgroundColor" />
               </node>
             </node>
           </node>
@@ -2612,24 +2670,11 @@
               </node>
             </node>
             <node concept="2OqwBi" id="3$C2wb7q2Gb" role="37vLTx">
-              <node concept="liA8E" id="3$C2wb7q2Gc" role="2OqNvi">
-                <ref role="37wK5l" to="hox0:~Style.get(jetbrains.mps.openapi.editor.style.StyleAttribute)" resolve="get" />
-                <node concept="10M0yZ" id="3$C2wb7q2Gd" role="37wK5m">
-                  <ref role="1PxDUh" to="5ueo:~StyleAttributes" resolve="StyleAttributes" />
-                  <ref role="3cqZAo" to="5ueo:~StyleAttributes.TEXT_BACKGROUND_COLOR" resolve="TEXT_BACKGROUND_COLOR" />
-                </node>
+              <node concept="liA8E" id="6gnWJiGylnD" role="2OqNvi">
+                <ref role="37wK5l" to="8m69:~TextAttributes.getBackgroundColor()" resolve="getBackgroundColor" />
               </node>
-              <node concept="2OqwBi" id="3$C2wb7q2Ge" role="2Oq$k0">
-                <node concept="liA8E" id="3$C2wb7q2Gf" role="2OqNvi">
-                  <ref role="37wK5l" to="hox0:~StyleRegistry.getStyle(java.lang.String)" resolve="getStyle" />
-                  <node concept="Xl_RD" id="3$C2wb7q2Gg" role="37wK5m">
-                    <property role="Xl_RC" value="DIFF_MODIFIED" />
-                  </node>
-                </node>
-                <node concept="2YIFZM" id="3$C2wb7q2Gh" role="2Oq$k0">
-                  <ref role="37wK5l" to="hox0:~StyleRegistry.getInstance()" resolve="getInstance" />
-                  <ref role="1Pybhc" to="hox0:~StyleRegistry" resolve="StyleRegistry" />
-                </node>
+              <node concept="37vLTw" id="6gnWJiGykim" role="2Oq$k0">
+                <ref role="3cqZAo" node="6gnWJiGxGT3" resolve="taDiffChange" />
               </node>
             </node>
           </node>
@@ -2647,24 +2692,11 @@
               </node>
             </node>
             <node concept="2OqwBi" id="3$C2wb7q2Go" role="37vLTx">
-              <node concept="liA8E" id="3$C2wb7q2Gp" role="2OqNvi">
-                <ref role="37wK5l" to="hox0:~Style.get(jetbrains.mps.openapi.editor.style.StyleAttribute)" resolve="get" />
-                <node concept="10M0yZ" id="3$C2wb7q2Gq" role="37wK5m">
-                  <ref role="3cqZAo" to="5ueo:~StyleAttributes.TEXT_BACKGROUND_COLOR" resolve="TEXT_BACKGROUND_COLOR" />
-                  <ref role="1PxDUh" to="5ueo:~StyleAttributes" resolve="StyleAttributes" />
-                </node>
+              <node concept="liA8E" id="6gnWJiGyprw" role="2OqNvi">
+                <ref role="37wK5l" to="8m69:~TextAttributes.getBackgroundColor()" resolve="getBackgroundColor" />
               </node>
-              <node concept="2OqwBi" id="3$C2wb7q2Gr" role="2Oq$k0">
-                <node concept="liA8E" id="3$C2wb7q2Gs" role="2OqNvi">
-                  <ref role="37wK5l" to="hox0:~StyleRegistry.getStyle(java.lang.String)" resolve="getStyle" />
-                  <node concept="Xl_RD" id="3$C2wb7q2Gt" role="37wK5m">
-                    <property role="Xl_RC" value="DIFF_CONFLICT" />
-                  </node>
-                </node>
-                <node concept="2YIFZM" id="3$C2wb7q2Gu" role="2Oq$k0">
-                  <ref role="37wK5l" to="hox0:~StyleRegistry.getInstance()" resolve="getInstance" />
-                  <ref role="1Pybhc" to="hox0:~StyleRegistry" resolve="StyleRegistry" />
-                </node>
+              <node concept="37vLTw" id="6gnWJiGynkc" role="2Oq$k0">
+                <ref role="3cqZAo" node="6gnWJiGxLat" resolve="taDiffConflict" />
               </node>
             </node>
           </node>
@@ -2794,20 +2826,8 @@
               </node>
             </node>
             <node concept="2OqwBi" id="2ogabBqR9nO" role="37vLTx">
-              <node concept="2OqwBi" id="2ogabBqR6_6" role="2Oq$k0">
-                <node concept="37vLTw" id="2ogabBqR6_7" role="2Oq$k0">
-                  <ref role="3cqZAo" node="3$C2wb7q2GY" resolve="scheme" />
-                </node>
-                <node concept="liA8E" id="2ogabBqR8ju" role="2OqNvi">
-                  <ref role="37wK5l" to="drih:~TextAttributesScheme.getAttributes(com.intellij.openapi.editor.colors.TextAttributesKey)" resolve="getAttributes" />
-                  <node concept="2YIFZM" id="2ogabBqR8MR" role="37wK5m">
-                    <ref role="37wK5l" to="drih:~TextAttributesKey.createTextAttributesKey(java.lang.String)" resolve="createTextAttributesKey" />
-                    <ref role="1Pybhc" to="drih:~TextAttributesKey" resolve="TextAttributesKey" />
-                    <node concept="Xl_RD" id="2ogabBqR91L" role="37wK5m">
-                      <property role="Xl_RC" value="DIFF_INSERTED" />
-                    </node>
-                  </node>
-                </node>
+              <node concept="37vLTw" id="6gnWJiGx$JZ" role="2Oq$k0">
+                <ref role="3cqZAo" node="6gnWJiGx$JT" resolve="attributes" />
               </node>
               <node concept="liA8E" id="2ogabBqR9FP" role="2OqNvi">
                 <ref role="37wK5l" to="8m69:~TextAttributes.getErrorStripeColor()" resolve="getErrorStripeColor" />
@@ -2827,20 +2847,8 @@
               </node>
             </node>
             <node concept="2OqwBi" id="2ogabBqRfVu" role="37vLTx">
-              <node concept="2OqwBi" id="2ogabBqRfVv" role="2Oq$k0">
-                <node concept="37vLTw" id="2ogabBqRfVw" role="2Oq$k0">
-                  <ref role="3cqZAo" node="3$C2wb7q2GY" resolve="scheme" />
-                </node>
-                <node concept="liA8E" id="2ogabBqRfVx" role="2OqNvi">
-                  <ref role="37wK5l" to="drih:~TextAttributesScheme.getAttributes(com.intellij.openapi.editor.colors.TextAttributesKey)" resolve="getAttributes" />
-                  <node concept="2YIFZM" id="2ogabBqRfVy" role="37wK5m">
-                    <ref role="37wK5l" to="drih:~TextAttributesKey.createTextAttributesKey(java.lang.String)" resolve="createTextAttributesKey" />
-                    <ref role="1Pybhc" to="drih:~TextAttributesKey" resolve="TextAttributesKey" />
-                    <node concept="Xl_RD" id="2ogabBqRfVz" role="37wK5m">
-                      <property role="Xl_RC" value="DIFF_DELETED" />
-                    </node>
-                  </node>
-                </node>
+              <node concept="37vLTw" id="6gnWJiGxDqo" role="2Oq$k0">
+                <ref role="3cqZAo" node="6gnWJiGxDqi" resolve="attributes" />
               </node>
               <node concept="liA8E" id="2ogabBqRfV$" role="2OqNvi">
                 <ref role="37wK5l" to="8m69:~TextAttributes.getErrorStripeColor()" resolve="getErrorStripeColor" />
@@ -2860,20 +2868,8 @@
               </node>
             </node>
             <node concept="2OqwBi" id="2ogabBqRg4V" role="37vLTx">
-              <node concept="2OqwBi" id="2ogabBqRg4W" role="2Oq$k0">
-                <node concept="37vLTw" id="2ogabBqRg4X" role="2Oq$k0">
-                  <ref role="3cqZAo" node="3$C2wb7q2GY" resolve="scheme" />
-                </node>
-                <node concept="liA8E" id="2ogabBqRg4Y" role="2OqNvi">
-                  <ref role="37wK5l" to="drih:~TextAttributesScheme.getAttributes(com.intellij.openapi.editor.colors.TextAttributesKey)" resolve="getAttributes" />
-                  <node concept="2YIFZM" id="2ogabBqRg4Z" role="37wK5m">
-                    <ref role="37wK5l" to="drih:~TextAttributesKey.createTextAttributesKey(java.lang.String)" resolve="createTextAttributesKey" />
-                    <ref role="1Pybhc" to="drih:~TextAttributesKey" resolve="TextAttributesKey" />
-                    <node concept="Xl_RD" id="2ogabBqRg50" role="37wK5m">
-                      <property role="Xl_RC" value="DIFF_MODIFIED" />
-                    </node>
-                  </node>
-                </node>
+              <node concept="37vLTw" id="6gnWJiGxGT9" role="2Oq$k0">
+                <ref role="3cqZAo" node="6gnWJiGxGT3" resolve="attributes" />
               </node>
               <node concept="liA8E" id="2ogabBqRg51" role="2OqNvi">
                 <ref role="37wK5l" to="8m69:~TextAttributes.getErrorStripeColor()" resolve="getErrorStripeColor" />
@@ -2893,20 +2889,8 @@
               </node>
             </node>
             <node concept="2OqwBi" id="71ZVM0hlxsW" role="37vLTx">
-              <node concept="2OqwBi" id="71ZVM0hlxsX" role="2Oq$k0">
-                <node concept="37vLTw" id="71ZVM0hlxsY" role="2Oq$k0">
-                  <ref role="3cqZAo" node="3$C2wb7q2GY" resolve="scheme" />
-                </node>
-                <node concept="liA8E" id="71ZVM0hlxsZ" role="2OqNvi">
-                  <ref role="37wK5l" to="drih:~TextAttributesScheme.getAttributes(com.intellij.openapi.editor.colors.TextAttributesKey)" resolve="getAttributes" />
-                  <node concept="2YIFZM" id="71ZVM0hlxt0" role="37wK5m">
-                    <ref role="37wK5l" to="drih:~TextAttributesKey.createTextAttributesKey(java.lang.String)" resolve="createTextAttributesKey" />
-                    <ref role="1Pybhc" to="drih:~TextAttributesKey" resolve="TextAttributesKey" />
-                    <node concept="Xl_RD" id="71ZVM0hlxt1" role="37wK5m">
-                      <property role="Xl_RC" value="DIFF_CONFLICT" />
-                    </node>
-                  </node>
-                </node>
+              <node concept="37vLTw" id="6gnWJiGxLaz" role="2Oq$k0">
+                <ref role="3cqZAo" node="6gnWJiGxLat" resolve="attributes" />
               </node>
               <node concept="liA8E" id="71ZVM0hlxt2" role="2OqNvi">
                 <ref role="37wK5l" to="8m69:~TextAttributes.getErrorStripeColor()" resolve="getErrorStripeColor" />
