@@ -28,8 +28,10 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.vcs.history.CommitsGraphNode;
 import java.awt.Color;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
+import com.intellij.openapi.editor.colors.EditorColorsScheme;
+import com.intellij.openapi.editor.colors.EditorColorsManager;
 import java.awt.Font;
+import com.intellij.openapi.editor.colors.EditorColors;
 import jetbrains.mps.nodeEditor.cells.FontRegistry;
 import java.awt.FontMetrics;
 import jetbrains.mps.internal.collections.runtime.ISelector;
@@ -194,11 +196,18 @@ public final class AnnotationColumn extends AbstractLeftColumn {
       graphics.setColor(color);
       graphics.fillRect(getX(), y, getWidth(), height);
     }
-    graphics.setColor(StyleRegistry.getInstance().getColor("ANNOTATIONS_COLOR"));
+    // XXX perhaps, ECM.getSchemeForCurrentUITheme() is better?
+    EditorColorsScheme colorScheme = EditorColorsManager.getInstance().getGlobalScheme();
     Font font = getEditorFont();
     if (myEditorAnnotation.isLatestCommit(graphNode)) {
+      graphics.setColor(colorScheme.getColor(EditorColors.ANNOTATIONS_LAST_COMMIT_COLOR));
       graphics.setFont(FontRegistry.getInstance().getFont(font.getName(), font.getStyle() | Font.BOLD, font.getSize()));
     } else {
+      // FWIW, alternatively we can stick to MPS own StyleRegistry (available through EditorComponent impl),
+      // but with tight IDEA integration here, I see no reason to access colors indirectly.
+      // Perhaps, the only reason to use StyleRegistry from EC if we make it 'snapshot' registry with colors
+      // available at EC creation time, for fast and simple map access (no services or 'global' scheme assumption)
+      graphics.setColor(colorScheme.getColor(EditorColors.ANNOTATIONS_COLOR));
       graphics.setFont(font);
     }
     FontMetrics metrics = graphics.getFontMetrics();
@@ -259,6 +268,7 @@ public final class AnnotationColumn extends AbstractLeftColumn {
   }
 
   private void computeSubcolumnWidths() {
+    // FIXME use font metrics from EC.getEditorComponentSettings(), just need to change AnnotationAspectSubcolumn api
     FontMetrics metrics = FontRegistry.getInstance().getFontMetrics(getEditorFont());
     for (AnnotationAspectSubcolumn aspectSubcolumn : ListSequence.fromList(myAspectSubcolumns)) {
       aspectSubcolumn.computeWidth(metrics, CollectionSequence.fromCollection(myEditorAnnotation.getLineAnnotations()).select(new ISelector<LineAnnotation, CommitsGraphNode>() {
