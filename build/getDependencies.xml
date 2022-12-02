@@ -103,6 +103,23 @@
     </condition>
   </target>
 
+  <target name="check-junit-libs" description="Check JUnit libraries availability">
+    <condition property="junit.libs.missing" value="true" else="false">
+      <not>
+        <and>
+          <available file="${junit5.lib}/apiguardian-api-${apiguardian.version}.jar"/>
+          <available file="${junit5.lib}/opentest4j-${opentest4j.version}.jar"/>
+          <available file="${junit5.lib}/junit-jupiter-api-${junit.jupiter.version}.jar"/>
+          <available file="${junit5.lib}/junit-jupiter-engine-${junit.jupiter.version}.jar"/>
+          <available file="${junit5.lib}/junit-jupiter-params-${junit.jupiter.version}.jar"/>
+          <available file="${junit5.lib}/junit-platform-commons-${junit.platform.version}.jar"/>
+          <available file="${junit5.lib}/junit-platform-engine-${junit.platform.version}.jar"/>
+          <available file="${junit5.lib}/junit-vintage-engine-${junit.vintage.version}.jar"/>
+        </and>
+      </not>
+    </condition>
+  </target>
+
   <!-- ===================================================== -->
   <!-- Check platform libraries download requirement         -->
   <!-- ===================================================== -->
@@ -396,7 +413,14 @@
     <ivy:retrieve pattern="${kotlin.core.libs}/[artifact]-[revision](-[classifier]).[ext]" overwritemode="different"/>
   </target>
 
-  <target name="download-3rd-party" depends="download-diffutils,download-testlib,download-jetpad,download-kotlin-plugin-libs,download-kotlin-core-libs,download-kotlin-compiler"
+  <target name="download-junit-libs" depends="check-junit-libs,install-ivy" if="${junit.libs.missing}"
+          description="Download JUnit5 libraries">
+    <echo message="JUnit5 libraries are missing. Downloading..."/>
+    <ivy:resolve file="./ivyJUnit.xml" validate="false" showprogress="true"/>
+    <ivy:retrieve pattern="${junit5.lib}/[artifact]-[revision](-[classifier]).[ext]" overwritemode="different"/>
+  </target>
+
+  <target name="download-3rd-party" depends="download-diffutils,download-testlib,download-jetpad,download-kotlin-plugin-libs,download-kotlin-core-libs,download-kotlin-compiler, download-junit-libs"
           description="Download all non platform related libs"/>
 
   <!-- ===================================================== -->
