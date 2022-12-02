@@ -18,6 +18,7 @@ package jetbrains.mps.ide.editor;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
+import com.intellij.openapi.editor.colors.CodeInsightColors;
 import com.intellij.openapi.editor.colors.ColorKey;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
@@ -159,6 +160,8 @@ public class StyleRegistryIdeaImpl extends StyleRegistry implements Disposable {
       addIdeaMappingsExt("FOLDED_TEXT", "FOLDED_TEXT_ATTRIBUTES");
       addIdeaMappingsExt("URL", "HYPERLINK_ATTRIBUTES");
 
+      // FIXME I believe use of .toString() here is an error, has to be .getExternalName() as we
+      //       need just identifier, without extra information about defaults (see TextAttributesKey.toString() impl)
       addIdeaMappingsExt("LOCAL_VARIABLE", DefaultLanguageHighlighterColors.LOCAL_VARIABLE.toString());
       addIdeaMappingsExt("PARAMETER", DefaultLanguageHighlighterColors.PARAMETER.toString());
       addIdeaMappingsExt("INSTANCE_FIELD", "INSTANCE_FIELD_ATTRIBUTES");
@@ -189,8 +192,11 @@ public class StyleRegistryIdeaImpl extends StyleRegistry implements Disposable {
       addIdeaMappingsExt("SEMICOLON", DefaultLanguageHighlighterColors.SEMICOLON.toString());
       addIdeaMappingsExt("DOT", DefaultLanguageHighlighterColors.DOT.toString());
 
+      // com.intellij.xdebugger.ui.DebuggerColors, BREAKPOINT_ATTRIBUTES and EXECUTIONPOINT_ATTRIBUTES constants
       addIdeaMappingsExt("BREAKPOINT", "BREAKPOINT_ATTRIBUTES");
       addIdeaMappingsExt("EXECUTIONPOINT", "EXECUTIONPOINT_ATTRIBUTES");
+
+      addIdeaMappingsExt("WARNING_PANEL", CodeInsightColors.WARNINGS_ATTRIBUTES.getExternalName());
 
       //addIdeaMappingsExt("","");
     } catch (StyleRegistryMappingKeyException e) {
