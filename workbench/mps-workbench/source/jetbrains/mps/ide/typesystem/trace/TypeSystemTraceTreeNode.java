@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -78,17 +78,18 @@ public class TypeSystemTraceTreeNode extends MPSTreeNode {
 
   private static Map<String, Color> initColors() {
     Map<String, Color> result = new HashMap<>();
-    result.put(PresentationKind.EQUATION_ADDED, StyleRegistry.getInstance().getSimpleColor(new Color(6751077)));
-    result.put(PresentationKind.RELATION_ADDED, StyleRegistry.getInstance().getSimpleColor(new Color(119)));
-    result.put(PresentationKind.RELATION_REMOVED, StyleRegistry.getInstance().getSimpleColor(new Color(1144763)));
-    result.put(PresentationKind.WHEN_CONCRETE_ADDED, StyleRegistry.getInstance().getSimpleColor(new Color(4486912)));
-    result.put(PresentationKind.WHEN_CONCRETE_REMOVED, StyleRegistry.getInstance().getSimpleColor(new Color(7816192)));
-    result.put(PresentationKind.ERROR_ADDED, StyleRegistry.getInstance().getSimpleColor(Color.RED));
-    result.put(PresentationKind.TRACE_WARNING, StyleRegistry.getInstance().getSimpleColor(new Color(200, 10, 10)));
-    result.put(PresentationKind.TRACE_MESSAGE, StyleRegistry.getInstance().getSimpleColor(new Color(0, 0, 255)));
-    result.put(PresentationKind.TYPE_ASSIGNED, StyleRegistry.getInstance().getSimpleColor(new Color(30464)));
-    result.put(PresentationKind.TYPE_EXPANDED, StyleRegistry.getInstance().getSimpleColor(new Color(34564)));
-    result.put(PresentationKind.TYPE_REMOVED, StyleRegistry.getInstance().getSimpleColor(new Color(10066329)));
+    final StyleRegistry styleRegistry = StyleRegistry.getInstance();
+    result.put(PresentationKind.EQUATION_ADDED, styleRegistry.getSimpleColor(new Color(6751077)));
+    result.put(PresentationKind.RELATION_ADDED, styleRegistry.getSimpleColor(new Color(119)));
+    result.put(PresentationKind.RELATION_REMOVED, styleRegistry.getSimpleColor(new Color(1144763)));
+    result.put(PresentationKind.WHEN_CONCRETE_ADDED, styleRegistry.getSimpleColor(new Color(4486912)));
+    result.put(PresentationKind.WHEN_CONCRETE_REMOVED, styleRegistry.getSimpleColor(new Color(7816192)));
+    result.put(PresentationKind.ERROR_ADDED, styleRegistry.getSimpleColor(Color.RED));
+    result.put(PresentationKind.TRACE_WARNING, styleRegistry.getSimpleColor(new Color(200, 10, 10)));
+    result.put(PresentationKind.TRACE_MESSAGE, styleRegistry.getSimpleColor(new Color(0, 0, 255)));
+    result.put(PresentationKind.TYPE_ASSIGNED, styleRegistry.getSimpleColor(new Color(30464)));
+    result.put(PresentationKind.TYPE_EXPANDED, styleRegistry.getSimpleColor(new Color(34564)));
+    result.put(PresentationKind.TYPE_REMOVED, styleRegistry.getSimpleColor(new Color(10066329)));
     result.put(PresentationKind.DEFAULT, JBColor.BLACK);
     return result;
   }
