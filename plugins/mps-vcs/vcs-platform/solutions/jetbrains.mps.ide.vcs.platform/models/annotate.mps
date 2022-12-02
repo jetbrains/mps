@@ -21892,10 +21892,7 @@
       <node concept="3Tm1VV" id="1bauwgJp4oZ" role="1B3o_S" />
       <node concept="3clFbS" id="1bauwgJp4p0" role="3clF47">
         <node concept="XkiVB" id="1bauwgJuM$i" role="3cqZAp">
-          <ref role="37wK5l" to="lzb2:~EditorNotificationPanel.&lt;init&gt;(java.awt.Color)" resolve="EditorNotificationPanel" />
-          <node concept="1rXfSq" id="5jY0bPrZOPF" role="37wK5m">
-            <ref role="37wK5l" node="5jY0bPrZJ9s" resolve="getBackgroundColor" />
-          </node>
+          <ref role="37wK5l" to="lzb2:~EditorNotificationPanel.&lt;init&gt;()" resolve="EditorNotificationPanel" />
         </node>
         <node concept="3cpWs8" id="6JWgnvauDN0" role="3cqZAp">
           <node concept="3cpWsn" id="6JWgnvauDN3" role="3cpWs9">
@@ -21917,53 +21914,108 @@
         <node concept="3SKdUt" id="4EJXtKVA0nV" role="3cqZAp">
           <node concept="1PaTwC" id="4EJXtKVA0nW" role="1aUNEU">
             <node concept="3oM_SD" id="4EJXtKVA2Hf" role="1PaTwD">
-              <property role="3oM_SC" value="Colors" />
+              <property role="3oM_SC" value="Used" />
             </node>
-            <node concept="3oM_SD" id="4EJXtKVA2Hh" role="1PaTwD">
-              <property role="3oM_SC" value="are" />
+            <node concept="3oM_SD" id="6gnWJiGvMYg" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
             </node>
-            <node concept="3oM_SD" id="4EJXtKVA2Hk" role="1PaTwD">
-              <property role="3oM_SC" value="copied" />
+            <node concept="3oM_SD" id="6gnWJiGvMZ7" role="1PaTwD">
+              <property role="3oM_SC" value="match" />
             </node>
-            <node concept="3oM_SD" id="4EJXtKVA2Ho" role="1PaTwD">
-              <property role="3oM_SC" value="from" />
+            <node concept="3oM_SD" id="6gnWJiGvMZk" role="1PaTwD">
+              <property role="3oM_SC" value="colors" />
+            </node>
+            <node concept="3oM_SD" id="6gnWJiGvN0c" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="6gnWJiGvN0S" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="6gnWJiGvN15" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
             </node>
             <node concept="3oM_SD" id="4EJXtKVA2Ht" role="1PaTwD">
               <property role="3oM_SC" value="jetbrains.mps.ide.editor.warningPanel.WarningPanel" />
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="4EJXtKV$m1Q" role="3cqZAp">
-          <node concept="2OqwBi" id="4EJXtKV$nXn" role="3clFbG">
-            <node concept="37vLTw" id="4EJXtKV$m1O" role="2Oq$k0">
-              <ref role="3cqZAo" to="lzb2:~EditorNotificationPanel.myLabel" resolve="myLabel" />
+        <node concept="3SKdUt" id="6gnWJiGvN2c" role="3cqZAp">
+          <node concept="1PaTwC" id="6gnWJiGvN1Z" role="1aUNEU">
+            <node concept="3oM_SD" id="6gnWJiGvOZ3" role="1PaTwD">
+              <property role="3oM_SC" value="but" />
             </node>
-            <node concept="liA8E" id="4EJXtKV$rFT" role="2OqNvi">
-              <ref role="37wK5l" to="dxuu:~JComponent.setForeground(java.awt.Color)" resolve="setForeground" />
-              <node concept="3K4zz7" id="4EJXtKV$squ" role="37wK5m">
-                <node concept="10M0yZ" id="4EJXtKV$tOK" role="3K4E3e">
-                  <ref role="3cqZAo" to="z60i:~Color.DARK_GRAY" resolve="DARK_GRAY" />
-                  <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
-                </node>
-                <node concept="2OqwBi" id="4EJXtKV$sqx" role="3K4Cdx">
-                  <node concept="2YIFZM" id="4EJXtKV$sqy" role="2Oq$k0">
-                    <ref role="1Pybhc" to="hox0:~StyleRegistry" resolve="StyleRegistry" />
-                    <ref role="37wK5l" to="hox0:~StyleRegistry.getInstance()" resolve="getInstance" />
-                  </node>
-                  <node concept="liA8E" id="4EJXtKV$sqz" role="2OqNvi">
-                    <ref role="37wK5l" to="hox0:~StyleRegistry.isDarkTheme()" resolve="isDarkTheme" />
-                  </node>
-                </node>
-                <node concept="2OqwBi" id="4EJXtKV$yO1" role="3K4GZi">
-                  <node concept="2YIFZM" id="4EJXtKV$vB2" role="2Oq$k0">
-                    <ref role="37wK5l" to="hox0:~StyleRegistry.getInstance()" resolve="getInstance" />
-                    <ref role="1Pybhc" to="hox0:~StyleRegistry" resolve="StyleRegistry" />
-                  </node>
-                  <node concept="liA8E" id="4EJXtKV$zDX" role="2OqNvi">
-                    <ref role="37wK5l" to="hox0:~StyleRegistry.getEditorForeground()" resolve="getEditorForeground" />
-                  </node>
-                </node>
-              </node>
+            <node concept="3oM_SD" id="6gnWJiGvIUu" role="1PaTwD">
+              <property role="3oM_SC" value="general" />
+            </node>
+            <node concept="3oM_SD" id="6gnWJiGvOZn" role="1PaTwD">
+              <property role="3oM_SC" value="IDEA" />
+            </node>
+            <node concept="3oM_SD" id="6gnWJiGvPEy" role="1PaTwD">
+              <property role="3oM_SC" value="defaults" />
+            </node>
+            <node concept="3oM_SD" id="6gnWJiGvMY4" role="1PaTwD">
+              <property role="3oM_SC" value="seem" />
+            </node>
+            <node concept="3oM_SD" id="6gnWJiGvPFa" role="1PaTwD">
+              <property role="3oM_SC" value="fine" />
+            </node>
+            <node concept="3oM_SD" id="6gnWJiGvPFh" role="1PaTwD">
+              <property role="3oM_SC" value="(in" />
+            </node>
+            <node concept="3oM_SD" id="6gnWJiGvPGs" role="1PaTwD">
+              <property role="3oM_SC" value="fact," />
+            </node>
+            <node concept="3oM_SD" id="6gnWJiGvPG_" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="6gnWJiGvPGJ" role="1PaTwD">
+              <property role="3oM_SC" value="same" />
+            </node>
+            <node concept="3oM_SD" id="6gnWJiGvPHa" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="6gnWJiGvPHA" role="1PaTwD">
+              <property role="3oM_SC" value="'light'" />
+            </node>
+            <node concept="3oM_SD" id="6gnWJiGvPIN" role="1PaTwD">
+              <property role="3oM_SC" value="theme," />
+            </node>
+            <node concept="3oM_SD" id="6gnWJiGvPK1" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="6gnWJiGvPMh" role="1PaTwD">
+              <property role="3oM_SC" value="idea-endorsed," />
+            </node>
+            <node concept="3oM_SD" id="6gnWJiGvU9a" role="1PaTwD">
+              <property role="3oM_SC" value="configurable" />
+            </node>
+            <node concept="3oM_SD" id="6gnWJiGvPN1" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="6gnWJiGvUaO" role="3cqZAp">
+          <node concept="1PaTwC" id="6gnWJiGvUav" role="1aUNEU">
+            <node concept="3oM_SD" id="6gnWJiGvUau" role="1PaTwD">
+              <property role="3oM_SC" value="instead" />
+            </node>
+            <node concept="3oM_SD" id="6gnWJiGvPNy" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="6gnWJiGvW8e" role="1PaTwD">
+              <property role="3oM_SC" value="hard-coded" />
+            </node>
+            <node concept="3oM_SD" id="6gnWJiGvY5g" role="1PaTwD">
+              <property role="3oM_SC" value="dark" />
+            </node>
+            <node concept="3oM_SD" id="6gnWJiGvU7Y" role="1PaTwD">
+              <property role="3oM_SC" value="gray" />
+            </node>
+            <node concept="3oM_SD" id="6gnWJiGvU8x" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="6gnWJiGvU8_" role="1PaTwD">
+              <property role="3oM_SC" value="'dark'" />
             </node>
           </node>
         </node>
@@ -22102,56 +22154,6 @@
         <node concept="3uibUv" id="1bauwgJp4p2" role="1tU5fm">
           <ref role="3uigEE" node="hapR_kTy$1" resolve="AnnotationColumn" />
         </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="5jY0bPrZzT6" role="jymVt" />
-    <node concept="2YIFZL" id="5jY0bPrZJ9s" role="jymVt">
-      <property role="TrG5h" value="getBackgroundColor" />
-      <node concept="3clFbS" id="5jY0bPrZJ9v" role="3clF47">
-        <node concept="3SKdUt" id="5jY0bPrZPsQ" role="3cqZAp">
-          <node concept="1PaTwC" id="5jY0bPrZPsR" role="1aUNEU">
-            <node concept="3oM_SD" id="5jY0bPrZPsS" role="1PaTwD">
-              <property role="3oM_SC" value="Colors" />
-            </node>
-            <node concept="3oM_SD" id="5jY0bPrZPsT" role="1PaTwD">
-              <property role="3oM_SC" value="are" />
-            </node>
-            <node concept="3oM_SD" id="5jY0bPrZPsU" role="1PaTwD">
-              <property role="3oM_SC" value="copied" />
-            </node>
-            <node concept="3oM_SD" id="5jY0bPrZPsV" role="1PaTwD">
-              <property role="3oM_SC" value="from" />
-            </node>
-            <node concept="3oM_SD" id="5jY0bPrZPsW" role="1PaTwD">
-              <property role="3oM_SC" value="jetbrains.mps.ide.editor.warningPanel.WarningPanel" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="5jY0bPrZLaK" role="3cqZAp">
-          <node concept="3K4zz7" id="5jY0bPrZLaM" role="3clFbG">
-            <node concept="10M0yZ" id="5jY0bPrZLaN" role="3K4E3e">
-              <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
-              <ref role="3cqZAo" to="z60i:~Color.LIGHT_GRAY" resolve="LIGHT_GRAY" />
-            </node>
-            <node concept="10M0yZ" id="5jY0bPrZLaO" role="3K4GZi">
-              <ref role="3cqZAo" to="lzb2:~LightColors.YELLOW" resolve="YELLOW" />
-              <ref role="1PxDUh" to="lzb2:~LightColors" resolve="LightColors" />
-            </node>
-            <node concept="2OqwBi" id="5jY0bPrZLaP" role="3K4Cdx">
-              <node concept="2YIFZM" id="5jY0bPrZLaQ" role="2Oq$k0">
-                <ref role="1Pybhc" to="hox0:~StyleRegistry" resolve="StyleRegistry" />
-                <ref role="37wK5l" to="hox0:~StyleRegistry.getInstance()" resolve="getInstance" />
-              </node>
-              <node concept="liA8E" id="5jY0bPrZLaR" role="2OqNvi">
-                <ref role="37wK5l" to="hox0:~StyleRegistry.isDarkTheme()" resolve="isDarkTheme" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm6S6" id="5jY0bPrZC22" role="1B3o_S" />
-      <node concept="3uibUv" id="5jY0bPrZIRf" role="3clF45">
-        <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
       </node>
     </node>
     <node concept="3uibUv" id="1bauwgIP2LZ" role="1zkMxy">

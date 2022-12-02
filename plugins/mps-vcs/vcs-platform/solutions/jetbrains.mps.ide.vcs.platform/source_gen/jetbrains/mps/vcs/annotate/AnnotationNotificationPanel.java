@@ -5,18 +5,16 @@ package jetbrains.mps.vcs.annotate;
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.ui.EditorNotificationPanel;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
-import java.awt.Color;
-import com.intellij.ui.LightColors;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/1354028796362171854", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 /*package*/ class AnnotationNotificationPanel extends EditorNotificationPanel {
 
   public AnnotationNotificationPanel(final AnnotationColumn annotationColumn) {
-    super(getBackgroundColor());
+    super();
     int numExcludedRevisions = ListSequence.fromList(annotationColumn.getHiddenRevisions()).count();
-    // Colors are copied from jetbrains.mps.ide.editor.warningPanel.WarningPanel
-    myLabel.setForeground((StyleRegistry.getInstance().isDarkTheme() ? Color.DARK_GRAY : StyleRegistry.getInstance().getEditorForeground()));
+    // Used to match colors to that of jetbrains.mps.ide.editor.warningPanel.WarningPanel
+    // but general IDEA defaults seem fine (in fact, the same for 'light' theme, and idea-endorsed, configurable 
+    // instead of hard-coded dark gray for 'dark'
     if (numExcludedRevisions == 1) {
       myLabel.setText("1 revision is hidden from annotation");
     } else {
@@ -28,10 +26,5 @@ import com.intellij.ui.LightColors;
       createActionLabel("Restore Hidden Revisions", () -> annotationColumn.showHiddenRevisions());
       createActionLabel("Restore Last Hidden Revision", () -> annotationColumn.showLastHiddenRevision());
     }
-  }
-
-  private static Color getBackgroundColor() {
-    // Colors are copied from jetbrains.mps.ide.editor.warningPanel.WarningPanel
-    return (StyleRegistry.getInstance().isDarkTheme() ? Color.LIGHT_GRAY : LightColors.YELLOW);
   }
 }
