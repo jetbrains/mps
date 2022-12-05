@@ -17,11 +17,12 @@ import jetbrains.mps.kotlin.stubs.common.KotlinId;
 import org.jetbrains.annotations.Nullable;
 import kotlinx.metadata.KmTypeParameterVisitor;
 import kotlinx.metadata.KmVariance;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import kotlinx.metadata.KmFunctionVisitor;
 import kotlinx.metadata.KmPropertyVisitor;
 import kotlinx.metadata.KmTypeAliasVisitor;
 import kotlinx.metadata.KmTypeVisitor;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import kotlinx.metadata.KmConstructorVisitor;
@@ -114,9 +115,9 @@ public class ClassVisitor extends KmClassVisitor {
   @Override
   public KmTypeParameterVisitor visitTypeParameter(int flags, @NotNull String name, int id, @NotNull KmVariance variance) {
     assert SNodeOperations.isInstanceOf(getNode(), CONCEPTS.ITypeParameters$G$) : "node of concept " + SNodeOperations.getConcept(getNode()).getName() + " does not support type parameters";
-    SNode node = SLinkOperations.addNewChild(SNodeOperations.cast(getNode(), CONCEPTS.ITypeParameters$G$), LINKS.typeParameters$eq6K, CONCEPTS.TypeParameter$oc);
-    context.setId(node, fqName + "." + name);
-    return TypeParameterVisitor.create(node, name, id, variance, context);
+    SNode typeParam = SLinkOperations.addNewChild(SNodeOperations.cast(getNode(), CONCEPTS.ITypeParameters$G$), LINKS.typeParameters$eq6K, CONCEPTS.TypeParameter$oc);
+    context.setId(typeParam, fqName + "." + name);
+    return TypeParameterVisitor.create(typeParam, name, id, flags, variance, context, (Iterable<SNode> upperBounds, String desc) -> ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(getNode(), CONCEPTS.ITypeConstrained$KK), LINKS.constraints$BRhr)).addSequence(Sequence.fromIterable(upperBounds)));
   }
 
   @Nullable
@@ -285,6 +286,7 @@ public class ClassVisitor extends KmClassVisitor {
     /*package*/ static final SConcept InterfaceDeclaration$fL = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7554886bfL, "jetbrains.mps.kotlin.structure.InterfaceDeclaration");
     /*package*/ static final SInterfaceConcept ITypeParameters$G$ = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7556a4df5L, "jetbrains.mps.kotlin.structure.ITypeParameters");
     /*package*/ static final SConcept TypeParameter$oc = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af50dL, "jetbrains.mps.kotlin.structure.TypeParameter");
+    /*package*/ static final SInterfaceConcept ITypeConstrained$KK = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d75568d269L, "jetbrains.mps.kotlin.structure.ITypeConstrained");
     /*package*/ static final SConcept FunctionDeclaration$oD = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af434L, "jetbrains.mps.kotlin.structure.FunctionDeclaration");
     /*package*/ static final SConcept PropertyDeclaration$SE = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4a1L, "jetbrains.mps.kotlin.structure.PropertyDeclaration");
     /*package*/ static final SConcept TypeAlias$qF = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4e2L, "jetbrains.mps.kotlin.structure.TypeAlias");
@@ -305,6 +307,7 @@ public class ClassVisitor extends KmClassVisitor {
     /*package*/ static final SContainmentLink inheritance$TFvr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x537372687dd3bcdaL, 0x537372687dd3bcdbL, "inheritance");
     /*package*/ static final SContainmentLink modifier$C$4W = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af469L, 0x28bef6d7551af762L, "modifier");
     /*package*/ static final SContainmentLink typeParameters$eq6K = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7556a4df5L, 0x28bef6d7556a4df6L, "typeParameters");
+    /*package*/ static final SContainmentLink constraints$BRhr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d75568d269L, 0x28bef6d75568d26aL, "constraints");
     /*package*/ static final SContainmentLink members$gqdV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310a1ff68L, 0x2043bc8310a1ff69L, "members");
     /*package*/ static final SContainmentLink superclasses$6CkZ = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6ef8a3cf68294651L, 0x1ba36e493d40fea5L, "superclasses");
     /*package*/ static final SReferenceLink target$mYQV = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310b9b194L, 0x2043bc8310b9b195L, "target");

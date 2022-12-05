@@ -35,7 +35,7 @@ public class TypeAliasVisitor extends KmTypeAliasVisitor {
   public KmTypeParameterVisitor visitTypeParameter(int flags, @NotNull String name, int id, @NotNull KmVariance variance) {
     SNode addNew = SLinkOperations.addNewChild(node, LINKS.typeParameters$eq6K, CONCEPTS.TypeParameter$oc);
     context.setId(addNew, myFqName + "." + name);
-    return TypeParameterVisitor.create(addNew, name, id, variance, context);
+    return TypeParameterVisitor.create(addNew, name, id, flags, variance, context, null);
   }
 
   @Nullable

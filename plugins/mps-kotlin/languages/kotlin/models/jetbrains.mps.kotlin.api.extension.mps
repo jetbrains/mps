@@ -186,7 +186,7 @@
         <node concept="TUZQ0" id="2AGMd0x39ol" role="3nqlJM">
           <property role="TUZQ4" value="receiver type" />
           <node concept="zr_55" id="2AGMd0x39on" role="zr_5Q">
-            <ref role="zr_51" node="2AGMd0x36F8" resolve="targetType" />
+            <ref role="zr_51" node="2AGMd0x36F8" resolve="receiverType" />
           </node>
         </node>
         <node concept="TUZQ0" id="2AGMd0x39oo" role="3nqlJM">

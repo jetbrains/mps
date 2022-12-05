@@ -6,6 +6,7 @@ import jetbrains.mps.text.rt.TextGenDescriptorBase;
 import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.kotlin.behavior.IThisReceiverProvider__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -16,7 +17,7 @@ public class ThisExpression_TextGen extends TextGenDescriptorBase {
     tgs.append("this");
     if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.targetLabel$3lHl) != null)) {
       tgs.append("@");
-      KotlinTextGen.identifier(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.targetLabel$3lHl), ctx);
+      KotlinTextGen.stringIdentifier(IThisReceiverProvider__BehaviorDescriptor.getThisReceiverName_id1h3cSlxPLI4.invoke(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.targetLabel$3lHl)), ctx);
     }
   }
 

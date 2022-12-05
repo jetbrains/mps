@@ -209,16 +209,20 @@ public abstract class KotlinTextGen {
       }
     }
   }
+  public static void stringIdentifier(String identifier, final TextGenContext ctx) {
+    final TextGenSupport tgs = new TextGenSupport(ctx);
+    boolean quoted = !((boolean) IIdentifier__BehaviorDescriptor.isRegular_idnhyiqtKtUT.invoke(SNodeOperations.asSConcept(CONCEPTS.IIdentifier$wg), identifier));
+    if (quoted) {
+      tgs.append("`");
+    }
+    tgs.append(identifier);
+    if (quoted) {
+      tgs.append("`");
+    }
+  }
   public static void identifier(SNode identifier, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    boolean quoted = !((boolean) IIdentifier__BehaviorDescriptor.isRegular_idnhyiqtKtUT.invoke(SNodeOperations.asSConcept(CONCEPTS.IIdentifier$wg), SPropertyOperations.getString(identifier, PROPS.name$MnvL)));
-    if (quoted) {
-      tgs.append("`");
-    }
-    tgs.append(SPropertyOperations.getString(identifier, PROPS.name$MnvL));
-    if (quoted) {
-      tgs.append("`");
-    }
+    KotlinTextGen.stringIdentifier(SPropertyOperations.getString(identifier, PROPS.name$MnvL), ctx);
   }
   public static void annotations(SNode node, boolean newLine, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);

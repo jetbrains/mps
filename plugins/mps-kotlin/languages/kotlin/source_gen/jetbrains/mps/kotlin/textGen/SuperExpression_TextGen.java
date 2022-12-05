@@ -6,6 +6,7 @@ import jetbrains.mps.text.rt.TextGenDescriptorBase;
 import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.kotlin.behavior.IThisReceiverProvider__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -21,7 +22,7 @@ public class SuperExpression_TextGen extends TextGenDescriptorBase {
     }
     if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.targetLabel$93KM) != null)) {
       tgs.append("@");
-      KotlinTextGen.identifier(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.targetLabel$93KM), ctx);
+      KotlinTextGen.stringIdentifier(IThisReceiverProvider__BehaviorDescriptor.getThisReceiverName_id1h3cSlxPLI4.invoke(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.targetLabel$93KM)), ctx);
     }
   }
 

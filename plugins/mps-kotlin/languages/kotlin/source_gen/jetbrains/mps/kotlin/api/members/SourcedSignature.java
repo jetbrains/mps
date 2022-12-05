@@ -108,4 +108,8 @@ public class SourcedSignature {
     }
     return false;
   }
+
+  public String toString() {
+    return this.getSignature().toString();
+  }
 }

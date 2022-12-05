@@ -23,7 +23,6 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.smodel.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
-import jetbrains.mps.smodel.nodeidmap.StringBasedNodeIdMap;
 import java.io.IOException;
 import org.jetbrains.mps.openapi.persistence.ModelSaveException;
 
@@ -108,7 +107,7 @@ public abstract class KotlinStubModelDescriptor<T extends SNode> extends LazyEdi
 
   @Override
   protected ModelLoadResult<SModel> loadSModel(ModelLoadingState state) {
-    SModel model = new SModel(getReference(), new StringBasedNodeIdMap());
+    SModel model = new SModel(getReference(), new KotlinStringBasedNodeIdMap());
 
     if (state == ModelLoadingState.INTERFACE_LOADED) {
       loadInterface(model);

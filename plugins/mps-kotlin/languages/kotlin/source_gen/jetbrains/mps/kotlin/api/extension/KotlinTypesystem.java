@@ -6,6 +6,8 @@ import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.kotlin.api.declaration.FunctionDeclaration;
 import jetbrains.mps.kotlin.overloading.FunctionCall;
 import org.jetbrains.mps.openapi.model.SNode;
+import java.util.List;
+import jetbrains.mps.kotlin.api.members.SourcedSignature;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -18,6 +20,19 @@ public interface KotlinTypesystem {
    * @return function to apply or null, plus two booleans indicating ambiguity and failure respectively
    */
   Tuples._3<FunctionDeclaration, Boolean, Boolean> selectOverloadCandidate(FunctionCall call, SNode computedReceiverType, SNode contextNode, Iterable<FunctionDeclaration> candidates);
+
+  /**
+   * For each list of signatures, select the one that comply to the receiver type. Among each list, if there exist
+   * some subtyping relationship, the signature with the type closest to the receiver type is kept while the other is
+   * discarded.
+   * 
+   * After that, subsequent similar signatures are ignored.
+   * 
+   * @param receiverType receiver type
+   * @param entries list of signature scopes
+   * @return list of all selected signatures
+   */
+  List<SourcedSignature> filterReceiverTypes(SNode receiverType, Iterable<? extends Iterable<SourcedSignature>> entries, SNode contextNode);
 
   /**
    * Return an intermediate computation of the typesystem on the given node.

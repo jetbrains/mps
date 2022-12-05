@@ -492,7 +492,7 @@
               <node concept="liA8E" id="5TjpHltn9fC" role="2OqNvi">
                 <ref role="37wK5l" to="g3pb:6UEu$_UCiiE" resolve="packageLocalName" />
                 <node concept="37vLTw" id="5TjpHltn9qa" role="37wK5m">
-                  <ref role="3cqZAo" node="6UEu$_UwAd3" resolve="holderPackageLocalName" />
+                  <ref role="3cqZAo" node="6UEu$_UwAd3" resolve="holder" />
                 </node>
               </node>
             </node>
@@ -544,7 +544,7 @@
                   <node concept="liA8E" id="7VmbditMINs" role="2OqNvi">
                     <ref role="37wK5l" to="g3pb:6UEu$_UCiiE" resolve="packageLocalName" />
                     <node concept="37vLTw" id="7VmbditMINt" role="37wK5m">
-                      <ref role="3cqZAo" node="6UEu$_UwFSA" resolve="receiverPackageLocalName" />
+                      <ref role="3cqZAo" node="6UEu$_UwFSA" resolve="receiver" />
                     </node>
                   </node>
                 </node>
@@ -745,12 +745,12 @@
                     <ref role="3cqZAo" node="6UEu$_UxljC" resolve="node" />
                   </node>
                   <node concept="37vLTw" id="5RFSIeIe6nL" role="37wK5m">
-                    <ref role="3cqZAo" node="5RFSIeIe6nI" resolve="build" />
+                    <ref role="3cqZAo" node="5RFSIeIe6nI" resolve="fullId" />
                   </node>
                   <node concept="2ShNRf" id="5RFSIeIebdM" role="37wK5m">
                     <node concept="1pGfFk" id="5RFSIeIegrf" role="2ShVmc">
                       <property role="373rjd" value="true" />
-                      <ref role="37wK5l" node="5RFSIeI5XMC" resolve="FunctionNodeId" />
+                      <ref role="37wK5l" node="5RFSIeI5XMC" resolve="KtFunctionNodeId" />
                       <node concept="3cpWs3" id="AZ49rQ$UcO" role="37wK5m">
                         <node concept="10M0yZ" id="AZ49rQ_0XH" role="3uHU7B">
                           <ref role="3cqZAo" node="AZ49rQ$Y0I" resolve="ID_PREFIX" />
@@ -4570,7 +4570,7 @@
           </node>
           <node concept="3eOVzh" id="2JxTewZbYuZ" role="1Dwp0S">
             <node concept="37vLTw" id="2JxTewZc0jz" role="3uHU7w">
-              <ref role="3cqZAo" node="2JxTewZb1Iw" resolve="parenthesisIndex" />
+              <ref role="3cqZAo" node="2JxTewZb1Iw" resolve="lastIndex" />
             </node>
             <node concept="37vLTw" id="2JxTewZbWEF" role="3uHU7B">
               <ref role="3cqZAo" node="2JxTewZbO2O" resolve="i" />
@@ -4655,7 +4655,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="2JxTewZdmvS" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="5RFSIeI6fDV" role="jymVt" />
@@ -4705,7 +4705,7 @@
               <ref role="3cqZAo" node="5RFSIeI5XO3" resolve="o" />
             </node>
             <node concept="3uibUv" id="5RFSIeI5XOn" role="2ZW6by">
-              <ref role="3uigEE" node="5RFSIeI5Xmf" resolve="FunctionNodeId" />
+              <ref role="3uigEE" node="5RFSIeI5Xmf" resolve="KtFunctionNodeId" />
             </node>
           </node>
           <node concept="3clFbS" id="5RFSIeI5XOq" role="3clFbx">
@@ -4713,14 +4713,14 @@
               <node concept="3cpWsn" id="5RFSIeI5XOr" role="3cpWs9">
                 <property role="TrG5h" value="otherId" />
                 <node concept="3uibUv" id="5RFSIeI5XOt" role="1tU5fm">
-                  <ref role="3uigEE" node="5RFSIeI5Xmf" resolve="FunctionNodeId" />
+                  <ref role="3uigEE" node="5RFSIeI5Xmf" resolve="KtFunctionNodeId" />
                 </node>
                 <node concept="10QFUN" id="5RFSIeI5XOu" role="33vP2m">
                   <node concept="37vLTw" id="5RFSIeI5XOv" role="10QFUP">
                     <ref role="3cqZAo" node="5RFSIeI5XO3" resolve="o" />
                   </node>
                   <node concept="3uibUv" id="5RFSIeI5XOw" role="10QFUM">
-                    <ref role="3uigEE" node="5RFSIeI5Xmf" resolve="FunctionNodeId" />
+                    <ref role="3uigEE" node="5RFSIeI5Xmf" resolve="KtFunctionNodeId" />
                   </node>
                 </node>
               </node>
@@ -4750,7 +4750,7 @@
               <ref role="3cqZAo" node="5RFSIeI5XO3" resolve="o" />
             </node>
             <node concept="3uibUv" id="5RFSIeI5XOB" role="2ZW6by">
-              <ref role="3uigEE" to="w1kc:~SNodeId$Foreign" resolve="Foreign" />
+              <ref role="3uigEE" to="w1kc:~SNodeId$Foreign" resolve="SNodeId.Foreign" />
             </node>
           </node>
           <node concept="3clFbS" id="5RFSIeI5XOE" role="3clFbx">
@@ -4758,14 +4758,14 @@
               <node concept="3cpWsn" id="5RFSIeI5XOF" role="3cpWs9">
                 <property role="TrG5h" value="foreign" />
                 <node concept="3uibUv" id="5RFSIeI5XOH" role="1tU5fm">
-                  <ref role="3uigEE" to="w1kc:~SNodeId$Foreign" resolve="Foreign" />
+                  <ref role="3uigEE" to="w1kc:~SNodeId$Foreign" resolve="SNodeId.Foreign" />
                 </node>
                 <node concept="10QFUN" id="5RFSIeI5XOI" role="33vP2m">
                   <node concept="37vLTw" id="5RFSIeI5XOJ" role="10QFUP">
                     <ref role="3cqZAo" node="5RFSIeI5XO3" resolve="o" />
                   </node>
                   <node concept="3uibUv" id="5RFSIeI5XOK" role="10QFUM">
-                    <ref role="3uigEE" to="w1kc:~SNodeId$Foreign" resolve="Foreign" />
+                    <ref role="3uigEE" to="w1kc:~SNodeId$Foreign" resolve="SNodeId.Foreign" />
                   </node>
                 </node>
               </node>
@@ -4820,7 +4820,7 @@
         <node concept="3cpWs6" id="5RFSIeI5XOZ" role="3cqZAp">
           <node concept="2OqwBi" id="5RFSIeI60sE" role="3cqZAk">
             <node concept="37vLTw" id="5RFSIeI5YK6" role="2Oq$k0">
-              <ref role="3cqZAo" node="5RFSIeI5XMz" resolve="myStubMethodIdWithoutReturnTypeNoPrefix" />
+              <ref role="3cqZAo" node="5RFSIeI5XMz" resolve="myOldImplicitId" />
             </node>
             <node concept="liA8E" id="5RFSIeI60sF" role="2OqNvi">
               <ref role="37wK5l" to="wyt6:~String.hashCode()" resolve="hashCode" />
@@ -4869,7 +4869,7 @@
           <node concept="3cpWs3" id="1ctjttiDSz8" role="3cqZAk">
             <node concept="10M0yZ" id="1AwMfof4edV" role="3uHU7B">
               <ref role="3cqZAo" to="w1kc:~SNodeId$Foreign.ID_PREFIX" resolve="ID_PREFIX" />
-              <ref role="1PxDUh" to="w1kc:~SNodeId$Foreign" resolve="Foreign" />
+              <ref role="1PxDUh" to="w1kc:~SNodeId$Foreign" resolve="SNodeId.Foreign" />
             </node>
             <node concept="37vLTw" id="1ctjttiDR9M" role="3uHU7w">
               <ref role="3cqZAo" node="2JxTewZaKRl" resolve="myNewExplicitId" />
@@ -4878,7 +4878,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="1ctjttiDM4z" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="1ctjttiDPzh" role="jymVt" />
@@ -4912,7 +4912,7 @@
           </node>
         </node>
         <node concept="2AHcQZ" id="2JxTewZehMQ" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" />
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
     </node>
@@ -4921,7 +4921,7 @@
       <ref role="3uigEE" to="w1kc:~SNodeId" resolve="SNodeId" />
     </node>
     <node concept="3uibUv" id="2JxTewZaKqK" role="EKbjA">
-      <ref role="3uigEE" to="w1kc:~SNodeId$StringBasedId" resolve="StringBasedId" />
+      <ref role="3uigEE" to="w1kc:~SNodeId$StringBasedId" resolve="SNodeId.StringBasedId" />
     </node>
     <node concept="3UR2Jj" id="1ctjttiDrEF" role="lGtFl">
       <node concept="TZ5HA" id="1ctjttiDrEG" role="TZ5H$">
@@ -5046,7 +5046,7 @@
               <ref role="3cqZAo" node="5RFSIeI6LXq" resolve="key" />
             </node>
             <node concept="3uibUv" id="5RFSIeI6LXv" role="2ZW6by">
-              <ref role="3uigEE" to="w1kc:~SNodeId$StringBasedId" resolve="StringBasedId" />
+              <ref role="3uigEE" to="w1kc:~SNodeId$StringBasedId" resolve="SNodeId.StringBasedId" />
             </node>
           </node>
           <node concept="3clFbS" id="5RFSIeI6LXy" role="3clFbx">
@@ -5061,7 +5061,7 @@
                         <ref role="3cqZAo" node="5RFSIeI6LXq" resolve="key" />
                       </node>
                       <node concept="3uibUv" id="5RFSIeI6LXD" role="10QFUM">
-                        <ref role="3uigEE" to="w1kc:~SNodeId$StringBasedId" resolve="StringBasedId" />
+                        <ref role="3uigEE" to="w1kc:~SNodeId$StringBasedId" resolve="SNodeId.StringBasedId" />
                       </node>
                     </node>
                   </node>
@@ -5074,7 +5074,7 @@
             <node concept="3clFbJ" id="5RFSIeI6LXF" role="3cqZAp">
               <node concept="2OqwBi" id="5RFSIeI76tI" role="3clFbw">
                 <node concept="37vLTw" id="5RFSIeI6Mt$" role="2Oq$k0">
-                  <ref role="3cqZAo" node="5RFSIeI6LWZ" resolve="myFallbackForJavaStubMethodRefsMap" />
+                  <ref role="3cqZAo" node="5RFSIeI6LWZ" resolve="myFallbackMethodIdMap" />
                 </node>
                 <node concept="liA8E" id="5RFSIeI76tJ" role="2OqNvi">
                   <ref role="37wK5l" to="lktc:~THashMap.containsKey(java.lang.Object)" resolve="containsKey" />
@@ -5087,7 +5087,7 @@
                 <node concept="3cpWs6" id="5RFSIeI6LXK" role="3cqZAp">
                   <node concept="2OqwBi" id="5RFSIeI6Wie" role="3cqZAk">
                     <node concept="37vLTw" id="5RFSIeI6Mw1" role="2Oq$k0">
-                      <ref role="3cqZAo" node="5RFSIeI6LWZ" resolve="myFallbackForJavaStubMethodRefsMap" />
+                      <ref role="3cqZAo" node="5RFSIeI6LWZ" resolve="myFallbackMethodIdMap" />
                     </node>
                     <node concept="liA8E" id="5RFSIeI6Wif" role="2OqNvi">
                       <ref role="37wK5l" to="lktc:~THashMap.get(java.lang.Object)" resolve="get" />
@@ -5171,7 +5171,7 @@
               <ref role="3cqZAo" node="5RFSIeI6LXX" resolve="key" />
             </node>
             <node concept="3uibUv" id="5RFSIeI6LY4" role="2ZW6by">
-              <ref role="3uigEE" node="5RFSIeI5Xmf" resolve="FunctionNodeId" />
+              <ref role="3uigEE" node="5RFSIeI5Xmf" resolve="KtFunctionNodeId" />
             </node>
           </node>
           <node concept="3clFbS" id="5RFSIeI6LY7" role="3clFbx">
@@ -5179,14 +5179,14 @@
               <node concept="3cpWsn" id="5RFSIeI6LY8" role="3cpWs9">
                 <property role="TrG5h" value="stubId" />
                 <node concept="3uibUv" id="5RFSIeI6LYa" role="1tU5fm">
-                  <ref role="3uigEE" node="5RFSIeI5Xmf" resolve="FunctionNodeId" />
+                  <ref role="3uigEE" node="5RFSIeI5Xmf" resolve="KtFunctionNodeId" />
                 </node>
                 <node concept="10QFUN" id="5RFSIeI6LYb" role="33vP2m">
                   <node concept="37vLTw" id="5RFSIeI6LYc" role="10QFUP">
                     <ref role="3cqZAo" node="5RFSIeI6LXX" resolve="key" />
                   </node>
                   <node concept="3uibUv" id="5RFSIeI6LYd" role="10QFUM">
-                    <ref role="3uigEE" node="5RFSIeI5Xmf" resolve="FunctionNodeId" />
+                    <ref role="3uigEE" node="5RFSIeI5Xmf" resolve="KtFunctionNodeId" />
                   </node>
                 </node>
               </node>
@@ -5194,7 +5194,7 @@
             <node concept="3clFbF" id="5RFSIeI6LYe" role="3cqZAp">
               <node concept="2OqwBi" id="5RFSIeI6Umv" role="3clFbG">
                 <node concept="37vLTw" id="5RFSIeI6MsV" role="2Oq$k0">
-                  <ref role="3cqZAo" node="5RFSIeI6LWZ" resolve="myFallbackForJavaStubMethodRefsMap" />
+                  <ref role="3cqZAo" node="5RFSIeI6LWZ" resolve="myFallbackMethodIdMap" />
                 </node>
                 <node concept="liA8E" id="5RFSIeI6Umw" role="2OqNvi">
                   <ref role="37wK5l" to="lktc:~THashMap.put(java.lang.Object,java.lang.Object)" resolve="put" />
@@ -5260,12 +5260,12 @@
                     <ref role="3cqZAo" node="5RFSIeI6LYG" resolve="key" />
                   </node>
                   <node concept="3uibUv" id="5RFSIeI9U1c" role="2ZW6by">
-                    <ref role="3uigEE" to="w1kc:~SNodeId$StringBasedId" resolve="StringBasedId" />
+                    <ref role="3uigEE" to="w1kc:~SNodeId$StringBasedId" resolve="SNodeId.StringBasedId" />
                   </node>
                 </node>
                 <node concept="2OqwBi" id="5RFSIeI73O5" role="3uHU7w">
                   <node concept="37vLTw" id="5RFSIeI6Mu0" role="2Oq$k0">
-                    <ref role="3cqZAo" node="5RFSIeI6LWZ" resolve="myFallbackForJavaStubMethodRefsMap" />
+                    <ref role="3cqZAo" node="5RFSIeI6LWZ" resolve="myFallbackMethodIdMap" />
                   </node>
                   <node concept="liA8E" id="5RFSIeI73O6" role="2OqNvi">
                     <ref role="37wK5l" to="lktc:~THashMap.containsKey(java.lang.Object)" resolve="containsKey" />
@@ -5276,7 +5276,7 @@
                             <ref role="3cqZAo" node="5RFSIeI6LYG" resolve="key" />
                           </node>
                           <node concept="3uibUv" id="5RFSIeI9Yic" role="10QFUM">
-                            <ref role="3uigEE" to="w1kc:~SNodeId$StringBasedId" resolve="StringBasedId" />
+                            <ref role="3uigEE" to="w1kc:~SNodeId$StringBasedId" resolve="SNodeId.StringBasedId" />
                           </node>
                         </node>
                       </node>
@@ -5332,7 +5332,7 @@
               <ref role="3cqZAo" node="5RFSIeI6LZa" resolve="key" />
             </node>
             <node concept="3uibUv" id="5RFSIeI6LZf" role="2ZW6by">
-              <ref role="3uigEE" node="5RFSIeI5Xmf" resolve="FunctionNodeId" />
+              <ref role="3uigEE" node="5RFSIeI5Xmf" resolve="KtFunctionNodeId" />
             </node>
           </node>
           <node concept="3clFbS" id="5RFSIeI6LZi" role="3clFbx">
@@ -5340,14 +5340,14 @@
               <node concept="3cpWsn" id="5RFSIeI6LZj" role="3cpWs9">
                 <property role="TrG5h" value="stubId" />
                 <node concept="3uibUv" id="5RFSIeI6LZl" role="1tU5fm">
-                  <ref role="3uigEE" node="5RFSIeI5Xmf" resolve="FunctionNodeId" />
+                  <ref role="3uigEE" node="5RFSIeI5Xmf" resolve="KtFunctionNodeId" />
                 </node>
                 <node concept="10QFUN" id="5RFSIeI6LZm" role="33vP2m">
                   <node concept="37vLTw" id="5RFSIeI6LZn" role="10QFUP">
                     <ref role="3cqZAo" node="5RFSIeI6LZa" resolve="key" />
                   </node>
                   <node concept="3uibUv" id="5RFSIeI6LZo" role="10QFUM">
-                    <ref role="3uigEE" node="5RFSIeI5Xmf" resolve="FunctionNodeId" />
+                    <ref role="3uigEE" node="5RFSIeI5Xmf" resolve="KtFunctionNodeId" />
                   </node>
                 </node>
               </node>
@@ -5355,7 +5355,7 @@
             <node concept="3clFbF" id="5RFSIeI6LZp" role="3cqZAp">
               <node concept="2OqwBi" id="5RFSIeI6Sf$" role="3clFbG">
                 <node concept="37vLTw" id="5RFSIeI6MtH" role="2Oq$k0">
-                  <ref role="3cqZAo" node="5RFSIeI6LWZ" resolve="myFallbackForJavaStubMethodRefsMap" />
+                  <ref role="3cqZAo" node="5RFSIeI6LWZ" resolve="myFallbackMethodIdMap" />
                 </node>
                 <node concept="liA8E" id="5RFSIeI6Sf_" role="2OqNvi">
                   <ref role="37wK5l" to="lktc:~THashMap.remove(java.lang.Object)" resolve="remove" />

@@ -46,8 +46,9 @@ public final class IClassDeclaration__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<String> getNestedName_id1d2BQ0ZyA$g = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getNestedName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1387846870915246352L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(KtEnvironmentConfig.class, ""));
   public static final SMethod<Boolean> collectScope_id7DyvjiA20yV = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("collectScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8818748685422168251L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(ScopeCollector.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<SNode> getImportRoot_id1d2BQ0ZAmKw = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getImportRoot").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1387846870916230176L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(KtEnvironmentConfig.class, ""));
+  public static final SMethod<String> getPackageName_id74Z9X$ygjTm = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPackageName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8160284863354715734L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getThisType_id46gC9M6gB68, getPresentation_idhEwIMiw, getTypeParameters_idTmm2uCbI_X, getNestedName_id1d2BQ0ZyA$g, collectScope_id7DyvjiA20yV, getImportRoot_id1d2BQ0ZAmKw);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getThisType_id46gC9M6gB68, getPresentation_idhEwIMiw, getTypeParameters_idTmm2uCbI_X, getNestedName_id1d2BQ0ZyA$g, collectScope_id7DyvjiA20yV, getImportRoot_id1d2BQ0ZAmKw, getPackageName_id74Z9X$ygjTm);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -100,6 +101,14 @@ public final class IClassDeclaration__BehaviorDescriptor extends BaseBHDescripto
 
     return IIdentifier__BehaviorDescriptor.getImportRoot_id1d2BQ0ZAmKw.invoke0(__thisNode__, CONCEPTS.IIdentifier$wg, configuration);
   }
+  /*package*/ static String getPackageName_id74Z9X$ygjTm(@NotNull SNode __thisNode__) {
+    SNode ancestor = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IKotlinRoot$xV, false, false);
+    if ((ancestor != null)) {
+      IKotlinRoot__BehaviorDescriptor.getPackageName_id74Z9X$ygjTm.invoke0(__thisNode__, CONCEPTS.IKotlinRoot$xV);
+    }
+    // Inherit ancestor package name
+    return IKotlinRoot__BehaviorDescriptor.getPackageName_id74Z9X$ygjTm.invoke(ancestor);
+  }
 
   /*package*/ IClassDeclaration__BehaviorDescriptor() {
   }
@@ -130,6 +139,8 @@ public final class IClassDeclaration__BehaviorDescriptor extends BaseBHDescripto
         return (T) ((Boolean) collectScope_id7DyvjiA20yV(node, (ScopeCollector) parameters[0], (SNode) parameters[1]));
       case 6:
         return (T) ((SNode) getImportRoot_id1d2BQ0ZAmKw(node, (KtEnvironmentConfig) parameters[0]));
+      case 7:
+        return (T) ((String) getPackageName_id74Z9X$ygjTm(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

@@ -15,10 +15,10 @@ import org.jetbrains.mps.openapi.model.ResolveInfo;
 import jetbrains.mps.kotlin.stubs.common.KotlinId;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.annotations.Nullable;
 import kotlinx.metadata.KmVariance;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import kotlinx.metadata.KmTypeExtensionVisitor;
 import kotlinx.metadata.KmExtensionType;
@@ -73,7 +73,7 @@ public class TypeVisitor extends KmTypeVisitor {
   @Override
   public void visitTypeParameter(int id) {
     SNode type = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x21e0c9232886358dL, "jetbrains.mps.kotlin.structure.TypeParameterReference"));
-    SLinkOperations.setTarget(type, LINKS.parameter$ofYr, context.getTypeParameter(id));
+    context.setTypeParameter(type, id);
     node = type;
     typeIdentifier = id + "";
   }
@@ -195,7 +195,6 @@ public class TypeVisitor extends KmTypeVisitor {
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink typeAlias$NsaN = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6fcb81ab07d43684L, 0x6fcb81ab07dd8e21L, "typeAlias");
-    /*package*/ static final SReferenceLink parameter$ofYr = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x21e0c9232886358dL, 0x21e0c9232886358eL, "parameter");
     /*package*/ static final SContainmentLink typeProjections$vhti = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5b1dd60162c97579L, 0x5b1dd60162c9757cL, "typeProjections");
     /*package*/ static final SContainmentLink type$x3no = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3ccL, 0x28bef6d7551af67fL, "type");
     /*package*/ static final SContainmentLink returnType$jkY_ = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af37dL, 0x28bef6d7551af611L, "returnType");

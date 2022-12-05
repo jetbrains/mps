@@ -69,6 +69,10 @@ public class FunctionSignature implements MemberSignature {
     return false;
   }
 
+  public String toString() {
+    return "fun{" + this.signature + "}";
+  }
+
   public static String erasureOf(FunctionDeclaration declaration, final TypeExpander expander) {
     Iterable<SNode> types = Sequence.fromIterable(declaration.getParameters()).select(new ISelector<ParameterDeclaration, SNode>() {
       public SNode select(ParameterDeclaration this0) {

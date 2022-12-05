@@ -7,6 +7,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.structure.ExtensionPoint;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 
 public class ExtensionsHelper {
   public static KotlinTypesystem getTypesystem(final SNode contextNode) {
@@ -15,5 +16,13 @@ public class ExtensionsHelper {
         return it.isAvailable(contextNode);
       }
     });
+  }
+
+  public static <T> T withTypesystem(SNode contextNode, T defaultValue, _FunctionTypes._return_P1_E0<? extends T, ? super KotlinTypesystem> action) {
+    KotlinTypesystem typesystem = getTypesystem(contextNode);
+    if (typesystem == null) {
+      return defaultValue;
+    }
+    return action.invoke(typesystem);
   }
 }

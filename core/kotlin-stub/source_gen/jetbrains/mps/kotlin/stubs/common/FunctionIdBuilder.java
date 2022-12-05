@@ -21,6 +21,7 @@ public class FunctionIdBuilder {
   protected String functionFqName;
   protected int typeParameterCount = 0;
   protected final StringJoiner parameters = new StringJoiner(",");
+  protected final TypeParameterIdSection typeParameters = new TypeParameterIdSection();
 
   public FunctionIdBuilder(VisitorContext ctx, String prefixedName, String holder) {
     context = ctx;
@@ -33,23 +34,30 @@ public class FunctionIdBuilder {
     functionFqName = myHolderFqName + "#" + context.packageLocalName(receiver) + myName;
   }
 
-  public void addTypeParameter() {
+  public void addTypeParameter(String bound) {
     typeParameterCount++;
+    typeParameters.add(bound);
   }
 
   public void addArgument(String argumentId) {
     parameters.add(context.packageLocalName(argumentId));
   }
 
-  public void applyOn(SNode node) {
-    // Build function description
+  public String build(boolean enfoceShortNotation) {
     StringBuilder builder = new StringBuilder(functionFqName);
-    if (typeParameterCount > 0) {
-      builder.append("<").append(typeParameterCount).append(">");
-    }
+    builder.append(typeParameters.toString(enfoceShortNotation));
     builder.append("(").append(parameters.toString()).append(")");
+    return builder.toString();
+  }
 
-    // Set id
-    context.setId(node, builder.toString());
+  public void applyOn(SNode node) {
+    if (typeParameters.hasNonAnyBounds()) {
+      String fullId = build(false);
+      context.setId(node, fullId, new KtFunctionNodeId(KtFunctionNodeId.ID_PREFIX + fullId));
+      return;
+    }
+
+    // Set id with short notation
+    context.setId(node, build(true));
   }
 }

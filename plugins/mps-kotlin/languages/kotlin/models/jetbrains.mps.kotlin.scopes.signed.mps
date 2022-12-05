@@ -33,9 +33,6 @@
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="kdsm" ref="r:4d5ec8ef-7006-453c-a8cf-f9897337b08c(jetbrains.mps.kotlin.api.extension)" />
     <import index="jyou" ref="r:ca03e632-3f02-43dd-8ea4-ad134e38a5a2(jetbrains.mps.kotlin.plugin)" />
-    <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
-    <import index="zn9m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util(MPS.IDEA/)" />
-    <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -2979,7 +2976,7 @@
             <ref role="1Pybhc" to="tbhz:4gvOB2uQVGE" resolve="SuperTypesVisitorImpl" />
             <ref role="37wK5l" to="tbhz:1xjvXvOgriK" resolve="getSupertypes" />
             <node concept="37vLTw" id="1VgEGDngiA6" role="37wK5m">
-              <ref role="3cqZAo" node="1VgEGDngiAa" resolve="targetType" />
+              <ref role="3cqZAo" node="1VgEGDngiAa" resolve="receiverType" />
             </node>
           </node>
           <node concept="37vLTw" id="1VgEGDnmx1j" role="37wK5m">
@@ -3215,7 +3212,7 @@
                         <node concept="2ShNRf" id="7p20EZ0vD_A" role="37wK5m">
                           <node concept="1pGfFk" id="7p20EZ0vFLL" role="2ShVmc">
                             <property role="373rjd" value="true" />
-                            <ref role="37wK5l" node="3HHsmlLs8I9" resolve="ReceiverTypeFilter" />
+                            <ref role="37wK5l" node="3HHsmlLs8I9" resolve="ReceiverTypeScope.ReceiverTypeFilter" />
                           </node>
                         </node>
                       </node>

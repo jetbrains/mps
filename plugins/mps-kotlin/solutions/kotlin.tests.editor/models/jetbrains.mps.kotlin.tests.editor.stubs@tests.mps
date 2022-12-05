@@ -686,11 +686,11 @@
           <node concept="3cpWsn" id="1h3cSlxBdaB" role="3cpWs9">
             <property role="TrG5h" value="legacyIdBuilder" />
             <node concept="3uibUv" id="1h3cSlxBdaC" role="1tU5fm">
-              <ref role="3uigEE" node="1h3cSlxwfav" resolve="LegacyFunctionIdBuilder" />
+              <ref role="3uigEE" node="1h3cSlxwfav" resolve="mps35026_Test.LegacyFunctionIdBuilder" />
             </node>
             <node concept="2ShNRf" id="1h3cSlxBdaD" role="33vP2m">
               <node concept="1pGfFk" id="1h3cSlxBdaE" role="2ShVmc">
-                <ref role="37wK5l" node="1h3cSlxwfaZ" resolve="LegacyFunctionIdBuilder" />
+                <ref role="37wK5l" node="1h3cSlxwfaZ" resolve="mps35026_Test.LegacyFunctionIdBuilder" />
                 <node concept="37vLTw" id="1h3cSlxBdaF" role="37wK5m">
                   <ref role="3cqZAo" node="1h3cSlxBdak" resolve="context" />
                 </node>
@@ -782,7 +782,7 @@
             <property role="TrG5h" value="arg" />
           </node>
           <node concept="37vLTw" id="1h3cSlxBdbe" role="2GsD0m">
-            <ref role="3cqZAo" node="1h3cSlxBcdG" resolve="typeParameters" />
+            <ref role="3cqZAo" node="1h3cSlxBcdG" resolve="typeParametersBound" />
           </node>
           <node concept="3clFbS" id="1h3cSlxBdbf" role="2LFqv$">
             <node concept="3clFbF" id="1h3cSlxBdbg" role="3cqZAp">
@@ -828,7 +828,7 @@
           <ref role="3uigEE" to="747n:6UEu$_UwA8l" resolve="FunctionIdBuilder" />
         </node>
         <node concept="3uibUv" id="1h3cSlxBaEJ" role="1Lm7xW">
-          <ref role="3uigEE" node="1h3cSlxwfav" resolve="LegacyFunctionIdBuilder" />
+          <ref role="3uigEE" node="1h3cSlxwfav" resolve="mps35026_Test.LegacyFunctionIdBuilder" />
         </node>
       </node>
     </node>
@@ -912,7 +912,7 @@
                 <ref role="3uigEE" to="747n:6UEu$_UwA8l" resolve="FunctionIdBuilder" />
               </node>
               <node concept="3uibUv" id="1h3cSlxBEn$" role="1Lm7xW">
-                <ref role="3uigEE" node="1h3cSlxwfav" resolve="LegacyFunctionIdBuilder" />
+                <ref role="3uigEE" node="1h3cSlxwfav" resolve="mps35026_Test.LegacyFunctionIdBuilder" />
               </node>
             </node>
             <node concept="1rXfSq" id="1h3cSlxBGvb" role="33vP2m">
@@ -924,7 +924,7 @@
                 <ref role="3cqZAo" node="1h3cSlxxj_l" resolve="arguments" />
               </node>
               <node concept="37vLTw" id="1h3cSlxBGve" role="37wK5m">
-                <ref role="3cqZAo" node="1h3cSlxxkx4" resolve="typeParameters" />
+                <ref role="3cqZAo" node="1h3cSlxxkx4" resolve="typeParametersBound" />
               </node>
             </node>
           </node>
@@ -994,16 +994,16 @@
           <node concept="3cpWsn" id="1h3cSlxvVbu" role="3cpWs9">
             <property role="TrG5h" value="newIdForeign" />
             <node concept="3uibUv" id="1h3cSlxvVbv" role="1tU5fm">
-              <ref role="3uigEE" to="w1kc:~SNodeId$Foreign" resolve="Foreign" />
+              <ref role="3uigEE" to="w1kc:~SNodeId$Foreign" resolve="SNodeId.Foreign" />
             </node>
             <node concept="2ShNRf" id="1h3cSlxvVbw" role="33vP2m">
               <node concept="1pGfFk" id="1h3cSlxvVbx" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="37wK5l" to="w1kc:~SNodeId$Foreign.&lt;init&gt;(java.lang.String)" resolve="Foreign" />
+                <ref role="37wK5l" to="w1kc:~SNodeId$Foreign.&lt;init&gt;(java.lang.String)" resolve="SNodeId.Foreign" />
                 <node concept="3cpWs3" id="1h3cSlxzKoB" role="37wK5m">
                   <node concept="10M0yZ" id="1h3cSlxzOp$" role="3uHU7B">
                     <ref role="3cqZAo" to="w1kc:~SNodeId$Foreign.ID_PREFIX" resolve="ID_PREFIX" />
-                    <ref role="1PxDUh" to="w1kc:~SNodeId$Foreign" resolve="Foreign" />
+                    <ref role="1PxDUh" to="w1kc:~SNodeId$Foreign" resolve="SNodeId.Foreign" />
                   </node>
                   <node concept="2OqwBi" id="1h3cSlxvVby" role="3uHU7w">
                     <node concept="liA8E" id="1h3cSlxvVb$" role="2OqNvi">
@@ -1028,12 +1028,12 @@
           <node concept="3cpWsn" id="1h3cSlxvUUh" role="3cpWs9">
             <property role="TrG5h" value="oldId" />
             <node concept="3uibUv" id="1h3cSlxvUSV" role="1tU5fm">
-              <ref role="3uigEE" to="w1kc:~SNodeId$Foreign" resolve="Foreign" />
+              <ref role="3uigEE" to="w1kc:~SNodeId$Foreign" resolve="SNodeId.Foreign" />
             </node>
             <node concept="2ShNRf" id="1h3cSlxvUUi" role="33vP2m">
               <node concept="1pGfFk" id="1h3cSlxvUUj" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="37wK5l" to="w1kc:~SNodeId$Foreign.&lt;init&gt;(java.lang.String)" resolve="Foreign" />
+                <ref role="37wK5l" to="w1kc:~SNodeId$Foreign.&lt;init&gt;(java.lang.String)" resolve="SNodeId.Foreign" />
                 <node concept="3cpWs3" id="1h3cSlxzP88" role="37wK5m">
                   <node concept="2OqwBi" id="1h3cSlxvUUk" role="3uHU7w">
                     <node concept="liA8E" id="1h3cSlxvUUm" role="2OqNvi">
@@ -1053,7 +1053,7 @@
                   </node>
                   <node concept="10M0yZ" id="1h3cSlxzPNw" role="3uHU7B">
                     <ref role="3cqZAo" to="w1kc:~SNodeId$Foreign.ID_PREFIX" resolve="ID_PREFIX" />
-                    <ref role="1PxDUh" to="w1kc:~SNodeId$Foreign" resolve="Foreign" />
+                    <ref role="1PxDUh" to="w1kc:~SNodeId$Foreign" resolve="SNodeId.Foreign" />
                   </node>
                 </node>
               </node>
@@ -1064,12 +1064,12 @@
           <node concept="3cpWsn" id="1h3cSlxwzu0" role="3cpWs9">
             <property role="TrG5h" value="oldIdWithLegacy" />
             <node concept="3uibUv" id="1h3cSlxwzu1" role="1tU5fm">
-              <ref role="3uigEE" to="w1kc:~SNodeId$Foreign" resolve="Foreign" />
+              <ref role="3uigEE" to="w1kc:~SNodeId$Foreign" resolve="SNodeId.Foreign" />
             </node>
             <node concept="2ShNRf" id="1h3cSlxwzu2" role="33vP2m">
               <node concept="1pGfFk" id="1h3cSlxwzu3" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="37wK5l" to="w1kc:~SNodeId$Foreign.&lt;init&gt;(java.lang.String)" resolve="Foreign" />
+                <ref role="37wK5l" to="w1kc:~SNodeId$Foreign.&lt;init&gt;(java.lang.String)" resolve="SNodeId.Foreign" />
                 <node concept="3cpWs3" id="1h3cSlxzQyG" role="37wK5m">
                   <node concept="2OqwBi" id="1h3cSlxwzu4" role="3uHU7w">
                     <node concept="liA8E" id="1h3cSlxwHEa" role="2OqNvi">
@@ -1086,7 +1086,7 @@
                   </node>
                   <node concept="10M0yZ" id="1h3cSlxzQX2" role="3uHU7B">
                     <ref role="3cqZAo" to="w1kc:~SNodeId$Foreign.ID_PREFIX" resolve="ID_PREFIX" />
-                    <ref role="1PxDUh" to="w1kc:~SNodeId$Foreign" resolve="Foreign" />
+                    <ref role="1PxDUh" to="w1kc:~SNodeId$Foreign" resolve="SNodeId.Foreign" />
                   </node>
                 </node>
               </node>
@@ -1672,7 +1672,7 @@
                   <ref role="3uigEE" to="747n:6UEu$_UwA8l" resolve="FunctionIdBuilder" />
                 </node>
                 <node concept="3uibUv" id="1h3cSlxBZqD" role="1Lm7xW">
-                  <ref role="3uigEE" node="1h3cSlxwfav" resolve="LegacyFunctionIdBuilder" />
+                  <ref role="3uigEE" node="1h3cSlxwfav" resolve="mps35026_Test.LegacyFunctionIdBuilder" />
                 </node>
               </node>
               <node concept="1rXfSq" id="1h3cSlxBZWY" role="33vP2m">
@@ -1726,7 +1726,7 @@
                   <ref role="3uigEE" to="747n:6UEu$_UwA8l" resolve="FunctionIdBuilder" />
                 </node>
                 <node concept="3uibUv" id="1h3cSlxC33L" role="1Lm7xW">
-                  <ref role="3uigEE" node="1h3cSlxwfav" resolve="LegacyFunctionIdBuilder" />
+                  <ref role="3uigEE" node="1h3cSlxwfav" resolve="mps35026_Test.LegacyFunctionIdBuilder" />
                 </node>
               </node>
               <node concept="1rXfSq" id="1h3cSlxC3hj" role="33vP2m">

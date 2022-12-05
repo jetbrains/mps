@@ -12,6 +12,8 @@ import org.jetbrains.annotations.Nullable;
 import kotlinx.metadata.KmTypeParameterVisitor;
 import org.jetbrains.annotations.NotNull;
 import kotlinx.metadata.KmVariance;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import kotlinx.metadata.KmTypeVisitor;
 import kotlinx.metadata.KmValueParameterVisitor;
 import kotlinx.metadata.KmFunctionExtensionVisitor;
@@ -20,10 +22,8 @@ import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import kotlinx.metadata.internal.metadata.deserialization.Flags;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -50,9 +50,13 @@ public class FunctionVisitor extends KmFunctionVisitor {
 
     // Could have same fq name as parameter but should not happen as forbidden in the language
     context.setChildId(param, name);
-    functionId.addTypeParameter();
 
-    return TypeParameterVisitor.create(param, name, id, variance, context);
+    return TypeParameterVisitor.create(param, name, id, flags, variance, context, (Iterable<SNode> constraints, String desc) -> {
+      functionId.addTypeParameter(desc);
+
+      // Excess parameters bounds as constraints
+      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.constraints$BRhr)).addSequence(Sequence.fromIterable(constraints));
+    });
   }
 
   @Nullable
@@ -105,6 +109,7 @@ public class FunctionVisitor extends KmFunctionVisitor {
   private static final class LINKS {
     /*package*/ static final SContainmentLink statements$R3pt = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b8869eeL, 0x123d0b402b8869f1L, "statements");
     /*package*/ static final SContainmentLink typeParameters$eq6K = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7556a4df5L, 0x28bef6d7556a4df6L, "typeParameters");
+    /*package*/ static final SContainmentLink constraints$BRhr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d75568d269L, 0x28bef6d75568d26aL, "constraints");
     /*package*/ static final SContainmentLink receiverType$7yLT = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7908c7f22L, 0x764202afbfc6bde5L, "receiverType");
     /*package*/ static final SContainmentLink parameters$dfEr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d755909980L, 0x28bef6d755909981L, "parameters");
     /*package*/ static final SContainmentLink returnType$fGYV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7908cd887L, 0x11400bb7908cd888L, "returnType");

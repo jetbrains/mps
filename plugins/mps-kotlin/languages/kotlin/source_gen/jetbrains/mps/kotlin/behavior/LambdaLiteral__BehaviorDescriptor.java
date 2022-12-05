@@ -26,11 +26,13 @@ import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Objects;
 import jetbrains.mps.kotlin.overloading.FunctionParamHelper;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class LambdaLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af517L, "jetbrains.mps.kotlin.structure.LambdaLiteral");
@@ -42,8 +44,9 @@ public final class LambdaLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> isLocal_id1vYW8S3rTh_ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLocal").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1729083799690515557L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<TypeReference> getType_id1TQsu41FTV5 = new SMethodBuilder<TypeReference>(new SJavaCompoundTypeImpl(TypeReference.class)).name("getType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2195067079599562437L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Iterable<TypeReference>> getThisTypeReferences_idxpyqH1FuA0 = new SMethodBuilder<Iterable<TypeReference>>(new SJavaCompoundTypeImpl((Class<Iterable<TypeReference>>) ((Class) Object.class))).name("getThisTypeReferences").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(601663393865001344L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<String> getThisReceiverName_id1h3cSlxPLI4 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getThisReceiverName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1460067352163326852L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, collectSpecificScope_id1yTI8p9qmpS, collectScope_id7DyvjiA20yV, getNamedTarget_id2PMtXoK3vgE, isLocal_id1vYW8S3rTh_, getType_id1TQsu41FTV5, getThisTypeReferences_idxpyqH1FuA0);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, collectSpecificScope_id1yTI8p9qmpS, collectScope_id7DyvjiA20yV, getNamedTarget_id2PMtXoK3vgE, isLocal_id1vYW8S3rTh_, getType_id1TQsu41FTV5, getThisTypeReferences_idxpyqH1FuA0, getThisReceiverName_id1h3cSlxPLI4);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -89,12 +92,27 @@ public final class LambdaLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static boolean isLocal_id1vYW8S3rTh_(@NotNull SNode __thisNode__) {
     return true;
   }
+  @NotNull
   /*package*/ static TypeReference getType_id1TQsu41FTV5(@NotNull SNode __thisNode__) {
     return new InferredTypeReference(__thisNode__, LambdaLiteralKeys.IT_TYPE);
   }
   /*package*/ static Iterable<TypeReference> getThisTypeReferences_idxpyqH1FuA0(@NotNull SNode __thisNode__) {
     // Type depends only on type of the lambda
     return Sequence.<TypeReference>singleton(new InferredTypeReference(__thisNode__, LambdaLiteralKeys.THIS_TYPE));
+  }
+  /*package*/ static String getThisReceiverName_id1h3cSlxPLI4(@NotNull SNode __thisNode__) {
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.label$EneV) != null)) {
+      return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.label$EneV), PROPS.name$MnvL);
+    }
+
+    {
+      final SNode functionCall = SNodeOperations.getParent(__thisNode__);
+      if (SNodeOperations.isInstanceOf(functionCall, CONCEPTS.IFunctionCall$Sf)) {
+        return IFunctionCall__BehaviorDescriptor.getFunctionName_id4nn3FPlEjh5.invoke(functionCall);
+      }
+    }
+
+    return IThisReceiverProvider__BehaviorDescriptor.getThisReceiverName_id1h3cSlxPLI4.invoke0(__thisNode__, CONCEPTS.IThisReceiverProvider$mP);
   }
 
   /*package*/ LambdaLiteral__BehaviorDescriptor() {
@@ -127,6 +145,8 @@ public final class LambdaLiteral__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((TypeReference) getType_id1TQsu41FTV5(node));
       case 6:
         return (T) ((Iterable<TypeReference>) getThisTypeReferences_idxpyqH1FuA0(node));
+      case 7:
+        return (T) ((String) getThisReceiverName_id1h3cSlxPLI4(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -159,10 +179,16 @@ public final class LambdaLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   private static final class LINKS {
     /*package*/ static final SContainmentLink parameters$hLEY = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af517L, 0x11400bb7909511ebL, "parameters");
     /*package*/ static final SContainmentLink lambda$U$kC = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6186632f85a74c27L, 0x28bef6d7551af77dL, "lambda");
+    /*package*/ static final SContainmentLink label$EneV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c446692eL, 0x631027d1c446692fL, "label");
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept IStatementHolder$84 = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b8869eeL, "jetbrains.mps.kotlin.structure.IStatementHolder");
     /*package*/ static final SInterfaceConcept IThisReceiverProvider$mP = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x85989ab41addf50L, "jetbrains.mps.kotlin.structure.IThisReceiverProvider");
+    /*package*/ static final SInterfaceConcept IFunctionCall$Sf = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5a442f44db6c8a2cL, "jetbrains.mps.kotlin.structure.IFunctionCall");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

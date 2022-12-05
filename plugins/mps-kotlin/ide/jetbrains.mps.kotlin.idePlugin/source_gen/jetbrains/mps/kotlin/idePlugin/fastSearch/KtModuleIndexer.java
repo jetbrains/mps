@@ -342,6 +342,8 @@ public class KtModuleIndexer extends KmModuleFragmentVisitor {
 
   private final KmTypeParameterVisitor KT_TYPE_PARAMATER_INDEXER = new KmTypeParameterVisitor() {
     public KmTypeVisitor visitUpperBound(int flags) {
+      // We may not always have it though
+      putConcepts(CONCEPTS.TypeConstraint$NN);
       return KT_TYPE_INDEXER;
     }
     public void visitEnd() {
@@ -414,6 +416,7 @@ public class KtModuleIndexer extends KmModuleFragmentVisitor {
     /*package*/ static final SConcept ClassParameter$wQ = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af53aL, "jetbrains.mps.kotlin.structure.ClassParameter");
     /*package*/ static final SConcept PrimaryConstructor$QJ = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af418L, "jetbrains.mps.kotlin.structure.PrimaryConstructor");
     /*package*/ static final SConcept PropertyDeclaration$SE = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4a1L, "jetbrains.mps.kotlin.structure.PropertyDeclaration");
+    /*package*/ static final SConcept TypeConstraint$NN = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af51cL, "jetbrains.mps.kotlin.structure.TypeConstraint");
     /*package*/ static final SConcept TypeParameter$oc = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af50dL, "jetbrains.mps.kotlin.structure.TypeParameter");
     /*package*/ static final SConcept FunctionDeclaration$oD = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af434L, "jetbrains.mps.kotlin.structure.FunctionDeclaration");
   }

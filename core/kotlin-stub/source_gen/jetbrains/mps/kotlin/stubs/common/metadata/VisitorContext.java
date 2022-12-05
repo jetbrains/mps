@@ -4,36 +4,41 @@ package jetbrains.mps.kotlin.stubs.common.metadata;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.logging.Logger;
-import java.util.Map;
+import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
+import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import java.util.List;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.kotlin.stubs.common.references.KotlinJvmReferenceSolver;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.IMapping;
+import java.util.function.Function;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.kotlin.stubs.common.references.StereotypeReference;
 import org.jetbrains.mps.openapi.model.ResolveInfo;
 import jetbrains.mps.kotlin.stubs.common.KotlinId;
-import java.util.ArrayList;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
+import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 @GeneratedClass(node = "r:d76e16ee-a528-4ca0-b2d6-9eed9a9b1d1c(jetbrains.mps.kotlin.stubs.common.metadata)/8055674930054566950", model = "r:d76e16ee-a528-4ca0-b2d6-9eed9a9b1d1c(jetbrains.mps.kotlin.stubs.common.metadata)")
 public class VisitorContext {
   private static final Logger LOG = Logger.getLogger(VisitorContext.class);
 
-  protected final Map<Integer, SNode> parameters = MapSequence.fromMap(new HashMap<Integer, SNode>());
+  protected final List<SNode> parameters = ListSequence.fromList(new ArrayList<SNode>());
   protected final Map<String, SNode> declarations = MapSequence.fromMap(new HashMap<String, SNode>());
   protected final Map<SNode, List<Tuples._2<SNode, String>>> lateInitIds = MapSequence.fromMap(new HashMap<SNode, List<Tuples._2<SNode, String>>>());
+  protected final Map<Integer, List<SNode>> lateInitParameterRefs = MapSequence.fromMap(new HashMap<Integer, List<SNode>>());
   protected final SNode enclosingFile;
   private final String packageName;
   private final KotlinJvmReferenceSolver referenceFactory;
@@ -71,13 +76,17 @@ public class VisitorContext {
     return MapSequence.fromMap(declarations).get(key);
   }
 
-  public SNode getTypeParameter(int index) {
-    if (!(MapSequence.fromMap(parameters).containsKey(index))) {
-      unhandledPart("id for type parameter: " + index);
-      return null;
+  public void setTypeParameter(SNode reference, int index) {
+    if (ListSequence.fromList(parameters).count() <= index || ListSequence.fromList(parameters).getElement(index) == null) {
+      // Add to late inits type parameters
+      lateInitParameterRefs.computeIfAbsent(index, new Function<Integer, List<SNode>>() {
+        public List<SNode> apply(Integer index) {
+          return ListSequence.fromList(new ArrayList<SNode>());
+        }
+      }).add(reference);
+    } else {
+      SLinkOperations.setTarget(reference, LINKS.parameter$ofYr, ListSequence.fromList(parameters).getElement(index));
     }
-
-    return MapSequence.fromMap(parameters).get(index);
   }
 
   public <T> T createClassReference(String fqName, _FunctionTypes._return_P2_E0<? extends T, ? super StereotypeReference.ClassStereotype, ? super ResolveInfo> resultHandler) {
@@ -90,8 +99,27 @@ public class VisitorContext {
     return ListSequence.fromListAndArray(new ArrayList<StereotypeReference.ClassStereotype>(), new StereotypeReference.KotlinClassReference(fqName));
   }
 
-  public void declareParameter(int id, SNode param) {
-    MapSequence.fromMap(parameters).put(id, param);
+  public void declareParameter(int id, final SNode param) {
+    // Should be at max one addition
+    assert id - ListSequence.fromList(parameters).count() <= 1 : "some parameter definition have been skipped";
+    if (ListSequence.fromList(parameters).count() <= id) {
+      ListSequence.fromList(parameters).addElement(param);
+    } else {
+      ListSequence.fromList(parameters).setElement(id, param);
+    }
+
+    // Erase previously set parameters up to that point
+    for (int i = id + 1; i < ListSequence.fromList(parameters).count(); i++) {
+      parameters.set(i, null);
+    }
+
+    // Get late init values and fix those
+    ListSequence.fromList(MapSequence.fromMap(lateInitParameterRefs).get(id)).visitAll(new IVisitor<SNode>() {
+      public void visit(SNode it) {
+        SLinkOperations.setTarget(it, LINKS.parameter$ofYr, param);
+      }
+    });
+    ListSequence.fromList(MapSequence.fromMap(lateInitParameterRefs).get(id)).clear();
   }
 
   public void unhandledPart(String description) {
@@ -118,12 +146,16 @@ public class VisitorContext {
   }
 
   public void setId(SNode node, String fqName) {
+    setId(node, fqName, KotlinId.kotlinId(fqName));
+  }
+
+  public void setId(SNode node, String fqName, SNodeId idImpl) {
     if ((node == null)) {
       return;
     }
 
     // Set id of current node
-    ((jetbrains.mps.smodel.SNode) node).setId(KotlinId.kotlinId(fqName));
+    ((jetbrains.mps.smodel.SNode) node).setId(idImpl);
 
     // If child node waiting for this id, set it
     if (MapSequence.fromMap(lateInitIds).containsKey(node)) {
@@ -170,5 +202,6 @@ public class VisitorContext {
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink declarations$NgHw = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af529L, 0x28bef6d7551af889L, "declarations");
+    /*package*/ static final SReferenceLink parameter$ofYr = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x21e0c9232886358dL, 0x21e0c9232886358eL, "parameter");
   }
 }

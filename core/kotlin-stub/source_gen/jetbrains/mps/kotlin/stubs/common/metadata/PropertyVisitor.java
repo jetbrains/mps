@@ -5,11 +5,14 @@ package jetbrains.mps.kotlin.stubs.common.metadata;
 import jetbrains.mps.annotations.GeneratedClass;
 import kotlinx.metadata.KmPropertyVisitor;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.kotlin.stubs.common.TypeParameterIdSection;
 import org.jetbrains.annotations.Nullable;
 import kotlinx.metadata.KmTypeParameterVisitor;
 import org.jetbrains.annotations.NotNull;
 import kotlinx.metadata.KmVariance;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import kotlinx.metadata.KmTypeVisitor;
 import kotlinx.metadata.KmValueParameterVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -30,23 +33,32 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public class PropertyVisitor extends KmPropertyVisitor {
   private final SNode node;
   private final VisitorContext context;
-  private final String myFqName;
-  protected PropertyVisitor(SNode prop, String fqName, VisitorContext ctx) {
-    node = prop;
-    context = ctx;
-    myFqName = fqName;
+  private final TypeParameterIdSection typeParameters = new TypeParameterIdSection();
+  private final String locationName;
+  private String receiverType;
+
+  protected PropertyVisitor(SNode prop, String locationName, VisitorContext ctx) {
+    this.locationName = locationName;
+    this.node = prop;
+    this.context = ctx;
   }
   @Nullable
   @Override
   public KmTypeParameterVisitor visitTypeParameter(int flags, @NotNull String name, int id, @NotNull KmVariance variance) {
     SNode newParameter = SLinkOperations.addNewChild(node, LINKS.typeParameters$eq6K, CONCEPTS.TypeParameter$oc);
-    context.setId(newParameter, myFqName + "." + name);
-    return TypeParameterVisitor.create(newParameter, name, id, variance, context);
+    context.setChildId(newParameter, name);
+    return TypeParameterVisitor.create(newParameter, name, id, flags, variance, context, (Iterable<SNode> constraints, String descriptor) -> {
+      typeParameters.add(descriptor);
+      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.constraints$BRhr)).addSequence(Sequence.fromIterable(constraints));
+    });
   }
   @Nullable
   @Override
   public KmTypeVisitor visitReceiverParameterType(int flags) {
-    return new TypeVisitor(context, flags, (SNode type, String id) -> SLinkOperations.setTarget(node, LINKS.receiverType$7yLT, type));
+    return new TypeVisitor(context, flags, (SNode type, String id) -> {
+      SLinkOperations.setTarget(node, LINKS.receiverType$7yLT, type);
+      receiverType = id;
+    });
   }
   @Nullable
   @Override
@@ -87,12 +99,18 @@ public class PropertyVisitor extends KmPropertyVisitor {
     return super.visitExtensions(type);
   }
 
-  public static KmPropertyVisitor create(SNode decl, VisitorContext ctx, int flags, @NotNull String name, int getterFlags, int setterFlags, String receiverName) {
+  @Override
+  public void visitEnd() {
+    // Id should be set that way as it possibly contains receiver type and type parameters
+    String header = (receiverType != null ? locationName + "#" + context.packageLocalName(receiverType) : locationName);
+    context.setId(SLinkOperations.getTarget(node, LINKS.declaration$IdZv), header + "." + SPropertyOperations.getString(node, PROPS.name$MnvL) + typeParameters.toString(false));
+    super.visitEnd();
+  }
+
+  public static KmPropertyVisitor create(SNode decl, VisitorContext ctx, int flags, @NotNull String name, int getterFlags, int setterFlags, String locationName) {
     // Declaration
     SLinkOperations.setNewChild(decl, LINKS.declaration$IdZv, null);
     SPropertyOperations.assign(SLinkOperations.getTarget(decl, LINKS.declaration$IdZv), PROPS.name$MnvL, name);
-    String fqName = receiverName + "." + name;
-    ctx.setId(SLinkOperations.getTarget(decl, LINKS.declaration$IdZv), fqName);
 
     // Parameters
     SLinkOperations.setTarget(decl, LINKS.visibility$vnSV, SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(EnumFlags.getVisibility(Flags.VISIBILITY.get(flags)))));
@@ -103,11 +121,12 @@ public class PropertyVisitor extends KmPropertyVisitor {
     SPropertyOperations.assign(decl, PROPS.isLateInit$qFSS, Flags.IS_LATEINIT.get(flags));
     SLinkOperations.setNewChild(decl, LINKS.assignment$nl1j, CONCEPTS.CompiledStubStatement$Af);
 
-    return new PropertyVisitor(decl, fqName, ctx);
+    return new PropertyVisitor(decl, locationName, ctx);
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink typeParameters$eq6K = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7556a4df5L, 0x28bef6d7556a4df6L, "typeParameters");
+    /*package*/ static final SContainmentLink constraints$BRhr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d75568d269L, 0x28bef6d75568d26aL, "constraints");
     /*package*/ static final SContainmentLink receiverType$7yLT = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7908c7f22L, 0x764202afbfc6bde5L, "receiverType");
     /*package*/ static final SContainmentLink setter$C2Xy = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4a1L, 0x11400bb7908cd0f5L, "setter");
     /*package*/ static final SContainmentLink parameter$J_aM = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4e5L, 0x28bef6d7551af816L, "parameter");

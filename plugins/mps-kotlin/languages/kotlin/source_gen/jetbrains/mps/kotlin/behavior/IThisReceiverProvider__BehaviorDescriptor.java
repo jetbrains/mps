@@ -19,17 +19,24 @@ import jetbrains.mps.kotlin.scopes.signed.SignatureScope;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.kotlin.scopes.signed.ImplicitReceiverSignatureScope;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class IThisReceiverProvider__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x85989ab41addf50L, "jetbrains.mps.kotlin.structure.IThisReceiverProvider");
 
   public static final SMethod<Iterable<TypeReference>> getThisTypeReferences_idxpyqH1FuA0 = new SMethodBuilder<Iterable<TypeReference>>(new SJavaCompoundTypeImpl((Class<Iterable<TypeReference>>) ((Class) Object.class))).name("getThisTypeReferences").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(601663393865001344L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Boolean> collectScope_id7DyvjiA20yV = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("collectScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8818748685422168251L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(ScopeCollector.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<String> getThisReceiverName_id1h3cSlxPLI4 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getThisReceiverName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1460067352163326852L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getThisTypeReferences_idxpyqH1FuA0, collectScope_id7DyvjiA20yV);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getThisTypeReferences_idxpyqH1FuA0, collectScope_id7DyvjiA20yV, getThisReceiverName_id1h3cSlxPLI4);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -55,6 +62,13 @@ public final class IThisReceiverProvider__BehaviorDescriptor extends BaseBHDescr
 
     return true;
   }
+  /*package*/ static String getThisReceiverName_id1h3cSlxPLI4(@NotNull SNode __thisNode__) {
+    if ((SLinkOperations.getTarget(SNodeOperations.as(__thisNode__, CONCEPTS.ILabelled$KF), LINKS.label$EneV) != null)) {
+      return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.as(__thisNode__, CONCEPTS.ILabelled$KF), LINKS.label$EneV), PROPS.name$MnvL);
+    }
+
+    return SNodeOperations.present(__thisNode__);
+  }
 
   /*package*/ IThisReceiverProvider__BehaviorDescriptor() {
   }
@@ -73,6 +87,8 @@ public final class IThisReceiverProvider__BehaviorDescriptor extends BaseBHDescr
     switch (methodIndex) {
       case 1:
         return (T) ((Boolean) collectScope_id7DyvjiA20yV(node, (ScopeCollector) parameters[0], (SNode) parameters[1]));
+      case 2:
+        return (T) ((String) getThisReceiverName_id1h3cSlxPLI4(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -100,5 +116,17 @@ public final class IThisReceiverProvider__BehaviorDescriptor extends BaseBHDescr
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SInterfaceConcept ILabelled$KF = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c446692eL, "jetbrains.mps.kotlin.structure.ILabelled");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink label$EneV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c446692eL, 0x631027d1c446692fL, "label");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

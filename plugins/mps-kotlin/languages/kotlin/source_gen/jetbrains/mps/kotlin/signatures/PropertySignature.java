@@ -101,6 +101,10 @@ public class PropertySignature implements MemberSignature {
     return false;
   }
 
+  public String toString() {
+    return getKind().toString().toLowerCase() + "{" + getName() + "}";
+  }
+
   public static void declareAllTo(Iterable<SNode> named, final boolean mutable, SNode receiver, final SignatureCollector collector) {
     Iterable<SNode> nonNullNamed = Sequence.fromIterable(named).where(new NotNullWhereFilter<SNode>());
     collector.addDeclarations(nonNullNamed, receiver, PropertySignature.class, (SNode it) -> signaturesOf(it, mutable));

@@ -50,4 +50,8 @@ public class ClassSignature implements MemberSignature {
     }
     return false;
   }
+
+  public String toString() {
+    return "class " + getName();
+  }
 }
