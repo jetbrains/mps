@@ -51213,8 +51213,8 @@
       <property role="2_Ic$$" value="true" />
       <property role="2_Ic$B" value="true" />
       <property role="2_GNG2" value="1024" />
-      <property role="3fwGa$" value="IntelliJ" />
       <property role="TZNOO" value="11" />
+      <property role="3fwGa$" value="IntelliJ" />
       <node concept="3qWCbU" id="1fy59xXoadn" role="2_Ic$A">
         <property role="3qWCbO" value="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
       </node>
@@ -51888,6 +51888,114 @@
         <node concept="1SiIV0" id="1X$n7cxRqLs" role="3bR37C">
           <node concept="1Busua" id="1X$n7cxRqLt" role="1SiIV1">
             <ref role="1Busuk" node="Ye$g8PO8TM" resolve="jetbrains.mps.kotlin.javaRefs" />
+          </node>
+        </node>
+      </node>
+      <node concept="1E1JtA" id="3PMETvlnxVs" role="2G$12L">
+        <property role="BnDLt" value="true" />
+        <property role="TrG5h" value="jetbrains.mps.kotlin.stubs" />
+        <property role="3LESm3" value="6944825c-ddc2-4099-8cc7-5e6dbbf7f0be" />
+        <property role="2GAjPV" value="true" />
+        <node concept="398BVA" id="3PMETvlny0z" role="3LF7KH">
+          <ref role="398BVh" node="1fy59xXoa5n" resolve="mps_home" />
+          <node concept="2Ry0Ak" id="3PMETvlny1t" role="iGT6I">
+            <property role="2Ry0Am" value="core" />
+            <node concept="2Ry0Ak" id="3PMETvlny1W" role="2Ry0An">
+              <property role="2Ry0Am" value="kotlin-stub" />
+              <node concept="2Ry0Ak" id="3PMETvlny2P" role="2Ry0An">
+                <property role="2Ry0Am" value="jetbrains.mps.kotlin.stubs.msd" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="3PMETvlny5q" role="3bR37C">
+          <node concept="3bR9La" id="3PMETvlny5r" role="1SiIV1">
+            <ref role="3bR37D" node="1H905DlDUSw" resolve="MPS.OpenAPI" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="3PMETvlny5s" role="3bR37C">
+          <node concept="3bR9La" id="3PMETvlny5t" role="1SiIV1">
+            <ref role="3bR37D" node="44LXwdzyvTi" resolve="Annotations" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="3PMETvlny5u" role="3bR37C">
+          <node concept="3bR9La" id="3PMETvlny5v" role="1SiIV1">
+            <ref role="3bR37D" node="mXGwHwhVPj" resolve="JDK" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="3PMETvlny5w" role="3bR37C">
+          <node concept="3bR9La" id="3PMETvlny5x" role="1SiIV1">
+            <ref role="3bR37D" node="1ia2VB5guYy" resolve="MPS.IDEA" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="3PMETvlny5y" role="3bR37C">
+          <node concept="3bR9La" id="3PMETvlny5z" role="1SiIV1">
+            <ref role="3bR37D" node="7Kfy9QB6KXW" resolve="jetbrains.mps.lang.core" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="3PMETvlny5$" role="3bR37C">
+          <node concept="3bR9La" id="3PMETvlny5_" role="1SiIV1">
+            <ref role="3bR37D" node="Ye$g8PO8Uc" resolve="jetbrains.mps.kotlin" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="3PMETvlny5A" role="3bR37C">
+          <node concept="3bR9La" id="3PMETvlny5B" role="1SiIV1">
+            <ref role="3bR37D" node="7Kfy9QB6KYb" resolve="jetbrains.mps.baseLanguage" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="3PMETvlny5C" role="3bR37C">
+          <node concept="3bR9La" id="3PMETvlny5D" role="1SiIV1">
+            <ref role="3bR37D" node="Ye$g8PO8TM" resolve="jetbrains.mps.kotlin.javaRefs" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="3PMETvlny5E" role="3bR37C">
+          <node concept="3bR9La" id="3PMETvlny5F" role="1SiIV1">
+            <ref role="3bR37D" node="Ye$g8PO8Uw" resolve="jetbrains.mps.baseLanguage.kotlinRefs" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="3PMETvlny5G" role="3bR37C">
+          <node concept="3bR9La" id="3PMETvlny5H" role="1SiIV1">
+            <ref role="3bR37D" node="1TaHNgiIbIQ" resolve="MPS.Core" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="3PMETvlny5I" role="3bR37C">
+          <node concept="3bR9La" id="3PMETvlny5J" role="1SiIV1">
+            <ref role="3bR37D" node="1TaHNgiHrmy" resolve="jetbrains.mps.java.stub" />
+          </node>
+        </node>
+        <node concept="1E1SXE" id="3PMETvloFjl" role="3bR37C">
+          <property role="1E1SXH" value="true" />
+          <ref role="1E1SXG" node="3dkXFAFkSFA" resolve="mps-persistence" />
+          <node concept="398BVA" id="3PMETvloFjm" role="17Grwy">
+            <ref role="398BVh" node="1fy59xXoa5n" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="3PMETvloFjn" role="iGT6I">
+              <property role="2Ry0Am" value="lib" />
+              <node concept="2Ry0Ak" id="3PMETvloFkE" role="2Ry0An">
+                <property role="2Ry0Am" value="kotlinx-metadata-jvm-0.4.2.jar" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1BupzO" id="3PMETvlny6h" role="3bR31x">
+          <property role="3ZfqAx" value="models" />
+          <property role="1Hdu6h" value="true" />
+          <property role="1HemKv" value="true" />
+          <node concept="3LXTmp" id="3PMETvlny6i" role="1HemKq">
+            <node concept="398BVA" id="3PMETvlny69" role="3LXTmr">
+              <ref role="398BVh" node="1fy59xXoa5n" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="3PMETvlny6a" role="iGT6I">
+                <property role="2Ry0Am" value="core" />
+                <node concept="2Ry0Ak" id="3PMETvlny6b" role="2Ry0An">
+                  <property role="2Ry0Am" value="kotlin-stub" />
+                  <node concept="2Ry0Ak" id="3PMETvlny6c" role="2Ry0An">
+                    <property role="2Ry0Am" value="models" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3qWCbU" id="3PMETvlny6j" role="3LXTna">
+              <property role="3qWCbO" value="**/*.mps, **/*.mpsr, **/.model" />
+            </node>
           </node>
         </node>
       </node>

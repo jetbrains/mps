@@ -16,7 +16,6 @@
   </facets>
   <stubModelEntries>
     <stubModelEntry path="${platform_lib}/kotlinx-metadata-jvm-0.4.2.jar" />
-    <stubModelEntry path="${mps_home}/plugins/mps-kotlin/lib/kotlin-stdlib-1.7.0.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>
