@@ -3913,7 +3913,7 @@
               <node concept="2pNUuL" id="7c0Pej$gEgb" role="2pNNFR">
                 <property role="2pNUuO" value="classpath" />
                 <node concept="2pMdtt" id="7c0Pej$gEgc" role="2pMdts">
-                  <property role="2pMdty" value="${mps_home}/plugins/mps-kotlin/kotlinc/lib/kotlin-ant.jar" />
+                  <property role="2pMdty" value="${kotlinc_home}/lib/kotlin-ant.jar" />
                 </node>
               </node>
             </node>
