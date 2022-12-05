@@ -7,6 +7,7 @@
   <property name="mps_home" location="${basedir}" />
   <property name="plugin_home" location="${mps_home}/plugins/mps-kotlin" />
   <property name="platform_lib" location="${mps_home}/lib" />
+  <property name="kotlinc_home" location="${mps_home}/plugins/mps-kotlin/kotlinc" />
   <property name="artifacts.mpsJava" location="${build.dir}/artifacts/mpsJava" />
   <property name="artifacts.mpsBootstrapCore" location="${build.dir}/artifacts/mpsBootstrapCore" />
   <property name="artifacts.mpsWorkbench" location="${build.dir}/artifacts/mpsWorkbench" />
@@ -56,7 +57,7 @@
   
   <taskdef resource="jetbrains/mps/build/ant/antlib.xml" classpathref="path.mps.ant.path" />
   
-  <typedef resource="org/jetbrains/kotlin/ant/antlib.xml" classpath="${mps_home}/plugins/mps-kotlin/kotlinc/lib/kotlin-ant.jar"></typedef>
+  <typedef resource="org/jetbrains/kotlin/ant/antlib.xml" classpath="${kotlinc_home}/lib/kotlin-ant.jar"></typedef>
   
   <generator-settings id="m2m-defaults" strictMode="true" parallelThreads="8" inplaceTransform="false" warnWrongChild="true" createStaticRefs="true" skipUnmodifiedModels="${mps.generator.skipUnmodifiedModels}" />
   
@@ -1271,6 +1272,7 @@
       <macro name="mps_home" path="${mps_home}" />
       <macro name="plugin_home" path="${plugin_home}" />
       <macro name="platform_lib" path="${platform_lib}" />
+      <macro name="kotlinc_home" path="${kotlinc_home}" />
     </generate>
   </target>
   

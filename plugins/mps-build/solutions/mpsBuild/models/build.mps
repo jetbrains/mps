@@ -52383,6 +52383,21 @@
     <node concept="2sgV4H" id="638A2dYmtlA" role="1l3spa">
       <ref role="1l3spb" node="5D1dJ7xWer5" resolve="mpsCore" />
     </node>
+    <node concept="398rNT" id="3PMETvlHX2y" role="1l3spd">
+      <property role="TrG5h" value="kotlinc_home" />
+      <node concept="398BVA" id="3PMETvlHX2z" role="398pKh">
+        <ref role="398BVh" node="1fy59xXoa5n" resolve="mps_home" />
+        <node concept="2Ry0Ak" id="3PMETvlHX2$" role="iGT6I">
+          <property role="2Ry0Am" value="plugins" />
+          <node concept="2Ry0Ak" id="3PMETvlHX2_" role="2Ry0An">
+            <property role="2Ry0Am" value="mps-kotlin" />
+            <node concept="2Ry0Ak" id="3PMETvlHX2A" role="2Ry0An">
+              <property role="2Ry0Am" value="kotlinc" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
   </node>
   <node concept="1l3spW" id="4GrD5cc9OPD">
     <property role="TrG5h" value="mpsNavigationBar" />

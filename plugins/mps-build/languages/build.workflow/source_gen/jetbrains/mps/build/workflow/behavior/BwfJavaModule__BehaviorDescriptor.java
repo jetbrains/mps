@@ -38,7 +38,7 @@ public final class BwfJavaModule__BehaviorDescriptor extends BaseBHDescriptor {
     return "java.compile." + SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL);
   }
   /*package*/ static boolean needsFork_id3Par5_LaArg(@NotNull SNode __thisNode__) {
-    // TODO kotlin ant does not support fork, should we duplicate task then? or disable fork?
+    // Kotlin compiler with ant does not support fork, unless we find a way to allow it, withKotlin is enough to know we cannot need fork
     if (SPropertyOperations.getBoolean(__thisNode__, PROPS.withKotlin$2$Am)) {
       return false;
     }
