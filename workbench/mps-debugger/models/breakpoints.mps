@@ -585,69 +585,6 @@
         </node>
       </node>
     </node>
-    <node concept="Wx3nA" id="7sMvr7H2Re2" role="jymVt">
-      <property role="TrG5h" value="STRIPE_BACKGROUND_COLOR" />
-      <property role="3TUv4t" value="true" />
-      <node concept="2OqwBi" id="12BWQLsQ7Lo" role="33vP2m">
-        <node concept="liA8E" id="12BWQLsQ8DN" role="2OqNvi">
-          <ref role="37wK5l" to="hox0:~Style.get(jetbrains.mps.openapi.editor.style.StyleAttribute)" resolve="get" />
-          <node concept="10M0yZ" id="12BWQLsQE8f" role="37wK5m">
-            <ref role="1PxDUh" to="5ueo:~StyleAttributes" resolve="StyleAttributes" />
-            <ref role="3cqZAo" to="5ueo:~StyleAttributes.TEXT_BACKGROUND_COLOR" resolve="TEXT_BACKGROUND_COLOR" />
-          </node>
-        </node>
-        <node concept="2OqwBi" id="12BWQLsQ5ff" role="2Oq$k0">
-          <node concept="liA8E" id="12BWQLsQ62d" role="2OqNvi">
-            <ref role="37wK5l" to="hox0:~StyleRegistry.getStyle(java.lang.String)" resolve="getStyle" />
-            <node concept="Xl_RD" id="12BWQLsQ6Xi" role="37wK5m">
-              <property role="Xl_RC" value="BREAKPOINT" />
-            </node>
-          </node>
-          <node concept="2YIFZM" id="12BWQLsQ54d" role="2Oq$k0">
-            <ref role="37wK5l" to="hox0:~StyleRegistry.getInstance()" resolve="getInstance" />
-            <ref role="1Pybhc" to="hox0:~StyleRegistry" resolve="StyleRegistry" />
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm6S6" id="7sMvr7H2Re4" role="1B3o_S" />
-      <node concept="3uibUv" id="7sMvr7H2Re3" role="1tU5fm">
-        <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
-      </node>
-    </node>
-    <node concept="Wx3nA" id="7sMvr7H2Rea" role="jymVt">
-      <property role="TrG5h" value="FRAME_COLOR" />
-      <property role="3TUv4t" value="true" />
-      <node concept="2OqwBi" id="12BWQLsQFMB" role="33vP2m">
-        <node concept="2OqwBi" id="12BWQLsQEWA" role="2Oq$k0">
-          <node concept="liA8E" id="12BWQLsQEWB" role="2OqNvi">
-            <ref role="37wK5l" to="hox0:~Style.get(jetbrains.mps.openapi.editor.style.StyleAttribute)" resolve="get" />
-            <node concept="10M0yZ" id="12BWQLsQEWC" role="37wK5m">
-              <ref role="1PxDUh" to="5ueo:~StyleAttributes" resolve="StyleAttributes" />
-              <ref role="3cqZAo" to="5ueo:~StyleAttributes.TEXT_BACKGROUND_COLOR" resolve="TEXT_BACKGROUND_COLOR" />
-            </node>
-          </node>
-          <node concept="2OqwBi" id="12BWQLsQEWD" role="2Oq$k0">
-            <node concept="liA8E" id="12BWQLsQEWE" role="2OqNvi">
-              <ref role="37wK5l" to="hox0:~StyleRegistry.getStyle(java.lang.String)" resolve="getStyle" />
-              <node concept="Xl_RD" id="12BWQLsQEWF" role="37wK5m">
-                <property role="Xl_RC" value="BREAKPOINT" />
-              </node>
-            </node>
-            <node concept="2YIFZM" id="12BWQLsQEWG" role="2Oq$k0">
-              <ref role="37wK5l" to="hox0:~StyleRegistry.getInstance()" resolve="getInstance" />
-              <ref role="1Pybhc" to="hox0:~StyleRegistry" resolve="StyleRegistry" />
-            </node>
-          </node>
-        </node>
-        <node concept="liA8E" id="12BWQLsQJIe" role="2OqNvi">
-          <ref role="37wK5l" to="z60i:~Color.darker()" resolve="darker" />
-        </node>
-      </node>
-      <node concept="3Tm6S6" id="7sMvr7H2Rec" role="1B3o_S" />
-      <node concept="3uibUv" id="7sMvr7H2Reb" role="1tU5fm">
-        <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
-      </node>
-    </node>
     <node concept="312cEg" id="7sMvr7H2RdQ" role="jymVt">
       <property role="TrG5h" value="myBreakpoint" />
       <property role="3TUv4t" value="true" />
@@ -682,6 +619,12 @@
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getCellBackgroundColor" />
       <property role="DiZV1" value="false" />
+      <node concept="37vLTG" id="788lcaFKasb" role="3clF46">
+        <property role="TrG5h" value="ec" />
+        <node concept="3uibUv" id="788lcaFKasc" role="1tU5fm">
+          <ref role="3uigEE" to="cj4x:~EditorComponent" resolve="EditorComponent" />
+        </node>
+      </node>
       <node concept="3uibUv" id="7sMvr7H2Rd8" role="3clF45">
         <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
       </node>
@@ -702,9 +645,21 @@
       <property role="TrG5h" value="getStripeBackgroundColor" />
       <property role="DiZV1" value="false" />
       <node concept="3clFbS" id="7sMvr7H2Rdg" role="3clF47">
-        <node concept="3cpWs6" id="7sMvr7H2Rdh" role="3cqZAp">
-          <node concept="37vLTw" id="2BHiRxeosnm" role="3cqZAk">
-            <ref role="3cqZAo" node="7sMvr7H2Re2" resolve="STRIPE_BACKGROUND_COLOR" />
+        <node concept="3clFbF" id="7uQHEcHdOQ_" role="3cqZAp">
+          <node concept="2OqwBi" id="7uQHEcHdOQB" role="3clFbG">
+            <node concept="1rXfSq" id="7uQHEcHdOQC" role="2Oq$k0">
+              <ref role="37wK5l" node="7uQHEcHdE19" resolve="getMyStyle" />
+              <node concept="37vLTw" id="7uQHEcHdOQD" role="37wK5m">
+                <ref role="3cqZAo" node="788lcaFK8MS" resolve="ec" />
+              </node>
+            </node>
+            <node concept="liA8E" id="7uQHEcHdOQE" role="2OqNvi">
+              <ref role="37wK5l" to="hox0:~Style.get(jetbrains.mps.openapi.editor.style.StyleAttribute)" resolve="get" />
+              <node concept="10M0yZ" id="7uQHEcHdOQF" role="37wK5m">
+                <ref role="1PxDUh" to="5ueo:~StyleAttributes" resolve="StyleAttributes" />
+                <ref role="3cqZAo" to="5ueo:~StyleAttributes.TEXT_BACKGROUND_COLOR" resolve="TEXT_BACKGROUND_COLOR" />
+              </node>
+            </node>
           </node>
         </node>
       </node>
@@ -715,24 +670,77 @@
       <node concept="3uibUv" id="7sMvr7H2Rdf" role="3clF45">
         <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
       </node>
+      <node concept="37vLTG" id="788lcaFK8MS" role="3clF46">
+        <property role="TrG5h" value="ec" />
+        <node concept="3uibUv" id="788lcaFK8MR" role="1tU5fm">
+          <ref role="3uigEE" to="cj4x:~EditorComponent" resolve="EditorComponent" />
+        </node>
+      </node>
     </node>
     <node concept="3clFb_" id="7sMvr7H2Rdk" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getFrameColor" />
       <property role="DiZV1" value="false" />
+      <node concept="37vLTG" id="788lcaFKb69" role="3clF46">
+        <property role="TrG5h" value="ec" />
+        <node concept="3uibUv" id="788lcaFKb6a" role="1tU5fm">
+          <ref role="3uigEE" to="cj4x:~EditorComponent" resolve="EditorComponent" />
+        </node>
+      </node>
       <node concept="2AHcQZ" id="7sMvr7H2Rdq" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
       <node concept="3Tmbuc" id="7sMvr7H2Rdl" role="1B3o_S" />
       <node concept="3clFbS" id="7sMvr7H2Rdn" role="3clF47">
-        <node concept="3cpWs6" id="7sMvr7H2Rdo" role="3cqZAp">
-          <node concept="37vLTw" id="2BHiRxeofxQ" role="3cqZAk">
-            <ref role="3cqZAo" node="7sMvr7H2Rea" resolve="FRAME_COLOR" />
+        <node concept="3clFbF" id="7uQHEcHdE1e" role="3cqZAp">
+          <node concept="2OqwBi" id="7uQHEcHdKy5" role="3clFbG">
+            <node concept="1rXfSq" id="7uQHEcHdRir" role="2Oq$k0">
+              <ref role="37wK5l" node="7sMvr7H2Rdd" resolve="getStripeBackgroundColor" />
+              <node concept="37vLTw" id="7uQHEcHdSDa" role="37wK5m">
+                <ref role="3cqZAo" node="788lcaFKb69" resolve="ec" />
+              </node>
+            </node>
+            <node concept="liA8E" id="7uQHEcHdLQO" role="2OqNvi">
+              <ref role="37wK5l" to="z60i:~Color.darker()" resolve="darker" />
+            </node>
           </node>
         </node>
       </node>
       <node concept="3uibUv" id="7sMvr7H2Rdm" role="3clF45">
         <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="7uQHEcHdE19" role="jymVt">
+      <property role="TrG5h" value="getMyStyle" />
+      <node concept="3Tm6S6" id="7uQHEcHdE1a" role="1B3o_S" />
+      <node concept="3uibUv" id="7uQHEcHdHsH" role="3clF45">
+        <ref role="3uigEE" to="hox0:~Style" resolve="Style" />
+      </node>
+      <node concept="37vLTG" id="7uQHEcHdE14" role="3clF46">
+        <property role="TrG5h" value="ec" />
+        <node concept="3uibUv" id="7uQHEcHdE15" role="1tU5fm">
+          <ref role="3uigEE" to="cj4x:~EditorComponent" resolve="EditorComponent" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="7uQHEcHdE0W" role="3clF47">
+        <node concept="3clFbF" id="7uQHEcHdE0X" role="3cqZAp">
+          <node concept="2OqwBi" id="7uQHEcHdE0Y" role="3clFbG">
+            <node concept="2OqwBi" id="7uQHEcHdE0Z" role="2Oq$k0">
+              <node concept="37vLTw" id="7uQHEcHdE16" role="2Oq$k0">
+                <ref role="3cqZAo" node="7uQHEcHdE14" resolve="ec" />
+              </node>
+              <node concept="liA8E" id="7uQHEcHdE11" role="2OqNvi">
+                <ref role="37wK5l" to="cj4x:~EditorComponent.getStyleRegistry()" resolve="getStyleRegistry" />
+              </node>
+            </node>
+            <node concept="liA8E" id="7uQHEcHdE12" role="2OqNvi">
+              <ref role="37wK5l" to="hox0:~StyleRegistry.getStyle(java.lang.String)" resolve="getStyle" />
+              <node concept="Xl_RD" id="7uQHEcHdE13" role="37wK5m">
+                <property role="Xl_RC" value="BREAKPOINT" />
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
     </node>
     <node concept="3clFb_" id="7sMvr7H2Rdr" role="jymVt">

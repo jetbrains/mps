@@ -766,6 +766,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     return myEditorComponentSettings;
   }
 
+  @Override
   public StyleRegistry getStyleRegistry() {
     // FIXME provisional implementation. Now we focus on replacing singleton access with this method.
     // Next, we change the way instance is obtained, either through ComponentHost or, perhaps, with a "snapshot" copy?

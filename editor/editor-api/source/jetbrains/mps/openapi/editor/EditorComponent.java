@@ -21,6 +21,7 @@ import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.commands.CommandContext;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
+import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.openapi.editor.update.Updater;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -183,4 +184,9 @@ public interface EditorComponent {
     // no-op, default impl just for smooth transition
   }
 
+  /**
+   * Gives access to actual styling settings for the editor
+   * @since 2022.3
+   */
+  StyleRegistry getStyleRegistry();
 }

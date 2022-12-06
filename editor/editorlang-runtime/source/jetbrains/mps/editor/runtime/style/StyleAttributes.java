@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -246,9 +246,9 @@ public class StyleAttributes {
    * <br>
    * Due to the facts:
    * <ul>
-   * <li>reference dependency to static final field from other places</li>
-   * <li>{@link InheritableStyleAttribute} immutable parameter</li>
-   * <li>isolation from platform code in this module</li>
+   * <li>reference dependency to static final field from other places - RESOLVED. I believe there's no more static caches styles in MPS</li>
+   * <li>{@link InheritableStyleAttribute} immutable parameter [?]</li>
+   * <li>isolation from platform code in this module [?!?]</li>
    * </ul>
    * this hack is only option to support dynamic colors.
    * <br>

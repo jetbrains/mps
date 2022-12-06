@@ -356,42 +356,52 @@
   <root nodeRef="r:e85e5755-b656-44cc-a19b-af0b99b30b13(jetbrains.mps.debugger.core.breakpoints)/8589065642488591173">
     <file name="BreakpointPainterEx.java">
       <node id="8589065642488591225" at="16,0,17,0" concept="10" trace="CELL_BACKGROUND_COLOR" />
-      <node id="8589065642488591234" at="17,0,18,0" concept="10" trace="STRIPE_BACKGROUND_COLOR" />
-      <node id="8589065642488591242" at="18,0,19,0" concept="10" trace="FRAME_COLOR" />
-      <node id="8589065642488591222" at="19,0,20,0" concept="3" trace="myBreakpoint" />
-      <node id="8589065642488591257" at="20,44,21,30" concept="2" />
-      <node id="8589065642488591178" at="24,44,25,33" concept="8" />
-      <node id="8589065642488591185" at="28,46,29,35" concept="8" />
-      <node id="8589065642488591192" at="32,35,33,23" concept="8" />
-      <node id="8589065642488591205" at="37,60,38,19" concept="8" />
-      <node id="8589065642488591210" at="39,5,40,45" concept="8" />
-      <node id="8589065642488591219" at="43,22,44,24" concept="8" />
-      <node id="8589065642488591251" at="20,0,23,0" concept="1" trace="BreakpointPainterEx#(null)V" />
-      <node id="8589065642488591203" at="36,80,39,5" concept="5" />
-      <node id="8589065642488591174" at="23,0,27,0" concept="6" trace="getCellBackgroundColor#()Ljava/awt/Color;" />
-      <node id="8589065642488591181" at="27,0,31,0" concept="6" trace="getStripeBackgroundColor#()Ljava/awt/Color;" />
-      <node id="8589065642488591188" at="31,0,35,0" concept="6" trace="getFrameColor#()Ljava/awt/Color;" />
-      <node id="8589065642488591215" at="42,0,46,0" concept="6" trace="getItem#()null" />
-      <node id="8589065642488591195" at="35,0,42,0" concept="6" trace="isAbove#(Ljetbrains/mps/nodeEditor/AdditionalPainter;Ljetbrains/mps/nodeEditor/EditorComponent;)Z" />
-      <scope id="8589065642488591256" at="20,44,21,30" />
-      <scope id="8589065642488591177" at="24,44,25,33" />
-      <scope id="8589065642488591184" at="28,46,29,35" />
-      <scope id="8589065642488591191" at="32,35,33,23" />
-      <scope id="8589065642488591204" at="37,60,38,19" />
-      <scope id="8589065642488591218" at="43,22,44,24" />
-      <scope id="8589065642488591251" at="20,0,23,0">
+      <node id="8589065642488591222" at="17,0,18,0" concept="3" trace="myBreakpoint" />
+      <node id="8589065642488591257" at="18,44,19,30" concept="2" />
+      <node id="8589065642488591178" at="22,62,23,33" concept="8" />
+      <node id="8626282948229287333" at="26,64,27,69" concept="8" />
+      <node id="8626282948229242958" at="30,53,31,49" concept="8" />
+      <node id="8626282948229242941" at="33,48,34,56" concept="8" />
+      <node id="8589065642488591205" at="38,60,39,19" concept="8" />
+      <node id="8589065642488591210" at="40,5,41,45" concept="8" />
+      <node id="8589065642488591219" at="44,22,45,24" concept="8" />
+      <node id="8589065642488591251" at="18,0,21,0" concept="1" trace="BreakpointPainterEx#(null)V" />
+      <node id="8626282948229242953" at="33,0,36,0" concept="6" trace="getMyStyle#(Ljetbrains/mps/openapi/editor/EditorComponent;)Ljetbrains/mps/openapi/editor/style/Style;" />
+      <node id="8589065642488591203" at="37,105,40,5" concept="5" />
+      <node id="8589065642488591174" at="21,0,25,0" concept="6" trace="getCellBackgroundColor#(Ljetbrains/mps/openapi/editor/EditorComponent;)Ljava/awt/Color;" />
+      <node id="8589065642488591181" at="25,0,29,0" concept="6" trace="getStripeBackgroundColor#(Ljetbrains/mps/openapi/editor/EditorComponent;)Ljava/awt/Color;" />
+      <node id="8589065642488591188" at="29,0,33,0" concept="6" trace="getFrameColor#(Ljetbrains/mps/openapi/editor/EditorComponent;)Ljava/awt/Color;" />
+      <node id="8589065642488591215" at="43,0,47,0" concept="6" trace="getItem#()null" />
+      <node id="8589065642488591195" at="36,0,43,0" concept="6" trace="isAbove#(Ljetbrains/mps/nodeEditor/AdditionalPainter;Ljetbrains/mps/nodeEditor/EditorComponent;)Z" />
+      <scope id="8589065642488591256" at="18,44,19,30" />
+      <scope id="8589065642488591177" at="22,62,23,33" />
+      <scope id="8589065642488591184" at="26,64,27,69" />
+      <scope id="8589065642488591191" at="30,53,31,49" />
+      <scope id="8626282948229242940" at="33,48,34,56" />
+      <scope id="8589065642488591204" at="38,60,39,19" />
+      <scope id="8589065642488591218" at="44,22,45,24" />
+      <scope id="8589065642488591251" at="18,0,21,0">
         <var name="breakpoint" id="8589065642488591252" />
       </scope>
-      <scope id="8589065642488591174" at="23,0,27,0" />
-      <scope id="8589065642488591181" at="27,0,31,0" />
-      <scope id="8589065642488591188" at="31,0,35,0" />
-      <scope id="8589065642488591202" at="36,80,40,45" />
-      <scope id="8589065642488591215" at="42,0,46,0" />
-      <scope id="8589065642488591195" at="35,0,42,0">
+      <scope id="8626282948229242953" at="33,0,36,0">
+        <var name="ec" id="8626282948229242948" />
+      </scope>
+      <scope id="8589065642488591174" at="21,0,25,0">
+        <var name="ec" id="8216910715219388171" />
+      </scope>
+      <scope id="8589065642488591181" at="25,0,29,0">
+        <var name="ec" id="8216910715219381432" />
+      </scope>
+      <scope id="8589065642488591188" at="29,0,33,0">
+        <var name="ec" id="8216910715219390857" />
+      </scope>
+      <scope id="8589065642488591202" at="37,105,41,45" />
+      <scope id="8589065642488591215" at="43,0,47,0" />
+      <scope id="8589065642488591195" at="36,0,43,0">
         <var name="component" id="8589065642488591200" />
         <var name="painter" id="8589065642488591198" />
       </scope>
-      <unit id="8589065642488591173" at="14,0,47,0" name="jetbrains.mps.debugger.core.breakpoints.BreakpointPainterEx" />
+      <unit id="8589065642488591173" at="14,0,48,0" name="jetbrains.mps.debugger.core.breakpoints.BreakpointPainterEx" />
     </file>
   </root>
 </debug-info>
