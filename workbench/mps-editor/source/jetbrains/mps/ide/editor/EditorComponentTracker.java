@@ -79,8 +79,16 @@ import java.util.concurrent.CopyOnWriteArrayList;
   public void editorComponentNodeChanged(@NotNull Project project, @NotNull EditorComponent editorComponent, @Nullable SNode oldValue,
                                          @Nullable SNode newValue) {
     myListeners.forEach(l -> l.editorComponentNodeChanged(project, editorComponent, oldValue, newValue));
-    fireDisposedMessage(project, editorComponent);
-    fireCreatedMessage(project, editorComponent);
+    // according to EC state prior to my recent changes (introduced this EditorComponentTracker and EditorComponentLifecycleListener)
+    // message bus events were conditioned with old/new node value being non-null (e.g. check EC in f1c88fba13383d0)
+    // Some existing listeners rely on that and access edited node on creation event, therefore have to be careful to dispatch
+    // disposed/created in the same manner as it used to be.
+    if (oldValue != null) {
+      fireDisposedMessage(project, editorComponent);
+    }
+    if (newValue != null) {
+      fireCreatedMessage(project, editorComponent);
+    }
   }
 
   @Override
