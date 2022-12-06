@@ -85,7 +85,7 @@ __switch__:
   @NotNull
   /*package*/ static TypeReference getType_id1TQsu41FTV5(@NotNull SNode __thisNode__) {
     // TODO type of field?
-    return new InferredTypeReference(__thisNode__, null);
+    return new InferredTypeReference(__thisNode__);
   }
 
   /*package*/ PropertySetter__BehaviorDescriptor() {

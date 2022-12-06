@@ -26,7 +26,7 @@
       <unit at="26,0,98,0" name="jetbrains.mps.kotlin.editor.Annotation_SubstituteMenu" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="22,0,899,0" name="jetbrains.mps.kotlin.editor.EditorAspectDescriptorImpl" />
+      <unit at="22,0,901,0" name="jetbrains.mps.kotlin.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="InfixCallOperator_SubstituteMenu.java">
       <unit at="90,0,93,0" name="jetbrains.mps.kotlin.editor.InfixCallOperator_SubstituteMenu$CONCEPTS" />
@@ -2146,8 +2146,8 @@
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/1314219036496949297">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1314219036496949297" at="701,79,702,100" concept="9" />
-      <scope id="1314219036496949297" at="701,79,702,100" />
+      <node id="1314219036496949297" at="703,79,704,100" concept="9" />
+      <scope id="1314219036496949297" at="703,79,704,100" />
     </file>
     <file name="NavigationOperation_SetNullSafe.java">
       <node id="1314219036496949297" at="38,0,39,0" concept="4" trace="myLocations" />
@@ -3874,8 +3874,8 @@
       <unit id="1596883432256101947" at="45,0,155,0" name="jetbrains.mps.kotlin.editor.BinaryExpression_ReplaceWithBinary" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1596883432256101947" at="569,82,570,103" concept="9" />
-      <scope id="1596883432256101947" at="569,82,570,103" />
+      <node id="1596883432256101947" at="571,82,572,103" concept="9" />
+      <scope id="1596883432256101947" at="571,82,572,103" />
     </file>
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/1597769365383094064">
@@ -4666,8 +4666,8 @@
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/1752885245475790208">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1752885245475790208" at="681,84,682,105" concept="9" />
-      <scope id="1752885245475790208" at="681,84,682,105" />
+      <node id="1752885245475790208" at="683,84,684,105" concept="9" />
+      <scope id="1752885245475790208" at="683,84,684,105" />
     </file>
     <file name="LambdaLiteral_AddParameter_Transform.java">
       <node id="1752885245475790208" at="50,0,51,0" concept="4" trace="myLocations" />
@@ -4854,8 +4854,8 @@
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/1752885245477328073">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1752885245477328073" at="683,86,684,107" concept="9" />
-      <scope id="1752885245477328073" at="683,86,684,107" />
+      <node id="1752885245477328073" at="685,86,686,107" concept="9" />
+      <scope id="1752885245477328073" at="685,86,686,107" />
     </file>
     <file name="LambdaLiteral_AsArgumentRightTransform.java">
       <node id="1752885245477328073" at="30,0,31,0" concept="4" trace="myLocations" />
@@ -5048,8 +5048,8 @@
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/1781658014498924168">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1781658014498924168" at="371,60,372,67" concept="9" />
-      <scope id="1781658014498924168" at="371,60,372,67" />
+      <node id="1781658014498924168" at="373,60,374,67" concept="9" />
+      <scope id="1781658014498924168" at="373,60,374,67" />
     </file>
     <file name="FunctionBodyEditor.java">
       <node id="1781658014498924168" at="15,47,16,35" concept="9" />
@@ -6541,8 +6541,8 @@
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/1991556721064733279">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1991556721064733279" at="636,83,637,104" concept="9" />
-      <scope id="1991556721064733279" at="636,83,637,104" />
+      <node id="1991556721064733279" at="638,83,639,104" concept="9" />
+      <scope id="1991556721064733279" at="638,83,639,104" />
     </file>
     <file name="INullableType_SetNullable_Transform.java">
       <node id="1991556721064733279" at="40,0,41,0" concept="4" trace="myLocations" />
@@ -7395,8 +7395,8 @@
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/1991556721067233112">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1991556721067233112" at="645,82,646,103" concept="9" />
-      <scope id="1991556721067233112" at="645,82,646,103" />
+      <node id="1991556721067233112" at="647,82,648,103" concept="9" />
+      <scope id="1991556721067233112" at="647,82,648,103" />
     </file>
     <file name="IObject_SpecifySuperType_Transform.java">
       <node id="1991556721067233112" at="47,0,48,0" concept="4" trace="myLocations" />
@@ -8292,6 +8292,217 @@
       <unit id="2465168547709957029" at="89,0,109,0" name="jetbrains.mps.kotlin.editor.VariableDeclaration_TransformationMenu$TMP_Group_fh1jz8_a0$TMP_Include_fh1jz8_a0a" />
       <unit id="2465168547709957012" at="58,0,110,0" name="jetbrains.mps.kotlin.editor.VariableDeclaration_TransformationMenu$TMP_Group_fh1jz8_a0" />
       <unit id="2178249719432896117" at="29,0,115,0" name="jetbrains.mps.kotlin.editor.VariableDeclaration_TransformationMenu" />
+    </file>
+  </root>
+  <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/2302063215239894174">
+    <file name="TypeAdditionalData_Editor.java">
+      <node id="2302063215239894174" at="11,79,12,84" concept="9" />
+      <node id="2302063215239894174" at="11,0,14,0" concept="7" trace="createEditorCell#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <scope id="2302063215239894174" at="11,79,12,84" />
+      <scope id="2302063215239894174" at="11,0,14,0">
+        <var name="editorContext" id="2302063215239894174" />
+        <var name="node" id="2302063215239894174" />
+      </scope>
+      <unit id="2302063215239894174" at="10,0,15,0" name="jetbrains.mps.kotlin.editor.TypeAdditionalData_Editor" />
+    </file>
+    <file name="TypeAdditionalData_EditorBuilder_a.java">
+      <node id="2302063215239894174" at="44,98,45,19" concept="14" />
+      <node id="2302063215239894174" at="45,19,46,18" concept="3" />
+      <node id="2302063215239894174" at="51,26,52,18" concept="9" />
+      <node id="2302063215239894174" at="55,39,56,32" concept="9" />
+      <node id="2302063215239894174" at="59,43,60,118" concept="8" />
+      <node id="2302063215239894174" at="60,118,61,48" concept="3" />
+      <node id="2302063215239894174" at="61,48,62,28" concept="3" />
+      <node id="2302063215239894174" at="62,28,63,31" concept="3" />
+      <node id="2302063215257803573" at="63,31,64,49" concept="3" />
+      <node id="2302063215257803600" at="64,49,65,49" concept="3" />
+      <node id="2302063215257803633" at="65,49,66,49" concept="3" />
+      <node id="2302063215257803672" at="66,49,67,48" concept="3" />
+      <node id="2302063215257803701" at="67,48,68,49" concept="3" />
+      <node id="2302063215239894176" at="68,49,69,59" concept="3" />
+      <node id="2302063215239894174" at="69,59,70,22" concept="9" />
+      <node id="2302063215257803573" at="72,41,73,94" concept="8" />
+      <node id="2302063215257803573" at="73,94,74,47" concept="3" />
+      <node id="2302063215257803573" at="74,47,75,34" concept="8" />
+      <node id="2302063215257803717" at="75,34,76,55" concept="3" />
+      <node id="2302063215257803573" at="76,55,77,40" concept="3" />
+      <node id="2302063215257803573" at="77,40,78,34" concept="3" />
+      <node id="2302063215257803573" at="78,34,79,22" concept="9" />
+      <node id="2302063215257803600" at="81,41,82,39" concept="3" />
+      <node id="2302063215257803600" at="83,9,84,49" concept="8" />
+      <node id="2302063215257803600" at="84,49,85,76" concept="3" />
+      <node id="2302063215257803600" at="85,76,86,149" concept="8" />
+      <node id="2302063215257803600" at="86,149,87,45" concept="3" />
+      <node id="2302063215257803600" at="87,45,88,44" concept="3" />
+      <node id="2302063215257803600" at="88,44,89,86" concept="3" />
+      <node id="2302063215257803600" at="89,86,90,33" concept="3" />
+      <node id="2302063215257803600" at="90,33,91,155" concept="8" />
+      <node id="2302063215257803600" at="93,41,94,118" concept="9" />
+      <node id="2302063215257803600" at="97,74,98,89" concept="8" />
+      <node id="2302063215257803600" at="98,89,99,145" concept="9" />
+      <node id="2302063215257803600" at="100,12,101,24" concept="9" />
+      <node id="2302063215257803600" at="102,15,103,40" concept="3" />
+      <node id="2302063215257803633" at="106,41,107,94" concept="8" />
+      <node id="2302063215257803633" at="107,94,108,47" concept="3" />
+      <node id="2302063215257803633" at="108,47,109,34" concept="8" />
+      <node id="2302063215257803720" at="109,34,110,54" concept="3" />
+      <node id="2302063215257803633" at="110,54,111,40" concept="3" />
+      <node id="2302063215257803633" at="111,40,112,34" concept="3" />
+      <node id="2302063215257803633" at="112,34,113,22" concept="9" />
+      <node id="2302063215239894174" at="115,40,116,119" concept="8" />
+      <node id="2302063215239894174" at="116,119,117,33" concept="9" />
+      <node id="2302063215239894174" at="123,118,124,38" concept="14" />
+      <node id="2302063215239894174" at="124,38,125,25" concept="3" />
+      <node id="2302063215239894174" at="130,28,131,20" concept="9" />
+      <node id="2302063215239894174" at="134,55,135,76" concept="8" />
+      <node id="2302063215239894174" at="135,76,136,113" concept="3" />
+      <node id="2302063215239894174" at="136,113,137,116" concept="3" />
+      <node id="2302063215239894174" at="137,116,138,48" concept="3" />
+      <node id="2302063215239894174" at="138,48,139,24" concept="9" />
+      <node id="2302063215239894174" at="145,118,146,137" concept="3" />
+      <node id="2302063215239894174" at="148,42,149,45" concept="3" />
+      <node id="2302063215239894174" at="150,7,151,36" concept="8" />
+      <node id="2302063215257803723" at="151,36,152,56" concept="3" />
+      <node id="2302063215239894174" at="152,56,153,42" concept="3" />
+      <node id="2302063215239894174" at="156,44,157,41" concept="3" />
+      <node id="2302063215239894174" at="157,41,158,104" concept="3" />
+      <node id="2302063215239894174" at="159,11,160,56" concept="8" />
+      <node id="2302063215239894174" at="160,56,161,43" concept="3" />
+      <node id="2302063215239894174" at="161,43,162,48" concept="3" />
+      <node id="2302063215239894174" at="162,48,163,35" concept="3" />
+      <node id="2302063215239894174" at="163,35,164,26" concept="9" />
+      <node id="2302063215239894174" at="165,17,166,42" concept="3" />
+      <node id="2302063215239894174" at="169,40,170,25" concept="9" />
+      <node id="2302063215257803701" at="173,41,174,94" concept="8" />
+      <node id="2302063215257803701" at="174,94,175,47" concept="3" />
+      <node id="2302063215257803701" at="175,47,176,34" concept="8" />
+      <node id="2302063215257803827" at="176,34,177,60" concept="3" />
+      <node id="2302063215259130878" at="177,60,178,54" concept="3" />
+      <node id="2302063215257803701" at="178,54,179,40" concept="3" />
+      <node id="2302063215257803701" at="179,40,180,34" concept="3" />
+      <node id="2302063215257803701" at="180,34,181,22" concept="9" />
+      <node id="2302063215239894176" at="183,51,184,85" concept="8" />
+      <node id="2302063215239894176" at="184,85,185,93" concept="8" />
+      <node id="2302063215239894176" at="185,93,186,22" concept="9" />
+      <node id="2302063215239894174" at="190,0,191,0" concept="12" trace="name$NzhW" />
+      <node id="2302063215239894174" at="194,0,195,0" concept="12" trace="PropertyAttribute$Gb" />
+      <node id="2302063215239894174" at="198,0,199,0" concept="12" trace="data$NCUk" />
+      <node id="2302063215239894174" at="41,0,43,0" concept="4" trace="myNode" />
+      <node id="2302063215239894174" at="120,0,122,0" concept="4" trace="myNode" />
+      <node id="2302063215239894174" at="55,0,58,0" concept="7" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="2302063215257803600" at="93,0,96,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="2302063215239894174" at="144,87,147,7" concept="6" />
+      <node id="2302063215239894174" at="147,7,150,7" concept="6" />
+      <node id="2302063215239894174" at="169,0,172,0" concept="7" trace="getNoTargetText#()Ljava/lang/String;" />
+      <node id="2302063215239894174" at="44,0,48,0" concept="2" trace="TypeAdditionalData_EditorBuilder_a#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="2302063215239894174" at="115,0,119,0" concept="7" trace="createRefNode_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="2302063215239894174" at="123,0,127,0" concept="2" trace="dataSingleRoleHandler_4qb568_d0#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SContainmentLink;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
+      <node id="2302063215239894174" at="49,0,54,0" concept="7" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="2302063215257803600" at="91,155,96,9" concept="8" />
+      <node id="2302063215257803600" at="96,9,101,24" concept="6" />
+      <node id="2302063215239894174" at="128,0,133,0" concept="7" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="2302063215239894176" at="183,0,188,0" concept="7" trace="createAttributedNodeCell_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="2302063215239894174" at="134,0,141,0" concept="7" trace="createChildCell#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="2302063215257803573" at="72,0,81,0" concept="7" trace="createConstant_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="2302063215257803633" at="106,0,115,0" concept="7" trace="createConstant_1#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="2302063215239894174" at="158,104,167,7" concept="15" />
+      <node id="2302063215257803701" at="173,0,183,0" concept="7" trace="createConstant_2#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="2302063215239894174" at="144,0,155,0" concept="7" trace="installCellInfo#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/cells/EditorCell;Z)V" />
+      <node id="2302063215239894174" at="59,0,72,0" concept="7" trace="createCollection_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="2302063215239894174" at="155,0,169,0" concept="7" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="2302063215257803600" at="82,39,104,5" concept="15" />
+      <node id="2302063215257803600" at="81,0,106,0" concept="7" trace="createProperty_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <scope id="2302063215239894174" at="51,26,52,18" />
+      <scope id="2302063215239894174" at="55,39,56,32" />
+      <scope id="2302063215257803600" at="93,41,94,118" />
+      <scope id="2302063215257803600" at="102,15,103,40" />
+      <scope id="2302063215239894174" at="130,28,131,20" />
+      <scope id="2302063215239894174" at="145,118,146,137" />
+      <scope id="2302063215239894174" at="148,42,149,45" />
+      <scope id="2302063215239894174" at="165,17,166,42" />
+      <scope id="2302063215239894174" at="169,40,170,25" />
+      <scope id="2302063215239894174" at="44,98,46,18" />
+      <scope id="2302063215257803600" at="97,74,99,145">
+        <var name="manager" id="2302063215257803600" />
+      </scope>
+      <scope id="2302063215239894174" at="115,40,117,33">
+        <var name="provider" id="2302063215239894174" />
+      </scope>
+      <scope id="2302063215239894174" at="123,118,125,25" />
+      <scope id="2302063215239894174" at="55,0,58,0" />
+      <scope id="2302063215257803600" at="93,0,96,0">
+        <var name="it" id="2302063215257803600" />
+      </scope>
+      <scope id="2302063215239894174" at="169,0,172,0" />
+      <scope id="2302063215239894176" at="183,51,186,22">
+        <var name="editorCell" id="2302063215239894176" />
+        <var name="manager" id="2302063215239894176" />
+      </scope>
+      <scope id="2302063215239894174" at="44,0,48,0">
+        <var name="context" id="2302063215239894174" />
+        <var name="node" id="2302063215239894174" />
+      </scope>
+      <scope id="2302063215239894174" at="115,0,119,0" />
+      <scope id="2302063215239894174" at="123,0,127,0">
+        <var name="containmentLink" id="2302063215239894174" />
+        <var name="context" id="2302063215239894174" />
+        <var name="ownerNode" id="2302063215239894174" />
+      </scope>
+      <scope id="2302063215239894174" at="49,0,54,0" />
+      <scope id="2302063215239894174" at="128,0,133,0" />
+      <scope id="2302063215239894174" at="134,55,139,24">
+        <var name="editorCell" id="2302063215239894174" />
+      </scope>
+      <scope id="2302063215239894174" at="159,11,164,26">
+        <var name="editorCell" id="2302063215239894174" />
+      </scope>
+      <scope id="2302063215239894176" at="183,0,188,0" />
+      <scope id="2302063215257803573" at="72,41,79,22">
+        <var name="editorCell" id="2302063215257803573" />
+        <var name="style" id="2302063215257803573" />
+      </scope>
+      <scope id="2302063215257803633" at="106,41,113,22">
+        <var name="editorCell" id="2302063215257803633" />
+        <var name="style" id="2302063215257803633" />
+      </scope>
+      <scope id="2302063215239894174" at="134,0,141,0">
+        <var name="child" id="2302063215239894174" />
+      </scope>
+      <scope id="2302063215257803701" at="173,41,181,22">
+        <var name="editorCell" id="2302063215257803701" />
+        <var name="style" id="2302063215257803701" />
+      </scope>
+      <scope id="2302063215257803573" at="72,0,81,0" />
+      <scope id="2302063215257803633" at="106,0,115,0" />
+      <scope id="2302063215239894174" at="144,87,153,42">
+        <var name="style" id="2302063215239894174" />
+      </scope>
+      <scope id="2302063215257803701" at="173,0,183,0" />
+      <scope id="2302063215239894174" at="59,43,70,22">
+        <var name="editorCell" id="2302063215239894174" />
+      </scope>
+      <scope id="2302063215239894174" at="144,0,155,0">
+        <var name="child" id="2302063215239894174" />
+        <var name="editorCell" id="2302063215239894174" />
+        <var name="isEmpty" id="2302063215239894174" />
+      </scope>
+      <scope id="2302063215239894174" at="156,44,167,7" />
+      <scope id="2302063215239894174" at="59,0,72,0" />
+      <scope id="2302063215239894174" at="155,0,169,0" />
+      <scope id="2302063215257803600" at="83,9,101,24">
+        <var name="currentPropertyAttributes" id="2302063215257803600" />
+        <var name="editorCell" id="2302063215257803600" />
+        <var name="property" id="2302063215257803600" />
+        <var name="propertyAttributes" id="2302063215257803600" />
+      </scope>
+      <scope id="2302063215257803600" at="81,41,104,5" />
+      <scope id="2302063215257803600" at="81,0,106,0" />
+      <unit id="2302063215239894174" at="189,0,192,0" name="jetbrains.mps.kotlin.editor.TypeAdditionalData_EditorBuilder_a$PROPS" />
+      <unit id="2302063215239894174" at="193,0,196,0" name="jetbrains.mps.kotlin.editor.TypeAdditionalData_EditorBuilder_a$CONCEPTS" />
+      <unit id="2302063215239894174" at="197,0,200,0" name="jetbrains.mps.kotlin.editor.TypeAdditionalData_EditorBuilder_a$LINKS" />
+      <unit id="2302063215257803600" at="92,102,96,7" name="jetbrains.mps.kotlin.editor.TypeAdditionalData_EditorBuilder_a$1" />
+      <unit id="2302063215239894174" at="119,0,173,0" name="jetbrains.mps.kotlin.editor.TypeAdditionalData_EditorBuilder_a$dataSingleRoleHandler_4qb568_d0" />
+      <unit id="2302063215239894174" at="40,0,201,0" name="jetbrains.mps.kotlin.editor.TypeAdditionalData_EditorBuilder_a" />
     </file>
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/2324909103759097714">
@@ -9460,8 +9671,8 @@
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/2324909103762638430">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="2324909103762638430" at="605,85,606,106" concept="9" />
-      <scope id="2324909103762638430" at="605,85,606,106" />
+      <node id="2324909103762638430" at="607,85,608,106" concept="9" />
+      <scope id="2324909103762638430" at="607,85,608,106" />
     </file>
     <file name="IClassDeclaration_Modifiers_Transform.java">
       <node id="2324909103762638430" at="49,0,50,0" concept="4" trace="myLocations" />
@@ -9629,8 +9840,8 @@
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/2324909103762915625">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="2324909103762915625" at="672,75,673,96" concept="9" />
-      <scope id="2324909103762915625" at="672,75,673,96" />
+      <node id="2324909103762915625" at="674,75,675,96" concept="9" />
+      <scope id="2324909103762915625" at="674,75,675,96" />
     </file>
     <file name="IClassBody_Insert_Transform.java">
       <node id="2324909103762915625" at="42,0,43,0" concept="4" trace="myLocations" />
@@ -10008,8 +10219,8 @@
       <unit id="2324909103763486485" at="48,0,252,0" name="jetbrains.mps.kotlin.editor.ClassDeclaration_Modifiers_Transform" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="2324909103763486485" at="578,84,579,105" concept="9" />
-      <scope id="2324909103763486485" at="578,84,579,105" />
+      <node id="2324909103763486485" at="580,84,581,105" concept="9" />
+      <scope id="2324909103763486485" at="580,84,581,105" />
     </file>
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/2324909103765830028">
@@ -10169,8 +10380,8 @@
       <unit id="2324909103765830028" at="46,0,176,0" name="jetbrains.mps.kotlin.editor.Companion_InsertName_Transform" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="2324909103765830028" at="596,78,597,99" concept="9" />
-      <scope id="2324909103765830028" at="596,78,597,99" />
+      <node id="2324909103765830028" at="598,78,599,99" concept="9" />
+      <scope id="2324909103765830028" at="598,78,599,99" />
     </file>
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/2324909103768007331">
@@ -28027,8 +28238,8 @@
       <unit id="2998782254606458134" at="40,0,220,0" name="jetbrains.mps.kotlin.editor.ClassParameter_ValVarTransformation" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="2998782254606458134" at="587,83,588,104" concept="9" />
-      <scope id="2998782254606458134" at="587,83,588,104" />
+      <node id="2998782254606458134" at="589,83,590,104" concept="9" />
+      <scope id="2998782254606458134" at="589,83,590,104" />
     </file>
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/2998782254607097370">
@@ -28476,8 +28687,8 @@
       <unit id="2998782254610868475" at="31,0,222,0" name="jetbrains.mps.kotlin.editor.ClassParameter_ValVarSubstitution" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="2998782254610868475" at="870,81,871,98" concept="9" />
-      <scope id="2998782254610868475" at="870,81,871,98" />
+      <node id="2998782254610868475" at="872,81,873,98" concept="9" />
+      <scope id="2998782254610868475" at="872,81,873,98" />
     </file>
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/2998782254613021108">
@@ -30546,8 +30757,8 @@
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/4217388692996220975">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="4217388692996220975" at="728,85,729,106" concept="9" />
-      <scope id="4217388692996220975" at="728,85,729,106" />
+      <node id="4217388692996220975" at="730,85,731,106" concept="9" />
+      <scope id="4217388692996220975" at="730,85,731,106" />
     </file>
     <file name="VariableDeclaration_AddType_Transform.java">
       <node id="4217388692996220975" at="39,0,40,0" concept="4" trace="myLocations" />
@@ -30682,8 +30893,8 @@
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/4217388692997044207">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="4217388692997044207" at="719,79,720,100" concept="9" />
-      <scope id="4217388692997044207" at="719,79,720,100" />
+      <node id="4217388692997044207" at="721,79,722,100" concept="9" />
+      <scope id="4217388692997044207" at="721,79,722,100" />
     </file>
     <file name="TypeParameter_Specify_Transform.java">
       <node id="4217388692997044207" at="45,0,46,0" concept="4" trace="myLocations" />
@@ -31003,8 +31214,8 @@
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/4217388692998784259">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="4217388692998784259" at="710,80,711,101" concept="9" />
-      <scope id="4217388692998784259" at="710,80,711,101" />
+      <node id="4217388692998784259" at="712,80,713,101" concept="9" />
+      <scope id="4217388692998784259" at="712,80,713,101" />
     </file>
     <file name="SuperInterface_Specify_Transform.java">
       <node id="4217388692998784259" at="47,0,48,0" concept="4" trace="myLocations" />
@@ -35096,8 +35307,8 @@
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/5533310174483281796">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="5533310174483281796" at="614,82,615,103" concept="9" />
-      <scope id="5533310174483281796" at="614,82,615,103" />
+      <node id="5533310174483281796" at="616,82,617,103" concept="9" />
+      <scope id="5533310174483281796" at="616,82,617,103" />
     </file>
     <file name="IExpression_InsertBinary_Transform.java">
       <node id="5533310174483281796" at="44,0,45,0" concept="4" trace="myLocations" />
@@ -36332,8 +36543,8 @@
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/5533310174486081641">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="5533310174486081641" at="616,88,617,109" concept="9" />
-      <scope id="5533310174486081641" at="616,88,617,109" />
+      <node id="5533310174486081641" at="618,88,619,109" concept="9" />
+      <scope id="5533310174486081641" at="618,88,619,109" />
     </file>
     <file name="IExpression_InsertPostFixUnary_Transform.java">
       <node id="5533310174486081641" at="44,0,45,0" concept="4" trace="myLocations" />
@@ -37113,8 +37324,8 @@
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/5849129648642834894">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="5849129648642834894" at="627,69,628,90" concept="9" />
-      <scope id="5849129648642834894" at="627,69,628,90" />
+      <node id="5849129648642834894" at="629,69,630,90" concept="9" />
+      <scope id="5849129648642834894" at="629,69,630,90" />
     </file>
     <file name="KotlinRoot_SetPackage.java">
       <node id="5849129648642834894" at="41,0,42,0" concept="4" trace="myLocations" />
@@ -38692,8 +38903,8 @@
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/6565639133216750238">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="6565639133216750238" at="654,87,655,108" concept="9" />
-      <scope id="6565639133216750238" at="654,87,655,108" />
+      <node id="6565639133216750238" at="656,87,657,108" concept="9" />
+      <scope id="6565639133216750238" at="656,87,657,108" />
     </file>
     <file name="ProjectedTypeArguments_Insert_Transform.java">
       <node id="6565639133216750238" at="39,0,40,0" concept="4" trace="myLocations" />
@@ -40639,8 +40850,8 @@
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/7027413324313228080">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="7027413324313228080" at="618,87,619,108" concept="9" />
-      <scope id="7027413324313228080" at="618,87,619,108" />
+      <node id="7027413324313228080" at="620,87,621,108" concept="9" />
+      <scope id="7027413324313228080" at="620,87,621,108" />
     </file>
     <file name="IExpression_InsertPrefixUnary_Transform.java">
       <node id="7027413324313228080" at="44,0,45,0" concept="4" trace="myLocations" />
@@ -42231,8 +42442,8 @@
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/7208671122130179549">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="7208671122130179549" at="369,70,370,77" concept="9" />
-      <scope id="7208671122130179549" at="369,70,370,77" />
+      <node id="7208671122130179549" at="371,70,372,77" concept="9" />
+      <scope id="7208671122130179549" at="371,70,372,77" />
     </file>
     <file name="FlexibleStatementBlockEditor.java">
       <node id="7208671122130179549" at="15,47,16,35" concept="9" />
@@ -42732,8 +42943,8 @@
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/7208671122140367854">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="7208671122140367854" at="375,62,376,69" concept="9" />
-      <scope id="7208671122140367854" at="375,62,376,69" />
+      <node id="7208671122140367854" at="377,62,378,69" concept="9" />
+      <scope id="7208671122140367854" at="377,62,378,69" />
     </file>
     <file name="StatementBlockEditor.java">
       <node id="7208671122140367854" at="15,47,16,35" concept="9" />
@@ -42935,8 +43146,8 @@
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/7208671122142583639">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="7208671122142583639" at="373,70,374,77" concept="9" />
-      <scope id="7208671122142583639" at="373,70,374,77" />
+      <node id="7208671122142583639" at="375,70,376,77" concept="9" />
+      <scope id="7208671122142583639" at="375,70,376,77" />
     </file>
     <file name="OptionalStatementBlockEditor.java">
       <node id="7208671122142583639" at="15,47,16,35" concept="9" />
@@ -43533,8 +43744,8 @@
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/7393946609788788168">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="7393946609788788168" at="663,79,664,100" concept="9" />
-      <scope id="7393946609788788168" at="663,79,664,100" />
+      <node id="7393946609788788168" at="665,79,666,100" concept="9" />
+      <scope id="7393946609788788168" at="665,79,666,100" />
     </file>
     <file name="StatementHolder_InsertStatement.java">
       <node id="7393946609788788168" at="46,0,47,0" concept="4" trace="myLocations" />
@@ -44970,8 +45181,8 @@
       <unit id="8206368354797004582" at="23,0,71,0" name="jetbrains.mps.kotlin.editor.BinaryExpression_AllSubconcepts" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="8206368354797004582" at="861,79,862,96" concept="9" />
-      <scope id="8206368354797004582" at="861,79,862,96" />
+      <node id="8206368354797004582" at="863,79,864,96" concept="9" />
+      <scope id="8206368354797004582" at="863,79,864,96" />
     </file>
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/8206368354797010245">
@@ -45002,8 +45213,8 @@
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/8373598162229626172">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="8373598162229626172" at="692,79,693,100" concept="9" />
-      <scope id="8373598162229626172" at="692,79,693,100" />
+      <node id="8373598162229626172" at="694,79,695,100" concept="9" />
+      <scope id="8373598162229626172" at="694,79,695,100" />
     </file>
     <file name="MultiLambdaParameter_InsertType.java">
       <node id="8373598162229626172" at="38,0,39,0" concept="4" trace="myLocations" />
@@ -46968,8 +47179,8 @@
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/8939835910405032971">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="8939835910405032971" at="737,87,738,108" concept="9" />
-      <scope id="8939835910405032971" at="737,87,738,108" />
+      <node id="8939835910405032971" at="739,87,740,108" concept="9" />
+      <scope id="8939835910405032971" at="739,87,740,108" />
     </file>
     <file name="WhenExpression_InsertVariable_Transform.java">
       <node id="8939835910405032971" at="41,0,42,0" concept="4" trace="myLocations" />

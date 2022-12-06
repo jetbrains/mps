@@ -37,7 +37,7 @@ public final class VariableRefExpression__BehaviorDescriptor extends BaseBHDescr
     return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.target$xQFr), PROPS.name$MnvL);
   }
   /*package*/ static TypeReference getLocalTargetType_id7Iv8Cw7qtkn(@NotNull SNode __thisNode__) {
-    return ((boolean) IVariableIdentifier__BehaviorDescriptor.isLocal_id1vYW8S3rTh_.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.target$xQFr)) ? new InferredTypeReference(SLinkOperations.getTarget(__thisNode__, LINKS.target$xQFr), null) : null);
+    return ((boolean) IVariableIdentifier__BehaviorDescriptor.isLocal_id1vYW8S3rTh_.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.target$xQFr)) ? new InferredTypeReference(SLinkOperations.getTarget(__thisNode__, LINKS.target$xQFr)) : null);
   }
   /*package*/ static Assignable assignableState_idCy8Bus9niD(@NotNull SNode __thisNode__) {
     return ((boolean) IVariableIdentifier__BehaviorDescriptor.isAssignable_idCy8Bus9oGm.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.target$xQFr)) ? Assignable.TRUE : Assignable.FALSE);

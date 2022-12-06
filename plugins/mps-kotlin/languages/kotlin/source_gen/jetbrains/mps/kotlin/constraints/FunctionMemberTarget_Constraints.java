@@ -54,7 +54,7 @@ public class FunctionMemberTarget_Constraints extends BaseConstraintsDescriptor 
             SNode context = (((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode())));
 
             // Compute type in isolation, otherwise type may be null`
-            SNode type = new InferredTypeReference(SLinkOperations.getTarget(SNodeOperations.as(context, CONCEPTS.MemberNavigationOperation$7I), LINKS.operand$YS5t), null).compute();
+            SNode type = new InferredTypeReference(SLinkOperations.getTarget(SNodeOperations.as(context, CONCEPTS.MemberNavigationOperation$7I), LINKS.operand$YS5t)).compute();
             SignatureFilter<FunctionSignature> filter = new SignatureFilter<>(FunctionSignature.class);
 
             // Regardless of using a static type or not, we need instance functions

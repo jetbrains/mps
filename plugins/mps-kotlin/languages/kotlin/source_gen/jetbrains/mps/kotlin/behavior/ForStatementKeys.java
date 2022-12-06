@@ -4,6 +4,6 @@ package jetbrains.mps.kotlin.behavior;
 
 
 public class ForStatementKeys {
-  public static Object ITERATOR_FUNCTION_RET = 0;
-  public static Object NEXT_FUNCTION_RET = 1;
+  public static String ITERATOR_FUNCTION_RET = "iterator";
+  public static String NEXT_FUNCTION_RET = "next";
 }

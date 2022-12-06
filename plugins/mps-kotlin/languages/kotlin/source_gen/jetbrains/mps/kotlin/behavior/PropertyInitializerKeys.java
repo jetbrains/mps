@@ -4,5 +4,5 @@ package jetbrains.mps.kotlin.behavior;
 
 
 public class PropertyInitializerKeys {
-  public static Object ASSIGNED_TYPE = 0;
+  public static String ASSIGNED_TYPE = "assigned_type";
 }

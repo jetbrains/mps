@@ -70,7 +70,7 @@ public final class VariableDeclaration__BehaviorDescriptor extends BaseBHDescrip
       return new ConcreteTypeReference(SLinkOperations.getTarget(__thisNode__, LINKS.type$RmkT));
     } else {
       // Inferred from context
-      return new InferredTypeReference(__thisNode__, null);
+      return new InferredTypeReference(__thisNode__);
     }
   }
 

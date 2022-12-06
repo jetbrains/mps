@@ -5,18 +5,8 @@ package jetbrains.mps.kotlin.migration;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptBase;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.module.SearchScope;
-import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
-import jetbrains.mps.project.EditableFilteringScope;
-import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class LambdaLiteralStructure extends MigrationScriptBase {
   private final String description = "Introduce 'this' and 'it' typed nodes in lambda literal";
@@ -25,44 +15,17 @@ public class LambdaLiteralStructure extends MigrationScriptBase {
   }
   @Override
   public boolean isRerunnable() {
-    return true;
+    return false;
   }
   public SNode execute(final SModule m) {
     doExecute(m);
     return null;
   }
   public void doExecute(final SModule m) {
-    {
-      SearchScope scope_2z1xol_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_2z1xol_a0e_0 = new EditableFilteringScope(scope_2z1xol_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_2z1xol_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LambdaLiteral$Bd, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS._itTypeHolder_hack$yOMR) == null) || (SLinkOperations.getTarget(it, LINKS._thisTypeHolder_hack$QRo4) == null);
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          // Introduce typesystem hack
-          SLinkOperations.setNewChild(it, LINKS._itTypeHolder_hack$yOMR, null);
-          SLinkOperations.setNewChild(it, LINKS._thisTypeHolder_hack$QRo4, null);
-        }
-      });
-    }
+    // Not needed after migration 9 in 2022.3
   }
   public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, "jetbrains.mps.kotlin"), 7);
   }
 
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept LambdaLiteral$Bd = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af517L, "jetbrains.mps.kotlin.structure.LambdaLiteral");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink _itTypeHolder_hack$yOMR = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af517L, 0x37f51ee20f70b404L, "_itTypeHolder_hack");
-    /*package*/ static final SContainmentLink _thisTypeHolder_hack$QRo4 = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af517L, 0x37f51ee20f709e5fL, "_thisTypeHolder_hack");
-  }
 }

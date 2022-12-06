@@ -35,7 +35,7 @@ public final class ParameterWithOptionalType__BehaviorDescriptor extends BaseBHD
   }
   @NotNull
   /*package*/ static TypeReference getType_id1TQsu41FTV5(@NotNull SNode __thisNode__) {
-    return ((SLinkOperations.getTarget(__thisNode__, LINKS.type$Nm_o) != null) ? new ConcreteTypeReference(SLinkOperations.getTarget(__thisNode__, LINKS.type$Nm_o)) : new InferredTypeReference(__thisNode__, null));
+    return ((SLinkOperations.getTarget(__thisNode__, LINKS.type$Nm_o) != null) ? new ConcreteTypeReference(SLinkOperations.getTarget(__thisNode__, LINKS.type$Nm_o)) : new InferredTypeReference(__thisNode__));
   }
 
   /*package*/ ParameterWithOptionalType__BehaviorDescriptor() {

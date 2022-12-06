@@ -50,7 +50,7 @@ public class CallReceiver {
     return of(host, false, ReceiverTypeHelper.isStaticReceiver(host), null);
   }
 
-  public static CallReceiver of(SNode host, boolean external, boolean staticReceiver, Object intermediateKey) {
+  public static CallReceiver of(SNode host, boolean external, boolean staticReceiver, String intermediateKey) {
     if (host != null) {
       return new CallReceiver(new InferredTypeReference(host, intermediateKey), external, staticReceiver);
     }

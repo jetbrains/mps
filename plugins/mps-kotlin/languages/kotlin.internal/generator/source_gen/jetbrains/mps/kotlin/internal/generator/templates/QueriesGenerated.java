@@ -228,8 +228,6 @@ public class QueriesGenerated extends QueryProviderBase {
     SNode quotedNode_5 = null;
     SNode quotedNode_6 = null;
     SNode quotedNode_7 = null;
-    SNode quotedNode_8 = null;
-    SNode quotedNode_9 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, "jetbrains.mps.kotlin"), 0x40b4c3a5339a6979L, "FunctionCallExpression"));
     quotedNode_3 = nb.getResult();
     nb.setReference(MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af43fL, 0x1ba36e493d8ad4e9L, "function"), "b50d89c0-0fb9-4105-b652-222148c26a9b/kotlin:kotlin(jetbrains.mps.kotlin.stdlib/)/~.with<2>%280,Function1<0,1>%29");
@@ -246,12 +244,6 @@ public class QueriesGenerated extends QueryProviderBase {
     if (quotedNode_7 != null) {
       quotedNode_5.addChild(MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b8869eeL, 0x123d0b402b8869f1L, "statements"), SNodeOperations.copyIfNecessary(quotedNode_7));
     }
-    SNodeBuilder nb3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, "jetbrains.mps.kotlin"), 0x28bef6d7551af598L, "ThisExpression"));
-    quotedNode_8 = nb3.getResult();
-    quotedNode_5.addChild(MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af517L, 0x37f51ee20f70b404L, "_itTypeHolder_hack"), quotedNode_8);
-    SNodeBuilder nb4 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, "jetbrains.mps.kotlin"), 0x28bef6d7551af598L, "ThisExpression"));
-    quotedNode_9 = nb4.getResult();
-    quotedNode_5.addChild(MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af517L, 0x37f51ee20f709e5fL, "_thisTypeHolder_hack"), quotedNode_9);
     quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6186632f85a74c27L, 0x28bef6d7551af77dL, "lambda"), quotedNode_5);
     return quotedNode_3;
   }
@@ -261,8 +253,6 @@ public class QueriesGenerated extends QueryProviderBase {
     SNode quotedNode_5 = null;
     SNode quotedNode_6 = null;
     SNode quotedNode_7 = null;
-    SNode quotedNode_8 = null;
-    SNode quotedNode_9 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, "jetbrains.mps.kotlin"), 0x40b4c3a5339a6979L, "FunctionCallExpression"));
     quotedNode_3 = nb.getResult();
     nb.setReference(MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af43fL, 0x1ba36e493d8ad4e9L, "function"), "b50d89c0-0fb9-4105-b652-222148c26a9b/kotlin:kotlin(jetbrains.mps.kotlin.stdlib/)/~.with<2>%280,Function1<0,1>%29");
@@ -279,12 +269,6 @@ public class QueriesGenerated extends QueryProviderBase {
     if (quotedNode_7 != null) {
       quotedNode_5.addChild(MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b8869eeL, 0x123d0b402b8869f1L, "statements"), SNodeOperations.copyIfNecessary(quotedNode_7));
     }
-    SNodeBuilder nb3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, "jetbrains.mps.kotlin"), 0x28bef6d7551af598L, "ThisExpression"));
-    quotedNode_8 = nb3.getResult();
-    quotedNode_5.addChild(MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af517L, 0x37f51ee20f70b404L, "_itTypeHolder_hack"), quotedNode_8);
-    SNodeBuilder nb4 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, "jetbrains.mps.kotlin"), 0x28bef6d7551af598L, "ThisExpression"));
-    quotedNode_9 = nb4.getResult();
-    quotedNode_5.addChild(MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af517L, 0x37f51ee20f709e5fL, "_thisTypeHolder_hack"), quotedNode_9);
     quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6186632f85a74c27L, 0x28bef6d7551af77dL, "lambda"), quotedNode_5);
     return quotedNode_3;
   }

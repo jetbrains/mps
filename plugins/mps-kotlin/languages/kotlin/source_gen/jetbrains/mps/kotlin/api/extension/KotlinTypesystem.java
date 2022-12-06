@@ -35,11 +35,14 @@ public interface KotlinTypesystem {
   List<SourcedSignature> filterReceiverTypes(SNode receiverType, Iterable<? extends Iterable<SourcedSignature>> entries, SNode contextNode);
 
   /**
-   * Return an intermediate computation of the typesystem on the given node.
    * 
-   * Can be used to retrieve, for instance, type of "it" of a lambda literal.
+   * 
+   * @deprecated replaced by TypeAdditionalData mechanism
    */
-  SNode getIntermediateType(SNode target, @NotNull Object key);
+  @Deprecated(since = "2022.3")
+  default SNode getIntermediateType(SNode target, @NotNull Object key) {
+    return null;
+  }
 
   /**
    * Returns whether that typesystem is currently available.

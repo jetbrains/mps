@@ -51,7 +51,7 @@ public class PropertyMemberTarget_Constraints extends BaseConstraintsDescriptor 
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             // Compute type in isolation, otherwise type may be null
-            SNode type = new InferredTypeReference(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.MemberNavigationOperation$7I, true, false), LINKS.operand$YS5t), null).compute();
+            SNode type = new InferredTypeReference(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.MemberNavigationOperation$7I, true, false), LINKS.operand$YS5t)).compute();
 
             SignatureFilter<PropertySignature> filter = new SignatureFilter<PropertySignature>(PropertySignature.class);
 

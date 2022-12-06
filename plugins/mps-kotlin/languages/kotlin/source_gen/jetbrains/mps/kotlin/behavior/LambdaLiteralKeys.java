@@ -4,6 +4,6 @@ package jetbrains.mps.kotlin.behavior;
 
 
 public class LambdaLiteralKeys {
-  public static final Object IT_TYPE = "it";
-  public static final Object THIS_TYPE = "this";
+  public static final String IT_TYPE = "it";
+  public static final String THIS_TYPE = "this";
 }

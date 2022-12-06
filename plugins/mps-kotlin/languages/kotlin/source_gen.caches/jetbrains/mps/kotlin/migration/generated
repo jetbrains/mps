@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-5fb25o9huy8atp8yftv3wb55ctjso4i">
-  <files names="DeconstructingVariables.java:FunctionInheritance.java:LambdaLiteralStructure.java:LongAndUnsignedAsLiteral.java:MigrateReceiverTypes.java:Migrate_MovePropertyUp_4.java:MigrationDescriptor.java:MoveControlStructureStatements.java:RemoveLocalPropertyTypeParameters.java:StringLiteralNewStructure.java" />
+<product version="3" modelHash="2n07yav1y947112avfkuf96qoj9k21">
+  <files names="ClearLambdaLiteralHack.java:DeconstructingVariables.java:FunctionInheritance.java:LambdaLiteralStructure.java:LongAndUnsignedAsLiteral.java:MigrateReceiverTypes.java:Migrate_MovePropertyUp_4.java:MigrationDescriptor.java:MoveControlStructureStatements.java:RemoveLocalPropertyTypeParameters.java:StringLiteralNewStructure.java" />
 </product>
 
