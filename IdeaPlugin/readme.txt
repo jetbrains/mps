@@ -117,7 +117,7 @@ How to develop MPS plugin for IntelliJ IDEA
       suggests you should use -Dcompiler.process.debug.port=, but it doesn't work
     - Another useful tip to debug JPS build process is to set JUL log levels in "build-log-jul.properties" file located
       next to "build.log" (which is quite useful itself, regardless of extra log details). For macOS, it's located
-      under ~/Library/Logs/JetBrains/IdeaIC2022.2/build-log/ folder (next to idea.log. Use Show Log in Finder action to
+      under ~/Library/Logs/JetBrains/IdeaIC2022.3/build-log/ folder (next to idea.log. Use Show Log in Finder action to
       navigate quickly)
 
 4. Project structure

@@ -2031,7 +2031,7 @@
       <property role="TrG5h" value="version.major" />
       <node concept="aVJcg" id="3AMbuf1a7Oc" role="aVJcv">
         <node concept="NbPM2" id="3AMbuf1a7Od" role="aVJcq">
-          <node concept="3Mxwew" id="3AMbuf1a7Oe" role="3MwsjC">
+          <node concept="3Mxwew" id="4$Jpg3da3F_" role="3MwsjC">
             <property role="3MwjfP" value="2022" />
           </node>
         </node>
@@ -2042,7 +2042,7 @@
       <node concept="aVJcg" id="3AMbuf1a7Og" role="aVJcv">
         <node concept="NbPM2" id="3AMbuf1a7Oh" role="aVJcq">
           <node concept="3Mxwew" id="3AMbuf1a7Oi" role="3MwsjC">
-            <property role="3MwjfP" value="2" />
+            <property role="3MwjfP" value="3" />
           </node>
         </node>
       </node>
@@ -2056,7 +2056,11 @@
     <node concept="2kB4xC" id="3AMbuf1a7On" role="1l3spd">
       <property role="TrG5h" value="version.eap" />
       <node concept="aVJcg" id="3AMbuf1a7Oo" role="aVJcv">
-        <node concept="NbPM2" id="3AMbuf1a7Op" role="aVJcq" />
+        <node concept="NbPM2" id="3AMbuf1a7Op" role="aVJcq">
+          <node concept="3Mxwew" id="4$Jpg3da3Lt" role="3MwsjC">
+            <property role="3MwjfP" value=" EAP" />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="2kB4xC" id="5HVSRHdVf2d" role="1l3spd">
@@ -28006,7 +28010,7 @@
         </node>
         <node concept="NbPM2" id="6Iq8148f_YW" role="HFWMp">
           <node concept="3Mxwew" id="2$8uTVzLlTJ" role="3MwsjC">
-            <property role="3MwjfP" value="MPS222" />
+            <property role="3MwjfP" value="MPS223EAP" />
           </node>
         </node>
       </node>
@@ -28089,7 +28093,11 @@
             <ref role="3Mxwex" node="3AMbuf1N5Oy" resolve="version.bugfixNr" />
           </node>
         </node>
-        <node concept="NbPM2" id="3AMbuf6qfk7" role="3ZAF11" />
+        <node concept="NbPM2" id="3AMbuf6qfk7" role="3ZAF11">
+          <node concept="3Mxwey" id="4$Jpg3da3Op" role="3MwsjC">
+            <ref role="3Mxwex" node="3AMbuf1a7On" resolve="version.eap" />
+          </node>
+        </node>
       </node>
       <node concept="2pNNFK" id="4Nc8eEDY$eW" role="27hc03">
         <property role="2pNNFO" value="youtrack" />
@@ -51213,8 +51221,8 @@
       <property role="2_Ic$$" value="true" />
       <property role="2_Ic$B" value="true" />
       <property role="2_GNG2" value="1024" />
-      <property role="TZNOO" value="11" />
       <property role="3fwGa$" value="IntelliJ" />
+      <property role="TZNOO" value="11" />
       <node concept="3qWCbU" id="1fy59xXoadn" role="2_Ic$A">
         <property role="3qWCbO" value="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
       </node>
