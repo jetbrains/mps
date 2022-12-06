@@ -2,7 +2,7 @@
 <model ref="r:e6b7d8c4-184e-4875-a204-ccde4dbdedab(jetbrains.mps.kotlin.fileGenerator.templates@generator)">
   <persistence version="9" />
   <languages>
-    <use id="6b3888c1-9802-44d8-8baf-f8e6c33ed689" name="jetbrains.mps.kotlin" version="9" />
+    <use id="6b3888c1-9802-44d8-8baf-f8e6c33ed689" name="jetbrains.mps.kotlin" version="10" />
     <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="4" />
     <devkit ref="a2eb3a43-fcc2-4200-80dc-c60110c4862d(jetbrains.mps.devkit.templates)" />
   </languages>

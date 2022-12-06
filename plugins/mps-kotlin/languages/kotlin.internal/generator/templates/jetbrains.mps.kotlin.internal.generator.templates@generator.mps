@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="4" />
-    <use id="6b3888c1-9802-44d8-8baf-f8e6c33ed689" name="jetbrains.mps.kotlin" version="9" />
+    <use id="6b3888c1-9802-44d8-8baf-f8e6c33ed689" name="jetbrains.mps.kotlin" version="10" />
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
     <devkit ref="a2eb3a43-fcc2-4200-80dc-c60110c4862d(jetbrains.mps.devkit.templates)" />
   </languages>
@@ -144,14 +144,10 @@
       <concept id="2936055411798373439" name="jetbrains.mps.kotlin.structure.AbstractFunctionCall" flags="ng" index="1XD0bC">
         <reference id="1991556721072067817" name="function" index="AarEw" />
       </concept>
-      <concept id="2936055411798373784" name="jetbrains.mps.kotlin.structure.ThisExpression" flags="ng" index="1XD0df" />
       <concept id="2936055411798373753" name="jetbrains.mps.kotlin.structure.ValueArgument" flags="ng" index="1XD0eI">
         <child id="2936055411798374692" name="expression" index="1XD0ZN" />
       </concept>
-      <concept id="2936055411798373655" name="jetbrains.mps.kotlin.structure.LambdaLiteral" flags="ng" index="1XD0f0">
-        <child id="4032162997650628191" name="_thisTypeHolder_hack" index="Sxo2X" />
-        <child id="4032162997650633732" name="_itTypeHolder_hack" index="SxqFA" />
-      </concept>
+      <concept id="2936055411798373655" name="jetbrains.mps.kotlin.structure.LambdaLiteral" flags="ng" index="1XD0f0" />
       <concept id="2936055411798373333" name="jetbrains.mps.kotlin.structure.NullLiteral" flags="ng" index="1XD0k2" />
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
@@ -698,8 +694,6 @@
                                     </node>
                                   </node>
                                 </node>
-                                <node concept="1XD0df" id="3vP7I8fEROy" role="SxqFA" />
-                                <node concept="1XD0df" id="3vP7I8fEROz" role="Sxo2X" />
                               </node>
                             </node>
                           </node>
@@ -820,8 +814,6 @@
                                     </node>
                                   </node>
                                 </node>
-                                <node concept="1XD0df" id="3vP7I8fERO$" role="SxqFA" />
-                                <node concept="1XD0df" id="3vP7I8fERO_" role="Sxo2X" />
                               </node>
                             </node>
                           </node>

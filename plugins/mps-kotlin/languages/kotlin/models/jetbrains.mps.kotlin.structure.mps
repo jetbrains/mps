@@ -35,11 +35,22 @@
       <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
         <property id="7862711839422615217" name="text" index="t5JxN" />
       </concept>
+      <concept id="6054523464626862044" name="jetbrains.mps.lang.structure.structure.AttributeInfo_IsMultiple" flags="ng" index="tn0Fv">
+        <property id="6054523464626875854" name="value" index="tnX3d" />
+      </concept>
+      <concept id="6054523464627964745" name="jetbrains.mps.lang.structure.structure.AttributeInfo_AttributedConcept" flags="ng" index="trNpa">
+        <reference id="6054523464627965081" name="concept" index="trN6q" />
+      </concept>
       <concept id="1082978164218" name="jetbrains.mps.lang.structure.structure.DataTypeDeclaration" flags="ng" index="AxPO6">
         <property id="7791109065626895363" name="datatypeId" index="3F6X1D" />
       </concept>
       <concept id="1082978499127" name="jetbrains.mps.lang.structure.structure.ConstrainedDataTypeDeclaration" flags="ng" index="Az7Fb">
         <property id="1083066089218" name="constraint" index="FLfZY" />
+      </concept>
+      <concept id="2992811758677295509" name="jetbrains.mps.lang.structure.structure.AttributeInfo" flags="ng" index="M6xJ_">
+        <property id="7588428831955550663" name="role" index="Hh88m" />
+        <child id="7588428831947959310" name="attributed" index="EQaZv" />
+        <child id="7588428831955550186" name="multiple" index="HhnKV" />
       </concept>
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
@@ -1699,6 +1710,13 @@
     <property role="R4oN_" value="lambda literal" />
     <property role="3GE5qa" value="expression.function" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="1502Vug_h7F" role="1TKVEi">
+      <property role="IQ2ns" value="1243006380186866155" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="parameters" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" node="2yYXHtl6JhT" resolve="ILambdaParameter" />
+    </node>
     <node concept="1TJgyj" id="2yYXHtl6Jxt" role="1TKVEi">
       <property role="IQ2ns" value="2936055411798374493" />
       <property role="20kJfa" value="_statements" />
@@ -1709,31 +1727,24 @@
         <property role="YLPcu" value="2022.2" />
       </node>
     </node>
-    <node concept="1TJgyj" id="1502Vug_h7F" role="1TKVEi">
-      <property role="IQ2ns" value="1243006380186866155" />
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="parameters" />
-      <property role="20lbJX" value="fLJekj5/_0__n" />
-      <ref role="20lvS9" node="2yYXHtl6JhT" resolve="ILambdaParameter" />
-    </node>
     <node concept="1TJgyj" id="3vP7I8fs9Tv" role="1TKVEi">
       <property role="IQ2ns" value="4032162997650628191" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="_thisTypeHolder_hack" />
-      <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" node="2yYXHtl6Jmo" resolve="ThisExpression" />
-      <node concept="t5JxF" id="3vP7I8fsa3K" role="lGtFl">
-        <property role="t5JxN" value="this is a typesystem speedup hack, do not use (ThisExp used as no mandatory children)" />
+      <node concept="asaX9" id="1ZM$$Kz7k1D" role="lGtFl">
+        <property role="YLPcu" value="2022.3" />
+        <property role="YLQ7P" value="replaced by TypeAdditionalData mechanism" />
       </node>
     </node>
     <node concept="1TJgyj" id="3vP7I8fsbg4" role="1TKVEi">
       <property role="IQ2ns" value="4032162997650633732" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="_itTypeHolder_hack" />
-      <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" node="2yYXHtl6Jmo" resolve="ThisExpression" />
-      <node concept="t5JxF" id="3vP7I8fsbq9" role="lGtFl">
-        <property role="t5JxN" value="this is a typesystem speedup hack, do not use (ThisExp used as no mandatory children)" />
+      <node concept="asaX9" id="1ZM$$Kz7k1L" role="lGtFl">
+        <property role="YLPcu" value="2022.3" />
+        <property role="YLQ7P" value="replaced by TypeAdditionalData mechanism" />
       </node>
     </node>
     <node concept="PrWs8" id="1xjvXvOm33x" role="PzmwI">
@@ -4336,6 +4347,32 @@
     </node>
     <node concept="PrWs8" id="58ySuOXQ$EN" role="PrDN$">
       <ref role="PrY4T" node="7DyvjiA1ZY9" resolve="ISignatureScopeProvider" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="1ZM$$KyRxib">
+    <property role="EcuMT" value="2302063215239894155" />
+    <property role="3GE5qa" value="type" />
+    <property role="TrG5h" value="TypeAdditionalData" />
+    <ref role="1TJDcQ" to="tpck:2ULFgo8_XDk" resolve="NodeAttribute" />
+    <node concept="M6xJ_" id="1ZM$$KyRxic" role="lGtFl">
+      <property role="Hh88m" value="additionalData" />
+      <node concept="trNpa" id="1ZM$$KyRxif" role="EQaZv">
+        <ref role="trN6q" node="2yYXHtl6Jh1" resolve="IType" />
+      </node>
+      <node concept="tn0Fv" id="1ZM$$KyRxil" role="HhnKV">
+        <property role="tnX3d" value="true" />
+      </node>
+    </node>
+    <node concept="1TJgyi" id="1ZM$$KyRxio" role="1TKVEl">
+      <property role="IQ2nx" value="2302063215239894168" />
+      <property role="TrG5h" value="name" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="1TJgyj" id="1ZM$$KyRxir" role="1TKVEi">
+      <property role="IQ2ns" value="2302063215239894171" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="data" />
+      <ref role="20lvS9" to="tpck:gw2VY9q" resolve="BaseConcept" />
     </node>
   </node>
 </model>

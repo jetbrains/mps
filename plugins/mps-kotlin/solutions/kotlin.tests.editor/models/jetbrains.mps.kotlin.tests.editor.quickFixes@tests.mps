@@ -4,7 +4,7 @@
   <languages>
     <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="6" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
-    <use id="6b3888c1-9802-44d8-8baf-f8e6c33ed689" name="jetbrains.mps.kotlin" version="9" />
+    <use id="6b3888c1-9802-44d8-8baf-f8e6c33ed689" name="jetbrains.mps.kotlin" version="10" />
   </languages>
   <imports>
     <import index="lrl3" ref="r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)" />
@@ -104,15 +104,11 @@
       <concept id="2936055411798373439" name="jetbrains.mps.kotlin.structure.AbstractFunctionCall" flags="ng" index="1XD0bC">
         <reference id="1991556721072067817" name="function" index="AarEw" />
       </concept>
-      <concept id="2936055411798373784" name="jetbrains.mps.kotlin.structure.ThisExpression" flags="ng" index="1XD0df" />
       <concept id="2936055411798373745" name="jetbrains.mps.kotlin.structure.VariableDeclaration" flags="ng" index="1XD0eA" />
       <concept id="2936055411798373753" name="jetbrains.mps.kotlin.structure.ValueArgument" flags="ng" index="1XD0eI">
         <child id="2936055411798374692" name="expression" index="1XD0ZN" />
       </concept>
-      <concept id="2936055411798373655" name="jetbrains.mps.kotlin.structure.LambdaLiteral" flags="ng" index="1XD0f0">
-        <child id="4032162997650628191" name="_thisTypeHolder_hack" index="Sxo2X" />
-        <child id="4032162997650633732" name="_itTypeHolder_hack" index="SxqFA" />
-      </concept>
+      <concept id="2936055411798373655" name="jetbrains.mps.kotlin.structure.LambdaLiteral" flags="ng" index="1XD0f0" />
       <concept id="2936055411798373673" name="jetbrains.mps.kotlin.structure.KotlinFile" flags="ng" index="1XD0fY">
         <child id="2936055411798374537" name="declarations" index="1XD0Tu" />
       </concept>
@@ -402,8 +398,6 @@
             </node>
             <node concept="1XD0eI" id="7ZVfWV5hIwz" role="TWiod">
               <node concept="1XD0f0" id="7ZVfWV5hIBV" role="1XD0ZN">
-                <node concept="1XD0df" id="7ZVfWV5hIBW" role="Sxo2X" />
-                <node concept="1XD0df" id="7ZVfWV5hIBX" role="SxqFA" />
                 <node concept="7CXmI" id="7ZVfWV5hV1U" role="lGtFl">
                   <node concept="29bkU" id="7ZVfWV5hV1V" role="7EUXB">
                     <node concept="2PQEqo" id="7ZVfWV5hV24" role="3lydCh">
@@ -438,10 +432,7 @@
                 <property role="1XD01k" value="3" />
               </node>
             </node>
-            <node concept="1XD0f0" id="7ZVfWV5hJ00" role="1XD06E">
-              <node concept="1XD0df" id="7ZVfWV5hJ01" role="Sxo2X" />
-              <node concept="1XD0df" id="7ZVfWV5hJ02" role="SxqFA" />
-            </node>
+            <node concept="1XD0f0" id="7ZVfWV5hJ00" role="1XD06E" />
           </node>
           <node concept="1XD08$" id="7ZVfWV5hIXE" role="ICcUN" />
           <node concept="1XD0l2" id="7ZVfWV5hIXF" role="2BPcuh" />

@@ -24,13 +24,26 @@
       </concept>
     </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="2323553266850475941" name="jetbrains.mps.baseLanguage.structure.IHasModifiers" flags="ng" index="2frcj7">
+        <child id="2323553266850475953" name="modifiers" index="2frcjj" />
+      </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
+        <child id="1188214630783" name="value" index="2B76xF" />
       </concept>
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
+      <concept id="1188214545140" name="jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue" flags="ng" index="2B6LJw">
+        <reference id="1188214555875" name="key" index="2B6OnR" />
+        <child id="1188214607812" name="value" index="2B70Vg" />
+      </concept>
+      <concept id="4678410916365116210" name="jetbrains.mps.baseLanguage.structure.DefaultModifier" flags="ng" index="2JFqV2" />
+      <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
+        <property id="1070475926801" name="value" index="Xl_RC" />
+      </concept>
+      <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
       <concept id="1068498886292" name="jetbrains.mps.baseLanguage.structure.ParameterDeclaration" flags="ir" index="37vLTG" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
@@ -42,7 +55,12 @@
         <child id="1068580123135" name="body" index="3clF47" />
       </concept>
       <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_" />
-      <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS" />
+      <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
+        <child id="1068580123156" name="expression" index="3clFbG" />
+      </concept>
+      <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
+        <child id="1068581517665" name="statement" index="3cqZAp" />
+      </concept>
       <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
         <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
       </concept>
@@ -74,6 +92,9 @@
       </concept>
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
         <child id="8970989240999019149" name="part" index="1dT_Ay" />
+      </concept>
+      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
+        <child id="2667874559098216723" name="text" index="3HnX3l" />
       </concept>
       <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
         <property id="8970989240999019144" name="text" index="1dT_AB" />
@@ -241,23 +262,34 @@
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
       </node>
-      <node concept="3clFbS" id="5g3vQLJReI$" role="3clF47" />
+      <node concept="3clFbS" id="5g3vQLJReI$" role="3clF47">
+        <node concept="3clFbF" id="1ZM$$KyYh$7" role="3cqZAp">
+          <node concept="10Nm6u" id="1ZM$$KyYh$6" role="3clFbG" />
+        </node>
+      </node>
       <node concept="3Tm1VV" id="5g3vQLJReI_" role="1B3o_S" />
       <node concept="3Tqbb2" id="5g3vQLJReIA" role="3clF45" />
       <node concept="P$JXv" id="5g3vQLJRePz" role="lGtFl">
         <node concept="TZ5HA" id="5g3vQLJReP$" role="TZ5H$">
           <node concept="1dT_AC" id="5g3vQLJReP_" role="1dT_Ay">
-            <property role="1dT_AB" value="Return an intermediate computation of the typesystem on the given node." />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="5g3vQLJRrJz" role="TZ5H$">
-          <node concept="1dT_AC" id="5g3vQLJRrJ$" role="1dT_Ay">
             <property role="1dT_AB" value="" />
           </node>
         </node>
-        <node concept="TZ5HA" id="5g3vQLJRrJ_" role="TZ5H$">
-          <node concept="1dT_AC" id="5g3vQLJRrJA" role="1dT_Ay">
-            <property role="1dT_AB" value="Can be used to retrieve, for instance, type of &quot;it&quot; of a lambda literal." />
+        <node concept="TZ5HI" id="1ZM$$KyYgX$" role="3nqlJM">
+          <node concept="TZ5HA" id="1ZM$$KyYgX_" role="3HnX3l">
+            <node concept="1dT_AC" id="1ZM$$KyYhFr" role="1dT_Ay">
+              <property role="1dT_AB" value="replaced by TypeAdditionalData mechanism" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2JFqV2" id="1ZM$$KyYgVz" role="2frcjj" />
+      <node concept="2AHcQZ" id="1ZM$$KyYgXA" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+        <node concept="2B6LJw" id="1ZM$$KyYgZW" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+          <node concept="Xl_RD" id="1ZM$$KyYhvS" role="2B70Vg">
+            <property role="Xl_RC" value="2022.3" />
           </node>
         </node>
       </node>

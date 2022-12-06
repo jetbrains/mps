@@ -1877,7 +1877,7 @@
                   <ref role="1YBMHb" node="gpKvTmWIvl" resolve="node" />
                 </node>
                 <node concept="3Cnw8n" id="3PMETvlEOeM" role="1urrFz">
-                  <ref role="QpYPw" node="3PMETvlDGff" resolve="declareKotlincHome" />
+                  <ref role="QpYPw" node="3PMETvlDGff" resolve="declareKotlincHomeFromMpsHome" />
                   <node concept="3CnSsL" id="3PMETvlEOk4" role="3Coj4f">
                     <ref role="QkamJ" node="3PMETvlDGg2" resolve="project" />
                     <node concept="37vLTw" id="3PMETvlEOl7" role="3CoRuB">
@@ -2160,8 +2160,8 @@
                           </node>
                         </node>
                         <node concept="10M0yZ" id="4GRwYtG3rHu" role="3uHU7w">
-                          <ref role="1PxDUh" node="3PMETvlDJXO" />
-                          <ref role="3cqZAo" node="3PMETvlDYx_" />
+                          <ref role="1PxDUh" node="3PMETvlDJXO" resolve="KotlincMacroHelper" />
+                          <ref role="3cqZAo" node="3PMETvlDYx_" resolve="MPS_HOME" />
                         </node>
                       </node>
                     </node>

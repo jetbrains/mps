@@ -167,6 +167,7 @@
         <reference id="1078939183255" name="editorComponent" index="PMmxG" />
       </concept>
       <concept id="4323500428121233431" name="jetbrains.mps.lang.editor.structure.EditorCellId" flags="ng" index="2SqB2G" />
+      <concept id="1149850725784" name="jetbrains.mps.lang.editor.structure.CellModel_AttributedNodeCell" flags="ng" index="2SsqMj" />
       <concept id="4323500428136740385" name="jetbrains.mps.lang.editor.structure.CellIdReferenceSelector" flags="ng" index="2TlHUq">
         <reference id="4323500428136742952" name="id" index="2TlMyj" />
       </concept>
@@ -20519,6 +20520,44 @@
           </node>
         </node>
       </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="1ZM$$KyRxiu">
+    <property role="3GE5qa" value="type" />
+    <ref role="1XX52x" to="hcm8:1ZM$$KyRxib" resolve="TypeAdditionalData" />
+    <node concept="3EZMnI" id="1ZM$$KzVPGf" role="2wV5jI">
+      <node concept="l2Vlx" id="1ZM$$KzVPGg" role="2iSdaV" />
+      <node concept="3F0ifn" id="1ZM$$KzVPGP" role="3EZMnx">
+        <property role="3F0ifm" value="[" />
+        <node concept="11LMrY" id="1ZM$$KzVPJ5" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3F0A7n" id="1ZM$$KzVPHg" role="3EZMnx">
+        <ref role="1NtTu8" to="hcm8:1ZM$$KyRxio" resolve="name" />
+      </node>
+      <node concept="3F0ifn" id="1ZM$$KzVPHL" role="3EZMnx">
+        <property role="3F0ifm" value=":" />
+        <node concept="11L4FC" id="1ZM$$KzVPJ8" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3F1sOY" id="1ZM$$KzVPIo" role="3EZMnx">
+        <ref role="1NtTu8" to="hcm8:1ZM$$KyRxir" resolve="data" />
+        <node concept="11L4FC" id="1ZM$$KzVPJb" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3F0ifn" id="1ZM$$KzVPIP" role="3EZMnx">
+        <property role="3F0ifm" value="]" />
+        <node concept="ljvvj" id="1ZM$$KzVPKN" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="11L4FC" id="1ZM$$K$0TJY" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="2SsqMj" id="1ZM$$KyRxiw" role="3EZMnx" />
     </node>
   </node>
 </model>

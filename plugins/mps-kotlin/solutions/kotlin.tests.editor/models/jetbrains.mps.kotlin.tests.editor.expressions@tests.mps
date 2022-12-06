@@ -4,7 +4,7 @@
   <languages>
     <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="6" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
-    <use id="6b3888c1-9802-44d8-8baf-f8e6c33ed689" name="jetbrains.mps.kotlin" version="9" />
+    <use id="6b3888c1-9802-44d8-8baf-f8e6c33ed689" name="jetbrains.mps.kotlin" version="10" />
   </languages>
   <imports>
     <import index="ekwn" ref="r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)" />
@@ -105,7 +105,6 @@
       <concept id="2936055411798373439" name="jetbrains.mps.kotlin.structure.AbstractFunctionCall" flags="ng" index="1XD0bC">
         <reference id="1991556721072067817" name="function" index="AarEw" />
       </concept>
-      <concept id="2936055411798373784" name="jetbrains.mps.kotlin.structure.ThisExpression" flags="ng" index="1XD0df" />
       <concept id="2936055411798373718" name="jetbrains.mps.kotlin.structure.IndexOperation" flags="ng" index="1XD0e1">
         <child id="2936055411798374627" name="indexes" index="1XD0SO" />
       </concept>
@@ -113,10 +112,7 @@
       <concept id="2936055411798373753" name="jetbrains.mps.kotlin.structure.ValueArgument" flags="ng" index="1XD0eI">
         <child id="2936055411798374692" name="expression" index="1XD0ZN" />
       </concept>
-      <concept id="2936055411798373655" name="jetbrains.mps.kotlin.structure.LambdaLiteral" flags="ng" index="1XD0f0">
-        <child id="4032162997650628191" name="_thisTypeHolder_hack" index="Sxo2X" />
-        <child id="4032162997650633732" name="_itTypeHolder_hack" index="SxqFA" />
-      </concept>
+      <concept id="2936055411798373655" name="jetbrains.mps.kotlin.structure.LambdaLiteral" flags="ng" index="1XD0f0" />
       <concept id="2936055411798373673" name="jetbrains.mps.kotlin.structure.KotlinFile" flags="ng" index="1XD0fY">
         <child id="2936055411798374537" name="declarations" index="1XD0Tu" />
       </concept>
@@ -377,10 +373,7 @@
         <property role="TrG5h" value="myScript" />
         <node concept="1NbEFs" id="46$mt2VxGsP" role="THmaL">
           <ref role="AarEw" to="0:~.with&lt;2&gt;(0,Function1&lt;0,1&gt;)" resolve="with" />
-          <node concept="1XD0f0" id="46$mt2VxO7P" role="1XD06E">
-            <node concept="1XD0df" id="46$mt2VxO7T" role="Sxo2X" />
-            <node concept="1XD0df" id="46$mt2VxO7X" role="SxqFA" />
-          </node>
+          <node concept="1XD0f0" id="46$mt2VxO7P" role="1XD06E" />
           <node concept="1XD0eI" id="46$mt2VxV7X" role="TWiod">
             <node concept="1XD0k7" id="46$mt2Vy8eC" role="1XD0ZN">
               <property role="1XD01k" value="3" />
