@@ -523,94 +523,100 @@
   </root>
   <root nodeRef="r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)/4477049948824855836">
     <file name="BaseVersionEditorComponent.java">
-      <node id="1455391539105549287" at="36,0,37,0" concept="6" trace="myScrollPane" />
       <node id="4094963192772816122" at="37,0,38,0" concept="6" trace="myBaseModel" />
-      <node id="4477049948824882325" at="38,92,39,22" concept="17" />
-      <node id="2314086701969702452" at="39,22,40,64" concept="11" />
-      <node id="2271979597974262423" at="41,38,42,142" concept="5" />
-      <node id="2034046503373004204" at="42,142,43,62" concept="5" />
-      <node id="3407638002087261679" at="44,7,45,73" concept="11" />
-      <node id="4477049948824882349" at="46,37,47,113" concept="11" />
-      <node id="4477049948824882381" at="47,113,48,26" concept="5" />
-      <node id="8064780802314627211" at="48,26,49,0" concept="14" />
-      <node id="8064780802314657931" at="49,0,50,69" concept="5" />
-      <node id="1455391539105552170" at="50,69,51,0" concept="14" />
-      <node id="3407638002087242026" at="53,72,54,121" concept="12" />
-      <node id="3407638002087261688" at="58,53,59,62" concept="12" />
-      <node id="3407638002087261698" at="62,51,63,28" concept="12" />
-      <node id="5636214660746192540" at="66,7,67,22" concept="11" />
-      <node id="5636214660746323895" at="70,46,71,42" concept="5" />
-      <node id="3407638002087261790" at="74,5,75,120" concept="11" />
-      <node id="8064780802314657979" at="75,120,76,20" concept="5" />
-      <node id="8064780802314657992" at="76,20,77,24" concept="5" />
-      <node id="8064780802314658010" at="77,24,78,25" concept="5" />
-      <node id="1455391539105552169" at="78,25,79,0" concept="14" />
-      <node id="1455391539105549293" at="79,0,80,119" concept="5" />
-      <node id="6648410850421135431" at="80,119,81,72" concept="5" />
-      <node id="3407638002087261840" at="81,72,82,54" concept="5" />
-      <node id="3407638002087261854" at="82,54,83,71" concept="5" />
-      <node id="4652592318748338330" at="87,39,88,76" concept="12" />
-      <node id="2447707787974342096" at="92,25,93,102" concept="5" />
-      <node id="4094963192767770225" at="93,102,94,20" concept="5" />
-      <node id="1455391539105552182" at="96,38,97,24" concept="12" />
-      <node id="3407638002087242024" at="53,0,56,0" concept="10" trace="translate#(Ljetbrains/mps/vcs/diff/changes/ModelChange;)Ljava/lang/Iterable;" />
-      <node id="3407638002087261686" at="58,0,61,0" concept="10" trace="select#(Ljetbrains/mps/vcs/diff/ui/common/ChangeEditorMessage;)Ljetbrains/mps/vcs/diff/ui/common/Bounds;" />
-      <node id="3407638002087261696" at="62,0,65,0" concept="10" trace="combine#(Ljetbrains/mps/vcs/diff/ui/common/Bounds;Ljetbrains/mps/vcs/diff/ui/common/Bounds;)Ljetbrains/mps/vcs/diff/ui/common/Bounds;" />
-      <node id="5636214660746265657" at="69,191,72,9" concept="9" />
-      <node id="1455391539105552178" at="96,0,99,0" concept="10" trace="getScrollPane#()Ljavax/swing/JScrollPane;" />
-      <node id="2034046503373004198" at="40,64,44,7" concept="5" />
-      <node id="4797632853758763275" at="86,0,90,0" concept="10" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="3407638002087242015" at="51,0,56,9" concept="11" />
-      <node id="6786798249452836519" at="68,149,73,7" concept="9" />
-      <node id="4094963192767770218" at="91,0,96,0" concept="10" trace="dispose#()V" />
-      <node id="6786798249452830906" at="67,22,74,5" concept="7" />
-      <node id="1938777393655722334" at="56,9,65,9" concept="5" />
-      <node id="2447707787974095608" at="45,73,66,7" concept="5" />
-      <node id="4477049948824882320" at="38,0,85,0" concept="3" trace="BaseVersionEditorComponent#(Lorg/jetbrains/mps/openapi/module/SRepository;Ljetbrains/mps/vcs/diff/ui/common/ChangeGroup;)V" />
-      <scope id="3407638002087242025" at="53,72,54,121" />
-      <scope id="3407638002087261687" at="58,53,59,62" />
-      <scope id="3407638002087261697" at="62,51,63,28" />
-      <scope id="5636214660746265659" at="70,46,71,42" />
-      <scope id="4797632853758763279" at="87,39,88,76" />
-      <scope id="1455391539105552181" at="96,38,97,24" />
-      <scope id="2034046503373004203" at="41,38,43,62" />
-      <scope id="4094963192767770222" at="92,25,94,20" />
-      <scope id="3407638002087242024" at="53,0,56,0">
+      <node id="4477049948824882325" at="39,92,40,22" concept="17" />
+      <node id="2314086701969702452" at="40,22,41,64" concept="11" />
+      <node id="2271979597974262423" at="42,38,43,142" concept="5" />
+      <node id="2034046503373004204" at="43,142,44,62" concept="5" />
+      <node id="3407638002087261679" at="45,7,46,73" concept="11" />
+      <node id="4477049948824882349" at="47,37,48,113" concept="11" />
+      <node id="4477049948824882381" at="48,113,49,26" concept="5" />
+      <node id="8064780802314627211" at="49,26,50,0" concept="14" />
+      <node id="8064780802314657931" at="50,0,51,69" concept="5" />
+      <node id="1455391539105552170" at="51,69,52,0" concept="14" />
+      <node id="3407638002087242026" at="54,72,55,121" concept="12" />
+      <node id="3407638002087261688" at="59,53,60,62" concept="12" />
+      <node id="3407638002087261698" at="63,51,64,28" concept="12" />
+      <node id="5636214660746192540" at="67,7,68,22" concept="11" />
+      <node id="5636214660746323895" at="71,46,72,42" concept="5" />
+      <node id="3407638002087261790" at="75,5,76,120" concept="11" />
+      <node id="8064780802314657979" at="76,120,77,20" concept="5" />
+      <node id="8064780802314657992" at="77,20,78,24" concept="5" />
+      <node id="8064780802314658010" at="78,24,79,25" concept="5" />
+      <node id="1455391539105552169" at="79,25,80,0" concept="14" />
+      <node id="3438680630209287954" at="80,0,81,93" concept="5" />
+      <node id="3438680630209355578" at="81,93,82,97" concept="5" />
+      <node id="3438680630209524125" at="82,97,83,55" concept="13" />
+      <node id="3438680630209398459" at="83,55,84,84" concept="5" />
+      <node id="3438680630209480403" at="84,84,85,88" concept="5" />
+      <node id="3407638002087261840" at="85,88,86,57" concept="5" />
+      <node id="3407638002087261854" at="86,57,87,74" concept="5" />
+      <node id="8626282948229591153" at="92,44,93,121" concept="11" />
+      <node id="8626282948229518434" at="93,121,94,62" concept="5" />
+      <node id="8626282948229738985" at="94,62,95,14" concept="12" />
+      <node id="4652592318748338330" at="99,39,100,76" concept="12" />
+      <node id="2447707787974342096" at="104,25,105,102" concept="5" />
+      <node id="4094963192767770225" at="105,102,106,20" concept="5" />
+      <node id="3407638002087242024" at="54,0,57,0" concept="10" trace="translate#(Ljetbrains/mps/vcs/diff/changes/ModelChange;)Ljava/lang/Iterable;" />
+      <node id="3407638002087261686" at="59,0,62,0" concept="10" trace="select#(Ljetbrains/mps/vcs/diff/ui/common/ChangeEditorMessage;)Ljetbrains/mps/vcs/diff/ui/common/Bounds;" />
+      <node id="3407638002087261696" at="63,0,66,0" concept="10" trace="combine#(Ljetbrains/mps/vcs/diff/ui/common/Bounds;Ljetbrains/mps/vcs/diff/ui/common/Bounds;)Ljetbrains/mps/vcs/diff/ui/common/Bounds;" />
+      <node id="5636214660746265657" at="70,191,73,9" concept="9" />
+      <node id="2034046503373004198" at="41,64,45,7" concept="5" />
+      <node id="4797632853758763275" at="98,0,102,0" concept="10" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="3407638002087242015" at="52,0,57,9" concept="11" />
+      <node id="6786798249452836519" at="69,149,74,7" concept="9" />
+      <node id="4094963192767770218" at="103,0,108,0" concept="10" trace="dispose#()V" />
+      <node id="8626282948229518427" at="91,0,97,0" concept="10" trace="createScrollPane#()Ljavax/swing/JScrollPane;" />
+      <node id="6786798249452830906" at="68,22,75,5" concept="7" />
+      <node id="1938777393655722334" at="57,9,66,9" concept="5" />
+      <node id="2447707787974095608" at="46,73,67,7" concept="5" />
+      <node id="4477049948824882320" at="39,0,89,0" concept="3" trace="BaseVersionEditorComponent#(Lorg/jetbrains/mps/openapi/module/SRepository;Ljetbrains/mps/vcs/diff/ui/common/ChangeGroup;)V" />
+      <scope id="3407638002087242025" at="54,72,55,121" />
+      <scope id="3407638002087261687" at="59,53,60,62" />
+      <scope id="3407638002087261697" at="63,51,64,28" />
+      <scope id="5636214660746265659" at="71,46,72,42" />
+      <scope id="4797632853758763279" at="99,39,100,76" />
+      <scope id="2034046503373004203" at="42,38,44,62" />
+      <scope id="4094963192767770222" at="104,25,106,20" />
+      <scope id="3407638002087242024" at="54,0,57,0">
         <var name="ch" id="3407638002087242024" />
       </scope>
-      <scope id="3407638002087261686" at="58,0,61,0">
+      <scope id="3407638002087261686" at="59,0,62,0">
         <var name="m" id="3407638002087261686" />
       </scope>
-      <scope id="3407638002087261696" at="62,0,65,0">
+      <scope id="3407638002087261696" at="63,0,66,0">
         <var name="a" id="3407638002087261696" />
         <var name="b" id="3407638002087261696" />
       </scope>
-      <scope id="6786798249452836520" at="69,191,72,9" />
-      <scope id="1455391539105552178" at="96,0,99,0" />
-      <scope id="4797632853758763275" at="86,0,90,0" />
-      <scope id="6786798249452830907" at="68,149,73,7" />
-      <scope id="4094963192767770218" at="91,0,96,0" />
-      <scope id="6786798249452830906" at="67,22,74,5">
+      <scope id="6786798249452836520" at="70,191,73,9" />
+      <scope id="8626282948229518431" at="92,44,95,14">
+        <var name="sp" id="8626282948229591154" />
+      </scope>
+      <scope id="4797632853758763275" at="98,0,102,0" />
+      <scope id="6786798249452830907" at="69,149,74,7" />
+      <scope id="4094963192767770218" at="103,0,108,0" />
+      <scope id="8626282948229518427" at="91,0,97,0" />
+      <scope id="6786798249452830906" at="68,22,75,5">
         <var name="leafCell" id="6786798249452830911" />
       </scope>
-      <scope id="2447707787974154891" at="46,37,65,9">
+      <scope id="2447707787974154891" at="47,37,66,9">
         <var name="baseRooot" id="4477049948824882350" />
         <var name="messages" id="3407638002087242016" />
       </scope>
-      <scope id="4477049948824882324" at="38,92,83,71">
+      <scope id="4477049948824882324" at="39,92,87,74">
         <var name="modelAccess" id="2314086701969702453" />
         <var name="rightMost" id="5636214660746192543" />
         <var name="verticalBounds" id="3407638002087261680" />
         <var name="viewRect" id="3407638002087261791" />
       </scope>
-      <scope id="4477049948824882320" at="38,0,85,0">
+      <scope id="4477049948824882320" at="39,0,89,0">
         <var name="changeGroup" id="4477049948824882333" />
         <var name="repository" id="4477049948824882326" />
       </scope>
-      <unit id="3407638002087242024" at="52,109,56,7" name="jetbrains.mps.vcs.changesmanager.editor.BaseVersionEditorComponent$1" />
-      <unit id="3407638002087261686" at="57,72,61,7" name="jetbrains.mps.vcs.changesmanager.editor.BaseVersionEditorComponent$2" />
-      <unit id="3407638002087261696" at="61,24,65,7" name="jetbrains.mps.vcs.changesmanager.editor.BaseVersionEditorComponent$3" />
-      <unit id="4477049948824855836" at="34,0,100,0" name="jetbrains.mps.vcs.changesmanager.editor.BaseVersionEditorComponent" />
+      <unit id="3407638002087242024" at="53,109,57,7" name="jetbrains.mps.vcs.changesmanager.editor.BaseVersionEditorComponent$1" />
+      <unit id="3407638002087261686" at="58,72,62,7" name="jetbrains.mps.vcs.changesmanager.editor.BaseVersionEditorComponent$2" />
+      <unit id="3407638002087261696" at="62,24,66,7" name="jetbrains.mps.vcs.changesmanager.editor.BaseVersionEditorComponent$3" />
+      <unit id="4477049948824855836" at="35,0,109,0" name="jetbrains.mps.vcs.changesmanager.editor.BaseVersionEditorComponent" />
     </file>
   </root>
   <root nodeRef="r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)/6402272430682173534">

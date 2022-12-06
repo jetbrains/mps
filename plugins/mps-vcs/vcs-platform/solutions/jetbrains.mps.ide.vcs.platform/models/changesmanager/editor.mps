@@ -41,7 +41,6 @@
     <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" />
     <import index="lzb2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui(MPS.IDEA/)" />
     <import index="qkt" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.actionSystem(MPS.IDEA/)" />
-    <import index="4b2m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.messages(MPS.IDEA/)" />
     <import index="bmv6" ref="r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)" />
     <import index="z1c3" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
@@ -5195,7 +5194,7 @@
                     <ref role="3cqZAo" node="23PS3yVDzrd" resolve="myBaseEditor" />
                   </node>
                   <node concept="liA8E" id="1gM_IjhvHsX" role="2OqNvi">
-                    <ref role="37wK5l" node="1gM_IjhvHsM" resolve="getScrollPane" />
+                    <ref role="37wK5l" to="exr9:~EditorComponent.getScrollPane()" resolve="getScrollPane" />
                   </node>
                 </node>
                 <node concept="10M0yZ" id="4rBlRfyNv9w" role="37wK5m">
@@ -7474,13 +7473,6 @@
     <node concept="3uibUv" id="2Xanblty2zZ" role="EKbjA">
       <ref role="3uigEE" to="kpve:~EditorMessageOwner" resolve="EditorMessageOwner" />
     </node>
-    <node concept="312cEg" id="1gM_IjhvGJB" role="jymVt">
-      <property role="TrG5h" value="myScrollPane" />
-      <node concept="3Tm6S6" id="1gM_IjhvGJC" role="1B3o_S" />
-      <node concept="3uibUv" id="1gM_IjhvGJE" role="1tU5fm">
-        <ref role="3uigEE" to="dxuu:~JScrollPane" resolve="JScrollPane" />
-      </node>
-    </node>
     <node concept="312cEg" id="3zkePfDxuNU" role="jymVt">
       <property role="34CwA1" value="false" />
       <property role="eg7rD" value="false" />
@@ -7489,6 +7481,7 @@
       <node concept="H_c77" id="377Orl2p3DW" role="1tU5fm" />
       <node concept="3Tm6S6" id="3zkePfDxoOH" role="1B3o_S" />
     </node>
+    <node concept="2tJIrI" id="7uQHEcHfJv4" role="jymVt" />
     <node concept="3clFbW" id="3SxFjl1oOMg" role="jymVt">
       <node concept="3cqZAl" id="3SxFjl1oOMh" role="3clF45" />
       <node concept="3Tm1VV" id="3SxFjl1oOMi" role="1B3o_S" />
@@ -7987,40 +7980,90 @@
           </node>
         </node>
         <node concept="3clFbH" id="1gM_IjhvHsD" role="3cqZAp" />
-        <node concept="3clFbF" id="1gM_IjhvGJH" role="3cqZAp">
-          <node concept="37vLTI" id="1gM_IjhvGJJ" role="3clFbG">
-            <node concept="2ShNRf" id="1gM_IjhvGJM" role="37vLTx">
-              <node concept="1pGfFk" id="1gM_IjhvGJO" role="2ShVmc">
-                <ref role="37wK5l" to="dxuu:~JScrollPane.&lt;init&gt;(java.awt.Component,int,int)" resolve="JScrollPane" />
-                <node concept="Xjq3P" id="1gM_IjhvGJQ" role="37wK5m" />
-                <node concept="10M0yZ" id="1gM_IjhvGJS" role="37wK5m">
-                  <ref role="1PxDUh" to="dxuu:~JScrollPane" resolve="JScrollPane" />
-                  <ref role="3cqZAo" to="dxuu:~ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER" resolve="VERTICAL_SCROLLBAR_NEVER" />
-                </node>
-                <node concept="10M0yZ" id="1gM_IjhvGJT" role="37wK5m">
-                  <ref role="1PxDUh" to="dxuu:~JScrollPane" resolve="JScrollPane" />
-                  <ref role="3cqZAo" to="dxuu:~ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER" resolve="HORIZONTAL_SCROLLBAR_NEVER" />
-                </node>
-              </node>
+        <node concept="3clFbF" id="2YSDt1ND1si" role="3cqZAp">
+          <node concept="2OqwBi" id="2YSDt1ND3sI" role="3clFbG">
+            <node concept="1rXfSq" id="2YSDt1ND1sg" role="2Oq$k0">
+              <ref role="37wK5l" to="exr9:~EditorComponent.getScrollPane()" resolve="getScrollPane" />
             </node>
-            <node concept="37vLTw" id="2BHiRxeuogr" role="37vLTJ">
-              <ref role="3cqZAo" node="1gM_IjhvGJB" resolve="myScrollPane" />
+            <node concept="liA8E" id="2YSDt1ND5Zi" role="2OqNvi">
+              <ref role="37wK5l" to="dxuu:~JScrollPane.setVerticalScrollBarPolicy(int)" resolve="setVerticalScrollBarPolicy" />
+              <node concept="10M0yZ" id="2YSDt1NDgkA" role="37wK5m">
+                <ref role="3cqZAo" to="dxuu:~ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER" resolve="VERTICAL_SCROLLBAR_NEVER" />
+                <ref role="1PxDUh" to="dxuu:~ScrollPaneConstants" resolve="ScrollPaneConstants" />
+              </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="5L3TB6kd5x7" role="3cqZAp">
-          <node concept="2OqwBi" id="5L3TB6kd5x9" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxeufD5" role="2Oq$k0">
-              <ref role="3cqZAo" node="1gM_IjhvGJB" resolve="myScrollPane" />
+        <node concept="3clFbF" id="2YSDt1NDhWU" role="3cqZAp">
+          <node concept="2OqwBi" id="2YSDt1NDhWV" role="3clFbG">
+            <node concept="1rXfSq" id="2YSDt1NDhWW" role="2Oq$k0">
+              <ref role="37wK5l" to="exr9:~EditorComponent.getScrollPane()" resolve="getScrollPane" />
             </node>
-            <node concept="liA8E" id="5L3TB6kd6dA" role="2OqNvi">
-              <ref role="37wK5l" to="dxuu:~JComponent.setBorder(javax.swing.border.Border)" resolve="setBorder" />
-              <node concept="2YIFZM" id="5L3TB6kd6iO" role="37wK5m">
-                <ref role="37wK5l" to="dxuu:~BorderFactory.createLineBorder(java.awt.Color)" resolve="createLineBorder" />
-                <ref role="1Pybhc" to="dxuu:~BorderFactory" resolve="BorderFactory" />
-                <node concept="10M0yZ" id="5L3TB6kd6iP" role="37wK5m">
-                  <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
-                  <ref role="3cqZAo" to="z60i:~Color.BLACK" resolve="BLACK" />
+            <node concept="liA8E" id="2YSDt1NDhWX" role="2OqNvi">
+              <ref role="37wK5l" to="dxuu:~JScrollPane.setHorizontalScrollBarPolicy(int)" resolve="setHorizontalScrollBarPolicy" />
+              <node concept="10M0yZ" id="2YSDt1NDkWN" role="37wK5m">
+                <ref role="3cqZAo" to="dxuu:~ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER" resolve="HORIZONTAL_SCROLLBAR_NEVER" />
+                <ref role="1PxDUh" to="dxuu:~ScrollPaneConstants" resolve="ScrollPaneConstants" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="2YSDt1NDV6t" role="3cqZAp">
+          <node concept="1PaTwC" id="2YSDt1NDV6u" role="1aUNEU">
+            <node concept="3oM_SD" id="2YSDt1NDY3k" role="1PaTwD">
+              <property role="3oM_SC" value="init" />
+            </node>
+            <node concept="3oM_SD" id="2YSDt1NDY3m" role="1PaTwD">
+              <property role="3oM_SC" value="just" />
+            </node>
+            <node concept="3oM_SD" id="2YSDt1NDY3J" role="1PaTwD">
+              <property role="3oM_SC" value="like" />
+            </node>
+            <node concept="3oM_SD" id="2YSDt1NDY3t" role="1PaTwD">
+              <property role="3oM_SC" value="base" />
+            </node>
+            <node concept="3oM_SD" id="2YSDt1NDY3y" role="1PaTwD">
+              <property role="3oM_SC" value="JScrollPane" />
+            </node>
+            <node concept="3oM_SD" id="2YSDt1NDY3P" role="1PaTwD">
+              <property role="3oM_SC" value="constructor" />
+            </node>
+            <node concept="3oM_SD" id="2YSDt1NDY3W" role="1PaTwD">
+              <property role="3oM_SC" value="does" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2YSDt1NDsqV" role="3cqZAp">
+          <node concept="2OqwBi" id="2YSDt1NDtzF" role="3clFbG">
+            <node concept="1rXfSq" id="2YSDt1NDsqT" role="2Oq$k0">
+              <ref role="37wK5l" to="exr9:~EditorComponent.getScrollPane()" resolve="getScrollPane" />
+            </node>
+            <node concept="liA8E" id="2YSDt1NDx2f" role="2OqNvi">
+              <ref role="37wK5l" to="dxuu:~JScrollPane.setVerticalScrollBar(javax.swing.JScrollBar)" resolve="setVerticalScrollBar" />
+              <node concept="2OqwBi" id="2YSDt1NDEYA" role="37wK5m">
+                <node concept="1rXfSq" id="2YSDt1NDBdY" role="2Oq$k0">
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getScrollPane()" resolve="getScrollPane" />
+                </node>
+                <node concept="liA8E" id="2YSDt1NDIyH" role="2OqNvi">
+                  <ref role="37wK5l" to="dxuu:~JScrollPane.createVerticalScrollBar()" resolve="createVerticalScrollBar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2YSDt1NDKrj" role="3cqZAp">
+          <node concept="2OqwBi" id="2YSDt1NDKrk" role="3clFbG">
+            <node concept="1rXfSq" id="2YSDt1NDKrl" role="2Oq$k0">
+              <ref role="37wK5l" to="exr9:~EditorComponent.getScrollPane()" resolve="getScrollPane" />
+            </node>
+            <node concept="liA8E" id="2YSDt1NDKrm" role="2OqNvi">
+              <ref role="37wK5l" to="dxuu:~JScrollPane.setHorizontalScrollBar(javax.swing.JScrollBar)" resolve="setHorizontalScrollBar" />
+              <node concept="2OqwBi" id="2YSDt1NDKrn" role="37wK5m">
+                <node concept="1rXfSq" id="2YSDt1NDKro" role="2Oq$k0">
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getScrollPane()" resolve="getScrollPane" />
+                </node>
+                <node concept="liA8E" id="2YSDt1NDKrp" role="2OqNvi">
+                  <ref role="37wK5l" to="dxuu:~JScrollPane.createHorizontalScrollBar()" resolve="createHorizontalScrollBar" />
                 </node>
               </node>
             </node>
@@ -8028,8 +8071,8 @@
         </node>
         <node concept="3clFbF" id="2Xanblty7qg" role="3cqZAp">
           <node concept="2OqwBi" id="2Xanblty7qi" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxeuwBL" role="2Oq$k0">
-              <ref role="3cqZAo" node="1gM_IjhvGJB" resolve="myScrollPane" />
+            <node concept="1rXfSq" id="7uQHEcHfmcL" role="2Oq$k0">
+              <ref role="37wK5l" to="exr9:~EditorComponent.getScrollPane()" resolve="getScrollPane" />
             </node>
             <node concept="liA8E" id="2Xanblty7qm" role="2OqNvi">
               <ref role="37wK5l" to="dxuu:~JComponent.setPreferredSize(java.awt.Dimension)" resolve="setPreferredSize" />
@@ -8047,8 +8090,8 @@
         <node concept="3clFbF" id="2Xanblty7qu" role="3cqZAp">
           <node concept="2OqwBi" id="2Xanblty7qw" role="3clFbG">
             <node concept="2OqwBi" id="1gM_IjhvHsH" role="2Oq$k0">
-              <node concept="37vLTw" id="2BHiRxeun0Y" role="2Oq$k0">
-                <ref role="3cqZAo" node="1gM_IjhvGJB" resolve="myScrollPane" />
+              <node concept="1rXfSq" id="7uQHEcHfs9w" role="2Oq$k0">
+                <ref role="37wK5l" to="exr9:~EditorComponent.getScrollPane()" resolve="getScrollPane" />
               </node>
               <node concept="liA8E" id="1gM_IjhvHsL" role="2OqNvi">
                 <ref role="37wK5l" to="dxuu:~JScrollPane.getViewport()" resolve="getViewport" />
@@ -8080,6 +8123,65 @@
         <node concept="3uibUv" id="3SxFjl1oOMv" role="1tU5fm">
           <ref role="3uigEE" to="hdhb:42hl10VHaeV" resolve="ChangeGroup" />
         </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="7uQHEcHeEwD" role="jymVt" />
+    <node concept="2tJIrI" id="7uQHEcHeE_6" role="jymVt" />
+    <node concept="3clFb_" id="7uQHEcHeHhr" role="jymVt">
+      <property role="TrG5h" value="createScrollPane" />
+      <node concept="3Tmbuc" id="7uQHEcHeHhs" role="1B3o_S" />
+      <node concept="3uibUv" id="7uQHEcHeHhu" role="3clF45">
+        <ref role="3uigEE" to="dxuu:~JScrollPane" resolve="JScrollPane" />
+      </node>
+      <node concept="3clFbS" id="7uQHEcHeHhv" role="3clF47">
+        <node concept="3cpWs8" id="7uQHEcHeZ1L" role="3cqZAp">
+          <node concept="3cpWsn" id="7uQHEcHeZ1M" role="3cpWs9">
+            <property role="TrG5h" value="sp" />
+            <node concept="3uibUv" id="7uQHEcHeY2Z" role="1tU5fm">
+              <ref role="3uigEE" to="dxuu:~JScrollPane" resolve="JScrollPane" />
+            </node>
+            <node concept="2ShNRf" id="7uQHEcHeZ1N" role="33vP2m">
+              <node concept="1pGfFk" id="7uQHEcHeZ1O" role="2ShVmc">
+                <ref role="37wK5l" to="dxuu:~JScrollPane.&lt;init&gt;(java.awt.Component,int,int)" resolve="JScrollPane" />
+                <node concept="Xjq3P" id="7uQHEcHeZ1P" role="37wK5m" />
+                <node concept="10M0yZ" id="7uQHEcHeZ1Q" role="37wK5m">
+                  <ref role="1PxDUh" to="dxuu:~JScrollPane" resolve="JScrollPane" />
+                  <ref role="3cqZAo" to="dxuu:~ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER" resolve="VERTICAL_SCROLLBAR_NEVER" />
+                </node>
+                <node concept="10M0yZ" id="7uQHEcHeZ1R" role="37wK5m">
+                  <ref role="1PxDUh" to="dxuu:~JScrollPane" resolve="JScrollPane" />
+                  <ref role="3cqZAo" to="dxuu:~ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER" resolve="HORIZONTAL_SCROLLBAR_NEVER" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="7uQHEcHeHhy" role="3cqZAp">
+          <node concept="2OqwBi" id="7uQHEcHf2KR" role="3clFbG">
+            <node concept="37vLTw" id="7uQHEcHeZ1S" role="2Oq$k0">
+              <ref role="3cqZAo" node="7uQHEcHeZ1M" resolve="sp" />
+            </node>
+            <node concept="liA8E" id="7uQHEcHf807" role="2OqNvi">
+              <ref role="37wK5l" to="dxuu:~JComponent.setBorder(javax.swing.border.Border)" resolve="setBorder" />
+              <node concept="2YIFZM" id="5L3TB6kd6iO" role="37wK5m">
+                <ref role="37wK5l" to="dxuu:~BorderFactory.createLineBorder(java.awt.Color)" resolve="createLineBorder" />
+                <ref role="1Pybhc" to="dxuu:~BorderFactory" resolve="BorderFactory" />
+                <node concept="10M0yZ" id="5L3TB6kd6iP" role="37wK5m">
+                  <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
+                  <ref role="3cqZAo" to="z60i:~Color.BLACK" resolve="BLACK" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="7uQHEcHfz7D" role="3cqZAp">
+          <node concept="37vLTw" id="7uQHEcHf_uN" role="3cqZAk">
+            <ref role="3cqZAo" node="7uQHEcHeZ1M" resolve="sp" />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="7uQHEcHeHhw" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="4akBq_r2agG" role="jymVt" />
@@ -8155,20 +8257,6 @@
       </node>
       <node concept="2AHcQZ" id="3zkePfDeeTJ" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="3clFb_" id="1gM_IjhvHsM" role="jymVt">
-      <property role="TrG5h" value="getScrollPane" />
-      <node concept="3uibUv" id="1gM_IjhvHsN" role="3clF45">
-        <ref role="3uigEE" to="dxuu:~JScrollPane" resolve="JScrollPane" />
-      </node>
-      <node concept="3Tm1VV" id="1gM_IjhvHsO" role="1B3o_S" />
-      <node concept="3clFbS" id="1gM_IjhvHsP" role="3clF47">
-        <node concept="3clFbF" id="1gM_IjhvHsQ" role="3cqZAp">
-          <node concept="37vLTw" id="2BHiRxeuyKT" role="3clFbG">
-            <ref role="3cqZAo" node="1gM_IjhvGJB" resolve="myScrollPane" />
-          </node>
-        </node>
       </node>
     </node>
   </node>

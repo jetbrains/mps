@@ -5,7 +5,6 @@ package jetbrains.mps.vcs.changesmanager.editor;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
-import javax.swing.JScrollPane;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.vcs.diff.ui.common.ChangeGroup;
@@ -27,14 +26,16 @@ import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
 import java.awt.Rectangle;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.JScrollPane;
 import javax.swing.BorderFactory;
 import java.awt.Color;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 
 @GeneratedClass(node = "r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)/4477049948824855836", model = "r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)")
 public class BaseVersionEditorComponent extends EditorComponent implements EditorMessageOwner {
-  private JScrollPane myScrollPane;
   private SModel myBaseModel;
+
   public BaseVersionEditorComponent(SRepository repository, final ChangeGroup changeGroup) {
     super(repository);
     final ModelAccess modelAccess = repository.getModelAccess();
@@ -77,10 +78,21 @@ public class BaseVersionEditorComponent extends EditorComponent implements Edito
     viewRect.width += 5;
     viewRect.height += 4;
 
-    myScrollPane = new JScrollPane(this, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-    myScrollPane.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-    myScrollPane.setPreferredSize(viewRect.getSize());
-    myScrollPane.getViewport().setViewPosition(viewRect.getLocation());
+    getScrollPane().setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+    getScrollPane().setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+    // init just like base JScrollPane constructor does
+    getScrollPane().setVerticalScrollBar(getScrollPane().createVerticalScrollBar());
+    getScrollPane().setHorizontalScrollBar(getScrollPane().createHorizontalScrollBar());
+    getScrollPane().setPreferredSize(viewRect.getSize());
+    getScrollPane().getViewport().setViewPosition(viewRect.getLocation());
+  }
+
+
+  @Override
+  protected JScrollPane createScrollPane() {
+    JScrollPane sp = new JScrollPane(this, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+    sp.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+    return sp;
   }
 
   @Override
@@ -92,8 +104,5 @@ public class BaseVersionEditorComponent extends EditorComponent implements Edito
   public void dispose() {
     getRepository().getModelAccess().runWriteAction(() -> DiffModelUtil.unregisterModel(myBaseModel));
     super.dispose();
-  }
-  public JScrollPane getScrollPane() {
-    return myScrollPane;
   }
 }
