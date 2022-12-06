@@ -41,7 +41,7 @@ public class RenamePackage_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return ((PackageNode) ((PackageNode) MapSequence.fromMap(_params).get("ppNode"))).getAncestor(SModelTreeNode.class) != null;
+    return ((PackageNode) MapSequence.fromMap(_params).get("ppNode")).getAncestor(SModelTreeNode.class) != null;
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -80,7 +80,7 @@ public class RenamePackage_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    PackageNode treeNode = (PackageNode) ((PackageNode) MapSequence.fromMap(_params).get("ppNode"));
+    PackageNode treeNode = ((PackageNode) MapSequence.fromMap(_params).get("ppNode"));
     final SModel model = treeNode.getAncestor(SModelTreeNode.class).getModel();
     if (model == null) {
       return;

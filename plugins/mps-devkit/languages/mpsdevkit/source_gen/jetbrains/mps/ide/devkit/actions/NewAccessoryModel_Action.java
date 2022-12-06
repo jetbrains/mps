@@ -70,7 +70,7 @@ public class NewAccessoryModel_Action extends BaseAction {
     NewAccessoryModel_Action.this.getExecutor(event).execute();
   }
   protected NewModelActionExecutor getExecutor(final AnActionEvent event) {
-    return new NewModelActionExecutor(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSCommonDataKeys.CONTEXT_MODULE), event.getData(MPSCommonDataKeys.TREE_NODE)) {
+    return new NewModelActionExecutor(event.getData(MPSCommonDataKeys.MPS_PROJECT), ((Language) event.getData(MPSCommonDataKeys.CONTEXT_MODULE)), event.getData(MPSCommonDataKeys.TREE_NODE)) {
       @Override
       protected void onModelCreated(final SModel model) {
         // FIXME bad design. onModelCreated runs command to create a model and attach it to a module,

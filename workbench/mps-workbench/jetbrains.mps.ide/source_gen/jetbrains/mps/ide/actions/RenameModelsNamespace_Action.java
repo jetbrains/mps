@@ -43,7 +43,7 @@ public class RenameModelsNamespace_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     event.getPresentation().setText(IdeBundle.message("actions.virtual.package.rename.on.models.text"));
-    NamespaceTextNode ntn = (NamespaceTextNode) ((NamespaceTextNode) MapSequence.fromMap(_params).get("treeNode"));
+    NamespaceTextNode ntn = ((NamespaceTextNode) MapSequence.fromMap(_params).get("treeNode"));
     return ProjectPane.getInstance(((MPSProject) MapSequence.fromMap(_params).get("project"))) != null && !(ntn.isFinalName()) && !(ntn.hasModulesUnder()) && ntn.hasModelsUnder();
   }
   @Override
@@ -83,7 +83,7 @@ public class RenameModelsNamespace_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final NamespaceTextNode ntn = ((NamespaceTextNode) ((NamespaceTextNode) MapSequence.fromMap(_params).get("treeNode")));
+    final NamespaceTextNode ntn = ((NamespaceTextNode) MapSequence.fromMap(_params).get("treeNode"));
     final String originalNamespacePrefix = ntn.getNamespace();
 
     InputValidatorEx inputValidator = new ModelNamespaceInputValidator(ntn, originalNamespacePrefix);
