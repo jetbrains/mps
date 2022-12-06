@@ -941,7 +941,7 @@
     </echoxml>
     <jar destfile="${build.layout}/mps-devkit/languages/jetbrains.mps.ide.mpsdevkit.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.ide.mpsdevkit" />
-      <fileset dir="${mps_home}/plugins/mps-devkit/languages/mpsdevkit" includes="icons/**, resources/**" />
+      <fileset dir="${mps_home}/plugins/mps-devkit/languages/mpsdevkit" includes="icons/**, resources/**, startup.properties" />
       <fileset dir="${mps_home}/plugins/mps-devkit/languages/mpsdevkit/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.ide.mpsdevkit.jar" />
     </jar>
