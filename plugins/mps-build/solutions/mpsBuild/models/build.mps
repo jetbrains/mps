@@ -38921,6 +38921,9 @@
     <node concept="26Ea6D" id="7TY3xOwW$Y3" role="2hID6k">
       <property role="26Ea6C" value="-ea" />
     </node>
+    <node concept="26Ea6D" id="68rp5VxM1KN" role="2hID6k">
+      <property role="26Ea6C" value="-Djava.system.class.loader=com.intellij.util.lang.PathClassLoader" />
+    </node>
     <node concept="26Ea6D" id="4A8SxGHvP9F" role="2hID6k">
       <property role="26Ea6C" value="-Dsun.io.useCanonCaches=false" />
     </node>
@@ -38975,31 +38978,10 @@
       <property role="26Ea6C" value="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5071" />
     </node>
     <node concept="26EafG" id="BJYGrH08Xy" role="26Ea7d">
-      <property role="26EafJ" value="lib/branding.jar" />
+      <property role="26EafJ" value="lib/*" />
     </node>
-    <node concept="26EafG" id="BJYGrH08Xz" role="26Ea7d">
-      <property role="26EafJ" value="lib/mps-boot.jar" />
-    </node>
-    <node concept="26EafG" id="4KL8ISnt6x5" role="26Ea7d">
-      <property role="26EafJ" value="lib/mps-boot-util.jar" />
-    </node>
-    <node concept="26EafG" id="BJYGrH08X_" role="26Ea7d">
-      <property role="26EafJ" value="lib/bootstrap.jar" />
-    </node>
-    <node concept="26EafG" id="BJYGrH08XD" role="26Ea7d">
-      <property role="26EafJ" value="lib/extensions.jar" />
-    </node>
-    <node concept="26EafG" id="BJYGrH08XA" role="26Ea7d">
-      <property role="26EafJ" value="lib/util.jar" />
-    </node>
-    <node concept="26EafG" id="3pbtRNxu20l" role="26Ea7d">
-      <property role="26EafJ" value="lib/util_rt.jar" />
-    </node>
-    <node concept="26EafG" id="1qnfmGRRAQy" role="26Ea7d">
-      <property role="26EafJ" value="lib/3rd-party-rt.jar" />
-    </node>
-    <node concept="26EafG" id="BsOHnjrceI" role="26Ea7d">
-      <property role="26EafJ" value="lib/jna.jar" />
+    <node concept="26EafG" id="68rp5VxCl2R" role="26Ea7d">
+      <property role="26EafJ" value="lib/ant/lib/ant.jar" />
     </node>
     <node concept="26Ea6D" id="1t_0ZyxyXAT" role="26FZ21">
       <property role="2eq24a" value="true" />

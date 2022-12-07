@@ -3263,7 +3263,7 @@
       <property role="2DPR8u" value="SET COMMON_JVM_ARGS=&quot;-XX:ErrorFile=%USERPROFILE%\java_error_in_%PRODUCT%_%%p.log&quot; &quot;-XX:HeapDumpPath=%USERPROFILE%\java_error_in_%PRODUCT%.hprof&quot; -Didea.paths.selector=%IDEA_PATHS_SELECTOR% -Didea.vendor.name=&quot;%IDEA_VENDOR_NAME%&quot; %IDE_PROPERTIES_PROPERTY%" />
     </node>
     <node concept="2DRAP_" id="4eWOtEm22ts" role="2DRAPQ">
-      <property role="2DPR8u" value="SET IDE_JVM_ARGS=-Didea.platform.prefix=Idea -Didea.jre.check=true" />
+      <property role="2DPR8u" value="SET IDE_JVM_ARGS=-Didea.platform.prefix=Idea -Didea.jre.check=true -Djna.boot.library.path=&quot;%IDE_HOME%/lib/jna&quot;" />
     </node>
     <node concept="2DRAP_" id="4eWOtEm264z" role="2DRAPQ">
       <property role="2DPR8u" value="SET ALL_JVM_ARGS=%ACC% %COMMON_JVM_ARGS% %IDE_JVM_ARGS%" />
@@ -5205,6 +5205,9 @@
     </node>
     <node concept="2DRAP_" id="BsOHnjn547" role="2DRAPQ">
       <property role="2DPR8u" value="  -Didea.jre.check=true \" />
+    </node>
+    <node concept="2DRAP_" id="5gb82DdXPMj" role="2DRAPQ">
+      <property role="2DPR8u" value="  -Djna.boot.library.path=&quot;${IDE_HOME}/lib/jna&quot; \" />
     </node>
     <node concept="2DRAP_" id="5pqe9hgw0aW" role="2DRAPQ">
       <property role="2DPR8u" value="  -Didea.vendor.name=$IDEA_VENDOR_NAME \" />
