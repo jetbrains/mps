@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.nodeEditor.deletionApprover;
 
-import com.intellij.ui.JBColor;
+import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.DefaultEditorMessage;
 import jetbrains.mps.nodeEditor.EditorComponent;
@@ -26,7 +26,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
 import jetbrains.mps.openapi.editor.selection.SelectionListener;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
+import jetbrains.mps.openapi.editor.style.Style;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.Color;
@@ -80,8 +80,9 @@ public class DeletionApproverImpl implements DeletionApprover, EditorMessageOwne
   public void approveForDeletion(@NotNull EditorCell cell) {
     myCellToBeDeleted = cell;
     myHighlightManager.clearForOwner(this);
-    Color color = StyleRegistry.getInstance().isDarkTheme() ? JBColor.GREEN : JBColor.RED;
-    myHighlightManager.mark(new ApproveDeleteMessage(cell, color, "to be deleted", this));
+    final Style daStyle = cell.getEditorComponent().getStyleRegistry().getStyle("DELETION_APPROVER");
+    final Color c = daStyle.get(StyleAttributes.TEXT_BACKGROUND_COLOR);
+    myHighlightManager.mark(new ApproveDeleteMessage(cell, c, "to be deleted", this));
     myHighlightManager.repaintAndRebuildEditorMessages();
   }
 
@@ -128,12 +129,7 @@ public class DeletionApproverImpl implements DeletionApprover, EditorMessageOwne
     @Override
     public void paint(Graphics g, EditorComponent editorComponent, EditorCell cell) {
       if (cell instanceof jetbrains.mps.nodeEditor.cells.EditorCell) {
-        final Color cc = getColor();
-        @SuppressWarnings("UseJBColor")
-        final Color ca = new Color(cc.getRed(), cc.getGreen(), cc.getBlue(), cc.getAlpha() / 5);
-        Color color = new JBColor(ca, ca);
-        ((jetbrains.mps.nodeEditor.cells.EditorCell) cell).paintSelection(g, color, false);
-
+        ((jetbrains.mps.nodeEditor.cells.EditorCell) cell).paintSelection(g, getColor(), false);
       } else {
         super.paint(g, editorComponent, cell);
       }

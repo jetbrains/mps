@@ -20,6 +20,7 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
 import com.intellij.openapi.editor.colors.CodeInsightColors;
 import com.intellij.openapi.editor.colors.ColorKey;
+import com.intellij.openapi.editor.colors.EditorColorsListener;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
@@ -51,9 +52,31 @@ public class StyleRegistryIdeaImpl extends StyleRegistry implements Disposable {
     ourInstance = this;
     fillIdeaMappings();
     fillColorMappings();
-    ApplicationManager.getApplication().getMessageBus().connect(this).subscribe(
-        EditorColorsManager.TOPIC, scheme -> StyleRegistryIdeaImpl.this.clearCache()
-    );
+    fillCustomStyles();
+    ApplicationManager.getApplication().getMessageBus().connect(this).subscribe(EditorColorsManager.TOPIC, (EditorColorsListener) this::colorsChanged);
+  }
+
+  private void colorsChanged(EditorColorsScheme scheme) {
+    clearCache();
+    fillCustomStyles();
+  }
+
+  /**
+   * The right way to have custom styles for MPS-own things would be registering a TextAttributesKey with respective
+   * TextAttributes into IDEA's current EditorColorsScheme. I didn't find a way to accomplish this. FWIW, there's
+   * UIThemeProvider and UIThemeMetadataProvider. Former allows to contribute new UI Theme (not what I want here), latter
+   * gives descriptive keys but doesn't help to define own styles (or I just didn't find a way).
+   * FIXME if you now a way to get getColorsScheme().getAttributes(TextAttributesKey.find("MY_CUSTOM_STYLE")) functional,
+   *       please let me know.
+   * Now, this code overcomes this with MPS-only styles, hardcoded here and not configurable from outside (e.g. IDEA UI).
+   */
+  @SuppressWarnings("UseJBColor")
+  private void fillCustomStyles() {
+    StyleImpl da = new StyleImpl();;
+    final Color cc = isDarkTheme() ? Color.GREEN : Color.RED;
+    // logic for new color taken from DeletionApproverImpl
+    da.set(StyleAttributes.TEXT_BACKGROUND_COLOR, new Color(cc.getRed(), cc.getGreen(), cc.getBlue(), cc.getAlpha() / 5));
+    setStyle("DELETION_APPROVER", da);
   }
 
   @Override
