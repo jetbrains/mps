@@ -33,7 +33,7 @@ import com.intellij.openapi.startup.StartupManager;
 import com.intellij.openapi.ui.SimpleToolWindowPanel;
 import com.intellij.openapi.wm.ToolWindowAnchor;
 import com.intellij.ui.HyperlinkLabel;
-import com.intellij.ui.LightColors;
+import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
@@ -44,9 +44,11 @@ import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
 import jetbrains.mps.openapi.editor.EditorInspector;
 import jetbrains.mps.openapi.editor.extensions.EditorExtensionUtil;
+import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -58,7 +60,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -212,7 +213,7 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
     myMessagePanel.setNode(node);
   }
 
-  private class MyPanel extends SimpleToolWindowPanel {
+  private final class MyPanel extends SimpleToolWindowPanel {
     private MyPanel() {
       super(true, true);
       setProvideQuickActions(false);
@@ -220,7 +221,7 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
 
     @Override
     @Nullable
-    public Object getData(@NonNls String dataId) {
+    public Object getData(@NotNull @NonNls String dataId) {
       if (MPSCommonDataKeys.FILE_EDITOR.is(dataId)) {
         return myFileEditor;
       }
@@ -243,7 +244,7 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
     }
   }
 
-  private class MyMessagePanel extends JPanel {
+  private final class MyMessagePanel extends JPanel {
     private static final String NO_CONCEPT_MESSAGE = "<no node>";
 
     private JLabel myLabel = new JLabel();
@@ -253,10 +254,13 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
     private MyMessagePanel() {
       setLayout(new BorderLayout());
 
-      setBackground(StyleRegistry.getInstance().isDarkTheme() ? Color.LIGHT_GRAY : LightColors.YELLOW);
+      // there's also INFO_ATTRIBUTES in CodeInsightColors, but perhaps worth to come with own style for 'messages' panel?
+      // FWIW, project instance is available at cons time (to access StyleRegistry, eventually).
+      final Style wpStyle = StyleRegistry.getInstance().getStyle("WARNING_PANEL");
+      setBackground(wpStyle.get(StyleAttributes.TEXT_BACKGROUND_COLOR));
       setBorder(BorderFactory.createEmptyBorder(0, 4, 0, 4));
 
-      myLabel.setForeground(StyleRegistry.getInstance().isDarkTheme() ? Color.DARK_GRAY : StyleRegistry.getInstance().getEditorForeground());
+      myLabel.setForeground(wpStyle.get(StyleAttributes.TEXT_COLOR));
 
       add(myLabel, BorderLayout.CENTER);
       add(myOpenConceptLabel, BorderLayout.EAST);
