@@ -50,7 +50,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
   private void fireCreatedMessage(Project project, EditorComponent editorComponent) {
     final com.intellij.openapi.project.Project ideaProject = ProjectHelper.toIdeaProject((jetbrains.mps.project.Project) project);
-    if (ideaProject != null && editorComponent instanceof jetbrains.mps.nodeEditor.EditorComponent) {
+    if (ideaProject != null && !ideaProject.isDisposed() && editorComponent instanceof jetbrains.mps.nodeEditor.EditorComponent) {
       EditorComponentCreateListener listener = ideaProject.getMessageBus().syncPublisher(EditorComponentCreateListener.EDITOR_COMPONENT_CREATION);
       listener.editorComponentCreated((jetbrains.mps.nodeEditor.EditorComponent) editorComponent);
     }
@@ -69,7 +69,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
   private void fireDisposedMessage(Project project, EditorComponent editorComponent) {
     final com.intellij.openapi.project.Project ideaProject = ProjectHelper.toIdeaProject((jetbrains.mps.project.Project) project);
-    if (ideaProject != null && editorComponent instanceof jetbrains.mps.nodeEditor.EditorComponent) {
+    if (ideaProject != null && !ideaProject.isDisposed() && editorComponent instanceof jetbrains.mps.nodeEditor.EditorComponent) {
       EditorComponentCreateListener listener = ideaProject.getMessageBus().syncPublisher(EditorComponentCreateListener.EDITOR_COMPONENT_CREATION);
       listener.editorComponentDisposed((jetbrains.mps.nodeEditor.EditorComponent) editorComponent);
     }
