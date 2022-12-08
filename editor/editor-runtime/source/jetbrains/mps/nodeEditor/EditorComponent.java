@@ -1770,6 +1770,9 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     ((EditorCell_Basic) myRootCell).onRemove();
 
     myRootCell = (EditorCell) rootCell;
+    myRootCell.getStyle().set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getEditorForeground());
+    myRootCell.getStyle().set(StyleAttributes.NULL_TEXT_COLOR, getStyleRegistry().getColor("DEFAULT_NULL_TEXT_COLOR"));
+    myRootCell.getStyle().set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getEditorBackground());
 
     ((EditorCell_Basic) myRootCell).onAdd();
     for (EditorCell_WithComponent component : getCellTracker().getComponentCells()) {

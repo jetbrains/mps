@@ -18,11 +18,8 @@ package jetbrains.mps.editor.runtime.style;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import jetbrains.mps.openapi.editor.descriptor.StyleAttributeProvider;
 import jetbrains.mps.openapi.editor.style.StyleAttribute;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
-import jetbrains.mps.util.annotation.Hack;
-import org.jetbrains.annotations.ApiStatus.Internal;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConceptFeature;
@@ -31,20 +28,12 @@ import org.jetbrains.mps.openapi.model.SNode;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.PaintContext;
-import java.awt.Rectangle;
-import java.awt.RenderingHints;
-import java.awt.color.ColorSpace;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
-import java.awt.image.ColorModel;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Supplier;
 
 /**
  * User: shatalin
@@ -158,10 +147,8 @@ public class StyleAttributes {
 
   public static final StyleAttribute<Color> BACKGROUND_COLOR = new InheritableStyleAttribute<>("background-color", null, true);
   public static final StyleAttribute<Color> BRACKETS_COLOR = new InheritableStyleAttribute<>("bracket-color", Color.BLACK, true);
-  public static final StyleAttribute<Color> TEXT_COLOR = new InheritableStyleAttribute<>(
-      "text-color", new ColorAdapter(() -> StyleRegistry.getInstance().getEditorForeground(), Color.BLACK), true);
-  public static final StyleAttribute<Color> NULL_TEXT_COLOR = new InheritableStyleAttribute<>(
-      "null-text-color", new ColorAdapter(() -> StyleRegistry.getInstance().getColor("DEFAULT_NULL_TEXT_COLOR"), Color.GRAY), true);
+  public static final StyleAttribute<Color> TEXT_COLOR = new InheritableStyleAttribute<>("text-color", Color.BLACK, true);
+  public static final StyleAttribute<Color> NULL_TEXT_COLOR = new InheritableStyleAttribute<>("null-text-color", Color.GRAY, true);
   public static final StyleAttribute<Color> TEXT_BACKGROUND_COLOR = new InheritableStyleAttribute<>("text-background-color", null, true);
   public static final StyleAttribute<Color> NULL_TEXT_BACKGROUND_COLOR = new InheritableStyleAttribute<>("null-text-color", null, true);
   public static final StyleAttribute<Color> SELECTED_TEXT_BACKGROUND_COLOR = new InheritableStyleAttribute<>("selected-text-background-color", null, true);
@@ -240,131 +227,4 @@ public class StyleAttributes {
   public static final StyleAttribute<String> URL = new SimpleStyleAttribute<>("url", null, true);
 
   public static final StyleAttribute<Boolean> SPELLCHECK = new SimpleStyleAttribute<>("spellcheck", false, true);
-
-  /**
-   * Adapter for {@link Color} to support color scheme changes.
-   * <br>
-   * Due to the facts:
-   * <ul>
-   * <li>reference dependency to static final field from other places - RESOLVED. I believe there's no more static caches styles in MPS</li>
-   * <li>{@link InheritableStyleAttribute} immutable parameter [?]</li>
-   * <li>isolation from platform code in this module [?!?]</li>
-   * </ul>
-   * this hack is only option to support dynamic colors.
-   * <br>
-   * <br>
-   * Should <b>not</b> be used anywhere else and removed after refactoring.
-   */
-  @Internal
-  @Hack
-  private static final class ColorAdapter extends Color {
-    private final Supplier<Color> myColorSupplier;
-    private final Color myFallbackColor;
-
-    ColorAdapter(Supplier<Color> color, Color fallbackColor) {
-      super(0, 0, 0);
-      myColorSupplier = color;
-      myFallbackColor = fallbackColor;
-    }
-
-    private Color getColor() {
-      return StyleRegistry.getInstance() == null ? myFallbackColor : myColorSupplier.get();
-    }
-
-    @Override
-    public int getRed() {
-      return getColor().getRed();
-    }
-
-    @Override
-    public int getGreen() {
-      return getColor().getGreen();
-    }
-
-    @Override
-    public int getBlue() {
-      return getColor().getBlue();
-    }
-
-    @Override
-    public int getAlpha() {
-      return getColor().getAlpha();
-    }
-
-    @Override
-    public int getRGB() {
-      final Color color = getColor();
-      return color != null ? color.getRGB() : -1;
-    }
-
-    @Override
-    public Color brighter() {
-      return getColor().brighter();
-    }
-
-    @Override
-    public Color darker() {
-      return getColor().darker();
-    }
-
-    @Override
-    public int hashCode() {
-      return getColor().hashCode();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-      return getColor() != null && getColor().equals(obj);
-    }
-
-    @Override
-    public String toString() {
-      return getColor().toString();
-    }
-
-    @Override
-    public float[] getRGBComponents(float[] compArray) {
-      return getColor().getRGBComponents(compArray);
-    }
-
-    @Override
-    public float[] getRGBColorComponents(float[] compArray) {
-      return getColor().getRGBColorComponents(compArray);
-    }
-
-    @Override
-    public float[] getComponents(float[] compArray) {
-      return getColor().getComponents(compArray);
-    }
-
-    @Override
-    public float[] getColorComponents(float[] compArray) {
-      return getColor().getColorComponents(compArray);
-    }
-
-    @Override
-    public float[] getComponents(ColorSpace cspace, float[] compArray) {
-      return getColor().getComponents(cspace, compArray);
-    }
-
-    @Override
-    public float[] getColorComponents(ColorSpace cspace, float[] compArray) {
-      return getColor().getColorComponents(cspace, compArray);
-    }
-
-    @Override
-    public ColorSpace getColorSpace() {
-      return getColor().getColorSpace();
-    }
-
-    @Override
-    public synchronized PaintContext createContext(ColorModel cm, Rectangle r, Rectangle2D r2d, AffineTransform xform, RenderingHints hints) {
-      return getColor().createContext(cm, r, r2d, xform, hints);
-    }
-
-    @Override
-    public int getTransparency() {
-      return getColor().getTransparency();
-    }
-  }
 }
