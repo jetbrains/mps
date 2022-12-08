@@ -59,7 +59,6 @@ final class MessageViewLoggingHandler implements Filter {
       MessageKind kind = MessageKind.fromPriority(logRecord.getLevel());
       Message message = new Message(kind, sender, logRecord.getMessage());
       if (logRecord.getParameters().length > 2) {
-        // FTR, right now LogCtx doesn't pass any hint object
         message.setHintObject(logRecord.getParameters()[2]);
       }
       message.setException(logRecord.getThrown());
