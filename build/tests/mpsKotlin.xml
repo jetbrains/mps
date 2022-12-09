@@ -5,7 +5,7 @@
   <property name="build.mps.system.path" location="${build.dir}/system" />
   <property name="build.tmp" location="${build.dir}/tmp/mpsKotlin" />
   <property name="build.layout" location="${build.dir}/artifacts/mpsKotlin" />
-  <property name="mps_home" location="${basedir}" />
+  <property name="mps_home" location="" />
   <property name="idea_home" location="${mps_home}" />
   <property name="artifacts.mps" location="${mps_home}" />
   <property name="artifacts.IDEA" location="${idea_home}" />
@@ -101,14 +101,14 @@
     <jar destfile="${build.layout}/jetbrains.mps.kotlin.tests.editor.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.kotlin.tests.editor" />
       <fileset dir="${basedir}/plugins/mps-java/workbench/tests/jetbrains.mps.ide.java.tests" includes="icons/**, resources/**" />
-      <fileset dir="${mps_home}/plugins/mps-kotlin/solutions/kotlin.tests.editor/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${basedir}/plugins/mps-kotlin/solutions/kotlin.tests.editor/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.kotlin.tests.editor.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-kotlin-solutions-kotlin.tests.editor-models">
-      <fileset dir="${mps_home}/plugins/mps-kotlin/solutions/kotlin.tests.editor/models" includes="**/*.mps, **/*.mpsr, **/.model" />
+      <fileset dir="${basedir}/plugins/mps-kotlin/solutions/kotlin.tests.editor/models" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/jetbrains.mps.kotlin.tests.editor-src.jar" duplicate="preserve">
-      <fileset dir="${mps_home}/plugins/mps-kotlin/solutions/kotlin.tests.editor/source_gen">
+      <fileset dir="${basedir}/plugins/mps-kotlin/solutions/kotlin.tests.editor/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
@@ -256,12 +256,12 @@
   <target name="module-tests" depends="assemble, test.mpsKotlin" />
   
   <target name="java.compile.jetbrains.mps.kotlin.tests.editor" depends="fetchDependencies">
-    <mkdir dir="${mps_home}/plugins/mps-kotlin/solutions/kotlin.tests.editor/source_gen" />
+    <mkdir dir="${basedir}/plugins/mps-kotlin/solutions/kotlin.tests.editor/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.kotlin.tests.editor" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.kotlin.tests.editor" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <compilerarg value="-Xlint:none" />
       <src>
-        <path location="${mps_home}/plugins/mps-kotlin/solutions/kotlin.tests.editor/source_gen" />
+        <path location="${basedir}/plugins/mps-kotlin/solutions/kotlin.tests.editor/source_gen" />
       </src>
       <classpath>
         <fileset file="${artifacts.mps}/lib/mps-core.jar" />
@@ -316,7 +316,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.kotlin.tests.editor">
-      <fileset dir="${mps_home}/plugins/mps-kotlin/solutions/kotlin.tests.editor/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/plugins/mps-kotlin/solutions/kotlin.tests.editor/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -505,6 +505,6 @@
   </target>
   
   <target name="cleanSources">
-    <delete dir="${mps_home}/plugins/mps-kotlin/solutions/kotlin.tests.editor/source_gen" />
+    <delete dir="${basedir}/plugins/mps-kotlin/solutions/kotlin.tests.editor/source_gen" />
   </target>
 </project>
