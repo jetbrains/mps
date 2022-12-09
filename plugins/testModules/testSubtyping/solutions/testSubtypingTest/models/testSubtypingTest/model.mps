@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model ref="r:f6873416-2681-4a14-803b-33f9e8bdd0a6(testSubtypingTest.model)">
+<model ref="r:f6873416-2681-4a14-803b-33f9e8bdd0a6(testSubtypingTest.model@tests)">
   <persistence version="9" />
   <languages>
     <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="6" />
