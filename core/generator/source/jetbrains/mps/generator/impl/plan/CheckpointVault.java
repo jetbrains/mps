@@ -142,6 +142,13 @@ public class CheckpointVault {
       existing.myChangedState = mcp.find(next);
     }
     myKnownCheckpoints.addAll(newEntries);
+    // if we happen to update *all* checkpoints of a model, and all cp models are empty, no reason to keep records.
+    // perhaps, can just collect 'stale' while iterating over mcp.getKnownCheckpoints() (in addition to newEntries),
+    // but what if there's theoretical scenario when we have CP1 (non-empty) --> CP2 (empty) --> CP3 (non-empty), and we need
+    // CP2 for consistent transition. I don't believe the scenario is feasible, however; just don't want to deal with non-trivial cases now.
+    if (myKnownCheckpoints.stream().allMatch(e -> e.myChangedState != null && e.myChangedState.isEmptyCheckpoint())) {
+      myKnownCheckpoints.clear();
+    }
     myCheckpoints = null;
   }
 
@@ -200,6 +207,10 @@ public class CheckpointVault {
   // XXX is it possible to get more than 1 Entry changed?
   /*package*/ void saveChanged(StreamHandler handler) {
     if (StreamSupport.stream(myKnownCheckpoints.spliterator(), false).noneMatch(e -> e.myChangedState != null)) {
+      return;
+    }
+    if (myKnownCheckpoints.isEmpty()) {
+      // don't touch any file, let Make/reconcile remove stale
       return;
     }
     Element cpRegistry = buildCheckpointRegistry();

@@ -182,4 +182,9 @@ public class CheckpointState {
     }
     return rv;
   }
+
+  boolean isEmptyCheckpoint() {
+    // FIXME what about proper model access here?
+    return getMappingLabels().isEmpty() && !myCheckpointModel.getRootNodes().iterator().hasNext();
+  }
 }

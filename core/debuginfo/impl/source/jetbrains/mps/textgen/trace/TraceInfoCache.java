@@ -69,11 +69,15 @@ public final class TraceInfoCache {
   /**
    * Invoke to set new cached value
    */
-  /*package*/
-  final void update(SModel model, DebugInfo cache) {
+  /*package*/ void update(SModel model, DebugInfo cache) {
     final SModelReference mr = model.getReference();
     myCache.put(mr, cache);
   }
+
+  /*package*/ void drop(SModel model) {
+    myCache.remove(model.getReference());
+  }
+
 
 
   private DebugInfo readCache(final SModel sm) {
@@ -156,14 +160,18 @@ public final class TraceInfoCache {
       myInfoNew = newInfo;
     }
 
-
     @Override
     public void generateCache(GenerationStatus status, StreamHandler handler) {
       DebugInfo cache = myInfoNew;
       if (cache == null) {
+        drop(status.getInputModel());
         return;
       }
       update(status.getInputModel(), cache);
+      if (!cache.getRoots().iterator().hasNext()) {
+        // don't serialize empty file, let Make/reconcile logic remove is (as untouched)
+        return;
+      }
       handler.saveStream(TRACE_FILE_NAME, SerializeSupport.serialize(cache));
     }
   }

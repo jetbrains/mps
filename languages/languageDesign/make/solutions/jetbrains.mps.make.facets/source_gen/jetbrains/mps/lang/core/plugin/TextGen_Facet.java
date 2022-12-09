@@ -272,6 +272,10 @@ public class TextGen_Facet extends IFacet.Stub {
                       monitor.reportFeedback(new IFeedback.ERROR(String.valueOf("Failed to generate text for " + tu.getFileName())));
                     }
                   }
+                  // XXX perhaps, shall not proceed further in case getUnits().isEmpty()
+                  // see MPS-35118 for scenario. For now, however, I'd like to keep source_gen.caches artifacts 
+                  // (like, 'generated') to track "generation required" status.
+                  // Once/if we use other mechanism instead of dependencies/generated files, shall reconsider approach here.
 
                   subProgress_s0a0b.advance(1);
                   subProgress_s0a0b.step(tgr.getModel().getReference().getModelName());
