@@ -918,100 +918,6 @@
           </node>
         </node>
       </node>
-      <node concept="1E1JtA" id="2j4NQWLGvNU" role="2G$12L">
-        <property role="TrG5h" value="jetbrains.mps.baseLanguage.closures.test" />
-        <property role="3LESm3" value="709a7100-da7a-45a1-948b-53fdd43f5421" />
-        <property role="aoJFB" value="eYcmk9QOlj/sources_and_tests" />
-        <node concept="55IIr" id="2j4NQWLGvNV" role="3LF7KH">
-          <node concept="2Ry0Ak" id="2j4NQWLGvNW" role="iGT6I">
-            <property role="2Ry0Am" value="plugins" />
-            <node concept="2Ry0Ak" id="2j4NQWLGvNX" role="2Ry0An">
-              <property role="2Ry0Am" value="testModules" />
-              <node concept="2Ry0Ak" id="2j4NQWLGvNY" role="2Ry0An">
-                <property role="2Ry0Am" value="testClosures" />
-                <node concept="2Ry0Ak" id="2j4NQWLGvNZ" role="2Ry0An">
-                  <property role="2Ry0Am" value="solutions" />
-                  <node concept="2Ry0Ak" id="2j4NQWLGvO0" role="2Ry0An">
-                    <property role="2Ry0Am" value="jetbrains.mps.baseLanguage.closures.test" />
-                    <node concept="2Ry0Ak" id="2j4NQWLGvO1" role="2Ry0An">
-                      <property role="2Ry0Am" value="jetbrains.mps.baseLanguage.closures.test.msd" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3rtmxn" id="2j4NQWLGvO2" role="3bR31x">
-          <node concept="3LXTmp" id="2j4NQWLGvO3" role="3rtmxm">
-            <node concept="55IIr" id="2j4NQWLGvO4" role="3LXTmr">
-              <node concept="2Ry0Ak" id="2j4NQWLGvO5" role="iGT6I">
-                <property role="2Ry0Am" value="plugins" />
-                <node concept="2Ry0Ak" id="2j4NQWLGvO6" role="2Ry0An">
-                  <property role="2Ry0Am" value="testModules" />
-                  <node concept="2Ry0Ak" id="2j4NQWLGvO7" role="2Ry0An">
-                    <property role="2Ry0Am" value="testClosures" />
-                    <node concept="2Ry0Ak" id="2j4NQWLGvO8" role="2Ry0An">
-                      <property role="2Ry0Am" value="solutions" />
-                      <node concept="2Ry0Ak" id="2j4NQWLGvO9" role="2Ry0An">
-                        <property role="2Ry0Am" value="jetbrains.mps.baseLanguage.closures.test" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3qWCbU" id="2j4NQWLGvOa" role="3LXTna">
-              <property role="3qWCbO" value="icons/**, resources/**" />
-            </node>
-          </node>
-        </node>
-        <node concept="1SiIV0" id="2j4NQWLGvRQ" role="3bR37C">
-          <node concept="3bR9La" id="2j4NQWLGvRR" role="1SiIV1">
-            <ref role="3bR37D" to="ffeo:7Kfy9QB6KZM" resolve="closures.runtime" />
-          </node>
-        </node>
-        <node concept="1SiIV0" id="2j4NQWLGvRS" role="3bR37C">
-          <node concept="3bR9La" id="2j4NQWLGvRT" role="1SiIV1">
-            <ref role="3bR37D" to="ffeo:7Kfy9QB6KZG" resolve="jetbrains.mps.baseLanguage.closures" />
-          </node>
-        </node>
-        <node concept="1SiIV0" id="2j4NQWLGvRU" role="3bR37C">
-          <node concept="3bR9La" id="2j4NQWLGvRV" role="1SiIV1">
-            <ref role="3bR37D" to="ffeo:rD7wKO6k$" resolve="MPS.Generator" />
-          </node>
-        </node>
-        <node concept="1BupzO" id="2j4NQWLGvS3" role="3bR31x">
-          <property role="3ZfqAx" value="models" />
-          <property role="1Hdu6h" value="true" />
-          <property role="1HemKv" value="true" />
-          <node concept="3LXTmp" id="2j4NQWLGvS4" role="1HemKq">
-            <node concept="55IIr" id="2j4NQWLGvRW" role="3LXTmr">
-              <node concept="2Ry0Ak" id="2j4NQWLGvRX" role="iGT6I">
-                <property role="2Ry0Am" value="plugins" />
-                <node concept="2Ry0Ak" id="2j4NQWLGvRY" role="2Ry0An">
-                  <property role="2Ry0Am" value="testModules" />
-                  <node concept="2Ry0Ak" id="2j4NQWLGvRZ" role="2Ry0An">
-                    <property role="2Ry0Am" value="testClosures" />
-                    <node concept="2Ry0Ak" id="2j4NQWLGvS0" role="2Ry0An">
-                      <property role="2Ry0Am" value="solutions" />
-                      <node concept="2Ry0Ak" id="2j4NQWLGvS1" role="2Ry0An">
-                        <property role="2Ry0Am" value="jetbrains.mps.baseLanguage.closures.test" />
-                        <node concept="2Ry0Ak" id="2j4NQWLGvS2" role="2Ry0An">
-                          <property role="2Ry0Am" value="models" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3qWCbU" id="2j4NQWLGvS5" role="3LXTna">
-              <property role="3qWCbO" value="**/*.mps, **/*.mpsr, **/.model" />
-            </node>
-          </node>
-        </node>
-      </node>
       <node concept="1E1JtA" id="2j4NQWLGvOb" role="2G$12L">
         <property role="TrG5h" value="tests.testDepViewer" />
         <property role="3LESm3" value="4c6a90ca-b7fe-4942-9ee4-58e09ff23d6d" />
@@ -1684,9 +1590,6 @@
         </node>
         <node concept="L2wRC" id="2j4NQWLGvPx" role="39821P">
           <ref role="L2wRA" node="2j4NQWLGvND" resolve="testSubtypingTest" />
-        </node>
-        <node concept="L2wRC" id="2j4NQWLGvPy" role="39821P">
-          <ref role="L2wRA" node="2j4NQWLGvNU" resolve="jetbrains.mps.baseLanguage.closures.test" />
         </node>
         <node concept="L2wRC" id="2j4NQWLGvPz" role="39821P">
           <ref role="L2wRA" node="2j4NQWLGvOb" resolve="tests.testDepViewer" />

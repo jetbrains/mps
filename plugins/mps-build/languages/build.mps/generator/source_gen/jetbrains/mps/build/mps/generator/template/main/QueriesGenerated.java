@@ -1644,6 +1644,7 @@ public class QueriesGenerated extends QueryProviderBase {
     });
   }
   public static Iterable<SNode> sourceNodesQuery_10_14(final SourceSubstituteMacroNodesContext _context) {
+    // FIXME any idea why no clean sources for modules in bootstrap chunks, anyone?!
     Iterable<SNode> modules = SNodeOperations.ofConcept(ListSequence.fromList(((MPSModulesPartitioner) _context.getVariable("var:closure")).getChunks()).where(new IWhereFilter<MPSModulesPartitioner.Chunk>() {
       public boolean accept(MPSModulesPartitioner.Chunk it) {
         return !(it.isBootstrap());
