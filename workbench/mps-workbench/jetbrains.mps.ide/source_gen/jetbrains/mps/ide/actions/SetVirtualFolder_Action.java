@@ -100,7 +100,7 @@ public class SetVirtualFolder_Action extends BaseAction {
     // used to take VF common for all modules, but I don't see any reason not to take just any, we ask user for input anyway
     // if necessary, however, we can tell if there's common VF by allVFs.size() == 1
     String oldFolder = allVFs.stream().findAny().orElse("");
-    final String newFolder = Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), IdeBundle.message("dialogs.module.set.virtual.folder.text"), IdeBundle.message("dialogs.module.set.virtual.folder.title"), Messages.getQuestionIcon(), oldFolder, null);
+    final String newFolder = trim_5evjxr_a0a6a7(Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), IdeBundle.message("dialogs.module.set.virtual.folder.text"), IdeBundle.message("dialogs.module.set.virtual.folder.title"), Messages.getQuestionIcon(), oldFolder, null));
     // Only do something on OK or input is different from original string 
     if (newFolder == null || oldFolder.equals(newFolder)) {
       return;
@@ -113,5 +113,8 @@ public class SetVirtualFolder_Action extends BaseAction {
       }
     });
     ProjectPane.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).rebuild();
+  }
+  public static String trim_5evjxr_a0a6a7(String str) {
+    return (str == null ? null : str.trim());
   }
 }

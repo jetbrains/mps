@@ -501,6 +501,7 @@
       <concept id="1225271221393" name="jetbrains.mps.baseLanguage.structure.NPENotEqualsExpression" flags="nn" index="17QLQc" />
       <concept id="1225271283259" name="jetbrains.mps.baseLanguage.structure.NPEEqualsExpression" flags="nn" index="17R0WA" />
       <concept id="1225271369338" name="jetbrains.mps.baseLanguage.structure.IsEmptyOperation" flags="nn" index="17RlXB" />
+      <concept id="1225271546410" name="jetbrains.mps.baseLanguage.structure.TrimOperation" flags="nn" index="17S1cR" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
@@ -4975,37 +4976,40 @@
           <node concept="3cpWsn" id="hGASHw2" role="3cpWs9">
             <property role="TrG5h" value="newFolder" />
             <property role="3TUv4t" value="true" />
-            <node concept="2YIFZM" id="5iOAkPG7zSD" role="33vP2m">
-              <ref role="1Pybhc" to="jkm4:~Messages" resolve="Messages" />
-              <ref role="37wK5l" to="jkm4:~Messages.showInputDialog(com.intellij.openapi.project.Project,java.lang.String,java.lang.String,javax.swing.Icon,java.lang.String,com.intellij.openapi.ui.InputValidator)" resolve="showInputDialog" />
-              <node concept="2OqwBi" id="5iOAkPG7_rY" role="37wK5m">
-                <node concept="2WthIp" id="5iOAkPG7_s1" role="2Oq$k0" />
-                <node concept="1DTwFV" id="5iOAkPG7_s3" role="2OqNvi">
-                  <ref role="2WH_rO" node="6oBe0ilSkdc" resolve="ideaProject" />
-                </node>
-              </node>
-              <node concept="2YIFZM" id="7kKUpL4GpKW" role="37wK5m">
-                <ref role="37wK5l" to="3a50:~IdeBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
-                <ref role="1Pybhc" to="3a50:~IdeBundle" resolve="IdeBundle" />
-                <node concept="Xl_RD" id="7kKUpL4GpKX" role="37wK5m">
-                  <property role="Xl_RC" value="dialogs.module.set.virtual.folder.text" />
-                </node>
-              </node>
-              <node concept="2YIFZM" id="7kKUpL4GpaV" role="37wK5m">
-                <ref role="37wK5l" to="3a50:~IdeBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
-                <ref role="1Pybhc" to="3a50:~IdeBundle" resolve="IdeBundle" />
-                <node concept="Xl_RD" id="7kKUpL4GpaW" role="37wK5m">
-                  <property role="Xl_RC" value="dialogs.module.set.virtual.folder.title" />
-                </node>
-              </node>
-              <node concept="2YIFZM" id="5iOAkPG7TCl" role="37wK5m">
+            <node concept="2OqwBi" id="2j4NQWLUZer" role="33vP2m">
+              <node concept="2YIFZM" id="5iOAkPG7zSD" role="2Oq$k0">
                 <ref role="1Pybhc" to="jkm4:~Messages" resolve="Messages" />
-                <ref role="37wK5l" to="jkm4:~Messages.getQuestionIcon()" resolve="getQuestionIcon" />
+                <ref role="37wK5l" to="jkm4:~Messages.showInputDialog(com.intellij.openapi.project.Project,java.lang.String,java.lang.String,javax.swing.Icon,java.lang.String,com.intellij.openapi.ui.InputValidator)" resolve="showInputDialog" />
+                <node concept="2OqwBi" id="5iOAkPG7_rY" role="37wK5m">
+                  <node concept="2WthIp" id="5iOAkPG7_s1" role="2Oq$k0" />
+                  <node concept="1DTwFV" id="5iOAkPG7_s3" role="2OqNvi">
+                    <ref role="2WH_rO" node="6oBe0ilSkdc" resolve="ideaProject" />
+                  </node>
+                </node>
+                <node concept="2YIFZM" id="7kKUpL4GpKW" role="37wK5m">
+                  <ref role="37wK5l" to="3a50:~IdeBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
+                  <ref role="1Pybhc" to="3a50:~IdeBundle" resolve="IdeBundle" />
+                  <node concept="Xl_RD" id="7kKUpL4GpKX" role="37wK5m">
+                    <property role="Xl_RC" value="dialogs.module.set.virtual.folder.text" />
+                  </node>
+                </node>
+                <node concept="2YIFZM" id="7kKUpL4GpaV" role="37wK5m">
+                  <ref role="37wK5l" to="3a50:~IdeBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
+                  <ref role="1Pybhc" to="3a50:~IdeBundle" resolve="IdeBundle" />
+                  <node concept="Xl_RD" id="7kKUpL4GpaW" role="37wK5m">
+                    <property role="Xl_RC" value="dialogs.module.set.virtual.folder.title" />
+                  </node>
+                </node>
+                <node concept="2YIFZM" id="5iOAkPG7TCl" role="37wK5m">
+                  <ref role="1Pybhc" to="jkm4:~Messages" resolve="Messages" />
+                  <ref role="37wK5l" to="jkm4:~Messages.getQuestionIcon()" resolve="getQuestionIcon" />
+                </node>
+                <node concept="37vLTw" id="5iOAkPG7zSI" role="37wK5m">
+                  <ref role="3cqZAo" node="hGASCgn" resolve="oldFolder" />
+                </node>
+                <node concept="10Nm6u" id="5iOAkPG7WDk" role="37wK5m" />
               </node>
-              <node concept="37vLTw" id="5iOAkPG7zSI" role="37wK5m">
-                <ref role="3cqZAo" node="hGASCgn" resolve="oldFolder" />
-              </node>
-              <node concept="10Nm6u" id="5iOAkPG7WDk" role="37wK5m" />
+              <node concept="17S1cR" id="2j4NQWLV1Zj" role="2OqNvi" />
             </node>
             <node concept="17QB3L" id="hP3nDsf" role="1tU5fm" />
           </node>
