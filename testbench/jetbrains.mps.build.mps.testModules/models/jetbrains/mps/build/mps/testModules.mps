@@ -50,9 +50,6 @@
     <node concept="2Uj$md" id="6DW_AMABl3e" role="2Uj_Yd">
       <ref role="2Uj$mc" to="tw7x:6DW_AMABjI_" resolve="Subtyping" />
     </node>
-    <node concept="2Uj$md" id="Tb4Psnmic0" role="2Uj_Yd">
-      <ref role="2Uj$mc" to="rv78:Tb4Psnmhc2" resolve="DepViewer" />
-    </node>
     <node concept="2Uj$md" id="6sKuV4a30n3" role="2Uj_Yd">
       <ref role="2Uj$mc" to="cpet:2cKUqfNXsQu" resolve="Persistence" />
     </node>
