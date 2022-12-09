@@ -5,7 +5,7 @@
     <option name="MAIN_CLASS_NAME" value="jetbrains.mps.testbench.junit.suites.MPSAuditTypesystem" />
     <option name="METHOD_NAME" value="" />
     <option name="TEST_OBJECT" value="class" />
-    <option name="VM_PARAMETERS" value="-ea -Xmx2048m -XX:+UseG1GC -XX:+HeapDumpOnOutOfMemoryError -client -Dmps.junit.project=." />
+    <option name="VM_PARAMETERS" value="-ea -Xmx2048m -XX:+UseG1GC -XX:+HeapDumpOnOutOfMemoryError -client -Dmps.junit.project=. --add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED" />
     <option name="PARAMETERS" value="" />
     <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     <RunnerSettings RunnerId="Profile " />
