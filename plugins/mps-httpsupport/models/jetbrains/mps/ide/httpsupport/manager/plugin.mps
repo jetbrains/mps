@@ -2081,11 +2081,11 @@
             </node>
             <node concept="2OqwBi" id="15Pz4SXRxYW" role="33vP2m">
               <node concept="2YIFZM" id="15Pz4SXRyyQ" role="2Oq$k0">
-                <ref role="37wK5l" to="zrh2:~RegistryManager.getInstance()" resolve="getInstance" />
-                <ref role="1Pybhc" to="zrh2:~RegistryManager" resolve="RegistryManager" />
+                <ref role="37wK5l" to="rfhd:~RegistryManager.getInstance()" resolve="getInstance" />
+                <ref role="1Pybhc" to="rfhd:~RegistryManager" resolve="RegistryManager" />
               </node>
               <node concept="liA8E" id="15Pz4SXRyIh" role="2OqNvi">
-                <ref role="37wK5l" to="zrh2:~RegistryManager.get(java.lang.String)" resolve="get" />
+                <ref role="37wK5l" to="rfhd:~RegistryManager.get(java.lang.String)" resolve="get" />
                 <node concept="37vLTw" id="15Pz4SXRIkU" role="37wK5m">
                   <ref role="3cqZAo" node="3BwRxVwWbFj" resolve="PORT_KEY" />
                 </node>
@@ -2162,11 +2162,11 @@
         <node concept="3clFbF" id="15Pz4SXRL0e" role="3cqZAp">
           <node concept="2OqwBi" id="15Pz4SXRJef" role="3clFbG">
             <node concept="2YIFZM" id="15Pz4SXRISH" role="2Oq$k0">
-              <ref role="1Pybhc" to="zrh2:~RegistryManager" resolve="RegistryManager" />
-              <ref role="37wK5l" to="zrh2:~RegistryManager.getInstance()" resolve="getInstance" />
+              <ref role="1Pybhc" to="rfhd:~RegistryManager" resolve="RegistryManager" />
+              <ref role="37wK5l" to="rfhd:~RegistryManager.getInstance()" resolve="getInstance" />
             </node>
             <node concept="liA8E" id="15Pz4SXRJ_6" role="2OqNvi">
-              <ref role="37wK5l" to="zrh2:~RegistryManager.intValue(java.lang.String)" resolve="intValue" />
+              <ref role="37wK5l" to="rfhd:~RegistryManager.intValue(java.lang.String)" resolve="intValue" />
               <node concept="37vLTw" id="15Pz4SXRL0h" role="37wK5m">
                 <ref role="3cqZAo" node="3BwRxVwWbFj" resolve="PORT_KEY" />
               </node>
@@ -2531,11 +2531,11 @@
         <node concept="3clFbF" id="15Pz4SXRMbA" role="3cqZAp">
           <node concept="2OqwBi" id="15Pz4SXRMbC" role="3clFbG">
             <node concept="2YIFZM" id="1IYR_$nECji" role="2Oq$k0">
-              <ref role="1Pybhc" to="zrh2:~RegistryManager" resolve="RegistryManager" />
-              <ref role="37wK5l" to="zrh2:~RegistryManager.getInstance()" resolve="getInstance" />
+              <ref role="1Pybhc" to="rfhd:~RegistryManager" resolve="RegistryManager" />
+              <ref role="37wK5l" to="rfhd:~RegistryManager.getInstance()" resolve="getInstance" />
             </node>
             <node concept="liA8E" id="15Pz4SXRMbE" role="2OqNvi">
-              <ref role="37wK5l" to="zrh2:~RegistryManager.intValue(java.lang.String,int)" resolve="intValue" />
+              <ref role="37wK5l" to="rfhd:~RegistryManager.intValue(java.lang.String,int)" resolve="intValue" />
               <node concept="37vLTw" id="15Pz4SXRMbG" role="37wK5m">
                 <ref role="3cqZAo" node="3BwRxVwWbFj" resolve="PORT_KEY" />
               </node>

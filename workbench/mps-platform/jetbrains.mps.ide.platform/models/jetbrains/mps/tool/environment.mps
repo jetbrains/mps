@@ -47,6 +47,7 @@
     <import index="ncw5" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)" />
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
     <import index="v50w" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.fileEditor.ex(MPS.IDEA/)" />
+    <import index="g3j3" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:kotlinx.coroutines.future(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -3559,22 +3560,26 @@
         <node concept="3clFbS" id="78Cs0exs$sR" role="3clF47">
           <node concept="3J1_TO" id="1CvX25d$5WU" role="3cqZAp">
             <node concept="3clFbS" id="1CvX25d$5WV" role="1zxBo7">
-              <node concept="3clFbF" id="1CvX25d$3mL" role="3cqZAp">
-                <node concept="2OqwBi" id="1CvX25d$3HM" role="3clFbG">
-                  <node concept="2OqwBi" id="1CvX25d$3mN" role="2Oq$k0">
-                    <node concept="1rXfSq" id="1CvX25d$3mO" role="2Oq$k0">
-                      <ref role="37wK5l" node="78Cs0exs$sJ" resolve="getStartupManager" />
-                    </node>
-                    <node concept="liA8E" id="1CvX25d$3Bs" role="2OqNvi">
-                      <ref role="37wK5l" to="zymn:~StartupManagerEx.getAllActivitiesPassedFuture()" resolve="getAllActivitiesPassedFuture" />
+              <node concept="3clFbF" id="476WKSlc2qL" role="3cqZAp">
+                <node concept="2OqwBi" id="476WKSlciHJ" role="3clFbG">
+                  <node concept="2YIFZM" id="476WKSlc5BO" role="2Oq$k0">
+                    <ref role="37wK5l" to="g3j3:~FutureKt.asCompletableFuture(kotlinx.coroutines.Job)" resolve="asCompletableFuture" />
+                    <ref role="1Pybhc" to="g3j3:~FutureKt" resolve="FutureKt" />
+                    <node concept="2OqwBi" id="476WKSlccEq" role="37wK5m">
+                      <node concept="1rXfSq" id="476WKSlca8x" role="2Oq$k0">
+                        <ref role="37wK5l" node="78Cs0exs$sJ" resolve="getStartupManager" />
+                      </node>
+                      <node concept="liA8E" id="476WKSlcg4K" role="2OqNvi">
+                        <ref role="37wK5l" to="v27p:~StartupManager.getAllActivitiesPassedFuture()" resolve="getAllActivitiesPassedFuture" />
+                      </node>
                     </node>
                   </node>
-                  <node concept="liA8E" id="1CvX25d$3Xx" role="2OqNvi">
-                    <ref role="37wK5l" to="5zyv:~Future.get(long,java.util.concurrent.TimeUnit)" resolve="get" />
-                    <node concept="37vLTw" id="1CvX25d$4_u" role="37wK5m">
+                  <node concept="liA8E" id="476WKSlcosC" role="2OqNvi">
+                    <ref role="37wK5l" to="5zyv:~CompletableFuture.get(long,java.util.concurrent.TimeUnit)" resolve="get" />
+                    <node concept="37vLTw" id="476WKSlctFz" role="37wK5m">
                       <ref role="3cqZAo" node="7JMs__iKdYC" resolve="time" />
                     </node>
-                    <node concept="37vLTw" id="1CvX25d$5gX" role="37wK5m">
+                    <node concept="37vLTw" id="476WKSlc_Yu" role="37wK5m">
                       <ref role="3cqZAo" node="7JMs__iKew2" resolve="units" />
                     </node>
                   </node>

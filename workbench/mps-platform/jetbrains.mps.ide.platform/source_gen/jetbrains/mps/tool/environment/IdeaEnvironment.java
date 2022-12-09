@@ -4,7 +4,6 @@ package jetbrains.mps.tool.environment;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.logging.Logger;
-import kotlinx.coroutines.future.FutureKt;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.util.PlatformUtils;
 import jetbrains.mps.ide.MPSCoreComponents;
@@ -46,6 +45,7 @@ import jetbrains.mps.vfs.refresh.DefaultCachingContext;
 import com.intellij.testFramework.PlatformTestUtil;
 import jetbrains.mps.core.platform.Platform;
 import com.intellij.ide.startup.StartupManagerEx;
+import kotlinx.coroutines.future.FutureKt;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.ExecutionException;
 

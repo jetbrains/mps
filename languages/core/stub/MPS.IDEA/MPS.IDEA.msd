@@ -19,6 +19,8 @@
         <include prefix="org.jetbrains."/>
         <include prefix="io.netty."/> <!-- although there's io.netty import, keep until migration is in place -->
         <include prefix="com.google.common.collect"/> <!-- 3 uses in mps-extensions I don't want to fix now -->
+        <!-- kotlin Job->Future bridge (FutureKt) -->
+        <include prefix="kotlinx.c" />
         <!-- kotlin annotations from 3rd-party-rt.jar, like JvmOverloads -->
         <include prefix="kotlin." />
         <include prefix="kotlin.annotation" />
