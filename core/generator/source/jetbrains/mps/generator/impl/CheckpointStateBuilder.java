@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -130,7 +130,13 @@ class CheckpointStateBuilder {
     // need saveActiveTransition() call to prepare transitions regardless of node<DebugMappings> root presence.
     myTransitionTrace.saveActiveTransition(myCheckpointModel);
     if (myDebugMappingNode != null) {
-      myCheckpointModel.addRootNode(myDebugMappingNode);
+      if (myCheckpointModel.getRootNodes().iterator().hasNext() || myDebugMappingNode.getFirstChild() != null) {
+        // not a nice way to deal with non-empty input model that has all its roots abandoned and no LMs recorded.
+        // there's empty myDebugMappingNode then, and CheckpointVaule.updateCheckpointsOf() + CheckpointState.isEmptyCheckpoint()
+        // could not detect blank CP model and proceed to serialize it, leading to effects of MPS-35118 (see 'feedback'/ProblemKind part)
+        // Perhaps, better way to fix this is to modify isEmptyCheckpoint() to detect empty GeneratorDebug_Mappings instance?
+        myCheckpointModel.addRootNode(myDebugMappingNode);
+      }
     }
     ConsistentNodeIdentityHelper consistentNodeIdentity = new ConsistentNodeIdentityHelper(new SNodePresentationComparator());
     consistentNodeIdentity.apply(myCheckpointModel);
