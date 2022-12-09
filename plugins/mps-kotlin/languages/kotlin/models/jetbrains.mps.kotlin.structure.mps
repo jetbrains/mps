@@ -3513,13 +3513,19 @@
     </node>
     <node concept="1TJgyj" id="6Ijh6DJ$60I" role="1TKVEi">
       <property role="IQ2ns" value="7751614607563710510" />
-      <property role="20kJfa" value="receiver" />
+      <property role="20kJfa" value="_receiver" />
       <ref role="20lvS9" node="xpyqH1FtXg" resolve="IThisReceiverProvider" />
+      <node concept="asaX9" id="1uMShlXe9jB" role="lGtFl">
+        <property role="YLQ7P" value="typesystem computes it" />
+      </node>
     </node>
     <node concept="1TJgyi" id="6Ijh6DJ$6x9" role="1TKVEl">
       <property role="IQ2nx" value="7751614607563712585" />
-      <property role="TrG5h" value="receiverIndex" />
+      <property role="TrG5h" value="_receiverIndex" />
       <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
+      <node concept="asaX9" id="1uMShlXe9j$" role="lGtFl">
+        <property role="YLQ7P" value="typesystem computes it" />
+      </node>
     </node>
   </node>
   <node concept="PlHQZ" id="7Iv8Cw7qLdE">

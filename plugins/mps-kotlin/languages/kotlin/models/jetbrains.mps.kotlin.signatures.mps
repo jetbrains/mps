@@ -1767,9 +1767,6 @@
                 <ref role="3cqZAo" node="6Ijh6DJV_wv" resolve="source" />
               </node>
               <node concept="Xjq3P" id="6Ijh6DJVAL4" role="37wK5m" />
-              <node concept="37vLTw" id="5$XWI2Q$krk" role="37wK5m">
-                <ref role="3cqZAo" node="5$XWI2Q$k7g" resolve="externalReceiver" />
-              </node>
             </node>
           </node>
         </node>
@@ -1782,12 +1779,6 @@
         <property role="TrG5h" value="source" />
         <node concept="3Tqbb2" id="6Ijh6DJV_wu" role="1tU5fm">
           <ref role="ehGHo" to="tpck:h0TrEE$" resolve="INamedConcept" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="5$XWI2Q$k7g" role="3clF46">
-        <property role="TrG5h" value="externalReceiver" />
-        <node concept="3Tqbb2" id="6nK3tka_NsS" role="1tU5fm">
-          <ref role="ehGHo" to="hcm8:2yYXHtl6Jh1" resolve="IType" />
         </node>
       </node>
       <node concept="2JFqV2" id="6Ijh6DJV_C7" role="2frcjj" />

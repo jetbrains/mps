@@ -11,6 +11,8 @@
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="hcm8" ref="r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)" />
     <import index="nww" ref="r:f44f82b0-1fd9-4105-a80c-2fa6e5033003(jetbrains.mps.kotlin.signatures)" />
+    <import index="sjya" ref="r:8a99441d-539c-493f-b884-7b6b084d024b(jetbrains.mps.kotlin.scopes.signed)" />
+    <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
   <registry>
@@ -252,19 +254,6 @@
         <ref role="3uigEE" to="nww:18X2O0FJocj" resolve="MemberSignature" />
       </node>
     </node>
-    <node concept="2RhdJD" id="5$XWI2QcdnZ" role="jymVt">
-      <property role="2RkwnN" value="receiver" />
-      <node concept="3Tm1VV" id="5$XWI2Qcdo0" role="1B3o_S" />
-      <node concept="2RoN1w" id="5$XWI2Qcdo1" role="2RnVtd">
-        <node concept="3wEZqW" id="5$XWI2Qcdo2" role="3wFrgM" />
-        <node concept="3xqBd$" id="5$XWI2Qcdo3" role="3xrYvX">
-          <node concept="3Tm6S6" id="5$XWI2Qcdo4" role="3xqFEP" />
-        </node>
-      </node>
-      <node concept="3Tqbb2" id="6nK3tkasHC8" role="2RkE6I">
-        <ref role="ehGHo" to="hcm8:2yYXHtl6Jh1" resolve="IType" />
-      </node>
-    </node>
     <node concept="2tJIrI" id="5q426iHsljN" role="jymVt" />
     <node concept="3clFbW" id="18X2O0FJJjN" role="jymVt">
       <node concept="3cqZAl" id="18X2O0FJJjP" role="3clF45" />
@@ -296,19 +285,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="5$XWI2QcekD" role="3cqZAp">
-          <node concept="37vLTI" id="5$XWI2QceQL" role="3clFbG">
-            <node concept="37vLTw" id="5$XWI2QceWU" role="37vLTx">
-              <ref role="3cqZAo" node="6nK3tkasHrA" resolve="receiver" />
-            </node>
-            <node concept="2OqwBi" id="5$XWI2Qcer4" role="37vLTJ">
-              <node concept="Xjq3P" id="5$XWI2QcekB" role="2Oq$k0" />
-              <node concept="2S8uIT" id="5$XWI2QceBH" role="2OqNvi">
-                <ref role="2S8YL0" node="5$XWI2QcdnZ" resolve="receiver" />
-              </node>
-            </node>
-          </node>
-        </node>
       </node>
       <node concept="P$JXv" id="5$XWI2Qcf7s" role="lGtFl">
         <node concept="TZ5HA" id="5$XWI2Qcf7t" role="TZ5H$">
@@ -328,12 +304,6 @@
             <ref role="zr_51" node="5q426iHslof" resolve="signature" />
           </node>
         </node>
-        <node concept="TUZQ0" id="5$XWI2Qcf7_" role="3nqlJM">
-          <property role="TUZQ4" value="receiver of the signature (if it is implicitely the receiver for 'this', can be null)" />
-          <node concept="zr_55" id="5$XWI2Qcf7B" role="zr_5Q">
-            <ref role="zr_51" node="6nK3tkasHrA" resolve="receiver" />
-          </node>
-        </node>
       </node>
       <node concept="37vLTG" id="18X2O0FJJkt" role="3clF46">
         <property role="TrG5h" value="source" />
@@ -343,12 +313,6 @@
         <property role="TrG5h" value="signature" />
         <node concept="3uibUv" id="6tAWxay4Y8K" role="1tU5fm">
           <ref role="3uigEE" to="nww:18X2O0FJocj" resolve="MemberSignature" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="6nK3tkasHrA" role="3clF46">
-        <property role="TrG5h" value="receiver" />
-        <node concept="3Tqbb2" id="6nK3tkasHrB" role="1tU5fm">
-          <ref role="ehGHo" to="hcm8:2yYXHtl6Jh1" resolve="IType" />
         </node>
       </node>
     </node>

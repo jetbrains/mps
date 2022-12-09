@@ -23,6 +23,7 @@
     <import index="nww" ref="r:f44f82b0-1fd9-4105-a80c-2fa6e5033003(jetbrains.mps.kotlin.signatures)" />
     <import index="2q9i" ref="r:764c4c95-d567-4a0e-99be-3892becb007f(jetbrains.mps.kotlin.api.members)" />
     <import index="mx11" ref="r:fa9de6a8-90b7-4d2a-a9a9-a40c05cf603b(jetbrains.mps.kotlin.api.types.identifiers)" />
+    <import index="sjya" ref="r:8a99441d-539c-493f-b884-7b6b084d024b(jetbrains.mps.kotlin.scopes.signed)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -352,22 +353,6 @@
             <ref role="3uigEE" to="nww:18X2O0FJocj" resolve="MemberSignature" />
           </node>
         </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="5q426iH_2tP" role="jymVt" />
-    <node concept="312cEg" id="5$XWI2Q$$Gh" role="jymVt">
-      <property role="TrG5h" value="initialReceiver" />
-      <node concept="3Tm6S6" id="5$XWI2Q$yJj" role="1B3o_S" />
-      <node concept="z59LJ" id="5$XWI2Q$TAs" role="lGtFl">
-        <node concept="TZ5HA" id="5$XWI2Q$TAt" role="TZ5H$">
-          <node concept="1dT_AC" id="5$XWI2Q$TAu" role="1dT_Ay">
-            <property role="1dT_AB" value="Only the initial receiver is taken in account for signatures, as it is " />
-          </node>
-        </node>
-      </node>
-      <node concept="10Nm6u" id="5$XWI2Q$VBr" role="33vP2m" />
-      <node concept="3Tqbb2" id="6nK3tkawptZ" role="1tU5fm">
-        <ref role="ehGHo" to="hcm8:2yYXHtl6Jh1" resolve="IType" />
       </node>
     </node>
     <node concept="2tJIrI" id="5$XWI2Q$xdI" role="jymVt" />
@@ -873,9 +858,6 @@
                       <node concept="37vLTw" id="5$XWI2Qflr1" role="37wK5m">
                         <ref role="3cqZAo" node="5$XWI2Qe5kS" resolve="signature" />
                       </node>
-                      <node concept="37vLTw" id="5$XWI2Q$CYd" role="37wK5m">
-                        <ref role="3cqZAo" node="5$XWI2Q$$Gh" resolve="initialReceiver" />
-                      </node>
                     </node>
                   </node>
                 </node>
@@ -972,27 +954,6 @@
         </node>
       </node>
       <node concept="3clFbS" id="6qs$OhcspyY" role="3clF47">
-        <node concept="3clFbJ" id="5$XWI2Q$E_P" role="3cqZAp">
-          <node concept="3clFbS" id="5$XWI2Q$E_R" role="3clFbx">
-            <node concept="3clFbF" id="5$XWI2Q$LLt" role="3cqZAp">
-              <node concept="37vLTI" id="5$XWI2Q$MQX" role="3clFbG">
-                <node concept="37vLTw" id="5$XWI2Q$LLr" role="37vLTJ">
-                  <ref role="3cqZAo" node="5$XWI2Q$$Gh" resolve="initialReceiver" />
-                </node>
-                <node concept="37vLTw" id="6nK3tkawone" role="37vLTx">
-                  <ref role="3cqZAo" node="6qs$OhcspyP" resolve="type" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbC" id="5$XWI2Q$Ix2" role="3clFbw">
-            <node concept="10Nm6u" id="5$XWI2Q$IDd" role="3uHU7w" />
-            <node concept="37vLTw" id="5$XWI2Q$FLG" role="3uHU7B">
-              <ref role="3cqZAo" node="5$XWI2Q$$Gh" resolve="initialReceiver" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbH" id="5$XWI2Q$SKd" role="3cqZAp" />
         <node concept="3cpWs6" id="6qs$Ohcsvxj" role="3cqZAp">
           <node concept="2OqwBi" id="6qs$Ohcsvxk" role="3cqZAk">
             <node concept="Xjq3P" id="6qs$Ohcsvxl" role="2Oq$k0" />
