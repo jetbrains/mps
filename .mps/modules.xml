@@ -368,15 +368,6 @@
       <modulePath path="$PROJECT_DIR$/plugins/mps-vcs/vcs-core/modules/mergehints.runtime/jetbrains.mps.vcs.mergehints.runtime.msd" folder="platform.vcs.core" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-vcs/vcs-platform/languages/modelmetadata/jetbrains.mps.ide.vcs.modelmetadata.mpl" folder="platform.vcs" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-vcs/vcs-platform/solutions/jetbrains.mps.ide.vcs.platform/jetbrains.mps.ide.vcs.platform.msd" folder="platform.vcs.platform" />
-      <modulePath path="$PROJECT_DIR$/plugins/testModules/testSubstituteType/languages/testAnnotatedType/testAnnotatedType.mpl" folder="tests.substituteType" />
-      <modulePath path="$PROJECT_DIR$/plugins/testModules/testSubstituteType/languages/testOverridingRule/testOverridingRule.mpl" folder="tests.substituteType" />
-      <modulePath path="$PROJECT_DIR$/plugins/testModules/testSubstituteType/languages/testOverridingType/testOverridingType.mpl" folder="tests.substituteType" />
-      <modulePath path="$PROJECT_DIR$/plugins/testModules/testSubstituteType/languages/testWrappedType/testWrappedType.mpl" folder="tests.substituteType" />
-      <modulePath path="$PROJECT_DIR$/plugins/testModules/testSubstituteType/solutions/testSubstituteType/testSubstituteType.msd" folder="tests.substituteType" />
-      <modulePath path="$PROJECT_DIR$/plugins/testModules/testSubtyping/languages/testPrimitiveType/testPrimitiveType.mpl" folder="tests.subtyping" />
-      <modulePath path="$PROJECT_DIR$/plugins/testModules/testSubtyping/languages/testSubtypingA/testSubtypingA.mpl" folder="tests.subtyping" />
-      <modulePath path="$PROJECT_DIR$/plugins/testModules/testSubtyping/languages/testSubtypingB/testSubtypingB.mpl" folder="tests.subtyping" />
-      <modulePath path="$PROJECT_DIR$/plugins/testModules/testSubtyping/solutions/testSubtypingTest/testSubtypingTest.msd" folder="tests.subtyping" />
       <modulePath path="$PROJECT_DIR$/samples/_theSimplestLanguage/languages/theSimplestLanguage/jetbrains.mps.samples.theSimplestLanguage.mpl" folder="samples.theSimplestLanguage" />
       <modulePath path="$PROJECT_DIR$/samples/_theSimplestLanguage/solutions/jetbrains.mps.samples.theSimplestLanguage.sandbox/jetbrains.mps.samples.theSimplestLanguage.sandbox.msd" folder="samples.theSimplestLanguage" />
       <modulePath path="$PROJECT_DIR$/samples/agreement/agreementLanguage/jetbrains.mps.samples.agreementLanguage.mpl" folder="samples" />
@@ -623,6 +614,15 @@
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/smodelLanguage_typeTest/smodelLanguage_typetest.msd" folder="core.languages.smodel" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/test.test/jetbrains.mps.lang.test.test.msd" folder="core.languages.test" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/testClosures/solutions/jetbrains.mps.baseLanguage.closures.test/jetbrains.mps.baseLanguage.closures.test.msd" folder="core.baseLanguage.closures" />
+      <modulePath path="$PROJECT_DIR$/testbench/testsolutions/testSubstituteType/languages/testAnnotatedType/testAnnotatedType.mpl" folder="tests.substituteType" />
+      <modulePath path="$PROJECT_DIR$/testbench/testsolutions/testSubstituteType/languages/testOverridingRule/testOverridingRule.mpl" folder="tests.substituteType" />
+      <modulePath path="$PROJECT_DIR$/testbench/testsolutions/testSubstituteType/languages/testOverridingType/testOverridingType.mpl" folder="tests.substituteType" />
+      <modulePath path="$PROJECT_DIR$/testbench/testsolutions/testSubstituteType/languages/testWrappedType/testWrappedType.mpl" folder="tests.substituteType" />
+      <modulePath path="$PROJECT_DIR$/testbench/testsolutions/testSubstituteType/solutions/testSubstituteType/testSubstituteType.msd" folder="tests.substituteType" />
+      <modulePath path="$PROJECT_DIR$/testbench/testsolutions/testSubtyping/languages/testPrimitiveType/testPrimitiveType.mpl" folder="tests.subtyping" />
+      <modulePath path="$PROJECT_DIR$/testbench/testsolutions/testSubtyping/languages/testSubtypingA/testSubtypingA.mpl" folder="tests.subtyping" />
+      <modulePath path="$PROJECT_DIR$/testbench/testsolutions/testSubtyping/languages/testSubtypingB/testSubtypingB.mpl" folder="tests.subtyping" />
+      <modulePath path="$PROJECT_DIR$/testbench/testsolutions/testSubtyping/solutions/testSubtypingTest/testSubtypingTest.msd" folder="tests.subtyping" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/testlangs/editor.formsTests.testLang/jetbrains.mps.lang.editor.formsTests.mpl" folder="core.aspects.editor" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/testlangs/editor.menus.contextAssistant.extension.testLanguage/jetbrains.mps.lang.editor.menus.contextAssistant.testExtendingLanguage.mpl" folder="core.aspects.editor.menus.contextAssistant.tests" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/testlangs/editor.menus.contextAssistant.testLanguage/jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.mpl" folder="core.aspects.editor.menus.contextAssistant.tests" />

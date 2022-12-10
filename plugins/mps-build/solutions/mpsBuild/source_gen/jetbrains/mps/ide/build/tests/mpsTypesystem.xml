@@ -124,22 +124,22 @@
     </echoxml>
     <jar destfile="${build.layout}/lang/testAnnotatedType.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/testAnnotatedType" />
-      <fileset dir="${basedir}/plugins/testModules/testSubstituteType/languages/testAnnotatedType" includes="icons/**, resources/**" />
-      <fileset dir="${basedir}/plugins/testModules/testSubstituteType/languages/testAnnotatedType/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testAnnotatedType" includes="icons/**, resources/**" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testAnnotatedType/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/testAnnotatedType.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-testModules-testSubstituteType-languages-testAnnotatedType-languageModels">
-      <fileset dir="${basedir}/plugins/testModules/testSubstituteType/languages/testAnnotatedType/languageModels" includes="**/*.mps, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-testSubstituteType-languages-testAnnotatedType-languageModels">
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testAnnotatedType/languageModels" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/lang/testAnnotatedType-src.jar" duplicate="preserve">
-      <fileset dir="${basedir}/plugins/testModules/testSubstituteType/languages/testAnnotatedType/source_gen">
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testAnnotatedType/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <zipfileset file="${basedir}/plugins/testModules/testSubstituteType/languages/testAnnotatedType/testAnnotatedType.mpl" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-testModules-testSubstituteType-languages-testAnnotatedType-languageModels" prefix="module/languageModels" />
+      <zipfileset file="${basedir}/testbench/testsolutions/testSubstituteType/languages/testAnnotatedType/testAnnotatedType.mpl" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-testSubstituteType-languages-testAnnotatedType-languageModels" prefix="module/languageModels" />
     </jar>
     <mkdir dir="${build.tmp}/default/testOverridingType.jar" />
     <mkdir dir="${build.tmp}/default/testOverridingType.jar/META-INF" />
@@ -204,22 +204,22 @@
     </echoxml>
     <jar destfile="${build.layout}/lang/testOverridingType.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/testOverridingType" />
-      <fileset dir="${basedir}/plugins/testModules/testSubstituteType/languages/testOverridingType" includes="icons/**, resources/**" />
-      <fileset dir="${basedir}/plugins/testModules/testSubstituteType/languages/testOverridingType/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testOverridingType" includes="icons/**, resources/**" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testOverridingType/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/testOverridingType.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-testModules-testSubstituteType-languages-testOverridingType-models">
-      <fileset dir="${basedir}/plugins/testModules/testSubstituteType/languages/testOverridingType/models" includes="**/*.mps, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-testSubstituteType-languages-testOverridingType-models">
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testOverridingType/models" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/lang/testOverridingType-src.jar" duplicate="preserve">
-      <fileset dir="${basedir}/plugins/testModules/testSubstituteType/languages/testOverridingType/source_gen">
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testOverridingType/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <zipfileset file="${basedir}/plugins/testModules/testSubstituteType/languages/testOverridingType/testOverridingType.mpl" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-testModules-testSubstituteType-languages-testOverridingType-models" prefix="module/models" />
+      <zipfileset file="${basedir}/testbench/testsolutions/testSubstituteType/languages/testOverridingType/testOverridingType.mpl" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-testSubstituteType-languages-testOverridingType-models" prefix="module/models" />
     </jar>
     <mkdir dir="${build.tmp}/default/testOverridingRule.jar" />
     <mkdir dir="${build.tmp}/default/testOverridingRule.jar/META-INF" />
@@ -280,22 +280,22 @@
     </echoxml>
     <jar destfile="${build.layout}/lang/testOverridingRule.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/testOverridingRule" />
-      <fileset dir="${basedir}/plugins/testModules/testSubstituteType/languages/testOverridingRule" includes="icons/**, resources/**" />
-      <fileset dir="${basedir}/plugins/testModules/testSubstituteType/languages/testOverridingRule/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testOverridingRule" includes="icons/**, resources/**" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testOverridingRule/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/testOverridingRule.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-testModules-testSubstituteType-languages-testOverridingRule-models">
-      <fileset dir="${basedir}/plugins/testModules/testSubstituteType/languages/testOverridingRule/models" includes="**/*.mps, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-testSubstituteType-languages-testOverridingRule-models">
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testOverridingRule/models" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/lang/testOverridingRule-src.jar" duplicate="preserve">
-      <fileset dir="${basedir}/plugins/testModules/testSubstituteType/languages/testOverridingRule/source_gen">
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testOverridingRule/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <zipfileset file="${basedir}/plugins/testModules/testSubstituteType/languages/testOverridingRule/testOverridingRule.mpl" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-testModules-testSubstituteType-languages-testOverridingRule-models" prefix="module/models" />
+      <zipfileset file="${basedir}/testbench/testsolutions/testSubstituteType/languages/testOverridingRule/testOverridingRule.mpl" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-testSubstituteType-languages-testOverridingRule-models" prefix="module/models" />
     </jar>
     <mkdir dir="${build.tmp}/default/testWrappedType.jar" />
     <mkdir dir="${build.tmp}/default/testWrappedType.jar/META-INF" />
@@ -359,22 +359,22 @@
     </echoxml>
     <jar destfile="${build.layout}/lang/testWrappedType.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/testWrappedType" />
-      <fileset dir="${basedir}/plugins/testModules/testSubstituteType/languages/testWrappedType" includes="icons/**, resources/**" />
-      <fileset dir="${basedir}/plugins/testModules/testSubstituteType/languages/testWrappedType/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testWrappedType" includes="icons/**, resources/**" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testWrappedType/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/testWrappedType.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-testModules-testSubstituteType-languages-testWrappedType-languageModels">
-      <fileset dir="${basedir}/plugins/testModules/testSubstituteType/languages/testWrappedType/languageModels" includes="**/*.mps, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-testSubstituteType-languages-testWrappedType-languageModels">
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testWrappedType/languageModels" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/lang/testWrappedType-src.jar" duplicate="preserve">
-      <fileset dir="${basedir}/plugins/testModules/testSubstituteType/languages/testWrappedType/source_gen">
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testWrappedType/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <zipfileset file="${basedir}/plugins/testModules/testSubstituteType/languages/testWrappedType/testWrappedType.mpl" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-testModules-testSubstituteType-languages-testWrappedType-languageModels" prefix="module/languageModels" />
+      <zipfileset file="${basedir}/testbench/testsolutions/testSubstituteType/languages/testWrappedType/testWrappedType.mpl" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-testSubstituteType-languages-testWrappedType-languageModels" prefix="module/languageModels" />
     </jar>
     <mkdir dir="${build.tmp}/default/testPrimitiveType.jar" />
     <mkdir dir="${build.tmp}/default/testPrimitiveType.jar/META-INF" />
@@ -436,22 +436,22 @@
     </echoxml>
     <jar destfile="${build.layout}/lang/testPrimitiveType.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/testPrimitiveType" />
-      <fileset dir="${basedir}/plugins/testModules/testSubtyping/languages/testPrimitiveType" includes="icons/**, resources/**" />
-      <fileset dir="${basedir}/plugins/testModules/testSubtyping/languages/testPrimitiveType/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testPrimitiveType" includes="icons/**, resources/**" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testPrimitiveType/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/testPrimitiveType.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-testModules-testSubtyping-languages-testPrimitiveType-languageModels">
-      <fileset dir="${basedir}/plugins/testModules/testSubtyping/languages/testPrimitiveType/languageModels" includes="**/*.mps, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-testSubtyping-languages-testPrimitiveType-languageModels">
+      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testPrimitiveType/languageModels" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/lang/testPrimitiveType-src.jar" duplicate="preserve">
-      <fileset dir="${basedir}/plugins/testModules/testSubtyping/languages/testPrimitiveType/source_gen">
+      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testPrimitiveType/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <zipfileset file="${basedir}/plugins/testModules/testSubtyping/languages/testPrimitiveType/testPrimitiveType.mpl" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-testModules-testSubtyping-languages-testPrimitiveType-languageModels" prefix="module/languageModels" />
+      <zipfileset file="${basedir}/testbench/testsolutions/testSubtyping/languages/testPrimitiveType/testPrimitiveType.mpl" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-testSubtyping-languages-testPrimitiveType-languageModels" prefix="module/languageModels" />
     </jar>
     <mkdir dir="${build.tmp}/default/testSubtypingA.jar" />
     <mkdir dir="${build.tmp}/default/testSubtypingA.jar/META-INF" />
@@ -513,22 +513,22 @@
     </echoxml>
     <jar destfile="${build.layout}/lang/testSubtypingA.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/testSubtypingA" />
-      <fileset dir="${basedir}/plugins/testModules/testSubtyping/languages/testSubtypingA" includes="icons/**, resources/**" />
-      <fileset dir="${basedir}/plugins/testModules/testSubtyping/languages/testSubtypingA/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testSubtypingA" includes="icons/**, resources/**" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testSubtypingA/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/testSubtypingA.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-testModules-testSubtyping-languages-testSubtypingA-languageModels">
-      <fileset dir="${basedir}/plugins/testModules/testSubtyping/languages/testSubtypingA/languageModels" includes="**/*.mps, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-testSubtyping-languages-testSubtypingA-languageModels">
+      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testSubtypingA/languageModels" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/lang/testSubtypingA-src.jar" duplicate="preserve">
-      <fileset dir="${basedir}/plugins/testModules/testSubtyping/languages/testSubtypingA/source_gen">
+      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testSubtypingA/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <zipfileset file="${basedir}/plugins/testModules/testSubtyping/languages/testSubtypingA/testSubtypingA.mpl" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-testModules-testSubtyping-languages-testSubtypingA-languageModels" prefix="module/languageModels" />
+      <zipfileset file="${basedir}/testbench/testsolutions/testSubtyping/languages/testSubtypingA/testSubtypingA.mpl" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-testSubtyping-languages-testSubtypingA-languageModels" prefix="module/languageModels" />
     </jar>
     <mkdir dir="${build.tmp}/default/testSubtypingB.jar" />
     <mkdir dir="${build.tmp}/default/testSubtypingB.jar/META-INF" />
@@ -591,22 +591,22 @@
     </echoxml>
     <jar destfile="${build.layout}/lang/testSubtypingB.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/testSubtypingB" />
-      <fileset dir="${basedir}/plugins/testModules/testSubtyping/languages/testSubtypingB" includes="icons/**, resources/**" />
-      <fileset dir="${basedir}/plugins/testModules/testSubtyping/languages/testSubtypingB/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testSubtypingB" includes="icons/**, resources/**" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testSubtypingB/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/testSubtypingB.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-testModules-testSubtyping-languages-testSubtypingB-languageModels">
-      <fileset dir="${basedir}/plugins/testModules/testSubtyping/languages/testSubtypingB/languageModels" includes="**/*.mps, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-testSubtyping-languages-testSubtypingB-languageModels">
+      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testSubtypingB/languageModels" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/lang/testSubtypingB-src.jar" duplicate="preserve">
-      <fileset dir="${basedir}/plugins/testModules/testSubtyping/languages/testSubtypingB/source_gen">
+      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testSubtypingB/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <zipfileset file="${basedir}/plugins/testModules/testSubtyping/languages/testSubtypingB/testSubtypingB.mpl" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-testModules-testSubtyping-languages-testSubtypingB-languageModels" prefix="module/languageModels" />
+      <zipfileset file="${basedir}/testbench/testsolutions/testSubtyping/languages/testSubtypingB/testSubtypingB.mpl" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-testSubtyping-languages-testSubtypingB-languageModels" prefix="module/languageModels" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.lang.typesystem.test.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.lang.typesystem.test.jar/META-INF" />
@@ -689,22 +689,22 @@
     </echoxml>
     <jar destfile="${build.layout}/testSubstituteType.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/testSubstituteType" />
-      <fileset dir="${basedir}/plugins/testModules/testSubstituteType/solutions/testSubstituteType" includes="icons/**, resources/**" />
-      <fileset dir="${basedir}/plugins/testModules/testSubstituteType/solutions/testSubstituteType/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/solutions/testSubstituteType" includes="icons/**, resources/**" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/solutions/testSubstituteType/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/testSubstituteType.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-testModules-testSubstituteType-solutions-testSubstituteType-models">
-      <fileset dir="${basedir}/plugins/testModules/testSubstituteType/solutions/testSubstituteType/models" includes="**/*.mps, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-testSubstituteType-solutions-testSubstituteType-models">
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/solutions/testSubstituteType/models" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/testSubstituteType-src.jar" duplicate="preserve">
-      <fileset dir="${basedir}/plugins/testModules/testSubstituteType/solutions/testSubstituteType/source_gen">
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/solutions/testSubstituteType/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <zipfileset file="${basedir}/plugins/testModules/testSubstituteType/solutions/testSubstituteType/testSubstituteType.msd" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-testModules-testSubstituteType-solutions-testSubstituteType-models" prefix="module/models" />
+      <zipfileset file="${basedir}/testbench/testsolutions/testSubstituteType/solutions/testSubstituteType/testSubstituteType.msd" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-testSubstituteType-solutions-testSubstituteType-models" prefix="module/models" />
     </jar>
     <mkdir dir="${build.tmp}/default/testSubtypingTest.jar" />
     <mkdir dir="${build.tmp}/default/testSubtypingTest.jar/META-INF" />
@@ -749,22 +749,22 @@
     </echoxml>
     <jar destfile="${build.layout}/testSubtypingTest.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/testSubtypingTest" />
-      <fileset dir="${basedir}/plugins/testModules/testSubtyping/solutions/testSubtypingTest" includes="icons/**, resources/**" />
-      <fileset dir="${basedir}/plugins/testModules/testSubtyping/solutions/testSubtypingTest/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/solutions/testSubtypingTest" includes="icons/**, resources/**" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/solutions/testSubtypingTest/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/testSubtypingTest.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-testModules-testSubtyping-solutions-testSubtypingTest-models">
-      <fileset dir="${basedir}/plugins/testModules/testSubtyping/solutions/testSubtypingTest/models" includes="**/*.mps, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-testSubtyping-solutions-testSubtypingTest-models">
+      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/solutions/testSubtypingTest/models" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/testSubtypingTest-src.jar" duplicate="preserve">
-      <fileset dir="${basedir}/plugins/testModules/testSubtyping/solutions/testSubtypingTest/source_gen">
+      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/solutions/testSubtypingTest/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <zipfileset file="${basedir}/plugins/testModules/testSubtyping/solutions/testSubtypingTest/testSubtypingTest.msd" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-testModules-testSubtyping-solutions-testSubtypingTest-models" prefix="module/models" />
+      <zipfileset file="${basedir}/testbench/testsolutions/testSubtyping/solutions/testSubtypingTest/testSubtypingTest.msd" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-testSubtyping-solutions-testSubtypingTest-models" prefix="module/models" />
     </jar>
     <echo file="${build.layout}/build.properties">mps.build.number=${mps.build.number}${line.separator}mps.date=${mps.date}${line.separator}mps.build.vcs.number=${mps.build.vcs.number}${line.separator}mps.teamcity.buildConfName=${mps.teamcity.buildConfName}${line.separator}mps.idea.platform.build.number=${mps.idea.platform.build.number}${line.separator}mps.mps.build.counter=${mps.mps.build.counter}${line.separator}mpsBootstrapCore.version.major=${mpsBootstrapCore.version.major}${line.separator}mpsBootstrapCore.version.minor=${mpsBootstrapCore.version.minor}${line.separator}mpsBootstrapCore.version.bugfixNr=${mpsBootstrapCore.version.bugfixNr}${line.separator}mpsBootstrapCore.version.eap=${mpsBootstrapCore.version.eap}${line.separator}mpsBootstrapCore.version=${mpsBootstrapCore.version}</echo>
   </target>
@@ -911,17 +911,17 @@
       <library file="${artifacts.mps}/languages/util/jetbrains.mps.runtime.jar" />
       <chunk>
         <module file="${basedir}/testbench/testsolutions/typesystem.test/jetbrains.mps.lang.typesystem.test/jetbrains.mps.lang.typesystem.test.msd" />
-        <module file="${basedir}/plugins/testModules/testSubstituteType/languages/testAnnotatedType/testAnnotatedType.mpl" />
-        <module file="${basedir}/plugins/testModules/testSubstituteType/languages/testOverridingRule/testOverridingRule.mpl" />
-        <module file="${basedir}/plugins/testModules/testSubstituteType/languages/testOverridingType/testOverridingType.mpl" />
-        <module file="${basedir}/plugins/testModules/testSubtyping/languages/testPrimitiveType/testPrimitiveType.mpl" />
-        <module file="${basedir}/plugins/testModules/testSubtyping/languages/testSubtypingA/testSubtypingA.mpl" />
-        <module file="${basedir}/plugins/testModules/testSubtyping/languages/testSubtypingB/testSubtypingB.mpl" />
-        <module file="${basedir}/plugins/testModules/testSubstituteType/languages/testWrappedType/testWrappedType.mpl" />
+        <module file="${basedir}/testbench/testsolutions/testSubstituteType/languages/testAnnotatedType/testAnnotatedType.mpl" />
+        <module file="${basedir}/testbench/testsolutions/testSubstituteType/languages/testOverridingRule/testOverridingRule.mpl" />
+        <module file="${basedir}/testbench/testsolutions/testSubstituteType/languages/testOverridingType/testOverridingType.mpl" />
+        <module file="${basedir}/testbench/testsolutions/testSubtyping/languages/testPrimitiveType/testPrimitiveType.mpl" />
+        <module file="${basedir}/testbench/testsolutions/testSubtyping/languages/testSubtypingA/testSubtypingA.mpl" />
+        <module file="${basedir}/testbench/testsolutions/testSubtyping/languages/testSubtypingB/testSubtypingB.mpl" />
+        <module file="${basedir}/testbench/testsolutions/testSubstituteType/languages/testWrappedType/testWrappedType.mpl" />
       </chunk>
       <chunk>
-        <module file="${basedir}/plugins/testModules/testSubstituteType/solutions/testSubstituteType/testSubstituteType.msd" />
-        <module file="${basedir}/plugins/testModules/testSubtyping/solutions/testSubtypingTest/testSubtypingTest.msd" />
+        <module file="${basedir}/testbench/testsolutions/testSubstituteType/solutions/testSubstituteType/testSubstituteType.msd" />
+        <module file="${basedir}/testbench/testsolutions/testSubtyping/solutions/testSubtypingTest/testSubtypingTest.msd" />
       </chunk>
       <jvmargs>
         <arg value="-ea" />
@@ -939,12 +939,12 @@
   <target name="module-tests" depends="assemble, test.typeSystem" />
   
   <target name="java.compile.testAnnotatedType" depends="fetchDependencies">
-    <mkdir dir="${basedir}/plugins/testModules/testSubstituteType/languages/testAnnotatedType/source_gen" />
+    <mkdir dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testAnnotatedType/source_gen" />
     <mkdir dir="${build.tmp}/java/out/testAnnotatedType" />
     <javac2 destdir="${build.tmp}/java/out/testAnnotatedType" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <compilerarg value="-Xlint:none" />
       <src>
-        <path location="${basedir}/plugins/testModules/testSubstituteType/languages/testAnnotatedType/source_gen" />
+        <path location="${basedir}/testbench/testsolutions/testSubstituteType/languages/testAnnotatedType/source_gen" />
       </src>
       <classpath>
         <fileset file="${artifacts.mps}/lib/mps-core.jar" />
@@ -993,17 +993,17 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/testAnnotatedType">
-      <fileset dir="${basedir}/plugins/testModules/testSubstituteType/languages/testAnnotatedType/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testAnnotatedType/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
   <target name="java.compile.testOverridingType" depends="java.compile.testAnnotatedType, fetchDependencies">
-    <mkdir dir="${basedir}/plugins/testModules/testSubstituteType/languages/testOverridingType/source_gen" />
+    <mkdir dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testOverridingType/source_gen" />
     <mkdir dir="${build.tmp}/java/out/testOverridingType" />
     <javac2 destdir="${build.tmp}/java/out/testOverridingType" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <compilerarg value="-Xlint:none" />
       <src>
-        <path location="${basedir}/plugins/testModules/testSubstituteType/languages/testOverridingType/source_gen" />
+        <path location="${basedir}/testbench/testsolutions/testSubstituteType/languages/testOverridingType/source_gen" />
       </src>
       <classpath>
         <fileset file="${artifacts.mps}/lib/mps-core.jar" />
@@ -1053,17 +1053,17 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/testOverridingType">
-      <fileset dir="${basedir}/plugins/testModules/testSubstituteType/languages/testOverridingType/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testOverridingType/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
   <target name="java.compile.testOverridingRule" depends="fetchDependencies">
-    <mkdir dir="${basedir}/plugins/testModules/testSubstituteType/languages/testOverridingRule/source_gen" />
+    <mkdir dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testOverridingRule/source_gen" />
     <mkdir dir="${build.tmp}/java/out/testOverridingRule" />
     <javac2 destdir="${build.tmp}/java/out/testOverridingRule" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <compilerarg value="-Xlint:none" />
       <src>
-        <path location="${basedir}/plugins/testModules/testSubstituteType/languages/testOverridingRule/source_gen" />
+        <path location="${basedir}/testbench/testsolutions/testSubstituteType/languages/testOverridingRule/source_gen" />
       </src>
       <classpath>
         <fileset file="${artifacts.mps}/lib/mps-core.jar" />
@@ -1109,17 +1109,17 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/testOverridingRule">
-      <fileset dir="${basedir}/plugins/testModules/testSubstituteType/languages/testOverridingRule/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testOverridingRule/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
   <target name="java.compile.testWrappedType" depends="fetchDependencies">
-    <mkdir dir="${basedir}/plugins/testModules/testSubstituteType/languages/testWrappedType/source_gen" />
+    <mkdir dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testWrappedType/source_gen" />
     <mkdir dir="${build.tmp}/java/out/testWrappedType" />
     <javac2 destdir="${build.tmp}/java/out/testWrappedType" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <compilerarg value="-Xlint:none" />
       <src>
-        <path location="${basedir}/plugins/testModules/testSubstituteType/languages/testWrappedType/source_gen" />
+        <path location="${basedir}/testbench/testsolutions/testSubstituteType/languages/testWrappedType/source_gen" />
       </src>
       <classpath>
         <fileset file="${artifacts.mps}/lib/mps-core.jar" />
@@ -1168,17 +1168,17 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/testWrappedType">
-      <fileset dir="${basedir}/plugins/testModules/testSubstituteType/languages/testWrappedType/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testWrappedType/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
   <target name="java.compile.testPrimitiveType" depends="fetchDependencies">
-    <mkdir dir="${basedir}/plugins/testModules/testSubtyping/languages/testPrimitiveType/source_gen" />
+    <mkdir dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testPrimitiveType/source_gen" />
     <mkdir dir="${build.tmp}/java/out/testPrimitiveType" />
     <javac2 destdir="${build.tmp}/java/out/testPrimitiveType" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <compilerarg value="-Xlint:none" />
       <src>
-        <path location="${basedir}/plugins/testModules/testSubtyping/languages/testPrimitiveType/source_gen" />
+        <path location="${basedir}/testbench/testsolutions/testSubtyping/languages/testPrimitiveType/source_gen" />
       </src>
       <classpath>
         <fileset file="${artifacts.mps}/lib/mps-core.jar" />
@@ -1227,17 +1227,17 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/testPrimitiveType">
-      <fileset dir="${basedir}/plugins/testModules/testSubtyping/languages/testPrimitiveType/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testPrimitiveType/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
   <target name="java.compile.testSubtypingA" depends="fetchDependencies">
-    <mkdir dir="${basedir}/plugins/testModules/testSubtyping/languages/testSubtypingA/source_gen" />
+    <mkdir dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testSubtypingA/source_gen" />
     <mkdir dir="${build.tmp}/java/out/testSubtypingA" />
     <javac2 destdir="${build.tmp}/java/out/testSubtypingA" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <compilerarg value="-Xlint:none" />
       <src>
-        <path location="${basedir}/plugins/testModules/testSubtyping/languages/testSubtypingA/source_gen" />
+        <path location="${basedir}/testbench/testsolutions/testSubtyping/languages/testSubtypingA/source_gen" />
       </src>
       <classpath>
         <fileset file="${artifacts.mps}/lib/mps-core.jar" />
@@ -1286,17 +1286,17 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/testSubtypingA">
-      <fileset dir="${basedir}/plugins/testModules/testSubtyping/languages/testSubtypingA/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testSubtypingA/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
   <target name="java.compile.testSubtypingB" depends="java.compile.testSubtypingA, fetchDependencies">
-    <mkdir dir="${basedir}/plugins/testModules/testSubtyping/languages/testSubtypingB/source_gen" />
+    <mkdir dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testSubtypingB/source_gen" />
     <mkdir dir="${build.tmp}/java/out/testSubtypingB" />
     <javac2 destdir="${build.tmp}/java/out/testSubtypingB" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <compilerarg value="-Xlint:none" />
       <src>
-        <path location="${basedir}/plugins/testModules/testSubtyping/languages/testSubtypingB/source_gen" />
+        <path location="${basedir}/testbench/testsolutions/testSubtyping/languages/testSubtypingB/source_gen" />
       </src>
       <classpath>
         <fileset file="${artifacts.mps}/lib/mps-core.jar" />
@@ -1346,7 +1346,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/testSubtypingB">
-      <fileset dir="${basedir}/plugins/testModules/testSubtyping/languages/testSubtypingB/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testSubtypingB/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1413,13 +1413,13 @@
   </target>
   
   <target name="java.compile.testSubstituteType" depends="java.compile.testOverridingRule, fetchDependencies">
-    <mkdir dir="${basedir}/plugins/testModules/testSubstituteType/solutions/testSubstituteType/source_gen" />
+    <mkdir dir="${basedir}/testbench/testsolutions/testSubstituteType/solutions/testSubstituteType/source_gen" />
     <mkdir dir="${build.tmp}/java/out/testSubstituteType" />
     <javac2 destdir="${build.tmp}/java/out/testSubstituteType" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <compilerarg value="-Xlint:none" />
       <src>
-        <path location="${basedir}/plugins/testModules/testSubstituteType/solutions/testSubstituteType/source_gen" />
-        <pathelement path="${basedir}/plugins/testModules/testSubstituteType/solutions/testSubstituteType/test_gen/" />
+        <path location="${basedir}/testbench/testsolutions/testSubstituteType/solutions/testSubstituteType/source_gen" />
+        <pathelement path="${basedir}/testbench/testsolutions/testSubstituteType/solutions/testSubstituteType/test_gen/" />
       </src>
       <classpath>
         <fileset file="${artifacts.mps}/lib/mps-core.jar" />
@@ -1474,19 +1474,19 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/testSubstituteType">
-      <fileset dir="${basedir}/plugins/testModules/testSubstituteType/solutions/testSubstituteType/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${basedir}/plugins/testModules/testSubstituteType/solutions/testSubstituteType/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/solutions/testSubstituteType/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/solutions/testSubstituteType/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
   <target name="java.compile.testSubtypingTest" depends="fetchDependencies">
-    <mkdir dir="${basedir}/plugins/testModules/testSubtyping/solutions/testSubtypingTest/source_gen" />
+    <mkdir dir="${basedir}/testbench/testsolutions/testSubtyping/solutions/testSubtypingTest/source_gen" />
     <mkdir dir="${build.tmp}/java/out/testSubtypingTest" />
     <javac2 destdir="${build.tmp}/java/out/testSubtypingTest" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <compilerarg value="-Xlint:none" />
       <src>
-        <path location="${basedir}/plugins/testModules/testSubtyping/solutions/testSubtypingTest/source_gen" />
-        <pathelement path="${basedir}/plugins/testModules/testSubtyping/solutions/testSubtypingTest/test_gen/" />
+        <path location="${basedir}/testbench/testsolutions/testSubtyping/solutions/testSubtypingTest/source_gen" />
+        <pathelement path="${basedir}/testbench/testsolutions/testSubtyping/solutions/testSubtypingTest/test_gen/" />
       </src>
       <classpath>
         <fileset file="${artifacts.mps}/lib/mps-core.jar" />
@@ -1537,8 +1537,8 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/testSubtypingTest">
-      <fileset dir="${basedir}/plugins/testModules/testSubtyping/solutions/testSubtypingTest/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${basedir}/plugins/testModules/testSubtyping/solutions/testSubtypingTest/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/solutions/testSubtypingTest/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/solutions/testSubtypingTest/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1755,17 +1755,17 @@
   
   <target name="cleanSources">
     <delete dir="${basedir}/testbench/testsolutions/typesystem.test/jetbrains.mps.lang.typesystem.test/source_gen" />
-    <delete dir="${basedir}/plugins/testModules/testSubstituteType/languages/testAnnotatedType/source_gen" />
-    <delete dir="${basedir}/plugins/testModules/testSubstituteType/languages/testOverridingRule/source_gen" />
-    <delete dir="${basedir}/plugins/testModules/testSubstituteType/languages/testOverridingType/source_gen" />
-    <delete dir="${basedir}/plugins/testModules/testSubtyping/languages/testPrimitiveType/source_gen" />
-    <delete dir="${basedir}/plugins/testModules/testSubtyping/languages/testSubtypingA/source_gen" />
-    <delete dir="${basedir}/plugins/testModules/testSubtyping/languages/testSubtypingB/source_gen" />
-    <delete dir="${basedir}/plugins/testModules/testSubstituteType/languages/testWrappedType/source_gen" />
-    <delete dir="${basedir}/plugins/testModules/testSubstituteType/solutions/testSubstituteType/source_gen" />
-    <delete dir="${basedir}/plugins/testModules/testSubtyping/solutions/testSubtypingTest/source_gen" />
+    <delete dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testAnnotatedType/source_gen" />
+    <delete dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testOverridingRule/source_gen" />
+    <delete dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testOverridingType/source_gen" />
+    <delete dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testPrimitiveType/source_gen" />
+    <delete dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testSubtypingA/source_gen" />
+    <delete dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testSubtypingB/source_gen" />
+    <delete dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testWrappedType/source_gen" />
+    <delete dir="${basedir}/testbench/testsolutions/testSubstituteType/solutions/testSubstituteType/source_gen" />
+    <delete dir="${basedir}/testbench/testsolutions/testSubtyping/solutions/testSubtypingTest/source_gen" />
     <delete dir="${basedir}/testbench/testsolutions/typesystem.test/jetbrains.mps.lang.typesystem.test/test_gen" />
-    <delete dir="${basedir}/plugins/testModules/testSubstituteType/solutions/testSubstituteType/test_gen" />
-    <delete dir="${basedir}/plugins/testModules/testSubtyping/solutions/testSubtypingTest/test_gen" />
+    <delete dir="${basedir}/testbench/testsolutions/testSubstituteType/solutions/testSubstituteType/test_gen" />
+    <delete dir="${basedir}/testbench/testsolutions/testSubtyping/solutions/testSubtypingTest/test_gen" />
   </target>
 </project>
