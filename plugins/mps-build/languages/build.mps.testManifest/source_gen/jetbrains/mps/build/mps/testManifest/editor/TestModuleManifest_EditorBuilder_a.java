@@ -39,6 +39,7 @@ import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 /*package*/ class TestModuleManifest_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -145,7 +146,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return LINKS.language$tWhW;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.LanguageReferenceExpression$yZ;
+      return CONCEPTS.ModuleIdentity$2y;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -202,7 +203,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
-    /*package*/ static final SConcept LanguageReferenceExpression$yZ = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3dc174aL, "jetbrains.mps.lang.smodel.structure.LanguageReferenceExpression");
+    /*package*/ static final SInterfaceConcept ModuleIdentity$2y = MetaAdapterFactory.getInterfaceConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x96ca5405afc2bc9L, "jetbrains.mps.lang.modelapi.structure.ModuleIdentity");
   }
 
   private static final class LINKS {

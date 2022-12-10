@@ -18,10 +18,12 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import jetbrains.mps.lang.modelapi.behavior.ModuleIdentity__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.lang.smodel.behavior.ModuleReferenceExpression__BehaviorDescriptor;
-import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.smodel.Language;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -42,10 +44,15 @@ public final class TestModuleManifest__BehaviorDescriptor extends BaseBHDescript
 
   /*package*/ static List<Tuples._3<String, String, String>> languagesToInclude_id2R6x4AnylYu(@NotNull SNode __thisNode__, Project project) {
     List<Tuples._3<String, String, String>> result = ListSequence.fromList(new ArrayList<Tuples._3<String, String, String>>());
-    for (SNode ref : SLinkOperations.getChildren(__thisNode__, LINKS.language$tWhW)) {
-      SModule sModule = ModuleReferenceExpression__BehaviorDescriptor.getModule_id3wj3sjzQUV1.invoke(ref);
+    for (SNode mid : SLinkOperations.getChildren(__thisNode__, LINKS.language$tWhW)) {
+      SModuleReference ref = ModuleIdentity__BehaviorDescriptor.toModuleReference_id1Bs_61$mqDd.invoke(mid);
+      if (ref == null) {
+        continue;
+      }
+      // I assume we're in read here, we are in a behavior of a node
+      SModule sModule = ref.resolve(project.getRepository());
 
-      if (sModule != null && project.isProjectModule(sModule) && sModule instanceof AbstractModule) {
+      if (sModule instanceof Language && project.isProjectModule(sModule)) {
         IFile descriptorIFile = ((AbstractModule) sModule).getDescriptorFile();
         ListSequence.fromList(result).addElement(MultiTuple.<String,String,String>from(sModule.getModuleName(), descriptorIFile.getPath(), sModule.getModuleId().toString()));
       }
