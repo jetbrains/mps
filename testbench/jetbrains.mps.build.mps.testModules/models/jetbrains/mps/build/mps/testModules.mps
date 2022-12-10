@@ -7,10 +7,6 @@
     <use id="446c26eb-2b7b-4bf0-9b35-f83fa582753e" name="jetbrains.mps.lang.modelapi" version="0" />
   </languages>
   <imports>
-    <import index="qffu" ref="r:0f4db6eb-148d-44cb-ac9d-a618b0bc8a92(testSubstituteType.model@tests)" />
-    <import index="tw7x" ref="r:f6873416-2681-4a14-803b-33f9e8bdd0a6(testSubtypingTest.model@tests)" />
-    <import index="r9lu" ref="r:115773d0-1d8a-4cef-9476-a19eb511afc3(jetbrains.mps.closures.test.model@tests)" />
-    <import index="rv78" ref="r:819dd2c2-a64b-45e6-ae94-42a9c653de39(tests.testDepViewer.test@tests)" />
     <import index="cpet" ref="r:8ef4c1fc-fb61-4d5c-806c-7a971cfb9392(tests.testPersistence.test@tests)" />
     <import index="2apo" ref="r:20ab6a94-5179-4062-a795-403815374f72(CloneModule.test.test@tests)" />
     <import index="q08g" ref="r:7da8cb5d-b937-4ac8-a4e8-0f345dfd2711(jetbrains.mps.refactoring.test.test@tests)" />
@@ -44,12 +40,6 @@
   </registry>
   <node concept="2UguNc" id="2R6x4AnybZR">
     <property role="TrG5h" value="mpsTestModules" />
-    <node concept="2Uj$md" id="2R6x4AnyeQE" role="2Uj_Yd">
-      <ref role="2Uj$mc" to="qffu:2R6x4AnxVdQ" resolve="SubstituteType" />
-    </node>
-    <node concept="2Uj$md" id="6DW_AMABl3e" role="2Uj_Yd">
-      <ref role="2Uj$mc" to="tw7x:6DW_AMABjI_" resolve="Subtyping" />
-    </node>
     <node concept="2Uj$md" id="6sKuV4a30n3" role="2Uj_Yd">
       <ref role="2Uj$mc" to="cpet:2cKUqfNXsQu" resolve="Persistence" />
     </node>

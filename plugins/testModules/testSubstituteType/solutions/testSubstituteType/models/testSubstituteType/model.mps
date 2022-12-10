@@ -6,9 +6,7 @@
     <use id="2f74e72e-3e3d-480e-bae1-cc709d588366" name="testAnnotatedType" version="-1" />
     <use id="9290638e-635b-4ec6-bcad-945ecb88a928" name="testWrappedType" version="-1" />
     <use id="394e3857-3256-4e8b-9601-5abe7ad354d9" name="testOverridingType" version="-1" />
-    <use id="9f846aef-4e4a-4a84-828e-7e83fe2697f2" name="jetbrains.mps.build.mps.testManifest" version="-1" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="38be1c36-cdf6-4e3c-b9db-14f88a11fa03" name="testOverridingRule" version="-1" />
   </languages>
   <imports>
@@ -130,11 +128,6 @@
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
     </language>
-    <language id="9f846aef-4e4a-4a84-828e-7e83fe2697f2" name="jetbrains.mps.build.mps.testManifest">
-      <concept id="3298469228705179778" name="jetbrains.mps.build.mps.testManifest.structure.TestModuleManifest" flags="ng" index="2UguNb">
-        <child id="563004820749542528" name="language" index="3ciXlA" />
-      </concept>
-    </language>
     <language id="2f74e72e-3e3d-480e-bae1-cc709d588366" name="testAnnotatedType">
       <concept id="1470921783545323247" name="testAnnotatedType.structure.PrimNumConstant" flags="ng" index="2OWTPY">
         <property id="1470921783545419434" name="value" index="2OWxkV" />
@@ -160,12 +153,6 @@
       <concept id="8837437332634520228" name="testOverridingRule.structure.ConceptB" flags="ng" index="iO2za">
         <property id="8837437332634520229" name="conceptBProp" index="iO2zb" />
       </concept>
-    </language>
-    <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
-      <concept id="4040588429969021681" name="jetbrains.mps.lang.smodel.structure.ModuleReferenceExpression" flags="nn" index="3rM5sP">
-        <property id="4040588429969021683" name="moduleId" index="3rM5sR" />
-      </concept>
-      <concept id="4040588429969069898" name="jetbrains.mps.lang.smodel.structure.LanguageReferenceExpression" flags="nn" index="3rNLEe" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
@@ -1328,21 +1315,6 @@
           </node>
         </node>
       </node>
-    </node>
-  </node>
-  <node concept="2UguNb" id="2R6x4AnxVdQ">
-    <property role="TrG5h" value="SubstituteType" />
-    <node concept="3rNLEe" id="vgcurbB5gQ" role="3ciXlA">
-      <property role="3rM5sR" value="2f74e72e-3e3d-480e-bae1-cc709d588366" />
-    </node>
-    <node concept="3rNLEe" id="vgcurbB5gY" role="3ciXlA">
-      <property role="3rM5sR" value="394e3857-3256-4e8b-9601-5abe7ad354d9" />
-    </node>
-    <node concept="3rNLEe" id="442$DQsGUdc" role="3ciXlA">
-      <property role="3rM5sR" value="38be1c36-cdf6-4e3c-b9db-14f88a11fa03" />
-    </node>
-    <node concept="3rNLEe" id="vgcurbB5h7" role="3ciXlA">
-      <property role="3rM5sR" value="9290638e-635b-4ec6-bcad-945ecb88a928" />
     </node>
   </node>
   <node concept="1lH9Xt" id="7E$SATCteMu">
