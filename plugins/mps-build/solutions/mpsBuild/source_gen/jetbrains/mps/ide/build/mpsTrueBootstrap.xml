@@ -38,6 +38,7 @@
   <path id="path.java.library.idea-runtime">
     <fileset file="${artifacts.IDEA}/lib/app.jar" />
     <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
+    <fileset file="${artifacts.IDEA}/lib/util.jar" />
   </path>
   
   <path id="path.java.library.idea-ant">

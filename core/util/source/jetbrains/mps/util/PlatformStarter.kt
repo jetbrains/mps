@@ -1,5 +1,6 @@
 package jetbrains.mps.util
 
+import com.intellij.diagnostic.StartUpMeasurer
 import com.intellij.diagnostic.rootTask
 import com.intellij.ide.plugins.StartupAbortedException
 import com.intellij.idea.AppMode
@@ -16,6 +17,8 @@ class PlatformStarter {
         private const val CMD_NAME = "mps-inspect" // important for that to end with 'inspect' see com.intellij.idea.Main
         @JvmStatic
         fun startApplication() {
+            val appInitPreparationActivity = StartUpMeasurer.startActivity("app initialization preparation")
+
             // TODO isHeadless: set either with java.awt.headless flag in system property, or with arg of less than 20 chars ending by "inspect"
             //  see com.intellij.idea.AppMode.isHeadless(java.util.List<java.lang.String>)
 
@@ -35,6 +38,7 @@ class PlatformStarter {
 
                 // TODO is the StartupAbortedExceptionHandler (copied below) the way we want to handle errors here?
                 withContext(Dispatchers.Default + StartupAbortedExceptionHandler()) {
+                    StartUpMeasurer.appInitPreparationActivity = appInitPreparationActivity
                     // TODO i'm quite unsure what this CMD_NAME purpose is, if headless is its only purpose we can perhaps remove it as the setFlags above does that already
                     startApplication(listOf<String>(CMD_NAME), appStarter, this@runBlocking, Thread.currentThread())
                 }
