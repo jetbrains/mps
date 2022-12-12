@@ -4,6 +4,7 @@
   <property name="build.tmp" location="${build.dir}/tmp/mpsTrueBootstrap" />
   <property name="build.layout" location="${build.dir}/artifacts/mpsTrueBootstrap" />
   <property name="mps_home" location="${basedir}" />
+  <property name="kotlinc_home" location="${mps_home}/plugins/mps-kotlin/kotlinc" />
   <property name="idea_home" location="" />
   <property name="artifacts.IDEA" location="${idea_home}" />
   <property name="environment" value="env" />
@@ -79,7 +80,7 @@
   
   <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" />
   
-  <typedef resource="org/jetbrains/kotlin/ant/antlib.xml" classpath="${mps_home}/plugins/mps-kotlin/kotlinc/lib/kotlin-ant.jar"></typedef>
+  <typedef resource="org/jetbrains/kotlin/ant/antlib.xml" classpath="${kotlinc_home}/lib/kotlin-ant.jar"></typedef>
   
   <target name="assemble" depends="classes">
     <mkdir dir="${build.layout}" />

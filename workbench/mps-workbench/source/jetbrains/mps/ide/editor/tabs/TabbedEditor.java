@@ -134,7 +134,7 @@ public class TabbedEditor extends BaseNodeEditor {
         return myTabsComponent.getCurrentTabAspect();
       }
     };
-    ActionButton btn = new ActionButton(addAction, addAction.getTemplatePresentation(), ActionPlaces.UNKNOWN, new Dimension(23, 23));
+    ActionButton btn = new ActionButton(addAction, addAction.getTemplatePresentation().clone(), ActionPlaces.UNKNOWN, new Dimension(23, 23));
     myTabsPanel.add(btn, BorderLayout.WEST);
 
     EditorSettings.getInstance().addEditorSettingsListener(mySettingsListener);
