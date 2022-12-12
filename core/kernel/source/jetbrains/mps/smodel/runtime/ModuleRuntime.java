@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.smodel.runtime;
 
-import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -62,9 +61,6 @@ public final class ModuleRuntime {
   }
 
   public void activate(ModuleRuntimeContext context) {
-    if (!RuntimeFlags.enabledModuleActivators()) {
-      return;
-    }
     // provisional code at the moment, DO NOT TREAT AS API, just need to work around a limitation while fixing another issue
     // shall take generated activator class (or even few, perhaps?), instantiate and execute it inside try {} catch (Throwable)
     final String cn = myModuleReference.getModuleName() + ".ModuleActivator";

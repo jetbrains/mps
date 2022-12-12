@@ -15,8 +15,6 @@
  */
 package jetbrains.mps;
 
-import jetbrains.mps.logging.Logger;
-
 /**
  * Replacement for MPSCore#isMergeDriverMode and MPSCore#isTestMode as these flags has nothing to do with
  * component initialization that occurs in MPSCore class, nor with dependencies of mps core component.
@@ -27,13 +25,10 @@ import jetbrains.mps.logging.Logger;
 public final class RuntimeFlags {
   private static TestMode ourTestMode = TestMode.NONE;
   private static Boolean ourInternalMode = null;
-  private static Boolean ourUseInterpretedLanguages = null;
   private static boolean ourMergeDriverMode = false;
   private static Boolean ourCastException = null;
   private static Boolean ourEclipseJavaCompiler = null;
-  private static Boolean ourModuleActivators = null;
   private static Boolean ourLegacyLoadModels = null;
-  private static Boolean ourLegacyIdeaFacetCL = null;
 
   private RuntimeFlags() {
   }
@@ -76,24 +71,6 @@ public final class RuntimeFlags {
   }
 
   /**
-   * I don't feel there's any reason to keep this flag, I'd like to drop it and to remove InterpretedLanguageRuntime class
-   *
-   * @return true if we would like to get rudimentary LanguageRuntime instance for non-deployed (source-only) language modules.
-   *         These days, MPS doesn't need these, the option is left for compatibility in case there's legacy code that depends on presence
-   *         of LanguageRuntime instances for every language module.
-   */
-  @Deprecated(since = "2021.1", forRemoval = true)
-  public static boolean isUseInterpretedLanguages() {
-    if (ourUseInterpretedLanguages == null) {
-      ourUseInterpretedLanguages = Boolean.getBoolean("mps.useInterpretedLanguages");
-      if (ourUseInterpretedLanguages) {
-        Logger.getLogger(RuntimeFlags.class).error("IMPORTANT: Support for interpreted language runtime scheduled for removal", new Throwable());
-      }
-    }
-    return ourUseInterpretedLanguages;
-  }
-
-  /**
    * Default value: system property <code>"mps.disableNodeCastExceptions"</code>
    *
    * @return <code>true</code> if node cast shall throw an exception. if <code>false</code>, bad cast results in a log warning only.
@@ -118,18 +95,6 @@ public final class RuntimeFlags {
       ourEclipseJavaCompiler = "ecj".equalsIgnoreCase(System.getProperty("mps.compiler.java"));
     }
     return ourEclipseJavaCompiler;
-  }
-
-  /**
-   * experimental support for activator code in Solution module
-   */
-  public static boolean enabledModuleActivators() {
-    if (ourModuleActivators == null) {
-      final String val = System.getProperty("mps.rt.module.activator");
-      // enabled by default
-      ourModuleActivators = val == null || Boolean.parseBoolean(val);
-    }
-    return ourModuleActivators;
   }
 
   /**
