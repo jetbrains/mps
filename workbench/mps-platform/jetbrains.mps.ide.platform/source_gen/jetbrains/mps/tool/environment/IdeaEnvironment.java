@@ -334,8 +334,12 @@ public final class IdeaEnvironment extends EnvironmentBase {
       throw new ProjectCouldNotBeOpenedException(String.format("Could not open project (null in return) from the '%s'", projectFile.getAbsolutePath()), exc.get());
     }
 
-    final PostStartupActivitiesWaiter waiter = new PostStartupActivitiesWaiter(project.get());
-    waiter.wait0(30, TimeUnit.SECONDS);
+    // does not seem applicable in test mode
+    if (!(myConfig.isTestMode())) {
+      final PostStartupActivitiesWaiter waiter = new PostStartupActivitiesWaiter(project.get());
+      waiter.wait0(30, TimeUnit.SECONDS);
+    }
+
 
     return project.get().getComponent(MPSProject.class);
   }
