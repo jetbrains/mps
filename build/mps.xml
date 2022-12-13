@@ -66,7 +66,9 @@
     </copy>
     <mkdir dir="${build.layout}/lib" />
     <copy todir="${build.layout}/lib">
-      <fileset dir="${artifacts.mpsStandalone}/lib" />
+      <fileset dir="${artifacts.mpsStandalone}/lib">
+        <exclude name="jna/" />
+      </fileset>
     </copy>
     <mkdir dir="${build.tmp}/default/branding.jar" />
     <mkdir dir="${build.tmp}/default/branding.jar/idea" />

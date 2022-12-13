@@ -27364,6 +27364,59 @@
               <ref role="3Mxwex" node="5HVSRHdVf2d" resolve="version" />
             </node>
           </node>
+          <node concept="398223" id="3wRozBgYU46" role="39821P">
+            <node concept="398223" id="3wRozBgYUbj" role="39821P">
+              <node concept="2HvfSZ" id="3wRozBgYU92" role="39821P">
+                <node concept="55IIr" id="3wRozBgYU93" role="2HvfZ0">
+                  <node concept="2Ry0Ak" id="3wRozBgYU97" role="iGT6I">
+                    <property role="2Ry0Am" value="lib" />
+                    <node concept="2Ry0Ak" id="3wRozBgYU9a" role="2Ry0An">
+                      <property role="2Ry0Am" value="jna" />
+                      <node concept="2Ry0Ak" id="3wRozBgYU9d" role="2Ry0An">
+                        <property role="2Ry0Am" value="darwin-x86-64" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2HvfSZ" id="3wRozBgYU9T" role="39821P">
+                <node concept="55IIr" id="3wRozBgYU9U" role="2HvfZ0">
+                  <node concept="2Ry0Ak" id="3wRozBgYU9Y" role="iGT6I">
+                    <property role="2Ry0Am" value="lib" />
+                    <node concept="2Ry0Ak" id="3wRozBgYUa1" role="2Ry0An">
+                      <property role="2Ry0Am" value="jna" />
+                      <node concept="2Ry0Ak" id="3wRozBgYUa4" role="2Ry0An">
+                        <property role="2Ry0Am" value="linux-x86-64" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2HvfSZ" id="3wRozBgYU8f" role="39821P">
+                <node concept="55IIr" id="3wRozBgYU8g" role="2HvfZ0">
+                  <node concept="2Ry0Ak" id="3wRozBgYU8k" role="iGT6I">
+                    <property role="2Ry0Am" value="lib" />
+                    <node concept="2Ry0Ak" id="3wRozBgYU8n" role="2Ry0An">
+                      <property role="2Ry0Am" value="jna" />
+                      <node concept="2Ry0Ak" id="3wRozBgYU8q" role="2Ry0An">
+                        <property role="2Ry0Am" value="win32-x86-64" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3_J27D" id="3wRozBgYUbl" role="Nbhlr">
+                <node concept="3Mxwew" id="3wRozBgYUbQ" role="3MwsjC">
+                  <property role="3MwjfP" value="jna" />
+                </node>
+              </node>
+            </node>
+            <node concept="3_J27D" id="3wRozBgYU48" role="Nbhlr">
+              <node concept="3Mxwew" id="3wRozBgYU87" role="3MwsjC">
+                <property role="3MwjfP" value="lib" />
+              </node>
+            </node>
+          </node>
           <node concept="398223" id="3OCYZvr1TUF" role="39821P">
             <node concept="398223" id="3OCYZvr1TZ3" role="39821P">
               <node concept="3_J27D" id="3OCYZvr1TZ4" role="Nbhlr">
@@ -27420,6 +27473,36 @@
         <node concept="398223" id="5BQuGro_mE3" role="39821P">
           <node concept="3ygNvl" id="5lvEvl1L$BT" role="39821P">
             <ref role="3ygNvj" node="3IKDaVZmzS8" />
+          </node>
+          <node concept="398223" id="3wRozBgeTul" role="39821P">
+            <node concept="398223" id="3wRozBgeTum" role="39821P">
+              <node concept="3_J27D" id="3wRozBgeTun" role="Nbhlr">
+                <node concept="3Mxwew" id="3wRozBgeTuo" role="3MwsjC">
+                  <property role="3MwjfP" value="jna" />
+                </node>
+              </node>
+              <node concept="28jJK3" id="3wRozBgeTup" role="39821P">
+                <node concept="55IIr" id="3wRozBgeTuq" role="28jJRO">
+                  <node concept="2Ry0Ak" id="3wRozBgeTur" role="iGT6I">
+                    <property role="2Ry0Am" value="lib" />
+                    <node concept="2Ry0Ak" id="3wRozBgeTus" role="2Ry0An">
+                      <property role="2Ry0Am" value="jna" />
+                      <node concept="2Ry0Ak" id="3wRozBgeTvV" role="2Ry0An">
+                        <property role="2Ry0Am" value="linux-x86-64" />
+                        <node concept="2Ry0Ak" id="3wRozBgeTw0" role="2Ry0An">
+                          <property role="2Ry0Am" value="libjnidispatch.so" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3_J27D" id="3wRozBgeTuv" role="Nbhlr">
+              <node concept="3Mxwew" id="3wRozBgeTuw" role="3MwsjC">
+                <property role="3MwjfP" value="lib" />
+              </node>
+            </node>
           </node>
           <node concept="398223" id="6xv$4WsFwxF" role="39821P">
             <node concept="28jJK3" id="2lgcjg39hVx" role="39821P">
@@ -27895,6 +27978,36 @@
               </node>
             </node>
           </node>
+          <node concept="398223" id="3wRozBfKMSt" role="39821P">
+            <node concept="398223" id="3wRozBfKMU9" role="39821P">
+              <node concept="3_J27D" id="3wRozBfKMUb" role="Nbhlr">
+                <node concept="3Mxwew" id="3wRozBfKMUh" role="3MwsjC">
+                  <property role="3MwjfP" value="jna" />
+                </node>
+              </node>
+              <node concept="28jJK3" id="3wRozBfVBfg" role="39821P">
+                <node concept="55IIr" id="3wRozBfVBfh" role="28jJRO">
+                  <node concept="2Ry0Ak" id="3wRozBg5gQ$" role="iGT6I">
+                    <property role="2Ry0Am" value="lib" />
+                    <node concept="2Ry0Ak" id="3wRozBg5gQD" role="2Ry0An">
+                      <property role="2Ry0Am" value="jna" />
+                      <node concept="2Ry0Ak" id="3wRozBg5gQI" role="2Ry0An">
+                        <property role="2Ry0Am" value="win32-x86-64" />
+                        <node concept="2Ry0Ak" id="3wRozBg5gQN" role="2Ry0An">
+                          <property role="2Ry0Am" value="jnidispatch.dll" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3_J27D" id="3wRozBfKMSv" role="Nbhlr">
+              <node concept="3Mxwew" id="3wRozBfKMU5" role="3MwsjC">
+                <property role="3MwjfP" value="lib" />
+              </node>
+            </node>
+          </node>
           <node concept="398223" id="3OCYZvqRyvu" role="39821P">
             <node concept="3_J27D" id="3OCYZvqRyvv" role="Nbhlr">
               <node concept="3Mxwew" id="3OCYZvqRyvw" role="3MwsjC">
@@ -28108,6 +28221,36 @@
                       </node>
                     </node>
                   </node>
+                </node>
+              </node>
+            </node>
+            <node concept="398223" id="3wRozBgeTxA" role="39821P">
+              <node concept="398223" id="3wRozBgeTxB" role="39821P">
+                <node concept="3_J27D" id="3wRozBgeTxC" role="Nbhlr">
+                  <node concept="3Mxwew" id="3wRozBgeTxD" role="3MwsjC">
+                    <property role="3MwjfP" value="jna" />
+                  </node>
+                </node>
+                <node concept="28jJK3" id="3wRozBgeTxE" role="39821P">
+                  <node concept="55IIr" id="3wRozBgeTxF" role="28jJRO">
+                    <node concept="2Ry0Ak" id="3wRozBgeTxG" role="iGT6I">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="3wRozBgeTxH" role="2Ry0An">
+                        <property role="2Ry0Am" value="jna" />
+                        <node concept="2Ry0Ak" id="3wRozBgeTz_" role="2Ry0An">
+                          <property role="2Ry0Am" value="darwin-x86-64" />
+                          <node concept="2Ry0Ak" id="3wRozBgeTzE" role="2Ry0An">
+                            <property role="2Ry0Am" value="libjnidispatch.jnilib" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3_J27D" id="3wRozBgeTxK" role="Nbhlr">
+                <node concept="3Mxwew" id="3wRozBgeTxL" role="3MwsjC">
+                  <property role="3MwjfP" value="lib" />
                 </node>
               </node>
             </node>
@@ -28786,6 +28929,9 @@
         </node>
         <node concept="3ygNvl" id="1diLdO28GLb" role="39821P">
           <ref role="3ygNvj" node="1diLdO26H7f" resolve="lib" />
+          <node concept="3LWZYq" id="3wRozBgPjXo" role="1juEy9">
+            <property role="3LWZYl" value="jna/" />
+          </node>
         </node>
         <node concept="3981dx" id="6Iq8148ghaY" role="39821P">
           <node concept="3_J27D" id="6Iq8148ghaZ" role="Nbhlr">
