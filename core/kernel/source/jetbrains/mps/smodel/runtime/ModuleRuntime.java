@@ -19,10 +19,12 @@ import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
 
 /**
  * Generic representation of a deployed module.
@@ -41,12 +43,15 @@ public final class ModuleRuntime {
   private final SModuleReference myModuleReference;
   @NotNull
   private final ClassLoader myModuleClassLoader;
+
+  private final boolean myProvidesExtensions;
   @Nullable
   private Activator myModuleActivator;
 
-  public ModuleRuntime(@NotNull SModuleReference moduleReference, @NotNull ClassLoader moduleClassLoader) {
+  public ModuleRuntime(@NotNull SModuleReference moduleReference, @NotNull ClassLoader moduleClassLoader, Flags... flags) {
     myModuleReference = moduleReference;
     myModuleClassLoader = moduleClassLoader;
+    myProvidesExtensions = Arrays.asList(flags).contains(Flags.WithExtensions);
   }
 
   @NotNull
@@ -60,18 +65,37 @@ public final class ModuleRuntime {
     return myModuleClassLoader;
   }
 
+  /**
+   * PROVISIONAL API, DON'T USE OUTSIDE OF MPS
+   * Need to transit from SModule deployment listeners to ModuleRuntime deployment listeners.
+   * Eventually, I'd like to make ModuleRuntime responsible to contribute extensions itself, rather than to use listeners and ask MR if it has any.
+   * I.e. generated activator of a solution tells PluginLoaderRegistry "here I am, use me"
+   */
+  public boolean withExtensions() {
+    return myProvidesExtensions;
+  }
+
   public void activate(ModuleRuntimeContext context) {
     // provisional code at the moment, DO NOT TREAT AS API, just need to work around a limitation while fixing another issue
     // shall take generated activator class (or even few, perhaps?), instantiate and execute it inside try {} catch (Throwable)
     final String cn = myModuleReference.getModuleName() + ".ModuleActivator";
     try {
-      final Class<?> activatorClass = myModuleClassLoader.loadClass(cn);
-      if (!Activator.class.isAssignableFrom(activatorClass)) {
-        Logger.getLogger(getClass()).warning(String.format("Class %s is not instance of MR.Activator, ignored", cn));
-        return;
+      if (context instanceof ModuleRuntimeContextWithActivatorInstance) {
+        myModuleActivator = ((ModuleRuntimeContextWithActivatorInstance) context).activatorInstance();
+        if (myModuleActivator == null) {
+          Logger.getLogger(getClass()).error(String.format("RT context %s didn't bring an instance of MR.Activator, ignored", context));
+          return;
+        }
+        // fall-through, for activation
+      } else {
+        final Class<?> activatorClass = myModuleClassLoader.loadClass(cn);
+        if (!Activator.class.isAssignableFrom(activatorClass)) {
+          Logger.getLogger(getClass()).warning(String.format("Class %s is not instance of MR.Activator, ignored", cn));
+          return;
+        }
+        Constructor<? extends Activator> cc = activatorClass.asSubclass(Activator.class).getConstructor(ComponentHost.class);
+        myModuleActivator = cc.newInstance(context.getComponentHost());
       }
-      Constructor<? extends Activator> cc = activatorClass.asSubclass(Activator.class).getConstructor(ComponentHost.class);
-      myModuleActivator = cc.newInstance(context.getComponentHost());
       try {
         myModuleActivator.activate();
       } catch (Throwable th) {
@@ -112,6 +136,38 @@ public final class ModuleRuntime {
     ComponentHost getComponentHost();
   }
 
+  /**
+   * INTERNAL API. DO NOT USE OUTSIDE OF MPS IMPLEMENTATION
+   */
+  @Internal
+  private static class ModuleRuntimeContextWithActivatorInstance implements ModuleRuntimeContext {
+    private Activator myInstance;
+    private ModuleRuntimeContext myDelegate;
+
+    private ModuleRuntimeContextWithActivatorInstance(Activator instance, ModuleRuntimeContext delegate) {
+      myInstance = instance;
+      myDelegate = delegate;
+    }
+
+    Activator activatorInstance() {
+      return myInstance;
+    }
+
+    @Override
+    public ComponentHost getComponentHost() {
+      return myDelegate.getComponentHost();
+    }
+  }
+
+  /**
+   * INTERNAL API. DO NOT USE OUTSIDE OF MPS IMPLEMENTATION
+   * Need this to bridge existing modele runtime classes (e.g. LanguageRuntime) with ModuleRuntime/Activator API
+   */
+  @Internal
+  public static ModuleRuntimeContext wrapExistingInstance(@NotNull ModuleRuntimeContext ctx, @NotNull Activator instance) {
+    return new ModuleRuntimeContextWithActivatorInstance(instance, ctx);
+  }
+
   // XXX provisional code, just to make some progress with make.facets extraction.
   // Shall consider what would be the proper mechanism to pass component host (i.e. if we stick to Activator class
   // and not on-demand aspects):
@@ -121,5 +177,10 @@ public final class ModuleRuntime {
   public interface Activator {
     default void activate() {}
     default void deactivate() {}
+  }
+
+  public enum Flags {
+    NoExtensions,
+    WithExtensions
   }
 }

@@ -21,6 +21,8 @@ import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
+import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.structure.modules.Dependency;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
@@ -29,8 +31,11 @@ import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import jetbrains.mps.smodel.adapter.ids.SLanguageId;
+import jetbrains.mps.smodel.runtime.ModuleDeploymentListener;
 import jetbrains.mps.smodel.runtime.ModuleRuntime;
+import jetbrains.mps.smodel.runtime.ModuleRuntime.Flags;
 import jetbrains.mps.smodel.runtime.ModuleRuntime.ModuleRuntimeContext;
+import jetbrains.mps.smodel.runtime.impl.LanguageRuntimeActivator;
 import jetbrains.mps.util.CollectionUtil;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
@@ -47,6 +52,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -58,6 +64,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
@@ -122,10 +129,13 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
 
   private final Supplier<ComponentHost> myPlatformAccess;
 
+  private final DeploymentNotificationImpl myDeploymentNotification;
+
   public LanguageRegistry(ClassLoaderManager loaderManager, Supplier<ComponentHost> platformAccess) {
     myClassLoaderManager = loaderManager;
     myExtensionRegistry = new LanguageExtensionRegistry();
     myPlatformAccess = platformAccess;
+    myDeploymentNotification = new DeploymentNotificationImpl(this);
   }
 
   @Override
@@ -313,7 +323,14 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
 
   @Nullable
   private ModuleRuntime createRuntime(Solution solution) {
-    return new ModuleRuntime(solution.getModuleReference(), solution.getClassLoader());
+    return new ModuleRuntime(solution.getModuleReference(), solution.getClassLoader(), deduceRuntimeFlags(solution));
+  }
+
+  private static Flags[] deduceRuntimeFlags(AbstractModule am) {
+    if (SModuleOperations.canSupplyExtensionsForMPS(am)) {
+      return new Flags[] {Flags.WithExtensions};
+    }
+    return new Flags[] {Flags.NoExtensions};
   }
 
   public String toString() {
@@ -326,6 +343,14 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
 
   public void removeRegistryListener(LanguageRegistryListener listener) {
     myLanguageListeners.remove(listener);
+  }
+
+  public void addRegistryListener(@NotNull ModuleDeploymentListener listener) {
+    myDeploymentNotification.addListener(listener);
+  }
+
+  public void removeRegistryListener(@NotNull ModuleDeploymentListener listener) {
+    myDeploymentNotification.removeListener(listener);
   }
 
   /**
@@ -427,6 +452,8 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
   // ClassLoaderManager/DeployListener part
   @Override
   public void onUnloaded(@NotNull Set<ReloadableModule> unloadedModules, @NotNull ProgressMonitor monitor) {
+    // XXX for the time being, we include modules with ModuleRuntime only (i.e. don't include generators, although eventually shall include these, too)
+    Set<SModuleReference> rtNotificationNew = new HashSet<>();
     try {
       myRuntimeInstanceAccess.writeLock().lock();
       monitor.start("Solution Runtime", 5);
@@ -438,12 +465,8 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
           continue;
         }
         modulesToUnload.add(moduleRuntime);
+        rtNotificationNew.add(s.getModuleReference());
       }
-      ModuleRuntimeContext rtc = myPlatformAccess::get;
-      for (ModuleRuntime rt : modulesToUnload) {
-        rt.deactivate(rtc);
-      }
-      myModuleRuntime.values().removeAll(modulesToUnload);
       monitor.advance(1);
 
       monitor.step("Generator Runtime");
@@ -454,7 +477,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
           // XXX Perhaps, with generator module RT for each generator, shall issue a warning like a language does, below
           continue;
         }
-        // let runtime know we don't need its services any more, but do it the moment it's still in complete state.
+        // let runtime know we don't need its services anymore, but do it the moment it's still in complete state.
         generatorRuntime.deactivate();
         LanguageRuntime srcLangRuntime = generatorRuntime.getSourceLanguage();
         srcLangRuntime.unregister(generatorRuntime);
@@ -470,8 +493,22 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
         } else {
           languagesToUnload.add(myLanguagesById.get(sl));
         }
+        final ModuleRuntime moduleRuntime = myModuleRuntime.get(language.getModuleReference());
+        if (moduleRuntime != null) {
+          modulesToUnload.add(moduleRuntime);
+          rtNotificationNew.add(language.getModuleReference());
+        }
       }
       monitor.advance(1);
+
+      myDeploymentNotification.update(Collections.emptyList(), rtNotificationNew);
+      myDeploymentNotification.dispatch(true);
+
+      ModuleRuntimeContext rtc = myPlatformAccess::get;
+      for (ModuleRuntime rt : modulesToUnload) {
+        rt.deactivate(rtc);
+      }
+      myModuleRuntime.values().removeAll(modulesToUnload);
 
       monitor.step("Language Registry Listeners");
       notifyUnload(languagesToUnload);
@@ -496,6 +533,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
   public void onLoaded(@NotNull Set<ReloadableModule> loadedModules, @NotNull ProgressMonitor monitor) {
     monitor.start("Language Runtime", 5);
     Set<LanguageRuntime> loadedRuntimes = new LinkedHashSet<>();
+    Set<SModuleReference> rtNotificationNew = new HashSet<>();
     try {
       myRuntimeInstanceAccess.writeLock().lock();
       for (Language language : collectLanguageModules(loadedModules)) {
@@ -546,6 +584,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
         }
         LanguageRuntime srcLangRuntime = generatorRuntime.getSourceLanguage();
         srcLangRuntime.register(generatorRuntime);
+        // see onUnload/rtNotificationNew comment why we don't include generators there
       }
       monitor.advance(1);
 
@@ -561,6 +600,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
           LOG.warning(String.format("There's already runtime instance for module '%s'", old.getSourceModule()));
         }
         loadedRuntime2.add(moduleRuntime);
+        rtNotificationNew.add(s.getModuleReference());
       }
       monitor.advance(1);
 
@@ -568,6 +608,14 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
       ModuleRuntimeContext rtc = myPlatformAccess::get;
       for (ModuleRuntime rt : loadedRuntime2) {
         rt.activate(rtc);
+      }
+      for (LanguageRuntime lr : loadedRuntimes) {
+        final SModuleReference mref = lr.getIdentity().getSourceModuleReference();
+        final ModuleRuntime mrt = new ModuleRuntime(mref, lr.getClass().getClassLoader(), Flags.WithExtensions);
+        myModuleRuntime.put(mrt.getSourceModule(), mrt);
+        rtNotificationNew.add(mrt.getSourceModule());
+        final ModuleRuntimeContext mrc = ModuleRuntime.wrapExistingInstance(rtc, new LanguageRuntimeActivator(lr));
+        mrt.activate(mrc);
       }
       monitor.advance(1);
     } finally {
@@ -580,6 +628,8 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
     notifyLoad(loadedRuntimes);
     monitor.advance(1);
     monitor.done();
+    myDeploymentNotification.update(rtNotificationNew, Collections.emptyList());
+    myDeploymentNotification.dispatch(false);
   }
 
   private Collection<Language> collectLanguageModules(Set<? extends SModule> modules) {
@@ -639,6 +689,16 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
   /*package*/ LanguageExtensionRegistry getExtensionRegistry() {
     // provisionally expose the registry. shall keep all the operations over the registry local to this class and guard them with myRuntimeInstanceAccess lock
     return myExtensionRegistry;
+  }
+
+  /*package*/ void withAvailableModuleRuntime(Consumer<Function<SModuleReference, ModuleRuntime>> callback) {
+    try {
+      myRuntimeInstanceAccess.readLock().lock();
+      callback.accept(myModuleRuntime::get);
+    } finally {
+      myRuntimeInstanceAccess.readLock().unlock();
+    }
+
   }
 
   private static void processLinkageErrorForLanguage(Language language, LinkageError linkageError) {
