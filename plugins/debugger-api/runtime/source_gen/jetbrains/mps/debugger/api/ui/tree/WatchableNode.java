@@ -9,6 +9,10 @@ import jetbrains.mps.ide.ui.tree.TextTreeNode;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.debug.api.programState.Watchable2;
 import jetbrains.mps.debug.api.programState.IValue;
+import javax.swing.tree.TreeModel;
+import com.intellij.ui.tree.AsyncTreeModel;
+import javax.swing.tree.TreePath;
+import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeNode;
 import com.intellij.openapi.application.ApplicationManager;
 import java.util.Map;
@@ -57,7 +61,12 @@ public class WatchableNode extends AbstractWatchableNode {
     return myWatchable.getValue();
   }
   /*package*/ void nodeChanged() {
-    getTree().getModel().nodeStructureChanged(this);
+    TreeModel m = getTree().getModel();
+    if (m instanceof AsyncTreeModel) {
+      ((AsyncTreeModel) m).treeStructureChanged(new TreePath(this.getPath()));
+    } else {
+      ((DefaultTreeModel) m).nodeStructureChanged(this);
+    }
   }
 
   @Override

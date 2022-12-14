@@ -67,6 +67,7 @@
     <import index="tqvn" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.tempmodel(MPS.Core/)" />
     <import index="31cb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.module(MPS.Core/)" />
     <import index="yyf4" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.util(MPS.OpenAPI/)" />
+    <import index="ouby" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui.tree(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -10880,13 +10881,31 @@
             <node concept="3clFbF" id="2n58Qean9XW" role="3cqZAp">
               <node concept="2OqwBi" id="2n58QeancaX" role="3clFbG">
                 <node concept="liA8E" id="2n58QeancpN" role="2OqNvi">
-                  <ref role="37wK5l" to="rgfa:~DefaultTreeModel.nodeChanged(javax.swing.tree.TreeNode)" resolve="nodeChanged" />
-                  <node concept="37vLTw" id="2n58Qeaneqt" role="37wK5m">
-                    <ref role="3cqZAo" node="1ZFc3Q14gRl" resolve="rv" />
+                  <ref role="37wK5l" to="ouby:~AsyncTreeModel.treeNodesChanged(javax.swing.tree.TreePath)" resolve="treeNodesChanged" />
+                  <node concept="2ShNRf" id="7PuYCeFi_zQ" role="37wK5m">
+                    <node concept="1pGfFk" id="7PuYCeFjcYp" role="2ShVmc">
+                      <property role="373rjd" value="true" />
+                      <ref role="37wK5l" to="rgfa:~TreePath.&lt;init&gt;(java.lang.Object[])" resolve="TreePath" />
+                      <node concept="2OqwBi" id="7PuYCeFjogW" role="37wK5m">
+                        <node concept="37vLTw" id="7PuYCeFji99" role="2Oq$k0">
+                          <ref role="3cqZAo" node="1ZFc3Q14gRl" resolve="rv" />
+                        </node>
+                        <node concept="liA8E" id="7PuYCeFjrAx" role="2OqNvi">
+                          <ref role="37wK5l" to="rgfa:~DefaultMutableTreeNode.getPath()" resolve="getPath" />
+                        </node>
+                      </node>
+                    </node>
                   </node>
                 </node>
-                <node concept="1rXfSq" id="2n58Qeanb0s" role="2Oq$k0">
-                  <ref role="37wK5l" to="7e8u:~MPSTree.getModel()" resolve="getModel" />
+                <node concept="1eOMI4" id="7PuYCeFire$" role="2Oq$k0">
+                  <node concept="10QFUN" id="7PuYCeFib5s" role="1eOMHV">
+                    <node concept="3uibUv" id="7PuYCeFigiV" role="10QFUM">
+                      <ref role="3uigEE" to="ouby:~AsyncTreeModel" resolve="AsyncTreeModel" />
+                    </node>
+                    <node concept="1rXfSq" id="2n58Qeanb0s" role="10QFUP">
+                      <ref role="37wK5l" to="7e8u:~MPSTree.getModel()" resolve="getModel" />
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>

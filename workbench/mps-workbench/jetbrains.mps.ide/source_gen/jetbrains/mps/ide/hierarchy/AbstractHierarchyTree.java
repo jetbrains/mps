@@ -8,6 +8,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SRepository;
 import javax.swing.Icon;
 import jetbrains.mps.ide.ui.tree.TextTreeNode;
+import com.intellij.ui.tree.AsyncTreeModel;
+import javax.swing.tree.TreePath;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.smodel.ModelReadRunnable;
@@ -57,7 +59,7 @@ public abstract class AbstractHierarchyTree extends MPSTree {
       TextTreeNode rv = ((TextTreeNode) getRootNode());
       rv.setText(text);
       rv.setIcon(icon);
-      getModel().nodeChanged(rv);
+      ((AsyncTreeModel) getModel()).treeNodesChanged(new TreePath(rv.getPath()));
     }
   }
 
