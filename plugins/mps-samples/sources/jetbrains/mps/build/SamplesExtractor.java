@@ -136,15 +136,6 @@ public final class SamplesExtractor implements PersistentStateComponent<MyState>
     return new File(PathManager.getHomePath() + File.separator + SAMPLES_IN_MPS_HOME_ZIP);
   }
 
-  /**
-   * @deprecated do not use, it is called automatically on {@link SamplesInfo#getSamplesPath()} call
-   */
-  @ScheduledForRemoval(inVersion = "2021.1")
-  @Deprecated(since = "2020.3", forRemoval = true)
-  public void extractSamples() {
-    runExtractSamplesTask();
-  }
-
   private void runExtractSamplesTask() {
     final File samplesZipFile = getSamplesZip();
     if (samplesZipFile.exists()) {
