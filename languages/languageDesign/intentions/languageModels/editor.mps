@@ -82,6 +82,7 @@
         <reference id="6591946374543067572" name="conceptDeclaration" index="aqKnT" />
         <child id="5991739802479788259" name="type" index="22hAXT" />
       </concept>
+      <concept id="1214406454886" name="jetbrains.mps.lang.editor.structure.TextBackgroundColorStyleClassItem" flags="ln" index="30gYXW" />
       <concept id="1233758997495" name="jetbrains.mps.lang.editor.structure.PunctuationLeftStyleClassItem" flags="ln" index="11L4FC" />
       <concept id="1233759184865" name="jetbrains.mps.lang.editor.structure.PunctuationRightStyleClassItem" flags="ln" index="11LMrY" />
       <concept id="1154465273778" name="jetbrains.mps.lang.editor.structure.QueryFunctionParameter_SubstituteMenu_ParentNode" flags="nn" index="3bvxqY" />
@@ -820,6 +821,44 @@
         </node>
         <node concept="3F1sOY" id="5rGvd38Dc4r" role="3EZMnx">
           <ref role="1NtTu8" to="tp3j:2c3oNEsfAwj" resolve="executeFunction" />
+        </node>
+        <node concept="3F0ifn" id="66ZZ2RilY8m" role="3EZMnx">
+          <node concept="VPM3Z" id="66ZZ2RilY8n" role="3F10Kt">
+            <property role="VOm3f" value="false" />
+          </node>
+        </node>
+        <node concept="3F0ifn" id="4ZYGtWRrRGw" role="3EZMnx">
+          <property role="3F0ifm" value="fields" />
+          <node concept="VPM3Z" id="4ZYGtWRrRGx" role="3F10Kt">
+            <property role="VOm3f" value="false" />
+          </node>
+          <node concept="30gYXW" id="4ZYGtWRrRGy" role="3F10Kt">
+            <property role="Vb096" value="fLwANPp/orange" />
+          </node>
+        </node>
+        <node concept="3F0ifn" id="66ZZ2RilY8r" role="3EZMnx">
+          <node concept="VPM3Z" id="66ZZ2RilY8s" role="3F10Kt">
+            <property role="VOm3f" value="false" />
+          </node>
+        </node>
+        <node concept="3F2HdR" id="4ZYGtWRrRF7" role="3EZMnx">
+          <ref role="1NtTu8" to="tp3j:4ZYGtWRrRil" resolve="fieldDeclaration" />
+          <node concept="2iRkQZ" id="4ZYGtWRrRF9" role="2czzBx" />
+        </node>
+        <node concept="3F0ifn" id="4ZYGtWRrRMS" role="3EZMnx" />
+        <node concept="3F0ifn" id="66ZZ2RilY8o" role="3EZMnx">
+          <property role="3F0ifm" value="additional methods" />
+          <node concept="VPM3Z" id="66ZZ2RilY8p" role="3F10Kt">
+            <property role="VOm3f" value="false" />
+          </node>
+          <node concept="30gYXW" id="66ZZ2RilY8q" role="3F10Kt">
+            <property role="Vb096" value="fLwANPp/orange" />
+          </node>
+        </node>
+        <node concept="3F0ifn" id="4ZYGtWRrRwZ" role="3EZMnx" />
+        <node concept="3F2HdR" id="66ZZ2RilY8t" role="3EZMnx">
+          <ref role="1NtTu8" to="tp3j:hz2lrYP" resolve="methodDeclaration" />
+          <node concept="2iRkQZ" id="66ZZ2RilY8u" role="2czzBx" />
         </node>
         <node concept="2iRkQZ" id="5rGvd38Dc4s" role="2iSdaV" />
       </node>

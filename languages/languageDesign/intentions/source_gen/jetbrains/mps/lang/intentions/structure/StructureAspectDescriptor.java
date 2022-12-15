@@ -45,6 +45,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
     deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
     deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+    deps.aggregatedLanguage(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, "jetbrains.mps.baseLanguage.classifiers");
     deps.aggregatedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
   }
 
@@ -112,6 +113,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x433c3c31e7218f38L);
     b.parent(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x24614259e94f0c84L);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x12509ddfaa98f128L);
+    b.parent(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc6b2af5L);
     b.origin("r:00000000-0000-4000-0000-011c89590353(jetbrains.mps.lang.intentions.structure)/2522969319638091381");
     b.version(3);
     b.property("isErrorIntention", 0x2303633a9c3cc679L).type(PrimitiveTypeId.BOOLEAN).origin("2522969319638091385").done();
@@ -121,6 +123,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("childFilterFunction", 0x2303633a9c3cd0aaL).target(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x323731f511d1c1bbL).optional(true).ordered(true).multiple(false).origin("2522969319638093994").done();
     b.aggregate("isApplicableFunction", 0x2303633a9c3cd0abL).target(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x115b82b10f5L).optional(true).ordered(true).multiple(false).origin("2522969319638093995").done();
     b.aggregate("executeFunction", 0x2303633a9c3e6813L).target(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x115b82d36d9L).optional(false).ordered(true).multiple(false).origin("2522969319638198291").done();
+    b.aggregate("methodDeclaration", 0x118c255bfb5L).target(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd6ee3c3L).optional(true).ordered(true).multiple(true).origin("1205851242421").done();
+    b.aggregate("fieldDeclaration", 0x4ffeb1df376f7495L).target(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x11aa7fc0293L).optional(true).ordered(true).multiple(true).origin("5764240145346688149").done();
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
     return b.create();
   }
