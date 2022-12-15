@@ -603,6 +603,10 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
     setRootNode(new TextTreeNode("Empty"));
   }
 
+  public DefaultTreeModel getDFTreeModel() {
+    return getModel();
+  }
+
   @Override
   public DefaultTreeModel getModel() {
     // we explicitly set DefaultTreeModel during construction of MPSTree,
