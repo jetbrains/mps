@@ -27015,7 +27015,6 @@
                   </node>
                 </node>
               </node>
-              <node concept="3clFbT" id="7DyvjiArdT6" role="37wK5m" />
             </node>
           </node>
         </node>
@@ -30736,12 +30735,6 @@
   <node concept="312cEu" id="7iropoGYxU_">
     <property role="3GE5qa" value="expression.function.call" />
     <property role="TrG5h" value="InstanceReceiver" />
-    <node concept="312cEg" id="7DyvjiAhjm3" role="jymVt">
-      <property role="TrG5h" value="myStaticReceiver" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3Tm6S6" id="7DyvjiAhjm4" role="1B3o_S" />
-      <node concept="10P_77" id="7DyvjiAhjm6" role="1tU5fm" />
-    </node>
     <node concept="312cEg" id="1pHfrwZyRje" role="jymVt">
       <property role="TrG5h" value="myReference" />
       <property role="3TUv4t" value="true" />
@@ -30765,16 +30758,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="1pHfrwZyRL6" role="3cqZAp">
-          <node concept="37vLTI" id="1pHfrwZyS7O" role="3clFbG">
-            <node concept="37vLTw" id="1pHfrwZySdq" role="37vLTx">
-              <ref role="3cqZAo" node="1pHfrwZyRaw" resolve="isStaticReceiver" />
-            </node>
-            <node concept="37vLTw" id="1pHfrwZyRL4" role="37vLTJ">
-              <ref role="3cqZAo" node="7DyvjiAhjm3" resolve="myStaticReceiver" />
-            </node>
-          </node>
-        </node>
       </node>
       <node concept="37vLTG" id="1pHfrwZyR1W" role="3clF46">
         <property role="TrG5h" value="reference" />
@@ -30784,10 +30767,6 @@
         <node concept="2AHcQZ" id="1pHfrwZz6PI" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
-      </node>
-      <node concept="37vLTG" id="1pHfrwZyRaw" role="3clF46">
-        <property role="TrG5h" value="isStaticReceiver" />
-        <node concept="10P_77" id="1pHfrwZyRcf" role="1tU5fm" />
       </node>
       <node concept="P$JXv" id="1pHfrwZyUBm" role="lGtFl">
         <node concept="TZ5HA" id="1pHfrwZyUBn" role="TZ5H$">
@@ -30799,12 +30778,6 @@
           <property role="TUZQ4" value="reference to the type" />
           <node concept="zr_55" id="1pHfrwZyUBr" role="zr_5Q">
             <ref role="zr_51" node="1pHfrwZyR1W" resolve="reference" />
-          </node>
-        </node>
-        <node concept="TUZQ0" id="1pHfrwZyUBv" role="3nqlJM">
-          <property role="TUZQ4" value="whether the type is referred statically (not from any instance)" />
-          <node concept="zr_55" id="1pHfrwZyUBx" role="zr_5Q">
-            <ref role="zr_51" node="1pHfrwZyRaw" resolve="isStaticReceiver" />
           </node>
         </node>
       </node>
@@ -30832,22 +30805,6 @@
                   <ref role="2Oxat5" node="1pHfrwZyRje" resolve="myReference" />
                 </node>
               </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="7DyvjiAhlvY" role="jymVt" />
-    <node concept="3clFb_" id="7DyvjiAhjPa" role="jymVt">
-      <property role="TrG5h" value="isStaticReceiver" />
-      <node concept="10P_77" id="7DyvjiAhjPb" role="3clF45" />
-      <node concept="3Tm1VV" id="7DyvjiAhjPc" role="1B3o_S" />
-      <node concept="3clFbS" id="7DyvjiAhjPd" role="3clF47">
-        <node concept="3clFbF" id="7DyvjiAhjPe" role="3cqZAp">
-          <node concept="2OqwBi" id="7DyvjiAhjP7" role="3clFbG">
-            <node concept="Xjq3P" id="7DyvjiAhjP8" role="2Oq$k0" />
-            <node concept="2OwXpG" id="7DyvjiAhjP9" role="2OqNvi">
-              <ref role="2Oxat5" node="7DyvjiAhjm3" resolve="myStaticReceiver" />
             </node>
           </node>
         </node>
@@ -35081,7 +35038,7 @@
   </node>
   <node concept="3HP615" id="1KzjWTsTA9Z">
     <property role="3GE5qa" value="expression.function.call" />
-    <property role="TrG5h" value="CallReceiver" />
+    <property role="TrG5h" value="MemberReceiver" />
     <node concept="3clFb_" id="1KzjWTsTAYs" role="jymVt">
       <property role="TrG5h" value="getTypeReferences" />
       <node concept="A3Dl8" id="1KzjWTsTAYt" role="3clF45">
@@ -35132,12 +35089,12 @@
         </node>
         <node concept="TZ5HA" id="1KzjWTsTAYH" role="TZ5H$">
           <node concept="1dT_AC" id="1KzjWTsTAYI" role="1dT_Ay">
-            <property role="1dT_AB" value="The first element compatible with the declaration site receiver in the list will be used." />
+            <property role="1dT_AB" value="W.r.t. to type system, the first element compatible with the declaration site receiver in the list will be used." />
           </node>
         </node>
         <node concept="TZ5HA" id="1KzjWTsTBr8" role="TZ5H$">
           <node concept="1dT_AC" id="1KzjWTsTBr9" role="1dT_Ay">
-            <property role="1dT_AB" value="If none are compatible, an error will be thrown by the type system." />
+            <property role="1dT_AB" value="If none are compatible and a receiver is expected, an error will be thrown by the type system." />
           </node>
         </node>
         <node concept="x79VA" id="1KzjWTsTAYL" role="3nqlJM">
@@ -35236,16 +35193,6 @@
         </node>
       </node>
       <node concept="P$JXv" id="1KzjWTsTBtZ" role="lGtFl">
-        <node concept="TZ5HA" id="1KzjWTsTBAO" role="TZ5H$">
-          <node concept="1dT_AC" id="1KzjWTsTBAP" role="1dT_Ay">
-            <property role="1dT_AB" value="This returns true if the type reference involves computing types of nodes that are not part of the dataflow of the current" />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="1KzjWTsTBBR" role="TZ5H$">
-          <node concept="1dT_AC" id="1KzjWTsTBBS" role="1dT_Ay">
-            <property role="1dT_AB" value="call." />
-          </node>
-        </node>
         <node concept="TZ5HI" id="1KzjWTsTBCY" role="3nqlJM">
           <node concept="TZ5HA" id="1KzjWTsTBCZ" role="3HnX3l">
             <node concept="1dT_AC" id="1KzjWTsTBFz" role="1dT_Ay">
@@ -35253,9 +35200,19 @@
             </node>
           </node>
         </node>
+        <node concept="TZ5HA" id="3zYqTIVIzhX" role="TZ5H$">
+          <node concept="1dT_AC" id="3zYqTIVIzhY" role="1dT_Ay">
+            <property role="1dT_AB" value="Usage has been replaced by internal typesystem logic (by default: all are external, except for binary expression)." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="3zYqTIVIzTf" role="TZ5H$">
+          <node concept="1dT_AC" id="3zYqTIVIzTg" role="1dT_Ay">
+            <property role="1dT_AB" value="If one need to extend that anyway, it should be done on the type system side (make your own rule with valid dataflow)" />
+          </node>
+        </node>
       </node>
       <node concept="2AHcQZ" id="1KzjWTsTBD0" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
         <node concept="2B6LJw" id="7ZA3QJnMyAb" role="2B76xF">
           <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
           <node concept="Xl_RD" id="7ZA3QJnMyBY" role="2B70Vg">
@@ -35264,25 +35221,6 @@
         </node>
       </node>
       <node concept="2JFqV2" id="5gUTMwR1rQ_" role="2frcjj" />
-    </node>
-    <node concept="2tJIrI" id="71iIOktlBpq" role="jymVt" />
-    <node concept="3clFb_" id="71iIOktlCmt" role="jymVt">
-      <property role="TrG5h" value="isStaticReceiver" />
-      <node concept="3clFbS" id="71iIOktlCmw" role="3clF47">
-        <node concept="3cpWs6" id="71iIOktlCHH" role="3cqZAp">
-          <node concept="3clFbT" id="71iIOktlCN2" role="3cqZAk" />
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="71iIOktlCmx" role="1B3o_S" />
-      <node concept="10P_77" id="71iIOktlCm1" role="3clF45" />
-      <node concept="2JFqV2" id="71iIOktlCeK" role="2frcjj" />
-      <node concept="P$JXv" id="71iIOktrxU$" role="lGtFl">
-        <node concept="TZ5HA" id="71iIOktrxU_" role="TZ5H$">
-          <node concept="1dT_AC" id="71iIOktrxUA" role="1dT_Ay">
-            <property role="1dT_AB" value="Returns true if the types are to be considered as static references" />
-          </node>
-        </node>
-      </node>
     </node>
     <node concept="2tJIrI" id="7ZA3QJnM$2o" role="jymVt" />
     <node concept="312cEu" id="7ZA3QJnM$m5" role="jymVt">
@@ -35468,6 +35406,52 @@
           </node>
         </node>
         <node concept="3clFbH" id="71iIOktrPNS" role="3cqZAp" />
+        <node concept="3SKdUt" id="3zYqTIVItQN" role="3cqZAp">
+          <node concept="1PaTwC" id="3zYqTIVItQO" role="1aUNEU">
+            <node concept="3oM_SD" id="3zYqTIVIu7t" role="1PaTwD">
+              <property role="3oM_SC" value="if" />
+            </node>
+            <node concept="3oM_SD" id="3zYqTIVIua8" role="1PaTwD">
+              <property role="3oM_SC" value="intermediateKey" />
+            </node>
+            <node concept="3oM_SD" id="3zYqTIVIuad" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="3zYqTIVIuak" role="1PaTwD">
+              <property role="3oM_SC" value="null:" />
+            </node>
+            <node concept="3oM_SD" id="3zYqTIVIuat" role="1PaTwD">
+              <property role="3oM_SC" value="there" />
+            </node>
+            <node concept="3oM_SD" id="3zYqTIVIuaC" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="3zYqTIVIuaP" role="1PaTwD">
+              <property role="3oM_SC" value="probably" />
+            </node>
+            <node concept="3oM_SD" id="3zYqTIVIub4" role="1PaTwD">
+              <property role="3oM_SC" value="more" />
+            </node>
+            <node concept="3oM_SD" id="3zYqTIVIubl" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="3zYqTIVIubC" role="1PaTwD">
+              <property role="3oM_SC" value="it" />
+            </node>
+            <node concept="3oM_SD" id="3zYqTIVIucH" role="1PaTwD">
+              <property role="3oM_SC" value="than" />
+            </node>
+            <node concept="3oM_SD" id="3zYqTIVIud4" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="3zYqTIVIudt" role="1PaTwD">
+              <property role="3oM_SC" value="static" />
+            </node>
+            <node concept="3oM_SD" id="3zYqTIVIudS" role="1PaTwD">
+              <property role="3oM_SC" value="type" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbJ" id="71iIOktrPuN" role="3cqZAp">
           <node concept="3clFbS" id="71iIOktrPuO" role="3clFbx">
             <node concept="3cpWs6" id="71iIOktrPuP" role="3cqZAp">
@@ -35482,11 +35466,19 @@
               </node>
             </node>
           </node>
-          <node concept="2OqwBi" id="71iIOktrPuU" role="3clFbw">
-            <node concept="37vLTw" id="71iIOktrPuV" role="2Oq$k0">
-              <ref role="3cqZAo" node="71iIOktr_gI" resolve="staticReceiver" />
+          <node concept="1Wc70l" id="3zYqTIVItK6" role="3clFbw">
+            <node concept="2OqwBi" id="71iIOktrPuU" role="3uHU7B">
+              <node concept="37vLTw" id="71iIOktrPuV" role="2Oq$k0">
+                <ref role="3cqZAo" node="71iIOktr_gI" resolve="staticReceiver" />
+              </node>
+              <node concept="3x8VRR" id="71iIOktrPuW" role="2OqNvi" />
             </node>
-            <node concept="3x8VRR" id="71iIOktrPuW" role="2OqNvi" />
+            <node concept="3clFbC" id="3zYqTIVIti5" role="3uHU7w">
+              <node concept="10Nm6u" id="3zYqTIVItG3" role="3uHU7w" />
+              <node concept="37vLTw" id="3zYqTIVIsAm" role="3uHU7B">
+                <ref role="3cqZAo" node="7iropoGYKyw" resolve="intermediateKey" />
+              </node>
+            </node>
           </node>
           <node concept="9aQIb" id="71iIOktrPuX" role="9aQIa">
             <node concept="3clFbS" id="71iIOktrPuY" role="9aQI4">
@@ -35498,13 +35490,15 @@
                     <node concept="2ShNRf" id="71iIOktrPv2" role="37wK5m">
                       <node concept="1pGfFk" id="71iIOktrPv3" role="2ShVmc">
                         <property role="373rjd" value="true" />
-                        <ref role="37wK5l" node="1ZM$$KyXqEC" resolve="InferredTypeReference" />
+                        <ref role="37wK5l" node="1pHfrwZyJA0" resolve="InferredTypeReference" />
                         <node concept="37vLTw" id="71iIOktrPv4" role="37wK5m">
                           <ref role="3cqZAo" node="7iropoGYI2Q" resolve="host" />
                         </node>
+                        <node concept="37vLTw" id="3zYqTIVIrUr" role="37wK5m">
+                          <ref role="3cqZAo" node="7iropoGYKyw" resolve="intermediateKey" />
+                        </node>
                       </node>
                     </node>
-                    <node concept="3clFbT" id="71iIOktrQ1E" role="37wK5m" />
                   </node>
                 </node>
               </node>
@@ -35526,6 +35520,78 @@
       </node>
     </node>
     <node concept="3Tm1VV" id="1KzjWTsTAa0" role="1B3o_S" />
+    <node concept="3UR2Jj" id="3zYqTIVIkb5" role="lGtFl">
+      <node concept="TZ5HA" id="3zYqTIVIkb6" role="TZ5H$">
+        <node concept="1dT_AC" id="3zYqTIVIkb7" role="1dT_Ay">
+          <property role="1dT_AB" value="Abstraction of receiver types. This exists to provide pointers to types that could be involved in a member reference" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3zYqTIVIkYm" role="TZ5H$">
+        <node concept="1dT_AC" id="3zYqTIVIkYn" role="1dT_Ay">
+          <property role="1dT_AB" value="(function, property...)." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3zYqTIVIm68" role="TZ5H$">
+        <node concept="1dT_AC" id="3zYqTIVIm69" role="1dT_Ay">
+          <property role="1dT_AB" value="" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3zYqTIVIm6m" role="TZ5H$">
+        <node concept="1dT_AC" id="3zYqTIVIm6n" role="1dT_Ay">
+          <property role="1dT_AB" value="This is mainly intended to be used by two subsystems:" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3zYqTIVImmI" role="TZ5H$">
+        <node concept="1dT_AC" id="3zYqTIVImmJ" role="1dT_Ay">
+          <property role="1dT_AB" value="- scopes: helps getting scopes from types (static flag is needed on TypeReceiver to know if we need static or" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3zYqTIVImJK" role="TZ5H$">
+        <node concept="1dT_AC" id="3zYqTIVImJL" role="1dT_Ay">
+          <property role="1dT_AB" value="instance scope, see IType documentation for cases in which static or instance members are available)." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3zYqTIVIn8b" role="TZ5H$">
+        <node concept="1dT_AC" id="3zYqTIVIn8c" role="1dT_Ay">
+          <property role="1dT_AB" value="- type system: while possible (difficult to abstract and use with constraints), scopes do not output the type from which" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3zYqTIVInxl" role="TZ5H$">
+        <node concept="1dT_AC" id="3zYqTIVInxm" role="1dT_Ay">
+          <property role="1dT_AB" value="a member was issued. The list of type from getTypeReferences() is used to search for the correct type." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3zYqTIVInTS" role="TZ5H$">
+        <node concept="1dT_AC" id="3zYqTIVInTT" role="1dT_Ay">
+          <property role="1dT_AB" value="" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3zYqTIVIoja" role="TZ5H$">
+        <node concept="1dT_AC" id="3zYqTIVIojb" role="1dT_Ay">
+          <property role="1dT_AB" value="Special case: members with implicit 'this' (functionCall() instance of something.functionCall()) should not rely on this" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3zYqTIVIovC" role="TZ5H$">
+        <node concept="1dT_AC" id="3zYqTIVIovD" role="1dT_Ay">
+          <property role="1dT_AB" value="abstraction to get scopes. The reason for that is that some members might not be attached to any types, and are part of" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3zYqTIVIoT2" role="TZ5H$">
+        <node concept="1dT_AC" id="3zYqTIVIoT3" role="1dT_Ay">
+          <property role="1dT_AB" value="the structure (eg. standalone functions from current or other files)." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3zYqTIVIpk1" role="TZ5H$">
+        <node concept="1dT_AC" id="3zYqTIVIpk2" role="1dT_Ay">
+          <property role="1dT_AB" value="However, the type system will still use the list of this types from this abstraction to resolve the receiver, should there" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3zYqTIVIpGS" role="TZ5H$">
+        <node concept="1dT_AC" id="3zYqTIVIpGT" role="1dT_Ay">
+          <property role="1dT_AB" value="be any." />
+        </node>
+      </node>
+    </node>
   </node>
   <node concept="312cEu" id="1KzjWTsTMk9">
     <property role="3GE5qa" value="expression.function.call" />
@@ -35609,51 +35675,6 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="1KzjWTsTMAP" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="71iIOktlFJI" role="jymVt" />
-    <node concept="3clFb_" id="71iIOktlF_t" role="jymVt">
-      <property role="TrG5h" value="isStaticReceiver" />
-      <node concept="3Tm1VV" id="71iIOktlF_u" role="1B3o_S" />
-      <node concept="10P_77" id="71iIOktlF_v" role="3clF45" />
-      <node concept="3clFbS" id="71iIOktlF_w" role="3clF47">
-        <node concept="3SKdUt" id="71iIOktlGnA" role="3cqZAp">
-          <node concept="1PaTwC" id="71iIOktlGnB" role="1aUNEU">
-            <node concept="3oM_SD" id="71iIOktlGv3" role="1PaTwD">
-              <property role="3oM_SC" value="This" />
-            </node>
-            <node concept="3oM_SD" id="71iIOktlGv6" role="1PaTwD">
-              <property role="3oM_SC" value="receiver" />
-            </node>
-            <node concept="3oM_SD" id="71iIOktlGvb" role="1PaTwD">
-              <property role="3oM_SC" value="makes" />
-            </node>
-            <node concept="3oM_SD" id="71iIOktlGvi" role="1PaTwD">
-              <property role="3oM_SC" value="calls" />
-            </node>
-            <node concept="3oM_SD" id="71iIOktlGvr" role="1PaTwD">
-              <property role="3oM_SC" value="on" />
-            </node>
-            <node concept="3oM_SD" id="71iIOktlGvA" role="1PaTwD">
-              <property role="3oM_SC" value="instance" />
-            </node>
-            <node concept="3oM_SD" id="71iIOktlGvN" role="1PaTwD">
-              <property role="3oM_SC" value="type" />
-            </node>
-            <node concept="3oM_SD" id="71iIOktlGw2" role="1PaTwD">
-              <property role="3oM_SC" value="for" />
-            </node>
-            <node concept="3oM_SD" id="71iIOktlGwj" role="1PaTwD">
-              <property role="3oM_SC" value="&quot;this&quot;" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="71iIOktlF_x" role="3cqZAp">
-          <node concept="3clFbT" id="71iIOktlF_y" role="3clFbG" />
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="71iIOktlF_z" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" />
       </node>
     </node>
@@ -35825,22 +35846,6 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="7ZA3QJnMMYL" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="71iIOktlF2$" role="jymVt" />
-    <node concept="3clFb_" id="71iIOktlE30" role="jymVt">
-      <property role="TrG5h" value="isStaticReceiver" />
-      <node concept="3Tm1VV" id="71iIOktlE34" role="1B3o_S" />
-      <node concept="10P_77" id="71iIOktlE35" role="3clF45" />
-      <node concept="3clFbS" id="71iIOktlE37" role="3clF47">
-        <node concept="3clFbF" id="71iIOktlEyH" role="3cqZAp">
-          <node concept="3clFbT" id="71iIOktlEyG" role="3clFbG">
-            <property role="3clFbU" value="true" />
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="71iIOktlE38" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" />
       </node>
     </node>
