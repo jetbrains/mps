@@ -318,17 +318,30 @@
   </root>
   <root nodeRef="r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)/496689236032862552">
     <file name="PluginData.java">
-      <node id="978600701689991886" at="16,0,17,0" concept="4" trace="path" />
-      <node id="496689236031523707" at="17,0,18,0" concept="4" trace="id" />
-      <node id="5563580687573645576" at="19,58,20,23" concept="3" />
-      <node id="5563580687573647983" at="20,23,21,18" concept="3" />
-      <node id="5563580687573642852" at="19,0,23,0" concept="2" trace="PluginData#(Ljava/lang/String;Ljava/lang/String;)V" />
-      <scope id="5563580687573642857" at="19,58,21,18" />
-      <scope id="5563580687573642852" at="19,0,23,0">
+      <node id="978600701689991886" at="17,0,18,0" concept="4" trace="path" />
+      <node id="496689236031523707" at="18,0,19,0" concept="4" trace="id" />
+      <node id="5563580687573645576" at="20,58,21,23" concept="3" />
+      <node id="5563580687573647983" at="21,23,22,18" concept="3" />
+      <node id="6060921217248534598" at="26,25,27,34" concept="10" />
+      <node id="6060921217248575213" at="32,61,33,19" concept="10" />
+      <node id="6060921217248579233" at="34,5,35,114" concept="10" />
+      <node id="6060921217248552389" at="31,38,34,5" concept="7" />
+      <node id="5563580687573642852" at="20,0,24,0" concept="2" trace="PluginData#(Ljava/lang/String;Ljava/lang/String;)V" />
+      <node id="6060921217248510588" at="25,0,29,0" concept="8" trace="hashCode#()I" />
+      <node id="6060921217248510597" at="30,0,37,0" concept="8" trace="equals#(Ljava/lang/Object;)Z" />
+      <scope id="6060921217248510593" at="26,25,27,34" />
+      <scope id="6060921217248552391" at="32,61,33,19" />
+      <scope id="5563580687573642857" at="20,58,22,18" />
+      <scope id="5563580687573642852" at="20,0,24,0">
         <var name="path2Plugin" id="5563580687573643180" />
         <var name="pluginId" id="5563580687573644363" />
       </scope>
-      <unit id="496689236032862552" at="14,0,24,0" name="jetbrains.mps.tool.common.PluginData" />
+      <scope id="6060921217248510588" at="25,0,29,0" />
+      <scope id="6060921217248510603" at="31,38,35,114" />
+      <scope id="6060921217248510597" at="30,0,37,0">
+        <var name="that" id="6060921217248510601" />
+      </scope>
+      <unit id="496689236032862552" at="15,0,38,0" name="jetbrains.mps.tool.common.PluginData" />
     </file>
   </root>
   <root nodeRef="r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)/7110336455353370861">
