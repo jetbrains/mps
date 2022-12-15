@@ -634,19 +634,33 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
     setRootNode(new TextTreeNode("Empty"));
   }
 
+  /**
+   * Returns the underlying AsyncTreeModel. A convenience method to getModel() and cast at the same time.
+   * @return The AsyncTreeModel used by the MPSTree instance
+   */
   public AsyncTreeModel getAsyncTreeModel() {
     return (AsyncTreeModel) super.getModel();
   }
 
+  /**
+   * Returns the underlying DefaultTreeModel. Use DefaultTreeModel to add/remove nodes to the model.
+   * This model is wrapped in AsyncTreeModel, which should be used to fire events by external parties.
+   * @return The DefaultTreeModel used by the MPSTree instance
+   */
   public DefaultTreeModel getDFTreeModel() {
     return myDefaultTreeModel;
   }
 
+  /**
+   * MPSTree uses an AsyncTreeModel, which wraps a DefaultTreeModel.
+   * The AsyncTreeModel should be used to fire events on the model.
+   * The DefaultTreeModel (obtained through @see MPSTree.getDFTreeModel() ) should be used to insert/remove nodes to the model.
+   * @return The AsyncTreeModel used by the MPSTree instance
+   */
   @Override
   public TreeModel getModel() {
-    // we explicitly set DefaultTreeModel during construction of MPSTree,
-    // this method serves the purpose of convenient cast and as a reminder not to change
-    // TreeModel during lifecycle of MPSTree as it used to be. Same TreeModel instance is important
+    // we explicitly set AsyncTreeModel during construction of MPSTree,
+    // Do not change TreeModel during lifecycle of MPSTree as it used to be. Same TreeModel instance is important
     // to keep set of listeners attached to the tree model.
     return super.getModel();
   }
