@@ -42,10 +42,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
     }
     myListeners.forEach(l -> l.editorComponentCreated(project, editorComponent));
     myEditorComponents.add(editorComponent);
-    if (editorComponent.getEditedNode() != null) {
-      // condition derived from myNode != null in EditorComponent.editNode()
-      fireCreatedMessage(project, editorComponent);
-    }
+    // deliberately no fireCreateMessage() here; EC dispatches editorComponentNodeChanged(), and we react as appropriate (send legacy dispose/create events)
   }
 
   private void fireCreatedMessage(Project project, EditorComponent editorComponent) {
