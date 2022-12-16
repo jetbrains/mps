@@ -114,6 +114,7 @@
           <available file="${junit5.lib}/junit-jupiter-params-${junit.jupiter.version}.jar"/>
           <available file="${junit5.lib}/junit-platform-commons-${junit.platform.version}.jar"/>
           <available file="${junit5.lib}/junit-platform-engine-${junit.platform.version}.jar"/>
+          <available file="${junit5.lib}/junit-platform-launcher-${junit.platform.version}.jar"/>
           <available file="${junit5.lib}/junit-vintage-engine-${junit.vintage.version}.jar"/>
         </and>
       </not>

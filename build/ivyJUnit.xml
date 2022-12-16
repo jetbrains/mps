@@ -3,6 +3,7 @@
   <dependencies>
     <dependency org="org.junit.platform" name="junit-platform-engine" rev="${junit.platform.version}"/>
     <dependency org="org.junit.platform" name="junit-platform-commons" rev="${junit.platform.version}"/>
+    <dependency org="org.junit.platform" name="junit-platform-launcher" rev="${junit.platform.version}"/>
     <dependency org="org.junit.jupiter" name="junit-jupiter-api" rev="${junit.jupiter.version}"/>
     <dependency org="org.junit.jupiter" name="junit-jupiter-engine" rev="${junit.jupiter.version}"/>
     <dependency org="org.junit.jupiter" name="junit-jupiter-params" rev="${junit.jupiter.version}"/>
