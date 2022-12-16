@@ -5,8 +5,6 @@
       <root url="jar://$PROJECT_DIR$/lib/3rd-party-rt.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/external-system-rt.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/externalProcess-rt.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/jna.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/dom-impl.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
