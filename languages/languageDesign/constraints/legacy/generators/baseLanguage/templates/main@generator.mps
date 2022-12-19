@@ -370,6 +370,7 @@
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
       <concept id="1212008292747" name="jetbrains.mps.lang.smodel.structure.Model_GetLongNameOperation" flags="nn" index="LkI2h" />
+      <concept id="1171310072040" name="jetbrains.mps.lang.smodel.structure.Node_GetContainingRootOperation" flags="nn" index="2Rxl7S" />
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
         <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
@@ -383,6 +384,9 @@
       <concept id="6677504323281689838" name="jetbrains.mps.lang.smodel.structure.SConceptType" flags="in" index="3bZ5Sz" />
       <concept id="1154546950173" name="jetbrains.mps.lang.smodel.structure.ConceptReference" flags="ng" index="3gn64h">
         <reference id="1154546997487" name="concept" index="3gnhBz" />
+      </concept>
+      <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
+        <child id="1177027386292" name="conceptArgument" index="cj9EA" />
       </concept>
       <concept id="6039268229364358244" name="jetbrains.mps.lang.smodel.structure.ExactConceptCase" flags="ng" index="1pnPoh">
         <child id="6039268229364358388" name="body" index="1pnPq1" />
@@ -499,12 +503,46 @@
       <node concept="j$656" id="hECe$_L" role="1lVwrX">
         <ref role="v9R2y" node="hz2Aqmp" resolve="reduce_ConstraintsDefaultClassifierMethodCall" />
       </node>
+      <node concept="30G5F_" id="31OifsfFCzs" role="30HLyM">
+        <node concept="3clFbS" id="31OifsfFCzt" role="2VODD2">
+          <node concept="3clFbF" id="31OifsfDGI7" role="3cqZAp">
+            <node concept="2OqwBi" id="31OifsfDHn1" role="3clFbG">
+              <node concept="2OqwBi" id="31OifsfDGZk" role="2Oq$k0">
+                <node concept="30H73N" id="31OifsfDGI6" role="2Oq$k0" />
+                <node concept="2Rxl7S" id="31OifsfDHcd" role="2OqNvi" />
+              </node>
+              <node concept="1mIQ4w" id="31OifsfDHvG" role="2OqNvi">
+                <node concept="chp4Y" id="31OifsfDHye" role="cj9EA">
+                  <ref role="cht4Q" to="tp1t:hDM2fEI" resolve="ConceptConstraints" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="3aamgX" id="hECeGe$" role="3acgRq">
       <ref role="30HIoZ" to="tp4f:hyXrIf3" resolve="DefaultClassifierMethodDeclaration" />
       <ref role="2sgKRv" node="5JxumkiDsy9" resolve="map_ClassifierMethod" />
       <node concept="j$656" id="hECeGe_" role="1lVwrX">
         <ref role="v9R2y" to="tp48:hz1B4cf" resolve="reduce_DefaultClassifierMethodDeclaration" />
+      </node>
+      <node concept="30G5F_" id="31OifsfFCSA" role="30HLyM">
+        <node concept="3clFbS" id="31OifsfFCSB" role="2VODD2">
+          <node concept="3clFbF" id="31OifsfFCT5" role="3cqZAp">
+            <node concept="2OqwBi" id="31OifsfFCT6" role="3clFbG">
+              <node concept="2OqwBi" id="31OifsfFCT7" role="2Oq$k0">
+                <node concept="30H73N" id="31OifsfFCT8" role="2Oq$k0" />
+                <node concept="2Rxl7S" id="31OifsfFCT9" role="2OqNvi" />
+              </node>
+              <node concept="1mIQ4w" id="31OifsfFCTa" role="2OqNvi">
+                <node concept="chp4Y" id="31OifsfFCTb" role="cj9EA">
+                  <ref role="cht4Q" to="tp1t:hDM2fEI" resolve="ConceptConstraints" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
     </node>
     <node concept="3aamgX" id="hECeHEJ" role="3acgRq">
@@ -513,17 +551,68 @@
       <node concept="j$656" id="hECeOEW" role="1lVwrX">
         <ref role="v9R2y" to="tp48:hEC22Ns" resolve="reduce_DefaultClassifierFieldDeclaration" />
       </node>
+      <node concept="30G5F_" id="31OifsfFCZk" role="30HLyM">
+        <node concept="3clFbS" id="31OifsfFCZl" role="2VODD2">
+          <node concept="3clFbF" id="31OifsfFCZp" role="3cqZAp">
+            <node concept="2OqwBi" id="31OifsfFCZq" role="3clFbG">
+              <node concept="2OqwBi" id="31OifsfFCZr" role="2Oq$k0">
+                <node concept="30H73N" id="31OifsfFCZs" role="2Oq$k0" />
+                <node concept="2Rxl7S" id="31OifsfFCZt" role="2OqNvi" />
+              </node>
+              <node concept="1mIQ4w" id="31OifsfFCZu" role="2OqNvi">
+                <node concept="chp4Y" id="31OifsfFCZv" role="cj9EA">
+                  <ref role="cht4Q" to="tp1t:hDM2fEI" resolve="ConceptConstraints" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="3aamgX" id="hECeL7R" role="3acgRq">
       <ref role="30HIoZ" to="tp4f:hEBZ7lK" resolve="DefaultClassifierFieldAccessOperation" />
       <node concept="j$656" id="hEChRo5" role="1lVwrX">
         <ref role="v9R2y" node="hECf9cw" resolve="reduce_ConstraintsDefaultClassifierFieldAccessOperation" />
       </node>
+      <node concept="30G5F_" id="31OifsfFD5q" role="30HLyM">
+        <node concept="3clFbS" id="31OifsfFD5r" role="2VODD2">
+          <node concept="3clFbF" id="31OifsfFD5T" role="3cqZAp">
+            <node concept="2OqwBi" id="31OifsfFD5U" role="3clFbG">
+              <node concept="2OqwBi" id="31OifsfFD5V" role="2Oq$k0">
+                <node concept="30H73N" id="31OifsfFD5W" role="2Oq$k0" />
+                <node concept="2Rxl7S" id="31OifsfFD5X" role="2OqNvi" />
+              </node>
+              <node concept="1mIQ4w" id="31OifsfFD5Y" role="2OqNvi">
+                <node concept="chp4Y" id="31OifsfFD5Z" role="cj9EA">
+                  <ref role="cht4Q" to="tp1t:hDM2fEI" resolve="ConceptConstraints" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="3aamgX" id="hBzdNJX" role="3acgRq">
       <ref role="30HIoZ" to="tp4f:hyWthE1" resolve="ThisClassifierExpression" />
       <node concept="j$656" id="4ZYGtWRmRzQ" role="1lVwrX">
         <ref role="v9R2y" node="4ZYGtWRmRzO" resolve="reduce_ConstraintsThisClassifierExpression" />
+      </node>
+      <node concept="30G5F_" id="31OifsfFDbK" role="30HLyM">
+        <node concept="3clFbS" id="31OifsfFDbL" role="2VODD2">
+          <node concept="3clFbF" id="31OifsfFDcf" role="3cqZAp">
+            <node concept="2OqwBi" id="31OifsfFDcg" role="3clFbG">
+              <node concept="2OqwBi" id="31OifsfFDch" role="2Oq$k0">
+                <node concept="30H73N" id="31OifsfFDci" role="2Oq$k0" />
+                <node concept="2Rxl7S" id="31OifsfFDcj" role="2OqNvi" />
+              </node>
+              <node concept="1mIQ4w" id="31OifsfFDck" role="2OqNvi">
+                <node concept="chp4Y" id="31OifsfFDcl" role="cj9EA">
+                  <ref role="cht4Q" to="tp1t:hDM2fEI" resolve="ConceptConstraints" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
     </node>
     <node concept="3aamgX" id="hfgawce" role="3acgRq">

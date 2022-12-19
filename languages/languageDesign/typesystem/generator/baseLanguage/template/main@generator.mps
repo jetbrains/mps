@@ -15502,10 +15502,6 @@
       <ref role="2rTdP9" to="tpd4:hGQ5zx_" resolve="TypesystemQuickFix" />
       <ref role="2rZz_L" to="tpee:fz12cDA" resolve="ClassConcept" />
     </node>
-    <node concept="2rT7sh" id="5JxumkiDsy9" role="2rTMjI">
-      <property role="TrG5h" value="map_ClassifierMethod" />
-      <ref role="2rZz_L" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
-    </node>
     <node concept="1puMqW" id="hNZTmlP" role="1pvy6N">
       <ref role="1puQsG" node="hNZObos" resolve="insertTypeContextIntoQuotations" />
     </node>
@@ -15522,18 +15518,69 @@
       <node concept="j$656" id="hECe$_L" role="1lVwrX">
         <ref role="v9R2y" node="3AueY_NBouY" resolve="reduce_QuickFixDefaultClassifierMethodCall" />
       </node>
+      <node concept="30G5F_" id="31OifsfDGDf" role="30HLyM">
+        <node concept="3clFbS" id="31OifsfDGDg" role="2VODD2">
+          <node concept="3clFbF" id="31OifsfDGI7" role="3cqZAp">
+            <node concept="2OqwBi" id="31OifsfDHn1" role="3clFbG">
+              <node concept="2OqwBi" id="31OifsfDGZk" role="2Oq$k0">
+                <node concept="30H73N" id="31OifsfDGI6" role="2Oq$k0" />
+                <node concept="2Rxl7S" id="31OifsfDHcd" role="2OqNvi" />
+              </node>
+              <node concept="1mIQ4w" id="31OifsfDHvG" role="2OqNvi">
+                <node concept="chp4Y" id="31OifsfDHye" role="cj9EA">
+                  <ref role="cht4Q" to="tpd4:hGQ5zx_" resolve="TypesystemQuickFix" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="3aamgX" id="hECeGe$" role="3acgRq">
       <ref role="30HIoZ" to="tp4f:hyXrIf3" resolve="DefaultClassifierMethodDeclaration" />
-      <ref role="2sgKRv" node="5JxumkiDsy9" resolve="map_ClassifierMethod" />
+      <ref role="2sgKRv" node="31OifsfIHcl" resolve="map_ClassifierMethod" />
       <node concept="j$656" id="hECeGe_" role="1lVwrX">
         <ref role="v9R2y" to="tp48:hz1B4cf" resolve="reduce_DefaultClassifierMethodDeclaration" />
+      </node>
+      <node concept="30G5F_" id="31OifsfDHFj" role="30HLyM">
+        <node concept="3clFbS" id="31OifsfDHFk" role="2VODD2">
+          <node concept="3clFbF" id="31OifsfDHFM" role="3cqZAp">
+            <node concept="2OqwBi" id="31OifsfDHFN" role="3clFbG">
+              <node concept="2OqwBi" id="31OifsfDHFO" role="2Oq$k0">
+                <node concept="30H73N" id="31OifsfDHFP" role="2Oq$k0" />
+                <node concept="2Rxl7S" id="31OifsfDHFQ" role="2OqNvi" />
+              </node>
+              <node concept="1mIQ4w" id="31OifsfDHFR" role="2OqNvi">
+                <node concept="chp4Y" id="31OifsfDHFS" role="cj9EA">
+                  <ref role="cht4Q" to="tpd4:hGQ5zx_" resolve="TypesystemQuickFix" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
     </node>
     <node concept="3aamgX" id="hBzdNJX" role="3acgRq">
       <ref role="30HIoZ" to="tp4f:hyWthE1" resolve="ThisClassifierExpression" />
       <node concept="j$656" id="4ZYGtWRmRzQ" role="1lVwrX">
-        <ref role="v9R2y" node="3AueY_NB_5i" resolve="reduce_QuickFix" />
+        <ref role="v9R2y" node="3AueY_NB_5i" resolve="reduce_QuickFixThisClassifierExpression" />
+      </node>
+      <node concept="30G5F_" id="31OifsfDHM1" role="30HLyM">
+        <node concept="3clFbS" id="31OifsfDHM2" role="2VODD2">
+          <node concept="3clFbF" id="31OifsfDHMw" role="3cqZAp">
+            <node concept="2OqwBi" id="31OifsfDHMx" role="3clFbG">
+              <node concept="2OqwBi" id="31OifsfDHMy" role="2Oq$k0">
+                <node concept="30H73N" id="31OifsfDHMz" role="2Oq$k0" />
+                <node concept="2Rxl7S" id="31OifsfDHM$" role="2OqNvi" />
+              </node>
+              <node concept="1mIQ4w" id="31OifsfDHM_" role="2OqNvi">
+                <node concept="chp4Y" id="31OifsfDHMA" role="cj9EA">
+                  <ref role="cht4Q" to="tpd4:hGQ5zx_" resolve="TypesystemQuickFix" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
     </node>
     <node concept="3aamgX" id="hG39yMj" role="3acgRq">
@@ -16022,6 +16069,10 @@
       <node concept="j$656" id="64uvs5aqmeN" role="1lVwrX">
         <ref role="v9R2y" node="64uvs5aqmeJ" resolve="reduce_SelectionType" />
       </node>
+    </node>
+    <node concept="2rT7sh" id="5JxumkiDsy9" role="2rTMjI">
+      <property role="TrG5h" value="map_ClassifierMethod" />
+      <ref role="2rZz_L" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
     </node>
   </node>
   <node concept="13MO4I" id="hG3aGRC">
