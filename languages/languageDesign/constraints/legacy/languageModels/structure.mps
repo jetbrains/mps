@@ -10,6 +10,7 @@
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="beg" ref="r:09811e4e-aa47-4ea2-ad3d-57b7b9ffc7e3(jetbrains.mps.lang.constraints.plugin)" />
+    <import index="tp4f" ref="r:00000000-0000-4000-0000-011c89590373(jetbrains.mps.baseLanguage.classifiers.structure)" />
     <import index="tpc2" ref="r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)" implicit="true" />
   </imports>
   <registry>
@@ -435,11 +436,28 @@
       <property role="IQ2ns" value="1426851521646478396" />
       <ref role="20lvS9" node="1fdcuoIX_DM" resolve="ConstraintFunction_GetInstanceIcon" />
     </node>
+    <node concept="1TJgyj" id="hz2lrYP" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="methodDeclaration" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
+      <property role="IQ2ns" value="1205851242421" />
+      <ref role="20lvS9" to="tp4f:hyXrIf3" resolve="DefaultClassifierMethodDeclaration" />
+    </node>
+    <node concept="1TJgyj" id="4ZYGtWRrRil" role="1TKVEi">
+      <property role="IQ2ns" value="5764240145346688149" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="fieldDeclaration" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" to="tp4f:hEBZ0aj" resolve="DefaultClassifierFieldDeclaration" />
+    </node>
     <node concept="PrWs8" id="hDM2kSs" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
     <node concept="PrWs8" id="7KX5Yh0wt0_" role="PzmwI">
       <ref role="PrY4T" to="tpce:2hxg_BDjKM4" resolve="IConceptAspect" />
+    </node>
+    <node concept="PrWs8" id="3AueY_NGts$" role="PzmwI">
+      <ref role="PrY4T" to="tp4f:hyWqMFP" resolve="IClassifier" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJSr" role="rwd14">
       <property role="1iqoE4" value="${module}/icons/constraints.png" />

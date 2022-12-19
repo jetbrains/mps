@@ -76,6 +76,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
     deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
     deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+    deps.aggregatedLanguage(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, "jetbrains.mps.baseLanguage.classifiers");
     deps.aggregatedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
   }
 
@@ -203,6 +204,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, true);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.parent(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x24614259e94f0c84L);
+    b.parent(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc6b2af5L);
     b.origin("r:00000000-0000-4000-0000-011c8959030d(jetbrains.mps.lang.constraints.structure)/1213093968558");
     b.version(3);
     b.associate("concept", 0x11a720969b6L).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL).optional(false).origin("1213093996982").done();
@@ -216,6 +218,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("canBeAncestor", 0x5d05239254e7e6baL).target(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x5d05239254e6415aL).optional(true).ordered(true).multiple(false).origin("6702802731807532730").done();
     b.aggregate("alternativeIcon", 0x341b038f9307e5d8L).target(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x341b038f9307e5cfL).optional(true).ordered(true).multiple(false).origin("3754598629525415384").done();
     b.aggregate("instanceIcon", 0x13cd31e62ef6c43cL).target(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x13cd31e62ef65a72L).optional(true).ordered(true).multiple(false).origin("1426851521646478396").done();
+    b.aggregate("methodDeclaration", 0x118c255bfb5L).target(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd6ee3c3L).optional(true).ordered(true).multiple(true).origin("1205851242421").done();
+    b.aggregate("fieldDeclaration", 0x4ffeb1df376f7495L).target(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x11aa7fc0293L).optional(true).ordered(true).multiple(true).origin("5764240145346688149").done();
     b.alias("Concept Constraints");
     return b.create();
   }
