@@ -14547,6 +14547,16 @@
               </node>
             </node>
           </node>
+          <node concept="1SiIV0" id="3AueY_NJkRx" role="3bR37C">
+            <node concept="3bR9La" id="3AueY_NJkRy" role="1SiIV1">
+              <ref role="3bR37D" node="7YI57w6K0bq" resolve="jetbrains.mps.baseLanguage.classifiers#1205839057922" />
+            </node>
+          </node>
+          <node concept="1SiIV0" id="3AueY_NJkRz" role="3bR37C">
+            <node concept="3bR9La" id="3AueY_NJkR$" role="1SiIV1">
+              <ref role="3bR37D" node="7Kfy9QB6KZA" resolve="jetbrains.mps.baseLanguage.classifiers" />
+            </node>
+          </node>
         </node>
         <node concept="1SiIV0" id="2a9bszgruxY" role="3bR37C">
           <node concept="3bR9La" id="2a9bszgruxX" role="1SiIV1">
@@ -14663,6 +14673,11 @@
         <node concept="1SiIV0" id="7M00clf_vNP" role="3bR37C">
           <node concept="Rbm2T" id="7M00clf_vNQ" role="1SiIV1">
             <ref role="1E1Vl2" node="7Kfy9QB6L9O" resolve="jetbrains.mps.lang.smodel" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="3AueY_NJkRv" role="3bR37C">
+          <node concept="1Busua" id="3AueY_NJkRw" role="1SiIV1">
+            <ref role="1Busuk" node="7Kfy9QB6KZA" resolve="jetbrains.mps.baseLanguage.classifiers" />
           </node>
         </node>
       </node>
@@ -21823,6 +21838,16 @@
               </node>
             </node>
           </node>
+          <node concept="1SiIV0" id="3AueY_NJl6l" role="3bR37C">
+            <node concept="3bR9La" id="3AueY_NJl6m" role="1SiIV1">
+              <ref role="3bR37D" node="7YI57w6K0bq" resolve="jetbrains.mps.baseLanguage.classifiers#1205839057922" />
+            </node>
+          </node>
+          <node concept="1SiIV0" id="3AueY_NJl6n" role="3bR37C">
+            <node concept="3bR9La" id="3AueY_NJl6o" role="1SiIV1">
+              <ref role="3bR37D" node="7Kfy9QB6KZA" resolve="jetbrains.mps.baseLanguage.classifiers" />
+            </node>
+          </node>
         </node>
         <node concept="1SiIV0" id="2a9bszgruHj" role="3bR37C">
           <node concept="3bR9La" id="2a9bszgruHi" role="1SiIV1">
@@ -21952,6 +21977,11 @@
             <node concept="3qWCbU" id="73GUf$ummOh" role="3LXTna">
               <property role="3qWCbO" value="**/*.mps, **/*.mpsr, **/.model" />
             </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="3AueY_NJl6j" role="3bR37C">
+          <node concept="1Busua" id="3AueY_NJl6k" role="1SiIV1">
+            <ref role="1Busuk" node="7Kfy9QB6KZA" resolve="jetbrains.mps.baseLanguage.classifiers" />
           </node>
         </node>
       </node>
