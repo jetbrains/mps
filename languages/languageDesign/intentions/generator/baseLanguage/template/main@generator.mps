@@ -4470,7 +4470,7 @@
     </node>
   </node>
   <node concept="13MO4I" id="hECf9cw">
-    <property role="TrG5h" value="reduce_DefaultClassifierFieldAccessOperation" />
+    <property role="TrG5h" value="reduce_IntentionsDefaultClassifierFieldAccessOperation" />
     <property role="3GE5qa" value="ClassifierMembers" />
     <ref role="3gUMe" to="tp4f:hEBZ7lK" resolve="DefaultClassifierFieldAccessOperation" />
     <node concept="312cEu" id="hECfql4" role="13RCb5">
@@ -4523,7 +4523,7 @@
     </node>
   </node>
   <node concept="13MO4I" id="hz2Aqmp">
-    <property role="TrG5h" value="reduce_DefaultClassifierMethodCall" />
+    <property role="TrG5h" value="reduce_IntentionsDefaultClassifierMethodCall" />
     <property role="3GE5qa" value="ClassifierMembers" />
     <ref role="3gUMe" to="tp4f:hyXshSD" resolve="DefaultClassifierMethodCallOperation" />
     <node concept="312cEu" id="hz2AJrf" role="13RCb5">
@@ -4714,11 +4714,11 @@
     <property role="TrG5h" value="Intentions_main" />
     <property role="3GE5qa" value="ClassifierMembers" />
     <node concept="2rT7sh" id="5JxumkiDsy8" role="2rTMjI">
-      <property role="TrG5h" value="map_ClassifierField" />
+      <property role="TrG5h" value="map_IntentionsClassifierField" />
       <ref role="2rZz_L" to="tpee:fz12cDC" resolve="FieldDeclaration" />
     </node>
     <node concept="2rT7sh" id="5JxumkiDsy9" role="2rTMjI">
-      <property role="TrG5h" value="map_ClassifierMethod" />
+      <property role="TrG5h" value="map_IntentionsClassifierMethod" />
       <ref role="2rZz_L" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
     </node>
     <node concept="3aamgX" id="hECe$_K" role="3acgRq">
@@ -4755,7 +4755,7 @@
     </node>
   </node>
   <node concept="13MO4I" id="4ZYGtWRmRzO">
-    <property role="TrG5h" value="reduce_ThisClassifierExpression" />
+    <property role="TrG5h" value="reduce_IntentionsThisClassifierExpression" />
     <property role="3GE5qa" value="ClassifierMembers" />
     <ref role="3gUMe" to="tp4f:hyWthE1" resolve="ThisClassifierExpression" />
     <node concept="312cEu" id="6dSlb0bYoi0" role="13RCb5">
