@@ -25,4 +25,9 @@
   <!-- since 2021.3 -->
   <typedef name="generator-settings" classname="jetbrains.mps.build.ant.GeneratorSettings" />
   <taskdef name="mps.make" classname="jetbrains.mps.build.ant.MakeTask" />
+
+  <!-- since 2022.3 -->
+  <taskdef name="launchtests" classname="jetbrains.mps.build.ant.junit.LaunchTestTask" />
+  <typedef name="testmodules" classname="jetbrains.mps.build.ant.junit.TestModules" />
+
 </antlib>
