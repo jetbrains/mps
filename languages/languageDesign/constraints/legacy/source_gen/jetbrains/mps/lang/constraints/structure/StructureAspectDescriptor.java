@@ -219,7 +219,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("alternativeIcon", 0x341b038f9307e5d8L).target(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x341b038f9307e5cfL).optional(true).ordered(true).multiple(false).origin("3754598629525415384").done();
     b.aggregate("instanceIcon", 0x13cd31e62ef6c43cL).target(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x13cd31e62ef65a72L).optional(true).ordered(true).multiple(false).origin("1426851521646478396").done();
     b.aggregate("methodDeclaration", 0x118c255bfb5L).target(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd6ee3c3L).optional(true).ordered(true).multiple(true).origin("1205851242421").done();
-    b.aggregate("fieldDeclaration", 0x4ffeb1df376f7495L).target(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x11aa7fc0293L).optional(true).ordered(true).multiple(true).origin("5764240145346688149").done();
     b.alias("Concept Constraints");
     return b.create();
   }

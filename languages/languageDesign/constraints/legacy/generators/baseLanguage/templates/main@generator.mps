@@ -60,9 +60,6 @@
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
-      <concept id="1197029447546" name="jetbrains.mps.baseLanguage.structure.FieldReferenceOperation" flags="nn" index="2OwXpG">
-        <reference id="1197029500499" name="fieldDeclaration" index="2Oxat5" />
-      </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
       </concept>
@@ -87,9 +84,7 @@
         <reference id="1144433057691" name="classifier" index="1PxDUh" />
       </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
-      <concept id="1070534370425" name="jetbrains.mps.baseLanguage.structure.IntegerType" flags="in" index="10Oyi0" />
       <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
-      <concept id="1068390468200" name="jetbrains.mps.baseLanguage.structure.FieldDeclaration" flags="ig" index="312cEg" />
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
         <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
@@ -461,10 +456,6 @@
       <property role="TrG5h" value="constraintClass" />
       <ref role="2rZz_L" to="tpee:fz12cDA" resolve="ClassConcept" />
     </node>
-    <node concept="2rT7sh" id="5JxumkiDsy8" role="2rTMjI">
-      <property role="TrG5h" value="map_ConstraintsClassifierField" />
-      <ref role="2rZz_L" to="tpee:fz12cDC" resolve="FieldDeclaration" />
-    </node>
     <node concept="2rT7sh" id="5JxumkiDsy9" role="2rTMjI">
       <property role="TrG5h" value="map_ConstraintsClassifierMethod" />
       <ref role="2rZz_L" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
@@ -537,53 +528,6 @@
               </node>
               <node concept="1mIQ4w" id="31OifsfFCTa" role="2OqNvi">
                 <node concept="chp4Y" id="31OifsfFCTb" role="cj9EA">
-                  <ref role="cht4Q" to="tp1t:hDM2fEI" resolve="ConceptConstraints" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="3aamgX" id="hECeHEJ" role="3acgRq">
-      <ref role="30HIoZ" to="tp4f:hEBZ0aj" resolve="DefaultClassifierFieldDeclaration" />
-      <ref role="2sgKRv" node="5JxumkiDsy8" resolve="map_ClassifierField" />
-      <node concept="j$656" id="hECeOEW" role="1lVwrX">
-        <ref role="v9R2y" to="tp48:hEC22Ns" resolve="reduce_DefaultClassifierFieldDeclaration" />
-      </node>
-      <node concept="30G5F_" id="31OifsfFCZk" role="30HLyM">
-        <node concept="3clFbS" id="31OifsfFCZl" role="2VODD2">
-          <node concept="3clFbF" id="31OifsfFCZp" role="3cqZAp">
-            <node concept="2OqwBi" id="31OifsfFCZq" role="3clFbG">
-              <node concept="2OqwBi" id="31OifsfFCZr" role="2Oq$k0">
-                <node concept="30H73N" id="31OifsfFCZs" role="2Oq$k0" />
-                <node concept="2Rxl7S" id="31OifsfFCZt" role="2OqNvi" />
-              </node>
-              <node concept="1mIQ4w" id="31OifsfFCZu" role="2OqNvi">
-                <node concept="chp4Y" id="31OifsfFCZv" role="cj9EA">
-                  <ref role="cht4Q" to="tp1t:hDM2fEI" resolve="ConceptConstraints" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="3aamgX" id="hECeL7R" role="3acgRq">
-      <ref role="30HIoZ" to="tp4f:hEBZ7lK" resolve="DefaultClassifierFieldAccessOperation" />
-      <node concept="j$656" id="hEChRo5" role="1lVwrX">
-        <ref role="v9R2y" node="hECf9cw" resolve="reduce_ConstraintsDefaultClassifierFieldAccessOperation" />
-      </node>
-      <node concept="30G5F_" id="31OifsfFD5q" role="30HLyM">
-        <node concept="3clFbS" id="31OifsfFD5r" role="2VODD2">
-          <node concept="3clFbF" id="31OifsfFD5T" role="3cqZAp">
-            <node concept="2OqwBi" id="31OifsfFD5U" role="3clFbG">
-              <node concept="2OqwBi" id="31OifsfFD5V" role="2Oq$k0">
-                <node concept="30H73N" id="31OifsfFD5W" role="2Oq$k0" />
-                <node concept="2Rxl7S" id="31OifsfFD5X" role="2OqNvi" />
-              </node>
-              <node concept="1mIQ4w" id="31OifsfFD5Y" role="2OqNvi">
-                <node concept="chp4Y" id="31OifsfFD5Z" role="cj9EA">
                   <ref role="cht4Q" to="tp1t:hDM2fEI" resolve="ConceptConstraints" />
                 </node>
               </node>
@@ -3842,25 +3786,6 @@
         </node>
       </node>
     </node>
-    <node concept="312cEg" id="4ZYGtWRsJDy" role="jymVt">
-      <property role="TrG5h" value="field" />
-      <node concept="3Tm6S6" id="4ZYGtWRsI5A" role="1B3o_S" />
-      <node concept="10Oyi0" id="4ZYGtWRsJu1" role="1tU5fm" />
-      <node concept="2b32R4" id="4ZYGtWRsL2P" role="lGtFl">
-        <node concept="3JmXsc" id="4ZYGtWRsL2S" role="2P8S$">
-          <node concept="3clFbS" id="4ZYGtWRsL2T" role="2VODD2">
-            <node concept="3clFbF" id="4ZYGtWRsL2Z" role="3cqZAp">
-              <node concept="2OqwBi" id="4ZYGtWRsL2U" role="3clFbG">
-                <node concept="3Tsc0h" id="4ZYGtWRsL2X" role="2OqNvi">
-                  <ref role="3TtcxE" to="tp1t:4ZYGtWRrRil" resolve="fieldDeclaration" />
-                </node>
-                <node concept="30H73N" id="4ZYGtWRsL2Y" role="2Oq$k0" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
     <node concept="3clFb_" id="hz2VtrA" role="jymVt">
       <property role="TrG5h" value="additionalMethods" />
       <node concept="2b32R4" id="QiIDdaGgh4" role="lGtFl">
@@ -4525,59 +4450,6 @@
     <node concept="1lLz0L" id="1pvkkjKAVz8" role="28wCFW">
       <property role="1lMjX7" value="h1lM37o/error" />
       <property role="1lLB17" value="Mandatory NodeScopeFactory missing" />
-    </node>
-  </node>
-  <node concept="13MO4I" id="hECf9cw">
-    <property role="TrG5h" value="reduce_ConstraintsDefaultClassifierFieldAccessOperation" />
-    <property role="3GE5qa" value="ClassifierMembers" />
-    <ref role="3gUMe" to="tp4f:hEBZ7lK" resolve="DefaultClassifierFieldAccessOperation" />
-    <node concept="312cEu" id="hECfql4" role="13RCb5">
-      <property role="TrG5h" value="GeneratedClass" />
-      <property role="3GE5qa" value="Actions" />
-      <node concept="312cEg" id="5JxumkiDzoW" role="jymVt">
-        <property role="TrG5h" value="field" />
-        <node concept="10Oyi0" id="5JxumkiDzoZ" role="1tU5fm" />
-        <node concept="3Tm6S6" id="5JxumkiDzoX" role="1B3o_S" />
-      </node>
-      <node concept="3clFb_" id="hECfql5" role="jymVt">
-        <property role="TrG5h" value="doExecute" />
-        <node concept="3cqZAl" id="hECfqlt" role="3clF45" />
-        <node concept="3Tm1VV" id="hECfql6" role="1B3o_S" />
-        <node concept="3clFbS" id="hECfql7" role="3clF47">
-          <node concept="3clFbF" id="5JxumkiDzpe" role="3cqZAp">
-            <node concept="2OqwBi" id="5JxumkiDzpg" role="3clFbG">
-              <node concept="2OwXpG" id="5JxumkiDzpk" role="2OqNvi">
-                <ref role="2Oxat5" node="5JxumkiDzoW" resolve="field" />
-                <node concept="raruj" id="5JxumkiDzpl" role="lGtFl" />
-                <node concept="1ZhdrF" id="5JxumkiDzpm" role="lGtFl">
-                  <property role="2qtEX8" value="fieldDeclaration" />
-                  <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1197029447546/1197029500499" />
-                  <node concept="3$xsQk" id="5JxumkiDzpn" role="3$ytzL">
-                    <node concept="3clFbS" id="5JxumkiDzpo" role="2VODD2">
-                      <node concept="3clFbF" id="5JxumkiDzpp" role="3cqZAp">
-                        <node concept="2OqwBi" id="5JxumkiDzpr" role="3clFbG">
-                          <node concept="1iwH7S" id="5JxumkiDzpq" role="2Oq$k0" />
-                          <node concept="1iwH70" id="5JxumkiDzpv" role="2OqNvi">
-                            <ref role="1iwH77" node="5JxumkiDsy8" resolve="map_ConstraintsClassifierField" />
-                            <node concept="2OqwBi" id="5JxumkiDzpy" role="1iwH7V">
-                              <node concept="30H73N" id="5JxumkiDzpx" role="2Oq$k0" />
-                              <node concept="3TrEf2" id="5JxumkiDzpA" role="2OqNvi">
-                                <ref role="3Tt5mk" to="tp4f:hEBZ7lN" resolve="field" />
-                              </node>
-                            </node>
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="Xjq3P" id="5JxumkiDzpf" role="2Oq$k0" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="hECfqlu" role="1B3o_S" />
     </node>
   </node>
   <node concept="13MO4I" id="hz2Aqmp">
