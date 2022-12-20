@@ -95,7 +95,7 @@ public class TestDiscovery {
           return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.annotation$K49I)).any(new IWhereFilter<SNode>() {
             public boolean accept(SNode a) {
               // JUnit5's Jupiter @Test annotation
-              return SLinkOperations.hasPointer(a, LINKS.annotation$12Ek, new SNodePointer("c234a56a-502f-4751-aded-6f9846fff7ce/java:org.junit.jupiter.api(jetbrains.mps.lang.test.junit5/)", "~Test"));
+              return SLinkOperations.hasPointer(a, LINKS.annotation$12Ek, new SNodePointer("63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.jupiter.api(org.junit.junit5/)", "~Test"));
             }
           });
         }

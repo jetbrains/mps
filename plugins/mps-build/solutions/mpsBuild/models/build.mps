@@ -42605,6 +42605,11 @@
               </node>
             </node>
           </node>
+          <node concept="1SiIV0" id="1ULLXZL0h_U" role="3bR37C">
+            <node concept="3bR9La" id="1ULLXZL0h_V" role="1SiIV1">
+              <ref role="3bR37D" node="1ULLXZL0gZG" resolve="org.junit.junit5" />
+            </node>
+          </node>
         </node>
         <node concept="398BVA" id="ymnOULAU0k" role="3LF7KH">
           <ref role="398BVh" node="ymnOULASEN" resolve="mps_home" />
@@ -43586,6 +43591,12 @@
             <ref role="3bR37D" node="rD7wKO6k$" resolve="MPS.Generator" />
           </node>
         </node>
+        <node concept="1SiIV0" id="4dqLDEZ4rIZ" role="3bR37C">
+          <node concept="3bR9La" id="4dqLDEZ4rJ0" role="1SiIV1">
+            <property role="3bR36h" value="true" />
+            <ref role="3bR37D" node="4MVYzzgl7sL" resolve="jetbrains.mps.lang.test.junit5" />
+          </node>
+        </node>
       </node>
       <node concept="1E1JtD" id="ymnOULAU2c" role="2G$12L">
         <property role="BnDLt" value="true" />
@@ -43781,158 +43792,6 @@
             </node>
           </node>
         </node>
-        <node concept="1SiIV0" id="4MVYzzglW9c" role="3bR37C">
-          <node concept="1BurEX" id="4MVYzzglW9d" role="1SiIV1">
-            <node concept="398BVA" id="4MVYzzglW92" role="1BurEY">
-              <ref role="398BVh" node="ymnOULASEN" resolve="mps_home" />
-              <node concept="2Ry0Ak" id="4MVYzzglW93" role="iGT6I">
-                <property role="2Ry0Am" value="plugins" />
-                <node concept="2Ry0Ak" id="4MVYzzglW94" role="2Ry0An">
-                  <property role="2Ry0Am" value="mps-testing" />
-                  <node concept="2Ry0Ak" id="4MVYzzglW95" role="2Ry0An">
-                    <property role="2Ry0Am" value="lib" />
-                    <node concept="2Ry0Ak" id="4MVYzzglW96" role="2Ry0An">
-                      <property role="2Ry0Am" value="junit-vintage-engine-5.9.1.jar" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="1SiIV0" id="4MVYzzglW9o" role="3bR37C">
-          <node concept="1BurEX" id="4MVYzzglW9p" role="1SiIV1">
-            <node concept="398BVA" id="4MVYzzglW9e" role="1BurEY">
-              <ref role="398BVh" node="ymnOULASEN" resolve="mps_home" />
-              <node concept="2Ry0Ak" id="4MVYzzglW9f" role="iGT6I">
-                <property role="2Ry0Am" value="plugins" />
-                <node concept="2Ry0Ak" id="4MVYzzglW9g" role="2Ry0An">
-                  <property role="2Ry0Am" value="mps-testing" />
-                  <node concept="2Ry0Ak" id="4MVYzzglW9h" role="2Ry0An">
-                    <property role="2Ry0Am" value="lib" />
-                    <node concept="2Ry0Ak" id="4MVYzzglW9i" role="2Ry0An">
-                      <property role="2Ry0Am" value="junit-platform-engine-1.9.1.jar" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="1SiIV0" id="4MVYzzglW9$" role="3bR37C">
-          <node concept="1BurEX" id="4MVYzzglW9_" role="1SiIV1">
-            <node concept="398BVA" id="4MVYzzglW9q" role="1BurEY">
-              <ref role="398BVh" node="ymnOULASEN" resolve="mps_home" />
-              <node concept="2Ry0Ak" id="4MVYzzglW9r" role="iGT6I">
-                <property role="2Ry0Am" value="plugins" />
-                <node concept="2Ry0Ak" id="4MVYzzglW9s" role="2Ry0An">
-                  <property role="2Ry0Am" value="mps-testing" />
-                  <node concept="2Ry0Ak" id="4MVYzzglW9t" role="2Ry0An">
-                    <property role="2Ry0Am" value="lib" />
-                    <node concept="2Ry0Ak" id="4MVYzzglW9u" role="2Ry0An">
-                      <property role="2Ry0Am" value="junit-jupiter-api-5.9.1.jar" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="1SiIV0" id="4MVYzzglW9K" role="3bR37C">
-          <node concept="1BurEX" id="4MVYzzglW9L" role="1SiIV1">
-            <node concept="398BVA" id="4MVYzzglW9A" role="1BurEY">
-              <ref role="398BVh" node="ymnOULASEN" resolve="mps_home" />
-              <node concept="2Ry0Ak" id="4MVYzzglW9B" role="iGT6I">
-                <property role="2Ry0Am" value="plugins" />
-                <node concept="2Ry0Ak" id="4MVYzzglW9C" role="2Ry0An">
-                  <property role="2Ry0Am" value="mps-testing" />
-                  <node concept="2Ry0Ak" id="4MVYzzglW9D" role="2Ry0An">
-                    <property role="2Ry0Am" value="lib" />
-                    <node concept="2Ry0Ak" id="4MVYzzglW9E" role="2Ry0An">
-                      <property role="2Ry0Am" value="junit-jupiter-engine-5.9.1.jar" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="1SiIV0" id="4MVYzzglW9W" role="3bR37C">
-          <node concept="1BurEX" id="4MVYzzglW9X" role="1SiIV1">
-            <node concept="398BVA" id="4MVYzzglW9M" role="1BurEY">
-              <ref role="398BVh" node="ymnOULASEN" resolve="mps_home" />
-              <node concept="2Ry0Ak" id="4MVYzzglW9N" role="iGT6I">
-                <property role="2Ry0Am" value="plugins" />
-                <node concept="2Ry0Ak" id="4MVYzzglW9O" role="2Ry0An">
-                  <property role="2Ry0Am" value="mps-testing" />
-                  <node concept="2Ry0Ak" id="4MVYzzglW9P" role="2Ry0An">
-                    <property role="2Ry0Am" value="lib" />
-                    <node concept="2Ry0Ak" id="4MVYzzglW9Q" role="2Ry0An">
-                      <property role="2Ry0Am" value="junit-jupiter-params-5.9.1.jar" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="1SiIV0" id="4MVYzzglWa8" role="3bR37C">
-          <node concept="1BurEX" id="4MVYzzglWa9" role="1SiIV1">
-            <node concept="398BVA" id="4MVYzzglW9Y" role="1BurEY">
-              <ref role="398BVh" node="ymnOULASEN" resolve="mps_home" />
-              <node concept="2Ry0Ak" id="4MVYzzglW9Z" role="iGT6I">
-                <property role="2Ry0Am" value="plugins" />
-                <node concept="2Ry0Ak" id="4MVYzzglWa0" role="2Ry0An">
-                  <property role="2Ry0Am" value="mps-testing" />
-                  <node concept="2Ry0Ak" id="4MVYzzglWa1" role="2Ry0An">
-                    <property role="2Ry0Am" value="lib" />
-                    <node concept="2Ry0Ak" id="4MVYzzglWa2" role="2Ry0An">
-                      <property role="2Ry0Am" value="junit-platform-commons-1.9.1.jar" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="1SiIV0" id="4MVYzzglWak" role="3bR37C">
-          <node concept="1BurEX" id="4MVYzzglWal" role="1SiIV1">
-            <node concept="398BVA" id="4MVYzzglWaa" role="1BurEY">
-              <ref role="398BVh" node="ymnOULASEN" resolve="mps_home" />
-              <node concept="2Ry0Ak" id="4MVYzzglWab" role="iGT6I">
-                <property role="2Ry0Am" value="plugins" />
-                <node concept="2Ry0Ak" id="4MVYzzglWac" role="2Ry0An">
-                  <property role="2Ry0Am" value="mps-testing" />
-                  <node concept="2Ry0Ak" id="4MVYzzglWad" role="2Ry0An">
-                    <property role="2Ry0Am" value="lib" />
-                    <node concept="2Ry0Ak" id="4MVYzzglWae" role="2Ry0An">
-                      <property role="2Ry0Am" value="apiguardian-api-1.1.2.jar" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="1SiIV0" id="4MVYzzglWaw" role="3bR37C">
-          <node concept="1BurEX" id="4MVYzzglWax" role="1SiIV1">
-            <node concept="398BVA" id="4MVYzzglWam" role="1BurEY">
-              <ref role="398BVh" node="ymnOULASEN" resolve="mps_home" />
-              <node concept="2Ry0Ak" id="4MVYzzglWan" role="iGT6I">
-                <property role="2Ry0Am" value="plugins" />
-                <node concept="2Ry0Ak" id="4MVYzzglWao" role="2Ry0An">
-                  <property role="2Ry0Am" value="mps-testing" />
-                  <node concept="2Ry0Ak" id="4MVYzzglWap" role="2Ry0An">
-                    <property role="2Ry0Am" value="lib" />
-                    <node concept="2Ry0Ak" id="4MVYzzglWaq" role="2Ry0An">
-                      <property role="2Ry0Am" value="opentest4j-1.2.0.jar" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="1SiIV0" id="4MVYzzguMZD" role="3bR37C">
           <node concept="3bR9La" id="4MVYzzguMZE" role="1SiIV1">
             <property role="3bR36h" value="true" />
@@ -43984,18 +43843,230 @@
             <ref role="3bR37D" node="1xb0AuwN7WS" resolve="JUnit" />
           </node>
         </node>
-        <node concept="1SiIV0" id="5gsHVK_W7h5" role="3bR37C">
-          <node concept="1BurEX" id="5gsHVK_W7h6" role="1SiIV1">
-            <node concept="398BVA" id="5gsHVK_W7gV" role="1BurEY">
+        <node concept="1SiIV0" id="4dqLDEZ2VCc" role="3bR37C">
+          <node concept="3bR9La" id="4dqLDEZ2VCd" role="1SiIV1">
+            <ref role="3bR37D" node="ymnOULAU1u" resolve="jetbrains.mps.lang.test.runtime" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="1ULLXZL0hBU" role="3bR37C">
+          <node concept="3bR9La" id="1ULLXZL0hBV" role="1SiIV1">
+            <property role="3bR36h" value="true" />
+            <ref role="3bR37D" node="1ULLXZL0gZG" resolve="org.junit.junit5" />
+          </node>
+        </node>
+      </node>
+      <node concept="1E1JtA" id="1ULLXZL0gZG" role="2G$12L">
+        <property role="TrG5h" value="org.junit.junit5" />
+        <property role="3LESm3" value="63b449db-0918-4a4a-a891-2c430ab133e4" />
+        <property role="BnDLt" value="true" />
+        <property role="2GAjPV" value="true" />
+        <node concept="398BVA" id="1ULLXZL0gZH" role="3LF7KH">
+          <ref role="398BVh" node="ymnOULASEN" resolve="mps_home" />
+          <node concept="2Ry0Ak" id="1ULLXZL0gZI" role="iGT6I">
+            <property role="2Ry0Am" value="plugins" />
+            <node concept="2Ry0Ak" id="1ULLXZL0gZJ" role="2Ry0An">
+              <property role="2Ry0Am" value="mps-testing" />
+              <node concept="2Ry0Ak" id="1ULLXZL0gZK" role="2Ry0An">
+                <property role="2Ry0Am" value="solutions" />
+                <node concept="2Ry0Ak" id="1ULLXZL0gZL" role="2Ry0An">
+                  <property role="2Ry0Am" value="org.junit.junit5" />
+                  <node concept="2Ry0Ak" id="1ULLXZL0hnY" role="2Ry0An">
+                    <property role="2Ry0Am" value="org.junit.junit5.msd" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="1ULLXZL0h04" role="3bR37C">
+          <node concept="3bR9La" id="1ULLXZL0h05" role="1SiIV1">
+            <property role="3bR36h" value="true" />
+            <ref role="3bR37D" node="mXGwHwhVPj" resolve="JDK" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="1ULLXZL0hvA" role="3bR37C">
+          <node concept="1BurEX" id="1ULLXZL0hvB" role="1SiIV1">
+            <node concept="398BVA" id="1ULLXZL0hvs" role="1BurEY">
               <ref role="398BVh" node="ymnOULASEN" resolve="mps_home" />
-              <node concept="2Ry0Ak" id="5gsHVK_W7gW" role="iGT6I">
+              <node concept="2Ry0Ak" id="1ULLXZL0hvt" role="iGT6I">
                 <property role="2Ry0Am" value="plugins" />
-                <node concept="2Ry0Ak" id="5gsHVK_W7gX" role="2Ry0An">
+                <node concept="2Ry0Ak" id="1ULLXZL0hvu" role="2Ry0An">
                   <property role="2Ry0Am" value="mps-testing" />
-                  <node concept="2Ry0Ak" id="5gsHVK_W7gY" role="2Ry0An">
+                  <node concept="2Ry0Ak" id="1ULLXZL0hvv" role="2Ry0An">
                     <property role="2Ry0Am" value="lib" />
-                    <node concept="2Ry0Ak" id="5gsHVK_W7gZ" role="2Ry0An">
+                    <node concept="2Ry0Ak" id="1ULLXZL0hvw" role="2Ry0An">
+                      <property role="2Ry0Am" value="apiguardian-api-1.1.2.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="1ULLXZL0hvM" role="3bR37C">
+          <node concept="1BurEX" id="1ULLXZL0hvN" role="1SiIV1">
+            <node concept="398BVA" id="1ULLXZL0hvC" role="1BurEY">
+              <ref role="398BVh" node="ymnOULASEN" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="1ULLXZL0hvD" role="iGT6I">
+                <property role="2Ry0Am" value="plugins" />
+                <node concept="2Ry0Ak" id="1ULLXZL0hvE" role="2Ry0An">
+                  <property role="2Ry0Am" value="mps-testing" />
+                  <node concept="2Ry0Ak" id="1ULLXZL0hvF" role="2Ry0An">
+                    <property role="2Ry0Am" value="lib" />
+                    <node concept="2Ry0Ak" id="1ULLXZL0hvG" role="2Ry0An">
+                      <property role="2Ry0Am" value="junit-jupiter-api-5.9.1.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="1ULLXZL0hvY" role="3bR37C">
+          <node concept="1BurEX" id="1ULLXZL0hvZ" role="1SiIV1">
+            <node concept="398BVA" id="1ULLXZL0hvO" role="1BurEY">
+              <ref role="398BVh" node="ymnOULASEN" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="1ULLXZL0hvP" role="iGT6I">
+                <property role="2Ry0Am" value="plugins" />
+                <node concept="2Ry0Ak" id="1ULLXZL0hvQ" role="2Ry0An">
+                  <property role="2Ry0Am" value="mps-testing" />
+                  <node concept="2Ry0Ak" id="1ULLXZL0hvR" role="2Ry0An">
+                    <property role="2Ry0Am" value="lib" />
+                    <node concept="2Ry0Ak" id="1ULLXZL0hvS" role="2Ry0An">
+                      <property role="2Ry0Am" value="junit-jupiter-engine-5.9.1.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="1ULLXZL0hwa" role="3bR37C">
+          <node concept="1BurEX" id="1ULLXZL0hwb" role="1SiIV1">
+            <node concept="398BVA" id="1ULLXZL0hw0" role="1BurEY">
+              <ref role="398BVh" node="ymnOULASEN" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="1ULLXZL0hw1" role="iGT6I">
+                <property role="2Ry0Am" value="plugins" />
+                <node concept="2Ry0Ak" id="1ULLXZL0hw2" role="2Ry0An">
+                  <property role="2Ry0Am" value="mps-testing" />
+                  <node concept="2Ry0Ak" id="1ULLXZL0hw3" role="2Ry0An">
+                    <property role="2Ry0Am" value="lib" />
+                    <node concept="2Ry0Ak" id="1ULLXZL0hw4" role="2Ry0An">
+                      <property role="2Ry0Am" value="junit-jupiter-migrationsupport-5.9.1.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="1ULLXZL0hwm" role="3bR37C">
+          <node concept="1BurEX" id="1ULLXZL0hwn" role="1SiIV1">
+            <node concept="398BVA" id="1ULLXZL0hwc" role="1BurEY">
+              <ref role="398BVh" node="ymnOULASEN" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="1ULLXZL0hwd" role="iGT6I">
+                <property role="2Ry0Am" value="plugins" />
+                <node concept="2Ry0Ak" id="1ULLXZL0hwe" role="2Ry0An">
+                  <property role="2Ry0Am" value="mps-testing" />
+                  <node concept="2Ry0Ak" id="1ULLXZL0hwf" role="2Ry0An">
+                    <property role="2Ry0Am" value="lib" />
+                    <node concept="2Ry0Ak" id="1ULLXZL0hwg" role="2Ry0An">
+                      <property role="2Ry0Am" value="junit-jupiter-params-5.9.1.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="1ULLXZL0hwy" role="3bR37C">
+          <node concept="1BurEX" id="1ULLXZL0hwz" role="1SiIV1">
+            <node concept="398BVA" id="1ULLXZL0hwo" role="1BurEY">
+              <ref role="398BVh" node="ymnOULASEN" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="1ULLXZL0hwp" role="iGT6I">
+                <property role="2Ry0Am" value="plugins" />
+                <node concept="2Ry0Ak" id="1ULLXZL0hwq" role="2Ry0An">
+                  <property role="2Ry0Am" value="mps-testing" />
+                  <node concept="2Ry0Ak" id="1ULLXZL0hwr" role="2Ry0An">
+                    <property role="2Ry0Am" value="lib" />
+                    <node concept="2Ry0Ak" id="1ULLXZL0hws" role="2Ry0An">
+                      <property role="2Ry0Am" value="junit-platform-commons-1.9.1.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="1ULLXZL0hwI" role="3bR37C">
+          <node concept="1BurEX" id="1ULLXZL0hwJ" role="1SiIV1">
+            <node concept="398BVA" id="1ULLXZL0hw$" role="1BurEY">
+              <ref role="398BVh" node="ymnOULASEN" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="1ULLXZL0hw_" role="iGT6I">
+                <property role="2Ry0Am" value="plugins" />
+                <node concept="2Ry0Ak" id="1ULLXZL0hwA" role="2Ry0An">
+                  <property role="2Ry0Am" value="mps-testing" />
+                  <node concept="2Ry0Ak" id="1ULLXZL0hwB" role="2Ry0An">
+                    <property role="2Ry0Am" value="lib" />
+                    <node concept="2Ry0Ak" id="1ULLXZL0hwC" role="2Ry0An">
+                      <property role="2Ry0Am" value="junit-platform-engine-1.9.1.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="1ULLXZL0hwU" role="3bR37C">
+          <node concept="1BurEX" id="1ULLXZL0hwV" role="1SiIV1">
+            <node concept="398BVA" id="1ULLXZL0hwK" role="1BurEY">
+              <ref role="398BVh" node="ymnOULASEN" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="1ULLXZL0hwL" role="iGT6I">
+                <property role="2Ry0Am" value="plugins" />
+                <node concept="2Ry0Ak" id="1ULLXZL0hwM" role="2Ry0An">
+                  <property role="2Ry0Am" value="mps-testing" />
+                  <node concept="2Ry0Ak" id="1ULLXZL0hwN" role="2Ry0An">
+                    <property role="2Ry0Am" value="lib" />
+                    <node concept="2Ry0Ak" id="1ULLXZL0hwO" role="2Ry0An">
                       <property role="2Ry0Am" value="junit-platform-launcher-1.9.1.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="1ULLXZL0hx6" role="3bR37C">
+          <node concept="1BurEX" id="1ULLXZL0hx7" role="1SiIV1">
+            <node concept="398BVA" id="1ULLXZL0hwW" role="1BurEY">
+              <ref role="398BVh" node="ymnOULASEN" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="1ULLXZL0hwX" role="iGT6I">
+                <property role="2Ry0Am" value="plugins" />
+                <node concept="2Ry0Ak" id="1ULLXZL0hwY" role="2Ry0An">
+                  <property role="2Ry0Am" value="mps-testing" />
+                  <node concept="2Ry0Ak" id="1ULLXZL0hwZ" role="2Ry0An">
+                    <property role="2Ry0Am" value="lib" />
+                    <node concept="2Ry0Ak" id="1ULLXZL0hx0" role="2Ry0An">
+                      <property role="2Ry0Am" value="junit-vintage-engine-5.9.1.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="1ULLXZL0hxi" role="3bR37C">
+          <node concept="1BurEX" id="1ULLXZL0hxj" role="1SiIV1">
+            <node concept="398BVA" id="1ULLXZL0hx8" role="1BurEY">
+              <ref role="398BVh" node="ymnOULASEN" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="1ULLXZL0hx9" role="iGT6I">
+                <property role="2Ry0Am" value="plugins" />
+                <node concept="2Ry0Ak" id="1ULLXZL0hxa" role="2Ry0An">
+                  <property role="2Ry0Am" value="mps-testing" />
+                  <node concept="2Ry0Ak" id="1ULLXZL0hxb" role="2Ry0An">
+                    <property role="2Ry0Am" value="lib" />
+                    <node concept="2Ry0Ak" id="1ULLXZL0hxc" role="2Ry0An">
+                      <property role="2Ry0Am" value="opentest4j-1.2.0.jar" />
                     </node>
                   </node>
                 </node>

@@ -55,7 +55,7 @@ public class JUnit5LauncherWorker extends WorkerBase {
 
           } catch (ClassNotFoundException e) {
             // exceptions caught at the caller level
-            throw new JUnitException("error collecting test suite", e);
+            throw new JUnitException("error building test suite", e);
           }
         }
       }).surveyModules(project.getProjectModules());

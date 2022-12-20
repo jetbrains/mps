@@ -37,26 +37,28 @@
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="u132" ref="49808fad-9d41-4b96-83fa-9231640f6b2b/java:junit.framework(JUnit/)" />
-    <import index="yqm7" ref="c234a56a-502f-4751-aded-6f9846fff7ce/java:org.junit.jupiter.api(jetbrains.mps.lang.test.junit5/)" />
-    <import index="n4ib" ref="c234a56a-502f-4751-aded-6f9846fff7ce/java:org.junit.platform.engine(jetbrains.mps.lang.test.junit5/)" />
-    <import index="s3rp" ref="c234a56a-502f-4751-aded-6f9846fff7ce/java:org.junit.platform.engine.discovery(jetbrains.mps.lang.test.junit5/)" />
-    <import index="z4cc" ref="c234a56a-502f-4751-aded-6f9846fff7ce/java:org.junit.platform.launcher.core(jetbrains.mps.lang.test.junit5/)" />
-    <import index="bws1" ref="c234a56a-502f-4751-aded-6f9846fff7ce/java:org.junit.platform.launcher(jetbrains.mps.lang.test.junit5/)" />
-    <import index="f41u" ref="c234a56a-502f-4751-aded-6f9846fff7ce/java:org.junit.platform.launcher.listeners(jetbrains.mps.lang.test.junit5/)" />
+    <import index="yqm7" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.jupiter.api(jetbrains.mps.lang.test.junit5/)" />
+    <import index="n4ib" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.platform.engine(jetbrains.mps.lang.test.junit5/)" />
+    <import index="s3rp" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.platform.engine.discovery(jetbrains.mps.lang.test.junit5/)" />
+    <import index="z4cc" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.platform.launcher.core(jetbrains.mps.lang.test.junit5/)" />
+    <import index="bws1" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.platform.launcher(jetbrains.mps.lang.test.junit5/)" />
+    <import index="f41u" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.platform.launcher.listeners(org.junit.junit5/)" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
-    <import index="l503" ref="c234a56a-502f-4751-aded-6f9846fff7ce/java:org.junit.platform.engine.reporting(jetbrains.mps.lang.test.junit5/)" />
-    <import index="9pnt" ref="c234a56a-502f-4751-aded-6f9846fff7ce/java:org.junit.platform.engine.support.descriptor(jetbrains.mps.lang.test.junit5/)" />
-    <import index="mti4" ref="c234a56a-502f-4751-aded-6f9846fff7ce/java:org.opentest4j(jetbrains.mps.lang.test.junit5/)" />
+    <import index="l503" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.platform.engine.reporting(org.junit.junit5/)" />
+    <import index="9pnt" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.platform.engine.support.descriptor(org.junit.junit5/)" />
+    <import index="mti4" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.opentest4j(org.junit.junit5/)" />
     <import index="rjhg" ref="49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)" />
     <import index="t6h5" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang.reflect(JDK/)" />
     <import index="ni5j" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.regex(JDK/)" />
     <import index="7x5y" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.nio.charset(JDK/)" />
     <import index="pzze" ref="r:c7043e16-5749-4bab-81f7-bab46752ca63(jetbrains.mps.lang.test.junit5.tcutil)" />
-    <import index="rbkg" ref="c234a56a-502f-4751-aded-6f9846fff7ce/java:org.junit.jupiter.api.extension(jetbrains.mps.lang.test.junit5/)" />
-    <import index="aby5" ref="c234a56a-502f-4751-aded-6f9846fff7ce/java:org.junit.jupiter.engine(jetbrains.mps.lang.test.junit5/)" />
+    <import index="rbkg" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.jupiter.api.extension(org.junit.junit5/)" />
+    <import index="aby5" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.jupiter.engine(org.junit.junit5/)" />
     <import index="i5cy" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent.atomic(JDK/)" />
-    <import index="zi5z" ref="c234a56a-502f-4751-aded-6f9846fff7ce/java:org.junit.platform.commons(jetbrains.mps.lang.test.junit5/)" />
+    <import index="zi5z" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.platform.commons(jetbrains.mps.lang.test.junit5/)" />
+    <import index="u8jp" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.jupiter.migrationsupport.rules(org.junit.junit5/)" />
+    <import index="tp6m" ref="r:00000000-0000-4000-0000-011c895903a2(jetbrains.mps.lang.test.runtime)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -1607,17 +1609,17 @@
                                   </node>
                                   <node concept="3clFbF" id="5gsHVK_lHzB" role="3cqZAp">
                                     <node concept="2OqwBi" id="5gsHVK_lHzC" role="3clFbG">
+                                      <node concept="1QLmlb" id="5gsHVK_lHzG" role="2OqNvi">
+                                        <node concept="ZC_QK" id="5gsHVK_lHzH" role="1QLmnL">
+                                          <ref role="2aWVGs" to="yqm7:~Test" resolve="Test" />
+                                        </node>
+                                      </node>
                                       <node concept="2OqwBi" id="5gsHVK_lHzD" role="2Oq$k0">
                                         <node concept="37vLTw" id="5gsHVK_lHzE" role="2Oq$k0">
                                           <ref role="3cqZAo" node="5gsHVK_lHzI" resolve="a" />
                                         </node>
                                         <node concept="3TrEf2" id="5gsHVK_lHzF" role="2OqNvi">
                                           <ref role="3Tt5mk" to="tpee:hiAI5P0" resolve="annotation" />
-                                        </node>
-                                      </node>
-                                      <node concept="1QLmlb" id="5gsHVK_lHzG" role="2OqNvi">
-                                        <node concept="ZC_QK" id="5gsHVK_lHzH" role="1QLmnL">
-                                          <ref role="2aWVGs" to="yqm7:~Test" resolve="Test" />
                                         </node>
                                       </node>
                                     </node>
