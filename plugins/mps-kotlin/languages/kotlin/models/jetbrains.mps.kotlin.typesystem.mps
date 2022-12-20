@@ -371,6 +371,7 @@
         <child id="1235573175711" name="elementType" index="2HTBi0" />
         <child id="1235573187520" name="singletonValue" index="2HTEbv" />
       </concept>
+      <concept id="1165530316231" name="jetbrains.mps.baseLanguage.collections.structure.IsEmptyOperation" flags="nn" index="1v1jN8" />
       <concept id="1165595910856" name="jetbrains.mps.baseLanguage.collections.structure.GetLastOperation" flags="nn" index="1yVyf7" />
       <concept id="1240824834947" name="jetbrains.mps.baseLanguage.collections.structure.ValueAccessOperation" flags="nn" index="3AV6Ez" />
       <concept id="1240825616499" name="jetbrains.mps.baseLanguage.collections.structure.KeyAccessOperation" flags="nn" index="3AY5_j" />
@@ -3324,6 +3325,52 @@
           </node>
         </node>
       </node>
+    </node>
+  </node>
+  <node concept="18kY7G" id="74ZS3j_q8Q0">
+    <property role="TrG5h" value="check_TryExpression_OneCatchOrFinally" />
+    <property role="3GE5qa" value="expression.control.try" />
+    <node concept="3clFbS" id="74ZS3j_q8Q1" role="18ibNy">
+      <node concept="3clFbJ" id="74ZS3j_q9jH" role="3cqZAp">
+        <node concept="1Wc70l" id="74ZS3j_qiAP" role="3clFbw">
+          <node concept="2OqwBi" id="74ZS3j_qiTi" role="3uHU7w">
+            <node concept="2OqwBi" id="74ZS3j_qiDO" role="2Oq$k0">
+              <node concept="1YBJjd" id="74ZS3j_qiCp" role="2Oq$k0">
+                <ref role="1YBMHb" node="74ZS3j_q8Q3" resolve="tryExpression" />
+              </node>
+              <node concept="3TrEf2" id="74ZS3j_qiFY" role="2OqNvi">
+                <ref role="3Tt5mk" to="hcm8:4Nah4_QkvOV" resolve="finally" />
+              </node>
+            </node>
+            <node concept="3w_OXm" id="74ZS3j_qjay" role="2OqNvi" />
+          </node>
+          <node concept="2OqwBi" id="74ZS3j_qdys" role="3uHU7B">
+            <node concept="2OqwBi" id="74ZS3j_q9$K" role="2Oq$k0">
+              <node concept="1YBJjd" id="74ZS3j_q9jT" role="2Oq$k0">
+                <ref role="1YBMHb" node="74ZS3j_q8Q3" resolve="tryExpression" />
+              </node>
+              <node concept="3Tsc0h" id="74ZS3j_q9Ub" role="2OqNvi">
+                <ref role="3TtcxE" to="hcm8:4Nah4_QkvOU" resolve="catches" />
+              </node>
+            </node>
+            <node concept="1v1jN8" id="74ZS3j_qhIg" role="2OqNvi" />
+          </node>
+        </node>
+        <node concept="3clFbS" id="74ZS3j_q9jJ" role="3clFbx">
+          <node concept="2MkqsV" id="74ZS3j_qjgi" role="3cqZAp">
+            <node concept="Xl_RD" id="74ZS3j_qjgu" role="2MkJ7o">
+              <property role="Xl_RC" value="expecting 'catch' or 'finally'" />
+            </node>
+            <node concept="1YBJjd" id="74ZS3j_qjwQ" role="1urrMF">
+              <ref role="1YBMHb" node="74ZS3j_q8Q3" resolve="tryExpression" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="74ZS3j_q8Q3" role="1YuTPh">
+      <property role="TrG5h" value="tryExpression" />
+      <ref role="1YaFvo" to="hcm8:2yYXHtl6Jkt" resolve="TryExpression" />
     </node>
   </node>
 </model>

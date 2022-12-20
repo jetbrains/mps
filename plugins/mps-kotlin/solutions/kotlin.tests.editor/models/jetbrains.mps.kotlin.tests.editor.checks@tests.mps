@@ -9,6 +9,7 @@
   <imports>
     <import index="lrl3" ref="r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)" />
     <import index="n8l9" ref="b50d89c0-0fb9-4105-b652-222148c26a9b/kotlin:kotlin.annotation(jetbrains.mps.kotlin.stdlib/)" implicit="true" />
+    <import index="0" ref="b50d89c0-0fb9-4105-b652-222148c26a9b/kotlin:kotlin(jetbrains.mps.kotlin.stdlib/)" implicit="true" />
   </imports>
   <registry>
     <language id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test">
@@ -53,6 +54,7 @@
       <concept id="781120894705658104" name="jetbrains.mps.kotlin.structure.IKotlinFile" flags="ng" index="2_hZ6C">
         <child id="2936055411798374534" name="fileAnnotations" index="1XD0Th" />
       </concept>
+      <concept id="1991556721070973461" name="jetbrains.mps.kotlin.structure.EmptyStatement" flags="ng" index="AQkLs" />
       <concept id="7138249191285121087" name="jetbrains.mps.kotlin.structure.IVisible" flags="ng" index="2BPcvI">
         <child id="7138249191285121088" name="visibility" index="2BPcuh" />
       </concept>
@@ -65,6 +67,9 @@
       <concept id="1314219036499415210" name="jetbrains.mps.kotlin.structure.AbstractPropertyDeclaration" flags="ng" index="TDTJE">
         <property id="2936055411806090009" name="isReadonly" index="1Xb$ne" />
         <child id="2936055411798374330" name="assignment" index="1XD05H" />
+      </concept>
+      <concept id="1314219036498225646" name="jetbrains.mps.kotlin.structure.IStatementHolder" flags="ng" index="THmaI">
+        <child id="1314219036498225649" name="statements" index="THmaL" />
       </concept>
       <concept id="6565639133219057675" name="jetbrains.mps.kotlin.structure.IArguments" flags="ng" index="TWioa">
         <child id="6565639133219057676" name="arguments" index="TWiod" />
@@ -86,6 +91,7 @@
       <concept id="2936055411798373537" name="jetbrains.mps.kotlin.structure.PropertyDeclaration" flags="ng" index="1XD09Q">
         <child id="1314219036499436525" name="declaration" index="TDYyH" />
       </concept>
+      <concept id="2936055411798373544" name="jetbrains.mps.kotlin.structure.FinallyBlock" flags="ng" index="1XD09Z" />
       <concept id="2936055411798373456" name="jetbrains.mps.kotlin.structure.NavigationOperation" flags="ng" index="1XD0a7">
         <child id="2936055411798374203" name="target" index="1XD07G" />
       </concept>
@@ -100,6 +106,10 @@
       <concept id="2936055411798373745" name="jetbrains.mps.kotlin.structure.VariableDeclaration" flags="ng" index="1XD0eA" />
       <concept id="2936055411798373753" name="jetbrains.mps.kotlin.structure.ValueArgument" flags="ng" index="1XD0eI">
         <child id="2936055411798374692" name="expression" index="1XD0ZN" />
+      </concept>
+      <concept id="2936055411798373661" name="jetbrains.mps.kotlin.structure.TryExpression" flags="ng" index="1XD0fa">
+        <child id="5533310174486461755" name="finally" index="UAV_M" />
+        <child id="5533310174486461754" name="catches" index="UAV_N" />
       </concept>
       <concept id="2936055411798373673" name="jetbrains.mps.kotlin.structure.KotlinFile" flags="ng" index="1XD0fY">
         <child id="2936055411798374537" name="declarations" index="1XD0Tu" />
@@ -125,6 +135,9 @@
       </concept>
       <concept id="2936055411798373223" name="jetbrains.mps.kotlin.structure.PropertyDefaultAssignement" flags="ng" index="1XD0mK">
         <child id="2936055411798373866" name="expression" index="1XD0cX" />
+      </concept>
+      <concept id="2936055411798373152" name="jetbrains.mps.kotlin.structure.CatchBlock" flags="ng" index="1XD0nR">
+        <child id="2936055411798373827" name="type" index="1XD0ck" />
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
@@ -894,6 +907,59 @@
   </node>
   <node concept="2XOHcx" id="1CUeZUod__u">
     <property role="2XOHcw" value="${mps_home}" />
+  </node>
+  <node concept="1lH9Xt" id="74ZS3j_qjK4">
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
+    <property role="TrG5h" value="TryCatch" />
+    <node concept="1qefOq" id="74ZS3j_vrNq" role="1SKRRt">
+      <node concept="1XD0fY" id="74ZS3j_vrNu" role="1qenE9">
+        <property role="TrG5h" value="tryCatchTest" />
+        <node concept="eKYAL" id="74ZS3j_vrNw" role="1XD0Tu" />
+        <node concept="1XD0bz" id="74ZS3j_vrN_" role="1XD0Tu">
+          <property role="TrG5h" value="tries" />
+          <node concept="gXE$l" id="74ZS3j_vrUe" role="THmaL">
+            <node concept="1PaTwC" id="74ZS3j_vrUg" role="gXG0x">
+              <node concept="3oM_SD" id="74ZS3j_vrUt" role="1PaTwD">
+                <property role="3oM_SC" value="Allowed" />
+              </node>
+            </node>
+          </node>
+          <node concept="1XD0fa" id="74ZS3j_vrOM" role="THmaL">
+            <node concept="1XD0nR" id="74ZS3j_vrPz" role="UAV_N">
+              <property role="TrG5h" value="e" />
+              <node concept="1XD088" id="74ZS3j_vrPB" role="1XD0ck">
+                <ref role="1SePDO" to="0:~kotlin/Throwable" resolve="Throwable" />
+              </node>
+            </node>
+          </node>
+          <node concept="1XD0fa" id="74ZS3j_vrSP" role="THmaL">
+            <node concept="1XD09Z" id="74ZS3j_vrT1" role="UAV_M" />
+          </node>
+          <node concept="AQkLs" id="74ZS3j_vrUv" role="THmaL" />
+          <node concept="gXE$l" id="74ZS3j_vrVC" role="THmaL">
+            <node concept="1PaTwC" id="74ZS3j_vrVE" role="gXG0x">
+              <node concept="3oM_SD" id="74ZS3j_vrW0" role="1PaTwD">
+                <property role="3oM_SC" value="Not" />
+              </node>
+              <node concept="3oM_SD" id="74ZS3j_vrW2" role="1PaTwD">
+                <property role="3oM_SC" value="allowed" />
+              </node>
+            </node>
+          </node>
+          <node concept="1XD0fa" id="74ZS3j_vrQL" role="THmaL">
+            <node concept="7CXmI" id="74ZS3j_vrRz" role="lGtFl">
+              <node concept="1TM$A" id="74ZS3j_vrR$" role="7EUXB">
+                <node concept="2PYRI3" id="74ZS3j_vrRC" role="3lydEf">
+                  <ref role="39XzEq" to="lrl3:74ZS3j_qjgi" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="1XD08$" id="74ZS3j_vrNB" role="ICcUN" />
+          <node concept="1XD0l2" id="74ZS3j_vrNC" role="2BPcuh" />
+        </node>
+      </node>
+    </node>
   </node>
 </model>
 
