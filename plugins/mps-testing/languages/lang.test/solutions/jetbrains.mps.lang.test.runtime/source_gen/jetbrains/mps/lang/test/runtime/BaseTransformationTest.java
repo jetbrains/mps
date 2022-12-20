@@ -10,6 +10,7 @@ import jetbrains.mps.tool.environment.Environment;
 import org.junit.Rule;
 import org.junit.rules.TestRule;
 import org.jetbrains.annotations.NotNull;
+import org.junit.jupiter.api.BeforeEach;
 import java.awt.GraphicsEnvironment;
 import java.awt.datatransfer.Clipboard;
 import java.awt.Toolkit;
@@ -41,6 +42,7 @@ public abstract class BaseTransformationTest implements TransformationTest, Envi
   /**
    * To respect @Rule in subclasses, has to be invoked as part of a TestRule, not with @Before
    */
+  @BeforeEach
   /*package*/ void setup() throws Exception {
     if (myParamCache != null) {
       // initializes project/models for the first test in the class, reuse initialized values for subsequent tests from the same class

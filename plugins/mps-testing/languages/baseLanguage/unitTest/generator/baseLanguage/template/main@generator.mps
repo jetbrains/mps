@@ -16,6 +16,7 @@
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
     <import index="rjhg" ref="49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)" />
+    <import index="yqm7" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.jupiter.api(jetbrains.mps.lang.test.junit5/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -449,7 +450,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="1xA5AX3Bk5K" role="2AJF6D">
-        <ref role="2AI5Lk" to="rjhg:~Before" resolve="Before" />
+        <ref role="2AI5Lk" to="yqm7:~BeforeEach" resolve="BeforeEach" />
       </node>
     </node>
     <node concept="3clFb_" id="79C96s2c6AE" role="jymVt">
@@ -495,7 +496,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="1xA5AX3Bmmc" role="2AJF6D">
-        <ref role="2AI5Lk" to="rjhg:~After" resolve="After" />
+        <ref role="2AI5Lk" to="yqm7:~AfterEach" resolve="AfterEach" />
       </node>
     </node>
     <node concept="3clFb_" id="h3vK4gV" role="jymVt">
