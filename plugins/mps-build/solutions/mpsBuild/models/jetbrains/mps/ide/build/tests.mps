@@ -9276,6 +9276,12 @@
     <property role="2DA0ip" value="../../../../" />
     <property role="TrG5h" value="mpsEditorImageGen" />
     <property role="turDy" value="mpsEditorImageGen.xml" />
+    <node concept="13uUGR" id="5L9CVXIvG9N" role="1l3spa">
+      <ref role="13uUGO" to="ffeo:6eCuTcwOnJO" resolve="IDEA" />
+      <node concept="398BVA" id="5L9CVXIvG9V" role="13uUGP">
+        <ref role="398BVh" node="3m6iW5ABSVb" resolve="idea_home" />
+      </node>
+    </node>
     <node concept="2sgV4H" id="3m6iW5ABSVC" role="1l3spa">
       <ref role="1l3spb" to="ffeo:3IKDaVZmzS6" resolve="mps" />
       <node concept="398BVA" id="3m6iW5ABSVD" role="2JcizS">
@@ -10007,6 +10013,12 @@
     <property role="2DA0ip" value="../../../../" />
     <property role="TrG5h" value="mpsEditorTransformationMenu" />
     <property role="turDy" value="mpsEditorTransformationMenu.xml" />
+    <node concept="13uUGR" id="5L9CVXIvG9z" role="1l3spa">
+      <ref role="13uUGO" to="ffeo:6eCuTcwOnJO" resolve="IDEA" />
+      <node concept="398BVA" id="5L9CVXIvG9G" role="13uUGP">
+        <ref role="398BVh" node="4Sf$XywNuak" resolve="idea_home" />
+      </node>
+    </node>
     <node concept="2sgV4H" id="4Sf$XywNuad" role="1l3spa">
       <ref role="1l3spb" to="ffeo:3IKDaVZmzS6" resolve="mps" />
       <node concept="398BVA" id="4Sf$XywNuae" role="2JcizS">
