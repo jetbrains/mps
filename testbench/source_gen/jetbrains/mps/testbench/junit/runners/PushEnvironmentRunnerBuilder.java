@@ -25,16 +25,23 @@ import org.junit.runner.manipulation.NoTestsRemainException;
 import java.util.Enumeration;
 import org.junit.runner.Description;
 
+/**
+ * 
+ * @deprecated 
+ */
+@Deprecated(forRemoval = true)
 @GeneratedClass(node = "r:eea68efb-2953-43f4-848f-9829ac5c7101(jetbrains.mps.testbench.junit.runners)/8946405811982745735", model = "r:eea68efb-2953-43f4-848f-9829ac5c7101(jetbrains.mps.testbench.junit.runners)")
 public final class PushEnvironmentRunnerBuilder extends RunnerBuilder {
   private final RunnerBuilder myDelegateBuilder;
   /*package*/ final Environment myEnvironmentToPush;
 
+  @Deprecated
   public PushEnvironmentRunnerBuilder(Environment environmentToPush) {
     this(environmentToPush, new AllDefaultPossibilitiesBuilder(true));
     // true for suite just because I see no reason why to forbid it, though not sure there's none.
   }
 
+  @Deprecated
   public PushEnvironmentRunnerBuilder(Environment environmentToPush, RunnerBuilder delegate) {
     myDelegateBuilder = delegate;
     myEnvironmentToPush = environmentToPush;

@@ -55,7 +55,10 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 /**
  * Currently used for ant tests
  * todo: WatchingSuite?
+ * 
+ * @deprecated 
  */
+@Deprecated(forRemoval = true)
 @GeneratedClass(node = "r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)/1884528325076767136", model = "r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)")
 public class MpsTestsSuite extends BaseMpsSuite {
   private static final Logger LOG = Logger.getLogger(MpsTestsSuite.class);
@@ -71,6 +74,7 @@ public class MpsTestsSuite extends BaseMpsSuite {
     }
   };
 
+  @Deprecated
   public MpsTestsSuite(Class<?> klass, RunnerBuilder builder) throws InitializationError {
     super(klass, Collections.<Runner>emptyList());
     // todo: read config from annotations before start (project / ?)
