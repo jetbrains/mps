@@ -72,6 +72,10 @@ public abstract class WorkerBase {
     return new JavaCompilerOptions(parsedJavaVersion);
   }
 
+  protected final boolean isRunningOnTeamCity() {
+    return myWhatToDo.getProperty("teamcity.version") != null;
+  }
+
   protected abstract Environment createEnvironment();
 
   protected EnvironmentConfig initEnvironmentConfig() {

@@ -58,7 +58,6 @@
     <import index="i5cy" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent.atomic(JDK/)" />
     <import index="zi5z" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.platform.commons(org.junit.junit5/)" />
     <import index="u8jp" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.jupiter.migrationsupport.rules(org.junit.junit5/)" />
-    <import index="tp6m" ref="r:00000000-0000-4000-0000-011c895903a2(jetbrains.mps.lang.test.runtime)" />
     <import index="7c1v" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.platform.reporting.legacy.xml(org.junit.junit5/)" />
     <import index="eoo2" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.nio.file(JDK/)" />
   </imports>
@@ -654,27 +653,35 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="HwplGM7neD" role="3cqZAp">
-          <node concept="2OqwBi" id="HwplGM7neE" role="3clFbG">
-            <node concept="37vLTw" id="HwplGM7neF" role="2Oq$k0">
-              <ref role="3cqZAo" node="HwplGM7nez" resolve="launcher" />
-            </node>
-            <node concept="liA8E" id="HwplGM7neG" role="2OqNvi">
-              <ref role="37wK5l" to="bws1:~Launcher.execute(org.junit.platform.launcher.LauncherDiscoveryRequest,org.junit.platform.launcher.TestExecutionListener...)" resolve="execute" />
-              <node concept="1rXfSq" id="HwplGM7neH" role="37wK5m">
-                <ref role="37wK5l" node="HwplGM784G" resolve="buildRequest" />
-                <node concept="1rXfSq" id="HwplGM7neI" role="37wK5m">
-                  <ref role="37wK5l" node="HwplGM6HpS" resolve="collectTestClasses" />
-                  <node concept="37vLTw" id="HwplGM7neS" role="37wK5m">
-                    <ref role="3cqZAo" node="HwplGM7neN" resolve="project" />
+        <node concept="3clFbJ" id="HwplGMkz7s" role="3cqZAp">
+          <node concept="3clFbS" id="HwplGMkz7u" role="3clFbx">
+            <node concept="3clFbF" id="HwplGMkrLN" role="3cqZAp">
+              <node concept="2OqwBi" id="HwplGMksT$" role="3clFbG">
+                <node concept="37vLTw" id="HwplGMkrLL" role="2Oq$k0">
+                  <ref role="3cqZAo" node="HwplGM7nez" resolve="launcher" />
+                </node>
+                <node concept="liA8E" id="HwplGMkw1q" role="2OqNvi">
+                  <ref role="37wK5l" to="bws1:~Launcher.registerTestExecutionListeners(org.junit.platform.launcher.TestExecutionListener...)" resolve="registerTestExecutionListeners" />
+                  <node concept="2ShNRf" id="HwplGMkx1c" role="37wK5m">
+                    <node concept="1pGfFk" id="HwplGMkx1d" role="2ShVmc">
+                      <ref role="37wK5l" to="pzze:5gsHVKBei_z" resolve="JUnit5TestExecutionListener" />
+                    </node>
                   </node>
                 </node>
               </node>
-              <node concept="2ShNRf" id="HwplGM7neK" role="37wK5m">
-                <node concept="1pGfFk" id="HwplGM7neL" role="2ShVmc">
-                  <ref role="37wK5l" to="pzze:5gsHVKBei_z" resolve="JUnit5TestExecutionListener" />
-                </node>
-              </node>
+            </node>
+          </node>
+          <node concept="1rXfSq" id="HwplGMkAjH" role="3clFbw">
+            <ref role="37wK5l" to="jo3e:KL8Aqll5he" resolve="isRunningOnTeamCity" />
+          </node>
+        </node>
+        <node concept="3clFbF" id="HwplGMkK63" role="3cqZAp">
+          <node concept="2OqwBi" id="HwplGMkLfm" role="3clFbG">
+            <node concept="37vLTw" id="HwplGMkK61" role="2Oq$k0">
+              <ref role="3cqZAo" node="HwplGM7nez" resolve="launcher" />
+            </node>
+            <node concept="liA8E" id="HwplGMkMsQ" role="2OqNvi">
+              <ref role="37wK5l" to="bws1:~Launcher.registerTestExecutionListeners(org.junit.platform.launcher.TestExecutionListener...)" resolve="registerTestExecutionListeners" />
               <node concept="2ShNRf" id="HwplGM8DhX" role="37wK5m">
                 <node concept="1pGfFk" id="HwplGM9cMC" role="2ShVmc">
                   <property role="373rjd" value="true" />
@@ -698,8 +705,37 @@
                   </node>
                 </node>
               </node>
-              <node concept="37vLTw" id="HwplGM7neR" role="37wK5m">
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="HwplGMl3u1" role="3cqZAp">
+          <node concept="2OqwBi" id="HwplGMl3u2" role="3clFbG">
+            <node concept="37vLTw" id="HwplGMl3u3" role="2Oq$k0">
+              <ref role="3cqZAo" node="HwplGM7nez" resolve="launcher" />
+            </node>
+            <node concept="liA8E" id="HwplGMl3u4" role="2OqNvi">
+              <ref role="37wK5l" to="bws1:~Launcher.registerTestExecutionListeners(org.junit.platform.launcher.TestExecutionListener...)" resolve="registerTestExecutionListeners" />
+              <node concept="37vLTw" id="HwplGMl3uc" role="37wK5m">
                 <ref role="3cqZAo" node="HwplGM7neP" resolve="failureDetector" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="HwplGM7neD" role="3cqZAp">
+          <node concept="2OqwBi" id="HwplGM7neE" role="3clFbG">
+            <node concept="37vLTw" id="HwplGM7neF" role="2Oq$k0">
+              <ref role="3cqZAo" node="HwplGM7nez" resolve="launcher" />
+            </node>
+            <node concept="liA8E" id="HwplGM7neG" role="2OqNvi">
+              <ref role="37wK5l" to="bws1:~Launcher.execute(org.junit.platform.launcher.LauncherDiscoveryRequest,org.junit.platform.launcher.TestExecutionListener...)" resolve="execute" />
+              <node concept="1rXfSq" id="HwplGM7neH" role="37wK5m">
+                <ref role="37wK5l" node="HwplGM784G" resolve="buildRequest" />
+                <node concept="1rXfSq" id="HwplGM7neI" role="37wK5m">
+                  <ref role="37wK5l" node="HwplGM6HpS" resolve="collectTestClasses" />
+                  <node concept="37vLTw" id="HwplGM7neS" role="37wK5m">
+                    <ref role="3cqZAo" node="HwplGM7neN" resolve="project" />
+                  </node>
+                </node>
               </node>
             </node>
           </node>

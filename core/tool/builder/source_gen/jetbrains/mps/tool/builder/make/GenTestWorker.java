@@ -224,9 +224,6 @@ public class GenTestWorker extends BaseGeneratorWorker {
     return fs.getFile(prefix + p).getPath();
   }
 
-  private boolean isRunningOnTeamCity() {
-    return myWhatToDo.getProperty("teamcity.version") != null;
-  }
 
   private boolean isShowDiff() {
     return Boolean.parseBoolean(myWhatToDo.getProperty(ScriptProperties.SHOW_DIFF));

@@ -64,7 +64,12 @@ public class JUnit5LauncherWorker extends WorkerBase {
   private void launchTests(Project project, FailureDetector failureDetector) throws PreconditionViolationException {
     LauncherConfig launcherConfig = LauncherConfig.builder().build();
     Launcher launcher = LauncherFactory.openSession(launcherConfig).getLauncher();
-    launcher.execute(buildRequest(collectTestClasses(project)), new JUnit5TestExecutionListener(), new LegacyXmlReportGeneratingListener(Path.of("."), new PrintWriter(System.out)), failureDetector);
+    if (isRunningOnTeamCity()) {
+      launcher.registerTestExecutionListeners(new JUnit5TestExecutionListener());
+    }
+    launcher.registerTestExecutionListeners(new LegacyXmlReportGeneratingListener(Path.of("."), new PrintWriter(System.out)));
+    launcher.registerTestExecutionListeners(failureDetector);
+    launcher.execute(buildRequest(collectTestClasses(project)));
   }
 
   private LauncherDiscoveryRequest buildRequest(final List<Class<?>> testClasses) {

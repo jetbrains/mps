@@ -529,6 +529,31 @@
       <node concept="3Tm6S6" id="5nerzVuuRZc" role="1B3o_S" />
     </node>
     <node concept="2tJIrI" id="5A5jZrz0t$s" role="jymVt" />
+    <node concept="3clFb_" id="KL8Aqll5he" role="jymVt">
+      <property role="TrG5h" value="isRunningOnTeamCity" />
+      <property role="DiZV1" value="true" />
+      <node concept="3Tmbuc" id="HwplGMjMLG" role="1B3o_S" />
+      <node concept="10P_77" id="KL8Aqll5hg" role="3clF45" />
+      <node concept="3clFbS" id="KL8Aqll5hh" role="3clF47">
+        <node concept="3cpWs6" id="KL8Aqll5hi" role="3cqZAp">
+          <node concept="3y3z36" id="KL8Aqll5hj" role="3cqZAk">
+            <node concept="2OqwBi" id="KL8Aqll5hk" role="3uHU7B">
+              <node concept="37vLTw" id="2BHiRxeus6Y" role="2Oq$k0">
+                <ref role="3cqZAo" node="KL8Aqlj5lG" resolve="myWhatToDo" />
+              </node>
+              <node concept="liA8E" id="KL8Aqll5hm" role="2OqNvi">
+                <ref role="37wK5l" to="asz6:KL8Aql8eBs" resolve="getProperty" />
+                <node concept="Xl_RD" id="KL8Aqll5hn" role="37wK5m">
+                  <property role="Xl_RC" value="teamcity.version" />
+                </node>
+              </node>
+            </node>
+            <node concept="10Nm6u" id="KL8Aqll5ho" role="3uHU7w" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="HwplGMjIkH" role="jymVt" />
     <node concept="3clFb_" id="5kpQnuAyTCk" role="jymVt">
       <property role="1EzhhJ" value="true" />
       <property role="TrG5h" value="createEnvironment" />

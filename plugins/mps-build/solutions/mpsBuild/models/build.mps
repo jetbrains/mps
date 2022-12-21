@@ -43843,11 +43843,6 @@
             <ref role="3bR37D" node="1xb0AuwN7WS" resolve="JUnit" />
           </node>
         </node>
-        <node concept="1SiIV0" id="4dqLDEZ2VCc" role="3bR37C">
-          <node concept="3bR9La" id="4dqLDEZ2VCd" role="1SiIV1">
-            <ref role="3bR37D" node="ymnOULAU1u" resolve="jetbrains.mps.lang.test.runtime" />
-          </node>
-        </node>
         <node concept="1SiIV0" id="1ULLXZL0hBU" role="3bR37C">
           <node concept="3bR9La" id="1ULLXZL0hBV" role="1SiIV1">
             <property role="3bR36h" value="true" />

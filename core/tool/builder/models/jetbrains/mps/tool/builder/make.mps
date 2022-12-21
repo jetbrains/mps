@@ -6091,29 +6091,6 @@
       </node>
     </node>
     <node concept="2tJIrI" id="7n4ow9NsCyD" role="jymVt" />
-    <node concept="3clFb_" id="KL8Aqll5he" role="jymVt">
-      <property role="TrG5h" value="isRunningOnTeamCity" />
-      <node concept="3Tm6S6" id="KL8Aqll5hf" role="1B3o_S" />
-      <node concept="10P_77" id="KL8Aqll5hg" role="3clF45" />
-      <node concept="3clFbS" id="KL8Aqll5hh" role="3clF47">
-        <node concept="3cpWs6" id="KL8Aqll5hi" role="3cqZAp">
-          <node concept="3y3z36" id="KL8Aqll5hj" role="3cqZAk">
-            <node concept="2OqwBi" id="KL8Aqll5hk" role="3uHU7B">
-              <node concept="37vLTw" id="2BHiRxeus6Y" role="2Oq$k0">
-                <ref role="3cqZAo" to="jo3e:KL8Aqlj5lG" resolve="myWhatToDo" />
-              </node>
-              <node concept="liA8E" id="KL8Aqll5hm" role="2OqNvi">
-                <ref role="37wK5l" to="asz6:KL8Aql8eBs" resolve="getProperty" />
-                <node concept="Xl_RD" id="KL8Aqll5hn" role="37wK5m">
-                  <property role="Xl_RC" value="teamcity.version" />
-                </node>
-              </node>
-            </node>
-            <node concept="10Nm6u" id="KL8Aqll5ho" role="3uHU7w" />
-          </node>
-        </node>
-      </node>
-    </node>
     <node concept="2tJIrI" id="7n4ow9NsCyH" role="jymVt" />
     <node concept="3clFb_" id="KL8Aqll5is" role="jymVt">
       <property role="TrG5h" value="isShowDiff" />
@@ -6677,7 +6654,7 @@
               </node>
             </node>
             <node concept="1rXfSq" id="4hiugqyyY$p" role="3clFbw">
-              <ref role="37wK5l" node="KL8Aqll5he" resolve="isRunningOnTeamCity" />
+              <ref role="37wK5l" to="jo3e:KL8Aqll5he" resolve="isRunningOnTeamCity" />
             </node>
           </node>
         </node>
@@ -6706,7 +6683,7 @@
                   </node>
                 </node>
                 <node concept="1rXfSq" id="4hiugqyzj0k" role="3K4Cdx">
-                  <ref role="37wK5l" node="KL8Aqll5he" resolve="isRunningOnTeamCity" />
+                  <ref role="37wK5l" to="jo3e:KL8Aqll5he" resolve="isRunningOnTeamCity" />
                 </node>
                 <node concept="2ShNRf" id="KL8Aqll5ob" role="3K4E3e">
                   <node concept="1pGfFk" id="KL8Aqll5oc" role="2ShVmc">
@@ -6906,7 +6883,7 @@
               </node>
             </node>
             <node concept="1rXfSq" id="4hiugqyyZYF" role="3clFbw">
-              <ref role="37wK5l" node="KL8Aqll5he" resolve="isRunningOnTeamCity" />
+              <ref role="37wK5l" to="jo3e:KL8Aqll5he" resolve="isRunningOnTeamCity" />
             </node>
           </node>
           <node concept="3clFbF" id="KL8Aqll5p_" role="3cqZAp">
