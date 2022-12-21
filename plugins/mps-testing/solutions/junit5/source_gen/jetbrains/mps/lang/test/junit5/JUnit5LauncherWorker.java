@@ -8,23 +8,24 @@ import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.EnvironmentConfig;
 import jetbrains.mps.tool.environment.IdeaEnvironment;
 import jetbrains.mps.project.Project;
-import java.util.List;
-import java.util.ArrayList;
-import org.jetbrains.mps.openapi.model.SNode;
-import org.junit.platform.commons.JUnitException;
-import org.junit.platform.engine.DiscoverySelector;
-import org.junit.platform.engine.discovery.DiscoverySelectors;
-import java.util.stream.Collectors;
-import org.junit.platform.launcher.LauncherDiscoveryRequest;
-import org.junit.platform.launcher.core.LauncherDiscoveryRequestBuilder;
+import org.junit.platform.commons.PreconditionViolationException;
 import org.junit.platform.launcher.core.LauncherConfig;
 import org.junit.platform.launcher.Launcher;
 import org.junit.platform.launcher.core.LauncherFactory;
-import org.junit.platform.launcher.TestPlan;
 import jetbrains.mps.lang.test.junit5.tcutil.JUnit5TestExecutionListener;
+import org.junit.platform.launcher.LauncherDiscoveryRequest;
+import java.util.List;
+import org.junit.platform.engine.DiscoverySelector;
+import org.junit.platform.engine.discovery.DiscoverySelectors;
+import java.util.stream.Collectors;
+import org.junit.platform.launcher.core.LauncherDiscoveryRequestBuilder;
+import java.util.ArrayList;
+import org.jetbrains.mps.openapi.model.SNode;
 import java.io.File;
 
 public class JUnit5LauncherWorker extends WorkerBase {
+
+  public static final String HALT_ON_FAILURE = "launchtests.haltonfailure";
 
   public JUnit5LauncherWorker(Script whatToDo) {
     super(whatToDo);
@@ -41,42 +42,64 @@ public class JUnit5LauncherWorker extends WorkerBase {
 
   @Override
   public void work() {
-    final Project project = myEnvironment.createProject(new ModuleFilesListProjectStrategy(myWhatToDo.getModules()));
+    Project project = myEnvironment.createProject(new ModuleFilesListProjectStrategy(myWhatToDo.getModules()));
+    EnvironmentAwareExtension.ourEnvironment.set(myEnvironment);
 
+    FailureDetector failureDetector = new FailureDetector();
+
+    launchTests(project, failureDetector);
+
+    myEnvironment.closeProject(project);
+    myEnvironment.dispose();
+
+    if (isHaltOnFailure() && failureDetector.hasFailures()) {
+      failureDetector.flushErrors(myErrors);
+      failBuild("launchtests");
+    }
+  }
+
+  private void launchTests(Project project, FailureDetector failureDetector) throws PreconditionViolationException {
+    LauncherConfig launcherConfig = LauncherConfig.builder().build();
+    Launcher launcher = LauncherFactory.openSession(launcherConfig).getLauncher();
+    launcher.execute(buildRequest(collectTestClasses(project)), new JUnit5TestExecutionListener(), failureDetector);
+  }
+
+  private LauncherDiscoveryRequest buildRequest(final List<Class<?>> testClasses) {
+    List<DiscoverySelector> testSelectors = testClasses.stream().map((Class<?> testClass) -> DiscoverySelectors.selectClass(testClass)).collect(Collectors.<DiscoverySelector>toList());
+
+    return LauncherDiscoveryRequestBuilder.request().selectors(testSelectors).build();
+  }
+
+  private List<Class<?>> collectTestClasses(final Project project) {
     final List<Class<?>> testClasses = new ArrayList<>();
+    final TestDiscoveryVisitor visitor = new TestDiscoveryVisitor() {
+      @Override
+      public void visitTestRoot(SNode testRootNode, String testClassName, ClassLoader moduleClassLoader) {
+        try {
+          testClasses.add(moduleClassLoader.loadClass(testClassName));
+
+        } catch (ClassNotFoundException e) {
+          error("error building test suite", e);
+        }
+      }
+    };
+
     project.getModelAccess().runReadAction(() -> {
 
-      new TestDiscovery(new TestDiscoveryVisitor() {
-        @Override
-        public void visitTestRoot(SNode testRootNode, String testClassName, ClassLoader moduleClassLoader) {
-          try {
-            Class<?> loadedClass = moduleClassLoader.loadClass(testClassName);
-            testClasses.add(loadedClass);
-
-          } catch (ClassNotFoundException e) {
-            // exceptions caught at the caller level
-            throw new JUnitException("error building test suite", e);
-          }
-        }
-      }).surveyModules(project.getProjectModules());
+      new TestDiscovery(visitor).surveyModules(project.getProjectModules());
 
     });
 
-    List<DiscoverySelector> testSelectors = testClasses.stream().map((Class<?> testClass) -> DiscoverySelectors.selectClass(testClass)).collect(Collectors.<DiscoverySelector>toList());
-
-    LauncherDiscoveryRequest request = LauncherDiscoveryRequestBuilder.request().selectors(testSelectors).build();
-
-    LauncherConfig launcherConfig = LauncherConfig.builder().build();
-    Launcher launcher = LauncherFactory.openSession(launcherConfig).getLauncher();
-    TestPlan testPlan = launcher.discover(request);
-
-    EnvironmentAwareExtension.ourEnvironment.set(myEnvironment);
-
-    launcher.execute(testPlan, new JUnit5TestExecutionListener());
+    return testClasses;
   }
 
+  private boolean isHaltOnFailure() {
+    String property = myWhatToDo.getProperty(HALT_ON_FAILURE);
+    return (property != null ? Boolean.valueOf(property) : false);
+  }
 
   public static void main(String[] args) {
     new JUnit5LauncherWorker(Script.fromDumpInFile(new File(args[0]))).workFromMain();
   }
+
 }

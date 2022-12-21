@@ -33,10 +33,14 @@
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
+      <concept id="1197029447546" name="jetbrains.mps.baseLanguage.structure.FieldReferenceOperation" flags="nn" index="2OwXpG">
+        <reference id="1197029500499" name="fieldDeclaration" index="2Oxat5" />
+      </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
       </concept>
       <concept id="1070462154015" name="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" flags="ig" index="Wx3nA" />
+      <concept id="1070475354124" name="jetbrains.mps.baseLanguage.structure.ThisExpression" flags="nn" index="Xjq3P" />
       <concept id="1070475587102" name="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" flags="nn" index="XkiVB" />
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
@@ -225,7 +229,17 @@
         <property role="Xl_RC" value="languages/junit5/jetbrains.mps.lang.test.junit5.jar" />
       </node>
     </node>
-    <node concept="2tJIrI" id="5gsHVKD0d$Z" role="jymVt" />
+    <node concept="2tJIrI" id="HwplGLPhwg" role="jymVt" />
+    <node concept="Wx3nA" id="HwplGLM_1W" role="jymVt">
+      <property role="3TUv4t" value="true" />
+      <property role="TrG5h" value="HALT_ON_FAILURE_PROPERTY" />
+      <node concept="3Tm1VV" id="HwplGLM_1T" role="1B3o_S" />
+      <node concept="17QB3L" id="HwplGLM_1U" role="1tU5fm" />
+      <node concept="Xl_RD" id="HwplGLM_1V" role="33vP2m">
+        <property role="Xl_RC" value="launchtests.haltonfailure" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="HwplGLMAWl" role="jymVt" />
     <node concept="312cEg" id="5gsHVK_0mum" role="jymVt">
       <property role="TrG5h" value="myModuleFile" />
       <node concept="3Tm6S6" id="5gsHVK_0mun" role="1B3o_S" />
@@ -363,6 +377,46 @@
       </node>
     </node>
     <node concept="2tJIrI" id="5gsHVK$Oh5_" role="jymVt" />
+    <node concept="3clFb_" id="HwplGLLEu6" role="jymVt">
+      <property role="TrG5h" value="setHaltOnFailure" />
+      <node concept="37vLTG" id="HwplGLLRwR" role="3clF46">
+        <property role="TrG5h" value="haltOnFailure" />
+        <node concept="10P_77" id="HwplGLLTw1" role="1tU5fm" />
+      </node>
+      <node concept="3cqZAl" id="HwplGLLEu8" role="3clF45" />
+      <node concept="3Tm1VV" id="HwplGLLEu9" role="1B3o_S" />
+      <node concept="3clFbS" id="HwplGLLEua" role="3clF47">
+        <node concept="3clFbF" id="HwplGLLUkd" role="3cqZAp">
+          <node concept="2OqwBi" id="HwplGLLZdV" role="3clFbG">
+            <node concept="2OqwBi" id="HwplGLLWeq" role="2Oq$k0">
+              <node concept="Xjq3P" id="HwplGLLUkc" role="2Oq$k0" />
+              <node concept="2OwXpG" id="HwplGLLXV1" role="2OqNvi">
+                <ref role="2Oxat5" to="644x:3ufQioQQtje" resolve="myWhatToDo" />
+              </node>
+            </node>
+            <node concept="liA8E" id="HwplGLM99b" role="2OqNvi">
+              <ref role="37wK5l" to="asz6:KL8Aql8eBe" resolve="putProperty" />
+              <node concept="37vLTw" id="HwplGLPnBH" role="37wK5m">
+                <ref role="3cqZAo" node="HwplGLM_1W" resolve="HALT_ON_FAILURE_PROPERTY" />
+              </node>
+              <node concept="2OqwBi" id="HwplGLMtDM" role="37wK5m">
+                <node concept="2YIFZM" id="HwplGLMquv" role="2Oq$k0">
+                  <ref role="37wK5l" to="wyt6:~Boolean.valueOf(boolean)" resolve="valueOf" />
+                  <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
+                  <node concept="37vLTw" id="HwplGLMrGc" role="37wK5m">
+                    <ref role="3cqZAo" node="HwplGLLRwR" resolve="haltOnFailure" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="HwplGLMv96" role="2OqNvi">
+                  <ref role="37wK5l" to="wyt6:~Boolean.toString()" resolve="toString" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="HwplGLLCE9" role="jymVt" />
     <node concept="3clFb_" id="28$8eDn2SGn" role="jymVt">
       <property role="TrG5h" value="addConfiguredLibrary" />
       <node concept="3cqZAl" id="28$8eDn2SGo" role="3clF45" />
@@ -471,6 +525,7 @@
       </node>
     </node>
     <node concept="2tJIrI" id="4MVYzzgvR6R" role="jymVt" />
+    <node concept="2tJIrI" id="HwplGLQRT3" role="jymVt" />
     <node concept="3clFb_" id="5gsHVK$XZk6" role="jymVt">
       <property role="TrG5h" value="calculateClassPath" />
       <property role="DiZV1" value="false" />

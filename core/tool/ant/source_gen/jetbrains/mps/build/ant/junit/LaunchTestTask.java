@@ -36,6 +36,8 @@ public class LaunchTestTask extends MpsLoadTask {
   public static final String JUNIT5_SERVICES_JAR = "lib/mps-testing.jar";
   public static final String JUNIT5_SUPPORT_JAR = "languages/junit5/jetbrains.mps.lang.test.junit5.jar";
 
+  public static final String HALT_ON_FAILURE_PROPERTY = "launchtests.haltonfailure";
+
   private List<File> myModuleFile = new ArrayList<>();
 
   public LaunchTestTask() {
@@ -60,6 +62,10 @@ public class LaunchTestTask extends MpsLoadTask {
     super.setFork(true);
   }
 
+  public void setHaltOnFailure(boolean haltOnFailure) {
+    this.myWhatToDo.putProperty(HALT_ON_FAILURE_PROPERTY, Boolean.valueOf(haltOnFailure).toString());
+  }
+
   public void addConfiguredLibrary(ModuleJarDataType jar) {
     File file = jar.getFile();
     if (file == null) {
@@ -76,6 +82,7 @@ public class LaunchTestTask extends MpsLoadTask {
   public void addConfiguredTestModules(TestModules testModules) {
     myModuleFile.addAll(testModules.getAllFilesThatExist());
   }
+
 
   @Override
   protected Set<File> calculateClassPath(boolean fork) {
