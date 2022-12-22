@@ -42698,6 +42698,14 @@
             </node>
           </node>
         </node>
+        <node concept="1E0d5M" id="6ATTNoz19ic" role="1E1XAP">
+          <ref role="1E0d5P" node="1ULLXZL0gZG" resolve="org.junit.junit5" />
+        </node>
+        <node concept="1SiIV0" id="6dN0RJSHY_3" role="3bR37C">
+          <node concept="3bR9La" id="6dN0RJSHY_4" role="1SiIV1">
+            <ref role="3bR37D" node="1ULLXZL0gZG" resolve="org.junit.junit5" />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="2G$12M" id="3AyJARA_gvl" role="3989C9">
