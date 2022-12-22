@@ -14,6 +14,10 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.migration.runtime.base.Problem;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -45,7 +49,6 @@ public class ClearLambdaLiteralHack extends MigrationScriptBase {
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LambdaLiteral$Bd, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          // Removed in migration 9
           SNodeOperations.deleteNode(SLinkOperations.getTarget(it, LINKS._itTypeHolder_hack$yOMR));
           SNodeOperations.deleteNode(SLinkOperations.getTarget(it, LINKS._thisTypeHolder_hack$QRo4));
         }
@@ -59,9 +62,40 @@ public class ClearLambdaLiteralHack extends MigrationScriptBase {
       });
     }
   }
+  @Override
+  public Iterable<Problem> check(SModule m) {
+    {
+      SearchScope scope_dshwou_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_dshwou_a0f_0 = new EditableFilteringScope(scope_dshwou_a0f);
+      QueryExecutionContext context = new QueryExecutionContext() {
+        public SearchScope getDefaultSearchScope() {
+          return scope_dshwou_a0f_0;
+        }
+      };
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LambdaLiteral$Bd, false)).where(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return (SLinkOperations.getTarget(it, LINKS._itTypeHolder_hack$yOMR) != null) || (SLinkOperations.getTarget(it, LINKS._thisTypeHolder_hack$QRo4) != null);
+        }
+      }).concat(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.FunctionCallExpression$EQ, false)).where(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return SNodeOperations.getReference(it, LINKS._receiver$fya4) != null;
+        }
+      })).select(new ISelector<SNode, NotMigratedNode>() {
+        public NotMigratedNode select(SNode it) {
+          return new NotMigratedNode(it) {
+            @Override
+            public String getMessage() {
+              return "deprecated structure elements not migrated";
+            }
+          };
+        }
+      });
+    }
+  }
   public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, "jetbrains.mps.kotlin"), 9);
   }
+
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept LambdaLiteral$Bd = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af517L, "jetbrains.mps.kotlin.structure.LambdaLiteral");
