@@ -2,7 +2,7 @@
 <solution name="jetbrains.mps.lang.messages.api" uuid="9abaaae2-decf-4e97-bf80-9109e8b759cc" moduleVersion="0" compileInMPS="false">
   <compileInIDEA />
   <models>
-    <modelRoot contentPath="${platform_lib}" type="java_classes">
+    <modelRoot contentPath="${mps_home}/lib" type="java_classes">
       <sourceRoot location="mps-messages-api.jar" />
     </modelRoot>
   </models>
@@ -12,7 +12,7 @@
     </facet>
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${platform_lib}/mps-messages-api.jar" />
+    <stubModelEntry path="${mps_home}/lib/mps-messages-api.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>
