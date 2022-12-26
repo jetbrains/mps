@@ -53,8 +53,8 @@ public class InferredParameter_Test {
     AbstractGeneric<IGeneric<Double>> nested = new AbstractGeneric<IGeneric<Double>>() {
       public IGeneric<Double> convert(IGeneric<Double> item, List<IGeneric<Double>> list) {
         list.forEach((IGeneric<Double> it) -> {
-          it.resultOf(3.0, 2, new AbstractGeneric<Double>() {
-            public Double convert(Double doublValue, List<Double> nestedList) {
+          it.resultOf(3.0, 2, new AbstractGeneric<K>() {
+            public K convert(K doublValue, List<K> nestedList) {
               return doublValue + nestedList.size();
             }
           });
@@ -111,7 +111,7 @@ public class InferredParameter_Test {
     List<StringBuilder> builders = ListSequence.fromListAndArray(new ArrayList<StringBuilder>(), new StringBuilder("Hello"), new StringBuilder("World"));
 
     // Chained calls with inferred type from "builders", using stream API
-    Stream<String> map = builders.stream().map((StringBuilder content) -> ItemContainer.init(content)).map((ItemContainer<StringBuilder> _this_0) -> _this_0.get()).map((StringBuilder _this_0) -> _this_0.toString());
+    Stream<String> map = builders.stream().map((StringBuilder content) -> ItemContainer.init(content)).map((ItemContainer<? super StringBuilder> _this_0) -> _this_0.get()).map((E _this_0) -> _this_0.toString());
     Assert.assertEquals(map.findFirst().get(), "Hello");
   }
   @Test
@@ -119,19 +119,7 @@ public class InferredParameter_Test {
     List<StringBuilder> builders = ListSequence.fromListAndArray(new ArrayList<StringBuilder>(), new StringBuilder("Hello"), new StringBuilder("World"));
 
     // Chained calls with inferred type from "builders", using java implementation of sequences
-    Iterable<String> strings = ListSequence.fromList(builders).select(new ISelector<StringBuilder, ItemContainer<StringBuilder>>() {
-      public ItemContainer<StringBuilder> select(StringBuilder content) {
-        return ItemContainer.init(content);
-      }
-    }).select(new ISelector<ItemContainer<StringBuilder>, StringBuilder>() {
-      public StringBuilder select(ItemContainer<StringBuilder> _this_0) {
-        return _this_0.get();
-      }
-    }).select(new ISelector<StringBuilder, String>() {
-      public String select(StringBuilder _this_0) {
-        return _this_0.toString();
-      }
-    });
+    Iterable<String> strings = ListSequence.fromList(builders).select((StringBuilder content) -> ItemContainer.init(content)).select((ItemContainer<? super StringBuilder> _this_0) -> _this_0.get()).select((E _this_0) -> _this_0.toString());
     Assert.assertEquals(Sequence.fromIterable(strings).first(), "Hello");
   }
   @Test
@@ -139,19 +127,7 @@ public class InferredParameter_Test {
     Iterable<StringBuilder> builders = ListSequence.fromListAndArray(new ArrayList<StringBuilder>(), new StringBuilder("Hello"), new StringBuilder("World"));
 
     // Chained calls with inferred type from "builders", using sequences
-    Iterable<String> strings = Sequence.fromIterable(builders).select(new ISelector<StringBuilder, ItemContainer<StringBuilder>>() {
-      public ItemContainer<StringBuilder> select(StringBuilder content) {
-        return ItemContainer.init(content);
-      }
-    }).select(new ISelector<ItemContainer<StringBuilder>, StringBuilder>() {
-      public StringBuilder select(ItemContainer<StringBuilder> _this_0) {
-        return _this_0.get();
-      }
-    }).select(new ISelector<StringBuilder, String>() {
-      public String select(StringBuilder _this_0) {
-        return _this_0.toString();
-      }
-    });
+    Iterable<String> strings = Sequence.fromIterable(builders).select((StringBuilder content) -> ItemContainer.init(content)).select((ItemContainer<? super StringBuilder> _this_0) -> _this_0.get()).select((E _this_0) -> _this_0.toString());
     Assert.assertEquals(Sequence.fromIterable(strings).first(), "Hello");
   }
   public interface IGeneric<K> {

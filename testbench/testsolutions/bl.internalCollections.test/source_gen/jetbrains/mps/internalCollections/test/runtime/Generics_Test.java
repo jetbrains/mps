@@ -32,10 +32,10 @@ public class Generics_Test {
     MPS13933 o1 = new MPS13933() {
       @Override
       public void doSmth() {
-        addRow(ListSequence.fromListAndArray(new ArrayList(), "foo", "bar"));
+        addRow(ListSequence.fromListAndArray(new ArrayList<>(), "foo", "bar"));
       }
     };
     o1.doSmth();
-    Assert.assertEquals(ListSequence.fromListAndArray(new ArrayList(), "foo", "bar"), o1.myList);
+    Assert.assertEquals(ListSequence.fromListAndArray(new ArrayList<>(), "foo", "bar"), o1.myList);
   }
 }

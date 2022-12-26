@@ -29,7 +29,9 @@
       <concept id="1215603922101" name="jetbrains.mps.lang.test.structure.NodeOperationsContainer" flags="ng" index="7CXmI">
         <child id="1215604436604" name="nodeOperations" index="7EUXB" />
       </concept>
-      <concept id="1215607067978" name="jetbrains.mps.lang.test.structure.CheckNodeForErrorMessagesOperation" flags="ng" index="7OXhh" />
+      <concept id="1215607067978" name="jetbrains.mps.lang.test.structure.CheckNodeForErrorMessagesOperation" flags="ng" index="7OXhh">
+        <property id="3743352646565420194" name="includeSelf" index="GvXf4" />
+      </concept>
       <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
         <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
       </concept>
@@ -1642,11 +1644,36 @@
                 </node>
               </node>
             </node>
+            <node concept="3clFbF" id="2H1iQD9ae9Q" role="3cqZAp">
+              <node concept="2OqwBi" id="2H1iQD9af0h" role="3clFbG">
+                <node concept="37vLTw" id="2H1iQD9ae9O" role="2Oq$k0">
+                  <ref role="3cqZAo" node="_PB_1P9tYe" resolve="intStream" />
+                </node>
+                <node concept="liA8E" id="2H1iQD9afVD" role="2OqNvi">
+                  <ref role="37wK5l" to="1ctc:~BaseStream.close()" resolve="close" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="2H1iQD9agEw" role="3cqZAp">
+              <node concept="2OqwBi" id="2H1iQD9ahng" role="3clFbG">
+                <node concept="37vLTw" id="2H1iQD9agEu" role="2Oq$k0">
+                  <ref role="3cqZAo" node="_PB_1P9pzp" resolve="stringStream" />
+                </node>
+                <node concept="liA8E" id="2H1iQD9aj0j" role="2OqNvi">
+                  <ref role="37wK5l" to="1ctc:~BaseStream.close()" resolve="close" />
+                </node>
+              </node>
+            </node>
           </node>
           <node concept="3cqZAl" id="7Gunk0ZoCXz" role="3clF45" />
           <node concept="3Tm1VV" id="7Gunk0ZoDva" role="1B3o_S" />
         </node>
         <node concept="3Tm1VV" id="7Gunk0ZoCVJ" role="1B3o_S" />
+        <node concept="7CXmI" id="2H1iQD9ajnp" role="lGtFl">
+          <node concept="7OXhh" id="2H1iQD9ajR0" role="7EUXB">
+            <property role="GvXf4" value="true" />
+          </node>
+        </node>
       </node>
     </node>
   </node>

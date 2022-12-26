@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import jetbrains.mps.baseLanguage.closures.util.Constants;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.junit.Assert;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -14,9 +13,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import java.util.Iterator;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 
 public class ClassifierAdapters_Test {
   @Test
@@ -45,45 +43,41 @@ public class ClassifierAdapters_Test {
   }
   @Test
   public void test_yieldClosureLiteralAsInterface() throws Exception {
-    NumberGenerator ng = new NumberGenerator() {
-      public Iterable<Integer> generate() {
-        return new Iterable<Integer>() {
-          public Iterator<Integer> iterator() {
-            return new YieldingIterator<Integer>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
+    NumberGenerator ng = () -> {
+      return (Iterable<Integer>) () -> {
+        return new YieldingIterator<Integer>() {
+          private int __CP__ = 0;
+          protected boolean moveToNext() {
 __loop__:
-                do {
+            do {
 __switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 2:
-                      this.__CP__ = 3;
-                      this.yield(1);
-                      return true;
-                    case 3:
-                      this.__CP__ = 4;
-                      this.yield(2);
-                      return true;
-                    case 4:
-                      this.__CP__ = 1;
-                      this.yield(3);
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    default:
-                      break __loop__;
-                  }
-                } while (true);
-                return false;
+              switch (this.__CP__) {
+                case -1:
+                  assert false : "Internal error";
+                  return false;
+                case 2:
+                  this.__CP__ = 3;
+                  this.yield(1);
+                  return true;
+                case 3:
+                  this.__CP__ = 4;
+                  this.yield(2);
+                  return true;
+                case 4:
+                  this.__CP__ = 1;
+                  this.yield(3);
+                  return true;
+                case 0:
+                  this.__CP__ = 2;
+                  break;
+                default:
+                  break __loop__;
               }
-            };
+            } while (true);
+            return false;
           }
         };
-      }
+      };
     };
     Integer[] exp = new Integer[]{1, 2, 3};
     int i = 0;
@@ -94,45 +88,41 @@ __switch__:
   }
   @Test
   public void test_genericInterfaceAdapter() throws Exception {
-    Generator<Integer> g = new Generator<Integer>() {
-      public Iterable<Integer> generate() {
-        return new Iterable<Integer>() {
-          public Iterator<Integer> iterator() {
-            return new YieldingIterator<Integer>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
+    Generator<Integer> g = () -> {
+      return (Iterable<Integer>) () -> {
+        return new YieldingIterator<Integer>() {
+          private int __CP__ = 0;
+          protected boolean moveToNext() {
 __loop__:
-                do {
+            do {
 __switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 2:
-                      this.__CP__ = 3;
-                      this.yield(1);
-                      return true;
-                    case 3:
-                      this.__CP__ = 4;
-                      this.yield(2);
-                      return true;
-                    case 4:
-                      this.__CP__ = 1;
-                      this.yield(3);
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    default:
-                      break __loop__;
-                  }
-                } while (true);
-                return false;
+              switch (this.__CP__) {
+                case -1:
+                  assert false : "Internal error";
+                  return false;
+                case 2:
+                  this.__CP__ = 3;
+                  this.yield(1);
+                  return true;
+                case 3:
+                  this.__CP__ = 4;
+                  this.yield(2);
+                  return true;
+                case 4:
+                  this.__CP__ = 1;
+                  this.yield(3);
+                  return true;
+                case 0:
+                  this.__CP__ = 2;
+                  break;
+                default:
+                  break __loop__;
               }
-            };
+            } while (true);
+            return false;
           }
         };
-      }
+      };
     };
     Integer exp = 1;
     for (Integer i : g.generate()) {
@@ -284,47 +274,39 @@ __switch__:
   }
   @Test
   public void test_translate() throws Exception {
-    Iterable<_FunctionTypes._return_P0_E0<? extends String>> seq = Sequence.fromClosure(new ISequenceClosure<_FunctionTypes._return_P0_E0<? extends String>>() {
-      public Iterable<_FunctionTypes._return_P0_E0<? extends String>> iterable() {
-        return new Iterable<_FunctionTypes._return_P0_E0<? extends String>>() {
-          public Iterator<_FunctionTypes._return_P0_E0<? extends String>> iterator() {
-            return new YieldingIterator<_FunctionTypes._return_P0_E0<? extends String>>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
+    Iterable<_FunctionTypes._return_P0_E0<? extends String>> seq = Sequence.fromClosure(() -> {
+      return (Iterable<_FunctionTypes._return_P0_E0<? extends String>>) () -> {
+        return new YieldingIterator<_FunctionTypes._return_P0_E0<? extends String>>() {
+          private int __CP__ = 0;
+          protected boolean moveToNext() {
 __loop__:
-                do {
+            do {
 __switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 2:
-                      this.__CP__ = 1;
-                      this.yield(new _FunctionTypes._return_P0_E0<String>() {
-                        public String invoke() {
-                          return "ABC";
-                        }
-                      });
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    default:
-                      break __loop__;
-                  }
-                } while (true);
-                return false;
+              switch (this.__CP__) {
+                case -1:
+                  assert false : "Internal error";
+                  return false;
+                case 2:
+                  this.__CP__ = 1;
+                  this.yield(new _FunctionTypes._return_P0_E0<String>() {
+                    public String invoke() {
+                      return "ABC";
+                    }
+                  });
+                  return true;
+                case 0:
+                  this.__CP__ = 2;
+                  break;
+                default:
+                  break __loop__;
               }
-            };
+            } while (true);
+            return false;
           }
         };
-      }
+      };
     });
-    Iterable<String> res = Sequence.fromIterable(seq).translate(new ITranslator2<_FunctionTypes._return_P0_E0<? extends String>, String>() {
-      public Iterable<String> translate(_FunctionTypes._return_P0_E0<? extends String> s) {
-        return Sequence.<String>singleton(s.invoke());
-      }
-    });
+    Iterable<String> res = Sequence.fromIterable(seq).translate((s) -> Sequence.<String>singleton(s.invoke()));
     Assert.assertSame(1, Sequence.fromIterable(res).count());
     Assert.assertEquals("ABC", Sequence.fromIterable(res).first());
   }

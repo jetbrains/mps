@@ -45,7 +45,7 @@ public class QueueDequeStack_Test {
   }
   @Test
   public void test_stack() throws Exception {
-    Deque<Integer> s = DequeSequence.fromDequeNew(new LinkedList<Integer>());
+    Deque<Integer> s = DequeSequence.fromDeque(new LinkedList<Integer>());
     DequeSequence.fromDequeNew(s).addFirstElement(1);
     DequeSequence.fromDequeNew(s).addFirstElement(2);
     DequeSequence.fromDequeNew(s).addFirstElement(3);
@@ -59,7 +59,7 @@ public class QueueDequeStack_Test {
   }
   @Test
   public void test_stackClassic() throws Exception {
-    Deque<Integer> s = DequeSequence.fromDequeNew(new LinkedList<Integer>());
+    Deque<Integer> s = DequeSequence.fromDeque(new LinkedList<Integer>());
     DequeSequence.fromDequeNew(s).pushElement(1);
     DequeSequence.fromDequeNew(s).pushElement(2);
     DequeSequence.fromDequeNew(s).pushElement(3);
@@ -75,7 +75,7 @@ public class QueueDequeStack_Test {
   }
   @Test
   public void test_deque() throws Exception {
-    Deque<Integer> d = DequeSequence.fromDequeNew(new LinkedList<Integer>());
+    Deque<Integer> d = DequeSequence.fromDeque(new LinkedList<Integer>());
     DequeSequence.fromDequeNew(d).addFirstElement(1);
     DequeSequence.fromDequeNew(d).addFirstElement(2);
     DequeSequence.fromDequeNew(d).addFirstElement(3);

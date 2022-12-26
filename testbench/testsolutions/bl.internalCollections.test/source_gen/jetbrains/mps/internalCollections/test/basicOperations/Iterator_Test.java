@@ -93,7 +93,7 @@ public class Iterator_Test extends Util_Test {
   @Test
   public void test_multiIterator() throws Exception {
     Iterable<Integer> seq10 = input10();
-    Iterable<Integer> seq01 = ListSequence.fromList(Sequence.fromIterable(seq10).toListSequence()).reversedList();
+    Iterable<Integer> seq01 = ListSequence.fromList(Sequence.fromIterable(seq10).toList()).reversedList();
     List<Integer> expected = ListSequence.fromListAndArray(new ArrayList<Integer>(), 11, 11, 11, 11, 11, 11, 11, 11, 11, 11);
     List<Integer> actual = ListSequence.fromList(new ArrayList<Integer>());
     {

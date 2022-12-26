@@ -9,7 +9,6 @@ import org.junit.Assert;
 import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 
 public class ExternalReferences_Test {
   @Test
@@ -229,11 +228,7 @@ __switch__:
     } else {
       foo = "bar";
     }
-    String f = Sequence.fromIterable(Sequence.<Integer>singleton(42)).foldLeft(foo, new ILeftCombinator<Integer, String>() {
-      public String combine(String s, Integer it) {
-        return "" + it + s;
-      }
-    });
+    String f = Sequence.fromIterable(Sequence.<Integer>singleton(42)).foldLeft(foo, (String s, Integer it) -> "" + it + s);
     Assert.assertEquals("42bar", f);
     Assert.assertTrue((foo).getClass() == String.class);
   }

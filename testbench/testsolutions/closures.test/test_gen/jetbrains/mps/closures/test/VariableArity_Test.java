@@ -21,7 +21,7 @@ public class VariableArity_Test {
   @Test
   public void test_inferredArityType() throws Exception {
     ArrayHolder<Integer> holder = new ArrayHolder<Integer>(3, 4, 2);
-    double mean = holder.handle((Integer... items) -> {
+    double mean = holder.handle((items) -> {
       double sum = 0;
       for (Integer item : items) {
         sum += item;

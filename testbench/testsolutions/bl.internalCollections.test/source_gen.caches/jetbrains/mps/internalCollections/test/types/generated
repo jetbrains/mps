@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="3114q0d1tge314hg3llg9md9dfab5mb">
-  <files names="GenericCollections_Test.java" />
+<product version="3" modelHash="-cal37dk2vseyh5qtialpu0cnduxg9lr">
+  <files names="CollectionTypesVariance_Test.java:GenericCollections_Test.java" />
 </product>
 

@@ -18,8 +18,8 @@ public class RawClassifierUsage_Test {
   }
 
   public void regularCase(SomeClass<Integer> object) {
-    List<Integer> list1 = Sequence.fromIterable(object.getRelated()).select((List<Integer> it) -> it.get(0)).toList();
-    List<Number> list2 = Sequence.fromIterable(object.getUnrelated()).select((List<Number> it) -> it.get(0)).toList();
+    List<Integer> list1 = Sequence.fromIterable(object.getRelated()).select((it) -> it.get(0)).toList();
+    List<Number> list2 = Sequence.fromIterable(object.getUnrelated()).select((it) -> it.get(0)).toList();
   }
 
   public void rawClassifier(SomeClass object) {
@@ -35,7 +35,7 @@ public class RawClassifierUsage_Test {
         return it.get(0);
       }
     }).toList();
-    List<Number> list2 = Sequence.fromIterable(object.getUnrelated()).select((List<Number> it) -> it.get(0)).toList();
+    List<Number> list2 = Sequence.fromIterable(object.getUnrelated()).select((it) -> it.get(0)).toList();
   }
 
   public void partiallyDeepRawClassifier(SomeClass<List<List<Map<String, List>>>> object) {
@@ -45,7 +45,7 @@ public class RawClassifierUsage_Test {
         return it.get(0);
       }
     }).toList();
-    List<Number> list2 = Sequence.fromIterable(object.getUnrelated()).select((List<Number> it) -> it.get(0)).toList();
+    List<Number> list2 = Sequence.fromIterable(object.getUnrelated()).select((it) -> it.get(0)).toList();
   }
 
 }

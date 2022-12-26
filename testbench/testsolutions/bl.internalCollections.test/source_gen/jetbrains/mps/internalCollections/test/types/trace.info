@@ -7,6 +7,71 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root nodeRef="r:3b93a80b-8267-4154-a2f6-29cf728da0a5(jetbrains.mps.internalCollections.test.types)/2321665441773909758">
+    <file name="CollectionTypesVariance_Test.java">
+      <node id="2321665441773909758" at="25,41,26,25" concept="6" />
+      <node id="2321665441773936177" at="30,78,31,69" concept="1" />
+      <node id="2321665441773946240" at="34,78,35,69" concept="1" />
+      <node id="2321665441773916246" at="38,77,39,68" concept="1" />
+      <node id="2321665441773909758" at="44,52,45,19" concept="6" />
+      <node id="2321665441773936177" at="48,80,49,0" concept="4" />
+      <node id="2321665441773936177" at="50,30,51,67" concept="3" />
+      <node id="2321665441773936177" at="51,67,52,65" concept="3" />
+      <node id="2321665441773936177" at="52,65,53,263" concept="1" />
+      <node id="2321665441773946240" at="56,80,57,0" concept="4" />
+      <node id="2321665441773946240" at="58,30,59,67" concept="3" />
+      <node id="2321665441773946240" at="59,67,60,65" concept="3" />
+      <node id="2321665441773946240" at="60,65,61,273" concept="1" />
+      <node id="2321665441773916246" at="64,79,65,0" concept="4" />
+      <node id="2321665441773916246" at="66,30,67,67" concept="3" />
+      <node id="2321665441773916246" at="67,67,68,65" concept="3" />
+      <node id="2321665441773916246" at="68,65,69,781" concept="1" />
+      <node id="2321665441773909758" at="22,0,24,0" concept="5" trace="ourParamCache" />
+      <node id="2321665441773909758" at="25,0,28,0" concept="0" trace="CollectionTypesVariance_Test#()V" />
+      <node id="2321665441773909758" at="44,0,47,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="2321665441773936177" at="29,0,33,0" concept="2" trace="test_NodeTypeSystemCheck2321665441773936177#()V" />
+      <node id="2321665441773946240" at="33,0,37,0" concept="2" trace="test_NodeTypeSystemCheck2321665441773946240#()V" />
+      <node id="2321665441773916246" at="37,0,41,0" concept="2" trace="test_ErrorMessagesCheck2321665441773916246#()V" />
+      <node id="2321665441773936177" at="49,0,54,9" concept="1" />
+      <node id="2321665441773946240" at="57,0,62,9" concept="1" />
+      <node id="2321665441773916246" at="65,0,70,9" concept="1" />
+      <node id="2321665441773936177" at="48,0,56,0" concept="2" trace="test_NodeTypeSystemCheck2321665441773936177#()V" />
+      <node id="2321665441773946240" at="56,0,64,0" concept="2" trace="test_NodeTypeSystemCheck2321665441773946240#()V" />
+      <node id="2321665441773916246" at="64,0,72,0" concept="2" trace="test_ErrorMessagesCheck2321665441773916246#()V" />
+      <scope id="2321665441773909758" at="25,41,26,25" />
+      <scope id="2321665441773936177" at="30,78,31,69" />
+      <scope id="2321665441773946240" at="34,78,35,69" />
+      <scope id="2321665441773916246" at="38,77,39,68" />
+      <scope id="2321665441773909758" at="44,52,45,19" />
+      <scope id="2321665441773909758" at="25,0,28,0" />
+      <scope id="2321665441773909758" at="44,0,47,0">
+        <var name="owner" id="2321665441773909758" />
+      </scope>
+      <scope id="2321665441773936177" at="50,30,53,263">
+        <var name="nodeToCheck" id="2321665441773936177" />
+        <var name="operation" id="2321665441773936177" />
+      </scope>
+      <scope id="2321665441773946240" at="58,30,61,273">
+        <var name="nodeToCheck" id="2321665441773946240" />
+        <var name="operation" id="2321665441773946240" />
+      </scope>
+      <scope id="2321665441773916246" at="66,30,69,781">
+        <var name="nodeToCheck" id="2321665441773916246" />
+        <var name="operation" id="2321665441773916246" />
+      </scope>
+      <scope id="2321665441773936177" at="29,0,33,0" />
+      <scope id="2321665441773946240" at="33,0,37,0" />
+      <scope id="2321665441773916246" at="37,0,41,0" />
+      <scope id="2321665441773936177" at="48,80,54,9" />
+      <scope id="2321665441773946240" at="56,80,62,9" />
+      <scope id="2321665441773916246" at="64,79,70,9" />
+      <scope id="2321665441773936177" at="48,0,56,0" />
+      <scope id="2321665441773946240" at="56,0,64,0" />
+      <scope id="2321665441773916246" at="64,0,72,0" />
+      <unit id="2321665441773909758" at="42,0,74,0" name="jetbrains.mps.internalCollections.test.types.CollectionTypesVariance_Test$TestBody" />
+      <unit id="2321665441773909758" at="20,0,75,0" name="jetbrains.mps.internalCollections.test.types.CollectionTypesVariance_Test" />
+    </file>
+  </root>
   <root nodeRef="r:3b93a80b-8267-4154-a2f6-29cf728da0a5(jetbrains.mps.internalCollections.test.types)/6699137465481734229">
     <file name="GenericCollections_Test.java">
       <node id="6699137465481734229" at="25,36,26,60" concept="6" />
