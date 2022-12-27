@@ -24,7 +24,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.closures.constraints.ClassifierTypeUtil;
 import jetbrains.mps.baseLanguage.methodReferences.behavior.MethodReference__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.ITypeApplicable__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.errors.BaseQuickFixProvider;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
@@ -99,7 +98,7 @@ public class typeof_MethodReference_InferenceRule extends AbstractInferenceRule_
 
                   GenericHelper.collectGenerics(typeCheckingContext, classifierType, subs);
 
-                  targetMethodParamTypes = Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.cast(targetMethod, CONCEPTS.BaseMethodDeclaration$kD), LINKS.parameter$5xBj), LINKS.type$a1UY)).toListSequence();
+                  targetMethodParamTypes = Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.cast(targetMethod, CONCEPTS.BaseMethodDeclaration$kD), LINKS.parameter$5xBj), LINKS.type$a1UY)).toList();
                   targetRetType = ClassifierTypeUtil.resolveType(SLinkOperations.getTarget(SNodeOperations.cast(targetMethod, CONCEPTS.BaseMethodDeclaration$kD), LINKS.returnType$5xoi), classifierType);
                   targetThrows = SLinkOperations.getChildren(SNodeOperations.cast(targetMethod, CONCEPTS.BaseMethodDeclaration$kD), LINKS.throwsItem$CdW$);
                 }
@@ -117,11 +116,7 @@ public class typeof_MethodReference_InferenceRule extends AbstractInferenceRule_
                     ListSequence.fromList(refMethodParamTypes).insertElement(0, typeCheckingContext.getExpandedNode(operandType));
                   }
 
-                  ListSequence.fromList(refMethodParamTypes).addSequence(ListSequence.fromList(ITypeApplicable__BehaviorDescriptor.getTypeApplicationParameters_id7bu6bIyR2DR.invoke(methodRef, ((int) ListSequence.fromList(targetMethodParamTypes).count()))).select(new ISelector<SNode, SNode>() {
-                    public SNode select(SNode it) {
-                      return GenericHelper.expandedOf(it, subs);
-                    }
-                  }));
+                  ListSequence.fromList(refMethodParamTypes).addSequence(ListSequence.fromList(ITypeApplicable__BehaviorDescriptor.getTypeApplicationParameters_id7bu6bIyR2DR.invoke(methodRef, ((int) ListSequence.fromList(targetMethodParamTypes).count()))).select((SNode it) -> GenericHelper.expandedOf(it, subs)));
 
                   if (ListSequence.fromList(refMethodParamTypes).count() != ListSequence.fromList(targetMethodParamTypes).count()) {
                     errorMsg = "wrong parameter number";
@@ -176,11 +171,7 @@ public class typeof_MethodReference_InferenceRule extends AbstractInferenceRule_
                     }
 
                     // Runtime exceptions unchecked
-                    SNode targetType = _quotation_createNode_7gf7o9_a0h0a7a91a0a0b0a1a0a0a0b0a1a7a1(ListSequence.fromList(targetThrows).select(new ISelector<SNode, SNode>() {
-                      public SNode select(SNode it) {
-                        return GenericHelper.expandedOf(it, subs);
-                      }
-                    }).toListSequence());
+                    SNode targetType = _quotation_createNode_7gf7o9_a0h0a7a91a0a0b0a1a0a0a0b0a1a7a1(ListSequence.fromList(targetThrows).select((SNode it) -> GenericHelper.expandedOf(it, subs)).toList());
 
                     // Check/infer throws
                     for (SNode refType : ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.throwsItem$CdW$))) {

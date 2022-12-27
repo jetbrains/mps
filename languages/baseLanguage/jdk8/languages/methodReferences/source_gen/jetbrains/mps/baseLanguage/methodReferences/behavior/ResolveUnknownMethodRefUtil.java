@@ -15,7 +15,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.behavior.IMemberContainer__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -68,11 +67,7 @@ public final class ResolveUnknownMethodRefUtil {
         } else {
           // Reference any constructor, auto fixing will then resolve the correct one
           mRef = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x34d254ec4f4136fL, "jetbrains.mps.baseLanguage.methodReferences.structure.MethodReference"));
-          SLinkOperations.setTarget(mRef, LINKS.method$8Sfb, SNodeOperations.as(ListSequence.fromList(IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invoke(target)).findFirst(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SNodeOperations.isInstanceOf(it, CONCEPTS.ConstructorDeclaration$yG);
-            }
-          }), CONCEPTS.ConstructorDeclaration$yG));
+          SLinkOperations.setTarget(mRef, LINKS.method$8Sfb, SNodeOperations.as(ListSequence.fromList(IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invoke(target)).findFirst((SNode it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.ConstructorDeclaration$yG)), CONCEPTS.ConstructorDeclaration$yG));
         }
 
         // Resolve target

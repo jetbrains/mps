@@ -19,8 +19,6 @@ import java.util.HashSet;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -63,15 +61,7 @@ public final class IApplicableToNothing__BehaviorDescriptor extends BaseBHDescri
     }
     // can not do ofType() first and simplify hasApplicableTypes by removing isSubConceptOf check
     // as ofType() doesn't really check anything but instananceOf SAbstractConcept, I use it here just to simplify cast.
-    Sequence.fromIterable(supers).where(new IWhereFilter<SInterfaceConcept>() {
-      public boolean accept(SInterfaceConcept it) {
-        return ((boolean) IApplicableToNothing__BehaviorDescriptor.hasApplicableTypes_id1QUKo_K_4f7.invoke(__thisConcept__, it));
-      }
-    }).ofType(SAbstractConcept.class).visitAll(new IVisitor<SAbstractConcept>() {
-      public void visit(SAbstractConcept it) {
-        SetSequence.fromSet(result).addSequence(ListSequence.fromList(IApplicableToNothing__BehaviorDescriptor.getApplicableTypes_id5cL0w3DYzxf.invoke(SNodeOperations.asSConcept(it))));
-      }
-    });
+    Sequence.fromIterable(supers).where((SInterfaceConcept it) -> ((boolean) IApplicableToNothing__BehaviorDescriptor.hasApplicableTypes_id1QUKo_K_4f7.invoke(__thisConcept__, it))).ofType(SAbstractConcept.class).visitAll((SAbstractConcept it) -> SetSequence.fromSet(result).addSequence(ListSequence.fromList(IApplicableToNothing__BehaviorDescriptor.getApplicableTypes_id5cL0w3DYzxf.invoke(SNodeOperations.asSConcept(it)))));
     return result;
   }
   /*package*/ static boolean hasApplicableTypes_id1QUKo_K_4f7(@NotNull SAbstractConcept __thisConcept__, SAbstractConcept concept) {

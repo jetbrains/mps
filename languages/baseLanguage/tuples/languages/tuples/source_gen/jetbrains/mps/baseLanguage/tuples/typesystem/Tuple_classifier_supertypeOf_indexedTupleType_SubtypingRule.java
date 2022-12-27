@@ -13,7 +13,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.closures.constraints.ClassifierTypeUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -32,8 +32,8 @@ public class Tuple_classifier_supertypeOf_indexedTupleType_SubtypingRule extends
   public List<SNode> getSubOrSuperTypes(SNode itt, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> result = new ArrayList<SNode>();
     final String ifcname = "_" + ListSequence.fromList(SLinkOperations.getChildren(itt, LINKS.componentType$crWY)).count();
-    SNode ifc = Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(SLinkOperations.getTarget(_quotation_createNode_tm6bn3_a0a0a2a1(), LINKS.classifier$cxMr))).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode ifc) {
+    SNode ifc = Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(SLinkOperations.getTarget(_quotation_createNode_tm6bn3_a0a0a2a1(), LINKS.classifier$cxMr))).findFirst(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      public Boolean invoke(SNode ifc) {
         return ifcname.equals(SPropertyOperations.getString(ifc, PROPS.name$MnvL));
       }
     });

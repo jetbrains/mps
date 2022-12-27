@@ -20,7 +20,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.IClassifierType__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.behavior.IClassifierMember__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -59,15 +58,7 @@ public final class IMethodReference__BehaviorDescriptor extends BaseBHDescriptor
       return Sequence.fromIterable(Collections.<SNode>emptyList());
     }
 
-    return Sequence.fromIterable(SNodeOperations.ofConcept(Sequence.fromIterable(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(methodProvider)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SNodeOperations.isInstanceOf(it, CONCEPTS.ClassifierMethodMember$ot) || SNodeOperations.isInstanceOf(it, CONCEPTS.ConstructorDeclaration$yG)) && (boolean) IClassifierMember__BehaviorDescriptor.isVisible_id5laDzmpBPv8.invoke(SNodeOperations.cast(it, CONCEPTS.ClassifierMember$At), methodProvider, __thisNode__);
-      }
-    }), CONCEPTS.BaseMethodDeclaration$kD)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return methodName == null || SPropertyOperations.getString(it, PROPS.name$MnvL).equals(methodName);
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(Sequence.fromIterable(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(methodProvider)).where((SNode it) -> (SNodeOperations.isInstanceOf(it, CONCEPTS.ClassifierMethodMember$ot) || SNodeOperations.isInstanceOf(it, CONCEPTS.ConstructorDeclaration$yG)) && (boolean) IClassifierMember__BehaviorDescriptor.isVisible_id5laDzmpBPv8.invoke(SNodeOperations.cast(it, CONCEPTS.ClassifierMember$At), methodProvider, __thisNode__)), CONCEPTS.BaseMethodDeclaration$kD)).where((SNode it) -> methodName == null || SPropertyOperations.getString(it, PROPS.name$MnvL).equals(methodName));
   }
   /*package*/ static SNode getMethodDeclaration_id5DBbMQ3xohB(@NotNull SNode __thisNode__) {
     return SLinkOperations.getTarget(__thisNode__, LINKS.method$8Sfb);

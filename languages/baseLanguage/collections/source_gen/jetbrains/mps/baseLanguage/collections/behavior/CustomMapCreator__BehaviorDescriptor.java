@@ -17,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -50,13 +49,11 @@ public final class CustomMapCreator__BehaviorDescriptor extends BaseBHDescriptor
       ListSequence.fromList(params).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.valueType$2EUo));
     }
     final List<SNode> tvars = SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.containerDeclaration$QVZa), LINKS.typeVariableDeclaration$Lipp);
-    ListSequence.fromList(SNodeOperations.getChildren(res)).toListSequence().visitAll(new IVisitor<SNode>() {
-      public void visit(SNode chld) {
-        if (SNodeOperations.isInstanceOf(chld, CONCEPTS.TypeVariableReference$WL)) {
-          int index = ListSequence.fromList(tvars).indexOf(SLinkOperations.getTarget(SNodeOperations.cast(chld, CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I));
-          SNode realType = ((index >= 0 && index < ListSequence.fromList(params).count()) ? SNodeOperations.copyNode(ListSequence.fromList(params).getElement(index)) : null);
-          SNodeOperations.replaceWithAnother(chld, realType);
-        }
+    ListSequence.fromList(SNodeOperations.getChildren(res)).toListSequence().visitAll((SNode chld) -> {
+      if (SNodeOperations.isInstanceOf(chld, CONCEPTS.TypeVariableReference$WL)) {
+        int index = ListSequence.fromList(tvars).indexOf(SLinkOperations.getTarget(SNodeOperations.cast(chld, CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I));
+        SNode realType = ((index >= 0 && index < ListSequence.fromList(params).count()) ? SNodeOperations.copyNode(ListSequence.fromList(params).getElement(index)) : null);
+        SNodeOperations.replaceWithAnother(chld, realType);
       }
     });
     return res;

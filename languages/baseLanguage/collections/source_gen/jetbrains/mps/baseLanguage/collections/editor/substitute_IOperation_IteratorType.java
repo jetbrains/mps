@@ -21,9 +21,7 @@ import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.SimpleConceptSubstituteMenuPart;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -70,15 +68,7 @@ public class substitute_IOperation_IteratorType extends SubstituteMenuBase {
         super(new EditorMenuDescriptorBase("simple actions for the list of concepts", new SNodePointer("r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)", "1741258697586932839")));
       }
       protected Collection getConcepts(SubstituteMenuContext _context) {
-        return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.AbstractEnumeratorOperation$fY, _context.getModel())).where(new IWhereFilter<SConcept>() {
-          public boolean accept(SConcept it) {
-            return it instanceof SConcept && !(((SConcept) it).isAbstract());
-          }
-        }).select(new ISelector<SConcept, SAbstractConcept>() {
-          public SAbstractConcept select(SConcept it) {
-            return (SAbstractConcept) it;
-          }
-        }).toListSequence();
+        return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.AbstractEnumeratorOperation$fY, _context.getModel())).where((SConcept it) -> it instanceof SConcept && !(((SConcept) it).isAbstract())).select((SConcept it) -> (SAbstractConcept) it).toListSequence();
       }
 
       @Override
@@ -113,15 +103,7 @@ public class substitute_IOperation_IteratorType extends SubstituteMenuBase {
         super(new EditorMenuDescriptorBase("simple actions for the list of concepts", new SNodePointer("r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)", "1741258697586932963")));
       }
       protected Collection getConcepts(SubstituteMenuContext _context) {
-        return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.AbstractIteratorOperation$qN, _context.getModel())).where(new IWhereFilter<SConcept>() {
-          public boolean accept(SConcept it) {
-            return it instanceof SConcept && !(((SConcept) it).isAbstract());
-          }
-        }).select(new ISelector<SConcept, SAbstractConcept>() {
-          public SAbstractConcept select(SConcept it) {
-            return ((SAbstractConcept) it);
-          }
-        }).toListSequence();
+        return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.AbstractIteratorOperation$qN, _context.getModel())).where((SConcept it) -> it instanceof SConcept && !(((SConcept) it).isAbstract())).select((SConcept it) -> ((SAbstractConcept) it)).toListSequence();
       }
 
       @Override

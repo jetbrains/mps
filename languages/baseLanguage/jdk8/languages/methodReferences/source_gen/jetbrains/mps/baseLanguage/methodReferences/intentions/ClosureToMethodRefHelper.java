@@ -11,7 +11,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.behavior.IVariableReference__BehaviorDescriptor;
 import java.util.Iterator;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -100,11 +99,7 @@ public class ClosureToMethodRefHelper {
       return false;
     } else if ((exprAsDotExpr != null)) {
       // Time to check operand does not contains references to lambda
-      boolean dependsOnParameter = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(exprAsDotExpr, LINKS.operand$w6IR), CONCEPTS.IVariableReference$C, false, new SAbstractConcept[]{})).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.getNodeAncestor(IVariableReference__BehaviorDescriptor.getVariable_idSORzhOpB6t.invoke(it), CONCEPTS.ClosureLiteral$rp, false, false) == node;
-        }
-      });
+      boolean dependsOnParameter = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(exprAsDotExpr, LINKS.operand$w6IR), CONCEPTS.IVariableReference$C, false, new SAbstractConcept[]{})).any((SNode it) -> SNodeOperations.getNodeAncestor(IVariableReference__BehaviorDescriptor.getVariable_idSORzhOpB6t.invoke(it), CONCEPTS.ClosureLiteral$rp, false, false) == node);
 
       if (dependsOnParameter) {
         return false;

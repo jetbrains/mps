@@ -16,6 +16,8 @@
     <import index="k6o4" ref="r:9a698d99-93bf-42e4-8ae2-c535d539938c(jetbrains.mps.baseLanguage.methodReferences.typesystem)" />
     <import index="i5cy" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent.atomic(JDK/)" />
     <import index="tpd9" ref="r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)" />
+    <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" />
+    <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
   <registry>
@@ -98,6 +100,9 @@
       </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <child id="1068431790190" name="initializer" index="33vP2m" />
+      </concept>
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ng" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1109279763828" name="jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration" flags="ng" index="16euLQ">
         <child id="1214996921760" name="bound" index="3ztrMU" />
@@ -1822,6 +1827,129 @@
   </node>
   <node concept="2XOHcx" id="5DBbMQ1Hau4">
     <property role="2XOHcw" value="${mps_home}" />
+  </node>
+  <node concept="1lH9Xt" id="1jNyE7Gzms$">
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
+    <property role="TrG5h" value="Streams" />
+    <node concept="1qefOq" id="1jNyE7GzmsD" role="1SKRRt">
+      <node concept="312cEu" id="1jNyE7GzmsB" role="1qenE9">
+        <property role="TrG5h" value="Streams" />
+        <node concept="312cEu" id="1jNyE7GzRYs" role="jymVt">
+          <property role="2bfB8j" value="true" />
+          <property role="TrG5h" value="FileContainer" />
+          <node concept="3clFbW" id="1jNyE7GzUkC" role="jymVt">
+            <node concept="37vLTG" id="1jNyE7GzUBx" role="3clF46">
+              <property role="TrG5h" value="file" />
+              <node concept="3uibUv" id="1jNyE7GzUUu" role="1tU5fm">
+                <ref role="3uigEE" to="guwi:~File" resolve="File" />
+              </node>
+            </node>
+            <node concept="3cqZAl" id="1jNyE7GzUkE" role="3clF45" />
+            <node concept="3Tm1VV" id="1jNyE7GzUkF" role="1B3o_S" />
+            <node concept="3clFbS" id="1jNyE7GzUkG" role="3clF47" />
+          </node>
+          <node concept="3Tm1VV" id="1jNyE7GzRYt" role="1B3o_S" />
+        </node>
+        <node concept="3clFb_" id="1jNyE7GzmTf" role="jymVt">
+          <property role="TrG5h" value="testSampleStreamCode" />
+          <node concept="37vLTG" id="1jNyE7GzCPb" role="3clF46">
+            <property role="TrG5h" value="files" />
+            <node concept="3uibUv" id="1jNyE7GzDMv" role="1tU5fm">
+              <ref role="3uigEE" to="33ny:~List" resolve="List" />
+              <node concept="3uibUv" id="1jNyE7GzDMw" role="11_B2D">
+                <ref role="3uigEE" to="guwi:~File" resolve="File" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbS" id="1jNyE7GzmTi" role="3clF47">
+            <node concept="3cpWs8" id="1jNyE7GzMgD" role="3cqZAp">
+              <node concept="3cpWsn" id="4Qup9OsPvdz" role="3cpWs9">
+                <property role="TrG5h" value="matched" />
+                <node concept="3uibUv" id="4Qup9OsPvd_" role="1tU5fm">
+                  <ref role="3uigEE" to="33ny:~HashSet" resolve="HashSet" />
+                  <node concept="3uibUv" id="4Qup9OsPyra" role="11_B2D">
+                    <ref role="3uigEE" to="guwi:~File" resolve="File" />
+                  </node>
+                </node>
+                <node concept="2ShNRf" id="4Qup9OsPDAy" role="33vP2m">
+                  <node concept="1pGfFk" id="4Qup9OsPMss" role="2ShVmc">
+                    <property role="373rjd" value="true" />
+                    <ref role="37wK5l" to="33ny:~HashSet.&lt;init&gt;()" resolve="HashSet" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWs8" id="1jNyE7GAAVl" role="3cqZAp">
+              <node concept="3cpWsn" id="1jNyE7GAAVr" role="3cpWs9">
+                <property role="TrG5h" value="containers" />
+                <node concept="3uibUv" id="1jNyE7GAAVt" role="1tU5fm">
+                  <ref role="3uigEE" to="33ny:~ArrayList" resolve="ArrayList" />
+                  <node concept="3uibUv" id="1jNyE7GACBk" role="11_B2D">
+                    <ref role="3uigEE" node="1jNyE7GzRYs" resolve="FileContainer" />
+                  </node>
+                </node>
+                <node concept="2ShNRf" id="1jNyE7GAESZ" role="33vP2m">
+                  <node concept="1pGfFk" id="1jNyE7GAESP" role="2ShVmc">
+                    <ref role="37wK5l" to="33ny:~ArrayList.&lt;init&gt;()" resolve="ArrayList" />
+                    <node concept="3uibUv" id="1jNyE7GAESQ" role="1pMfVU">
+                      <ref role="3uigEE" node="1jNyE7GzRYs" resolve="FileContainer" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="1jNyE7GzAiT" role="3cqZAp">
+              <node concept="2OqwBi" id="4Qup9OsTwXx" role="3clFbG">
+                <node concept="2OqwBi" id="4Qup9OsSF5L" role="2Oq$k0">
+                  <node concept="liA8E" id="4Qup9OsSJhW" role="2OqNvi">
+                    <ref role="37wK5l" to="1ctc:~Stream.map(java.util.function.Function)" resolve="map" />
+                    <node concept="37Ijox" id="3WnEHxCLmut" role="37wK5m">
+                      <ref role="37Ijqf" node="1jNyE7GzUkC" resolve="FileContainer" />
+                      <node concept="2FaPjH" id="3WnEHxCLmuv" role="wWaWy">
+                        <node concept="3uibUv" id="3WnEHxCLmuw" role="2FaQuo">
+                          <ref role="3uigEE" node="1jNyE7GzRYs" resolve="FileContainer" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="2OqwBi" id="1jNyE7G$7sv" role="2Oq$k0">
+                    <node concept="2OqwBi" id="1jNyE7G$7sw" role="2Oq$k0">
+                      <node concept="37vLTw" id="1jNyE7G$7sx" role="2Oq$k0">
+                        <ref role="3cqZAo" node="1jNyE7GzCPb" resolve="files" />
+                      </node>
+                      <node concept="liA8E" id="1jNyE7G$7sy" role="2OqNvi">
+                        <ref role="37wK5l" to="33ny:~Collection.stream()" resolve="stream" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="1jNyE7G$7sz" role="2OqNvi">
+                      <ref role="37wK5l" to="1ctc:~Stream.dropWhile(java.util.function.Predicate)" resolve="dropWhile" />
+                      <node concept="37Ijox" id="1jNyE7G$7s$" role="37wK5m">
+                        <ref role="37Ijqf" to="33ny:~HashSet.contains(java.lang.Object)" resolve="contains" />
+                        <node concept="37vLTw" id="1jNyE7G$7s_" role="wWaWy">
+                          <ref role="3cqZAo" node="4Qup9OsPvdz" resolve="matched" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="liA8E" id="4Qup9OsT_K3" role="2OqNvi">
+                  <ref role="37wK5l" to="1ctc:~Stream.forEach(java.util.function.Consumer)" resolve="forEach" />
+                  <node concept="37Ijox" id="4Qup9OsTGwW" role="37wK5m">
+                    <ref role="37Ijqf" to="33ny:~ArrayList.add(java.lang.Object)" resolve="add" />
+                    <node concept="37vLTw" id="4Qup9OsTEB9" role="wWaWy">
+                      <ref role="3cqZAo" node="1jNyE7GAAVr" resolve="containers" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3cqZAl" id="1jNyE7GzmT0" role="3clF45" />
+          <node concept="3Tm1VV" id="1jNyE7GzmTw" role="1B3o_S" />
+        </node>
+        <node concept="3Tm1VV" id="1jNyE7GzmsC" role="1B3o_S" />
+      </node>
+    </node>
   </node>
 </model>
 

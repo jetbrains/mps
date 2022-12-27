@@ -18,7 +18,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -68,11 +67,7 @@ public final class ConvertForeachStatementToForEach_Intention extends AbstractIn
       SLinkOperations.setTarget(forEachStatement, LINKS.loopLabel$sgvV, SLinkOperations.getTarget(node, LINKS.loopLabel$sgvV));
       SNode newVariable = SNodeFactoryOperations.setNewChild(forEachStatement, LINKS.variable$8Haf, null);
       SPropertyOperations.set(newVariable, PROPS.name$MnvL, SPropertyOperations.getString(oldVariable, PROPS.name$MnvL));
-      for (SNode oldRef : ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(forEachStatement, LINKS.body$c1sm), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == oldVariable;
-        }
-      })) {
+      for (SNode oldRef : ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(forEachStatement, LINKS.body$c1sm), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where((SNode it) -> SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == oldVariable)) {
         SLinkOperations.setTarget(SNodeFactoryOperations.replaceWithNewChild(oldRef, CONCEPTS.ForEachVariableReference$CR), LINKS.variable$j6kA, newVariable);
       }
     }

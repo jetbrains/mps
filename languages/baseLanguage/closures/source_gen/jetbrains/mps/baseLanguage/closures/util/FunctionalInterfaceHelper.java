@@ -8,7 +8,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.IClassifierType__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
@@ -33,11 +32,7 @@ public class FunctionalInterfaceHelper {
    */
   public static Tuples._2<SNode, String> getFunctionalMethod(SNode classifier) {
     // Visibility not checked as it is assumed abstract methods are visible (otherwise class cannot be overridden)
-    Iterable<SNode> cands = Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(classifier)), CONCEPTS.InstanceMethodDeclaration$39)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode m) {
-        return !("equals".equals(SPropertyOperations.getString(m, PROPS.name$MnvL))) && (boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(m);
-      }
-    });
+    Iterable<SNode> cands = Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(classifier)), CONCEPTS.InstanceMethodDeclaration$39)).where((SNode m) -> !("equals".equals(SPropertyOperations.getString(m, PROPS.name$MnvL))) && (boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(m));
 
     if (Sequence.fromIterable(cands).isEmpty()) {
       return MultiTuple.<SNode,String>from((SNode) null, NO_ABSTRACT_METHOD);
@@ -49,11 +44,7 @@ public class FunctionalInterfaceHelper {
       final String erasureSignature = BaseMethodDeclaration__BehaviorDescriptor.getErasureSignature_id2t8d$bukubq.invoke(first);
 
       // Note: this way of filtering may ignore cases java would detect as errors (eg. myMethod(List<Integer>) and myMethod(List<String>)) but such processing should be checked on class level
-      String errorMessage = (Sequence.fromIterable(cands).skip(1).all(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(BaseMethodDeclaration__BehaviorDescriptor.getErasureSignature_id2t8d$bukubq.invoke(it), erasureSignature);
-        }
-      }) ? REGULAR_FUNCTIONAL_INTERFACE : MORE_THAN_ONE_METHOD);
+      String errorMessage = (Sequence.fromIterable(cands).skip(1).all((SNode it) -> Objects.equals(BaseMethodDeclaration__BehaviorDescriptor.getErasureSignature_id2t8d$bukubq.invoke(it), erasureSignature)) ? REGULAR_FUNCTIONAL_INTERFACE : MORE_THAN_ONE_METHOD);
       return MultiTuple.<SNode,String>from(first, errorMessage);
     }
   }

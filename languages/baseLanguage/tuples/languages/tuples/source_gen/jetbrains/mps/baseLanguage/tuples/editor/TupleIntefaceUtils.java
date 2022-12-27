@@ -13,7 +13,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SNodeMatcher;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.IEnumerator;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -49,16 +48,8 @@ public class TupleIntefaceUtils {
       }
     }
     List<Property> result = null;
-    IEnumerator<Property> ait = ListSequence.fromList(accessors).sort(new ISelector<Property, String>() {
-      public String select(Property p) {
-        return p.name;
-      }
-    }, true).enumerator();
-    IEnumerator<Property> mit = ListSequence.fromList(mutators).sort(new ISelector<Property, String>() {
-      public String select(Property p) {
-        return p.name;
-      }
-    }, true).enumerator();
+    IEnumerator<Property> ait = ListSequence.fromList(accessors).sort((Property p) -> p.name, true).enumerator();
+    IEnumerator<Property> mit = ListSequence.fromList(mutators).sort((Property p) -> p.name, true).enumerator();
     boolean hasMutators = mit.moveNext();
     while (ait.moveNext()) {
       if (result == null) {

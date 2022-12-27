@@ -37,6 +37,7 @@ public final class IMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
 
   public static final SMethod<Object[]> getActualArguments_idhJyuD6_ = new SMethodBuilder<Object[]>(new SJavaCompoundTypeImpl(Object[].class)).name("getActualArguments").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1219275428261L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(SModule.class, ""));
+  public static final SMethod<SNode> declaredArgumentType_id2TF6A0TNzEJ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("declaredArgumentType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3344796148841724591L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<SNode> deriveType_idhEwIVPz = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("deriveType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877435747L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   /*package*/ static final SMethod<SNode> getConcreteType_id6WzWPTX2xhN = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getConcreteType").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(8008512149545161843L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<SNode> getTypeAnnotation_idhXbqSv6 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTypeAnnotation").modifiers(8, AccessPrivileges.PACKAGE).concept(CONCEPT).baseMethodId(1233920952262L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
@@ -47,7 +48,7 @@ public final class IMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Void> setMethodDeclaration_id5DBbMQ3xovP = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setMethodDeclaration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6514227258541311989L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<SReference> getMethodDeclarationReference_id5DBbMQ3ynbU = new SMethodBuilder<SReference>(new SJavaCompoundTypeImpl((Class<SReference>) ((Class) Object.class))).name("getMethodDeclarationReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6514227258541568762L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getActualArguments_idhJyuD6_, deriveType_idhEwIVPz, getConcreteType_id6WzWPTX2xhN, getTypeAnnotation_idhXbqSv6, isInTypeInferenceContext_id4cxv$9$kw67, resolveMethod_id28$D10lLyGj, getActualArguments_id5DBbMQ33xDf, getMethodDeclaration_id5DBbMQ3xohB, setMethodDeclaration_id5DBbMQ3xovP, getMethodDeclarationReference_id5DBbMQ3ynbU);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getActualArguments_idhJyuD6_, declaredArgumentType_id2TF6A0TNzEJ, deriveType_idhEwIVPz, getConcreteType_id6WzWPTX2xhN, getTypeAnnotation_idhXbqSv6, isInTypeInferenceContext_id4cxv$9$kw67, resolveMethod_id28$D10lLyGj, getActualArguments_id5DBbMQ33xDf, getMethodDeclaration_id5DBbMQ3xohB, setMethodDeclaration_id5DBbMQ3xovP, getMethodDeclarationReference_id5DBbMQ3ynbU);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -59,53 +60,87 @@ public final class IMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
       }
     }).toGenericArray(Object.class);
   }
-  /*package*/ static SNode deriveType_idhEwIVPz(@NotNull SNode __thisNode__, SNode expression) {
-    // is 'experssion' an actual argument in this method call?
-    if (SNodeOperations.getParent(expression) == __thisNode__ && SNodeOperations.hasRole(expression, LINKS.actualArgument$pzdx)) {
-      SNode method = SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$pyYw);
-      int i = SNodeOperations.getIndexInParent(expression);
-      if (i < ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).count()) {
-        SNode parameterDeclaration = ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).getElement(i);
-        SNode rawType = SNodeOperations.copyNode(SLinkOperations.getTarget(parameterDeclaration, LINKS.type$a1UY));
-        SNode instanceType = IFixableMethodReference__BehaviorDescriptor.getInstanceType_id6WzWPTX2vuB.invoke(__thisNode__);
-        if ((instanceType == null)) {
-          return rawType;
+  /*package*/ static SNode declaredArgumentType_id2TF6A0TNzEJ(@NotNull SNode __thisNode__, SNode expression) {
+    // is 'expression' an actual argument in this method call?
+    if (SNodeOperations.getParent(expression) != __thisNode__ && !(SNodeOperations.hasRole(expression, LINKS.actualArgument$pzdx))) {
+      return null;
+    }
+
+    List<SNode> parameters = SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$pyYw), LINKS.parameter$5xBj);
+    int index = SNodeOperations.getIndexInParent(expression);
+    int lastPossibleIndex = ListSequence.fromList(parameters).count() - 1;
+
+    // Last parameter with arity, other further ones may be varargs
+    if (index > lastPossibleIndex || (index == lastPossibleIndex && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ListSequence.fromList(parameters).last(), LINKS.type$a1UY), CONCEPTS.VariableArityType$KF))) {
+      SNode lastType = SNodeOperations.copyNode(SNodeOperations.as(SLinkOperations.getTarget(ListSequence.fromList(parameters).last(), LINKS.type$a1UY), CONCEPTS.VariableArityType$KF));
+
+      // No arity at this point, there is a typing issue with the call (more args than expected)
+      if ((lastType == null)) {
+        return null;
+      }
+
+      // Special case: last parameter is actually the only one for vararg, in such case the type may be either component[] or component (we keep variable arity and let caller handle such case)
+      if (index == lastPossibleIndex && !(SNodeOperations.getNextSibling(expression) != null)) {
+        // In such case, a null expression is always considered to be array type
+        if (SNodeOperations.isInstanceOf(expression, CONCEPTS.NullLiteral$QQ)) {
+          return createArrayType_fq0410_a0a1a6a8a1(SLinkOperations.getTarget(lastType, LINKS.componentType$ypmi));
         }
-        final SNode methodClassifier = SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$pyYw), CONCEPTS.Classifier$Ix, false, false);
-        {
-          GeneratedMatchingPattern pattern_fq0410_f0c0b0b = new Pattern_fq0410_a0a0f0c0b0b(_quotation_createNode_fq0410_a0a0a0f0c0b0b(methodClassifier));
-          SNode coercedNode_fq0410_f0c0b0b = TypecheckingFacade.getFromContext().coerceType(instanceType, pattern_fq0410_f0c0b0b);
-          if (coercedNode_fq0410_f0c0b0b != null) {
-            SNode resultType;
-            if (SNodeOperations.isInstanceOf(rawType, CONCEPTS.TypeVariableReference$WL)) {
-              resultType = IMethodCall__BehaviorDescriptor.getConcreteType_id6WzWPTX2xhN.invokeSpecial(__thisNode__, SNodeOperations.cast(rawType, CONCEPTS.TypeVariableReference$WL), coercedNode_fq0410_f0c0b0b, methodClassifier);
-            } else {
-              for (SNode typeVariableReference : SNodeOperations.getNodeDescendants(rawType, CONCEPTS.TypeVariableReference$WL, false, new SAbstractConcept[]{})) {
-                SNode concreteType = IMethodCall__BehaviorDescriptor.getConcreteType_id6WzWPTX2xhN.invokeSpecial(__thisNode__, typeVariableReference, coercedNode_fq0410_f0c0b0b, methodClassifier);
-                SNodeOperations.replaceWithAnother(typeVariableReference, concreteType);
-              }
-              resultType = rawType;
-            }
-            return resultType;
+
+        return lastType;
+      }
+
+      // Otherwise, component type prevail
+      return SLinkOperations.getTarget(lastType, LINKS.componentType$ypmi);
+    }
+
+    // Classical method call argument derivation
+    return SNodeOperations.copyNode(SLinkOperations.getTarget(ListSequence.fromList(parameters).getElement(index), LINKS.type$a1UY));
+
+  }
+  /*package*/ static SNode deriveType_idhEwIVPz(@NotNull SNode __thisNode__, SNode expression) {
+    // Type aware of varargs if applicable
+    SNode rawArgumentType = IMethodCall__BehaviorDescriptor.declaredArgumentType_id2TF6A0TNzEJ.invoke(__thisNode__, expression);
+
+    if ((rawArgumentType != null)) {
+      SNode instanceType = IFixableMethodReference__BehaviorDescriptor.getInstanceType_id6WzWPTX2vuB.invoke(__thisNode__);
+      if ((instanceType == null)) {
+        return rawArgumentType;
+      }
+      final SNode methodClassifier = SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$pyYw), CONCEPTS.Classifier$Ix, false, false);
+      {
+        GeneratedMatchingPattern pattern_fq0410_d0d0c = new Pattern_fq0410_a0a0d0d0c(_quotation_createNode_fq0410_a0a0a0d0d0c(methodClassifier));
+        SNode coercedNode_fq0410_d0d0c = TypecheckingFacade.getFromContext().coerceType(instanceType, pattern_fq0410_d0d0c);
+        if (coercedNode_fq0410_d0d0c != null) {
+          SNode resultType;
+          if (SNodeOperations.isInstanceOf(rawArgumentType, CONCEPTS.TypeVariableReference$WL)) {
+            resultType = IMethodCall__BehaviorDescriptor.getConcreteType_id6WzWPTX2xhN.invokeSpecial(__thisNode__, SNodeOperations.cast(rawArgumentType, CONCEPTS.TypeVariableReference$WL), coercedNode_fq0410_d0d0c, methodClassifier);
           } else {
-            return rawType;
+            for (SNode typeVariableReference : SNodeOperations.getNodeDescendants(rawArgumentType, CONCEPTS.TypeVariableReference$WL, false, new SAbstractConcept[]{})) {
+              SNode concreteType = IMethodCall__BehaviorDescriptor.getConcreteType_id6WzWPTX2xhN.invokeSpecial(__thisNode__, typeVariableReference, coercedNode_fq0410_d0d0c, methodClassifier);
+              SNodeOperations.replaceWithAnother(typeVariableReference, concreteType);
+            }
+            resultType = rawArgumentType;
           }
+          return resultType;
+        } else {
+          return rawArgumentType;
         }
       }
     }
+
     return null;
   }
   /*package*/ static SNode getConcreteType_id6WzWPTX2xhN(@NotNull SNode __thisNode__, SNode typeVariableReference, SNode coercedClt, SNode methodClassifier) {
     List<SNode> parameters = SLinkOperations.getChildren(coercedClt, LINKS.parameter$oqG$);
     if (ListSequence.fromList(parameters).isEmpty()) {
-      return _quotation_createNode_fq0410_a0a1a2();
+      return _quotation_createNode_fq0410_a0a1a3();
     }
     SNode concreteType;
     int index = SNodeOperations.getIndexInParent(SLinkOperations.getTarget(typeVariableReference, LINKS.typeVariableDeclaration$Lz1I));
     if (SNodeOperations.getParent(SLinkOperations.getTarget(typeVariableReference, LINKS.typeVariableDeclaration$Lz1I)) == methodClassifier && ListSequence.fromList(parameters).count() > index) {
       concreteType = SNodeOperations.copyNode(ListSequence.fromList(parameters).getElement(index));
     } else {
-      concreteType = _quotation_createNode_fq0410_a0a0a4a2();
+      concreteType = _quotation_createNode_fq0410_a0a0a4a3();
     }
     return concreteType;
   }
@@ -152,23 +187,25 @@ public final class IMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
       case 0:
         return (T) ((Object[]) getActualArguments_idhJyuD6_(node, (SModule) parameters[0]));
       case 1:
-        return (T) ((SNode) deriveType_idhEwIVPz(node, (SNode) parameters[0]));
+        return (T) ((SNode) declaredArgumentType_id2TF6A0TNzEJ(node, (SNode) parameters[0]));
       case 2:
-        return (T) ((SNode) getConcreteType_id6WzWPTX2xhN(node, (SNode) parameters[0], (SNode) parameters[1], (SNode) parameters[2]));
+        return (T) ((SNode) deriveType_idhEwIVPz(node, (SNode) parameters[0]));
       case 3:
-        return (T) ((SNode) getTypeAnnotation_idhXbqSv6(node));
+        return (T) ((SNode) getConcreteType_id6WzWPTX2xhN(node, (SNode) parameters[0], (SNode) parameters[1], (SNode) parameters[2]));
       case 4:
-        return (T) ((Boolean) isInTypeInferenceContext_id4cxv$9$kw67(node));
+        return (T) ((SNode) getTypeAnnotation_idhXbqSv6(node));
       case 5:
-        return (T) ((Tuples._2<SNode, Boolean>) resolveMethod_id28$D10lLyGj(node));
+        return (T) ((Boolean) isInTypeInferenceContext_id4cxv$9$kw67(node));
       case 6:
-        return (T) ((List<SNode>) getActualArguments_id5DBbMQ33xDf(node));
+        return (T) ((Tuples._2<SNode, Boolean>) resolveMethod_id28$D10lLyGj(node));
       case 7:
-        return (T) ((SNode) getMethodDeclaration_id5DBbMQ3xohB(node));
+        return (T) ((List<SNode>) getActualArguments_id5DBbMQ33xDf(node));
       case 8:
+        return (T) ((SNode) getMethodDeclaration_id5DBbMQ3xohB(node));
+      case 9:
         setMethodDeclaration_id5DBbMQ3xovP(node, (SNode) parameters[0]);
         return null;
-      case 9:
+      case 10:
         return (T) ((SReference) getMethodDeclarationReference_id5DBbMQ3ynbU(node));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -198,7 +235,12 @@ public final class IMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
-  private static SNode _quotation_createNode_fq0410_a0a0a0f0c0b0b(Object parameter_1) {
+  private static SNode createArrayType_fq0410_a0a1a6a8a1(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ArrayType$rh);
+    n0.forChild(LINKS.componentType$F$Gi).initNode(p0, CONCEPTS.Type$bu, true);
+    return n0.getResult();
+  }
+  private static SNode _quotation_createNode_fq0410_a0a0a0d0d0c(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
@@ -209,14 +251,14 @@ public final class IMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
     quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"), quotedNode_3);
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_fq0410_a0a1a2() {
+  private static SNode _quotation_createNode_fq0410_a0a1a3() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
     quotedNode_1 = nb.getResult();
     nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~Object");
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_fq0410_a0a0a4a2() {
+  private static SNode _quotation_createNode_fq0410_a0a0a4a3() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
     quotedNode_1 = nb.getResult();
@@ -229,14 +271,18 @@ public final class IMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
     /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
     /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
     /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink componentType$ypmi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, 0x11c08f5f38cL, "componentType");
     /*package*/ static final SContainmentLink parameter$oqG$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
     /*package*/ static final SReferenceLink typeVariableDeclaration$Lz1I = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
     /*package*/ static final SContainmentLink rValue$spNK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
     /*package*/ static final SContainmentLink initializer$2twD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
     /*package*/ static final SContainmentLink expression$eJ92 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
+    /*package*/ static final SContainmentLink componentType$F$Gi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SConcept VariableArityType$KF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, "jetbrains.mps.baseLanguage.structure.VariableArityType");
+    /*package*/ static final SConcept NullLiteral$QQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cd6167L, "jetbrains.mps.baseLanguage.structure.NullLiteral");
     /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
     /*package*/ static final SConcept TypeVariableReference$WL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
     /*package*/ static final SInterfaceConcept IMethodLike$L7 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1208f458d37L, "jetbrains.mps.baseLanguage.structure.IMethodLike");
@@ -244,5 +290,7 @@ public final class IMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
     /*package*/ static final SConcept VariableDeclaration$Y0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
     /*package*/ static final SConcept ReturnStatement$lt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement");
     /*package*/ static final SConcept ExpressionStatement$O8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
+    /*package*/ static final SConcept ArrayType$rh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 }

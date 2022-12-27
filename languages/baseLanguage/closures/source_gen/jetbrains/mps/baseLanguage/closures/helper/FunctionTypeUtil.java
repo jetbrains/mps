@@ -15,7 +15,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
-import java.util.LinkedList;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.generator.template.TemplateQueryContext;
 import jetbrains.mps.baseLanguage.closures.util.Constants;
@@ -122,24 +121,18 @@ with_meet:
     return tmp;
   }
   public static SNode unbound(SNode maybeBound) {
-    SNode res = null;
-    List<SNode> q = ListSequence.fromListAndArray(new LinkedList<SNode>(), SNodeOperations.copyNode(maybeBound));
-    while (!(ListSequence.fromList(q).isEmpty())) {
-      SNode n = ListSequence.fromList(q).removeElementAt(0);
-      if (SNodeOperations.isInstanceOf(n, CONCEPTS.UpperBoundType$RS)) {
-        n = SNodeOperations.replaceWithAnother(n, SLinkOperations.getTarget(SNodeOperations.cast(n, CONCEPTS.UpperBoundType$RS), LINKS.bound$ciZM));
+    SNode res = SNodeOperations.copyNode(maybeBound);
+
+    // Note: a previous implementation seemed to mean to recursively remove bounds (? extend L<? extend T> transformed into L<T>), but it was incorrectly implemented (while() { ... break }). Since this was used for years with a reduced behavior (only unbound the top most node), it is unclear if this is desirable.
+    // Use of loop as we may find ? extend ? super or ? super ? extend
+    while (SNodeOperations.isInstanceOf(res, CONCEPTS.UpperBoundType$RS) || SNodeOperations.isInstanceOf(res, CONCEPTS.LowerBoundType$nl)) {
+      if (SNodeOperations.isInstanceOf(res, CONCEPTS.UpperBoundType$RS)) {
+        res = SLinkOperations.getTarget(SNodeOperations.cast(res, CONCEPTS.UpperBoundType$RS), LINKS.bound$ciZM);
+      } else {
+        res = SLinkOperations.getTarget(SNodeOperations.cast(res, CONCEPTS.LowerBoundType$nl), LINKS.bound$$a6H);
       }
-      if (SNodeOperations.isInstanceOf(n, CONCEPTS.LowerBoundType$nl)) {
-        n = SNodeOperations.replaceWithAnother(n, SLinkOperations.getTarget(SNodeOperations.cast(n, CONCEPTS.LowerBoundType$nl), LINKS.bound$$a6H));
-      }
-      if ((n != null)) {
-        ListSequence.fromList(q).addSequence(ListSequence.fromList(SNodeOperations.getChildren(n)));
-      }
-      if ((res == null)) {
-        res = n;
-      }
-      break;
     }
+
     return res;
   }
   public static SNode unmeetRecursively(SNode nodeWithMeetDescendants) {

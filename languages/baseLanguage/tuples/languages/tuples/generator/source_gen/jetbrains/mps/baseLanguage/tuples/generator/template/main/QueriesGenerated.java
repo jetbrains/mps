@@ -16,7 +16,6 @@ import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.tuples.behavior.NamedTupleDeclaration__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.baseLanguage.tuples.generator.template.helpers.RuntimeNodePointers;
 import jetbrains.mps.baseLanguage.tuples.generator.template.helpers.TupleDeclarationUtil;
@@ -24,8 +23,6 @@ import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.baseLanguage.closures.constraints.ClassifierTypeUtil;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.generator.template.MapSrcMacroContext;
 import jetbrains.mps.generator.template.TemplateQueryContext;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -187,21 +184,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_4_2(final PropertyMacroContext _context) {
-    return "_" + (SNodeOperations.getIndexInParent(_context.getNode()) + ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NamedTupleDeclaration$aM), LINKS.extended$2Fzf), LINKS.classifier$cxMr))).foldLeft(0, new ILeftCombinator<SNode, Integer>() {
-      public Integer combine(Integer s, SNode ntd) {
-        return s + ListSequence.fromList(SLinkOperations.getChildren(ntd, LINKS.component$wCHx)).count();
-      }
-    }));
+    return "_" + (SNodeOperations.getIndexInParent(_context.getNode()) + ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NamedTupleDeclaration$aM), LINKS.extended$2Fzf), LINKS.classifier$cxMr))).foldLeft(0, (Integer s, SNode ntd) -> s + ListSequence.fromList(SLinkOperations.getChildren(ntd, LINKS.component$wCHx)).count()));
   }
   public static Object propertyMacro_GetValue_4_3(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_4_4(final PropertyMacroContext _context) {
-    return "_" + (SNodeOperations.getIndexInParent(_context.getNode()) + ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NamedTupleDeclaration$aM), LINKS.extended$2Fzf), LINKS.classifier$cxMr))).foldLeft(0, new ILeftCombinator<SNode, Integer>() {
-      public Integer combine(Integer s, SNode ntd) {
-        return s + ListSequence.fromList(SLinkOperations.getChildren(ntd, LINKS.component$wCHx)).count();
-      }
-    }));
+    return "_" + (SNodeOperations.getIndexInParent(_context.getNode()) + ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NamedTupleDeclaration$aM), LINKS.extended$2Fzf), LINKS.classifier$cxMr))).foldLeft(0, (Integer s, SNode ntd) -> s + ListSequence.fromList(SLinkOperations.getChildren(ntd, LINKS.component$wCHx)).count()));
   }
   public static Object propertyMacro_GetValue_4_5(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
@@ -213,21 +202,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return "_" + SNodeOperations.getIndexInParent(_context.getNode());
   }
   public static Object propertyMacro_GetValue_4_8(final PropertyMacroContext _context) {
-    return "_" + (SNodeOperations.getIndexInParent(_context.getNode()) + ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NamedTupleDeclaration$aM), LINKS.extended$2Fzf), LINKS.classifier$cxMr))).foldLeft(0, new ILeftCombinator<SNode, Integer>() {
-      public Integer combine(Integer s, SNode ntd) {
-        return s + ListSequence.fromList(SLinkOperations.getChildren(ntd, LINKS.component$wCHx)).count();
-      }
-    }));
+    return "_" + (SNodeOperations.getIndexInParent(_context.getNode()) + ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NamedTupleDeclaration$aM), LINKS.extended$2Fzf), LINKS.classifier$cxMr))).foldLeft(0, (Integer s, SNode ntd) -> s + ListSequence.fromList(SLinkOperations.getChildren(ntd, LINKS.component$wCHx)).count()));
   }
   public static Object propertyMacro_GetValue_4_9(final PropertyMacroContext _context) {
     return "_" + SNodeOperations.getIndexInParent(_context.getNode());
   }
   public static Object propertyMacro_GetValue_4_10(final PropertyMacroContext _context) {
-    return "_" + (SNodeOperations.getIndexInParent(_context.getNode()) + ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NamedTupleDeclaration$aM), LINKS.extended$2Fzf), LINKS.classifier$cxMr))).foldLeft(0, new ILeftCombinator<SNode, Integer>() {
-      public Integer combine(Integer s, SNode ntd) {
-        return s + ListSequence.fromList(SLinkOperations.getChildren(ntd, LINKS.component$wCHx)).count();
-      }
-    }));
+    return "_" + (SNodeOperations.getIndexInParent(_context.getNode()) + ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NamedTupleDeclaration$aM), LINKS.extended$2Fzf), LINKS.classifier$cxMr))).foldLeft(0, (Integer s, SNode ntd) -> s + ListSequence.fromList(SLinkOperations.getChildren(ntd, LINKS.component$wCHx)).count()));
   }
   public static Object propertyMacro_GetValue_4_11(final PropertyMacroContext _context) {
     return "_" + (SNodeOperations.getIndexInParent(_context.getNode()) + ((Integer) _context.getVariable("var:componentsInSuper")));
@@ -289,11 +270,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
   public static Object referenceMacro_GetReferent_4_0(final ReferenceMacroContext _context) {
-    int cmpSize = ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(_context.getNode())).foldLeft(0, new ILeftCombinator<SNode, Integer>() {
-      public Integer combine(Integer s, SNode ntd) {
-        return s + ListSequence.fromList(SLinkOperations.getChildren(ntd, LINKS.component$wCHx)).count();
-      }
-    });
+    int cmpSize = ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(_context.getNode())).foldLeft(0, (Integer s, SNode ntd) -> s + ListSequence.fromList(SLinkOperations.getChildren(ntd, LINKS.component$wCHx)).count());
     return RuntimeNodePointers.tuplesIfaceByComponents(cmpSize);
   }
   public static Object referenceMacro_GetReferent_4_1(final ReferenceMacroContext _context) {
@@ -516,58 +493,26 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$BsHW), CONCEPTS.ArrayCreatorWithInitializer$Bs), LINKS.initValue$4K91);
   }
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parameter$oqG$)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode t) {
-        return ClassifierTypeUtil.getTypeCoercedToClassifierType(t);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parameter$oqG$)).select((SNode t) -> ClassifierTypeUtil.getTypeCoercedToClassifierType(t));
   }
   public static Iterable<SNode> sourceNodesQuery_1_1(final SourceSubstituteMacroNodesContext _context) {
     final List<SNode> allExtends = ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.tupleDeclaration$Pcb7))).reversedList().toListSequence();
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.componentRef$hTGc)).sort(new ISelector<SNode, Integer>() {
-      public Integer select(SNode cmpRef) {
-        return ListSequence.fromList(allExtends).indexOf(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(cmpRef, LINKS.componentDeclaration$nkzL)), CONCEPTS.NamedTupleDeclaration$aM));
-      }
-    }, true).alsoSort(new ISelector<SNode, Integer>() {
-      public Integer select(SNode cmpRef) {
-        return SNodeOperations.getIndexInParent(SLinkOperations.getTarget(cmpRef, LINKS.componentDeclaration$nkzL));
-      }
-    }, true).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode cmpRef) {
-        return SLinkOperations.getTarget(cmpRef, LINKS.value$fBTf);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.componentRef$hTGc)).sort((SNode cmpRef) -> ListSequence.fromList(allExtends).indexOf(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(cmpRef, LINKS.componentDeclaration$nkzL)), CONCEPTS.NamedTupleDeclaration$aM)), true).alsoSort((SNode cmpRef) -> SNodeOperations.getIndexInParent(SLinkOperations.getTarget(cmpRef, LINKS.componentDeclaration$nkzL)), true).select((SNode cmpRef) -> SLinkOperations.getTarget(cmpRef, LINKS.value$fBTf));
   }
   public static Iterable<SNode> sourceNodesQuery_1_2(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), CONCEPTS.NamedTupleType$DW), LINKS.parameter$oqG$)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode t) {
-        return ClassifierTypeUtil.getTypeCoercedToClassifierType(t);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), CONCEPTS.NamedTupleType$DW), LINKS.parameter$oqG$)).select((SNode t) -> ClassifierTypeUtil.getTypeCoercedToClassifierType(t));
   }
   public static Iterable<SNode> sourceNodesQuery_1_3(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.VariableDeclaration$Y0), LINKS.type$a1UY), CONCEPTS.NamedTupleType$DW), LINKS.parameter$oqG$)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode t) {
-        return ClassifierTypeUtil.getTypeCoercedToClassifierType(t);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.VariableDeclaration$Y0), LINKS.type$a1UY), CONCEPTS.NamedTupleType$DW), LINKS.parameter$oqG$)).select((SNode t) -> ClassifierTypeUtil.getTypeCoercedToClassifierType(t));
   }
   public static Iterable<SNode> sourceNodesQuery_1_4(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.VariableDeclaration$Y0), LINKS.type$a1UY), CONCEPTS.NamedTupleType$DW), LINKS.parameter$oqG$)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode t) {
-        return ClassifierTypeUtil.getTypeCoercedToClassifierType(t);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.VariableDeclaration$Y0), LINKS.type$a1UY), CONCEPTS.NamedTupleType$DW), LINKS.parameter$oqG$)).select((SNode t) -> ClassifierTypeUtil.getTypeCoercedToClassifierType(t));
   }
   public static Iterable<SNode> sourceNodesQuery_1_5(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$BsHW), CONCEPTS.ArrayCreator$bz), LINKS.dimensionExpression$DH6N), LINKS.expression$4ICz);
   }
   public static Iterable<SNode> sourceNodesQuery_1_6(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$BsHW), CONCEPTS.ArrayCreator$bz), LINKS.componentType$SJjq), CONCEPTS.NamedTupleType$DW), LINKS.parameter$oqG$)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode t) {
-        return ClassifierTypeUtil.getTypeCoercedToClassifierType(t);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$BsHW), CONCEPTS.ArrayCreator$bz), LINKS.componentType$SJjq), CONCEPTS.NamedTupleType$DW), LINKS.parameter$oqG$)).select((SNode t) -> ClassifierTypeUtil.getTypeCoercedToClassifierType(t));
   }
   public static Iterable<SNode> sourceNodesQuery_1_7(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$BsHW), CONCEPTS.ArrayCreatorWithInitializer$Bs), LINKS.initValue$4K91);
@@ -576,11 +521,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.implements$1gsv);
   }
   public static Iterable<SNode> sourceNodesQuery_2_1(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.component$wCHx)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode cmp) {
-        return ClassifierTypeUtil.getTypeCoercedToClassifierType(SLinkOperations.getTarget(cmp, LINKS.type$q$C9));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.component$wCHx)).select((SNode cmp) -> ClassifierTypeUtil.getTypeCoercedToClassifierType(SLinkOperations.getTarget(cmp, LINKS.type$q$C9)));
   }
   public static Iterable<SNode> sourceNodesQuery_2_2(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.typeVariableDeclaration$Lipp);
@@ -604,15 +545,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.annotation$K49I);
   }
   public static Iterable<SNode> sourceNodesQuery_4_0(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(_context.getNode())).reversedList().translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode ntd) {
-        return SLinkOperations.getChildren(ntd, LINKS.component$wCHx);
-      }
-    }).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode cmp) {
-        return ClassifierTypeUtil.getTypeCoercedToClassifierType(SLinkOperations.getTarget(cmp, LINKS.type$q$C9));
-      }
-    });
+    return ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(_context.getNode())).reversedList().translate((SNode ntd) -> SLinkOperations.getChildren(ntd, LINKS.component$wCHx)).select((SNode cmp) -> ClassifierTypeUtil.getTypeCoercedToClassifierType(SLinkOperations.getTarget(cmp, LINKS.type$q$C9)));
   }
   public static Iterable<SNode> sourceNodesQuery_4_1(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.implements$1gsv);
@@ -624,42 +557,22 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.extended$2Fzf), LINKS.classifier$cxMr), LINKS.typeVariableDeclaration$Lipp);
   }
   public static Iterable<SNode> sourceNodesQuery_4_4(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.component$wCHx)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode cmp) {
-        return ClassifierTypeUtil.getTypeCoercedToClassifierType(SLinkOperations.getTarget(cmp, LINKS.type$q$C9));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.component$wCHx)).select((SNode cmp) -> ClassifierTypeUtil.getTypeCoercedToClassifierType(SLinkOperations.getTarget(cmp, LINKS.type$q$C9)));
   }
   public static Iterable<SNode> sourceNodesQuery_4_5(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.component$wCHx)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode cmp) {
-        return ClassifierTypeUtil.getTypeCoercedToClassifierType(SLinkOperations.getTarget(cmp, LINKS.type$q$C9));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.component$wCHx)).select((SNode cmp) -> ClassifierTypeUtil.getTypeCoercedToClassifierType(SLinkOperations.getTarget(cmp, LINKS.type$q$C9)));
   }
   public static Iterable<SNode> sourceNodesQuery_4_6(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(_context.getNode())).reversedList().translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode ntd) {
-        return SLinkOperations.getChildren(ntd, LINKS.component$wCHx);
-      }
-    });
+    return ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(_context.getNode())).reversedList().translate((SNode ntd) -> SLinkOperations.getChildren(ntd, LINKS.component$wCHx));
   }
   public static Iterable<SNode> sourceNodesQuery_4_7(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.extended$2Fzf), LINKS.classifier$cxMr))).reversedList().translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode ntd) {
-        return SLinkOperations.getChildren(ntd, LINKS.component$wCHx);
-      }
-    });
+    return ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.extended$2Fzf), LINKS.classifier$cxMr))).reversedList().translate((SNode ntd) -> SLinkOperations.getChildren(ntd, LINKS.component$wCHx));
   }
   public static Iterable<SNode> sourceNodesQuery_4_8(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.component$wCHx);
   }
   public static Iterable<SNode> sourceNodesQuery_4_9(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.component$wCHx)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode cmp) {
-        return ClassifierTypeUtil.getTypeCoercedToClassifierType(SLinkOperations.getTarget(cmp, LINKS.type$q$C9));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.component$wCHx)).select((SNode cmp) -> ClassifierTypeUtil.getTypeCoercedToClassifierType(SLinkOperations.getTarget(cmp, LINKS.type$q$C9)));
   }
   public static Iterable<SNode> sourceNodesQuery_4_10(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.component$wCHx);
@@ -674,29 +587,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.component$wCHx);
   }
   public static Iterable<SNode> sourceNodesQuery_4_14(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NamedTupleDeclaration$aM), LINKS.extended$2Fzf), LINKS.classifier$cxMr))).reversedList().translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode ntd) {
-        return SLinkOperations.getChildren(ntd, LINKS.component$wCHx);
-      }
-    }).concat(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NamedTupleDeclaration$aM), LINKS.component$wCHx)).take(SNodeOperations.getIndexInParent(_context.getNode()) + 1)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode cmp) {
-        return ClassifierTypeUtil.getTypeCoercedToClassifierType(SLinkOperations.getTarget(cmp, LINKS.type$q$C9));
-      }
-    });
+    return ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NamedTupleDeclaration$aM), LINKS.extended$2Fzf), LINKS.classifier$cxMr))).reversedList().translate((SNode ntd) -> SLinkOperations.getChildren(ntd, LINKS.component$wCHx)).concat(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NamedTupleDeclaration$aM), LINKS.component$wCHx)).take(SNodeOperations.getIndexInParent(_context.getNode()) + 1)).select((SNode cmp) -> ClassifierTypeUtil.getTypeCoercedToClassifierType(SLinkOperations.getTarget(cmp, LINKS.type$q$C9)));
   }
   public static Iterable<SNode> sourceNodesQuery_4_15(final SourceSubstituteMacroNodesContext _context) {
     return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NamedTupleDeclaration$aM), LINKS.component$wCHx)).take(SNodeOperations.getIndexInParent(_context.getNode()) + 1);
   }
   public static Iterable<SNode> sourceNodesQuery_4_16(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NamedTupleDeclaration$aM), LINKS.extended$2Fzf), LINKS.classifier$cxMr))).reversedList().translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode ntd) {
-        return SLinkOperations.getChildren(ntd, LINKS.component$wCHx);
-      }
-    }).concat(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NamedTupleDeclaration$aM), LINKS.component$wCHx)).take(SNodeOperations.getIndexInParent(_context.getNode()) + 1)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode cmp) {
-        return ClassifierTypeUtil.getTypeCoercedToClassifierType(SLinkOperations.getTarget(cmp, LINKS.type$q$C9));
-      }
-    });
+    return ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NamedTupleDeclaration$aM), LINKS.extended$2Fzf), LINKS.classifier$cxMr))).reversedList().translate((SNode ntd) -> SLinkOperations.getChildren(ntd, LINKS.component$wCHx)).concat(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NamedTupleDeclaration$aM), LINKS.component$wCHx)).take(SNodeOperations.getIndexInParent(_context.getNode()) + 1)).select((SNode cmp) -> ClassifierTypeUtil.getTypeCoercedToClassifierType(SLinkOperations.getTarget(cmp, LINKS.type$q$C9)));
   }
   public static Iterable<SNode> sourceNodesQuery_4_17(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.component$wCHx);
@@ -711,7 +608,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SNodeOperations.copyNode(ClassifierTypeUtil.getTypeCoercedToClassifierType(_context.getNode()));
   }
   public static SNode mapSrcMacro_map_0_1(final MapSrcMacroContext _context) {
-    return ClassifierTypeUtil.copyTypeRecursively(ClassifierTypeUtil.getTypeCoercedToClassifierType(SNodeOperations.as(_context.getNode(), CONCEPTS.Type$bu)));
+    return ClassifierTypeUtil.unbounded(ClassifierTypeUtil.getTypeCoercedToClassifierType(SNodeOperations.as(_context.getNode(), CONCEPTS.Type$bu)));
   }
   public static boolean mc_Condition_0(final TemplateQueryContext _context) {
     SModel m = _context.getInputModel();
@@ -725,11 +622,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.createUniqueName("_tmp", _context.getNode());
   }
   public static Object varMacro_Value_4_0(final TemplateVarContext _context) {
-    return ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.extended$2Fzf), LINKS.classifier$cxMr))).foldLeft(0, new ILeftCombinator<SNode, Integer>() {
-      public Integer combine(Integer s, SNode ntd) {
-        return s + ListSequence.fromList(SLinkOperations.getChildren(ntd, LINKS.component$wCHx)).count();
-      }
-    });
+    return ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.extended$2Fzf), LINKS.classifier$cxMr))).foldLeft(0, (Integer s, SNode ntd) -> s + ListSequence.fromList(SLinkOperations.getChildren(ntd, LINKS.component$wCHx)).count());
   }
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {

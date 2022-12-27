@@ -25,7 +25,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.tuples.behavior.NamedTupleDeclaration__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -66,11 +65,7 @@ public class NamedTupleComponentAccessOperation_Constraints extends BaseConstrai
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode ntt = TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), CONCEPTS.NamedTupleType$DW);
-            return ListScope.forResolvableElements(ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(ntt, LINKS.classifier$cxMr))).reversedList().translate(new ITranslator2<SNode, SNode>() {
-              public Iterable<SNode> translate(SNode ntd) {
-                return SLinkOperations.getChildren(ntd, LINKS.component$wCHx);
-              }
-            }));
+            return ListScope.forResolvableElements(ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(ntt, LINKS.classifier$cxMr))).reversedList().translate((SNode ntd) -> SLinkOperations.getChildren(ntd, LINKS.component$wCHx)));
           }
         };
       }

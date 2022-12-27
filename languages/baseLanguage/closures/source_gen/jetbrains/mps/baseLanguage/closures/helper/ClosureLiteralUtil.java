@@ -18,8 +18,6 @@ import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.generator.template.TemplateQueryContext;
 import jetbrains.mps.baseLanguage.util.BaseLanguageEnvironmentHelper;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.scope.ModelsScope;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -107,23 +105,13 @@ public class ClosureLiteralUtil {
     }
 
     // Scope conflict
-    Iterable<String> names = ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.VariableDeclaration$Y0, false, new SAbstractConcept[]{CONCEPTS.IClassifier$MF, CONCEPTS.ClosureLiteral$rp})).select(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    }).where(new IWhereFilter<String>() {
-      public boolean accept(String it) {
-        return it != null;
-      }
-    });
+    Iterable<String> names = ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.VariableDeclaration$Y0, false, new SAbstractConcept[]{CONCEPTS.IClassifier$MF, CONCEPTS.ClosureLiteral$rp})).select((SNode it) -> SPropertyOperations.getString(it, PROPS.name$MnvL)).where((String it) -> it != null);
     final Scope scope = ModelsScope.getScope(SNodeOperations.getParent(node), node, CONCEPTS.VariableDeclaration$Y0);
 
     // Any name defined in parent scope -> need anonymous class
-    if (scope != null && Sequence.fromIterable(names).any(new IWhereFilter<String>() {
-      public boolean accept(String it) {
-        SNode resolved = scope.resolve(node, it);
-        return resolved != null && (SNodeOperations.isInstanceOf(resolved, CONCEPTS.LocalVariableDeclaration$41) || SNodeOperations.isInstanceOf(resolved, CONCEPTS.ParameterDeclaration$RG));
-      }
+    if (scope != null && Sequence.fromIterable(names).any((String it) -> {
+      SNode resolved = scope.resolve(node, it);
+      return resolved != null && (SNodeOperations.isInstanceOf(resolved, CONCEPTS.LocalVariableDeclaration$41) || SNodeOperations.isInstanceOf(resolved, CONCEPTS.ParameterDeclaration$RG));
     })) {
       return false;
     }
@@ -139,11 +127,7 @@ public class ClosureLiteralUtil {
     final int index = SNodeOperations.getIndexInParent(member);
     final SNode classifier = SNodeOperations.getNodeAncestor(member, CONCEPTS.IClassifier$MF, false, false);
 
-    return ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), SNodeOperations.asSConcept(testedConcept)) && SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), CONCEPTS.Classifier$Ix, false, false) == classifier && SNodeOperations.getIndexInParent(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG)) >= index;
-      }
-    }).isNotEmpty();
+    return ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where((SNode it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), SNodeOperations.asSConcept(testedConcept)) && SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), CONCEPTS.Classifier$Ix, false, false) == classifier && SNodeOperations.getIndexInParent(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG)) >= index).isNotEmpty();
   }
 
   private static final class CONCEPTS {

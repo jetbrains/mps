@@ -21,7 +21,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopes;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
@@ -89,11 +88,7 @@ public class namedTupleDeclaration_extends_Contribution extends SubstituteMenuBa
       @Nullable
       @Override
       protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-        return Sequence.fromIterable(SNodeOperations.ofConcept(ClassifierScopes.getVisibleClassifiersScope(_context.getParentNode(), false).getAvailableElements(null), CONCEPTS.Interface$db)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return new TupleIntefaceUtils(it).isTupleInterface();
-          }
-        });
+        return Sequence.fromIterable(SNodeOperations.ofConcept(ClassifierScopes.getVisibleClassifiersScope(_context.getParentNode(), false).getAvailableElements(null), CONCEPTS.Interface$db)).where((SNode it) -> new TupleIntefaceUtils(it).isTupleInterface());
       }
       private class SMP_Action_evf1f9_a0a extends SingleItemSubstituteMenuPart {
         private final SNode myParameterObject;

@@ -17,7 +17,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.scopes.VisibilityUtil;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import jetbrains.mps.logging.Logger;
@@ -25,7 +24,6 @@ import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.baseLanguage.tuples.behavior.NamedTupleDeclaration__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
@@ -71,11 +69,7 @@ public class NamedTupleLiteral_Contribution extends SubstituteMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(final SubstituteMenuContext _context) {
-      return ListSequence.fromList(SModelOperations.nodesIncludingImported(_context.getModel(), CONCEPTS.NamedTupleDeclaration$aM)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode ntd) {
-          return VisibilityUtil.isVisible(_context.getParentNode(), ntd);
-        }
-      }).toListSequence();
+      return ListSequence.fromList(SModelOperations.nodesIncludingImported(_context.getModel(), CONCEPTS.NamedTupleDeclaration$aM)).where((SNode ntd) -> VisibilityUtil.isVisible(_context.getParentNode(), ntd)).toListSequence();
     }
     private class SMP_Action_4kfnt3_a0 extends SingleItemSubstituteMenuPart {
       private final SNode myParameterObject;
@@ -122,11 +116,7 @@ public class NamedTupleLiteral_Contribution extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           _FunctionTypes._return_P1_E0<? extends SNode, ? super SNode> toRef = (SNode cmp) -> _quotation_createNode_4kfnt3_a0a0a0a0a0(cmp);
-          return _quotation_createNode_4kfnt3_a1a0a0(ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(myParameterObject)).reversedList().translate(new ITranslator2<SNode, SNode>() {
-            public Iterable<SNode> translate(SNode ntd) {
-              return SLinkOperations.getChildren(ntd, LINKS.component$wCHx);
-            }
-          }).select(toRef).toListSequence(), myParameterObject);
+          return _quotation_createNode_4kfnt3_a1a0a0(ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(myParameterObject)).reversedList().translate((SNode ntd) -> SLinkOperations.getChildren(ntd, LINKS.component$wCHx)).select(toRef).toListSequence(), myParameterObject);
         }
 
         @Override

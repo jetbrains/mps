@@ -1258,8 +1258,8 @@
                     </node>
                   </node>
                   <node concept="3clFbF" id="6ffEDrb$ccr" role="3cqZAp">
-                    <node concept="15s5l7" id="6NuK8D3IR1X" role="lGtFl">
-                      <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: type node&lt;JoinType&gt; is not a subtype of node&lt;Type&gt;&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)/9103385281676385015]&quot;;" />
+                    <node concept="15s5l7" id="2WCjFCWsDh1" role="lGtFl">
+                      <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: type node&lt;JoinType&gt; is not a subtype of node&lt;Type&gt;&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)/2321665441776750735]&quot;;" />
                       <property role="huDt6" value="Error: type node&lt;JoinType&gt; is not a subtype of node&lt;Type&gt;" />
                     </node>
                     <node concept="2OqwBi" id="6ffEDrb$ccs" role="3clFbG">

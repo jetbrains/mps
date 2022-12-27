@@ -17,7 +17,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.scopes.VisibilityUtil;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import jetbrains.mps.logging.Logger;
@@ -65,11 +64,7 @@ public class NamedTupleType_Contribution extends SubstituteMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(final SubstituteMenuContext _context) {
-      return ListSequence.fromList(SModelOperations.nodesIncludingImported(_context.getModel(), CONCEPTS.NamedTupleDeclaration$aM)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode ntd) {
-          return VisibilityUtil.isVisible(_context.getParentNode(), ntd);
-        }
-      }).toListSequence();
+      return ListSequence.fromList(SModelOperations.nodesIncludingImported(_context.getModel(), CONCEPTS.NamedTupleDeclaration$aM)).where((SNode ntd) -> VisibilityUtil.isVisible(_context.getParentNode(), ntd)).toListSequence();
     }
     private class SMP_Action_rx1mqb_a0 extends SingleItemSubstituteMenuPart {
       private final SNode myParameterObject;

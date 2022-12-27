@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -35,11 +34,7 @@ public final class FunctionMethodDeclaration__BehaviorDescriptor extends BaseBHD
   }
 
   /*package*/ static SNode functionType_id2uAWGxT6YKz(@NotNull SNode __thisNode__) {
-    List<SNode> params = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$5xBj)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode pd) {
-        return SNodeOperations.copyNode(SLinkOperations.getTarget(pd, LINKS.type$a1UY));
-      }
-    }).toListSequence();
+    List<SNode> params = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$5xBj)).select((SNode pd) -> SNodeOperations.copyNode(SLinkOperations.getTarget(pd, LINKS.type$a1UY))).toListSequence();
     return _quotation_createNode_c7xn2w_a1a0(params, SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.returnType$5xoi)));
   }
   /*package*/ static boolean canBeInterfaceMember_id2zJQqQIUx2B(@NotNull SAbstractConcept __thisConcept__) {

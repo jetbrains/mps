@@ -30,9 +30,7 @@ import jetbrains.mps.editor.runtime.menus.SubstituteItemProxy;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
@@ -118,15 +116,7 @@ public class InferredClosureParameterDeclaration_TransformationMenu extends Tran
         SNode createdNode = getSubstituteItem().createNode(pattern);
         final SNode newNode = createParameterDeclaration_juactr_a0a0a0a(SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL), createdNode);
         // Remap parameters
-        ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.ClosureLiteral$rp, false, false), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == _context.getNode();
-          }
-        }).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            SLinkOperations.setTarget(it, LINKS.variableDeclaration$N1XG, newNode);
-          }
-        });
+        ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.ClosureLiteral$rp, false, false), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where((SNode it) -> SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == _context.getNode()).visitAll((SNode it) -> SLinkOperations.setTarget(it, LINKS.variableDeclaration$N1XG, newNode));
         SNodeOperations.replaceWithAnother(_context.getNode(), newNode);
       }
 

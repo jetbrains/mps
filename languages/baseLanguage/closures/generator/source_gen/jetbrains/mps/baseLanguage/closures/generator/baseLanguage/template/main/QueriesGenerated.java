@@ -871,7 +871,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getNode();
   }
   public static SNode sourceNodeQuery_0_19(final SourceSubstituteMacroNodeContext _context) {
-    return ClassifierTypeUtil.copyTypeRecursively(_context.getNode());
+    return ClassifierTypeUtil.unbounded(_context.getNode());
   }
   public static SNode sourceNodeQuery_1_0(final SourceSubstituteMacroNodeContext _context) {
     return FunctionTypeUtil.unmeet(FunctionTypeUtil.unbound(FunctionType__BehaviorDescriptor.getNormalizedReturnType_idhEwIOp4.invoke(SNodeOperations.cast(((SNode) _context.getVariable("var:nodeType")), CONCEPTS.FunctionType$9U))));
@@ -1323,7 +1323,7 @@ public class QueriesGenerated extends QueryProviderBase {
     List<SNode> ptypes = SLinkOperations.getChildren(SNodeOperations.cast(_context.getNode(), CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$);
     List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
     for (SNode pt : ptypes) {
-      ListSequence.fromList(result).addElement(ClassifierTypeUtil.copyTypeRecursively(pt));
+      ListSequence.fromList(result).addElement(ClassifierTypeUtil.unbounded(pt));
     }
     return result;
   }
@@ -1339,7 +1339,7 @@ public class QueriesGenerated extends QueryProviderBase {
       SNode ptype = SLinkOperations.getTarget(pdecl, LINKS.type$a1UY);
       if (SNodeOperations.isInstanceOf(ptype, CONCEPTS.TypeVariableReference$WL)) {
         List<SNode> psib = SNodeOperations.getPrevSiblings(SLinkOperations.getTarget(SNodeOperations.cast(ptype, CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I), false);
-        SLinkOperations.setTarget(pd, LINKS.type$a1UY, ClassifierTypeUtil.copyTypeRecursively(ListSequence.fromList(ptypes).getElement(ListSequence.fromList(psib).count())));
+        SLinkOperations.setTarget(pd, LINKS.type$a1UY, FunctionTypeUtil.unbound(ListSequence.fromList(ptypes).getElement(ListSequence.fromList(psib).count())));
       } else {
         SLinkOperations.setTarget(pd, LINKS.type$a1UY, SNodeOperations.copyNode(ptype));
       }
@@ -1476,7 +1476,7 @@ public class QueriesGenerated extends QueryProviderBase {
     int idx = 0;
     for (SNode pd : SLinkOperations.getChildren(imd, LINKS.parameter$5xBj)) {
       if (idx >= ListSequence.fromList(paramDecls).count()) {
-        _context.showErrorMessage(_context.getNode(), "Method parameters count doesn't match closure parameters count: " + SPropertyOperations.getString(imd, PROPS.shortDescription$Yd4v));
+        _context.showErrorMessage(_context.getNode(), "Method parameters count doesn't match closure parameters count: " + SNodeOperations.present(imd));
         break;
       }
       SNode newpd = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration"));

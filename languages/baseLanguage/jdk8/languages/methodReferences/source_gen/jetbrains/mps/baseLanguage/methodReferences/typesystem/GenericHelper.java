@@ -7,6 +7,7 @@ import java.util.Map;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.behavior.IGenericType__BehaviorDescriptor;
+import jetbrains.mps.baseLanguage.closures.constraints.ClassifierTypeUtil;
 import jetbrains.mps.lang.typesystem.dependencies.InferenceMethod;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.typechecking.TypecheckingFacade;
@@ -43,6 +44,8 @@ public final class GenericHelper {
         type = IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(generic, subs);
       }
     }
+
+    type = ClassifierTypeUtil.unbounded(SNodeOperations.as(type, CONCEPTS.Type$bu));
 
     return SNodeOperations.as(type, CONCEPTS.Type$bu);
   }

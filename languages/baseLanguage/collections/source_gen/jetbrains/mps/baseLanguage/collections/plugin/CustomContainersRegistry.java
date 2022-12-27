@@ -14,11 +14,9 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import java.util.Objects;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -40,21 +38,11 @@ public class CustomContainersRegistry {
       // XXX in fact, shall use VisibilityUtil, to follow some general convention about what's visible.
       //     Otherwise, here we consider any model of a used language as visible, while VisibilityUtil see only accessory models
       Iterable<SNode> allCustomContainers = this.primAllCustomContainers(fromModel.getRepository());
-      ListSequence.fromList(res).addSequence(Sequence.fromIterable(allCustomContainers).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode cc) {
-          SModule owner = CustomContainersRegistry.this.getOwningModule(SNodeOperations.getModel(cc));
-          final SModuleReference ownerRef = (owner == null ? null : owner.getModuleReference());
-          return Sequence.fromIterable(allVisibleModules).contains(owner) || Sequence.fromIterable(allUsedLanguages).any(new IWhereFilter<SLanguage>() {
-            public boolean accept(SLanguage it) {
-              return Objects.equals(ownerRef, it.getSourceModuleReference());
-            }
-          });
-        }
-      }).translate(new ITranslator2<SNode, SNode>() {
-        public Iterable<SNode> translate(SNode cc) {
-          return SLinkOperations.getChildren(cc, LINKS.containerDeclaration$X6vk);
-        }
-      }));
+      ListSequence.fromList(res).addSequence(Sequence.fromIterable(allCustomContainers).where((SNode cc) -> {
+        SModule owner = CustomContainersRegistry.this.getOwningModule(SNodeOperations.getModel(cc));
+        final SModuleReference ownerRef = (owner == null ? null : owner.getModuleReference());
+        return Sequence.fromIterable(allVisibleModules).contains(owner) || Sequence.fromIterable(allUsedLanguages).any((SLanguage it) -> Objects.equals(ownerRef, it.getSourceModuleReference()));
+      }).translate((SNode cc) -> SLinkOperations.getChildren(cc, LINKS.containerDeclaration$X6vk)));
     }
     return res;
   }
@@ -67,11 +55,7 @@ public class CustomContainersRegistry {
     synchronized (this) {
       providersCopy = ListSequence.fromListWithValues(new ArrayList<_FunctionTypes._return_P1_E0<? extends List<SNode>, ? super SRepository>>(), this.providers);
     }
-    return ListSequence.fromList(providersCopy).translate(new ITranslator2<_FunctionTypes._return_P1_E0<? extends List<SNode>, ? super SRepository>, SNode>() {
-      public Iterable<SNode> translate(_FunctionTypes._return_P1_E0<? extends List<SNode>, ? super SRepository> prov) {
-        return prov.invoke(repo);
-      }
-    });
+    return ListSequence.fromList(providersCopy).translate((_FunctionTypes._return_P1_E0<? extends List<SNode>, ? super SRepository> prov) -> prov.invoke(repo));
   }
 
   private static final class LINKS {

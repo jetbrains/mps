@@ -9,7 +9,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -49,11 +48,7 @@ public class ClosureLiteralTarget {
       List<SNode> dependants = (List<SNode>) Values.LITERAL_RETURN_DEPEDENCY.get(genContext, literal);
       final SNode type = resolveIfaceReturnType(targetIface);
 
-      ListSequence.fromList(dependants).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          FunctionTypeUtil.prepAdaptations(genContext, type, it);
-        }
-      });
+      ListSequence.fromList(dependants).visitAll((SNode it) -> FunctionTypeUtil.prepAdaptations(genContext, type, it));
       ListSequence.fromList(dependants).clear();
     }
   }

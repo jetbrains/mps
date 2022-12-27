@@ -12,7 +12,6 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -28,16 +27,14 @@ public class check_ClosureLiteralUniqueNames_NonTypesystemRule extends AbstractN
   }
   public void applyRule(final SNode closureLiteral, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     final Set<String> names = SetSequence.fromSet(new HashSet<String>());
-    ListSequence.fromList(SLinkOperations.getChildren(closureLiteral, LINKS.parameter$b4Y3)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        if (SetSequence.fromSet(names).contains(SPropertyOperations.getString(it, PROPS.name$MnvL))) {
-          {
-            final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it, "Parameter names must be unique", "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "4830624418866443087", null, errorTarget);
-          }
-        } else {
-          SetSequence.fromSet(names).addElement(SPropertyOperations.getString(it, PROPS.name$MnvL));
+    ListSequence.fromList(SLinkOperations.getChildren(closureLiteral, LINKS.parameter$b4Y3)).visitAll((SNode it) -> {
+      if (SetSequence.fromSet(names).contains(SPropertyOperations.getString(it, PROPS.name$MnvL))) {
+        {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it, "Parameter names must be unique", "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "4830624418866443087", null, errorTarget);
         }
+      } else {
+        SetSequence.fromSet(names).addElement(SPropertyOperations.getString(it, PROPS.name$MnvL));
       }
     });
   }

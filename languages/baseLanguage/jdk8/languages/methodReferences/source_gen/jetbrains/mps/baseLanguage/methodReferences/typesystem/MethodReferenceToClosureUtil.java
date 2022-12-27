@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.typesystem.ParameterNameUtil;
@@ -15,7 +14,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.methodReferences.behavior.IMethodReference__BehaviorDescriptor;
@@ -34,12 +32,10 @@ public class MethodReferenceToClosureUtil {
     {
       final SNode methodSignature = targetSignature;
       if (SNodeOperations.isInstanceOf(methodSignature, CONCEPTS.BaseMethodDeclaration$kD)) {
-        return ListSequence.fromList(SLinkOperations.getChildren(methodSignature, LINKS.parameter$5xBj)).select(new ISelector<SNode, SNode>() {
-          public SNode select(SNode it) {
-            // Copy parameter with inferred type
-            return createInferredClosureParameterDeclaration_a9mvw_a1a0a0a0a0a0(SPropertyOperations.getString(it, PROPS.name$MnvL), SLinkOperations.getChildren(it, LINKS.annotation$K49I), SPropertyOperations.getBoolean(it, PROPS.isFinal$gvTP), SPropertyOperations.getString(it, PROPS.resolveInfo$lW9a));
-          }
-        }).toListSequence();
+        return ListSequence.fromList(SLinkOperations.getChildren(methodSignature, LINKS.parameter$5xBj)).select((SNode it) -> {
+          // Copy parameter with inferred type
+          return createInferredClosureParameterDeclaration_a9mvw_a1a0a0a0a0a0(SPropertyOperations.getString(it, PROPS.name$MnvL), SLinkOperations.getChildren(it, LINKS.annotation$K49I), SPropertyOperations.getBoolean(it, PROPS.isFinal$gvTP), SPropertyOperations.getString(it, PROPS.resolveInfo$lW9a));
+        }).toList();
       }
     }
 
@@ -47,14 +43,12 @@ public class MethodReferenceToClosureUtil {
       final SNode fncSignature = targetSignature;
       if (SNodeOperations.isInstanceOf(fncSignature, CONCEPTS.FunctionType$9U)) {
         final List<String> names = ListSequence.fromList(new ArrayList<String>());
-        return ListSequence.fromList(SLinkOperations.getChildren(fncSignature, LINKS.parameterType$qJs$)).select(new ISelector<SNode, SNode>() {
-          public SNode select(SNode it) {
-            String suggestedName = ParameterNameUtil.suggestParameterName(null, it, names);
-            ListSequence.fromList(names).addElement(suggestedName);
+        return ListSequence.fromList(SLinkOperations.getChildren(fncSignature, LINKS.parameterType$qJs$)).select((SNode it) -> {
+          String suggestedName = ParameterNameUtil.suggestParameterName(null, it, names);
+          ListSequence.fromList(names).addElement(suggestedName);
 
-            return createInferredClosureParameterDeclaration_a9mvw_a3a0a0a1a2a0(suggestedName);
-          }
-        }).toListSequence();
+          return createInferredClosureParameterDeclaration_a9mvw_a3a0a0a1a2a0(suggestedName);
+        }).toList();
       }
     }
 
@@ -95,11 +89,7 @@ public class MethodReferenceToClosureUtil {
     {
       final SNode method = targetSignature;
       if (SNodeOperations.isInstanceOf(method, CONCEPTS.BaseMethodDeclaration$kD)) {
-        return ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).select(new ISelector<SNode, SNode>() {
-          public SNode select(SNode it) {
-            return SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(it), CONCEPTS.Type$bu);
-          }
-        });
+        return ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).select((SNode it) -> SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(it), CONCEPTS.Type$bu));
       }
     }
 
@@ -116,11 +106,7 @@ public class MethodReferenceToClosureUtil {
 
   private static String findName(final String prefix, Iterable<String> taken) {
     final Wrappers._int index = new Wrappers._int(0);
-    while (Sequence.fromIterable(taken).any(new IWhereFilter<String>() {
-      public boolean accept(String it) {
-        return it.equals(prefix + index.value);
-      }
-    })) {
+    while (Sequence.fromIterable(taken).any((String it) -> it.equals(prefix + index.value))) {
       index.value++;
     }
     return prefix + index.value;
@@ -131,12 +117,8 @@ public class MethodReferenceToClosureUtil {
     SNode expression;
     SNode methodCall;
     SNode method = SLinkOperations.getTarget(methodRef, LINKS.method$8Sfb);
-    List<SNode> parameters = ListSequence.fromListWithValues(new ArrayList<SNode>(), ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.type$a1UY);
-      }
-    }));
-    List<SNode> signatureParameters = Sequence.fromIterable(getParametersType(targetSignature)).toListSequence();
+    List<SNode> parameters = ListSequence.fromListWithValues(new ArrayList<SNode>(), ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).select((SNode it) -> SLinkOperations.getTarget(it, LINKS.type$a1UY)));
+    List<SNode> signatureParameters = Sequence.fromIterable(getParametersType(targetSignature)).toList();
     SNode refReturnType = SLinkOperations.getTarget(method, LINKS.returnType$5xoi);
 
     // Create the correct expression
@@ -157,11 +139,7 @@ public class MethodReferenceToClosureUtil {
         ListSequence.fromList(signatureParameters).insertElement(0, paramType);
 
         // First resulting parameter
-        ListSequence.fromList(SLinkOperations.getChildren(resultClosure, LINKS.parameter$b4Y3)).insertElement(0, createInferredClosureParameterDeclaration_a9mvw_a0a6a0b0j0k(findName("this", Sequence.fromIterable(getParameters(targetSignature)).select(new ISelector<SNode, String>() {
-          public String select(SNode it) {
-            return SPropertyOperations.getString(it, PROPS.name$MnvL);
-          }
-        }))));
+        ListSequence.fromList(SLinkOperations.getChildren(resultClosure, LINKS.parameter$b4Y3)).insertElement(0, createInferredClosureParameterDeclaration_a9mvw_a0a6a0b0j0k(findName("this", Sequence.fromIterable(getParameters(targetSignature)).select((SNode it) -> SPropertyOperations.getString(it, PROPS.name$MnvL)))));
 
 
         // Operand has to be set later (when input parameter can be mapped)
@@ -240,11 +218,7 @@ public class MethodReferenceToClosureUtil {
         }
 
         SNode varDecl = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration"));
-        SPropertyOperations.assign(varDecl, PROPS.name$MnvL, findName("res", ListSequence.fromList(SLinkOperations.getChildren(resultClosure, LINKS.parameter$b4Y3)).select(new ISelector<SNode, String>() {
-          public String select(SNode it) {
-            return SPropertyOperations.getString(it, PROPS.name$MnvL);
-          }
-        })));
+        SPropertyOperations.assign(varDecl, PROPS.name$MnvL, findName("res", ListSequence.fromList(SLinkOperations.getChildren(resultClosure, LINKS.parameter$b4Y3)).select((SNode it) -> SPropertyOperations.getString(it, PROPS.name$MnvL))));
         SLinkOperations.setTarget(varDecl, LINKS.type$a1UY, targetReturnType);
         SLinkOperations.setTarget(varDecl, LINKS.initializer$2twD, value);
 

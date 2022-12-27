@@ -10,7 +10,6 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -30,11 +29,7 @@ public class MethodReferences_Test {
     };
     Assert.assertEquals(provider.get().invoke(4), "4");
 
-    Consumer<Integer> consumer = new _FunctionTypes._return_P0_E0<Consumer<Integer>>() {
-      public Consumer<Integer> invoke() {
-        return Integer::bitCount;
-      }
-    }.invoke();
+    Consumer<Integer> consumer = ((_FunctionTypes._return_P0_E0<? extends Consumer<Integer>>) () -> Integer::bitCount).invoke();
     consumer.accept(3);
 
   }
@@ -43,11 +38,7 @@ public class MethodReferences_Test {
     List<Integer> integers = ListSequence.fromListAndArray(new ArrayList<Integer>(), 0, 1, 0, 0, 1);
     final StringBuilder builder = new StringBuilder();
     // Here the instance is provided by the builder expression: (a) => builder.append(a)
-    ListSequence.fromList(integers).visitAll(new IVisitor<Integer>() {
-      public void visit(Integer i) {
-        builder.append(i);
-      }
-    });
+    ListSequence.fromList(integers).visitAll((Integer i) -> builder.append(i));
     Assert.assertEquals("01001", builder.toString());
   }
   @Test
@@ -65,11 +56,7 @@ public class MethodReferences_Test {
   @Test
   public void test_testStaticMethodCall() throws Exception {
     List<String> strings = ListSequence.fromListAndArray(new ArrayList<String>(), "3.9", "4.0", "7.9");
-    Assert.assertEquals(ListSequence.fromList(strings).select(new ISelector<String, Double>() {
-      public Double select(String s) {
-        return Double.parseDouble(s);
-      }
-    }).toListSequence(), ListSequence.fromListAndArray(new ArrayList<Double>(), 3.9, 4.0, 7.9));
+    Assert.assertEquals(ListSequence.fromList(strings).select((String s) -> Double.parseDouble(s)).toList(), ListSequence.fromListAndArray(new ArrayList<Double>(), 3.9, 4.0, 7.9));
   }
   @Test
   public void test_testAbstractClassInterop() throws Exception {
@@ -113,37 +100,17 @@ public class MethodReferences_Test {
   public void test_testMethodParameters() throws Exception {
     List<StringBuilder> builders = ListSequence.fromListAndArray(new ArrayList<StringBuilder>(), new StringBuilder("Hello"), new StringBuilder("World"));
     // No method parameter specified (inferred)
-    Assert.assertEquals(ListSequence.fromList(builders).select(new ISelector<StringBuilder, StringBuilder>() {
-      public StringBuilder select(StringBuilder item) {
-        return Builder.copy(item);
-      }
-    }).first().toString(), "Hello");
+    Assert.assertEquals(ListSequence.fromList(builders).select((StringBuilder item) -> Builder.copy(item)).first().toString(), "Hello");
 
     // With method parameter specified
-    Assert.assertEquals(ListSequence.fromList(builders).select(new ISelector<StringBuilder, StringBuilder>() {
-      public StringBuilder select(StringBuilder item) {
-        return Builder.<StringBuilder>copy(item);
-      }
-    }).last().toString(), "World");
+    Assert.assertEquals(ListSequence.fromList(builders).select((StringBuilder item) -> Builder.<StringBuilder>copy(item)).last().toString(), "World");
   }
   @Test
   public void test_testChainedCalls() throws Exception {
     List<StringBuilder> builders = ListSequence.fromListAndArray(new ArrayList<StringBuilder>(), new StringBuilder("Hello"), new StringBuilder("World"));
 
     // Chained calls with inferred type from "builders"
-    Iterable<String> strings = ListSequence.fromList(builders).select(new ISelector<StringBuilder, ItemContainer<StringBuilder>>() {
-      public ItemContainer<StringBuilder> select(StringBuilder content) {
-        return ItemContainer.init(content);
-      }
-    }).select(new ISelector<ItemContainer<StringBuilder>, StringBuilder>() {
-      public StringBuilder select(ItemContainer<StringBuilder> this0) {
-        return this0.get();
-      }
-    }).select(new ISelector<StringBuilder, String>() {
-      public String select(StringBuilder this0) {
-        return this0.toString();
-      }
-    });
+    Iterable<String> strings = ListSequence.fromList(builders).select((StringBuilder content) -> ItemContainer.init(content)).select((ItemContainer<StringBuilder> this0) -> this0.get()).select((StringBuilder this0) -> this0.toString());
     Assert.assertEquals(Sequence.fromIterable(strings).first(), "Hello");
   }
   @Test
@@ -159,23 +126,7 @@ public class MethodReferences_Test {
     List<StringBuilder> builders = ListSequence.fromListAndArray(new ArrayList<StringBuilder>(), new StringBuilder("Hello"), new StringBuilder("World"));
 
     // Chained calls with inferred type from "builders", using java implementation of sequences
-    Iterable<String> strings = ListSequence.fromList(builders).select(new ISelector<StringBuilder, ItemContainer<StringBuilder>>() {
-      public ItemContainer<StringBuilder> select(StringBuilder content) {
-        return ItemContainer.init(content);
-      }
-    }).select(new ISelector<ItemContainer<StringBuilder>, ItemContainer<StringBuilder>>() {
-      public ItemContainer<StringBuilder> select(ItemContainer<StringBuilder> this0) {
-        return this0.self();
-      }
-    }).select(new ISelector<ItemContainer<StringBuilder>, StringBuilder>() {
-      public StringBuilder select(ItemContainer<StringBuilder> this0) {
-        return this0.get();
-      }
-    }).select(new ISelector<StringBuilder, String>() {
-      public String select(StringBuilder this0) {
-        return this0.toString();
-      }
-    });
+    Iterable<String> strings = ListSequence.fromList(builders).select((StringBuilder content) -> ItemContainer.init(content)).select((ItemContainer<StringBuilder> this0) -> this0.self()).select((ItemContainer<StringBuilder> this0) -> this0.get()).select((StringBuilder this0) -> this0.toString());
     Assert.assertEquals(Sequence.fromIterable(strings).first(), "Hello");
   }
   @Test
@@ -183,23 +134,7 @@ public class MethodReferences_Test {
     Iterable<StringBuilder> builders = ListSequence.fromListAndArray(new ArrayList<StringBuilder>(), new StringBuilder("Hello"), new StringBuilder("World"));
 
     // Chained calls with inferred type from "builders", using sequences
-    Iterable<String> strings = Sequence.fromIterable(builders).select(new ISelector<StringBuilder, ItemContainer<StringBuilder>>() {
-      public ItemContainer<StringBuilder> select(StringBuilder content) {
-        return ItemContainer.init(content);
-      }
-    }).select(new ISelector<ItemContainer<StringBuilder>, ItemContainer<StringBuilder>>() {
-      public ItemContainer<StringBuilder> select(ItemContainer<StringBuilder> this0) {
-        return this0.self();
-      }
-    }).select(new ISelector<ItemContainer<StringBuilder>, StringBuilder>() {
-      public StringBuilder select(ItemContainer<StringBuilder> this0) {
-        return this0.get();
-      }
-    }).select(new ISelector<StringBuilder, String>() {
-      public String select(StringBuilder this0) {
-        return this0.toString();
-      }
-    });
+    Iterable<String> strings = Sequence.fromIterable(builders).select((StringBuilder content) -> ItemContainer.init(content)).select((ItemContainer<StringBuilder> this0) -> this0.self()).select((ItemContainer<StringBuilder> this0) -> this0.get()).select((StringBuilder this0) -> this0.toString());
     Assert.assertEquals(Sequence.fromIterable(strings).first(), "Hello");
   }
   /*package*/ abstract class AbstractVisited<U> {
@@ -220,11 +155,7 @@ public class MethodReferences_Test {
     public abstract T make(U capacity);
   }
   /*package*/ <T> void forEachInList(List<T> items, final AbstractVisited<T> action) {
-    ListSequence.fromList(items).visitAll(new IVisitor<T>() {
-      public void visit(T item) {
-        action.visit(item);
-      }
-    });
+    ListSequence.fromList(items).visitAll((T item) -> action.visit(item));
   }
   /*package*/ static class ItemContainer<E> {
     private E item;

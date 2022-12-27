@@ -20,7 +20,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -58,7 +57,7 @@ public final class MethodReference__BehaviorDescriptor extends BaseBHDescriptor 
     return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.target$Woec), CONCEPTS.MethodReferenceTypeTargetExpression$a3) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.method$8Sfb), CONCEPTS.ConstructorDeclaration$yG) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.method$8Sfb), CONCEPTS.StaticMethodDeclaration$FJ));
   }
   /*package*/ static List<SNode> getReferencedMethodActualArguments_id4GHzns1UXdE(@NotNull SNode __thisNode__) {
-    List<SNode> list = Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.method$8Sfb), LINKS.parameter$5xBj), LINKS.type$a1UY)).toListSequence();
+    List<SNode> list = Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.method$8Sfb), LINKS.parameter$5xBj), LINKS.type$a1UY)).toList();
 
     // Static call (on type) but likely to be an instance method -> instance provided as first arg
     if (((boolean) MethodReference__BehaviorDescriptor.isOperandTypeFirstParameter_id4aYRP41Um04.invoke(__thisNode__))) {
@@ -86,11 +85,7 @@ public final class MethodReference__BehaviorDescriptor extends BaseBHDescriptor 
       ListSequence.fromList(parameterType).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(type, CONCEPTS.FunctionType$9U), LINKS.parameterType$qJs$)));
     } else {
       SNode clType = TypecheckingFacade.getFromContext().coerceType(type, CONCEPTS.ClassifierType$bL);
-      SNode method = Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SLinkOperations.getTarget(clType, LINKS.classifier$cxMr))).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode m) {
-          return !("equals".equals(SPropertyOperations.getString(m, PROPS.name$MnvL))) && (boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(m);
-        }
-      }).first();
+      SNode method = Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SLinkOperations.getTarget(clType, LINKS.classifier$cxMr))).where((SNode m) -> !("equals".equals(SPropertyOperations.getString(m, PROPS.name$MnvL))) && (boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(m)).first();
       ListSequence.fromList(parameterType).addSequence(ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)));
     }
 

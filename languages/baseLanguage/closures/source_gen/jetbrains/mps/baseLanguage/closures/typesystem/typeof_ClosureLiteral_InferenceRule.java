@@ -14,7 +14,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import java.util.LinkedList;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.baseLanguage.behavior.AbstractCatchClause__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.baseLanguage.behavior.IMethodLike__BehaviorDescriptor;
@@ -88,35 +87,19 @@ public class typeof_ClosureLiteral_InferenceRule extends AbstractInferenceRule_R
           }
           ListSequence.fromList(allThrows).addElement(typeCheckingContext.getRepresentative(tt_typevar_1221579075612));
         } else if (SNodeOperations.isInstanceOf(stmt, CONCEPTS.TryFinallyStatement$oi)) {
-          for (SNode caught : SNodeOperations.ofConcept(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(stmt, CONCEPTS.TryFinallyStatement$oi), LINKS.catchClause$l$PD)).translate(new ITranslator2<SNode, SNode>() {
-            public Iterable<SNode> translate(SNode it) {
-              return (List<SNode>) AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(it);
-            }
-          }), CONCEPTS.ClassifierType$bL)) {
+          for (SNode caught : SNodeOperations.ofConcept(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(stmt, CONCEPTS.TryFinallyStatement$oi), LINKS.catchClause$l$PD)).translate((SNode it) -> (List<SNode>) AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(it)), CONCEPTS.ClassifierType$bL)) {
             ListSequence.fromList(allCatches).addElement(caught);
           }
         } else if (SNodeOperations.isInstanceOf(stmt, CONCEPTS.TryCatchStatement$XR)) {
-          for (SNode caught : SNodeOperations.ofConcept(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(stmt, CONCEPTS.TryCatchStatement$XR), LINKS.catchClause$dMnP)).translate(new ITranslator2<SNode, SNode>() {
-            public Iterable<SNode> translate(SNode it) {
-              return (List<SNode>) AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(it);
-            }
-          }), CONCEPTS.ClassifierType$bL)) {
+          for (SNode caught : SNodeOperations.ofConcept(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(stmt, CONCEPTS.TryCatchStatement$XR), LINKS.catchClause$dMnP)).translate((SNode it) -> (List<SNode>) AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(it)), CONCEPTS.ClassifierType$bL)) {
             ListSequence.fromList(allCatches).addElement(caught);
           }
         } else if (SNodeOperations.isInstanceOf(stmt, CONCEPTS.TryUniversalStatement$$M)) {
-          for (SNode caught : SNodeOperations.ofConcept(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(stmt, CONCEPTS.TryUniversalStatement$$M), LINKS.catchClause$Q4F)).translate(new ITranslator2<SNode, SNode>() {
-            public Iterable<SNode> translate(SNode it) {
-              return (List<SNode>) AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(it);
-            }
-          }), CONCEPTS.ClassifierType$bL)) {
+          for (SNode caught : SNodeOperations.ofConcept(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(stmt, CONCEPTS.TryUniversalStatement$$M), LINKS.catchClause$Q4F)).translate((SNode it) -> (List<SNode>) AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(it)), CONCEPTS.ClassifierType$bL)) {
             ListSequence.fromList(allCatches).addElement(caught);
           }
         } else {
-          for (SNode thr : ListSequence.fromList(SNodeOperations.getNodeDescendants(stmt, CONCEPTS.IMethodCall$M9, false, new SAbstractConcept[]{CONCEPTS.IStatementListContainer$xz})).translate(new ITranslator2<SNode, SNode>() {
-            public Iterable<SNode> translate(SNode it) {
-              return (List<SNode>) IMethodLike__BehaviorDescriptor.getThrowableTypes_id5op8ooRkkc7.invoke(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$pyYw));
-            }
-          })) {
+          for (SNode thr : ListSequence.fromList(SNodeOperations.getNodeDescendants(stmt, CONCEPTS.IMethodCall$M9, false, new SAbstractConcept[]{CONCEPTS.IStatementListContainer$xz})).translate((SNode it) -> (List<SNode>) IMethodLike__BehaviorDescriptor.getThrowableTypes_id5op8ooRkkc7.invoke(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$pyYw)))) {
             ListSequence.fromList(allThrows).addElement(SNodeOperations.copyNode(thr));
           }
         }

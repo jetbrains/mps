@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -40,11 +39,9 @@ public final class CustomContainerCreator__BehaviorDescriptor extends BaseBHDesc
   /*package*/ static SNode createType_idi0I0ppH(@NotNull final SNode __thisNode__) {
     SNode res = SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.containerDeclaration$nqf8), LINKS.containerType$WQze));
     //  workaround an SModel's dumbness
-    ListSequence.fromList(SNodeOperations.getChildren(res)).toListSequence().visitAll(new IVisitor<SNode>() {
-      public void visit(SNode chld) {
-        if (SNodeOperations.isInstanceOf(chld, CONCEPTS.TypeVariableReference$WL)) {
-          SNodeOperations.replaceWithAnother(chld, SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.elementType$WxmV)));
-        }
+    ListSequence.fromList(SNodeOperations.getChildren(res)).toListSequence().visitAll((SNode chld) -> {
+      if (SNodeOperations.isInstanceOf(chld, CONCEPTS.TypeVariableReference$WL)) {
+        SNodeOperations.replaceWithAnother(chld, SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.elementType$WxmV)));
       }
     });
     return res;
