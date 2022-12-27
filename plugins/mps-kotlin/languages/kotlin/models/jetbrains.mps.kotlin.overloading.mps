@@ -841,7 +841,7 @@
                   <property role="3clFbU" value="true" />
                 </node>
                 <node concept="37vLTw" id="5w5RuSg5bT3" role="37vLTJ">
-                  <ref role="3cqZAo" node="5w5RuSg573E" resolve="isReceiverTypeComputed" />
+                  <ref role="3cqZAo" node="5w5RuSg573E" resolve="areReceiverTypeComputed" />
                 </node>
               </node>
             </node>
@@ -853,7 +853,7 @@
                     <ref role="3cqZAo" node="5D4bOjruQkl" resolve="myCall" />
                   </node>
                   <node concept="liA8E" id="5w5RuSg5f8c" role="2OqNvi">
-                    <ref role="37wK5l" node="7mJe6tm_q1q" resolve="getReceiverType" />
+                    <ref role="37wK5l" node="7mJe6tm_q1q" resolve="getReceiverTypes" />
                   </node>
                 </node>
                 <node concept="A3Dl8" id="1KzjWTt6kMK" role="1tU5fm">
@@ -904,7 +904,7 @@
           </node>
           <node concept="3fqX7Q" id="5w5RuSg5b3n" role="3clFbw">
             <node concept="37vLTw" id="5w5RuSg5b3p" role="3fr31v">
-              <ref role="3cqZAo" node="5w5RuSg573E" resolve="isReceiverTypeComputed" />
+              <ref role="3cqZAo" node="5w5RuSg573E" resolve="areReceiverTypeComputed" />
             </node>
           </node>
         </node>
@@ -939,7 +939,7 @@
                   <ref role="3cqZAo" node="5D4bOjruQkl" resolve="myCall" />
                 </node>
                 <node concept="37vLTw" id="5w5RuSg5pLF" role="37wK5m">
-                  <ref role="3cqZAo" node="5w5RuSg4XYJ" resolve="myCachedReceiverType" />
+                  <ref role="3cqZAo" node="5w5RuSg4XYJ" resolve="myCachedReceiverTypes" />
                 </node>
                 <node concept="37vLTw" id="Sv1_KxSWdi" role="37wK5m">
                   <ref role="3cqZAo" node="7mJe6tmA$vM" resolve="myContextNode" />
@@ -4388,7 +4388,7 @@
           <node concept="3cpWsn" id="7iropoGZzMU" role="3cpWs9">
             <property role="TrG5h" value="receiver" />
             <node concept="3uibUv" id="7iropoGZzvT" role="1tU5fm">
-              <ref role="3uigEE" to="hez:1KzjWTsTA9Z" resolve="CallReceiver" />
+              <ref role="3uigEE" to="hez:1KzjWTsTA9Z" resolve="MemberReceiver" />
             </node>
             <node concept="2OqwBi" id="7iropoGZzMV" role="33vP2m">
               <node concept="37vLTw" id="7iropoGZzMW" role="2Oq$k0">
@@ -4479,7 +4479,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="13qggQCSq$8" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
   </node>

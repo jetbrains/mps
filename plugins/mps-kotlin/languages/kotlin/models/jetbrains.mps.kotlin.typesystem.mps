@@ -1245,7 +1245,7 @@
                   <ref role="37wK5l" to="sjya:2t96AMoH$Wl" resolve="getFunctionScopeParts" />
                   <node concept="2ShNRf" id="6dAo8EmL1r8" role="37wK5m">
                     <node concept="1pGfFk" id="6dAo8EmL1js" role="2ShVmc">
-                      <ref role="37wK5l" to="hez:1pHfrwZyNdJ" resolve="CallReceiver" />
+                      <ref role="37wK5l" to="hez:1pHfrwZyNdJ" resolve="InstanceReceiver" />
                       <node concept="37vLTw" id="6dAo8EmL4Hd" role="37wK5m">
                         <ref role="3cqZAo" node="6dAo8EmL4H8" resolve="typeRef" />
                       </node>
@@ -1496,7 +1496,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="13qggQCSnLp" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
   </node>

@@ -614,7 +614,7 @@
       <ref role="13i0hy" to="hez:2$1CHwF$28b" resolve="createConstructor" />
       <node concept="3Tm1VV" id="2$1CHwG8VHk" role="1B3o_S" />
       <node concept="2AHcQZ" id="2$1CHwG8VHw" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~ApiStatus$Experimental" resolve="Experimental" />
+        <ref role="2AI5Lk" to="mhfm:~ApiStatus$Experimental" resolve="ApiStatus.Experimental" />
       </node>
       <node concept="3clFbS" id="2$1CHwG8VHx" role="3clF47">
         <node concept="3cpWs6" id="2$1CHwG9iGF" role="3cqZAp">
@@ -3673,7 +3673,7 @@
       <ref role="13i0hy" to="hez:2$1CHwF$28b" resolve="createConstructor" />
       <node concept="3Tm1VV" id="6E0090nXS_W" role="1B3o_S" />
       <node concept="2AHcQZ" id="6E0090nXS_X" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~ApiStatus$Experimental" resolve="Experimental" />
+        <ref role="2AI5Lk" to="mhfm:~ApiStatus$Experimental" resolve="ApiStatus.Experimental" />
       </node>
       <node concept="3clFbS" id="6E0090nXS_Y" role="3clF47">
         <node concept="3cpWs6" id="6E0090nXS_Z" role="3cqZAp">

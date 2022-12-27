@@ -1995,7 +1995,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="2$1CHwFCxpT" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~ApiStatus$Experimental" resolve="Experimental" />
+        <ref role="2AI5Lk" to="mhfm:~ApiStatus$Experimental" resolve="ApiStatus.Experimental" />
       </node>
     </node>
   </node>
@@ -2607,13 +2607,13 @@
         <node concept="3cpWs6" id="7iropoGZN3z" role="3cqZAp">
           <node concept="2YIFZM" id="7iropoGZNrb" role="3cqZAk">
             <ref role="37wK5l" to="hez:7iropoGYOd$" resolve="ofNavTarget" />
-            <ref role="1Pybhc" to="hez:1KzjWTsTA9Z" resolve="CallReceiver" />
+            <ref role="1Pybhc" to="hez:1KzjWTsTA9Z" resolve="MemberReceiver" />
             <node concept="13iPFW" id="7iropoGZN_6" role="37wK5m" />
           </node>
         </node>
       </node>
       <node concept="3uibUv" id="7iropoGZMFO" role="3clF45">
-        <ref role="3uigEE" to="hez:1KzjWTsTA9Z" resolve="CallReceiver" />
+        <ref role="3uigEE" to="hez:1KzjWTsTA9Z" resolve="MemberReceiver" />
       </node>
       <node concept="3Tm1VV" id="7iropoGZMFP" role="1B3o_S" />
     </node>
@@ -3438,14 +3438,14 @@
       <node concept="3clFbS" id="7iropoGZP9H" role="3clF47">
         <node concept="3cpWs6" id="7iropoGZP9I" role="3cqZAp">
           <node concept="2YIFZM" id="7iropoGZP9J" role="3cqZAk">
-            <ref role="1Pybhc" to="hez:1KzjWTsTA9Z" resolve="CallReceiver" />
+            <ref role="1Pybhc" to="hez:1KzjWTsTA9Z" resolve="MemberReceiver" />
             <ref role="37wK5l" to="hez:7iropoGYOd$" resolve="ofNavTarget" />
             <node concept="13iPFW" id="7iropoGZP9K" role="37wK5m" />
           </node>
         </node>
       </node>
       <node concept="3uibUv" id="7iropoGZP9L" role="3clF45">
-        <ref role="3uigEE" to="hez:1KzjWTsTA9Z" resolve="CallReceiver" />
+        <ref role="3uigEE" to="hez:1KzjWTsTA9Z" resolve="MemberReceiver" />
       </node>
       <node concept="3Tm1VV" id="7iropoGZP9M" role="1B3o_S" />
     </node>
@@ -3973,7 +3973,7 @@
       </node>
       <node concept="3Tm1VV" id="7iropoGZLAI" role="1B3o_S" />
       <node concept="3uibUv" id="5$XWI2Q1H3m" role="3clF45">
-        <ref role="3uigEE" to="hez:1KzjWTsTA9Z" resolve="CallReceiver" />
+        <ref role="3uigEE" to="hez:1KzjWTsTA9Z" resolve="MemberReceiver" />
       </node>
     </node>
     <node concept="13i0hz" id="5H$PF0doyk7" role="13h7CS">

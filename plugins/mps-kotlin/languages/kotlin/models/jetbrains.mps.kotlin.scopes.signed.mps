@@ -6706,7 +6706,7 @@
       <node concept="37vLTG" id="qzPrsXWY_u" role="3clF46">
         <property role="TrG5h" value="receiver" />
         <node concept="3uibUv" id="qzPrsXWY_v" role="1tU5fm">
-          <ref role="3uigEE" to="hez:1KzjWTsTA9Z" resolve="CallReceiver" />
+          <ref role="3uigEE" to="hez:1KzjWTsTA9Z" resolve="MemberReceiver" />
         </node>
       </node>
       <node concept="37vLTG" id="qzPrsXWY_w" role="3clF46">
@@ -6782,7 +6782,7 @@
       <node concept="37vLTG" id="2t96AMoHjpg" role="3clF46">
         <property role="TrG5h" value="receiver" />
         <node concept="3uibUv" id="2t96AMoHjpf" role="1tU5fm">
-          <ref role="3uigEE" to="hez:1KzjWTsTA9Z" resolve="CallReceiver" />
+          <ref role="3uigEE" to="hez:1KzjWTsTA9Z" resolve="MemberReceiver" />
         </node>
       </node>
       <node concept="37vLTG" id="2t96AMoHwbR" role="3clF46">

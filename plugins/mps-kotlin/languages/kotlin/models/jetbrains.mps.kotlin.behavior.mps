@@ -3541,7 +3541,7 @@
       <ref role="13i0hy" node="2$1CHwF$28b" resolve="createConstructor" />
       <node concept="3Tm1VV" id="2$1CHwG3q6y" role="1B3o_S" />
       <node concept="2AHcQZ" id="2$1CHwG3q6H" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~ApiStatus$Experimental" resolve="Experimental" />
+        <ref role="2AI5Lk" to="mhfm:~ApiStatus$Experimental" resolve="ApiStatus.Experimental" />
       </node>
       <node concept="3clFbS" id="2$1CHwG3q6I" role="3clF47">
         <node concept="3cpWs6" id="2$1CHwG8SPI" role="3cqZAp">
@@ -4162,7 +4162,7 @@
       <node concept="3clFbS" id="4FOkRjXyOgn" role="3clF47">
         <node concept="3cpWs6" id="4FOkRjXyOwT" role="3cqZAp">
           <node concept="2YIFZM" id="4FOkRjXyOX6" role="3cqZAk">
-            <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+            <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
             <ref role="37wK5l" node="7iropoGYHTX" resolve="of" />
             <node concept="2OqwBi" id="4FOkRjXyPlB" role="37wK5m">
               <node concept="13iPFW" id="4FOkRjXyP4p" role="2Oq$k0" />
@@ -4178,7 +4178,7 @@
         </node>
       </node>
       <node concept="3uibUv" id="4FOkRjXyOgo" role="3clF45">
-        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
       </node>
     </node>
     <node concept="13i0hz" id="7RZWrHVbk6M" role="13h7CS">
@@ -5768,7 +5768,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="13qggQDnKrC" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~ApiStatus$Experimental" resolve="Experimental" />
+        <ref role="2AI5Lk" to="mhfm:~ApiStatus$Experimental" resolve="ApiStatus.Experimental" />
       </node>
       <node concept="2AHcQZ" id="4HDl82djuuq" role="2AJF6D">
         <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
@@ -5891,7 +5891,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="7ZA3QJnIZGw" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
         <node concept="2B6LJw" id="7ZA3QJnMkZt" role="2B76xF">
           <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
           <node concept="Xl_RD" id="7ZA3QJnMlqT" role="2B70Vg">
@@ -6010,7 +6010,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="2$1CHwFCvtu" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~ApiStatus$Experimental" resolve="Experimental" />
+        <ref role="2AI5Lk" to="mhfm:~ApiStatus$Experimental" resolve="ApiStatus.Experimental" />
       </node>
     </node>
   </node>
@@ -6554,7 +6554,7 @@
               </node>
             </node>
             <node concept="2qgKlT" id="3HHsmlLD1_V" role="2OqNvi">
-              <ref role="37wK5l" node="3HHsmlLCHdO" resolve="getNestedConstructorsScope" />
+              <ref role="37wK5l" node="3HHsmlLCHdO" resolve="getStaticScope" />
               <node concept="37vLTw" id="3HHsmlLGBqB" role="37wK5m">
                 <ref role="3cqZAo" node="3HHsmlLGATL" resolve="filter" />
               </node>
@@ -6571,7 +6571,7 @@
       <ref role="13i0hy" node="13qggQDnK5I" resolve="getCompanionType" />
       <node concept="3Tm1VV" id="13qggQDnOo8" role="1B3o_S" />
       <node concept="2AHcQZ" id="13qggQDnOob" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~ApiStatus$Experimental" resolve="Experimental" />
+        <ref role="2AI5Lk" to="mhfm:~ApiStatus$Experimental" resolve="ApiStatus.Experimental" />
       </node>
       <node concept="3clFbS" id="13qggQDnOoc" role="3clF47">
         <node concept="3cpWs6" id="13qggQDnQRG" role="3cqZAp">
@@ -6726,7 +6726,7 @@
             <node concept="liA8E" id="2$1CHwGo7h6" role="2OqNvi">
               <ref role="37wK5l" to="wbbs:4XaBo_Yv$z2" resolve="isReferedBy" />
               <node concept="37vLTw" id="2$1CHwGo8FW" role="37wK5m">
-                <ref role="3cqZAo" node="2$1CHwGo8FQ" resolve="reference" />
+                <ref role="3cqZAo" node="2$1CHwGo8FQ" resolve="ref" />
               </node>
             </node>
           </node>
@@ -6756,7 +6756,7 @@
               <node concept="liA8E" id="2$1CHwGoaOZ" role="2OqNvi">
                 <ref role="37wK5l" to="wbbs:4XaBo_Yv$z2" resolve="isReferedBy" />
                 <node concept="37vLTw" id="2$1CHwGoaP0" role="37wK5m">
-                  <ref role="3cqZAo" node="2$1CHwGo8FQ" resolve="reference" />
+                  <ref role="3cqZAo" node="2$1CHwGo8FQ" resolve="ref" />
                 </node>
               </node>
             </node>
@@ -7026,7 +7026,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="2$1CHwFCxpT" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~ApiStatus$Experimental" resolve="Experimental" />
+        <ref role="2AI5Lk" to="mhfm:~ApiStatus$Experimental" resolve="ApiStatus.Experimental" />
       </node>
     </node>
   </node>
@@ -9150,7 +9150,7 @@
         <node concept="3cpWs6" id="7iropoGZ3bP" role="3cqZAp">
           <node concept="2YIFZM" id="7iropoGZ3wN" role="3cqZAk">
             <ref role="37wK5l" node="7iropoGYJO1" resolve="of" />
-            <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+            <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
             <node concept="2OqwBi" id="7iropoGZ3Uh" role="37wK5m">
               <node concept="13iPFW" id="7iropoGZ3DK" role="2Oq$k0" />
               <node concept="3TrEf2" id="7iropoGZ4LR" role="2OqNvi">
@@ -9161,7 +9161,7 @@
         </node>
       </node>
       <node concept="3uibUv" id="7iropoGZ5aR" role="3clF45">
-        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
       </node>
     </node>
     <node concept="13i0hz" id="rbYB7R3JtT" role="13h7CS">
@@ -9323,7 +9323,7 @@
             <ref role="1Pybhc" to="sjya:2t96AMoHiRy" resolve="SignatureScopeHelper" />
             <ref role="37wK5l" to="sjya:qzPrsXWYzW" resolve="getFunctionScopeParts" />
             <node concept="2YIFZM" id="3HHsmlLW4Pf" role="37wK5m">
-              <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+              <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
               <ref role="37wK5l" node="7iropoGYJO1" resolve="of" />
               <node concept="37vLTw" id="3HHsmlLW4Pg" role="37wK5m">
                 <ref role="3cqZAo" node="3HHsmlLWdi6" resolve="context" />
@@ -17614,7 +17614,7 @@
               </node>
             </node>
             <node concept="3uibUv" id="71iIOktwNOY" role="1tU5fm">
-              <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+              <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
             </node>
           </node>
         </node>
@@ -17800,7 +17800,7 @@
         <node concept="3cpWs6" id="7iropoGZ6fg" role="3cqZAp">
           <node concept="2YIFZM" id="7iropoGZ6fh" role="3cqZAk">
             <ref role="37wK5l" node="7iropoGYJO1" resolve="of" />
-            <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+            <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
             <node concept="2OqwBi" id="7iropoGZ6fi" role="37wK5m">
               <node concept="13iPFW" id="7iropoGZ6fj" role="2Oq$k0" />
               <node concept="3TrEf2" id="7iropoGZ6fk" role="2OqNvi">
@@ -17811,7 +17811,7 @@
         </node>
       </node>
       <node concept="3uibUv" id="7iropoGZ6fl" role="3clF45">
-        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
       </node>
       <node concept="3Tm1VV" id="7iropoGZ6fm" role="1B3o_S" />
     </node>
@@ -18197,7 +18197,7 @@
         <node concept="3clFbF" id="1VI7K1jTrOc" role="3cqZAp">
           <node concept="2YIFZM" id="7iropoGZ8yE" role="3clFbG">
             <ref role="37wK5l" node="7iropoGYJO1" resolve="of" />
-            <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+            <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
             <node concept="2OqwBi" id="1VI7K1jTrOd" role="37wK5m">
               <node concept="13iPFW" id="1VI7K1jTrOe" role="2Oq$k0" />
               <node concept="3TrEf2" id="1VI7K1jTrOf" role="2OqNvi">
@@ -18209,7 +18209,7 @@
       </node>
       <node concept="3Tm1VV" id="7iropoGZ81H" role="1B3o_S" />
       <node concept="3uibUv" id="7iropoGZ81G" role="3clF45">
-        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
       </node>
     </node>
     <node concept="13i0hz" id="1VI7K1jTrOh" role="13h7CS">
@@ -18246,7 +18246,7 @@
       <node concept="3clFbS" id="7iropoGZ90c" role="3clF47">
         <node concept="3clFbF" id="7iropoGZ90d" role="3cqZAp">
           <node concept="2YIFZM" id="7iropoGZ90e" role="3clFbG">
-            <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+            <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
             <ref role="37wK5l" node="7iropoGYJO1" resolve="of" />
             <node concept="2OqwBi" id="7iropoGZ90f" role="37wK5m">
               <node concept="13iPFW" id="7iropoGZ90g" role="2Oq$k0" />
@@ -18259,7 +18259,7 @@
       </node>
       <node concept="3Tm1VV" id="7iropoGZ90j" role="1B3o_S" />
       <node concept="3uibUv" id="71iIOktwQkG" role="3clF45">
-        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
       </node>
     </node>
     <node concept="13i0hz" id="1VI7K1jTr1A" role="13h7CS">
@@ -18949,7 +18949,7 @@
         </node>
       </node>
       <node concept="3uibUv" id="71iIOktlJ2_" role="3clF45">
-        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
       </node>
     </node>
     <node concept="13i0hz" id="5g3vQLKcrVx" role="13h7CS">
@@ -20028,7 +20028,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="4HDl82dpdSk" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
         <node concept="2B6LJw" id="4HDl82dpdSY" role="2B76xF">
           <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
           <node concept="Xl_RD" id="4HDl82dpdVe" role="2B70Vg">
@@ -20842,7 +20842,7 @@
         </node>
       </node>
       <node concept="3uibUv" id="7iropoGZ0x_" role="3clF45">
-        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
       </node>
     </node>
     <node concept="13i0hz" id="6dAo8EmAyd0" role="13h7CS">
@@ -22729,7 +22729,7 @@
       <ref role="13i0hy" node="13qggQDnK5I" resolve="getCompanionType" />
       <node concept="3Tm1VV" id="7ZA3QJnLpsn" role="1B3o_S" />
       <node concept="2AHcQZ" id="7ZA3QJnLpss" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~ApiStatus$Experimental" resolve="Experimental" />
+        <ref role="2AI5Lk" to="mhfm:~ApiStatus$Experimental" resolve="ApiStatus.Experimental" />
       </node>
       <node concept="3clFbS" id="7ZA3QJnLpsC" role="3clF47">
         <node concept="3cpWs6" id="7ZA3QJnLqH9" role="3cqZAp">
@@ -23115,7 +23115,7 @@
         </node>
       </node>
       <node concept="3uibUv" id="7iropoGY$ST" role="3clF45">
-        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
       </node>
       <node concept="P$JXv" id="7iropoH1LCK" role="lGtFl">
         <node concept="TZ5HA" id="7iropoH1LCL" role="TZ5H$">
@@ -23326,7 +23326,7 @@
               </node>
             </node>
             <node concept="3uibUv" id="71iIOktwNgY" role="1tU5fm">
-              <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+              <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
             </node>
           </node>
         </node>
@@ -23395,13 +23395,13 @@
         <node concept="3cpWs6" id="7iropoGZ1Ci" role="3cqZAp">
           <node concept="2YIFZM" id="7iropoGZ27Q" role="3cqZAk">
             <ref role="37wK5l" node="7iropoGYOd$" resolve="ofNavTarget" />
-            <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+            <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
             <node concept="13iPFW" id="7iropoGZ2jo" role="37wK5m" />
           </node>
         </node>
       </node>
       <node concept="3uibUv" id="7iropoGZ2xK" role="3clF45">
-        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
       </node>
     </node>
     <node concept="13i0hz" id="6dAo8EmACTf" role="13h7CS">
@@ -23450,7 +23450,7 @@
             <ref role="37wK5l" to="sjya:2t96AMoH$Wl" resolve="getFunctionScopeParts" />
             <node concept="2YIFZM" id="ccTy7zP55d" role="37wK5m">
               <ref role="37wK5l" node="7iropoGYJO1" resolve="of" />
-              <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+              <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
               <node concept="2OqwBi" id="ccTy7zP55e" role="37wK5m">
                 <node concept="37vLTw" id="ccTy7zP55f" role="2Oq$k0">
                   <ref role="3cqZAo" node="7ubb0gUfB69" resolve="parent" />
@@ -25832,7 +25832,7 @@
         <node concept="3cpWs6" id="7iropoGZ5QI" role="3cqZAp">
           <node concept="2YIFZM" id="7iropoGZ5QJ" role="3cqZAk">
             <ref role="37wK5l" node="7iropoGYJO1" resolve="of" />
-            <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+            <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
             <node concept="2OqwBi" id="7iropoGZ5QK" role="37wK5m">
               <node concept="13iPFW" id="7iropoGZ5QL" role="2Oq$k0" />
               <node concept="3TrEf2" id="7iropoGZ5QM" role="2OqNvi">
@@ -25843,7 +25843,7 @@
         </node>
       </node>
       <node concept="3uibUv" id="7iropoGZ5QN" role="3clF45">
-        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
       </node>
       <node concept="3Tm1VV" id="7iropoGZ5QO" role="1B3o_S" />
     </node>
@@ -26962,7 +26962,7 @@
         <node concept="3cpWs6" id="7mJe6tmzHeW" role="3cqZAp">
           <node concept="2YIFZM" id="7iropoGYVH_" role="3cqZAk">
             <ref role="37wK5l" node="7iropoGYJO1" resolve="of" />
-            <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+            <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
             <node concept="2OqwBi" id="7iropoGYWcb" role="37wK5m">
               <node concept="13iPFW" id="7iropoGYVVd" role="2Oq$k0" />
               <node concept="3TrEf2" id="7iropoGYWDw" role="2OqNvi">
@@ -26973,7 +26973,7 @@
         </node>
       </node>
       <node concept="3uibUv" id="7iropoGYZAF" role="3clF45">
-        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
       </node>
     </node>
     <node concept="13i0hz" id="7mJe6tmzF02" role="13h7CS">
@@ -27003,7 +27003,7 @@
           <node concept="2ShNRf" id="4FOkRjXyTI0" role="3cqZAk">
             <node concept="1pGfFk" id="4FOkRjXyU9R" role="2ShVmc">
               <property role="373rjd" value="true" />
-              <ref role="37wK5l" node="1pHfrwZyNdJ" resolve="CallReceiver" />
+              <ref role="37wK5l" node="1pHfrwZyNdJ" resolve="InstanceReceiver" />
               <node concept="2ShNRf" id="5$XWI2Q1Liu" role="37wK5m">
                 <node concept="1pGfFk" id="5$XWI2Q1LGw" role="2ShVmc">
                   <property role="373rjd" value="true" />
@@ -27020,7 +27020,7 @@
         </node>
       </node>
       <node concept="3uibUv" id="4FOkRjXyS$N" role="3clF45">
-        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
       </node>
     </node>
     <node concept="13i0hz" id="28CvMylfvhE" role="13h7CS">
@@ -27788,7 +27788,7 @@
         <node concept="3cpWs6" id="7iropoGYRT0" role="3cqZAp">
           <node concept="2YIFZM" id="7iropoGYSvd" role="3cqZAk">
             <ref role="37wK5l" node="7iropoGYJO1" resolve="of" />
-            <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+            <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
             <node concept="2OqwBi" id="7iropoGYSU1" role="37wK5m">
               <node concept="13iPFW" id="7iropoGYSyR" role="2Oq$k0" />
               <node concept="3TrEf2" id="7iropoGYTMa" role="2OqNvi">
@@ -27799,7 +27799,7 @@
         </node>
       </node>
       <node concept="3uibUv" id="5$XWI2Q1H3m" role="3clF45">
-        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
       </node>
     </node>
     <node concept="13i0hz" id="Ad0bnVT$_G" role="13h7CS">
@@ -28613,7 +28613,7 @@
         </node>
         <node concept="3cpWs6" id="4FOkRjXxK8i" role="3cqZAp">
           <node concept="2YIFZM" id="4FOkRjXxK_1" role="3cqZAk">
-            <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+            <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
             <ref role="37wK5l" node="7iropoGYHTX" resolve="of" />
             <node concept="13iPFW" id="4FOkRjXxKDe" role="37wK5m" />
             <node concept="10Nm6u" id="7gOZMBfzPgz" role="37wK5m" />
@@ -28621,7 +28621,7 @@
         </node>
       </node>
       <node concept="3uibUv" id="4FOkRjXxIQn" role="3clF45">
-        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
       </node>
     </node>
   </node>
@@ -30072,13 +30072,13 @@
         <node concept="3cpWs6" id="7iropoH1DgL" role="3cqZAp">
           <node concept="2YIFZM" id="7iropoH1DY2" role="3cqZAk">
             <ref role="37wK5l" node="7iropoGYOd$" resolve="ofNavTarget" />
-            <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+            <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
             <node concept="13iPFW" id="7iropoH1EaM" role="37wK5m" />
           </node>
         </node>
       </node>
       <node concept="3uibUv" id="7iropoGYDzN" role="3clF45">
-        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
       </node>
     </node>
     <node concept="13i0hz" id="5Ms3qK7YLhO" role="13h7CS">
@@ -30501,13 +30501,13 @@
         <node concept="3cpWs6" id="7iropoGYLFe" role="3cqZAp">
           <node concept="2YIFZM" id="7iropoGYP__" role="3cqZAk">
             <ref role="37wK5l" node="7iropoGYOd$" resolve="ofNavTarget" />
-            <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+            <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
             <node concept="13iPFW" id="7iropoGYP_B" role="37wK5m" />
           </node>
         </node>
       </node>
       <node concept="3uibUv" id="7iropoGYQln" role="3clF45">
-        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
       </node>
     </node>
     <node concept="13i0hz" id="4FIN$pCdd7K" role="13h7CS">
@@ -30818,7 +30818,7 @@
       </node>
     </node>
     <node concept="3uibUv" id="1KzjWTsTAQ8" role="EKbjA">
-      <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+      <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
     </node>
   </node>
   <node concept="312cEu" id="5b2DnJ7tkCQ">
@@ -31035,7 +31035,7 @@
       <property role="TrG5h" value="getVariablesReceiver" />
       <node concept="3Tm1VV" id="4FOkRjXx8jW" role="1B3o_S" />
       <node concept="3uibUv" id="4FOkRjXx8v7" role="3clF45">
-        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
       </node>
       <node concept="3clFbS" id="4FOkRjXx8jY" role="3clF47" />
       <node concept="P$JXv" id="4FOkRjXx9jf" role="lGtFl">
@@ -31197,7 +31197,7 @@
         </node>
       </node>
       <node concept="3uibUv" id="7iropoGZ9ie" role="3clF45">
-        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
       </node>
       <node concept="3Tm1VV" id="7iropoGZ9if" role="1B3o_S" />
     </node>
@@ -32511,7 +32511,7 @@
       <ref role="13i0hy" node="13qggQDnK5I" resolve="getCompanionType" />
       <node concept="3Tm1VV" id="7ZA3QJnLnBN" role="1B3o_S" />
       <node concept="2AHcQZ" id="7ZA3QJnLnBS" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~ApiStatus$Experimental" resolve="Experimental" />
+        <ref role="2AI5Lk" to="mhfm:~ApiStatus$Experimental" resolve="ApiStatus.Experimental" />
       </node>
       <node concept="3clFbS" id="7ZA3QJnLnC4" role="3clF47">
         <node concept="3cpWs6" id="7ZA3QJnLoal" role="3cqZAp">
@@ -32629,7 +32629,7 @@
       <ref role="13i0hy" node="2$1CHwF$28b" resolve="createConstructor" />
       <node concept="3Tm1VV" id="2$1CHwG8VHk" role="1B3o_S" />
       <node concept="2AHcQZ" id="2$1CHwG8VHw" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~ApiStatus$Experimental" resolve="Experimental" />
+        <ref role="2AI5Lk" to="mhfm:~ApiStatus$Experimental" resolve="ApiStatus.Experimental" />
       </node>
       <node concept="3clFbS" id="2$1CHwG8VHx" role="3clF47">
         <node concept="3cpWs6" id="2$1CHwG8Wgk" role="3cqZAp">
@@ -32889,7 +32889,7 @@
         <node concept="3cpWs6" id="7cYo2Xscfz5" role="3cqZAp">
           <node concept="2YIFZM" id="7cYo2XscfTK" role="3cqZAk">
             <ref role="37wK5l" node="7iropoGYJO1" resolve="of" />
-            <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+            <ref role="1Pybhc" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
             <node concept="2OqwBi" id="7cYo2Xscgbf" role="37wK5m">
               <node concept="13iPFW" id="7cYo2XscfXu" role="2Oq$k0" />
               <node concept="3TrEf2" id="7cYo2XscgzB" role="2OqNvi">
@@ -32900,7 +32900,7 @@
         </node>
       </node>
       <node concept="3uibUv" id="7cYo2Xsc7M7" role="3clF45">
-        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
       </node>
     </node>
     <node concept="13i0hz" id="7cYo2Xsb4A8" role="13h7CS">
@@ -34937,7 +34937,7 @@
                   <node concept="2OqwBi" id="7DSH8smz4Vb" role="36biLW">
                     <node concept="2OqwBi" id="7DSH8smz4Vc" role="2Oq$k0">
                       <node concept="37vLTw" id="7DSH8smz4Vd" role="2Oq$k0">
-                        <ref role="3cqZAo" node="7DSH8smz4Wu" resolve="parameterTypes" />
+                        <ref role="3cqZAo" node="7DSH8smz4Wu" resolve="parameter" />
                       </node>
                       <node concept="3$u5V9" id="7DSH8smz4Ve" role="2OqNvi">
                         <node concept="1bVj0M" id="7DSH8smz4Vf" role="23t8la">
@@ -35108,7 +35108,7 @@
       <property role="TrG5h" value="getTypeReceivers" />
       <node concept="A3Dl8" id="7ZA3QJnM_pC" role="3clF45">
         <node concept="3uibUv" id="7ZA3QJnM_pD" role="A3Ik2">
-          <ref role="3uigEE" node="7ZA3QJnM$m5" resolve="TypeReceiver" />
+          <ref role="3uigEE" node="7ZA3QJnM$m5" resolve="MemberReceiver.TypeReceiver" />
         </node>
       </node>
       <node concept="3Tm1VV" id="7ZA3QJnM_pE" role="1B3o_S" />
@@ -35152,7 +35152,7 @@
                   <node concept="3clFbF" id="7ZA3QJnMT2F" role="3cqZAp">
                     <node concept="2ShNRf" id="7ZA3QJnMT2A" role="3clFbG">
                       <node concept="1pGfFk" id="7ZA3QJnMT2_" role="2ShVmc">
-                        <ref role="37wK5l" node="7ZA3QJnM$Al" resolve="TypeReceiver" />
+                        <ref role="37wK5l" node="7ZA3QJnM$Al" resolve="MemberReceiver.TypeReceiver" />
                         <node concept="37vLTw" id="7ZA3QJnMT2D" role="37wK5m">
                           <ref role="3cqZAo" node="7ZA3QJnMT2B" resolve="type" />
                         </node>
@@ -35340,7 +35340,7 @@
       </node>
       <node concept="3Tm1VV" id="7iropoGYNEh" role="1B3o_S" />
       <node concept="3uibUv" id="7iropoGYOb3" role="3clF45">
-        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
       </node>
       <node concept="37vLTG" id="7iropoGYOof" role="3clF46">
         <property role="TrG5h" value="target" />
@@ -35365,7 +35365,7 @@
       </node>
       <node concept="3Tm1VV" id="7iropoGYJOg" role="1B3o_S" />
       <node concept="3uibUv" id="7iropoGYJOh" role="3clF45">
-        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
       </node>
       <node concept="37vLTG" id="7iropoGYJOi" role="3clF46">
         <property role="TrG5h" value="host" />
@@ -35458,7 +35458,7 @@
               <node concept="2ShNRf" id="71iIOktrPuQ" role="3cqZAk">
                 <node concept="1pGfFk" id="71iIOktrPuR" role="2ShVmc">
                   <property role="373rjd" value="true" />
-                  <ref role="37wK5l" node="13qggQDnn$a" resolve="MultiCallReceiver" />
+                  <ref role="37wK5l" node="13qggQDnn$a" resolve="CompanionReceiver" />
                   <node concept="37vLTw" id="71iIOktrPuS" role="37wK5m">
                     <ref role="3cqZAo" node="71iIOktr_gI" resolve="staticReceiver" />
                   </node>
@@ -35486,7 +35486,7 @@
                 <node concept="2ShNRf" id="71iIOktrPv0" role="3cqZAk">
                   <node concept="1pGfFk" id="71iIOktrPv1" role="2ShVmc">
                     <property role="373rjd" value="true" />
-                    <ref role="37wK5l" node="1pHfrwZyNdJ" resolve="SimpleCallReceiver" />
+                    <ref role="37wK5l" node="1pHfrwZyNdJ" resolve="InstanceReceiver" />
                     <node concept="2ShNRf" id="71iIOktrPv2" role="37wK5m">
                       <node concept="1pGfFk" id="71iIOktrPv3" role="2ShVmc">
                         <property role="373rjd" value="true" />
@@ -35508,7 +35508,7 @@
       </node>
       <node concept="3Tm1VV" id="7iropoGYHJ9" role="1B3o_S" />
       <node concept="3uibUv" id="7iropoGYHSO" role="3clF45">
-        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+        <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
       </node>
       <node concept="37vLTG" id="7iropoGYI2Q" role="3clF46">
         <property role="TrG5h" value="host" />
@@ -35610,10 +35610,10 @@
         <node concept="3clFbF" id="1KzjWTsTMnz" role="3cqZAp">
           <node concept="37vLTI" id="1KzjWTsTMn_" role="3clFbG">
             <node concept="37vLTw" id="1KzjWTsTMnC" role="37vLTJ">
-              <ref role="3cqZAo" node="1KzjWTsTMnu" resolve="myTypeReferences" />
+              <ref role="3cqZAo" node="1KzjWTsTMnu" resolve="myNode" />
             </node>
             <node concept="37vLTw" id="1KzjWTsTMnD" role="37vLTx">
-              <ref role="3cqZAo" node="1KzjWTsTMlw" resolve="typeReferences" />
+              <ref role="3cqZAo" node="1KzjWTsTMlw" resolve="sourceNode" />
             </node>
           </node>
         </node>
@@ -35626,7 +35626,7 @@
     <node concept="2tJIrI" id="1KzjWTsTM$E" role="jymVt" />
     <node concept="3Tm1VV" id="1KzjWTsTMka" role="1B3o_S" />
     <node concept="3uibUv" id="1KzjWTsTMzm" role="EKbjA">
-      <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+      <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
     </node>
     <node concept="3clFb_" id="1KzjWTsTMA_" role="jymVt">
       <property role="TrG5h" value="getTypeReferences" />
@@ -35675,7 +35675,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="1KzjWTsTMAP" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
   </node>
@@ -35688,13 +35688,13 @@
       <node concept="3Tm6S6" id="13qggQDnnFs" role="1B3o_S" />
       <node concept="_YKpA" id="71iIOktrGgS" role="1tU5fm">
         <node concept="3uibUv" id="71iIOktrGgV" role="_ZDj9">
-          <ref role="3uigEE" node="7ZA3QJnM$m5" resolve="TypeReceiver" />
+          <ref role="3uigEE" node="7ZA3QJnM$m5" resolve="MemberReceiver.TypeReceiver" />
         </node>
       </node>
       <node concept="2ShNRf" id="7ZA3QJnMoJb" role="33vP2m">
         <node concept="Tc6Ow" id="7ZA3QJnMoIA" role="2ShVmc">
           <node concept="3uibUv" id="7ZA3QJnMoIB" role="HW$YZ">
-            <ref role="3uigEE" node="7ZA3QJnM$m5" resolve="TypeReceiver" />
+            <ref role="3uigEE" node="7ZA3QJnM$m5" resolve="MemberReceiver.TypeReceiver" />
           </node>
         </node>
       </node>
@@ -35756,7 +35756,7 @@
               <node concept="2ShNRf" id="7ZA3QJnMOAt" role="25WWJ7">
                 <node concept="1pGfFk" id="7ZA3QJnMP4H" role="2ShVmc">
                   <property role="373rjd" value="true" />
-                  <ref role="37wK5l" node="7ZA3QJnM$Al" resolve="TypeReceiver" />
+                  <ref role="37wK5l" node="7ZA3QJnM$Al" resolve="MemberReceiver.TypeReceiver" />
                   <node concept="2ShNRf" id="7ZA3QJnMqEX" role="37wK5m">
                     <node concept="1pGfFk" id="7ZA3QJnMqEY" role="2ShVmc">
                       <ref role="37wK5l" node="6Ijh6DJyARD" resolve="ConcreteTypeReference" />
@@ -35800,7 +35800,7 @@
                   <node concept="2ShNRf" id="7ZA3QJnMQ_H" role="25WWJ7">
                     <node concept="1pGfFk" id="7ZA3QJnMQ_I" role="2ShVmc">
                       <property role="373rjd" value="true" />
-                      <ref role="37wK5l" node="7ZA3QJnM$Al" resolve="TypeReceiver" />
+                      <ref role="37wK5l" node="7ZA3QJnM$Al" resolve="MemberReceiver.TypeReceiver" />
                       <node concept="2ShNRf" id="7ZA3QJnMQ_J" role="37wK5m">
                         <node concept="1pGfFk" id="7ZA3QJnMQ_K" role="2ShVmc">
                           <ref role="37wK5l" node="6Ijh6DJyARD" resolve="ConcreteTypeReference" />
@@ -35828,13 +35828,13 @@
     <node concept="2tJIrI" id="13qggQDnnPB" role="jymVt" />
     <node concept="3Tm1VV" id="13qggQDnnyB" role="1B3o_S" />
     <node concept="3uibUv" id="13qggQDnnz$" role="EKbjA">
-      <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="CallReceiver" />
+      <ref role="3uigEE" node="1KzjWTsTA9Z" resolve="MemberReceiver" />
     </node>
     <node concept="3clFb_" id="7ZA3QJnMMYu" role="jymVt">
       <property role="TrG5h" value="getTypeReceivers" />
       <node concept="A3Dl8" id="7ZA3QJnMMYv" role="3clF45">
         <node concept="3uibUv" id="7ZA3QJnMMYw" role="A3Ik2">
-          <ref role="3uigEE" node="7ZA3QJnM$m5" resolve="TypeReceiver" />
+          <ref role="3uigEE" node="7ZA3QJnM$m5" resolve="MemberReceiver.TypeReceiver" />
         </node>
       </node>
       <node concept="3Tm1VV" id="7ZA3QJnMMYx" role="1B3o_S" />
@@ -35846,7 +35846,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="7ZA3QJnMMYL" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
   </node>
