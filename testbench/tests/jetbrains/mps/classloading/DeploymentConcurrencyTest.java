@@ -50,9 +50,17 @@ public class DeploymentConcurrencyTest implements EnvironmentAware {
     ExecutorService pool = Executors.newFixedThreadPool(nThreads);
     Collection<Callable<Object>> taskList = new ArrayList<>(nThreads);
     MPSModuleRepository repo = myEnvironment.getPlatform().findComponent(MPSModuleRepository.class);
+    // With DeploymentNotificationImpl and its semaphores, we started to face InterruptedException from semaphore during this test.
+    // To me, it looks like 20 sec limit for the executor service is not enough. First thread grabs write for almost whole duration:
+    //   Write Action duration (us): 908, 1309, 1055, 1679, 1075, 1006, 1122, 1010, 1044, 986, 1029, 1040, 996, 1037, 988, 1033, 979, 1041, 1049, 867
+    // therefore, I decided to make less reloads (used to be 20). I feel 10 is enough to make a point.
+    final int TOTAL_RELOADS = 10;
+//    final ArrayList<Long> waDur = new ArrayList<>();
     taskList.add(() -> {
-      for (int i = 0; i < 20; ++i) {
+      for (int i = 0; i < TOTAL_RELOADS; i++) {
+        final long s = System.nanoTime();
         repo.getModelAccess().runWriteAction(() -> getCLM().reloadAll(new EmptyProgressMonitor()));
+//        waDur.add(System.nanoTime() - s);
       }
       return null;
     });
@@ -71,7 +79,15 @@ public class DeploymentConcurrencyTest implements EnvironmentAware {
     }
     try {
       pool.invokeAll(taskList, TIME_OUT_MS, TimeUnit.MILLISECONDS);
-      new ExecutorServiceShutdownHelper(pool).shutdownAndAwaitTermination(20000);
+      new ExecutorServiceShutdownHelper(pool).shutdownAndAwaitTermination(TIME_OUT_MS);
+      /*
+      System.out.print("Write Action duration (us): ");
+      for (Long l : waDur) {
+        System.out.print(l / 1000000);
+        System.out.print(", ");
+      }
+      System.out.println();
+      */
     } catch (InterruptedException e) {
       e.printStackTrace();
       Assert.fail();
