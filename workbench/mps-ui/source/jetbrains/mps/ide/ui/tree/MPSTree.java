@@ -89,13 +89,15 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
   private final Object myUpdateId = new Object();
 
   private boolean myDisposed = false;
+  private Disposable myDisposable;
 
   private MPSTree(DefaultTreeModel defaultTreeModel, Disposable disposable) {
     // TreeModel instance shall be the same during lifetime of the MPSTree instance
     // otherwise TreeModelListener instances attached to the model get lost
 //    super(new DefaultTreeModel(null));
     super(new AsyncTreeModel(defaultTreeModel, disposable));
-    Disposer.register(this, disposable);
+    myDisposable = disposable;
+
     myDefaultTreeModel = defaultTreeModel;
 
     new MPSTreeSpeedSearch(this);
@@ -927,6 +929,7 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
     assert !myDisposed;
 
     fireBeforeTreeDisposed();
+    Disposer.dispose(myDisposable);
     myDisposed = true;
     setRootNode(null);
     myTreeNodeListeners.clear();
