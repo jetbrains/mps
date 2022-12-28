@@ -3,8 +3,11 @@
  */
 package jetbrains.mps.intellij.integration;
 
+import com.intellij.collaboration.async.CompletableFutureUtil;
 import com.intellij.ide.RecentProjectsManagerBase;
 import com.intellij.ide.impl.OpenProjectTask;
+import com.intellij.openapi.application.Application;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.workbench.actions.OpenMPSProjectTrustProjectHelper;
 import org.jetbrains.annotations.NotNull;
@@ -31,11 +34,21 @@ class MPSRecentProjectsManagerBase extends RecentProjectsManagerBase {
       openProjectOptions = OpenProjectTask.withProjectToClose(openProjectOptions.getProjectToClose(), openProjectOptions.getForceOpenInNewFrame());
     }
 
-    if (OpenMPSProjectTrustProjectHelper.checkTrust(projectFile, null)) {
-      return super.openProject(projectFile, openProjectOptions);
-    } else {
-      return CompletableFuture.completedFuture(null);
-    }
+    final OpenProjectTask localOpenProjectOptions = openProjectOptions;
+    com.intellij.openapi.project.Project[] result = new com.intellij.openapi.project.Project[]{null};
+    CompletableFuture<com.intellij.openapi.project.Project> pFuture = new CompletableFuture<com.intellij.openapi.project.Project>();
+    ApplicationManager.getApplication().invokeLater(new Runnable() {
+      @Override
+      public void run() {
+        if (OpenMPSProjectTrustProjectHelper.checkTrust(projectFile, null)) {
+          final CompletableFuture<Project> projectCompletableFuture = MPSRecentProjectsManagerBase.super.openProject(projectFile, localOpenProjectOptions);
+          projectCompletableFuture.whenComplete((project, throwable) -> pFuture.complete(project));
+        } else {
+          pFuture.complete(null);
+        }
+      }
+    });
 
+    return pFuture;
   }
 }
