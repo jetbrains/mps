@@ -10,9 +10,9 @@ import java.io.ByteArrayOutputStream;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import java.io.IOException;
 import org.jdom.JDOMException;
+import org.jdom.Document;
 import jetbrains.mps.util.JDOMUtil;
 import java.io.OutputStream;
-import org.jdom.Document;
 import jetbrains.mps.make.java.RootDependencies;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.LinkedHashSet;
@@ -52,7 +52,8 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
     }
   }
   private static ModelDependencies loadDependencies(FileContent content) throws IOException, JDOMException {
-    return ModelDependencies.fromXml(JDOMUtil.loadDocument(content.openInputStream()).getRootElement());
+    Document d = JDOMUtil.loadDocument(content.openInputStream());
+    return ModelDependencies.fromXml(d.getRootElement());
   }
   private static void saveDependencies(ModelDependencies deps, OutputStream out) throws IOException {
     JDOMUtil.writeDocument(new Document(deps.toXml()), out);
