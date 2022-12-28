@@ -13,19 +13,15 @@ import org.jdom.JDOMException;
 import org.jdom.Document;
 import jetbrains.mps.util.JDOMUtil;
 import java.io.OutputStream;
-import jetbrains.mps.make.java.RootDependencies;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.LinkedHashSet;
 import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Set;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
 
 @GeneratedClass(node = "r:a178d3c3-970e-4352-b61c-4e55abc3bc24(jetbrains.mps.vcs.core.mergedriver)/3342666646761697669", model = "r:a178d3c3-970e-4352-b61c-4e55abc3bc24(jetbrains.mps.vcs.core.mergedriver)")
 /*package*/ class JavaDependenciesMerger extends AbstractContentMerger {
   /*package*/ JavaDependenciesMerger() {
+    // in fact, this is no longer 'Java' dependencies, it's just 'dependencies' in a form of module references.
   }
   @Nullable
   @Override
@@ -33,9 +29,7 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
     try {
       ModelDependencies base = loadDependencies(baseContent);
       ModelDependencies local = loadDependencies(localContent);
-      copyDependencies(local, base);
       ModelDependencies remote = loadDependencies(latestContent);
-      copyDependencies(remote, base);
 
       if (local.hasRuntimeDeps() || remote.hasRuntimeDeps()) {
         base.setLanguageRuntimeModules(merge(union(local.getLanguageRuntimeModules(), remote.getLanguageRuntimeModules()), base.getLanguageRuntimeModules()));
@@ -46,7 +40,7 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
       ByteArrayOutputStream out = new ByteArrayOutputStream();
       saveDependencies(base, out);
       return MultiTuple.<Integer,byte[]>from(MERGED, out.toByteArray());
-    } catch (IOException | JDOMException | MergeException e) {
+    } catch (IOException | JDOMException e) {
       e.printStackTrace();
       return null;
     }
@@ -57,16 +51,6 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
   }
   private static void saveDependencies(ModelDependencies deps, OutputStream out) throws IOException {
     JDOMUtil.writeDocument(new Document(deps.toXml()), out);
-  }
-  private static void copyDependencies(ModelDependencies from, ModelDependencies to) throws MergeException {
-    for (RootDependencies fromRootDep : Sequence.fromIterable(from.getDependencies())) {
-      RootDependencies toRootDep = to.getDependency(fromRootDep.getClassName());
-      if (toRootDep == null) {
-        to.addDependencies(fromRootDep);
-      } else {
-        to.replaceRoot(mergeRootDependencies(fromRootDep, toRootDep));
-      }
-    }
   }
 
   private static <T> LinkedHashSet<T> union(@NotNull Collection<T> c1, @NotNull Collection<T> c2) {
@@ -85,21 +69,5 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
     // add them to target
     rv.addAll(from);
     return new ArrayList<T>(rv);
-  }
-
-  private static RootDependencies mergeRootDependencies(RootDependencies rd1, RootDependencies rd2) throws MergeException {
-    if (!(Objects.equals(rd1.getClassName(), rd2.getClassName()))) {
-      throw new MergeException("Different class names: " + rd1.getClassName() + " and " + rd2.getClassName());
-    }
-    Set<String> dependNodes = rd1.getDependencies();
-    SetSequence.fromSet(dependNodes).addSequence(SetSequence.fromSet(rd2.getDependencies()));
-    Set<String> extendsNodes = rd1.getExtends();
-    SetSequence.fromSet(extendsNodes).addSequence(SetSequence.fromSet(rd2.getExtends()));
-    return new RootDependencies(rd1.getClassName(), SetSequence.fromSet(dependNodes).toListSequence(), SetSequence.fromSet(extendsNodes).toListSequence());
-  }
-  private static class MergeException extends Exception {
-    private MergeException(String msg) {
-      super(msg);
-    }
   }
 }

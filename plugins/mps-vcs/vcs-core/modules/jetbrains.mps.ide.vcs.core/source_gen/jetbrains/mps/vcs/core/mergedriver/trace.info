@@ -14,7 +14,6 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1163670490218:jetbrains.mps.baseLanguage.structure.SwitchStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
@@ -40,7 +39,7 @@
       <node id="8635503400119718379" at="60,0,64,0" concept="7" trace="isReadOnly#()Z" />
       <node id="7995818696743902206" at="65,0,69,0" concept="7" trace="delete#()Z" />
       <node id="7995818696743902327" at="70,0,74,0" concept="7" trace="exists#()Z" />
-      <node id="1578360511941889359" at="26,51,31,5" concept="17" />
+      <node id="1578360511941889359" at="26,51,31,5" concept="16" />
       <node id="7995818696743898167" at="34,0,39,0" concept="7" trace="getStreamName#()Ljava/lang/String;" />
       <node id="1578360511938823416" at="48,0,53,0" concept="7" trace="openInputStream#()Ljava/io/InputStream;" />
       <node id="8635503400119458904" at="54,0,59,0" concept="7" trace="openOutputStream#()Ljava/io/OutputStream;" />
@@ -156,10 +155,10 @@
       <node id="3643952839784924901" at="89,48,94,7" concept="4" />
       <node id="3342666646761693731" at="105,119,114,7" concept="8" />
       <node id="3342666646761693612" at="53,30,64,5" concept="6" />
-      <node id="3643952839784924677" at="87,20,101,5" concept="17" />
+      <node id="3643952839784924677" at="87,20,101,5" concept="16" />
       <node id="3342666646761693817" at="138,0,153,0" concept="13" trace="configureLog#()V" />
       <node id="3643952839784918782" at="85,0,104,0" concept="13" trace="hasCRLF#(Ljava/io/File;)Z" />
-      <node id="3342666646761693763" at="117,5,136,5" concept="15" />
+      <node id="3342666646761693763" at="117,5,136,5" concept="14" />
       <node id="3342666646761693727" at="104,0,138,0" concept="13" trace="selectMerger#(Ljetbrains/mps/core/platform/Platform;Ljava/lang/String;null)Ljetbrains/mps/vcs/core/mergedriver/AbstractContentMerger;" />
       <node id="3342666646761693538" at="38,0,85,0" concept="13" trace="main#([Ljava/lang/String;)V" />
       <scope id="3342666646761693537" at="36,29,36,29" />
@@ -345,133 +344,88 @@
   </root>
   <root nodeRef="r:a178d3c3-970e-4352-b61c-4e55abc3bc24(jetbrains.mps.vcs.core.mergedriver)/3342666646761697669">
     <file name="JavaDependenciesMerger.java">
-      <node id="3342666646761697845" at="33,9,34,61" concept="8" />
-      <node id="1189742592211972237" at="34,61,35,63" concept="8" />
-      <node id="3342666646761697850" at="35,63,36,36" concept="2" />
-      <node id="1189742592212008399" at="36,36,37,65" concept="8" />
-      <node id="3342666646761697855" at="37,65,38,37" concept="2" />
-      <node id="1189742592212090783" at="38,37,39,0" concept="11" />
-      <node id="1189742592210721327" at="40,62,41,158" concept="2" />
-      <node id="1189742592210752295" at="41,158,42,106" concept="2" />
-      <node id="1189742592210771196" at="42,106,43,142" concept="2" />
-      <node id="3342666646761697860" at="44,7,45,0" concept="11" />
-      <node id="3342666646761697861" at="45,0,46,62" concept="8" />
-      <node id="3342666646761697866" at="46,62,47,34" concept="2" />
-      <node id="3342666646761697870" at="47,34,48,72" concept="9" />
-      <node id="3342666646761697880" at="49,62,50,26" concept="2" />
-      <node id="3342666646761697884" at="50,26,51,18" concept="9" />
-      <node id="9210249131356770766" at="54,108,55,66" concept="8" />
-      <node id="3342666646761697673" at="55,66,56,57" concept="9" />
-      <node id="3342666646761697694" at="58,101,59,60" concept="2" />
-      <node id="3342666646761697717" at="62,88,63,80" concept="8" />
-      <node id="3342666646761697728" at="64,30,65,40" concept="2" />
-      <node id="3342666646761697738" at="66,14,67,70" concept="2" />
-      <node id="1189742592212835666" at="72,99,73,50" concept="8" />
-      <node id="1189742592212847382" at="73,50,74,18" concept="2" />
-      <node id="1189742592212884946" at="74,18,75,14" concept="9" />
-      <node id="1189742592213464803" at="78,101,79,83" concept="10" />
-      <node id="1189742592211103676" at="79,83,80,50" concept="8" />
-      <node id="1189742592211890087" at="80,50,81,45" concept="10" />
-      <node id="1189742592211185467" at="81,45,82,23" concept="2" />
-      <node id="1189742592211919243" at="82,23,83,47" concept="10" />
-      <node id="1189742592211476653" at="83,47,84,23" concept="2" />
-      <node id="1189742592211951940" at="84,23,85,25" concept="10" />
-      <node id="1189742592211556971" at="85,25,86,20" concept="2" />
-      <node id="1189742592211261886" at="86,20,87,32" concept="9" />
-      <node id="3342666646761697752" at="91,68,92,110" concept="16" />
-      <node id="3342666646761697773" at="93,5,94,52" concept="8" />
-      <node id="3342666646761697780" at="94,52,95,93" concept="2" />
-      <node id="3342666646761697787" at="95,93,96,48" concept="8" />
-      <node id="3342666646761697794" at="96,48,97,89" concept="2" />
-      <node id="3342666646761697801" at="97,89,98,155" concept="9" />
-      <node id="3342666646761697913" at="101,40,102,17" concept="14" />
-      <node id="3342666646761697822" at="28,0,30,0" concept="1" trace="JavaDependenciesMerger#()V" />
-      <node id="3342666646761697736" at="66,12,68,7" concept="0" />
-      <node id="3342666646761697687" at="58,0,61,0" concept="13" trace="saveDependencies#(Ljetbrains/mps/make/java/ModelDependencies;Ljava/io/OutputStream;)V" />
-      <node id="3342666646761697750" at="90,123,93,5" concept="6" />
-      <node id="3342666646761697909" at="101,0,104,0" concept="1" trace="MergeException#(Ljava/lang/String;)V" />
-      <node id="3342666646761697670" at="54,0,58,0" concept="13" trace="loadDependencies#(Ljetbrains/mps/vcs/core/mergedriver/FileContent;)Ljetbrains/mps/make/java/ModelDependencies;" />
-      <node id="1189742592212121072" at="39,0,44,7" concept="6" />
-      <node id="3342666646761697726" at="63,80,68,7" concept="6" />
-      <node id="1189742592212735987" at="72,0,77,0" concept="13" trace="union#(Ljava/util/Collection;Ljava/util/Collection;)Ljava/util/LinkedHashSet;" />
-      <node id="3342666646761697711" at="61,108,69,5" concept="5" />
-      <node id="3342666646761697704" at="61,0,71,0" concept="13" trace="copyDependencies#(Ljetbrains/mps/make/java/ModelDependencies;Ljetbrains/mps/make/java/ModelDependencies;)V" />
-      <node id="3342666646761697747" at="90,0,100,0" concept="13" trace="mergeRootDependencies#(Ljetbrains/mps/make/java/RootDependencies;Ljetbrains/mps/make/java/RootDependencies;)Ljetbrains/mps/make/java/RootDependencies;" />
-      <node id="1189742592210847460" at="78,0,89,0" concept="13" trace="merge#(Ljava/util/LinkedHashSet;Ljava/util/Collection;)Ljava/util/Collection;" />
-      <node id="3342666646761697843" at="32,129,52,5" concept="17" />
-      <node id="3342666646761697826" at="30,0,54,0" concept="7" trace="mergeContents#(Ljetbrains/mps/vcs/core/mergedriver/FileContent;Ljetbrains/mps/vcs/core/mergedriver/FileContent;Ljetbrains/mps/vcs/core/mergedriver/FileContent;)Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_2;" />
-      <scope id="3342666646761697824" at="28,40,28,40" />
-      <scope id="3342666646761697693" at="58,101,59,60" />
-      <scope id="3342666646761697727" at="64,30,65,40" />
-      <scope id="3342666646761697737" at="66,14,67,70" />
-      <scope id="3342666646761697751" at="91,68,92,110" />
-      <scope id="3342666646761697912" at="101,40,102,17" />
-      <scope id="3342666646761697822" at="28,0,30,0" />
-      <scope id="3342666646761697879" at="49,62,51,18" />
-      <scope id="3342666646761697672" at="54,108,56,57">
+      <node id="9210249131357204722" at="23,40,24,111" concept="10" />
+      <node id="3342666646761697845" at="29,9,30,61" concept="8" />
+      <node id="1189742592211972237" at="30,61,31,63" concept="8" />
+      <node id="1189742592212008399" at="31,63,32,65" concept="8" />
+      <node id="1189742592212090783" at="32,65,33,0" concept="11" />
+      <node id="1189742592210721327" at="34,62,35,158" concept="2" />
+      <node id="1189742592210752295" at="35,158,36,106" concept="2" />
+      <node id="1189742592210771196" at="36,106,37,142" concept="2" />
+      <node id="3342666646761697860" at="38,7,39,0" concept="11" />
+      <node id="3342666646761697861" at="39,0,40,62" concept="8" />
+      <node id="3342666646761697866" at="40,62,41,34" concept="2" />
+      <node id="3342666646761697870" at="41,34,42,72" concept="9" />
+      <node id="3342666646761697880" at="43,45,44,26" concept="2" />
+      <node id="3342666646761697884" at="44,26,45,18" concept="9" />
+      <node id="9210249131356770766" at="48,108,49,66" concept="8" />
+      <node id="3342666646761697673" at="49,66,50,57" concept="9" />
+      <node id="3342666646761697694" at="52,101,53,60" concept="2" />
+      <node id="1189742592212835666" at="56,99,57,50" concept="8" />
+      <node id="1189742592212847382" at="57,50,58,18" concept="2" />
+      <node id="1189742592212884946" at="58,18,59,14" concept="9" />
+      <node id="1189742592213464803" at="62,101,63,83" concept="10" />
+      <node id="1189742592211103676" at="63,83,64,50" concept="8" />
+      <node id="1189742592211890087" at="64,50,65,45" concept="10" />
+      <node id="1189742592211185467" at="65,45,66,23" concept="2" />
+      <node id="1189742592211919243" at="66,23,67,47" concept="10" />
+      <node id="1189742592211476653" at="67,47,68,23" concept="2" />
+      <node id="1189742592211951940" at="68,23,69,25" concept="10" />
+      <node id="1189742592211556971" at="69,25,70,20" concept="2" />
+      <node id="1189742592211261886" at="70,20,71,32" concept="9" />
+      <node id="3342666646761697822" at="23,0,26,0" concept="1" trace="JavaDependenciesMerger#()V" />
+      <node id="3342666646761697687" at="52,0,55,0" concept="13" trace="saveDependencies#(Ljetbrains/mps/make/java/ModelDependencies;Ljava/io/OutputStream;)V" />
+      <node id="3342666646761697670" at="48,0,52,0" concept="13" trace="loadDependencies#(Ljetbrains/mps/vcs/core/mergedriver/FileContent;)Ljetbrains/mps/make/java/ModelDependencies;" />
+      <node id="1189742592212121072" at="33,0,38,7" concept="6" />
+      <node id="1189742592212735987" at="56,0,61,0" concept="13" trace="union#(Ljava/util/Collection;Ljava/util/Collection;)Ljava/util/LinkedHashSet;" />
+      <node id="1189742592210847460" at="62,0,73,0" concept="13" trace="merge#(Ljava/util/LinkedHashSet;Ljava/util/Collection;)Ljava/util/Collection;" />
+      <node id="3342666646761697843" at="28,129,46,5" concept="16" />
+      <node id="3342666646761697826" at="26,0,48,0" concept="7" trace="mergeContents#(Ljetbrains/mps/vcs/core/mergedriver/FileContent;Ljetbrains/mps/vcs/core/mergedriver/FileContent;Ljetbrains/mps/vcs/core/mergedriver/FileContent;)Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_2;" />
+      <scope id="3342666646761697824" at="23,40,24,111" />
+      <scope id="3342666646761697693" at="52,101,53,60" />
+      <scope id="3342666646761697879" at="43,45,45,18" />
+      <scope id="3342666646761697672" at="48,108,50,57">
         <var name="d" id="9210249131356770767" />
       </scope>
-      <scope id="1189742592212121074" at="40,62,43,142" />
-      <scope id="3342666646761697876" at="49,5,52,5">
+      <scope id="3342666646761697822" at="23,0,26,0" />
+      <scope id="1189742592212121074" at="34,62,37,142" />
+      <scope id="3342666646761697876" at="43,5,46,5">
         <var name="e" id="3342666646761697877" />
       </scope>
-      <scope id="3342666646761697687" at="58,0,61,0">
+      <scope id="3342666646761697687" at="52,0,55,0">
         <var name="deps" id="3342666646761697688" />
         <var name="out" id="3342666646761697690" />
       </scope>
-      <scope id="1189742592212735990" at="72,99,75,14">
+      <scope id="1189742592212735990" at="56,99,59,14">
         <var name="rv" id="1189742592212835669" />
       </scope>
-      <scope id="3342666646761697909" at="101,0,104,0">
-        <var name="msg" id="3342666646761697915" />
-      </scope>
-      <scope id="3342666646761697670" at="54,0,58,0">
+      <scope id="3342666646761697670" at="48,0,52,0">
         <var name="content" id="3342666646761697682" />
       </scope>
-      <scope id="1189742592212735987" at="72,0,77,0">
+      <scope id="1189742592212735987" at="56,0,61,0">
         <var name="c1" id="1189742592212750674" />
         <var name="c2" id="1189742592212753945" />
       </scope>
-      <scope id="3342666646761697716" at="62,88,68,7">
-        <var name="toRootDep" id="3342666646761697718" />
-      </scope>
-      <scope id="3342666646761697710" at="61,108,69,5" />
-      <scope id="3342666646761697711" at="61,108,69,5">
-        <var name="fromRootDep" id="3342666646761697712" />
-      </scope>
-      <scope id="3342666646761697749" at="90,123,98,155">
-        <var name="dependNodes" id="3342666646761697774" />
-        <var name="extendsNodes" id="3342666646761697788" />
-      </scope>
-      <scope id="1189742592210847463" at="78,101,87,32">
+      <scope id="1189742592210847463" at="62,101,71,32">
         <var name="rv" id="1189742592211103677" />
       </scope>
-      <scope id="3342666646761697704" at="61,0,71,0">
-        <var name="from" id="3342666646761697705" />
-        <var name="to" id="3342666646761697707" />
-      </scope>
-      <scope id="3342666646761697747" at="90,0,100,0">
-        <var name="rd1" id="3342666646761697817" />
-        <var name="rd2" id="3342666646761697819" />
-      </scope>
-      <scope id="1189742592210847460" at="78,0,89,0">
+      <scope id="1189742592210847460" at="62,0,73,0">
         <var name="from" id="1189742592210858931" />
         <var name="to" id="1189742592210859202" />
       </scope>
-      <scope id="3342666646761697844" at="33,9,48,72">
+      <scope id="3342666646761697844" at="29,9,42,72">
         <var name="base" id="3342666646761697846" />
         <var name="local" id="1189742592211972238" />
         <var name="out" id="3342666646761697862" />
         <var name="remote" id="1189742592212008400" />
       </scope>
-      <scope id="3342666646761697842" at="32,129,52,5" />
-      <scope id="3342666646761697826" at="30,0,54,0">
+      <scope id="3342666646761697842" at="28,129,46,5" />
+      <scope id="3342666646761697826" at="26,0,48,0">
         <var name="baseContent" id="3342666646761697832" />
         <var name="latestContent" id="3342666646761697838" />
         <var name="localContent" id="3342666646761697835" />
       </scope>
-      <unit id="3342666646761697906" at="100,0,105,0" name="jetbrains.mps.vcs.core.mergedriver.JavaDependenciesMerger$MergeException" />
-      <unit id="3342666646761697669" at="26,0,106,0" name="jetbrains.mps.vcs.core.mergedriver.JavaDependenciesMerger" />
+      <unit id="3342666646761697669" at="21,0,74,0" name="jetbrains.mps.vcs.core.mergedriver.JavaDependenciesMerger" />
     </file>
   </root>
   <root nodeRef="r:a178d3c3-970e-4352-b61c-4e55abc3bc24(jetbrains.mps.vcs.core.mergedriver)/3342666646761698167">
@@ -605,14 +559,14 @@
       <node id="8635503400120563423" at="202,5,210,5" concept="5" />
       <node id="8635503400120491096" at="221,0,231,0" concept="13" trace="tryStuffedProvider#(Ljetbrains/mps/smodel/DefaultSModel;)Ljetbrains/mps/persistence/MetaModelInfoProvider/StuffedMetaModelInfo;" />
       <node id="7625602360763881831" at="95,17,106,7" concept="6" />
-      <node id="3342666646761698505" at="139,123,151,5" concept="17" />
-      <node id="8635503400119179179" at="165,5,177,5" concept="17" />
+      <node id="3342666646761698505" at="139,123,151,5" concept="16" />
+      <node id="8635503400119179179" at="165,5,177,5" concept="16" />
       <node id="3342666646761698490" at="139,0,154,0" concept="7" trace="backup#(Ljetbrains/mps/vcs/core/mergedriver/FileContent;Ljetbrains/mps/vcs/core/mergedriver/FileContent;Ljetbrains/mps/vcs/core/mergedriver/FileContent;)Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_2;" />
       <node id="3342666646761698430" at="111,12,130,7" concept="0" />
       <node id="8635503400119052002" at="161,0,180,0" concept="13" trace="loadModel#(Ljetbrains/mps/vcs/core/mergedriver/FileContent;Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SModel;" />
       <node id="3342666646761698421" at="106,7,130,7" concept="6" />
       <node id="8635503400119883002" at="181,0,214,0" concept="13" trace="updateMetaModelInfo#(Lorg/jetbrains/mps/openapi/model/SModel;Lorg/jetbrains/mps/openapi/model/SModel;Lorg/jetbrains/mps/openapi/model/SModel;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
-      <node id="3342666646761698340" at="85,0,135,5" concept="17" />
+      <node id="3342666646761698340" at="85,0,135,5" concept="16" />
       <node id="3342666646761698175" at="47,0,139,0" concept="7" trace="mergeContents#(Ljetbrains/mps/vcs/core/mergedriver/FileContent;Ljetbrains/mps/vcs/core/mergedriver/FileContent;Ljetbrains/mps/vcs/core/mergedriver/FileContent;)Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_2;" />
       <scope id="3818729150937330733" at="63,28,64,36" />
       <scope id="1210573262409716020" at="69,73,70,62" />
@@ -827,7 +781,7 @@
       <node id="3342666646761725450" at="16,0,18,0" concept="1" trace="FileMerger#()V" />
       <node id="3342666646761725404" at="25,117,28,7" concept="6" />
       <node id="3643952839784883722" at="39,0,42,0" concept="13" trace="convert#([B)[B" />
-      <node id="3342666646761725339" at="20,28,37,5" concept="17" />
+      <node id="3342666646761725339" at="20,28,37,5" concept="16" />
       <node id="3342666646761725293" at="18,0,39,0" concept="13" trace="mergeFiles#(Ljetbrains/mps/vcs/core/mergedriver/AbstractContentMerger;Ljava/io/File;Ljava/io/File;Ljava/io/File;[B[B[BZZ)I" />
       <scope id="3342666646761725453" at="16,24,16,24" />
       <scope id="3342666646761725405" at="26,32,27,113" />
@@ -903,7 +857,7 @@
       <node id="6895208463126525324" at="124,0,125,0" concept="3" trace="contentAttr" />
       <node id="6895208463126599038" at="126,117,127,23" concept="2" />
       <node id="6895208463126625415" at="127,23,128,51" concept="2" />
-      <node id="6895208463126562585" at="128,51,129,41" concept="16" />
+      <node id="6895208463126562585" at="128,51,129,41" concept="15" />
       <node id="3342666646761725653" at="50,0,53,0" concept="7" trace="getSuffix#()Ljava/lang/String;" />
       <node id="8704175735089568010" at="59,0,62,0" concept="7" trace="accept#(Ljetbrains/mps/vcs/core/mergedriver/FileType;)Z" />
       <node id="8704175735089568021" at="62,9,65,7" concept="6" />
@@ -920,7 +874,7 @@
       <node id="3342666646761725491" at="73,105,78,9" concept="8" />
       <node id="6895208463127254747" at="105,0,110,7" concept="8" />
       <node id="6895208463126531496" at="125,0,131,0" concept="7" trace="startElement#(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/xml/sax/Attributes;)V" />
-      <node id="6895208463129079442" at="93,26,100,5" concept="17" />
+      <node id="6895208463129079442" at="93,26,100,5" concept="16" />
       <node id="1022507842243460371" at="111,42,119,5" concept="6" />
       <node id="8704175735081934778" at="56,35,69,5" concept="6" />
       <node id="3342666646761725471" at="71,81,85,5" concept="6" />
