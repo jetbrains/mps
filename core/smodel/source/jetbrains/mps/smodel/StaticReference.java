@@ -245,6 +245,12 @@ public final class StaticReference extends SReferenceBase {
     if (current == null) {
       return null;
     }
+    if (targetModelReference == null) {
+      // not clear when does this happen. Transition.makeDirect() code rules out DirectNode and DynamicPtr cases, therefore
+      // it's either IndirectNodePtr with a broken reference or ConvertedDirectNode and some unusual condition. Nevertheless,
+      // can't do anything here but say 'nada'.
+      return null;
+    }
 
     // external
     SModel modelDescriptor = null;

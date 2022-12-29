@@ -50,7 +50,6 @@ final class DeploymentNotificationImpl extends ModuleDeploymentChange {
   }
 
   void update(Collection<SModuleReference> added, Collection<SModuleReference> removed) {
-    final boolean i1 = Thread.currentThread().isInterrupted();
     try {
       myCollectLock.acquire();
       for (SModuleReference mr : added) {
@@ -65,8 +64,7 @@ final class DeploymentNotificationImpl extends ModuleDeploymentChange {
       myReloadedNext.removeAll(removed);
       myRemovedNext.addAll(removed);
     } catch (InterruptedException ex) {
-      final boolean i2 = Thread.currentThread().isInterrupted();
-      Logger.getLogger(getClass()).error("update(DeploymentNotification) failed: " + i1 + "  " + i2, ex);
+      Logger.getLogger(getClass()).error("update(DeploymentNotification) failed", ex);
     } finally {
       myCollectLock.release();
     }
