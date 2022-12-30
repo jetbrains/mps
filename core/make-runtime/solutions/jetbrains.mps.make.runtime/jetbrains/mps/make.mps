@@ -16,7 +16,6 @@
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="yyf4" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.util(MPS.OpenAPI/)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
-    <import index="ncw5" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)" />
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
   </imports>
   <registry>
@@ -1414,6 +1413,21 @@
       <node concept="TZ5HA" id="4QUA3SqtLlo" role="TZ5H$">
         <node concept="1dT_AC" id="4QUA3SqtLlp" role="1dT_Ay">
           <property role="1dT_AB" value="" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="5WvFJ_yUV3P" role="TZ5H$">
+        <node concept="1dT_AC" id="5WvFJ_yUV3Q" role="1dT_Ay">
+          <property role="1dT_AB" value="XXX seems that there's no reason (at least, now), to keep this CC and not use app.getService(IMakeService.class) directly" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="5WvFJ_yUVa9" role="TZ5H$">
+        <node concept="1dT_AC" id="5WvFJ_yUVaa" role="1dT_Ay">
+          <property role="1dT_AB" value="    as all the present uses seem to be from IDEA-aware code anyway, and there's no longer need for IMakeService to implement" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="5WvFJ_yUVhc" role="TZ5H$">
+        <node concept="1dT_AC" id="5WvFJ_yUVhd" role="1dT_Ay">
+          <property role="1dT_AB" value="    anything like App/Project component" />
         </node>
       </node>
     </node>

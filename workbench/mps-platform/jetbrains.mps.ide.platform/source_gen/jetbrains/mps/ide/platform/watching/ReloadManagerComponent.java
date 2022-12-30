@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import com.intellij.util.ui.update.MergingUpdateQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 import jetbrains.mps.make.IMakeService;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.vfs.VirtualFileManager;
 import java.util.function.Supplier;
 import jetbrains.mps.util.Computable;
@@ -45,9 +46,11 @@ public class ReloadManagerComponent extends ReloadManager implements Disposable 
 
   private final IMakeService myMakeService;
 
-  public ReloadManagerComponent(IMakeService makeService) {
+  public ReloadManagerComponent() {
     myTaskQueue.setRestartTimerOnAdd(true);
-    myMakeService = makeService;
+    // I'd love to use MakeServiceComponent.get() but no mechanism to ensure MakeServiceComponent is already initialized,
+    // (it's WorkbenchMakeService AppComponent that is responsible for init), therefore have to access the instance explicitly
+    myMakeService = ApplicationManager.getApplication().getComponent(IMakeService.class);
     myMakeService.addListener(myMakeListener);
     VirtualFileManager.getInstance().addVirtualFileManagerListener(new NoReloadOnRefresh(), this);
   }

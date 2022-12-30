@@ -6989,13 +6989,117 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="1$VFM_ttR6E" role="3cqZAp">
-          <node concept="37vLTI" id="1$VFM_ttRpk" role="3clFbG">
-            <node concept="37vLTw" id="1$VFM_ttRFD" role="37vLTx">
-              <ref role="3cqZAo" node="1$VFM_ttQ8Q" resolve="makeService" />
+        <node concept="3SKdUt" id="61i8ARBqe2J" role="3cqZAp">
+          <node concept="1PaTwC" id="61i8ARBqe2K" role="1aUNEU">
+            <node concept="3oM_SD" id="61i8ARBqekh" role="1PaTwD">
+              <property role="3oM_SC" value="I'd" />
             </node>
-            <node concept="37vLTw" id="1$VFM_ttR6C" role="37vLTJ">
+            <node concept="3oM_SD" id="61i8ARBqekj" role="1PaTwD">
+              <property role="3oM_SC" value="love" />
+            </node>
+            <node concept="3oM_SD" id="61i8ARBqekm" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="61i8ARBqekq" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="61i8ARBqelg" role="1PaTwD">
+              <property role="3oM_SC" value="MakeServiceComponent.get()" />
+            </node>
+            <node concept="3oM_SD" id="61i8ARBqenA" role="1PaTwD">
+              <property role="3oM_SC" value="but" />
+            </node>
+            <node concept="3oM_SD" id="61i8ARBqenH" role="1PaTwD">
+              <property role="3oM_SC" value="no" />
+            </node>
+            <node concept="3oM_SD" id="61i8ARBqeo5" role="1PaTwD">
+              <property role="3oM_SC" value="mechanism" />
+            </node>
+            <node concept="3oM_SD" id="61i8ARBqeoY" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="61i8ARBqep8" role="1PaTwD">
+              <property role="3oM_SC" value="ensure" />
+            </node>
+            <node concept="3oM_SD" id="61i8ARBqepz" role="1PaTwD">
+              <property role="3oM_SC" value="MakeServiceComponent" />
+            </node>
+            <node concept="3oM_SD" id="61i8ARBqeqf" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="61i8ARBqeqG" role="1PaTwD">
+              <property role="3oM_SC" value="already" />
+            </node>
+            <node concept="3oM_SD" id="61i8ARBqeqU" role="1PaTwD">
+              <property role="3oM_SC" value="initialized," />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="61i8ARBqxIJ" role="3cqZAp">
+          <node concept="1PaTwC" id="61i8ARBqxIK" role="1aUNEU">
+            <node concept="3oM_SD" id="61i8ARBqxYi" role="1PaTwD">
+              <property role="3oM_SC" value="(it's" />
+            </node>
+            <node concept="3oM_SD" id="61i8ARBqxYr" role="1PaTwD">
+              <property role="3oM_SC" value="WorkbenchMakeService" />
+            </node>
+            <node concept="3oM_SD" id="61i8ARBqxYw" role="1PaTwD">
+              <property role="3oM_SC" value="AppComponent" />
+            </node>
+            <node concept="3oM_SD" id="61i8ARBqxYA" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="61i8ARBqxYH" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="61i8ARBqxYP" role="1PaTwD">
+              <property role="3oM_SC" value="responsible" />
+            </node>
+            <node concept="3oM_SD" id="61i8ARBqxYY" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="61i8ARBqxZ8" role="1PaTwD">
+              <property role="3oM_SC" value="init)," />
+            </node>
+            <node concept="3oM_SD" id="61i8ARBqxYn" role="1PaTwD">
+              <property role="3oM_SC" value="therefore" />
+            </node>
+            <node concept="3oM_SD" id="61i8ARBqxYk" role="1PaTwD">
+              <property role="3oM_SC" value="have" />
+            </node>
+            <node concept="3oM_SD" id="61i8ARBqxZj" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="61i8ARBqxZU" role="1PaTwD">
+              <property role="3oM_SC" value="access" />
+            </node>
+            <node concept="3oM_SD" id="61i8ARBqy07" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="61i8ARBqy0l" role="1PaTwD">
+              <property role="3oM_SC" value="instance" />
+            </node>
+            <node concept="3oM_SD" id="61i8ARBqy0$" role="1PaTwD">
+              <property role="3oM_SC" value="explicitly" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1$VFM_ttR6E" role="3cqZAp">
+          <node concept="37vLTI" id="61i8ARBqdw1" role="3clFbG">
+            <node concept="37vLTw" id="61i8ARBqdw3" role="37vLTJ">
               <ref role="3cqZAo" node="491od_XIzA6" resolve="myMakeService" />
+            </node>
+            <node concept="2OqwBi" id="61i8ARBqvzp" role="37vLTx">
+              <node concept="2YIFZM" id="61i8ARBqvcM" role="2Oq$k0">
+                <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+                <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+              </node>
+              <node concept="liA8E" id="61i8ARBqw06" role="2OqNvi">
+                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
+                <node concept="3VsKOn" id="61i8ARBqx9M" role="37wK5m">
+                  <ref role="3VsUkX" to="hfuk:1NAY6bPd4nM" resolve="IMakeService" />
+                </node>
+              </node>
             </node>
           </node>
         </node>
@@ -7031,12 +7135,6 @@
         </node>
       </node>
       <node concept="3Tm1VV" id="491od_XHwR_" role="1B3o_S" />
-      <node concept="37vLTG" id="1$VFM_ttQ8Q" role="3clF46">
-        <property role="TrG5h" value="makeService" />
-        <node concept="3uibUv" id="1$VFM_ttQWg" role="1tU5fm">
-          <ref role="3uigEE" to="hfuk:1NAY6bPd4nM" resolve="IMakeService" />
-        </node>
-      </node>
     </node>
     <node concept="3uibUv" id="5rIhWKNRDbp" role="EKbjA">
       <ref role="3uigEE" to="v23q:~Disposable" resolve="Disposable" />
@@ -8609,6 +8707,58 @@
             </node>
             <node concept="3oM_SD" id="3mWeFTSoVxn" role="1PaTwD">
               <property role="3oM_SC" value="Service" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="5WvFJ_yUX8a" role="3cqZAp">
+          <node concept="1PaTwC" id="5WvFJ_yUX8b" role="1aUNEU">
+            <node concept="3oM_SD" id="5WvFJ_yUXb2" role="1PaTwD">
+              <property role="3oM_SC" value="FIXME" />
+            </node>
+            <node concept="3oM_SD" id="5WvFJ_yUXb4" role="1PaTwD">
+              <property role="3oM_SC" value="once" />
+            </node>
+            <node concept="3oM_SD" id="5WvFJ_yUXb7" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="5WvFJ_yUXbb" role="1PaTwD">
+              <property role="3oM_SC" value="can" />
+            </node>
+            <node concept="3oM_SD" id="5WvFJ_yUXbg" role="1PaTwD">
+              <property role="3oM_SC" value="update" />
+            </node>
+            <node concept="3oM_SD" id="5WvFJ_yUXbm" role="1PaTwD">
+              <property role="3oM_SC" value="uses" />
+            </node>
+            <node concept="3oM_SD" id="5WvFJ_yUXbt" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="5WvFJ_yUXb_" role="1PaTwD">
+              <property role="3oM_SC" value="mps-ext/mbeddr" />
+            </node>
+            <node concept="3oM_SD" id="5WvFJ_yUXbI" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="5WvFJ_yUXbS" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="5WvFJ_yUXc3" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="5WvFJ_yUXcf" role="1PaTwD">
+              <property role="3oM_SC" value="method," />
+            </node>
+            <node concept="3oM_SD" id="5WvFJ_yUXcs" role="1PaTwD">
+              <property role="3oM_SC" value="make" />
+            </node>
+            <node concept="3oM_SD" id="5WvFJ_yUXcE" role="1PaTwD">
+              <property role="3oM_SC" value="it" />
+            </node>
+            <node concept="3oM_SD" id="5WvFJ_yUXcT" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="5WvFJ_yUXd9" role="1PaTwD">
+              <property role="3oM_SC" value="service" />
             </node>
           </node>
         </node>

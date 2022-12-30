@@ -13,6 +13,7 @@ public abstract class ReloadManager {
 
   public static ReloadManager getInstance() {
     // towards replacing App Component with a Service
+    // FIXME once we can update uses in mps-ext/mbeddr to use this method, make it a service
     return ApplicationManager.getApplication().getComponent(ReloadManager.class);
   }
 

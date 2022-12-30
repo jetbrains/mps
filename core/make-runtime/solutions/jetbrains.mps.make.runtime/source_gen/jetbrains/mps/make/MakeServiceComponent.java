@@ -14,6 +14,9 @@ import org.jetbrains.annotations.NotNull;
  * XXX might be fruitful to have add/remove listeners code here, which would re-register
  *     listeners the moment active make service changes. No, there's no such scenario at the moment.
  * 
+ * XXX seems that there's no reason (at least, now), to keep this CC and not use app.getService(IMakeService.class) directly
+ *     as all the present uses seem to be from IDEA-aware code anyway, and there's no longer need for IMakeService to implement
+ *     anything like App/Project component
  */
 @GeneratedClass(node = "r:b25dd364-bc3f-4a66-97d1-262009610c5e(jetbrains.mps.make)/5600956479087952114", model = "r:b25dd364-bc3f-4a66-97d1-262009610c5e(jetbrains.mps.make)")
 public final class MakeServiceComponent implements CoreComponent {
