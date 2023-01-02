@@ -3,12 +3,11 @@
  */
 package jetbrains.mps.intellij.integration;
 
-import com.intellij.collaboration.async.CompletableFutureUtil;
 import com.intellij.ide.RecentProjectsManagerBase;
 import com.intellij.ide.impl.OpenProjectTask;
-import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
+import jetbrains.mps.ide.bookmark.BookmarkManager;
 import jetbrains.mps.workbench.actions.OpenMPSProjectTrustProjectHelper;
 import org.jetbrains.annotations.NotNull;
 
@@ -26,6 +25,9 @@ import java.util.concurrent.CompletableFuture;
  * end up in creation of module in {@link com.intellij.platform.PlatformProjectConfigurator#configureProject} saved in .idea/project_name.iml
  */
 class MPSRecentProjectsManagerBase extends RecentProjectsManagerBase {
+
+  private static final jetbrains.mps.logging.Logger LOG = jetbrains.mps.logging.Logger.getLogger(MPSRecentProjectsManagerBase.class);
+
   @NotNull
   @Override
   public CompletableFuture<Project> openProject(@NotNull Path projectFile, @NotNull OpenProjectTask openProjectOptions) {
@@ -35,14 +37,20 @@ class MPSRecentProjectsManagerBase extends RecentProjectsManagerBase {
     }
 
     final OpenProjectTask localOpenProjectOptions = openProjectOptions;
-    com.intellij.openapi.project.Project[] result = new com.intellij.openapi.project.Project[]{null};
     CompletableFuture<com.intellij.openapi.project.Project> pFuture = new CompletableFuture<com.intellij.openapi.project.Project>();
     ApplicationManager.getApplication().invokeLater(new Runnable() {
       @Override
       public void run() {
         if (OpenMPSProjectTrustProjectHelper.checkTrust(projectFile, null)) {
           final CompletableFuture<Project> projectCompletableFuture = MPSRecentProjectsManagerBase.super.openProject(projectFile, localOpenProjectOptions);
-          projectCompletableFuture.whenComplete((project, throwable) -> pFuture.complete(project));
+          projectCompletableFuture.whenComplete((project, throwable) -> {
+                                                    if (throwable != null) {
+                                                      LOG.error(throwable);
+                                                      pFuture.complete(null);
+                                                    } else {
+                                                      pFuture.complete(project);
+                                                    }
+          });
         } else {
           pFuture.complete(null);
         }
