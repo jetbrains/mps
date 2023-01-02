@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,44 +15,38 @@
  */
 package jetbrains.mps.library;
 
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
 
 /**
+ * IDEA service.
  * reads custom libraries from the xml file
  */
 @State(
   name = "AdditionalLibrariesManager",
   storages = @Storage("AdditionalLibrariesManager.xml")
 )
-public class AdditionalLibrariesManager extends BaseLibraryManager implements ApplicationComponent {
-  private Map<String, Library> myCustomBuiltInLibraries = new HashMap<>();
+public class AdditionalLibrariesManager extends BaseLibraryManager {
+
+  public static AdditionalLibrariesManager getInstance() {
+    return ApplicationManager.getApplication().getService(AdditionalLibrariesManager.class);
+  }
 
   public AdditionalLibrariesManager() {
   }
 
   @Override
-  public void initComponent() {
-    myCustomBuiltInLibraries = BuiltInLibrariesIO.readBuiltInLibraries();
-    super.initComponent();
-  }
-
-  @Override
   public Set<Library> getUILibraries() {
     Set<Library> result = new HashSet<>(super.getUILibraries());
-    result.addAll(myCustomBuiltInLibraries.values());
+    Map<String, Library> customBuiltInLibraries = BuiltInLibrariesIO.readBuiltInLibraries();
+    result.addAll(customBuiltInLibraries.values());
     return result;
-  }
-
-  @Override
-  public String toString() {
-    return getClass().getSimpleName();
   }
 }

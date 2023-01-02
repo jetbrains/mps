@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -64,11 +64,13 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
   private ProjectDescriptor myProjectDescriptor;
 
   @SuppressWarnings("UnusedParameters")
-  public StandaloneMPSProject(final Project project, ProjectLibraryManager projectLibraryManager,
-                              MPSCoreComponents mpsCore, IdeaFileSystem ideaFS) {
-    super(project, mpsCore, ideaFS);
+  public StandaloneMPSProject(final Project project, IdeaFileSystem ideaFS) {
+    super(project, MPSCoreComponents.getInstance(), ideaFS);
     myProjectDescriptor = null;
-    myManager = mpsCore.getPlatform().findComponent(VFSManager.class);
+    // we used to have ProjectLibraryManager in dependencies to ensure project libraries are ready,
+    // but now project libraries get initialized from a lifecycle listener, and I see no point to care to init PLM here.
+    // The dependency was introduced in db00760f. Proper dispose order is ensured by the listener now.
+    myManager = MPSCoreComponents.getInstance().getPlatform().findComponent(VFSManager.class);
   }
 
   @Override

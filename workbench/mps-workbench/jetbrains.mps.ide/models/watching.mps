@@ -1363,15 +1363,11 @@
               <node concept="3uibUv" id="61i8ARBr8Q0" role="1tU5fm">
                 <ref role="3uigEE" to="z1c3:~ProjectLibraryManager" resolve="ProjectLibraryManager" />
               </node>
-              <node concept="2OqwBi" id="61i8ARBr9a0" role="33vP2m">
-                <node concept="37vLTw" id="61i8ARBr9a1" role="2Oq$k0">
+              <node concept="2YIFZM" id="4$IL72MaIyK" role="33vP2m">
+                <ref role="37wK5l" to="z1c3:~ProjectLibraryManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+                <ref role="1Pybhc" to="z1c3:~ProjectLibraryManager" resolve="ProjectLibraryManager" />
+                <node concept="37vLTw" id="4$IL72MaIyL" role="37wK5m">
                   <ref role="3cqZAo" node="5T8zXYahxm$" resolve="project" />
-                </node>
-                <node concept="liA8E" id="61i8ARBr9a2" role="2OqNvi">
-                  <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                  <node concept="3VsKOn" id="61i8ARBr9a3" role="37wK5m">
-                    <ref role="3VsUkX" to="z1c3:~ProjectLibraryManager" resolve="ProjectLibraryManager" />
-                  </node>
                 </node>
               </node>
             </node>
@@ -1444,15 +1440,11 @@
               <node concept="3uibUv" id="61i8ARBr9EA" role="1tU5fm">
                 <ref role="3uigEE" to="z1c3:~ProjectLibraryManager" resolve="ProjectLibraryManager" />
               </node>
-              <node concept="2OqwBi" id="61i8ARBr9Ms" role="33vP2m">
-                <node concept="37vLTw" id="61i8ARBr9Mt" role="2Oq$k0">
+              <node concept="2YIFZM" id="4$IL72MaH1Z" role="33vP2m">
+                <ref role="37wK5l" to="z1c3:~ProjectLibraryManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+                <ref role="1Pybhc" to="z1c3:~ProjectLibraryManager" resolve="ProjectLibraryManager" />
+                <node concept="37vLTw" id="4$IL72MaHR8" role="37wK5m">
                   <ref role="3cqZAo" node="5T8zXYahxmR" resolve="project" />
-                </node>
-                <node concept="liA8E" id="61i8ARBr9Mu" role="2OqNvi">
-                  <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                  <node concept="3VsKOn" id="61i8ARBr9Mv" role="37wK5m">
-                    <ref role="3VsUkX" to="z1c3:~ProjectLibraryManager" resolve="ProjectLibraryManager" />
-                  </node>
                 </node>
               </node>
             </node>
@@ -1512,17 +1504,9 @@
                 <node concept="3uibUv" id="61i8ARBsoR$" role="1tU5fm">
                   <ref role="3uigEE" to="32g6:~AdditionalLibrariesManager" resolve="AdditionalLibrariesManager" />
                 </node>
-                <node concept="2OqwBi" id="61i8ARBswwZ" role="33vP2m">
-                  <node concept="2YIFZM" id="61i8ARBsvvc" role="2Oq$k0">
-                    <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
-                    <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
-                  </node>
-                  <node concept="liA8E" id="61i8ARBsxE4" role="2OqNvi">
-                    <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                    <node concept="3VsKOn" id="61i8ARBslWj" role="37wK5m">
-                      <ref role="3VsUkX" to="32g6:~AdditionalLibrariesManager" resolve="AdditionalLibrariesManager" />
-                    </node>
-                  </node>
+                <node concept="2YIFZM" id="4$IL72MaFza" role="33vP2m">
+                  <ref role="37wK5l" to="32g6:~AdditionalLibrariesManager.getInstance()" resolve="getInstance" />
+                  <ref role="1Pybhc" to="32g6:~AdditionalLibrariesManager" resolve="AdditionalLibrariesManager" />
                 </node>
               </node>
             </node>

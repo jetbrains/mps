@@ -37,14 +37,14 @@ public class WatchedRootsUpdater implements Disposable {
   public static class ProjectListener implements ProjectManagerListener {
     @Override
     public void projectOpened(@NotNull Project project) {
-      ProjectLibraryManager plm = project.getComponent(ProjectLibraryManager.class);
+      ProjectLibraryManager plm = ProjectLibraryManager.getInstance(project);
       WatchedRootsUpdater wru = ApplicationManager.getApplication().getService(WatchedRootsUpdater.class);
       wru.initAppLibrariesIfNecessary();
       wru.processProjectLibraries(plm);
     }
     @Override
     public void projectClosing(@NotNull Project project) {
-      ProjectLibraryManager plm = project.getComponent(ProjectLibraryManager.class);
+      ProjectLibraryManager plm = ProjectLibraryManager.getInstance(project);
       WatchedRootsUpdater wru = ApplicationManager.getApplication().getService(WatchedRootsUpdater.class);
       wru.processProjectLibraries(plm);
     }
@@ -52,7 +52,7 @@ public class WatchedRootsUpdater implements Disposable {
 
   /*package*/ void initAppLibrariesIfNecessary() {
     if (!(myAppLibInitialized)) {
-      AdditionalLibrariesManager appLM = ApplicationManager.getApplication().getComponent(AdditionalLibrariesManager.class);
+      AdditionalLibrariesManager appLM = AdditionalLibrariesManager.getInstance();
       processLibrariesChange(appLM.getUILibraries(), myLibrariesRequests);
       myAppLibInitialized = true;
     }
