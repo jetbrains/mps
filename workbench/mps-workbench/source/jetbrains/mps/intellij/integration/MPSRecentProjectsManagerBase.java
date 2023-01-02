@@ -5,15 +5,14 @@ package jetbrains.mps.intellij.integration;
 
 import com.intellij.ide.RecentProjectsManagerBase;
 import com.intellij.ide.impl.OpenProjectTask;
-import com.intellij.ide.impl.ProjectUtil;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
-import jetbrains.mps.ide.bookmark.BookmarkManager;
 import jetbrains.mps.workbench.actions.OpenMPSProjectTrustProjectHelper;
 import org.jetbrains.annotations.NotNull;
 
 import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ForkJoinPool;
 
 /**
  * Avoid creation of .idea/project_name.iml file on project opening
@@ -39,13 +38,16 @@ class MPSRecentProjectsManagerBase extends RecentProjectsManagerBase {
 
     final OpenProjectTask localOpenProjectOptions = openProjectOptions;
 
-    return CompletableFuture.supplyAsync(() -> {
-      if (OpenMPSProjectTrustProjectHelper.checkTrust(projectFile, null)) {
-        //return MPSRecentProjectsManagerBase.super.openProject(projectFile, localOpenProjectOptions);
-        return ProjectUtil.openProject(projectFile, localOpenProjectOptions);
-      } else {
-        return null;
-      }
-    }, ApplicationManager.getApplication()::invokeLater);
+    final CompletableFuture<Boolean> trustResult =
+        CompletableFuture.supplyAsync(() -> OpenMPSProjectTrustProjectHelper.checkTrust(projectFile, null), ApplicationManager.getApplication()::invokeLater);
+
+    return trustResult.thenComposeAsync(trusted -> {
+                                          if (trusted) {
+                                            return MPSRecentProjectsManagerBase.super.openProject(projectFile, localOpenProjectOptions);
+                                          } else {
+                                            return CompletableFuture.completedFuture(null);
+                                          }
+                                        }, ForkJoinPool.commonPool()
+    );
   }
 }
