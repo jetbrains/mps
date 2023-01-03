@@ -1356,6 +1356,23 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="5CwzWcvKQSx" role="3cqZAp">
+          <node concept="3cpWsn" id="5CwzWcvKQSy" role="3cpWs9">
+            <property role="TrG5h" value="matchedPredicate" />
+            <node concept="3uibUv" id="5CwzWcvKQSz" role="1tU5fm">
+              <ref role="3uigEE" to="82uw:~Predicate" resolve="Predicate" />
+              <node concept="3uibUv" id="5CwzWcvKQS$" role="11_B2D">
+                <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
+              </node>
+            </node>
+            <node concept="37Ijox" id="5CwzWcvKQS_" role="33vP2m">
+              <ref role="37Ijqf" to="33ny:~HashSet.contains(java.lang.Object)" resolve="contains" />
+              <node concept="37vLTw" id="5CwzWcvKQSA" role="wWaWy">
+                <ref role="3cqZAo" node="4Qup9OsPvdz" resolve="matched" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="4Qup9OsSi3e" role="3cqZAp">
           <node concept="2OqwBi" id="4Qup9OsTwXx" role="3clFbG">
             <node concept="2OqwBi" id="4Qup9OsSF5L" role="2Oq$k0">
@@ -1369,11 +1386,13 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="4Qup9OsStCs" role="2OqNvi">
-                  <ref role="37wK5l" to="1ctc:~Stream.dropWhile(java.util.function.Predicate)" resolve="dropWhile" />
-                  <node concept="37Ijox" id="4Qup9OsS_pb" role="37wK5m">
-                    <ref role="37Ijqf" to="33ny:~HashSet.contains(java.lang.Object)" resolve="contains" />
-                    <node concept="37vLTw" id="4Qup9OsSxLi" role="wWaWy">
-                      <ref role="3cqZAo" node="4Qup9OsPvdz" resolve="matched" />
+                  <ref role="37wK5l" to="1ctc:~Stream.filter(java.util.function.Predicate)" resolve="filter" />
+                  <node concept="2OqwBi" id="5CwzWcvLgV4" role="37wK5m">
+                    <node concept="37vLTw" id="5CwzWcvKQSB" role="2Oq$k0">
+                      <ref role="3cqZAo" node="5CwzWcvKQSy" resolve="matchedPredicate" />
+                    </node>
+                    <node concept="liA8E" id="5CwzWcvLjyI" role="2OqNvi">
+                      <ref role="37wK5l" to="82uw:~Predicate.negate()" resolve="negate" />
                     </node>
                   </node>
                 </node>

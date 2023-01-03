@@ -103,15 +103,6 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
     }
   }
 
-  /**
-   * @deprecated remove in 3.4 and make final
-   */
-  @NotNull
-  @Deprecated
-  public String getErrors() {
-    return super.getErrors();
-  }
-
   @Override
   public void initComponent() {
     myListener = new ModuleFileChangeListener(this);
