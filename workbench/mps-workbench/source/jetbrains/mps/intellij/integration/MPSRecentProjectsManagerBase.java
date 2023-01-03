@@ -26,8 +26,6 @@ import java.util.concurrent.ForkJoinPool;
  */
 class MPSRecentProjectsManagerBase extends RecentProjectsManagerBase {
 
-  private static final jetbrains.mps.logging.Logger LOG = jetbrains.mps.logging.Logger.getLogger(MPSRecentProjectsManagerBase.class);
-
   @NotNull
   @Override
   public CompletableFuture<Project> openProject(@NotNull Path projectFile, @NotNull OpenProjectTask openProjectOptions) {
