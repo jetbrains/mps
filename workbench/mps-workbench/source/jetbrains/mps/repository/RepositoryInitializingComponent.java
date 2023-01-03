@@ -17,7 +17,6 @@ package jetbrains.mps.repository;
 
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.ide.MPSCoreComponents;
-import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.library.AdditionalLibrariesManager;
 import jetbrains.mps.library.contributor.BootstrapLibraryContributor;
 import jetbrains.mps.library.contributor.PluginLibraryContributor;
@@ -25,8 +24,8 @@ import jetbrains.mps.library.contributor.WorkbenchLibraryContributor;
 import jetbrains.mps.plugins.applicationplugins.ApplicationPluginManager;
 
 public final class RepositoryInitializingComponent extends RepositoryInitializingComponentBase {
-  public RepositoryInitializingComponent(IdeaFileSystem fs) {
-    super(MPSCoreComponents.getInstance(), fs);
+  public RepositoryInitializingComponent() {
+    super(MPSCoreComponents.getInstance());
     final ApplicationPluginManager apm = ApplicationManager.getApplication().getComponent(ApplicationPluginManager.class);
     if (apm == null) {
       // not 100% sure if considerations of ApplicationPluginManager.initComponent() are still valid.
