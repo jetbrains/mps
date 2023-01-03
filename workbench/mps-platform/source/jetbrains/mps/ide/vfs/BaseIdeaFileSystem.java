@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.ide.vfs;
 
-import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.WriteAction;
 import com.intellij.openapi.fileTypes.FileTypeManager;
@@ -42,14 +41,12 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Collection;
 import java.util.Objects;
 
-public abstract class BaseIdeaFileSystem implements IFileSystem, CachingFileSystem, Disposable {
+public abstract class BaseIdeaFileSystem implements IFileSystem, CachingFileSystem {
 
-  private final MPSCoreComponents myCoreComponents;
-  private FileSystemListenersContainer myListenersContainer;
+  private final FileSystemListenersContainer myListenersContainer;
   private final String myIdeaProtocol;
 
   protected BaseIdeaFileSystem() {
-    myCoreComponents = MPSCoreComponents.getInstance();
     myListenersContainer = FileSystemListenersContainer.getInstance();
     myIdeaProtocol = null;
   }
@@ -59,15 +56,8 @@ public abstract class BaseIdeaFileSystem implements IFileSystem, CachingFileSyst
     //     Perhaps, if this class and subclasses stop being app component, we could have a single one that takes
     //     MPSCoreComponent, FileSystemListenersContainer and VirtualFileManager, and registers appropriate protocol
     //     implementations (jar, local, jrt and idea) as needed. Is there any value in distinct app components per protocol?
-    myCoreComponents = MPSCoreComponents.getInstance();
     myListenersContainer = FileSystemListenersContainer.getInstance();
     myIdeaProtocol = ideaProtocolIdentity;
-    vfsManager().registerFS(getProtocol(), this);
-  }
-
-  protected final VFSManager vfsManager() {
-    // perhaps, could be public, if needed
-    return myCoreComponents.getPlatform().findComponent(VFSManager.class);
   }
 
   @NotNull
@@ -110,8 +100,6 @@ public abstract class BaseIdeaFileSystem implements IFileSystem, CachingFileSyst
     return FileTypeManager.getInstance().isFileIgnored(name);
   }
 
-
-
   @Override
   public boolean runWriteTransaction(@NotNull Runnable r) {
     ThrowableRunnable<Exception> tr = r::run;
@@ -134,11 +122,6 @@ public abstract class BaseIdeaFileSystem implements IFileSystem, CachingFileSyst
     VfsUtil.markDirtyAndRefresh(!context.isSynchronous(), context.isRecursive(), true, filesArray);
   }
 
-  @Override
-  public void dispose() {
-    vfsManager().unregisterFS(getProtocol(), this);
-  }
-
   @Nullable
   VirtualFileSystem getUnderlyingFS() {
     return VirtualFileManager.getInstance().getFileSystem(getProtocol());
@@ -153,6 +136,7 @@ public abstract class BaseIdeaFileSystem implements IFileSystem, CachingFileSyst
   }
 
   /*package*/ BaseIdeaFileSystem getLocalFS() {
-    return (BaseIdeaFileSystem) vfsManager().getFileSystem(VFSManager.FILE_FS);
+    final VFSManager vfsManager = MPSCoreComponents.getInstance().getPlatform().findComponent(VFSManager.class);
+    return (BaseIdeaFileSystem) vfsManager.getFileSystem(VFSManager.FILE_FS);
   }
 }
