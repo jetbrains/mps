@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.project;
 
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
@@ -64,8 +65,8 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
   private ProjectDescriptor myProjectDescriptor;
 
   @SuppressWarnings("UnusedParameters")
-  public StandaloneMPSProject(final Project project, IdeaFileSystem ideaFS) {
-    super(project, MPSCoreComponents.getInstance(), ideaFS);
+  public StandaloneMPSProject(final Project project) {
+    super(project, MPSCoreComponents.getInstance());
     myProjectDescriptor = null;
     // we used to have ProjectLibraryManager in dependencies to ensure project libraries are ready,
     // but now project libraries get initialized from a lifecycle listener, and I see no point to care to init PLM here.
