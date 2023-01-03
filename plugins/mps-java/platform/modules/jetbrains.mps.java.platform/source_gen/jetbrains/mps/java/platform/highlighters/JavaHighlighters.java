@@ -10,6 +10,8 @@ import java.util.Deque;
 import jetbrains.mps.nodeEditor.checking.EditorChecker;
 import jetbrains.mps.internal.collections.runtime.DequeSequence;
 import java.util.LinkedList;
+import com.intellij.openapi.project.Project;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.java.platform.highlighters.methodcallsfixer.MethodCallsFixer;
 import jetbrains.mps.nodeEditor.checking.DisposableEditorChecker;
 
@@ -19,13 +21,13 @@ public final class JavaHighlighters implements ProjectComponent {
   private Highlighter myHighlighter;
   private Deque<EditorChecker> myCheckers = DequeSequence.fromDequeNew(new LinkedList<EditorChecker>());
 
-  public JavaHighlighters(MPSProject project, Highlighter highlighter) {
-    myProject = project;
-    myHighlighter = highlighter;
+  public JavaHighlighters(Project project) {
+    myProject = ProjectHelper.fromIdeaProjectOrFail(project);
   }
 
   @Override
   public void projectOpened() {
+    myHighlighter = Highlighter.getInstance(myProject);
     myHighlighter.addChecker(DequeSequence.fromDequeNew(myCheckers).pushElement(new OverrideMethodsChecker(myProject)));
     myHighlighter.addChecker(DequeSequence.fromDequeNew(myCheckers).pushElement(new ToDoHighlighter()));
     myHighlighter.addChecker(DequeSequence.fromDequeNew(myCheckers).pushElement(new MethodCallsFixer(myProject.getRepository())));

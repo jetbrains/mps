@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-bedep5pncpljn3knvkczhn04ceduqv6">
+<product version="3" modelHash="-40e3pgxzybugfpfv49k9ce5rnu7u984">
   <files names="JavaHighlighters.java:OverriddenMethodEditorMessage.java:OverrideMethodsChecker.java:OverridingMethodEditorMessage.java:SubclassedClassifierEditorMessage.java:ToDoHighlighter.java:ToDoMessage.java" />
 </product>
 

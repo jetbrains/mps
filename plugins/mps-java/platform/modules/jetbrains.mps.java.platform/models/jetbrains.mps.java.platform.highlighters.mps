@@ -42,6 +42,7 @@
     <import index="cj4x" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor(MPS.Editor/)" />
     <import index="ew8r" ref="r:579b6612-4f9e-4479-8e4c-5ef2ee0f9722(jetbrains.mps.ide.editor.popup)" />
     <import index="ntzd" ref="r:bf32fdbc-530f-4631-ba64-3e7b620ac47f(jetbrains.mps.baseLanguage.util)" />
+    <import index="alof" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.project(MPS.Platform/)" />
   </imports>
   <registry>
     <language id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin">
@@ -3931,21 +3932,15 @@
       <node concept="3clFbS" id="7k6J8c3u3EL" role="3clF47">
         <node concept="3clFbF" id="7k6J8c3u3Uy" role="3cqZAp">
           <node concept="37vLTI" id="7k6J8c3u3US" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxglD$d" role="37vLTx">
-              <ref role="3cqZAo" node="7OyUyLn8DF0" resolve="project" />
+            <node concept="2YIFZM" id="3NrJY7lgIS0" role="37vLTx">
+              <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProjectOrFail(com.intellij.openapi.project.Project)" resolve="fromIdeaProjectOrFail" />
+              <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
+              <node concept="37vLTw" id="3NrJY7lgJRq" role="37wK5m">
+                <ref role="3cqZAo" node="7OyUyLn8DF0" resolve="project" />
+              </node>
             </node>
             <node concept="37vLTw" id="2BHiRxeuBuV" role="37vLTJ">
               <ref role="3cqZAo" node="7k6J8c3u3Uu" resolve="myProject" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="1JsJJ3D2aW0" role="3cqZAp">
-          <node concept="37vLTI" id="1JsJJ3D2aW2" role="3clFbG">
-            <node concept="37vLTw" id="1JsJJ3D2aW5" role="37vLTJ">
-              <ref role="3cqZAo" node="1JsJJ3D2aVW" resolve="myHighlighter" />
-            </node>
-            <node concept="37vLTw" id="1JsJJ3D2aW6" role="37vLTx">
-              <ref role="3cqZAo" node="3R1M2I6RHAP" resolve="highlighter" />
             </node>
           </node>
         </node>
@@ -3955,13 +3950,7 @@
       <node concept="37vLTG" id="7OyUyLn8DF0" role="3clF46">
         <property role="TrG5h" value="project" />
         <node concept="3uibUv" id="13$TqNLKwMk" role="1tU5fm">
-          <ref role="3uigEE" to="z1c4:~MPSProject" resolve="MPSProject" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="3R1M2I6RHAP" role="3clF46">
-        <property role="TrG5h" value="highlighter" />
-        <node concept="3uibUv" id="1JsJJ3D267x" role="1tU5fm">
-          <ref role="3uigEE" to="exr9:~Highlighter" resolve="Highlighter" />
+          <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
         </node>
       </node>
     </node>
@@ -3976,6 +3965,20 @@
       <node concept="3cqZAl" id="7k6J8c3u3EP" role="3clF45" />
       <node concept="3Tm1VV" id="7k6J8c3u3EO" role="1B3o_S" />
       <node concept="3clFbS" id="7k6J8c3u3EQ" role="3clF47">
+        <node concept="3clFbF" id="3NrJY7lgvEf" role="3cqZAp">
+          <node concept="37vLTI" id="3NrJY7lgwWE" role="3clFbG">
+            <node concept="2YIFZM" id="3NrJY7lgzXZ" role="37vLTx">
+              <ref role="37wK5l" to="exr9:~Highlighter.getInstance(jetbrains.mps.project.MPSProject)" resolve="getInstance" />
+              <ref role="1Pybhc" to="exr9:~Highlighter" resolve="Highlighter" />
+              <node concept="37vLTw" id="3NrJY7lgAum" role="37wK5m">
+                <ref role="3cqZAo" node="7k6J8c3u3Uu" resolve="myProject" />
+              </node>
+            </node>
+            <node concept="37vLTw" id="3NrJY7lgvEd" role="37vLTJ">
+              <ref role="3cqZAo" node="1JsJJ3D2aVW" resolve="myHighlighter" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="1W7gAtGJNJ2" role="3cqZAp">
           <node concept="2OqwBi" id="1W7gAtGJNJo" role="3clFbG">
             <node concept="liA8E" id="1W7gAtGJNJu" role="2OqNvi">

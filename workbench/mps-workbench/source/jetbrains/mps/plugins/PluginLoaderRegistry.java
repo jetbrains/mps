@@ -44,6 +44,9 @@ import jetbrains.mps.plugins.projectplugins.BaseProjectPlugin;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.smodel.MPSModuleRepository;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.smodel.runtime.ModuleDeploymentChange;
+import jetbrains.mps.smodel.runtime.ModuleDeploymentListener;
 import jetbrains.mps.smodel.tempmodel.TempModule;
 import jetbrains.mps.util.JavaNameUtil;
 import org.jetbrains.annotations.NotNull;
@@ -93,6 +96,23 @@ public class PluginLoaderRegistry implements Disposable {
   private final AtomicBoolean myUpdateIsScheduledInEDT = new AtomicBoolean(false);
   private final AtomicBoolean myAppInitialized = new AtomicBoolean();
 
+  private final ModuleDeploymentListener myModuleDeploymentListener = new ModuleDeploymentListener() {
+    @Override
+    public void deploymentStateChanged(@NotNull ModuleDeploymentChange change) {
+      System.out.println("deploymentStateChanged>>>");
+      System.out.print("\tadded:");
+      change.forEachAdded(System.out::print);
+      System.out.println();
+      System.out.print("\tremoved:");
+      change.forEachRemoved(System.out::print);
+      System.out.println();
+      System.out.print("\treloaded:");
+      change.forEachReloaded(System.out::print);
+      System.out.println();
+      System.out.println("<<<deploymentStateChanged");
+    }
+  };
+
   public static PluginLoaderRegistry getInstance() {
     return ApplicationManager.getApplication().getComponent(PluginLoaderRegistry.class);
   }
@@ -115,6 +135,7 @@ public class PluginLoaderRegistry implements Disposable {
 
     myClassLoaderManager.addListener(myClassesListener);
     assert myCurrentContributors.isEmpty();
+    mpsPlatform.findComponent(LanguageRegistry.class).addRegistryListener(myModuleDeploymentListener);
   }
 
   private void signalAppInitialized() {
@@ -647,6 +668,9 @@ public class PluginLoaderRegistry implements Disposable {
   @Override
   public void dispose() {
     myClassLoaderManager.removeListener(myClassesListener);
+    MPSCoreComponents coreComponents = MPSCoreComponents.getInstance();
+    Platform mpsPlatform = coreComponents.getPlatform();
+    mpsPlatform.findComponent(LanguageRegistry.class).removeRegistryListener(myModuleDeploymentListener);
   }
 
   private class SchedulingUpdateListener implements DeployListener {
