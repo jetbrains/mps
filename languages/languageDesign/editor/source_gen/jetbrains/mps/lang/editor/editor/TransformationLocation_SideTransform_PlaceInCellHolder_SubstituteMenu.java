@@ -150,6 +150,8 @@ public class TransformationLocation_SideTransform_PlaceInCellHolder_SubstituteMe
 
   }
 
+
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept TransformationLocation_SideTransform_PlaceInCellHolder$$t = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x30335f3d1845bdccL, "jetbrains.mps.lang.editor.structure.TransformationLocation_SideTransform_PlaceInCellHolder");
   }

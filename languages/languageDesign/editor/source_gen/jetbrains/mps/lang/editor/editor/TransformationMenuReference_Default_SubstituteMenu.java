@@ -121,6 +121,8 @@ public class TransformationMenuReference_Default_SubstituteMenu extends Substitu
     }
   }
 
+
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept TransformationMenuReference_Default$sG = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5d3b34577b3cff0cL, "jetbrains.mps.lang.editor.structure.TransformationMenuReference_Default");
   }

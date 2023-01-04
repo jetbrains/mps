@@ -67,6 +67,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.addEditorCell(createConstant_1());
     editorCell.addEditorCell(createRefNode_0());
     editorCell.addEditorCell(createComponent_0());
+    editorCell.addEditorCell(createComponent_1());
     return editorCell;
   }
   private EditorCell createConstant_0() {
@@ -169,6 +170,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
     Style style = new StyleImpl();
     style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
     style.set(StyleAttributes.INDENT_LAYOUT_ON_NEW_LINE, true);
+    editorCell.getStyle().putAll(style);
+    return editorCell;
+  }
+  private EditorCell createComponent_1() {
+    EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.editor.editor.ITransformationMenu_FieldsAndMethods");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.INDENT_LAYOUT_ON_NEW_LINE, true);
+    style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
     editorCell.getStyle().putAll(style);
     return editorCell;
   }

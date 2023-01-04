@@ -150,6 +150,7 @@ public class CellModel_Collection_UsesFoldingMenu extends TransformationMenuBase
 
   }
 
+
   private static final class PROPS {
     /*package*/ static final SProperty usesFolding$P9Na = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10e3893660fL, "usesFolding");
   }

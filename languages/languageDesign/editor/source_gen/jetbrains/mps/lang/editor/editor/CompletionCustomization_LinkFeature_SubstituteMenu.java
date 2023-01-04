@@ -87,6 +87,8 @@ public class CompletionCustomization_LinkFeature_SubstituteMenu extends Substitu
     }
   }
 
+
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept CompletionCustomization_LinkFeature$1p = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570dedb336aL, "jetbrains.mps.lang.editor.structure.CompletionCustomization_LinkFeature");
   }

@@ -181,6 +181,8 @@ public class ContextHintsSpecification_SubstituteMenu extends SubstituteMenuBase
 
   }
 
+
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept ExplicitHintsSpecification$lr = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3ae0865e9a712712L, "jetbrains.mps.lang.editor.structure.ExplicitHintsSpecification");
     /*package*/ static final SConcept QueryHintsSpecification$rK = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x555cb285f801e1a1L, "jetbrains.mps.lang.editor.structure.QueryHintsSpecification");

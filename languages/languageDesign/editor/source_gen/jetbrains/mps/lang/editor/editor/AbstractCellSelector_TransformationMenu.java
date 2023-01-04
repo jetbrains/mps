@@ -469,6 +469,7 @@ public class AbstractCellSelector_TransformationMenu extends TransformationMenuB
     }
   }
 
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept AbstractCellSelector$JG = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector");
     /*package*/ static final SConcept SelectInEditorOperation$rA = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, "jetbrains.mps.lang.editor.structure.SelectInEditorOperation");

@@ -127,6 +127,7 @@ public class addCondition extends TransformationMenuBase {
 
   }
 
+
   private static final class LINKS {
     /*package*/ static final SContainmentLink query$S$k8 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e9b10ab20495600L, 0x7e9b10ab20495602L, "query");
   }

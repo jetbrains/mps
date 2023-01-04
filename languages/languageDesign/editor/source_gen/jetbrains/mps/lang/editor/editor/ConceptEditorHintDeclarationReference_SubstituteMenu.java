@@ -87,6 +87,8 @@ public class ConceptEditorHintDeclarationReference_SubstituteMenu extends Substi
     }
   }
 
+
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept ConceptEditorHintDeclarationReference$ug = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5eadaecad41188dcL, "jetbrains.mps.lang.editor.structure.ConceptEditorHintDeclarationReference");
   }

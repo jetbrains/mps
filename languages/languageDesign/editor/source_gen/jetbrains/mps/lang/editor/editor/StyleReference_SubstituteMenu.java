@@ -87,6 +87,8 @@ public class StyleReference_SubstituteMenu extends SubstituteMenuBase {
     }
   }
 
+
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept StyleReference$y3 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e9b10ab1edbd2fbL, "jetbrains.mps.lang.editor.structure.StyleReference");
   }

@@ -185,6 +185,8 @@ public class TransformationLocation_SubstituteMenu extends SubstituteMenuBase {
     }
   }
 
+
+
   private static final class LINKS {
     /*package*/ static final SContainmentLink locations$m8FB = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbdL, "locations");
   }

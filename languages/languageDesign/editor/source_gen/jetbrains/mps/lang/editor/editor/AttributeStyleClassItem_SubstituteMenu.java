@@ -87,6 +87,8 @@ public class AttributeStyleClassItem_SubstituteMenu extends SubstituteMenuBase {
     }
   }
 
+
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept AttributeStyleClassItem$Ec = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9eae0a402L, "jetbrains.mps.lang.editor.structure.AttributeStyleClassItem");
   }

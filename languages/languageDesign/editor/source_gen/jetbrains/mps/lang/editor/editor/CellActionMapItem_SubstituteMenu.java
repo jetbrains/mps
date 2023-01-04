@@ -150,6 +150,8 @@ public class CellActionMapItem_SubstituteMenu extends SubstituteMenuBase {
 
   }
 
+
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept CellActionMapItem$r5 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109519879e9L, "jetbrains.mps.lang.editor.structure.CellActionMapItem");
   }

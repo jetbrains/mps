@@ -121,6 +121,8 @@ public class CellModel_RefCell_SubstituteMenu extends SubstituteMenuBase {
     }
   }
 
+
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept CellModel_RefCell$7g = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd52a2c922L, "jetbrains.mps.lang.editor.structure.CellModel_RefCell");
   }

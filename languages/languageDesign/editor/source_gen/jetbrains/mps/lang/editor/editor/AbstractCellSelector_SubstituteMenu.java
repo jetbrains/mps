@@ -425,6 +425,8 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
     }
   }
 
+
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept IdSelector$tz = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1e02662c4b880750L, "jetbrains.mps.lang.editor.structure.IdSelector");
     /*package*/ static final SConcept PropertyDeclarationCellSelector$XF = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3e970bbc3009e3a3L, "jetbrains.mps.lang.editor.structure.PropertyDeclarationCellSelector");

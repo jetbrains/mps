@@ -118,6 +118,9 @@ public class StyleClassReferenceList_SubstituteMenu extends SubstituteMenuBase {
       return CONCEPTS.StyleClassReference$J9;
     }
   }
+
+
+
   private static SNode createStyleClassReferenceList_cyyevv_a0a0a(Iterable<? extends SNode> p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.StyleClassReferenceList$lx);
     n0.forChild(LINKS.element$1rSY).initNodeList(p0, CONCEPTS.StyleClassReference$J9);

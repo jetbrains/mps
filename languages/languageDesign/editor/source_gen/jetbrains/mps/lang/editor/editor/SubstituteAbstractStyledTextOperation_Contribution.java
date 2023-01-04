@@ -182,6 +182,8 @@ public class SubstituteAbstractStyledTextOperation_Contribution extends Substitu
 
   }
 
+
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept AbstractStyledTextOperation$j9 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3ee423fc2ad10eceL, "jetbrains.mps.lang.editor.structure.AbstractStyledTextOperation");
     /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");

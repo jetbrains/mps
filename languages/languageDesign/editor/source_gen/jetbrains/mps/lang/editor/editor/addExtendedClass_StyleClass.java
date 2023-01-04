@@ -128,6 +128,7 @@ public class addExtendedClass_StyleClass extends TransformationMenuBase {
 
   }
 
+
   private static final class LINKS {
     /*package*/ static final SContainmentLink dominates$y5K_ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a126f24L, 0x2ef3b3796a130bd8L, "dominates");
   }

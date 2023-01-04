@@ -505,9 +505,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
     deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
     deps.extendedLanguage(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure");
+    deps.extendedLanguage(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, "jetbrains.mps.baseLanguage.classifiers");
     deps.aggregatedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
-    deps.aggregatedLanguage(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, "jetbrains.mps.lang.modelapi");
     deps.aggregatedLanguage(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, "jetbrains.mps.baseLanguage.classifiers");
+    deps.aggregatedLanguage(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, "jetbrains.mps.lang.modelapi");
   }
 
   @Override
@@ -3672,9 +3673,12 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor", "ISubstituteMenu", 0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L);
     b.interface_();
     b.parent(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048846L);
+    b.parent(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc6b2af5L);
     b.origin("r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/2000375450116454183");
     b.version(3);
     b.aggregate("parts", 0x5c03050cab44f64L).target(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab4546aL).optional(true).ordered(true).multiple(true).origin("414384289274416996").done();
+    b.aggregate("methodDeclaration", 0x118c255bfb5L).target(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd6ee3c3L).optional(true).ordered(true).multiple(true).origin("1205851242421").done();
+    b.aggregate("fieldDeclaration", 0x4ffeb1df376f7495L).target(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x11aa7fc0293L).optional(true).ordered(true).multiple(true).origin("5764240145346688149").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForISubstituteMenuReference() {
@@ -3710,9 +3714,12 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor", "ITransformationMenu", 0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c11832L);
     b.interface_();
     b.parent(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048846L);
+    b.parent(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc6b2af5L);
     b.origin("r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/5624877018228267058");
     b.version(3);
     b.aggregate("sections", 0x16be955f384efffcL).target(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL).optional(true).ordered(true).multiple(true).origin("1638911550608572412").done();
+    b.aggregate("methodDeclaration", 0x1c3a55c084e3bb6aL).target(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd6ee3c3L).optional(true).ordered(true).multiple(true).origin("2034032467062799210").done();
+    b.aggregate("fieldDeclaration", 0x1c3a55c084e3bb6bL).target(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x11aa7fc0293L).optional(true).ordered(true).multiple(true).origin("2034032467062799211").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForITransformationMenuReference() {

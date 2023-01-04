@@ -801,6 +801,8 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
     }
 
   }
+
+
   private static SNode _quotation_createNode_puymhi_a0a0a0a0() {
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;

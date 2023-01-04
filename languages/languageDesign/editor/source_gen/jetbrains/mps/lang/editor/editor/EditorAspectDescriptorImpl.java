@@ -444,14 +444,20 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     return Collections.emptyList();
   }
   private Collection<ConceptEditorComponent> getDeclaredEC_5(String editorComponentId) {
-    if ("jetbrains.mps.lang.editor.editor.ISubstituteMenu_PartsComponent".equals(editorComponentId)) {
-      return Collections.singletonList(new ISubstituteMenu_PartsComponent());
+    switch (editorComponentId) {
+      case "jetbrains.mps.lang.editor.editor.ISubstituteMenu_FieldsAndMethods":
+        return Collections.singletonList(new ISubstituteMenu_FieldsAndMethods());
+      case "jetbrains.mps.lang.editor.editor.ISubstituteMenu_PartsComponent":
+        return Collections.singletonList(new ISubstituteMenu_PartsComponent());
     }
     return Collections.emptyList();
   }
   private Collection<ConceptEditorComponent> getDeclaredEC_6(String editorComponentId) {
-    if ("jetbrains.mps.lang.editor.editor.TransformationMenu_Sections_Component".equals(editorComponentId)) {
-      return Collections.singletonList(new TransformationMenu_Sections_Component());
+    switch (editorComponentId) {
+      case "jetbrains.mps.lang.editor.editor.ITransformationMenu_FieldsAndMethods":
+        return Collections.singletonList(new ITransformationMenu_FieldsAndMethods());
+      case "jetbrains.mps.lang.editor.editor.TransformationMenu_Sections_Component":
+        return Collections.singletonList(new TransformationMenu_Sections_Component());
     }
     return Collections.emptyList();
   }

@@ -150,6 +150,7 @@ public class CellModel_Collection_CollapseByDefaultMenu extends TransformationMe
 
   }
 
+
   private static final class PROPS {
     /*package*/ static final SProperty collapseByDefault$VbZ_ = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x569b712fbc6ece21L, "collapseByDefault");
   }

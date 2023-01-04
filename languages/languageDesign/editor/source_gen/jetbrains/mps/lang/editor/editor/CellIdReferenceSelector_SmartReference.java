@@ -60,6 +60,8 @@ public class CellIdReferenceSelector_SmartReference extends SubstituteMenuBase {
 
   }
 
+
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept CellIdReferenceSelector$vW = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3c0028bb8556f621L, "jetbrains.mps.lang.editor.structure.CellIdReferenceSelector");
   }

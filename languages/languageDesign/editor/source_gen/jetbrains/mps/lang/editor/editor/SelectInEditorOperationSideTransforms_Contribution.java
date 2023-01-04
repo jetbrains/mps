@@ -397,6 +397,7 @@ public class SelectInEditorOperationSideTransforms_Contribution extends Transfor
     }
   }
 
+
   private static final class LINKS {
     /*package*/ static final SContainmentLink editorContext$1IiA = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x1b0a9b8c0e947adeL, "editorContext");
     /*package*/ static final SContainmentLink cellSelector$u$HA = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x1b0a9b8c0eb90bdeL, "cellSelector");

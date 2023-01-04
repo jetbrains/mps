@@ -70,6 +70,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.addEditorCell(createCollection_1());
     editorCell.addEditorCell(createConstant_3());
     editorCell.addEditorCell(createComponent_0());
+    editorCell.addEditorCell(createComponent_1());
     return editorCell;
   }
   private EditorCell createCollection_1() {
@@ -251,6 +252,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
   private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.editor.editor.ISubstituteMenu_PartsComponent");
+    return editorCell;
+  }
+  private EditorCell createComponent_1() {
+    EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.editor.editor.ISubstituteMenu_FieldsAndMethods");
     return editorCell;
   }
 

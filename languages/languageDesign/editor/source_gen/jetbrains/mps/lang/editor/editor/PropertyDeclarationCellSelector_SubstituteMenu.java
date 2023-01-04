@@ -87,6 +87,8 @@ public class PropertyDeclarationCellSelector_SubstituteMenu extends SubstituteMe
     }
   }
 
+
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept PropertyDeclarationCellSelector$XF = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3e970bbc3009e3a3L, "jetbrains.mps.lang.editor.structure.PropertyDeclarationCellSelector");
   }

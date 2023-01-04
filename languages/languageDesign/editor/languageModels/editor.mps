@@ -13115,6 +13115,15 @@
           <property role="VOm3f" value="true" />
         </node>
       </node>
+      <node concept="PMmxH" id="1KUls24SWrk" role="3EZMnx">
+        <ref role="PMmxG" node="1KUls24SW0W" resolve="ITransformationMenu_FieldsAndMethods" />
+        <node concept="pVoyu" id="1KUls24SWrt" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="lj46D" id="1KUls24SWrv" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
     </node>
   </node>
   <node concept="24kQdi" id="7_cYeEu4qnw">
@@ -14627,6 +14636,15 @@
           <property role="VOm3f" value="true" />
         </node>
         <node concept="pVoyu" id="7WoWfGXKLQe" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="PMmxH" id="1KUls24SWh5" role="3EZMnx">
+        <ref role="PMmxG" node="1KUls24SW0z" resolve="ISubstituteMenu_FieldsAndMethods" />
+        <node concept="pVoyu" id="1KUls24SWhe" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="lj46D" id="1KUls24SWhg" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
       </node>
@@ -19291,6 +19309,9 @@
       <node concept="PMmxH" id="1MSG8n$m$HD" role="3EZMnx">
         <ref role="PMmxG" node="6VgTvK0jg8i" resolve="TransformationMenu_Sections_Component" />
       </node>
+      <node concept="PMmxH" id="1KUls24SWuD" role="3EZMnx">
+        <ref role="PMmxG" node="1KUls24SW0W" resolve="ITransformationMenu_FieldsAndMethods" />
+      </node>
     </node>
   </node>
   <node concept="24kQdi" id="3zpRaytt6xZ">
@@ -19328,6 +19349,9 @@
       <node concept="3F0ifn" id="3zpRaytt6zU" role="3EZMnx" />
       <node concept="PMmxH" id="3zpRaytt6$r" role="3EZMnx">
         <ref role="PMmxG" node="7WoWfGXKj7A" resolve="ISubstituteMenu_PartsComponent" />
+      </node>
+      <node concept="PMmxH" id="1KUls24SW3q" role="3EZMnx">
+        <ref role="PMmxG" node="1KUls24SW0z" resolve="ISubstituteMenu_FieldsAndMethods" />
       </node>
     </node>
   </node>
@@ -26467,6 +26491,98 @@
           </node>
         </node>
       </node>
+    </node>
+  </node>
+  <node concept="PKFIW" id="1KUls24SW0z">
+    <property role="3GE5qa" value="Menu.Substitute" />
+    <property role="TrG5h" value="ISubstituteMenu_FieldsAndMethods" />
+    <ref role="1XX52x" to="tpc2:1J2KHYpABsB" resolve="ISubstituteMenu" />
+    <node concept="3EZMnI" id="1KUls24SW0_" role="2wV5jI">
+      <node concept="3F0ifn" id="66ZZ2RilY8m" role="3EZMnx">
+        <node concept="VPM3Z" id="66ZZ2RilY8n" role="3F10Kt">
+          <property role="VOm3f" value="false" />
+        </node>
+      </node>
+      <node concept="3F0ifn" id="4ZYGtWRrRGw" role="3EZMnx">
+        <property role="3F0ifm" value="fields" />
+        <node concept="VPM3Z" id="4ZYGtWRrRGx" role="3F10Kt">
+          <property role="VOm3f" value="false" />
+        </node>
+        <node concept="30gYXW" id="4ZYGtWRrRGy" role="3F10Kt">
+          <property role="Vb096" value="fLwANPp/orange" />
+        </node>
+      </node>
+      <node concept="3F0ifn" id="66ZZ2RilY8r" role="3EZMnx">
+        <node concept="VPM3Z" id="66ZZ2RilY8s" role="3F10Kt">
+          <property role="VOm3f" value="false" />
+        </node>
+      </node>
+      <node concept="3F2HdR" id="4ZYGtWRrRF7" role="3EZMnx">
+        <ref role="1NtTu8" to="tpc2:4ZYGtWRrRil" resolve="fieldDeclaration" />
+        <node concept="2iRkQZ" id="4ZYGtWRrRF9" role="2czzBx" />
+      </node>
+      <node concept="3F0ifn" id="4ZYGtWRrRMS" role="3EZMnx" />
+      <node concept="3F0ifn" id="66ZZ2RilY8o" role="3EZMnx">
+        <property role="3F0ifm" value="additional methods" />
+        <node concept="VPM3Z" id="66ZZ2RilY8p" role="3F10Kt">
+          <property role="VOm3f" value="false" />
+        </node>
+        <node concept="30gYXW" id="66ZZ2RilY8q" role="3F10Kt">
+          <property role="Vb096" value="fLwANPp/orange" />
+        </node>
+      </node>
+      <node concept="3F0ifn" id="4ZYGtWRrRwZ" role="3EZMnx" />
+      <node concept="3F2HdR" id="66ZZ2RilY8t" role="3EZMnx">
+        <ref role="1NtTu8" to="tpc2:hz2lrYP" resolve="methodDeclaration" />
+        <node concept="2iRkQZ" id="66ZZ2RilY8u" role="2czzBx" />
+      </node>
+      <node concept="2iRkQZ" id="1KUls24SW0C" role="2iSdaV" />
+    </node>
+  </node>
+  <node concept="PKFIW" id="1KUls24SW0W">
+    <property role="3GE5qa" value="Menu.Substitute" />
+    <property role="TrG5h" value="ITransformationMenu_FieldsAndMethods" />
+    <ref role="1XX52x" to="tpc2:4Sf$XywKhwM" resolve="ITransformationMenu" />
+    <node concept="3EZMnI" id="1KUls24SW0X" role="2wV5jI">
+      <node concept="3F0ifn" id="1KUls24SW0Y" role="3EZMnx">
+        <node concept="VPM3Z" id="1KUls24SW0Z" role="3F10Kt">
+          <property role="VOm3f" value="false" />
+        </node>
+      </node>
+      <node concept="3F0ifn" id="1KUls24SW10" role="3EZMnx">
+        <property role="3F0ifm" value="fields" />
+        <node concept="VPM3Z" id="1KUls24SW11" role="3F10Kt">
+          <property role="VOm3f" value="false" />
+        </node>
+        <node concept="30gYXW" id="1KUls24SW12" role="3F10Kt">
+          <property role="Vb096" value="fLwANPp/orange" />
+        </node>
+      </node>
+      <node concept="3F0ifn" id="1KUls24SW13" role="3EZMnx">
+        <node concept="VPM3Z" id="1KUls24SW14" role="3F10Kt">
+          <property role="VOm3f" value="false" />
+        </node>
+      </node>
+      <node concept="3F2HdR" id="1KUls24SW15" role="3EZMnx">
+        <ref role="1NtTu8" to="tpc2:1KUls24SVHF" resolve="fieldDeclaration" />
+        <node concept="2iRkQZ" id="1KUls24SW16" role="2czzBx" />
+      </node>
+      <node concept="3F0ifn" id="1KUls24SW17" role="3EZMnx" />
+      <node concept="3F0ifn" id="1KUls24SW18" role="3EZMnx">
+        <property role="3F0ifm" value="additional methods" />
+        <node concept="VPM3Z" id="1KUls24SW19" role="3F10Kt">
+          <property role="VOm3f" value="false" />
+        </node>
+        <node concept="30gYXW" id="1KUls24SW1a" role="3F10Kt">
+          <property role="Vb096" value="fLwANPp/orange" />
+        </node>
+      </node>
+      <node concept="3F0ifn" id="1KUls24SW1b" role="3EZMnx" />
+      <node concept="3F2HdR" id="1KUls24SW1c" role="3EZMnx">
+        <ref role="1NtTu8" to="tpc2:1KUls24SVHE" resolve="methodDeclaration" />
+        <node concept="2iRkQZ" id="1KUls24SW1d" role="2czzBx" />
+      </node>
+      <node concept="2iRkQZ" id="1KUls24SW1e" role="2iSdaV" />
     </node>
   </node>
 </model>

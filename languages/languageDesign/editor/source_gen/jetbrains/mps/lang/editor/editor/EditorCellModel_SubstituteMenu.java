@@ -1407,6 +1407,8 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     }
   }
 
+
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept EditorCellModel$gN = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel");
     /*package*/ static final SConcept CellModel_Constant$4e = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb01232eL, "jetbrains.mps.lang.editor.structure.CellModel_Constant");

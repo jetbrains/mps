@@ -237,6 +237,8 @@ public class CellMenuPart_Abstract_SubstituteMenu extends SubstituteMenuBase {
     }
   }
 
+
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept PropertyDeclaration$1S = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
     /*package*/ static final SConcept CellMenuPart_PropertyValues$kb = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f357f9ab7L, "jetbrains.mps.lang.editor.structure.CellMenuPart_PropertyValues");

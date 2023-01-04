@@ -87,6 +87,8 @@ public class TransformationMenuVariableReference_SubstituteMenu extends Substitu
     }
   }
 
+
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept TransformationMenuVariableReference$zp = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x201faaffc29bac4fL, "jetbrains.mps.lang.editor.structure.TransformationMenuVariableReference");
   }

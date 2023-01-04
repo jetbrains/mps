@@ -87,6 +87,8 @@ public class CellMenuComponentFeature_Property_SubstituteMenu extends Substitute
     }
   }
 
+
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept CellMenuComponentFeature_Property$jz = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7d811428L, "jetbrains.mps.lang.editor.structure.CellMenuComponentFeature_Property");
   }

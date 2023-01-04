@@ -87,6 +87,8 @@ public class EditorComponentDeclarationReference_SubstituteMenu extends Substitu
     }
   }
 
+
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept EditorComponentDeclarationReference$ZU = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x619d95571435dfe8L, "jetbrains.mps.lang.editor.structure.EditorComponentDeclarationReference");
   }

@@ -159,6 +159,7 @@ public class SubstituteMenuReference_Default_QueryMenu extends TransformationMen
     }
   }
 
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept TransformationMenuPart$N$ = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x16be955f384efffeL, "jetbrains.mps.lang.editor.structure.TransformationMenuPart");
     /*package*/ static final SConcept SubstituteMenuPart$Kz = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab4546aL, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart");

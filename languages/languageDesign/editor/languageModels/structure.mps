@@ -4294,6 +4294,23 @@
       <property role="IQ2ns" value="1638911550608572412" />
       <ref role="20lvS9" node="6V0bp$oHeYW" resolve="TransformationMenuSection" />
     </node>
+    <node concept="1TJgyj" id="1KUls24SVHE" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="methodDeclaration" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
+      <property role="IQ2ns" value="2034032467062799210" />
+      <ref role="20lvS9" to="tp4f:hyXrIf3" resolve="DefaultClassifierMethodDeclaration" />
+    </node>
+    <node concept="1TJgyj" id="1KUls24SVHF" role="1TKVEi">
+      <property role="IQ2ns" value="2034032467062799211" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="fieldDeclaration" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" to="tp4f:hEBZ0aj" resolve="DefaultClassifierFieldDeclaration" />
+    </node>
+    <node concept="PrWs8" id="1KUls24TcI4" role="PrDN$">
+      <ref role="PrY4T" to="tp4f:hyWqMFP" resolve="IClassifier" />
+    </node>
   </node>
   <node concept="1TIwiD" id="1qY_lWSjJNx">
     <property role="TrG5h" value="TransformationMenu_Default" />
@@ -5528,8 +5545,25 @@
       <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="n0c53aH5hE" resolve="SubstituteMenuPart" />
     </node>
+    <node concept="1TJgyj" id="hz2lrYP" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="methodDeclaration" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
+      <property role="IQ2ns" value="1205851242421" />
+      <ref role="20lvS9" to="tp4f:hyXrIf3" resolve="DefaultClassifierMethodDeclaration" />
+    </node>
+    <node concept="1TJgyj" id="4ZYGtWRrRil" role="1TKVEi">
+      <property role="IQ2ns" value="5764240145346688149" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="fieldDeclaration" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" to="tp4f:hEBZ0aj" resolve="DefaultClassifierFieldDeclaration" />
+    </node>
     <node concept="PrWs8" id="1quYWADmNv8" role="PrDN$">
       <ref role="PrY4T" node="1quYWAD18x6" resolve="IMenu" />
+    </node>
+    <node concept="PrWs8" id="1KUls24TcF9" role="PrDN$">
+      <ref role="PrY4T" to="tp4f:hyWqMFP" resolve="IClassifier" />
     </node>
   </node>
   <node concept="1TIwiD" id="5N5pDMJPfSO">
