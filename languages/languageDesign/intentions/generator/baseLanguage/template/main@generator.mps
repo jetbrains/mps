@@ -479,6 +479,10 @@
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
+      <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7">
+        <property id="8575328350543493365" name="message" index="huDt6" />
+        <property id="2423417345669755629" name="filter" index="1eyWvh" />
+      </concept>
     </language>
     <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
       <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="nn" index="3oM_SD">
@@ -4504,7 +4508,7 @@
                           <node concept="2OqwBi" id="5JxumkiDzpr" role="3clFbG">
                             <node concept="1iwH7S" id="5JxumkiDzpq" role="2Oq$k0" />
                             <node concept="1iwH70" id="5JxumkiDzpv" role="2OqNvi">
-                              <ref role="1iwH77" to="tp48:T8OkJRa3UD" resolve="map_ClassifierField" />
+                              <ref role="1iwH77" node="5JxumkiDsy8" resolve="map_IntentionsClassifierField" />
                               <node concept="2OqwBi" id="5JxumkiDzpy" role="1iwH7V">
                                 <node concept="30H73N" id="5JxumkiDzpx" role="2Oq$k0" />
                                 <node concept="3TrEf2" id="5JxumkiDzpA" role="2OqNvi">
@@ -4586,6 +4590,31 @@
                           </node>
                         </node>
                       </node>
+                      <node concept="3clFbH" id="1KUls25vfk3" role="3cqZAp" />
+                      <node concept="3clFbJ" id="26ZettxTk3x" role="3cqZAp">
+                        <node concept="2OqwBi" id="26ZettxTpDV" role="3clFbw">
+                          <node concept="37vLTw" id="3GM_nagTxJ9" role="2Oq$k0">
+                            <ref role="3cqZAo" node="26ZettxTj_N" resolve="method" />
+                          </node>
+                          <node concept="3w_OXm" id="26ZettxTpDZ" role="2OqNvi" />
+                        </node>
+                        <node concept="3clFbS" id="26ZettxTk3z" role="3clFbx">
+                          <node concept="3cpWs6" id="26ZettxTpE3" role="3cqZAp">
+                            <node concept="2OqwBi" id="26ZettxTpEh" role="3cqZAk">
+                              <node concept="2OqwBi" id="26ZettxTpEc" role="2Oq$k0">
+                                <node concept="30H73N" id="26ZettxTpEb" role="2Oq$k0" />
+                                <node concept="3TrEf2" id="26ZettxTpEg" role="2OqNvi">
+                                  <ref role="3Tt5mk" to="tp4f:hyXtfQh" resolve="method" />
+                                </node>
+                              </node>
+                              <node concept="3TrcHB" id="26ZettxTpEl" role="2OqNvi">
+                                <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3clFbH" id="1KUls25vfsB" role="3cqZAp" />
                       <node concept="3cpWs6" id="1ZXee$8Rb77" role="3cqZAp">
                         <node concept="37vLTw" id="1ZXee$8RbrW" role="3cqZAk">
                           <ref role="3cqZAo" node="26ZettxTj_N" resolve="method" />
@@ -4682,73 +4711,11 @@
                     </node>
                   </node>
                 </node>
-                <node concept="1W57fq" id="1ZXee$8R8GV" role="lGtFl">
-                  <node concept="3IZrLx" id="1ZXee$8R8GW" role="3IZSJc">
-                    <node concept="3clFbS" id="1ZXee$8R8GX" role="2VODD2">
-                      <node concept="3clFbF" id="1ZXee$8R8RK" role="3cqZAp">
-                        <node concept="2OqwBi" id="1ZXee$8R9Wd" role="3clFbG">
-                          <node concept="2OqwBi" id="1ZXee$8R8RM" role="2Oq$k0">
-                            <node concept="1iwH70" id="1ZXee$8R8RN" role="2OqNvi">
-                              <ref role="1iwH77" to="tp48:T8OkJRa3UE" resolve="map_ClassifierMethod" />
-                              <node concept="2OqwBi" id="1ZXee$8R8RO" role="1iwH7V">
-                                <node concept="3TrEf2" id="1ZXee$8R8RP" role="2OqNvi">
-                                  <ref role="3Tt5mk" to="tp4f:hyXtfQh" resolve="method" />
-                                </node>
-                                <node concept="30H73N" id="1ZXee$8R8RQ" role="2Oq$k0" />
-                              </node>
-                            </node>
-                            <node concept="1iwH7S" id="1ZXee$8R8RR" role="2Oq$k0" />
-                          </node>
-                          <node concept="3x8VRR" id="1ZXee$8RaWt" role="2OqNvi" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="gft3U" id="1ZXee$8Rfqr" role="UU_$l">
-                    <node concept="liA8E" id="1ZXee$8RkTM" role="gfFT$">
-                      <ref role="37wK5l" node="hz2AJv8" resolve="method" />
-                      <node concept="3cmrfG" id="1ZXee$8RkTN" role="37wK5m">
-                        <property role="3cmrfH" value="0" />
-                        <node concept="2b32R4" id="1ZXee$8RkTO" role="lGtFl">
-                          <node concept="3JmXsc" id="1ZXee$8RkTP" role="2P8S$">
-                            <node concept="3clFbS" id="1ZXee$8RkTQ" role="2VODD2">
-                              <node concept="3clFbF" id="1ZXee$8RkTR" role="3cqZAp">
-                                <node concept="2OqwBi" id="1ZXee$8RkTS" role="3clFbG">
-                                  <node concept="30H73N" id="1ZXee$8RkTT" role="2Oq$k0" />
-                                  <node concept="3Tsc0h" id="1ZXee$8RkTU" role="2OqNvi">
-                                    <ref role="3TtcxE" to="tp4f:hyXxRup" resolve="actualArgument" />
-                                  </node>
-                                </node>
-                              </node>
-                            </node>
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="1ZhdrF" id="1ZXee$8RkTW" role="lGtFl">
-                        <property role="2qtEX8" value="baseMethodDeclaration" />
-                        <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1204053956946/1068499141037" />
-                        <node concept="3$xsQk" id="1ZXee$8RkTX" role="3$ytzL">
-                          <node concept="3clFbS" id="1ZXee$8RkTY" role="2VODD2">
-                            <node concept="3clFbF" id="1ZXee$8RoBM" role="3cqZAp">
-                              <node concept="2OqwBi" id="1ZXee$8Rq2c" role="3clFbG">
-                                <node concept="2OqwBi" id="1ZXee$8Rp7F" role="2Oq$k0">
-                                  <node concept="30H73N" id="1ZXee$8RoBL" role="2Oq$k0" />
-                                  <node concept="3TrEf2" id="1ZXee$8RpvX" role="2OqNvi">
-                                    <ref role="3Tt5mk" to="tp4f:hyXtfQh" resolve="method" />
-                                  </node>
-                                </node>
-                                <node concept="3TrcHB" id="1ZXee$8RqTg" role="2OqNvi">
-                                  <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
-                                </node>
-                              </node>
-                            </node>
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
               </node>
+            </node>
+            <node concept="15s5l7" id="1KUls25vmxc" role="lGtFl">
+              <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: type java.lang.Object is not a subtype of node&lt;InstanceMethodDeclaration&gt;&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)/8991952304890041665,r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/1186053540847]&quot;;" />
+              <property role="huDt6" value="Error: type java.lang.Object is not a subtype of node&lt;InstanceMethodDeclaration&gt;" />
             </node>
           </node>
         </node>
