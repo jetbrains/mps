@@ -88,7 +88,7 @@ public class RunCodeFromSolution_Test extends EnvironmentAwareTestCase {
         }
       }
     });
-    int exitCode = ProcessHandlerBuilder.startAndWait(process);
+    int exitCode = ProcessHandlerBuilder.startAndWait(process, 1000L * 60 * 5);
     if (exitCode != 0) {
       Assert.fail("Exited with code " + exitCode);
     }
