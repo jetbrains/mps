@@ -241,13 +241,16 @@ public class QueriesGenerated extends QueryProviderBase {
     return RuntimeNodePointers.tuplesIfaceByComponents(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$BsHW), CONCEPTS.ArrayCreator$bz), LINKS.componentType$SJjq), CONCEPTS.IndexedTupleType$6Q), LINKS.componentType$crWY)).count());
   }
   public static Object referenceMacro_GetReferent_1_0(final ReferenceMacroContext _context) {
+    return RuntimeNodePointers.tupleImplByComponents(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.tupleDeclaration$Pcb7), LINKS.component$wCHx)).count());
+  }
+  public static Object referenceMacro_GetReferent_1_1(final ReferenceMacroContext _context) {
     SNode output = _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.VariableDeclaration$Y0), LINKS.type$a1UY), CONCEPTS.NamedTupleType$DW), LINKS.classifier$cxMr), "namedTupleDecl2class");
     if ((output != null)) {
       return output;
     }
     return TupleDeclarationUtil.getResolveInfo(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.VariableDeclaration$Y0), LINKS.type$a1UY), CONCEPTS.NamedTupleType$DW), LINKS.classifier$cxMr));
   }
-  public static Object referenceMacro_GetReferent_1_1(final ReferenceMacroContext _context) {
+  public static Object referenceMacro_GetReferent_1_2(final ReferenceMacroContext _context) {
     SNode td = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$BsHW), CONCEPTS.ArrayCreator$bz), LINKS.componentType$SJjq), CONCEPTS.NamedTupleType$DW), LINKS.classifier$cxMr);
     SNode output = _context.getOutputNodeByInputNodeAndMappingLabel(td, "namedTupleDecl2class");
     if ((output != null)) {
@@ -255,7 +258,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }
     return TupleDeclarationUtil.getResolveInfo(td);
   }
-  public static Object referenceMacro_GetReferent_1_2(final ReferenceMacroContext _context) {
+  public static Object referenceMacro_GetReferent_1_3(final ReferenceMacroContext _context) {
     SNode td = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$BsHW), CONCEPTS.ArrayCreator$bz), LINKS.componentType$SJjq), CONCEPTS.NamedTupleType$DW), LINKS.classifier$cxMr);
     SNode output = _context.getOutputNodeByInputNodeAndMappingLabel(td, "namedTupleDecl2class");
     if ((output != null)) {
@@ -358,7 +361,7 @@ public class QueriesGenerated extends QueryProviderBase {
     Integer index = (Integer) idx;
     SNode tupleNode = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.tuple$$4XS)), CONCEPTS.IndexedTupleType$6Q);
     if ((tupleNode == null)) {
-      return createClassifierType_x583g4_a0a3a48();
+      return createClassifierType_x583g4_a0a3a58();
     }
     List<SNode> componentType = SLinkOperations.getChildren(tupleNode, LINKS.componentType$crWY);
     SNode result = null;
@@ -503,18 +506,21 @@ public class QueriesGenerated extends QueryProviderBase {
     return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), CONCEPTS.NamedTupleType$DW), LINKS.parameter$oqG$)).select((SNode t) -> ClassifierTypeUtil.getTypeCoercedToClassifierType(t));
   }
   public static Iterable<SNode> sourceNodesQuery_1_3(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.VariableDeclaration$Y0), LINKS.type$a1UY), CONCEPTS.NamedTupleType$DW), LINKS.parameter$oqG$)).select((SNode t) -> ClassifierTypeUtil.getTypeCoercedToClassifierType(t));
+    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), CONCEPTS.NamedTupleType$DW), LINKS.parameter$oqG$)).select((SNode t) -> ClassifierTypeUtil.getTypeCoercedToClassifierType(t));
   }
   public static Iterable<SNode> sourceNodesQuery_1_4(final SourceSubstituteMacroNodesContext _context) {
     return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.VariableDeclaration$Y0), LINKS.type$a1UY), CONCEPTS.NamedTupleType$DW), LINKS.parameter$oqG$)).select((SNode t) -> ClassifierTypeUtil.getTypeCoercedToClassifierType(t));
   }
   public static Iterable<SNode> sourceNodesQuery_1_5(final SourceSubstituteMacroNodesContext _context) {
-    return SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$BsHW), CONCEPTS.ArrayCreator$bz), LINKS.dimensionExpression$DH6N), LINKS.expression$4ICz);
+    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.VariableDeclaration$Y0), LINKS.type$a1UY), CONCEPTS.NamedTupleType$DW), LINKS.parameter$oqG$)).select((SNode t) -> ClassifierTypeUtil.getTypeCoercedToClassifierType(t));
   }
   public static Iterable<SNode> sourceNodesQuery_1_6(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$BsHW), CONCEPTS.ArrayCreator$bz), LINKS.componentType$SJjq), CONCEPTS.NamedTupleType$DW), LINKS.parameter$oqG$)).select((SNode t) -> ClassifierTypeUtil.getTypeCoercedToClassifierType(t));
+    return SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$BsHW), CONCEPTS.ArrayCreator$bz), LINKS.dimensionExpression$DH6N), LINKS.expression$4ICz);
   }
   public static Iterable<SNode> sourceNodesQuery_1_7(final SourceSubstituteMacroNodesContext _context) {
+    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$BsHW), CONCEPTS.ArrayCreator$bz), LINKS.componentType$SJjq), CONCEPTS.NamedTupleType$DW), LINKS.parameter$oqG$)).select((SNode t) -> ClassifierTypeUtil.getTypeCoercedToClassifierType(t));
+  }
+  public static Iterable<SNode> sourceNodesQuery_1_8(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$BsHW), CONCEPTS.ArrayCreatorWithInitializer$Bs), LINKS.initValue$4K91);
   }
   public static Iterable<SNode> sourceNodesQuery_2_0(final SourceSubstituteMacroNodesContext _context) {
@@ -910,6 +916,7 @@ public class QueriesGenerated extends QueryProviderBase {
     snsqMethods.put("2682363017137697535", new SNsQ(i++));
     snsqMethods.put("2682363017137741883", new SNsQ(i++));
     snsqMethods.put("2682363017137741862", new SNsQ(i++));
+    snsqMethods.put("4931876019147990282", new SNsQ(i++));
     snsqMethods.put("1241018440898", new SNsQ(i++));
     snsqMethods.put("1241018440922", new SNsQ(i++));
     snsqMethods.put("2413168484686095947", new SNsQ(i++));
@@ -998,62 +1005,64 @@ public class QueriesGenerated extends QueryProviderBase {
         case 18:
           return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_1_7(ctx));
         case 19:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_2_0(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_1_8(ctx));
         case 20:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_2_1(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_2_0(ctx));
         case 21:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_2_2(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_2_1(ctx));
         case 22:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_2_3(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_2_2(ctx));
         case 23:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_2_4(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_2_3(ctx));
         case 24:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_2_5(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_2_4(ctx));
         case 25:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_2_6(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_2_5(ctx));
         case 26:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_2_7(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_2_6(ctx));
         case 27:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_2_8(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_2_7(ctx));
         case 28:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_0(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_2_8(ctx));
         case 29:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_1(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_0(ctx));
         case 30:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_2(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_1(ctx));
         case 31:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_3(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_2(ctx));
         case 32:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_4(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_3(ctx));
         case 33:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_5(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_4(ctx));
         case 34:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_6(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_5(ctx));
         case 35:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_7(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_6(ctx));
         case 36:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_8(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_7(ctx));
         case 37:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_9(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_8(ctx));
         case 38:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_10(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_9(ctx));
         case 39:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_11(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_10(ctx));
         case 40:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_12(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_11(ctx));
         case 41:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_13(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_12(ctx));
         case 42:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_14(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_13(ctx));
         case 43:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_15(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_14(ctx));
         case 44:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_16(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_15(ctx));
         case 45:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_17(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_16(ctx));
         case 46:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_18(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_17(ctx));
         case 47:
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_18(ctx));
+        case 48:
           return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_19(ctx));
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
@@ -1244,21 +1253,22 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("8649208922452405376", new RTQ(4, "_tmp"));
     rtqMethods.put("2413168484686156112", new RTQ(5, "Object"));
     rtqMethods.put("1604260043160917472", new RTQ(6, "Object"));
-    rtqMethods.put("1241018440883", new RTQ(7, "Object"));
-    rtqMethods.put("2413168484686095911", new RTQ(8, "Object"));
-    rtqMethods.put("8755343252890081395", new RTQ(9, "Object"));
-    rtqMethods.put("1239636757671", new RTQ(10, "_1"));
-    rtqMethods.put("1239640673717", new RTQ(11, "component"));
-    rtqMethods.put("247710080512637348", new RTQ(12, "_1"));
-    rtqMethods.put("247710080512637565", new RTQ(13, "NamedTuple"));
-    rtqMethods.put("247710080512637638", new RTQ(14, "T"));
-    rtqMethods.put("247710080512637693", new RTQ(15, "_1"));
-    rtqMethods.put("574925412489664652", new RTQ(16, "empty1"));
-    rtqMethods.put("247710080512637241", new RTQ(17, "component"));
-    rtqMethods.put("4237952634722624282", new RTQ(18, "component"));
-    rtqMethods.put("1275460185645819590", new RTQ(19, "from"));
-    rtqMethods.put("6392574240232855005", new RTQ(20, "_1"));
-    rtqMethods.put("6392574240232854396", new RTQ(21, "_1"));
+    rtqMethods.put("4931876019147923474", new RTQ(7, "_0"));
+    rtqMethods.put("1241018440883", new RTQ(8, "Object"));
+    rtqMethods.put("2413168484686095911", new RTQ(9, "Object"));
+    rtqMethods.put("8755343252890081395", new RTQ(10, "Object"));
+    rtqMethods.put("1239636757671", new RTQ(11, "_1"));
+    rtqMethods.put("1239640673717", new RTQ(12, "component"));
+    rtqMethods.put("247710080512637348", new RTQ(13, "_1"));
+    rtqMethods.put("247710080512637565", new RTQ(14, "NamedTuple"));
+    rtqMethods.put("247710080512637638", new RTQ(15, "T"));
+    rtqMethods.put("247710080512637693", new RTQ(16, "_1"));
+    rtqMethods.put("574925412489664652", new RTQ(17, "empty1"));
+    rtqMethods.put("247710080512637241", new RTQ(18, "component"));
+    rtqMethods.put("4237952634722624282", new RTQ(19, "component"));
+    rtqMethods.put("1275460185645819590", new RTQ(20, "from"));
+    rtqMethods.put("6392574240232855005", new RTQ(21, "_1"));
+    rtqMethods.put("6392574240232854396", new RTQ(22, "_1"));
   }
   @NotNull
   @Override
@@ -1296,28 +1306,30 @@ public class QueriesGenerated extends QueryProviderBase {
         case 9:
           return QueriesGenerated.referenceMacro_GetReferent_1_2(ctx);
         case 10:
-          return QueriesGenerated.referenceMacro_GetReferent_2_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_1_3(ctx);
         case 11:
-          return QueriesGenerated.referenceMacro_GetReferent_2_1(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_2_0(ctx);
         case 12:
-          return QueriesGenerated.referenceMacro_GetReferent_4_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_2_1(ctx);
         case 13:
-          return QueriesGenerated.referenceMacro_GetReferent_4_1(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_4_0(ctx);
         case 14:
-          return QueriesGenerated.referenceMacro_GetReferent_4_2(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_4_1(ctx);
         case 15:
-          return QueriesGenerated.referenceMacro_GetReferent_4_3(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_4_2(ctx);
         case 16:
-          return QueriesGenerated.referenceMacro_GetReferent_4_4(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_4_3(ctx);
         case 17:
-          return QueriesGenerated.referenceMacro_GetReferent_4_5(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_4_4(ctx);
         case 18:
-          return QueriesGenerated.referenceMacro_GetReferent_4_6(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_4_5(ctx);
         case 19:
-          return QueriesGenerated.referenceMacro_GetReferent_4_7(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_4_6(ctx);
         case 20:
-          return QueriesGenerated.referenceMacro_GetReferent_4_8(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_4_7(ctx);
         case 21:
+          return QueriesGenerated.referenceMacro_GetReferent_4_8(ctx);
+        case 22:
           return QueriesGenerated.referenceMacro_GetReferent_4_9(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
@@ -1380,7 +1392,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
   }
-  private static SNode createClassifierType_x583g4_a0a3a48() {
+  private static SNode createClassifierType_x583g4_a0a3a58() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassifierType$bL);
     n0.setReference(LINKS.classifier$cxMr, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Object")));
