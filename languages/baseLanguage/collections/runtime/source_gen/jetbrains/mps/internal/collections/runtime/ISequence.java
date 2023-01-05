@@ -4,6 +4,7 @@ package jetbrains.mps.internal.collections.runtime;
 
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Comparator;
+import java.util.List;
 
 public interface ISequence<T> extends Iterable<T>, IEnumerable<T> {
   ISequence<T> where(_FunctionTypes._return_P1_E0<? extends Boolean, ? super T> filter);
@@ -44,7 +45,15 @@ public interface ISequence<T> extends Iterable<T>, IEnumerable<T> {
   <S> S foldLeft(S seed, _FunctionTypes._return_P2_E0<? extends S, ? super S, ? super T> comb);
   <S> S foldRight(S seed, _FunctionTypes._return_P2_E0<? extends S, ? super T, ? super S> comb);
   Iterable<T> toIterable();
-  IListSequence<T> toListSequence();
+  List<T> toList();
+  /**
+   * 
+   * @deprecated this is not necessary, and could act as a cast while it was expected that the output list would be a copy of it
+   */
+  @Deprecated
+  default IListSequence<T> toListSequence() {
+    return new ListSequence<>(toList());
+  }
   T[] toGenericArray();
   T[] toGenericArray(Class<T> runtimeClass);
 }

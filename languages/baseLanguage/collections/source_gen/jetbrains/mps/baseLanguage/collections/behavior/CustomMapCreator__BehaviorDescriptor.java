@@ -49,7 +49,7 @@ public final class CustomMapCreator__BehaviorDescriptor extends BaseBHDescriptor
       ListSequence.fromList(params).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.valueType$2EUo));
     }
     final List<SNode> tvars = SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.containerDeclaration$QVZa), LINKS.typeVariableDeclaration$Lipp);
-    ListSequence.fromList(SNodeOperations.getChildren(res)).toListSequence().visitAll((SNode chld) -> {
+    ListSequence.fromList(ListSequence.fromList(SNodeOperations.getChildren(res)).toList()).visitAll((SNode chld) -> {
       if (SNodeOperations.isInstanceOf(chld, CONCEPTS.TypeVariableReference$WL)) {
         int index = ListSequence.fromList(tvars).indexOf(SLinkOperations.getTarget(SNodeOperations.cast(chld, CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I));
         SNode realType = ((index >= 0 && index < ListSequence.fromList(params).count()) ? SNodeOperations.copyNode(ListSequence.fromList(params).getElement(index)) : null);

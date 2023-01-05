@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.ListIterator;
 import jetbrains.mps.internal.collections.runtime.ISequence;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 public class NullListSequence<T> extends NullCollectionSequence<T> implements IListSequence<T>, List<T> {
@@ -115,7 +116,7 @@ public class NullListSequence<T> extends NullCollectionSequence<T> implements IL
   }
   @Override
   public List<T> toList() {
-    return this;
+    return new ArrayList<>();
   }
   @SuppressWarnings(value = "unchecked")
   @Override

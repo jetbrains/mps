@@ -21,7 +21,6 @@ public interface IListSequence<T> extends ICollectionSequence<T>, ISequence<T>, 
   IListSequence<T> subListSequence(int fromIdx, int upToIdx);
   IListSequence<T> headListSequence(int upToIdx);
   IListSequence<T> tailListSequence(int fromIdx);
-  List<T> toList();
   T[] toGenericArray();
   T[] toGenericArray(Class<T> runtimeClass);
   IListSequence<T> asUnmodifiable();

@@ -168,11 +168,8 @@ public abstract class AbstractListSequence<T> extends AbstractCollectionSequence
   }
   @Override
   public List<T> toList() {
-    return this;
-  }
-  @Override
-  public IListSequence<T> toListSequence() {
-    return this;
+    // copy of the list
+    return new ArrayList<>(this.list);
   }
   /*package*/ void _reverse() {
     Collections.reverse(getList());

@@ -111,6 +111,9 @@
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ng" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
+      </concept>
       <concept id="1109279763828" name="jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration" flags="ng" index="16euLQ" />
       <concept id="1109279851642" name="jetbrains.mps.baseLanguage.structure.GenericDeclaration" flags="ng" index="16eOlS">
         <child id="1109279881614" name="typeVariableDeclaration" index="16eVyc" />
@@ -4734,7 +4737,12 @@
       </node>
       <node concept="3clFbS" id="5Ffu4tBUxNr" role="3clF47">
         <node concept="3cpWs6" id="5Ffu4tBUxNs" role="3cqZAp">
-          <node concept="Xjq3P" id="5Ffu4tBUxNt" role="3cqZAk" />
+          <node concept="2ShNRf" id="4hLyLJPHlB_" role="3cqZAk">
+            <node concept="1pGfFk" id="4hLyLJPHBVs" role="2ShVmc">
+              <property role="373rjd" value="true" />
+              <ref role="37wK5l" to="33ny:~ArrayList.&lt;init&gt;()" resolve="ArrayList" />
+            </node>
+          </node>
         </node>
       </node>
       <node concept="2AHcQZ" id="3tYsUK_UtQd" role="2AJF6D">

@@ -4,6 +4,7 @@
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
   </languages>
   <imports>
     <import index="vq2z" ref="r:242df33e-bb74-49e9-9cfb-0712ffc0ed0e(jetbrains.mps.internal.collections.runtime.impl)" />
@@ -126,6 +127,9 @@
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
+      </concept>
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ng" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1109279763828" name="jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration" flags="ng" index="16euLQ" />
       <concept id="1109279851642" name="jetbrains.mps.baseLanguage.structure.GenericDeclaration" flags="ng" index="16eOlS">
@@ -286,7 +290,25 @@
       </concept>
       <concept id="4816492477345855364" name="jetbrains.mps.baseLanguage.closures.structure.FunctionMethodDeclaration" flags="ig" index="3_nuBB" />
     </language>
+    <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
+      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
+        <child id="5383422241790532083" name="tags" index="3nqlJM" />
+      </concept>
+      <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
+      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
+        <child id="8970989240999019149" name="part" index="1dT_Ay" />
+      </concept>
+      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
+        <child id="2667874559098216723" name="text" index="3HnX3l" />
+      </concept>
+      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
+        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      </concept>
+    </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
+        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
+      </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
@@ -3647,15 +3669,51 @@
       <node concept="3clFbS" id="5Ffu4tBUxah" role="3clF47" />
     </node>
     <node concept="3clFb_" id="5Ffu4tBUxai" role="jymVt">
-      <property role="TrG5h" value="toListSequence" />
+      <property role="TrG5h" value="toList" />
       <node concept="3Tm1VV" id="5Ffu4tBUxaj" role="1B3o_S" />
       <node concept="3uibUv" id="5Ffu4tBUxak" role="3clF45">
-        <ref role="3uigEE" node="5Ffu4tBUyv1" resolve="IListSequence" />
+        <ref role="3uigEE" to="33ny:~List" resolve="List" />
         <node concept="16syzq" id="5Ffu4tBUxal" role="11_B2D">
           <ref role="16sUi3" node="5Ffu4tBUx5T" resolve="T" />
         </node>
       </node>
       <node concept="3clFbS" id="5Ffu4tBUxam" role="3clF47" />
+    </node>
+    <node concept="3clFb_" id="4hLyLJPZtrZ" role="jymVt">
+      <property role="TrG5h" value="toListSequence" />
+      <node concept="3clFbS" id="4hLyLJPZts2" role="3clF47">
+        <node concept="3cpWs6" id="doQwxsQyQ" role="3cqZAp">
+          <node concept="2ShNRf" id="doQwxsR7J" role="3cqZAk">
+            <node concept="1pGfFk" id="doQwxsSj9" role="2ShVmc">
+              <property role="373rjd" value="true" />
+              <ref role="37wK5l" node="5Ffu4tBUyYx" resolve="ListSequence" />
+              <node concept="1rXfSq" id="doQwxsTCT" role="37wK5m">
+                <ref role="37wK5l" node="5Ffu4tBUxai" resolve="toList" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="4hLyLJPZts3" role="1B3o_S" />
+      <node concept="3uibUv" id="4hLyLJPZs_z" role="3clF45">
+        <ref role="3uigEE" node="5Ffu4tBUyv1" resolve="IListSequence" />
+        <node concept="16syzq" id="4hLyLJPZtcP" role="11_B2D">
+          <ref role="16sUi3" node="5Ffu4tBUx5T" resolve="T" />
+        </node>
+      </node>
+      <node concept="P$JXv" id="4hLyLJPZuZO" role="lGtFl">
+        <node concept="TZ5HI" id="4hLyLJPZuZP" role="3nqlJM">
+          <node concept="TZ5HA" id="4hLyLJPZuZQ" role="3HnX3l">
+            <node concept="1dT_AC" id="4hLyLJPZvrY" role="1dT_Ay">
+              <property role="1dT_AB" value="this is not necessary, and could act as a cast while it was expected that the output list would be a copy of it" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="4hLyLJPZuZR" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+      </node>
+      <node concept="2JFqV2" id="doQwxsPpo" role="2frcjj" />
     </node>
     <node concept="3clFb_" id="5Ffu4tBUxan" role="jymVt">
       <property role="TrG5h" value="toGenericArray" />
@@ -9882,17 +9940,6 @@
       </node>
       <node concept="3clFbS" id="5Ffu4tBUywF" role="3clF47" />
     </node>
-    <node concept="3clFb_" id="5Ffu4tBUywG" role="jymVt">
-      <property role="TrG5h" value="toList" />
-      <node concept="3Tm1VV" id="5Ffu4tBUywH" role="1B3o_S" />
-      <node concept="3uibUv" id="5Ffu4tBUywI" role="3clF45">
-        <ref role="3uigEE" to="33ny:~List" resolve="List" />
-        <node concept="16syzq" id="5Ffu4tBUywJ" role="11_B2D">
-          <ref role="16sUi3" node="5Ffu4tBUyv3" resolve="T" />
-        </node>
-      </node>
-      <node concept="3clFbS" id="5Ffu4tBUywK" role="3clF47" />
-    </node>
     <node concept="3clFb_" id="5Ffu4tBUywL" role="jymVt">
       <property role="TrG5h" value="toGenericArray" />
       <node concept="3Tm1VV" id="5Ffu4tBUywM" role="1B3o_S" />
@@ -12483,7 +12530,7 @@
   </node>
   <node concept="312cEu" id="5Ffu4tBUyJF">
     <property role="TrG5h" value="ListSequence" />
-    <node concept="3Tm1VV" id="5Ffu4tBUyJG" role="1B3o_S" />
+    <node concept="3Tm1VV" id="doQwxDsn6" role="1B3o_S" />
     <node concept="16euLQ" id="5Ffu4tBUyJH" role="16eVyc">
       <property role="TrG5h" value="T" />
     </node>
@@ -20650,22 +20697,59 @@
       </node>
     </node>
     <node concept="3clFb_" id="6PIyugwVsUc" role="jymVt">
-      <property role="TrG5h" value="toListSequence" />
+      <property role="TrG5h" value="toList" />
       <node concept="3Tm1VV" id="6PIyugwVsUd" role="1B3o_S" />
       <node concept="3uibUv" id="6PIyugwVsUe" role="3clF45">
-        <ref role="3uigEE" node="5Ffu4tBUyv1" resolve="IListSequence" />
+        <ref role="3uigEE" to="33ny:~List" resolve="List" />
         <node concept="16syzq" id="6PIyugwVsUf" role="11_B2D">
           <ref role="16sUi3" node="6PIyugwUsOF" resolve="T" />
         </node>
       </node>
       <node concept="3clFbS" id="6PIyugwVsUg" role="3clF47">
-        <node concept="3cpWs6" id="6PIyugwVsUh" role="3cqZAp">
-          <node concept="2YIFZM" id="6PIyugwVsUi" role="3cqZAk">
-            <ref role="37wK5l" node="5Ffu4tBUyML" resolve="fromIterable" />
-            <ref role="1Pybhc" node="5Ffu4tBUyJF" resolve="ListSequence" />
-            <node concept="1rXfSq" id="4hiugqyzhpm" role="37wK5m">
-              <ref role="37wK5l" node="6PIyugwVsU4" resolve="toIterable" />
+        <node concept="3cpWs8" id="4hLyLJPOJ96" role="3cqZAp">
+          <node concept="3cpWsn" id="4hLyLJPOJ97" role="3cpWs9">
+            <property role="TrG5h" value="list" />
+            <node concept="3uibUv" id="4hLyLJPOJ94" role="1tU5fm">
+              <ref role="3uigEE" to="33ny:~ArrayList" resolve="ArrayList" />
+              <node concept="16syzq" id="4hLyLJPOVC5" role="11_B2D">
+                <ref role="16sUi3" node="6PIyugwUsOF" resolve="T" />
+              </node>
             </node>
+            <node concept="2ShNRf" id="4hLyLJPOJ98" role="33vP2m">
+              <node concept="1pGfFk" id="4hLyLJPOJ99" role="2ShVmc">
+                <property role="373rjd" value="true" />
+                <ref role="37wK5l" to="33ny:~ArrayList.&lt;init&gt;()" resolve="ArrayList" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1DcWWT" id="4hLyLJPPgcz" role="3cqZAp">
+          <node concept="3clFbS" id="4hLyLJPPgc_" role="2LFqv$">
+            <node concept="3clFbF" id="4hLyLJPQw1Z" role="3cqZAp">
+              <node concept="2OqwBi" id="4hLyLJPQBvx" role="3clFbG">
+                <node concept="37vLTw" id="4hLyLJPQw1X" role="2Oq$k0">
+                  <ref role="3cqZAo" node="4hLyLJPOJ97" resolve="list" />
+                </node>
+                <node concept="liA8E" id="4hLyLJPQQEB" role="2OqNvi">
+                  <ref role="37wK5l" to="33ny:~ArrayList.add(java.lang.Object)" resolve="add" />
+                  <node concept="37vLTw" id="4hLyLJPR4Ux" role="37wK5m">
+                    <ref role="3cqZAo" node="4hLyLJPPgcA" resolve="item" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3cpWsn" id="4hLyLJPPgcA" role="1Duv9x">
+            <property role="TrG5h" value="item" />
+            <node concept="16syzq" id="4hLyLJPPsVv" role="1tU5fm">
+              <ref role="16sUi3" node="6PIyugwUsOF" resolve="T" />
+            </node>
+          </node>
+          <node concept="Xjq3P" id="4hLyLJPQidl" role="1DdaDG" />
+        </node>
+        <node concept="3cpWs6" id="4hLyLJPRB$p" role="3cqZAp">
+          <node concept="37vLTw" id="4hLyLJPRIvg" role="3cqZAk">
+            <ref role="3cqZAo" node="4hLyLJPOJ97" resolve="list" />
           </node>
         </node>
       </node>
@@ -20683,12 +20767,19 @@
       </node>
       <node concept="3clFbS" id="6PIyugwVsUp" role="3clF47">
         <node concept="3cpWs6" id="6PIyugwVsUq" role="3cqZAp">
-          <node concept="2OqwBi" id="6PIyugwVsUr" role="3cqZAk">
-            <node concept="1rXfSq" id="4hiugqyyZ8f" role="2Oq$k0">
-              <ref role="37wK5l" node="6PIyugwVsUc" resolve="toListSequence" />
+          <node concept="10QFUN" id="4hLyLJPWvIA" role="3cqZAk">
+            <node concept="10Q1$e" id="4hLyLJPWSkE" role="10QFUM">
+              <node concept="16syzq" id="4hLyLJPWG2z" role="10Q1$1">
+                <ref role="16sUi3" node="6PIyugwUsOF" resolve="T" />
+              </node>
             </node>
-            <node concept="liA8E" id="6PIyugwVsUt" role="2OqNvi">
-              <ref role="37wK5l" node="5Ffu4tBUywL" resolve="toGenericArray" />
+            <node concept="2OqwBi" id="6PIyugwVsUr" role="10QFUP">
+              <node concept="1rXfSq" id="4hiugqyyZ8f" role="2Oq$k0">
+                <ref role="37wK5l" node="6PIyugwVsUc" resolve="toList" />
+              </node>
+              <node concept="liA8E" id="6PIyugwVsUt" role="2OqNvi">
+                <ref role="37wK5l" to="33ny:~List.toArray()" resolve="toArray" />
+              </node>
             </node>
           </node>
         </node>
@@ -20715,15 +20806,61 @@
         </node>
       </node>
       <node concept="3clFbS" id="6PIyugwVsUA" role="3clF47">
-        <node concept="3cpWs6" id="6PIyugwVsUB" role="3cqZAp">
-          <node concept="2OqwBi" id="6PIyugwVsUC" role="3cqZAk">
-            <node concept="1rXfSq" id="4hiugqyz81r" role="2Oq$k0">
-              <ref role="37wK5l" node="6PIyugwVsUc" resolve="toListSequence" />
+        <node concept="3cpWs8" id="4hLyLJPXixw" role="3cqZAp">
+          <node concept="3cpWsn" id="4hLyLJPXixx" role="3cpWs9">
+            <property role="TrG5h" value="list" />
+            <node concept="3uibUv" id="4hLyLJPXaqq" role="1tU5fm">
+              <ref role="3uigEE" to="33ny:~List" resolve="List" />
+              <node concept="16syzq" id="4hLyLJPXaqt" role="11_B2D">
+                <ref role="16sUi3" node="6PIyugwUsOF" resolve="T" />
+              </node>
             </node>
-            <node concept="liA8E" id="6PIyugwVsUE" role="2OqNvi">
-              <ref role="37wK5l" node="5Ffu4tBUywQ" resolve="toGenericArray" />
-              <node concept="37vLTw" id="2BHiRxghiMH" role="37wK5m">
-                <ref role="3cqZAo" node="6PIyugwVsUz" resolve="runtimeClass" />
+            <node concept="1rXfSq" id="4hLyLJPXixy" role="33vP2m">
+              <ref role="37wK5l" node="6PIyugwVsUc" resolve="toList" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="4hLyLJPX4AX" role="3cqZAp">
+          <node concept="3cpWsn" id="4hLyLJPX4AY" role="3cpWs9">
+            <property role="TrG5h" value="arr" />
+            <node concept="10Q1$e" id="4hLyLJPX4AZ" role="1tU5fm">
+              <node concept="16syzq" id="4hLyLJPX4B0" role="10Q1$1">
+                <ref role="16sUi3" node="6PIyugwUsOF" resolve="T" />
+              </node>
+            </node>
+            <node concept="10QFUN" id="4hLyLJPX4B1" role="33vP2m">
+              <node concept="2YIFZM" id="4hLyLJPX4B2" role="10QFUP">
+                <ref role="37wK5l" node="5Ffu4tBUzs$" resolve="newArrayInstance" />
+                <ref role="1Pybhc" node="5Ffu4tBUzoi" resolve="ArrayUtils" />
+                <node concept="37vLTw" id="4hLyLJPX4B3" role="37wK5m">
+                  <ref role="3cqZAo" node="6PIyugwVsUz" resolve="runtimeClass" />
+                </node>
+                <node concept="2OqwBi" id="4hLyLJPX4B4" role="37wK5m">
+                  <node concept="37vLTw" id="4hLyLJPXixz" role="2Oq$k0">
+                    <ref role="3cqZAo" node="4hLyLJPXixx" resolve="list" />
+                  </node>
+                  <node concept="liA8E" id="4hLyLJPX4B6" role="2OqNvi">
+                    <ref role="37wK5l" to="33ny:~List.size()" resolve="size" />
+                  </node>
+                </node>
+              </node>
+              <node concept="10Q1$e" id="4hLyLJPX4B7" role="10QFUM">
+                <node concept="16syzq" id="4hLyLJPX4B8" role="10Q1$1">
+                  <ref role="16sUi3" node="6PIyugwUsOF" resolve="T" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="4hLyLJPX4B9" role="3cqZAp">
+          <node concept="2OqwBi" id="4hLyLJPX4Ba" role="3cqZAk">
+            <node concept="37vLTw" id="4hLyLJPXix$" role="2Oq$k0">
+              <ref role="3cqZAo" node="4hLyLJPXixx" resolve="list" />
+            </node>
+            <node concept="liA8E" id="4hLyLJPX4Bc" role="2OqNvi">
+              <ref role="37wK5l" to="33ny:~List.toArray(java.lang.Object[])" resolve="toArray" />
+              <node concept="37vLTw" id="4hLyLJPX4Bd" role="37wK5m">
+                <ref role="3cqZAo" node="4hLyLJPX4AY" resolve="arr" />
               </node>
             </node>
           </node>
@@ -22127,29 +22264,38 @@
         </node>
       </node>
       <node concept="3clFbS" id="6PIyug_Wjtq" role="3clF47">
-        <node concept="3cpWs6" id="6PIyug_Wjtr" role="3cqZAp">
-          <node concept="Xjq3P" id="6PIyug_Wjts" role="3cqZAk" />
+        <node concept="3SKdUt" id="4hLyLJPJZMr" role="3cqZAp">
+          <node concept="1PaTwC" id="4hLyLJPJZMs" role="1aUNEU">
+            <node concept="3oM_SD" id="4hLyLJPKcbe" role="1PaTwD">
+              <property role="3oM_SC" value="copy" />
+            </node>
+            <node concept="3oM_SD" id="4hLyLJPKcbh" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="4hLyLJPKGmB" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="4hLyLJPKcbm" role="1PaTwD">
+              <property role="3oM_SC" value="list" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="4hLyLJPIF4_" role="3cqZAp">
+          <node concept="2ShNRf" id="4hLyLJPIGDy" role="3cqZAk">
+            <node concept="1pGfFk" id="4hLyLJPIU57" role="2ShVmc">
+              <property role="373rjd" value="true" />
+              <ref role="37wK5l" to="33ny:~ArrayList.&lt;init&gt;(java.util.Collection)" resolve="ArrayList" />
+              <node concept="2OqwBi" id="4hLyLJPKdog" role="37wK5m">
+                <node concept="Xjq3P" id="4hLyLJPJ8kZ" role="2Oq$k0" />
+                <node concept="2OwXpG" id="4hLyLJPKvAl" role="2OqNvi">
+                  <ref role="2Oxat5" node="6PIyug_WiL6" resolve="list" />
+                </node>
+              </node>
+            </node>
+          </node>
         </node>
       </node>
       <node concept="2AHcQZ" id="6PIyug_Wjtt" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="3clFb_" id="6PIyug_Wjtu" role="jymVt">
-      <property role="TrG5h" value="toListSequence" />
-      <node concept="3Tm1VV" id="6PIyug_Wjtv" role="1B3o_S" />
-      <node concept="3uibUv" id="6PIyug_Wjtw" role="3clF45">
-        <ref role="3uigEE" node="5Ffu4tBUyv1" resolve="IListSequence" />
-        <node concept="16syzq" id="6PIyug_Wjtx" role="11_B2D">
-          <ref role="16sUi3" node="6PIyug_VCEl" resolve="T" />
-        </node>
-      </node>
-      <node concept="3clFbS" id="6PIyug_Wjty" role="3clF47">
-        <node concept="3cpWs6" id="6PIyug_Wjtz" role="3cqZAp">
-          <node concept="Xjq3P" id="6PIyug_Wjt$" role="3cqZAk" />
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="6PIyug_Wjt_" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>

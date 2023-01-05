@@ -68,7 +68,7 @@ public class substitute_IOperation_IteratorType extends SubstituteMenuBase {
         super(new EditorMenuDescriptorBase("simple actions for the list of concepts", new SNodePointer("r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)", "1741258697586932839")));
       }
       protected Collection getConcepts(SubstituteMenuContext _context) {
-        return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.AbstractEnumeratorOperation$fY, _context.getModel())).where((SConcept it) -> it instanceof SConcept && !(((SConcept) it).isAbstract())).select((SConcept it) -> (SAbstractConcept) it).toListSequence();
+        return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.AbstractEnumeratorOperation$fY, _context.getModel())).where((SConcept it) -> it instanceof SConcept && !(((SConcept) it).isAbstract())).select((SConcept it) -> (SAbstractConcept) it).toList();
       }
 
       @Override
@@ -103,7 +103,7 @@ public class substitute_IOperation_IteratorType extends SubstituteMenuBase {
         super(new EditorMenuDescriptorBase("simple actions for the list of concepts", new SNodePointer("r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)", "1741258697586932963")));
       }
       protected Collection getConcepts(SubstituteMenuContext _context) {
-        return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.AbstractIteratorOperation$qN, _context.getModel())).where((SConcept it) -> it instanceof SConcept && !(((SConcept) it).isAbstract())).select((SConcept it) -> ((SAbstractConcept) it)).toListSequence();
+        return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.AbstractIteratorOperation$qN, _context.getModel())).where((SConcept it) -> it instanceof SConcept && !(((SConcept) it).isAbstract())).select((SConcept it) -> ((SAbstractConcept) it)).toList();
       }
 
       @Override

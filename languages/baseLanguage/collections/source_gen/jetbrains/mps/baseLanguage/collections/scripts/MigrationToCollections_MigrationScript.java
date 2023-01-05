@@ -239,7 +239,7 @@ public final class MigrationToCollections_MigrationScript extends BaseMigrationS
       public void doUpdateInstanceNode(SNode node) {
         SNode operation = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d5e2fc7c1L, "jetbrains.mps.baseLanguage.collections.structure.SetElementOperation"));
         SLinkOperations.setTarget(operation, LINKS.index$d0Ns, SNodeOperations.copyNode(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$pzdx)).first()));
-        SLinkOperations.setTarget(operation, LINKS.element$d1hu, SNodeOperations.copyNode(ListSequence.fromList(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$pzdx)).toListSequence()).getElement(1)));
+        SLinkOperations.setTarget(operation, LINKS.element$d1hu, SNodeOperations.copyNode(ListSequence.fromList(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$pzdx)).toList()).getElement(1)));
         SNodeOperations.replaceWithAnother(node, operation);
       }
       @Override

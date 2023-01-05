@@ -16,6 +16,8 @@ import jetbrains.mps.internal.collections.runtime.impl.ConcatingSequence;
 import jetbrains.mps.internal.collections.runtime.impl.NullSequence;
 import jetbrains.mps.internal.collections.runtime.impl.ComparingSequence;
 import jetbrains.mps.internal.collections.runtime.impl.ReversingSequence;
+import java.util.List;
+import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.impl.EnumeratorIterator;
 
 public abstract class AbstractSequence<T> implements ISequence<T>, Iterable<T> {
@@ -210,16 +212,22 @@ public abstract class AbstractSequence<T> implements ISequence<T>, Iterable<T> {
     return this;
   }
   @Override
-  public IListSequence<T> toListSequence() {
-    return ListSequence.fromIterable(toIterable());
+  public List<T> toList() {
+    ArrayList<T> list = new ArrayList<>();
+    for (T item : this) {
+      list.add(item);
+    }
+    return list;
   }
   @Override
   public T[] toGenericArray() {
-    return toListSequence().toGenericArray();
+    return (T[]) toList().toArray();
   }
   @Override
   public T[] toGenericArray(Class<T> runtimeClass) {
-    return toListSequence().toGenericArray(runtimeClass);
+    List<T> list = toList();
+    T[] arr = (T[]) ArrayUtils.newArrayInstance(runtimeClass, list.size());
+    return list.toArray(arr);
   }
   @Override
   public IEnumerator<T> enumerator() {

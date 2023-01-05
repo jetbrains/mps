@@ -39,7 +39,7 @@ public final class CustomContainerCreator__BehaviorDescriptor extends BaseBHDesc
   /*package*/ static SNode createType_idi0I0ppH(@NotNull final SNode __thisNode__) {
     SNode res = SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.containerDeclaration$nqf8), LINKS.containerType$WQze));
     //  workaround an SModel's dumbness
-    ListSequence.fromList(SNodeOperations.getChildren(res)).toListSequence().visitAll((SNode chld) -> {
+    ListSequence.fromList(ListSequence.fromList(SNodeOperations.getChildren(res)).toList()).visitAll((SNode chld) -> {
       if (SNodeOperations.isInstanceOf(chld, CONCEPTS.TypeVariableReference$WL)) {
         SNodeOperations.replaceWithAnother(chld, SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.elementType$WxmV)));
       }
