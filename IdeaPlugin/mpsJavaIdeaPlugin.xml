@@ -154,6 +154,7 @@
         <fileset file="${artifacts.IDEA}/lib/jps-model.jar" />
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
+        <fileset file="${artifacts.IDEA}/plugins/tasks/lib/tasks-core.jar" />
         <fileset dir="${artifacts.IDEA}/plugins/java/lib" includes="*.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>

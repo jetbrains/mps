@@ -593,6 +593,7 @@
       <jvmarg value="-XX:+HeapDumpOnOutOfMemoryError" />
       <jvmarg value="-Didea.config.path=${build.mps.config.path}" />
       <jvmarg value="-Didea.system.path=${build.mps.system.path}" />
+      <jvmarg value="-Djna.boot.library.path=${basedir}/lib/jna" />
       <jvmarg value="--add-opens=java.base/java.io=ALL-UNNAMED" />
       <jvmarg value="--add-opens=java.base/java.lang=ALL-UNNAMED" />
       <jvmarg value="--add-opens=java.base/java.lang.reflect=ALL-UNNAMED" />
