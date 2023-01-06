@@ -149,7 +149,8 @@ public class JUnitOutOfProcess_Test extends BaseTransformationTest {
     }
     public JavaRunParameters_Configuration createDefaultJavaSettings() {
       Project ideaProject = ((MPSProject) myProject).getProject();
-      JavaRunParameters javaRunParametersTuple = new JavaRunParameters("", "", "", ".", false);
+      String vmOptions = "-Djna.boot.library.path=\"" + ideaProject.getBasePath() + "/lib/jna\"";
+      JavaRunParameters javaRunParametersTuple = new JavaRunParameters("", vmOptions, "", ".", false);
       JavaRunParameters_Configuration javaRunParams = new JavaRunParameters_Configuration(ideaProject);
       javaRunParams.setJavaParameters(javaRunParametersTuple);
       return javaRunParams;
