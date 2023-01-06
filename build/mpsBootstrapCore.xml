@@ -43,7 +43,7 @@
   <path id="path.java.library.tasksplugin">
     <fileset file="${artifacts.IDEA}/plugins/tasks/lib/tasks-core.jar" />
   </path>
-
+  
   <path id="path.java.library.javac2">
     <fileset file="${mps_home}/plugins/java/lib/javac2.jar" />
   </path>
@@ -27757,7 +27757,6 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
-        <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
         <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
@@ -27847,7 +27846,6 @@
         <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
-        <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
