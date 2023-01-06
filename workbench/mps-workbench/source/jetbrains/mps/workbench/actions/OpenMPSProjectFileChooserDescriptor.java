@@ -31,7 +31,7 @@ public class OpenMPSProjectFileChooserDescriptor extends FileChooserDescriptor {
 
   @Override
   public boolean isFileSelectable(VirtualFile file) {
-    return isMpsProjectFile(file) || isMpsProjectDirectory(file);
+    return !file.isDirectory() || isMpsProjectDirectory(file);
   }
 
   @Override
