@@ -8,7 +8,9 @@ import com.intellij.ide.impl.OpenProjectTask;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.workbench.actions.OpenMPSProjectTrustProjectHelper;
+import kotlin.coroutines.Continuation;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
@@ -24,10 +26,11 @@ import java.util.concurrent.ForkJoinPool;
  * {@link com.intellij.platform.PlatformProjectOpenProcessor#runDirectoryProjectConfigurators(Path, Project, boolean)} and
  * end up in creation of module in {@link com.intellij.platform.PlatformProjectConfigurator#configureProject} saved in .idea/project_name.iml
  */
+// TODO: 223FIX
 class MPSRecentProjectsManagerBase extends RecentProjectsManagerBase {
 
   @NotNull
-  @Override
+//  @Override
   public CompletableFuture<Project> openProject(@NotNull Path projectFile, @NotNull OpenProjectTask openProjectOptions) {
     if (openProjectOptions.getRunConfigurators()) {
       // Blindly assume that this came from ReopenProjectAction
@@ -41,7 +44,7 @@ class MPSRecentProjectsManagerBase extends RecentProjectsManagerBase {
 
     return trustResult.thenComposeAsync(trusted -> {
                                           if (trusted) {
-                                            return MPSRecentProjectsManagerBase.super.openProject(projectFile, localOpenProjectOptions);
+                                            return null;// MPSRecentProjectsManagerBase.super.openProject(projectFile, localOpenProjectOptions);
                                           } else {
                                             return CompletableFuture.completedFuture(null);
                                           }
