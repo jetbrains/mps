@@ -757,7 +757,7 @@
                                       <ref role="2pIpSl" to="tp2c:htbW2KO" resolve="parameter" />
                                       <node concept="36be1Y" id="76F_llXtPg3" role="28nt2d">
                                         <node concept="2pJPED" id="76F_llXtPg4" role="36be1Z">
-                                          <ref role="2pJxaS" to="tp2q:hwRh6j$" resolve="SmartClosureParameterDeclaration" />
+                                          <ref role="2pJxaS" to="tp2c:2c8ypONne1U" resolve="InferredClosureParameterDeclaration" />
                                           <node concept="2pJxcG" id="76F_llXtPg5" role="2pJxcM">
                                             <ref role="2pJxcJ" to="tpck:h0TrG11" resolve="name" />
                                             <node concept="WxPPo" id="6bbvpKWHoNo" role="28ntcv">
@@ -861,7 +861,7 @@
                                   <ref role="2pIpSl" to="tp2c:htbW2KO" resolve="parameter" />
                                   <node concept="36be1Y" id="76F_llXtPgq" role="28nt2d">
                                     <node concept="2pJPED" id="76F_llXtPgr" role="36be1Z">
-                                      <ref role="2pJxaS" to="tp2q:hwRh6j$" resolve="SmartClosureParameterDeclaration" />
+                                      <ref role="2pJxaS" to="tp2c:2c8ypONne1U" resolve="InferredClosureParameterDeclaration" />
                                       <node concept="2pJxcG" id="76F_llXtPgs" role="2pJxcM">
                                         <ref role="2pJxcJ" to="tpck:h0TrG11" resolve="name" />
                                         <node concept="WxPPo" id="6bbvpKWHoNt" role="28ntcv">
@@ -1082,7 +1082,7 @@
                                       <ref role="2pIpSl" to="tp2c:htbW2KO" resolve="parameter" />
                                       <node concept="36be1Y" id="76F_llXtPrX" role="28nt2d">
                                         <node concept="2pJPED" id="76F_llXtPrY" role="36be1Z">
-                                          <ref role="2pJxaS" to="tp2q:hwRh6j$" resolve="SmartClosureParameterDeclaration" />
+                                          <ref role="2pJxaS" to="tp2c:2c8ypONne1U" resolve="InferredClosureParameterDeclaration" />
                                           <node concept="2pJxcG" id="76F_llXtPrZ" role="2pJxcM">
                                             <ref role="2pJxcJ" to="tpck:h0TrG11" resolve="name" />
                                             <node concept="WxPPo" id="6bbvpKWHoNy" role="28ntcv">

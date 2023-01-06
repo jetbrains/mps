@@ -1231,6 +1231,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.SmartClosureParameterDeclaration:
         if (props_SmartClosureParameterDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.shortDesc("smart closure parameter");
           cpb.presentationByName();
           props_SmartClosureParameterDeclaration = cpb.create();

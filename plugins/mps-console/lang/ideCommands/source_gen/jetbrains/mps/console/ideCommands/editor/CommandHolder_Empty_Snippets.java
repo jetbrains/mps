@@ -223,7 +223,7 @@ public class CommandHolder_Empty_Snippets extends TransformationMenuBase {
               }
             }
             {
-              SNodeBuilder n17 = n8.forChild(LINKS.parameter$b4Y3).init(CONCEPTS.SmartClosureParameterDeclaration$bO);
+              SNodeBuilder n17 = n8.forChild(LINKS.parameter$b4Y3).init(CONCEPTS.InferredClosureParameterDeclaration$DV);
               n17.setProperty(PROPS.name$MnvL, "node");
               n17.forChild(LINKS.type$a1UY).init(CONCEPTS.UndefinedType$uv);
             }
@@ -253,7 +253,7 @@ public class CommandHolder_Empty_Snippets extends TransformationMenuBase {
             }
           }
           {
-            SNodeBuilder n26 = n19.forChild(LINKS.parameter$b4Y3).init(CONCEPTS.SmartClosureParameterDeclaration$bO);
+            SNodeBuilder n26 = n19.forChild(LINKS.parameter$b4Y3).init(CONCEPTS.InferredClosureParameterDeclaration$DV);
             n26.setProperty(PROPS.name$MnvL, "node");
             n26.forChild(LINKS.type$a1UY).init(CONCEPTS.UndefinedType$uv);
           }
@@ -306,7 +306,7 @@ public class CommandHolder_Empty_Snippets extends TransformationMenuBase {
               }
             }
             {
-              SNodeBuilder n15 = n8.forChild(LINKS.parameter$b4Y3).init(CONCEPTS.SmartClosureParameterDeclaration$bO);
+              SNodeBuilder n15 = n8.forChild(LINKS.parameter$b4Y3).init(CONCEPTS.InferredClosureParameterDeclaration$DV);
               n15.setProperty(PROPS.name$MnvL, "node");
               n15.forChild(LINKS.type$a1UY).init(CONCEPTS.UndefinedType$uv);
             }
@@ -354,7 +354,7 @@ public class CommandHolder_Empty_Snippets extends TransformationMenuBase {
     /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
     /*package*/ static final SConcept ExpressionStatement$O8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
     /*package*/ static final SConcept BooleanConstant$n4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant");
-    /*package*/ static final SConcept SmartClosureParameterDeclaration$bO = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x118374464e4L, "jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration");
+    /*package*/ static final SConcept InferredClosureParameterDeclaration$DV = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x2308899d335ce07aL, "jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration");
     /*package*/ static final SConcept UndefinedType$uv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x431d52a5d09a4ea9L, "jetbrains.mps.baseLanguage.structure.UndefinedType");
     /*package*/ static final SConcept RefactorOperation$hX = MetaAdapterFactory.getConcept(0xf26691d20def4c06L, 0xaec62cb90c4af0a4L, 0x20fd2063d7de993eL, "jetbrains.mps.console.scripts.structure.RefactorOperation");
     /*package*/ static final SConcept ShowExpression$ue = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x75bb0160f191d79fL, "jetbrains.mps.console.ideCommands.structure.ShowExpression");

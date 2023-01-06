@@ -382,6 +382,10 @@
       <concept id="1153944233411" name="jetbrains.mps.baseLanguage.collections.structure.ForEachVariableReference" flags="nn" index="2GrUjf">
         <reference id="1153944258490" name="variable" index="2Gs0qQ" />
       </concept>
+      <concept id="1235573135402" name="jetbrains.mps.baseLanguage.collections.structure.SingletonSequenceCreator" flags="nn" index="2HTt$P">
+        <child id="1235573175711" name="elementType" index="2HTBi0" />
+        <child id="1235573187520" name="singletonValue" index="2HTEbv" />
+      </concept>
       <concept id="1237721394592" name="jetbrains.mps.baseLanguage.collections.structure.AbstractContainerCreator" flags="nn" index="HWqM0">
         <child id="1237721435808" name="initValue" index="HW$Y0" />
         <child id="1237721435807" name="elementType" index="HW$YZ" />
@@ -6881,6 +6885,183 @@
           <ref role="ehGHo" to="tpee:fz3vP1H" resolve="Type" />
         </node>
       </node>
+    </node>
+  </node>
+  <node concept="13h7C7" id="4vR6YDfVMNf">
+    <property role="3GE5qa" value="sequence.closures" />
+    <ref role="13h7C2" to="tp2q:hADpF_d" resolve="ComparatorSortOperation" />
+    <node concept="13hLZK" id="4vR6YDfVMNg" role="13h7CW">
+      <node concept="3clFbS" id="4vR6YDfVMNh" role="2VODD2" />
+    </node>
+    <node concept="13i0hz" id="4vR6YDfVQLA" role="13h7CS">
+      <property role="TrG5h" value="getClosureParameterNames" />
+      <ref role="13i0hy" node="4vR6YDfUMx0" resolve="getClosureParameterNames" />
+      <node concept="3Tm1VV" id="4vR6YDfVQLB" role="1B3o_S" />
+      <node concept="3clFbS" id="4vR6YDfVQLK" role="3clF47">
+        <node concept="3cpWs6" id="4vR6YDfVQNa" role="3cqZAp">
+          <node concept="2ShNRf" id="4vR6YDfVRoc" role="3cqZAk">
+            <node concept="Tc6Ow" id="4vR6YDfVRyy" role="2ShVmc">
+              <node concept="17QB3L" id="4vR6YDfVSmg" role="HW$YZ" />
+              <node concept="Xl_RD" id="4vR6YDfVTaz" role="HW$Y0">
+                <property role="Xl_RC" value="a" />
+              </node>
+              <node concept="Xl_RD" id="4vR6YDfVTcq" role="HW$Y0">
+                <property role="Xl_RC" value="b" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="A3Dl8" id="4vR6YDfVQLL" role="3clF45">
+        <node concept="17QB3L" id="4vR6YDfVQLM" role="A3Ik2" />
+      </node>
+    </node>
+  </node>
+  <node concept="13h7C7" id="4vR6YDfVQ$0">
+    <property role="3GE5qa" value="sequence.closures" />
+    <ref role="13h7C2" to="tp2q:hy3sC_q" resolve="InternalSequenceOperation" />
+    <node concept="13i0hz" id="4vR6YDfUMx0" role="13h7CS">
+      <property role="TrG5h" value="getClosureParameterNames" />
+      <property role="13i0it" value="true" />
+      <node concept="3Tm1VV" id="4vR6YDfUMx1" role="1B3o_S" />
+      <node concept="A3Dl8" id="4vR6YDfUNNC" role="3clF45">
+        <node concept="17QB3L" id="4vR6YDfUNNX" role="A3Ik2" />
+      </node>
+      <node concept="3clFbS" id="4vR6YDfUMx3" role="3clF47">
+        <node concept="3cpWs6" id="4vR6YDfUNPg" role="3cqZAp">
+          <node concept="2ShNRf" id="4vR6YDfUNQk" role="3cqZAk">
+            <node concept="2HTt$P" id="4vR6YDfUNQi" role="2ShVmc">
+              <node concept="17QB3L" id="4vR6YDfUNQj" role="2HTBi0" />
+              <node concept="Xl_RD" id="4vR6YDfUNRd" role="2HTEbv">
+                <property role="Xl_RC" value="it" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="13hLZK" id="4vR6YDfVQ$1" role="13h7CW">
+      <node concept="3clFbS" id="4vR6YDfVQ$2" role="2VODD2" />
+    </node>
+  </node>
+  <node concept="13h7C7" id="4vR6YDfVU8z">
+    <property role="3GE5qa" value="sequence.closures" />
+    <ref role="13h7C2" to="tp2q:1kw0gpBwZ9U" resolve="ReduceLeftOperation" />
+    <node concept="13i0hz" id="4vR6YDfVU8Q" role="13h7CS">
+      <property role="TrG5h" value="getClosureParameterNames" />
+      <ref role="13i0hy" node="4vR6YDfUMx0" resolve="getClosureParameterNames" />
+      <node concept="3Tm1VV" id="4vR6YDfVU8R" role="1B3o_S" />
+      <node concept="3clFbS" id="4vR6YDfVU8S" role="3clF47">
+        <node concept="3cpWs6" id="4vR6YDfVU8T" role="3cqZAp">
+          <node concept="2ShNRf" id="4vR6YDfVU8U" role="3cqZAk">
+            <node concept="Tc6Ow" id="4vR6YDfVU8V" role="2ShVmc">
+              <node concept="17QB3L" id="4vR6YDfVU8W" role="HW$YZ" />
+              <node concept="Xl_RD" id="4vR6YDfVU8X" role="HW$Y0">
+                <property role="Xl_RC" value="a" />
+              </node>
+              <node concept="Xl_RD" id="4vR6YDfVU8Y" role="HW$Y0">
+                <property role="Xl_RC" value="b" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="A3Dl8" id="4vR6YDfVU8Z" role="3clF45">
+        <node concept="17QB3L" id="4vR6YDfVU90" role="A3Ik2" />
+      </node>
+    </node>
+    <node concept="13hLZK" id="4vR6YDfVU8$" role="13h7CW">
+      <node concept="3clFbS" id="4vR6YDfVU8_" role="2VODD2" />
+    </node>
+  </node>
+  <node concept="13h7C7" id="4vR6YDfVUgm">
+    <property role="3GE5qa" value="sequence.closures" />
+    <ref role="13h7C2" to="tp2q:1kw0gpBx86N" resolve="ReduceRightOperation" />
+    <node concept="13i0hz" id="4vR6YDfVUgD" role="13h7CS">
+      <property role="TrG5h" value="getClosureParameterNames" />
+      <ref role="13i0hy" node="4vR6YDfUMx0" resolve="getClosureParameterNames" />
+      <node concept="3Tm1VV" id="4vR6YDfVUgE" role="1B3o_S" />
+      <node concept="3clFbS" id="4vR6YDfVUgF" role="3clF47">
+        <node concept="3cpWs6" id="4vR6YDfVUgG" role="3cqZAp">
+          <node concept="2ShNRf" id="4vR6YDfVUgH" role="3cqZAk">
+            <node concept="Tc6Ow" id="4vR6YDfVUgI" role="2ShVmc">
+              <node concept="17QB3L" id="4vR6YDfVUgJ" role="HW$YZ" />
+              <node concept="Xl_RD" id="4vR6YDfVUgK" role="HW$Y0">
+                <property role="Xl_RC" value="a" />
+              </node>
+              <node concept="Xl_RD" id="4vR6YDfVUgL" role="HW$Y0">
+                <property role="Xl_RC" value="b" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="A3Dl8" id="4vR6YDfVUgM" role="3clF45">
+        <node concept="17QB3L" id="4vR6YDfVUgN" role="A3Ik2" />
+      </node>
+    </node>
+    <node concept="13hLZK" id="4vR6YDfVUgn" role="13h7CW">
+      <node concept="3clFbS" id="4vR6YDfVUgo" role="2VODD2" />
+    </node>
+  </node>
+  <node concept="13h7C7" id="4vR6YDfVUmC">
+    <property role="3GE5qa" value="sequence.closures" />
+    <ref role="13h7C2" to="tp2q:1kw0gpBx89y" resolve="FoldLeftOperation" />
+    <node concept="13i0hz" id="4vR6YDfVUmV" role="13h7CS">
+      <property role="TrG5h" value="getClosureParameterNames" />
+      <ref role="13i0hy" node="4vR6YDfUMx0" resolve="getClosureParameterNames" />
+      <node concept="3Tm1VV" id="4vR6YDfVUmW" role="1B3o_S" />
+      <node concept="3clFbS" id="4vR6YDfVUmX" role="3clF47">
+        <node concept="3cpWs6" id="4vR6YDfVUmY" role="3cqZAp">
+          <node concept="2ShNRf" id="4vR6YDfVUmZ" role="3cqZAk">
+            <node concept="Tc6Ow" id="4vR6YDfVUn0" role="2ShVmc">
+              <node concept="17QB3L" id="4vR6YDfVUn1" role="HW$YZ" />
+              <node concept="Xl_RD" id="4vR6YDfVUn2" role="HW$Y0">
+                <property role="Xl_RC" value="s" />
+              </node>
+              <node concept="Xl_RD" id="4vR6YDfVUn3" role="HW$Y0">
+                <property role="Xl_RC" value="it" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="A3Dl8" id="4vR6YDfVUn4" role="3clF45">
+        <node concept="17QB3L" id="4vR6YDfVUn5" role="A3Ik2" />
+      </node>
+    </node>
+    <node concept="13hLZK" id="4vR6YDfVUmD" role="13h7CW">
+      <node concept="3clFbS" id="4vR6YDfVUmE" role="2VODD2" />
+    </node>
+  </node>
+  <node concept="13h7C7" id="4vR6YDfVUtG">
+    <property role="3GE5qa" value="sequence.closures" />
+    <ref role="13h7C2" to="tp2q:1kw0gpBxek7" resolve="FoldRightOperation" />
+    <node concept="13i0hz" id="4vR6YDfVUun" role="13h7CS">
+      <property role="TrG5h" value="getClosureParameterNames" />
+      <ref role="13i0hy" node="4vR6YDfUMx0" resolve="getClosureParameterNames" />
+      <node concept="3Tm1VV" id="4vR6YDfVUuo" role="1B3o_S" />
+      <node concept="3clFbS" id="4vR6YDfVUup" role="3clF47">
+        <node concept="3cpWs6" id="4vR6YDfVUuq" role="3cqZAp">
+          <node concept="2ShNRf" id="4vR6YDfVUur" role="3cqZAk">
+            <node concept="Tc6Ow" id="4vR6YDfVUus" role="2ShVmc">
+              <node concept="17QB3L" id="4vR6YDfVUut" role="HW$YZ" />
+              <node concept="Xl_RD" id="4vR6YDfVUuu" role="HW$Y0">
+                <property role="Xl_RC" value="it" />
+              </node>
+              <node concept="Xl_RD" id="4vR6YDfVUuv" role="HW$Y0">
+                <property role="Xl_RC" value="s" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="A3Dl8" id="4vR6YDfVUuw" role="3clF45">
+        <node concept="17QB3L" id="4vR6YDfVUux" role="A3Ik2" />
+      </node>
+    </node>
+    <node concept="13hLZK" id="4vR6YDfVUtH" role="13h7CW">
+      <node concept="3clFbS" id="4vR6YDfVUtI" role="2VODD2" />
     </node>
   </node>
 </model>

@@ -14,7 +14,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1163670490218:jetbrains.mps.baseLanguage.structure.SwitchStatement" />
   <root>
     <file name="ConceptPresentationAspectImpl.java">
-      <unit at="11,0,1453,0" name="jetbrains.mps.baseLanguage.collections.structure.ConceptPresentationAspectImpl" />
+      <unit at="11,0,1454,0" name="jetbrains.mps.baseLanguage.collections.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="IconContainer.java">
       <unit at="7,0,10,0" name="jetbrains.mps.baseLanguage.collections.structure.IconContainer" />
@@ -141,16 +141,16 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1151702311717">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1151702311717" at="175,0,176,0" concept="2" trace="props_ToListOperation" />
-      <node id="1151702311717" at="1388,44,1389,76" concept="5" />
-      <node id="1151702311717" at="1389,76,1390,45" concept="1" />
-      <node id="1151702311717" at="1390,45,1391,40" concept="1" />
-      <node id="1151702311717" at="1391,40,1392,47" concept="1" />
-      <node id="1151702311717" at="1393,9,1394,37" concept="6" />
-      <node id="1151702311717" at="1387,49,1393,9" concept="3" />
-      <scope id="1151702311717" at="1388,44,1392,47">
+      <node id="1151702311717" at="1389,44,1390,76" concept="5" />
+      <node id="1151702311717" at="1390,76,1391,45" concept="1" />
+      <node id="1151702311717" at="1391,45,1392,40" concept="1" />
+      <node id="1151702311717" at="1392,40,1393,47" concept="1" />
+      <node id="1151702311717" at="1394,9,1395,37" concept="6" />
+      <node id="1151702311717" at="1388,49,1394,9" concept="3" />
+      <scope id="1151702311717" at="1389,44,1393,47">
         <var name="cpb" id="1151702311717" />
       </scope>
-      <scope id="1151702311717" at="1387,49,1394,37" />
+      <scope id="1151702311717" at="1388,49,1395,37" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="1151702311717" at="175,0,176,0" concept="8" trace="ToListOperation" />
@@ -759,16 +759,16 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1172664342967">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1172664342967" at="170,0,171,0" concept="2" trace="props_TakeOperation" />
-      <node id="1172664342967" at="1348,42,1349,76" concept="5" />
-      <node id="1172664342967" at="1349,76,1350,61" concept="1" />
-      <node id="1172664342967" at="1350,61,1351,38" concept="1" />
-      <node id="1172664342967" at="1351,38,1352,45" concept="1" />
-      <node id="1172664342967" at="1353,9,1354,35" concept="6" />
-      <node id="1172664342967" at="1347,47,1353,9" concept="3" />
-      <scope id="1172664342967" at="1348,42,1352,45">
+      <node id="1172664342967" at="1349,42,1350,76" concept="5" />
+      <node id="1172664342967" at="1350,76,1351,61" concept="1" />
+      <node id="1172664342967" at="1351,61,1352,38" concept="1" />
+      <node id="1172664342967" at="1352,38,1353,45" concept="1" />
+      <node id="1172664342967" at="1354,9,1355,35" concept="6" />
+      <node id="1172664342967" at="1348,47,1354,9" concept="3" />
+      <scope id="1172664342967" at="1349,42,1353,45">
         <var name="cpb" id="1172664342967" />
       </scope>
-      <scope id="1172664342967" at="1347,47,1354,35" />
+      <scope id="1172664342967" at="1348,47,1355,35" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="1172664342967" at="170,0,171,0" concept="8" trace="TakeOperation" />
@@ -953,16 +953,16 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1176903168877">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1176903168877" at="179,0,180,0" concept="2" trace="props_UnionOperation" />
-      <node id="1176903168877" at="1419,43,1420,76" concept="5" />
-      <node id="1176903168877" at="1420,76,1421,44" concept="1" />
-      <node id="1176903168877" at="1421,44,1422,39" concept="1" />
-      <node id="1176903168877" at="1422,39,1423,46" concept="1" />
-      <node id="1176903168877" at="1424,9,1425,36" concept="6" />
-      <node id="1176903168877" at="1418,48,1424,9" concept="3" />
-      <scope id="1176903168877" at="1419,43,1423,46">
+      <node id="1176903168877" at="1420,43,1421,76" concept="5" />
+      <node id="1176903168877" at="1421,76,1422,44" concept="1" />
+      <node id="1176903168877" at="1422,44,1423,39" concept="1" />
+      <node id="1176903168877" at="1423,39,1424,46" concept="1" />
+      <node id="1176903168877" at="1425,9,1426,36" concept="6" />
+      <node id="1176903168877" at="1419,48,1425,9" concept="3" />
+      <scope id="1176903168877" at="1420,43,1424,46">
         <var name="cpb" id="1176903168877" />
       </scope>
-      <scope id="1176903168877" at="1418,48,1425,36" />
+      <scope id="1176903168877" at="1419,48,1426,36" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="1176903168877" at="179,0,180,0" concept="8" trace="UnionOperation" />
@@ -1103,15 +1103,15 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1178286324487">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1178286324487" at="155,0,156,0" concept="2" trace="props_SortDirection" />
-      <node id="1178286324487" at="1240,42,1241,76" concept="5" />
-      <node id="1178286324487" at="1241,76,1242,47" concept="1" />
-      <node id="1178286324487" at="1242,47,1243,45" concept="1" />
-      <node id="1178286324487" at="1244,9,1245,35" concept="6" />
-      <node id="1178286324487" at="1239,47,1244,9" concept="3" />
-      <scope id="1178286324487" at="1240,42,1243,45">
+      <node id="1178286324487" at="1241,42,1242,76" concept="5" />
+      <node id="1178286324487" at="1242,76,1243,47" concept="1" />
+      <node id="1178286324487" at="1243,47,1244,45" concept="1" />
+      <node id="1178286324487" at="1245,9,1246,35" concept="6" />
+      <node id="1178286324487" at="1240,47,1245,9" concept="3" />
+      <scope id="1178286324487" at="1241,42,1244,45">
         <var name="cpb" id="1178286324487" />
       </scope>
-      <scope id="1178286324487" at="1239,47,1245,35" />
+      <scope id="1178286324487" at="1240,47,1246,35" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="1178286324487" at="155,0,156,0" concept="8" trace="SortDirection" />
@@ -1215,16 +1215,16 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1184963466173">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1184963466173" at="173,0,174,0" concept="2" trace="props_ToArrayOperation" />
-      <node id="1184963466173" at="1372,45,1373,76" concept="5" />
-      <node id="1184963466173" at="1373,76,1374,47" concept="1" />
-      <node id="1184963466173" at="1374,47,1375,41" concept="1" />
-      <node id="1184963466173" at="1375,41,1376,48" concept="1" />
-      <node id="1184963466173" at="1377,9,1378,38" concept="6" />
-      <node id="1184963466173" at="1371,50,1377,9" concept="3" />
-      <scope id="1184963466173" at="1372,45,1376,48">
+      <node id="1184963466173" at="1373,45,1374,76" concept="5" />
+      <node id="1184963466173" at="1374,76,1375,47" concept="1" />
+      <node id="1184963466173" at="1375,47,1376,41" concept="1" />
+      <node id="1184963466173" at="1376,41,1377,48" concept="1" />
+      <node id="1184963466173" at="1378,9,1379,38" concept="6" />
+      <node id="1184963466173" at="1372,50,1378,9" concept="3" />
+      <scope id="1184963466173" at="1373,45,1377,48">
         <var name="cpb" id="1184963466173" />
       </scope>
-      <scope id="1184963466173" at="1371,50,1378,38" />
+      <scope id="1184963466173" at="1372,50,1379,38" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="1184963466173" at="173,0,174,0" concept="8" trace="ToArrayOperation" />
@@ -1482,16 +1482,16 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1201792049884">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1201792049884" at="176,0,177,0" concept="2" trace="props_TranslateOperation" />
-      <node id="1201792049884" at="1396,47,1397,76" concept="5" />
-      <node id="1201792049884" at="1397,76,1398,64" concept="1" />
-      <node id="1201792049884" at="1398,64,1399,44" concept="1" />
-      <node id="1201792049884" at="1399,44,1400,50" concept="1" />
-      <node id="1201792049884" at="1401,9,1402,40" concept="6" />
-      <node id="1201792049884" at="1395,52,1401,9" concept="3" />
-      <scope id="1201792049884" at="1396,47,1400,50">
+      <node id="1201792049884" at="1397,47,1398,76" concept="5" />
+      <node id="1201792049884" at="1398,76,1399,64" concept="1" />
+      <node id="1201792049884" at="1399,64,1400,44" concept="1" />
+      <node id="1201792049884" at="1400,44,1401,50" concept="1" />
+      <node id="1201792049884" at="1402,9,1403,40" concept="6" />
+      <node id="1201792049884" at="1396,52,1402,9" concept="3" />
+      <scope id="1201792049884" at="1397,47,1401,50">
         <var name="cpb" id="1201792049884" />
       </scope>
-      <scope id="1201792049884" at="1395,52,1402,40" />
+      <scope id="1201792049884" at="1396,52,1403,40" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="1201792049884" at="176,0,177,0" concept="8" trace="TranslateOperation" />
@@ -1558,16 +1558,16 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1202120902084">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1202120902084" at="182,0,183,0" concept="2" trace="props_WhereOperation" />
-      <node id="1202120902084" at="1442,43,1443,76" concept="5" />
-      <node id="1202120902084" at="1443,76,1444,56" concept="1" />
-      <node id="1202120902084" at="1444,56,1445,39" concept="1" />
-      <node id="1202120902084" at="1445,39,1446,46" concept="1" />
-      <node id="1202120902084" at="1447,9,1448,36" concept="6" />
-      <node id="1202120902084" at="1441,48,1447,9" concept="3" />
-      <scope id="1202120902084" at="1442,43,1446,46">
+      <node id="1202120902084" at="1443,43,1444,76" concept="5" />
+      <node id="1202120902084" at="1444,76,1445,56" concept="1" />
+      <node id="1202120902084" at="1445,56,1446,39" concept="1" />
+      <node id="1202120902084" at="1446,39,1447,46" concept="1" />
+      <node id="1202120902084" at="1448,9,1449,36" concept="6" />
+      <node id="1202120902084" at="1442,48,1448,9" concept="3" />
+      <scope id="1202120902084" at="1443,43,1447,46">
         <var name="cpb" id="1202120902084" />
       </scope>
-      <scope id="1202120902084" at="1441,48,1448,36" />
+      <scope id="1202120902084" at="1442,48,1449,36" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="1202120902084" at="182,0,183,0" concept="8" trace="WhereOperation" />
@@ -1637,15 +1637,16 @@
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1203518072036" at="154,0,155,0" concept="2" trace="props_SmartClosureParameterDeclaration" />
       <node id="1203518072036" at="1232,61,1233,76" concept="5" />
-      <node id="1203518072036" at="1233,76,1234,51" concept="1" />
-      <node id="1203518072036" at="1234,51,1235,35" concept="1" />
-      <node id="1203518072036" at="1235,35,1236,64" concept="1" />
-      <node id="1203518072036" at="1237,9,1238,54" concept="6" />
-      <node id="1203518072036" at="1231,66,1237,9" concept="3" />
-      <scope id="1203518072036" at="1232,61,1236,64">
+      <node id="1203518072036" at="1233,76,1234,31" concept="1" />
+      <node id="1203518072036" at="1234,31,1235,51" concept="1" />
+      <node id="1203518072036" at="1235,51,1236,35" concept="1" />
+      <node id="1203518072036" at="1236,35,1237,64" concept="1" />
+      <node id="1203518072036" at="1238,9,1239,54" concept="6" />
+      <node id="1203518072036" at="1231,66,1238,9" concept="3" />
+      <scope id="1203518072036" at="1232,61,1237,64">
         <var name="cpb" id="1203518072036" />
       </scope>
-      <scope id="1203518072036" at="1231,66,1238,54" />
+      <scope id="1203518072036" at="1231,66,1239,54" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="1203518072036" at="154,0,155,0" concept="8" trace="SmartClosureParameterDeclaration" />
@@ -1711,16 +1712,16 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1204980550705">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1204980550705" at="181,0,182,0" concept="2" trace="props_VisitAllOperation" />
-      <node id="1204980550705" at="1434,46,1435,76" concept="5" />
-      <node id="1204980550705" at="1435,76,1436,52" concept="1" />
-      <node id="1204980550705" at="1436,52,1437,41" concept="1" />
-      <node id="1204980550705" at="1437,41,1438,49" concept="1" />
-      <node id="1204980550705" at="1439,9,1440,39" concept="6" />
-      <node id="1204980550705" at="1433,51,1439,9" concept="3" />
-      <scope id="1204980550705" at="1434,46,1438,49">
+      <node id="1204980550705" at="1435,46,1436,76" concept="5" />
+      <node id="1204980550705" at="1436,76,1437,52" concept="1" />
+      <node id="1204980550705" at="1437,52,1438,41" concept="1" />
+      <node id="1204980550705" at="1438,41,1439,49" concept="1" />
+      <node id="1204980550705" at="1440,9,1441,39" concept="6" />
+      <node id="1204980550705" at="1434,51,1440,9" concept="3" />
+      <scope id="1204980550705" at="1435,46,1439,49">
         <var name="cpb" id="1204980550705" />
       </scope>
-      <scope id="1204980550705" at="1433,51,1440,39" />
+      <scope id="1204980550705" at="1434,51,1441,39" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="1204980550705" at="181,0,182,0" concept="8" trace="VisitAllOperation" />
@@ -1788,16 +1789,16 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1205679737078">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1205679737078" at="156,0,157,0" concept="2" trace="props_SortOperation" />
-      <node id="1205679737078" at="1247,42,1248,76" concept="5" />
-      <node id="1205679737078" at="1248,76,1249,39" concept="1" />
-      <node id="1205679737078" at="1249,39,1250,40" concept="1" />
-      <node id="1205679737078" at="1250,40,1251,45" concept="1" />
-      <node id="1205679737078" at="1252,9,1253,35" concept="6" />
-      <node id="1205679737078" at="1246,47,1252,9" concept="3" />
-      <scope id="1205679737078" at="1247,42,1251,45">
+      <node id="1205679737078" at="1248,42,1249,76" concept="5" />
+      <node id="1205679737078" at="1249,76,1250,39" concept="1" />
+      <node id="1205679737078" at="1250,39,1251,40" concept="1" />
+      <node id="1205679737078" at="1251,40,1252,45" concept="1" />
+      <node id="1205679737078" at="1253,9,1254,35" concept="6" />
+      <node id="1205679737078" at="1247,47,1253,9" concept="3" />
+      <scope id="1205679737078" at="1248,42,1252,45">
         <var name="cpb" id="1205679737078" />
       </scope>
-      <scope id="1205679737078" at="1246,47,1253,35" />
+      <scope id="1205679737078" at="1247,47,1254,35" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="1205679737078" at="156,0,157,0" concept="8" trace="SortOperation" />
@@ -1902,16 +1903,16 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1205753630278">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1205753630278" at="168,0,169,0" concept="2" trace="props_TailOperation" />
-      <node id="1205753630278" at="1333,42,1334,76" concept="5" />
-      <node id="1205753630278" at="1334,76,1335,55" concept="1" />
-      <node id="1205753630278" at="1335,55,1336,38" concept="1" />
-      <node id="1205753630278" at="1336,38,1337,45" concept="1" />
-      <node id="1205753630278" at="1338,9,1339,35" concept="6" />
-      <node id="1205753630278" at="1332,47,1338,9" concept="3" />
-      <scope id="1205753630278" at="1333,42,1337,45">
+      <node id="1205753630278" at="1334,42,1335,76" concept="5" />
+      <node id="1205753630278" at="1335,76,1336,55" concept="1" />
+      <node id="1205753630278" at="1336,55,1337,38" concept="1" />
+      <node id="1205753630278" at="1337,38,1338,45" concept="1" />
+      <node id="1205753630278" at="1339,9,1340,35" concept="6" />
+      <node id="1205753630278" at="1333,47,1339,9" concept="3" />
+      <scope id="1205753630278" at="1334,42,1338,45">
         <var name="cpb" id="1205753630278" />
       </scope>
-      <scope id="1205753630278" at="1332,47,1339,35" />
+      <scope id="1205753630278" at="1333,47,1340,35" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="1205753630278" at="168,0,169,0" concept="8" trace="TailOperation" />
@@ -2047,16 +2048,16 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1207236100912">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1207236100912" at="174,0,175,0" concept="2" trace="props_ToIteratorOperation" />
-      <node id="1207236100912" at="1380,48,1381,76" concept="5" />
-      <node id="1207236100912" at="1381,76,1382,50" concept="1" />
-      <node id="1207236100912" at="1382,50,1383,42" concept="1" />
-      <node id="1207236100912" at="1383,42,1384,51" concept="1" />
-      <node id="1207236100912" at="1385,9,1386,41" concept="6" />
-      <node id="1207236100912" at="1379,53,1385,9" concept="3" />
-      <scope id="1207236100912" at="1380,48,1384,51">
+      <node id="1207236100912" at="1381,48,1382,76" concept="5" />
+      <node id="1207236100912" at="1382,76,1383,50" concept="1" />
+      <node id="1207236100912" at="1383,50,1384,42" concept="1" />
+      <node id="1207236100912" at="1384,42,1385,51" concept="1" />
+      <node id="1207236100912" at="1386,9,1387,41" concept="6" />
+      <node id="1207236100912" at="1380,53,1386,9" concept="3" />
+      <scope id="1207236100912" at="1381,48,1385,51">
         <var name="cpb" id="1207236100912" />
       </scope>
-      <scope id="1207236100912" at="1379,53,1386,41" />
+      <scope id="1207236100912" at="1380,53,1387,41" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="1207236100912" at="174,0,175,0" concept="8" trace="ToIteratorOperation" />
@@ -2240,16 +2241,16 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1224451845108">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1224451845108" at="162,0,163,0" concept="2" trace="props_StopStatement" />
-      <node id="1224451845108" at="1288,42,1289,76" concept="5" />
-      <node id="1224451845108" at="1289,76,1290,57" concept="1" />
-      <node id="1224451845108" at="1290,57,1291,38" concept="1" />
-      <node id="1224451845108" at="1291,38,1292,45" concept="1" />
-      <node id="1224451845108" at="1293,9,1294,35" concept="6" />
-      <node id="1224451845108" at="1287,47,1293,9" concept="3" />
-      <scope id="1224451845108" at="1288,42,1292,45">
+      <node id="1224451845108" at="1289,42,1290,76" concept="5" />
+      <node id="1224451845108" at="1290,76,1291,57" concept="1" />
+      <node id="1224451845108" at="1291,57,1292,38" concept="1" />
+      <node id="1224451845108" at="1292,38,1293,45" concept="1" />
+      <node id="1224451845108" at="1294,9,1295,35" concept="6" />
+      <node id="1224451845108" at="1288,47,1294,9" concept="3" />
+      <scope id="1224451845108" at="1289,42,1293,45">
         <var name="cpb" id="1224451845108" />
       </scope>
-      <scope id="1224451845108" at="1287,47,1294,35" />
+      <scope id="1224451845108" at="1288,47,1295,35" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="1224451845108" at="162,0,163,0" concept="8" trace="StopStatement" />
@@ -3879,14 +3880,14 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1240239309184">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1240239309184" at="157,0,158,0" concept="2" trace="props_SortedMapOperation" />
-      <node id="1240239309184" at="1255,47,1256,76" concept="5" />
-      <node id="1240239309184" at="1256,76,1257,50" concept="1" />
-      <node id="1240239309184" at="1258,9,1259,40" concept="6" />
-      <node id="1240239309184" at="1254,52,1258,9" concept="3" />
-      <scope id="1240239309184" at="1255,47,1257,50">
+      <node id="1240239309184" at="1256,47,1257,76" concept="5" />
+      <node id="1240239309184" at="1257,76,1258,50" concept="1" />
+      <node id="1240239309184" at="1259,9,1260,40" concept="6" />
+      <node id="1240239309184" at="1255,52,1259,9" concept="3" />
+      <scope id="1240239309184" at="1256,47,1258,50">
         <var name="cpb" id="1240239309184" />
       </scope>
-      <scope id="1240239309184" at="1254,52,1259,40" />
+      <scope id="1240239309184" at="1255,52,1260,40" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="1240239309184" at="157,0,158,0" concept="8" trace="SortedMapOperation" />
@@ -3914,15 +3915,15 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1240239337991">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1240239337991" at="158,0,159,0" concept="2" trace="props_SortedMapType" />
-      <node id="1240239337991" at="1261,42,1262,76" concept="5" />
-      <node id="1240239337991" at="1262,76,1263,44" concept="1" />
-      <node id="1240239337991" at="1263,44,1264,45" concept="1" />
-      <node id="1240239337991" at="1265,9,1266,35" concept="6" />
-      <node id="1240239337991" at="1260,47,1265,9" concept="3" />
-      <scope id="1240239337991" at="1261,42,1264,45">
+      <node id="1240239337991" at="1262,42,1263,76" concept="5" />
+      <node id="1240239337991" at="1263,76,1264,44" concept="1" />
+      <node id="1240239337991" at="1264,44,1265,45" concept="1" />
+      <node id="1240239337991" at="1266,9,1267,35" concept="6" />
+      <node id="1240239337991" at="1261,47,1266,9" concept="3" />
+      <scope id="1240239337991" at="1262,42,1265,45">
         <var name="cpb" id="1240239337991" />
       </scope>
-      <scope id="1240239337991" at="1260,47,1266,35" />
+      <scope id="1240239337991" at="1261,47,1267,35" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="1240239337991" at="158,0,159,0" concept="8" trace="SortedMapType" />
@@ -3989,15 +3990,15 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1240239494010">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1240239494010" at="177,0,178,0" concept="2" trace="props_TreeMapCreator" />
-      <node id="1240239494010" at="1404,43,1405,76" concept="5" />
-      <node id="1240239494010" at="1405,76,1406,41" concept="1" />
-      <node id="1240239494010" at="1406,41,1407,46" concept="1" />
-      <node id="1240239494010" at="1408,9,1409,36" concept="6" />
-      <node id="1240239494010" at="1403,48,1408,9" concept="3" />
-      <scope id="1240239494010" at="1404,43,1407,46">
+      <node id="1240239494010" at="1405,43,1406,76" concept="5" />
+      <node id="1240239494010" at="1406,76,1407,41" concept="1" />
+      <node id="1240239494010" at="1407,41,1408,46" concept="1" />
+      <node id="1240239494010" at="1409,9,1410,36" concept="6" />
+      <node id="1240239494010" at="1404,48,1409,9" concept="3" />
+      <scope id="1240239494010" at="1405,43,1408,46">
         <var name="cpb" id="1240239494010" />
       </scope>
-      <scope id="1240239494010" at="1403,48,1409,36" />
+      <scope id="1240239494010" at="1404,48,1410,36" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="1240239494010" at="177,0,178,0" concept="8" trace="TreeMapCreator" />
@@ -4026,15 +4027,15 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1240240127120">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1240240127120" at="167,0,168,0" concept="2" trace="props_TailMapOperation" />
-      <node id="1240240127120" at="1326,45,1327,76" concept="5" />
-      <node id="1240240127120" at="1327,76,1328,41" concept="1" />
-      <node id="1240240127120" at="1328,41,1329,48" concept="1" />
-      <node id="1240240127120" at="1330,9,1331,38" concept="6" />
-      <node id="1240240127120" at="1325,50,1330,9" concept="3" />
-      <scope id="1240240127120" at="1326,45,1329,48">
+      <node id="1240240127120" at="1327,45,1328,76" concept="5" />
+      <node id="1240240127120" at="1328,76,1329,41" concept="1" />
+      <node id="1240240127120" at="1329,41,1330,48" concept="1" />
+      <node id="1240240127120" at="1331,9,1332,38" concept="6" />
+      <node id="1240240127120" at="1326,50,1331,9" concept="3" />
+      <scope id="1240240127120" at="1327,45,1330,48">
         <var name="cpb" id="1240240127120" />
       </scope>
-      <scope id="1240240127120" at="1325,50,1331,38" />
+      <scope id="1240240127120" at="1326,50,1332,38" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="1240240127120" at="167,0,168,0" concept="8" trace="TailMapOperation" />
@@ -4064,15 +4065,15 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1240240201186">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1240240201186" at="164,0,165,0" concept="2" trace="props_SubMapOperation" />
-      <node id="1240240201186" at="1304,44,1305,76" concept="5" />
-      <node id="1240240201186" at="1305,76,1306,40" concept="1" />
-      <node id="1240240201186" at="1306,40,1307,47" concept="1" />
-      <node id="1240240201186" at="1308,9,1309,37" concept="6" />
-      <node id="1240240201186" at="1303,49,1308,9" concept="3" />
-      <scope id="1240240201186" at="1304,44,1307,47">
+      <node id="1240240201186" at="1305,44,1306,76" concept="5" />
+      <node id="1240240201186" at="1306,76,1307,40" concept="1" />
+      <node id="1240240201186" at="1307,40,1308,47" concept="1" />
+      <node id="1240240201186" at="1309,9,1310,37" concept="6" />
+      <node id="1240240201186" at="1304,49,1309,9" concept="3" />
+      <scope id="1240240201186" at="1305,44,1308,47">
         <var name="cpb" id="1240240201186" />
       </scope>
-      <scope id="1240240201186" at="1303,49,1309,37" />
+      <scope id="1240240201186" at="1304,49,1310,37" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="1240240201186" at="164,0,165,0" concept="8" trace="SubMapOperation" />
@@ -4103,15 +4104,15 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1240247491866">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1240247491866" at="160,0,161,0" concept="2" trace="props_SortedSetType" />
-      <node id="1240247491866" at="1274,42,1275,76" concept="5" />
-      <node id="1240247491866" at="1275,76,1276,44" concept="1" />
-      <node id="1240247491866" at="1276,44,1277,45" concept="1" />
-      <node id="1240247491866" at="1278,9,1279,35" concept="6" />
-      <node id="1240247491866" at="1273,47,1278,9" concept="3" />
-      <scope id="1240247491866" at="1274,42,1277,45">
+      <node id="1240247491866" at="1275,42,1276,76" concept="5" />
+      <node id="1240247491866" at="1276,76,1277,44" concept="1" />
+      <node id="1240247491866" at="1277,44,1278,45" concept="1" />
+      <node id="1240247491866" at="1279,9,1280,35" concept="6" />
+      <node id="1240247491866" at="1274,47,1279,9" concept="3" />
+      <scope id="1240247491866" at="1275,42,1278,45">
         <var name="cpb" id="1240247491866" />
       </scope>
-      <scope id="1240247491866" at="1273,47,1279,35" />
+      <scope id="1240247491866" at="1274,47,1280,35" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="1240247491866" at="160,0,161,0" concept="8" trace="SortedSetType" />
@@ -4140,16 +4141,16 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1240247536947">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1240247536947" at="178,0,179,0" concept="2" trace="props_TreeSetCreator" />
-      <node id="1240247536947" at="1411,43,1412,76" concept="5" />
-      <node id="1240247536947" at="1412,76,1413,46" concept="1" />
-      <node id="1240247536947" at="1413,46,1414,41" concept="1" />
-      <node id="1240247536947" at="1414,41,1415,46" concept="1" />
-      <node id="1240247536947" at="1416,9,1417,36" concept="6" />
-      <node id="1240247536947" at="1410,48,1416,9" concept="3" />
-      <scope id="1240247536947" at="1411,43,1415,46">
+      <node id="1240247536947" at="1412,43,1413,76" concept="5" />
+      <node id="1240247536947" at="1413,76,1414,46" concept="1" />
+      <node id="1240247536947" at="1414,46,1415,41" concept="1" />
+      <node id="1240247536947" at="1415,41,1416,46" concept="1" />
+      <node id="1240247536947" at="1417,9,1418,36" concept="6" />
+      <node id="1240247536947" at="1411,48,1417,9" concept="3" />
+      <scope id="1240247536947" at="1412,43,1416,46">
         <var name="cpb" id="1240247536947" />
       </scope>
-      <scope id="1240247536947" at="1410,48,1417,36" />
+      <scope id="1240247536947" at="1411,48,1418,36" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="1240247536947" at="178,0,179,0" concept="8" trace="TreeSetCreator" />
@@ -4179,14 +4180,14 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1240251169236">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1240251169236" at="159,0,160,0" concept="2" trace="props_SortedSetOperation" />
-      <node id="1240251169236" at="1268,47,1269,76" concept="5" />
-      <node id="1240251169236" at="1269,76,1270,50" concept="1" />
-      <node id="1240251169236" at="1271,9,1272,40" concept="6" />
-      <node id="1240251169236" at="1267,52,1271,9" concept="3" />
-      <scope id="1240251169236" at="1268,47,1270,50">
+      <node id="1240251169236" at="1269,47,1270,76" concept="5" />
+      <node id="1240251169236" at="1270,76,1271,50" concept="1" />
+      <node id="1240251169236" at="1272,9,1273,40" concept="6" />
+      <node id="1240251169236" at="1268,52,1272,9" concept="3" />
+      <scope id="1240251169236" at="1269,47,1271,50">
         <var name="cpb" id="1240251169236" />
       </scope>
-      <scope id="1240251169236" at="1267,52,1272,40" />
+      <scope id="1240251169236" at="1268,52,1273,40" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="1240251169236" at="159,0,160,0" concept="8" trace="SortedSetOperation" />
@@ -4252,15 +4253,15 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1240251565326">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1240251565326" at="169,0,170,0" concept="2" trace="props_TailSetOperation" />
-      <node id="1240251565326" at="1341,45,1342,76" concept="5" />
-      <node id="1240251565326" at="1342,76,1343,41" concept="1" />
-      <node id="1240251565326" at="1343,41,1344,48" concept="1" />
-      <node id="1240251565326" at="1345,9,1346,38" concept="6" />
-      <node id="1240251565326" at="1340,50,1345,9" concept="3" />
-      <scope id="1240251565326" at="1341,45,1344,48">
+      <node id="1240251565326" at="1342,45,1343,76" concept="5" />
+      <node id="1240251565326" at="1343,76,1344,41" concept="1" />
+      <node id="1240251565326" at="1344,41,1345,48" concept="1" />
+      <node id="1240251565326" at="1346,9,1347,38" concept="6" />
+      <node id="1240251565326" at="1341,50,1346,9" concept="3" />
+      <scope id="1240251565326" at="1342,45,1345,48">
         <var name="cpb" id="1240251565326" />
       </scope>
-      <scope id="1240251565326" at="1340,50,1346,38" />
+      <scope id="1240251565326" at="1341,50,1347,38" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="1240251565326" at="169,0,170,0" concept="8" trace="TailSetOperation" />
@@ -4290,15 +4291,15 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1240251665173">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1240251665173" at="165,0,166,0" concept="2" trace="props_SubSetOperation" />
-      <node id="1240251665173" at="1311,44,1312,76" concept="5" />
-      <node id="1240251665173" at="1312,76,1313,40" concept="1" />
-      <node id="1240251665173" at="1313,40,1314,47" concept="1" />
-      <node id="1240251665173" at="1315,9,1316,37" concept="6" />
-      <node id="1240251665173" at="1310,49,1315,9" concept="3" />
-      <scope id="1240251665173" at="1311,44,1314,47">
+      <node id="1240251665173" at="1312,44,1313,76" concept="5" />
+      <node id="1240251665173" at="1313,76,1314,40" concept="1" />
+      <node id="1240251665173" at="1314,40,1315,47" concept="1" />
+      <node id="1240251665173" at="1316,9,1317,37" concept="6" />
+      <node id="1240251665173" at="1311,49,1316,9" concept="3" />
+      <scope id="1240251665173" at="1312,44,1315,47">
         <var name="cpb" id="1240251665173" />
       </scope>
-      <scope id="1240251665173" at="1310,49,1316,37" />
+      <scope id="1240251665173" at="1311,49,1317,37" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="1240251665173" at="165,0,166,0" concept="8" trace="SubSetOperation" />
@@ -4479,15 +4480,15 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1240824834947">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1240824834947" at="180,0,181,0" concept="2" trace="props_ValueAccessOperation" />
-      <node id="1240824834947" at="1427,49,1428,76" concept="5" />
-      <node id="1240824834947" at="1428,76,1429,39" concept="1" />
-      <node id="1240824834947" at="1429,39,1430,52" concept="1" />
-      <node id="1240824834947" at="1431,9,1432,42" concept="6" />
-      <node id="1240824834947" at="1426,54,1431,9" concept="3" />
-      <scope id="1240824834947" at="1427,49,1430,52">
+      <node id="1240824834947" at="1428,49,1429,76" concept="5" />
+      <node id="1240824834947" at="1429,76,1430,39" concept="1" />
+      <node id="1240824834947" at="1430,39,1431,52" concept="1" />
+      <node id="1240824834947" at="1432,9,1433,42" concept="6" />
+      <node id="1240824834947" at="1427,54,1432,9" concept="3" />
+      <scope id="1240824834947" at="1428,49,1431,52">
         <var name="cpb" id="1240824834947" />
       </scope>
-      <scope id="1240824834947" at="1426,54,1432,42" />
+      <scope id="1240824834947" at="1427,54,1433,42" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="1240824834947" at="180,0,181,0" concept="8" trace="ValueAccessOperation" />
@@ -5291,16 +5292,16 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/4073682006117732261">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="4073682006117732261" at="172,0,173,0" concept="2" trace="props_TestRemoveElementOperation" />
-      <node id="4073682006117732261" at="1364,55,1365,76" concept="5" />
-      <node id="4073682006117732261" at="1365,76,1366,66" concept="1" />
-      <node id="4073682006117732261" at="1366,66,1367,44" concept="1" />
-      <node id="4073682006117732261" at="1367,44,1368,58" concept="1" />
-      <node id="4073682006117732261" at="1369,9,1370,48" concept="6" />
-      <node id="4073682006117732261" at="1363,60,1369,9" concept="3" />
-      <scope id="4073682006117732261" at="1364,55,1368,58">
+      <node id="4073682006117732261" at="1365,55,1366,76" concept="5" />
+      <node id="4073682006117732261" at="1366,76,1367,66" concept="1" />
+      <node id="4073682006117732261" at="1367,66,1368,44" concept="1" />
+      <node id="4073682006117732261" at="1368,44,1369,58" concept="1" />
+      <node id="4073682006117732261" at="1370,9,1371,48" concept="6" />
+      <node id="4073682006117732261" at="1364,60,1370,9" concept="3" />
+      <scope id="4073682006117732261" at="1365,55,1369,58">
         <var name="cpb" id="4073682006117732261" />
       </scope>
-      <scope id="4073682006117732261" at="1363,60,1370,48" />
+      <scope id="4073682006117732261" at="1364,60,1371,48" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="4073682006117732261" at="172,0,173,0" concept="8" trace="TestRemoveElementOperation" />
@@ -5569,16 +5570,16 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/5232196642625575054">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="5232196642625575054" at="166,0,167,0" concept="2" trace="props_TailListOperation" />
-      <node id="5232196642625575054" at="1318,46,1319,76" concept="5" />
-      <node id="5232196642625575054" at="1319,76,1320,37" concept="1" />
-      <node id="5232196642625575054" at="1320,37,1321,42" concept="1" />
-      <node id="5232196642625575054" at="1321,42,1322,49" concept="1" />
-      <node id="5232196642625575054" at="1323,9,1324,39" concept="6" />
-      <node id="5232196642625575054" at="1317,51,1323,9" concept="3" />
-      <scope id="5232196642625575054" at="1318,46,1322,49">
+      <node id="5232196642625575054" at="1319,46,1320,76" concept="5" />
+      <node id="5232196642625575054" at="1320,76,1321,37" concept="1" />
+      <node id="5232196642625575054" at="1321,37,1322,42" concept="1" />
+      <node id="5232196642625575054" at="1322,42,1323,49" concept="1" />
+      <node id="5232196642625575054" at="1324,9,1325,39" concept="6" />
+      <node id="5232196642625575054" at="1318,51,1324,9" concept="3" />
+      <scope id="5232196642625575054" at="1319,46,1323,49">
         <var name="cpb" id="5232196642625575054" />
       </scope>
-      <scope id="5232196642625575054" at="1317,51,1324,39" />
+      <scope id="5232196642625575054" at="1318,51,1325,39" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="5232196642625575054" at="166,0,167,0" concept="8" trace="TailListOperation" />
@@ -5679,16 +5680,16 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/5633809102336885303">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="5633809102336885303" at="163,0,164,0" concept="2" trace="props_SubListOperation" />
-      <node id="5633809102336885303" at="1296,45,1297,76" concept="5" />
-      <node id="5633809102336885303" at="1297,76,1298,36" concept="1" />
-      <node id="5633809102336885303" at="1298,36,1299,41" concept="1" />
-      <node id="5633809102336885303" at="1299,41,1300,48" concept="1" />
-      <node id="5633809102336885303" at="1301,9,1302,38" concept="6" />
-      <node id="5633809102336885303" at="1295,50,1301,9" concept="3" />
-      <scope id="5633809102336885303" at="1296,45,1300,48">
+      <node id="5633809102336885303" at="1297,45,1298,76" concept="5" />
+      <node id="5633809102336885303" at="1298,76,1299,36" concept="1" />
+      <node id="5633809102336885303" at="1299,36,1300,41" concept="1" />
+      <node id="5633809102336885303" at="1300,41,1301,48" concept="1" />
+      <node id="5633809102336885303" at="1302,9,1303,38" concept="6" />
+      <node id="5633809102336885303" at="1296,50,1302,9" concept="3" />
+      <scope id="5633809102336885303" at="1297,45,1301,48">
         <var name="cpb" id="5633809102336885303" />
       </scope>
-      <scope id="5633809102336885303" at="1295,50,1302,38" />
+      <scope id="5633809102336885303" at="1296,50,1303,38" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="5633809102336885303" at="163,0,164,0" concept="8" trace="SubListOperation" />
@@ -5794,16 +5795,16 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/5699792037748043353">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="5699792037748043353" at="171,0,172,0" concept="2" trace="props_TestAddElementOperation" />
-      <node id="5699792037748043353" at="1356,52,1357,76" concept="5" />
-      <node id="5699792037748043353" at="1357,76,1358,63" concept="1" />
-      <node id="5699792037748043353" at="1358,63,1359,41" concept="1" />
-      <node id="5699792037748043353" at="1359,41,1360,55" concept="1" />
-      <node id="5699792037748043353" at="1361,9,1362,45" concept="6" />
-      <node id="5699792037748043353" at="1355,57,1361,9" concept="3" />
-      <scope id="5699792037748043353" at="1356,52,1360,55">
+      <node id="5699792037748043353" at="1357,52,1358,76" concept="5" />
+      <node id="5699792037748043353" at="1358,76,1359,63" concept="1" />
+      <node id="5699792037748043353" at="1359,63,1360,41" concept="1" />
+      <node id="5699792037748043353" at="1360,41,1361,55" concept="1" />
+      <node id="5699792037748043353" at="1362,9,1363,45" concept="6" />
+      <node id="5699792037748043353" at="1356,57,1362,9" concept="3" />
+      <scope id="5699792037748043353" at="1357,52,1361,55">
         <var name="cpb" id="5699792037748043353" />
       </scope>
-      <scope id="5699792037748043353" at="1355,57,1362,45" />
+      <scope id="5699792037748043353" at="1356,57,1363,45" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="5699792037748043353" at="171,0,172,0" concept="8" trace="TestAddElementOperation" />
@@ -6296,15 +6297,15 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/6801639034384703212">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="6801639034384703212" at="161,0,162,0" concept="2" trace="props_StackType" />
-      <node id="6801639034384703212" at="1281,38,1282,76" concept="5" />
-      <node id="6801639034384703212" at="1282,76,1283,39" concept="1" />
-      <node id="6801639034384703212" at="1283,39,1284,41" concept="1" />
-      <node id="6801639034384703212" at="1285,9,1286,31" concept="6" />
-      <node id="6801639034384703212" at="1280,43,1285,9" concept="3" />
-      <scope id="6801639034384703212" at="1281,38,1284,41">
+      <node id="6801639034384703212" at="1282,38,1283,76" concept="5" />
+      <node id="6801639034384703212" at="1283,76,1284,39" concept="1" />
+      <node id="6801639034384703212" at="1284,39,1285,41" concept="1" />
+      <node id="6801639034384703212" at="1286,9,1287,31" concept="6" />
+      <node id="6801639034384703212" at="1281,43,1286,9" concept="3" />
+      <scope id="6801639034384703212" at="1282,38,1285,41">
         <var name="cpb" id="6801639034384703212" />
       </scope>
-      <scope id="6801639034384703212" at="1280,43,1286,31" />
+      <scope id="6801639034384703212" at="1281,43,1287,31" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="6801639034384703212" at="161,0,162,0" concept="8" trace="StackType" />

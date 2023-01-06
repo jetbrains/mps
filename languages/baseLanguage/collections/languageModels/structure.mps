@@ -29,6 +29,7 @@
       </concept>
       <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
         <property id="1225118929411" name="build" index="YLPcu" />
+        <property id="1225118933224" name="comment" index="YLQ7P" />
       </concept>
       <concept id="1082978164218" name="jetbrains.mps.lang.structure.structure.DataTypeDeclaration" flags="ng" index="AxPO6">
         <property id="7791109065626895363" name="datatypeId" index="3F6X1D" />
@@ -892,6 +893,10 @@
     <property role="34LRSv" value="~ &lt;name&gt;" />
     <property role="EcuMT" value="1203518072036" />
     <ref role="1TJDcQ" to="tp2c:hwBqR26" resolve="UnboundClosureParameterDeclaration" />
+    <node concept="asaX9" id="4vR6YDfUCc_" role="lGtFl">
+      <property role="YLPcu" value="2022.3" />
+      <property role="YLQ7P" value="replaced by InferredClosureParameterDeclaration or use of ClosureVarType" />
+    </node>
   </node>
   <node concept="1TIwiD" id="hy3sC_q">
     <property role="R5$K7" value="true" />
