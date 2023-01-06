@@ -84,7 +84,10 @@ public class MigrationTask {
       //     MigrationProperties we need to have saved. Not sure if need EDT or write, but without anything
       //     it just hangs.
       // FIXME I hate saveProject(): its argument, invokeAndWait(), the fact it's invoked for each step and uses internal IDEA stuff.
-      ApplicationManager.getApplication().invokeAndWait(() -> saveProject(project));
+      ApplicationManager.getApplication().invokeAndWait(() -> {
+        saveProject(project);
+        saveIjProject(project);
+      });
       pm.done();
       // yeah, and I hate this enableFFU, too!
       PersistenceRegistry.getInstance().enableFastFindUsages();
@@ -225,6 +228,7 @@ public class MigrationTask {
           project.getRepository().saveAll();
           saveProject(project);
         });
+        saveIjProject(project);
 
         myCurrentChange.finish();
         myCurrentChange = null;
@@ -237,6 +241,11 @@ public class MigrationTask {
   private void saveProject(Project project) {
     // essential for project migrations to update the list of migrations run to the disk, however, suitable also for language migrations
     ((ProjectBase) project).save();
+  }
+
+  public void saveIjProject(Project project) {
+    // Looks like starting from IDEA 2023.3 following code should be executed
+    // outside of IDEA write action. Extracting this method from saveProject(Project):void
     if (project instanceof MPSProject) {
       com.intellij.openapi.project.Project ijProject = ((MPSProject) project).getProject();
       // ij does not save the project in headless which is not acceptable for us, copying the ij internals
