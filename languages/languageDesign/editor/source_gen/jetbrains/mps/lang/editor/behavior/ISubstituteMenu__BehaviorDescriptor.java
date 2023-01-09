@@ -20,17 +20,13 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class ISubstituteMenu__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, "jetbrains.mps.lang.editor.structure.ISubstituteMenu");
 
-  public static final SMethod<Boolean> requiresAllFieldMembersPrivate_id441vB8LNFML = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("requiresAllFieldMembersPrivate").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4684164116369030321L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
   public static final SMethod<Boolean> requiresAllMethodMembersPrivate_id441vB8LJxAr = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("requiresAllMethodMembersPrivate").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4684164116367939995L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(requiresAllFieldMembersPrivate_id441vB8LNFML, requiresAllMethodMembersPrivate_id441vB8LJxAr);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(requiresAllMethodMembersPrivate_id441vB8LJxAr);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static boolean requiresAllFieldMembersPrivate_id441vB8LNFML(@NotNull SNode __thisNode__) {
-    return true;
-  }
   /*package*/ static boolean requiresAllMethodMembersPrivate_id441vB8LJxAr(@NotNull SNode __thisNode__) {
     return true;
   }
@@ -51,8 +47,6 @@ public final class ISubstituteMenu__BehaviorDescriptor extends BaseBHDescriptor 
     }
     switch (methodIndex) {
       case 0:
-        return (T) ((Boolean) requiresAllFieldMembersPrivate_id441vB8LNFML(node));
-      case 1:
         return (T) ((Boolean) requiresAllMethodMembersPrivate_id441vB8LJxAr(node));
       default:
         throw new BHMethodNotFoundException(this, method);

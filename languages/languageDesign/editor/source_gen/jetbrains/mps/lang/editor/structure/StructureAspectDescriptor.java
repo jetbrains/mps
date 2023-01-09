@@ -3678,7 +3678,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(3);
     b.aggregate("parts", 0x5c03050cab44f64L).target(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab4546aL).optional(true).ordered(true).multiple(true).origin("414384289274416996").done();
     b.aggregate("methodDeclaration", 0x118c255bfb5L).target(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd6ee3c3L).optional(true).ordered(true).multiple(true).origin("1205851242421").done();
-    b.aggregate("fieldDeclaration", 0x4ffeb1df376f7495L).target(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x11aa7fc0293L).optional(true).ordered(true).multiple(true).origin("5764240145346688149").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForISubstituteMenuReference() {
@@ -3719,7 +3718,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(3);
     b.aggregate("sections", 0x16be955f384efffcL).target(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL).optional(true).ordered(true).multiple(true).origin("1638911550608572412").done();
     b.aggregate("methodDeclaration", 0x1c3a55c084e3bb6aL).target(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd6ee3c3L).optional(true).ordered(true).multiple(true).origin("2034032467062799210").done();
-    b.aggregate("fieldDeclaration", 0x1c3a55c084e3bb6bL).target(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x11aa7fc0293L).optional(true).ordered(true).multiple(true).origin("2034032467062799211").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForITransformationMenuReference() {
