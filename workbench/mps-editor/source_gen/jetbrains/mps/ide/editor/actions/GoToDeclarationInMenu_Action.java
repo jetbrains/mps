@@ -73,7 +73,7 @@ public class GoToDeclarationInMenu_Action extends BaseAction {
       new EditorNavigator(((MPSProject) MapSequence.fromMap(_params).get("project"))).shallFocus(true).selectIfChild().open(SNodeOperations.getPointer(declaration));
     });
   }
-  /*package*/ SNode getNodeDeclaration(final Map<String, Object> _params) {
+  private SNode getNodeDeclaration(final Map<String, Object> _params) {
     return FindDeclarationUtils.findDeclarationFromMenu(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")));
   }
 }

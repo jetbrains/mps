@@ -116,7 +116,7 @@ public class ShowParameters_Action extends BaseAction {
       }
     });
   }
-  /*package*/ SNode getCellNode(final Map<String, Object> _params) {
+  private SNode getCellNode(final Map<String, Object> _params) {
     return ((EditorCell) MapSequence.fromMap(_params).get("cell")).getSNode();
   }
   private <T> JComponent createComponent(ParametersInformation<T> parametersInformation, SNode node, final Map<String, Object> _params) {

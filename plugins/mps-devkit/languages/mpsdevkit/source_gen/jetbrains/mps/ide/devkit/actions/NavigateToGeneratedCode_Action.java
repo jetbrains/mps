@@ -58,7 +58,7 @@ public class NavigateToGeneratedCode_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(() -> new GeneratedCodeOpener(event.getData(MPSCommonDataKeys.MPS_PROJECT)).open(NavigateToGeneratedCode_Action.this.getNodeToNavigate(event.getData(MPSCommonDataKeys.NODE), event)));
   }
-  /*package*/ SNode getNodeToNavigate(SNode current, final AnActionEvent event) {
+  private SNode getNodeToNavigate(SNode current, final AnActionEvent event) {
     return ListSequence.fromList(SNodeOperations.getNodeAncestors(current, null, true)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return new GeneratedCodeOpener(event.getData(MPSCommonDataKeys.MPS_PROJECT)).canOpen(it);

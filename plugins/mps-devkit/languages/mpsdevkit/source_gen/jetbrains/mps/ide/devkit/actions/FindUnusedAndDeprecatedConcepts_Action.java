@@ -154,7 +154,7 @@ public class FindUnusedAndDeprecatedConcepts_Action extends BaseAction {
 
     FindUnusedAndDeprecatedConcepts_Action.this.showUsagesViewForNodes(conceptsToShow, _params);
   }
-  /*package*/ void showUsagesViewForNodes(final List<SNodeReference> nodes, final Map<String, Object> _params) {
+  private void showUsagesViewForNodes(final List<SNodeReference> nodes, final Map<String, Object> _params) {
     IResultProvider provider = FindUtils.makeProvider(new IFinder() {
       @NotNull
       @Override

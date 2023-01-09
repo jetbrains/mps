@@ -74,7 +74,7 @@ public class GoToEditorDeclaration_Action extends BaseAction {
     }
     new EditorNavigator(((MPSProject) MapSequence.fromMap(_params).get("project"))).shallFocus(true).selectIfChild().open(editorNode);
   }
-  /*package*/ SNodeReference findNodeEditorDeclaration(SNode forNode, final Map<String, Object> _params) {
+  private SNodeReference findNodeEditorDeclaration(SNode forNode, final Map<String, Object> _params) {
     final SNodeReference sn = SNodeOperations.getConcept(((SNode) MapSequence.fromMap(_params).get("node"))).getSourceNode();
     if (sn == null) {
       return null;

@@ -99,7 +99,7 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
     });
     LogContext.with(CalcClassifiersInRootsStatistic_Action.class, null, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), null).info(String.format("Members average time: %.3f", membersOverallTime.value * 0.001 / rootsCount.value));
   }
-  /*package*/ long analyzeClassifiersInRoot(final SNode node, final Map<String, Object> _params) {
+  private long analyzeClassifiersInRoot(final SNode node, final Map<String, Object> _params) {
     String nodeName = SNodeOperations.present(node) + "@" + SModelOperations.getModelName(SNodeOperations.getModel(node));
 
     StringBuilder sb = new StringBuilder();
@@ -132,7 +132,7 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
     }
     return membersCalcTime;
   }
-  /*package*/ List<SNode> calcAllClassifierTypesInRoot(final SNode rootNode, final Map<String, Object> _params) {
+  private List<SNode> calcAllClassifierTypesInRoot(final SNode rootNode, final Map<String, Object> _params) {
 
     List<SNode> result = TypecheckingFacade.getFromContext().computeIsolated(() -> {
       List<SNode> list = ListSequence.fromList(new ArrayList<SNode>());
@@ -149,7 +149,7 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
 
     return result;
   }
-  /*package*/ List<SNode> calcAllMembersOfClassifiers(Iterable<SNode> classifiers, final Map<String, Object> _params) {
+  private List<SNode> calcAllMembersOfClassifiers(Iterable<SNode> classifiers, final Map<String, Object> _params) {
     List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
 
     for (SNode classifier : classifiers) {
@@ -162,7 +162,7 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
 
     return result;
   }
-  /*package*/ long calculateElapsedTime(_FunctionTypes._void_P0_E0 toRun, final Map<String, Object> _params) {
+  private long calculateElapsedTime(_FunctionTypes._void_P0_E0 toRun, final Map<String, Object> _params) {
     long startTime = System.currentTimeMillis();
     try {
       toRun.invoke();

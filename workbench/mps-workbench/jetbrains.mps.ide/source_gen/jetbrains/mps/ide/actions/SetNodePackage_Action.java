@@ -135,7 +135,7 @@ public class SetNodePackage_Action extends BaseAction {
       }
     });
   }
-  /*package*/ List<String> fetchExistingPackages(List<SNode> nlist, final Map<String, Object> _params) {
+  private List<String> fetchExistingPackages(List<SNode> nlist, final Map<String, Object> _params) {
     Set<SModel> models = SetSequence.fromSetWithValues(new HashSet<SModel>(), ListSequence.fromList(nlist).select(new ISelector<SNode, SModel>() {
       public SModel select(SNode n) {
         return SNodeOperations.getModel(n);

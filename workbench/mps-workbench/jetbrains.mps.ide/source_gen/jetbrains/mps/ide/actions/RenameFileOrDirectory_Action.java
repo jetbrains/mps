@@ -82,7 +82,7 @@ public class RenameFileOrDirectory_Action extends BaseAction {
       }
     });
   }
-  /*package*/ boolean isNotValid(String result, final Map<String, Object> _params) {
+  private boolean isNotValid(String result, final Map<String, Object> _params) {
     if (result == null || result.length() == 0) {
       Messages.showMessageDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), "Enter valid name", "Error", Messages.getErrorIcon());
       return true;

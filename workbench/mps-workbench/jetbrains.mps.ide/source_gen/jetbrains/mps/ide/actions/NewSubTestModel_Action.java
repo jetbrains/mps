@@ -110,7 +110,7 @@ public class NewSubTestModel_Action extends BaseAction {
       ProjectPane.getInstance(event.getData(CommonDataKeys.PROJECT)).selectModel(createdModel, false);
     });
   }
-  /*package*/ String getTestModelName(final AnActionEvent event) {
+  private String getTestModelName(final AnActionEvent event) {
     String modelBaseName = event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getName().getLongName();
     int testModelCount = 0;
     Iterable<SModel> allModels = event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getModule().getModels();

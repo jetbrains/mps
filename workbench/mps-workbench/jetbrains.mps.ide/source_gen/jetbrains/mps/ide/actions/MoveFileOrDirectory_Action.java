@@ -84,7 +84,7 @@ public class MoveFileOrDirectory_Action extends BaseAction {
       }
     });
   }
-  /*package*/ boolean isNotValid(VirtualFile dest, final Map<String, Object> _params) {
+  private boolean isNotValid(VirtualFile dest, final Map<String, Object> _params) {
     // MoveFileDialog allows to pick folders only, but one could type in a name of a file
     if (dest == null || dest.equals(((VirtualFile) MapSequence.fromMap(_params).get("selectedFile"))) || (dest.exists() && !(dest.isDirectory()))) {
       JOptionPane.showMessageDialog(((Frame) MapSequence.fromMap(_params).get("frame")), "Enter valid name");

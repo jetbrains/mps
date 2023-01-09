@@ -654,7 +654,7 @@
       <node id="1744445256079578669" at="70,94,71,159" concept="8" />
       <node id="8690663167444638905" at="72,29,73,13" concept="9" />
       <node id="7690266557988222007" at="74,5,75,134" concept="3" />
-      <node id="5428716245445709854" at="77,106,78,125" concept="8" />
+      <node id="5428716245445709854" at="77,102,78,125" concept="8" />
       <node id="5428716245445727380" at="79,21,80,18" concept="9" />
       <node id="7690266557988295276" at="81,5,82,104" concept="8" />
       <node id="5428716245445730870" at="83,60,84,43" concept="8" />
@@ -724,7 +724,7 @@
         <var name="editorModel" id="5428716245445854178" />
       </scope>
       <scope id="1744445256079578595" at="48,95,66,16" />
-      <scope id="5428716245445897266" at="77,106,97,7">
+      <scope id="5428716245445897266" at="77,102,97,7">
         <var name="repo" id="7690266557988295277" />
         <var name="sn" id="5428716245445709855" />
       </scope>
@@ -1928,7 +1928,7 @@
       <node id="305616691112287268" at="34,0,38,0" concept="7" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
       <node id="305616691112287268" at="57,0,61,0" concept="7" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
       <node id="305616691112287268" at="21,0,26,0" concept="2" trace="NavigateToGeneratedCode_Action#()V" />
-      <node id="5329932726148525744" at="61,81,66,7" concept="9" />
+      <node id="5329932726148525744" at="61,77,66,7" concept="9" />
       <node id="305616691112287312" at="42,5,48,5" concept="1" />
       <node id="1217350330249906787" at="48,5,54,5" concept="1" />
       <node id="5329932726148522216" at="61,0,68,0" concept="7" trace="getNodeToNavigate#(Lorg/jetbrains/mps/openapi/model/SNode;Lcom/intellij/openapi/actionSystem/AnActionEvent;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -1965,7 +1965,7 @@
         <var name="event" id="305616691112287268" />
       </scope>
       <scope id="305616691112287268" at="21,0,26,0" />
-      <scope id="5329932726148522218" at="61,81,66,7" />
+      <scope id="5329932726148522218" at="61,77,66,7" />
       <scope id="5329932726148522216" at="61,0,68,0">
         <var name="current" id="5329932726148524993" />
         <var name="event" id="5329932726148522216" />
@@ -2432,7 +2432,7 @@
       <node id="4006758004392427750" at="163,66,174,9" concept="5" />
       <node id="4006758004392427482" at="159,0,177,0" concept="7" trace="find#(Ljetbrains/mps/ide/findusages/model/SearchQuery;Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)Ljetbrains/mps/ide/findusages/model/SearchResults;" />
       <node id="4006758004392312921" at="64,0,85,0" concept="7" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <node id="4006758004392427960" at="157,112,181,7" concept="8" />
+      <node id="4006758004392427960" at="157,108,181,7" concept="8" />
       <node id="9054606037494878019" at="157,0,185,0" concept="7" trace="showUsagesViewForNodes#(Ljava/util/List;Ljava/util/Map;)V" />
       <node id="1050125497003819739" at="94,0,149,11" concept="8" />
       <node id="1050125497003254900" at="91,0,152,0" concept="7" trace="run#(Lcom/intellij/openapi/progress/ProgressIndicator;)V" />
@@ -2509,7 +2509,7 @@
         <var name="_params" id="4006758004392312921" />
         <var name="event" id="4006758004392312921" />
       </scope>
-      <scope id="9054606037494878021" at="157,112,183,197">
+      <scope id="9054606037494878021" at="157,108,183,197">
         <var name="opt" id="5542552559868803499" />
         <var name="provider" id="4006758004392427961" />
       </scope>

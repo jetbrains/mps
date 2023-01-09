@@ -176,7 +176,7 @@ public class CloneModule_Action extends BaseAction {
     //     Need to check if CopyModuleHelper supports .mpst
     return !(module.isPackaged()) && CloneModule_Action.this.getExtension(module, event) != null;
   }
-  /*package*/ String getExtension(SModule module, final AnActionEvent event) {
+  private String getExtension(SModule module, final AnActionEvent event) {
     if (module instanceof Language) {
       return MPSExtentions.DOT_LANGUAGE;
     }
@@ -185,7 +185,7 @@ public class CloneModule_Action extends BaseAction {
     }
     return null;
   }
-  /*package*/ void showPopup(Project ideaProject, String htmlText, MessageType messageType, final AnActionEvent event) {
+  private void showPopup(Project ideaProject, String htmlText, MessageType messageType, final AnActionEvent event) {
     // XXX there's BaseAction.showNotification, can I merge these? There's no fadeout time in BA.showNotification
     //     but is it that important?
     final int POPUP_FADEOUT_TIME = 10000;

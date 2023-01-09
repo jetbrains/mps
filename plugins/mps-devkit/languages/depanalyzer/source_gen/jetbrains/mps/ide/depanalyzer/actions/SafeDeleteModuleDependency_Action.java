@@ -109,7 +109,7 @@ public class SafeDeleteModuleDependency_Action extends BaseAction {
     return as_iuftgz_a0a0a8(((DependencyTreeNode) MapSequence.fromMap(_params).get("node")).getParent(), DependencyTreeNode.class).getModule();
   }
   @Nullable
-  /*package*/ SModule getModuleTo(final Map<String, Object> _params) {
+  private SModule getModuleTo(final Map<String, Object> _params) {
     return as_iuftgz_a0a0a9(((DependencyTreeNode) MapSequence.fromMap(_params).get("node")), DependencyTreeNode.class).getModule();
   }
   private void removeDependency(final Map<String, Object> _params) {

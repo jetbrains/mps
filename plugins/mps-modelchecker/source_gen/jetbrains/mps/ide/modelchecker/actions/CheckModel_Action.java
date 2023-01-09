@@ -91,7 +91,7 @@ public class CheckModel_Action extends BaseAction {
 
     ModelCheckerTool.getInstance(((Project) MapSequence.fromMap(_params).get("project"))).checkModelsAndShowResult(modelsToCheck);
   }
-  /*package*/ List<SModel> selectedModels(final Map<String, Object> _params) {
+  private List<SModel> selectedModels(final Map<String, Object> _params) {
     List<SModel> modelsToCheck = new ArrayList<SModel>();
     if (((List<SModel>) MapSequence.fromMap(_params).get("models")) != null) {
       modelsToCheck.addAll(((List<SModel>) MapSequence.fromMap(_params).get("models")));
@@ -101,7 +101,7 @@ public class CheckModel_Action extends BaseAction {
     }
     return modelsToCheck;
   }
-  /*package*/ void completeWithNested(List<SModel> models, final Map<String, Object> _params) {
+  private void completeWithNested(List<SModel> models, final Map<String, Object> _params) {
     for (SModel model : models.toArray(new SModel[models.size()])) {
       String name = model.getName().getLongName();
       boolean isStub = SModelStereotype.isStubModel(model);
