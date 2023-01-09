@@ -32,8 +32,9 @@ public final class ConceptConstraints__BehaviorDescriptor extends BaseBHDescript
   public static final SMethod<SNode> getBaseConcept_id2hxg_BDjKM8 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getBaseConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2621449412040133768L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
   public static final SMethod<Void> setBaseConcept_id5r_35Ihc58c = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setBaseConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6261424444345963020L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<SNode> getConstraintFunctionBodyUsingInheritance_id4jmriKirjWW = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getConstraintFunctionBodyUsingInheritance").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4960272075650318140L).languageId(0x8b10c83066ffa4a1L, 0x3f4bc5f5c6c14a28L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<_FunctionTypes._return_P1_E0<? extends SNode, ? super SNode>>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> requiresAllMethodMembersPrivate_id441vB8LJxAr = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("requiresAllMethodMembersPrivate").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4684164116367939995L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getBaseConcept_id2hxg_BDjKM8, setBaseConcept_id5r_35Ihc58c, getConstraintFunctionBodyUsingInheritance_id4jmriKirjWW);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getBaseConcept_id2hxg_BDjKM8, setBaseConcept_id5r_35Ihc58c, getConstraintFunctionBodyUsingInheritance_id4jmriKirjWW, requiresAllMethodMembersPrivate_id441vB8LJxAr);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -57,6 +58,9 @@ public final class ConceptConstraints__BehaviorDescriptor extends BaseBHDescript
       return SLinkOperations.getTarget(method, LINKS.body$e68K);
     }
   }
+  /*package*/ static boolean requiresAllMethodMembersPrivate_id441vB8LJxAr(@NotNull SNode __thisNode__) {
+    return true;
+  }
 
   /*package*/ ConceptConstraints__BehaviorDescriptor() {
   }
@@ -78,6 +82,8 @@ public final class ConceptConstraints__BehaviorDescriptor extends BaseBHDescript
       case 1:
         setBaseConcept_id5r_35Ihc58c(node, (SNode) parameters[0]);
         return null;
+      case 3:
+        return (T) ((Boolean) requiresAllMethodMembersPrivate_id441vB8LJxAr(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

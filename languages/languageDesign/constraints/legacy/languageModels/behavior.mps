@@ -24,6 +24,7 @@
     <import index="tpeq" ref="r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)" />
     <import index="beg" ref="r:09811e4e-aa47-4ea2-ad3d-57b7b9ffc7e3(jetbrains.mps.lang.constraints.plugin)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" implicit="true" />
+    <import index="tp4h" ref="r:00000000-0000-4000-0000-011c8959036d(jetbrains.mps.baseLanguage.classifiers.behavior)" implicit="true" />
   </imports>
   <registry>
     <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
@@ -1056,6 +1057,19 @@
         </node>
       </node>
       <node concept="3Tm1VV" id="4jmriKirjWX" role="1B3o_S" />
+    </node>
+    <node concept="13i0hz" id="441vB8LLwz9" role="13h7CS">
+      <property role="TrG5h" value="requiresAllMethodMembersPrivate" />
+      <ref role="13i0hy" to="tp4h:441vB8LJxAr" resolve="isAllMembersPrivate" />
+      <node concept="3Tm1VV" id="441vB8LLwza" role="1B3o_S" />
+      <node concept="3clFbS" id="441vB8LLwzf" role="3clF47">
+        <node concept="3clFbF" id="441vB8LLwKN" role="3cqZAp">
+          <node concept="3clFbT" id="441vB8LLwKM" role="3clFbG">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+      <node concept="10P_77" id="441vB8LLwzg" role="3clF45" />
     </node>
   </node>
   <node concept="13h7C7" id="1653mnvAmCw">

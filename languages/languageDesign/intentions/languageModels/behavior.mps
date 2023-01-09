@@ -26,6 +26,7 @@
     <import index="tpcn" ref="r:00000000-0000-4000-0000-011c8959028b(jetbrains.mps.lang.structure.behavior)" implicit="true" />
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" implicit="true" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" implicit="true" />
+    <import index="tp4h" ref="r:00000000-0000-4000-0000-011c8959036d(jetbrains.mps.baseLanguage.classifiers.behavior)" implicit="true" />
   </imports>
   <registry>
     <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
@@ -740,6 +741,32 @@
     </node>
     <node concept="13hLZK" id="5rGvd38DcHF" role="13h7CW">
       <node concept="3clFbS" id="5rGvd38DcHG" role="2VODD2" />
+    </node>
+    <node concept="13i0hz" id="441vB8LO4uF" role="13h7CS">
+      <property role="TrG5h" value="requiresAllFieldMembersPrivate" />
+      <ref role="13i0hy" to="tp4h:441vB8LNFML" resolve="requiresAllFieldMembersPrivate" />
+      <node concept="3Tm1VV" id="441vB8LO4uG" role="1B3o_S" />
+      <node concept="3clFbS" id="441vB8LO4uL" role="3clF47">
+        <node concept="3clFbF" id="441vB8LO4MO" role="3cqZAp">
+          <node concept="3clFbT" id="441vB8LO4MN" role="3clFbG">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+      <node concept="10P_77" id="441vB8LO4uM" role="3clF45" />
+    </node>
+    <node concept="13i0hz" id="441vB8LJM1n" role="13h7CS">
+      <property role="TrG5h" value="requiresAllMethodMembersPrivate" />
+      <ref role="13i0hy" to="tp4h:441vB8LJxAr" resolve="isAllMembersPrivate" />
+      <node concept="3Tm1VV" id="441vB8LJM1o" role="1B3o_S" />
+      <node concept="3clFbS" id="441vB8LJM1t" role="3clF47">
+        <node concept="3clFbF" id="441vB8LJMpg" role="3cqZAp">
+          <node concept="3clFbT" id="441vB8LJMpf" role="3clFbG">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+      <node concept="10P_77" id="441vB8LJM1u" role="3clF45" />
     </node>
   </node>
   <node concept="13h7C7" id="1653mnvAlHv">

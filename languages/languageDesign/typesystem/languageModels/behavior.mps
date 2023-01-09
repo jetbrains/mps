@@ -29,6 +29,7 @@
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" implicit="true" />
     <import index="f7uj" ref="r:8ffb9fde-829b-4ee3-ade6-f4eee43e66a8(jetbrains.mps.lang.typesystem.plugin)" implicit="true" />
     <import index="cj4x" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor(MPS.Editor/)" implicit="true" />
+    <import index="tp4h" ref="r:00000000-0000-4000-0000-011c8959036d(jetbrains.mps.baseLanguage.classifiers.behavior)" implicit="true" />
   </imports>
   <registry>
     <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
@@ -4501,6 +4502,46 @@
         </node>
       </node>
       <node concept="17QB3L" id="426cbTMdqFd" role="3clF45" />
+    </node>
+  </node>
+  <node concept="13h7C7" id="441vB8LMI2J">
+    <property role="3GE5qa" value="definition.quickfix" />
+    <ref role="13h7C2" to="tpd4:hGQ5zx_" resolve="TypesystemQuickFix" />
+    <node concept="13hLZK" id="441vB8LMI2K" role="13h7CW">
+      <node concept="3clFbS" id="441vB8LMI2L" role="2VODD2" />
+    </node>
+    <node concept="13i0hz" id="441vB8LMI32" role="13h7CS">
+      <property role="TrG5h" value="requiresAllMethodMembersPrivate" />
+      <ref role="13i0hy" to="tp4h:441vB8LJxAr" resolve="isAllMembersPrivate" />
+      <node concept="3Tm1VV" id="441vB8LMI33" role="1B3o_S" />
+      <node concept="3clFbS" id="441vB8LMI38" role="3clF47">
+        <node concept="3clFbF" id="441vB8LMIyN" role="3cqZAp">
+          <node concept="3clFbT" id="441vB8LMIyM" role="3clFbG">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+      <node concept="10P_77" id="441vB8LMI39" role="3clF45" />
+    </node>
+  </node>
+  <node concept="13h7C7" id="441vB8LMICB">
+    <property role="3GE5qa" value="definition.rule" />
+    <ref role="13h7C2" to="tpd4:hp8hY$D" resolve="AbstractCheckingRule" />
+    <node concept="13hLZK" id="441vB8LMICC" role="13h7CW">
+      <node concept="3clFbS" id="441vB8LMICD" role="2VODD2" />
+    </node>
+    <node concept="13i0hz" id="441vB8LMICU" role="13h7CS">
+      <property role="TrG5h" value="requiresAllMethodMembersPrivate" />
+      <ref role="13i0hy" to="tp4h:441vB8LJxAr" resolve="isAllMembersPrivate" />
+      <node concept="3Tm1VV" id="441vB8LMICV" role="1B3o_S" />
+      <node concept="3clFbS" id="441vB8LMID0" role="3clF47">
+        <node concept="3clFbF" id="441vB8LMIIN" role="3cqZAp">
+          <node concept="3clFbT" id="441vB8LMIIM" role="3clFbG">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+      <node concept="10P_77" id="441vB8LMID1" role="3clF45" />
     </node>
   </node>
 </model>

@@ -37,8 +37,10 @@ public final class BaseIntentionDeclaration__BehaviorDescriptor extends BaseBHDe
   public static final SMethod<SNode> getDescendantToCheck_id4cWf37B8oXJ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getDescendantToCheck").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4844813484172611439L).languageId(0xae28a40915b4d6ffL, 0xfe9d76d7580945c9L).build2();
   public static final SMethod<SNode> getBaseConcept_id2hxg_BDjKM8 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getBaseConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2621449412040133768L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
   public static final SMethod<Void> setBaseConcept_id5r_35Ihc58c = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setBaseConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6261424444345963020L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> requiresAllFieldMembersPrivate_id441vB8LNFML = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("requiresAllFieldMembersPrivate").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4684164116369030321L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
+  public static final SMethod<Boolean> requiresAllMethodMembersPrivate_id441vB8LJxAr = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("requiresAllMethodMembersPrivate").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4684164116367939995L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getGeneratedName_id5rGvd38DcHL, getConceptName_id5rGvd38DcHW, getGeneratedId_id2ytFvC$HDcE, getDescendantToCheck_id4cWf37B8oXJ, getBaseConcept_id2hxg_BDjKM8, setBaseConcept_id5r_35Ihc58c);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getGeneratedName_id5rGvd38DcHL, getConceptName_id5rGvd38DcHW, getGeneratedId_id2ytFvC$HDcE, getDescendantToCheck_id4cWf37B8oXJ, getBaseConcept_id2hxg_BDjKM8, setBaseConcept_id5r_35Ihc58c, requiresAllFieldMembersPrivate_id441vB8LNFML, requiresAllMethodMembersPrivate_id441vB8LJxAr);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -74,6 +76,12 @@ public final class BaseIntentionDeclaration__BehaviorDescriptor extends BaseBHDe
   /*package*/ static void setBaseConcept_id5r_35Ihc58c(@NotNull SNode __thisNode__, SNode baseConcept) {
     SLinkOperations.setTarget(__thisNode__, LINKS.forConcept$zyGL, baseConcept);
   }
+  /*package*/ static boolean requiresAllFieldMembersPrivate_id441vB8LNFML(@NotNull SNode __thisNode__) {
+    return true;
+  }
+  /*package*/ static boolean requiresAllMethodMembersPrivate_id441vB8LJxAr(@NotNull SNode __thisNode__) {
+    return true;
+  }
 
   /*package*/ BaseIntentionDeclaration__BehaviorDescriptor() {
   }
@@ -103,6 +111,10 @@ public final class BaseIntentionDeclaration__BehaviorDescriptor extends BaseBHDe
       case 5:
         setBaseConcept_id5r_35Ihc58c(node, (SNode) parameters[0]);
         return null;
+      case 6:
+        return (T) ((Boolean) requiresAllFieldMembersPrivate_id441vB8LNFML(node));
+      case 7:
+        return (T) ((Boolean) requiresAllMethodMembersPrivate_id441vB8LJxAr(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
