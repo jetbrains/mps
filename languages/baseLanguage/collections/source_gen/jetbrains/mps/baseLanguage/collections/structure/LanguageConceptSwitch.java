@@ -173,13 +173,14 @@ public final class LanguageConceptSwitch {
   public static final int ToArrayOperation = 161;
   public static final int ToIteratorOperation = 162;
   public static final int ToListOperation = 163;
-  public static final int TranslateOperation = 164;
-  public static final int TreeMapCreator = 165;
-  public static final int TreeSetCreator = 166;
-  public static final int UnionOperation = 167;
-  public static final int ValueAccessOperation = 168;
-  public static final int VisitAllOperation = 169;
-  public static final int WhereOperation = 170;
+  public static final int ToStreamOperation = 164;
+  public static final int TranslateOperation = 165;
+  public static final int TreeMapCreator = 166;
+  public static final int TreeSetCreator = 167;
+  public static final int UnionOperation = 168;
+  public static final int ValueAccessOperation = 169;
+  public static final int VisitAllOperation = 170;
+  public static final int WhereOperation = 171;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL);
@@ -347,6 +348,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x113e55393bdL, ToArrayOperation);
     builder.put(0x11914e10330L, ToIteratorOperation);
     builder.put(0x10c26cea325L, ToListOperation);
+    builder.put(0x6be708533e750cb4L, ToStreamOperation);
     builder.put(0x117d06362dcL, TranslateOperation);
     builder.put(0x120c408d37aL, TreeMapCreator);
     builder.put(0x120c4838d33L, TreeSetCreator);

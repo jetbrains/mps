@@ -5,6 +5,8 @@ package jetbrains.mps.internal.collections.runtime;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 public interface ISequence<T> extends Iterable<T>, IEnumerable<T> {
   ISequence<T> where(_FunctionTypes._return_P1_E0<? extends Boolean, ? super T> filter);
@@ -46,6 +48,9 @@ public interface ISequence<T> extends Iterable<T>, IEnumerable<T> {
   <S> S foldRight(S seed, _FunctionTypes._return_P2_E0<? extends S, ? super T, ? super S> comb);
   Iterable<T> toIterable();
   List<T> toList();
+  default Stream<T> toStream(boolean parallel) {
+    return StreamSupport.stream(this.spliterator(), parallel);
+  }
   /**
    * 
    * @deprecated this is not necessary, and could act as a cast while it was expected that the output list would be a copy of it

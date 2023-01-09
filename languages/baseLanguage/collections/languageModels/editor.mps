@@ -22,6 +22,7 @@
     <import index="tpco" ref="r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="tp2z" ref="r:00000000-0000-4000-0000-011c89590327(jetbrains.mps.baseLanguage.collections.behavior)" />
+    <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" />
   </imports>
   <registry>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
@@ -408,8 +409,10 @@
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
       </concept>
+      <concept id="1171903607971" name="jetbrains.mps.baseLanguage.structure.WildCardType" flags="in" index="3qTvmN" />
       <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
         <reference id="1107535924139" name="classifier" index="3uigEE" />
+        <child id="1109201940907" name="parameter" index="11_B2D" />
       </concept>
       <concept id="1081773326031" name="jetbrains.mps.baseLanguage.structure.BinaryOperation" flags="nn" index="3uHJSO">
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
@@ -434,6 +437,11 @@
       </concept>
     </language>
     <language id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem">
+      <concept id="1177406296561" name="jetbrains.mps.lang.typesystem.structure.IsStrongSubtypeExpression" flags="nn" index="yS_3z" />
+      <concept id="1176543928247" name="jetbrains.mps.lang.typesystem.structure.IsSubtypeExpression" flags="nn" index="3JuTUA">
+        <child id="1176543945045" name="subtypeExpression" index="3JuY14" />
+        <child id="1176543950311" name="supertypeExpression" index="3JuZjQ" />
+      </concept>
       <concept id="1176544042499" name="jetbrains.mps.lang.typesystem.structure.Node_TypeOperation" flags="nn" index="3JvlWi" />
       <concept id="1178870617262" name="jetbrains.mps.lang.typesystem.structure.CoerceExpression" flags="nn" index="1UaxmW">
         <child id="1178870894644" name="pattern" index="1Ub_4A" />
@@ -4056,6 +4064,11 @@
         <ref role="2kkw0f" node="1wEcoXjIBKW" resolve="substitute_IOperation_IteratorType" />
       </node>
     </node>
+    <node concept="1s_PAr" id="53D5CKTB56w" role="3ft7WO">
+      <node concept="2kknPI" id="53D5CKTB56x" role="1s_PAo">
+        <ref role="2kkw0f" node="53D5CKT$rLl" resolve="substitute_IOperation_StreamType" />
+      </node>
+    </node>
     <node concept="1s_PAr" id="1wEcoXjIBSp" role="3ft7WO">
       <node concept="2kknPI" id="1wEcoXjIBSq" role="1s_PAo">
         <ref role="2kkw0f" node="1wEcoXjIBRF" resolve="substitute_IOperation_ArrayType" />
@@ -6609,6 +6622,76 @@
           </node>
         </node>
       </node>
+    </node>
+  </node>
+  <node concept="22mcaB" id="53D5CKT$rLl">
+    <ref role="aqKnT" to="tpee:hqOqG0K" resolve="IOperation" />
+    <node concept="22hDWg" id="53D5CKT$rLm" role="22hAXT">
+      <property role="TrG5h" value="substitute_IOperation_StreamType" />
+    </node>
+    <node concept="3ft6gV" id="53D5CKT$rLn" role="3ft7WO">
+      <node concept="3ft6gW" id="53D5CKT$rLo" role="3ft5RY">
+        <node concept="3clFbS" id="53D5CKT$rLp" role="2VODD2">
+          <node concept="3clFbF" id="53D5CKTDtgh" role="3cqZAp">
+            <node concept="yS_3z" id="53D5CKTDtgb" role="3clFbG">
+              <node concept="2OqwBi" id="53D5CKT$rLu" role="3JuY14">
+                <node concept="2OqwBi" id="53D5CKT$rLv" role="2Oq$k0">
+                  <node concept="1PxgMI" id="53D5CKT$rLw" role="2Oq$k0">
+                    <property role="1BlNFB" value="true" />
+                    <node concept="3bvxqY" id="53D5CKT$rLx" role="1m5AlR" />
+                    <node concept="chp4Y" id="53D5CKT$rLy" role="3oSUPX">
+                      <ref role="cht4Q" to="tpee:hqOqwz4" resolve="DotExpression" />
+                    </node>
+                  </node>
+                  <node concept="3TrEf2" id="53D5CKT$rLz" role="2OqNvi">
+                    <ref role="3Tt5mk" to="tpee:hqOq$gm" resolve="operand" />
+                  </node>
+                </node>
+                <node concept="3JvlWi" id="53D5CKT$rL$" role="2OqNvi" />
+              </node>
+              <node concept="2c44tf" id="53D5CKTDtSk" role="3JuZjQ">
+                <node concept="3uibUv" id="53D5CKTDtXE" role="2c44tc">
+                  <ref role="3uigEE" to="1ctc:~Stream" resolve="Stream" />
+                  <node concept="3qTvmN" id="53D5CKTDu11" role="11_B2D" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3ft5Ry" id="53D5CKT$rLA" role="3ft5RZ">
+        <ref role="4PJHt" to="tp2q:i39bAs3" resolve="AsSequenceOperation" />
+      </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="6JB25cYuKc0">
+    <property role="3GE5qa" value="sequence" />
+    <ref role="1XX52x" to="tp2q:6JB25cYtgMO" resolve="ToStreamOperation" />
+    <node concept="3EZMnI" id="6JB25cYuKc7" role="2wV5jI">
+      <node concept="PMmxH" id="6JB25cYuKc5" role="3EZMnx">
+        <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
+        <ref role="1k5W1q" node="hGdPUoh" resolve="Operation" />
+        <node concept="OXEIz" id="6JB25cYuLAs" role="P5bDN">
+          <node concept="UkePV" id="6JB25cYuLAt" role="OY2wv">
+            <ref role="Ul1FP" to="tpee:hqOqG0K" resolve="IOperation" />
+          </node>
+        </node>
+      </node>
+      <node concept="3F0ifn" id="6JB25cYuKcf" role="3EZMnx">
+        <property role="3F0ifm" value="(" />
+        <ref role="1k5W1q" to="tpen:hY9fg1G" resolve="LeftParenAfterName" />
+      </node>
+      <node concept="3F0ifn" id="6JB25cYuKcx" role="3EZMnx">
+        <property role="3F0ifm" value="parallel =" />
+      </node>
+      <node concept="3F0A7n" id="6JB25cYuKcH" role="3EZMnx">
+        <ref role="1NtTu8" to="tp2q:6JB25cYuK88" resolve="parallel" />
+      </node>
+      <node concept="3F0ifn" id="6JB25cYuKcn" role="3EZMnx">
+        <property role="3F0ifm" value=")" />
+        <ref role="1k5W1q" to="tpen:hFCSUmN" resolve="RightParen" />
+      </node>
+      <node concept="l2Vlx" id="6JB25cYuKc8" role="2iSdaV" />
     </node>
   </node>
 </model>

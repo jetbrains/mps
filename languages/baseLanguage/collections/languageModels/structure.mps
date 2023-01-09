@@ -2953,5 +2953,18 @@
       <property role="3tVfz5" value="1240219896671" />
     </node>
   </node>
+  <node concept="1TIwiD" id="6JB25cYtgMO">
+    <property role="EcuMT" value="7775192435301616820" />
+    <property role="3GE5qa" value="sequence" />
+    <property role="TrG5h" value="ToStreamOperation" />
+    <property role="34LRSv" value="toStream" />
+    <property role="R4oN_" value="use as stream" />
+    <ref role="1TJDcQ" node="gKAMqbp" resolve="SequenceOperation" />
+    <node concept="1TJgyi" id="6JB25cYuK88" role="1TKVEl">
+      <property role="IQ2nx" value="7775192435302007304" />
+      <property role="TrG5h" value="parallel" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
+  </node>
 </model>
 

@@ -1127,6 +1127,47 @@
       <unit id="3473971317150331482" at="7,0,15,0" name="jetbrains.mps.internal.collections.runtime.IVisitor" />
     </file>
   </root>
+  <root nodeRef="r:fc76aa36-3cff-41c7-b94b-eee0e8341932(jetbrains.mps.internal.collections.runtime)/5830215984127498461">
+    <file name="StreamSequence.java">
+      <node id="5830215984127957576" at="17,0,18,0" concept="5" trace="cache" />
+      <node id="5830215984127587921" at="18,0,19,0" concept="5" trace="streamIterator" />
+      <node id="5830215984127587926" at="20,43,21,44" concept="4" />
+      <node id="5830215984128016689" at="25,0,26,0" concept="5" trace="listIterator" />
+      <node id="5830215984127981742" at="26,39,27,42" concept="4" />
+      <node id="5830215984128212050" at="31,30,32,64" concept="11" />
+      <node id="5830215984128518583" at="35,21,36,49" concept="12" />
+      <node id="5830215984128324864" at="37,35,38,35" concept="11" />
+      <node id="5830215984128407256" at="39,14,40,39" concept="10" />
+      <node id="5830215984128436859" at="40,39,41,31" concept="4" />
+      <node id="5830215984128491564" at="41,31,42,20" concept="11" />
+      <node id="5830215984128748157" at="48,33,49,42" concept="11" />
+      <node id="5830215984127498532" at="20,0,23,0" concept="2" trace="StreamSequence#(Ljava/util/stream/Stream;)V" />
+      <node id="5830215984127834709" at="26,0,29,0" concept="2" trace="StreamRepeatableIterator#()V" />
+      <node id="5830215984127922868" at="30,0,34,0" concept="9" trace="hasNext#()Z" />
+      <node id="5830215984128381606" at="39,12,43,7" concept="0" />
+      <node id="5830215984127792534" at="47,0,51,0" concept="9" trace="iterator#()Ljava/util/Iterator;" />
+      <node id="5830215984128289004" at="36,49,43,7" concept="8" />
+      <node id="5830215984127922876" at="34,0,45,0" concept="9" trace="next#()null" />
+      <scope id="5830215984127498536" at="20,43,21,44" />
+      <scope id="5830215984127834713" at="26,39,27,42" />
+      <scope id="5830215984127922872" at="31,30,32,64" />
+      <scope id="5830215984128289006" at="37,35,38,35" />
+      <scope id="5830215984127792552" at="48,33,49,42" />
+      <scope id="5830215984127498532" at="20,0,23,0">
+        <var name="stream" id="5830215984127498566" />
+      </scope>
+      <scope id="5830215984127834709" at="26,0,29,0" />
+      <scope id="5830215984128381607" at="39,14,42,20">
+        <var name="next" id="5830215984128407257" />
+      </scope>
+      <scope id="5830215984127922868" at="30,0,34,0" />
+      <scope id="5830215984127792534" at="47,0,51,0" />
+      <scope id="5830215984127922881" at="35,21,43,7" />
+      <scope id="5830215984127922876" at="34,0,45,0" />
+      <unit id="5830215984127815144" at="24,0,46,0" name="jetbrains.mps.internal.collections.runtime.StreamSequence$StreamRepeatableIterator" />
+      <unit id="5830215984127498461" at="16,0,52,0" name="jetbrains.mps.internal.collections.runtime.StreamSequence" />
+    </file>
+  </root>
   <root nodeRef="r:fc76aa36-3cff-41c7-b94b-eee0e8341932(jetbrains.mps.internal.collections.runtime)/6543581031674022768">
     <file name="DequeSequence.java">
       <node id="6543581031674022778" at="17,0,18,0" concept="13" trace="serialVersionUID" />
@@ -1482,246 +1523,263 @@
   </root>
   <root nodeRef="r:fc76aa36-3cff-41c7-b94b-eee0e8341932(jetbrains.mps.internal.collections.runtime)/6543581031674023524">
     <file name="Sequence.java">
-      <node id="6543581031674023531" at="14,0,15,0" concept="13" trace="USE_NULL_SEQUENCE" />
-      <node id="6543581031674023535" at="15,0,16,0" concept="13" trace="IGNORE_NULL_VALUES" />
-      <node id="6543581031674023539" at="16,0,17,0" concept="13" trace="NULL_WHEN_EMPTY" />
-      <node id="6543581031674023543" at="17,0,18,0" concept="13" trace="NULL_ARRAY_IS_SINGLETON" />
-      <node id="6543581031674023547" at="18,0,19,0" concept="13" trace="ARRAY_WITH_NULL" />
-      <node id="6543581031674024261" at="22,28,23,40" concept="10" />
-      <node id="6543581031674024271" at="24,27,25,20" concept="11" />
-      <node id="6543581031674024273" at="26,5,27,46" concept="10" />
-      <node id="6543581031674024279" at="27,46,28,20" concept="10" />
-      <node id="6543581031674024288" at="29,26,30,47" concept="4" />
-      <node id="6543581031674024297" at="30,47,31,17" concept="4" />
-      <node id="6543581031674024301" at="32,5,33,19" concept="4" />
-      <node id="6543581031674024306" at="33,19,34,25" concept="11" />
-      <node id="6543581031674023565" at="37,49,38,33" concept="11" />
-      <node id="6543581031674023579" at="40,50,41,38" concept="11" />
-      <node id="6869654011218083071" at="45,26,46,39" concept="11" />
-      <node id="6543581031674023590" at="48,5,49,54" concept="11" />
-      <node id="6543581031674023605" at="51,145,52,47" concept="11" />
-      <node id="6543581031674023627" at="56,29,57,39" concept="11" />
-      <node id="6543581031674023634" at="60,40,61,37" concept="11" />
-      <node id="6543581031674023639" at="62,5,63,42" concept="11" />
-      <node id="6543581031674023660" at="67,26,68,39" concept="11" />
-      <node id="6543581031674023662" at="70,5,71,62" concept="11" />
-      <node id="6543581031674023555" at="19,0,21,0" concept="2" trace="Sequence#()V" />
-      <node id="6543581031674024266" at="23,40,26,5" concept="8" />
-      <node id="6543581031674023573" at="40,0,43,0" concept="14" trace="emptySequence#()Ljetbrains/mps/internal/collections/runtime/ISequence;" />
-      <node id="6869654011218083030" at="44,28,47,7" concept="8" />
-      <node id="6543581031674023596" at="51,0,54,0" concept="14" trace="fromClosure#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P0_E0;)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
-      <node id="6543581031674023622" at="55,28,58,7" concept="8" />
-      <node id="6543581031674023629" at="59,5,62,5" concept="8" />
-      <node id="6543581031674023655" at="66,29,69,7" concept="8" />
-      <node id="6543581031674024283" at="28,20,32,5" concept="7" />
-      <node id="6543581031674023559" at="36,0,40,0" concept="14" trace="nullSingletonArray#()[null" />
-      <node id="6869654011218083027" at="43,56,48,5" concept="8" />
-      <node id="6543581031674023619" at="54,69,59,5" concept="8" />
-      <node id="6543581031674023652" at="65,53,70,5" concept="8" />
-      <node id="6543581031674023581" at="43,0,51,0" concept="14" trace="fromArray#(null)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
-      <node id="6543581031674023644" at="65,0,73,0" concept="14" trace="singleton#(null)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
-      <node id="6543581031674023610" at="54,0,65,0" concept="14" trace="fromIterable#(Ljava/lang/Iterable;)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
-      <node id="6543581031674024257" at="21,0,36,0" concept="9" trace="toString#()Ljava/lang/String;" />
-      <scope id="6543581031674023558" at="19,21,19,21" />
-      <scope id="6543581031674024270" at="24,27,25,20" />
-      <scope id="6543581031674023564" at="37,49,38,33" />
-      <scope id="6543581031674023578" at="40,50,41,38" />
-      <scope id="6869654011218083070" at="45,26,46,39" />
-      <scope id="6543581031674023604" at="51,145,52,47" />
-      <scope id="6543581031674023626" at="56,29,57,39" />
-      <scope id="6543581031674023633" at="60,40,61,37" />
-      <scope id="6543581031674023659" at="67,26,68,39" />
-      <scope id="6543581031674023555" at="19,0,21,0" />
-      <scope id="6543581031674024287" at="29,26,31,17" />
-      <scope id="6543581031674023573" at="40,0,43,0" />
-      <scope id="6869654011218083029" at="44,28,47,7" />
-      <scope id="6543581031674023596" at="51,0,54,0">
+      <node id="6543581031674023531" at="15,0,16,0" concept="13" trace="USE_NULL_SEQUENCE" />
+      <node id="6543581031674023535" at="16,0,17,0" concept="13" trace="IGNORE_NULL_VALUES" />
+      <node id="6543581031674023539" at="17,0,18,0" concept="13" trace="NULL_WHEN_EMPTY" />
+      <node id="6543581031674023543" at="18,0,19,0" concept="13" trace="NULL_ARRAY_IS_SINGLETON" />
+      <node id="6543581031674023547" at="19,0,20,0" concept="13" trace="ARRAY_WITH_NULL" />
+      <node id="6543581031674024261" at="23,28,24,40" concept="10" />
+      <node id="6543581031674024271" at="25,27,26,20" concept="11" />
+      <node id="6543581031674024273" at="27,5,28,46" concept="10" />
+      <node id="6543581031674024279" at="28,46,29,20" concept="10" />
+      <node id="6543581031674024288" at="30,26,31,47" concept="4" />
+      <node id="6543581031674024297" at="31,47,32,17" concept="4" />
+      <node id="6543581031674024301" at="33,5,34,19" concept="4" />
+      <node id="6543581031674024306" at="34,19,35,25" concept="11" />
+      <node id="6543581031674023565" at="38,49,39,33" concept="11" />
+      <node id="6543581031674023579" at="41,50,42,38" concept="11" />
+      <node id="4401424486475658537" at="46,27,47,39" concept="11" />
+      <node id="5830215984123955583" at="49,5,50,40" concept="11" />
+      <node id="6869654011218083071" at="54,26,55,39" concept="11" />
+      <node id="6543581031674023590" at="57,5,58,54" concept="11" />
+      <node id="6543581031674023605" at="60,145,61,47" concept="11" />
+      <node id="6543581031674023627" at="65,29,66,39" concept="11" />
+      <node id="6543581031674023634" at="69,40,70,37" concept="11" />
+      <node id="6543581031674023639" at="71,5,72,42" concept="11" />
+      <node id="6543581031674023660" at="76,26,77,39" concept="11" />
+      <node id="6543581031674023662" at="79,5,80,62" concept="11" />
+      <node id="6543581031674023555" at="20,0,22,0" concept="2" trace="Sequence#()V" />
+      <node id="6543581031674024266" at="24,40,27,5" concept="8" />
+      <node id="6543581031674023573" at="41,0,44,0" concept="14" trace="emptySequence#()Ljetbrains/mps/internal/collections/runtime/ISequence;" />
+      <node id="4401424486475658532" at="45,28,48,7" concept="8" />
+      <node id="6869654011218083030" at="53,28,56,7" concept="8" />
+      <node id="6543581031674023596" at="60,0,63,0" concept="14" trace="fromClosure#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P0_E0;)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
+      <node id="6543581031674023622" at="64,28,67,7" concept="8" />
+      <node id="6543581031674023629" at="68,5,71,5" concept="8" />
+      <node id="6543581031674023655" at="75,29,78,7" concept="8" />
+      <node id="6543581031674024283" at="29,20,33,5" concept="7" />
+      <node id="6543581031674023559" at="37,0,41,0" concept="14" trace="nullSingletonArray#()[null" />
+      <node id="4401424486475658530" at="44,63,49,5" concept="8" />
+      <node id="6869654011218083027" at="52,56,57,5" concept="8" />
+      <node id="6543581031674023619" at="63,69,68,5" concept="8" />
+      <node id="6543581031674023652" at="74,53,79,5" concept="8" />
+      <node id="4401424486475658521" at="44,0,52,0" concept="14" trace="fromStream#(Ljava/util/stream/Stream;)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
+      <node id="6543581031674023581" at="52,0,60,0" concept="14" trace="fromArray#(null)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
+      <node id="6543581031674023644" at="74,0,82,0" concept="14" trace="singleton#(null)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
+      <node id="6543581031674023610" at="63,0,74,0" concept="14" trace="fromIterable#(Ljava/lang/Iterable;)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
+      <node id="6543581031674024257" at="22,0,37,0" concept="9" trace="toString#()Ljava/lang/String;" />
+      <scope id="6543581031674023558" at="20,21,20,21" />
+      <scope id="6543581031674024270" at="25,27,26,20" />
+      <scope id="6543581031674023564" at="38,49,39,33" />
+      <scope id="6543581031674023578" at="41,50,42,38" />
+      <scope id="4401424486475658536" at="46,27,47,39" />
+      <scope id="6869654011218083070" at="54,26,55,39" />
+      <scope id="6543581031674023604" at="60,145,61,47" />
+      <scope id="6543581031674023626" at="65,29,66,39" />
+      <scope id="6543581031674023633" at="69,40,70,37" />
+      <scope id="6543581031674023659" at="76,26,77,39" />
+      <scope id="6543581031674023555" at="20,0,22,0" />
+      <scope id="6543581031674024287" at="30,26,32,17" />
+      <scope id="6543581031674023573" at="41,0,44,0" />
+      <scope id="4401424486475658531" at="45,28,48,7" />
+      <scope id="6869654011218083029" at="53,28,56,7" />
+      <scope id="6543581031674023596" at="60,0,63,0">
         <var name="cls" id="3473971317150294658" />
       </scope>
-      <scope id="6543581031674023621" at="55,28,58,7" />
-      <scope id="6543581031674023654" at="66,29,69,7" />
-      <scope id="6543581031674024283" at="28,20,32,5">
+      <scope id="6543581031674023621" at="64,28,67,7" />
+      <scope id="6543581031674023654" at="75,29,78,7" />
+      <scope id="6543581031674024283" at="29,20,33,5">
         <var name="t" id="6543581031674024285" />
       </scope>
-      <scope id="6543581031674023559" at="36,0,40,0" />
-      <scope id="6543581031674023589" at="43,56,49,54" />
-      <scope id="6543581031674023651" at="65,53,71,62" />
-      <scope id="6543581031674023581" at="43,0,51,0">
+      <scope id="6543581031674023559" at="37,0,41,0" />
+      <scope id="4401424486475658529" at="44,63,50,40" />
+      <scope id="6543581031674023589" at="52,56,58,54" />
+      <scope id="6543581031674023651" at="74,53,80,62" />
+      <scope id="4401424486475658521" at="44,0,52,0">
+        <var name="stream" id="4401424486475658526" />
+      </scope>
+      <scope id="6543581031674023581" at="52,0,60,0">
         <var name="array" id="6543581031674023586" />
       </scope>
-      <scope id="6543581031674023644" at="65,0,73,0">
+      <scope id="6543581031674023644" at="74,0,82,0">
         <var name="value" id="6543581031674023649" />
       </scope>
-      <scope id="6543581031674023618" at="54,69,63,42" />
-      <scope id="6543581031674023610" at="54,0,65,0">
+      <scope id="6543581031674023618" at="63,69,72,42" />
+      <scope id="6543581031674023610" at="63,0,74,0">
         <var name="iterable" id="6543581031674023615" />
       </scope>
-      <scope id="6543581031674024260" at="22,28,34,25">
+      <scope id="6543581031674024260" at="23,28,35,25">
         <var name="iterable" id="6543581031674024262" />
         <var name="sb" id="6543581031674024274" />
         <var name="sep" id="6543581031674024280" />
       </scope>
-      <scope id="6543581031674024257" at="21,0,36,0" />
-      <unit id="6543581031674023524" at="13,0,74,0" name="jetbrains.mps.internal.collections.runtime.Sequence" />
+      <scope id="6543581031674024257" at="22,0,37,0" />
+      <unit id="6543581031674023524" at="14,0,83,0" name="jetbrains.mps.internal.collections.runtime.Sequence" />
     </file>
   </root>
   <root nodeRef="r:fc76aa36-3cff-41c7-b94b-eee0e8341932(jetbrains.mps.internal.collections.runtime)/6543581031674024311">
     <file name="ISequence.java">
-      <node id="6543581031674024318" at="11,0,12,0" concept="9" trace="where#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P1_E0;)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
-      <node id="6543581031674024326" at="12,0,13,0" concept="9" trace="findFirst#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P1_E0;)null" />
-      <node id="6543581031674024333" at="13,0,14,0" concept="9" trace="findLast#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P1_E0;)null" />
-      <node id="6543581031674024340" at="14,0,15,0" concept="9" trace="any#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P1_E0;)Z" />
-      <node id="6543581031674024347" at="15,0,16,0" concept="9" trace="all#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P1_E0;)Z" />
-      <node id="6543581031674024364" at="16,0,17,0" concept="9" trace="translate#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P1_E0;)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
-      <node id="6543581031674024374" at="17,0,18,0" concept="9" trace="select#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P1_E0;)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
-      <node id="4611582986551293094" at="18,0,19,0" concept="9" trace="ofType#(Ljava/lang/Class;)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
-      <node id="6543581031674024384" at="19,0,20,0" concept="9" trace="sort#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P1_E0;Z)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
-      <node id="6543581031674024396" at="20,0,21,0" concept="9" trace="alsoSort#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P1_E0;Z)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
-      <node id="6543581031674024408" at="21,0,22,0" concept="9" trace="sort#(Ljava/util/Comparator;Z)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
-      <node id="6543581031674024418" at="22,0,23,0" concept="9" trace="distinct#()Ljetbrains/mps/internal/collections/runtime/ISequence;" />
-      <node id="6543581031674024423" at="23,0,24,0" concept="9" trace="visitAll#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P1_E0;)V" />
-      <node id="6543581031674024430" at="24,0,25,0" concept="9" trace="take#(I)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
-      <node id="6543581031674024437" at="25,0,26,0" concept="9" trace="skip#(I)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
-      <node id="6543581031674024444" at="26,0,27,0" concept="9" trace="cut#(I)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
-      <node id="6543581031674024451" at="27,0,28,0" concept="9" trace="tail#(I)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
-      <node id="6543581031674024458" at="28,0,29,0" concept="9" trace="page#(II)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
-      <node id="6543581031674024467" at="29,0,30,0" concept="9" trace="concat#(Ljetbrains/mps/internal/collections/runtime/ISequence;)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
-      <node id="6543581031674024475" at="30,0,31,0" concept="9" trace="intersect#(Ljetbrains/mps/internal/collections/runtime/ISequence;)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
-      <node id="6543581031674024483" at="31,0,32,0" concept="9" trace="subtract#(Ljetbrains/mps/internal/collections/runtime/ISequence;)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
-      <node id="6543581031674024491" at="32,0,33,0" concept="9" trace="union#(Ljetbrains/mps/internal/collections/runtime/ISequence;)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
-      <node id="6543581031674024499" at="33,0,34,0" concept="9" trace="disjunction#(Ljetbrains/mps/internal/collections/runtime/ISequence;)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
-      <node id="6543581031674024507" at="34,0,35,0" concept="9" trace="reverse#()Ljetbrains/mps/internal/collections/runtime/ISequence;" />
-      <node id="6543581031674024512" at="35,0,36,0" concept="9" trace="contains#(Ljava/lang/Object;)Z" />
-      <node id="6543581031674024518" at="36,0,37,0" concept="9" trace="containsSequence#(Ljetbrains/mps/internal/collections/runtime/ISequence;)Z" />
-      <node id="6543581031674024525" at="37,0,38,0" concept="9" trace="indexOf#(null)I" />
-      <node id="4020503625588236644" at="38,0,39,0" concept="9" trace="lastIndexOf#(null)I" />
-      <node id="6543581031674024531" at="39,0,40,0" concept="9" trace="count#()I" />
-      <node id="6543581031674024535" at="40,0,41,0" concept="9" trace="isEmpty#()Z" />
-      <node id="6543581031674024539" at="41,0,42,0" concept="9" trace="isNotEmpty#()Z" />
-      <node id="6543581031674024543" at="42,0,43,0" concept="9" trace="first#()null" />
-      <node id="6543581031674024547" at="43,0,44,0" concept="9" trace="last#()null" />
-      <node id="6543581031674024551" at="44,0,45,0" concept="9" trace="reduceLeft#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P2_E0;)null" />
-      <node id="6543581031674024559" at="45,0,46,0" concept="9" trace="reduceRight#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P2_E0;)null" />
-      <node id="6543581031674024567" at="46,0,47,0" concept="9" trace="foldLeft#(nullLjetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P2_E0;)null" />
-      <node id="6543581031674024578" at="47,0,48,0" concept="9" trace="foldRight#(nullLjetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P2_E0;)null" />
-      <node id="6543581031674024589" at="48,0,49,0" concept="9" trace="toIterable#()Ljava/lang/Iterable;" />
-      <node id="6543581031674024594" at="49,0,50,0" concept="9" trace="toList#()Ljava/util/List;" />
-      <node id="3768473586198710" at="55,45,56,40" concept="11" />
-      <node id="6543581031674024599" at="58,0,59,0" concept="9" trace="toGenericArray#()[null" />
-      <node id="6543581031674024604" at="59,0,60,0" concept="9" trace="toGenericArray#(Ljava/lang/Class;)[null" />
-      <node id="4931876019154835199" at="54,0,58,0" concept="9" trace="toListSequence#()Ljetbrains/mps/internal/collections/runtime/IListSequence;" />
-      <scope id="6543581031674024318" at="11,0,12,0">
+      <node id="6543581031674024318" at="13,0,14,0" concept="9" trace="where#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P1_E0;)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
+      <node id="6543581031674024326" at="14,0,15,0" concept="9" trace="findFirst#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P1_E0;)null" />
+      <node id="6543581031674024333" at="15,0,16,0" concept="9" trace="findLast#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P1_E0;)null" />
+      <node id="6543581031674024340" at="16,0,17,0" concept="9" trace="any#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P1_E0;)Z" />
+      <node id="6543581031674024347" at="17,0,18,0" concept="9" trace="all#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P1_E0;)Z" />
+      <node id="6543581031674024364" at="18,0,19,0" concept="9" trace="translate#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P1_E0;)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
+      <node id="6543581031674024374" at="19,0,20,0" concept="9" trace="select#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P1_E0;)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
+      <node id="4611582986551293094" at="20,0,21,0" concept="9" trace="ofType#(Ljava/lang/Class;)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
+      <node id="6543581031674024384" at="21,0,22,0" concept="9" trace="sort#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P1_E0;Z)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
+      <node id="6543581031674024396" at="22,0,23,0" concept="9" trace="alsoSort#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P1_E0;Z)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
+      <node id="6543581031674024408" at="23,0,24,0" concept="9" trace="sort#(Ljava/util/Comparator;Z)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
+      <node id="6543581031674024418" at="24,0,25,0" concept="9" trace="distinct#()Ljetbrains/mps/internal/collections/runtime/ISequence;" />
+      <node id="6543581031674024423" at="25,0,26,0" concept="9" trace="visitAll#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P1_E0;)V" />
+      <node id="6543581031674024430" at="26,0,27,0" concept="9" trace="take#(I)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
+      <node id="6543581031674024437" at="27,0,28,0" concept="9" trace="skip#(I)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
+      <node id="6543581031674024444" at="28,0,29,0" concept="9" trace="cut#(I)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
+      <node id="6543581031674024451" at="29,0,30,0" concept="9" trace="tail#(I)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
+      <node id="6543581031674024458" at="30,0,31,0" concept="9" trace="page#(II)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
+      <node id="6543581031674024467" at="31,0,32,0" concept="9" trace="concat#(Ljetbrains/mps/internal/collections/runtime/ISequence;)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
+      <node id="6543581031674024475" at="32,0,33,0" concept="9" trace="intersect#(Ljetbrains/mps/internal/collections/runtime/ISequence;)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
+      <node id="6543581031674024483" at="33,0,34,0" concept="9" trace="subtract#(Ljetbrains/mps/internal/collections/runtime/ISequence;)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
+      <node id="6543581031674024491" at="34,0,35,0" concept="9" trace="union#(Ljetbrains/mps/internal/collections/runtime/ISequence;)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
+      <node id="6543581031674024499" at="35,0,36,0" concept="9" trace="disjunction#(Ljetbrains/mps/internal/collections/runtime/ISequence;)Ljetbrains/mps/internal/collections/runtime/ISequence;" />
+      <node id="6543581031674024507" at="36,0,37,0" concept="9" trace="reverse#()Ljetbrains/mps/internal/collections/runtime/ISequence;" />
+      <node id="6543581031674024512" at="37,0,38,0" concept="9" trace="contains#(Ljava/lang/Object;)Z" />
+      <node id="6543581031674024518" at="38,0,39,0" concept="9" trace="containsSequence#(Ljetbrains/mps/internal/collections/runtime/ISequence;)Z" />
+      <node id="6543581031674024525" at="39,0,40,0" concept="9" trace="indexOf#(null)I" />
+      <node id="4020503625588236644" at="40,0,41,0" concept="9" trace="lastIndexOf#(null)I" />
+      <node id="6543581031674024531" at="41,0,42,0" concept="9" trace="count#()I" />
+      <node id="6543581031674024535" at="42,0,43,0" concept="9" trace="isEmpty#()Z" />
+      <node id="6543581031674024539" at="43,0,44,0" concept="9" trace="isNotEmpty#()Z" />
+      <node id="6543581031674024543" at="44,0,45,0" concept="9" trace="first#()null" />
+      <node id="6543581031674024547" at="45,0,46,0" concept="9" trace="last#()null" />
+      <node id="6543581031674024551" at="46,0,47,0" concept="9" trace="reduceLeft#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P2_E0;)null" />
+      <node id="6543581031674024559" at="47,0,48,0" concept="9" trace="reduceRight#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P2_E0;)null" />
+      <node id="6543581031674024567" at="48,0,49,0" concept="9" trace="foldLeft#(nullLjetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P2_E0;)null" />
+      <node id="6543581031674024578" at="49,0,50,0" concept="9" trace="foldRight#(nullLjetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P2_E0;)null" />
+      <node id="6543581031674024589" at="50,0,51,0" concept="9" trace="toIterable#()Ljava/lang/Iterable;" />
+      <node id="6543581031674024594" at="51,0,52,0" concept="9" trace="toList#()Ljava/util/List;" />
+      <node id="7775192435301813692" at="52,48,53,62" concept="11" />
+      <node id="3768473586198710" at="60,45,61,40" concept="11" />
+      <node id="6543581031674024599" at="63,0,64,0" concept="9" trace="toGenericArray#()[null" />
+      <node id="6543581031674024604" at="64,0,65,0" concept="9" trace="toGenericArray#(Ljava/lang/Class;)[null" />
+      <node id="7775192435301799623" at="52,0,55,0" concept="9" trace="toStream#(Z)Ljava/util/stream/Stream;" />
+      <node id="4931876019154835199" at="59,0,63,0" concept="9" trace="toListSequence#()Ljetbrains/mps/internal/collections/runtime/IListSequence;" />
+      <scope id="6543581031674024318" at="13,0,14,0">
         <var name="filter" id="7730170264858257729" />
       </scope>
-      <scope id="6543581031674024326" at="12,0,13,0">
+      <scope id="6543581031674024326" at="14,0,15,0">
         <var name="filter" id="7730170264858257750" />
       </scope>
-      <scope id="6543581031674024333" at="13,0,14,0">
+      <scope id="6543581031674024333" at="15,0,16,0">
         <var name="filter" id="7730170264858257771" />
       </scope>
-      <scope id="6543581031674024340" at="14,0,15,0">
+      <scope id="6543581031674024340" at="16,0,17,0">
         <var name="filter" id="7730170264858257792" />
       </scope>
-      <scope id="6543581031674024347" at="15,0,16,0">
+      <scope id="6543581031674024347" at="17,0,18,0">
         <var name="filter" id="7730170264858257813" />
       </scope>
-      <scope id="6543581031674024364" at="16,0,17,0">
+      <scope id="6543581031674024364" at="18,0,19,0">
         <var name="translator" id="3473971317150331320" />
       </scope>
-      <scope id="6543581031674024374" at="17,0,18,0">
+      <scope id="6543581031674024374" at="19,0,20,0">
         <var name="selector" id="3473971317150284814" />
       </scope>
-      <scope id="4611582986551293094" at="18,0,19,0">
+      <scope id="4611582986551293094" at="20,0,21,0">
         <var name="type" id="4611582986551293114" />
       </scope>
-      <scope id="6543581031674024384" at="19,0,20,0">
+      <scope id="6543581031674024384" at="21,0,22,0">
         <var name="ascending" id="6543581031674024393" />
         <var name="selector" id="3473971317150284855" />
       </scope>
-      <scope id="6543581031674024396" at="20,0,21,0">
+      <scope id="6543581031674024396" at="22,0,23,0">
         <var name="ascending" id="6543581031674024405" />
         <var name="selector" id="3473971317150284900" />
       </scope>
-      <scope id="6543581031674024408" at="21,0,22,0">
+      <scope id="6543581031674024408" at="23,0,24,0">
         <var name="ascending" id="6543581031674024415" />
         <var name="comparator" id="6543581031674024412" />
       </scope>
-      <scope id="6543581031674024418" at="22,0,23,0" />
-      <scope id="6543581031674024423" at="23,0,24,0">
+      <scope id="6543581031674024418" at="24,0,25,0" />
+      <scope id="6543581031674024423" at="25,0,26,0">
         <var name="visitor" id="3473971317150331516" />
       </scope>
-      <scope id="6543581031674024430" at="24,0,25,0">
+      <scope id="6543581031674024430" at="26,0,27,0">
         <var name="length" id="6543581031674024434" />
       </scope>
-      <scope id="6543581031674024437" at="25,0,26,0">
+      <scope id="6543581031674024437" at="27,0,28,0">
         <var name="length" id="6543581031674024441" />
       </scope>
-      <scope id="6543581031674024444" at="26,0,27,0">
+      <scope id="6543581031674024444" at="28,0,29,0">
         <var name="length" id="6543581031674024448" />
       </scope>
-      <scope id="6543581031674024451" at="27,0,28,0">
+      <scope id="6543581031674024451" at="29,0,30,0">
         <var name="length" id="6543581031674024455" />
       </scope>
-      <scope id="6543581031674024458" at="28,0,29,0">
+      <scope id="6543581031674024458" at="30,0,31,0">
         <var name="skip" id="6543581031674024462" />
         <var name="skipplustake" id="6543581031674024464" />
       </scope>
-      <scope id="6543581031674024467" at="29,0,30,0">
+      <scope id="6543581031674024467" at="31,0,32,0">
         <var name="that" id="6543581031674024471" />
       </scope>
-      <scope id="6543581031674024475" at="30,0,31,0">
+      <scope id="6543581031674024475" at="32,0,33,0">
         <var name="that" id="6543581031674024479" />
       </scope>
-      <scope id="6543581031674024483" at="31,0,32,0">
+      <scope id="6543581031674024483" at="33,0,34,0">
         <var name="that" id="6543581031674024487" />
       </scope>
-      <scope id="6543581031674024491" at="32,0,33,0">
+      <scope id="6543581031674024491" at="34,0,35,0">
         <var name="that" id="6543581031674024495" />
       </scope>
-      <scope id="6543581031674024499" at="33,0,34,0">
+      <scope id="6543581031674024499" at="35,0,36,0">
         <var name="that" id="6543581031674024503" />
       </scope>
-      <scope id="6543581031674024507" at="34,0,35,0" />
-      <scope id="6543581031674024512" at="35,0,36,0">
+      <scope id="6543581031674024507" at="36,0,37,0" />
+      <scope id="6543581031674024512" at="37,0,38,0">
         <var name="o" id="6543581031674024515" />
       </scope>
-      <scope id="6543581031674024518" at="36,0,37,0">
+      <scope id="6543581031674024518" at="38,0,39,0">
         <var name="that" id="6543581031674024521" />
       </scope>
-      <scope id="6543581031674024525" at="37,0,38,0">
+      <scope id="6543581031674024525" at="39,0,40,0">
         <var name="t" id="6543581031674024528" />
       </scope>
-      <scope id="4020503625588236644" at="38,0,39,0">
+      <scope id="4020503625588236644" at="40,0,41,0">
         <var name="t" id="4020503625588236647" />
       </scope>
-      <scope id="6543581031674024531" at="39,0,40,0" />
-      <scope id="6543581031674024535" at="40,0,41,0" />
-      <scope id="6543581031674024539" at="41,0,42,0" />
-      <scope id="6543581031674024543" at="42,0,43,0" />
-      <scope id="6543581031674024547" at="43,0,44,0" />
-      <scope id="6543581031674024551" at="44,0,45,0">
+      <scope id="6543581031674024531" at="41,0,42,0" />
+      <scope id="6543581031674024535" at="42,0,43,0" />
+      <scope id="6543581031674024539" at="43,0,44,0" />
+      <scope id="6543581031674024543" at="44,0,45,0" />
+      <scope id="6543581031674024547" at="45,0,46,0" />
+      <scope id="6543581031674024551" at="46,0,47,0">
         <var name="comb" id="6543581031674024554" />
       </scope>
-      <scope id="6543581031674024559" at="45,0,46,0">
+      <scope id="6543581031674024559" at="47,0,48,0">
         <var name="comb" id="2411622665278543899" />
       </scope>
-      <scope id="6543581031674024567" at="46,0,47,0">
+      <scope id="6543581031674024567" at="48,0,49,0">
         <var name="comb" id="2411622665278543693" />
         <var name="seed" id="6543581031674024571" />
       </scope>
-      <scope id="6543581031674024578" at="47,0,48,0">
+      <scope id="6543581031674024578" at="49,0,50,0">
         <var name="comb" id="2411622665278543991" />
         <var name="seed" id="6543581031674024582" />
       </scope>
-      <scope id="6543581031674024589" at="48,0,49,0" />
-      <scope id="6543581031674024594" at="49,0,50,0" />
-      <scope id="4931876019154835202" at="55,45,56,40" />
-      <scope id="6543581031674024599" at="58,0,59,0" />
-      <scope id="6543581031674024604" at="59,0,60,0">
+      <scope id="6543581031674024589" at="50,0,51,0" />
+      <scope id="6543581031674024594" at="51,0,52,0" />
+      <scope id="7775192435301799626" at="52,48,53,62" />
+      <scope id="4931876019154835202" at="60,45,61,40" />
+      <scope id="6543581031674024599" at="63,0,64,0" />
+      <scope id="6543581031674024604" at="64,0,65,0">
         <var name="runtimeClass" id="6543581031674024608" />
       </scope>
-      <scope id="4931876019154835199" at="54,0,58,0" />
-      <unit id="6543581031674024311" at="10,0,61,0" name="jetbrains.mps.internal.collections.runtime.ISequence" />
+      <scope id="7775192435301799623" at="52,0,55,0">
+        <var name="parallel" id="7775192435301849479" />
+      </scope>
+      <scope id="4931876019154835199" at="59,0,63,0" />
+      <unit id="6543581031674024311" at="12,0,66,0" name="jetbrains.mps.internal.collections.runtime.ISequence" />
     </file>
   </root>
   <root nodeRef="r:fc76aa36-3cff-41c7-b94b-eee0e8341932(jetbrains.mps.internal.collections.runtime)/6543581031674024612">

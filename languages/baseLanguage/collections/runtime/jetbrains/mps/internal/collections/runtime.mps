@@ -14,6 +14,7 @@
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="t6h5" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang.reflect(JDK/)" />
     <import index="vl5q" ref="52b81ac7-93fd-4e9e-b972-4995882da6d4/java:jetbrains.mps.references(jetbrains.mps.baseLanguage.references.runtime/)" />
+    <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -291,10 +292,19 @@
       <concept id="4816492477345855364" name="jetbrains.mps.baseLanguage.closures.structure.FunctionMethodDeclaration" flags="ig" index="3_nuBB" />
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
+      <concept id="6832197706140518107" name="jetbrains.mps.baseLanguage.javadoc.structure.DocTypeParameterReference" flags="ng" index="zr_56" />
+      <concept id="6832197706140518103" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseParameterReference" flags="ng" index="zr_5a">
+        <reference id="6832197706140518108" name="param" index="zr_51" />
+      </concept>
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
+        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
+      <concept id="8465538089690881930" name="jetbrains.mps.baseLanguage.javadoc.structure.ParameterBlockDocTag" flags="ng" index="TUZQ0">
+        <property id="8465538089690881934" name="text" index="TUZQ4" />
+        <child id="6832197706140518123" name="parameter" index="zr_5Q" />
+      </concept>
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
         <child id="8970989240999019149" name="part" index="1dT_Ay" />
       </concept>
@@ -304,6 +314,7 @@
       <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
         <property id="8970989240999019144" name="text" index="1dT_AB" />
       </concept>
+      <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
@@ -2721,6 +2732,64 @@
         </node>
       </node>
     </node>
+    <node concept="2YIFZL" id="3Ol040I5Bkp" role="jymVt">
+      <property role="TrG5h" value="fromStream" />
+      <node concept="3Tm1VV" id="3Ol040I5Bkq" role="1B3o_S" />
+      <node concept="16euLQ" id="3Ol040I5Bkr" role="16eVyc">
+        <property role="TrG5h" value="U" />
+      </node>
+      <node concept="3uibUv" id="3Ol040I5Bks" role="3clF45">
+        <ref role="3uigEE" node="5Ffu4tBUx5R" resolve="ISequence" />
+        <node concept="16syzq" id="3Ol040I5Bkt" role="11_B2D">
+          <ref role="16sUi3" node="3Ol040I5Bkr" resolve="U" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="3Ol040I5Bku" role="3clF46">
+        <property role="TrG5h" value="stream" />
+        <node concept="3uibUv" id="3Ol040I5U3o" role="1tU5fm">
+          <ref role="3uigEE" to="1ctc:~Stream" resolve="Stream" />
+          <node concept="16syzq" id="3Ol040I61e$" role="11_B2D">
+            <ref role="16sUi3" node="3Ol040I5Bkr" resolve="U" />
+          </node>
+        </node>
+      </node>
+      <node concept="3clFbS" id="3Ol040I5Bkx" role="3clF47">
+        <node concept="3clFbJ" id="3Ol040I5Bky" role="3cqZAp">
+          <node concept="37vLTw" id="3Ol040I5Bsj" role="3clFbw">
+            <ref role="3cqZAo" node="5Ffu4tBUwTF" resolve="USE_NULL_SEQUENCE" />
+          </node>
+          <node concept="3clFbS" id="3Ol040I5Bkz" role="3clFbx">
+            <node concept="3clFbJ" id="3Ol040I5Bk$" role="3cqZAp">
+              <node concept="3clFbC" id="3Ol040I5Bk_" role="3clFbw">
+                <node concept="37vLTw" id="3Ol040I5BkA" role="3uHU7B">
+                  <ref role="3cqZAo" node="3Ol040I5Bku" resolve="array" />
+                </node>
+                <node concept="10Nm6u" id="3Ol040I5BkB" role="3uHU7w" />
+              </node>
+              <node concept="3clFbS" id="3Ol040I5BkC" role="3clFbx">
+                <node concept="3cpWs6" id="3Ol040I5BkD" role="3cqZAp">
+                  <node concept="2YIFZM" id="3Ol040I5BkE" role="3cqZAk">
+                    <ref role="37wK5l" to="vq2z:5Ffu4tBUyoU" resolve="instance" />
+                    <ref role="1Pybhc" to="vq2z:5Ffu4tBUyor" resolve="NullSequence" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="53D5CKTwO_Z" role="3cqZAp">
+          <node concept="2ShNRf" id="53D5CKTwSTA" role="3cqZAk">
+            <node concept="1pGfFk" id="53D5CKTwX$i" role="2ShVmc">
+              <property role="373rjd" value="true" />
+              <ref role="37wK5l" node="53D5CKTIl$$" resolve="StreamSequence" />
+              <node concept="37vLTw" id="53D5CKTx38_" role="37wK5m">
+                <ref role="3cqZAo" node="3Ol040I5Bku" resolve="stream" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="2YIFZL" id="5Ffu4tBUwUt" role="jymVt">
       <property role="TrG5h" value="fromArray" />
       <node concept="3Tm1VV" id="5Ffu4tBUwUu" role="1B3o_S" />
@@ -2743,7 +2812,7 @@
       </node>
       <node concept="3clFbS" id="5Ffu4tBUwU_" role="3clF47">
         <node concept="3clFbJ" id="5XlUuOsvrNj" role="3cqZAp">
-          <node concept="37vLTw" id="2BHiRxeon91" role="3clFbw">
+          <node concept="37vLTw" id="3Ol040I5HaN" role="3clFbw">
             <ref role="3cqZAo" node="5Ffu4tBUwTF" resolve="USE_NULL_SEQUENCE" />
           </node>
           <node concept="3clFbS" id="5XlUuOsvrNl" role="3clFbx">
@@ -3678,6 +3747,38 @@
         </node>
       </node>
       <node concept="3clFbS" id="5Ffu4tBUxam" role="3clF47" />
+    </node>
+    <node concept="3clFb_" id="6JB25cYtXr7" role="jymVt">
+      <property role="TrG5h" value="toStream" />
+      <node concept="37vLTG" id="6JB25cYu9A7" role="3clF46">
+        <property role="TrG5h" value="parallel" />
+        <node concept="10P_77" id="6JB25cYu9AP" role="1tU5fm" />
+      </node>
+      <node concept="3clFbS" id="6JB25cYtXra" role="3clF47">
+        <node concept="3cpWs6" id="6JB25cYu0QW" role="3cqZAp">
+          <node concept="2YIFZM" id="6JB25cYu3nR" role="3cqZAk">
+            <ref role="37wK5l" to="1ctc:~StreamSupport.stream(java.util.Spliterator,boolean)" resolve="stream" />
+            <ref role="1Pybhc" to="1ctc:~StreamSupport" resolve="StreamSupport" />
+            <node concept="2OqwBi" id="6JB25cYu5cd" role="37wK5m">
+              <node concept="Xjq3P" id="6JB25cYu4J0" role="2Oq$k0" />
+              <node concept="liA8E" id="6JB25cYu6A8" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~Iterable.spliterator()" resolve="spliterator" />
+              </node>
+            </node>
+            <node concept="37vLTw" id="6JB25cYudyU" role="37wK5m">
+              <ref role="3cqZAo" node="6JB25cYu9A7" resolve="parallel" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="6JB25cYtXrb" role="1B3o_S" />
+      <node concept="3uibUv" id="6JB25cYtWmW" role="3clF45">
+        <ref role="3uigEE" to="1ctc:~Stream" resolve="Stream" />
+        <node concept="16syzq" id="6JB25cYtX6x" role="11_B2D">
+          <ref role="16sUi3" node="5Ffu4tBUx5T" resolve="T" />
+        </node>
+      </node>
+      <node concept="2JFqV2" id="6JB25cYtZ7i" role="2frcjj" />
     </node>
     <node concept="3clFb_" id="4hLyLJPZtrZ" role="jymVt">
       <property role="TrG5h" value="toListSequence" />
@@ -27901,6 +28002,295 @@
               <ref role="3cqZAo" node="4XT$oYP_ROq" resolve="t" />
             </node>
           </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="312cEu" id="53D5CKTIlzt">
+    <property role="TrG5h" value="StreamSequence" />
+    <node concept="312cEg" id="53D5CKTK5D8" role="jymVt">
+      <property role="TrG5h" value="cache" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="53D5CKTK2Ab" role="1B3o_S" />
+      <node concept="3uibUv" id="53D5CKTK4dC" role="1tU5fm">
+        <ref role="3uigEE" to="33ny:~List" resolve="List" />
+        <node concept="16syzq" id="53D5CKTK4QB" role="11_B2D">
+          <ref role="16sUi3" node="53D5CKTIlAe" resolve="T" />
+        </node>
+      </node>
+      <node concept="2ShNRf" id="53D5CKTK8ru" role="33vP2m">
+        <node concept="1pGfFk" id="53D5CKTK9r3" role="2ShVmc">
+          <property role="373rjd" value="true" />
+          <ref role="37wK5l" to="33ny:~ArrayList.&lt;init&gt;()" resolve="ArrayList" />
+        </node>
+      </node>
+    </node>
+    <node concept="312cEg" id="53D5CKTIFph" role="jymVt">
+      <property role="TrG5h" value="streamIterator" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="53D5CKTIFpi" role="1B3o_S" />
+      <node concept="3uibUv" id="53D5CKTIFpk" role="1tU5fm">
+        <ref role="3uigEE" to="33ny:~Iterator" resolve="Iterator" />
+        <node concept="16syzq" id="53D5CKTIFpl" role="11_B2D">
+          <ref role="16sUi3" node="53D5CKTIlAe" resolve="T" />
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="53D5CKTIHOa" role="jymVt" />
+    <node concept="3clFbW" id="53D5CKTIl$$" role="jymVt">
+      <node concept="37vLTG" id="53D5CKTIl_6" role="3clF46">
+        <property role="TrG5h" value="stream" />
+        <node concept="3uibUv" id="53D5CKTIl_S" role="1tU5fm">
+          <ref role="3uigEE" to="1ctc:~Stream" resolve="Stream" />
+          <node concept="16syzq" id="53D5CKTIlAY" role="11_B2D">
+            <ref role="16sUi3" node="53D5CKTIlAe" resolve="T" />
+          </node>
+        </node>
+      </node>
+      <node concept="3cqZAl" id="53D5CKTIl$A" role="3clF45" />
+      <node concept="3Tm1VV" id="53D5CKTIl$B" role="1B3o_S" />
+      <node concept="3clFbS" id="53D5CKTIl$C" role="3clF47">
+        <node concept="3clFbF" id="53D5CKTIFpm" role="3cqZAp">
+          <node concept="37vLTI" id="53D5CKTIFpo" role="3clFbG">
+            <node concept="2OqwBi" id="53D5CKTIHKb" role="37vLTJ">
+              <node concept="Xjq3P" id="53D5CKTIHLF" role="2Oq$k0" />
+              <node concept="2OwXpG" id="53D5CKTIHKe" role="2OqNvi">
+                <ref role="2Oxat5" node="53D5CKTIFph" resolve="stream" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="53D5CKTKCXx" role="37vLTx">
+              <node concept="37vLTw" id="53D5CKTIFps" role="2Oq$k0">
+                <ref role="3cqZAo" node="53D5CKTIl_6" resolve="stream" />
+              </node>
+              <node concept="liA8E" id="53D5CKTKGJ3" role="2OqNvi">
+                <ref role="37wK5l" to="1ctc:~BaseStream.iterator()" resolve="iterator" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="53D5CKTJxKo" role="jymVt" />
+    <node concept="312cEu" id="53D5CKTJyRC" role="jymVt">
+      <property role="2bfB8j" value="true" />
+      <property role="TrG5h" value="StreamRepeatableIterator" />
+      <node concept="312cEg" id="53D5CKTKk4L" role="jymVt">
+        <property role="TrG5h" value="listIterator" />
+        <node concept="3uibUv" id="53D5CKTKhTD" role="1tU5fm">
+          <ref role="3uigEE" to="33ny:~ListIterator" resolve="ListIterator" />
+          <node concept="16syzq" id="53D5CKTKjcI" role="11_B2D">
+            <ref role="16sUi3" node="53D5CKTIlAe" resolve="T" />
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="53D5CKTKlmy" role="1B3o_S" />
+      </node>
+      <node concept="3clFbW" id="53D5CKTJBDl" role="jymVt">
+        <node concept="3cqZAl" id="53D5CKTJBDn" role="3clF45" />
+        <node concept="3Tm1VV" id="53D5CKTJBDo" role="1B3o_S" />
+        <node concept="3clFbS" id="53D5CKTJBDp" role="3clF47">
+          <node concept="3clFbF" id="53D5CKTKbyI" role="3cqZAp">
+            <node concept="37vLTI" id="53D5CKTKlYp" role="3clFbG">
+              <node concept="37vLTw" id="53D5CKTKoqk" role="37vLTJ">
+                <ref role="3cqZAo" node="53D5CKTKk4L" resolve="listIterator" />
+              </node>
+              <node concept="2OqwBi" id="53D5CKTKcvx" role="37vLTx">
+                <node concept="37vLTw" id="53D5CKTKbyH" role="2Oq$k0">
+                  <ref role="3cqZAo" node="53D5CKTK5D8" resolve="cache" />
+                </node>
+                <node concept="liA8E" id="53D5CKTKdS0" role="2OqNvi">
+                  <ref role="37wK5l" to="33ny:~List.listIterator()" resolve="listIterator" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2tJIrI" id="53D5CKTJZV8" role="jymVt" />
+      <node concept="3Tm1VV" id="53D5CKTJyRD" role="1B3o_S" />
+      <node concept="3uibUv" id="53D5CKTJHz1" role="EKbjA">
+        <ref role="3uigEE" to="33ny:~Iterator" resolve="Iterator" />
+        <node concept="16syzq" id="53D5CKTJKD0" role="11_B2D">
+          <ref role="16sUi3" node="53D5CKTIlAe" resolve="T" />
+        </node>
+      </node>
+      <node concept="3clFb_" id="53D5CKTJXaO" role="jymVt">
+        <property role="TrG5h" value="hasNext" />
+        <node concept="3Tm1VV" id="53D5CKTJXaP" role="1B3o_S" />
+        <node concept="10P_77" id="53D5CKTJXaR" role="3clF45" />
+        <node concept="3clFbS" id="53D5CKTJXaS" role="3clF47">
+          <node concept="3cpWs6" id="53D5CKTL3Li" role="3cqZAp">
+            <node concept="22lmx$" id="53D5CKTLaQ9" role="3cqZAk">
+              <node concept="2OqwBi" id="53D5CKTLe50" role="3uHU7w">
+                <node concept="37vLTw" id="53D5CKTLdtW" role="2Oq$k0">
+                  <ref role="3cqZAo" node="53D5CKTIFph" resolve="streamIterator" />
+                </node>
+                <node concept="liA8E" id="53D5CKTLfx5" role="2OqNvi">
+                  <ref role="37wK5l" to="33ny:~Iterator.hasNext()" resolve="hasNext" />
+                </node>
+              </node>
+              <node concept="2OqwBi" id="53D5CKTL8oq" role="3uHU7B">
+                <node concept="37vLTw" id="53D5CKTL6Yx" role="2Oq$k0">
+                  <ref role="3cqZAo" node="53D5CKTKk4L" resolve="listIterator" />
+                </node>
+                <node concept="liA8E" id="53D5CKTL9Di" role="2OqNvi">
+                  <ref role="37wK5l" to="33ny:~ListIterator.hasNext()" resolve="hasNext" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="2AHcQZ" id="53D5CKTJXaT" role="2AJF6D">
+          <ref role="2AI5Lk" to="wyt6:~Override" />
+        </node>
+      </node>
+      <node concept="3clFb_" id="53D5CKTJXaW" role="jymVt">
+        <property role="TrG5h" value="next" />
+        <node concept="3Tm1VV" id="53D5CKTJXaX" role="1B3o_S" />
+        <node concept="16syzq" id="53D5CKTJXb0" role="3clF45">
+          <ref role="16sUi3" node="53D5CKTIlAe" resolve="T" />
+        </node>
+        <node concept="3clFbS" id="53D5CKTJXb1" role="3clF47">
+          <node concept="3SKdUt" id="53D5CKTMeAR" role="3cqZAp">
+            <node concept="1PaTwC" id="53D5CKTMeAS" role="1aUNEU">
+              <node concept="3oM_SD" id="53D5CKTMfWP" role="1PaTwD">
+                <property role="3oM_SC" value="Insert" />
+              </node>
+              <node concept="3oM_SD" id="53D5CKTMfWR" role="1PaTwD">
+                <property role="3oM_SC" value="into" />
+              </node>
+              <node concept="3oM_SD" id="53D5CKTMfXq" role="1PaTwD">
+                <property role="3oM_SC" value="cache" />
+              </node>
+              <node concept="3oM_SD" id="53D5CKTMfXY" role="1PaTwD">
+                <property role="3oM_SC" value="if" />
+              </node>
+              <node concept="3oM_SD" id="53D5CKTMfY3" role="1PaTwD">
+                <property role="3oM_SC" value="no" />
+              </node>
+              <node concept="3oM_SD" id="53D5CKTMfYD" role="1PaTwD">
+                <property role="3oM_SC" value="more" />
+              </node>
+              <node concept="3oM_SD" id="53D5CKTMfZ0" role="1PaTwD">
+                <property role="3oM_SC" value="items" />
+              </node>
+              <node concept="3oM_SD" id="53D5CKTMfZ8" role="1PaTwD">
+                <property role="3oM_SC" value="in" />
+              </node>
+              <node concept="3oM_SD" id="53D5CKTMfZx" role="1PaTwD">
+                <property role="3oM_SC" value="it" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbJ" id="53D5CKTLmzG" role="3cqZAp">
+            <node concept="3clFbS" id="53D5CKTLmzI" role="3clFbx">
+              <node concept="3cpWs6" id="53D5CKTLvk0" role="3cqZAp">
+                <node concept="2OqwBi" id="53D5CKTL_f4" role="3cqZAk">
+                  <node concept="37vLTw" id="53D5CKTLzMD" role="2Oq$k0">
+                    <ref role="3cqZAo" node="53D5CKTKk4L" resolve="listIterator" />
+                  </node>
+                  <node concept="liA8E" id="53D5CKTLA_o" role="2OqNvi">
+                    <ref role="37wK5l" to="33ny:~ListIterator.next()" resolve="next" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="2OqwBi" id="53D5CKTLqYN" role="3clFbw">
+              <node concept="37vLTw" id="53D5CKTLpz6" role="2Oq$k0">
+                <ref role="3cqZAo" node="53D5CKTKk4L" resolve="listIterator" />
+              </node>
+              <node concept="liA8E" id="53D5CKTLsEz" role="2OqNvi">
+                <ref role="37wK5l" to="33ny:~ListIterator.hasNext()" resolve="hasNext" />
+              </node>
+            </node>
+            <node concept="9aQIb" id="53D5CKTLHaA" role="9aQIa">
+              <node concept="3clFbS" id="53D5CKTLHaB" role="9aQI4">
+                <node concept="3cpWs8" id="53D5CKTLNro" role="3cqZAp">
+                  <node concept="3cpWsn" id="53D5CKTLNrp" role="3cpWs9">
+                    <property role="TrG5h" value="next" />
+                    <node concept="16syzq" id="53D5CKTLMpQ" role="1tU5fm">
+                      <ref role="16sUi3" node="53D5CKTIlAe" resolve="T" />
+                    </node>
+                    <node concept="2OqwBi" id="53D5CKTLNrq" role="33vP2m">
+                      <node concept="37vLTw" id="53D5CKTLNrr" role="2Oq$k0">
+                        <ref role="3cqZAo" node="53D5CKTIFph" resolve="streamIterator" />
+                      </node>
+                      <node concept="liA8E" id="53D5CKTLNrs" role="2OqNvi">
+                        <ref role="37wK5l" to="33ny:~Iterator.next()" resolve="next" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbF" id="53D5CKTLUDV" role="3cqZAp">
+                  <node concept="2OqwBi" id="53D5CKTLWRj" role="3clFbG">
+                    <node concept="37vLTw" id="53D5CKTLUDT" role="2Oq$k0">
+                      <ref role="3cqZAo" node="53D5CKTKk4L" resolve="listIterator" />
+                    </node>
+                    <node concept="liA8E" id="53D5CKTLYu1" role="2OqNvi">
+                      <ref role="37wK5l" to="33ny:~ListIterator.add(java.lang.Object)" resolve="add" />
+                      <node concept="37vLTw" id="53D5CKTM3rk" role="37wK5m">
+                        <ref role="3cqZAo" node="53D5CKTLNrp" resolve="next" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3cpWs6" id="53D5CKTM80G" role="3cqZAp">
+                  <node concept="37vLTw" id="53D5CKTMaQ$" role="3cqZAk">
+                    <ref role="3cqZAo" node="53D5CKTLNrp" resolve="next" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="2AHcQZ" id="53D5CKTJXb2" role="2AJF6D">
+          <ref role="2AI5Lk" to="wyt6:~Override" />
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="53D5CKTIHQU" role="jymVt" />
+    <node concept="3Tm1VV" id="53D5CKTIlzu" role="1B3o_S" />
+    <node concept="16euLQ" id="53D5CKTIlAe" role="16eVyc">
+      <property role="TrG5h" value="T" />
+    </node>
+    <node concept="3uibUv" id="53D5CKTJkqX" role="1zkMxy">
+      <ref role="3uigEE" node="6PIyugwUq3z" resolve="AbstractSequence" />
+      <node concept="16syzq" id="53D5CKTJsQx" role="11_B2D">
+        <ref role="16sUi3" node="53D5CKTIlAe" resolve="T" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="53D5CKTJtmm" role="jymVt">
+      <property role="TrG5h" value="iterator" />
+      <node concept="3Tm1VV" id="53D5CKTJtmn" role="1B3o_S" />
+      <node concept="3uibUv" id="53D5CKTJtmp" role="3clF45">
+        <ref role="3uigEE" to="33ny:~Iterator" resolve="Iterator" />
+        <node concept="16syzq" id="53D5CKTJtmB" role="11_B2D">
+          <ref role="16sUi3" node="53D5CKTIlAe" resolve="T" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="53D5CKTJtmC" role="3clF47">
+        <node concept="3cpWs6" id="53D5CKTN6DX" role="3cqZAp">
+          <node concept="2ShNRf" id="53D5CKTN7Fh" role="3cqZAk">
+            <node concept="1pGfFk" id="53D5CKTNaht" role="2ShVmc">
+              <property role="373rjd" value="true" />
+              <ref role="37wK5l" node="53D5CKTJBDl" resolve="StreamConsumer" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="53D5CKTJtmD" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" />
+      </node>
+    </node>
+    <node concept="3UR2Jj" id="53D5CKTN$6X" role="lGtFl">
+      <node concept="TZ5HA" id="53D5CKTN$6Y" role="TZ5H$">
+        <node concept="1dT_AC" id="53D5CKTN$6Z" role="1dT_Ay">
+          <property role="1dT_AB" value="Adaptation of stream for lists, allows both to consume lazily the stream and to reuse its result." />
+        </node>
+      </node>
+      <node concept="TUZQ0" id="53D5CKTN$70" role="3nqlJM">
+        <property role="TUZQ4" value="content" />
+        <node concept="zr_56" id="53D5CKTN$72" role="zr_5Q">
+          <ref role="zr_51" node="53D5CKTIlAe" resolve="T" />
         </node>
       </node>
     </node>
