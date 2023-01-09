@@ -433,7 +433,7 @@
       <node id="3366942412399973391" at="53,95,56,5" concept="4" />
       <node id="3193345944041844472" at="58,66,61,7" concept="4" />
       <node id="561032641968524799" at="64,56,67,7" concept="4" />
-      <node id="4175518761799977953" at="85,90,88,5" concept="4" />
+      <node id="4175518761799977953" at="85,86,88,5" concept="4" />
       <node id="3366942412399973391" at="37,0,41,0" concept="5" trace="isDumbAware#()Z" />
       <node id="3366942412399973391" at="48,0,52,0" concept="5" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
       <node id="3366942412399973391" at="32,0,37,0" concept="1" trace="ShowGenerationPlan_Action#()V" />
@@ -462,7 +462,7 @@
       <scope id="561032641968524798" at="63,5,67,7">
         <var name="p" id="561032641968524798" />
       </scope>
-      <scope id="3193345944042014486" at="85,90,89,88" />
+      <scope id="3193345944042014486" at="85,86,89,88" />
       <scope id="3366942412399973391" at="32,0,37,0" />
       <scope id="3193345944042014484" at="85,0,91,0">
         <var name="event" id="3193345944042014484" />

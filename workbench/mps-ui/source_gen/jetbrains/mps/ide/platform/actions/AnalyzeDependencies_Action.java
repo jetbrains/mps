@@ -77,7 +77,7 @@ public class AnalyzeDependencies_Action extends BaseAction {
     }
     DependenciesUtil.openDependenciesTool(event.getData(CommonDataKeys.PROJECT), scope, true);
   }
-  /*package*/ DependencyViewerScope computeScope(final AnActionEvent event) {
+  private DependencyViewerScope computeScope(final AnActionEvent event) {
     SRepository repository = event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository();
     final DependencyViewerScope scope = new DependencyViewerScope(repository);
     repository.getModelAccess().runReadAction(() -> {

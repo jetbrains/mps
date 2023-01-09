@@ -82,7 +82,7 @@ public class ShowGenerationPlan_Action extends BaseAction {
     final BaseConsoleTab tab = ct.addConsoleTab(ts, null, true);
     event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().executeCommand(() -> tab.execute(command, null, () -> tab.scrollToTop()));
   }
-  /*package*/ boolean isIgnoreExternalPlan(AnActionEvent evt, final AnActionEvent event) {
+  private boolean isIgnoreExternalPlan(AnActionEvent evt, final AnActionEvent event) {
     if (evt.getInputEvent() != null && evt.getInputEvent().isAltDown()) {
       return true;
     }

@@ -72,7 +72,7 @@ public class MoveModel_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     MoveModel_Action.this.getExecutor(_params).execute();
   }
-  protected MoveModelActionExecutor getExecutor(final Map<String, Object> _params) {
+  private MoveModelActionExecutor getExecutor(final Map<String, Object> _params) {
     return new MoveModelActionExecutor(((MPSProject) MapSequence.fromMap(_params).get("project")), ((SModel) MapSequence.fromMap(_params).get("model")));
   }
 }

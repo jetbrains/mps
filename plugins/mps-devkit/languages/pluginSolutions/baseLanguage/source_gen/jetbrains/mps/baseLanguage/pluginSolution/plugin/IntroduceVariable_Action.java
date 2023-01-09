@@ -107,7 +107,7 @@ public class IntroduceVariable_Action extends BaseAction {
       JOptionPane.showMessageDialog(((EditorComponent) MapSequence.fromMap(_params).get("component")), error.value, "Error", JOptionPane.ERROR_MESSAGE);
     }
   }
-  /*package*/ SNode getNodeToRefactor(final Map<String, Object> _params) {
+  private SNode getNodeToRefactor(final Map<String, Object> _params) {
     return (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.ExpressionStatement$O8) ? SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M) : SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.Expression$mB, true, false));
   }
 

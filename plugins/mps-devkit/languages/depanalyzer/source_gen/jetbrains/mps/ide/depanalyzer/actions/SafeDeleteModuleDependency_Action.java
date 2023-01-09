@@ -105,7 +105,7 @@ public class SafeDeleteModuleDependency_Action extends BaseAction {
     SafeDeleteModuleDependency_Action.this.removeDependency(_params);
   }
   @Nullable
-  /*package*/ SModule getModuleFrom(final Map<String, Object> _params) {
+  private SModule getModuleFrom(final Map<String, Object> _params) {
     return as_iuftgz_a0a0a8(((DependencyTreeNode) MapSequence.fromMap(_params).get("node")).getParent(), DependencyTreeNode.class).getModule();
   }
   @Nullable
