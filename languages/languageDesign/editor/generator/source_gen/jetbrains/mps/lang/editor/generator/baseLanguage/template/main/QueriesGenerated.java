@@ -3913,6 +3913,44 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
   }
+  public static void mappingScript_CodeBlock_192(final MappingScriptContext _context) {
+    ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.ITransformationMenu$xi)).translate(new ITranslator2<SNode, SNode>() {
+      public Iterable<SNode> translate(SNode it) {
+        return SLinkOperations.getChildren(it, LINKS.fieldDeclaration$TVBM);
+      }
+    }).visitAll(new IVisitor<SNode>() {
+      public void visit(SNode it) {
+        SPropertyOperations.assign(it, PROPS.name$MnvL, "_additional_" + SPropertyOperations.getString(it, PROPS.name$MnvL));
+      }
+    });
+    ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.ITransformationMenu$xi)).translate(new ITranslator2<SNode, SNode>() {
+      public Iterable<SNode> translate(SNode it) {
+        return SLinkOperations.getChildren(it, LINKS.methodDeclaration$TVoL);
+      }
+    }).visitAll(new IVisitor<SNode>() {
+      public void visit(SNode it) {
+        SPropertyOperations.assign(it, PROPS.name$MnvL, "_additional_" + SPropertyOperations.getString(it, PROPS.name$MnvL));
+      }
+    });
+    ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.ISubstituteMenu$Jl)).translate(new ITranslator2<SNode, SNode>() {
+      public Iterable<SNode> translate(SNode it) {
+        return SLinkOperations.getChildren(it, LINKS.fieldDeclaration$Xom4);
+      }
+    }).visitAll(new IVisitor<SNode>() {
+      public void visit(SNode it) {
+        SPropertyOperations.assign(it, PROPS.name$MnvL, "_additional_" + SPropertyOperations.getString(it, PROPS.name$MnvL));
+      }
+    });
+    ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.ISubstituteMenu$Jl)).translate(new ITranslator2<SNode, SNode>() {
+      public Iterable<SNode> translate(SNode it) {
+        return SLinkOperations.getChildren(it, LINKS.methodDeclaration$2L8$);
+      }
+    }).visitAll(new IVisitor<SNode>() {
+      public void visit(SNode it) {
+        SPropertyOperations.assign(it, PROPS.name$MnvL, "_additional_" + SPropertyOperations.getString(it, PROPS.name$MnvL));
+      }
+    });
+  }
   public static SNode insertMacro_Query_49_0(final InsertMacroContext _context) {
     SNode refPresentation = SNodeOperations.copyNode(SLinkOperations.getTarget(_context.getNode(), LINKS.cellModel$L8Uc));
     SNode autoDeletable = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd774e0L, "jetbrains.mps.lang.editor.structure.AutoDeletableStyleClassItem"));
@@ -4442,6 +4480,7 @@ public class QueriesGenerated extends QueryProviderBase {
     mscbMethods.put("5742262471541887454", new SCB(i++));
     mscbMethods.put("5226317895495358518", new SCB(i++));
     mscbMethods.put("2097039734418308067", new SCB(i++));
+    mscbMethods.put("4684164116366628734", new SCB(i++));
   }
   @Override
   @NotNull
@@ -4465,6 +4504,9 @@ public class QueriesGenerated extends QueryProviderBase {
           return;
         case 2:
           QueriesGenerated.mappingScript_CodeBlock_169(ctx);
+          return;
+        case 3:
+          QueriesGenerated.mappingScript_CodeBlock_192(ctx);
           return;
         default:
           throw new GenerationFailureException(String.format("There's no code block with method index %d ", methodKey));

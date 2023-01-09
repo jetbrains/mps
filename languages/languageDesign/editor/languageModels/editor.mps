@@ -46,6 +46,7 @@
     <import index="tpdg" ref="r:00000000-0000-4000-0000-011c895902a8(jetbrains.mps.lang.actions.structure)" implicit="true" />
     <import index="fulz" ref="r:6f792c44-2a5d-40e8-9f05-33f7d4ae26ec(jetbrains.mps.editor.runtime.completion)" implicit="true" />
     <import index="av1m" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.menus.style(MPS.Editor/)" implicit="true" />
+    <import index="tp4f" ref="r:00000000-0000-4000-0000-011c89590373(jetbrains.mps.baseLanguage.classifiers.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
@@ -26535,6 +26536,49 @@
       <node concept="3F2HdR" id="66ZZ2RilY8t" role="3EZMnx">
         <ref role="1NtTu8" to="tpc2:hz2lrYP" resolve="methodDeclaration" />
         <node concept="2iRkQZ" id="66ZZ2RilY8u" role="2czzBx" />
+        <node concept="4$FPG" id="441vB8LtCM5" role="4_6I_">
+          <node concept="3clFbS" id="441vB8LtCM6" role="2VODD2">
+            <node concept="3cpWs8" id="441vB8LtCO8" role="3cqZAp">
+              <node concept="3cpWsn" id="441vB8LtCO9" role="3cpWs9">
+                <property role="TrG5h" value="m" />
+                <node concept="3Tqbb2" id="441vB8LtCOa" role="1tU5fm">
+                  <ref role="ehGHo" to="tp4f:hyXrIf3" resolve="DefaultClassifierMethodDeclaration" />
+                </node>
+                <node concept="2ShNRf" id="441vB8LtCOb" role="33vP2m">
+                  <node concept="2fJWfE" id="441vB8LtCOc" role="2ShVmc">
+                    <node concept="3Tqbb2" id="441vB8LtCOd" role="3zrR0E">
+                      <ref role="ehGHo" to="tp4f:hyXrIf3" resolve="DefaultClassifierMethodDeclaration" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="441vB8LtCOe" role="3cqZAp">
+              <node concept="37vLTI" id="441vB8LtCOf" role="3clFbG">
+                <node concept="2ShNRf" id="441vB8LtCOg" role="37vLTx">
+                  <node concept="3zrR0B" id="441vB8LtCOh" role="2ShVmc">
+                    <node concept="3Tqbb2" id="441vB8LtCOi" role="3zrR0E">
+                      <ref role="ehGHo" to="tpee:gFTm6Wc" resolve="PrivateVisibility" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="2OqwBi" id="441vB8LtCOj" role="37vLTJ">
+                  <node concept="37vLTw" id="441vB8LtCOk" role="2Oq$k0">
+                    <ref role="3cqZAo" node="441vB8LtCO9" resolve="m" />
+                  </node>
+                  <node concept="3TrEf2" id="441vB8LtCOl" role="2OqNvi">
+                    <ref role="3Tt5mk" to="tpee:h9B3oxE" resolve="visibility" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="441vB8LtCOm" role="3cqZAp">
+              <node concept="37vLTw" id="441vB8LtCOn" role="3clFbG">
+                <ref role="3cqZAo" node="441vB8LtCO9" resolve="m" />
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
       <node concept="2iRkQZ" id="1KUls24SW0C" role="2iSdaV" />
     </node>
@@ -26581,6 +26625,49 @@
       <node concept="3F2HdR" id="1KUls24SW1c" role="3EZMnx">
         <ref role="1NtTu8" to="tpc2:1KUls24SVHE" resolve="methodDeclaration" />
         <node concept="2iRkQZ" id="1KUls24SW1d" role="2czzBx" />
+        <node concept="4$FPG" id="441vB8LtCzE" role="4_6I_">
+          <node concept="3clFbS" id="441vB8LtCzF" role="2VODD2">
+            <node concept="3cpWs8" id="441vB8LrGZ5" role="3cqZAp">
+              <node concept="3cpWsn" id="441vB8LrGZ6" role="3cpWs9">
+                <property role="TrG5h" value="m" />
+                <node concept="3Tqbb2" id="441vB8LrGYH" role="1tU5fm">
+                  <ref role="ehGHo" to="tp4f:hyXrIf3" resolve="DefaultClassifierMethodDeclaration" />
+                </node>
+                <node concept="2ShNRf" id="441vB8LsLAi" role="33vP2m">
+                  <node concept="2fJWfE" id="441vB8LsM1k" role="2ShVmc">
+                    <node concept="3Tqbb2" id="441vB8LsM1m" role="3zrR0E">
+                      <ref role="ehGHo" to="tp4f:hyXrIf3" resolve="DefaultClassifierMethodDeclaration" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="441vB8LrHaY" role="3cqZAp">
+              <node concept="37vLTI" id="441vB8LrIuu" role="3clFbG">
+                <node concept="2ShNRf" id="441vB8LrIxk" role="37vLTx">
+                  <node concept="3zrR0B" id="441vB8LrJUL" role="2ShVmc">
+                    <node concept="3Tqbb2" id="441vB8LrJUN" role="3zrR0E">
+                      <ref role="ehGHo" to="tpee:gFTm6Wc" resolve="PrivateVisibility" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="2OqwBi" id="441vB8LrHyx" role="37vLTJ">
+                  <node concept="37vLTw" id="441vB8LrHaW" role="2Oq$k0">
+                    <ref role="3cqZAo" node="441vB8LrGZ6" resolve="m" />
+                  </node>
+                  <node concept="3TrEf2" id="441vB8LrIh5" role="2OqNvi">
+                    <ref role="3Tt5mk" to="tpee:h9B3oxE" resolve="visibility" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="441vB8LrfGs" role="3cqZAp">
+              <node concept="37vLTw" id="441vB8LrGZa" role="3clFbG">
+                <ref role="3cqZAo" node="441vB8LrGZ6" resolve="m" />
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
       <node concept="2iRkQZ" id="1KUls24SW1e" role="2iSdaV" />
     </node>

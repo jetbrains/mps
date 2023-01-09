@@ -21,6 +21,7 @@
     <import index="tpco" ref="r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)" />
     <import index="9lvf" ref="c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:60fc5d65-00f5-411a-8513-c8d5fe6ffc51(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.editor)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
+    <import index="tp4f" ref="r:00000000-0000-4000-0000-011c89590373(jetbrains.mps.baseLanguage.classifiers.structure)" implicit="true" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
   </imports>
   <registry>
@@ -33,12 +34,14 @@
       <concept id="1071666914219" name="jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration" flags="ig" index="24kQdi">
         <child id="1078153129734" name="inspectedCellModel" index="6VMZX" />
       </concept>
+      <concept id="1176897764478" name="jetbrains.mps.lang.editor.structure.QueryFunction_NodeFactory" flags="in" index="4$FPG" />
       <concept id="1198489924438" name="jetbrains.mps.lang.editor.structure.CellModel_Block" flags="sg" stub="8104358048506730066" index="b$f91">
         <child id="1198489985045" name="header" index="b$u42" />
         <child id="1198489993734" name="body" index="b$wch" />
       </concept>
       <concept id="1140524381322" name="jetbrains.mps.lang.editor.structure.CellModel_ListWithRole" flags="ng" index="2czfm3">
         <property id="1140524450557" name="separatorText" index="2czwfO" />
+        <child id="1176897874615" name="nodeFactory" index="4_6I_" />
         <child id="1140524464360" name="cellLayout" index="2czzBx" />
         <child id="1140524464359" name="emptyCellModel" index="2czzBI" />
       </concept>
@@ -256,6 +259,9 @@
         <reference id="1170346070688" name="classifier" index="1Y3XeK" />
       </concept>
     </language>
+    <language id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions">
+      <concept id="5979988948250981289" name="jetbrains.mps.lang.actions.structure.SNodeCreatorAndInitializer" flags="nn" index="2fJWfE" />
+    </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
@@ -276,6 +282,12 @@
       <concept id="6870613620391345436" name="jetbrains.mps.lang.smodel.structure.ConceptShortDescriptionOperation" flags="ng" index="3neUYN" />
       <concept id="1144101972840" name="jetbrains.mps.lang.smodel.structure.OperationParm_Concept" flags="ng" index="1xMEDy">
         <child id="1207343664468" name="conceptArgument" index="ri$Ld" />
+      </concept>
+      <concept id="1180636770613" name="jetbrains.mps.lang.smodel.structure.SNodeCreator" flags="nn" index="3zrR0B">
+        <child id="1180636770616" name="createdType" index="3zrR0E" />
+      </concept>
+      <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
+        <reference id="1138405853777" name="concept" index="ehGHo" />
       </concept>
       <concept id="1138056022639" name="jetbrains.mps.lang.smodel.structure.SPropertyAccess" flags="nn" index="3TrcHB">
         <reference id="1138056395725" name="property" index="3TsBF5" />
@@ -859,6 +871,49 @@
         <node concept="3F2HdR" id="66ZZ2RilY8t" role="3EZMnx">
           <ref role="1NtTu8" to="tp3j:hz2lrYP" resolve="methodDeclaration" />
           <node concept="2iRkQZ" id="66ZZ2RilY8u" role="2czzBx" />
+          <node concept="4$FPG" id="441vB8Lrb$I" role="4_6I_">
+            <node concept="3clFbS" id="441vB8Lrb$J" role="2VODD2">
+              <node concept="3cpWs8" id="441vB8LrGZ5" role="3cqZAp">
+                <node concept="3cpWsn" id="441vB8LrGZ6" role="3cpWs9">
+                  <property role="TrG5h" value="m" />
+                  <node concept="3Tqbb2" id="441vB8LrGYH" role="1tU5fm">
+                    <ref role="ehGHo" to="tp4f:hyXrIf3" resolve="DefaultClassifierMethodDeclaration" />
+                  </node>
+                  <node concept="2ShNRf" id="441vB8LsLAi" role="33vP2m">
+                    <node concept="2fJWfE" id="441vB8LsM1k" role="2ShVmc">
+                      <node concept="3Tqbb2" id="441vB8LsM1m" role="3zrR0E">
+                        <ref role="ehGHo" to="tp4f:hyXrIf3" resolve="DefaultClassifierMethodDeclaration" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="441vB8LrHaY" role="3cqZAp">
+                <node concept="37vLTI" id="441vB8LrIuu" role="3clFbG">
+                  <node concept="2ShNRf" id="441vB8LrIxk" role="37vLTx">
+                    <node concept="3zrR0B" id="441vB8LrJUL" role="2ShVmc">
+                      <node concept="3Tqbb2" id="441vB8LrJUN" role="3zrR0E">
+                        <ref role="ehGHo" to="tpee:gFTm6Wc" resolve="PrivateVisibility" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="2OqwBi" id="441vB8LrHyx" role="37vLTJ">
+                    <node concept="37vLTw" id="441vB8LrHaW" role="2Oq$k0">
+                      <ref role="3cqZAo" node="441vB8LrGZ6" resolve="m" />
+                    </node>
+                    <node concept="3TrEf2" id="441vB8LrIh5" role="2OqNvi">
+                      <ref role="3Tt5mk" to="tpee:h9B3oxE" resolve="visibility" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="441vB8LrfGs" role="3cqZAp">
+                <node concept="37vLTw" id="441vB8LrGZa" role="3clFbG">
+                  <ref role="3cqZAo" node="441vB8LrGZ6" resolve="node" />
+                </node>
+              </node>
+            </node>
+          </node>
         </node>
         <node concept="2iRkQZ" id="5rGvd38Dc4s" role="2iSdaV" />
       </node>

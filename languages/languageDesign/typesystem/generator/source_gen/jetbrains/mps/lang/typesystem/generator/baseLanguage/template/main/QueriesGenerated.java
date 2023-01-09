@@ -49,6 +49,8 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.generator.template.MapSrcMacroPostProcContext;
 import jetbrains.mps.generator.template.MappingScriptContext;
+import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.generator.template.TemplateVarContext;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.ReductionRuleCondition;
@@ -2093,6 +2095,28 @@ parametersLoop:
     }
 
   }
+  public static void mappingScript_CodeBlock_102(final MappingScriptContext _context) {
+    ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.AbstractCheckingRule$Bq)).translate(new ITranslator2<SNode, SNode>() {
+      public Iterable<SNode> translate(SNode it) {
+        return SLinkOperations.getChildren(it, LINKS.methodDeclaration$Vpis);
+      }
+    }).visitAll(new IVisitor<SNode>() {
+      public void visit(SNode it) {
+        SPropertyOperations.assign(it, PROPS.name$MnvL, "_additional_" + SPropertyOperations.getString(it, PROPS.name$MnvL));
+      }
+    });
+    ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.TypesystemQuickFix$$8)).translate(new ITranslator2<SNode, SNode>() {
+      public Iterable<SNode> translate(SNode it) {
+        return SLinkOperations.getChildren(it, LINKS.methodDeclaration$NVXn);
+      }
+    }).visitAll(new IVisitor<SNode>() {
+      public void visit(SNode it) {
+        SPropertyOperations.assign(it, PROPS.name$MnvL, "_additional_" + SPropertyOperations.getString(it, PROPS.name$MnvL));
+      }
+    });
+
+
+  }
   public static Object varMacro_Value_16_0(final TemplateVarContext _context) {
     return _context.getNode();
   }
@@ -2370,6 +2394,7 @@ parametersLoop:
     mscbMethods.put("1224062580252", new SCB(i++));
     mscbMethods.put("1224237349195", new SCB(i++));
     mscbMethods.put("2990591960991114477", new SCB(i++));
+    mscbMethods.put("4684164116366628734", new SCB(i++));
   }
   @Override
   @NotNull
@@ -2396,6 +2421,9 @@ parametersLoop:
           return;
         case 3:
           QueriesGenerated.mappingScript_CodeBlock_69(ctx);
+          return;
+        case 4:
+          QueriesGenerated.mappingScript_CodeBlock_102(ctx);
           return;
         default:
           throw new GenerationFailureException(String.format("There's no code block with method index %d ", methodKey));
