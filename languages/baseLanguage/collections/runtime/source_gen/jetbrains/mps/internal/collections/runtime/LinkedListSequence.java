@@ -204,9 +204,6 @@ public class LinkedListSequence<T> extends AbstractListSequence<T> implements IL
   }
   public static <U> ILinkedListSequence<U> fromLinkedList(Deque<U> list) {
     // shall update templates to generate fromLinkedList() again, and then can remove fromLinkedListNew
-    return fromLinkedListNew(list);
-  }
-  public static <U> ILinkedListSequence<U> fromLinkedListNew(Deque<U> list) {
     if (list instanceof ILinkedListSequence<?>) {
       return (ILinkedListSequence<U>) list;
     }
@@ -217,6 +214,14 @@ public class LinkedListSequence<T> extends AbstractListSequence<T> implements IL
       return new LinkedListSequence<U>((LinkedList<U>) list);
     }
     return LinkedListSequence.fromIterable(list);
+  }
+  /**
+   * 
+   * @deprecated use non-new method
+   */
+  @Deprecated
+  public static <U> ILinkedListSequence<U> fromLinkedListNew(Deque<U> list) {
+    return fromLinkedList(list);
   }
   public static <U> ILinkedListSequence<U> fromIterable(Iterable<U> it) {
     if (Sequence.USE_NULL_SEQUENCE) {
@@ -246,10 +251,6 @@ public class LinkedListSequence<T> extends AbstractListSequence<T> implements IL
   }
 
   public static <U> ILinkedListSequence<U> fromListAndArray(LinkedList<U> list, U... array) {
-    // change templates to invoke this method and drop fromListAndArrayNew
-    return fromListAndArrayNew(list, array);
-  }
-  public static <U> ILinkedListSequence<U> fromListAndArrayNew(LinkedList<U> list, U... array) {
     if (Sequence.NULL_ARRAY_IS_SINGLETON) {
       if (array == null) {
         array = (U[]) Sequence.nullSingletonArray();
@@ -284,12 +285,16 @@ public class LinkedListSequence<T> extends AbstractListSequence<T> implements IL
     }
     return new LinkedListSequence<U>(list);
   }
+  /**
+   * 
+   * @deprecated use non-new method
+   */
+  @Deprecated
+  public static <U> ILinkedListSequence<U> fromListAndArrayNew(LinkedList<U> list, U... array) {
+    return fromListAndArray(list, array);
+  }
 
   public static <U> ILinkedListSequence<U> fromListWithValues(LinkedList<U> list, Iterable<? extends U> it) {
-    // shall update templates to generate fromLinkedList() again, and then can remove fromListWithValuesNew
-    return fromListWithValuesNew(list, it);
-  }
-  public static <U> ILinkedListSequence<U> fromListWithValuesNew(LinkedList<U> list, Iterable<? extends U> it) {
     LinkedList<U> tmp = list;
     if (Sequence.USE_NULL_SEQUENCE) {
       if (list == null && it == null) {
@@ -320,5 +325,13 @@ public class LinkedListSequence<T> extends AbstractListSequence<T> implements IL
       return (ILinkedListSequence<U>) tmp;
     }
     return new LinkedListSequence<U>(tmp);
+  }
+  /**
+   * 
+   * @deprecated use non-new method
+   */
+  @Deprecated
+  public static <U> ILinkedListSequence<U> fromListWithValuesNew(LinkedList<U> list, Iterable<? extends U> it) {
+    return fromListWithValues(list, it);
   }
 }

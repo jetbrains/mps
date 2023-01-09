@@ -252,8 +252,6 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
       case 0:
         if (true) {
           switch (menuId.getFqName()) {
-            case "jetbrains.mps.baseLanguage.collections.editor.AbstractContainerCreator_add_elementType":
-              return Arrays.asList(new TransformationMenu[]{new AbstractContainerCreator_add_elementType()});
             case "jetbrains.mps.baseLanguage.collections.editor.AbstractContainerCreator_ext_1_RTransform_Menu":
               return Arrays.asList(new TransformationMenu[]{new AbstractContainerCreator_ext_1_RTransform_Menu()});
             case "jetbrains.mps.baseLanguage.collections.editor.add_initSize_to_container_creator":
@@ -280,8 +278,6 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
       case 2:
         if (true) {
           switch (menuId.getFqName()) {
-            case "jetbrains.mps.baseLanguage.collections.editor.HashMapCreator_add_keyType_valueType":
-              return Arrays.asList(new TransformationMenu[]{new HashMapCreator_add_keyType_valueType()});
             case "jetbrains.mps.baseLanguage.collections.editor.add_initSize_to_hashmap_creator":
               return Arrays.asList(new TransformationMenu[]{new add_initSize_to_hashmap_creator()});
             case "jetbrains.mps.baseLanguage.collections.editor.map_creator_add_initializer":

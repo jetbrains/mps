@@ -16,6 +16,8 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
   public Collection<NodeFactory> getFactories(SAbstractConcept concept) {
     if (LANGUAGE_FQ_NAME.equals(concept.getLanguage().getQualifiedName())) {
       switch (concept.getName()) {
+        case "AbstractContainerCreator":
+          return Collections.<NodeFactory>singletonList(new creators.NodeFactory_7830826264631420967());
         case "AbstractContainerType":
           return Collections.<NodeFactory>singletonList(new replace_sequence_type.NodeFactory_7886927014685056895());
         case "AddAllElementsOperation":
@@ -44,18 +46,8 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
           return Collections.<NodeFactory>singletonList(new single_argument_operations.NodeFactory_4020503625588455826());
         case "HashMapCreator":
           return Collections.<NodeFactory>singletonList(new creators.NodeFactory_1241475150554());
-        case "HashSetCreator":
-          return Collections.<NodeFactory>singletonList(new creators.NodeFactory_1241475097267());
         case "InternalSequenceOperation":
           return Collections.<NodeFactory>singletonList(new closure_operations.NodeFactory_5185644189117529668());
-        case "LinkedHashMapCreator":
-          return Collections.<NodeFactory>singletonList(new creators.NodeFactory_1241475270085());
-        case "LinkedHashSetCreator":
-          return Collections.<NodeFactory>singletonList(new creators.NodeFactory_1241475118079());
-        case "LinkedListCreator":
-          return Collections.<NodeFactory>singletonList(new creators.NodeFactory_1241474511499());
-        case "ListCreatorWithInit":
-          return Collections.<NodeFactory>singletonList(new creators.NodeFactory_1241474531795());
         case "ListType":
           return Collections.<NodeFactory>singletonList(new replace_sequence_type.NodeFactory_7246115176735618985());
         case "MultiForEachStatement":
@@ -76,10 +68,6 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
           return Collections.<NodeFactory>singletonList(new single_argument_operations.NodeFactory_5699792037748117963());
         case "TestRemoveElementOperation":
           return Collections.<NodeFactory>singletonList(new single_argument_operations.NodeFactory_7072176981128389277());
-        case "TreeMapCreator":
-          return Collections.<NodeFactory>singletonList(new creators.NodeFactory_1241475279119());
-        case "TreeSetCreator":
-          return Collections.<NodeFactory>singletonList(new creators.NodeFactory_1241475137153());
         default:
       }
     }

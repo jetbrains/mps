@@ -693,14 +693,11 @@
                   </node>
                 </node>
                 <node concept="3clFbJ" id="6WTbe$JbI7q" role="3cqZAp">
-                  <node concept="2OqwBi" id="6WTbe$JbID5" role="3clFbw">
-                    <node concept="2X3wrD" id="6WTbe$JbID6" role="2Oq$k0">
+                  <node concept="2YIFZM" id="17QotHStbMS" role="3clFbw">
+                    <ref role="37wK5l" to="tpeh:17QotHSs1kJ" resolve="isInferredFromContext" />
+                    <ref role="1Pybhc" to="tpeh:6mR5aTeTKWa" resolve="InferenceHelper" />
+                    <node concept="2X3wrD" id="17QotHStbNC" role="37wK5m">
                       <ref role="2X3Bk0" node="6WTbe$JbEUe" resolve="shallowChildType" />
-                    </node>
-                    <node concept="1mIQ4w" id="6WTbe$JbID7" role="2OqNvi">
-                      <node concept="chp4Y" id="4o7QKr6P_tm" role="cj9EA">
-                        <ref role="cht4Q" to="tpee:6WTbe$Jz777" resolve="IInferredType" />
-                      </node>
                     </node>
                   </node>
                   <node concept="3clFbS" id="6WTbe$JbI7s" role="3clFbx">

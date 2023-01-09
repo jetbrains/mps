@@ -134,7 +134,7 @@
       <node id="1331913329176292217" at="33,47,34,46" concept="10" />
       <node id="9034802358628295000" at="45,63,46,153" concept="6" />
       <node id="6836281137582647219" at="49,80,50,196" concept="5" />
-      <node id="6836281137582647225" at="50,196,51,566" concept="6" />
+      <node id="6836281137582647225" at="50,196,51,560" concept="6" />
       <node id="1331913329176292217" at="55,6,56,131" concept="5" />
       <node id="9034802358628295000" at="56,131,57,42" concept="1" />
       <node id="1331913329176292217" at="57,42,58,22" concept="6" />
@@ -153,7 +153,7 @@
       <node id="1331913329176292217" at="37,0,60,0" concept="4" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="1331913329176292217" at="33,47,34,46" />
       <scope id="9034802358628295000" at="45,63,46,153" />
-      <scope id="9034802358628295000" at="49,80,51,566">
+      <scope id="9034802358628295000" at="49,80,51,560">
         <var name="expr" id="6836281137582647220" />
       </scope>
       <scope id="1331913329176292217" at="33,0,36,0" />
@@ -227,7 +227,7 @@
       <node id="2879969100346192014" at="36,55,37,71" concept="1" />
       <node id="2879969100346192014" at="38,9,39,0" concept="7" />
       <node id="2879969100346192014" at="39,0,40,22" concept="6" />
-      <node id="2879969100346213218" at="44,134,45,449" concept="6" />
+      <node id="2879969100346213218" at="44,134,45,443" concept="6" />
       <node id="2879969100346192014" at="47,0,48,0" concept="8" trace="canBeChildBreakingPoint" />
       <node id="2879969100346192014" at="50,0,51,0" concept="8" trace="IApplicableToNothing$j7" />
       <node id="2879969100346192014" at="51,0,52,0" concept="8" trace="DotExpression$yW" />
@@ -240,7 +240,7 @@
       <node id="2879969100346192014" at="29,0,44,0" concept="4" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
       <scope id="2879969100346192014" at="25,45,26,44" />
       <scope id="2879969100346192014" at="36,55,37,71" />
-      <scope id="2879969100346192022" at="44,134,45,449" />
+      <scope id="2879969100346192022" at="44,134,45,443" />
       <scope id="2879969100346192014" at="25,0,28,0" />
       <scope id="2879969100346192014" at="44,0,47,0">
         <var name="childConcept" id="2879969100346192014" />

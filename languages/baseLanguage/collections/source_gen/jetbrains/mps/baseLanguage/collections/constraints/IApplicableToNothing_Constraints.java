@@ -42,7 +42,7 @@ public class IApplicableToNothing_Constraints extends BaseConstraintsDescriptor 
     };
   }
   private static boolean staticCanBeAChild(SNode node, final SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SetSequence.fromSet(IApplicableToNothing__BehaviorDescriptor.getAllApplicableTypes_id5cL0w3DYWgB.invoke(SNodeOperations.asSConcept(SNodeOperations.castConcept(childConcept, CONCEPTS.IApplicableToNothing$j7)))).any((SNode it) -> TypecheckingFacade.getFromContext().isStrongSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(parentNode, CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), it));
+    return SetSequence.fromSet(IApplicableToNothing__BehaviorDescriptor.getAllApplicableTypes_id5cL0w3DYWgB.invoke(SNodeOperations.asSConcept(SNodeOperations.castConcept(childConcept, CONCEPTS.IApplicableToNothing$j7)))).any((it) -> TypecheckingFacade.getFromContext().isStrongSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(parentNode, CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), it));
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590328(jetbrains.mps.baseLanguage.collections.constraints)", "2879969100346192021");
 

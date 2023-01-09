@@ -25,17 +25,17 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class TreeSetCreator__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4838d33L, "jetbrains.mps.baseLanguage.collections.structure.TreeSetCreator");
 
-  public static final SMethod<SNode> createType_idi0I0ppH = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1237722437229L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2();
+  public static final SMethod<SNode> createType_id6MGFJY7SgiV = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7830826264610014395L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> canHaveParameter_id1XyaNs207wP = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canHaveParameter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2261417478150191157L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2();
   public static final SMethod<Boolean> hasInitSize_id1653mnvAgtY = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasInitSize").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498238L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(createType_idi0I0ppH, canHaveParameter_id1XyaNs207wP, hasInitSize_id1653mnvAgtY);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(createType_id6MGFJY7SgiV, canHaveParameter_id1XyaNs207wP, hasInitSize_id1653mnvAgtY);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static SNode createType_idi0I0ppH(@NotNull SNode __thisNode__) {
-    return _quotation_createNode_529210_a0a0(SLinkOperations.getTarget(__thisNode__, LINKS.elementType$WxmV));
+  /*package*/ static SNode createType_id6MGFJY7SgiV(@NotNull SNode __thisNode__, SNode elementType) {
+    return _quotation_createNode_529210_a0a0(elementType);
   }
   /*package*/ static boolean canHaveParameter_id1XyaNs207wP(@NotNull SNode __thisNode__) {
     return ((boolean) AbstractContainerCreator__BehaviorDescriptor.canHaveParameter_id1XyaNs207wP.invokeSuper(__thisNode__, CONCEPTS.TreeSetCreator$JS)) && (SLinkOperations.getTarget(__thisNode__, LINKS.comparator$TiSb) == null);
@@ -60,7 +60,7 @@ public final class TreeSetCreator__BehaviorDescriptor extends BaseBHDescriptor {
     }
     switch (methodIndex) {
       case 0:
-        return (T) ((SNode) createType_idi0I0ppH(node));
+        return (T) ((SNode) createType_id6MGFJY7SgiV(node, (SNode) parameters[0]));
       case 1:
         return (T) ((Boolean) canHaveParameter_id1XyaNs207wP(node));
       default:
@@ -106,7 +106,6 @@ public final class TreeSetCreator__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$WxmV = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24e9fL, "elementType");
     /*package*/ static final SContainmentLink comparator$TiSb = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4838d33L, 0x1f622b3701eae8beL, "comparator");
   }
 

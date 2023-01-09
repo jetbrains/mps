@@ -21,7 +21,7 @@ public class CustomContainersUtil {
   public CustomContainersUtil() {
   }
   public static Iterable<SNode> containerCreators(SModel model, final SNode type) {
-    return (Iterable<SNode>) ((SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(type)), CONCEPTS.MapType$h0) ? Sequence.fromIterable(containerDeclarations(model, type)).select((SNode ccd) -> {
+    return (Iterable<SNode>) ((SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(type)), CONCEPTS.MapType$h0) ? Sequence.fromIterable(containerDeclarations(model, type)).select((ccd) -> {
       SNode cmc = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x15e2150d4bff8a67L, "jetbrains.mps.baseLanguage.collections.structure.CustomMapCreator"));
       SLinkOperations.setTarget(cmc, LINKS.containerDeclaration$QVZa, ccd);
       List<SNode> tvds = SLinkOperations.getChildren(ccd, LINKS.typeVariableDeclaration$Lipp);
@@ -45,7 +45,7 @@ with_ctParams:
         }
       }
       return cmc;
-    }) : Sequence.fromIterable(containerDeclarations(model, type)).select((SNode ccd) -> {
+    }) : Sequence.fromIterable(containerDeclarations(model, type)).select((ccd) -> {
       SNode ccc = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x127be81db92655b3L, "jetbrains.mps.baseLanguage.collections.structure.CustomContainerCreator"));
       SLinkOperations.setTarget(ccc, LINKS.containerDeclaration$nqf8, ccd);
       if (ListSequence.fromList(SLinkOperations.getChildren(ccd, LINKS.typeVariableDeclaration$Lipp)).count() == 1) {
@@ -55,7 +55,7 @@ with_ctParams:
     })));
   }
   public static Iterable<SNode> containerDeclarations(SModel model, final SNode type) {
-    return ListSequence.fromList(CollectionsLanguage.getInstance().getCustomContainersRegistry().accessibleCustomContainerDeclarations(model)).where((SNode ccd) -> SNodeOperations.getConcept(SLinkOperations.getTarget(ccd, LINKS.containerType$WQze)) == SNodeOperations.getConcept(type));
+    return ListSequence.fromList(CollectionsLanguage.getInstance().getCustomContainersRegistry().accessibleCustomContainerDeclarations(model)).where((ccd) -> SNodeOperations.getConcept(SLinkOperations.getTarget(ccd, LINKS.containerType$WQze)) == SNodeOperations.getConcept(type));
   }
 
   private static final class LINKS {

@@ -38,11 +38,11 @@ public class CustomContainersRegistry {
       // XXX in fact, shall use VisibilityUtil, to follow some general convention about what's visible.
       //     Otherwise, here we consider any model of a used language as visible, while VisibilityUtil see only accessory models
       Iterable<SNode> allCustomContainers = this.primAllCustomContainers(fromModel.getRepository());
-      ListSequence.fromList(res).addSequence(Sequence.fromIterable(allCustomContainers).where((SNode cc) -> {
+      ListSequence.fromList(res).addSequence(Sequence.fromIterable(allCustomContainers).where((cc) -> {
         SModule owner = CustomContainersRegistry.this.getOwningModule(SNodeOperations.getModel(cc));
         final SModuleReference ownerRef = (owner == null ? null : owner.getModuleReference());
-        return Sequence.fromIterable(allVisibleModules).contains(owner) || Sequence.fromIterable(allUsedLanguages).any((SLanguage it) -> Objects.equals(ownerRef, it.getSourceModuleReference()));
-      }).translate((SNode cc) -> SLinkOperations.getChildren(cc, LINKS.containerDeclaration$X6vk)));
+        return Sequence.fromIterable(allVisibleModules).contains(owner) || Sequence.fromIterable(allUsedLanguages).any((it) -> Objects.equals(ownerRef, it.getSourceModuleReference()));
+      }).translate((cc) -> SLinkOperations.getChildren(cc, LINKS.containerDeclaration$X6vk)));
     }
     return res;
   }
@@ -55,7 +55,7 @@ public class CustomContainersRegistry {
     synchronized (this) {
       providersCopy = ListSequence.fromListWithValues(new ArrayList<_FunctionTypes._return_P1_E0<? extends List<SNode>, ? super SRepository>>(), this.providers);
     }
-    return ListSequence.fromList(providersCopy).translate((_FunctionTypes._return_P1_E0<? extends List<SNode>, ? super SRepository> prov) -> prov.invoke(repo));
+    return ListSequence.fromList(providersCopy).translate((prov) -> prov.invoke(repo));
   }
 
   private static final class LINKS {

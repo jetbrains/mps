@@ -48,7 +48,7 @@ public class CustomContainerCreator_Constraints extends BaseConstraintsDescripto
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode expr = SNodeOperations.as((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), CONCEPTS.Expression$mB);
-            return ListScope.forResolvableElements(((expr != null) ? Sequence.fromIterable(CustomContainersUtil.containerDeclarations(SNodeOperations.getModel(expr), TypeDerivable__BehaviorDescriptor.deriveType_idhEwIVPz.invoke(SNodeOperations.as(SNodeOperations.getParent(expr), CONCEPTS.TypeDerivable$EC), expr))).where((SNode it) -> !(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(it, LINKS.containerType$WQze))), CONCEPTS.MapType$h0))) : Sequence.fromIterable(Collections.<SNode>emptyList())));
+            return ListScope.forResolvableElements(((expr != null) ? Sequence.fromIterable(CustomContainersUtil.containerDeclarations(SNodeOperations.getModel(expr), TypeDerivable__BehaviorDescriptor.deriveType_idhEwIVPz.invoke(SNodeOperations.as(SNodeOperations.getParent(expr), CONCEPTS.TypeDerivable$EC), expr))).where((it) -> !(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(it, LINKS.containerType$WQze))), CONCEPTS.MapType$h0))) : Sequence.fromIterable(Collections.<SNode>emptyList())));
           }
         };
       }

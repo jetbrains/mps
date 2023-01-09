@@ -24,8 +24,8 @@ public class supertypesOf_List_SubtypingRule extends SubtypingRule_Runtime imple
   public List<SNode> getSubOrSuperTypes(SNode type, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> result = new ArrayList<SNode>();
     SNode elemType = SLinkOperations.getTarget(type, LINKS.elementType$ssn);
-    ListSequence.fromList(result).addElement(_quotation_createNode_w26thq_a0a2a1(SLinkOperations.getTarget(type, LINKS.elementType$ssn)));
-    ListSequence.fromList(result).addElement(_quotation_createNode_w26thq_a0a3a1(SLinkOperations.getTarget(type, LINKS.elementType$ssn)));
+    ListSequence.fromList(result).addElement(_quotation_createNode_w26thq_a0a2a1(elemType));
+    ListSequence.fromList(result).addElement(_quotation_createNode_w26thq_a0a3a1(elemType));
     ListSequence.fromList(result).addElement(_quotation_createNode_w26thq_a0a4a1());
     return result;
   }

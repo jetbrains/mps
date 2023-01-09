@@ -28,7 +28,7 @@ public class check_SequenceOperation_NonTypesystemRule extends AbstractNonTypesy
     if (SNodeOperations.isInstanceOf(so, CONCEPTS.IApplicableToNothing$j7)) {
       // casting twice to avoid "not comparable" type error
       SAbstractConcept conceptNode = SNodeOperations.getConcept(so);
-      if (!(SetSequence.fromSet((IApplicableToNothing__BehaviorDescriptor.getAllApplicableTypes_id5cL0w3DYWgB.invoke(SNodeOperations.asSConcept((SAbstractConcept) conceptNode)))).any((SNode it) -> TypecheckingFacade.getFromContext().isStrongSubtype(opType, it)))) {
+      if (!(SetSequence.fromSet((IApplicableToNothing__BehaviorDescriptor.getAllApplicableTypes_id5cL0w3DYWgB.invoke(SNodeOperations.asSConcept((SAbstractConcept) conceptNode)))).any((it) -> TypecheckingFacade.getFromContext().isStrongSubtype(opType, it)))) {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(so, "not available here", "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "4998595809122235508", null, errorTarget);
       }

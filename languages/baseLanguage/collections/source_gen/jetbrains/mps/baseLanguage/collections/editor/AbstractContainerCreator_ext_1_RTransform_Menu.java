@@ -68,7 +68,6 @@ public class AbstractContainerCreator_ext_1_RTransform_Menu extends Transformati
       });
       result.add(new TMP_Include_xot6qr_b0());
       result.add(new TMP_Include_xot6qr_c0());
-      result.add(new TMP_Include_xot6qr_d0());
     }
     return result;
   }
@@ -116,29 +115,6 @@ public class AbstractContainerCreator_ext_1_RTransform_Menu extends Transformati
       final EditorContext editorContext = _context.getEditorContext();
 
       return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.AbstractContainerCreator$cz, "jetbrains.mps.baseLanguage.collections.editor.add_parameters_to_container_creator");
-    }
-
-  }
-  public class TMP_Include_xot6qr_d0 extends IncludeTransformationMenuTransformationMenuPart {
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include " + "named transformation menu " + "AbstractContainerCreator_add_elementType", new SNodePointer("r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)", "1741258697586931755")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
-    @Nullable
-    @Override
-    protected TransformationMenuLookup getMenuLookup(TransformationMenuContext _context) {
-      final SNode node = _context.getNode();
-      final EditorContext editorContext = _context.getEditorContext();
-
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.AbstractContainerCreator$cz, "jetbrains.mps.baseLanguage.collections.editor.AbstractContainerCreator_add_elementType");
     }
 
   }

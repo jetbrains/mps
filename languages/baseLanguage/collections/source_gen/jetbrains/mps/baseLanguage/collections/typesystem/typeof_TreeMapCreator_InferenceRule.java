@@ -7,8 +7,8 @@ import jetbrains.mps.lang.typesystem.runtime.InferenceRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
-import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -20,10 +20,35 @@ public class typeof_TreeMapCreator_InferenceRule extends AbstractInferenceRule_R
   public typeof_TreeMapCreator_InferenceRule() {
   }
   public void applyRule(final SNode creator, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
+    typeCheckingContext.addDependencyForCurrent(SLinkOperations.getTarget(creator, LINKS.initializer$hMbF));
+
+    final SNode keyType_typevar_7830826264647024963 = typeCheckingContext.createNewRuntimeTypesVariable();
+    final SNode valueType_typevar_7830826264647024964 = typeCheckingContext.createNewRuntimeTypesVariable();
+    if ((SLinkOperations.getTarget(creator, LINKS.keyType$Uj4M) != null) && (SLinkOperations.getTarget(creator, LINKS.valueType$2EUo) != null)) {
+      {
+        SNode _nodeToCheck_1029348928467 = creator;
+        EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7830826264647024967", 0, null);
+        typeCheckingContext.createEquation((SNode) typeCheckingContext.getRepresentative(keyType_typevar_7830826264647024963), (SNode) SLinkOperations.getTarget(creator, LINKS.keyType$Uj4M), _info_12389875345);
+      }
+      {
+        SNode _nodeToCheck_1029348928467 = creator;
+        EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7830826264647024974", 0, null);
+        typeCheckingContext.createEquation((SNode) typeCheckingContext.getRepresentative(valueType_typevar_7830826264647024964), (SNode) SLinkOperations.getTarget(creator, LINKS.valueType$2EUo), _info_12389875345);
+      }
+    }
     {
       SNode _nodeToCheck_1029348928467 = creator;
-      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240239601988", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240239597471", true), (SNode) _quotation_createNode_tnqpu1_a1a0c0a0b(SLinkOperations.getTarget(creator, LINKS.keyType$Uj4M), SLinkOperations.getTarget(creator, LINKS.valueType$2EUo)), _info_12389875345);
+      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7830826264647024992", 0, null);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7830826264647025003", true), (SNode) _quotation_createNode_tnqpu1_a1a0c0f0b(typeCheckingContext.getRepresentative(keyType_typevar_7830826264647024963), typeCheckingContext.getRepresentative(valueType_typevar_7830826264647024964)), _info_12389875345);
+    }
+    if ((SLinkOperations.getTarget(creator, LINKS.initSize$f8Q) != null)) {
+      if (!(typeCheckingContext.isSingleTypeComputation())) {
+        {
+          SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(creator, LINKS.initSize$f8Q);
+          EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7830826264647025007", 0, null);
+          typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7830826264647025012", true), (SNode) _quotation_createNode_tnqpu1_a1a0c0a0a0g0b(), true, true, _info_12389875345);
+        }
+      }
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -35,7 +60,7 @@ public class typeof_TreeMapCreator_InferenceRule extends AbstractInferenceRule_R
   public boolean overrides() {
     return true;
   }
-  private static SNode _quotation_createNode_tnqpu1_a1a0c0a0b(Object parameter_1, Object parameter_2) {
+  private static SNode _quotation_createNode_tnqpu1_a1a0c0f0b(Object parameter_1, Object parameter_2) {
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
     SNode quotedNode_5 = null;
@@ -51,10 +76,18 @@ public class typeof_TreeMapCreator_InferenceRule extends AbstractInferenceRule_R
     }
     return quotedNode_3;
   }
+  private static SNode _quotation_createNode_tnqpu1_a1a0c0a0a0g0b() {
+    SNode quotedNode_1 = null;
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d22479L, "IntegerType"));
+    quotedNode_1 = nb.getResult();
+    return quotedNode_1;
+  }
 
   private static final class LINKS {
+    /*package*/ static final SContainmentLink initializer$hMbF = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x118f24c9eb0L, "initializer");
     /*package*/ static final SContainmentLink keyType$Uj4M = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x116dbb5b4d0L, "keyType");
     /*package*/ static final SContainmentLink valueType$2EUo = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x116dbb5d76dL, "valueType");
+    /*package*/ static final SContainmentLink initSize$f8Q = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x15ae66cec0613b7fL, "initSize");
   }
 
   private static final class CONCEPTS {

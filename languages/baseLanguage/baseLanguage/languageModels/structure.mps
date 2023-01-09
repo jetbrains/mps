@@ -5011,5 +5011,21 @@
       <ref role="20lvS9" to="zqge:2cLqkTm6J5A" resolve="Line" />
     </node>
   </node>
+  <node concept="1TIwiD" id="6WEdOZdw787">
+    <property role="EcuMT" value="8010275703121539591" />
+    <property role="3GE5qa" value="type" />
+    <property role="TrG5h" value="InferredType" />
+    <ref role="1TJDcQ" to="tpck:2ULFgo8_XDk" resolve="NodeAttribute" />
+    <node concept="M6xJ_" id="17QotHQYUN9" role="lGtFl">
+      <property role="Hh88m" value="inferredType" />
+      <node concept="tn0Fv" id="17QotHQYUNb" role="HhnKV" />
+      <node concept="trNpa" id="17QotHQYUNd" role="EQaZv">
+        <ref role="trN6q" node="fz3vP1H" resolve="Type" />
+      </node>
+    </node>
+    <node concept="t5JxF" id="17QotHQYUNf" role="lGtFl">
+      <property role="t5JxN" value="mark a type as inferred, meaning its type can be derived from context" />
+    </node>
+  </node>
 </model>
 

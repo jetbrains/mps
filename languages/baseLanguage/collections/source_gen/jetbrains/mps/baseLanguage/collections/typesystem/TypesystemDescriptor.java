@@ -244,6 +244,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
+      InferenceRule_Runtime inferenceRule = new typeof_MapInitializer_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
       InferenceRule_Runtime inferenceRule = new typeof_MapRemoveOperation_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
@@ -716,7 +720,7 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myComparisonRules.add(comparisonRule);
     }
     {
-      InequationReplacementRule_Runtime eliminationRule = new collection_covariant_extends_InequationReplacementRule();
+      InequationReplacementRule_Runtime eliminationRule = new collection_subtypeOf_collection_InequationReplacementRule();
       this.myInequationReplacementRules.add(eliminationRule);
     }
     {
@@ -740,7 +744,7 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInequationReplacementRules.add(eliminationRule);
     }
     {
-      InequationReplacementRule_Runtime eliminationRule = new list_covariant_with_extends_InequationReplacementRule();
+      InequationReplacementRule_Runtime eliminationRule = new list_subtypeOf_list_InequationReplacementRule();
       this.myInequationReplacementRules.add(eliminationRule);
     }
     {

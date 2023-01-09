@@ -1582,7 +1582,6 @@
     <node concept="1TJgyj" id="hYHTBmv" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="elementType" />
-      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="1235573175711" />
       <ref role="20lvS9" to="tpee:fz3vP1H" resolve="Type" />
     </node>

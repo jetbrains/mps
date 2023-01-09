@@ -39,7 +39,7 @@ public class DiscardSmartClosureParameterDeclaration extends MigrationScriptBase
           return scope_1t5xc0_a0e_0;
         }
       };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SmartClosureParameterDeclaration$bO, false)).visitAll((SNode it) -> {
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SmartClosureParameterDeclaration$bO, false)).visitAll((it) -> {
         SNode newParam = SNodeOperations.replaceWithNewChild(it, CONCEPTS.InferredClosureParameterDeclaration$DV);
 
         // Both are UnboundClosureParameterDeclaration, have no specific property/children, and are referred from the same concepts -> we can keep the id of the old parameter on the new one
@@ -59,7 +59,7 @@ public class DiscardSmartClosureParameterDeclaration extends MigrationScriptBase
           return scope_1t5xc0_a0f_0;
         }
       };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SmartClosureParameterDeclaration$bO, false)).select((SNode it) -> {
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SmartClosureParameterDeclaration$bO, false)).select((it) -> {
         return new NotMigratedNode(it) {
           @Override
           public String getMessage() {

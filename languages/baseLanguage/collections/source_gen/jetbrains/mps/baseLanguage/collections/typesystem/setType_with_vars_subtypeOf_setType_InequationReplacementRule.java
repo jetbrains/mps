@@ -19,7 +19,7 @@ public class setType_with_vars_subtypeOf_setType_InequationReplacementRule exten
   public setType_with_vars_subtypeOf_setType_InequationReplacementRule() {
   }
   public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
-    return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(subtype)), SNodeOperations.asSConcept(SNodeOperations.getConcept(supertype))) && !(ListSequence.fromList(SNodeOperations.getChildren(supertype)).any((SNode ch) -> SNodeOperations.isInstanceOf(ch, CONCEPTS.TypeVariableReference$WL))) && ListSequence.fromList(SNodeOperations.getChildren(subtype)).any((SNode ch) -> SNodeOperations.isInstanceOf(ch, CONCEPTS.TypeVariableReference$WL));
+    return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(subtype)), SNodeOperations.asSConcept(SNodeOperations.getConcept(supertype))) && !(ListSequence.fromList(SNodeOperations.getChildren(supertype)).any((ch) -> SNodeOperations.isInstanceOf(ch, CONCEPTS.TypeVariableReference$WL))) && ListSequence.fromList(SNodeOperations.getChildren(subtype)).any((ch) -> SNodeOperations.isInstanceOf(ch, CONCEPTS.TypeVariableReference$WL));
   }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     // Anyway... there should be the only one child.

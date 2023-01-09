@@ -137,7 +137,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
     }
     protected String getNoTargetText() {
-      return "<no elementType>";
+      return "";
     }
   }
   private EditorCell createConstant_2() {

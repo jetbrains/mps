@@ -16,8 +16,20 @@ public class MapSequence<U, V> extends AbstractMapSequence<U, V> implements IMap
     Map<P, Q> map = new HashMap<P, Q>();
     return new MapSequenceInitializer<P, Q>(new MapSequence<P, Q>(map), keys);
   }
+  /**
+   * 
+   * @deprecated replaced by fromMapAndEntryArray, which works better with inference
+   */
+  @Deprecated
   public static <P, Q> MapSequenceInitializer<P, Q> fromMapAndKeysArray(Map<P, Q> map, P... keys) {
     return new MapSequenceInitializer<P, Q>(new MapSequence<P, Q>(map), keys);
+  }
+  public static <P, Q> IMapSequence<P, Q> fromMapAndEntryArray(Map<P, Q> map, Map.Entry<? extends P, ? extends Q>... entries) {
+    MapSequence<P, Q> sequence = new MapSequence<P, Q>(map);
+    for (Map.Entry<? extends P, ? extends Q> entry : entries) {
+      sequence.put(entry.getKey(), entry.getValue());
+    }
+    return sequence;
   }
   public static <P, Q> IMapSequence<P, Q> fromArray(IMapping<P, Q>... mappings) {
     Map<P, Q> map = new HashMap<P, Q>();
