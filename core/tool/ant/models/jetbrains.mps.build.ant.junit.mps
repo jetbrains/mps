@@ -239,6 +239,15 @@
         <property role="Xl_RC" value="launchtests.haltonfailure" />
       </node>
     </node>
+    <node concept="Wx3nA" id="5HBbAYqGxvU" role="jymVt">
+      <property role="3TUv4t" value="true" />
+      <property role="TrG5h" value="TEST_REPORTS_DIR_PROPERTY" />
+      <node concept="3Tm1VV" id="5HBbAYqGxvV" role="1B3o_S" />
+      <node concept="17QB3L" id="5HBbAYqGxvW" role="1tU5fm" />
+      <node concept="Xl_RD" id="5HBbAYqGxvX" role="33vP2m">
+        <property role="Xl_RC" value="launchtests.testReportsDir" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="HwplGLMAWl" role="jymVt" />
     <node concept="312cEg" id="5gsHVK_0mum" role="jymVt">
       <property role="TrG5h" value="myModuleFile" />
@@ -417,6 +426,44 @@
       </node>
     </node>
     <node concept="2tJIrI" id="HwplGLLCE9" role="jymVt" />
+    <node concept="3clFb_" id="5HBbAYqG$Xc" role="jymVt">
+      <property role="TrG5h" value="setReports" />
+      <node concept="37vLTG" id="5HBbAYqG$Xd" role="3clF46">
+        <property role="TrG5h" value="testReportsDir" />
+        <node concept="3uibUv" id="5HBbAYqJusD" role="1tU5fm">
+          <ref role="3uigEE" to="guwi:~File" resolve="File" />
+        </node>
+      </node>
+      <node concept="3cqZAl" id="5HBbAYqG$Xf" role="3clF45" />
+      <node concept="3Tm1VV" id="5HBbAYqG$Xg" role="1B3o_S" />
+      <node concept="3clFbS" id="5HBbAYqG$Xh" role="3clF47">
+        <node concept="3clFbF" id="5HBbAYqG$Xi" role="3cqZAp">
+          <node concept="2OqwBi" id="5HBbAYqG$Xj" role="3clFbG">
+            <node concept="2OqwBi" id="5HBbAYqG$Xk" role="2Oq$k0">
+              <node concept="Xjq3P" id="5HBbAYqG$Xl" role="2Oq$k0" />
+              <node concept="2OwXpG" id="5HBbAYqG$Xm" role="2OqNvi">
+                <ref role="2Oxat5" to="644x:3ufQioQQtje" resolve="myWhatToDo" />
+              </node>
+            </node>
+            <node concept="liA8E" id="5HBbAYqG$Xn" role="2OqNvi">
+              <ref role="37wK5l" to="asz6:KL8Aql8eBe" resolve="putProperty" />
+              <node concept="37vLTw" id="5HBbAYqG$Xo" role="37wK5m">
+                <ref role="3cqZAo" node="5HBbAYqGxvU" resolve="TEST_REPORTS_DIR_PROPERTY" />
+              </node>
+              <node concept="2OqwBi" id="5HBbAYqG$Xp" role="37wK5m">
+                <node concept="37vLTw" id="5HBbAYqJxNl" role="2Oq$k0">
+                  <ref role="3cqZAo" node="5HBbAYqG$Xd" resolve="testReportsDir" />
+                </node>
+                <node concept="liA8E" id="5HBbAYqG$Xs" role="2OqNvi">
+                  <ref role="37wK5l" to="guwi:~File.toString()" resolve="toString" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="5HBbAYqG$Xb" role="jymVt" />
     <node concept="3clFb_" id="28$8eDn2SGn" role="jymVt">
       <property role="TrG5h" value="addConfiguredLibrary" />
       <node concept="3cqZAl" id="28$8eDn2SGo" role="3clF45" />

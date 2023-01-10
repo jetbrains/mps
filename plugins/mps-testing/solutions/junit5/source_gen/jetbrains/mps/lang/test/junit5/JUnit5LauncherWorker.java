@@ -13,8 +13,8 @@ import org.junit.platform.launcher.core.LauncherConfig;
 import org.junit.platform.launcher.Launcher;
 import org.junit.platform.launcher.core.LauncherFactory;
 import jetbrains.mps.lang.test.junit5.tcutil.JUnit5TestExecutionListener;
+import java.io.File;
 import org.junit.platform.reporting.legacy.xml.LegacyXmlReportGeneratingListener;
-import java.nio.file.Path;
 import java.io.PrintWriter;
 import org.junit.platform.launcher.LauncherDiscoveryRequest;
 import java.util.List;
@@ -24,11 +24,11 @@ import java.util.stream.Collectors;
 import org.junit.platform.launcher.core.LauncherDiscoveryRequestBuilder;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SNode;
-import java.io.File;
 
 public class JUnit5LauncherWorker extends WorkerBase {
 
   public static final String HALT_ON_FAILURE = "launchtests.haltonfailure";
+  public static final String TEST_REPORTS_DIR = "launchtests.testReportsDir";
 
   public JUnit5LauncherWorker(Script whatToDo) {
     super(whatToDo);
@@ -67,7 +67,10 @@ public class JUnit5LauncherWorker extends WorkerBase {
     if (isRunningOnTeamCity()) {
       launcher.registerTestExecutionListeners(new JUnit5TestExecutionListener());
     }
-    launcher.registerTestExecutionListeners(new LegacyXmlReportGeneratingListener(Path.of("."), new PrintWriter(System.out)));
+    File testReportsDir = getTestReportsDir();
+    if (testReportsDir != null) {
+      launcher.registerTestExecutionListeners(new LegacyXmlReportGeneratingListener(testReportsDir.toPath(), new PrintWriter(System.out)));
+    }
     launcher.registerTestExecutionListeners(failureDetector);
     launcher.execute(buildRequest(collectTestClasses(project)));
   }
@@ -104,6 +107,25 @@ public class JUnit5LauncherWorker extends WorkerBase {
   private boolean isHaltOnFailure() {
     String property = myWhatToDo.getProperty(HALT_ON_FAILURE);
     return (property != null ? Boolean.valueOf(property) : false);
+  }
+
+  private File getTestReportsDir() {
+    String property = myWhatToDo.getProperty(TEST_REPORTS_DIR);
+    if (property == null) {
+      return null;
+    }
+    File dir = new File(property);
+    if (!(dir.exists())) {
+      if (!(dir.mkdirs())) {
+        error("could not create directory for test reports: " + dir.getAbsolutePath());
+        return null;
+      }
+    }
+    if (!(dir.isDirectory())) {
+      error("not a directory: " + dir.getAbsolutePath());
+      return null;
+    }
+    return dir;
   }
 
   public static void main(String[] args) {

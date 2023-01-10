@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="246lcewj97dexj6bw5o20yoh2bwpvjc">
+<product version="3" modelHash="16rjafeialm733rw1l2ku56q84q0z4p">
   <files names="EnvironmentAwareExtension.java:FailureDetector.java:JUnit5LauncherWorker.java:ModuleFilesListProjectStrategy.java:TestDiscovery.java:TestDiscoveryVisitor.java" />
 </product>
 

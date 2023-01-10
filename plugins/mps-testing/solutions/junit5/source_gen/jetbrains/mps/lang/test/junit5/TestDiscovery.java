@@ -80,7 +80,7 @@ public class TestDiscovery {
           return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.annotation$K49I)).any(new IWhereFilter<SNode>() {
             public boolean accept(SNode a) {
               // JUnit4's @Test annotation
-              return SLinkOperations.hasPointer(a, LINKS.annotation$12Ek, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:junit.framework(JUnit/)", "~Test"));
+              return SLinkOperations.hasPointer(a, LINKS.annotation$12Ek, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~Test"));
             }
           });
         }
