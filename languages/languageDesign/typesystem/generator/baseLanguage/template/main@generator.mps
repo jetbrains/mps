@@ -2563,7 +2563,7 @@
       <ref role="2rZz_L" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
     </node>
     <node concept="1puMqW" id="441vB8LFx6X" role="1puA0r">
-      <ref role="1puQsG" node="441vB8LExtY" resolve="prepend_additional_fields_and_method_names" />
+      <ref role="1puQsG" node="441vB8LExtY" resolve="prepend_additional_method_names" />
     </node>
   </node>
   <node concept="312cEu" id="h5Ydn31">
@@ -15659,7 +15659,7 @@
     </node>
     <node concept="3aamgX" id="hECeGe$" role="3acgRq">
       <ref role="30HIoZ" to="tp4f:hyXrIf3" resolve="DefaultClassifierMethodDeclaration" />
-      <ref role="2sgKRv" node="5JxumkiDsy9" resolve="map_ClassifierMethod" />
+      <ref role="2sgKRv" node="5JxumkiDsy9" resolve="map_QuickFixClassifierMethod" />
       <node concept="j$656" id="hECeGe_" role="1lVwrX">
         <ref role="v9R2y" to="tp48:hz1B4cf" resolve="reduce_DefaultClassifierMethodDeclaration" />
       </node>
@@ -23681,7 +23681,7 @@
                           <property role="TrG5h" value="method" />
                           <node concept="2OqwBi" id="26ZettxTj_P" role="33vP2m">
                             <node concept="1iwH70" id="26ZettxTj_R" role="2OqNvi">
-                              <ref role="1iwH77" node="5JxumkiDsy9" resolve="map_ClassifierMethod" />
+                              <ref role="1iwH77" node="5JxumkiDsy9" resolve="map_QuickFixClassifierMethod" />
                               <node concept="2OqwBi" id="26ZettxTj_S" role="1iwH7V">
                                 <node concept="3TrEf2" id="26ZettxTj_U" role="2OqNvi">
                                   <ref role="3Tt5mk" to="tp4f:hyXtfQh" resolve="method" />
@@ -23836,7 +23836,7 @@
         <node concept="3clFbS" id="6dSlb0bYoi9" role="3clF47">
           <node concept="3cpWs6" id="5$AmPtLgHff" role="3cqZAp">
             <node concept="Xjq3P" id="5$AmPtLgHfh" role="3cqZAk">
-              <ref role="1HBi2w" node="6dSlb0bYoi0" resolve="IntentionClass" />
+              <ref role="1HBi2w" node="6dSlb0bYoi0" resolve="QuickFixClass" />
               <node concept="raruj" id="5$AmPtLgHfi" role="lGtFl" />
               <node concept="1ZhdrF" id="5$AmPtLgHfj" role="lGtFl">
                 <property role="2qtEX8" value="classConcept" />
@@ -23869,7 +23869,7 @@
         </node>
         <node concept="3Tm1VV" id="6dSlb0bYoi8" role="1B3o_S" />
         <node concept="3uibUv" id="5$AmPtLgHfd" role="3clF45">
-          <ref role="3uigEE" node="6dSlb0bYoi0" resolve="IntentionClass" />
+          <ref role="3uigEE" node="6dSlb0bYoi0" resolve="QuickFixClass" />
         </node>
       </node>
       <node concept="3Tm1VV" id="6dSlb0bYoi1" role="1B3o_S" />

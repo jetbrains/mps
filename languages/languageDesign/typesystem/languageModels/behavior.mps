@@ -4512,7 +4512,7 @@
     </node>
     <node concept="13i0hz" id="441vB8LMI32" role="13h7CS">
       <property role="TrG5h" value="requiresAllMethodMembersPrivate" />
-      <ref role="13i0hy" to="tp4h:441vB8LJxAr" resolve="isAllMembersPrivate" />
+      <ref role="13i0hy" to="tp4h:441vB8LJxAr" resolve="requiresAllMethodMembersPrivate" />
       <node concept="3Tm1VV" id="441vB8LMI33" role="1B3o_S" />
       <node concept="3clFbS" id="441vB8LMI38" role="3clF47">
         <node concept="3clFbF" id="441vB8LMIyN" role="3cqZAp">
@@ -4532,7 +4532,7 @@
     </node>
     <node concept="13i0hz" id="441vB8LMICU" role="13h7CS">
       <property role="TrG5h" value="requiresAllMethodMembersPrivate" />
-      <ref role="13i0hy" to="tp4h:441vB8LJxAr" resolve="isAllMembersPrivate" />
+      <ref role="13i0hy" to="tp4h:441vB8LJxAr" resolve="requiresAllMethodMembersPrivate" />
       <node concept="3Tm1VV" id="441vB8LMICV" role="1B3o_S" />
       <node concept="3clFbS" id="441vB8LMID0" role="3clF47">
         <node concept="3clFbF" id="441vB8LMIIN" role="3cqZAp">

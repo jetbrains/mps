@@ -27807,7 +27807,7 @@
     </node>
     <node concept="13i0hz" id="441vB8LLA_k" role="13h7CS">
       <property role="TrG5h" value="requiresAllMethodMembersPrivate" />
-      <ref role="13i0hy" to="tp4h:441vB8LJxAr" resolve="isAllMembersPrivate" />
+      <ref role="13i0hy" to="tp4h:441vB8LJxAr" resolve="requiresAllMethodMembersPrivate" />
       <node concept="3Tm1VV" id="441vB8LLA_l" role="1B3o_S" />
       <node concept="3clFbS" id="441vB8LLA_q" role="3clF47">
         <node concept="3clFbF" id="441vB8LLAFM" role="3cqZAp">

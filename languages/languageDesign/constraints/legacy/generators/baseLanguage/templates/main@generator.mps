@@ -535,7 +535,7 @@
     </node>
     <node concept="3aamgX" id="hECeGe$" role="3acgRq">
       <ref role="30HIoZ" to="tp4f:hyXrIf3" resolve="DefaultClassifierMethodDeclaration" />
-      <ref role="2sgKRv" node="5JxumkiDsy9" resolve="map_ClassifierMethod" />
+      <ref role="2sgKRv" node="5JxumkiDsy9" resolve="map_ConstraintsClassifierMethod" />
       <node concept="j$656" id="hECeGe_" role="1lVwrX">
         <ref role="v9R2y" to="tp48:hz1B4cf" resolve="reduce_DefaultClassifierMethodDeclaration" />
       </node>
@@ -985,7 +985,7 @@
       </node>
     </node>
     <node concept="1puMqW" id="441vB8LF8Bg" role="1puA0r">
-      <ref role="1puQsG" node="441vB8LExtY" resolve="prepend_additional_fields_and_method_names" />
+      <ref role="1puQsG" node="441vB8LExtY" resolve="prepend_additional_method_names" />
     </node>
   </node>
   <node concept="13MO4I" id="hshgjlV">

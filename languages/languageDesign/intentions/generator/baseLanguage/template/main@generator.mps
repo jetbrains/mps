@@ -4591,7 +4591,7 @@
                           <property role="TrG5h" value="method" />
                           <node concept="2OqwBi" id="26ZettxTj_P" role="33vP2m">
                             <node concept="1iwH70" id="26ZettxTj_R" role="2OqNvi">
-                              <ref role="1iwH77" node="5JxumkiDsy9" resolve="map_ClassifierMethod" />
+                              <ref role="1iwH77" node="5JxumkiDsy9" resolve="map_IntentionsClassifierMethod" />
                               <node concept="2OqwBi" id="26ZettxTj_S" role="1iwH7V">
                                 <node concept="3TrEf2" id="26ZettxTj_U" role="2OqNvi">
                                   <ref role="3Tt5mk" to="tp4f:hyXtfQh" resolve="method" />
@@ -4754,7 +4754,7 @@
     <node concept="3aamgX" id="hECe$_K" role="3acgRq">
       <ref role="30HIoZ" to="tp4f:hyXshSD" resolve="DefaultClassifierMethodCallOperation" />
       <node concept="j$656" id="hECe$_L" role="1lVwrX">
-        <ref role="v9R2y" node="hz2Aqmp" resolve="reduce_DefaultClassifierMethodCall" />
+        <ref role="v9R2y" node="hz2Aqmp" resolve="reduce_IntentionsDefaultClassifierMethodCall" />
       </node>
       <node concept="30G5F_" id="31OifsfFxK1" role="30HLyM">
         <node concept="3clFbS" id="31OifsfFxK2" role="2VODD2">
@@ -4776,7 +4776,7 @@
     </node>
     <node concept="3aamgX" id="hECeGe$" role="3acgRq">
       <ref role="30HIoZ" to="tp4f:hyXrIf3" resolve="DefaultClassifierMethodDeclaration" />
-      <ref role="2sgKRv" node="5JxumkiDsy9" resolve="map_ClassifierMethod" />
+      <ref role="2sgKRv" node="5JxumkiDsy9" resolve="map_IntentionsClassifierMethod" />
       <node concept="j$656" id="hECeGe_" role="1lVwrX">
         <ref role="v9R2y" to="tp48:hz1B4cf" resolve="reduce_DefaultClassifierMethodDeclaration" />
       </node>
@@ -4800,7 +4800,7 @@
     </node>
     <node concept="3aamgX" id="hECeHEJ" role="3acgRq">
       <ref role="30HIoZ" to="tp4f:hEBZ0aj" resolve="DefaultClassifierFieldDeclaration" />
-      <ref role="2sgKRv" node="5JxumkiDsy8" resolve="map_ClassifierField" />
+      <ref role="2sgKRv" node="5JxumkiDsy8" resolve="map_IntentionsClassifierField" />
       <node concept="j$656" id="hECeOEW" role="1lVwrX">
         <ref role="v9R2y" to="tp48:hEC22Ns" resolve="reduce_DefaultClassifierFieldDeclaration" />
       </node>
@@ -4825,7 +4825,7 @@
     <node concept="3aamgX" id="hECeL7R" role="3acgRq">
       <ref role="30HIoZ" to="tp4f:hEBZ7lK" resolve="DefaultClassifierFieldAccessOperation" />
       <node concept="j$656" id="hEChRo5" role="1lVwrX">
-        <ref role="v9R2y" node="hECf9cw" resolve="reduce_DefaultClassifierFieldAccessOperation" />
+        <ref role="v9R2y" node="hECf9cw" resolve="reduce_IntentionsDefaultClassifierFieldAccessOperation" />
       </node>
       <node concept="30G5F_" id="31OifsfFyme" role="30HLyM">
         <node concept="3clFbS" id="31OifsfFymf" role="2VODD2">
@@ -4848,7 +4848,7 @@
     <node concept="3aamgX" id="hBzdNJX" role="3acgRq">
       <ref role="30HIoZ" to="tp4f:hyWthE1" resolve="ThisClassifierExpression" />
       <node concept="j$656" id="4ZYGtWRmRzQ" role="1lVwrX">
-        <ref role="v9R2y" node="4ZYGtWRmRzO" resolve="reduce_ThisClassifierExpression" />
+        <ref role="v9R2y" node="4ZYGtWRmRzO" resolve="reduce_IntentionsThisClassifierExpression" />
       </node>
       <node concept="30G5F_" id="31OifsfFys$" role="30HLyM">
         <node concept="3clFbS" id="31OifsfFys_" role="2VODD2">
@@ -4883,7 +4883,7 @@
         <node concept="3clFbS" id="6dSlb0bYoi9" role="3clF47">
           <node concept="3cpWs6" id="5$AmPtLgHff" role="3cqZAp">
             <node concept="Xjq3P" id="5$AmPtLgHfh" role="3cqZAk">
-              <ref role="1HBi2w" node="6dSlb0bYoi0" resolve="ToolClass" />
+              <ref role="1HBi2w" node="6dSlb0bYoi0" resolve="IntentionClass" />
               <node concept="raruj" id="5$AmPtLgHfi" role="lGtFl" />
               <node concept="1ZhdrF" id="5$AmPtLgHfj" role="lGtFl">
                 <property role="2qtEX8" value="classConcept" />
@@ -4894,7 +4894,7 @@
                       <node concept="2OqwBi" id="5$AmPtLgHfn" role="3cqZAk">
                         <node concept="1iwH7S" id="5$AmPtLgHfo" role="2Oq$k0" />
                         <node concept="1iwH70" id="5$AmPtLgHfp" role="2OqNvi">
-                          <ref role="1iwH77" node="6$2CuKCJPtK" resolve="map_BaseToolClass" />
+                          <ref role="1iwH77" node="6$2CuKCJPtK" resolve="map_BaseIntentionClass" />
                           <node concept="2OqwBi" id="5$AmPtLgHfq" role="1iwH7V">
                             <node concept="30H73N" id="5$AmPtLgHfr" role="2Oq$k0" />
                             <node concept="2Xjw5R" id="5$AmPtLgHfs" role="2OqNvi">
@@ -4916,7 +4916,7 @@
         </node>
         <node concept="3Tm1VV" id="6dSlb0bYoi8" role="1B3o_S" />
         <node concept="3uibUv" id="5$AmPtLgHfd" role="3clF45">
-          <ref role="3uigEE" node="6dSlb0bYoi0" resolve="ToolClass" />
+          <ref role="3uigEE" node="6dSlb0bYoi0" resolve="IntentionClass" />
         </node>
       </node>
       <node concept="3Tm1VV" id="6dSlb0bYoi1" role="1B3o_S" />

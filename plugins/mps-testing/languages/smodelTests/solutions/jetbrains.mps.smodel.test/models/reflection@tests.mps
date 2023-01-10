@@ -1590,7 +1590,7 @@
             <node concept="liA8E" id="5_2JyveUwGS" role="2OqNvi">
               <ref role="37wK5l" to="mhbf:~SNode.setReferenceTarget(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNode)" resolve="setReferenceTarget" />
               <node concept="37vLTw" id="5_2JyveUyl7" role="37wK5m">
-                <ref role="3cqZAo" node="5_2JyveUyl0" resolve="referenceLink" />
+                <ref role="3cqZAo" node="5_2JyveUyl0" resolve="fakeAssociation" />
               </node>
               <node concept="37vLTw" id="5_2JyveU$8G" role="37wK5m">
                 <ref role="3cqZAo" node="2xk$X1LcD0T" resolve="referenceTarget" />

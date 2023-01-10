@@ -846,7 +846,7 @@
               </node>
             </node>
             <node concept="2qgKlT" id="441vB8LJDgj" role="2OqNvi">
-              <ref role="37wK5l" to="tp4h:441vB8LJxAr" resolve="isAllMembersPrivate" />
+              <ref role="37wK5l" to="tp4h:441vB8LJxAr" resolve="requiresAllMethodMembersPrivate" />
             </node>
           </node>
           <node concept="3fqX7Q" id="441vB8LK1mH" role="3uHU7w">
