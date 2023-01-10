@@ -164,11 +164,17 @@
       </concept>
     </language>
     <language id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator">
+      <concept id="5808518347809715508" name="jetbrains.mps.lang.generator.structure.GeneratorDebug_InputNode" flags="nn" index="385nmt">
+        <property id="5808518347809748738" name="presentation" index="385vuF" />
+        <child id="5808518347809747118" name="node" index="385v07" />
+      </concept>
       <concept id="3864140621129707969" name="jetbrains.mps.lang.generator.structure.GeneratorDebug_Mappings" flags="nn" index="39dXUE">
         <child id="3864140621129713349" name="labels" index="39e2AI" />
       </concept>
       <concept id="3864140621129713351" name="jetbrains.mps.lang.generator.structure.GeneratorDebug_NodeMapEntry" flags="nn" index="39e2AG">
         <property id="5843998055530255671" name="isNewRoot" index="2mV_xN" />
+        <reference id="3864140621129713371" name="inputOrigin" index="39e2AK" />
+        <child id="5808518347809748862" name="inputNode" index="385vvn" />
         <child id="3864140621129713365" name="outputNode" index="39e2AY" />
       </concept>
       <concept id="3864140621129713348" name="jetbrains.mps.lang.generator.structure.GeneratorDebug_LabelEntry" flags="nn" index="39e2AJ">
@@ -177,6 +183,9 @@
       </concept>
       <concept id="3864140621129713362" name="jetbrains.mps.lang.generator.structure.GeneratorDebug_NodeRef" flags="nn" index="39e2AT">
         <reference id="3864140621129713363" name="node" index="39e2AS" />
+      </concept>
+      <concept id="3637169702552512264" name="jetbrains.mps.lang.generator.structure.ElementaryNodeId" flags="ng" index="3u3nmq">
+        <property id="3637169702552512269" name="nodeId" index="3u3nmv" />
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
@@ -12760,10 +12769,361 @@
   </node>
   <node concept="39dXUE" id="OZ">
     <node concept="39e2AJ" id="P0" role="39e2AI">
+      <property role="39e3Y2" value="constraintClass" />
+      <node concept="39e2AG" id="P2" role="39e3Y0">
+        <ref role="39e2AK" to="ri0:5D0zVz8101f" resolve="BuildMpsAspect_Constraints" />
+        <node concept="385nmt" id="Pv" role="385vvn">
+          <property role="385vuF" value="BuildMpsAspect_Constraints" />
+          <node concept="3u3nmq" id="Px" role="385v07">
+            <property role="3u3nmv" value="6503355885715456079" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Pw" role="39e2AY">
+          <ref role="39e2AS" node="0" resolve="BuildMpsAspect_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="P3" role="39e3Y0">
+        <ref role="39e2AK" to="ri0:34i8I8dqwO8" resolve="BuildMpsLayout_Manifest_Constraints" />
+        <node concept="385nmt" id="Py" role="385vvn">
+          <property role="385vuF" value="BuildMpsLayout_Manifest_Constraints" />
+          <node concept="3u3nmq" id="P$" role="385v07">
+            <property role="3u3nmv" value="3535927011722267912" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Pz" role="39e2AY">
+          <ref role="39e2AS" node="1H" resolve="BuildMpsLayout_Manifest_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="P4" role="39e3Y0">
+        <ref role="39e2AK" to="ri0:13YBgBBScH1" resolve="BuildMpsLayout_ModuleJars_Constraints" />
+        <node concept="385nmt" id="P_" role="385vvn">
+          <property role="385vuF" value="BuildMpsLayout_ModuleJars_Constraints" />
+          <node concept="3u3nmq" id="PB" role="385v07">
+            <property role="3u3nmv" value="1224588814561889089" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="PA" role="39e2AY">
+          <ref role="39e2AS" node="3z" resolve="BuildMpsLayout_ModuleJars_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="P5" role="39e3Y0">
+        <ref role="39e2AK" to="ri0:13YBgBBSiJr" resolve="BuildMpsLayout_ModuleSources_Constraints" />
+        <node concept="385nmt" id="PC" role="385vvn">
+          <property role="385vuF" value="BuildMpsLayout_ModuleSources_Constraints" />
+          <node concept="3u3nmq" id="PE" role="385v07">
+            <property role="3u3nmv" value="1224588814561913819" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="PD" role="39e2AY">
+          <ref role="39e2AS" node="63" resolve="BuildMpsLayout_ModuleSources_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="P6" role="39e3Y0">
+        <ref role="39e2AK" to="ri0:13YBgBBSiJx" resolve="BuildMpsLayout_ModuleXml_Constraints" />
+        <node concept="385nmt" id="PF" role="385vvn">
+          <property role="385vuF" value="BuildMpsLayout_ModuleXml_Constraints" />
+          <node concept="3u3nmq" id="PH" role="385v07">
+            <property role="3u3nmv" value="1224588814561913825" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="PG" role="39e2AY">
+          <ref role="39e2AS" node="7a" resolve="BuildMpsLayout_ModuleXml_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="P7" role="39e3Y0">
+        <ref role="39e2AK" to="ri0:13YBgBBSiJ$" resolve="BuildMpsLayout_PluginDescriptor_Constraints" />
+        <node concept="385nmt" id="PI" role="385vvn">
+          <property role="385vuF" value="BuildMpsLayout_PluginDescriptor_Constraints" />
+          <node concept="3u3nmq" id="PK" role="385v07">
+            <property role="3u3nmv" value="1224588814561913828" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="PJ" role="39e2AY">
+          <ref role="39e2AS" node="8h" resolve="BuildMpsLayout_PluginDescriptor_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="P8" role="39e3Y0">
+        <ref role="39e2AK" to="ri0:5HVSRHdVMJU" resolve="BuildMpsLayout_Plugin_Constraints" />
+        <node concept="385nmt" id="PL" role="385vvn">
+          <property role="385vuF" value="BuildMpsLayout_Plugin_Constraints" />
+          <node concept="3u3nmq" id="PN" role="385v07">
+            <property role="3u3nmv" value="6592112598314855418" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="PM" role="39e2AY">
+          <ref role="39e2AS" node="9o" resolve="BuildMpsLayout_Plugin_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="P9" role="39e3Y0">
+        <ref role="39e2AK" to="ri0:6Iq8148fFpP" resolve="BuildMps_Branding_Constraints" />
+        <node concept="385nmt" id="PO" role="385vvn">
+          <property role="385vuF" value="BuildMps_Branding_Constraints" />
+          <node concept="3u3nmq" id="PQ" role="385v07">
+            <property role="3u3nmv" value="7753544965996590709" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="PP" role="39e2AY">
+          <ref role="39e2AS" node="bv" resolve="BuildMps_Branding_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Pa" role="39e3Y0">
+        <ref role="39e2AK" to="ri0:13YBgBBSiJj" resolve="BuildMps_DevKitExportLanguage_Constraints" />
+        <node concept="385nmt" id="PR" role="385vvn">
+          <property role="385vuF" value="BuildMps_DevKitExportLanguage_Constraints" />
+          <node concept="3u3nmq" id="PT" role="385v07">
+            <property role="3u3nmv" value="1224588814561913811" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="PS" role="39e2AY">
+          <ref role="39e2AS" node="cV" resolve="BuildMps_DevKitExportLanguage_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Pb" role="39e3Y0">
+        <ref role="39e2AK" to="ri0:13YBgBBSiJm" resolve="BuildMps_DevKitExportSolution_Constraints" />
+        <node concept="385nmt" id="PU" role="385vvn">
+          <property role="385vuF" value="BuildMps_DevKitExportSolution_Constraints" />
+          <node concept="3u3nmq" id="PW" role="385v07">
+            <property role="3u3nmv" value="1224588814561913814" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="PV" role="39e2AY">
+          <ref role="39e2AS" node="e2" resolve="BuildMps_DevKitExportSolution_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Pc" role="39e3Y0">
+        <ref role="39e2AK" to="ri0:13YBgBBSiJg" resolve="BuildMps_DevKitRef_Constraints" />
+        <node concept="385nmt" id="PX" role="385vvn">
+          <property role="385vuF" value="BuildMps_DevKitRef_Constraints" />
+          <node concept="3u3nmq" id="PZ" role="385v07">
+            <property role="3u3nmv" value="1224588814561913808" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="PY" role="39e2AY">
+          <ref role="39e2AS" node="f9" resolve="BuildMps_DevKitRef_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Pd" role="39e3Y0">
+        <ref role="39e2AK" to="ri0:6DMiG0xraph" resolve="BuildMps_DevKit_Constraints" />
+        <node concept="385nmt" id="Q0" role="385vvn">
+          <property role="385vuF" value="BuildMps_DevKit_Constraints" />
+          <node concept="3u3nmq" id="Q2" role="385v07">
+            <property role="3u3nmv" value="7670275304420320849" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Q1" role="39e2AY">
+          <ref role="39e2AS" node="gg" resolve="BuildMps_DevKit_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Pe" role="39e3Y0">
+        <ref role="39e2AK" to="ri0:4LHG7OImfvA" resolve="BuildMps_Generator_Constraints" />
+        <node concept="385nmt" id="Q3" role="385vvn">
+          <property role="385vuF" value="BuildMps_Generator_Constraints" />
+          <node concept="3u3nmq" id="Q5" role="385v07">
+            <property role="3u3nmv" value="5507251971038967782" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Q4" role="39e2AY">
+          <ref role="39e2AS" node="iK" resolve="BuildMps_Generator_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Pf" role="39e3Y0">
+        <ref role="39e2AK" to="ri0:6DMiG0xraod" resolve="BuildMps_Group_Constraints" />
+        <node concept="385nmt" id="Q6" role="385vvn">
+          <property role="385vuF" value="BuildMps_Group_Constraints" />
+          <node concept="3u3nmq" id="Q8" role="385v07">
+            <property role="3u3nmv" value="7670275304420320781" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Q7" role="39e2AY">
+          <ref role="39e2AS" node="lg" resolve="BuildMps_Group_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Pg" role="39e3Y0">
+        <ref role="39e2AK" to="ri0:13YBgBBSiJH" resolve="BuildMps_IdeaPluginDependency_Constraints" />
+        <node concept="385nmt" id="Q9" role="385vvn">
+          <property role="385vuF" value="BuildMps_IdeaPluginDependency_Constraints" />
+          <node concept="3u3nmq" id="Qb" role="385v07">
+            <property role="3u3nmv" value="1224588814561913837" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Qa" role="39e2AY">
+          <ref role="39e2AS" node="nK" resolve="BuildMps_IdeaPluginDependency_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Ph" role="39e3Y0">
+        <ref role="39e2AK" to="ri0:3vXGXT8byJc" resolve="BuildMps_IdeaPluginGroupCustomModule_Constraints" />
+        <node concept="385nmt" id="Qc" role="385vvn">
+          <property role="385vuF" value="BuildMps_IdeaPluginGroupCustomModule_Constraints" />
+          <node concept="3u3nmq" id="Qe" role="385v07">
+            <property role="3u3nmv" value="4034578608468929484" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Qd" role="39e2AY">
+          <ref role="39e2AS" node="oR" resolve="BuildMps_IdeaPluginGroupCustomModule_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Pi" role="39e3Y0">
+        <ref role="39e2AK" to="ri0:13YBgBBSiJB" resolve="BuildMps_IdeaPluginGroup_Constraints" />
+        <node concept="385nmt" id="Qf" role="385vvn">
+          <property role="385vuF" value="BuildMps_IdeaPluginGroup_Constraints" />
+          <node concept="3u3nmq" id="Qh" role="385v07">
+            <property role="3u3nmv" value="1224588814561913831" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Qg" role="39e2AY">
+          <ref role="39e2AS" node="qL" resolve="BuildMps_IdeaPluginGroup_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Pj" role="39e3Y0">
+        <ref role="39e2AK" to="ri0:13YBgBBSiJE" resolve="BuildMps_IdeaPluginModule_Constraints" />
+        <node concept="385nmt" id="Qi" role="385vvn">
+          <property role="385vuF" value="BuildMps_IdeaPluginModule_Constraints" />
+          <node concept="3u3nmq" id="Qk" role="385v07">
+            <property role="3u3nmv" value="1224588814561913834" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Qj" role="39e2AY">
+          <ref role="39e2AS" node="rS" resolve="BuildMps_IdeaPluginModule_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Pk" role="39e3Y0">
+        <ref role="39e2AK" to="ri0:5HVSRHdVm9h" resolve="BuildMps_IdeaPlugin_Constraints" />
+        <node concept="385nmt" id="Ql" role="385vvn">
+          <property role="385vuF" value="BuildMps_IdeaPlugin_Constraints" />
+          <node concept="3u3nmq" id="Qn" role="385v07">
+            <property role="3u3nmv" value="6592112598314738257" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Qm" role="39e2AY">
+          <ref role="39e2AS" node="sZ" resolve="BuildMps_IdeaPlugin_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Pl" role="39e3Y0">
+        <ref role="39e2AK" to="ri0:6DMiG0xraoL" resolve="BuildMps_Language_Constraints" />
+        <node concept="385nmt" id="Qo" role="385vvn">
+          <property role="385vuF" value="BuildMps_Language_Constraints" />
+          <node concept="3u3nmq" id="Qq" role="385v07">
+            <property role="3u3nmv" value="7670275304420320817" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Qp" role="39e2AY">
+          <ref role="39e2AS" node="ue" resolve="BuildMps_Language_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Pm" role="39e3Y0">
+        <ref role="39e2AK" to="ri0:3HwLahs6gcT" resolve="BuildMps_ModuleDependencyExtendLanguage_Constraints" />
+        <node concept="385nmt" id="Qr" role="385vvn">
+          <property role="385vuF" value="BuildMps_ModuleDependencyExtendLanguage_Constraints" />
+          <node concept="3u3nmq" id="Qt" role="385v07">
+            <property role="3u3nmv" value="4278635856200794937" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Qs" role="39e2AY">
+          <ref role="39e2AS" node="wI" resolve="BuildMps_ModuleDependencyExtendLanguage_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Pn" role="39e3Y0">
+        <ref role="39e2AK" to="ri0:13YBgBBSg3l" resolve="BuildMps_ModuleDependencyOnDevKit_Constraints" />
+        <node concept="385nmt" id="Qu" role="385vvn">
+          <property role="385vuF" value="BuildMps_ModuleDependencyOnDevKit_Constraints" />
+          <node concept="3u3nmq" id="Qw" role="385v07">
+            <property role="3u3nmv" value="1224588814561902805" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Qv" role="39e2AY">
+          <ref role="39e2AS" node="zg" resolve="BuildMps_ModuleDependencyOnDevKit_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Po" role="39e3Y0">
+        <ref role="39e2AK" to="ri0:13YBgBBSg3o" resolve="BuildMps_ModuleDependencyOnJavaModule_Constraints" />
+        <node concept="385nmt" id="Qx" role="385vvn">
+          <property role="385vuF" value="BuildMps_ModuleDependencyOnJavaModule_Constraints" />
+          <node concept="3u3nmq" id="Qz" role="385v07">
+            <property role="3u3nmv" value="1224588814561902808" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Qy" role="39e2AY">
+          <ref role="39e2AS" node="$n" resolve="BuildMps_ModuleDependencyOnJavaModule_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Pp" role="39e3Y0">
+        <ref role="39e2AK" to="ri0:13YBgBBSg3r" resolve="BuildMps_ModuleDependencyOnModule_Constraints" />
+        <node concept="385nmt" id="Q$" role="385vvn">
+          <property role="385vuF" value="BuildMps_ModuleDependencyOnModule_Constraints" />
+          <node concept="3u3nmq" id="QA" role="385v07">
+            <property role="3u3nmv" value="1224588814561902811" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Q_" role="39e2AY">
+          <ref role="39e2AS" node="_u" resolve="BuildMps_ModuleDependencyOnModule_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Pq" role="39e3Y0">
+        <ref role="39e2AK" to="ri0:13YBgBBSiJc" resolve="BuildMps_ModuleDependencyUseLanguage_Constraints" />
+        <node concept="385nmt" id="QB" role="385vvn">
+          <property role="385vuF" value="BuildMps_ModuleDependencyUseLanguage_Constraints" />
+          <node concept="3u3nmq" id="QD" role="385v07">
+            <property role="3u3nmv" value="1224588814561913804" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="QC" role="39e2AY">
+          <ref role="39e2AS" node="Dm" resolve="BuildMps_ModuleDependencyUseLanguage_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Pr" role="39e3Y0">
+        <ref role="39e2AK" to="ri0:13YBgBBSg3g" resolve="BuildMps_ModuleSolutionRuntime_Constraints" />
+        <node concept="385nmt" id="QE" role="385vvn">
+          <property role="385vuF" value="BuildMps_ModuleSolutionRuntime_Constraints" />
+          <node concept="3u3nmq" id="QG" role="385v07">
+            <property role="3u3nmv" value="1224588814561902800" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="QF" role="39e2AY">
+          <ref role="39e2AS" node="Et" resolve="BuildMps_ModuleSolutionRuntime_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Ps" role="39e3Y0">
+        <ref role="39e2AK" to="ri0:6DMiG0xraoh" resolve="BuildMps_Solution_Constraints" />
+        <node concept="385nmt" id="QH" role="385vvn">
+          <property role="385vuF" value="BuildMps_Solution_Constraints" />
+          <node concept="3u3nmq" id="QJ" role="385v07">
+            <property role="3u3nmv" value="7670275304420320785" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="QI" role="39e2AY">
+          <ref role="39e2AS" node="F$" resolve="BuildMps_Solution_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Pt" role="39e3Y0">
+        <ref role="39e2AK" to="ri0:4OmJIVVMkr8" resolve="BuildMps_TipsPackage_Constraints" />
+        <node concept="385nmt" id="QK" role="385vvn">
+          <property role="385vuF" value="BuildMps_TipsPackage_Constraints" />
+          <node concept="3u3nmq" id="QM" role="385v07">
+            <property role="3u3nmv" value="5554837124043851464" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="QL" role="39e2AY">
+          <ref role="39e2AS" node="I4" resolve="BuildMps_TipsPackage_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Pu" role="39e3Y0">
+        <ref role="39e2AK" to="ri0:4Y6KxqRnQZs" resolve="BuildMps_Tips_Constraints" />
+        <node concept="385nmt" id="QN" role="385vvn">
+          <property role="385vuF" value="BuildMps_Tips_Constraints" />
+          <node concept="3u3nmq" id="QP" role="385v07">
+            <property role="3u3nmv" value="5730480978697088988" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="QO" role="39e2AY">
+          <ref role="39e2AS" node="JU" resolve="BuildMps_Tips_Constraints" />
+        </node>
+      </node>
+    </node>
+    <node concept="39e2AJ" id="P1" role="39e2AI">
       <property role="39e3Y2" value="aspectDescriptorClass" />
-      <node concept="39e2AG" id="P1" role="39e3Y0">
+      <node concept="39e2AG" id="QQ" role="39e3Y0">
         <property role="2mV_xN" value="true" />
-        <node concept="39e2AT" id="P2" role="39e2AY">
+        <node concept="39e2AT" id="QR" role="39e2AY">
           <ref role="39e2AS" node="LV" resolve="ConstraintsAspectDescriptor" />
         </node>
       </node>

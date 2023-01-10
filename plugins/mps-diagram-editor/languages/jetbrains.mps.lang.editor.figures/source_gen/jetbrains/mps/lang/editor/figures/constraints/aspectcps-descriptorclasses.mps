@@ -145,11 +145,17 @@
       </concept>
     </language>
     <language id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator">
+      <concept id="5808518347809715508" name="jetbrains.mps.lang.generator.structure.GeneratorDebug_InputNode" flags="nn" index="385nmt">
+        <property id="5808518347809748738" name="presentation" index="385vuF" />
+        <child id="5808518347809747118" name="node" index="385v07" />
+      </concept>
       <concept id="3864140621129707969" name="jetbrains.mps.lang.generator.structure.GeneratorDebug_Mappings" flags="nn" index="39dXUE">
         <child id="3864140621129713349" name="labels" index="39e2AI" />
       </concept>
       <concept id="3864140621129713351" name="jetbrains.mps.lang.generator.structure.GeneratorDebug_NodeMapEntry" flags="nn" index="39e2AG">
         <property id="5843998055530255671" name="isNewRoot" index="2mV_xN" />
+        <reference id="3864140621129713371" name="inputOrigin" index="39e2AK" />
+        <child id="5808518347809748862" name="inputNode" index="385vvn" />
         <child id="3864140621129713365" name="outputNode" index="39e2AY" />
       </concept>
       <concept id="3864140621129713348" name="jetbrains.mps.lang.generator.structure.GeneratorDebug_LabelEntry" flags="nn" index="39e2AJ">
@@ -158,6 +164,9 @@
       </concept>
       <concept id="3864140621129713362" name="jetbrains.mps.lang.generator.structure.GeneratorDebug_NodeRef" flags="nn" index="39e2AT">
         <reference id="3864140621129713363" name="node" index="39e2AS" />
+      </concept>
+      <concept id="3637169702552512264" name="jetbrains.mps.lang.generator.structure.ElementaryNodeId" flags="ng" index="3u3nmq">
+        <property id="3637169702552512269" name="nodeId" index="3u3nmv" />
       </concept>
     </language>
     <language id="df345b11-b8c7-4213-ac66-48d2a9b75d88" name="jetbrains.mps.baseLanguageInternal">
@@ -1723,10 +1732,37 @@
   </node>
   <node concept="39dXUE" id="6t">
     <node concept="39e2AJ" id="6u" role="39e2AI">
+      <property role="39e3Y2" value="constraintClass" />
+      <node concept="39e2AG" id="6w" role="39e3Y0">
+        <ref role="39e2AK" to="832r:WK6Z46D0Lv" resolve="ExternalViewFigureParameter_Constraints" />
+        <node concept="385nmt" id="6y" role="385vvn">
+          <property role="385vuF" value="ExternalViewFigureParameter_Constraints" />
+          <node concept="3u3nmq" id="6$" role="385v07">
+            <property role="3u3nmv" value="1094405431463513183" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="6z" role="39e2AY">
+          <ref role="39e2AS" node="1O" resolve="ExternalViewFigureParameter_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="6x" role="39e3Y0">
+        <ref role="39e2AK" to="832r:WK6Z46COzZ" resolve="ExternalViewFigure_Constraints" />
+        <node concept="385nmt" id="6_" role="385vvn">
+          <property role="385vuF" value="ExternalViewFigure_Constraints" />
+          <node concept="3u3nmq" id="6B" role="385v07">
+            <property role="3u3nmv" value="1094405431463463167" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="6A" role="39e2AY">
+          <ref role="39e2AS" node="3X" resolve="ExternalViewFigure_Constraints" />
+        </node>
+      </node>
+    </node>
+    <node concept="39e2AJ" id="6v" role="39e2AI">
       <property role="39e3Y2" value="aspectDescriptorClass" />
-      <node concept="39e2AG" id="6v" role="39e3Y0">
+      <node concept="39e2AG" id="6C" role="39e3Y0">
         <property role="2mV_xN" value="true" />
-        <node concept="39e2AT" id="6w" role="39e2AY">
+        <node concept="39e2AT" id="6D" role="39e2AY">
           <ref role="39e2AS" node="0" resolve="ConstraintsAspectDescriptor" />
         </node>
       </node>

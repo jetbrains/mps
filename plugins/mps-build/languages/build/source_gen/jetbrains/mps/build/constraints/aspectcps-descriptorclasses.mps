@@ -170,11 +170,17 @@
       </concept>
     </language>
     <language id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator">
+      <concept id="5808518347809715508" name="jetbrains.mps.lang.generator.structure.GeneratorDebug_InputNode" flags="nn" index="385nmt">
+        <property id="5808518347809748738" name="presentation" index="385vuF" />
+        <child id="5808518347809747118" name="node" index="385v07" />
+      </concept>
       <concept id="3864140621129707969" name="jetbrains.mps.lang.generator.structure.GeneratorDebug_Mappings" flags="nn" index="39dXUE">
         <child id="3864140621129713349" name="labels" index="39e2AI" />
       </concept>
       <concept id="3864140621129713351" name="jetbrains.mps.lang.generator.structure.GeneratorDebug_NodeMapEntry" flags="nn" index="39e2AG">
         <property id="5843998055530255671" name="isNewRoot" index="2mV_xN" />
+        <reference id="3864140621129713371" name="inputOrigin" index="39e2AK" />
+        <child id="5808518347809748862" name="inputNode" index="385vvn" />
         <child id="3864140621129713365" name="outputNode" index="39e2AY" />
       </concept>
       <concept id="3864140621129713348" name="jetbrains.mps.lang.generator.structure.GeneratorDebug_LabelEntry" flags="nn" index="39e2AJ">
@@ -183,6 +189,9 @@
       </concept>
       <concept id="3864140621129713362" name="jetbrains.mps.lang.generator.structure.GeneratorDebug_NodeRef" flags="nn" index="39e2AT">
         <reference id="3864140621129713363" name="node" index="39e2AS" />
+      </concept>
+      <concept id="3637169702552512264" name="jetbrains.mps.lang.generator.structure.ElementaryNodeId" flags="ng" index="3u3nmq">
+        <property id="3637169702552512269" name="nodeId" index="3u3nmv" />
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
@@ -14057,10 +14066,409 @@
   </node>
   <node concept="39dXUE" id="UL">
     <node concept="39e2AJ" id="UM" role="39e2AI">
+      <property role="39e3Y2" value="constraintClass" />
+      <node concept="39e2AG" id="UO" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:34DbxDwRut6" resolve="BuildAspect_Constraints" />
+        <node concept="385nmt" id="Vl" role="385vvn">
+          <property role="385vuF" value="BuildAspect_Constraints" />
+          <node concept="3u3nmq" id="Vn" role="385v07">
+            <property role="3u3nmv" value="3542413272732788550" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Vm" role="39e2AY">
+          <ref role="39e2AS" node="0" resolve="BuildAspect_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="UP" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:3unV0cvB3$V" resolve="BuildCompositePath_Constraints" />
+        <node concept="385nmt" id="Vo" role="385vvn">
+          <property role="385vuF" value="BuildCompositePath_Constraints" />
+          <node concept="3u3nmq" id="Vq" role="385v07">
+            <property role="3u3nmv" value="4005929891728734523" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Vp" role="39e2AY">
+          <ref role="39e2AS" node="1u" resolve="BuildCompositePath_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="UQ" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:6eCuTcwOX2E" resolve="BuildExternalLayoutDependency_Constraints" />
+        <node concept="385nmt" id="Vr" role="385vvn">
+          <property role="385vuF" value="BuildExternalLayoutDependency_Constraints" />
+          <node concept="3u3nmq" id="Vt" role="385v07">
+            <property role="3u3nmv" value="7181125477683417258" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Vs" role="39e2AY">
+          <ref role="39e2AS" node="3r" resolve="BuildExternalLayoutDependency_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="UR" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:6eCuTcwOczS" resolve="BuildExternalLayout_Constraints" />
+        <node concept="385nmt" id="Vu" role="385vvn">
+          <property role="385vuF" value="BuildExternalLayout_Constraints" />
+          <node concept="3u3nmq" id="Vw" role="385v07">
+            <property role="3u3nmv" value="7181125477683218680" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Vv" role="39e2AY">
+          <ref role="39e2AS" node="4y" resolve="BuildExternalLayout_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="US" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:2fQZjorRIeV" resolve="BuildLayout_CompileOutputOf_Constraints" />
+        <node concept="385nmt" id="Vx" role="385vvn">
+          <property role="385vuF" value="BuildLayout_CompileOutputOf_Constraints" />
+          <node concept="3u3nmq" id="Vz" role="385v07">
+            <property role="3u3nmv" value="2591537044435952571" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Vy" role="39e2AY">
+          <ref role="39e2AS" node="7x" resolve="BuildLayout_CompileOutputOf_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="UT" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:4lbsKRp2rj8" resolve="BuildLayout_Constraints" />
+        <node concept="385nmt" id="V$" role="385vvn">
+          <property role="385vuF" value="BuildLayout_Constraints" />
+          <node concept="3u3nmq" id="VA" role="385v07">
+            <property role="3u3nmv" value="4993211115183387848" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="V_" role="39e2AY">
+          <ref role="39e2AS" node="9R" resolve="BuildLayout_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="UU" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:6eCuTcwOLH1" resolve="BuildLayout_FileStub_Constraints" />
+        <node concept="385nmt" id="VB" role="385vvn">
+          <property role="385vuF" value="BuildLayout_FileStub_Constraints" />
+          <node concept="3u3nmq" id="VD" role="385v07">
+            <property role="3u3nmv" value="7181125477683370817" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="VC" role="39e2AY">
+          <ref role="39e2AS" node="bp" resolve="BuildLayout_FileStub_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="UV" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:2oE1c2bmP7S" resolve="BuildLayout_File_Constraints" />
+        <node concept="385nmt" id="VE" role="385vvn">
+          <property role="385vuF" value="BuildLayout_File_Constraints" />
+          <node concept="3u3nmq" id="VG" role="385v07">
+            <property role="3u3nmv" value="2750015747481358840" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="VF" role="39e2AY">
+          <ref role="39e2AS" node="cV" resolve="BuildLayout_File_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="UW" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:6L3dtXewSTd" resolve="BuildLayout_Filemode_Constraints" />
+        <node concept="385nmt" id="VH" role="385vvn">
+          <property role="385vuF" value="BuildLayout_Filemode_Constraints" />
+          <node concept="3u3nmq" id="VJ" role="385v07">
+            <property role="3u3nmv" value="7801138212747054669" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="VI" role="39e2AY">
+          <ref role="39e2AS" node="ew" resolve="BuildLayout_Filemode_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="UX" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:6Iq8148gLJy" resolve="BuildLayout_FilesOf_Constraints" />
+        <node concept="385nmt" id="VK" role="385vvn">
+          <property role="385vuF" value="BuildLayout_FilesOf_Constraints" />
+          <node concept="3u3nmq" id="VM" role="385v07">
+            <property role="3u3nmv" value="7753544965996878818" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="VL" role="39e2AY">
+          <ref role="39e2AS" node="ge" resolve="BuildLayout_FilesOf_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="UY" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:4RsV8qJC0pa" resolve="BuildLayout_ImportContent_Constraints" />
+        <node concept="385nmt" id="VN" role="385vvn">
+          <property role="385vuF" value="BuildLayout_ImportContent_Constraints" />
+          <node concept="3u3nmq" id="VP" role="385v07">
+            <property role="3u3nmv" value="5610619299013068362" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="VO" role="39e2AY">
+          <ref role="39e2AS" node="hl" resolve="BuildLayout_ImportContent_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="UZ" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:IFRVVI4U7O" resolve="BuildLayout_Import_Constraints" />
+        <node concept="385nmt" id="VQ" role="385vvn">
+          <property role="385vuF" value="BuildLayout_Import_Constraints" />
+          <node concept="3u3nmq" id="VS" role="385v07">
+            <property role="3u3nmv" value="841011766565773812" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="VR" role="39e2AY">
+          <ref role="39e2AS" node="jq" resolve="BuildLayout_Import_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="V0" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:6uJjF_N_i1u" resolve="BuildLayout_JarManifest_Constraints" />
+        <node concept="385nmt" id="VT" role="385vvn">
+          <property role="385vuF" value="BuildLayout_JarManifest_Constraints" />
+          <node concept="3u3nmq" id="VV" role="385v07">
+            <property role="3u3nmv" value="7471276865246011486" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="VU" role="39e2AY">
+          <ref role="39e2AS" node="l7" resolve="BuildLayout_JarManifest_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="V1" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:7ro1ZztCjMX" resolve="BuildLayout_JarManifest_Section_Constraints" />
+        <node concept="385nmt" id="VW" role="385vvn">
+          <property role="385vuF" value="BuildLayout_JarManifest_Section_Constraints" />
+          <node concept="3u3nmq" id="VY" role="385v07">
+            <property role="3u3nmv" value="8563603456896613565" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="VX" role="39e2AY">
+          <ref role="39e2AS" node="mT" resolve="BuildLayout_JarManifest_Section_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="V2" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:79gE8jhMyo7" resolve="BuildLayout_NamedContainer_Constraints" />
+        <node concept="385nmt" id="VZ" role="385vvn">
+          <property role="385vuF" value="BuildLayout_NamedContainer_Constraints" />
+          <node concept="3u3nmq" id="W1" role="385v07">
+            <property role="3u3nmv" value="8237269006869472775" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="W0" role="39e2AY">
+          <ref role="39e2AS" node="on" resolve="BuildLayout_NamedContainer_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="V3" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:7aqYYYFvA3Q" resolve="BuildProjectDependency_Constraints" />
+        <node concept="385nmt" id="W2" role="385vvn">
+          <property role="385vuF" value="BuildProjectDependency_Constraints" />
+          <node concept="3u3nmq" id="W4" role="385v07">
+            <property role="3u3nmv" value="8258189873530167542" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="W3" role="39e2AY">
+          <ref role="39e2AS" node="pD" resolve="BuildProjectDependency_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="V4" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:6qcrfIJFCen" resolve="BuildSourceMacroRelativePath_Constraints" />
+        <node concept="385nmt" id="W5" role="385vvn">
+          <property role="385vuF" value="BuildSourceMacroRelativePath_Constraints" />
+          <node concept="3u3nmq" id="W7" role="385v07">
+            <property role="3u3nmv" value="7389400916848182167" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="W6" role="39e2AY">
+          <ref role="39e2AS" node="qK" resolve="BuildSourceMacroRelativePath_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="V5" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:15RAxQX0xy1" resolve="BuildSourcePath_Constraints" />
+        <node concept="385nmt" id="W8" role="385vvn">
+          <property role="385vuF" value="BuildSourcePath_Constraints" />
+          <node concept="3u3nmq" id="Wa" role="385v07">
+            <property role="3u3nmv" value="1258644073389103233" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="W9" role="39e2AY">
+          <ref role="39e2AS" node="rR" resolve="BuildSourcePath_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="V6" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:15RAxQX0x_r" resolve="BuildSource_JavaClassFolder_Constraints" />
+        <node concept="385nmt" id="Wb" role="385vvn">
+          <property role="385vuF" value="BuildSource_JavaClassFolder_Constraints" />
+          <node concept="3u3nmq" id="Wd" role="385v07">
+            <property role="3u3nmv" value="1258644073389103451" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Wc" role="39e2AY">
+          <ref role="39e2AS" node="si" resolve="BuildSource_JavaClassFolder_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="V7" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:1lMM4owG7ds" resolve="BuildSource_JavaDependencyLibrary_Constraints" />
+        <node concept="385nmt" id="We" role="385vvn">
+          <property role="385vuF" value="BuildSource_JavaDependencyLibrary_Constraints" />
+          <node concept="3u3nmq" id="Wg" role="385v07">
+            <property role="3u3nmv" value="1545517825663202140" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Wf" role="39e2AY">
+          <ref role="39e2AS" node="tO" resolve="BuildSource_JavaDependencyLibrary_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="V8" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:4RsV8qJH_D7" resolve="BuildSource_JavaExternalJarFolderRef_Constraints" />
+        <node concept="385nmt" id="Wh" role="385vvn">
+          <property role="385vuF" value="BuildSource_JavaExternalJarFolderRef_Constraints" />
+          <node concept="3u3nmq" id="Wj" role="385v07">
+            <property role="3u3nmv" value="5610619299014531655" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Wi" role="39e2AY">
+          <ref role="39e2AS" node="uV" resolve="BuildSource_JavaExternalJarFolderRef_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="V9" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:4RsV8qJGJpe" resolve="BuildSource_JavaExternalJarRef_Constraints" />
+        <node concept="385nmt" id="Wk" role="385vvn">
+          <property role="385vuF" value="BuildSource_JavaExternalJarRef_Constraints" />
+          <node concept="3u3nmq" id="Wm" role="385v07">
+            <property role="3u3nmv" value="5610619299014309454" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Wl" role="39e2AY">
+          <ref role="39e2AS" node="wI" resolve="BuildSource_JavaExternalJarRef_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Va" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:5KZfyKsVhw7" resolve="BuildSource_JavaLibrary_Constraints" />
+        <node concept="385nmt" id="Wn" role="385vvn">
+          <property role="385vuF" value="BuildSource_JavaLibrary_Constraints" />
+          <node concept="3u3nmq" id="Wp" role="385v07">
+            <property role="3u3nmv" value="6647099934206924807" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Wo" role="39e2AY">
+          <ref role="39e2AS" node="yx" resolve="BuildSource_JavaLibrary_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Vb" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:1s8OwvM5SHu" resolve="BuildSource_JavaModuleOptions_Constraints" />
+        <node concept="385nmt" id="Wq" role="385vvn">
+          <property role="385vuF" value="BuildSource_JavaModuleOptions_Constraints" />
+          <node concept="3u3nmq" id="Ws" role="385v07">
+            <property role="3u3nmv" value="1659807394254261086" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Wr" role="39e2AY">
+          <ref role="39e2AS" node="_M" resolve="BuildSource_JavaModuleOptions_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Vc" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:5KZfyKsV9gD" resolve="BuildSource_JavaModule_Constraints" />
+        <node concept="385nmt" id="Wt" role="385vvn">
+          <property role="385vuF" value="BuildSource_JavaModule_Constraints" />
+          <node concept="3u3nmq" id="Wv" role="385v07">
+            <property role="3u3nmv" value="6647099934206891049" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Wu" role="39e2AY">
+          <ref role="39e2AS" node="AT" resolve="BuildSource_JavaModule_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Vd" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:NvWe6DqvvW" resolve="BuildSource_JavaOptions_Constraints" />
+        <node concept="385nmt" id="Ww" role="385vvn">
+          <property role="385vuF" value="BuildSource_JavaOptions_Constraints" />
+          <node concept="3u3nmq" id="Wy" role="385v07">
+            <property role="3u3nmv" value="927724900262213628" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Wx" role="39e2AY">
+          <ref role="39e2AS" node="Ea" resolve="BuildSource_JavaOptions_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Ve" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:4zlO3QTaEjt" resolve="BuildSource_JavaSources_Constraints" />
+        <node concept="385nmt" id="Wz" role="385vvn">
+          <property role="385vuF" value="BuildSource_JavaSources_Constraints" />
+          <node concept="3u3nmq" id="W_" role="385v07">
+            <property role="3u3nmv" value="5248329904288343261" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="W$" role="39e2AY">
+          <ref role="39e2AS" node="Hv" resolve="BuildSource_JavaSources_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Vf" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:3NagsOfUCJd" resolve="BuildStringPart_Constraints" />
+        <node concept="385nmt" id="WA" role="385vvn">
+          <property role="385vuF" value="BuildStringPart_Constraints" />
+          <node concept="3u3nmq" id="WC" role="385v07">
+            <property role="3u3nmv" value="4380385936562359245" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="WB" role="39e2AY">
+          <ref role="39e2AS" node="HI" resolve="BuildStringPart_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Vg" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:4gdvEeQz4Pt" resolve="BuildTextStringPart_Constraints" />
+        <node concept="385nmt" id="WD" role="385vvn">
+          <property role="385vuF" value="BuildTextStringPart_Constraints" />
+          <node concept="3u3nmq" id="WF" role="385v07">
+            <property role="3u3nmv" value="4903714810883755357" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="WE" role="39e2AY">
+          <ref role="39e2AS" node="HX" resolve="BuildTextStringPart_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Vh" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:4gdvEeQyUx6" resolve="BuildVarRefStringPart_Constraints" />
+        <node concept="385nmt" id="WG" role="385vvn">
+          <property role="385vuF" value="BuildVarRefStringPart_Constraints" />
+          <node concept="3u3nmq" id="WI" role="385v07">
+            <property role="3u3nmv" value="4903714810883713094" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="WH" role="39e2AY">
+          <ref role="39e2AS" node="KR" resolve="BuildVarRefStringPart_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Vi" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:d_WKSiPAS1" resolve="BuildVariableMacroInitValue_Constraints" />
+        <node concept="385nmt" id="WJ" role="385vvn">
+          <property role="385vuF" value="BuildVariableMacroInitValue_Constraints" />
+          <node concept="3u3nmq" id="WL" role="385v07">
+            <property role="3u3nmv" value="244868996532694529" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="WK" role="39e2AY">
+          <ref role="39e2AS" node="LY" resolve="BuildVariableMacroInitValue_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Vj" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:d_WKSiOGfM" resolve="BuildVariableMacroInitWithDate_Constraints" />
+        <node concept="385nmt" id="WM" role="385vvn">
+          <property role="385vuF" value="BuildVariableMacroInitWithDate_Constraints" />
+          <node concept="3u3nmq" id="WO" role="385v07">
+            <property role="3u3nmv" value="244868996532454386" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="WN" role="39e2AY">
+          <ref role="39e2AS" node="Ns" resolve="BuildVariableMacroInitWithDate_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Vk" role="39e3Y0">
+        <ref role="39e2AK" to="a1zn:5$qwiKF6jbo" resolve="BuildVariableMacro_Constraints" />
+        <node concept="385nmt" id="WP" role="385vvn">
+          <property role="385vuF" value="BuildVariableMacro_Constraints" />
+          <node concept="3u3nmq" id="WR" role="385v07">
+            <property role="3u3nmv" value="6420586245471679192" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="WQ" role="39e2AY">
+          <ref role="39e2AS" node="Pr" resolve="BuildVariableMacro_Constraints" />
+        </node>
+      </node>
+    </node>
+    <node concept="39e2AJ" id="UN" role="39e2AI">
       <property role="39e3Y2" value="aspectDescriptorClass" />
-      <node concept="39e2AG" id="UN" role="39e3Y0">
+      <node concept="39e2AG" id="WS" role="39e3Y0">
         <property role="2mV_xN" value="true" />
-        <node concept="39e2AT" id="UO" role="39e2AY">
+        <node concept="39e2AT" id="WT" role="39e2AY">
           <ref role="39e2AS" node="Rl" resolve="ConstraintsAspectDescriptor" />
         </node>
       </node>

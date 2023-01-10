@@ -153,11 +153,17 @@
       </concept>
     </language>
     <language id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator">
+      <concept id="5808518347809715508" name="jetbrains.mps.lang.generator.structure.GeneratorDebug_InputNode" flags="nn" index="385nmt">
+        <property id="5808518347809748738" name="presentation" index="385vuF" />
+        <child id="5808518347809747118" name="node" index="385v07" />
+      </concept>
       <concept id="3864140621129707969" name="jetbrains.mps.lang.generator.structure.GeneratorDebug_Mappings" flags="nn" index="39dXUE">
         <child id="3864140621129713349" name="labels" index="39e2AI" />
       </concept>
       <concept id="3864140621129713351" name="jetbrains.mps.lang.generator.structure.GeneratorDebug_NodeMapEntry" flags="nn" index="39e2AG">
         <property id="5843998055530255671" name="isNewRoot" index="2mV_xN" />
+        <reference id="3864140621129713371" name="inputOrigin" index="39e2AK" />
+        <child id="5808518347809748862" name="inputNode" index="385vvn" />
         <child id="3864140621129713365" name="outputNode" index="39e2AY" />
       </concept>
       <concept id="3864140621129713348" name="jetbrains.mps.lang.generator.structure.GeneratorDebug_LabelEntry" flags="nn" index="39e2AJ">
@@ -166,6 +172,9 @@
       </concept>
       <concept id="3864140621129713362" name="jetbrains.mps.lang.generator.structure.GeneratorDebug_NodeRef" flags="nn" index="39e2AT">
         <reference id="3864140621129713363" name="node" index="39e2AS" />
+      </concept>
+      <concept id="3637169702552512264" name="jetbrains.mps.lang.generator.structure.ElementaryNodeId" flags="ng" index="3u3nmq">
+        <property id="3637169702552512269" name="nodeId" index="3u3nmv" />
       </concept>
     </language>
     <language id="df345b11-b8c7-4213-ac66-48d2a9b75d88" name="jetbrains.mps.baseLanguageInternal">
@@ -3621,10 +3630,97 @@
   </node>
   <node concept="39dXUE" id="e$">
     <node concept="39e2AJ" id="e_" role="39e2AI">
+      <property role="39e3Y2" value="constraintClass" />
+      <node concept="39e2AG" id="eB" role="39e3Y0">
+        <ref role="39e2AK" to="tpf6:6suuiWXK0xa" resolve="GenerationContextOp_ContextVarRef_Constraints" />
+        <node concept="385nmt" id="eI" role="385vvn">
+          <property role="385vuF" value="GenerationContextOp_ContextVarRef_Constraints" />
+          <node concept="3u3nmq" id="eK" role="385v07">
+            <property role="3u3nmv" value="7430509679014316106" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="eJ" role="39e2AY">
+          <ref role="39e2AS" node="10" resolve="GenerationContextOp_ContextVarRef_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="eC" role="39e3Y0">
+        <ref role="39e2AK" to="tpf6:2bdIC8aAEXn" resolve="GenerationContextOp_GenParameterRef_Constraints" />
+        <node concept="385nmt" id="eL" role="385vvn">
+          <property role="385vuF" value="GenerationContextOp_GenParameterRef_Constraints" />
+          <node concept="3u3nmq" id="eN" role="385v07">
+            <property role="3u3nmv" value="2507865635201658711" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="eM" role="39e2AY">
+          <ref role="39e2AS" node="2Q" resolve="GenerationContextOp_GenParameterRef_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="eD" role="39e3Y0">
+        <ref role="39e2AK" to="tpf6:1xCtdgeQJeO" resolve="GenerationContextOp_LinkPatternRef_Constraints" />
+        <node concept="385nmt" id="eO" role="385vvn">
+          <property role="385vuF" value="GenerationContextOp_LinkPatternRef_Constraints" />
+          <node concept="3u3nmq" id="eQ" role="385v07">
+            <property role="3u3nmv" value="1758784108619297716" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="eP" role="39e2AY">
+          <ref role="39e2AS" node="4o" resolve="GenerationContextOp_LinkPatternRef_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="eE" role="39e3Y0">
+        <ref role="39e2AK" to="tpf6:3YMQ4vlnXNQ" resolve="GenerationContextOp_NodePatternRef_Constraints" />
+        <node concept="385nmt" id="eR" role="385vvn">
+          <property role="385vuF" value="GenerationContextOp_NodePatternRef_Constraints" />
+          <node concept="3u3nmq" id="eT" role="385v07">
+            <property role="3u3nmv" value="4589968773278063862" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="eS" role="39e2AY">
+          <ref role="39e2AS" node="6n" resolve="GenerationContextOp_NodePatternRef_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="eF" role="39e3Y0">
+        <ref role="39e2AK" to="tpf6:4w6U_Q4Qw1G" resolve="GenerationContextOp_ParameterRef_Constraints" />
+        <node concept="385nmt" id="eU" role="385vvn">
+          <property role="385vuF" value="GenerationContextOp_ParameterRef_Constraints" />
+          <node concept="3u3nmq" id="eW" role="385v07">
+            <property role="3u3nmv" value="5190093307972812908" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="eV" role="39e2AY">
+          <ref role="39e2AS" node="8m" resolve="GenerationContextOp_ParameterRef_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="eG" role="39e3Y0">
+        <ref role="39e2AK" to="tpf6:1xCtdgeQJfN" resolve="GenerationContextOp_PropertyPatternRef_Constraints" />
+        <node concept="385nmt" id="eX" role="385vvn">
+          <property role="385vuF" value="GenerationContextOp_PropertyPatternRef_Constraints" />
+          <node concept="3u3nmq" id="eZ" role="385v07">
+            <property role="3u3nmv" value="1758784108619297779" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="eY" role="39e2AY">
+          <ref role="39e2AS" node="ah" resolve="GenerationContextOp_PropertyPatternRef_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="eH" role="39e3Y0">
+        <ref role="39e2AK" to="tpf6:UesZ_o1Ldk" resolve="GenerationContextOp_VarRef2_Constraints" />
+        <node concept="385nmt" id="f0" role="385vvn">
+          <property role="385vuF" value="GenerationContextOp_VarRef2_Constraints" />
+          <node concept="3u3nmq" id="f2" role="385v07">
+            <property role="3u3nmv" value="1048903277984813908" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="f1" role="39e2AY">
+          <ref role="39e2AS" node="cg" resolve="GenerationContextOp_VarRef2_Constraints" />
+        </node>
+      </node>
+    </node>
+    <node concept="39e2AJ" id="eA" role="39e2AI">
       <property role="39e3Y2" value="aspectDescriptorClass" />
-      <node concept="39e2AG" id="eA" role="39e3Y0">
+      <node concept="39e2AG" id="f3" role="39e3Y0">
         <property role="2mV_xN" value="true" />
-        <node concept="39e2AT" id="eB" role="39e2AY">
+        <node concept="39e2AT" id="f4" role="39e2AY">
           <ref role="39e2AS" node="0" resolve="ConstraintsAspectDescriptor" />
         </node>
       </node>

@@ -28,9 +28,9 @@
       <node id="1218968276327" at="62,55,63,21" concept="6" />
       <node id="1218968276327" at="64,7,65,18" concept="6" />
       <node id="1218968276355" at="68,93,69,172" concept="6" />
-      <node id="1218968276327" at="76,48,77,56" concept="6" />
-      <node id="1218968276327" at="83,0,84,0" concept="7" trace="IClassifier$BZ" />
-      <node id="1218968276327" at="87,0,88,0" concept="7" trace="classifier$FItT" />
+      <node id="1218968276327" at="74,48,75,56" concept="6" />
+      <node id="1218968276327" at="81,0,82,0" concept="7" trace="IClassifier$BZ" />
+      <node id="1218968276327" at="85,0,86,0" concept="7" trace="classifier$FItT" />
       <node id="1218968276327" at="46,0,48,0" concept="0" trace="IntentionImplementation#()V" />
       <node id="1218968276327" at="25,0,28,0" concept="0" trace="CreateReferenceOnClassifier_Intention#()V" />
       <node id="1218968276327" at="39,99,42,5" concept="3" />
@@ -39,7 +39,7 @@
       <node id="1218968276327" at="29,0,33,0" concept="4" trace="getPresentation#()Ljava/lang/String;" />
       <node id="1218968276327" at="34,0,38,0" concept="4" trace="isSurroundWith#()Z" />
       <node id="1218968276327" at="49,0,53,0" concept="4" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/lang/String;" />
-      <node id="1218968276327" at="75,0,79,0" concept="4" trace="getDescriptor#()Ljetbrains/mps/openapi/intentions/IntentionDescriptor;" />
+      <node id="1218968276327" at="73,0,77,0" concept="4" trace="getDescriptor#()Ljetbrains/mps/openapi/intentions/IntentionDescriptor;" />
       <node id="1218968276327" at="54,0,59,0" concept="4" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="1218968276327" at="39,0,45,0" concept="4" trace="instances#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/util/Collection;" />
       <node id="1218968276327" at="60,0,67,0" concept="4" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Z" />
@@ -51,7 +51,7 @@
       <scope id="1218968276329" at="50,87,51,54" />
       <scope id="1218968276327" at="62,55,63,21" />
       <scope id="1218968276354" at="68,93,69,172" />
-      <scope id="1218968276327" at="76,48,77,56" />
+      <scope id="1218968276327" at="74,48,75,56" />
       <scope id="1218968276327" at="46,0,48,0" />
       <scope id="1218968276333" at="55,78,57,75">
         <var name="outerConcept" id="1218968276335" />
@@ -69,7 +69,7 @@
         <var name="node" id="1218968276327" />
       </scope>
       <scope id="1218968276327" at="61,86,65,18" />
-      <scope id="1218968276327" at="75,0,79,0" />
+      <scope id="1218968276327" at="73,0,77,0" />
       <scope id="1218968276327" at="54,0,59,0">
         <var name="editorContext" id="1218968276327" />
         <var name="node" id="1218968276327" />
@@ -82,10 +82,10 @@
         <var name="editorContext" id="1218968276327" />
         <var name="node" id="1218968276327" />
       </scope>
-      <unit id="1218968276327" at="82,0,85,0" name="jetbrains.mps.baseLanguage.classifiers.intentions.CreateReferenceOnClassifier_Intention$CONCEPTS" />
-      <unit id="1218968276327" at="86,0,89,0" name="jetbrains.mps.baseLanguage.classifiers.intentions.CreateReferenceOnClassifier_Intention$LINKS" />
-      <unit id="1218968276327" at="45,0,81,0" name="jetbrains.mps.baseLanguage.classifiers.intentions.CreateReferenceOnClassifier_Intention$IntentionImplementation" />
-      <unit id="1218968276327" at="22,0,90,0" name="jetbrains.mps.baseLanguage.classifiers.intentions.CreateReferenceOnClassifier_Intention" />
+      <unit id="1218968276327" at="80,0,83,0" name="jetbrains.mps.baseLanguage.classifiers.intentions.CreateReferenceOnClassifier_Intention$CONCEPTS" />
+      <unit id="1218968276327" at="84,0,87,0" name="jetbrains.mps.baseLanguage.classifiers.intentions.CreateReferenceOnClassifier_Intention$LINKS" />
+      <unit id="1218968276327" at="45,0,79,0" name="jetbrains.mps.baseLanguage.classifiers.intentions.CreateReferenceOnClassifier_Intention$IntentionImplementation" />
+      <unit id="1218968276327" at="22,0,88,0" name="jetbrains.mps.baseLanguage.classifiers.intentions.CreateReferenceOnClassifier_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
       <node id="1218968276327" at="37,47,38,70" concept="1" />

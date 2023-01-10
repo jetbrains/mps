@@ -147,11 +147,17 @@
       </concept>
     </language>
     <language id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator">
+      <concept id="5808518347809715508" name="jetbrains.mps.lang.generator.structure.GeneratorDebug_InputNode" flags="nn" index="385nmt">
+        <property id="5808518347809748738" name="presentation" index="385vuF" />
+        <child id="5808518347809747118" name="node" index="385v07" />
+      </concept>
       <concept id="3864140621129707969" name="jetbrains.mps.lang.generator.structure.GeneratorDebug_Mappings" flags="nn" index="39dXUE">
         <child id="3864140621129713349" name="labels" index="39e2AI" />
       </concept>
       <concept id="3864140621129713351" name="jetbrains.mps.lang.generator.structure.GeneratorDebug_NodeMapEntry" flags="nn" index="39e2AG">
         <property id="5843998055530255671" name="isNewRoot" index="2mV_xN" />
+        <reference id="3864140621129713371" name="inputOrigin" index="39e2AK" />
+        <child id="5808518347809748862" name="inputNode" index="385vvn" />
         <child id="3864140621129713365" name="outputNode" index="39e2AY" />
       </concept>
       <concept id="3864140621129713348" name="jetbrains.mps.lang.generator.structure.GeneratorDebug_LabelEntry" flags="nn" index="39e2AJ">
@@ -160,6 +166,9 @@
       </concept>
       <concept id="3864140621129713362" name="jetbrains.mps.lang.generator.structure.GeneratorDebug_NodeRef" flags="nn" index="39e2AT">
         <reference id="3864140621129713363" name="node" index="39e2AS" />
+      </concept>
+      <concept id="3637169702552512264" name="jetbrains.mps.lang.generator.structure.ElementaryNodeId" flags="ng" index="3u3nmq">
+        <property id="3637169702552512269" name="nodeId" index="3u3nmv" />
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
@@ -1205,10 +1214,37 @@
   </node>
   <node concept="39dXUE" id="4g">
     <node concept="39e2AJ" id="4h" role="39e2AI">
+      <property role="39e3Y2" value="constraintClass" />
+      <node concept="39e2AG" id="4j" role="39e3Y0">
+        <ref role="39e2AK" to="4i46:6$bUG5eHQ1H" resolve="CellModel_Checkbox_Constraints" />
+        <node concept="385nmt" id="4l" role="385vvn">
+          <property role="385vuF" value="CellModel_Checkbox_Constraints" />
+          <node concept="3u3nmq" id="4n" role="385v07">
+            <property role="3u3nmv" value="7569401714696478829" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="4m" role="39e2AY">
+          <ref role="39e2AS" node="0" resolve="CellModel_Checkbox_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="4k" role="39e3Y0">
+        <ref role="39e2AK" to="4i46:itlittRexx" resolve="CheckboxUI_Text_Constraints" />
+        <node concept="385nmt" id="4o" role="385vvn">
+          <property role="385vuF" value="CheckboxUI_Text_Constraints" />
+          <node concept="3u3nmq" id="4q" role="385v07">
+            <property role="3u3nmv" value="332515575062128737" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="4p" role="39e2AY">
+          <ref role="39e2AS" node="1S" resolve="CheckboxUI_Text_Constraints" />
+        </node>
+      </node>
+    </node>
+    <node concept="39e2AJ" id="4i" role="39e2AI">
       <property role="39e3Y2" value="aspectDescriptorClass" />
-      <node concept="39e2AG" id="4i" role="39e3Y0">
+      <node concept="39e2AG" id="4r" role="39e3Y0">
         <property role="2mV_xN" value="true" />
-        <node concept="39e2AT" id="4j" role="39e2AY">
+        <node concept="39e2AT" id="4s" role="39e2AY">
           <ref role="39e2AS" node="3I" resolve="ConstraintsAspectDescriptor" />
         </node>
       </node>
