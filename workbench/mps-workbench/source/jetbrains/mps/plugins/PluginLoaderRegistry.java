@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -70,6 +70,7 @@ import java.util.ServiceLoader;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toCollection;
@@ -88,30 +89,13 @@ public class PluginLoaderRegistry implements Disposable {
   private final ClassLoaderManager myClassLoaderManager;
   private final ModelAccess myModelAccess;
 
-  private final DeployListener myClassesListener = new SchedulingUpdateListener();
+  private final SchedulingUpdateListener myClassesListener = new SchedulingUpdateListener();
   private final Set<PluginContributor> myCurrentContributors = new LinkedHashSet<>();
   private final Set<PluginLoader> myCurrentLoaders = new LinkedHashSet<>();
   private final List<PluginReloadingListener> myReloadingListeners = new CopyOnWriteArrayList<>();
 
   private final AtomicBoolean myUpdateIsScheduledInEDT = new AtomicBoolean(false);
   private final AtomicBoolean myAppInitialized = new AtomicBoolean();
-
-  private final ModuleDeploymentListener myModuleDeploymentListener = new ModuleDeploymentListener() {
-    @Override
-    public void deploymentStateChanged(@NotNull ModuleDeploymentChange change) {
-      System.out.println("deploymentStateChanged>>>");
-      System.out.print("\tadded:");
-      change.forEachAdded(System.out::print);
-      System.out.println();
-      System.out.print("\tremoved:");
-      change.forEachRemoved(System.out::print);
-      System.out.println();
-      System.out.print("\treloaded:");
-      change.forEachReloaded(System.out::print);
-      System.out.println();
-      System.out.println("<<<deploymentStateChanged");
-    }
-  };
 
   public static PluginLoaderRegistry getInstance() {
     return ApplicationManager.getApplication().getComponent(PluginLoaderRegistry.class);
@@ -135,7 +119,7 @@ public class PluginLoaderRegistry implements Disposable {
 
     myClassLoaderManager.addListener(myClassesListener);
     assert myCurrentContributors.isEmpty();
-    mpsPlatform.findComponent(LanguageRegistry.class).addRegistryListener(myModuleDeploymentListener);
+    mpsPlatform.findComponent(LanguageRegistry.class).addRegistryListener(myClassesListener);
   }
 
   private void signalAppInitialized() {
@@ -670,10 +654,43 @@ public class PluginLoaderRegistry implements Disposable {
     myClassLoaderManager.removeListener(myClassesListener);
     MPSCoreComponents coreComponents = MPSCoreComponents.getInstance();
     Platform mpsPlatform = coreComponents.getPlatform();
-    mpsPlatform.findComponent(LanguageRegistry.class).removeRegistryListener(myModuleDeploymentListener);
+    mpsPlatform.findComponent(LanguageRegistry.class).removeRegistryListener(myClassesListener);
   }
 
-  private class SchedulingUpdateListener implements DeployListener {
+  private class SchedulingUpdateListener implements DeployListener, ModuleDeploymentListener {
+    @Override
+    public void deploymentStateChanged(@NotNull ModuleDeploymentChange change) {
+      final Runnable releaseCLs = change.acquireRemovedTrackingLock();
+//      System.out.println("deploymentStateChanged>>>");
+      AtomicInteger added = new AtomicInteger(0);
+      AtomicInteger addedWE = new AtomicInteger(0);
+      AtomicInteger removed = new AtomicInteger(0);
+      AtomicInteger removedWE = new AtomicInteger(0);
+      AtomicInteger reloaded = new AtomicInteger(0);
+      AtomicInteger reloadedWE = new AtomicInteger(0);
+      change.forEachAdded(t -> {
+        added.incrementAndGet();
+        if (t.withExtensions()) {
+          addedWE.incrementAndGet();
+        }
+      });
+      change.forEachRemoved(t -> {
+        removed.incrementAndGet();
+        if (t.withExtensions()) {
+          removedWE.incrementAndGet();
+        }
+      });
+      change.forEachReloaded(t -> {
+        reloaded.incrementAndGet();
+        if (t.withExtensions()) {
+          reloadedWE.incrementAndGet();
+        }
+      });
+//      System.out.printf("\tadded: %d/%d; removed: %d/%d; reloaded: %d/%d\n", added.get(), addedWE.get(), removed.get(), removedWE.get(), reloaded.get(), reloadedWE.get());
+//      System.out.println("<<<deploymentStateChanged");
+      releaseCLs.run();
+    }
+
     @Override
     public void onUnloaded(@NotNull final ResourceTrackerCallback callback, @NotNull ProgressMonitor monitor) {
       Set<ModuleClassLoader> classLoaders2Dispose = callback.acquire2(PluginLoaderRegistry.this);

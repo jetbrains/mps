@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2022 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2023 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.smodel.language;
 
@@ -7,6 +7,7 @@ import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.runtime.ModuleDeploymentChange;
 import jetbrains.mps.smodel.runtime.ModuleDeploymentListener;
 import jetbrains.mps.smodel.runtime.ModuleRuntime;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
@@ -30,6 +32,8 @@ final class DeploymentNotificationImpl extends ModuleDeploymentChange {
   private ArrayList<SModuleReference> myAdded, myRemoved, myReloaded;
   // != null IFF myInsideDispatch held
   private Function<SModuleReference, ModuleRuntime> myRef2Instance;
+
+  private CountdownNotify myCountdownNotify; // != null inside dispatch
   private final Semaphore myCollectLock = new Semaphore(1);
   private final Semaphore myInsideDispatch = new Semaphore(1);
 
@@ -70,16 +74,16 @@ final class DeploymentNotificationImpl extends ModuleDeploymentChange {
     }
   }
 
-  void dispatch(boolean sameThreadRequired) {
+  void dispatch(boolean sameThreadRequired, final Runnable whenDone) {
     if (sameThreadRequired) {
-      getRegistry().withAvailableModuleRuntime(this::withModules);
+      getRegistry().withAvailableModuleRuntime(f -> withModules(f, new CountdownNotify(whenDone)));
     } else {
-      Runnable r = () -> getRegistry().withAvailableModuleRuntime(this::withModules);
+      Runnable r = () -> getRegistry().withAvailableModuleRuntime(f -> withModules(f, new CountdownNotify(whenDone)));
       new Thread(r).start();
     }
   }
 
-  void withModules(Function<SModuleReference, ModuleRuntime> f) {
+  void withModules(Function<SModuleReference, ModuleRuntime> f, CountdownNotify notify) {
     if (myInsideDispatch.tryAcquire()) {
       // tryAcquire(), not acquire(), in case there's already an execution,
       // as running code repeats as long as there's any update.
@@ -87,6 +91,8 @@ final class DeploymentNotificationImpl extends ModuleDeploymentChange {
       //    OTOH it's still sort of "before" processing.
       try {
         myRef2Instance = f;
+        myCountdownNotify = notify;
+        notify.acquire();
         while (moveNext2Actual()) { // repeat while there's anything to report
           myListeners.forEach(l -> l.deploymentStateChanged(this));
           myAdded.clear();
@@ -95,6 +101,8 @@ final class DeploymentNotificationImpl extends ModuleDeploymentChange {
         }
       } finally {
         myRef2Instance = null;
+        myCountdownNotify.release();
+        myCountdownNotify = null;
         myInsideDispatch.release();
       }
     }
@@ -131,5 +139,31 @@ final class DeploymentNotificationImpl extends ModuleDeploymentChange {
   @Override
   public void forEachReloaded(Consumer<ModuleRuntime> iterator) {
     myReloaded.stream().map(myRef2Instance).filter(Objects::nonNull).forEach(iterator);
+  }
+
+  @NotNull
+  @Override
+  public Runnable acquireRemovedTrackingLock() {
+    myCountdownNotify.acquire();
+    return myCountdownNotify::release;
+  }
+
+  private static class CountdownNotify {
+    private final Runnable myNotifyTarget;
+    private final AtomicInteger myCounter = new AtomicInteger(0);
+
+    CountdownNotify(Runnable toNotify) {
+      myNotifyTarget = toNotify;
+    }
+
+    void acquire() {
+      myCounter.incrementAndGet();
+    }
+
+    void release() {
+      if (myCounter.decrementAndGet() == 0) {
+        myNotifyTarget.run();
+      }
+    }
   }
 }

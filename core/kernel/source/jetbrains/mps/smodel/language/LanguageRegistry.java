@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -450,14 +450,19 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
   }
 
   // ClassLoaderManager/DeployListener part
+
+
   @Override
-  public void onUnloaded(@NotNull Set<ReloadableModule> unloadedModules, @NotNull ProgressMonitor monitor) {
+  public void onUnloaded(@NotNull final ResourceTrackerCallback callback, @NotNull ProgressMonitor monitor) {
+    // we need to identify each request individually
+    final Object unloadToken = new Object();
+    final Set<ReloadableModule> unloadedModules = callback.acquire(unloadToken);
     // XXX for the time being, we include modules with ModuleRuntime only (i.e. don't include generators, although eventually shall include these, too)
     Set<SModuleReference> rtNotificationNew = new HashSet<>();
     try {
       myRuntimeInstanceAccess.writeLock().lock();
       monitor.start("Solution Runtime", 5);
-      ArrayList<ModuleRuntime> modulesToUnload = new ArrayList<>();
+      final ArrayList<ModuleRuntime> modulesToUnload = new ArrayList<>();
       for (Solution s : CollectionUtil.filter(Solution.class, unloadedModules)) {
         // get, not remove as we notify all first, and only then remove them.
         final ModuleRuntime moduleRuntime = myModuleRuntime.get(s.getModuleReference());
@@ -501,13 +506,18 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
       }
       monitor.advance(1);
 
+      final ModuleRuntimeContext rtc = myPlatformAccess::get;
       myDeploymentNotification.update(Collections.emptyList(), rtNotificationNew);
-      myDeploymentNotification.dispatch(true);
+      myDeploymentNotification.dispatch(true, () -> {
+        // once all listeners done processing, deactivate MR
+        for (ModuleRuntime rt : modulesToUnload) {
+          rt.deactivate(rtc);
+        }
+        // and let CLs go
+        callback.release(unloadToken);
+      });
 
-      ModuleRuntimeContext rtc = myPlatformAccess::get;
-      for (ModuleRuntime rt : modulesToUnload) {
-        rt.deactivate(rtc);
-      }
+      // forget about runtimes right away, but dispose them only once all processing in listeners don
       myModuleRuntime.values().removeAll(modulesToUnload);
 
       monitor.step("Language Registry Listeners");
@@ -629,7 +639,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
     monitor.advance(1);
     monitor.done();
     myDeploymentNotification.update(rtNotificationNew, Collections.emptyList());
-    myDeploymentNotification.dispatch(false);
+    myDeploymentNotification.dispatch(false, () -> {});
   }
 
   private Collection<Language> collectLanguageModules(Set<? extends SModule> modules) {
