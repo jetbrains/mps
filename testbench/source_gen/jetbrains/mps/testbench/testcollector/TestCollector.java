@@ -27,8 +27,14 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
+/**
+ * 
+ * @deprecated unused and scheduled for removal
+ */
+@Deprecated(forRemoval = true)
 @GeneratedClass(node = "r:3574087b-0c7b-4264-955a-ea1a8cd2504b(jetbrains.mps.testbench.testcollector)/5487985028841968449", model = "r:3574087b-0c7b-4264-955a-ea1a8cd2504b(jetbrains.mps.testbench.testcollector)")
 public class TestCollector {
+  @Deprecated
   public TestCollector() {
   }
   public boolean collectTests(SModel model, List<SNode> into) {

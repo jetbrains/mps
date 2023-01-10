@@ -27,6 +27,11 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
+/**
+ * 
+ * @deprecated unused and scheduled for removal
+ */
+@Deprecated(forRemoval = true)
 @GeneratedClass(node = "r:3574087b-0c7b-4264-955a-ea1a8cd2504b(jetbrains.mps.testbench.testcollector)/7763823021516159816", model = "r:3574087b-0c7b-4264-955a-ea1a8cd2504b(jetbrains.mps.testbench.testcollector)")
 public final class BuildTestsHelper {
   public static List<SNode> findIncludedInBuildTests(List<SNode> tests, SearchScope buildScope) {
