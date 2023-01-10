@@ -89,7 +89,7 @@ public class GeneratePluginSolution_Action extends BaseAction {
     ProjectPane projectPane = ProjectPane.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT));
     projectPane.selectModule(s, false);
   }
-  /*package*/ void createModel(Solution s, final AnActionEvent event) {
+  private void createModel(Solution s, final AnActionEvent event) {
     ModelRoot defaultRoot = s.getModelRoots().iterator().next();
     SModel newModel = defaultRoot.createModel(s.getModuleName() + ".plugin");
     ModelImports mi = new ModelImports(newModel);
