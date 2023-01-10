@@ -4251,11 +4251,11 @@
             <node concept="398BVA" id="67xNhT4NRcC" role="1BurEY">
               <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
               <node concept="2Ry0Ak" id="67xNhT4NRcD" role="iGT6I">
-                <property role="2Ry0Am" value="util.jar" />
+                <property role="2Ry0Am" value="util_rt.jar" />
               </node>
             </node>
             <node concept="3yrxFa" id="67xNhT4NRcE" role="2gdwQb">
-              <ref role="3yrxFb" node="5DAo_J9amU0" />
+              <ref role="3yrxFb" node="1w78goyRV4e" />
             </node>
           </node>
         </node>
