@@ -1315,19 +1315,6 @@
         <ref role="3uigEE" to="o8zo:3fifI_xCtN$" resolve="Scope" />
       </node>
     </node>
-    <node concept="13i0hz" id="441vB8LMYRt" role="13h7CS">
-      <property role="TrG5h" value="isAllMembersPrivate" />
-      <ref role="13i0hy" to="tp4h:441vB8LJxAr" resolve="isAllMembersPrivate" />
-      <node concept="3Tm1VV" id="441vB8LMYRu" role="1B3o_S" />
-      <node concept="3clFbS" id="441vB8LMYRz" role="3clF47">
-        <node concept="3clFbF" id="441vB8LMZcR" role="3cqZAp">
-          <node concept="3clFbT" id="441vB8LMZcQ" role="3clFbG">
-            <property role="3clFbU" value="true" />
-          </node>
-        </node>
-      </node>
-      <node concept="10P_77" id="441vB8LMYR$" role="3clF45" />
-    </node>
   </node>
   <node concept="13h7C7" id="hEwJa7v">
     <property role="3GE5qa" value="Actions.Groups" />
