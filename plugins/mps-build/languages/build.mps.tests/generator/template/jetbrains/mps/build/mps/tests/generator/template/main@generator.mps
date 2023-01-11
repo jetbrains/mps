@@ -2368,7 +2368,7 @@
                   <node concept="2pNUuL" id="6OON6YVXP4d" role="2pNNFR">
                     <property role="2pNUuO" value="value" />
                     <node concept="2pMdtt" id="6OON6YVXP4e" role="2pMdts">
-                      <property role="2pMdty" value="-Djna.boot.library.path=${basedir}/lib/jna" />
+                      <property role="2pMdty" value="-Djna.boot.library.path=${artifacts.mps}/lib/jna" />
                     </node>
                   </node>
                 </node>
