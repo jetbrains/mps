@@ -4,12 +4,13 @@ package jetbrains.mps.generator.tests.loopNamespace;
 
 import jetbrains.mps.lang.test.generator.rt.BaseGeneratorTest;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.generator.rt.TransformHelper;
 import jetbrains.mps.lang.test.generator.rt.ModelAssert;
 
 public class LoopNamespaceAccessVariable extends BaseGeneratorTest {
+
 
 
   private SModel myArg_input;
@@ -18,7 +19,7 @@ public class LoopNamespaceAccessVariable extends BaseGeneratorTest {
   private SModel myArg_interpreted;
 
 
-  @Before
+  @BeforeEach
   public void prepareArguments() {
     myArg_input = findModel("input", "r:f10f5b24-b459-47f0-bf60-403b63a1ce7a(jetbrains.mps.generator.tests.loopNamespace.inputModel)");
     myArg_output = findModel("output", "r:3bc42bb7-e8e2-4c0e-adb9-bafcf2b58cb4(jetbrains.mps.generator.tests.loopNamespace.outputModel)");

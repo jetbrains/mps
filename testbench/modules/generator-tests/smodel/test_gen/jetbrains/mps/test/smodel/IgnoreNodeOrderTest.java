@@ -4,8 +4,8 @@ package jetbrains.mps.test.smodel;
 
 import jetbrains.mps.lang.test.generator.rt.BaseGeneratorTest;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.generator.rt.TransformHelper;
 import jetbrains.mps.lang.test.generator.rt.ModelAssert;
 import jetbrains.mps.lang.test.generator.rt.MatchOptions;
@@ -13,11 +13,12 @@ import jetbrains.mps.lang.test.generator.rt.MatchOptions;
 public class IgnoreNodeOrderTest extends BaseGeneratorTest {
 
 
+
   private SModel myArg_IN;
   private SModel myArg_OUT;
 
 
-  @Before
+  @BeforeEach
   public void prepareArguments() {
     myArg_IN = findModel("IN", "r:9e2eb6a3-9feb-4149-9dda-889f02c65334(jetbrains.mps.test.smodel.data2)");
     myArg_OUT = findModel("OUT", "r:cda9f2b4-efae-4c0c-996c-6a34ae3da753(jetbrains.mps.test.smodel.refdata3)");

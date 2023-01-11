@@ -4,12 +4,13 @@ package jetbrains.mps.generator.tests.callsite;
 
 import jetbrains.mps.lang.test.generator.rt.BaseGeneratorTest;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.generator.rt.TransformHelper;
 import jetbrains.mps.lang.test.generator.rt.ModelAssert;
 
 public class CallSiteNodeForTemplateCall extends BaseGeneratorTest {
+
 
 
   private SModel myArg_INPUT;
@@ -18,7 +19,7 @@ public class CallSiteNodeForTemplateCall extends BaseGeneratorTest {
   private SModel myArg_GP_Interpreted;
 
 
-  @Before
+  @BeforeEach
   public void prepareArguments() {
     myArg_INPUT = findModel("INPUT", "r:57004ae4-a94a-4bd7-8b42-0ef958bfd83f(jetbrains.mps.generator.tests.callsite.m1)");
     myArg_OUTPUT = findModel("OUTPUT", "r:85c98cc8-8140-4428-8958-20e943886b6e(jetbrains.mps.generator.tests.callsite.m2)");
