@@ -144,6 +144,9 @@
       <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
         <child id="1144230900587" name="variable" index="1Duv9x" />
       </concept>
+      <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
+      </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
       <concept id="1146644641414" name="jetbrains.mps.baseLanguage.structure.ProtectedVisibility" flags="nn" index="3Tmbuc" />
@@ -177,6 +180,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="nn" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="nn" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -815,6 +826,71 @@
       </node>
     </node>
     <node concept="2tJIrI" id="5gsHVK_0vIZ" role="jymVt" />
+    <node concept="3clFb_" id="76_s2Q_bp7s" role="jymVt">
+      <property role="TrG5h" value="filterClasspathEntry" />
+      <node concept="37vLTG" id="76_s2Q_bp7t" role="3clF46">
+        <property role="TrG5h" value="entry" />
+        <node concept="17QB3L" id="76_s2Q_bp7u" role="1tU5fm" />
+      </node>
+      <node concept="10P_77" id="76_s2Q_bp7v" role="3clF45" />
+      <node concept="3Tmbuc" id="76_s2Q_bp7w" role="1B3o_S" />
+      <node concept="3clFbS" id="76_s2Q_bp7D" role="3clF47">
+        <node concept="3SKdUt" id="76_s2Q$EOhQ" role="3cqZAp">
+          <node concept="1PaTwC" id="76_s2Q$EOhR" role="1aUNEU">
+            <node concept="3oM_SD" id="76_s2Q$EYPT" role="1PaTwD">
+              <property role="3oM_SC" value="filter" />
+            </node>
+            <node concept="3oM_SD" id="76_s2Q$EYPV" role="1PaTwD">
+              <property role="3oM_SC" value="out" />
+            </node>
+            <node concept="3oM_SD" id="76_s2Q$EYTm" role="1PaTwD">
+              <property role="3oM_SC" value="junit-3.8.2.jar" />
+            </node>
+            <node concept="3oM_SD" id="76_s2Q$EZsQ" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="76_s2Q$EZsV" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="76_s2Q$EZuH" role="1PaTwD">
+              <property role="3oM_SC" value="unconditionally" />
+            </node>
+            <node concept="3oM_SD" id="76_s2Q$EZ_$" role="1PaTwD">
+              <property role="3oM_SC" value="provided" />
+            </node>
+            <node concept="3oM_SD" id="76_s2Q$EZGs" role="1PaTwD">
+              <property role="3oM_SC" value="by" />
+            </node>
+            <node concept="3oM_SD" id="76_s2Q$EZG_" role="1PaTwD">
+              <property role="3oM_SC" value="TC's" />
+            </node>
+            <node concept="3oM_SD" id="76_s2Q$EZLN" role="1PaTwD">
+              <property role="3oM_SC" value="Ant" />
+            </node>
+            <node concept="3oM_SD" id="76_s2Q$EZPm" role="1PaTwD">
+              <property role="3oM_SC" value="runner" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="76_s2Q_btaE" role="3cqZAp">
+          <node concept="2OqwBi" id="76_s2Q$Ecym" role="3clFbG">
+            <node concept="37vLTw" id="76_s2Q$E8jX" role="2Oq$k0">
+              <ref role="3cqZAo" node="76_s2Q_bp7t" resolve="entry" />
+            </node>
+            <node concept="liA8E" id="76_s2Q$EkBJ" role="2OqNvi">
+              <ref role="37wK5l" to="wyt6:~String.contains(java.lang.CharSequence)" resolve="contains" />
+              <node concept="Xl_RD" id="76_s2Q$ErhY" role="37wK5m">
+                <property role="Xl_RC" value="junit-3" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="76_s2Q_bp7E" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="76_s2Q_bIRL" role="jymVt" />
     <node concept="3clFb_" id="5gsHVK_0JqV" role="jymVt">
       <property role="TrG5h" value="finalizeScriptSettings" />
       <node concept="3Tmbuc" id="5gsHVK_0Jru" role="1B3o_S" />

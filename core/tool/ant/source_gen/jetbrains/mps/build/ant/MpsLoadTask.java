@@ -215,7 +215,7 @@ public class MpsLoadTask extends Task {
       Set<String> entries = new HashSet<String>();
       String pathSeparator = "";
       for (String entry : currentClassPathString.split(File.pathSeparator)) {
-        if (!(entries.contains(entry)) && !(startsWith(entry, javaHome))) {
+        if (!(entries.contains(entry)) && !(startsWith(entry, javaHome)) && !(filterClasspathEntry(entry))) {
           entries.add(entry);
           sb.append(pathSeparator);
           sb.append(entry);
@@ -472,6 +472,14 @@ public class MpsLoadTask extends Task {
       throw new BuildException(String.format(m, getProject().getName()));
     }
     return classPathRoots.getAllClassesAndJars();
+  }
+
+  /**
+   * Override to veto adding a classpath entry from current process's classpath
+   * to the classpath of a forked process. Entries for which true is returned will be skipped.
+   */
+  protected boolean filterClasspathEntry(String entry) {
+    return false;
   }
 
   /**

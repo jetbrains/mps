@@ -3659,27 +3659,37 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="1Wc70l" id="3HIEjxvbE$q" role="3clFbw">
-                    <node concept="3fqX7Q" id="3HIEjxvbE$t" role="3uHU7w">
-                      <node concept="1rXfSq" id="4hiugqyzeho" role="3fr31v">
-                        <ref role="37wK5l" node="1TaHNgiI6p3" resolve="startsWith" />
-                        <node concept="37vLTw" id="3GM_nagTBQ3" role="37wK5m">
+                  <node concept="1Wc70l" id="76_s2Q$DRxA" role="3clFbw">
+                    <node concept="3fqX7Q" id="76_s2Q$E1AN" role="3uHU7w">
+                      <node concept="1rXfSq" id="76_s2Q_abdw" role="3fr31v">
+                        <ref role="37wK5l" node="76_s2Q_8RRz" resolve="filterClasspathEntry" />
+                        <node concept="37vLTw" id="76_s2Q_atW0" role="37wK5m">
                           <ref role="3cqZAo" node="3HIEjxvbE8z" resolve="entry" />
-                        </node>
-                        <node concept="37vLTw" id="3GM_nagTtHM" role="37wK5m">
-                          <ref role="3cqZAo" node="3HIEjxvbE$a" resolve="javaHome" />
                         </node>
                       </node>
                     </node>
-                    <node concept="3fqX7Q" id="3HIEjxvbE9j" role="3uHU7B">
-                      <node concept="2OqwBi" id="3HIEjxvbE9k" role="3fr31v">
-                        <node concept="37vLTw" id="3GM_nagTzJ9" role="2Oq$k0">
-                          <ref role="3cqZAo" node="3HIEjxvbqjW" resolve="entries" />
+                    <node concept="1Wc70l" id="3HIEjxvbE$q" role="3uHU7B">
+                      <node concept="3fqX7Q" id="3HIEjxvbE9j" role="3uHU7B">
+                        <node concept="2OqwBi" id="3HIEjxvbE9k" role="3fr31v">
+                          <node concept="37vLTw" id="3GM_nagTzJ9" role="2Oq$k0">
+                            <ref role="3cqZAo" node="3HIEjxvbqjW" resolve="entries" />
+                          </node>
+                          <node concept="liA8E" id="3HIEjxvbE9m" role="2OqNvi">
+                            <ref role="37wK5l" to="33ny:~Set.contains(java.lang.Object)" resolve="contains" />
+                            <node concept="37vLTw" id="3GM_nagTv1b" role="37wK5m">
+                              <ref role="3cqZAo" node="3HIEjxvbE8z" resolve="entry" />
+                            </node>
+                          </node>
                         </node>
-                        <node concept="liA8E" id="3HIEjxvbE9m" role="2OqNvi">
-                          <ref role="37wK5l" to="33ny:~Set.contains(java.lang.Object)" resolve="contains" />
-                          <node concept="37vLTw" id="3GM_nagTv1b" role="37wK5m">
+                      </node>
+                      <node concept="3fqX7Q" id="3HIEjxvbE$t" role="3uHU7w">
+                        <node concept="1rXfSq" id="4hiugqyzeho" role="3fr31v">
+                          <ref role="37wK5l" node="1TaHNgiI6p3" resolve="startsWith" />
+                          <node concept="37vLTw" id="3GM_nagTBQ3" role="37wK5m">
                             <ref role="3cqZAo" node="3HIEjxvbE8z" resolve="entry" />
+                          </node>
+                          <node concept="37vLTw" id="3GM_nagTtHM" role="37wK5m">
+                            <ref role="3cqZAo" node="3HIEjxvbE$a" resolve="javaHome" />
                           </node>
                         </node>
                       </node>
@@ -6220,6 +6230,33 @@
       </node>
     </node>
     <node concept="2tJIrI" id="1_4F7FNq2WI" role="jymVt" />
+    <node concept="3clFb_" id="76_s2Q_8RRz" role="jymVt">
+      <property role="TrG5h" value="filterClasspathEntry" />
+      <node concept="37vLTG" id="76_s2Q_9JRF" role="3clF46">
+        <property role="TrG5h" value="entry" />
+        <node concept="17QB3L" id="76_s2Q_9T0i" role="1tU5fm" />
+      </node>
+      <node concept="10P_77" id="76_s2Q_9ji7" role="3clF45" />
+      <node concept="3Tmbuc" id="76_s2Q_9dJ7" role="1B3o_S" />
+      <node concept="3clFbS" id="76_s2Q_8RRB" role="3clF47">
+        <node concept="3clFbF" id="76_s2Q_bbFc" role="3cqZAp">
+          <node concept="3clFbT" id="76_s2Q_bbFb" role="3clFbG" />
+        </node>
+      </node>
+      <node concept="P$JXv" id="76_s2Q_aHFn" role="lGtFl">
+        <node concept="TZ5HA" id="76_s2Q_aHFo" role="TZ5H$">
+          <node concept="1dT_AC" id="76_s2Q_aHFp" role="1dT_Ay">
+            <property role="1dT_AB" value="Override to veto adding a classpath entry from current process's classpath" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="76_s2Q_aRkL" role="TZ5H$">
+          <node concept="1dT_AC" id="76_s2Q_aRkM" role="1dT_Ay">
+            <property role="1dT_AB" value="to the classpath of a forked process. Entries for which true is returned will be skipped." />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="76_s2Q_8Gxm" role="jymVt" />
     <node concept="3clFb_" id="3ufQioQQt$B" role="jymVt">
       <property role="TrG5h" value="getWorkerClass" />
       <property role="DiZV1" value="false" />
