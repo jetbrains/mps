@@ -212,14 +212,14 @@
   </root>
   <root nodeRef="r:c7fd1483-2eda-4417-bb41-aecb48302c10(jetbrains.mps.testbench)/6452630887101907682">
     <file name="EnvironmentAwareTestCase.java">
-      <node id="6452630887101911414" at="13,0,14,0" concept="4" trace="myEnvironment" />
-      <node id="6452630887101911555" at="16,56,17,24" concept="3" />
-      <node id="6452630887101910995" at="15,0,19,0" concept="7" trace="setEnvironment#(Ljetbrains/mps/tool/environment/Environment;)V" />
-      <scope id="6452630887101911004" at="16,56,17,24" />
-      <scope id="6452630887101910995" at="15,0,19,0">
+      <node id="6452630887101911414" at="12,0,13,0" concept="4" trace="myEnvironment" />
+      <node id="6452630887101911555" at="15,56,16,24" concept="3" />
+      <node id="6452630887101910995" at="14,0,18,0" concept="7" trace="setEnvironment#(Ljetbrains/mps/tool/environment/Environment;)V" />
+      <scope id="6452630887101911004" at="15,56,16,24" />
+      <scope id="6452630887101910995" at="14,0,18,0">
         <var name="env" id="6452630887101910999" />
       </scope>
-      <unit id="6452630887101907682" at="11,0,20,0" name="jetbrains.mps.testbench.EnvironmentAwareTestCase" />
+      <unit id="6452630887101907682" at="10,0,19,0" name="jetbrains.mps.testbench.EnvironmentAwareTestCase" />
     </file>
   </root>
 </debug-info>

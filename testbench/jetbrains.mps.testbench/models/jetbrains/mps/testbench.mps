@@ -83,7 +83,6 @@
         <property id="1075300953594" name="abstractClass" index="1sVAO0" />
         <property id="1221565133444" name="isFinal" index="1EXbeo" />
         <child id="1095933932569" name="implementedInterface" index="EKbjA" />
-        <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
@@ -1236,9 +1235,6 @@
       </node>
     </node>
     <node concept="3Tm1VV" id="5AcmpEOr4bz" role="1B3o_S" />
-    <node concept="3uibUv" id="5AcmpEOr4cg" role="1zkMxy">
-      <ref role="3uigEE" to="u132:~TestCase" resolve="TestCase" />
-    </node>
     <node concept="3uibUv" id="5AcmpEOr4zM" role="EKbjA">
       <ref role="3uigEE" to="79ha:7KC1aYnI6jD" resolve="EnvironmentAware" />
     </node>
