@@ -6,8 +6,9 @@ import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.project.Project;
 import org.jetbrains.annotations.NotNull;
-import java.util.List;
 import jetbrains.mps.project.ProjectManager;
+import jetbrains.mps.ide.MPSCoreComponents;
+import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -21,7 +22,14 @@ public class HttpSupportUtil {
 
   @Nullable
   public static Project getProjectByName(@NotNull final String name) {
-    List<Project> openedProjects = ProjectManager.getInstance().getOpenedProjects();
+    ProjectManager projectManager = MPSCoreComponents.getInstance().getPlatform().findComponent(ProjectManager.class);
+    if (projectManager == null) {
+      if (LOG.isErrorLevel()) {
+        LOG.error("component not found: ProjectManager", new RuntimeException());
+      }
+      return null;
+    }
+    List<Project> openedProjects = projectManager.getOpenedProjects();
     if (ListSequence.fromList(openedProjects).isEmpty()) {
       return null;
     }
@@ -44,7 +52,14 @@ public class HttpSupportUtil {
 
   @Nullable
   public static Project getSomeProject() {
-    List<Project> openedProjects = ProjectManager.getInstance().getOpenedProjects();
+    ProjectManager projectManager = MPSCoreComponents.getInstance().getPlatform().findComponent(ProjectManager.class);
+    if (projectManager == null) {
+      if (LOG.isErrorLevel()) {
+        LOG.error("component not found: ProjectManager", new RuntimeException());
+      }
+      return null;
+    }
+    List<Project> openedProjects = projectManager.getOpenedProjects();
     return ListSequence.fromList(openedProjects).first();
   }
 

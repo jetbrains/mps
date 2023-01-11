@@ -14,7 +14,9 @@
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="9xw8" ref="6c563085-e123-4aaf-be88-fb88e02f8282/java:io.netty.handler.codec.http(io.netty/)" />
     <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
+    <import index="3a50" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide(MPS.Platform/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
+    <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -73,6 +75,9 @@
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
+      </concept>
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ng" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
@@ -166,6 +171,9 @@
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644641414" name="jetbrains.mps.baseLanguage.structure.ProtectedVisibility" flags="nn" index="3Tmbuc" />
+      <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
+        <reference id="1116615189566" name="classifier" index="3VsUkX" />
+      </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
@@ -176,6 +184,7 @@
     <language id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging">
       <concept id="2034914114981261497" name="jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement" flags="ng" index="RRSsy">
         <property id="2034914114981261751" name="severity" index="RRSoG" />
+        <child id="2034914114981261755" name="throwable" index="RRSow" />
         <child id="2034914114981261753" name="message" index="RRSoy" />
       </concept>
     </language>
@@ -402,6 +411,56 @@
       </node>
       <node concept="3Tm1VV" id="3OrGkZCna1t" role="1B3o_S" />
       <node concept="3clFbS" id="3OrGkZCna1u" role="3clF47">
+        <node concept="3cpWs8" id="76_s2Q_cZ2g" role="3cqZAp">
+          <node concept="3cpWsn" id="76_s2Q_cZ2h" role="3cpWs9">
+            <property role="TrG5h" value="projectManager" />
+            <node concept="3uibUv" id="76_s2Q_cYX2" role="1tU5fm">
+              <ref role="3uigEE" to="z1c3:~ProjectManager" resolve="ProjectManager" />
+            </node>
+            <node concept="2OqwBi" id="76_s2Q_cZ2i" role="33vP2m">
+              <node concept="2OqwBi" id="76_s2Q_cZ2j" role="2Oq$k0">
+                <node concept="2YIFZM" id="76_s2Q_cZ2k" role="2Oq$k0">
+                  <ref role="37wK5l" to="3a50:~MPSCoreComponents.getInstance()" resolve="getInstance" />
+                  <ref role="1Pybhc" to="3a50:~MPSCoreComponents" resolve="MPSCoreComponents" />
+                </node>
+                <node concept="liA8E" id="76_s2Q_cZ2l" role="2OqNvi">
+                  <ref role="37wK5l" to="3a50:~MPSCoreComponents.getPlatform()" resolve="getPlatform" />
+                </node>
+              </node>
+              <node concept="liA8E" id="76_s2Q_cZ2m" role="2OqNvi">
+                <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class)" resolve="findComponent" />
+                <node concept="3VsKOn" id="76_s2Q_cZ2n" role="37wK5m">
+                  <ref role="3VsUkX" to="z1c3:~ProjectManager" resolve="ProjectManager" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="76_s2Q_cZJM" role="3cqZAp">
+          <node concept="3clFbS" id="76_s2Q_cZJO" role="3clFbx">
+            <node concept="RRSsy" id="76_s2Q_d0QZ" role="3cqZAp">
+              <property role="RRSoG" value="gZ5fh_4/error" />
+              <node concept="Xl_RD" id="76_s2Q_d0R1" role="RRSoy">
+                <property role="Xl_RC" value="component not found: ProjectManager" />
+              </node>
+              <node concept="2ShNRf" id="76_s2Q_d30t" role="RRSow">
+                <node concept="1pGfFk" id="76_s2Q_d8gB" role="2ShVmc">
+                  <property role="373rjd" value="true" />
+                  <ref role="37wK5l" to="wyt6:~RuntimeException.&lt;init&gt;()" resolve="RuntimeException" />
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWs6" id="76_s2Q_d8IM" role="3cqZAp">
+              <node concept="10Nm6u" id="76_s2Q_d8LJ" role="3cqZAk" />
+            </node>
+          </node>
+          <node concept="3clFbC" id="76_s2Q_d0mq" role="3clFbw">
+            <node concept="10Nm6u" id="76_s2Q_d0yN" role="3uHU7w" />
+            <node concept="37vLTw" id="76_s2Q_d03Z" role="3uHU7B">
+              <ref role="3cqZAo" node="76_s2Q_cZ2h" resolve="projectManager" />
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="2lt1tUBvYwR" role="3cqZAp">
           <node concept="3cpWsn" id="2lt1tUBvYwU" role="3cpWs9">
             <property role="TrG5h" value="openedProjects" />
@@ -411,12 +470,11 @@
               </node>
             </node>
             <node concept="2OqwBi" id="2lt1tUBvYwV" role="33vP2m">
-              <node concept="2YIFZM" id="2lt1tUBvYwW" role="2Oq$k0">
-                <ref role="37wK5l" to="z1c3:~ProjectManager.getInstance()" resolve="getInstance" />
-                <ref role="1Pybhc" to="z1c3:~ProjectManager" resolve="ProjectManager" />
-              </node>
               <node concept="liA8E" id="2lt1tUBvVdB" role="2OqNvi">
                 <ref role="37wK5l" to="z1c3:~ProjectManager.getOpenedProjects()" resolve="getOpenedProjects" />
+              </node>
+              <node concept="37vLTw" id="76_s2Q_cZ2o" role="2Oq$k0">
+                <ref role="3cqZAo" node="76_s2Q_cZ2h" resolve="findComponent" />
               </node>
             </node>
           </node>
@@ -565,6 +623,56 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="388YWwvSPVi" role="3clF47">
+        <node concept="3cpWs8" id="76_s2Q_d9yd" role="3cqZAp">
+          <node concept="3cpWsn" id="76_s2Q_d9ye" role="3cpWs9">
+            <property role="TrG5h" value="projectManager" />
+            <node concept="3uibUv" id="76_s2Q_d9yf" role="1tU5fm">
+              <ref role="3uigEE" to="z1c3:~ProjectManager" resolve="ProjectManager" />
+            </node>
+            <node concept="2OqwBi" id="76_s2Q_d9yg" role="33vP2m">
+              <node concept="2OqwBi" id="76_s2Q_d9yh" role="2Oq$k0">
+                <node concept="2YIFZM" id="76_s2Q_d9yi" role="2Oq$k0">
+                  <ref role="37wK5l" to="3a50:~MPSCoreComponents.getInstance()" resolve="getInstance" />
+                  <ref role="1Pybhc" to="3a50:~MPSCoreComponents" resolve="MPSCoreComponents" />
+                </node>
+                <node concept="liA8E" id="76_s2Q_d9yj" role="2OqNvi">
+                  <ref role="37wK5l" to="3a50:~MPSCoreComponents.getPlatform()" resolve="getPlatform" />
+                </node>
+              </node>
+              <node concept="liA8E" id="76_s2Q_d9yk" role="2OqNvi">
+                <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class)" resolve="findComponent" />
+                <node concept="3VsKOn" id="76_s2Q_d9yl" role="37wK5m">
+                  <ref role="3VsUkX" to="z1c3:~ProjectManager" resolve="ProjectManager" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="76_s2Q_d9ym" role="3cqZAp">
+          <node concept="3clFbS" id="76_s2Q_d9yn" role="3clFbx">
+            <node concept="RRSsy" id="76_s2Q_d9yo" role="3cqZAp">
+              <property role="RRSoG" value="gZ5fh_4/error" />
+              <node concept="Xl_RD" id="76_s2Q_d9yp" role="RRSoy">
+                <property role="Xl_RC" value="component not found: ProjectManager" />
+              </node>
+              <node concept="2ShNRf" id="76_s2Q_d9yq" role="RRSow">
+                <node concept="1pGfFk" id="76_s2Q_d9yr" role="2ShVmc">
+                  <property role="373rjd" value="true" />
+                  <ref role="37wK5l" to="wyt6:~RuntimeException.&lt;init&gt;()" resolve="RuntimeException" />
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWs6" id="76_s2Q_d9ys" role="3cqZAp">
+              <node concept="10Nm6u" id="76_s2Q_d9yt" role="3cqZAk" />
+            </node>
+          </node>
+          <node concept="3clFbC" id="76_s2Q_d9yu" role="3clFbw">
+            <node concept="10Nm6u" id="76_s2Q_d9yv" role="3uHU7w" />
+            <node concept="37vLTw" id="76_s2Q_d9yw" role="3uHU7B">
+              <ref role="3cqZAo" node="76_s2Q_d9ye" resolve="projectManager" />
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="388YWwvSQAZ" role="3cqZAp">
           <node concept="3cpWsn" id="388YWwvSQB2" role="3cpWs9">
             <property role="TrG5h" value="openedProjects" />
@@ -574,9 +682,8 @@
               </node>
             </node>
             <node concept="2OqwBi" id="388YWwvSQ51" role="33vP2m">
-              <node concept="2YIFZM" id="388YWwvSQ2N" role="2Oq$k0">
-                <ref role="37wK5l" to="z1c3:~ProjectManager.getInstance()" resolve="getInstance" />
-                <ref role="1Pybhc" to="z1c3:~ProjectManager" resolve="ProjectManager" />
+              <node concept="37vLTw" id="76_s2Q_d9mA" role="2Oq$k0">
+                <ref role="3cqZAo" node="76_s2Q_d9ye" resolve="projectManager" />
               </node>
               <node concept="liA8E" id="388YWwvSQ81" role="2OqNvi">
                 <ref role="37wK5l" to="z1c3:~ProjectManager.getOpenedProjects()" resolve="getOpenedProjects" />
