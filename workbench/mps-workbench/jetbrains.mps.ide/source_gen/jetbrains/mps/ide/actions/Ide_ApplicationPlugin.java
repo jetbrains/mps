@@ -117,7 +117,6 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     addGroup(new EditorInternal_ActionGroup(this));
     addGroup(new EditorPopupEx_ActionGroup(this));
     addGroup(new EditorPopup_Show_ActionGroup(this));
-    addGroup(new Favorites_ActionGroup(this));
     addGroup(new FileActions_ActionGroup(this));
     addGroup(new FileSystemNewActions_ActionGroup(this));
     addGroup(new FindModelUsages_ActionGroup(this));
@@ -232,9 +231,6 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     insertGroupIntoAnother(MessagesViewActions_ActionGroup.ID, "MPS.MessagesView", null);
     insertGroupIntoAnother(PrintNodePosition_Addition_ActionGroup.ID, EditorInternal_ActionGroup.ID, null);
     insertGroupIntoAnother(Search_ActionGroup.ID, "FindMenuGroup", null);
-    insertGroupIntoAnother(Favorites_ActionGroup.ID, CommonModuleActions_ActionGroup.ID, CommonModuleActions_ActionGroup.LABEL_ID_favorites);
-    insertGroupIntoAnother(Favorites_ActionGroup.ID, ModelActions_ActionGroup.ID, ModelActions_ActionGroup.LABEL_ID_favorites);
-    insertGroupIntoAnother(Favorites_ActionGroup.ID, NodeActions_ActionGroup.ID, NodeActions_ActionGroup.LABEL_ID_favorites);
     insertGroupIntoAnother(View_ActionGroup.ID, "ViewMenu", null);
     insertGroupIntoAnother(StructurePopup_ActionGroup.ID, "GoToEditorPopupAddition_ActionGroupother", null);
   }

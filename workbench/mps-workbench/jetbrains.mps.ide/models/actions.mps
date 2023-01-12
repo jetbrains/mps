@@ -21799,46 +21799,6 @@
       </node>
     </node>
   </node>
-  <node concept="tC5Ba" id="79AZtQxG3aB">
-    <property role="TrG5h" value="Favorites" />
-    <property role="3GE5qa" value="Favorites" />
-    <node concept="tT9cl" id="79AZtQxG3aL" role="2f5YQi">
-      <ref role="tU$_T" node="hyf4Gvz" resolve="NodeActions" />
-      <ref role="2f8Tey" node="2tmN3ZB4Vsy" resolve="favorites" />
-    </node>
-    <node concept="tT9cl" id="79AZtQxG3aM" role="2f5YQi">
-      <ref role="tU$_T" node="miYJQAr2Uj" resolve="CommonModuleActions" />
-      <ref role="2f8Tey" node="miYJQArh7n" resolve="favorites" />
-    </node>
-    <node concept="tT9cl" id="79AZtQxG3aP" role="2f5YQi">
-      <ref role="tU$_T" node="hyf4Hgq" resolve="ModelActions" />
-      <ref role="2f8Tey" node="2tmN3ZB4Vsm" resolve="favorites" />
-    </node>
-    <node concept="fu6FP" id="hSx5DSKHus" role="ftER_">
-      <node concept="3clFbS" id="hSx5DSKHuu" role="2VODD2">
-        <node concept="3clFbF" id="hSx5DSKIA7" role="3cqZAp">
-          <node concept="2OqwBi" id="hSx5DSKJ2G" role="3clFbG">
-            <node concept="2WthIp" id="hSx5DSKIA6" role="2Oq$k0" />
-            <node concept="liA8E" id="hSx5DSKJZm" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:~DefaultActionGroup.addAction(com.intellij.openapi.actionSystem.AnAction)" resolve="addAction" />
-              <node concept="2OqwBi" id="3alAxlQSoqp" role="37wK5m">
-                <node concept="2YIFZM" id="3alAxlQSolH" role="2Oq$k0">
-                  <ref role="37wK5l" to="qkt:~ActionManager.getInstance()" resolve="getInstance" />
-                  <ref role="1Pybhc" to="qkt:~ActionManager" resolve="ActionManager" />
-                </node>
-                <node concept="liA8E" id="3alAxlQSozm" role="2OqNvi">
-                  <ref role="37wK5l" to="qkt:~ActionManager.getAction(java.lang.String)" resolve="getAction" />
-                  <node concept="Xl_RD" id="3alAxlQSoBX" role="37wK5m">
-                    <property role="Xl_RC" value="AddToFavorites" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-  </node>
   <node concept="1ESbSp" id="6gEJNBIezVz">
     <property role="TrG5h" value="MPSRunMenu" />
     <property role="3GE5qa" value="Integration" />
