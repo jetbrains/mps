@@ -46,7 +46,9 @@
         <child id="856705193941281814" name="listener" index="2LYoN3" />
       </concept>
       <concept id="856705193941281810" name="jetbrains.mps.execution.commands.structure.ProcessType" flags="in" index="2LYoN7" />
-      <concept id="2459753140357918802" name="jetbrains.mps.execution.commands.structure.StartAndWaitOperation" flags="nn" index="343rKw" />
+      <concept id="2459753140357918802" name="jetbrains.mps.execution.commands.structure.StartAndWaitOperation" flags="nn" index="343rKw">
+        <child id="454072909645280896" name="timeout" index="3nLspB" />
+      </concept>
     </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
@@ -101,6 +103,7 @@
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
+      <concept id="1092119917967" name="jetbrains.mps.baseLanguage.structure.MulExpression" flags="nn" index="17qRlL" />
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
       </concept>
@@ -110,6 +113,9 @@
       <concept id="1225271369338" name="jetbrains.mps.baseLanguage.structure.IsEmptyOperation" flags="nn" index="17RlXB" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
+      </concept>
+      <concept id="4269842503726207156" name="jetbrains.mps.baseLanguage.structure.LongLiteral" flags="nn" index="1adDum">
+        <property id="4269842503726207157" name="value" index="1adDun" />
       </concept>
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <property id="4276006055363816570" name="isSynchronized" index="od$2w" />
@@ -632,7 +638,21 @@
               <node concept="37vLTw" id="1ZVcZhrXDYQ" role="2Oq$k0">
                 <ref role="3cqZAo" node="1ZVcZhrXDXM" resolve="process" />
               </node>
-              <node concept="343rKw" id="1ZVcZhrXDYR" role="2OqNvi" />
+              <node concept="343rKw" id="1ZVcZhrXDYR" role="2OqNvi">
+                <node concept="17qRlL" id="6CVsFO$hgE5" role="3nLspB">
+                  <node concept="3cmrfG" id="6CVsFO$hhdQ" role="3uHU7w">
+                    <property role="3cmrfH" value="5" />
+                  </node>
+                  <node concept="17qRlL" id="6CVsFO$hdOd" role="3uHU7B">
+                    <node concept="1adDum" id="6CVsFO$hcde" role="3uHU7B">
+                      <property role="1adDun" value="1000L" />
+                    </node>
+                    <node concept="3cmrfG" id="6CVsFO$henK" role="3uHU7w">
+                      <property role="3cmrfH" value="60" />
+                    </node>
+                  </node>
+                </node>
+              </node>
             </node>
           </node>
         </node>
