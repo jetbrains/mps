@@ -2,7 +2,7 @@
 <solution name="jetbrains.mps.lang.feedback.problem.structure" uuid="a098f3e2-deaa-4e97-bf80-9109efff59dd" moduleVersion="0" compileInMPS="false">
   <compileInIDEA />
   <models>
-    <modelRoot contentPath="${platform_lib}" type="java_classes">
+    <modelRoot contentPath="${mps_home}/lib" type="java_classes">
       <sourceRoot location="mps-messages-for-structure.jar" />
     </modelRoot>
   </models>
@@ -12,7 +12,7 @@
     </facet>
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${platform_lib}/mps-messages-for-structure.jar" />
+    <stubModelEntry path="${mps_home}/lib/mps-messages-for-structure.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>
