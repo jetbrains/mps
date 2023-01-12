@@ -36,6 +36,7 @@ import jetbrains.mps.smodel.runtime.ModuleRuntime;
 import jetbrains.mps.smodel.runtime.ModuleRuntime.Flags;
 import jetbrains.mps.smodel.runtime.ModuleRuntime.ModuleRuntimeContext;
 import jetbrains.mps.smodel.runtime.impl.LanguageRuntimeActivator;
+import jetbrains.mps.smodel.tempmodel.TempModule;
 import jetbrains.mps.util.CollectionUtil;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
@@ -327,7 +328,11 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
   }
 
   private static Flags[] deduceRuntimeFlags(AbstractModule am) {
-    if (SModuleOperations.canSupplyExtensionsForMPS(am)) {
+    if (SModuleOperations.canSupplyExtensionsForMPS(am) && false == am instanceof TempModule) {
+      // FIXME TempModule condition comes from PluginLoaderRegistry, not sure it's relevant here.
+      //       Remove it and make sure TempModule does not supply extensions by some other means (proper set of JMF flags?)
+      //       FWIW, now TempModule's JMF seem to be fine (i.e. no extensions). Just remove this check with an explicit commit,
+      //       for the knowledge not to get lost.
       return new Flags[] {Flags.WithExtensions};
     }
     return new Flags[] {Flags.NoExtensions};
@@ -455,8 +460,11 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
   @Override
   public void onUnloaded(@NotNull final ResourceTrackerCallback callback, @NotNull ProgressMonitor monitor) {
     // we need to identify each request individually
-    final Object unloadToken = new Object();
+    final Object unloadToken = Long.toString(System.currentTimeMillis(), 16);
     final Set<ReloadableModule> unloadedModules = callback.acquire(unloadToken);
+    if (LOG.isTraceLevel()) {
+      LOG.trace("CLM unload token acquired: " + unloadToken);
+    }
     // XXX for the time being, we include modules with ModuleRuntime only (i.e. don't include generators, although eventually shall include these, too)
     Set<SModuleReference> rtNotificationNew = new HashSet<>();
     try {
@@ -509,12 +517,19 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
       final ModuleRuntimeContext rtc = myPlatformAccess::get;
       myDeploymentNotification.update(Collections.emptyList(), rtNotificationNew);
       myDeploymentNotification.dispatch(true, () -> {
+        if (LOG.isTraceLevel()) {
+          LOG.trace("Deployment notification is over, actual runtime deactivation to start. Token: " + unloadToken);
+        }
+
         // once all listeners done processing, deactivate MR
         for (ModuleRuntime rt : modulesToUnload) {
           rt.deactivate(rtc);
         }
         // and let CLs go
         callback.release(unloadToken);
+        if (LOG.isTraceLevel()) {
+          LOG.trace("CLM unload  token released: " + unloadToken);
+        }
       });
 
       // forget about runtimes right away, but dispose them only once all processing in listeners don

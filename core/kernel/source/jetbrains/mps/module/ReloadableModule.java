@@ -171,6 +171,7 @@ public interface ReloadableModule extends SModule {
      */
     boolean canBeDeployed();
 
+    // XXX FWIW, there are no uses for the method (with the last/only one gone with PluginLoaderRegistry refactoring)
     boolean isDeployed();
   }
 }

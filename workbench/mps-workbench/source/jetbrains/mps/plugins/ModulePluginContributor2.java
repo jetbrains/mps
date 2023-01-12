@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class ModulePluginContributor2 extends PluginContributor {
+/*package*/ final class ModulePluginContributor2 extends PluginContributor {
   private static final Logger LOG = Logger.getLogger(ModulePluginContributor2.class);
 
   private final ModuleRuntime myModule;
