@@ -2828,6 +2828,9 @@
       <property role="IQ2ns" value="1219921048460" />
       <ref role="20lvS9" node="fz3vP1H" resolve="Type" />
     </node>
+    <node concept="PrWs8" id="5njuW$APBO$" role="PzmwI">
+      <ref role="PrY4T" node="3zZky3wF74d" resolve="IGenericType" />
+    </node>
   </node>
   <node concept="PlHQZ" id="hLwIKCk">
     <property role="TrG5h" value="IExtractMethodAvailable" />
