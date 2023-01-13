@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="98racfw8euskezxn30p5bxekqcqnhb8">
+<product version="3" modelHash="-bk5qexqw1amjj5lsqj75xmqc6xi207m">
   <files names="DeploymentDescriptorPersistence.java:DevkitDescriptorPersistence.java:GeneratorDescriptorPersistence.java:LanguageDescriptorPersistence.java:ModuleDescriptorPersistence.java:ModuleReadException.java:ProjectDescriptorPersistence.java:SolutionDescriptorPersistence.java" />
 </product>
 

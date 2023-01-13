@@ -208,7 +208,12 @@ public class ModuleDescriptorPersistence {
   public static void readMemento(Memento memento, Element element, final MacroHelper macroHelper) {
     for (Attribute attr : (List<Attribute>) element.getAttributes()) {
       String name = attr.getName();
-      memento.put(name, (isPathAttribute(name) ? macroHelper.expandPath(attr.getValue()) : attr.getValue()));
+      if (isPathAttribute(name)) {
+        memento.put(name, macroHelper.expandPath(attr.getValue()));
+        memento.putPathSpec(name, attr.getValue());
+      } else {
+        memento.put(name, attr.getValue());
+      }
     }
     for (Element elem : (List<Element>) element.getChildren()) {
       Memento child = memento.createChild(elem.getName());
@@ -218,7 +223,17 @@ public class ModuleDescriptorPersistence {
 
   public static void writeMemento(Memento memento, Element element, final MacroHelper macroHelper) {
     for (String key : memento.getKeys()) {
-      element.setAttribute(key, (isPathAttribute(key) ? macroHelper.shrinkPath(memento.get(key)) : memento.get(key)));
+      if (isPathAttribute(key)) {
+        element.setAttribute(key, macroHelper.shrinkPath(memento.get(key)));
+      } else {
+        if (key.startsWith(Memento.PATH_SPEC_PREFIX)) {
+          // don't serialize internal values
+          // XXX could use macro name from the value as a hint for macroHelper, until get rid of all full path value uses
+          //     (i.e. switch them to path specification)
+          continue;
+        }
+        element.setAttribute(key, memento.get(key));
+      }
     }
     for (Memento childMemento : memento.getChildren()) {
       Element child = new Element(childMemento.getType());

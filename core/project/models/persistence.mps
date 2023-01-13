@@ -27,7 +27,6 @@
     <import index="3ju5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs(MPS.Core/)" />
     <import index="pa15" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.persistence(MPS.Core/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
-    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="eurq" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.path(MPS.Core/)" />
     <import index="mmaq" ref="f647e48e-4568-4f4c-b48a-1546492c6a2e/java:org.jdom(org.jdom/)" />
   </imports>
@@ -243,6 +242,7 @@
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
+      <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
@@ -7408,48 +7408,88 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="56cLWC11fPL" role="3cqZAp">
-              <node concept="2OqwBi" id="56cLWC11g0q" role="3clFbG">
-                <node concept="liA8E" id="56cLWC11gam" role="2OqNvi">
-                  <ref role="37wK5l" to="dush:~Memento.put(java.lang.String,java.lang.String)" resolve="put" />
-                  <node concept="37vLTw" id="56cLWC11i8n" role="37wK5m">
-                    <ref role="3cqZAo" node="56cLWC11i8j" resolve="name" />
-                  </node>
-                  <node concept="3K4zz7" id="56cLWC11s2s" role="37wK5m">
-                    <node concept="2OqwBi" id="56cLWC11sox" role="3K4E3e">
-                      <node concept="liA8E" id="56cLWC11s$t" role="2OqNvi">
-                        <ref role="37wK5l" to="18ew:~MacroHelper.expandPath(java.lang.String)" resolve="expandPath" />
-                        <node concept="2OqwBi" id="56cLWC11hOV" role="37wK5m">
-                          <node concept="liA8E" id="56cLWC11i0Q" role="2OqNvi">
-                            <ref role="37wK5l" to="mmaq:~Attribute.getValue()" resolve="getValue" />
-                          </node>
-                          <node concept="37vLTw" id="56cLWC11hCN" role="2Oq$k0">
-                            <ref role="3cqZAo" node="56cLWC11dKw" resolve="attr" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="37vLTw" id="56cLWC11scv" role="2Oq$k0">
-                        <ref role="3cqZAo" node="56cLWC11h1m" resolve="macroHelper" />
-                      </node>
-                    </node>
-                    <node concept="1rXfSq" id="56cLWC11rfx" role="3K4Cdx">
-                      <ref role="37wK5l" node="56cLWC11mgd" resolve="isPathAttribute" />
-                      <node concept="37vLTw" id="56cLWC11rw_" role="37wK5m">
+            <node concept="3clFbJ" id="7WVl1CUZ6ce" role="3cqZAp">
+              <node concept="3clFbS" id="7WVl1CUZ6cg" role="3clFbx">
+                <node concept="3clFbF" id="56cLWC11fPL" role="3cqZAp">
+                  <node concept="2OqwBi" id="56cLWC11g0q" role="3clFbG">
+                    <node concept="liA8E" id="56cLWC11gam" role="2OqNvi">
+                      <ref role="37wK5l" to="dush:~Memento.put(java.lang.String,java.lang.String)" resolve="put" />
+                      <node concept="37vLTw" id="56cLWC11i8n" role="37wK5m">
                         <ref role="3cqZAo" node="56cLWC11i8j" resolve="name" />
                       </node>
-                    </node>
-                    <node concept="2OqwBi" id="56cLWC11sRn" role="3K4GZi">
-                      <node concept="liA8E" id="56cLWC11sRo" role="2OqNvi">
-                        <ref role="37wK5l" to="mmaq:~Attribute.getValue()" resolve="getValue" />
+                      <node concept="2OqwBi" id="56cLWC11sox" role="37wK5m">
+                        <node concept="liA8E" id="56cLWC11s$t" role="2OqNvi">
+                          <ref role="37wK5l" to="18ew:~MacroHelper.expandPath(java.lang.String)" resolve="expandPath" />
+                          <node concept="2OqwBi" id="56cLWC11hOV" role="37wK5m">
+                            <node concept="liA8E" id="56cLWC11i0Q" role="2OqNvi">
+                              <ref role="37wK5l" to="mmaq:~Attribute.getValue()" resolve="getValue" />
+                            </node>
+                            <node concept="37vLTw" id="56cLWC11hCN" role="2Oq$k0">
+                              <ref role="3cqZAo" node="56cLWC11dKw" resolve="attr" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="37vLTw" id="56cLWC11scv" role="2Oq$k0">
+                          <ref role="3cqZAo" node="56cLWC11h1m" resolve="macroHelper" />
+                        </node>
                       </node>
-                      <node concept="37vLTw" id="56cLWC11sRp" role="2Oq$k0">
-                        <ref role="3cqZAo" node="56cLWC11dKw" resolve="attr" />
+                    </node>
+                    <node concept="37vLTw" id="56cLWC11fPK" role="2Oq$k0">
+                      <ref role="3cqZAo" node="56cLWC10ZGB" resolve="memento" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbF" id="7WVl1CUZO1b" role="3cqZAp">
+                  <node concept="2OqwBi" id="7WVl1CUZPru" role="3clFbG">
+                    <node concept="37vLTw" id="7WVl1CUZO19" role="2Oq$k0">
+                      <ref role="3cqZAo" node="56cLWC10ZGB" resolve="memento" />
+                    </node>
+                    <node concept="liA8E" id="4XURg3q1X38" role="2OqNvi">
+                      <ref role="37wK5l" to="dush:~Memento.putPathSpec(java.lang.String,java.lang.String)" resolve="putPathSpec" />
+                      <node concept="37vLTw" id="4XURg3q1ZFl" role="37wK5m">
+                        <ref role="3cqZAo" node="56cLWC11i8j" resolve="name" />
+                      </node>
+                      <node concept="2OqwBi" id="4XURg3q25eE" role="37wK5m">
+                        <node concept="37vLTw" id="4XURg3q22WH" role="2Oq$k0">
+                          <ref role="3cqZAo" node="56cLWC11dKw" resolve="attr" />
+                        </node>
+                        <node concept="liA8E" id="4XURg3q27hm" role="2OqNvi">
+                          <ref role="37wK5l" to="mmaq:~Attribute.getValue()" resolve="getValue" />
+                        </node>
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="37vLTw" id="56cLWC11fPK" role="2Oq$k0">
-                  <ref role="3cqZAo" node="56cLWC10ZGB" resolve="memento" />
+              </node>
+              <node concept="1rXfSq" id="7WVl1CUZ84j" role="3clFbw">
+                <ref role="37wK5l" node="56cLWC11mgd" resolve="isPathAttribute" />
+                <node concept="37vLTw" id="7WVl1CUZ84k" role="37wK5m">
+                  <ref role="3cqZAo" node="56cLWC11i8j" resolve="name" />
+                </node>
+              </node>
+              <node concept="9aQIb" id="7WVl1CUZdCA" role="9aQIa">
+                <node concept="3clFbS" id="7WVl1CUZdCB" role="9aQI4">
+                  <node concept="3clFbF" id="7WVl1CUZj91" role="3cqZAp">
+                    <node concept="2OqwBi" id="7WVl1CUZj92" role="3clFbG">
+                      <node concept="liA8E" id="7WVl1CUZj93" role="2OqNvi">
+                        <ref role="37wK5l" to="dush:~Memento.put(java.lang.String,java.lang.String)" resolve="put" />
+                        <node concept="37vLTw" id="7WVl1CUZj94" role="37wK5m">
+                          <ref role="3cqZAo" node="56cLWC11i8j" resolve="name" />
+                        </node>
+                        <node concept="2OqwBi" id="7WVl1CUZj9e" role="37wK5m">
+                          <node concept="liA8E" id="7WVl1CUZj9f" role="2OqNvi">
+                            <ref role="37wK5l" to="mmaq:~Attribute.getValue()" resolve="getValue" />
+                          </node>
+                          <node concept="37vLTw" id="7WVl1CUZj9g" role="2Oq$k0">
+                            <ref role="3cqZAo" node="56cLWC11dKw" resolve="attr" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="37vLTw" id="7WVl1CUZj9h" role="2Oq$k0">
+                        <ref role="3cqZAo" node="56cLWC10ZGB" resolve="memento" />
+                      </node>
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>
@@ -7562,54 +7602,207 @@
             </node>
           </node>
           <node concept="3clFbS" id="56cLWC11Li0" role="2LFqv$">
-            <node concept="3clFbF" id="56cLWC11MPI" role="3cqZAp">
-              <node concept="2OqwBi" id="56cLWC11N69" role="3clFbG">
-                <node concept="liA8E" id="56cLWC11Npd" role="2OqNvi">
-                  <ref role="37wK5l" to="mmaq:~Element.setAttribute(java.lang.String,java.lang.String)" resolve="setAttribute" />
-                  <node concept="37vLTw" id="56cLWC11Nzs" role="37wK5m">
-                    <ref role="3cqZAo" node="56cLWC11LhY" resolve="key" />
-                  </node>
-                  <node concept="3K4zz7" id="56cLWC121mr" role="37wK5m">
-                    <node concept="2OqwBi" id="56cLWC122cV" role="3K4E3e">
-                      <node concept="liA8E" id="56cLWC122tp" role="2OqNvi">
-                        <ref role="37wK5l" to="18ew:~MacroHelper.shrinkPath(java.lang.String)" resolve="shrinkPath" />
-                        <node concept="2OqwBi" id="56cLWC122Cg" role="37wK5m">
-                          <node concept="liA8E" id="56cLWC122Ch" role="2OqNvi">
-                            <ref role="37wK5l" to="dush:~Memento.get(java.lang.String)" resolve="get" />
-                            <node concept="37vLTw" id="56cLWC122Ci" role="37wK5m">
-                              <ref role="3cqZAo" node="56cLWC11LhY" resolve="key" />
-                            </node>
-                          </node>
-                          <node concept="37vLTw" id="56cLWC122Cj" role="2Oq$k0">
-                            <ref role="3cqZAo" node="56cLWC11Gov" resolve="memento" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="37vLTw" id="56cLWC121PG" role="2Oq$k0">
-                        <ref role="3cqZAo" node="56cLWC11GuM" resolve="macroHelper" />
-                      </node>
+            <node concept="3clFbJ" id="4XURg3q2ax8" role="3cqZAp">
+              <node concept="3clFbS" id="4XURg3q2axa" role="3clFbx">
+                <node concept="3clFbF" id="4XURg3q2dRP" role="3cqZAp">
+                  <node concept="2OqwBi" id="4XURg3q2euL" role="3clFbG">
+                    <node concept="37vLTw" id="4XURg3q2dRN" role="2Oq$k0">
+                      <ref role="3cqZAo" node="56cLWC11GpJ" resolve="element" />
                     </node>
-                    <node concept="1rXfSq" id="56cLWC120ak" role="3K4Cdx">
-                      <ref role="37wK5l" node="56cLWC11mgd" resolve="isPathAttribute" />
-                      <node concept="37vLTw" id="56cLWC120yW" role="37wK5m">
+                    <node concept="liA8E" id="4XURg3q2g0P" role="2OqNvi">
+                      <ref role="37wK5l" to="mmaq:~Element.setAttribute(java.lang.String,java.lang.String)" resolve="setAttribute" />
+                      <node concept="37vLTw" id="4XURg3q2hls" role="37wK5m">
                         <ref role="3cqZAo" node="56cLWC11LhY" resolve="key" />
                       </node>
-                    </node>
-                    <node concept="2OqwBi" id="56cLWC11NTO" role="3K4GZi">
-                      <node concept="liA8E" id="56cLWC11O35" role="2OqNvi">
-                        <ref role="37wK5l" to="dush:~Memento.get(java.lang.String)" resolve="get" />
-                        <node concept="37vLTw" id="56cLWC11OgJ" role="37wK5m">
-                          <ref role="3cqZAo" node="56cLWC11LhY" resolve="key" />
+                      <node concept="2OqwBi" id="56cLWC122cV" role="37wK5m">
+                        <node concept="liA8E" id="56cLWC122tp" role="2OqNvi">
+                          <ref role="37wK5l" to="18ew:~MacroHelper.shrinkPath(java.lang.String)" resolve="shrinkPath" />
+                          <node concept="2OqwBi" id="56cLWC122Cg" role="37wK5m">
+                            <node concept="liA8E" id="56cLWC122Ch" role="2OqNvi">
+                              <ref role="37wK5l" to="dush:~Memento.get(java.lang.String)" resolve="get" />
+                              <node concept="37vLTw" id="56cLWC122Ci" role="37wK5m">
+                                <ref role="3cqZAo" node="56cLWC11LhY" resolve="key" />
+                              </node>
+                            </node>
+                            <node concept="37vLTw" id="56cLWC122Cj" role="2Oq$k0">
+                              <ref role="3cqZAo" node="56cLWC11Gov" resolve="memento" />
+                            </node>
+                          </node>
                         </node>
-                      </node>
-                      <node concept="37vLTw" id="56cLWC11NI_" role="2Oq$k0">
-                        <ref role="3cqZAo" node="56cLWC11Gov" resolve="memento" />
+                        <node concept="37vLTw" id="56cLWC121PG" role="2Oq$k0">
+                          <ref role="3cqZAo" node="56cLWC11GuM" resolve="macroHelper" />
+                        </node>
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="37vLTw" id="56cLWC11MPH" role="2Oq$k0">
-                  <ref role="3cqZAo" node="56cLWC11GpJ" resolve="element" />
+              </node>
+              <node concept="1rXfSq" id="4XURg3q2b_7" role="3clFbw">
+                <ref role="37wK5l" node="56cLWC11mgd" resolve="isPathAttribute" />
+                <node concept="37vLTw" id="4XURg3q2b_8" role="37wK5m">
+                  <ref role="3cqZAo" node="56cLWC11LhY" resolve="key" />
+                </node>
+              </node>
+              <node concept="9aQIb" id="4XURg3q2k3x" role="9aQIa">
+                <node concept="3clFbS" id="4XURg3q2k3y" role="9aQI4">
+                  <node concept="3clFbJ" id="4XURg3q2uOl" role="3cqZAp">
+                    <node concept="3clFbS" id="4XURg3q2uOn" role="3clFbx">
+                      <node concept="3SKdUt" id="4XURg3q2Cn1" role="3cqZAp">
+                        <node concept="1PaTwC" id="4XURg3q2Cn2" role="1aUNEU">
+                          <node concept="3oM_SD" id="4XURg3q2DpV" role="1PaTwD">
+                            <property role="3oM_SC" value="don't" />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2EF0" role="1PaTwD">
+                            <property role="3oM_SC" value="serialize" />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2DpX" role="1PaTwD">
+                            <property role="3oM_SC" value="internal" />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2Dq0" role="1PaTwD">
+                            <property role="3oM_SC" value="values" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3SKdUt" id="4XURg3q2FX7" role="3cqZAp">
+                        <node concept="1PaTwC" id="4XURg3q2FX8" role="1aUNEU">
+                          <node concept="3oM_SD" id="4XURg3q2Hjx" role="1PaTwD">
+                            <property role="3oM_SC" value="XXX" />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2Hld" role="1PaTwD">
+                            <property role="3oM_SC" value="could" />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2HmU" role="1PaTwD">
+                            <property role="3oM_SC" value="use" />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2Gxo" role="1PaTwD">
+                            <property role="3oM_SC" value="macro" />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2Hbe" role="1PaTwD">
+                            <property role="3oM_SC" value="name" />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2HcS" role="1PaTwD">
+                            <property role="3oM_SC" value="from" />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2HcY" role="1PaTwD">
+                            <property role="3oM_SC" value="the" />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2HeE" role="1PaTwD">
+                            <property role="3oM_SC" value="value" />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2HoC" role="1PaTwD">
+                            <property role="3oM_SC" value="as" />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2Hqn" role="1PaTwD">
+                            <property role="3oM_SC" value="a" />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2Hqy" role="1PaTwD">
+                            <property role="3oM_SC" value="hint" />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2HtS" role="1PaTwD">
+                            <property role="3oM_SC" value="for" />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2Hu5" role="1PaTwD">
+                            <property role="3oM_SC" value="macroHelper," />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2HDk" role="1PaTwD">
+                            <property role="3oM_SC" value="until" />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2HGH" role="1PaTwD">
+                            <property role="3oM_SC" value="get" />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2HK7" role="1PaTwD">
+                            <property role="3oM_SC" value="rid" />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2HLX" role="1PaTwD">
+                            <property role="3oM_SC" value="of" />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2KRs" role="1PaTwD">
+                            <property role="3oM_SC" value="all" />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2KTk" role="1PaTwD">
+                            <property role="3oM_SC" value="full" />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2KWM" role="1PaTwD">
+                            <property role="3oM_SC" value="path" />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2KX7" role="1PaTwD">
+                            <property role="3oM_SC" value="value" />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2KZ2" role="1PaTwD">
+                            <property role="3oM_SC" value="uses" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3SKdUt" id="4XURg3q2Mlq" role="3cqZAp">
+                        <node concept="1PaTwC" id="4XURg3q2Mlr" role="1aUNEU">
+                          <node concept="3oM_SD" id="4XURg3q2MlZ" role="1PaTwD">
+                            <property role="3oM_SC" value=" " />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2NoO" role="1PaTwD">
+                            <property role="3oM_SC" value="" />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2NoR" role="1PaTwD">
+                            <property role="3oM_SC" value="" />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2NoV" role="1PaTwD">
+                            <property role="3oM_SC" value="(i.e." />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2NtJ" role="1PaTwD">
+                            <property role="3oM_SC" value="switch" />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2Nva" role="1PaTwD">
+                            <property role="3oM_SC" value="them" />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2Nyr" role="1PaTwD">
+                            <property role="3oM_SC" value="to" />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2N$8" role="1PaTwD">
+                            <property role="3oM_SC" value="path" />
+                          </node>
+                          <node concept="3oM_SD" id="4XURg3q2N_Q" role="1PaTwD">
+                            <property role="3oM_SC" value="specification)" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3N13vt" id="4XURg3q2Adl" role="3cqZAp" />
+                    </node>
+                    <node concept="2OqwBi" id="4XURg3q2wBP" role="3clFbw">
+                      <node concept="37vLTw" id="4XURg3q2vXf" role="2Oq$k0">
+                        <ref role="3cqZAo" node="56cLWC11LhY" resolve="key" />
+                      </node>
+                      <node concept="liA8E" id="4XURg3q2ytm" role="2OqNvi">
+                        <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String)" resolve="startsWith" />
+                        <node concept="10M0yZ" id="4XURg3q2tr_" role="37wK5m">
+                          <ref role="3cqZAo" to="dush:~Memento.PATH_SPEC_PREFIX" resolve="PATH_SPEC_PREFIX" />
+                          <ref role="1PxDUh" to="dush:~Memento" resolve="Memento" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="3clFbF" id="56cLWC11MPI" role="3cqZAp">
+                    <node concept="2OqwBi" id="56cLWC11N69" role="3clFbG">
+                      <node concept="liA8E" id="56cLWC11Npd" role="2OqNvi">
+                        <ref role="37wK5l" to="mmaq:~Element.setAttribute(java.lang.String,java.lang.String)" resolve="setAttribute" />
+                        <node concept="37vLTw" id="56cLWC11Nzs" role="37wK5m">
+                          <ref role="3cqZAo" node="56cLWC11LhY" resolve="key" />
+                        </node>
+                        <node concept="2OqwBi" id="56cLWC11NTO" role="37wK5m">
+                          <node concept="liA8E" id="56cLWC11O35" role="2OqNvi">
+                            <ref role="37wK5l" to="dush:~Memento.get(java.lang.String)" resolve="get" />
+                            <node concept="37vLTw" id="56cLWC11OgJ" role="37wK5m">
+                              <ref role="3cqZAo" node="56cLWC11LhY" resolve="key" />
+                            </node>
+                          </node>
+                          <node concept="37vLTw" id="56cLWC11NI_" role="2Oq$k0">
+                            <ref role="3cqZAo" node="56cLWC11Gov" resolve="memento" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="37vLTw" id="56cLWC11MPH" role="2Oq$k0">
+                        <ref role="3cqZAo" node="56cLWC11GpJ" resolve="element" />
+                      </node>
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>

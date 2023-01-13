@@ -422,7 +422,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
       ck.put(GENERATED_KEY, Boolean.toString(true));
       // I'd love to specify it this way, but not sure how/when proper macro handling would happen
       // see setDefaultClassesGenLocation(), below, for workaround
-      // ck.put(PATH_KEY, "${module}/classes_gen");
+      ck.putPathSpec(PATH_KEY, "${module}/classes_gen");
     }
     rv.getMemento().put(KEY_COMPILE, compile.toPersistenceValue());
     rv.getMemento().put(KEY_CLASSLOADER, loadClasses.toPersistenceValue());
