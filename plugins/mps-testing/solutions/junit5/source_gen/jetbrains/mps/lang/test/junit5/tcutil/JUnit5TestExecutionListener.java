@@ -64,12 +64,27 @@ public class JUnit5TestExecutionListener implements TestExecutionListener {
     myIdSuffix = i + "th";
   }
   @Override
-  public void reportingEntryPublished(TestIdentifier testIdentifier, ReportEntry entry) {
-    final StringBuilder builder = new StringBuilder();
-    builder.append("timestamp = ").append(entry.getTimestamp());
-    entry.getKeyValuePairs().forEach((String key, String value) -> builder.append(", ").append(key).append(" = ").append(value));
-    builder.append("\n");
-    myPrintStream.println("##teamcity[testStdOut" + idAndName(testIdentifier) + " out = '" + escapeName(builder.toString()) + "']");
+  public void reportingEntryPublished(final TestIdentifier testIdentifier, ReportEntry entry) {
+    entry.getKeyValuePairs().forEach((String key, String value) -> {
+      if ("stdout".equals(key)) {
+        myPrintStream.print("##teamcity[testStdOut");
+        myPrintStream.print(idAndName(testIdentifier));
+        myPrintStream.print(" out='");
+
+      } else if ("stderr".equals(key)) {
+        myPrintStream.print("##teamcity[testStdErr");
+        myPrintStream.print(idAndName(testIdentifier));
+        myPrintStream.print(" out='");
+
+      } else {
+        myPrintStream.print("##teamcity[message");
+        myPrintStream.print(idAndName(testIdentifier));
+        myPrintStream.print(" status='WARNING'");
+        myPrintStream.print(" text='");
+      }
+      myPrintStream.print(escapeName(value));
+      myPrintStream.println("']");
+    });
   }
   @Override
   public void testPlanExecutionStarted(TestPlan testPlan) {
