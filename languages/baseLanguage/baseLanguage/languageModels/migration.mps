@@ -1453,7 +1453,7 @@
                         </node>
                       </node>
                       <node concept="Rh6nW" id="161JGLBM_Bn" role="1bW2Oz">
-                        <property role="TrG5h" value="it" />
+                        <property role="TrG5h" value="deprecatable" />
                         <node concept="2jxLKc" id="161JGLBM_Bo" role="1tU5fm" />
                       </node>
                     </node>

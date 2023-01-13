@@ -75,7 +75,7 @@ public final class StringPlusToFormat_Intention extends AbstractIntentionDescrip
       // cut PE out of node tree to avoid notifications
       SNode de = SNodeOperations.replaceWithNewChild(node, CONCEPTS.DotExpression$yW);
       StringBuilder sb = new StringBuilder();
-      List<SNode> args = ListSequence.fromList(new ArrayList());
+      List<SNode> args = ListSequence.fromList(new ArrayList<>());
       SNode prevPE = null;
       do {
         if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(pe, LINKS.leftExpression$sEj), CONCEPTS.StringLiteral$xu)) {
