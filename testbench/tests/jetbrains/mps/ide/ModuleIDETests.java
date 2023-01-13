@@ -438,9 +438,9 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
     ProjectBackup projectBackup = new ProjectBackup(myProject);
     Reference<Language> langRef = new Reference<>();
     invokeInCommand(() -> langRef.set(new LanguageProducer(myProject).create(oldModuleName, getNewDirInProject(oldModuleName))));
+    saveProjectInTest();
     invokeInCommand(() -> {
       @NotNull Language lang = langRef.get();
-      saveProjectInTest();
       projectBackup.doBackup();
       new Renamer(myProject, lang, null).renameModule(newModuleName);
 
@@ -450,8 +450,8 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
       Assert.assertTrue(myProject.getProjectModules().contains(lang));
       langRef.set(lang);
     });
+    saveProjectInTest();
     invokeInCommand(() -> {
-      saveProjectInTest();
       projectBackup.restoreFromBackup();
     });
     refreshProjectRecursively();

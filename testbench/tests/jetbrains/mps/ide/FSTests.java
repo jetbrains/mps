@@ -47,10 +47,10 @@ public final class FSTests extends ModuleInProjectTest { // e.g. in order to get
     Reference<Solution> solutionRef = new Reference<>();
     invokeInCommand(() -> langRef.set(new LanguageProducer(myProject).create(langName, createNewDirInProject())));
     invokeInCommand(() -> solutionRef.set(new SolutionProducer( myProject).create(solutionName, createNewDirInProject())));
+    saveProjectInTest();
     invokeInCommand(() -> {
       @NotNull Language lang = langRef.get();
       @NotNull Solution solution = solutionRef.get();
-      saveProjectInTest();
       projectBackup.doBackup();
 
       lang.addDependency(solution.getModuleReference(), false);
@@ -74,8 +74,8 @@ public final class FSTests extends ModuleInProjectTest { // e.g. in order to get
     ProjectBackup projectBackup = new ProjectBackup(myProject);
     Reference<Language> langRef = new Reference<>();
     invokeInCommand(() -> langRef.set(new LanguageProducer(myProject).create(langName, createNewDirInProject())));
+    saveProjectInTest();
     invokeInCommand(() -> {
-      saveProjectInTest();
       projectBackup.doBackup();
     });
     Reference<Solution> solutionRef = new Reference<>();
@@ -86,8 +86,8 @@ public final class FSTests extends ModuleInProjectTest { // e.g. in order to get
       lang.addDependency(solution.getModuleReference(), false);
       lang.save();
       lang.getGenerators().forEach(Generator::save);
-      saveProjectInTest();
     });
+    saveProjectInTest();
     invokeInCommand(projectBackup::restoreFromBackup);
     refreshProjectRecursively();
     invokeInCommand(() -> {
