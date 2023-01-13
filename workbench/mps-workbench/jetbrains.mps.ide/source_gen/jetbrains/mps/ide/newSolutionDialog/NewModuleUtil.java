@@ -48,13 +48,19 @@ import org.jetbrains.mps.openapi.model.SModelName;
 
 /**
  * 
- * @deprecated 
+ * @deprecated Use SolutionProducer instead; this class is scheduled for removal in 2023.1
  */
 @Deprecated(since = "3.5", forRemoval = true)
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904ab(jetbrains.mps.ide.newSolutionDialog)/5890305283801268194", model = "r:00000000-0000-4000-0000-011c895904ab(jetbrains.mps.ide.newSolutionDialog)")
 public class NewModuleUtil {
   private static final Logger LOG = Logger.getLogger(NewModuleUtil.class);
+  /**
+   * 
+   * @deprecated SolutionProducer got methods to set sandbox/runtime level in 2022.2; keep this method for 2022.3 and remove in 2023.1
+   */
+  @Deprecated
   public static Solution createRuntimeSolution(Language language, String languageRootPath, MPSProject project) throws IOException {
+    traceDeprecatedUse();
     // FIXME with new code, don't create rt under language, rather a sibling
     IFile basePath = project.getFileSystem().getFile(languageRootPath).findChild("runtime");
     String namespace = language.getModuleName() + ".runtime";
@@ -69,7 +75,14 @@ public class NewModuleUtil {
     return runtime;
   }
 
+
+  /**
+   * 
+   * @deprecated SolutionProducer got methods to set sandbox/runtime level in 2022.2; keep this method for 2022.3 and remove in 2023.1
+   */
+  @Deprecated
   public static Solution createSandboxSolution(Language language, String languageRootPath, MPSProject project) throws IOException {
+    traceDeprecatedUse();
     // XXX I don't think it's smart to create sandbox inside language dir. Rather have to be its sibling
     String basePath = languageRootPath + File.separator + "sandbox";
     String namespace = language.getModuleName() + ".sandbox";

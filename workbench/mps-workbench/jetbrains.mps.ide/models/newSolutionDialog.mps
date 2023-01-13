@@ -306,6 +306,11 @@
       <property role="od$2w" value="false" />
       <property role="DiZV1" value="false" />
       <node concept="3clFbS" id="7BBl3KJyvjW" role="3clF47">
+        <node concept="3clFbF" id="6hifecL8H1Y" role="3cqZAp">
+          <node concept="1rXfSq" id="6hifecL8H1W" role="3clFbG">
+            <ref role="37wK5l" node="42eHksA4SQW" resolve="traceDeprecatedUse" />
+          </node>
+        </node>
         <node concept="3SKdUt" id="1vFZXjby6uE" role="3cqZAp">
           <node concept="1PaTwC" id="1vFZXjby6uF" role="1aUNEU">
             <node concept="3oM_SD" id="1vFZXjby6vL" role="1PaTwD">
@@ -585,13 +590,31 @@
       <node concept="3uibUv" id="3AvdXZVoa7m" role="Sfmx6">
         <ref role="3uigEE" to="guwi:~IOException" resolve="IOException" />
       </node>
+      <node concept="2AHcQZ" id="6hifecL8Ai1" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+      </node>
+      <node concept="P$JXv" id="6hifecL8EkS" role="lGtFl">
+        <node concept="TZ5HI" id="6hifecL8EFK" role="3nqlJM">
+          <node concept="TZ5HA" id="6hifecL8EFL" role="3HnX3l">
+            <node concept="1dT_AC" id="6hifecL8EFM" role="1dT_Ay">
+              <property role="1dT_AB" value="SolutionProducer got methods to set sandbox/runtime level in 2022.2; keep this method for 2022.3 and remove in 2023.1" />
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="2tJIrI" id="6s6LYnVtP3$" role="jymVt" />
+    <node concept="2tJIrI" id="6hifecL8zxd" role="jymVt" />
     <node concept="2YIFZL" id="7BBl3KJ$Vq_" role="jymVt">
       <property role="TrG5h" value="createSandboxSolution" />
       <property role="od$2w" value="false" />
       <property role="DiZV1" value="false" />
       <node concept="3clFbS" id="7BBl3KJ$VqC" role="3clF47">
+        <node concept="3clFbF" id="6hifecL8Jbw" role="3cqZAp">
+          <node concept="1rXfSq" id="6hifecL8Jbu" role="3clFbG">
+            <ref role="37wK5l" node="42eHksA4SQW" resolve="traceDeprecatedUse" />
+          </node>
+        </node>
         <node concept="3SKdUt" id="2Sw_cz2w28K" role="3cqZAp">
           <node concept="1PaTwC" id="2Sw_cz2w28L" role="1aUNEU">
             <node concept="3oM_SD" id="2Sw_cz2w3Sb" role="1PaTwD">
@@ -1102,6 +1125,18 @@
       </node>
       <node concept="3uibUv" id="3AvdXZVbqQV" role="Sfmx6">
         <ref role="3uigEE" to="guwi:~IOException" resolve="IOException" />
+      </node>
+      <node concept="2AHcQZ" id="6hifecL8xX$" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+      </node>
+      <node concept="P$JXv" id="6hifecL8_id" role="lGtFl">
+        <node concept="TZ5HI" id="6hifecL8Bj0" role="3nqlJM">
+          <node concept="TZ5HA" id="6hifecL8Bj1" role="3HnX3l">
+            <node concept="1dT_AC" id="6hifecL8CnO" role="1dT_Ay">
+              <property role="1dT_AB" value="SolutionProducer got methods to set sandbox/runtime level in 2022.2; keep this method for 2022.3 and remove in 2023.1" />
+            </node>
+          </node>
+        </node>
       </node>
     </node>
     <node concept="2tJIrI" id="7sz2Bv$hnWP" role="jymVt" />
@@ -3165,7 +3200,11 @@
     </node>
     <node concept="3UR2Jj" id="2sePq$_siZs" role="lGtFl">
       <node concept="TZ5HI" id="2sePq$_siZt" role="3nqlJM">
-        <node concept="TZ5HA" id="2sePq$_siZu" role="3HnX3l" />
+        <node concept="TZ5HA" id="2sePq$_siZu" role="3HnX3l">
+          <node concept="1dT_AC" id="6hifecL8uLc" role="1dT_Ay">
+            <property role="1dT_AB" value="Use SolutionProducer instead; this class is scheduled for removal in 2023.1" />
+          </node>
+        </node>
       </node>
     </node>
   </node>

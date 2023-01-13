@@ -12,14 +12,10 @@ import java.util.Optional;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.ModuleDependencyVersions;
 import org.jetbrains.mps.openapi.model.EditableSModel;
-import jetbrains.mps.project.MPSExtentions;
-import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import java.util.Iterator;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.smodel.GeneralModuleFactory;
-import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
@@ -101,31 +97,25 @@ public class LanguageAndSolutionsProducer {
       myRuntimeModule = null;
     }
     if (mySandbox) {
+      SolutionProducer sp = new SolutionProducer(myProject);
+      sp.withSandboxJavaFacet();
       String moduleName = namespace + ".sandbox";
-      // FIXME copied as is NewModuleUtil.createSandboxSolution(), need to refactor
-      IFile sbdir = (mySandboxLocation != null ? mySandboxLocation : moduleDir.getParent().findChild(moduleName));
-      IFile descriptorFile = sbdir.findChild(moduleName + MPSExtentions.DOT_SOLUTION);
-      SolutionDescriptor descriptor = SolutionProducer.createSolutionDescriptor(moduleName, descriptorFile);
+      mySandboxModule = sp.create(moduleName, (mySandboxLocation != null ? mySandboxLocation : moduleDir.getParent().findChild(moduleName)));
 
-      // XXX I don't see a reason to use Language.getAllExtendedLanguages, but this is the way it was introduced in 5057107c
+      // This was introduced in 5057107c, and the reason to use Language.getAllExtendedLanguages() here, despite use of 
+      // versionFix, is the fact our new language 'l' is not yet deployed, and is available as source module only.
+      // To prevent migration trigger aroused by missing versions, we do this hack here. 
+      // However, the proper way is not to bother saving these versions inside module descriptor, or at least to update them
+      // silently for new modules.
       {
         Iterator<Language> extLang_it = SetSequence.fromSet(l.getAllExtendedLanguages()).iterator();
         Language extLang_var;
         while (extLang_it.hasNext()) {
           extLang_var = extLang_it.next();
           SLanguage extSLang = MetaAdapterFactory.getLanguage(extLang_var.getModuleReference());
-          descriptor.getLanguageVersions().put(extSLang, extLang_var.getLanguageVersion());
+          mySandboxModule.getModuleDescriptor().getLanguageVersions().put(extSLang, extLang_var.getLanguageVersion());
         }
       }
-
-      mySandboxModule = (Solution) new GeneralModuleFactory().instantiate(descriptor, descriptorFile);
-      myProject.addModule(mySandboxModule);
-      // SP.createSD crates Java facet for a module by default
-      JavaModuleFacet jmf = mySandboxModule.getFacet(JavaModuleFacet.class);
-      jmf.setCompile(JavaModuleFacet.Compile.None);
-      jmf.setLoadClasses(JavaModuleFacet.LoadClasses.NotAvailable);
-      jmf.setLoadExtensions(JavaModuleFacet.LoadExtensions.NotAvailable);
-      mySandboxModule.save();
 
       SModelInternal sandboxModel = (SModelInternal) createModel(mySandboxModule, moduleName);
       SLanguage ll = MetaAdapterFactory.getLanguage(l.getModuleReference());
