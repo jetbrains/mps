@@ -39,7 +39,7 @@ public final class ClassContainer {
   public ClassContainer(@NotNull SNode classifier, TemplateQueryContext genContext) {
     myClassifier = classifier;
     myGenContext = genContext;
-    SetSequence.fromSet(myUsedNestedNames).addSequence(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(classifier)).select((SNode it) -> SPropertyOperations.getString(it, PROPS.name$MnvL)));
+    SetSequence.fromSet(myUsedNestedNames).addSequence(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(classifier)).select((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL)));
   }
 
   @Nullable
@@ -73,7 +73,7 @@ public final class ClassContainer {
       myGenContext.showWarningMessage(expr, "Provide the unique name for the field");
       return null;
     }
-    SNode field = Sequence.fromIterable(Classifier__BehaviorDescriptor.staticFields_id4_LVZ3pBr7M.invoke(container)).where((SNode it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), name)).first();
+    SNode field = Sequence.fromIterable(Classifier__BehaviorDescriptor.staticFields_id4_LVZ3pBr7M.invoke(container)).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), name)).first();
     if (field == null) {
       field = createField(expr, name);
       ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.member$L_2d)).addElement(field);

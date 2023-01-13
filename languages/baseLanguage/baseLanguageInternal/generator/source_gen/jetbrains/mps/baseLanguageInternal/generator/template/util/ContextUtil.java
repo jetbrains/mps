@@ -24,7 +24,7 @@ public class ContextUtil {
       if (topmost) {
         return ListSequence.fromList(SNodeOperations.getNodeAncestors(usage, CONCEPTS.ClassConcept$bK, false)).last();
       } else {
-        return ListSequence.fromList(SNodeOperations.getNodeAncestors(usage, CONCEPTS.ClassConcept$bK, false)).where((SNode it) -> (boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it)).first();
+        return ListSequence.fromList(SNodeOperations.getNodeAncestors(usage, CONCEPTS.ClassConcept$bK, false)).where((it) -> (boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it)).first();
       }
     } else {
       SNode outclass = genContext.getCopiedOutputNodeForInputNode(SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false));
@@ -41,7 +41,7 @@ public class ContextUtil {
       if (topmost) {
         return ListSequence.fromList(SNodeOperations.getNodeAncestors(usage, CONCEPTS.ClassConcept$bK, false)).last();
       } else {
-        return ListSequence.fromList(SNodeOperations.getNodeAncestors(usage, CONCEPTS.ClassConcept$bK, false)).where((SNode it) -> (boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it)).first();
+        return ListSequence.fromList(SNodeOperations.getNodeAncestors(usage, CONCEPTS.ClassConcept$bK, false)).where((it) -> (boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it)).first();
       }
     } else {
       SNode outclass = genContext.getCopiedOutputNodeForInputNode(SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false));
@@ -61,7 +61,7 @@ public class ContextUtil {
       if (topmost) {
         return ListSequence.fromList(SNodeOperations.getNodeAncestors(usage, CONCEPTS.ClassConcept$bK, false)).last();
       } else {
-        return ListSequence.fromList(SNodeOperations.getNodeAncestors(usage, CONCEPTS.ClassConcept$bK, false)).where((SNode it) -> (boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it)).first();
+        return ListSequence.fromList(SNodeOperations.getNodeAncestors(usage, CONCEPTS.ClassConcept$bK, false)).where((it) -> (boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it)).first();
       }
     } else {
       SNode outclass = genContext.getCopiedOutputNodeForInputNode(SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false));
