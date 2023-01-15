@@ -4147,11 +4147,8 @@
                 <node concept="2ShNRf" id="5qUkmeYAmc_" role="33vP2m">
                   <node concept="1pGfFk" id="5qUkmeYAmcA" role="2ShVmc">
                     <ref role="37wK5l" to="kpdv:~Execute.&lt;init&gt;(org.apache.tools.ant.taskdefs.ExecuteStreamHandler)" resolve="Execute" />
-                    <node concept="2ShNRf" id="5qUkmeYAmcB" role="37wK5m">
-                      <node concept="1pGfFk" id="5qUkmeYAmcC" role="2ShVmc">
-                        <ref role="37wK5l" node="3ufQioQQt1D" resolve="MyExecuteStreamHandler" />
-                        <node concept="Xjq3P" id="5qUkmeYAmcD" role="37wK5m" />
-                      </node>
+                    <node concept="1rXfSq" id="1rGdf3Zyfjj" role="37wK5m">
+                      <ref role="37wK5l" node="1rGdf3ZwV9j" resolve="createStreamHandler" />
                     </node>
                   </node>
                 </node>
@@ -6252,6 +6249,45 @@
         <node concept="TZ5HA" id="76_s2Q_aRkL" role="TZ5H$">
           <node concept="1dT_AC" id="76_s2Q_aRkM" role="1dT_Ay">
             <property role="1dT_AB" value="to the classpath of a forked process. Entries for which true is returned will be skipped." />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="1rGdf3ZwIXd" role="jymVt" />
+    <node concept="3clFb_" id="1rGdf3ZwV9j" role="jymVt">
+      <property role="TrG5h" value="createStreamHandler" />
+      <node concept="3uibUv" id="1rGdf3Zx6$V" role="3clF45">
+        <ref role="3uigEE" to="kpdv:~ExecuteStreamHandler" resolve="ExecuteStreamHandler" />
+      </node>
+      <node concept="3Tmbuc" id="1rGdf3ZxSH0" role="1B3o_S" />
+      <node concept="3clFbS" id="1rGdf3ZwV9n" role="3clF47">
+        <node concept="3clFbF" id="1rGdf3ZxxzO" role="3cqZAp">
+          <node concept="2ShNRf" id="1rGdf3ZxxzM" role="3clFbG">
+            <node concept="1pGfFk" id="1rGdf3ZxB6d" role="2ShVmc">
+              <property role="373rjd" value="true" />
+              <ref role="37wK5l" node="3ufQioQQt1D" resolve="MyExecuteStreamHandler" />
+              <node concept="Xjq3P" id="1rGdf3ZxGor" role="37wK5m" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="P$JXv" id="1rGdf3ZxXF9" role="lGtFl">
+        <node concept="TZ5HA" id="1rGdf3ZxXFa" role="TZ5H$">
+          <node concept="1dT_AC" id="1rGdf3ZxXFb" role="1dT_Ay">
+            <property role="1dT_AB" value="Override to set the appropriate " />
+          </node>
+          <node concept="1dT_AA" id="1rGdf3ZyeCn" role="1dT_Ay">
+            <node concept="VVOAv" id="1rGdf3ZyeDY" role="qph3F">
+              <node concept="TZ5HA" id="1rGdf3ZyeE4" role="2Xj1qM">
+                <node concept="1dT_AC" id="1rGdf3ZyeH9" role="1dT_Ay">
+                  <property role="1dT_AB" value="ExecuteStreamHandler" />
+                </node>
+              </node>
+              <node concept="TZ5HA" id="1rGdf3ZyeE0" role="2Xj1qM" />
+            </node>
+          </node>
+          <node concept="1dT_AC" id="1rGdf3ZyeCm" role="1dT_Ay">
+            <property role="1dT_AB" value=" on a forked process." />
           </node>
         </node>
       </node>

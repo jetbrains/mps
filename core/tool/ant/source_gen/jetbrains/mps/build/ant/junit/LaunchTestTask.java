@@ -13,6 +13,7 @@ import jetbrains.mps.build.ant.Macro;
 import java.util.Set;
 import java.util.LinkedHashSet;
 import jetbrains.mps.tool.common.Script;
+import org.apache.tools.ant.taskdefs.ExecuteStreamHandler;
 import jetbrains.mps.build.ant.Arg;
 
 /**
@@ -123,6 +124,19 @@ public class LaunchTestTask extends MpsLoadTask {
     for (File f : myModuleFile) {
       whatToDo.addModuleFile(f);
     }
+  }
+
+  @Override
+  protected ExecuteStreamHandler createStreamHandler() {
+    if (isRunningOnTeamcity()) {
+      return new ServiceMessageFilteringStreamHandler(this);
+    } else {
+      return new OutputLoggingStreamHandler(this);
+    }
+  }
+
+  public boolean isRunningOnTeamcity() {
+    return getProject().getProperties().get("teamcity.version") != null;
   }
 
   private void setForkTrue() {

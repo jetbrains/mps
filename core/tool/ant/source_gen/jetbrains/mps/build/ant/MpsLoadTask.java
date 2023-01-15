@@ -28,6 +28,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.io.FileInputStream;
 import org.jetbrains.annotations.Nullable;
+import org.apache.tools.ant.taskdefs.ExecuteStreamHandler;
 import java.io.InputStream;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -251,7 +252,7 @@ public class MpsLoadTask extends Task {
         commandLine.add(s);
       }
       checkHasEAOption(commandLine);
-      Execute exe = new Execute(new MyExecuteStreamHandler(this));
+      Execute exe = new Execute(createStreamHandler());
       exe.setAntRun(this.getProject());
       exe.setWorkingDirectory(this.getProject().getBaseDir());
       exe.setCommandline(commandLine.toArray(new String[commandLine.size()]));
@@ -480,6 +481,14 @@ public class MpsLoadTask extends Task {
    */
   protected boolean filterClasspathEntry(String entry) {
     return false;
+  }
+
+  /**
+   * Override to set the appropriate {@code ExecuteStreamHandler
+   * } on a forked process.
+   */
+  protected ExecuteStreamHandler createStreamHandler() {
+    return new MyExecuteStreamHandler(this);
   }
 
   /**
