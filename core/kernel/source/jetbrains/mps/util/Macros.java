@@ -22,6 +22,7 @@ import jetbrains.mps.vfs.util.PathFormatChecker;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Set;
 
 class Macros {
@@ -48,7 +49,7 @@ class Macros {
     return FileUtil.resolveParentDirs(expanded);
   }
 
-  protected String shrink(String absolutePath, IFile anchorFile, @Nullable String hintOriginalPath) {
+  protected void shrink(String absolutePath, IFile anchorFile, List<String> alternatives) {
     new PathFormatChecker(absolutePath).osIndependentPath().noDots().absolute();
 
     String fileName;
@@ -60,11 +61,10 @@ class Macros {
         if (pathStartsWith(absolutePath, path)) {
           String relationalPath = shrink(absolutePath, path);
           fileName = "${" + macro + "}" + relationalPath;
-          return fileName;
+          alternatives.add(fileName);
         }
       }
     }
-    return absolutePath;
   }
 
   protected static String shrink(String path, String prefix) {

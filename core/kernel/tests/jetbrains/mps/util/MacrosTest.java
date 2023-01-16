@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,7 +45,7 @@ public class MacrosTest implements EnvironmentAware {
     List<String> tests = generateExpandTests();
     for (String test : tests) {
       String result = MacrosFactory.getGlobal().expandPath(test);
-      if (!checkExpandSeperatorsCorrectness(result)) {
+      if (!checkExpandSeparatorsCorrectness(result)) {
         fail(getFailMessgae("Expand separators:", test, result));
       }
       if (checkMacroPresence(result)) {
@@ -59,7 +59,7 @@ public class MacrosTest implements EnvironmentAware {
     List<String> tests = generateShrinkTests();
     for (String test : tests) {
       String result = MacrosFactory.getGlobal().shrinkPath(test);
-      if (!checkShrinkSeperatorsCorrectness(result)) {
+      if (!checkShrinkSeparatorsCorrectness(result)) {
         fail(getFailMessgae("Shrink separators:", test, result));
       }
       if (!checkMacroPresence(result)) {
@@ -97,11 +97,11 @@ public class MacrosTest implements EnvironmentAware {
       "  Output: " + output + "\n";
   }
 
-  private boolean checkShrinkSeperatorsCorrectness(String s) {
+  private boolean checkShrinkSeparatorsCorrectness(String s) {
     return s.indexOf(negateSeparator(IFileSystem.SEPARATOR.charAt(0))) == -1;
   }
 
-  private boolean checkExpandSeperatorsCorrectness(String s) {
+  private boolean checkExpandSeparatorsCorrectness(String s) {
     return s.indexOf(negateSeparator(File.separatorChar)) == -1;
   }
 

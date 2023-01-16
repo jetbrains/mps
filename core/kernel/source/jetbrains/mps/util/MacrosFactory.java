@@ -26,6 +26,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public final class MacrosFactory implements MacroHelper.Source {
   public static final String MODULE = "${module}";
   public static final String PROJECT_LEGACY = "${project}";
@@ -127,31 +130,32 @@ public final class MacrosFactory implements MacroHelper.Source {
     }
 
     @Override
-    protected String shrink(String absolutePath, IFile anchorFile, @Nullable String hintOriginalPath) {
+    protected void shrink(String absolutePath, IFile anchorFile, List<String> alternatives) {
       new PathFormatChecker(absolutePath).osIndependentPath().noDots().absolute();
 
       final IFile anchorFolder = getAnchorFolder(anchorFile);
       String prefix = anchorFolder.getPath();
       if (pathStartsWith(absolutePath, prefix)) {
-        return MODULE + shrink(absolutePath, prefix);
+        alternatives.add(MODULE + shrink(absolutePath, prefix));
       }
-      final String tryPathVars = super.shrink(absolutePath, anchorFile, hintOriginalPath);
-      if (MacrosFactory.containsMacro(tryPathVars)) {
+      ArrayList<String> a = new ArrayList<>();
+      super.shrink(absolutePath, anchorFile, a);
+      if (a.stream().anyMatch(MacrosFactory::containsMacro)) {
         // HomeMacros superclass found some global path var to substitute, go on then
-        return tryPathVars;
+        alternatives.addAll(a);
+        return;
       }
       // try ${module}/../
       final String parentPrefix = anchorFolder.getParent().getPath();
       if (pathStartsWith(absolutePath, parentPrefix)) {
         // FWIW, shrink() always starts with IFileSystem.SEPARATOR
-        return MODULE + IFileSystem.SEPARATOR + ".." + shrink(absolutePath, parentPrefix);
+        alternatives.add(MODULE + IFileSystem.SEPARATOR + ".." + shrink(absolutePath, parentPrefix));
       }
       // don't care to account for modules at the root, like c:/mymodule/
       final String grandParentPrefix = anchorFolder.getParent().getParent().getPath();
       if (pathStartsWith(absolutePath, grandParentPrefix)) {
-        return MODULE + "/../.." + shrink(absolutePath, grandParentPrefix);
+        alternatives.add(MODULE + "/../.." + shrink(absolutePath, grandParentPrefix));
       }
-      return tryPathVars;
     }
 
     private IFile getAnchorFolder(IFile anchorFile) {
@@ -183,14 +187,14 @@ public final class MacrosFactory implements MacroHelper.Source {
     }
 
     @Override
-    protected String shrink(String absolutePath, IFile anchorFile, @Nullable String hintOriginalPath) {
+    protected void shrink(String absolutePath, IFile anchorFile, List<String> alternatives) {
       new PathFormatChecker(absolutePath).osIndependentPath().noDots().absolute();
 
       String prefix = getProjectDir(anchorFile).getPath();
       if (pathStartsWith(absolutePath, prefix)) {
-        return PROJECT + shrink(absolutePath, prefix);
+        alternatives.add(PROJECT + shrink(absolutePath, prefix));
       }
-      return super.shrink(absolutePath, anchorFile, hintOriginalPath);
+      super.shrink(absolutePath, anchorFile, alternatives);
     }
 
     /**
@@ -253,25 +257,21 @@ public final class MacrosFactory implements MacroHelper.Source {
     }
 
     @Override
-    protected String shrink(String absolutePath, IFile anchorFile, @Nullable String hintOriginalPath) {
+    protected void shrink(String absolutePath, IFile anchorFile, List<String> alternatives) {
       new PathFormatChecker(absolutePath).osIndependentPath().noDots().absolute();
 
       if (pathStartsWith(absolutePath, libExtPath())) {
         String relationalPath = shrink(absolutePath, libExtPath());
-        return LIB_EXT + relationalPath;
-      }
-
-      if (pathStartsWith(absolutePath, platformLibPath())) {
+        alternatives.add(LIB_EXT + relationalPath);
+      } else if (pathStartsWith(absolutePath, platformLibPath())) {
         String relationalPath = shrink(absolutePath, platformLibPath());
-        return PLATFORM_LIB + relationalPath;
-      }
-
-      if (pathStartsWith(absolutePath, homePath())) {
+        alternatives.add(PLATFORM_LIB + relationalPath);
+      } else if (pathStartsWith(absolutePath, homePath())) {
         String relationalPath = shrink(absolutePath, homePath());
-        return MPS_HOME + relationalPath;
+        alternatives.add(MPS_HOME + relationalPath);
       }
 
-      return super.shrink(absolutePath, anchorFile, hintOriginalPath);
+      super.shrink(absolutePath, anchorFile, alternatives);
     }
   }
 }
