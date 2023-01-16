@@ -224,7 +224,7 @@ public class ModuleDescriptorPersistence {
   public static void writeMemento(Memento memento, Element element, final MacroHelper macroHelper) {
     for (String key : memento.getKeys()) {
       if (isPathAttribute(key)) {
-        element.setAttribute(key, macroHelper.shrinkPath(memento.get(key)));
+        element.setAttribute(key, macroHelper.shrinkPath(memento.get(key), memento.getPathSpec(key)));
       } else {
         if (key.startsWith(Memento.PATH_SPEC_PREFIX)) {
           // don't serialize internal values

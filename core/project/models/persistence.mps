@@ -7616,7 +7616,7 @@
                       </node>
                       <node concept="2OqwBi" id="56cLWC122cV" role="37wK5m">
                         <node concept="liA8E" id="56cLWC122tp" role="2OqNvi">
-                          <ref role="37wK5l" to="18ew:~MacroHelper.shrinkPath(java.lang.String)" resolve="shrinkPath" />
+                          <ref role="37wK5l" to="18ew:~MacroHelper.shrinkPath(java.lang.String,java.lang.String)" resolve="shrinkPath" />
                           <node concept="2OqwBi" id="56cLWC122Cg" role="37wK5m">
                             <node concept="liA8E" id="56cLWC122Ch" role="2OqNvi">
                               <ref role="37wK5l" to="dush:~Memento.get(java.lang.String)" resolve="get" />
@@ -7626,6 +7626,17 @@
                             </node>
                             <node concept="37vLTw" id="56cLWC122Cj" role="2Oq$k0">
                               <ref role="3cqZAo" node="56cLWC11Gov" resolve="memento" />
+                            </node>
+                          </node>
+                          <node concept="2OqwBi" id="78L$qqWH361" role="37wK5m">
+                            <node concept="37vLTw" id="78L$qqWH1Tg" role="2Oq$k0">
+                              <ref role="3cqZAo" node="56cLWC11Gov" resolve="memento" />
+                            </node>
+                            <node concept="liA8E" id="78L$qqWH4f_" role="2OqNvi">
+                              <ref role="37wK5l" to="dush:~Memento.getPathSpec(java.lang.String)" resolve="getPathSpec" />
+                              <node concept="37vLTw" id="78L$qqWH5w8" role="37wK5m">
+                                <ref role="3cqZAo" node="56cLWC11LhY" resolve="key" />
+                              </node>
                             </node>
                           </node>
                         </node>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -90,6 +90,8 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
    */
   private IFile myContentDir; // might be null when just created
 
+  private String myContentDirPathSpec = null;
+
   private final SourcePaths mySourcePathStorage;
   private final List<PathListener> myListeners = new ArrayList<>();
 
@@ -177,6 +179,9 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
   public void save(@NotNull Memento memento) {
     if (myContentDir != null) {
       memento.put(CONTENT_PATH, myContentDir.getPath());
+      if (myContentDirPathSpec != null) {
+        memento.putPathSpec(CONTENT_PATH, myContentDirPathSpec);
+      }
     }
     memento.put("type", getType());
     for (SourceRootKind kind : getSupportedFileKinds1()) {
@@ -206,6 +211,7 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
       myFileSystem = ((MementoWithFS) memento).getFileSystem();
     }
     String path = memento.get(CONTENT_PATH);
+    myContentDirPathSpec = memento.getPathSpec(CONTENT_PATH);
     myContentDir = (path != null) ? myFileSystem.getFile(path) : null;
     for (SourceRootKind kind : getSupportedFileKinds1()) {
       for (Memento root : memento.getChildren(kind.getName())) {

@@ -42,8 +42,8 @@ public interface MacroHelper {
    */
   default String shrinkPath(@Nullable String absolutePath, @Nullable String hintOriginalPath) {
     // not abstract method to facilitate transition of clients in case they got own MacroHelper implementation.
-    // can remove the body once the method
-    return absolutePath;
+    // can remove the body once the method is around for a while.
+    return shrinkPath(absolutePath);
   }
 
   /**

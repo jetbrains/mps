@@ -146,15 +146,21 @@ public final class MacrosFactory implements MacroHelper.Source {
         return;
       }
       // try ${module}/../
-      final String parentPrefix = anchorFolder.getParent().getPath();
+      final IFile anchorParent = anchorFolder.getParent();
+      final String parentPrefix = anchorParent.getPath();
       if (pathStartsWith(absolutePath, parentPrefix)) {
         // FWIW, shrink() always starts with IFileSystem.SEPARATOR
         alternatives.add(MODULE + IFileSystem.SEPARATOR + ".." + shrink(absolutePath, parentPrefix));
       }
-      // don't care to account for modules at the root, like c:/mymodule/
-      final String grandParentPrefix = anchorFolder.getParent().getParent().getPath();
-      if (pathStartsWith(absolutePath, grandParentPrefix)) {
-        alternatives.add(MODULE + "/../.." + shrink(absolutePath, grandParentPrefix));
+      if (anchorParent.getParent() != null) {
+        // Generally, I wouldn't care to account for modules at the root, like c:/mymodule/
+        // however, we face anchor files like abc.jar!/META-INF/module.xml, with anchorFolder == META-INF,
+        // anchorParent being jar file root entry !/, and grandparent, jar file, not accessible from JarEntryFile
+        // I'm not sure if I agree with this, but without a change in IFileSystem we'd better guard it here
+        final String grandParentPrefix = anchorParent.getParent().getPath();
+        if (pathStartsWith(absolutePath, grandParentPrefix)) {
+          alternatives.add(MODULE + "/../.." + shrink(absolutePath, grandParentPrefix));
+        }
       }
     }
 
@@ -259,14 +265,16 @@ public final class MacrosFactory implements MacroHelper.Source {
     @Override
     protected void shrink(String absolutePath, IFile anchorFile, List<String> alternatives) {
       new PathFormatChecker(absolutePath).osIndependentPath().noDots().absolute();
-
+      // series of if, not else-if, as few paths (e.g. platform_lib and mps_home) can match
       if (pathStartsWith(absolutePath, libExtPath())) {
         String relationalPath = shrink(absolutePath, libExtPath());
         alternatives.add(LIB_EXT + relationalPath);
-      } else if (pathStartsWith(absolutePath, platformLibPath())) {
+      }
+      if (pathStartsWith(absolutePath, platformLibPath())) {
         String relationalPath = shrink(absolutePath, platformLibPath());
         alternatives.add(PLATFORM_LIB + relationalPath);
-      } else if (pathStartsWith(absolutePath, homePath())) {
+      }
+      if (pathStartsWith(absolutePath, homePath())) {
         String relationalPath = shrink(absolutePath, homePath());
         alternatives.add(MPS_HOME + relationalPath);
       }
