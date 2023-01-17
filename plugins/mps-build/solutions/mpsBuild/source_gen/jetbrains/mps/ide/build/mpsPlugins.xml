@@ -135,14 +135,14 @@
     </echoxml>
     <jar destfile="${build.layout}/mps-modelchecker/languages/jetbrains.mps.ide.modelchecker.jar" duplicate="preserve">
       <fileset dir="${plugin_home}/mps-modelchecker/solution" includes="icons/**" />
-      <fileset dir="${plugin_home}/mps-modelchecker/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${mps_home}/plugins/mps-modelchecker/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.ide.modelchecker.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/mps-modelchecker-solution">
       <fileset dir="${plugin_home}/mps-modelchecker/solution" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/mps-modelchecker/languages/jetbrains.mps.ide.modelchecker-src.jar" duplicate="preserve">
-      <fileset dir="${plugin_home}/mps-modelchecker/source_gen">
+      <fileset dir="${mps_home}/plugins/mps-modelchecker/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
@@ -204,7 +204,7 @@
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <zipfileset file="${basedir}/plugins/mps-modelchecker/platform/jetbrains.mps.ide.modelchecker.platform.msd" prefix="module" />
+      <zipfileset file="${plugin_home}/mps-modelchecker/platform/jetbrains.mps.ide.modelchecker.platform.msd" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/mps-modelchecker-platform-models" prefix="module/models" />
     </jar>
     <mkdir dir="${build.layout}/mps-memtool" />
@@ -397,7 +397,7 @@
       <library file="${artifacts.mpsWorkbench}/languages/workbench/jetbrains.mps.lang.plugin.standalone.jar" />
       <chunk>
         <module file="${plugin_home}/mps-modelchecker/solution/jetbrains.mps.ide.modelchecker.msd" />
-        <module file="${basedir}/plugins/mps-modelchecker/platform/jetbrains.mps.ide.modelchecker.platform.msd" />
+        <module file="${plugin_home}/mps-modelchecker/platform/jetbrains.mps.ide.modelchecker.platform.msd" />
       </chunk>
       <jvmargs>
         <arg value="-ea" />
@@ -608,7 +608,7 @@
   </target>
   
   <target name="cleanSources">
-    <delete dir="${plugin_home}/mps-modelchecker/source_gen" />
+    <delete dir="${mps_home}/plugins/mps-modelchecker/source_gen" />
     <delete dir="${plugin_home}/mps-modelchecker/platform/source_gen" />
   </target>
 </project>
