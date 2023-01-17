@@ -19,8 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.build.behavior.BuildFolderMacro__BehaviorDescriptor;
-import jetbrains.mps.vfs.IFileSystem;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -50,6 +48,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
       // after migration to new FS, protocol should be passed here and the corresponding FS should do path simplification
       String expanded = path.replace(MacrosFactory.MODULE, moduleSourceDir.getPath());
       return FileUtil.resolveParentDirs(expanded);
+      // XXX I think we shall keep ${module} macro and resolve it in PathConverter the moment ModuleChecker cares about
+      //     actual value.
     }
     if (path.startsWith("${")) {
       int index = path.indexOf("}");
@@ -68,21 +68,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
         }
       }
       if (found == null) {
+        // TODO not sute this is the proper place for error checking, MacroHelper has to translate paths, and
+        //     ModuleChecker shall decide whether these paths are ok or not.
         reporter.handle(Message.createMessage(MessageKind.ERROR, getClass().getName(), "macro is not declared in build script: " + path));
-        return path;
+        // fall-through
       }
-
-      String localPath = BuildFolderMacro__BehaviorDescriptor.evaluate_id4jjtc7WZOzA.invoke(found, myContext);
-      if (localPath == null) {
-        String msg = String.format("cannot resolve local path: %s, macro has no default value", path);
-        reporter.handle(Message.createMessage(MessageKind.ERROR, getClass().getName(), msg, SNodeOperations.getPointer(found)));
-        return path;
-      }
-
-      String relPath = path.substring(index + 1);
-      String fullPath = localPath + IFileSystem.SEPARATOR + relPath;
-      // after migration to new FS, protocol should be passed here and the corresponding FS should do path simplification
-      return FileUtil.resolveParentDirs(fullPath);
+      // keep value with macro, PathConverter that takes these values when ModuleChecker needs them knows how to deal
+      // with macros. No need to go back and forth to full path and back.
+      return path;
     }
     return path;
   }
