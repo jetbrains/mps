@@ -14695,6 +14695,11 @@
             <ref role="3bR37D" to="ffeo:1ULLXZL0gZG" resolve="org.junit.junit5" />
           </node>
         </node>
+        <node concept="1SiIV0" id="6vgd21jZ32P" role="3bR37C">
+          <node concept="3bR9La" id="6vgd21jZ32Q" role="1SiIV1">
+            <ref role="3bR37D" to="ffeo:7MSVDs3$Uns" resolve="jetbrains.mps.baseLanguage.unitTest.runtime" />
+          </node>
+        </node>
       </node>
       <node concept="1E1JtD" id="4MTm4DjPIIE" role="2G$12L">
         <property role="BnDLt" value="true" />

@@ -86,6 +86,7 @@
     <import index="i5cy" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent.atomic(JDK/)" />
     <import index="rbkg" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.jupiter.api.extension(org.junit.junit5/)" />
     <import index="yqm7" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.jupiter.api(jetbrains.mps.lang.test.junit5/)" />
+    <import index="4rfc" ref="r:3cf16c72-eb63-43af-9e50-31efa02178ea(jetbrains.mps.baseLanguage.unitTest.runtime)" />
     <import index="8qxk" ref="r:3dddb2c7-b2ba-4381-896a-2e702ca1fb6e(jetbrains.mps.lang.dataFlow.framework)" implicit="true" />
     <import index="35tq" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.scope(MPS.Core/)" implicit="true" />
   </imports>
@@ -128,9 +129,14 @@
       </concept>
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
+        <child id="1188214630783" name="value" index="2B76xF" />
       </concept>
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
+      </concept>
+      <concept id="1188214545140" name="jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue" flags="ng" index="2B6LJw">
+        <reference id="1188214555875" name="key" index="2B6OnR" />
+        <child id="1188214607812" name="value" index="2B70Vg" />
       </concept>
       <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
         <reference id="2820489544401957798" name="classifier" index="HV5vE" />
@@ -7045,6 +7051,15 @@
     </node>
     <node concept="3uibUv" id="3hj1t46ghDZ" role="EKbjA">
       <ref role="3uigEE" to="79ha:7KC1aYnI6jD" resolve="EnvironmentAware" />
+    </node>
+    <node concept="2AHcQZ" id="6vgd21jOf8h" role="2AJF6D">
+      <ref role="2AI5Lk" to="rbkg:~ExtendWith" resolve="ExtendWith" />
+      <node concept="2B6LJw" id="6vgd21jOjrO" role="2B76xF">
+        <ref role="2B6OnR" to="rbkg:~ExtendWith.value()" resolve="value" />
+        <node concept="3VsKOn" id="6vgd21jP0WM" role="2B70Vg">
+          <ref role="3VsUkX" to="4rfc:5gsHVKCieoX" resolve="EnvironmentAwareExtension" />
+        </node>
+      </node>
     </node>
   </node>
   <node concept="312cEu" id="18jf_F1WDsS">
@@ -16936,6 +16951,9 @@
     </node>
     <node concept="2tJIrI" id="4dqLDEYZ0aJ" role="jymVt" />
     <node concept="3Tm1VV" id="4dqLDEYYwgE" role="1B3o_S" />
+    <node concept="3uibUv" id="1rGdf3YSCw5" role="EKbjA">
+      <ref role="3uigEE" to="rbkg:~Extension" resolve="Extension" />
+    </node>
     <node concept="3uibUv" id="4dqLDEYYwCV" role="EKbjA">
       <ref role="3uigEE" to="rbkg:~BeforeAllCallback" resolve="BeforeAllCallback" />
     </node>
@@ -17104,7 +17122,7 @@
       <node concept="37vLTG" id="4dqLDEZffGb" role="3clF46">
         <property role="TrG5h" value="invocation" />
         <node concept="3uibUv" id="4dqLDEZffGc" role="1tU5fm">
-          <ref role="3uigEE" to="rbkg:~InvocationInterceptor$Invocation" resolve="Invocation" />
+          <ref role="3uigEE" to="rbkg:~InvocationInterceptor$Invocation" resolve="InvocationInterceptor.Invocation" />
           <node concept="3uibUv" id="4dqLDEZffGd" role="11_B2D">
             <ref role="3uigEE" to="wyt6:~Void" resolve="Void" />
           </node>
@@ -17176,7 +17194,7 @@
                       <node concept="3clFbF" id="4dqLDEZfxWR" role="3cqZAp">
                         <node concept="2OqwBi" id="4dqLDEZfyrU" role="3clFbG">
                           <node concept="37vLTw" id="4dqLDEZfxWQ" role="2Oq$k0">
-                            <ref role="3cqZAo" node="4dqLDEZfihT" resolve="throwableRef" />
+                            <ref role="3cqZAo" node="4dqLDEZfihT" resolve="throwable" />
                           </node>
                           <node concept="liA8E" id="4dqLDEZfz5N" role="2OqNvi">
                             <ref role="37wK5l" to="i5cy:~AtomicReference.set(java.lang.Object)" resolve="set" />
@@ -17244,7 +17262,7 @@
             </node>
             <node concept="2OqwBi" id="4dqLDEZfDXX" role="33vP2m">
               <node concept="37vLTw" id="4dqLDEZfDXY" role="2Oq$k0">
-                <ref role="3cqZAo" node="4dqLDEZfihT" resolve="throwableRef" />
+                <ref role="3cqZAo" node="4dqLDEZfihT" resolve="throwable" />
               </node>
               <node concept="liA8E" id="4dqLDEZfDXZ" role="2OqNvi">
                 <ref role="37wK5l" to="i5cy:~AtomicReference.get()" resolve="get" />
@@ -17269,7 +17287,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="4dqLDEZffGl" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="3UR2Jj" id="4dqLDEZfg6M" role="lGtFl">

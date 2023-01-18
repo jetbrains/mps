@@ -346,6 +346,7 @@
       <modulePath path="$PROJECT_DIR$/plugins/mps-project-migrations/solution/jetbrains.mps.ide.mpsmigration.msd" folder="platform.migration" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-spellcheck/modules/spellcheck/jetbrains.mps.editor.spellcheck.msd" folder="platform.spellcheck" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-testing/languages/baseLanguage/unitTest/jetbrains.mps.baseLanguage.unitTest.mpl" folder="core.baseLanguage.unitTest" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-testing/languages/baseLanguage/unitTest/runtime/jetbrains.mps.baseLanguage.unitTest.runtime.msd" folder="core.baseLanguage.unitTest" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-testing/languages/baseLanguage/unitTest/solutions/sandbox/jetbrains.mps.baseLanguage.unitTest.sandbox.msd" folder="core.baseLanguage.unitTest" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-testing/languages/gentest.rt/jetbrains.mps.lang.test.generator.rt.msd" folder="core.languages.test" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-testing/languages/gentest/jetbrains.mps.lang.test.generator.mpl" folder="core.languages.test" />

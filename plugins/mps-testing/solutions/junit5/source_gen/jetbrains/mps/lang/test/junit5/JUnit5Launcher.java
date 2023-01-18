@@ -6,6 +6,7 @@ import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.lang.test.launcher.WorkerCallback;
 import jetbrains.mps.tool.common.Script;
 import jetbrains.mps.project.Project;
+import jetbrains.mps.baseLanguage.unitTest.runtime.EnvironmentAwareExtension;
 import org.junit.platform.commons.PreconditionViolationException;
 import org.junit.platform.launcher.core.LauncherConfig;
 import org.junit.vintage.engine.VintageTestEngine;
@@ -42,7 +43,7 @@ public class JUnit5Launcher {
 
   public void launchTests() {
     Project project = myEnvironment.createProject(new ModuleFilesListProjectStrategy(myWhatToDo.getModules()));
-    EnvironmentAwareExtension.ourEnvironment.set(myEnvironment);
+    EnvironmentAwareExtension.setEnvironment(myEnvironment);
 
     FailureDetector failureDetector = new FailureDetector();
 
