@@ -6,7 +6,7 @@
     </modelRoot>
   </models>
   <facets>
-    <facet compile="mps" classes="off" ext="no" type="java">
+    <facet compile="mps" classes="mps" ext="no" type="java">
       <classes generated="true" path="${module}/classes_gen" />
     </facet>
   </facets>
@@ -25,6 +25,7 @@
     <dependency reexport="false">f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)</dependency>
     <dependency reexport="false">49808fad-9d41-4b96-83fa-9231640f6b2b(JUnit)</dependency>
     <dependency reexport="true">63b449db-0918-4a4a-a891-2c430ab133e4(org.junit.junit5)</dependency>
+    <dependency reexport="false">03ec8383-884a-4374-a96e-ddef48757b1d(jetbrains.mps.lang.test.launcher)</dependency>
   </dependencies>
   <languageVersions>
     <language slang="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" version="12" />
@@ -55,6 +56,7 @@
     <module reference="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" version="0" />
     <module reference="68015e26-cc4d-49db-8715-b643faea1769(jetbrains.mps.lang.test.generator)" version="0" />
     <module reference="c234a56a-502f-4751-aded-6f9846fff7ce(jetbrains.mps.lang.test.junit5)" version="0" />
+    <module reference="03ec8383-884a-4374-a96e-ddef48757b1d(jetbrains.mps.lang.test.launcher)" version="0" />
     <module reference="9ded098b-ad6a-4657-bfd9-48636cfe8bc3(jetbrains.mps.lang.traceable)" version="0" />
     <module reference="20351dc3-a2df-46f5-b667-fc9adab1f1c9(jetbrains.mps.make)" version="0" />
     <module reference="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" version="0" />

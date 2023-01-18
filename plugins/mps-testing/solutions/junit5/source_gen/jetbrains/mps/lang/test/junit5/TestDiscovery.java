@@ -9,8 +9,7 @@ import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.module.ReloadableModule;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
+import jetbrains.mps.baseLanguage.unitTest.behavior.ITestCase__BehaviorDescriptor;
 import jetbrains.mps.util.JavaNameUtil;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -21,6 +20,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -53,7 +53,7 @@ public class TestDiscovery {
 
   public void surveyModel(SModel model, ClassLoader moduleCL) {
     for (SNode testCase : SModelOperations.roots(((SModel) model), CONCEPTS.ITestCase$Fp)) {
-      String testClassName = ((String) BHReflection.invoke0(testCase, CONCEPTS.ITestCase$Fp, SMethodIdV2.create("getClassName", 1216136193905L, 0x4f991fba9b1d8000L)));
+      String testClassName = ITestCase__BehaviorDescriptor.getClassName_idhGBnqtL.invoke(testCase);
       myDiscoveryVisitor.visitTestRoot(testCase, testClassName, moduleCL);
     }
 
@@ -102,7 +102,7 @@ public class TestDiscovery {
       });
 
       if (Sequence.fromIterable(junit4TestMethods).isNotEmpty() || Sequence.fromIterable(junit5TestMethods).isNotEmpty()) {
-        String testClassName = ((String) BHReflection.invoke0(classConcept, CONCEPTS.INamedConcept$Kd, SMethodIdV2.create("getFqName", 1213877404258L, 0x553941aeb020c32eL)));
+        String testClassName = INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(classConcept);
         myDiscoveryVisitor.visitTestRoot(classConcept, testClassName, moduleCL);
 
       }
@@ -116,7 +116,6 @@ public class TestDiscovery {
     /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
     /*package*/ static final SConcept PublicVisibility$R0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility");
     /*package*/ static final SConcept PrivateVisibility$l0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
-    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 
   private static final class PROPS {

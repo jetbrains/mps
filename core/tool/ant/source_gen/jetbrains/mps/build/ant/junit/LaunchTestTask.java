@@ -35,7 +35,7 @@ public class LaunchTestTask extends MpsLoadTask {
 
   public static final String MPS_TESTING_PLUGIN_HOME = "plugins/mps-testing";
   public static final String JUNIT5_SERVICES_JAR = "lib/mps-testing.jar";
-  public static final String JUNIT5_SUPPORT_JAR = "languages/junit5/jetbrains.mps.lang.test.junit5.jar";
+  public static final String LAUNCHER_SUPPORT_JAR = "languages/launcher/jetbrains.mps.lang.test.launcher.jar";
 
   public static final String HALT_ON_FAILURE_PROPERTY = "launchtests.haltonfailure";
   public static final String TEST_REPORTS_DIR_PROPERTY = "launchtests.testReportsDir";
@@ -43,7 +43,7 @@ public class LaunchTestTask extends MpsLoadTask {
   private List<File> myModuleFile = new ArrayList<>();
 
   public LaunchTestTask() {
-    super("jetbrains.mps.lang.test.junit5.JUnit5LauncherWorker");
+    super("jetbrains.mps.lang.test.launcher.LaunchTestWorker");
   }
 
   @Override
@@ -98,15 +98,11 @@ public class LaunchTestTask extends MpsLoadTask {
     if (!(mpsTestingPluginHome.exists())) {
       throw new BuildException("mps-testing plugin not found");
     }
-    File junit5support = new File(mpsTestingPluginHome, JUNIT5_SUPPORT_JAR);
-    if (!(junit5support.exists())) {
-      throw new BuildException("JUnit5 support library not found");
+    File launcherSupport = new File(mpsTestingPluginHome, LAUNCHER_SUPPORT_JAR);
+    if (!(launcherSupport.exists())) {
+      throw new BuildException("launchtests support library not found");
     }
-    cp.add(junit5support);
-    File libDir = new File(mpsTestingPluginHome, "lib");
-    for (File jarFile : libDir.listFiles((File dir, String name) -> name.endsWith(".jar"))) {
-      cp.add(jarFile);
-    }
+    cp.add(launcherSupport);
 
     return cp;
   }

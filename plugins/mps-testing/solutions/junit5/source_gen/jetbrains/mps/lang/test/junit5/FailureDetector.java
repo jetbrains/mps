@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.ArrayList;
 import org.junit.platform.launcher.TestIdentifier;
 import org.junit.platform.engine.TestExecutionResult;
+import jetbrains.mps.lang.test.launcher.WorkerCallback;
 
 public class FailureDetector implements TestExecutionListener {
   private List<String> errors = new ArrayList<>();
@@ -22,9 +23,9 @@ public class FailureDetector implements TestExecutionListener {
     return !(errors.isEmpty());
   }
 
-  public void flushErrors(List<String> errorsCollection) {
+  public void flushErrors(WorkerCallback callback) {
     for (String err : errors) {
-      errorsCollection.add(err);
+      callback.error(err);
     }
   }
 }

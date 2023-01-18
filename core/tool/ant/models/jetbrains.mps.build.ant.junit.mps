@@ -226,12 +226,6 @@
         <reference id="1170346070688" name="classifier" index="1Y3XeK" />
       </concept>
     </language>
-    <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
-      <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
-        <child id="1199569906740" name="parameter" index="1bW2Oz" />
-        <child id="1199569916463" name="body" index="1bW5cS" />
-      </concept>
-    </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
         <child id="8465538089690331502" name="body" index="TZ5H$" />
@@ -314,11 +308,11 @@
     </node>
     <node concept="Wx3nA" id="5gsHVKCOxLY" role="jymVt">
       <property role="3TUv4t" value="true" />
-      <property role="TrG5h" value="JUNIT5_SUPPORT_JAR" />
+      <property role="TrG5h" value="LAUNCHER_SUPPORT_JAR" />
       <node concept="3Tm1VV" id="5gsHVKCOxLZ" role="1B3o_S" />
       <node concept="17QB3L" id="5gsHVKCOxM0" role="1tU5fm" />
       <node concept="Xl_RD" id="5gsHVKCOxM1" role="33vP2m">
-        <property role="Xl_RC" value="languages/junit5/jetbrains.mps.lang.test.junit5.jar" />
+        <property role="Xl_RC" value="languages/launcher/jetbrains.mps.lang.test.launcher.jar" />
       </node>
     </node>
     <node concept="2tJIrI" id="HwplGLPhwg" role="jymVt" />
@@ -365,7 +359,7 @@
         <node concept="XkiVB" id="4MVYzzgwoag" role="3cqZAp">
           <ref role="37wK5l" to="644x:4vDU0BPxMGt" resolve="MpsLoadTask" />
           <node concept="Xl_RD" id="4MVYzzgwocN" role="37wK5m">
-            <property role="Xl_RC" value="jetbrains.mps.lang.test.junit5.JUnit5LauncherWorker" />
+            <property role="Xl_RC" value="jetbrains.mps.lang.test.launcher.LaunchTestWorker" />
           </node>
         </node>
       </node>
@@ -761,7 +755,7 @@
         </node>
         <node concept="3cpWs8" id="5gsHVKA6r2V" role="3cqZAp">
           <node concept="3cpWsn" id="5gsHVKA6r2W" role="3cpWs9">
-            <property role="TrG5h" value="junit5support" />
+            <property role="TrG5h" value="launcherSupport" />
             <node concept="3uibUv" id="5gsHVKA6qf4" role="1tU5fm">
               <ref role="3uigEE" to="guwi:~File" resolve="File" />
             </node>
@@ -787,7 +781,7 @@
                   <property role="373rjd" value="true" />
                   <ref role="37wK5l" to="gola:~BuildException.&lt;init&gt;(java.lang.String)" resolve="BuildException" />
                   <node concept="Xl_RD" id="5gsHVKA7n0l" role="37wK5m">
-                    <property role="Xl_RC" value="JUnit5 support library not found" />
+                    <property role="Xl_RC" value="launchtests support library not found" />
                   </node>
                 </node>
               </node>
@@ -813,84 +807,6 @@
               <ref role="37wK5l" to="33ny:~HashSet.add(java.lang.Object)" resolve="add" />
               <node concept="37vLTw" id="5gsHVKCOY$f" role="37wK5m">
                 <ref role="3cqZAo" node="5gsHVKA6r2W" resolve="junit5support" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="5gsHVKA5iSN" role="3cqZAp">
-          <node concept="3cpWsn" id="5gsHVKA5iSO" role="3cpWs9">
-            <property role="TrG5h" value="libDir" />
-            <node concept="3uibUv" id="5gsHVKA5ix$" role="1tU5fm">
-              <ref role="3uigEE" to="guwi:~File" resolve="File" />
-            </node>
-            <node concept="2ShNRf" id="5gsHVKA5iSP" role="33vP2m">
-              <node concept="1pGfFk" id="5gsHVKA5iSQ" role="2ShVmc">
-                <property role="373rjd" value="true" />
-                <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.io.File,java.lang.String)" resolve="File" />
-                <node concept="37vLTw" id="5gsHVKA5iSR" role="37wK5m">
-                  <ref role="3cqZAo" node="5gsHVKA510P" resolve="mpsTestingPluginHome" />
-                </node>
-                <node concept="Xl_RD" id="5gsHVKA5iSS" role="37wK5m">
-                  <property role="Xl_RC" value="lib" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="1DcWWT" id="5gsHVKA5LCh" role="3cqZAp">
-          <node concept="3clFbS" id="5gsHVKA5LCj" role="2LFqv$">
-            <node concept="3clFbF" id="5gsHVKA5WUs" role="3cqZAp">
-              <node concept="2OqwBi" id="5gsHVKA60Mk" role="3clFbG">
-                <node concept="37vLTw" id="5gsHVKA5WUq" role="2Oq$k0">
-                  <ref role="3cqZAo" node="5gsHVK$Y3fQ" resolve="cp" />
-                </node>
-                <node concept="liA8E" id="5gsHVKA63iC" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:~HashSet.add(java.lang.Object)" resolve="add" />
-                  <node concept="37vLTw" id="5gsHVKA64LD" role="37wK5m">
-                    <ref role="3cqZAo" node="5gsHVKA5LCk" resolve="jarFile" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3cpWsn" id="5gsHVKA5LCk" role="1Duv9x">
-            <property role="TrG5h" value="jarFile" />
-            <node concept="3uibUv" id="5gsHVKA5MRi" role="1tU5fm">
-              <ref role="3uigEE" to="guwi:~File" resolve="File" />
-            </node>
-          </node>
-          <node concept="2OqwBi" id="5gsHVKA5U7B" role="1DdaDG">
-            <node concept="37vLTw" id="5gsHVKA5U7C" role="2Oq$k0">
-              <ref role="3cqZAo" node="5gsHVKA5iSO" resolve="libDir" />
-            </node>
-            <node concept="liA8E" id="5gsHVKA5U7D" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~File.listFiles(java.io.FilenameFilter)" resolve="listFiles" />
-              <node concept="1bVj0M" id="5gsHVKA5U7E" role="37wK5m">
-                <node concept="37vLTG" id="5gsHVKA5U7F" role="1bW2Oz">
-                  <property role="TrG5h" value="dir" />
-                  <node concept="3uibUv" id="5gsHVKA5U7G" role="1tU5fm">
-                    <ref role="3uigEE" to="guwi:~File" resolve="File" />
-                  </node>
-                </node>
-                <node concept="37vLTG" id="5gsHVKA5U7H" role="1bW2Oz">
-                  <property role="TrG5h" value="name" />
-                  <node concept="17QB3L" id="5gsHVKA5U7I" role="1tU5fm" />
-                </node>
-                <node concept="3clFbS" id="5gsHVKA5U7J" role="1bW5cS">
-                  <node concept="3clFbF" id="5gsHVKA5U7K" role="3cqZAp">
-                    <node concept="2OqwBi" id="5gsHVKA5U7L" role="3clFbG">
-                      <node concept="37vLTw" id="5gsHVKA5U7M" role="2Oq$k0">
-                        <ref role="3cqZAo" node="5gsHVKA5U7H" resolve="name" />
-                      </node>
-                      <node concept="liA8E" id="5gsHVKA5U7N" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~String.endsWith(java.lang.String)" resolve="endsWith" />
-                        <node concept="Xl_RD" id="5gsHVKA5U7O" role="37wK5m">
-                          <property role="Xl_RC" value=".jar" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
               </node>
             </node>
           </node>
