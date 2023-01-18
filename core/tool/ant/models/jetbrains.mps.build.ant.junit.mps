@@ -278,15 +278,6 @@
         <property role="Xl_RC" value="-DNO_FS_ROOTS_ACCESS_CHECK=true" />
       </node>
     </node>
-    <node concept="Wx3nA" id="5gsHVKD0ca3" role="jymVt">
-      <property role="3TUv4t" value="true" />
-      <property role="TrG5h" value="JUPITER_EXTENSIONS_AUTODETECTION_ENABLED" />
-      <node concept="3Tm1VV" id="5gsHVKD0ca0" role="1B3o_S" />
-      <node concept="17QB3L" id="5gsHVKD0ca1" role="1tU5fm" />
-      <node concept="Xl_RD" id="5gsHVKD0ca2" role="33vP2m">
-        <property role="Xl_RC" value="-Djunit.jupiter.extensions.autodetection.enabled=true" />
-      </node>
-    </node>
     <node concept="2tJIrI" id="5gsHVK_2IgG" role="jymVt" />
     <node concept="Wx3nA" id="5gsHVKA4WnD" role="jymVt">
       <property role="3TUv4t" value="true" />
@@ -406,17 +397,6 @@
               <ref role="37wK5l" node="5gsHVK$OaQa" resolve="argOf" />
               <node concept="37vLTw" id="5gsHVK_2GMx" role="37wK5m">
                 <ref role="3cqZAo" node="5gsHVK_2GMu" resolve="NO_FS_ROOTS_ACCESS_CHECK_OPTION" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="5gsHVKD08LH" role="3cqZAp">
-          <node concept="1rXfSq" id="5gsHVKD08LI" role="3clFbG">
-            <ref role="37wK5l" to="644x:3ufQioQQtn3" resolve="addConfiguredJvmArg" />
-            <node concept="1rXfSq" id="5gsHVKD08LJ" role="37wK5m">
-              <ref role="37wK5l" node="5gsHVK$OaQa" resolve="argOf" />
-              <node concept="37vLTw" id="5gsHVKD0ca6" role="37wK5m">
-                <ref role="3cqZAo" node="5gsHVKD0ca3" resolve="JUPITER_EXTENSIONS_AUTODETECTION" />
               </node>
             </node>
           </node>

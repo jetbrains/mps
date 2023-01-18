@@ -44307,48 +44307,6 @@
               <node concept="m_q07" id="5gsHVKCiWl1" role="39821P">
                 <ref role="m_q06" node="ymnOULATpW" resolve="jetbrains.mps.testing" />
               </node>
-              <node concept="398223" id="5gsHVKCiWwK" role="39821P">
-                <node concept="3_J27D" id="5gsHVKCiWwM" role="Nbhlr">
-                  <node concept="3Mxwew" id="5gsHVKCiW$o" role="3MwsjC">
-                    <property role="3MwjfP" value="services" />
-                  </node>
-                </node>
-                <node concept="28jJK3" id="5gsHVKCiXkD" role="39821P">
-                  <node concept="398BVA" id="5gsHVKCjwzf" role="28jJRO">
-                    <ref role="398BVh" node="ymnOULASEN" resolve="mps_home" />
-                    <node concept="2Ry0Ak" id="5gsHVKCFMxP" role="iGT6I">
-                      <property role="2Ry0Am" value="plugins" />
-                      <node concept="2Ry0Ak" id="5gsHVKCFMHs" role="2Ry0An">
-                        <property role="2Ry0Am" value="mps-build" />
-                        <node concept="2Ry0Ak" id="5gsHVKCFMS4" role="2Ry0An">
-                          <property role="2Ry0Am" value="solutions" />
-                          <node concept="2Ry0Ak" id="5gsHVKCFMWn" role="2Ry0An">
-                            <property role="2Ry0Am" value="mpsBuild" />
-                            <node concept="2Ry0Ak" id="5gsHVKCFN0E" role="2Ry0An">
-                              <property role="2Ry0Am" value="source_gen" />
-                              <node concept="2Ry0Ak" id="5gsHVKCFN4X" role="2Ry0An">
-                                <property role="2Ry0Am" value="jetbrains" />
-                                <node concept="2Ry0Ak" id="5gsHVKCFN9g" role="2Ry0An">
-                                  <property role="2Ry0Am" value="mps" />
-                                  <node concept="2Ry0Ak" id="5gsHVKCFNmI" role="2Ry0An">
-                                    <property role="2Ry0Am" value="ide" />
-                                    <node concept="2Ry0Ak" id="5gsHVKCFNr1" role="2Ry0An">
-                                      <property role="2Ry0Am" value="build" />
-                                      <node concept="2Ry0Ak" id="5gsHVKCFNvk" role="2Ry0An">
-                                        <property role="2Ry0Am" value="org.junit.jupiter.api.extension.Extension" />
-                                      </node>
-                                    </node>
-                                  </node>
-                                </node>
-                              </node>
-                            </node>
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
               <node concept="3_J27D" id="5gsHVKCiWl7" role="Nbhlr">
                 <node concept="3Mxwew" id="5gsHVKCiWl8" role="3MwsjC">
                   <property role="3MwjfP" value="META-INF" />
@@ -49542,10 +49500,10 @@
       </node>
     </node>
     <node concept="1E1JtA" id="7gQEwkA7nSV" role="3989C9">
+      <property role="BnDLt" value="true" />
       <property role="TrG5h" value="jetbrains.mps.console" />
       <property role="3LESm3" value="a8de7923-dc6f-4aa1-b8a9-2d19ffee3edd" />
       <property role="2GAjPV" value="true" />
-      <property role="BnDLt" value="true" />
       <node concept="1E1SXE" id="1KUoCioUeUO" role="3bR37C">
         <property role="1E1SXH" value="true" />
         <ref role="1E1SXG" node="7gQEwkA7l8u" resolve="consoleTool" />
@@ -54540,14 +54498,6 @@
         <node concept="pUk6x" id="1nTn8MoO6pg" role="pUk7w" />
       </node>
     </node>
-  </node>
-  <node concept="2DRAQV" id="5gsHVKCjw7f">
-    <property role="3GE5qa" value="ide.plugins" />
-    <property role="TrG5h" value="org.junit.jupiter.api.extension.Extension" />
-    <node concept="2DRAP_" id="5gsHVKCjwkg" role="2DRAPQ">
-      <property role="2DPR8u" value="jetbrains.mps.lang.test.junit5.EnvironmentAwareExtension" />
-    </node>
-    <node concept="2DRAP_" id="5gsHVKCjwsR" role="2DRAPQ" />
   </node>
 </model>
 

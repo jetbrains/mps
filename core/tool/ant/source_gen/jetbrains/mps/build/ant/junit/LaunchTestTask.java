@@ -31,7 +31,6 @@ import jetbrains.mps.build.ant.Arg;
 public class LaunchTestTask extends MpsLoadTask {
 
   public static final String NO_FS_ROOTS_ACCESS_CHECK_OPTION = "-DNO_FS_ROOTS_ACCESS_CHECK=true";
-  public static final String JUPITER_EXTENSIONS_AUTODETECTION_ENABLED = "-Djunit.jupiter.extensions.autodetection.enabled=true";
 
   public static final String MPS_TESTING_PLUGIN_HOME = "plugins/mps-testing";
   public static final String JUNIT5_SERVICES_JAR = "lib/mps-testing.jar";
@@ -53,7 +52,6 @@ public class LaunchTestTask extends MpsLoadTask {
     setFailOnError(true);
     setForkTrue();
     addConfiguredJvmArg(argOf(NO_FS_ROOTS_ACCESS_CHECK_OPTION));
-    addConfiguredJvmArg(argOf(JUPITER_EXTENSIONS_AUTODETECTION_ENABLED));
   }
 
   @Override

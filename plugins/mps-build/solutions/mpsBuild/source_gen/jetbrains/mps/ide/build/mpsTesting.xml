@@ -1027,7 +1027,6 @@
     <mkdir dir="${build.layout}/mps-testing/lib" />
     <jar destfile="${build.layout}/mps-testing/lib/mps-testing.jar" duplicate="preserve">
       <zipfileset file="${mps_home}/plugins/mps-testing/META-INF/plugin.xml" prefix="META-INF" />
-      <zipfileset file="${mps_home}/plugins/mps-build/solutions/mpsBuild/source_gen/jetbrains/mps/ide/build/org.junit.jupiter.api.extension.Extension" prefix="META-INF/services" />
     </jar>
     <echo file="${build.layout}/build.properties">mpsBootstrapCore.version.major=${mpsBootstrapCore.version.major}${line.separator}mpsBootstrapCore.version.minor=${mpsBootstrapCore.version.minor}${line.separator}mpsBootstrapCore.version.bugfixNr=${mpsBootstrapCore.version.bugfixNr}${line.separator}mpsBootstrapCore.version.eap=${mpsBootstrapCore.version.eap}${line.separator}mpsBootstrapCore.version=${mpsBootstrapCore.version}</echo>
   </target>
