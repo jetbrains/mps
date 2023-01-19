@@ -132,6 +132,7 @@ public class ButtonTabsComponent extends BaseTabsComponent<ButtonEditorTab> {
       removeContent(myToolbar.getComponent());
     }
     ActionToolbar actionToolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.EDITOR_TOOLBAR, group, true);
+    actionToolbar.setTargetComponent(getComponent());
     actionToolbar.setLayoutPolicy(ActionToolbar.WRAP_LAYOUT_POLICY);
     myToolbar = actionToolbar;
     setContent(myToolbar.getComponent());
