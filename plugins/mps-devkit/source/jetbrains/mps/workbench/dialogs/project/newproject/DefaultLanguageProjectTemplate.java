@@ -104,7 +104,7 @@ public class DefaultLanguageProjectTemplate implements LanguageProjectTemplate {
   @NotNull
   @Override
   public TemplateFiller getTemplateFiller() {
-    return project -> StartupManager.getInstance(project.getProject()).registerPostStartupActivity(() -> project.getModelAccess().executeCommand(() -> {
+    return project -> StartupManager.getInstance(project.getProject()).runAfterOpened(() -> project.getModelAccess().executeCommandInEDT(() -> {
       final LanguageAndSolutionsProducer lp = new LanguageAndSolutionsProducer(project);
       lp.withRuntimeSolution(myRuntimeSolution.isSelected()).withSandboxSolution(mySandboxSolution.isSelected());
       try {
