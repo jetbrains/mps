@@ -26,6 +26,8 @@ import com.intellij.openapi.wm.IdeFocusManager;
 import com.intellij.ui.DoubleClickListener;
 import com.intellij.ui.TreeUIHelper;
 import com.intellij.ui.tree.AsyncTreeModel;
+import com.intellij.util.concurrency.Invoker;
+import com.intellij.util.concurrency.InvokerSupplier;
 import com.intellij.util.ui.tree.WideSelectionTreeUI;
 import com.intellij.util.ui.update.MergingUpdateQueue;
 import com.intellij.util.ui.update.Update;
@@ -34,7 +36,6 @@ import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.concurrency.Promise;
 
 import javax.swing.AbstractAction;
 import javax.swing.JPopupMenu;
@@ -46,8 +47,6 @@ import javax.swing.event.TreeModelEvent;
 import javax.swing.event.TreeModelListener;
 import javax.swing.event.TreeWillExpandListener;
 import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.ExpandVetoException;
-import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
@@ -64,8 +63,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeoutException;
 
 public abstract class MPSTree extends DnDAwareTree implements Disposable {
   public static final String PATH = "path";
@@ -91,12 +88,11 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
   private boolean myDisposed = false;
   private Disposable myDisposable;
 
-  private MPSTree(DefaultTreeModel defaultTreeModel, Disposable disposable) {
+  private MPSTree(DefaultTreeModel defaultTreeModel) {
     // TreeModel instance shall be the same during lifetime of the MPSTree instance
     // otherwise TreeModelListener instances attached to the model get lost
-//    super(new DefaultTreeModel(null));
-    super(new AsyncTreeModel(defaultTreeModel, disposable));
-    myDisposable = disposable;
+    super(new AsyncTreeModel(defaultTreeModel, ((DefaultTreeModelWithInvokerSupplier)defaultTreeModel).getDisposable()));
+    myDisposable = ((DefaultTreeModelWithInvokerSupplier)defaultTreeModel).getDisposable();
 
     myDefaultTreeModel = defaultTreeModel;
 
@@ -173,14 +169,30 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
   }
 
   protected MPSTree() {
-    this(new DefaultTreeModel(null), new Disposable() {
+    this(new DefaultTreeModelWithInvokerSupplier(new Disposable() {
       @Override
       public void dispose() {
         //Adapter to allow this MPSTree to be a disposable parent to the AsyncModel, which demands a Disposable instance to be passed in the constructor
       }
-    });
+    }));
   }
+  private static class DefaultTreeModelWithInvokerSupplier extends DefaultTreeModel implements InvokerSupplier {
+    private final Disposable myDisposable;
 
+    public DefaultTreeModelWithInvokerSupplier(Disposable disposable) {
+      super(null);
+      myDisposable = disposable;
+    }
+
+    public Disposable getDisposable() {
+      return myDisposable;
+    }
+
+    @Override
+    public @NotNull Invoker getInvoker() {
+      return Invoker.forBackgroundPoolWithoutReadAction(myDisposable);
+    }
+  }
   /**
    * Initialization sequence common for each node initialized in the tree.
    * Shall invoke {@link MPSTreeNode#doInit()} to perform actual initialization, does this through appropriate runnable
