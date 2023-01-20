@@ -39,7 +39,7 @@ public class typeOf_CastExpression_InferenceRule extends AbstractInferenceRule_R
             if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(exprType), CONCEPTS.IInferredType$Qo)) {
               {
                 SNode _nodeToCheck_1029348928467 = castExpression;
-                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6469607165247481719", 0, null);
+                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, "type " + SNodeOperations.present(typeCheckingContext.getExpandedNode(exprType)) + " is not comparable with " + SNodeOperations.present(castType), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6469607165247481719", 0, null);
                 typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getExpandedNode(exprType), (SNode) castType, false, true, _info_12389875345);
               }
             } else {
