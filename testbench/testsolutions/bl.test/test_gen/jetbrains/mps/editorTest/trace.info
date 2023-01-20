@@ -7908,7 +7908,7 @@
       <node id="346011455438296733" at="24,62,25,36" concept="2" />
       <node id="346011455438296733" at="30,52,31,19" concept="11" />
       <node id="346011455438296733" at="35,51,36,70" concept="2" />
-      <node id="346011455438296744" at="36,70,37,40" concept="2" />
+      <node id="346011455438296744" at="36,70,37,41" concept="2" />
       <node id="346011455438296733" at="16,0,18,0" concept="9" trace="ourParametersCacheExtension" />
       <node id="346011455438296733" at="19,0,22,0" concept="1" trace="AddInterfaceNotAllowed_Test#()V" />
       <node id="346011455438296733" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -7917,7 +7917,7 @@
       <scope id="346011455438296733" at="19,40,20,60" />
       <scope id="346011455438296733" at="24,62,25,36" />
       <scope id="346011455438296733" at="30,52,31,19" />
-      <scope id="346011455438296733" at="35,51,37,40" />
+      <scope id="346011455438296733" at="35,51,37,41" />
       <scope id="346011455438296733" at="19,0,22,0" />
       <scope id="346011455438296733" at="30,0,33,0">
         <var name="owner" id="346011455438296733" />
@@ -8194,7 +8194,7 @@
       <node id="346011455443120471" at="24,65,25,36" concept="2" />
       <node id="346011455443120471" at="30,52,31,19" concept="11" />
       <node id="346011455443120471" at="35,51,36,70" concept="2" />
-      <node id="346011455443120482" at="36,70,37,36" concept="2" />
+      <node id="346011455443120482" at="36,70,37,37" concept="2" />
       <node id="346011455443120471" at="16,0,18,0" concept="9" trace="ourParametersCacheExtension" />
       <node id="346011455443120471" at="19,0,22,0" concept="1" trace="AddConstructorNotAllowed2_Test#()V" />
       <node id="346011455443120471" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -8203,7 +8203,7 @@
       <scope id="346011455443120471" at="19,43,20,60" />
       <scope id="346011455443120471" at="24,65,25,36" />
       <scope id="346011455443120471" at="30,52,31,19" />
-      <scope id="346011455443120471" at="35,51,37,36" />
+      <scope id="346011455443120471" at="35,51,37,37" />
       <scope id="346011455443120471" at="19,0,22,0" />
       <scope id="346011455443120471" at="30,0,33,0">
         <var name="owner" id="346011455443120471" />
@@ -28931,7 +28931,7 @@
       <node id="9032151315009630188" at="24,55,25,36" concept="2" />
       <node id="9032151315009630188" at="30,52,31,19" concept="11" />
       <node id="9032151315009630188" at="35,51,36,72" concept="2" />
-      <node id="3378334413600016525" at="36,72,37,42" concept="2" />
+      <node id="3378334413600016525" at="36,72,37,43" concept="2" />
       <node id="9032151315009630188" at="16,0,18,0" concept="9" trace="ourParametersCacheExtension" />
       <node id="9032151315009630188" at="19,0,22,0" concept="1" trace="TypeMethodCaret_Test#()V" />
       <node id="9032151315009630188" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -28940,7 +28940,7 @@
       <scope id="9032151315009630188" at="19,33,20,60" />
       <scope id="9032151315009630188" at="24,55,25,36" />
       <scope id="9032151315009630188" at="30,52,31,19" />
-      <scope id="9032151315009630188" at="35,51,37,42" />
+      <scope id="9032151315009630188" at="35,51,37,43" />
       <scope id="9032151315009630188" at="19,0,22,0" />
       <scope id="9032151315009630188" at="30,0,33,0">
         <var name="owner" id="9032151315009630188" />
