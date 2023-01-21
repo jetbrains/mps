@@ -517,6 +517,7 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
   }
 
   private void expandAllImpl(MPSTreeNode node) {
+    if(node==null) return;
     expandPath(new TreePath(node.getPath()));
     for (MPSTreeNode c : node.getChildren()) {
       expandAllImpl(c);
@@ -858,6 +859,9 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
 
   private List<String> getExpandedPaths() {
     List<String> result = new ArrayList<>();
+    if (getModel().getRoot()==null) {
+      return result;
+    }
     Enumeration<TreePath> expanded = getExpandedDescendants(new TreePath(new Object[]{getModel().getRoot()}));
     if (expanded == null) {
       return result;
