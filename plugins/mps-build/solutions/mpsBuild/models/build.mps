@@ -42891,6 +42891,11 @@
               <ref role="3bR37D" node="rD7wKO6k$" resolve="MPS.Generator" />
             </node>
           </node>
+          <node concept="1SiIV0" id="5FjiPTVfgfi" role="3bR37C">
+            <node concept="3bR9La" id="5FjiPTVfgfj" role="1SiIV1">
+              <ref role="3bR37D" node="1ULLXZL0gZG" resolve="org.junit.junit5" />
+            </node>
+          </node>
         </node>
         <node concept="1E0d5M" id="3AyJARAAl5S" role="1E1XAP">
           <ref role="1E0d5P" node="3AyJARA_gND" resolve="jetbrains.mps.lang.test.generator.rt" />
@@ -43289,6 +43294,11 @@
           <node concept="1SiIV0" id="6ecjmP170HE" role="3bR37C">
             <node concept="3bR9La" id="6ecjmP170HF" role="1SiIV1">
               <ref role="3bR37D" node="7Kfy9QB6KZG" resolve="jetbrains.mps.baseLanguage.closures" />
+            </node>
+          </node>
+          <node concept="1SiIV0" id="5FjiPTVfgga" role="3bR37C">
+            <node concept="3bR9La" id="5FjiPTVfggb" role="1SiIV1">
+              <ref role="3bR37D" node="1ULLXZL0gZG" resolve="org.junit.junit5" />
             </node>
           </node>
         </node>

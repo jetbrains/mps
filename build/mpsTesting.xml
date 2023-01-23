@@ -358,6 +358,7 @@
           <module ref="707c4fde-f79a-44b5-b3d7-b5cef8844ccf(jetbrains.mps.lang.test.runtime)" kind="cl" />
           <module ref="b83431fe-5c8f-40bc-8a36-65e25f4dd253(jetbrains.mps.lang.textGen)" kind="cl" />
           <module ref="7a5dda62-9140-4668-ab76-d5ed1746f2b2(jetbrains.mps.lang.typesystem)" kind="cl" />
+          <module ref="63b449db-0918-4a4a-a891-2c430ab133e4(org.junit.junit5)" kind="cl" />
         </dependencies>
         <uses>
           <language id="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" />
@@ -461,6 +462,7 @@
           <module ref="e55e6749-03cb-4ea7-9695-2322bab791c1(jetbrains.mps.lang.test.matcher)" kind="cl" />
           <module ref="707c4fde-f79a-44b5-b3d7-b5cef8844ccf(jetbrains.mps.lang.test.runtime)" kind="cl" />
           <module ref="7a5dda62-9140-4668-ab76-d5ed1746f2b2(jetbrains.mps.lang.typesystem)" kind="cl" />
+          <module ref="63b449db-0918-4a4a-a891-2c430ab133e4(org.junit.junit5)" kind="cl" />
         </dependencies>
         <uses>
           <language id="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" />
@@ -737,6 +739,7 @@
           <module ref="a9e4c532-c5f5-4bb7-99ef-42abb73bbb70(jetbrains.mps.lang.descriptor.aspects)" kind="cl" />
           <module ref="446c26eb-2b7b-4bf0-9b35-f83fa582753e(jetbrains.mps.lang.modelapi)" kind="cl" />
           <module ref="707c4fde-f79a-44b5-b3d7-b5cef8844ccf(jetbrains.mps.lang.test.runtime)" kind="cl" />
+          <module ref="63b449db-0918-4a4a-a891-2c430ab133e4(org.junit.junit5)" kind="cl" />
         </dependencies>
         <uses>
           <language id="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" />
@@ -825,6 +828,7 @@
           <module ref="446c26eb-2b7b-4bf0-9b35-f83fa582753e(jetbrains.mps.lang.modelapi)" kind="cl" />
           <module ref="68015e26-cc4d-49db-8715-b643faea1769(jetbrains.mps.lang.test.generator)" kind="cl" />
           <module ref="707c4fde-f79a-44b5-b3d7-b5cef8844ccf(jetbrains.mps.lang.test.runtime)" kind="cl" />
+          <module ref="63b449db-0918-4a4a-a891-2c430ab133e4(org.junit.junit5)" kind="cl" />
         </dependencies>
         <uses>
           <language id="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" />
@@ -1515,6 +1519,17 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.test" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.test.runtime" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-textgen.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/apiguardian-api-1.1.2.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-jupiter-api-5.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-jupiter-engine-5.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-jupiter-migrationsupport-5.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-jupiter-params-5.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-platform-commons-1.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-platform-engine-1.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-platform-launcher-1.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-vintage-engine-5.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/opentest4j-1.2.0.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-platform-reporting-1.9.1.jar" />
         <fileset file="${artifacts.IDEA}/lib/ant/lib/ant.jar" />
         <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
@@ -1586,6 +1601,17 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-textgen.jar" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.test.generator" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.test.runtime" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/apiguardian-api-1.1.2.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-jupiter-api-5.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-jupiter-engine-5.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-jupiter-migrationsupport-5.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-jupiter-params-5.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-platform-commons-1.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-platform-engine-1.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-platform-launcher-1.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-vintage-engine-5.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/opentest4j-1.2.0.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-platform-reporting-1.9.1.jar" />
         <fileset file="${artifacts.IDEA}/lib/ant/lib/ant.jar" />
         <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
@@ -1721,6 +1747,17 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-generator.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-project-check.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-test.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/apiguardian-api-1.1.2.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-jupiter-api-5.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-jupiter-engine-5.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-jupiter-migrationsupport-5.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-jupiter-params-5.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-platform-commons-1.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-platform-engine-1.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-platform-launcher-1.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-vintage-engine-5.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/opentest4j-1.2.0.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-platform-reporting-1.9.1.jar" />
         <fileset file="${artifacts.IDEA}/lib/ant/lib/ant.jar" />
         <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
@@ -1767,17 +1804,6 @@
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.textGen.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.traceable.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.typesystem.jar" />
-        <fileset file="${mps_home}/plugins/mps-testing/lib/apiguardian-api-1.1.2.jar" />
-        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-jupiter-api-5.9.1.jar" />
-        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-jupiter-engine-5.9.1.jar" />
-        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-jupiter-migrationsupport-5.9.1.jar" />
-        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-jupiter-params-5.9.1.jar" />
-        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-platform-commons-1.9.1.jar" />
-        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-platform-engine-1.9.1.jar" />
-        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-platform-launcher-1.9.1.jar" />
-        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-vintage-engine-5.9.1.jar" />
-        <fileset file="${mps_home}/plugins/mps-testing/lib/opentest4j-1.2.0.jar" />
-        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-platform-reporting-1.9.1.jar" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.baseLanguage.unitTest" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.test.matcher" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.baseLanguage.unitTest.runtime" />
@@ -1822,6 +1848,17 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-test.jar" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.baseLanguage.unitTest" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.test.matcher" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/apiguardian-api-1.1.2.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-jupiter-api-5.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-jupiter-engine-5.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-jupiter-migrationsupport-5.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-jupiter-params-5.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-platform-commons-1.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-platform-engine-1.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-platform-launcher-1.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-vintage-engine-5.9.1.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/opentest4j-1.2.0.jar" />
+        <fileset file="${mps_home}/plugins/mps-testing/lib/junit-platform-reporting-1.9.1.jar" />
         <fileset file="${artifacts.IDEA}/lib/ant/lib/ant.jar" />
         <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
