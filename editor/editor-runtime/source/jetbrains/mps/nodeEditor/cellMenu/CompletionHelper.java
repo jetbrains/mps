@@ -17,7 +17,6 @@ import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.typechecking.TypecheckingSession;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -125,15 +124,15 @@ public class CompletionHelper {
     private List<SubstituteAction> computeMatchingActions() {
       String pattern = mySubstituteChooserHandler.getPatternEditor().getPattern();
 
-      List<SubstituteAction> matchingActions = getMatchingActions(pattern);
+      final List<SubstituteAction> matchingActions = getMatchingActions(pattern);
 
-      boolean needToTrim;
-      String trimPattern = IntelligentInputUtil.trimLeft(pattern);
-      if (pattern.equals(trimPattern)) {
-        needToTrim = false;
-      } else {
-        needToTrim = true;
-        if (!matchingActions.isEmpty()) {
+      mySubstituteChooserHandler.getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> {
+        boolean needToTrim;
+        String trimPattern = IntelligentInputUtil.trimLeft(pattern);
+        if (pattern.equals(trimPattern)) {
+          needToTrim = false;
+        } else {
+          needToTrim = true;
           for (SubstituteAction action : matchingActions) {
             if (action.canSubstitute(pattern)) {
               needToTrim = false;
@@ -141,20 +140,17 @@ public class CompletionHelper {
             }
           }
         }
-      }
-      if (needToTrim) {
-        matchingActions = getMatchingActions(trimPattern);
-      }
-      String sortPattern = needToTrim ? trimPattern : pattern;
+        if (needToTrim) {
+          matchingActions.clear();
+          matchingActions.addAll(getMatchingActions(trimPattern));
+        }
+        String sortPattern = needToTrim ? trimPattern : pattern;
 
-      List<SubstituteAction> finalActions = new ArrayList<>(matchingActions);
-
-      mySubstituteChooserHandler.getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> {
-        finalActions.removeIf(action -> !myCompletionCustomizationManager.getVisibility(action, pattern));
-        myCompletionCustomizationManager.sort(finalActions, pattern);
+        matchingActions.removeIf(action -> !myCompletionCustomizationManager.getVisibility(action, pattern));
+        myCompletionCustomizationManager.sort(matchingActions, pattern);
         if (!pattern.isEmpty()) {
           try {
-            finalActions.sort(new SubstituteActionComparator(sortPattern) {
+            matchingActions.sort(new SubstituteActionComparator(sortPattern) {
               private final Map<SubstituteAction, Integer> myRatesMap = new HashMap<>();
               private final Map<SubstituteAction, String> myVisibleMatchingTextsMap = new HashMap<>();
               private final Map<SubstituteAction, Boolean> myCanSubstituteStrictlyMap = new HashMap<>();
@@ -193,7 +189,7 @@ public class CompletionHelper {
         }
       });
 
-      return finalActions;
+      return matchingActions;
     }
 
     private List<SubstituteAction> getMatchingActions(String pattern) {
