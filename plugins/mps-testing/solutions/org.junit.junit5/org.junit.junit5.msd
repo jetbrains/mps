@@ -3,7 +3,6 @@
   <models>
     <modelRoot contentPath="${mps_home}/plugins/mps-testing/lib" type="java_classes">
       <sourceRoot location="." />
-      <sourceRoot location="junit-platform-reporting-1.9.1.jar" />
     </modelRoot>
   </models>
   <facets>

@@ -42944,6 +42944,9 @@
             <ref role="1E1Vl2" node="7Kfy9QB6L9O" resolve="jetbrains.mps.lang.smodel" />
           </node>
         </node>
+        <node concept="1E0d5M" id="1wWWPEtN$3K" role="1E1XAP">
+          <ref role="1E0d5P" node="1ULLXZL0gZG" resolve="org.junit.junit5" />
+        </node>
       </node>
       <node concept="1E1JtA" id="3AyJARA_gND" role="2G$12L">
         <property role="BnDLt" value="true" />
@@ -43518,6 +43521,9 @@
           <node concept="3bR9La" id="1Lkmzjtt6eQ" role="1SiIV1">
             <ref role="3bR37D" node="3qkjbZn7Ykj" resolve="jetbrains.mps.lang.constraints.rules" />
           </node>
+        </node>
+        <node concept="1E0d5M" id="1wWWPEtN$4B" role="1E1XAP">
+          <ref role="1E0d5P" node="1ULLXZL0gZG" resolve="org.junit.junit5" />
         </node>
       </node>
       <node concept="1E1JtA" id="ymnOULAU1u" role="2G$12L">
