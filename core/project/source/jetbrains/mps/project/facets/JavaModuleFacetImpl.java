@@ -20,7 +20,6 @@ import jetbrains.mps.extapi.module.ModuleFacetBase;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.project.MementoWithFS;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
@@ -235,7 +234,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
       myGeneratedClassesLocation = null;
     } else {
       // FIXME LEHA
-      FileSystem fs = memento instanceof MementoWithFS ? ((MementoWithFS) memento).getFileSystem() : getAbstractModule().getFileSystem();
+      FileSystem fs = getAbstractModule().getFileSystem();
       // JFTR, intentionally pretty much the same logic is below in classGenPath
       // FIXME what about pure stub modules that claim to be 'java' but don't have any generated classes
       //       seems odd to keep <classes generated=true> there.
