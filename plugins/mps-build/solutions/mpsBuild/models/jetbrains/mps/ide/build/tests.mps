@@ -15788,6 +15788,16 @@
           <ref role="3bR37D" to="ffeo:6S_FNWXEKkg" resolve="jetbrains.mps.ide.depanalyzer" />
         </node>
       </node>
+      <node concept="1SiIV0" id="1wWWPEu1yDg" role="3bR37C">
+        <node concept="3bR9La" id="1wWWPEu1yDh" role="1SiIV1">
+          <ref role="3bR37D" to="ffeo:1ULLXZL0gZG" resolve="org.junit.junit5" />
+        </node>
+      </node>
+      <node concept="1SiIV0" id="1wWWPEu1yDi" role="3bR37C">
+        <node concept="3bR9La" id="1wWWPEu1yDj" role="1SiIV1">
+          <ref role="3bR37D" to="ffeo:7MSVDs3$Uns" resolve="jetbrains.mps.baseLanguage.unitTest.runtime" />
+        </node>
+      </node>
     </node>
     <node concept="1E1JtA" id="2j4NQWLGvOb" role="3989C9">
       <property role="TrG5h" value="tests.testDepViewer" />
