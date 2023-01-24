@@ -5,6 +5,9 @@ package jetbrains.mps.workbench.actions;
 
 import com.intellij.openapi.vfs.VirtualFile;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.nio.file.Path;
 
 public class OpenMPSProjectTrustProjectHelper {
@@ -17,7 +20,19 @@ public class OpenMPSProjectTrustProjectHelper {
     return checkTrust(file);
   }
   public static boolean checkTrust(Path file) {
-    return new OpenMPSProjectTrustProjectHelperK().checkTrustFromJava(file);
+    try {
+      final Class<?> kClass = Class.forName("jetbrains.mps.workbench.actions.OpenMPSProjectTrustProjectHelperK");
+      final Constructor<?> constructor = kClass.getConstructor();
+      final Object kotlinHelper = constructor.newInstance();
+      //final Object kotlinHelper = kClass.newInstance();
+      final Method m = kClass.getMethod("checkTrustFromJava", Path.class);
+      return (boolean) m.invoke(kotlinHelper, file);
+    } catch (InvocationTargetException | ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException e) {
+      throw new RuntimeException(e);
+    }
+
+    // TODO enable when kotlin compilation is supported by the test runner
+    //return new OpenMPSProjectTrustProjectHelperK().checkTrustFromJava(file);
   }
 
 }
