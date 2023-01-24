@@ -95,6 +95,8 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
   private final SourcePaths mySourcePathStorage;
   private final List<PathListener> myListeners = new ArrayList<>();
 
+  private Memento memento;
+
   protected FileBasedModelRoot() {
     mySourcePathStorage = new SourcePaths((sourceRootKind) -> getSupportedFileKinds1().contains(sourceRootKind));
   }
@@ -207,6 +209,14 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
 
     mySourcePathStorage.clearAll(); // AP: I'd rather force a single invocation of the #load method
 
+    this.memento = memento.copy();
+    // delay initialization until we've got SModule instance (setModule() followed by attach())
+  }
+
+  @Override
+  public void attach() {
+    assert getModule() != null;
+    assert memento != null;
     if (memento instanceof MementoWithFS) {
       myFileSystem = ((MementoWithFS) memento).getFileSystem();
     }
@@ -224,12 +234,10 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
         }
       }
     }
-  }
 
-  @Override
-  public void attach() {
     super.attach();
     attachPathListenerForEachSourceRoot();
+    this.memento = null;
   }
 
   private void attachPathListenerForEachSourceRoot() { // fixme extract class
