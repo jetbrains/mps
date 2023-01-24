@@ -1971,7 +1971,9 @@
     <mkdir dir="${plugin_home}/solutions/kotlin.smodel.runtime/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.kotlin.smodel.runtime" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.kotlin.smodel.runtime" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
-      <withKotlin moduleName="jetbrains.mps.kotlin.smodel.runtime" />
+      <withKotlin moduleName="jetbrains.mps.kotlin.smodel.runtime">        
+        <compilerarg value="-jvm-target=11"></compilerarg>
+      </withKotlin>
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${plugin_home}/solutions/kotlin.smodel.runtime/source_gen" />

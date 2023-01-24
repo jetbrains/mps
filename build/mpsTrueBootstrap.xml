@@ -365,7 +365,9 @@
   <target name="java.compile.util-core" depends="java.compile.mps-annotations, java.compile.mps-openapi">
     <mkdir dir="${build.tmp}/java/out/util-core" />
     <javac2 destdir="${build.tmp}/java/out/util-core" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
-      <withKotlin moduleName="util-core" />
+      <withKotlin moduleName="util-core">        
+        <compilerarg value="-jvm-target=11"></compilerarg>
+      </withKotlin>
       <compilerarg value="-Xlint:none" />
       <src path="${mps_home}/core/util/source" />
       <classpath>

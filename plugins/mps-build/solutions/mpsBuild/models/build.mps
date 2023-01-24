@@ -24752,7 +24752,7 @@
       <property role="2_GNG2" value="1024" />
       <property role="3fwGa$" value="IntelliJ" />
       <property role="2_Ic$y" value="mps-workbench-specific" />
-      <property role="TZNOO" value="11" />
+      <property role="TZNOO" value="17" />
       <node concept="3qWCbU" id="79wGYVsEpzE" role="2_Ic$A">
         <property role="3qWCbO" value="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
       </node>
@@ -24762,6 +24762,7 @@
     </node>
     <node concept="398b33" id="2eDSGe9d1oD" role="3989C9">
       <property role="TrG5h" value="mps-workbench" />
+      <property role="ZpmtF" value="true" />
       <node concept="3_7P_l" id="79wGYVsEpzF" role="3_45bX">
         <ref role="3_7fsG" node="79wGYVsEpzD" />
       </node>
@@ -26408,6 +26409,21 @@
     </node>
     <node concept="2sgV4H" id="7aWTg_1qs$y" role="1l3spa">
       <ref role="1l3spb" node="5D1dJ7xWer5" resolve="mpsCore" />
+    </node>
+    <node concept="398rNT" id="1T3NUdA0IvU" role="1l3spd">
+      <property role="TrG5h" value="kotlinc_home" />
+      <node concept="398BVA" id="1T3NUdA0IvV" role="398pKh">
+        <ref role="398BVh" node="2eDSGe9d1qB" resolve="mps_home" />
+        <node concept="2Ry0Ak" id="1T3NUdA0IvW" role="iGT6I">
+          <property role="2Ry0Am" value="plugins" />
+          <node concept="2Ry0Ak" id="1T3NUdA0IvX" role="2Ry0An">
+            <property role="2Ry0Am" value="mps-kotlin" />
+            <node concept="2Ry0Ak" id="1T3NUdA0IvY" role="2Ry0An">
+              <property role="2Ry0Am" value="kotlinc" />
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
   </node>
   <node concept="13uchq" id="6eCuTcwOnJO">
