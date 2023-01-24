@@ -393,13 +393,10 @@
                 <node concept="3clFbH" id="4Z7jVP8Lf3N" role="3cqZAp" />
               </node>
               <node concept="2YIFZM" id="4Z7jVP8Lg8F" role="3clFbw">
-                <ref role="37wK5l" to="2ny0:~OpenMPSProjectTrustProjectHelper.checkTrust(java.nio.file.Path,com.intellij.openapi.project.Project)" resolve="checkTrust" />
+                <ref role="37wK5l" to="2ny0:~OpenMPSProjectTrustProjectHelper.checkTrust(java.nio.file.Path)" resolve="checkTrust" />
                 <ref role="1Pybhc" to="2ny0:~OpenMPSProjectTrustProjectHelper" resolve="OpenMPSProjectTrustProjectHelper" />
                 <node concept="37vLTw" id="4Z7jVP8Lglr" role="37wK5m">
                   <ref role="3cqZAo" node="4Z7jVP8Lcvq" resolve="virtualFile" />
-                </node>
-                <node concept="37vLTw" id="4Z7jVP8LgGU" role="37wK5m">
-                  <ref role="3cqZAo" node="33vUo2uvw5h" resolve="project" />
                 </node>
               </node>
             </node>
@@ -1671,12 +1668,9 @@
                       <node concept="3clFbJ" id="4Z7jVP8Lkyx" role="3cqZAp">
                         <node concept="2YIFZM" id="4Z7jVP8LkEZ" role="3clFbw">
                           <ref role="1Pybhc" to="2ny0:~OpenMPSProjectTrustProjectHelper" resolve="OpenMPSProjectTrustProjectHelper" />
-                          <ref role="37wK5l" to="2ny0:~OpenMPSProjectTrustProjectHelper.checkTrust(java.nio.file.Path,com.intellij.openapi.project.Project)" resolve="checkTrust" />
+                          <ref role="37wK5l" to="2ny0:~OpenMPSProjectTrustProjectHelper.checkTrust(java.nio.file.Path)" resolve="checkTrust" />
                           <node concept="37vLTw" id="4Z7jVP8LkF0" role="37wK5m">
                             <ref role="3cqZAo" node="4Z7jVP8LjQS" resolve="directory" />
-                          </node>
-                          <node concept="37vLTw" id="4Z7jVP8LkF5" role="37wK5m">
-                            <ref role="3cqZAo" node="4Z7jVP8LjQP" resolve="project" />
                           </node>
                         </node>
                         <node concept="3clFbS" id="4Z7jVP8LkyA" role="3clFbx">

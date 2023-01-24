@@ -16,7 +16,7 @@
     <file name="ProjectCheckoutListener.java">
       <node id="3521790172251160936" at="23,52,24,76" concept="8" />
       <node id="5748651123749996507" at="27,44,28,49" concept="7" />
-      <node id="5748651123750017021" at="29,78,30,98" concept="2" />
+      <node id="5748651123750017021" at="29,69,30,98" concept="2" />
       <node id="5748651123750007027" at="30,98,31,0" concept="10" />
       <node id="3521790172251160982" at="32,7,33,18" concept="8" />
       <node id="3521790172251160984" at="34,5,35,17" concept="8" />
@@ -26,7 +26,7 @@
       <node id="3521790172251160941" at="26,7,34,5" concept="5" />
       <node id="3521790172251160910" at="19,0,37,0" concept="6" trace="processCheckedOutDirectory#(Lcom/intellij/openapi/project/Project;Ljava/nio/file/Path;)Z" />
       <scope id="3521790172251160935" at="23,52,24,76" />
-      <scope id="5748651123750007028" at="29,78,31,0" />
+      <scope id="5748651123750007028" at="29,69,31,0" />
       <scope id="3521790172251160928" at="22,0,26,0">
         <var name="dir" id="3521790172251160931" />
         <var name="name" id="3521790172251160933" />
@@ -104,7 +104,7 @@
     <file name="ProjectDirMPSCheckoutListener.java">
       <node id="5748651123750029452" at="20,108,21,69" concept="7" />
       <node id="5748651123750029462" at="22,35,23,19" concept="8" />
-      <node id="5748651123750029479" at="28,78,29,119" concept="2" />
+      <node id="5748651123750029479" at="28,69,29,119" concept="2" />
       <node id="5748651123750029489" at="32,6,33,72" concept="7" />
       <node id="5748651123750029496" at="34,41,35,21" concept="2" />
       <node id="5748651123750029500" at="36,12,37,42" concept="2" />
@@ -118,7 +118,7 @@
       <node id="5748651123750029465" at="24,5,32,6" concept="7" />
       <node id="5748651123750026673" at="19,0,42,0" concept="6" trace="processCheckedOutDirectory#(Lcom/intellij/openapi/project/Project;Ljava/nio/file/Path;)Z" />
       <scope id="5748651123750029461" at="22,35,23,19" />
-      <scope id="5748651123750029478" at="28,78,29,119" />
+      <scope id="5748651123750029478" at="28,69,29,119" />
       <scope id="5748651123750029495" at="34,41,35,21" />
       <scope id="5748651123750029499" at="36,12,37,42" />
       <scope id="5748651123750029472" at="27,25,30,9" />
