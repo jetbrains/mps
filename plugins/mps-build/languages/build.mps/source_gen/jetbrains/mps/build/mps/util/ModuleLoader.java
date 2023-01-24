@@ -159,7 +159,7 @@ public final class ModuleLoader {
 
     ModuleDescriptor md = null;
     try {
-      MacroHelper helper = new ModuleMacroHelper(file.getParent(), myBuildProject, myMsgHandler);
+      MacroHelper helper = new ModuleMacroHelper(myBuildProject, myMsgHandler);
       md = myDescriptorIO.readFromModuleFile(helper, file);
       if (md.getLoadException() != null) {
         reportError(String.format("cannot import module file for %s: exception: %s", SPropertyOperations.getString(module, PROPS.name$MnvL), md.getLoadException().getMessage()), module);

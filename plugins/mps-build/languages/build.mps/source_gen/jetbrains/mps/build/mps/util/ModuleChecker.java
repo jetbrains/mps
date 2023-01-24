@@ -90,7 +90,7 @@ public final class ModuleChecker {
   /*package*/ ModuleChecker(SNode module, VisibleModules visible, PathConverter pathConverter, IFile moduleDescriptorFile, ModuleDescriptor moduleDescriptor, IMessageHandler reporter, ModuleRepositoryFacade repo) {
     myModule = module;
     myVisibleModules = visible;
-    myPathConverter = pathConverter;
+    myPathConverter = pathConverter.forModule(moduleDescriptorFile);
     myModuleDescriptorFile = moduleDescriptorFile;
     myModuleDescriptor = moduleDescriptor;
     myReporter = reporter;
@@ -100,7 +100,9 @@ public final class ModuleChecker {
   private ModuleChecker(ModuleChecker parent, SNode module, IFile moduleDescriptorFile, ModuleDescriptor moduleDescriptor) {
     myModule = module;
     myVisibleModules = parent.myVisibleModules;
-    myPathConverter = parent.myPathConverter;
+    // though moduleDescriptorFile seems to be the same as in parent, can just use myPathConverter as is. Still, better not 
+    // to keep explicit moduleDescriptorFile argument then.
+    myPathConverter = parent.myPathConverter.forModule(moduleDescriptorFile);
     myModuleDescriptorFile = moduleDescriptorFile;
     myModuleDescriptor = moduleDescriptor;
     myReporter = parent.myReporter;
