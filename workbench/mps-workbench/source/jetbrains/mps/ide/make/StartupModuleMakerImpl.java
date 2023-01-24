@@ -129,9 +129,9 @@ public final class StartupModuleMakerImpl extends StartupModuleMaker implements 
         }
       } else {
         final NotificationGroup ng = NotificationGroup.findRegisteredGroup(StartupModuleMaker.class.getName());
-        final Notification n = ng.createNotification("", NotificationType.ERROR);
+        final Notification n = ng.createNotification("Compilation failed", "<p>Project compilation on startup failed</p>", NotificationType.ERROR);
         n.setIcon(MPSIcons.Small.Error);
-        n.setTitle(String.format("Project compilation on startup failed, %d errors and %d warnings", cr.getErrorsCount(), cr.getWarningsCount()));
+        n.setSubtitle(String.format("%d errors, %d warnings", cr.getErrorsCount(), cr.getWarningsCount()));
         n.setImportant(true);
         Notifications.Bus.notify(n, myMPSProject.getProject());
         LOG.info(n.getTitle());
