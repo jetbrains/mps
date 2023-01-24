@@ -307,6 +307,8 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     assertCanChange();
     if (isReadOnly()) {
       LOG.warning("Changing read-only module " + this);
+      // XXX here was `return` prior to ee6502cd commit, perhaps, it's worth to bring it back?
+      //     is there a scenario I need to save changed r/o module?
     }
     if (!myChanged) {
       myChanged = true;

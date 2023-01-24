@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,6 +32,7 @@ import java.util.Objects;
 public final class DefaultSourceRoot implements SourceRoot {
   private final String myPath;
   private final IFile myAbsolutePath;
+  private String myOrigPathSpec;
 
   public DefaultSourceRoot(@NotNull String path, @NotNull IFile contentRootDirectory) {
     myPath = canonicalize(path);
@@ -59,6 +60,14 @@ public final class DefaultSourceRoot implements SourceRoot {
       path = "";
     }
     return path;
+  }
+
+  /*package*/ void setOriginalPathSpec(String origPath) {
+    myOrigPathSpec = origPath;
+  }
+
+  /*package*/ String getOriginalPathSpec() {
+    return myOrigPathSpec;
   }
 
   @NotNull
@@ -90,4 +99,5 @@ public final class DefaultSourceRoot implements SourceRoot {
   public String toString() {
     return "Path [" + getAbsolutePath() + "]";
   }
+
 }

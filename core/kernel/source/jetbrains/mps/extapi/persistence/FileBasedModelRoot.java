@@ -20,6 +20,7 @@ import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.MementoWithFS;
 import jetbrains.mps.util.FileUtil;
+import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.openapi.FileSystem;
 import jetbrains.mps.vfs.path.Path;
@@ -198,6 +199,9 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
           modelRootMemento.put(LOCATION, relPath);
         } else {
           modelRootMemento.put(PATH, sourceRootPath);
+          if (root instanceof DefaultSourceRoot && ((DefaultSourceRoot) root).getOriginalPathSpec() != null) {
+            modelRootMemento.putPathSpec(PATH, ((DefaultSourceRoot) root).getOriginalPathSpec());
+          }
         }
       }
     }
@@ -213,6 +217,7 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
     // delay initialization until we've got SModule instance (setModule() followed by attach())
   }
 
+  @SuppressWarnings("removal")
   @Override
   public void attach() {
     assert getModule() != null;
@@ -220,17 +225,39 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
     if (memento instanceof MementoWithFS) {
       myFileSystem = ((MementoWithFS) memento).getFileSystem();
     }
-    String path = memento.get(CONTENT_PATH);
+    String path;
     myContentDirPathSpec = memento.getPathSpec(CONTENT_PATH);
+    if (myContentDirPathSpec != null && !myContentDirPathSpec.isBlank()) {
+      path = MacrosFactory.forModule(getModule()).expandPath(myContentDirPathSpec);
+    } else {
+      path = memento.get(CONTENT_PATH);
+    }
+
     myContentDir = (path != null) ? myFileSystem.getFile(path) : null;
     for (SourceRootKind kind : getSupportedFileKinds1()) {
       for (Memento root : memento.getChildren(kind.getName())) {
         String relPath = root.get(LOCATION);
+        DefaultSourceRoot dsr = null;
         if (relPath != null) {
+          // relative
           assert myContentDir != null;
-          addSourceRoot(kind, new DefaultSourceRoot(relPath, myContentDir)); // relative
+          dsr = new DefaultSourceRoot(relPath, myContentDir);
         } else if (root.get(PATH) != null) {
-          addSourceRoot(kind, new DefaultSourceRoot(myFileSystem.getFile(root.get(PATH)))); // absolute
+          // absolute
+          String absPath;
+          final String origPath;
+          if ((origPath = root.getPathSpec(PATH)) != null) {
+            absPath = MacrosFactory.forModule(getModule()).expandPath(root.getPathSpec(PATH));
+          } else {
+            absPath = root.get(PATH);
+          }
+          dsr = new DefaultSourceRoot(myFileSystem.getFile(absPath));
+          dsr.setOriginalPathSpec(origPath);
+        }
+        if (dsr != null) {
+          // NOTE, can't use addSourceRoot() here as we are still in initialization of a model root and shall
+          //      not notify module about changes (AM.setChanged() in addSourceRoot); use mySourcePathStorage directly.
+          mySourcePathStorage.addSourceRoot(kind, dsr);
         }
       }
     }
@@ -298,7 +325,8 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
 
     return Objects.equals(myContentDir, that.myContentDir)
            && Objects.equals(mySourcePathStorage, that.mySourcePathStorage)
-           && Objects.equals(myFileSystem, that.myFileSystem);
+           && Objects.equals(myFileSystem, that.myFileSystem)
+           && Objects.equals(memento, that.memento);
   }
 
   @Override
