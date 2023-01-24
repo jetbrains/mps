@@ -28,6 +28,7 @@ import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionKind;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
+import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.util.annotation.Hack;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.openapi.FileSystem;
@@ -240,7 +241,13 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
       //       seems odd to keep <classes generated=true> there.
       for (Memento m : memento.getChildren(CLASSES_KEY)) {
         if (Boolean.parseBoolean(m.get(GENERATED_KEY))) {
-          final String v = m.get(PATH_KEY);
+          final String v;
+          if (m.getPathSpec(PATH_KEY) == null) {
+            v = m.get(PATH_KEY);
+          } else {
+            v = MacrosFactory.forModule(getModule()).expandPath(m.getPathSpec(PATH_KEY));
+          }
+          // XXX I wonder if one more FS#getFile(String path, Nullable MacroHelper) is better than separate expandPath()?
           myGeneratedClassesLocation = v == null ? null : fs.getFile(v);
           break;
         }
