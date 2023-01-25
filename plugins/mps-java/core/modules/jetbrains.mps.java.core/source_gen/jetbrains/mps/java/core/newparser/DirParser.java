@@ -20,7 +20,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.util.IFileUtil;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
-import jetbrains.mps.project.SModuleOperations;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.util.NameUtil;
@@ -168,7 +167,7 @@ public class DirParser {
       return null;
     }
 
-    SModel modelDescr = SModuleOperations.createModelWithAdjustments(packageName.getValue(), rootToCreateModel);
+    SModel modelDescr = rootToCreateModel.createModel(packageName);
     assert modelDescr != null;
 
     return modelDescr;
