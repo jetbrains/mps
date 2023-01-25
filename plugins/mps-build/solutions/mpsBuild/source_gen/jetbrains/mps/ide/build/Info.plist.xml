@@ -88,7 +88,7 @@
     <key>JVMOptions</key>
     <dict>
       <key>ClassPath</key>
-      <string>$APP_PACKAGE/Contents/lib/*:$APP_PACKAGE/Contents/lib/ant/lib/ant.jar</string>
+      <string>$APP_PACKAGE/Contents/lib/*:$APP_PACKAGE/Contents/plugins/tasks/lib/tasks-core.jar:$APP_PACKAGE/Contents/lib/ant/lib/ant.jar</string>
       <key>JVMVersion</key>
       <string>1.8+</string>
       <key>MainClass</key>

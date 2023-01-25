@@ -39053,6 +39053,9 @@
     <node concept="26EafG" id="BJYGrH08Xy" role="26Ea7d">
       <property role="26EafJ" value="lib/*" />
     </node>
+    <node concept="26EafG" id="2nEb$MHLqxE" role="26Ea7d">
+      <property role="26EafJ" value="plugins/tasks/lib/tasks-core.jar" />
+    </node>
     <node concept="26EafG" id="68rp5VxCl2R" role="26Ea7d">
       <property role="26EafJ" value="lib/ant/lib/ant.jar" />
     </node>
