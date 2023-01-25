@@ -1051,9 +1051,9 @@
     <mkdir dir="${mps_home}/workbench/mps-workbench/source" />
     <mkdir dir="${mps_home}/workbench/mps-workbench/jetbrains.mps.ide/source_gen" />
     <mkdir dir="${build.tmp}/java/out/mps-workbench" />
-    <javac2 destdir="${build.tmp}/java/out/mps-workbench" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
+    <javac2 destdir="${build.tmp}/java/out/mps-workbench" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="mps-workbench">        
-        <compilerarg value="-jvm-target=17"></compilerarg>
+        <compilerarg value="-jvm-target=11"></compilerarg>
       </withKotlin>
       <compilerarg value="-Xlint:none" />
       <src>

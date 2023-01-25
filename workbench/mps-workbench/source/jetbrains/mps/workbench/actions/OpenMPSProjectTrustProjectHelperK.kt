@@ -2,12 +2,13 @@ package jetbrains.mps.workbench.actions
 
 import com.intellij.CommonBundle
 import com.intellij.DynamicBundle
+import com.intellij.codeWithMe.ClientId
 import com.intellij.ide.IdeBundle
 import com.intellij.ide.impl.*
 import com.intellij.ide.impl.TrustedProjectsStatistics.Companion.NEW_PROJECT_OPEN_OR_IMPORT_CHOICE
+import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.application.ApplicationNamesInfo
 import com.intellij.openapi.application.EDT
-import com.intellij.openapi.components.service
 import com.intellij.openapi.ui.DoNotAskOption
 import com.intellij.openapi.ui.MessageDialogBuilder
 import com.intellij.openapi.ui.Messages
@@ -17,7 +18,9 @@ import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.util.ThreeState
 import com.intellij.util.io.basicAttributesIfExists
 import jetbrains.mps.ide.ThreadUtils
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import java.nio.file.Path
 
 @Suppress("UnstableApiUsage")
@@ -89,7 +92,14 @@ class OpenMPSProjectTrustProjectHelperK {
             override fun rememberChoice(isSelected: Boolean, exitCode: Int) {
                 if (isSelected && exitCode == Messages.YES) {
                     TrustedProjectsStatistics.TRUST_LOCATION_CHECKBOX_SELECTED.log()
-                    service<TrustedPathsSettings>().addTrustedPath(projectLocationPath)
+
+                    // Inlined version of com.intellij.openapi.components.service<TrustedPathsSettings>(),
+                    // please replace when JDK version aligns with IDEA JDK version
+                    val serviceClass = TrustedPathsSettings::class.java
+                    val service = ApplicationManager.getApplication().getService(serviceClass)
+                        ?: throw RuntimeException("Cannot find service ${serviceClass.name} (classloader=${serviceClass.classLoader}, client=${ClientId.currentOrNull})")
+
+                    service.addTrustedPath(projectLocationPath)
                 }
             }
 
