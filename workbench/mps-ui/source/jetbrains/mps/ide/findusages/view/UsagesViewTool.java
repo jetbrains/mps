@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -106,6 +106,18 @@ public class UsagesViewTool extends BaseTabbedProjectTool implements PersistentS
     myUsageViewsData.remove(viewData);
     if (myUsageViewsData.isEmpty()) {
       new RepoListenerRegistrar(ProjectHelper.getProjectRepository(getProject()), myChangeTracker).detach();
+    }
+  }
+
+  @Override
+  public void disposeComponent() {
+    super.disposeComponent();
+    // if any data left (e.g. data restored but not visualized by addTab() - still in the myUsagesViewsData)
+    ArrayList<UsageViewData> copy = new ArrayList<>(myUsageViewsData);
+    // pretty much the same what we do in Tab.disposeTab(), below
+    copy.forEach(this::unregister);
+    for (UsageViewData uv : copy) {
+      uv.myUsagesView.dispose();
     }
   }
 

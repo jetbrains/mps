@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -418,6 +418,10 @@ public abstract class BaseTool {
   }
 
   public void dispose() {
-
+    // FIXME what's the contract for this method? Seems that it's only BaseProjectPlugin that cares to invoke it.
+    //       There's BaseProjectTool subclass, with disposeComponent() that doesn't invoke dispose(), is it right?
+    //       No idea where to put general dispose code in subclasses like UsagesViewTool - shall I use disposeComponent() or dispose()?
+    //       E.g. UsagesViewTool restores some UI stuff but doesn't add tabs until made visible. If IDE is closed w/o view being displayed
+    //       there's no dispose for UI stuff, allocated during state restore. dispose() would be very helpful at this point.
   }
 }
