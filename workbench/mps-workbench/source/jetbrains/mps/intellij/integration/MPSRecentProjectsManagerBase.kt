@@ -2,16 +2,10 @@ package jetbrains.mps.intellij.integration
 
 import com.intellij.ide.RecentProjectsManagerBase
 import com.intellij.ide.impl.OpenProjectTask
-import com.intellij.ide.impl.ProjectUtil
-import com.intellij.openapi.application.EDT
-import com.intellij.openapi.application.ex.ApplicationManagerEx
 import com.intellij.openapi.diagnostic.logger
 import com.intellij.openapi.project.Project
-import com.intellij.openapi.project.ex.ProjectManagerEx
 import com.intellij.openapi.wm.impl.welcomeScreen.WelcomeFrame
 import jetbrains.mps.workbench.actions.OpenMPSProjectTrustProjectHelperK
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import java.nio.file.Path
 
 class MPSRecentProjectsManagerBase : RecentProjectsManagerBase() {
