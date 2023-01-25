@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,6 +69,14 @@ public class ClassPathViewerTool extends BaseProjectTool {
   public void analyzeModule(SModule m) {
     myTree.setModule(m);
     myTree.rebuildLater();
+  }
+
+  @Override
+  public void disposeComponent() {
+    super.disposeComponent();
+    if (!myTree.isDisposed()){
+      myTree.dispose();
+    }
   }
 
   private static class MyClassPathTree extends MPSTree {
