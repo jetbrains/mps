@@ -198,6 +198,7 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
   }
 
   /*package*/ Set<SModelReference> getActualCrossModelReferences() {
+    // XXX call of this method from init() already has read action, check if confirmRemove() got one, too
     return new ModelAccessHelper(myMPSProject.getRepository()).runReadAction(() -> {
       final ModelDependencyScanner modelScanner = new ModelDependencyScanner();
       modelScanner.crossModelReferences(true).usedLanguages(false).usedConcepts(false).walk(myModelDescriptor);
@@ -364,17 +365,15 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
     @Override
     protected TableCellRenderer getTableCellRender() {
       final SRepository contextRepo = myMPSProject.getRepository();
-      Set<SLanguage> inUse = new ModelAccessHelper(myMPSProject.getModelAccess()).runReadAction(new ComputeUsedLanguages(myModelDescriptor));
+      Set<SLanguage> inUse = new ComputeUsedLanguages(myModelDescriptor).compute();
       myInUseCondition = new IsLanguageInUse(inUse, myModelProperties.getUsedLanguages());
       LanguageTableCellRenderer usedInModel = new LanguageTableCellRenderer(contextRepo);
       // if the language is not in use, don't bother to check if it's valid, just report as unused so that one would remove it right away
       usedInModel.addCellState(NotCondition.negate(myInUseCondition), DependencyCellState.UNUSED);
       usedInModel.addCellState(NotCondition.negate(new ValidImportCondition(myMPSProject)), DependencyCellState.NOT_AVAILABLE);
-      final IsCoveredByGenPlan isCoveredByGenPlan = new ModelAccessHelper(myMPSProject.getModelAccess()).runReadAction(() -> {
-        GenPlanExtractor gpe = new GenPlanExtractor(contextRepo, null);
-        ModelGenerationPlan gp = gpe.hasPlan(myModelDescriptor) ? gpe.getPlan(myModelDescriptor) : null;
-        return gp == null ? null : new IsCoveredByGenPlan(gp);
-      });
+      GenPlanExtractor gpe = new GenPlanExtractor(contextRepo, null);
+      ModelGenerationPlan gp = gpe.hasPlan(myModelDescriptor) ? gpe.getPlan(myModelDescriptor) : null;
+      final IsCoveredByGenPlan isCoveredByGenPlan = gp == null ? null : new IsCoveredByGenPlan(gp);
       if (isCoveredByGenPlan != null) {
         usedInModel.addCellState(NotCondition.negate(isCoveredByGenPlan), DependencyCellState.WARN_NOT_IN_GP);
       }
@@ -532,7 +531,7 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
       languagesTable.setModel(myEngagedLanguagesModel);
 
       LanguageTableCellRenderer cellRenderer = new LanguageTableCellRenderer(myMPSProject.getRepository());
-      Set<SLanguage> languagesInUse = new ModelAccessHelper(myMPSProject.getModelAccess()).runReadAction(new ComputeUsedLanguages(myModelDescriptor));
+      Set<SLanguage> languagesInUse = new ComputeUsedLanguages(myModelDescriptor).compute();
       IsLanguageInUse inUseCondition = new IsLanguageInUse(languagesInUse, Collections.emptySet());
       cellRenderer.addCellState(inUseCondition, DependencyCellState.SUPERFLUOUS_ENGAGED);
       cellRenderer.registerIn(languagesTable);

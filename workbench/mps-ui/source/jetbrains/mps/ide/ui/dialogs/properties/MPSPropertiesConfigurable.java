@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -97,7 +97,7 @@ import java.util.stream.IntStream;
 public abstract class MPSPropertiesConfigurable implements Configurable {
   private final Disposable myDisposable = Disposer.newDisposable(MPSPropertiesConfigurable.class.getName());
   private final TabbedPaneWrapper myTabbedPaneWrapper = new TabbedPaneWrapper(myDisposable);
-  private List<Tab> myTabs = new ArrayList<>();
+  private final List<Tab> myTabs = new ArrayList<>();
   protected final Project myMPSProject;
   private DialogWrapper myParentForCallBack = null;
 
@@ -131,6 +131,7 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
    * Subclasses may choose whether to instantiate initial tabs on demand with {@link #createInitialTabs()}
    * or register them at once with this method. Supplied tabs would get a chance to build UI
    * at a proper moment some time later (with {@link Modifiable#init()} call.
+   * <p>FWIW, tab initialization happens inside EDT and with model read.
    * <p>
    * The method may be invoked few times before the UI is created, registered tabs sum up.
    *
@@ -151,10 +152,12 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
 
   @Override
   public final JComponent createComponent() {
-    for (Tab tab : createInitialTabs()) {
-      tab.init();
-      addTab(tab);
-    }
+    myMPSProject.getModelAccess().runReadAction(() -> {
+      for (Tab tab : createInitialTabs()) {
+        tab.init();
+        addTab(tab);
+      }
+    });
     return myTabbedPaneWrapper.getComponent();
   }
 

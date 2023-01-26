@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -347,7 +347,6 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         myModuleDependenciesTab.init(); // init to avoid myModuleDependenciesTab.getTabComponent() == null
         return myModuleDependenciesTab.getTabComponent();
       } else {
-        // FIXME cons needs model read, where shall I grab one?
         myEntriesEditor = new ModelRootContentEntriesEditor(myModule, (MPSProject) myMPSProject);
         Disposer.register(getDisposable(), myEntriesEditor);
         return myEntriesEditor.getComponent();
@@ -1045,8 +1044,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
 
     @Override
     protected UsedLangsTableModel getUsedLangsTableModel() {
-      final List<SLanguage> usedLanguages = new ModelAccessHelper(myMPSProject.getModelAccess()).runReadAction(
-          (Computable<List<SLanguage>>) () -> new ArrayList<>(myModule.getUsedLanguages()));
+      final List<SLanguage> usedLanguages = new ArrayList<>(myModule.getUsedLanguages());
       final UsedLangsTableModel rv = new UsedLangsTableModel(myMPSProject.getRepository());
       usedLanguages.sort(new ToStringComparator());
       rv.init(usedLanguages, Collections.emptySet());
@@ -1477,8 +1475,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
 
       final FacetsRegistry facetsRegistry = myMPSProject.getComponent(FacetsRegistry.class);
 
-      Set<String> applicableFacetTypes = new ModelAccessHelper(myMPSProject.getModelAccess()).runReadAction(
-          () -> facetsRegistry.getApplicableFacetTypes(myModule.getUsedLanguages()));
+      Set<String> applicableFacetTypes = facetsRegistry.getApplicableFacetTypes(myModule.getUsedLanguages());
 
       for (String facetType : facetsRegistry.getFacetTypes()) {
         if (!facetsRegistry.getFacetFactory(facetType).isApplicable(myModule)) {
