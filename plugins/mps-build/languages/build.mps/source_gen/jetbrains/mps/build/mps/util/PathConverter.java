@@ -90,28 +90,23 @@ public class PathConverter {
    */
   public List<SNode> convertPath(String path) throws PathConvertException {
     path = normalizePath(path, false);
-    String withSlash = normalizePath(path, true);
-    List<SNode> result = new ArrayList<SNode>();
-    final boolean startsWithMacroPrefix = path.startsWith("$");
     if (path.startsWith(MacrosFactory.MODULE)) {
+      // if path starts with '${module}', generally no chance to match any project macro (hope nobody declares 'module' macro),
+      // however, full path (resolved to module location) may get matched against some macro and has to be relative to working dir
+      // I need all possible locations as I don't know they way user specified location in a build script, and sometimes (e.g. java libraries)
+      // we need to match ${module}/path against user-specified values
       if (myModuleLocation == null) {
-        throw new PathConvertException(String.format("PathConnverter doesn't know module location to convert path %s", path));
+        throw new PathConvertException(String.format("PathConverter doesn't know module location to convert path %s", path));
       }
-      // Here I assume all module locations can resolve relative to project working directory
-      //  buildRelative(string) gives project-relative path
       String modLocDir = normalizePath(myModuleLocation.getPath(), true);
       // I know I can keep modLocDir right away in the cons, but I like IFile better. String type is very vague, imo.
       // and I need trailing '/' just in cast dir.getPath() doesn't give one, and original path didn't bother to add one, too,
       // e.g. "${module}lib/file.jpg"
-      try {
-        ListSequence.fromList(result).addElement(myPathBuilder.buildRelative(workingDirectory.makeRelative(normalizePath(modLocDir + path.substring(MacrosFactory.MODULE.length()), false))));
-      } catch (RelativePathHelper.PathException ex) {
-        // XXX odd exception handling, would be great to review uses and refactor
-        throw new PathConvertException(ex.toString());
-      }
-      // if path starts with '${module}', no chance to match any other macro, nor to be isRelative() to working dir
-      return result;
+      path = normalizePath(modLocDir + path.substring(MacrosFactory.MODULE.length()), false);
     }
+    String withSlash = normalizePath(path, true);
+    List<SNode> result = new ArrayList<SNode>();
+    final boolean startsWithMacroPrefix = path.startsWith("$");
     for (Tuples._2<String, SNode> m : Sequence.fromIterable(macros)) {
       String mdir = (startsWithMacroPrefix ? "${" + SPropertyOperations.getString(m._1(), PROPS.name$MnvL) + "}/" : m._0());
       // XXX what's the check path.length < mdir.length supposed to do? If the path is shorter
@@ -123,10 +118,12 @@ public class PathConverter {
         ListSequence.fromList(result).addElement(myPathBuilder.buildRelative(m._1(), currPath));
       }
     }
+    // XXX don't quite buy why isRelative needs withSlash (inside, it normalizes again, w/o slash)
     if (workingDirectory.isRelative(withSlash)) {
       try {
         ListSequence.fromList(result).addElement(myPathBuilder.buildRelative(workingDirectory.makeRelative(withSlash)));
       } catch (RelativePathHelper.PathException ex) {
+        // XXX odd exception handling, would be great to review uses and refactor
         throw new PathConvertException(ex.toString());
       }
     }
