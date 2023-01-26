@@ -505,16 +505,6 @@
         <property role="3qWCbO" value="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
       </node>
     </node>
-    <node concept="PiPfp" id="3Mps3Lh25ZH" role="3989C9">
-      <property role="TrG5h" value="tasksplugin" />
-      <node concept="25yagZ" id="3Mps3Lh28Ks" role="PiKyV">
-        <node concept="3yqu4x" id="3Mps3Lh28Ko" role="25yagT">
-          <node concept="3yrxFa" id="3Mps3Lh28Kq" role="3yqu4I">
-            <ref role="3yrxFb" node="3Mps3LgIPEJ" />
-          </node>
-        </node>
-      </node>
-    </node>
     <node concept="PiPfp" id="1s0vtrx9Ne8" role="3989C9">
       <property role="TrG5h" value="javac2" />
       <node concept="25yagZ" id="1s0vtrx9Rb5" role="PiKyV">
@@ -1534,10 +1524,6 @@
       <node concept="2sjeV3" id="TfcoydlS8a" role="nCB5Z">
         <property role="2a2d0E" value="true" />
         <ref role="2sjeV2" node="16Vg0jOcomR" resolve="idea-libraries" />
-      </node>
-      <node concept="2sjeV3" id="3Mps3LhbHKR" role="nCB5Z">
-        <property role="2a2d0E" value="true" />
-        <ref role="2sjeV2" node="3Mps3Lh25ZH" resolve="tasksplugin" />
       </node>
     </node>
     <node concept="398b33" id="4Iq3ixqvAFF" role="3989C9">
@@ -26581,27 +26567,6 @@
           </node>
         </node>
       </node>
-      <node concept="398223" id="3Mps3LgIPDH" role="39821P">
-        <node concept="3_J27D" id="3Mps3LgIPDJ" role="Nbhlr">
-          <node concept="3Mxwew" id="3Mps3LgIPE_" role="3MwsjC">
-            <property role="3MwjfP" value="tasks" />
-          </node>
-        </node>
-        <node concept="398223" id="3Mps3LgIPEB" role="39821P">
-          <node concept="3_J27D" id="3Mps3LgIPEC" role="Nbhlr">
-            <node concept="3Mxwew" id="3Mps3LgIPEH" role="3MwsjC">
-              <property role="3MwjfP" value="lib" />
-            </node>
-          </node>
-          <node concept="13uQ2_" id="3Mps3LgIPEJ" role="39821P">
-            <node concept="3_J27D" id="3Mps3LgIPEK" role="13uQ07">
-              <node concept="3Mxwew" id="3Mps3LgIPEP" role="3MwsjC">
-                <property role="3MwjfP" value="tasks-core.jar" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
       <node concept="398223" id="29qIO8qTH7X" role="39821P">
         <node concept="3_J27D" id="29qIO8qTH7Y" role="Nbhlr">
           <node concept="3Mxwew" id="29qIO8qTH7Z" role="3MwsjC">
@@ -39053,9 +39018,6 @@
     <node concept="26EafG" id="BJYGrH08Xy" role="26Ea7d">
       <property role="26EafJ" value="lib/*" />
     </node>
-    <node concept="26EafG" id="2nEb$MHLqxE" role="26Ea7d">
-      <property role="26EafJ" value="plugins/tasks/lib/tasks-core.jar" />
-    </node>
     <node concept="26EafG" id="68rp5VxCl2R" role="26Ea7d">
       <property role="26EafJ" value="lib/ant/lib/ant.jar" />
     </node>
@@ -44863,13 +44825,6 @@
     </node>
     <node concept="PiPfp" id="7TqXBxc99Im" role="3989C9">
       <property role="TrG5h" value="idea-vcs" />
-      <node concept="25yagZ" id="3Mps3LgSmzE" role="PiKyV">
-        <node concept="3yqFpY" id="3Mps3LgSmzA" role="25yagT">
-          <node concept="3yqFqT" id="3Mps3LgSmzC" role="3yqFpW">
-            <ref role="3yqFr6" node="3Mps3LgIPEB" resolve="lib" />
-          </node>
-        </node>
-      </node>
       <node concept="25yagZ" id="7TqXBxc99Iq" role="PiKyV">
         <node concept="3yqFpY" id="7TqXBxc99Ir" role="25yagT">
           <node concept="3yqFqT" id="7TqXBxc99Is" role="3yqFpW">

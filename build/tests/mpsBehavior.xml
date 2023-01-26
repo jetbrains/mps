@@ -1184,7 +1184,6 @@
         <fileset file="${artifacts.IDEA}/lib/jps-model.jar" />
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
-        <fileset file="${artifacts.IDEA}/plugins/tasks/lib/tasks-core.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.core.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.scopes.runtime.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.structure.jar" />
@@ -1249,7 +1248,6 @@
         <fileset file="${artifacts.IDEA}/lib/jps-model.jar" />
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
-        <fileset file="${artifacts.IDEA}/plugins/tasks/lib/tasks-core.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.core.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.scopes.runtime.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.structure.jar" />

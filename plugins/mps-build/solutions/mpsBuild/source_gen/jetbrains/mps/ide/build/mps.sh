@@ -192,7 +192,6 @@ else
 fi
 
 CLASSPATH="$IDE_HOME/lib/*"
-CLASSPATH="$CLASSPATH:$IDE_HOME/plugins/tasks/lib/tasks-core.jar"
 CLASSPATH="$CLASSPATH:$IDE_HOME/lib/ant/lib/ant.jar"
 CLASSPATH="$CLASSPATH:$JDK/lib/tools.jar"
 # shellcheck disable=SC2154

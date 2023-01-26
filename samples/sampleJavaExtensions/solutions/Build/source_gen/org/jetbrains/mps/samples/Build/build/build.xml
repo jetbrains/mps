@@ -1014,7 +1014,6 @@
         <fileset file="${artifacts.IDEA}/lib/jps-model.jar" />
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
-        <fileset file="${artifacts.IDEA}/plugins/tasks/lib/tasks-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/runtimes/jetbrains.mps.analyzers.runtime.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.logging.runtime.jar" />
@@ -1073,7 +1072,6 @@
         <fileset file="${artifacts.IDEA}/lib/jps-model.jar" />
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
-        <fileset file="${artifacts.IDEA}/plugins/tasks/lib/tasks-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.logging.runtime.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.scopes.jar" />
@@ -1127,7 +1125,6 @@
         <fileset file="${artifacts.IDEA}/lib/jps-model.jar" />
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
-        <fileset file="${artifacts.IDEA}/plugins/tasks/lib/tasks-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/runtimes/jetbrains.mps.analyzers.runtime.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.logging.runtime.jar" />
@@ -1186,7 +1183,6 @@
         <fileset file="${artifacts.IDEA}/lib/jps-model.jar" />
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
-        <fileset file="${artifacts.IDEA}/plugins/tasks/lib/tasks-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.logging.runtime.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.scopes.jar" />
@@ -1289,7 +1285,6 @@
         <fileset file="${artifacts.IDEA}/lib/jps-model.jar" />
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
-        <fileset file="${artifacts.IDEA}/plugins/tasks/lib/tasks-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/runtimes/jetbrains.mps.analyzers.runtime.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.logging.runtime.jar" />
@@ -1349,7 +1344,6 @@
         <fileset file="${artifacts.IDEA}/lib/jps-model.jar" />
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
-        <fileset file="${artifacts.IDEA}/plugins/tasks/lib/tasks-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage-generator.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.logging.runtime.jar" />
@@ -1404,7 +1398,6 @@
         <fileset file="${artifacts.IDEA}/lib/jps-model.jar" />
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
-        <fileset file="${artifacts.IDEA}/plugins/tasks/lib/tasks-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/runtimes/jetbrains.mps.analyzers.runtime.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.logging.runtime.jar" />
@@ -1463,7 +1456,6 @@
         <fileset file="${artifacts.IDEA}/lib/jps-model.jar" />
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
-        <fileset file="${artifacts.IDEA}/plugins/tasks/lib/tasks-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.logging.runtime.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.scopes.jar" />

@@ -16,17 +16,17 @@
 package jetbrains.mps.ide.blame.api;
 
 import com.google.gson.Gson;
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpMethod;
-import org.apache.commons.httpclient.NameValuePair;
-import org.apache.commons.httpclient.methods.GetMethod;
-import org.apache.commons.httpclient.methods.PostMethod;
-import org.apache.commons.httpclient.methods.StringRequestEntity;
-import org.apache.commons.httpclient.methods.multipart.FilePart;
-import org.apache.commons.httpclient.methods.multipart.MultipartRequestEntity;
-import org.apache.commons.httpclient.methods.multipart.Part;
-import org.apache.commons.httpclient.methods.multipart.StringPart;
-import org.apache.commons.httpclient.params.HttpClientParams;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
@@ -38,7 +38,7 @@ import java.util.Map;
 
 public class Reporter {
   public static final String YOUTRACK_BASE_URL = "https://youtrack.jetbrains.com";
-  public static final String ISSUE_BASE_URL = YOUTRACK_BASE_URL + "/issue/";        // add issue id and open browser with this URL
+  private static final String ISSUE_BASE_URL = YOUTRACK_BASE_URL + "/issue/";        // add issue id and open browser with this URL
 
   private static final String AUTHORIZATION_HEADER = "Authorization";
   private static final String ACCEPT_HEADER = "Accept";
@@ -58,9 +58,7 @@ public class Reporter {
   public static final String SUBSYSTEM_VERSION_CONTROL = "Version Control";
   private static final String TYPE_FIELD = "Type";
   private static final String TYPE_FIELD_TYPE = "SingleEnumIssueCustomField";
-  public static final String TYPE_EXCEPTION = "Exception";
 
-  private static final String PROJECTS = "/api/admin/projects";
   private static final String ISSUES = "/api/issues";
   private static final String ADD_ISSUE_URL = YOUTRACK_BASE_URL + ISSUES + "?fields=id,idReadable";
   private static final String LIST_VERSIONS_URL = YOUTRACK_BASE_URL + "/api/admin/customFieldSettings/customFields/" + AFFECTED_VERSIONS_FIELD_ID + "/instances?fields=project(id),bundle(values(name,id))";
@@ -74,16 +72,11 @@ public class Reporter {
 
   public Reporter(@Nullable String authorizationToken) {
     myAuthorizationToken = authorizationToken != null ? authorizationToken : DEFAULT_AUTHORIZATION_TOKEN;
-    myHttpClient = new HttpClient();
+    myHttpClient = HttpClients.custom().setDefaultRequestConfig(RequestConfig.custom()
+                                                                             .setConnectTimeout(DEFAULT_TIMEOUT)
+                                                                             .setConnectionRequestTimeout(DEFAULT_TIMEOUT).build())
+                              .build();
     myGson = new Gson();
-    setTimeouts(DEFAULT_TIMEOUT);
-  }
-  public final void setTimeouts(int timeoutMillis) {
-    // Final method, because called in constructor - avoiding road to hell.
-    HttpClientParams params = myHttpClient.getParams();
-    params.setConnectionManagerTimeout(timeoutMillis);
-    params.setSoTimeout(timeoutMillis);
-    myHttpClient.setParams(params);
   }
 
   public static String getIssueUrl(String idReadable) {
@@ -94,21 +87,21 @@ public class Reporter {
     return YOUTRACK_BASE_URL + "issues/" + MPS_PROJECT;
   }
 
-  private void addHeadersAndExecute(HttpMethod method) throws IOException {
-    method.addRequestHeader(AUTHORIZATION_HEADER, "Bearer " + myAuthorizationToken);
-    method.addRequestHeader(ACCEPT_HEADER, JSON_TYPE);
-    method.addRequestHeader(CONTENT_TYPE_HEADER, JSON_TYPE);
-    myHttpClient.executeMethod(method);
+  private HttpResponse addHeadersAndExecute(HttpUriRequest method) throws IOException {
+    method.addHeader(AUTHORIZATION_HEADER, "Bearer " + myAuthorizationToken);
+    method.addHeader(ACCEPT_HEADER, JSON_TYPE);
+    method.addHeader(CONTENT_TYPE_HEADER, JSON_TYPE);
+    return myHttpClient.execute(method);
   }
 
   private API.VersionBundle getMPSVersions() throws IOException {
-    GetMethod getMethod = new GetMethod(LIST_VERSIONS_URL);
-    addHeadersAndExecute(getMethod);
-    int statusCode = getMethod.getStatusCode();
+    HttpGet getMethod = new HttpGet(LIST_VERSIONS_URL);
+    HttpResponse httpResponse = addHeadersAndExecute(getMethod);
+    int statusCode = httpResponse.getStatusLine().getStatusCode();
     if (statusCode != 200) {
-      throw new IOException("Can't get MPS Versions:\n" + getMethod.getResponseBodyAsString());
+      throw new IOException("Can't get MPS Versions:\n" + EntityUtils.toString(httpResponse.getEntity()));
     }
-    API.VersionProjectCustomField[] rsp = myGson.fromJson(new InputStreamReader(getMethod.getResponseBodyAsStream()), API.VersionProjectCustomField[].class);
+    API.VersionProjectCustomField[] rsp = myGson.fromJson(new InputStreamReader(httpResponse.getEntity().getContent()), API.VersionProjectCustomField[].class);
     for (API.VersionProjectCustomField f : rsp) {
       if (MPS_PROJECT_ID.equals(f.project.id))  return f.bundle;
     }
@@ -116,34 +109,31 @@ public class Reporter {
   }
 
   private API.Issue createIssue(API.Issue issue) throws IOException {
-    PostMethod postMethod = new PostMethod(ADD_ISSUE_URL);
+    HttpPost postMethod = new HttpPost(ADD_ISSUE_URL);
     String content = myGson.toJson(issue);
-    postMethod.setRequestEntity(new StringRequestEntity(content, "application/json", "UTF-8"));
-    addHeadersAndExecute(postMethod);
-    int statusCode = postMethod.getStatusCode();
+    postMethod.setEntity(new StringEntity(content, ContentType.APPLICATION_JSON));
+    HttpResponse httpResponse = addHeadersAndExecute(postMethod);
+    int statusCode = httpResponse.getStatusLine().getStatusCode();
+    String responseString = EntityUtils.toString(httpResponse.getEntity());
     if (statusCode != 200) {
-      throw new IOException("Can't create issue:\n" + postMethod.getResponseBodyAsString());
+      throw new IOException("Can't create issue:\n" + responseString);
     }
-    String responseString = postMethod.getResponseBodyAsString();
     return myGson.fromJson(responseString, API.Issue.class);
   }
 
   private void attachFilesToIssue(String issueId, File[] files) throws IOException {
-    PostMethod postMethod = new PostMethod(YOUTRACK_BASE_URL + ISSUES + "/" + issueId + "/attachments?fields=id,name");
-    List<Part> parts = new ArrayList<>();
-    for (NameValuePair nameValuePair : postMethod.getParameters()) {
-      parts.add(new StringPart(nameValuePair.getName(), nameValuePair.getValue()));
-    }
+    HttpPost postMethod = new HttpPost(YOUTRACK_BASE_URL + ISSUES + "/" + issueId + "/attachments?fields=id,name");
+    MultipartEntityBuilder builder = MultipartEntityBuilder.create();
     for (File file : files) {
-      parts.add(new FilePart(file.getName(), file));
+      builder.addBinaryBody(file.getName(), file);
     }
-    postMethod.setRequestEntity(new MultipartRequestEntity(parts.toArray(new Part[0]), postMethod.getParams()));
-    postMethod.addRequestHeader(AUTHORIZATION_HEADER, "Bearer " + myAuthorizationToken);
-    myHttpClient.executeMethod(postMethod);
+    postMethod.setEntity(builder.build());
+    postMethod.addHeader(AUTHORIZATION_HEADER, "Bearer " + myAuthorizationToken);
+    HttpResponse httpResponse = myHttpClient.execute(postMethod);
 
-    int statusCode = postMethod.getStatusCode();
+    int statusCode = httpResponse.getStatusLine().getStatusCode();
     if (statusCode != 200) {
-      throw new IOException("Can't attach files to issue:\n" + postMethod.getResponseBodyAsString());
+      throw new IOException("Can't attach files to issue:\n" + EntityUtils.toString(httpResponse.getEntity()));
     }
   }
 
@@ -156,7 +146,7 @@ public class Reporter {
     issue.description = description;
 
     // create array of custom fields
-    List<API.IssueCustomField> customFields = new ArrayList<API.IssueCustomField>();
+    List<API.IssueCustomField> customFields = new ArrayList<>();
     // Affected version
     API.IssueCustomField fieldVersion = new API.IssueCustomField();
     fieldVersion.name = AFFECTED_VERSIONS_FIELD;
@@ -206,7 +196,7 @@ public class Reporter {
     return false;
   }
 
-  public void countUnresolvedIssues(Map<String, Integer> users2counts) {
+  public void countUnresolvedIssues(Map<String, Integer> ignoredUsers2counts) {
     // do we need this test?
   }
 }

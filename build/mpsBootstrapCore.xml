@@ -40,10 +40,6 @@
     </fileset>
   </path>
   
-  <path id="path.java.library.tasksplugin">
-    <fileset file="${artifacts.IDEA}/plugins/tasks/lib/tasks-core.jar" />
-  </path>
-  
   <path id="path.java.library.javac2">
     <fileset file="${mps_home}/plugins/java/lib/javac2.jar" />
   </path>
@@ -17645,7 +17641,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -17694,7 +17689,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -17752,7 +17746,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -17813,7 +17806,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -17892,7 +17884,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -17955,7 +17946,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -18013,7 +18003,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.java.library.junit-4.12" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -18076,7 +18065,6 @@
         <pathelement path="${build.tmp}/java/out/scripts-runtime" />
         <pathelement path="${build.tmp}/java/out/vfs-tracking" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
@@ -18165,7 +18153,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/feedback-api" />
@@ -18260,7 +18247,6 @@
         <pathelement path="${build.tmp}/java/out/vfs-tracking" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -18339,7 +18325,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -18413,7 +18398,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -18490,7 +18474,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -18573,7 +18556,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.typesystem" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -18650,7 +18632,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -18733,7 +18714,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.typesystem" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -18810,7 +18790,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -18885,7 +18864,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -18960,7 +18938,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -19034,7 +19011,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -19110,7 +19086,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -19187,7 +19162,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -19262,7 +19236,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -19344,7 +19317,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -19416,7 +19388,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -19493,7 +19464,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -19568,7 +19538,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -19642,7 +19611,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -19726,7 +19694,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -19806,7 +19773,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -19880,7 +19846,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -19962,7 +19927,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -20035,7 +19999,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -20168,7 +20131,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -20241,7 +20203,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -20318,7 +20279,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -20393,7 +20353,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -20470,7 +20429,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -20544,7 +20502,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -20622,7 +20579,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -20698,7 +20654,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -20787,7 +20742,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.baseLanguage.logging.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -20870,7 +20824,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -20943,7 +20896,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -21028,7 +20980,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -21104,7 +21055,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -21186,7 +21136,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -21259,7 +21208,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -21339,7 +21287,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -21412,7 +21359,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -21494,7 +21440,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -21571,7 +21516,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -21651,7 +21595,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -21726,7 +21669,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -21806,7 +21748,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -21881,7 +21822,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -21969,7 +21909,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -22046,7 +21985,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -22132,7 +22070,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -22209,7 +22146,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -22297,7 +22233,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -22374,7 +22309,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -22453,7 +22387,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -22529,7 +22462,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -22613,7 +22545,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -22689,7 +22620,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -22779,7 +22709,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -22828,7 +22757,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
@@ -22950,7 +22878,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.3" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -23023,7 +22950,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -23103,7 +23029,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.3" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -23147,7 +23072,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/feedback-api" />
@@ -23256,7 +23180,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -23334,7 +23257,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -23378,7 +23300,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
@@ -23502,7 +23423,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.5" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -23626,7 +23546,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -23698,7 +23617,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -23772,7 +23690,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -23857,7 +23774,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -23934,7 +23850,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -24013,7 +23928,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -24090,7 +24004,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -24176,7 +24089,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -24254,7 +24166,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -24331,7 +24242,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -24421,7 +24331,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.3" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -24502,7 +24411,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -24592,7 +24500,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -24673,7 +24580,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -24761,7 +24667,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.3" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -24841,7 +24746,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -24918,7 +24822,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -25002,7 +24905,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.5" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -25077,7 +24979,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -25166,7 +25067,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -25250,7 +25150,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -25323,7 +25222,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -25416,7 +25314,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -25501,7 +25398,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -25564,7 +25460,6 @@
         <pathelement path="${build.tmp}/java/out/scripts-runtime" />
         <pathelement path="${build.tmp}/java/out/vfs-tracking" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
@@ -25653,7 +25548,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -25727,7 +25621,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -25804,7 +25697,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -25882,7 +25774,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -25969,7 +25860,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.util.order" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -26050,7 +25940,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.util.order#174635545557533742" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -26132,7 +26021,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -26205,7 +26093,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.util.order" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -26282,7 +26169,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -26363,7 +26249,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -26424,7 +26309,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
@@ -26550,7 +26434,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.6" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -26624,7 +26507,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -26707,7 +26589,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -26781,7 +26662,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -26874,7 +26754,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.6" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -26961,7 +26840,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -27044,7 +26922,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -27121,7 +26998,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -27203,7 +27079,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -27280,7 +27155,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -27355,7 +27229,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -27432,7 +27305,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -27520,7 +27392,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -27597,7 +27468,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -27680,7 +27550,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -27758,7 +27627,6 @@
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -27843,7 +27711,6 @@
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <path refid="path.jdk.classpath" />
@@ -27915,7 +27782,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -27995,7 +27861,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -28078,7 +27943,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -28152,7 +28016,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -28229,7 +28092,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -28310,7 +28172,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -28386,7 +28247,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -28461,7 +28321,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -28542,7 +28401,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -28619,7 +28477,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -28697,7 +28554,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -28773,7 +28629,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -28847,7 +28702,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -28925,7 +28779,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -29002,7 +28855,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -29077,7 +28929,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -29154,7 +29005,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -29235,7 +29085,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -29327,7 +29176,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -29409,7 +29257,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -29487,7 +29334,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -29569,7 +29415,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -29646,7 +29491,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -29729,7 +29573,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -29804,7 +29647,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -29879,7 +29721,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -29967,7 +29808,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.typesystem" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -30052,7 +29892,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -30129,7 +29968,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -30198,7 +30036,6 @@
         <pathelement path="${build.tmp}/java/out/vfs-tracking" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -30276,7 +30113,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -30351,7 +30187,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -30478,7 +30313,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -30557,7 +30391,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -30636,7 +30469,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -30709,7 +30541,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -30786,7 +30617,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -30830,7 +30660,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
@@ -30957,7 +30786,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.7" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -31001,7 +30829,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/feedback-api" />
@@ -31119,7 +30946,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.make.script" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -31205,7 +31031,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <pathelement path="${build.tmp}/java.modules.cycle.7" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -31281,7 +31106,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.make.script" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -31364,7 +31188,6 @@
         <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -31444,7 +31267,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -31518,7 +31340,6 @@
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -31585,7 +31406,6 @@
         <pathelement path="${build.tmp}/java/out/vfs-tracking" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
-        <path refid="path.java.library.tasksplugin" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />

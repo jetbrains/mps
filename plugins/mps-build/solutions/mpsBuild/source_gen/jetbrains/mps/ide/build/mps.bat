@@ -135,7 +135,6 @@ SET IDE_JVM_ARGS=-Didea.platform.prefix=Idea -Didea.jre.check=true -Djna.boot.li
 SET ALL_JVM_ARGS=%ACC% %COMMON_JVM_ARGS% %IDE_JVM_ARGS%
 
 SET CLASS_PATH=%IDE_HOME%\lib\*
-SET CLASS_PATH=%CLASS_PATH%;%IDE_HOME%\plugins\tasks\lib\tasks-core.jar
 SET CLASS_PATH=%CLASS_PATH%;%IDE_HOME%\lib\ant\lib\ant.jar
 SET CLASS_PATH=%CLASS_PATH%;%JDK%\lib\tools.jar
 IF NOT "%IDEA_CLASS_PATH%" == "" SET CLASS_PATH=%CLASS_PATH%;%IDEA_CLASS_PATH%

@@ -130,8 +130,6 @@
         <fileset file="${artifacts.IDEA}/lib/jps-model.jar" />
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
-        <fileset file="${artifacts.IDEA}/plugins/tasks/lib/tasks-core.jar" />
-        <fileset dir="${artifacts.IDEA}/plugins/tasks/lib" includes="*.jar" />
         <fileset dir="${artifacts.IDEA}/plugins/vcs-svn/lib" includes="*.jar" />
         <fileset dir="${artifacts.IDEA}/plugins/vcs-git/lib" includes="*.jar" />
         <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
