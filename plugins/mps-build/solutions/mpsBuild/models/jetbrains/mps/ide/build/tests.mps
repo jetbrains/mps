@@ -689,17 +689,22 @@
               <property role="3qWCbO" value="**/*.mps, **/*.mpsr, **/.model" />
             </node>
           </node>
-          <node concept="3LXTmp" id="73GUf$umQZy" role="1HemKq">
-            <node concept="55IIr" id="73GUf$umQZs" role="3LXTmr">
-              <node concept="2Ry0Ak" id="73GUf$umQZt" role="iGT6I">
+        </node>
+        <node concept="1BupzO" id="6maaEP198_L" role="3bR31x">
+          <property role="3ZfqAx" value="jetbrains" />
+          <property role="1Hdu6h" value="true" />
+          <property role="1HemKv" value="true" />
+          <node concept="3LXTmp" id="6maaEP198_M" role="1HemKq">
+            <node concept="55IIr" id="6maaEP198_F" role="3LXTmr">
+              <node concept="2Ry0Ak" id="6maaEP198_G" role="iGT6I">
                 <property role="2Ry0Am" value="testbench" />
-                <node concept="2Ry0Ak" id="73GUf$umQZu" role="2Ry0An">
+                <node concept="2Ry0Ak" id="6maaEP198_H" role="2Ry0An">
                   <property role="2Ry0Am" value="testsolutions" />
-                  <node concept="2Ry0Ak" id="73GUf$umQZv" role="2Ry0An">
+                  <node concept="2Ry0Ak" id="6maaEP198_I" role="2Ry0An">
                     <property role="2Ry0Am" value="execution-test" />
-                    <node concept="2Ry0Ak" id="73GUf$umQZw" role="2Ry0An">
+                    <node concept="2Ry0Ak" id="6maaEP198_J" role="2Ry0An">
                       <property role="2Ry0Am" value="tests" />
-                      <node concept="2Ry0Ak" id="73GUf$umQZx" role="2Ry0An">
+                      <node concept="2Ry0Ak" id="6maaEP198_K" role="2Ry0An">
                         <property role="2Ry0Am" value="jetbrains" />
                       </node>
                     </node>
@@ -707,7 +712,7 @@
                 </node>
               </node>
             </node>
-            <node concept="3qWCbU" id="73GUf$umQZz" role="3LXTna">
+            <node concept="3qWCbU" id="6maaEP198_N" role="3LXTna">
               <property role="3qWCbO" value="**/*.mps, **/*.mpsr, **/.model" />
             </node>
           </node>

@@ -37500,6 +37500,12 @@
             <ref role="3bR37D" node="HHlBn9$wJ2" resolve="org.jdom" />
           </node>
         </node>
+        <node concept="1SiIV0" id="6maaEP1da11" role="3bR37C">
+          <node concept="3bR9La" id="6maaEP1da12" role="1SiIV1">
+            <property role="3bR36h" value="true" />
+            <ref role="3bR37D" node="1ULLXZL0gZG" resolve="org.junit.junit5" />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="m$_wf" id="5CFKsRWV4Nl" role="3989C9">
