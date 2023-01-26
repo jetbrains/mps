@@ -332,6 +332,8 @@
       <jvmarg value="--add-opens=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED" />
       <jvmarg value="--add-opens=jdk.jdi/com.sun.tools.jdi=ALL-UNNAMED" />
       <formatter type="xml"/>
+      <sysproperty key="idea.force.use.core.classloader" value="true"/>
+      <sysproperty key="jna.boot.library.path" value="${ideaPath}/lib/jna/${os.arch}"/>
       <sysproperty key="jdk.home.path" value="${jdkPath}"/>
       <sysproperty key="idea.platform.prefix" value="Idea"/>
       <sysproperty key="idea.config.path" value="${test.platform.sandbox.dir}/config"/>
@@ -408,6 +410,8 @@
       <jvmarg value="--add-opens=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED" />
       <jvmarg value="--add-opens=jdk.jdi/com.sun.tools.jdi=ALL-UNNAMED" />
       <formatter type="xml"/>
+      <sysproperty key="idea.force.use.core.classloader" value="true"/>
+      <sysproperty key="jna.boot.library.path" value="${ideaPath}/lib/jna/${os.arch}"/>
       <sysproperty key="jdk.home.path" value="${jdkPath}"/>
       <sysproperty key="idea.platform.prefix" value="Idea"/>
       <sysproperty key="idea.config.path" value="${test.platform.sandbox.dir}/config"/>
@@ -481,6 +485,8 @@
       <jvmarg value="--add-opens=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED" />
       <jvmarg value="--add-opens=jdk.jdi/com.sun.tools.jdi=ALL-UNNAMED" />
       <formatter type="xml"/>
+      <sysproperty key="idea.force.use.core.classloader" value="true"/>
+      <sysproperty key="jna.boot.library.path" value="${ideaPath}/lib/jna/${os.arch}"/>
       <sysproperty key="jdk.home.path" value="${jdkPath}"/>
       <sysproperty key="file.encoding" value="UTF-8"/>
       <sysproperty key="idea.system.path" value="${test.platform.sandbox.jps}/system"/>
@@ -555,6 +561,8 @@
       <jvmarg value="--add-opens=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED" />
       <jvmarg value="--add-opens=jdk.jdi/com.sun.tools.jdi=ALL-UNNAMED" />
       <formatter type="xml"/>
+      <sysproperty key="idea.force.use.core.classloader" value="true"/>
+      <sysproperty key="jna.boot.library.path" value="${ideaPath}/lib/jna/${os.arch}"/>
       <sysproperty key="jdk.home.path" value="${jdkPath}"/>
       <sysproperty key="idea.platform.prefix" value="Idea"/>
       <sysproperty key="idea.config.path" value="${test.platform.sandbox.dir}/config"/>
