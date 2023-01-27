@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,15 +52,9 @@ import java.util.concurrent.atomic.AtomicReference;
  */
 public class MPSCompilerComponent implements ProjectComponent {
   private final Project myProject;
-  private final CompilerManager compilerManager;
-  private final CompilerConfiguration compilerConfiguration;
-  private final MPSCoreComponents myCoreComponents;
 
-  public MPSCompilerComponent(Project project, CompilerManager compilerManager, CompilerConfiguration compilerConfiguration, MPSCoreComponents mpsCore) {
+  public MPSCompilerComponent(Project project) {
     myProject = project;
-    this.compilerManager = compilerManager;
-    this.compilerConfiguration = compilerConfiguration;
-    myCoreComponents = mpsCore;
   }
 
   @Override
@@ -69,6 +63,9 @@ public class MPSCompilerComponent implements ProjectComponent {
 
     myProject.getMessageBus().connect().subscribe(CustomBuilderMessageHandler.TOPIC, new RefreshFilesCompilationStatusListener());
     myProject.getMessageBus().connect().subscribe(CustomBuilderMessageHandler.TOPIC, new NavigateToNodesWithErrors(errorMessages));
+
+    final CompilerManager compilerManager = CompilerManager.getInstance(myProject);
+    final CompilerConfiguration compilerConfiguration = CompilerConfiguration.getInstance(myProject);
 
     compilerManager.addCompilableFileType(MPSFileTypeFactory.MPS_FILE_TYPE);
     compilerManager.addCompilableFileType(MPSFileTypeFactory.MPS_ROOT_FILE_TYPE);
@@ -89,7 +86,7 @@ public class MPSCompilerComponent implements ProjectComponent {
       final File repositoryCache = new File(CompilerPaths.getCompilerSystemDirectory(myProject), "mps_repository.dat");
       final long start = System.nanoTime();
       final MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
-      final MPSModuleRepository deploymentRepo = myCoreComponents.getPlatform().findComponent(MPSModuleRepository.class);
+      final MPSModuleRepository deploymentRepo = MPSCoreComponents.getInstance().getPlatform().findComponent(MPSModuleRepository.class);
       deploymentRepo.getModelAccess().runReadAction(() -> {
         CachedRepositoryData cachedRepositoryData = new MPSRepositoryUtil(context).buildData(deploymentRepo.getModules(), mpsProject.getProjectModules());
         ModelOutputStream mos = null;
@@ -126,14 +123,6 @@ public class MPSCompilerComponent implements ProjectComponent {
 
   @Override
   public void projectClosed() {
-  }
-
-  @Override
-  public void initComponent() {
-  }
-
-  @Override
-  public void disposeComponent() {
   }
 
   @Override
