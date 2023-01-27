@@ -221,50 +221,52 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
   @Override
   public void attach() {
     assert getModule() != null;
-    assert memento != null;
-    if (memento instanceof MementoWithFS) {
-      myFileSystem = ((MementoWithFS) memento).getFileSystem();
-    }
-    String path;
-    myContentDirPathSpec = memento.getPathSpec(CONTENT_PATH);
-    if (myContentDirPathSpec != null && !myContentDirPathSpec.isBlank() && MacrosFactory.containsMacro(memento.get(CONTENT_PATH))) {
-      path = MacrosFactory.forModule(getModule()).expandPath(myContentDirPathSpec);
-    } else {
-      path = memento.get(CONTENT_PATH);
-    }
+    if (memento != null) {
+      // memento can legitimately be null when MR is manually constructed w/o load(), see JavaToMpsUtils.checkStubModels()
+      if (memento instanceof MementoWithFS) {
+        myFileSystem = ((MementoWithFS) memento).getFileSystem();
+      }
+      String path;
+      myContentDirPathSpec = memento.getPathSpec(CONTENT_PATH);
+      if (myContentDirPathSpec != null && !myContentDirPathSpec.isBlank() && MacrosFactory.containsMacro(memento.get(CONTENT_PATH))) {
+        path = MacrosFactory.forModule(getModule()).expandPath(myContentDirPathSpec);
+      } else {
+        path = memento.get(CONTENT_PATH);
+      }
 
-    myContentDir = (path != null) ? myFileSystem.getFile(path) : null;
-    for (SourceRootKind kind : getSupportedFileKinds1()) {
-      for (Memento root : memento.getChildren(kind.getName())) {
-        String relPath = root.get(LOCATION);
-        DefaultSourceRoot dsr = null;
-        if (relPath != null) {
-          // relative
-          assert myContentDir != null;
-          dsr = new DefaultSourceRoot(relPath, myContentDir);
-        } else if (root.get(PATH) != null) {
-          // absolute
-          String absPath;
-          final String origPath;
-          if ((origPath = root.getPathSpec(PATH)) != null) {
-            absPath = MacrosFactory.forModule(getModule()).expandPath(root.getPathSpec(PATH));
-          } else {
-            absPath = root.get(PATH);
+      myContentDir = (path != null) ? myFileSystem.getFile(path) : null;
+      for (SourceRootKind kind : getSupportedFileKinds1()) {
+        for (Memento root : memento.getChildren(kind.getName())) {
+          String relPath = root.get(LOCATION);
+          DefaultSourceRoot dsr = null;
+          if (relPath != null) {
+            // relative
+            assert myContentDir != null;
+            dsr = new DefaultSourceRoot(relPath, myContentDir);
+          } else if (root.get(PATH) != null) {
+            // absolute
+            String absPath;
+            final String origPath;
+            if ((origPath = root.getPathSpec(PATH)) != null) {
+              absPath = MacrosFactory.forModule(getModule()).expandPath(root.getPathSpec(PATH));
+            } else {
+              absPath = root.get(PATH);
+            }
+            dsr = new DefaultSourceRoot(myFileSystem.getFile(absPath));
+            dsr.setOriginalPathSpec(origPath);
           }
-          dsr = new DefaultSourceRoot(myFileSystem.getFile(absPath));
-          dsr.setOriginalPathSpec(origPath);
-        }
-        if (dsr != null) {
-          // NOTE, can't use addSourceRoot() here as we are still in initialization of a model root and shall
-          //      not notify module about changes (AM.setChanged() in addSourceRoot); use mySourcePathStorage directly.
-          mySourcePathStorage.addSourceRoot(kind, dsr);
+          if (dsr != null) {
+            // NOTE, can't use addSourceRoot() here as we are still in initialization of a model root and shall
+            //      not notify module about changes (AM.setChanged() in addSourceRoot); use mySourcePathStorage directly.
+            mySourcePathStorage.addSourceRoot(kind, dsr);
+          }
         }
       }
+      this.memento = null;
     }
 
     super.attach();
     attachPathListenerForEachSourceRoot();
-    this.memento = null;
   }
 
   private void attachPathListenerForEachSourceRoot() { // fixme extract class
