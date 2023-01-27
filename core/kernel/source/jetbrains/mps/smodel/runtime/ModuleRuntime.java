@@ -82,13 +82,16 @@ public final class ModuleRuntime {
 
   /**
    * PROVISIONAL API, DON'T USE OUTSIDE PluginLoaderRegistry code
-   * FIXME
    */
   @NotNull
   public InputStream getOwnResource(@NotNull String fqn) throws IOException {
-    // FIXME ModuleClassLoader (or MPSModuleClassLoader) needs dedicated method to access resources from 'self' only
-    //       check protected findResource()
-    final URL resource = myModuleClassLoader.getResource(fqn);
+    final URL resource;
+    if (myModuleClassLoader instanceof ModuleClassLoader) {
+      resource = ((ModuleClassLoader) myModuleClassLoader).getOwnResource(fqn);
+    } else {
+      // well, not perfect, but try anyway. We may end up trying to find non-existent resource in complete CL dependency hierarchy
+      resource = myModuleClassLoader.getResource(fqn);
+    }
     if (resource != null) {
       return resource.openStream();
     }

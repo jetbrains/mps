@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -248,6 +248,8 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
   @Nullable
   @Override
   public URL getResource(@NonNls String name) {
+    // XXX unlike super.getResource(), we don't delegate to parent first, but look up in own dependencies, and only then delegate to parent.
+    //     Is it intentional? Is it right?
     URL ownResource = findResource(name);
     if (ownResource == null) {
       return getParent().getResource(name);
@@ -268,6 +270,19 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
     return enumeration != null ? enumeration
                                : Collections.emptyEnumeration();
   }
+
+  /**
+   * Look up resource in this module only, without module dependencies or parent CL.
+   * @see ClassLoader#findResource(String)
+   * @since 2022.3
+   */
+  @Nullable
+  public URL getOwnResource(String name) {
+    // unlike getResource(), don't look up in parent/bootstrap CL, we care about resources of this module only
+    // unlike this.findResource(), don't look up in dependencies
+    return mySupport.findResource(name);
+  }
+
 
   @Override
   protected URL findResource(String name) {
