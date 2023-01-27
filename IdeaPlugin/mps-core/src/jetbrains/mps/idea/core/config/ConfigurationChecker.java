@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,26 +38,15 @@ import javax.swing.event.HyperlinkEvent.EventType;
  * counterintuitive mps plugin behavior
  */
 public class ConfigurationChecker implements ProjectComponent {
-  private final FileTypeManager myFTManager;
   private final Project myProject;
 
-  public ConfigurationChecker(FileTypeManager ft, Project p) {
-    myFTManager = ft;
+  public ConfigurationChecker( Project p) {
     myProject = p;
   }
 
   @Override
-  public void initComponent() {
-
-  }
-
-  @Override
-  public void disposeComponent() {
-
-  }
-
-  @Override
   public void projectOpened() {
+    FileTypeManager myFTManager = FileTypeManager.getInstance();
     final FileType[] fbe = {myFTManager.getFileTypeByExtension(MPSExtentions.MODEL)};
     if (fbe[0] != MPSFileTypeFactory.MPS_FILE_TYPE) {
       ApplicationManager.getApplication().invokeLater(() -> {
