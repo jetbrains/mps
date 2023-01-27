@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,6 @@ import com.intellij.openapi.startup.StartupManager;
 import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.ide.messages.MessagesViewTool;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.ide.vfs.FileSystemBridge;
 import jetbrains.mps.idea.core.MPSBundle;
 import jetbrains.mps.idea.core.project.SolutionIdea;
 import jetbrains.mps.messages.MessageKind;
@@ -68,8 +67,9 @@ public class MPSFacet extends Facet<MPSFacetConfiguration> {
   public void initFacet() {
     StartupManager.getInstance(getModule().getProject()).runWhenProjectIsInitialized(new ModelWriteRunnable(myMpsProject.getModelAccess(), () -> {
       SolutionDescriptor solutionDescriptor = getConfiguration().createSolutionDescriptor();
-      final FileSystemBridge fsb = myMpsProject.getFileSystem();
-      final IFile df = fsb.fromVirtualFile(getModule().getModuleFile());
+      // I don't know the reason why getModule().getModuleFile() == null here, nor am I sure about the need for descriptor file at all,
+      // seee SolutionIdea cons comments. Just want to avoid NPE in the log
+      final IFile df = myMpsProject.getFileSystem().getFile(getModule().getModuleFilePath());
       // for whatever reason, getConfiguration().createSolutionDescriptor() doesn't set module namespace.
       //     It seems SolutionIdea relied on explicit setMD() call and Solution.doSetModuleDescriptor() to
       //     update module reference. Now, for module reference constructed properly right away, set namespace here,
