@@ -28,9 +28,7 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.util.Condition;
 
 import javax.swing.Icon;
-import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeNode;
-import javax.swing.tree.TreePath;
 import java.awt.font.TextAttribute;
 import java.util.stream.StreamSupport;
 
@@ -157,7 +155,7 @@ public class SNodeTreeNode extends MPSTreeNodeEx implements NodeTargetProvider {
     } else {
       StreamSupport.stream(n.getChildren().spliterator(), false).filter(myCondition::met).map(this::createChildTreeNode).forEach(this::add);
     }
-    getTree().getAsyncTreeModel().treeStructureChanged(new TreePath(this.getPath()));
+    getTree().getDFTreeModel().nodeStructureChanged(this);
     myInitialized = true;
   }
 

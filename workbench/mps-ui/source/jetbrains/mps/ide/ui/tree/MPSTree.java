@@ -21,13 +21,10 @@ import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.wm.IdeFocusManager;
 import com.intellij.ui.DoubleClickListener;
 import com.intellij.ui.TreeUIHelper;
 import com.intellij.ui.tree.AsyncTreeModel;
-import com.intellij.util.concurrency.Invoker;
-import com.intellij.util.concurrency.InvokerSupplier;
 import com.intellij.util.ui.tree.WideSelectionTreeUI;
 import com.intellij.util.ui.update.MergingUpdateQueue;
 import com.intellij.util.ui.update.Update;
@@ -86,13 +83,13 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
   private final Object myUpdateId = new Object();
 
   private boolean myDisposed = false;
-  private Disposable myDisposable;
+  //private Disposable myDisposable;
 
   private MPSTree(DefaultTreeModel defaultTreeModel) {
     // TreeModel instance shall be the same during lifetime of the MPSTree instance
     // otherwise TreeModelListener instances attached to the model get lost
-    super(new AsyncTreeModel(defaultTreeModel, ((DefaultTreeModelWithInvokerSupplier)defaultTreeModel).getDisposable()));
-    myDisposable = ((DefaultTreeModelWithInvokerSupplier)defaultTreeModel).getDisposable();
+    super(defaultTreeModel);
+    //myDisposable = ((DefaultTreeModelWithInvokerSupplier)defaultTreeModel).getDisposable();
 
     myDefaultTreeModel = defaultTreeModel;
 
@@ -169,30 +166,9 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
   }
 
   protected MPSTree() {
-    this(new DefaultTreeModelWithInvokerSupplier(new Disposable() {
-      @Override
-      public void dispose() {
-        //Adapter to allow this MPSTree to be a disposable parent to the AsyncModel, which demands a Disposable instance to be passed in the constructor
-      }
-    }));
+    this(new DefaultTreeModel(null));
   }
-  private static class DefaultTreeModelWithInvokerSupplier extends DefaultTreeModel implements InvokerSupplier {
-    private final Disposable myDisposable;
 
-    public DefaultTreeModelWithInvokerSupplier(Disposable disposable) {
-      super(null);
-      myDisposable = disposable;
-    }
-
-    public Disposable getDisposable() {
-      return myDisposable;
-    }
-
-    @Override
-    public @NotNull Invoker getInvoker() {
-      return Invoker.forEventDispatchThread(myDisposable);
-    }
-  }
   /**
    * Initialization sequence common for each node initialized in the tree.
    * Shall invoke {@link MPSTreeNode#doInit()} to perform actual initialization, does this through appropriate runnable
@@ -228,7 +204,7 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
     if (!myLoadingDisabled && node.isLoadingEnabled()) {
       progressNode = new TextTreeNode("loading...");
       node.add(progressNode);
-      getAsyncTreeModel().treeStructureChanged(new TreePath(node.getPath()));
+      getDFTreeModel().nodeStructureChanged(node);
       expandPath(new TreePath(progressNode.getPath()));
 
       Graphics g = getGraphics();
@@ -245,7 +221,7 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
     }
 
     // initialization of a node is supposed to update its children, notify structure had likely changed
-    getAsyncTreeModel().treeStructureChanged(new TreePath(node.getPath()));
+    getDFTreeModel().nodeStructureChanged(node);
   }
 
   public void addTreeNodeListener(MPSTreeNodeListener listener) {
@@ -650,33 +626,23 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
   }
 
   /**
-   * Returns the underlying AsyncTreeModel. A convenience method to getModel() and cast at the same time.
-   * @return The AsyncTreeModel used by the MPSTree instance
+   * @Deprecated
    */
+  @Deprecated
   public AsyncTreeModel getAsyncTreeModel() {
-    return (AsyncTreeModel) super.getModel();
+    return null;
   }
 
   /**
    * Returns the underlying DefaultTreeModel. Use DefaultTreeModel to add/remove nodes to the model.
-   * This model is wrapped in AsyncTreeModel, which should be used to fire events by external parties.
    * @return The DefaultTreeModel used by the MPSTree instance
    */
   public DefaultTreeModel getDFTreeModel() {
     return myDefaultTreeModel;
   }
 
-  /**
-   * MPSTree uses an AsyncTreeModel, which wraps a DefaultTreeModel.
-   * The AsyncTreeModel should be used to fire events on the model.
-   * The DefaultTreeModel (obtained through @see MPSTree.getDFTreeModel() ) should be used to insert/remove nodes to the model.
-   * @return The AsyncTreeModel used by the MPSTree instance
-   */
   @Override
   public TreeModel getModel() {
-    // we explicitly set AsyncTreeModel during construction of MPSTree,
-    // Do not change TreeModel during lifecycle of MPSTree as it used to be. Same TreeModel instance is important
-    // to keep set of listeners attached to the tree model.
     return super.getModel();
   }
 
@@ -945,7 +911,6 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
     assert !myDisposed;
 
     fireBeforeTreeDisposed();
-    Disposer.dispose(myDisposable);
     myDisposed = true;
     setRootNode(null);
     myTreeNodeListeners.clear();

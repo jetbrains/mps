@@ -15,8 +15,6 @@
  */
 package jetbrains.mps.ide.ui.tree.smodel;
 
-import com.intellij.ui.tree.AsyncTreeModel;
-import com.intellij.ui.tree.TreeVisitor;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.ide.ui.tree.MPSTreeChildOrder;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
@@ -36,7 +34,6 @@ import org.jetbrains.mps.util.Condition;
 
 import javax.swing.Icon;
 import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.TreePath;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -323,7 +320,7 @@ public class SModelTreeNode extends MPSTreeNode implements TreeElement {
         }
       }
 
-      getTree().getAsyncTreeModel().treeStructureChanged(new TreePath(this.getPath()));
+      getTree().getDFTreeModel().nodeStructureChanged(this);
     } finally {
       myInitialized = true;
       myInitializing = false;

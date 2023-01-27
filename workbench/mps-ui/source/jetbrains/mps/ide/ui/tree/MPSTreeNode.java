@@ -26,7 +26,6 @@ import javax.swing.Icon;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreeNode;
-import javax.swing.tree.TreePath;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.font.TextAttribute;
@@ -209,7 +208,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
    */
   public void update() {
     doUpdate();
-    getTree().getAsyncTreeModel().treeStructureChanged(new TreePath(this.getPath()));
+    getTree().getDFTreeModel().nodeStructureChanged(this);
   }
 
   protected void doUpdate() {
@@ -672,7 +671,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
    */
   public final void updateNodePresentationInTree() {
     if (getTree() != null) {
-      getTree().getAsyncTreeModel().treeNodesChanged(new TreePath(this.getPath()));
+      getTree().getDFTreeModel().nodeChanged(this);
     }
   }
 
