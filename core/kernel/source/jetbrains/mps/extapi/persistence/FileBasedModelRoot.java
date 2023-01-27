@@ -227,7 +227,7 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
     }
     String path;
     myContentDirPathSpec = memento.getPathSpec(CONTENT_PATH);
-    if (myContentDirPathSpec != null && !myContentDirPathSpec.isBlank()) {
+    if (myContentDirPathSpec != null && !myContentDirPathSpec.isBlank() && MacrosFactory.containsMacro(memento.get(CONTENT_PATH))) {
       path = MacrosFactory.forModule(getModule()).expandPath(myContentDirPathSpec);
     } else {
       path = memento.get(CONTENT_PATH);
