@@ -31,7 +31,7 @@ public class JUnitTestExecutor implements TestExecutor {
   private StoppableRunner myCurrentRunner = null;
   private RunListener myListener;
   private volatile boolean myStopping = false;
-  private final TestsContributor myTestContributor;
+  protected final TestsContributor myTestContributor;
   private int myFailureCount = -1;
   private Throwable myException;
   private CommandOutputStream myOutStream;
@@ -93,7 +93,7 @@ public class JUnitTestExecutor implements TestExecutor {
     }
   }
 
-  private void executeWithJUnit5(List<DiscoverySelector> selectors) {
+  protected void executeWithJUnit5(List<DiscoverySelector> selectors) {
     LauncherDiscoveryRequest request = LauncherDiscoveryRequestBuilder.request().selectors(selectors).configurationParameter("junit.platform.output.capture.stdout", "true").configurationParameter("junit.platform.output.capture.stderr", "true").build();
 
     LauncherConfig launcherConfig = LauncherConfig.builder().enableTestEngineAutoRegistration(false).enablePostDiscoveryFilterAutoRegistration(false).enableLauncherSessionListenerAutoRegistration(false).enableLauncherDiscoveryListenerAutoRegistration(false).enableTestExecutionListenerAutoRegistration(false).addTestEngines(new VintageTestEngine(), new JupiterTestEngine()).build();

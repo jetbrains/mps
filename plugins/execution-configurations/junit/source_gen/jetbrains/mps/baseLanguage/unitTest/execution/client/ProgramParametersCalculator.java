@@ -65,7 +65,7 @@ import jetbrains.mps.project.PathMacros;
   public String calculate() throws ExecutionException {
     boolean doINeedMPS = myTestsToRun.getParameters().needsMPS();
     boolean useCompatibilityMode = myTestsToRun.getParameters().useCompatibilityMode();
-    return (doINeedMPS ? calcParamsWithMpsPlatformToStart() : calcParamsWithoutMPSPlatformToStart(useCompatibilityMode));
+    return (doINeedMPS ? calcParamsWithMpsPlatformToStart(useCompatibilityMode) : calcParamsWithoutMPSPlatformToStart(useCompatibilityMode));
   }
 
   private String calcParamsWithoutMPSPlatformToStart(boolean useCompatibilityMode) {
@@ -80,13 +80,14 @@ import jetbrains.mps.project.PathMacros;
     return IterableUtils.join(ListSequence.fromList(testsCommandLine), " ");
   }
 
-  private String calcParamsWithMpsPlatformToStart() throws ExecutionException {
+  private String calcParamsWithMpsPlatformToStart(boolean useCompatibilityMode) throws ExecutionException {
     ExecutorScript args = new ExecutorScript();
     ScriptData startupArgs = args.addStartupArguments();
     addModulesAndDepsToStartupArgs(startupArgs);
     addMacrosToStartupArgs(startupArgs);
     addPluginsToStartupArgs(startupArgs);
     startupArgs.setLoadBootstrapLibraries(true);
+    startupArgs.setCompatibilityMode(useCompatibilityMode);
 
     // XXX May want to pass value of idea.additional.classpath system property further to new IdeaApplication instance to ensure plugins that are
     // loaded from sources could get loaded in the new application as well.

@@ -3062,6 +3062,15 @@
         <property role="Xl_RC" value="pluginAutoDiscoveryMode" />
       </node>
     </node>
+    <node concept="Wx3nA" id="4WUgV5kYm9f" role="jymVt">
+      <property role="3TUv4t" value="true" />
+      <property role="TrG5h" value="PROP_COMPATIBILITY_MODE" />
+      <node concept="3Tm6S6" id="4WUgV5kYm9g" role="1B3o_S" />
+      <node concept="17QB3L" id="4WUgV5kYm9h" role="1tU5fm" />
+      <node concept="Xl_RD" id="4WUgV5kYm9i" role="33vP2m">
+        <property role="Xl_RC" value="compatibilityMode" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="6DTB6TKfGJ4" role="jymVt" />
     <node concept="Wx3nA" id="KL8Aql8eFl" role="jymVt">
       <property role="TrG5h" value="ELEM_PROPERTY" />
@@ -3220,6 +3229,14 @@
       <node concept="3Tm6S6" id="5P325eDlk2x" role="1B3o_S" />
       <node concept="10P_77" id="5P325eDltOV" role="1tU5fm" />
       <node concept="3clFbT" id="5P325eDlB0c" role="33vP2m" />
+    </node>
+    <node concept="312cEg" id="4WUgV5kYV9X" role="jymVt">
+      <property role="TrG5h" value="myCompatibilityMode" />
+      <node concept="3Tm6S6" id="4WUgV5kYV9Y" role="1B3o_S" />
+      <node concept="10P_77" id="4WUgV5kYV9Z" role="1tU5fm" />
+      <node concept="3clFbT" id="4WUgV5kYVa0" role="33vP2m">
+        <property role="3clFbU" value="true" />
+      </node>
     </node>
     <node concept="312cEg" id="KL8Aql8eG3" role="jymVt">
       <property role="TrG5h" value="myProperties" />
@@ -3457,6 +3474,26 @@
                 <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
                 <node concept="37vLTw" id="6DTB6TKgKrZ" role="37wK5m">
                   <ref role="3cqZAo" node="5P325eDltPp" resolve="myAutomaticPluginDiscoveryMode" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4WUgV5l1Dwc" role="3cqZAp">
+          <node concept="2OqwBi" id="4WUgV5l1Dwd" role="3clFbG">
+            <node concept="37vLTw" id="4WUgV5l1Dwe" role="2Oq$k0">
+              <ref role="3cqZAo" node="1288c6E3_RJ" resolve="misc" />
+            </node>
+            <node concept="liA8E" id="4WUgV5l1Dwf" role="2OqNvi">
+              <ref role="37wK5l" to="mmaq:~Element.setAttribute(java.lang.String,java.lang.String)" resolve="setAttribute" />
+              <node concept="37vLTw" id="4WUgV5l1Dwg" role="37wK5m">
+                <ref role="3cqZAo" node="4WUgV5kYm9f" resolve="PROP_COMPATIBILITY_MODE" />
+              </node>
+              <node concept="2YIFZM" id="4WUgV5l1Dwh" role="37wK5m">
+                <ref role="37wK5l" to="wyt6:~Boolean.toString(boolean)" resolve="toString" />
+                <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
+                <node concept="37vLTw" id="4WUgV5l1Dwi" role="37wK5m">
+                  <ref role="3cqZAo" node="4WUgV5kYV9X" resolve="myCompatibilityMode" />
                 </node>
               </node>
             </node>
@@ -4294,6 +4331,28 @@
                   <ref role="37wK5l" to="mmaq:~Element.getAttributeValue(java.lang.String)" resolve="getAttributeValue" />
                   <node concept="37vLTw" id="6DTB6TKgTb5" role="37wK5m">
                     <ref role="3cqZAo" node="6DTB6TKevyH" resolve="PROP_PLUGIN_AUTO_DISCOVERY_MODE" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4WUgV5kY$zY" role="3cqZAp">
+          <node concept="37vLTI" id="4WUgV5kY$zZ" role="3clFbG">
+            <node concept="37vLTw" id="4WUgV5kY$$0" role="37vLTJ">
+              <ref role="3cqZAo" node="4WUgV5kYV9X" resolve="myCompatibilityMode" />
+            </node>
+            <node concept="2YIFZM" id="4WUgV5kY$$1" role="37vLTx">
+              <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
+              <ref role="37wK5l" to="wyt6:~Boolean.parseBoolean(java.lang.String)" resolve="parseBoolean" />
+              <node concept="2OqwBi" id="4WUgV5kY$$2" role="37wK5m">
+                <node concept="37vLTw" id="4WUgV5kY$$3" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1288c6E81VG" resolve="misc" />
+                </node>
+                <node concept="liA8E" id="4WUgV5kY$$4" role="2OqNvi">
+                  <ref role="37wK5l" to="mmaq:~Element.getAttributeValue(java.lang.String)" resolve="getAttributeValue" />
+                  <node concept="37vLTw" id="4WUgV5kY$$5" role="37wK5m">
+                    <ref role="3cqZAo" node="4WUgV5kYm9f" resolve="PROP_COMPATIBILITY_MODE" />
                   </node>
                 </node>
               </node>
@@ -5150,6 +5209,41 @@
       </node>
       <node concept="3Tm1VV" id="5P325eDszMh" role="1B3o_S" />
       <node concept="10P_77" id="5P325eDuKzr" role="3clF45" />
+    </node>
+    <node concept="2tJIrI" id="4WUgV5kZzqF" role="jymVt" />
+    <node concept="3clFb_" id="4WUgV5kZp1p" role="jymVt">
+      <property role="TrG5h" value="setCompatibilityMode" />
+      <node concept="37vLTG" id="4WUgV5l0r0z" role="3clF46">
+        <property role="TrG5h" value="compatibilityMode" />
+        <node concept="10P_77" id="4WUgV5l0zaj" role="1tU5fm" />
+      </node>
+      <node concept="3clFbS" id="4WUgV5kZp1q" role="3clF47">
+        <node concept="3clFbF" id="4WUgV5kZp1r" role="3cqZAp">
+          <node concept="37vLTI" id="4WUgV5kZp1s" role="3clFbG">
+            <node concept="37vLTw" id="4WUgV5l0_is" role="37vLTx">
+              <ref role="3cqZAo" node="4WUgV5l0r0z" resolve="compatibilityMode" />
+            </node>
+            <node concept="37vLTw" id="4WUgV5kZp1u" role="37vLTJ">
+              <ref role="3cqZAo" node="4WUgV5kYV9X" resolve="myCompatibilityMode" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="4WUgV5kZp1v" role="1B3o_S" />
+      <node concept="3cqZAl" id="4WUgV5kZp1w" role="3clF45" />
+    </node>
+    <node concept="2tJIrI" id="4WUgV5kZp1o" role="jymVt" />
+    <node concept="3clFb_" id="4WUgV5kZp1i" role="jymVt">
+      <property role="TrG5h" value="getCompatibilityMode" />
+      <node concept="3clFbS" id="4WUgV5kZp1j" role="3clF47">
+        <node concept="3cpWs6" id="4WUgV5kZp1k" role="3cqZAp">
+          <node concept="37vLTw" id="4WUgV5kZp1l" role="3cqZAk">
+            <ref role="3cqZAo" node="4WUgV5kYV9X" resolve="myCompatibilityMode" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="4WUgV5kZp1m" role="1B3o_S" />
+      <node concept="10P_77" id="4WUgV5kZp1n" role="3clF45" />
     </node>
     <node concept="2tJIrI" id="5P325eDrNg2" role="jymVt" />
     <node concept="3clFb_" id="r$A3E5sNES" role="jymVt">

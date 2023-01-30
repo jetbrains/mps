@@ -12845,6 +12845,31 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="6maaEP0BYa_" role="jymVt" />
+    <node concept="3clFb_" id="6maaEP0C1aY" role="jymVt">
+      <property role="TrG5h" value="useCompatibilityMode" />
+      <node concept="10P_77" id="6maaEP0C3rr" role="3clF45" />
+      <node concept="3Tm1VV" id="6maaEP0C1b1" role="1B3o_S" />
+      <node concept="3clFbS" id="6maaEP0C1b2" role="3clF47">
+        <node concept="3clFbF" id="6maaEP0CiOx" role="3cqZAp">
+          <node concept="37vLTw" id="6maaEP0CiOw" role="3clFbG">
+            <ref role="3cqZAo" node="6maaEP0BTJd" resolve="myCompatibilityMode" />
+          </node>
+        </node>
+      </node>
+      <node concept="P$JXv" id="6maaEP0Cceb" role="lGtFl">
+        <node concept="TZ5HA" id="6maaEP0Ccec" role="TZ5H$">
+          <node concept="1dT_AC" id="6maaEP0Cced" role="1dT_Ay">
+            <property role="1dT_AB" value="Returns true if the tests should be run in a &quot;compatibility mode&quot;, such as using one the obsolete frameworks" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="6maaEP0Cho1" role="TZ5H$">
+          <node concept="1dT_AC" id="6maaEP0Cho2" role="1dT_Ay">
+            <property role="1dT_AB" value="like junit/junit4. Otherwise test should be launched with JUnit5 platform." />
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="3Tm1VV" id="46IpDBc0vKv" role="1B3o_S" />
     <node concept="2AHcQZ" id="46IpDBc0DSv" role="2AJF6D">
       <ref role="2AI5Lk" to="lhc4:~Immutable" resolve="Immutable" />
@@ -12950,31 +12975,6 @@
       <node concept="TZ5HA" id="6Eq1AVRPTfi" role="TZ5H$">
         <node concept="1dT_AC" id="6Eq1AVRPTfj" role="1dT_Ay">
           <property role="1dT_AB" value="allowing some class runner that has to fulfil odd contract (subclassing, argument processing)." />
-        </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="6maaEP0BYa_" role="jymVt" />
-    <node concept="3clFb_" id="6maaEP0C1aY" role="jymVt">
-      <property role="TrG5h" value="useCompatibilityMode" />
-      <node concept="10P_77" id="6maaEP0C3rr" role="3clF45" />
-      <node concept="3Tm1VV" id="6maaEP0C1b1" role="1B3o_S" />
-      <node concept="3clFbS" id="6maaEP0C1b2" role="3clF47">
-        <node concept="3clFbF" id="6maaEP0CiOx" role="3cqZAp">
-          <node concept="37vLTw" id="6maaEP0CiOw" role="3clFbG">
-            <ref role="3cqZAo" node="6maaEP0BTJd" resolve="myCompatibilityMode" />
-          </node>
-        </node>
-      </node>
-      <node concept="P$JXv" id="6maaEP0Cceb" role="lGtFl">
-        <node concept="TZ5HA" id="6maaEP0Ccec" role="TZ5H$">
-          <node concept="1dT_AC" id="6maaEP0Cced" role="1dT_Ay">
-            <property role="1dT_AB" value="Returns true if the tests should be run in a &quot;compatibility mode&quot;, such as using one the obsolete frameworks" />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="6maaEP0Cho1" role="TZ5H$">
-          <node concept="1dT_AC" id="6maaEP0Cho2" role="1dT_Ay">
-            <property role="1dT_AB" value="like junit/junit4. Otherwise test should be launched with JUnit5 platform." />
-          </node>
         </node>
       </node>
     </node>
@@ -15520,6 +15520,9 @@
             </node>
             <node concept="1rXfSq" id="58KCQIw8B0k" role="3K4E3e">
               <ref role="37wK5l" node="58KCQIw8B0f" resolve="calcParamsWithMpsPlatformToStart" />
+              <node concept="37vLTw" id="4WUgV5l2M8b" role="37wK5m">
+                <ref role="3cqZAo" node="6maaEP0CDZU" resolve="useCompatibilityMode" />
+              </node>
             </node>
             <node concept="1rXfSq" id="58KCQIw8Cfq" role="3K4GZi">
               <ref role="37wK5l" node="58KCQIw8Cfm" resolve="calcParamsWithoutMPSPlatformToStart" />
@@ -15539,6 +15542,10 @@
     <node concept="2tJIrI" id="58KCQIwhTUP" role="jymVt" />
     <node concept="3clFb_" id="58KCQIw8Cfm" role="jymVt">
       <property role="TrG5h" value="calcParamsWithoutMPSPlatformToStart" />
+      <node concept="37vLTG" id="6maaEP0AYwk" role="3clF46">
+        <property role="TrG5h" value="useCompatibilityMode" />
+        <node concept="10P_77" id="6maaEP0B1xj" role="1tU5fm" />
+      </node>
       <node concept="3Tm6S6" id="58KCQIw8Cfn" role="1B3o_S" />
       <node concept="17QB3L" id="58KCQIw8Cfo" role="3clF45" />
       <node concept="3clFbS" id="58KCQIw8Ce_" role="3clF47">
@@ -15647,10 +15654,6 @@
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="6maaEP0AYwk" role="3clF46">
-        <property role="TrG5h" value="useCompatibilityMode" />
-        <node concept="10P_77" id="6maaEP0B1xj" role="1tU5fm" />
-      </node>
     </node>
     <node concept="2tJIrI" id="58KCQIwhPwh" role="jymVt" />
     <node concept="3clFb_" id="58KCQIw8B0f" role="jymVt">
@@ -15720,6 +15723,19 @@
               <ref role="37wK5l" to="asz6:KL8Aql8eM_" resolve="setLoadBootstrapLibraries" />
               <node concept="3clFbT" id="58KCQIw8AZg" role="37wK5m">
                 <property role="3clFbU" value="true" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4WUgV5l2sJM" role="3cqZAp">
+          <node concept="2OqwBi" id="4WUgV5l2uXt" role="3clFbG">
+            <node concept="37vLTw" id="4WUgV5l2sJK" role="2Oq$k0">
+              <ref role="3cqZAo" node="58KCQIw8AYX" resolve="startupArgs" />
+            </node>
+            <node concept="liA8E" id="4WUgV5l2xP5" role="2OqNvi">
+              <ref role="37wK5l" to="asz6:4WUgV5kZp1p" resolve="setCompatibilityMode" />
+              <node concept="37vLTw" id="4WUgV5l2zZQ" role="37wK5m">
+                <ref role="3cqZAo" node="4WUgV5l2mje" resolve="useCompatibilityMode" />
               </node>
             </node>
           </node>
@@ -15974,6 +15990,10 @@
       </node>
       <node concept="3uibUv" id="58KCQIw8Roh" role="Sfmx6">
         <ref role="3uigEE" to="3v5a:~ExecutionException" resolve="ExecutionException" />
+      </node>
+      <node concept="37vLTG" id="4WUgV5l2mje" role="3clF46">
+        <property role="TrG5h" value="useCompatibilityMode" />
+        <node concept="10P_77" id="4WUgV5l2mjf" role="1tU5fm" />
       </node>
     </node>
     <node concept="2tJIrI" id="58KCQIw8BEX" role="jymVt" />

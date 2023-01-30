@@ -32,6 +32,7 @@ public class ScriptData {
   private static final String PROP_LOGLEVEL = "logLevel";
   private static final String PROP_LOADBOOTSTRAPLIBRARIES = "loadBootstrapLibraries";
   private static final String PROP_PLUGIN_AUTO_DISCOVERY_MODE = "pluginAutoDiscoveryMode";
+  private static final String PROP_COMPATIBILITY_MODE = "compatibilityMode";
 
   private static final String ELEM_PROPERTY = "property";
   private static final String ELEM_MACRO = "macro";
@@ -54,6 +55,7 @@ public class ScriptData {
   private Level myLogLevel = Level.INFO;
   private boolean myLoadBootstrapLibraries = true;
   private boolean myAutomaticPluginDiscoveryMode = false;
+  private boolean myCompatibilityMode = true;
   private Map<String, String> myProperties = new LinkedHashMap<String, String>();
   private Map<String, String> myMacros = new LinkedHashMap<String, String>();
   private Map<String, File> myLibraries = new LinkedHashMap<String, File>();
@@ -74,6 +76,7 @@ public class ScriptData {
     misc.setAttribute(PROP_LOGLEVEL, myLogLevel.getName());
     misc.setAttribute(PROP_LOADBOOTSTRAPLIBRARIES, Boolean.toString(myLoadBootstrapLibraries));
     misc.setAttribute(PROP_PLUGIN_AUTO_DISCOVERY_MODE, Boolean.toString(myAutomaticPluginDiscoveryMode));
+    misc.setAttribute(PROP_COMPATIBILITY_MODE, Boolean.toString(myCompatibilityMode));
     root.addContent(misc);
 
     if (!(myLibraries.isEmpty()) || !(myLibraryJars.isEmpty())) {
@@ -121,6 +124,7 @@ public class ScriptData {
     }
     myLoadBootstrapLibraries = Boolean.parseBoolean(misc.getAttributeValue(PROP_LOADBOOTSTRAPLIBRARIES));
     myAutomaticPluginDiscoveryMode = Boolean.parseBoolean(misc.getAttributeValue(PROP_PLUGIN_AUTO_DISCOVERY_MODE));
+    myCompatibilityMode = Boolean.parseBoolean(misc.getAttributeValue(PROP_COMPATIBILITY_MODE));
 
     for (Element e : root.getChildren(ELEM_LIBRARIES)) {
       for (Element lib : e.getChildren(ELEM_LIBRARY)) {
@@ -229,6 +233,14 @@ public class ScriptData {
 
   public boolean getAutomaticPLuginDiscoveryMode() {
     return myAutomaticPluginDiscoveryMode;
+  }
+
+  public void setCompatibilityMode(boolean compatibilityMode) {
+    myCompatibilityMode = compatibilityMode;
+  }
+
+  public boolean getCompatibilityMode() {
+    return myCompatibilityMode;
   }
 
   public void addPlugin(PluginData p) {

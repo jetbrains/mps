@@ -36,11 +36,11 @@ public class DefaultTestExecutor extends JUnitTestExecutor {
     }
   }
 
-  private static boolean hasJUnit5Option(String[] args) throws IOException {
+  protected static boolean hasJUnit5Option(String[] args) throws IOException {
     return Arrays.stream(args).anyMatch((String arg) -> JUNIT5_OPTION.equals(arg));
   }
 
-  private static String[] skipJUnit5Option(String[] args) throws IOException {
+  protected static String[] skipJUnit5Option(String[] args) throws IOException {
     List<String> skip = Arrays.stream(args).filter((String arg) -> !(JUNIT5_OPTION.equals(arg))).toList();
     return skip.toArray(new String[skip.size()]);
   }
