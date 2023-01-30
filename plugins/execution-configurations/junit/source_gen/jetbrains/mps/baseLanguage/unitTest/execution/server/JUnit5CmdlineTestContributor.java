@@ -14,7 +14,7 @@ import java.io.LineNumberReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 
-public class JUnit5CmdlineTestContributor implements JUnit5TestContributor {
+public class JUnit5CmdlineTestContributor extends AbstractJUnit5TestContributor implements JUnit5TestContributor {
   private static final Logger LOG = Logger.getLogger(JUnit5CmdlineTestContributor.class);
 
   private final String[] myArgs;
@@ -45,6 +45,12 @@ public class JUnit5CmdlineTestContributor implements JUnit5TestContributor {
       i++;
     }
     return selectors;
+  }
+
+  @Override
+  protected void processThrowable(Throwable t) {
+    super.processThrowable(t);
+    t.printStackTrace(System.err);
   }
 
   private DiscoverySelector parseClassString(@NotNull String classString) {

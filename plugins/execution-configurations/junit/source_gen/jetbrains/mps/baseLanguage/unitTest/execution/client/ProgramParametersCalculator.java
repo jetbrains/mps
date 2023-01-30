@@ -9,9 +9,8 @@ import com.intellij.execution.ExecutionException;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.baseLanguage.unitTest.execution.server.DefaultTestExecutor;
+import jetbrains.mps.baselanguage.unitTest.execution.launcher.DefaultTestExecutor;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
-import jetbrains.mps.baseLanguage.unitTest.execution.server.ExecutorScript;
 import jetbrains.mps.tool.common.ScriptData;
 import java.io.File;
 import org.jdom.Element;
@@ -81,7 +80,7 @@ import jetbrains.mps.project.PathMacros;
   }
 
   private String calcParamsWithMpsPlatformToStart(boolean useCompatibilityMode) throws ExecutionException {
-    ExecutorScript args = new ExecutorScript();
+    ClientExecutorScript args = new ClientExecutorScript();
     ScriptData startupArgs = args.addStartupArguments();
     addModulesAndDepsToStartupArgs(startupArgs);
     addMacrosToStartupArgs(startupArgs);

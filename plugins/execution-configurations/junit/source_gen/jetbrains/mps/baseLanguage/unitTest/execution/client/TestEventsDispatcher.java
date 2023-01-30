@@ -4,7 +4,7 @@ package jetbrains.mps.baseLanguage.unitTest.execution.client;
 
 import org.jetbrains.annotations.NotNull;
 import com.intellij.execution.process.ProcessEvent;
-import jetbrains.mps.baseLanguage.unitTest.execution.server.DefaultTestExecutor;
+import jetbrains.mps.baselanguage.unitTest.execution.launcher.DefaultTestExecutor;
 import com.intellij.openapi.util.Key;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestEventMessage;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestRawEvent;

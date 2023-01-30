@@ -43,6 +43,7 @@
   <uses module="d44dab97-aaac-44cb-9745-8a14db674c03(jetbrains.mps.baseLanguage.tuples.runtime)" kind="rt+dp" />
   <uses module="f61473f9-130f-42f6-b98d-6c438812c2f6(jetbrains.mps.baseLanguage.unitTest)" kind="dp" />
   <uses module="f618e99a-2641-465c-bb54-31fe76f9e285(jetbrains.mps.baseLanguage.unitTest.execution)" kind="dp" />
+  <uses module="33f214de-6dce-4396-83c7-640823b7c525(jetbrains.mps.baselanguage.unitTest.launcher)" kind="dp" />
   <uses module="798100da-4f0a-421a-b991-71f8c50ce5d2(jetbrains.mps.build)" kind="dp" />
   <uses module="0cf935df-4699-4e9c-a132-fa109541cba3(jetbrains.mps.build.mps)" kind="dp" />
   <uses module="698a8d22-a104-47a0-ba8d-10e3ec237f13(jetbrains.mps.build.workflow)" kind="dp" />
@@ -73,5 +74,6 @@
   <uses module="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt+dp" />
   <uses module="df9d410f-2ebb-43f7-893a-483a4f085250(jetbrains.mps.smodel.resources)" kind="dp" />
   <uses module="f647e48e-4568-4f4c-b48a-1546492c6a2e(org.jdom)" kind="dp" />
+  <uses module="63b449db-0918-4a4a-a891-2c430ab133e4(org.junit.junit5)" kind="dp" />
 </dependenciesRoot>
 

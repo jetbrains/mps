@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-qggdr7zsh1fe2cjt36o9pjbl4rcvmf">
-  <files names="AssumptionFailedRunner.java:CommandLineTestsContributor.java:CommandOutputStream.java:DefaultRunListener.java:DefaultTestExecutionListener.java:DefaultTestExecutor.java:ExecutorScript.java:InProcessExecutionFilter.java:JUnit5CmdlineTestContributor.java:JUnit5ScriptTestContributor.java:JUnit5TestContributor.java:JUnitTestExecutor.java:NodeWrappersTestsContributor.java:ScriptTestContributor.java:StoppableRunner.java:TestExecutor.java:TestsContributor.java:WithPlatformTestExecutor.java" />
+<product version="3" modelHash="-btn1xekttd9almn5ux4lw0or8tc9vj4">
+  <files names="AbstractJUnit5TestContributor.java:AbstractJUnitTestMixin.java:AssumptionFailedRunner.java:CommandLineTestsContributor.java:CommandOutputStream.java:DefaultRunListener.java:DefaultTestExecutionListener.java:InProcessExecutionFilter.java:JUnit5CmdlineTestContributor.java:JUnit5ScriptTestContributor.java:JUnit5TestContributor.java:NodeWrappersTestsContributor.java:ScriptTestContributor.java:StoppableRunner.java" />
 </product>
 

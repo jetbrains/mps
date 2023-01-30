@@ -237,6 +237,7 @@
       <modulePath path="$PROJECT_DIR$/plugins/execution-configurations/ant.cmd/jetbrains.mps.ant.execution.msd" folder="workbench.execution" />
       <modulePath path="$PROJECT_DIR$/plugins/execution-configurations/java.cmd/jetbrains.mps.baseLanguage.execution.util.msd" folder="workbench.execution" />
       <modulePath path="$PROJECT_DIR$/plugins/execution-configurations/junit/jetbrains.mps.baseLanguage.unitTest.execution.msd" folder="workbench.execution" />
+      <modulePath path="$PROJECT_DIR$/plugins/execution-configurations/junit/launcher/jetbrains.mps.baselanguage.unitTest.launcher.msd" folder="workbench.execution" />
       <modulePath path="$PROJECT_DIR$/plugins/execution-configurations/plugin/jetbrains.mps.execution.configurations.implementation.plugin.msd" folder="workbench.execution" />
       <modulePath path="$PROJECT_DIR$/plugins/execution-languages/languages/commands/jetbrains.mps.execution.commands.mpl" folder="workbench.execution" />
       <modulePath path="$PROJECT_DIR$/plugins/execution-languages/languages/configurations/jetbrains.mps.execution.configurations.mpl" folder="workbench.execution" />

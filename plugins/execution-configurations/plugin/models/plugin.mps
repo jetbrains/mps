@@ -107,6 +107,7 @@
     <import index="drih" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.editor.colors(MPS.IDEA/)" />
     <import index="s9o5" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.editor(MPS.IDEA/)" />
     <import index="mmaq" ref="f647e48e-4568-4f4c-b48a-1546492c6a2e/java:org.jdom(org.jdom/)" />
+    <import index="34h4" ref="r:263b648a-3e00-426c-ab4b-ba47ccd788c9(jetbrains.mps.baselanguage.unitTest.execution.launcher)" />
     <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" implicit="true" />
     <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" implicit="true" />
     <import index="hypd" ref="r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)" implicit="true" />
@@ -15403,15 +15404,14 @@
             <property role="TrG5h" value="executor" />
             <property role="3TUv4t" value="true" />
             <node concept="3uibUv" id="4br3RNORZ9A" role="1tU5fm">
-              <ref role="3uigEE" to="4l68:5Ti9jVZ8rxu" resolve="JUnitTestExecutor" />
+              <ref role="3uigEE" to="34h4:5Ti9jVZ8rxu" resolve="DelegatingTestExecutor" />
             </node>
             <node concept="2ShNRf" id="iMwdHMbdhO" role="33vP2m">
               <node concept="1pGfFk" id="iMwdHMbdhP" role="2ShVmc">
-                <ref role="37wK5l" to="4l68:2zLV6oy8586" resolve="JUnitTestExecutor" />
+                <ref role="37wK5l" to="34h4:2qFJdjDCsCs" resolve="DelegatingTestExecutor" />
                 <node concept="37vLTw" id="2qFJdjDD6zl" role="37wK5m">
                   <ref role="3cqZAo" node="2qFJdjDD4Df" resolve="myTestsContributor" />
                 </node>
-                <node concept="3clFbT" id="2zLV6oyajrO" role="37wK5m" />
               </node>
             </node>
           </node>
@@ -15685,7 +15685,7 @@
                           <node concept="3clFbF" id="4br3RNOOzcS" role="3cqZAp">
                             <node concept="2OqwBi" id="4br3RNOO$1k" role="3clFbG">
                               <node concept="37vLTw" id="4br3RNOOzcQ" role="2Oq$k0">
-                                <ref role="3cqZAo" node="4br3RNOO1vN" resolve="executor" />
+                                <ref role="3cqZAo" node="2qFJdjDD4Df" resolve="myTestsContributor" />
                               </node>
                               <node concept="liA8E" id="4br3RNOOBm$" role="2OqNvi">
                                 <ref role="37wK5l" to="4l68:4qWYmcp57D8" resolve="stopRun" />
@@ -16067,7 +16067,7 @@
                                       <ref role="3cqZAo" node="4YWiRa6sMsh" resolve="executor" />
                                     </node>
                                     <node concept="liA8E" id="7rXOJyzs3Ky" role="2OqNvi">
-                                      <ref role="37wK5l" to="4l68:5Ti9jVZ8rFN" resolve="init" />
+                                      <ref role="37wK5l" to="34h4:4iq05Mkyryb" resolve="init" />
                                     </node>
                                   </node>
                                 </node>
@@ -16112,7 +16112,7 @@
                                       <ref role="3cqZAo" node="4YWiRa6sMsh" resolve="executor" />
                                     </node>
                                     <node concept="liA8E" id="4YWiRa6tkii" role="2OqNvi">
-                                      <ref role="37wK5l" to="4l68:5Ti9jVZ8rxE" resolve="execute" />
+                                      <ref role="37wK5l" to="34h4:5Ti9jVZ8rxE" resolve="execute" />
                                     </node>
                                   </node>
                                 </node>
@@ -16224,9 +16224,9 @@
                                         </node>
                                         <node concept="liA8E" id="2SyXq5Nkkgd" role="2OqNvi">
                                           <ref role="37wK5l" node="1Q6gjHMusJ1" resolve="setExitCode" />
-                                          <node concept="10M0yZ" id="4br3RNOQ2V_" role="37wK5m">
-                                            <ref role="1PxDUh" to="4l68:56tRMpP_bxe" resolve="DefaultTestExecutor" />
-                                            <ref role="3cqZAo" to="4l68:6HElkBZJ3Lo" resolve="EXIT_CODE_FOR_EXCEPTION" />
+                                          <node concept="10M0yZ" id="4iq05MkqR5t" role="37wK5m">
+                                            <ref role="3cqZAo" to="34h4:6HElkBZJ3Lo" resolve="EXIT_CODE_FOR_EXCEPTION" />
+                                            <ref role="1PxDUh" to="34h4:56tRMpP_bxe" resolve="DefaultTestExecutor" />
                                           </node>
                                         </node>
                                       </node>
@@ -16239,7 +16239,7 @@
                                         <ref role="3cqZAo" node="4YWiRa6sMsh" resolve="executor" />
                                       </node>
                                       <node concept="liA8E" id="4br3RNOPGmA" role="2OqNvi">
-                                        <ref role="37wK5l" to="4l68:4br3RNOPs_h" resolve="getExecutionError" />
+                                        <ref role="37wK5l" to="34h4:4iq05Mk_eU5" resolve="getExecutionError" />
                                       </node>
                                     </node>
                                   </node>
@@ -16278,7 +16278,7 @@
                                                 <ref role="3cqZAo" node="4YWiRa6sMsh" resolve="executor" />
                                               </node>
                                               <node concept="liA8E" id="4br3RNOQ9fz" role="2OqNvi">
-                                                <ref role="37wK5l" to="4l68:4br3RNOLGTe" resolve="getFailureCount" />
+                                                <ref role="37wK5l" to="34h4:4iq05MkzFBR" resolve="getFailureCount" />
                                               </node>
                                             </node>
                                           </node>
@@ -16447,7 +16447,7 @@
                                         <ref role="3cqZAo" node="4YWiRa6sMsh" resolve="executor" />
                                       </node>
                                       <node concept="liA8E" id="Bd1VU2Zlum" role="2OqNvi">
-                                        <ref role="37wK5l" to="4l68:5Ti9jVZ8rHC" resolve="dispose" />
+                                        <ref role="37wK5l" to="34h4:4iq05Mkyryk" resolve="dispose" />
                                       </node>
                                     </node>
                                   </node>
@@ -16514,7 +16514,7 @@
         <property role="TrG5h" value="executor" />
         <property role="3TUv4t" value="true" />
         <node concept="3uibUv" id="4br3RNONXJA" role="1tU5fm">
-          <ref role="3uigEE" to="4l68:5Ti9jVZ8rxu" resolve="JUnitTestExecutor" />
+          <ref role="3uigEE" to="34h4:5Ti9jVZ8rxu" resolve="DelegatingTestExecutor" />
         </node>
       </node>
     </node>

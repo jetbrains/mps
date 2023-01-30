@@ -15,15 +15,17 @@ import java.util.HashSet;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.execution.api.Java_Command;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.LinkedHashSet;
 import jetbrains.mps.util.PathManager;
 import java.io.File;
 import jetbrains.mps.string.Strings;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 /*package*/ class CPCalculator {
   private static final Logger LOG = Logger.getLogger(CPCalculator.class);
+  private static final String UNIT_TEST_LAUNCHER_MODULE = "33f214de-6dce-4396-83c7-640823b7c525(jetbrains.mps.baselanguage.unitTest.launcher)";
+
   @NotNull
   private final TestsWithParametersAndConfiguration mySettings;
   @NotNull
@@ -67,7 +69,7 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
   }
 
   private List<String> calcForPlatformWithMPS() {
-    final SModuleReference moduleWithExecutors = MODULE_WITH_EXECUTORS();
+    final SModuleReference moduleWithExecutors = PersistenceFacade.getInstance().createModuleReference(UNIT_TEST_LAUNCHER_MODULE);
     final List<String> classpath = ListSequence.fromList(new LinkedList<String>());
     // WithPlatformTestExecutor starts IDEA, therefore needs it in CP
     ListSequence.fromList(classpath).addSequence(ListSequence.fromList(collectFromLibFolder()).distinct());

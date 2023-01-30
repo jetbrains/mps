@@ -3615,15 +3615,15 @@
       <node id="2992055787332442535" at="41,59,42,93" concept="10" />
       <node id="2992055787332451799" at="42,93,43,22" concept="11" />
       <node id="2992055787332425004" at="48,40,49,39" concept="11" />
-      <node id="4817461255760517106" at="50,5,51,88" concept="10" />
-      <node id="5745550179871920261" at="51,88,52,49" concept="10" />
+      <node id="4817461255760517106" at="50,5,51,91" concept="10" />
+      <node id="5745550179871920261" at="51,91,52,49" concept="10" />
       <node id="4817461255760861518" at="52,49,53,151" concept="12" />
       <node id="4817461255761404445" at="53,151,54,171" concept="12" />
       <node id="4817461255760075450" at="57,33,58,28" concept="5" />
       <node id="4817461255760227002" at="58,28,59,19" concept="5" />
       <node id="4817461255760764573" at="63,41,64,119" concept="12" />
       <node id="4817461255760683449" at="65,47,66,81" concept="5" />
-      <node id="4817461255760655160" at="66,81,67,29" concept="5" />
+      <node id="4817461255760655160" at="66,81,67,39" concept="5" />
       <node id="4817461255760808623" at="68,9,69,131" concept="12" />
       <node id="4817461255760815764" at="69,131,70,104" concept="12" />
       <node id="4817461255760836852" at="70,104,71,0" concept="13" />
@@ -3700,8 +3700,8 @@
       <node id="6106412458332522980" at="46,0,77,0" concept="9" trace="execute#()Lcom/intellij/execution/process/ProcessHandler;" />
       <node id="8574241230919379985" at="85,54,123,9" concept="20" />
       <node id="5745550179872053218" at="80,0,125,0" concept="9" trace="run#()V" />
-      <node id="5745550179871968463" at="78,65,125,7" concept="11" />
-      <node id="5745550179871949224" at="78,0,127,0" concept="9" trace="doExecute#(Ljetbrains/mps/baseLanguage/unitTest/execution/server/JUnitTestExecutor;)Ljava/util/concurrent/Future;" />
+      <node id="5745550179871968463" at="78,70,125,7" concept="11" />
+      <node id="5745550179871949224" at="78,0,127,0" concept="9" trace="doExecute#(Ljetbrains/mps/baselanguage/unitTest/execution/launcher/DelegatingTestExecutor;)Ljava/util/concurrent/Future;" />
       <scope id="3600627561142994937" at="37,46,38,26" />
       <scope id="2992055787332421729" at="48,40,49,39" />
       <scope id="3818729150937340884" at="91,39,92,253" />
@@ -3724,7 +3724,7 @@
         <var name="isPossible" id="2992055787332442536" />
       </scope>
       <scope id="4817461255760075448" at="57,33,59,19" />
-      <scope id="6796535740154100561" at="65,47,67,29" />
+      <scope id="6796535740154100561" at="65,47,67,39" />
       <scope id="3600627561142994934" at="37,0,40,0" />
       <scope id="8574241230919379987" at="119,19,122,50" />
       <scope id="6796535740154100485" at="128,0,131,0" />
@@ -3766,7 +3766,7 @@
         <var name="oldTestMode" id="24659993290384832" />
       </scope>
       <scope id="5745550179872053218" at="80,0,125,0" />
-      <scope id="5745550179871949227" at="78,65,125,7" />
+      <scope id="5745550179871949227" at="78,70,125,7" />
       <scope id="5745550179871949224" at="78,0,127,0">
         <var name="executor" id="5745550179871958801" />
       </scope>

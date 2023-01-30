@@ -11,12 +11,12 @@ import jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.execution.process.ProcessHandler;
 import com.intellij.execution.ExecutionException;
-import jetbrains.mps.baseLanguage.unitTest.execution.server.JUnitTestExecutor;
+import jetbrains.mps.baselanguage.unitTest.execution.launcher.DelegatingTestExecutor;
 import java.util.concurrent.Future;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.TestMode;
 import jetbrains.mps.RuntimeFlags;
-import jetbrains.mps.baseLanguage.unitTest.execution.server.DefaultTestExecutor;
+import jetbrains.mps.baselanguage.unitTest.execution.launcher.DefaultTestExecutor;
 import com.intellij.util.WaitFor;
 import org.jetbrains.annotations.Nullable;
 import java.io.OutputStream;
@@ -48,7 +48,7 @@ public class JUnitInProcessRunStarter implements JUnitProcessStarter {
     if (!(checkExecutionIsPossible())) {
       return new EmptyProcessHandler();
     }
-    final JUnitTestExecutor executor = new JUnitTestExecutor(myTestsContributor, false);
+    final DelegatingTestExecutor executor = new DelegatingTestExecutor(myTestsContributor);
     final Future<?> future = doExecute(executor);
     // can use TestInProcessRunState instead of both process and future parameter, isDone == TERMINATED, startNotify() == INITIALIZED -> READYTOEXECUTE
     // Alternatively, FakeProcess.init may do INITIALIZED -> READYTOEXECUTE, and rely on default ProcessHandler.isProcessTerminated implementation instead of Future.isDone
@@ -64,7 +64,7 @@ public class JUnitInProcessRunStarter implements JUnitProcessStarter {
         // XXX why not isRunning() or at least !isTerminating && !isTerminated(); do we care to request stop few times?
         if (!(myTestRunState.isTerminated())) {
           myTestRunState.advance(RunStateEnum.RUNNING, RunStateEnum.TERMINATING);
-          executor.stopRun();
+          myTestsContributor.stopRun();
         }
         // once test execution is over, the runnable at thread pool get control, myFakeProcess receives exit code and is destroyed.
         // Eventually, BaseOSProcessHandler dispaches notification that the process has been terminated.
@@ -75,7 +75,7 @@ public class JUnitInProcessRunStarter implements JUnitProcessStarter {
     return process;
   }
 
-  private Future<?> doExecute(final JUnitTestExecutor executor) {
+  private Future<?> doExecute(final DelegatingTestExecutor executor) {
     return ApplicationManager.getApplication().executeOnPooledThread(new Runnable() {
       @Override
       public void run() {
