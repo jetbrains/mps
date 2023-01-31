@@ -12,9 +12,12 @@ class MPSRecentProjectsManagerBase : RecentProjectsManagerBase() {
     private val LOG = logger<MPSRecentProjectsManagerBase>()
 
     override suspend fun openProject(projectFile: Path, options: OpenProjectTask): Project? {
-        val localOptions = if (options.runConfigurators)
-            OpenProjectTask(projectToClose = options.projectToClose, forceOpenInNewFrame = options.forceOpenInNewFrame)
-        else options
+        val localOptions = options
+        //TODO Is this still needed?
+//        val localOptions = if (options.runConfigurators)
+            //OpenProjectTask(projectToClose = options.projectToClose, forceOpenInNewFrame = options.forceOpenInNewFrame)
+//            options.copy(runConfigurators = false)
+//        else options
 
         try {
             val trusted = OpenMPSProjectTrustProjectHelperK().checkTrust(projectFile)
