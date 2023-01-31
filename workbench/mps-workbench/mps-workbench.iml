@@ -24,7 +24,6 @@
     <orderEntry type="module" module-name="editor-runtime" />
     <orderEntry type="module" module-name="collections-runtime" />
     <orderEntry type="module" module-name="closures-runtime" />
-    <orderEntry type="module" module-name="testbench" />
     <orderEntry type="module" module-name="findUsages-runtime" />
     <orderEntry type="module" module-name="actions-runtime" />
     <orderEntry type="module" module-name="make-runtime" />
