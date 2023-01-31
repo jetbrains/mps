@@ -18,6 +18,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.tool.run.ModuleClassCode;
 import java.util.Optional;
 import java.lang.reflect.Constructor;
+import java.util.Arrays;
 import java.lang.reflect.InvocationTargetException;
 
 /**
@@ -65,7 +66,13 @@ public class WithPlatformTestExecutor extends DefaultTestExecutor {
   private static IdeaEnvironment startIdea(ScriptData startupArguments) {
     EnvironmentBase.initializeLog();
     // XXX would be great to have this code as part of init() method, but it's too much of refactoring now. Shall drop init/dispose of TestExecutor.
-    EnvironmentConfig cfg = EnvironmentConfig.defaultConfigWithAutoDiscoveryPluginsMode();
+    EnvironmentConfig cfg = EnvironmentConfig.emptyConfig().withBootstrapLibraries().withWorkbenchPath();
+    if (startupArguments.getAutomaticPLuginDiscoveryMode()) {
+      cfg = cfg.withAutomaticPluginDiscovery();
+    } else {
+      cfg = cfg.withDefaultPlugins().withDebuggerPlugin();
+    }
+
     // Same code is in MpsWorker, we'd better share it
     // FIXME Though technically dependency to MpsWorker (j.m.tool.builder) is possible here, I don't want it yet as I plan to split Ant/JUnit stuff from environment-related stuff there.
     RepositoryDescriptor rd = startupArguments.getRepo();
@@ -95,7 +102,7 @@ public class WithPlatformTestExecutor extends DefaultTestExecutor {
     return rv;
   }
 
-  protected static Object instantiateContributor(Environment environment, String fqClassName, Class<?>[] argTypes, Object[] args) {
+  protected static Object instantiateContributor(Environment environment, String fqClassName, Class<?>[] argTypes, Object[] args) throws Exception {
     ModuleClassCode code = new ModuleClassCode(EXECUTION_SOLUTION);
     try {
       code.load(environment.getPlatform(), fqClassName);
@@ -105,20 +112,19 @@ public class WithPlatformTestExecutor extends DefaultTestExecutor {
         return obj;
 
       } else {
-        if (!(ctor.isPresent())) {
-          error("not found constructor in " + fqClassName);
-        }
-        return null;
+        error("not found constructor in " + fqClassName + " with arguments " + Arrays.stream(argTypes).map(Class::getName).toList());
+        fail();
       }
 
     } catch (ClassNotFoundException e) {
       error("not found class " + fqClassName + " among classes of " + EXECUTION_SOLUTION, e);
-      return null;
+      fail();
 
     } catch (InstantiationException | InvocationTargetException | IllegalAccessException e) {
       error("unexpected error ", e);
-      return null;
+      fail();
     }
+    return null;
   }
 
   protected static void error(String msg) {
@@ -128,4 +134,9 @@ public class WithPlatformTestExecutor extends DefaultTestExecutor {
   protected static void error(String msg, Throwable t) {
     throw new RuntimeException(msg, t);
   }
+
+  protected static void fail() throws Exception {
+    System.exit(-1);
+  }
+
 }

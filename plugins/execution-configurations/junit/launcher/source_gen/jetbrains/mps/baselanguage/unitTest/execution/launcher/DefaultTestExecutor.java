@@ -26,7 +26,7 @@ public class DefaultTestExecutor extends DelegatingTestExecutor {
     String className = (hasJUnit5Option(args) ? "jetbrains.mps.baseLanguage.unitTest.execution.server.JUnit5CmdlineTestContributor" : "jetbrains.mps.baseLanguage.unitTest.execution.server.CommandLineTestsContributor");
     Class<?> cls = Class.forName(className);
     Constructor<?> ctor = cls.getConstructor(args.getClass());
-    TestsContributor testsContributor = (TestsContributor) ctor.newInstance(args);
+    TestsContributor testsContributor = (TestsContributor) ctor.newInstance((Object) skipJUnit5Option(args));
 
     DefaultTestExecutor executor = new DefaultTestExecutor(testsContributor);
     try {
