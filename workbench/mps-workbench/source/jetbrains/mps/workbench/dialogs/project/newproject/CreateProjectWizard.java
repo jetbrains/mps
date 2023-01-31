@@ -479,10 +479,8 @@ public final class CreateProjectWizard extends DialogWrapper {
   protected void doOKAction() {
     super.doOKAction();
 
-    int exitCode = GeneralSettings.OPEN_PROJECT_NEW_WINDOW;
+    int exitCode = GeneralSettings.getInstance().getConfirmOpenNewProject();
     if (myCurrentProject != null) {
-      // TODO: 223FIX
-//      exitCode = ProjectUtil.confirmOpenNewProject(true);
       if (exitCode == GeneralSettings.OPEN_PROJECT_SAME_WINDOW) {
         ProjectManager.getInstance().closeAndDispose(myCurrentProject);
       }
