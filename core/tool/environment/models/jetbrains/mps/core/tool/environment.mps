@@ -1470,34 +1470,116 @@
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="withDebuggerPlugin" />
       <node concept="3clFbS" id="1CvX25dz6g3" role="3clF47">
-        <node concept="3cpWs6" id="1CvX25dz6g4" role="3cqZAp">
-          <node concept="2OqwBi" id="5g8XZ9ose7e" role="3cqZAk">
-            <node concept="liA8E" id="5g8XZ9osfHx" role="2OqNvi">
-              <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
-              <node concept="Xl_RD" id="5g8XZ9osgFv" role="37wK5m">
-                <property role="Xl_RC" value="execution-api" />
-              </node>
-              <node concept="Xl_RD" id="5g8XZ9oslNj" role="37wK5m">
-                <property role="Xl_RC" value="jetbrains.mps.execution.api" />
+        <node concept="3clFbJ" id="2bvzdxLP7Cv" role="3cqZAp">
+          <node concept="3clFbS" id="2bvzdxLP7D6" role="3clFbx">
+            <node concept="3SKdUt" id="6maaEP0wjzI" role="3cqZAp">
+              <node concept="1PaTwC" id="6maaEP0wjzJ" role="1aUNEU">
+                <node concept="3oM_SD" id="6maaEP0wj_1" role="1PaTwD">
+                  <property role="3oM_SC" value="we're" />
+                </node>
+                <node concept="3oM_SD" id="6maaEP0wj_3" role="1PaTwD">
+                  <property role="3oM_SC" value="running" />
+                </node>
+                <node concept="3oM_SD" id="6maaEP0wj_6" role="1PaTwD">
+                  <property role="3oM_SC" value="from" />
+                </node>
+                <node concept="3oM_SD" id="6maaEP0wj_a" role="1PaTwD">
+                  <property role="3oM_SC" value="app" />
+                </node>
+                <node concept="3oM_SD" id="6maaEP0wj_f" role="1PaTwD">
+                  <property role="3oM_SC" value="bundle/installed" />
+                </node>
+                <node concept="3oM_SD" id="6maaEP0wjCd" role="1PaTwD">
+                  <property role="3oM_SC" value="app" />
+                </node>
               </node>
             </node>
-            <node concept="2OqwBi" id="1CvX25dznAc" role="2Oq$k0">
-              <node concept="1rXfSq" id="1CvX25dz6g5" role="2Oq$k0">
-                <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
-                <node concept="Xl_RD" id="1CvX25dz6g6" role="37wK5m">
-                  <property role="Xl_RC" value="debugger-api" />
+            <node concept="3cpWs6" id="2bvzdxLPfmV" role="3cqZAp">
+              <node concept="2OqwBi" id="2bvzdxLPfmW" role="3cqZAk">
+                <node concept="liA8E" id="2bvzdxLPfmX" role="2OqNvi">
+                  <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
+                  <node concept="Xl_RD" id="2bvzdxLPfmY" role="37wK5m">
+                    <property role="Xl_RC" value="mps-execution-api" />
+                  </node>
+                  <node concept="Xl_RD" id="2bvzdxLPfmZ" role="37wK5m">
+                    <property role="Xl_RC" value="jetbrains.mps.execution.api" />
+                  </node>
                 </node>
-                <node concept="Xl_RD" id="1CvX25dz6g7" role="37wK5m">
-                  <property role="Xl_RC" value="jetbrains.mps.debugger.api" />
+                <node concept="2OqwBi" id="2bvzdxLPfn0" role="2Oq$k0">
+                  <node concept="1rXfSq" id="2bvzdxLPfn1" role="2Oq$k0">
+                    <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
+                    <node concept="Xl_RD" id="2bvzdxLPfn2" role="37wK5m">
+                      <property role="Xl_RC" value="mps-debugger-api" />
+                    </node>
+                    <node concept="Xl_RD" id="2bvzdxLPfn3" role="37wK5m">
+                      <property role="Xl_RC" value="jetbrains.mps.debugger.api" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="2bvzdxLPfn4" role="2OqNvi">
+                    <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
+                    <node concept="Xl_RD" id="2bvzdxLPfn5" role="37wK5m">
+                      <property role="Xl_RC" value="mps-debugger-java" />
+                    </node>
+                    <node concept="Xl_RD" id="2bvzdxLPfn6" role="37wK5m">
+                      <property role="Xl_RC" value="jetbrains.mps.debugger.java" />
+                    </node>
+                  </node>
                 </node>
               </node>
-              <node concept="liA8E" id="1CvX25dzoTL" role="2OqNvi">
-                <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
-                <node concept="Xl_RD" id="1CvX25dzpVL" role="37wK5m">
-                  <property role="Xl_RC" value="debugger-java" />
+            </node>
+            <node concept="3clFbH" id="2bvzdxLPah3" role="3cqZAp" />
+          </node>
+          <node concept="2OqwBi" id="6maaEP0winr" role="3clFbw">
+            <node concept="2ShNRf" id="6maaEP0w8za" role="2Oq$k0">
+              <node concept="1pGfFk" id="6maaEP0whFT" role="2ShVmc">
+                <property role="373rjd" value="true" />
+                <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String,java.lang.String)" resolve="File" />
+                <node concept="2YIFZM" id="6maaEP0whXy" role="37wK5m">
+                  <ref role="37wK5l" to="18ew:~PathManager.getHomePath()" resolve="getHomePath" />
+                  <ref role="1Pybhc" to="18ew:~PathManager" resolve="PathManager" />
                 </node>
-                <node concept="Xl_RD" id="1CvX25dzs8j" role="37wK5m">
-                  <property role="Xl_RC" value="jetbrains.mps.debugger.java" />
+                <node concept="Xl_RD" id="6maaEP0wi1K" role="37wK5m">
+                  <property role="Xl_RC" value="build.number" />
+                </node>
+              </node>
+            </node>
+            <node concept="liA8E" id="6maaEP0wjvW" role="2OqNvi">
+              <ref role="37wK5l" to="guwi:~File.exists()" resolve="exists" />
+            </node>
+          </node>
+          <node concept="9aQIb" id="2bvzdxLPbBE" role="9aQIa">
+            <node concept="3clFbS" id="2bvzdxLPbBF" role="9aQI4">
+              <node concept="3cpWs6" id="1CvX25dz6g4" role="3cqZAp">
+                <node concept="2OqwBi" id="5g8XZ9ose7e" role="3cqZAk">
+                  <node concept="liA8E" id="5g8XZ9osfHx" role="2OqNvi">
+                    <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
+                    <node concept="Xl_RD" id="5g8XZ9osgFv" role="37wK5m">
+                      <property role="Xl_RC" value="execution-api" />
+                    </node>
+                    <node concept="Xl_RD" id="5g8XZ9oslNj" role="37wK5m">
+                      <property role="Xl_RC" value="jetbrains.mps.execution.api" />
+                    </node>
+                  </node>
+                  <node concept="2OqwBi" id="1CvX25dznAc" role="2Oq$k0">
+                    <node concept="1rXfSq" id="1CvX25dz6g5" role="2Oq$k0">
+                      <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
+                      <node concept="Xl_RD" id="1CvX25dz6g6" role="37wK5m">
+                        <property role="Xl_RC" value="debugger-api" />
+                      </node>
+                      <node concept="Xl_RD" id="1CvX25dz6g7" role="37wK5m">
+                        <property role="Xl_RC" value="jetbrains.mps.debugger.api" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="1CvX25dzoTL" role="2OqNvi">
+                      <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
+                      <node concept="Xl_RD" id="1CvX25dzpVL" role="37wK5m">
+                        <property role="Xl_RC" value="debugger-java" />
+                      </node>
+                      <node concept="Xl_RD" id="1CvX25dzs8j" role="37wK5m">
+                        <property role="Xl_RC" value="jetbrains.mps.debugger.java" />
+                      </node>
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>
