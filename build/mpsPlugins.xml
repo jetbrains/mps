@@ -135,14 +135,14 @@
     </echoxml>
     <jar destfile="${build.layout}/mps-modelchecker/languages/jetbrains.mps.ide.modelchecker.jar" duplicate="preserve">
       <fileset dir="${plugin_home}/mps-modelchecker/solution" includes="icons/**" />
-      <fileset dir="${plugin_home}/mps-modelchecker/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${mps_home}/plugins/mps-modelchecker/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.ide.modelchecker.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/mps-modelchecker-solution">
       <fileset dir="${plugin_home}/mps-modelchecker/solution" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/mps-modelchecker/languages/jetbrains.mps.ide.modelchecker-src.jar" duplicate="preserve">
-      <fileset dir="${plugin_home}/mps-modelchecker/source_gen">
+      <fileset dir="${mps_home}/plugins/mps-modelchecker/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
@@ -609,7 +609,7 @@
   </target>
   
   <target name="cleanSources">
-    <delete dir="${plugin_home}/mps-modelchecker/source_gen" />
+    <delete dir="${mps_home}/plugins/mps-modelchecker/source_gen" />
     <delete dir="${plugin_home}/mps-modelchecker/platform/source_gen" />
   </target>
 </project>

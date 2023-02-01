@@ -148,6 +148,7 @@
       <concept id="7389400916848050060" name="jetbrains.mps.build.structure.BuildLayout_NamedContainer" flags="ng" index="3981dR">
         <child id="4380385936562148502" name="containerName" index="Nbhlr" />
       </concept>
+      <concept id="7389400916848036997" name="jetbrains.mps.build.structure.BuildLayout_Node" flags="ng" index="39821Y" />
       <concept id="7389400916848036984" name="jetbrains.mps.build.structure.BuildLayout_Folder" flags="ng" index="398223" />
       <concept id="7389400916848073810" name="jetbrains.mps.build.structure.BuildSource_JavaContentRoot" flags="ng" index="398b2D">
         <child id="2754769020641429197" name="folders" index="nFU4p" />
@@ -37815,8 +37816,45 @@
       </node>
       <node concept="m$_wl" id="35y4BF72kxA" role="39821P">
         <ref role="m_rDy" node="5CFKsRWVb8B" resolve="jetbrains.mps.execution.configurations" />
-        <node concept="pUk6x" id="5peYeZGo8VS" role="pUk7w" />
+        <node concept="pUk6w" id="3OA_Uj95IZN" role="pUk7w" />
+        <node concept="398223" id="3OA_Uj95J4c" role="39821P">
+          <node concept="3_J27D" id="3OA_Uj95J4d" role="Nbhlr">
+            <node concept="3Mxwew" id="3OA_Uj95J4R" role="3MwsjC">
+              <property role="3MwjfP" value="lib" />
+            </node>
+          </node>
+          <node concept="3981dx" id="3OA_Uj95J5k" role="39821P">
+            <node concept="3_J27D" id="3OA_Uj95J5l" role="Nbhlr">
+              <node concept="3Mxwew" id="3OA_Uj95J5Z" role="3MwsjC">
+                <property role="3MwjfP" value="execution-configurations.jar" />
+              </node>
+            </node>
+            <node concept="Saw0i" id="3OA_Uj95Jaf" role="39821P">
+              <ref role="Saw0g" node="465rK6MmPl5" resolve="jetbrains.mps.baselanguage.unitTest.launcher" />
+            </node>
+          </node>
+        </node>
+        <node concept="398223" id="3OA_Uj95Jg_" role="39821P">
+          <node concept="3_J27D" id="3OA_Uj95JgB" role="Nbhlr">
+            <node concept="3Mxwew" id="3OA_Uj95JgV" role="3MwsjC">
+              <property role="3MwjfP" value="languages" />
+            </node>
+          </node>
+          <node concept="L2wRC" id="3OA_Uj95Jnz" role="39821P">
+            <ref role="L2wRA" node="5xa9wY2vhaI" resolve="jetbrains.mps.ant.execution" />
+          </node>
+          <node concept="L2wRC" id="3OA_Uj95JrP" role="39821P">
+            <ref role="L2wRA" node="5xa9wY2vhaQ" resolve="jetbrains.mps.baseLanguage.execution.util" />
+          </node>
+          <node concept="L2wRC" id="3OA_Uj95Jtx" role="39821P">
+            <ref role="L2wRA" node="5xa9wY2vhb7" resolve="jetbrains.mps.execution.configurations.implementation.plugin" />
+          </node>
+          <node concept="L2wRC" id="3OA_Uj95JuN" role="39821P">
+            <ref role="L2wRA" node="5xa9wY2vhbf" resolve="jetbrains.mps.baseLanguage.unitTest.execution" />
+          </node>
+        </node>
       </node>
+      <node concept="39821Y" id="3OA_Uj95JcK" role="39821P" />
     </node>
     <node concept="2sgV4H" id="5xa9wY2vhbG" role="1l3spa">
       <ref role="1l3spb" node="6S1jmf0xDFC" resolve="mpsBootstrapCore" />
@@ -44466,6 +44504,9 @@
       <node concept="m$f5U" id="4MVYzzgl7S7" role="m$_yh">
         <ref role="m$f5T" node="4MVYzzgl7lN" resolve="junit5" />
       </node>
+      <node concept="m$f5U" id="7MSVDs2Rrkq" role="m$_yh">
+        <ref role="m$f5T" node="7MSVDs2RlsF" resolve="launcher" />
+      </node>
       <node concept="3_J27D" id="1SBjBn2pKVC" role="3s6cr7">
         <node concept="3Mxwew" id="1SBjBn2pKVE" role="3MwsjC">
           <property role="3MwjfP" value="Languages unit-testing java code and MPS aspects such as editor and typesystem" />
@@ -44474,9 +44515,6 @@
       <node concept="2iUeEo" id="45oiMWk3p$B" role="2iVFfd">
         <property role="2iUeEt" value="JetBrains" />
         <property role="2iUeEu" value="http://www.jetbrains.com/mps/" />
-      </node>
-      <node concept="m$f5U" id="7MSVDs2Rrkq" role="m$_yh">
-        <ref role="m$f5T" node="7MSVDs2RlsF" resolve="launcher" />
       </node>
     </node>
     <node concept="13uUGR" id="ymnOULAT58" role="1l3spa">
@@ -44506,7 +44544,6 @@
     <node concept="1l3spV" id="ymnOULAENg" role="1l3spN">
       <node concept="m$_wl" id="ymnOULAZ8H" role="39821P">
         <ref role="m_rDy" node="ymnOULATpW" resolve="jetbrains.mps.testing" />
-        <node concept="pUk6x" id="5gsHVKCOxGj" role="pUk7w" />
         <node concept="398223" id="4MVYzzgmzDQ" role="39821P">
           <node concept="3_J27D" id="4MVYzzgmzDR" role="Nbhlr">
             <node concept="3Mxwew" id="4MVYzzgmzN2" role="3MwsjC">
@@ -44552,6 +44589,7 @@
             </node>
           </node>
         </node>
+        <node concept="pUk6x" id="5gsHVKCOxGj" role="pUk7w" />
       </node>
     </node>
     <node concept="10PD9b" id="ymnOULALNk" role="10PD9s" />
