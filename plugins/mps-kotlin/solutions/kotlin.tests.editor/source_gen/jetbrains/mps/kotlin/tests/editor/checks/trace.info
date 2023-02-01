@@ -552,5 +552,38 @@
       <unit id="7342564606693418625" at="22,0,437,0" name="jetbrains.mps.kotlin.tests.editor.checks.AnnotationUseSite_Test" />
     </file>
   </root>
+  <root nodeRef="r:7c8e019c-f730-4087-8f9d-0f24a0e49d4c(jetbrains.mps.kotlin.tests.editor.checks@tests)/8160487567610428420">
+    <file name="TryCatch_Test.java">
+      <node id="8160487567610428420" at="24,26,25,60" concept="6" />
+      <node id="8160487567611772388" at="29,91,30,82" concept="1" />
+      <node id="8160487567610428420" at="35,52,36,19" concept="6" />
+      <node id="8160487567611772388" at="39,93,40,0" concept="4" />
+      <node id="8160487567611772388" at="41,30,42,67" concept="3" />
+      <node id="8160487567611772388" at="42,67,43,65" concept="3" />
+      <node id="8160487567611772388" at="43,65,44,302" concept="1" />
+      <node id="8160487567610428420" at="21,0,23,0" concept="5" trace="ourParametersCacheExtension" />
+      <node id="8160487567610428420" at="24,0,27,0" concept="0" trace="TryCatch_Test#()V" />
+      <node id="8160487567610428420" at="35,0,38,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="8160487567611772388" at="28,0,32,0" concept="2" trace="test_NodeExpectingCatchOrFinallyCheck8160487567611772388#()V" />
+      <node id="8160487567611772388" at="40,0,45,9" concept="1" />
+      <node id="8160487567611772388" at="39,0,47,0" concept="2" trace="test_NodeExpectingCatchOrFinallyCheck8160487567611772388#()V" />
+      <scope id="8160487567610428420" at="24,26,25,60" />
+      <scope id="8160487567611772388" at="29,91,30,82" />
+      <scope id="8160487567610428420" at="35,52,36,19" />
+      <scope id="8160487567610428420" at="24,0,27,0" />
+      <scope id="8160487567610428420" at="35,0,38,0">
+        <var name="owner" id="8160487567610428420" />
+      </scope>
+      <scope id="8160487567611772388" at="41,30,44,302">
+        <var name="nodeToCheck" id="8160487567611772388" />
+        <var name="operation" id="8160487567611772388" />
+      </scope>
+      <scope id="8160487567611772388" at="28,0,32,0" />
+      <scope id="8160487567611772388" at="39,93,45,9" />
+      <scope id="8160487567611772388" at="39,0,47,0" />
+      <unit id="8160487567610428420" at="33,0,49,0" name="jetbrains.mps.kotlin.tests.editor.checks.TryCatch_Test$TestBody" />
+      <unit id="8160487567610428420" at="19,0,50,0" name="jetbrains.mps.kotlin.tests.editor.checks.TryCatch_Test" />
+    </file>
+  </root>
 </debug-info>
 
