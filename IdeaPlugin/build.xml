@@ -565,6 +565,7 @@
       <jvmarg value="--add-opens=java.desktop/sun.font=ALL-UNNAMED" />
       <jvmarg value="--add-opens=java.desktop/sun.java2d=ALL-UNNAMED" />
       <jvmarg value="--add-opens=java.desktop/sun.swing=ALL-UNNAMED" />
+      <jvmarg value="--add-opens=java.desktop/sun.awt.X11=ALL-UNNAMED" /> <!-- only here as other suites pass ok w/o this line-->
       <jvmarg value="--add-opens=jdk.attach/sun.tools.attach=ALL-UNNAMED" />
       <jvmarg value="--add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED" />
       <jvmarg value="--add-opens=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED" />
