@@ -8,27 +8,25 @@ import com.intellij.openapi.wm.impl.welcomeScreen.WelcomeFrame
 import jetbrains.mps.workbench.actions.OpenMPSProjectTrustProjectHelperK
 import java.nio.file.Path
 
-class MPSRecentProjectsManagerBase : RecentProjectsManagerBase() {
-    private val LOG = logger<MPSRecentProjectsManagerBase>()
+private val LOG = logger<MPSRecentProjectsManagerBase>()
 
-    override suspend fun openProject(projectFile: Path, options: OpenProjectTask): Project? {
-        val localOptions = options
-        //TODO Is this still needed?
+suspend fun openProject(projectFile: Path, options: OpenProjectTask, superFun: suspend (projectFile: Path, options: OpenProjectTask) -> Project?): Project? {
+    val localOptions = options
+    //TODO Is this still needed?
 //        val localOptions = if (options.runConfigurators)
             //OpenProjectTask(projectToClose = options.projectToClose, forceOpenInNewFrame = options.forceOpenInNewFrame)
 //            options.copy(runConfigurators = false)
 //        else options
 
-        try {
-            val trusted = OpenMPSProjectTrustProjectHelperK().checkTrust(projectFile)
-            return if (trusted)
-                super.openProject(projectFile, localOptions)
-            else {
-                LOG.info("Project is not trusted -> return null")
-                null
-            }
-        } finally {
-            WelcomeFrame.showIfNoProjectOpened()
+    try {
+        val trusted = OpenMPSProjectTrustProjectHelperK().checkTrust(projectFile)
+        return if (trusted)
+            superFun(projectFile, localOptions)
+        else {
+            LOG.info("Project is not trusted -> return null")
+            null
         }
+    } finally {
+        WelcomeFrame.showIfNoProjectOpened()
     }
 }
