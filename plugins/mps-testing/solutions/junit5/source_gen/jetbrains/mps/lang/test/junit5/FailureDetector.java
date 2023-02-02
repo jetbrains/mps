@@ -23,6 +23,10 @@ public class FailureDetector implements TestExecutionListener {
     return !(errors.isEmpty());
   }
 
+  public int failuresCount() {
+    return errors.size();
+  }
+
   public void flushErrors(WorkerCallback callback) {
     for (String err : errors) {
       callback.error(err);

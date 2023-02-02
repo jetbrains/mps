@@ -171,7 +171,7 @@
       <node concept="3Tm6S6" id="7MSVDs2EIdV" role="1B3o_S" />
       <node concept="17QB3L" id="7MSVDs2EIdW" role="1tU5fm" />
       <node concept="Xl_RD" id="7MSVDs2EIdX" role="33vP2m">
-        <property role="Xl_RC" value="jetbrains.mps.lang.test.junit5.JUnit5Launcher" />
+        <property role="Xl_RC" value="jetbrains.mps.lang.test.junit5.ScriptJUnit5Launcher" />
       </node>
     </node>
     <node concept="Wx3nA" id="7MSVDs2ENo6" role="jymVt">

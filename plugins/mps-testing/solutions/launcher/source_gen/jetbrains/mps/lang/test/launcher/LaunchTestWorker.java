@@ -16,7 +16,7 @@ import java.io.File;
 
 public class LaunchTestWorker extends WorkerBase implements WorkerCallback {
 
-  private static final String LAUNCHER_CLASS = "jetbrains.mps.lang.test.junit5.JUnit5Launcher";
+  private static final String LAUNCHER_CLASS = "jetbrains.mps.lang.test.junit5.ScriptJUnit5Launcher";
   private static final String LAUNCHER_SOLUTION = "c234a56a-502f-4751-aded-6f9846fff7ce(jetbrains.mps.lang.test.junit5)";
   private static final String LAUNCHER_METHOD = "launchTests";
 
