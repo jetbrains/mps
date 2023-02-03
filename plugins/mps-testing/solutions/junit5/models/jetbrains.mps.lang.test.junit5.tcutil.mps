@@ -6879,12 +6879,10 @@
             <node concept="37vLTw" id="5gsHVKBeiPV" role="37wK5m">
               <ref role="3cqZAo" node="5gsHVKBeiPQ" resolve="testIdentifier" />
             </node>
-            <node concept="2OqwBi" id="5gsHVKBKgq8" role="37wK5m">
-              <node concept="37vLTw" id="5gsHVKBfwoH" role="2Oq$k0">
+            <node concept="1rXfSq" id="1i3Gm8FxlLZ" role="37wK5m">
+              <ref role="37wK5l" node="1i3Gm8FoOWs" resolve="getDisplayName" />
+              <node concept="37vLTw" id="1i3Gm8FxwLW" role="37wK5m">
                 <ref role="3cqZAo" node="5gsHVKBeiPQ" resolve="testIdentifier" />
-              </node>
-              <node concept="liA8E" id="5gsHVKBKgq9" role="2OqNvi">
-                <ref role="37wK5l" to="bws1:~TestIdentifier.getDisplayName()" resolve="getDisplayName" />
               </node>
             </node>
           </node>
@@ -6893,6 +6891,116 @@
       <node concept="3Tm6S6" id="5gsHVKBeiPX" role="1B3o_S" />
       <node concept="3uibUv" id="5gsHVKBeiPY" role="3clF45">
         <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="1i3Gm8FoOWs" role="jymVt">
+      <property role="TrG5h" value="getDisplayName" />
+      <node concept="37vLTG" id="1i3Gm8FpIZv" role="3clF46">
+        <property role="TrG5h" value="testIdentifier" />
+        <node concept="3uibUv" id="1i3Gm8FpQtN" role="1tU5fm">
+          <ref role="3uigEE" to="bws1:~TestIdentifier" resolve="TestIdentifier" />
+        </node>
+      </node>
+      <node concept="3uibUv" id="1i3Gm8Fpcst" role="3clF45">
+        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+      </node>
+      <node concept="3Tm6S6" id="1i3Gm8Fp3MK" role="1B3o_S" />
+      <node concept="3clFbS" id="1i3Gm8FoOWw" role="3clF47">
+        <node concept="3cpWs8" id="1i3Gm8FtqFW" role="3cqZAp">
+          <node concept="3cpWsn" id="1i3Gm8FtqFX" role="3cpWs9">
+            <property role="TrG5h" value="source" />
+            <node concept="3uibUv" id="1i3Gm8FtmjL" role="1tU5fm">
+              <ref role="3uigEE" to="n4ib:~TestSource" resolve="TestSource" />
+            </node>
+            <node concept="2OqwBi" id="1i3Gm8FtqFY" role="33vP2m">
+              <node concept="2OqwBi" id="1i3Gm8FtqFZ" role="2Oq$k0">
+                <node concept="37vLTw" id="1i3Gm8FtqG0" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1i3Gm8FpIZv" resolve="testIdentifier" />
+                </node>
+                <node concept="liA8E" id="1i3Gm8FtqG1" role="2OqNvi">
+                  <ref role="37wK5l" to="bws1:~TestIdentifier.getSource()" resolve="getSource" />
+                </node>
+              </node>
+              <node concept="liA8E" id="1i3Gm8FtqG2" role="2OqNvi">
+                <ref role="37wK5l" to="33ny:~Optional.get()" resolve="get" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="1i3Gm8Fu2xn" role="3cqZAp">
+          <node concept="3clFbS" id="1i3Gm8Fu2xC" role="3clFbx">
+            <node concept="3cpWs6" id="1i3Gm8Fusut" role="3cqZAp">
+              <node concept="2OqwBi" id="6maaEP0Wh9d" role="3cqZAk">
+                <node concept="1eOMI4" id="6maaEP0Wh9e" role="2Oq$k0">
+                  <node concept="10QFUN" id="6maaEP0Wh9f" role="1eOMHV">
+                    <node concept="3uibUv" id="6maaEP0Wh9g" role="10QFUM">
+                      <ref role="3uigEE" to="9pnt:~ClassSource" resolve="ClassSource" />
+                    </node>
+                    <node concept="37vLTw" id="6maaEP0Wh9h" role="10QFUP">
+                      <ref role="3cqZAo" node="1i3Gm8FtqFX" resolve="source" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="liA8E" id="6maaEP0Wh9i" role="2OqNvi">
+                  <ref role="37wK5l" to="9pnt:~ClassSource.getClassName()" resolve="getClassName" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbH" id="1i3Gm8Fvel8" role="3cqZAp" />
+          </node>
+          <node concept="2ZW3vV" id="1i3Gm8FtHsw" role="3clFbw">
+            <node concept="3uibUv" id="1i3Gm8FtR$8" role="2ZW6by">
+              <ref role="3uigEE" to="9pnt:~ClassSource" resolve="ClassSource" />
+            </node>
+            <node concept="37vLTw" id="1i3Gm8FtqG3" role="2ZW6bz">
+              <ref role="3cqZAo" node="1i3Gm8FtqFX" resolve="source" />
+            </node>
+          </node>
+          <node concept="3eNFk2" id="1i3Gm8FuBiG" role="3eNLev">
+            <node concept="3clFbS" id="1i3Gm8FuBiH" role="3eOfB_">
+              <node concept="3cpWs6" id="1i3Gm8FvIFV" role="3cqZAp">
+                <node concept="2OqwBi" id="1i3Gm8FvIFW" role="3cqZAk">
+                  <node concept="1eOMI4" id="1i3Gm8FvIFX" role="2Oq$k0">
+                    <node concept="10QFUN" id="1i3Gm8FvIFY" role="1eOMHV">
+                      <node concept="3uibUv" id="1i3Gm8FvIFZ" role="10QFUM">
+                        <ref role="3uigEE" to="9pnt:~MethodSource" resolve="MethodSource" />
+                      </node>
+                      <node concept="37vLTw" id="1i3Gm8FvIG0" role="10QFUP">
+                        <ref role="3cqZAo" node="1i3Gm8FtqFX" resolve="source" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="1i3Gm8FvIG1" role="2OqNvi">
+                    <ref role="37wK5l" to="9pnt:~MethodSource.getMethodName()" resolve="getMethodName" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbH" id="1i3Gm8FwqOu" role="3cqZAp" />
+            </node>
+            <node concept="2ZW3vV" id="1i3Gm8FuH7Z" role="3eO9$A">
+              <node concept="3uibUv" id="1i3Gm8FuH80" role="2ZW6by">
+                <ref role="3uigEE" to="9pnt:~MethodSource" resolve="MethodSource" />
+              </node>
+              <node concept="37vLTw" id="1i3Gm8FuH81" role="2ZW6bz">
+                <ref role="3cqZAo" node="1i3Gm8FtqFX" resolve="source" />
+              </node>
+            </node>
+          </node>
+          <node concept="9aQIb" id="1i3Gm8FwjgP" role="9aQIa">
+            <node concept="3clFbS" id="1i3Gm8FwjgQ" role="9aQI4">
+              <node concept="3cpWs6" id="1i3Gm8FwztZ" role="3cqZAp">
+                <node concept="2OqwBi" id="1i3Gm8FwTCt" role="3cqZAk">
+                  <node concept="37vLTw" id="1i3Gm8FwMTE" role="2Oq$k0">
+                    <ref role="3cqZAo" node="1i3Gm8FpIZv" resolve="testIdentifier" />
+                  </node>
+                  <node concept="liA8E" id="1i3Gm8Fx5bT" role="2OqNvi">
+                    <ref role="37wK5l" to="bws1:~TestIdentifier.getDisplayName()" resolve="getDisplayName" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
     </node>
     <node concept="3clFb_" id="5gsHVKBeiPZ" role="jymVt">

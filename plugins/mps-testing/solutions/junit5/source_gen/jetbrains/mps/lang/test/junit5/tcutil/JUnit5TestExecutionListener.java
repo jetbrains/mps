@@ -20,10 +20,10 @@ import org.opentest4j.AssertionFailedError;
 import org.opentest4j.ValueWrapper;
 import java.io.StringWriter;
 import java.io.PrintWriter;
-import java.util.Optional;
 import org.junit.platform.engine.TestSource;
-import org.junit.platform.engine.support.descriptor.MethodSource;
 import org.junit.platform.engine.support.descriptor.ClassSource;
+import org.junit.platform.engine.support.descriptor.MethodSource;
+import java.util.Optional;
 import org.junit.platform.engine.support.descriptor.FilePosition;
 import org.junit.platform.engine.support.descriptor.CompositeTestSource;
 import org.junit.platform.engine.support.descriptor.FileSource;
@@ -293,7 +293,19 @@ public class JUnit5TestExecutionListener implements TestExecutionListener {
     return identifier.getUniqueId() + myIdSuffix;
   }
   private String idAndName(TestIdentifier testIdentifier) {
-    return idAndName(testIdentifier, testIdentifier.getDisplayName());
+    return idAndName(testIdentifier, getDisplayName(testIdentifier));
+  }
+  private String getDisplayName(TestIdentifier testIdentifier) {
+    TestSource source = testIdentifier.getSource().get();
+    if (source instanceof ClassSource) {
+      return ((ClassSource) source).getClassName();
+
+    } else if (source instanceof MethodSource) {
+      return ((MethodSource) source).getMethodName();
+
+    } else {
+      return testIdentifier.getDisplayName();
+    }
   }
   private String idAndName(TestIdentifier testIdentifier, String displayName) {
     return " id='" + escapeName(getId(testIdentifier)) + "' name='" + escapeName(displayName) + "' nodeId='" + escapeName(getId(testIdentifier)) + "' parentNodeId='" + escapeName(getParentId(testIdentifier)) + "'";
