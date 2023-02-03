@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -97,11 +97,20 @@ class FileStatusChangeListener implements FileStatusListener, Disposable {
   @Override
   public void fileStatusChanged(@NotNull VirtualFile virtualFile) {
     // Needed for quick update of one tab
+    if (!(virtualFile instanceof MPSNodeVirtualFile)) {
+      return;
+    }
+    final SNodeReference np = ((MPSNodeVirtualFile) virtualFile).getSNodePointer();
+    if (!myNodeRef2TabsComponents.containsKey(np)) {
+      return;
+    }
+    VirtualFile vfp = virtualFile.getParent();
     final VirtualFile projectDir = ProjectUtil.guessProjectDir(myIdeaProject);
-    if (virtualFile instanceof MPSNodeVirtualFile && projectDir != null &&
-        VfsUtilCore.isAncestor(projectDir, virtualFile.getParent(), false) &&
-        myNodeRef2TabsComponents.containsKey(((MPSNodeVirtualFile) virtualFile).getSNodePointer())) {
-      updateTabColorsLater(((MPSNodeVirtualFile) virtualFile).getSNodePointer());
+    // Not quite certain there's a reason to check for project/ancestor, provided we do
+    // have tab for the node. Indeed, we might have noticed a change in another project, but is
+    // it that important to save extra updateTabColorsLater()? 6df275a2 doesn't shed any light.
+    if (vfp != null && projectDir != null && VfsUtilCore.isAncestor(projectDir, vfp, false)) {
+      updateTabColorsLater(np);
     }
   }
 }
