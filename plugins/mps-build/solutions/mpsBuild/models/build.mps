@@ -148,7 +148,6 @@
       <concept id="7389400916848050060" name="jetbrains.mps.build.structure.BuildLayout_NamedContainer" flags="ng" index="3981dR">
         <child id="4380385936562148502" name="containerName" index="Nbhlr" />
       </concept>
-      <concept id="7389400916848036997" name="jetbrains.mps.build.structure.BuildLayout_Node" flags="ng" index="39821Y" />
       <concept id="7389400916848036984" name="jetbrains.mps.build.structure.BuildLayout_Folder" flags="ng" index="398223" />
       <concept id="7389400916848073810" name="jetbrains.mps.build.structure.BuildSource_JavaContentRoot" flags="ng" index="398b2D">
         <child id="2754769020641429197" name="folders" index="nFU4p" />
@@ -334,6 +333,7 @@
         <child id="2355727383336213970" name="copyrightStar" index="3fQQh0" />
       </concept>
       <concept id="1265949165890536423" name="jetbrains.mps.build.mps.structure.BuildMpsLayout_ModuleJars" flags="ng" index="L2wRC">
+        <property id="7918752904810477378" name="stripImplementation" index="2IHNyd" />
         <reference id="1265949165890536425" name="module" index="L2wRA" />
         <child id="4356762679305730677" name="jarLocations" index="3yL2VB" />
         <child id="3335207478148056905" name="deployedJar" index="3PtcVe" />
@@ -37852,9 +37852,12 @@
           <node concept="L2wRC" id="3OA_Uj95JuN" role="39821P">
             <ref role="L2wRA" node="5xa9wY2vhbf" resolve="jetbrains.mps.baseLanguage.unitTest.execution" />
           </node>
+          <node concept="L2wRC" id="3OA_Uj9D7TE" role="39821P">
+            <property role="2IHNyd" value="true" />
+            <ref role="L2wRA" node="465rK6MmPl5" resolve="jetbrains.mps.baselanguage.unitTest.launcher" />
+          </node>
         </node>
       </node>
-      <node concept="39821Y" id="3OA_Uj95JcK" role="39821P" />
     </node>
     <node concept="2sgV4H" id="5xa9wY2vhbG" role="1l3spa">
       <ref role="1l3spb" node="6S1jmf0xDFC" resolve="mpsBootstrapCore" />
