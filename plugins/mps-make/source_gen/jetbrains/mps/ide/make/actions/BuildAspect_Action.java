@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.language.LanguageAspectDescriptor;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
@@ -37,7 +36,7 @@ public class BuildAspect_Action extends BaseAction {
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    event.getPresentation().setText(NameUtil.capitalize(BuildAspect_Action.this.aspect.getPresentableAspectName()));
+    event.getPresentation().setText(BuildAspect_Action.this.aspect.getPresentableAspectName());
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {

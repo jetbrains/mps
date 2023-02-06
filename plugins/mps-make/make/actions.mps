@@ -12808,19 +12808,15 @@
             </node>
             <node concept="liA8E" id="7wqdV6Ybmzo" role="2OqNvi">
               <ref role="37wK5l" to="qkt:~Presentation.setText(java.lang.String)" resolve="setText" />
-              <node concept="2YIFZM" id="7wqdV6Y91$x" role="37wK5m">
-                <ref role="37wK5l" to="18ew:~NameUtil.capitalize(java.lang.String)" resolve="capitalize" />
-                <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
-                <node concept="2OqwBi" id="7wqdV6Y919K" role="37wK5m">
-                  <node concept="2OqwBi" id="7wqdV6Y90LO" role="2Oq$k0">
-                    <node concept="2WthIp" id="7wqdV6Y90LR" role="2Oq$k0" />
-                    <node concept="2BZ7hE" id="7wqdV6Y9PnA" role="2OqNvi">
-                      <ref role="2WH_rO" node="7wqdV6Y9M6K" resolve="aspect" />
-                    </node>
+              <node concept="2OqwBi" id="7wqdV6Y919K" role="37wK5m">
+                <node concept="2OqwBi" id="7wqdV6Y90LO" role="2Oq$k0">
+                  <node concept="2WthIp" id="7wqdV6Y90LR" role="2Oq$k0" />
+                  <node concept="2BZ7hE" id="7wqdV6Y9PnA" role="2OqNvi">
+                    <ref role="2WH_rO" node="7wqdV6Y9M6K" resolve="aspect" />
                   </node>
-                  <node concept="liA8E" id="7wqdV6Y91iX" role="2OqNvi">
-                    <ref role="37wK5l" to="vndm:~LanguageAspectDescriptor.getPresentableAspectName()" resolve="getPresentableAspectName" />
-                  </node>
+                </node>
+                <node concept="liA8E" id="7wqdV6Y91iX" role="2OqNvi">
+                  <ref role="37wK5l" to="vndm:~LanguageAspectDescriptor.getPresentableAspectName()" resolve="getPresentableAspectName" />
                 </node>
               </node>
             </node>

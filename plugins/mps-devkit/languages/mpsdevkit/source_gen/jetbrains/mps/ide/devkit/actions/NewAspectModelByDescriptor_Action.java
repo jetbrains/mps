@@ -12,13 +12,12 @@ import jetbrains.mps.smodel.language.LanguageAspectDescriptor;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.ide.icons.IdeIcons;
+import jetbrains.mps.smodel.language.CreateAspectContext;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.actionSystem.CommonDataKeys;
-import java.util.Collection;
+import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SModel;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.ide.projectPane.ProjectPane;
@@ -46,11 +45,11 @@ public class NewAspectModelByDescriptor_Action extends BaseAction {
     }
     enable(event.getPresentation());
 
-    event.getPresentation().setText(NameUtil.capitalize(ad.getPresentableAspectName()) + " Aspect");
+    event.getPresentation().setText(String.format("%s Aspect", ad.getPresentableAspectName()));
     Icon icon = GlobalIconManager.getInstance().getIconForResource(ad.getIconResource());
     event.getPresentation().setIcon((icon != null ? icon : IdeIcons.MODEL_ICON));
 
-    NewAspectModelByDescriptor_Action.this.setEnabledState(event.getPresentation(), !(((SModule) MapSequence.fromMap(_params).get("module")).isReadOnly()) && ad.canCreate(((SModule) MapSequence.fromMap(_params).get("module"))));
+    NewAspectModelByDescriptor_Action.this.setEnabledState(event.getPresentation(), !(((SModule) MapSequence.fromMap(_params).get("module")).isReadOnly()) && ad.canCreate(CreateAspectContext.create(((SModule) MapSequence.fromMap(_params).get("module")), ((MPSProject) MapSequence.fromMap(_params).get("project")).getPlatform(), null)));
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
@@ -65,8 +64,8 @@ public class NewAspectModelByDescriptor_Action extends BaseAction {
       }
     }
     {
-      Project p = event.getData(CommonDataKeys.PROJECT);
-      MapSequence.fromMap(_params).put("ideaProject", p);
+      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+      MapSequence.fromMap(_params).put("project", p);
       if (p == null) {
         return false;
       }
@@ -76,12 +75,13 @@ public class NewAspectModelByDescriptor_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     LanguageAspectDescriptor ad = NewAspectModelActionHelper.getAspectById(NewAspectModelByDescriptor_Action.this.aspectId);
-    ad.create(((Language) ((SModule) MapSequence.fromMap(_params).get("module"))));
+    final ArrayList<SModel> aspectModels = new ArrayList<>();
+    CreateAspectContext cac = CreateAspectContext.create(((SModule) MapSequence.fromMap(_params).get("module")), ((MPSProject) MapSequence.fromMap(_params).get("project")).getPlatform(), aspectModels::add);
+    ad.create(cac);
 
     // we need it since tree is updated later
-    final Collection<SModel> aspectModels = ad.getAspectModels(((SModule) MapSequence.fromMap(_params).get("module")));
     if (aspectModels.size() == 1) {
-      ApplicationManager.getApplication().invokeLater(() -> ProjectPane.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).selectModel(aspectModels.iterator().next(), false));
+      ApplicationManager.getApplication().invokeLater(() -> ProjectPane.getInstance(((MPSProject) MapSequence.fromMap(_params).get("project"))).selectModel(aspectModels.iterator().next(), false));
     }
   }
   @NotNull

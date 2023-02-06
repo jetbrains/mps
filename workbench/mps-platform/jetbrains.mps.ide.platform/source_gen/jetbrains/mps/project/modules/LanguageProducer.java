@@ -32,6 +32,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.model.EditableSModel;
+import jetbrains.mps.smodel.language.CreateAspectContext;
 import jetbrains.mps.smodel.language.LanguageAspectDescriptor;
 import jetbrains.mps.smodel.language.LanguageAspectSupport;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -195,16 +196,11 @@ public class LanguageProducer {
     // FIXME configure what aspects to create
     final String[] aspects2create = new String[]{"structure", "editor", "constraints", "behavior", "typesystem"};
     assert language.getModelRoots().iterator().hasNext();
-    ModelsAutoImportsManager autoImports = myProject.getComponent(ModelsAutoImportsManager.class);
+    CreateAspectContext cac = CreateAspectContext.create(language, myProject.getPlatform(), null);
     for (String aspectId : aspects2create) {
       LanguageAspectDescriptor ad = LanguageAspectSupport.getAspectDescriptorById(aspectId);
-      if (ad != null && ad.canCreate(language)) {
-        ad.create(language);
-        if (autoImports != null) {
-          for (SModel am : ad.getAspectModels(language)) {
-            autoImports.performImports(language, am);
-          }
-        }
+      if (ad != null && ad.canCreate(cac)) {
+        ad.create(cac);
       } else {
         if (LOG.isWarningLevel()) {
           LOG.warning(String.format("Failed to initialize aspect '%s' for language %s", aspectId, language.getModuleName()));

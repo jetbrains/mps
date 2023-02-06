@@ -3,7 +3,9 @@
  */
 package jetbrains.mps.smodel.language;
 
+import jetbrains.mps.project.ModelsAutoImportsManager;
 import jetbrains.mps.smodel.Language;
+import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.EditableSModel;
@@ -26,14 +28,20 @@ import java.util.Objects;
  */
 public abstract class LanguageAspectDescriptorBase extends LanguageAspectDescriptor {
   private final String myId;
+  private final String myName;
 
   protected LanguageAspectDescriptorBase(@NotNull String id) {
+    this(id, NameUtil.capitalize(id));
+  }
+
+  protected LanguageAspectDescriptorBase(@NotNull String id, @NotNull String presentableName) {
     myId = id;
+    myName = presentableName;
   }
 
   @Override
   public String getPresentableAspectName() {
-    return myId;
+    return myName;
   }
 
   @Override
@@ -62,7 +70,13 @@ public abstract class LanguageAspectDescriptorBase extends LanguageAspectDescrip
     return language instanceof Language && !language.isReadOnly() && getAspectModels(language).isEmpty();
   }
 
+  @SuppressWarnings("removal")
   public void create(SModule language) {
+    // keep for another release until all uses get a chance to update to new API
+    doCreate(language);
+  }
+
+  private EditableSModel doCreate(SModule language) {
     Language l = ((Language) language);
     SModel structureModel = l.getStructureModelDescriptor();
     ModelRoot modelRoot;
@@ -71,11 +85,23 @@ public abstract class LanguageAspectDescriptorBase extends LanguageAspectDescrip
     } else {
       modelRoot = structureModel.getModelRoot();
     }
-    final SModelName modelName = new SModelName(l.getModuleName(), getPresentableAspectName(), null);
-    EditableSModel model = (EditableSModel) modelRoot.createModel(modelName.getValue());
+    final SModelName modelName = new SModelName(l.getModuleName(), getId(), null);
+    EditableSModel model = (EditableSModel) modelRoot.createModel(modelName);
     // XXX Seems reasonable to use ModelsAutoImportsManager here, rather than to require caller to do that, however,
     //     no idea how to get ComponentHost in here.
     model.save();
+    return model;
+  }
+
+  @Override
+  public void create(@NotNull CreateAspectContext context) {
+    final EditableSModel m = doCreate(context.getOwner());
+    final ModelsAutoImportsManager autoImports = context.getHost().findComponent(ModelsAutoImportsManager.class);
+    if (autoImports != null) {
+      autoImports.performImports(context.getOwner(), m);
+      m.save();
+    }
+    context.aspectCreated(m);
   }
 
   @NotNull
