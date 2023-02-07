@@ -25,11 +25,13 @@ import jetbrains.mps.ide.relations.RelationComparator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.plugins.relations.RelationDescriptor;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
+import jetbrains.mps.workbench.MPSDataKeys;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -161,25 +163,26 @@ public class CreateGroupsBuilder {
 
     @Override
     public void update(@NotNull AnActionEvent e) {
-      e.getPresentation().setEnabled(!myReadOnly);
+      e.getPresentation().setEnabled(!myReadOnly && e.getData(MPSDataKeys.MPS_PROJECT) != null);
     }
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
+      final MPSProject mpsProject = e.getData(MPSDataKeys.MPS_PROJECT);
       final SNode[] res = new SNode[1];
       if (myDescriptor.commandOnCreate()) {
-        myProject.getModelAccess().executeCommand(() -> {
-          res[0] = myDescriptor.createAspect(myProject, myBaseNode, myConcept);
+        mpsProject.getModelAccess().executeCommand(() -> {
+          res[0] = myDescriptor.createAspect(mpsProject, myBaseNode, myConcept);
           if (res[0] != null) {
-            setPackage(res[0], myBaseNode.resolve(myProject.getRepository()));
+            setPackage(res[0], myBaseNode.resolve(mpsProject.getRepository()));
             myCallback.changeNode(res[0].getReference());
           }
         });
       } else {
-        res[0] = myDescriptor.createAspect(myProject, myBaseNode, myConcept);
-        myProject.getModelAccess().executeCommand(() -> {
+        res[0] = myDescriptor.createAspect(mpsProject, myBaseNode, myConcept);
+        mpsProject.getModelAccess().executeCommand(() -> {
           if (res[0] != null) {
-            setPackage(res[0], myBaseNode.resolve(myProject.getRepository()));
+            setPackage(res[0], myBaseNode.resolve(mpsProject.getRepository()));
             myCallback.changeNode(res[0].getReference());
           }
         });

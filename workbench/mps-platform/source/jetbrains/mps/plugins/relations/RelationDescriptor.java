@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.plugins.relations;
 
-import jetbrains.mps.project.Project;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.language.CreateAspectContext;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -73,7 +73,7 @@ public abstract class RelationDescriptor implements Comparable<RelationDescripto
   }
 
   /**
-   * @deprecated use {@link #createAspect(Project, SNodeReference, SConcept)} instead.
+   * @deprecated use {@link #createAspect(MPSProject, SNodeReference, SConcept)} instead.
    *             Generally, it's MPS that invokes the method, and clients that provide implementation.
    *             Can remove in a release next to the one where templates have been fixed
    */
@@ -88,7 +88,7 @@ public abstract class RelationDescriptor implements Comparable<RelationDescripto
    * functionality.
    * @since 2022.3
    */
-  public SNode createAspect(@NotNull Project mpsProject, @NotNull SNodeReference baseNode, @NotNull SConcept concept) {
+  public SNode createAspect(@NotNull MPSProject mpsProject, @NotNull SNodeReference baseNode, @NotNull SConcept concept) {
     // remove body once deprecated method gone
     return createAspect(baseNode.resolve(mpsProject.getRepository()), concept);
   }
