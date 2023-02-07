@@ -4220,7 +4220,199 @@
   </node>
   <node concept="bUwia" id="hxKyVBx">
     <property role="TrG5h" value="EditorTabs" />
-    <property role="3GE5qa" value="EditorTabs" />
+    <property role="3GE5qa" value="EditorTab" />
+    <node concept="3aamgX" id="2W$93IFr2DC" role="3acgRq">
+      <ref role="30HIoZ" to="tp4k:hxKvdYS" resolve="ConceptFunctionParameter_MPSProject" />
+      <node concept="1Koe21" id="2W$93IFrlbG" role="1lVwrX">
+        <node concept="3clFb_" id="2W$93IFrlcS" role="1Koe22">
+          <property role="TrG5h" value="m" />
+          <node concept="3clFbS" id="2W$93IFrlcV" role="3clF47">
+            <node concept="3clFbF" id="2W$93IFrlri" role="3cqZAp">
+              <node concept="2OqwBi" id="2W$93IFrlyr" role="3clFbG">
+                <node concept="37vLTw" id="2W$93IFrlrh" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2W$93IFrllL" resolve="_context" />
+                </node>
+                <node concept="liA8E" id="2W$93IFrlFy" role="2OqNvi">
+                  <ref role="37wK5l" to="b3f7:~CreateAspectContext.getProject()" resolve="getProject" />
+                </node>
+                <node concept="raruj" id="2W$93IFrmzZ" role="lGtFl" />
+              </node>
+            </node>
+          </node>
+          <node concept="3cqZAl" id="2W$93IFrlfI" role="3clF45" />
+          <node concept="3Tm1VV" id="2W$93IFrlcX" role="1B3o_S" />
+          <node concept="37vLTG" id="2W$93IFrllL" role="3clF46">
+            <property role="TrG5h" value="_context" />
+            <node concept="3uibUv" id="2W$93IFrllK" role="1tU5fm">
+              <ref role="3uigEE" to="b3f7:~CreateAspectContext" resolve="CreateAspectContext" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="30G5F_" id="2W$93IFr2DG" role="30HLyM">
+        <node concept="3clFbS" id="2W$93IFr2DH" role="2VODD2">
+          <node concept="3clFbF" id="2W$93IFrjyu" role="3cqZAp">
+            <node concept="2OqwBi" id="2W$93IFrkFW" role="3clFbG">
+              <node concept="2OqwBi" id="2W$93IFrjO_" role="2Oq$k0">
+                <node concept="30H73N" id="2W$93IFrjyt" role="2Oq$k0" />
+                <node concept="2Xjw5R" id="2W$93IFrkiZ" role="2OqNvi">
+                  <node concept="1xMEDy" id="2W$93IFrkj1" role="1xVPHs">
+                    <node concept="chp4Y" id="2W$93IFrkpW" role="ri$Ld">
+                      <ref role="cht4Q" to="tp4k:6u50yCprCW1" resolve="CreateBlock" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3x8VRR" id="2W$93IFrl25" role="2OqNvi" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="3aamgX" id="2W$93IFrm$A" role="3acgRq">
+      <ref role="30HIoZ" to="tp4k:6u50yCprH$i" resolve="ConceptFunctionParameter_SConceptClass" />
+      <node concept="1Koe21" id="2W$93IFrm$B" role="1lVwrX">
+        <node concept="3clFb_" id="2W$93IFrm$C" role="1Koe22">
+          <property role="TrG5h" value="m" />
+          <node concept="3clFbS" id="2W$93IFrm$D" role="3clF47">
+            <node concept="3clFbF" id="2W$93IFrm$E" role="3cqZAp">
+              <node concept="2OqwBi" id="2W$93IFrm$F" role="3clFbG">
+                <node concept="37vLTw" id="2W$93IFrm$G" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2W$93IFrm$L" resolve="_context" />
+                </node>
+                <node concept="liA8E" id="2W$93IFrm$H" role="2OqNvi">
+                  <ref role="37wK5l" to="b3f7:~CreateAspectContext.getAspectConcept()" resolve="getAspectConcept" />
+                </node>
+                <node concept="raruj" id="2W$93IFrm$I" role="lGtFl" />
+              </node>
+            </node>
+          </node>
+          <node concept="3cqZAl" id="2W$93IFrm$J" role="3clF45" />
+          <node concept="3Tm1VV" id="2W$93IFrm$K" role="1B3o_S" />
+          <node concept="37vLTG" id="2W$93IFrm$L" role="3clF46">
+            <property role="TrG5h" value="_context" />
+            <node concept="3uibUv" id="2W$93IFrm$M" role="1tU5fm">
+              <ref role="3uigEE" to="b3f7:~CreateAspectContext" resolve="CreateAspectContext" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="30G5F_" id="2W$93IFrm$N" role="30HLyM">
+        <node concept="3clFbS" id="2W$93IFrm$O" role="2VODD2">
+          <node concept="3clFbF" id="2W$93IFrm$P" role="3cqZAp">
+            <node concept="2OqwBi" id="2W$93IFrm$Q" role="3clFbG">
+              <node concept="2OqwBi" id="2W$93IFrm$R" role="2Oq$k0">
+                <node concept="30H73N" id="2W$93IFrm$S" role="2Oq$k0" />
+                <node concept="2Xjw5R" id="2W$93IFrm$T" role="2OqNvi">
+                  <node concept="1xMEDy" id="2W$93IFrm$U" role="1xVPHs">
+                    <node concept="chp4Y" id="2W$93IFrm$V" role="ri$Ld">
+                      <ref role="cht4Q" to="tp4k:6u50yCprCW1" resolve="CreateBlock" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3x8VRR" id="2W$93IFrm$W" role="2OqNvi" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="3aamgX" id="2W$93IFrmP6" role="3acgRq">
+      <ref role="30HIoZ" to="tp4k:hxbeSif" resolve="ConceptFunctionParameter_node" />
+      <node concept="1Koe21" id="2W$93IFrmP7" role="1lVwrX">
+        <node concept="3clFb_" id="2W$93IFrmP8" role="1Koe22">
+          <property role="TrG5h" value="m" />
+          <node concept="3clFbS" id="2W$93IFrmP9" role="3clF47">
+            <node concept="3clFbF" id="2W$93IFrmPa" role="3cqZAp">
+              <node concept="2OqwBi" id="2W$93IFrmPb" role="3clFbG">
+                <node concept="37vLTw" id="2W$93IFrmPc" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2W$93IFrmPh" resolve="_context" />
+                </node>
+                <node concept="liA8E" id="2W$93IFrmPd" role="2OqNvi">
+                  <ref role="37wK5l" to="b3f7:~CreateAspectContext.getBaseNode()" resolve="getBaseNode" />
+                </node>
+                <node concept="raruj" id="2W$93IFrmPe" role="lGtFl" />
+              </node>
+            </node>
+          </node>
+          <node concept="3cqZAl" id="2W$93IFrmPf" role="3clF45" />
+          <node concept="3Tm1VV" id="2W$93IFrmPg" role="1B3o_S" />
+          <node concept="37vLTG" id="2W$93IFrmPh" role="3clF46">
+            <property role="TrG5h" value="_context" />
+            <node concept="3uibUv" id="2W$93IFrmPi" role="1tU5fm">
+              <ref role="3uigEE" to="b3f7:~CreateAspectContext" resolve="CreateAspectContext" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="30G5F_" id="2W$93IFrmPj" role="30HLyM">
+        <node concept="3clFbS" id="2W$93IFrmPk" role="2VODD2">
+          <node concept="3clFbF" id="2W$93IFrmPl" role="3cqZAp">
+            <node concept="2OqwBi" id="2W$93IFrmPm" role="3clFbG">
+              <node concept="2OqwBi" id="2W$93IFrmPn" role="2Oq$k0">
+                <node concept="30H73N" id="2W$93IFrmPo" role="2Oq$k0" />
+                <node concept="2Xjw5R" id="2W$93IFrmPp" role="2OqNvi">
+                  <node concept="1xMEDy" id="2W$93IFrmPq" role="1xVPHs">
+                    <node concept="chp4Y" id="2W$93IFrmPr" role="ri$Ld">
+                      <ref role="cht4Q" to="tp4k:6u50yCprCW1" resolve="CreateBlock" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3x8VRR" id="2W$93IFrmPs" role="2OqNvi" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="3aamgX" id="2W$93IFrne6" role="3acgRq">
+      <ref role="30HIoZ" to="tp4k:HFq8Ekc8nW" resolve="ConceptFunctionParameter_NodeReference" />
+      <node concept="1Koe21" id="2W$93IFrne7" role="1lVwrX">
+        <node concept="3clFb_" id="2W$93IFrne8" role="1Koe22">
+          <property role="TrG5h" value="m" />
+          <node concept="3clFbS" id="2W$93IFrne9" role="3clF47">
+            <node concept="3clFbF" id="2W$93IFrnea" role="3cqZAp">
+              <node concept="2OqwBi" id="2W$93IFrneb" role="3clFbG">
+                <node concept="37vLTw" id="2W$93IFrnec" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2W$93IFrneh" resolve="_context" />
+                </node>
+                <node concept="liA8E" id="2W$93IFrned" role="2OqNvi">
+                  <ref role="37wK5l" to="b3f7:~CreateAspectContext.getBaseNodePointer()" resolve="getBaseNodePointer" />
+                </node>
+                <node concept="raruj" id="2W$93IFrnee" role="lGtFl" />
+              </node>
+            </node>
+          </node>
+          <node concept="3cqZAl" id="2W$93IFrnef" role="3clF45" />
+          <node concept="3Tm1VV" id="2W$93IFrneg" role="1B3o_S" />
+          <node concept="37vLTG" id="2W$93IFrneh" role="3clF46">
+            <property role="TrG5h" value="_context" />
+            <node concept="3uibUv" id="2W$93IFrnei" role="1tU5fm">
+              <ref role="3uigEE" to="b3f7:~CreateAspectContext" resolve="CreateAspectContext" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="30G5F_" id="2W$93IFrnej" role="30HLyM">
+        <node concept="3clFbS" id="2W$93IFrnek" role="2VODD2">
+          <node concept="3clFbF" id="2W$93IFrnel" role="3cqZAp">
+            <node concept="2OqwBi" id="2W$93IFrnem" role="3clFbG">
+              <node concept="2OqwBi" id="2W$93IFrnen" role="2Oq$k0">
+                <node concept="30H73N" id="2W$93IFrneo" role="2Oq$k0" />
+                <node concept="2Xjw5R" id="2W$93IFrnep" role="2OqNvi">
+                  <node concept="1xMEDy" id="2W$93IFrneq" role="1xVPHs">
+                    <node concept="chp4Y" id="2W$93IFrner" role="ri$Ld">
+                      <ref role="cht4Q" to="tp4k:6u50yCprCW1" resolve="CreateBlock" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3x8VRR" id="2W$93IFrnes" role="2OqNvi" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="3lhOvk" id="35dpJhBvxpI" role="3lj3bC">
       <property role="3GE5qa" value="DEPRECATED" />
       <ref role="3lhOvi" node="35dpJhBvxo4" resolve="TabDescriptor_Template" />
@@ -12110,7 +12302,7 @@
   </node>
   <node concept="312cEu" id="35dpJhBvxo4">
     <property role="TrG5h" value="TabDescriptor_Template" />
-    <property role="3GE5qa" value="EditorTabs" />
+    <property role="3GE5qa" value="EditorTab" />
     <node concept="Wx3nA" id="Ib_Fk7EwQi" role="jymVt">
       <property role="TrG5h" value="ICON" />
       <property role="3TUv4t" value="true" />
@@ -13038,22 +13230,20 @@
       <node concept="3Tm1VV" id="77svleruqb5" role="1B3o_S" />
     </node>
     <node concept="3clFb_" id="2Mnhr$77a$M" role="jymVt">
-      <property role="TrG5h" value="createAspect" />
-      <node concept="3Tm1VV" id="2Mnhr$77a$N" role="1B3o_S" />
+      <property role="TrG5h" value="doCreateAspect" />
+      <node concept="3Tmbuc" id="2uRr5R2SgDc" role="1B3o_S" />
       <node concept="3Tqbb2" id="2Mnhr$77a$O" role="3clF45" />
-      <node concept="37vLTG" id="2Mnhr$77a$P" role="3clF46">
-        <property role="TrG5h" value="node" />
-        <property role="3TUv4t" value="true" />
-        <node concept="3Tqbb2" id="2Mnhr$77a$Q" role="1tU5fm" />
-      </node>
       <node concept="37vLTG" id="2Mnhr$77a$R" role="3clF46">
-        <property role="TrG5h" value="concept" />
+        <property role="TrG5h" value="_context" />
         <property role="3TUv4t" value="true" />
         <node concept="3uibUv" id="2Mnhr$79Vy7" role="1tU5fm">
-          <ref role="3uigEE" to="c17a:~SConcept" resolve="SConcept" />
+          <ref role="3uigEE" to="b3f7:~CreateAspectContext" resolve="CreateAspectContext" />
         </node>
       </node>
       <node concept="3clFbS" id="2Mnhr$77a$T" role="3clF47">
+        <node concept="3cpWs6" id="2Mnhr$77a_5" role="3cqZAp">
+          <node concept="10Nm6u" id="2Mnhr$77a_6" role="3cqZAk" />
+        </node>
         <node concept="29HgVG" id="2Mnhr$77a$U" role="lGtFl">
           <node concept="3NFfHV" id="2Mnhr$77a$V" role="3NFExx">
             <node concept="3clFbS" id="2Mnhr$77a$W" role="2VODD2">
@@ -13077,9 +13267,6 @@
               </node>
             </node>
           </node>
-        </node>
-        <node concept="3cpWs6" id="2Mnhr$77a_5" role="3cqZAp">
-          <node concept="10Nm6u" id="2Mnhr$77a_6" role="3cqZAk" />
         </node>
       </node>
       <node concept="1W57fq" id="2Mnhr$77a_7" role="lGtFl">

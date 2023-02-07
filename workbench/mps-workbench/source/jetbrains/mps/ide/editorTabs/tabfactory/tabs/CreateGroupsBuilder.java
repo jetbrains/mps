@@ -24,6 +24,7 @@ import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.ide.relations.RelationComparator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.plugins.relations.CreateAspectContext;
 import jetbrains.mps.plugins.relations.RelationDescriptor;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Project;
@@ -169,30 +170,20 @@ public class CreateGroupsBuilder {
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
       final MPSProject mpsProject = e.getData(MPSDataKeys.MPS_PROJECT);
-      final SNode[] res = new SNode[1];
-      if (myDescriptor.commandOnCreate()) {
-        mpsProject.getModelAccess().executeCommand(() -> {
-          res[0] = myDescriptor.createAspect(mpsProject, myBaseNode, myConcept);
-          if (res[0] != null) {
-            setPackage(res[0], myBaseNode.resolve(mpsProject.getRepository()));
-            myCallback.changeNode(res[0].getReference());
+      final SNodeReference[] res = new SNodeReference[1];
+      CreateAspectContext cac = new CreateAspectContext(mpsProject, myBaseNode, myConcept) {
+        @Override
+        public void aspectNodeCreated(@NotNull SNode aspectNode, @Nullable SNode baseNode) {
+          res[0] = aspectNode.getReference();
+          String conceptPackage = SPropertyOperations.getString(baseNode, SNodeUtil.property_BaseConcept_virtualPackage);
+          if (conceptPackage != null) {
+            SPropertyOperations.assign(aspectNode, SNodeUtil.property_BaseConcept_virtualPackage, conceptPackage);
           }
-        });
-      } else {
-        res[0] = myDescriptor.createAspect(mpsProject, myBaseNode, myConcept);
-        mpsProject.getModelAccess().executeCommand(() -> {
-          if (res[0] != null) {
-            setPackage(res[0], myBaseNode.resolve(mpsProject.getRepository()));
-            myCallback.changeNode(res[0].getReference());
-          }
-        });
-      }
-    }
-
-    private void setPackage(SNode res, @Nullable SNode conceptNode) {
-      String conceptPackage = SPropertyOperations.getString(conceptNode, SNodeUtil.property_BaseConcept_virtualPackage);
-      if (conceptPackage != null) {
-        SPropertyOperations.assign(res, SNodeUtil.property_BaseConcept_virtualPackage, conceptPackage);
+        }
+      };
+      myDescriptor.createAspect(cac);
+      if (res != null) {
+        myCallback.changeNode(res[0]);
       }
     }
 
