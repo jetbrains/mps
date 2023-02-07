@@ -35,6 +35,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+// NOTE, although quite some of these enums are not in use in MPS, there are uses in mbeddr!
 public enum LanguageAspect {
   //mostly migrated
   STRUCTURE("structure", BootstrapLanguages.structureLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "structure.html"),
