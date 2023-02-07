@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,13 @@
  */
 package jetbrains.mps.plugins.relations;
 
-import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.project.Project;
+import jetbrains.mps.smodel.language.CreateAspectContext;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import javax.swing.Icon;
 import java.util.ArrayList;
@@ -69,8 +72,25 @@ public abstract class RelationDescriptor implements Comparable<RelationDescripto
     return true;
   }
 
-  public SNode createAspect(SNode baseNode, SConcept concept){
+  /**
+   * @deprecated use {@link #createAspect(Project, SNodeReference, SConcept)} instead.
+   *             Generally, it's MPS that invokes the method, and clients that provide implementation.
+   *             Can remove in a release next to the one where templates have been fixed
+   */
+  @Deprecated(since = "2022.3", forRemoval = true)
+  public SNode createAspect(@Nullable SNode baseNode, SConcept concept){
     throw new UnsupportedOperationException();
+  }
+
+  /**
+   * Quite an odd duplication of {@link jetbrains.mps.smodel.language.LanguageAspectDescriptor#create(CreateAspectContext)} but
+   * needs a thorough refactoring to get aligned. Seems that this class is a precursor for LAD and therefore bears a lot of similar
+   * functionality.
+   * @since 2022.3
+   */
+  public SNode createAspect(@NotNull Project mpsProject, @NotNull SNodeReference baseNode, @NotNull SConcept concept) {
+    // remove body once deprecated method gone
+    return createAspect(baseNode.resolve(mpsProject.getRepository()), concept);
   }
 
   @Nullable

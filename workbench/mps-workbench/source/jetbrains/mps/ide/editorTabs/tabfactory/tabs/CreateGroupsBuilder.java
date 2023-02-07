@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.ide.editorTabs.tabfactory.tabs;
 
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
@@ -154,6 +155,11 @@ public class CreateGroupsBuilder {
     }
 
     @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT; // nothing in update()
+    }
+
+    @Override
     public void update(@NotNull AnActionEvent e) {
       e.getPresentation().setEnabled(!myReadOnly);
     }
@@ -163,28 +169,24 @@ public class CreateGroupsBuilder {
       final SNode[] res = new SNode[1];
       if (myDescriptor.commandOnCreate()) {
         myProject.getModelAccess().executeCommand(() -> {
-          SNode cNode = myBaseNode.resolve(myProject.getRepository());
-          res[0] = myDescriptor.createAspect(cNode, myConcept);
+          res[0] = myDescriptor.createAspect(myProject, myBaseNode, myConcept);
           if (res[0] != null) {
-            setPackage(res[0], cNode);
+            setPackage(res[0], myBaseNode.resolve(myProject.getRepository()));
             myCallback.changeNode(res[0].getReference());
           }
         });
       } else {
-        SNode cNODE = new ModelAccessHelper(myProject.getModelAccess()).runReadAction(() -> myBaseNode.resolve(myProject.getRepository()));
-        res[0] = myDescriptor.createAspect(cNODE, myConcept);
+        res[0] = myDescriptor.createAspect(myProject, myBaseNode, myConcept);
         myProject.getModelAccess().executeCommand(() -> {
-          SNode conceptNode = myBaseNode.resolve(myProject.getRepository());
-          if (res[0] == null || conceptNode == null) {
-            return;
+          if (res[0] != null) {
+            setPackage(res[0], myBaseNode.resolve(myProject.getRepository()));
+            myCallback.changeNode(res[0].getReference());
           }
-          setPackage(res[0], conceptNode);
-          myCallback.changeNode(res[0].getReference());
         });
       }
     }
 
-    private void setPackage(SNode res, SNode conceptNode) {
+    private void setPackage(SNode res, @Nullable SNode conceptNode) {
       String conceptPackage = SPropertyOperations.getString(conceptNode, SNodeUtil.property_BaseConcept_virtualPackage);
       if (conceptPackage != null) {
         SPropertyOperations.assign(res, SNodeUtil.property_BaseConcept_virtualPackage, conceptPackage);
