@@ -20,6 +20,7 @@ import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__Behavio
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.LanguageAspect;
+import jetbrains.mps.plugins.relations.CreateAspectContext;
 import jetbrains.mps.kernel.model.SModelUtil;
 import jetbrains.mps.smodel.action.NodeFactoryManager;
 import jetbrains.mps.kernel.language.ConceptAspectsHelper;
@@ -72,16 +73,19 @@ public class Constraints_TabDescriptor extends RelationDescriptor {
   public Iterable<SConcept> getAspectConcepts(final SNode node) {
     return ConceptEditorHelper.getAvailableConceptAspects(LanguageAspect.CONSTRAINTS, node);
   }
-  public SNode createAspect(final SNode node, final SConcept concept) {
-    Language language = SModelUtil.getDeclaringLanguage(node);
-    assert language != null : "Language cannot be null for " + SNodeOperations.present(node);
+  protected SNode doCreateAspect(final CreateAspectContext _context) {
+    Language language = SModelUtil.getDeclaringLanguage(_context.getBaseNode());
+    assert language != null : "Language cannot be null for " + SNodeOperations.present(_context.getBaseNode());
     LanguageAspect aspect = LanguageAspect.CONSTRAINTS;
     SModel md = aspect.get(language);
     if (md == null) {
       md = aspect.createNew(language);
     }
-    SNode newConceptAspectRoot = (SNode) NodeFactoryManager.createNode(concept, null, null, md);
-    return ConceptAspectsHelper.attachNewConceptAspect(node, newConceptAspectRoot, md);
+    // FIXME can't use 'new initialized root' instead of NodeFactoryManager as it takes direct concept reference only
+    //      and I can face different concepts here.
+    //      Besides, need to get rid of LanguageAspect constants use, at last.
+    SNode newConceptAspectRoot = (SNode) NodeFactoryManager.createNode(_context.getAspectConcept(), null, null, md);
+    return ConceptAspectsHelper.attachNewConceptAspect(_context.getBaseNode(), newConceptAspectRoot, md);
   }
 
   private static final class CONCEPTS {

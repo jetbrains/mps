@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.plugins.relations.CreateAspectContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -63,10 +64,10 @@ public class Executor_TabDescriptor extends RelationDescriptor {
   public Iterable<SConcept> getAspectConcepts(final SNode node) {
     return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.RunConfigurationExecutor$5U);
   }
-  public SNode createAspect(final SNode node, final SConcept concept) {
+  protected SNode doCreateAspect(final CreateAspectContext _context) {
     SNode executor = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bc8e1ecL, "jetbrains.mps.execution.configurations.structure.RunConfigurationExecutor"));
-    SLinkOperations.setTarget(executor, LINKS.configuration$CM7P, node);
-    SModelOperations.addRootNode(SNodeOperations.getModel(node), executor);
+    SLinkOperations.setTarget(executor, LINKS.configuration$CM7P, _context.getBaseNode());
+    SModelOperations.addRootNode(SNodeOperations.getModel(_context.getBaseNode()), executor);
     return executor;
   }
 

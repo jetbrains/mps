@@ -18,6 +18,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.plugins.relations.CreateAspectContext;
 import jetbrains.mps.kernel.language.ConceptAspectsHelper;
 import jetbrains.mps.smodel.LanguageAspect;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
@@ -69,8 +70,8 @@ public class Data_Flow_TabDescriptor extends RelationDescriptor {
   public Iterable<SConcept> getAspectConcepts(final SNode node) {
     return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.DataFlowBuilderDeclaration$NP);
   }
-  public SNode createAspect(final SNode node, final SConcept concept) {
-    return ConceptAspectsHelper.attachNewConceptAspect(LanguageAspect.DATA_FLOW, node, SNodeFactoryOperations.createNewNode(CONCEPTS.DataFlowBuilderDeclaration$NP, null));
+  protected SNode doCreateAspect(final CreateAspectContext _context) {
+    return ConceptAspectsHelper.attachNewConceptAspect(LanguageAspect.DATA_FLOW, _context.getBaseNode(), SNodeFactoryOperations.createNewNode(CONCEPTS.DataFlowBuilderDeclaration$NP, null));
   }
 
   private static final class CONCEPTS {

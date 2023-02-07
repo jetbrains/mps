@@ -18,6 +18,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.plugins.relations.CreateAspectContext;
 import jetbrains.mps.kernel.language.ConceptAspectsHelper;
 import jetbrains.mps.smodel.LanguageAspect;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
@@ -77,8 +78,8 @@ public class Behavior_TabDescriptor extends RelationDescriptor {
   public Iterable<SConcept> getAspectConcepts(final SNode node) {
     return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.ConceptBehavior$2);
   }
-  public SNode createAspect(final SNode node, final SConcept concept) {
-    return ConceptAspectsHelper.attachNewConceptAspect(LanguageAspect.BEHAVIOR, node, SNodeFactoryOperations.createNewNode(CONCEPTS.ConceptBehavior$2, null));
+  protected SNode doCreateAspect(final CreateAspectContext _context) {
+    return ConceptAspectsHelper.attachNewConceptAspect(LanguageAspect.BEHAVIOR, _context.getBaseNode(), SNodeFactoryOperations.createNewNode(CONCEPTS.ConceptBehavior$2, null));
   }
 
   private static final class CONCEPTS {

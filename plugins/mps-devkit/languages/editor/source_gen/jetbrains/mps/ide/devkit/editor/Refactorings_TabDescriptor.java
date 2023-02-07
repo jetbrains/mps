@@ -18,6 +18,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.LanguageAspect;
+import jetbrains.mps.plugins.relations.CreateAspectContext;
 import jetbrains.mps.kernel.language.ConceptAspectsHelper;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -68,8 +69,8 @@ public class Refactorings_TabDescriptor extends RelationDescriptor {
   public Iterable<SConcept> getAspectConcepts(final SNode node) {
     return ConceptEditorHelper.getAvailableConceptAspects(LanguageAspect.REFACTORINGS, node);
   }
-  public SNode createAspect(final SNode node, final SConcept concept) {
-    return ConceptAspectsHelper.attachNewConceptAspect(LanguageAspect.REFACTORINGS, node, SNodeFactoryOperations.createNewNode(((SAbstractConcept) concept), null));
+  protected SNode doCreateAspect(final CreateAspectContext _context) {
+    return ConceptAspectsHelper.attachNewConceptAspect(LanguageAspect.REFACTORINGS, _context.getBaseNode(), SNodeFactoryOperations.createNewNode(((SAbstractConcept) _context.getAspectConcept()), null));
   }
 
   private static final class CONCEPTS {
