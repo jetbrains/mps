@@ -231,6 +231,7 @@
     <group id="FileChooserToolbar.MPS">
       <action id="FileChooser.GotoMPSModule"
               class="jetbrains.mps.ide.ui.filechoosers.treefilechooser.GotoModuleDirectory"
+              text="Go to Module Directory"
               icon="/nodes/ideaModule.png"/>
       <add-to-group group-id="FileChooserToolbar" anchor="after" relative-to-action="FileChooser.GotoProject"/>
     </group>
