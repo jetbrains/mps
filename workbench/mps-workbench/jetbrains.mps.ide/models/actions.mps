@@ -19424,7 +19424,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="3aVQUEijGoj" role="2OqNvi">
-                    <ref role="37wK5l" to="rgfa:~DefaultMutableTreeNode.getUserObject()" resolve="getUserObject" />
+                    <ref role="37wK5l" to="7e8u:~MPSTreeNode.getUserObject()" resolve="getUserObject" />
                   </node>
                 </node>
               </node>

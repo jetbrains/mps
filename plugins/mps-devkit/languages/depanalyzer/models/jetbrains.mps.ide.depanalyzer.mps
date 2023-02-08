@@ -2710,7 +2710,7 @@
               </node>
             </node>
             <node concept="1rXfSq" id="6TI6RSqZ4fI" role="10QFUP">
-              <ref role="37wK5l" to="rgfa:~DefaultMutableTreeNode.getUserObject()" resolve="getUserObject" />
+              <ref role="37wK5l" to="7e8u:~MPSTreeNode.getUserObject()" resolve="getUserObject" />
             </node>
           </node>
         </node>

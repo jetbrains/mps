@@ -7845,7 +7845,7 @@
       </node>
       <node concept="2ShNRf" id="1_3tIz4gaJH" role="33vP2m">
         <node concept="1pGfFk" id="1_3tIz4gclm" role="2ShVmc">
-          <ref role="37wK5l" to="33ny:~HashMap.&lt;init&gt;(int)" resolve="HashMap" />
+          <ref role="37wK5l" to="33ny:~HashMap.&lt;init&gt;()" resolve="HashMap" />
           <node concept="3uibUv" id="6ury$IhJSQ1" role="1pMfVU">
             <ref role="3uigEE" to="wyt6:~Integer" resolve="Integer" />
           </node>

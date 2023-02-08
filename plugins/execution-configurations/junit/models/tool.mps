@@ -16567,7 +16567,7 @@
                                 <ref role="3cqZAo" node="7dV9$tm6J3O" resolve="currentNode" />
                               </node>
                               <node concept="liA8E" id="5EpuqcIJd8D" role="2OqNvi">
-                                <ref role="37wK5l" to="rgfa:~DefaultMutableTreeNode.getUserObject()" resolve="getUserObject" />
+                                <ref role="37wK5l" to="7e8u:~MPSTreeNode.getUserObject()" resolve="getUserObject" />
                               </node>
                             </node>
                           </node>
@@ -16588,7 +16588,7 @@
                       <ref role="3cqZAo" node="7dV9$tm6J3O" resolve="currentNode" />
                     </node>
                     <node concept="liA8E" id="5EpuqcII52L" role="2OqNvi">
-                      <ref role="37wK5l" to="rgfa:~DefaultMutableTreeNode.getUserObject()" resolve="getUserObject" />
+                      <ref role="37wK5l" to="7e8u:~MPSTreeNode.getUserObject()" resolve="getUserObject" />
                     </node>
                   </node>
                 </node>

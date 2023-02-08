@@ -9512,7 +9512,7 @@
                 <node concept="3Tqbb2" id="7pTo6H6lPIs" role="1tU5fm" />
                 <node concept="10QFUN" id="51NkKCgB43f" role="33vP2m">
                   <node concept="1rXfSq" id="4hiugqyyYkA" role="10QFUP">
-                    <ref role="37wK5l" to="rgfa:~DefaultMutableTreeNode.getUserObject()" resolve="getUserObject" />
+                    <ref role="37wK5l" to="7e8u:~MPSTreeNode.getUserObject()" resolve="getUserObject" />
                   </node>
                   <node concept="3Tqbb2" id="7pTo6H6lPIt" role="10QFUM" />
                 </node>
