@@ -126,7 +126,11 @@ public class FileBasedModelRootEditor implements ModelRootEntryEditor {
       myFileBasedModelRootEntry = null;
     }
     if (fileBasedModelRootEntry == null) {
-      ((DefaultTreeModel) myTree.getModel()).setRoot(EMPTY_TREE_ROOT);
+      if (myTree.getModel() instanceof DefaultTreeModel) {
+        ((DefaultTreeModel) myTree.getModel()).setRoot(EMPTY_TREE_ROOT);
+        // FTR, now there's AsyncTreeModel (see FileSystemTreeImpl cons, where myTree's model is replaced),
+        // but I didn't find a way to set root there. Hope it's not that vital to have empty root for invisible tree.
+      }
       myTreePanel.setVisible(false);
       if (myFileSystemTree != null) {
         Disposer.dispose(myFileSystemTree);
