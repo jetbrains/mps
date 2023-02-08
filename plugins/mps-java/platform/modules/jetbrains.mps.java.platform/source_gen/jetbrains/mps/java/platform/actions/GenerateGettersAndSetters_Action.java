@@ -29,8 +29,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -122,8 +120,8 @@ public class GenerateGettersAndSetters_Action extends BaseAction {
           ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$L_2d)).addElement(_quotation_createNode_5trf1k_a0a1a5a1a0m0a(SLinkOperations.getTarget(field, LINKS.type$a1UY), SNodeOperations.copyNode(dotExpr), getterName));
           lastAdded.value = ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$L_2d)).addElement(_quotation_createNode_5trf1k_a0a0c0f0b0a21a0(dotExpr, SLinkOperations.getTarget(field, LINKS.type$a1UY), parameterName, setterName));
         } else if (SNodeOperations.isInstanceOf(field, CONCEPTS.StaticFieldDeclaration$jR)) {
-          ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$L_2d)).addElement(_quotation_createNode_5trf1k_a0a0a0f0b0a21a0(createVariableReference_5trf1k_a0a0a0a0a0a0f0b0a21a0(), SLinkOperations.getTarget(field, LINKS.type$a1UY), getterName));
-          lastAdded.value = ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$L_2d)).addElement(_quotation_createNode_5trf1k_a0a0b0a5a1a0m0a(createVariableReference_5trf1k_a0a0a0a0a0a1a0f0b0a21a0(), SLinkOperations.getTarget(field, LINKS.type$a1UY), parameterName, setterName));
+          ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$L_2d)).addElement(_quotation_createNode_5trf1k_a0a0a0f0b0a21a0(createVariableReference_5trf1k_a0a0a0a0a0a0f0b0a21a0(field), SLinkOperations.getTarget(field, LINKS.type$a1UY), getterName));
+          lastAdded.value = ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$L_2d)).addElement(_quotation_createNode_5trf1k_a0a0b0a5a1a0m0a(createVariableReference_5trf1k_a0a0a0a0a0a1a0f0b0a21a0(field), SLinkOperations.getTarget(field, LINKS.type$a1UY), parameterName, setterName));
         }
       }
       if (lastAdded.value != null) {
@@ -273,10 +271,9 @@ public class GenerateGettersAndSetters_Action extends BaseAction {
     quotedNode_4.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility"), quotedNode_7);
     return quotedNode_4;
   }
-  private static SNode createVariableReference_5trf1k_a0a0a0a0a0a0f0b0a21a0() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
+  private static SNode createVariableReference_5trf1k_a0a0a0a0a0a0f0b0a21a0(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.VariableReference$TC);
-    n0.setReference(LINKS.variableDeclaration$N1XG, new SNodePointer(facade.createModelReference("896c025e-ce28-4ab4-9632-a82fb5e25bd0/i:10000001(jetbrains.mps.java.platform@transient3/jetbrains.mps.java.platform.actions@0)"), facade.createNodeId("7111916581652590204")));
+    n0.setReferenceTarget(LINKS.variableDeclaration$N1XG, p0);
     return n0.getResult();
   }
   private static SNode _quotation_createNode_5trf1k_a0a0b0a5a1a0m0a(Object parameter_1, Object parameter_2, Object parameter_3, Object parameter_4) {
@@ -329,10 +326,9 @@ public class GenerateGettersAndSetters_Action extends BaseAction {
     quotedNode_13.setReferenceTarget(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"), quotedNode_8);
     return quotedNode_5;
   }
-  private static SNode createVariableReference_5trf1k_a0a0a0a0a0a1a0f0b0a21a0() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
+  private static SNode createVariableReference_5trf1k_a0a0a0a0a0a1a0f0b0a21a0(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.VariableReference$TC);
-    n0.setReference(LINKS.variableDeclaration$N1XG, new SNodePointer(facade.createModelReference("896c025e-ce28-4ab4-9632-a82fb5e25bd0/i:10000001(jetbrains.mps.java.platform@transient3/jetbrains.mps.java.platform.actions@0)"), facade.createNodeId("7111916581652590204")));
+    n0.setReferenceTarget(LINKS.variableDeclaration$N1XG, p0);
     return n0.getResult();
   }
 
