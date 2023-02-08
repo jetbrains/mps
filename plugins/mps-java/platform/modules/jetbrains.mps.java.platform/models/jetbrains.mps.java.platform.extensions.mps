@@ -16,6 +16,7 @@
     <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" />
     <import index="alof" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.project(MPS.Platform/)" />
     <import index="z1c3" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
+    <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -35,6 +36,9 @@
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
+      <concept id="1197029447546" name="jetbrains.mps.baseLanguage.structure.FieldReferenceOperation" flags="nn" index="2OwXpG">
+        <reference id="1197029500499" name="fieldDeclaration" index="2Oxat5" />
+      </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
       </concept>
@@ -42,6 +46,10 @@
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
       </concept>
       <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
+      <concept id="1070534934090" name="jetbrains.mps.baseLanguage.structure.CastExpression" flags="nn" index="10QFUN">
+        <child id="1070534934091" name="type" index="10QFUM" />
+        <child id="1070534934092" name="expression" index="10QFUP" />
+      </concept>
       <concept id="1068390468200" name="jetbrains.mps.baseLanguage.structure.FieldDeclaration" flags="ig" index="312cEg">
         <property id="8606350594693632173" name="isTransient" index="eg7rD" />
         <property id="1240249534625" name="isVolatile" index="34CwA1" />
@@ -80,6 +88,9 @@
         <child id="1068581517676" name="expression" index="3cqZAk" />
       </concept>
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
+      <concept id="1079359253375" name="jetbrains.mps.baseLanguage.structure.ParenthesizedExpression" flags="nn" index="1eOMI4">
+        <child id="1079359253376" name="expression" index="1eOMHV" />
+      </concept>
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
@@ -467,6 +478,7 @@
       <node concept="3Tm1VV" id="2pZ8abj8Ec6" role="1B3o_S" />
       <node concept="3cqZAl" id="2pZ8abj8Ec7" role="3clF45" />
     </node>
+    <node concept="2tJIrI" id="7wUm6xzDXp4" role="jymVt" />
     <node concept="3uibUv" id="2pZ8abj8Eam" role="EKbjA">
       <ref role="3uigEE" to="3fr7:~ModelRootEntry" resolve="ModelRootEntry" />
       <node concept="3uibUv" id="2pZ8abj8Ean" role="11_B2D">
@@ -475,6 +487,58 @@
     </node>
     <node concept="3uibUv" id="2pZ8abj8O81" role="EKbjA">
       <ref role="3uigEE" to="3fr7:~ModelRootEntryExt" resolve="ModelRootEntryExt" />
+    </node>
+    <node concept="3clFb_" id="7wUm6xzDXS1" role="jymVt">
+      <property role="TrG5h" value="conflictsWith" />
+      <node concept="3Tm1VV" id="7wUm6xzDXS3" role="1B3o_S" />
+      <node concept="2AHcQZ" id="7wUm6xzDXS5" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+      </node>
+      <node concept="3uibUv" id="7wUm6xzDXS6" role="3clF45">
+        <ref role="3uigEE" to="18ew:~IStatus" resolve="IStatus" />
+      </node>
+      <node concept="37vLTG" id="7wUm6xzDXS7" role="3clF46">
+        <property role="TrG5h" value="other" />
+        <node concept="3uibUv" id="7wUm6xzDXS8" role="1tU5fm">
+          <ref role="3uigEE" to="3fr7:~ModelRootEntry" resolve="ModelRootEntry" />
+          <node concept="3uibUv" id="7wUm6xzDXSb" role="11_B2D">
+            <ref role="3uigEE" to="la4b:3PyP5yK7oru" resolve="JavaSourceStubModelRoot" />
+          </node>
+        </node>
+        <node concept="2AHcQZ" id="7wUm6xzDXSa" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="7wUm6xzDXSc" role="3clF47">
+        <node concept="3clFbF" id="7wUm6xzDXSj" role="3cqZAp">
+          <node concept="2OqwBi" id="7wUm6xzE1Ne" role="3clFbG">
+            <node concept="37vLTw" id="7wUm6xzE14i" role="2Oq$k0">
+              <ref role="3cqZAo" node="2pZ8abj8Eap" resolve="myModelRootData" />
+            </node>
+            <node concept="liA8E" id="7wUm6xzE2kV" role="2OqNvi">
+              <ref role="37wK5l" to="v2y9:~FileBasedModelRootEntry.conflictsWith(org.jetbrains.mps.openapi.ui.persistence.ModelRootEntry)" resolve="conflictsWith" />
+              <node concept="2OqwBi" id="7wUm6xzEjgj" role="37wK5m">
+                <node concept="1eOMI4" id="7wUm6xzE3le" role="2Oq$k0">
+                  <node concept="10QFUN" id="7wUm6xzE3lb" role="1eOMHV">
+                    <node concept="3uibUv" id="7wUm6xzEi_S" role="10QFUM">
+                      <ref role="3uigEE" node="2pZ8abj8E9N" resolve="JavaSourceStubsModelRootEntry" />
+                    </node>
+                    <node concept="37vLTw" id="7wUm6xzE4E_" role="10QFUP">
+                      <ref role="3cqZAo" node="7wUm6xzDXS7" resolve="other" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="2OwXpG" id="7wUm6xzEk1x" role="2OqNvi">
+                  <ref role="2Oxat5" node="2pZ8abj8Eap" resolve="myModelRootData" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="7wUm6xzDXSd" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" />
+      </node>
     </node>
   </node>
   <node concept="312cEu" id="2pZ8abj8IKd">

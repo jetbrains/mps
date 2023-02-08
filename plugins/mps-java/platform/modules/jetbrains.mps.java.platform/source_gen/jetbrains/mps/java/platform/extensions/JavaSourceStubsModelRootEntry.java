@@ -14,6 +14,7 @@ import com.intellij.openapi.util.Disposer;
 import org.jetbrains.annotations.Nullable;
 import javax.swing.JComponent;
 import java.awt.Color;
+import jetbrains.mps.util.IStatus;
 
 @GeneratedClass(node = "r:c0d12a77-d1ce-4458-b94f-4eb6f4df358a(jetbrains.mps.java.platform.extensions)/2773971779182568051", model = "r:c0d12a77-d1ce-4458-b94f-4eb6f4df358a(jetbrains.mps.java.platform.extensions)")
 public final class JavaSourceStubsModelRootEntry implements ModelRootEntry<JavaSourceStubModelRoot>, ModelRootEntryExt {
@@ -79,5 +80,11 @@ public final class JavaSourceStubsModelRootEntry implements ModelRootEntry<JavaS
   @Override
   public void resetForegroundColor() {
     myModelRootData.resetForegroundColor();
+  }
+
+  @NotNull
+  @Override
+  public IStatus conflictsWith(@NotNull ModelRootEntry<JavaSourceStubModelRoot> other) {
+    return myModelRootData.conflictsWith(((JavaSourceStubsModelRootEntry) other).myModelRootData);
   }
 }

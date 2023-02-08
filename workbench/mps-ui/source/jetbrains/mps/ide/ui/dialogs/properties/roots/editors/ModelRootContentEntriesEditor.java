@@ -21,7 +21,6 @@ import com.intellij.openapi.ui.popup.JBPopupFactory;
 import com.intellij.openapi.ui.popup.PopupStep;
 import com.intellij.openapi.ui.popup.util.BaseListPopupStep;
 import com.intellij.openapi.util.Disposer;
-import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.ScrollPaneFactory;
 import com.intellij.ui.awt.RelativePoint;
@@ -42,6 +41,7 @@ import jetbrains.mps.persistence.java.library.JavaClassStubsModelRoot;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
+import jetbrains.mps.util.IStatus;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -59,7 +59,6 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Point;
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
@@ -67,8 +66,6 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
-
-import static com.intellij.openapi.vfs.VfsUtilCore.isAncestor;
 
 /**
  * UIComponent which contains all the module roots.
@@ -326,6 +323,8 @@ public class ModelRootContentEntriesEditor implements Disposable {
       ModelRootEntry entry = myRootEntryPersistence.getModelRootEntry(modelRoot);
       Disposer.register(ModelRootContentEntriesEditor.this, entry);
       if (entry.getModelRoot() instanceof FileBasedModelRoot) {
+        // fwiw, modelRoot aka entry.getModelRoot() can be FileBasedModelRoot, but entry
+        // is not necessarily FileBasedModelRootEntry, see delegation pattern in ModelRootEntry subclasses
         if (!checkAndAddFBModelRoot(entry)) {
           return;
         }
@@ -340,18 +339,11 @@ public class ModelRootContentEntriesEditor implements Disposable {
     }
 
     private boolean checkAndAddFBModelRoot(ModelRootEntry entry) {
-      Set<VirtualFile> candidatesForIntersection = new HashSet<>();
+      assert entry.getModelRoot() instanceof FileBasedModelRoot;
+      Set<ModelRootEntry<?>> candidatesForIntersection = new HashSet<>();
       for (ModelRootEntryContainer existingEntryContainer : myModelRootEntries) {
         if (entry.getClass().equals(existingEntryContainer.getModelRootEntry().getClass())) {
-          // XXX the cast here is not necessarily correct, various MREntry use same FileBasedModelRoot
-          FileBasedModelRootEntry existingMRE = (FileBasedModelRootEntry) existingEntryContainer.getModelRootEntry();
-          @SuppressWarnings("removal")
-          VirtualFile vFile = existingMRE.getContentDirectory() == null ? null : myProject.getFileSystem().asVirtualFile(existingMRE.getContentDirectory());
-          if (vFile == null) {
-            LOG.error("Can't find file for model root. This root will not be checked for intersection with others. Path: " + existingMRE.getContentDirectory());
-            continue;
-          }
-          candidatesForIntersection.add(vFile);
+          candidatesForIntersection.add(existingEntryContainer.getModelRootEntry());
         }
       }
       FileChooserDescriptor fileChooserDescriptor = new FileChooserDescriptor(false, true, true, false, true, false);
@@ -366,42 +358,37 @@ public class ModelRootContentEntriesEditor implements Disposable {
         if (chosen == null) {
           return false;
         } else {
-          for (VirtualFile candidate : candidatesForIntersection) {
-            if (doIntersect(chosen, candidate)) {
-              Messages.showWarningDialog(myMainPanel,
-                                         MessageFormat.format(
-                                             "<html>Can''t create new model root, it intersects with the existing model root:<br><b>{0}</b><br><br>Please, choose another folder.</html>",
-                                             StringUtil.escapeXml(String.valueOf(candidate))),
-                                         "Model Roots Intersection");
+          //noinspection removal
+          if (!myProject.getFileSystem().canConvert(chosen)) {
+            final String m = "Can use local filesystem location only. Actual FS is %s";
+            Messages.showWarningDialog(myMainPanel, String.format(m, chosen.getFileSystem().getProtocol()), "Bad model root location");
+            chosen = null;
+            continue;
+          }
+          //noinspection removal
+          contentRoot = myProject.getFileSystem().fromVirtualFile(chosen);
+          FileBasedModelRoot modelRoot = (FileBasedModelRoot) entry.getModelRoot();
+          modelRoot.setContentDirectory(contentRoot);
+          if (modelRoot instanceof JavaClassStubsModelRoot) {
+            // entry/modelRoot is a new blank value, can modify as I see fit; keep in mind we can get
+            // here several times (provided there are conflicts with other roots), keep single SOURCES root.
+            new ArrayList<>(modelRoot.getSourceRoots(SourceRootKinds.SOURCES)).forEach(modelRoot::removeSourceRoot);
+            // adding by default allows to prevent the misunderstandings like in MPS-33058
+            modelRoot.addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(".", modelRoot.getContentDirectory()));
+            // TODO [artem] I don't like this instanceof check, perhaps, it's better to supply defaults in ModelRootFactory#create()?
+          }
+          for (ModelRootEntry<?> existingMRE : candidatesForIntersection) {
+            final IStatus conflictCheck = existingMRE.conflictsWith(entry);
+            if (conflictCheck.isError()) {
+              Messages.showWarningDialog(myMainPanel, conflictCheck.getMessage(), "Model Roots Conflict");
               chosen = null;
               break;
             }
           }
-          //noinspection removal
-          if (chosen != null && !myProject.getFileSystem().canConvert(chosen)) {
-            final String m = "Can use local filesystem location only. Actual FS is %s";
-            Messages.showWarningDialog(myMainPanel, String.format(m, chosen.getFileSystem().getProtocol()), "Bad model root location");
-            chosen = null;
-          }
         }
       } while (chosen == null);
 
-      //noinspection removal
-      contentRoot = myProject.getFileSystem().fromVirtualFile(chosen);
-      FileBasedModelRoot modelRoot = (FileBasedModelRoot) entry.getModelRoot();
-      modelRoot.setContentDirectory(contentRoot);
-      if (modelRoot instanceof JavaClassStubsModelRoot) {
-        // adding by default allows to prevent the misunderstandings like in MPS-33058
-        modelRoot.addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(".", modelRoot.getContentDirectory()));
-      }
-
       return true;
-    }
-
-    // FIXME if we could do same check for IFile, don't need to convert IFile to VirtualFile, above
-    //       there's FileUtil.isAncestor(String,String), I don't like the fact it deals with strings.
-    private boolean doIntersect(VirtualFile chosen, VirtualFile candidate) {
-      return isAncestor(candidate, chosen, true) || isAncestor(candidate, chosen, false);
     }
   }
 

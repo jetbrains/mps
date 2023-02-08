@@ -3268,6 +3268,59 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="7wUm6xzDtBO" role="jymVt" />
+    <node concept="3clFb_" id="7wUm6xzDu7m" role="jymVt">
+      <property role="TrG5h" value="conflictsWith" />
+      <node concept="3Tm1VV" id="7wUm6xzDu7o" role="1B3o_S" />
+      <node concept="2AHcQZ" id="7wUm6xzDu7q" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+      </node>
+      <node concept="3uibUv" id="7wUm6xzDu7r" role="3clF45">
+        <ref role="3uigEE" to="18ew:~IStatus" resolve="IStatus" />
+      </node>
+      <node concept="37vLTG" id="7wUm6xzDu7s" role="3clF46">
+        <property role="TrG5h" value="other" />
+        <node concept="3uibUv" id="7wUm6xzDu7t" role="1tU5fm">
+          <ref role="3uigEE" to="3fr7:~ModelRootEntry" resolve="ModelRootEntry" />
+          <node concept="3uibUv" id="7wUm6xzDu7w" role="11_B2D">
+            <ref role="3uigEE" node="3urGXjhz7oK" resolve="PropertyFilesStubModelRoot" />
+          </node>
+        </node>
+        <node concept="2AHcQZ" id="7wUm6xzDu7v" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="7wUm6xzDu7x" role="3clF47">
+        <node concept="3clFbF" id="7wUm6xzD_4C" role="3cqZAp">
+          <node concept="2OqwBi" id="7wUm6xzD_RI" role="3clFbG">
+            <node concept="37vLTw" id="7wUm6xzD_4$" role="2Oq$k0">
+              <ref role="3cqZAo" node="2pZ8abj8Eap" resolve="myModelRootData" />
+            </node>
+            <node concept="liA8E" id="7wUm6xzDAHd" role="2OqNvi">
+              <ref role="37wK5l" to="v2y9:~FileBasedModelRootEntry.conflictsWith(org.jetbrains.mps.openapi.ui.persistence.ModelRootEntry)" resolve="conflictsWith" />
+              <node concept="2OqwBi" id="7wUm6xzDHC9" role="37wK5m">
+                <node concept="1eOMI4" id="7wUm6xzDH2Z" role="2Oq$k0">
+                  <node concept="10QFUN" id="7wUm6xzDE9y" role="1eOMHV">
+                    <node concept="3uibUv" id="7wUm6xzDF6Z" role="10QFUM">
+                      <ref role="3uigEE" node="ZFW0c2ctCi" resolve="PropertyFilesStubModelRootEntry" />
+                    </node>
+                    <node concept="37vLTw" id="7wUm6xzDBSE" role="10QFUP">
+                      <ref role="3cqZAo" node="7wUm6xzDu7s" resolve="other" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="2OwXpG" id="7wUm6xzDIsL" role="2OqNvi">
+                  <ref role="2Oxat5" node="2pZ8abj8Eap" resolve="myModelRootData" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="7wUm6xzDu7y" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" />
+      </node>
+    </node>
   </node>
 </model>
 

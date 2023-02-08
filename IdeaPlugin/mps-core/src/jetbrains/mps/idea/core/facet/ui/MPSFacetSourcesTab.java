@@ -107,6 +107,11 @@ public class MPSFacetSourcesTab implements SModuleConfigurationTab {
 
           for (ModelRoot path : myContentEntriesEditor.getModelRoots()) {
             // FIXME shall deal with ModelRootDescriptor here
+            //       Well, perhaps, not. It's tricky to access values from ModelRootDescriptor, which is essentially
+            //       a persistence mechanism. OTOH, accessing DefaultModelRoot now, as they are 'original', attached to a
+            //       module instances (not detached as it used to be prior to c7f09fe9), may violate read access constraint.
+            //       Proper approach now seems to be use of FileBaseModelRootEntry and its cached values, rather than
+            //       ModelRoot instances directly.
             if(path instanceof DefaultModelRoot) {
               for(SourceRoot mpsSourceRoot : ((DefaultModelRoot) path).getSourceRoots(SourceRootKinds.SOURCES)) {
                 VirtualFile mpsSourceRootVFile = LocalFileSystem.getInstance().findFileByPath(mpsSourceRoot.getAbsolutePath().getPath());

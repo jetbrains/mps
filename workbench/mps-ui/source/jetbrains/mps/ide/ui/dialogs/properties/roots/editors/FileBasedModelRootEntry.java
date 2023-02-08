@@ -18,6 +18,7 @@ package jetbrains.mps.ide.ui.dialogs.properties.roots.editors;
 import com.intellij.icons.AllIcons.Actions;
 import com.intellij.icons.AllIcons.Modules;
 import com.intellij.openapi.util.SystemInfo;
+import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.Gray;
 import com.intellij.ui.HoverHyperlinkLabel;
@@ -35,6 +36,8 @@ import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.extapi.persistence.SourceRoot;
 import jetbrains.mps.extapi.persistence.SourceRootKind;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.util.IStatus;
+import jetbrains.mps.util.Status;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import org.jetbrains.annotations.NotNull;
@@ -82,7 +85,7 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
   private FileBasedModelRootEditor myFileBasedModelRootEditor;
 
   private IFile myContentDirectory;
-  private HashMap<SourceRootKind, List<SourceRoot>> mySourceRoots;
+  private final HashMap<SourceRootKind, List<SourceRoot>> mySourceRoots;
 
   public FileBasedModelRootEntry(@NotNull MPSProject mpsProject, @NotNull FileBasedModelRoot modelRoot) {
     // XXX alternatively, may supply idea project right into getEditor, as this set of API depends on IDEA anyway
@@ -190,15 +193,15 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
     }
   }
 
-  protected Color getKindColor(@NotNull SourceRootKind kind) {
+  /*package*/ Color getKindColor(@NotNull SourceRootKind kind) {
     return kind.isExcluded() ? ModelRootEntryContainer.EXCLUDED_COLOR : ModelRootEntryContainer.SOURCES_COLOR;
   }
 
-  protected Icon getKindIcon(SourceRootKind kind) {
+  /*package*/ Icon getKindIcon(SourceRootKind kind) {
     return kind.isExcluded() ? Modules.ExcludeRoot : Modules.SourceRoot;
   }
 
-  protected JComponent createKindGroupComponent(String title, Collection<SourceRoot> sourceRoots, Color foregroundColor)   {
+  private JComponent createKindGroupComponent(String title, Collection<SourceRoot> sourceRoots, Color foregroundColor)   {
     if (sourceRoots.isEmpty()) {
       return new JBPanel<>();
     }
@@ -312,6 +315,23 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
 
   @Override
   public void dispose() {
+  }
+
+  @NotNull
+  @Override
+  public IStatus conflictsWith(@NotNull ModelRootEntry<FileBasedModelRoot> other) {
+    IFile otherCD = ((FileBasedModelRootEntry) other).getContentDirectory();
+    if (myContentDirectory == null || otherCD == null) {
+      return new Status.OK("No content directory specified");
+    }
+    if (myContentDirectory.getFS() != otherCD.getFS()) {
+      return new Status.OK("Different file systems");
+    }
+    if (myContentDirectory.isDescendant(otherCD) || otherCD.isDescendant(myContentDirectory)) {
+      String m = "<html>Content directory (%s) intersects with another model root's content directory:<br><b>{0}</b><br><br>Please, choose another folder.</html>";
+      return new Status.ERROR(String.format(m, StringUtil.escapeXmlEntities(otherCD.toString()), StringUtil.escapeXmlEntities((myContentDirectory.toString()))));
+    }
+    return Status.NO_ERRORS;
   }
 
   private static class UnderlinedPathLabel extends ResizingWrapper {

@@ -13,6 +13,7 @@ import org.jetbrains.mps.openapi.ui.persistence.ModelRootEntryEditor;
 import org.jetbrains.annotations.Nullable;
 import javax.swing.JComponent;
 import java.awt.Color;
+import jetbrains.mps.util.IStatus;
 
 @GeneratedClass(node = "r:c28fe887-f0d2-4549-b0b2-5c840bec17ee(jetbrains.mps.kotlin.idePlugin.rootEntry)/1166627841738499725", model = "r:c28fe887-f0d2-4549-b0b2-5c840bec17ee(jetbrains.mps.kotlin.idePlugin.rootEntry)")
 public class KotlinJvmStubModelRootEntry implements ModelRootEntry<KotlinJvmStubModelRoot>, ModelRootEntryExt {
@@ -67,5 +68,11 @@ public class KotlinJvmStubModelRootEntry implements ModelRootEntry<KotlinJvmStub
   @Override
   public void dispose() {
     myRootData.dispose();
+  }
+
+  @NotNull
+  @Override
+  public IStatus conflictsWith(@NotNull ModelRootEntry<KotlinJvmStubModelRoot> other) {
+    return myRootData.conflictsWith(((KotlinJvmStubModelRootEntry) other).myRootData);
   }
 }

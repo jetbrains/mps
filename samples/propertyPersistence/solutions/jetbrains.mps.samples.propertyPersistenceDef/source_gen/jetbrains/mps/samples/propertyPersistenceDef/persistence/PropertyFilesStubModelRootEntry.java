@@ -11,6 +11,7 @@ import org.jetbrains.mps.openapi.ui.persistence.ModelRootEntryEditor;
 import org.jetbrains.annotations.Nullable;
 import javax.swing.JComponent;
 import java.awt.Color;
+import jetbrains.mps.util.IStatus;
 
 public final class PropertyFilesStubModelRootEntry implements ModelRootEntry<PropertyFilesStubModelRoot>, ModelRootEntryExt {
   @NotNull
@@ -66,5 +67,11 @@ public final class PropertyFilesStubModelRootEntry implements ModelRootEntry<Pro
   @Override
   public void dispose() {
     myModelRootData.dispose();
+  }
+
+  @NotNull
+  @Override
+  public IStatus conflictsWith(@NotNull ModelRootEntry<PropertyFilesStubModelRoot> other) {
+    return myModelRootData.conflictsWith(((PropertyFilesStubModelRootEntry) other).myModelRootData);
   }
 }

@@ -15,6 +15,7 @@
     <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" />
     <import index="wwv5" ref="r:6c6710f1-72ef-4241-9ac5-bafd05beea2c(jetbrains.mps.kotlin.stubs.commonStubs)" />
     <import index="8kdf" ref="r:bdaa2532-d0d0-46ce-8145-d47be9b807a4(jetbrains.mps.kotlin.stubs.jvmStubs)" />
+    <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
   <registry>
@@ -35,6 +36,9 @@
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
+      <concept id="1197029447546" name="jetbrains.mps.baseLanguage.structure.FieldReferenceOperation" flags="nn" index="2OwXpG">
+        <reference id="1197029500499" name="fieldDeclaration" index="2Oxat5" />
+      </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
       </concept>
@@ -42,6 +46,10 @@
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
       </concept>
       <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
+      <concept id="1070534934090" name="jetbrains.mps.baseLanguage.structure.CastExpression" flags="nn" index="10QFUN">
+        <child id="1070534934091" name="type" index="10QFUM" />
+        <child id="1070534934092" name="expression" index="10QFUP" />
+      </concept>
       <concept id="1068390468200" name="jetbrains.mps.baseLanguage.structure.FieldDeclaration" flags="ig" index="312cEg" />
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
         <child id="1095933932569" name="implementedInterface" index="EKbjA" />
@@ -75,6 +83,9 @@
         <child id="1068581517676" name="expression" index="3cqZAk" />
       </concept>
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
+      <concept id="1079359253375" name="jetbrains.mps.baseLanguage.structure.ParenthesizedExpression" flags="nn" index="1eOMI4">
+        <child id="1079359253376" name="expression" index="1eOMHV" />
+      </concept>
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
@@ -423,6 +434,59 @@
       </node>
       <node concept="2AHcQZ" id="2ntakj1pRqq" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="7wUm6xzEnAA" role="jymVt" />
+    <node concept="3clFb_" id="7wUm6xzEo5M" role="jymVt">
+      <property role="TrG5h" value="conflictsWith" />
+      <node concept="3Tm1VV" id="7wUm6xzEo5O" role="1B3o_S" />
+      <node concept="2AHcQZ" id="7wUm6xzEo5Q" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+      </node>
+      <node concept="3uibUv" id="7wUm6xzEo5R" role="3clF45">
+        <ref role="3uigEE" to="18ew:~IStatus" resolve="IStatus" />
+      </node>
+      <node concept="37vLTG" id="7wUm6xzEo5S" role="3clF46">
+        <property role="TrG5h" value="other" />
+        <node concept="3uibUv" id="7wUm6xzEo5T" role="1tU5fm">
+          <ref role="3uigEE" to="3fr7:~ModelRootEntry" resolve="ModelRootEntry" />
+          <node concept="3uibUv" id="7wUm6xzEo5W" role="11_B2D">
+            <ref role="3uigEE" to="wwv5:2ntakj1pRcf" resolve="KotlinCommonStubModelRoot" />
+          </node>
+        </node>
+        <node concept="2AHcQZ" id="7wUm6xzEo5V" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="7wUm6xzEo5X" role="3clF47">
+        <node concept="3clFbF" id="7wUm6xzEo64" role="3cqZAp">
+          <node concept="2OqwBi" id="7wUm6xzEqV8" role="3clFbG">
+            <node concept="37vLTw" id="7wUm6xzEq8q" role="2Oq$k0">
+              <ref role="3cqZAo" node="2ntakj1pRpl" resolve="myRootData" />
+            </node>
+            <node concept="liA8E" id="7wUm6xzErx_" role="2OqNvi">
+              <ref role="37wK5l" to="v2y9:~FileBasedModelRootEntry.conflictsWith(org.jetbrains.mps.openapi.ui.persistence.ModelRootEntry)" resolve="conflictsWith" />
+              <node concept="2OqwBi" id="7wUm6xzEvzF" role="37wK5m">
+                <node concept="1eOMI4" id="7wUm6xzEsix" role="2Oq$k0">
+                  <node concept="10QFUN" id="7wUm6xzEsiu" role="1eOMHV">
+                    <node concept="3uibUv" id="7wUm6xzEuU2" role="10QFUM">
+                      <ref role="3uigEE" node="2ntakj1pRpg" resolve="KotlinCommonStubModelRootEntry" />
+                    </node>
+                    <node concept="37vLTw" id="7wUm6xzEtIV" role="10QFUP">
+                      <ref role="3cqZAo" node="7wUm6xzEo5S" resolve="other" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="2OwXpG" id="7wUm6xzEwo4" role="2OqNvi">
+                  <ref role="2Oxat5" node="2ntakj1pRpl" resolve="myRootData" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="7wUm6xzEo5Y" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" />
       </node>
     </node>
   </node>
@@ -834,6 +898,59 @@
       </node>
       <node concept="2AHcQZ" id="10KGttbTQsj" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="7wUm6xzExBg" role="jymVt" />
+    <node concept="3clFb_" id="7wUm6xzEyjm" role="jymVt">
+      <property role="TrG5h" value="conflictsWith" />
+      <node concept="3Tm1VV" id="7wUm6xzEyjo" role="1B3o_S" />
+      <node concept="2AHcQZ" id="7wUm6xzEyjq" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+      </node>
+      <node concept="3uibUv" id="7wUm6xzEyjr" role="3clF45">
+        <ref role="3uigEE" to="18ew:~IStatus" resolve="IStatus" />
+      </node>
+      <node concept="37vLTG" id="7wUm6xzEyjs" role="3clF46">
+        <property role="TrG5h" value="other" />
+        <node concept="3uibUv" id="7wUm6xzEyjt" role="1tU5fm">
+          <ref role="3uigEE" to="3fr7:~ModelRootEntry" resolve="ModelRootEntry" />
+          <node concept="3uibUv" id="7wUm6xzEyjw" role="11_B2D">
+            <ref role="3uigEE" to="8kdf:55ogKyAFQhr" resolve="KotlinJvmStubModelRoot" />
+          </node>
+        </node>
+        <node concept="2AHcQZ" id="7wUm6xzEyjv" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="7wUm6xzEyjx" role="3clF47">
+        <node concept="3clFbF" id="7wUm6xzEyjC" role="3cqZAp">
+          <node concept="2OqwBi" id="7wUm6xzE__e" role="3clFbG">
+            <node concept="37vLTw" id="7wUm6xzE$W1" role="2Oq$k0">
+              <ref role="3cqZAo" node="10KGttbTQql" resolve="myRootData" />
+            </node>
+            <node concept="liA8E" id="7wUm6xzEAdf" role="2OqNvi">
+              <ref role="37wK5l" to="v2y9:~FileBasedModelRootEntry.conflictsWith(org.jetbrains.mps.openapi.ui.persistence.ModelRootEntry)" resolve="conflictsWith" />
+              <node concept="2OqwBi" id="7wUm6xzEEhc" role="37wK5m">
+                <node concept="1eOMI4" id="7wUm6xzEB8h" role="2Oq$k0">
+                  <node concept="10QFUN" id="7wUm6xzEB8e" role="1eOMHV">
+                    <node concept="3uibUv" id="7wUm6xzEDpe" role="10QFUM">
+                      <ref role="3uigEE" node="10KGttbTQqd" resolve="KotlinJvmStubModelRootEntry" />
+                    </node>
+                    <node concept="37vLTw" id="7wUm6xzECnL" role="10QFUP">
+                      <ref role="3cqZAo" node="7wUm6xzEyjs" resolve="other" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="2OwXpG" id="7wUm6xzEETj" role="2OqNvi">
+                  <ref role="2Oxat5" node="10KGttbTQql" resolve="myRootData" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="7wUm6xzEyjy" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" />
       </node>
     </node>
   </node>
