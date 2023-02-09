@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2022 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2023 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.ide.editor;
 
@@ -117,10 +117,10 @@ import java.util.concurrent.CopyOnWriteArrayList;
           final EditorContext ctx = ec.getEditorContext();
           final SRepository ecRepo = ctx.getRepository();
           ecRepo.getModelAccess().runReadInEDT(() -> {
-            // condition copied from EC.isNodeDisposed(), although I'm not sure it's necessary or could not be
+            // condition copied from EC.isNodeDisposed(), although I'm not sure if it's necessary or could not be
             // handled by rebuildEditorContent() itself. In fact, I don't even sure rebuildEditorContent() contract
-            // (EDT + model read) has to be provided from outside. It's EC that nows SRepository and EDT requirements, anyway
-            if (ec.isDisposed() || !SNodeUtil.isAccessible(ec.getEditedNode(), ecRepo)) {
+            // (EDT + model read) has to be provided from outside. It's EC that knows SRepository and EDT requirements, anyway
+            if (ec.isDisposed() || ec.getEditedNode() == null|| !SNodeUtil.isAccessible(ec.getEditedNode(), ecRepo)) {
               return;
             }
             final NodeSubstituteChooser nodeSubstituteChooser;
