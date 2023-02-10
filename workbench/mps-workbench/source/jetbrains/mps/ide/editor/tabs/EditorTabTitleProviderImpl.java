@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.ide.editor.tabs;
 
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileEditor.impl.EditorTabTitleProvider;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -27,9 +26,6 @@ import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-
 public class EditorTabTitleProviderImpl implements EditorTabTitleProvider {
   @Override
   public String getEditorTabTitle(@NotNull final Project project, @NotNull final VirtualFile file) {
@@ -40,19 +36,14 @@ public class EditorTabTitleProviderImpl implements EditorTabTitleProvider {
     if (modelAccess == null) {
       return null;
     }
-
-    final CompletableFuture<String> value = CompletableFuture.supplyAsync(() -> {
-        return new ModelAccessHelper(modelAccess).runReadAction(() -> {
-          SNode node = MPSEditorUtil.getCurrentEditedNodeFromTabbedEditor(project, (MPSNodeVirtualFile) file);
-          if (node != null) return node.getPresentation();
-          node = ((MPSNodeVirtualFile) file).getNode();
-          return node == null ? null : node.getPresentation();
-        });
-    }, ApplicationManager.getApplication()::invokeLater);
-    try {
-      return value.get();
-    } catch (InterruptedException | ExecutionException e) {
-      throw new RuntimeException("Unable to obtain the presentation of the current node too create a tab title.", e);
+    if (!ThreadUtils.isInEDT()) {
+      return null;
     }
+    return new ModelAccessHelper(modelAccess).runReadAction(() -> {
+      SNode node = MPSEditorUtil.getCurrentEditedNodeFromTabbedEditor(project, (MPSNodeVirtualFile) file);
+      if (node != null) return node.getPresentation();
+      node = ((MPSNodeVirtualFile) file).getNode();
+      return node == null ? null : node.getPresentation();
+    });
   }
 }
