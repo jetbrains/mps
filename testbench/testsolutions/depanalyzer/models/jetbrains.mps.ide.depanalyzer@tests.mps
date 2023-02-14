@@ -935,10 +935,10 @@
             <node concept="2ShNRf" id="3jF$5ls7Nok" role="33vP2m">
               <node concept="3g6Rrh" id="3jF$5ls7Noj" role="2ShVmc">
                 <node concept="1rXfSq" id="3jF$5ls7Noh" role="3g7hyw">
-                  <ref role="37wK5l" to="83ig:~ModuleMpsTest.createLanguage()" resolve="createLanguage" />
+                  <ref role="37wK5l" node="G8uQY5DJ7z" resolve="createLanguage" />
                 </node>
                 <node concept="1rXfSq" id="3jF$5ls7Noi" role="3g7hyw">
-                  <ref role="37wK5l" to="83ig:~ModuleMpsTest.createLanguage()" resolve="createLanguage" />
+                  <ref role="37wK5l" node="G8uQY5DJ7z" resolve="createLanguage" />
                 </node>
                 <node concept="3uibUv" id="3jF$5ls7Nog" role="3g7fb8">
                   <ref role="3uigEE" to="w1kc:~Language" resolve="Language" />
@@ -1693,7 +1693,7 @@
                   </node>
                 </node>
                 <node concept="1rXfSq" id="3jF$5ls8gJB" role="37vLTx">
-                  <ref role="37wK5l" to="83ig:~ModuleMpsTest.createLanguage()" resolve="createLanguage" />
+                  <ref role="37wK5l" node="G8uQY5DJ7z" resolve="createLanguage" />
                 </node>
               </node>
             </node>
@@ -4010,7 +4010,7 @@
                   </node>
                 </node>
                 <node concept="1rXfSq" id="3jF$5lsanx7" role="37vLTx">
-                  <ref role="37wK5l" to="83ig:~ModuleMpsTest.createLanguage()" resolve="createLanguage" />
+                  <ref role="37wK5l" node="G8uQY5DJ7z" resolve="createLanguage" />
                 </node>
               </node>
             </node>
@@ -4922,7 +4922,7 @@
                   </node>
                 </node>
                 <node concept="1rXfSq" id="3jF$5lsbyxw" role="37vLTx">
-                  <ref role="37wK5l" to="83ig:~ModuleMpsTest.createLanguage()" resolve="createLanguage" />
+                  <ref role="37wK5l" node="G8uQY5DJ7z" resolve="createLanguage" />
                 </node>
               </node>
             </node>
