@@ -1529,24 +1529,6 @@
             </node>
             <node concept="3clFbH" id="2bvzdxLPah3" role="3cqZAp" />
           </node>
-          <node concept="2OqwBi" id="6maaEP0winr" role="3clFbw">
-            <node concept="2ShNRf" id="6maaEP0w8za" role="2Oq$k0">
-              <node concept="1pGfFk" id="6maaEP0whFT" role="2ShVmc">
-                <property role="373rjd" value="true" />
-                <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String,java.lang.String)" resolve="File" />
-                <node concept="2YIFZM" id="6maaEP0whXy" role="37wK5m">
-                  <ref role="37wK5l" to="18ew:~PathManager.getHomePath()" resolve="getHomePath" />
-                  <ref role="1Pybhc" to="18ew:~PathManager" resolve="PathManager" />
-                </node>
-                <node concept="Xl_RD" id="6maaEP0wi1K" role="37wK5m">
-                  <property role="Xl_RC" value="build.number" />
-                </node>
-              </node>
-            </node>
-            <node concept="liA8E" id="6maaEP0wjvW" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~File.exists()" resolve="exists" />
-            </node>
-          </node>
           <node concept="9aQIb" id="2bvzdxLPbBE" role="9aQIa">
             <node concept="3clFbS" id="2bvzdxLPbBF" role="9aQI4">
               <node concept="3cpWs6" id="1CvX25dz6g4" role="3cqZAp">
@@ -1582,6 +1564,12 @@
                   </node>
                 </node>
               </node>
+            </node>
+          </node>
+          <node concept="3fqX7Q" id="7EsLhjgusaZ" role="3clFbw">
+            <node concept="2YIFZM" id="7EsLhjgusb1" role="3fr31v">
+              <ref role="37wK5l" to="18ew:~PathManager.isFromSources()" resolve="isFromSources" />
+              <ref role="1Pybhc" to="18ew:~PathManager" resolve="PathManager" />
             </node>
           </node>
         </node>

@@ -151,7 +151,7 @@ public class EnvironmentConfig {
   }
 
   public EnvironmentConfig withDebuggerPlugin() {
-    if (new File(PathManager.getHomePath(), "build.number").exists()) {
+    if (!(PathManager.isFromSources())) {
       // we're running from app bundle/installed app
       return addDistributedPlugin("mps-debugger-api", "jetbrains.mps.debugger.api").addDistributedPlugin("mps-debugger-java", "jetbrains.mps.debugger.java").addDistributedPlugin("mps-execution-api", "jetbrains.mps.execution.api");
 
