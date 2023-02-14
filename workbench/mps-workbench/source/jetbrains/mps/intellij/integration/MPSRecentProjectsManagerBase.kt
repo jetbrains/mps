@@ -1,12 +1,14 @@
 package jetbrains.mps.intellij.integration
 
 import com.intellij.ide.impl.OpenProjectTask
+import com.intellij.ide.impl.ProjectUtilCore
 import com.intellij.openapi.diagnostic.logger
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.wm.impl.welcomeScreen.WelcomeFrame
 import com.intellij.util.io.exists
 import jetbrains.mps.workbench.actions.OpenMPSProjectTrustProjectHelperK
 import java.nio.file.Path
+import kotlin.io.path.absolutePathString
 
 private val LOG = logger<MPSRecentProjectsManagerBase>()
 
@@ -25,17 +27,14 @@ suspend fun openProject(projectFile: Path?, options: OpenProjectTask?, superFun:
         LOG.error("MPSRecentProjectsManagerBase called with null superFun parameter", IllegalArgumentException("Unexpected null argument"))
         return null
     }
-    val localOptions = options
-    //TODO Is this still needed?
-//        val localOptions = if (options.runConfigurators)
-    //OpenProjectTask(projectToClose = options.projectToClose, forceOpenInNewFrame = options.forceOpenInNewFrame)
-//            options.copy(runConfigurators = false)
-//        else options
 
-    if (!projectFile.exists()) {
-        LOG.warn("MPSRecentProjectsManagerBase called with a no-existent project file")
+    if (!projectFile.exists() || !ProjectUtilCore.isValidProjectPath(projectFile)) {
+        LOG.warn("MPSRecentProjectsManagerBase called with a non-existent project file: " + projectFile.absolutePathString())
         return null
     }
+
+    val localOptions = options
+
     try {
         val trusted = OpenMPSProjectTrustProjectHelperK().checkTrust(projectFile)
 
