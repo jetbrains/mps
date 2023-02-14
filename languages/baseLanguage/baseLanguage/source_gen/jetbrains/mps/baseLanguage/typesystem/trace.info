@@ -33984,7 +33984,7 @@
       <node id="3174433877137858344" at="46,50,47,23" concept="13" />
       <node id="8620077627875160498" at="48,15,49,131" concept="12" />
       <node id="8101436443850399659" at="51,118,52,119" concept="6" />
-      <node id="8101436443850399694" at="55,53,56,235" concept="13" />
+      <node id="8101436443850399694" at="55,53,56,301" concept="13" />
       <node id="8101436443850399677" at="59,19,60,97" concept="12" />
       <node id="8101436443850399677" at="60,97,61,329" concept="12" />
       <node id="6640766779605353649" at="62,21,63,187" concept="12" />
@@ -33994,15 +33994,14 @@
       <node id="8620077627875074983" at="81,30,82,17" concept="13" />
       <node id="8620077627875074983" at="86,0,87,0" concept="16" trace="visibility$Yyua" />
       <node id="8620077627875074983" at="87,0,88,0" concept="16" trace="parameter$5xBj" />
-      <node id="8620077627875074983" at="88,0,89,0" concept="16" trace="baseMethodDeclaration$pyYw" />
-      <node id="8620077627875074983" at="92,0,93,0" concept="16" trace="PrivateVisibility$l0" />
-      <node id="8620077627875074983" at="93,0,94,0" concept="16" trace="BaseMethodDeclaration$kD" />
-      <node id="8620077627875074983" at="94,0,95,0" concept="16" trace="ClassConcept$bK" />
-      <node id="8620077627875074983" at="95,0,96,0" concept="16" trace="ConstructorDeclaration$yG" />
-      <node id="8620077627875074983" at="96,0,97,0" concept="16" trace="Classifier$Ix" />
-      <node id="8620077627875074983" at="97,0,98,0" concept="16" trace="IMethodCall$M9" />
-      <node id="8620077627875074983" at="98,0,99,0" concept="16" trace="ClassifierMember$At" />
-      <node id="8620077627875074983" at="102,0,103,0" concept="16" trace="name$MnvL" />
+      <node id="8620077627875074983" at="91,0,92,0" concept="16" trace="PrivateVisibility$l0" />
+      <node id="8620077627875074983" at="92,0,93,0" concept="16" trace="BaseMethodDeclaration$kD" />
+      <node id="8620077627875074983" at="93,0,94,0" concept="16" trace="ClassConcept$bK" />
+      <node id="8620077627875074983" at="94,0,95,0" concept="16" trace="ConstructorDeclaration$yG" />
+      <node id="8620077627875074983" at="95,0,96,0" concept="16" trace="Classifier$Ix" />
+      <node id="8620077627875074983" at="96,0,97,0" concept="16" trace="IFixableMethodReference$z6" />
+      <node id="8620077627875074983" at="97,0,98,0" concept="16" trace="ClassifierMember$At" />
+      <node id="8620077627875074983" at="101,0,102,0" concept="16" trace="name$MnvL" />
       <node id="8620077627875074983" at="29,0,31,0" concept="3" trace="check_UnusedPrivateMethods_NonTypesystemRule#()V" />
       <node id="8620077627875160472" at="38,63,41,13" concept="10" />
       <node id="8101436443850399628" at="50,42,53,17" concept="22" />
@@ -34025,7 +34024,7 @@
       <scope id="8620077627875074983" at="29,57,29,57" />
       <scope id="8620077627875160472" at="39,52,40,126" />
       <scope id="8101436443850399630" at="51,118,52,119" />
-      <scope id="8101436443850399693" at="55,53,56,235" />
+      <scope id="8101436443850399693" at="55,53,56,301" />
       <scope id="8620077627875074983" at="75,50,76,40" />
       <scope id="8620077627875074983" at="78,68,79,102" />
       <scope id="8620077627875074983" at="81,30,82,17" />
@@ -34068,11 +34067,11 @@
         <var name="status" id="8620077627875074983" />
         <var name="typeCheckingContext" id="8620077627875074983" />
       </scope>
-      <unit id="8620077627875074983" at="101,0,104,0" name="jetbrains.mps.baseLanguage.typesystem.check_UnusedPrivateMethods_NonTypesystemRule$PROPS" />
-      <unit id="8101436443850399692" at="54,161,58,17" name="jetbrains.mps.baseLanguage.typesystem.check_UnusedPrivateMethods_NonTypesystemRule$1" />
-      <unit id="8620077627875074983" at="85,0,90,0" name="jetbrains.mps.baseLanguage.typesystem.check_UnusedPrivateMethods_NonTypesystemRule$LINKS" />
-      <unit id="8620077627875074983" at="91,0,100,0" name="jetbrains.mps.baseLanguage.typesystem.check_UnusedPrivateMethods_NonTypesystemRule$CONCEPTS" />
-      <unit id="8620077627875074983" at="28,0,105,0" name="jetbrains.mps.baseLanguage.typesystem.check_UnusedPrivateMethods_NonTypesystemRule" />
+      <unit id="8620077627875074983" at="100,0,103,0" name="jetbrains.mps.baseLanguage.typesystem.check_UnusedPrivateMethods_NonTypesystemRule$PROPS" />
+      <unit id="8101436443850399692" at="54,173,58,17" name="jetbrains.mps.baseLanguage.typesystem.check_UnusedPrivateMethods_NonTypesystemRule$1" />
+      <unit id="8620077627875074983" at="85,0,89,0" name="jetbrains.mps.baseLanguage.typesystem.check_UnusedPrivateMethods_NonTypesystemRule$LINKS" />
+      <unit id="8620077627875074983" at="90,0,99,0" name="jetbrains.mps.baseLanguage.typesystem.check_UnusedPrivateMethods_NonTypesystemRule$CONCEPTS" />
+      <unit id="8620077627875074983" at="28,0,104,0" name="jetbrains.mps.baseLanguage.typesystem.check_UnusedPrivateMethods_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/8626468694779185704">
