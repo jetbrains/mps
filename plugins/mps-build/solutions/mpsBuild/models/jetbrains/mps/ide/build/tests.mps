@@ -408,6 +408,11 @@
             </node>
           </node>
         </node>
+        <node concept="1SiIV0" id="1v2renQf8qX" role="3bR37C">
+          <node concept="3bR9La" id="1v2renQf8qY" role="1SiIV1">
+            <ref role="3bR37D" to="ffeo:5xa9wY2vhbf" resolve="jetbrains.mps.baseLanguage.unitTest.execution" />
+          </node>
+        </node>
       </node>
       <node concept="1E1JtA" id="3vfBydmDYXe" role="2G$12L">
         <property role="BnDLt" value="true" />
