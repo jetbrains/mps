@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -140,7 +140,7 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
     myExtensionRegistry = init(new ExtensionRegistry(myClassLoaderManager));
     myLanguageRegistry = init(new LanguageRegistry(myClassLoaderManager, this::getComponentHostForDependants));
     myConceptRegistry = init(new ConceptRegistry(myLanguageRegistry));
-    init(new ConceptDescendantsCache(myModuleRepository, myLanguageRegistry));
+    init(new ConceptDescendantsCache(myConceptRegistry, myLanguageRegistry));
     init(new DescriptorModelComponent(myModuleRepository,
                                       new LanguageDescriptorModelProvider(myLanguageRegistry),
                                       new GeneratorDescriptorModelProvider(),

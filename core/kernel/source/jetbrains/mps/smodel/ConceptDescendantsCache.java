@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,11 +43,13 @@ import java.util.concurrent.ConcurrentMap;
 
 /**
  * Based on generated structure descriptors
+ * XXX why don't we keep this cache as part of StructureAspectDescriptor? Perhaps, won't be as straightforward as it's here with
+ * concept.getParent() call?
  */
 public class ConceptDescendantsCache implements CoreComponent {
   private static ConceptDescendantsCache INSTANCE;
 
-  private final MPSModuleRepository myModuleRepository;
+  private final ConceptRegistry myConceptRegistry;
   private final LanguageRegistry myLanguageRegistry;
 
   private final Map<LanguageRuntime, Set<ConceptDescriptor>> myLoadedLanguageToConceptsMap = new HashMap<>();
@@ -73,10 +75,7 @@ public class ConceptDescendantsCache implements CoreComponent {
     }
   };
 
-  // SConceptId used as key here (instead of SConcept) because of hashCode() method implementation for sub-classes of SConcept.
-  // Currently all implementors return 0 from the hashCode() method.
   // Values are unmodifiable linked hash sets to guarantee iteration order.
-  // TODO: use SConcept as a key after reimplementing SConcept.hasCode() method properly.
   private final ConcurrentMap<SAbstractConcept, Set<SAbstractConcept>> myDescendantsCache = new ConcurrentHashMap<>();
 
   private void loadConcepts(Collection<LanguageRuntime> languages) {
@@ -105,7 +104,7 @@ public class ConceptDescendantsCache implements CoreComponent {
     List<SConceptId> pids = concept.getParentsIds();
     SAbstractConcept abstractConcept = MetaAdapterFactory.getAbstractConcept(concept);
     for (SConceptId id : pids) {
-      SAbstractConcept parentConcept = MetaAdapterFactory.getAbstractConcept(ConceptRegistry.getInstance().getConceptDescriptor(id));
+      SAbstractConcept parentConcept = MetaAdapterFactory.getAbstractConcept(myConceptRegistry.getConceptDescriptor(id));
       myDescendantsCache.compute(parentConcept, (key, values) -> add(values, abstractConcept));
     }
   }
@@ -115,7 +114,7 @@ public class ConceptDescendantsCache implements CoreComponent {
 
     SAbstractConcept abstractConcept = MetaAdapterFactory.getAbstractConcept(concept);
     for (SConceptId id : pids) {
-      SAbstractConcept parentConcept = MetaAdapterFactory.getAbstractConcept(ConceptRegistry.getInstance().getConceptDescriptor(id));
+      SAbstractConcept parentConcept = MetaAdapterFactory.getAbstractConcept(myConceptRegistry.getConceptDescriptor(id));
       myDescendantsCache.compute(parentConcept, (key, values) -> remove(values, abstractConcept));
     }
   }
@@ -146,8 +145,8 @@ public class ConceptDescendantsCache implements CoreComponent {
     return Collections.unmodifiableSet(descendants);
   }
 
-  public ConceptDescendantsCache(MPSModuleRepository moduleRepository, LanguageRegistry languageRegistry) {
-    myModuleRepository = moduleRepository;
+  public ConceptDescendantsCache(ConceptRegistry conceptRegistry, LanguageRegistry languageRegistry) {
+    myConceptRegistry = conceptRegistry;
     myLanguageRegistry = languageRegistry;
   }
 
@@ -212,7 +211,6 @@ public class ConceptDescendantsCache implements CoreComponent {
 
   @NotNull
   private Set<SAbstractConcept> getDirectDescendantsInternal(SAbstractConcept concept) {
-    myModuleRepository.getModelAccess().checkReadAccess();
     Set<SAbstractConcept> result = myDescendantsCache.get(concept);
     return result != null ? result : Collections.emptySet();
   }
