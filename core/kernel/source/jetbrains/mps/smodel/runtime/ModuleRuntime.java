@@ -21,6 +21,7 @@ import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import java.io.FileNotFoundException;
@@ -30,6 +31,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.function.Consumer;
 
 /**
  * Generic representation of a deployed module.
@@ -150,6 +152,18 @@ public final class ModuleRuntime {
   @Override
   public String toString() {
     return String.format("MRT for %s[%s]", myModuleReference.getModuleName(), myModuleActivator == null ? null : myModuleActivator.getClass().getName());
+  }
+
+  /**
+   * Implementation facility to bridge legacy code dealing with LanguageRuntime/GeneratorRuntime and a new that
+   * keeps ModuleRuntime for every module and LanguageRuntime/GeneratorRuntime as activators
+   */
+  @Internal
+  @NotNull
+  public <T extends Activator> void forActivatorIfInstance(@NotNull Class<T> activatorClass, Consumer<T> code) {
+    if (activatorClass.isInstance(myModuleActivator)) {
+      code.accept(activatorClass.cast(myModuleActivator));
+    }
   }
 
   public interface ModuleRuntimeAspectKey<T> {

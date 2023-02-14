@@ -107,8 +107,6 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
 
   private final Map<SLanguageId, LanguageRuntime> myLanguagesById = new HashMap<>();
 
-  private final Map<SModuleReference, GeneratorRuntime> myGeneratorsWithCompiledRuntime = new HashMap<>();
-
   private final Map<SModuleReference, ModuleRuntime> myModuleRuntime = new HashMap<>();
 
   /*
@@ -443,7 +441,12 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
   public GeneratorRuntime getGenerator(@NotNull SModuleReference generatorIdentity) {
     try {
       myRuntimeInstanceAccess.readLock().lock();
-      return myGeneratorsWithCompiledRuntime.get(generatorIdentity);
+      final ModuleRuntime mr = myModuleRuntime.get(generatorIdentity);
+      GeneratorRuntime[] rv = new GeneratorRuntime[] {null};
+      if (mr != null) {
+        mr.forActivatorIfInstance(GeneratorRuntimeActivator.class, a -> rv[0] = a.getGeneratorRuntime());
+      }
+      return rv[0];
     } finally {
       myRuntimeInstanceAccess.readLock().unlock();
     }
@@ -477,19 +480,20 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
       monitor.step("Generator Runtime");
       for (Generator generator : collectGeneratorModules(unloadedModules)) {
         final ModuleRuntime moduleRuntime = myModuleRuntime.get(generator.getModuleReference());
-        if (moduleRuntime != null) {
-          modulesToUnload.add(moduleRuntime, false);
+        if (moduleRuntime == null) {
+          continue;
         }
-        GeneratorRuntime generatorRuntime = myGeneratorsWithCompiledRuntime.remove(generator.getModuleReference());
-        if (generatorRuntime == null) {
-          // fine, we do not track GR other than generated
-          // XXX Perhaps, with generator module RT for each generator, shall issue a warning like a language does, below
+        modulesToUnload.add(moduleRuntime, false);
+        GeneratorRuntime[] generatorRuntime = new GeneratorRuntime[] {null};
+        moduleRuntime.forActivatorIfInstance(GeneratorRuntimeActivator.class, a -> generatorRuntime[0] = a.getGeneratorRuntime());
+        if (generatorRuntime[0] == null) {
+          LOG.error(String.format("ModuleRuntime for %s present but doesn't hold activator instance", generator.getModuleReference()));
           continue;
         }
         // let runtime know we don't need its services anymore, but do it the moment it's still in complete state.
-        generatorRuntime.deactivate();
-        LanguageRuntime srcLangRuntime = generatorRuntime.getSourceLanguage();
-        srcLangRuntime.unregister(generatorRuntime);
+        generatorRuntime[0].deactivate(); // TODO unite with MR.Activator interface
+        LanguageRuntime srcLangRuntime = generatorRuntime[0].getSourceLanguage();
+        srcLangRuntime.unregister(generatorRuntime[0]);
       }
       monitor.advance(1);
 
@@ -602,10 +606,6 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
         if (generatorRuntime == null) {
           // either interpreted or no generator at all, let generated LanguageRuntime#getGenerators() decide
           continue;
-        }
-        GeneratorRuntime old = myGeneratorsWithCompiledRuntime.put(generatorRuntime.getModuleReference(), generatorRuntime);
-        if (old != null) {
-          LOG.warning(String.format("There is already generator runtime for module '%s'", old.getModuleReference()));
         }
         LanguageRuntime srcLangRuntime = generatorRuntime.getSourceLanguage();
         srcLangRuntime.register(generatorRuntime);
