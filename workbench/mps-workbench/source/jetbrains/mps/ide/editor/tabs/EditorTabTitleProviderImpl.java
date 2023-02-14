@@ -48,6 +48,6 @@ public class EditorTabTitleProviderImpl implements EditorTabTitleProvider {
           .filter(MPSFileNodeEditor.class::isInstance).map(MPSFileNodeEditor.class::cast)
           .map(MPSFileNodeEditor::getNodeEditor).filter(Objects::nonNull)
           .map(Editor::getCurrentEditorComponent).filter(NodeEditorComponent.class::isInstance).map(NodeEditorComponent.class::cast)
-          .map(NodeEditorComponent::getVirtualFile).findFirst().orElse(of).getPresentableName();
+          .map(NodeEditorComponent::getVirtualFile).filter(Objects::nonNull).findFirst().orElse(of).getPresentableName();
   }
 }

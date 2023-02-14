@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -144,6 +144,8 @@ public final class MPSEditorUtil {
    * the currently edited node might be from another aspect (~tab).
    *
    * this method helps to eliminate this integration problem MPS-IJ
+   *
+   * FWIW, there's alternative approach that doesn't involve model read/EDT, see {@code EditorTabTitleProviderImpl}, 9a808184
    *
    * @return null if the file does not point to the tabbed editor
    */
