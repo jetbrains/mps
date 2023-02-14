@@ -16,9 +16,9 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.execution.api.Java_Command;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import jetbrains.mps.util.PathManager;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.LinkedHashSet;
-import jetbrains.mps.util.PathManager;
 import java.io.File;
 import jetbrains.mps.string.Strings;
 
@@ -71,6 +71,9 @@ import jetbrains.mps.string.Strings;
   private List<String> calcForPlatformWithMPS() {
     final SModuleReference moduleWithExecutors = PersistenceFacade.getInstance().createModuleReference(UNIT_TEST_LAUNCHER_MODULE);
     final List<String> classpath = ListSequence.fromList(new LinkedList<String>());
+    if (PathManager.isFromSources()) {
+      ListSequence.fromList(classpath).addElement(PathManager.getLauncherClassPathEntry());
+    }
     // WithPlatformTestExecutor starts IDEA, therefore needs it in CP
     ListSequence.fromList(classpath).addSequence(ListSequence.fromList(collectFromLibFolder()).distinct());
     // Module classpath would get managed by IdeaEnvironment based on set of modules to load
@@ -97,6 +100,7 @@ import jetbrains.mps.string.Strings;
     // mps lib and platform lib may be the same
     libPaths.add(PathManager.getPlatformLibPath());
     libPaths.add(PathManager.getLibPath());
+    libPaths.add(PathManager.getLibPath() + File.separator + "mpsant");
     libPaths.add(PathManager.getLibExtPath());
     List<String> rv = new ArrayList<String>();
     for (String lp : libPaths) {

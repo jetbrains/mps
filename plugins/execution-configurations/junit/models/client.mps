@@ -2152,6 +2152,13 @@
       <node concept="3Tm1VV" id="40J2CKBlFWl" role="1B3o_S" />
       <node concept="10P_77" id="40J2CKBlFUa" role="3clF45" />
     </node>
+    <node concept="2tJIrI" id="4Tt$OebmFhz" role="jymVt" />
+    <node concept="3clFb_" id="4Tt$OebmKWB" role="jymVt">
+      <property role="TrG5h" value="useCompatibilityMode" />
+      <node concept="10P_77" id="4Tt$OebmMja" role="3clF45" />
+      <node concept="3Tm1VV" id="4Tt$OebmKWE" role="1B3o_S" />
+      <node concept="3clFbS" id="4Tt$OebmKWF" role="3clF47" />
+    </node>
     <node concept="3UR2Jj" id="Hl1mFRytJ2" role="lGtFl">
       <node concept="TZ5HA" id="Hl1mFRytJ3" role="TZ5H$">
         <node concept="1dT_AC" id="Hl1mFRytJ4" role="1dT_Ay">
@@ -2183,13 +2190,6 @@
           <property role="1dT_AB" value="To me, the need to wrap access to the methods of this class with model read is an indicator of poor design." />
         </node>
       </node>
-    </node>
-    <node concept="2tJIrI" id="4Tt$OebmFhz" role="jymVt" />
-    <node concept="3clFb_" id="4Tt$OebmKWB" role="jymVt">
-      <property role="TrG5h" value="useCompatibilityMode" />
-      <node concept="10P_77" id="4Tt$OebmMja" role="3clF45" />
-      <node concept="3Tm1VV" id="4Tt$OebmKWE" role="1B3o_S" />
-      <node concept="3clFbS" id="4Tt$OebmKWF" role="3clF47" />
     </node>
   </node>
   <node concept="312cEu" id="56tRMpP_f5M">
@@ -18312,6 +18312,27 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbJ" id="4jQUiU7dSGf" role="3cqZAp">
+          <node concept="3clFbS" id="4jQUiU7dSGh" role="3clFbx">
+            <node concept="3clFbF" id="GgaFX0KZqV" role="3cqZAp">
+              <node concept="2OqwBi" id="GgaFX0L2Hw" role="3clFbG">
+                <node concept="37vLTw" id="GgaFX0KZqT" role="2Oq$k0">
+                  <ref role="3cqZAo" node="58KCQIwaH$z" resolve="classpath" />
+                </node>
+                <node concept="TSZUe" id="GgaFX0L7VM" role="2OqNvi">
+                  <node concept="2YIFZM" id="1dLcAz7$1jx" role="25WWJ7">
+                    <ref role="37wK5l" to="18ew:~PathManager.getLauncherClassPathEntry()" resolve="getLauncherClassPathEntry" />
+                    <ref role="1Pybhc" to="18ew:~PathManager" resolve="PathManager" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2YIFZM" id="4jQUiU7e1wG" role="3clFbw">
+            <ref role="37wK5l" to="18ew:~PathManager.isFromSources()" resolve="isFromSources" />
+            <ref role="1Pybhc" to="18ew:~PathManager" resolve="PathManager" />
+          </node>
+        </node>
         <node concept="3SKdUt" id="58KCQIwaH$D" role="3cqZAp">
           <node concept="1PaTwC" id="ATZLwXoekI" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXoekJ" role="1PaTwD">
@@ -18774,6 +18795,31 @@
               <node concept="2YIFZM" id="1mVhhl9jlta" role="37wK5m">
                 <ref role="1Pybhc" to="18ew:~PathManager" resolve="PathManager" />
                 <ref role="37wK5l" to="18ew:~PathManager.getLibPath()" resolve="getLibPath" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1i3Gm8FzJtr" role="3cqZAp">
+          <node concept="2OqwBi" id="1i3Gm8FzJts" role="3clFbG">
+            <node concept="37vLTw" id="1i3Gm8FzJtt" role="2Oq$k0">
+              <ref role="3cqZAo" node="4NLJPy97Q_M" resolve="libPaths" />
+            </node>
+            <node concept="liA8E" id="1i3Gm8FzJtu" role="2OqNvi">
+              <ref role="37wK5l" to="33ny:~HashSet.add(java.lang.Object)" resolve="add" />
+              <node concept="3cpWs3" id="1i3Gm8FzNTL" role="37wK5m">
+                <node concept="Xl_RD" id="1i3Gm8FzNUi" role="3uHU7w">
+                  <property role="Xl_RC" value="mpsant" />
+                </node>
+                <node concept="3cpWs3" id="1v2renQjJtL" role="3uHU7B">
+                  <node concept="10M0yZ" id="1v2renQjQAK" role="3uHU7w">
+                    <ref role="3cqZAo" to="guwi:~File.separator" resolve="separator" />
+                    <ref role="1PxDUh" to="guwi:~File" resolve="File" />
+                  </node>
+                  <node concept="2YIFZM" id="1i3Gm8FzJtv" role="3uHU7B">
+                    <ref role="1Pybhc" to="18ew:~PathManager" resolve="PathManager" />
+                    <ref role="37wK5l" to="18ew:~PathManager.getLibPath()" resolve="getLibPath" />
+                  </node>
+                </node>
               </node>
             </node>
           </node>
