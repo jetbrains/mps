@@ -38,7 +38,9 @@ class OpenMPSProjectTrustProjectHelperK {
         // A simplified check inspired by ProjectUtil.openProject() for file existence before we show a trust project dialog
         val fileAttributes = file.basicAttributesIfExists()
         if (fileAttributes == null) {
-            Messages.showErrorDialog(IdeBundle.message("error.project.file.does.not.exist", file.toString()), CommonBundle.getErrorTitle())
+            withContext(Dispatchers.EDT) {
+                Messages.showErrorDialog(IdeBundle.message("error.project.file.does.not.exist", file.toString()), CommonBundle.getErrorTitle())
+            }
             return false
         }
         val tp: TrustedPaths = TrustedPaths.getInstance()
