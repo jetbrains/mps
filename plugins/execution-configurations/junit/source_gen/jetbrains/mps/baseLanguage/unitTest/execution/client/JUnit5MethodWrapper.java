@@ -17,11 +17,11 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
-public class JUnit4MethodWrapper extends AbstractTestWrapper<SNode> {
+public class JUnit5MethodWrapper extends AbstractTestWrapper<SNode> {
   private final ITestNodeWrapper myTestCase;
   private final String myName;
 
-  public JUnit4MethodWrapper(@NotNull ITestNodeWrapper testCase, SNode method) {
+  public JUnit5MethodWrapper(@NotNull ITestNodeWrapper testCase, SNode method) {
     super(method, false, AbstractTestWrapper.isAnnotatedToLaunch(method) || AbstractTestWrapper.needsMPS(SNodeOperations.getNodeAncestor(method, CONCEPTS.ClassConcept$bK, false, false)), false);
     myTestCase = testCase;
     myName = SPropertyOperations.getString(method, PROPS.name$MnvL);
@@ -43,14 +43,15 @@ public class JUnit4MethodWrapper extends AbstractTestWrapper<SNode> {
     return myTestCase;
   }
 
-  public static boolean isJUnit4TestMethod(SNode method) {
-    if (!((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(method)) && (SLinkOperations.getTarget(method, LINKS.visibility$Yyua) != null) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.visibility$Yyua), CONCEPTS.PublicVisibility$R0) && (SPropertyOperations.getString(method, PROPS.name$MnvL) != null)) {
+  public static boolean isJUnit5TestMethod(SNode method) {
+    if (!((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(method)) && ((SLinkOperations.getTarget(method, LINKS.visibility$Yyua) == null) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.visibility$Yyua), CONCEPTS.PublicVisibility$R0) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.visibility$Yyua), CONCEPTS.ProtectedVisibility$hr)) && (SPropertyOperations.getString(method, PROPS.name$MnvL) != null)) {
       boolean hasTestAnnotation = false;
       for (SNode annotation : ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.annotation$K49I))) {
-        if (SNodeOperations.is(check_lclll2_a0a0b0a0l(annotation), new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~Ignore"))) {
+        if (SNodeOperations.is(check_h63nth_a0a0b0a0l(annotation), new SNodePointer("63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.jupiter.api(org.junit.junit5/)", "~Disabled"))) {
           return false;
         }
-        if (!(hasTestAnnotation) && SNodeOperations.is(check_lclll2_a0a1a1a0a11(annotation), new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~Test"))) {
+        // the reference below is to org.junit.jupiter.api.Test
+        if (!(hasTestAnnotation) && SNodeOperations.is(check_h63nth_a0a2a1a0a11(annotation), new SNodePointer("63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.jupiter.api(org.junit.junit5/)", "~Test"))) {
           hasTestAnnotation = true;
         }
       }
@@ -58,13 +59,14 @@ public class JUnit4MethodWrapper extends AbstractTestWrapper<SNode> {
     }
     return false;
   }
-  private static SNode check_lclll2_a0a0b0a0l(SNode checkedDotOperand) {
+
+  private static SNode check_h63nth_a0a0b0a0l(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return SLinkOperations.getTarget(checkedDotOperand, LINKS.annotation$12Ek);
     }
     return null;
   }
-  private static SNode check_lclll2_a0a1a1a0a11(SNode checkedDotOperand) {
+  private static SNode check_h63nth_a0a2a1a0a11(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return SLinkOperations.getTarget(checkedDotOperand, LINKS.annotation$12Ek);
     }
@@ -74,6 +76,7 @@ public class JUnit4MethodWrapper extends AbstractTestWrapper<SNode> {
   private static final class CONCEPTS {
     /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
     /*package*/ static final SConcept PublicVisibility$R0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility");
+    /*package*/ static final SConcept ProtectedVisibility$hr = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af958b686L, "jetbrains.mps.baseLanguage.structure.ProtectedVisibility");
   }
 
   private static final class PROPS {

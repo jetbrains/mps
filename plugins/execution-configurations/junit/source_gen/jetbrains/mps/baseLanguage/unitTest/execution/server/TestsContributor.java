@@ -5,5 +5,7 @@ package jetbrains.mps.baseLanguage.unitTest.execution.server;
 import org.junit.runner.Request;
 
 public interface TestsContributor {
+
   Iterable<Request> gatherTests() throws Exception;
+
 }

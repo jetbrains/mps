@@ -20,12 +20,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-public class JUnit4TestWrapper extends AbstractTestWrapper<SNode> {
+public class JUnit5TestWrapper extends AbstractTestWrapper<SNode> {
   private final String myQualifiedName;
   private final String myName;
   private final List<JUnit4MethodWrapper> myMethods;
 
-  public JUnit4TestWrapper(SNode clazz) {
+  public JUnit5TestWrapper(SNode clazz) {
     super(clazz, false, AbstractTestWrapper.needsMPS(clazz), false);
     myQualifiedName = INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(clazz);
     myName = SPropertyOperations.getString(clazz, PROPS.name$MnvL);
@@ -36,7 +36,7 @@ public class JUnit4TestWrapper extends AbstractTestWrapper<SNode> {
       }
     }).select(new ISelector<SNode, JUnit4MethodWrapper>() {
       public JUnit4MethodWrapper select(SNode it) {
-        return new JUnit4MethodWrapper(JUnit4TestWrapper.this, it);
+        return new JUnit4MethodWrapper(JUnit5TestWrapper.this, it);
       }
     }).toListSequence();
   }
@@ -67,12 +67,12 @@ public class JUnit4TestWrapper extends AbstractTestWrapper<SNode> {
     });
   }
 
-  public static boolean isJUnit4TestCase(SNode clazz) {
+  public static boolean isJUnit5TestCase(SNode clazz) {
     if (SPropertyOperations.getBoolean(SNodeOperations.cast(clazz, CONCEPTS.ClassConcept$bK), PROPS.abstractClass$Ta1X)) {
       return false;
     }
     for (SNode method : Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(clazz))) {
-      if (JUnit4MethodWrapper.isJUnit4TestMethod(method)) {
+      if (JUnit5MethodWrapper.isJUnit5TestMethod(method)) {
         return true;
       }
     }

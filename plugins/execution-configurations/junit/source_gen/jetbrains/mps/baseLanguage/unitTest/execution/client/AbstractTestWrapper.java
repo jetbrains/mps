@@ -30,18 +30,20 @@ public abstract class AbstractTestWrapper<N extends SNode> implements ITestNodeW
   private final boolean myRunsInProcess;
   protected final boolean myNeedsMPS;
   protected final SModuleReference myTestModule;
+  private final boolean myCompatibilityMode;
 
   public AbstractTestWrapper(@NotNull N node) {
-    this(node, false, false);
+    this(node, false, false, false);
   }
 
-  public AbstractTestWrapper(@NotNull N node, boolean runsInProcess, boolean needsMPS) {
+  public AbstractTestWrapper(@NotNull N node, boolean runsInProcess, boolean needsMPS, boolean compatibilityMode) {
     myNodePointer = new SNodePointer(node);
     // FIXME there's no need to keep myRepo once last use of getNode() or withNode() gone
     myRepo = SNodeOperations.getModel(node).getRepository();
     myRunsInProcess = runsInProcess;
     myNeedsMPS = needsMPS;
     myTestModule = SNodeOperations.getModel(node).getModule().getModuleReference();
+    myCompatibilityMode = compatibilityMode;
   }
 
   @NotNull
@@ -110,7 +112,7 @@ public abstract class AbstractTestWrapper<N extends SNode> implements ITestNodeW
     if (myNeedsMPS) {
       return new TestParameters(WithPlatformTestExecutor.class, true, null, null);
     } else {
-      return new TestParameters(DefaultTestExecutor.class, null);
+      return new TestParameters(DefaultTestExecutor.class, myCompatibilityMode, null);
     }
   }
 

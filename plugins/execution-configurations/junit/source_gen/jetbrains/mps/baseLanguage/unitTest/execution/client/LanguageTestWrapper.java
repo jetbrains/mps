@@ -22,7 +22,7 @@ public class LanguageTestWrapper extends AbstractTestWrapper<SNode> {
   private List<ITestNodeWrapper> myMethods;
 
   public LanguageTestWrapper(SNode test) {
-    super(test, (boolean) ITestCase__BehaviorDescriptor.canRunInProcess_id5_jSk8paieB.invoke(test), (boolean) ITestable__BehaviorDescriptor.isMpsStartRequired_id2RMg39tmiFh.invoke(test));
+    super(test, (boolean) ITestCase__BehaviorDescriptor.canRunInProcess_id5_jSk8paieB.invoke(test), (boolean) ITestable__BehaviorDescriptor.isMpsStartRequired_id2RMg39tmiFh.invoke(test), false);
     myTestCase = null;
     myName = ITestCase__BehaviorDescriptor.getSimpleClassName_idhSQIE8p.invoke(test);
     myQualifiedName = ITestCase__BehaviorDescriptor.getClassName_idhGBnqtL.invoke(test);
@@ -41,7 +41,7 @@ public class LanguageTestWrapper extends AbstractTestWrapper<SNode> {
 
   public LanguageTestWrapper(@NotNull ITestNodeWrapper testCase, @NotNull SNode testMethod) {
     // perhaps, shall derive MPS requirement form ITestNodeWrapper, but as long as isMpsStartRequired is in ITestable, don't see a reason.
-    super(testMethod, testCase.canRunInProcess(), (boolean) ITestable__BehaviorDescriptor.isMpsStartRequired_id2RMg39tmiFh.invoke(testMethod));
+    super(testMethod, testCase.canRunInProcess(), (boolean) ITestable__BehaviorDescriptor.isMpsStartRequired_id2RMg39tmiFh.invoke(testMethod), false);
     myTestCase = testCase;
     myName = ITestMethod__BehaviorDescriptor.getTestName_idhGBohAB.invoke(testMethod);
     myQualifiedName = testCase.getFqName() + '.' + myName;

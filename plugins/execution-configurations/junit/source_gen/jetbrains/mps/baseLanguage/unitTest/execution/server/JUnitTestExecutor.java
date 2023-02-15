@@ -7,6 +7,15 @@ import org.junit.runner.notification.RunListener;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import java.io.PrintStream;
+import java.util.List;
+import org.junit.platform.engine.DiscoverySelector;
+import org.junit.platform.launcher.LauncherDiscoveryRequest;
+import org.junit.platform.launcher.core.LauncherDiscoveryRequestBuilder;
+import org.junit.platform.launcher.core.LauncherConfig;
+import org.junit.vintage.engine.VintageTestEngine;
+import org.junit.jupiter.engine.JupiterTestEngine;
+import org.junit.platform.launcher.Launcher;
+import org.junit.platform.launcher.core.LauncherFactory;
 import org.junit.runner.Request;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
@@ -72,16 +81,32 @@ public class JUnitTestExecutor implements TestExecutor {
   public void execute() {
     myFailureCount = 0;
     try {
-      Iterable<Request> requests = myTestContributor.gatherTests();
-      JUnitCore jUnitCore = prepareJUnitCore(requests);
-      doExecute(jUnitCore, requests);
-      if (myListener != null) {
-        // no real reason, just it's nice to clean up after yourself
-        jUnitCore.removeListener(myListener);
+      if (myTestContributor instanceof JUnit5TestContributor) {
+        executeWithJUnit5(((JUnit5TestContributor) myTestContributor).collectSelectors());
+
+      } else {
+        executeWithJunit4(myTestContributor.gatherTests());
       }
     } catch (Throwable t) {
       // XXX myFailureCount may get invalid if exception is thrown from core.run
       processThrowable(t);
+    }
+  }
+
+  private void executeWithJUnit5(List<DiscoverySelector> selectors) {
+    LauncherDiscoveryRequest request = LauncherDiscoveryRequestBuilder.request().selectors(selectors).configurationParameter("junit.platform.output.capture.stdout", "true").configurationParameter("junit.platform.output.capture.stderr", "true").build();
+
+    LauncherConfig launcherConfig = LauncherConfig.builder().enableTestEngineAutoRegistration(false).enablePostDiscoveryFilterAutoRegistration(false).enableLauncherSessionListenerAutoRegistration(false).enableLauncherDiscoveryListenerAutoRegistration(false).enableTestExecutionListenerAutoRegistration(false).addTestEngines(new VintageTestEngine(), new JupiterTestEngine()).build();
+    Launcher launcher = LauncherFactory.openSession(launcherConfig).getLauncher();
+    launcher.execute(request, new DefaultTestExecutionListener(myOutStream));
+  }
+
+  private void executeWithJunit4(Iterable<Request> requests) throws Throwable {
+    JUnitCore jUnitCore = prepareJUnitCore(requests);
+    doExecute(jUnitCore, requests);
+    if (myListener != null) {
+      // no real reason, just it's nice to clean up after yourself
+      jUnitCore.removeListener(myListener);
     }
   }
 

@@ -9,6 +9,7 @@ import com.intellij.execution.ExecutionException;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import jetbrains.mps.baseLanguage.unitTest.execution.server.DefaultTestExecutor;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.baseLanguage.unitTest.execution.server.ExecutorScript;
 import jetbrains.mps.tool.common.ScriptData;
@@ -63,11 +64,15 @@ import jetbrains.mps.project.PathMacros;
 
   public String calculate() throws ExecutionException {
     boolean doINeedMPS = myTestsToRun.getParameters().needsMPS();
-    return (doINeedMPS ? calcParamsWithMpsPlatformToStart() : calcParamsWithoutMPSPlatformToStart());
+    boolean useCompatibilityMode = myTestsToRun.getParameters().useCompatibilityMode();
+    return (doINeedMPS ? calcParamsWithMpsPlatformToStart() : calcParamsWithoutMPSPlatformToStart(useCompatibilityMode));
   }
 
-  private String calcParamsWithoutMPSPlatformToStart() {
+  private String calcParamsWithoutMPSPlatformToStart(boolean useCompatibilityMode) {
     List<String> testsCommandLine = ListSequence.fromList(new ArrayList<String>());
+    if (!(useCompatibilityMode)) {
+      ListSequence.fromList(testsCommandLine).addElement(DefaultTestExecutor.JUNIT5_OPTION);
+    }
     for (ITestNodeWrapper test : ListSequence.fromList(myTestsToRun.getTests())) {
       ListSequence.fromList(testsCommandLine).addElement((test.isTestCase() ? "-c" : "-m"));
       ListSequence.fromList(testsCommandLine).addElement(test.getFqName());

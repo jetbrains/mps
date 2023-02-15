@@ -34,13 +34,15 @@ public final class TestParameters {
   private final List<String> myClassPath;
   private final List<String> myAdditionalJvmArgs;
   private final boolean myNeedsMPS;
+  private boolean myCompatibilityMode = false;
 
   public TestParameters(Class<?> executorClass, List<String> classPath, List<String> jvmArgs) {
     this(executorClass, false, classPath, jvmArgs);
   }
 
-  public TestParameters(Class<?> executorClass, List<String> classPath) {
+  public TestParameters(Class<?> executorClass, boolean compatibilityMode, List<String> classPath) {
     this(executorClass, false, classPath, ListSequence.fromList(new LinkedList<String>()));
+    myCompatibilityMode = compatibilityMode;
   }
 
   public TestParameters(Class<?> executorClass, boolean mpsRequired, @Nullable List<String> classPath, @Nullable List<String> jvmArgs) {
@@ -116,6 +118,9 @@ public final class TestParameters {
         // tests that don't need MPS can run from within MPS instance, but not other way round.
         return false;
       }
+      if (myCompatibilityMode != other.myCompatibilityMode) {
+        return false;
+      }
       if (ListSequence.fromList(myClassPath).containsSequence(ListSequence.fromList(other.getClassPath()))) {
         if (ListSequence.fromList(myAdditionalJvmArgs).containsSequence(ListSequence.fromList(other.getJvmArgs()))) {
           return true;
@@ -131,5 +136,13 @@ public final class TestParameters {
    */
   public boolean needsMPS() {
     return myNeedsMPS;
+  }
+
+  /**
+   * Returns true if the tests should be run in a "compatibility mode", such as using one the obsolete frameworks
+   * like junit/junit4. Otherwise test should be launched with JUnit5 platform.
+   */
+  public boolean useCompatibilityMode() {
+    return myCompatibilityMode;
   }
 }

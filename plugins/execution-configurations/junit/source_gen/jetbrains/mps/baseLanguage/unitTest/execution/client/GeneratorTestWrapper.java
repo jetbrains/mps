@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   private final List<ITestNodeWrapper> myMethods;
 
   public GeneratorTestWrapper(@NotNull final SNode node) {
-    super(node, true, true);
+    super(node, true, true, false);
     myQualifiedName = INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(node);
     myMethods = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tests$gTrp)).select(new ISelector<SNode, TransformMatchStatementWrapper>() {
       public TransformMatchStatementWrapper select(SNode it) {
@@ -59,7 +59,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     private String myName;
 
     /*package*/ TransformMatchStatementWrapper(GeneratorTestWrapper testCase, SNode testNode, String name) {
-      super(testNode, true, true);
+      super(testNode, true, true, false);
       myTestCase = testCase;
       myName = name;
     }
