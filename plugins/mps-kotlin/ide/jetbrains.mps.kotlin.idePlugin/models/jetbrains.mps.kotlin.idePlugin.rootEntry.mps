@@ -486,7 +486,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="7wUm6xzEo5Y" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
   </node>
@@ -950,7 +950,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="7wUm6xzEyjy" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
   </node>

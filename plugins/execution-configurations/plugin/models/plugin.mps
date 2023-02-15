@@ -15393,13 +15393,13 @@
           <node concept="1Wc70l" id="4Tt$OebnmIC" role="3clFbw">
             <node concept="2OqwBi" id="4Tt$OebnoUO" role="3uHU7w">
               <node concept="37vLTw" id="4Tt$Oebno6O" role="2Oq$k0">
-                <ref role="3cqZAo" node="4Tt$Oebn9iq" resolve="jupiterTest" />
+                <ref role="3cqZAo" node="4Tt$Oebn9iq" resolve="jupiterTests" />
               </node>
               <node concept="3GX2aA" id="4Tt$OebnpUt" role="2OqNvi" />
             </node>
             <node concept="2OqwBi" id="4Tt$OebniVZ" role="3uHU7B">
               <node concept="37vLTw" id="4Tt$OebngQ4" role="2Oq$k0">
-                <ref role="3cqZAo" node="4Tt$Oebn8NU" resolve="legacyTest" />
+                <ref role="3cqZAo" node="4Tt$Oebn8NU" resolve="legacyTests" />
               </node>
               <node concept="3GX2aA" id="4Tt$OebnlxI" role="2OqNvi" />
             </node>

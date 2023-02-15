@@ -485,7 +485,7 @@
                 <ref role="37wK5l" to="2t25:~PushEnvironmentRunnerBuilder.&lt;init&gt;(jetbrains.mps.tool.environment.Environment)" resolve="PushEnvironmentRunnerBuilder" />
                 <node concept="2ShNRf" id="1_D5Bk1OTeC" role="37wK5m">
                   <node concept="1pGfFk" id="1_D5Bk1P4_X" role="2ShVmc">
-                    <ref role="37wK5l" node="1_D5Bk1ORkD" resolve="NodeWrappersTestsContributor.InProcessEnvironment" />
+                    <ref role="37wK5l" node="1_D5Bk1ORkD" resolve="InProcessEnvironment" />
                   </node>
                 </node>
               </node>
@@ -4871,7 +4871,7 @@
                         <ref role="3uigEE" to="n4ib:~DiscoverySelector" resolve="DiscoverySelector" />
                       </node>
                       <node concept="1rXfSq" id="1wWWPEubpJk" role="33vP2m">
-                        <ref role="37wK5l" node="1wWWPEubEqc" resolve="parseRequestFromMethod" />
+                        <ref role="37wK5l" node="1wWWPEubEqc" resolve="parseMethodString" />
                         <node concept="AH0OO" id="1wWWPEubpJl" role="37wK5m">
                           <node concept="37vLTw" id="1wWWPEubpJm" role="AHHXb">
                             <ref role="3cqZAo" node="1wWWPEubiYl" resolve="myArgs" />
@@ -4888,12 +4888,12 @@
                       <node concept="3clFbF" id="1wWWPEubpJq" role="3cqZAp">
                         <node concept="2OqwBi" id="1wWWPEubpJr" role="3clFbG">
                           <node concept="37vLTw" id="1wWWPEubpJs" role="2Oq$k0">
-                            <ref role="3cqZAo" node="1wWWPEubpII" resolve="requests" />
+                            <ref role="3cqZAo" node="1wWWPEubpII" resolve="selectors" />
                           </node>
                           <node concept="liA8E" id="1wWWPEubpJt" role="2OqNvi">
                             <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
                             <node concept="37vLTw" id="1wWWPEubpJu" role="37wK5m">
-                              <ref role="3cqZAo" node="1wWWPEubpJi" resolve="methodRequest" />
+                              <ref role="3cqZAo" node="1wWWPEubpJi" resolve="methodSelector" />
                             </node>
                           </node>
                         </node>
@@ -4902,7 +4902,7 @@
                     <node concept="3y3z36" id="1wWWPEubpJv" role="3clFbw">
                       <node concept="10Nm6u" id="1wWWPEubpJw" role="3uHU7w" />
                       <node concept="37vLTw" id="1wWWPEubpJx" role="3uHU7B">
-                        <ref role="3cqZAo" node="1wWWPEubpJi" resolve="methodRequest" />
+                        <ref role="3cqZAo" node="1wWWPEubpJi" resolve="methodSelector" />
                       </node>
                     </node>
                   </node>
@@ -4923,7 +4923,7 @@
                       <ref role="3uigEE" to="n4ib:~DiscoverySelector" resolve="DiscoverySelector" />
                     </node>
                     <node concept="1rXfSq" id="1wWWPEubpJD" role="33vP2m">
-                      <ref role="37wK5l" node="1wWWPEubrw3" resolve="parseRequestFromClass" />
+                      <ref role="37wK5l" node="1wWWPEubrw3" resolve="parseClassString" />
                       <node concept="AH0OO" id="1wWWPEubpJE" role="37wK5m">
                         <node concept="37vLTw" id="1wWWPEubpJF" role="AHHXb">
                           <ref role="3cqZAo" node="1wWWPEubiYl" resolve="myArgs" />
@@ -4940,12 +4940,12 @@
                     <node concept="3clFbF" id="1wWWPEubpJJ" role="3cqZAp">
                       <node concept="2OqwBi" id="1wWWPEubpJK" role="3clFbG">
                         <node concept="37vLTw" id="1wWWPEubpJL" role="2Oq$k0">
-                          <ref role="3cqZAo" node="1wWWPEubpII" resolve="requests" />
+                          <ref role="3cqZAo" node="1wWWPEubpII" resolve="selectors" />
                         </node>
                         <node concept="liA8E" id="1wWWPEubpJM" role="2OqNvi">
                           <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
                           <node concept="37vLTw" id="1wWWPEubpJN" role="37wK5m">
-                            <ref role="3cqZAo" node="1wWWPEubpJB" resolve="classRequest" />
+                            <ref role="3cqZAo" node="1wWWPEubpJB" resolve="classSelector" />
                           </node>
                         </node>
                       </node>
@@ -4954,7 +4954,7 @@
                   <node concept="3y3z36" id="1wWWPEubpJO" role="3clFbw">
                     <node concept="10Nm6u" id="1wWWPEubpJP" role="3uHU7w" />
                     <node concept="37vLTw" id="1wWWPEubpJQ" role="3uHU7B">
-                      <ref role="3cqZAo" node="1wWWPEubpJB" resolve="classRequest" />
+                      <ref role="3cqZAo" node="1wWWPEubpJB" resolve="classSelector" />
                     </node>
                   </node>
                 </node>
@@ -4971,12 +4971,12 @@
         </node>
         <node concept="3cpWs6" id="1wWWPEubpJU" role="3cqZAp">
           <node concept="37vLTw" id="1wWWPEubpJV" role="3cqZAk">
-            <ref role="3cqZAo" node="1wWWPEubpII" resolve="requests" />
+            <ref role="3cqZAo" node="1wWWPEubpII" resolve="selectors" />
           </node>
         </node>
       </node>
       <node concept="2AHcQZ" id="1wWWPEubi7Y" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="4iq05MkA_Yj" role="jymVt" />
@@ -5433,7 +5433,7 @@
                       </node>
                     </node>
                     <node concept="1rXfSq" id="1wWWPEubjwY" role="33vP2m">
-                      <ref role="37wK5l" node="1wWWPEubjxk" />
+                      <ref role="37wK5l" node="1wWWPEubjxk" resolve="parseRequestFromFile" />
                       <node concept="37vLTw" id="1wWWPEubjwZ" role="37wK5m">
                         <ref role="3cqZAo" node="1wWWPEubjwO" resolve="filename" />
                       </node>
@@ -6210,12 +6210,12 @@
                           <node concept="3clFbF" id="1amXqSqRfS" role="3cqZAp">
                             <node concept="2OqwBi" id="1amXqSqRfT" role="3clFbG">
                               <node concept="37vLTw" id="1amXqSqRfU" role="2Oq$k0">
-                                <ref role="3cqZAo" node="1amXqSqRe7" resolve="rv" />
+                                <ref role="3cqZAo" node="1amXqSqRe7" resolve="selectors" />
                               </node>
                               <node concept="liA8E" id="1amXqSqRfV" role="2OqNvi">
                                 <ref role="37wK5l" to="33ny:~ArrayList.add(java.lang.Object)" resolve="add" />
                                 <node concept="37vLTw" id="1amXqSqRfW" role="37wK5m">
-                                  <ref role="3cqZAo" node="1amXqSqRfG" resolve="request" />
+                                  <ref role="3cqZAo" node="1amXqSqRfG" resolve="selector" />
                                 </node>
                               </node>
                             </node>
@@ -6264,7 +6264,7 @@
                   </node>
                   <node concept="3cpWs6" id="1amXqSqRgc" role="3cqZAp">
                     <node concept="37vLTw" id="1amXqSqRgd" role="3cqZAk">
-                      <ref role="3cqZAo" node="1amXqSqRe7" resolve="rv" />
+                      <ref role="3cqZAo" node="1amXqSqRe7" resolve="selectors" />
                     </node>
                   </node>
                 </node>
@@ -6274,7 +6274,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="1amXqSqP0g" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="1amXqSr5N$" role="jymVt" />
@@ -6982,7 +6982,7 @@
               <node concept="3KbdKl" id="6maaEP0N0Hw" role="3KbHQx">
                 <node concept="Rm8GO" id="6maaEP0N89_" role="3Kbmr1">
                   <ref role="Rm8GQ" to="n4ib:~TestExecutionResult$Status.ABORTED" resolve="ABORTED" />
-                  <ref role="1Px2BO" to="n4ib:~TestExecutionResult$Status" resolve="Status" />
+                  <ref role="1Px2BO" to="n4ib:~TestExecutionResult$Status" resolve="TestExecutionResult.Status" />
                 </node>
                 <node concept="3clFbS" id="6maaEP0Nbat" role="3Kbo56">
                   <node concept="3SKdUt" id="6maaEP0NXX_" role="3cqZAp">
@@ -7001,7 +7001,7 @@
               <node concept="3KbdKl" id="6maaEP0Ncar" role="3KbHQx">
                 <node concept="Rm8GO" id="6maaEP0NdYd" role="3Kbmr1">
                   <ref role="Rm8GQ" to="n4ib:~TestExecutionResult$Status.FAILED" resolve="FAILED" />
-                  <ref role="1Px2BO" to="n4ib:~TestExecutionResult$Status" resolve="Status" />
+                  <ref role="1Px2BO" to="n4ib:~TestExecutionResult$Status" resolve="TestExecutionResult.Status" />
                 </node>
                 <node concept="3clFbS" id="6maaEP0Ncat" role="3Kbo56">
                   <node concept="3clFbF" id="6maaEP0Nh2l" role="3cqZAp">
@@ -7080,7 +7080,7 @@
               <node concept="3KbdKl" id="6maaEP0NeYi" role="3KbHQx">
                 <node concept="Rm8GO" id="6maaEP0NfZR" role="3Kbmr1">
                   <ref role="Rm8GQ" to="n4ib:~TestExecutionResult$Status.SUCCESSFUL" resolve="SUCCESSFUL" />
-                  <ref role="1Px2BO" to="n4ib:~TestExecutionResult$Status" resolve="Status" />
+                  <ref role="1Px2BO" to="n4ib:~TestExecutionResult$Status" resolve="TestExecutionResult.Status" />
                 </node>
                 <node concept="3clFbS" id="6maaEP0NeYk" role="3Kbo56">
                   <node concept="3clFbF" id="6maaEP0I9j4" role="3cqZAp">
@@ -7610,7 +7610,7 @@
             <node concept="3uibUv" id="5gsHVKBeiJX" role="1tU5fm">
               <ref role="3uigEE" to="33ny:~List" resolve="List" />
               <node concept="3uibUv" id="5gsHVKBeiJY" role="11_B2D">
-                <ref role="3uigEE" to="n4ib:~UniqueId$Segment" resolve="Segment" />
+                <ref role="3uigEE" to="n4ib:~UniqueId$Segment" resolve="UniqueId.Segment" />
               </node>
             </node>
             <node concept="2OqwBi" id="5gsHVKBxhfK" role="33vP2m">
@@ -7642,7 +7642,7 @@
           <node concept="3cpWsn" id="5gsHVKBeiK5" role="3cpWs9">
             <property role="TrG5h" value="lastSegment" />
             <node concept="3uibUv" id="5gsHVKBeiK7" role="1tU5fm">
-              <ref role="3uigEE" to="n4ib:~UniqueId$Segment" resolve="Segment" />
+              <ref role="3uigEE" to="n4ib:~UniqueId$Segment" resolve="UniqueId.Segment" />
             </node>
             <node concept="2OqwBi" id="5gsHVKBFrCP" role="33vP2m">
               <node concept="37vLTw" id="5gsHVKBiQpV" role="2Oq$k0">
@@ -8571,7 +8571,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="4iq05MkyEI$" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="4iq05Mk_FmD" role="jymVt" />
@@ -9330,7 +9330,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="4iq05Mk_JoA" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="4iq05Mk_MPE" role="jymVt" />
@@ -9818,7 +9818,7 @@
                         <node concept="3clFbC" id="5kPsWkS7oJc" role="3clFbw">
                           <node concept="10M0yZ" id="5kPsWkS7oQw" role="3uHU7w">
                             <ref role="3cqZAo" to="gsia:~HyperlinkEvent$EventType.ACTIVATED" resolve="ACTIVATED" />
-                            <ref role="1PxDUh" to="gsia:~HyperlinkEvent$EventType" resolve="EventType" />
+                            <ref role="1PxDUh" to="gsia:~HyperlinkEvent$EventType" resolve="HyperlinkEvent.EventType" />
                           </node>
                           <node concept="2OqwBi" id="5kPsWkS7onu" role="3uHU7B">
                             <node concept="37vLTw" id="5kPsWkS7n3F" role="2Oq$k0">
@@ -9902,7 +9902,7 @@
       <node concept="37vLTG" id="6ESy0uAx9V4" role="3clF46">
         <property role="TrG5h" value="e" />
         <node concept="3uibUv" id="6ESy0uAxaeL" role="1tU5fm">
-          <ref role="3uigEE" node="7V0Nd1aTh1_" resolve="InProcessCheckException" />
+          <ref role="3uigEE" node="7V0Nd1aTh1_" resolve="InProcessExecutionFilter.InProcessCheckException" />
         </node>
       </node>
       <node concept="37vLTG" id="6ESy0uAx9V6" role="3clF46">
@@ -10440,7 +10440,7 @@
       </node>
       <node concept="2ShNRf" id="2$dYB7PEqSG" role="33vP2m">
         <node concept="1pGfFk" id="2$dYB7PEqSH" role="2ShVmc">
-          <ref role="37wK5l" node="1_D5Bk1ORkD" resolve="NodeWrappersTestsContributor.InProcessEnvironment" />
+          <ref role="37wK5l" node="1_D5Bk1ORkD" resolve="InProcessEnvironment" />
         </node>
       </node>
     </node>
@@ -10500,7 +10500,7 @@
       <node concept="3clFbS" id="2$dYB7PEl1p" role="3clF47">
         <node concept="3clFbF" id="2$dYB7PEl1q" role="3cqZAp">
           <node concept="1rXfSq" id="2$dYB7PEl1r" role="3clFbG">
-            <ref role="37wK5l" node="2$dYB7PEl1v" />
+            <ref role="37wK5l" node="2$dYB7PEl1v" resolve="initExtensions" />
           </node>
         </node>
         <node concept="3clFbF" id="2bvzdxLO42z" role="3cqZAp">
@@ -10939,7 +10939,7 @@
                             <node concept="3clFbF" id="2$dYB7PE$2R" role="3cqZAp">
                               <node concept="2OqwBi" id="2$dYB7PE$2S" role="3clFbG">
                                 <node concept="37vLTw" id="2$dYB7PE$2T" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="2$dYB7PE$1U" resolve="requestList" />
+                                  <ref role="3cqZAo" node="2$dYB7PE$1U" resolve="selectorsList" />
                                 </node>
                                 <node concept="liA8E" id="2$dYB7PE$2U" role="2OqNvi">
                                   <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
@@ -10970,7 +10970,7 @@
                           <node concept="3clFbF" id="2$dYB7PE$32" role="3cqZAp">
                             <node concept="2OqwBi" id="2$dYB7PE$33" role="3clFbG">
                               <node concept="37vLTw" id="2$dYB7PE$34" role="2Oq$k0">
-                                <ref role="3cqZAo" node="2$dYB7PE$1U" resolve="requestList" />
+                                <ref role="3cqZAo" node="2$dYB7PE$1U" resolve="selectorsList" />
                               </node>
                               <node concept="liA8E" id="2$dYB7PE$35" role="2OqNvi">
                                 <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
@@ -11001,7 +11001,7 @@
                   </node>
                   <node concept="3cpWs6" id="2$dYB7PE$3c" role="3cqZAp">
                     <node concept="37vLTw" id="2$dYB7PE$3d" role="3cqZAk">
-                      <ref role="3cqZAo" node="2$dYB7PE$1U" resolve="requestList" />
+                      <ref role="3cqZAo" node="2$dYB7PE$1U" resolve="selectorsList" />
                     </node>
                   </node>
                 </node>
@@ -11011,7 +11011,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="2$dYB7PEyqB" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="2$dYB7PDXkD" role="jymVt" />
@@ -11090,7 +11090,7 @@
               <property role="TrG5h" value="e" />
               <node concept="nSUau" id="2$dYB7PEGwL" role="1tU5fm">
                 <node concept="3uibUv" id="2$dYB7PEGwM" role="nSUat">
-                  <ref role="3uigEE" node="7V0Nd1aTh1_" resolve="InProcessCheckException" />
+                  <ref role="3uigEE" node="7V0Nd1aTh1_" resolve="InProcessExecutionFilter.InProcessCheckException" />
                 </node>
               </node>
             </node>
@@ -11326,7 +11326,7 @@
               <property role="TrG5h" value="e" />
               <node concept="nSUau" id="2$dYB7PEGyh" role="1tU5fm">
                 <node concept="3uibUv" id="2$dYB7PEGyi" role="nSUat">
-                  <ref role="3uigEE" node="7V0Nd1aTh1_" resolve="InProcessCheckException" />
+                  <ref role="3uigEE" node="7V0Nd1aTh1_" resolve="InProcessExecutionFilter.InProcessCheckException" />
                 </node>
               </node>
             </node>

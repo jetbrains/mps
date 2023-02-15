@@ -708,13 +708,13 @@
       </node>
     </node>
     <node concept="13uUGR" id="6vgd21k525V" role="1l3spa">
-      <ref role="13uUGO" to="ffeo:6eCuTcwOnJO" />
+      <ref role="13uUGO" to="ffeo:6eCuTcwOnJO" resolve="IDEA" />
       <node concept="398BVA" id="6vgd21k525W" role="13uUGP">
         <ref role="398BVh" node="6vgd21k5260" resolve="idea_home" />
       </node>
     </node>
     <node concept="2sgV4H" id="6vgd21k525X" role="1l3spa">
-      <ref role="1l3spb" to="ffeo:3IKDaVZmzS6" />
+      <ref role="1l3spb" to="ffeo:3IKDaVZmzS6" resolve="mps" />
       <node concept="398BVA" id="6vgd21k525Y" role="2JcizS">
         <ref role="398BVh" node="6vgd21k525Z" resolve="mps_home" />
       </node>

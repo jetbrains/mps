@@ -2258,7 +2258,7 @@
                 </node>
                 <node concept="2ShNRf" id="6cqWk79$AW$" role="33vP2m">
                   <node concept="1pGfFk" id="6cqWk79$AW_" role="2ShVmc">
-                    <ref role="37wK5l" node="7AaordoBkQk" resolve="ModuleLoaderUtils.ModuleMacroHelper" />
+                    <ref role="37wK5l" node="7AaordoBkQk" resolve="ModuleMacroHelper" />
                     <node concept="37vLTw" id="6cqWk79_eHy" role="37wK5m">
                       <ref role="3cqZAo" node="6cqWk79zVOP" resolve="myBuildProject" />
                     </node>
@@ -6213,7 +6213,7 @@
                   <node concept="2ShNRf" id="4zWhGGs1p0O" role="YScLw">
                     <node concept="1pGfFk" id="4zWhGGs1sJq" role="2ShVmc">
                       <property role="373rjd" value="true" />
-                      <ref role="37wK5l" node="2hkCNA7Z0R0" resolve="PathConvertException" />
+                      <ref role="37wK5l" node="2hkCNA7Z0R0" resolve="PathConverter.PathConvertException" />
                       <node concept="2OqwBi" id="4zWhGGs1MKx" role="37wK5m">
                         <node concept="Xl_RD" id="4zWhGGs1tPf" role="2Oq$k0">
                           <property role="Xl_RC" value="PathConverter doesn't know module location to convert path %s" />
@@ -20386,6 +20386,12 @@
                     </node>
                   </node>
                   <node concept="1Wc70l" id="5UKdgDPvLfm" role="3clFbw">
+                    <node concept="3y3z36" id="37uLid2oXgA" role="3uHU7B">
+                      <node concept="37vLTw" id="7FhmtY6tVYs" role="3uHU7B">
+                        <ref role="3cqZAo" node="7FhmtY6tVpQ" resolve="gp" />
+                      </node>
+                      <node concept="10Nm6u" id="7FhmtY6tW8B" role="3uHU7w" />
+                    </node>
                     <node concept="3y3z36" id="5UKdgDPztNo" role="3uHU7w">
                       <node concept="10Nm6u" id="5UKdgDPzXCw" role="3uHU7w" />
                       <node concept="1eOMI4" id="5UKdgDPwrG4" role="3uHU7B">
@@ -20402,12 +20408,6 @@
                           </node>
                         </node>
                       </node>
-                    </node>
-                    <node concept="3y3z36" id="37uLid2oXgA" role="3uHU7B">
-                      <node concept="37vLTw" id="7FhmtY6tVYs" role="3uHU7B">
-                        <ref role="3cqZAo" node="7FhmtY6tVpQ" resolve="gp" />
-                      </node>
-                      <node concept="10Nm6u" id="7FhmtY6tW8B" role="3uHU7w" />
                     </node>
                   </node>
                 </node>

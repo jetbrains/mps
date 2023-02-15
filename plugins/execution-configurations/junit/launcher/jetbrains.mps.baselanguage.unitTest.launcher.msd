@@ -7,7 +7,7 @@
   </models>
   <facets>
     <facet compile="mps" classes="provided" ext="no" type="java" languageLevel="JAVA_8">
-      <classes generated="true" path="${module}/../../classes" />
+      <classes generated="true" path="${mps_home}/plugins/execution-configurations/classes" />
     </facet>
   </facets>
   <sourcePath />

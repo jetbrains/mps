@@ -410,7 +410,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="5gsHVK$OlJk" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="5gsHVK$Om0H" role="jymVt" />
@@ -455,7 +455,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="5gsHVK$OfAX" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="5gsHVK$Oh5_" role="jymVt" />
@@ -609,7 +609,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="4MVYzzgwuji" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="5gsHVK_0hdZ" role="jymVt" />
@@ -627,7 +627,7 @@
         <node concept="3clFbF" id="5gsHVK_0qGR" role="3cqZAp">
           <node concept="2OqwBi" id="5gsHVK_0s1C" role="3clFbG">
             <node concept="37vLTw" id="5gsHVK_0qGQ" role="2Oq$k0">
-              <ref role="3cqZAo" node="5gsHVK_0mum" resolve="myModulePaths" />
+              <ref role="3cqZAo" node="5gsHVK_0mum" resolve="myModuleFile" />
             </node>
             <node concept="liA8E" id="5gsHVK_0tIW" role="2OqNvi">
               <ref role="37wK5l" to="33ny:~List.addAll(java.util.Collection)" resolve="addAll" />
@@ -709,7 +709,7 @@
                   <ref role="3cqZAo" node="1oo0A63GPjh" resolve="mpsHome" />
                 </node>
                 <node concept="37vLTw" id="5gsHVKA510T" role="37wK5m">
-                  <ref role="3cqZAo" node="5gsHVKA4WnD" resolve="MPS_TESTING_PLUGIN" />
+                  <ref role="3cqZAo" node="5gsHVKA4WnD" resolve="MPS_TESTING_PLUGIN_HOME" />
                 </node>
               </node>
             </node>
@@ -754,7 +754,7 @@
                   <ref role="3cqZAo" node="5gsHVKA510P" resolve="mpsTestingPluginHome" />
                 </node>
                 <node concept="37vLTw" id="5gsHVKA6r30" role="37wK5m">
-                  <ref role="3cqZAo" node="5gsHVKCOxLY" resolve="JUNIT5_SUPPORT_JAR" />
+                  <ref role="3cqZAo" node="5gsHVKCOxLY" resolve="LAUNCHER_SUPPORT_JAR" />
                 </node>
               </node>
             </node>
@@ -777,7 +777,7 @@
           <node concept="3fqX7Q" id="5gsHVKA7gdE" role="3clFbw">
             <node concept="2OqwBi" id="5gsHVKA7gdG" role="3fr31v">
               <node concept="37vLTw" id="5gsHVKA7gdH" role="2Oq$k0">
-                <ref role="3cqZAo" node="5gsHVKA6r2W" resolve="junit5support" />
+                <ref role="3cqZAo" node="5gsHVKA6r2W" resolve="launcherSupport" />
               </node>
               <node concept="liA8E" id="5gsHVKA7gdI" role="2OqNvi">
                 <ref role="37wK5l" to="guwi:~File.exists()" resolve="exists" />
@@ -793,7 +793,7 @@
             <node concept="liA8E" id="5gsHVKCOY$e" role="2OqNvi">
               <ref role="37wK5l" to="33ny:~HashSet.add(java.lang.Object)" resolve="add" />
               <node concept="37vLTw" id="5gsHVKCOY$f" role="37wK5m">
-                <ref role="3cqZAo" node="5gsHVKA6r2W" resolve="junit5support" />
+                <ref role="3cqZAo" node="5gsHVKA6r2W" resolve="launcherSupport" />
               </node>
             </node>
           </node>
@@ -806,7 +806,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="5gsHVK$XZlH" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="5gsHVK_0vIZ" role="jymVt" />
@@ -871,7 +871,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="76_s2Q_bp7E" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="76_s2Q_bIRL" role="jymVt" />
@@ -918,12 +918,12 @@
             </node>
           </node>
           <node concept="37vLTw" id="5gsHVK_0O1U" role="1DdaDG">
-            <ref role="3cqZAo" node="5gsHVK_0mum" resolve="myModulePaths" />
+            <ref role="3cqZAo" node="5gsHVK_0mum" resolve="myModuleFile" />
           </node>
         </node>
       </node>
       <node concept="2AHcQZ" id="5gsHVK_0JrJ" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="5gsHVK_0La8" role="jymVt" />
@@ -955,7 +955,7 @@
                 <node concept="2ShNRf" id="1rGdf3Z_nmp" role="3cqZAk">
                   <node concept="1pGfFk" id="1rGdf3Z_qer" role="2ShVmc">
                     <property role="373rjd" value="true" />
-                    <ref role="37wK5l" node="1rGdf3Zz4BS" resolve="LoggingStreamHandler" />
+                    <ref role="37wK5l" node="1rGdf3Zz4BS" resolve="OutputLoggingStreamHandler" />
                     <node concept="Xjq3P" id="1rGdf3Z_rEN" role="37wK5m" />
                   </node>
                 </node>
@@ -965,7 +965,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="1rGdf3ZzO1l" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="1rGdf3ZzTBd" role="jymVt" />
@@ -1047,7 +1047,7 @@
             <node concept="liA8E" id="5gsHVK$OcoI" role="2OqNvi">
               <ref role="37wK5l" to="644x:3ufQioQQsmj" resolve="setValue" />
               <node concept="37vLTw" id="5gsHVK$Octx" role="37wK5m">
-                <ref role="3cqZAo" node="5gsHVK$Obel" resolve="valueString" />
+                <ref role="3cqZAo" node="5gsHVK$Obel" resolve="value" />
               </node>
             </node>
           </node>
@@ -1497,7 +1497,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="1rGdf3Zys62" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="1rGdf3ZyuGh" role="jymVt" />
@@ -1617,7 +1617,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="1rGdf3Zys6i" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="1rGdf3Zz8cI" role="jymVt" />
@@ -1766,7 +1766,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="1rGdf3Zz4Xp" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="3UR2Jj" id="1rGdf3Z_tE9" role="lGtFl">
@@ -1881,12 +1881,12 @@
       <property role="TrG5h" value="STD_ESCAPER" />
       <property role="3TUv4t" value="true" />
       <node concept="3uibUv" id="5gsHVKB0Xsk" role="1tU5fm">
-        <ref role="3uigEE" node="5gsHVKB0XrW" resolve="EscapeInfoProvider" />
+        <ref role="3uigEE" node="5gsHVKB0XrW" resolve="MapSerializerUtil.EscapeInfoProvider" />
       </node>
       <node concept="2ShNRf" id="5gsHVKB0Xsl" role="33vP2m">
         <node concept="YeOm9" id="5gsHVKB0Xsm" role="2ShVmc">
           <node concept="1Y3b0j" id="5gsHVKB0Xsn" role="YeSDq">
-            <ref role="1Y3XeK" node="5gsHVKB0XrW" resolve="EscapeInfoProvider" />
+            <ref role="1Y3XeK" node="5gsHVKB0XrW" resolve="MapSerializerUtil.EscapeInfoProvider" />
             <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
             <node concept="3clFb_" id="5gsHVKB0Xso" role="jymVt">
               <property role="TrG5h" value="escape" />
@@ -2091,7 +2091,7 @@
       <node concept="37vLTG" id="5gsHVKB0Xtv" role="3clF46">
         <property role="TrG5h" value="p" />
         <node concept="3uibUv" id="5gsHVKB0Xtw" role="1tU5fm">
-          <ref role="3uigEE" node="5gsHVKB0XrW" resolve="EscapeInfoProvider" />
+          <ref role="3uigEE" node="5gsHVKB0XrW" resolve="MapSerializerUtil.EscapeInfoProvider" />
         </node>
       </node>
       <node concept="3clFbS" id="5gsHVKB0Xtx" role="3clF47">
@@ -2391,7 +2391,7 @@
         <property role="TrG5h" value="p" />
         <property role="3TUv4t" value="true" />
         <node concept="3uibUv" id="5gsHVKB0Xve" role="1tU5fm">
-          <ref role="3uigEE" node="5gsHVKB0XrW" resolve="EscapeInfoProvider" />
+          <ref role="3uigEE" node="5gsHVKB0XrW" resolve="MapSerializerUtil.EscapeInfoProvider" />
         </node>
       </node>
       <node concept="3clFbS" id="5gsHVKB0Xvf" role="3clF47">

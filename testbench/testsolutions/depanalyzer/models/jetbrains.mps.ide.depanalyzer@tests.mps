@@ -292,7 +292,7 @@
             <property role="2bfB8j" value="true" />
             <property role="373rjd" value="true" />
             <ref role="1Y3XeK" to="rbkg:~InvocationInterceptor" resolve="InvocationInterceptor" />
-            <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" />
+            <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
             <node concept="3Tm1VV" id="1dLcAz7BMM3" role="1B3o_S" />
             <node concept="3clFb_" id="1dLcAz7BOq3" role="jymVt">
               <property role="TrG5h" value="interceptTestMethod" />
@@ -301,7 +301,7 @@
               <node concept="37vLTG" id="1dLcAz7BOq8" role="3clF46">
                 <property role="TrG5h" value="invocation" />
                 <node concept="3uibUv" id="1dLcAz7BOq9" role="1tU5fm">
-                  <ref role="3uigEE" to="rbkg:~InvocationInterceptor$Invocation" resolve="Invocation" />
+                  <ref role="3uigEE" to="rbkg:~InvocationInterceptor$Invocation" resolve="InvocationInterceptor.Invocation" />
                   <node concept="3uibUv" id="1dLcAz7BOqa" role="11_B2D">
                     <ref role="3uigEE" to="wyt6:~Void" resolve="Void" />
                   </node>

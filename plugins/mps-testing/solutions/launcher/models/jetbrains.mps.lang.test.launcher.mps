@@ -390,7 +390,7 @@
                   <node concept="3cpWsn" id="7MSVDs2HuzS" role="3cpWs9">
                     <property role="TrG5h" value="obj" />
                     <node concept="3uibUv" id="7MSVDs2HuzQ" role="1tU5fm">
-                      <ref role="3uigEE" to="wyt6:~Object" />
+                      <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
                     </node>
                     <node concept="2OqwBi" id="7MSVDs2HuzT" role="33vP2m">
                       <node concept="2OqwBi" id="7MSVDs2HGyU" role="2Oq$k0">
@@ -599,7 +599,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="7MSVDs2$zQv" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="7MSVDs2F4Ex" role="jymVt" />
@@ -618,7 +618,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="7MSVDs2G$lB" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="7MSVDs2GDpT" role="jymVt" />

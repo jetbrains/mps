@@ -29400,13 +29400,13 @@
           <ref role="3_I8Xa" node="RJsmGEig2V" resolve="mps-vcs" />
         </node>
         <node concept="3_I8Xc" id="73fHb9hpuxm" role="39821P">
-          <ref role="3_I8Xa" node="I6XuqH2zYV" resolve="git4idea" />
+          <ref role="3_I8Xa" node="I6XuqH2zYV" resolve="vcs-git" />
         </node>
         <node concept="3_I8Xc" id="1wq$Llytga7" role="39821P">
           <ref role="3_I8Xa" node="4wxeloVufXE" resolve="mps-git4idea" />
         </node>
         <node concept="3_I8Xc" id="3nGzrDEksX6" role="39821P">
-          <ref role="3_I8Xa" node="3nGzrDEfcNJ" resolve="svn4idea" />
+          <ref role="3_I8Xa" node="3nGzrDEfcNJ" resolve="vcs-svn" />
         </node>
         <node concept="3_I8Xc" id="1d6huufKTau" role="39821P">
           <ref role="3_I8Xa" node="5lGJ4TajoPh" resolve="mps-migration" />
@@ -33379,13 +33379,13 @@
         </node>
       </node>
       <node concept="3_I8Xc" id="6ifcnI8$H4f" role="39821P">
-        <ref role="3_I8Xa" node="I6XuqH2zYV" resolve="git4idea" />
+        <ref role="3_I8Xa" node="I6XuqH2zYV" resolve="vcs-git" />
       </node>
       <node concept="3_I8Xc" id="1wq$Llytg92" role="39821P">
         <ref role="3_I8Xa" node="4wxeloVufXE" resolve="mps-git4idea" />
       </node>
       <node concept="3_I8Xc" id="3nGzrDDNoMc" role="39821P">
-        <ref role="3_I8Xa" node="3nGzrDEfcNJ" resolve="svn4idea" />
+        <ref role="3_I8Xa" node="3nGzrDEfcNJ" resolve="vcs-svn" />
       </node>
     </node>
     <node concept="10PD9b" id="1lMM4owFq7J" role="10PD9s" />

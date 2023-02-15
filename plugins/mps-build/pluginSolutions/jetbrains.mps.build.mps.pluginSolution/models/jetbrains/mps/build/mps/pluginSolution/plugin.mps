@@ -10731,7 +10731,7 @@
               </node>
             </node>
             <node concept="37vLTw" id="5CJ_h4_qy4q" role="2Oq$k0">
-              <ref role="3cqZAo" node="5CJ_h4_qy4m" resolve="imports" />
+              <ref role="3cqZAo" node="5CJ_h4_qy4m" resolve="mi" />
             </node>
           </node>
         </node>
@@ -10747,7 +10747,7 @@
               </node>
             </node>
             <node concept="37vLTw" id="5CJ_h4_qy4r" role="2Oq$k0">
-              <ref role="3cqZAo" node="5CJ_h4_qy4m" resolve="imports" />
+              <ref role="3cqZAo" node="5CJ_h4_qy4m" resolve="mi" />
             </node>
           </node>
         </node>
@@ -10765,7 +10765,7 @@
                   </node>
                 </node>
                 <node concept="37vLTw" id="5CJ_h4_qy4s" role="2Oq$k0">
-                  <ref role="3cqZAo" node="5CJ_h4_qy4m" resolve="imports" />
+                  <ref role="3cqZAo" node="5CJ_h4_qy4m" resolve="mi" />
                 </node>
               </node>
             </node>
@@ -10803,7 +10803,7 @@
         <node concept="3clFbF" id="reSgCPMULw" role="3cqZAp">
           <node concept="2OqwBi" id="reSgCPMW_e" role="3clFbG">
             <node concept="37vLTw" id="5CJ_h4_qy4t" role="2Oq$k0">
-              <ref role="3cqZAo" node="5CJ_h4_qy4m" resolve="imports" />
+              <ref role="3cqZAo" node="5CJ_h4_qy4m" resolve="mi" />
             </node>
             <node concept="liA8E" id="reSgCPMWKh" role="2OqNvi">
               <ref role="37wK5l" to="w1kc:~ModelImports.addModelImport(org.jetbrains.mps.openapi.model.SModelReference)" resolve="addModelImport" />
@@ -10827,7 +10827,7 @@
             <node concept="3clFbF" id="4PkT6nprpZj" role="3cqZAp">
               <node concept="2OqwBi" id="4PkT6nprpZk" role="3clFbG">
                 <node concept="37vLTw" id="5CJ_h4_qy4u" role="2Oq$k0">
-                  <ref role="3cqZAo" node="5CJ_h4_qy4m" resolve="imports" />
+                  <ref role="3cqZAo" node="5CJ_h4_qy4m" resolve="mi" />
                 </node>
                 <node concept="liA8E" id="4PkT6nprpZo" role="2OqNvi">
                   <ref role="37wK5l" to="w1kc:~ModelImports.addModelImport(org.jetbrains.mps.openapi.model.SModelReference)" resolve="addModelImport" />
@@ -13245,10 +13245,10 @@
                         </node>
                         <node concept="398223" id="2OJWaFGOVpK" role="39821P">
                           <node concept="3_I8Xc" id="3nGzrDEksX6" role="39821P">
-                            <ref role="3_I8Xa" to="ffeo:3nGzrDEfcNJ" resolve="svn4idea" />
+                            <ref role="3_I8Xa" to="ffeo:3nGzrDEfcNJ" resolve="vcs-svn" />
                           </node>
                           <node concept="3_I8Xc" id="73fHb9hpuxm" role="39821P">
-                            <ref role="3_I8Xa" to="ffeo:I6XuqH2zYV" resolve="git4idea" />
+                            <ref role="3_I8Xa" to="ffeo:I6XuqH2zYV" resolve="vcs-git" />
                           </node>
                           <node concept="3_I8Xc" id="1SFIfQkx0Yw" role="39821P">
                             <ref role="3_I8Xa" to="ffeo:4EdAnGErOtx" resolve="mps-core" />
@@ -15281,6 +15281,46 @@
                   <property role="2eq24a" value="true" />
                   <property role="26Ea6C" value="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5071" />
                 </node>
+                <node concept="2EMmih" id="2g$3PZUe6x8" role="lGtFl">
+                  <property role="P4ACc" value="ceab5195-25ea-4f22-9b92-103b95ca8c0c/1169194658468/1169194664001" />
+                  <property role="2qtEX9" value="name" />
+                  <property role="3qcH_f" value="true" />
+                  <node concept="3cpWs3" id="2g$3PZUe9e0" role="2c44t1">
+                    <node concept="Xl_RD" id="2g$3PZUe9nL" role="3uHU7w">
+                      <property role="Xl_RC" value="Scripts" />
+                    </node>
+                    <node concept="2OqwBi" id="2g$3PZUe795" role="3uHU7B">
+                      <node concept="37vLTw" id="2g$3PZUe6P5" role="2Oq$k0">
+                        <ref role="3cqZAo" node="2g$3PZUc4VI" resolve="buildProject" />
+                      </node>
+                      <node concept="3TrcHB" id="2g$3PZUe8Kt" role="2OqNvi">
+                        <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="2c44tb" id="2g$3PZUf6FR" role="lGtFl">
+                  <property role="P3scX" value="d5033cee-f632-44b6-b308-89d4fbde34ff/3885435385580582152/3505522814897007561" />
+                  <property role="2qtEX8" value="branding" />
+                  <node concept="2OqwBi" id="2g$3PZUfbp7" role="2c44t1">
+                    <node concept="2OqwBi" id="2FXdWdhFs_6" role="2Oq$k0">
+                      <node concept="2OqwBi" id="2g$3PZUf9AM" role="2Oq$k0">
+                        <node concept="37vLTw" id="2g$3PZUf9lH" role="2Oq$k0">
+                          <ref role="3cqZAo" node="2g$3PZUc4VI" resolve="buildProject" />
+                        </node>
+                        <node concept="3Tsc0h" id="2g$3PZUf9RX" role="2OqNvi">
+                          <ref role="3TtcxE" to="3ior:6qcrfIJFfrM" resolve="parts" />
+                        </node>
+                      </node>
+                      <node concept="v3k3i" id="2FXdWdhFvIg" role="2OqNvi">
+                        <node concept="chp4Y" id="2FXdWdhFvLE" role="v3oSu">
+                          <ref role="cht4Q" to="kdzh:6Iq8148eRud" resolve="BuildMps_Branding" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="1uHKPH" id="2FXdWdhFw9M" role="2OqNvi" />
+                  </node>
+                </node>
                 <node concept="26EafG" id="7N3AEh8KLvp" role="26Ea7d">
                   <property role="26EafJ" value="lib/3rd-party-native.jar" />
                 </node>
@@ -15490,46 +15530,6 @@
                 </node>
                 <node concept="26EafG" id="68rp5VxCl2R" role="26Ea7d">
                   <property role="26EafJ" value="lib/ant/lib/ant.jar" />
-                </node>
-                <node concept="2EMmih" id="2g$3PZUe6x8" role="lGtFl">
-                  <property role="P4ACc" value="ceab5195-25ea-4f22-9b92-103b95ca8c0c/1169194658468/1169194664001" />
-                  <property role="2qtEX9" value="name" />
-                  <property role="3qcH_f" value="true" />
-                  <node concept="3cpWs3" id="2g$3PZUe9e0" role="2c44t1">
-                    <node concept="Xl_RD" id="2g$3PZUe9nL" role="3uHU7w">
-                      <property role="Xl_RC" value="Scripts" />
-                    </node>
-                    <node concept="2OqwBi" id="2g$3PZUe795" role="3uHU7B">
-                      <node concept="37vLTw" id="2g$3PZUe6P5" role="2Oq$k0">
-                        <ref role="3cqZAo" node="2g$3PZUc4VI" resolve="buildProject" />
-                      </node>
-                      <node concept="3TrcHB" id="2g$3PZUe8Kt" role="2OqNvi">
-                        <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-                <node concept="2c44tb" id="2g$3PZUf6FR" role="lGtFl">
-                  <property role="P3scX" value="d5033cee-f632-44b6-b308-89d4fbde34ff/3885435385580582152/3505522814897007561" />
-                  <property role="2qtEX8" value="branding" />
-                  <node concept="2OqwBi" id="2g$3PZUfbp7" role="2c44t1">
-                    <node concept="2OqwBi" id="2FXdWdhFs_6" role="2Oq$k0">
-                      <node concept="2OqwBi" id="2g$3PZUf9AM" role="2Oq$k0">
-                        <node concept="37vLTw" id="2g$3PZUf9lH" role="2Oq$k0">
-                          <ref role="3cqZAo" node="2g$3PZUc4VI" resolve="buildProject" />
-                        </node>
-                        <node concept="3Tsc0h" id="2g$3PZUf9RX" role="2OqNvi">
-                          <ref role="3TtcxE" to="3ior:6qcrfIJFfrM" resolve="parts" />
-                        </node>
-                      </node>
-                      <node concept="v3k3i" id="2FXdWdhFvIg" role="2OqNvi">
-                        <node concept="chp4Y" id="2FXdWdhFvLE" role="v3oSu">
-                          <ref role="cht4Q" to="kdzh:6Iq8148eRud" resolve="BuildMps_Branding" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="1uHKPH" id="2FXdWdhFw9M" role="2OqNvi" />
-                  </node>
                 </node>
               </node>
             </node>

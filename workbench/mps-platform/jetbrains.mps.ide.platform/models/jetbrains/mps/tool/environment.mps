@@ -3149,11 +3149,11 @@
                 <property role="3TUv4t" value="true" />
                 <property role="TrG5h" value="waiter" />
                 <node concept="3uibUv" id="78Cs0ext7mC" role="1tU5fm">
-                  <ref role="3uigEE" node="78Cs0exs$s0" resolve="PostStartupActivitiesWaiter" />
+                  <ref role="3uigEE" node="78Cs0exs$s0" resolve="IdeaEnvironment.PostStartupActivitiesWaiter" />
                 </node>
                 <node concept="2ShNRf" id="2u34iHEuJmG" role="33vP2m">
                   <node concept="1pGfFk" id="78Cs0ext8hw" role="2ShVmc">
-                    <ref role="37wK5l" node="78Cs0exs$sc" resolve="PostStartupActivitiesWaiter" />
+                    <ref role="37wK5l" node="78Cs0exs$sc" resolve="IdeaEnvironment.PostStartupActivitiesWaiter" />
                     <node concept="2OqwBi" id="78Cs0ext8sb" role="37wK5m">
                       <node concept="37vLTw" id="78Cs0ext8my" role="2Oq$k0">
                         <ref role="3cqZAo" node="4_TMdeLkOoi" resolve="project" />

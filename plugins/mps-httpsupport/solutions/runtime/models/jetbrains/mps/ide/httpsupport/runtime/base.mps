@@ -474,7 +474,7 @@
                 <ref role="37wK5l" to="z1c3:~ProjectManager.getOpenedProjects()" resolve="getOpenedProjects" />
               </node>
               <node concept="37vLTw" id="76_s2Q_cZ2o" role="2Oq$k0">
-                <ref role="3cqZAo" node="76_s2Q_cZ2h" resolve="findComponent" />
+                <ref role="3cqZAo" node="76_s2Q_cZ2h" resolve="projectManager" />
               </node>
             </node>
           </node>

@@ -4873,7 +4873,7 @@
               <ref role="3cqZAo" node="5gsHVKBeiES" resolve="testIdentifier" />
             </node>
             <node concept="Rm8GO" id="5gsHVKBioM0" role="37wK5m">
-              <ref role="1Px2BO" to="n4ib:~TestExecutionResult$Status" resolve="Status" />
+              <ref role="1Px2BO" to="n4ib:~TestExecutionResult$Status" resolve="TestExecutionResult.Status" />
               <ref role="Rm8GQ" to="n4ib:~TestExecutionResult$Status.ABORTED" resolve="ABORTED" />
             </node>
             <node concept="10Nm6u" id="5gsHVKBeiF4" role="37wK5m" />
@@ -5012,7 +5012,7 @@
             <property role="3TUv4t" value="true" />
             <property role="TrG5h" value="status" />
             <node concept="3uibUv" id="5gsHVKBeiFS" role="1tU5fm">
-              <ref role="3uigEE" to="n4ib:~TestExecutionResult$Status" resolve="Status" />
+              <ref role="3uigEE" to="n4ib:~TestExecutionResult$Status" resolve="TestExecutionResult.Status" />
             </node>
             <node concept="2OqwBi" id="5gsHVKBucY8" role="33vP2m">
               <node concept="37vLTw" id="5gsHVKBf8Ru" role="2Oq$k0">
@@ -5070,7 +5070,7 @@
             <node concept="3clFbC" id="5gsHVKBeiG9" role="37vLTx">
               <node concept="Rm8GO" id="5gsHVKC3YSZ" role="3uHU7B">
                 <ref role="Rm8GQ" to="n4ib:~TestExecutionResult$Status.SUCCESSFUL" resolve="SUCCESSFUL" />
-                <ref role="1Px2BO" to="n4ib:~TestExecutionResult$Status" resolve="Status" />
+                <ref role="1Px2BO" to="n4ib:~TestExecutionResult$Status" resolve="TestExecutionResult.Status" />
               </node>
               <node concept="2OqwBi" id="5gsHVKBmChr" role="3uHU7w">
                 <node concept="37vLTw" id="5gsHVKBgILz" role="2Oq$k0">
@@ -5098,7 +5098,7 @@
       <node concept="37vLTG" id="5gsHVKBeiGh" role="3clF46">
         <property role="TrG5h" value="status" />
         <node concept="3uibUv" id="5gsHVKBeiGi" role="1tU5fm">
-          <ref role="3uigEE" to="n4ib:~TestExecutionResult$Status" resolve="Status" />
+          <ref role="3uigEE" to="n4ib:~TestExecutionResult$Status" resolve="TestExecutionResult.Status" />
         </node>
       </node>
       <node concept="37vLTG" id="5gsHVKBeiGj" role="3clF46">
@@ -5155,7 +5155,7 @@
                   <ref role="3cqZAo" node="5gsHVKBeiGh" resolve="status" />
                 </node>
                 <node concept="Rm8GO" id="5gsHVKBfGl6" role="3uHU7w">
-                  <ref role="1Px2BO" to="n4ib:~TestExecutionResult$Status" resolve="Status" />
+                  <ref role="1Px2BO" to="n4ib:~TestExecutionResult$Status" resolve="TestExecutionResult.Status" />
                   <ref role="Rm8GQ" to="n4ib:~TestExecutionResult$Status.FAILED" resolve="FAILED" />
                 </node>
               </node>
@@ -5176,7 +5176,7 @@
                     <ref role="3cqZAo" node="5gsHVKBeiGh" resolve="status" />
                   </node>
                   <node concept="Rm8GO" id="5gsHVKBgIL5" role="3uHU7w">
-                    <ref role="1Px2BO" to="n4ib:~TestExecutionResult$Status" resolve="Status" />
+                    <ref role="1Px2BO" to="n4ib:~TestExecutionResult$Status" resolve="TestExecutionResult.Status" />
                     <ref role="Rm8GQ" to="n4ib:~TestExecutionResult$Status.FAILED" resolve="FAILED" />
                   </node>
                 </node>
@@ -5186,7 +5186,7 @@
                       <ref role="3cqZAo" node="5gsHVKBeiGh" resolve="status" />
                     </node>
                     <node concept="Rm8GO" id="5gsHVKBfSk0" role="3uHU7w">
-                      <ref role="1Px2BO" to="n4ib:~TestExecutionResult$Status" resolve="Status" />
+                      <ref role="1Px2BO" to="n4ib:~TestExecutionResult$Status" resolve="TestExecutionResult.Status" />
                       <ref role="Rm8GQ" to="n4ib:~TestExecutionResult$Status.ABORTED" resolve="ABORTED" />
                     </node>
                   </node>
@@ -5267,7 +5267,7 @@
                         <ref role="3cqZAo" node="5gsHVKBeiGh" resolve="status" />
                       </node>
                       <node concept="Rm8GO" id="5gsHVKBfwpu" role="3uHU7w">
-                        <ref role="1Px2BO" to="n4ib:~TestExecutionResult$Status" resolve="Status" />
+                        <ref role="1Px2BO" to="n4ib:~TestExecutionResult$Status" resolve="TestExecutionResult.Status" />
                         <ref role="Rm8GQ" to="n4ib:~TestExecutionResult$Status.FAILED" resolve="FAILED" />
                       </node>
                     </node>
@@ -5509,7 +5509,7 @@
                                     <ref role="3cqZAo" node="5gsHVKBeiGh" resolve="status" />
                                   </node>
                                   <node concept="Rm8GO" id="5gsHVKBiQpG" role="3uHU7w">
-                                    <ref role="1Px2BO" to="n4ib:~TestExecutionResult$Status" resolve="Status" />
+                                    <ref role="1Px2BO" to="n4ib:~TestExecutionResult$Status" resolve="TestExecutionResult.Status" />
                                     <ref role="Rm8GQ" to="n4ib:~TestExecutionResult$Status.ABORTED" resolve="ABORTED" />
                                   </node>
                                 </node>
@@ -5529,7 +5529,7 @@
                                   <ref role="3cqZAo" node="5gsHVKBeiGh" resolve="status" />
                                 </node>
                                 <node concept="Rm8GO" id="5gsHVKBfFCd" role="3uHU7w">
-                                  <ref role="1Px2BO" to="n4ib:~TestExecutionResult$Status" resolve="Status" />
+                                  <ref role="1Px2BO" to="n4ib:~TestExecutionResult$Status" resolve="TestExecutionResult.Status" />
                                   <ref role="Rm8GQ" to="n4ib:~TestExecutionResult$Status.ABORTED" resolve="ABORTED" />
                                 </node>
                               </node>
@@ -5615,7 +5615,7 @@
                   <ref role="3cqZAo" node="5gsHVKBeiGh" resolve="status" />
                 </node>
                 <node concept="Rm8GO" id="5gsHVKBiQnK" role="3uHU7w">
-                  <ref role="1Px2BO" to="n4ib:~TestExecutionResult$Status" resolve="Status" />
+                  <ref role="1Px2BO" to="n4ib:~TestExecutionResult$Status" resolve="TestExecutionResult.Status" />
                   <ref role="Rm8GQ" to="n4ib:~TestExecutionResult$Status.FAILED" resolve="FAILED" />
                 </node>
               </node>
@@ -5625,7 +5625,7 @@
                     <ref role="3cqZAo" node="5gsHVKBeiGh" resolve="status" />
                   </node>
                   <node concept="Rm8GO" id="5gsHVKBgILv" role="3uHU7w">
-                    <ref role="1Px2BO" to="n4ib:~TestExecutionResult$Status" resolve="Status" />
+                    <ref role="1Px2BO" to="n4ib:~TestExecutionResult$Status" resolve="TestExecutionResult.Status" />
                     <ref role="Rm8GQ" to="n4ib:~TestExecutionResult$Status.ABORTED" resolve="ABORTED" />
                   </node>
                 </node>
@@ -5771,7 +5771,7 @@
             <node concept="3uibUv" id="5gsHVKBeiJX" role="1tU5fm">
               <ref role="3uigEE" to="33ny:~List" resolve="List" />
               <node concept="3uibUv" id="5gsHVKBeiJY" role="11_B2D">
-                <ref role="3uigEE" to="n4ib:~UniqueId$Segment" resolve="Segment" />
+                <ref role="3uigEE" to="n4ib:~UniqueId$Segment" resolve="UniqueId.Segment" />
               </node>
             </node>
             <node concept="2OqwBi" id="5gsHVKBxhfK" role="33vP2m">
@@ -5803,7 +5803,7 @@
           <node concept="3cpWsn" id="5gsHVKBeiK5" role="3cpWs9">
             <property role="TrG5h" value="lastSegment" />
             <node concept="3uibUv" id="5gsHVKBeiK7" role="1tU5fm">
-              <ref role="3uigEE" to="n4ib:~UniqueId$Segment" resolve="Segment" />
+              <ref role="3uigEE" to="n4ib:~UniqueId$Segment" resolve="UniqueId.Segment" />
             </node>
             <node concept="2OqwBi" id="5gsHVKBFrCP" role="33vP2m">
               <node concept="37vLTw" id="5gsHVKBiQpV" role="2Oq$k0">
@@ -8452,12 +8452,12 @@
       <property role="TrG5h" value="STD_ESCAPER" />
       <property role="3TUv4t" value="true" />
       <node concept="3uibUv" id="5gsHVKB0Xsk" role="1tU5fm">
-        <ref role="3uigEE" node="5gsHVKB0XrW" resolve="EscapeInfoProvider" />
+        <ref role="3uigEE" node="5gsHVKB0XrW" resolve="MapSerializerUtil.EscapeInfoProvider" />
       </node>
       <node concept="2ShNRf" id="5gsHVKB0Xsl" role="33vP2m">
         <node concept="YeOm9" id="5gsHVKB0Xsm" role="2ShVmc">
           <node concept="1Y3b0j" id="5gsHVKB0Xsn" role="YeSDq">
-            <ref role="1Y3XeK" node="5gsHVKB0XrW" resolve="EscapeInfoProvider" />
+            <ref role="1Y3XeK" node="5gsHVKB0XrW" resolve="MapSerializerUtil.EscapeInfoProvider" />
             <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
             <node concept="3clFb_" id="5gsHVKB0Xso" role="jymVt">
               <property role="TrG5h" value="escape" />
@@ -8662,7 +8662,7 @@
       <node concept="37vLTG" id="5gsHVKB0Xtv" role="3clF46">
         <property role="TrG5h" value="p" />
         <node concept="3uibUv" id="5gsHVKB0Xtw" role="1tU5fm">
-          <ref role="3uigEE" node="5gsHVKB0XrW" resolve="EscapeInfoProvider" />
+          <ref role="3uigEE" node="5gsHVKB0XrW" resolve="MapSerializerUtil.EscapeInfoProvider" />
         </node>
       </node>
       <node concept="3clFbS" id="5gsHVKB0Xtx" role="3clF47">
@@ -8962,7 +8962,7 @@
         <property role="TrG5h" value="p" />
         <property role="3TUv4t" value="true" />
         <node concept="3uibUv" id="5gsHVKB0Xve" role="1tU5fm">
-          <ref role="3uigEE" node="5gsHVKB0XrW" resolve="EscapeInfoProvider" />
+          <ref role="3uigEE" node="5gsHVKB0XrW" resolve="MapSerializerUtil.EscapeInfoProvider" />
         </node>
       </node>
       <node concept="3clFbS" id="5gsHVKB0Xvf" role="3clF47">

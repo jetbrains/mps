@@ -1436,7 +1436,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="4Tt$OebmOk5" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="4Tt$OebmVO_" role="jymVt" />
@@ -15608,7 +15608,7 @@
           </node>
           <node concept="3fqX7Q" id="6maaEP0Bjgn" role="3clFbw">
             <node concept="37vLTw" id="6maaEP0BkSc" role="3fr31v">
-              <ref role="3cqZAo" node="6maaEP0AYwk" resolve="compatibilityMode" />
+              <ref role="3cqZAo" node="6maaEP0AYwk" resolve="useCompatibilityMode" />
             </node>
           </node>
         </node>
@@ -20999,7 +20999,7 @@
           <node concept="3cpWsn" id="4g6NqHEcGmP" role="3cpWs9">
             <property role="TrG5h" value="testModuleRecord" />
             <node concept="3uibUv" id="4g6NqHEcGmQ" role="1tU5fm">
-              <ref role="3uigEE" to="34h4:6fYV1N6aevT" resolve="TestRecord" />
+              <ref role="3uigEE" to="34h4:6fYV1N6aevT" resolve="ExecutorScript.TestRecord" />
             </node>
             <node concept="10Nm6u" id="4g6NqHEcGAl" role="33vP2m" />
           </node>
@@ -21051,7 +21051,7 @@
               <node concept="37vLTI" id="4g6NqHEcHYw" role="3clFbG">
                 <node concept="2ShNRf" id="4g6NqHEcI0j" role="37vLTx">
                   <node concept="1pGfFk" id="4g6NqHEcIxr" role="2ShVmc">
-                    <ref role="37wK5l" to="34h4:6fYV1N6afN5" resolve="TestRecord" />
+                    <ref role="37wK5l" to="34h4:6fYV1N6afN5" resolve="ExecutorScript.TestRecord" />
                     <node concept="37vLTw" id="4g6NqHEd2K0" role="37wK5m">
                       <ref role="3cqZAo" node="4g6NqHEcyYy" resolve="testModule" />
                     </node>
