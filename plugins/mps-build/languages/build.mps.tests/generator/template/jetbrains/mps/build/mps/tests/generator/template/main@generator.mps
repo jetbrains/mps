@@ -2502,6 +2502,16 @@
                     </node>
                   </node>
                 </node>
+                <node concept="2pNNFK" id="EXesxOnbZ1" role="3o6s8t">
+                  <property role="qg3DV" value="true" />
+                  <property role="2pNNFO" value="jvmarg" />
+                  <node concept="2pNUuL" id="EXesxOnbZ2" role="2pNNFR">
+                    <property role="2pNUuO" value="value" />
+                    <node concept="2pMdtt" id="EXesxOnbZ3" role="2pMdts">
+                      <property role="2pMdty" value="--add-opens=java.base/sun.nio.fs=ALL-UNNAMED" />
+                    </node>
+                  </node>
+                </node>
                 <node concept="2pNNFK" id="4zcjQqfL0l0" role="3o6s8t">
                   <property role="qg3DV" value="true" />
                   <property role="2pNNFO" value="jvmarg" />
