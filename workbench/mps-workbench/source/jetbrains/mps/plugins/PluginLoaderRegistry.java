@@ -20,6 +20,7 @@ import com.intellij.ide.ApplicationInitializedListener;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
 import com.intellij.openapi.progress.EmptyProgressIndicator;
 import com.intellij.openapi.progress.ProcessCanceledException;
@@ -426,10 +427,18 @@ public class PluginLoaderRegistry implements Disposable {
       //       out alternative mechanism to trigger plugin reload). Another approach would be not to use EDT for update
       //       although I expect assumptions about EDT in App/ProjectPlugin initialization code.
       ActionManager.getInstance();
+      // explicit ANY modality state, despite the fact invokeAndWait documentation promises modality state of the current task:
+      // "When invoked in the thread of some modal progress, returns modality state corresponding to that progress' dialog".
+      // Indeed, occasionally I see modality tailored for this model task, however, I've also seen NON_MODAL value, which
+      // prevents/delays update. As long as we need EDT just to ensure MPS plugins can init/dispose their UI elements, and not for user
+      // interaction, I hope "ANY" modality is good (== we just need to run this code in EDT ASAP).
+      final ModalityState modalityState = ApplicationManager.getApplication().getAnyModalityState();
       boolean showing = indicator.isShowing();
       if (!showing) {
         // we cannot do anything, lets just freeze without any progress
-        ApplicationManager.getApplication().invokeAndWait(() -> update(new EmptyProgressMonitor()));
+        ApplicationManager.getApplication().invokeAndWait(() -> update(new EmptyProgressMonitor()), modalityState);
+        // I've never seen this part of code working, can't be certain defaultModalityState() won't work here, but
+        // with the argument, above, seems fair to run with ANY, and, second, helps code consistency.
       } else {
         try {
           indicator.pushState();
@@ -440,7 +449,7 @@ public class PluginLoaderRegistry implements Disposable {
 //          } catch (InterruptedException e) {
 //            e.printStackTrace();
 //          }
-          ApplicationManager.getApplication().invokeAndWait(() -> update(new EmptyProgressMonitor()));
+          ApplicationManager.getApplication().invokeAndWait(() -> update(new EmptyProgressMonitor()), modalityState);
         } finally {
           indicator.popState();
         }
@@ -466,6 +475,15 @@ public class PluginLoaderRegistry implements Disposable {
           //     there's some bad code (like SNodeOperations.getNode, accessing global repo), need to switch from lock() to tryLock()
           //     for scenarios inside CLM to be ready for possible abuse and to prevent deadlock.
           //     If necessary, can grab read lock inside CLM.runTransaction as it has knowledge of the repo it deals with.
+          // FWIW, ModuleCL.loadOwnClass->loadClass->loadFromDeps may end up in RootClassloaderLookup for an SModule, which
+          // requires MODEL READ. FIXME I don't think CL shall depend on model read, we have no means to guarantee loading of a
+          //                       class would happen in a thread that grabs any model access at all.
+          // Another curious point is that reload of a module happens in 2 CLM transaction but within single model write,
+          // see CLM.doReloadModules and transactions in #unloadModules() + #preLoadModules. I'm not quite sure there's
+          // a reason to be explicit about CLM transactions here (now that we listen to LanguageRegistry here), but given the fact
+          // class loading is picky about SModule state (see RootClassloaderLookup mention, above), I feel we shall keep it for now,
+          // until LanguageRegistry notification mechanism becomes mainstream and demand for CLs w/o model read would force us to
+          // make true CLs
           myClassLoaderManager.runTransaction(() -> {
             // NOTE: when we call #reset we are bound to process those changes, otherwise we lose them
             // for instance, that is the reason we cannot call #checkCancelled here

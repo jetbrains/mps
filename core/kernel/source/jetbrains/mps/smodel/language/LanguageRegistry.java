@@ -520,11 +520,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
           LOG.trace("Deployment notification is over, actual runtime deactivation to start. Token: " + unloadToken);
         }
 
-        // once all listeners done processing, deactivate MR
-        for (ModuleRuntime rt : modulesToUnload.myModules) {
-          rt.deactivate(rtc);
-        }
-        // and let CLs go
+        // let CLs go
         callback.release(unloadToken);
         if (LOG.isTraceLevel()) {
           LOG.trace("CLM unload  token released: " + unloadToken);
@@ -547,6 +543,15 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
       }
       notifyExtensionsChanged(extensionTargets);
       reinitialize();
+
+      // I'd love to deactivate MR only when all listeners of myDeploymentNotification done processing,
+      // but delaying deactivation without delaying activation of a reloaded module leaves MPS in inconsistent state
+      // (namely j.m.make.facets.ModuleActivator and FacetRegistry, which keeps single facet instance per IName)
+      // hence as a quick'n'dirty workaround, I deactivate a module right away, even though its runtime is expected to be
+      // "functional" until ModuleDeploymentListener(s) notify they are done processing notifications.
+      for (ModuleRuntime rt : modulesToUnload.myModules) {
+        rt.deactivate(rtc);
+      }
     } finally {
       myRuntimeInstanceAccess.writeLock().unlock();
     }
