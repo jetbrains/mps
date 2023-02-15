@@ -101,7 +101,7 @@ public class JUnit_Command {
     JUnitSettings_Configuration junitParameters = settings.myJUnitParameters;
     TestsWithParameters tests2run = settings.myTests2Run;
     String vmParam = javaRunParameters.getJavaParameters().vmOptions();
-    vmParam = IterableUtils.join(ListSequence.fromList(tests2run.getParameters().getJvmArgs()), " ") + (((vmParam != null && vmParam.length() > 0) ? " " + vmParam : ""));
+    vmParam = IterableUtils.join(ListSequence.fromList(tests2run.getParameters().getJvmArgs()), " ") + (((vmParam != null && vmParam.length() > 0) ? " " + vmParam : "")) + JUnit_Command.jnaBootLib();
     String settingsPath = junitParameters.getSettingsLocation();
     if ((settingsPath != null && settingsPath.length() > 0)) {
       String configPath = new File(settingsPath, "config").getAbsolutePath();
@@ -111,6 +111,26 @@ public class JUnit_Command {
     } else {
       return vmParam;
     }
+  }
+  private static String jnaBootLib() {
+    String argString = "";
+    if (!(jetbrains.mps.util.PathManager.isFromSources())) {
+      // we're running from app bundle/installed app
+      argString = String.format(" -Djna.boot.library.path=\"%s/jna\"", jetbrains.mps.util.PathManager.getLibPath());
+
+    } else {
+      File lib = new File(PathManager.getLibPath(), "jna");
+      if (lib.exists()) {
+        StringBuilder sb = new StringBuilder(" -Djna.boot.library.path=");
+        String ps = "";
+        for (File subdir : lib.listFiles((File f) -> f.isDirectory())) {
+          sb.append(ps).append(String.format("\"%s%s%s%s%s\"", jetbrains.mps.util.PathManager.getLibPath(), File.separator, "jna", File.separator, subdir.getName()));
+          ps = File.pathSeparator;
+        }
+        argString = sb.toString();
+      }
+    }
+    return argString;
   }
   private static String createPropString(String propName, String propValue) {
     String val = NameUtil.escapeString(propValue);

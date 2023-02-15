@@ -63,6 +63,7 @@ public final class TestParameters {
       ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED");
       ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/jdk.internal.vm=ALL-UNNAMED");
       ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/sun.nio.ch=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/sun.nio.fs=ALL-UNNAMED");
       ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/sun.security.ssl=ALL-UNNAMED");
       ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/sun.security.util=ALL-UNNAMED");
       ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/com.apple.eawt=ALL-UNNAMED");
