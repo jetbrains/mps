@@ -452,6 +452,10 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     }
     ck.put(GENERATED_KEY, Boolean.toString(true));
     ck.put(PATH_KEY, moduleDir.findChild(AbstractModule.CLASSES_GEN).getPath());
+    // forJavaCodeModule specifies PATH_KEY, just in case it's different from module dir, clean it to avoid
+    // hard-to-trace defects like MPS-35397. Eventually, once we stick to path spec, need to pass macro-relative
+    // path spec here instead of moduleDir (would take quite some refactoring in LanguageProducer and module descriptor editing in general)
+    ck.putPathSpec(PATH_KEY, null);
   }
 
   public static void setDefaultClassesGenLocation(@NotNull ModuleDescriptor md, @NotNull IFile moduleDir) {

@@ -151,6 +151,8 @@ public class LanguageProducer {
       modelRootDescriptor = DefaultModelRoot.createSingleFolderDescriptor(templateModelsLocation);
     }
     generatorDescriptor.getModelRootDescriptors().add(modelRootDescriptor);
+    // FIXME Above, to configure a root, we create typed MR, fill with data and convert to MRD
+    //      with JMF, we configure MFD (persistence level) directly. Need to stick to single approach
     ModuleFacetDescriptor jmfDescriptor = JavaModuleFacetImpl.forNewJavaCodeModule();
     JavaModuleFacetImpl.setDefaultClassesGenLocation(jmfDescriptor, generatorModuleLocation);
     generatorDescriptor.getModuleFacetDescriptors().add(jmfDescriptor);
