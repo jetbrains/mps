@@ -28373,6 +28373,338 @@
           </node>
         </node>
       </node>
+      <node concept="3981dG" id="1dONgcPskHu" role="39821P">
+        <node concept="3_J27D" id="1dONgcPskHv" role="Nbhlr">
+          <node concept="3Mxwey" id="1dONgcPskHw" role="3MwsjC">
+            <ref role="3Mxwex" node="3IKDaVZnAxg" resolve="build.number" />
+          </node>
+          <node concept="3Mxwew" id="1dONgcPskHx" role="3MwsjC">
+            <property role="3MwjfP" value="-macos-aarch64.zip" />
+          </node>
+        </node>
+        <node concept="398223" id="1dONgcPskHy" role="39821P">
+          <node concept="398223" id="1dONgcPskHz" role="39821P">
+            <node concept="3ygNvl" id="1dONgcPskH$" role="39821P">
+              <ref role="3ygNvj" node="3IKDaVZmzS8" />
+            </node>
+            <node concept="3_J27D" id="1dONgcPskH_" role="Nbhlr">
+              <node concept="3Mxwew" id="1dONgcPskHA" role="3MwsjC">
+                <property role="3MwjfP" value="Contents" />
+              </node>
+            </node>
+            <node concept="398223" id="1dONgcPskHB" role="39821P">
+              <node concept="3_J27D" id="1dONgcPskHC" role="Nbhlr">
+                <node concept="3Mxwew" id="1dONgcPskHD" role="3MwsjC">
+                  <property role="3MwjfP" value="Resources" />
+                </node>
+              </node>
+              <node concept="28jJK3" id="1dONgcPskHE" role="39821P">
+                <node concept="55IIr" id="1dONgcPskHF" role="28jJRO">
+                  <node concept="2Ry0Ak" id="1dONgcPskHG" role="iGT6I">
+                    <property role="2Ry0Am" value="build" />
+                    <node concept="2Ry0Ak" id="1dONgcPskHH" role="2Ry0An">
+                      <property role="2Ry0Am" value="resources" />
+                      <node concept="2Ry0Ak" id="1dONgcPskHI" role="2Ry0An">
+                        <property role="2Ry0Am" value="mps.icns" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="398223" id="1dONgcPskHJ" role="39821P">
+              <node concept="3_J27D" id="1dONgcPskHK" role="Nbhlr">
+                <node concept="3Mxwew" id="1dONgcPskHL" role="3MwsjC">
+                  <property role="3MwjfP" value="MacOS" />
+                </node>
+              </node>
+              <node concept="28jJK3" id="1dONgcPskHM" role="39821P">
+                <property role="28jJZ5" value="755" />
+                <node concept="55IIr" id="1dONgcPskHN" role="28jJRO">
+                  <node concept="2Ry0Ak" id="1dONgcPskHO" role="iGT6I">
+                    <property role="2Ry0Am" value="build" />
+                    <node concept="2Ry0Ak" id="1dONgcPskHP" role="2Ry0An">
+                      <property role="2Ry0Am" value="resources" />
+                      <node concept="2Ry0Ak" id="1dONgcPskHQ" role="2Ry0An">
+                        <property role="2Ry0Am" value="mps" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="398223" id="1dONgcPskHR" role="39821P">
+              <node concept="3_J27D" id="1dONgcPskHS" role="Nbhlr">
+                <node concept="3Mxwew" id="1dONgcPskHT" role="3MwsjC">
+                  <property role="3MwjfP" value="bin" />
+                </node>
+              </node>
+              <node concept="28jJK3" id="1dONgcPskHU" role="39821P">
+                <node concept="55IIr" id="1dONgcPskHV" role="28jJRO">
+                  <node concept="2Ry0Ak" id="1dONgcPskHW" role="iGT6I">
+                    <property role="2Ry0Am" value="bin" />
+                    <node concept="2Ry0Ak" id="1dONgcPskHX" role="2Ry0An">
+                      <property role="2Ry0Am" value="mac" />
+                      <node concept="2Ry0Ak" id="1dONgcPskHY" role="2Ry0An">
+                        <property role="2Ry0Am" value="libnst64.dylib" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="28jJK3" id="1dONgcPskHZ" role="39821P">
+                <node concept="3co7Ac" id="1dONgcPskI0" role="28jJR8">
+                  <property role="3co7Am" value="lf" />
+                  <property role="3cpA_W" value="true" />
+                </node>
+                <node concept="2$htT0" id="1dONgcPskI1" role="28jJR8">
+                  <property role="2$htTZ" value="mps64.vmoptions" />
+                  <property role="2$htTY" value="mps.vmoptions" />
+                </node>
+                <node concept="55IIr" id="1dONgcPskI2" role="28jJRO">
+                  <node concept="2Ry0Ak" id="1dONgcPskI3" role="iGT6I">
+                    <property role="2Ry0Am" value="plugins" />
+                    <node concept="2Ry0Ak" id="1dONgcPskI4" role="2Ry0An">
+                      <property role="2Ry0Am" value="mps-build" />
+                      <node concept="2Ry0Ak" id="1dONgcPskI5" role="2Ry0An">
+                        <property role="2Ry0Am" value="solutions" />
+                        <node concept="2Ry0Ak" id="1dONgcPskI6" role="2Ry0An">
+                          <property role="2Ry0Am" value="mpsBuild" />
+                          <node concept="2Ry0Ak" id="1dONgcPskI7" role="2Ry0An">
+                            <property role="2Ry0Am" value="source_gen" />
+                            <node concept="2Ry0Ak" id="1dONgcPskI8" role="2Ry0An">
+                              <property role="2Ry0Am" value="jetbrains" />
+                              <node concept="2Ry0Ak" id="1dONgcPskI9" role="2Ry0An">
+                                <property role="2Ry0Am" value="mps" />
+                                <node concept="2Ry0Ak" id="1dONgcPskIa" role="2Ry0An">
+                                  <property role="2Ry0Am" value="ide" />
+                                  <node concept="2Ry0Ak" id="1dONgcPskIb" role="2Ry0An">
+                                    <property role="2Ry0Am" value="build" />
+                                    <node concept="2Ry0Ak" id="1dONgcPskIc" role="2Ry0An">
+                                      <property role="2Ry0Am" value="mps64.vmoptions" />
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="28jJK3" id="1dONgcPskId" role="39821P">
+                <property role="28jJZ5" value="755" />
+                <node concept="55IIr" id="1dONgcPskIe" role="28jJRO">
+                  <node concept="2Ry0Ak" id="1dONgcPskIf" role="iGT6I">
+                    <property role="2Ry0Am" value="bin" />
+                    <node concept="2Ry0Ak" id="1dONgcPskIg" role="2Ry0An">
+                      <property role="2Ry0Am" value="mac" />
+                      <node concept="2Ry0Ak" id="1dONgcPskIh" role="2Ry0An">
+                        <property role="2Ry0Am" value="restarter" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="28jJK3" id="1dONgcPskIi" role="39821P">
+                <property role="28jJZ5" value="755" />
+                <node concept="55IIr" id="1dONgcPskIj" role="28jJRO">
+                  <node concept="2Ry0Ak" id="1dONgcPskIk" role="iGT6I">
+                    <property role="2Ry0Am" value="bin" />
+                    <node concept="2Ry0Ak" id="1dONgcPskIl" role="2Ry0An">
+                      <property role="2Ry0Am" value="mac" />
+                      <node concept="2Ry0Ak" id="1dONgcPskIm" role="2Ry0An">
+                        <property role="2Ry0Am" value="fsnotifier" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="28jJK3" id="1dONgcPskIn" role="39821P">
+                <property role="28jJZ5" value="755" />
+                <node concept="55IIr" id="1dONgcPskIo" role="28jJRO">
+                  <node concept="2Ry0Ak" id="1dONgcPskIp" role="iGT6I">
+                    <property role="2Ry0Am" value="bin" />
+                    <node concept="2Ry0Ak" id="1dONgcPskIq" role="2Ry0An">
+                      <property role="2Ry0Am" value="mac" />
+                      <node concept="2Ry0Ak" id="1dONgcPskIr" role="2Ry0An">
+                        <property role="2Ry0Am" value="printenv" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="398223" id="1dONgcPskIs" role="39821P">
+              <node concept="398223" id="1dONgcPskIt" role="39821P">
+                <node concept="3_J27D" id="1dONgcPskIu" role="Nbhlr">
+                  <node concept="3Mxwew" id="1dONgcPskIv" role="3MwsjC">
+                    <property role="3MwjfP" value="jna" />
+                  </node>
+                </node>
+                <node concept="28jJK3" id="1dONgcPskIw" role="39821P">
+                  <node concept="55IIr" id="1dONgcPskIx" role="28jJRO">
+                    <node concept="2Ry0Ak" id="1dONgcPskIy" role="iGT6I">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="1dONgcPskIz" role="2Ry0An">
+                        <property role="2Ry0Am" value="jna" />
+                        <node concept="2Ry0Ak" id="1dONgcPskI$" role="2Ry0An">
+                          <property role="2Ry0Am" value="darwin-aarch64" />
+                          <node concept="2Ry0Ak" id="1dONgcPskI_" role="2Ry0An">
+                            <property role="2Ry0Am" value="libjnidispatch.jnilib" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3_J27D" id="1dONgcPskIA" role="Nbhlr">
+                <node concept="3Mxwew" id="1dONgcPskIB" role="3MwsjC">
+                  <property role="3MwjfP" value="lib" />
+                </node>
+              </node>
+            </node>
+            <node concept="398223" id="1dONgcPskIC" role="39821P">
+              <node concept="3_J27D" id="1dONgcPskID" role="Nbhlr">
+                <node concept="3Mxwew" id="1dONgcPskIE" role="3MwsjC">
+                  <property role="3MwjfP" value="plugins" />
+                </node>
+              </node>
+              <node concept="398223" id="1dONgcPskIF" role="39821P">
+                <node concept="3_J27D" id="1dONgcPskIG" role="Nbhlr">
+                  <node concept="3Mxwew" id="1dONgcPskIH" role="3MwsjC">
+                    <property role="3MwjfP" value="laf-macos" />
+                  </node>
+                </node>
+                <node concept="2HvfSZ" id="1dONgcPskII" role="39821P">
+                  <node concept="55IIr" id="1dONgcPskIJ" role="2HvfZ0">
+                    <node concept="2Ry0Ak" id="1dONgcPskIK" role="iGT6I">
+                      <property role="2Ry0Am" value="plugins" />
+                      <node concept="2Ry0Ak" id="1dONgcPskIL" role="2Ry0An">
+                        <property role="2Ry0Am" value="laf-macos" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="28jJK3" id="1dONgcPskIM" role="39821P">
+              <node concept="2$gBol" id="1dONgcPskIN" role="28jJR8">
+                <property role="2$htvj" value="*" />
+                <node concept="NbPM2" id="1dONgcPskIO" role="2$htvi">
+                  <node concept="3Mxwew" id="1dONgcPskIP" role="3MwsjC">
+                    <property role="3MwjfP" value="Info.plist" />
+                  </node>
+                </node>
+              </node>
+              <node concept="1688n2" id="1dONgcPskIQ" role="28jJR8">
+                <property role="1688n3" value="\$version\$" />
+                <property role="1688n6" value="g" />
+                <node concept="NbPM2" id="1dONgcPskIR" role="1688n0">
+                  <node concept="3Mxwey" id="1dONgcPskIS" role="3MwsjC">
+                    <ref role="3Mxwex" node="5HVSRHdVf2d" resolve="version" />
+                  </node>
+                </node>
+              </node>
+              <node concept="1688n2" id="1dONgcPskIT" role="28jJR8">
+                <property role="1688n3" value="\$build\$" />
+                <property role="1688n6" value="g" />
+                <node concept="NbPM2" id="1dONgcPskIU" role="1688n0">
+                  <node concept="3Mxwey" id="1dONgcPskIV" role="3MwsjC">
+                    <ref role="3Mxwex" node="3IKDaVZnAxg" resolve="build.number" />
+                  </node>
+                </node>
+              </node>
+              <node concept="1688n2" id="1dONgcPskIW" role="28jJR8">
+                <property role="1688n3" value="\$version\.major\$" />
+                <property role="1688n6" value="g" />
+                <node concept="NbPM2" id="1dONgcPskIX" role="1688n0">
+                  <node concept="3Mxwey" id="1dONgcPskIY" role="3MwsjC">
+                    <ref role="3Mxwex" node="3AMbuf1a7Ob" resolve="version.major" />
+                  </node>
+                </node>
+              </node>
+              <node concept="1688n2" id="1dONgcPskIZ" role="28jJR8">
+                <property role="1688n3" value="\$version\.minor\$" />
+                <property role="1688n6" value="g" />
+                <node concept="NbPM2" id="1dONgcPskJ0" role="1688n0">
+                  <node concept="3Mxwey" id="1dONgcPskJ1" role="3MwsjC">
+                    <ref role="3Mxwex" node="3AMbuf1a7Of" resolve="version.minor" />
+                  </node>
+                </node>
+              </node>
+              <node concept="1688n2" id="1dONgcPskJ2" role="28jJR8">
+                <property role="1688n3" value="\$version\.bugfixNr\$" />
+                <property role="1688n6" value="g" />
+                <node concept="NbPM2" id="1dONgcPskJ3" role="1688n0">
+                  <node concept="3Mxwey" id="1dONgcPskJ4" role="3MwsjC">
+                    <ref role="3Mxwex" node="3AMbuf1N5Oy" resolve="version.bugfixNr" />
+                  </node>
+                </node>
+              </node>
+              <node concept="1688n2" id="1dONgcPskJ5" role="28jJR8">
+                <property role="1688n3" value="\$version\.eap\$" />
+                <property role="1688n6" value="g" />
+                <node concept="NbPM2" id="1dONgcPskJ6" role="1688n0">
+                  <node concept="3Mxwey" id="1dONgcPskJ7" role="3MwsjC">
+                    <ref role="3Mxwex" node="3AMbuf1a7On" resolve="version.eap" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3co7Ac" id="1dONgcPskJ8" role="28jJR8">
+                <property role="3co7Am" value="lf" />
+                <property role="3cpA_W" value="true" />
+              </node>
+              <node concept="55IIr" id="1dONgcPskJ9" role="28jJRO">
+                <node concept="2Ry0Ak" id="1dONgcPskJa" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="1dONgcPskJb" role="2Ry0An">
+                    <property role="2Ry0Am" value="mps-build" />
+                    <node concept="2Ry0Ak" id="1dONgcPskJc" role="2Ry0An">
+                      <property role="2Ry0Am" value="solutions" />
+                      <node concept="2Ry0Ak" id="1dONgcPskJd" role="2Ry0An">
+                        <property role="2Ry0Am" value="mpsBuild" />
+                        <node concept="2Ry0Ak" id="1dONgcPskJe" role="2Ry0An">
+                          <property role="2Ry0Am" value="source_gen" />
+                          <node concept="2Ry0Ak" id="1dONgcPskJf" role="2Ry0An">
+                            <property role="2Ry0Am" value="jetbrains" />
+                            <node concept="2Ry0Ak" id="1dONgcPskJg" role="2Ry0An">
+                              <property role="2Ry0Am" value="mps" />
+                              <node concept="2Ry0Ak" id="1dONgcPskJh" role="2Ry0An">
+                                <property role="2Ry0Am" value="ide" />
+                                <node concept="2Ry0Ak" id="1dONgcPskJi" role="2Ry0An">
+                                  <property role="2Ry0Am" value="build" />
+                                  <node concept="2Ry0Ak" id="1dONgcPskJj" role="2Ry0An">
+                                    <property role="2Ry0Am" value="Info.plist.xml" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3_J27D" id="1dONgcPskJk" role="Nbhlr">
+            <node concept="3Mxwew" id="1dONgcPskJl" role="3MwsjC">
+              <property role="3MwjfP" value="MPS " />
+            </node>
+            <node concept="3Mxwey" id="1dONgcPskJm" role="3MwsjC">
+              <ref role="3Mxwex" node="5HVSRHdVf2d" resolve="version" />
+            </node>
+            <node concept="3Mxwew" id="1dONgcPskJn" role="3MwsjC">
+              <property role="3MwjfP" value=".app" />
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="2sgV4H" id="3IKDaVZnIk0" role="1l3spa">
       <ref role="1l3spb" node="3IKDaVZmzS6" resolve="mps" />

@@ -13,7 +13,7 @@ rm -rf ${WORKDIR}/${EXPLODED}
 mkdir ${WORKDIR}/${EXPLODED}
 echo "Unzipping $1.zip to ${EXPLODED}..."
 unzip -q $1.zip -d ${WORKDIR}/${EXPLODED}/
-#rm $1.zip
+rm $1.zip
 BUILD_NAME=$(ls ${WORKDIR}/${EXPLODED}/)
 JB_CERT="Developer ID Application: JetBrains"
 BUNDLE_ID="com.jetbrains.mps"
