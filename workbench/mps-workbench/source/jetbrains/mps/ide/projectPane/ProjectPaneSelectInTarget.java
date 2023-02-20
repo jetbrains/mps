@@ -25,7 +25,10 @@ import jetbrains.mps.ide.editor.MPSFileNodeEditor;
 import jetbrains.mps.ide.projectPane.logicalview.ProjectTreeFindHelper;
 import jetbrains.mps.ide.ui.tree.module.ProjectModuleTreeNode;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
+import jetbrains.mps.nodeEditor.NodeEditorComponent;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
+import jetbrains.mps.openapi.editor.Editor;
+import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.SModelFileTracker;
 import jetbrains.mps.vfs.IFile;
@@ -125,8 +128,7 @@ public final class ProjectPaneSelectInTarget extends AbstractProjectViewSelectIn
 
   private SNodeReference getNode(VirtualFile virtualFile) {
     assert isNodeFile(virtualFile);
-
-    FileEditor[] editors = FileEditorManager.getInstance(myProject.getProject()).getEditors(virtualFile);
+    FileEditor[] editors = FileEditorManager.getInstance(myProject.getProject()).getAllEditors(virtualFile);
     if (editors.length != 0) {
       FileEditor editor = editors[0];
       if (!(editor instanceof MPSFileNodeEditor)) {
