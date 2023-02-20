@@ -84,16 +84,17 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
   public InspectorTool(Project project) {
     super(project, ID, getDefaultShortCuts(), IdeIcons.INSPECTOR_ICON, ToolWindowAnchor.BOTTOM, true, false);
 
-    hackFavoritesKeymap();
+    hackFavoritesAndBookmarksKeymap();
   }
 
-  private static void hackFavoritesKeymap() {
+  private static void hackFavoritesAndBookmarksKeymap() {
     if (IS_IN_MPS_PLUGIN) {
       return;
     }
 
     BiConsumer<String, KeyStroke> removeDefaultKeyStroke = (keymapId, keyStroke) -> {
       String favoritesViewId = ActivateToolWindowAction.getActionIdForToolWindow(ToolWindowId.FAVORITES_VIEW);
+      String bookmarksViewId = ActivateToolWindowAction.getActionIdForToolWindow(ToolWindowId.BOOKMARKS);
       final Keymap keymap = KeymapManager.getInstance().getKeymap(keymapId);
       if (keymap == null) {
         return;
@@ -101,6 +102,11 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
       for (Shortcut shortcut : keymap.getShortcuts(favoritesViewId)) {
         if (shortcut instanceof KeyboardShortcut && ((KeyboardShortcut) shortcut).getFirstKeyStroke().equals(keyStroke)) {
           keymap.removeShortcut(favoritesViewId, shortcut);
+        }
+      }
+      for (Shortcut shortcut : keymap.getShortcuts(bookmarksViewId)) {
+        if (shortcut instanceof KeyboardShortcut && ((KeyboardShortcut) shortcut).getFirstKeyStroke().equals(keyStroke)) {
+          keymap.removeShortcut(bookmarksViewId, shortcut);
         }
       }
     };
