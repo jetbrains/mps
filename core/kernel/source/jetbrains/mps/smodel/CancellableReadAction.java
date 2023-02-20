@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -88,10 +88,12 @@ public abstract class CancellableReadAction implements Runnable {
     if (!myLifecycle.compareAndSet(Lifecycle.Started, Lifecycle.Completed)) {
       throw new IllegalStateException();
     }
-    if (myCancelState.get() == CancelState.CancelConfirmed) {
+    // get the state only once as it may get changed asynchronously (external code calling cancel())
+    final CancelState cancelState = myCancelState.get();
+    if (cancelState == CancelState.CancelConfirmed) {
       return;
     }
-    if (myCancelState.get() == CancelState.CancelRequested) {
+    if (cancelState == CancelState.CancelRequested) {
       if (!myCancelState.compareAndSet(CancelState.CancelRequested, CancelState.CancelIgnored)) {
         // myCancelState changes in a controlled moments, from cancel(), confirmCancel() and this method,
         //   the only async call is cancel(), which deals with Clear state only (doesn't touch CancelRequested), hence ISE
@@ -99,9 +101,9 @@ public abstract class CancellableReadAction implements Runnable {
       }
       return;
     }
-    if (myCancelState.get() != CancelState.Clear) {
+    if (cancelState != CancelState.Clear) {
       // just curious if it's possible by any chance
-      throw new IllegalStateException(String.valueOf(myCancelState.get()));
+      throw new IllegalStateException(String.format("State after execute: %s, present: %s", cancelState, myCancelState.get()));
     }
   }
 
