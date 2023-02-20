@@ -148,6 +148,9 @@
         <key>jna.boot.library.path</key>
         <string>$APP_PACKAGE/Contents/lib/jna</string>
         
+        <key>java.system.class.loader</key>
+        <string>com.intellij.util.lang.PathClassLoader</string>
+        
         <key>idea.vendor.name</key>
         <string>JetBrains</string>
         
