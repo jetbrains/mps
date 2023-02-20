@@ -12,7 +12,6 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
-import jetbrains.mps.smodel.SModel;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.project.ModuleId;
 import java.util.List;
@@ -72,8 +71,9 @@ import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
       ((LanguageDescriptor) copyDescriptor).getGenerators().forEach((GeneratorDescriptor gd) -> {
         gd.setSourceLanguage(copyDescriptor.getModuleReference());
         setNewIdAndTimestamp(gd);
-        // copied from Generator.generateGeneratorUID(Language sourceLanguage), I got no language instance here
-        gd.setNamespace(myNewName + '#' + SModel.generateUniqueId());
+        // well, in fact we might want to copy tail of source generator (if any), but for general
+        // use seems default approach of LanguageProducer is ok enough.
+        gd.setNamespace(myNewName + ".generator");
       });
     }
     if (myModulePathConverter != null) {
