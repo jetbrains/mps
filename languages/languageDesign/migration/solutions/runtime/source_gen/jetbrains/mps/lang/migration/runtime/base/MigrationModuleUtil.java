@@ -9,6 +9,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.smodel.tempmodel.TempModule;
+import jetbrains.mps.smodel.tempmodel.TempModule2;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
@@ -37,7 +38,7 @@ public class MigrationModuleUtil {
   }
 
   public static boolean wouldBeMigrateableWhenNotPacked(SModule m) {
-    return !(m instanceof DevKit) && !(m instanceof TempModule);
+    return !(m instanceof DevKit) && !(m instanceof TempModule || m instanceof TempModule2);
   }
 
   public static Set<SModule> getModuleDependencies(SModule module) {

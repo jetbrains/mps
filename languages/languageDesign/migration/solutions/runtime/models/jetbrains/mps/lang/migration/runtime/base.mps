@@ -4289,12 +4289,22 @@
             </node>
             <node concept="3fqX7Q" id="5eMIkHZGq4L" role="3uHU7w">
               <node concept="1eOMI4" id="5eMIkHZGq4M" role="3fr31v">
-                <node concept="2ZW3vV" id="5eMIkHZGq4N" role="1eOMHV">
-                  <node concept="3uibUv" id="5eMIkHZGq4O" role="2ZW6by">
-                    <ref role="3uigEE" to="tqvn:~TempModule" resolve="TempModule" />
+                <node concept="22lmx$" id="4fQP02$uuuo" role="1eOMHV">
+                  <node concept="2ZW3vV" id="4fQP02$uuWe" role="3uHU7w">
+                    <node concept="3uibUv" id="4fQP02$uv5Z" role="2ZW6by">
+                      <ref role="3uigEE" to="tqvn:~TempModule2" resolve="TempModule2" />
+                    </node>
+                    <node concept="37vLTw" id="4fQP02$uuCF" role="2ZW6bz">
+                      <ref role="3cqZAo" node="5eMIkHZGq4Q" resolve="m" />
+                    </node>
                   </node>
-                  <node concept="37vLTw" id="5eMIkHZGq4S" role="2ZW6bz">
-                    <ref role="3cqZAo" node="5eMIkHZGq4Q" resolve="m" />
+                  <node concept="2ZW3vV" id="5eMIkHZGq4N" role="3uHU7B">
+                    <node concept="3uibUv" id="5eMIkHZGq4O" role="2ZW6by">
+                      <ref role="3uigEE" to="tqvn:~TempModule" resolve="TempModule" />
+                    </node>
+                    <node concept="37vLTw" id="5eMIkHZGq4S" role="2ZW6bz">
+                      <ref role="3cqZAo" node="5eMIkHZGq4Q" resolve="m" />
+                    </node>
                   </node>
                 </node>
               </node>
