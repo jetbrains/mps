@@ -26,7 +26,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /*package*/ final class DisablingPlatformToolWindowsListener implements ToolWindowManagerListener {
-  private final List<String> myToolWindows2Disable = Arrays.asList(ToolWindowId.FIND, ToolWindowId.INSPECTION, ToolWindowId.SERVICES, ToolWindowId.TODO_VIEW, ProblemsView.ID);
+  private final List<String> myToolWindows2Disable = Arrays.asList(ToolWindowId.FIND, ToolWindowId.INSPECTION, ToolWindowId.SERVICES, ToolWindowId.TODO_VIEW, ProblemsView.ID, ToolWindowId.FAVORITES_VIEW, ToolWindowId.BOOKMARKS);
 
   @Override
   public void toolWindowsRegistered(@NotNull List<String> ids, @NotNull ToolWindowManager toolWindowManager) {
