@@ -3087,8 +3087,10 @@
       <property role="IQ2ns" value="7138249191285121088" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="visibility" />
-      <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" node="4f4W8JpN2Yc" resolve="VisibilityModifier" />
+      <node concept="t5JxF" id="2WVyZr446PL" role="lGtFl">
+        <property role="t5JxN" value="visibility, or null if using the default" />
+      </node>
     </node>
     <node concept="PrWs8" id="7uO8z1C9jRR" role="PrDN$">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
@@ -3845,8 +3847,10 @@
       <property role="IQ2ns" value="6013275720582937819" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="inheritance" />
-      <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" node="2yYXHtl6JjL" resolve="IInheritanceModifier" />
+      <node concept="t5JxF" id="6jE_6dusAyR" role="lGtFl">
+        <property role="t5JxN" value="inheritance, or null if using the default value for this node" />
+      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="6ov$ndQUjxA">

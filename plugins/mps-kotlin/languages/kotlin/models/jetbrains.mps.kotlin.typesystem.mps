@@ -312,6 +312,9 @@
       <concept id="942336824646299470" name="jetbrains.mps.lang.smodel.structure.Link_SetTargetPointerOperation" flags="ng" index="1AR3kn">
         <child id="942336824646299471" name="linkTarget" index="1AR3km" />
       </concept>
+      <concept id="1172326502327" name="jetbrains.mps.lang.smodel.structure.Concept_IsExactlyOperation" flags="nn" index="3O6GUB">
+        <child id="1206733650006" name="conceptArgument" index="3QVz_e" />
+      </concept>
       <concept id="1140131837776" name="jetbrains.mps.lang.smodel.structure.Node_ReplaceWithAnotherOperation" flags="nn" index="1P9Npp">
         <child id="1140131861877" name="replacementNode" index="1P9ThW" />
       </concept>
@@ -679,15 +682,15 @@
         </node>
         <node concept="2OqwBi" id="Cy8Bus93V3" role="3clFbw">
           <node concept="2OqwBi" id="Cy8Bus93d6" role="2Oq$k0">
-            <node concept="3TrEf2" id="Cy8Bus94J6" role="2OqNvi">
-              <ref role="3Tt5mk" to="hcm8:5dNsAxXOVNr" resolve="inheritance" />
+            <node concept="2qgKlT" id="6jE_6duths3" role="2OqNvi">
+              <ref role="37wK5l" to="hez:6jE_6duswG9" resolve="getInheritance" />
             </node>
             <node concept="37vLTw" id="1$jFvlEUy2Y" role="2Oq$k0">
               <ref role="3cqZAo" node="1$jFvlEUy2S" resolve="klass" />
             </node>
           </node>
-          <node concept="1mIQ4w" id="Cy8Bus957P" role="2OqNvi">
-            <node concept="chp4Y" id="Cy8Bus95gz" role="cj9EA">
+          <node concept="3O6GUB" id="6jE_6duthGb" role="2OqNvi">
+            <node concept="chp4Y" id="6jE_6duthVf" role="3QVz_e">
               <ref role="cht4Q" to="hcm8:2yYXHtl6JjN" resolve="FinalInheritanceModifier" />
             </node>
           </node>
@@ -892,17 +895,17 @@
               <node concept="3w_OXm" id="5dNsAxXOfsA" role="2OqNvi" />
             </node>
             <node concept="3fqX7Q" id="5dNsAxXP3m9" role="3uHU7w">
-              <node concept="2OqwBi" id="5dNsAxXP3mb" role="3fr31v">
+              <node concept="2OqwBi" id="6jE_6dutkse" role="3fr31v">
                 <node concept="2OqwBi" id="5dNsAxXP3mc" role="2Oq$k0">
                   <node concept="1YBJjd" id="5dNsAxXP3md" role="2Oq$k0">
                     <ref role="1YBMHb" node="5dNsAxXObBI" resolve="decl" />
                   </node>
-                  <node concept="3TrEf2" id="5dNsAxXP3me" role="2OqNvi">
-                    <ref role="3Tt5mk" to="hcm8:5dNsAxXOVNr" resolve="inheritance" />
+                  <node concept="2qgKlT" id="6jE_6dutjLA" role="2OqNvi">
+                    <ref role="37wK5l" to="hez:6jE_6duswG9" resolve="getInheritance" />
                   </node>
                 </node>
-                <node concept="1mIQ4w" id="5dNsAxXP3mf" role="2OqNvi">
-                  <node concept="chp4Y" id="5dNsAxXP3mg" role="cj9EA">
+                <node concept="3O6GUB" id="6jE_6dutl2c" role="2OqNvi">
+                  <node concept="chp4Y" id="6jE_6dutlh3" role="3QVz_e">
                     <ref role="cht4Q" to="hcm8:2yYXHtl6JjM" resolve="AbstractInheritanceModifier" />
                   </node>
                 </node>
