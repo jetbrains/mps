@@ -19,8 +19,6 @@ import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.errors.item.IssueKindReportItem;
-import jetbrains.mps.module.ReloadableModule;
-import jetbrains.mps.classloading.ModuleClassLoaderSupport;
 import org.jetbrains.mps.openapi.module.SDependency;
 import jetbrains.mps.ide.migration.check.DependencyProblem;
 import java.util.Set;
@@ -117,12 +115,7 @@ public class MigrationCheckerImpl implements MigrationChecker {
       List<SModule> modules = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(myProject)).toListSequence();
       pm.start("Checking...", 10 + ListSequence.fromList(modules).count());
 
-      Iterable<ReloadableModule> allModules = ListSequence.fromList(modules).ofType(ReloadableModule.class).where(new IWhereFilter<ReloadableModule>() {
-        public boolean accept(ReloadableModule it) {
-          return ModuleClassLoaderSupport.canCreate(it);
-        }
-      });
-      for (ReloadableModule module : Sequence.fromIterable(allModules)) {
+      for (SModule module : ListSequence.fromList(modules)) {
         Iterable<SDependency> deps = Sequence.fromIterable(((Iterable<SDependency>) module.getDeclaredDependencies())).where(new IWhereFilter<SDependency>() {
           public boolean accept(SDependency it) {
             return it.getTarget() == null;
