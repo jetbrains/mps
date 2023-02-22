@@ -27,7 +27,6 @@
     <import index="tp25" ref="r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)" />
     <import index="tpeu" ref="r:00000000-0000-4000-0000-011c895902fa(jetbrains.mps.lang.smodel.behavior)" />
     <import index="g3l6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.model(MPS.Core/)" />
-    <import index="et5u" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.messages(MPS.Core/)" />
     <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
     <import index="tft2" ref="215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.impl.plan(MPS.Generator/)" />
     <import index="ap4t" ref="215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator(MPS.Generator/)" />
@@ -124,6 +123,9 @@
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
+      </concept>
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ng" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
@@ -9444,6 +9446,75 @@
       <node concept="3Tm6S6" id="1UVrAZQpeAL" role="1B3o_S" />
       <node concept="3uibUv" id="6jZAaWYYm$Z" role="1tU5fm">
         <ref role="3uigEE" to="cgca:~PlanIdentity" resolve="PlanIdentity" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="1iyYcb0p6La" role="jymVt" />
+    <node concept="2YIFZL" id="1iyYcb0pdQk" role="jymVt">
+      <property role="TrG5h" value="fromGenPlanModel" />
+      <node concept="37vLTG" id="1iyYcb0ploI" role="3clF46">
+        <property role="TrG5h" value="gpm" />
+        <node concept="H_c77" id="1iyYcb0plqR" role="1tU5fm" />
+        <node concept="2AHcQZ" id="1iyYcb0plzw" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="3uibUv" id="1iyYcb0pkUn" role="3clF45">
+        <ref role="3uigEE" node="1UVrAZQmEH$" resolve="GenPlanTranslator" />
+      </node>
+      <node concept="3Tm1VV" id="1iyYcb0pdQn" role="1B3o_S" />
+      <node concept="3clFbS" id="1iyYcb0pdQo" role="3clF47">
+        <node concept="3cpWs8" id="1iyYcb0pqz_" role="3cqZAp">
+          <node concept="3cpWsn" id="1iyYcb0pqzA" role="3cpWs9">
+            <property role="TrG5h" value="pn" />
+            <node concept="3Tqbb2" id="1iyYcb0pqw4" role="1tU5fm">
+              <ref role="ehGHo" to="bjdw:1_4co2y1LvV" resolve="Plan" />
+            </node>
+            <node concept="2OqwBi" id="1iyYcb0pqzB" role="33vP2m">
+              <node concept="2OqwBi" id="1iyYcb0pqzC" role="2Oq$k0">
+                <node concept="37vLTw" id="1iyYcb0pqzD" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1iyYcb0ploI" resolve="gpm" />
+                </node>
+                <node concept="2RRcyG" id="1iyYcb0pqzE" role="2OqNvi">
+                  <node concept="chp4Y" id="1iyYcb0pqzF" role="3MHsoP">
+                    <ref role="cht4Q" to="bjdw:1_4co2y1LvV" resolve="Plan" />
+                  </node>
+                </node>
+              </node>
+              <node concept="1uHKPH" id="1iyYcb0pqzG" role="2OqNvi" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="1iyYcb0pqM_" role="3cqZAp">
+          <node concept="3K4zz7" id="1iyYcb0priP" role="3cqZAk">
+            <node concept="10Nm6u" id="1iyYcb0pro$" role="3K4E3e" />
+            <node concept="2ShNRf" id="1iyYcb0prtR" role="3K4GZi">
+              <node concept="1pGfFk" id="1iyYcb0puVl" role="2ShVmc">
+                <property role="373rjd" value="true" />
+                <ref role="37wK5l" node="1UVrAZQmUpe" resolve="GenPlanTranslator" />
+                <node concept="37vLTw" id="1iyYcb0pv18" role="37wK5m">
+                  <ref role="3cqZAo" node="1iyYcb0pqzA" resolve="pn" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbC" id="1iyYcb0pqXO" role="3K4Cdx">
+              <node concept="10Nm6u" id="1iyYcb0prdh" role="3uHU7w" />
+              <node concept="37vLTw" id="1iyYcb0pqMB" role="3uHU7B">
+                <ref role="3cqZAo" node="1iyYcb0pqzA" resolve="pn" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="1iyYcb0plPF" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+      </node>
+      <node concept="P$JXv" id="1iyYcb0plVw" role="lGtFl">
+        <node concept="TZ5HA" id="1iyYcb0plVx" role="TZ5H$">
+          <node concept="1dT_AC" id="1iyYcb0plVy" role="1dT_Ay" />
+        </node>
+        <node concept="x79VA" id="1iyYcb0plVA" role="3nqlJM">
+          <property role="x79VB" value="plan translator instance for the fist {@code node&lt;Plan&gt;} found in the model, or {@code null} if no matching node found" />
+        </node>
       </node>
     </node>
     <node concept="2tJIrI" id="1UVrAZQpd2b" role="jymVt" />

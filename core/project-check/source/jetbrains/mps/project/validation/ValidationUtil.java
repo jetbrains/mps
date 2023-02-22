@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,7 +43,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
-import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SDependency;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -56,7 +55,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -148,14 +146,12 @@ public class ValidationUtil {
         processor.process(new ModuleValidationProblem(dk, MessageStatus.ERROR, msg));
         return;
       }
-      final Iterator<SNode> roots = planModel.getRootNodes().iterator();
-      if (!roots.hasNext()) {
+      GenPlanTranslator gpt = GenPlanTranslator.fromGenPlanModel(planModel);
+      if (gpt == null) {
         final String msg = String.format("No generation plan in the model %s", planModel.getName());
         processor.process(new ModuleValidationProblem(dk, MessageStatus.ERROR, msg));
         return;
       }
-      SNode planDecl = roots.next();
-      GenPlanTranslator gpt = new GenPlanTranslator(planDecl);
       DependencyCollectorPlanBuilder dcpb = new DependencyCollectorPlanBuilder();
       gpt.feed(dcpb);
       for (SLanguage l : dcpb.getRequiredLanguages()) {

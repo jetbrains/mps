@@ -97,14 +97,18 @@ public class check_ModulesImport_NonTypesystemRule extends AbstractNonTypesystem
         continue;
       }
       SModel gp = associatedGenPlan.resolve(repo);
-      if (gp == null || !(gp.getRootNodes().iterator().hasNext())) {
+      if (gp == null) {
+        // I suppose for the purposes of BuildLang we don't care to warn here about broken GP, it's the task for project validation tools
         continue;
       }
-      SNode planNode = gp.getRootNodes().iterator().next();
-      // use stub classes of j.m.generator.impl, available through MPS.Core, to avoid dependency to j.m.generator solution
-      // FIXME once these classes are not part of MPS.Core (generator shall get separate stub), need to figure out proper approach to perform this check
+      // use stub classes of j.m.generator.impl, available through MPS.Generator, to avoid dependency to j.m.generator solution
+      // FIXME need to figure out proper approach to perform this check
       // the code below is the same as in ValidationUtil
-      GenPlanTranslator gpt = new GenPlanTranslator(planNode);
+      GenPlanTranslator gpt = GenPlanTranslator.fromGenPlanModel(gp);
+      if (gpt == null) {
+        // see gp == null, above
+        continue;
+      }
       DependencyCollectorPlanBuilder dcpb = new DependencyCollectorPlanBuilder();
       gpt.feed(dcpb);
       final VisibleModules visibleModules = ml.getVisibleModules();

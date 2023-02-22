@@ -19983,127 +19983,94 @@
                     </node>
                   </node>
                 </node>
+                <node concept="3SKdUt" id="4mSkk$QDE3Z" role="3cqZAp">
+                  <node concept="1PaTwC" id="4mSkk$QDE40" role="1aUNEU">
+                    <node concept="3oM_SD" id="4mSkk$QDE42" role="1PaTwD">
+                      <property role="3oM_SC" value="the" />
+                    </node>
+                    <node concept="3oM_SD" id="4mSkk$QDEoD" role="1PaTwD">
+                      <property role="3oM_SC" value="code" />
+                    </node>
+                    <node concept="3oM_SD" id="4mSkk$QDEoG" role="1PaTwD">
+                      <property role="3oM_SC" value="below" />
+                    </node>
+                    <node concept="3oM_SD" id="4mSkk$QDEoK" role="1PaTwD">
+                      <property role="3oM_SC" value="is" />
+                    </node>
+                    <node concept="3oM_SD" id="4mSkk$QDEoP" role="1PaTwD">
+                      <property role="3oM_SC" value="the" />
+                    </node>
+                    <node concept="3oM_SD" id="4mSkk$QDEoV" role="1PaTwD">
+                      <property role="3oM_SC" value="same" />
+                    </node>
+                    <node concept="3oM_SD" id="4mSkk$QDEp2" role="1PaTwD">
+                      <property role="3oM_SC" value="as" />
+                    </node>
+                    <node concept="3oM_SD" id="4mSkk$QDEpa" role="1PaTwD">
+                      <property role="3oM_SC" value="in" />
+                    </node>
+                    <node concept="3oM_SD" id="4mSkk$QDEpj" role="1PaTwD">
+                      <property role="3oM_SC" value="check_ModulesImport" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3SKdUt" id="4mSkk$QDAYK" role="3cqZAp">
+                  <node concept="1PaTwC" id="4mSkk$QDAYL" role="1aUNEU">
+                    <node concept="3oM_SD" id="4mSkk$QDAYN" role="1PaTwD">
+                      <property role="3oM_SC" value="use" />
+                    </node>
+                    <node concept="3oM_SD" id="4mSkk$QDB6V" role="1PaTwD">
+                      <property role="3oM_SC" value="stub" />
+                    </node>
+                    <node concept="3oM_SD" id="4mSkk$QDB6Y" role="1PaTwD">
+                      <property role="3oM_SC" value="classes" />
+                    </node>
+                    <node concept="3oM_SD" id="4mSkk$QDB72" role="1PaTwD">
+                      <property role="3oM_SC" value="of" />
+                    </node>
+                    <node concept="3oM_SD" id="4mSkk$QDB7k" role="1PaTwD">
+                      <property role="3oM_SC" value="j.m.generator.impl," />
+                    </node>
+                    <node concept="3oM_SD" id="4mSkk$QDB7q" role="1PaTwD">
+                      <property role="3oM_SC" value="available" />
+                    </node>
+                    <node concept="3oM_SD" id="4mSkk$QDB7x" role="1PaTwD">
+                      <property role="3oM_SC" value="through" />
+                    </node>
+                    <node concept="3oM_SD" id="4mSkk$QDB7D" role="1PaTwD">
+                      <property role="3oM_SC" value="MPS.Generator," />
+                    </node>
+                    <node concept="3oM_SD" id="4mSkk$QDB7M" role="1PaTwD">
+                      <property role="3oM_SC" value="to" />
+                    </node>
+                    <node concept="3oM_SD" id="4mSkk$QDB7W" role="1PaTwD">
+                      <property role="3oM_SC" value="avoid" />
+                    </node>
+                    <node concept="3oM_SD" id="4mSkk$QDB87" role="1PaTwD">
+                      <property role="3oM_SC" value="dependency" />
+                    </node>
+                    <node concept="3oM_SD" id="4mSkk$QDB8j" role="1PaTwD">
+                      <property role="3oM_SC" value="to" />
+                    </node>
+                    <node concept="3oM_SD" id="4mSkk$QDB8w" role="1PaTwD">
+                      <property role="3oM_SC" value="j.m.generator" />
+                    </node>
+                    <node concept="3oM_SD" id="4mSkk$QDB8I" role="1PaTwD">
+                      <property role="3oM_SC" value="solution" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3cpWs8" id="4mSkk$QDyhL" role="3cqZAp">
+                  <node concept="3cpWsn" id="4mSkk$QDyhM" role="3cpWs9">
+                    <property role="TrG5h" value="gpt" />
+                    <property role="3TUv4t" value="true" />
+                    <node concept="3uibUv" id="4mSkk$QDyhN" role="1tU5fm">
+                      <ref role="3uigEE" to="80j5:~GenPlanTranslator" resolve="GenPlanTranslator" />
+                    </node>
+                  </node>
+                </node>
                 <node concept="3clFbJ" id="7FhmtY6tVU_" role="3cqZAp">
                   <node concept="3clFbS" id="7FhmtY6tVUB" role="3clFbx">
-                    <node concept="3cpWs8" id="7FhmtY6tZ5V" role="3cqZAp">
-                      <node concept="3cpWsn" id="7FhmtY6tZ5W" role="3cpWs9">
-                        <property role="TrG5h" value="planNode" />
-                        <node concept="3uibUv" id="7FhmtY6tZ4c" role="1tU5fm">
-                          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                        </node>
-                        <node concept="2OqwBi" id="7FhmtY6tZ5X" role="33vP2m">
-                          <node concept="2OqwBi" id="7FhmtY6tZ5Y" role="2Oq$k0">
-                            <node concept="2OqwBi" id="7FhmtY6tZ5Z" role="2Oq$k0">
-                              <node concept="37vLTw" id="7FhmtY6tZ60" role="2Oq$k0">
-                                <ref role="3cqZAo" node="7FhmtY6tVpQ" resolve="gp" />
-                              </node>
-                              <node concept="liA8E" id="7FhmtY6tZ61" role="2OqNvi">
-                                <ref role="37wK5l" to="mhbf:~SModel.getRootNodes()" resolve="getRootNodes" />
-                              </node>
-                            </node>
-                            <node concept="liA8E" id="7FhmtY6tZ62" role="2OqNvi">
-                              <ref role="37wK5l" to="wyt6:~Iterable.iterator()" resolve="iterator" />
-                            </node>
-                          </node>
-                          <node concept="liA8E" id="7FhmtY6tZ63" role="2OqNvi">
-                            <ref role="37wK5l" to="33ny:~Iterator.next()" resolve="next" />
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="3SKdUt" id="4mSkk$QDE3Z" role="3cqZAp">
-                      <node concept="1PaTwC" id="4mSkk$QDE40" role="1aUNEU">
-                        <node concept="3oM_SD" id="4mSkk$QDE42" role="1PaTwD">
-                          <property role="3oM_SC" value="the" />
-                        </node>
-                        <node concept="3oM_SD" id="4mSkk$QDEoD" role="1PaTwD">
-                          <property role="3oM_SC" value="code" />
-                        </node>
-                        <node concept="3oM_SD" id="4mSkk$QDEoG" role="1PaTwD">
-                          <property role="3oM_SC" value="below" />
-                        </node>
-                        <node concept="3oM_SD" id="4mSkk$QDEoK" role="1PaTwD">
-                          <property role="3oM_SC" value="is" />
-                        </node>
-                        <node concept="3oM_SD" id="4mSkk$QDEoP" role="1PaTwD">
-                          <property role="3oM_SC" value="the" />
-                        </node>
-                        <node concept="3oM_SD" id="4mSkk$QDEoV" role="1PaTwD">
-                          <property role="3oM_SC" value="same" />
-                        </node>
-                        <node concept="3oM_SD" id="4mSkk$QDEp2" role="1PaTwD">
-                          <property role="3oM_SC" value="as" />
-                        </node>
-                        <node concept="3oM_SD" id="4mSkk$QDEpa" role="1PaTwD">
-                          <property role="3oM_SC" value="in" />
-                        </node>
-                        <node concept="3oM_SD" id="4mSkk$QDEpj" role="1PaTwD">
-                          <property role="3oM_SC" value="check_ModulesImport" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="3SKdUt" id="4mSkk$QDAYK" role="3cqZAp">
-                      <node concept="1PaTwC" id="4mSkk$QDAYL" role="1aUNEU">
-                        <node concept="3oM_SD" id="4mSkk$QDAYN" role="1PaTwD">
-                          <property role="3oM_SC" value="use" />
-                        </node>
-                        <node concept="3oM_SD" id="4mSkk$QDB6V" role="1PaTwD">
-                          <property role="3oM_SC" value="stub" />
-                        </node>
-                        <node concept="3oM_SD" id="4mSkk$QDB6Y" role="1PaTwD">
-                          <property role="3oM_SC" value="classes" />
-                        </node>
-                        <node concept="3oM_SD" id="4mSkk$QDB72" role="1PaTwD">
-                          <property role="3oM_SC" value="of" />
-                        </node>
-                        <node concept="3oM_SD" id="4mSkk$QDB7k" role="1PaTwD">
-                          <property role="3oM_SC" value="j.m.generator.impl," />
-                        </node>
-                        <node concept="3oM_SD" id="4mSkk$QDB7q" role="1PaTwD">
-                          <property role="3oM_SC" value="available" />
-                        </node>
-                        <node concept="3oM_SD" id="4mSkk$QDB7x" role="1PaTwD">
-                          <property role="3oM_SC" value="through" />
-                        </node>
-                        <node concept="3oM_SD" id="4mSkk$QDB7D" role="1PaTwD">
-                          <property role="3oM_SC" value="MPS.Core," />
-                        </node>
-                        <node concept="3oM_SD" id="4mSkk$QDB7M" role="1PaTwD">
-                          <property role="3oM_SC" value="to" />
-                        </node>
-                        <node concept="3oM_SD" id="4mSkk$QDB7W" role="1PaTwD">
-                          <property role="3oM_SC" value="avoid" />
-                        </node>
-                        <node concept="3oM_SD" id="4mSkk$QDB87" role="1PaTwD">
-                          <property role="3oM_SC" value="dependency" />
-                        </node>
-                        <node concept="3oM_SD" id="4mSkk$QDB8j" role="1PaTwD">
-                          <property role="3oM_SC" value="to" />
-                        </node>
-                        <node concept="3oM_SD" id="4mSkk$QDB8w" role="1PaTwD">
-                          <property role="3oM_SC" value="j.m.generator" />
-                        </node>
-                        <node concept="3oM_SD" id="4mSkk$QDB8I" role="1PaTwD">
-                          <property role="3oM_SC" value="solution" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="3cpWs8" id="4mSkk$QDyhL" role="3cqZAp">
-                      <node concept="3cpWsn" id="4mSkk$QDyhM" role="3cpWs9">
-                        <property role="TrG5h" value="gpt" />
-                        <node concept="3uibUv" id="4mSkk$QDyhN" role="1tU5fm">
-                          <ref role="3uigEE" to="80j5:~GenPlanTranslator" resolve="GenPlanTranslator" />
-                        </node>
-                        <node concept="2ShNRf" id="4mSkk$QDypM" role="33vP2m">
-                          <node concept="1pGfFk" id="4mSkk$QDAEj" role="2ShVmc">
-                            <ref role="37wK5l" to="80j5:~GenPlanTranslator.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNode)" resolve="GenPlanTranslator" />
-                            <node concept="37vLTw" id="4mSkk$QDAEw" role="37wK5m">
-                              <ref role="3cqZAo" node="7FhmtY6tZ5W" resolve="planNode" />
-                            </node>
-                          </node>
-                        </node>
-                      </node>
-                    </node>
                     <node concept="3cpWs8" id="4mSkk$QDD3F" role="3cqZAp">
                       <node concept="3cpWsn" id="4mSkk$QDD3G" role="3cpWs9">
                         <property role="TrG5h" value="dcpb" />
@@ -20418,23 +20385,22 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="1Wc70l" id="37uLid2oXmj" role="3clFbw">
-                    <node concept="2OqwBi" id="7FhmtY6tXFP" role="3uHU7w">
-                      <node concept="2OqwBi" id="7FhmtY6tXFQ" role="2Oq$k0">
-                        <node concept="2OqwBi" id="7FhmtY6tXFR" role="2Oq$k0">
-                          <node concept="37vLTw" id="7FhmtY6tXFS" role="2Oq$k0">
-                            <ref role="3cqZAo" node="7FhmtY6tVpQ" resolve="gp" />
+                  <node concept="1Wc70l" id="5UKdgDPvLfm" role="3clFbw">
+                    <node concept="3y3z36" id="5UKdgDPztNo" role="3uHU7w">
+                      <node concept="10Nm6u" id="5UKdgDPzXCw" role="3uHU7w" />
+                      <node concept="1eOMI4" id="5UKdgDPwrG4" role="3uHU7B">
+                        <node concept="37vLTI" id="5UKdgDPxJbH" role="1eOMHV">
+                          <node concept="37vLTw" id="5UKdgDPx5tR" role="37vLTJ">
+                            <ref role="3cqZAo" node="4mSkk$QDyhM" resolve="gpt" />
                           </node>
-                          <node concept="liA8E" id="7FhmtY6tXFT" role="2OqNvi">
-                            <ref role="37wK5l" to="mhbf:~SModel.getRootNodes()" resolve="getRootNodes" />
+                          <node concept="2YIFZM" id="5UKdgDPiyH3" role="37vLTx">
+                            <ref role="37wK5l" to="80j5:~GenPlanTranslator.fromGenPlanModel(org.jetbrains.mps.openapi.model.SModel)" resolve="fromGenPlanModel" />
+                            <ref role="1Pybhc" to="80j5:~GenPlanTranslator" resolve="GenPlanTranslator" />
+                            <node concept="37vLTw" id="5UKdgDPjg5I" role="37wK5m">
+                              <ref role="3cqZAo" node="7FhmtY6tVpQ" resolve="gp" />
+                            </node>
                           </node>
                         </node>
-                        <node concept="liA8E" id="7FhmtY6tXFU" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~Iterable.iterator()" resolve="iterator" />
-                        </node>
-                      </node>
-                      <node concept="liA8E" id="7FhmtY6tXFV" role="2OqNvi">
-                        <ref role="37wK5l" to="33ny:~Iterator.hasNext()" resolve="hasNext" />
                       </node>
                     </node>
                     <node concept="3y3z36" id="37uLid2oXgA" role="3uHU7B">

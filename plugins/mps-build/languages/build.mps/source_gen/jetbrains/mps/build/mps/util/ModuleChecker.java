@@ -356,11 +356,10 @@ public final class ModuleChecker {
         //     as the build project node. Therefore, I add these dependencies in doPartialImport as well (not only in doFullImport), so that they are readily available in cmdline build, even though I don't like the fact
         //  I make them visible for an end-user.
         SModel gp = descriptor.getAssociatedGenPlan().resolve(SNodeOperations.getModel(myModule).getRepository());
-        if (gp != null && gp.getRootNodes().iterator().hasNext()) {
-          SNode planNode = gp.getRootNodes().iterator().next();
-          // the code below is the same as in check_ModulesImport
-          // use stub classes of j.m.generator.impl, available through MPS.Core, to avoid dependency to j.m.generator solution
-          GenPlanTranslator gpt = new GenPlanTranslator(planNode);
+        // the code below is the same as in check_ModulesImport
+        // use stub classes of j.m.generator.impl, available through MPS.Generator, to avoid dependency to j.m.generator solution
+        final GenPlanTranslator gpt;
+        if (gp != null && (gpt = GenPlanTranslator.fromGenPlanModel(gp)) != null) {
           DependencyCollectorPlanBuilder dcpb = new DependencyCollectorPlanBuilder();
           gpt.feed(dcpb);
           for (SLanguage reql : dcpb.getRequiredLanguages()) {

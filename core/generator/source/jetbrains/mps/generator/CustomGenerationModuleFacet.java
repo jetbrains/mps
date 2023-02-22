@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import jetbrains.mps.extapi.module.ModuleFacetBase;
 import jetbrains.mps.generator.impl.GenPlanTranslator;
 import jetbrains.mps.generator.impl.plan.EngagedGeneratorCollector;
 import jetbrains.mps.generator.impl.plan.RegularPlanBuilder;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -59,7 +60,11 @@ public class CustomGenerationModuleFacet extends ModuleFacetBase implements Mode
     }
     myCachedPlanTimestamp = modelActualTimestamp;
 
-    GenPlanTranslator gpt = new GenPlanTranslator(planModel.getRootNodes().iterator().next());
+    GenPlanTranslator gpt = GenPlanTranslator.fromGenPlanModel(planModel);
+    if (gpt == null) {
+      Logger.getLogger(getClass()).warning(String.format("No genplan declaration found in the model %s", myPlanModel.getName()), myPlanModel);
+      return null;
+    }
     final LanguageRegistry languageRegistry = LanguageRegistry.getInstance(model.getRepository());
     EngagedGeneratorCollector egc = new EngagedGeneratorCollector(languageRegistry, model); // see comment in GenPlanExtractor regarding additional languages
     RegularPlanBuilder planBuilder = new RegularPlanBuilder(languageRegistry, egc.getGenerators());
