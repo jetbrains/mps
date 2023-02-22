@@ -94,10 +94,8 @@ public class TabbedEditor extends BaseNodeEditor {
           return;
         }
         installTabsComponent();
-        if (node != null) {
-          myTabsComponent.updateTabs();
-          myTabsComponent.editNode(node);
-        }
+        myTabsComponent.updateTabs();
+        myTabsComponent.editNode(node != null ? node : myBaseNode);
       });
     }
   };
