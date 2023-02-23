@@ -13053,17 +13053,26 @@
       </node>
       <node concept="3Tm6S6" id="47k7VnvVytu" role="1B3o_S" />
       <node concept="3clFbS" id="47k7VnvVytr" role="3clF47">
-        <node concept="1gVbGN" id="47k7VnvV_Jx" role="3cqZAp">
-          <node concept="3fqX7Q" id="47k7VnvV_Lm" role="1gVkn0">
-            <node concept="2OqwBi" id="47k7VnvV_Ln" role="3fr31v">
-              <node concept="37vLTw" id="2BHiRxgmx3q" role="2Oq$k0">
-                <ref role="3cqZAo" node="47k7VnvVyt_" resolve="classifierFqName" />
-              </node>
-              <node concept="liA8E" id="47k7VnvV_Lp" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.contains(java.lang.CharSequence)" resolve="contains" />
-                <node concept="Xl_RD" id="47k7VnvV_Lq" role="37wK5m">
-                  <property role="Xl_RC" value="$" />
+        <node concept="3clFbJ" id="aernvfA$cp" role="3cqZAp">
+          <node concept="3clFbS" id="aernvfA$cq" role="3clFbx">
+            <node concept="3cpWs6" id="aernvfA$cr" role="3cqZAp">
+              <node concept="2YIFZM" id="aernvfH6L$" role="3cqZAk">
+                <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
+                <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
+                <node concept="3Tqbb2" id="aernvfH6L_" role="3PaCim">
+                  <ref role="ehGHo" to="tpee:g7pOWCK" resolve="Classifier" />
                 </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="aernvfA$ct" role="3clFbw">
+            <node concept="37vLTw" id="aernvfA$cu" role="2Oq$k0">
+              <ref role="3cqZAo" node="47k7VnvVyt_" resolve="classifierFqName" />
+            </node>
+            <node concept="liA8E" id="aernvfA$cv" role="2OqNvi">
+              <ref role="37wK5l" to="wyt6:~String.contains(java.lang.CharSequence)" resolve="contains" />
+              <node concept="Xl_RD" id="aernvfA$cw" role="37wK5m">
+                <property role="Xl_RC" value="$" />
               </node>
             </node>
           </node>
@@ -13213,22 +13222,6 @@
       </node>
       <node concept="3Tm6S6" id="3rASg8xGOTS" role="1B3o_S" />
       <node concept="3clFbS" id="3rASg8xGOTT" role="3clF47">
-        <node concept="1gVbGN" id="3rASg8xGOTU" role="3cqZAp">
-          <node concept="3fqX7Q" id="3rASg8xGOTV" role="1gVkn0">
-            <node concept="2OqwBi" id="3rASg8xGOTW" role="3fr31v">
-              <node concept="37vLTw" id="2BHiRxgm6cW" role="2Oq$k0">
-                <ref role="3cqZAo" node="3rASg8xGOTO" resolve="classifierNestedName" />
-              </node>
-              <node concept="liA8E" id="3rASg8xGOTY" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.contains(java.lang.CharSequence)" resolve="contains" />
-                <node concept="Xl_RD" id="3rASg8xGOTZ" role="37wK5m">
-                  <property role="Xl_RC" value="$" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbH" id="3rASg8xGOU0" role="3cqZAp" />
         <node concept="3cpWs8" id="3rASg8xGOUB" role="3cqZAp">
           <node concept="3cpWsn" id="3rASg8xGOUC" role="3cpWs9">
             <property role="TrG5h" value="model" />
@@ -13260,10 +13253,23 @@
               </node>
             </node>
           </node>
-          <node concept="3clFbC" id="3rASg8xGOUO" role="3clFbw">
-            <node concept="10Nm6u" id="3rASg8xGOUP" role="3uHU7w" />
-            <node concept="37vLTw" id="3GM_nagTxdv" role="3uHU7B">
-              <ref role="3cqZAo" node="3rASg8xGOUC" resolve="model" />
+          <node concept="22lmx$" id="aernvfEZaS" role="3clFbw">
+            <node concept="3clFbC" id="3rASg8xGOUO" role="3uHU7w">
+              <node concept="10Nm6u" id="3rASg8xGOUP" role="3uHU7w" />
+              <node concept="37vLTw" id="3GM_nagTxdv" role="3uHU7B">
+                <ref role="3cqZAo" node="3rASg8xGOUC" resolve="model" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="aernvfFhPe" role="3uHU7B">
+              <node concept="37vLTw" id="aernvfFhPf" role="2Oq$k0">
+                <ref role="3cqZAo" node="3rASg8xGOTO" resolve="classifierNestedName" />
+              </node>
+              <node concept="liA8E" id="aernvfFhPg" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~String.contains(java.lang.CharSequence)" resolve="contains" />
+                <node concept="Xl_RD" id="aernvfFhPh" role="37wK5m">
+                  <property role="Xl_RC" value="$" />
+                </node>
+              </node>
             </node>
           </node>
         </node>
@@ -18131,25 +18137,6 @@
         <property role="TrG5h" value="resolveClassifierByFqNameWithNonStubPriority" />
         <node concept="3Tm6S6" id="1fyn70XdDPR" role="1B3o_S" />
         <node concept="3clFbS" id="1fyn70XdDPS" role="3clF47">
-          <node concept="1gVbGN" id="2fly2NPa8th" role="3cqZAp">
-            <node concept="3clFbC" id="2fly2NPajBZ" role="1gVkn0">
-              <node concept="3cmrfG" id="2fly2NPakFE" role="3uHU7w">
-                <property role="3cmrfH" value="-1" />
-              </node>
-              <node concept="2OqwBi" id="2fly2NPa8tj" role="3uHU7B">
-                <node concept="37vLTw" id="2fly2NPaeki" role="2Oq$k0">
-                  <ref role="3cqZAo" node="1fyn70XdKQO" resolve="classifierFQN" />
-                </node>
-                <node concept="liA8E" id="2fly2NPa8tl" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~String.indexOf(int)" resolve="indexOf" />
-                  <node concept="1Xhbcc" id="2fly2NPafXS" role="37wK5m">
-                    <property role="1XhdNS" value="$" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbH" id="2fly2NPa6GL" role="3cqZAp" />
           <node concept="3cpWs8" id="2fly2NPcOxH" role="3cqZAp">
             <node concept="3cpWsn" id="2fly2NPcOxK" role="3cpWs9">
               <property role="TrG5h" value="rv" />
@@ -18161,6 +18148,26 @@
                   <node concept="3Tqbb2" id="2fly2NPcTZ7" role="HW$YZ">
                     <ref role="ehGHo" to="tpee:g7pOWCK" resolve="Classifier" />
                   </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbJ" id="aernvfAOK8" role="3cqZAp">
+            <node concept="3clFbS" id="aernvfAOK9" role="3clFbx">
+              <node concept="3cpWs6" id="aernvfAOKa" role="3cqZAp">
+                <node concept="37vLTw" id="aernvfCsc_" role="3cqZAk">
+                  <ref role="3cqZAo" node="2fly2NPcOxK" resolve="rv" />
+                </node>
+              </node>
+            </node>
+            <node concept="2OqwBi" id="aernvfAOKc" role="3clFbw">
+              <node concept="37vLTw" id="aernvfAOKd" role="2Oq$k0">
+                <ref role="3cqZAo" node="1fyn70XdKQO" resolve="classifierFQN" />
+              </node>
+              <node concept="liA8E" id="aernvfAOKe" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~String.contains(java.lang.CharSequence)" resolve="contains" />
+                <node concept="Xl_RD" id="aernvfAOKf" role="37wK5m">
+                  <property role="Xl_RC" value="$" />
                 </node>
               </node>
             </node>

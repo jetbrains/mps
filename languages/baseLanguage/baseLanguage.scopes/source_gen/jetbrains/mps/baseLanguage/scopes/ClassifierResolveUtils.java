@@ -85,7 +85,9 @@ public class ClassifierResolveUtils {
   }
 
   private static Iterable<SNode> resolveClassifierByFqName(SModel modelDescriptor, String classifierFqName) {
-    assert !(classifierFqName.contains("$"));
+    if (classifierFqName.contains("$")) {
+      return Collections.<SNode>emptyList();
+    }
 
     final String modelNameNoStereotype = modelDescriptor.getName().getLongName();
 
@@ -101,10 +103,8 @@ public class ClassifierResolveUtils {
     return resolveClassifierByNestedName(modelDescriptor, classifierNestedName);
   }
   private static Iterable<SNode> resolveClassifierByNestedName(SModel modelDescriptor, String classifierNestedName) {
-    assert !(classifierNestedName.contains("$"));
-
     SModel model = modelDescriptor;
-    if (model == null) {
+    if (classifierNestedName.contains("$") || model == null) {
       // todo: ?
       return Collections.<SNode>emptyList();
     }
@@ -545,9 +545,10 @@ public class ClassifierResolveUtils {
      * Tecnhically, this method shall not be part of this class, just need to refactor the whole stuff
      */
     private List<SNode> resolveClassifierByFqNameWithNonStubPriority(String classifierFQN, final String stubStereoType) {
-      assert classifierFQN.indexOf('$') == -1;
-
       List<SNode> rv = ListSequence.fromList(new ArrayList<SNode>());
+      if (classifierFQN.contains("$")) {
+        return rv;
+      }
       // resolve without stubs
       for (String modelNameNoStereotype : myModelsWithoutStereotype.keySet()) {
         // conditions taken from resolveClassifierByFqName
