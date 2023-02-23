@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,6 +45,7 @@ import jetbrains.mps.util.io.ModelOutputStream;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.path.Path;
+import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
@@ -665,13 +666,19 @@ public final class ModulesMiner {
     if (descriptor == null || descriptorFile.isReadOnly()) {
       return;
     }
-    jetbrains.mps.vfs.openapi.FileSystem fileSystem = descriptorFile.getFileSystem();
-    processModuleExcludes(fileSystem, descriptor);
+    try {
+      jetbrains.mps.vfs.openapi.FileSystem fileSystem = descriptorFile.getFileSystem();
+      processModuleExcludes(fileSystem, descriptor);
 
-    if (descriptor instanceof LanguageDescriptor) {
-      for (GeneratorDescriptor generator : ((LanguageDescriptor) descriptor).getGenerators()) {
-        processModuleExcludes(fileSystem, generator);
+      if (descriptor instanceof LanguageDescriptor) {
+        for (GeneratorDescriptor generator : ((LanguageDescriptor) descriptor).getGenerators()) {
+          processModuleExcludes(fileSystem, generator);
+        }
       }
+    } catch (PathFormatException ex) {
+      // ignore, we can live w/o excludes, all we pay is extra time walking source_gen and classes_gen.
+      // well, unless there's some clever code that hides other modules under Java Libraries location and assumes MM ignores these.
+      LOG.warning(String.format("Failed to process excludes for a module from %s: %s", descriptorFile, ex.getMessage()));
     }
   }
 

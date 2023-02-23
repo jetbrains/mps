@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -151,6 +151,10 @@ import java.util.stream.Stream;
         IFile descriptorFile = modulePath.getFile();
         if (descriptorFile.exists()) {
           // there could be more than 1 module collected from a single file
+          // XXX in fact, we know we reference individual descriptor files here, and don't need all facilities of MM, like
+          //    collecting 'excluded' locations (necessary for recursive discovery). Even support for deployed module discovery
+          //    might be superfluous here (OTOH, might be a nice feature if we want to compose a project with deployed modules)
+          //    Perhaps, shall use specific discovery method or introduce a mode/flag to avoid unnecessary processing of MD values
           modulesMiner.collectModules(descriptorFile);
           // if there's more than 1 modulePath with the same IFile, I don't care, fine with the last one
           fileToPath.put(descriptorFile, modulePath);

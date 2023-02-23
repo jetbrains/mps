@@ -17,6 +17,7 @@ package jetbrains.mps.extapi.persistence;
 
 import jetbrains.mps.extapi.module.EditableSModule;
 import jetbrains.mps.extapi.module.SModuleBase;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.MementoWithFS;
 import jetbrains.mps.util.FileUtil;
@@ -29,6 +30,7 @@ import jetbrains.mps.vfs.refresh.FileEventProcessor;
 import jetbrains.mps.vfs.refresh.FileListeningPreferences;
 import jetbrains.mps.vfs.refresh.FileSystemEvent;
 import jetbrains.mps.vfs.refresh.FileSystemListener;
+import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
@@ -97,6 +99,7 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
   private final List<PathListener> myListeners = new ArrayList<>();
 
   private Memento memento;
+  private boolean myBrokenState = false;
 
   protected FileBasedModelRoot() {
     mySourcePathStorage = new SourcePaths((sourceRootKind) -> getSupportedFileKinds1().contains(sourceRootKind));
@@ -178,15 +181,31 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
     return contentDirectory == null ? "no content dir" : contentDirectory.getPath();
   }
 
+  private static void copyMemento(Memento from, Memento to) {
+    to.setText(from.getText());
+    for (String key : from.getKeys()) {
+      to.put(key, from.get(key));
+    }
+    for (Memento child : from.getChildren()) {
+      final Memento cc = to.createChild(child.getType());
+      copyMemento(child, cc);
+    }
+  }
+
   @Override
   public void save(@NotNull Memento memento) {
+    memento.put("type", getType());
+    if (myBrokenState) {
+      assert this.memento != null;
+      copyMemento(this.memento, memento);
+      return;
+    }
     if (myContentDir != null) {
       memento.put(CONTENT_PATH, myContentDir.getPath());
       if (myContentDirPathSpec != null) {
         memento.putPathSpec(CONTENT_PATH, myContentDirPathSpec);
       }
     }
-    memento.put("type", getType());
     for (SourceRootKind kind : getSupportedFileKinds1()) {
       for (SourceRoot root : getSourceRoots(kind)) {
         Memento modelRootMemento = memento.createChild(kind.getName());
@@ -234,35 +253,42 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
         path = memento.get(CONTENT_PATH);
       }
 
-      myContentDir = (path != null) ? myFileSystem.getFile(path) : null;
-      for (SourceRootKind kind : getSupportedFileKinds1()) {
-        for (Memento root : memento.getChildren(kind.getName())) {
-          String relPath = root.get(LOCATION);
-          DefaultSourceRoot dsr = null;
-          if (relPath != null) {
-            // relative
-            assert myContentDir != null;
-            dsr = new DefaultSourceRoot(relPath, myContentDir);
-          } else if (root.get(PATH) != null) {
-            // absolute
-            String absPath;
-            final String origPath;
-            if ((origPath = root.getPathSpec(PATH)) != null) {
-              absPath = MacrosFactory.forModule(getModule()).expandPath(root.getPathSpec(PATH));
-            } else {
-              absPath = root.get(PATH);
+      try {
+        myContentDir = (path != null) ? myFileSystem.getFile(path) : null;
+        for (SourceRootKind kind : getSupportedFileKinds1()) {
+          for (Memento root : memento.getChildren(kind.getName())) {
+            String relPath = root.get(LOCATION);
+            DefaultSourceRoot dsr = null;
+            if (relPath != null) {
+              // relative
+              assert myContentDir != null;
+              dsr = new DefaultSourceRoot(relPath, myContentDir);
+            } else if (root.get(PATH) != null) {
+              // absolute
+              String absPath;
+              final String origPath;
+              if ((origPath = root.getPathSpec(PATH)) != null) {
+                absPath = MacrosFactory.forModule(getModule()).expandPath(root.getPathSpec(PATH));
+              } else {
+                absPath = root.get(PATH);
+              }
+              dsr = new DefaultSourceRoot(myFileSystem.getFile(absPath));
+              dsr.setOriginalPathSpec(origPath);
             }
-            dsr = new DefaultSourceRoot(myFileSystem.getFile(absPath));
-            dsr.setOriginalPathSpec(origPath);
-          }
-          if (dsr != null) {
-            // NOTE, can't use addSourceRoot() here as we are still in initialization of a model root and shall
-            //      not notify module about changes (AM.setChanged() in addSourceRoot); use mySourcePathStorage directly.
-            mySourcePathStorage.addSourceRoot(kind, dsr);
+            if (dsr != null) {
+              // NOTE, can't use addSourceRoot() here as we are still in initialization of a model root and shall
+              //      not notify module about changes (AM.setChanged() in addSourceRoot); use mySourcePathStorage directly.
+              mySourcePathStorage.addSourceRoot(kind, dsr);
+            }
           }
         }
+        this.memento = null;
+      } catch (PathFormatException ex) {
+        // FIXME much more fruitful approach would be InvalidFile or Path object to let MR behave as close to usual as possible
+        Logger.getLogger(getClass()).warning(String.format("Failed to initialize model root in %s: bad path %s", getModule().getModuleName(), ex.getProblemPath()));
+        // keep this.memento values
+        myBrokenState = true;
       }
-      this.memento = null;
     }
 
     super.attach();
