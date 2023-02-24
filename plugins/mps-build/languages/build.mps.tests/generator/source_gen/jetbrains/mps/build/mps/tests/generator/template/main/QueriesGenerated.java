@@ -14,6 +14,8 @@ import jetbrains.mps.build.behavior.BuildString__BehaviorDescriptor;
 import jetbrains.mps.build.util.DependenciesHelper;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
+import jetbrains.mps.build.util.Context;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -111,18 +113,24 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(_context.getNode(), PROPS.path$4PFd);
   }
   public static Object propertyMacro_GetValue_0_9(final PropertyMacroContext _context) {
+    return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL).substring(((String) _context.getVariable("var:MPS_MACRO_PREFIX")).length());
+  }
+  public static Object propertyMacro_GetValue_0_10(final PropertyMacroContext _context) {
+    return (String) BuildSourcePath__BehaviorDescriptor.getAntPath_id7ro1ZztyOh5.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.defaultPath$9tbQ), Context.defaultContext(_context));
+  }
+  public static Object propertyMacro_GetValue_0_11(final PropertyMacroContext _context) {
     // the value "build.tmp" is hardcoded in the gen template for BuildProject
     // as the name of a "location macro" in the target BwfProject
     return _context.getTemplateValue();
   }
-  public static Object propertyMacro_GetValue_0_10(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetValue_0_12(final PropertyMacroContext _context) {
     SNode project = SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$ae);
     if (project == null) {
       return _context.getTemplateValue();
     }
     return "*-" + SPropertyOperations.getString(project, PROPS.name$MnvL) + ".xml";
   }
-  public static Object propertyMacro_GetValue_0_11(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetValue_0_13(final PropertyMacroContext _context) {
     return _context.getTemplateValue() + "." + SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
   public static Object referenceMacro_GetReferent_0_0(final ReferenceMacroContext _context) {
@@ -210,6 +218,13 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Iterable<SNode> sourceNodesQuery_0_5(final SourceSubstituteMacroNodesContext _context) {
     return ((List<SNode>) _context.getVariable("var:requiredPlugins"));
   }
+  public static Iterable<SNode> sourceNodesQuery_0_6(final SourceSubstituteMacroNodesContext _context) {
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.BuildProject$ae), LINKS.macros$r8_A), CONCEPTS.BuildFolderMacro$mR)).where(new IWhereFilter<SNode>() {
+      public boolean accept(SNode it) {
+        return SPropertyOperations.getString(it, PROPS.name$MnvL).startsWith(((String) _context.getVariable("var:MPS_MACRO_PREFIX"))) && SPropertyOperations.getString(it, PROPS.name$MnvL).length() > ((String) _context.getVariable("var:MPS_MACRO_PREFIX")).length();
+      }
+    });
+  }
   public static Object varMacro_Value_0_0(final TemplateVarContext _context) {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq) == null) || (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.jvmArgs$IZpF) == null)) {
       return "-Xss2048k -Xmx1024m";
@@ -219,6 +234,9 @@ public class QueriesGenerated extends QueryProviderBase {
     return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.jvmArgs$IZpF), macroHelper);
   }
   public static Object varMacro_Value_0_1(final TemplateVarContext _context) {
+    return "mps.macro.";
+  }
+  public static Object varMacro_Value_0_2(final TemplateVarContext _context) {
     // design-time because of editor tests we need languages
     return new MPSModulesClosure(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.modules$V7vE)).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
@@ -226,12 +244,12 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }), new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits()).designtimeClosure();
   }
-  public static Object varMacro_Value_0_2(final TemplateVarContext _context) {
+  public static Object varMacro_Value_0_3(final TemplateVarContext _context) {
     ModulePlugins plugins = new ModulePlugins(SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$ae));
     plugins.collect(((MPSModulesClosure) _context.getVariable("var:closure")).getAllModules(), Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.requiredPlugins$eyJB), LINKS.plugin$qDpN)).toListSequence());
     return plugins.getPlugins(_context, true);
   }
-  public static Object varMacro_Value_0_3(final TemplateVarContext _context) {
+  public static Object varMacro_Value_0_4(final TemplateVarContext _context) {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq) == null) || (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.compressArgs$RBk7) == null)) {
       return false;
     }
@@ -240,7 +258,7 @@ public class QueriesGenerated extends QueryProviderBase {
     String text = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.compressArgs$RBk7), macroHelper);
     return "true".equals(text);
   }
-  public static Object varMacro_Value_0_4(final TemplateVarContext _context) {
+  public static Object varMacro_Value_0_5(final TemplateVarContext _context) {
     return ((MPSModulesClosure) _context.getVariable("var:closure")).getAllModules();
   }
   private final Map<String, SourceNodesQuery> snsqMethods = new HashMap<String, SourceNodesQuery>();
@@ -252,6 +270,7 @@ public class QueriesGenerated extends QueryProviderBase {
     snsqMethods.put("819766574531067642", new SNsQ(i++));
     snsqMethods.put("819766574531067684", new SNsQ(i++));
     snsqMethods.put("819766574532351184", new SNsQ(i++));
+    snsqMethods.put("149846544984029122", new SNsQ(i++));
   }
   @NotNull
   @Override
@@ -279,6 +298,8 @@ public class QueriesGenerated extends QueryProviderBase {
           return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_0_4(ctx));
         case 5:
           return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_0_5(ctx));
+        case 6:
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_0_6(ctx));
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -296,6 +317,8 @@ public class QueriesGenerated extends QueryProviderBase {
     pvqMethods.put("819766574531067675", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "lib.module.foreign"));
     pvqMethods.put("5528547093830289142", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "plugin.id"));
     pvqMethods.put("819766574532355719", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "plugin.location"));
+    pvqMethods.put("149846544984625625", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "mps.macro"));
+    pvqMethods.put("149846544985221019", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "mps.macro.value"));
     pvqMethods.put("5528547093808122703", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "${build.tmp}"));
     pvqMethods.put("5528547093811329864", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "*-name.xml"));
     pvqMethods.put("4005526075832899341", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "test"));
@@ -339,6 +362,10 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.propertyMacro_GetValue_0_10(ctx);
         case 11:
           return QueriesGenerated.propertyMacro_GetValue_0_11(ctx);
+        case 12:
+          return QueriesGenerated.propertyMacro_GetValue_0_12(ctx);
+        case 13:
+          return QueriesGenerated.propertyMacro_GetValue_0_13(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -405,10 +432,11 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, VariableValueQuery> vvqMethods = new HashMap<String, VariableValueQuery>();
   {
     vvqMethods.put("3609768169816347522", new VVQ(0));
-    vvqMethods.put("2409421742521905393", new VVQ(1));
-    vvqMethods.put("2409421742521905397", new VVQ(2));
-    vvqMethods.put("1688667350638627524", new VVQ(3));
-    vvqMethods.put("819766574531080626", new VVQ(4));
+    vvqMethods.put("8597400937104346013", new VVQ(1));
+    vvqMethods.put("2409421742521905393", new VVQ(2));
+    vvqMethods.put("2409421742521905397", new VVQ(3));
+    vvqMethods.put("1688667350638627524", new VVQ(4));
+    vvqMethods.put("819766574531080626", new VVQ(5));
   }
   @NotNull
   @Override
@@ -434,6 +462,8 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.varMacro_Value_0_3(ctx);
         case 4:
           return QueriesGenerated.varMacro_Value_0_4(ctx);
+        case 5:
+          return QueriesGenerated.varMacro_Value_0_5(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -454,6 +484,7 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SContainmentLink options$gctq = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, 0x5b81705cdfb31570L, "options");
     /*package*/ static final SContainmentLink haltonfailure$573F = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x5b81705cdfb323cdL, "haltonfailure");
     /*package*/ static final SContainmentLink macros$r8_A = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a22L, "macros");
+    /*package*/ static final SContainmentLink defaultPath$9tbQ = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafadd002L, 0x668c6cfbafadf0eaL, "defaultPath");
     /*package*/ static final SContainmentLink modules$V7vE = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, 0x3f496e80bd8ef370L, "modules");
     /*package*/ static final SContainmentLink jvmArgs$IZpF = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x321879066b697c19L, "jvmArgs");
     /*package*/ static final SContainmentLink requiredPlugins$eyJB = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x5b81705cdf7bc31bL, "requiredPlugins");
