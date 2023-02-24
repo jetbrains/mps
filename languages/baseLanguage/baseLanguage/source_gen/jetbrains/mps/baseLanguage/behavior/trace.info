@@ -33052,7 +33052,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)/8695552310380188340">
     <file name="BLElementType.java">
       <node id="8695552310380188512" at="12,41,13,74" concept="12" />
-      <node id="8695552310380188491" at="18,41,19,156" concept="12" />
+      <node id="8695552310380188491" at="18,41,19,233" concept="12" />
       <node id="8695552310380188481" at="24,41,25,85" concept="12" />
       <node id="8695552310380188471" at="30,41,31,84" concept="12" />
       <node id="8695552310380188461" at="36,41,37,86" concept="12" />
@@ -33061,13 +33061,14 @@
       <node id="8695552310380188438" at="54,41,55,19" concept="12" />
       <node id="8695552310380188346" at="60,0,61,0" concept="10" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="8695552310380188340" at="63,0,64,0" concept="15" trace="Classifier$Ix" />
-      <node id="8695552310380188340" at="64,0,65,0" concept="15" trace="StaticFieldDeclaration$jR" />
-      <node id="8695552310380188340" at="65,0,66,0" concept="15" trace="FieldDeclaration$ie" />
-      <node id="8695552310380188340" at="66,0,67,0" concept="15" trace="BaseMethodDeclaration$kD" />
-      <node id="8695552310380188340" at="67,0,68,0" concept="15" trace="ParameterDeclaration$RG" />
-      <node id="8695552310380188340" at="68,0,69,0" concept="15" trace="ConstructorDeclaration$yG" />
-      <node id="8695552310380188340" at="69,0,70,0" concept="15" trace="LocalVariableDeclaration$41" />
-      <node id="8695552310380188340" at="70,0,71,0" concept="15" trace="Annotation$he" />
+      <node id="8695552310380188340" at="64,0,65,0" concept="15" trace="FieldDeclaration$ie" />
+      <node id="8695552310380188340" at="65,0,66,0" concept="15" trace="StaticFieldDeclaration$jR" />
+      <node id="8695552310380188340" at="66,0,67,0" concept="15" trace="EnumConstantDeclaration$MW" />
+      <node id="8695552310380188340" at="67,0,68,0" concept="15" trace="BaseMethodDeclaration$kD" />
+      <node id="8695552310380188340" at="68,0,69,0" concept="15" trace="ParameterDeclaration$RG" />
+      <node id="8695552310380188340" at="69,0,70,0" concept="15" trace="ConstructorDeclaration$yG" />
+      <node id="8695552310380188340" at="70,0,71,0" concept="15" trace="LocalVariableDeclaration$41" />
+      <node id="8695552310380188340" at="71,0,72,0" concept="15" trace="Annotation$he" />
       <node id="8695552310380188365" at="12,0,15,0" concept="10" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="8695552310380188375" at="18,0,21,0" concept="10" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="8695552310380188387" at="24,0,27,0" concept="10" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -33077,7 +33078,7 @@
       <node id="8695552310380188423" at="48,0,51,0" concept="10" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="8695552310380188432" at="54,0,57,0" concept="10" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <scope id="8695552310380188367" at="12,41,13,74" />
-      <scope id="8695552310380188377" at="18,41,19,156" />
+      <scope id="8695552310380188377" at="18,41,19,233" />
       <scope id="8695552310380188389" at="24,41,25,85" />
       <scope id="8695552310380188398" at="30,41,31,84" />
       <scope id="8695552310380188407" at="36,41,37,86" />
@@ -33111,8 +33112,8 @@
       <scope id="8695552310380188432" at="54,0,57,0">
         <var name="target" id="8695552310380188436" />
       </scope>
-      <unit id="8695552310380188340" at="62,0,72,0" name="jetbrains.mps.baseLanguage.behavior.BLElementType$CONCEPTS" />
-      <unit id="8695552310380188340" at="10,0,73,0" name="jetbrains.mps.baseLanguage.behavior.BLElementType" />
+      <unit id="8695552310380188340" at="62,0,73,0" name="jetbrains.mps.baseLanguage.behavior.BLElementType$CONCEPTS" />
+      <unit id="8695552310380188340" at="10,0,74,0" name="jetbrains.mps.baseLanguage.behavior.BLElementType" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)/8884554759541377993">
