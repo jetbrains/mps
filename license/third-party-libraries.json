@@ -427,7 +427,7 @@
 }, {
   "name" : "Kotlin Standard Library for JDK 8",
   "url" : "https://github.com/JetBrains/kotlin",
-  "version" : "1.7.0",
+  "version" : "1.7.22",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/kotlin/blob/master/license/LICENSE.txt"
 }, {
@@ -445,7 +445,7 @@
 }, {
   "name" : "Kotlin reflection library",
   "url" : "https://github.com/JetBrains/kotlin",
-  "version" : "1.7.0",
+  "version" : "1.7.22",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/kotlin/blob/master/license/LICENSE.txt"
 }, {
@@ -775,7 +775,7 @@
 }, {
   "name" : "jb-jdi",
   "url" : "https://github.com/JetBrains/intellij-deps-jdi",
-  "version" : "2.22",
+  "version" : "2.24",
   "license" : "GPL 2.0 + Classpath",
   "licenseUrl" : "https://raw.githubusercontent.com/JetBrains/intellij-deps-jdi/master/LICENSE.txt"
 }, {
@@ -997,7 +997,13 @@
 }, {
   "name" : "zstd-jni",
   "url" : "https://github.com/luben/zstd-jni",
-  "version" : "1.5.2-4",
+  "version" : "1.5.2-5",
+  "license" : "BSD 2-Clause",
+  "licenseUrl" : "https://github.com/luben/zstd-jni/blob/master/LICENSE"
+}, {
+  "name" : "zstd-jni-windows-aarch64",
+  "url" : "https://github.com/VladRassokhin/zstd-jni",
+  "version" : "1.5.2-5-25",
   "license" : "BSD 2-Clause",
   "licenseUrl" : "https://github.com/luben/zstd-jni/blob/master/LICENSE"
 } ]
