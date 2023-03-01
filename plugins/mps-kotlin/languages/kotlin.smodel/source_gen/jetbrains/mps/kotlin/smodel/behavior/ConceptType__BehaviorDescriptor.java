@@ -28,10 +28,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.kotlin.api.members.SignatureBuilder;
 import jetbrains.mps.kotlin.signatures.FunctionSignature;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import java.util.Iterator;
-import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -49,10 +47,10 @@ public final class ConceptType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static final SMethod<Iterable<SNode>> getBehaviorMethods_id6IkKv2hCcXi = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getBehaviorMethods").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(7752034097591013202L).languageId(0xaf06fc1cd08b495aL, 0xeb56ebf4df56438eL).build2();
   public static final SMethod<Void> populateTypeSignatures_id5q426iHK5S9 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateTypeSignatures").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6234117012692426249L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SignatureCollector.class, ""));
   public static final SMethod<String> toString_id4nn3FPlZH$r = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("toString").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5032507314964191515L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
-  public static final SMethod<TypeKey> shallowId_idJmO2PmZtH5 = new SMethodBuilder<TypeKey>(new SJavaCompoundTypeImpl(TypeKey.class)).name("shallowId").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(853098072584870725L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<TypeKey> typeKey_idJmO2PmZtH5 = new SMethodBuilder<TypeKey>(new SJavaCompoundTypeImpl(TypeKey.class)).name("typeKey").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(853098072584870725L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Boolean> isExpression_id2J12cYi1t5p = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isExpression").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3152810901737165145L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(visitHierarchy_id5q426iHtYvR, getBehaviorMethods_id6IkKv2hCcXi, populateTypeSignatures_id5q426iHK5S9, toString_id4nn3FPlZH$r, shallowId_idJmO2PmZtH5, isExpression_id2J12cYi1t5p);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(visitHierarchy_id5q426iHtYvR, getBehaviorMethods_id6IkKv2hCcXi, populateTypeSignatures_id5q426iHK5S9, toString_id4nn3FPlZH$r, typeKey_idJmO2PmZtH5, isExpression_id2J12cYi1t5p);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -94,38 +92,7 @@ public final class ConceptType__BehaviorDescriptor extends BaseBHDescriptor {
         return SPropertyOperations.getBoolean(it, PROPS.isStatic$JhJe);
       }
     });
-    visitor.addDeclarations(methods, null, FunctionSignature.class, new _FunctionTypes._return_P1_E0<Iterable<FunctionSignature>, SNode>() {
-      public Iterable<FunctionSignature> invoke(final SNode node) {
-        return new Iterable<FunctionSignature>() {
-          public Iterator<FunctionSignature> iterator() {
-            return new YieldingIterator<FunctionSignature>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
-__loop__:
-                do {
-__switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 2:
-                      this.__CP__ = 1;
-                      this.yield((FunctionSignature) new ConceptFunctionSignature(node));
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    default:
-                      break __loop__;
-                  }
-                } while (true);
-                return false;
-              }
-            };
-          }
-        };
-      }
-    });
+    SignatureBuilder.create(methods, FunctionSignature.class).withSignature((SNode node) -> (FunctionSignature) new ConceptFunctionSignature(node)).declareTo(visitor);
   }
   /*package*/ static String toString_id4nn3FPlZH$r(@NotNull SNode __thisNode__, boolean erased) {
     if (erased) {
@@ -136,7 +103,8 @@ __switch__:
     }
     return "concept[" + SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.concept$PItp), PROPS.name$MnvL) + "]";
   }
-  /*package*/ static TypeKey shallowId_idJmO2PmZtH5(@NotNull SNode __thisNode__) {
+  @NotNull
+  /*package*/ static TypeKey typeKey_idJmO2PmZtH5(@NotNull SNode __thisNode__) {
     // We use concept as type key as we need to differentiate it in type system
     // Class is different as NodeType uses ClassType for its own concept
     return new ConceptTypeKey(SLinkOperations.getPointer(__thisNode__, LINKS.concept$PItp));
@@ -171,7 +139,7 @@ __switch__:
       case 3:
         return (T) ((String) toString_id4nn3FPlZH$r(node, ((boolean) (Boolean) parameters[0])));
       case 4:
-        return (T) ((TypeKey) shallowId_idJmO2PmZtH5(node));
+        return (T) ((TypeKey) typeKey_idJmO2PmZtH5(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

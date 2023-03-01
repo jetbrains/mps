@@ -77,7 +77,7 @@ public final class NullableType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static String toString_id4nn3FPlZH$r(@NotNull SNode __thisNode__, boolean erased) {
     return "(" + IType__BehaviorDescriptor.toString_id4nn3FPlZH$r.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.type$Tm0J), ((boolean) erased)) + ")?";
   }
-  /*package*/ static SignatureScope getStaticScope_id1ODRHGtufGw(@NotNull SNode __thisNode__, SignatureFilter<?> filter, SNode contextNode) {
+  /*package*/ static SignatureScope getStaticScope_id1ODRHGtufGw(@NotNull SNode __thisNode__, SignatureFilter filter, SNode contextNode) {
     return (SignatureScope) IType__BehaviorDescriptor.getStaticScope_id1ODRHGtufGw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.type$Tm0J), filter, contextNode);
   }
   @ApiStatus.Experimental
@@ -133,7 +133,7 @@ public final class NullableType__BehaviorDescriptor extends BaseBHDescriptor {
       case 6:
         return (T) ((String) toString_id4nn3FPlZH$r(node, ((boolean) (Boolean) parameters[0])));
       case 7:
-        return (T) ((SignatureScope) getStaticScope_id1ODRHGtufGw(node, (SignatureFilter<?>) parameters[0], (SNode) parameters[1]));
+        return (T) ((SignatureScope) getStaticScope_id1ODRHGtufGw(node, (SignatureFilter) parameters[0], (SNode) parameters[1]));
       case 8:
         return (T) ((SNode) getCompanionType_id13qggQDnK5I(node));
       case 9:

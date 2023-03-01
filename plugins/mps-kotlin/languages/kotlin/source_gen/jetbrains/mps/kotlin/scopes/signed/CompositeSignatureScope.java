@@ -57,15 +57,6 @@ public class CompositeSignatureScope implements SignatureScope {
     return this.myScopes;
   }
 
-  @Override
-  public boolean isVisibilityFiltered() {
-    return ListSequence.fromList(getScopes()).all(new IWhereFilter<SignatureScope>() {
-      public boolean accept(SignatureScope it) {
-        return it.isVisibilityFiltered();
-      }
-    });
-  }
-
   public static SignatureScope of(Iterable<SignatureScope> scopes) {
     List<SignatureScope> seq = Sequence.fromIterable(scopes).where(new NotNullWhereFilter<SignatureScope>()).toListSequence();
     if (ListSequence.fromList(seq).isEmpty()) {

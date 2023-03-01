@@ -19,7 +19,7 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.kotlin.signatures.MemberSignature;
+import jetbrains.mps.kotlin.scopes.DelegatedSignatureFilter;
 import jetbrains.mps.kotlin.api.declaration.TypeParameterDeclaration;
 import jetbrains.mps.kotlin.behavior.ITypeParameterReference__BehaviorDescriptor;
 import java.util.List;
@@ -29,15 +29,15 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ReceiverTypeScope implements SignatureScope {
   private final Set<TypeKey> myTargetTypes;
-  private final SignatureFilter<?> mySignatureFilter;
+  private final SignatureFilter mySignatureFilter;
   private final SNode myContextNode;
   private final SNode myReceiverType;
 
-  public ReceiverTypeScope(SNode contextNode, SNode receiverType, SignatureFilter<?> signatureFilter) {
+  public ReceiverTypeScope(SNode contextNode, SNode receiverType, SignatureFilter signatureFilter) {
     this(contextNode, receiverType, SuperTypesVisitorImpl.getSupertypes(receiverType), signatureFilter);
   }
 
-  public ReceiverTypeScope(SNode contextNode, SNode receiverType, Iterable<TypeKey> targetTypes, SignatureFilter<?> signatureFilter) {
+  public ReceiverTypeScope(SNode contextNode, SNode receiverType, Iterable<TypeKey> targetTypes, SignatureFilter signatureFilter) {
     mySignatureFilter = signatureFilter;
     myTargetTypes = SetSequence.fromSetWithValues(new HashSet<TypeKey>(), targetTypes);
     myContextNode = contextNode;
@@ -49,7 +49,7 @@ public class ReceiverTypeScope implements SignatureScope {
     // Empty sequence if the typesystem is disabled, we might not want to see auto resolution happen there (to confirm)
     return ExtensionsHelper.withTypesystem(myContextNode, Sequence.fromIterable(Collections.<SourcedSignature>emptyList()), (KotlinTypesystem typesystem) -> {
       // Here, ReceiverTypeFilter already does some light checking
-      VisibleScopeCollector collector = new VisibleScopeCollector(new ReceiverTypeFilter(), myContextNode);
+      ScopeCollector collector = new ScopeCollector(new ReceiverTypeFilter());
       SignatureScope.collectHierarchyScopes(myContextNode, myContextNode, collector);
 
       // Call the kotlin typesystem: only accurate way to find type applicability
@@ -82,14 +82,9 @@ public class ReceiverTypeScope implements SignatureScope {
     });
   }
 
-  public class ReceiverTypeFilter extends SignatureFilter<MemberSignature> {
+  public class ReceiverTypeFilter extends DelegatedSignatureFilter {
     public ReceiverTypeFilter() {
-      super((Class<MemberSignature>) mySignatureFilter.getMySignatureKind());
-    }
-
-    @Override
-    protected boolean accept(MemberSignature signature, SNode source) {
-      return mySignatureFilter.acceptSignature(signature, source);
+      super(mySignatureFilter);
     }
 
     @Override

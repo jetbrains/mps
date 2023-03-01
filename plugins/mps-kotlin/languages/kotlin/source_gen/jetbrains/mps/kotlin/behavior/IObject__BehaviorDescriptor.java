@@ -22,8 +22,9 @@ public final class IObject__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<Boolean> hasPrimaryConstructor_id1$jFvlEi5P5 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasPrimaryConstructor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1806979145067420997L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<SNode> getType_id6563FJLeSWZ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7009306070417641279L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Boolean> isAbstractClass_id$q1KckYQOy = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAbstract").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(655844405554146594L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(hasPrimaryConstructor_id1$jFvlEi5P5, getType_id6563FJLeSWZ);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(hasPrimaryConstructor_id1$jFvlEi5P5, getType_id6563FJLeSWZ, isAbstractClass_id$q1KckYQOy);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -34,6 +35,9 @@ public final class IObject__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static SNode getType_id6563FJLeSWZ(@NotNull SNode __thisNode__) {
     return IClassLike__BehaviorDescriptor.getThisType_id46gC9M6gB68.invoke(__thisNode__, ((boolean) false));
+  }
+  /*package*/ static boolean isAbstractClass_id$q1KckYQOy(@NotNull SNode __thisNode__) {
+    return false;
   }
 
   /*package*/ IObject__BehaviorDescriptor() {
@@ -55,6 +59,8 @@ public final class IObject__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((Boolean) hasPrimaryConstructor_id1$jFvlEi5P5(node));
       case 1:
         return (T) ((SNode) getType_id6563FJLeSWZ(node));
+      case 2:
+        return (T) ((Boolean) isAbstractClass_id$q1KckYQOy(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

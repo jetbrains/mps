@@ -815,7 +815,7 @@
                 <uo k="s:originTrace" v="n:8374658296288692930" />
               </node>
               <node concept="2qgKlT" id="2a" role="2OqNvi">
-                <ref role="37wK5l" to="hez:JmO2PmZtH5" resolve="shallowId" />
+                <ref role="37wK5l" to="hez:JmO2PmZtH5" resolve="typeKey" />
                 <uo k="s:originTrace" v="n:8374658296288694210" />
               </node>
             </node>

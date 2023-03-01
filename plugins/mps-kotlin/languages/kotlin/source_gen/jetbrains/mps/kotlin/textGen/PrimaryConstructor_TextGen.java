@@ -5,26 +5,22 @@ package jetbrains.mps.kotlin.textGen;
 import jetbrains.mps.text.rt.TextGenDescriptorBase;
 import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
-import jetbrains.mps.kotlin.behavior.IVisible__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PrimaryConstructor_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    boolean isNotPublic = !((boolean) IVisible__BehaviorDescriptor.hasVisibility_id2WVyZr43psb.invoke(ctx.getPrimaryInput(), CONCEPTS.PublicVisibility$Me));
-
-    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.annotations$bXtr)).isNotEmpty() || isNotPublic) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.annotations$bXtr)).isNotEmpty() || (SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.visibility$vnSV) != null)) {
       tgs.append(" ");
     }
     KotlinTextGen.annotations(ctx.getPrimaryInput(), false, ctx);
     KotlinTextGen.visibility(ctx.getPrimaryInput(), ctx);
 
-    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.annotations$bXtr)).isNotEmpty() || isNotPublic) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.annotations$bXtr)).isNotEmpty() || (SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.visibility$vnSV) != null)) {
       tgs.append("constructor");
     }
 
@@ -33,12 +29,9 @@ public class PrimaryConstructor_TextGen extends TextGenDescriptorBase {
     tgs.append(")");
   }
 
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept PublicVisibility$Me = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af395L, "jetbrains.mps.kotlin.structure.PublicVisibility");
-  }
-
   private static final class LINKS {
     /*package*/ static final SContainmentLink annotations$bXtr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6e77b7e7a89e49faL, 0x6e77b7e7a89e49fbL, "annotations");
+    /*package*/ static final SContainmentLink visibility$vnSV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c4c4e03fL, 0x631027d1c4c4e040L, "visibility");
     /*package*/ static final SContainmentLink parameters$$EEQ = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af418L, 0x28bef6d7551af6dfL, "parameters");
   }
 }

@@ -19,7 +19,7 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.kotlin.scopes.SignatureFilter;
+import jetbrains.mps.kotlin.scopes.SignatureFilterImpl;
 import jetbrains.mps.kotlin.signatures.FunctionSignature;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -64,7 +64,7 @@ public final class CopyFunctionCall__BehaviorDescriptor extends BaseBHDescriptor
     }
 
     // No receiver type scope here, we only care about data class constructor
-    return IType__BehaviorDescriptor.getInstanceScopes_id1ODRHGtuist.invoke(type, new SignatureFilter<FunctionSignature>(FunctionSignature.class), contextNode, ((boolean) false));
+    return IType__BehaviorDescriptor.getInstanceScopes_id1ODRHGtuist.invoke(type, new SignatureFilterImpl<FunctionSignature>(FunctionSignature.class), contextNode, ((boolean) false));
   }
 
   /*package*/ CopyFunctionCall__BehaviorDescriptor() {

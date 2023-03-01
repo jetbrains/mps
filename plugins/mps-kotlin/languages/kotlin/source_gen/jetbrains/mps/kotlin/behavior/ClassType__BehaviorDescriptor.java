@@ -115,8 +115,8 @@ public final class ClassType__BehaviorDescriptor extends BaseBHDescriptor {
       }
     });
   }
-  /*package*/ static SignatureScope getStaticScope_id1ODRHGtufGw(@NotNull SNode __thisNode__, SignatureFilter<?> filter, SNode contextNode) {
-    return (SignatureScope) IClassLike__BehaviorDescriptor.getStaticScope_id3HHsmlLCHdO.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.class$ExdX), filter);
+  /*package*/ static SignatureScope getStaticScope_id1ODRHGtufGw(@NotNull SNode __thisNode__, SignatureFilter filter, SNode contextNode) {
+    return (SignatureScope) IClassLike__BehaviorDescriptor.getStaticScope_id3HHsmlLCHdO.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.class$ExdX), filter, contextNode);
   }
   @ApiStatus.Experimental
   /*package*/ static SNode getCompanionType_id13qggQDnK5I(@NotNull SNode __thisNode__) {
@@ -189,7 +189,7 @@ public final class ClassType__BehaviorDescriptor extends BaseBHDescriptor {
         populateTypeSignatures_id5q426iHK5S9(node, (SignatureCollector) parameters[0]);
         return null;
       case 2:
-        return (T) ((SignatureScope) getStaticScope_id1ODRHGtufGw(node, (SignatureFilter<?>) parameters[0], (SNode) parameters[1]));
+        return (T) ((SignatureScope) getStaticScope_id1ODRHGtufGw(node, (SignatureFilter) parameters[0], (SNode) parameters[1]));
       case 3:
         return (T) ((SNode) getCompanionType_id13qggQDnK5I(node));
       case 4:

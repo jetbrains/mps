@@ -45,8 +45,9 @@ public final class EnumEntry__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Iterable<SNode>> getTypeArguments_id5JfKd21NW9H = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getTypeArguments").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6615718379394155117L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<TypeReference> getType_id1TQsu41FTV5 = new SMethodBuilder<TypeReference>(new SJavaCompoundTypeImpl(TypeReference.class)).name("getType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2195067079599562437L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Boolean> isAnnotationTargetAllowed_id6nA1THM505G = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAnnotationTargetAllowed").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7342564606689411436L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> isAbstractClass_id$q1KckYQOy = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAbstractClass").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(655844405554146594L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLocal_id1vYW8S3rTh_, getThisType_id46gC9M6gB68, getFunctionName_id4nn3FPlEjh5, getTargetLink_id5D4bOjrrcOr, getReceiver_id5D4bOjrrgiZ, getFunctionDescriptor_id26mUjU3xhgD, getAvailableParameters_id1$jFvlD0xqw, getArguments_id1VI7K1jROBX, getTypeArguments_id5JfKd21NW9H, getType_id1TQsu41FTV5, isAnnotationTargetAllowed_id6nA1THM505G);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLocal_id1vYW8S3rTh_, getThisType_id46gC9M6gB68, getFunctionName_id4nn3FPlEjh5, getTargetLink_id5D4bOjrrcOr, getReceiver_id5D4bOjrrgiZ, getFunctionDescriptor_id26mUjU3xhgD, getAvailableParameters_id1$jFvlD0xqw, getArguments_id1VI7K1jROBX, getTypeArguments_id5JfKd21NW9H, getType_id1TQsu41FTV5, isAnnotationTargetAllowed_id6nA1THM505G, isAbstractClass_id$q1KckYQOy);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -93,6 +94,9 @@ public final class EnumEntry__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static boolean isAnnotationTargetAllowed_id6nA1THM505G(@NotNull SNode __thisNode__, SAbstractConcept target) {
     return SConceptOperations.isExactly(SNodeOperations.asSConcept(target), CONCEPTS.FieldUseSiteTarget$1i) || SConceptOperations.isExactly(SNodeOperations.asSConcept(target), CONCEPTS.PropertyUseSiteTarget$1L) || SConceptOperations.isExactly(SNodeOperations.asSConcept(target), CONCEPTS.DelegateUseSiteTarget$eQ);
   }
+  /*package*/ static boolean isAbstractClass_id$q1KckYQOy(@NotNull SNode __thisNode__) {
+    return false;
+  }
 
   /*package*/ EnumEntry__BehaviorDescriptor() {
   }
@@ -131,6 +135,8 @@ public final class EnumEntry__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((TypeReference) getType_id1TQsu41FTV5(node));
       case 10:
         return (T) ((Boolean) isAnnotationTargetAllowed_id6nA1THM505G(node, (SAbstractConcept) parameters[0]));
+      case 11:
+        return (T) ((Boolean) isAbstractClass_id$q1KckYQOy(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

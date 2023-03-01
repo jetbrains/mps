@@ -5,16 +5,15 @@ package jetbrains.mps.kotlin.scopes.signed;
 import jetbrains.mps.kotlin.scopes.SignatureFilter;
 import jetbrains.mps.references.Reference;
 import java.util.List;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.kotlin.api.members.SignatureCollector;
 
 /**
- * Collect scopes and hold a filter to be used. Is responsible for ensuring visibility constraints.
+ * Collect scopes and hold a filter to be used.
  */
-public class VisibleScopeCollector {
+public class ScopeCollector {
   private SignatureFilter myFilter;
   public SignatureFilter getFilter() {
     return this.myFilter;
@@ -57,16 +56,14 @@ public class VisibleScopeCollector {
       }
     };
   }
-  private final SNode myContextNode;
 
-  public VisibleScopeCollector(SignatureFilter filter, SNode contextNode) {
+  public ScopeCollector(SignatureFilter filter) {
     this.setFilter(filter);
     this.setScopes(ListSequence.fromList(new ArrayList<SignatureScope>()));
-    myContextNode = contextNode;
   }
 
   /**
-   * Add a new scope to the list and apply visibility filter.
+   * Add a new scope to the list.
    * 
    * Each scope provided should be independent of other scopes provided: first scope declared has default priority over
    * following ones, and so on. In case of conflict between two signatures provided by a scope, complex computation must
@@ -75,27 +72,6 @@ public class VisibleScopeCollector {
   public void declareScope(SignatureScope scope) {
     if (null == scope || scope instanceof EmptySignatureScope) {
       return;
-    }
-    declareScopeIgnoringVisibility(TopLevelVisibilityFilterScope.of(scope, myContextNode));
-  }
-
-  /**
-   * Same as declareScope(), but do not filter results on visibility.
-   * 
-   * This should be called only if the given scope has already been filtered on visibility. In kotlin, this happens in
-   * two cases:
-   * - merging another ScopeCollector into this one (scopes are already filtered)
-   * - instance members follow a different logic for filtering on visibility, which should be applied before reaching
-   *   this collector.
-   * 
-   * It can also be valid is all members of the scope are public.
-   */
-  public void declareScopeIgnoringVisibility(SignatureScope scope) {
-    if (null == scope || scope instanceof EmptySignatureScope) {
-      return;
-    }
-    if (!(scope.isVisibilityFiltered())) {
-      throw new IllegalStateException("scope has not been filtered for visibility");
     }
     ListSequence.fromList(getScopes()).addElement(scope);
   }

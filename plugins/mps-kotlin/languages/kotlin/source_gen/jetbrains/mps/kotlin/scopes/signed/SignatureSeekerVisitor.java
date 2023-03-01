@@ -7,10 +7,10 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.kotlin.signatures.MemberSignature;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kotlin.scopes.VisibilityAccess;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.kotlin.api.members.SourcedSignature;
-import jetbrains.mps.kotlin.scopes.SignatureFilter;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.kotlin.scopes.SignatureFilterImpl;
 
 /**
  * Visitor searching for the first signature matching the one passed in constructor.
@@ -22,16 +22,17 @@ public class SignatureSeekerVisitor extends TypeMembersVisitor {
 
   @Override
   public boolean enterType(SNode clazz) {
-    if (ListSequence.fromList(this.getMembers()).isNotEmpty()) {
+    if (Sequence.fromIterable(this.getMembers()).isNotEmpty()) {
       return false;
     }
     return super.enterType(clazz);
   }
 
   public SignatureScope.ContainmentStatus getSearchResult(final SNode expectedSource) {
-    if (ListSequence.fromList(this.getMembers()).isEmpty()) {
+    Iterable<SourcedSignature> members = this.getMembers();
+    if (Sequence.fromIterable(members).isEmpty()) {
       return SignatureScope.ContainmentStatus.NO;
-    } else if (expectedSource != null && ListSequence.fromList(this.getMembers()).any(new IWhereFilter<SourcedSignature>() {
+    } else if (expectedSource != null && Sequence.fromIterable(members).any(new IWhereFilter<SourcedSignature>() {
       public boolean accept(SourcedSignature it) {
         return it.getSource() == expectedSource;
       }
@@ -42,7 +43,7 @@ public class SignatureSeekerVisitor extends TypeMembersVisitor {
     }
   }
 
-  /*package*/ static class OneSignatureFilter extends SignatureFilter<MemberSignature> {
+  /*package*/ static class OneSignatureFilter extends SignatureFilterImpl<MemberSignature> {
     private final MemberSignature mySignature;
     public OneSignatureFilter(@NotNull MemberSignature signature) {
       super((Class<MemberSignature>) signature.getClass());

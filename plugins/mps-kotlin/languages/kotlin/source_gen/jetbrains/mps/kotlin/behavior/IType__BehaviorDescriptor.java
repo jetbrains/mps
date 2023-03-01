@@ -28,12 +28,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.kotlin.scopes.signed.InstanceSignatureScope;
-import jetbrains.mps.kotlin.scopes.signed.TopLevelVisibilityFilterScope;
 import jetbrains.mps.kotlin.scopes.signed.ReceiverTypeScope;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.kotlin.scopes.VisibilityAccess;
-import jetbrains.mps.kotlin.scopes.signed.SignatureScopeHelper;
-import jetbrains.mps.kotlin.scopes.signed.StaticInstanceVisibilityFilterScope;
 import jetbrains.mps.kotlin.scopes.signed.CompositeSignatureScope;
 import org.jetbrains.annotations.ApiStatus;
 import jetbrains.mps.kotlin.api.types.identifiers.UnmatchableType;
@@ -98,7 +94,7 @@ public final class IType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static SNode asInvariantProjection_id2gj5XQXIqKf(@NotNull SNode __thisNode__) {
     return IType__BehaviorDescriptor.asProjection_idJmO2PmVt2A.invoke(__thisNode__, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x21e0c923289a2189L, "jetbrains.mps.kotlin.structure.VarianceModifier"), 0x21e0c923289a2222L, "inv"));
   }
-  /*package*/ static Iterable<SignatureScope> getInstanceScopes_id1ODRHGtuist(@NotNull SNode __thisNode__, SignatureFilter<?> filter, SNode contextNode, boolean withReceiver) {
+  /*package*/ static Iterable<SignatureScope> getInstanceScopes_id1ODRHGtuist(@NotNull SNode __thisNode__, SignatureFilter filter, SNode contextNode, boolean withReceiver) {
     // Contextual receiver not allowed: instance members cannot provide received members
     if (!(filter.acceptReceiver(null))) {
       return Sequence.fromIterable(Collections.<SignatureScope>emptyList());
@@ -107,22 +103,19 @@ public final class IType__BehaviorDescriptor extends BaseBHDescriptor {
     // Use API defined above
     List<SignatureScope> scopes = ListSequence.fromListAndArray(new ArrayList<SignatureScope>(), new InstanceSignatureScope(__thisNode__, filter, contextNode));
     if (withReceiver) {
-      // We must filter on visibility here, since returned scopes are assumed to be filtered by visibility
-      ListSequence.fromList(scopes).addElement(TopLevelVisibilityFilterScope.of(new ReceiverTypeScope(contextNode, __thisNode__, filter), contextNode));
+      ListSequence.fromList(scopes).addElement(new ReceiverTypeScope(contextNode, __thisNode__, filter));
     }
     return scopes;
   }
   @Nullable
-  /*package*/ static SignatureScope getFullStaticScope_id7ZA3QJnL$CF(@NotNull SNode __thisNode__, SignatureFilter<?> filter, SNode contextNode) {
+  /*package*/ static SignatureScope getFullStaticScope_id7ZA3QJnL$CF(@NotNull SNode __thisNode__, SignatureFilter filter, SNode contextNode) {
     Iterable<SignatureScope> companionScopes = IType__BehaviorDescriptor.getInstanceScopes_id1ODRHGtuist.invoke(IType__BehaviorDescriptor.getCompanionType_id13qggQDnK5I.invoke(__thisNode__), filter, contextNode, ((boolean) false));
-
-    VisibilityAccess baseAccesToType = SignatureScopeHelper.getBaseAccesToType(contextNode, __thisNode__);
-    SignatureScope staticScope = StaticInstanceVisibilityFilterScope.of(IType__BehaviorDescriptor.getStaticScope_id1ODRHGtufGw.invoke(__thisNode__, filter, contextNode), contextNode, baseAccesToType);
+    SignatureScope staticScope = IType__BehaviorDescriptor.getStaticScope_id1ODRHGtufGw.invoke(__thisNode__, filter, contextNode);
 
     return CompositeSignatureScope.of(Sequence.fromIterable(companionScopes).concat(Sequence.fromIterable(Sequence.<SignatureScope>singleton(staticScope))));
   }
   @Nullable
-  /*package*/ static SignatureScope getStaticScope_id1ODRHGtufGw(@NotNull SNode __thisNode__, SignatureFilter<?> filter, SNode contextNode) {
+  /*package*/ static SignatureScope getStaticScope_id1ODRHGtufGw(@NotNull SNode __thisNode__, SignatureFilter filter, SNode contextNode) {
     return null;
   }
   @ApiStatus.Experimental
@@ -131,7 +124,7 @@ public final class IType__BehaviorDescriptor extends BaseBHDescriptor {
     return null;
   }
   @Deprecated(since = "2022.3")
-  /*package*/ static SignatureScope getCompanionInstanceScope_id1ODRHGtugRP(@NotNull SNode __thisNode__, SignatureFilter<?> filter, SNode contextNode) {
+  /*package*/ static SignatureScope getCompanionInstanceScope_id1ODRHGtugRP(@NotNull SNode __thisNode__, SignatureFilter filter, SNode contextNode) {
     Iterable<SignatureScope> scopes = IType__BehaviorDescriptor.getInstanceScopes_id1ODRHGtuist.invoke(IType__BehaviorDescriptor.getCompanionType_id13qggQDnK5I.invoke(__thisNode__), filter, contextNode, ((boolean) false));
     return CompositeSignatureScope.of(scopes);
   }
@@ -182,15 +175,15 @@ public final class IType__BehaviorDescriptor extends BaseBHDescriptor {
       case 7:
         return (T) ((SNode) asInvariantProjection_id2gj5XQXIqKf(node));
       case 8:
-        return (T) ((Iterable<SignatureScope>) getInstanceScopes_id1ODRHGtuist(node, (SignatureFilter<?>) parameters[0], (SNode) parameters[1], ((boolean) (Boolean) parameters[2])));
+        return (T) ((Iterable<SignatureScope>) getInstanceScopes_id1ODRHGtuist(node, (SignatureFilter) parameters[0], (SNode) parameters[1], ((boolean) (Boolean) parameters[2])));
       case 9:
-        return (T) ((SignatureScope) getFullStaticScope_id7ZA3QJnL$CF(node, (SignatureFilter<?>) parameters[0], (SNode) parameters[1]));
+        return (T) ((SignatureScope) getFullStaticScope_id7ZA3QJnL$CF(node, (SignatureFilter) parameters[0], (SNode) parameters[1]));
       case 10:
-        return (T) ((SignatureScope) getStaticScope_id1ODRHGtufGw(node, (SignatureFilter<?>) parameters[0], (SNode) parameters[1]));
+        return (T) ((SignatureScope) getStaticScope_id1ODRHGtufGw(node, (SignatureFilter) parameters[0], (SNode) parameters[1]));
       case 11:
         return (T) ((SNode) getCompanionType_id13qggQDnK5I(node));
       case 12:
-        return (T) ((SignatureScope) getCompanionInstanceScope_id1ODRHGtugRP(node, (SignatureFilter<?>) parameters[0], (SNode) parameters[1]));
+        return (T) ((SignatureScope) getCompanionInstanceScope_id1ODRHGtugRP(node, (SignatureFilter) parameters[0], (SNode) parameters[1]));
       case 13:
         return (T) ((TypeKey) typeKey_idJmO2PmZtH5(node));
       case 15:

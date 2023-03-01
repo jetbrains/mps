@@ -51,7 +51,6 @@ public class MembersPopulatingContextWrapper extends MembersPopulatingContext {
 
   @Override
   public void exitClassifierInternal(SNode classifier) {
-    // TODO execute assertion from super() somehow?
     superTypesDelegate.exitType(converted.pop());
   }
 
@@ -66,6 +65,8 @@ public class MembersPopulatingContextWrapper extends MembersPopulatingContext {
     if ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(member)) {
       return;
     }
+
+    // TODO we would need to have a contextual node to filter visibility there, but it is not possible with the current IType API
 
     // Mere conversion of one language's signature into another, it ain't pretty but hard to do better
     if (signature instanceof ClassifierSignature) {

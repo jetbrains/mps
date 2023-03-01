@@ -15,6 +15,7 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.kotlin.scopes.SignatureFilter;
+import jetbrains.mps.kotlin.scopes.SignatureFilterImpl;
 import jetbrains.mps.kotlin.signatures.PropertySignature;
 import jetbrains.mps.kotlin.scopes.signed.SignatureScope;
 import jetbrains.mps.kotlin.scopes.signed.SignatureScopeHelper;
@@ -42,7 +43,7 @@ public class VariableRefExpression_Constraints extends BaseConstraintsDescriptor
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SignatureFilter<PropertySignature> filter = new SignatureFilter<>(PropertySignature.class);
+            SignatureFilter filter = new SignatureFilterImpl<>(PropertySignature.class);
             SignatureScope scope = SignatureScopeHelper.getVariablesScope(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink(), filter, null);
 
             return new SignatureScopeAsScope(scope, CONCEPTS.IVariableIdentifier$v2);

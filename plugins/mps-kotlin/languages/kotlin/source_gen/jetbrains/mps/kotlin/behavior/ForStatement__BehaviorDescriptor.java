@@ -39,7 +39,7 @@ public final class ForStatement__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static void collectSpecificScope_id1yTI8p9qmpS(@NotNull SNode __thisNode__, SignatureCollector collector, SNode childNode) {
-    PropertySignature.declareAllTo(SLinkOperations.getChildren(__thisNode__, LINKS.variables$EO9Z), null, false, null, collector);
+    PropertySignature.declareAllTo(SLinkOperations.getChildren(__thisNode__, LINKS.variables$EO9Z), false, null, collector);
   }
   /*package*/ static boolean isChildVariableAssignable_idCy8Bus9qei(@NotNull SNode __thisNode__) {
     // Equivalent to val

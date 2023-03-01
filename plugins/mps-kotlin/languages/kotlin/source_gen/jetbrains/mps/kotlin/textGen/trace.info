@@ -158,9 +158,9 @@
     </file>
     <file name="VisibilityModifier_TextGen.java">
       <node id="4883292379420789413" at="13,54,14,55" concept="8" />
-      <node id="4883292379420789452" at="14,55,15,119" concept="3" />
+      <node id="655844405552314773" at="14,55,15,99" concept="3" />
       <node id="4883292379420789413" at="12,0,17,0" concept="7" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
-      <scope id="4883292379420789413" at="13,54,15,119">
+      <scope id="4883292379420789413" at="13,54,15,99">
         <var name="tgs" id="4883292379420789413" />
       </scope>
       <scope id="4883292379420789413" at="12,0,17,0">
@@ -1327,36 +1327,32 @@
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696086882">
     <file name="PrimaryConstructor_TextGen.java">
-      <node id="6153771967696086882" at="17,54,18,55" concept="8" />
-      <node id="3403467835376071681" at="18,55,19,156" concept="8" />
-      <node id="3403467835376073014" at="19,156,20,0" concept="11" />
-      <node id="6153771967698219581" at="21,136,22,22" concept="3" />
-      <node id="6153771967697543253" at="23,5,24,65" concept="3" />
-      <node id="6153771967697543596" at="24,65,25,57" concept="3" />
-      <node id="6153771967697544527" at="25,57,26,0" concept="11" />
-      <node id="6153771967696087040" at="27,136,28,32" concept="3" />
-      <node id="6153771967698221019" at="29,5,30,0" concept="11" />
-      <node id="6153771967697574681" at="30,0,31,20" concept="3" />
-      <node id="6153771967697574767" at="31,20,32,108" concept="3" />
-      <node id="6153771967697574647" at="32,108,33,20" concept="3" />
-      <node id="6153771967696086882" at="37,0,38,0" concept="12" trace="PublicVisibility$Me" />
-      <node id="6153771967696086882" at="41,0,42,0" concept="12" trace="annotations$bXtr" />
-      <node id="6153771967696086882" at="42,0,43,0" concept="12" trace="parameters$$EEQ" />
-      <node id="6153771967698277482" at="20,0,23,5" concept="6" />
-      <node id="6153771967698221153" at="26,0,29,5" concept="6" />
-      <node id="6153771967696086882" at="16,0,35,0" concept="7" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
-      <scope id="6153771967698277484" at="21,136,22,22" />
-      <scope id="6153771967698221155" at="27,136,28,32" />
-      <scope id="6153771967696086882" at="17,54,33,20">
-        <var name="isNotPublic" id="3403467835376071682" />
+      <node id="6153771967696086882" at="15,54,16,55" concept="8" />
+      <node id="6153771967698219581" at="17,206,18,22" concept="3" />
+      <node id="6153771967697543253" at="19,5,20,65" concept="3" />
+      <node id="6153771967697543596" at="20,65,21,57" concept="3" />
+      <node id="6153771967697544527" at="21,57,22,0" concept="11" />
+      <node id="6153771967696087040" at="23,206,24,32" concept="3" />
+      <node id="6153771967698221019" at="25,5,26,0" concept="11" />
+      <node id="6153771967697574681" at="26,0,27,20" concept="3" />
+      <node id="6153771967697574767" at="27,20,28,108" concept="3" />
+      <node id="6153771967697574647" at="28,108,29,20" concept="3" />
+      <node id="6153771967696086882" at="33,0,34,0" concept="12" trace="annotations$bXtr" />
+      <node id="6153771967696086882" at="34,0,35,0" concept="12" trace="visibility$vnSV" />
+      <node id="6153771967696086882" at="35,0,36,0" concept="12" trace="parameters$$EEQ" />
+      <node id="6153771967698277482" at="16,55,19,5" concept="6" />
+      <node id="6153771967698221153" at="22,0,25,5" concept="6" />
+      <node id="6153771967696086882" at="14,0,31,0" concept="7" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
+      <scope id="6153771967698277484" at="17,206,18,22" />
+      <scope id="6153771967698221155" at="23,206,24,32" />
+      <scope id="6153771967696086882" at="15,54,29,20">
         <var name="tgs" id="6153771967696086882" />
       </scope>
-      <scope id="6153771967696086882" at="16,0,35,0">
+      <scope id="6153771967696086882" at="14,0,31,0">
         <var name="ctx" id="6153771967696086882" />
       </scope>
-      <unit id="6153771967696086882" at="36,0,39,0" name="jetbrains.mps.kotlin.textGen.PrimaryConstructor_TextGen$CONCEPTS" />
-      <unit id="6153771967696086882" at="40,0,44,0" name="jetbrains.mps.kotlin.textGen.PrimaryConstructor_TextGen$LINKS" />
-      <unit id="6153771967696086882" at="15,0,45,0" name="jetbrains.mps.kotlin.textGen.PrimaryConstructor_TextGen" />
+      <unit id="6153771967696086882" at="32,0,37,0" name="jetbrains.mps.kotlin.textGen.PrimaryConstructor_TextGen$LINKS" />
+      <unit id="6153771967696086882" at="13,0,38,0" name="jetbrains.mps.kotlin.textGen.PrimaryConstructor_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
       <node id="6153771967696086882" at="207,52,208,48" concept="9" />

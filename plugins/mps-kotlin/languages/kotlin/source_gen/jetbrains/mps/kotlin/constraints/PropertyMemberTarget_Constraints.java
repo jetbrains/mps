@@ -19,6 +19,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.kotlin.behavior.InferredTypeReference;
 import jetbrains.mps.kotlin.scopes.SignatureFilter;
+import jetbrains.mps.kotlin.scopes.SignatureFilterImpl;
 import jetbrains.mps.kotlin.signatures.PropertySignature;
 import java.util.List;
 import jetbrains.mps.kotlin.scopes.signed.SignatureScope;
@@ -58,7 +59,7 @@ public class PropertyMemberTarget_Constraints extends BaseConstraintsDescriptor 
             SNode operand = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.MemberNavigationOperation$7I, true, false), LINKS.operand$YS5t);
             SNode type = new InferredTypeReference(operand).compute();
 
-            SignatureFilter<PropertySignature> filter = new SignatureFilter<PropertySignature>(PropertySignature.class);
+            SignatureFilter filter = new SignatureFilterImpl<PropertySignature>(PropertySignature.class);
 
             // Regardless of using a static type or not, we need instance functions
             List<SignatureScope> list = Sequence.fromIterable(IType__BehaviorDescriptor.getInstanceScopes_id1ODRHGtuist.invoke(type, filter, _context.getContextNode(), ((boolean) true))).toListSequence();

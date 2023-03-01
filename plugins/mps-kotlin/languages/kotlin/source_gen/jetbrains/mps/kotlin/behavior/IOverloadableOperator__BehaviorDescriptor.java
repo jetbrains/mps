@@ -20,7 +20,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.kotlin.scopes.signed.SignatureScopeHelper;
-import jetbrains.mps.kotlin.scopes.SignatureFilter;
+import jetbrains.mps.kotlin.scopes.SignatureFilterImpl;
 import jetbrains.mps.kotlin.signatures.FunctionSignature;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -53,7 +53,7 @@ public final class IOverloadableOperator__BehaviorDescriptor extends BaseBHDescr
   /*package*/ static Iterable<SignatureScope> getFunctionScopeParts_id6dAo8EmAhT7(@NotNull SAbstractConcept __thisConcept__, SNode referenceNode, SNode contextNode, SContainmentLink containment) {
     MemberReceiver receiver = IFunctionCall__BehaviorDescriptor.getReceiver_id5D4bOjrrgiZ.invoke(SNodeOperations.as(referenceNode, CONCEPTS.IFunctionCall$Sf));
 
-    return SignatureScopeHelper.getFunctionScopeParts(receiver, contextNode, new SignatureFilter<FunctionSignature>(FunctionSignature.class) {
+    return SignatureScopeHelper.getFunctionScopeParts(receiver, contextNode, new SignatureFilterImpl<FunctionSignature>(FunctionSignature.class) {
       @Override
       protected boolean accept(FunctionSignature signature, SNode source) {
         return FunctionDeclaration.hasModifier(signature.getFunctionDeclaration(), CONCEPTS.OperatorFunctionModifier$Pf);

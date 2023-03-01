@@ -53,7 +53,7 @@ public class Annotation_Constraints extends BaseConstraintsDescriptor {
               return !((boolean) IClassLike__BehaviorDescriptor.hasModifier_id2NtWm0y2Y2A.invoke(IConstructorDeclaration__BehaviorDescriptor.getConstructedClass_id7WpE6U5evQG.invoke(SNodeOperations.as(sig, CONCEPTS.IConstructorDeclaration$rR)), CONCEPTS.AnnotationClassModifier$vN));
             };
 
-            return new SignatureScopeAsScope(new FilteringSignatureScope(new ConstructorsScope(SNodeOperations.getModel(_context.getContextNode()))) {
+            return new SignatureScopeAsScope(new FilteringSignatureScope(new ConstructorsScope(_context.getContextNode())) {
               @Override
               public boolean isExcluded(MemberSignature signature) {
                 return false;

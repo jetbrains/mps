@@ -19,7 +19,8 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import jetbrains.mps.kotlin.api.members.SignatureBuilder;
+import java.util.function.Function;
 import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.kotlin.signatures.AccessorKind;
@@ -55,42 +56,11 @@ public final class IBehaviorMethodCaller__BehaviorDescriptor extends BaseBHDescr
       }
     });
 
-    visitor.addDeclarations(methods, null, ConceptFunctionSignature.class, new _FunctionTypes._return_P1_E0<Iterable<ConceptFunctionSignature>, SNode>() {
-      public Iterable<ConceptFunctionSignature> invoke(final SNode decl) {
-        return new Iterable<ConceptFunctionSignature>() {
-          public Iterator<ConceptFunctionSignature> iterator() {
-            return new YieldingIterator<ConceptFunctionSignature>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
-__loop__:
-                do {
-__switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 2:
-                      this.__CP__ = 1;
-                      this.yield(new ConceptFunctionSignature(decl));
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    default:
-                      break __loop__;
-                  }
-                } while (true);
-                return false;
-              }
-            };
-          }
-        };
-      }
-    });
+    SignatureBuilder.create(methods, ConceptFunctionSignature.class).withSignature((SNode node) -> new ConceptFunctionSignature(node)).declareTo(visitor);
 
     // TODO we only give getter signature as it is not expected to have separate setter, do we?
-    visitor.addDeclarations(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(concept), null, LinkSignature.class, new _FunctionTypes._return_P1_E0<Iterable<LinkSignature>, SNode>() {
-      public Iterable<LinkSignature> invoke(final SNode it) {
+    SignatureBuilder.create(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(concept), LinkSignature.class).withSignatures(new Function<SNode, Iterable<LinkSignature>>() {
+      public Iterable<LinkSignature> apply(final SNode it) {
         return new Iterable<LinkSignature>() {
           public Iterator<LinkSignature> iterator() {
             return new YieldingIterator<LinkSignature>() {
@@ -125,40 +95,9 @@ __switch__:
           }
         };
       }
-    });
+    }).declareTo(visitor);
 
-    visitor.addDeclarations(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(concept), null, LinkSignature.class, new _FunctionTypes._return_P1_E0<Iterable<LinkSignature>, SNode>() {
-      public Iterable<LinkSignature> invoke(final SNode it) {
-        return new Iterable<LinkSignature>() {
-          public Iterator<LinkSignature> iterator() {
-            return new YieldingIterator<LinkSignature>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
-__loop__:
-                do {
-__switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 2:
-                      this.__CP__ = 1;
-                      this.yield(new LinkSignature(it, AccessorKind.GETTER));
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    default:
-                      break __loop__;
-                  }
-                } while (true);
-                return false;
-              }
-            };
-          }
-        };
-      }
-    });
+    SignatureBuilder.create(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(concept), LinkSignature.class).withSignature((SNode it) -> new LinkSignature(it, AccessorKind.GETTER)).declareTo(visitor);
   }
 
   /*package*/ IBehaviorMethodCaller__BehaviorDescriptor() {

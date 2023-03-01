@@ -10,11 +10,11 @@ import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.kotlin.api.members.SignatureCollector;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kotlin.api.members.SourcedSignature;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -22,7 +22,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class IDeclarationScopePart__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310a289a6L, "jetbrains.mps.kotlin.structure.IDeclarationScopePart");
 
-  public static final SMethod<Void> populateDeclarations_id213J8cgCCAN = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateDeclarations").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2324909103759133107L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SignatureCollector.class, ""));
+  public static final SMethod<Void> populateDeclarations_id213J8cgCCAN = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateDeclarations").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2324909103759133107L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SignatureCollector.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Iterable<SourcedSignature>> getNestedConstructors_id1ODRHGtwsYx = new SMethodBuilder<Iterable<SourcedSignature>>(new SJavaCompoundTypeImpl((Class<Iterable<SourcedSignature>>) ((Class) Object.class))).name("getNestedConstructors").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2101455733819297697L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Void> populateStatementDeclarations_id2ZbCiJacEjm = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateStatementDeclarations").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3444023549502858454L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SignatureCollector.class, ""));
 
@@ -31,7 +31,7 @@ public final class IDeclarationScopePart__BehaviorDescriptor extends BaseBHDescr
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static void populateDeclarations_id213J8cgCCAN(@NotNull SNode __thisNode__, SignatureCollector collector) {
+  /*package*/ static void populateDeclarations_id213J8cgCCAN(@NotNull SNode __thisNode__, SignatureCollector collector, SNode contextNode) {
     // default: no-op
   }
   /*package*/ static Iterable<SourcedSignature> getNestedConstructors_id1ODRHGtwsYx(@NotNull SNode __thisNode__) {
@@ -39,10 +39,7 @@ public final class IDeclarationScopePart__BehaviorDescriptor extends BaseBHDescr
   }
   /*package*/ static void populateStatementDeclarations_id2ZbCiJacEjm(@NotNull SNode __thisNode__, SignatureCollector collector) {
     // We care only about standalone definition in statement scope (otherwise navigation scopes are used)
-    IDeclarationScopePart__BehaviorDescriptor.populateDeclarations_id213J8cgCCAN.invoke(__thisNode__, collector);
-
-    // strip any signature information and only recover node
-    // TODO have signatures even in statement declarations
+    IDeclarationScopePart__BehaviorDescriptor.populateDeclarations_id213J8cgCCAN.invoke(__thisNode__, collector, null);
   }
 
   /*package*/ IDeclarationScopePart__BehaviorDescriptor() {
@@ -61,7 +58,7 @@ public final class IDeclarationScopePart__BehaviorDescriptor extends BaseBHDescr
     }
     switch (methodIndex) {
       case 0:
-        populateDeclarations_id213J8cgCCAN(node, (SignatureCollector) parameters[0]);
+        populateDeclarations_id213J8cgCCAN(node, (SignatureCollector) parameters[0], (SNode) parameters[1]);
         return null;
       case 1:
         return (T) ((Iterable<SourcedSignature>) getNestedConstructors_id1ODRHGtwsYx(node));

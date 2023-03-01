@@ -140,7 +140,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "override");
-    editorCell.setCellId("Constant_lnae77_d0");
+    editorCell.setCellId("overrideCell");
     Style style = new StyleImpl();
     new KeywordStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);

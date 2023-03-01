@@ -19,6 +19,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kotlin.scopes.signed.SignatureScopeHelper;
 import jetbrains.mps.scope.EmptyScope;
 import jetbrains.mps.kotlin.scopes.SignatureFilter;
+import jetbrains.mps.kotlin.scopes.SignatureFilterImpl;
 import jetbrains.mps.kotlin.signatures.PropertySignature;
 import jetbrains.mps.kotlin.scopes.signed.SignatureScope;
 import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
@@ -55,7 +56,7 @@ public class JavaVariableReference_Constraints extends BaseConstraintsDescriptor
               }
 
               // Here we seek property signatures from java methods
-              SignatureFilter<PropertySignature> filter = new SignatureFilter<>(PropertySignature.class);
+              SignatureFilter filter = new SignatureFilterImpl<>(PropertySignature.class);
               SignatureScope typeScope;
               if ((boolean) context._1()) {
                 typeScope = IType__BehaviorDescriptor.getFullStaticScope_id7ZA3QJnL$CF.invoke(type, filter, _context.getContextNode());

@@ -16,12 +16,12 @@ import jetbrains.mps.kotlin.api.declaration.ParameterDeclaration;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.kotlin.scopes.signed.VisibleScopeCollector;
-import jetbrains.mps.kotlin.scopes.SignatureFilter;
+import jetbrains.mps.kotlin.scopes.signed.ScopeCollector;
+import jetbrains.mps.kotlin.scopes.SignatureFilterImpl;
 import jetbrains.mps.kotlin.signatures.FunctionSignature;
 import jetbrains.mps.kotlin.scopes.signed.ConstructorsScope;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -46,13 +46,13 @@ public final class FunctionCallExpression__BehaviorDescriptor extends BaseBHDesc
     return new ImplicitCallReceiver(__thisNode__);
   }
   /*package*/ static Iterable<SignatureScope> getFunctionScopeParts_id6dAo8EmAhT7(@NotNull SAbstractConcept __thisConcept__, SNode referenceNode, SNode contextNode, SContainmentLink containment) {
-    VisibleScopeCollector collector = new VisibleScopeCollector(new SignatureFilter<FunctionSignature>(FunctionSignature.class), contextNode);
+    ScopeCollector collector = new ScopeCollector(new SignatureFilterImpl<FunctionSignature>(FunctionSignature.class));
 
     // We get scopes as a list in the collector rather than as an unified scope as each is independent.
     SignatureScope.collectHierarchyScopes(contextNode, contextNode, collector);
 
     // + scope for constructors
-    collector.declareScope(new ConstructorsScope(SNodeOperations.getModel(contextNode)));
+    collector.declareScope(new ConstructorsScope(contextNode));
 
     return collector.getScopes();
   }

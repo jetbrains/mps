@@ -20,7 +20,7 @@ public class SearchSuperTypeVisitor extends SuperTypesGenericVisitor {
     if (found != null) {
       return false;
     }
-    if (Objects.equals(IType__BehaviorDescriptor.shallowId_idJmO2PmZtH5.invoke(type), myTarget)) {
+    if (Objects.equals(IType__BehaviorDescriptor.typeKey_idJmO2PmZtH5.invoke(type), myTarget)) {
       found = type;
       return false;
     }

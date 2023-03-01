@@ -11,13 +11,12 @@ import jetbrains.mps.kotlin.api.members.SignatureCollector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.kotlin.api.members.SignatureBuilder;
-import jetbrains.mps.kotlin.api.members.SignatureAttributeKey;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.kotlin.behavior.TypeReference;
 import jetbrains.mps.kotlin.behavior.IVariableIdentifier__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
 import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
@@ -107,30 +106,34 @@ public class PropertySignature implements MemberSignature {
     return getKind().toString().toLowerCase() + "{" + getName() + "}";
   }
 
-  public static void declareAllTo(Iterable<SNode> named, final SNode visibility, final boolean mutable, SNode receiver, final SignatureCollector collector) {
+  public static void declareAllTo(Iterable<SNode> named, final boolean mutable, SNode receiver, final SignatureCollector collector) {
     Iterable<SNode> nonNullNamed = Sequence.fromIterable(named).where(new NotNullWhereFilter<SNode>());
-    SignatureBuilder.create(nonNullNamed, PropertySignature.class).withExtensionReceiverType(receiver).withSignatures((SNode it) -> signaturesOf(it, mutable)).withAttribute(SignatureAttributeKey.VISIBILITY, (PropertySignature signature, SNode node) -> visibility).declareTo(collector);
+    SignatureBuilder.create(nonNullNamed, PropertySignature.class).withExtensionReceiverType(receiver).withSignatures((SNode it) -> signaturesOf(it, mutable)).declareTo(collector);
 
     // Enforce null receiver to prevent infinite recursion
     if (receiver == null) {
       Sequence.fromIterable(nonNullNamed).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          declaredReceivedFunctionType(it, collector);
+          SNode receivedFunctionType = receivedFunctionType(it);
+          if ((receivedFunctionType != null)) {
+            declareTo(it, receivedFunctionType, collector);
+          }
         }
       });
     }
   }
 
-  private static void declaredReceivedFunctionType(@NotNull SNode var, SignatureCollector collector) {
+  public static SNode receivedFunctionType(@Nullable SNode var) {
     TypeReference typeRef = IVariableIdentifier__BehaviorDescriptor.getType_id1TQsu41FTV5.invoke(var);
-    if (typeRef.isTrivial()) {
+    if (typeRef != null && typeRef.isTrivial()) {
       SNode actual = typeRef.compute();
       if (SNodeOperations.isInstanceOf(actual, CONCEPTS.FunctionType$ig) && (SLinkOperations.getTarget(SNodeOperations.cast(actual, CONCEPTS.FunctionType$ig), LINKS.receiverType$7yLT) != null)) {
         // Declare as variable for now as it doesn't match with IFunctionDeclaration yet
         // TODO make property function declaration?
-        declareTo(var, SLinkOperations.getTarget(SNodeOperations.cast(actual, CONCEPTS.FunctionType$ig), LINKS.receiverType$7yLT), collector);
+        return SLinkOperations.getTarget(SNodeOperations.cast(actual, CONCEPTS.FunctionType$ig), LINKS.receiverType$7yLT);
       }
     }
+    return null;
   }
 
   public static void declareTo(@Nullable SNode named, SNode receiver, SignatureCollector collector) {
@@ -145,7 +148,10 @@ public class PropertySignature implements MemberSignature {
     SignatureBuilder.create(named, PropertySignature.class).withExtensionReceiverType(receiver).withSignatures((SNode node) -> signaturesOf(named, mutable)).declareTo(collector);
 
     if (receiver == null) {
-      declaredReceivedFunctionType(named, collector);
+      SNode functionTypeReceiver = receivedFunctionType(named);
+      if (functionTypeReceiver != null) {
+        declareTo(named, functionTypeReceiver, collector);
+      }
     }
 
   }

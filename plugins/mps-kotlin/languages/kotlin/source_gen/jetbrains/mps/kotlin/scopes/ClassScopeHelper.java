@@ -6,19 +6,19 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.kotlin.behavior.IClassLike__BehaviorDescriptor;
 import jetbrains.mps.scope.Scope;
+import jetbrains.mps.scope.FilteringScope;
 import jetbrains.mps.scope.ModelPlusImportedScope;
+import jetbrains.mps.kotlin.scopes.signed.TopLevelVisibility;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ClassScopeHelper {
   /**
-   * Returns whether the child node has access to instance scope of given class.
    * 
-   * Returns true if the child is a children of parent class or is contained in inner class.
-   * 
-   * See https://kotlinlang.org/docs/nested-classes.html#inner-classes
+   * @deprecated integrated in IClassLike scope logic
    */
+  @Deprecated(since = "2023.1")
   public static boolean hasAccessToInstanceScopeOf(SNode child, SNode parentClass) {
     SNode ancestor = SNodeOperations.getNodeAncestor(child, CONCEPTS.IClassLike$go, true, false);
     if (ancestor == null) {
@@ -35,8 +35,14 @@ public class ClassScopeHelper {
     return false;
   }
 
-  public static Scope create(SNode contextNode) {
-    return new ModelPlusImportedScope(SNodeOperations.getModel(contextNode), false, CONCEPTS.IClassDeclaration$bQ);
+  public static Scope create(final SNode contextNode) {
+    return new FilteringScope(new ModelPlusImportedScope(SNodeOperations.getModel(contextNode), false, CONCEPTS.IClassDeclaration$bQ)) {
+      @Override
+      public boolean isExcluded(SNode node) {
+        // Filter out visibility
+        return !(TopLevelVisibility.visibleTo(node, contextNode));
+      }
+    };
   }
 
   private static final class CONCEPTS {

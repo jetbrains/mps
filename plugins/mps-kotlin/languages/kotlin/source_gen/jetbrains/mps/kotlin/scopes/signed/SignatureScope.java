@@ -5,7 +5,6 @@ package jetbrains.mps.kotlin.scopes.signed;
 import jetbrains.mps.kotlin.api.members.SourcedSignature;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.annotations.ApiStatus;
 import jetbrains.mps.kotlin.scopes.SignatureFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.kotlin.behavior.ISignatureScopeProvider__BehaviorDescriptor;
@@ -30,28 +29,19 @@ public interface SignatureScope {
    */
   boolean contains(SNode source);
 
-  /**
-   * Returns true if this scope returns members filtered wrt to visibility. Allows to enforce visibility contracts
-   * on certain objects and methods (eg. ScopeCollector)
-   */
-  @ApiStatus.Experimental
-  default boolean isVisibilityFiltered() {
-    return false;
-  }
-
   enum ContainmentStatus {
     YES(),
     NO(),
     SIGNATURE()
   }
 
-  static SignatureScope getScope(SNode node, SignatureFilter<?> filter) {
-    VisibleScopeCollector collector = new VisibleScopeCollector(filter, node);
+  static SignatureScope getScope(SNode node, SignatureFilter filter) {
+    ScopeCollector collector = new ScopeCollector(filter);
     collectHierarchyScopes(node, node, collector);
     return CompositeSignatureScope.of(collector.getScopes());
   }
 
-  static void collectHierarchyScopes(SNode node, SNode child, VisibleScopeCollector collector) {
+  static void collectHierarchyScopes(SNode node, SNode child, ScopeCollector collector) {
     if ((node == null)) {
       return;
     }

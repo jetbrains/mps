@@ -21,14 +21,14 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class ProtectedVisibility__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af398L, "jetbrains.mps.kotlin.structure.ProtectedVisibility");
 
-  public static final SMethod<Boolean> isApplicable_id6jE_6duQ0AR = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isApplicable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7271787702856976823L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(VisibilityAccess.class, ""));
+  public static final SMethod<Boolean> isApplicable_id6jE_6duQ0AR = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isApplicable").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7271787702856976823L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(VisibilityAccess.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isApplicable_id6jE_6duQ0AR);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static boolean isApplicable_id6jE_6duQ0AR(@NotNull SNode __thisNode__, SNode contextNode, VisibilityAccess context) {
+  /*package*/ static boolean isApplicable_id6jE_6duQ0AR(@NotNull SAbstractConcept __thisConcept__, SNode contextNode, SNode declaration, VisibilityAccess context) {
     // only visible in internal context
     return context.doSeeProtected();
   }
@@ -48,8 +48,6 @@ public final class ProtectedVisibility__BehaviorDescriptor extends BaseBHDescrip
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
-      case 0:
-        return (T) ((Boolean) isApplicable_id6jE_6duQ0AR(node, (SNode) parameters[0], (VisibilityAccess) parameters[1]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -62,6 +60,8 @@ public final class ProtectedVisibility__BehaviorDescriptor extends BaseBHDescrip
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 0:
+        return (T) ((Boolean) isApplicable_id6jE_6duQ0AR(concept, (SNode) parameters[0], (SNode) parameters[1], (VisibilityAccess) parameters[2]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

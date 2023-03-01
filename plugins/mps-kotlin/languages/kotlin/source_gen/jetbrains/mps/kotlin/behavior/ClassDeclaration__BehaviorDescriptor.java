@@ -10,10 +10,8 @@ import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.kotlin.api.members.SignatureCollector;
-import jetbrains.mps.kotlin.scopes.signed.VisibleScopeCollector;
+import jetbrains.mps.kotlin.scopes.signed.ScopeCollector;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.kotlin.signatures.FunctionSignature;
-import jetbrains.mps.kotlin.api.members.TypeExpander;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
@@ -28,8 +26,9 @@ import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.kotlin.signatures.AccessorKind;
 import jetbrains.mps.kotlin.api.members.SignatureAttributeKey;
-import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.kotlin.signatures.FunctionSignature;
+import java.util.Objects;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.ArrayList;
@@ -45,11 +44,9 @@ public final class ClassDeclaration__BehaviorDescriptor extends BaseBHDescriptor
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af469L, "jetbrains.mps.kotlin.structure.ClassDeclaration");
 
   public static final SMethod<Void> populateNonMemberSignatures_id1pD7IS2T3rZ = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateNonMemberSignatures").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1614855948988593919L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SignatureCollector.class, ""));
-  public static final SMethod<Boolean> collectScope_id7DyvjiA20yV = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("collectScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8818748685422168251L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(VisibleScopeCollector.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> collectScope_id7DyvjiA20yV = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("collectScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8818748685422168251L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(ScopeCollector.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Iterable<SNode>> getPrimaryNonPropertyVariables_id1$jFvlDFKeB = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getPrimaryNonPropertyVariables").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1806979145057371047L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Void> populateSignatures_id18X2O0FJBER = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateSignatures").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1314219036501768887L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SignatureCollector.class, ""));
-  public static final SMethod<Void> declareConstructorSignatures_id5$XWI2Qjm_b = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("declareConstructorSignatures").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6430562889900058955L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SignatureCollector.class, ""));
-  public static final SMethod<FunctionSignature> getFunctionSignature_id6Ijh6DJVuFa = new SMethodBuilder<FunctionSignature>(new SJavaCompoundTypeImpl(FunctionSignature.class)).name("getFunctionSignature").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7751614607569840842L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(TypeExpander.class, ""));
   public static final SMethod<Iterable<SNode>> getConstructors_id2NtWm0y9fFa = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getConstructors").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3233005502713887434L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Boolean> hasPrimaryConstructor_id1$jFvlEi5P5 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasPrimaryConstructor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1806979145067420997L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<List<SNode>> getParameters_id6f3juM$_Kx4 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7188675108982425668L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
@@ -57,7 +54,7 @@ public final class ClassDeclaration__BehaviorDescriptor extends BaseBHDescriptor
   public static final SMethod<String> getFunctionPresentation_id7uO8z1BmwrX = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFunctionPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8625556777609070333L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
   public static final SMethod<Boolean> hasModifier_id2NtWm0y2Y2A = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasModifier").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3233005502712242342L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(populateNonMemberSignatures_id1pD7IS2T3rZ, collectScope_id7DyvjiA20yV, getPrimaryNonPropertyVariables_id1$jFvlDFKeB, populateSignatures_id18X2O0FJBER, declareConstructorSignatures_id5$XWI2Qjm_b, getFunctionSignature_id6Ijh6DJVuFa, getConstructors_id2NtWm0y9fFa, hasPrimaryConstructor_id1$jFvlEi5P5, getParameters_id6f3juM$_Kx4, usesDefaultConstructor_id5H$PF0dBJLd, getFunctionPresentation_id7uO8z1BmwrX, hasModifier_id2NtWm0y2Y2A);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(populateNonMemberSignatures_id1pD7IS2T3rZ, collectScope_id7DyvjiA20yV, getPrimaryNonPropertyVariables_id1$jFvlDFKeB, populateSignatures_id18X2O0FJBER, getConstructors_id2NtWm0y9fFa, hasPrimaryConstructor_id1$jFvlEi5P5, getParameters_id6f3juM$_Kx4, usesDefaultConstructor_id5H$PF0dBJLd, getFunctionPresentation_id7uO8z1BmwrX, hasModifier_id2NtWm0y2Y2A);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -127,7 +124,7 @@ __switch__:
             }
           };
         }
-      }).withAttribute(SignatureAttributeKey.VISIBILITY, (PropertySignature _sig, SNode _node) -> SLinkOperations.getTarget(__thisNode__, LINKS.visibility$vnSV)).declareTo(visitor);
+      }).withAttribute(SignatureAttributeKey.VISIBILITY, (PropertySignature _sig, SNode _node) -> SNodeOperations.getConcept(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$vnSV))).declareTo(visitor);
 
       // Data class: parameter also expose componentN functions
       if (((boolean) IClassLike__BehaviorDescriptor.hasModifier_id2NtWm0y2Y2A.invoke(__thisNode__, CONCEPTS.DataClassModifier$wi))) {
@@ -139,11 +136,11 @@ __switch__:
       }
     }
   }
-  /*package*/ static boolean collectScope_id7DyvjiA20yV(@NotNull final SNode __thisNode__, VisibleScopeCollector collector, SNode childNode) {
+  /*package*/ static boolean collectScope_id7DyvjiA20yV(@NotNull final SNode __thisNode__, ScopeCollector collector, SNode childNode) {
     ISignatureScopeProvider__BehaviorDescriptor.collectScope_id7DyvjiA20yV.invoke0(__thisNode__, CONCEPTS.IClassDeclaration$bQ, collector, childNode);
 
     if (Objects.equals(SNodeOperations.getContainingLink(childNode), LINKS.superclasses$6CkZ)) {
-      collector.declareCollectedScope((SignatureCollector sigCollector) -> PropertySignature.declareAllTo(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.primaryConstructor$QvZc), LINKS.parameters$$EEQ), null, false, null, sigCollector));
+      collector.declareCollectedScope((SignatureCollector sigCollector) -> PropertySignature.declareAllTo(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.primaryConstructor$QvZc), LINKS.parameters$$EEQ), false, null, sigCollector));
     }
 
     return true;
@@ -159,29 +156,23 @@ __switch__:
       }
     });
   }
-  /*package*/ static void populateSignatures_id18X2O0FJBER(@NotNull SNode __thisNode__, SignatureCollector visitor) {
+  /*package*/ static void populateSignatures_id18X2O0FJBER(@NotNull final SNode __thisNode__, final SignatureCollector visitor) {
     // If inner class, constructors provided here
     if (((boolean) IClassLike__BehaviorDescriptor.hasModifier_id2NtWm0y2Y2A.invoke(__thisNode__, CONCEPTS.InnerClassModifier$wL))) {
       // Declare them as instance method (same scope)
       // TODO constructor as instance methods have special behavior regarding inheritance
-      ClassDeclaration__BehaviorDescriptor.declareConstructorSignatures_id5$XWI2Qjm_b.invoke(__thisNode__, visitor);
-    }
-  }
-  /*package*/ static void declareConstructorSignatures_id5$XWI2Qjm_b(@NotNull final SNode __thisNode__, final SignatureCollector collector) {
-    SignatureBuilder.create(IClassLike__BehaviorDescriptor.getConstructors_id2NtWm0y9fFa.invoke(__thisNode__), FunctionSignature.class).withSignature((SNode cons) -> {
-      // Each constructor declares a method
-      return new FunctionSignature(KotlinFunctionDeclaration.of(cons), collector);
-    }).withAttribute(SignatureAttributeKey.VISIBILITY, (FunctionSignature _sig, SNode node) -> {
-      if ((SLinkOperations.getTarget(node, LINKS.visibility$vnSV) != null)) {
-        return SLinkOperations.getTarget(node, LINKS.visibility$vnSV);
-      }
+      SignatureBuilder.create(IClassLike__BehaviorDescriptor.getConstructors_id2NtWm0y9fFa.invoke(__thisNode__), FunctionSignature.class).withSignature((SNode cons) -> {
+        // Each constructor declares a method
+        return new FunctionSignature(KotlinFunctionDeclaration.of(cons), visitor);
+      }).withAttribute(SignatureAttributeKey.VISIBILITY, (FunctionSignature _sig, SNode node) -> {
+        if ((SLinkOperations.getTarget(node, LINKS.visibility$vnSV) != null)) {
+          return SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.visibility$vnSV));
+        }
 
-      // Default: class visibility
-      return SLinkOperations.getTarget(__thisNode__, LINKS.visibility$vnSV);
-    }).declareTo(collector);
-  }
-  /*package*/ static FunctionSignature getFunctionSignature_id6Ijh6DJVuFa(@NotNull SNode __thisNode__, SNode constructor, TypeExpander expander) {
-    return new FunctionSignature(KotlinFunctionDeclaration.of(constructor), expander);
+        // Default: class visibility
+        return SNodeOperations.getConcept(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$vnSV));
+      }).declareTo(visitor);
+    }
   }
   /*package*/ static Iterable<SNode> getConstructors_id2NtWm0y9fFa(@NotNull SNode __thisNode__) {
     Iterable<SNode> secondary = SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.members$gqdV), CONCEPTS.SecondaryConstructor$Lg);
@@ -229,28 +220,23 @@ __switch__:
         populateNonMemberSignatures_id1pD7IS2T3rZ(node, (SignatureCollector) parameters[0]);
         return null;
       case 1:
-        return (T) ((Boolean) collectScope_id7DyvjiA20yV(node, (VisibleScopeCollector) parameters[0], (SNode) parameters[1]));
+        return (T) ((Boolean) collectScope_id7DyvjiA20yV(node, (ScopeCollector) parameters[0], (SNode) parameters[1]));
       case 2:
         return (T) ((Iterable<SNode>) getPrimaryNonPropertyVariables_id1$jFvlDFKeB(node));
       case 3:
         populateSignatures_id18X2O0FJBER(node, (SignatureCollector) parameters[0]);
         return null;
       case 4:
-        declareConstructorSignatures_id5$XWI2Qjm_b(node, (SignatureCollector) parameters[0]);
-        return null;
-      case 5:
-        return (T) ((FunctionSignature) getFunctionSignature_id6Ijh6DJVuFa(node, (SNode) parameters[0], (TypeExpander) parameters[1]));
-      case 6:
         return (T) ((Iterable<SNode>) getConstructors_id2NtWm0y9fFa(node));
-      case 7:
+      case 5:
         return (T) ((Boolean) hasPrimaryConstructor_id1$jFvlEi5P5(node));
-      case 8:
+      case 6:
         return (T) ((List<SNode>) getParameters_id6f3juM$_Kx4(node));
-      case 9:
+      case 7:
         return (T) ((Boolean) usesDefaultConstructor_id5H$PF0dBJLd(node));
-      case 10:
+      case 8:
         return (T) ((String) getFunctionPresentation_id7uO8z1BmwrX(node, ((boolean) (Boolean) parameters[0])));
-      case 11:
+      case 9:
         return (T) ((Boolean) hasModifier_id2NtWm0y2Y2A(node, (SAbstractConcept) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);

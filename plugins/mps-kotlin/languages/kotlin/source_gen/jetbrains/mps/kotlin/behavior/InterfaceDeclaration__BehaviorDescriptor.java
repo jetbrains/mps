@@ -16,13 +16,17 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.kotlin.scopes.SignatureFilter;
+import jetbrains.mps.kotlin.scopes.SignatureFilterImpl;
 import jetbrains.mps.kotlin.signatures.FunctionSignature;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 import java.util.Map;
 import jetbrains.mps.kotlin.api.members.SignatureAttributeKey;
 import jetbrains.mps.kotlin.scopes.TypeMembersVisitor;
 import jetbrains.mps.kotlin.scopes.VisibilityAccess;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.Iterator;
+import jetbrains.mps.kotlin.api.members.SourcedSignature;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -34,8 +38,9 @@ public final class InterfaceDeclaration__BehaviorDescriptor extends BaseBHDescri
   public static final SMethod<SAbstractConcept> getDefaultInheritance_id6jE_6dusz0P = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl((Class<SAbstractConcept>) ((Class) Object.class))).name("getDefaultInheritance").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7271787702850302005L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Boolean> hasPrimaryConstructor_id1$jFvlEi5P5 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasPrimaryConstructor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1806979145067420997L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<FunctionDeclaration> getFunctionalFunction_id5g3vQLJJVGs = new SMethodBuilder<FunctionDeclaration>(new SJavaCompoundTypeImpl(FunctionDeclaration.class)).name("getFunctionalFunction").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6053822427824110364L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Boolean> isAbstractClass_id$q1KckYQOy = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAbstractClass").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(655844405554146594L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDefaultInheritance_id6jE_6dusz0P, hasPrimaryConstructor_id1$jFvlEi5P5, getFunctionalFunction_id5g3vQLJJVGs);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDefaultInheritance_id6jE_6dusz0P, hasPrimaryConstructor_id1$jFvlEi5P5, getFunctionalFunction_id5g3vQLJJVGs, isAbstractClass_id$q1KckYQOy);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -52,22 +57,28 @@ public final class InterfaceDeclaration__BehaviorDescriptor extends BaseBHDescri
       return null;
     }
 
-    SignatureFilter<FunctionSignature> filter = new SignatureFilter<>(FunctionSignature.class) {
+    SignatureFilter filter = new SignatureFilterImpl<>(FunctionSignature.class) {
+      @ApiStatus.Experimental
       @Override
-      protected boolean accept(FunctionSignature signature, SNode source, @Nullable Map<SignatureAttributeKey<?>, Object> attributes) {
-        // Only take abstract functions
+      public boolean acceptAttributes(@Nullable Map<SignatureAttributeKey<?>, Object> attributes) {
         return SignatureAttributeKey.ABSTRACT.get(attributes) == Boolean.TRUE;
       }
     };
     TypeMembersVisitor visitor = new TypeMembersVisitor(filter, __thisNode__, VisibilityAccess.TYPE_PUBLIC);
     IType__BehaviorDescriptor.visitHierarchy_id5q426iHtYvR.invoke(IClassLike__BehaviorDescriptor.getThisType_id46gC9M6gB68.invoke(__thisNode__, ((boolean) false)), visitor);
 
+    Iterator<SourcedSignature> members = Sequence.fromIterable(visitor.getMembers()).iterator();
+    SourcedSignature first = (members.hasNext() ? members.next() : null);
+
     // Not a single method only
-    if (ListSequence.fromList(visitor.getMembers()).count() > 1) {
+    if (first == null || members.hasNext()) {
       return null;
     }
 
-    return ((FunctionSignature) ListSequence.fromList(visitor.getMembers()).first().getSignature()).getFunctionDeclaration();
+    return ((FunctionSignature) first.getSignature()).getFunctionDeclaration();
+  }
+  /*package*/ static boolean isAbstractClass_id$q1KckYQOy(@NotNull SNode __thisNode__) {
+    return true;
   }
 
   /*package*/ InterfaceDeclaration__BehaviorDescriptor() {
@@ -91,6 +102,8 @@ public final class InterfaceDeclaration__BehaviorDescriptor extends BaseBHDescri
         return (T) ((Boolean) hasPrimaryConstructor_id1$jFvlEi5P5(node));
       case 2:
         return (T) ((FunctionDeclaration) getFunctionalFunction_id5g3vQLJJVGs(node));
+      case 3:
+        return (T) ((Boolean) isAbstractClass_id$q1KckYQOy(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

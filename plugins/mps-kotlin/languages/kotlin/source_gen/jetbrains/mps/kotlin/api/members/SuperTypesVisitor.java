@@ -4,6 +4,7 @@ package jetbrains.mps.kotlin.api.members;
 
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
 
 /**
  * Generic visitor of supertypes.
@@ -23,7 +24,7 @@ public interface SuperTypesVisitor {
   }
 
   static <T, U extends SuperTypesVisitor> T visit(SNode type, U visitor, _FunctionTypes._return_P1_E0<? extends T, ? super U> resultCollector) {
-    visitor.enterType(type);
+    IType__BehaviorDescriptor.visitHierarchy_id5q426iHtYvR.invoke(type, visitor);
     return resultCollector.invoke(visitor);
   }
 }

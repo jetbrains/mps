@@ -9,8 +9,8 @@ import java.util.List;
 import jetbrains.mps.kotlin.api.members.SourcedSignature;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.kotlin.signatures.MemberSignature;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.kotlin.signatures.MemberSignature;
 import org.jetbrains.annotations.Nullable;
 import java.util.Map;
 import jetbrains.mps.kotlin.api.members.SignatureAttributeKey;
@@ -65,16 +65,6 @@ public class FilterSignatureCollector implements SignatureCollector {
   public FilterSignatureCollector(SignatureFilter filter) {
     this.setFilter(filter);
     this.setCollected(ListSequence.fromList(new ArrayList<SourcedSignature>()));
-  }
-
-  @Override
-  public boolean accept(Class<? extends MemberSignature> signatureKind, SNode explicitReceiver) {
-    return getFilter().acceptKind(signatureKind) && getFilter().acceptReceiver(explicitReceiver);
-  }
-
-  @Override
-  public boolean acceptSignature(MemberSignature signature, SNode source) {
-    return getFilter().acceptSignature(signature, source);
   }
 
   @Override

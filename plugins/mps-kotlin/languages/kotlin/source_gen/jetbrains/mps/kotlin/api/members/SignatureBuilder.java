@@ -11,13 +11,15 @@ import java.util.function.Function;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
+import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.kotlin.scopes.SignatureFilter;
+import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
+import java.util.Iterator;
+import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.internal.collections.runtime.IMapping;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.kotlin.scopes.signed.SignatureScope;
 import jetbrains.mps.kotlin.scopes.signed.ListSignatureScope;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 
 /**
  * Allows to build signatures from a source node, and collect it either as a scope, as a list of sourced signature or
@@ -31,7 +33,7 @@ public class SignatureBuilder<T extends MemberSignature, U extends SNode> {
   private final Class<T> kind;
   private final Iterable<U> nodes;
   private SNode receiverType = null;
-  private Map<SignatureAttributeKey<?>, BiFunction<T, U, ?>> attributesMakers;
+  private Map<SignatureAttributeKey<?>, BiFunction<? super T, ? super U, ?>> attributesMakers;
   private Function<U, Iterable<T>> signatureBuilder = null;
 
   private SignatureBuilder(Iterable<U> nodes, Class<T> kind) {
@@ -69,14 +71,16 @@ public class SignatureBuilder<T extends MemberSignature, U extends SNode> {
   /**
    * Add an attribute to the each signature. If the function returns null the value will be ignored,
    * 
+   * This is useful mostly for instance members which inherit properties.
+   * 
    * @param attributeKey ket of the attribute to set (used for recovery outside of scopes)
    * @param value value producer
    * @param <V> type of the value
    * @return this
    */
-  public <V> SignatureBuilder<T, U> withAttribute(SignatureAttributeKey<V> attributeKey, BiFunction<T, U, V> value) {
+  public <V> SignatureBuilder<T, U> withAttribute(SignatureAttributeKey<V> attributeKey, BiFunction<? super T, ? super U, V> value) {
     if (attributesMakers == null) {
-      attributesMakers = MapSequence.fromMap(new HashMap<SignatureAttributeKey<?>, BiFunction<T, U, ?>>());
+      attributesMakers = MapSequence.fromMap(new HashMap<SignatureAttributeKey<?>, BiFunction<? super T, ? super U, ?>>());
     }
 
     MapSequence.fromMap(attributesMakers).put(attributeKey, value);
@@ -84,62 +88,143 @@ public class SignatureBuilder<T extends MemberSignature, U extends SNode> {
   }
 
   /**
-   * Declare the signature to the given collector. This method will used collector filters to avoid computation.
-   * 
-   * @param collector collector to fill
-   */
-  public void declareTo(SignatureCollector collector) {
-    // Filter out declarations at this level
-    if (!(collector.accept(kind, receiverType))) {
-      return;
-    }
-    for (final U node : Sequence.fromIterable(nodes)) {
-      // Build signatures for each node
-      for (final T signature : Sequence.fromIterable(signatureBuilder.apply(node))) {
-        // Filter again
-        if (!(collector.acceptSignature(signature, node))) {
-          continue;
-        }
-
-        // All good? Compute attributes (if applicable)
-        final Wrappers._T<Map<SignatureAttributeKey<?>, Object>> attributes = new Wrappers._T<Map<SignatureAttributeKey<?>, Object>>(null);
-        if (attributesMakers != null) {
-          attributes.value = new HashMap<>();
-          MapSequence.fromMap(attributesMakers).visitAll(new IVisitor<IMapping<SignatureAttributeKey<?>, BiFunction<T, U, ?>>>() {
-            public void visit(IMapping<SignatureAttributeKey<?>, BiFunction<T, U, ?>> attr) {
-              attributes.value.put(attr.key(), attr.value().apply(signature, node));
-            }
-          });
-        }
-
-        // And submit to collector
-        collector.collect(node, signature, attributes.value);
-      }
-    }
-  }
-
-  /**
    * Create all the signatures from previous specifications
    * 
    * @return list of signatures
    */
-  public Iterable<SourcedSignature> build() {
-    return Sequence.fromIterable(nodes).translate(new ITranslator2<U, SourcedSignature>() {
-      public Iterable<SourcedSignature> translate(final U node) {
-        return Sequence.fromIterable(signatureBuilder.apply(node)).select(new ISelector<T, SourcedSignature>() {
-          public SourcedSignature select(final T signature) {
-            final Wrappers._T<Map<SignatureAttributeKey<?>, Object>> attributes = new Wrappers._T<Map<SignatureAttributeKey<?>, Object>>(null);
-            if (attributesMakers != null) {
-              attributes.value = new HashMap<>();
-              MapSequence.fromMap(attributesMakers).visitAll(new IVisitor<IMapping<SignatureAttributeKey<?>, BiFunction<T, U, ?>>>() {
-                public void visit(IMapping<SignatureAttributeKey<?>, BiFunction<T, U, ?>> attr) {
-                  attributes.value.put(attr.key(), attr.value().apply(signature, node));
-                }
-              });
-            }
-            return new SourcedSignature(node, signature, attributes.value);
+  public Iterable<SourcedSignature> build(@Nullable final SignatureFilter filter) {
+    return Sequence.fromClosure(new ISequenceClosure<SourcedSignature>() {
+      public Iterable<SourcedSignature> iterable() {
+        return new Iterable<SourcedSignature>() {
+          public Iterator<SourcedSignature> iterator() {
+            return new YieldingIterator<SourcedSignature>() {
+              private int __CP__ = 0;
+              protected boolean moveToNext() {
+__loop__:
+                do {
+__switch__:
+                  switch (this.__CP__) {
+                    case -1:
+                      assert false : "Internal error";
+                      return false;
+                    case 5:
+                      this._5_node_it = Sequence.fromIterable(nodes).iterator();
+                    case 6:
+                      if (!(this._5_node_it.hasNext())) {
+                        this.__CP__ = 1;
+                        break;
+                      }
+                      this._5_node = this._5_node_it.next();
+                      this.__CP__ = 7;
+                      break;
+                    case 9:
+                      this._9_signature_it = Sequence.fromIterable(signatureBuilder.apply(_5_node)).iterator();
+                    case 10:
+                      if (!(this._9_signature_it.hasNext())) {
+                        this.__CP__ = 6;
+                        break;
+                      }
+                      this._9_signature = this._9_signature_it.next();
+                      this.__CP__ = 11;
+                      break;
+                    case 22:
+                      this._22_attr_it = MapSequence.fromMap(attributesMakers).iterator();
+                    case 23:
+                      if (!(this._22_attr_it.hasNext())) {
+                        this.__CP__ = 20;
+                        break;
+                      }
+                      this._22_attr = this._22_attr_it.next();
+                      this.__CP__ = 24;
+                      break;
+                    case 3:
+                      if (filter == null || (filter.acceptKind(kind) && filter.acceptReceiver(receiverType))) {
+                        this.__CP__ = 4;
+                        break;
+                      }
+                      this.__CP__ = 1;
+                      break;
+                    case 13:
+                      if (filter != null && !(filter.acceptSignature(_9_signature, _5_node))) {
+                        this.__CP__ = 14;
+                        break;
+                      }
+                      this.__CP__ = 15;
+                      break;
+                    case 18:
+                      if (attributesMakers != null) {
+                        this.__CP__ = 19;
+                        break;
+                      }
+                      this.__CP__ = 20;
+                      break;
+                    case 26:
+                      if (filter == null || filter.acceptAttributes(_17_attributes)) {
+                        this.__CP__ = 27;
+                        break;
+                      }
+                      this.__CP__ = 10;
+                      break;
+                    case 29:
+                      this.__CP__ = 10;
+                      this.yield(new SourcedSignature(_5_node, _9_signature, _17_attributes));
+                      return true;
+                    case 0:
+                      // Filter out declarations at this level
+                      this.__CP__ = 3;
+                      break;
+                    case 4:
+                      this.__CP__ = 5;
+                      break;
+                    case 7:
+                      // Build signatures for each node
+                      this.__CP__ = 9;
+                      break;
+                    case 11:
+                      // Filter again
+                      this.__CP__ = 13;
+                      break;
+                    case 15:
+
+                      // All good? Compute attributes (if applicable)
+                      this._17_attributes = null;
+                      this.__CP__ = 18;
+                      break;
+                    case 20:
+
+                      this.__CP__ = 26;
+                      break;
+                    case 14:
+                      this.__CP__ = 10;
+                      break;
+                    case 19:
+                      _17_attributes = new HashMap<>();
+                      this.__CP__ = 22;
+                      break;
+                    case 24:
+                      _17_attributes.put(_22_attr.key(), _22_attr.value().apply(_9_signature, _5_node));
+                      this.__CP__ = 23;
+                      break;
+                    case 27:
+                      // And submit to sequence
+                      this.__CP__ = 29;
+                      break;
+                    default:
+                      break __loop__;
+                  }
+                } while (true);
+                return false;
+              }
+              private U _5_node;
+              private Iterator<U> _5_node_it;
+              private T _9_signature;
+              private Iterator<T> _9_signature_it;
+              private Map<SignatureAttributeKey<?>, Object> _17_attributes;
+              private IMapping<SignatureAttributeKey<?>, BiFunction<? super T, ? super U, ?>> _22_attr;
+              private Iterator<IMapping<SignatureAttributeKey<?>, BiFunction<? super T, ? super U, ?>>> _22_attr_it;
+            };
           }
-        });
+        };
       }
     });
   }
@@ -148,7 +233,31 @@ public class SignatureBuilder<T extends MemberSignature, U extends SNode> {
    * Create a lazy scope from specifications. SignatureBuilder should not be modified after this usage.
    */
   public SignatureScope toScope() {
-    return new ListSignatureScope(() -> build());
+    return toScope(null);
+  }
+
+  /**
+   * Create a lazy scope from specifications. SignatureBuilder should not be modified after this usage.
+   */
+  public SignatureScope toScope(final SignatureFilter filter) {
+    // No nodes = nothing to report
+    if (Sequence.fromIterable(this.nodes).isEmpty()) {
+      return null;
+    }
+    return new ListSignatureScope(() -> build(filter));
+  }
+
+  /**
+   * Declare the signature to the given collector. This method will used collector filters to avoid computation.
+   * 
+   * @param collector collector to fill
+   */
+  public void declareTo(final SignatureCollector collector) {
+    Sequence.fromIterable(build(collector.getFilter())).visitAll(new IVisitor<SourcedSignature>() {
+      public void visit(SourcedSignature it) {
+        collector.collect(it.getSource(), it.getSignature(), it.getAttributes());
+      }
+    });
   }
 
   public static <T extends MemberSignature, U extends SNode> SignatureBuilder<T, U> create(Iterable<U> nodes, Class<T> kind) {

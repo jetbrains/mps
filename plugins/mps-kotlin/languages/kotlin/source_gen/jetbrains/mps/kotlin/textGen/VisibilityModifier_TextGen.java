@@ -12,6 +12,6 @@ public class VisibilityModifier_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    KotlinTextGen.spacedAfter(SConceptOperations.conceptAlias(SNodeOperations.getConcept(ctx.getPrimaryInput())), ctx);
+    tgs.append(SConceptOperations.conceptAlias(SNodeOperations.getConcept(ctx.getPrimaryInput())));
   }
 }

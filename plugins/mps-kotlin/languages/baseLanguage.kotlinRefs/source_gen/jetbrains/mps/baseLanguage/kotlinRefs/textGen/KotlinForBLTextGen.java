@@ -97,16 +97,27 @@ public abstract class KotlinForBLTextGen extends BaseLanguageTextGen {
     }
 
     Iterable<SNode> arguments = Sequence.fromIterable(Collections.<SNode>emptyList());
-
-    try {
-      // Reorder parameters (named args not supported in java)
-      arguments = Sequence.fromIterable(FunctionParamHelper.toOrderedList(functionParameters, NodeArgument.ofList(SLinkOperations.getChildren(call, LINKS.actualArgument$Q6nt)))).select(new ISelector<Argument, SNode>() {
-        public SNode select(Argument it) {
-          return it.getExpression();
+    if (ListSequence.fromList(SLinkOperations.getChildren(call, LINKS.actualArgument$Q6nt)).any(new IWhereFilter<SNode>() {
+      public boolean accept(SNode it) {
+        return (SLinkOperations.getTarget(it, LINKS.parameter$UZpc) != null);
+      }
+    })) {
+      try {
+        // Reorder parameters (named args not supported in java)
+        arguments = Sequence.fromIterable(FunctionParamHelper.toOrderedList(functionParameters, NodeArgument.ofList(SLinkOperations.getChildren(call, LINKS.actualArgument$Q6nt)))).select(new ISelector<Argument, SNode>() {
+          public SNode select(Argument it) {
+            return it.getExpression();
+          }
+        });
+      } catch (ParamException error) {
+        tgs.reportError(error.getMessage());
+      }
+    } else {
+      arguments = ListSequence.fromList(SLinkOperations.getChildren(call, LINKS.actualArgument$Q6nt)).select(new ISelector<SNode, SNode>() {
+        public SNode select(SNode it) {
+          return SLinkOperations.getTarget(it, LINKS.expression$hLKM);
         }
       });
-    } catch (ParamException error) {
-      tgs.reportError(error.getMessage());
     }
 
     tgs.append("(");
@@ -133,6 +144,8 @@ public abstract class KotlinForBLTextGen extends BaseLanguageTextGen {
     /*package*/ static final SReferenceLink target$7dy6 = MetaAdapterFactory.getReferenceLink(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0xeac1f33ddc380f3L, 0xf8c78301adL, "target");
     /*package*/ static final SContainmentLink typeArgument$Q6Au = MetaAdapterFactory.getContainmentLink(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0xeac1f33ddc380f3L, 0xeac1f33ddc3b0e0L, "typeArgument");
     /*package*/ static final SContainmentLink actualArgument$Q6nt = MetaAdapterFactory.getContainmentLink(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0xeac1f33ddc380f3L, 0xeac1f33ddc3b0dfL, "actualArgument");
+    /*package*/ static final SReferenceLink parameter$UZpc = MetaAdapterFactory.getReferenceLink(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0xeac1f33ddd3d84dL, 0x17400fc2a345bcd4L, "parameter");
+    /*package*/ static final SContainmentLink expression$hLKM = MetaAdapterFactory.getContainmentLink(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0xeac1f33ddd3d84dL, 0xeac1f33ddd3f453L, "expression");
   }
 
   private static final class PROPS {

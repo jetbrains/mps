@@ -9,16 +9,18 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.HashMap;
 import java.util.List;
 import jetbrains.mps.kotlin.api.members.SourcedSignature;
-import jetbrains.mps.references.Reference;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.kotlin.api.members.SignatureAttributeKey;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.kotlin.behavior.VisibilityModifier__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
+import org.jetbrains.annotations.ApiStatus;
 import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
 
 /**
@@ -30,28 +32,8 @@ import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
  */
 public class TypeMembersVisitor extends SuperTypesGenericVisitor implements SignatureCollector {
   private final Map<MemberSignature, SNode> signaturesHolder = new HashMap<>();
-  private List<SourcedSignature> myMembers;
-  public List<SourcedSignature> getMembers() {
-    return this.myMembers;
-  }
-  private void _setMembers(List<SourcedSignature> value) {
-    this.myMembers = value;
-  }
-  private List<SourcedSignature> setMembers(List<SourcedSignature> value) {
-    _setMembers(value);
-    return value;
-  }
-  private Reference<List<SourcedSignature>> refToMembers() {
-    return new Reference<List<SourcedSignature>>() {
-      public List<SourcedSignature> get() {
-        return getMembers();
-      }
-      public void set(List<SourcedSignature> value) {
-        _setMembers(value);
-      }
-    };
-  }
-  private final SignatureFilter<? extends MemberSignature> filter;
+  private final List<SourcedSignature> members;
+  private final SignatureFilter filter;
   private VisibilityAccess baseAccess = null;
   private final SNode contextNode;
 
@@ -61,12 +43,12 @@ public class TypeMembersVisitor extends SuperTypesGenericVisitor implements Sign
   }
 
   public TypeMembersVisitor(@NotNull Class<? extends MemberSignature> signatureKind, SNode context, VisibilityAccess baseAccess) {
-    this(new SignatureFilter<>(signatureKind), context, baseAccess);
+    this(new SignatureFilterImpl<>(signatureKind), context, baseAccess);
   }
 
-  public TypeMembersVisitor(@NotNull SignatureFilter<? extends MemberSignature> signatureFilter, SNode context, VisibilityAccess baseAccess) {
+  public TypeMembersVisitor(@NotNull SignatureFilter signatureFilter, SNode context, VisibilityAccess baseAccess) {
     super();
-    this.setMembers(ListSequence.fromList(new ArrayList<SourcedSignature>()));
+    this.members = ListSequence.fromList(new ArrayList<SourcedSignature>());
     this.filter = signatureFilter;
     this.baseAccess = baseAccess;
     this.contextNode = context;
@@ -85,11 +67,11 @@ public class TypeMembersVisitor extends SuperTypesGenericVisitor implements Sign
     SNode context = MapSequence.fromMap(signaturesHolder).get(signature);
 
     // Handle visibility
-    SNode visibility = SignatureAttributeKey.VISIBILITY.get(attributes);
-    if ((visibility != null) && !((boolean) VisibilityModifier__BehaviorDescriptor.isApplicable_id6jE_6duQ0AR.invoke(visibility, contextNode, getAccessOnCurrentType()))) {
+    SConcept visibility = SignatureAttributeKey.VISIBILITY.get(attributes);
+    if (visibility != null && !((boolean) VisibilityModifier__BehaviorDescriptor.isApplicable_id6jE_6duQ0AR.invoke(SNodeOperations.asSConcept(visibility), contextNode, source, getAccessOnCurrentType()))) {
 
       // Not applicable here, remove existing child signature that has not overridden visibility (attribute set to null)
-      ListSequence.fromList(getMembers()).removeWhere(new IWhereFilter<SourcedSignature>() {
+      ListSequence.fromList(members).removeWhere(new IWhereFilter<SourcedSignature>() {
         public boolean accept(SourcedSignature it) {
           return Objects.equals(it.getSignature(), signature) && it.getAttribute(SignatureAttributeKey.VISIBILITY) == null;
         }
@@ -101,14 +83,17 @@ public class TypeMembersVisitor extends SuperTypesGenericVisitor implements Sign
 
 
     if (context == null || context == getCurrentType()) {
-      ListSequence.fromList(getMembers()).addElement(new SourcedSignature(source, signature, attributes));
+      ListSequence.fromList(members).addElement(new SourcedSignature(source, signature, attributes));
     } else if (context != null) {
       // Copy attributes to inheriting member
-      ListSequence.fromList(getMembers()).findFirst(new IWhereFilter<SourcedSignature>() {
+      SourcedSignature same = ListSequence.fromList(members).findFirst(new IWhereFilter<SourcedSignature>() {
         public boolean accept(SourcedSignature it) {
           return Objects.equals(it.getSignature(), signature);
         }
-      }).addAttributes(attributes);
+      });
+      if (same != null) {
+        same.addAttributes(attributes);
+      }
     }
 
     // Hide members if signature defined
@@ -117,16 +102,26 @@ public class TypeMembersVisitor extends SuperTypesGenericVisitor implements Sign
     }
   }
 
-  @Override
-  public boolean accept(Class<? extends MemberSignature> signatureKind, SNode explicitReceiver) {
-    return this.filter.acceptKind(signatureKind) && this.filter.acceptReceiver(explicitReceiver);
+  public Iterable<SourcedSignature> getMembers() {
+    // Filtering on attributes happen here: we needed overridden ones before
+    return ListSequence.fromList(members).where(new IWhereFilter<SourcedSignature>() {
+      public boolean accept(SourcedSignature it) {
+        return filter.acceptAttributes(it.getAttributes());
+      }
+    });
   }
 
   @Override
-  public boolean acceptSignature(MemberSignature signature, SNode source) {
-    return this.filter.acceptSignature(signature, source);
+  public SignatureFilter getFilter() {
+    return new DelegatedSignatureFilter(filter) {
+      @ApiStatus.Experimental
+      @Override
+      public boolean acceptAttributes(@Nullable Map<SignatureAttributeKey<?>, Object> attributes) {
+        // ! We do not filter on attributes here, since signatures may inherit from parent !
+        return true;
+      }
+    };
   }
-
 
   @Override
   public SNode expandType(SNode type) {

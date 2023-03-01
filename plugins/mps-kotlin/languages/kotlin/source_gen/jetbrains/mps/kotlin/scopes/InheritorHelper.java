@@ -6,25 +6,25 @@ import jetbrains.mps.kotlin.api.members.SourcedSignature;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kotlin.signatures.MemberSignature;
 import java.util.Objects;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.kotlin.scopes.signed.SignatureScope;
 import jetbrains.mps.kotlin.scopes.signed.CompositeSignatureScope;
 import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
 import jetbrains.mps.kotlin.behavior.IClassLike__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.kotlin.behavior.IVisible__BehaviorDescriptor;
+import jetbrains.mps.kotlin.api.members.SignatureAttributeKey;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.kotlin.behavior.IInheritable__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class InheritorHelper {
   public static SourcedSignature findInheritedMember(final SNode source, final MemberSignature signature) {
-    SignatureFilter<MemberSignature> filter = new SignatureFilter<MemberSignature>((Class<MemberSignature>) signature.getClass()) {
+    SignatureFilter filter = new SignatureFilterImpl<MemberSignature>((Class<MemberSignature>) signature.getClass()) {
       @Override
       protected boolean accept(MemberSignature next, SNode nextSource) {
-        return !(Objects.equals(nextSource, source)) && Objects.equals(next, signature);
+        // Check for class is needed in case of clashing declarations
+        return !(Objects.equals(nextSource, source)) && Objects.equals(next, signature) && !(Objects.equals(SNodeOperations.getNodeAncestor(nextSource, CONCEPTS.IClassLike$go, false, false), SNodeOperations.getNodeAncestor(source, CONCEPTS.IClassLike$go, false, false)));
       }
     };
 
@@ -35,18 +35,22 @@ public class InheritorHelper {
   }
 
   public static SConcept findInheritedVisibility(SNode source, final MemberSignature signature) {
-    // TODO visibility in scope API
-    return IVisible__BehaviorDescriptor.getVisibility_id2WVyZr44ojH.invoke(SNodeOperations.as(findInheritedMember(source, signature).getSource(), CONCEPTS.IVisible$LZ));
+    SourcedSignature base = findInheritedMember(source, signature);
+    if (base != null) {
+      return base.getAttribute(SignatureAttributeKey.VISIBILITY);
+    }
+    return null;
   }
 
   public static SAbstractConcept findInheritedInheritanceModifier(SNode source, final MemberSignature signature) {
-    // TODO inheritance in scope API
-    return IInheritable__BehaviorDescriptor.getInheritance_id6jE_6duswG9.invoke(SNodeOperations.as(findInheritedMember(source, signature).getSource(), CONCEPTS.IInheritable$pc));
+    SourcedSignature base = findInheritedMember(source, signature);
+    if (base != null) {
+      return base.getAttribute(SignatureAttributeKey.MODALITY);
+    }
+    return null;
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept IClassLike$go = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x298a6a355c110274L, "jetbrains.mps.kotlin.structure.IClassLike");
-    /*package*/ static final SInterfaceConcept IVisible$LZ = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c4c4e03fL, "jetbrains.mps.kotlin.structure.IVisible");
-    /*package*/ static final SInterfaceConcept IInheritable$pc = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x537372687dd3bcdaL, "jetbrains.mps.kotlin.structure.IInheritable");
   }
 }

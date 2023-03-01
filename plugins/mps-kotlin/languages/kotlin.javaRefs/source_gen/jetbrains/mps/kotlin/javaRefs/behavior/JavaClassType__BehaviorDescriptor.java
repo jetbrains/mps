@@ -39,11 +39,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
-import java.util.Iterator;
-import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
+import jetbrains.mps.kotlin.api.members.SignatureBuilder;
 import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaMethodDeclaration;
 import jetbrains.mps.kotlin.api.members.TypeExpander;
 import org.jetbrains.annotations.ApiStatus;
+import java.util.Iterator;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import jetbrains.mps.kotlin.behavior.NodeTypeVarSubs;
 import jetbrains.mps.kotlin.behavior.FunctionTypeToLambdaHelper;
@@ -118,7 +118,7 @@ public final class JavaClassType__BehaviorDescriptor extends BaseBHDescriptor {
     }
     return pres.toString();
   }
-  /*package*/ static SignatureScope getStaticScope_id1ODRHGtufGw(@NotNull final SNode __thisNode__, final SignatureFilter<?> filter, SNode contextNode) {
+  /*package*/ static SignatureScope getStaticScope_id1ODRHGtufGw(@NotNull final SNode __thisNode__, final SignatureFilter filter, final SNode contextNode) {
     return new ListSignatureScope(() -> {
       final FilterSignatureCollector collector = new FilterSignatureCollector(filter);
       boolean acceptFunctions = filter.acceptKind(FunctionSignature.class);
@@ -129,54 +129,31 @@ public final class JavaClassType__BehaviorDescriptor extends BaseBHDescriptor {
         Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), LINKS.member$L_2d), CONCEPTS.ClassConcept$bK)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             // Only static classes, non static are instance fields
-            return SPropertyOperations.getBoolean(it, PROPS.isStatic$3WAz);
+            return SPropertyOperations.getBoolean(it, PROPS.isStatic$3WAz) && JavaSignatures.isAllowedVisibility(it, contextNode);
           }
         }).visitAll(new IVisitor<SNode>() {
           public void visit(SNode klass) {
             Iterable<SNode> constructors = ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(klass);
-            if (Sequence.fromIterable(constructors).isEmpty()) {
+            if (Sequence.fromIterable(constructors).isEmpty() && !(SNodeOperations.isInstanceOf(klass, CONCEPTS.EnumClass$Vk))) {
               JavaSignatures.declareConstructor(collector, klass);
             }
 
-            collector.addDeclarations(constructors, null, FunctionSignature.class, new _FunctionTypes._return_P1_E0<Iterable<FunctionSignature>, SNode>() {
-              public Iterable<FunctionSignature> invoke(final SNode node) {
-                return new Iterable<FunctionSignature>() {
-                  public Iterator<FunctionSignature> iterator() {
-                    return new YieldingIterator<FunctionSignature>() {
-                      private int __CP__ = 0;
-                      protected boolean moveToNext() {
-__loop__:
-                        do {
-__switch__:
-                          switch (this.__CP__) {
-                            case -1:
-                              assert false : "Internal error";
-                              return false;
-                            case 2:
-                              this.__CP__ = 1;
-                              this.yield(new FunctionSignature(new JavaMethodDeclaration(node), (TypeExpander) null));
-                              return true;
-                            case 0:
-                              this.__CP__ = 2;
-                              break;
-                            default:
-                              break __loop__;
-                          }
-                        } while (true);
-                        return false;
-                      }
-                    };
-                  }
-                };
+            SignatureBuilder.create(Sequence.fromIterable(constructors).where(new IWhereFilter<SNode>() {
+              public boolean accept(SNode it) {
+                return JavaSignatures.isAllowedVisibility(it, contextNode);
               }
-            });
+            }), FunctionSignature.class).withSignature((SNode node) -> new FunctionSignature(new JavaMethodDeclaration(node), (TypeExpander) null));
           }
         });
       }
 
       // Unlike kotlin, companion member (static) of a java class are also contained in the class
       if (acceptFunctions || acceptProperty) {
-        Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), LINKS.member$L_2d), CONCEPTS.StaticMethodDeclaration$FJ)).visitAll(new IVisitor<SNode>() {
+        Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), LINKS.member$L_2d), CONCEPTS.StaticMethodDeclaration$FJ)).where(new IWhereFilter<SNode>() {
+          public boolean accept(SNode it) {
+            return JavaSignatures.isAllowedVisibility(it, contextNode);
+          }
+        }).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
             // This will apply the filter on signatures
             JavaSignatures.declareMethod(collector, it);
@@ -186,7 +163,11 @@ __switch__:
 
       if (acceptProperty) {
         // Static properties
-        Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), LINKS.member$L_2d), CONCEPTS.StaticFieldDeclaration$jR)).visitAll(new IVisitor<SNode>() {
+        Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), LINKS.member$L_2d), CONCEPTS.StaticFieldDeclaration$jR)).where(new IWhereFilter<SNode>() {
+          public boolean accept(SNode it) {
+            return JavaSignatures.isAllowedVisibility(it, contextNode);
+          }
+        }).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
             JavaSignatures.declareField(collector, it);
           }
@@ -278,7 +259,7 @@ __switch__:
       case 6:
         return (T) ((String) toString_id4nn3FPlZH$r(node, ((boolean) (Boolean) parameters[0])));
       case 7:
-        return (T) ((SignatureScope) getStaticScope_id1ODRHGtufGw(node, (SignatureFilter<?>) parameters[0], (SNode) parameters[1]));
+        return (T) ((SignatureScope) getStaticScope_id1ODRHGtufGw(node, (SignatureFilter) parameters[0], (SNode) parameters[1]));
       case 8:
         return (T) ((_FunctionTypes._return_P0_E0<? extends SNode>) createConstructor_id2$1CHwF$28b(node));
       default:
@@ -350,9 +331,9 @@ __switch__:
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept EnumClass$Vk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
     /*package*/ static final SConcept StaticMethodDeclaration$FJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
     /*package*/ static final SConcept StaticFieldDeclaration$jR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
-    /*package*/ static final SConcept EnumClass$Vk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
     /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
     /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
     /*package*/ static final SConcept ConstructorDeclaration$yG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");

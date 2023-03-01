@@ -279,19 +279,19 @@
       <node id="1387846870919929643" at="34,0,35,0" concept="11" trace="CONCEPT" />
       <node id="1387846870919929643" at="36,0,37,0" concept="11" trace="populateTypeSignatures_id5q426iHK5S9" />
       <node id="1387846870919929643" at="37,0,38,0" concept="11" trace="toString_id4nn3FPlZH$r" />
-      <node id="1387846870919929643" at="38,0,39,0" concept="11" trace="shallowId_idJmO2PmZtH5" />
+      <node id="1387846870919929643" at="38,0,39,0" concept="11" trace="typeKey_idJmO2PmZtH5" />
       <node id="1387846870919929643" at="40,0,41,0" concept="11" trace="BH_METHODS" />
       <node id="1387846870920044969" at="45,127,46,102" concept="9" />
       <node id="1387846870919947361" at="48,35,49,105" concept="2" />
       <node id="1387846870919929987" at="53,97,54,123" concept="8" />
-      <node id="1387846870919929998" at="57,82,58,87" concept="8" />
+      <node id="1387846870919929998" at="57,80,58,87" concept="8" />
       <node id="1387846870919929643" at="65,114,66,21" concept="2" />
       <node id="1387846870919929643" at="70,114,71,49" concept="7" />
       <node id="1387846870919929643" at="72,26,73,56" concept="14" />
       <node id="1387846870919929643" at="76,13,77,87" concept="2" />
       <node id="1387846870919929643" at="77,87,78,20" concept="8" />
       <node id="1387846870919929643" at="79,13,80,96" concept="8" />
-      <node id="1387846870919929643" at="81,13,82,60" concept="8" />
+      <node id="1387846870919929643" at="81,13,82,58" concept="8" />
       <node id="1387846870919929643" at="83,14,84,58" concept="14" />
       <node id="1387846870919929643" at="89,128,90,49" concept="7" />
       <node id="1387846870919929643" at="91,26,92,56" concept="14" />
@@ -308,7 +308,7 @@
       <node id="1387846870919929643" at="53,0,56,0" concept="12" trace="toString_id4nn3FPlZH$r#(Lorg/jetbrains/mps/openapi/model/SNode;Z)Ljava/lang/String;" />
       <node id="1387846870919929643" at="71,49,74,5" concept="5" />
       <node id="1387846870919929643" at="90,49,93,5" concept="5" />
-      <node id="1387846870919929643" at="56,0,60,0" concept="12" trace="shallowId_idJmO2PmZtH5#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/kotlin/api/types/identifiers/TypeKey;" />
+      <node id="1387846870919929643" at="56,0,60,0" concept="12" trace="typeKey_idJmO2PmZtH5#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/kotlin/api/types/identifiers/TypeKey;" />
       <node id="1387846870919929643" at="64,0,68,0" concept="6" trace="initNode#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/core/aspects/behaviour/api/SConstructor;[Ljava/lang/Object;)V" />
       <node id="1387846870919929643" at="93,5,97,5" concept="13" />
       <node id="1387846870919930794" at="46,102,51,7" concept="2" />
@@ -322,11 +322,11 @@
       <scope id="1387846870919929643" at="61,62,61,62" />
       <scope id="1387846870919947001" at="48,35,49,105" />
       <scope id="1387846870919929982" at="53,97,54,123" />
-      <scope id="1387846870919929995" at="57,82,58,87" />
+      <scope id="1387846870919929995" at="57,80,58,87" />
       <scope id="1387846870919929643" at="65,114,66,21" />
       <scope id="1387846870919929643" at="72,26,73,56" />
       <scope id="1387846870919929643" at="79,13,80,96" />
-      <scope id="1387846870919929643" at="81,13,82,60" />
+      <scope id="1387846870919929643" at="81,13,82,58" />
       <scope id="1387846870919929643" at="83,14,84,58" />
       <scope id="1387846870919929643" at="91,26,92,56" />
       <scope id="1387846870919929643" at="95,14,96,58" />

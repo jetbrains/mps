@@ -20,9 +20,11 @@ import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.kotlin.scopes.signed.SignatureScopeAsScope;
 import jetbrains.mps.kotlin.scopes.signed.ConstructorsScope;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import java.util.HashMap;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.kotlin.behavior.IVisible__BehaviorDescriptor;
+import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -61,7 +63,13 @@ public class ConstructorSuperSpecifier_Constraints extends BaseConstraintsDescri
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return new SignatureScopeAsScope(new ConstructorsScope(SNodeOperations.getModel(_context.getContextNode())));
+            return new SignatureScopeAsScope(new ConstructorsScope(_context.getContextNode()) {
+              @Override
+              protected boolean isVisible(SNode visible) {
+                // Special case: we can call protected constructors (we extend them!)
+                return SConceptOperations.isExactly(SNodeOperations.asSConcept(IVisible__BehaviorDescriptor.getVisibility_id2WVyZr44ojH.invoke(visible)), CONCEPTS.ProtectedVisibility$XQ) || super.isVisible(visible);
+              }
+            });
           }
         };
       }
@@ -77,6 +85,7 @@ public class ConstructorSuperSpecifier_Constraints extends BaseConstraintsDescri
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ConstructorSuperSpecifier$SH = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4f6L, "jetbrains.mps.kotlin.structure.ConstructorSuperSpecifier");
+    /*package*/ static final SConcept ProtectedVisibility$XQ = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af398L, "jetbrains.mps.kotlin.structure.ProtectedVisibility");
     /*package*/ static final SConcept InterfaceDeclaration$fL = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7554886bfL, "jetbrains.mps.kotlin.structure.InterfaceDeclaration");
   }
 

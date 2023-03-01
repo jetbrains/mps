@@ -24,6 +24,7 @@ import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaMethodDeclaration;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.kotlin.scopes.signed.SignatureScopeHelper;
 import jetbrains.mps.kotlin.scopes.SignatureFilter;
+import jetbrains.mps.kotlin.scopes.SignatureFilterImpl;
 import jetbrains.mps.kotlin.signatures.FunctionSignature;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
@@ -69,7 +70,8 @@ public final class JavaMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
       SNode type = context._0();
 
       // Here we seek function signatures from java concepts
-      SignatureFilter<FunctionSignature> filter = new SignatureFilter(FunctionSignature.class);
+      SignatureFilter filter = new SignatureFilterImpl(FunctionSignature.class);
+
       if ((boolean) context._1()) {
         return Sequence.<SignatureScope>singleton(IType__BehaviorDescriptor.getFullStaticScope_id7ZA3QJnL$CF.invoke(type, filter, contextNode));
       } else {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="1uzl8lhhg6nrucb6n7d7jo00rbmyj17">
-  <files names="CompositeSignatureScope.java:ConstructorsScope.java:DelegatedSignatureScope.java:EmptySignatureScope.java:FilterSignatureCollector.java:FilteringSignatureScope.java:HidingBySignatureScope.java:InstanceSignatureScope.java:KindPriorityPropertyScope.java:ListSignatureScope.java:ReceiverTypeScope.java:SignatureScope.java:SignatureScopeAsScope.java:SignatureScopeHelper.java:SignatureSeekerVisitor.java:StaticInstanceVisibilityFilterScope.java:TopLevelVisibilityFilterScope.java:VisibleScopeCollector.java" />
+<product version="3" modelHash="-6oh4ca91s7he51xxawxexxlxk4huzvf">
+  <files names="CompositeSignatureScope.java:ConstructorsScope.java:DelegatedSignatureScope.java:EmptySignatureScope.java:FilterSignatureCollector.java:FilteringSignatureScope.java:HidingBySignatureScope.java:InstanceSignatureScope.java:KindPriorityPropertyScope.java:ListSignatureScope.java:ReceiverTypeScope.java:ScopeCollector.java:SignatureScope.java:SignatureScopeAsScope.java:SignatureScopeHelper.java:SignatureSeekerVisitor.java:TopLevelVisibility.java" />
 </product>
 

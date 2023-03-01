@@ -5,16 +5,15 @@ package jetbrains.mps.kotlin.scopes.signed;
 import jetbrains.mps.kotlin.behavior.MemberReceiver;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kotlin.scopes.SignatureFilter;
-import jetbrains.mps.kotlin.signatures.FunctionSignature;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.kotlin.scopes.VisibilityAccess;
 import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
+import jetbrains.mps.kotlin.scopes.SignatureFilterImpl;
+import jetbrains.mps.kotlin.signatures.FunctionSignature;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import jetbrains.mps.kotlin.signatures.PropertySignature;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.kotlin.signatures.AccessorKind;
 import jetbrains.mps.kotlin.behavior.IStatement__BehaviorDescriptor;
@@ -26,6 +25,7 @@ import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.scope.Scope;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.kotlin.behavior.IFunctionCall__BehaviorDescriptor;
+import jetbrains.mps.kotlin.scopes.VisibilityAccess;
 import jetbrains.mps.kotlin.api.types.identifiers.TypeKey;
 import jetbrains.mps.kotlin.behavior.IClassLike__BehaviorDescriptor;
 import java.util.Objects;
@@ -42,7 +42,7 @@ public class SignatureScopeHelper {
    * @param contextNode node from which the call occur
    * @param filter filter on the target signatures
    */
-  public static Iterable<SignatureScope> getFunctionScopeParts(MemberReceiver receiver, final SNode contextNode, final SignatureFilter<FunctionSignature> filter) {
+  public static Iterable<SignatureScope> getFunctionScopeParts(MemberReceiver receiver, final SNode contextNode, final SignatureFilter filter) {
     if (receiver == null) {
       return null;
     }
@@ -55,8 +55,7 @@ public class SignatureScopeHelper {
 
         if (typeRef.isStatic()) {
           // getFullStaticScope is not used on purpose: instance scope of companion type should be added by adding the companion to the call receiver as an non static type (we need both types for the type system, FullStaticScope + InstanceScope on companion would give redundant members)
-          VisibilityAccess access = SignatureScopeHelper.getBaseAccesToType(contextNode, type);
-          ListSequence.fromList(scopes).addElement(StaticInstanceVisibilityFilterScope.of(IType__BehaviorDescriptor.getStaticScope_id1ODRHGtufGw.invoke(type, filter, contextNode), contextNode, access));
+          ListSequence.fromList(scopes).addElement(IType__BehaviorDescriptor.getStaticScope_id1ODRHGtufGw.invoke(type, filter, contextNode));
         } else {
           // Also retrieves scope for receiver types
           ListSequence.fromList(scopes).addSequence(Sequence.fromIterable(IType__BehaviorDescriptor.getInstanceScopes_id1ODRHGtuist.invoke(type, filter, contextNode, ((boolean) true))));
@@ -68,13 +67,13 @@ public class SignatureScopeHelper {
   }
 
   public static Iterable<SignatureScope> getFunctionScopeParts(MemberReceiver receiver, SNode contextNode) {
-    return getFunctionScopeParts(receiver, contextNode, new SignatureFilter<>(FunctionSignature.class));
+    return getFunctionScopeParts(receiver, contextNode, new SignatureFilterImpl<>(FunctionSignature.class));
   }
 
   /**
    * Get scope for variable depending on its usage context (standalone or in navigation context).
    */
-  public static SignatureScope getVariablesScope(SNode refNode, SNode contextNode, SContainmentLink containmentLink, SignatureFilter<? extends PropertySignature> filter, KindPriorityPropertyScope.StubSignatureProducer stubProducer) {
+  public static SignatureScope getVariablesScope(SNode refNode, SNode contextNode, SContainmentLink containmentLink, SignatureFilter filter, KindPriorityPropertyScope.StubSignatureProducer stubProducer) {
     Tuples._2<SNode, Boolean> context = SignatureScopeHelper.navigatableContext(refNode, contextNode, containmentLink);
 
     // In navigation -> get from operand type if target
@@ -157,7 +156,6 @@ public class SignatureScopeHelper {
   public static VisibilityAccess getBaseAccesToType(SNode contextNode, SNode type) {
     TypeKey targetKey = IType__BehaviorDescriptor.typeKey_idJmO2PmZtH5.invoke(type);
 
-    // TODO try supertypes of current types
     // In kotlin: lambdas and extension methods do not have access to private class members, only member defined IN the class are applied
     for (SNode contextType : ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, CONCEPTS.IClassLike$go, false))) {
       SNode thisType = IClassLike__BehaviorDescriptor.getThisType_id46gC9M6gB68.invoke(contextType, ((boolean) false));

@@ -19,6 +19,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.kotlin.scopes.SignatureFilter;
+import jetbrains.mps.kotlin.scopes.SignatureFilterImpl;
 import jetbrains.mps.kotlin.signatures.FunctionSignature;
 import java.util.List;
 import jetbrains.mps.kotlin.scopes.signed.SignatureScope;
@@ -57,7 +58,7 @@ public class JavaMemberTarget_Constraints extends BaseConstraintsDescriptor {
             SNode type = SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(context, CONCEPTS.MemberNavigationOperation$7I), LINKS.operand$YS5t)), CONCEPTS.IType$Ni);
 
             // Receiver scope is not handled here but on kotlin side (as java has no receiver function)
-            SignatureFilter<FunctionSignature> filter = new SignatureFilter<FunctionSignature>(FunctionSignature.class);
+            SignatureFilter filter = new SignatureFilterImpl<FunctionSignature>(FunctionSignature.class);
             List<SignatureScope> list = Sequence.fromIterable(IType__BehaviorDescriptor.getInstanceScopes_id1ODRHGtuist.invoke(type, filter, _context.getContextNode(), ((boolean) false))).toListSequence();
             ListSequence.fromList(list).addElement(IType__BehaviorDescriptor.getFullStaticScope_id7ZA3QJnL$CF.invoke(type, filter, _context.getContextNode()));
 

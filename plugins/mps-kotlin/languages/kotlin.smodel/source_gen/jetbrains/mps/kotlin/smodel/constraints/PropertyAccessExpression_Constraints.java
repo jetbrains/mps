@@ -15,6 +15,7 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.kotlin.scopes.SignatureFilter;
+import jetbrains.mps.kotlin.scopes.SignatureFilterImpl;
 import jetbrains.mps.kotlin.smodel.behavior.LinkSignature;
 import jetbrains.mps.kotlin.scopes.signed.SignatureScope;
 import jetbrains.mps.kotlin.scopes.signed.SignatureScopeHelper;
@@ -42,7 +43,7 @@ public class PropertyAccessExpression_Constraints extends BaseConstraintsDescrip
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             // Filter on links rather than regular signature
-            SignatureFilter<LinkSignature> filter = new SignatureFilter<LinkSignature>(LinkSignature.class);
+            SignatureFilter filter = new SignatureFilterImpl<LinkSignature>(LinkSignature.class);
 
             // Get scope
             SignatureScope variableScope = SignatureScopeHelper.getVariablesScope(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink(), filter, LinkSignature::new);

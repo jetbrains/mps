@@ -8,13 +8,19 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kotlin.api.members.SourcedSignature;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
+import jetbrains.mps.kotlin.scopes.DelegatedSignatureFilter;
 import jetbrains.mps.kotlin.signatures.MemberSignature;
+import jetbrains.mps.kotlin.scopes.VisibilityAccess;
 import jetbrains.mps.kotlin.scopes.TypeMembersVisitor;
 import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
-import jetbrains.mps.kotlin.scopes.VisibilityAccess;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 
+/**
+ * Scope that collects all signatures in a type using a visitor.
+ * 
+ * @see jetbrains.mps.kotlin.scopes.TypeMembersVisitor 
+ */
 public class InstanceSignatureScope implements SignatureScope {
   private final TypeReference myTypeReference;
   private final SignatureFilter myFilter;
@@ -49,23 +55,18 @@ public class InstanceSignatureScope implements SignatureScope {
       return Sequence.fromIterable(Collections.<SourcedSignature>emptyList());
     }
 
-    SignatureFilter filter = ((prefix == null || prefix.length() == 0) ? myFilter : new SignatureFilter(myFilter.getMySignatureKind()) {
-      protected boolean accept(MemberSignature signature, SNode source) {
+    SignatureFilter filter = ((prefix == null || prefix.length() == 0) ? myFilter : new DelegatedSignatureFilter(myFilter) {
+      public boolean acceptSignature(MemberSignature signature, SNode source) {
         String name = signature.getDescriptionText();
-        return (name != null && name.length() > 0) && name.startsWith(prefix) && myFilter.acceptSignature(signature, source);
+        return (name != null && name.length() > 0) && name.startsWith(prefix) && super.acceptSignature(signature, source);
       }
     });
     // Visit type
-    TypeMembersVisitor visitor = new TypeMembersVisitor(filter, myContextNode, SignatureScopeHelper.getBaseAccesToType(myContextNode, type));
+    VisibilityAccess baseAccesToType = SignatureScopeHelper.getBaseAccesToType(myContextNode, type);
+    TypeMembersVisitor visitor = new TypeMembersVisitor(filter, myContextNode, baseAccesToType);
     IType__BehaviorDescriptor.visitHierarchy_id5q426iHtYvR.invoke(type, visitor);
 
     return visitor.getMembers();
-  }
-
-  @Override
-  public boolean isVisibilityFiltered() {
-    //  TypeMembersVisitor  is responsible for filtering on visibility
-    return true;
   }
 
   @Override

@@ -35,7 +35,7 @@ public final class AnonymousInitializer__BehaviorDescriptor extends BaseBHDescri
     // Property accessor has access to constructor scope
     Iterable<SNode> params = ClassDeclaration__BehaviorDescriptor.getPrimaryNonPropertyVariables_id1$jFvlDFKeB.invoke(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.ClassDeclaration$Jm));
     if (params != null) {
-      PropertySignature.declareAllTo(params, null, false, null, collector);
+      PropertySignature.declareAllTo(params, false, null, collector);
     }
   }
 

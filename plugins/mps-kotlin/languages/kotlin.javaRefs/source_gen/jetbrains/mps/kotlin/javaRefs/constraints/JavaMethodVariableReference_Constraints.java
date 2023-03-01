@@ -26,7 +26,6 @@ import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.kotlin.scopes.signed.SignatureScopeHelper;
 import jetbrains.mps.scope.EmptyScope;
 import jetbrains.mps.kotlin.scopes.SignatureFilter;
-import jetbrains.mps.kotlin.signatures.PropertySignature;
 import jetbrains.mps.kotlin.scopes.signed.SignatureScope;
 import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
 import jetbrains.mps.kotlin.scopes.signed.HidingBySignatureScope;
@@ -76,7 +75,7 @@ public class JavaMethodVariableReference_Constraints extends BaseConstraintsDesc
               }
 
               // Here we seek property signatures from java methods
-              SignatureFilter<PropertySignature> filter = new GetterFilter();
+              SignatureFilter filter = new GetterFilter();
               SignatureScope typeScope;
               if ((boolean) context._1()) {
                 typeScope = IType__BehaviorDescriptor.getFullStaticScope_id7ZA3QJnL$CF.invoke(type, filter, _context.getContextNode());

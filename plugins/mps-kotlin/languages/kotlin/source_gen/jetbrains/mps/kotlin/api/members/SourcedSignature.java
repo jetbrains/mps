@@ -7,6 +7,7 @@ import jetbrains.mps.references.Reference;
 import jetbrains.mps.kotlin.signatures.MemberSignature;
 import org.jetbrains.annotations.Nullable;
 import java.util.Map;
+import java.util.HashMap;
 import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -109,6 +110,9 @@ public class SourcedSignature {
     if (from == null) {
       return;
     }
+    if (attributes == null) {
+      attributes = new HashMap<>();
+    }
     // Only update non defined values
     from.forEach((SignatureAttributeKey<?> key, final Object value) -> attributes.compute(key, (SignatureAttributeKey<?> prevKey, Object previous) -> (previous == null ? value : previous)));
   }
@@ -116,6 +120,10 @@ public class SourcedSignature {
   @Nullable
   public <T> T getAttribute(@NotNull SignatureAttributeKey<T> key) {
     return key.get(attributes);
+  }
+
+  public Map<SignatureAttributeKey<?>, Object> getAttributes() {
+    return this.attributes;
   }
 
   @Override

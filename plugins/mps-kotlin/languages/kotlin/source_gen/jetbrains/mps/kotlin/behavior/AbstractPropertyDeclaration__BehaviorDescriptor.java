@@ -11,21 +11,15 @@ import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.kotlin.api.members.SignatureCollector;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.kotlin.signatures.PropertySignature;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import org.jetbrains.mps.openapi.language.SProperty;
-import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class AbstractPropertyDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b9a90aaL, "jetbrains.mps.kotlin.structure.AbstractPropertyDeclaration");
@@ -33,10 +27,8 @@ public final class AbstractPropertyDeclaration__BehaviorDescriptor extends BaseB
   public static final SMethod<Boolean> hasExplicityType_id2n1mrwy6RU_ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasExplicityType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2720554297289572005L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<List<SNode>> getDeclarations_id7RZWrHVaXCH = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getDeclarations").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9079241161329859117L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Boolean> isDeconstructing_id7RZWrHVbnio = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDeconstructing").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9079241161329964184L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<Boolean> isChildVariableAssignable_idCy8Bus9qei = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isChildVariableAssignable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(730183986703606674L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<Void> declareToCollector_id5$XWI2QkXNB = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("declareToCollector").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6430562889900481767L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SignatureCollector.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(hasExplicityType_id2n1mrwy6RU_, getDeclarations_id7RZWrHVaXCH, isDeconstructing_id7RZWrHVbnio, isChildVariableAssignable_idCy8Bus9qei, declareToCollector_id5$XWI2QkXNB);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(hasExplicityType_id2n1mrwy6RU_, getDeclarations_id7RZWrHVaXCH, isDeconstructing_id7RZWrHVbnio);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -50,14 +42,6 @@ public final class AbstractPropertyDeclaration__BehaviorDescriptor extends BaseB
   }
   /*package*/ static boolean isDeconstructing_id7RZWrHVbnio(@NotNull SNode __thisNode__) {
     return false;
-  }
-  /*package*/ static boolean isChildVariableAssignable_idCy8Bus9qei(@NotNull SNode __thisNode__) {
-    return (!(SPropertyOperations.getBoolean(__thisNode__, PROPS.isReadonly$jzqd)) && !(SPropertyOperations.getBoolean(__thisNode__, PROPS.isConstant$zvIz))) || (SLinkOperations.getTarget(__thisNode__, LINKS.assignment$nl1j) == null);
-  }
-  /*package*/ static void declareToCollector_id5$XWI2QkXNB(@NotNull SNode __thisNode__, SignatureCollector collector, SNode explicitReceiver) {
-    // TODO override in actual property: setter can change setter visibility
-    SNode visibility = SLinkOperations.getTarget(SNodeOperations.as(__thisNode__, CONCEPTS.IVisible$LZ), LINKS.visibility$vnSV);
-    PropertySignature.declareAllTo(AbstractPropertyDeclaration__BehaviorDescriptor.getDeclarations_id7RZWrHVaXCH.invoke(__thisNode__), visibility, ((boolean) IVariableConstraintHolder__BehaviorDescriptor.isChildVariableAssignable_idCy8Bus9qei.invoke(__thisNode__)), explicitReceiver, collector);
   }
 
   /*package*/ AbstractPropertyDeclaration__BehaviorDescriptor() {
@@ -79,11 +63,6 @@ public final class AbstractPropertyDeclaration__BehaviorDescriptor extends BaseB
         return (T) ((Boolean) hasExplicityType_id2n1mrwy6RU_(node));
       case 2:
         return (T) ((Boolean) isDeconstructing_id7RZWrHVbnio(node));
-      case 3:
-        return (T) ((Boolean) isChildVariableAssignable_idCy8Bus9qei(node));
-      case 4:
-        declareToCollector_id5$XWI2QkXNB(node, (SignatureCollector) parameters[0], (SNode) parameters[1]);
-        return null;
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -115,16 +94,5 @@ public final class AbstractPropertyDeclaration__BehaviorDescriptor extends BaseB
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink type$RmkT = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af571L, 0x28bef6d7551af917L, "type");
-    /*package*/ static final SContainmentLink assignment$nl1j = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b9a90aaL, 0x28bef6d7551af7baL, "assignment");
-    /*package*/ static final SContainmentLink visibility$vnSV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c4c4e03fL, 0x631027d1c4c4e040L, "visibility");
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty isReadonly$jzqd = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b9a90aaL, 0x28bef6d75590b319L, "isReadonly");
-    /*package*/ static final SProperty isConstant$zvIz = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b9a90aaL, 0x11400bb790cefb7dL, "isConstant");
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IVisible$LZ = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c4c4e03fL, "jetbrains.mps.kotlin.structure.IVisible");
   }
 }
