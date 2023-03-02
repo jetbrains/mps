@@ -23,7 +23,7 @@ Download IntelliJ IDEA from the JetBrains website. Community edition will work j
 3. It is preferable to work in your own branch, so create a new branch to work in git checkout -b my_branch_name
 4. Open the project in [IntelliJ IDEA](http://www.jetbrains.com/idea) (either Community or Ultimate Edition)
 5. Attach JB JDK 17 to the project
-    1. Download latest JB JDK 17 for your OS and your version of MPS. Go to [the MPS TeamCity site](https://teamcity.jetbrains.com/project/MPS?mode=builds#all-projects), scroll to the build configuration that corresponds to the MPS version that you are trying to build and locate the JDK distribution (e.g. _2022.2 -> Distribution -> Get Resources_). Click on the _Artifacts_ symbol of the last successful build of _Get Resources_ and choose the distribution that you need. Make sure you grab *jbrsdk* not *jbsdk*.
+    1. Download latest JB JDK 17 for your OS and your version of MPS. Go to [the MPS TeamCity site](https://teamcity.jetbrains.com/project/MPS?mode=builds#all-projects), scroll to the build configuration that corresponds to the MPS version that you are trying to build and locate the JDK distribution (e.g. _2022.3 -> Distribution -> Get Resources_). Click on the _Artifacts_ symbol of the last successful build of _Get Resources_ and choose the distribution that you need. Make sure you grab *jbrsdk* not *jbsdk*.
     2. *Main menu -> File -> Project Structure* opens the Project Structure dialog
     3. Under *Platform Settings -> SDK*, add a new JDK named "JB JDK 17"
 6. Additionally, create an *IntelliJ Platform Plugin SDK* in the same *Platform Settings -> SDK* dialog and name it "IDEA IC".

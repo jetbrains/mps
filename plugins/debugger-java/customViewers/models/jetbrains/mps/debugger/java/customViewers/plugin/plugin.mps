@@ -241,7 +241,7 @@
     <property role="9BnSL" value="Debugger support for baseLanguage extensions" />
     <property role="9BnSM" value="JetBrains" />
     <property role="TrG5h" value="BaseLanguage Debugger Support" />
-    <property role="9BnSO" value="222.1" />
+    <property role="9BnSO" value="223.1" />
     <property role="9BnSK" value="2022.3" />
     <node concept="2Tc6Op" id="5ODR6dNebC9" role="2Tc6Ou">
       <property role="2Tc6Oq" value="jetbrains.mps.debugger.java" />

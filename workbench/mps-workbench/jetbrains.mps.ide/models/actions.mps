@@ -14800,12 +14800,6 @@
         </node>
         <node concept="3clFbF" id="7LAWl3rekjr" role="3cqZAp">
           <node concept="1Wc70l" id="1Gyb7mMRU_w" role="3clFbG">
-            <node concept="2OqwBi" id="1Gyb7mMRV_S" role="3uHU7w">
-              <node concept="2WthIp" id="1Gyb7mMRV_V" role="2Oq$k0" />
-              <node concept="2XshWL" id="1Gyb7mMRV_X" role="2OqNvi">
-                <ref role="2WH_rO" node="5ZDTGDaww50" resolve="canPasteNodes" />
-              </node>
-            </node>
             <node concept="1Wc70l" id="5Ga_clgPtxw" role="3uHU7B">
               <node concept="37vLTw" id="3GM_nagTzZG" role="3uHU7B">
                 <ref role="3cqZAo" node="1umQlOn6XXn" resolve="searchPanelInactive" />
@@ -14820,6 +14814,12 @@
                     <ref role="2WH_rO" node="4NbzjXXKNEl" resolve="contextModel" />
                   </node>
                 </node>
+              </node>
+            </node>
+            <node concept="2OqwBi" id="1Gyb7mMRV_S" role="3uHU7w">
+              <node concept="2WthIp" id="1Gyb7mMRV_V" role="2Oq$k0" />
+              <node concept="2XshWL" id="1Gyb7mMRV_X" role="2OqNvi">
+                <ref role="2WH_rO" node="5ZDTGDaww50" resolve="canPasteNodes" />
               </node>
             </node>
           </node>
@@ -23078,7 +23078,7 @@
     <property role="9BnSP" value="http://www.jetbrains.com/mps/" />
     <property role="9BnSM" value="JetBrains" />
     <property role="TrG5h" value="IDE" />
-    <property role="9BnSO" value="222.1" />
+    <property role="9BnSO" value="223.1" />
     <property role="9BnSK" value="2022.3" />
   </node>
   <node concept="sE7Ow" id="1JAxb5h3N20">
