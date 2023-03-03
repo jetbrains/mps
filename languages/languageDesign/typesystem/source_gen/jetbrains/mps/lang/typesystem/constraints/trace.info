@@ -422,7 +422,7 @@
       <node id="1213104858864" at="42,63,43,144" concept="9" />
       <node id="6836281137582806524" at="46,80,47,56" concept="8" />
       <node id="6836281137582806530" at="47,56,48,124" concept="8" />
-      <node id="6836281137582806543" at="49,31,50,89" concept="8" />
+      <node id="6836281137582806543" at="49,164,50,89" concept="8" />
       <node id="6836281137582806551" at="51,36,52,66" concept="3" />
       <node id="6836281137582806561" at="54,83,55,139" concept="8" />
       <node id="6836281137582806571" at="56,39,57,69" concept="3" />
@@ -440,16 +440,17 @@
       <node id="1213104858863" at="87,42,88,22" concept="9" />
       <node id="1213104858863" at="92,0,93,0" concept="11" trace="ApplicableNodeReference$dF" />
       <node id="1213104858863" at="93,0,94,0" concept="11" trace="AbstractRule$o9" />
-      <node id="1213104858863" at="94,0,95,0" concept="11" trace="ComparisonRule$sZ" />
-      <node id="1213104858863" at="95,0,96,0" concept="11" trace="InequationReplacementRule$m3" />
-      <node id="1213104858863" at="96,0,97,0" concept="11" trace="CoerceStatement$sR" />
-      <node id="1213104858863" at="97,0,98,0" concept="11" trace="MatchStatementItem$Wz" />
-      <node id="1213104858863" at="101,0,102,0" concept="11" trace="applicableNode$BtWh" />
-      <node id="1213104858863" at="102,0,103,0" concept="11" trace="applicableNode$Ro4C" />
-      <node id="1213104858863" at="103,0,104,0" concept="11" trace="anotherNode$87NO" />
-      <node id="1213104858863" at="104,0,105,0" concept="11" trace="supertypeNode$JtO6" />
-      <node id="1213104858863" at="105,0,106,0" concept="11" trace="pattern$S22D" />
-      <node id="1213104858863" at="106,0,107,0" concept="11" trace="condition$Cpdn" />
+      <node id="1213104858863" at="94,0,95,0" concept="11" trace="DefaultClassifierMethodDeclaration$Zx" />
+      <node id="1213104858863" at="95,0,96,0" concept="11" trace="ComparisonRule$sZ" />
+      <node id="1213104858863" at="96,0,97,0" concept="11" trace="InequationReplacementRule$m3" />
+      <node id="1213104858863" at="97,0,98,0" concept="11" trace="CoerceStatement$sR" />
+      <node id="1213104858863" at="98,0,99,0" concept="11" trace="MatchStatementItem$Wz" />
+      <node id="1213104858863" at="102,0,103,0" concept="11" trace="applicableNode$BtWh" />
+      <node id="1213104858863" at="103,0,104,0" concept="11" trace="applicableNode$Ro4C" />
+      <node id="1213104858863" at="104,0,105,0" concept="11" trace="anotherNode$87NO" />
+      <node id="1213104858863" at="105,0,106,0" concept="11" trace="supertypeNode$JtO6" />
+      <node id="1213104858863" at="106,0,107,0" concept="11" trace="pattern$S22D" />
+      <node id="1213104858863" at="107,0,108,0" concept="11" trace="condition$Cpdn" />
       <node id="1213104858863" at="30,0,33,0" concept="2" trace="ApplicableNodeReference_Constraints#()V" />
       <node id="6836281137582806549" at="50,89,53,15" concept="6" />
       <node id="6836281137582806569" at="55,139,58,17" concept="6" />
@@ -484,7 +485,7 @@
       </scope>
       <scope id="6836281137582806619" at="68,45,72,124" />
       <scope id="6836281137582806654" at="75,48,79,133" />
-      <scope id="6836281137582806542" at="49,31,65,15">
+      <scope id="6836281137582806542" at="49,164,65,15">
         <var name="appNode" id="6836281137582806544" />
       </scope>
       <scope id="1213104858864" at="46,80,81,59">
@@ -503,11 +504,11 @@
         <var name="references" id="1213104858863" />
       </scope>
       <scope id="1213104858863" at="34,0,90,0" />
-      <unit id="1213104858863" at="91,0,99,0" name="jetbrains.mps.lang.typesystem.constraints.ApplicableNodeReference_Constraints$CONCEPTS" />
-      <unit id="1213104858863" at="100,0,108,0" name="jetbrains.mps.lang.typesystem.constraints.ApplicableNodeReference_Constraints$LINKS" />
+      <unit id="1213104858863" at="101,0,109,0" name="jetbrains.mps.lang.typesystem.constraints.ApplicableNodeReference_Constraints$LINKS" />
+      <unit id="1213104858863" at="91,0,100,0" name="jetbrains.mps.lang.typesystem.constraints.ApplicableNodeReference_Constraints$CONCEPTS" />
       <unit id="1213104858864" at="40,19,83,9" name="jetbrains.mps.lang.typesystem.constraints.ApplicableNodeReference_Constraints$1$1" />
       <unit id="1213104858864" at="36,48,85,5" name="jetbrains.mps.lang.typesystem.constraints.ApplicableNodeReference_Constraints$1" />
-      <unit id="1213104858863" at="29,0,109,0" name="jetbrains.mps.lang.typesystem.constraints.ApplicableNodeReference_Constraints" />
+      <unit id="1213104858863" at="29,0,110,0" name="jetbrains.mps.lang.typesystem.constraints.ApplicableNodeReference_Constraints" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)/1213104860682">

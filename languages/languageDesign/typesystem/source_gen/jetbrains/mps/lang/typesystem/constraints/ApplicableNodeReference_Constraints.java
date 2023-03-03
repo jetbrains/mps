@@ -46,7 +46,7 @@ public class ApplicableNodeReference_Constraints extends BaseConstraintsDescript
           public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> result = new ArrayList<SNode>();
             SNode rule = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.AbstractRule$o9, false, false);
-            if (rule != null) {
+            if (rule != null && (SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.DefaultClassifierMethodDeclaration$Zx, true, false) == null)) {
               SNode appNode = SLinkOperations.getTarget(rule, LINKS.applicableNode$Ro4C);
               if (appNode != null) {
                 ListSequence.fromList(result).addElement(appNode);
@@ -91,6 +91,7 @@ public class ApplicableNodeReference_Constraints extends BaseConstraintsDescript
   private static final class CONCEPTS {
     /*package*/ static final SConcept ApplicableNodeReference$dF = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e9ef5dcL, "jetbrains.mps.lang.typesystem.structure.ApplicableNodeReference");
     /*package*/ static final SConcept AbstractRule$o9 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, "jetbrains.mps.lang.typesystem.structure.AbstractRule");
+    /*package*/ static final SConcept DefaultClassifierMethodDeclaration$Zx = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd6ee3c3L, "jetbrains.mps.baseLanguage.classifiers.structure.DefaultClassifierMethodDeclaration");
     /*package*/ static final SConcept ComparisonRule$sZ = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114caade477L, "jetbrains.mps.lang.typesystem.structure.ComparisonRule");
     /*package*/ static final SConcept InequationReplacementRule$m3 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x117c5668bf2L, "jetbrains.mps.lang.typesystem.structure.InequationReplacementRule");
     /*package*/ static final SConcept CoerceStatement$sR = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111f05e2451L, "jetbrains.mps.lang.typesystem.structure.CoerceStatement");

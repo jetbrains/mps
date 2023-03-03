@@ -19,6 +19,7 @@ public class EnumConstantDeclaration_TextGen extends TextGenDescriptorBase {
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.newLine();
+    BaseLanguageTextGen.annotations(ctx.getPrimaryInput(), ctx);
     if (isEmptyString(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$MnvL))) {
       tgs.reportError("enum constant without name");
       tgs.indent();

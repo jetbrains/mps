@@ -4324,67 +4324,68 @@
     <file name="EnumConstantDeclaration_TextGen.java">
       <node id="1235740896598" at="19,54,20,55" concept="11" />
       <node id="1237559716835" at="20,55,21,18" concept="5" />
-      <node id="1235740961278" at="22,95,23,52" concept="5" />
-      <node id="1237465532383" at="23,52,24,19" concept="5" />
-      <node id="1237465532383" at="24,19,25,24" concept="5" />
-      <node id="1237465555888" at="26,12,27,19" concept="5" />
-      <node id="1237465555888" at="27,19,28,88" concept="5" />
-      <node id="1237463992570" at="29,5,30,20" concept="5" />
-      <node id="1237463992571" at="31,5,32,113" concept="11" />
-      <node id="1237463992571" at="32,113,33,70" concept="11" />
-      <node id="1237463992571" at="34,37,35,29" concept="5" />
-      <node id="1237463992571" at="36,31,37,27" concept="5" />
-      <node id="1237463992572" at="40,5,41,20" concept="5" />
-      <node id="8435245205864948309" at="42,116,43,23" concept="5" />
-      <node id="8435245205864948311" at="43,23,44,20" concept="5" />
-      <node id="8435245205864941035" at="44,20,45,46" concept="5" />
-      <node id="8435245205864948342" at="46,95,47,28" concept="5" />
-      <node id="8435245205864941035" at="48,7,49,46" concept="5" />
-      <node id="8435245205864949478" at="49,46,50,20" concept="5" />
-      <node id="8435245205864948352" at="50,20,51,19" concept="5" />
-      <node id="8435245205864948352" at="51,19,52,22" concept="5" />
-      <node id="2107485570170138649" at="55,52,56,40" concept="12" />
-      <node id="1235740896598" at="60,0,61,0" concept="15" trace="name$MnvL" />
-      <node id="1235740896598" at="64,0,65,0" concept="15" trace="actualArgument$pzdx" />
-      <node id="1235740896598" at="65,0,66,0" concept="15" trace="method$pGvv" />
-      <node id="1235740974940" at="26,10,29,5" concept="1" />
-      <node id="1237463992571" at="35,29,38,9" concept="9" />
-      <node id="8435245205864948317" at="45,46,48,7" concept="8" />
-      <node id="2107485570170138649" at="55,0,58,0" concept="16" trace="isEmptyString#(Ljava/lang/String;)Z" />
-      <node id="1237463992571" at="33,70,39,7" concept="8" />
-      <node id="1235740939775" at="21,18,29,5" concept="9" />
-      <node id="1237463992571" at="30,20,40,5" concept="1" />
-      <node id="8435245205864941034" at="41,20,53,5" concept="9" />
-      <node id="1235740896598" at="18,0,55,0" concept="10" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
-      <scope id="1237463992571" at="36,31,37,27" />
-      <scope id="8435245205864948318" at="46,95,47,28" />
-      <scope id="2107485570170138649" at="55,52,56,40" />
-      <scope id="1235740974941" at="26,12,28,88" />
-      <scope id="1235740939776" at="22,95,25,24" />
-      <scope id="8435245205864948317" at="45,46,48,7">
+      <node id="3324343254076983277" at="21,18,22,64" concept="5" />
+      <node id="1235740961278" at="23,95,24,52" concept="5" />
+      <node id="1237465532383" at="24,52,25,19" concept="5" />
+      <node id="1237465532383" at="25,19,26,24" concept="5" />
+      <node id="1237465555888" at="27,12,28,19" concept="5" />
+      <node id="1237465555888" at="28,19,29,88" concept="5" />
+      <node id="1237463992570" at="30,5,31,20" concept="5" />
+      <node id="1237463992571" at="32,5,33,113" concept="11" />
+      <node id="1237463992571" at="33,113,34,70" concept="11" />
+      <node id="1237463992571" at="35,37,36,29" concept="5" />
+      <node id="1237463992571" at="37,31,38,27" concept="5" />
+      <node id="1237463992572" at="41,5,42,20" concept="5" />
+      <node id="8435245205864948309" at="43,116,44,23" concept="5" />
+      <node id="8435245205864948311" at="44,23,45,20" concept="5" />
+      <node id="8435245205864941035" at="45,20,46,46" concept="5" />
+      <node id="8435245205864948342" at="47,95,48,28" concept="5" />
+      <node id="8435245205864941035" at="49,7,50,46" concept="5" />
+      <node id="8435245205864949478" at="50,46,51,20" concept="5" />
+      <node id="8435245205864948352" at="51,20,52,19" concept="5" />
+      <node id="8435245205864948352" at="52,19,53,22" concept="5" />
+      <node id="2107485570170138649" at="56,52,57,40" concept="12" />
+      <node id="1235740896598" at="61,0,62,0" concept="15" trace="name$MnvL" />
+      <node id="1235740896598" at="65,0,66,0" concept="15" trace="actualArgument$pzdx" />
+      <node id="1235740896598" at="66,0,67,0" concept="15" trace="method$pGvv" />
+      <node id="1235740974940" at="27,10,30,5" concept="1" />
+      <node id="1237463992571" at="36,29,39,9" concept="9" />
+      <node id="8435245205864948317" at="46,46,49,7" concept="8" />
+      <node id="2107485570170138649" at="56,0,59,0" concept="16" trace="isEmptyString#(Ljava/lang/String;)Z" />
+      <node id="1237463992571" at="34,70,40,7" concept="8" />
+      <node id="1235740939775" at="22,64,30,5" concept="9" />
+      <node id="1237463992571" at="31,20,41,5" concept="1" />
+      <node id="8435245205864941034" at="42,20,54,5" concept="9" />
+      <node id="1235740896598" at="18,0,56,0" concept="10" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
+      <scope id="1237463992571" at="37,31,38,27" />
+      <scope id="8435245205864948318" at="47,95,48,28" />
+      <scope id="2107485570170138649" at="56,52,57,40" />
+      <scope id="1235740974941" at="27,12,29,88" />
+      <scope id="1235740939776" at="23,95,26,24" />
+      <scope id="8435245205864948317" at="46,46,49,7">
         <var name="imd" id="8435245205864948322" />
       </scope>
-      <scope id="2107485570170138649" at="55,0,58,0">
+      <scope id="2107485570170138649" at="56,0,59,0">
         <var name="str" id="2107485570170138649" />
       </scope>
-      <scope id="1237463992571" at="34,37,38,9" />
-      <scope id="1237463992571" at="33,70,39,7">
+      <scope id="1237463992571" at="35,37,39,9" />
+      <scope id="1237463992571" at="34,70,40,7">
         <var name="item" id="1237463992571" />
       </scope>
-      <scope id="1237463992571" at="31,5,39,7">
+      <scope id="1237463992571" at="32,5,40,7">
         <var name="collection" id="1237463992571" />
         <var name="lastItem" id="1237463992571" />
       </scope>
-      <scope id="8435245205864941035" at="42,116,52,22" />
-      <scope id="1235740896598" at="19,54,53,5">
+      <scope id="8435245205864941035" at="43,116,53,22" />
+      <scope id="1235740896598" at="19,54,54,5">
         <var name="tgs" id="1235740896598" />
       </scope>
-      <scope id="1235740896598" at="18,0,55,0">
+      <scope id="1235740896598" at="18,0,56,0">
         <var name="ctx" id="1235740896598" />
       </scope>
-      <unit id="1235740896598" at="59,0,62,0" name="jetbrains.mps.baseLanguage.textGen.EnumConstantDeclaration_TextGen$PROPS" />
-      <unit id="1235740896598" at="63,0,67,0" name="jetbrains.mps.baseLanguage.textGen.EnumConstantDeclaration_TextGen$LINKS" />
-      <unit id="1235740896598" at="17,0,68,0" name="jetbrains.mps.baseLanguage.textGen.EnumConstantDeclaration_TextGen" />
+      <unit id="1235740896598" at="60,0,63,0" name="jetbrains.mps.baseLanguage.textGen.EnumConstantDeclaration_TextGen$PROPS" />
+      <unit id="1235740896598" at="64,0,68,0" name="jetbrains.mps.baseLanguage.textGen.EnumConstantDeclaration_TextGen$LINKS" />
+      <unit id="1235740896598" at="17,0,69,0" name="jetbrains.mps.baseLanguage.textGen.EnumConstantDeclaration_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
       <node id="1235740896598" at="133,57,134,53" concept="12" />
