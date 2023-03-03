@@ -14798,32 +14798,14 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="OqYxEjrEH6" role="3cqZAp">
-          <node concept="3cpWsn" id="OqYxEjrEH7" role="3cpWs9">
-            <property role="TrG5h" value="modelAccess" />
-            <node concept="3uibUv" id="OqYxEjrEH2" role="1tU5fm">
-              <ref role="3uigEE" to="lui2:~ModelAccess" resolve="ModelAccess" />
-            </node>
-            <node concept="2OqwBi" id="OqYxEjrEH8" role="33vP2m">
-              <node concept="liA8E" id="OqYxEjrEH9" role="2OqNvi">
-                <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
-              </node>
-              <node concept="2OqwBi" id="OqYxEjrEHa" role="2Oq$k0">
-                <node concept="liA8E" id="OqYxEjrEHb" role="2OqNvi">
-                  <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
-                </node>
-                <node concept="2OqwBi" id="OqYxEjrEHc" role="2Oq$k0">
-                  <node concept="1DTwFV" id="OqYxEjrEHd" role="2OqNvi">
-                    <ref role="2WH_rO" node="7nlecdCD_TC" resolve="project" />
-                  </node>
-                  <node concept="2WthIp" id="OqYxEjrEHe" role="2Oq$k0" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="7LAWl3rekjr" role="3cqZAp">
-          <node concept="1Wc70l" id="7LAWl3rekjy" role="3clFbG">
+          <node concept="1Wc70l" id="1Gyb7mMRU_w" role="3clFbG">
+            <node concept="2OqwBi" id="1Gyb7mMRV_S" role="3uHU7w">
+              <node concept="2WthIp" id="1Gyb7mMRV_V" role="2Oq$k0" />
+              <node concept="2XshWL" id="1Gyb7mMRV_X" role="2OqNvi">
+                <ref role="2WH_rO" node="5ZDTGDaww50" resolve="canPasteNodes" />
+              </node>
+            </node>
             <node concept="1Wc70l" id="5Ga_clgPtxw" role="3uHU7B">
               <node concept="37vLTw" id="3GM_nagTzZG" role="3uHU7B">
                 <ref role="3cqZAo" node="1umQlOn6XXn" resolve="searchPanelInactive" />
@@ -14837,15 +14819,6 @@
                   <node concept="1DTwFV" id="7LAWl3rekjx" role="2OqNvi">
                     <ref role="2WH_rO" node="4NbzjXXKNEl" resolve="contextModel" />
                   </node>
-                </node>
-              </node>
-            </node>
-            <node concept="2OqwBi" id="7LAWl3rekjB" role="3uHU7w">
-              <node concept="2WthIp" id="7LAWl3rekjC" role="2Oq$k0" />
-              <node concept="2XshWL" id="5ZDTGDawPmN" role="2OqNvi">
-                <ref role="2WH_rO" node="5ZDTGDaww50" resolve="canPasteNodes" />
-                <node concept="37vLTw" id="OqYxEjrEHf" role="2XxRq1">
-                  <ref role="3cqZAo" node="OqYxEjrEH7" resolve="modelAccess" />
                 </node>
               </node>
             </node>
@@ -14916,28 +14889,23 @@
       <property role="TrG5h" value="canPasteNodes" />
       <node concept="10P_77" id="5ZDTGDawPmM" role="3clF45" />
       <node concept="3clFbS" id="5ZDTGDaww52" role="3clF47">
-        <node concept="3cpWs6" id="5ZDTGDawPdY" role="3cqZAp">
-          <node concept="3y3z36" id="2J2M_l3yhW" role="3cqZAk">
-            <node concept="10Nm6u" id="2J2M_l3yhZ" role="3uHU7w" />
-            <node concept="2OqwBi" id="2J2M_l3yhT" role="3uHU7B">
-              <node concept="2WthIp" id="2J2M_l3yhU" role="2Oq$k0" />
-              <node concept="2XshWL" id="2J2M_l3yhV" role="2OqNvi">
-                <ref role="2WH_rO" node="4NbzjXXKNMx" resolve="getPasteData" />
-                <node concept="37vLTw" id="OqYxEjrmEO" role="2XxRq1">
-                  <ref role="3cqZAo" node="OqYxEjrlfV" resolve="modelAccess" />
-                </node>
+        <node concept="3clFbF" id="1Gyb7mMRHFR" role="3cqZAp">
+          <node concept="2OqwBi" id="6u_mZnPjPim" role="3clFbG">
+            <node concept="2YIFZM" id="6u_mZnPjPin" role="2Oq$k0">
+              <ref role="37wK5l" to="ddhc:~CopyPasteManagerEx.getInstanceEx()" resolve="getInstanceEx" />
+              <ref role="1Pybhc" to="ddhc:~CopyPasteManagerEx" resolve="CopyPasteManagerEx" />
+            </node>
+            <node concept="liA8E" id="6u_mZnPjPio" role="2OqNvi">
+              <ref role="37wK5l" to="ddhc:~CopyPasteManagerEx.areDataFlavorsAvailable(java.awt.datatransfer.DataFlavor...)" resolve="areDataFlavorsAvailable" />
+              <node concept="10M0yZ" id="6u_mZnPjPip" role="37wK5m">
+                <ref role="3cqZAo" to="dp1x:5tGs5KqKj8z" resolve="sNode" />
+                <ref role="1PxDUh" to="dp1x:5tGs5KqKiwp" resolve="SModelDataFlavor" />
               </node>
             </node>
           </node>
         </node>
       </node>
       <node concept="3Tm6S6" id="5ZDTGDawPmL" role="1B3o_S" />
-      <node concept="37vLTG" id="OqYxEjrlfV" role="3clF46">
-        <property role="TrG5h" value="modelAccess" />
-        <node concept="3uibUv" id="OqYxEjrlfU" role="1tU5fm">
-          <ref role="3uigEE" to="lui2:~ModelAccess" resolve="ModelAccess" />
-        </node>
-      </node>
     </node>
     <node concept="2XrIbr" id="gcMdbCsldJ" role="32lrUH">
       <property role="TrG5h" value="getContextPackage" />

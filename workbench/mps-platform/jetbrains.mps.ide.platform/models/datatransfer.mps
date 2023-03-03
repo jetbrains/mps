@@ -4553,7 +4553,7 @@
         </node>
         <node concept="TZ5HA" id="2NI1dvfpgAL" role="TZ5H$">
           <node concept="1dT_AC" id="2NI1dvfpgAM" role="1dT_Ay">
-            <property role="1dT_AB" value="In case of MPS precondition that string equality of clipboard ontent meant actual equality of passed Trabsferables" />
+            <property role="1dT_AB" value="In case of MPS precondition that string equality of clipboard content meant actual equality of passed Transferables" />
           </node>
         </node>
         <node concept="TZ5HA" id="2NI1dvfpgAN" role="TZ5H$">
@@ -4577,7 +4577,6 @@
         </node>
       </node>
       <node concept="17QB3L" id="2NI1dvfpa1V" role="3clF45" />
-      <node concept="3Tm6S6" id="2NI1dvfp7XE" role="1B3o_S" />
       <node concept="3clFbS" id="2NI1dvfp7XD" role="3clF47">
         <node concept="3cpWs6" id="2NI1dvfpa1Z" role="3cqZAp">
           <node concept="10QFUN" id="2NI1dvfpa20" role="3cqZAk">
@@ -4603,6 +4602,7 @@
       <node concept="3uibUv" id="2NI1dvfpeH0" role="Sfmx6">
         <ref role="3uigEE" to="guwi:~IOException" resolve="IOException" />
       </node>
+      <node concept="3Tm6S6" id="2NI1dvfp7XE" role="1B3o_S" />
     </node>
     <node concept="2YIFZL" id="5tGs5KqKiIT" role="jymVt">
       <property role="TrG5h" value="copyNodesToClipboard" />

@@ -797,8 +797,14 @@
           </node>
         </node>
         <node concept="3clFbF" id="3_Cs8aWPbEv" role="3cqZAp">
-          <node concept="1Wc70l" id="4UmDqAIXb2l" role="3clFbG">
+          <node concept="1Wc70l" id="1Gyb7mMOUY8" role="3clFbG">
             <node concept="1Wc70l" id="7ESDA_ioSie" role="3uHU7B">
+              <node concept="3y3z36" id="3_Cs8aWPlnH" role="3uHU7B">
+                <node concept="10Nm6u" id="3_Cs8aWPlnK" role="3uHU7w" />
+                <node concept="37vLTw" id="3GM_nagTA1_" role="3uHU7B">
+                  <ref role="3cqZAo" node="3_Cs8aWPbgx" resolve="m" />
+                </node>
+              </node>
               <node concept="2OqwBi" id="7ESDA_ioSTN" role="3uHU7w">
                 <node concept="2YIFZM" id="7ESDA_ioSxe" role="2Oq$k0">
                   <ref role="37wK5l" to="w1kc:~SModelOperations.getAllLanguageImports(org.jetbrains.mps.openapi.model.SModel)" resolve="getAllLanguageImports" />
@@ -817,14 +823,8 @@
                   </node>
                 </node>
               </node>
-              <node concept="3y3z36" id="3_Cs8aWPlnH" role="3uHU7B">
-                <node concept="10Nm6u" id="3_Cs8aWPlnK" role="3uHU7w" />
-                <node concept="37vLTw" id="3GM_nagTA1_" role="3uHU7B">
-                  <ref role="3cqZAo" node="3_Cs8aWPbgx" resolve="m" />
-                </node>
-              </node>
             </node>
-            <node concept="2YIFZM" id="4UmDqAIXdFH" role="3uHU7w">
+            <node concept="2YIFZM" id="1Gyb7mMOV7x" role="3uHU7w">
               <ref role="37wK5l" to="c1ko:4UmDqAIX2IV" resolve="areDataAvailableInClipboard" />
               <ref role="1Pybhc" to="c1ko:4TtYrYGuX3e" resolve="JavaPaster" />
             </node>
@@ -908,7 +908,7 @@
           </node>
         </node>
         <node concept="3clFbF" id="15CjEiP$ncY" role="3cqZAp">
-          <node concept="1Wc70l" id="4UmDqAIXdFI" role="3clFbG">
+          <node concept="1Wc70l" id="1Gyb7mMOUyh" role="3clFbG">
             <node concept="2OqwBi" id="15CjEiP$zox" role="3uHU7B">
               <node concept="2OqwBi" id="15CjEiP$nd7" role="2Oq$k0">
                 <node concept="1eOMI4" id="15CjEiP$nd2" role="2Oq$k0">
@@ -933,9 +933,9 @@
               </node>
               <node concept="3x8VRR" id="15CjEiP$zo_" role="2OqNvi" />
             </node>
-            <node concept="2YIFZM" id="4UmDqAIXdFL" role="3uHU7w">
-              <ref role="1Pybhc" to="c1ko:4TtYrYGuX3e" resolve="JavaPaster" />
+            <node concept="2YIFZM" id="1Gyb7mMOUB8" role="3uHU7w">
               <ref role="37wK5l" to="c1ko:4UmDqAIX2IV" resolve="areDataAvailableInClipboard" />
+              <ref role="1Pybhc" to="c1ko:4TtYrYGuX3e" resolve="JavaPaster" />
             </node>
           </node>
         </node>
@@ -1017,7 +1017,11 @@
           </node>
         </node>
         <node concept="3clFbF" id="mCUxqDafWd" role="3cqZAp">
-          <node concept="1Wc70l" id="4UmDqAIXdFM" role="3clFbG">
+          <node concept="1Wc70l" id="1Gyb7mMOuTI" role="3clFbG">
+            <node concept="2YIFZM" id="1Gyb7mMOTA5" role="3uHU7w">
+              <ref role="37wK5l" to="c1ko:4UmDqAIX2IV" resolve="areDataAvailableInClipboard" />
+              <ref role="1Pybhc" to="c1ko:4TtYrYGuX3e" resolve="JavaPaster" />
+            </node>
             <node concept="2OqwBi" id="mCUxqDagdG" role="3uHU7B">
               <node concept="2OqwBi" id="mCUxqDagdx" role="2Oq$k0">
                 <node concept="1eOMI4" id="mCUxqDagds" role="2Oq$k0">
@@ -1041,10 +1045,6 @@
                 </node>
               </node>
               <node concept="3x8VRR" id="mCUxqDagdK" role="2OqNvi" />
-            </node>
-            <node concept="2YIFZM" id="4UmDqAIXdFP" role="3uHU7w">
-              <ref role="1Pybhc" to="c1ko:4TtYrYGuX3e" resolve="JavaPaster" />
-              <ref role="37wK5l" to="c1ko:4UmDqAIX2IV" resolve="areDataAvailableInClipboard" />
             </node>
           </node>
         </node>

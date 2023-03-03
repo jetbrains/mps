@@ -307,7 +307,7 @@ public final class CopyPasteUtil {
    * of this method) then existing element will "float up" inside CopyPasteManagerEx.myDatas collection and will
    * be used next on next paste operation instead of passed Transferable.
    * 
-   * In case of MPS precondition that string equality of clipboard ontent meant actual equality of passed Trabsferables
+   * In case of MPS precondition that string equality of clipboard content meant actual equality of passed Transferables
    * (SNodeTransferables) is generally wrong, so we have to work around this logic by deleting all exiting Transferables
    * to avoid possible collisions between copied elements preventing user from copying actual node under mouse in editor.
    */

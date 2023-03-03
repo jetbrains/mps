@@ -40,7 +40,7 @@ public class PasteAsJavaMethods_Action extends BaseAction {
     if (ReadOnlyUtil.isSelectionReadOnlyInEditor(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")))) {
       return false;
     }
-    return (SNodeOperations.getNodeAncestor(((SNode) ((SNode) MapSequence.fromMap(_params).get("anchorNode"))), CONCEPTS.Classifier$Ix, true, false) != null) && JavaPaster.areDataAvailableInClipboard();
+    return (SNodeOperations.getNodeAncestor(((SNode) ((SNode) MapSequence.fromMap(_params).get("anchorNode"))), CONCEPTS.Classifier$Ix, true, false) != null) && JavaPaster.isStringOnlyDataAvailableInClipboard();
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {

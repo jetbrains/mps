@@ -36,7 +36,7 @@ public class PasteAsJavaClass_Action extends BaseAction {
       return false;
     }
     SModel m = event.getData(MPSCommonDataKeys.MODEL);
-    return m != null && SModelOperations.getAllLanguageImports(m).contains(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage")) && JavaPaster.areDataAvailableInClipboard();
+    return m != null && SModelOperations.getAllLanguageImports(m).contains(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage")) && JavaPaster.isStringOnlyDataAvailableInClipboard();
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {

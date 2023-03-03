@@ -6,6 +6,8 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.java.core.newparser.FeatureKind;
 import jetbrains.mps.project.Project;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.ui.Messages;
 import org.jetbrains.mps.openapi.model.SModel;
 import java.awt.datatransfer.Transferable;
 import com.intellij.ide.CopyPasteManagerEx;
@@ -17,8 +19,6 @@ import jetbrains.mps.java.core.newparser.JavaParser;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.smodel.ModelImports;
@@ -42,6 +42,12 @@ public class JavaPaster {
   public void pasteJava(SNode anchor, FeatureKind featureKind, Project project) {
     String javaCode = getStringFromClipboard();
     if (javaCode == null) {
+      ApplicationManager.getApplication().invokeLater(new Runnable() {
+        @Override
+        public void run() {
+          Messages.showInfoMessage("No data to parse found in the clipboard", "Parsing error");
+        }
+      });
       return;
     }
     pasteJavaAsNode(anchor, anchor.getModel(), javaCode, featureKind, project);
@@ -50,6 +56,12 @@ public class JavaPaster {
   public void pasteJavaAsClass(SModel model, Project project) {
     String javaCode = getStringFromClipboard();
     if (javaCode == null) {
+      ApplicationManager.getApplication().invokeLater(new Runnable() {
+        @Override
+        public void run() {
+          Messages.showInfoMessage("No data to parse found in the clipboard", "Parsing error");
+        }
+      });
       return;
     }
     pasteJavaAsNode(null, model, javaCode, FeatureKind.CLASS, project);
@@ -82,6 +94,16 @@ public class JavaPaster {
   }
 
   public void pasteJavaAsNode(SNode anchor, final SModel model, String javaCode, final FeatureKind featureKind, Project project) {
+    // This value seems to be the maximum that the parser can parse and the editor can than render
+    if (javaCode.length() > 50000) {
+      ApplicationManager.getApplication().invokeLater(new Runnable() {
+        @Override
+        public void run() {
+          Messages.showErrorDialog("The text is too big to parse", "Parsing error");
+        }
+      });
+      return;
+    }
     JavaParser parser = new JavaParser();
 
     try {
@@ -185,15 +207,8 @@ public class JavaPaster {
     return true;
   }
 
-  public static boolean areDataAvailableInClipboard() {
-    Transferable trf = CopyPasteManagerEx.getInstanceEx().getContents();
-    if (trf == null || trf.isDataFlavorSupported(SModelDataFlavor.sNode)) {
-      return false;
-    }
-    if (trf.isDataFlavorSupported(DataFlavor.stringFlavor)) {
-      return true;
-    }
-    return false;
+  public static boolean isStringOnlyDataAvailableInClipboard() {
+    return CopyPasteManagerEx.getInstanceEx().areDataFlavorsAvailable(DataFlavor.stringFlavor) && !(CopyPasteManagerEx.getInstanceEx().areDataFlavorsAvailable(SModelDataFlavor.sNode));
   }
 
   private static final class CONCEPTS {
