@@ -15653,18 +15653,17 @@
           <property role="3ZfqAx" value="models" />
           <property role="1Hdu6h" value="true" />
           <property role="1HemKv" value="true" />
-          <node concept="3LXTmp" id="3PMETvllXXk" role="1HemKq">
-            <node concept="398BVA" id="3PMETvllXX2" role="3LXTmr">
-              <ref role="398BVh" node="1CUeZUoS3fx" resolve="mps_home" />
-              <node concept="2Ry0Ak" id="3PMETvllXX3" role="iGT6I">
+          <node concept="3LXTmp" id="1euJyZllPza" role="1HemKq">
+            <node concept="55IIr" id="1euJyZllPz4" role="3LXTmr">
+              <node concept="2Ry0Ak" id="1euJyZllPz5" role="iGT6I">
                 <property role="2Ry0Am" value="plugins" />
-                <node concept="2Ry0Ak" id="3PMETvllXX4" role="2Ry0An">
+                <node concept="2Ry0Ak" id="1euJyZllPz6" role="2Ry0An">
                   <property role="2Ry0Am" value="mps-kotlin" />
-                  <node concept="2Ry0Ak" id="3PMETvllXX5" role="2Ry0An">
+                  <node concept="2Ry0Ak" id="1euJyZllPz7" role="2Ry0An">
                     <property role="2Ry0Am" value="solutions" />
-                    <node concept="2Ry0Ak" id="3PMETvllXX6" role="2Ry0An">
+                    <node concept="2Ry0Ak" id="1euJyZllPz8" role="2Ry0An">
                       <property role="2Ry0Am" value="kotlin.tests.editor" />
-                      <node concept="2Ry0Ak" id="3PMETvllXX7" role="2Ry0An">
+                      <node concept="2Ry0Ak" id="1euJyZllPz9" role="2Ry0An">
                         <property role="2Ry0Am" value="models" />
                       </node>
                     </node>
@@ -15672,7 +15671,7 @@
                 </node>
               </node>
             </node>
-            <node concept="3qWCbU" id="3PMETvllXXl" role="3LXTna">
+            <node concept="3qWCbU" id="1euJyZllPzb" role="3LXTna">
               <property role="3qWCbO" value="**/*.mps, **/*.mpsr, **/.model" />
             </node>
           </node>

@@ -53500,6 +53500,11 @@
             </node>
           </node>
         </node>
+        <node concept="1SiIV0" id="1euJyZllPvj" role="3bR37C">
+          <node concept="3bR9La" id="1euJyZllPvk" role="1SiIV1">
+            <ref role="3bR37D" node="7Kfy9QB6L8Y" resolve="jetbrains.mps.lang.project" />
+          </node>
+        </node>
       </node>
       <node concept="1E1JtD" id="Ye$g8PO8TM" role="2G$12L">
         <property role="BnDLt" value="true" />
