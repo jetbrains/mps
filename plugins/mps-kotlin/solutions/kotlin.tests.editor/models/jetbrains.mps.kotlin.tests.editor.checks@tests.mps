@@ -4,7 +4,7 @@
   <languages>
     <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="6" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
-    <use id="6b3888c1-9802-44d8-8baf-f8e6c33ed689" name="jetbrains.mps.kotlin" version="10" />
+    <use id="6b3888c1-9802-44d8-8baf-f8e6c33ed689" name="jetbrains.mps.kotlin" version="11" />
   </languages>
   <imports>
     <import index="lrl3" ref="r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)" />
@@ -55,12 +55,6 @@
         <child id="2936055411798374534" name="fileAnnotations" index="1XD0Th" />
       </concept>
       <concept id="1991556721070973461" name="jetbrains.mps.kotlin.structure.EmptyStatement" flags="ng" index="AQkLs" />
-      <concept id="7138249191285121087" name="jetbrains.mps.kotlin.structure.IVisible" flags="ng" index="2BPcvI">
-        <child id="7138249191285121088" name="visibility" index="2BPcuh" />
-      </concept>
-      <concept id="6013275720582937818" name="jetbrains.mps.kotlin.structure.IInheritable" flags="ng" index="ICcUM">
-        <child id="6013275720582937819" name="inheritance" index="ICcUN" />
-      </concept>
       <concept id="2324909103759097704" name="jetbrains.mps.kotlin.structure.IWithClassBody" flags="ng" index="KS$fF">
         <child id="2324909103759097705" name="members" index="KS$fE" />
       </concept>
@@ -87,7 +81,6 @@
         <reference id="6664176324866782075" name="class" index="1SePDO" />
       </concept>
       <concept id="2936055411798373599" name="jetbrains.mps.kotlin.structure.ClassType" flags="ng" index="1XD088" />
-      <concept id="2936055411798373619" name="jetbrains.mps.kotlin.structure.FinalInheritanceModifier" flags="ng" index="1XD08$" />
       <concept id="2936055411798373537" name="jetbrains.mps.kotlin.structure.PropertyDeclaration" flags="ng" index="1XD09Q">
         <child id="1314219036499436525" name="declaration" index="TDYyH" />
       </concept>
@@ -125,7 +118,6 @@
       <concept id="2936055411798373370" name="jetbrains.mps.kotlin.structure.SetparamUseSiteTarget" flags="ng" index="1XD0kH" />
       <concept id="2936055411798373369" name="jetbrains.mps.kotlin.structure.ParamUseSiteTarget" flags="ng" index="1XD0kI" />
       <concept id="2936055411798373368" name="jetbrains.mps.kotlin.structure.ReceiverUseSiteTarget" flags="ng" index="1XD0kJ" />
-      <concept id="2936055411798373269" name="jetbrains.mps.kotlin.structure.PublicVisibility" flags="ng" index="1XD0l2" />
       <concept id="2936055411798373277" name="jetbrains.mps.kotlin.structure.FileAnnotationList" flags="ng" index="1XD0la">
         <child id="6664176324869076482" name="annotations" index="1S65Wd" />
       </concept>
@@ -235,8 +227,6 @@
         <node concept="1XD0aY" id="6nA1THN536j" role="1XD0Tu">
           <property role="TrG5h" value="MyFileAnnotation" />
           <node concept="1XD0bu" id="6nA1THN536k" role="1XD06P" />
-          <node concept="1XD08$" id="6nA1THN536l" role="ICcUN" />
-          <node concept="1XD0l2" id="6nA1THN536m" role="2BPcuh" />
           <node concept="1XD0mC" id="6nA1THN536n" role="36UvSs">
             <node concept="3N2tND" id="6nA1THN536o" role="AqMKl">
               <ref role="3N3xrh" to="n8l9:~Target.new(*AnnotationTarget)" resolve="Target" />
@@ -258,14 +248,10 @@
         <node concept="1XD0aY" id="6nA1THN536v" role="1XD0Tu">
           <property role="TrG5h" value="RegularAnnotation" />
           <node concept="1XD0bu" id="6nA1THN536w" role="1XD06P" />
-          <node concept="1XD08$" id="6nA1THN536x" role="ICcUN" />
-          <node concept="1XD0l2" id="6nA1THN536y" role="2BPcuh" />
         </node>
         <node concept="eKYAL" id="6nA1THN536z" role="1XD0Tu" />
         <node concept="1XD0bz" id="6nA1THN536$" role="1XD0Tu">
           <property role="TrG5h" value="myFunction" />
-          <node concept="1XD08$" id="6nA1THN536A" role="ICcUN" />
-          <node concept="1XD0l2" id="6nA1THN536B" role="2BPcuh" />
           <node concept="1XD0mC" id="6nA1THN536C" role="36UvSs">
             <node concept="3N2tND" id="6nA1THN536D" role="AqMKl">
               <ref role="3N3xrh" node="6nA1THN536v" resolve="RegularAnnotation" />
@@ -405,11 +391,9 @@
           <property role="TrG5h" value="MyClass" />
           <node concept="1XD09Q" id="6nA1THN5374" role="KS$fE">
             <property role="1Xb$ne" value="true" />
-            <node concept="1XD08$" id="6nA1THN5375" role="ICcUN" />
             <node concept="1XD0eA" id="6nA1THN5376" role="TDYyH">
               <property role="TrG5h" value="myProperty" />
             </node>
-            <node concept="1XD0l2" id="6nA1THN5377" role="2BPcuh" />
             <node concept="1XD0mK" id="6nA1THN5378" role="1XD05H">
               <node concept="1XD0k7" id="6nA1THN5379" role="1XD0cX">
                 <property role="1XD01k" value="23" />
@@ -522,11 +506,9 @@
           <node concept="eKYAL" id="6nA1THN537$" role="KS$fE" />
           <node concept="eKYAL" id="6nA1THN537_" role="KS$fE" />
           <node concept="1XD09Q" id="6nA1THN537A" role="KS$fE">
-            <node concept="1XD08$" id="6nA1THN537B" role="ICcUN" />
             <node concept="1XD0eA" id="6nA1THN537C" role="TDYyH">
               <property role="TrG5h" value="myVarProperty" />
             </node>
-            <node concept="1XD0l2" id="6nA1THN537D" role="2BPcuh" />
             <node concept="1XD0mK" id="6nA1THN537E" role="1XD05H">
               <node concept="1XD0k7" id="6nA1THN537F" role="1XD0cX">
                 <property role="1XD01k" value="23" />
@@ -617,12 +599,8 @@
             </node>
           </node>
           <node concept="eKYAL" id="6nA1THN5386" role="KS$fE" />
-          <node concept="1XD08$" id="6nA1THN5387" role="ICcUN" />
-          <node concept="1XD0l2" id="6nA1THN5388" role="2BPcuh" />
           <node concept="1XD0bz" id="6nA1THN5389" role="KS$fE">
             <property role="TrG5h" value="myNestedFunction" />
-            <node concept="1XD08$" id="6nA1THN538a" role="ICcUN" />
-            <node concept="1XD0l2" id="6nA1THN538b" role="2BPcuh" />
             <node concept="1XD0mC" id="6nA1THN538c" role="36UvSs">
               <node concept="3N2tND" id="6nA1THN538d" role="AqMKl">
                 <ref role="3N3xrh" node="6nA1THN536v" resolve="RegularAnnotation" />
@@ -955,8 +933,6 @@
               </node>
             </node>
           </node>
-          <node concept="1XD08$" id="74ZS3j_vrNB" role="ICcUN" />
-          <node concept="1XD0l2" id="74ZS3j_vrNC" role="2BPcuh" />
         </node>
       </node>
     </node>

@@ -3929,7 +3929,7 @@
                     <ref role="3cqZAo" node="3HHsmlLqmYd" resolve="type" />
                   </node>
                   <node concept="2qgKlT" id="2k7NUUJXY1G" role="2OqNvi">
-                    <ref role="37wK5l" to="hez:JmO2PmZtH5" resolve="shallowId" />
+                    <ref role="37wK5l" to="hez:JmO2PmZtH5" resolve="typeKey" />
                   </node>
                 </node>
               </node>
@@ -4395,7 +4395,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="6JJpax4YA0A" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="6JJpax4YJ8E" role="jymVt" />
@@ -4432,7 +4432,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="6JJpax4YA0R" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="6JJpax4YIy6" role="jymVt" />
@@ -4493,7 +4493,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="6JJpax4YA1n" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="5$XWI2QfYeq" role="jymVt" />
@@ -4899,7 +4899,7 @@
       <node concept="37vLTG" id="6JJpax4QrHS" role="3clF46">
         <property role="TrG5h" value="baseAccess" />
         <node concept="3uibUv" id="6yo46g2EIl3" role="1tU5fm">
-          <ref role="3uigEE" to="tbhz:6jE_6duQcYm" resolve="VisibilityContext" />
+          <ref role="3uigEE" to="tbhz:6jE_6duQcYm" resolve="VisibilityAccess" />
         </node>
       </node>
       <node concept="3cqZAl" id="5p_0HFfuEPc" role="3clF45" />
@@ -7986,7 +7986,7 @@
                 <node concept="3cpWs6" id="6yo46g2DStp" role="3cqZAp">
                   <node concept="Rm8GO" id="6yo46g2DUBJ" role="3cqZAk">
                     <ref role="Rm8GQ" to="tbhz:6jE_6duQdoN" resolve="TYPE_PRIVATE" />
-                    <ref role="1Px2BO" to="tbhz:6jE_6duQcYm" resolve="VisibilityContext" />
+                    <ref role="1Px2BO" to="tbhz:6jE_6duQcYm" resolve="VisibilityAccess" />
                   </node>
                 </node>
               </node>
@@ -8024,7 +8024,7 @@
                 <node concept="3cpWs6" id="6yo46g2E9Pp" role="3cqZAp">
                   <node concept="Rm8GO" id="6yo46g2EcD4" role="3cqZAk">
                     <ref role="Rm8GQ" to="tbhz:6JJpax4AA5g" resolve="TYPE_PROTECTED" />
-                    <ref role="1Px2BO" to="tbhz:6jE_6duQcYm" resolve="VisibilityContext" />
+                    <ref role="1Px2BO" to="tbhz:6jE_6duQcYm" resolve="VisibilityAccess" />
                   </node>
                 </node>
               </node>
@@ -8046,13 +8046,13 @@
         <node concept="3cpWs6" id="6yo46g2Ct8Q" role="3cqZAp">
           <node concept="Rm8GO" id="6yo46g2EfmW" role="3cqZAk">
             <ref role="Rm8GQ" to="tbhz:6jE_6duQdaD" resolve="TYPE_PUBLIC" />
-            <ref role="1Px2BO" to="tbhz:6jE_6duQcYm" resolve="VisibilityContext" />
+            <ref role="1Px2BO" to="tbhz:6jE_6duQcYm" resolve="VisibilityAccess" />
           </node>
         </node>
       </node>
       <node concept="3Tm1VV" id="6yo46g2CjNX" role="1B3o_S" />
       <node concept="3uibUv" id="6yo46g2DW$v" role="3clF45">
-        <ref role="3uigEE" to="tbhz:6jE_6duQcYm" resolve="VisibilityContext" />
+        <ref role="3uigEE" to="tbhz:6jE_6duQcYm" resolve="VisibilityAccess" />
       </node>
       <node concept="P$JXv" id="6yo46g2Cvuh" role="lGtFl">
         <node concept="TZ5HA" id="6yo46g2Cvui" role="TZ5H$">
@@ -8072,7 +8072,7 @@
         <node concept="3cpWs6" id="4oNDtEQJhqU" role="3cqZAp">
           <node concept="2OqwBi" id="4oNDtEQJhG0" role="3cqZAk">
             <node concept="37vLTw" id="4oNDtEQJhvp" role="2Oq$k0">
-              <ref role="3cqZAo" node="4oNDtEQJ7mH" resolve="nodes" />
+              <ref role="3cqZAo" node="4oNDtEQJ7mH" resolve="declarations" />
             </node>
             <node concept="3zZkjj" id="4oNDtEQJi87" role="2OqNvi">
               <node concept="1bVj0M" id="4oNDtEQJi89" role="23t8la">

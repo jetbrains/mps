@@ -1730,7 +1730,7 @@
     </node>
     <node concept="13i0hz" id="1d2BQ0ZOu24" role="13h7CS">
       <property role="TrG5h" value="shallowId" />
-      <ref role="13i0hy" to="hez:JmO2PmZtH5" resolve="shallowId" />
+      <ref role="13i0hy" to="hez:JmO2PmZtH5" resolve="typeKey" />
       <node concept="3Tm1VV" id="1d2BQ0ZOu25" role="1B3o_S" />
       <node concept="3clFbS" id="1d2BQ0ZOu2b" role="3clF47">
         <node concept="3clFbF" id="1d2BQ0ZOu2e" role="3cqZAp">

@@ -4,7 +4,7 @@
   <languages>
     <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="6" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
-    <use id="6b3888c1-9802-44d8-8baf-f8e6c33ed689" name="jetbrains.mps.kotlin" version="10" />
+    <use id="6b3888c1-9802-44d8-8baf-f8e6c33ed689" name="jetbrains.mps.kotlin" version="11" />
   </languages>
   <imports>
     <import index="lrl3" ref="r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)" />
@@ -65,9 +65,6 @@
       </concept>
       <concept id="5032507314956342004" name="jetbrains.mps.kotlin.structure.PlusOperation" flags="ng" index="gk1L9" />
       <concept id="5032507314956342049" name="jetbrains.mps.kotlin.structure.DivOperation" flags="ng" index="gk1Qs" />
-      <concept id="7138249191285121087" name="jetbrains.mps.kotlin.structure.IVisible" flags="ng" index="2BPcvI">
-        <child id="7138249191285121088" name="visibility" index="2BPcuh" />
-      </concept>
       <concept id="6013275720582937818" name="jetbrains.mps.kotlin.structure.IInheritable" flags="ng" index="ICcUM">
         <child id="6013275720582937819" name="inheritance" index="ICcUN" />
       </concept>
@@ -95,7 +92,6 @@
         <reference id="2324909103760693884" name="target" index="KYurZ" />
       </concept>
       <concept id="2936055411798373620" name="jetbrains.mps.kotlin.structure.OpenInheritanceModifier" flags="ng" index="1XD08z" />
-      <concept id="2936055411798373619" name="jetbrains.mps.kotlin.structure.FinalInheritanceModifier" flags="ng" index="1XD08$" />
       <concept id="2936055411798373537" name="jetbrains.mps.kotlin.structure.PropertyDeclaration" flags="ng" index="1XD09Q">
         <child id="1314219036499436525" name="declaration" index="TDYyH" />
       </concept>
@@ -115,7 +111,6 @@
       <concept id="2936055411798373328" name="jetbrains.mps.kotlin.structure.IntegerLiteral" flags="ng" index="1XD0k7">
         <property id="2936055411798374019" name="value" index="1XD01k" />
       </concept>
-      <concept id="2936055411798373269" name="jetbrains.mps.kotlin.structure.PublicVisibility" flags="ng" index="1XD0l2" />
       <concept id="2936055411798373223" name="jetbrains.mps.kotlin.structure.PropertyDefaultAssignement" flags="ng" index="1XD0mK">
         <child id="2936055411798373866" name="expression" index="1XD0cX" />
       </concept>
@@ -135,15 +130,11 @@
       <node concept="1XD0fY" id="1CUeZUo8fQk" role="1qenE9">
         <node concept="1XD0aY" id="1CUeZUo8fSi" role="1XD0Tu">
           <property role="TrG5h" value="MyClass" />
-          <node concept="1XD08$" id="1CUeZUo8fSj" role="ICcUN" />
-          <node concept="1XD0l2" id="1CUeZUo8fSk" role="2BPcuh" />
           <node concept="1XD09Q" id="1CUeZUo8fUn" role="KS$fE">
             <property role="1Xb$ne" value="true" />
-            <node concept="1XD08$" id="1CUeZUo8fUp" role="ICcUN" />
             <node concept="1XD0eA" id="1CUeZUo8fUq" role="TDYyH">
               <property role="TrG5h" value="test" />
             </node>
-            <node concept="1XD0l2" id="1CUeZUo8fUs" role="2BPcuh" />
             <node concept="7CXmI" id="1CUeZUodzZ3" role="lGtFl">
               <node concept="29bkU" id="1CUeZUod$oV" role="7EUXB">
                 <node concept="2PQEqo" id="1CUeZUodAoB" role="3lydCh">
@@ -166,15 +157,11 @@
       <node concept="1XD0fY" id="1CUeZUod$sT" role="1qenE9">
         <node concept="1XD0aY" id="1CUeZUod$uR" role="1XD0Tu">
           <property role="TrG5h" value="MyClass" />
-          <node concept="1XD08$" id="1CUeZUod$uS" role="ICcUN" />
-          <node concept="1XD0l2" id="1CUeZUod$uT" role="2BPcuh" />
           <node concept="1XD09Q" id="1CUeZUod$uU" role="KS$fE">
             <property role="1Xb$ne" value="true" />
-            <node concept="1XD08$" id="1CUeZUod$uV" role="ICcUN" />
             <node concept="1XD0eA" id="1CUeZUod$uW" role="TDYyH">
               <property role="TrG5h" value="test" />
             </node>
-            <node concept="1XD0l2" id="1CUeZUod$uX" role="2BPcuh" />
             <node concept="1XD0mK" id="1CUeZUod$x6" role="1XD05H">
               <node concept="1NbEFs" id="1CUeZUod_ak" role="1XD0cX">
                 <ref role="AarEw" to="0:~.TODO()" resolve="TODO" />
@@ -200,11 +187,9 @@
       <node concept="1XD0fY" id="1CUeZUodD1i" role="1qenE9">
         <node concept="1XD09Q" id="1CUeZUodD1q" role="1XD0Tu">
           <property role="1Xb$ne" value="true" />
-          <node concept="1XD08$" id="1CUeZUodD1s" role="ICcUN" />
           <node concept="1XD0eA" id="1CUeZUodD1t" role="TDYyH">
             <property role="TrG5h" value="content" />
           </node>
-          <node concept="1XD0l2" id="1CUeZUodD1v" role="2BPcuh" />
           <node concept="1XD0mK" id="1CUeZUodD1A" role="1XD05H">
             <node concept="gk1Qs" id="1CUeZUodDAO" role="1XD0cX">
               <node concept="1XD0k7" id="1CUeZUodDIi" role="21Pkll">
@@ -246,11 +231,9 @@
       <node concept="1XD0fY" id="1CUeZUodGGg" role="1qenE9">
         <node concept="1XD09Q" id="1CUeZUodGGi" role="1XD0Tu">
           <property role="1Xb$ne" value="true" />
-          <node concept="1XD08$" id="1CUeZUodGGj" role="ICcUN" />
           <node concept="1XD0eA" id="1CUeZUodGGk" role="TDYyH">
             <property role="TrG5h" value="content" />
           </node>
-          <node concept="1XD0l2" id="1CUeZUodGGl" role="2BPcuh" />
           <node concept="1XD0mK" id="1CUeZUodGGr" role="1XD05H">
             <node concept="gk1L9" id="1CUeZUodH2L" role="1XD0cX">
               <node concept="gk1Qs" id="1CUeZUodHhD" role="21Pkll">
@@ -276,13 +259,9 @@
       <node concept="1XD0fY" id="1CUeZUodHGV" role="1qenE9">
         <node concept="1XD0aY" id="1CUeZUodHH6" role="1XD0Tu">
           <property role="TrG5h" value="MySuperClass" />
-          <node concept="1XD08$" id="1CUeZUodHH8" role="ICcUN" />
-          <node concept="1XD0l2" id="1CUeZUodHH9" role="2BPcuh" />
         </node>
         <node concept="1XD0aY" id="1CUeZUodHHn" role="1XD0Tu">
           <property role="TrG5h" value="Child" />
-          <node concept="1XD08$" id="1CUeZUodHHp" role="ICcUN" />
-          <node concept="1XD0l2" id="1CUeZUodHHq" role="2BPcuh" />
           <node concept="KYwOn" id="1CUeZUodI9N" role="AST3G">
             <ref role="KYwOm" node="1CUeZUodHH6" resolve="MySuperClass" />
             <node concept="7CXmI" id="1CUeZUodI9Q" role="lGtFl">
@@ -312,13 +291,9 @@
       <node concept="1XD0fY" id="1CUeZUodIac" role="1qenE9">
         <node concept="1XD0aY" id="1CUeZUodIap" role="1XD0Tu">
           <property role="TrG5h" value="MySuperClass" />
-          <node concept="1XD0l2" id="1CUeZUodIar" role="2BPcuh" />
-          <node concept="1XD08$" id="1CUeZUoeHx0" role="ICcUN" />
         </node>
         <node concept="1XD0aY" id="1CUeZUodIas" role="1XD0Tu">
           <property role="TrG5h" value="Child" />
-          <node concept="1XD08$" id="1CUeZUodIat" role="ICcUN" />
-          <node concept="1XD0l2" id="1CUeZUodIau" role="2BPcuh" />
           <node concept="1XD08x" id="1CUeZUodIoW" role="AST3G">
             <ref role="KYurZ" node="1CUeZUodIap" resolve="MySuperClass" />
           </node>
@@ -332,13 +307,9 @@
       <node concept="1XD0fY" id="1CUeZUoeI3A" role="1qenE9">
         <node concept="1XD0aY" id="1CUeZUoeI3B" role="1XD0Tu">
           <property role="TrG5h" value="MySuperClass" />
-          <node concept="1XD08$" id="1CUeZUoeI3C" role="ICcUN" />
-          <node concept="1XD0l2" id="1CUeZUoeI3D" role="2BPcuh" />
         </node>
         <node concept="1XD0aY" id="1CUeZUoeI3E" role="1XD0Tu">
           <property role="TrG5h" value="Child" />
-          <node concept="1XD08$" id="1CUeZUoeI3F" role="ICcUN" />
-          <node concept="1XD0l2" id="1CUeZUoeI3G" role="2BPcuh" />
           <node concept="1XD08x" id="1CUeZUoeIbR" role="AST3G">
             <ref role="KYurZ" node="1CUeZUoeI3B" resolve="MySuperClass" />
             <node concept="7CXmI" id="1CUeZUoeIxW" role="lGtFl">
@@ -368,13 +339,10 @@
       <node concept="1XD0fY" id="1CUeZUoeI3P" role="1qenE9">
         <node concept="1XD0aY" id="1CUeZUoeI3Q" role="1XD0Tu">
           <property role="TrG5h" value="MySuperClass" />
-          <node concept="1XD0l2" id="1CUeZUoeI3R" role="2BPcuh" />
           <node concept="1XD08z" id="1CUeZUoeIzJ" role="ICcUN" />
         </node>
         <node concept="1XD0aY" id="1CUeZUoeI3T" role="1XD0Tu">
           <property role="TrG5h" value="Child" />
-          <node concept="1XD08$" id="1CUeZUoeI3U" role="ICcUN" />
-          <node concept="1XD0l2" id="1CUeZUoeI3V" role="2BPcuh" />
           <node concept="1XD08x" id="1CUeZUoeI3W" role="AST3G">
             <ref role="KYurZ" node="1CUeZUoeI3Q" resolve="MySuperClass" />
           </node>
@@ -415,8 +383,6 @@
               </node>
             </node>
           </node>
-          <node concept="1XD08$" id="7ZVfWV59rkP" role="ICcUN" />
-          <node concept="1XD0l2" id="7ZVfWV59rkQ" role="2BPcuh" />
         </node>
       </node>
     </node>
@@ -434,8 +400,6 @@
             </node>
             <node concept="1XD0f0" id="7ZVfWV5hJ00" role="1XD06E" />
           </node>
-          <node concept="1XD08$" id="7ZVfWV5hIXE" role="ICcUN" />
-          <node concept="1XD0l2" id="7ZVfWV5hIXF" role="2BPcuh" />
         </node>
       </node>
     </node>

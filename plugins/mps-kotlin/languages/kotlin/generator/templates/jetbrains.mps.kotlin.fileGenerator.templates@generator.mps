@@ -2,7 +2,7 @@
 <model ref="r:e6b7d8c4-184e-4875-a204-ccde4dbdedab(jetbrains.mps.kotlin.fileGenerator.templates@generator)">
   <persistence version="9" />
   <languages>
-    <use id="6b3888c1-9802-44d8-8baf-f8e6c33ed689" name="jetbrains.mps.kotlin" version="10" />
+    <use id="6b3888c1-9802-44d8-8baf-f8e6c33ed689" name="jetbrains.mps.kotlin" version="11" />
     <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="4" />
     <devkit ref="a2eb3a43-fcc2-4200-80dc-c60110c4862d(jetbrains.mps.devkit.templates)" />
   </languages>
@@ -57,18 +57,10 @@
     </language>
     <language id="6b3888c1-9802-44d8-8baf-f8e6c33ed689" name="jetbrains.mps.kotlin">
       <concept id="5622728304609204267" name="jetbrains.mps.kotlin.structure.EmptyDeclaration" flags="ng" index="eKYAL" />
-      <concept id="7138249191285121087" name="jetbrains.mps.kotlin.structure.IVisible" flags="ng" index="2BPcvI">
-        <child id="7138249191285121088" name="visibility" index="2BPcuh" />
-      </concept>
-      <concept id="6013275720582937818" name="jetbrains.mps.kotlin.structure.IInheritable" flags="ng" index="ICcUM">
-        <child id="6013275720582937819" name="inheritance" index="ICcUN" />
-      </concept>
-      <concept id="2936055411798373619" name="jetbrains.mps.kotlin.structure.FinalInheritanceModifier" flags="ng" index="1XD08$" />
       <concept id="2936055411798373481" name="jetbrains.mps.kotlin.structure.ClassDeclaration" flags="ng" index="1XD0aY" />
       <concept id="2936055411798373673" name="jetbrains.mps.kotlin.structure.KotlinFile" flags="ng" index="1XD0fY">
         <child id="2936055411798374537" name="declarations" index="1XD0Tu" />
       </concept>
-      <concept id="2936055411798373269" name="jetbrains.mps.kotlin.structure.PublicVisibility" flags="ng" index="1XD0l2" />
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1139613262185" name="jetbrains.mps.lang.smodel.structure.Node_GetParentOperation" flags="nn" index="1mfA1w" />
@@ -190,8 +182,6 @@
     <property role="TrG5h" value="map_IClassLike_KotlinFile" />
     <node concept="1XD0aY" id="74Z9X$ywkio" role="1XD0Tu">
       <property role="TrG5h" value="MyClass" />
-      <node concept="1XD08$" id="74Z9X$ywkiq" role="ICcUN" />
-      <node concept="1XD0l2" id="74Z9X$ywkir" role="2BPcuh" />
       <node concept="3_AbJx" id="74Z9X$yJgeN" role="lGtFl">
         <node concept="3_AbJw" id="74Z9X$yJgeO" role="3_A0Ny">
           <node concept="3clFbS" id="74Z9X$yJgeP" role="2VODD2">

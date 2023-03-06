@@ -1638,7 +1638,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="6JJpax4IFPT" role="2OqNvi">
-                  <ref role="37wK5l" to="2q9i:6JJpax4CGGE" resolve="withReceiverType" />
+                  <ref role="37wK5l" to="2q9i:6JJpax4CGGE" resolve="withExtensionReceiverType" />
                   <node concept="37vLTw" id="6JJpax4IHjv" role="37wK5m">
                     <ref role="3cqZAo" node="6nK3tkaqxd$" resolve="receiver" />
                   </node>
@@ -1927,7 +1927,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="6yo46g3IZO$" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
         <node concept="2B6LJw" id="6yo46g3IZRf" role="2B76xF">
           <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
           <node concept="Xl_RD" id="6yo46g3J0df" role="2B70Vg">

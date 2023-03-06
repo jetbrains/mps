@@ -4,7 +4,7 @@
   <languages>
     <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="6" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
-    <use id="6b3888c1-9802-44d8-8baf-f8e6c33ed689" name="jetbrains.mps.kotlin" version="10" />
+    <use id="6b3888c1-9802-44d8-8baf-f8e6c33ed689" name="jetbrains.mps.kotlin" version="11" />
   </languages>
   <imports>
     <import index="ekwn" ref="r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)" />
@@ -71,14 +71,8 @@
       </concept>
       <concept id="5032507314956342004" name="jetbrains.mps.kotlin.structure.PlusOperation" flags="ng" index="gk1L9" />
       <concept id="5032507314956342049" name="jetbrains.mps.kotlin.structure.DivOperation" flags="ng" index="gk1Qs" />
-      <concept id="7138249191285121087" name="jetbrains.mps.kotlin.structure.IVisible" flags="ng" index="2BPcvI">
-        <child id="7138249191285121088" name="visibility" index="2BPcuh" />
-      </concept>
       <concept id="6389031306614148912" name="jetbrains.mps.kotlin.structure.StringLiteralLine" flags="ng" index="Df6$J">
         <child id="6389031306614152501" name="parts" index="Df7GE" />
-      </concept>
-      <concept id="6013275720582937818" name="jetbrains.mps.kotlin.structure.IInheritable" flags="ng" index="ICcUM">
-        <child id="6013275720582937819" name="inheritance" index="ICcUN" />
       </concept>
       <concept id="1314219036499415210" name="jetbrains.mps.kotlin.structure.AbstractPropertyDeclaration" flags="ng" index="TDTJE">
         <property id="2936055411806090009" name="isReadonly" index="1Xb$ne" />
@@ -95,7 +89,6 @@
       </concept>
       <concept id="4662566628538083705" name="jetbrains.mps.kotlin.structure.FunctionCallExpression" flags="ng" index="1NbEFs" />
       <concept id="2936055411798373584" name="jetbrains.mps.kotlin.structure.IExpression" flags="ng" index="1XD087" />
-      <concept id="2936055411798373619" name="jetbrains.mps.kotlin.structure.FinalInheritanceModifier" flags="ng" index="1XD08$" />
       <concept id="2936055411798373627" name="jetbrains.mps.kotlin.structure.StringLiteral" flags="ng" index="1XD08G">
         <child id="6389031306614148417" name="lines" index="Df6Hu" />
       </concept>
@@ -120,7 +113,6 @@
         <property id="2936055411798374019" name="value" index="1XD01k" />
       </concept>
       <concept id="2936055411798373359" name="jetbrains.mps.kotlin.structure.KtScript" flags="ng" index="1XD0kS" />
-      <concept id="2936055411798373269" name="jetbrains.mps.kotlin.structure.PublicVisibility" flags="ng" index="1XD0l2" />
       <concept id="2936055411798373283" name="jetbrains.mps.kotlin.structure.StringExpressionEvaluation" flags="ng" index="1XD0lO">
         <child id="2936055411798373982" name="expression" index="1XD029" />
       </concept>
@@ -158,11 +150,9 @@
       <node concept="1XD0fY" id="1CUeZUojyr2" role="1qenE9">
         <node concept="1XD09Q" id="1CUeZUojyrm" role="1XD0Tu">
           <property role="1Xb$ne" value="true" />
-          <node concept="1XD08$" id="1CUeZUojyro" role="ICcUN" />
           <node concept="1XD0eA" id="1CUeZUojyrp" role="TDYyH">
             <property role="TrG5h" value="computation" />
           </node>
-          <node concept="1XD0l2" id="1CUeZUojyrr" role="2BPcuh" />
           <node concept="1XD0mK" id="1CUeZUojys2" role="1XD05H">
             <node concept="1XD087" id="1CUeZUojys3" role="1XD0cX">
               <node concept="LIFWc" id="1CUeZUojyse" role="lGtFl">
@@ -181,11 +171,9 @@
       <node concept="1XD0fY" id="1CUeZUojysW" role="1qenE9">
         <node concept="1XD09Q" id="1CUeZUojytm" role="1XD0Tu">
           <property role="1Xb$ne" value="true" />
-          <node concept="1XD08$" id="1CUeZUojytn" role="ICcUN" />
           <node concept="1XD0eA" id="1CUeZUojyto" role="TDYyH">
             <property role="TrG5h" value="computation" />
           </node>
-          <node concept="1XD0l2" id="1CUeZUojytp" role="2BPcuh" />
           <node concept="1XD0mK" id="1CUeZUojytq" role="1XD05H">
             <node concept="21Pki$" id="1CUeZUojzi3" role="1XD0cX">
               <node concept="gk1L9" id="1CUeZUojzD0" role="21Pkll">
@@ -245,11 +233,9 @@
       <node concept="1XD0fY" id="1CUeZUoBJWp" role="1qenE9">
         <property role="TrG5h" value="StringEdition" />
         <node concept="1XD09Q" id="1CUeZUoBJWr" role="1XD0Tu">
-          <node concept="1XD08$" id="1CUeZUoBJWs" role="ICcUN" />
           <node concept="1XD0eA" id="1CUeZUoBJWt" role="TDYyH">
             <property role="TrG5h" value="stringEdition" />
           </node>
-          <node concept="1XD0l2" id="1CUeZUoBJWu" role="2BPcuh" />
           <node concept="1XD0mK" id="1CUeZUoBJW$" role="1XD05H">
             <node concept="1XD087" id="1CUeZUoBJW_" role="1XD0cX">
               <node concept="LIFWc" id="1CUeZUoBJWC" role="lGtFl">
@@ -323,11 +309,9 @@
       <node concept="1XD0fY" id="1CUeZUoBJXp" role="1qenE9">
         <property role="TrG5h" value="StringEdition" />
         <node concept="1XD09Q" id="1CUeZUoBJXr" role="1XD0Tu">
-          <node concept="1XD08$" id="1CUeZUoBJXs" role="ICcUN" />
           <node concept="1XD0eA" id="1CUeZUoBJXt" role="TDYyH">
             <property role="TrG5h" value="stringEdition" />
           </node>
-          <node concept="1XD0l2" id="1CUeZUoBJXu" role="2BPcuh" />
           <node concept="1XD0mK" id="1CUeZUoBJX$" role="1XD05H">
             <node concept="1XD08G" id="1CUeZUoKu_M" role="1XD0cX">
               <node concept="Df6$J" id="1CUeZUoKu_Q" role="Df6Hu">

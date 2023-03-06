@@ -52,12 +52,6 @@
         <child id="183384254773980948" name="type" index="hI6Km" />
       </concept>
       <concept id="1991556721070973461" name="jetbrains.mps.kotlin.structure.EmptyStatement" flags="ng" index="AQkLs" />
-      <concept id="7138249191285121087" name="jetbrains.mps.kotlin.structure.IVisible" flags="ng" index="2BPcvI">
-        <child id="7138249191285121088" name="visibility" index="2BPcuh" />
-      </concept>
-      <concept id="6013275720582937818" name="jetbrains.mps.kotlin.structure.IInheritable" flags="ng" index="ICcUM">
-        <child id="6013275720582937819" name="inheritance" index="ICcUN" />
-      </concept>
       <concept id="5401033615058672984" name="jetbrains.mps.kotlin.structure.ComponentDeclaration" flags="ng" index="2Rs4SG" />
       <concept id="1314219036499415210" name="jetbrains.mps.kotlin.structure.AbstractPropertyDeclaration" flags="ng" index="TDTJE">
         <property id="2936055411806090009" name="isReadonly" index="1Xb$ne" />
@@ -96,7 +90,6 @@
         <child id="2936055411806083457" name="parameters" index="1XbAXm" />
       </concept>
       <concept id="2936055411798373599" name="jetbrains.mps.kotlin.structure.ClassType" flags="ng" index="1XD088" />
-      <concept id="2936055411798373619" name="jetbrains.mps.kotlin.structure.FinalInheritanceModifier" flags="ng" index="1XD08$" />
       <concept id="2936055411798373537" name="jetbrains.mps.kotlin.structure.PropertyDeclaration" flags="ng" index="1XD09Q">
         <child id="1243006380186325231" name="getter" index="21NdHo" />
         <child id="1314219036499436525" name="declaration" index="TDYyH" />
@@ -145,7 +138,6 @@
         <child id="2936055411798374015" name="type" index="1XD02C" />
       </concept>
       <concept id="2936055411798373351" name="jetbrains.mps.kotlin.structure.FlexibleBlock" flags="ng" index="1XD0kK" />
-      <concept id="2936055411798373269" name="jetbrains.mps.kotlin.structure.PublicVisibility" flags="ng" index="1XD0l2" />
       <concept id="2936055411798373261" name="jetbrains.mps.kotlin.structure.PropertyGetter" flags="ng" index="1XD0lq" />
       <concept id="2936055411798373245" name="jetbrains.mps.kotlin.structure.FunctionType" flags="ng" index="1XD0mE">
         <child id="2936055411798373905" name="returnType" index="1XD036" />
@@ -243,8 +235,6 @@
     </node>
     <node concept="1XD0bz" id="7B1Fat4u9QF" role="1XD0Tu">
       <property role="TrG5h" value="copy" />
-      <node concept="1XD08$" id="7B1Fat4u9QH" role="ICcUN" />
-      <node concept="1XD0l2" id="7B1Fat4u9QI" role="2BPcuh" />
       <node concept="2szew_" id="66iE5cCP_b1" role="1XPbGx">
         <property role="TrG5h" value="C" />
       </node>
@@ -289,8 +279,6 @@
     <node concept="eKYAL" id="6CwBo1YVq9V" role="1XD0Tu" />
     <node concept="1XD0bz" id="7B1Fat4unod" role="1XD0Tu">
       <property role="TrG5h" value="descendants" />
-      <node concept="1XD08$" id="7B1Fat4unof" role="ICcUN" />
-      <node concept="1XD0l2" id="7B1Fat4unog" role="2BPcuh" />
       <node concept="2szew_" id="7B1Fat4un$t" role="1XPbGx">
         <property role="TrG5h" value="C" />
       </node>
@@ -368,8 +356,6 @@
     <node concept="eKYAL" id="6CwBo1YVq2b" role="1XD0Tu" />
     <node concept="1XD0bz" id="7B1Fat4_gr$" role="1XD0Tu">
       <property role="TrG5h" value="replaceWith" />
-      <node concept="1XD08$" id="7B1Fat4_grA" role="ICcUN" />
-      <node concept="1XD0l2" id="7B1Fat4_grB" role="2BPcuh" />
       <node concept="3f8zV_" id="7B1Fat4_hmd" role="39xbXa" />
       <node concept="1XD0bi" id="7B1Fat4_hmi" role="1XbAXm">
         <property role="TrG5h" value="node" />
@@ -500,8 +486,6 @@
         <node concept="1XD0ko" id="6CwBo1ZN_if" role="37iW88" />
       </node>
       <node concept="1XD0kl" id="6CwBo1ZN_ig" role="1XPytU" />
-      <node concept="1XD08$" id="6CwBo1ZN_ih" role="ICcUN" />
-      <node concept="1XD0l2" id="6CwBo1ZN_ii" role="2BPcuh" />
       <node concept="3f8zV_" id="6CwBo1ZN_ij" role="39xbXa" />
       <node concept="hI6pR" id="6CwBo1ZN_ik" role="21NdcZ">
         <node concept="3f8zV_" id="6CwBo1ZN_il" role="hI6Km">
@@ -604,8 +588,6 @@
         <node concept="1XD0ko" id="6CwBo1ZA7h2" role="37iW88" />
       </node>
       <node concept="1XD0kl" id="6CwBo1ZA57q" role="1XPytU" />
-      <node concept="1XD08$" id="6CwBo1ZA57r" role="ICcUN" />
-      <node concept="1XD0l2" id="6CwBo1ZA57u" role="2BPcuh" />
       <node concept="3f8zV_" id="6CwBo1ZA5lW" role="39xbXa" />
       <node concept="1XD088" id="6CwBo1ZO0vT" role="21NdcZ">
         <ref role="1SePDO" to="1xrd:~kotlin/collections/List" resolve="List" />
@@ -629,7 +611,6 @@
       <node concept="2szew_" id="2CxlH6FEmi6" role="1XPbGx">
         <property role="TrG5h" value="C" />
       </node>
-      <node concept="1XD08$" id="2CxlH6FEmi7" role="ICcUN" />
       <node concept="1XD0eA" id="2CxlH6FEmi8" role="TDYyH">
         <property role="TrG5h" value="reference_" />
         <node concept="hI6pR" id="7gSKPA1FacC" role="1XD0Z0">
@@ -642,7 +623,6 @@
           </node>
         </node>
       </node>
-      <node concept="1XD0l2" id="2CxlH6FEmia" role="2BPcuh" />
       <node concept="3f8zV_" id="2CxlH6FEmib" role="39xbXa">
         <node concept="1XD0kr" id="2CxlH6FEmic" role="2Rg2xS">
           <node concept="9pJMI" id="2CxlH6FEmid" role="1XD02C">
@@ -672,14 +652,12 @@
       <node concept="2szew_" id="6CwBo20hibZ" role="1XPbGx">
         <property role="TrG5h" value="C" />
       </node>
-      <node concept="1XD08$" id="6CwBo20hhfw" role="ICcUN" />
       <node concept="1XD0eA" id="6CwBo20hhfx" role="TDYyH">
         <property role="TrG5h" value="concept_" />
         <node concept="9pJMI" id="6CwBo20lZiL" role="1XD0Z0">
           <ref role="9pJMH" node="6CwBo20hibZ" resolve="C" />
         </node>
       </node>
-      <node concept="1XD0l2" id="6CwBo20hhfz" role="2BPcuh" />
       <node concept="3f8zV_" id="6CwBo20hk8o" role="39xbXa">
         <node concept="1XD0kr" id="6CwBo20hk8p" role="2Rg2xS">
           <node concept="9pJMI" id="6CwBo20hk8q" role="1XD02C">
@@ -736,12 +714,10 @@
           <ref role="2RgA51" to="tpck:gw2VY9q" resolve="BaseConcept" />
         </node>
       </node>
-      <node concept="1XD08$" id="66iE5cCPkBk" role="ICcUN" />
       <node concept="2EYIWN" id="66iE5cCPljc" role="21NdcZ">
         <ref role="2EYIUZ" to="c17a:~SConcept" resolve="SConcept" />
       </node>
       <node concept="1XD0kl" id="66iE5cCPy8C" role="1XPytU" />
-      <node concept="1XD0l2" id="398EB8$DkSR" role="2BPcuh" />
     </node>
     <node concept="eKYAL" id="66iE5cCPjSf" role="1XD0Tu" />
     <node concept="gXE$l" id="abwK8j8cZ8" role="1XD0Tu">
@@ -783,8 +759,6 @@
         </node>
         <node concept="1XD0k2" id="41naeX0Mec3" role="37iW88" />
       </node>
-      <node concept="1XD08$" id="41naeX0DzXP" role="ICcUN" />
-      <node concept="1XD0l2" id="41naeX0DzXQ" role="2BPcuh" />
       <node concept="2szew_" id="41naeX0K6dz" role="1XPbGx">
         <property role="TrG5h" value="C" />
       </node>
@@ -890,7 +864,6 @@
     <node concept="eKYAL" id="Aa0Z14mCOM" role="1XD0Tu" />
     <node concept="1XD09Q" id="6CwBo20pWG8" role="1XD0Tu">
       <property role="1Xb$ne" value="true" />
-      <node concept="1XD08$" id="6CwBo20pWGa" role="ICcUN" />
       <node concept="1XD0eA" id="6CwBo20pWGb" role="TDYyH">
         <property role="TrG5h" value="directSuperConcepts" />
         <node concept="1XD088" id="6CwBo20q5F6" role="1XD0Z0">
@@ -902,7 +875,6 @@
           </node>
         </node>
       </node>
-      <node concept="1XD0l2" id="6CwBo20pWGd" role="2BPcuh" />
       <node concept="2RgARU" id="6CwBo20q4PP" role="39xbXa">
         <ref role="2RgA51" to="tpck:gw2VY9q" resolve="BaseConcept" />
       </node>
@@ -935,8 +907,6 @@
     <node concept="1XD0bz" id="Aa0Z14lIDd" role="1XD0Tu">
       <property role="TrG5h" value="getRefTargetConcept" />
       <node concept="1XD0kl" id="Aa0Z14lIDe" role="1XPytU" />
-      <node concept="1XD08$" id="Aa0Z14lIDf" role="ICcUN" />
-      <node concept="1XD0l2" id="Aa0Z14lIDg" role="2BPcuh" />
       <node concept="2szew_" id="Aa0Z14lIDh" role="1XPbGx">
         <property role="TrG5h" value="C" />
       </node>
@@ -960,8 +930,6 @@
     <node concept="1XD0bz" id="Aa0Z14iakE" role="1XD0Tu">
       <property role="TrG5h" value="getAggregationTargetConcept" />
       <node concept="1XD0kl" id="Aa0Z14iakG" role="1XPytU" />
-      <node concept="1XD08$" id="Aa0Z14iakH" role="ICcUN" />
-      <node concept="1XD0l2" id="Aa0Z14iakK" role="2BPcuh" />
       <node concept="2szew_" id="Aa0Z14ial8" role="1XPbGx">
         <property role="TrG5h" value="C" />
       </node>

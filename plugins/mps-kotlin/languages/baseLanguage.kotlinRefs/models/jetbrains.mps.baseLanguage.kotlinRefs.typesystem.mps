@@ -2817,7 +2817,7 @@
                 <ref role="3cqZAo" node="7gSKPA1$ch7" resolve="type" />
               </node>
               <node concept="2qgKlT" id="7gSKPA1$cZ2" role="2OqNvi">
-                <ref role="37wK5l" to="hez:JmO2PmZtH5" resolve="shallowId" />
+                <ref role="37wK5l" to="hez:JmO2PmZtH5" resolve="typeKey" />
               </node>
             </node>
           </node>

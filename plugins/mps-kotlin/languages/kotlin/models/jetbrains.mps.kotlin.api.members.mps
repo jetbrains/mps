@@ -1141,7 +1141,7 @@
         <node concept="TUZQ0" id="6JJpax4HC16" role="3nqlJM">
           <property role="TUZQ4" value="signature to test" />
           <node concept="zr_55" id="6JJpax4HC18" role="zr_5Q">
-            <ref role="zr_51" node="6JJpax4CiBS" resolve="explicitReceiver" />
+            <ref role="zr_51" node="6JJpax4CiBS" resolve="signature" />
           </node>
         </node>
       </node>
@@ -1281,7 +1281,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="6JJpax4GV7p" role="2OqNvi">
-                  <ref role="37wK5l" node="6JJpax4CGGE" resolve="withReceiverType" />
+                  <ref role="37wK5l" node="6JJpax4CGGE" resolve="withExtensionReceiverType" />
                   <node concept="37vLTw" id="6JJpax4GV7q" role="37wK5m">
                     <ref role="3cqZAo" node="2QFnHPqjn4C" resolve="receiverType" />
                   </node>
@@ -1398,7 +1398,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="6JJpax4G6Zu" role="2OqNvi">
-                  <ref role="37wK5l" node="6JJpax4CGGE" resolve="withReceiverType" />
+                  <ref role="37wK5l" node="6JJpax4CGGE" resolve="withExtensionReceiverType" />
                   <node concept="37vLTw" id="6JJpax4G7Af" role="37wK5m">
                     <ref role="3cqZAo" node="2QFnHPqjloC" resolve="explicitReceiver" />
                   </node>
@@ -1529,7 +1529,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="6JJpax4Gqcn" role="2OqNvi">
-                  <ref role="37wK5l" node="6JJpax4CGGE" resolve="withReceiverType" />
+                  <ref role="37wK5l" node="6JJpax4CGGE" resolve="withExtensionReceiverType" />
                   <node concept="37vLTw" id="6JJpax4Gqco" role="37wK5m">
                     <ref role="3cqZAo" node="5$XWI2Qdo9M" resolve="explicitReceiver" />
                   </node>
@@ -1649,7 +1649,7 @@
       <ref role="3uigEE" node="6Ijh6DJEylY" resolve="TypeExpander" />
     </node>
     <node concept="2AHcQZ" id="6JJpax4Ihip" role="2AJF6D">
-      <ref role="2AI5Lk" to="mhfm:~ApiStatus$Experimental" resolve="Experimental" />
+      <ref role="2AI5Lk" to="mhfm:~ApiStatus$Experimental" resolve="ApiStatus.Experimental" />
     </node>
   </node>
   <node concept="3HP615" id="6Ijh6DJEylY">
@@ -2002,7 +2002,7 @@
         <node concept="3uibUv" id="6JJpax4D1IL" role="1tU5fm">
           <ref role="3uigEE" node="6JJpax4RsBd" resolve="SignatureAttributeKey" />
           <node concept="16syzq" id="6JJpax4D1IM" role="11_B2D">
-            <ref role="16sUi3" node="6JJpax4D1J1" resolve="T" />
+            <ref role="16sUi3" node="6JJpax4D1J1" resolve="V" />
           </node>
         </node>
       </node>
@@ -2437,7 +2437,7 @@
                         <node concept="liA8E" id="6yo46g3GmMY" role="2OqNvi">
                           <ref role="37wK5l" to="82uw:~Function.apply(java.lang.Object)" resolve="apply" />
                           <node concept="37vLTw" id="6yo46g3GoM$" role="37wK5m">
-                            <ref role="3cqZAo" node="6yo46g3GgPq" resolve="it" />
+                            <ref role="3cqZAo" node="6yo46g3GgPq" resolve="node" />
                           </node>
                         </node>
                       </node>
@@ -2762,7 +2762,7 @@
       <node concept="3Tqbb2" id="6JJpax4CUwY" role="3ztrMU" />
     </node>
     <node concept="2AHcQZ" id="6JJpax4DhOs" role="2AJF6D">
-      <ref role="2AI5Lk" to="mhfm:~ApiStatus$Experimental" resolve="Experimental" />
+      <ref role="2AI5Lk" to="mhfm:~ApiStatus$Experimental" resolve="ApiStatus.Experimental" />
     </node>
     <node concept="3UR2Jj" id="6JJpax4OvX$" role="lGtFl">
       <node concept="TZ5HA" id="6JJpax4OvX_" role="TZ5H$">
@@ -2912,7 +2912,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="6yo46g2ygCX" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="6yo46g2y9vk" role="jymVt" />
@@ -3069,7 +3069,7 @@
       </node>
     </node>
     <node concept="2AHcQZ" id="6yo46g2CLvj" role="2AJF6D">
-      <ref role="2AI5Lk" to="mhfm:~ApiStatus$Experimental" resolve="Experimental" />
+      <ref role="2AI5Lk" to="mhfm:~ApiStatus$Experimental" resolve="ApiStatus.Experimental" />
     </node>
   </node>
 </model>

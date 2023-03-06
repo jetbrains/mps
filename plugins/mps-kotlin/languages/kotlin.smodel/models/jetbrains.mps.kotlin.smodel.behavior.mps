@@ -1730,7 +1730,7 @@
     </node>
     <node concept="13i0hz" id="41naeX0H88k" role="13h7CS">
       <property role="TrG5h" value="typeKey" />
-      <ref role="13i0hy" to="hez:JmO2PmZtH5" resolve="shallowId" />
+      <ref role="13i0hy" to="hez:JmO2PmZtH5" resolve="typeKey" />
       <node concept="3Tm1VV" id="41naeX0H88l" role="1B3o_S" />
       <node concept="3clFbS" id="41naeX0H88m" role="3clF47">
         <node concept="3SKdUt" id="abwK8kugxh" role="3cqZAp">
@@ -1841,7 +1841,7 @@
         <ref role="3uigEE" to="mx11:6GqgvHqhqpA" resolve="TypeKey" />
       </node>
       <node concept="2AHcQZ" id="6yo46g2AWH6" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NotNull" />
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
       </node>
     </node>
     <node concept="13hLZK" id="41naeX0H5Ny" role="13h7CW">
@@ -3687,7 +3687,7 @@
     </node>
     <node concept="13i0hz" id="75chmMYrEcg" role="13h7CS">
       <property role="TrG5h" value="shallowId" />
-      <ref role="13i0hy" to="hez:JmO2PmZtH5" resolve="shallowId" />
+      <ref role="13i0hy" to="hez:JmO2PmZtH5" resolve="typeKey" />
       <node concept="3Tm1VV" id="75chmMYrEch" role="1B3o_S" />
       <node concept="3clFbS" id="75chmMYrEcq" role="3clF47">
         <node concept="3SKdUt" id="Aa0Z14fgis" role="3cqZAp">
@@ -4092,7 +4092,7 @@
     </node>
     <node concept="13i0hz" id="Aa0Z14etkM" role="13h7CS">
       <property role="TrG5h" value="typeKey" />
-      <ref role="13i0hy" to="hez:JmO2PmZtH5" resolve="shallowId" />
+      <ref role="13i0hy" to="hez:JmO2PmZtH5" resolve="typeKey" />
       <node concept="3Tm1VV" id="Aa0Z14etkN" role="1B3o_S" />
       <node concept="3clFbS" id="Aa0Z14etkO" role="3clF47">
         <node concept="3cpWs6" id="Aa0Z14etkP" role="3cqZAp">
@@ -4118,7 +4118,7 @@
         <ref role="3uigEE" to="mx11:6GqgvHqhqpA" resolve="TypeKey" />
       </node>
       <node concept="2AHcQZ" id="6yo46g2AULZ" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NotNull" />
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
       </node>
     </node>
     <node concept="13hLZK" id="Aa0Z14esbL" role="13h7CW">
