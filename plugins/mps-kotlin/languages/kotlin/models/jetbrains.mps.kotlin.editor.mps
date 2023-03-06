@@ -692,9 +692,6 @@
       <concept id="1139867745658" name="jetbrains.mps.lang.smodel.structure.Node_ReplaceWithNewOperation" flags="nn" index="1_qnLN">
         <reference id="1139867957129" name="concept" index="1_rbq0" />
       </concept>
-      <concept id="1172326502327" name="jetbrains.mps.lang.smodel.structure.Concept_IsExactlyOperation" flags="nn" index="3O6GUB">
-        <child id="1206733650006" name="conceptArgument" index="3QVz_e" />
-      </concept>
       <concept id="1140131837776" name="jetbrains.mps.lang.smodel.structure.Node_ReplaceWithAnotherOperation" flags="nn" index="1P9Npp">
         <child id="1140131861877" name="replacementNode" index="1P9ThW" />
       </concept>
@@ -2317,17 +2314,10 @@
           <node concept="3clFbS" id="1yTI8p9rlUM" role="2VODD2">
             <node concept="3clFbF" id="1yTI8p9rlYn" role="3cqZAp">
               <node concept="3fqX7Q" id="6jE_6dut0d2" role="3clFbG">
-                <node concept="2OqwBi" id="6jE_6dut0d4" role="3fr31v">
-                  <node concept="2OqwBi" id="6jE_6dut0d5" role="2Oq$k0">
-                    <node concept="pncrf" id="6jE_6dut0d6" role="2Oq$k0" />
-                    <node concept="2qgKlT" id="6jE_6dut0d7" role="2OqNvi">
-                      <ref role="37wK5l" to="hez:6jE_6duswG9" resolve="getInheritance" />
-                    </node>
-                  </node>
-                  <node concept="3O6GUB" id="6jE_6dut0d8" role="2OqNvi">
-                    <node concept="chp4Y" id="6jE_6dut0d9" role="3QVz_e">
-                      <ref role="cht4Q" to="hcm8:2yYXHtl6JjM" resolve="AbstractInheritanceModifier" />
-                    </node>
+                <node concept="2OqwBi" id="5Zd$6D$YeJx" role="3fr31v">
+                  <node concept="pncrf" id="5Zd$6D$Ye9i" role="2Oq$k0" />
+                  <node concept="2qgKlT" id="5Zd$6D$YfDS" role="2OqNvi">
+                    <ref role="37wK5l" to="hez:4KPNZIZDjbY" resolve="isAbstract" />
                   </node>
                 </node>
               </node>

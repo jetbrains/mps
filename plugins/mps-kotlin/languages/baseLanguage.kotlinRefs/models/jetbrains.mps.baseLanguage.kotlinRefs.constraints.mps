@@ -134,9 +134,6 @@
       <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
         <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
       </concept>
-      <concept id="1171903916106" name="jetbrains.mps.baseLanguage.structure.UpperBoundType" flags="in" index="3qUE_q">
-        <child id="1171903916107" name="bound" index="3qUE_r" />
-      </concept>
       <concept id="7812454656619025412" name="jetbrains.mps.baseLanguage.structure.LocalMethodCall" flags="nn" index="1rXfSq" />
       <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
         <reference id="1107535924139" name="classifier" index="3uigEE" />
@@ -938,8 +935,8 @@
                     <node concept="37vLTw" id="1d2BQ0Zrktr" role="2Oq$k0">
                       <ref role="3cqZAo" node="1d2BQ0Zrks2" resolve="visitor" />
                     </node>
-                    <node concept="2S8uIT" id="1d2BQ0Zrkts" role="2OqNvi">
-                      <ref role="2S8YL0" to="tbhz:5q426iHGfaT" resolve="members" />
+                    <node concept="liA8E" id="5Zd$6D$mjH9" role="2OqNvi">
+                      <ref role="37wK5l" to="tbhz:5Zd$6D$liDX" resolve="getMembers" />
                     </node>
                   </node>
                   <node concept="3$u5V9" id="1d2BQ0Zrktt" role="2OqNvi">
@@ -995,12 +992,7 @@
       <node concept="37vLTG" id="1d2BQ0Zrkqu" role="3clF46">
         <property role="TrG5h" value="signatureFilter" />
         <node concept="3uibUv" id="2ZbCiJ9XeWo" role="1tU5fm">
-          <ref role="3uigEE" to="tbhz:2ZbCiJaofwM" resolve="SignatureFilter" />
-          <node concept="3qUE_q" id="6qs$OhcxNQD" role="11_B2D">
-            <node concept="3uibUv" id="6qs$OhcxQ8H" role="3qUE_r">
-              <ref role="3uigEE" to="nww:18X2O0FJocj" resolve="MemberSignature" />
-            </node>
-          </node>
+          <ref role="3uigEE" to="tbhz:5Zd$6D$ihDa" resolve="SignatureFilter" />
         </node>
       </node>
       <node concept="3Tm1VV" id="1d2BQ0ZrktB" role="1B3o_S" />

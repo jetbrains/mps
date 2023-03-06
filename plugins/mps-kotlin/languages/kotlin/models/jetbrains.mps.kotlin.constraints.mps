@@ -160,7 +160,6 @@
       <concept id="7812454656619025412" name="jetbrains.mps.baseLanguage.structure.LocalMethodCall" flags="nn" index="1rXfSq" />
       <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
         <reference id="1107535924139" name="classifier" index="3uigEE" />
-        <child id="1109201940907" name="parameter" index="11_B2D" />
       </concept>
       <concept id="1081773326031" name="jetbrains.mps.baseLanguage.structure.BinaryOperation" flags="nn" index="3uHJSO">
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
@@ -266,7 +265,6 @@
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
       </concept>
-      <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
       <concept id="1883223317721008708" name="jetbrains.mps.lang.smodel.structure.IfInstanceOfStatement" flags="nn" index="Jncv_">
         <reference id="1883223317721008712" name="nodeConcept" index="JncvD" />
         <child id="1883223317721008709" name="body" index="Jncv$" />
@@ -997,12 +995,6 @@
           <node concept="3cpWs8" id="5Q5$eZnNqFr" role="3cqZAp">
             <node concept="3cpWsn" id="5Q5$eZnNqFs" role="3cpWs9">
               <property role="TrG5h" value="filter" />
-              <node concept="3uibUv" id="5Q5$eZnNqFt" role="1tU5fm">
-                <ref role="3uigEE" to="tbhz:2ZbCiJaofwM" resolve="SignatureFilter" />
-                <node concept="3uibUv" id="5Q5$eZnNxv9" role="11_B2D">
-                  <ref role="3uigEE" to="nww:5q426iHsjrS" resolve="PropertySignature" />
-                </node>
-              </node>
               <node concept="2ShNRf" id="5Q5$eZnNqFu" role="33vP2m">
                 <node concept="1pGfFk" id="1oDhglw1WR3" role="2ShVmc">
                   <property role="373rjd" value="true" />
@@ -1011,6 +1003,9 @@
                     <ref role="3VsUkX" to="nww:5q426iHsjrS" resolve="PropertySignature" />
                   </node>
                 </node>
+              </node>
+              <node concept="3uibUv" id="5Zd$6D$o$9k" role="1tU5fm">
+                <ref role="3uigEE" to="tbhz:5Zd$6D$ihDa" resolve="SignatureFilter" />
               </node>
             </node>
           </node>
@@ -1883,20 +1878,11 @@
       <ref role="1N5Vy1" to="hcm8:213J8cgIr6l" resolve="target" />
       <node concept="3dgokm" id="6ov$ndRmuI9" role="1N6uqs">
         <node concept="3clFbS" id="6ov$ndRmuIb" role="2VODD2">
-          <node concept="3cpWs6" id="6ov$ndRmuMa" role="3cqZAp">
-            <node concept="2ShNRf" id="6ov$ndRmvLE" role="3cqZAk">
-              <node concept="1pGfFk" id="6ov$ndRmwsn" role="2ShVmc">
-                <property role="373rjd" value="true" />
-                <ref role="37wK5l" to="o8zo:4k9eBec$QVW" resolve="ModelPlusImportedScope" />
-                <node concept="2OqwBi" id="6ov$ndRmwIb" role="37wK5m">
-                  <node concept="2rP1CM" id="6ov$ndRmwx8" role="2Oq$k0" />
-                  <node concept="I4A8Y" id="6ov$ndRmwRL" role="2OqNvi" />
-                </node>
-                <node concept="3clFbT" id="6ov$ndRmxjb" role="37wK5m" />
-                <node concept="35c_gC" id="6ov$ndRmxqM" role="37wK5m">
-                  <ref role="35c_gD" to="hcm8:2yYXHtlhVlH" resolve="IClassDeclaration" />
-                </node>
-              </node>
+          <node concept="3clFbF" id="4KPNZJ19EjD" role="3cqZAp">
+            <node concept="2YIFZM" id="4KPNZJ19BE$" role="3clFbG">
+              <ref role="37wK5l" to="tbhz:2NtWm0xUVc4" resolve="create" />
+              <ref role="1Pybhc" to="tbhz:2NtWm0xUV09" resolve="ClassScopeHelper" />
+              <node concept="2rP1CM" id="4KPNZJ19BE_" role="37wK5m" />
             </node>
           </node>
         </node>
@@ -2012,12 +1998,6 @@
           <node concept="3cpWs8" id="1VgEGDnA9gY" role="3cqZAp">
             <node concept="3cpWsn" id="1VgEGDnA9gZ" role="3cpWs9">
               <property role="TrG5h" value="filter" />
-              <node concept="3uibUv" id="1VgEGDnA9gW" role="1tU5fm">
-                <ref role="3uigEE" to="tbhz:2ZbCiJaofwM" resolve="SignatureFilter" />
-                <node concept="3uibUv" id="1VgEGDnA9gX" role="11_B2D">
-                  <ref role="3uigEE" to="nww:5q426iHsmma" resolve="FunctionSignature" />
-                </node>
-              </node>
               <node concept="2ShNRf" id="1VgEGDnA9h0" role="33vP2m">
                 <node concept="1pGfFk" id="1VgEGDnA9h1" role="2ShVmc">
                   <property role="373rjd" value="true" />
@@ -2026,6 +2006,9 @@
                     <ref role="3VsUkX" to="nww:5q426iHsmma" resolve="FunctionSignature" />
                   </node>
                 </node>
+              </node>
+              <node concept="3uibUv" id="3HHsmlLGATM" role="1tU5fm">
+                <ref role="3uigEE" to="tbhz:5Zd$6D$ihDa" resolve="SignatureFilter" />
               </node>
             </node>
           </node>
@@ -3056,12 +3039,6 @@
           <node concept="3cpWs8" id="75chmMYaVDb" role="3cqZAp">
             <node concept="3cpWsn" id="75chmMYaVDc" role="3cpWs9">
               <property role="TrG5h" value="filter" />
-              <node concept="3uibUv" id="75chmMYaVcO" role="1tU5fm">
-                <ref role="3uigEE" to="tbhz:2ZbCiJaofwM" resolve="SignatureFilter" />
-                <node concept="3uibUv" id="75chmMYaVcR" role="11_B2D">
-                  <ref role="3uigEE" to="nww:5q426iHsjrS" resolve="PropertySignature" />
-                </node>
-              </node>
               <node concept="2ShNRf" id="75chmMYaVDd" role="33vP2m">
                 <node concept="1pGfFk" id="75chmMYaVDe" role="2ShVmc">
                   <property role="373rjd" value="true" />
@@ -3073,6 +3050,9 @@
                     <ref role="3uigEE" to="nww:5q426iHsjrS" resolve="PropertySignature" />
                   </node>
                 </node>
+              </node>
+              <node concept="3uibUv" id="5Zd$6D$ozRR" role="1tU5fm">
+                <ref role="3uigEE" to="tbhz:5Zd$6D$ihDa" resolve="SignatureFilter" />
               </node>
             </node>
           </node>

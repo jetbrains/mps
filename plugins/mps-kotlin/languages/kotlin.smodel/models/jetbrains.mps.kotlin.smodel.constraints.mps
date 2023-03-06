@@ -75,7 +75,6 @@
       </concept>
       <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
         <reference id="1107535924139" name="classifier" index="3uigEE" />
-        <child id="1109201940907" name="parameter" index="11_B2D" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="8356039341262087992" name="line" index="1aUNEU" />
@@ -166,12 +165,6 @@
           <node concept="3cpWs8" id="7XIUL68CDGZ" role="3cqZAp">
             <node concept="3cpWsn" id="7XIUL68CDH0" role="3cpWs9">
               <property role="TrG5h" value="filter" />
-              <node concept="3uibUv" id="7XIUL68CDlx" role="1tU5fm">
-                <ref role="3uigEE" to="tbhz:2ZbCiJaofwM" resolve="SignatureFilter" />
-                <node concept="3uibUv" id="7XIUL68CDl$" role="11_B2D">
-                  <ref role="3uigEE" to="jglh:7XIUL68AN4P" resolve="LinkSignature" />
-                </node>
-              </node>
               <node concept="2ShNRf" id="7XIUL68CDH1" role="33vP2m">
                 <node concept="1pGfFk" id="7XIUL68CDH2" role="2ShVmc">
                   <property role="373rjd" value="true" />
@@ -183,6 +176,9 @@
                     <ref role="3uigEE" to="jglh:7XIUL68AN4P" resolve="LinkSignature" />
                   </node>
                 </node>
+              </node>
+              <node concept="3uibUv" id="3HHsmlLGATM" role="1tU5fm">
+                <ref role="3uigEE" to="tbhz:5Zd$6D$ihDa" resolve="SignatureFilter" />
               </node>
             </node>
           </node>
@@ -286,12 +282,6 @@
           <node concept="3cpWs8" id="LTtTkxEOYK" role="3cqZAp">
             <node concept="3cpWsn" id="LTtTkxEOYL" role="3cpWs9">
               <property role="TrG5h" value="filter" />
-              <node concept="3uibUv" id="LTtTkxEOYM" role="1tU5fm">
-                <ref role="3uigEE" to="tbhz:2ZbCiJaofwM" resolve="SignatureFilter" />
-                <node concept="3uibUv" id="LTtTkxEOYN" role="11_B2D">
-                  <ref role="3uigEE" to="jglh:7XIUL68AN4P" resolve="LinkSignature" />
-                </node>
-              </node>
               <node concept="2ShNRf" id="LTtTkxEOYO" role="33vP2m">
                 <node concept="1pGfFk" id="LTtTkxEOYP" role="2ShVmc">
                   <property role="373rjd" value="true" />
@@ -303,6 +293,9 @@
                     <ref role="3uigEE" to="jglh:7XIUL68AN4P" resolve="LinkSignature" />
                   </node>
                 </node>
+              </node>
+              <node concept="3uibUv" id="5Zd$6D$p5Uq" role="1tU5fm">
+                <ref role="3uigEE" to="tbhz:5Zd$6D$ihDa" resolve="SignatureFilter" />
               </node>
             </node>
           </node>
