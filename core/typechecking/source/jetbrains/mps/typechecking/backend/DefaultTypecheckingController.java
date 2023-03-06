@@ -23,7 +23,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -39,6 +38,8 @@ public class DefaultTypecheckingController extends TypecheckingController implem
 
   private TypecheckingSessionImpl myActiveSession;
 
+  private TypecheckingSessionImpl myOverriddenSession;
+
   private ConcurrentMap<TypecheckingProvider, AuxDataContainer> myAuxData = new ConcurrentHashMap<>();
 
   public DefaultTypecheckingController(TypecheckingBackend typecheckingBackend, Flags defaultFlags) {
@@ -48,7 +49,9 @@ public class DefaultTypecheckingController extends TypecheckingController implem
 
   @Override
   public void dispose() {
-    disposeSession();
+    if (myActiveSession != null) {
+      disposeSession(myActiveSession);
+    }
   }
 
   @Override
@@ -61,11 +64,26 @@ public class DefaultTypecheckingController extends TypecheckingController implem
   protected Handle requestSession(@NotNull Flags flags) {
     if (myActiveSession == null) {
       this.myActiveSession = createSession(flags);
-      return new SessionHandle();
+      return new SessionHandle(myActiveSession);
+
+    } else if (flags.isOverride()) {
+      // check the invariants
+      if (myActiveSession.flags().isOverride() || myOverriddenSession != null) {
+        throw new IllegalStateException("Double override not supported");
+      }
+      myOverriddenSession = myActiveSession;
+      myActiveSession = createSession(flags);
+      return new SessionHandle(myActiveSession);
 
     } else {
       throw new IllegalStateException("Multiple sessions not supported");
     }
+  }
+
+  @NotNull
+  @Override
+  protected TypecheckingQueries getQueries(@NotNull SNode src, SNode trg, SConcept trgConcept) {
+    return getQueries(src, trg, trgConcept, myActiveSession != null ? myActiveSession.flags() : Flags.basic());
   }
 
   @NotNull
@@ -89,6 +107,7 @@ public class DefaultTypecheckingController extends TypecheckingController implem
 
   @NotNull
   private TypecheckingSessionImpl createSession(Flags flags) {
+    clearAuxData();
     return new TypecheckingSessionImpl(this, flags) {
       @Override
       public <C> C getData(Class<? extends C> dataClass) {
@@ -97,11 +116,21 @@ public class DefaultTypecheckingController extends TypecheckingController implem
     };
   }
 
-  private void disposeSession() {
-    if (myActiveSession != null) {
-      myActiveSession.dispose();
+  private void disposeSession(@NotNull TypecheckingSessionImpl sessionToDispose) {
+    if (myActiveSession != sessionToDispose) {
+      throw new IllegalStateException("Attempt to dispose session that is not currently active");
+    }
+    myActiveSession.dispose();
+    if (myOverriddenSession != null) {
+      myActiveSession = myOverriddenSession;
+      myOverriddenSession = null;
+    } else {
       myActiveSession = null;
     }
+    clearAuxData();
+  }
+
+  private void clearAuxData() {
     for(AuxDataContainer dc: myAuxData.values()) {
       dc.dispose();
     }
@@ -109,17 +138,28 @@ public class DefaultTypecheckingController extends TypecheckingController implem
   }
 
   private class SessionHandle implements Handle {
+
+    private TypecheckingSessionImpl mySession;
+
+    SessionHandle(TypecheckingSessionImpl session) {
+      mySession = session;
+    }
+
     @Override
     public TypecheckingSession session() {
-      if (myActiveSession == null || myActiveSession.isDisposed()) {
+      if (mySession == null || mySession.isDisposed()) {
         throw new IllegalStateException("session already disposed");
       }
-      return myActiveSession;
+      if (mySession != myActiveSession) {
+        throw new IllegalStateException("illegal access to typechecking session");
+      }
+      return mySession;
     }
 
     @Override
     public void release() {
-      disposeSession();
+      disposeSession(mySession);
+      mySession = null;
     }
 
     @Override

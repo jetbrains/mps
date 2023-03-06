@@ -135,9 +135,7 @@ public abstract class TypecheckingController implements TypecheckingQueries, Par
    * @throws IllegalStateException if no session is available.
    */
   @NotNull
-  protected final TypecheckingQueries getQueries(@NotNull SNode src, SNode trg, SConcept trgConcept) {
-    return getQueries(src, trg, trgConcept, Flags.basic());
-  }
+  protected abstract TypecheckingQueries getQueries(@NotNull SNode src, SNode trg, SConcept trgConcept);
 
   protected abstract TypecheckingQueries getQueries(@NotNull SNode src, SNode trg, SConcept trgConcept, Flags flags);
 

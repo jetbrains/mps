@@ -140,6 +140,8 @@ public interface TypecheckingSession {
       return (myFlags & FLAG_INCREMENTAL) != 0;
     }
 
+    public boolean isOverride() { return (myFlags & FLAG_GENERATOR) != 0; }
+
     public boolean isGenerator() {
       return (myFlags & FLAG_GENERATOR) != 0;
     }

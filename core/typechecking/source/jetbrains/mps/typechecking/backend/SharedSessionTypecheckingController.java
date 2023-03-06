@@ -86,6 +86,12 @@ public class SharedSessionTypecheckingController extends TypecheckingController 
     }
   }
 
+  @NotNull
+  @Override
+  protected TypecheckingQueries getQueries(@NotNull SNode src, SNode trg, SConcept trgConcept) {
+    return myDelegate.getQueries(src, trg, trgConcept);
+  }
+
   @Nullable
   @Override
   protected <C> C getData(Class<? extends C> dataClass) {
