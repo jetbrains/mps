@@ -1038,7 +1038,7 @@
         <node concept="3clFbF" id="7q5dBpSgVsu" role="3cqZAp">
           <node concept="2OqwBi" id="7q5dBpSgVsv" role="3clFbG">
             <node concept="liA8E" id="7q5dBpSgVsw" role="2OqNvi">
-              <ref role="37wK5l" to="ends:~ModelRootBase.setModule(jetbrains.mps.extapi.module.SModuleBase)" resolve="setModule" />
+              <ref role="37wK5l" to="ends:~FileBasedModelRoot.setModule(jetbrains.mps.extapi.module.SModuleBase)" resolve="setModule" />
               <node concept="10QFUN" id="7q5dBpSgVsx" role="37wK5m">
                 <node concept="3uibUv" id="7q5dBpSgVsy" role="10QFUM">
                   <ref role="3uigEE" to="31cb:~SModuleBase" resolve="SModuleBase" />
@@ -1327,7 +1327,7 @@
         <node concept="3clFbF" id="7q5dBpSh9Jr" role="3cqZAp">
           <node concept="2OqwBi" id="7q5dBpSh9Js" role="3clFbG">
             <node concept="liA8E" id="7q5dBpSh9Jt" role="2OqNvi">
-              <ref role="37wK5l" to="ends:~ModelRootBase.setModule(jetbrains.mps.extapi.module.SModuleBase)" resolve="setModule" />
+              <ref role="37wK5l" to="ends:~FileBasedModelRoot.setModule(jetbrains.mps.extapi.module.SModuleBase)" resolve="setModule" />
               <node concept="37vLTw" id="7vXIE_IRkcH" role="37wK5m">
                 <ref role="3cqZAo" node="7vXIE_IRkcD" resolve="moduleBase" />
               </node>
@@ -2907,7 +2907,7 @@
         <node concept="3clFbF" id="Tb4Psnn76S" role="3cqZAp">
           <node concept="2OqwBi" id="Tb4Psnn76T" role="3clFbG">
             <node concept="liA8E" id="Tb4Psnn76U" role="2OqNvi">
-              <ref role="37wK5l" to="ends:~ModelRootBase.setModule(jetbrains.mps.extapi.module.SModuleBase)" resolve="setModule" />
+              <ref role="37wK5l" to="ends:~FileBasedModelRoot.setModule(jetbrains.mps.extapi.module.SModuleBase)" resolve="setModule" />
               <node concept="10QFUN" id="1YJzxT$Lu8q" role="37wK5m">
                 <node concept="3uibUv" id="1YJzxT$Lug6" role="10QFUM">
                   <ref role="3uigEE" to="31cb:~SModuleBase" resolve="SModuleBase" />
@@ -3125,7 +3125,7 @@
         <node concept="3clFbF" id="Tb4Psnn787" role="3cqZAp">
           <node concept="2OqwBi" id="Tb4Psnn788" role="3clFbG">
             <node concept="liA8E" id="Tb4Psnn789" role="2OqNvi">
-              <ref role="37wK5l" to="ends:~ModelRootBase.setModule(jetbrains.mps.extapi.module.SModuleBase)" resolve="setModule" />
+              <ref role="37wK5l" to="ends:~FileBasedModelRoot.setModule(jetbrains.mps.extapi.module.SModuleBase)" resolve="setModule" />
               <node concept="10QFUN" id="1YJzxT$LLVM" role="37wK5m">
                 <node concept="3uibUv" id="1YJzxT$LM2X" role="10QFUM">
                   <ref role="3uigEE" to="31cb:~SModuleBase" resolve="SModuleBase" />

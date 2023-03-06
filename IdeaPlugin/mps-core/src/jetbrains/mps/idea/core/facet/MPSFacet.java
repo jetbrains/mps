@@ -68,7 +68,7 @@ public class MPSFacet extends Facet<MPSFacetConfiguration> {
     StartupManager.getInstance(getModule().getProject()).runWhenProjectIsInitialized(new ModelWriteRunnable(myMpsProject.getModelAccess(), () -> {
       SolutionDescriptor solutionDescriptor = getConfiguration().createSolutionDescriptor();
       // I don't know the reason why getModule().getModuleFile() == null here, nor am I sure about the need for descriptor file at all,
-      // seee SolutionIdea cons comments. Just want to avoid NPE in the log
+      // see SolutionIdea cons comments. Just want to avoid NPE in the log
       final IFile df = myMpsProject.getFileSystem().getFile(getModule().getModuleFilePath());
       // for whatever reason, getConfiguration().createSolutionDescriptor() doesn't set module namespace.
       //     It seems SolutionIdea relied on explicit setMD() call and Solution.doSetModuleDescriptor() to

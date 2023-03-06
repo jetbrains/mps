@@ -156,7 +156,7 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
   public final void addSourceRoot(@NotNull SourceRootKind kind, @NotNull SourceRoot root) {
     assertCanChange();
     mySourcePathStorage.addSourceRoot(kind, root);
-    if (getModule() instanceof EditableSModule) {
+    if (getModule() instanceof EditableSModule && isRegistered()) {
       ((EditableSModule) getModule()).setChanged();
     }
   }
@@ -169,7 +169,7 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
   public final SourceRootKind removeSourceRoot(@NotNull SourceRoot root) {
     assertCanChange();
     final SourceRootKind rv = mySourcePathStorage.removeSourceRoot(root);
-    if (rv != null && getModule() instanceof EditableSModule) {
+    if (rv != null && getModule() instanceof EditableSModule && isRegistered()) { // FIXME explain isRegistered() here - detached MR with associated AM but not attached for the sake of load+edit
       ((EditableSModule) getModule()).setChanged();
     }
     return rv;
@@ -238,8 +238,8 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
 
   @SuppressWarnings("removal")
   @Override
-  public void attach() {
-    assert getModule() != null;
+  public void setModule(@NotNull SModuleBase module) {
+    super.setModule(module);
     if (memento != null) {
       // memento can legitimately be null when MR is manually constructed w/o load(), see JavaToMpsUtils.checkStubModels()
       if (memento instanceof MementoWithFS) {
@@ -290,7 +290,11 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
         myBrokenState = true;
       }
     }
+  }
 
+  @Override
+  public void attach() {
+    assert getModule() != null;
     super.attach();
     attachPathListenerForEachSourceRoot();
   }

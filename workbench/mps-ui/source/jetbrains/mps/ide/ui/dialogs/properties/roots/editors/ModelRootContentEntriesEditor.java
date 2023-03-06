@@ -30,6 +30,7 @@ import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.extapi.persistence.DefaultSourceRoot;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
+import jetbrains.mps.extapi.persistence.ModelRootBase;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.ide.actions.MPSActionPlaces;
 import jetbrains.mps.ide.ui.dialogs.properties.PropertiesBundle;
@@ -47,6 +48,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.Memento;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.ui.persistence.ModelRootEntry;
 
 import javax.swing.BorderFactory;
@@ -91,8 +93,24 @@ public class ModelRootContentEntriesEditor implements Disposable {
 
   public ModelRootContentEntriesEditor(@NotNull AbstractModule module, @NotNull MPSProject p) {
     // FIXME grab model read?
-    this(module.getModelRoots(), module.getModuleName(), p);
+    this(modelRootDetachedInstances(module), module.getModuleName(), p);
     myModule = module;
+  }
+
+  private static Iterable<ModelRoot> modelRootDetachedInstances(@NotNull AbstractModule module) {
+    ArrayList<ModelRoot> rv = new ArrayList<>();
+    for (ModelRoot mr : module.getModelRoots()) {
+      MementoImpl mm = new MementoImpl();
+      mr.save(mm);
+      final ModelRoot detachedRoot = PersistenceFacade.getInstance().getModelRootFactory(mr.getType()).create();
+      rv.add(detachedRoot);
+      detachedRoot.load(mm);
+      if (detachedRoot instanceof ModelRootBase) {
+        // just for the sake of getModule() later from some file chooser dialog.
+        ((ModelRootBase) detachedRoot).setModule(module);
+      }
+    }
+    return rv;
   }
 
   public ModelRootContentEntriesEditor(@NotNull Iterable<ModelRoot> modelRoots, String moduleName, @NotNull MPSProject p) {
@@ -139,7 +157,7 @@ public class ModelRootContentEntriesEditor implements Disposable {
           return;
         }
         final JBPopup popup = JBPopupFactory.getInstance().createListPopup(
-            new BaseListPopupStep<AddContentEntryAction>(null, list) {
+            new BaseListPopupStep<>(null, list) {
               @Override
               public Icon getIconFor(AddContentEntryAction aValue) {
                 return aValue.getTemplatePresentation().getIcon();

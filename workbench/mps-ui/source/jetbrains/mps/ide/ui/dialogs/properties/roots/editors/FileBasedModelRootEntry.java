@@ -60,11 +60,8 @@ import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Stroke;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static com.intellij.uiDesigner.core.GridConstraints.ANCHOR_EAST;
@@ -84,9 +81,6 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
 
   private FileBasedModelRootEditor myFileBasedModelRootEditor;
 
-  private IFile myContentDirectory;
-  private final HashMap<SourceRootKind, List<SourceRoot>> mySourceRoots;
-
   public FileBasedModelRootEntry(@NotNull MPSProject mpsProject, @NotNull FileBasedModelRoot modelRoot) {
     // XXX alternatively, may supply idea project right into getEditor, as this set of API depends on IDEA anyway
     ///    (ModelRootEntry extends Disposable), which might be easier from migration standpoint.
@@ -94,29 +88,23 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
     //     prior to editor construction.
     myProject = mpsProject;
     myFileBasedModelRoot = modelRoot;
-    // copy values we're going to edit. FileBasedModelRoot instance might need model read and therefore can't be accessed arbitrary.
-    // here we shall get appropriate lock by construction
-    myContentDirectory = modelRoot.getContentDirectory();
-    mySourceRoots = new HashMap<>();
-    for (SourceRootKind srk : modelRoot.getSupportedFileKinds1()) {
-      mySourceRoots.put(srk, modelRoot.getSourceRoots(srk));
-    }
   }
 
   /*package*/ IFile getContentDirectory() {
-    return myContentDirectory;
+    return myFileBasedModelRoot.getContentDirectory();
   }
 
   /*package*/ void setContentDirectory(IFile contentDirectory) {
-    myContentDirectory = contentDirectory;
+    myFileBasedModelRoot.setContentDirectory(contentDirectory);
   }
 
   @Nullable
   /*package*/ SourceRootKind isFileUnderRoot(VirtualFile file) {
     final String filePath = file.getPath();
-    for (SourceRootKind kind : mySourceRoots.keySet()) {
-      Collection<SourceRoot> sr = mySourceRoots.get(kind);
+    for (SourceRootKind kind : myFileBasedModelRoot.getSupportedFileKinds1()) {
+      Collection<SourceRoot> sr = myFileBasedModelRoot.getSourceRoots(kind);
       for (SourceRoot r : sr) {
+        @SuppressWarnings("removal")
         final String srFilePath = r.getAbsolutePath().getPath();
         if (filePath.equals(srFilePath) || filePath.startsWith(srFilePath + IFileSystem.SEPARATOR_CHAR)) {
           return kind;
@@ -127,24 +115,22 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
   }
 
   /*package*/ Collection<SourceRootKind> getFileKinds() {
-    return new ArrayList<>(mySourceRoots.keySet());
+    return myFileBasedModelRoot.getSupportedFileKinds1();
   }
 
   @Nullable
   /*package*/ SourceRoot getSourceRootByPath(SourceRootKind kind, IFile path) {
-    return mySourceRoots.getOrDefault(kind, Collections.emptyList()).stream().filter(sourceRoot -> sourceRoot.getAbsolutePath().equals(path)).findAny().orElse(null);
+    //noinspection removal
+    return myFileBasedModelRoot.getSourceRoots(kind).stream().filter(sourceRoot -> sourceRoot.getAbsolutePath().equals(path)).findAny().orElse(null);
   }
 
   /*package*/ void addSourceRoot(SourceRootKind kind, SourceRoot sourceRoot) {
-    // FIXME propagate the change on apply()
-    mySourceRoots.computeIfAbsent(kind, (k) -> new ArrayList<>()).add(sourceRoot);
+    myFileBasedModelRoot.addSourceRoot(kind, sourceRoot);
   }
 
   /*package*/ void removeSourceRoot(SourceRootKind kind, SourceRoot sourceRoot) {
-    // FIXME propagate the change on apply()
-    mySourceRoots.get(kind).remove(sourceRoot);
+    myFileBasedModelRoot.removeSourceRoot(sourceRoot);
   }
-
 
   /*package*/ MPSProject getProject() {
     return myProject;
@@ -167,8 +153,8 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
   public JComponent getDetailsComponent() {
     @SuppressWarnings("rawtypes")
     JBPanel<JBPanel> panel = new JBPanel<>(new GridBagLayout());
-    for (SourceRootKind kind : mySourceRoots.keySet()) {
-      Collection<SourceRoot> sourceRoots = mySourceRoots.get(kind);
+    for (SourceRootKind kind : myFileBasedModelRoot.getSupportedFileKinds1()) {
+      Collection<SourceRoot> sourceRoots = myFileBasedModelRoot.getSourceRoots(kind);
 
       if (!sourceRoots.isEmpty()) {
         final JComponent kindComponent = createKindGroupComponent(getKindText(kind), sourceRoots, getKindColor(kind));
@@ -245,6 +231,7 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
 
     JLabel label2Return = new JLabel(pathPresentation);
 
+    @SuppressWarnings("removal")
     final IFile srcRootFile = sourceRoot.getAbsolutePath();
     if (srcRootFile != null && srcRootFile.exists()) {
       HoverHyperlinkLabel hyperlinkLabel = new HoverHyperlinkLabel(pathPresentation, foreground);
@@ -321,15 +308,16 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
   @Override
   public IStatus conflictsWith(@NotNull ModelRootEntry<FileBasedModelRoot> other) {
     IFile otherCD = ((FileBasedModelRootEntry) other).getContentDirectory();
-    if (myContentDirectory == null || otherCD == null) {
+    IFile contentDirectory = myFileBasedModelRoot.getContentDirectory();
+    if (contentDirectory == null || otherCD == null) {
       return new Status.OK("No content directory specified");
     }
-    if (myContentDirectory.getFS() != otherCD.getFS()) {
+    if (contentDirectory.getFS() != otherCD.getFS()) {
       return new Status.OK("Different file systems");
     }
-    if (myContentDirectory.isDescendant(otherCD) || otherCD.isDescendant(myContentDirectory)) {
-      String m = "<html>Content directory (%s) intersects with another model root's content directory:<br><b>{0}</b><br><br>Please, choose another folder.</html>";
-      return new Status.ERROR(String.format(m, StringUtil.escapeXmlEntities(otherCD.toString()), StringUtil.escapeXmlEntities((myContentDirectory.toString()))));
+    if (contentDirectory.isDescendant(otherCD) || otherCD.isDescendant(contentDirectory)) {
+      String m = "<html>Content directory (%s) intersects with another model root's content directory:<br><b>%s</b><br><br>Please, choose another folder.</html>";
+      return new Status.ERROR(String.format(m, StringUtil.escapeXmlEntities(otherCD.getPath()), StringUtil.escapeXmlEntities((contentDirectory.getPath()))));
     }
     return Status.NO_ERRORS;
   }

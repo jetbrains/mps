@@ -20,6 +20,7 @@ import com.intellij.openapi.fileChooser.FileSystemTree;
 import com.intellij.openapi.fileChooser.actions.NewFolderAction;
 import com.intellij.openapi.fileChooser.ex.FileSystemTreeImpl;
 import com.intellij.openapi.project.DumbAware;
+import com.intellij.openapi.project.ProjectUtil;
 import com.intellij.openapi.roots.ui.configuration.actions.IconWithTextAction;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.util.io.FileUtil;
@@ -33,6 +34,7 @@ import com.intellij.util.ui.tree.TreeUtil;
 import jetbrains.mps.extapi.persistence.SourceRootKind;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.ide.actions.MPSActionPlaces;
+import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NonNls;
@@ -140,7 +142,7 @@ public class FileBasedModelRootEditor implements ModelRootEntryEditor {
     myTreePanel.setVisible(true);
     myFileBasedModelRootEntry = fileBasedModelRootEntry;
 
-    setRoot(myFileBasedModelRootEntry.getContentDirectory());
+    setFSDescriptorRoot();
 
     // XXX i wonder if (why not) IDEA itself selects roots specified in descriptor.
     final Runnable init = () -> {
@@ -166,20 +168,36 @@ public class FileBasedModelRootEditor implements ModelRootEntryEditor {
     createEditingActions();
   }
 
-  private void setRoot(IFile file) {
+  // myFileBasedModelRootEntry != null
+  private void setFSDescriptorRoot() {
+    VirtualFile vf;
+    IFile file = myFileBasedModelRootEntry.getContentDirectory();
+    if (file == null) {
+      // e.g. new MRD, not yet initialized
+      if (myFileBasedModelRootEntry.getModelRoot().getModule() instanceof AbstractModule) {
+        // MRD in existing module, try to use module location as root.
+        file = ((AbstractModule) myFileBasedModelRootEntry.getModelRoot().getModule()).getDescriptorFile();
+      }
+    }
     if (file != null) {
-      @SuppressWarnings("removal")
-      VirtualFile vf = myFileBasedModelRootEntry.getProject().getFileSystem().asVirtualFile(file);
+      //noinspection removal
+      vf = myFileBasedModelRootEntry.getProject().getFileSystem().asVirtualFile(file);
       if (vf == null) {
         // JavaModuleFacetTab.convertStringPaths2VirtualFile() suggests (f76e27f0)
         // it's not reasonable to expect LFS to find a non-existent file. However, this is what
         // was in original VirtualFileUtils.getProjectVirtualFile
         vf = LocalFileSystem.getInstance().findFileByPath(file.getPath());
       }
-      if (vf != null) {
-        myDescriptor.setRoots(vf);
-      }
       myDescriptor.setTitle(FileUtil.toSystemDependentName(file.getPath()));
+    } else {
+      // well, no idea where module lives (need to pass AM into FileBasedModelRootEntry, or setModule in ModelRootContentEntriesEditor when instantiating MRD,
+      // so, stick to some project-close location
+      vf = ProjectUtil.guessProjectDir(myFileBasedModelRootEntry.getProject().getProject());
+      // no idea what's this title is about, just to make it similar to file != null case. java.io.File shall give system-dependent name right away, imo.
+      myDescriptor.setTitle(myFileBasedModelRootEntry.getProject().getProjectFile().getPath());
+    }
+    if (vf != null) {
+      myDescriptor.setRoots(vf);
     }
   }
 
