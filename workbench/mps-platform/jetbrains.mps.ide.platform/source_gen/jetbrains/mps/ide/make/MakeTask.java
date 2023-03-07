@@ -17,15 +17,12 @@ import jetbrains.mps.make.script.IScriptController;
 import jetbrains.mps.messages.IMessageHandler;
 import com.intellij.openapi.progress.PerformInBackgroundOption;
 import com.intellij.openapi.progress.ProgressIndicator;
-import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
-import org.jetbrains.mps.openapi.util.ProgressMonitor;
-import jetbrains.mps.messages.Message;
-import jetbrains.mps.messages.MessageKind;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 @GeneratedClass(node = "r:abe0ad99-3ef3-4277-a170-d1efd7986b86(jetbrains.mps.ide.make)/173672751428921800", model = "r:abe0ad99-3ef3-4277-a170-d1efd7986b86(jetbrains.mps.ide.make)")
 /*package*/ class MakeTask extends Task.ConditionalModal implements Future<IResult> {
@@ -43,38 +40,8 @@ import java.util.concurrent.TimeoutException;
   @Override
   public void run(@NotNull final ProgressIndicator pi) {
     if (myState.compareAndSet(TaskState.NOT_STARTED, TaskState.RUNNING)) {
-      if (ThreadUtils.isInEDT()) {
-        coreTask.run(new ProgressMonitorAdapter(pi));
-      } else {
-        this.spawnMakeThreadThenDoRunRelayingLog(new ProgressMonitorAdapter(pi));
-      }
+      coreTask.run(new ProgressMonitorAdapter(pi));
     }
-  }
-
-  private void spawnMakeThreadThenDoRunRelayingLog(final ProgressMonitor monitor) {
-    ThreadGroup tg = new ThreadGroup("MPS Make Thread Group") {
-      @Override
-      public void uncaughtException(Thread thread, Throwable th) {
-        Message msg = new Message(MessageKind.ERROR, String.format("Uncaught %s during make in thread %s", th.getClass().getSimpleName(), thread.getName()));
-        msg.setException(th);
-        coreTask.getMessageHandler().handle(msg);
-      }
-    };
-    // the flag "daemon" must be set in order for ThreadGroup to be garbage-collected
-    tg.setDaemon(true);
-    Thread makeThread = new Thread(tg, new Runnable() {
-      @Override
-      public void run() {
-        coreTask.run(monitor);
-      }
-    }, "MPS Make Thread");
-    makeThread.start();
-    do {
-      try {
-        makeThread.join();
-      } catch (InterruptedException ie) {
-      }
-    } while (makeThread.isAlive());
   }
 
   @Override
