@@ -21,6 +21,7 @@
     <import index="1p8r" ref="r:966de44c-de72-437f-889f-78347a061f0c(jetbrains.mps.kotlin.api.declaration)" />
     <import index="sjya" ref="r:8a99441d-539c-493f-b884-7b6b084d024b(jetbrains.mps.kotlin.scopes.signed)" />
     <import index="0" ref="b50d89c0-0fb9-4105-b652-222148c26a9b/kotlin:kotlin(jetbrains.mps.kotlin.stdlib/)" />
+    <import index="wbbs" ref="r:63fc91b7-ce2b-43fd-a9e4-94a1182c5fb3(jetbrains.mps.kotlin.api.builtins)" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
@@ -36,6 +37,7 @@
         <child id="1068498886297" name="rValue" index="37vLTx" />
         <child id="1068498886295" name="lValue" index="37vLTJ" />
       </concept>
+      <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
         <child id="8118189177080264854" name="alternative" index="nSUat" />
@@ -50,6 +52,7 @@
         <child id="1154032183016" name="body" index="2LFqv$" />
       </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
+        <property id="2523873803623706117" name="isMultiline" index="hSjvv" />
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
@@ -182,6 +185,7 @@
         <child id="1199542457201" name="resultType" index="1ajl9A" />
       </concept>
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
+        <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
       </concept>
     </language>
@@ -353,6 +357,10 @@
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
+      <concept id="1204796164442" name="jetbrains.mps.baseLanguage.collections.structure.InternalSequenceOperation" flags="nn" index="23sCx2">
+        <child id="1204796294226" name="closure" index="23t8la" />
+      </concept>
+      <concept id="1204980550705" name="jetbrains.mps.baseLanguage.collections.structure.VisitAllOperation" flags="nn" index="2es0OD" />
       <concept id="1224414427926" name="jetbrains.mps.baseLanguage.collections.structure.SequenceCreator" flags="nn" index="kMnCb">
         <child id="1224414456414" name="elementType" index="kMuH3" />
       </concept>
@@ -371,8 +379,10 @@
         <child id="1235573175711" name="elementType" index="2HTBi0" />
         <child id="1235573187520" name="singletonValue" index="2HTEbv" />
       </concept>
+      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1165530316231" name="jetbrains.mps.baseLanguage.collections.structure.IsEmptyOperation" flags="nn" index="1v1jN8" />
       <concept id="1165595910856" name="jetbrains.mps.baseLanguage.collections.structure.GetLastOperation" flags="nn" index="1yVyf7" />
+      <concept id="1202120902084" name="jetbrains.mps.baseLanguage.collections.structure.WhereOperation" flags="nn" index="3zZkjj" />
       <concept id="1240824834947" name="jetbrains.mps.baseLanguage.collections.structure.ValueAccessOperation" flags="nn" index="3AV6Ez" />
       <concept id="1240825616499" name="jetbrains.mps.baseLanguage.collections.structure.KeyAccessOperation" flags="nn" index="3AY5_j" />
     </language>
@@ -3371,6 +3381,71 @@
     <node concept="1YaCAy" id="74ZS3j_q8Q3" role="1YuTPh">
       <property role="TrG5h" value="tryExpression" />
       <ref role="1YaFvo" to="hcm8:2yYXHtl6Jkt" resolve="TryExpression" />
+    </node>
+  </node>
+  <node concept="18kY7G" id="1WN66f3DIDl">
+    <property role="TrG5h" value="check_EnumClassDeclaration" />
+    <property role="3GE5qa" value="declaration.class.enum" />
+    <node concept="3clFbS" id="1WN66f3DIDm" role="18ibNy">
+      <node concept="3clFbF" id="1WN66f3DTLB" role="3cqZAp">
+        <node concept="2OqwBi" id="1WN66f3DUuG" role="3clFbG">
+          <property role="hSjvv" value="true" />
+          <node concept="2OqwBi" id="1WN66f3DLo1" role="2Oq$k0">
+            <property role="hSjvv" value="true" />
+            <node concept="2OqwBi" id="1WN66f3DJf5" role="2Oq$k0">
+              <property role="hSjvv" value="true" />
+              <node concept="1YBJjd" id="1WN66f3DILB" role="2Oq$k0">
+                <ref role="1YBMHb" node="1WN66f3DIDo" resolve="enumClassDeclaration" />
+              </node>
+              <node concept="3Tsc0h" id="1WN66f3DK17" role="2OqNvi">
+                <ref role="3TtcxE" to="hcm8:1Izr$$XgfU_" resolve="superclasses" />
+              </node>
+            </node>
+            <node concept="3zZkjj" id="1WN66f3DTAV" role="2OqNvi">
+              <node concept="1bVj0M" id="1WN66f3DTAX" role="23t8la">
+                <node concept="3clFbS" id="1WN66f3DTAY" role="1bW5cS">
+                  <node concept="3clFbF" id="1WN66f3DTAZ" role="3cqZAp">
+                    <node concept="2OqwBi" id="1WN66f3DTB7" role="3clFbG">
+                      <node concept="37vLTw" id="1WN66f3DTB8" role="2Oq$k0">
+                        <ref role="3cqZAo" node="1WN66f3DTBa" resolve="it" />
+                      </node>
+                      <node concept="2qgKlT" id="1WN66f3DTB9" role="2OqNvi">
+                        <ref role="37wK5l" to="hez:1$jFvlEiPXX" resolve="isClass" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="Rh6nW" id="1WN66f3DTBa" role="1bW2Oz">
+                  <property role="TrG5h" value="it" />
+                  <node concept="2jxLKc" id="1WN66f3DTBb" role="1tU5fm" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2es0OD" id="1WN66f3DVku" role="2OqNvi">
+            <node concept="1bVj0M" id="1WN66f3DVkw" role="23t8la">
+              <node concept="3clFbS" id="1WN66f3DVkx" role="1bW5cS">
+                <node concept="2MkqsV" id="1WN66f3DVAn" role="3cqZAp">
+                  <node concept="Xl_RD" id="1WN66f3DW5C" role="2MkJ7o">
+                    <property role="Xl_RC" value="Enum class cannot inherit from classes" />
+                  </node>
+                  <node concept="37vLTw" id="1WN66f3DWoH" role="1urrMF">
+                    <ref role="3cqZAo" node="1WN66f3DVky" resolve="it" />
+                  </node>
+                </node>
+              </node>
+              <node concept="Rh6nW" id="1WN66f3DVky" role="1bW2Oz">
+                <property role="TrG5h" value="it" />
+                <node concept="2jxLKc" id="1WN66f3DVkz" role="1tU5fm" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="1WN66f3DIDo" role="1YuTPh">
+      <property role="TrG5h" value="enumClassDeclaration" />
+      <ref role="1YaFvo" to="hcm8:2yYXHtlhVmE" resolve="EnumClassDeclaration" />
     </node>
   </node>
 </model>

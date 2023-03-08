@@ -26,6 +26,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public enum BuiltIn {
   UNIT("kotlin/Unit"),
   ANY("kotlin/Any"),
+  ENUM("kotlin/Enum"),
   NOTHING("kotlin/Nothing"),
   CHAR("kotlin/Char"),
   STRING("kotlin/String"),

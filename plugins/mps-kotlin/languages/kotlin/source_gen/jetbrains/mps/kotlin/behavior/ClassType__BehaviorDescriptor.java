@@ -22,9 +22,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.kotlin.api.builtins.BuiltIn;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.annotations.ApiStatus;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -32,6 +30,7 @@ import java.util.Collections;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.kotlin.api.declaration.FunctionDeclaration;
+import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -58,42 +57,20 @@ public final class ClassType__BehaviorDescriptor extends BaseBHDescriptor {
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static void visitHierarchy_id5q426iHtYvR(@NotNull SNode __thisNode__, final SuperTypesVisitor visitor) {
+  /*package*/ static void visitHierarchy_id5q426iHtYvR(@NotNull SNode __thisNode__, SuperTypesVisitor visitor) {
     // Enter class, return right away is already visited
     if (!(visitor.enterType(__thisNode__))) {
       return;
     }
 
     boolean explicitSubtypeAny = !(BuiltIn.ANY.isReferedBy(__thisNode__));
+
+    // TODO this does not make ClassType much extensible, IClassLike nodes that do not extend IInheritExplicitely cannot change their super types except by making a custom type that could clash with ClassType. Perhaps integrating a visitor method in IClassLike would be a good idea.
     {
       final SNode inherited = SLinkOperations.getTarget(__thisNode__, LINKS.class$ExdX);
       if (SNodeOperations.isInstanceOf(inherited, CONCEPTS.IInheritExplicitly$UG)) {
-        final Wrappers._int superClassIndex = new Wrappers._int(-1);
-        SNode[] supertypes = ListSequence.fromList(SLinkOperations.getChildren(inherited, LINKS.superclasses$6CkZ)).select(new ISelector<SNode, SNode>() {
-          public SNode select(SNode it) {
-            if (superClassIndex.value < 0 && (boolean) ISuperTypeSpecifier__BehaviorDescriptor.isClass_id1$jFvlEiPXX.invoke(it)) {
-              superClassIndex.value = SNodeOperations.getIndexInParent(it);
-            }
-
-            // Expand type with visitor internal substitutions if any
-            return visitor.expandWithCollectedSubstitutions(ISuperTypeSpecifier__BehaviorDescriptor.getInheritedType_id5q426iHvzD9.invoke(it));
-          }
-        }).toGenericArray(SNode.class);
-
-        // Visit superclass first (if any)
-        if (superClassIndex.value >= 0) {
-          IType__BehaviorDescriptor.visitHierarchy_id5q426iHtYvR.invoke(supertypes[superClassIndex.value], visitor);
-        }
-
-        // Then visit other children (skip superclass if present)
-        for (SNode next : supertypes) {
-          if (superClassIndex.value != 0) {
-            IType__BehaviorDescriptor.visitHierarchy_id5q426iHtYvR.invoke(next, visitor);
-          }
-          superClassIndex.value--;
-        }
-
-        explicitSubtypeAny &= supertypes.length == 0;
+        // If visit supertype does not visit anything, we might want to visit Any type.
+        explicitSubtypeAny &= (int) IInheritExplicitly__BehaviorDescriptor.visitSuperTypes_id1WN66f3AYxj.invoke(inherited, visitor) == 0;
       }
     }
 
@@ -245,7 +222,6 @@ public final class ClassType__BehaviorDescriptor extends BaseBHDescriptor {
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink class$ExdX = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5c7be90f2440b378L, 0x5c7be90f2440b37bL, "class");
-    /*package*/ static final SContainmentLink superclasses$6CkZ = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6ef8a3cf68294651L, 0x1ba36e493d40fea5L, "superclasses");
     /*package*/ static final SContainmentLink members$gqdV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310a1ff68L, 0x2043bc8310a1ff69L, "members");
     /*package*/ static final SContainmentLink typeProjections$vhti = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5b1dd60162c97579L, 0x5b1dd60162c9757cL, "typeProjections");
     /*package*/ static final SContainmentLink type$x3no = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3ccL, 0x28bef6d7551af67fL, "type");
