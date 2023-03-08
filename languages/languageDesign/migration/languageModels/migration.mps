@@ -426,7 +426,7 @@
                               <node concept="3clFbS" id="4T7JBGSvrmO" role="3clF47">
                                 <node concept="3clFbF" id="4T7JBGSv_S$" role="3cqZAp">
                                   <node concept="Xl_RD" id="4T7JBGSvDVs" role="3clFbG">
-                                    <property role="Xl_RC" value="usages that was affected be semantics change" />
+                                    <property role="Xl_RC" value="usages affected by semantics change" />
                                   </node>
                                 </node>
                               </node>
@@ -522,7 +522,7 @@
         <node concept="3clFbF" id="4T7JBGSuDg7" role="3cqZAp">
           <node concept="37vLTI" id="4T7JBGSuDg8" role="3clFbG">
             <node concept="Xl_RD" id="6nbww94j_yF" role="37vLTx">
-              <property role="Xl_RC" value="language semantic changed" />
+              <property role="Xl_RC" value="language semantics changed" />
             </node>
             <node concept="2OqwBi" id="4T7JBGSuDga" role="37vLTJ">
               <node concept="37vLTw" id="4T7JBGSuDgb" role="2Oq$k0">
@@ -638,7 +638,7 @@
         <node concept="3clFbF" id="6nbww94j_Vc" role="3cqZAp">
           <node concept="37vLTI" id="6nbww94j_Vd" role="3clFbG">
             <node concept="Xl_RD" id="6nbww94j_Ve" role="37vLTx">
-              <property role="Xl_RC" value="language semantic changed" />
+              <property role="Xl_RC" value="language semantics changed" />
             </node>
             <node concept="2OqwBi" id="6nbww94j_Vf" role="37vLTJ">
               <node concept="37vLTw" id="6nbww94j_Vg" role="2Oq$k0">

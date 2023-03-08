@@ -65,7 +65,7 @@ public class TransformStatementDetachFix extends MigrationScriptBase {
       public Problem select(SNode it) {
         Problem migrated = new NotMigratedNode(it) {
           public String getMessage() {
-            return "usages that was affected be semantics change";
+            return "usages affected by semantics change";
           }
         };
         return migrated;
@@ -80,7 +80,7 @@ public class TransformStatementDetachFix extends MigrationScriptBase {
   private void addAnnotationVariableReference(SNode expression) {
     SNode ann = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, "jetbrains.mps.lang.core.structure.ReviewMigration"));
     SPropertyOperations.set(ann, PROPS.createdByScript$dQMM, this.getReference().serialize());
-    SPropertyOperations.assign(ann, PROPS.reasonShort$dDui, "language semantic changed");
+    SPropertyOperations.assign(ann, PROPS.reasonShort$dDui, "language semantics changed");
     SPropertyOperations.assign(ann, PROPS.todo$dICC, "Pattern variable references now are not detached from their model on first variable read. If detach is needed for the code to work properly, perform detach manually.");
     SPropertyOperations.assign(ann, PROPS.readableId$dIRD, "Transform Detach Changed");
     new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u).set(expression, ann);
@@ -89,7 +89,7 @@ public class TransformStatementDetachFix extends MigrationScriptBase {
   private void addAnnotationAntiquotation(SNode expression) {
     SNode ann = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, "jetbrains.mps.lang.core.structure.ReviewMigration"));
     SPropertyOperations.set(ann, PROPS.createdByScript$dQMM, this.getReference().serialize());
-    SPropertyOperations.assign(ann, PROPS.reasonShort$dDui, "language semantic changed");
+    SPropertyOperations.assign(ann, PROPS.reasonShort$dDui, "language semantics changed");
     SPropertyOperations.assign(ann, PROPS.todo$dICC, "When embedded into transform statement, quotations behave quite differently: instead of copying node while inserting in into the antiquotation, the node is detached from its parent. If copying is needed for the code to work properly, perform copy manually.");
     SPropertyOperations.assign(ann, PROPS.readableId$dIRD, "Transform Detach Changed");
     new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u).set(expression, ann);
