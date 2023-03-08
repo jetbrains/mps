@@ -23,15 +23,18 @@ import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VfsUtilCore;
 import com.intellij.openapi.vfs.VirtualFile;
+import jetbrains.mps.extapi.persistence.ModelRootBase;
 import jetbrains.mps.extapi.persistence.SourceRoot;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.ui.dialogs.properties.roots.editors.ModelRootContentEntriesEditor;
 import jetbrains.mps.ide.ui.dialogs.properties.roots.editors.ModelRootEntryContainer;
 import jetbrains.mps.idea.core.facet.MPSConfigurationBean;
+import jetbrains.mps.idea.core.facet.MPSFacet;
 import jetbrains.mps.idea.core.ui.SModuleConfigurationTab;
 import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
@@ -76,10 +79,18 @@ public class MPSFacetSourcesTab implements SModuleConfigurationTab {
       Disposer.dispose(myContentEntriesEditor);
       myContentEntriesEditor = null;
     }
+    final MPSFacet mpsFacet = (MPSFacet) myContext.getFacet();
+    Solution facetAssociatedModule = null;
+    if (mpsFacet.wasInitialized()) {
+      facetAssociatedModule = mpsFacet.getSolution();
+    }
     ArrayList<ModelRoot> modelRootDetachedFakeInstances = new ArrayList<>();
     for (ModelRootDescriptor mrd :  data.getModelRootDescriptors()) {
       final ModelRoot modelRoot = PersistenceFacade.getInstance().getModelRootFactory(mrd.getType()).create();
       modelRoot.load(mrd.getMemento());
+      if (facetAssociatedModule != null && modelRoot instanceof ModelRootBase) {
+        ((ModelRootBase) modelRoot).setModule(facetAssociatedModule);
+      }
       modelRootDetachedFakeInstances.add(modelRoot);
     }
     final MPSProject mpsProject = ProjectHelper.fromIdeaProject(myContext.getProject());
