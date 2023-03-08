@@ -74,6 +74,8 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
   @Deprecated
   public static final String EXCLUDED = "excluded";
 
+  // FIXME right now necessary for MPS-as-IDEA-plugin scenario, where we don't use MementoWithFS and
+  //       need to edit MR instance w/o SModule being ready/initialized yet (new MPSFacet story)
   private /*final*/ FileSystem myFileSystem = jetbrains.mps.vfs.FileSystem.getInstance(); // TODO not read from memento
 
   /**
@@ -233,7 +235,45 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
     mySourcePathStorage.clearAll(); // AP: I'd rather force a single invocation of the #load method
 
     this.memento = memento.copy();
-    // delay initialization until we've got SModule instance (setModule() followed by attach())
+    // delay proper initialization until we've got SModule instance (setModule() followed by attach())
+    // but provide some minimalistic defaults to facilitate new MPSFacet scenario, when there's no
+    // associated solution yet and no way to resolve paths, but we still need to edit the root in UI
+    // MPS-as-IDEA-plugin functionality.
+    // FIXME indeed, this code duplicates code in setModule(), I just care for the 22.3 to get out now,
+    //       need a proper fix (the one that bounds myFileSystem init, use of IFile/Path/String and editing
+    //       approach for MR/MRD, both attached and detached (from a module, MPSFacet case in IdeaPlugin) scenario)
+    try {
+      final String cpString = memento.get(CONTENT_PATH);
+      if (cpString != null && !MacrosFactory.containsMacro(cpString)) {
+        myContentDir = myFileSystem.getFile(cpString);
+        for (SourceRootKind kind : getSupportedFileKinds1()) {
+          for (Memento root : memento.getChildren(kind.getName())) {
+            String relPath = root.get(LOCATION);
+            DefaultSourceRoot dsr = null;
+            if (relPath != null) {
+              // relative
+              dsr = new DefaultSourceRoot(relPath, myContentDir);
+            } else if (root.get(PATH) != null) {
+              // absolute
+              final String origPath = root.get(PATH);
+              if (origPath != null && !MacrosFactory.containsMacro(origPath)) {
+                dsr = new DefaultSourceRoot(myFileSystem.getFile(origPath));
+              }
+            }
+            if (dsr != null) {
+              // see below for reason to use mySourcePathStorage directly
+              mySourcePathStorage.addSourceRoot(kind, dsr);
+            }
+          }
+        }
+      }
+    } catch (PathFormatException ex) {
+      // here I hope to get setModule() later, hence info. As setModule call is not always the case (new MPSFacet),
+      // get a chance to see if anything is wrong with values provided at facet creation.
+      Logger.getLogger(getClass()).info(String.format("Failed to load configuration of model root in %s: bad path %s", getModule().getModuleName(), ex.getProblemPath()));
+      // keep this.memento values
+      myBrokenState = true;
+    }
   }
 
   @SuppressWarnings("removal")
@@ -252,6 +292,9 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
       } else {
         path = memento.get(CONTENT_PATH);
       }
+
+      // we are going to re-initialize it compared to basic configuration of load()
+      mySourcePathStorage.clearAll();
 
       try {
         myContentDir = (path != null) ? myFileSystem.getFile(path) : null;
