@@ -19,18 +19,25 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
+/**
+ * Please migrate to TestDescriptor API.
+ * 
+ * @deprecated 
+ */
+@Deprecated(since = "2023.1", forRemoval = true)
 public class JUnit3TestWrapper extends AbstractTestWrapper<SNode> {
   private final String myQualifiedName;
   private final String myName;
   private final List<JUnit3MethodWrapper> myMethods;
 
+  @Deprecated
   public JUnit3TestWrapper(SNode classConcept) {
-    super(classConcept, false, AbstractTestWrapper.needsMPS(classConcept), true);
+    super(classConcept, false, TestNodeUtil.needsMPS(classConcept), true);
     myQualifiedName = INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(classConcept);
     myName = SPropertyOperations.getString(classConcept, PROPS.name$MnvL);
     myMethods = Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(classConcept)), CONCEPTS.InstanceMethodDeclaration$39)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return JUnit3MethodWrapper.isTestMethod(it);
+        return TestNodeUtil.isTestMethod(it);
       }
     }).select(new ISelector<SNode, JUnit3MethodWrapper>() {
       public JUnit3MethodWrapper select(SNode it) {

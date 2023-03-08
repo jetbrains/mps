@@ -15,10 +15,17 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
+/**
+ * Please migrate to TestDescriptor API.
+ * 
+ * @deprecated 
+ */
+@Deprecated(since = "2023.1", forRemoval = true)
 /*package*/ class GeneratorTestWrapper extends AbstractTestWrapper<SNode> {
   private final String myQualifiedName;
   private final List<ITestNodeWrapper> myMethods;
 
+  @Deprecated
   public GeneratorTestWrapper(@NotNull final SNode node) {
     super(node, true, true, false);
     myQualifiedName = INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(node);

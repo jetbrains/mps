@@ -95,15 +95,15 @@ public enum TestNodeWrapperFactory implements TestDiscoveryParticipant {
               ancestor = check_kl7j79_a0a0a0b0a0b0a2(SLinkOperations.getTarget(SNodeOperations.cast(ancestor, CONCEPTS.ClassConcept$bK), LINKS.superclass$Mp9$));
             }
             if (ancestor != null) {
-              Optional<TestDescriptor> testOptional = Optional.of(new TestDescriptorBuilder(request.peekContainer()).newTestContainer(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK)), SNodeTestSource.of(node)).withProperty(TestProperties.CAN_RUN_IN_PROCESS, false).withProperty(TestProperties.REQUIRES_MPS_PLATFORM, AbstractTestWrapper.needsMPS(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK))).withProperty(TestProperties.USE_COMPATIBILITY_MODE, true).add());
+              Optional<TestDescriptor> testOptional = Optional.of(new TestDescriptorBuilder(request.peekContainer()).newTestContainer(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK)), SNodeTestSource.of(node)).withProperty(TestProperties.CAN_RUN_IN_PROCESS, false).withProperty(TestProperties.REQUIRES_MPS_PLATFORM, TestNodeUtil.needsMPS(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK))).withProperty(TestProperties.USE_COMPATIBILITY_MODE, true).add());
               testOptional.ifPresent((TestDescriptor container) -> {
                 for (SNode method : Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK))), CONCEPTS.InstanceMethodDeclaration$39)).where(new IWhereFilter<SNode>() {
                   public boolean accept(SNode it) {
-                    return JUnit3MethodWrapper.isTestMethod(it);
+                    return TestNodeUtil.isTestMethod(it);
                   }
                 })) {
                   TestDescriptorBuilder builder = new TestDescriptorBuilder(container).newTest(SPropertyOperations.getString(method, PROPS.name$MnvL), SNodeTestSource.of(method));
-                  if (AbstractTestWrapper.isAnnotatedToLaunch(SNodeOperations.cast(node, CONCEPTS.InstanceMethodDeclaration$39))) {
+                  if (TestNodeUtil.isAnnotatedToLaunch(SNodeOperations.cast(node, CONCEPTS.InstanceMethodDeclaration$39))) {
                     builder.withProperty(TestProperties.REQUIRES_MPS_PLATFORM, true);
                   }
                   builder.add();
@@ -140,16 +140,16 @@ public enum TestNodeWrapperFactory implements TestDiscoveryParticipant {
       if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.ClassConcept$bK))) {
         return Optional.empty();
       }
-      if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)), CONCEPTS.ClassConcept$bK) && JUnit4TestWrapper.isJUnit4TestCase(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK))) {
-        Optional<TestDescriptor> testOptional = Optional.of(new TestDescriptorBuilder(request.peekContainer()).newTestContainer(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK)), SNodeTestSource.of(node)).withProperty(TestProperties.CAN_RUN_IN_PROCESS, false).withProperty(TestProperties.REQUIRES_MPS_PLATFORM, AbstractTestWrapper.needsMPS(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK))).add());
+      if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)), CONCEPTS.ClassConcept$bK) && TestNodeUtil.isJUnit4TestCase(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK))) {
+        Optional<TestDescriptor> testOptional = Optional.of(new TestDescriptorBuilder(request.peekContainer()).newTestContainer(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK)), SNodeTestSource.of(node)).withProperty(TestProperties.CAN_RUN_IN_PROCESS, false).withProperty(TestProperties.REQUIRES_MPS_PLATFORM, TestNodeUtil.needsMPS(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK))).add());
         testOptional.ifPresent((TestDescriptor container) -> {
           for (SNode method : Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK))), CONCEPTS.InstanceMethodDeclaration$39)).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return JUnit4MethodWrapper.isJUnit4TestMethod(it);
+              return TestNodeUtil.isJUnit4TestMethod(it);
             }
           })) {
             TestDescriptorBuilder builder = new TestDescriptorBuilder(container).newTest(SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.InstanceMethodDeclaration$39), PROPS.name$MnvL), SNodeTestSource.of(node));
-            if (AbstractTestWrapper.isAnnotatedToLaunch(SNodeOperations.cast(node, CONCEPTS.InstanceMethodDeclaration$39))) {
+            if (TestNodeUtil.isAnnotatedToLaunch(SNodeOperations.cast(node, CONCEPTS.InstanceMethodDeclaration$39))) {
               builder.withProperty(TestProperties.REQUIRES_MPS_PLATFORM, true);
             }
             builder.add();
@@ -168,7 +168,7 @@ public enum TestNodeWrapperFactory implements TestDiscoveryParticipant {
       if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.InstanceMethodDeclaration$39))) {
         return Optional.empty();
       }
-      if (JUnit4MethodWrapper.isJUnit4TestMethod(SNodeOperations.cast(node, CONCEPTS.InstanceMethodDeclaration$39))) {
+      if (TestNodeUtil.isJUnit4TestMethod(SNodeOperations.cast(node, CONCEPTS.InstanceMethodDeclaration$39))) {
         TestDescriptor container = request.peekContainer();
         Optional<TestDescriptor> testOptional = container.selectTest(SNodeTestSource.of(node));
         if (testOptional.isEmpty()) {
@@ -186,16 +186,16 @@ public enum TestNodeWrapperFactory implements TestDiscoveryParticipant {
       if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.ClassConcept$bK))) {
         return Optional.empty();
       }
-      if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)), CONCEPTS.ClassConcept$bK) && JUnit5TestWrapper.isJUnit5TestCase(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK))) {
+      if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)), CONCEPTS.ClassConcept$bK) && TestNodeUtil.isJUnit5TestCase(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK))) {
         Optional<TestDescriptor> testOptional = Optional.of(new TestDescriptorBuilder(request.peekContainer()).newTestContainer(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK)), SNodeTestSource.of(node)).add());
         testOptional.ifPresent((TestDescriptor container) -> {
           for (SNode method : Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK))), CONCEPTS.InstanceMethodDeclaration$39)).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return JUnit5MethodWrapper.isJUnit5TestMethod(it);
+              return TestNodeUtil.isJUnit5TestMethod(it);
             }
           })) {
             TestDescriptorBuilder builder = new TestDescriptorBuilder(container).newTest(SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.InstanceMethodDeclaration$39), PROPS.name$MnvL), SNodeTestSource.of(node));
-            if (AbstractTestWrapper.isAnnotatedToLaunch(SNodeOperations.cast(node, CONCEPTS.InstanceMethodDeclaration$39))) {
+            if (TestNodeUtil.isAnnotatedToLaunch(SNodeOperations.cast(node, CONCEPTS.InstanceMethodDeclaration$39))) {
               builder.withProperty(TestProperties.REQUIRES_MPS_PLATFORM, true);
             }
             builder.add();
@@ -214,7 +214,7 @@ public enum TestNodeWrapperFactory implements TestDiscoveryParticipant {
       if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.InstanceMethodDeclaration$39))) {
         return Optional.empty();
       }
-      if (JUnit5MethodWrapper.isJUnit5TestMethod(SNodeOperations.cast(node, CONCEPTS.InstanceMethodDeclaration$39))) {
+      if (TestNodeUtil.isJUnit5TestMethod(SNodeOperations.cast(node, CONCEPTS.InstanceMethodDeclaration$39))) {
         TestDescriptor container = request.peekContainer();
         Optional<TestDescriptor> testOptional = container.selectTest(SNodeTestSource.of(node));
         if (testOptional.isEmpty()) {

@@ -15,12 +15,19 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Objects;
 import org.jetbrains.annotations.NonNls;
 
+/**
+ * Please migrate to TestDescriptor API.
+ * 
+ * @deprecated 
+ */
+@Deprecated(since = "2023.1", forRemoval = true)
 public class LanguageTestWrapper extends AbstractTestWrapper<SNode> {
   private final ITestNodeWrapper myTestCase;
   private final String myName;
   private final String myQualifiedName;
   private List<ITestNodeWrapper> myMethods;
 
+  @Deprecated
   public LanguageTestWrapper(SNode test) {
     super(test, (boolean) ITestCase__BehaviorDescriptor.canRunInProcess_id5_jSk8paieB.invoke(test), (boolean) ITestable__BehaviorDescriptor.isMpsStartRequired_id2RMg39tmiFh.invoke(test), false);
     myTestCase = null;
@@ -39,6 +46,7 @@ public class LanguageTestWrapper extends AbstractTestWrapper<SNode> {
     }).ofType(ITestNodeWrapper.class).toListSequence();
   }
 
+  @Deprecated
   public LanguageTestWrapper(@NotNull ITestNodeWrapper testCase, @NotNull SNode testMethod) {
     // perhaps, shall derive MPS requirement form ITestNodeWrapper, but as long as isMpsStartRequired is in ITestable, don't see a reason.
     super(testMethod, testCase.canRunInProcess(), (boolean) ITestable__BehaviorDescriptor.isMpsStartRequired_id2RMg39tmiFh.invoke(testMethod), false);

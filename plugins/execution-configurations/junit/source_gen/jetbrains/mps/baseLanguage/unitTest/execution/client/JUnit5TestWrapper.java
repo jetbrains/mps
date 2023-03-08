@@ -15,24 +15,30 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
+/**
+ * Please migrate to TestDescriptor API.
+ * 
+ * @deprecated 
+ */
+@Deprecated(since = "2023.1", forRemoval = true)
 public class JUnit5TestWrapper extends AbstractTestWrapper<SNode> {
   private final String myQualifiedName;
   private final String myName;
   private final List<JUnit4MethodWrapper> myMethods;
 
+  @Deprecated
   public JUnit5TestWrapper(SNode clazz) {
-    super(clazz, false, AbstractTestWrapper.needsMPS(clazz), false);
+    super(clazz, false, TestNodeUtil.needsMPS(clazz), false);
     myQualifiedName = INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(clazz);
     myName = SPropertyOperations.getString(clazz, PROPS.name$MnvL);
     Iterable<SNode> methodNodes = SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(clazz)), CONCEPTS.InstanceMethodDeclaration$39);
     myMethods = Sequence.fromIterable(methodNodes).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return JUnit4MethodWrapper.isJUnit4TestMethod(it);
+        return TestNodeUtil.isJUnit4TestMethod(it);
       }
     }).select(new ISelector<SNode, JUnit4MethodWrapper>() {
       public JUnit4MethodWrapper select(SNode it) {
@@ -67,25 +73,11 @@ public class JUnit5TestWrapper extends AbstractTestWrapper<SNode> {
     });
   }
 
-  public static boolean isJUnit5TestCase(SNode clazz) {
-    if (SPropertyOperations.getBoolean(SNodeOperations.cast(clazz, CONCEPTS.ClassConcept$bK), PROPS.abstractClass$Ta1X)) {
-      return false;
-    }
-    for (SNode method : Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(clazz))) {
-      if (JUnit5MethodWrapper.isJUnit5TestMethod(method)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
   private static final class PROPS {
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty abstractClass$Ta1X = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
-    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 }
