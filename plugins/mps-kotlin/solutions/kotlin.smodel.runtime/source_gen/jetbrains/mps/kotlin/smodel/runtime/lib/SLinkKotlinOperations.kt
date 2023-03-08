@@ -3,5 +3,5 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept
 import org.jetbrains.mps.openapi.language.SContainmentLink
 import org.jetbrains.mps.openapi.language.SReferenceLink
 
-inline fun SReferenceLink.getRefTargetConcept(): SAbstractConcept = this.getTargetConcept()
-inline fun SContainmentLink.getAggregationTargetConcept(): SAbstractConcept = this.getTargetConcept()
+fun SReferenceLink.getRefTargetConcept(): SAbstractConcept = this.getTargetConcept()
+fun SContainmentLink.getAggregationTargetConcept(): SAbstractConcept = this.getTargetConcept()

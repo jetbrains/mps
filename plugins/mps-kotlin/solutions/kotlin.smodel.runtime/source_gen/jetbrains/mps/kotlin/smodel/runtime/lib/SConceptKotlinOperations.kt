@@ -6,7 +6,7 @@ import kotlin.collections.List
 import org.jetbrains.mps.openapi.language.SAbstractConcept
 import org.jetbrains.mps.openapi.language.SConcept
 import org.jetbrains.mps.openapi.model.SNode
-inline fun asInstanceConcept(concept:SAbstractConcept): SConcept = SNodeOperations.asInstanceConcept(concept)
+fun asInstanceConcept(concept:SAbstractConcept): SConcept = SNodeOperations.asInstanceConcept(concept)
 
 // Node constructor for any concept
 fun SAbstractConcept.new(builder:(SNode.()->Unit)?=null): SNode {

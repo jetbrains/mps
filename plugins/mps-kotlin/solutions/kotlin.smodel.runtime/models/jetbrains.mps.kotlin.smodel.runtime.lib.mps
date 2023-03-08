@@ -110,9 +110,7 @@
         <child id="2936055411798374137" name="else" index="1XD00I" />
       </concept>
       <concept id="2936055411798373381" name="jetbrains.mps.kotlin.structure.FunctionParameter" flags="ng" index="1XD0bi" />
-      <concept id="2936055411798373428" name="jetbrains.mps.kotlin.structure.FunctionDeclaration" flags="ng" index="1XD0bz">
-        <child id="2936055411803476397" name="modifiers" index="1XPytU" />
-      </concept>
+      <concept id="2936055411798373428" name="jetbrains.mps.kotlin.structure.FunctionDeclaration" flags="ng" index="1XD0bz" />
       <concept id="2936055411798373439" name="jetbrains.mps.kotlin.structure.AbstractFunctionCall" flags="ng" index="1XD0bC">
         <reference id="1991556721072067817" name="function" index="AarEw" />
       </concept>
@@ -139,7 +137,6 @@
       <concept id="2936055411798373328" name="jetbrains.mps.kotlin.structure.IntegerLiteral" flags="ng" index="1XD0k7">
         <property id="2936055411798374019" name="value" index="1XD01k" />
       </concept>
-      <concept id="2936055411798373314" name="jetbrains.mps.kotlin.structure.InlineFunctionModifier" flags="ng" index="1XD0kl" />
       <concept id="2936055411798373327" name="jetbrains.mps.kotlin.structure.BooleanLiteral" flags="ng" index="1XD0ko" />
       <concept id="2936055411798373324" name="jetbrains.mps.kotlin.structure.TypeProjection" flags="ng" index="1XD0kr">
         <child id="2936055411798374015" name="type" index="1XD02C" />
@@ -270,7 +267,6 @@
           </node>
         </node>
       </node>
-      <node concept="1XD0kl" id="7B1Fat4_q24" role="1XPytU" />
       <node concept="3f8zV_" id="66iE5cCP_la" role="39xbXa">
         <node concept="1XD0kr" id="66iE5cCP_oY" role="2Rg2xS">
           <node concept="9pJMI" id="66iE5cCP_oW" role="1XD02C">
@@ -363,7 +359,6 @@
         </node>
         <node concept="1XD0k2" id="66iE5cC$Dkq" role="37iW88" />
       </node>
-      <node concept="1XD0kl" id="7B1Fat4_p_6" role="1XPytU" />
     </node>
     <node concept="eKYAL" id="6CwBo1YVq2b" role="1XD0Tu" />
     <node concept="1XD0bz" id="7B1Fat4_gr$" role="1XD0Tu">
@@ -393,7 +388,6 @@
           </node>
         </node>
       </node>
-      <node concept="1XD0kl" id="7B1Fat4_p8L" role="1XPytU" />
     </node>
     <node concept="eKYAL" id="6CwBo1ZA4Ma" role="1XD0Tu" />
     <node concept="1XD0bz" id="6CwBo1ZN_hA" role="1XD0Tu">
@@ -499,7 +493,6 @@
         </node>
         <node concept="1XD0ko" id="6CwBo1ZN_if" role="37iW88" />
       </node>
-      <node concept="1XD0kl" id="6CwBo1ZN_ig" role="1XPytU" />
       <node concept="1XD08$" id="6CwBo1ZN_ih" role="ICcUN" />
       <node concept="1XD0l2" id="6CwBo1ZN_ii" role="2BPcuh" />
       <node concept="3f8zV_" id="6CwBo1ZN_ij" role="39xbXa" />
@@ -603,7 +596,6 @@
         </node>
         <node concept="1XD0ko" id="6CwBo1ZA7h2" role="37iW88" />
       </node>
-      <node concept="1XD0kl" id="6CwBo1ZA57q" role="1XPytU" />
       <node concept="1XD08$" id="6CwBo1ZA57r" role="ICcUN" />
       <node concept="1XD0l2" id="6CwBo1ZA57u" role="2BPcuh" />
       <node concept="3f8zV_" id="6CwBo1ZA5lW" role="39xbXa" />
@@ -740,7 +732,6 @@
       <node concept="2EYIWN" id="66iE5cCPljc" role="21NdcZ">
         <ref role="2EYIUZ" to="c17a:~SConcept" resolve="SConcept" />
       </node>
-      <node concept="1XD0kl" id="66iE5cCPy8C" role="1XPytU" />
       <node concept="1XD0l2" id="398EB8$DkSR" role="2BPcuh" />
     </node>
     <node concept="eKYAL" id="66iE5cCPjSf" role="1XD0Tu" />
@@ -934,7 +925,6 @@
     <node concept="eKYAL" id="Aa0Z14iakv" role="1XD0Tu" />
     <node concept="1XD0bz" id="Aa0Z14lIDd" role="1XD0Tu">
       <property role="TrG5h" value="getRefTargetConcept" />
-      <node concept="1XD0kl" id="Aa0Z14lIDe" role="1XPytU" />
       <node concept="1XD08$" id="Aa0Z14lIDf" role="ICcUN" />
       <node concept="1XD0l2" id="Aa0Z14lIDg" role="2BPcuh" />
       <node concept="2szew_" id="Aa0Z14lIDh" role="1XPbGx">
@@ -959,7 +949,6 @@
     </node>
     <node concept="1XD0bz" id="Aa0Z14iakE" role="1XD0Tu">
       <property role="TrG5h" value="getAggregationTargetConcept" />
-      <node concept="1XD0kl" id="Aa0Z14iakG" role="1XPytU" />
       <node concept="1XD08$" id="Aa0Z14iakH" role="ICcUN" />
       <node concept="1XD0l2" id="Aa0Z14iakK" role="2BPcuh" />
       <node concept="2szew_" id="Aa0Z14ial8" role="1XPbGx">
