@@ -17,6 +17,7 @@ import jetbrains.mps.ide.editor.util.EditorComponentUtil;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.model.SNodeId;
+import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Objects;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -135,7 +136,12 @@ public final class AnnotationColumn extends AbstractLeftColumn {
 
         if (inspector != null) {
           final Wrappers._T<SNodeId> rootId = new Wrappers._T<SNodeId>(null);
-          inspector.getEditorContext().getRepository().getModelAccess().runReadAction(() -> rootId.value = inspector.getEditedNode().getContainingRoot().getNodeId());
+          inspector.getEditorContext().getRepository().getModelAccess().runReadAction(() -> {
+            SNode node = inspector.getEditedNode();
+            if (node != null) {
+              rootId.value = node.getContainingRoot().getNodeId();
+            }
+          });
           if (Objects.equals(rootId.value, myEditorAnnotation.getRootId())) {
             EditorAnnotation editorAnnotation = myEditorAnnotation.createInspectorAnnotation(inspector);
             myInspectorColumn = new AnnotationColumn(myEditorAnnotation.getProject(), inspector.getLeftEditorHighlighter(), editorAnnotation, this);

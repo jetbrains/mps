@@ -1171,28 +1171,49 @@
                           <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
                           <node concept="1bVj0M" id="3x6Fuscm$dL" role="37wK5m">
                             <node concept="3clFbS" id="3x6Fuscm$dM" role="1bW5cS">
-                              <node concept="3clFbF" id="3x6Fuscnw72" role="3cqZAp">
-                                <node concept="37vLTI" id="3x6Fuscn$DZ" role="3clFbG">
-                                  <node concept="37vLTw" id="3x6Fuscnw71" role="37vLTJ">
-                                    <ref role="3cqZAo" node="3x6Fuscn6vJ" resolve="rootId" />
+                              <node concept="3cpWs8" id="5eTAUJpG56u" role="3cqZAp">
+                                <node concept="3cpWsn" id="5eTAUJpG56v" role="3cpWs9">
+                                  <property role="TrG5h" value="node" />
+                                  <node concept="3uibUv" id="5eTAUJpFTgv" role="1tU5fm">
+                                    <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
                                   </node>
-                                  <node concept="2OqwBi" id="3x6FuscnGYQ" role="37vLTx">
-                                    <node concept="2OqwBi" id="3x6FuscnGYR" role="2Oq$k0">
-                                      <node concept="2OqwBi" id="3x6FuscnGYS" role="2Oq$k0">
-                                        <node concept="37vLTw" id="3x6FuscnGYT" role="2Oq$k0">
-                                          <ref role="3cqZAo" node="3TltS6fENvE" resolve="inspector" />
+                                  <node concept="2OqwBi" id="5eTAUJpG56w" role="33vP2m">
+                                    <node concept="37vLTw" id="5eTAUJpG56x" role="2Oq$k0">
+                                      <ref role="3cqZAo" node="3TltS6fENvE" resolve="inspector" />
+                                    </node>
+                                    <node concept="liA8E" id="5eTAUJpG56y" role="2OqNvi">
+                                      <ref role="37wK5l" to="exr9:~EditorComponent.getEditedNode()" resolve="getEditedNode" />
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                              <node concept="3clFbJ" id="5eTAUJpH26o" role="3cqZAp">
+                                <node concept="3clFbS" id="5eTAUJpH26q" role="3clFbx">
+                                  <node concept="3clFbF" id="3x6Fuscnw72" role="3cqZAp">
+                                    <node concept="37vLTI" id="3x6Fuscn$DZ" role="3clFbG">
+                                      <node concept="37vLTw" id="3x6Fuscnw71" role="37vLTJ">
+                                        <ref role="3cqZAo" node="3x6Fuscn6vJ" resolve="rootId" />
+                                      </node>
+                                      <node concept="2OqwBi" id="5eTAUJpFsrd" role="37vLTx">
+                                        <node concept="2OqwBi" id="5eTAUJpFD7M" role="2Oq$k0">
+                                          <node concept="37vLTw" id="5eTAUJpG56z" role="2Oq$k0">
+                                            <ref role="3cqZAo" node="5eTAUJpG56v" resolve="node" />
+                                          </node>
+                                          <node concept="liA8E" id="3x6FuscnGYV" role="2OqNvi">
+                                            <ref role="37wK5l" to="mhbf:~SNode.getContainingRoot()" resolve="getContainingRoot" />
+                                          </node>
                                         </node>
-                                        <node concept="liA8E" id="3x6FuscnGYU" role="2OqNvi">
-                                          <ref role="37wK5l" to="exr9:~EditorComponent.getEditedNode()" resolve="getEditedNode" />
+                                        <node concept="liA8E" id="3x6FuscnGYW" role="2OqNvi">
+                                          <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
                                         </node>
                                       </node>
-                                      <node concept="liA8E" id="3x6FuscnGYV" role="2OqNvi">
-                                        <ref role="37wK5l" to="mhbf:~SNode.getContainingRoot()" resolve="getContainingRoot" />
-                                      </node>
                                     </node>
-                                    <node concept="liA8E" id="3x6FuscnGYW" role="2OqNvi">
-                                      <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
-                                    </node>
+                                  </node>
+                                </node>
+                                <node concept="3y3z36" id="5eTAUJpHiDG" role="3clFbw">
+                                  <node concept="10Nm6u" id="5eTAUJpHiFV" role="3uHU7w" />
+                                  <node concept="37vLTw" id="5eTAUJpHe1s" role="3uHU7B">
+                                    <ref role="3cqZAo" node="5eTAUJpG56v" resolve="node" />
                                   </node>
                                 </node>
                               </node>
