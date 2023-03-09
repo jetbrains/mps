@@ -722,6 +722,11 @@
             </node>
           </node>
         </node>
+        <node concept="1SiIV0" id="2Oogzg47WLb" role="3bR37C">
+          <node concept="3bR9La" id="2Oogzg47WLc" role="1SiIV1">
+            <ref role="3bR37D" to="ffeo:2Oogzg3vg0R" resolve="jetbrains.mps.baseLanguage.unitTest.platform" />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="2G$12M" id="2LuGVbI_FmB" role="3989C9">

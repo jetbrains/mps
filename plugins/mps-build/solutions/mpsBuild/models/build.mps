@@ -27361,6 +27361,11 @@
           </node>
           <node concept="398223" id="3wRozBgYU46" role="39821P">
             <node concept="398223" id="3wRozBgYUbj" role="39821P">
+              <node concept="3_J27D" id="3wRozBgYUbl" role="Nbhlr">
+                <node concept="3Mxwew" id="3wRozBgYUbQ" role="3MwsjC">
+                  <property role="3MwjfP" value="jna" />
+                </node>
+              </node>
               <node concept="398223" id="33kYI6S02rd" role="39821P">
                 <node concept="3_J27D" id="33kYI6S02rf" role="Nbhlr">
                   <node concept="3Mxwew" id="33kYI6S02rq" role="3MwsjC">
@@ -27451,11 +27456,6 @@
                       </node>
                     </node>
                   </node>
-                </node>
-              </node>
-              <node concept="3_J27D" id="3wRozBgYUbl" role="Nbhlr">
-                <node concept="3Mxwew" id="3wRozBgYUbQ" role="3MwsjC">
-                  <property role="3MwjfP" value="jna" />
                 </node>
               </node>
             </node>
@@ -37434,6 +37434,11 @@
             <ref role="3bR37D" node="465rK6MmPl5" resolve="jetbrains.mps.baselanguage.unitTest.launcher" />
           </node>
         </node>
+        <node concept="1SiIV0" id="2Oogzg3RlY6" role="3bR37C">
+          <node concept="3bR9La" id="2Oogzg3RlY7" role="1SiIV1">
+            <ref role="3bR37D" node="2Oogzg3vg0R" resolve="jetbrains.mps.baseLanguage.unitTest.platform" />
+          </node>
+        </node>
       </node>
       <node concept="1E1JtA" id="5xa9wY2vhbf" role="2G$12L">
         <property role="BnDLt" value="true" />
@@ -37615,6 +37620,11 @@
         <node concept="1SiIV0" id="465rK6MmPIV" role="3bR37C">
           <node concept="3bR9La" id="465rK6MmPIW" role="1SiIV1">
             <ref role="3bR37D" node="465rK6MmPl5" resolve="jetbrains.mps.baselanguage.unitTest.launcher" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="2Oogzg3vk7z" role="3bR37C">
+          <node concept="3bR9La" id="2Oogzg3vk7$" role="1SiIV1">
+            <ref role="3bR37D" node="2Oogzg3vg0R" resolve="jetbrains.mps.baseLanguage.unitTest.platform" />
           </node>
         </node>
       </node>
@@ -43040,6 +43050,89 @@
           </node>
         </node>
       </node>
+      <node concept="1E1JtA" id="2Oogzg3vg0R" role="2G$12L">
+        <property role="BnDLt" value="true" />
+        <property role="TrG5h" value="jetbrains.mps.baseLanguage.unitTest.platform" />
+        <property role="3LESm3" value="2c7e7a6d-a1f9-4f07-84e0-d0f5b91d380c" />
+        <node concept="55IIr" id="2Oogzg3vg0U" role="3LF7KH">
+          <node concept="2Ry0Ak" id="2Oogzg3vg2r" role="iGT6I">
+            <property role="2Ry0Am" value="plugins" />
+            <node concept="2Ry0Ak" id="2Oogzg3vg2w" role="2Ry0An">
+              <property role="2Ry0Am" value="mps-testing" />
+              <node concept="2Ry0Ak" id="2Oogzg3vg2_" role="2Ry0An">
+                <property role="2Ry0Am" value="languages" />
+                <node concept="2Ry0Ak" id="2Oogzg3vg2E" role="2Ry0An">
+                  <property role="2Ry0Am" value="baseLanguage" />
+                  <node concept="2Ry0Ak" id="2Oogzg3vg2J" role="2Ry0An">
+                    <property role="2Ry0Am" value="unitTest" />
+                    <node concept="2Ry0Ak" id="2Oogzg3vg2O" role="2Ry0An">
+                      <property role="2Ry0Am" value="solutions" />
+                      <node concept="2Ry0Ak" id="2Oogzg3vg2T" role="2Ry0An">
+                        <property role="2Ry0Am" value="platform" />
+                        <node concept="2Ry0Ak" id="2Oogzg3vg2Y" role="2Ry0An">
+                          <property role="2Ry0Am" value="jetbrains.mps.baseLanguage.unitTest.platform.msd" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="2Oogzg3vg4B" role="3bR37C">
+          <node concept="3bR9La" id="2Oogzg3vg4C" role="1SiIV1">
+            <ref role="3bR37D" node="1H905DlDUSw" resolve="MPS.OpenAPI" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="2Oogzg3vg4D" role="3bR37C">
+          <node concept="3bR9La" id="2Oogzg3vg4E" role="1SiIV1">
+            <ref role="3bR37D" node="1TaHNgiIbIQ" resolve="MPS.Core" />
+          </node>
+        </node>
+        <node concept="1BupzO" id="2Oogzg3vg4X" role="3bR31x">
+          <property role="3ZfqAx" value="models" />
+          <property role="1Hdu6h" value="true" />
+          <property role="1HemKv" value="true" />
+          <node concept="3LXTmp" id="2Oogzg3vg4Y" role="1HemKq">
+            <node concept="398BVA" id="2Oogzg3vg4F" role="3LXTmr">
+              <ref role="398BVh" node="ymnOULASEN" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="2Oogzg3vg4G" role="iGT6I">
+                <property role="2Ry0Am" value="plugins" />
+                <node concept="2Ry0Ak" id="2Oogzg3vg4H" role="2Ry0An">
+                  <property role="2Ry0Am" value="mps-testing" />
+                  <node concept="2Ry0Ak" id="2Oogzg3vg4I" role="2Ry0An">
+                    <property role="2Ry0Am" value="languages" />
+                    <node concept="2Ry0Ak" id="2Oogzg3vg4J" role="2Ry0An">
+                      <property role="2Ry0Am" value="baseLanguage" />
+                      <node concept="2Ry0Ak" id="2Oogzg3vg4K" role="2Ry0An">
+                        <property role="2Ry0Am" value="unitTest" />
+                        <node concept="2Ry0Ak" id="2Oogzg3vg4L" role="2Ry0An">
+                          <property role="2Ry0Am" value="solutions" />
+                          <node concept="2Ry0Ak" id="2Oogzg3vg4M" role="2Ry0An">
+                            <property role="2Ry0Am" value="platform" />
+                            <node concept="2Ry0Ak" id="2Oogzg3vg4N" role="2Ry0An">
+                              <property role="2Ry0Am" value="models" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3qWCbU" id="2Oogzg3vg4Z" role="3LXTna">
+              <property role="3qWCbO" value="**/*.mps, **/*.mpsr, **/.model" />
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="2BBIwJJuDXL" role="3bR37C">
+          <node concept="3bR9La" id="2BBIwJJuDXM" role="1SiIV1">
+            <ref role="3bR37D" node="1ULLXZL0gZG" resolve="org.junit.junit5" />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="2G$12M" id="3AyJARA_gvl" role="3989C9">
       <property role="TrG5h" value="gentest" />
@@ -44228,6 +44321,11 @@
         <node concept="1SiIV0" id="nO_wDZzT$K" role="3bR37C">
           <node concept="3bR9La" id="nO_wDZzT$L" role="1SiIV1">
             <ref role="3bR37D" node="7MSVDs3$Uns" resolve="jetbrains.mps.baseLanguage.unitTest.runtime" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="2Oogzg3vgc5" role="3bR37C">
+          <node concept="3bR9La" id="2Oogzg3vgc6" role="1SiIV1">
+            <ref role="3bR37D" node="2Oogzg3vg0R" resolve="jetbrains.mps.baseLanguage.unitTest.platform" />
           </node>
         </node>
       </node>
