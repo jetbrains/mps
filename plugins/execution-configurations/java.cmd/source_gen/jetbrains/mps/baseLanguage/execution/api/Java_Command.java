@@ -58,6 +58,7 @@ public class Java_Command {
   private Project myProject_Project;
   private String myDebuggerSettings_String;
   private CommandPart myVirtualMachineParameter_ProcessBuilderCommandPart;
+  private int myJarManifestLimit_Int = -1;
   public Java_Command() {
   }
   public Java_Command setWorkingDirectory_File(File workingDirectory) {
@@ -108,6 +109,10 @@ public class Java_Command {
     }
     return this;
   }
+  public Java_Command setJarManifestLimit_Int(int jarManifestLimit) {
+    myJarManifestLimit_Int = jarManifestLimit;
+    return this;
+  }
 
   public ProcessHandler createProcess(String className) throws ExecutionException {
     return new Java_Command().setWorkingDirectory_File(myWorkingDirectory_File).setJrePath_String(myJrePath_String).setProgramParameter_String(myProgramParameter_String).setVirtualMachineParameter_String(myVirtualMachineParameter_String).setProject_Project(myProject_Project).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(className, ListSequence.fromList(myClassPath_ListString).select(new ISelector<String, File>() {
@@ -128,16 +133,11 @@ public class Java_Command {
     }
     File java = Java_Command.getJavaCommand(myJrePath_String);
     new JDKVersionChecker(myProject_Project).checkAndNotifyOldJDK(myJrePath_String);
-    // FIXME need better logic to decide when to use java -jar, and when directly java -classpath
-    // Now I just throw in some magic number I consider too big to get tired of looking at long CP
-    // XXX Besides, I'd like to test this, therefore would like to see this branch to trigger often (MPS JUnit
-    // tests shall get into it, I believe). Earlier approach relied on dedicated ClassRunner, capable of reading
-    // classpath and arguments from serialized form in temp files, I don't think we can ever get to the limit
-    // with program arguments (and even if we do, e.g. enumerating all test methods from JUnit command, we can still
-    // address huge argument list with -f or piping input from file (i.e. runner would need to support arguments other than
-    // String[] args in main()))
-    if (ListSequence.fromList(classPath).count() > 20) {
-      // next is to deal with very long cp
+    // In fact, this is a workaround for MPS-35210. In 2022.3, IDEA demands use of PathClassLoader for system CL
+    // and it doesn't work with CP specified in MANIFEST.MF. I want to keep this code as it's handy to have long CP
+    // serialized, just make it inactive now as no code calls jarManifestLimit with >0 value at the moment.
+    if (myJarManifestLimit_Int > 0 && ListSequence.fromList(classPath).count() > myJarManifestLimit_Int) {
+      // next is to deal with very long CP
       try {
         JarManifestBuilder jmb = new JarManifestBuilder();
         File jar = jmb.withMainClass(className).withFilesClassPath(classPath).toTempFile();

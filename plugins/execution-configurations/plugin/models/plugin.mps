@@ -107,8 +107,8 @@
     <import index="drih" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.editor.colors(MPS.IDEA/)" />
     <import index="s9o5" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.editor(MPS.IDEA/)" />
     <import index="mmaq" ref="f647e48e-4568-4f4c-b48a-1546492c6a2e/java:org.jdom(org.jdom/)" />
-    <import index="34h4" ref="r:263b648a-3e00-426c-ab4b-ba47ccd788c9(jetbrains.mps.baselanguage.unitTest.execution.launcher)" />
     <import index="fhz7" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.execution.runners(MPS.IDEA/)" />
+    <import index="34h4" ref="r:263b648a-3e00-426c-ab4b-ba47ccd788c9(jetbrains.mps.baselanguage.unitTest.execution.launcher)" />
     <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" implicit="true" />
     <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" implicit="true" />
     <import index="hypd" ref="r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)" implicit="true" />
@@ -216,6 +216,9 @@
       <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
+      </concept>
+      <concept id="7485977462274819189" name="jetbrains.mps.baseLanguage.structure.FormatOperation" flags="ng" index="2cAKMz">
+        <child id="7485977462274819664" name="arguments" index="2cAKU6" />
       </concept>
       <concept id="1215693861676" name="jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression" flags="nn" index="d038R">
         <child id="1068498886297" name="rValue" index="37vLTx" />
@@ -6053,6 +6056,52 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="3UAfElGrwoB" role="3cqZAp">
+          <node concept="3cpWsn" id="3UAfElGrwoC" role="3cpWs9">
+            <property role="TrG5h" value="jnaLibPath" />
+            <node concept="3uibUv" id="3UAfElGrwdP" role="1tU5fm">
+              <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+            </node>
+            <node concept="2OqwBi" id="3UAfElGrwoD" role="33vP2m">
+              <node concept="2ShNRf" id="3UAfElGrwoE" role="2Oq$k0">
+                <node concept="1pGfFk" id="3UAfElGrwoF" role="2ShVmc">
+                  <property role="373rjd" value="true" />
+                  <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String,java.lang.String)" resolve="File" />
+                  <node concept="2YIFZM" id="3UAfElGrwoG" role="37wK5m">
+                    <ref role="37wK5l" to="bd8o:~PathManager.getLibPath()" resolve="getLibPath" />
+                    <ref role="1Pybhc" to="bd8o:~PathManager" resolve="PathManager" />
+                  </node>
+                  <node concept="Xl_RD" id="3UAfElGrwoH" role="37wK5m">
+                    <property role="Xl_RC" value="jna" />
+                  </node>
+                </node>
+              </node>
+              <node concept="liA8E" id="3UAfElGrwoI" role="2OqNvi">
+                <ref role="37wK5l" to="guwi:~File.getAbsolutePath()" resolve="getAbsolutePath" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="3UAfElGr$mw" role="3cqZAp">
+          <node concept="37vLTI" id="3UAfElGr_g_" role="3clFbG">
+            <node concept="2OqwBi" id="3UAfElGrCrJ" role="37vLTx">
+              <node concept="Xl_RD" id="3UAfElGr_sy" role="2Oq$k0">
+                <property role="Xl_RC" value="-Djna.boot.library.path=\&quot;%s\&quot; %s" />
+              </node>
+              <node concept="2cAKMz" id="3UAfElGrDxG" role="2OqNvi">
+                <node concept="37vLTw" id="3UAfElGrE6m" role="2cAKU6">
+                  <ref role="3cqZAo" node="3UAfElGrwoC" resolve="jnaLibPath" />
+                </node>
+                <node concept="37vLTw" id="3UAfElGrExz" role="2cAKU6">
+                  <ref role="3cqZAo" node="75c$k6X2Pup" resolve="virtualMachineParameters" />
+                </node>
+              </node>
+            </node>
+            <node concept="37vLTw" id="3UAfElGr$mu" role="37vLTJ">
+              <ref role="3cqZAo" node="75c$k6X2Pup" resolve="virtualMachineParameters" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbH" id="6qukSVU4FmA" role="3cqZAp" />
         <node concept="3clFbJ" id="75c$k6X2JKC" role="3cqZAp">
           <node concept="3clFbS" id="75c$k6X2JKE" role="3clFbx">
@@ -8248,7 +8297,7 @@
       <property role="TrG5h" value="myVmOptions" />
       <node concept="17QB3L" id="q00jVsOUD2" role="1tU5fm" />
       <node concept="Xl_RD" id="5$rOikAfoRw" role="33vP2m">
-        <property role="Xl_RC" value="--add-opens=java.base/java.io=ALL-UNNAMED\n--add-opens=java.base/java.lang=ALL-UNNAMED\n--add-opens=java.base/java.lang.reflect=ALL-UNNAMED\n--add-opens=java.base/java.net=ALL-UNNAMED\n--add-opens=java.base/java.nio=ALL-UNNAMED\n--add-opens=java.base/java.nio.charset=ALL-UNNAMED\n--add-opens=java.base/java.text=ALL-UNNAMED\n--add-opens=java.base/java.time=ALL-UNNAMED\n--add-opens=java.base/java.util=ALL-UNNAMED\n--add-opens=java.base/java.util.concurrent=ALL-UNNAMED\n--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED\n--add-opens=java.base/jdk.internal.vm=ALL-UNNAMED\n--add-opens=java.base/sun.nio.ch=ALL-UNNAMED\n--add-opens=java.base/sun.security.ssl=ALL-UNNAMED\n--add-opens=java.base/sun.security.util=ALL-UNNAMED\n--add-opens=java.desktop/com.apple.eawt=ALL-UNNAMED\n--add-opens=java.desktop/com.apple.eawt.event=ALL-UNNAMED\n--add-opens=java.desktop/com.apple.laf=ALL-UNNAMED\n--add-opens=java.desktop/java.awt=ALL-UNNAMED\n--add-opens=java.desktop/java.awt.dnd.peer=ALL-UNNAMED\n--add-opens=java.desktop/java.awt.event=ALL-UNNAMED\n--add-opens=java.desktop/java.awt.image=ALL-UNNAMED\n--add-opens=java.desktop/java.awt.peer=ALL-UNNAMED\n--add-opens=java.desktop/javax.swing=ALL-UNNAMED\n--add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED\n--add-opens=java.desktop/javax.swing.text.html=ALL-UNNAMED\n--add-opens=java.desktop/sun.awt.datatransfer=ALL-UNNAMED\n--add-opens=java.desktop/sun.awt.image=ALL-UNNAMED\n--add-opens=java.desktop/sun.awt.windows=ALL-UNNAMED\n--add-opens=java.desktop/sun.awt=ALL-UNNAMED\n--add-opens=java.desktop/sun.font=ALL-UNNAMED\n--add-opens=java.desktop/sun.java2d=ALL-UNNAMED\n--add-opens=java.desktop/sun.swing=ALL-UNNAMED\n--add-opens=jdk.attach/sun.tools.attach=ALL-UNNAMED\n--add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED\n--add-opens=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED\n--add-opens=jdk.jdi/com.sun.tools.jdi=ALL-UNNAMED\n--add-opens=java.desktop/sun.awt.X11=ALL-UNNAMED" />
+        <property role="Xl_RC" value="--add-opens=java.base/java.io=ALL-UNNAMED\n--add-opens=java.base/java.lang=ALL-UNNAMED\n--add-opens=java.base/java.lang.reflect=ALL-UNNAMED\n--add-opens=java.base/java.net=ALL-UNNAMED\n--add-opens=java.base/java.nio=ALL-UNNAMED\n--add-opens=java.base/java.nio.charset=ALL-UNNAMED\n--add-opens=java.base/java.text=ALL-UNNAMED\n--add-opens=java.base/java.time=ALL-UNNAMED\n--add-opens=java.base/java.util=ALL-UNNAMED\n--add-opens=java.base/java.util.concurrent=ALL-UNNAMED\n--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED\n--add-opens=java.base/jdk.internal.vm=ALL-UNNAMED\n--add-opens=java.base/sun.nio.ch=ALL-UNNAMED\n--add-opens=java.base/sun.security.ssl=ALL-UNNAMED\n--add-opens=java.base/sun.security.util=ALL-UNNAMED\n--add-opens=java.desktop/com.apple.eawt=ALL-UNNAMED\n--add-opens=java.desktop/com.apple.eawt.event=ALL-UNNAMED\n--add-opens=java.desktop/com.apple.laf=ALL-UNNAMED\n--add-opens=java.desktop/java.awt=ALL-UNNAMED\n--add-opens=java.desktop/java.awt.dnd.peer=ALL-UNNAMED\n--add-opens=java.desktop/java.awt.event=ALL-UNNAMED\n--add-opens=java.desktop/java.awt.image=ALL-UNNAMED\n--add-opens=java.desktop/java.awt.peer=ALL-UNNAMED\n--add-opens=java.desktop/javax.swing=ALL-UNNAMED\n--add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED\n--add-opens=java.desktop/javax.swing.text.html=ALL-UNNAMED\n--add-opens=java.desktop/sun.awt.datatransfer=ALL-UNNAMED\n--add-opens=java.desktop/sun.awt.image=ALL-UNNAMED\n--add-opens=java.desktop/sun.awt.windows=ALL-UNNAMED\n--add-opens=java.desktop/sun.awt=ALL-UNNAMED\n--add-opens=java.desktop/sun.font=ALL-UNNAMED\n--add-opens=java.desktop/sun.java2d=ALL-UNNAMED\n--add-opens=java.desktop/sun.swing=ALL-UNNAMED\n--add-opens=jdk.attach/sun.tools.attach=ALL-UNNAMED\n--add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED\n--add-opens=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED\n--add-opens=jdk.jdi/com.sun.tools.jdi=ALL-UNNAMED\n--add-opens=java.desktop/sun.awt.X11=ALL-UNNAMED -Djava.system.class.loader=com.intellij.util.lang.PathClassLoader" />
       </node>
     </node>
     <node concept="yHkDC" id="q00jVsOUD3" role="yHkDi">

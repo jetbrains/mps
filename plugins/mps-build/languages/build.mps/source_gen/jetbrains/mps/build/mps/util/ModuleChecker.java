@@ -8,6 +8,7 @@ import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
@@ -65,7 +66,6 @@ import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.generator.GenerationFacade;
 import jetbrains.mps.smodel.ModelImports;
-import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -87,10 +87,11 @@ public final class ModuleChecker {
   private final ModuleRepositoryFacade myRepository;
   private SModule myLoadedModule;
 
-  /*package*/ ModuleChecker(SNode module, VisibleModules visible, PathConverter pathConverter, IFile moduleDescriptorFile, ModuleDescriptor moduleDescriptor, IMessageHandler reporter, ModuleRepositoryFacade repo) {
+  /*package*/ ModuleChecker(SNode module, VisibleModules visible, PathConverter pathConverter, @Nullable IFile moduleDescriptorFile, ModuleDescriptor moduleDescriptor, IMessageHandler reporter, ModuleRepositoryFacade repo) {
     myModule = module;
     myVisibleModules = visible;
-    myPathConverter = pathConverter.forModule(moduleDescriptorFile);
+    // seems that moduleDescriptorFile != null for partial/full import scenarios, and can be null for 'check';
+    myPathConverter = (moduleDescriptorFile == null ? pathConverter : pathConverter.forModule(moduleDescriptorFile));
     myModuleDescriptorFile = moduleDescriptorFile;
     myModuleDescriptor = moduleDescriptor;
     myReporter = reporter;
@@ -102,7 +103,7 @@ public final class ModuleChecker {
     myVisibleModules = parent.myVisibleModules;
     // though moduleDescriptorFile seems to be the same as in parent, can just use myPathConverter as is. Still, better not 
     // to keep explicit moduleDescriptorFile argument then.
-    myPathConverter = parent.myPathConverter.forModule(moduleDescriptorFile);
+    myPathConverter = (moduleDescriptorFile == null ? parent.myPathConverter : parent.myPathConverter.forModule(moduleDescriptorFile));
     myModuleDescriptorFile = moduleDescriptorFile;
     myModuleDescriptor = moduleDescriptor;
     myReporter = parent.myReporter;
