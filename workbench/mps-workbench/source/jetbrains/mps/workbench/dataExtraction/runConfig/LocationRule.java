@@ -37,6 +37,9 @@ import java.util.stream.Collectors;
 
 /**
  * Provides values for {@link com.intellij.execution.Location#DATA_KEY "Location"} key.
+ * <p>
+ * IMPORTANT! This rule collects data from multiple providers (components). In order to work correctly
+ * it must be registered as a CONTEXT rule type. See {@link com.intellij.ide.impl.GetDataRuleType}.
  */
 public class LocationRule implements GetDataRule {
   @Override
@@ -44,12 +47,9 @@ public class LocationRule implements GetDataRule {
   public Object getData(@NotNull DataProvider dataProvider) {
     final MPSProject mpsProject = MPSDataKeys.MPS_PROJECT.getData(dataProvider);
     if (mpsProject == null) {
-      // if dataProvider is not capable to give us MPS_PROJECT, don't try to get any
-      //    MPS data from it. There would be another DataProvider (up in hierarchy of
-      //    components/DataProviders, see DataManagerImpl.getData(String,Component))
-      //    that is capable to answer MPS_PROJECT (or just PROJECT, see MPSProjectRule)
-      //    and that would be provider to query MPS relevant data from.
-      //
+      // no MPS project in the entire context, giving up
+      // MPSProject should either be provided by some data provider in the context or MPSProjectRule
+
       // Here used to be code that obtained project from active frame. FrameRule
       //    is/was capable to answer Frame for any DataProvider, we got MPS_PROJECT here,
       //    but as long dataProvider could not answer anything (e.g. if it was some
@@ -60,11 +60,7 @@ public class LocationRule implements GetDataRule {
       //    is not perfect as it's sort of implicit knowledge, easy to overlook - i.e. if we do not to answer
       //    Project from ProjectPane, this LocationRule won't get a chance to ask proper dataProvider (the one
       //    of ProjectPane) for NODES/NODE/etc keys.
-      //    Perhaps, instead of KEY.getData(dataProvider), we shall recurse into DataManager again, so that
-      //    it would walk component/DataProvider hierarchy again to access correct DP that could answer e.g. 'NODES'
-      //    What I don't like in this approch (even if feasible) is the fact it makes moment this rule shall get
-      //    active completely illogical, especially if Project from FRAME logic is brought back. Shall it answer
-      //    with MPSLocation for any DataProvider then?
+
       return null;
     }
     final SNodeActionData nad = SNodeActionData.KEY.getData(dataProvider);

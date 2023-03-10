@@ -166,7 +166,7 @@
 
     <!--For run config creation with action-->
     <getDataRule key="Location"
-                 implementationClass="jetbrains.mps.workbench.dataExtraction.runConfig.LocationRule"/>
+                 implementationClass="jetbrains.mps.workbench.dataExtraction.runConfig.LocationRule" type="context"/>
 
     <editorTabTitleProvider implementation="jetbrains.mps.ide.editor.tabs.EditorTabTitleProviderImpl"/>
 
