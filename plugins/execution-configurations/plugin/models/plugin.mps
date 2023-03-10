@@ -215,6 +215,9 @@
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
       </concept>
+      <concept id="7485977462274819189" name="jetbrains.mps.baseLanguage.structure.FormatOperation" flags="ng" index="2cAKMz">
+        <child id="7485977462274819664" name="arguments" index="2cAKU6" />
+      </concept>
       <concept id="1215693861676" name="jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression" flags="nn" index="d038R">
         <child id="1068498886297" name="rValue" index="37vLTx" />
         <child id="1068498886295" name="lValue" index="37vLTJ" />
@@ -317,6 +320,9 @@
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
+      </concept>
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ng" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
@@ -6043,6 +6049,52 @@
                   <property role="Xl_RC" value="mac" />
                 </node>
               </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="3UAfElGrwoB" role="3cqZAp">
+          <node concept="3cpWsn" id="3UAfElGrwoC" role="3cpWs9">
+            <property role="TrG5h" value="jnaLibPath" />
+            <node concept="3uibUv" id="3UAfElGrwdP" role="1tU5fm">
+              <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+            </node>
+            <node concept="2OqwBi" id="3UAfElGrwoD" role="33vP2m">
+              <node concept="2ShNRf" id="3UAfElGrwoE" role="2Oq$k0">
+                <node concept="1pGfFk" id="3UAfElGrwoF" role="2ShVmc">
+                  <property role="373rjd" value="true" />
+                  <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String,java.lang.String)" resolve="File" />
+                  <node concept="2YIFZM" id="3UAfElGrwoG" role="37wK5m">
+                    <ref role="37wK5l" to="bd8o:~PathManager.getLibPath()" resolve="getLibPath" />
+                    <ref role="1Pybhc" to="bd8o:~PathManager" resolve="PathManager" />
+                  </node>
+                  <node concept="Xl_RD" id="3UAfElGrwoH" role="37wK5m">
+                    <property role="Xl_RC" value="jna" />
+                  </node>
+                </node>
+              </node>
+              <node concept="liA8E" id="3UAfElGrwoI" role="2OqNvi">
+                <ref role="37wK5l" to="guwi:~File.getAbsolutePath()" resolve="getAbsolutePath" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="3UAfElGr$mw" role="3cqZAp">
+          <node concept="37vLTI" id="3UAfElGr_g_" role="3clFbG">
+            <node concept="2OqwBi" id="3UAfElGrCrJ" role="37vLTx">
+              <node concept="Xl_RD" id="3UAfElGr_sy" role="2Oq$k0">
+                <property role="Xl_RC" value="-Djna.boot.library.path=\&quot;%s\&quot; %s" />
+              </node>
+              <node concept="2cAKMz" id="3UAfElGrDxG" role="2OqNvi">
+                <node concept="37vLTw" id="3UAfElGrE6m" role="2cAKU6">
+                  <ref role="3cqZAo" node="3UAfElGrwoC" resolve="jnaLibPath" />
+                </node>
+                <node concept="37vLTw" id="3UAfElGrExz" role="2cAKU6">
+                  <ref role="3cqZAo" node="75c$k6X2Pup" resolve="virtualMachineParameters" />
+                </node>
+              </node>
+            </node>
+            <node concept="37vLTw" id="3UAfElGr$mu" role="37vLTJ">
+              <ref role="3cqZAo" node="75c$k6X2Pup" resolve="virtualMachineParameters" />
             </node>
           </node>
         </node>

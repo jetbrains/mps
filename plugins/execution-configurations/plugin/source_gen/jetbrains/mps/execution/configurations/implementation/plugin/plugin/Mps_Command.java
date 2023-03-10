@@ -12,11 +12,11 @@ import com.intellij.execution.process.ProcessEvent;
 import jetbrains.mps.debug.api.IDebugger;
 import jetbrains.mps.execution.api.commands.CommandPart;
 import org.jetbrains.annotations.Nullable;
+import com.intellij.openapi.application.PathManager;
 import jetbrains.mps.execution.api.commands.ListCommandPart;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.execution.api.commands.PropertyCommandPart;
-import com.intellij.openapi.application.PathManager;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.baseLanguage.execution.api.JvmArgs;
 import java.util.List;
@@ -88,6 +88,8 @@ public class Mps_Command {
       // macOS reuses ports so there is no need to bind to another port
       virtualMachineParameters = "-Dide.httpsupport.internalPort=63321 " + virtualMachineParameters;
     }
+    String jnaLibPath = new File(PathManager.getLibPath(), "jna").getAbsolutePath();
+    virtualMachineParameters = String.format("-Djna.boot.library.path=\"%s\" %s", jnaLibPath, virtualMachineParameters);
 
     if ((settingsPath != null && settingsPath.length() > 0)) {
       String configPath = new File(settingsPath, "config").getAbsolutePath();
