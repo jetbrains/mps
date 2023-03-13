@@ -6,18 +6,18 @@ import jetbrains.mps.logging.Logger;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.baselanguage.unitTest.execution.launcher.ExecutorScript;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.baseLanguage.unitTest.runtime.EnvironmentAwareExtension;
-import java.util.List;
-import org.junit.platform.engine.DiscoverySelector;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.persistence.PersistenceRegistry;
-import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.module.ReloadableModule;
+import jetbrains.mps.baseLanguage.unitTest.runtime.EnvironmentAwareExtension;
+import java.util.List;
+import org.junit.platform.engine.DiscoverySelector;
+import java.util.ArrayList;
 import org.junit.platform.engine.TestEngine;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -35,6 +35,21 @@ public class JUnit5ScriptTestContributor extends AbstractJUnit5TestContributor i
   public JUnit5ScriptTestContributor(@NotNull Environment env, @NotNull ExecutorScript execScript) {
     myEnv = env;
     myExecScript = execScript;
+  }
+
+  @Override
+  protected ClassLoader testModuleContextClassLoader() {
+    final SRepository repo = myEnv.getPlatform().findComponent(MPSModuleRepository.class);
+    return new ModelAccessHelper(repo).runReadAction(() -> {
+      final PersistenceFacade pf = myEnv.getPlatform().findComponent(PersistenceRegistry.class);
+      for (ExecutorScript.TestRecord testRecord : CollectionSequence.fromCollection(myExecScript.getTests())) {
+        SModule testModule = pf.createModuleReference(testRecord.myTestModule).resolve(repo);
+        if (testModule instanceof ReloadableModule) {
+          return ((ReloadableModule) testModule).getClassLoader();
+        }
+      }
+      return Thread.currentThread().getContextClassLoader();
+    });
   }
 
   @Override

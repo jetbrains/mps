@@ -17,9 +17,18 @@ public abstract class AbstractJUnit5TestContributor extends AbstractJUnitTestMix
     super(true);
   }
 
+  protected abstract ClassLoader testModuleContextClassLoader();
+
   @Override
   protected void executeSafe() throws Throwable {
-    executeWithJUnit5(collectSelectors(), collectTestEngines());
+    ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
+    try {
+      Thread.currentThread().setContextClassLoader(testModuleContextClassLoader());
+      executeWithJUnit5(collectSelectors(), collectTestEngines());
+
+    } finally {
+      Thread.currentThread().setContextClassLoader(contextClassLoader);
+    }
   }
 
   protected void executeWithJUnit5(List<DiscoverySelector> selectors, List<TestEngine> engines) {

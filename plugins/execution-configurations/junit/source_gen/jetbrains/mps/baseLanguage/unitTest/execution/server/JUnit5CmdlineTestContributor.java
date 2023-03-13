@@ -27,6 +27,11 @@ public class JUnit5CmdlineTestContributor extends AbstractJUnit5TestContributor 
   }
 
   @Override
+  protected ClassLoader testModuleContextClassLoader() {
+    return Thread.currentThread().getContextClassLoader();
+  }
+
+  @Override
   public List<DiscoverySelector> collectSelectors() {
     List<DiscoverySelector> selectors = new LinkedList<DiscoverySelector>();
     int i = 0;

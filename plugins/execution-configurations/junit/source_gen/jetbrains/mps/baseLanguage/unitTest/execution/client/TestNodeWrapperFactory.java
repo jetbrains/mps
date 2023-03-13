@@ -51,7 +51,7 @@ public enum TestNodeWrapperFactory implements TestDiscoveryParticipant {
         return Optional.empty();
       }
       if (ListSequence.fromList(ITestCase__BehaviorDescriptor.getUncommentedTestMethods_id6I8tQNTvi0f.invoke(SNodeOperations.cast(node, CONCEPTS.ITestCase$Fp))).isEmpty()) {
-        return null;
+        return Optional.empty();
       }
       Optional<TestDescriptor> testOptional = Optional.of(new TestDescriptorBuilder(request.peekContainer()).newTestContainer(ITestCase__BehaviorDescriptor.getClassName_idhGBnqtL.invoke(SNodeOperations.cast(node, CONCEPTS.ITestCase$Fp)), SNodeTestSource.of(node)).withProperty(TestProperties.CAN_RUN_IN_PROCESS, (boolean) ITestCase__BehaviorDescriptor.canRunInProcess_id5_jSk8paieB.invoke(SNodeOperations.cast(node, CONCEPTS.ITestCase$Fp))).withProperty(TestProperties.REQUIRES_MPS_PLATFORM, (boolean) ITestable__BehaviorDescriptor.isMpsStartRequired_id2RMg39tmiFh.invoke(SNodeOperations.cast(node, CONCEPTS.ITestCase$Fp))).add());
       testOptional.ifPresent((TestDescriptor container) -> {
@@ -223,7 +223,7 @@ public enum TestNodeWrapperFactory implements TestDiscoveryParticipant {
         }
         return testOptional;
       }
-      return null;
+      return Optional.empty();
     }
 
   },
