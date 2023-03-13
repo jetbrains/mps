@@ -41,7 +41,7 @@ public abstract class SNodeAccessUtil {
 
   /**
    * @deprecated This method returns serialized property value.
-   * Consider use {@link SNodeAccessUtil#setPropertyValue(SNode, SProperty, Object)} that supplies values as is
+   * Consider use {@link SNodeAccessUtil#getPropertyValue(SNode, SProperty)} that supplies values as is
    */
   @Deprecated
   public static String getProperty(SNode node, SProperty property) {

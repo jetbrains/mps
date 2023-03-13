@@ -275,7 +275,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       // never happens, see show if condition on outer cell
       return null;
     }
-    return EditorUtil.createSelectImageButton(myNode, PROPS.internalBaseDirectory$_8Zr, getEditorContext(), (String path) -> {
+    return EditorUtil.createSelectFolderButton(myNode, PROPS.internalBaseDirectory$_8Zr, getEditorContext(), (String path, String _sample) -> {
       try {
         return rph.makeRelative(path);
       } catch (Exception ex) {
