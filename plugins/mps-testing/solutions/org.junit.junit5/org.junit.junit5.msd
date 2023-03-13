@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <solution name="org.junit.junit5" uuid="63b449db-0918-4a4a-a891-2c430ab133e4" moduleVersion="0" compileInMPS="true">
   <models>
-    <modelRoot contentPath="${mps_home}/plugins/mps-testing/lib" type="java_classes">
+    <modelRoot type="java_classes" contentPath="${mps_home}/plugins/mps-testing/lib">
       <sourceRoot location="." />
     </modelRoot>
   </models>
   <facets>
-    <facet compile="ext" classes="provided" ext="no" type="java">
+    <facet compile="mps" classes="mps" ext="yes" type="java" languageLevel="JAVA_10">
       <classes generated="true" path="${module}/classes_gen" />
     </facet>
   </facets>
