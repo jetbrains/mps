@@ -224,6 +224,13 @@
         <property role="Xl_RC" value="kotlin/Any" />
       </node>
     </node>
+    <node concept="QsSxf" id="1WN66f3xFDB" role="Qtgdg">
+      <property role="TrG5h" value="ENUM" />
+      <ref role="37wK5l" node="4XaBo_Yu8YQ" resolve="BuiltIn" />
+      <node concept="Xl_RD" id="1WN66f3xFDC" role="37wK5m">
+        <property role="Xl_RC" value="kotlin/Enum" />
+      </node>
+    </node>
     <node concept="QsSxf" id="4XaBo_Yu9DZ" role="Qtgdg">
       <property role="TrG5h" value="NOTHING" />
       <ref role="37wK5l" node="4XaBo_Yu8YQ" resolve="BuiltIn" />

@@ -28,6 +28,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_EnumClassDeclaration_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_EnumClassDeclaration_PrivateConstructor_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }

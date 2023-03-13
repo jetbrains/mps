@@ -13,6 +13,7 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.kotlin.scopes.SignatureFilter;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.kotlin.api.members.SuperTypesVisitor;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
@@ -22,6 +23,8 @@ import jetbrains.mps.kotlin.signatures.PropertySignature;
 import jetbrains.mps.kotlin.scopes.signed.CompositeSignatureScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.kotlin.api.builtins.BuiltIn;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -34,8 +37,9 @@ public final class EnumClassDeclaration__BehaviorDescriptor extends BaseBHDescri
   public static final SMethod<Boolean> hasModifier_id2NtWm0y2Y2A = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasModifier").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3233005502712242342L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
   public static final SMethod<SAbstractConcept> getInheritance_id6jE_6duswG9 = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl((Class<SAbstractConcept>) ((Class) Object.class))).name("getInheritance").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7271787702850292489L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<SConcept> getConstructorDefaultVisibility_idu1nygduECM = new SMethodBuilder<SConcept>(new SJavaCompoundTypeImpl((Class<SConcept>) ((Class) Object.class))).name("getConstructorDefaultVisibility").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(540816939199146546L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Integer> visitSuperTypes_id1WN66f3AYxj = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("visitSuperTypes").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2248167455750613075L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SuperTypesVisitor.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getStaticScope_id3HHsmlLCHdO, hasModifier_id2NtWm0y2Y2A, getInheritance_id6jE_6duswG9, getConstructorDefaultVisibility_idu1nygduECM);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getStaticScope_id3HHsmlLCHdO, hasModifier_id2NtWm0y2Y2A, getInheritance_id6jE_6duswG9, getConstructorDefaultVisibility_idu1nygduECM, visitSuperTypes_id1WN66f3AYxj);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -55,6 +59,14 @@ public final class EnumClassDeclaration__BehaviorDescriptor extends BaseBHDescri
   }
   /*package*/ static SConcept getConstructorDefaultVisibility_idu1nygduECM(@NotNull SNode __thisNode__) {
     return CONCEPTS.PrivateVisibility$WS;
+  }
+  /*package*/ static int visitSuperTypes_id1WN66f3AYxj(@NotNull SNode __thisNode__, @NotNull SuperTypesVisitor visitor) {
+    // Visit super enum type first
+    SNode enumType = BuiltIn.ENUM.toClassType();
+    ListSequence.fromList(SLinkOperations.getChildren(enumType, LINKS.typeProjections$vhti)).addElement(IType__BehaviorDescriptor.asInvariantProjection_id2gj5XQXIqKf.invoke(IClassLike__BehaviorDescriptor.getThisType_id46gC9M6gB68.invoke(__thisNode__, ((boolean) false))));
+    IType__BehaviorDescriptor.visitHierarchy_id5q426iHtYvR.invoke(visitor.expandWithCollectedSubstitutions(enumType), visitor);
+
+    return ((int) IInheritExplicitly__BehaviorDescriptor.visitSuperTypes_id1WN66f3AYxj.invoke0(__thisNode__, CONCEPTS.ClassDeclaration$Jm, visitor)) + 1;
   }
 
   /*package*/ EnumClassDeclaration__BehaviorDescriptor() {
@@ -80,6 +92,8 @@ public final class EnumClassDeclaration__BehaviorDescriptor extends BaseBHDescri
         return (T) ((SAbstractConcept) getInheritance_id6jE_6duswG9(node));
       case 3:
         return (T) ((SConcept) getConstructorDefaultVisibility_idu1nygduECM(node));
+      case 4:
+        return (T) ((Integer) visitSuperTypes_id1WN66f3AYxj(node, (SuperTypesVisitor) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -118,5 +132,6 @@ public final class EnumClassDeclaration__BehaviorDescriptor extends BaseBHDescri
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink entries$EB0i = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d75547b5aaL, 0x2043bc8310a23f49L, "entries");
+    /*package*/ static final SContainmentLink typeProjections$vhti = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5b1dd60162c97579L, 0x5b1dd60162c9757cL, "typeProjections");
   }
 }
