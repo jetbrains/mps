@@ -44,7 +44,6 @@
     <import index="xygl" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.progress(MPS.IDEA/)" />
     <import index="mx55" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.roots(MPS.IDEA/)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" implicit="true" />
-    <import index="dj1a" ref="~IDEA IC/java:com.intellij.psi(IDEA IC/)" implicit="true" />
     <import index="pj7v" ref="~ideaJavaPlugin/java:com.intellij.lang.jvm(ideaJavaPlugin/)" implicit="true" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
     <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" implicit="true" />
@@ -1168,7 +1167,7 @@
                                               <ref role="3cqZAo" node="7GJnXJjDKeZ" resolve="jf" />
                                             </node>
                                             <node concept="liA8E" id="2rE1$8OgP6j" role="2OqNvi">
-                                              <ref role="37wK5l" to="dj1a:~PsiFileSystemItem.getName():java.lang.String" resolve="getName" />
+                                              <ref role="37wK5l" to="dj18:~PsiFileSystemItem.getName():java.lang.String" resolve="getName" />
                                             </node>
                                           </node>
                                           <node concept="37vLTw" id="4YpB5dn40nd" role="3ElQJh">
@@ -1432,7 +1431,7 @@
                       <ref role="3cqZAo" node="7GJnXJjDMmU" resolve="file" />
                     </node>
                     <node concept="liA8E" id="65UoPkp_S_u" role="2OqNvi">
-                      <ref role="37wK5l" to="dj1a:~PsiFileSystemItem.getName():java.lang.String" resolve="getName" />
+                      <ref role="37wK5l" to="dj18:~PsiFileSystemItem.getName():java.lang.String" resolve="getName" />
                     </node>
                   </node>
                 </node>
@@ -1516,7 +1515,7 @@
                     <ref role="3cqZAo" node="7GJnXJjDO9Z" resolve="file" />
                   </node>
                   <node concept="liA8E" id="1VDq155nFlT" role="2OqNvi">
-                    <ref role="37wK5l" to="dj1a:~PsiElement.isValid():boolean" resolve="isValid" />
+                    <ref role="37wK5l" to="dj18:~PsiElement.isValid():boolean" resolve="isValid" />
                   </node>
                 </node>
               </node>
@@ -1602,7 +1601,7 @@
                         <ref role="3cqZAo" node="7GJnXJjDO9Z" resolve="file" />
                       </node>
                       <node concept="liA8E" id="1VDq155nFlX" role="2OqNvi">
-                        <ref role="37wK5l" to="dj1a:~PsiFileSystemItem.getName():java.lang.String" resolve="getName" />
+                        <ref role="37wK5l" to="dj18:~PsiFileSystemItem.getName():java.lang.String" resolve="getName" />
                       </node>
                     </node>
                   </node>
@@ -1614,11 +1613,11 @@
                         <ref role="3cqZAo" node="7GJnXJjDO9Z" resolve="file" />
                       </node>
                       <node concept="liA8E" id="1VDq155nFm1" role="2OqNvi">
-                        <ref role="37wK5l" to="dj1a:~PsiFile.getParent():com.intellij.psi.PsiDirectory" resolve="getParent" />
+                        <ref role="37wK5l" to="dj18:~PsiFile.getParent():com.intellij.psi.PsiDirectory" resolve="getParent" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1VDq155nFlF" role="2OqNvi">
-                      <ref role="37wK5l" to="dj1a:~PsiDirectory.getFiles():com.intellij.psi.PsiFile[]" resolve="getFiles" />
+                      <ref role="37wK5l" to="dj18:~PsiDirectory.getFiles():com.intellij.psi.PsiFile[]" resolve="getFiles" />
                     </node>
                   </node>
                   <node concept="3cpWsn" id="1VDq155nFl_" role="1Duv9x">
@@ -1649,7 +1648,7 @@
                         </node>
                         <node concept="2ZW3vV" id="1VDq155nFlr" role="3uHU7w">
                           <node concept="3uibUv" id="77JCHDEmxzy" role="2ZW6by">
-                            <ref role="3uigEE" to="dj1a:~PsiJavaFile" resolve="PsiJavaFile" />
+                            <ref role="3uigEE" to="dj19:~PsiJavaFile" resolve="PsiJavaFile" />
                           </node>
                           <node concept="37vLTw" id="1VDq155nFlp" role="2ZW6bz">
                             <ref role="3cqZAo" node="1VDq155nFl_" resolve="f" />
@@ -1702,7 +1701,7 @@
                     <ref role="3cqZAo" node="7GJnXJjDO9Z" resolve="file" />
                   </node>
                   <node concept="liA8E" id="1VDq155nFmd" role="2OqNvi">
-                    <ref role="37wK5l" to="dj1a:~PsiElement.isValid():boolean" resolve="isValid" />
+                    <ref role="37wK5l" to="dj18:~PsiElement.isValid():boolean" resolve="isValid" />
                   </node>
                 </node>
               </node>
@@ -1726,7 +1725,7 @@
                       <ref role="3cqZAo" node="7GJnXJjDO9Z" resolve="file" />
                     </node>
                     <node concept="liA8E" id="1kJzjY8if8F" role="2OqNvi">
-                      <ref role="37wK5l" to="dj1a:~PsiFileSystemItem.getName():java.lang.String" resolve="getName" />
+                      <ref role="37wK5l" to="dj18:~PsiFileSystemItem.getName():java.lang.String" resolve="getName" />
                     </node>
                   </node>
                 </node>
@@ -1920,7 +1919,7 @@
                           <ref role="3cqZAo" node="7GJnXJjDO9Z" resolve="file" />
                         </node>
                         <node concept="liA8E" id="2rE1$8OdhnA" role="2OqNvi">
-                          <ref role="37wK5l" to="dj1a:~PsiFileSystemItem.getName():java.lang.String" resolve="getName" />
+                          <ref role="37wK5l" to="dj18:~PsiFileSystemItem.getName():java.lang.String" resolve="getName" />
                         </node>
                       </node>
                       <node concept="37vLTw" id="4YpB5dn4Cwj" role="3ElQJh">
