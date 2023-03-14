@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.extapi.module;
 
 import jetbrains.mps.classloading.DumbIdeaPluginFacet;
+import jetbrains.mps.classloading.IdeaPluginModuleFacet;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.facets.JavaModuleFacetImpl;
@@ -163,9 +164,16 @@ public class FacetsRegistry extends FacetsFacade implements CoreComponent {
   }
 
   private void setUpDumbIdeaFacet() {
-    FacetFactory existingFactory = getFacetFactory(DumbIdeaPluginFacet.FACET_TYPE);
+    // FIXME drop once 2022.3 is out
+    FacetFactory existingFactory = getFacetFactory(IdeaPluginModuleFacet.FACET_TYPE);
     if (existingFactory == null) {
       DUMB_IDEA_PLUGIN_FACET_FACTORY = new FacetFactory() {
+        @Override
+        public boolean isApplicable(@NotNull SModule module) {
+          // false to prevent the facet showing up at 'Facets' tab of module properties, no need to add new instances
+          return false;
+        }
+
         @Override
         public SModuleFacet create(@NotNull SModule module) {
           return new DumbIdeaPluginFacet(module);
