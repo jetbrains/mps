@@ -39,13 +39,20 @@ How to develop MPS plugin for IntelliJ IDEA
     - configure project settings
             - open IdeaPlugin project from the MPS sources
             - open "Project Structure" dialog
-                - inside "Project Settings/Project" page ensure that project SDK ("JB JDK 11") is configured. If not, configure
-                  new java SDK named "JB JDK 11" & pointing to JetBrains JDK 11 by pressing on "New" button
-                  NOTE: despite use of Java 17 for Big MPS, we still build IdeaPlugin with Java 11. Once IDEA
-                  switches to Java 17 as the only Java (expected in 2022.3), we don't need to maintain Java 11
-                  compatibility for IdeaPlugin.
+                - inside "Project Settings/Project" page ensure that project SDK ("JB JDK 17") is configured. If not,
+                  configure new java SDK named "JB JDK 17" & pointing to JetBrains JDK 17 by pressing on "New" button.
+                  However, keep Language Level at Java 11, not Default SDK (17), as we need to keep Java 11
+                  compatibility.
+                  FTR, since MPS 2022.2 we use Java 17 for Big MPS, and build IdeaPlugin with Java 11. In 2022.3, IDEA
+                  switched to Java 17, and distributes its classes (e.g. app.jar with bytecode version 61,
+                  which is Java 17) therefore we need Java 17 to compile IdeaPlugin code even though we specify
+                  source/target level at 11 (see e.g. mpsBootstrapCore.xml java.compile tasks settings).
+                  NOTE, there are two -j8 modules, which I believe still necessary in case IDEA with installed MPS
+                  plugin is used to target Java 8 applications (MPS-unrelated, see MPS-32375)
                 - inside "Platform Settings/SDKs" create new IntelliJ Platform Plugin SDK named "IDEA IC" & base on
-                  project SDK created above
+                  project SDK created above.
+                  NOTE, changing project SDK may not be sufficient, IDEA records SDK jars in Classpath of IDEA IC and
+                  you might need to re-create "IDEA IC" Platform SDK when changing Project SDK to update Classpath.
 
 2. How to build & run the plugin
     - press Ctrl+F9 (make project) in order to build the project now. It may take some time because at this moment
