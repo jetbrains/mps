@@ -16,6 +16,10 @@
     <import index="lhc4" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.annotations(MPS.OpenAPI/)" />
     <import index="sfqd" ref="r:63a75970-913d-4a7b-99e2-8ca72ff6f509(jetbrains.mps.baseLanguage.unitTest.execution.client)" />
     <import index="zn9m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util(MPS.IDEA/)" />
+    <import index="ze1i" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.runtime(MPS.Core/)" />
+    <import index="4u8o" ref="r:a7abd5f1-5d9a-4c90-a542-3e14c173186d(jetbrains.mps.baseLanguage.unitTest.platform)" />
+    <import index="kcmp" ref="r:4bf0c2a9-4f1f-47f1-9222-e204836333ad(jetbrains.mps.baseLanguage.unitTest.execution.plugin)" />
+    <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -31,6 +35,9 @@
       </concept>
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
+      </concept>
+      <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
+        <reference id="2820489544401957798" name="classifier" index="HV5vE" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
@@ -90,6 +97,9 @@
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
+      </concept>
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ng" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
@@ -4083,6 +4093,128 @@
     <node concept="3Tm1VV" id="4e85Rl_qXzk" role="1B3o_S" />
     <node concept="2AHcQZ" id="4e85Rl_qXzl" role="2AJF6D">
       <ref role="2AI5Lk" to="lhc4:~Immutable" resolve="Immutable" />
+    </node>
+  </node>
+  <node concept="312cEu" id="VKgNXr8gSj">
+    <property role="TrG5h" value="ModuleActivator" />
+    <node concept="2tJIrI" id="VKgNXr8hYF" role="jymVt" />
+    <node concept="312cEg" id="VKgNXr8ios" role="jymVt">
+      <property role="TrG5h" value="myEnvironmentAccessoryHandler" />
+      <node concept="3Tm6S6" id="VKgNXr8iot" role="1B3o_S" />
+      <node concept="3uibUv" id="VKgNXr8j0y" role="1tU5fm">
+        <ref role="3uigEE" to="kcmp:4rQ9_5eeUH7" resolve="EnvironmentAccessoryHandler" />
+      </node>
+      <node concept="2ShNRf" id="VKgNXr8j8$" role="33vP2m">
+        <node concept="HV5vD" id="VKgNXr8qlC" role="2ShVmc">
+          <property role="373rjd" value="true" />
+          <ref role="HV5vE" to="kcmp:4rQ9_5eeUH7" resolve="EnvironmentAccessoryHandler" />
+        </node>
+      </node>
+    </node>
+    <node concept="312cEg" id="VKgNXrc9oZ" role="jymVt">
+      <property role="TrG5h" value="myPlatform" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="VKgNXrc9p0" role="1B3o_S" />
+      <node concept="3uibUv" id="VKgNXrc9p2" role="1tU5fm">
+        <ref role="3uigEE" to="wyuk:~ComponentHost" resolve="ComponentHost" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="VKgNXr8iiD" role="jymVt" />
+    <node concept="3clFbW" id="VKgNXrc7CW" role="jymVt">
+      <node concept="37vLTG" id="273sq7WoW0k" role="3clF46">
+        <property role="TrG5h" value="platform" />
+        <node concept="3uibUv" id="273sq7WoW0j" role="1tU5fm">
+          <ref role="3uigEE" to="wyuk:~ComponentHost" resolve="ComponentHost" />
+        </node>
+      </node>
+      <node concept="3cqZAl" id="VKgNXrc7CY" role="3clF45" />
+      <node concept="3Tm1VV" id="VKgNXrc7CZ" role="1B3o_S" />
+      <node concept="3clFbS" id="VKgNXrc7D0" role="3clF47">
+        <node concept="3clFbF" id="VKgNXrc9p3" role="3cqZAp">
+          <node concept="37vLTI" id="VKgNXrc9p5" role="3clFbG">
+            <node concept="37vLTw" id="VKgNXrc9p8" role="37vLTJ">
+              <ref role="3cqZAo" node="VKgNXrc9oZ" resolve="myPlatform" />
+            </node>
+            <node concept="37vLTw" id="VKgNXrc9p9" role="37vLTx">
+              <ref role="3cqZAo" node="273sq7WoW0k" resolve="platform" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="VKgNXrc7xK" role="jymVt" />
+    <node concept="3Tm1VV" id="VKgNXr8gSk" role="1B3o_S" />
+    <node concept="3uibUv" id="VKgNXr8hYi" role="EKbjA">
+      <ref role="3uigEE" to="ze1i:~ModuleRuntime$Activator" resolve="Activator" />
+    </node>
+    <node concept="3clFb_" id="VKgNXr8hZn" role="jymVt">
+      <property role="TrG5h" value="activate" />
+      <node concept="3Tm1VV" id="VKgNXr8hZp" role="1B3o_S" />
+      <node concept="3cqZAl" id="VKgNXr8hZr" role="3clF45" />
+      <node concept="3clFbS" id="VKgNXr8hZs" role="3clF47">
+        <node concept="3clFbF" id="2VjRkhsLmoc" role="3cqZAp">
+          <node concept="2YIFZM" id="2VjRkhsLmsZ" role="3clFbG">
+            <ref role="37wK5l" to="sfqd:2VjRkhsJXEC" resolve="registerTestDiscoveryParticipants" />
+            <ref role="1Pybhc" to="sfqd:1KnTQt4Oin6" resolve="TestNodeWrapperFactory" />
+            <node concept="2YIFZM" id="2VjRkhsLm_T" role="37wK5m">
+              <ref role="37wK5l" to="4u8o:4chG8iIteHp" resolve="getInstance" />
+              <ref role="1Pybhc" to="4u8o:4chG8iItd4i" resolve="TestPlatform" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4rQ9_5ef0AR" role="3cqZAp">
+          <node concept="2OqwBi" id="4rQ9_5ef0Gs" role="3clFbG">
+            <node concept="2YIFZM" id="4rQ9_5ef0BE" role="2Oq$k0">
+              <ref role="37wK5l" to="4u8o:4chG8iIteHp" resolve="getInstance" />
+              <ref role="1Pybhc" to="4u8o:4chG8iItd4i" resolve="TestPlatform" />
+            </node>
+            <node concept="liA8E" id="4rQ9_5ef0L0" role="2OqNvi">
+              <ref role="37wK5l" to="4u8o:4rQ9_5dJ_iJ" resolve="addTestSessionLisnener" />
+              <node concept="37vLTw" id="VKgNXr8qoC" role="37wK5m">
+                <ref role="3cqZAo" node="VKgNXr8ios" resolve="myEnvironmentAccessoryHandler" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="VKgNXr8hZt" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="VKgNXr8qvP" role="jymVt" />
+    <node concept="3clFb_" id="VKgNXr8qAi" role="jymVt">
+      <property role="TrG5h" value="deactivate" />
+      <node concept="3Tm1VV" id="VKgNXr8qAk" role="1B3o_S" />
+      <node concept="3cqZAl" id="VKgNXr8qAm" role="3clF45" />
+      <node concept="3clFbS" id="VKgNXr8qAn" role="3clF47">
+        <node concept="3clFbF" id="2VjRkhsLmCt" role="3cqZAp">
+          <node concept="2YIFZM" id="2VjRkhsLmJm" role="3clFbG">
+            <ref role="37wK5l" to="sfqd:2VjRkhsKV4C" resolve="unregisterTestDiscoveryParticipants" />
+            <ref role="1Pybhc" to="sfqd:1KnTQt4Oin6" resolve="TestNodeWrapperFactory" />
+            <node concept="2YIFZM" id="2VjRkhsLmJn" role="37wK5m">
+              <ref role="37wK5l" to="4u8o:4chG8iIteHp" resolve="getInstance" />
+              <ref role="1Pybhc" to="4u8o:4chG8iItd4i" resolve="TestPlatform" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4rQ9_5ef2ND" role="3cqZAp">
+          <node concept="2OqwBi" id="4rQ9_5ef2NE" role="3clFbG">
+            <node concept="2YIFZM" id="4rQ9_5ef2NF" role="2Oq$k0">
+              <ref role="37wK5l" to="4u8o:4chG8iIteHp" resolve="getInstance" />
+              <ref role="1Pybhc" to="4u8o:4chG8iItd4i" resolve="TestPlatform" />
+            </node>
+            <node concept="liA8E" id="4rQ9_5ef2NG" role="2OqNvi">
+              <ref role="37wK5l" to="4u8o:4rQ9_5dK0AG" resolve="removeTestSessionLisnener" />
+              <node concept="37vLTw" id="VKgNXr8z2Q" role="37wK5m">
+                <ref role="3cqZAo" node="VKgNXr8ios" resolve="myEnvironmentAccessoryHandler" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="VKgNXr8qAo" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" />
+      </node>
     </node>
   </node>
 </model>
