@@ -221,9 +221,23 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     }
   }
 
+  private static boolean isBlank(Memento memento) {
+    return memento.getType() == null && !memento.getKeys().iterator().hasNext() && !memento.getChildren().iterator().hasNext();
+  }
+
   @Override
   public void load(@NotNull Memento memento) {
     super.load(memento);
+    // FIXME seems that I need dedicated 'initNew/Default' API method, as blank JMF might be a legitimate scenario
+    //       when I don't need any location. OTOH, can at least provide compile/load/ext flags in this case?
+    if (isBlank(memento)) {
+      // some reasonable defaults for scenario when a new facet is added and immediately loaded with blank Memento.
+      // FIXME in fact, JavaModuleFacetTab does the same, but only for Solution, while I need this to happen for every module with a new JMF.
+      //       Merge these two approaches into 1 place.
+      myGeneratedClassesLocation = getAbstractModule().getModuleSourceDir().findChild(AbstractModule.CLASSES_GEN);
+      // the rest of the fields get their defaults ok (myTransitionalNewValues == false, and compile/classes/ext are fine)
+      return;
+    }
     String languageLevel = memento.get(JAVA_LANGUAGE_LEVEL);
     if (languageLevel != null && languageLevel.length() > 0) {
       myJavaLanguageLevel = JavaLanguageLevel.valueOf(languageLevel);
@@ -463,4 +477,15 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     jmfdOpt.ifPresent(jmfd -> setDefaultClassesGenLocation(jmfd, moduleDir));
   }
 
+  // FIXME hack, no need to create (or resolve classes_gen) unless necessary
+  public static void clearClassesGenLocation(ModuleDescriptor md) {
+    final Optional<ModuleFacetDescriptor> jmfdOpt = md.getModuleFacetDescriptors().stream().filter(d -> JavaModuleFacet.FACET_TYPE.equals(d.getType())).findFirst();
+    jmfdOpt.ifPresent(jmfd -> {
+      final Memento ck = jmfd.getMemento().getChild(CLASSES_KEY);
+      if (ck != null) {
+        ck.put(PATH_KEY, null);
+        ck.putPathSpec(PATH_KEY, null);
+      }
+    });
+  }
 }

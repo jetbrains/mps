@@ -26,6 +26,7 @@ import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.project.facets.JavaModuleFacetImpl;
 import jetbrains.mps.project.structure.modules.DevkitDescriptor;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
@@ -135,6 +136,12 @@ public class TestModuleFactoryBase implements TestModuleFactory {
     descriptor.setNamespace(TEST_PREFIX_SOLUTION + "_" + getNewId() + "_" + uuid);
     descriptor.setId(ModuleId.fromString(uuid));
     withJavaFacet(descriptor);
+    if (descriptorFile != null) {
+      // just to prevent NPE, there's no special meaning to get (or not) classes_gen in case of descriptorFile
+      JavaModuleFacetImpl.setDefaultClassesGenLocation(descriptor, descriptorFile.getParent());
+    } else {
+      JavaModuleFacetImpl.clearClassesGenLocation(descriptor);
+    }
     final Solution solution = (Solution) myModuleFactory.instantiate(descriptor, descriptorFile);
     populate(solution);
     return solution;
@@ -151,6 +158,9 @@ public class TestModuleFactoryBase implements TestModuleFactory {
     generatorDescriptor.setNamespace(TEST_PREFIX_GENERATOR + "_" + getNewId() + "_" + uuid);
     generatorDescriptor.setId(ModuleId.fromString(uuid));
     withJavaFacet(generatorDescriptor);
+    // just to fix tests. They used to pass w/o classes_gen/ location (modules for dependency tests), clear it
+    // as we set it by default now.
+    JavaModuleFacetImpl.clearClassesGenLocation(generatorDescriptor);
     LanguageDescriptor languageDescriptor = createLanguageDescriptor();
     generatorDescriptor.setSourceLanguage(languageDescriptor.getModuleReference());
     languageDescriptor.getGenerators().add(generatorDescriptor);
@@ -164,6 +174,7 @@ public class TestModuleFactoryBase implements TestModuleFactory {
     descriptor.setNamespace(name);
     descriptor.setId(ModuleId.fromString(id.toString()));
     withJavaFacet(descriptor);
+    JavaModuleFacetImpl.clearClassesGenLocation(descriptor);
     descriptor.getRuntimeModules().addAll(Arrays.asList(runtimes));
     return descriptor;
   }
@@ -292,7 +303,6 @@ public class TestModuleFactoryBase implements TestModuleFactory {
     // facet implementation that doesn't load/save anything from memento at the moment, thus the empty one is ok.
     // It might be the default one, JavaModuleFacetImpl that would care to get populated memento (now it falls back to legacy defaults)
     // FIXME with newly introduced JavaModuleFacetImpl.forJavaCodeModule() and no legacy fallback in JMFI, need to be specific about JMF values here
-    final MementoImpl memento = new MementoImpl();
-    descriptor.getModuleFacetDescriptors().add(new ModuleFacetDescriptor(JavaModuleFacet.FACET_TYPE, memento));
+    descriptor.getModuleFacetDescriptors().add(JavaModuleFacetImpl.forNewJavaCodeModule());
   }
 }
