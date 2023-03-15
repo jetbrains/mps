@@ -37715,6 +37715,16 @@
             </node>
           </node>
         </node>
+        <node concept="1SiIV0" id="4yT2m3djquE" role="3bR37C">
+          <node concept="3bR9La" id="4yT2m3djquF" role="1SiIV1">
+            <ref role="3bR37D" node="2Oogzg3vg0R" resolve="jetbrains.mps.baseLanguage.unitTest.platform" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="4yT2m3djquG" role="3bR37C">
+          <node concept="3bR9La" id="4yT2m3djquH" role="1SiIV1">
+            <ref role="3bR37D" node="2eDSGe9d1q1" resolve="MPS.Workbench" />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="m$_wf" id="5CFKsRWV4Nl" role="3989C9">
@@ -43127,16 +43137,6 @@
             </node>
           </node>
         </node>
-        <node concept="1SiIV0" id="2BBIwJJuDXL" role="3bR37C">
-          <node concept="3bR9La" id="2BBIwJJuDXM" role="1SiIV1">
-            <ref role="3bR37D" node="1ULLXZL0gZG" resolve="org.junit.junit5" />
-          </node>
-        </node>
-        <node concept="1SiIV0" id="4rQ9_5dBhhm" role="3bR37C">
-          <node concept="3bR9La" id="4rQ9_5dBhhn" role="1SiIV1">
-            <ref role="3bR37D" node="3zjMY$95UAa" resolve="jetbrains.mps.core.tool.environment" />
-          </node>
-        </node>
       </node>
     </node>
     <node concept="2G$12M" id="3AyJARA_gvl" role="3989C9">
@@ -44800,9 +44800,6 @@
     </node>
     <node concept="10PD9b" id="ymnOULALNk" role="10PD9s" />
     <node concept="3b7kt6" id="ymnOULALNp" role="10PD9s" />
-    <node concept="2sgV4H" id="1A84FU08YEk" role="1l3spa">
-      <ref role="1l3spb" node="2eDSGe9d1ot" resolve="mpsWorkbench" />
-    </node>
   </node>
   <node concept="2DRAQV" id="1w81suM7mlx">
     <property role="TrG5h" value="installer.nsi" />
