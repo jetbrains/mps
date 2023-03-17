@@ -3411,6 +3411,7 @@
       <library file="${artifacts.mpsCore}/mps-core/languages/languageDesign/jetbrains.mps.lang.editor.forms.runtime.jar" />
       <library file="${artifacts.mpsCore}/mps-core/languages/languageDesign/jetbrains.mps.lang.editor.table.runtime.jar" />
       <library file="${artifacts.mpsTesting}/mps-testing/languages/baseLanguage/jetbrains.mps.baseLanguage.unitTest.jar" />
+      <library file="${artifacts.mpsTesting}/mps-testing/languages/baseLanguage/jetbrains.mps.baseLanguage.unitTest.platform.jar" />
       <library file="${artifacts.mpsTesting}/mps-testing/languages/baseLanguage/jetbrains.mps.baseLanguage.unitTest.runtime.jar" />
       <library file="${artifacts.mpsTesting}/mps-testing/languages/junit5/org.junit.junit5.jar" />
       <library file="${artifacts.mpsTesting}/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.jar" />

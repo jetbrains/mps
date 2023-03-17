@@ -3210,6 +3210,7 @@
       <library file="${artifacts.mps}/plugins/mps-execution-languages/languages/jetbrains.mps.execution.commands.jar" />
       <library file="${artifacts.mps}/plugins/mps-execution-languages/languages/jetbrains.mps.execution.library.jar" />
       <library file="${artifacts.mps}/plugins/mps-testing/languages/baseLanguage/jetbrains.mps.baseLanguage.unitTest.jar" />
+      <library file="${artifacts.mps}/plugins/mps-testing/languages/baseLanguage/jetbrains.mps.baseLanguage.unitTest.platform.jar" />
       <library file="${artifacts.mps}/plugins/mps-testing/languages/baseLanguage/jetbrains.mps.baseLanguage.unitTest.runtime.jar" />
       <library file="${artifacts.mps}/plugins/mps-testing/languages/gentest/jetbrains.mps.lang.test.generator.jar" />
       <library file="${artifacts.mps}/plugins/mps-testing/languages/gentest/jetbrains.mps.lang.test.generator.rt.jar" />
