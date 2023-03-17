@@ -393,6 +393,7 @@
       <directory url="file://$PROJECT_DIR$/plugins/mps-testing/languages/smodelTests/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-testing/solutions/junit5/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-testing/solutions/launcher/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-testing/solutions/org.junit.junit5/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-tooltips/languages/tooltips.runtime/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-tooltips/languages/tooltips/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-tooltips/languages/tooltips/source_gen" includeSubdirectories="true" />
