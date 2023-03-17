@@ -20,10 +20,12 @@ import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.kotlin.signatures.AccessorKind;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class PropertySetter__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4e5L, "jetbrains.mps.kotlin.structure.PropertySetter");
@@ -84,7 +86,13 @@ __switch__:
   }
   @NotNull
   /*package*/ static TypeReference getType_id1TQsu41FTV5(@NotNull SNode __thisNode__) {
-    // TODO type of field?
+    {
+      final SNode property = SNodeOperations.getParent(__thisNode__);
+      if (SNodeOperations.isInstanceOf(property, CONCEPTS.PropertyDeclaration$SE)) {
+        return IVariableIdentifier__BehaviorDescriptor.getType_id1TQsu41FTV5.invoke(SLinkOperations.getTarget(property, LINKS.declaration$IdZv));
+      }
+    }
+
     return new InferredTypeReference(__thisNode__);
   }
 
@@ -141,5 +149,10 @@ __switch__:
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink parameter$J_aM = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4e5L, 0x28bef6d7551af816L, "parameter");
+    /*package*/ static final SContainmentLink declaration$IdZv = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4a1L, 0x123d0b402b9ae3edL, "declaration");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept PropertyDeclaration$SE = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4a1L, "jetbrains.mps.kotlin.structure.PropertyDeclaration");
   }
 }

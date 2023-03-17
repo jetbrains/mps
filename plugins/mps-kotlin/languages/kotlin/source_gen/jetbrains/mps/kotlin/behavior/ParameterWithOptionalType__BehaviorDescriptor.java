@@ -14,10 +14,12 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ParameterWithOptionalType__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af52aL, "jetbrains.mps.kotlin.structure.ParameterWithOptionalType");
@@ -35,7 +37,18 @@ public final class ParameterWithOptionalType__BehaviorDescriptor extends BaseBHD
   }
   @NotNull
   /*package*/ static TypeReference getType_id1TQsu41FTV5(@NotNull SNode __thisNode__) {
-    return ((SLinkOperations.getTarget(__thisNode__, LINKS.type$Nm_o) != null) ? new ConcreteTypeReference(SLinkOperations.getTarget(__thisNode__, LINKS.type$Nm_o)) : new InferredTypeReference(__thisNode__));
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.type$Nm_o) != null)) {
+      return new ConcreteTypeReference(SLinkOperations.getTarget(__thisNode__, LINKS.type$Nm_o));
+    }
+
+    {
+      final SNode setter = SNodeOperations.getParent(__thisNode__);
+      if (SNodeOperations.isInstanceOf(setter, CONCEPTS.PropertySetter$s8)) {
+        return IVariableIdentifier__BehaviorDescriptor.getType_id1TQsu41FTV5.invoke(setter);
+      }
+    }
+
+    return new InferredTypeReference(__thisNode__);
   }
 
   /*package*/ ParameterWithOptionalType__BehaviorDescriptor() {
@@ -88,5 +101,9 @@ public final class ParameterWithOptionalType__BehaviorDescriptor extends BaseBHD
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink type$Nm_o = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af52aL, 0x28bef6d7551af88dL, "type");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept PropertySetter$s8 = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4e5L, "jetbrains.mps.kotlin.structure.PropertySetter");
   }
 }

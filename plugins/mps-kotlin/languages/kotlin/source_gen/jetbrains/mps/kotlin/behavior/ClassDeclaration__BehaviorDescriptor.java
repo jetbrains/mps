@@ -169,11 +169,12 @@ __switch__:
     }
   }
   /*package*/ static boolean collectScope_id7DyvjiA20yV(@NotNull final SNode __thisNode__, ScopeCollector collector, SNode childNode) {
-    ISignatureScopeProvider__BehaviorDescriptor.collectScope_id7DyvjiA20yV.invoke0(__thisNode__, CONCEPTS.IClassDeclaration$bQ, collector, childNode);
-
+    // Must be set before anything else in this case, as we do not want to access members first (we may actually want NOT to access it)
     if (Objects.equals(SNodeOperations.getContainingLink(childNode), LINKS.superclasses$6CkZ)) {
       collector.declareCollectedScope((SignatureCollector sigCollector) -> PropertySignature.declareAllTo(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.primaryConstructor$QvZc), LINKS.parameters$$EEQ), false, null, sigCollector));
     }
+
+    ISignatureScopeProvider__BehaviorDescriptor.collectScope_id7DyvjiA20yV.invoke0(__thisNode__, CONCEPTS.IClassDeclaration$bQ, collector, childNode);
 
     return true;
   }

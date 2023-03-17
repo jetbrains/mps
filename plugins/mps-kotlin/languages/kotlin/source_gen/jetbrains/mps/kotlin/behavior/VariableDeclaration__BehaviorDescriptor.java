@@ -10,11 +10,13 @@ import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.kotlin.api.declaration.TypeParameterDeclaration;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import java.util.Collections;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -29,10 +31,11 @@ public final class VariableDeclaration__BehaviorDescriptor extends BaseBHDescrip
   public static final SMethod<Boolean> isLocal_id1vYW8S3rTh_ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLocal").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1729083799690515557L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Boolean> isAssignable_idCy8Bus9oGm = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAssignable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(730183986703600406L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<SNode> getReceiverType_id75chmMYh8YE = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReceiverType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8163976557866815402L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Iterable<TypeParameterDeclaration>> getTypeParameters_id73s7TtK_UKv = new SMethodBuilder<Iterable<TypeParameterDeclaration>>(new SJavaCompoundTypeImpl((Class<Iterable<TypeParameterDeclaration>>) ((Class) Object.class))).name("getTypeParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8132409762413784095L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Iterable<SNode>> getVariables_id1xjvXvOr9B8 = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getVariables").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1752885245472709064L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<TypeReference> getType_id1TQsu41FTV5 = new SMethodBuilder<TypeReference>(new SJavaCompoundTypeImpl(TypeReference.class)).name("getType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2195067079599562437L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLocal_id1vYW8S3rTh_, isAssignable_idCy8Bus9oGm, getReceiverType_id75chmMYh8YE, getVariables_id1xjvXvOr9B8, getType_id1TQsu41FTV5);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLocal_id1vYW8S3rTh_, isAssignable_idCy8Bus9oGm, getReceiverType_id75chmMYh8YE, getTypeParameters_id73s7TtK_UKv, getVariables_id1xjvXvOr9B8, getType_id1TQsu41FTV5);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -60,6 +63,17 @@ public final class VariableDeclaration__BehaviorDescriptor extends BaseBHDescrip
     }
 
     return null;
+  }
+  /*package*/ static Iterable<TypeParameterDeclaration> getTypeParameters_id73s7TtK_UKv(@NotNull SNode __thisNode__) {
+    {
+      final SNode constraintHolder = SNodeOperations.getParent(__thisNode__);
+      if (SNodeOperations.isInstanceOf(constraintHolder, CONCEPTS.IVariableConstraintHolder$zF)) {
+        return IVariableConstraintHolder__BehaviorDescriptor.getVariablesTypeParameters_id73s7TtK_Wrc.invoke(constraintHolder);
+      }
+    }
+
+
+    return Sequence.fromIterable(Collections.<TypeParameterDeclaration>emptyList());
   }
   /*package*/ static Iterable<SNode> getVariables_id1xjvXvOr9B8(@NotNull SNode __thisNode__) {
     return Sequence.<SNode>singleton(__thisNode__);
@@ -96,8 +110,10 @@ public final class VariableDeclaration__BehaviorDescriptor extends BaseBHDescrip
       case 2:
         return (T) ((SNode) getReceiverType_id75chmMYh8YE(node));
       case 3:
-        return (T) ((Iterable<SNode>) getVariables_id1xjvXvOr9B8(node));
+        return (T) ((Iterable<TypeParameterDeclaration>) getTypeParameters_id73s7TtK_UKv(node));
       case 4:
+        return (T) ((Iterable<SNode>) getVariables_id1xjvXvOr9B8(node));
+      case 5:
         return (T) ((TypeReference) getType_id1TQsu41FTV5(node));
       default:
         throw new BHMethodNotFoundException(this, method);

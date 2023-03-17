@@ -11,11 +11,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.List;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Iterator;
 import java.util.Map;
@@ -26,8 +26,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class VisibleClassConstructorsScope extends Scope {
-  private final Scope classifiers;
-  private final SNode contextNode;
+  protected final Scope classifiers;
+  protected final SNode contextNode;
 
   public VisibleClassConstructorsScope(@NotNull SNode contextNode) {
     // todo: find not all classifiers, only class concept!
@@ -44,9 +44,9 @@ public class VisibleClassConstructorsScope extends Scope {
   public Iterable<SNode> getAvailableElements(@Nullable String prefix) {
     return Sequence.fromIterable(classifiers.getAvailableElements(prefix)).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode classifier) {
-        return ListSequence.fromList(SNodeOperations.getChildren(classifier)).where(new IWhereFilter<SNode>() {
+        return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getChildren(classifier), CONCEPTS.ConstructorDeclaration$yG)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(it, CONCEPTS.ConstructorDeclaration$yG) && VisibilityUtil.isVisible(contextNode, SNodeOperations.as(it, CONCEPTS.ConstructorDeclaration$yG));
+            return VisibilityUtil.isVisible(contextNode, it);
           }
         });
       }
@@ -81,7 +81,6 @@ public class VisibleClassConstructorsScope extends Scope {
       return null;
     }
     List<SNode> actualArguments = SLinkOperations.getChildren(SNodeOperations.cast(contextNode, CONCEPTS.ClassCreator$ZG), LINKS.actualArgument$pzdx);
-    List<SNode> typeParameters = SLinkOperations.getChildren(SNodeOperations.cast(contextNode, CONCEPTS.ClassCreator$ZG), LINKS.typeParameter$uYiw);
 
     // use arguments count
     constructors = (List<SNode>) MethodResolveUtil.selectByParmCount(constructors, actualArguments);
@@ -90,8 +89,8 @@ public class VisibleClassConstructorsScope extends Scope {
     }
 
     // use types
-    Iterator<SNode> typeParms = (Iterator<SNode>) typeParameters.iterator();
-    Iterator<SNode> typeVars = (Iterator<SNode>) SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$Lipp).iterator();
+    Iterator<SNode> typeParms = SLinkOperations.getChildren(SNodeOperations.cast(contextNode, CONCEPTS.ClassCreator$ZG), LINKS.typeParameter$uYiw).iterator();
+    Iterator<SNode> typeVars = SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$Lipp).iterator();
     Map<SNode, SNode> typeByTypeVar = new HashMap<SNode, SNode>();
     while (typeParms.hasNext() && typeVars.hasNext()) {
       typeByTypeVar.put(typeVars.next(), typeParms.next());

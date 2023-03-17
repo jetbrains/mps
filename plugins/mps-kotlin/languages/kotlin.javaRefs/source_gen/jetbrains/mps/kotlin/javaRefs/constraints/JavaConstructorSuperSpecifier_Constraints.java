@@ -18,7 +18,6 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
-import jetbrains.mps.baseLanguage.scopes.VisibleClassConstructorsScope;
 import jetbrains.mps.scope.FilteringScope;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -63,7 +62,8 @@ public class JavaConstructorSuperSpecifier_Constraints extends BaseConstraintsDe
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            VisibleClassConstructorsScope scope = new VisibleClassConstructorsScope(_context.getContextNode());
+            Scope scope = new JavaClassProtectedConstructorScope(_context.getContextNode());
+
             return new FilteringScope(scope) {
               @Override
               public boolean isExcluded(SNode node) {
