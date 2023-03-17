@@ -14,6 +14,15 @@ import org.junit.platform.commons.PreconditionViolationException;
 import java.util.List;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.smodel.MPSModuleRepository;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import jetbrains.mps.persistence.PersistenceRegistry;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.module.ReloadableModule;
+import jetbrains.mps.baseLanguage.unitTest.platform.JUnitPlatform;
 import java.io.File;
 
 public class ScriptJUnit5Launcher extends AbstractJUnit5Launcher {
@@ -56,7 +65,15 @@ public class ScriptJUnit5Launcher extends AbstractJUnit5Launcher {
 
   protected void launchTests(Project project, TestExecutionListener executionListener) throws PreconditionViolationException {
     List<Class<?>> testClasses = collectTestClasses(project);
-    launchTests(testClasses, executionListener);
+
+    ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
+    try {
+      Thread.currentThread().setContextClassLoader(testModuleContextClassLoader(project));
+      launchTests(testClasses, executionListener);
+
+    } finally {
+      Thread.currentThread().setContextClassLoader(contextClassLoader);
+    }
   }
 
   private List<Class<?>> collectTestClasses(final Project project) {
@@ -80,6 +97,24 @@ public class ScriptJUnit5Launcher extends AbstractJUnit5Launcher {
     });
 
     return testClasses;
+  }
+
+  private ClassLoader testModuleContextClassLoader(final Project project) {
+    final SRepository repo = myEnvironment.getPlatform().findComponent(MPSModuleRepository.class);
+    return new ModelAccessHelper(repo).runReadAction(() -> {
+      final PersistenceFacade pf = myEnvironment.getPlatform().findComponent(PersistenceRegistry.class);
+      for (SModule testModule : ListSequence.fromList(project.getProjectModules())) {
+        if (testModule instanceof ReloadableModule) {
+          return ((ReloadableModule) testModule).getClassLoader();
+        }
+      }
+      SModule junit5Module = pf.createModuleReference(JUnitPlatform.JUNIT5_LIBS_MODULE_REF).resolve(repo);
+      if (junit5Module instanceof ReloadableModule) {
+        return ((ReloadableModule) junit5Module).getClassLoader();
+      }
+      // if nothing works
+      return Thread.currentThread().getContextClassLoader();
+    });
   }
 
   private boolean isHaltOnFailure() {

@@ -7,8 +7,6 @@ import java.util.Collection;
 import org.junit.platform.launcher.TestExecutionListener;
 import org.junit.platform.commons.PreconditionViolationException;
 import org.junit.platform.launcher.core.LauncherConfig;
-import org.junit.vintage.engine.VintageTestEngine;
-import org.junit.jupiter.engine.JupiterTestEngine;
 import org.junit.platform.launcher.Launcher;
 import org.junit.platform.launcher.core.LauncherFactory;
 import jetbrains.mps.lang.test.junit5.tcutil.JUnit5TestExecutionListener;
@@ -38,7 +36,7 @@ public abstract class AbstractJUnit5Launcher {
   public abstract int launchTests();
 
   protected void launchTests(Collection<Class<?>> testClasses, TestExecutionListener executionListener) throws PreconditionViolationException {
-    LauncherConfig.Builder builder = LauncherConfig.builder().enableTestEngineAutoRegistration(false).enablePostDiscoveryFilterAutoRegistration(false).enableLauncherSessionListenerAutoRegistration(false).enableLauncherDiscoveryListenerAutoRegistration(false).enableTestExecutionListenerAutoRegistration(false).addTestEngines(new VintageTestEngine(), new JupiterTestEngine());
+    LauncherConfig.Builder builder = LauncherConfig.builder().enableTestEngineAutoRegistration(true).enablePostDiscoveryFilterAutoRegistration(false).enableLauncherSessionListenerAutoRegistration(false).enableLauncherDiscoveryListenerAutoRegistration(false).enableTestExecutionListenerAutoRegistration(false);
     LauncherConfig launcherConfig = builder.build();
 
     Launcher launcher = LauncherFactory.openSession(launcherConfig).getLauncher();

@@ -7,6 +7,14 @@ import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestSessionConfig;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestSession;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestPlatform;
+import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.smodel.MPSModuleRepository;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import jetbrains.mps.persistence.PersistenceRegistry;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.baseLanguage.unitTest.platform.JUnitPlatform;
+import jetbrains.mps.module.ReloadableModule;
 import java.io.File;
 
 public class SimpleJUnit5Launcher extends AbstractJUnit5Launcher {
@@ -23,15 +31,36 @@ public class SimpleJUnit5Launcher extends AbstractJUnit5Launcher {
     TestSessionConfig sessionConfig = new TestSessionConfig().withAccessory(Environment.class, myEnvironment);
     TestSession testSession = TestPlatform.getInstance().openSession(sessionConfig);
     try {
-      FailureDetector failureDetector = new FailureDetector();
-
-      launchTests(myTestClasses, failureDetector);
-
-      return failureDetector.failuresCount();
-
+      return doLaunchTest();
     } finally {
       TestPlatform.getInstance().closeSession(testSession);
     }
+  }
+
+  private int doLaunchTest() {
+    FailureDetector failureDetector = new FailureDetector();
+    ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
+    try {
+      Thread.currentThread().setContextClassLoader(testModuleContextClassLoader());
+      launchTests(myTestClasses, failureDetector);
+
+    } finally {
+      Thread.currentThread().setContextClassLoader(contextClassLoader);
+    }
+    return failureDetector.failuresCount();
+  }
+
+  private ClassLoader testModuleContextClassLoader() {
+    final SRepository repo = myEnvironment.getPlatform().findComponent(MPSModuleRepository.class);
+    return new ModelAccessHelper(repo).runReadAction(() -> {
+      final PersistenceFacade pf = myEnvironment.getPlatform().findComponent(PersistenceRegistry.class);
+      SModule junit5Module = pf.createModuleReference(JUnitPlatform.JUNIT5_LIBS_MODULE_REF).resolve(repo);
+      if (junit5Module instanceof ReloadableModule) {
+        return ((ReloadableModule) junit5Module).getClassLoader();
+      }
+      // if nothing works
+      return Thread.currentThread().getContextClassLoader();
+    });
   }
 
   @Override

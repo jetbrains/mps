@@ -11,24 +11,6 @@ import jetbrains.mps.baseLanguage.unitTest.platform.TestDiscoveryRequest;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestDescriptor;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.baseLanguage.unitTest.behavior.ITestCase__BehaviorDescriptor;
-import jetbrains.mps.util.JavaNameUtil;
-import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
-import org.jetbrains.mps.openapi.language.SInterfaceConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.language.SProperty;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class TestDiscovery {
 
@@ -57,84 +39,5 @@ public class TestDiscovery {
         });
       }
     }
-  }
-
-  public void surveyModel(SModel model, ClassLoader moduleCL) {
-    for (SNode testCase : SModelOperations.roots(((SModel) model), CONCEPTS.ITestCase$Fp)) {
-      String testClassName = ITestCase__BehaviorDescriptor.getClassName_idhGBnqtL.invoke(testCase);
-      myDiscoveryVisitor.visitTestRoot(testCase, testClassName, moduleCL);
-    }
-
-    final String packageStmt = JavaNameUtil.packageName(model);
-    for (SNode genTest : SModelOperations.roots(((SModel) model), CONCEPTS.GeneratorTest$C3)) {
-      String testClassName = NameUtil.longNameFromNamespaceAndShortName(packageStmt, SPropertyOperations.getString(genTest, PROPS.name$MnvL));
-      myDiscoveryVisitor.visitTestRoot(genTest, testClassName, moduleCL);
-
-    }
-
-    for (SNode classConcept : SModelOperations.roots(((SModel) model), CONCEPTS.ClassConcept$bK)) {
-      if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(classConcept)), CONCEPTS.ClassConcept$bK))) {
-        continue;
-      }
-
-      Iterable<SNode> allMethods = SNodeOperations.ofConcept(SLinkOperations.getChildren(classConcept, LINKS.member$L_2d), CONCEPTS.InstanceMethodDeclaration$39);
-
-      Iterable<SNode> junit4TestMethods = Sequence.fromIterable(allMethods).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SPropertyOperations.getBoolean(it, PROPS.isAbstract$VtH_)) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$Yyua), CONCEPTS.PublicVisibility$R0);
-        }
-      }).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.annotation$K49I)).any(new IWhereFilter<SNode>() {
-            public boolean accept(SNode a) {
-              // JUnit4's @Test annotation
-              return SLinkOperations.hasPointer(a, LINKS.annotation$12Ek, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~Test"));
-            }
-          });
-        }
-      });
-
-      Iterable<SNode> junit5TestMethods = Sequence.fromIterable(allMethods).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SPropertyOperations.getBoolean(it, PROPS.isAbstract$VtH_)) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$Yyua), CONCEPTS.PrivateVisibility$l0));
-        }
-      }).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.annotation$K49I)).any(new IWhereFilter<SNode>() {
-            public boolean accept(SNode a) {
-              // JUnit5's Jupiter @Test annotation
-              return SLinkOperations.hasPointer(a, LINKS.annotation$12Ek, new SNodePointer("63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.jupiter.api(org.junit.junit5/)", "~Test"));
-            }
-          });
-        }
-      });
-
-      if (Sequence.fromIterable(junit4TestMethods).isNotEmpty() || Sequence.fromIterable(junit5TestMethods).isNotEmpty()) {
-        String testClassName = INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(classConcept);
-        myDiscoveryVisitor.visitTestRoot(classConcept, testClassName, moduleCL);
-
-      }
-    }
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept ITestCase$Fp = MetaAdapterFactory.getInterfaceConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L, "jetbrains.mps.baseLanguage.unitTest.structure.ITestCase");
-    /*package*/ static final SConcept GeneratorTest$C3 = MetaAdapterFactory.getConcept(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf092beL, "jetbrains.mps.lang.test.generator.structure.GeneratorTest");
-    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
-    /*package*/ static final SConcept PublicVisibility$R0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility");
-    /*package*/ static final SConcept PrivateVisibility$l0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isAbstract$VtH_ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink member$L_2d = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
-    /*package*/ static final SContainmentLink visibility$Yyua = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SContainmentLink annotation$K49I = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
-    /*package*/ static final SReferenceLink annotation$12Ek = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
   }
 }
