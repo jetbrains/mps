@@ -20395,5 +20395,29 @@
       <ref role="4PJHt" to="hcm8:2yYXHtl6JhZ" resolve="CallOperation" />
     </node>
   </node>
+  <node concept="3ICUPy" id="6e74p5fd$l7">
+    <property role="3GE5qa" value="expression.operator.unary.postfix.navigation.member" />
+    <ref role="aqKnT" to="hcm8:2yYXHtl6JkP" resolve="IMemberTarget" />
+    <node concept="22hDWj" id="6e74p5fd$sn" role="22hAXT" />
+    <node concept="1Qtc8_" id="6e74p5fd$sq" role="IW6Ez">
+      <node concept="3cWJ9i" id="6e74p5fd$sw" role="1Qtc8$">
+        <node concept="CtIbL" id="6e74p5fd$sy" role="CtIbM">
+          <property role="CtIbK" value="30NnNOohrQL/RIGHT" />
+        </node>
+      </node>
+      <node concept="mvV$s" id="6e74p5fd$sC" role="1Qtc8A">
+        <node concept="mvVNg" id="6e74p5fd$sI" role="mvV$0">
+          <node concept="3clFbS" id="6e74p5fd$sJ" role="2VODD2">
+            <node concept="3clFbF" id="6e74p5fd_NH" role="3cqZAp">
+              <node concept="2OqwBi" id="6e74p5fd_ZJ" role="3clFbG">
+                <node concept="7Obwk" id="6e74p5fd_NG" role="2Oq$k0" />
+                <node concept="1mfA1w" id="6e74p5fdAaW" role="2OqNvi" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 
