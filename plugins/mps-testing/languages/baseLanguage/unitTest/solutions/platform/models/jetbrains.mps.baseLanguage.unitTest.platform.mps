@@ -2564,14 +2564,14 @@
       <property role="TrG5h" value="myCurrentSession" />
       <node concept="3Tm6S6" id="4rQ9_5dLNcq" role="1B3o_S" />
       <node concept="3uibUv" id="4rQ9_5dLVuG" role="1tU5fm">
-        <ref role="3uigEE" to="i5cy:~AtomicReference" resolve="AtomicReference" />
+        <ref role="3uigEE" to="5zyv:~ConcurrentLinkedDeque" resolve="ConcurrentLinkedDeque" />
         <node concept="3uibUv" id="4rQ9_5dM_2X" role="11_B2D">
           <ref role="3uigEE" node="4rQ9_5dBfWe" resolve="TestSession" />
         </node>
       </node>
       <node concept="2ShNRf" id="4rQ9_5dMAWN" role="33vP2m">
         <node concept="1pGfFk" id="4rQ9_5dMAWz" role="2ShVmc">
-          <ref role="37wK5l" to="i5cy:~AtomicReference.&lt;init&gt;()" resolve="AtomicReference" />
+          <ref role="37wK5l" to="5zyv:~ConcurrentLinkedDeque.&lt;init&gt;()" resolve="ConcurrentLinkedDeque" />
           <node concept="3uibUv" id="4rQ9_5dMAW$" role="1pMfVU">
             <ref role="3uigEE" node="4rQ9_5dBfWe" resolve="TestSession" />
           </node>
@@ -2835,53 +2835,31 @@
       </node>
       <node concept="3Tm1VV" id="4rQ9_5dKw32" role="1B3o_S" />
       <node concept="3clFbS" id="4rQ9_5dKw33" role="3clF47">
-        <node concept="3clFbJ" id="4rQ9_5dLXDO" role="3cqZAp">
-          <node concept="3clFbS" id="4rQ9_5dLXDQ" role="3clFbx">
-            <node concept="YS8fn" id="4rQ9_5dM5op" role="3cqZAp">
-              <node concept="2ShNRf" id="4rQ9_5dM7EW" role="YScLw">
-                <node concept="1pGfFk" id="4rQ9_5dMb45" role="2ShVmc">
-                  <property role="373rjd" value="true" />
-                  <ref role="37wK5l" to="wyt6:~IllegalStateException.&lt;init&gt;(java.lang.String)" resolve="IllegalStateException" />
-                  <node concept="Xl_RD" id="4rQ9_5dMd6Q" role="37wK5m">
-                    <property role="Xl_RC" value="test session active" />
-                  </node>
-                </node>
-              </node>
+        <node concept="3cpWs8" id="VnxRnA9MKE" role="3cqZAp">
+          <node concept="3cpWsn" id="VnxRnA9MKF" role="3cpWs9">
+            <property role="TrG5h" value="testSession" />
+            <node concept="3uibUv" id="VnxRnA9KER" role="1tU5fm">
+              <ref role="3uigEE" node="4rQ9_5dBfWe" resolve="TestSession" />
             </node>
-            <node concept="3clFbH" id="4rQ9_5dMXtG" role="3cqZAp" />
-          </node>
-          <node concept="3fqX7Q" id="4rQ9_5dMVyo" role="3clFbw">
-            <node concept="2OqwBi" id="4rQ9_5dMVyq" role="3fr31v">
-              <node concept="37vLTw" id="4rQ9_5dMVyr" role="2Oq$k0">
-                <ref role="3cqZAo" node="4rQ9_5dLNcp" resolve="myCurrentSession" />
+            <node concept="2OqwBi" id="VnxRnA9MKG" role="33vP2m">
+              <node concept="37vLTw" id="VnxRnA9MKH" role="2Oq$k0">
+                <ref role="3cqZAo" node="4rQ9_5dKzSJ" resolve="config" />
               </node>
-              <node concept="liA8E" id="4rQ9_5dMVys" role="2OqNvi">
-                <ref role="37wK5l" to="i5cy:~AtomicReference.compareAndSet(java.lang.Object,java.lang.Object)" resolve="compareAndSet" />
-                <node concept="10Nm6u" id="4rQ9_5dMVyt" role="37wK5m" />
-                <node concept="2OqwBi" id="4rQ9_5dOC3H" role="37wK5m">
-                  <node concept="37vLTw" id="4rQ9_5dOBc1" role="2Oq$k0">
-                    <ref role="3cqZAo" node="4rQ9_5dKzSJ" resolve="config" />
-                  </node>
-                  <node concept="liA8E" id="4rQ9_5dOE6d" role="2OqNvi">
-                    <ref role="37wK5l" node="4rQ9_5dOwUD" resolve="create" />
-                  </node>
-                </node>
+              <node concept="liA8E" id="VnxRnA9MKI" role="2OqNvi">
+                <ref role="37wK5l" node="4rQ9_5dOwUD" resolve="create" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="4rQ9_5dKZ5f" role="3cqZAp">
-          <node concept="3cpWsn" id="4rQ9_5dKZ5g" role="3cpWs9">
-            <property role="TrG5h" value="testSession" />
-            <node concept="3uibUv" id="4rQ9_5dKXS8" role="1tU5fm">
-              <ref role="3uigEE" node="4rQ9_5dBfWe" resolve="TestSession" />
+        <node concept="3clFbF" id="VnxRnA9JqR" role="3cqZAp">
+          <node concept="2OqwBi" id="VnxRnA9JqT" role="3clFbG">
+            <node concept="37vLTw" id="VnxRnA9JqU" role="2Oq$k0">
+              <ref role="3cqZAo" node="4rQ9_5dLNcp" resolve="myCurrentSession" />
             </node>
-            <node concept="2OqwBi" id="4rQ9_5dNboB" role="33vP2m">
-              <node concept="37vLTw" id="4rQ9_5dN9nD" role="2Oq$k0">
-                <ref role="3cqZAo" node="4rQ9_5dLNcp" resolve="myCurrentSession" />
-              </node>
-              <node concept="liA8E" id="4rQ9_5dNdxq" role="2OqNvi">
-                <ref role="37wK5l" to="i5cy:~AtomicReference.get()" resolve="get" />
+            <node concept="liA8E" id="VnxRnA9JqV" role="2OqNvi">
+              <ref role="37wK5l" to="5zyv:~ConcurrentLinkedDeque.push(java.lang.Object)" resolve="push" />
+              <node concept="37vLTw" id="VnxRnA9MKJ" role="37wK5m">
+                <ref role="3cqZAo" node="VnxRnA9MKF" resolve="create" />
               </node>
             </node>
           </node>
@@ -2903,7 +2881,7 @@
                       <node concept="liA8E" id="4rQ9_5dLo15" role="2OqNvi">
                         <ref role="37wK5l" node="4rQ9_5dJnz3" resolve="sessionOpened" />
                         <node concept="37vLTw" id="4rQ9_5dLpM7" role="37wK5m">
-                          <ref role="3cqZAo" node="4rQ9_5dKZ5g" resolve="testSession" />
+                          <ref role="3cqZAo" node="VnxRnA9MKF" resolve="testSession" />
                         </node>
                       </node>
                     </node>
@@ -2919,7 +2897,7 @@
         </node>
         <node concept="3clFbF" id="4rQ9_5dKQZ4" role="3cqZAp">
           <node concept="37vLTw" id="4rQ9_5dKZ5k" role="3clFbG">
-            <ref role="3cqZAo" node="4rQ9_5dKZ5g" resolve="session" />
+            <ref role="3cqZAo" node="VnxRnA9MKF" resolve="testSession" />
           </node>
         </node>
       </node>
@@ -2949,20 +2927,33 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbH" id="4rQ9_5dNjwB" role="3cqZAp" />
+            <node concept="3clFbH" id="VnxRnAaWGs" role="3cqZAp" />
           </node>
-          <node concept="3fqX7Q" id="4rQ9_5dNjwC" role="3clFbw">
-            <node concept="2OqwBi" id="4rQ9_5dNjwD" role="3fr31v">
-              <node concept="37vLTw" id="4rQ9_5dNjwE" role="2Oq$k0">
-                <ref role="3cqZAo" node="4rQ9_5dLNcp" resolve="myCurrentSession" />
+          <node concept="3fqX7Q" id="VnxRnAafwb" role="3clFbw">
+            <node concept="2YIFZM" id="VnxRnAakGc" role="3fr31v">
+              <ref role="37wK5l" to="33ny:~Objects.equals(java.lang.Object,java.lang.Object)" resolve="equals" />
+              <ref role="1Pybhc" to="33ny:~Objects" resolve="Objects" />
+              <node concept="37vLTw" id="VnxRnAanzF" role="37wK5m">
+                <ref role="3cqZAo" node="4rQ9_5dKOBA" resolve="testSession" />
               </node>
-              <node concept="liA8E" id="4rQ9_5dNjwF" role="2OqNvi">
-                <ref role="37wK5l" to="i5cy:~AtomicReference.compareAndSet(java.lang.Object,java.lang.Object)" resolve="compareAndSet" />
-                <node concept="37vLTw" id="4rQ9_5dNmh9" role="37wK5m">
-                  <ref role="3cqZAo" node="4rQ9_5dKOBA" resolve="testSession" />
+              <node concept="2OqwBi" id="VnxRnAauJW" role="37wK5m">
+                <node concept="37vLTw" id="VnxRnAas1x" role="2Oq$k0">
+                  <ref role="3cqZAo" node="4rQ9_5dLNcp" resolve="myCurrentSession" />
                 </node>
-                <node concept="10Nm6u" id="4rQ9_5dNqzL" role="37wK5m" />
+                <node concept="liA8E" id="VnxRnAayJB" role="2OqNvi">
+                  <ref role="37wK5l" to="5zyv:~ConcurrentLinkedDeque.peek()" resolve="peek" />
+                </node>
               </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="VnxRnAaBp5" role="3cqZAp">
+          <node concept="2OqwBi" id="VnxRnAaEC3" role="3clFbG">
+            <node concept="37vLTw" id="VnxRnAaBp3" role="2Oq$k0">
+              <ref role="3cqZAo" node="4rQ9_5dLNcp" resolve="myCurrentSession" />
+            </node>
+            <node concept="liA8E" id="VnxRnAaHvz" role="2OqNvi">
+              <ref role="37wK5l" to="5zyv:~ConcurrentLinkedDeque.pop()" resolve="pop" />
             </node>
           </node>
         </node>

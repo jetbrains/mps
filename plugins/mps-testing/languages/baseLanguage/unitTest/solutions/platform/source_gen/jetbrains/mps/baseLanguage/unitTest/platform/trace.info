@@ -384,103 +384,101 @@
   </root>
   <root nodeRef="r:a7abd5f1-5d9a-4c90-a542-3e14c173186d(jetbrains.mps.baseLanguage.unitTest.platform)/4832837959054315794">
     <file name="TestPlatform.java">
-      <node id="4832837959054322648" at="16,0,17,0" concept="10" trace="INSTANCE" />
-      <node id="4832837959054407357" at="18,44,19,20" concept="7" />
-      <node id="3374283831513030326" at="22,0,23,0" concept="3" trace="myDiscoveryParticipants" />
-      <node id="5113316557564265454" at="23,0,24,0" concept="3" trace="myTestSessionListeners" />
-      <node id="5240229952787429681" at="24,0,25,0" concept="3" trace="myTestPlatformListeners" />
-      <node id="5113316557564883737" at="25,0,26,0" concept="3" trace="myCurrentSession" />
-      <node id="5240229952787669087" at="30,22,31,119" concept="2" />
-      <node id="3374283831516074398" at="34,23,35,36" concept="2" />
-      <node id="3374283831513113212" at="38,94,39,45" concept="2" />
-      <node id="3374283831513126182" at="42,97,43,48" concept="2" />
-      <node id="5113316557564382619" at="46,68,47,41" concept="2" />
-      <node id="5113316557564414384" at="50,71,51,44" concept="2" />
-      <node id="5240229952787542574" at="54,77,55,42" concept="2" />
-      <node id="5240229952787596371" at="55,42,56,0" concept="9" />
-      <node id="5240229952787582732" at="58,80,59,45" concept="2" />
-      <node id="3374283831513551543" at="62,70,63,51" concept="7" />
-      <node id="5113316557564958233" at="67,67,68,61" concept="12" />
-      <node id="5113316557565187948" at="68,61,69,0" concept="9" />
-      <node id="5113316557564670287" at="70,5,71,59" concept="6" />
-      <node id="5113316557564695889" at="71,59,72,94" concept="2" />
-      <node id="5113316557564637124" at="72,94,73,23" concept="7" />
-      <node id="5113316557565278243" at="77,63,78,62" concept="12" />
-      <node id="5113316557565278247" at="78,62,79,0" concept="9" />
-      <node id="5113316557564789309" at="80,5,81,94" concept="2" />
-      <node id="3374283831513730747" at="87,101,88,190" concept="6" />
-      <node id="3374283831513230945" at="88,190,89,66" concept="7" />
-      <node id="3374283831513031653" at="27,0,29,0" concept="1" trace="TestPlatform#()V" />
-      <node id="4832837959054322521" at="18,0,21,0" concept="11" trace="getInstance#()Ljetbrains/mps/baseLanguage/unitTest/platform/TestPlatform;" />
-      <node id="5240229952787646787" at="30,0,33,0" concept="5" trace="init#()V" />
-      <node id="3374283831515931573" at="34,0,37,0" concept="5" trace="clear#()V" />
-      <node id="3374283831513024220" at="38,0,41,0" concept="5" trace="addTestDiscoveryParticipant#(Ljetbrains/mps/baseLanguage/unitTest/platform/TestDiscoveryParticipant;)V" />
-      <node id="3374283831513126176" at="42,0,45,0" concept="5" trace="removeTestDiscoveryParticipant#(Ljetbrains/mps/baseLanguage/unitTest/platform/TestDiscoveryParticipant;)V" />
-      <node id="5113316557564302511" at="46,0,49,0" concept="5" trace="addTestSessionLisnener#(Ljetbrains/mps/baseLanguage/unitTest/platform/TestSessionListener;)V" />
-      <node id="5113316557564414380" at="50,0,53,0" concept="5" trace="removeTestSessionLisnener#(Ljetbrains/mps/baseLanguage/unitTest/platform/TestSessionListener;)V" />
-      <node id="5240229952787582728" at="58,0,61,0" concept="5" trace="removePlatformListener#(Ljetbrains/mps/baseLanguage/unitTest/platform/TestPlatformInitializedListener;)V" />
-      <node id="3374283831513416298" at="62,0,65,0" concept="5" trace="getAggregateDiscoveryParticipant#()Ljetbrains/mps/baseLanguage/unitTest/platform/TestDiscoveryParticipant;" />
-      <node id="5240229952787460750" at="54,0,58,0" concept="5" trace="addPlatformListener#(Ljetbrains/mps/baseLanguage/unitTest/platform/TestPlatformInitializedListener;)V" />
-      <node id="5113316557564926580" at="66,60,70,5" concept="4" />
-      <node id="5113316557565278241" at="76,59,80,5" concept="4" />
-      <node id="3374283831513194473" at="86,0,91,0" concept="5" trace="discover#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/baseLanguage/unitTest/platform/TestDiscoveryRequest;)Ljava/util/Optional;" />
-      <node id="5113316557564605216" at="76,0,83,0" concept="5" trace="closeSession#(Ljetbrains/mps/baseLanguage/unitTest/platform/TestSession;)V" />
-      <node id="5113316557564543167" at="66,0,75,0" concept="5" trace="openSession#(Ljetbrains/mps/baseLanguage/unitTest/platform/TestSessionConfig;)Ljetbrains/mps/baseLanguage/unitTest/platform/TestSession;" />
-      <scope id="3374283831513031657" at="27,26,27,26" />
-      <scope id="4832837959054322525" at="18,44,19,20" />
-      <scope id="5240229952787646791" at="30,22,31,119" />
-      <scope id="3374283831515931577" at="34,23,35,36" />
-      <scope id="3374283831513024224" at="38,94,39,45" />
-      <scope id="3374283831513126181" at="42,97,43,48" />
-      <scope id="5113316557564302515" at="46,68,47,41" />
-      <scope id="5113316557564414383" at="50,71,51,44" />
-      <scope id="5240229952787582731" at="58,80,59,45" />
-      <scope id="3374283831513416302" at="62,70,63,51" />
-      <scope id="3374283831513031653" at="27,0,29,0" />
-      <scope id="5240229952787460754" at="54,77,56,0" />
-      <scope id="5113316557564926582" at="67,67,69,0" />
-      <scope id="5113316557565278242" at="77,63,79,0" />
-      <scope id="3374283831513194482" at="87,101,89,66">
+      <node id="4832837959054322648" at="17,0,18,0" concept="10" trace="INSTANCE" />
+      <node id="4832837959054407357" at="19,44,20,20" concept="7" />
+      <node id="3374283831513030326" at="23,0,24,0" concept="3" trace="myDiscoveryParticipants" />
+      <node id="5113316557564265454" at="24,0,25,0" concept="3" trace="myTestSessionListeners" />
+      <node id="5240229952787429681" at="25,0,26,0" concept="3" trace="myTestPlatformListeners" />
+      <node id="5113316557564883737" at="26,0,27,0" concept="3" trace="myCurrentSession" />
+      <node id="5240229952787669087" at="31,22,32,119" concept="2" />
+      <node id="3374283831516074398" at="35,23,36,36" concept="2" />
+      <node id="3374283831513113212" at="39,94,40,45" concept="2" />
+      <node id="3374283831513126182" at="43,97,44,48" concept="2" />
+      <node id="5113316557564382619" at="47,68,48,41" concept="2" />
+      <node id="5113316557564414384" at="51,71,52,44" concept="2" />
+      <node id="5240229952787542574" at="55,77,56,42" concept="2" />
+      <node id="5240229952787596371" at="56,42,57,0" concept="9" />
+      <node id="5240229952787582732" at="59,80,60,45" concept="2" />
+      <node id="3374283831513551543" at="63,70,64,51" concept="7" />
+      <node id="1069472376966032426" at="67,60,68,52" concept="6" />
+      <node id="1069472376966018743" at="68,52,69,39" concept="2" />
+      <node id="5113316557564695889" at="69,39,70,94" concept="2" />
+      <node id="5113316557564637124" at="70,94,71,23" concept="7" />
+      <node id="5113316557565278243" at="75,66,76,62" concept="12" />
+      <node id="1069472376966335260" at="76,62,77,0" concept="9" />
+      <node id="1069472376966248005" at="78,5,79,27" concept="2" />
+      <node id="5113316557564789309" at="79,27,80,94" concept="2" />
+      <node id="3374283831513730747" at="86,101,87,190" concept="6" />
+      <node id="3374283831513230945" at="87,190,88,66" concept="7" />
+      <node id="3374283831513031653" at="28,0,30,0" concept="1" trace="TestPlatform#()V" />
+      <node id="4832837959054322521" at="19,0,22,0" concept="11" trace="getInstance#()Ljetbrains/mps/baseLanguage/unitTest/platform/TestPlatform;" />
+      <node id="5240229952787646787" at="31,0,34,0" concept="5" trace="init#()V" />
+      <node id="3374283831515931573" at="35,0,38,0" concept="5" trace="clear#()V" />
+      <node id="3374283831513024220" at="39,0,42,0" concept="5" trace="addTestDiscoveryParticipant#(Ljetbrains/mps/baseLanguage/unitTest/platform/TestDiscoveryParticipant;)V" />
+      <node id="3374283831513126176" at="43,0,46,0" concept="5" trace="removeTestDiscoveryParticipant#(Ljetbrains/mps/baseLanguage/unitTest/platform/TestDiscoveryParticipant;)V" />
+      <node id="5113316557564302511" at="47,0,50,0" concept="5" trace="addTestSessionLisnener#(Ljetbrains/mps/baseLanguage/unitTest/platform/TestSessionListener;)V" />
+      <node id="5113316557564414380" at="51,0,54,0" concept="5" trace="removeTestSessionLisnener#(Ljetbrains/mps/baseLanguage/unitTest/platform/TestSessionListener;)V" />
+      <node id="5240229952787582728" at="59,0,62,0" concept="5" trace="removePlatformListener#(Ljetbrains/mps/baseLanguage/unitTest/platform/TestPlatformInitializedListener;)V" />
+      <node id="3374283831513416298" at="63,0,66,0" concept="5" trace="getAggregateDiscoveryParticipant#()Ljetbrains/mps/baseLanguage/unitTest/platform/TestDiscoveryParticipant;" />
+      <node id="5240229952787460750" at="55,0,59,0" concept="5" trace="addPlatformListener#(Ljetbrains/mps/baseLanguage/unitTest/platform/TestPlatformInitializedListener;)V" />
+      <node id="5113316557565278241" at="74,59,78,5" concept="4" />
+      <node id="3374283831513194473" at="85,0,90,0" concept="5" trace="discover#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/baseLanguage/unitTest/platform/TestDiscoveryRequest;)Ljava/util/Optional;" />
+      <node id="5113316557564543167" at="67,0,73,0" concept="5" trace="openSession#(Ljetbrains/mps/baseLanguage/unitTest/platform/TestSessionConfig;)Ljetbrains/mps/baseLanguage/unitTest/platform/TestSession;" />
+      <node id="5113316557564605216" at="74,0,82,0" concept="5" trace="closeSession#(Ljetbrains/mps/baseLanguage/unitTest/platform/TestSession;)V" />
+      <scope id="3374283831513031657" at="28,26,28,26" />
+      <scope id="4832837959054322525" at="19,44,20,20" />
+      <scope id="5240229952787646791" at="31,22,32,119" />
+      <scope id="3374283831515931577" at="35,23,36,36" />
+      <scope id="3374283831513024224" at="39,94,40,45" />
+      <scope id="3374283831513126181" at="43,97,44,48" />
+      <scope id="5113316557564302515" at="47,68,48,41" />
+      <scope id="5113316557564414383" at="51,71,52,44" />
+      <scope id="5240229952787582731" at="59,80,60,45" />
+      <scope id="3374283831513416302" at="63,70,64,51" />
+      <scope id="3374283831513031653" at="28,0,30,0" />
+      <scope id="5240229952787460754" at="55,77,57,0" />
+      <scope id="5113316557565278242" at="75,66,77,0" />
+      <scope id="3374283831513194482" at="86,101,88,66">
         <var name="first" id="3374283831513730748" />
       </scope>
-      <scope id="4832837959054322521" at="18,0,21,0" />
-      <scope id="5240229952787646787" at="30,0,33,0" />
-      <scope id="3374283831515931573" at="34,0,37,0" />
-      <scope id="3374283831513024220" at="38,0,41,0">
+      <scope id="4832837959054322521" at="19,0,22,0" />
+      <scope id="5240229952787646787" at="31,0,34,0" />
+      <scope id="3374283831515931573" at="35,0,38,0" />
+      <scope id="3374283831513024220" at="39,0,42,0">
         <var name="participant" id="3374283831513025571" />
       </scope>
-      <scope id="3374283831513126176" at="42,0,45,0">
+      <scope id="3374283831513126176" at="43,0,46,0">
         <var name="participant" id="3374283831513126177" />
       </scope>
-      <scope id="5113316557564302511" at="46,0,49,0">
+      <scope id="5113316557564302511" at="47,0,50,0">
         <var name="listener" id="5113316557564358562" />
       </scope>
-      <scope id="5113316557564414380" at="50,0,53,0">
+      <scope id="5113316557564414380" at="51,0,54,0">
         <var name="listener" id="5113316557564414389" />
       </scope>
-      <scope id="5240229952787582728" at="58,0,61,0">
+      <scope id="5240229952787582728" at="59,0,62,0">
         <var name="listener" id="5240229952787582737" />
       </scope>
-      <scope id="3374283831513416298" at="62,0,65,0" />
-      <scope id="5240229952787460750" at="54,0,58,0">
+      <scope id="3374283831513416298" at="63,0,66,0" />
+      <scope id="5240229952787460750" at="55,0,59,0">
         <var name="listener" id="5240229952787534175" />
       </scope>
-      <scope id="5113316557564605220" at="76,59,81,94" />
-      <scope id="3374283831513194473" at="86,0,91,0">
+      <scope id="5113316557564543171" at="67,60,71,23">
+        <var name="testSession" id="1069472376966032427" />
+      </scope>
+      <scope id="3374283831513194473" at="85,0,90,0">
         <var name="request" id="3374283831513194476" />
         <var name="sNode" id="3374283831513194474" />
       </scope>
-      <scope id="5113316557564543171" at="66,60,73,23">
-        <var name="testSession" id="5113316557564670288" />
-      </scope>
-      <scope id="5113316557564605216" at="76,0,83,0">
-        <var name="testSession" id="5113316557564627430" />
-      </scope>
-      <scope id="5113316557564543167" at="66,0,75,0">
+      <scope id="5113316557564543167" at="67,0,73,0">
         <var name="config" id="5113316557564558895" />
       </scope>
-      <unit id="3374283831513179478" at="84,0,92,0" name="jetbrains.mps.baseLanguage.unitTest.platform.TestPlatform$AggregateTestDiscoveryParticipant" />
-      <unit id="4832837959054315794" at="11,0,94,0" name="jetbrains.mps.baseLanguage.unitTest.platform.TestPlatform" />
+      <scope id="5113316557564605220" at="74,59,80,94" />
+      <scope id="5113316557564605216" at="74,0,82,0">
+        <var name="testSession" id="5113316557564627430" />
+      </scope>
+      <unit id="3374283831513179478" at="83,0,91,0" name="jetbrains.mps.baseLanguage.unitTest.platform.TestPlatform$AggregateTestDiscoveryParticipant" />
+      <unit id="4832837959054315794" at="12,0,93,0" name="jetbrains.mps.baseLanguage.unitTest.platform.TestPlatform" />
     </file>
   </root>
   <root nodeRef="r:a7abd5f1-5d9a-4c90-a542-3e14c173186d(jetbrains.mps.baseLanguage.unitTest.platform)/5113316557562117810">

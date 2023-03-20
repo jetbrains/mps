@@ -4,7 +4,8 @@ package jetbrains.mps.baseLanguage.unitTest.platform;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.Objects;
 import java.util.Optional;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -22,7 +23,7 @@ public class TestPlatform {
   private List<TestDiscoveryParticipant> myDiscoveryParticipants = new CopyOnWriteArrayList<>();
   private List<TestSessionListener> myTestSessionListeners = new CopyOnWriteArrayList<>();
   private List<TestPlatformInitializedListener> myTestPlatformListeners = new CopyOnWriteArrayList<>();
-  private AtomicReference<TestSession> myCurrentSession = new AtomicReference<TestSession>();
+  private ConcurrentLinkedDeque<TestSession> myCurrentSession = new ConcurrentLinkedDeque<TestSession>();
 
   private TestPlatform() {
   }
@@ -64,20 +65,18 @@ public class TestPlatform {
   }
 
   public TestSession openSession(TestSessionConfig config) {
-    if (!(myCurrentSession.compareAndSet(null, config.create()))) {
-      throw new IllegalStateException("test session active");
-
-    }
-    final TestSession testSession = myCurrentSession.get();
+    final TestSession testSession = config.create();
+    myCurrentSession.push(testSession);
     myTestSessionListeners.forEach((TestSessionListener li) -> li.sessionOpened(testSession));
     return testSession;
   }
 
   public void closeSession(final TestSession testSession) {
-    if (!(myCurrentSession.compareAndSet(testSession, null))) {
+    if (!(Objects.equals(testSession, myCurrentSession.peek()))) {
       throw new IllegalStateException("invalid test session");
 
     }
+    myCurrentSession.pop();
     myTestSessionListeners.forEach((TestSessionListener li) -> li.sessionClosed(testSession));
   }
 
