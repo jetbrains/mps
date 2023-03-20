@@ -45,11 +45,12 @@ public class JUnit5ScriptTestContributor extends AbstractJUnit5TestContributor i
         if (testModule instanceof ReloadableModule) {
           return ((ReloadableModule) testModule).getClassLoader();
         }
-        testModule = pf.createModuleReference(JUnitPlatform.JUNIT5_LIBS_MODULE_REF).resolve(repo);
-        if (testModule instanceof ReloadableModule) {
-          return ((ReloadableModule) testModule).getClassLoader();
-        }
       }
+      SModule junit5Module = pf.createModuleReference(JUnitPlatform.JUNIT5_LIBS_MODULE_REF).resolve(repo);
+      if (junit5Module instanceof ReloadableModule) {
+        return ((ReloadableModule) junit5Module).getClassLoader();
+      }
+      // if nothing works
       return Thread.currentThread().getContextClassLoader();
     });
   }
