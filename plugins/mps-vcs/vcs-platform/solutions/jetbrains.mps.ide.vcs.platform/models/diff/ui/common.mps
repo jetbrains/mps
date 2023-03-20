@@ -96,6 +96,7 @@
     <import index="gspm" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui.popup(MPS.IDEA/)" />
     <import index="8m69" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.editor.markup(MPS.IDEA/)" />
     <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" implicit="true" />
+    <import index="rlg8" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor.highlighter(MPS.Editor/)" implicit="true" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -13183,6 +13184,19 @@
               </node>
             </node>
           </node>
+          <node concept="3clFbF" id="6td5DrFViOF" role="3cqZAp">
+            <node concept="2OqwBi" id="6td5DrFViOG" role="3clFbG">
+              <node concept="1rXfSq" id="6td5DrFViOH" role="2Oq$k0">
+                <ref role="37wK5l" to="exr9:~EditorComponent.getHighlighter()" resolve="getHighlighter" />
+              </node>
+              <node concept="liA8E" id="6td5DrFViOI" role="2OqNvi">
+                <ref role="37wK5l" to="rlg8:~EditorHighlighter.setPaused(boolean)" resolve="setPaused" />
+                <node concept="3clFbT" id="6td5DrFViOJ" role="37wK5m">
+                  <property role="3clFbU" value="true" />
+                </node>
+              </node>
+            </node>
+          </node>
         </node>
       </node>
       <node concept="2tJIrI" id="1I2O4_rhaEe" role="jymVt" />
@@ -13494,6 +13508,19 @@
                   <property role="373rjd" value="true" />
                   <ref role="37wK5l" node="6mNCvHSfBy0" resolve="DiffEditor.MyTooltipProvider" />
                   <node concept="3clFbT" id="3oSjOhxR$Oz" role="37wK5m" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="6td5DrFV1Jb" role="3cqZAp">
+            <node concept="2OqwBi" id="6td5DrFV5su" role="3clFbG">
+              <node concept="1rXfSq" id="6td5DrFV1J9" role="2Oq$k0">
+                <ref role="37wK5l" to="exr9:~EditorComponent.getHighlighter()" resolve="getHighlighter" />
+              </node>
+              <node concept="liA8E" id="6td5DrFV8we" role="2OqNvi">
+                <ref role="37wK5l" to="rlg8:~EditorHighlighter.setPaused(boolean)" resolve="setPaused" />
+                <node concept="3clFbT" id="6td5DrFVfbI" role="37wK5m">
+                  <property role="3clFbU" value="true" />
                 </node>
               </node>
             </node>
