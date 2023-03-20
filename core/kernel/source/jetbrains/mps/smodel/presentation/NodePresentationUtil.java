@@ -266,6 +266,10 @@ public class NodePresentationUtil {
     return c.getName();
   }
 
+  /**
+   * @deprecated single use doesn't justify existence of this odd logic
+   */
+  @Deprecated(since = "2023.1", forRemoval = true)
   public static String getRoleInParentOrConceptName(SNode node) {
     SContainmentLink role = node.getContainmentLink();
     if (role != null) {

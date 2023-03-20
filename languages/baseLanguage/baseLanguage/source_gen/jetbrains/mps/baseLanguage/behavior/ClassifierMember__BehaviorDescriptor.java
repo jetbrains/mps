@@ -26,6 +26,7 @@ import jetbrains.mps.baseLanguage.scopes.ClassifierScopeUtils;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Set;
 import java.util.HashSet;
+import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -44,8 +45,9 @@ public final class ClassifierMember__BehaviorDescriptor extends BaseBHDescriptor
   public static final SMethod<Boolean> needsEmptyLineBefore_idzB21h1tQit = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("needsEmptyLineBefore").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(641490355014296733L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> needsEmptyLineAfter_idzB21h1tQNm = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("needsEmptyLineAfter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(641490355014298838L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> canBeInterfaceMember_id2zJQqQIUx2B = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeInterfaceMember").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2949815620938109095L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<String> getDescriptionText_id69Qfsw3IqwE = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDescriptionText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7094926192234047530L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isStaticClassifierMember_id7MS72Gc8avw, isVisible_id70J2WaK_oVl, populateMember_id6r77ob2UW9O, isVisible_id5laDzmpBPv8, isStatic_id6r77ob2USS8, needsEmptyLineBefore_idzB21h1tQit, needsEmptyLineAfter_idzB21h1tQNm, canBeInterfaceMember_id2zJQqQIUx2B);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isStaticClassifierMember_id7MS72Gc8avw, isVisible_id70J2WaK_oVl, populateMember_id6r77ob2UW9O, isVisible_id5laDzmpBPv8, isStatic_id6r77ob2USS8, needsEmptyLineBefore_idzB21h1tQit, needsEmptyLineAfter_idzB21h1tQNm, canBeInterfaceMember_id2zJQqQIUx2B, getDescriptionText_id69Qfsw3IqwE);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -124,6 +126,10 @@ public final class ClassifierMember__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ static boolean canBeInterfaceMember_id2zJQqQIUx2B(@NotNull SAbstractConcept __thisConcept__) {
     return false;
   }
+  /*package*/ static String getDescriptionText_id69Qfsw3IqwE(@NotNull SNode __thisNode__, SNode reference) {
+    SNode classifier = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$Ix, false, false);
+    return String.format("%s (%s)", SNodeOperations.getContainingLink(__thisNode__).getName(), (classifier != null ? NameUtil.compactNodeFQName(classifier) : "?classifier?"));
+  }
 
   /*package*/ ClassifierMember__BehaviorDescriptor() {
   }
@@ -155,6 +161,8 @@ public final class ClassifierMember__BehaviorDescriptor extends BaseBHDescriptor
         return (T) ((Boolean) needsEmptyLineBefore_idzB21h1tQit(node));
       case 6:
         return (T) ((Boolean) needsEmptyLineAfter_idzB21h1tQNm(node));
+      case 8:
+        return (T) ((String) getDescriptionText_id69Qfsw3IqwE(node, (SNode) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
