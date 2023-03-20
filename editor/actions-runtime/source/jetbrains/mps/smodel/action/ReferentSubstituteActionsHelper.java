@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,6 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.scope.ErrorScope;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.smodel.constraints.ReferenceDescriptor;
 import org.jetbrains.annotations.NotNull;
@@ -43,15 +42,13 @@ class ReferentSubstituteActionsHelper {
                                                      IReferentPresentationProvider matchingTextProvider,
                                                      IReferentPresentationProvider visibleMatchingTextProvider, EditorContext editorContext) {
     // search scope
-    // ModelConstraints works with valid links that should be taken from genuine link declaration
-    SReferenceLink association = MetaAdapterByDeclaration.getReferenceLink(link.getDeclarationNode());
-    ReferenceDescriptor refDescriptor = ModelConstraints.getReferenceDescriptor(referenceNode, association);
+    ReferenceDescriptor refDescriptor = ModelConstraints.getReferenceDescriptor(referenceNode, link);
     Scope searchScope = refDescriptor.getScope();
     if (searchScope instanceof ErrorScope) {
       LOG.error("Couldn't create referent search scope : " + ((ErrorScope) searchScope).getMessage());
       return Collections.emptyList();
     }
-    return createActions(referenceNode, association, refDescriptor, matchingTextProvider, visibleMatchingTextProvider, editorContext);
+    return createActions(referenceNode, link, refDescriptor, matchingTextProvider, visibleMatchingTextProvider, editorContext);
   }
 
   private static List<SubstituteAction> createActions(SNode referenceNode, SReferenceLink association,
