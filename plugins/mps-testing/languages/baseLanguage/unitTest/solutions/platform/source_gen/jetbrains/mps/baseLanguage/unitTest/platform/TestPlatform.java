@@ -22,14 +22,9 @@ public class TestPlatform {
 
   private List<TestDiscoveryParticipant> myDiscoveryParticipants = new CopyOnWriteArrayList<>();
   private List<TestSessionListener> myTestSessionListeners = new CopyOnWriteArrayList<>();
-  private List<TestPlatformInitializedListener> myTestPlatformListeners = new CopyOnWriteArrayList<>();
   private ConcurrentLinkedDeque<TestSession> myCurrentSession = new ConcurrentLinkedDeque<TestSession>();
 
   private TestPlatform() {
-  }
-
-  public void init() {
-    myTestPlatformListeners.forEach((TestPlatformInitializedListener li) -> li.platformInitialized(TestPlatform.this));
   }
 
   public void clear() {
@@ -50,14 +45,6 @@ public class TestPlatform {
 
   public void removeTestSessionLisnener(TestSessionListener listener) {
     myTestSessionListeners.remove(listener);
-  }
-
-  public void addPlatformListener(TestPlatformInitializedListener listener) {
-    myTestPlatformListeners.add(listener);
-
-  }
-  public void removePlatformListener(TestPlatformInitializedListener listener) {
-    myTestPlatformListeners.remove(listener);
   }
 
   public TestDiscoveryParticipant getAggregateDiscoveryParticipant() {

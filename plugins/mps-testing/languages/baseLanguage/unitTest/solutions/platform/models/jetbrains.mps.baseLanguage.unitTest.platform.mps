@@ -2544,22 +2544,6 @@
         </node>
       </node>
     </node>
-    <node concept="312cEg" id="4yT2m3dgr$L" role="jymVt">
-      <property role="TrG5h" value="myTestPlatformListeners" />
-      <node concept="3Tm6S6" id="4yT2m3dgr$M" role="1B3o_S" />
-      <node concept="3uibUv" id="4yT2m3dgr$N" role="1tU5fm">
-        <ref role="3uigEE" to="33ny:~List" resolve="List" />
-        <node concept="3uibUv" id="4yT2m3dgr$O" role="11_B2D">
-          <ref role="3uigEE" node="4yT2m3dgp9Q" resolve="TestPlatformInitializedListener" />
-        </node>
-      </node>
-      <node concept="2ShNRf" id="4yT2m3dgr$P" role="33vP2m">
-        <node concept="1pGfFk" id="4yT2m3dgr$Q" role="2ShVmc">
-          <property role="373rjd" value="true" />
-          <ref role="37wK5l" to="5zyv:~CopyOnWriteArrayList.&lt;init&gt;()" resolve="CopyOnWriteArrayList" />
-        </node>
-      </node>
-    </node>
     <node concept="312cEg" id="4rQ9_5dLNcp" role="jymVt">
       <property role="TrG5h" value="myCurrentSession" />
       <node concept="3Tm6S6" id="4rQ9_5dLNcq" role="1B3o_S" />
@@ -2585,43 +2569,6 @@
       <node concept="3clFbS" id="2VjRkhsFqfD" role="3clF47" />
     </node>
     <node concept="2tJIrI" id="2VjRkhsQqVs" role="jymVt" />
-    <node concept="3clFb_" id="4yT2m3dhg_3" role="jymVt">
-      <property role="TrG5h" value="init" />
-      <node concept="3cqZAl" id="4yT2m3dhg_5" role="3clF45" />
-      <node concept="3Tm1VV" id="4yT2m3dhg_6" role="1B3o_S" />
-      <node concept="3clFbS" id="4yT2m3dhg_7" role="3clF47">
-        <node concept="3clFbF" id="4yT2m3dhm1v" role="3cqZAp">
-          <node concept="2OqwBi" id="4yT2m3dhoHh" role="3clFbG">
-            <node concept="37vLTw" id="4yT2m3dhm1u" role="2Oq$k0">
-              <ref role="3cqZAo" node="4yT2m3dgr$L" resolve="myTestPlatformListeners" />
-            </node>
-            <node concept="liA8E" id="4yT2m3dhrAJ" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Iterable.forEach(java.util.function.Consumer)" resolve="forEach" />
-              <node concept="1bVj0M" id="4yT2m3dhtS7" role="37wK5m">
-                <node concept="3clFbS" id="4yT2m3dhtS8" role="1bW5cS">
-                  <node concept="3clFbF" id="4yT2m3dh$BQ" role="3cqZAp">
-                    <node concept="2OqwBi" id="4yT2m3dh_mt" role="3clFbG">
-                      <node concept="37vLTw" id="4yT2m3dh$BP" role="2Oq$k0">
-                        <ref role="3cqZAo" node="4yT2m3dhwcp" resolve="li" />
-                      </node>
-                      <node concept="liA8E" id="4yT2m3dhBHe" role="2OqNvi">
-                        <ref role="37wK5l" node="4yT2m3dgpc7" resolve="platformInitialized" />
-                        <node concept="Xjq3P" id="4yT2m3dhE8W" role="37wK5m" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-                <node concept="gl6BB" id="4yT2m3dhwcp" role="1bW2Oz">
-                  <property role="TrG5h" value="li" />
-                  <node concept="2jxLKc" id="4yT2m3dhwcq" role="1tU5fm" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="4yT2m3dhcBz" role="jymVt" />
     <node concept="3clFb_" id="2VjRkhsQueP" role="jymVt">
       <property role="TrG5h" value="clear" />
       <node concept="3cqZAl" id="2VjRkhsQueR" role="3clF45" />
@@ -2746,60 +2693,6 @@
         <property role="TrG5h" value="listener" />
         <node concept="3uibUv" id="4rQ9_5dK0AQ" role="1tU5fm">
           <ref role="3uigEE" node="4rQ9_5dBfUM" resolve="TestSessionListener" />
-        </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="4rQ9_5dJzds" role="jymVt" />
-    <node concept="3clFb_" id="4yT2m3dgzae" role="jymVt">
-      <property role="TrG5h" value="addPlatformListener" />
-      <node concept="3cqZAl" id="4yT2m3dgzag" role="3clF45" />
-      <node concept="3Tm1VV" id="4yT2m3dgzah" role="1B3o_S" />
-      <node concept="3clFbS" id="4yT2m3dgzai" role="3clF47">
-        <node concept="3clFbF" id="4yT2m3dgR8I" role="3cqZAp">
-          <node concept="2OqwBi" id="4yT2m3dgTNi" role="3clFbG">
-            <node concept="37vLTw" id="4yT2m3dgR8H" role="2Oq$k0">
-              <ref role="3cqZAo" node="4yT2m3dgr$L" resolve="myTestPlatformListeners" />
-            </node>
-            <node concept="liA8E" id="4yT2m3dgW7$" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
-              <node concept="37vLTw" id="4yT2m3dgYhG" role="37wK5m">
-                <ref role="3cqZAo" node="4yT2m3dgP5v" resolve="listener" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbH" id="4yT2m3dh4hj" role="3cqZAp" />
-      </node>
-      <node concept="37vLTG" id="4yT2m3dgP5v" role="3clF46">
-        <property role="TrG5h" value="listener" />
-        <node concept="3uibUv" id="4yT2m3dgP5u" role="1tU5fm">
-          <ref role="3uigEE" node="4yT2m3dgp9Q" resolve="TestPlatformInitializedListener" />
-        </node>
-      </node>
-    </node>
-    <node concept="3clFb_" id="4yT2m3dh0W8" role="jymVt">
-      <property role="TrG5h" value="removePlatformListener" />
-      <node concept="3cqZAl" id="4yT2m3dh0W9" role="3clF45" />
-      <node concept="3Tm1VV" id="4yT2m3dh0Wa" role="1B3o_S" />
-      <node concept="3clFbS" id="4yT2m3dh0Wb" role="3clF47">
-        <node concept="3clFbF" id="4yT2m3dh0Wc" role="3cqZAp">
-          <node concept="2OqwBi" id="4yT2m3dh0Wd" role="3clFbG">
-            <node concept="37vLTw" id="4yT2m3dh0We" role="2Oq$k0">
-              <ref role="3cqZAo" node="4yT2m3dgr$L" resolve="myTestPlatformListeners" />
-            </node>
-            <node concept="liA8E" id="4yT2m3dh0Wf" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.remove(java.lang.Object)" resolve="remove" />
-              <node concept="37vLTw" id="4yT2m3dh0Wg" role="37wK5m">
-                <ref role="3cqZAo" node="4yT2m3dh0Wh" resolve="listener" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="37vLTG" id="4yT2m3dh0Wh" role="3clF46">
-        <property role="TrG5h" value="listener" />
-        <node concept="3uibUv" id="4yT2m3dh0Wi" role="1tU5fm">
-          <ref role="3uigEE" node="4yT2m3dgp9Q" resolve="TestPlatformInitializedListener" />
         </node>
       </node>
     </node>
@@ -3385,24 +3278,6 @@
       </node>
     </node>
     <node concept="3Tm1VV" id="4rQ9_5dOfYn" role="1B3o_S" />
-  </node>
-  <node concept="3HP615" id="4yT2m3dgp9Q">
-    <property role="TrG5h" value="TestPlatformInitializedListener" />
-    <node concept="2tJIrI" id="4yT2m3dgpbS" role="jymVt" />
-    <node concept="3clFb_" id="4yT2m3dgpc7" role="jymVt">
-      <property role="TrG5h" value="platformInitialized" />
-      <node concept="37vLTG" id="4yT2m3dgpdt" role="3clF46">
-        <property role="TrG5h" value="instance" />
-        <node concept="3uibUv" id="4yT2m3dgpe8" role="1tU5fm">
-          <ref role="3uigEE" node="4chG8iItd4i" resolve="TestPlatform" />
-        </node>
-      </node>
-      <node concept="3cqZAl" id="4yT2m3dgpc9" role="3clF45" />
-      <node concept="3Tm1VV" id="4yT2m3dgpca" role="1B3o_S" />
-      <node concept="3clFbS" id="4yT2m3dgpcb" role="3clF47" />
-    </node>
-    <node concept="2tJIrI" id="4yT2m3dgphG" role="jymVt" />
-    <node concept="3Tm1VV" id="4yT2m3dgp9R" role="1B3o_S" />
   </node>
 </model>
 
