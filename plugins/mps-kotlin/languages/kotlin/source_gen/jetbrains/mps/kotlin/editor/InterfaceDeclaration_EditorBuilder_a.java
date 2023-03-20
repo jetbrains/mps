@@ -10,6 +10,8 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -32,6 +34,7 @@ import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -68,13 +71,23 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.addEditorCell(createComponent_3());
     editorCell.addEditorCell(createProperty_0());
     editorCell.addEditorCell(createComponent_4());
-    editorCell.addEditorCell(createComponent_5());
-    editorCell.addEditorCell(createComponent_6());
+    if (nodeCondition_6bvvxx_a7a()) {
+      editorCell.addEditorCell(createComponent_5());
+    }
+    if (nodeCondition_6bvvxx_a8a()) {
+      editorCell.addEditorCell(createComponent_6());
+    }
     editorCell.addEditorCell(createComponent_7());
     return editorCell;
   }
   private boolean nodeCondition_6bvvxx_a3a() {
     return SPropertyOperations.getBoolean(myNode, PROPS.isFunctional$pBP$);
+  }
+  private boolean nodeCondition_6bvvxx_a7a() {
+    return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.superclasses$6CkZ)).isNotEmpty();
+  }
+  private boolean nodeCondition_6bvvxx_a8a() {
+    return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.constraints$BRhr)).isNotEmpty();
   }
   private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.kotlin.editor.Annotations_Component");
@@ -163,6 +176,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private static final class PROPS {
     /*package*/ static final SProperty isFunctional$pBP$ = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7554886bfL, 0x468104f6aff8b6bcL, "isFunctional");
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink superclasses$6CkZ = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6ef8a3cf68294651L, 0x1ba36e493d40fea5L, "superclasses");
+    /*package*/ static final SContainmentLink constraints$BRhr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d75568d269L, 0x28bef6d75568d26aL, "constraints");
   }
 
   private static final class CONCEPTS {

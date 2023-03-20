@@ -8,13 +8,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
-import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
+import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.kotlin.editor.KotlinStyles_StyleSheet.ColonStyleClass;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
@@ -51,22 +48,8 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   }
 
   private EditorCell createCollection_0() {
-    EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
-    editorCell.setCellId("Collection_13qmt0_a");
-    Style style = new StyleImpl();
-    style.set(StyleAttributes.SELECTABLE, false);
-    editorCell.getStyle().putAll(style);
-    if (nodeCondition_13qmt0_a0a()) {
-      editorCell.addEditorCell(createCollection_1());
-    }
-    return editorCell;
-  }
-  private boolean nodeCondition_13qmt0_a0a() {
-    return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.superclasses$6CkZ)).isNotEmpty();
-  }
-  private EditorCell createCollection_1() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
-    editorCell.setCellId("Collection_13qmt0_a0");
+    editorCell.setCellId("Collection_13qmt0_a");
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
@@ -76,7 +59,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ":");
-    editorCell.setCellId("Constant_13qmt0_a0a");
+    editorCell.setCellId("Constant_13qmt0_a0");
     Style style = new StyleImpl();
     new ColonStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
@@ -84,17 +67,17 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new superclassesListHandler_13qmt0_b0a(myNode, getEditorContext());
+    AbstractCellListHandler handler = new superclassesListHandler_13qmt0_b0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("SCC_refNodeList_superclasses");
     editorCell.setSRole(handler.getElementSRole());
     return editorCell;
   }
-  private static class superclassesListHandler_13qmt0_b0a extends RefNodeListHandler {
+  private static class superclassesListHandler_13qmt0_b0 extends RefNodeListHandler {
     @NotNull
     private SNode myNode;
 
-    public superclassesListHandler_13qmt0_b0a(SNode ownerNode, EditorContext context) {
+    public superclassesListHandler_13qmt0_b0(SNode ownerNode, EditorContext context) {
       super(context, false);
       myNode = ownerNode;
     }
@@ -117,7 +100,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(superclassesListHandler_13qmt0_b0a.this.getNode(), LINKS.superclasses$6CkZ));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(superclassesListHandler_13qmt0_b0.this.getNode(), LINKS.superclasses$6CkZ));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();

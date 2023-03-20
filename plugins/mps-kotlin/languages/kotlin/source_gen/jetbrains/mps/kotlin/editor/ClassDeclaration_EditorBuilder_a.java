@@ -10,6 +10,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -76,8 +77,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
     if (nodeCondition_yk1pkl_a7a()) {
       editorCell.addEditorCell(createRefNode_1());
     }
-    editorCell.addEditorCell(createComponent_5());
-    editorCell.addEditorCell(createComponent_6());
+    if (nodeCondition_yk1pkl_a8a()) {
+      editorCell.addEditorCell(createComponent_5());
+    }
+    if (nodeCondition_yk1pkl_a9a()) {
+      editorCell.addEditorCell(createComponent_6());
+    }
     editorCell.addEditorCell(createComponent_7());
     return editorCell;
   }
@@ -86,6 +91,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
   private boolean nodeCondition_yk1pkl_a7a() {
     return (SLinkOperations.getTarget(myNode, LINKS.primaryConstructor$QvZc) != null);
+  }
+  private boolean nodeCondition_yk1pkl_a8a() {
+    return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.superclasses$6CkZ)).isNotEmpty();
+  }
+  private boolean nodeCondition_yk1pkl_a9a() {
+    return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.constraints$BRhr)).isNotEmpty();
   }
   private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.kotlin.editor.Annotations_Component");
@@ -277,6 +288,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private static final class LINKS {
     /*package*/ static final SContainmentLink modifier$C$4W = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af469L, 0x28bef6d7551af762L, "modifier");
     /*package*/ static final SContainmentLink primaryConstructor$QvZc = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af469L, 0x2043bc8310e45225L, "primaryConstructor");
+    /*package*/ static final SContainmentLink superclasses$6CkZ = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6ef8a3cf68294651L, 0x1ba36e493d40fea5L, "superclasses");
+    /*package*/ static final SContainmentLink constraints$BRhr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d75568d269L, 0x28bef6d75568d26aL, "constraints");
   }
 
   private static final class CONCEPTS {

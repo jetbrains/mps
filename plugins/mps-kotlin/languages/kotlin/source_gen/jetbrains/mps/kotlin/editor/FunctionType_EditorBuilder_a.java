@@ -10,6 +10,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
@@ -62,7 +63,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
     if (nodeCondition_bqk3nx_a0a()) {
       editorCell.addEditorCell(createConstant_0());
     }
-    editorCell.addEditorCell(createComponent_0());
+    if (nodeCondition_bqk3nx_a1a()) {
+      editorCell.addEditorCell(createComponent_0());
+    }
     editorCell.addEditorCell(createConstant_1());
     editorCell.addEditorCell(createRefNodeList_0());
     editorCell.addEditorCell(createConstant_3());
@@ -75,6 +78,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
   private boolean nodeCondition_bqk3nx_a0a() {
     return SPropertyOperations.getBoolean(myNode, PROPS.isSuspend$O_58);
+  }
+  private boolean nodeCondition_bqk3nx_a1a() {
+    return (SLinkOperations.getTarget(myNode, LINKS.receiverType$7yLT) != null);
   }
   private boolean nodeCondition_bqk3nx_a7a() {
     return SPropertyOperations.getBoolean(myNode, PROPS.isNullable$KWwD);
@@ -284,6 +290,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
+    /*package*/ static final SContainmentLink receiverType$7yLT = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7908c7f22L, 0x764202afbfc6bde5L, "receiverType");
     /*package*/ static final SContainmentLink parameters$jkhy = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af37dL, 0x28bef6d7551af60eL, "parameters");
     /*package*/ static final SContainmentLink returnType$jkY_ = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af37dL, 0x28bef6d7551af611L, "returnType");
   }

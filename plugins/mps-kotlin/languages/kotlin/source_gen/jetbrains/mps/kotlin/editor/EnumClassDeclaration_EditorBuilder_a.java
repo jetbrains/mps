@@ -10,6 +10,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -37,7 +38,6 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
 import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.kotlin.editor.KotlinStyles_StyleSheet.LBraceStyleClass;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
@@ -84,13 +84,23 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     if (nodeCondition_x0yi6s_a6a()) {
       editorCell.addEditorCell(createRefNode_0());
     }
-    editorCell.addEditorCell(createComponent_5());
-    editorCell.addEditorCell(createComponent_6());
+    if (nodeCondition_x0yi6s_a7a()) {
+      editorCell.addEditorCell(createComponent_5());
+    }
+    if (nodeCondition_x0yi6s_a8a()) {
+      editorCell.addEditorCell(createComponent_6());
+    }
     editorCell.addEditorCell(createCollection_1());
     return editorCell;
   }
   private boolean nodeCondition_x0yi6s_a6a() {
     return (SLinkOperations.getTarget(myNode, LINKS.primaryConstructor$QvZc) != null);
+  }
+  private boolean nodeCondition_x0yi6s_a7a() {
+    return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.superclasses$6CkZ)).isNotEmpty();
+  }
+  private boolean nodeCondition_x0yi6s_a8a() {
+    return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.constraints$BRhr)).isNotEmpty();
   }
   private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.kotlin.editor.Annotations_Component");
@@ -437,6 +447,8 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink primaryConstructor$QvZc = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af469L, 0x2043bc8310e45225L, "primaryConstructor");
+    /*package*/ static final SContainmentLink superclasses$6CkZ = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6ef8a3cf68294651L, 0x1ba36e493d40fea5L, "superclasses");
+    /*package*/ static final SContainmentLink constraints$BRhr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d75568d269L, 0x28bef6d75568d26aL, "constraints");
     /*package*/ static final SContainmentLink members$gqdV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310a1ff68L, 0x2043bc8310a1ff69L, "members");
     /*package*/ static final SContainmentLink entries$EB0i = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d75547b5aaL, 0x2043bc8310a23f49L, "entries");
   }

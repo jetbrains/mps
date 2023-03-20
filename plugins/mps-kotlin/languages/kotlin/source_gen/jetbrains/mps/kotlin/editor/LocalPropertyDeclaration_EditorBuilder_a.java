@@ -11,6 +11,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.kotlin.behavior.IDeconstructingDeclarations__BehaviorDescriptor;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.openapi.editor.style.Style;
@@ -76,7 +77,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
     if (nodeCondition_i7sp49_a5a()) {
       editorCell.addEditorCell(createConstant_4());
     }
-    editorCell.addEditorCell(createComponent_0());
+    if (nodeCondition_i7sp49_a6a()) {
+      editorCell.addEditorCell(createComponent_0());
+    }
     if (nodeCondition_i7sp49_a7a()) {
       editorCell.addEditorCell(createRefNode_0());
     }
@@ -96,6 +99,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
   private boolean nodeCondition_i7sp49_a5a() {
     return (boolean) IDeconstructingDeclarations__BehaviorDescriptor.isDeconstructed_id4FOkRjXxnrt.invoke(myNode);
+  }
+  private boolean nodeCondition_i7sp49_a6a() {
+    return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.constraints$BRhr)).isNotEmpty();
   }
   private boolean nodeCondition_i7sp49_a7a() {
     return (SLinkOperations.getTarget(myNode, LINKS.assignment$nl1j) != null);
@@ -298,6 +304,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
+    /*package*/ static final SContainmentLink constraints$BRhr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d75568d269L, 0x28bef6d75568d26aL, "constraints");
     /*package*/ static final SContainmentLink assignment$nl1j = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b9a90aaL, 0x28bef6d7551af7baL, "assignment");
     /*package*/ static final SContainmentLink variables$EO9Z = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5aee73f62d23451L, 0x4af45374fd847a71L, "variables");
   }

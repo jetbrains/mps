@@ -12,10 +12,10 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -89,9 +89,13 @@ import org.jetbrains.mps.openapi.language.SProperty;
       editorCell.addEditorCell(createConstant_3());
     }
     editorCell.addEditorCell(createComponent_2());
-    editorCell.addEditorCell(createComponent_3());
+    if (nodeCondition_lnae77_a8a()) {
+      editorCell.addEditorCell(createComponent_3());
+    }
     editorCell.addEditorCell(createRefNode_1());
-    editorCell.addEditorCell(createComponent_4());
+    if (nodeCondition_lnae77_a01a()) {
+      editorCell.addEditorCell(createComponent_4());
+    }
     if (nodeCondition_lnae77_a11a()) {
       editorCell.addEditorCell(createRefNode_2());
     }
@@ -117,6 +121,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
   }
   private boolean nodeCondition_lnae77_a6a() {
     return SPropertyOperations.getBoolean(myNode, PROPS.isReadonly$jzqd);
+  }
+  private boolean nodeCondition_lnae77_a8a() {
+    return (SLinkOperations.getTarget(myNode, LINKS.receiverType$7yLT) != null);
+  }
+  private boolean nodeCondition_lnae77_a01a() {
+    return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.constraints$BRhr)).isNotEmpty();
   }
   private boolean nodeCondition_lnae77_a11a() {
     return (SLinkOperations.getTarget(myNode, LINKS.assignment$nl1j) != null);
@@ -537,6 +547,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink inheritance$TFvr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x537372687dd3bcdaL, 0x537372687dd3bcdbL, "inheritance");
+    /*package*/ static final SContainmentLink receiverType$7yLT = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7908c7f22L, 0x764202afbfc6bde5L, "receiverType");
+    /*package*/ static final SContainmentLink constraints$BRhr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d75568d269L, 0x28bef6d75568d26aL, "constraints");
     /*package*/ static final SContainmentLink assignment$nl1j = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b9a90aaL, 0x28bef6d7551af7baL, "assignment");
     /*package*/ static final SContainmentLink getter$C1zs = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4a1L, 0x11400bb7908cd0efL, "getter");
     /*package*/ static final SContainmentLink setter$C2Xy = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4a1L, 0x11400bb7908cd0f5L, "setter");
