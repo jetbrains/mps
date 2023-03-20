@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,8 +42,10 @@ public interface SReferenceLink extends SAbstractLink {
   //left for compatibility with "interpreting" code
   //use SReferenceLink in code instead
   @Nullable
-@Deprecated(since = "3.4", forRemoval = true)
-  SNode getDeclarationNode();
+  @Deprecated(since = "3.4", forRemoval = true)
+  default SNode getDeclarationNode() {
+    return null;
+  }
 
   /**
    * Builds and returns a scope for this reference in the given context.

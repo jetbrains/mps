@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,6 @@ import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.model.SNode;
 
 /**
  * See InvalidConcept doc
@@ -65,12 +64,6 @@ public final class InvalidContainmentLink extends SContainmentLinkAdapter {
   @Override
   @Nullable
   protected LinkDescriptor getLinkDescriptor() {
-    return null;
-  }
-
-  @Nullable
-  @Override
-  public SNode getDeclarationNode() {
     return null;
   }
 
