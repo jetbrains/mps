@@ -75,6 +75,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.PADDING_RIGHT, new Padding(0, Measure.SPACES));
       style.set(StyleAttributes.SPELLCHECK, true);
       style.set(StyleAttributes.PUNCTUATION_LEFT, _StyleParameter_QueryFunction_5bsss1_a6a0());
+      style.set(StyleAttributes.INDENT_LAYOUT_NO_WRAP, true);
       editorCell.getStyle().putAll(style);
       editorCell.addKeyMap(new StringLiteral_InsertExpression());
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
