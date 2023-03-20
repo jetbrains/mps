@@ -15,5 +15,7 @@ public class ObjectDeclaration_TextGen extends TextGenDescriptorBase {
     KotlinTextGen.identifier(ctx.getPrimaryInput(), ctx);
     KotlinTextGen.superclasses(ctx.getPrimaryInput(), ctx);
     KotlinTextGen.classBody(ctx.getPrimaryInput(), ctx);
+
+    KotlinTextGen.rootableContent(ctx.getPrimaryInput(), ctx);
   }
 }

@@ -66,7 +66,7 @@ public final class ObjectDeclaration__BehaviorDescriptor extends BaseBHDescripto
   }
   /*package*/ static String getPackageName_id74Z9X$ygjTm(@NotNull SNode __thisNode__) {
     SNode ancestor = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IKotlinRoot$xV, false, false);
-    if ((ancestor != null)) {
+    if ((ancestor == null)) {
       IKotlinRoot__BehaviorDescriptor.getPackageName_id74Z9X$ygjTm.invoke0(__thisNode__, CONCEPTS.IKotlinRoot$xV);
     }
     // Inherit ancestor package name

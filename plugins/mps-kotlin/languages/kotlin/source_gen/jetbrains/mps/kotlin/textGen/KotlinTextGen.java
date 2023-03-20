@@ -244,6 +244,13 @@ public abstract class KotlinTextGen {
       }
     }
   }
+  public static void rootableContent(SNode node, final TextGenContext ctx) {
+    final TextGenSupport tgs = new TextGenSupport(ctx);
+    if ((SNodeOperations.getParent(node) == null)) {
+      KotlinTextGen.fileHeader(node, ctx);
+      KotlinTextGen.imports(ctx);
+    }
+  }
   public static void controlStructureStatements(SNode node, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     KotlinTextGen.optionallyWrappedStatements(node, "", ctx);
@@ -390,9 +397,11 @@ public abstract class KotlinTextGen {
       }
     }).visitAll(new IVisitor<String>() {
       public void visit(String it) {
+        tgs.pushTextArea("imports");
         tgs.append("import ");
         tgs.append(it);
         tgs.newLine();
+        tgs.popTextArea();
       }
     });
   }
@@ -405,21 +414,23 @@ public abstract class KotlinTextGen {
       tgs.popTextArea();
     }
 
-    if ((SLinkOperations.getTarget(node, LINKS.header$Q2G5) != null)) {
-      tgs.pushTextArea("header");
-      tgs.appendNode(SLinkOperations.getTarget(node, LINKS.header$Q2G5));
-      tgs.popTextArea();
-    } else {
-      tgs.pushTextArea("header");
-      tgs.append("package ");
-      tgs.append(IKotlinRoot__BehaviorDescriptor.getPackageName_id74Z9X$ygjTm.invoke(node));
-      tgs.newLine();
-      tgs.popTextArea();
-    }
+    KotlinTextGen.filePackage(node, ctx);
 
     for (SNode importEntry : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.imports$BOfg))) {
       tgs.pushTextArea("imports");
       tgs.appendNode(importEntry);
+      tgs.newLine();
+      tgs.popTextArea();
+    }
+  }
+  public static void filePackage(SNode root, final TextGenContext ctx) {
+    final TextGenSupport tgs = new TextGenSupport(ctx);
+    String packageName = IKotlinRoot__BehaviorDescriptor.getPackageName_id74Z9X$ygjTm.invoke(root);
+
+    if (isNotEmptyString(((packageName == null ? null : packageName.trim())))) {
+      tgs.pushTextArea("header");
+      tgs.append("package ");
+      tgs.append(packageName);
       tgs.newLine();
       tgs.popTextArea();
     }
@@ -434,6 +445,9 @@ public abstract class KotlinTextGen {
   }
   public static ImportContext contextObjectInstance_imports(SNode primaryInputNode) {
     return new ImportContext(primaryInputNode);
+  }
+  private static boolean isNotEmptyString(String str) {
+    return str != null && str.length() > 0;
   }
 
   private static final class PROPS {
@@ -461,7 +475,6 @@ public abstract class KotlinTextGen {
     /*package*/ static final SContainmentLink returnType$fGYV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7908cd887L, 0x11400bb7908cd888L, "returnType");
     /*package*/ static final SContainmentLink constraints$BRhr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d75568d269L, 0x28bef6d75568d26aL, "constraints");
     /*package*/ static final SContainmentLink fileAnnotations$Q2t4 = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0xad71950af90e8f8L, 0x28bef6d7551af886L, "fileAnnotations");
-    /*package*/ static final SContainmentLink header$Q2G5 = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0xad71950af90e8f8L, 0x28bef6d7551af887L, "header");
     /*package*/ static final SContainmentLink imports$BOfg = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0xad71950af90e8f8L, 0x11400bb790e02796L, "imports");
   }
 

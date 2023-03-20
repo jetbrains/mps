@@ -192,8 +192,6 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new OperatorFunctionModifier_TextGen();
       case LanguageConceptSwitch.OverloadedAssignment:
         return new OverloadedAssignment_TextGen();
-      case LanguageConceptSwitch.PackageHeader:
-        return new PackageHeader_TextGen();
       case LanguageConceptSwitch.ParamUseSiteTarget:
         return new ParamUseSiteTarget_TextGen();
       case LanguageConceptSwitch.ParameterWithOptionalType:
@@ -306,31 +304,31 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
       if (root.getConcept().equals(CONCEPTS.InterfaceDeclaration$fL)) {
         String fname = getFileName_InterfaceDeclaration(root);
         String ext = getFileExtension_InterfaceDeclaration(root);
-        outline.registerTextUnit((ext == null ? fname : (fname + '.' + ext)), root);
+        outline.registerTextUnit(createTextUnit1((ext == null ? fname : (fname + '.' + ext)), root));
         continue;
       }
       if (root.getConcept().equals(CONCEPTS.KotlinFile$4h)) {
         String fname = getFileName_KotlinFile(root);
         String ext = getFileExtension_KotlinFile(root);
-        outline.registerTextUnit(createTextUnit1((ext == null ? fname : (fname + '.' + ext)), root));
+        outline.registerTextUnit(createTextUnit2((ext == null ? fname : (fname + '.' + ext)), root));
         continue;
       }
       if (root.getConcept().equals(CONCEPTS.ClassDeclaration$Jm)) {
         String fname = getFileName_ClassDeclaration(root);
         String ext = getFileExtension_ClassDeclaration(root);
-        outline.registerTextUnit((ext == null ? fname : (fname + '.' + ext)), root);
+        outline.registerTextUnit(createTextUnit3((ext == null ? fname : (fname + '.' + ext)), root));
         continue;
       }
       if (root.getConcept().equals(CONCEPTS.EnumClassDeclaration$xK)) {
         String fname = getFileName_EnumClassDeclaration(root);
         String ext = getFileExtension_EnumClassDeclaration(root);
-        outline.registerTextUnit((ext == null ? fname : (fname + '.' + ext)), root);
+        outline.registerTextUnit(createTextUnit4((ext == null ? fname : (fname + '.' + ext)), root));
         continue;
       }
       if (root.getConcept().equals(CONCEPTS.ObjectDeclaration$LN)) {
         String fname = getFileName_ObjectDeclaration(root);
         String ext = getFileExtension_ObjectDeclaration(root);
-        outline.registerTextUnit((ext == null ? fname : (fname + '.' + ext)), root);
+        outline.registerTextUnit(createTextUnit5((ext == null ? fname : (fname + '.' + ext)), root));
         continue;
       }
     }
@@ -357,19 +355,19 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
     return "kts";
   }
   private static String getFileExtension_InterfaceDeclaration(SNode node) {
-    return null;
+    return "kt";
   }
   private static String getFileExtension_KotlinFile(SNode node) {
     return "kt";
   }
   private static String getFileExtension_ClassDeclaration(SNode node) {
-    return null;
+    return "kt";
   }
   private static String getFileExtension_EnumClassDeclaration(SNode node) {
-    return null;
+    return "kt";
   }
   private static String getFileExtension_ObjectDeclaration(SNode node) {
-    return null;
+    return "kt";
   }
   private static TextUnit createTextUnit0(String filename, SNode node) {
     BufferLayoutBuilder lb = new BufferLayoutBuilder();
@@ -383,6 +381,50 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
     return rv;
   }
   private static TextUnit createTextUnit1(String filename, SNode node) {
+    BufferLayoutBuilder lb = new BufferLayoutBuilder();
+    lb.add("header");
+    lb.add("imports");
+    lb.add("body");
+    lb.activate("body");
+    RegularTextUnit rv = new RegularTextUnit(node, filename, null);
+    rv.setBufferLayout(lb.create());
+    rv.addContextObject("imports", KotlinTextGen.contextObjectInstance_imports(node));
+    return rv;
+  }
+  private static TextUnit createTextUnit2(String filename, SNode node) {
+    BufferLayoutBuilder lb = new BufferLayoutBuilder();
+    lb.add("header");
+    lb.add("imports");
+    lb.add("body");
+    lb.activate("body");
+    RegularTextUnit rv = new RegularTextUnit(node, filename, null);
+    rv.setBufferLayout(lb.create());
+    rv.addContextObject("imports", KotlinTextGen.contextObjectInstance_imports(node));
+    return rv;
+  }
+  private static TextUnit createTextUnit3(String filename, SNode node) {
+    BufferLayoutBuilder lb = new BufferLayoutBuilder();
+    lb.add("header");
+    lb.add("imports");
+    lb.add("body");
+    lb.activate("body");
+    RegularTextUnit rv = new RegularTextUnit(node, filename, null);
+    rv.setBufferLayout(lb.create());
+    rv.addContextObject("imports", KotlinTextGen.contextObjectInstance_imports(node));
+    return rv;
+  }
+  private static TextUnit createTextUnit4(String filename, SNode node) {
+    BufferLayoutBuilder lb = new BufferLayoutBuilder();
+    lb.add("header");
+    lb.add("imports");
+    lb.add("body");
+    lb.activate("body");
+    RegularTextUnit rv = new RegularTextUnit(node, filename, null);
+    rv.setBufferLayout(lb.create());
+    rv.addContextObject("imports", KotlinTextGen.contextObjectInstance_imports(node));
+    return rv;
+  }
+  private static TextUnit createTextUnit5(String filename, SNode node) {
     BufferLayoutBuilder lb = new BufferLayoutBuilder();
     lb.add("header");
     lb.add("imports");

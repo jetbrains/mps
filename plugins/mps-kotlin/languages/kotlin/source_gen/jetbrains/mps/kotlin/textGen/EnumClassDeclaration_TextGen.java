@@ -42,6 +42,8 @@ public class EnumClassDeclaration_TextGen extends TextGenDescriptorBase {
 
     tgs.indent();
     tgs.append("}");
+
+    KotlinTextGen.rootableContent(ctx.getPrimaryInput(), ctx);
   }
 
   private static final class LINKS {

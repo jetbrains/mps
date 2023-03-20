@@ -13,5 +13,6 @@ public class InterfaceDeclaration_TextGen extends TextGenDescriptorBase {
     KotlinTextGen.classHeader(ctx.getPrimaryInput(), ctx);
     KotlinTextGen.classConstraints(ctx.getPrimaryInput(), ctx);
     KotlinTextGen.classBody(ctx.getPrimaryInput(), ctx);
+    KotlinTextGen.rootableContent(ctx.getPrimaryInput(), ctx);
   }
 }

@@ -19,6 +19,8 @@ public class ClassDeclaration_TextGen extends TextGenDescriptorBase {
     }
     KotlinTextGen.classConstraints(ctx.getPrimaryInput(), ctx);
     KotlinTextGen.classBody(ctx.getPrimaryInput(), ctx);
+
+    KotlinTextGen.rootableContent(ctx.getPrimaryInput(), ctx);
   }
 
   private static final class LINKS {
