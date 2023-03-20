@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -253,19 +253,23 @@ public class NodePresentationUtil {
     return containmentLink.getName() + " (" + NameUtil.compactNodeFQName(node.getContainingRoot()) + ")";
   }
 
+  /**
+   * @deprecated single use for deprecated property override doesn't justify existence of this odd logic
+   */
+  @Deprecated(since = "2023.1", forRemoval = true)
   public static String getAliasOrConceptName(SNode node) {
-    String alias = SNodeUtil.getConceptAlias(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.getConceptDeclaration(node));
-    if (alias != null) {
+    final SConcept c = node.getConcept();
+    String alias = c.getConceptAlias();
+    if (alias != null && !alias.isBlank()) {
       return alias;
     }
-
-    return node.getConcept().getName();
+    return c.getName();
   }
 
   public static String getRoleInParentOrConceptName(SNode node) {
-    String role = node.getRoleInParent();
+    SContainmentLink role = node.getContainmentLink();
     if (role != null) {
-      return role;
+      return role.getName();
     }
     if (SNodeUtil.isInstanceOfConceptDeclaration(node) && node.getName() != null) {
       return node.getName();

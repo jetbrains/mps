@@ -272,7 +272,6 @@
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
-      <concept id="3506770386464365589" name="jetbrains.mps.lang.smodel.structure.Model_PointerOperation" flags="ng" index="aIX43" />
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
@@ -1124,43 +1123,6 @@
               <node concept="EsrRn" id="hDMFJnd" role="2Oq$k0" />
               <node concept="3TrcHB" id="6MBiDcFV68t" role="2OqNvi">
                 <ref role="3TsBF5" to="tpee:hCjj90d" resolve="nestedName" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="EnEH3" id="hDMFJoT" role="1MhHOB">
-      <ref role="EomxK" to="tpck:gOOYnlO" resolve="shortDescription" />
-      <node concept="Eqf_E" id="hDMFJoU" role="EtsB7">
-        <node concept="3clFbS" id="hDMFJoV" role="2VODD2">
-          <node concept="3clFbF" id="hDMFJoW" role="3cqZAp">
-            <node concept="3cpWs3" id="hDMFJoZ" role="3clFbG">
-              <node concept="Xl_RD" id="hDMFJp0" role="3uHU7w">
-                <property role="Xl_RC" value=")" />
-              </node>
-              <node concept="3cpWs3" id="hDMFJoY" role="3uHU7B">
-                <node concept="2YIFZM" id="2ZDBRmjSWMy" role="3uHU7w">
-                  <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
-                  <ref role="37wK5l" to="18ew:~NameUtil.compactModelName(org.jetbrains.mps.openapi.model.SModelReference)" resolve="compactModelName" />
-                  <node concept="2OqwBi" id="3XR0QgVCjSo" role="37wK5m">
-                    <node concept="2OqwBi" id="3XR0QgVCjSl" role="2Oq$k0">
-                      <node concept="EsrRn" id="3XR0QgVCjSm" role="2Oq$k0" />
-                      <node concept="I4A8Y" id="3XR0QgVCjSn" role="2OqNvi" />
-                    </node>
-                    <node concept="aIX43" id="3XR0QgVCjSp" role="2OqNvi" />
-                  </node>
-                </node>
-                <node concept="3cpWs3" id="hDMFJoX" role="3uHU7B">
-                  <node concept="2YIFZM" id="hDMFJpa" role="3uHU7B">
-                    <ref role="1Pybhc" to="5b0:~NodePresentationUtil" resolve="NodePresentationUtil" />
-                    <ref role="37wK5l" to="5b0:~NodePresentationUtil.getAliasOrConceptName(org.jetbrains.mps.openapi.model.SNode)" resolve="getAliasOrConceptName" />
-                    <node concept="EsrRn" id="hDMFJpb" role="37wK5m" />
-                  </node>
-                  <node concept="Xl_RD" id="hDMFJp9" role="3uHU7w">
-                    <property role="Xl_RC" value=" (" />
-                  </node>
-                </node>
               </node>
             </node>
           </node>

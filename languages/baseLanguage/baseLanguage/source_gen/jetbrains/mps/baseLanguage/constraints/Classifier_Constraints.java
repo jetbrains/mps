@@ -20,10 +20,6 @@ import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.smodel.presentation.NodePresentationUtil;
-import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
@@ -72,21 +68,11 @@ public class Classifier_Constraints extends BaseConstraintsDescriptor {
       return SPropertyOperations.getString(node, PROPS.nestedName$Em3S);
     }
   }
-  public static class ShortDescription_Property extends BasePropertyConstraintsDescriptor {
-    public ShortDescription_Property(ConstraintsDescriptor container) {
-      super(PROPS.shortDescription$Yd4v, container, true, false, false);
-    }
-    @Override
-    public Object getValue(SNode node) {
-      return NodePresentationUtil.getAliasOrConceptName(node) + " (" + NameUtil.compactModelName(SModelOperations.getPointer(SNodeOperations.getModel(node))) + ")";
-    }
-  }
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
     properties.put(PROPS.nestedName$Em3S, new NestedName_Property(this));
     properties.put(PROPS.resolveInfo$lW9a, new ResolveInfo_Property(this));
-    properties.put(PROPS.shortDescription$Yd4v, new ShortDescription_Property(this));
     return properties;
   }
 
@@ -97,6 +83,5 @@ public class Classifier_Constraints extends BaseConstraintsDescriptor {
   private static final class PROPS {
     /*package*/ static final SProperty nestedName$Em3S = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x11a134c900dL, "nestedName");
     /*package*/ static final SProperty resolveInfo$lW9a = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, 0x116b17cd415L, "resolveInfo");
-    /*package*/ static final SProperty shortDescription$Yd4v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34f97574L, "shortDescription");
   }
 }
