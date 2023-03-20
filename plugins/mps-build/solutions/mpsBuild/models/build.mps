@@ -37627,6 +37627,11 @@
             <ref role="3bR37D" node="2Oogzg3vg0R" resolve="jetbrains.mps.baseLanguage.unitTest.platform" />
           </node>
         </node>
+        <node concept="1SiIV0" id="82DhFfjel" role="3bR37C">
+          <node concept="3bR9La" id="82DhFfjem" role="1SiIV1">
+            <ref role="3bR37D" node="ymnOULAU1u" resolve="jetbrains.mps.lang.test.runtime" />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="2G$12M" id="465rK6MmP63" role="3989C9">
@@ -43059,6 +43064,26 @@
             </node>
           </node>
         </node>
+        <node concept="1SiIV0" id="82DhF2h38" role="3bR37C">
+          <node concept="3bR9La" id="82DhF2h39" role="1SiIV1">
+            <ref role="3bR37D" node="2Oogzg3vg0R" resolve="jetbrains.mps.baseLanguage.unitTest.platform" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="82DhFf7aA" role="3bR37C">
+          <node concept="3bR9La" id="82DhFf7aB" role="1SiIV1">
+            <ref role="3bR37D" node="nbn5Dym2sp" resolve="Testbench" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="82DhFf7aC" role="3bR37C">
+          <node concept="3bR9La" id="82DhFf7aD" role="1SiIV1">
+            <ref role="3bR37D" node="7Kfy9QB6KYb" resolve="jetbrains.mps.baseLanguage" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="82DhFfUs_" role="3bR37C">
+          <node concept="3bR9La" id="82DhFfUsA" role="1SiIV1">
+            <ref role="3bR37D" node="1xb0AuwN7WS" resolve="JUnit" />
+          </node>
+        </node>
       </node>
       <node concept="1E1JtA" id="2Oogzg3vg0R" role="2G$12L">
         <property role="BnDLt" value="true" />
@@ -43393,6 +43418,16 @@
         <node concept="1SiIV0" id="nO_wDZzTzq" role="3bR37C">
           <node concept="3bR9La" id="nO_wDZzTzr" role="1SiIV1">
             <ref role="3bR37D" node="7MSVDs3$Uns" resolve="jetbrains.mps.baseLanguage.unitTest.runtime" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="82DhFf7bA" role="3bR37C">
+          <node concept="3bR9La" id="82DhFf7bB" role="1SiIV1">
+            <ref role="3bR37D" node="2Oogzg3vg0R" resolve="jetbrains.mps.baseLanguage.unitTest.platform" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="82DhFf7bC" role="3bR37C">
+          <node concept="3bR9La" id="82DhFf7bD" role="1SiIV1">
+            <ref role="3bR37D" node="3AyJARA_gJr" resolve="jetbrains.mps.lang.test.generator" />
           </node>
         </node>
       </node>
