@@ -37632,6 +37632,11 @@
             <ref role="3bR37D" node="ymnOULAU1u" resolve="jetbrains.mps.lang.test.runtime" />
           </node>
         </node>
+        <node concept="1SiIV0" id="5pvGTa8$dVS" role="3bR37C">
+          <node concept="3bR9La" id="5pvGTa8$dVT" role="1SiIV1">
+            <ref role="3bR37D" node="4MVYzzgl7sL" resolve="jetbrains.mps.lang.test.junit5" />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="2G$12M" id="465rK6MmP63" role="3989C9">
@@ -43086,9 +43091,9 @@
         </node>
       </node>
       <node concept="1E1JtA" id="2Oogzg3vg0R" role="2G$12L">
-        <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.baseLanguage.unitTest.platform" />
         <property role="3LESm3" value="2c7e7a6d-a1f9-4f07-84e0-d0f5b91d380c" />
+        <property role="BnDLt" value="true" />
         <node concept="55IIr" id="2Oogzg3vg0U" role="3LF7KH">
           <node concept="2Ry0Ak" id="2Oogzg3vg2r" role="iGT6I">
             <property role="2Ry0Am" value="plugins" />
