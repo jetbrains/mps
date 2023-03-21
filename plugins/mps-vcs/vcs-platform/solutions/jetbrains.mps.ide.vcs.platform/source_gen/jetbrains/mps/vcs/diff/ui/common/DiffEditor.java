@@ -391,6 +391,7 @@ public class DiffEditor implements EditorMessageOwner {
     public MyInspectorEditorComponent(@NotNull SRepository repository, boolean rightToLeft) {
       super(repository, new EditorConfigurationBuilder().rightToLeft(rightToLeft).showSelectionLine(false).showLightBulb(false).build());
       setTooltipProvider(new MyTooltipProvider(true));
+      getHighlighter().setPaused(true);
     }
 
     @Override
@@ -433,6 +434,7 @@ public class DiffEditor implements EditorMessageOwner {
       setDefaultPopupGroupId(((String) BHReflection.invoke0(SNodeOperations.getNode("r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)", "426251916200108583"), CONCEPTS.ActionGroupDeclaration$VO, SMethodIdV2.create("getGeneratedClassFQName", 1213877494288L, 0x8643ee8702577820L))));
       getMessagesGutter().setMessageThicknessProvider((SimpleEditorMessage m) -> false);
       setTooltipProvider(new MyTooltipProvider(false));
+      getHighlighter().setPaused(true);
     }
 
     @Override
