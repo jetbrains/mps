@@ -16,6 +16,8 @@
 package jetbrains.mps.idea.core.navbar;
 
 import com.intellij.ide.navigationToolbar.NavBarModelExtension;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
+import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -30,6 +32,7 @@ import jetbrains.mps.idea.core.psi.impl.MPSPsiNodeBase;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiProvider;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiRootNode;
 import jetbrains.mps.idea.core.psi.impl.file.FileSourcePsiFile;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.persistence.DataSource;
@@ -51,6 +54,12 @@ public class MPSNavBarExtension implements NavBarModelExtension{
       return ((MPSPsiRootNode) object).getName();
     }
     return null;
+  }
+
+  @Override
+  public PsiElement getLeafElement(@NotNull DataContext dataContext) {
+    PsiElement data = CommonDataKeys.PSI_ELEMENT.getData(dataContext);
+    return data instanceof MPSPsiNodeBase ? data.getContainingFile() : null;
   }
 
   @Nullable

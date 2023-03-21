@@ -21,7 +21,6 @@ import com.intellij.openapi.actionSystem.DataProvider;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.fileEditor.DocumentsEditor;
-import com.intellij.openapi.fileEditor.FileEditorDataProviderManager;
 import com.intellij.openapi.fileEditor.FileEditorLocation;
 import com.intellij.openapi.fileEditor.FileEditorState;
 import com.intellij.openapi.fileEditor.FileEditorStateLevel;
@@ -52,7 +51,7 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
   private Editor myNodeEditor;
   private final JPanel myComponent = new MPSFileNodeEditorComponent();
   protected final MPSProject myProject;
-  private MPSNodeVirtualFile myFile;
+  private final MPSNodeVirtualFile myFile;
   private boolean myDisposed = false;
   // See: https://youtrack.jetbrains.com/issue/MPS-24409
   private EditorState myDelayedState = null;
@@ -305,13 +304,6 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
         }
         if (PlatformDataKeys.PROJECT.is(dataId)) {
           return myProject.getProject();
-        }
-      } else {
-        if (!myProject.isDisposed() && !waitingForNodeFile()) {
-          final Object data = FileEditorDataProviderManager.getInstance(myProject.getProject()).getData(dataId, MPSFileNodeEditor.this, myFile);
-          if (data != null) {
-            return data;
-          }
         }
       }
       if (PlatformDataKeys.VIRTUAL_FILE.is(dataId)) {
