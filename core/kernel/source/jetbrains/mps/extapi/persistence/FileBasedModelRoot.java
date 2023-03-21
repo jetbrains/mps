@@ -246,6 +246,9 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
       final String cpString = memento.get(CONTENT_PATH);
       if (cpString != null && !MacrosFactory.containsMacro(cpString)) {
         myContentDir = myFileSystem.getFile(cpString);
+        // keep this value just in case there's 'save()' right next to 'load()' to ensure there's matching value
+        // in memento for equals() purposes
+        myContentDirPathSpec = memento.getPathSpec(CONTENT_PATH);
         for (SourceRootKind kind : getSupportedFileKinds1()) {
           for (Memento root : memento.getChildren(kind.getName())) {
             String relPath = root.get(LOCATION);
@@ -325,7 +328,7 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
             }
           }
         }
-        this.memento = null;
+        this.memento = null; // XXX see equals(), perhaps, it's not necessary?
       } catch (PathFormatException ex) {
         // FIXME much more fruitful approach would be InvalidFile or Path object to let MR behave as close to usual as possible
         Logger.getLogger(getClass()).warning(String.format("Failed to initialize model root in %s: bad path %s", getModule().getModuleName(), ex.getProblemPath()));
@@ -401,7 +404,9 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
     return Objects.equals(myContentDir, that.myContentDir)
            && Objects.equals(mySourcePathStorage, that.mySourcePathStorage)
            && Objects.equals(myFileSystem, that.myFileSystem)
-           && Objects.equals(memento, that.memento);
+           // AM.doUpdateModelRoots() relies on equals for attached and detached MR, and these might
+           // have completely different memento value. XXX perhaps, shall not clear this.memento in setModule()?
+           && (memento == null || that.memento == null || Objects.equals(memento, that.memento));
   }
 
   @Override

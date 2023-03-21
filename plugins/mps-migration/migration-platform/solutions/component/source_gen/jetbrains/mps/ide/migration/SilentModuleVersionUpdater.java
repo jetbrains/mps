@@ -114,7 +114,7 @@ import jetbrains.mps.ide.platform.watching.ReloadListener;
     }
 
     private void moduleDepsChanged(SModule module) {
-      if (!(isProjectMigrateableModule(module))) {
+      if (module == null || !(isProjectMigrateableModule(module))) {
         return;
       }
       updateSingleModuleDescriptorSilently(Sequence.<SModule>singleton(module));

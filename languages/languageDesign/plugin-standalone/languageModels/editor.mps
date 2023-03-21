@@ -453,7 +453,7 @@
         <node concept="3F0ifn" id="5WVtmyUzYGv" role="3EZMnx" />
         <node concept="3F0ifn" id="5WVtmyU$0bI" role="3EZMnx" />
         <node concept="3F0ifn" id="5WVtmyUzYH6" role="3EZMnx">
-          <property role="3F0ifm" value="When true, generates a configuration file to get application and project components started from modules with MPS-controlled class loaders (generally, compileInMPS==true)" />
+          <property role="3F0ifm" value="When true, generates a configuration file to get application and project plugins started from modules with MPS extensions enabled (see Java Module Facet properties)" />
           <ref role="1k5W1q" to="tpco:3VARyd8XcQs" resolve="Comment" />
           <node concept="VPM3Z" id="5WVtmyU$01D" role="3F10Kt">
             <property role="VOm3f" value="false" />

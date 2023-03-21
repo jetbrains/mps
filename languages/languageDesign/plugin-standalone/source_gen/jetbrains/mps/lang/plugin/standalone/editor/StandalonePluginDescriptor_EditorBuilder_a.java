@@ -139,7 +139,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createConstant_5() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "When true, generates a configuration file to get application and project components started from modules with MPS-controlled class loaders (generally, compileInMPS==true)");
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "When true, generates a configuration file to get application and project plugins started from modules with MPS extensions enabled (see Java Module Facet properties)");
     editorCell.setCellId("Constant_lfvdu_c2a");
     Style style = new StyleImpl();
     new CommentStyleClass(this).apply(style, editorCell);

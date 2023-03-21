@@ -14339,11 +14339,19 @@
         <property role="TrG5h" value="moduleDepsChanged" />
         <node concept="3clFbS" id="1guuOICKQLP" role="3clF47">
           <node concept="3clFbJ" id="76a4RXpsMT_" role="3cqZAp">
-            <node concept="3fqX7Q" id="76a4RXpu2cg" role="3clFbw">
-              <node concept="1rXfSq" id="76a4RXpu2ch" role="3fr31v">
-                <ref role="37wK5l" node="76a4RXpsqrx" resolve="isProjectMigrateableModule" />
-                <node concept="37vLTw" id="76a4RXpu2ci" role="37wK5m">
+            <node concept="22lmx$" id="7Qf2AGgnUc5" role="3clFbw">
+              <node concept="3clFbC" id="7Qf2AGgock_" role="3uHU7B">
+                <node concept="10Nm6u" id="7Qf2AGgoe3y" role="3uHU7w" />
+                <node concept="37vLTw" id="7Qf2AGgoaCy" role="3uHU7B">
                   <ref role="3cqZAo" node="1guuOICKThM" resolve="module" />
+                </node>
+              </node>
+              <node concept="3fqX7Q" id="76a4RXpu2cg" role="3uHU7w">
+                <node concept="1rXfSq" id="76a4RXpu2ch" role="3fr31v">
+                  <ref role="37wK5l" node="76a4RXpsqrx" resolve="isProjectMigrateableModule" />
+                  <node concept="37vLTw" id="76a4RXpu2ci" role="37wK5m">
+                    <ref role="3cqZAo" node="1guuOICKThM" resolve="module" />
+                  </node>
                 </node>
               </node>
             </node>

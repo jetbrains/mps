@@ -1236,7 +1236,7 @@
                           <uo k="s:originTrace" v="n:8797237962361642535" />
                         </node>
                         <node concept="Xl_RD" id="5n" role="37wK5m">
-                          <property role="Xl_RC" value="Tests must be created in modules which are compileInMPS=true" />
+                          <property role="Xl_RC" value="Tests must be created in modules compiled by MPS" />
                           <uo k="s:originTrace" v="n:8797237962361641945" />
                         </node>
                         <node concept="Xl_RD" id="5o" role="37wK5m">

@@ -223,7 +223,7 @@
         <node concept="3clFbS" id="7Cm4l4B9v9D" role="3clFbx">
           <node concept="2MkqsV" id="7Cm4l4B9pJ8" role="3cqZAp">
             <node concept="Xl_RD" id="7Cm4l4B9pJp" role="2MkJ7o">
-              <property role="Xl_RC" value="Tests must be created in modules which are compileInMPS=true" />
+              <property role="Xl_RC" value="Tests must be created in modules compiled by MPS" />
             </node>
             <node concept="1YBJjd" id="7Cm4l4B9pSB" role="1urrMF">
               <ref role="1YBMHb" node="7Cm4l4AZ8s1" resolve="testCase" />

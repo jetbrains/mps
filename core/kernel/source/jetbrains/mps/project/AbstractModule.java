@@ -532,13 +532,13 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
   }
 
   private void createAndLoadFacet(FacetFactory factory, Memento memento) {
-    if (factory.isApplicable(this)) {
-      SModuleFacet facet = factory.create(this);
-      facet = loadAndAttachIfNeeded(facet, memento);
-      myFacets.add(facet);
-    } else {
-      LOG.error("This module is not applicable for the facet factory '" + factory + "'", new IllegalStateException());
+    if (!factory.isApplicable(this)) {
+      LOG.warning(String.format("Facet factory '%s' can't handle module %s", factory, getModuleName()));
+      // still, if facet is there, create it to facilitate removal from UI
     }
+    SModuleFacet facet = factory.create(this);
+    facet = loadAndAttachIfNeeded(facet, memento);
+    myFacets.add(facet);
   }
 
   private void clearFacets() {
@@ -722,16 +722,28 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     Set<ModelRoot> toRemove = new LinkedHashSet<>(mySModelRoots);
     Set<ModelRoot> toUpdate = new LinkedHashSet<>(mySModelRoots);
     Set<ModelRoot> toAttach = new LinkedHashSet<>();
+    /*
+    XXX ModelRoot instance just loaded from MRDescriptor and the one attached to a module might
+    get quite different, to ensure matching of existing (attached) vs freshly loaded (detached) MR
+    instances we might want to stick to their 'persisted' state and to match respective Memento instead.
+    However, for 22.3 the change seems a bit more drastic than desired, addressed by FileBasedModelRoot.equals() impl, instead.
+    Map<Memento, ModelRoot> persisted2instance = new HashMap<>();
+    for (ModelRoot mr : mySModelRoots) {
+      final MementoImpl persisted = new MementoImpl();
+      mr.save(persisted);
+      persisted2instance.put(persisted, mr);
+    }
+    */
 
     for (ModelRoot root : loadRoots()) {
-      try {
-        if (mySModelRoots.contains(root)) {
-          toRemove.remove(root);
-        } else {
-          toAttach.add(root);
-        }
-      } catch (Exception e) {
-        LOG.error("Error loading models from root `" + root + "'. Requested by: " + this, e);
+      // see comment above for explanation
+//      final MementoImpl newRootPersisted = new MementoImpl();
+//      root.save(newRootPersisted);
+//      final ModelRoot existing = persisted2instance.get(newRootPersisted);
+      if (mySModelRoots.contains(root)) {
+        toRemove.remove(root);
+      } else {
+        toAttach.add(root);
       }
     }
     toUpdate.removeAll(toRemove);
@@ -750,10 +762,14 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     }
     mySModelRoots.removeAll(toRemove);
     for (ModelRoot modelRoot : toAttach) {
-      ModelRootBase rootBase = (ModelRootBase) modelRoot;
-      rootBase.setModule(this);
-      mySModelRoots.add(modelRoot);
-      rootBase.attach();
+      try {
+        ModelRootBase rootBase = (ModelRootBase) modelRoot;
+        rootBase.setModule(this);
+        mySModelRoots.add(modelRoot);
+        rootBase.attach();
+      } catch (Exception e) {
+        LOG.error(String.format("Error loading models from root `%s'. Requested by: %s", modelRoot, this), e);
+      }
     }
     markModelsIncomplete();
   }
