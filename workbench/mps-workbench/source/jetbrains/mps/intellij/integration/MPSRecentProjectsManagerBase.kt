@@ -43,7 +43,7 @@ suspend fun openProject(projectFile: Path?, options: OpenProjectTask?, superFun:
             return null
         }
 
-        val localOptions = options
+        val localOptions = options.copy(runConfigurators = false)
 
         val trusted = OpenMPSProjectTrustProjectHelperK().checkTrust(projectFile)
 
