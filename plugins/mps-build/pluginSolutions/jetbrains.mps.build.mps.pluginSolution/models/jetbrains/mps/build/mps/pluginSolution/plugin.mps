@@ -13200,6 +13200,9 @@
                           </node>
                           <node concept="3ygNvl" id="2OJWaFGOVpD" role="39821P">
                             <ref role="3ygNvj" to="ffeo:1diLdO26H7f" resolve="lib" />
+                            <node concept="3LWZYq" id="2CLHf7OpY_j" role="1juEy9">
+                              <property role="3LWZYl" value="jna/" />
+                            </node>
                             <node concept="3LWZYq" id="2OJWaFGOVpE" role="1juEy9">
                               <property role="3LWZYl" value="MPS-src.zip" />
                             </node>
