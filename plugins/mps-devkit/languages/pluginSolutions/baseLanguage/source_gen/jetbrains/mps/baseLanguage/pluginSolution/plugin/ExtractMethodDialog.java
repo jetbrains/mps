@@ -48,6 +48,8 @@ import jetbrains.mps.project.dependency.VisibilityUtil;
 import org.jetbrains.annotations.NonNls;
 import javax.swing.JOptionPane;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.MethodMatch;
 import javax.swing.JButton;
@@ -362,7 +364,17 @@ public class ExtractMethodDialog extends RefactoringDialog {
       final SNode[] results = {null};
       myContext.getRepository().getModelAccess().executeCommand(new EditorCommand(myContext) {
         protected void doExecute() {
-          SNode result = myRefactoring.doRefactor();
+          SNode result = myRefactoring.doRefactor(new Runnable() {
+            @Override
+            public void run() {
+              ApplicationManager.getApplication().invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                  Messages.showInfoMessage("Necessary imports have been added during the refactoring.", "Imports added");
+                }
+              });
+            }
+          });
           results[0] = result;
           myContext.select(result);
           if ((myRefactoringModel != null) && myExtractIntoOuterContainer) {

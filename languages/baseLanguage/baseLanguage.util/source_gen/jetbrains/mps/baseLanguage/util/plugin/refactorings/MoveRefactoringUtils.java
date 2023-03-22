@@ -71,18 +71,23 @@ public class MoveRefactoringUtils {
 
   /**
    * Now, when this is needed from multiple places, we shall keep the utility method.
+   * 
+   * @return True, if the imports have been changed by the method
    */
-  public static void updateImportsAfterModelChange(SNode node) {
+  public static boolean updateImportsAfterModelChange(SNode node) {
     SModel mm = SNodeOperations.getModel(node);
     if (mm == null) {
-      return;
+      return false;
     }
     SRepository repo = mm.getRepository();
     ModelDependencyUpdate mdu = new ModelDependencyUpdate(mm, node);
+    int beforeSize = ((SModelInternal) mm).getModelImports().size();
     mdu.updateImportedModels(repo);
+    int afterSize = ((SModelInternal) mm).getModelImports().size();
     if (repo != null && mm.getModule() != null) {
       mdu.updateModuleDependencies(repo);
     }
+    return afterSize > beforeSize;
   }
 
   private static final class CONCEPTS {

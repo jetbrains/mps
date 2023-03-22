@@ -17,6 +17,8 @@ import jetbrains.mps.editor.runtime.commands.EditorComputable;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.MoveRefactoringUtils;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.messageTargets.CellFinder;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
@@ -54,7 +56,14 @@ public class LocalVariableIntroducer {
       @Override
       protected SNode doCompute() {
         SNode result = myRefactoring.doRefactoring();
-        MoveRefactoringUtils.updateImportsAfterModelChange(SLinkOperations.getTarget(result, LINKS.type$a1UY));
+        if (MoveRefactoringUtils.updateImportsAfterModelChange(SLinkOperations.getTarget(result, LINKS.type$a1UY))) {
+          ApplicationManager.getApplication().invokeLater(new Runnable() {
+            @Override
+            public void run() {
+              Messages.showInfoMessage("Necessary imports have been added during the refactoring.", "Imports added");
+            }
+          });
+        }
         return result;
       }
     };

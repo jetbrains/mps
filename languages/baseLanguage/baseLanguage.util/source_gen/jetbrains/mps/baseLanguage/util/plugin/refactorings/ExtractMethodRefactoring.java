@@ -10,6 +10,7 @@ import java.util.Map;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -43,8 +44,14 @@ public abstract class ExtractMethodRefactoring {
     this.myParameters = parameters;
     this.myAnalyzer = parameters.getAnalyzer();
   }
+
   @NotNull
   public SNode doRefactor() {
+    return doRefactor(null);
+  }
+
+  @NotNull
+  public SNode doRefactor(Runnable importNotifier) {
     SNode body = createMethodBody();
     List<SNode> params = new ArrayList<SNode>();
     Map<SNode, SNode> inputToParams = this.createInputParameters(body, params);
@@ -57,14 +64,18 @@ public abstract class ExtractMethodRefactoring {
     MethodMatch exactMatch = this.createMatch(this.myParameters.getNodesToRefactor(), inputMapping, params);
     this.replaceMatch(exactMatch, newMethod);
     MethodOptimizer.optimize(body);
-    MoveRefactoringUtils.updateImportsAfterModelChange(SLinkOperations.getTarget(newMethod, LINKS.returnType$5xoi));
+    final Wrappers._boolean isSomethingImported = new Wrappers._boolean(MoveRefactoringUtils.updateImportsAfterModelChange(SLinkOperations.getTarget(newMethod, LINKS.returnType$5xoi)));
     ListSequence.fromList(SLinkOperations.getChildren(newMethod, LINKS.parameter$5xBj)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode p) {
-        MoveRefactoringUtils.updateImportsAfterModelChange(SLinkOperations.getTarget(p, LINKS.type$a1UY));
+        isSomethingImported.value = isSomethingImported.value | MoveRefactoringUtils.updateImportsAfterModelChange(SLinkOperations.getTarget(p, LINKS.type$a1UY));
       }
     });
+    if (isSomethingImported.value && importNotifier != null) {
+      importNotifier.run();
+    }
     return newMethod;
   }
+
   protected abstract SNode createMethodBody();
   public abstract void replaceMatch(MethodMatch match, SNode methodDeclaration);
   protected MethodMatch createMatch(List<SNode> nodes, Map<SNode, SNode> inputMapping, List<SNode> parametersOrder) {
@@ -100,7 +111,7 @@ public abstract class ExtractMethodRefactoring {
     }
     ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.throwsItem$CdW$)).addSequence(ListSequence.fromList(throwables).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
-        return _quotation_createNode_jq3ovj_a0a0a0a0c0k(it);
+        return _quotation_createNode_jq3ovj_a0a0a0a0c0o(it);
       }
     }));
   }
@@ -120,8 +131,8 @@ public abstract class ExtractMethodRefactoring {
       }
     }
     for (SNode declaration : SetSequence.fromSet(MapSequence.fromMap(mapping).keySet())) {
-      SNode newDeclaration = _quotation_createNode_jq3ovj_a0a0c0l(SNodeOperations.copyNode(SLinkOperations.getTarget(declaration, LINKS.type$a1UY)), SPropertyOperations.getString(declaration, PROPS.name$MnvL));
-      SNodeOperations.insertPrevSiblingChild(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$5xQk), LINKS.statement$53DE)).first(), _quotation_createNode_jq3ovj_a0a1a2a11(newDeclaration));
+      SNode newDeclaration = _quotation_createNode_jq3ovj_a0a0c0p(SNodeOperations.copyNode(SLinkOperations.getTarget(declaration, LINKS.type$a1UY)), SPropertyOperations.getString(declaration, PROPS.name$MnvL));
+      SNodeOperations.insertPrevSiblingChild(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$5xQk), LINKS.statement$53DE)).first(), _quotation_createNode_jq3ovj_a0a1a2a51(newDeclaration));
       for (SNode reference : ListSequence.fromList(MapSequence.fromMap(mapping).get(declaration))) {
         SNodeOperations.replaceWithAnother(reference, VariableDeclaration__BehaviorDescriptor.createReference_idhEwJfME.invoke(newDeclaration));
       }
@@ -166,7 +177,7 @@ public abstract class ExtractMethodRefactoring {
   public void replaceInputVariablesByParameters(List<SNode> nodes, Map<SNode, SNode> mapping) {
     Map<SNode, SNode> anotherMap = this.createInputVariablesMapping(mapping, nodes);
     for (SNode node : SetSequence.fromSet(MapSequence.fromMap(anotherMap).keySet())) {
-      SNodeOperations.replaceWithAnother(node, _quotation_createNode_jq3ovj_a0a0a1a51(MapSequence.fromMap(anotherMap).get(node)));
+      SNodeOperations.replaceWithAnother(node, _quotation_createNode_jq3ovj_a0a0a1a91(MapSequence.fromMap(anotherMap).get(node)));
     }
   }
   /*package*/ Map<SNode, SNode> createInputVariablesMapping(Map<SNode, SNode> variableDeclarationToParameter, List<SNode> nodes) {
@@ -254,14 +265,14 @@ public abstract class ExtractMethodRefactoring {
   public boolean shouldBeStatic() {
     return this.myAnalyzer.shouldBeStatic();
   }
-  private static SNode _quotation_createNode_jq3ovj_a0a0a0a0c0k(Object parameter_1) {
+  private static SNode _quotation_createNode_jq3ovj_a0a0a0a0c0o(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
     quotedNode_2 = nb.getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), (SNode) parameter_1);
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_jq3ovj_a0a0c0l(Object parameter_1, Object parameter_2) {
+  private static SNode _quotation_createNode_jq3ovj_a0a0c0p(Object parameter_1, Object parameter_2) {
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7efL, "LocalVariableDeclaration"));
@@ -273,7 +284,7 @@ public abstract class ExtractMethodRefactoring {
     }
     return quotedNode_3;
   }
-  private static SNode _quotation_createNode_jq3ovj_a0a1a2a11(Object parameter_1) {
+  private static SNode _quotation_createNode_jq3ovj_a0a1a2a51(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
@@ -285,7 +296,7 @@ public abstract class ExtractMethodRefactoring {
     }
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_jq3ovj_a0a0a1a51(Object parameter_1) {
+  private static SNode _quotation_createNode_jq3ovj_a0a0a1a91(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e98L, "VariableReference"));
     quotedNode_2 = nb.getResult();

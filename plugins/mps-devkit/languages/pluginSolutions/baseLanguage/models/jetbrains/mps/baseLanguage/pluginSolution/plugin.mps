@@ -96,6 +96,7 @@
     <import index="wsw7" ref="r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)" />
     <import index="d6hs" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.errors.item(MPS.Core/)" />
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
+    <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" implicit="true" />
   </imports>
   <registry>
     <language id="97a52717-898f-4598-8150-573d9fd03868" name="jetbrains.mps.lang.dataFlow.analyzers">
@@ -303,6 +304,9 @@
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
+      </concept>
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ng" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1109279763828" name="jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration" flags="ng" index="16euLQ" />
       <concept id="1109279851642" name="jetbrains.mps.baseLanguage.structure.GenericDeclaration" flags="ng" index="16eOlS">
@@ -11877,8 +11881,54 @@
                           </node>
                         </node>
                       </node>
-                      <node concept="3clFbF" id="3alVMFmTKRV" role="3cqZAp">
-                        <node concept="2YIFZM" id="2oXL8T8NprK" role="3clFbG">
+                      <node concept="3clFbJ" id="6XWgB1b0HQ5" role="3cqZAp">
+                        <node concept="3clFbS" id="6XWgB1b0HQY" role="3clFbx">
+                          <node concept="3clFbF" id="6XWgB1bnEtK" role="3cqZAp">
+                            <node concept="2OqwBi" id="6XWgB1bnEtL" role="3clFbG">
+                              <node concept="2YIFZM" id="6XWgB1bnEtM" role="2Oq$k0">
+                                <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+                                <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+                              </node>
+                              <node concept="liA8E" id="6XWgB1bnEtN" role="2OqNvi">
+                                <ref role="37wK5l" to="bd8o:~Application.invokeLater(java.lang.Runnable)" resolve="invokeLater" />
+                                <node concept="2ShNRf" id="6XWgB1bnEtO" role="37wK5m">
+                                  <node concept="YeOm9" id="6XWgB1bnEtP" role="2ShVmc">
+                                    <node concept="1Y3b0j" id="6XWgB1bnEtQ" role="YeSDq">
+                                      <property role="2bfB8j" value="true" />
+                                      <property role="373rjd" value="true" />
+                                      <ref role="1Y3XeK" to="wyt6:~Runnable" resolve="Runnable" />
+                                      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" />
+                                      <node concept="3Tm1VV" id="6XWgB1bnEtR" role="1B3o_S" />
+                                      <node concept="3clFb_" id="6XWgB1bnEtS" role="jymVt">
+                                        <property role="TrG5h" value="run" />
+                                        <node concept="3Tm1VV" id="6XWgB1bnEtT" role="1B3o_S" />
+                                        <node concept="3cqZAl" id="6XWgB1bnEtU" role="3clF45" />
+                                        <node concept="3clFbS" id="6XWgB1bnEtV" role="3clF47">
+                                          <node concept="3clFbF" id="6XWgB1bnEtW" role="3cqZAp">
+                                            <node concept="2YIFZM" id="6XWgB1bnEtX" role="3clFbG">
+                                              <ref role="37wK5l" to="jkm4:~Messages.showInfoMessage(java.lang.String,java.lang.String)" resolve="showInfoMessage" />
+                                              <ref role="1Pybhc" to="jkm4:~Messages" resolve="Messages" />
+                                              <node concept="Xl_RD" id="6XWgB1bnEtY" role="37wK5m">
+                                                <property role="Xl_RC" value="Necessary imports have been added during the refactoring." />
+                                              </node>
+                                              <node concept="Xl_RD" id="6XWgB1bnEtZ" role="37wK5m">
+                                                <property role="Xl_RC" value="Imports added" />
+                                              </node>
+                                            </node>
+                                          </node>
+                                        </node>
+                                        <node concept="2AHcQZ" id="6XWgB1bnEu0" role="2AJF6D">
+                                          <ref role="2AI5Lk" to="wyt6:~Override" />
+                                        </node>
+                                      </node>
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="2YIFZM" id="2oXL8T8NprK" role="3clFbw">
                           <ref role="37wK5l" to="89o2:1oZd4f_KMWC" resolve="updateImportsAfterModelChange" />
                           <ref role="1Pybhc" to="89o2:4gx_mbDdW0b" resolve="MoveRefactoringUtils" />
                           <node concept="2OqwBi" id="2oXL8T8NprL" role="37wK5m">
@@ -13024,8 +13074,54 @@
                           </node>
                         </node>
                       </node>
-                      <node concept="3clFbF" id="3alVMFmRsvJ" role="3cqZAp">
-                        <node concept="2YIFZM" id="2oXL8T8NnrP" role="3clFbG">
+                      <node concept="3clFbJ" id="6XWgB1aZviL" role="3cqZAp">
+                        <node concept="3clFbS" id="6XWgB1aZvkG" role="3clFbx">
+                          <node concept="3clFbF" id="6XWgB1blWLq" role="3cqZAp">
+                            <node concept="2OqwBi" id="6XWgB1bm6SN" role="3clFbG">
+                              <node concept="2YIFZM" id="6XWgB1bm3tK" role="2Oq$k0">
+                                <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+                                <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+                              </node>
+                              <node concept="liA8E" id="6XWgB1bmauK" role="2OqNvi">
+                                <ref role="37wK5l" to="bd8o:~Application.invokeLater(java.lang.Runnable)" resolve="invokeLater" />
+                                <node concept="2ShNRf" id="6XWgB1bmcAs" role="37wK5m">
+                                  <node concept="YeOm9" id="6XWgB1bmkCO" role="2ShVmc">
+                                    <node concept="1Y3b0j" id="6XWgB1bmkCR" role="YeSDq">
+                                      <property role="2bfB8j" value="true" />
+                                      <property role="373rjd" value="true" />
+                                      <ref role="1Y3XeK" to="wyt6:~Runnable" resolve="Runnable" />
+                                      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" />
+                                      <node concept="3Tm1VV" id="6XWgB1bmkCS" role="1B3o_S" />
+                                      <node concept="3clFb_" id="6XWgB1bmkD6" role="jymVt">
+                                        <property role="TrG5h" value="run" />
+                                        <node concept="3Tm1VV" id="6XWgB1bmkD7" role="1B3o_S" />
+                                        <node concept="3cqZAl" id="6XWgB1bmkD9" role="3clF45" />
+                                        <node concept="3clFbS" id="6XWgB1bmkDa" role="3clF47">
+                                          <node concept="3clFbF" id="6XWgB1aZYdJ" role="3cqZAp">
+                                            <node concept="2YIFZM" id="6XWgB1b038J" role="3clFbG">
+                                              <ref role="37wK5l" to="jkm4:~Messages.showInfoMessage(java.lang.String,java.lang.String)" resolve="showInfoMessage" />
+                                              <ref role="1Pybhc" to="jkm4:~Messages" resolve="Messages" />
+                                              <node concept="Xl_RD" id="6XWgB1b05l0" role="37wK5m">
+                                                <property role="Xl_RC" value="Necessary imports have been added during the refactoring." />
+                                              </node>
+                                              <node concept="Xl_RD" id="6XWgB1b0zcD" role="37wK5m">
+                                                <property role="Xl_RC" value="Imports added" />
+                                              </node>
+                                            </node>
+                                          </node>
+                                        </node>
+                                        <node concept="2AHcQZ" id="6XWgB1bmkDc" role="2AJF6D">
+                                          <ref role="2AI5Lk" to="wyt6:~Override" />
+                                        </node>
+                                      </node>
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="2YIFZM" id="2oXL8T8NnrP" role="3clFbw">
                           <ref role="37wK5l" to="89o2:1oZd4f_KMWC" resolve="updateImportsAfterModelChange" />
                           <ref role="1Pybhc" to="89o2:4gx_mbDdW0b" resolve="MoveRefactoringUtils" />
                           <node concept="2OqwBi" id="2oXL8T8NnrQ" role="37wK5m">
@@ -23432,7 +23528,72 @@
                                       <ref role="3cqZAo" node="3UdhnxHunmD" resolve="myRefactoring" />
                                     </node>
                                     <node concept="liA8E" id="1KUoCiqb6hU" role="2OqNvi">
-                                      <ref role="37wK5l" to="89o2:7nrhK3uHcsD" resolve="doRefactor" />
+                                      <ref role="37wK5l" to="89o2:6XWgB1b7urn" resolve="doRefactor" />
+                                      <node concept="2ShNRf" id="6XWgB1bjcWL" role="37wK5m">
+                                        <node concept="YeOm9" id="6XWgB1bjWhz" role="2ShVmc">
+                                          <node concept="1Y3b0j" id="6XWgB1bjWhA" role="YeSDq">
+                                            <property role="2bfB8j" value="true" />
+                                            <property role="373rjd" value="true" />
+                                            <ref role="1Y3XeK" to="wyt6:~Runnable" resolve="Runnable" />
+                                            <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" />
+                                            <node concept="3Tm1VV" id="6XWgB1bjWhB" role="1B3o_S" />
+                                            <node concept="3clFb_" id="6XWgB1bjWhP" role="jymVt">
+                                              <property role="TrG5h" value="run" />
+                                              <node concept="3Tm1VV" id="6XWgB1bjWhQ" role="1B3o_S" />
+                                              <node concept="3cqZAl" id="6XWgB1bjWhS" role="3clF45" />
+                                              <node concept="3clFbS" id="6XWgB1bjWhT" role="3clF47">
+                                                <node concept="3clFbF" id="6XWgB1bpkP9" role="3cqZAp">
+                                                  <node concept="2OqwBi" id="6XWgB1bpkPa" role="3clFbG">
+                                                    <node concept="2YIFZM" id="6XWgB1bpkPb" role="2Oq$k0">
+                                                      <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+                                                      <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+                                                    </node>
+                                                    <node concept="liA8E" id="6XWgB1bpkPc" role="2OqNvi">
+                                                      <ref role="37wK5l" to="bd8o:~Application.invokeLater(java.lang.Runnable)" resolve="invokeLater" />
+                                                      <node concept="2ShNRf" id="6XWgB1bpkPd" role="37wK5m">
+                                                        <node concept="YeOm9" id="6XWgB1bpkPe" role="2ShVmc">
+                                                          <node concept="1Y3b0j" id="6XWgB1bpkPf" role="YeSDq">
+                                                            <property role="2bfB8j" value="true" />
+                                                            <property role="373rjd" value="true" />
+                                                            <ref role="1Y3XeK" to="wyt6:~Runnable" resolve="Runnable" />
+                                                            <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" />
+                                                            <node concept="3Tm1VV" id="6XWgB1bpkPg" role="1B3o_S" />
+                                                            <node concept="3clFb_" id="6XWgB1bpkPh" role="jymVt">
+                                                              <property role="TrG5h" value="run" />
+                                                              <node concept="3Tm1VV" id="6XWgB1bpkPi" role="1B3o_S" />
+                                                              <node concept="3cqZAl" id="6XWgB1bpkPj" role="3clF45" />
+                                                              <node concept="3clFbS" id="6XWgB1bpkPk" role="3clF47">
+                                                                <node concept="3clFbF" id="6XWgB1bpkPl" role="3cqZAp">
+                                                                  <node concept="2YIFZM" id="6XWgB1bpkPm" role="3clFbG">
+                                                                    <ref role="37wK5l" to="jkm4:~Messages.showInfoMessage(java.lang.String,java.lang.String)" resolve="showInfoMessage" />
+                                                                    <ref role="1Pybhc" to="jkm4:~Messages" resolve="Messages" />
+                                                                    <node concept="Xl_RD" id="6XWgB1bpkPn" role="37wK5m">
+                                                                      <property role="Xl_RC" value="Necessary imports have been added during the refactoring." />
+                                                                    </node>
+                                                                    <node concept="Xl_RD" id="6XWgB1bpkPo" role="37wK5m">
+                                                                      <property role="Xl_RC" value="Imports added" />
+                                                                    </node>
+                                                                  </node>
+                                                                </node>
+                                                              </node>
+                                                              <node concept="2AHcQZ" id="6XWgB1bpkPp" role="2AJF6D">
+                                                                <ref role="2AI5Lk" to="wyt6:~Override" />
+                                                              </node>
+                                                            </node>
+                                                          </node>
+                                                        </node>
+                                                      </node>
+                                                    </node>
+                                                  </node>
+                                                </node>
+                                              </node>
+                                              <node concept="2AHcQZ" id="6XWgB1bjWhV" role="2AJF6D">
+                                                <ref role="2AI5Lk" to="wyt6:~Override" />
+                                              </node>
+                                            </node>
+                                          </node>
+                                        </node>
+                                      </node>
                                     </node>
                                   </node>
                                 </node>

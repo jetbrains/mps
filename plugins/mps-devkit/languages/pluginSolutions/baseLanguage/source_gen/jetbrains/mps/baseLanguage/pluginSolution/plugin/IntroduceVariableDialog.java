@@ -24,6 +24,8 @@ import jetbrains.mps.editor.runtime.commands.EditorComputable;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.MoveRefactoringUtils;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.ui.Messages;
 import java.awt.Insets;
 import javax.swing.JComponent;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -103,7 +105,14 @@ public abstract class IntroduceVariableDialog extends RefactoringDialog {
       @Override
       protected SNode doCompute() {
         SNode result = getRefactoring().doRefactoring();
-        MoveRefactoringUtils.updateImportsAfterModelChange(SLinkOperations.getTarget(result, LINKS.type$a1UY));
+        if (MoveRefactoringUtils.updateImportsAfterModelChange(SLinkOperations.getTarget(result, LINKS.type$a1UY))) {
+          ApplicationManager.getApplication().invokeLater(new Runnable() {
+            @Override
+            public void run() {
+              Messages.showInfoMessage("Necessary imports have been added during the refactoring.", "Imports added");
+            }
+          });
+        }
         return result;
       }
     };
