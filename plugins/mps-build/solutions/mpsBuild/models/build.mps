@@ -26952,12 +26952,6 @@
                 </node>
               </node>
               <node concept="2HvfSZ" id="2lgcjg39Ytb" role="39821P">
-                <node concept="3LWZYq" id="6xv$4WsFw$Q" role="2HvfZ1">
-                  <property role="3LWZYl" value="**/*.exe" />
-                </node>
-                <node concept="3LWZYq" id="4eWOtEm3qsh" role="2HvfZ1">
-                  <property role="3LWZYl" value="**/*.bat" />
-                </node>
                 <node concept="55IIr" id="2lgcjg39Ytd" role="2HvfZ0">
                   <node concept="2Ry0Ak" id="2lgcjg39Yte" role="iGT6I">
                     <property role="2Ry0Am" value="bin" />
@@ -26965,6 +26959,9 @@
                       <property role="2Ry0Am" value="win" />
                     </node>
                   </node>
+                </node>
+                <node concept="3LWZYx" id="2CLHf7NVw98" role="2HvfZ1">
+                  <property role="3LWZYw" value="breakgen*" />
                 </node>
               </node>
               <node concept="2HvfSZ" id="2Rmwjku$_Tn" role="39821P">
@@ -26978,6 +26975,9 @@
                       </node>
                     </node>
                   </node>
+                </node>
+                <node concept="3LWZYq" id="34Kz121j5Oy" role="2HvfZ1">
+                  <property role="3LWZYl" value="launcher.exe" />
                 </node>
               </node>
               <node concept="28jJK3" id="2lgcjg3akLV" role="39821P">
@@ -27361,11 +27361,6 @@
           </node>
           <node concept="398223" id="3wRozBgYU46" role="39821P">
             <node concept="398223" id="3wRozBgYUbj" role="39821P">
-              <node concept="3_J27D" id="3wRozBgYUbl" role="Nbhlr">
-                <node concept="3Mxwew" id="3wRozBgYUbQ" role="3MwsjC">
-                  <property role="3MwjfP" value="jna" />
-                </node>
-              </node>
               <node concept="398223" id="33kYI6S02rd" role="39821P">
                 <node concept="3_J27D" id="33kYI6S02rf" role="Nbhlr">
                   <node concept="3Mxwew" id="33kYI6S02rq" role="3MwsjC">
@@ -27456,6 +27451,11 @@
                       </node>
                     </node>
                   </node>
+                </node>
+              </node>
+              <node concept="3_J27D" id="3wRozBgYUbl" role="Nbhlr">
+                <node concept="3Mxwew" id="3wRozBgYUbQ" role="3MwsjC">
+                  <property role="3MwjfP" value="jna" />
                 </node>
               </node>
             </node>
@@ -27894,15 +27894,15 @@
                 </node>
               </node>
             </node>
-            <node concept="28jJK3" id="36iKyu3UrDN" role="39821P">
-              <node concept="55IIr" id="36iKyu3UrDP" role="28jJRO">
-                <node concept="2Ry0Ak" id="36iKyu3UrHX" role="iGT6I">
+            <node concept="2HvfSZ" id="3eZ5xnhFhrF" role="39821P">
+              <node concept="3LWZYx" id="3eZ5xnhFhrG" role="2HvfZ1">
+                <property role="3LWZYw" value="breakgen*" />
+              </node>
+              <node concept="55IIr" id="3eZ5xnhFhrH" role="2HvfZ0">
+                <node concept="2Ry0Ak" id="3eZ5xnhFhrI" role="iGT6I">
                   <property role="2Ry0Am" value="bin" />
-                  <node concept="2Ry0Ak" id="36iKyu3UrXy" role="2Ry0An">
+                  <node concept="2Ry0Ak" id="3eZ5xnhFhrJ" role="2Ry0An">
                     <property role="2Ry0Am" value="win" />
-                    <node concept="2Ry0Ak" id="36iKyu3UrZz" role="2Ry0An">
-                      <property role="2Ry0Am" value="breakgen*" />
-                    </node>
                   </node>
                 </node>
               </node>
@@ -27918,6 +27918,9 @@
                     </node>
                   </node>
                 </node>
+              </node>
+              <node concept="3LWZYq" id="3eZ5xnhFhqE" role="2HvfZ1">
+                <property role="3LWZYl" value="launcher.exe" />
               </node>
             </node>
             <node concept="28jJK3" id="AwiPu7jHTT" role="39821P">

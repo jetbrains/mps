@@ -130,10 +130,11 @@
     <zip destfile="${build.layout}/${mps.build.number}.zip">
       <zipfileset dir="${artifacts.mps}" prefix="MPS ${mpsBootstrapCore.version}" />
       <zipfileset dir="${basedir}/bin/win" prefix="MPS ${mpsBootstrapCore.version}/bin/win">
-        <exclude name="**/*.exe" />
-        <exclude name="**/*.bat" />
+        <include name="breakgen*" />
       </zipfileset>
-      <zipfileset dir="${basedir}/bin/win/amd64" prefix="MPS ${mpsBootstrapCore.version}/bin/win" />
+      <zipfileset dir="${basedir}/bin/win/amd64" prefix="MPS ${mpsBootstrapCore.version}/bin/win">
+        <exclude name="launcher.exe" />
+      </zipfileset>
       <zipfileset file="${basedir}/bin/linux/amd64/libdbm.so" prefix="MPS ${mpsBootstrapCore.version}/bin/linux" />
       <zipfileset file="${basedir}/bin/linux/amd64/fsnotifier" prefix="MPS ${mpsBootstrapCore.version}/bin/linux" filemode="755" />
       <zipfileset file="${basedir}/bin/linux/restart.py" prefix="MPS ${mpsBootstrapCore.version}/bin/linux" filemode="755" />
@@ -249,8 +250,12 @@
     </copy>
     <zip destfile="${build.layout}/${mps.build.number}-windows.zip">
       <zipfileset dir="${artifacts.mps}" prefix="MPS ${mpsBootstrapCore.version}" />
-      <zipfileset file="${basedir}/bin/win/breakgen*" prefix="MPS ${mpsBootstrapCore.version}/bin" />
-      <zipfileset dir="${basedir}/bin/win/amd64" prefix="MPS ${mpsBootstrapCore.version}/bin" />
+      <zipfileset dir="${basedir}/bin/win" prefix="MPS ${mpsBootstrapCore.version}/bin">
+        <include name="breakgen*" />
+      </zipfileset>
+      <zipfileset dir="${basedir}/bin/win/amd64" prefix="MPS ${mpsBootstrapCore.version}/bin">
+        <exclude name="launcher.exe" />
+      </zipfileset>
       <zipfileset file="${basedir}/build/resources/mps.ico" prefix="MPS ${mpsBootstrapCore.version}/bin" />
       <zipfileset file="${basedir}/lib/jna/win32-x86-64/jnidispatch.dll" prefix="MPS ${mpsBootstrapCore.version}/lib/jna" />
       <zipfileset dir="${basedir}/plugins/laf-win10" prefix="MPS ${mpsBootstrapCore.version}/plugins/laf-win10" />
