@@ -29,37 +29,21 @@ import java.util.List;
 /**
  * @author simon
  */
-public class SimpleConceptSubstituteMenuPart implements SubstituteMenuPart {
+public class SimpleConceptSubstituteMenuPart extends SubstituteMenuTracePart implements SubstituteMenuPart {
   private final SConcept myConcept;
-  private final EditorMenuDescriptor myMenuDescriptor;
 
   public SimpleConceptSubstituteMenuPart(@NotNull SAbstractConcept concept) {
     myConcept = MetaAdapterByDeclaration.asInstanceConcept(concept);
-    myMenuDescriptor = null;
   }
 
   // @since 2023.1
   public SimpleConceptSubstituteMenuPart(@NotNull SAbstractConcept concept, @NotNull EditorMenuDescriptor emd) {
+    super(emd);
     myConcept = MetaAdapterByDeclaration.asInstanceConcept(concept);
-    myMenuDescriptor = emd;
   }
 
-  @NotNull
   @Override
-  public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-    if (myMenuDescriptor == null) {
-      return doCreateItems(context);
-    }
-    context.getEditorMenuTrace().pushTraceInfo();
-    context.getEditorMenuTrace().setDescriptor(myMenuDescriptor);
-    try {
-      return doCreateItems(context);
-    } finally {
-      context.getEditorMenuTrace().popTraceInfo();
-    }
-  }
-
-  private List<SubstituteMenuItem> doCreateItems(SubstituteMenuContext context) {
+  protected List<SubstituteMenuItem> doCreateItems(SubstituteMenuContext context) {
     return Collections.singletonList(new DefaultSubstituteMenuItem(myConcept, context));
   }
 }

@@ -16,6 +16,7 @@
 package jetbrains.mps.lang.editor.menus.substitute;
 
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
@@ -28,11 +29,17 @@ import java.util.List;
 /**
  * @author simon
  */
-public class IncludeSubstituteMenuSubstituteMenuPart implements SubstituteMenuPart {
+public class IncludeSubstituteMenuSubstituteMenuPart extends SubstituteMenuTracePart implements SubstituteMenuPart {
 
-  @NotNull
+  protected IncludeSubstituteMenuSubstituteMenuPart() {
+  }
+
+  protected IncludeSubstituteMenuSubstituteMenuPart(@NotNull EditorMenuDescriptor menuDescriptor) {
+    super(menuDescriptor);
+  }
+
   @Override
-  public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
+  protected List<SubstituteMenuItem> doCreateItems(SubstituteMenuContext context) {
     SubstituteMenuLookup menuLookup;
     try {
       menuLookup = getMenuLookup(context);
@@ -42,7 +49,6 @@ public class IncludeSubstituteMenuSubstituteMenuPart implements SubstituteMenuPa
     }
     return context.createItems(menuLookup);
   }
-
 
   @Nullable
   protected SubstituteMenuLookup getMenuLookup(SubstituteMenuContext context) {

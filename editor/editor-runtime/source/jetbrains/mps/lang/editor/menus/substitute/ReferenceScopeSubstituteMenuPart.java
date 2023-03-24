@@ -18,14 +18,12 @@ package jetbrains.mps.lang.editor.menus.substitute;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
-import jetbrains.mps.openapi.editor.menus.EditorMenuTrace;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.util.IterableUtil;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -38,43 +36,28 @@ import java.util.List;
 /**
  * @author Radimir.Sorokin
  */
-public class ReferenceScopeSubstituteMenuPart implements SubstituteMenuPart {
+public class ReferenceScopeSubstituteMenuPart extends SubstituteMenuTracePart implements SubstituteMenuPart {
   private static final Logger LOG = Logger.getLogger(ReferenceScopeSubstituteMenuPart.class);
   private final SReferenceLink myReferenceLink;
 
   private final SAbstractConcept myConcept;
 
-  private final EditorMenuDescriptor myMenuDescriptor;
 
   public ReferenceScopeSubstituteMenuPart(@NotNull SAbstractConcept concept, @NotNull SReferenceLink referenceLink) {
-    this(concept, referenceLink, null);
-  }
-
-  public ReferenceScopeSubstituteMenuPart(@NotNull SAbstractConcept concept, @NotNull SReferenceLink referenceLink, @Nullable EditorMenuDescriptor emd) {
     myConcept = concept;
     myReferenceLink = referenceLink;
+  }
+
+  public ReferenceScopeSubstituteMenuPart(@NotNull SAbstractConcept concept, @NotNull SReferenceLink referenceLink, @NotNull EditorMenuDescriptor emd) {
     // in fact, can create this EditorMenuDescriptor here, no reason to create in templates other than uniform
     // use of switch_MenuDescription
-    myMenuDescriptor = emd;
+    super(emd);
+    myConcept = concept;
+    myReferenceLink = referenceLink;
   }
 
-  @NotNull
   @Override
-  public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-    if (myMenuDescriptor == null) {
-      return doCreateItems(context);
-    }
-    final EditorMenuTrace menuTrace = context.getEditorMenuTrace();
-    menuTrace.pushTraceInfo();
-    menuTrace.setDescriptor(myMenuDescriptor);
-    try {
-      return doCreateItems(context);
-    } finally {
-      menuTrace.popTraceInfo();
-    }
-  }
-
-  private List<SubstituteMenuItem> doCreateItems(SubstituteMenuContext context) {
+  protected List<SubstituteMenuItem> doCreateItems(SubstituteMenuContext context) {
     SNode parentNode = context.getParentNode();
     SNode currentTarget = context.getCurrentTargetNode();
     SContainmentLink link = null;
