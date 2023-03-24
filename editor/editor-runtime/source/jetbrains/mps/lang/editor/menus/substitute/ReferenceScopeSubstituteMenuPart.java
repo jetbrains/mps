@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,15 +47,6 @@ public class ReferenceScopeSubstituteMenuPart implements SubstituteMenuPart {
   public ReferenceScopeSubstituteMenuPart(@NotNull SAbstractConcept concept, @NotNull SReferenceLink referenceLink) {
     myConcept = concept;
     myReferenceLink = referenceLink;
-  }
-
-  /**
-   * Unused constructor we keep in order to prevent users from https://youtrack.jetbrains.com/issue/MPS-29051
-   * There is an issue https://youtrack.jetbrains.com/issue/MPS-28867 which is the reason for rebuilding the language does not recompile existing classes
-   */
-@Deprecated(since = "2019.1", forRemoval = true)
-  public ReferenceScopeSubstituteMenuPart(@NotNull SConcept concept, @NotNull SReferenceLink referenceLink) {
-    this(((SAbstractConcept) concept), referenceLink);
   }
 
   @NotNull

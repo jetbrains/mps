@@ -50451,64 +50451,29 @@
           <node concept="3cqZAl" id="SDmlC7xpKF" role="3clF45" />
           <node concept="3Tm1VV" id="SDmlC7xpKG" role="1B3o_S" />
           <node concept="3clFbS" id="SDmlC7xpKI" role="3clF47">
-            <node concept="3SKdUt" id="WJTbyNitxY" role="3cqZAp">
-              <node concept="1PaTwC" id="ATZLwXnUWY" role="1aUNEU">
-                <node concept="3oM_SD" id="ATZLwXnUWZ" role="1PaTwD">
-                  <property role="3oM_SC" value="that" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXnUX0" role="1PaTwD">
-                  <property role="3oM_SC" value="cast" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXnUX1" role="1PaTwD">
-                  <property role="3oM_SC" value="is" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXnUX2" role="1PaTwD">
-                  <property role="3oM_SC" value="needed" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXnUX3" role="1PaTwD">
-                  <property role="3oM_SC" value="for" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXnUX4" role="1PaTwD">
-                  <property role="3oM_SC" value="prevent" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXnUX5" role="1PaTwD">
-                  <property role="3oM_SC" value="the" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXnUX6" role="1PaTwD">
-                  <property role="3oM_SC" value="users" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXnUX7" role="1PaTwD">
-                  <property role="3oM_SC" value="from" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXnUX8" role="1PaTwD">
-                  <property role="3oM_SC" value="https://youtrack.jetbrains.com/issue/MPS-29051" />
-                </node>
-              </node>
-            </node>
             <node concept="XkiVB" id="SDmlC7xpKK" role="3cqZAp">
               <ref role="37wK5l" to="qtqj:~ReferenceScopeSubstituteMenuPart.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept,org.jetbrains.mps.openapi.language.SReferenceLink)" resolve="ReferenceScopeSubstituteMenuPart" />
-              <node concept="10QFUN" id="WJTbyNie92" role="37wK5m">
-                <node concept="35c_gC" id="WJTbyNie8U" role="10QFUP">
-                  <ref role="35c_gD" to="tpck:gw2VY9q" resolve="BaseConcept" />
-                  <node concept="1ZhdrF" id="WJTbyNie8V" role="lGtFl">
-                    <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/2644386474300074836/2644386474300074837" />
-                    <property role="2qtEX8" value="conceptDeclaration" />
-                    <node concept="3$xsQk" id="WJTbyNie8W" role="3$ytzL">
-                      <node concept="3clFbS" id="WJTbyNie8X" role="2VODD2">
-                        <node concept="3clFbF" id="WJTbyNie8Y" role="3cqZAp">
-                          <node concept="2OqwBi" id="WJTbyNie8Z" role="3clFbG">
-                            <node concept="30H73N" id="WJTbyNie90" role="2Oq$k0" />
-                            <node concept="2qgKlT" id="WJTbyNie91" role="2OqNvi">
-                              <ref role="37wK5l" to="tpcb:3mnwiBI8ZE2" resolve="getOutputConcept" />
-                            </node>
+              <node concept="15s5l7" id="4fcr1oFnyG7" role="lGtFl">
+                <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: Incompatible method signature&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/5948132024743482654]&quot;;" />
+                <property role="huDt6" value="Error: Incompatible method signature" />
+              </node>
+              <node concept="35c_gC" id="WJTbyNie8U" role="37wK5m">
+                <ref role="35c_gD" to="tpck:gw2VY9q" resolve="BaseConcept" />
+                <node concept="1ZhdrF" id="WJTbyNie8V" role="lGtFl">
+                  <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/2644386474300074836/2644386474300074837" />
+                  <property role="2qtEX8" value="conceptDeclaration" />
+                  <node concept="3$xsQk" id="WJTbyNie8W" role="3$ytzL">
+                    <node concept="3clFbS" id="WJTbyNie8X" role="2VODD2">
+                      <node concept="3clFbF" id="WJTbyNie8Y" role="3cqZAp">
+                        <node concept="2OqwBi" id="WJTbyNie8Z" role="3clFbG">
+                          <node concept="30H73N" id="WJTbyNie90" role="2Oq$k0" />
+                          <node concept="2qgKlT" id="WJTbyNie91" role="2OqNvi">
+                            <ref role="37wK5l" to="tpcb:3mnwiBI8ZE2" resolve="getOutputConcept" />
                           </node>
                         </node>
                       </node>
                     </node>
                   </node>
-                </node>
-                <node concept="3uibUv" id="WJTbyNie8d" role="10QFUM">
-                  <ref role="3uigEE" to="c17a:~SAbstractConcept" resolve="SAbstractConcept" />
                 </node>
               </node>
               <node concept="359W_D" id="SDmlC7xsKz" role="37wK5m">
