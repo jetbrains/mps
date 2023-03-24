@@ -263,28 +263,11 @@
   </root>
   <root nodeRef="r:eed912a6-16e8-466b-b48a-0e82310c46dd(jetbrains.mps.lang.editor.tooltips.editor)/430077727056735136">
     <file name="AuxEditorCellWithRefToGeneratedHint_SubstituteMenu.java">
-      <node id="430077727056735136" at="18,118,19,140" concept="5" />
-      <node id="430077727056735136" at="19,140,20,18" concept="6" />
-      <node id="430077727056735136" at="25,91,26,49" concept="1" />
-      <node id="430077727056735136" at="26,49,27,274" concept="1" />
-      <node id="430077727056735136" at="28,9,29,44" concept="6" />
-      <node id="430077727056735136" at="30,15,31,50" concept="1" />
-      <node id="430077727056735136" at="27,274,32,5" concept="10" />
-      <node id="430077727056735136" at="16,0,22,0" concept="4" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="430077727056735136" at="23,0,34,0" concept="4" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <scope id="430077727056735136" at="28,9,29,44" />
-      <scope id="430077727056735136" at="30,15,31,50" />
-      <scope id="430077727056735136" at="18,118,20,18">
-        <var name="result" id="430077727056735136" />
-      </scope>
-      <scope id="430077727056735136" at="16,0,22,0">
-        <var name="_context" id="430077727056735136" />
-      </scope>
-      <scope id="430077727056735136" at="25,91,32,5" />
-      <scope id="430077727056735136" at="23,0,34,0">
-        <var name="context" id="430077727056735136" />
-      </scope>
-      <unit id="430077727056735136" at="15,0,37,0" name="jetbrains.mps.lang.editor.tooltips.editor.AuxEditorCellWithRefToGeneratedHint_SubstituteMenu" />
+      <node id="430077727056735136" at="10,63,11,244" concept="9" />
+      <node id="430077727056735136" at="10,0,13,0" concept="0" trace="AuxEditorCellWithRefToGeneratedHint_SubstituteMenu#()V" />
+      <scope id="430077727056735136" at="10,63,11,244" />
+      <scope id="430077727056735136" at="10,0,13,0" />
+      <unit id="430077727056735136" at="9,0,15,0" name="jetbrains.mps.lang.editor.tooltips.editor.AuxEditorCellWithRefToGeneratedHint_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:eed912a6-16e8-466b-b48a-0e82310c46dd(jetbrains.mps.lang.editor.tooltips.editor)/9185659875393569207">

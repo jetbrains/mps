@@ -3555,54 +3555,20 @@
   </root>
   <root nodeRef="r:be520d7c-8791-490a-9d50-1adca7cd12c4(jetbrains.mps.lang.smodel.query.editor)/8064924659634133080">
     <file name="QueryParameterScope_old_SubstituteMenu.java">
-      <node id="8064924659634133080" at="18,118,19,140" concept="7" />
-      <node id="8064924659634133080" at="19,140,20,18" concept="8" />
-      <node id="8064924659634133080" at="25,91,26,49" concept="2" />
-      <node id="8064924659634133080" at="26,49,27,260" concept="2" />
-      <node id="8064924659634133080" at="28,9,29,44" concept="8" />
-      <node id="8064924659634133080" at="30,15,31,50" concept="2" />
-      <node id="8064924659634133080" at="27,260,32,5" concept="14" />
-      <node id="8064924659634133080" at="16,0,22,0" concept="6" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="8064924659634133080" at="23,0,34,0" concept="6" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <scope id="8064924659634133080" at="28,9,29,44" />
-      <scope id="8064924659634133080" at="30,15,31,50" />
-      <scope id="8064924659634133080" at="18,118,20,18">
-        <var name="result" id="8064924659634133080" />
-      </scope>
-      <scope id="8064924659634133080" at="16,0,22,0">
-        <var name="_context" id="8064924659634133080" />
-      </scope>
-      <scope id="8064924659634133080" at="25,91,32,5" />
-      <scope id="8064924659634133080" at="23,0,34,0">
-        <var name="context" id="8064924659634133080" />
-      </scope>
-      <unit id="8064924659634133080" at="15,0,37,0" name="jetbrains.mps.lang.smodel.query.editor.QueryParameterScope_old_SubstituteMenu" />
+      <node id="8064924659634133080" at="10,51,11,230" concept="13" />
+      <node id="8064924659634133080" at="10,0,13,0" concept="1" trace="QueryParameterScope_old_SubstituteMenu#()V" />
+      <scope id="8064924659634133080" at="10,51,11,230" />
+      <scope id="8064924659634133080" at="10,0,13,0" />
+      <unit id="8064924659634133080" at="9,0,15,0" name="jetbrains.mps.lang.smodel.query.editor.QueryParameterScope_old_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:be520d7c-8791-490a-9d50-1adca7cd12c4(jetbrains.mps.lang.smodel.query.editor)/8064924659634133081">
     <file name="QueryParameterIncludeReadOnly_old_SubstituteMenu.java">
-      <node id="8064924659634133081" at="18,118,19,140" concept="7" />
-      <node id="8064924659634133081" at="19,140,20,18" concept="8" />
-      <node id="8064924659634133081" at="25,91,26,49" concept="2" />
-      <node id="8064924659634133081" at="26,49,27,270" concept="2" />
-      <node id="8064924659634133081" at="28,9,29,44" concept="8" />
-      <node id="8064924659634133081" at="30,15,31,50" concept="2" />
-      <node id="8064924659634133081" at="27,270,32,5" concept="14" />
-      <node id="8064924659634133081" at="16,0,22,0" concept="6" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="8064924659634133081" at="23,0,34,0" concept="6" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <scope id="8064924659634133081" at="28,9,29,44" />
-      <scope id="8064924659634133081" at="30,15,31,50" />
-      <scope id="8064924659634133081" at="18,118,20,18">
-        <var name="result" id="8064924659634133081" />
-      </scope>
-      <scope id="8064924659634133081" at="16,0,22,0">
-        <var name="_context" id="8064924659634133081" />
-      </scope>
-      <scope id="8064924659634133081" at="25,91,32,5" />
-      <scope id="8064924659634133081" at="23,0,34,0">
-        <var name="context" id="8064924659634133081" />
-      </scope>
-      <unit id="8064924659634133081" at="15,0,37,0" name="jetbrains.mps.lang.smodel.query.editor.QueryParameterIncludeReadOnly_old_SubstituteMenu" />
+      <node id="8064924659634133081" at="10,61,11,240" concept="13" />
+      <node id="8064924659634133081" at="10,0,13,0" concept="1" trace="QueryParameterIncludeReadOnly_old_SubstituteMenu#()V" />
+      <scope id="8064924659634133081" at="10,61,11,240" />
+      <scope id="8064924659634133081" at="10,0,13,0" />
+      <unit id="8064924659634133081" at="9,0,15,0" name="jetbrains.mps.lang.smodel.query.editor.QueryParameterIncludeReadOnly_old_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:be520d7c-8791-490a-9d50-1adca7cd12c4(jetbrains.mps.lang.smodel.query.editor)/8113079483880375325">

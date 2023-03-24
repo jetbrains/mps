@@ -15,129 +15,95 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root>
     <file name="AnnotationDataDependency_SubstituteMenu.java">
-      <unit at="82,0,85,0" name="jetbrains.mps.lang.migration.editor.AnnotationDataDependency_SubstituteMenu$CONCEPTS" />
-      <unit at="86,0,89,0" name="jetbrains.mps.lang.migration.editor.AnnotationDataDependency_SubstituteMenu$LINKS" />
-      <unit at="66,0,81,0" name="jetbrains.mps.lang.migration.editor.AnnotationDataDependency_SubstituteMenu$SMP_Subconcepts_xc2g0a_b" />
-      <unit at="48,0,66,0" name="jetbrains.mps.lang.migration.editor.AnnotationDataDependency_SubstituteMenu$SMP_ReferenceScope_xc2g0a_a" />
-      <unit at="25,0,90,0" name="jetbrains.mps.lang.migration.editor.AnnotationDataDependency_SubstituteMenu" />
+      <unit at="61,0,64,0" name="jetbrains.mps.lang.migration.editor.AnnotationDataDependency_SubstituteMenu$CONCEPTS" />
+      <unit at="65,0,68,0" name="jetbrains.mps.lang.migration.editor.AnnotationDataDependency_SubstituteMenu$LINKS" />
+      <unit at="38,0,45,0" name="jetbrains.mps.lang.migration.editor.AnnotationDataDependency_SubstituteMenu$SMP_ReferenceScope_xc2g0a_a" />
+      <unit at="45,0,60,0" name="jetbrains.mps.lang.migration.editor.AnnotationDataDependency_SubstituteMenu$SMP_Subconcepts_xc2g0a_b" />
+      <unit at="25,0,69,0" name="jetbrains.mps.lang.migration.editor.AnnotationDataDependency_SubstituteMenu" />
     </file>
     <file name="DataDependencyReference_SubstituteMenu.java">
-      <unit at="82,0,85,0" name="jetbrains.mps.lang.migration.editor.DataDependencyReference_SubstituteMenu$CONCEPTS" />
-      <unit at="86,0,89,0" name="jetbrains.mps.lang.migration.editor.DataDependencyReference_SubstituteMenu$LINKS" />
-      <unit at="66,0,81,0" name="jetbrains.mps.lang.migration.editor.DataDependencyReference_SubstituteMenu$SMP_Subconcepts_dny9mp_b" />
-      <unit at="48,0,66,0" name="jetbrains.mps.lang.migration.editor.DataDependencyReference_SubstituteMenu$SMP_ReferenceScope_dny9mp_a" />
-      <unit at="25,0,90,0" name="jetbrains.mps.lang.migration.editor.DataDependencyReference_SubstituteMenu" />
+      <unit at="61,0,64,0" name="jetbrains.mps.lang.migration.editor.DataDependencyReference_SubstituteMenu$CONCEPTS" />
+      <unit at="65,0,68,0" name="jetbrains.mps.lang.migration.editor.DataDependencyReference_SubstituteMenu$LINKS" />
+      <unit at="38,0,45,0" name="jetbrains.mps.lang.migration.editor.DataDependencyReference_SubstituteMenu$SMP_ReferenceScope_dny9mp_a" />
+      <unit at="45,0,60,0" name="jetbrains.mps.lang.migration.editor.DataDependencyReference_SubstituteMenu$SMP_Subconcepts_dny9mp_b" />
+      <unit at="25,0,69,0" name="jetbrains.mps.lang.migration.editor.DataDependencyReference_SubstituteMenu" />
     </file>
     <file name="DataDependency_SubstituteMenu.java">
-      <unit at="82,0,85,0" name="jetbrains.mps.lang.migration.editor.DataDependency_SubstituteMenu$CONCEPTS" />
-      <unit at="86,0,89,0" name="jetbrains.mps.lang.migration.editor.DataDependency_SubstituteMenu$LINKS" />
-      <unit at="66,0,81,0" name="jetbrains.mps.lang.migration.editor.DataDependency_SubstituteMenu$SMP_Subconcepts_8c4vsx_b" />
-      <unit at="48,0,66,0" name="jetbrains.mps.lang.migration.editor.DataDependency_SubstituteMenu$SMP_ReferenceScope_8c4vsx_a" />
-      <unit at="25,0,90,0" name="jetbrains.mps.lang.migration.editor.DataDependency_SubstituteMenu" />
+      <unit at="61,0,64,0" name="jetbrains.mps.lang.migration.editor.DataDependency_SubstituteMenu$CONCEPTS" />
+      <unit at="65,0,68,0" name="jetbrains.mps.lang.migration.editor.DataDependency_SubstituteMenu$LINKS" />
+      <unit at="38,0,45,0" name="jetbrains.mps.lang.migration.editor.DataDependency_SubstituteMenu$SMP_ReferenceScope_8c4vsx_a" />
+      <unit at="45,0,60,0" name="jetbrains.mps.lang.migration.editor.DataDependency_SubstituteMenu$SMP_Subconcepts_8c4vsx_b" />
+      <unit at="25,0,69,0" name="jetbrains.mps.lang.migration.editor.DataDependency_SubstituteMenu" />
     </file>
     <file name="DirectNodeReference_SubstituteMenu.java">
-      <unit at="82,0,85,0" name="jetbrains.mps.lang.migration.editor.DirectNodeReference_SubstituteMenu$CONCEPTS" />
-      <unit at="86,0,89,0" name="jetbrains.mps.lang.migration.editor.DirectNodeReference_SubstituteMenu$LINKS" />
-      <unit at="66,0,81,0" name="jetbrains.mps.lang.migration.editor.DirectNodeReference_SubstituteMenu$SMP_Subconcepts_af7lbw_b" />
-      <unit at="48,0,66,0" name="jetbrains.mps.lang.migration.editor.DirectNodeReference_SubstituteMenu$SMP_ReferenceScope_af7lbw_a" />
-      <unit at="25,0,90,0" name="jetbrains.mps.lang.migration.editor.DirectNodeReference_SubstituteMenu" />
+      <unit at="61,0,64,0" name="jetbrains.mps.lang.migration.editor.DirectNodeReference_SubstituteMenu$CONCEPTS" />
+      <unit at="65,0,68,0" name="jetbrains.mps.lang.migration.editor.DirectNodeReference_SubstituteMenu$LINKS" />
+      <unit at="38,0,45,0" name="jetbrains.mps.lang.migration.editor.DirectNodeReference_SubstituteMenu$SMP_ReferenceScope_af7lbw_a" />
+      <unit at="45,0,60,0" name="jetbrains.mps.lang.migration.editor.DirectNodeReference_SubstituteMenu$SMP_Subconcepts_af7lbw_b" />
+      <unit at="25,0,69,0" name="jetbrains.mps.lang.migration.editor.DirectNodeReference_SubstituteMenu" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
       <unit at="17,0,147,0" name="jetbrains.mps.lang.migration.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="LinkPatternVariableReference_SubstituteMenu.java">
-      <unit at="82,0,85,0" name="jetbrains.mps.lang.migration.editor.LinkPatternVariableReference_SubstituteMenu$CONCEPTS" />
-      <unit at="86,0,89,0" name="jetbrains.mps.lang.migration.editor.LinkPatternVariableReference_SubstituteMenu$LINKS" />
-      <unit at="66,0,81,0" name="jetbrains.mps.lang.migration.editor.LinkPatternVariableReference_SubstituteMenu$SMP_Subconcepts_kemif3_b" />
-      <unit at="48,0,66,0" name="jetbrains.mps.lang.migration.editor.LinkPatternVariableReference_SubstituteMenu$SMP_ReferenceScope_kemif3_a" />
-      <unit at="25,0,90,0" name="jetbrains.mps.lang.migration.editor.LinkPatternVariableReference_SubstituteMenu" />
+      <unit at="61,0,64,0" name="jetbrains.mps.lang.migration.editor.LinkPatternVariableReference_SubstituteMenu$CONCEPTS" />
+      <unit at="65,0,68,0" name="jetbrains.mps.lang.migration.editor.LinkPatternVariableReference_SubstituteMenu$LINKS" />
+      <unit at="38,0,45,0" name="jetbrains.mps.lang.migration.editor.LinkPatternVariableReference_SubstituteMenu$SMP_ReferenceScope_kemif3_a" />
+      <unit at="45,0,60,0" name="jetbrains.mps.lang.migration.editor.LinkPatternVariableReference_SubstituteMenu$SMP_Subconcepts_kemif3_b" />
+      <unit at="25,0,69,0" name="jetbrains.mps.lang.migration.editor.LinkPatternVariableReference_SubstituteMenu" />
     </file>
     <file name="ListPatternVariableReference_SubstituteMenu.java">
-      <unit at="82,0,85,0" name="jetbrains.mps.lang.migration.editor.ListPatternVariableReference_SubstituteMenu$CONCEPTS" />
-      <unit at="86,0,89,0" name="jetbrains.mps.lang.migration.editor.ListPatternVariableReference_SubstituteMenu$LINKS" />
-      <unit at="66,0,81,0" name="jetbrains.mps.lang.migration.editor.ListPatternVariableReference_SubstituteMenu$SMP_Subconcepts_dmsze5_b" />
-      <unit at="48,0,66,0" name="jetbrains.mps.lang.migration.editor.ListPatternVariableReference_SubstituteMenu$SMP_ReferenceScope_dmsze5_a" />
-      <unit at="25,0,90,0" name="jetbrains.mps.lang.migration.editor.ListPatternVariableReference_SubstituteMenu" />
+      <unit at="61,0,64,0" name="jetbrains.mps.lang.migration.editor.ListPatternVariableReference_SubstituteMenu$CONCEPTS" />
+      <unit at="65,0,68,0" name="jetbrains.mps.lang.migration.editor.ListPatternVariableReference_SubstituteMenu$LINKS" />
+      <unit at="38,0,45,0" name="jetbrains.mps.lang.migration.editor.ListPatternVariableReference_SubstituteMenu$SMP_ReferenceScope_dmsze5_a" />
+      <unit at="45,0,60,0" name="jetbrains.mps.lang.migration.editor.ListPatternVariableReference_SubstituteMenu$SMP_Subconcepts_dmsze5_b" />
+      <unit at="25,0,69,0" name="jetbrains.mps.lang.migration.editor.ListPatternVariableReference_SubstituteMenu" />
     </file>
     <file name="NodePatternVariableReference_SubstituteMenu.java">
-      <unit at="82,0,85,0" name="jetbrains.mps.lang.migration.editor.NodePatternVariableReference_SubstituteMenu$CONCEPTS" />
-      <unit at="86,0,89,0" name="jetbrains.mps.lang.migration.editor.NodePatternVariableReference_SubstituteMenu$LINKS" />
-      <unit at="66,0,81,0" name="jetbrains.mps.lang.migration.editor.NodePatternVariableReference_SubstituteMenu$SMP_Subconcepts_52nnf_b" />
-      <unit at="48,0,66,0" name="jetbrains.mps.lang.migration.editor.NodePatternVariableReference_SubstituteMenu$SMP_ReferenceScope_52nnf_a" />
-      <unit at="25,0,90,0" name="jetbrains.mps.lang.migration.editor.NodePatternVariableReference_SubstituteMenu" />
+      <unit at="61,0,64,0" name="jetbrains.mps.lang.migration.editor.NodePatternVariableReference_SubstituteMenu$CONCEPTS" />
+      <unit at="65,0,68,0" name="jetbrains.mps.lang.migration.editor.NodePatternVariableReference_SubstituteMenu$LINKS" />
+      <unit at="38,0,45,0" name="jetbrains.mps.lang.migration.editor.NodePatternVariableReference_SubstituteMenu$SMP_ReferenceScope_52nnf_a" />
+      <unit at="45,0,60,0" name="jetbrains.mps.lang.migration.editor.NodePatternVariableReference_SubstituteMenu$SMP_Subconcepts_52nnf_b" />
+      <unit at="25,0,69,0" name="jetbrains.mps.lang.migration.editor.NodePatternVariableReference_SubstituteMenu" />
     </file>
     <file name="OrderDependency_SubstituteMenu.java">
-      <unit at="82,0,85,0" name="jetbrains.mps.lang.migration.editor.OrderDependency_SubstituteMenu$CONCEPTS" />
-      <unit at="86,0,89,0" name="jetbrains.mps.lang.migration.editor.OrderDependency_SubstituteMenu$LINKS" />
-      <unit at="66,0,81,0" name="jetbrains.mps.lang.migration.editor.OrderDependency_SubstituteMenu$SMP_Subconcepts_g2oj2n_b" />
-      <unit at="48,0,66,0" name="jetbrains.mps.lang.migration.editor.OrderDependency_SubstituteMenu$SMP_ReferenceScope_g2oj2n_a" />
-      <unit at="25,0,90,0" name="jetbrains.mps.lang.migration.editor.OrderDependency_SubstituteMenu" />
+      <unit at="61,0,64,0" name="jetbrains.mps.lang.migration.editor.OrderDependency_SubstituteMenu$CONCEPTS" />
+      <unit at="65,0,68,0" name="jetbrains.mps.lang.migration.editor.OrderDependency_SubstituteMenu$LINKS" />
+      <unit at="38,0,45,0" name="jetbrains.mps.lang.migration.editor.OrderDependency_SubstituteMenu$SMP_ReferenceScope_g2oj2n_a" />
+      <unit at="45,0,60,0" name="jetbrains.mps.lang.migration.editor.OrderDependency_SubstituteMenu$SMP_Subconcepts_g2oj2n_b" />
+      <unit at="25,0,69,0" name="jetbrains.mps.lang.migration.editor.OrderDependency_SubstituteMenu" />
     </file>
     <file name="PropertyPatternVariableReference_SubstituteMenu.java">
-      <unit at="82,0,85,0" name="jetbrains.mps.lang.migration.editor.PropertyPatternVariableReference_SubstituteMenu$CONCEPTS" />
-      <unit at="86,0,89,0" name="jetbrains.mps.lang.migration.editor.PropertyPatternVariableReference_SubstituteMenu$LINKS" />
-      <unit at="66,0,81,0" name="jetbrains.mps.lang.migration.editor.PropertyPatternVariableReference_SubstituteMenu$SMP_Subconcepts_wbk7fm_b" />
-      <unit at="48,0,66,0" name="jetbrains.mps.lang.migration.editor.PropertyPatternVariableReference_SubstituteMenu$SMP_ReferenceScope_wbk7fm_a" />
-      <unit at="25,0,90,0" name="jetbrains.mps.lang.migration.editor.PropertyPatternVariableReference_SubstituteMenu" />
+      <unit at="61,0,64,0" name="jetbrains.mps.lang.migration.editor.PropertyPatternVariableReference_SubstituteMenu$CONCEPTS" />
+      <unit at="65,0,68,0" name="jetbrains.mps.lang.migration.editor.PropertyPatternVariableReference_SubstituteMenu$LINKS" />
+      <unit at="38,0,45,0" name="jetbrains.mps.lang.migration.editor.PropertyPatternVariableReference_SubstituteMenu$SMP_ReferenceScope_wbk7fm_a" />
+      <unit at="45,0,60,0" name="jetbrains.mps.lang.migration.editor.PropertyPatternVariableReference_SubstituteMenu$SMP_Subconcepts_wbk7fm_b" />
+      <unit at="25,0,69,0" name="jetbrains.mps.lang.migration.editor.PropertyPatternVariableReference_SubstituteMenu" />
     </file>
     <file name="RefactoringOrderDependency_SubstituteMenu.java">
-      <unit at="82,0,85,0" name="jetbrains.mps.lang.migration.editor.RefactoringOrderDependency_SubstituteMenu$CONCEPTS" />
-      <unit at="86,0,89,0" name="jetbrains.mps.lang.migration.editor.RefactoringOrderDependency_SubstituteMenu$LINKS" />
-      <unit at="66,0,81,0" name="jetbrains.mps.lang.migration.editor.RefactoringOrderDependency_SubstituteMenu$SMP_Subconcepts_gjfk1b_b" />
-      <unit at="48,0,66,0" name="jetbrains.mps.lang.migration.editor.RefactoringOrderDependency_SubstituteMenu$SMP_ReferenceScope_gjfk1b_a" />
-      <unit at="25,0,90,0" name="jetbrains.mps.lang.migration.editor.RefactoringOrderDependency_SubstituteMenu" />
+      <unit at="61,0,64,0" name="jetbrains.mps.lang.migration.editor.RefactoringOrderDependency_SubstituteMenu$CONCEPTS" />
+      <unit at="65,0,68,0" name="jetbrains.mps.lang.migration.editor.RefactoringOrderDependency_SubstituteMenu$LINKS" />
+      <unit at="38,0,45,0" name="jetbrains.mps.lang.migration.editor.RefactoringOrderDependency_SubstituteMenu$SMP_ReferenceScope_gjfk1b_a" />
+      <unit at="45,0,60,0" name="jetbrains.mps.lang.migration.editor.RefactoringOrderDependency_SubstituteMenu$SMP_Subconcepts_gjfk1b_b" />
+      <unit at="25,0,69,0" name="jetbrains.mps.lang.migration.editor.RefactoringOrderDependency_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:b37fdbd0-16ea-49c3-a711-9a930a47b589(jetbrains.mps.lang.migration.editor)/1741258697586930407">
     <file name="RefactoringLog_SubstituteMenu.java">
-      <node id="1741258697586930407" at="18,118,19,140" concept="6" />
-      <node id="1741258697586930407" at="19,140,20,18" concept="7" />
-      <node id="1741258697586930407" at="25,91,26,49" concept="2" />
-      <node id="1741258697586930407" at="26,49,27,248" concept="2" />
-      <node id="1741258697586930407" at="28,9,29,44" concept="7" />
-      <node id="1741258697586930407" at="30,15,31,50" concept="2" />
-      <node id="1741258697586930407" at="27,248,32,5" concept="12" />
-      <node id="1741258697586930407" at="16,0,22,0" concept="5" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="1741258697586930407" at="23,0,34,0" concept="5" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <scope id="1741258697586930407" at="28,9,29,44" />
-      <scope id="1741258697586930407" at="30,15,31,50" />
-      <scope id="1741258697586930407" at="18,118,20,18">
-        <var name="result" id="1741258697586930407" />
-      </scope>
-      <scope id="1741258697586930407" at="16,0,22,0">
-        <var name="_context" id="1741258697586930407" />
-      </scope>
-      <scope id="1741258697586930407" at="25,91,32,5" />
-      <scope id="1741258697586930407" at="23,0,34,0">
-        <var name="context" id="1741258697586930407" />
-      </scope>
-      <unit id="1741258697586930407" at="15,0,37,0" name="jetbrains.mps.lang.migration.editor.RefactoringLog_SubstituteMenu" />
+      <node id="1741258697586930407" at="10,42,11,218" concept="11" />
+      <node id="1741258697586930407" at="10,0,13,0" concept="1" trace="RefactoringLog_SubstituteMenu#()V" />
+      <scope id="1741258697586930407" at="10,42,11,218" />
+      <scope id="1741258697586930407" at="10,0,13,0" />
+      <unit id="1741258697586930407" at="9,0,15,0" name="jetbrains.mps.lang.migration.editor.RefactoringLog_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:b37fdbd0-16ea-49c3-a711-9a930a47b589(jetbrains.mps.lang.migration.editor)/1741258697586930408">
     <file name="PureMigrationScript_SubstituteMenu.java">
-      <node id="1741258697586930408" at="18,118,19,140" concept="6" />
-      <node id="1741258697586930408" at="19,140,20,18" concept="7" />
-      <node id="1741258697586930408" at="25,91,26,49" concept="2" />
-      <node id="1741258697586930408" at="26,49,27,253" concept="2" />
-      <node id="1741258697586930408" at="28,9,29,44" concept="7" />
-      <node id="1741258697586930408" at="30,15,31,50" concept="2" />
-      <node id="1741258697586930408" at="27,253,32,5" concept="12" />
-      <node id="1741258697586930408" at="16,0,22,0" concept="5" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="1741258697586930408" at="23,0,34,0" concept="5" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <scope id="1741258697586930408" at="28,9,29,44" />
-      <scope id="1741258697586930408" at="30,15,31,50" />
-      <scope id="1741258697586930408" at="18,118,20,18">
-        <var name="result" id="1741258697586930408" />
-      </scope>
-      <scope id="1741258697586930408" at="16,0,22,0">
-        <var name="_context" id="1741258697586930408" />
-      </scope>
-      <scope id="1741258697586930408" at="25,91,32,5" />
-      <scope id="1741258697586930408" at="23,0,34,0">
-        <var name="context" id="1741258697586930408" />
-      </scope>
-      <unit id="1741258697586930408" at="15,0,37,0" name="jetbrains.mps.lang.migration.editor.PureMigrationScript_SubstituteMenu" />
+      <node id="1741258697586930408" at="10,47,11,223" concept="11" />
+      <node id="1741258697586930408" at="10,0,13,0" concept="1" trace="PureMigrationScript_SubstituteMenu#()V" />
+      <scope id="1741258697586930408" at="10,47,11,223" />
+      <scope id="1741258697586930408" at="10,0,13,0" />
+      <unit id="1741258697586930408" at="9,0,15,0" name="jetbrains.mps.lang.migration.editor.PureMigrationScript_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:b37fdbd0-16ea-49c3-a711-9a930a47b589(jetbrains.mps.lang.migration.editor)/2770867049910679858">
@@ -4557,180 +4523,75 @@
   </root>
   <root nodeRef="r:b37fdbd0-16ea-49c3-a711-9a930a47b589(jetbrains.mps.lang.migration.editor)/6807933448475581747">
     <file name="ProducedAnnotationDataDeclaration_SubstituteMenu.java">
-      <node id="6807933448475581747" at="18,118,19,140" concept="6" />
-      <node id="6807933448475581747" at="19,140,20,18" concept="7" />
-      <node id="6807933448475581747" at="25,91,26,49" concept="2" />
-      <node id="6807933448475581747" at="26,49,27,267" concept="2" />
-      <node id="6807933448475581747" at="28,9,29,44" concept="7" />
-      <node id="6807933448475581747" at="30,15,31,50" concept="2" />
-      <node id="6807933448475581747" at="27,267,32,5" concept="12" />
-      <node id="6807933448475581747" at="16,0,22,0" concept="5" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="6807933448475581747" at="23,0,34,0" concept="5" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <scope id="6807933448475581747" at="28,9,29,44" />
-      <scope id="6807933448475581747" at="30,15,31,50" />
-      <scope id="6807933448475581747" at="18,118,20,18">
-        <var name="result" id="6807933448475581747" />
-      </scope>
-      <scope id="6807933448475581747" at="16,0,22,0">
-        <var name="_context" id="6807933448475581747" />
-      </scope>
-      <scope id="6807933448475581747" at="25,91,32,5" />
-      <scope id="6807933448475581747" at="23,0,34,0">
-        <var name="context" id="6807933448475581747" />
-      </scope>
-      <unit id="6807933448475581747" at="15,0,37,0" name="jetbrains.mps.lang.migration.editor.ProducedAnnotationDataDeclaration_SubstituteMenu" />
+      <node id="6807933448475581747" at="10,61,11,237" concept="11" />
+      <node id="6807933448475581747" at="10,0,13,0" concept="1" trace="ProducedAnnotationDataDeclaration_SubstituteMenu#()V" />
+      <scope id="6807933448475581747" at="10,61,11,237" />
+      <scope id="6807933448475581747" at="10,0,13,0" />
+      <unit id="6807933448475581747" at="9,0,15,0" name="jetbrains.mps.lang.migration.editor.ProducedAnnotationDataDeclaration_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:b37fdbd0-16ea-49c3-a711-9a930a47b589(jetbrains.mps.lang.migration.editor)/6807933448475581773">
     <file name="ProducedDataDeclaration_SubstituteMenu.java">
-      <node id="6807933448475581773" at="18,118,19,140" concept="6" />
-      <node id="6807933448475581773" at="19,140,20,18" concept="7" />
-      <node id="6807933448475581773" at="25,91,26,49" concept="2" />
-      <node id="6807933448475581773" at="26,49,27,257" concept="2" />
-      <node id="6807933448475581773" at="28,9,29,44" concept="7" />
-      <node id="6807933448475581773" at="30,15,31,50" concept="2" />
-      <node id="6807933448475581773" at="27,257,32,5" concept="12" />
-      <node id="6807933448475581773" at="16,0,22,0" concept="5" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="6807933448475581773" at="23,0,34,0" concept="5" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <scope id="6807933448475581773" at="28,9,29,44" />
-      <scope id="6807933448475581773" at="30,15,31,50" />
-      <scope id="6807933448475581773" at="18,118,20,18">
-        <var name="result" id="6807933448475581773" />
-      </scope>
-      <scope id="6807933448475581773" at="16,0,22,0">
-        <var name="_context" id="6807933448475581773" />
-      </scope>
-      <scope id="6807933448475581773" at="25,91,32,5" />
-      <scope id="6807933448475581773" at="23,0,34,0">
-        <var name="context" id="6807933448475581773" />
-      </scope>
-      <unit id="6807933448475581773" at="15,0,37,0" name="jetbrains.mps.lang.migration.editor.ProducedDataDeclaration_SubstituteMenu" />
+      <node id="6807933448475581773" at="10,51,11,227" concept="11" />
+      <node id="6807933448475581773" at="10,0,13,0" concept="1" trace="ProducedDataDeclaration_SubstituteMenu#()V" />
+      <scope id="6807933448475581773" at="10,51,11,227" />
+      <scope id="6807933448475581773" at="10,0,13,0" />
+      <unit id="6807933448475581773" at="9,0,15,0" name="jetbrains.mps.lang.migration.editor.ProducedDataDeclaration_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:b37fdbd0-16ea-49c3-a711-9a930a47b589(jetbrains.mps.lang.migration.editor)/6807933448475581799">
     <file name="RequiredAnnotationDataDeclaration_SubstituteMenu.java">
-      <node id="6807933448475581799" at="18,118,19,140" concept="6" />
-      <node id="6807933448475581799" at="19,140,20,18" concept="7" />
-      <node id="6807933448475581799" at="25,91,26,49" concept="2" />
-      <node id="6807933448475581799" at="26,49,27,267" concept="2" />
-      <node id="6807933448475581799" at="28,9,29,44" concept="7" />
-      <node id="6807933448475581799" at="30,15,31,50" concept="2" />
-      <node id="6807933448475581799" at="27,267,32,5" concept="12" />
-      <node id="6807933448475581799" at="16,0,22,0" concept="5" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="6807933448475581799" at="23,0,34,0" concept="5" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <scope id="6807933448475581799" at="28,9,29,44" />
-      <scope id="6807933448475581799" at="30,15,31,50" />
-      <scope id="6807933448475581799" at="18,118,20,18">
-        <var name="result" id="6807933448475581799" />
-      </scope>
-      <scope id="6807933448475581799" at="16,0,22,0">
-        <var name="_context" id="6807933448475581799" />
-      </scope>
-      <scope id="6807933448475581799" at="25,91,32,5" />
-      <scope id="6807933448475581799" at="23,0,34,0">
-        <var name="context" id="6807933448475581799" />
-      </scope>
-      <unit id="6807933448475581799" at="15,0,37,0" name="jetbrains.mps.lang.migration.editor.RequiredAnnotationDataDeclaration_SubstituteMenu" />
+      <node id="6807933448475581799" at="10,61,11,237" concept="11" />
+      <node id="6807933448475581799" at="10,0,13,0" concept="1" trace="RequiredAnnotationDataDeclaration_SubstituteMenu#()V" />
+      <scope id="6807933448475581799" at="10,61,11,237" />
+      <scope id="6807933448475581799" at="10,0,13,0" />
+      <unit id="6807933448475581799" at="9,0,15,0" name="jetbrains.mps.lang.migration.editor.RequiredAnnotationDataDeclaration_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:b37fdbd0-16ea-49c3-a711-9a930a47b589(jetbrains.mps.lang.migration.editor)/6807933448475581825">
     <file name="RequiredDataDeclaration_SubstituteMenu.java">
-      <node id="6807933448475581825" at="18,118,19,140" concept="6" />
-      <node id="6807933448475581825" at="19,140,20,18" concept="7" />
-      <node id="6807933448475581825" at="25,91,26,49" concept="2" />
-      <node id="6807933448475581825" at="26,49,27,257" concept="2" />
-      <node id="6807933448475581825" at="28,9,29,44" concept="7" />
-      <node id="6807933448475581825" at="30,15,31,50" concept="2" />
-      <node id="6807933448475581825" at="27,257,32,5" concept="12" />
-      <node id="6807933448475581825" at="16,0,22,0" concept="5" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="6807933448475581825" at="23,0,34,0" concept="5" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <scope id="6807933448475581825" at="28,9,29,44" />
-      <scope id="6807933448475581825" at="30,15,31,50" />
-      <scope id="6807933448475581825" at="18,118,20,18">
-        <var name="result" id="6807933448475581825" />
-      </scope>
-      <scope id="6807933448475581825" at="16,0,22,0">
-        <var name="_context" id="6807933448475581825" />
-      </scope>
-      <scope id="6807933448475581825" at="25,91,32,5" />
-      <scope id="6807933448475581825" at="23,0,34,0">
-        <var name="context" id="6807933448475581825" />
-      </scope>
-      <unit id="6807933448475581825" at="15,0,37,0" name="jetbrains.mps.lang.migration.editor.RequiredDataDeclaration_SubstituteMenu" />
+      <node id="6807933448475581825" at="10,51,11,227" concept="11" />
+      <node id="6807933448475581825" at="10,0,13,0" concept="1" trace="RequiredDataDeclaration_SubstituteMenu#()V" />
+      <scope id="6807933448475581825" at="10,51,11,227" />
+      <scope id="6807933448475581825" at="10,0,13,0" />
+      <unit id="6807933448475581825" at="9,0,15,0" name="jetbrains.mps.lang.migration.editor.RequiredDataDeclaration_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:b37fdbd0-16ea-49c3-a711-9a930a47b589(jetbrains.mps.lang.migration.editor)/6807933448475581851">
     <file name="ExecuteAfterDeclaration_SubstituteMenu.java">
-      <node id="6807933448475581851" at="18,118,19,140" concept="6" />
-      <node id="6807933448475581851" at="19,140,20,18" concept="7" />
-      <node id="6807933448475581851" at="25,91,26,49" concept="2" />
-      <node id="6807933448475581851" at="26,49,27,257" concept="2" />
-      <node id="6807933448475581851" at="28,9,29,44" concept="7" />
-      <node id="6807933448475581851" at="30,15,31,50" concept="2" />
-      <node id="6807933448475581851" at="27,257,32,5" concept="12" />
-      <node id="6807933448475581851" at="16,0,22,0" concept="5" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="6807933448475581851" at="23,0,34,0" concept="5" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <scope id="6807933448475581851" at="28,9,29,44" />
-      <scope id="6807933448475581851" at="30,15,31,50" />
-      <scope id="6807933448475581851" at="18,118,20,18">
-        <var name="result" id="6807933448475581851" />
-      </scope>
-      <scope id="6807933448475581851" at="16,0,22,0">
-        <var name="_context" id="6807933448475581851" />
-      </scope>
-      <scope id="6807933448475581851" at="25,91,32,5" />
-      <scope id="6807933448475581851" at="23,0,34,0">
-        <var name="context" id="6807933448475581851" />
-      </scope>
-      <unit id="6807933448475581851" at="15,0,37,0" name="jetbrains.mps.lang.migration.editor.ExecuteAfterDeclaration_SubstituteMenu" />
+      <node id="6807933448475581851" at="10,51,11,227" concept="11" />
+      <node id="6807933448475581851" at="10,0,13,0" concept="1" trace="ExecuteAfterDeclaration_SubstituteMenu#()V" />
+      <scope id="6807933448475581851" at="10,51,11,227" />
+      <scope id="6807933448475581851" at="10,0,13,0" />
+      <unit id="6807933448475581851" at="9,0,15,0" name="jetbrains.mps.lang.migration.editor.ExecuteAfterDeclaration_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:b37fdbd0-16ea-49c3-a711-9a930a47b589(jetbrains.mps.lang.migration.editor)/6807933448475708172">
     <file name="GetDataExpression_SubstituteMenu.java">
-      <node id="6807933448475708172" at="23,118,24,140" concept="6" />
-      <node id="6807933448475822791" at="24,140,25,134" concept="2" />
-      <node id="6807933448475708172" at="25,134,26,18" concept="7" />
-      <node id="6807933448475708172" at="31,91,32,49" concept="2" />
-      <node id="6807933448475708172" at="32,49,33,251" concept="2" />
-      <node id="6807933448475708172" at="34,9,35,44" concept="7" />
-      <node id="6807933448475708172" at="36,15,37,50" concept="2" />
-      <node id="6807933448475822791" at="44,42,45,79" concept="11" />
-      <node id="6807933448475822791" at="49,80,50,51" concept="2" />
-      <node id="6807933448475822791" at="50,51,51,239" concept="2" />
-      <node id="6807933448475822791" at="52,11,53,42" concept="7" />
-      <node id="6807933448475822791" at="54,17,55,52" concept="2" />
-      <node id="6807933448475708172" at="62,0,63,0" concept="9" trace="GetDataExpression$Na" />
-      <node id="6807933448475708172" at="66,0,67,0" concept="9" trace="requiredDataDeclararion$77eK" />
-      <node id="6807933448475822791" at="44,0,47,0" concept="1" trace="SMP_ReferenceScope_8g9hw0_a#()V" />
-      <node id="6807933448475708172" at="33,251,38,5" concept="12" />
-      <node id="6807933448475822791" at="51,239,56,7" concept="12" />
-      <node id="6807933448475708172" at="21,0,28,0" concept="5" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="6807933448475708172" at="29,0,40,0" concept="5" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="6807933448475822791" at="47,0,58,0" concept="5" trace="createItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <scope id="6807933448475708172" at="34,9,35,44" />
-      <scope id="6807933448475708172" at="36,15,37,50" />
-      <scope id="6807933448475822791" at="44,42,45,79" />
-      <scope id="6807933448475822791" at="52,11,53,42" />
-      <scope id="6807933448475822791" at="54,17,55,52" />
-      <scope id="6807933448475708172" at="23,118,26,18">
+      <node id="6807933448475708172" at="21,45,22,221" concept="11" />
+      <node id="6807933448475708172" at="26,118,27,140" concept="6" />
+      <node id="6807933448475822791" at="27,140,28,134" concept="2" />
+      <node id="6807933448475708172" at="28,134,29,18" concept="7" />
+      <node id="6807933448475822791" at="34,42,35,269" concept="11" />
+      <node id="6807933448475708172" at="41,0,42,0" concept="9" trace="GetDataExpression$Na" />
+      <node id="6807933448475708172" at="45,0,46,0" concept="9" trace="requiredDataDeclararion$77eK" />
+      <node id="6807933448475708172" at="21,0,24,0" concept="1" trace="GetDataExpression_SubstituteMenu#()V" />
+      <node id="6807933448475822791" at="34,0,37,0" concept="1" trace="SMP_ReferenceScope_8g9hw0_a#()V" />
+      <node id="6807933448475708172" at="24,0,31,0" concept="5" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <scope id="6807933448475708172" at="21,45,22,221" />
+      <scope id="6807933448475822791" at="34,42,35,269" />
+      <scope id="6807933448475708172" at="21,0,24,0" />
+      <scope id="6807933448475708172" at="26,118,29,18">
         <var name="result" id="6807933448475708172" />
       </scope>
-      <scope id="6807933448475822791" at="44,0,47,0" />
-      <scope id="6807933448475708172" at="21,0,28,0">
+      <scope id="6807933448475822791" at="34,0,37,0" />
+      <scope id="6807933448475708172" at="24,0,31,0">
         <var name="_context" id="6807933448475708172" />
       </scope>
-      <scope id="6807933448475708172" at="31,91,38,5" />
-      <scope id="6807933448475822791" at="49,80,56,7" />
-      <scope id="6807933448475708172" at="29,0,40,0">
-        <var name="context" id="6807933448475708172" />
-      </scope>
-      <scope id="6807933448475822791" at="47,0,58,0">
-        <var name="context" id="6807933448475822791" />
-      </scope>
-      <unit id="6807933448475708172" at="61,0,64,0" name="jetbrains.mps.lang.migration.editor.GetDataExpression_SubstituteMenu$CONCEPTS" />
-      <unit id="6807933448475708172" at="65,0,68,0" name="jetbrains.mps.lang.migration.editor.GetDataExpression_SubstituteMenu$LINKS" />
-      <unit id="6807933448475822791" at="42,0,60,0" name="jetbrains.mps.lang.migration.editor.GetDataExpression_SubstituteMenu$SMP_ReferenceScope_8g9hw0_a" />
-      <unit id="6807933448475708172" at="20,0,69,0" name="jetbrains.mps.lang.migration.editor.GetDataExpression_SubstituteMenu" />
+      <unit id="6807933448475708172" at="40,0,43,0" name="jetbrains.mps.lang.migration.editor.GetDataExpression_SubstituteMenu$CONCEPTS" />
+      <unit id="6807933448475708172" at="44,0,47,0" name="jetbrains.mps.lang.migration.editor.GetDataExpression_SubstituteMenu$LINKS" />
+      <unit id="6807933448475822791" at="32,0,39,0" name="jetbrains.mps.lang.migration.editor.GetDataExpression_SubstituteMenu$SMP_ReferenceScope_8g9hw0_a" />
+      <unit id="6807933448475708172" at="20,0,48,0" name="jetbrains.mps.lang.migration.editor.GetDataExpression_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:b37fdbd0-16ea-49c3-a711-9a930a47b589(jetbrains.mps.lang.migration.editor)/7153805464398835506">

@@ -12,18 +12,18 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root>
     <file name="BlockExt_SubstituteMenu.java">
-      <unit at="82,0,85,0" name="jetbrains.mps.testHybridEditor.editor.BlockExt_SubstituteMenu$CONCEPTS" />
-      <unit at="86,0,89,0" name="jetbrains.mps.testHybridEditor.editor.BlockExt_SubstituteMenu$LINKS" />
-      <unit at="66,0,81,0" name="jetbrains.mps.testHybridEditor.editor.BlockExt_SubstituteMenu$SMP_Subconcepts_u1n2gi_b" />
-      <unit at="48,0,66,0" name="jetbrains.mps.testHybridEditor.editor.BlockExt_SubstituteMenu$SMP_ReferenceScope_u1n2gi_a" />
-      <unit at="25,0,90,0" name="jetbrains.mps.testHybridEditor.editor.BlockExt_SubstituteMenu" />
+      <unit at="61,0,64,0" name="jetbrains.mps.testHybridEditor.editor.BlockExt_SubstituteMenu$CONCEPTS" />
+      <unit at="65,0,68,0" name="jetbrains.mps.testHybridEditor.editor.BlockExt_SubstituteMenu$LINKS" />
+      <unit at="38,0,45,0" name="jetbrains.mps.testHybridEditor.editor.BlockExt_SubstituteMenu$SMP_ReferenceScope_u1n2gi_a" />
+      <unit at="45,0,60,0" name="jetbrains.mps.testHybridEditor.editor.BlockExt_SubstituteMenu$SMP_Subconcepts_u1n2gi_b" />
+      <unit at="25,0,69,0" name="jetbrains.mps.testHybridEditor.editor.BlockExt_SubstituteMenu" />
     </file>
     <file name="BlockInstance_SubstituteMenu.java">
-      <unit at="82,0,85,0" name="jetbrains.mps.testHybridEditor.editor.BlockInstance_SubstituteMenu$CONCEPTS" />
-      <unit at="86,0,89,0" name="jetbrains.mps.testHybridEditor.editor.BlockInstance_SubstituteMenu$LINKS" />
-      <unit at="66,0,81,0" name="jetbrains.mps.testHybridEditor.editor.BlockInstance_SubstituteMenu$SMP_Subconcepts_mm0rjv_b" />
-      <unit at="48,0,66,0" name="jetbrains.mps.testHybridEditor.editor.BlockInstance_SubstituteMenu$SMP_ReferenceScope_mm0rjv_a" />
-      <unit at="25,0,90,0" name="jetbrains.mps.testHybridEditor.editor.BlockInstance_SubstituteMenu" />
+      <unit at="61,0,64,0" name="jetbrains.mps.testHybridEditor.editor.BlockInstance_SubstituteMenu$CONCEPTS" />
+      <unit at="65,0,68,0" name="jetbrains.mps.testHybridEditor.editor.BlockInstance_SubstituteMenu$LINKS" />
+      <unit at="38,0,45,0" name="jetbrains.mps.testHybridEditor.editor.BlockInstance_SubstituteMenu$SMP_ReferenceScope_mm0rjv_a" />
+      <unit at="45,0,60,0" name="jetbrains.mps.testHybridEditor.editor.BlockInstance_SubstituteMenu$SMP_Subconcepts_mm0rjv_b" />
+      <unit at="25,0,69,0" name="jetbrains.mps.testHybridEditor.editor.BlockInstance_SubstituteMenu" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
       <unit at="20,0,54,0" name="jetbrains.mps.testHybridEditor.editor.EditorAspectDescriptorImpl" />

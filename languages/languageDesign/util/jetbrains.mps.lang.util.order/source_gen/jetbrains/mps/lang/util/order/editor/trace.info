@@ -17,11 +17,11 @@
       <unit at="16,0,46,0" name="jetbrains.mps.lang.util.order.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="OrderReference_SubstituteMenu.java">
-      <unit at="82,0,85,0" name="jetbrains.mps.lang.util.order.editor.OrderReference_SubstituteMenu$CONCEPTS" />
-      <unit at="86,0,89,0" name="jetbrains.mps.lang.util.order.editor.OrderReference_SubstituteMenu$LINKS" />
-      <unit at="66,0,81,0" name="jetbrains.mps.lang.util.order.editor.OrderReference_SubstituteMenu$SMP_Subconcepts_fi7th9_b" />
-      <unit at="48,0,66,0" name="jetbrains.mps.lang.util.order.editor.OrderReference_SubstituteMenu$SMP_ReferenceScope_fi7th9_a" />
-      <unit at="25,0,90,0" name="jetbrains.mps.lang.util.order.editor.OrderReference_SubstituteMenu" />
+      <unit at="61,0,64,0" name="jetbrains.mps.lang.util.order.editor.OrderReference_SubstituteMenu$CONCEPTS" />
+      <unit at="65,0,68,0" name="jetbrains.mps.lang.util.order.editor.OrderReference_SubstituteMenu$LINKS" />
+      <unit at="38,0,45,0" name="jetbrains.mps.lang.util.order.editor.OrderReference_SubstituteMenu$SMP_ReferenceScope_fi7th9_a" />
+      <unit at="45,0,60,0" name="jetbrains.mps.lang.util.order.editor.OrderReference_SubstituteMenu$SMP_Subconcepts_fi7th9_b" />
+      <unit at="25,0,69,0" name="jetbrains.mps.lang.util.order.editor.OrderReference_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:f4c3ab86-b83a-4259-840d-067f31a46650(jetbrains.mps.lang.util.order.editor)/174635545557535256">

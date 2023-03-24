@@ -360,65 +360,53 @@
   </root>
   <root nodeRef="r:b27aeb14-fefb-4745-88f9-0731c33985d8(jetbrains.mps.lang.rulesAndMessages.editor)/668954446731666655">
     <file name="AddMyselfToMenuOfRuleBlockMember.java">
-      <node id="668954446731666655" at="25,45,26,16" concept="11" />
+      <node id="668954446731666655" at="25,45,26,249" concept="11" />
       <node id="668954446731666655" at="30,118,31,140" concept="5" />
       <node id="668954446731667492" at="31,140,32,43" concept="1" />
       <node id="668954446731666655" at="32,43,33,18" concept="6" />
-      <node id="668954446731666655" at="38,91,39,49" concept="1" />
-      <node id="668954446731666655" at="39,49,40,280" concept="1" />
-      <node id="668954446731666655" at="41,9,42,44" concept="6" />
-      <node id="668954446731666655" at="43,15,44,50" concept="1" />
-      <node id="668954446731667492" at="53,80,54,51" concept="1" />
-      <node id="668954446731667492" at="54,51,55,270" concept="1" />
-      <node id="668954446731667492" at="56,11,57,42" concept="6" />
-      <node id="668954446731667492" at="58,17,59,52" concept="1" />
-      <node id="668954446731667492" at="64,82,65,70" concept="5" />
-      <node id="668954446731667492" at="65,70,66,80" concept="5" />
-      <node id="668954446731667492" at="66,80,67,128" concept="6" />
-      <node id="668954446731667492" at="69,86,70,41" concept="6" />
-      <node id="668954446731666655" at="75,0,76,0" concept="9" trace="RuleWithMessage$9Q" />
+      <node id="668954446731667492" at="40,80,41,51" concept="1" />
+      <node id="668954446731667492" at="41,51,42,270" concept="1" />
+      <node id="668954446731667492" at="43,11,44,42" concept="6" />
+      <node id="668954446731667492" at="45,17,46,52" concept="1" />
+      <node id="668954446731667492" at="51,82,52,70" concept="5" />
+      <node id="668954446731667492" at="52,70,53,80" concept="5" />
+      <node id="668954446731667492" at="53,80,54,128" concept="6" />
+      <node id="668954446731667492" at="56,86,57,41" concept="6" />
+      <node id="668954446731666655" at="62,0,63,0" concept="9" trace="RuleWithMessage$9Q" />
       <node id="668954446731666655" at="25,0,28,0" concept="0" trace="AddMyselfToMenuOfRuleBlockMember#()V" />
-      <node id="668954446731667492" at="69,0,72,0" concept="4" trace="getConceptToFindMenuFor#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="668954446731666655" at="40,280,45,5" concept="12" />
-      <node id="668954446731667492" at="55,270,60,7" concept="12" />
+      <node id="668954446731667492" at="56,0,59,0" concept="4" trace="getConceptToFindMenuFor#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="668954446731667492" at="42,270,47,7" concept="12" />
       <node id="668954446731666655" at="28,0,35,0" concept="4" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="668954446731667492" at="62,0,69,0" concept="4" trace="getMenuLookup#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuLookup;" />
-      <node id="668954446731666655" at="36,0,47,0" concept="4" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="668954446731667492" at="51,0,62,0" concept="4" trace="createItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <scope id="668954446731666655" at="25,45,26,16" />
-      <scope id="668954446731666655" at="41,9,42,44" />
-      <scope id="668954446731666655" at="43,15,44,50" />
-      <scope id="668954446731667492" at="56,11,57,42" />
-      <scope id="668954446731667492" at="58,17,59,52" />
-      <scope id="668954446731667492" at="69,86,70,41" />
+      <node id="668954446731667492" at="49,0,56,0" concept="4" trace="getMenuLookup#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuLookup;" />
+      <node id="668954446731667492" at="38,0,49,0" concept="4" trace="createItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <scope id="668954446731666655" at="25,45,26,249" />
+      <scope id="668954446731667492" at="43,11,44,42" />
+      <scope id="668954446731667492" at="45,17,46,52" />
+      <scope id="668954446731667492" at="56,86,57,41" />
       <scope id="668954446731666655" at="25,0,28,0" />
       <scope id="668954446731666655" at="30,118,33,18">
         <var name="result" id="668954446731666655" />
       </scope>
-      <scope id="668954446731667492" at="64,82,67,128">
+      <scope id="668954446731667492" at="51,82,54,128">
         <var name="conceptToFindMenuFor" id="668954446731667492" />
         <var name="editorContext" id="668954446731667492" />
       </scope>
-      <scope id="668954446731667492" at="69,0,72,0">
+      <scope id="668954446731667492" at="56,0,59,0">
         <var name="_context" id="668954446731667492" />
       </scope>
       <scope id="668954446731666655" at="28,0,35,0">
         <var name="_context" id="668954446731666655" />
       </scope>
-      <scope id="668954446731666655" at="38,91,45,5" />
-      <scope id="668954446731667492" at="53,80,60,7" />
-      <scope id="668954446731667492" at="62,0,69,0">
+      <scope id="668954446731667492" at="40,80,47,7" />
+      <scope id="668954446731667492" at="49,0,56,0">
         <var name="_context" id="668954446731667492" />
       </scope>
-      <scope id="668954446731666655" at="36,0,47,0">
-        <var name="context" id="668954446731666655" />
-      </scope>
-      <scope id="668954446731667492" at="51,0,62,0">
+      <scope id="668954446731667492" at="38,0,49,0">
         <var name="context" id="668954446731667492" />
       </scope>
-      <unit id="668954446731666655" at="74,0,77,0" name="jetbrains.mps.lang.rulesAndMessages.editor.AddMyselfToMenuOfRuleBlockMember$CONCEPTS" />
-      <unit id="668954446731667492" at="49,0,73,0" name="jetbrains.mps.lang.rulesAndMessages.editor.AddMyselfToMenuOfRuleBlockMember$SMP_Include_y0tsy8_a" />
-      <unit id="668954446731666655" at="24,0,78,0" name="jetbrains.mps.lang.rulesAndMessages.editor.AddMyselfToMenuOfRuleBlockMember" />
+      <unit id="668954446731666655" at="61,0,64,0" name="jetbrains.mps.lang.rulesAndMessages.editor.AddMyselfToMenuOfRuleBlockMember$CONCEPTS" />
+      <unit id="668954446731667492" at="36,0,60,0" name="jetbrains.mps.lang.rulesAndMessages.editor.AddMyselfToMenuOfRuleBlockMember$SMP_Include_y0tsy8_a" />
+      <unit id="668954446731666655" at="24,0,65,0" name="jetbrains.mps.lang.rulesAndMessages.editor.AddMyselfToMenuOfRuleBlockMember" />
     </file>
   </root>
   <root nodeRef="r:b27aeb14-fefb-4745-88f9-0731c33985d8(jetbrains.mps.lang.rulesAndMessages.editor)/6839459717313143837">

@@ -8,7 +8,6 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root>
     <file name="EditorAspectDescriptorImpl.java">
       <unit at="16,0,48,0" name="jetbrains.mps.console.internalCommands.editor.EditorAspectDescriptorImpl" />
@@ -16,54 +15,20 @@
   </root>
   <root nodeRef="r:c72b5e4e-2400-4bf3-9dfe-086eb4fcaced(jetbrains.mps.console.internalCommands.editor)/1741258697587175645">
     <file name="ShowRepositoryCommand_SubstituteMenu.java">
-      <node id="1741258697587175645" at="18,118,19,140" concept="5" />
-      <node id="1741258697587175645" at="19,140,20,18" concept="6" />
-      <node id="1741258697587175645" at="25,91,26,49" concept="1" />
-      <node id="1741258697587175645" at="26,49,27,265" concept="1" />
-      <node id="1741258697587175645" at="28,9,29,44" concept="6" />
-      <node id="1741258697587175645" at="30,15,31,50" concept="1" />
-      <node id="1741258697587175645" at="27,265,32,5" concept="8" />
-      <node id="1741258697587175645" at="16,0,22,0" concept="4" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="1741258697587175645" at="23,0,34,0" concept="4" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <scope id="1741258697587175645" at="28,9,29,44" />
-      <scope id="1741258697587175645" at="30,15,31,50" />
-      <scope id="1741258697587175645" at="18,118,20,18">
-        <var name="result" id="1741258697587175645" />
-      </scope>
-      <scope id="1741258697587175645" at="16,0,22,0">
-        <var name="_context" id="1741258697587175645" />
-      </scope>
-      <scope id="1741258697587175645" at="25,91,32,5" />
-      <scope id="1741258697587175645" at="23,0,34,0">
-        <var name="context" id="1741258697587175645" />
-      </scope>
-      <unit id="1741258697587175645" at="15,0,37,0" name="jetbrains.mps.console.internalCommands.editor.ShowRepositoryCommand_SubstituteMenu" />
+      <node id="1741258697587175645" at="10,49,11,235" concept="7" />
+      <node id="1741258697587175645" at="10,0,13,0" concept="0" trace="ShowRepositoryCommand_SubstituteMenu#()V" />
+      <scope id="1741258697587175645" at="10,49,11,235" />
+      <scope id="1741258697587175645" at="10,0,13,0" />
+      <unit id="1741258697587175645" at="9,0,15,0" name="jetbrains.mps.console.internalCommands.editor.ShowRepositoryCommand_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:c72b5e4e-2400-4bf3-9dfe-086eb4fcaced(jetbrains.mps.console.internalCommands.editor)/1741258697587175646">
     <file name="ConsoleModelExpression_SubstituteMenu.java">
-      <node id="1741258697587175646" at="18,118,19,140" concept="5" />
-      <node id="1741258697587175646" at="19,140,20,18" concept="6" />
-      <node id="1741258697587175646" at="25,91,26,49" concept="1" />
-      <node id="1741258697587175646" at="26,49,27,266" concept="1" />
-      <node id="1741258697587175646" at="28,9,29,44" concept="6" />
-      <node id="1741258697587175646" at="30,15,31,50" concept="1" />
-      <node id="1741258697587175646" at="27,266,32,5" concept="8" />
-      <node id="1741258697587175646" at="16,0,22,0" concept="4" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="1741258697587175646" at="23,0,34,0" concept="4" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <scope id="1741258697587175646" at="28,9,29,44" />
-      <scope id="1741258697587175646" at="30,15,31,50" />
-      <scope id="1741258697587175646" at="18,118,20,18">
-        <var name="result" id="1741258697587175646" />
-      </scope>
-      <scope id="1741258697587175646" at="16,0,22,0">
-        <var name="_context" id="1741258697587175646" />
-      </scope>
-      <scope id="1741258697587175646" at="25,91,32,5" />
-      <scope id="1741258697587175646" at="23,0,34,0">
-        <var name="context" id="1741258697587175646" />
-      </scope>
-      <unit id="1741258697587175646" at="15,0,37,0" name="jetbrains.mps.console.internalCommands.editor.ConsoleModelExpression_SubstituteMenu" />
+      <node id="1741258697587175646" at="10,50,11,236" concept="7" />
+      <node id="1741258697587175646" at="10,0,13,0" concept="0" trace="ConsoleModelExpression_SubstituteMenu#()V" />
+      <scope id="1741258697587175646" at="10,50,11,236" />
+      <scope id="1741258697587175646" at="10,0,13,0" />
+      <unit id="1741258697587175646" at="9,0,15,0" name="jetbrains.mps.console.internalCommands.editor.ConsoleModelExpression_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:c72b5e4e-2400-4bf3-9dfe-086eb4fcaced(jetbrains.mps.console.internalCommands.editor)/5582028874770305519">

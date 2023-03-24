@@ -2259,28 +2259,11 @@
   </root>
   <root nodeRef="r:f2fc442e-c0f0-467d-ac9f-8f38c8182f6f(jetbrains.mps.samples.StateChart.editor)/6813679070097861382">
     <file name="EmptyOperation_SubstituteMenu.java">
-      <node id="6813679070097861382" at="18,118,19,140" concept="7" />
-      <node id="6813679070097861382" at="19,140,20,18" concept="8" />
-      <node id="6813679070097861382" at="25,91,26,49" concept="2" />
-      <node id="6813679070097861382" at="26,49,27,252" concept="2" />
-      <node id="6813679070097861382" at="28,9,29,44" concept="8" />
-      <node id="6813679070097861382" at="30,15,31,50" concept="2" />
-      <node id="6813679070097861382" at="27,252,32,5" concept="12" />
-      <node id="6813679070097861382" at="16,0,22,0" concept="6" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="6813679070097861382" at="23,0,34,0" concept="6" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <scope id="6813679070097861382" at="28,9,29,44" />
-      <scope id="6813679070097861382" at="30,15,31,50" />
-      <scope id="6813679070097861382" at="18,118,20,18">
-        <var name="result" id="6813679070097861382" />
-      </scope>
-      <scope id="6813679070097861382" at="16,0,22,0">
-        <var name="_context" id="6813679070097861382" />
-      </scope>
-      <scope id="6813679070097861382" at="25,91,32,5" />
-      <scope id="6813679070097861382" at="23,0,34,0">
-        <var name="context" id="6813679070097861382" />
-      </scope>
-      <unit id="6813679070097861382" at="15,0,37,0" name="jetbrains.mps.samples.StateChart.editor.EmptyOperation_SubstituteMenu" />
+      <node id="6813679070097861382" at="10,42,11,222" concept="11" />
+      <node id="6813679070097861382" at="10,0,13,0" concept="1" trace="EmptyOperation_SubstituteMenu#()V" />
+      <scope id="6813679070097861382" at="10,42,11,222" />
+      <scope id="6813679070097861382" at="10,0,13,0" />
+      <unit id="6813679070097861382" at="9,0,15,0" name="jetbrains.mps.samples.StateChart.editor.EmptyOperation_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:f2fc442e-c0f0-467d-ac9f-8f38c8182f6f(jetbrains.mps.samples.StateChart.editor)/6813679070097861408">

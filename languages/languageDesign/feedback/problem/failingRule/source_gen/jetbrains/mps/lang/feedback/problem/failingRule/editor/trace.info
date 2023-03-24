@@ -323,28 +323,11 @@
   </root>
   <root nodeRef="r:15aa514c-a662-491f-a410-60c8f072e1ce(jetbrains.mps.lang.feedback.problem.failingRule.editor)/7716791493893610159">
     <file name="FailingRuleProblem_SubstituteMenu.java">
-      <node id="7716791493893610159" at="18,118,19,140" concept="5" />
-      <node id="7716791493893610159" at="19,140,20,18" concept="6" />
-      <node id="7716791493893610159" at="25,91,26,49" concept="1" />
-      <node id="7716791493893610159" at="26,49,27,271" concept="1" />
-      <node id="7716791493893610159" at="28,9,29,44" concept="6" />
-      <node id="7716791493893610159" at="30,15,31,50" concept="1" />
-      <node id="7716791493893610159" at="27,271,32,5" concept="12" />
-      <node id="7716791493893610159" at="16,0,22,0" concept="4" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="7716791493893610159" at="23,0,34,0" concept="4" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <scope id="7716791493893610159" at="28,9,29,44" />
-      <scope id="7716791493893610159" at="30,15,31,50" />
-      <scope id="7716791493893610159" at="18,118,20,18">
-        <var name="result" id="7716791493893610159" />
-      </scope>
-      <scope id="7716791493893610159" at="16,0,22,0">
-        <var name="_context" id="7716791493893610159" />
-      </scope>
-      <scope id="7716791493893610159" at="25,91,32,5" />
-      <scope id="7716791493893610159" at="23,0,34,0">
-        <var name="context" id="7716791493893610159" />
-      </scope>
-      <unit id="7716791493893610159" at="15,0,37,0" name="jetbrains.mps.lang.feedback.problem.failingRule.editor.FailingRuleProblem_SubstituteMenu" />
+      <node id="7716791493893610159" at="10,46,11,241" concept="11" />
+      <node id="7716791493893610159" at="10,0,13,0" concept="0" trace="FailingRuleProblem_SubstituteMenu#()V" />
+      <scope id="7716791493893610159" at="10,46,11,241" />
+      <scope id="7716791493893610159" at="10,0,13,0" />
+      <unit id="7716791493893610159" at="9,0,15,0" name="jetbrains.mps.lang.feedback.problem.failingRule.editor.FailingRuleProblem_SubstituteMenu" />
     </file>
   </root>
 </debug-info>

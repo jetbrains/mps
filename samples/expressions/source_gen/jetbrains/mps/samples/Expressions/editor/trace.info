@@ -16,11 +16,11 @@
       <unit at="16,0,78,0" name="jetbrains.mps.samples.Expressions.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="SimpleMathVarReference_SubstituteMenu.java">
-      <unit at="82,0,85,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMathVarReference_SubstituteMenu$CONCEPTS" />
-      <unit at="86,0,89,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMathVarReference_SubstituteMenu$LINKS" />
-      <unit at="66,0,81,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMathVarReference_SubstituteMenu$SMP_Subconcepts_rxkll9_b" />
-      <unit at="48,0,66,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMathVarReference_SubstituteMenu$SMP_ReferenceScope_rxkll9_a" />
-      <unit at="25,0,90,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMathVarReference_SubstituteMenu" />
+      <unit at="61,0,64,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMathVarReference_SubstituteMenu$CONCEPTS" />
+      <unit at="65,0,68,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMathVarReference_SubstituteMenu$LINKS" />
+      <unit at="38,0,45,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMathVarReference_SubstituteMenu$SMP_ReferenceScope_rxkll9_a" />
+      <unit at="45,0,60,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMathVarReference_SubstituteMenu$SMP_Subconcepts_rxkll9_b" />
+      <unit at="25,0,69,0" name="jetbrains.mps.samples.Expressions.editor.SimpleMathVarReference_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:e219e784-986b-4445-84f5-19e78ea5a924(jetbrains.mps.samples.Expressions.editor)/2073504467207935114">

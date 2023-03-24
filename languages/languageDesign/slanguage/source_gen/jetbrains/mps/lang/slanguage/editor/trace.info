@@ -44,50 +44,42 @@
   </root>
   <root nodeRef="r:d919e39e-ef97-4541-8872-046b24e3733c(jetbrains.mps.lang.slanguage.editor)/1741258697587063813">
     <file name="OfAspectOperation_SubstituteMenu.java">
-      <node id="1741258697587063813" at="27,118,28,140" concept="5" />
-      <node id="1741258697587063817" at="28,140,29,46" concept="1" />
-      <node id="1741258697587063818" at="29,46,30,384" concept="1" />
-      <node id="1741258697587063813" at="30,384,31,18" concept="6" />
-      <node id="1741258697587063813" at="36,91,37,49" concept="1" />
-      <node id="1741258697587063813" at="37,49,38,251" concept="1" />
-      <node id="1741258697587063813" at="39,9,40,44" concept="6" />
-      <node id="1741258697587063813" at="41,15,42,50" concept="1" />
-      <node id="1741258697587063817" at="48,38,49,236" concept="9" />
-      <node id="1741258697587063817" at="53,94,54,75" concept="6" />
-      <node id="1741258697587063817" at="58,125,59,149" concept="6" />
-      <node id="1741258697587063813" at="64,0,65,0" concept="8" trace="OfAspectOperation$cT" />
-      <node id="1741258697587063817" at="48,0,51,0" concept="0" trace="SMP_Subconcepts_xdr5c_a#()V" />
-      <node id="1741258697587063817" at="52,0,56,0" concept="4" trace="getConcepts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/Collection;" />
-      <node id="1741258697587063817" at="57,0,61,0" concept="4" trace="createItemsForConcept#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Ljava/util/Collection;" />
-      <node id="1741258697587063813" at="38,251,43,5" concept="10" />
-      <node id="1741258697587063813" at="25,0,33,0" concept="4" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="1741258697587063813" at="34,0,45,0" concept="4" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <scope id="1741258697587063813" at="39,9,40,44" />
-      <scope id="1741258697587063813" at="41,15,42,50" />
-      <scope id="1741258697587063817" at="48,38,49,236" />
-      <scope id="1741258697587063817" at="53,94,54,75" />
-      <scope id="1741258697587063817" at="58,125,59,149" />
-      <scope id="1741258697587063817" at="48,0,51,0" />
-      <scope id="1741258697587063813" at="27,118,31,18">
+      <node id="1741258697587063813" at="25,45,26,221" concept="9" />
+      <node id="1741258697587063813" at="30,118,31,140" concept="5" />
+      <node id="1741258697587063817" at="31,140,32,46" concept="1" />
+      <node id="1741258697587063818" at="32,46,33,384" concept="1" />
+      <node id="1741258697587063813" at="33,384,34,18" concept="6" />
+      <node id="1741258697587063817" at="38,38,39,236" concept="9" />
+      <node id="1741258697587063817" at="43,94,44,75" concept="6" />
+      <node id="1741258697587063817" at="48,125,49,149" concept="6" />
+      <node id="1741258697587063813" at="54,0,55,0" concept="8" trace="OfAspectOperation$cT" />
+      <node id="1741258697587063813" at="25,0,28,0" concept="0" trace="OfAspectOperation_SubstituteMenu#()V" />
+      <node id="1741258697587063817" at="38,0,41,0" concept="0" trace="SMP_Subconcepts_xdr5c_a#()V" />
+      <node id="1741258697587063817" at="42,0,46,0" concept="4" trace="getConcepts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/Collection;" />
+      <node id="1741258697587063817" at="47,0,51,0" concept="4" trace="createItemsForConcept#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Ljava/util/Collection;" />
+      <node id="1741258697587063813" at="28,0,36,0" concept="4" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <scope id="1741258697587063813" at="25,45,26,221" />
+      <scope id="1741258697587063817" at="38,38,39,236" />
+      <scope id="1741258697587063817" at="43,94,44,75" />
+      <scope id="1741258697587063817" at="48,125,49,149" />
+      <scope id="1741258697587063813" at="25,0,28,0" />
+      <scope id="1741258697587063817" at="38,0,41,0" />
+      <scope id="1741258697587063813" at="30,118,34,18">
         <var name="result" id="1741258697587063813" />
       </scope>
-      <scope id="1741258697587063817" at="52,0,56,0">
+      <scope id="1741258697587063817" at="42,0,46,0">
         <var name="_context" id="1741258697587063817" />
       </scope>
-      <scope id="1741258697587063817" at="57,0,61,0">
+      <scope id="1741258697587063817" at="47,0,51,0">
         <var name="concept" id="1741258697587063817" />
         <var name="context" id="1741258697587063817" />
       </scope>
-      <scope id="1741258697587063813" at="36,91,43,5" />
-      <scope id="1741258697587063813" at="25,0,33,0">
+      <scope id="1741258697587063813" at="28,0,36,0">
         <var name="_context" id="1741258697587063813" />
       </scope>
-      <scope id="1741258697587063813" at="34,0,45,0">
-        <var name="context" id="1741258697587063813" />
-      </scope>
-      <unit id="1741258697587063813" at="63,0,66,0" name="jetbrains.mps.lang.slanguage.editor.OfAspectOperation_SubstituteMenu$CONCEPTS" />
-      <unit id="1741258697587063817" at="47,0,62,0" name="jetbrains.mps.lang.slanguage.editor.OfAspectOperation_SubstituteMenu$SMP_Subconcepts_xdr5c_a" />
-      <unit id="1741258697587063813" at="24,0,67,0" name="jetbrains.mps.lang.slanguage.editor.OfAspectOperation_SubstituteMenu" />
+      <unit id="1741258697587063813" at="53,0,56,0" name="jetbrains.mps.lang.slanguage.editor.OfAspectOperation_SubstituteMenu$CONCEPTS" />
+      <unit id="1741258697587063817" at="37,0,52,0" name="jetbrains.mps.lang.slanguage.editor.OfAspectOperation_SubstituteMenu$SMP_Subconcepts_xdr5c_a" />
+      <unit id="1741258697587063813" at="24,0,57,0" name="jetbrains.mps.lang.slanguage.editor.OfAspectOperation_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:d919e39e-ef97-4541-8872-046b24e3733c(jetbrains.mps.lang.slanguage.editor)/2030416617761226517">
