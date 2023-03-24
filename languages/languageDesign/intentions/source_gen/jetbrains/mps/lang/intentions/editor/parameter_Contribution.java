@@ -47,6 +47,9 @@ public class parameter_Contribution extends SubstituteMenuBase {
 
 
   public class SMP_Concepts_bxx1tv_a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
+    public SMP_Concepts_bxx1tv_a() {
+      super(new EditorMenuDescriptorBase("simple actions for the list of concepts", new SNodePointer("r:00000000-0000-4000-0000-011c89590350(jetbrains.mps.lang.intentions.editor)", "1741258697587120412")));
+    }
     protected Collection getConcepts(SubstituteMenuContext _context) {
       List<SConcept> parameters = ListSequence.fromList(new ArrayList<SConcept>());
       boolean inParInt = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ParameterizedIntentionDeclaration$Q_, false, false) != null;
@@ -58,32 +61,9 @@ public class parameter_Contribution extends SubstituteMenuBase {
       return parameters;
     }
 
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext _context) {
-      _context.getEditorMenuTrace().pushTraceInfo();
-      _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("simple actions for the list of concepts", new SNodePointer("r:00000000-0000-4000-0000-011c89590350(jetbrains.mps.lang.intentions.editor)", "1741258697587120412")));
-      try {
-        return super.createItems(_context);
-      } finally {
-        _context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
     @Override
     protected Collection<SubstituteMenuItem> createItemsForConcept(final SubstituteMenuContext _context, final SAbstractConcept concept) {
-      return new SimpleConceptSubstituteMenuPart(concept) {
-        @NotNull
-        @Override
-        public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-          context.getEditorMenuTrace().pushTraceInfo();
-          context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("simple action for concept: " + concept.getName(), null));
-          try {
-            return super.createItems(context);
-          } finally {
-            context.getEditorMenuTrace().popTraceInfo();
-          }
-        }
-      }.createItems(_context);
+      return new SimpleConceptSubstituteMenuPart(concept, new EditorMenuDescriptorBase("simple action for concept: " + concept.getName(), null)).createItems(_context);
     }
   }
 

@@ -21,34 +21,8 @@ public class NodeScopeFactory_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.InheritedNodeScopeFactory$r2) {
-
-      @NotNull
-      @Override
-      public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-        context.getEditorMenuTrace().pushTraceInfo();
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "InheritedNodeScopeFactory", new SNodePointer("r:00000000-0000-4000-0000-011c89590308(jetbrains.mps.lang.constraints.editor)", "9144763834562426003")));
-        try {
-          return super.createItems(context);
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
-      }
-    }, CONCEPTS.InheritedNodeScopeFactory$r2));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.ConstraintFunction_ReferentSearchScope_Scope$UU) {
-
-      @NotNull
-      @Override
-      public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-        context.getEditorMenuTrace().pushTraceInfo();
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "ConstraintFunction_ReferentSearchScope_Scope", new SNodePointer("r:00000000-0000-4000-0000-011c89590308(jetbrains.mps.lang.constraints.editor)", "3096203427927326463")));
-        try {
-          return super.createItems(context);
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
-      }
-    }, CONCEPTS.ConstraintFunction_ReferentSearchScope_Scope$UU));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.InheritedNodeScopeFactory$r2, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "InheritedNodeScopeFactory", new SNodePointer("r:00000000-0000-4000-0000-011c89590308(jetbrains.mps.lang.constraints.editor)", "9144763834562426003"))), CONCEPTS.InheritedNodeScopeFactory$r2));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.ConstraintFunction_ReferentSearchScope_Scope$UU, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "ConstraintFunction_ReferentSearchScope_Scope", new SNodePointer("r:00000000-0000-4000-0000-011c89590308(jetbrains.mps.lang.constraints.editor)", "3096203427927326463"))), CONCEPTS.ConstraintFunction_ReferentSearchScope_Scope$UU));
     return result;
   }
 

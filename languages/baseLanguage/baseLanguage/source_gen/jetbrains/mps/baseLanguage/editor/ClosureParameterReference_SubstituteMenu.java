@@ -13,10 +13,9 @@ import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstitute
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
-import jetbrains.mps.smodel.ConceptDescendantsCache;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -49,8 +48,7 @@ public class ClosureParameterReference_SubstituteMenu extends SubstituteMenuBase
   public class SMP_ReferenceScope_s9pff1_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_s9pff1_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051
-      super((SAbstractConcept) CONCEPTS.ClosureParameterReference$ES, LINKS.closureParameter$OjY$);
+      super(CONCEPTS.ClosureParameterReference$ES, LINKS.closureParameter$OjY$);
     }
     @NotNull
     @Override
@@ -66,19 +64,13 @@ public class ClosureParameterReference_SubstituteMenu extends SubstituteMenuBase
 
   }
   public class SMP_Subconcepts_s9pff1_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
-    protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ClosureParameterReference$ES);
+    public SMP_Subconcepts_s9pff1_b() {
+      super(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "ClosureParameterReference", null));
     }
-    @NotNull
+
     @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "ClosureParameterReference", null));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
+    protected Collection<SAbstractConcept> getConcepts(final SubstituteMenuContext _context) {
+      return getDirectDescendants(_context, CONCEPTS.ClosureParameterReference$ES);
     }
 
     @Override

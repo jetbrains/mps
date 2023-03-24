@@ -16,18 +16,18 @@
       <unit at="16,0,56,0" name="jetbrains.mps.vcs.mergehints.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="LinkVCSDescriptor_SubstituteMenu.java">
-      <unit at="90,0,93,0" name="jetbrains.mps.vcs.mergehints.editor.LinkVCSDescriptor_SubstituteMenu$CONCEPTS" />
-      <unit at="94,0,97,0" name="jetbrains.mps.vcs.mergehints.editor.LinkVCSDescriptor_SubstituteMenu$LINKS" />
-      <unit at="49,0,68,0" name="jetbrains.mps.vcs.mergehints.editor.LinkVCSDescriptor_SubstituteMenu$SMP_ReferenceScope_3e9fi_a" />
-      <unit at="68,0,89,0" name="jetbrains.mps.vcs.mergehints.editor.LinkVCSDescriptor_SubstituteMenu$SMP_Subconcepts_3e9fi_b" />
-      <unit at="26,0,98,0" name="jetbrains.mps.vcs.mergehints.editor.LinkVCSDescriptor_SubstituteMenu" />
+      <unit at="82,0,85,0" name="jetbrains.mps.vcs.mergehints.editor.LinkVCSDescriptor_SubstituteMenu$CONCEPTS" />
+      <unit at="86,0,89,0" name="jetbrains.mps.vcs.mergehints.editor.LinkVCSDescriptor_SubstituteMenu$LINKS" />
+      <unit at="66,0,81,0" name="jetbrains.mps.vcs.mergehints.editor.LinkVCSDescriptor_SubstituteMenu$SMP_Subconcepts_3e9fi_b" />
+      <unit at="48,0,66,0" name="jetbrains.mps.vcs.mergehints.editor.LinkVCSDescriptor_SubstituteMenu$SMP_ReferenceScope_3e9fi_a" />
+      <unit at="25,0,90,0" name="jetbrains.mps.vcs.mergehints.editor.LinkVCSDescriptor_SubstituteMenu" />
     </file>
     <file name="PropertyVCSDescriptor_SubstituteMenu.java">
-      <unit at="90,0,93,0" name="jetbrains.mps.vcs.mergehints.editor.PropertyVCSDescriptor_SubstituteMenu$CONCEPTS" />
-      <unit at="94,0,97,0" name="jetbrains.mps.vcs.mergehints.editor.PropertyVCSDescriptor_SubstituteMenu$LINKS" />
-      <unit at="49,0,68,0" name="jetbrains.mps.vcs.mergehints.editor.PropertyVCSDescriptor_SubstituteMenu$SMP_ReferenceScope_zfowks_a" />
-      <unit at="68,0,89,0" name="jetbrains.mps.vcs.mergehints.editor.PropertyVCSDescriptor_SubstituteMenu$SMP_Subconcepts_zfowks_b" />
-      <unit at="26,0,98,0" name="jetbrains.mps.vcs.mergehints.editor.PropertyVCSDescriptor_SubstituteMenu" />
+      <unit at="82,0,85,0" name="jetbrains.mps.vcs.mergehints.editor.PropertyVCSDescriptor_SubstituteMenu$CONCEPTS" />
+      <unit at="86,0,89,0" name="jetbrains.mps.vcs.mergehints.editor.PropertyVCSDescriptor_SubstituteMenu$LINKS" />
+      <unit at="66,0,81,0" name="jetbrains.mps.vcs.mergehints.editor.PropertyVCSDescriptor_SubstituteMenu$SMP_Subconcepts_zfowks_b" />
+      <unit at="48,0,66,0" name="jetbrains.mps.vcs.mergehints.editor.PropertyVCSDescriptor_SubstituteMenu$SMP_ReferenceScope_zfowks_a" />
+      <unit at="25,0,90,0" name="jetbrains.mps.vcs.mergehints.editor.PropertyVCSDescriptor_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:7fc84d08-cd05-44dc-a93d-fc7d46adeba1(jetbrains.mps.vcs.mergehints.editor)/4140018591229954326">

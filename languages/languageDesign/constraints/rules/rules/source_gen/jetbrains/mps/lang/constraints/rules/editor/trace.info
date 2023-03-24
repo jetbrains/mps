@@ -20,18 +20,18 @@
       <unit at="17,0,91,0" name="jetbrains.mps.lang.constraints.rules.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="PropertyMessageTarget_SubstituteMenu.java">
-      <unit at="90,0,93,0" name="jetbrains.mps.lang.constraints.rules.editor.PropertyMessageTarget_SubstituteMenu$CONCEPTS" />
-      <unit at="94,0,97,0" name="jetbrains.mps.lang.constraints.rules.editor.PropertyMessageTarget_SubstituteMenu$LINKS" />
-      <unit at="49,0,68,0" name="jetbrains.mps.lang.constraints.rules.editor.PropertyMessageTarget_SubstituteMenu$SMP_ReferenceScope_sfxliy_a" />
-      <unit at="68,0,89,0" name="jetbrains.mps.lang.constraints.rules.editor.PropertyMessageTarget_SubstituteMenu$SMP_Subconcepts_sfxliy_b" />
-      <unit at="26,0,98,0" name="jetbrains.mps.lang.constraints.rules.editor.PropertyMessageTarget_SubstituteMenu" />
+      <unit at="82,0,85,0" name="jetbrains.mps.lang.constraints.rules.editor.PropertyMessageTarget_SubstituteMenu$CONCEPTS" />
+      <unit at="86,0,89,0" name="jetbrains.mps.lang.constraints.rules.editor.PropertyMessageTarget_SubstituteMenu$LINKS" />
+      <unit at="66,0,81,0" name="jetbrains.mps.lang.constraints.rules.editor.PropertyMessageTarget_SubstituteMenu$SMP_Subconcepts_sfxliy_b" />
+      <unit at="48,0,66,0" name="jetbrains.mps.lang.constraints.rules.editor.PropertyMessageTarget_SubstituteMenu$SMP_ReferenceScope_sfxliy_a" />
+      <unit at="25,0,90,0" name="jetbrains.mps.lang.constraints.rules.editor.PropertyMessageTarget_SubstituteMenu" />
     </file>
     <file name="ReferenceMessageTarget_SubstituteMenu.java">
-      <unit at="90,0,93,0" name="jetbrains.mps.lang.constraints.rules.editor.ReferenceMessageTarget_SubstituteMenu$CONCEPTS" />
-      <unit at="94,0,97,0" name="jetbrains.mps.lang.constraints.rules.editor.ReferenceMessageTarget_SubstituteMenu$LINKS" />
-      <unit at="49,0,68,0" name="jetbrains.mps.lang.constraints.rules.editor.ReferenceMessageTarget_SubstituteMenu$SMP_ReferenceScope_spbzo5_a" />
-      <unit at="68,0,89,0" name="jetbrains.mps.lang.constraints.rules.editor.ReferenceMessageTarget_SubstituteMenu$SMP_Subconcepts_spbzo5_b" />
-      <unit at="26,0,98,0" name="jetbrains.mps.lang.constraints.rules.editor.ReferenceMessageTarget_SubstituteMenu" />
+      <unit at="82,0,85,0" name="jetbrains.mps.lang.constraints.rules.editor.ReferenceMessageTarget_SubstituteMenu$CONCEPTS" />
+      <unit at="86,0,89,0" name="jetbrains.mps.lang.constraints.rules.editor.ReferenceMessageTarget_SubstituteMenu$LINKS" />
+      <unit at="66,0,81,0" name="jetbrains.mps.lang.constraints.rules.editor.ReferenceMessageTarget_SubstituteMenu$SMP_Subconcepts_spbzo5_b" />
+      <unit at="48,0,66,0" name="jetbrains.mps.lang.constraints.rules.editor.ReferenceMessageTarget_SubstituteMenu$SMP_ReferenceScope_spbzo5_a" />
+      <unit at="25,0,90,0" name="jetbrains.mps.lang.constraints.rules.editor.ReferenceMessageTarget_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:c333438f-9631-41c0-a716-72d23eed1ba4(jetbrains.mps.lang.constraints.rules.editor)/1328301445982561437">

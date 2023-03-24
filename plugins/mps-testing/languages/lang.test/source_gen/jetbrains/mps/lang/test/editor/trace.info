@@ -21,74 +21,74 @@
       <unit at="23,0,242,0" name="jetbrains.mps.lang.test.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="InfoStatementReference_SubstituteMenu.java">
-      <unit at="90,0,93,0" name="jetbrains.mps.lang.test.editor.InfoStatementReference_SubstituteMenu$CONCEPTS" />
-      <unit at="94,0,97,0" name="jetbrains.mps.lang.test.editor.InfoStatementReference_SubstituteMenu$LINKS" />
-      <unit at="49,0,68,0" name="jetbrains.mps.lang.test.editor.InfoStatementReference_SubstituteMenu$SMP_ReferenceScope_dhxe6f_a" />
-      <unit at="68,0,89,0" name="jetbrains.mps.lang.test.editor.InfoStatementReference_SubstituteMenu$SMP_Subconcepts_dhxe6f_b" />
-      <unit at="26,0,98,0" name="jetbrains.mps.lang.test.editor.InfoStatementReference_SubstituteMenu" />
+      <unit at="82,0,85,0" name="jetbrains.mps.lang.test.editor.InfoStatementReference_SubstituteMenu$CONCEPTS" />
+      <unit at="86,0,89,0" name="jetbrains.mps.lang.test.editor.InfoStatementReference_SubstituteMenu$LINKS" />
+      <unit at="66,0,81,0" name="jetbrains.mps.lang.test.editor.InfoStatementReference_SubstituteMenu$SMP_Subconcepts_dhxe6f_b" />
+      <unit at="48,0,66,0" name="jetbrains.mps.lang.test.editor.InfoStatementReference_SubstituteMenu$SMP_ReferenceScope_dhxe6f_a" />
+      <unit at="25,0,90,0" name="jetbrains.mps.lang.test.editor.InfoStatementReference_SubstituteMenu" />
     </file>
     <file name="MigrationReference_SubstituteMenu.java">
-      <unit at="90,0,93,0" name="jetbrains.mps.lang.test.editor.MigrationReference_SubstituteMenu$CONCEPTS" />
-      <unit at="94,0,97,0" name="jetbrains.mps.lang.test.editor.MigrationReference_SubstituteMenu$LINKS" />
-      <unit at="49,0,68,0" name="jetbrains.mps.lang.test.editor.MigrationReference_SubstituteMenu$SMP_ReferenceScope_req059_a" />
-      <unit at="68,0,89,0" name="jetbrains.mps.lang.test.editor.MigrationReference_SubstituteMenu$SMP_Subconcepts_req059_b" />
-      <unit at="26,0,98,0" name="jetbrains.mps.lang.test.editor.MigrationReference_SubstituteMenu" />
+      <unit at="82,0,85,0" name="jetbrains.mps.lang.test.editor.MigrationReference_SubstituteMenu$CONCEPTS" />
+      <unit at="86,0,89,0" name="jetbrains.mps.lang.test.editor.MigrationReference_SubstituteMenu$LINKS" />
+      <unit at="66,0,81,0" name="jetbrains.mps.lang.test.editor.MigrationReference_SubstituteMenu$SMP_Subconcepts_req059_b" />
+      <unit at="48,0,66,0" name="jetbrains.mps.lang.test.editor.MigrationReference_SubstituteMenu$SMP_ReferenceScope_req059_a" />
+      <unit at="25,0,90,0" name="jetbrains.mps.lang.test.editor.MigrationReference_SubstituteMenu" />
     </file>
     <file name="NamedNodeReference_SubstituteMenu.java">
-      <unit at="90,0,93,0" name="jetbrains.mps.lang.test.editor.NamedNodeReference_SubstituteMenu$CONCEPTS" />
-      <unit at="94,0,97,0" name="jetbrains.mps.lang.test.editor.NamedNodeReference_SubstituteMenu$LINKS" />
-      <unit at="49,0,68,0" name="jetbrains.mps.lang.test.editor.NamedNodeReference_SubstituteMenu$SMP_ReferenceScope_t1mmv8_a" />
-      <unit at="68,0,89,0" name="jetbrains.mps.lang.test.editor.NamedNodeReference_SubstituteMenu$SMP_Subconcepts_t1mmv8_b" />
-      <unit at="26,0,98,0" name="jetbrains.mps.lang.test.editor.NamedNodeReference_SubstituteMenu" />
+      <unit at="82,0,85,0" name="jetbrains.mps.lang.test.editor.NamedNodeReference_SubstituteMenu$CONCEPTS" />
+      <unit at="86,0,89,0" name="jetbrains.mps.lang.test.editor.NamedNodeReference_SubstituteMenu$LINKS" />
+      <unit at="66,0,81,0" name="jetbrains.mps.lang.test.editor.NamedNodeReference_SubstituteMenu$SMP_Subconcepts_t1mmv8_b" />
+      <unit at="48,0,66,0" name="jetbrains.mps.lang.test.editor.NamedNodeReference_SubstituteMenu$SMP_ReferenceScope_t1mmv8_a" />
+      <unit at="25,0,90,0" name="jetbrains.mps.lang.test.editor.NamedNodeReference_SubstituteMenu" />
     </file>
     <file name="ReportErrorStatementReference_SubstituteMenu.java">
-      <unit at="90,0,93,0" name="jetbrains.mps.lang.test.editor.ReportErrorStatementReference_SubstituteMenu$CONCEPTS" />
-      <unit at="94,0,97,0" name="jetbrains.mps.lang.test.editor.ReportErrorStatementReference_SubstituteMenu$LINKS" />
-      <unit at="49,0,68,0" name="jetbrains.mps.lang.test.editor.ReportErrorStatementReference_SubstituteMenu$SMP_ReferenceScope_v50uv8_a" />
-      <unit at="68,0,89,0" name="jetbrains.mps.lang.test.editor.ReportErrorStatementReference_SubstituteMenu$SMP_Subconcepts_v50uv8_b" />
-      <unit at="26,0,98,0" name="jetbrains.mps.lang.test.editor.ReportErrorStatementReference_SubstituteMenu" />
+      <unit at="82,0,85,0" name="jetbrains.mps.lang.test.editor.ReportErrorStatementReference_SubstituteMenu$CONCEPTS" />
+      <unit at="86,0,89,0" name="jetbrains.mps.lang.test.editor.ReportErrorStatementReference_SubstituteMenu$LINKS" />
+      <unit at="66,0,81,0" name="jetbrains.mps.lang.test.editor.ReportErrorStatementReference_SubstituteMenu$SMP_Subconcepts_v50uv8_b" />
+      <unit at="48,0,66,0" name="jetbrains.mps.lang.test.editor.ReportErrorStatementReference_SubstituteMenu$SMP_ReferenceScope_v50uv8_a" />
+      <unit at="25,0,90,0" name="jetbrains.mps.lang.test.editor.ReportErrorStatementReference_SubstituteMenu" />
     </file>
     <file name="ScopeEntry_SubstituteMenu.java">
-      <unit at="90,0,93,0" name="jetbrains.mps.lang.test.editor.ScopeEntry_SubstituteMenu$CONCEPTS" />
-      <unit at="94,0,97,0" name="jetbrains.mps.lang.test.editor.ScopeEntry_SubstituteMenu$LINKS" />
-      <unit at="49,0,68,0" name="jetbrains.mps.lang.test.editor.ScopeEntry_SubstituteMenu$SMP_ReferenceScope_o6ro1p_a" />
-      <unit at="68,0,89,0" name="jetbrains.mps.lang.test.editor.ScopeEntry_SubstituteMenu$SMP_Subconcepts_o6ro1p_b" />
-      <unit at="26,0,98,0" name="jetbrains.mps.lang.test.editor.ScopeEntry_SubstituteMenu" />
+      <unit at="82,0,85,0" name="jetbrains.mps.lang.test.editor.ScopeEntry_SubstituteMenu$CONCEPTS" />
+      <unit at="86,0,89,0" name="jetbrains.mps.lang.test.editor.ScopeEntry_SubstituteMenu$LINKS" />
+      <unit at="66,0,81,0" name="jetbrains.mps.lang.test.editor.ScopeEntry_SubstituteMenu$SMP_Subconcepts_o6ro1p_b" />
+      <unit at="48,0,66,0" name="jetbrains.mps.lang.test.editor.ScopeEntry_SubstituteMenu$SMP_ReferenceScope_o6ro1p_a" />
+      <unit at="25,0,90,0" name="jetbrains.mps.lang.test.editor.ScopeEntry_SubstituteMenu" />
     </file>
     <file name="ScopesExpectedNode_SubstituteMenu.java">
-      <unit at="90,0,93,0" name="jetbrains.mps.lang.test.editor.ScopesExpectedNode_SubstituteMenu$CONCEPTS" />
-      <unit at="94,0,97,0" name="jetbrains.mps.lang.test.editor.ScopesExpectedNode_SubstituteMenu$LINKS" />
-      <unit at="49,0,68,0" name="jetbrains.mps.lang.test.editor.ScopesExpectedNode_SubstituteMenu$SMP_ReferenceScope_c0fmgv_a" />
-      <unit at="68,0,89,0" name="jetbrains.mps.lang.test.editor.ScopesExpectedNode_SubstituteMenu$SMP_Subconcepts_c0fmgv_b" />
-      <unit at="26,0,98,0" name="jetbrains.mps.lang.test.editor.ScopesExpectedNode_SubstituteMenu" />
+      <unit at="82,0,85,0" name="jetbrains.mps.lang.test.editor.ScopesExpectedNode_SubstituteMenu$CONCEPTS" />
+      <unit at="86,0,89,0" name="jetbrains.mps.lang.test.editor.ScopesExpectedNode_SubstituteMenu$LINKS" />
+      <unit at="66,0,81,0" name="jetbrains.mps.lang.test.editor.ScopesExpectedNode_SubstituteMenu$SMP_Subconcepts_c0fmgv_b" />
+      <unit at="48,0,66,0" name="jetbrains.mps.lang.test.editor.ScopesExpectedNode_SubstituteMenu$SMP_ReferenceScope_c0fmgv_a" />
+      <unit at="25,0,90,0" name="jetbrains.mps.lang.test.editor.ScopesExpectedNode_SubstituteMenu" />
     </file>
     <file name="TestNodeReference_SubstituteMenu.java">
-      <unit at="90,0,93,0" name="jetbrains.mps.lang.test.editor.TestNodeReference_SubstituteMenu$CONCEPTS" />
-      <unit at="94,0,97,0" name="jetbrains.mps.lang.test.editor.TestNodeReference_SubstituteMenu$LINKS" />
-      <unit at="49,0,68,0" name="jetbrains.mps.lang.test.editor.TestNodeReference_SubstituteMenu$SMP_ReferenceScope_imy9n4_a" />
-      <unit at="68,0,89,0" name="jetbrains.mps.lang.test.editor.TestNodeReference_SubstituteMenu$SMP_Subconcepts_imy9n4_b" />
-      <unit at="26,0,98,0" name="jetbrains.mps.lang.test.editor.TestNodeReference_SubstituteMenu" />
+      <unit at="82,0,85,0" name="jetbrains.mps.lang.test.editor.TestNodeReference_SubstituteMenu$CONCEPTS" />
+      <unit at="86,0,89,0" name="jetbrains.mps.lang.test.editor.TestNodeReference_SubstituteMenu$LINKS" />
+      <unit at="66,0,81,0" name="jetbrains.mps.lang.test.editor.TestNodeReference_SubstituteMenu$SMP_Subconcepts_imy9n4_b" />
+      <unit at="48,0,66,0" name="jetbrains.mps.lang.test.editor.TestNodeReference_SubstituteMenu$SMP_ReferenceScope_imy9n4_a" />
+      <unit at="25,0,90,0" name="jetbrains.mps.lang.test.editor.TestNodeReference_SubstituteMenu" />
     </file>
     <file name="TypesystemEquationReference_SubstituteMenu.java">
-      <unit at="90,0,93,0" name="jetbrains.mps.lang.test.editor.TypesystemEquationReference_SubstituteMenu$CONCEPTS" />
-      <unit at="94,0,97,0" name="jetbrains.mps.lang.test.editor.TypesystemEquationReference_SubstituteMenu$LINKS" />
-      <unit at="49,0,68,0" name="jetbrains.mps.lang.test.editor.TypesystemEquationReference_SubstituteMenu$SMP_ReferenceScope_fdkso1_a" />
-      <unit at="68,0,89,0" name="jetbrains.mps.lang.test.editor.TypesystemEquationReference_SubstituteMenu$SMP_Subconcepts_fdkso1_b" />
-      <unit at="26,0,98,0" name="jetbrains.mps.lang.test.editor.TypesystemEquationReference_SubstituteMenu" />
+      <unit at="82,0,85,0" name="jetbrains.mps.lang.test.editor.TypesystemEquationReference_SubstituteMenu$CONCEPTS" />
+      <unit at="86,0,89,0" name="jetbrains.mps.lang.test.editor.TypesystemEquationReference_SubstituteMenu$LINKS" />
+      <unit at="66,0,81,0" name="jetbrains.mps.lang.test.editor.TypesystemEquationReference_SubstituteMenu$SMP_Subconcepts_fdkso1_b" />
+      <unit at="48,0,66,0" name="jetbrains.mps.lang.test.editor.TypesystemEquationReference_SubstituteMenu$SMP_ReferenceScope_fdkso1_a" />
+      <unit at="25,0,90,0" name="jetbrains.mps.lang.test.editor.TypesystemEquationReference_SubstituteMenu" />
     </file>
     <file name="UnknownRuleReference_SubstituteMenu.java">
-      <unit at="90,0,93,0" name="jetbrains.mps.lang.test.editor.UnknownRuleReference_SubstituteMenu$CONCEPTS" />
-      <unit at="94,0,97,0" name="jetbrains.mps.lang.test.editor.UnknownRuleReference_SubstituteMenu$LINKS" />
-      <unit at="49,0,68,0" name="jetbrains.mps.lang.test.editor.UnknownRuleReference_SubstituteMenu$SMP_ReferenceScope_duyow9_a" />
-      <unit at="68,0,89,0" name="jetbrains.mps.lang.test.editor.UnknownRuleReference_SubstituteMenu$SMP_Subconcepts_duyow9_b" />
-      <unit at="26,0,98,0" name="jetbrains.mps.lang.test.editor.UnknownRuleReference_SubstituteMenu" />
+      <unit at="82,0,85,0" name="jetbrains.mps.lang.test.editor.UnknownRuleReference_SubstituteMenu$CONCEPTS" />
+      <unit at="86,0,89,0" name="jetbrains.mps.lang.test.editor.UnknownRuleReference_SubstituteMenu$LINKS" />
+      <unit at="66,0,81,0" name="jetbrains.mps.lang.test.editor.UnknownRuleReference_SubstituteMenu$SMP_Subconcepts_duyow9_b" />
+      <unit at="48,0,66,0" name="jetbrains.mps.lang.test.editor.UnknownRuleReference_SubstituteMenu$SMP_ReferenceScope_duyow9_a" />
+      <unit at="25,0,90,0" name="jetbrains.mps.lang.test.editor.UnknownRuleReference_SubstituteMenu" />
     </file>
     <file name="WarningStatementReference_SubstituteMenu.java">
-      <unit at="90,0,93,0" name="jetbrains.mps.lang.test.editor.WarningStatementReference_SubstituteMenu$CONCEPTS" />
-      <unit at="94,0,97,0" name="jetbrains.mps.lang.test.editor.WarningStatementReference_SubstituteMenu$LINKS" />
-      <unit at="49,0,68,0" name="jetbrains.mps.lang.test.editor.WarningStatementReference_SubstituteMenu$SMP_ReferenceScope_ctm0sw_a" />
-      <unit at="68,0,89,0" name="jetbrains.mps.lang.test.editor.WarningStatementReference_SubstituteMenu$SMP_Subconcepts_ctm0sw_b" />
-      <unit at="26,0,98,0" name="jetbrains.mps.lang.test.editor.WarningStatementReference_SubstituteMenu" />
+      <unit at="82,0,85,0" name="jetbrains.mps.lang.test.editor.WarningStatementReference_SubstituteMenu$CONCEPTS" />
+      <unit at="86,0,89,0" name="jetbrains.mps.lang.test.editor.WarningStatementReference_SubstituteMenu$LINKS" />
+      <unit at="66,0,81,0" name="jetbrains.mps.lang.test.editor.WarningStatementReference_SubstituteMenu$SMP_Subconcepts_ctm0sw_b" />
+      <unit at="48,0,66,0" name="jetbrains.mps.lang.test.editor.WarningStatementReference_SubstituteMenu$SMP_ReferenceScope_ctm0sw_a" />
+      <unit at="25,0,90,0" name="jetbrains.mps.lang.test.editor.WarningStatementReference_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590384(jetbrains.mps.lang.test.editor)/1101347953350099232">

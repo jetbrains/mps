@@ -13,7 +13,6 @@ import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
-import jetbrains.mps.smodel.ConceptDescendantsCache;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.stream.Collectors;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -52,8 +51,13 @@ public class JavaModifier_SubstituteMenu extends SubstituteMenuBase {
 
 
   public class SMP_Subconcepts_25qe7z_a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
-    protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.JavaModifier$Oo).stream().filter((SAbstractConcept concept) -> filterConcept(_context, concept)).collect(Collectors.toList());
+    public SMP_Subconcepts_25qe7z_a() {
+      super(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "JavaModifier", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "4125212090851886419")));
+    }
+
+    @Override
+    protected Collection<SAbstractConcept> getConcepts(final SubstituteMenuContext _context) {
+      return getDirectDescendants(_context, CONCEPTS.JavaModifier$Oo).stream().filter((SAbstractConcept concept) -> filterConcept(_context, concept)).collect(Collectors.toList());
     }
     private boolean filterConcept(SubstituteMenuContext _context, SAbstractConcept concept) {
       // Simon, Alex, I need to put it in every next modifier down the hierarchy
@@ -69,17 +73,6 @@ public class JavaModifier_SubstituteMenu extends SubstituteMenuBase {
           return !(Objects.equals(SNodeOperations.getConcept(it), concept));
         }
       });
-    }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "JavaModifier", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "4125212090851886419")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
 
     @Override

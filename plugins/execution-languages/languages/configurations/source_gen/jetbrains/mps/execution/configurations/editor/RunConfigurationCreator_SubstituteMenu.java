@@ -13,10 +13,9 @@ import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstitute
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
-import jetbrains.mps.smodel.ConceptDescendantsCache;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -49,8 +48,7 @@ public class RunConfigurationCreator_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_c15muj_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_c15muj_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051
-      super((SAbstractConcept) CONCEPTS.RunConfigurationCreator$WE, LINKS.configuration$2LI7);
+      super(CONCEPTS.RunConfigurationCreator$WE, LINKS.configuration$2LI7);
     }
     @NotNull
     @Override
@@ -66,19 +64,13 @@ public class RunConfigurationCreator_SubstituteMenu extends SubstituteMenuBase {
 
   }
   public class SMP_Subconcepts_c15muj_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
-    protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.RunConfigurationCreator$WE);
+    public SMP_Subconcepts_c15muj_b() {
+      super(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "RunConfigurationCreator", null));
     }
-    @NotNull
+
     @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "RunConfigurationCreator", null));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
+    protected Collection<SAbstractConcept> getConcepts(final SubstituteMenuContext _context) {
+      return getDirectDescendants(_context, CONCEPTS.RunConfigurationCreator$WE);
     }
 
     @Override

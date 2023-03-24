@@ -13,10 +13,9 @@ import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstitute
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
-import jetbrains.mps.smodel.ConceptDescendantsCache;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -49,8 +48,7 @@ public class RootScopeEval_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_1dly9h_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_1dly9h_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051
-      super((SAbstractConcept) CONCEPTS.RootScopeEval$p9, LINKS.kind$7uEw);
+      super(CONCEPTS.RootScopeEval$p9, LINKS.kind$7uEw);
     }
     @NotNull
     @Override
@@ -66,19 +64,13 @@ public class RootScopeEval_SubstituteMenu extends SubstituteMenuBase {
 
   }
   public class SMP_Subconcepts_1dly9h_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
-    protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.RootScopeEval$p9);
+    public SMP_Subconcepts_1dly9h_b() {
+      super(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "RootScopeEval", null));
     }
-    @NotNull
+
     @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "RootScopeEval", null));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
+    protected Collection<SAbstractConcept> getConcepts(final SubstituteMenuContext _context) {
+      return getDirectDescendants(_context, CONCEPTS.RootScopeEval$p9);
     }
 
     @Override

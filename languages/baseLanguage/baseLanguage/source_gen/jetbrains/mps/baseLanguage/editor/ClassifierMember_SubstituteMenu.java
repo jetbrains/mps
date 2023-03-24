@@ -23,7 +23,6 @@ import jetbrains.mps.lang.editor.menus.substitute.NamedSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
-import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -101,19 +100,13 @@ public class ClassifierMember_SubstituteMenu extends SubstituteMenuBase {
       }
     }
     public class SMP_Subconcepts_iuuuam_b0 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
-      protected Collection getConcepts(final SubstituteMenuContext _context) {
-        return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ClassifierMember$At);
+      public SMP_Subconcepts_iuuuam_b0() {
+        super(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "ClassifierMember", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "9056311271264479103")));
       }
-      @NotNull
+
       @Override
-      public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-        context.getEditorMenuTrace().pushTraceInfo();
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "ClassifierMember", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "9056311271264479103")));
-        try {
-          return super.createItems(context);
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
+      protected Collection<SAbstractConcept> getConcepts(final SubstituteMenuContext _context) {
+        return getDirectDescendants(_context, CONCEPTS.ClassifierMember$At);
       }
 
       @Override

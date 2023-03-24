@@ -13,15 +13,14 @@ import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstitute
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuItem;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
-import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -53,8 +52,7 @@ public class NodeReferentConstraint_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_lmi3tj_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_lmi3tj_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051
-      super((SAbstractConcept) CONCEPTS.NodeReferentConstraint$PH, LINKS.applicableLink$7IrX);
+      super(CONCEPTS.NodeReferentConstraint$PH, LINKS.applicableLink$7IrX);
     }
     @NotNull
     @Override
@@ -100,19 +98,13 @@ public class NodeReferentConstraint_SubstituteMenu extends SubstituteMenuBase {
     }
   }
   public class SMP_Subconcepts_lmi3tj_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
-    protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.NodeReferentConstraint$PH);
+    public SMP_Subconcepts_lmi3tj_b() {
+      super(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "NodeReferentConstraint", null));
     }
-    @NotNull
+
     @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "NodeReferentConstraint", null));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
+    protected Collection<SAbstractConcept> getConcepts(final SubstituteMenuContext _context) {
+      return getDirectDescendants(_context, CONCEPTS.NodeReferentConstraint$PH);
     }
 
     @Override

@@ -938,43 +938,30 @@
     </file>
     <file name="ReplaceLogWithMessage.java">
       <node id="6057591418743074346" at="22,118,23,140" concept="5" />
-      <node id="6057591418743074347" at="28,82,29,53" concept="1" />
-      <node id="6057591418743074347" at="29,53,30,269" concept="1" />
-      <node id="6057591418743074347" at="31,13,32,44" concept="6" />
-      <node id="6057591418743074347" at="33,19,34,54" concept="1" />
-      <node id="6057591418743074346" at="37,34,38,18" concept="6" />
-      <node id="6057591418743074346" at="43,91,44,49" concept="1" />
-      <node id="6057591418743074346" at="44,49,45,255" concept="1" />
-      <node id="6057591418743074346" at="46,9,47,44" concept="6" />
-      <node id="6057591418743074346" at="48,15,49,50" concept="1" />
-      <node id="6057591418743074346" at="55,0,56,0" concept="8" trace="MsgStatement$Pu" />
-      <node id="6057591418743074347" at="30,269,35,9" concept="10" />
-      <node id="6057591418743074346" at="45,255,50,5" concept="10" />
-      <node id="6057591418743074347" at="26,0,37,0" concept="4" trace="createItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="6057591418743074346" at="41,0,52,0" concept="4" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="6057591418743074347" at="23,140,37,34" concept="1" />
-      <node id="6057591418743074346" at="20,0,40,0" concept="4" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <scope id="6057591418743074347" at="31,13,32,44" />
-      <scope id="6057591418743074347" at="33,19,34,54" />
-      <scope id="6057591418743074346" at="46,9,47,44" />
-      <scope id="6057591418743074346" at="48,15,49,50" />
-      <scope id="6057591418743074347" at="28,82,35,9" />
-      <scope id="6057591418743074346" at="43,91,50,5" />
-      <scope id="6057591418743074347" at="26,0,37,0">
-        <var name="context" id="6057591418743074347" />
-      </scope>
-      <scope id="6057591418743074346" at="41,0,52,0">
-        <var name="context" id="6057591418743074346" />
-      </scope>
-      <scope id="6057591418743074346" at="22,118,38,18">
+      <node id="6057591418743074347" at="23,140,24,375" concept="1" />
+      <node id="6057591418743074346" at="24,375,25,18" concept="6" />
+      <node id="6057591418743074346" at="30,91,31,49" concept="1" />
+      <node id="6057591418743074346" at="31,49,32,255" concept="1" />
+      <node id="6057591418743074346" at="33,9,34,44" concept="6" />
+      <node id="6057591418743074346" at="35,15,36,50" concept="1" />
+      <node id="6057591418743074346" at="42,0,43,0" concept="8" trace="MsgStatement$Pu" />
+      <node id="6057591418743074346" at="32,255,37,5" concept="10" />
+      <node id="6057591418743074346" at="20,0,27,0" concept="4" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <node id="6057591418743074346" at="28,0,39,0" concept="4" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <scope id="6057591418743074346" at="33,9,34,44" />
+      <scope id="6057591418743074346" at="35,15,36,50" />
+      <scope id="6057591418743074346" at="22,118,25,18">
         <var name="result" id="6057591418743074346" />
       </scope>
-      <scope id="6057591418743074346" at="20,0,40,0">
+      <scope id="6057591418743074346" at="20,0,27,0">
         <var name="_context" id="6057591418743074346" />
       </scope>
-      <unit id="6057591418743074346" at="54,0,57,0" name="jetbrains.mps.baseLanguage.logging.editor.ReplaceLogWithMessage$CONCEPTS" />
-      <unit id="6057591418743074347" at="24,71,37,5" name="jetbrains.mps.baseLanguage.logging.editor.ReplaceLogWithMessage$1" />
-      <unit id="6057591418743074346" at="19,0,58,0" name="jetbrains.mps.baseLanguage.logging.editor.ReplaceLogWithMessage" />
+      <scope id="6057591418743074346" at="30,91,37,5" />
+      <scope id="6057591418743074346" at="28,0,39,0">
+        <var name="context" id="6057591418743074346" />
+      </scope>
+      <unit id="6057591418743074346" at="41,0,44,0" name="jetbrains.mps.baseLanguage.logging.editor.ReplaceLogWithMessage$CONCEPTS" />
+      <unit id="6057591418743074346" at="19,0,45,0" name="jetbrains.mps.baseLanguage.logging.editor.ReplaceLogWithMessage" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959057d(jetbrains.mps.baseLanguage.logging.editor)/6057591418743156818">
@@ -1138,43 +1125,30 @@
     </file>
     <file name="ReplaceMessageWithLog.java">
       <node id="6057591418743177426" at="22,118,23,140" concept="5" />
-      <node id="6057591418743177427" at="28,82,29,53" concept="1" />
-      <node id="6057591418743177427" at="29,53,30,277" concept="1" />
-      <node id="6057591418743177427" at="31,13,32,44" concept="6" />
-      <node id="6057591418743177427" at="33,19,34,54" concept="1" />
-      <node id="6057591418743177426" at="37,42,38,18" concept="6" />
-      <node id="6057591418743177426" at="43,91,44,49" concept="1" />
-      <node id="6057591418743177426" at="44,49,45,255" concept="1" />
-      <node id="6057591418743177426" at="46,9,47,44" concept="6" />
-      <node id="6057591418743177426" at="48,15,49,50" concept="1" />
-      <node id="6057591418743177426" at="55,0,56,0" concept="8" trace="LogLowLevelStatement$3g" />
-      <node id="6057591418743177427" at="30,277,35,9" concept="10" />
-      <node id="6057591418743177426" at="45,255,50,5" concept="10" />
-      <node id="6057591418743177427" at="26,0,37,0" concept="4" trace="createItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="6057591418743177426" at="41,0,52,0" concept="4" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="6057591418743177427" at="23,140,37,42" concept="1" />
-      <node id="6057591418743177426" at="20,0,40,0" concept="4" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <scope id="6057591418743177427" at="31,13,32,44" />
-      <scope id="6057591418743177427" at="33,19,34,54" />
-      <scope id="6057591418743177426" at="46,9,47,44" />
-      <scope id="6057591418743177426" at="48,15,49,50" />
-      <scope id="6057591418743177427" at="28,82,35,9" />
-      <scope id="6057591418743177426" at="43,91,50,5" />
-      <scope id="6057591418743177427" at="26,0,37,0">
-        <var name="context" id="6057591418743177427" />
-      </scope>
-      <scope id="6057591418743177426" at="41,0,52,0">
-        <var name="context" id="6057591418743177426" />
-      </scope>
-      <scope id="6057591418743177426" at="22,118,38,18">
+      <node id="6057591418743177427" at="23,140,24,399" concept="1" />
+      <node id="6057591418743177426" at="24,399,25,18" concept="6" />
+      <node id="6057591418743177426" at="30,91,31,49" concept="1" />
+      <node id="6057591418743177426" at="31,49,32,255" concept="1" />
+      <node id="6057591418743177426" at="33,9,34,44" concept="6" />
+      <node id="6057591418743177426" at="35,15,36,50" concept="1" />
+      <node id="6057591418743177426" at="42,0,43,0" concept="8" trace="LogLowLevelStatement$3g" />
+      <node id="6057591418743177426" at="32,255,37,5" concept="10" />
+      <node id="6057591418743177426" at="20,0,27,0" concept="4" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <node id="6057591418743177426" at="28,0,39,0" concept="4" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <scope id="6057591418743177426" at="33,9,34,44" />
+      <scope id="6057591418743177426" at="35,15,36,50" />
+      <scope id="6057591418743177426" at="22,118,25,18">
         <var name="result" id="6057591418743177426" />
       </scope>
-      <scope id="6057591418743177426" at="20,0,40,0">
+      <scope id="6057591418743177426" at="20,0,27,0">
         <var name="_context" id="6057591418743177426" />
       </scope>
-      <unit id="6057591418743177426" at="54,0,57,0" name="jetbrains.mps.baseLanguage.logging.editor.ReplaceMessageWithLog$CONCEPTS" />
-      <unit id="6057591418743177427" at="24,71,37,5" name="jetbrains.mps.baseLanguage.logging.editor.ReplaceMessageWithLog$1" />
-      <unit id="6057591418743177426" at="19,0,58,0" name="jetbrains.mps.baseLanguage.logging.editor.ReplaceMessageWithLog" />
+      <scope id="6057591418743177426" at="30,91,37,5" />
+      <scope id="6057591418743177426" at="28,0,39,0">
+        <var name="context" id="6057591418743177426" />
+      </scope>
+      <unit id="6057591418743177426" at="41,0,44,0" name="jetbrains.mps.baseLanguage.logging.editor.ReplaceMessageWithLog$CONCEPTS" />
+      <unit id="6057591418743177426" at="19,0,45,0" name="jetbrains.mps.baseLanguage.logging.editor.ReplaceMessageWithLog" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959057d(jetbrains.mps.baseLanguage.logging.editor)/6332851714983843199">

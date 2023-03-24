@@ -16,7 +16,6 @@ import java.util.Objects;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
-import jetbrains.mps.smodel.ConceptDescendantsCache;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.stream.Collectors;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
@@ -69,22 +68,16 @@ public class RemovePart extends SubstituteMenuBase {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Subconcepts_pkf68r_a0());
     }
     public class SMP_Subconcepts_pkf68r_a0 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
-      protected Collection getConcepts(final SubstituteMenuContext _context) {
-        return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ActionTestDefaultAbstractChild$$e).stream().filter((SAbstractConcept concept) -> filterConcept(_context, concept)).collect(Collectors.toList());
+      public SMP_Subconcepts_pkf68r_a0() {
+        super(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "ActionTestDefaultAbstractChild", new SNodePointer("r:6f930e62-d183-4ca9-a17e-cab70bc506c7(jetbrains.mps.lang.actions.testLanguage.editor)", "4427556120929146343")));
+      }
+
+      @Override
+      protected Collection<SAbstractConcept> getConcepts(final SubstituteMenuContext _context) {
+        return getDirectDescendants(_context, CONCEPTS.ActionTestDefaultAbstractChild$$e).stream().filter((SAbstractConcept concept) -> filterConcept(_context, concept)).collect(Collectors.toList());
       }
       private boolean filterConcept(SubstituteMenuContext _context, SAbstractConcept concept) {
         return !(Objects.equals(concept, CONCEPTS.ActionTestDefaultChild2$Gq));
-      }
-      @NotNull
-      @Override
-      public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-        context.getEditorMenuTrace().pushTraceInfo();
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "ActionTestDefaultAbstractChild", new SNodePointer("r:6f930e62-d183-4ca9-a17e-cab70bc506c7(jetbrains.mps.lang.actions.testLanguage.editor)", "4427556120929146343")));
-        try {
-          return super.createItems(context);
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
       }
 
       @Override

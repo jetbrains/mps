@@ -35,20 +35,7 @@ public class LoopMacroNamespaceAccessor_SubstituteMenu extends SubstituteMenuBas
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.LoopMacroNamespaceAccessor$DO) {
-
-      @NotNull
-      @Override
-      public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-        context.getEditorMenuTrace().pushTraceInfo();
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "LoopMacroNamespaceAccessor", new SNodePointer("r:00000000-0000-4000-0000-011c895902e3(jetbrains.mps.lang.generator.editor)", "1501378878164650509")));
-        try {
-          return super.createItems(context);
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
-      }
-    }, CONCEPTS.LoopMacroNamespaceAccessor$DO));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.LoopMacroNamespaceAccessor$DO, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "LoopMacroNamespaceAccessor", new SNodePointer("r:00000000-0000-4000-0000-011c895902e3(jetbrains.mps.lang.generator.editor)", "1501378878164650509"))), CONCEPTS.LoopMacroNamespaceAccessor$DO));
     result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_go89nz_b(), CONCEPTS.LoopMacroNamespaceAccessor$DO));
     return result;
   }

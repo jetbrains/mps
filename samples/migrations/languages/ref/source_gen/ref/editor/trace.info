@@ -16,18 +16,18 @@
       <unit at="16,0,48,0" name="ref.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="NewComponentRef_SubstituteMenu.java">
-      <unit at="90,0,93,0" name="ref.editor.NewComponentRef_SubstituteMenu$CONCEPTS" />
-      <unit at="94,0,97,0" name="ref.editor.NewComponentRef_SubstituteMenu$LINKS" />
-      <unit at="49,0,68,0" name="ref.editor.NewComponentRef_SubstituteMenu$SMP_ReferenceScope_2nhj69_a" />
-      <unit at="68,0,89,0" name="ref.editor.NewComponentRef_SubstituteMenu$SMP_Subconcepts_2nhj69_b" />
-      <unit at="26,0,98,0" name="ref.editor.NewComponentRef_SubstituteMenu" />
+      <unit at="82,0,85,0" name="ref.editor.NewComponentRef_SubstituteMenu$CONCEPTS" />
+      <unit at="86,0,89,0" name="ref.editor.NewComponentRef_SubstituteMenu$LINKS" />
+      <unit at="66,0,81,0" name="ref.editor.NewComponentRef_SubstituteMenu$SMP_Subconcepts_2nhj69_b" />
+      <unit at="48,0,66,0" name="ref.editor.NewComponentRef_SubstituteMenu$SMP_ReferenceScope_2nhj69_a" />
+      <unit at="25,0,90,0" name="ref.editor.NewComponentRef_SubstituteMenu" />
     </file>
     <file name="OldComponentRef_SubstituteMenu.java">
-      <unit at="90,0,93,0" name="ref.editor.OldComponentRef_SubstituteMenu$CONCEPTS" />
-      <unit at="94,0,97,0" name="ref.editor.OldComponentRef_SubstituteMenu$LINKS" />
-      <unit at="49,0,68,0" name="ref.editor.OldComponentRef_SubstituteMenu$SMP_ReferenceScope_buu76l_a" />
-      <unit at="68,0,89,0" name="ref.editor.OldComponentRef_SubstituteMenu$SMP_Subconcepts_buu76l_b" />
-      <unit at="26,0,98,0" name="ref.editor.OldComponentRef_SubstituteMenu" />
+      <unit at="82,0,85,0" name="ref.editor.OldComponentRef_SubstituteMenu$CONCEPTS" />
+      <unit at="86,0,89,0" name="ref.editor.OldComponentRef_SubstituteMenu$LINKS" />
+      <unit at="66,0,81,0" name="ref.editor.OldComponentRef_SubstituteMenu$SMP_Subconcepts_buu76l_b" />
+      <unit at="48,0,66,0" name="ref.editor.OldComponentRef_SubstituteMenu$SMP_ReferenceScope_buu76l_a" />
+      <unit at="25,0,90,0" name="ref.editor.OldComponentRef_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:105afc13-e85d-4a9a-b408-b51c6dce8852(ref.editor)/7709929535540733623">

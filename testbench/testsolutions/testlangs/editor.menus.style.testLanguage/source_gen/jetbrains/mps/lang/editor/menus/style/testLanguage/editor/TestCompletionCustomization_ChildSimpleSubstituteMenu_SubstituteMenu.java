@@ -21,34 +21,8 @@ public class TestCompletionCustomization_ChildSimpleSubstituteMenu_SubstituteMen
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.TestCompletionCustomization_ChildNoPriority$uM) {
-
-      @NotNull
-      @Override
-      public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-        context.getEditorMenuTrace().pushTraceInfo();
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "TestCompletionCustomization_ChildNoPriority", new SNodePointer("r:83d73286-80a4-4a12-bc9a-3d442d5242fa(jetbrains.mps.lang.editor.menus.style.testLanguage.editor)", "5310043668062444231")));
-        try {
-          return super.createItems(context);
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
-      }
-    }, CONCEPTS.TestCompletionCustomization_ChildNoPriority$uM));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.TestCompletionCustomization_ChildWithPriority$vh) {
-
-      @NotNull
-      @Override
-      public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-        context.getEditorMenuTrace().pushTraceInfo();
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "TestCompletionCustomization_ChildWithPriority", new SNodePointer("r:83d73286-80a4-4a12-bc9a-3d442d5242fa(jetbrains.mps.lang.editor.menus.style.testLanguage.editor)", "5310043668062444233")));
-        try {
-          return super.createItems(context);
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
-      }
-    }, CONCEPTS.TestCompletionCustomization_ChildWithPriority$vh));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.TestCompletionCustomization_ChildNoPriority$uM, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "TestCompletionCustomization_ChildNoPriority", new SNodePointer("r:83d73286-80a4-4a12-bc9a-3d442d5242fa(jetbrains.mps.lang.editor.menus.style.testLanguage.editor)", "5310043668062444231"))), CONCEPTS.TestCompletionCustomization_ChildNoPriority$uM));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.TestCompletionCustomization_ChildWithPriority$vh, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "TestCompletionCustomization_ChildWithPriority", new SNodePointer("r:83d73286-80a4-4a12-bc9a-3d442d5242fa(jetbrains.mps.lang.editor.menus.style.testLanguage.editor)", "5310043668062444233"))), CONCEPTS.TestCompletionCustomization_ChildWithPriority$vh));
     return result;
   }
 

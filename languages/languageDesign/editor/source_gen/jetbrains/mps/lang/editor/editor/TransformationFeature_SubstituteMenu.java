@@ -31,7 +31,6 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.editor.menus.substitute.SimpleConceptSubstituteMenuPart;
-import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -108,6 +107,9 @@ public class TransformationFeature_SubstituteMenu extends SubstituteMenuBase {
         return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_97h82d_a0a(), CONCEPTS.TransformationFeature$e4));
       }
       public class SMP_Concepts_97h82d_a0a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
+        public SMP_Concepts_97h82d_a0a() {
+          super(new EditorMenuDescriptorBase("simple actions for the list of concepts", new SNodePointer("r:00000000-0000-4000-0000-011c89590299(jetbrains.mps.lang.editor.editor)", "1741258697587154028")));
+        }
         protected Collection getConcepts(SubstituteMenuContext _context) {
           SNode section = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.TransformationMenuSection$SB, true, false);
           final Iterable<SConcept> availableFeatures = ListSequence.fromList(SLinkOperations.getChildren(section, LINKS.locations$m8FB)).translate(new ITranslator2<SNode, SConcept>() {
@@ -130,32 +132,9 @@ public class TransformationFeature_SubstituteMenu extends SubstituteMenuBase {
           return Sequence.fromIterable(concepts).toListSequence();
         }
 
-        @NotNull
-        @Override
-        public List<SubstituteMenuItem> createItems(SubstituteMenuContext _context) {
-          _context.getEditorMenuTrace().pushTraceInfo();
-          _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("simple actions for the list of concepts", new SNodePointer("r:00000000-0000-4000-0000-011c89590299(jetbrains.mps.lang.editor.editor)", "1741258697587154028")));
-          try {
-            return super.createItems(_context);
-          } finally {
-            _context.getEditorMenuTrace().popTraceInfo();
-          }
-        }
         @Override
         protected Collection<SubstituteMenuItem> createItemsForConcept(final SubstituteMenuContext _context, final SAbstractConcept concept) {
-          return new SimpleConceptSubstituteMenuPart(concept) {
-            @NotNull
-            @Override
-            public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-              context.getEditorMenuTrace().pushTraceInfo();
-              context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("simple action for concept: " + concept.getName(), null));
-              try {
-                return super.createItems(context);
-              } finally {
-                context.getEditorMenuTrace().popTraceInfo();
-              }
-            }
-          }.createItems(_context);
+          return new SimpleConceptSubstituteMenuPart(concept, new EditorMenuDescriptorBase("simple action for concept: " + concept.getName(), null)).createItems(_context);
         }
       }
     }
@@ -181,19 +160,13 @@ public class TransformationFeature_SubstituteMenu extends SubstituteMenuBase {
         return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Subconcepts_97h82d_a1a());
       }
       public class SMP_Subconcepts_97h82d_a1a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
-        protected Collection getConcepts(final SubstituteMenuContext _context) {
-          return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.TransformationFeature$e4);
+        public SMP_Subconcepts_97h82d_a1a() {
+          super(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "TransformationFeature", new SNodePointer("r:00000000-0000-4000-0000-011c89590299(jetbrains.mps.lang.editor.editor)", "1741258697587154164")));
         }
-        @NotNull
+
         @Override
-        public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-          context.getEditorMenuTrace().pushTraceInfo();
-          context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "TransformationFeature", new SNodePointer("r:00000000-0000-4000-0000-011c89590299(jetbrains.mps.lang.editor.editor)", "1741258697587154164")));
-          try {
-            return super.createItems(context);
-          } finally {
-            context.getEditorMenuTrace().popTraceInfo();
-          }
+        protected Collection<SAbstractConcept> getConcepts(final SubstituteMenuContext _context) {
+          return getDirectDescendants(_context, CONCEPTS.TransformationFeature$e4);
         }
 
         @Override

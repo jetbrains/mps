@@ -13,7 +13,6 @@ import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
-import jetbrains.mps.smodel.ConceptDescendantsCache;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
@@ -43,19 +42,13 @@ public class ParameterizedDescriptionBlock_SubstituteMenu extends SubstituteMenu
 
 
   public class SMP_Subconcepts_npgxx3_a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
-    protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ParameterizedDescriptionBlock$xv);
+    public SMP_Subconcepts_npgxx3_a() {
+      super(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "ParameterizedDescriptionBlock", new SNodePointer("r:00000000-0000-4000-0000-011c89590350(jetbrains.mps.lang.intentions.editor)", "3982593663455826324")));
     }
-    @NotNull
+
     @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "ParameterizedDescriptionBlock", new SNodePointer("r:00000000-0000-4000-0000-011c89590350(jetbrains.mps.lang.intentions.editor)", "3982593663455826324")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
+    protected Collection<SAbstractConcept> getConcepts(final SubstituteMenuContext _context) {
+      return getDirectDescendants(_context, CONCEPTS.ParameterizedDescriptionBlock$xv);
     }
 
     @Override

@@ -50,36 +50,16 @@ public class TestSubstituteExceptionConceptListChild_SubstituteMenu extends Subs
 
 
   public class SMP_Concepts_v3z36n_a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
+    public SMP_Concepts_v3z36n_a() {
+      super(new EditorMenuDescriptorBase("simple actions for the list of concepts", new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "7153261420283568707")));
+    }
     protected Collection getConcepts(SubstituteMenuContext _context) {
       throw new RuntimeException("Intentional exception - ignore this");
     }
 
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext _context) {
-      _context.getEditorMenuTrace().pushTraceInfo();
-      _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("simple actions for the list of concepts", new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "7153261420283568707")));
-      try {
-        return super.createItems(_context);
-      } finally {
-        _context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
     @Override
     protected Collection<SubstituteMenuItem> createItemsForConcept(final SubstituteMenuContext _context, final SAbstractConcept concept) {
-      return new SimpleConceptSubstituteMenuPart(concept) {
-        @NotNull
-        @Override
-        public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-          context.getEditorMenuTrace().pushTraceInfo();
-          context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("simple action for concept: " + concept.getName(), null));
-          try {
-            return super.createItems(context);
-          } finally {
-            context.getEditorMenuTrace().popTraceInfo();
-          }
-        }
-      }.createItems(_context);
+      return new SimpleConceptSubstituteMenuPart(concept, new EditorMenuDescriptorBase("simple action for concept: " + concept.getName(), null)).createItems(_context);
     }
   }
   private class SMP_Action_v3z36n_b extends SingleItemSubstituteMenuPart {

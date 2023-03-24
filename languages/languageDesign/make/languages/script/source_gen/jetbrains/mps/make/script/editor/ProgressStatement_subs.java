@@ -79,33 +79,7 @@ public class ProgressStatement_subs extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_kz2qu0_a0(), CONCEPTS.BeginWorkStatement$_T), new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.AdvanceWorkStatement$AR) {
-
-        @NotNull
-        @Override
-        public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-          context.getEditorMenuTrace().pushTraceInfo();
-          context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "AdvanceWorkStatement", new SNodePointer("r:997bd332-957d-4e59-bb10-bc8a630d5568(jetbrains.mps.make.script.editor)", "1741258697587105477")));
-          try {
-            return super.createItems(context);
-          } finally {
-            context.getEditorMenuTrace().popTraceInfo();
-          }
-        }
-      }, CONCEPTS.AdvanceWorkStatement$AR), new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.FinishWorkStatement$Ck) {
-
-        @NotNull
-        @Override
-        public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-          context.getEditorMenuTrace().pushTraceInfo();
-          context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "FinishWorkStatement", new SNodePointer("r:997bd332-957d-4e59-bb10-bc8a630d5568(jetbrains.mps.make.script.editor)", "1741258697587105479")));
-          try {
-            return super.createItems(context);
-          } finally {
-            context.getEditorMenuTrace().popTraceInfo();
-          }
-        }
-      }, CONCEPTS.FinishWorkStatement$Ck), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_kz2qu0_d0(), CONCEPTS.AdvanceWorkStatement$AR), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_kz2qu0_e0(), CONCEPTS.FinishWorkStatement$Ck));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_kz2qu0_a0(), CONCEPTS.BeginWorkStatement$_T), new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.AdvanceWorkStatement$AR, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "AdvanceWorkStatement", new SNodePointer("r:997bd332-957d-4e59-bb10-bc8a630d5568(jetbrains.mps.make.script.editor)", "1741258697587105477"))), CONCEPTS.AdvanceWorkStatement$AR), new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.FinishWorkStatement$Ck, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "FinishWorkStatement", new SNodePointer("r:997bd332-957d-4e59-bb10-bc8a630d5568(jetbrains.mps.make.script.editor)", "1741258697587105479"))), CONCEPTS.FinishWorkStatement$Ck), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_kz2qu0_d0(), CONCEPTS.AdvanceWorkStatement$AR), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_kz2qu0_e0(), CONCEPTS.FinishWorkStatement$Ck));
     }
     private class SMP_Action_kz2qu0_a0 extends SingleItemSubstituteMenuPart {
 

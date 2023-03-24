@@ -19,34 +19,34 @@
       <unit at="16,0,114,0" name="jetbrains.mps.lang.constraints.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="NodePropertyConstraint_SubstituteMenu.java">
-      <unit at="124,0,127,0" name="jetbrains.mps.lang.constraints.editor.NodePropertyConstraint_SubstituteMenu$CONCEPTS" />
-      <unit at="128,0,131,0" name="jetbrains.mps.lang.constraints.editor.NodePropertyConstraint_SubstituteMenu$LINKS" />
-      <unit at="102,0,123,0" name="jetbrains.mps.lang.constraints.editor.NodePropertyConstraint_SubstituteMenu$SMP_Subconcepts_szjyyq_b" />
-      <unit at="76,0,101,0" name="jetbrains.mps.lang.constraints.editor.NodePropertyConstraint_SubstituteMenu$SMP_ReferenceScope_szjyyq_a$Item" />
-      <unit at="53,0,102,0" name="jetbrains.mps.lang.constraints.editor.NodePropertyConstraint_SubstituteMenu$SMP_ReferenceScope_szjyyq_a" />
-      <unit at="30,0,132,0" name="jetbrains.mps.lang.constraints.editor.NodePropertyConstraint_SubstituteMenu" />
+      <unit at="116,0,119,0" name="jetbrains.mps.lang.constraints.editor.NodePropertyConstraint_SubstituteMenu$CONCEPTS" />
+      <unit at="120,0,123,0" name="jetbrains.mps.lang.constraints.editor.NodePropertyConstraint_SubstituteMenu$LINKS" />
+      <unit at="100,0,115,0" name="jetbrains.mps.lang.constraints.editor.NodePropertyConstraint_SubstituteMenu$SMP_Subconcepts_szjyyq_b" />
+      <unit at="74,0,99,0" name="jetbrains.mps.lang.constraints.editor.NodePropertyConstraint_SubstituteMenu$SMP_ReferenceScope_szjyyq_a$Item" />
+      <unit at="52,0,100,0" name="jetbrains.mps.lang.constraints.editor.NodePropertyConstraint_SubstituteMenu$SMP_ReferenceScope_szjyyq_a" />
+      <unit at="29,0,124,0" name="jetbrains.mps.lang.constraints.editor.NodePropertyConstraint_SubstituteMenu" />
     </file>
     <file name="NodeReferentConstraint_SubstituteMenu.java">
-      <unit at="124,0,127,0" name="jetbrains.mps.lang.constraints.editor.NodeReferentConstraint_SubstituteMenu$CONCEPTS" />
-      <unit at="128,0,131,0" name="jetbrains.mps.lang.constraints.editor.NodeReferentConstraint_SubstituteMenu$LINKS" />
-      <unit at="102,0,123,0" name="jetbrains.mps.lang.constraints.editor.NodeReferentConstraint_SubstituteMenu$SMP_Subconcepts_lmi3tj_b" />
-      <unit at="76,0,101,0" name="jetbrains.mps.lang.constraints.editor.NodeReferentConstraint_SubstituteMenu$SMP_ReferenceScope_lmi3tj_a$Item" />
-      <unit at="53,0,102,0" name="jetbrains.mps.lang.constraints.editor.NodeReferentConstraint_SubstituteMenu$SMP_ReferenceScope_lmi3tj_a" />
-      <unit at="30,0,132,0" name="jetbrains.mps.lang.constraints.editor.NodeReferentConstraint_SubstituteMenu" />
+      <unit at="116,0,119,0" name="jetbrains.mps.lang.constraints.editor.NodeReferentConstraint_SubstituteMenu$CONCEPTS" />
+      <unit at="120,0,123,0" name="jetbrains.mps.lang.constraints.editor.NodeReferentConstraint_SubstituteMenu$LINKS" />
+      <unit at="100,0,115,0" name="jetbrains.mps.lang.constraints.editor.NodeReferentConstraint_SubstituteMenu$SMP_Subconcepts_lmi3tj_b" />
+      <unit at="74,0,99,0" name="jetbrains.mps.lang.constraints.editor.NodeReferentConstraint_SubstituteMenu$SMP_ReferenceScope_lmi3tj_a$Item" />
+      <unit at="52,0,100,0" name="jetbrains.mps.lang.constraints.editor.NodeReferentConstraint_SubstituteMenu$SMP_ReferenceScope_lmi3tj_a" />
+      <unit at="29,0,124,0" name="jetbrains.mps.lang.constraints.editor.NodeReferentConstraint_SubstituteMenu" />
     </file>
     <file name="NodeScopeEval_SubstituteMenu.java">
-      <unit at="90,0,93,0" name="jetbrains.mps.lang.constraints.editor.NodeScopeEval_SubstituteMenu$CONCEPTS" />
-      <unit at="94,0,97,0" name="jetbrains.mps.lang.constraints.editor.NodeScopeEval_SubstituteMenu$LINKS" />
-      <unit at="49,0,68,0" name="jetbrains.mps.lang.constraints.editor.NodeScopeEval_SubstituteMenu$SMP_ReferenceScope_g0uc05_a" />
-      <unit at="68,0,89,0" name="jetbrains.mps.lang.constraints.editor.NodeScopeEval_SubstituteMenu$SMP_Subconcepts_g0uc05_b" />
-      <unit at="26,0,98,0" name="jetbrains.mps.lang.constraints.editor.NodeScopeEval_SubstituteMenu" />
+      <unit at="82,0,85,0" name="jetbrains.mps.lang.constraints.editor.NodeScopeEval_SubstituteMenu$CONCEPTS" />
+      <unit at="86,0,89,0" name="jetbrains.mps.lang.constraints.editor.NodeScopeEval_SubstituteMenu$LINKS" />
+      <unit at="66,0,81,0" name="jetbrains.mps.lang.constraints.editor.NodeScopeEval_SubstituteMenu$SMP_Subconcepts_g0uc05_b" />
+      <unit at="48,0,66,0" name="jetbrains.mps.lang.constraints.editor.NodeScopeEval_SubstituteMenu$SMP_ReferenceScope_g0uc05_a" />
+      <unit at="25,0,90,0" name="jetbrains.mps.lang.constraints.editor.NodeScopeEval_SubstituteMenu" />
     </file>
     <file name="RootScopeEval_SubstituteMenu.java">
-      <unit at="90,0,93,0" name="jetbrains.mps.lang.constraints.editor.RootScopeEval_SubstituteMenu$CONCEPTS" />
-      <unit at="94,0,97,0" name="jetbrains.mps.lang.constraints.editor.RootScopeEval_SubstituteMenu$LINKS" />
-      <unit at="49,0,68,0" name="jetbrains.mps.lang.constraints.editor.RootScopeEval_SubstituteMenu$SMP_ReferenceScope_1dly9h_a" />
-      <unit at="68,0,89,0" name="jetbrains.mps.lang.constraints.editor.RootScopeEval_SubstituteMenu$SMP_Subconcepts_1dly9h_b" />
-      <unit at="26,0,98,0" name="jetbrains.mps.lang.constraints.editor.RootScopeEval_SubstituteMenu" />
+      <unit at="82,0,85,0" name="jetbrains.mps.lang.constraints.editor.RootScopeEval_SubstituteMenu$CONCEPTS" />
+      <unit at="86,0,89,0" name="jetbrains.mps.lang.constraints.editor.RootScopeEval_SubstituteMenu$LINKS" />
+      <unit at="66,0,81,0" name="jetbrains.mps.lang.constraints.editor.RootScopeEval_SubstituteMenu$SMP_Subconcepts_1dly9h_b" />
+      <unit at="48,0,66,0" name="jetbrains.mps.lang.constraints.editor.RootScopeEval_SubstituteMenu$SMP_ReferenceScope_1dly9h_a" />
+      <unit at="25,0,90,0" name="jetbrains.mps.lang.constraints.editor.RootScopeEval_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590308(jetbrains.mps.lang.constraints.editor)/1147468872959">
@@ -5075,58 +5075,32 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c89590308(jetbrains.mps.lang.constraints.editor)/3096203427927295673">
     <file name="NodeScopeFactory_SubstituteMenu.java">
       <node id="3096203427927295673" at="22,118,23,140" concept="6" />
-      <node id="9144763834562426003" at="28,82,29,53" concept="2" />
-      <node id="9144763834562426003" at="29,53,30,278" concept="2" />
-      <node id="9144763834562426003" at="31,13,32,44" concept="7" />
-      <node id="9144763834562426003" at="33,19,34,54" concept="2" />
-      <node id="3096203427927326463" at="42,82,43,53" concept="2" />
-      <node id="3096203427927326463" at="43,53,44,297" concept="2" />
-      <node id="3096203427927326463" at="45,13,46,44" concept="7" />
-      <node id="3096203427927326463" at="47,19,48,54" concept="2" />
-      <node id="3096203427927295673" at="51,66,52,18" concept="7" />
-      <node id="3096203427927295673" at="57,91,58,49" concept="2" />
-      <node id="3096203427927295673" at="58,49,59,252" concept="2" />
-      <node id="3096203427927295673" at="60,9,61,44" concept="7" />
-      <node id="3096203427927295673" at="62,15,63,50" concept="2" />
-      <node id="3096203427927295673" at="69,0,70,0" concept="10" trace="InheritedNodeScopeFactory$r2" />
-      <node id="3096203427927295673" at="70,0,71,0" concept="10" trace="ConstraintFunction_ReferentSearchScope_Scope$UU" />
-      <node id="9144763834562426003" at="30,278,35,9" concept="13" />
-      <node id="3096203427927326463" at="44,297,49,9" concept="13" />
-      <node id="3096203427927295673" at="59,252,64,5" concept="13" />
-      <node id="9144763834562426003" at="26,0,37,0" concept="5" trace="createItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="3096203427927326463" at="40,0,51,0" concept="5" trace="createItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="3096203427927295673" at="55,0,66,0" concept="5" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="9144763834562426003" at="23,140,37,47" concept="2" />
-      <node id="3096203427927326463" at="37,47,51,66" concept="2" />
-      <node id="3096203427927295673" at="20,0,54,0" concept="5" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <scope id="9144763834562426003" at="31,13,32,44" />
-      <scope id="9144763834562426003" at="33,19,34,54" />
-      <scope id="3096203427927326463" at="45,13,46,44" />
-      <scope id="3096203427927326463" at="47,19,48,54" />
-      <scope id="3096203427927295673" at="60,9,61,44" />
-      <scope id="3096203427927295673" at="62,15,63,50" />
-      <scope id="9144763834562426003" at="28,82,35,9" />
-      <scope id="3096203427927326463" at="42,82,49,9" />
-      <scope id="3096203427927295673" at="57,91,64,5" />
-      <scope id="9144763834562426003" at="26,0,37,0">
-        <var name="context" id="9144763834562426003" />
-      </scope>
-      <scope id="3096203427927326463" at="40,0,51,0">
-        <var name="context" id="3096203427927326463" />
-      </scope>
-      <scope id="3096203427927295673" at="55,0,66,0">
-        <var name="context" id="3096203427927295673" />
-      </scope>
-      <scope id="3096203427927295673" at="22,118,52,18">
+      <node id="9144763834562426003" at="23,140,24,410" concept="2" />
+      <node id="3096203427927326463" at="24,410,25,467" concept="2" />
+      <node id="3096203427927295673" at="25,467,26,18" concept="7" />
+      <node id="3096203427927295673" at="31,91,32,49" concept="2" />
+      <node id="3096203427927295673" at="32,49,33,252" concept="2" />
+      <node id="3096203427927295673" at="34,9,35,44" concept="7" />
+      <node id="3096203427927295673" at="36,15,37,50" concept="2" />
+      <node id="3096203427927295673" at="43,0,44,0" concept="10" trace="InheritedNodeScopeFactory$r2" />
+      <node id="3096203427927295673" at="44,0,45,0" concept="10" trace="ConstraintFunction_ReferentSearchScope_Scope$UU" />
+      <node id="3096203427927295673" at="33,252,38,5" concept="13" />
+      <node id="3096203427927295673" at="20,0,28,0" concept="5" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <node id="3096203427927295673" at="29,0,40,0" concept="5" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <scope id="3096203427927295673" at="34,9,35,44" />
+      <scope id="3096203427927295673" at="36,15,37,50" />
+      <scope id="3096203427927295673" at="22,118,26,18">
         <var name="result" id="3096203427927295673" />
       </scope>
-      <scope id="3096203427927295673" at="20,0,54,0">
+      <scope id="3096203427927295673" at="31,91,38,5" />
+      <scope id="3096203427927295673" at="20,0,28,0">
         <var name="_context" id="3096203427927295673" />
       </scope>
-      <unit id="3096203427927295673" at="68,0,72,0" name="jetbrains.mps.lang.constraints.editor.NodeScopeFactory_SubstituteMenu$CONCEPTS" />
-      <unit id="9144763834562426003" at="24,71,37,5" name="jetbrains.mps.lang.constraints.editor.NodeScopeFactory_SubstituteMenu$1" />
-      <unit id="3096203427927326463" at="38,71,51,5" name="jetbrains.mps.lang.constraints.editor.NodeScopeFactory_SubstituteMenu$2" />
-      <unit id="3096203427927295673" at="19,0,73,0" name="jetbrains.mps.lang.constraints.editor.NodeScopeFactory_SubstituteMenu" />
+      <scope id="3096203427927295673" at="29,0,40,0">
+        <var name="context" id="3096203427927295673" />
+      </scope>
+      <unit id="3096203427927295673" at="42,0,46,0" name="jetbrains.mps.lang.constraints.editor.NodeScopeFactory_SubstituteMenu$CONCEPTS" />
+      <unit id="3096203427927295673" at="19,0,47,0" name="jetbrains.mps.lang.constraints.editor.NodeScopeFactory_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590308(jetbrains.mps.lang.constraints.editor)/3472508185628783185">

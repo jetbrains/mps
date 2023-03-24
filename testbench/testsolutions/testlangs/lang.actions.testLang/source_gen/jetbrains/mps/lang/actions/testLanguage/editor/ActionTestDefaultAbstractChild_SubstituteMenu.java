@@ -24,7 +24,6 @@ import jetbrains.mps.lang.editor.menus.substitute.NamedSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
-import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -185,19 +184,13 @@ public class ActionTestDefaultAbstractChild_SubstituteMenu extends SubstituteMen
         return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Subconcepts_c1nwm3_a3a());
       }
       public class SMP_Subconcepts_c1nwm3_a3a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
-        protected Collection getConcepts(final SubstituteMenuContext _context) {
-          return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ActionTestDefaultAbstractChild$$e);
+        public SMP_Subconcepts_c1nwm3_a3a() {
+          super(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "ActionTestDefaultAbstractChild", new SNodePointer("r:6f930e62-d183-4ca9-a17e-cab70bc506c7(jetbrains.mps.lang.actions.testLanguage.editor)", "1741258697587039707")));
         }
-        @NotNull
+
         @Override
-        public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-          context.getEditorMenuTrace().pushTraceInfo();
-          context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "ActionTestDefaultAbstractChild", new SNodePointer("r:6f930e62-d183-4ca9-a17e-cab70bc506c7(jetbrains.mps.lang.actions.testLanguage.editor)", "1741258697587039707")));
-          try {
-            return super.createItems(context);
-          } finally {
-            context.getEditorMenuTrace().popTraceInfo();
-          }
+        protected Collection<SAbstractConcept> getConcepts(final SubstituteMenuContext _context) {
+          return getDirectDescendants(_context, CONCEPTS.ActionTestDefaultAbstractChild$$e);
         }
 
         @Override

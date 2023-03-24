@@ -13,7 +13,6 @@ import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstitute
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -43,8 +42,7 @@ public class TestSubstituteSmartRef_Interface_SubstituteMenu extends SubstituteM
   public class SMP_ReferenceScope_l5co44_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_l5co44_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051
-      super((SAbstractConcept) CONCEPTS.TestSubstituteSmartRef_Interface$hJ, LINKS.childToReference$SdgS);
+      super(CONCEPTS.TestSubstituteSmartRef_Interface$hJ, LINKS.childToReference$SdgS);
     }
     @NotNull
     @Override

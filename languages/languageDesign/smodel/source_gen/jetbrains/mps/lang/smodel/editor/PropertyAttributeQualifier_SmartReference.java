@@ -13,10 +13,10 @@ import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstitute
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuItem;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.lang.structure.behavior.AttributeDesignTimeOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -47,8 +47,7 @@ public class PropertyAttributeQualifier_SmartReference extends SubstituteMenuBas
   public class SMP_ReferenceScope_b4lfv3_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_b4lfv3_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051
-      super((SAbstractConcept) CONCEPTS.PropertyAttributeQualifier$q9, LINKS.attributeConcept$B5m0);
+      super(CONCEPTS.PropertyAttributeQualifier$q9, LINKS.attributeConcept$B5m0);
     }
     @NotNull
     @Override

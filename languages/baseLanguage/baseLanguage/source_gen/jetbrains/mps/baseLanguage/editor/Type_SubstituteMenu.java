@@ -37,7 +37,6 @@ import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
-import jetbrains.mps.smodel.ConceptDescendantsCache;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.stream.Collectors;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
@@ -426,22 +425,16 @@ public class Type_SubstituteMenu extends SubstituteMenuBase {
         }
       }
       public class SMP_Subconcepts_mqq6an_b1a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
-        protected Collection getConcepts(final SubstituteMenuContext _context) {
-          return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.Type$bu).stream().filter((SAbstractConcept concept) -> filterConcept(_context, concept)).collect(Collectors.toList());
+        public SMP_Subconcepts_mqq6an_b1a() {
+          super(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "Type", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586964742")));
+        }
+
+        @Override
+        protected Collection<SAbstractConcept> getConcepts(final SubstituteMenuContext _context) {
+          return getDirectDescendants(_context, CONCEPTS.Type$bu).stream().filter((SAbstractConcept concept) -> filterConcept(_context, concept)).collect(Collectors.toList());
         }
         private boolean filterConcept(SubstituteMenuContext _context, SAbstractConcept concept) {
           return (boolean) Type__BehaviorDescriptor.isValueType_id4bFkYVCcmm2.invoke(SNodeOperations.asSConcept(SNodeOperations.castConcept(concept, CONCEPTS.Type$bu))) || SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.IGenericType$13) || (SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.ClassCreator$ZG) && Objects.equals(_context.getLink(), LINKS.typeParameter$uYiw));
-        }
-        @NotNull
-        @Override
-        public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-          context.getEditorMenuTrace().pushTraceInfo();
-          context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "Type", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586964742")));
-          try {
-            return super.createItems(context);
-          } finally {
-            context.getEditorMenuTrace().popTraceInfo();
-          }
         }
 
         @Override

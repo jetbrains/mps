@@ -435,43 +435,37 @@
       <node id="2660922206084153591" at="64,51,65,225" concept="1" />
       <node id="2660922206084153591" at="66,11,67,42" concept="6" />
       <node id="2660922206084153591" at="68,17,69,52" concept="1" />
-      <node id="1741258697586930337" at="79,84,80,55" concept="1" />
-      <node id="1741258697586930337" at="80,55,81,271" concept="1" />
-      <node id="1741258697586930337" at="82,15,83,46" concept="6" />
-      <node id="1741258697586930337" at="84,21,85,56" concept="1" />
-      <node id="1926293835606285046" at="91,65,92,30" concept="5" />
-      <node id="1926293835606285046" at="92,30,93,219" concept="5" />
-      <node id="1926293835606285046" at="93,219,94,34" concept="1" />
-      <node id="1926293835606285046" at="94,34,95,24" concept="6" />
-      <node id="1741258697586930332" at="99,0,100,0" concept="8" trace="DotExpression$yW" />
-      <node id="1741258697586930332" at="100,0,101,0" concept="8" trace="SequenceType$_s" />
-      <node id="1741258697586930332" at="101,0,102,0" concept="8" trace="RefactorOperation$hX" />
-      <node id="1741258697586930332" at="105,0,106,0" concept="8" trace="operand$w6IR" />
-      <node id="1741258697586930332" at="106,0,107,0" concept="8" trace="elementType$KpjL" />
+      <node id="2660922206084153591" at="74,84,75,450" concept="6" />
+      <node id="1926293835606285046" at="78,65,79,30" concept="5" />
+      <node id="1926293835606285046" at="79,30,80,219" concept="5" />
+      <node id="1926293835606285046" at="80,219,81,34" concept="1" />
+      <node id="1926293835606285046" at="81,34,82,24" concept="6" />
+      <node id="1741258697586930332" at="86,0,87,0" concept="8" trace="DotExpression$yW" />
+      <node id="1741258697586930332" at="87,0,88,0" concept="8" trace="SequenceType$_s" />
+      <node id="1741258697586930332" at="88,0,89,0" concept="8" trace="RefactorOperation$hX" />
+      <node id="1741258697586930332" at="92,0,93,0" concept="8" trace="operand$w6IR" />
+      <node id="1741258697586930332" at="93,0,94,0" concept="8" trace="elementType$KpjL" />
       <node id="1926293835606259868" at="54,164,57,9" concept="3" />
+      <node id="2660922206084153591" at="73,0,77,0" concept="4" trace="getParts#()Ljava/util/List;" />
       <node id="1741258697586930332" at="40,252,45,5" concept="11" />
       <node id="2660922206084153591" at="65,225,70,7" concept="11" />
-      <node id="1741258697586930337" at="81,271,86,11" concept="11" />
-      <node id="1926293835606285046" at="91,0,97,0" concept="9" trace="_quotation_createNode_wjsnk9_b0a2a0a0a#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="1926293835606285046" at="78,0,84,0" concept="9" trace="_quotation_createNode_wjsnk9_b0a2a0a0a#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1741258697586930332" at="28,0,35,0" concept="4" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
       <node id="1926293835606179774" at="51,68,58,7" concept="3" />
       <node id="1741258697586930332" at="36,0,47,0" concept="4" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
       <node id="2660922206084153591" at="50,0,61,0" concept="4" trace="isApplicable#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Z" />
       <node id="2660922206084153591" at="61,0,72,0" concept="4" trace="createItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="1741258697586930337" at="77,0,88,0" concept="4" trace="createItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="2660922206084153591" at="74,84,88,41" concept="6" />
-      <node id="2660922206084153591" at="73,0,90,0" concept="4" trace="getParts#()Ljava/util/List;" />
       <scope id="1741258697586930332" at="41,9,42,44" />
       <scope id="1741258697586930332" at="43,15,44,50" />
       <scope id="1926293835606259871" at="55,167,56,22" />
       <scope id="2660922206084153591" at="66,11,67,42" />
       <scope id="2660922206084153591" at="68,17,69,52" />
-      <scope id="1741258697586930337" at="82,15,83,46" />
-      <scope id="1741258697586930337" at="84,21,85,56" />
+      <scope id="2660922206084153591" at="74,84,75,450" />
       <scope id="1741258697586930332" at="30,118,33,18">
         <var name="result" id="1741258697586930332" />
       </scope>
-      <scope id="1926293835606285046" at="91,65,95,24">
+      <scope id="2660922206084153591" at="73,0,77,0" />
+      <scope id="1926293835606285046" at="78,65,82,24">
         <var name="nb" id="1926293835606285046" />
         <var name="quotedNode_1" id="1926293835606285046" />
       </scope>
@@ -479,13 +473,12 @@
         <var name="operand" id="1926293835606250100" />
         <var name="sequenceType" id="3097693430729611823" />
       </scope>
-      <scope id="1926293835606285046" at="91,0,97,0" />
+      <scope id="1926293835606285046" at="78,0,84,0" />
       <scope id="1741258697586930332" at="28,0,35,0">
         <var name="_context" id="1741258697586930332" />
       </scope>
       <scope id="1741258697586930332" at="38,91,45,5" />
       <scope id="2660922206084153591" at="63,89,70,7" />
-      <scope id="1741258697586930337" at="79,84,86,11" />
       <scope id="2660922206084153653" at="51,68,59,19" />
       <scope id="1741258697586930332" at="36,0,47,0">
         <var name="context" id="1741258697586930332" />
@@ -496,16 +489,10 @@
       <scope id="2660922206084153591" at="61,0,72,0">
         <var name="context" id="2660922206084153591" />
       </scope>
-      <scope id="1741258697586930337" at="77,0,88,0">
-        <var name="context" id="1741258697586930337" />
-      </scope>
-      <scope id="2660922206084153591" at="74,84,88,41" />
-      <scope id="2660922206084153591" at="73,0,90,0" />
-      <unit id="1741258697586930332" at="104,0,108,0" name="jetbrains.mps.console.scripts.editor.RefactorOperation_SubstituteMenu$LINKS" />
-      <unit id="1741258697586930332" at="98,0,103,0" name="jetbrains.mps.console.scripts.editor.RefactorOperation_SubstituteMenu$CONCEPTS" />
-      <unit id="1741258697586930337" at="75,136,88,7" name="jetbrains.mps.console.scripts.editor.RefactorOperation_SubstituteMenu$SMP_Group_wjsnk9_a$1" />
-      <unit id="2660922206084153591" at="49,0,91,0" name="jetbrains.mps.console.scripts.editor.RefactorOperation_SubstituteMenu$SMP_Group_wjsnk9_a" />
-      <unit id="1741258697586930332" at="27,0,109,0" name="jetbrains.mps.console.scripts.editor.RefactorOperation_SubstituteMenu" />
+      <unit id="1741258697586930332" at="91,0,95,0" name="jetbrains.mps.console.scripts.editor.RefactorOperation_SubstituteMenu$LINKS" />
+      <unit id="1741258697586930332" at="85,0,90,0" name="jetbrains.mps.console.scripts.editor.RefactorOperation_SubstituteMenu$CONCEPTS" />
+      <unit id="2660922206084153591" at="49,0,78,0" name="jetbrains.mps.console.scripts.editor.RefactorOperation_SubstituteMenu$SMP_Group_wjsnk9_a" />
+      <unit id="1741258697586930332" at="27,0,96,0" name="jetbrains.mps.console.scripts.editor.RefactorOperation_SubstituteMenu" />
     </file>
   </root>
 </debug-info>

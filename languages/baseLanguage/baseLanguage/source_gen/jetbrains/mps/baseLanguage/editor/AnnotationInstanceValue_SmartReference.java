@@ -13,7 +13,6 @@ import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstitute
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -43,8 +42,7 @@ public class AnnotationInstanceValue_SmartReference extends SubstituteMenuBase {
   public class SMP_ReferenceScope_lyrsmi_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_lyrsmi_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051
-      super((SAbstractConcept) CONCEPTS.AnnotationInstanceValue$T7, LINKS.key$bSmV);
+      super(CONCEPTS.AnnotationInstanceValue$T7, LINKS.key$bSmV);
     }
     @NotNull
     @Override

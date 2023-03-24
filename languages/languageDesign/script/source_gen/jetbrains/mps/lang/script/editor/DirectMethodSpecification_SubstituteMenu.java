@@ -13,10 +13,9 @@ import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstitute
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
-import jetbrains.mps.smodel.ConceptDescendantsCache;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -49,8 +48,7 @@ public class DirectMethodSpecification_SubstituteMenu extends SubstituteMenuBase
   public class SMP_ReferenceScope_be9igf_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_be9igf_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051
-      super((SAbstractConcept) CONCEPTS.DirectMethodSpecification$xq, LINKS.methodDeclaration$e4PM);
+      super(CONCEPTS.DirectMethodSpecification$xq, LINKS.methodDeclaration$e4PM);
     }
     @NotNull
     @Override
@@ -66,19 +64,13 @@ public class DirectMethodSpecification_SubstituteMenu extends SubstituteMenuBase
 
   }
   public class SMP_Subconcepts_be9igf_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
-    protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.DirectMethodSpecification$xq);
+    public SMP_Subconcepts_be9igf_b() {
+      super(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "DirectMethodSpecification", null));
     }
-    @NotNull
+
     @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "DirectMethodSpecification", null));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
+    protected Collection<SAbstractConcept> getConcepts(final SubstituteMenuContext _context) {
+      return getDirectDescendants(_context, CONCEPTS.DirectMethodSpecification$xq);
     }
 
     @Override

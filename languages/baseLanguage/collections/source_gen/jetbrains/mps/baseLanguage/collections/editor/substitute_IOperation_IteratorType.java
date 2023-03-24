@@ -76,6 +76,9 @@ public class substitute_IOperation_IteratorType extends SubstituteMenuBase {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_y5n1eq_a0(), CONCEPTS.IOperation$ga));
     }
     public class SMP_Concepts_y5n1eq_a0 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
+      public SMP_Concepts_y5n1eq_a0() {
+        super(new EditorMenuDescriptorBase("simple actions for the list of concepts", new SNodePointer("r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)", "1741258697586932839")));
+      }
       protected Collection getConcepts(SubstituteMenuContext _context) {
         return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.AbstractEnumeratorOperation$fY, _context.getModel())).where(new IWhereFilter<SConcept>() {
           public boolean accept(SConcept it) {
@@ -88,32 +91,9 @@ public class substitute_IOperation_IteratorType extends SubstituteMenuBase {
         }).toListSequence();
       }
 
-      @NotNull
-      @Override
-      public List<SubstituteMenuItem> createItems(SubstituteMenuContext _context) {
-        _context.getEditorMenuTrace().pushTraceInfo();
-        _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("simple actions for the list of concepts", new SNodePointer("r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)", "1741258697586932839")));
-        try {
-          return super.createItems(_context);
-        } finally {
-          _context.getEditorMenuTrace().popTraceInfo();
-        }
-      }
       @Override
       protected Collection<SubstituteMenuItem> createItemsForConcept(final SubstituteMenuContext _context, final SAbstractConcept concept) {
-        return new SimpleConceptSubstituteMenuPart(concept) {
-          @NotNull
-          @Override
-          public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-            context.getEditorMenuTrace().pushTraceInfo();
-            context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("simple action for concept: " + concept.getName(), null));
-            try {
-              return super.createItems(context);
-            } finally {
-              context.getEditorMenuTrace().popTraceInfo();
-            }
-          }
-        }.createItems(_context);
+        return new SimpleConceptSubstituteMenuPart(concept, new EditorMenuDescriptorBase("simple action for concept: " + concept.getName(), null)).createItems(_context);
       }
     }
   }
@@ -139,6 +119,9 @@ public class substitute_IOperation_IteratorType extends SubstituteMenuBase {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_y5n1eq_a1(), CONCEPTS.IOperation$ga));
     }
     public class SMP_Concepts_y5n1eq_a1 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
+      public SMP_Concepts_y5n1eq_a1() {
+        super(new EditorMenuDescriptorBase("simple actions for the list of concepts", new SNodePointer("r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)", "1741258697586932963")));
+      }
       protected Collection getConcepts(SubstituteMenuContext _context) {
         return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.AbstractIteratorOperation$qN, _context.getModel())).where(new IWhereFilter<SConcept>() {
           public boolean accept(SConcept it) {
@@ -151,32 +134,9 @@ public class substitute_IOperation_IteratorType extends SubstituteMenuBase {
         }).toListSequence();
       }
 
-      @NotNull
-      @Override
-      public List<SubstituteMenuItem> createItems(SubstituteMenuContext _context) {
-        _context.getEditorMenuTrace().pushTraceInfo();
-        _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("simple actions for the list of concepts", new SNodePointer("r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)", "1741258697586932963")));
-        try {
-          return super.createItems(_context);
-        } finally {
-          _context.getEditorMenuTrace().popTraceInfo();
-        }
-      }
       @Override
       protected Collection<SubstituteMenuItem> createItemsForConcept(final SubstituteMenuContext _context, final SAbstractConcept concept) {
-        return new SimpleConceptSubstituteMenuPart(concept) {
-          @NotNull
-          @Override
-          public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-            context.getEditorMenuTrace().pushTraceInfo();
-            context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("simple action for concept: " + concept.getName(), null));
-            try {
-              return super.createItems(context);
-            } finally {
-              context.getEditorMenuTrace().popTraceInfo();
-            }
-          }
-        }.createItems(_context);
+        return new SimpleConceptSubstituteMenuPart(concept, new EditorMenuDescriptorBase("simple action for concept: " + concept.getName(), null)).createItems(_context);
       }
     }
   }
@@ -199,20 +159,7 @@ public class substitute_IOperation_IteratorType extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.RemoveOperation$f8) {
-
-        @NotNull
-        @Override
-        public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-          context.getEditorMenuTrace().pushTraceInfo();
-          context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "RemoveOperation", new SNodePointer("r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)", "1741258697586933087")));
-          try {
-            return super.createItems(context);
-          } finally {
-            context.getEditorMenuTrace().popTraceInfo();
-          }
-        }
-      }, CONCEPTS.RemoveOperation$f8));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.RemoveOperation$f8, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "RemoveOperation", new SNodePointer("r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)", "1741258697586933087"))), CONCEPTS.RemoveOperation$f8));
     }
   }
 

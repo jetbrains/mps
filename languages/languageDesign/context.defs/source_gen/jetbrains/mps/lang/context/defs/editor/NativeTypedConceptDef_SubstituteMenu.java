@@ -13,10 +13,10 @@ import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstitute
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuItem;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -48,8 +48,7 @@ public class NativeTypedConceptDef_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_axz9qc_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_axz9qc_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051
-      super((SAbstractConcept) CONCEPTS.NativeTypedConceptDef$vC, LINKS.conceptParameter$2AL);
+      super(CONCEPTS.NativeTypedConceptDef$vC, LINKS.conceptParameter$2AL);
     }
     @NotNull
     @Override

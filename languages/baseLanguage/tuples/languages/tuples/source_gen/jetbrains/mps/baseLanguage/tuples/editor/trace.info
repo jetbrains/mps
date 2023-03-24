@@ -21,26 +21,26 @@
       <unit at="17,0,89,0" name="jetbrains.mps.baseLanguage.tuples.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="NamedTupleComponentAccessOperation_SubstituteMenu.java">
-      <unit at="90,0,93,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleComponentAccessOperation_SubstituteMenu$CONCEPTS" />
-      <unit at="94,0,97,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleComponentAccessOperation_SubstituteMenu$LINKS" />
-      <unit at="49,0,68,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleComponentAccessOperation_SubstituteMenu$SMP_ReferenceScope_8ybxd_a" />
-      <unit at="68,0,89,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleComponentAccessOperation_SubstituteMenu$SMP_Subconcepts_8ybxd_b" />
-      <unit at="26,0,98,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleComponentAccessOperation_SubstituteMenu" />
+      <unit at="82,0,85,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleComponentAccessOperation_SubstituteMenu$CONCEPTS" />
+      <unit at="86,0,89,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleComponentAccessOperation_SubstituteMenu$LINKS" />
+      <unit at="66,0,81,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleComponentAccessOperation_SubstituteMenu$SMP_Subconcepts_8ybxd_b" />
+      <unit at="48,0,66,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleComponentAccessOperation_SubstituteMenu$SMP_ReferenceScope_8ybxd_a" />
+      <unit at="25,0,90,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleComponentAccessOperation_SubstituteMenu" />
     </file>
     <file name="NamedTupleComponentReference_SubstituteMenu.java">
-      <unit at="90,0,93,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleComponentReference_SubstituteMenu$CONCEPTS" />
-      <unit at="94,0,97,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleComponentReference_SubstituteMenu$LINKS" />
-      <unit at="49,0,68,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleComponentReference_SubstituteMenu$SMP_ReferenceScope_1dtstp_a" />
-      <unit at="68,0,89,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleComponentReference_SubstituteMenu$SMP_Subconcepts_1dtstp_b" />
-      <unit at="26,0,98,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleComponentReference_SubstituteMenu" />
+      <unit at="82,0,85,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleComponentReference_SubstituteMenu$CONCEPTS" />
+      <unit at="86,0,89,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleComponentReference_SubstituteMenu$LINKS" />
+      <unit at="66,0,81,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleComponentReference_SubstituteMenu$SMP_Subconcepts_1dtstp_b" />
+      <unit at="48,0,66,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleComponentReference_SubstituteMenu$SMP_ReferenceScope_1dtstp_a" />
+      <unit at="25,0,90,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleComponentReference_SubstituteMenu" />
     </file>
     <file name="NamedTupleLiteral_SubstituteMenu.java">
-      <unit at="124,0,127,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleLiteral_SubstituteMenu$CONCEPTS" />
-      <unit at="128,0,131,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleLiteral_SubstituteMenu$LINKS" />
-      <unit at="102,0,123,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleLiteral_SubstituteMenu$SMP_Subconcepts_k8v7cc_b" />
-      <unit at="76,0,101,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleLiteral_SubstituteMenu$SMP_ReferenceScope_k8v7cc_a$Item" />
-      <unit at="53,0,102,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleLiteral_SubstituteMenu$SMP_ReferenceScope_k8v7cc_a" />
-      <unit at="30,0,132,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleLiteral_SubstituteMenu" />
+      <unit at="116,0,119,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleLiteral_SubstituteMenu$CONCEPTS" />
+      <unit at="120,0,123,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleLiteral_SubstituteMenu$LINKS" />
+      <unit at="100,0,115,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleLiteral_SubstituteMenu$SMP_Subconcepts_k8v7cc_b" />
+      <unit at="74,0,99,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleLiteral_SubstituteMenu$SMP_ReferenceScope_k8v7cc_a$Item" />
+      <unit at="52,0,100,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleLiteral_SubstituteMenu$SMP_ReferenceScope_k8v7cc_a" />
+      <unit at="29,0,124,0" name="jetbrains.mps.baseLanguage.tuples.editor.NamedTupleLiteral_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:a841fea4-52c0-4064-96f2-7687a509aba5(jetbrains.mps.baseLanguage.tuples.editor)/1238852221639">

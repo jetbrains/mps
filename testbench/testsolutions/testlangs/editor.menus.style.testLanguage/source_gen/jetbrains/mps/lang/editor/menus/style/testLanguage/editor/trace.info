@@ -3202,58 +3202,32 @@
   <root nodeRef="r:83d73286-80a4-4a12-bc9a-3d442d5242fa(jetbrains.mps.lang.editor.menus.style.testLanguage.editor)/5310043668062444230">
     <file name="TestCompletionCustomization_ChildSimpleSubstituteMenu_SubstituteMenu.java">
       <node id="5310043668062444230" at="22,118,23,140" concept="7" />
-      <node id="5310043668062444231" at="28,82,29,53" concept="2" />
-      <node id="5310043668062444231" at="29,53,30,316" concept="2" />
-      <node id="5310043668062444231" at="31,13,32,44" concept="8" />
-      <node id="5310043668062444231" at="33,19,34,54" concept="2" />
-      <node id="5310043668062444233" at="42,82,43,53" concept="2" />
-      <node id="5310043668062444233" at="43,53,44,318" concept="2" />
-      <node id="5310043668062444233" at="45,13,46,44" concept="8" />
-      <node id="5310043668062444233" at="47,19,48,54" concept="2" />
-      <node id="5310043668062444230" at="51,67,52,18" concept="8" />
-      <node id="5310043668062444230" at="57,91,58,49" concept="2" />
-      <node id="5310043668062444230" at="58,49,59,309" concept="2" />
-      <node id="5310043668062444230" at="60,9,61,44" concept="8" />
-      <node id="5310043668062444230" at="62,15,63,50" concept="2" />
-      <node id="5310043668062444230" at="69,0,70,0" concept="10" trace="TestCompletionCustomization_ChildNoPriority$uM" />
-      <node id="5310043668062444230" at="70,0,71,0" concept="10" trace="TestCompletionCustomization_ChildWithPriority$vh" />
-      <node id="5310043668062444231" at="30,316,35,9" concept="12" />
-      <node id="5310043668062444233" at="44,318,49,9" concept="12" />
-      <node id="5310043668062444230" at="59,309,64,5" concept="12" />
-      <node id="5310043668062444231" at="26,0,37,0" concept="6" trace="createItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="5310043668062444233" at="40,0,51,0" concept="6" trace="createItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="5310043668062444230" at="55,0,66,0" concept="6" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <node id="5310043668062444231" at="23,140,37,65" concept="2" />
-      <node id="5310043668062444233" at="37,65,51,67" concept="2" />
-      <node id="5310043668062444230" at="20,0,54,0" concept="6" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
-      <scope id="5310043668062444231" at="31,13,32,44" />
-      <scope id="5310043668062444231" at="33,19,34,54" />
-      <scope id="5310043668062444233" at="45,13,46,44" />
-      <scope id="5310043668062444233" at="47,19,48,54" />
-      <scope id="5310043668062444230" at="60,9,61,44" />
-      <scope id="5310043668062444230" at="62,15,63,50" />
-      <scope id="5310043668062444231" at="28,82,35,9" />
-      <scope id="5310043668062444233" at="42,82,49,9" />
-      <scope id="5310043668062444230" at="57,91,64,5" />
-      <scope id="5310043668062444231" at="26,0,37,0">
-        <var name="context" id="5310043668062444231" />
-      </scope>
-      <scope id="5310043668062444233" at="40,0,51,0">
-        <var name="context" id="5310043668062444233" />
-      </scope>
-      <scope id="5310043668062444230" at="55,0,66,0">
-        <var name="context" id="5310043668062444230" />
-      </scope>
-      <scope id="5310043668062444230" at="22,118,52,18">
+      <node id="5310043668062444231" at="23,140,24,484" concept="2" />
+      <node id="5310043668062444233" at="24,484,25,490" concept="2" />
+      <node id="5310043668062444230" at="25,490,26,18" concept="8" />
+      <node id="5310043668062444230" at="31,91,32,49" concept="2" />
+      <node id="5310043668062444230" at="32,49,33,309" concept="2" />
+      <node id="5310043668062444230" at="34,9,35,44" concept="8" />
+      <node id="5310043668062444230" at="36,15,37,50" concept="2" />
+      <node id="5310043668062444230" at="43,0,44,0" concept="10" trace="TestCompletionCustomization_ChildNoPriority$uM" />
+      <node id="5310043668062444230" at="44,0,45,0" concept="10" trace="TestCompletionCustomization_ChildWithPriority$vh" />
+      <node id="5310043668062444230" at="33,309,38,5" concept="12" />
+      <node id="5310043668062444230" at="20,0,28,0" concept="6" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <node id="5310043668062444230" at="29,0,40,0" concept="6" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <scope id="5310043668062444230" at="34,9,35,44" />
+      <scope id="5310043668062444230" at="36,15,37,50" />
+      <scope id="5310043668062444230" at="22,118,26,18">
         <var name="result" id="5310043668062444230" />
       </scope>
-      <scope id="5310043668062444230" at="20,0,54,0">
+      <scope id="5310043668062444230" at="31,91,38,5" />
+      <scope id="5310043668062444230" at="20,0,28,0">
         <var name="_context" id="5310043668062444230" />
       </scope>
-      <unit id="5310043668062444230" at="68,0,72,0" name="jetbrains.mps.lang.editor.menus.style.testLanguage.editor.TestCompletionCustomization_ChildSimpleSubstituteMenu_SubstituteMenu$CONCEPTS" />
-      <unit id="5310043668062444231" at="24,71,37,5" name="jetbrains.mps.lang.editor.menus.style.testLanguage.editor.TestCompletionCustomization_ChildSimpleSubstituteMenu_SubstituteMenu$1" />
-      <unit id="5310043668062444233" at="38,71,51,5" name="jetbrains.mps.lang.editor.menus.style.testLanguage.editor.TestCompletionCustomization_ChildSimpleSubstituteMenu_SubstituteMenu$2" />
-      <unit id="5310043668062444230" at="19,0,73,0" name="jetbrains.mps.lang.editor.menus.style.testLanguage.editor.TestCompletionCustomization_ChildSimpleSubstituteMenu_SubstituteMenu" />
+      <scope id="5310043668062444230" at="29,0,40,0">
+        <var name="context" id="5310043668062444230" />
+      </scope>
+      <unit id="5310043668062444230" at="42,0,46,0" name="jetbrains.mps.lang.editor.menus.style.testLanguage.editor.TestCompletionCustomization_ChildSimpleSubstituteMenu_SubstituteMenu$CONCEPTS" />
+      <unit id="5310043668062444230" at="19,0,47,0" name="jetbrains.mps.lang.editor.menus.style.testLanguage.editor.TestCompletionCustomization_ChildSimpleSubstituteMenu_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:83d73286-80a4-4a12-bc9a-3d442d5242fa(jetbrains.mps.lang.editor.menus.style.testLanguage.editor)/5310043668062994179">

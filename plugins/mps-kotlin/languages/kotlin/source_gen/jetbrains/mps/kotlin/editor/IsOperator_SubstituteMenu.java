@@ -70,20 +70,7 @@ public class IsOperator_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.IsOperator$V0) {
-
-        @NotNull
-        @Override
-        public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-          context.getEditorMenuTrace().pushTraceInfo();
-          context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "IsOperator", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "5533310174486372954")));
-          try {
-            return super.createItems(context);
-          } finally {
-            context.getEditorMenuTrace().popTraceInfo();
-          }
-        }
-      }, CONCEPTS.IsOperator$V0), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_5fo1j9_b0(), CONCEPTS.IsOperator$V0));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.IsOperator$V0, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "IsOperator", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "5533310174486372954"))), CONCEPTS.IsOperator$V0), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_5fo1j9_b0(), CONCEPTS.IsOperator$V0));
     }
     private class SMP_Action_5fo1j9_b0 extends SingleItemSubstituteMenuPart {
 

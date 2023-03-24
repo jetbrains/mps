@@ -14,7 +14,6 @@ import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
-import jetbrains.mps.smodel.ConceptDescendantsCache;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
@@ -62,19 +61,13 @@ public class NodeBuilderInitLink_Menu extends SubstituteMenuBase {
 
 
   public class SMP_Subconcepts_5gak4t_a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
-    protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.NodeBuilderInitLinkValue$_E);
+    public SMP_Subconcepts_5gak4t_a() {
+      super(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "NodeBuilderInitLinkValue", new SNodePointer("r:00000000-0000-4000-0000-011c89590349(jetbrains.mps.lang.quotation.editor)", "2595803291919081139")));
     }
-    @NotNull
+
     @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "NodeBuilderInitLinkValue", new SNodePointer("r:00000000-0000-4000-0000-011c89590349(jetbrains.mps.lang.quotation.editor)", "2595803291919081139")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
+    protected Collection<SAbstractConcept> getConcepts(final SubstituteMenuContext _context) {
+      return getDirectDescendants(_context, CONCEPTS.NodeBuilderInitLinkValue$_E);
     }
 
     @Override

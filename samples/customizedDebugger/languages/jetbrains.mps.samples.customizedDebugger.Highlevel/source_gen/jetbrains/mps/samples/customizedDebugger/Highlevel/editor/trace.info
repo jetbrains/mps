@@ -16,11 +16,11 @@
       <unit at="16,0,48,0" name="jetbrains.mps.samples.customizedDebugger.Highlevel.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="Message_SubstituteMenu.java">
-      <unit at="90,0,93,0" name="jetbrains.mps.samples.customizedDebugger.Highlevel.editor.Message_SubstituteMenu$CONCEPTS" />
-      <unit at="94,0,97,0" name="jetbrains.mps.samples.customizedDebugger.Highlevel.editor.Message_SubstituteMenu$LINKS" />
-      <unit at="49,0,68,0" name="jetbrains.mps.samples.customizedDebugger.Highlevel.editor.Message_SubstituteMenu$SMP_ReferenceScope_r7tf0o_a" />
-      <unit at="68,0,89,0" name="jetbrains.mps.samples.customizedDebugger.Highlevel.editor.Message_SubstituteMenu$SMP_Subconcepts_r7tf0o_b" />
-      <unit at="26,0,98,0" name="jetbrains.mps.samples.customizedDebugger.Highlevel.editor.Message_SubstituteMenu" />
+      <unit at="82,0,85,0" name="jetbrains.mps.samples.customizedDebugger.Highlevel.editor.Message_SubstituteMenu$CONCEPTS" />
+      <unit at="86,0,89,0" name="jetbrains.mps.samples.customizedDebugger.Highlevel.editor.Message_SubstituteMenu$LINKS" />
+      <unit at="66,0,81,0" name="jetbrains.mps.samples.customizedDebugger.Highlevel.editor.Message_SubstituteMenu$SMP_Subconcepts_r7tf0o_b" />
+      <unit at="48,0,66,0" name="jetbrains.mps.samples.customizedDebugger.Highlevel.editor.Message_SubstituteMenu$SMP_ReferenceScope_r7tf0o_a" />
+      <unit at="25,0,90,0" name="jetbrains.mps.samples.customizedDebugger.Highlevel.editor.Message_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:148d8860-62be-4d6a-8520-3fd48938aa97(jetbrains.mps.samples.customizedDebugger.Highlevel.editor)/8203012558887843647">

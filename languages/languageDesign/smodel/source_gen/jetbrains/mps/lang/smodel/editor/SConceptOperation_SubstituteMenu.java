@@ -20,7 +20,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
-import jetbrains.mps.smodel.ConceptDescendantsCache;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
@@ -123,19 +122,13 @@ public class SConceptOperation_SubstituteMenu extends SubstituteMenuBase {
           return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Subconcepts_gutaar_a0a0());
         }
         public class SMP_Subconcepts_gutaar_a0a0 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
-          protected Collection getConcepts(final SubstituteMenuContext _context) {
-            return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.SConceptOperation$aF);
+          public SMP_Subconcepts_gutaar_a0a0() {
+            super(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "SConceptOperation", new SNodePointer("r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)", "1741258697587099586")));
           }
-          @NotNull
+
           @Override
-          public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-            context.getEditorMenuTrace().pushTraceInfo();
-            context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "SConceptOperation", new SNodePointer("r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)", "1741258697587099586")));
-            try {
-              return super.createItems(context);
-            } finally {
-              context.getEditorMenuTrace().popTraceInfo();
-            }
+          protected Collection<SAbstractConcept> getConcepts(final SubstituteMenuContext _context) {
+            return getDirectDescendants(_context, CONCEPTS.SConceptOperation$aF);
           }
 
           @Override
@@ -167,19 +160,13 @@ public class SConceptOperation_SubstituteMenu extends SubstituteMenuBase {
         return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Subconcepts_gutaar_a1a());
       }
       public class SMP_Subconcepts_gutaar_a1a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
-        protected Collection getConcepts(final SubstituteMenuContext _context) {
-          return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.SConceptOperation$aF);
+        public SMP_Subconcepts_gutaar_a1a() {
+          super(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "SConceptOperation", new SNodePointer("r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)", "2660922206083377564")));
         }
-        @NotNull
+
         @Override
-        public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-          context.getEditorMenuTrace().pushTraceInfo();
-          context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "SConceptOperation", new SNodePointer("r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)", "2660922206083377564")));
-          try {
-            return super.createItems(context);
-          } finally {
-            context.getEditorMenuTrace().popTraceInfo();
-          }
+        protected Collection<SAbstractConcept> getConcepts(final SubstituteMenuContext _context) {
+          return getDirectDescendants(_context, CONCEPTS.SConceptOperation$aF);
         }
 
         @Override

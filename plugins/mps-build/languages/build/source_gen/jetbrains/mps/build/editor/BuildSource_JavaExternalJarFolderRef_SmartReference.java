@@ -13,10 +13,10 @@ import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstitute
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuItem;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.scope.Scope;
@@ -54,8 +54,7 @@ public class BuildSource_JavaExternalJarFolderRef_SmartReference extends Substit
   public class SMP_ReferenceScope_tq42m2_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_tq42m2_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051
-      super((SAbstractConcept) CONCEPTS.BuildSource_JavaExternalJarFolderRef$kv, LINKS.folder$95wz);
+      super(CONCEPTS.BuildSource_JavaExternalJarFolderRef$kv, LINKS.folder$95wz);
     }
     @NotNull
     @Override

@@ -41,20 +41,7 @@ public class CombinedMessageExpression_SubstituteMenu extends SubstituteMenuBase
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.LiteralMessageExpression$$8) {
-
-      @NotNull
-      @Override
-      public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-        context.getEditorMenuTrace().pushTraceInfo();
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "LiteralMessageExpression", new SNodePointer("r:46037634-9be0-4da8-8dd8-3cb367171177(jetbrains.mps.lang.messages.editor)", "6878448148911865350")));
-        try {
-          return super.createItems(context);
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
-      }
-    }, CONCEPTS.LiteralMessageExpression$$8));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.LiteralMessageExpression$$8, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "LiteralMessageExpression", new SNodePointer("r:46037634-9be0-4da8-8dd8-3cb367171177(jetbrains.mps.lang.messages.editor)", "6878448148911865350"))), CONCEPTS.LiteralMessageExpression$$8));
     result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_6s2f6n_b(), CONCEPTS.CombinedMessageExpression$6z));
     return result;
   }

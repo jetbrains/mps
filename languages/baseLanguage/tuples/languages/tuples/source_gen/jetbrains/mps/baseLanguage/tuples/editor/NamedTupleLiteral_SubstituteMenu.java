@@ -13,15 +13,14 @@ import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstitute
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuItem;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
-import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -53,8 +52,7 @@ public class NamedTupleLiteral_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_k8v7cc_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_k8v7cc_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051
-      super((SAbstractConcept) CONCEPTS.NamedTupleLiteral$rD, LINKS.tupleDeclaration$Pcb7);
+      super(CONCEPTS.NamedTupleLiteral$rD, LINKS.tupleDeclaration$Pcb7);
     }
     @NotNull
     @Override
@@ -100,19 +98,13 @@ public class NamedTupleLiteral_SubstituteMenu extends SubstituteMenuBase {
     }
   }
   public class SMP_Subconcepts_k8v7cc_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
-    protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.NamedTupleLiteral$rD);
+    public SMP_Subconcepts_k8v7cc_b() {
+      super(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "NamedTupleLiteral", null));
     }
-    @NotNull
+
     @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "NamedTupleLiteral", null));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
+    protected Collection<SAbstractConcept> getConcepts(final SubstituteMenuContext _context) {
+      return getDirectDescendants(_context, CONCEPTS.NamedTupleLiteral$rD);
     }
 
     @Override
