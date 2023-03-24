@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <solution name="org.junit.junit5" uuid="63b449db-0918-4a4a-a891-2c430ab133e4" moduleVersion="0" compileInMPS="true">
   <models>
-    <modelRoot type="java_classes" contentPath="${mps_home}/plugins/mps-testing/lib">
+    <modelRoot type="java_classes" contentPath="${mps_home}/plugins/mps-testing/solutions/junit5/lib">
       <sourceRoot location="." />
     </modelRoot>
   </models>
@@ -11,17 +11,17 @@
     </facet>
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${mps_home}/plugins/mps-testing/lib/apiguardian-api-1.1.2.jar" />
-    <stubModelEntry path="${mps_home}/plugins/mps-testing/lib/junit-jupiter-api-5.9.1.jar" />
-    <stubModelEntry path="${mps_home}/plugins/mps-testing/lib/junit-jupiter-engine-5.9.1.jar" />
-    <stubModelEntry path="${mps_home}/plugins/mps-testing/lib/junit-jupiter-migrationsupport-5.9.1.jar" />
-    <stubModelEntry path="${mps_home}/plugins/mps-testing/lib/junit-jupiter-params-5.9.1.jar" />
-    <stubModelEntry path="${mps_home}/plugins/mps-testing/lib/junit-platform-commons-1.9.1.jar" />
-    <stubModelEntry path="${mps_home}/plugins/mps-testing/lib/junit-platform-engine-1.9.1.jar" />
-    <stubModelEntry path="${mps_home}/plugins/mps-testing/lib/junit-platform-launcher-1.9.1.jar" />
-    <stubModelEntry path="${mps_home}/plugins/mps-testing/lib/junit-vintage-engine-5.9.1.jar" />
-    <stubModelEntry path="${mps_home}/plugins/mps-testing/lib/opentest4j-1.2.0.jar" />
-    <stubModelEntry path="${mps_home}/plugins/mps-testing/lib/junit-platform-reporting-1.9.1.jar" />
+    <stubModelEntry path="${mps_home}/plugins/mps-testing/solutions/junit5/lib/apiguardian-api-1.1.2.jar" />
+    <stubModelEntry path="${mps_home}/plugins/mps-testing/solutions/junit5/lib/junit-jupiter-api-5.9.1.jar" />
+    <stubModelEntry path="${mps_home}/plugins/mps-testing/solutions/junit5/lib/junit-jupiter-engine-5.9.1.jar" />
+    <stubModelEntry path="${mps_home}/plugins/mps-testing/solutions/junit5/lib/junit-jupiter-migrationsupport-5.9.1.jar" />
+    <stubModelEntry path="${mps_home}/plugins/mps-testing/solutions/junit5/lib/junit-jupiter-params-5.9.1.jar" />
+    <stubModelEntry path="${mps_home}/plugins/mps-testing/solutions/junit5/lib/junit-platform-commons-1.9.1.jar" />
+    <stubModelEntry path="${mps_home}/plugins/mps-testing/solutions/junit5/lib/junit-platform-engine-1.9.1.jar" />
+    <stubModelEntry path="${mps_home}/plugins/mps-testing/solutions/junit5/lib/junit-platform-launcher-1.9.1.jar" />
+    <stubModelEntry path="${mps_home}/plugins/mps-testing/solutions/junit5/lib/junit-vintage-engine-5.9.1.jar" />
+    <stubModelEntry path="${mps_home}/plugins/mps-testing/solutions/junit5/lib/opentest4j-1.2.0.jar" />
+    <stubModelEntry path="${mps_home}/plugins/mps-testing/solutions/junit5/lib/junit-platform-reporting-1.9.1.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>
