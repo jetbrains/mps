@@ -59,17 +59,10 @@ public class ResourceClassifierType_SubstituteMenu extends SubstituteMenuBase {
     }
     public class SMP_Include_k868c7_a0 extends IncludeSubstituteMenuSubstituteMenuPart {
 
-      @NotNull
-      @Override
-      public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-        context.getEditorMenuTrace().pushTraceInfo();
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include " + "named substitute menu " + "ResourceClassifierType_SmartReference", new SNodePointer("r:53dc5a43-c15e-4a00-8af6-c42420ba30d9(jetbrains.mps.make.facet.editor)", "4747359941571312485")));
-        try {
-          return super.createItems(context);
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
+      public SMP_Include_k868c7_a0() {
+        super(new EditorMenuDescriptorBase("include " + "named substitute menu " + "ResourceClassifierType_SmartReference", new SNodePointer("r:53dc5a43-c15e-4a00-8af6-c42420ba30d9(jetbrains.mps.make.facet.editor)", "4747359941571312485")));
       }
+
       @Nullable
       @Override
       protected SubstituteMenuLookup getMenuLookup(SubstituteMenuContext _context) {

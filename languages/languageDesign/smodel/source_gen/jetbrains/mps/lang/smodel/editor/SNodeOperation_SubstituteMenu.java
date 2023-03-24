@@ -35,17 +35,10 @@ public class SNodeOperation_SubstituteMenu extends SubstituteMenuBase {
 
   public class SMP_Include_u6z34j_a extends IncludeSubstituteMenuSubstituteMenuPart {
 
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include " + "named substitute menu " + "snodeOperation", new SNodePointer("r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)", "1741258697587099442")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
+    public SMP_Include_u6z34j_a() {
+      super(new EditorMenuDescriptorBase("include " + "named substitute menu " + "snodeOperation", new SNodePointer("r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)", "1741258697587099442")));
     }
+
     @Nullable
     @Override
     protected SubstituteMenuLookup getMenuLookup(SubstituteMenuContext _context) {

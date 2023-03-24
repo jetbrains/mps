@@ -25,14 +25,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
-import jetbrains.mps.lang.editor.menus.substitute.SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext;
-import jetbrains.mps.lang.editor.menus.substitute.SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext;
-import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
-import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
-import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
-import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
@@ -81,23 +73,15 @@ public class AddMenuPart_WrapperSubstitute extends SubstituteMenuBase {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_n7g34w_a0(), CONCEPTS.ActionTestChildWrapper$5$));
     }
     private class SMP_Wrap_n7g34w_a0 extends WrapperSubstituteMenuPart {
-      @NotNull
-      @Override
-      public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-        context.getEditorMenuTrace().pushTraceInfo();
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "ActionTestChildToWrap1", new SNodePointer("r:6f930e62-d183-4ca9-a17e-cab70bc506c7(jetbrains.mps.lang.actions.testLanguage.editor)", "1741258697587039374")));
-        try {
-          return super.createItems(context);
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
+      private SMP_Wrap_n7g34w_a0() {
+        super(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "ActionTestChildToWrap1", new SNodePointer("r:6f930e62-d183-4ca9-a17e-cab70bc506c7(jetbrains.mps.lang.actions.testLanguage.editor)", "1741258697587039374")));
       }
 
       @NotNull
       @Override
       protected SubstituteMenuItem wrapItem(final SubstituteMenuItem item, final SubstituteMenuContext _context) {
         final SubstituteItemProxy wrappedItem = new SubstituteItemProxy(item);
-        return new SubstituteMenuItemWrapper(item) {
+        return new SubstituteMenuItemWrapper(item, _context) {
           private SNode myCreatedNode;
 
           @Nullable
@@ -127,15 +111,6 @@ public class AddMenuPart_WrapperSubstitute extends SubstituteMenuBase {
             return wrapperNode;
           }
 
-          public void customize(String pattern, EditorMenuItemStyle style) {
-            super.customize(pattern, style);
-            SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext creatingContext = new SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext(_context, getOutputConcept());
-            SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext modifyingContext = new SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext(_context);
-            EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, creatingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, getOutputConcept(), getMatchingText(pattern), getDescriptionText(pattern))));
-            for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
-              customizer.customize(style, compositeContext);
-            }
-          }
           @Override
           public void select(@NotNull SNode createdNode, @NotNull String pattern) {
             // compilation test for all passed parameters

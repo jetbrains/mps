@@ -36,17 +36,10 @@ public class TestSubstitute_IncludeSameMenuTwice_SubstituteMenu extends Substitu
 
   public class SMP_Include_n50j7p_a extends IncludeSubstituteMenuSubstituteMenuPart {
 
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include " + "named substitute menu " + "TestSubstitute_SameMenu_ToInclude", new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "4572725119287555271")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
+    public SMP_Include_n50j7p_a() {
+      super(new EditorMenuDescriptorBase("include " + "named substitute menu " + "TestSubstitute_SameMenu_ToInclude", new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "4572725119287555271")));
     }
+
     @Nullable
     @Override
     protected SubstituteMenuLookup getMenuLookup(SubstituteMenuContext _context) {
@@ -60,17 +53,10 @@ public class TestSubstitute_IncludeSameMenuTwice_SubstituteMenu extends Substitu
   }
   public class SMP_Include_n50j7p_b extends IncludeSubstituteMenuSubstituteMenuPart {
 
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include " + "named substitute menu " + "TestSubstitute_SameMenu_ToInclude", new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "4572725119287555276")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
+    public SMP_Include_n50j7p_b() {
+      super(new EditorMenuDescriptorBase("include " + "named substitute menu " + "TestSubstitute_SameMenu_ToInclude", new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "4572725119287555276")));
     }
+
     @Nullable
     @Override
     protected SubstituteMenuLookup getMenuLookup(SubstituteMenuContext _context) {

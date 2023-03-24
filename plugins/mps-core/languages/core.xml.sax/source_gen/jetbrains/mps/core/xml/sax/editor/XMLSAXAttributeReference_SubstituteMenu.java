@@ -39,17 +39,10 @@ public class XMLSAXAttributeReference_SubstituteMenu extends SubstituteMenuBase 
 
   public class SMP_Include_8gefmj_a extends IncludeSubstituteMenuSubstituteMenuPart {
 
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include " + "named substitute menu " + "XMLSAXAttributeReference_SmartReference", new SNodePointer("r:1c9826ed-1ac5-4a4a-a16c-c4f33a9e7348(jetbrains.mps.core.xml.sax.editor)", "4747359941571312073")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
+    public SMP_Include_8gefmj_a() {
+      super(new EditorMenuDescriptorBase("include " + "named substitute menu " + "XMLSAXAttributeReference_SmartReference", new SNodePointer("r:1c9826ed-1ac5-4a4a-a16c-c4f33a9e7348(jetbrains.mps.core.xml.sax.editor)", "4747359941571312073")));
     }
+
     @Nullable
     @Override
     protected SubstituteMenuLookup getMenuLookup(SubstituteMenuContext _context) {

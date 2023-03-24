@@ -36,17 +36,10 @@ public class Expression_Contribution extends SubstituteMenuBase {
 
   public class SMP_Include_s9uhwr_a extends IncludeSubstituteMenuSubstituteMenuPart {
 
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include " + "named substitute menu " + "subs_AllConstant", new SNodePointer("r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)", "1741258697586931892")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
+    public SMP_Include_s9uhwr_a() {
+      super(new EditorMenuDescriptorBase("include " + "named substitute menu " + "subs_AllConstant", new SNodePointer("r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)", "1741258697586931892")));
     }
+
     @Nullable
     @Override
     protected SubstituteMenuLookup getMenuLookup(SubstituteMenuContext _context) {
@@ -60,17 +53,10 @@ public class Expression_Contribution extends SubstituteMenuBase {
   }
   public class SMP_Include_s9uhwr_b extends IncludeSubstituteMenuSubstituteMenuPart {
 
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include " + "named substitute menu " + "BLC_substitute", new SNodePointer("r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)", "1741258697586932154")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
+    public SMP_Include_s9uhwr_b() {
+      super(new EditorMenuDescriptorBase("include " + "named substitute menu " + "BLC_substitute", new SNodePointer("r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)", "1741258697586932154")));
     }
+
     @Nullable
     @Override
     protected SubstituteMenuLookup getMenuLookup(SubstituteMenuContext _context) {

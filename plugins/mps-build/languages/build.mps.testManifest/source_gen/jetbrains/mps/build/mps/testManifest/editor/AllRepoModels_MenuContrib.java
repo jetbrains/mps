@@ -59,17 +59,10 @@ public class AllRepoModels_MenuContrib extends SubstituteMenuBase {
     }
     public class SMP_Include_ngt524_a0 extends IncludeSubstituteMenuSubstituteMenuPart {
 
-      @NotNull
-      @Override
-      public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-        context.getEditorMenuTrace().pushTraceInfo();
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include " + "named substitute menu " + "AllRepositoryModels_SM", new SNodePointer("r:62b685a8-caa0-436e-bd8f-043142e659b2(jetbrains.mps.build.mps.testManifest.editor)", "3815448882692961530")));
-        try {
-          return super.createItems(context);
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
+      public SMP_Include_ngt524_a0() {
+        super(new EditorMenuDescriptorBase("include " + "named substitute menu " + "AllRepositoryModels_SM", new SNodePointer("r:62b685a8-caa0-436e-bd8f-043142e659b2(jetbrains.mps.build.mps.testManifest.editor)", "3815448882692961530")));
       }
+
       @Nullable
       @Override
       protected SubstituteMenuLookup getMenuLookup(SubstituteMenuContext _context) {

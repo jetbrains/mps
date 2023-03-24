@@ -18,14 +18,6 @@ import jetbrains.mps.lang.editor.menus.substitute.SubstituteMenuItemWrapper;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
-import jetbrains.mps.lang.editor.menus.substitute.SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext;
-import jetbrains.mps.lang.editor.menus.substitute.SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext;
-import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
-import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
-import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
-import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
@@ -48,23 +40,15 @@ public class BLExpression_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private class SMP_Wrap_c9dft7_a extends WrapperSubstituteMenuPart {
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "Expression", new SNodePointer("r:f09c85c2-fb88-4283-852e-78d5fc87420e(jetbrains.mps.console.base.editor)", "244232129432264121")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
+    private SMP_Wrap_c9dft7_a() {
+      super(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "Expression", new SNodePointer("r:f09c85c2-fb88-4283-852e-78d5fc87420e(jetbrains.mps.console.base.editor)", "244232129432264121")));
     }
 
     @NotNull
     @Override
     protected SubstituteMenuItem wrapItem(final SubstituteMenuItem item, final SubstituteMenuContext _context) {
       final SubstituteItemProxy wrappedItem = new SubstituteItemProxy(item);
-      return new SubstituteMenuItemWrapper(item) {
+      return new SubstituteMenuItemWrapper(item, _context) {
         private SNode myCreatedNode;
 
         @Nullable
@@ -84,15 +68,6 @@ public class BLExpression_SubstituteMenu extends SubstituteMenuBase {
           super.select(myCreatedNode, pattern);
         }
 
-        public void customize(String pattern, EditorMenuItemStyle style) {
-          super.customize(pattern, style);
-          SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext creatingContext = new SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext(_context, getOutputConcept());
-          SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext modifyingContext = new SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext(_context);
-          EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, creatingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, getOutputConcept(), getMatchingText(pattern), getDescriptionText(pattern))));
-          for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
-            customizer.customize(style, compositeContext);
-          }
-        }
       };
     }
     @Nullable

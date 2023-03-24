@@ -47,17 +47,10 @@ public class Statement_SubstituteMenu extends SubstituteMenuBase {
 
   public class SMP_Include_c8idjo_a extends IncludeSubstituteMenuSubstituteMenuPart {
 
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include " + "named substitute menu " + "localVariablesWithType", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586957825")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
+    public SMP_Include_c8idjo_a() {
+      super(new EditorMenuDescriptorBase("include " + "named substitute menu " + "localVariablesWithType", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586957825")));
     }
+
     @Nullable
     @Override
     protected SubstituteMenuLookup getMenuLookup(SubstituteMenuContext _context) {
@@ -71,17 +64,10 @@ public class Statement_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Include_c8idjo_b extends IncludeSubstituteMenuSubstituteMenuPart {
 
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include " + "named substitute menu " + "ifStatement_", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586959201")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
+    public SMP_Include_c8idjo_b() {
+      super(new EditorMenuDescriptorBase("include " + "named substitute menu " + "ifStatement_", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586959201")));
     }
+
     @Nullable
     @Override
     protected SubstituteMenuLookup getMenuLookup(SubstituteMenuContext _context) {
@@ -95,17 +81,10 @@ public class Statement_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Include_c8idjo_c extends IncludeSubstituteMenuSubstituteMenuPart {
 
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include " + "named substitute menu " + "localVariables", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586961058")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
+    public SMP_Include_c8idjo_c() {
+      super(new EditorMenuDescriptorBase("include " + "named substitute menu " + "localVariables", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586961058")));
     }
+
     @Nullable
     @Override
     protected SubstituteMenuLookup getMenuLookup(SubstituteMenuContext _context) {
@@ -119,17 +98,10 @@ public class Statement_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Include_c8idjo_d extends IncludeSubstituteMenuSubstituteMenuPart {
 
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include " + "named substitute menu " + "expressionStatement_", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586962393")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
+    public SMP_Include_c8idjo_d() {
+      super(new EditorMenuDescriptorBase("include " + "named substitute menu " + "expressionStatement_", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586962393")));
     }
+
     @Nullable
     @Override
     protected SubstituteMenuLookup getMenuLookup(SubstituteMenuContext _context) {
@@ -143,17 +115,10 @@ public class Statement_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Include_c8idjo_e extends IncludeSubstituteMenuSubstituteMenuPart {
 
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include " + "named substitute menu " + "loopStatements", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586962630")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
+    public SMP_Include_c8idjo_e() {
+      super(new EditorMenuDescriptorBase("include " + "named substitute menu " + "loopStatements", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586962630")));
     }
+
     @Nullable
     @Override
     protected SubstituteMenuLookup getMenuLookup(SubstituteMenuContext _context) {
@@ -167,17 +132,10 @@ public class Statement_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Include_c8idjo_f extends IncludeSubstituteMenuSubstituteMenuPart {
 
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include " + "named substitute menu " + "thisAndSuperConstructor", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586963058")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
+    public SMP_Include_c8idjo_f() {
+      super(new EditorMenuDescriptorBase("include " + "named substitute menu " + "thisAndSuperConstructor", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586963058")));
     }
+
     @Nullable
     @Override
     protected SubstituteMenuLookup getMenuLookup(SubstituteMenuContext _context) {

@@ -82,17 +82,10 @@ public class ActionTestDefaultAbstractChild_SubstituteMenu extends SubstituteMen
     }
     public class SMP_Include_c1nwm3_a0 extends IncludeSubstituteMenuSubstituteMenuPart {
 
-      @NotNull
-      @Override
-      public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-        context.getEditorMenuTrace().pushTraceInfo();
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include " + "named substitute menu " + "RemoveDefaultsPart", new SNodePointer("r:6f930e62-d183-4ca9-a17e-cab70bc506c7(jetbrains.mps.lang.actions.testLanguage.editor)", "1741258697587039171")));
-        try {
-          return super.createItems(context);
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
+      public SMP_Include_c1nwm3_a0() {
+        super(new EditorMenuDescriptorBase("include " + "named substitute menu " + "RemoveDefaultsPart", new SNodePointer("r:6f930e62-d183-4ca9-a17e-cab70bc506c7(jetbrains.mps.lang.actions.testLanguage.editor)", "1741258697587039171")));
       }
+
       @Nullable
       @Override
       protected SubstituteMenuLookup getMenuLookup(SubstituteMenuContext _context) {
@@ -106,17 +99,10 @@ public class ActionTestDefaultAbstractChild_SubstituteMenu extends SubstituteMen
     }
     public class SMP_Include_c1nwm3_b0 extends IncludeSubstituteMenuSubstituteMenuPart {
 
-      @NotNull
-      @Override
-      public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-        context.getEditorMenuTrace().pushTraceInfo();
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include " + "named substitute menu " + "RemoveByConditionPart", new SNodePointer("r:6f930e62-d183-4ca9-a17e-cab70bc506c7(jetbrains.mps.lang.actions.testLanguage.editor)", "1741258697587038983")));
-        try {
-          return super.createItems(context);
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
+      public SMP_Include_c1nwm3_b0() {
+        super(new EditorMenuDescriptorBase("include " + "named substitute menu " + "RemoveByConditionPart", new SNodePointer("r:6f930e62-d183-4ca9-a17e-cab70bc506c7(jetbrains.mps.lang.actions.testLanguage.editor)", "1741258697587038983")));
       }
+
       @Nullable
       @Override
       protected SubstituteMenuLookup getMenuLookup(SubstituteMenuContext _context) {
@@ -130,17 +116,10 @@ public class ActionTestDefaultAbstractChild_SubstituteMenu extends SubstituteMen
     }
     public class SMP_Include_c1nwm3_c0 extends IncludeSubstituteMenuSubstituteMenuPart {
 
-      @NotNull
-      @Override
-      public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-        context.getEditorMenuTrace().pushTraceInfo();
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include " + "named substitute menu " + "RemovePart", new SNodePointer("r:6f930e62-d183-4ca9-a17e-cab70bc506c7(jetbrains.mps.lang.actions.testLanguage.editor)", "1741258697587039696")));
-        try {
-          return super.createItems(context);
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
+      public SMP_Include_c1nwm3_c0() {
+        super(new EditorMenuDescriptorBase("include " + "named substitute menu " + "RemovePart", new SNodePointer("r:6f930e62-d183-4ca9-a17e-cab70bc506c7(jetbrains.mps.lang.actions.testLanguage.editor)", "1741258697587039696")));
       }
+
       @Nullable
       @Override
       protected SubstituteMenuLookup getMenuLookup(SubstituteMenuContext _context) {

@@ -34,14 +34,6 @@ import jetbrains.mps.lang.editor.menus.substitute.WrapperSubstituteMenuPart;
 import jetbrains.mps.editor.runtime.menus.SubstituteItemProxy;
 import jetbrains.mps.lang.editor.menus.substitute.SubstituteMenuItemWrapper;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
-import jetbrains.mps.lang.editor.menus.substitute.SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext;
-import jetbrains.mps.lang.editor.menus.substitute.SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext;
-import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
-import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
-import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
-import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -151,23 +143,15 @@ public class EquationComponent_SubstituteMenu extends SubstituteMenuBase {
     }
   }
   private class SMP_Wrap_8b52qr_c extends WrapperSubstituteMenuPart {
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "CompoundComponent", new SNodePointer("r:563c5369-4649-4929-a845-37c7045ffecd(jetbrains.mps.samples.ChemMastery.editor)", "6567999678835491466")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
+    private SMP_Wrap_8b52qr_c() {
+      super(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "CompoundComponent", new SNodePointer("r:563c5369-4649-4929-a845-37c7045ffecd(jetbrains.mps.samples.ChemMastery.editor)", "6567999678835491466")));
     }
 
     @NotNull
     @Override
     protected SubstituteMenuItem wrapItem(final SubstituteMenuItem item, final SubstituteMenuContext _context) {
       final SubstituteItemProxy wrappedItem = new SubstituteItemProxy(item);
-      return new SubstituteMenuItemWrapper(item) {
+      return new SubstituteMenuItemWrapper(item, _context) {
         private SNode myCreatedNode;
 
         @Nullable
@@ -194,15 +178,6 @@ public class EquationComponent_SubstituteMenu extends SubstituteMenuBase {
           super.select(myCreatedNode, pattern);
         }
 
-        public void customize(String pattern, EditorMenuItemStyle style) {
-          super.customize(pattern, style);
-          SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext creatingContext = new SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext(_context, getOutputConcept());
-          SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext modifyingContext = new SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext(_context);
-          EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, creatingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, getOutputConcept(), getMatchingText(pattern), getDescriptionText(pattern))));
-          for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
-            customizer.customize(style, compositeContext);
-          }
-        }
       };
     }
     @Nullable

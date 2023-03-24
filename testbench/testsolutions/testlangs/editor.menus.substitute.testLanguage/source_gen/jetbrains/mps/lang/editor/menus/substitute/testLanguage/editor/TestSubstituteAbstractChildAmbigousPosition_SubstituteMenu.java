@@ -25,14 +25,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
-import jetbrains.mps.lang.editor.menus.substitute.SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext;
-import jetbrains.mps.lang.editor.menus.substitute.SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext;
-import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
-import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
-import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
-import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
@@ -121,23 +113,15 @@ public class TestSubstituteAbstractChildAmbigousPosition_SubstituteMenu extends 
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_cu4p6c_a2(), CONCEPTS.TestSubstituteAbstractChildAmbigousPosition$tQ), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_cu4p6c_b2(), CONCEPTS.TestSubstituteAbstractChildAmbigousPosition$tQ));
     }
     private class SMP_Wrap_cu4p6c_a2 extends WrapperSubstituteMenuPart {
-      @NotNull
-      @Override
-      public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-        context.getEditorMenuTrace().pushTraceInfo();
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "TestSubstituteSubChildAmbigousPosition1", new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "9174907873152877931")));
-        try {
-          return super.createItems(context);
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
+      private SMP_Wrap_cu4p6c_a2() {
+        super(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "TestSubstituteSubChildAmbigousPosition1", new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "9174907873152877931")));
       }
 
       @NotNull
       @Override
       protected SubstituteMenuItem wrapItem(final SubstituteMenuItem item, final SubstituteMenuContext _context) {
         final SubstituteItemProxy wrappedItem = new SubstituteItemProxy(item);
-        return new SubstituteMenuItemWrapper(item) {
+        return new SubstituteMenuItemWrapper(item, _context) {
           private SNode myCreatedNode;
 
           @Nullable
@@ -159,15 +143,6 @@ public class TestSubstituteAbstractChildAmbigousPosition_SubstituteMenu extends 
             super.select(myCreatedNode, pattern);
           }
 
-          public void customize(String pattern, EditorMenuItemStyle style) {
-            super.customize(pattern, style);
-            SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext creatingContext = new SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext(_context, getOutputConcept());
-            SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext modifyingContext = new SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext(_context);
-            EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, creatingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, getOutputConcept(), getMatchingText(pattern), getDescriptionText(pattern))));
-            for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
-              customizer.customize(style, compositeContext);
-            }
-          }
         };
       }
       @Nullable
@@ -182,23 +157,15 @@ public class TestSubstituteAbstractChildAmbigousPosition_SubstituteMenu extends 
       }
     }
     private class SMP_Wrap_cu4p6c_b2 extends WrapperSubstituteMenuPart {
-      @NotNull
-      @Override
-      public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-        context.getEditorMenuTrace().pushTraceInfo();
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "TestSubstituteSubChildAmbigousPosition1", new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "9174907873152915764")));
-        try {
-          return super.createItems(context);
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
+      private SMP_Wrap_cu4p6c_b2() {
+        super(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "TestSubstituteSubChildAmbigousPosition1", new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "9174907873152915764")));
       }
 
       @NotNull
       @Override
       protected SubstituteMenuItem wrapItem(final SubstituteMenuItem item, final SubstituteMenuContext _context) {
         final SubstituteItemProxy wrappedItem = new SubstituteItemProxy(item);
-        return new SubstituteMenuItemWrapper(item) {
+        return new SubstituteMenuItemWrapper(item, _context) {
           private SNode myCreatedNode;
 
           @Nullable
@@ -220,15 +187,6 @@ public class TestSubstituteAbstractChildAmbigousPosition_SubstituteMenu extends 
             super.select(myCreatedNode, pattern);
           }
 
-          public void customize(String pattern, EditorMenuItemStyle style) {
-            super.customize(pattern, style);
-            SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext creatingContext = new SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext(_context, getOutputConcept());
-            SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext modifyingContext = new SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext(_context);
-            EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, creatingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, getOutputConcept(), getMatchingText(pattern), getDescriptionText(pattern))));
-            for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
-              customizer.customize(style, compositeContext);
-            }
-          }
         };
       }
       @Nullable
@@ -265,23 +223,15 @@ public class TestSubstituteAbstractChildAmbigousPosition_SubstituteMenu extends 
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_cu4p6c_a3(), CONCEPTS.TestSubstituteAbstractChildAmbigousPosition$tQ), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_cu4p6c_b3(), CONCEPTS.TestSubstituteAbstractChildAmbigousPosition$tQ));
     }
     private class SMP_Wrap_cu4p6c_a3 extends WrapperSubstituteMenuPart {
-      @NotNull
-      @Override
-      public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-        context.getEditorMenuTrace().pushTraceInfo();
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "TestSubstituteSubChildAmbigousPosition1", new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "9174907873153072691")));
-        try {
-          return super.createItems(context);
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
+      private SMP_Wrap_cu4p6c_a3() {
+        super(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "TestSubstituteSubChildAmbigousPosition1", new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "9174907873153072691")));
       }
 
       @NotNull
       @Override
       protected SubstituteMenuItem wrapItem(final SubstituteMenuItem item, final SubstituteMenuContext _context) {
         final SubstituteItemProxy wrappedItem = new SubstituteItemProxy(item);
-        return new SubstituteMenuItemWrapper(item) {
+        return new SubstituteMenuItemWrapper(item, _context) {
           private SNode myCreatedNode;
 
           @Nullable
@@ -303,15 +253,6 @@ public class TestSubstituteAbstractChildAmbigousPosition_SubstituteMenu extends 
             super.select(myCreatedNode, pattern);
           }
 
-          public void customize(String pattern, EditorMenuItemStyle style) {
-            super.customize(pattern, style);
-            SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext creatingContext = new SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext(_context, getOutputConcept());
-            SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext modifyingContext = new SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext(_context);
-            EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, creatingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, getOutputConcept(), getMatchingText(pattern), getDescriptionText(pattern))));
-            for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
-              customizer.customize(style, compositeContext);
-            }
-          }
         };
       }
       @Nullable
@@ -326,23 +267,15 @@ public class TestSubstituteAbstractChildAmbigousPosition_SubstituteMenu extends 
       }
     }
     private class SMP_Wrap_cu4p6c_b3 extends WrapperSubstituteMenuPart {
-      @NotNull
-      @Override
-      public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-        context.getEditorMenuTrace().pushTraceInfo();
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "TestSubstituteSubChildAmbigousPosition2", new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "9174907873153072709")));
-        try {
-          return super.createItems(context);
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
+      private SMP_Wrap_cu4p6c_b3() {
+        super(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "TestSubstituteSubChildAmbigousPosition2", new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "9174907873153072709")));
       }
 
       @NotNull
       @Override
       protected SubstituteMenuItem wrapItem(final SubstituteMenuItem item, final SubstituteMenuContext _context) {
         final SubstituteItemProxy wrappedItem = new SubstituteItemProxy(item);
-        return new SubstituteMenuItemWrapper(item) {
+        return new SubstituteMenuItemWrapper(item, _context) {
           private SNode myCreatedNode;
 
           @Nullable
@@ -364,15 +297,6 @@ public class TestSubstituteAbstractChildAmbigousPosition_SubstituteMenu extends 
             super.select(myCreatedNode, pattern);
           }
 
-          public void customize(String pattern, EditorMenuItemStyle style) {
-            super.customize(pattern, style);
-            SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext creatingContext = new SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext(_context, getOutputConcept());
-            SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext modifyingContext = new SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext(_context);
-            EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, creatingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, getOutputConcept(), getMatchingText(pattern), getDescriptionText(pattern))));
-            for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
-              customizer.customize(style, compositeContext);
-            }
-          }
         };
       }
       @Nullable

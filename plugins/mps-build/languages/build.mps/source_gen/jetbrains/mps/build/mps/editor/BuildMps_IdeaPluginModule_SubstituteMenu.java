@@ -39,17 +39,10 @@ public class BuildMps_IdeaPluginModule_SubstituteMenu extends SubstituteMenuBase
 
   public class SMP_Include_kkwqoi_a extends IncludeSubstituteMenuSubstituteMenuPart {
 
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include " + "named substitute menu " + "BuildMps_IdeaPluginModule_SmartReference", new SNodePointer("r:589e3942-2f2d-42a2-9312-986a1d3e2f7f(jetbrains.mps.build.mps.editor)", "4747359941571311765")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
+    public SMP_Include_kkwqoi_a() {
+      super(new EditorMenuDescriptorBase("include " + "named substitute menu " + "BuildMps_IdeaPluginModule_SmartReference", new SNodePointer("r:589e3942-2f2d-42a2-9312-986a1d3e2f7f(jetbrains.mps.build.mps.editor)", "4747359941571311765")));
     }
+
     @Nullable
     @Override
     protected SubstituteMenuLookup getMenuLookup(SubstituteMenuContext _context) {

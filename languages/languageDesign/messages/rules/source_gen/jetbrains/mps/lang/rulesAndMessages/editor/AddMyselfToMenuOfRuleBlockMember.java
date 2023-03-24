@@ -35,17 +35,10 @@ public class AddMyselfToMenuOfRuleBlockMember extends SubstituteMenuBase {
 
   public class SMP_Include_y0tsy8_a extends IncludeSubstituteMenuSubstituteMenuPart {
 
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include " + "default substitute menu for " + "RuleWithMessage", new SNodePointer("r:b27aeb14-fefb-4745-88f9-0731c33985d8(jetbrains.mps.lang.rulesAndMessages.editor)", "668954446731667492")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
+    public SMP_Include_y0tsy8_a() {
+      super(new EditorMenuDescriptorBase("include " + "default substitute menu for " + "RuleWithMessage", new SNodePointer("r:b27aeb14-fefb-4745-88f9-0731c33985d8(jetbrains.mps.lang.rulesAndMessages.editor)", "668954446731667492")));
     }
+
     @Nullable
     @Override
     protected SubstituteMenuLookup getMenuLookup(SubstituteMenuContext _context) {

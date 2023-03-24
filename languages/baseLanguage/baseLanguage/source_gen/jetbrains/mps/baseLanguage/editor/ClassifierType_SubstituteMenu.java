@@ -526,17 +526,10 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
       }
       public class SMP_Include_6wdawe_b3a extends IncludeSubstituteMenuSubstituteMenuPart {
 
-        @NotNull
-        @Override
-        public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-          context.getEditorMenuTrace().pushTraceInfo();
-          context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include " + "named substitute menu " + "ClassifierType_SmartReference", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "4747359941571312305")));
-          try {
-            return super.createItems(context);
-          } finally {
-            context.getEditorMenuTrace().popTraceInfo();
-          }
+        public SMP_Include_6wdawe_b3a() {
+          super(new EditorMenuDescriptorBase("include " + "named substitute menu " + "ClassifierType_SmartReference", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "4747359941571312305")));
         }
+
         @Nullable
         @Override
         protected SubstituteMenuLookup getMenuLookup(SubstituteMenuContext _context) {

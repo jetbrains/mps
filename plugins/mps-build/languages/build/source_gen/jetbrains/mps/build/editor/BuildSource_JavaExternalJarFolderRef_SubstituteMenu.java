@@ -39,17 +39,10 @@ public class BuildSource_JavaExternalJarFolderRef_SubstituteMenu extends Substit
 
   public class SMP_Include_hzclj9_a extends IncludeSubstituteMenuSubstituteMenuPart {
 
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include " + "named substitute menu " + "BuildSource_JavaExternalJarFolderRef_SmartReference", new SNodePointer("r:00f69407-23a8-49a2-a236-9e89a32679aa(jetbrains.mps.build.editor)", "4747359941571312012")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
+    public SMP_Include_hzclj9_a() {
+      super(new EditorMenuDescriptorBase("include " + "named substitute menu " + "BuildSource_JavaExternalJarFolderRef_SmartReference", new SNodePointer("r:00f69407-23a8-49a2-a236-9e89a32679aa(jetbrains.mps.build.editor)", "4747359941571312012")));
     }
+
     @Nullable
     @Override
     protected SubstituteMenuLookup getMenuLookup(SubstituteMenuContext _context) {

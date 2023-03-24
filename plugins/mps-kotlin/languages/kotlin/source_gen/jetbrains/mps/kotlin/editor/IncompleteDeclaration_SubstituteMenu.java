@@ -30,14 +30,6 @@ import jetbrains.mps.editor.runtime.menus.SubstituteItemProxy;
 import jetbrains.mps.lang.editor.menus.substitute.SubstituteMenuItemWrapper;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
-import jetbrains.mps.lang.editor.menus.substitute.SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext;
-import jetbrains.mps.lang.editor.menus.substitute.SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext;
-import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
-import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
-import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
-import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
@@ -151,23 +143,15 @@ public class IncompleteDeclaration_SubstituteMenu extends SubstituteMenuBase {
       }
     }
     private class SMP_Wrap_ewjhwe_b0 extends WrapperSubstituteMenuPart {
-      @NotNull
-      @Override
-      public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-        context.getEditorMenuTrace().pushTraceInfo();
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "IInheritanceModifier", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "2998782254613082284")));
-        try {
-          return super.createItems(context);
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
+      private SMP_Wrap_ewjhwe_b0() {
+        super(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "IInheritanceModifier", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "2998782254613082284")));
       }
 
       @NotNull
       @Override
       protected SubstituteMenuItem wrapItem(final SubstituteMenuItem item, final SubstituteMenuContext _context) {
         final SubstituteItemProxy wrappedItem = new SubstituteItemProxy(item);
-        return new SubstituteMenuItemWrapper(item) {
+        return new SubstituteMenuItemWrapper(item, _context) {
           private SNode myCreatedNode;
 
           @Nullable
@@ -184,15 +168,6 @@ public class IncompleteDeclaration_SubstituteMenu extends SubstituteMenuBase {
             return decl;
           }
 
-          public void customize(String pattern, EditorMenuItemStyle style) {
-            super.customize(pattern, style);
-            SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext creatingContext = new SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext(_context, getOutputConcept());
-            SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext modifyingContext = new SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext(_context);
-            EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, creatingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, getOutputConcept(), getMatchingText(pattern), getDescriptionText(pattern))));
-            for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
-              customizer.customize(style, compositeContext);
-            }
-          }
           @Override
           public void select(@NotNull SNode createdNode, @NotNull String pattern) {
             _context.getEditorContext().selectWRTFocusPolicy(createdNode);
@@ -211,23 +186,15 @@ public class IncompleteDeclaration_SubstituteMenu extends SubstituteMenuBase {
       }
     }
     private class SMP_Wrap_ewjhwe_c0 extends WrapperSubstituteMenuPart {
-      @NotNull
-      @Override
-      public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-        context.getEditorMenuTrace().pushTraceInfo();
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "IFunctionModifier", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "1806979145042901275")));
-        try {
-          return super.createItems(context);
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
+      private SMP_Wrap_ewjhwe_c0() {
+        super(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "IFunctionModifier", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "1806979145042901275")));
       }
 
       @NotNull
       @Override
       protected SubstituteMenuItem wrapItem(final SubstituteMenuItem item, final SubstituteMenuContext _context) {
         final SubstituteItemProxy wrappedItem = new SubstituteItemProxy(item);
-        return new SubstituteMenuItemWrapper(item) {
+        return new SubstituteMenuItemWrapper(item, _context) {
           private SNode myCreatedNode;
 
           @Nullable
@@ -244,15 +211,6 @@ public class IncompleteDeclaration_SubstituteMenu extends SubstituteMenuBase {
             return decl;
           }
 
-          public void customize(String pattern, EditorMenuItemStyle style) {
-            super.customize(pattern, style);
-            SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext creatingContext = new SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext(_context, getOutputConcept());
-            SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext modifyingContext = new SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext(_context);
-            EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, creatingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, getOutputConcept(), getMatchingText(pattern), getDescriptionText(pattern))));
-            for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
-              customizer.customize(style, compositeContext);
-            }
-          }
           @Override
           public void select(@NotNull SNode createdNode, @NotNull String pattern) {
             _context.getEditorContext().selectWRTFocusPolicy(createdNode);
@@ -271,23 +229,15 @@ public class IncompleteDeclaration_SubstituteMenu extends SubstituteMenuBase {
       }
     }
     private class SMP_Wrap_ewjhwe_d0 extends WrapperSubstituteMenuPart {
-      @NotNull
-      @Override
-      public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-        context.getEditorMenuTrace().pushTraceInfo();
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "IClassModifier", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "1806979145044473426")));
-        try {
-          return super.createItems(context);
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
+      private SMP_Wrap_ewjhwe_d0() {
+        super(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "IClassModifier", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "1806979145044473426")));
       }
 
       @NotNull
       @Override
       protected SubstituteMenuItem wrapItem(final SubstituteMenuItem item, final SubstituteMenuContext _context) {
         final SubstituteItemProxy wrappedItem = new SubstituteItemProxy(item);
-        return new SubstituteMenuItemWrapper(item) {
+        return new SubstituteMenuItemWrapper(item, _context) {
           private SNode myCreatedNode;
 
           @Nullable
@@ -304,15 +254,6 @@ public class IncompleteDeclaration_SubstituteMenu extends SubstituteMenuBase {
             return decl;
           }
 
-          public void customize(String pattern, EditorMenuItemStyle style) {
-            super.customize(pattern, style);
-            SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext creatingContext = new SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext(_context, getOutputConcept());
-            SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext modifyingContext = new SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext(_context);
-            EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, creatingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, getOutputConcept(), getMatchingText(pattern), getDescriptionText(pattern))));
-            for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
-              customizer.customize(style, compositeContext);
-            }
-          }
           @Override
           public void select(@NotNull SNode createdNode, @NotNull String pattern) {
             _context.getEditorContext().selectWRTFocusPolicy(createdNode);
@@ -331,23 +272,15 @@ public class IncompleteDeclaration_SubstituteMenu extends SubstituteMenuBase {
       }
     }
     private class SMP_Wrap_ewjhwe_e0 extends WrapperSubstituteMenuPart {
-      @NotNull
-      @Override
-      public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-        context.getEditorMenuTrace().pushTraceInfo();
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "VisibilityModifier", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "2998782254613468946")));
-        try {
-          return super.createItems(context);
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
+      private SMP_Wrap_ewjhwe_e0() {
+        super(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "VisibilityModifier", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "2998782254613468946")));
       }
 
       @NotNull
       @Override
       protected SubstituteMenuItem wrapItem(final SubstituteMenuItem item, final SubstituteMenuContext _context) {
         final SubstituteItemProxy wrappedItem = new SubstituteItemProxy(item);
-        return new SubstituteMenuItemWrapper(item) {
+        return new SubstituteMenuItemWrapper(item, _context) {
           private SNode myCreatedNode;
 
           @Nullable
@@ -364,15 +297,6 @@ public class IncompleteDeclaration_SubstituteMenu extends SubstituteMenuBase {
             return decl;
           }
 
-          public void customize(String pattern, EditorMenuItemStyle style) {
-            super.customize(pattern, style);
-            SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext creatingContext = new SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext(_context, getOutputConcept());
-            SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext modifyingContext = new SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext(_context);
-            EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, creatingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, getOutputConcept(), getMatchingText(pattern), getDescriptionText(pattern))));
-            for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
-              customizer.customize(style, compositeContext);
-            }
-          }
           @Override
           public void select(@NotNull SNode createdNode, @NotNull String pattern) {
             _context.getEditorContext().selectWRTFocusPolicy(createdNode);
