@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,7 +48,7 @@ public class DefaultSubstituteMenuItem implements SubstituteMenuItem {
   private static final Logger LOG = Logger.getLogger(DefaultSubstituteMenuItem.class);
 
   @NotNull
-  private SAbstractConcept myConcept;
+  private final SAbstractConcept myConcept;
 
   @NotNull
   private final SNode myParentNode;
@@ -57,19 +57,10 @@ public class DefaultSubstituteMenuItem implements SubstituteMenuItem {
   private final SNode myCurrentChild;
 
   @NotNull
-  private EditorContext myEditorContext;
-  private EditorMenuTraceInfo myTraceInfo;
+  private final EditorContext myEditorContext;
+  private final EditorMenuTraceInfo myTraceInfo;
 
-  SubstituteMenuContext myContext;
-
-  @Deprecated
-  public DefaultSubstituteMenuItem(@NotNull SAbstractConcept concept, @NotNull SNode parentNode, @Nullable SNode currentChild,
-                                   @NotNull EditorContext editorContext) {
-    myConcept = concept;
-    myParentNode = parentNode;
-    myCurrentChild = currentChild;
-    myEditorContext = editorContext;
-  }
+  protected final SubstituteMenuContext myContext;
 
   public DefaultSubstituteMenuItem(@NotNull SAbstractConcept concept, @NotNull SubstituteMenuContext context) {
     myConcept = concept;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package jetbrains.mps.lang.editor.menus.substitute;
 
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
-import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.smodel.runtime.IconResource;
@@ -38,15 +37,6 @@ public class ReferenceScopeSubstituteMenuItem extends DefaultSubstituteMenuItem 
 
   @NotNull
   private final SReferenceLink myReferenceLink;
-
-  @Deprecated
-  public ReferenceScopeSubstituteMenuItem(@NotNull SAbstractConcept concept, @NotNull SNode parentNode, @Nullable SNode currentChild,
-                                          @NotNull SNode referent, @NotNull SReferenceLink referenceLink,
-                                          @NotNull EditorContext editorContext) {
-    super(concept, parentNode, currentChild, editorContext);
-    myReferent = referent;
-    myReferenceLink = referenceLink;
-  }
 
   public ReferenceScopeSubstituteMenuItem(@NotNull SAbstractConcept concept, @NotNull SubstituteMenuContext context,
                                           @NotNull SNode referent, @NotNull SReferenceLink referenceLink) {
