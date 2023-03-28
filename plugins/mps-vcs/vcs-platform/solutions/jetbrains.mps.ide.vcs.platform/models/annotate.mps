@@ -86,6 +86,7 @@
     <import index="7lvn" ref="r:4e6037e6-9135-44f8-9403-04d79fc40f4a(jetbrains.mps.ide.editor.util)" />
     <import index="zyr2" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor.inspector(MPS.Editor/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
+    <import index="hq8m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.options(MPS.IDEA/)" implicit="true" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -19038,6 +19039,136 @@
               </node>
               <node concept="liA8E" id="76VnjLDoe9l" role="2OqNvi">
                 <ref role="37wK5l" to="drih:~EditorColorsManager.getGlobalScheme()" resolve="getGlobalScheme" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="6NzLY0LgSxV" role="3cqZAp">
+          <node concept="1PaTwC" id="6NzLY0LgSxW" role="1aUNEU">
+            <node concept="3oM_SD" id="6NzLY0Lh1PV" role="1PaTwD">
+              <property role="3oM_SC" value="The" />
+            </node>
+            <node concept="3oM_SD" id="6NzLY0Lh1PW" role="1PaTwD">
+              <property role="3oM_SC" value="VCS_ANNOTATIONS_COLOR_1-5" />
+            </node>
+            <node concept="3oM_SD" id="6NzLY0Lh1PX" role="1PaTwD">
+              <property role="3oM_SC" value="colors" />
+            </node>
+            <node concept="3oM_SD" id="6NzLY0Lh1PY" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="6NzLY0Lh1PZ" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="6NzLY0Lh1Q0" role="1PaTwD">
+              <property role="3oM_SC" value="Light" />
+            </node>
+            <node concept="3oM_SD" id="6NzLY0Lh1Q1" role="1PaTwD">
+              <property role="3oM_SC" value="scheme" />
+            </node>
+            <node concept="3oM_SD" id="6NzLY0Lh1Q2" role="1PaTwD">
+              <property role="3oM_SC" value="are" />
+            </node>
+            <node concept="3oM_SD" id="6NzLY0Lh1Q3" role="1PaTwD">
+              <property role="3oM_SC" value="way" />
+            </node>
+            <node concept="3oM_SD" id="6NzLY0Lh1Q4" role="1PaTwD">
+              <property role="3oM_SC" value="too" />
+            </node>
+            <node concept="3oM_SD" id="6NzLY0Lh1Q5" role="1PaTwD">
+              <property role="3oM_SC" value="close" />
+            </node>
+            <node concept="3oM_SD" id="6NzLY0Lh1Q6" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="6NzLY0Lh1Q7" role="1PaTwD">
+              <property role="3oM_SC" value="each" />
+            </node>
+            <node concept="3oM_SD" id="6NzLY0Lh1Q8" role="1PaTwD">
+              <property role="3oM_SC" value="other," />
+            </node>
+            <node concept="3oM_SD" id="6NzLY0Lh1Q9" role="1PaTwD">
+              <property role="3oM_SC" value="revert" />
+            </node>
+            <node concept="3oM_SD" id="6NzLY0Lh1Qa" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="6NzLY0Lh1Qb" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="6NzLY0Lh1Qc" role="1PaTwD">
+              <property role="3oM_SC" value="IntelliJ" />
+            </node>
+            <node concept="3oM_SD" id="6NzLY0Lh1Qd" role="1PaTwD">
+              <property role="3oM_SC" value="Light" />
+            </node>
+            <node concept="3oM_SD" id="6NzLY0Lh1Qe" role="1PaTwD">
+              <property role="3oM_SC" value="colors," />
+            </node>
+            <node concept="3oM_SD" id="6NzLY0Lh1Qf" role="1PaTwD">
+              <property role="3oM_SC" value="if" />
+            </node>
+            <node concept="3oM_SD" id="6NzLY0Lh1Qg" role="1PaTwD">
+              <property role="3oM_SC" value="available" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="2CeUBM7QQox" role="3cqZAp">
+          <node concept="3clFbS" id="2CeUBM7QQoz" role="3clFbx">
+            <node concept="3cpWs8" id="5iqtVopFLhE" role="3cqZAp">
+              <node concept="3cpWsn" id="5iqtVopFLhF" role="3cpWs9">
+                <property role="TrG5h" value="intellijScheme" />
+                <node concept="3uibUv" id="5iqtVopFpaJ" role="1tU5fm">
+                  <ref role="3uigEE" to="drih:~EditorColorsScheme" resolve="EditorColorsScheme" />
+                </node>
+                <node concept="2OqwBi" id="5iqtVopFLhG" role="33vP2m">
+                  <node concept="2YIFZM" id="5iqtVopFLhH" role="2Oq$k0">
+                    <ref role="37wK5l" to="drih:~EditorColorsManager.getInstance()" resolve="getInstance" />
+                    <ref role="1Pybhc" to="drih:~EditorColorsManager" resolve="EditorColorsManager" />
+                  </node>
+                  <node concept="liA8E" id="5iqtVopFLhI" role="2OqNvi">
+                    <ref role="37wK5l" to="drih:~EditorColorsManager.getScheme(java.lang.String)" resolve="getScheme" />
+                    <node concept="Xl_RD" id="5iqtVopFLhJ" role="37wK5m">
+                      <property role="Xl_RC" value="IntelliJ Light" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbJ" id="5iqtVopGSKt" role="3cqZAp">
+              <node concept="3clFbS" id="5iqtVopGSKv" role="3clFbx">
+                <node concept="3clFbF" id="2CeUBM7Tzf6" role="3cqZAp">
+                  <node concept="37vLTI" id="2CeUBM7TPgq" role="3clFbG">
+                    <node concept="37vLTw" id="5iqtVopFLhK" role="37vLTx">
+                      <ref role="3cqZAo" node="5iqtVopFLhF" resolve="intellijScheme" />
+                    </node>
+                    <node concept="37vLTw" id="2CeUBM7Tzf4" role="37vLTJ">
+                      <ref role="3cqZAo" node="76VnjLDoe9h" resolve="colorsScheme" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3y3z36" id="5iqtVopHj4i" role="3clFbw">
+                <node concept="10Nm6u" id="5iqtVopHjNo" role="3uHU7w" />
+                <node concept="37vLTw" id="5iqtVopH4Yy" role="3uHU7B">
+                  <ref role="3cqZAo" node="5iqtVopFLhF" resolve="intellijScheme" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="2CeUBM7RN8X" role="3clFbw">
+            <node concept="2OqwBi" id="2CeUBM7RfWj" role="2Oq$k0">
+              <node concept="37vLTw" id="2CeUBM7R5RH" role="2Oq$k0">
+                <ref role="3cqZAo" node="76VnjLDoe9h" resolve="colorsScheme" />
+              </node>
+              <node concept="liA8E" id="2CeUBM7SYdg" role="2OqNvi">
+                <ref role="37wK5l" to="hq8m:~Scheme.getName()" resolve="getName" />
+              </node>
+            </node>
+            <node concept="liA8E" id="2CeUBM7S0Ia" role="2OqNvi">
+              <ref role="37wK5l" to="wyt6:~String.contains(java.lang.CharSequence)" resolve="contains" />
+              <node concept="Xl_RD" id="2CeUBM7SJq9" role="37wK5m">
+                <property role="Xl_RC" value="user_Light" />
               </node>
             </node>
           </node>
