@@ -27,10 +27,10 @@ import com.intellij.openapi.ui.popup.Balloon;
 import com.intellij.openapi.ui.popup.Balloon.Position;
 import com.intellij.openapi.ui.popup.BalloonBuilder;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
-import com.intellij.ui.HintHint;
 import com.intellij.ui.awt.RelativePoint;
 import com.intellij.util.ArrayUtil;
 import com.intellij.util.messages.MessageBusConnection;
+import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.projectPane.logicalview.ProjectTree;
 import jetbrains.mps.ide.projectPane.logicalview.highlighting.ProjectPaneTreeHighlighter;
@@ -249,17 +249,16 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
     }
     sb.append("</html>");
 
-    // using awtTooltip just because I found similar code elsewhere in MPS, no idea what it means
-    final HintHint hintHint = new HintHint(e).setAwtTooltip(true).setForcePopup(true);
-//    final JEditorPane content = IdeTooltipManager.initPane(sb.toString(), hintHint, null);
     final JLabel content = new JLabel(sb.toString());
+    content.setForeground(UIUtil.getToolTipForeground());
     // XXX perhaps, shall use JBPopupFactory.createHtmlTextBalloonBuilder()
     // FWIW, there's also JBPopupFactory.createComponentPopupBuilder, used in IDEA's HelpTooltip.
     //       I don't know what's difference between the two.
     final BalloonBuilder bb = JBPopupFactory.getInstance().createBalloonBuilder(content);
     bb.setDisposable(this);
     // BalloonPopupBuilderImpl cons set default fill color, have to override even though content has proper background color
-    bb.setFadeoutTime(15000).setFillColor(hintHint.getTextBackground());
+    bb.setFadeoutTime(15000).setFillColor(UIUtil.getToolTipBackground());
+
     final Balloon b = bb.setHideOnClickOutside(true).setShowCallout(true).setHideOnKeyOutside(true).createBalloon();
     b.show(new RelativePoint(e), Position.above);
   }
