@@ -235,7 +235,12 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
       // FIXME in fact, JavaModuleFacetTab does the same, but only for Solution, while I need this to happen for every module with a new JMF.
       //       Merge these two approaches into 1 place.
       myGeneratedClassesLocation = getAbstractModule().getModuleSourceDir().findChild(AbstractModule.CLASSES_GEN);
-      // the rest of the fields get their defaults ok (myTransitionalNewValues == false, and compile/classes/ext are fine)
+      // myTransitionalNewValues == true to avoid persisting settings for modules other than Solution; we keep them implicit in 2022.3
+      myTransitionalNewValues = !(getModule() instanceof Solution);
+      if (getModule() instanceof Language) {
+        // this is the only setting different in L/G/D/S defaults
+        myLoadExtensions = LoadExtensions.Plugin;
+      }
       return;
     }
     String languageLevel = memento.get(JAVA_LANGUAGE_LEVEL);
