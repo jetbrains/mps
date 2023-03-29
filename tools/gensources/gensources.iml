@@ -1648,7 +1648,7 @@
     <orderEntry type="module" module-name="messages-for-legacy-constraints" />
     <orderEntry type="module" module-name="messages-for-structure" />
     <orderEntry type="module" module-name="mps-devkit" />
-    <orderEntry type="library" name="junit-jupiter-api-5.9.1" level="project" />
+    <orderEntry type="library" name="junit.jupiter.api" level="project" />
   </component>
 </module>
 
