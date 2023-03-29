@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package jetbrains.mps.ide.findusages.view.icons;
 
 import jetbrains.mps.icons.MPSIcons;
-import jetbrains.mps.ide.findusages.model.CategoryKind;
 import jetbrains.mps.ide.findusages.model.holders.IHolder;
 import jetbrains.mps.ide.findusages.model.holders.ModelHolder;
 import jetbrains.mps.ide.findusages.model.holders.ModelsHolder;
@@ -66,7 +65,7 @@ public class IconManager {
       return IdeIcons.MODEL_ICON;
     }
     if (value instanceof SLanguage) {
-      return MPSIcons.LanguageRuntime;
+      return MPSIcons.Nodes.LanguageRuntime;
     }
     if (value instanceof SModuleReference) {
       return IdeIcons.DEFAULT_ICON;

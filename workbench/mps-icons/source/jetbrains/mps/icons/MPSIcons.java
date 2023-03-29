@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -104,6 +104,7 @@ public class MPSIcons {
     public static final Icon Editor = load("/nodes/editor.png");
     public static final Icon Generator = load("/nodes/generator.png");
     public static final Icon Language = load("/nodes/language.png");
+    public static final Icon LanguageRuntime = LayeredIcon.create(Language, AllIcons.Nodes.Locked);
     public static final Icon MappingConfig = load("/nodes/mappingConf.png");
     public static final Icon Model = load("/nodes/model.png");
     public static final Icon Node = load("/nodes/node.png");
@@ -130,7 +131,11 @@ public class MPSIcons {
     }
   }
 
-  public static final Icon LanguageRuntime = LayeredIcon.create(Nodes.Language, AllIcons.Nodes.Locked);
+  /**
+   * @deprecated replace with {@link Nodes#LanguageRuntime}
+   */
+  @Deprecated(since = "2022.3", forRemoval = true)
+  public static final Icon LanguageRuntime = Nodes.LanguageRuntime;
 
   public static class ProjectPane {
     public static final Icon LogicalView = load("/projectPane/logicalView.png");
