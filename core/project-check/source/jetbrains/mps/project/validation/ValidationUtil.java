@@ -39,6 +39,7 @@ import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.util.CollectionUtil;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -407,11 +408,18 @@ public class ValidationUtil {
     final boolean packagedModule = module.isPackaged();
     if (descriptor.getSourcePaths() != null && !packagedModule) {
       for (String sourcePath : descriptor.getSourcePaths()) {
-        IFile file = module.getFileSystem().getFile(sourcePath);
-        if (!file.exists()) {
-          if (!processor.process(new ModuleValidationProblem(module, MessageStatus.ERROR, "Can't find source path: " + sourcePath))) {
+        try {
+          IFile file = module.getFileSystem().getFile(sourcePath);
+          if (!file.exists()) {
+            if (!processor.process(new ModuleValidationProblem(module, MessageStatus.ERROR, "Can't find source path: " + sourcePath))) {
+              return false;
+            }
+          }
+        } catch (PathFormatException ex) {
+          if (!processor.process(new ModuleValidationProblem(module, MessageStatus.ERROR, ex.getMessage()))) {
             return false;
           }
+          // try next path
         }
       }
     }
@@ -422,12 +430,19 @@ public class ValidationUtil {
           //       These paths are valid for source modules, and make no sense for deployed.
           continue;
         }
-        IFile file = module.getFileSystem().getFile(path);
-        if (!file.exists()) {
-          String msg = (new File(path).exists() ? "Idea VFS is not up-to-date. " : "") + "Can't find library: " + path;
-          if (!processor.process(new ModuleValidationProblem(module, MessageStatus.ERROR, msg))) {
+        try {
+          IFile file = module.getFileSystem().getFile(path);
+          if (!file.exists()) {
+            String msg = (new File(path).exists() ? "Idea VFS is not up-to-date. " : "") + "Can't find library: " + path;
+            if (!processor.process(new ModuleValidationProblem(module, MessageStatus.ERROR, msg))) {
+              return false;
+            }
+          }
+        } catch (PathFormatException ex) {
+          if (!processor.process(new ModuleValidationProblem(module, MessageStatus.ERROR, ex.getMessage()))) {
             return false;
           }
+          // try next path
         }
       }
     }
