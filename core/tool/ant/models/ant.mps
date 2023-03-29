@@ -3906,6 +3906,9 @@
                       <node concept="Xl_RD" id="1$mDfZ_AvMP" role="2BsfMF">
                         <property role="Xl_RC" value="java.base/sun.nio.ch" />
                       </node>
+                      <node concept="Xl_RD" id="1Dir_WFffHK" role="2BsfMF">
+                        <property role="Xl_RC" value="java.base/sun.nio.fs" />
+                      </node>
                       <node concept="Xl_RD" id="1$mDfZ_AvN3" role="2BsfMF">
                         <property role="Xl_RC" value="java.base/sun.security.ssl" />
                       </node>
