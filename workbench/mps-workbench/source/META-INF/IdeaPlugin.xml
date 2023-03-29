@@ -32,9 +32,18 @@
       <add-to-group group-id="FileOpenGroup" anchor="first"/>
     </group>
     <group id="MPSNewProjectOrModuleGroup">
-      <action id="NewProject" class="jetbrains.mps.workbench.actions.NewMPSProjectAction" text="New MPS Project"/>
+      <action id="NewProject" class="jetbrains.mps.workbench.actions.NewMPSProjectAction" text="New MPS Project">
+        <override-text place="ProjectWidgetPopup" text="New MPS Project..."/>
+        <add-to-group group-id="ProjectWidget.Actions" anchor="first"/>
+      </action>
       <add-to-group group-id="NewProjectOrModuleGroup"/>
     </group>
+
+    <action id="ProjectFromVersionControl" class="com.intellij.openapi.wm.impl.welcomeScreen.ProjectFromVersionControlAction" text="Checkout from Version Control">
+      <override-text place="ProjectWidgetPopup" text="Get from Version Control..."/>
+      <add-to-group group-id="ProjectWidget.Actions" relative-to-action="OpenProjectGroup" anchor="after"/>
+    </action>
+
     <action id="ForceSaveAll" class="jetbrains.mps.ide.actions.ForceSaveAll_Action">
       <add-to-group group-id="FileMenu" relative-to-action="SaveAll" anchor="after"/>
     </action>
