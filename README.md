@@ -19,7 +19,7 @@ Building MPS from sources
 -------------------------
 Download IntelliJ IDEA from the JetBrains website. Community edition will work just fine.
 1. Fork the MPS [GitHub repository](https://github.com/JetBrains/MPS) into your own space using the GitHub UI (go to the MPS repo and press the fork button at the top. This will create a fork of the repository in your github space).
-2. Clone your fork to your local machine: git clone git@github.com:<yourGitHubName>/MPS.git. Depending on your internet connection, this may take a long time, MPS is big. Consider using the _--depth_ git parameter to clone only part of the history of the project to save time and space.
+2. Clone your fork to your local machine: `git clone git@github.com:<yourGitHubName>/MPS.git`. Depending on your internet connection, this may take a long time, MPS is big. Consider using the _--depth_ git parameter to clone only part of the history of the project to save time and space.
 3. It is preferable to work in your own branch, so create a new branch to work in git checkout -b my_branch_name
 4. Open the project in [IntelliJ IDEA](http://www.jetbrains.com/idea) (either Community or Ultimate Edition)
 5. Attach JB JDK 17 to the project
