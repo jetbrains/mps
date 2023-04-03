@@ -8,6 +8,8 @@ import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.classloading.IdeaPluginModuleFacet;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.project.AbstractModule;
 
 public class ExplicitJavaFacetSettings extends BaseProjectMigration {
   public ExplicitJavaFacetSettings() {
@@ -48,6 +50,27 @@ public class ExplicitJavaFacetSettings extends BaseProjectMigration {
       }
       s.setChanged();
       s.save();
+    }
+    for (SModule pm : project.getProjectModulesWithGenerators()) {
+      if (pm instanceof Solution) {
+        // already handled
+        continue;
+      }
+      if (pm.isReadOnly() || pm.isPackaged()) {
+        continue;
+      }
+      JavaModuleFacet jmf = pm.getFacet(JavaModuleFacet.class);
+      if (jmf == null) {
+        continue;
+      }
+      jmf.setCompile(jmf.getCompile());
+      jmf.setLoadClasses(jmf.getLoadClasses());
+      jmf.setLoadExtensions(jmf.getLoadExtensions());
+      if (pm instanceof AbstractModule) {
+        ((AbstractModule) pm).setChanged();
+        ((AbstractModule) pm).save();
+
+      }
     }
     return true;
   }
