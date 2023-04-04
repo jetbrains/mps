@@ -20,6 +20,7 @@ import com.intellij.history.LocalHistory;
 import jetbrains.mps.ide.project.ProjectHelper;
 import java.awt.Color;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.ide.migration.MigrationRunnable;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -29,8 +30,6 @@ import jetbrains.mps.project.MPSProject;
 import com.intellij.configurationStore.StoreUtil;
 import java.util.concurrent.atomic.AtomicBoolean;
 import jetbrains.mps.classloading.ClassLoaderManager;
-import jetbrains.mps.migration.global.ProjectMigration;
-import jetbrains.mps.migration.global.CleanupProjectMigration;
 import java.util.HashMap;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.errors.item.IssueKindReportItem;
@@ -38,10 +37,13 @@ import jetbrains.mps.project.AbstractModule;
 import java.util.concurrent.atomic.AtomicReference;
 import jetbrains.mps.lang.migration.runtime.base.BaseScriptReference;
 import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.util.Status;
 import java.util.Objects;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.migration.global.ProjectMigration;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.migration.global.CleanupProjectMigration;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)/961570622494166185", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)")
 public class MigrationTask {
@@ -197,10 +199,10 @@ public class MigrationTask {
     return myIsComplete;
   }
 
-  private boolean executeSingleStep(final ProgressMonitor m, final String localHistCaption, final _FunctionTypes._void_P0_E0 execute, final _FunctionTypes._return_P0_E0<? extends Boolean> merge) {
+  private boolean executeSingleStep(final ProgressMonitor m, final String localHistCaption, final MigrationRunnable execute, final _FunctionTypes._return_P0_E0<? extends Boolean> merge) {
     // FIXME 'merge' step is to "group" module migrations by migration script. Just need to change MigrationSetup API
     //     to group ScriptApplied by script and invoke executeSingleStep for a group of related script references
-    final Wrappers._boolean noException = new Wrappers._boolean(true);
+    final Wrappers._boolean cleanExec = new Wrappers._boolean(true);
 
     final SRepository repo = mySession.getProject().getRepository();
     ApplicationManager.getApplication().invokeAndWait(() -> {
@@ -208,13 +210,8 @@ public class MigrationTask {
         myCurrentChange = LocalHistory.getInstance().startAction(APPLY + localHistCaption);
       }
       repo.getModelAccess().executeCommand(() -> {
-        try {
-          execute.invoke();
-        } catch (Throwable t) {
-          if (LOG.isErrorLevel()) {
-            LOG.error("Exception during migration", t);
-          }
-          noException.value = false;
+        if (!(execute.run(m).isOk())) {
+          cleanExec.value = false;
         }
       });
 
@@ -228,7 +225,7 @@ public class MigrationTask {
       }
     });
 
-    return noException.value;
+    return cleanExec.value;
   }
 
   /**
@@ -259,17 +256,14 @@ public class MigrationTask {
         @Override
         public void run() {
           while (true) {
-            final ProjectMigration pm = mySession.nextStepCleanup();
+            MigrationRunnable pm = mySession.nextStepCleanup();
             if (pm == null) {
               break;
             }
 
             m.step(pm.getDescription());
-            if (!(executeSingleStep(m, pm.getDescription(), () -> pm.execute(mySession.getProject()), null))) {
+            if (!(executeSingleStep(m, pm.getDescription(), pm, null))) {
               success.set(false);
-              if (pm instanceof CleanupProjectMigration) {
-                ((CleanupProjectMigration) pm).forceExecutionNextTime(mySession.getProject());
-              }
               break;
             }
 
@@ -357,13 +351,13 @@ public class MigrationTask {
       @Override
       public void run() {
         while (true) {
-          final ProjectMigration pm = mySession.nextStepProject();
+          MigrationRunnable pm = mySession.nextStepProject();
           if (pm == null) {
             break;
           }
 
           m.step(pm.getDescription());
-          if (!(executeSingleStep(m, pm.getDescription(), () -> mySession.getExecutor().executeProjectMigration(pm), null))) {
+          if (!(executeSingleStep(m, pm.getDescription(), pm, null))) {
             success.set(false);
             break;
           }
@@ -397,7 +391,24 @@ public class MigrationTask {
           String caption = sa.getScriptReference().resolve(mySession.getProject(), false).getCaption();
           m.step(caption + " [" + NameUtil.compactNamespace(sa.getModuleReference().getModuleName()) + "]");
           ListSequence.fromList(myWereRun).addElement(sa);
-          if (!(executeSingleStep(m, caption, () -> mySession.getExecutor().executeModuleMigration(sa), () -> {
+          if (!(executeSingleStep(m, caption, new MigrationRunnable() {
+            @NotNull
+            @Override
+            public String getDescription() {
+              return "";
+            }
+
+            @NotNull
+            @Override
+            public Status run(ProgressMonitor progress) {
+              try {
+                mySession.getExecutor().execute(sa);
+              } catch (Throwable ex) {
+                return new Status.ERROR(ex.getMessage());
+              }
+              return new Status.OK();
+            }
+          }, () -> {
             ScriptApplied next = mySession.nextStepModule(preferredId.get());
             if (next == null) {
               return false;

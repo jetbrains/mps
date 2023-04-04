@@ -6675,24 +6675,23 @@
             <ref role="1Y3XeK" to="bim2:4biA4YBo9Fb" resolve="MigrationExecutor" />
             <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
             <node concept="3Tm1VV" id="4biA4YBuFBS" role="1B3o_S" />
-            <node concept="3clFb_" id="4biA4YBuFBT" role="jymVt">
-              <property role="TrG5h" value="executeModuleMigration" />
-              <property role="1EzhhJ" value="false" />
-              <node concept="37vLTG" id="4biA4YBuFBU" role="3clF46">
+            <node concept="3clFb_" id="2$iyr2g6mkQ" role="jymVt">
+              <property role="TrG5h" value="execute" />
+              <node concept="3Tm1VV" id="2$iyr2g6mkV" role="1B3o_S" />
+              <node concept="3cqZAl" id="2$iyr2g6mkW" role="3clF45" />
+              <node concept="37vLTG" id="2$iyr2g6mkY" role="3clF46">
                 <property role="TrG5h" value="s" />
-                <node concept="3uibUv" id="4biA4YBuFBV" role="1tU5fm">
+                <node concept="3uibUv" id="2$iyr2g6mkZ" role="1tU5fm">
                   <ref role="3uigEE" to="bim2:6fMyXCHDaRA" resolve="ScriptApplied" />
                 </node>
               </node>
-              <node concept="3cqZAl" id="4biA4YBuFBW" role="3clF45" />
-              <node concept="3Tm1VV" id="4biA4YBuFBX" role="1B3o_S" />
-              <node concept="3clFbS" id="4biA4YBuFBY" role="3clF47">
+              <node concept="3clFbS" id="2$iyr2g6ml1" role="3clF47">
                 <node concept="3clFbF" id="4biA4YBuFBZ" role="3cqZAp">
                   <node concept="2OqwBi" id="4biA4YBuFC0" role="3clFbG">
                     <node concept="2OqwBi" id="4biA4YBuFC1" role="2Oq$k0">
                       <node concept="2OqwBi" id="4biA4YBuFC2" role="2Oq$k0">
                         <node concept="37vLTw" id="4biA4YBuFC3" role="2Oq$k0">
-                          <ref role="3cqZAo" node="4biA4YBuFBU" resolve="s" />
+                          <ref role="3cqZAo" node="2$iyr2g6mkY" resolve="sa" />
                         </node>
                         <node concept="liA8E" id="4biA4YBuFC4" role="2OqNvi">
                           <ref role="37wK5l" to="bim2:6fMyXCHDaVY" resolve="getScriptReference" />
@@ -6712,7 +6711,7 @@
                       <ref role="37wK5l" to="6f4m:6fMyXCHoysg" resolve="execute" />
                       <node concept="2OqwBi" id="4biA4YBuFC8" role="37wK5m">
                         <node concept="37vLTw" id="4biA4YBuFC9" role="2Oq$k0">
-                          <ref role="3cqZAo" node="4biA4YBuFBU" resolve="s" />
+                          <ref role="3cqZAo" node="2$iyr2g6mkY" resolve="sa" />
                         </node>
                         <node concept="liA8E" id="4biA4YBuFCa" role="2OqNvi">
                           <ref role="37wK5l" to="bim2:4EpASiE1I7R" resolve="getModule" />
@@ -6736,29 +6735,31 @@
                     </node>
                     <node concept="TSZUe" id="4biA4YBuFCe" role="2OqNvi">
                       <node concept="37vLTw" id="4biA4YBuFCf" role="25WWJ7">
-                        <ref role="3cqZAo" node="4biA4YBuFBU" resolve="s" />
+                        <ref role="3cqZAo" node="2$iyr2g6mkY" resolve="s" />
                       </node>
                     </node>
                   </node>
                 </node>
               </node>
+              <node concept="2AHcQZ" id="2$iyr2g6ml2" role="2AJF6D">
+                <ref role="2AI5Lk" to="wyt6:~Override" />
+              </node>
             </node>
-            <node concept="3clFb_" id="4biA4YBuFCg" role="jymVt">
-              <property role="TrG5h" value="executeProjectMigration" />
-              <property role="1EzhhJ" value="false" />
-              <node concept="37vLTG" id="4biA4YBuFCh" role="3clF46">
+            <node concept="3clFb_" id="2$iyr2g6ml8" role="jymVt">
+              <property role="TrG5h" value="execute" />
+              <node concept="3Tm1VV" id="2$iyr2g6mld" role="1B3o_S" />
+              <node concept="3cqZAl" id="2$iyr2g6mle" role="3clF45" />
+              <node concept="37vLTG" id="2$iyr2g6mlf" role="3clF46">
                 <property role="TrG5h" value="pm" />
-                <node concept="3uibUv" id="4biA4YBuFCi" role="1tU5fm">
-                  <ref role="3uigEE" to="bdll:~ProjectMigration" resolve="ProjectMigration" />
+                <node concept="3uibUv" id="2$iyr2g6mlg" role="1tU5fm">
+                  <ref role="3uigEE" to="bdll:~CleanupProjectMigration" resolve="CleanupProjectMigration" />
                 </node>
               </node>
-              <node concept="3cqZAl" id="4biA4YBuFCj" role="3clF45" />
-              <node concept="3Tm1VV" id="4biA4YBuFCk" role="1B3o_S" />
-              <node concept="3clFbS" id="4biA4YBuFCl" role="3clF47">
+              <node concept="3clFbS" id="2$iyr2g6mlj" role="3clF47">
                 <node concept="3clFbF" id="4biA4YBuFCm" role="3cqZAp">
                   <node concept="2OqwBi" id="4biA4YBuFCn" role="3clFbG">
                     <node concept="37vLTw" id="4biA4YBuFCo" role="2Oq$k0">
-                      <ref role="3cqZAo" node="4biA4YBuFCh" resolve="pm" />
+                      <ref role="3cqZAo" node="2$iyr2g6mlf" resolve="pm" />
                     </node>
                     <node concept="liA8E" id="4biA4YBuFCp" role="2OqNvi">
                       <ref role="37wK5l" to="bdll:~ProjectMigration.execute(jetbrains.mps.project.Project)" resolve="execute" />
@@ -6775,11 +6776,55 @@
                     </node>
                     <node concept="TSZUe" id="4biA4YBuFCu" role="2OqNvi">
                       <node concept="37vLTw" id="4biA4YBuFCv" role="25WWJ7">
-                        <ref role="3cqZAo" node="4biA4YBuFCh" resolve="pm" />
+                        <ref role="3cqZAo" node="2$iyr2g6mlf" resolve="pm" />
                       </node>
                     </node>
                   </node>
                 </node>
+              </node>
+              <node concept="2AHcQZ" id="2$iyr2g6mlk" role="2AJF6D">
+                <ref role="2AI5Lk" to="wyt6:~Override" />
+              </node>
+            </node>
+            <node concept="3clFb_" id="2$iyr2g6mlq" role="jymVt">
+              <property role="TrG5h" value="execute" />
+              <node concept="3Tm1VV" id="2$iyr2g6mlv" role="1B3o_S" />
+              <node concept="3cqZAl" id="2$iyr2g6mlw" role="3clF45" />
+              <node concept="37vLTG" id="2$iyr2g6mlx" role="3clF46">
+                <property role="TrG5h" value="pm" />
+                <node concept="3uibUv" id="2$iyr2g6mly" role="1tU5fm">
+                  <ref role="3uigEE" to="bdll:~ProjectMigration" resolve="ProjectMigration" />
+                </node>
+              </node>
+              <node concept="3clFbS" id="2$iyr2g6ml_" role="3clF47">
+                <node concept="3clFbF" id="2$iyr2g74Zt" role="3cqZAp">
+                  <node concept="2OqwBi" id="2$iyr2g74Zu" role="3clFbG">
+                    <node concept="37vLTw" id="2$iyr2g74Zv" role="2Oq$k0">
+                      <ref role="3cqZAo" node="2$iyr2g6mlx" resolve="pm" />
+                    </node>
+                    <node concept="liA8E" id="2$iyr2g74Zw" role="2OqNvi">
+                      <ref role="37wK5l" to="bdll:~ProjectMigration.execute(jetbrains.mps.project.Project)" resolve="execute" />
+                      <node concept="37vLTw" id="2$iyr2g74Zx" role="37wK5m">
+                        <ref role="3cqZAo" node="5pUhUVGMybv" resolve="myProject" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbF" id="2$iyr2g74Zy" role="3cqZAp">
+                  <node concept="2OqwBi" id="2$iyr2g74Zz" role="3clFbG">
+                    <node concept="37vLTw" id="2$iyr2g74Z$" role="2Oq$k0">
+                      <ref role="3cqZAo" node="65hwFmZj_CN" resolve="passedP" />
+                    </node>
+                    <node concept="TSZUe" id="2$iyr2g74Z_" role="2OqNvi">
+                      <node concept="37vLTw" id="2$iyr2g74ZA" role="25WWJ7">
+                        <ref role="3cqZAo" node="2$iyr2g6mlx" resolve="pm" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2AHcQZ" id="2$iyr2g6mlA" role="2AJF6D">
+                <ref role="2AI5Lk" to="wyt6:~Override" />
               </node>
             </node>
           </node>

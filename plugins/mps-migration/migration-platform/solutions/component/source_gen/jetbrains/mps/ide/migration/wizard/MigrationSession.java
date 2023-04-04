@@ -12,6 +12,7 @@ import jetbrains.mps.ide.migration.MigrationExecutor;
 import jetbrains.mps.migration.global.MigrationOptions;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.migration.runtime.base.BaseScriptReference;
+import jetbrains.mps.ide.migration.MigrationRunnable;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -25,6 +26,8 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.migration.global.CleanupProjectMigration;
 import jetbrains.mps.migration.global.ProjectMigrationWithOptions;
+import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.util.Status;
 import java.util.List;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
@@ -51,8 +54,10 @@ public interface MigrationSession {
   MigrationOptions getOptions();
 
   ScriptApplied nextStepModule(@Nullable BaseScriptReference preferredId);
-  ProjectMigration nextStepProject();
-  ProjectMigration nextStepCleanup();
+  @Nullable
+  MigrationRunnable nextStepProject();
+  @Nullable
+  MigrationRunnable nextStepCleanup();
 
   void updateModuleImports(ProgressMonitor progress);
 
@@ -165,9 +170,10 @@ public interface MigrationSession {
     }
 
     @Override
-    public ProjectMigration nextStepProject() {
+    @Nullable
+    public MigrationRunnable nextStepProject() {
       // important thing is that we only consider PMs of the required cleanup state only not to add odd PMs to considered
-      ProjectMigration m = CollectionSequence.fromCollection(getProjectMigrations()).where(new IWhereFilter<ProjectMigration>() {
+      final ProjectMigration m = CollectionSequence.fromCollection(getProjectMigrations()).where(new IWhereFilter<ProjectMigration>() {
         public boolean accept(ProjectMigration it) {
           return false == it instanceof CleanupProjectMigration;
         }
@@ -176,23 +182,65 @@ public interface MigrationSession {
           return consider(it);
         }
       });
+      if (m == null) {
+        return null;
+      }
       if (m instanceof ProjectMigrationWithOptions) {
         ((ProjectMigrationWithOptions) m).setOptionValues(getOptions());
       }
-      return m;
+      return new MigrationRunnable() {
+
+        @NotNull
+        @Override
+        public String getDescription() {
+          return m.getDescription();
+        }
+        @NotNull
+        @Override
+        public Status run(ProgressMonitor progress) {
+          try {
+            getExecutor().execute(m);
+            return new Status.OK();
+          } catch (Throwable ex) {
+            return new Status.ERROR(ex.getMessage());
+          }
+        }
+      };
     }
 
     @Override
-    public ProjectMigration nextStepCleanup() {
-      ProjectMigration m = CollectionSequence.fromCollection(getProjectMigrations()).ofType(CleanupProjectMigration.class).findFirst(new IWhereFilter<CleanupProjectMigration>() {
+    @Nullable
+    public MigrationRunnable nextStepCleanup() {
+      final CleanupProjectMigration m = CollectionSequence.fromCollection(getProjectMigrations()).ofType(CleanupProjectMigration.class).findFirst(new IWhereFilter<CleanupProjectMigration>() {
         public boolean accept(CleanupProjectMigration it) {
           return consider(it);
         }
       });
+      if (m == null) {
+        return null;
+      }
       if (m instanceof ProjectMigrationWithOptions) {
         ((ProjectMigrationWithOptions) m).setOptionValues(getOptions());
       }
-      return m;
+      return new MigrationRunnable() {
+
+        @NotNull
+        @Override
+        public String getDescription() {
+          return m.getDescription();
+        }
+        @NotNull
+        @Override
+        public Status run(ProgressMonitor progress) {
+          try {
+            getExecutor().execute(m);
+            return new Status.OK();
+          } catch (Throwable ex) {
+            m.forceExecutionNextTime(getProject());
+            return new Status.ERROR(ex.getMessage());
+          }
+        }
+      };
     }
 
     private boolean consider(ProjectMigration pm) {

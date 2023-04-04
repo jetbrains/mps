@@ -30,6 +30,7 @@ import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.errors.item.UnresolvedReferenceReportItem;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import jetbrains.mps.ide.migration.MigrationExecutor;
+import jetbrains.mps.migration.global.CleanupProjectMigration;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScript;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.project.Project;
@@ -46,7 +47,6 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.migration.global.ProjectMigrationWithOptions;
 import java.util.Collections;
 import jetbrains.mps.migration.global.MigrationOptions;
-import jetbrains.mps.migration.global.CleanupProjectMigration;
 
 /*package*/ class TestMigrationSession extends MigrationSession.MigrationSessionBase {
   private final MigrationTestConfigDialog.Result mySettings;
@@ -100,11 +100,18 @@ import jetbrains.mps.migration.global.CleanupProjectMigration;
     }
   };
   private final MigrationExecutor myExecutor = new MigrationExecutor() {
-    public void executeModuleMigration(ScriptApplied s) {
+    @Override
+    public void execute(ScriptApplied s) {
       s.getScriptReference().resolve(myProject, true).execute(s.getModule(myProject.getRepository()));
       ListSequence.fromList(passedM).addElement(s);
     }
-    public void executeProjectMigration(ProjectMigration pm) {
+    @Override
+    public void execute(CleanupProjectMigration pm) {
+      pm.execute(myProject);
+      ListSequence.fromList(passedP).addElement(pm);
+    }
+    @Override
+    public void execute(ProjectMigration pm) {
       pm.execute(myProject);
       ListSequence.fromList(passedP).addElement(pm);
     }
