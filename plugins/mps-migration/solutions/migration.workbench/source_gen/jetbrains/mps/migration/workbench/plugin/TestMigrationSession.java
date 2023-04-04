@@ -44,10 +44,10 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
-import jetbrains.mps.migration.global.CleanupProjectMigration;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptBase;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import java.util.Collections;
+import jetbrains.mps.migration.global.CleanupProjectMigration;
 
 /*package*/ class TestMigrationSession extends MigrationSession.MigrationSessionBase {
   private final MigrationTestConfigDialog.Result mySettings;
@@ -181,38 +181,6 @@ import java.util.Collections;
     return sa;
   }
 
-  @Override
-  public ProjectMigration nextStepProject() {
-    final ProjectMigration next = CollectionSequence.fromCollection(getProjectMigrations()).where(new IWhereFilter<ProjectMigration>() {
-      public boolean accept(ProjectMigration it) {
-        return !(it instanceof CleanupProjectMigration);
-      }
-    }).findFirst(new IWhereFilter<ProjectMigration>() {
-      public boolean accept(ProjectMigration it) {
-        return !(ListSequence.fromList(passedP).contains(it));
-      }
-    });
-    if (next == null) {
-      return null;
-    }
-    ListSequence.fromList(passedP).addElement(next);
-    return next;
-  }
-
-  @Override
-  public ProjectMigration nextStepCleanup() {
-    final ProjectMigration next = CollectionSequence.fromCollection(getProjectMigrations()).ofType(CleanupProjectMigration.class).findFirst(new IWhereFilter<CleanupProjectMigration>() {
-      public boolean accept(CleanupProjectMigration it) {
-        return !(ListSequence.fromList(passedP).contains(it));
-      }
-    });
-    if (next == null) {
-      return null;
-    }
-    ListSequence.fromList(passedP).addElement(next);
-    return next;
-  }
-
   private List<ScriptApplied> getModuleMigrationsApplied() {
     final Wrappers._T<List<ScriptApplied>> res = new Wrappers._T<List<ScriptApplied>>();
     final SRepository repo = myProject.getRepository();
@@ -270,10 +238,10 @@ import java.util.Collections;
     }).toListSequence();
   }
 
-  private class MyModuleMigration extends MigrationScriptBase {
-    private SLanguage myLang;
-    private int myVersion;
-    private boolean myError;
+  private static class MyModuleMigration extends MigrationScriptBase {
+    private final SLanguage myLang;
+    private final int myVersion;
+    private final boolean myError;
 
     public MyModuleMigration(SLanguage lang, int version, boolean error) {
       myLang = lang;
@@ -308,10 +276,11 @@ import java.util.Collections;
     }
   }
 
-  private class MyProjectMigration implements ProjectMigration, ProjectMigrationWithOptions {
-    private String myId;
-    private boolean myOptions;
-    private boolean myError;
+  private static class MyProjectMigration implements ProjectMigration, ProjectMigrationWithOptions {
+    private final String myId;
+    private final boolean myOptions;
+    private final boolean myError;
+
     public MyProjectMigration(String id, boolean options, boolean error) {
       myId = id;
       myOptions = options;
@@ -349,7 +318,7 @@ import java.util.Collections;
     }
   }
 
-  private class MyCleanupProjectMigration extends MyProjectMigration implements CleanupProjectMigration, ProjectMigrationWithOptions {
+  private static class MyCleanupProjectMigration extends MyProjectMigration implements CleanupProjectMigration, ProjectMigrationWithOptions {
     public MyCleanupProjectMigration(String id, boolean options, boolean error) {
       super(id, options, error);
     }
