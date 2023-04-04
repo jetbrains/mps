@@ -1128,10 +1128,17 @@
       <property role="TrG5h" value="FileListener" />
       <node concept="312cEg" id="1ysYxhdn90W" role="jymVt">
         <property role="TrG5h" value="myResolve" />
-        <property role="3TUv4t" value="true" />
         <node concept="3Tm6S6" id="1ysYxhdn8Gs" role="1B3o_S" />
         <node concept="3uibUv" id="1ysYxhdn8Wy" role="1tU5fm">
           <ref role="3uigEE" node="5ooWrzQB6jG" resolve="GeneratedFileConflictResolving" />
+        </node>
+      </node>
+      <node concept="312cEg" id="6LFiQrcLnK_" role="jymVt">
+        <property role="TrG5h" value="myProject" />
+        <property role="3TUv4t" value="true" />
+        <node concept="3Tm6S6" id="6LFiQrcLjYQ" role="1B3o_S" />
+        <node concept="3uibUv" id="6LFiQrcLnH4" role="1tU5fm">
+          <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
         </node>
       </node>
       <node concept="2tJIrI" id="1ysYxhdn96T" role="jymVt" />
@@ -1229,23 +1236,13 @@
               </node>
             </node>
           </node>
-          <node concept="3clFbF" id="1ysYxhdn9l4" role="3cqZAp">
-            <node concept="37vLTI" id="1ysYxhdn9tB" role="3clFbG">
-              <node concept="2ShNRf" id="1ysYxhdn9_G" role="37vLTx">
-                <node concept="1pGfFk" id="1ysYxhdnKpl" role="2ShVmc">
-                  <property role="373rjd" value="true" />
-                  <ref role="37wK5l" node="5ooWrzQBcSS" resolve="GeneratedFileConflictResolving" />
-                  <node concept="2YIFZM" id="1ysYxhdnL2s" role="37wK5m">
-                    <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProjectOrFail(com.intellij.openapi.project.Project)" resolve="fromIdeaProjectOrFail" />
-                    <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
-                    <node concept="37vLTw" id="1ysYxhdnLdl" role="37wK5m">
-                      <ref role="3cqZAo" node="1ysYxhdmMPj" resolve="ideaProject" />
-                    </node>
-                  </node>
-                </node>
+          <node concept="3clFbF" id="6LFiQrcLpzw" role="3cqZAp">
+            <node concept="37vLTI" id="6LFiQrcLpSX" role="3clFbG">
+              <node concept="37vLTw" id="6LFiQrcLq8m" role="37vLTx">
+                <ref role="3cqZAo" node="1ysYxhdmMPj" resolve="ideaProject" />
               </node>
-              <node concept="37vLTw" id="1ysYxhdn9l3" role="37vLTJ">
-                <ref role="3cqZAo" node="1ysYxhdn90W" resolve="myResolve" />
+              <node concept="37vLTw" id="6LFiQrcLpzu" role="37vLTJ">
+                <ref role="3cqZAo" node="6LFiQrcLnK_" resolve="myProject" />
               </node>
             </node>
           </node>
@@ -1291,8 +1288,8 @@
                 <node concept="3clFbS" id="57iyDtTgr84" role="3clFbx">
                   <node concept="3clFbF" id="57iyDtTgr85" role="3cqZAp">
                     <node concept="2OqwBi" id="57iyDtTgr86" role="3clFbG">
-                      <node concept="37vLTw" id="57iyDtTgr87" role="2Oq$k0">
-                        <ref role="3cqZAo" node="1ysYxhdn90W" resolve="myResolve" />
+                      <node concept="1rXfSq" id="6LFiQrcLK0i" role="2Oq$k0">
+                        <ref role="37wK5l" node="6LFiQrcLgL0" resolve="getResolver" />
                       </node>
                       <node concept="liA8E" id="57iyDtTgr88" role="2OqNvi">
                         <ref role="37wK5l" node="5ooWrzQB8DP" resolve="resolveIfNeeded" />
@@ -1356,8 +1353,8 @@
                 <node concept="3clFbS" id="57iyDtTfcWG" role="3clFbx">
                   <node concept="3clFbF" id="1ysYxhdnLp5" role="3cqZAp">
                     <node concept="2OqwBi" id="1ysYxhdnLy7" role="3clFbG">
-                      <node concept="37vLTw" id="1ysYxhdnLp3" role="2Oq$k0">
-                        <ref role="3cqZAo" node="1ysYxhdn90W" resolve="myResolve" />
+                      <node concept="1rXfSq" id="6LFiQrcLI_y" role="2Oq$k0">
+                        <ref role="37wK5l" node="6LFiQrcLgL0" resolve="getResolver" />
                       </node>
                       <node concept="liA8E" id="1ysYxhdnLG1" role="2OqNvi">
                         <ref role="37wK5l" node="5ooWrzQB8DP" resolve="resolveIfNeeded" />
@@ -1386,6 +1383,162 @@
         </node>
         <node concept="2AHcQZ" id="57iyDtTeY$G" role="2AJF6D">
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+        </node>
+      </node>
+      <node concept="2tJIrI" id="6LFiQrcLa5v" role="jymVt" />
+      <node concept="3clFb_" id="6LFiQrcLgL0" role="jymVt">
+        <property role="TrG5h" value="getResolver" />
+        <node concept="3clFbS" id="6LFiQrcLgL3" role="3clF47">
+          <node concept="3SKdUt" id="6LFiQrcLLt4" role="3cqZAp">
+            <node concept="1PaTwC" id="6LFiQrcLLt5" role="1aUNEU">
+              <node concept="3oM_SD" id="6LFiQrcLMIG" role="1PaTwD">
+                <property role="3oM_SC" value="postpone" />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLMII" role="1PaTwD">
+                <property role="3oM_SC" value="MPSProject" />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLMIL" role="1PaTwD">
+                <property role="3oM_SC" value="initialization" />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLMJ0" role="1PaTwD">
+                <property role="3oM_SC" value="until" />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLMJ5" role="1PaTwD">
+                <property role="3oM_SC" value="event" />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLMJb" role="1PaTwD">
+                <property role="3oM_SC" value="is" />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLMJi" role="1PaTwD">
+                <property role="3oM_SC" value="fromOurFileSystem," />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLMJq" role="1PaTwD">
+                <property role="3oM_SC" value="see" />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLMJz" role="1PaTwD">
+                <property role="3oM_SC" value="MPS-35533" />
+              </node>
+            </node>
+          </node>
+          <node concept="3SKdUt" id="6LFiQrcLSbB" role="3cqZAp">
+            <node concept="1PaTwC" id="6LFiQrcLSbC" role="1aUNEU">
+              <node concept="3oM_SD" id="6LFiQrcLTtq" role="1PaTwD">
+                <property role="3oM_SC" value="no" />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLTts" role="1PaTwD">
+                <property role="3oM_SC" value="idea" />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLTtv" role="1PaTwD">
+                <property role="3oM_SC" value="what" />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLTtz" role="1PaTwD">
+                <property role="3oM_SC" value="a" />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLTtC" role="1PaTwD">
+                <property role="3oM_SC" value="proper" />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLTtI" role="1PaTwD">
+                <property role="3oM_SC" value="fix" />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLTu6" role="1PaTwD">
+                <property role="3oM_SC" value="would" />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLTue" role="1PaTwD">
+                <property role="3oM_SC" value="be," />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLTun" role="1PaTwD">
+                <property role="3oM_SC" value="as" />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLTuS" role="1PaTwD">
+                <property role="3oM_SC" value="MPS" />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLTv3" role="1PaTwD">
+                <property role="3oM_SC" value="needs" />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLTvf" role="1PaTwD">
+                <property role="3oM_SC" value="MPSProject" />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLTvs" role="1PaTwD">
+                <property role="3oM_SC" value="to" />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLTvE" role="1PaTwD">
+                <property role="3oM_SC" value="deal" />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLTvT" role="1PaTwD">
+                <property role="3oM_SC" value="with" />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLTw9" role="1PaTwD">
+                <property role="3oM_SC" value="IFile," />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLTwq" role="1PaTwD">
+                <property role="3oM_SC" value="while" />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLTwG" role="1PaTwD">
+                <property role="3oM_SC" value="IDEA" />
+              </node>
+            </node>
+          </node>
+          <node concept="3SKdUt" id="6LFiQrcLUVX" role="3cqZAp">
+            <node concept="1PaTwC" id="6LFiQrcLUVY" role="1aUNEU">
+              <node concept="3oM_SD" id="6LFiQrcLWfy" role="1PaTwD">
+                <property role="3oM_SC" value="tracks" />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLWfB" role="1PaTwD">
+                <property role="3oM_SC" value="VFS" />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLWfT" role="1PaTwD">
+                <property role="3oM_SC" value="changes" />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLWfE" role="1PaTwD">
+                <property role="3oM_SC" value="w/o" />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLWfI" role="1PaTwD">
+                <property role="3oM_SC" value="a" />
+              </node>
+              <node concept="3oM_SD" id="6LFiQrcLWfN" role="1PaTwD">
+                <property role="3oM_SC" value="project." />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbJ" id="6LFiQrcLqks" role="3cqZAp">
+            <node concept="3clFbC" id="6LFiQrcLtbH" role="3clFbw">
+              <node concept="10Nm6u" id="6LFiQrcLuwR" role="3uHU7w" />
+              <node concept="37vLTw" id="6LFiQrcLrJX" role="3uHU7B">
+                <ref role="3cqZAo" node="1ysYxhdn90W" resolve="myResolve" />
+              </node>
+            </node>
+            <node concept="3clFbS" id="6LFiQrcLqku" role="3clFbx">
+              <node concept="3clFbF" id="1ysYxhdn9l4" role="3cqZAp">
+                <node concept="37vLTI" id="1ysYxhdn9tB" role="3clFbG">
+                  <node concept="2ShNRf" id="1ysYxhdn9_G" role="37vLTx">
+                    <node concept="1pGfFk" id="1ysYxhdnKpl" role="2ShVmc">
+                      <property role="373rjd" value="true" />
+                      <ref role="37wK5l" node="5ooWrzQBcSS" resolve="GeneratedFileConflictResolving" />
+                      <node concept="2YIFZM" id="1ysYxhdnL2s" role="37wK5m">
+                        <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProjectOrFail(com.intellij.openapi.project.Project)" resolve="fromIdeaProjectOrFail" />
+                        <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
+                        <node concept="37vLTw" id="1ysYxhdnLdl" role="37wK5m">
+                          <ref role="3cqZAo" node="6LFiQrcLnK_" resolve="myProject" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="1ysYxhdn9l3" role="37vLTJ">
+                    <ref role="3cqZAo" node="1ysYxhdn90W" resolve="myResolve" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3cpWs6" id="6LFiQrcLyqK" role="3cqZAp">
+            <node concept="37vLTw" id="6LFiQrcL_2Z" role="3cqZAk">
+              <ref role="3cqZAo" node="1ysYxhdn90W" resolve="myResolve" />
+            </node>
+          </node>
+        </node>
+        <node concept="3Tm6S6" id="6LFiQrcLeZd" role="1B3o_S" />
+        <node concept="3uibUv" id="6LFiQrcLgyU" role="3clF45">
+          <ref role="3uigEE" node="5ooWrzQB6jG" resolve="GeneratedFileConflictResolving" />
         </node>
       </node>
       <node concept="2tJIrI" id="57iyDtTfdZ1" role="jymVt" />

@@ -26,6 +26,7 @@
     <orderEntry type="library" scope="TEST" name="Idea-platform" level="project" />
     <orderEntry type="module" module-name="typechecking" />
     <orderEntry type="module" module-name="pattern-runtime" />
-    <orderEntry type="library" name="com.intellij.openapi" level="project" />
+    <orderEntry type="library" name="gnu.trove" level="project" />
+    <orderEntry type="library" name="org.jdom" level="project" />
   </component>
 </module>

@@ -15,11 +15,11 @@ import com.intellij.openapi.vcs.FileStatusManager;
 import com.intellij.openapi.vcs.changes.VcsDirtyScopeManager;
 import com.intellij.openapi.vfs.newvfs.BulkFileListener;
 import com.intellij.openapi.project.Project;
-import jetbrains.mps.ide.project.ProjectHelper;
 import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import com.intellij.openapi.vfs.newvfs.events.VFileDeleteEvent;
 import com.intellij.openapi.vfs.newvfs.events.VFileContentChangeEvent;
+import jetbrains.mps.ide.project.ProjectHelper;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import com.intellij.openapi.vcs.AbstractVcs;
@@ -58,19 +58,20 @@ public class GeneratedFileConflictResolving {
   }
 
   public static class FileListener implements BulkFileListener {
-    private final GeneratedFileConflictResolving myResolve;
+    private GeneratedFileConflictResolving myResolve;
+    private final Project myProject;
 
     public FileListener(Project ideaProject) {
       // VFS changes are app-wide, it's odd to instantiate a listener per project, but it's
       // easier to migrate from legacy Component approach this way. Refactor if you dare.
-      myResolve = new GeneratedFileConflictResolving(ProjectHelper.fromIdeaProjectOrFail(ideaProject));
+      myProject = ideaProject;
     }
 
     @Override
     public void before(@NotNull List<? extends VFileEvent> events) {
       for (VFileEvent e : fromOurFileSystem(events)) {
         if (e instanceof VFileDeleteEvent) {
-          myResolve.resolveIfNeeded(e);
+          getResolver().resolveIfNeeded(e);
         }
       }
     }
@@ -78,9 +79,19 @@ public class GeneratedFileConflictResolving {
     public void after(@NotNull List<? extends VFileEvent> events) {
       for (VFileEvent e : fromOurFileSystem(events)) {
         if (e instanceof VFileContentChangeEvent) {
-          myResolve.resolveIfNeeded(e);
+          getResolver().resolveIfNeeded(e);
         }
       }
+    }
+
+    private GeneratedFileConflictResolving getResolver() {
+      // postpone MPSProject initialization until event is fromOurFileSystem, see MPS-35533
+      // no idea what a proper fix would be, as MPS needs MPSProject to deal with IFile, while IDEA
+      // tracks VFS changes w/o a project.
+      if (myResolve == null) {
+        myResolve = new GeneratedFileConflictResolving(ProjectHelper.fromIdeaProjectOrFail(myProject));
+      }
+      return myResolve;
     }
 
     private static List<VFileEvent> fromOurFileSystem(List<? extends VFileEvent> events) {
