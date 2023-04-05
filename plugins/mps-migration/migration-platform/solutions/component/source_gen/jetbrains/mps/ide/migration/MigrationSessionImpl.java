@@ -50,7 +50,7 @@ public class MigrationSessionImpl extends MigrationSession.MigrationSessionBase 
   }
 
   @Override
-  public MigrationExecutor getExecutor() {
+  protected MigrationExecutor getExecutor() {
     return myExecutor;
   }
 }

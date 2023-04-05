@@ -40,7 +40,7 @@
       <node id="4930617085367837000" at="38,31,39,24" concept="13" />
       <node id="4930617085367841607" at="43,47,44,29" concept="13" />
       <node id="4815078419491635026" at="48,40,49,21" concept="13" />
-      <node id="4815078419491568868" at="53,42,54,22" concept="13" />
+      <node id="4815078419491568868" at="53,45,54,22" concept="13" />
       <node id="1244156871960204839" at="17,0,20,0" concept="3" trace="MigrationSessionImpl#(Ljetbrains/mps/project/Project;Ljetbrains/mps/ide/migration/MigrationSetup;ZZZ)V" />
       <node id="5493972767264903669" at="25,26,28,5" concept="10" />
       <node id="4941303095730722033" at="28,5,31,5" concept="10" />
@@ -57,7 +57,7 @@
       <scope id="4930617085367814498" at="38,31,39,24" />
       <scope id="4930617085367814508" at="43,47,44,29" />
       <scope id="2885477569139444407" at="48,40,49,21" />
-      <scope id="4815078419491561406" at="53,42,54,22" />
+      <scope id="4815078419491561406" at="53,45,54,22" />
       <scope id="1244156871960204839" at="17,0,20,0">
         <var name="forceSave" id="231600208032292465" />
         <var name="migrate" id="231600208032294956" />

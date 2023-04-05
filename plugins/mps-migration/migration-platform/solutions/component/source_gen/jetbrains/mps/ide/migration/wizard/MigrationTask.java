@@ -5,12 +5,11 @@ package jetbrains.mps.ide.migration.wizard;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.logging.Logger;
 import com.intellij.history.LocalHistoryAction;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
+import jetbrains.mps.persistence.PersistenceRegistry;
 import java.util.List;
 import jetbrains.mps.ide.migration.ScriptApplied;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
-import org.jetbrains.mps.openapi.util.ProgressMonitor;
-import jetbrains.mps.persistence.PersistenceRegistry;
 import java.util.Map;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -21,7 +20,6 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import java.awt.Color;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.migration.MigrationRunnable;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.module.SRepository;
 import com.intellij.openapi.application.ApplicationManager;
@@ -30,15 +28,11 @@ import jetbrains.mps.project.MPSProject;
 import com.intellij.configurationStore.StoreUtil;
 import java.util.concurrent.atomic.AtomicBoolean;
 import jetbrains.mps.classloading.ClassLoaderManager;
+import java.util.ArrayList;
 import java.util.HashMap;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.project.AbstractModule;
-import java.util.concurrent.atomic.AtomicReference;
-import jetbrains.mps.lang.migration.runtime.base.BaseScriptReference;
-import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.util.Status;
-import java.util.Objects;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.migration.global.ProjectMigration;
@@ -55,7 +49,6 @@ public class MigrationTask {
   private final MigrationSession mySession;
   private volatile boolean myIsComplete = false;
   private LocalHistoryAction myCurrentChange = null;
-  private final List<ScriptApplied> myWereRun = ListSequence.fromList(new ArrayList<ScriptApplied>());
   private final boolean myHaltOnFailedPrecheck;
 
   public MigrationTask(MigrationSession session) {
@@ -169,7 +162,7 @@ public class MigrationTask {
 
     // todo move from here to migration annotations
     if (findNotMigrated(monitor.subTask(15))) {
-      throw new PostCheckError(mySession.getProject(), myWereRun, false, mySession.getChecker());
+      throw new PostCheckError(mySession.getProject(), mySession.getExecutedModuleMigrations(), false, mySession.getChecker());
     }
     monitor.done();
   }
@@ -199,30 +192,25 @@ public class MigrationTask {
     return myIsComplete;
   }
 
-  private boolean executeSingleStep(final ProgressMonitor m, final String localHistCaption, final MigrationRunnable execute, final _FunctionTypes._return_P0_E0<? extends Boolean> merge) {
-    // FIXME 'merge' step is to "group" module migrations by migration script. Just need to change MigrationSetup API
-    //     to group ScriptApplied by script and invoke executeSingleStep for a group of related script references
+  private boolean executeSingleStep(final ProgressMonitor m, final String localHistCaption, final MigrationRunnable execute) {
     final Wrappers._boolean cleanExec = new Wrappers._boolean(true);
 
     final SRepository repo = mySession.getProject().getRepository();
     ApplicationManager.getApplication().invokeAndWait(() -> {
-      if (myCurrentChange == null) {
-        myCurrentChange = LocalHistory.getInstance().startAction(APPLY + localHistCaption);
-      }
+      assert myCurrentChange == null;
+      myCurrentChange = LocalHistory.getInstance().startAction(APPLY + localHistCaption);
       repo.getModelAccess().executeCommand(() -> {
         if (!(execute.run(m).isOk())) {
           cleanExec.value = false;
         }
       });
 
-      if (merge == null || !(merge.invoke())) {
-        m.step("Saving project...");
-        new SaveRepositoryCommand(repo).execute();
-        saveProject();
+      m.step("Saving project...");
+      new SaveRepositoryCommand(repo).execute();
+      saveProject();
 
-        myCurrentChange.finish();
-        myCurrentChange = null;
-      }
+      myCurrentChange.finish();
+      myCurrentChange = null;
     });
 
     return cleanExec.value;
@@ -262,7 +250,7 @@ public class MigrationTask {
             }
 
             m.step(pm.getDescription());
-            if (!(executeSingleStep(m, pm.getDescription(), pm, null))) {
+            if (!(executeSingleStep(m, pm.getDescription(), pm))) {
               success.set(false);
               break;
             }
@@ -357,7 +345,7 @@ public class MigrationTask {
           }
 
           m.step(pm.getDescription());
-          if (!(executeSingleStep(m, pm.getDescription(), pm, null))) {
+          if (!(executeSingleStep(m, pm.getDescription(), pm))) {
             success.set(false);
             break;
           }
@@ -374,7 +362,6 @@ public class MigrationTask {
     m.start("Running language migrations...", moduleStepsCount());
     final AtomicBoolean success = new AtomicBoolean(true);
 
-    final AtomicReference<BaseScriptReference> preferredId = new AtomicReference<BaseScriptReference>();
     // FIXME why non-reloadable section when we don't compile any module here and can't deploy anything?
     //     perhaps, as fixed module could let some language complete its deps and make it loadable?
     //     Anyway, need to figure out better approach as the method is deprecated
@@ -382,39 +369,13 @@ public class MigrationTask {
       @Override
       public void run() {
         while (true) {
-          final ScriptApplied sa = mySession.nextStepModule(preferredId.get());
+          final MigrationRunnable sa = mySession.nextStepModule();
           if (sa == null) {
             break;
           }
 
-          preferredId.set(sa.getScriptReference());
-          String caption = sa.getScriptReference().resolve(mySession.getProject(), false).getCaption();
-          m.step(caption + " [" + NameUtil.compactNamespace(sa.getModuleReference().getModuleName()) + "]");
-          ListSequence.fromList(myWereRun).addElement(sa);
-          if (!(executeSingleStep(m, caption, new MigrationRunnable() {
-            @NotNull
-            @Override
-            public String getDescription() {
-              return "";
-            }
-
-            @NotNull
-            @Override
-            public Status run(ProgressMonitor progress) {
-              try {
-                mySession.getExecutor().execute(sa);
-              } catch (Throwable ex) {
-                return new Status.ERROR(ex.getMessage());
-              }
-              return new Status.OK();
-            }
-          }, () -> {
-            ScriptApplied next = mySession.nextStepModule(preferredId.get());
-            if (next == null) {
-              return false;
-            }
-            return Objects.equals(sa.getScriptReference(), next.getScriptReference());
-          }))) {
+          m.step(sa.getDescription());
+          if (!(executeSingleStep(m, sa.getDescription(), sa))) {
             success.set(false);
             break;
           }
@@ -430,7 +391,9 @@ public class MigrationTask {
 
   private boolean findNotMigrated(ProgressMonitor m) {
     final Wrappers._boolean haveNotMigrated = new Wrappers._boolean(false);
-    mySession.getChecker().findNotMigrated(m, myWereRun, (Problem p) -> {
+    // FIXME each time we use checker from within a session, it can take already executed migrations internally
+    //      the only scenario to address is use of MigrationCheckerImpl independently
+    mySession.getChecker().findNotMigrated(m, mySession.getExecutedModuleMigrations(), (Problem p) -> {
       haveNotMigrated.value = true;
       return false;
     });

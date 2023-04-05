@@ -8,30 +8,34 @@ import java.util.Collection;
 import jetbrains.mps.ide.migration.ScriptApplied;
 import jetbrains.mps.migration.global.ProjectMigration;
 import jetbrains.mps.ide.migration.MigrationChecker;
-import jetbrains.mps.ide.migration.MigrationExecutor;
 import jetbrains.mps.migration.global.MigrationOptions;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.lang.migration.runtime.base.BaseScriptReference;
 import jetbrains.mps.ide.migration.MigrationRunnable;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
+import java.util.List;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
 import jetbrains.mps.ide.migration.MigrationSetup;
+import jetbrains.mps.ide.migration.MigrationExecutor;
+import jetbrains.mps.lang.migration.runtime.base.BaseScriptReference;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.lang.migration.runtime.base.RefactoringScriptReference;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.migration.global.CleanupProjectMigration;
-import jetbrains.mps.migration.global.ProjectMigrationWithOptions;
+import java.util.concurrent.atomic.AtomicReference;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.util.Status;
-import java.util.List;
+import jetbrains.mps.util.NameUtil;
+import java.util.Objects;
+import jetbrains.mps.migration.global.CleanupProjectMigration;
+import jetbrains.mps.migration.global.ProjectMigrationWithOptions;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.ide.migration.ModuleVersionUpdate;
 import jetbrains.mps.migration.global.ProjectMigrationsRegistry;
 import jetbrains.mps.project.AbstractModule;
@@ -49,11 +53,10 @@ public interface MigrationSession {
 
   MigrationChecker getChecker();
 
-  MigrationExecutor getExecutor();
-
   MigrationOptions getOptions();
 
-  ScriptApplied nextStepModule(@Nullable BaseScriptReference preferredId);
+  @Nullable
+  MigrationRunnable nextStepModule();
   @Nullable
   MigrationRunnable nextStepProject();
   @Nullable
@@ -70,6 +73,8 @@ public interface MigrationSession {
 
   void setError(MigrationError errors);
 
+  List<ScriptApplied> getExecutedModuleMigrations();
+
 
   /**
    * Indicates migration process (as specified by required steps) has been completed.
@@ -83,11 +88,13 @@ public interface MigrationSession {
     protected final Set<MigrationStepKind> myRequiredSteps = SetSequence.fromSet(new HashSet<MigrationStepKind>());
     private final Set<ProjectMigration> myExecutedInSession = SetSequence.fromSet(new HashSet<ProjectMigration>());
     private final MigrationOptions myOptions = new MigrationOptions();
+    private final List<ScriptApplied> myWereRun = ListSequence.fromList(new ArrayList<ScriptApplied>());
 
     public MigrationSessionBase() {
     }
 
     protected abstract MigrationSetup getConfiguration();
+    protected abstract MigrationExecutor getExecutor();
 
     @Override
     public Collection<ScriptApplied> getModuleMigrations() {
@@ -105,6 +112,12 @@ public interface MigrationSession {
 
     public void setError(MigrationError errors) {
       myErrors = errors;
+    }
+
+
+    @Override
+    public List<ScriptApplied> getExecutedModuleMigrations() {
+      return myWereRun;
     }
 
     @Override
@@ -127,8 +140,8 @@ public interface MigrationSession {
       return SetSequence.fromSet(myRequiredSteps).contains(stepKind);
     }
 
-    @Override
-    public ScriptApplied nextStepModule(@Nullable final BaseScriptReference preferredId) {
+
+    protected ScriptApplied nextStepModule(@Nullable final BaseScriptReference preferredId) {
       if (preferredId != null && false == (preferredId instanceof MigrationScriptReference || preferredId instanceof RefactoringScriptReference)) {
         // XXX this is the logic I don't completely understand, just keep for future refactoring
         // todo get rid of explicit class mention
@@ -167,6 +180,46 @@ public interface MigrationSession {
         }
       });
       return result.value;
+    }
+
+    private final AtomicReference<BaseScriptReference> preferredId = new AtomicReference<BaseScriptReference>();
+
+    @Nullable
+    @Override
+    public MigrationRunnable nextStepModule() {
+      // FIXME we "group" module migrations by migration script reference identity. Just need to change MigrationSetup API
+      //      to group ScriptApplied by script right at detection time rather than group related scripts here
+      final ScriptApplied sa = nextStepModule(preferredId.get());
+      if (sa == null) {
+        return null;
+      }
+
+      preferredId.set(sa.getScriptReference());
+      final String caption = sa.getScriptReference().resolve(getProject(), false).getCaption();
+      return new MigrationRunnable() {
+        @NotNull
+        @Override
+        public String getDescription() {
+          return caption;
+        }
+
+        @NotNull
+        @Override
+        public Status run(ProgressMonitor progress) {
+          try {
+            ScriptApplied s = sa;
+            do {
+              progress.step(String.format("%s [%s]", caption, NameUtil.compactNamespace(s.getModuleReference().getModuleName())));
+              ListSequence.fromList(myWereRun).addElement(s);
+              getExecutor().execute(s);
+              s = nextStepModule(preferredId.get());
+            } while (s != null && Objects.equals(s.getScriptReference(), sa.getScriptReference()));
+          } catch (Throwable ex) {
+            return new Status.ERROR(ex.getMessage());
+          }
+          return new Status.OK();
+        }
+      };
     }
 
     @Override

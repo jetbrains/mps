@@ -140,7 +140,7 @@ import jetbrains.mps.migration.global.MigrationOptions;
   }
 
   @Override
-  public MigrationExecutor getExecutor() {
+  protected MigrationExecutor getExecutor() {
     return myExecutor;
   }
 
@@ -158,7 +158,7 @@ import jetbrains.mps.migration.global.MigrationOptions;
   }
 
   @Override
-  public ScriptApplied nextStepModule(@Nullable BaseScriptReference preferredId) {
+  protected ScriptApplied nextStepModule(@Nullable BaseScriptReference preferredId) {
     Iterable<ScriptApplied> applied = getModuleMigrationsApplied();
     final ScriptApplied sa = Sequence.fromIterable(applied).where(new IWhereFilter<ScriptApplied>() {
       public boolean accept(final ScriptApplied sa) {
