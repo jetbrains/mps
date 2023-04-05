@@ -15,16 +15,8 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.migration.global.ProjectMigrationsRegistry;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.smodel.ModuleDependencyVersions;
 import java.util.Collection;
-import org.jetbrains.mps.openapi.language.SLanguage;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.smodel.SLanguageHierarchy;
-import jetbrains.mps.smodel.language.LanguageRuntime;
-import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
-import jetbrains.mps.lang.migration.runtime.base.RefactoringScriptReference;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/3577160840697329341", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 public class MigrationSetup {
@@ -53,11 +45,14 @@ public class MigrationSetup {
         return it.shouldBeExecuted(mpsProject);
       }
     }));
-    ListSequence.fromList(myModuleMigrations).addSequence(Sequence.fromIterable(modules).translate(new ITranslator2<SModule, ScriptApplied>() {
-      public Iterable<ScriptApplied> translate(SModule module) {
-        return getAllSteps(languageRegistry, module);
-      }
-    }));
+    MigrationScriptCollector msc = new MigrationScriptCollector(languageRegistry);
+    RefactoringScriptCollector rsc = new RefactoringScriptCollector();
+    for (SModule module : Sequence.fromIterable(modules)) {
+      msc.fillFor(module);
+      rsc.fillFor(module);
+    }
+    ListSequence.fromList(myModuleMigrations).addSequence(ListSequence.fromList(msc.result()));
+    ListSequence.fromList(myModuleMigrations).addSequence(ListSequence.fromList(rsc.result()));
 
     myBrokenDepsOfProjectModules = false;
     myNeedImportVersionUpdate = false;
@@ -108,33 +103,4 @@ public class MigrationSetup {
   public boolean importVersionsUpdateRequired() {
     return !(myBrokenDepsOfProjectModules) && myNeedImportVersionUpdate;
   }
-
-  private static Iterable<ScriptApplied> getAllSteps(LanguageRegistry languageRegistry, SModule module) {
-    List<ScriptApplied> result = ListSequence.fromList(new ArrayList<ScriptApplied>());
-    for (SLanguage lang : SetSequence.fromSet(new SLanguageHierarchy(languageRegistry, module.getUsedLanguages()).getExtended())) {
-      LanguageRuntime lr = languageRegistry.getLanguage(lang);
-      int currentLangVersion = (lr == null ? -1 : lr.getVersion());
-      int ver = ((AbstractModule) module).getUsedLanguageVersion(lang, false);
-
-      ver = Math.max(ver, 0);
-      currentLangVersion = Math.max(currentLangVersion, 0);
-
-      for (int i = ver; i < currentLangVersion; i++) {
-        ListSequence.fromList(result).addElement(new ScriptApplied(module, new MigrationScriptReference(lang, i)));
-      }
-    }
-    for (SModule dep : SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(module))) {
-      int currentDepVersion = ((AbstractModule) dep).getModuleVersion();
-      int ver = ((AbstractModule) module).getDependencyVersion(dep, false);
-
-      ver = Math.max(ver, 0);
-      currentDepVersion = Math.max(currentDepVersion, 0);
-
-      for (int i = ver; i < currentDepVersion; i++) {
-        ListSequence.fromList(result).addElement(new ScriptApplied(module, new RefactoringScriptReference(dep, i)));
-      }
-    }
-    return result;
-  }
-
 }
