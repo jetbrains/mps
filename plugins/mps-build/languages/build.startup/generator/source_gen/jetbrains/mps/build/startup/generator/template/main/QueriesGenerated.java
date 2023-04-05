@@ -154,7 +154,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getTemplateValue() + MpsStartupScript__BehaviorDescriptor.getIdeaPathSelector_idBsOHnja5fe.invoke(_context.getNode());
   }
   public static Object propertyMacro_GetValue_2_2(final PropertyMacroContext _context) {
-    return String.format(_context.getTemplateValue(), ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g) == null) ? "MPS" : BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g), LINKS.product$RfQu), null)));
+    return String.format(_context.getTemplateValue(), ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g) == null) ? "MPS" : BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g), LINKS.script$MlVT), null)));
   }
   public static Object propertyMacro_GetValue_2_3(final PropertyMacroContext _context) {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g) == null)) {

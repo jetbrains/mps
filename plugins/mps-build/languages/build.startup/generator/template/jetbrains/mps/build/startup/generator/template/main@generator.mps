@@ -2113,7 +2113,7 @@
                           </node>
                         </node>
                         <node concept="3TrEf2" id="1QEui$pne_b" role="2OqNvi">
-                          <ref role="3Tt5mk" to="kdzh:5j4USBYGz2J" resolve="product" />
+                          <ref role="3Tt5mk" to="kdzh:Nf0pasGVkV" resolve="script" />
                         </node>
                       </node>
                       <node concept="2qgKlT" id="1QEui$pne_c" role="2OqNvi">
