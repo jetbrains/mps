@@ -29030,7 +29030,7 @@
         </node>
         <node concept="NbPM2" id="6Iq8148f_YW" role="HFWMp">
           <node concept="3Mxwew" id="2$8uTVzLlTJ" role="3MwsjC">
-            <property role="3MwjfP" value="MPS223EAP" />
+            <property role="3MwjfP" value="MPS223" />
           </node>
         </node>
       </node>
