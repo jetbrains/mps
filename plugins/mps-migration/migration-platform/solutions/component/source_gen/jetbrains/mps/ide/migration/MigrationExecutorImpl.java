@@ -57,11 +57,8 @@ public class MigrationExecutorImpl implements MigrationExecutor {
     myProject = project;
   }
 
-  public void dispose() {
-  }
-
   @Override
-  public void executeModuleMigration(ScriptApplied s) {
+  public void execute(ScriptApplied s) {
     // todo remove explicit class mention (map<ref->script>?)
     if (s.getScriptReference() instanceof MigrationScriptReference) {
       executeMigrationScript(s);
@@ -72,7 +69,7 @@ public class MigrationExecutorImpl implements MigrationExecutor {
     }
   }
   @Override
-  public void executeProjectMigration(ProjectMigration pm) {
+  public void execute(ProjectMigration pm) {
     pm.execute(myProject);
   }
 

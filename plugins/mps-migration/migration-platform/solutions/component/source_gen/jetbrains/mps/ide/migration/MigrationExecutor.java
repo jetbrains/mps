@@ -14,7 +14,6 @@ public interface MigrationExecutor {
    */
   @Deprecated
   default void executeModuleMigration(ScriptApplied sa) {
-    execute(sa);
   }
   /**
    * 
@@ -22,16 +21,18 @@ public interface MigrationExecutor {
    */
   @Deprecated
   default void executeProjectMigration(ProjectMigration pm) {
-    execute(pm);
   }
   default void execute(ScriptApplied sa) {
-    // no-op
+    executeModuleMigration(sa);
+    // to become no-op
   }
   default void execute(CleanupProjectMigration pm) {
+    // CleanupProjectMigration instances were not piped through MigrationExecutor prior to this change
     // no-op
   }
   default void execute(ProjectMigration pm) {
-    // no-op
+    executeProjectMigration(pm);
+    // to become no-op
   }
 
 }

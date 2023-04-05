@@ -8,6 +8,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.project.Project;
 import java.util.concurrent.atomic.AtomicReference;
 import jetbrains.mps.migration.global.ProjectMigration;
+import jetbrains.mps.migration.global.CleanupProjectMigration;
 import jetbrains.mps.ide.migration.wizard.MigrationSession;
 import jetbrains.mps.ide.migration.wizard.MigrationTask;
 import org.jetbrains.annotations.NotNull;
@@ -30,18 +31,26 @@ public class AntTaskExecutionUtil {
 
     MigrationExecutorImpl tracingExecutor = new MigrationExecutorImpl(project) {
       @Override
-      public void executeModuleMigration(ScriptApplied s) {
+      public void execute(ScriptApplied s) {
         if (LOG.isTraceLevel()) {
           LOG.trace("Apply " + s);
         }
-        super.executeModuleMigration(s);
+        super.execute(s);
       }
       @Override
-      public void executeProjectMigration(ProjectMigration pm) {
+      public void execute(ProjectMigration pm) {
         if (LOG.isTraceLevel()) {
           LOG.trace("Apply " + pm);
         }
-        super.executeProjectMigration(pm);
+        super.execute(pm);
+      }
+
+      @Override
+      public void execute(CleanupProjectMigration pm) {
+        if (LOG.isTraceLevel()) {
+          LOG.trace("Apply " + pm);
+        }
+        super.execute(pm);
       }
     };
 
