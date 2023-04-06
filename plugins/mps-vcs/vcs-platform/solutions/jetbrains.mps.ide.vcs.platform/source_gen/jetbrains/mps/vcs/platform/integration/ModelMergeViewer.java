@@ -22,6 +22,10 @@ import jetbrains.mps.vcs.platform.util.MergeBackupUtil;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 import jetbrains.mps.vcs.util.MergeConstants;
+import jetbrains.mps.extapi.model.SModelBase;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.vcs.diff.ui.merge.ISaveMergedModel;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.project.MPSProject;
@@ -83,6 +87,19 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
       SModel mineModel = loadModel(byteContents[MergeConstants.CURRENT], ext);
       SModel newModel = loadModel(byteContents[MergeConstants.LAST_REVISION], ext);
       if (baseModel != null && mineModel != null && newModel != null) {
+        if (MPSExtentions.MODEL_ROOT.equals(file.getExtension())) {
+          // fix imports and languages for per-root persistence root file to allow completion
+          SModel repoModel = baseModel.getReference().resolve(null);
+          for (jetbrains.mps.smodel.SModel.ImportElement imp : ListSequence.fromList(((SModelBase) repoModel).getSModel().importedModels())) {
+            ((SModelBase) baseModel).getSModel().addModelImport(imp);
+          }
+          for (SLanguage lang : CollectionSequence.fromCollection(((SModelBase) repoModel).getSModel().usedLanguages())) {
+            ((SModelBase) baseModel).getSModel().addLanguage(lang);
+          }
+          for (SModuleReference devkit : ListSequence.fromList(((SModelBase) repoModel).getSModel().importedDevkits())) {
+            ((SModelBase) baseModel).getSModel().addDevKit(devkit);
+          }
+        }
         final ModelMergeViewer viewer = new ModelMergeViewer(context, textRequest, baseModel, mineModel, newModel, perRootPersistenceFile);
 
         ISaveMergedModel saver = new ISaveMergedModel() {
