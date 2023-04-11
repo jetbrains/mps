@@ -17,6 +17,7 @@ public class MpsRunnerTask extends MpsLoadTask {
     // XXX JFTR, here we don't care about worker classpath, j.m.build.mps.runner.runtime solution, as it's part of j.m.core IDEA plugin (see mpsCore import of mpsBootstrap/ant)
     myProperties = new MpsRunnerProperties(myWhatToDo);
     setOpenPackages(true);
+    setJnaLibraryPath(DEFAULT_JNA_LIBRARY_PATH);
   }
 
   public void addConfiguredLibrary(ModuleJarDataType jar) {

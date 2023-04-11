@@ -46,6 +46,7 @@ import java.util.Scanner;
 public class MpsLoadTask extends Task {
   public static final String CONFIGURATION_NAME = "configuration.name";
   public static final String BUILD_NUMBER = "build.number";
+  public static final String DEFAULT_JNA_LIBRARY_PATH = "lib/jna";
   private File myMpsHome;
   protected final Script myWhatToDo = new Script();
   private boolean myUsePropertiesAsMacro = false;
@@ -56,6 +57,7 @@ public class MpsLoadTask extends Task {
    * false by default for compatibility reasons, likely need to change to true once all MpsEnv tasks have it set explicitly
    */
   private boolean myOpenPackages = false;
+  private String myJnaLibraryPath = null;
   private String myWorkerClass;
   private final List<String> myJvmArgs = new ArrayList<String>();
   private List<String> myExtraArgs;
@@ -117,6 +119,17 @@ public class MpsLoadTask extends Task {
 
   public void setOpenPackages(boolean v) {
     myOpenPackages = v;
+  }
+
+  /**
+   * JNA library is needed by IdeaEnvironment class which bootstraps the platform using 
+   * PlatformStarter.startApplicationAsync() via MPSHeadlessPlatformStarter. MpsEnvironment on the other hand
+   * does not require JNA libraries. This setter is therefore currently used only in MigrationTask and MpsRunnerTask.
+   * 
+   * @param jnaLibraryPath path to a directory containing native JNA library
+   */
+  public void setJnaLibraryPath(String jnaLibraryPath) {
+    this.myJnaLibraryPath = jnaLibraryPath;
   }
 
   public void addConfiguredJvmArg(Arg jvmArg) {
@@ -239,6 +252,10 @@ public class MpsLoadTask extends Task {
         for (String p : packages) {
           commandLine.add("--add-opens=" + p + "=ALL-UNNAMED");
         }
+      }
+      if ((myJnaLibraryPath != null && myJnaLibraryPath.length() > 0)) {
+        String fullPath = new File(getMpsHome_Checked(), myJnaLibraryPath).getAbsolutePath();
+        commandLine.add("-Djna.boot.library.path=" + fullPath);
       }
       commandLine.add(getWorkerClass());
       dumpPropertiesToWhatToDo();

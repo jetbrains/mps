@@ -1897,6 +1897,14 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="4QSveR2VOhz" role="3cqZAp">
+          <node concept="1rXfSq" id="4QSveR2VOhx" role="3clFbG">
+            <ref role="37wK5l" to="644x:4QSveR2V4Uk" resolve="setJnaLibraryPath" />
+            <node concept="37vLTw" id="4QSveR2VVpk" role="37wK5m">
+              <ref role="3cqZAo" to="644x:4QSveR2UwNM" resolve="DEFAULT_JNA_LIBRARY_PATH" />
+            </node>
+          </node>
+        </node>
       </node>
     </node>
     <node concept="2tJIrI" id="28$8eDn2St3" role="jymVt" />
