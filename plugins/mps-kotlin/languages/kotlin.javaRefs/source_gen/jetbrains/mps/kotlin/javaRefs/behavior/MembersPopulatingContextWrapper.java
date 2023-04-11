@@ -4,59 +4,41 @@ package jetbrains.mps.kotlin.javaRefs.behavior;
 
 import jetbrains.mps.baseLanguage.scopes.MembersPopulatingContext;
 import jetbrains.mps.kotlin.api.members.SignatureCollector;
-import jetbrains.mps.kotlin.api.members.SuperTypesVisitor;
-import java.util.Stack;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtConversion;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.scopes.Signature;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.IClassifierMember__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.scopes.ClassifierSignature;
 import jetbrains.mps.baseLanguage.scopes.FieldSignature;
 import jetbrains.mps.baseLanguage.scopes.MethodSignature;
-import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /**
  * Allow to explore type hierarchy of Java type as kotlin types
- * TODO it wraps now SignatureVisitor, but should unwrap it when reaching a Kotlin type?
  */
 public class MembersPopulatingContextWrapper extends MembersPopulatingContext {
   private final SignatureCollector signatureDelegate;
-  private final SuperTypesVisitor superTypesDelegate;
-  private final Stack<SNode> converted = new Stack<>();
 
-  public MembersPopulatingContextWrapper(SuperTypesVisitor superTypes) {
-    superTypesDelegate = superTypes;
-    if (superTypes instanceof SignatureCollector) {
-      signatureDelegate = (SignatureCollector) superTypes;
-    } else {
-      signatureDelegate = null;
-    }
+  public MembersPopulatingContextWrapper(@NotNull SignatureCollector superTypes) {
+    signatureDelegate = superTypes;
   }
 
   @Override
   public boolean enterClassifierInternal(SNode classifierType) {
-    SNode ktEquivalent = JavaToKtConversion.convert(SNodeOperations.as(classifierType, CONCEPTS.Type$bu));
-
-    // Will take care of the logic from there
-    if (superTypesDelegate.enterType(ktEquivalent)) {
-      converted.push(ktEquivalent);
-      return true;
-    }
-
+    // We do NOT enter supertypes
     return false;
   }
 
   @Override
   public void exitClassifierInternal(SNode classifier) {
-    superTypesDelegate.exitType(converted.pop());
   }
 
   @Override
   public void exposeMember(SNode member, Signature signature) {
-    if (signatureDelegate == null || !(SNodeOperations.isInstanceOf(member, CONCEPTS.INamedConcept$Kd))) {
+    if (!(SNodeOperations.isInstanceOf(member, CONCEPTS.INamedConcept$Kd))) {
       return;
     }
     SNode named = SNodeOperations.cast(member, CONCEPTS.INamedConcept$Kd);
@@ -84,7 +66,6 @@ public class MembersPopulatingContextWrapper extends MembersPopulatingContext {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
     /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
     /*package*/ static final SConcept VariableDeclaration$Y0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
     /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");

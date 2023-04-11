@@ -19,11 +19,10 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.kotlin.scopes.TypeMembersVisitor;
 import jetbrains.mps.baseLanguage.behavior.IClassifierType__BehaviorDescriptor;
-import jetbrains.mps.baseLanguage.behavior.IClassifier__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.baseLanguage.behavior.IClassifier__BehaviorDescriptor;
 import jetbrains.mps.kotlin.baseLanguage.typeConversion.ClassToClassEnum;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
@@ -79,22 +78,15 @@ public final class JavaClassType__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static void visitHierarchy_id5q426iHtYvR(@NotNull SNode __thisNode__, SuperTypesVisitor visitor) {
-    // distinguish between visitors that are interested in types only 
-    // and those that actually visit type members
-    if (visitor instanceof TypeMembersVisitor) {
-      // Wrap visitor into the java implementation of the type visitor
-      MembersPopulatingContextWrapper context = new MembersPopulatingContextWrapper(visitor);
-
-      // Then let it do it's job
-      IClassifierType__BehaviorDescriptor.populateMembers_id6r77ob2USS_.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW)), context, __thisNode__);
-
-    } else {
-      // use simplified implementation of supertypes enumeration
-      IClassifierType__BehaviorDescriptor.enumerateSupertypes_id65_8Gi1edLu.invoke(Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW)), new JavaSupertypesVisitor(visitor));
-    }
+    // use simplified implementation of supertypes enumeration
+    IClassifierType__BehaviorDescriptor.enumerateSupertypes_id65_8Gi1edLu.invoke(Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW)), new JavaSupertypesVisitor(visitor));
   }
   /*package*/ static void populateTypeSignatures_id5q426iHK5S9(@NotNull SNode __thisNode__, SignatureCollector visitor) {
-    // population of signatures is already called through visitHierarchy!
+    // Wrap visitor into the java implementation of the signature visitor
+    MembersPopulatingContextWrapper context = new MembersPopulatingContextWrapper(visitor);
+
+    // Call member population on the classifier (as if entered from getThisType), visitor should deny any visit on supertypes
+    IClassifier__BehaviorDescriptor.populateMembers_id6r77ob2USUV.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), context, __thisNode__);
   }
   /*package*/ static SNode getClassifier_id7an2tsIdpk7(@NotNull SNode __thisNode__) {
     // Map to kotlin classes automatically (only built-in classes as they wont be compiled)
