@@ -1342,6 +1342,15 @@
         <property role="Xl_RC" value="build.number" />
       </node>
     </node>
+    <node concept="Wx3nA" id="4QSveR2UwNM" role="jymVt">
+      <property role="TrG5h" value="DEFAULT_JNA_LIBRARY_PATH" />
+      <property role="3TUv4t" value="true" />
+      <node concept="17QB3L" id="4QSveR2UwNN" role="1tU5fm" />
+      <node concept="3Tm1VV" id="4QSveR2UwNO" role="1B3o_S" />
+      <node concept="Xl_RD" id="4QSveR2UwNP" role="33vP2m">
+        <property role="Xl_RC" value="lib/jna" />
+      </node>
+    </node>
     <node concept="312cEg" id="3ufQioQQtjb" role="jymVt">
       <property role="TrG5h" value="myMpsHome" />
       <property role="34CwA1" value="false" />
@@ -1409,6 +1418,14 @@
           </node>
         </node>
       </node>
+    </node>
+    <node concept="312cEg" id="4QSveR2Svbf" role="jymVt">
+      <property role="TrG5h" value="myJnaLibraryPath" />
+      <property role="34CwA1" value="false" />
+      <property role="3TUv4t" value="false" />
+      <node concept="17QB3L" id="4QSveR2U8ux" role="1tU5fm" />
+      <node concept="3Tm6S6" id="4QSveR2Svbh" role="1B3o_S" />
+      <node concept="10Nm6u" id="4QSveR2UiDN" role="33vP2m" />
     </node>
     <node concept="312cEg" id="4vDU0BPy5F9" role="jymVt">
       <property role="TrG5h" value="myWorkerClass" />
@@ -1819,6 +1836,54 @@
       <node concept="37vLTG" id="1$mDfZ_zoU2" role="3clF46">
         <property role="TrG5h" value="v" />
         <node concept="10P_77" id="1$mDfZ_zoU1" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="4QSveR2SSjt" role="jymVt" />
+    <node concept="3clFb_" id="4QSveR2V4Uk" role="jymVt">
+      <property role="TrG5h" value="setJnaLibraryPath" />
+      <node concept="3cqZAl" id="4QSveR2V4Ul" role="3clF45" />
+      <node concept="3Tm1VV" id="4QSveR2V4Um" role="1B3o_S" />
+      <node concept="3clFbS" id="4QSveR2V4Un" role="3clF47">
+        <node concept="3clFbF" id="4QSveR2V4Uo" role="3cqZAp">
+          <node concept="37vLTI" id="4QSveR2V4Up" role="3clFbG">
+            <node concept="37vLTw" id="4QSveR2V4Uq" role="37vLTx">
+              <ref role="3cqZAo" node="4QSveR2V4Ur" resolve="jnaLibraryPath" />
+            </node>
+            <node concept="2OqwBi" id="4QSveR2V4Uh" role="37vLTJ">
+              <node concept="Xjq3P" id="4QSveR2V4Ui" role="2Oq$k0" />
+              <node concept="2OwXpG" id="4QSveR2V4Uj" role="2OqNvi">
+                <ref role="2Oxat5" node="4QSveR2Svbf" resolve="myJnaLibraryPath" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="4QSveR2V4Ur" role="3clF46">
+        <property role="TrG5h" value="jnaLibraryPath" />
+        <node concept="17QB3L" id="4QSveR2V4Us" role="1tU5fm" />
+      </node>
+      <node concept="P$JXv" id="1gHrQBMJp8o" role="lGtFl">
+        <node concept="TUZQ0" id="1gHrQBMJp8r" role="3nqlJM">
+          <property role="TUZQ4" value="path to a directory containing native JNA library" />
+          <node concept="zr_55" id="1gHrQBMJp8t" role="zr_5Q">
+            <ref role="zr_51" node="4QSveR2V4Ur" resolve="jnaLibraryPath" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="1gHrQBMJDsi" role="TZ5H$">
+          <node concept="1dT_AC" id="1gHrQBMJDsj" role="1dT_Ay">
+            <property role="1dT_AB" value="JNA library is needed by IdeaEnvironment class which bootstraps the platform using " />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="1gHrQBMJNsY" role="TZ5H$">
+          <node concept="1dT_AC" id="1gHrQBMJNsZ" role="1dT_Ay">
+            <property role="1dT_AB" value="PlatformStarter.startApplicationAsync() via MPSHeadlessPlatformStarter. MpsEnvironment on the other hand" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="1gHrQBMJY47" role="TZ5H$">
+          <node concept="1dT_AC" id="1gHrQBMJY48" role="1dT_Ay">
+            <property role="1dT_AB" value="does not require JNA libraries. This setter is therefore currently used only in MigrationTask and MpsRunnerTask." />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="2tJIrI" id="1_4F7FNq2W_" role="jymVt" />
@@ -4036,6 +4101,57 @@
               </node>
               <node concept="37vLTw" id="1$mDfZ_vXLi" role="3clFbw">
                 <ref role="3cqZAo" node="1$mDfZ_uyJm" resolve="myOpenPackages" />
+              </node>
+            </node>
+            <node concept="3clFbJ" id="4QSveR2W6iz" role="3cqZAp">
+              <node concept="3clFbS" id="4QSveR2W6i_" role="3clFbx">
+                <node concept="3cpWs8" id="4QSveR2YUJ3" role="3cqZAp">
+                  <node concept="3cpWsn" id="4QSveR2YUJ6" role="3cpWs9">
+                    <property role="TrG5h" value="fullPath" />
+                    <node concept="17QB3L" id="4QSveR2YUJ1" role="1tU5fm" />
+                    <node concept="2OqwBi" id="4QSveR30saR" role="33vP2m">
+                      <node concept="2ShNRf" id="4QSveR2Z$Yw" role="2Oq$k0">
+                        <node concept="1pGfFk" id="4QSveR2ZHXE" role="2ShVmc">
+                          <property role="373rjd" value="true" />
+                          <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.io.File,java.lang.String)" resolve="File" />
+                          <node concept="1rXfSq" id="4QSveR2ZQGX" role="37wK5m">
+                            <ref role="37wK5l" node="4OPNMy25ZUO" resolve="getMpsHome_Checked" />
+                          </node>
+                          <node concept="37vLTw" id="4QSveR30l9J" role="37wK5m">
+                            <ref role="3cqZAo" node="4QSveR2Svbf" resolve="myJnaLibraryPath" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="4QSveR30AXg" role="2OqNvi">
+                        <ref role="37wK5l" to="guwi:~File.getAbsolutePath()" resolve="getAbsolutePath" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbF" id="4QSveR2Yi7j" role="3cqZAp">
+                  <node concept="2OqwBi" id="4QSveR2Yi7k" role="3clFbG">
+                    <node concept="37vLTw" id="4QSveR2Yi7l" role="2Oq$k0">
+                      <ref role="3cqZAo" node="3ufQioQQtqL" resolve="commandLine" />
+                    </node>
+                    <node concept="liA8E" id="4QSveR2Yi7m" role="2OqNvi">
+                      <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
+                      <node concept="3cpWs3" id="4QSveR2Yi7p" role="37wK5m">
+                        <node concept="Xl_RD" id="4QSveR2Yi7q" role="3uHU7B">
+                          <property role="Xl_RC" value="-Djna.boot.library.path=" />
+                        </node>
+                        <node concept="37vLTw" id="4QSveR31mGr" role="3uHU7w">
+                          <ref role="3cqZAo" node="4QSveR2YUJ6" resolve="fullPath" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2OqwBi" id="4QSveR2Xuvl" role="3clFbw">
+                <node concept="37vLTw" id="4QSveR2XaGJ" role="2Oq$k0">
+                  <ref role="3cqZAo" node="4QSveR2Svbf" resolve="myJnaLibraryPath" />
+                </node>
+                <node concept="17RvpY" id="4QSveR2XVpM" role="2OqNvi" />
               </node>
             </node>
             <node concept="3clFbF" id="3ufQioQQts1" role="3cqZAp">
@@ -9389,6 +9505,14 @@
             <ref role="37wK5l" node="1$mDfZ_zcl8" resolve="setOpenPackages" />
             <node concept="3clFbT" id="1$mDfZ_zSAU" role="37wK5m">
               <property role="3clFbU" value="true" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4QSveR2VOhz" role="3cqZAp">
+          <node concept="1rXfSq" id="4QSveR2VOhx" role="3clFbG">
+            <ref role="37wK5l" node="4QSveR2V4Uk" resolve="setJnaLibraryPath" />
+            <node concept="37vLTw" id="4QSveR2VOSP" role="37wK5m">
+              <ref role="3cqZAo" node="4QSveR2UwNM" resolve="DEFAULT_JNA_LIBRARY_PATH" />
             </node>
           </node>
         </node>

@@ -29,6 +29,7 @@ public class MigrationTask extends MpsLoadTask {
     // makeDistribModules==true here is for backwards compatibility
     setFailOnError(true);
     setOpenPackages(true);
+    setJnaLibraryPath(DEFAULT_JNA_LIBRARY_PATH);
   }
 
   public void setProject(String project) {
