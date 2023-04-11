@@ -560,7 +560,7 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
    * @param saveExpansion {@code true} to indicate expanded path and selection is preserved
    */
   protected void runRebuildAction(final Runnable rebuildAction, final boolean saveExpansion) {
-    if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
+    if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment() || this.isDisposed()) {
       return;
     }
     if (!ThreadUtils.isInEDT()) {
