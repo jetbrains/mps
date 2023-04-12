@@ -18,6 +18,8 @@ package jetbrains.mps.ide.editor.tabs;
 import com.intellij.openapi.Disposable;
 import jetbrains.mps.ide.editorTabs.tabfactory.TabsComponent;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.annotations.NotNull;
@@ -26,6 +28,7 @@ import org.jetbrains.mps.openapi.event.SNodeAddEvent;
 import org.jetbrains.mps.openapi.event.SNodeRemoveEvent;
 import org.jetbrains.mps.openapi.event.SPropertyChangeEvent;
 import org.jetbrains.mps.openapi.event.SReferenceChangeEvent;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -137,7 +140,7 @@ class TabRootNodesTracker extends SRepositoryContentAdapter implements Disposabl
 
   @Override
   public void propertyChanged(@NotNull SPropertyChangeEvent event) {
-    if (event.getNode().getParent() == null) {
+    if (event.getNode().getParent() == null && EditorSettings.getInstance().isShowPlain()) {
       myChangedRoots.add(event.getNode().getReference());
     }
   }
