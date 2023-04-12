@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.nodefs;
 
+import com.intellij.openapi.fileEditor.impl.FileEditorManagerImpl;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileSystem;
 import com.intellij.util.LocalTimeCounter;
@@ -49,6 +50,8 @@ public final class MPSNodeVirtualFile extends VirtualFile {
   MPSNodeVirtualFile(@NotNull SNodeReference nodePointer, @NotNull RepositoryVirtualFiles vfs) {
     myNode = nodePointer;
     myRepoFiles = vfs;
+    // MPS-35481 temporarily disable preview tab until properly integrated
+    putUserData(FileEditorManagerImpl.FORBID_PREVIEW_TAB, true);
     updateFields();
   }
 
