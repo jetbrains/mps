@@ -78,7 +78,6 @@
         <company name="JetBrains s.r.o." url="https://www.jetbrains.com/?fromIDE" copyrightStart="2009" />
         <build number="${build.number}" date="${date}" />
         <logo url="/splash.png" textcolor="FFFFFF" progressColor="FFFFFF" progressY="396" progressHeight="4" />
-        <about url="/about.png" foreground="FFFFFF" copyrightForeground="FFFFFF" />
         <icon ico="/MPS.ico" svg="/mps.svg" svg-small="/mps_16.svg" />
         <package code="code" />
         <names product="MPS" fullname="JetBrains MPS" script="mps" />
@@ -105,7 +104,6 @@
       <fileset file="${basedir}/workbench/mps-icons/source/MPS.ico" />
       <fileset file="${basedir}/workbench/mps-icons/source/MPS_welcomeScreen.png" />
       <fileset file="${basedir}/workbench/mps-icons/source/splash.png" />
-      <fileset file="${basedir}/workbench/mps-icons/source/about.png" />
       <fileset file="${basedir}/workbench/mps-icons/source/splash@2x.png" />
       <fileset file="${basedir}/workbench/mps-icons/source/about@2x.png" />
       <fileset file="${basedir}/workbench/mps-icons/source/MPS_welcomeScreen@2x.png" />

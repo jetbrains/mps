@@ -386,7 +386,6 @@
         <child id="6845119683729280452" name="icon" index="27igRh" />
         <child id="7962467864633062782" name="progressHeight" index="2gqIGF" />
         <child id="922958177840117051" name="script" index="2gvbiD" />
-        <child id="6108265972537182997" name="aboutScreen" index="2EqU2s" />
         <child id="6108265972537182996" name="splashScreen" index="2EqU2t" />
         <child id="6108265972537229337" name="buildNumber" index="2EteIg" />
         <child id="6108265972537335245" name="updateWebsite" index="2Etnp4" />
@@ -29169,20 +29168,6 @@
               <property role="2Ry0Am" value="source" />
               <node concept="2Ry0Ak" id="3uFtPhwkd3" role="2Ry0An">
                 <property role="2Ry0Am" value="mps_16.svg" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="55IIr" id="6Iq8148f_Zg" role="2EqU2s">
-        <node concept="2Ry0Ak" id="6Iq8148f_Zh" role="iGT6I">
-          <property role="2Ry0Am" value="workbench" />
-          <node concept="2Ry0Ak" id="6Iq8148f_Zi" role="2Ry0An">
-            <property role="2Ry0Am" value="mps-icons" />
-            <node concept="2Ry0Ak" id="6Iq8148f_Zj" role="2Ry0An">
-              <property role="2Ry0Am" value="source" />
-              <node concept="2Ry0Ak" id="1PD8mL0UDKD" role="2Ry0An">
-                <property role="2Ry0Am" value="about.png" />
               </node>
             </node>
           </node>
