@@ -7821,7 +7821,6 @@
                   </node>
                   <node concept="2qgKlT" id="6yo46g2E6DK" role="2OqNvi">
                     <ref role="37wK5l" to="hez:46gC9M6gB68" resolve="getThisType" />
-                    <node concept="3clFbT" id="6yo46g2E6DL" role="37wK5m" />
                   </node>
                 </node>
               </node>

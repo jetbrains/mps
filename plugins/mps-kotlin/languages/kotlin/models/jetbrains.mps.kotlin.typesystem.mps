@@ -3484,7 +3484,6 @@
             </node>
             <node concept="2qgKlT" id="$q1KckX3HE" role="2OqNvi">
               <ref role="37wK5l" to="hez:46gC9M6gB68" resolve="getThisType" />
-              <node concept="3clFbT" id="$q1KckX3HF" role="37wK5m" />
             </node>
           </node>
         </node>

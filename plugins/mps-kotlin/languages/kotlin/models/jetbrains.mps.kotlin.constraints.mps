@@ -1516,7 +1516,6 @@
                       </node>
                       <node concept="2qgKlT" id="4z6StV4s_mA" role="2OqNvi">
                         <ref role="37wK5l" to="hez:46gC9M6gB68" resolve="getThisType" />
-                        <node concept="3clFbT" id="4z6StV4s_oi" role="37wK5m" />
                       </node>
                     </node>
                   </node>
