@@ -556,7 +556,9 @@ public class ASTConverter {
         SReference ref;
         // let's see if var has been parsed already
         if (typeVar != null) {
-          // FIXME static reference doesn't work here for some reason
+          // FIXME this odd identical code to create dynamic, not static reference is here for ages,
+          //      with comment that static reference doesn't work for some reason. Perhaps, shall try
+          //      myself to see if it's still the point
           typeVarRef.setReference(LINKS.typeVariableDeclaration$Lz1I, ResolveInfo.of(name));
         } else {
           typeVarRef.setReference(LINKS.typeVariableDeclaration$Lz1I, ResolveInfo.of(name));

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -128,7 +128,7 @@ class SelectTabAction extends ToggleAction {
       result.add(new AnAction(getActionName(node), "", GlobalIconManager.getInstance().getIconFor(root)) {
         @Override
         public void actionPerformed(AnActionEvent anActionEvent) {
-          myProject.getModelAccess().runReadAction(() -> myCallback.changeNode(nodePtr));
+          myCallback.changeNode(nodePtr);
         }
       });
     }

@@ -26,6 +26,8 @@
           <root url="jar://$APPLICATION_HOME_DIR$/lib/stats.jar!/" />
           <root url="jar://$APPLICATION_HOME_DIR$/lib/protobuf.jar!/" />
           <root url="jar://$APPLICATION_HOME_DIR$/lib/external-system-rt.jar!/" />
+          <root url="jar://$APPLICATION_HOME_DIR$/lib/intellij-test-discovery.jar!/" />
+          <root url="jar://$APPLICATION_HOME_DIR$/lib/jsp-base.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
