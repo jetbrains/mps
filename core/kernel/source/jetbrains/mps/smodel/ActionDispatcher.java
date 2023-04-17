@@ -17,8 +17,8 @@ package jetbrains.mps.smodel;
 
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.logging.Logger;
+import org.apache.commons.lang3.ClassUtils;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Semaphore;
@@ -137,7 +137,7 @@ import java.util.function.Predicate;
 
   /*package*/ static boolean isControlFlowIDEA(RuntimeException ex) {
     final Predicate<String> cfePredicate = "com.intellij.openapi.diagnostic.ControlFlowException"::equals;
-    return Arrays.stream(ex.getClass().getInterfaces()).map(Class::getName).anyMatch(cfePredicate);
+    return ClassUtils.getAllInterfaces(ex.getClass()).stream().map(Class::getName).anyMatch(cfePredicate);
   }
   private void logUnexpectedRuntimeException(RuntimeException ex) {
     if (isControlFlowIDEA(ex)) {
