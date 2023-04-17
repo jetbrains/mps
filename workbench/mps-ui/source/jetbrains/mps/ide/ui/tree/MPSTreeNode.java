@@ -236,7 +236,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
   @Override
   public Object getUserObject() {
     final Object uo = super.getUserObject();
-    return uo != null ? uo : myText;
+    return uo != null ? uo : getText();
   }
 
   public boolean hasChild(MutableTreeNode node) {
