@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,14 +18,15 @@ package jetbrains.mps.workbench.actions;
 import com.intellij.DynamicBundle;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.IdeBundle;
-import com.intellij.ide.impl.OpenProjectTask;
 import com.intellij.ide.actions.OpenFileAction;
+import com.intellij.ide.impl.OpenProjectTask;
 import com.intellij.ide.impl.ProjectUtil;
 import com.intellij.idea.ActionsBundle;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
+import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.actionSystem.Presentation;
-import com.intellij.openapi.application.ApplicationNamesInfo;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.fileChooser.ex.FileChooserDialogImpl;
@@ -37,21 +38,23 @@ import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrame;
 import com.intellij.openapi.wm.impl.welcomeScreen.NewWelcomeScreen;
-import jetbrains.mps.workbench.action.BaseAction;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
-import java.util.Map;
 
-public class OpenMPSProjectAction extends BaseAction {
+public class OpenMPSProjectAction extends AnAction {
 
   public OpenMPSProjectAction() {
-    setExecuteOutsideCommand(true);
-    setDisableOnNoProject(false);
   }
 
   @Override
-  protected void doUpdate(AnActionEvent e, Map<String, Object> _params) {
-    super.doUpdate(e, _params);
+  public @NotNull ActionUpdateThread getActionUpdateThread() {
+    return ActionUpdateThread.BGT;
+  }
+
+
+  @Override
+  public void update(@NotNull AnActionEvent e) {
     Presentation presentation = e.getPresentation();
     presentation.setIcon(AllIcons.Actions.MenuOpen);
   }
@@ -62,7 +65,7 @@ public class OpenMPSProjectAction extends BaseAction {
 
   @SuppressWarnings("UnstableApiUsage")
   @Override
-  public void doExecute(AnActionEvent e, Map<String, Object> _params) {
+  public void actionPerformed(@NotNull AnActionEvent e) {
     final Project currentProject = PlatformDataKeys.PROJECT.getData(e.getDataContext());
 
     final FileChooserDescriptor descriptor = createFileChooserDescriptor();
@@ -100,8 +103,7 @@ public class OpenMPSProjectAction extends BaseAction {
 
   public static class OnMPSWelcomeScreen extends OpenMPSProjectAction {
     @Override
-    protected void doUpdate(AnActionEvent e, Map<String, Object> _params) {
-      super.doUpdate(e, _params);
+    public void update(@NotNull AnActionEvent e) {
       Presentation presentation = e.getPresentation();
       if (!NewWelcomeScreen.isNewWelcomeScreen(e)) {
         presentation.setEnabledAndVisible(false);
