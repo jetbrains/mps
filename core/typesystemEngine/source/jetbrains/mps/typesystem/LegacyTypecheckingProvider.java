@@ -274,7 +274,9 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
     public boolean isCacheUpToDate(SNode root) {
       return compute((tcc) -> {
         // the typechecking context is expected to have been created with the same root node
-        if (tcc.getNode() == null || tcc.getNode() != root) return false;
+        if (tcc.getNode() == null || !SNodeOperations.getNodeAncestors(root, null, true).contains(tcc.getNode())) {
+          return false;
+        }
         IncrementalTypechecking typesComponent = tcc.getBaseNodeTypesComponent();
         return  typesComponent.isChecked(false);
       });
