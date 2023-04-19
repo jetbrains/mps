@@ -22,6 +22,7 @@ import jetbrains.mps.nodeEditor.EditorMessage;
 import jetbrains.mps.nodeEditor.checking.UpdateResult;
 import jetbrains.mps.nodeEditor.checking.UpdateResult.Completed;
 import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.typechecking.CacheState;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.typechecking.TypecheckingSession;
 import jetbrains.mps.util.Cancellable;
@@ -69,7 +70,8 @@ public class TypesEditorChecker extends AbstractTypesystemEditorChecker {
       boolean messagesChanged = false;
 
       Collection<Pair<SNodeReference, List<NodeReportItem>>> collected = Collections.emptyList();
-      if (!(incremental && TypecheckingFacade.getFromContext().isCacheUpToDate(rootNode))) {
+      CacheState cacheState = TypecheckingFacade.getFromContext().getCacheState(rootNode);
+      if (!incremental || cacheState.hasChangedSince(wasLastChecked)) {
         try {
           messagesChanged = true;
           ErrorsCollector errorsCollector = new ErrorsCollector();
