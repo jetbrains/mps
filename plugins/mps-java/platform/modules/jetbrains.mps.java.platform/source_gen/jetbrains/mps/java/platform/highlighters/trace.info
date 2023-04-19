@@ -47,7 +47,7 @@
       <node id="6316328094634608453" at="33,90,34,49" concept="10" />
       <node id="6316328094634608471" at="36,159,37,137" concept="4" />
       <node id="6316328094634608486" at="41,170,42,154" concept="4" />
-      <node id="281208147577369193" at="46,169,47,243" concept="4" />
+      <node id="281208147577369193" at="46,176,47,250" concept="4" />
       <node id="6316328094634608507" at="49,5,50,54" concept="11" />
       <node id="6316328094634559912" at="54,86,55,41" concept="10" />
       <node id="2102711303278051826" at="56,74,57,73" concept="11" />
@@ -58,7 +58,8 @@
       <node id="6316328094634559825" at="71,0,72,0" concept="14" trace="RemarkStatement$l_" />
       <node id="6316328094634559825" at="72,0,73,0" concept="14" trace="CommentPart$KZ" />
       <node id="6316328094634559825" at="73,0,74,0" concept="14" trace="TextCommentPart$LX" />
-      <node id="6316328094634559825" at="74,0,75,0" concept="14" trace="IComment$KY" />
+      <node id="6316328094634559825" at="74,0,75,0" concept="14" trace="IGenericComment$bD" />
+      <node id="6316328094634559825" at="75,0,76,0" concept="14" trace="IComment$KY" />
       <node id="6316328094634608466" at="35,129,38,7" concept="8" />
       <node id="6316328094634608484" at="40,138,43,7" concept="8" />
       <node id="281208147577369191" at="45,127,48,7" concept="8" />
@@ -71,7 +72,7 @@
       <node id="6316328094634587589" at="31,0,52,0" concept="9" trace="update#(Ljetbrains/mps/nodeEditor/EditorComponent;ZZLjetbrains/mps/util/Cancellable;)Ljetbrains/mps/nodeEditor/checking/UpdateResult;" />
       <scope id="6316328094634608470" at="36,159,37,137" />
       <scope id="6316328094634608485" at="41,170,42,154" />
-      <scope id="281208147577369192" at="46,169,47,243" />
+      <scope id="281208147577369192" at="46,176,47,250" />
       <scope id="6316328094634559923" at="56,74,57,73" />
       <scope id="6316328094634559935" at="59,74,60,72" />
       <scope id="6316328094634608465" at="35,129,38,7" />
@@ -103,8 +104,8 @@
         <var name="incremental" id="6316328094634587596" />
       </scope>
       <unit id="6316328094634559825" at="65,0,69,0" name="jetbrains.mps.java.platform.highlighters.ToDoHighlighter$PROPS" />
-      <unit id="6316328094634559825" at="70,0,76,0" name="jetbrains.mps.java.platform.highlighters.ToDoHighlighter$CONCEPTS" />
-      <unit id="6316328094634559825" at="27,0,77,0" name="jetbrains.mps.java.platform.highlighters.ToDoHighlighter" />
+      <unit id="6316328094634559825" at="70,0,77,0" name="jetbrains.mps.java.platform.highlighters.ToDoHighlighter$CONCEPTS" />
+      <unit id="6316328094634559825" at="27,0,78,0" name="jetbrains.mps.java.platform.highlighters.ToDoHighlighter" />
     </file>
   </root>
   <root nodeRef="r:fa4569a3-1bd4-4159-97bc-db03b3aeff88(jetbrains.mps.java.platform.highlighters)/8432634623182578830">

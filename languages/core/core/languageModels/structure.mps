@@ -631,5 +631,10 @@
       <ref role="20lvS9" node="gw2VY9q" resolve="BaseConcept" />
     </node>
   </node>
+  <node concept="PlHQZ" id="3W5q5oTL9mp">
+    <property role="EcuMT" value="4541150518818674073" />
+    <property role="3GE5qa" value="attributes.editing.comment" />
+    <property role="TrG5h" value="IGenericComment" />
+  </node>
 </model>
 

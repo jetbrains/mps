@@ -14,7 +14,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.LINE_COMMEN
 import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.TODO_StyleKey;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.CommentPart__BehaviorDescriptor;
-import jetbrains.mps.baseLanguage.behavior.IComment__BehaviorDescriptor;
+import jetbrains.mps.lang.core.behavior.IGenericComment__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.BLOCK_COMMENT_StyleKey;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.DOC_COMMENT_StyleKey;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.DOC_TAG_StyleKey;
@@ -122,7 +122,7 @@ public class BaseLanguageStyle_StyleSheet {
     }
 
     private boolean _StyleParameter_QueryFunction_the604_a0e() {
-      return (SNodeOperations.isInstanceOf(getNode(), CONCEPTS.TextCommentPart$LX) && (boolean) CommentPart__BehaviorDescriptor.isToDo_id6hHyb3YSGHZ.invoke(SNodeOperations.as(getNode(), CONCEPTS.TextCommentPart$LX))) || (SNodeOperations.isInstanceOf(getNode(), CONCEPTS.IComment$KY) && (boolean) IComment__BehaviorDescriptor.isTODOComment_idfB3l7ZufMD.invoke(SNodeOperations.cast(getNode(), CONCEPTS.IComment$KY)));
+      return (SNodeOperations.isInstanceOf(getNode(), CONCEPTS.TextCommentPart$LX) && (boolean) CommentPart__BehaviorDescriptor.isToDo_id6hHyb3YSGHZ.invoke(SNodeOperations.as(getNode(), CONCEPTS.TextCommentPart$LX))) || (SNodeOperations.isInstanceOf(getNode(), CONCEPTS.IComment$KY) && (boolean) IGenericComment__BehaviorDescriptor.isTODOComment_idfB3l7ZufMD.invoke(SNodeOperations.cast(getNode(), CONCEPTS.IComment$KY)));
     }
   }
   public static class BlockCommentStyleClass extends AbstractStyleClass {

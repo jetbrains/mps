@@ -27,10 +27,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class IComment__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3e70d51ff33226dL, "jetbrains.mps.baseLanguage.structure.IComment");
 
-  public static final SMethod<String> getTextualRepresentation_idfB3l80ylIb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTextualRepresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(281208147581426571L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
-  public static final SMethod<Boolean> isTODOComment_idfB3l7ZufMD = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isTODOComment").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(281208147563576489L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<String> getTextualRepresentation_idfB3l80ylIb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTextualRepresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(281208147581426571L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTextualRepresentation_idfB3l80ylIb, isTODOComment_idfB3l7ZufMD);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTextualRepresentation_idfB3l80ylIb);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -45,10 +44,6 @@ public final class IComment__BehaviorDescriptor extends BaseBHDescriptor {
         }), " ");
       }
     }), "\n");
-  }
-  /*package*/ static boolean isTODOComment_idfB3l7ZufMD(@NotNull SNode __thisNode__) {
-    String text = trim_63o2sb_a0a0a0k(IComment__BehaviorDescriptor.getTextualRepresentation_idfB3l80ylIb.invoke(__thisNode__)).toUpperCase();
-    return text.startsWith("TODO ") || text.startsWith("FIX ") || text.startsWith("FIXME");
   }
 
   /*package*/ IComment__BehaviorDescriptor() {
@@ -68,8 +63,6 @@ public final class IComment__BehaviorDescriptor extends BaseBHDescriptor {
     switch (methodIndex) {
       case 0:
         return (T) ((String) getTextualRepresentation_idfB3l80ylIb(node));
-      case 1:
-        return (T) ((Boolean) isTODOComment_idfB3l7ZufMD(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -97,9 +90,6 @@ public final class IComment__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
-  }
-  public static String trim_63o2sb_a0a0a0k(String str) {
-    return (str == null ? null : str.trim());
   }
 
   private static final class LINKS {

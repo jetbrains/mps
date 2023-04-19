@@ -8522,7 +8522,7 @@
       <node id="5426495936043638934" at="105,50,106,34" concept="6" />
       <node id="6250351953473660605" at="113,47,114,21" concept="12" />
       <node id="6250351953474736913" at="115,73,116,117" concept="13" />
-      <node id="6250351953475279205" at="117,7,118,205" concept="13" />
+      <node id="6250351953475279205" at="117,7,118,212" concept="13" />
       <node id="5426495936043638650" at="121,55,122,95" concept="13" />
       <node id="5426495936043638664" at="125,34,126,34" concept="13" />
       <node id="5426495936043638676" at="129,99,130,26" concept="12" />
@@ -8533,7 +8533,8 @@
       <node id="5426495936043638713" at="139,66,140,36" concept="13" />
       <node id="5426495936043638617" at="145,0,146,0" concept="16" trace="TextCommentPart$LX" />
       <node id="5426495936043638617" at="146,0,147,0" concept="16" trace="IComment$KY" />
-      <node id="5426495936043638617" at="150,0,151,0" concept="16" trace="text$ag2i" />
+      <node id="5426495936043638617" at="147,0,148,0" concept="16" trace="IGenericComment$bD" />
+      <node id="5426495936043638617" at="151,0,152,0" concept="16" trace="text$ag2i" />
       <node id="5426495936043638624" at="109,0,111,0" concept="3" trace="MyNodeRepresentator#()V" />
       <node id="5426495936043638815" at="70,25,73,5" concept="10" />
       <node id="5426495936043638824" at="76,0,79,0" concept="11" trace="getTool#()Ljetbrains/mps/ide/actions/TodoViewer_Tool;" />
@@ -8577,7 +8578,7 @@
       </scope>
       <scope id="5426495936043638660" at="124,0,128,0" />
       <scope id="5426495936043638811" at="70,0,75,0" />
-      <scope id="5426495936043638633" at="113,47,118,205">
+      <scope id="5426495936043638633" at="113,47,118,212">
         <var name="n" id="6250351953473660608" />
       </scope>
       <scope id="5426495936043638707" at="137,0,142,0">
@@ -8614,12 +8615,12 @@
         <var name="viewOptions" id="5426495936043638848" />
       </scope>
       <scope id="5426495936043638838" at="84,0,108,0" />
-      <unit id="5426495936043638617" at="149,0,152,0" name="jetbrains.mps.ide.actions.TodoViewer$PROPS" />
+      <unit id="5426495936043638617" at="150,0,153,0" name="jetbrains.mps.ide.actions.TodoViewer$PROPS" />
       <unit id="7899446653864390904" at="91,94,95,5" name="jetbrains.mps.ide.actions.TodoViewer$2" />
-      <unit id="5426495936043638617" at="144,0,148,0" name="jetbrains.mps.ide.actions.TodoViewer$CONCEPTS" />
+      <unit id="5426495936043638617" at="144,0,149,0" name="jetbrains.mps.ide.actions.TodoViewer$CONCEPTS" />
       <unit id="5426495936043638796" at="60,25,67,5" name="jetbrains.mps.ide.actions.TodoViewer$1" />
       <unit id="5426495936043638620" at="108,0,143,0" name="jetbrains.mps.ide.actions.TodoViewer$MyNodeRepresentator" />
-      <unit id="5426495936043638617" at="47,0,153,0" name="jetbrains.mps.ide.actions.TodoViewer" />
+      <unit id="5426495936043638617" at="47,0,154,0" name="jetbrains.mps.ide.actions.TodoViewer" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/5533671870987003804">
@@ -9239,31 +9240,31 @@
       <node id="5916754392152578783" at="36,135,37,62" concept="12" />
       <node id="5916754392152578806" at="39,159,40,84" concept="6" />
       <node id="5927578063296257530" at="42,5,43,0" concept="15" />
-      <node id="5927578063296262925" at="43,0,44,169" concept="12" />
-      <node id="281208147575752214" at="46,162,47,84" concept="6" />
+      <node id="5927578063296262925" at="43,0,44,176" concept="12" />
+      <node id="281208147575752214" at="46,169,47,84" concept="6" />
       <node id="5916754392152578826" at="49,5,50,19" concept="13" />
       <node id="5916754392152578755" at="54,0,55,0" concept="16" trace="TextCommentPart$LX" />
       <node id="5916754392152578755" at="55,0,56,0" concept="16" trace="CommentPart$KZ" />
-      <node id="5916754392152578755" at="56,0,57,0" concept="16" trace="IComment$KY" />
+      <node id="5916754392152578755" at="56,0,57,0" concept="16" trace="IGenericComment$bD" />
       <node id="5916754392152578757" at="26,0,28,0" concept="3" trace="TodoFinder#()V" />
       <node id="5916754392152578804" at="38,97,41,7" concept="10" />
-      <node id="281208147575752209" at="45,82,48,7" concept="10" />
+      <node id="281208147575752209" at="45,89,48,7" concept="10" />
       <node id="1937421445113931086" at="28,0,32,0" concept="11" trace="getDescription#()Ljava/lang/String;" />
       <node id="5916754392152578790" at="37,62,42,5" concept="9" />
-      <node id="281208147575752201" at="44,169,49,5" concept="9" />
+      <node id="281208147575752201" at="44,176,49,5" concept="9" />
       <node id="5916754392152578762" at="32,0,52,0" concept="11" trace="find#(Ljetbrains/mps/ide/findusages/model/SearchQuery;Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)Ljetbrains/mps/ide/findusages/model/SearchResults;" />
       <scope id="5916754392152578760" at="26,23,26,23" />
       <scope id="1937421445113931097" at="29,34,30,20" />
       <scope id="5916754392152578805" at="39,159,40,84" />
-      <scope id="281208147575752213" at="46,162,47,84" />
+      <scope id="281208147575752213" at="46,169,47,84" />
       <scope id="5916754392152578757" at="26,0,28,0" />
       <scope id="5916754392152578791" at="38,97,41,7" />
-      <scope id="281208147575752208" at="45,82,48,7" />
+      <scope id="281208147575752208" at="45,89,48,7" />
       <scope id="1937421445113931086" at="28,0,32,0" />
       <scope id="5916754392152578790" at="37,62,42,5">
         <var name="node" id="5916754392152578824" />
       </scope>
-      <scope id="281208147575752201" at="44,169,49,5">
+      <scope id="281208147575752201" at="44,176,49,5">
         <var name="node" id="281208147575752202" />
       </scope>
       <scope id="5916754392152578769" at="34,73,50,19">

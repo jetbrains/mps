@@ -115,7 +115,7 @@ public class TodoViewer extends JPanel {
       if (SNodeOperations.isInstanceOf(n, CONCEPTS.TextCommentPart$LX)) {
         return SPropertyOperations.getString(SNodeOperations.as(node, CONCEPTS.TextCommentPart$LX), PROPS.text$ag2i);
       }
-      return ((String) BHReflection.invoke0(SNodeOperations.as(node, CONCEPTS.IComment$KY), CONCEPTS.IComment$KY, SMethodIdV2.create("getTextualRepresentation", 281208147581426571L, 0x5745e3015c8914d3L)));
+      return ((String) BHReflection.invoke0(SNodeOperations.as(node, CONCEPTS.IComment$KY), CONCEPTS.IGenericComment$bD, SMethodIdV2.create("getTextualRepresentation", 281208147581426571L, 0x553941aeb020c32eL)));
     }
     @Override
     public String getResultsText(TextOptions options) {
@@ -144,6 +144,7 @@ public class TodoViewer extends JPanel {
   private static final class CONCEPTS {
     /*package*/ static final SConcept TextCommentPart$LX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart");
     /*package*/ static final SInterfaceConcept IComment$KY = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3e70d51ff33226dL, "jetbrains.mps.baseLanguage.structure.IComment");
+    /*package*/ static final SInterfaceConcept IGenericComment$bD = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3f05685639c49599L, "jetbrains.mps.lang.core.structure.IGenericComment");
   }
 
   private static final class PROPS {

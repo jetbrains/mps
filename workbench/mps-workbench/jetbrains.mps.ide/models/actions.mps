@@ -28774,7 +28774,7 @@
                 </node>
               </node>
               <node concept="2qgKlT" id="5qXHvL$795F" role="2OqNvi">
-                <ref role="37wK5l" to="tpek:fB3l80ylIb" resolve="getTextualRepresentation" />
+                <ref role="37wK5l" to="tpcu:fB3l80ylIb" resolve="getTextualRepresentation" />
               </node>
             </node>
           </node>
@@ -29189,7 +29189,7 @@
                   <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
                   <ref role="37wK5l" to="33ny:~Collections.singleton(java.lang.Object)" resolve="singleton" />
                   <node concept="35c_gC" id="592Zdv9e3YZ" role="37wK5m">
-                    <ref role="35c_gD" to="tpee:fB3l7ZcM9H" resolve="IComment" />
+                    <ref role="35c_gD" to="tpck:3W5q5oTL9mp" resolve="IGenericComment" />
                   </node>
                 </node>
                 <node concept="3clFbT" id="592Zdv9aZcl" role="37wK5m">
@@ -29215,7 +29215,7 @@
           <node concept="3cpWsn" id="fB3l80cGoa" role="1Duv9x">
             <property role="TrG5h" value="node" />
             <node concept="3Tqbb2" id="fB3l80cGob" role="1tU5fm">
-              <ref role="ehGHo" to="tpee:fB3l7ZcM9H" resolve="IComment" />
+              <ref role="ehGHo" to="tpck:3W5q5oTL9mp" resolve="IGenericComment" />
             </node>
           </node>
           <node concept="2OqwBi" id="fB3l80cGoc" role="1DdaDG">
@@ -29224,7 +29224,7 @@
             </node>
             <node concept="v3k3i" id="fB3l80cGoe" role="2OqNvi">
               <node concept="chp4Y" id="fB3l80eJOn" role="v3oSu">
-                <ref role="cht4Q" to="tpee:fB3l7ZcM9H" resolve="IComment" />
+                <ref role="cht4Q" to="tpck:3W5q5oTL9mp" resolve="IGenericComment" />
               </node>
             </node>
           </node>
@@ -29232,7 +29232,7 @@
             <node concept="3clFbJ" id="fB3l80cGoh" role="3cqZAp">
               <node concept="2OqwBi" id="fB3l80cGoi" role="3clFbw">
                 <node concept="2qgKlT" id="fB3l80fLkM" role="2OqNvi">
-                  <ref role="37wK5l" to="tpek:fB3l7ZufMD" resolve="isTODOComment" />
+                  <ref role="37wK5l" to="tpcu:fB3l7ZufMD" resolve="isTODOComment" />
                 </node>
                 <node concept="37vLTw" id="fB3l80cGok" role="2Oq$k0">
                   <ref role="3cqZAo" node="fB3l80cGoa" resolve="node" />

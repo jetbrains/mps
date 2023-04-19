@@ -41,9 +41,9 @@ public class TodoFinder implements IFinder {
       }
     }
 
-    Set<SNode> comments = FindUsagesFacade.getInstance().findInstances(query.getScope(), Collections.singleton(CONCEPTS.IComment$KY), false, new EmptyProgressMonitor());
-    for (SNode node : SNodeOperations.ofConcept(comments, CONCEPTS.IComment$KY)) {
-      if (((boolean) (Boolean) BHReflection.invoke0(node, CONCEPTS.IComment$KY, SMethodIdV2.create("isTODOComment", 281208147563576489L, 0x5745e3015c8914d3L)))) {
+    Set<SNode> comments = FindUsagesFacade.getInstance().findInstances(query.getScope(), Collections.singleton(CONCEPTS.IGenericComment$bD), false, new EmptyProgressMonitor());
+    for (SNode node : SNodeOperations.ofConcept(comments, CONCEPTS.IGenericComment$bD)) {
+      if (((boolean) (Boolean) BHReflection.invoke0(node, CONCEPTS.IGenericComment$bD, SMethodIdV2.create("isTODOComment", 281208147563576489L, 0x553941aeb020c32eL)))) {
         results.getSearchResults().add(new SearchResult<SNode>(node, "TODO items"));
       }
     }
@@ -53,6 +53,6 @@ public class TodoFinder implements IFinder {
   private static final class CONCEPTS {
     /*package*/ static final SConcept TextCommentPart$LX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart");
     /*package*/ static final SConcept CommentPart$KZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3bL, "jetbrains.mps.baseLanguage.structure.CommentPart");
-    /*package*/ static final SInterfaceConcept IComment$KY = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3e70d51ff33226dL, "jetbrains.mps.baseLanguage.structure.IComment");
+    /*package*/ static final SInterfaceConcept IGenericComment$bD = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3f05685639c49599L, "jetbrains.mps.lang.core.structure.IGenericComment");
   }
 }

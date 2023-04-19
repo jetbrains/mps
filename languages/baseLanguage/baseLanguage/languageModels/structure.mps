@@ -4726,6 +4726,9 @@
     <property role="EcuMT" value="281208147558998637" />
     <property role="3GE5qa" value="comments" />
     <property role="TrG5h" value="IComment" />
+    <node concept="PrWs8" id="3W5q5oTL9T3" role="PrDN$">
+      <ref role="PrY4T" to="tpck:3W5q5oTL9mp" resolve="IGenericComment" />
+    </node>
     <node concept="PrWs8" id="fB3l7ZteEn" role="PrDN$">
       <ref role="PrY4T" to="zqge:6GJhO0n1XxQ" resolve="IHoldLines" />
     </node>

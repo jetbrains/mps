@@ -2450,6 +2450,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForIComment() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage", "IComment", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3e70d51ff33226dL);
     b.interface_();
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3f05685639c49599L);
     b.parent(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6b2f47401707d876L);
     b.parent(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x18ce7fcc0a02c1ffL);
     b.origin("r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)/281208147558998637");
