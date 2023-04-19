@@ -800,6 +800,7 @@
         <child id="62678610895108195" name="svg_small" index="1hH5mY" />
         <child id="62678610895108142" name="svg" index="1hH5nN" />
         <child id="772379520210716142" name="welcomeLogo" index="3vi$VU" />
+        <child id="4157435862321767641" name="version" index="3ZAC$U" />
       </concept>
       <concept id="3189788309731840247" name="jetbrains.mps.build.mps.structure.BuildMps_Solution" flags="ng" index="1E1JtA" />
       <concept id="3189788309731840248" name="jetbrains.mps.build.mps.structure.BuildMps_Language" flags="ng" index="1E1JtD" />
@@ -807,6 +808,12 @@
       <concept id="322010710375871467" name="jetbrains.mps.build.mps.structure.BuildMps_AbstractModule" flags="ng" index="3LEN3z">
         <property id="8369506495128725901" name="compact" index="BnDLt" />
         <child id="322010710375956261" name="path" index="3LF7KH" />
+      </concept>
+      <concept id="4157435862321765764" name="jetbrains.mps.build.mps.structure.BuildMps_BrandingVersion" flags="ng" index="3ZAF1B">
+        <child id="4157435862321765794" name="versionEap" index="3ZAF11" />
+        <child id="4157435862321765793" name="versionBugfixNr" index="3ZAF12" />
+        <child id="4157435862321765792" name="versionMinor" index="3ZAF13" />
+        <child id="4157435862321765791" name="versionMajor" index="3ZAF1W" />
       </concept>
     </language>
   </registry>
@@ -12564,6 +12571,24 @@
                             </node>
                           </node>
                         </node>
+                      </node>
+                      <node concept="3ZAF1B" id="1h9jmP$lyNs" role="3ZAC$U">
+                        <node concept="3_J27D" id="1h9jmP$lyNt" role="3ZAF1W">
+                          <node concept="3Mxwew" id="1h9jmP$lyNu" role="3MwsjC">
+                            <property role="3MwjfP" value="1" />
+                          </node>
+                        </node>
+                        <node concept="3_J27D" id="1h9jmP$lyNv" role="3ZAF13">
+                          <node concept="3Mxwew" id="1h9jmP$lyNw" role="3MwsjC">
+                            <property role="3MwjfP" value="0" />
+                          </node>
+                        </node>
+                        <node concept="NbPM2" id="1h9jmP$lyNx" role="3ZAF12">
+                          <node concept="3Mxwew" id="1h9jmP$lFWd" role="3MwsjC">
+                            <property role="3MwjfP" value=".0" />
+                          </node>
+                        </node>
+                        <node concept="NbPM2" id="1h9jmP$lyNy" role="3ZAF11" />
                       </node>
                     </node>
                   </node>
