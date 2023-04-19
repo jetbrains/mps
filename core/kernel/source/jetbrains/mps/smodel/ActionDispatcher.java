@@ -17,7 +17,8 @@ package jetbrains.mps.smodel;
 
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.logging.Logger;
-import org.apache.commons.lang3.ClassUtils;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -26,7 +27,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
-import java.util.function.Predicate;
 
 /**
  * Thread-safe, but not-reentrant action execution mechanism, with notification dispatch on first and last action.
@@ -136,9 +136,24 @@ import java.util.function.Predicate;
   }
 
   /*package*/ static boolean isControlFlowIDEA(RuntimeException ex) {
-    final Predicate<String> cfePredicate = "com.intellij.openapi.diagnostic.ControlFlowException"::equals;
-    return ClassUtils.getAllInterfaces(ex.getClass()).stream().map(Class::getName).anyMatch(cfePredicate);
+    return isDescendant(ex.getClass(), "com.intellij.openapi.diagnostic.ControlFlowException");
   }
+
+  private static boolean isDescendant(@Nullable Class<?> cls, @NotNull String className) {
+    if (cls == null) {
+      return false;
+    }
+    if (className.equals(cls.getName())) {
+      return true;
+    }
+    for (Class<?> implemented : cls.getInterfaces()) {
+      if (isDescendant(implemented, className)) {
+        return true;
+      }
+    }
+    return isDescendant(cls.getSuperclass(), className);
+  }
+
   private void logUnexpectedRuntimeException(RuntimeException ex) {
     if (isControlFlowIDEA(ex)) {
       // don't treat IDEA's control flow exceptions as errors. We can do nothing about IDEA's approach to use RuntimeException implements ControlFlowException
