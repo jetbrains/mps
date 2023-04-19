@@ -21,6 +21,7 @@ import jetbrains.mps.smodel.event.SModelEvent;
 import jetbrains.mps.util.Cancellable;
 import org.jetbrains.annotations.NotNull;
 
+import java.time.Instant;
 import java.util.List;
 
 public interface EditorChecker {
@@ -42,6 +43,7 @@ public interface EditorChecker {
 
   /**
    * Checks {@code editorComponent} for messages. Should watch {@code cancellable} for cancellation.
+   * Either this method or the one with additional parameter of type {@code Instant} must be implemented.
    *
    * @param editorComponent the component to check
    * @param incremental if true, cached information may be used; if false, cached information should be forgotten and the editor component rechecked completely.
@@ -50,7 +52,23 @@ public interface EditorChecker {
    * @return an {@link UpdateResult} indicating whether the update completed successfully and possibly containing check results.
    */
   @NotNull
-  UpdateResult update(EditorComponent editorComponent, boolean incremental, boolean applyQuickFixes, Cancellable cancellable);
+  default UpdateResult update(EditorComponent editorComponent, boolean incremental, boolean applyQuickFixes, Cancellable cancellable) {
+    throw new UnsupportedOperationException("not implemented");
+  }
+
+  /**
+   * Implement this method to receive additionally information on when was this checker last run, if ever.
+   *
+   * @param editorComponent
+   * @param incremental
+   * @param lastChecked
+   * @param applyQuickFixes
+   * @param cancellable
+   * @return
+   */
+  default UpdateResult update(EditorComponent editorComponent, boolean incremental, Instant lastChecked, boolean applyQuickFixes, Cancellable cancellable) {
+    return update(editorComponent, incremental, applyQuickFixes, cancellable);
+  }
 
   /**
    * Invoked after calling {@link #update} on all needed editor components. Checkers that maintain one global "dirty" flag can mark themselves clean in this

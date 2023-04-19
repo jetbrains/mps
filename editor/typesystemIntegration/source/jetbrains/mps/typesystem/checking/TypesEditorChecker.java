@@ -31,6 +31,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -53,7 +54,8 @@ public class TypesEditorChecker extends AbstractTypesystemEditorChecker {
   @NotNull
   @Override
   protected UpdateResult doCreateMessages(final TypecheckingSession typecheckingSession,
-                                          final boolean wasCheckedOnce,
+                                          final boolean incremental,
+                                          Instant wasLastChecked,
                                           final EditorContext editorContext,
                                           final SNode rootNode,
                                           Cancellable cancellable,
@@ -67,7 +69,7 @@ public class TypesEditorChecker extends AbstractTypesystemEditorChecker {
       boolean messagesChanged = false;
 
       Collection<Pair<SNodeReference, List<NodeReportItem>>> collected = Collections.emptyList();
-      if (!(wasCheckedOnce && TypecheckingFacade.getFromContext().isCacheUpToDate(rootNode))) {
+      if (!(incremental && TypecheckingFacade.getFromContext().isCacheUpToDate(rootNode))) {
         try {
           messagesChanged = true;
           ErrorsCollector errorsCollector = new ErrorsCollector();

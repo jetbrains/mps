@@ -50,6 +50,7 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.util.Consumer;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -80,8 +81,13 @@ public abstract class AbstractTypesystemEditorChecker extends BaseEditorChecker 
   }
 
   @NotNull
-  protected abstract UpdateResult doCreateMessages(TypecheckingSession session, boolean wasCheckedOnce, EditorContext editorContext,
-                                                   SNode rootNode, Cancellable cancellable, boolean applyQuickFixes);
+  protected abstract UpdateResult doCreateMessages(TypecheckingSession session,
+                                                   boolean incremental,
+                                                   Instant wasLastChecked,
+                                                   EditorContext editorContext,
+                                                   SNode rootNode,
+                                                   Cancellable cancellable,
+                                                   boolean applyQuickFixes);
 
   @Override
   public void processEvents(List<SModelEvent> events) {
@@ -100,7 +106,10 @@ public abstract class AbstractTypesystemEditorChecker extends BaseEditorChecker 
 
   @NotNull
   @Override
-  public UpdateResult update(final EditorComponent editorComponent, final boolean wasCheckedOnce, final boolean applyQuickFixes,
+  public UpdateResult update(final EditorComponent editorComponent,
+                             final boolean incremental,
+                             final Instant wasLastChecked,
+                             final boolean applyQuickFixes,
                              final Cancellable cancellable) {
     try {
       if (editorComponent.getTypecheckingSession() == null) return UpdateResult.CANCELLED;
@@ -110,7 +119,8 @@ public abstract class AbstractTypesystemEditorChecker extends BaseEditorChecker 
                  .computeWithSession(editorComponent.getTypecheckingSession(),
                                      (session) ->
                                          doCreateMessages(session,
-                                                          wasCheckedOnce,
+                                                          incremental,
+                                                          wasLastChecked,
                                                           editorComponent.getEditorContext(),
                                                           editorComponent.getEditedNode(),
                                                           cancellable,

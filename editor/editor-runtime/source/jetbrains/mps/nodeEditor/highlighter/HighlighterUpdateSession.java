@@ -39,6 +39,7 @@ import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SRepository;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -130,6 +131,7 @@ public class HighlighterUpdateSession {
 
     final Set<EditorCheckerWrapper> checkersToRecheck = new LinkedHashSet<>();
     boolean rootWasCheckedOnce = editorTracker.wasCheckedOnce(component);
+    Instant rootWasLastChecked = editorTracker.wasCheckedWhen(component);
     boolean recreateInspectorMessages =
         myHighlighter.getEditorTracker().isInspector(component) && (mainEditorMessagesChanged || !editorTracker.wereInspectorMessagesCreated());
     editorTracker.markCheckedOnce(component);
@@ -180,11 +182,16 @@ public class HighlighterUpdateSession {
     List<EditorCheckerWrapper> checkersToRecheckList = new ArrayList<>(checkersToRecheck);
     checkersToRecheckList.sort(new PriorityComparator());
 
-    return updateEditor(component, rootWasCheckedOnce, checkersToRecheckList, recreateInspectorMessages, applyQuickFixes);
+    return updateEditor(component, rootWasCheckedOnce, rootWasLastChecked, checkersToRecheckList, recreateInspectorMessages, applyQuickFixes);
   }
 
-  private boolean updateEditor(final EditorComponent editor, final boolean wasCheckedOnce,
-      List<EditorCheckerWrapper> checkersToRecheck, boolean recreateInspectorMessages, final boolean applyQuickFixes) {
+  private boolean updateEditor(final EditorComponent editor,
+                               final boolean wasCheckedOnce,
+                               final Instant wasLastChecked,
+                               List<EditorCheckerWrapper> checkersToRecheck,
+                               boolean recreateInspectorMessages, 
+                               final boolean applyQuickFixes)
+  {
     if (editor == null || editor.getRootCell() == null) {
       return false;
     }
@@ -206,7 +213,7 @@ public class HighlighterUpdateSession {
         }
         // Important: for CancellableReadAction to work (i.e. to be truly 'cancellable', we have to start it from a non-EDT thread). As commands and most of
         // write actions are executed in EDT, a highlighter read started from EDT has no chance to receive cancel() request.
-        final HighlighterReadAction ra = new HighlighterReadAction(checker, editor, wasCheckedOnce, applyQuickFixes);
+        final HighlighterReadAction ra = new HighlighterReadAction(checker, editor, wasCheckedOnce, wasLastChecked, applyQuickFixes);
         // it's not clear whether to use SRepository associated with the editor or the project one. Left project as it was the one in runLoPrioRead()
         projectModelAccess.runReadAction(ra);
         checkResult = ra.getUpdateResult();
@@ -255,14 +262,16 @@ public class HighlighterUpdateSession {
     private final EditorCheckerWrapper myChecker;
     private final EditorComponent myEditor;
     private final boolean myWasCheckedOnce;
+    private Instant myWasLastChecked;
     private final boolean myApplyQuickFixes;
     // initial state corresponds to isCancelRequested() branch, just in case MA cancels this read action prior to execute()
     private UpdateResult myUpdateResult = UpdateResult.CANCELLED;
 
-    HighlighterReadAction(EditorCheckerWrapper checker, EditorComponent editor, boolean wasCheckedOnce, boolean applyQuickFixes) {
+    HighlighterReadAction(EditorCheckerWrapper checker, EditorComponent editor, boolean wasCheckedOnce, Instant wasLastChecked, boolean applyQuickFixes) {
       myChecker = checker;
       myEditor = editor;
       myWasCheckedOnce = wasCheckedOnce;
+      myWasLastChecked = wasLastChecked;
       myApplyQuickFixes = applyQuickFixes;
     }
 
@@ -305,7 +314,7 @@ public class HighlighterUpdateSession {
     UpdateResult perform(EditorChecker checker1) {
       try {
         HighlighterUpdateSessionCancellable cancel = new HighlighterUpdateSessionCancellable(this, checker1.toString(), myEditor);
-        return checker1.update(myEditor, myWasCheckedOnce, myApplyQuickFixes, cancel);
+        return checker1.update(myEditor, myWasCheckedOnce, myWasLastChecked, myApplyQuickFixes, cancel);
       } catch (IndexNotReadyException ex) {
         myEditor.getHighlightManager().clearForOwner(checker1.getEditorMessageOwner(), true);
         throw ex;
