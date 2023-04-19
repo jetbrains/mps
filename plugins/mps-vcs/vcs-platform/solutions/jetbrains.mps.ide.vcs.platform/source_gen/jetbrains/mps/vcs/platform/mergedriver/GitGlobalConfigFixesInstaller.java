@@ -24,6 +24,10 @@ import com.intellij.openapi.ui.Messages;
     if (!(PluginUtil.isGitPluginEnabled())) {
       return AbstractInstaller.State.NOT_ENABLED;
     }
+    // check for default project
+    if (myProject.getBaseDir() == null) {
+      return AbstractInstaller.State.NOT_ENABLED;
+    }
     try {
       String currentValue = GitConfigUtilWrapped.getValue(myProject, myProject.getBaseDir(), GitConfigUtil.CORE_AUTOCRLF);
       if (GitCrlfUtil.RECOMMENDED_VALUE.equals(currentValue)) {
