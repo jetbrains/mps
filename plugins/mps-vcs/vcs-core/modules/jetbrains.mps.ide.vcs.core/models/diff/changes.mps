@@ -28,6 +28,7 @@
     <import index="ur19" ref="r:d58d9938-2526-431c-a5fe-6bbbfeb64ac2(jetbrains.mps.vcs.util)" />
     <import index="zavc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.errors.messageTargets(MPS.Core/)" />
     <import index="i8bi" ref="r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)" />
+    <import index="fyhk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps(MPS.Core/)" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -2184,37 +2185,85 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="6d5B$R3G__i" role="3cqZAp">
-          <node concept="37vLTI" id="6d5B$R3G__j" role="3clFbG">
-            <node concept="1rXfSq" id="6d5B$R3G__k" role="37vLTx">
-              <ref role="37wK5l" node="6d5B$R3GLPa" resolve="createDescription" />
-              <node concept="3clFbT" id="6d5B$R3G__l" role="37wK5m">
-                <property role="3clFbU" value="true" />
+        <node concept="3clFbJ" id="6e9Mdmc4YYx" role="3cqZAp">
+          <node concept="3clFbS" id="6e9Mdmc4YYz" role="3clFbx">
+            <node concept="3SKdUt" id="6e9Mdmc6rnv" role="3cqZAp">
+              <node concept="1PaTwC" id="6e9Mdmc6rnw" role="1aUNEU">
+                <node concept="3oM_SD" id="6e9Mdmc6wPe" role="1PaTwD">
+                  <property role="3oM_SC" value="see" />
+                </node>
+                <node concept="3oM_SD" id="6e9Mdmc6wRn" role="1PaTwD">
+                  <property role="3oM_SC" value="MPS-35421," />
+                </node>
+                <node concept="3oM_SD" id="6e9Mdmc6wQ9" role="1PaTwD">
+                  <property role="3oM_SC" value="AttributeOperations.isChildAttribute()" />
+                </node>
+                <node concept="3oM_SD" id="6e9Mdmc6wQc" role="1PaTwD">
+                  <property role="3oM_SC" value="case" />
+                </node>
               </node>
             </node>
-            <node concept="37vLTw" id="6d5B$R3G__m" role="37vLTJ">
-              <ref role="3cqZAo" node="6d5B$R3GwW4" resolve="myDescription" />
+            <node concept="3clFbF" id="6e9Mdmc5CpO" role="3cqZAp">
+              <node concept="37vLTI" id="6e9Mdmc5F7$" role="3clFbG">
+                <node concept="37vLTI" id="6e9Mdmc5PrU" role="37vLTx">
+                  <node concept="37vLTI" id="6e9Mdmc64$p" role="37vLTx">
+                    <node concept="1rXfSq" id="6e9Mdmc6b6J" role="37vLTx">
+                      <ref role="37wK5l" node="6d5B$R3Hn2z" resolve="createInternalDescription" />
+                    </node>
+                    <node concept="37vLTw" id="6e9Mdmc5TXY" role="37vLTJ">
+                      <ref role="3cqZAo" node="6d5B$R3GwWa" resolve="myInternalDescription" />
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="6e9Mdmc5Jjp" role="37vLTJ">
+                    <ref role="3cqZAo" node="6d5B$R3GwW7" resolve="myShortDescription" />
+                  </node>
+                </node>
+                <node concept="37vLTw" id="6e9Mdmc5CpM" role="37vLTJ">
+                  <ref role="3cqZAo" node="6d5B$R3GwW4" resolve="myDescription" />
+                </node>
+              </node>
             </node>
           </node>
-        </node>
-        <node concept="3clFbF" id="6d5B$R3G__n" role="3cqZAp">
-          <node concept="37vLTI" id="6d5B$R3G__o" role="3clFbG">
-            <node concept="1rXfSq" id="6d5B$R3G__p" role="37vLTx">
-              <ref role="37wK5l" node="6d5B$R3GLPa" resolve="createDescription" />
-              <node concept="3clFbT" id="6d5B$R3G__q" role="37wK5m" />
-            </node>
-            <node concept="37vLTw" id="6d5B$R3G__r" role="37vLTJ">
-              <ref role="3cqZAo" node="6d5B$R3GwW7" resolve="myShortDescription" />
-            </node>
+          <node concept="2YIFZM" id="6e9Mdmc5hX$" role="3clFbw">
+            <ref role="37wK5l" to="fyhk:~RuntimeFlags.isMergeDriverMode()" resolve="isMergeDriverMode" />
+            <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
           </node>
-        </node>
-        <node concept="3clFbF" id="6d5B$R3G__s" role="3cqZAp">
-          <node concept="37vLTI" id="6d5B$R3G__t" role="3clFbG">
-            <node concept="1rXfSq" id="6d5B$R3G__u" role="37vLTx">
-              <ref role="37wK5l" node="6d5B$R3Hn2z" resolve="createInternalDescription" />
-            </node>
-            <node concept="37vLTw" id="6d5B$R3G__v" role="37vLTJ">
-              <ref role="3cqZAo" node="6d5B$R3GwWa" resolve="myInternalDescription" />
+          <node concept="9aQIb" id="6e9Mdmc5lUM" role="9aQIa">
+            <node concept="3clFbS" id="6e9Mdmc5lUN" role="9aQI4">
+              <node concept="3clFbF" id="6d5B$R3G__i" role="3cqZAp">
+                <node concept="37vLTI" id="6d5B$R3G__j" role="3clFbG">
+                  <node concept="1rXfSq" id="6d5B$R3G__k" role="37vLTx">
+                    <ref role="37wK5l" node="6d5B$R3GLPa" resolve="createDescription" />
+                    <node concept="3clFbT" id="6d5B$R3G__l" role="37wK5m">
+                      <property role="3clFbU" value="true" />
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="6d5B$R3G__m" role="37vLTJ">
+                    <ref role="3cqZAo" node="6d5B$R3GwW4" resolve="myDescription" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="6d5B$R3G__n" role="3cqZAp">
+                <node concept="37vLTI" id="6d5B$R3G__o" role="3clFbG">
+                  <node concept="1rXfSq" id="6d5B$R3G__p" role="37vLTx">
+                    <ref role="37wK5l" node="6d5B$R3GLPa" resolve="createDescription" />
+                    <node concept="3clFbT" id="6d5B$R3G__q" role="37wK5m" />
+                  </node>
+                  <node concept="37vLTw" id="6d5B$R3G__r" role="37vLTJ">
+                    <ref role="3cqZAo" node="6d5B$R3GwW7" resolve="myShortDescription" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="6d5B$R3G__s" role="3cqZAp">
+                <node concept="37vLTI" id="6d5B$R3G__t" role="3clFbG">
+                  <node concept="1rXfSq" id="6d5B$R3G__u" role="37vLTx">
+                    <ref role="37wK5l" node="6d5B$R3Hn2z" resolve="createInternalDescription" />
+                  </node>
+                  <node concept="37vLTw" id="6d5B$R3G__v" role="37vLTJ">
+                    <ref role="3cqZAo" node="6d5B$R3GwWa" resolve="myInternalDescription" />
+                  </node>
+                </node>
+              </node>
             </node>
           </node>
         </node>

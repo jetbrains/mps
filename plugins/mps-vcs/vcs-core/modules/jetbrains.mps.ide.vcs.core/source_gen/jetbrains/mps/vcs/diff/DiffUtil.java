@@ -6,6 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SProperty;
+import jetbrains.mps.RuntimeFlags;
 import org.jetbrains.mps.openapi.language.SDataType;
 import org.jetbrains.mps.openapi.language.SType;
 import java.util.Objects;
@@ -54,13 +55,22 @@ public final class DiffUtil {
   /*package*/ static boolean propertiesAreEqual(@NotNull SNode oldNode, @NotNull SNode newNode, @NotNull SProperty property) {
     String oldPropValue = oldNode.getProperty(property);
     String newPropValue = newNode.getProperty(property);
-    SDataType type = property.getType();
-    Object oldValue = type.fromString(oldPropValue);
-    Object newValue = type.fromString(newPropValue);
-    if (oldValue == SType.NOT_A_VALUE || newValue == SType.NOT_A_VALUE) {
-      // If there is no language available (e.g. in merge driver) then we compare raw property values
+    Object oldValue;
+    Object newValue;
+    if (RuntimeFlags.isMergeDriverMode()) {
+      // see MPS-35421, SPropertyAdapter.getType() case
+      // in merge driver, we don't need (nor can use) exact type conversion, plain persistence values are fine
       oldValue = oldPropValue;
       newValue = newPropValue;
+    } else {
+      SDataType type = property.getType();
+      oldValue = type.fromString(oldPropValue);
+      newValue = type.fromString(newPropValue);
+      if (oldValue == SType.NOT_A_VALUE || newValue == SType.NOT_A_VALUE) {
+        // If there is no language available (e.g. in merge driver) then we compare raw property values
+        oldValue = oldPropValue;
+        newValue = newPropValue;
+      }
     }
     return Objects.equals(oldValue, newValue);
   }

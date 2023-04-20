@@ -8,6 +8,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.vcs.diff.ChangeSet;
+import jetbrains.mps.RuntimeFlags;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -60,9 +61,14 @@ public class NodeGroupChange extends StructureChange {
     myEnd = end;
     myResultBegin = resultBegin;
     myResultEnd = resultEnd;
-    myDescription = createDescription(true);
-    myShortDescription = createDescription(false);
-    myInternalDescription = createInternalDescription();
+    if (RuntimeFlags.isMergeDriverMode()) {
+      // see MPS-35421, AttributeOperations.isChildAttribute() case
+      myDescription = myShortDescription = myInternalDescription = createInternalDescription();
+    } else {
+      myDescription = createDescription(true);
+      myShortDescription = createDescription(false);
+      myInternalDescription = createInternalDescription();
+    }
   }
 
   @NotNull

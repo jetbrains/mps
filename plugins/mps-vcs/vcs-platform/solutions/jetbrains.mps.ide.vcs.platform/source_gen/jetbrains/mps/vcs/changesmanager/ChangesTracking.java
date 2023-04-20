@@ -81,7 +81,6 @@ import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
-import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.smodel.event.SModelRootEvent;
 import jetbrains.mps.smodel.event.SModelLanguageEvent;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -648,7 +647,7 @@ public final class ChangesTracking {
               return check_5iuzi5_a0a0a0a0b0a0e0a0n0j36(check_5iuzi5_a0a0a0a0a0b0a0e0a0n0j36(myDifference.getChangeSet()), it) != null;
             }
           })) {
-            b.buildForNodeRole(IterableUtil.asList(AttributeOperations.getChildNodesAndAttributes(oldParentNode, childRole)), IterableUtil.asList(childrenRightAfterEvent.value), parentId, parentId, childRole);
+            b.buildForNodeRole(Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(oldParentNode, childRole)).toListSequence(), Sequence.fromIterable(childrenRightAfterEvent.value).toListSequence(), parentId, parentId, childRole);
           }
         });
       }, parent, event);

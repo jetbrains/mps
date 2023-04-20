@@ -24,6 +24,7 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.HashMap;
+import jetbrains.mps.RuntimeFlags;
 import java.util.function.Function;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.Objects;
@@ -144,27 +145,36 @@ public final class ChangeSetBuilder {
 
   /*package*/ static Map<SContainmentLink, List<SNode>> getRoleToChildCollectionMap(SNode node) {
     final Map<SContainmentLink, List<SNode>> roleToChildCollection = new HashMap<SContainmentLink, List<SNode>>();
-    ListSequence.fromList(SNodeOperations.getChildren(node)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode child) {
-        SContainmentLink link = SNodeOperations.getContainingLinkInChildrenAndChildAttributesCollection(child);
-        roleToChildCollection.computeIfAbsent(link, new Function<SContainmentLink, List<SNode>>() {
-          public List<SNode> apply(SContainmentLink link) {
-            return ListSequence.fromList(new ArrayList<SNode>());
-          }
-        }).add(child);
-      }
-    });
+    if (RuntimeFlags.isMergeDriverMode()) {
+      // see MPS-35421, SNodeOperations.getContainingLinkInChildrenAndChildAttributesCollection() case
+      ListSequence.fromList(SNodeOperations.getChildren(node)).visitAll(new IVisitor<SNode>() {
+        public void visit(SNode child) {
+          roleToChildCollection.computeIfAbsent(child.getContainmentLink(), (SContainmentLink link) -> ListSequence.fromList(new ArrayList<SNode>())).add(child);
+        }
+      });
+    } else {
+      ListSequence.fromList(SNodeOperations.getChildren(node)).visitAll(new IVisitor<SNode>() {
+        public void visit(SNode child) {
+          SContainmentLink link = SNodeOperations.getContainingLinkInChildrenAndChildAttributesCollection(child);
+          roleToChildCollection.computeIfAbsent(link, new Function<SContainmentLink, List<SNode>>() {
+            public List<SNode> apply(SContainmentLink link) {
+              return ListSequence.fromList(new ArrayList<SNode>());
+            }
+          }).add(child);
+        }
+      });
+    }
     return roleToChildCollection;
   }
 
-  public void buildForNodeRole(final List<? extends SNode> oldChildren, List<? extends SNode> newChildren, final SNodeId oldParentId, final SNodeId newParentId, final SContainmentLink role) {
+  public void buildForNodeRole(final List<SNode> oldChildren, List<SNode> newChildren, final SNodeId oldParentId, final SNodeId newParentId, final SContainmentLink role) {
 
-    final List<SNodeId> oldIds = ListSequence.fromList(((List<? extends SNode>) oldChildren)).select(new ISelector<SNode, SNodeId>() {
+    final List<SNodeId> oldIds = ListSequence.fromList(oldChildren).select(new ISelector<SNode, SNodeId>() {
       public SNodeId select(SNode n) {
         return n.getNodeId();
       }
     }).toListSequence();
-    final List<SNodeId> newIds = ListSequence.fromList(((List<? extends SNode>) newChildren)).select(new ISelector<SNode, SNodeId>() {
+    final List<SNodeId> newIds = ListSequence.fromList(newChildren).select(new ISelector<SNode, SNodeId>() {
       public SNodeId select(SNode n) {
         return n.getNodeId();
       }
@@ -189,7 +199,7 @@ public final class ChangeSetBuilder {
       }
     });
 
-    // Finding insertings, deletings and replacings
+    // Finding inserts, deletions and replacements
     for (Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>> indices : ListSequence.fromList(finder.getDifferentIndices())) {
       final List<SNodeId> oldIds1 = ListSequence.fromList(oldIds).page((int) indices._0()._0(), (int) indices._0()._1()).toListSequence();
       List<SNodeId> newIds1 = ListSequence.fromList(newIds).page((int) indices._1()._0(), (int) indices._1()._1()).toListSequence();
