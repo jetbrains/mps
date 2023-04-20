@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -183,37 +183,37 @@ public class StyleRegistryIdeaImpl extends StyleRegistry implements Disposable {
       addIdeaMappingsExt("FOLDED_TEXT", "FOLDED_TEXT_ATTRIBUTES");
       addIdeaMappingsExt("URL", "HYPERLINK_ATTRIBUTES");
 
-      // FIXME I believe use of .toString() here is an error, has to be .getExternalName() as we
-      //       need just identifier, without extra information about defaults (see TextAttributesKey.toString() impl)
-      addIdeaMappingsExt("LOCAL_VARIABLE", DefaultLanguageHighlighterColors.LOCAL_VARIABLE.toString());
-      addIdeaMappingsExt("PARAMETER", DefaultLanguageHighlighterColors.PARAMETER.toString());
+      // Don't use DefaultLanguageHighlighterColors.CONSTANT.toString() as we need just an identifier, without
+      // extra information about defaults (see TextAttributesKey.toString() impl)
+      addIdeaMappingsExt("LOCAL_VARIABLE", DefaultLanguageHighlighterColors.LOCAL_VARIABLE.getExternalName());
+      addIdeaMappingsExt("PARAMETER", DefaultLanguageHighlighterColors.PARAMETER.getExternalName());
       addIdeaMappingsExt("INSTANCE_FIELD", "INSTANCE_FIELD_ATTRIBUTES");
-      addIdeaMappingsExt("METHOD_DECLARATION", DefaultLanguageHighlighterColors.FUNCTION_DECLARATION.toString());
-      addIdeaMappingsExt("METHOD_CALL", DefaultLanguageHighlighterColors.FUNCTION_CALL.toString());
+      addIdeaMappingsExt("METHOD_DECLARATION", DefaultLanguageHighlighterColors.FUNCTION_DECLARATION.getExternalName());
+      addIdeaMappingsExt("METHOD_CALL", DefaultLanguageHighlighterColors.FUNCTION_CALL.getExternalName());
       addIdeaMappingsExt("STATIC_FIELD", "STATIC_FIELD_ATTRIBUTES");
       addIdeaMappingsExt("STATIC_FINAL_FIELD", "STATIC_FINAL_FIELD_ATTRIBUTES");
-      addIdeaMappingsExt("STATIC_METHOD", DefaultLanguageHighlighterColors.STATIC_METHOD.toString());
+      addIdeaMappingsExt("STATIC_METHOD", DefaultLanguageHighlighterColors.STATIC_METHOD.getExternalName());
       addIdeaMappingsExt("DEPRECATED", "DEPRECATED_ATTRIBUTES");
 
-      addIdeaMappingsExt("CLASS_NAME", DefaultLanguageHighlighterColors.CLASS_NAME.toString());
+      addIdeaMappingsExt("CLASS_NAME", DefaultLanguageHighlighterColors.CLASS_NAME.getExternalName());
 
       addIdeaMappingsExt("ANNOTATION", "ANNOTATION_NAME_ATTRIBUTES");
       addIdeaMappingsExt("NOT_USED_ELEMENT", "NOT_USED_ELEMENT_ATTRIBUTES");
       addIdeaMappingsExt("TODO", "TODO_DEFAULT_ATTRIBUTES");
 
-      addIdeaMappingsExt("DOC_TAG", DefaultLanguageHighlighterColors.DOC_COMMENT_TAG.toString());
-      addIdeaMappingsExt("DOC_COMMENT", DefaultLanguageHighlighterColors.DOC_COMMENT.toString());
-      addIdeaMappingsExt("KEYWORD", DefaultLanguageHighlighterColors.KEYWORD.toString());
-      addIdeaMappingsExt("LINE_COMMENT", DefaultLanguageHighlighterColors.LINE_COMMENT.toString());
-      addIdeaMappingsExt("BLOCK_COMMENT", DefaultLanguageHighlighterColors.BLOCK_COMMENT.toString());
-      addIdeaMappingsExt("NUMBER", DefaultLanguageHighlighterColors.NUMBER.toString());
-      addIdeaMappingsExt("STRING", DefaultLanguageHighlighterColors.STRING.toString());
-      addIdeaMappingsExt("OPERATION_SIGN", DefaultLanguageHighlighterColors.OPERATION_SIGN.toString());
-      addIdeaMappingsExt("PARENTH", DefaultLanguageHighlighterColors.PARENTHESES.toString());
-      addIdeaMappingsExt("BRACKETS", DefaultLanguageHighlighterColors.BRACKETS.toString());
-      addIdeaMappingsExt("BRACES", DefaultLanguageHighlighterColors.BRACES.toString());
-      addIdeaMappingsExt("SEMICOLON", DefaultLanguageHighlighterColors.SEMICOLON.toString());
-      addIdeaMappingsExt("DOT", DefaultLanguageHighlighterColors.DOT.toString());
+      addIdeaMappingsExt("DOC_TAG", DefaultLanguageHighlighterColors.DOC_COMMENT_TAG.getExternalName());
+      addIdeaMappingsExt("DOC_COMMENT", DefaultLanguageHighlighterColors.DOC_COMMENT.getExternalName());
+      addIdeaMappingsExt("KEYWORD", DefaultLanguageHighlighterColors.KEYWORD.getExternalName());
+      addIdeaMappingsExt("LINE_COMMENT", DefaultLanguageHighlighterColors.LINE_COMMENT.getExternalName());
+      addIdeaMappingsExt("BLOCK_COMMENT", DefaultLanguageHighlighterColors.BLOCK_COMMENT.getExternalName());
+      addIdeaMappingsExt("NUMBER", DefaultLanguageHighlighterColors.NUMBER.getExternalName());
+      addIdeaMappingsExt("STRING", DefaultLanguageHighlighterColors.STRING.getExternalName());
+      addIdeaMappingsExt("OPERATION_SIGN", DefaultLanguageHighlighterColors.OPERATION_SIGN.getExternalName());
+      addIdeaMappingsExt("PARENTH", DefaultLanguageHighlighterColors.PARENTHESES.getExternalName());
+      addIdeaMappingsExt("BRACKETS", DefaultLanguageHighlighterColors.BRACKETS.getExternalName());
+      addIdeaMappingsExt("BRACES", DefaultLanguageHighlighterColors.BRACES.getExternalName());
+      addIdeaMappingsExt("SEMICOLON", DefaultLanguageHighlighterColors.SEMICOLON.getExternalName());
+      addIdeaMappingsExt("DOT", DefaultLanguageHighlighterColors.DOT.getExternalName());
 
       // com.intellij.xdebugger.ui.DebuggerColors, BREAKPOINT_ATTRIBUTES and EXECUTIONPOINT_ATTRIBUTES constants
       addIdeaMappingsExt("BREAKPOINT", "BREAKPOINT_ATTRIBUTES");
