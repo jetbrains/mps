@@ -44,7 +44,7 @@ public class HelpHelper {
     return isNotEmptyString(getHelpURL(node));
   }
   public static boolean helpForRootIsAvailable(SNode node) {
-    if ((node == null)) {
+    if ((node == null) || (SNodeOperations.getParent(node) == null)) {
       return false;
     }
     return isNotEmptyString(getHelpURL(SNodeOperations.getContainingRoot(node)));
