@@ -8555,7 +8555,7 @@
                     <node concept="TSZUe" id="5Ll81AU5H$w" role="2OqNvi">
                       <node concept="2ShNRf" id="5Ll81AU5H$x" role="25WWJ7">
                         <node concept="1pGfFk" id="5Ll81AU5H$y" role="2ShVmc">
-                          <ref role="37wK5l" to="btf5:42UviMIj2Hz" resolve="NodeGroupStructChange" />
+                          <ref role="37wK5l" to="btf5:4k3fuHGtdr9" resolve="NodeGroupChange" />
                           <node concept="37vLTw" id="5Ll81AU5H$z" role="37wK5m">
                             <ref role="3cqZAo" node="42UviMIlkto" resolve="myChangeSet" />
                           </node>

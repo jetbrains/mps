@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.vcs.diff.changes.SetPropertyStructChange;
-import jetbrains.mps.vcs.diff.changes.NodeGroupStructChange;
+import jetbrains.mps.vcs.diff.changes.NodeGroupChange;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -52,7 +52,7 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
   public void replaceSingleChild() {
     // public int f2() {} =>
     // public string f2() {}
-    testDiffCorectness(2, (SNode n1, SNode n2) -> new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.returnType$5xoi, 0, 1, 0, 1)});
+    testDiffCorectness(2, (SNode n1, SNode n2) -> new ModelChange[]{new NodeGroupChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.returnType$5xoi, 0, 1, 0, 1)});
   }
 
   @Test
@@ -70,7 +70,7 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
           return Objects.equals(SPropertyOperations.getString(n, PROPS.name$MnvL), "var");
         }
       });
-      return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.initializer$2twD, 0, 1, 0, 0)};
+      return new ModelChange[]{new NodeGroupChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.initializer$2twD, 0, 1, 0, 0)};
     });
   }
   @Test
@@ -88,38 +88,38 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
           return Objects.equals(SPropertyOperations.getString(n, PROPS.name$MnvL), "var");
         }
       });
-      return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.initializer$2twD, 0, 0, 0, 1)};
+      return new ModelChange[]{new NodeGroupChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.initializer$2twD, 0, 0, 0, 1)};
     });
   }
   @Test
   public void deleteChild() {
     // public void f5(int a, int b, int c, int d) { } =>
     // public void f5(int a, int c, int d) { }
-    testDiffCorectness(5, (SNode n1, SNode n2) -> new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$5xBj, 1, 2, 1, 1)});
+    testDiffCorectness(5, (SNode n1, SNode n2) -> new ModelChange[]{new NodeGroupChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$5xBj, 1, 2, 1, 1)});
   }
   @Test
   public void deleteChildren() {
     // public void f6(int a, int b, int c, int d, int e) { } =>
     // public void f6(int a, int b, int e) { }
-    testDiffCorectness(6, (SNode n1, SNode n2) -> new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$5xBj, 2, 4, 2, 2)});
+    testDiffCorectness(6, (SNode n1, SNode n2) -> new ModelChange[]{new NodeGroupChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$5xBj, 2, 4, 2, 2)});
   }
   @Test
   public void addChild() {
     // public void f7(int a, int c, int d) { } =>
     // public void f7(int a, int b, int c, int d) { }
-    testDiffCorectness(7, (SNode n1, SNode n2) -> new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$5xBj, 1, 1, 1, 2)});
+    testDiffCorectness(7, (SNode n1, SNode n2) -> new ModelChange[]{new NodeGroupChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$5xBj, 1, 1, 1, 2)});
   }
   @Test
   public void addChildren() {
     // public void f8(int a, int e) { } =>
     // public void f8(int a, int b, int c, int d, int e) { }
-    testDiffCorectness(8, (SNode n1, SNode n2) -> new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$5xBj, 1, 1, 1, 4)});
+    testDiffCorectness(8, (SNode n1, SNode n2) -> new ModelChange[]{new NodeGroupChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$5xBj, 1, 1, 1, 4)});
   }
   @Test
   public void replaceChildren() {
     // public void f9() { //xx; int a = 5; int b = 6; int c = 7; int d = 8; } =>
     // public void f9() { //xx; int a = 5; a = 8; a++; a = a + 9; int d = 8; }
-    testDiffCorectness(9, (SNode n1, SNode n2) -> new ModelChange[]{new NodeGroupStructChange(getChangeSet(), SLinkOperations.getTarget(n1, LINKS.body$5xQk).getNodeId(), SLinkOperations.getTarget(n2, LINKS.body$5xQk).getNodeId(), LINKS.statement$53DE, 2, 4, 2, 5)});
+    testDiffCorectness(9, (SNode n1, SNode n2) -> new ModelChange[]{new NodeGroupChange(getChangeSet(), SLinkOperations.getTarget(n1, LINKS.body$5xQk).getNodeId(), SLinkOperations.getTarget(n2, LINKS.body$5xQk).getNodeId(), LINKS.statement$53DE, 2, 4, 2, 5)});
   }
   @Test
   public void changeReference() {
@@ -182,7 +182,7 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
     testDiffCorectness(16, (SNode n1, SNode n2) -> {
       SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n1, CONCEPTS.LocalMethodCall$zT, false, new SAbstractConcept[]{})).first();
       SNode n21 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n2, CONCEPTS.LocalMethodCall$zT, false, new SAbstractConcept[]{})).first();
-      return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.actualArgument$pzdx, 1, 2, 1, 3), new NodeGroupStructChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.actualArgument$pzdx, 5, 5, 6, 7)};
+      return new ModelChange[]{new NodeGroupChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.actualArgument$pzdx, 1, 2, 1, 3), new NodeGroupChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.actualArgument$pzdx, 5, 5, 6, 7)};
     });
   }
   @Test
@@ -194,33 +194,33 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
       SNode n21 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n2, CONCEPTS.LocalMethodCall$zT, false, new SAbstractConcept[]{})).first();
       SNode n12 = SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(n11, LINKS.actualArgument$pzdx)).getElement(1), CONCEPTS.PlusExpression$k0), LINKS.rightExpression$nvX), CONCEPTS.IntegerConstant$Na);
       SNode n22 = SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(n21, LINKS.actualArgument$pzdx)).getElement(1), CONCEPTS.PlusExpression$k0), LINKS.rightExpression$nvX), CONCEPTS.IntegerConstant$Na);
-      return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.actualArgument$pzdx, 2, 2, 2, 3), new NodeGroupStructChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.actualArgument$pzdx, 5, 5, 6, 7), new SetPropertyStructChange(getChangeSet(), n12.getNodeId(), n22.getNodeId(), PROPS.value$jgCM, "2")};
+      return new ModelChange[]{new NodeGroupChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.actualArgument$pzdx, 2, 2, 2, 3), new NodeGroupChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.actualArgument$pzdx, 5, 5, 6, 7), new SetPropertyStructChange(getChangeSet(), n12.getNodeId(), n22.getNodeId(), PROPS.value$jgCM, "2")};
     });
   }
   @Test
   public void addCommentMultipleRole() {
     // public void f19(int a) { } =>
     // public void f19(int a, /*int b*/) { }
-    testDiffCorectness(19, (SNode n1, SNode n2) -> new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$5xBj, 1, 1, 1, 2)});
+    testDiffCorectness(19, (SNode n1, SNode n2) -> new ModelChange[]{new NodeGroupChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$5xBj, 1, 1, 1, 2)});
   }
   @Test
   public void commentChid() {
     // public void f20(int a) { } =>
     // public void f20(/*int a*/) { }
-    testDiffCorectness(20, (SNode n1, SNode n2) -> new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$5xBj, 0, 1, 0, 1)});
+    testDiffCorectness(20, (SNode n1, SNode n2) -> new ModelChange[]{new NodeGroupChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$5xBj, 0, 1, 0, 1)});
   }
   @Test
   public void addCommentSingleRole() {
     // public long f21() {return 1; } =>
     // public /*int*/ long f21() {return 1; }
-    testDiffCorectness(21, (SNode n1, SNode n2) -> new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.returnType$5xoi, 0, 0, 0, 1)});
+    testDiffCorectness(21, (SNode n1, SNode n2) -> new ModelChange[]{new NodeGroupChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.returnType$5xoi, 0, 0, 0, 1)});
   }
   @Test
   public void addNodeAttribute() {
     // public long f22() {return 1; } =>
     // /*@return f22 */
     // public long f22() {return 1; }
-    testDiffCorectness(22, (SNode n1, SNode n2) -> new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.smodelAttribute$KJ43, 0, 0, 0, 1)});
+    testDiffCorectness(22, (SNode n1, SNode n2) -> new ModelChange[]{new NodeGroupChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.smodelAttribute$KJ43, 0, 0, 0, 1)});
   }
 
 
