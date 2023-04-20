@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
-  <uses language="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" />
+  <uses language="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" />  
+  <uses language="l:c7fb639f-be78-4307-89b0-b5959c3fa8c8:jetbrains.mps.lang.text" />
   <uses language="l:049a08c5-1fe5-43cc-bd99-8b46d641d7f5:jetbrains.mps.samples.Kaja" />
   <uses language="l:44306fd2-ef94-4b56-9806-d9ab509536db:jetbrains.mps.samples.KajaAndOr" />
   <uses language="l:b56912a3-674f-4530-b0cf-55261b526a1f:jetbrains.mps.samples.KajaSceneConstruction" />
