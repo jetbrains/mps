@@ -50,6 +50,7 @@ public class NodeGroupChange extends StructureChange {
   private final String myDescription;
   private final String myShortDescription;
   private final String myInternalDescription;
+  private final boolean myRespectCommentedOutNodes;
 
 
   public NodeGroupChange(@NotNull ChangeSet changeSet, @NotNull SNodeId oldParentNodeId, @NotNull SNodeId newParentNodeId, @NotNull SContainmentLink role, int begin, int end, int resultBegin, int resultEnd) {
@@ -61,10 +62,17 @@ public class NodeGroupChange extends StructureChange {
     myEnd = end;
     myResultBegin = resultBegin;
     myResultEnd = resultEnd;
-    if (RuntimeFlags.isMergeDriverMode()) {
+    // see ChangeSetBuilder constructor for comments
+    // I don't want to refactor the rest of NGC uses to pass this value, hence this hard-coded value
+    myRespectCommentedOutNodes = !(RuntimeFlags.isMergeDriverMode());
+    if (!(myRespectCommentedOutNodes)) {
       // see MPS-35421, AttributeOperations.isChildAttribute() case
+      // although with myRespectCommentedOutNodes in getChangedCollection(), this is no longer essential.
+      // Still, seems reasonable not to overcomplicate command-line scenario.
       myDescription = myShortDescription = myInternalDescription = createInternalDescription();
     } else {
+      // FIXME irrespective of metamodel access inside createDescription(), it's generally not very good approach
+      //      as these methods access fields of not completely initialized 'this' instance.
       myDescription = createDescription(true);
       myShortDescription = createDescription(false);
       myInternalDescription = createInternalDescription();
@@ -149,7 +157,11 @@ public class NodeGroupChange extends StructureChange {
   }
 
   public final List<SNode> getChangedCollection(boolean isNewModel) {
-    return check_yjf6x2_a0a24(check_yjf6x2_a0a0qb(getParent(isNewModel), myRole, this), this);
+    if (myRespectCommentedOutNodes) {
+      return check_yjf6x2_a0a0a34(check_yjf6x2_a0a0a0rb(getParent(isNewModel), myRole, this), this);
+    } else {
+      return check_yjf6x2_a0a0a0rb_0(getParent(isNewModel), myRole, this);
+    }
   }
 
 
@@ -182,7 +194,7 @@ public class NodeGroupChange extends StructureChange {
   private void deleteOldNodes(@NotNull final SModel model) {
     ListSequence.fromList(myPreparedIdsToDelete).visitAll(new IVisitor<SNodeId>() {
       public void visit(SNodeId id) {
-        check_yjf6x2_a0a0a0a0xb(model.getNode(id));
+        check_yjf6x2_a0a0a0a0yb(model.getNode(id));
       }
     });
     myPreparedIdsToDelete = null;
@@ -383,7 +395,7 @@ public class NodeGroupChange extends StructureChange {
       return false;
     }
     SNode node = getChangeSet().getOldModel().getNode(nodeId);
-    SNode parent = check_yjf6x2_a0e0gd(node);
+    SNode parent = check_yjf6x2_a0e0hd(node);
     while (parent != null) {
       if (Sequence.fromIterable(deletedNodeIds).contains(node.getNodeId())) {
         return true;
@@ -411,17 +423,17 @@ public class NodeGroupChange extends StructureChange {
     }
 
     if (otherChange instanceof NodeGroupChange) {
-      return conflictsWithNodeGroupChange(as_yjf6x2_a0a0a3a88(otherChange, NodeGroupChange.class));
+      return conflictsWithNodeGroupChange(as_yjf6x2_a0a0a3a98(otherChange, NodeGroupChange.class));
     }
     if (otherChange instanceof NodeChange) {
-      return this.containsDeletedNode((as_yjf6x2_a0a0a0a0e0kd(otherChange, NodeChange.class)).getAffectedNodeId(false));
+      return this.containsDeletedNode((as_yjf6x2_a0a0a0a0e0ld(otherChange, NodeChange.class)).getAffectedNodeId(false));
     }
     return false;
   }
 
   @Override
   public boolean isSymmetricWith(ModelChange otherChange) {
-    return otherChange instanceof NodeGroupChange && isSymmetricWithNodeGroupChange(as_yjf6x2_a0a0a0md(otherChange, NodeGroupChange.class));
+    return otherChange instanceof NodeGroupChange && isSymmetricWithNodeGroupChange(as_yjf6x2_a0a0a0nd(otherChange, NodeGroupChange.class));
   }
 
   private boolean isSymmetricWithNodeGroupChange(NodeGroupChange other) {
@@ -439,37 +451,43 @@ public class NodeGroupChange extends StructureChange {
     }
     return false;
   }
-  private static List<SNode> check_yjf6x2_a0a24(Iterable<SNode> checkedDotOperand, NodeGroupChange checkedDotThisExpression) {
+  private static List<SNode> check_yjf6x2_a0a0a34(Iterable<SNode> checkedDotOperand, NodeGroupChange checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       return Sequence.fromIterable(checkedDotOperand).toListSequence();
     }
     return null;
   }
-  private static Iterable<SNode> check_yjf6x2_a0a0qb(SNode checkedDotOperand, SContainmentLink myRole, NodeGroupChange checkedDotThisExpression) {
+  private static Iterable<SNode> check_yjf6x2_a0a0a0rb(SNode checkedDotOperand, SContainmentLink myRole, NodeGroupChange checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       return AttributeOperations.getChildNodesAndAttributes(checkedDotOperand, myRole);
     }
     return null;
   }
-  private static void check_yjf6x2_a0a0a0a0xb(SNode checkedDotOperand) {
+  private static List<SNode> check_yjf6x2_a0a0a0rb_0(SNode checkedDotOperand, SContainmentLink myRole, NodeGroupChange checkedDotThisExpression) {
+    if (null != checkedDotOperand) {
+      return SNodeOperations.getChildren(checkedDotOperand, myRole);
+    }
+    return null;
+  }
+  private static void check_yjf6x2_a0a0a0a0yb(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.delete();
     }
 
   }
-  private static SNode check_yjf6x2_a0e0gd(SNode checkedDotOperand) {
+  private static SNode check_yjf6x2_a0e0hd(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return SNodeOperations.getParent(checkedDotOperand);
     }
     return null;
   }
-  private static <T> T as_yjf6x2_a0a0a3a88(Object o, Class<T> type) {
+  private static <T> T as_yjf6x2_a0a0a3a98(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_yjf6x2_a0a0a0a0e0kd(Object o, Class<T> type) {
+  private static <T> T as_yjf6x2_a0a0a0a0e0ld(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_yjf6x2_a0a0a0md(Object o, Class<T> type) {
+  private static <T> T as_yjf6x2_a0a0a0nd(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 
