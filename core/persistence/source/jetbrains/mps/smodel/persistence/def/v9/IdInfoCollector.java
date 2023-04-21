@@ -169,6 +169,15 @@ public class IdInfoCollector {
 
   // XXX would be great to have SConceptFeatureWithId interface
   private ConceptInfo registerConcept(SConceptFeature cf, SConceptFeatureId cfId) {
+    if (myRegistry.knows(cfId.getConceptId())) {
+      // if we already know the concept, don't try to get into getOwner(). In a persistence-only scenario, w/o languages available,
+      // (e.g. copyModels task or cmd-line merge) we may face proper SReferenceAdapterById, e.g. the one hard-coded in
+      // SNodeUtil.ref_SNodeType_concept (or elsewhere in the Java code). Attempt to get its owner results in IllegalConceptDescriptor warning
+      // Here we cover scenarios when the concept of such reference is already known (which is the case with SNodeType), however, it's possible
+      // to face a SConceptFeature here with concept we didn't encounter yet, and then we'll face ICD warning again.
+      // FIXME I consider this fix sufficient for MPS-35421 in 2022.3 timeframe, but need to refactor this code in the future
+      return myRegistry.get(cfId.getConceptId());
+    }
     final SAbstractConcept c = cf.getOwner();
     if (MetaIdHelper.unrecognized(c)) {
       // we can not get proper information about owner of the concept feature (irrespective whether there's ConceptDescriptor runtime counterpart or not),
