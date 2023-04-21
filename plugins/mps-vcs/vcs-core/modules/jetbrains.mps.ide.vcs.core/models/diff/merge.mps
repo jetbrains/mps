@@ -7575,12 +7575,20 @@
                 <ref role="37wK5l" to="c17a:~SAbstractLink.isMultiple()" resolve="isMultiple" />
               </node>
             </node>
-            <node concept="2ZW3vV" id="gcWfhY8XRi" role="3uHU7B">
-              <node concept="3uibUv" id="gcWfhY8XRj" role="2ZW6by">
-                <ref role="3uigEE" to="btf5:4k3fuHGsESX" resolve="NodeGroupChange" />
+            <node concept="1Wc70l" id="7_zd_0saqTX" role="3uHU7B">
+              <node concept="3fqX7Q" id="7_zd_0saY8l" role="3uHU7B">
+                <node concept="2YIFZM" id="7_zd_0saY8n" role="3fr31v">
+                  <ref role="37wK5l" to="fyhk:~RuntimeFlags.isMergeDriverMode()" resolve="isMergeDriverMode" />
+                  <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
+                </node>
               </node>
-              <node concept="37vLTw" id="gcWfhY8XRk" role="2ZW6bz">
-                <ref role="3cqZAo" node="3$YpntjF4pP" resolve="change" />
+              <node concept="2ZW3vV" id="gcWfhY8XRi" role="3uHU7w">
+                <node concept="3uibUv" id="gcWfhY8XRj" role="2ZW6by">
+                  <ref role="3uigEE" to="btf5:4k3fuHGsESX" resolve="NodeGroupChange" />
+                </node>
+                <node concept="37vLTw" id="gcWfhY8XRk" role="2ZW6bz">
+                  <ref role="3cqZAo" node="3$YpntjF4pP" resolve="change" />
+                </node>
               </node>
             </node>
           </node>

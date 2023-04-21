@@ -34,6 +34,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.vcs.util.MergeStrategy;
+import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.vcs.diff.ChangeSetImpl;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.persistence.PersistenceVersionAware;
@@ -274,7 +275,7 @@ public final class MergeSession {
         return !(SetSequence.fromSet(myResolvedChanges).contains(ch));
       }
     }).toListSequence();
-    if (change instanceof NodeGroupChange && ((NodeGroupChange) change).getRoleLink().isMultiple()) {
+    if (!(RuntimeFlags.isMergeDriverMode()) && change instanceof NodeGroupChange && ((NodeGroupChange) change).getRoleLink().isMultiple()) {
       // adjust conflicting changes: leave possibility to reject or insert them separately
       final NodeGroupChange ngc = (NodeGroupChange) change;
       List<NodeGroupChange> ngcConflictedChanges = ListSequence.fromList(conflictedChanges).ofType(NodeGroupChange.class).where(new IWhereFilter<NodeGroupChange>() {
