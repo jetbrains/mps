@@ -24,6 +24,9 @@ import jetbrains.mps.vcs.diff.changes.NodeChange;
 import jetbrains.mps.vcs.diff.changes.NodeIdChange;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.RuntimeFlags;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.util.EqualUtil;
 import jetbrains.mps.vcs.diff.changes.SetPropertyChange;
@@ -32,13 +35,11 @@ import jetbrains.mps.vcs.diff.changes.SetConceptChange;
 import jetbrains.mps.vcs.diff.changes.AddRootChange;
 import jetbrains.mps.vcs.diff.DiffUtil;
 import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.vcs.diff.changes.ImportedModelChange;
 import jetbrains.mps.vcs.diff.changes.ModuleDependencyChange;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.vcs.diff.changes.UsedLanguageChange;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
 import java.util.ArrayList;
@@ -152,14 +153,19 @@ public class MergeConflictsBuilder implements ChangeConflictsBuilder {
       }
       SNode node = myBaseModel.getNode(nodeId);
       while (node != null) {
-        if (SNodeOperations.getParent(node) == null) {
+        final SNode parent = SNodeOperations.getParent(node);
+        if (parent == null) {
           DeleteRootChange conflicting = MapSequence.fromMap(deleteRootChanges).get(node.getNodeId());
           if (conflicting != null) {
             addPossibleConflict(change, conflicting);
           }
         } else {
-          Tuples._2<SNodeId, SContainmentLink> nodeRole = MultiTuple.<SNodeId,SContainmentLink>from(SNodeOperations.getParent(node).getNodeId(), SNodeOperations.getContainingLinkInChildrenAndChildAttributesCollection(node));
-          final int index = SNodeOperations.getIndexInChildrenAndChildAttributesCollection(node);
+          // FIXME In fact, shall use some configuration value instead of direct RT flag query. Perhaps, ChangeSet shall keep
+          //      the knowledge how it was constructed (with respect to ChildAttribute or not, e.g. based on 
+          //      ChangeSetBuilder.myRespectCommentedOutNodes
+          final SContainmentLink containingLink = (RuntimeFlags.isMergeDriverMode() ? SNodeOperations.getContainingLink(node) : SNodeOperations.getContainingLinkInChildrenAndChildAttributesCollection(node));
+          Tuples._2<SNodeId, SContainmentLink> nodeRole = MultiTuple.<SNodeId,SContainmentLink>from(parent.getNodeId(), containingLink);
+          final int index = (RuntimeFlags.isMergeDriverMode() ? ListSequence.fromList(SNodeOperations.getChildren(parent, containingLink)).indexOf(node) : Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(parent, containingLink)).indexOf(node));
           NodeGroupChange conflicting = ListSequence.fromList(MapSequence.fromMap(arrangedChanges).get(nodeRole)).findFirst(new IWhereFilter<NodeGroupChange>() {
             public boolean accept(NodeGroupChange ch) {
               return ch.getBegin() <= index && index < ch.getEnd();
@@ -170,7 +176,7 @@ public class MergeConflictsBuilder implements ChangeConflictsBuilder {
             break;
           }
         }
-        node = SNodeOperations.getParent(node);
+        node = parent;
       }
     }
   }
