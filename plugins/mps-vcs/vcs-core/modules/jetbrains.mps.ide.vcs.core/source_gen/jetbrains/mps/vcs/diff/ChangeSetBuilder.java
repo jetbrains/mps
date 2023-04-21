@@ -9,6 +9,7 @@ import java.util.List;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import jetbrains.mps.RuntimeFlags;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -63,7 +64,8 @@ public final class ChangeSetBuilder {
   private final ChangeSetImpl myChangeSet;
   @NotNull
   private final List<ModelChange> myNewChanges = ListSequence.fromList(new ArrayList<ModelChange>());
-  private boolean myTrackMovedNodes;
+  private final boolean myTrackMovedNodes;
+  private final boolean myRespectCommentedOutNodes;
 
 
   private ChangeSetBuilder(@NotNull SModel oldModel, @NotNull SModel newModel, boolean trackMovedNodes) {
@@ -71,6 +73,12 @@ public final class ChangeSetBuilder {
     myOldModel = oldModel;
     myNewModel = newModel;
     myTrackMovedNodes = trackMovedNodes;
+    // FIXME this is to deal with MPS-35421 in a limited yet controlled/documented way.
+    //      instead of the flag, we shall use different builders to collect changes in different operation modes.
+    //      This applies to trackMovedNodes flag (and MovesAwareChangeSetBuilder) as well.
+    //      Now I just record this value here, eventually shall pass it down to NodeGroupChange, where for now I just
+    //      duplicate this logic.
+    myRespectCommentedOutNodes = !(RuntimeFlags.isMergeDriverMode());
   }
 
   private ChangeSetBuilder(@NotNull ChangeSetImpl changeSet, boolean trackMovedNodes) {
@@ -78,6 +86,7 @@ public final class ChangeSetBuilder {
     myOldModel = changeSet.getOldModel();
     myNewModel = changeSet.getNewModel();
     myTrackMovedNodes = trackMovedNodes;
+    myRespectCommentedOutNodes = !(RuntimeFlags.isMergeDriverMode());
   }
 
   public void buildForProperty(@NotNull SNode oldNode, @NotNull SNode newNode, @NotNull SProperty property) {
@@ -144,27 +153,40 @@ public final class ChangeSetBuilder {
 
   /*package*/ static Map<SContainmentLink, List<SNode>> getRoleToChildCollectionMap(SNode node) {
     final Map<SContainmentLink, List<SNode>> roleToChildCollection = new HashMap<SContainmentLink, List<SNode>>();
-    ListSequence.fromList(SNodeOperations.getChildren(node)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode child) {
-        SContainmentLink link = SNodeOperations.getContainingLinkInChildrenAndChildAttributesCollection(child);
-        roleToChildCollection.computeIfAbsent(link, new Function<SContainmentLink, List<SNode>>() {
-          public List<SNode> apply(SContainmentLink link) {
-            return ListSequence.fromList(new ArrayList<SNode>());
-          }
-        }).add(child);
-      }
-    });
+    // FIXME if(!myRespectCommentedOutNodes), but can't use it here as it's a static method with quite some uses
+    //      What I need is to synchronise knowledge about whether to stick to single role or look into combination with
+    //      respective ChildAttributes under smodelAttributes role throughout few classes, where this assumption is now
+    //      scattered around and is not apparent.
+    if (RuntimeFlags.isMergeDriverMode()) {
+      // see MPS-35421, SNodeOperations.getContainingLinkInChildrenAndChildAttributesCollection() case
+      ListSequence.fromList(SNodeOperations.getChildren(node)).visitAll(new IVisitor<SNode>() {
+        public void visit(SNode child) {
+          roleToChildCollection.computeIfAbsent(child.getContainmentLink(), (SContainmentLink link) -> ListSequence.fromList(new ArrayList<SNode>())).add(child);
+        }
+      });
+    } else {
+      ListSequence.fromList(SNodeOperations.getChildren(node)).visitAll(new IVisitor<SNode>() {
+        public void visit(SNode child) {
+          SContainmentLink link = SNodeOperations.getContainingLinkInChildrenAndChildAttributesCollection(child);
+          roleToChildCollection.computeIfAbsent(link, new Function<SContainmentLink, List<SNode>>() {
+            public List<SNode> apply(SContainmentLink link) {
+              return ListSequence.fromList(new ArrayList<SNode>());
+            }
+          }).add(child);
+        }
+      });
+    }
     return roleToChildCollection;
   }
 
-  public void buildForNodeRole(final List<? extends SNode> oldChildren, List<? extends SNode> newChildren, final SNodeId oldParentId, final SNodeId newParentId, final SContainmentLink role) {
+  public void buildForNodeRole(final List<SNode> oldChildren, List<SNode> newChildren, final SNodeId oldParentId, final SNodeId newParentId, final SContainmentLink role) {
 
-    final List<SNodeId> oldIds = ListSequence.fromList(((List<? extends SNode>) oldChildren)).select(new ISelector<SNode, SNodeId>() {
+    final List<SNodeId> oldIds = ListSequence.fromList(oldChildren).select(new ISelector<SNode, SNodeId>() {
       public SNodeId select(SNode n) {
         return n.getNodeId();
       }
     }).toListSequence();
-    final List<SNodeId> newIds = ListSequence.fromList(((List<? extends SNode>) newChildren)).select(new ISelector<SNode, SNodeId>() {
+    final List<SNodeId> newIds = ListSequence.fromList(newChildren).select(new ISelector<SNode, SNodeId>() {
       public SNodeId select(SNode n) {
         return n.getNodeId();
       }
@@ -189,7 +211,7 @@ public final class ChangeSetBuilder {
       }
     });
 
-    // Finding insertings, deletings and replacings
+    // Finding inserts, deletions and replacements
     for (Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>> indices : ListSequence.fromList(finder.getDifferentIndices())) {
       final List<SNodeId> oldIds1 = ListSequence.fromList(oldIds).page((int) indices._0()._0(), (int) indices._0()._1()).toListSequence();
       List<SNodeId> newIds1 = ListSequence.fromList(newIds).page((int) indices._1()._0(), (int) indices._1()._1()).toListSequence();
@@ -227,7 +249,7 @@ public final class ChangeSetBuilder {
         if (newStart1 < ListSequence.fromList(newIds2).count()) {
           final Wrappers._T<SNodeId> newNodeId = new Wrappers._T<SNodeId>(ListSequence.fromList(newIds2).getElement(newStart1));
           if (MapSequence.fromMap(newToOldMap).containsValue(newNodeId.value)) {
-            newNodeId.value = check_nbyrtw_a0a0b0h0i0l0cb(MapSequence.fromMap(newToOldMap).findFirst(new IWhereFilter<IMapping<SNodeId, SNodeId>>() {
+            newNodeId.value = check_nbyrtw_a0a0b0h0i0l0db(MapSequence.fromMap(newToOldMap).findFirst(new IWhereFilter<IMapping<SNodeId, SNodeId>>() {
               public boolean accept(IMapping<SNodeId, SNodeId> it) {
                 return Objects.equals(it.value(), newNodeId.value);
               }
@@ -241,7 +263,7 @@ public final class ChangeSetBuilder {
         if (newEnd1 < ListSequence.fromList(newIds2).count()) {
           final Wrappers._T<SNodeId> newNodeId = new Wrappers._T<SNodeId>(ListSequence.fromList(newIds2).getElement(newEnd1));
           if (MapSequence.fromMap(newToOldMap).containsValue(newNodeId.value)) {
-            newNodeId.value = check_nbyrtw_a0a0b0j0i0l0cb(MapSequence.fromMap(newToOldMap).findFirst(new IWhereFilter<IMapping<SNodeId, SNodeId>>() {
+            newNodeId.value = check_nbyrtw_a0a0b0j0i0l0db(MapSequence.fromMap(newToOldMap).findFirst(new IWhereFilter<IMapping<SNodeId, SNodeId>>() {
               public boolean accept(IMapping<SNodeId, SNodeId> it) {
                 return Objects.equals(it.value(), newNodeId.value);
               }
@@ -260,7 +282,7 @@ public final class ChangeSetBuilder {
         }
       }).visitAll(new IVisitor<SNodeId>() {
         public void visit(final SNodeId oldNodeId) {
-          SNodeId newNodeId = check_nbyrtw_a0a0a0a01a11a82(MapSequence.fromMap(newToOldMap).findFirst(new IWhereFilter<IMapping<SNodeId, SNodeId>>() {
+          SNodeId newNodeId = check_nbyrtw_a0a0a0a01a11a92(MapSequence.fromMap(newToOldMap).findFirst(new IWhereFilter<IMapping<SNodeId, SNodeId>>() {
             public boolean accept(IMapping<SNodeId, SNodeId> it) {
               return Objects.equals(it.value(), oldNodeId);
             }
@@ -278,9 +300,9 @@ public final class ChangeSetBuilder {
     Iterable<D> added;
     Iterable<D> deleted;
     {
-      Tuples._2<Iterable<D>, Iterable<D>> _tmp_nbyrtw_c0eb = getAddedAndDeleted(referencesExtractor);
-      added = _tmp_nbyrtw_c0eb._0();
-      deleted = _tmp_nbyrtw_c0eb._1();
+      Tuples._2<Iterable<D>, Iterable<D>> _tmp_nbyrtw_c0fb = getAddedAndDeleted(referencesExtractor);
+      added = _tmp_nbyrtw_c0fb._0();
+      deleted = _tmp_nbyrtw_c0fb._1();
     }
     ListSequence.fromList(myNewChanges).addSequence(Sequence.fromIterable(added).select(new ISelector<D, DependencyChange>() {
       public DependencyChange select(D r) {
@@ -399,7 +421,7 @@ public final class ChangeSetBuilder {
   }
 
   private <D> Tuples._2<Iterable<D>, Iterable<D>> getAddedAndDeleted(_FunctionTypes._return_P1_E0<? extends Iterable<D>, ? super SModelBase> itemsExtractor) {
-    return getAddedAndDeleted(itemsExtractor.invoke(as_nbyrtw_a0a0a0yb(myOldModel, SModelBase.class)), itemsExtractor.invoke(as_nbyrtw_a0b0a0yb(myNewModel, SModelBase.class)));
+    return getAddedAndDeleted(itemsExtractor.invoke(as_nbyrtw_a0a0a0zb(myOldModel, SModelBase.class)), itemsExtractor.invoke(as_nbyrtw_a0b0a0zb(myNewModel, SModelBase.class)));
   }
 
   @NotNull
@@ -454,28 +476,28 @@ public final class ChangeSetBuilder {
   public static ChangeSetBuilder createBuilder(ChangeSet changeSet) {
     return new ChangeSetBuilder((ChangeSetImpl) changeSet, false);
   }
-  private static SNodeId check_nbyrtw_a0a0b0h0i0l0cb(IMapping<SNodeId, SNodeId> checkedDotOperand) {
+  private static SNodeId check_nbyrtw_a0a0b0h0i0l0db(IMapping<SNodeId, SNodeId> checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.key();
     }
     return null;
   }
-  private static SNodeId check_nbyrtw_a0a0b0j0i0l0cb(IMapping<SNodeId, SNodeId> checkedDotOperand) {
+  private static SNodeId check_nbyrtw_a0a0b0j0i0l0db(IMapping<SNodeId, SNodeId> checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.key();
     }
     return null;
   }
-  private static SNodeId check_nbyrtw_a0a0a0a01a11a82(IMapping<SNodeId, SNodeId> checkedDotOperand) {
+  private static SNodeId check_nbyrtw_a0a0a0a01a11a92(IMapping<SNodeId, SNodeId> checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.key();
     }
     return null;
   }
-  private static <T> T as_nbyrtw_a0a0a0yb(Object o, Class<T> type) {
+  private static <T> T as_nbyrtw_a0a0a0zb(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_nbyrtw_a0b0a0yb(Object o, Class<T> type) {
+  private static <T> T as_nbyrtw_a0b0a0zb(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

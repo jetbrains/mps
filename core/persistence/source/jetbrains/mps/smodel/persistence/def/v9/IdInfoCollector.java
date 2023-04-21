@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.smodel.persistence.def.v9;
 
+import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.persistence.MetaModelInfoProvider;
 import jetbrains.mps.persistence.registry.ConceptInfo;
 import jetbrains.mps.persistence.registry.IdInfoRegistry;
@@ -151,7 +152,7 @@ public class IdInfoCollector {
 
   private ConceptInfo registerConcept(SAbstractConcept c) {
     final SConceptId conceptId = MetaIdHelper.getConcept(c);
-    if (c.isValid() || MetaIdHelper.unrecognized(c)) {
+    if (!RuntimeFlags.isMergeDriverMode() && (c.isValid() || MetaIdHelper.unrecognized(c))) {
       return registerConcept(conceptId);
     }
     if (!myRegistry.knows(conceptId.getLanguageId())) {
@@ -168,6 +169,15 @@ public class IdInfoCollector {
 
   // XXX would be great to have SConceptFeatureWithId interface
   private ConceptInfo registerConcept(SConceptFeature cf, SConceptFeatureId cfId) {
+    if (myRegistry.knows(cfId.getConceptId())) {
+      // if we already know the concept, don't try to get into getOwner(). In a persistence-only scenario, w/o languages available,
+      // (e.g. copyModels task or cmd-line merge) we may face proper SReferenceAdapterById, e.g. the one hard-coded in
+      // SNodeUtil.ref_SNodeType_concept (or elsewhere in the Java code). Attempt to get its owner results in IllegalConceptDescriptor warning
+      // Here we cover scenarios when the concept of such reference is already known (which is the case with SNodeType), however, it's possible
+      // to face a SConceptFeature here with concept we didn't encounter yet, and then we'll face ICD warning again.
+      // FIXME I consider this fix sufficient for MPS-35421 in 2022.3 timeframe, but need to refactor this code in the future
+      return myRegistry.get(cfId.getConceptId());
+    }
     final SAbstractConcept c = cf.getOwner();
     if (MetaIdHelper.unrecognized(c)) {
       // we can not get proper information about owner of the concept feature (irrespective whether there's ConceptDescriptor runtime counterpart or not),

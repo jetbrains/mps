@@ -12085,10 +12085,8 @@
                                   </node>
                                   <node concept="liA8E" id="2QnDi8QvAPG" role="2OqNvi">
                                     <ref role="37wK5l" to="bfxj:2w98u$ITz2a" resolve="buildForNodeRole" />
-                                    <node concept="2YIFZM" id="jXG_1kgjGL" role="37wK5m">
-                                      <ref role="37wK5l" to="18ew:~IterableUtil.asList(java.lang.Iterable)" resolve="asList" />
-                                      <ref role="1Pybhc" to="18ew:~IterableUtil" resolve="IterableUtil" />
-                                      <node concept="2OqwBi" id="2QnDi8QvAPH" role="37wK5m">
+                                    <node concept="2OqwBi" id="6e9Mdmc9dXi" role="37wK5m">
+                                      <node concept="2OqwBi" id="2QnDi8QvAPH" role="2Oq$k0">
                                         <node concept="37vLTw" id="6BB1EWX4$9v" role="2Oq$k0">
                                           <ref role="3cqZAo" node="6BB1EWX4$9s" resolve="oldParentNode" />
                                         </node>
@@ -12102,13 +12100,13 @@
                                           </node>
                                         </node>
                                       </node>
+                                      <node concept="ANE8D" id="6e9Mdmc9qir" role="2OqNvi" />
                                     </node>
-                                    <node concept="2YIFZM" id="jXG_1kglcC" role="37wK5m">
-                                      <ref role="37wK5l" to="18ew:~IterableUtil.asList(java.lang.Iterable)" resolve="asList" />
-                                      <ref role="1Pybhc" to="18ew:~IterableUtil" resolve="IterableUtil" />
-                                      <node concept="37vLTw" id="jXG_1kglNG" role="37wK5m">
+                                    <node concept="2OqwBi" id="6e9Mdmc8WZH" role="37wK5m">
+                                      <node concept="37vLTw" id="6e9Mdmc8Ibe" role="2Oq$k0">
                                         <ref role="3cqZAo" node="jXG_1kfbBy" resolve="childrenRightAfterEvent" />
                                       </node>
+                                      <node concept="ANE8D" id="6e9Mdmc95RS" role="2OqNvi" />
                                     </node>
                                     <node concept="37vLTw" id="3GM_nagTwt_" role="37wK5m">
                                       <ref role="3cqZAo" node="2QnDi8QvAOK" resolve="parentId" />

@@ -31,7 +31,7 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.util.LongestCommonSubsequenceFinder;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.vcs.diff.changes.NodeGroupStructChange;
+import jetbrains.mps.vcs.diff.changes.NodeGroupChange;
 import java.util.Iterator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.IMapping;
@@ -155,7 +155,7 @@ outer:
       LongestCommonSubsequenceFinder<SConcept> finder2 = new LongestCommonSubsequenceFinder<SConcept>(oldC, newC);
       // concepts were not matched:
       for (Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>> ixs : ListSequence.fromList(finder2.getDifferentIndices())) {
-        ListSequence.fromList(myNewChanges).addElement(new NodeGroupStructChange(myChangeSet, parentId, newParentId, role, (int) oldIndices._0() + (int) ixs._0()._0(), (int) oldIndices._0() + (int) ixs._0()._1(), (int) newIndices._0() + (int) ixs._1()._0(), (int) newIndices._0() + (int) ixs._1()._1()));
+        ListSequence.fromList(myNewChanges).addElement(new NodeGroupChange(myChangeSet, parentId, newParentId, role, (int) oldIndices._0() + (int) ixs._0()._0(), (int) oldIndices._0() + (int) ixs._0()._1(), (int) newIndices._0() + (int) ixs._1()._0(), (int) newIndices._0() + (int) ixs._1()._1()));
       }
       // Finding changes for "matched" children
       for (Tuples._2<Integer, Integer> ixs : ListSequence.fromList(finder2.getCommonIndices())) {

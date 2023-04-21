@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="9sud37aiz818ydxm4jgiurgs5g929qz">
+<product version="3" modelHash="-7c0lhcaeqbrxnt745wc1upliz1skkyp">
   <files names="ChangeConflictsBuilder.java:HierarchicalChangesApplier.java:MergeConflictsBuilder.java:MergeSession.java:MergeSessionState.java:MergeTemporaryModel.java:MovesAwareMergeConflictsBuilder.java" />
 </product>
 
