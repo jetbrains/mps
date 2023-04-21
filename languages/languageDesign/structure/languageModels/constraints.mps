@@ -2968,5 +2968,20 @@
       </node>
     </node>
   </node>
+  <node concept="1M2fIO" id="2Fn9rKChsSp">
+    <property role="3GE5qa" value="descriptor" />
+    <ref role="1M2myG" to="tpce:49lEozayI3W" resolve="StructureAspectDeputy" />
+    <node concept="2NXJUA" id="2Fn9rKChsTg" role="2NY200">
+      <node concept="3clFbS" id="2Fn9rKChsTh" role="2VODD2">
+        <node concept="3clFbF" id="2Fn9rKCidDi" role="3cqZAp">
+          <node concept="2YIFZM" id="2Fn9rKCidE6" role="3clFbG">
+            <ref role="37wK5l" to="w1kc:~SModelStereotype.isDescriptorModel(org.jetbrains.mps.openapi.model.SModel)" resolve="isDescriptorModel" />
+            <ref role="1Pybhc" to="w1kc:~SModelStereotype" resolve="SModelStereotype" />
+            <node concept="1Q6Npb" id="2Fn9rKCidEN" role="37wK5m" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 
