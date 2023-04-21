@@ -213,7 +213,7 @@ public class NodeGroupChange extends StructureChange {
     if (ListSequence.fromList(nodesToAdd).isEmpty()) {
       return;
     }
-    SContainmentLink link = (SNodeOperations.isInstanceOf(ListSequence.fromList(nodesToAdd).first(), CONCEPTS.ChildAttribute$m8) ? LINKS.smodelAttribute$KJ43 : myRole);
+    SContainmentLink link = (myRespectCommentedOutNodes && SNodeOperations.isInstanceOf(ListSequence.fromList(nodesToAdd).first(), CONCEPTS.ChildAttribute$m8) ? LINKS.smodelAttribute$KJ43 : myRole);
     SNode parent = nodeCopier.getNode(model, getParentNodeId(false));
     SNode beforAnchor = nodeCopier.getNode(model, myBeforeAnchorId);
     for (SNode newNode : ListSequence.fromList(nodesToAdd)) {
