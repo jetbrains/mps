@@ -103,7 +103,11 @@ public class LanguageAspectSupport {
     return newAspect.getDefaultDevkit();
   }
 
+  /**
+   * @deprecated use {@link #getDefaultDevkit(SModel)} and process as you need, w/o hidden assumptions of this implementation
+   */
   @NotNull
+  @Deprecated(since = "2023.1", forRemoval = true)
   public static Collection<SLanguage> getDefaultDevkitLanguages(SModel model) {
     LanguageAspectDescriptor newAspect = getNewAspect(model);
     if (newAspect == null) {

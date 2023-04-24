@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,6 +52,7 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import javax.swing.Icon;
 import java.util.Map;
 
+// FIXME is there true need to extend BaseAction here?
 public class NewRootNodeAction extends BaseAction implements DumbAware {
   private final String myVirtualPackage;
   private final SAbstractConcept myNodeConcept;

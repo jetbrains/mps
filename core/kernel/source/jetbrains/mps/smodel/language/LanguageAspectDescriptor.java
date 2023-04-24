@@ -139,4 +139,13 @@ public abstract class LanguageAspectDescriptor implements OrderParticipant<Strin
       ((SModelBase) descriptorModel).addEngagedOnGenerationLanguage(aspectLanguage);
     }
   }
+
+  /**
+   * Gives aspect a chance to tell what's preferred to get aspect models initialized
+   * @since 2023.1
+   */
+  public void describeAspectRoots(@NotNull AspectRootConfiguration configuration) {
+    getMainLanguages().forEach(configuration::addPrimary);
+    getAdditionalLanguages().forEach(configuration::addAuxiliary);
+  }
 }
