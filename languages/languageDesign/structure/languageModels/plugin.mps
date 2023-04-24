@@ -25,6 +25,7 @@
     <import index="f7uj" ref="r:8ffb9fde-829b-4ee3-ade6-f4eee43e66a8(jetbrains.mps.lang.typesystem.plugin)" />
     <import index="smjb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.help(MPS.Core/)" />
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" implicit="true" />
+    <import index="1oap" ref="r:03d44d4c-3d65-461c-9085-0f48e9569e59(jetbrains.mps.lang.resources.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
@@ -40,8 +41,14 @@
       </concept>
     </language>
     <language id="f159adf4-3c93-40f9-9c5a-1f245a8697af" name="jetbrains.mps.lang.aspect">
+      <concept id="7985135864304582213" name="jetbrains.mps.lang.aspect.structure.SpecificAspectRootConfig" flags="ng" index="2tMXy7">
+        <child id="7985135864304588186" name="primary" index="2tMVdo" />
+        <child id="7985135864304588191" name="auxiliary" index="2tMVdt" />
+        <child id="7985135864304588188" name="secondary" index="2tMVdu" />
+      </concept>
       <concept id="3433054418424672374" name="jetbrains.mps.lang.aspect.structure.SimpleLanguageAspectDescriptor" flags="ng" index="3vrhyV">
         <reference id="8426907848585442521" name="proponent" index="h493j" />
+        <child id="7985135864304582199" name="rootCfg" index="2tMXzP" />
         <child id="8222125370833980146" name="devkit" index="TkT64" />
         <child id="4726480899534753275" name="helpUrl" index="1fTXyH" />
         <child id="3433054418425083029" name="icon" index="3vqPLo" />
@@ -100,6 +107,11 @@
         <child id="2450897840534683977" name="seq" index="2vPdvg" />
       </concept>
     </language>
+    <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
+      <concept id="7985135864304582466" name="jetbrains.mps.lang.structure.structure.ConceptDeclarationReference" flags="ng" index="2tMXA0">
+        <reference id="7985135864304582503" name="cpnt" index="2tMXA_" />
+      </concept>
+    </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="8222125370833354011" name="jetbrains.mps.lang.smodel.structure.DevkitPointer" flags="ng" index="T9mpH">
         <property id="8222125370833354012" name="devkitName" index="T9mpE" />
@@ -141,6 +153,29 @@
     <node concept="T9mpH" id="49lEozazm3W" role="TkT64">
       <property role="T9mpF" value="78434eb8-b0e5-444b-850d-e7c4ad2da9ab" />
       <property role="T9mpE" value="jetbrains.mps.devkit.aspect.structure" />
+    </node>
+    <node concept="2tMXy7" id="6VgTGbNagQm" role="2tMXzP">
+      <node concept="2tMXA0" id="6VgTGbNagQo" role="2tMVdo">
+        <ref role="2tMXA_" to="tpce:f_TIwhg" resolve="ConceptDeclaration" />
+      </node>
+      <node concept="2tMXA0" id="6VgTGbNagQq" role="2tMVdo">
+        <ref role="2tMXA_" to="tpce:h0PlHMJ" resolve="InterfaceConceptDeclaration" />
+      </node>
+      <node concept="2tMXA0" id="6VgTGbNagQt" role="2tMVdo">
+        <ref role="2tMXA_" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
+      </node>
+      <node concept="2tMXA0" id="6VgTGbNagQz" role="2tMVdu">
+        <ref role="2tMXA_" to="tpce:fKQkHSB" resolve="PrimitiveDataTypeDeclaration" />
+      </node>
+      <node concept="2tMXA0" id="6VgTGbNagQx" role="2tMVdu">
+        <ref role="2tMXA_" to="tpce:fKAz7CR" resolve="ConstrainedDataTypeDeclaration" />
+      </node>
+      <node concept="2tMXA0" id="6VgTGbNagQC" role="2tMVdt">
+        <ref role="2tMXA_" to="1oap:46nPloeqmpm" resolve="BaseURLFunction" />
+      </node>
+      <node concept="2tMXA0" id="6VgTGbNagRe" role="2tMVdt">
+        <ref role="2tMXA_" to="1oap:46nPloeqzyS" resolve="BaseURLLiteral" />
+      </node>
     </node>
   </node>
   <node concept="2vPdvu" id="264$spPfYX1">

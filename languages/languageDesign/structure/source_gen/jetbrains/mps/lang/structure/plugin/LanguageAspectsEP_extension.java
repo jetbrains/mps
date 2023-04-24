@@ -17,6 +17,8 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.smodel.language.AspectRootConfiguration;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspectDescriptor> {
   public LanguageAspectsEP_extension() {
@@ -46,7 +48,27 @@ public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspec
         new ModelImports(descriptorModel).addUsedLanguage(MetaAdapterFactory.getLanguage(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure"));
         SModelOperations.createNewRootNode(descriptorModel, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x4255a988ca8ae0fcL, "jetbrains.mps.lang.structure.structure.StructureAspectDeputy"));
       }
+      @Override
+      public void describeAspectRoots(@NotNull AspectRootConfiguration configuration) {
+        configuration.addPrimary(CONCEPTS.ConceptDeclaration$gH);
+        configuration.addPrimary(CONCEPTS.InterfaceConceptDeclaration$CG);
+        configuration.addPrimary(CONCEPTS.EnumerationDeclaration$hv);
+        configuration.addSecondary(CONCEPTS.PrimitiveDataTypeDeclaration$80);
+        configuration.addSecondary(CONCEPTS.ConstrainedDataTypeDeclaration$Ch);
+        configuration.addAuxiliary(CONCEPTS.BaseURLFunction$rq);
+        configuration.addAuxiliary(CONCEPTS.BaseURLLiteral$BH);
+      }
     };
   }
   private static final String HELP_URL = URLFunction_HelpCenterDocUrl.getUrl() + "/structure.html";
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept InterfaceConceptDeclaration$CG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
+    /*package*/ static final SConcept EnumerationDeclaration$hv = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
+    /*package*/ static final SConcept PrimitiveDataTypeDeclaration$80 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc3652de27L, "jetbrains.mps.lang.structure.structure.PrimitiveDataTypeDeclaration");
+    /*package*/ static final SConcept ConstrainedDataTypeDeclaration$Ch = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc268c7a37L, "jetbrains.mps.lang.structure.structure.ConstrainedDataTypeDeclaration");
+    /*package*/ static final SConcept BaseURLFunction$rq = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x4197d5560e696656L, "jetbrains.mps.lang.resources.structure.BaseURLFunction");
+    /*package*/ static final SConcept BaseURLLiteral$BH = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x4197d5560e6a38b8L, "jetbrains.mps.lang.resources.structure.BaseURLLiteral");
+  }
 }
