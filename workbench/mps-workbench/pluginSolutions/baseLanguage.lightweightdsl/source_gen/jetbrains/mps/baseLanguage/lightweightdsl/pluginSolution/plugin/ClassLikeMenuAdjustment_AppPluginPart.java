@@ -14,12 +14,12 @@ import jetbrains.mps.smodel.Language;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SNodePointer;
@@ -56,7 +56,7 @@ public class ClassLikeMenuAdjustment_AppPluginPart extends ApplicationPluginPart
               return it.getSourceModuleReference().resolve(repo);
             }
           }).ofType(Language.class);
-          return Sequence.fromIterable(languages).translate(new ITranslator2<Language, SModel>() {
+          return Sequence.fromIterable(SLinkOperations.collect(Sequence.fromIterable(languages).translate(new ITranslator2<Language, SModel>() {
             public Iterable<SModel> translate(Language it) {
               return it.getAccessoryModels();
             }
@@ -64,13 +64,9 @@ public class ClassLikeMenuAdjustment_AppPluginPart extends ApplicationPluginPart
             public Iterable<SNode> translate(SModel it) {
               return SModelOperations.roots(((SModel) it), CONCEPTS.DSLDescriptor$zD);
             }
-          }).select(new ISelector<SNode, SNode>() {
-            public SNode select(SNode it) {
-              return SLinkOperations.getTarget(it, LINKS.preferredConcept$1q4V);
-            }
-          }).where(new IWhereFilter<SNode>() {
+          }), LINKS.preferredConcept$1q4V)).where(new NotNullWhereFilter<SNode>()).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return it != null && !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)", "1068390468198")));
+              return !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)", "1068390468198")));
             }
           }).select(new ISelector<SNode, SAbstractConcept>() {
             public SAbstractConcept select(SNode it) {
