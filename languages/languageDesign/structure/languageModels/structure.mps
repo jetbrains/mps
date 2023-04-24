@@ -1169,5 +1169,19 @@
     </node>
     <node concept="1AhYRh" id="5roO0AoGqED" role="lGtFl" />
   </node>
+  <node concept="1TIwiD" id="6VgTGbN6NX2">
+    <property role="EcuMT" value="7985135864304582466" />
+    <property role="TrG5h" value="ConceptDeclarationReference" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <node concept="1TJgyj" id="6VgTGbN6NXB" role="1TKVEi">
+      <property role="IQ2ns" value="7985135864304582503" />
+      <property role="20kJfa" value="cpnt" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="f_TIwhg" resolve="ConceptDeclaration" />
+    </node>
+    <node concept="t5JxF" id="6VgTGbN6Plf" role="lGtFl">
+      <property role="t5JxN" value="Generic 'smart' reference for concepts" />
+    </node>
+  </node>
 </model>
 

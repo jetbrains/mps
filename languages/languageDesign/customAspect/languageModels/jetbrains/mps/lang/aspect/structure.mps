@@ -30,6 +30,8 @@
       </concept>
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
+        <property id="4628067390765907488" name="conceptShortDescription" index="R4oN_" />
+        <property id="4628067390765956802" name="abstract" index="R5$K7" />
         <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
       </concept>
       <concept id="1169125989551" name="jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration" flags="ig" index="PlHQZ" />
@@ -128,6 +130,15 @@
       <property role="20kJfa" value="order" />
       <ref role="20lvS9" to="1po2:283lDAXPS55" resolve="Order" />
     </node>
+    <node concept="1TJgyj" id="6VgTGbN6NSR" role="1TKVEi">
+      <property role="IQ2ns" value="7985135864304582199" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="rootCfg" />
+      <ref role="20lvS9" node="6VgTGbN6NRr" resolve="AspectRootConfiguration" />
+      <node concept="t5JxF" id="6VgTGbN6NT3" role="lGtFl">
+        <property role="t5JxN" value="if not present, MPS follows some generic logic based on main languages/devkit to figure out root concepts to create in an aspect model" />
+      </node>
+    </node>
     <node concept="PrWs8" id="1LJzqOWhe8r" role="PzmwI">
       <ref role="PrY4T" to="tpee:hCUYCKd" resolve="IValidIdentifier" />
     </node>
@@ -153,6 +164,47 @@
       <ref role="20lvS9" node="2Y$EcRKMr1Q" resolve="SimpleLanguageAspectDescriptor" />
       <ref role="20ksaX" to="1po2:283lDAXPS5c" resolve="target" />
     </node>
+  </node>
+  <node concept="1TIwiD" id="6VgTGbN6NRr">
+    <property role="EcuMT" value="7985135864304582107" />
+    <property role="3GE5qa" value="simple" />
+    <property role="TrG5h" value="AspectRootConfiguration" />
+    <property role="R4oN_" value="Tell roots to get started with an aspect model" />
+    <property role="R5$K7" value="true" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+  </node>
+  <node concept="1TIwiD" id="6VgTGbN6NT5">
+    <property role="EcuMT" value="7985135864304582213" />
+    <property role="3GE5qa" value="simple" />
+    <property role="TrG5h" value="SpecificAspectRootConfig" />
+    <ref role="1TJDcQ" node="6VgTGbN6NRr" resolve="AspectRootConfiguration" />
+    <node concept="1TJgyj" id="6VgTGbN6Pmq" role="1TKVEi">
+      <property role="IQ2ns" value="7985135864304588186" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <property role="20kJfa" value="primary" />
+      <ref role="20lvS9" to="tpce:6VgTGbN6NX2" resolve="ConceptDeclarationReference" />
+    </node>
+    <node concept="1TJgyj" id="6VgTGbN6Pms" role="1TKVEi">
+      <property role="IQ2ns" value="7985135864304588188" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <property role="20kJfa" value="secondary" />
+      <ref role="20lvS9" to="tpce:6VgTGbN6NX2" resolve="ConceptDeclarationReference" />
+    </node>
+    <node concept="1TJgyj" id="6VgTGbN6Pmv" role="1TKVEi">
+      <property role="IQ2ns" value="7985135864304588191" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <property role="20kJfa" value="auxiliary" />
+      <ref role="20lvS9" to="tpce:6VgTGbN6NX2" resolve="ConceptDeclarationReference" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6VgTGbN6XUA">
+    <property role="EcuMT" value="7985135864304623270" />
+    <property role="3GE5qa" value="simple" />
+    <property role="TrG5h" value="EmptyAspectRootConfig" />
+    <ref role="1TJDcQ" node="6VgTGbN6NRr" resolve="AspectRootConfiguration" />
   </node>
 </model>
 

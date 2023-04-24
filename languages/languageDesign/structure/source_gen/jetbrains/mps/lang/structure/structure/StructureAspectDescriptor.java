@@ -26,6 +26,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptAttributeInfo_AttributedConcept = createDescriptorForAttributeInfo_AttributedConcept();
   /*package*/ final ConceptDescriptor myConceptAttributeInfo_IsMultiple = createDescriptorForAttributeInfo_IsMultiple();
   /*package*/ final ConceptDescriptor myConceptConceptDeclaration = createDescriptorForConceptDeclaration();
+  /*package*/ final ConceptDescriptor myConceptConceptDeclarationReference = createDescriptorForConceptDeclarationReference();
   /*package*/ final ConceptDescriptor myConceptConstrainedDataTypeDeclaration = createDescriptorForConstrainedDataTypeDeclaration();
   /*package*/ final ConceptDescriptor myConceptDataTypeDeclaration = createDescriptorForDataTypeDeclaration();
   /*package*/ final ConceptDescriptor myConceptDeprecatedNodeAnnotation = createDescriptorForDeprecatedNodeAnnotation();
@@ -81,7 +82,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAbstractConceptDeclaration, myConceptAggregationLinkDeclarationScopeKind, myConceptAttributeInfo, myConceptAttributeInfo_AttributedConcept, myConceptAttributeInfo_IsMultiple, myConceptConceptDeclaration, myConceptConstrainedDataTypeDeclaration, myConceptDataTypeDeclaration, myConceptDeprecatedNodeAnnotation, myConceptDocumentationObjective, myConceptDocumentationObjectiveRef, myConceptDocumentedNodeAnnotation, myConceptEnumCustomMethodReplacementInfo, myConceptEnumMigrationInfo, myConceptEnumPropertyMigrationInfo, myConceptEnumerationDataTypeDeclaration_Old, myConceptEnumerationDeclaration, myConceptEnumerationMemberDeclaration, myConceptEnumerationMemberDeclaration_Old, myConceptExperimentalAPINodeAttribute, myConceptIConceptAspect, myConceptIEnumeration, myConceptINamedAspect, myConceptINamedStructureElement, myConceptIStructureDeprecatable, myConceptIStructureElement, myConceptInterfaceConceptDeclaration, myConceptInterfaceConceptReference, myConceptLinkDeclaration, myConceptMarkerInterfaceAttribute, myConceptPrimitiveDataTypeDeclaration, myConceptPropertyDeclaration, myConceptRefPresentationTemplate, myConceptReferenceLinkDeclartionScopeKind, myConceptSmartReferenceAttribute, myConceptStructureAspectDeputy);
+    return Arrays.asList(myConceptAbstractConceptDeclaration, myConceptAggregationLinkDeclarationScopeKind, myConceptAttributeInfo, myConceptAttributeInfo_AttributedConcept, myConceptAttributeInfo_IsMultiple, myConceptConceptDeclaration, myConceptConceptDeclarationReference, myConceptConstrainedDataTypeDeclaration, myConceptDataTypeDeclaration, myConceptDeprecatedNodeAnnotation, myConceptDocumentationObjective, myConceptDocumentationObjectiveRef, myConceptDocumentedNodeAnnotation, myConceptEnumCustomMethodReplacementInfo, myConceptEnumMigrationInfo, myConceptEnumPropertyMigrationInfo, myConceptEnumerationDataTypeDeclaration_Old, myConceptEnumerationDeclaration, myConceptEnumerationMemberDeclaration, myConceptEnumerationMemberDeclaration_Old, myConceptExperimentalAPINodeAttribute, myConceptIConceptAspect, myConceptIEnumeration, myConceptINamedAspect, myConceptINamedStructureElement, myConceptIStructureDeprecatable, myConceptIStructureElement, myConceptInterfaceConceptDeclaration, myConceptInterfaceConceptReference, myConceptLinkDeclaration, myConceptMarkerInterfaceAttribute, myConceptPrimitiveDataTypeDeclaration, myConceptPropertyDeclaration, myConceptRefPresentationTemplate, myConceptReferenceLinkDeclartionScopeKind, myConceptSmartReferenceAttribute, myConceptStructureAspectDeputy);
   }
 
   @Override
@@ -100,6 +101,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptAttributeInfo_IsMultiple;
       case LanguageConceptSwitch.ConceptDeclaration:
         return myConceptConceptDeclaration;
+      case LanguageConceptSwitch.ConceptDeclarationReference:
+        return myConceptConceptDeclarationReference;
       case LanguageConceptSwitch.ConstrainedDataTypeDeclaration:
         return myConceptConstrainedDataTypeDeclaration;
       case LanguageConceptSwitch.DataTypeDeclaration:
@@ -250,6 +253,14 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("icon", 0x57cf4eb14c4f9ef5L).target(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c3774289eeeL).optional(true).ordered(true).multiple(false).origin("6327362524875300597").done();
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
     b.alias("Concept");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForConceptDeclarationReference() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.structure", "ConceptDeclarationReference", 0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x6ed0e6c2f31b3f42L);
+    b.class_(false, false, false);
+    b.origin("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/7985135864304582466");
+    b.version(3);
+    b.associate("cpnt", 0x6ed0e6c2f31b3f67L).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L).optional(false).origin("7985135864304582503").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForConstrainedDataTypeDeclaration() {

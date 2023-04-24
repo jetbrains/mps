@@ -9,16 +9,33 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
+  private ConceptPresentation props_AspectRootConfiguration;
+  private ConceptPresentation props_EmptyAspectRootConfig;
   private ConceptPresentation props_IAspectConcept;
   private ConceptPresentation props_LanguageAspectDescriptor;
   private ConceptPresentation props_SimpleAspectOrderRef;
   private ConceptPresentation props_SimpleLanguageAspectDescriptor;
+  private ConceptPresentation props_SpecificAspectRootConfig;
 
   @Override
   @Nullable
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
+      case LanguageConceptSwitch.AspectRootConfiguration:
+        if (props_AspectRootConfiguration == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("Tell roots to get started with an aspect model");
+          props_AspectRootConfiguration = cpb.create();
+        }
+        return props_AspectRootConfiguration;
+      case LanguageConceptSwitch.EmptyAspectRootConfig:
+        if (props_EmptyAspectRootConfig == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("EmptyAspectRootConfig");
+          props_EmptyAspectRootConfig = cpb.create();
+        }
+        return props_EmptyAspectRootConfig;
       case LanguageConceptSwitch.IAspectConcept:
         if (props_IAspectConcept == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -44,10 +61,17 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x2fa4a8cdf0c9b076L);
           cpb.deprecateAggregation(0x54be5be5620c1b77L, "mainLanguages");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a3b0f);
+          cpb.icon(IconContainer.RESOURCE_a0a3a0a5b0i);
           props_SimpleLanguageAspectDescriptor = cpb.create();
         }
         return props_SimpleLanguageAspectDescriptor;
+      case LanguageConceptSwitch.SpecificAspectRootConfig:
+        if (props_SpecificAspectRootConfig == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("SpecificAspectRootConfig");
+          props_SpecificAspectRootConfig = cpb.create();
+        }
+        return props_SpecificAspectRootConfig;
     }
     return null;
   }

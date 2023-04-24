@@ -10537,5 +10537,17 @@
       <node concept="VPM3Z" id="4m7OOLmj1g3" role="3F10Kt" />
     </node>
   </node>
+  <node concept="24kQdi" id="6VgTGbN6NZ5">
+    <ref role="1XX52x" to="tpce:6VgTGbN6NX2" resolve="ConceptDeclarationReference" />
+    <node concept="1iCGBv" id="6VgTGbN6NZp" role="2wV5jI">
+      <ref role="1NtTu8" to="tpce:6VgTGbN6NXB" resolve="cpnt" />
+      <node concept="1sVBvm" id="6VgTGbN6NZr" role="1sWHZn">
+        <node concept="3F0A7n" id="6VgTGbN6NZE" role="2wV5jI">
+          <property role="1Intyy" value="true" />
+          <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 
