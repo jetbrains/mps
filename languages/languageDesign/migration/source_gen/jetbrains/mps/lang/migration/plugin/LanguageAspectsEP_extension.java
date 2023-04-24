@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.IconResource;
+import jetbrains.mps.smodel.language.AspectRootConfiguration;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspectDescriptor> {
   public LanguageAspectsEP_extension() {
@@ -47,7 +49,15 @@ public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspec
       public String getHelpUrl() {
         return HELP_URL;
       }
+      @Override
+      public void describeAspectRoots(@NotNull AspectRootConfiguration configuration) {
+        configuration.addPrimary(CONCEPTS.RefactoringLog$xp);
+      }
     };
   }
   private static final String HELP_URL = URLFunction_HelpCenterDocUrl.getUrl() + "/migrations.html";
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept RefactoringLog$xp = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, "jetbrains.mps.lang.migration.structure.RefactoringLog");
+  }
 }

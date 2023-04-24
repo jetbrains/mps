@@ -11,6 +11,7 @@
   <imports>
     <import index="tpcc" ref="r:00000000-0000-4000-0000-011c89590290(jetbrains.mps.lang.structure.plugin)" />
     <import index="smjb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.help(MPS.Core/)" />
+    <import index="53vh" ref="r:53885008-7612-46ff-8b11-27f1d42c3adb(jetbrains.mps.lang.migration.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
@@ -26,7 +27,11 @@
       </concept>
     </language>
     <language id="f159adf4-3c93-40f9-9c5a-1f245a8697af" name="jetbrains.mps.lang.aspect">
+      <concept id="7985135864304582213" name="jetbrains.mps.lang.aspect.structure.SpecificAspectRootConfig" flags="ng" index="2tMXy7">
+        <child id="7985135864304588186" name="primary" index="2tMVdo" />
+      </concept>
       <concept id="3433054418424672374" name="jetbrains.mps.lang.aspect.structure.SimpleLanguageAspectDescriptor" flags="ng" index="3vrhyV">
+        <child id="7985135864304582199" name="rootCfg" index="2tMXzP" />
         <child id="6106419185511570295" name="mainLanguages" index="QG$2i" />
         <child id="8222125370833980146" name="devkit" index="TkT64" />
         <child id="4726480899534753275" name="helpUrl" index="1fTXyH" />
@@ -64,6 +69,11 @@
         <reference id="2450897840534688274" name="order" index="2vPcib" />
       </concept>
     </language>
+    <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
+      <concept id="7985135864304582466" name="jetbrains.mps.lang.structure.structure.ConceptDeclarationReference" flags="ng" index="2tMXA0">
+        <reference id="7985135864304582503" name="cpnt" index="2tMXA_" />
+      </concept>
+    </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="8222125370833354011" name="jetbrains.mps.lang.smodel.structure.DevkitPointer" flags="ng" index="T9mpH">
         <property id="8222125370833354012" name="devkitName" index="T9mpE" />
@@ -99,6 +109,11 @@
     <node concept="T9mpH" id="4frscTR3lsn" role="TkT64">
       <property role="T9mpF" value="2787ae0c-1f54-4fbf-b0b7-caf2b5beecbc" />
       <property role="T9mpE" value="jetbrains.mps.devkit.aspect.migration" />
+    </node>
+    <node concept="2tMXy7" id="6VgTGbNbexW" role="2tMXzP">
+      <node concept="2tMXA0" id="6VgTGbNbexY" role="2tMVdo">
+        <ref role="2tMXA_" to="53vh:1JTUOcBqQQf" resolve="RefactoringLog" />
+      </node>
     </node>
   </node>
   <node concept="1fZFc0" id="46nPloez0vX">

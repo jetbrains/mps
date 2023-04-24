@@ -178,6 +178,8 @@ public class CreateRootNodeGroup extends BaseGroup {
       }
     }
     Consumer<SConcept> addMainGroup = new _GroupAddAction(this);
+    // XXX perhaps, shall apply CreateRootFilterEP.shouldBeRemoved filter to explicitly mentioned concepts like we do for languages?
+    //     alternatively (as I don't like that ext-point anyway), shall deal with filder from ClassLikeMenuAdjustment.
     arc.primary(addMainGroup);
     addSeparator();
     arc.secondary(addMainGroup);
