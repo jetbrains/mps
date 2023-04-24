@@ -105,18 +105,6 @@ public final class SNodeUtil {
   public static boolean isSideTransformInfo(SNode node) {
     return SNodeOperations.getConcept(node).equals(CONCEPTS.SideTransformInfo$Hi);
   }
-  public static String getConstrainedDataTypeDeclaration_constraint(SNode constrainedDataType) {
-    return SPropertyOperations.getString(constrainedDataType, PROPS.constraint$Gtcd);
-  }
-  public static boolean isStringDatatypeDeclaration(SNode datatype) {
-    return SNodeOperations.is(datatype, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1082983041843"));
-  }
-  public static boolean isBooleanDatatypeDeclaration(SNode datatype) {
-    return SNodeOperations.is(datatype, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1082983657063"));
-  }
-  public static boolean isIntegerDatatypeDeclaration(SNode datatype) {
-    return SNodeOperations.is(datatype, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1082983657062"));
-  }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
@@ -128,6 +116,5 @@ public final class SNodeUtil {
   private static final class PROPS {
     /*package*/ static final SProperty conceptAlias$OL_L = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x46ab0ad5826c74caL, "conceptAlias");
     /*package*/ static final SProperty resolveInfo$lW9a = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, 0x116b17cd415L, "resolveInfo");
-    /*package*/ static final SProperty constraint$Gtcd = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc268c7a37L, 0xfc2bc4ff02L, "constraint");
   }
 }

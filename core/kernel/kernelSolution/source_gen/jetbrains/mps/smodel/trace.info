@@ -63,17 +63,12 @@
       <node id="780982041803943080" at="98,55,99,75" concept="10" />
       <node id="780982041803949214" at="101,51,102,71" concept="10" />
       <node id="6076559368803236482" at="105,57,106,82" concept="10" />
-      <node id="8491479626051812089" at="108,96,109,85" concept="10" />
-      <node id="7558915552300607782" at="111,69,112,152" concept="10" />
-      <node id="7558915552300614321" at="114,70,115,152" concept="10" />
-      <node id="7558915552300622005" at="117,70,118,152" concept="10" />
-      <node id="2274990519051114059" at="122,0,123,0" concept="13" trace="BaseConcept$gP" />
-      <node id="2274990519051114059" at="123,0,124,0" concept="13" trace="ConceptDeclaration$gH" />
-      <node id="2274990519051114059" at="124,0,125,0" concept="13" trace="ChildAttribute$m8" />
-      <node id="2274990519051114059" at="125,0,126,0" concept="13" trace="SideTransformInfo$Hi" />
-      <node id="2274990519051114059" at="129,0,130,0" concept="13" trace="conceptAlias$OL_L" />
-      <node id="2274990519051114059" at="130,0,131,0" concept="13" trace="resolveInfo$lW9a" />
-      <node id="2274990519051114059" at="131,0,132,0" concept="13" trace="constraint$Gtcd" />
+      <node id="2274990519051114059" at="110,0,111,0" concept="13" trace="BaseConcept$gP" />
+      <node id="2274990519051114059" at="111,0,112,0" concept="13" trace="ConceptDeclaration$gH" />
+      <node id="2274990519051114059" at="112,0,113,0" concept="13" trace="ChildAttribute$m8" />
+      <node id="2274990519051114059" at="113,0,114,0" concept="13" trace="SideTransformInfo$Hi" />
+      <node id="2274990519051114059" at="117,0,118,0" concept="13" trace="conceptAlias$OL_L" />
+      <node id="2274990519051114059" at="118,0,119,0" concept="13" trace="resolveInfo$lW9a" />
       <node id="2274990519051114061" at="74,0,76,0" concept="2" trace="SNodeUtil#()V" />
       <node id="2274990519051271953" at="83,0,86,0" concept="14" trace="getDetailedPresentation#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="8442551749397191602" at="86,0,89,0" concept="14" trace="getMetaLevel#(Lorg/jetbrains/mps/openapi/model/SNode;)I" />
@@ -82,10 +77,6 @@
       <node id="780982041803943076" at="98,0,101,0" concept="14" trace="getConceptAlias#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="780982041803949207" at="101,0,104,0" concept="14" trace="getResolveInfo#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="6076559368803204957" at="105,0,108,0" concept="14" trace="isSideTransformInfo#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="8491479626051809106" at="108,0,111,0" concept="14" trace="getConstrainedDataTypeDeclaration_constraint#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="7558915552300604297" at="111,0,114,0" concept="14" trace="isStringDatatypeDeclaration#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="7558915552300614319" at="114,0,117,0" concept="14" trace="isBooleanDatatypeDeclaration#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="7558915552300619784" at="117,0,120,0" concept="14" trace="isIntegerDatatypeDeclaration#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="73043305440809463" at="76,52,81,5" concept="15" />
       <node id="8339862546319979449" at="89,0,95,0" concept="14" trace="isInstanceOfConceptDeclaration#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="2274990519051152612" at="76,0,83,0" concept="14" trace="getPresentation#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
@@ -99,10 +90,6 @@
       <scope id="780982041803943079" at="98,55,99,75" />
       <scope id="780982041803949210" at="101,51,102,71" />
       <scope id="6076559368803200954" at="105,57,106,82" />
-      <scope id="8491479626051809109" at="108,96,109,85" />
-      <scope id="7558915552300604300" at="111,69,112,152" />
-      <scope id="7558915552300614320" at="114,70,115,152" />
-      <scope id="7558915552300619787" at="117,70,118,152" />
       <scope id="2274990519051114061" at="74,0,76,0" />
       <scope id="73043305440809466" at="79,5,81,5">
         <var name="t" id="73043305440809467" />
@@ -125,18 +112,6 @@
       <scope id="6076559368803204957" at="105,0,108,0">
         <var name="node" id="6076559368803208964" />
       </scope>
-      <scope id="8491479626051809106" at="108,0,111,0">
-        <var name="constrainedDataType" id="8491479626051810815" />
-      </scope>
-      <scope id="7558915552300604297" at="111,0,114,0">
-        <var name="datatype" id="7558915552300605761" />
-      </scope>
-      <scope id="7558915552300614319" at="114,0,117,0">
-        <var name="datatype" id="7558915552300614328" />
-      </scope>
-      <scope id="7558915552300619784" at="117,0,120,0">
-        <var name="datatype" id="7558915552300621281" />
-      </scope>
       <scope id="8339862546319979452" at="89,68,93,83" />
       <scope id="2274990519051152615" at="76,52,81,5" />
       <scope id="8339862546319979449" at="89,0,95,0">
@@ -145,9 +120,9 @@
       <scope id="2274990519051152612" at="76,0,83,0">
         <var name="node" id="2274990519051152617" />
       </scope>
-      <unit id="2274990519051114059" at="128,0,133,0" name="jetbrains.mps.smodel.SNodeUtil$PROPS" />
-      <unit id="2274990519051114059" at="121,0,127,0" name="jetbrains.mps.smodel.SNodeUtil$CONCEPTS" />
-      <unit id="2274990519051114059" at="22,0,134,0" name="jetbrains.mps.smodel.SNodeUtil" />
+      <unit id="2274990519051114059" at="116,0,120,0" name="jetbrains.mps.smodel.SNodeUtil$PROPS" />
+      <unit id="2274990519051114059" at="109,0,115,0" name="jetbrains.mps.smodel.SNodeUtil$CONCEPTS" />
+      <unit id="2274990519051114059" at="22,0,121,0" name="jetbrains.mps.smodel.SNodeUtil" />
     </file>
   </root>
   <root nodeRef="r:5ff047e0-2953-4750-806a-bdc16824aa89(jetbrains.mps.smodel)/3109406674817557892">
