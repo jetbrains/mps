@@ -16123,7 +16123,7 @@
           </node>
         </node>
       </node>
-      <node concept="2AHcQZ" id="41oFOFuy6Zv" role="2AJF6D">
+      <node concept="2AHcQZ" id="7e2hTcd1bgj" role="2AJF6D">
         <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
       </node>
     </node>
@@ -21600,23 +21600,8 @@
       <node concept="3clFbS" id="6563FJLeP_4" role="2VODD2" />
     </node>
   </node>
-  <node concept="13h7C7" id="6563FJLeQop">
-    <property role="3GE5qa" value="expression.dataflow" />
-    <ref role="13h7C2" to="hcm8:6563FJLeQak" resolve="IDataflowPassToChildren" />
-    <node concept="13i0hz" id="6563FJLeQsm" role="13h7CS">
-      <property role="13i0iv" value="true" />
-      <property role="13i0it" value="true" />
-      <property role="TrG5h" value="getDataFlowChildren" />
-      <node concept="3Tm1VV" id="6563FJLeQsn" role="1B3o_S" />
-      <node concept="2I9FWS" id="6563FJLeQyi" role="3clF45" />
-      <node concept="3clFbS" id="6563FJLeQsp" role="3clF47" />
-    </node>
-    <node concept="13hLZK" id="6563FJLeQoq" role="13h7CW">
-      <node concept="3clFbS" id="6563FJLeQor" role="2VODD2" />
-    </node>
-  </node>
   <node concept="13h7C7" id="6563FJLeSRO">
-    <property role="3GE5qa" value="expression.dataflow" />
+    <property role="3GE5qa" value="expression.typing" />
     <ref role="13h7C2" to="hcm8:6563FJLeShn" resolve="IStaticType" />
     <node concept="13i0hz" id="6563FJLeSWZ" role="13h7CS">
       <property role="13i0iv" value="true" />
@@ -31068,6 +31053,13 @@
       </node>
     </node>
   </node>
+  <node concept="13h7C7" id="6gam3525AMS">
+    <property role="3GE5qa" value="expression.control" />
+    <ref role="13h7C2" to="hcm8:2yYXHtl6Jgu" resolve="IfExpression" />
+    <node concept="13hLZK" id="6gam3525AMT" role="13h7CW">
+      <node concept="3clFbS" id="6gam3525AMU" role="2VODD2" />
+    </node>
+  </node>
   <node concept="13h7C7" id="6gam3525JNc">
     <property role="3GE5qa" value="expression.control.try" />
     <ref role="13h7C2" to="hcm8:2yYXHtl6Jkt" resolve="TryExpression" />
@@ -36256,65 +36248,32 @@
       </node>
     </node>
   </node>
-  <node concept="13h7C7" id="6$EaMzzB60F">
-    <property role="3GE5qa" value="expression.control.when" />
-    <ref role="13h7C2" to="hcm8:2yYXHtl6Jeh" resolve="WhenEntry" />
-    <node concept="13hLZK" id="6$EaMzzB60G" role="13h7CW">
-      <node concept="3clFbS" id="6$EaMzzB60H" role="2VODD2" />
-    </node>
-    <node concept="13i0hz" id="6$EaMzzB63G" role="13h7CS">
-      <property role="TrG5h" value="hasBooleanType" />
-      <ref role="13i0hy" node="6$EaMzzB4rH" resolve="hasBooleanType" />
-      <node concept="3Tm1VV" id="6$EaMzzB63H" role="1B3o_S" />
-      <node concept="3clFbS" id="6$EaMzzB63P" role="3clF47">
-        <node concept="3SKdUt" id="6$EaMzzB6hm" role="3cqZAp">
-          <node concept="1PaTwC" id="6$EaMzzB6hn" role="1aUNEU">
-            <node concept="3oM_SD" id="6$EaMzzB6jm" role="1PaTwD">
-              <property role="3oM_SC" value="Depends" />
-            </node>
-            <node concept="3oM_SD" id="6$EaMzzB6lO" role="1PaTwD">
-              <property role="3oM_SC" value="on" />
-            </node>
-            <node concept="3oM_SD" id="6$EaMzzB6oH" role="1PaTwD">
-              <property role="3oM_SC" value="the" />
-            </node>
-            <node concept="3oM_SD" id="6$EaMzzB6pZ" role="1PaTwD">
-              <property role="3oM_SC" value="result" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="6$EaMzzB6bS" role="3cqZAp">
-          <node concept="3clFbT" id="6$EaMzzB6bR" role="3clFbG" />
-        </node>
-      </node>
-      <node concept="10P_77" id="6$EaMzzB63Q" role="3clF45" />
-    </node>
-  </node>
   <node concept="13h7C7" id="6$EaMzzB4pw">
-    <property role="3GE5qa" value="expression.dataflow" />
-    <ref role="13h7C2" to="hcm8:3n8adBivTU3" resolve="IConditionalFlow" />
-    <node concept="13i0hz" id="6$EaMzzB4rH" role="13h7CS">
-      <property role="13i0it" value="true" />
-      <property role="TrG5h" value="hasBooleanType" />
-      <node concept="3Tm1VV" id="6$EaMzzB4rI" role="1B3o_S" />
-      <node concept="10P_77" id="6$EaMzzB4uN" role="3clF45" />
-      <node concept="3clFbS" id="6$EaMzzB4rK" role="3clF47">
-        <node concept="3clFbF" id="6$EaMzzB5dJ" role="3cqZAp">
-          <node concept="3clFbT" id="6$EaMzzB5dI" role="3clFbG">
-            <property role="3clFbU" value="true" />
-          </node>
-        </node>
-      </node>
-      <node concept="P$JXv" id="6$EaMzzB4GS" role="lGtFl">
-        <node concept="TZ5HA" id="6$EaMzzB4GT" role="TZ5H$">
-          <node concept="1dT_AC" id="6$EaMzzB4GU" role="1dT_Ay">
-            <property role="1dT_AB" value="Simplification for the typesystem: returns true if the node has a boolean type." />
-          </node>
-        </node>
-      </node>
-    </node>
+    <property role="3GE5qa" value="expression.typing" />
+    <ref role="13h7C2" to="hcm8:3n8adBivTU3" resolve="ICondition" />
     <node concept="13hLZK" id="6$EaMzzB4px" role="13h7CW">
       <node concept="3clFbS" id="6$EaMzzB4py" role="2VODD2" />
+    </node>
+    <node concept="13i0hz" id="7e2hTcbCtBg" role="13h7CS">
+      <property role="TrG5h" value="getType" />
+      <ref role="13i0hy" node="6563FJLeSWZ" resolve="getType" />
+      <node concept="3Tm1VV" id="7e2hTcbCtBh" role="1B3o_S" />
+      <node concept="3clFbS" id="7e2hTcbCtBk" role="3clF47">
+        <node concept="3clFbF" id="7e2hTcbCtP4" role="3cqZAp">
+          <node concept="2OqwBi" id="7e2hTcbCusF" role="3clFbG">
+            <node concept="Rm8GO" id="7e2hTcbCtQx" role="2Oq$k0">
+              <ref role="Rm8GQ" to="wbbs:4XaBo_Yu9E9" resolve="BOOLEAN" />
+              <ref role="1Px2BO" to="wbbs:4XaBo_Yu8Ms" resolve="BuiltIn" />
+            </node>
+            <node concept="liA8E" id="7e2hTcbCuZ6" role="2OqNvi">
+              <ref role="37wK5l" to="wbbs:4XaBo_YwcqK" resolve="toClassType" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tqbb2" id="7e2hTcbCtBl" role="3clF45">
+        <ref role="ehGHo" to="hcm8:2yYXHtl6Jh1" resolve="IType" />
+      </node>
     </node>
   </node>
   <node concept="312cEu" id="rbYB7QRe3c">
@@ -38672,13 +38631,13 @@
           <node concept="17R0WA" id="6jE_6duQ6lA" role="3cqZAk">
             <node concept="2OqwBi" id="2prFZwSDj13" role="3uHU7w">
               <node concept="2OqwBi" id="2prFZwSDijt" role="2Oq$k0">
-                <node concept="liA8E" id="2prFZwSDiTh" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
-                </node>
                 <node concept="2JrnkZ" id="2prFZwSDijy" role="2Oq$k0">
                   <node concept="37vLTw" id="4oNDtERcx3i" role="2JrQYb">
                     <ref role="3cqZAo" node="4oNDtERcwux" resolve="callModel" />
                   </node>
+                </node>
+                <node concept="liA8E" id="2prFZwSDiTh" role="2OqNvi">
+                  <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
                 </node>
               </node>
               <node concept="liA8E" id="2prFZwSDjth" role="2OqNvi">
@@ -38687,13 +38646,13 @@
             </node>
             <node concept="2OqwBi" id="2prFZwSz5n6" role="3uHU7B">
               <node concept="2OqwBi" id="2prFZwSz56j" role="2Oq$k0">
-                <node concept="liA8E" id="2prFZwSz5fF" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
-                </node>
                 <node concept="2JrnkZ" id="2prFZwSz56o" role="2Oq$k0">
                   <node concept="37vLTw" id="4oNDtERcuuw" role="2JrQYb">
                     <ref role="3cqZAo" node="4oNDtERcwnj" resolve="declModel" />
                   </node>
+                </node>
+                <node concept="liA8E" id="2prFZwSz5fF" role="2OqNvi">
+                  <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
                 </node>
               </node>
               <node concept="liA8E" id="2prFZwSz5xE" role="2OqNvi">
@@ -39408,13 +39367,6 @@
     </node>
     <node concept="13hLZK" id="6jE_6duQ0xJ" role="13h7CW">
       <node concept="3clFbS" id="6jE_6duQ0xK" role="2VODD2" />
-    </node>
-  </node>
-  <node concept="13h7C7" id="6gam3525AMS">
-    <property role="3GE5qa" value="expression.control" />
-    <ref role="13h7C2" to="hcm8:2yYXHtl6Jgu" resolve="IfExpression" />
-    <node concept="13hLZK" id="6gam3525AMT" role="13h7CW">
-      <node concept="3clFbS" id="6gam3525AMU" role="2VODD2" />
     </node>
   </node>
 </model>

@@ -312,9 +312,6 @@
     <node concept="PrWs8" id="6gam351Vunf" role="PzmwI">
       <ref role="PrY4T" node="18X2O0Fy6BI" resolve="IStatementHolder" />
     </node>
-    <node concept="PrWs8" id="4vugIDe8rRb" role="PzmwI">
-      <ref role="PrY4T" node="3n8adBivTU3" resolve="IConditionalFlow" />
-    </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6Jej">
     <property role="EcuMT" value="2936055411798373267" />
@@ -562,7 +559,7 @@
       <ref role="PrY4T" node="2yYXHtl6Jjg" resolve="IExpression" />
     </node>
     <node concept="PrWs8" id="5G5goncbcQb" role="PzmwI">
-      <ref role="PrY4T" node="3n8adBivTU3" resolve="IConditionalFlow" />
+      <ref role="PrY4T" node="3n8adBivTU3" resolve="ICondition" />
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6Jfg">
@@ -2590,7 +2587,7 @@
     <property role="R4oN_" value="disjunction" />
     <ref role="1TJDcQ" node="1502Vug_kVv" resolve="BinaryExpression" />
     <node concept="PrWs8" id="5G5gonccUa5" role="PzmwI">
-      <ref role="PrY4T" node="3n8adBivTU3" resolve="IConditionalFlow" />
+      <ref role="PrY4T" node="3n8adBivTU3" resolve="ICondition" />
     </node>
   </node>
   <node concept="1TIwiD" id="1502Vug_kVv">
@@ -2625,7 +2622,7 @@
     <property role="R4oN_" value="conjunction" />
     <ref role="1TJDcQ" node="1502Vug_kVv" resolve="BinaryExpression" />
     <node concept="PrWs8" id="5G5gonccMUh" role="PzmwI">
-      <ref role="PrY4T" node="3n8adBivTU3" resolve="IConditionalFlow" />
+      <ref role="PrY4T" node="3n8adBivTU3" resolve="ICondition" />
     </node>
   </node>
   <node concept="1TIwiD" id="1502Vug_kWj">
@@ -2641,7 +2638,7 @@
       <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
     <node concept="PrWs8" id="5g3vQLJK$qD" role="PzmwI">
-      <ref role="PrY4T" node="3n8adBivTU3" resolve="IConditionalFlow" />
+      <ref role="PrY4T" node="3n8adBivTU3" resolve="ICondition" />
     </node>
   </node>
   <node concept="1TIwiD" id="1502Vug_kZk">
@@ -2657,7 +2654,7 @@
       <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
     <node concept="PrWs8" id="6$EaMzztRID" role="PzmwI">
-      <ref role="PrY4T" node="3n8adBivTU3" resolve="IConditionalFlow" />
+      <ref role="PrY4T" node="3n8adBivTU3" resolve="ICondition" />
     </node>
   </node>
   <node concept="1TIwiD" id="1502Vug_m75">
@@ -3544,15 +3541,18 @@
       <ref role="PrY4T" node="4nn3FPlEjgT" resolve="IOverloadableOperator" />
     </node>
     <node concept="PrWs8" id="6563FJLsdlu" role="PzmwI">
-      <ref role="PrY4T" node="3n8adBivTU3" resolve="IConditionalFlow" />
+      <ref role="PrY4T" node="3n8adBivTU3" resolve="ICondition" />
     </node>
   </node>
   <node concept="PlHQZ" id="3n8adBivTU3">
     <property role="EcuMT" value="3875392395356905091" />
-    <property role="3GE5qa" value="expression.dataflow" />
-    <property role="TrG5h" value="IConditionalFlow" />
+    <property role="3GE5qa" value="expression.typing" />
+    <property role="TrG5h" value="ICondition" />
     <node concept="t5JxF" id="6563FJLsdH7" role="lGtFl">
-      <property role="t5JxN" value="node whose dataflow output has binary branches (output a location if true, and a location if false)" />
+      <property role="t5JxN" value="node with boolean type" />
+    </node>
+    <node concept="PrWs8" id="7e2hTcbCtAA" role="PrDN$">
+      <ref role="PrY4T" node="6563FJLeShn" resolve="IStaticType" />
     </node>
   </node>
   <node concept="PlHQZ" id="6563FJLeOY_">
@@ -3566,14 +3566,9 @@
       <property role="YLPcu" value="2022.3" />
     </node>
   </node>
-  <node concept="PlHQZ" id="6563FJLeQak">
-    <property role="EcuMT" value="7009306070417629844" />
-    <property role="3GE5qa" value="expression.dataflow" />
-    <property role="TrG5h" value="IDataflowPassToChildren" />
-  </node>
   <node concept="PlHQZ" id="6563FJLeShn">
     <property role="EcuMT" value="7009306070417638487" />
-    <property role="3GE5qa" value="expression.dataflow" />
+    <property role="3GE5qa" value="expression.typing" />
     <property role="TrG5h" value="IStaticType" />
     <node concept="t5JxF" id="6563FJLjGhW" role="lGtFl">
       <property role="t5JxN" value="Concept whose type can be determined from the tree without complex dependencies" />
@@ -3631,6 +3626,9 @@
     </node>
     <node concept="PrWs8" id="7KgFmkIk$OV" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6Jjg" resolve="IExpression" />
+    </node>
+    <node concept="PrWs8" id="7e2hTcbCr8e" role="PzmwI">
+      <ref role="PrY4T" node="3n8adBivTU3" resolve="ICondition" />
     </node>
     <node concept="t5JxF" id="7KgFmkInzIa" role="lGtFl">
       <property role="t5JxN" value="unlike IsOperator, this uses expression from when as operand" />
@@ -4067,7 +4065,7 @@
     <property role="R5$K7" value="true" />
     <ref role="1TJDcQ" node="3I4vn5LTHck" resolve="OverloadedBinaryExpression" />
     <node concept="PrWs8" id="5g3vQLJKCuR" role="PzmwI">
-      <ref role="PrY4T" node="3n8adBivTU3" resolve="IConditionalFlow" />
+      <ref role="PrY4T" node="3n8adBivTU3" resolve="ICondition" />
     </node>
   </node>
   <node concept="PlHQZ" id="2yYXHtl6Jh1">
@@ -4263,7 +4261,7 @@
     <property role="R5$K7" value="true" />
     <ref role="1TJDcQ" node="3I4vn5LTHck" resolve="OverloadedBinaryExpression" />
     <node concept="PrWs8" id="4b4fPCtJbQY" role="PzmwI">
-      <ref role="PrY4T" node="3n8adBivTU3" resolve="IConditionalFlow" />
+      <ref role="PrY4T" node="3n8adBivTU3" resolve="ICondition" />
     </node>
   </node>
   <node concept="1TIwiD" id="75chmMYaCBS">

@@ -6,29 +6,33 @@ import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
-import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.kotlin.api.builtins.BuiltIn;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
-public final class IDataflowPassToChildren__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x61460ebbf13b6294L, "jetbrains.mps.kotlin.structure.IDataflowPassToChildren");
+public final class ICondition__BehaviorDescriptor extends BaseBHDescriptor {
+  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x35c828d9d27f9e83L, "jetbrains.mps.kotlin.structure.ICondition");
 
-  public static final SMethod<List<SNode>> getDataFlowChildren_id6563FJLeQsm = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getDataFlowChildren").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7009306070417630998L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<SNode> getType_id6563FJLeSWZ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7009306070417641279L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDataFlowChildren_id6563FJLeQsm);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getType_id6563FJLeSWZ);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
+  /*package*/ static SNode getType_id6563FJLeSWZ(@NotNull SNode __thisNode__) {
+    return BuiltIn.BOOLEAN.toClassType();
+  }
 
-  /*package*/ IDataflowPassToChildren__BehaviorDescriptor() {
+  /*package*/ ICondition__BehaviorDescriptor() {
   }
 
   @Override
@@ -43,6 +47,8 @@ public final class IDataflowPassToChildren__BehaviorDescriptor extends BaseBHDes
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 0:
+        return (T) ((SNode) getType_id6563FJLeSWZ(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
