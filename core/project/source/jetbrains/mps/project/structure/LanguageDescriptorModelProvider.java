@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,6 +52,7 @@ import org.jetbrains.mps.openapi.module.SModule;
 import java.io.ByteArrayOutputStream;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -257,7 +258,8 @@ public class LanguageDescriptorModelProvider extends DescriptorModelProvider {
       m.addDevKit(BootstrapLanguages.getLanguageDescriptorDevKit());
       m.addEngagedOnGenerationLanguage(BootstrapLanguages.getLanguageDescriptorLang());
       for (LanguageAspectDescriptor lad : LanguageAspectSupport.collectAspects()) {
-        if (lad.hasAspect(myModule)) {
+        final Collection<SModel> aspectModels = lad.getAspectModels(myModule);
+        if (!aspectModels.isEmpty() && aspectModels.stream().anyMatch(am -> am.getRootNodes().iterator().hasNext())) {
           // at the moment, configureDescriptorModel expects myModule attached to a repo
           lad.configureDescriptorModel(myModule, this);
         }
