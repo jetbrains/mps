@@ -22,6 +22,7 @@ import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.facets.JavaModuleFacetImpl;
+import jetbrains.mps.project.facets.PlainTextTargetFacet;
 import jetbrains.mps.project.facets.TestsFacet;
 import jetbrains.mps.project.facets.TestsFacetImpl;
 import jetbrains.mps.smodel.BootstrapLanguages;
@@ -80,6 +81,24 @@ public class FacetsRegistry extends FacetsFacade implements CoreComponent {
     @Override
     public boolean isApplicable(@NotNull SModule module) {
       return !(module instanceof DevKit);
+    }
+  };
+
+  private final FacetFactory myPlainTextFacetFactory = new FacetFactory() {
+    @Override
+    public SModuleFacet create(@NotNull SModule module) {
+       return new PlainTextTargetFacet(module);
+    }
+
+    @NotNull
+    @Override
+    public String getPresentation() {
+      return "Plain text output";
+    }
+
+    @Override
+    public boolean isApplicable(@NotNull SModule module) {
+      return module instanceof Solution;
     }
   };
 
@@ -171,6 +190,7 @@ public class FacetsRegistry extends FacetsFacade implements CoreComponent {
 
     addFactory(JavaModuleFacet.FACET_TYPE, JAVA_MODULE_FACET_FACTORY);
     addFactory(TestsFacet.FACET_TYPE, TESTS_FACET_FACTORY);
+    addFactory(PlainTextTargetFacet.FACET_TYPE, myPlainTextFacetFactory);
     setUpDumbIdeaFacet();
 
     registerLanguageFacet(BootstrapLanguages.getBaseLang(), JavaModuleFacet.FACET_TYPE);
@@ -210,6 +230,7 @@ public class FacetsRegistry extends FacetsFacade implements CoreComponent {
     if (DUMB_IDEA_PLUGIN_FACET_FACTORY != null) {
       removeFactory(DUMB_IDEA_PLUGIN_FACET_FACTORY);
     }
+    removeFactory(myPlainTextFacetFactory);
     removeFactory(TESTS_FACET_FACTORY);
     removeFactory(JAVA_MODULE_FACET_FACTORY);
     INSTANCE = null;
