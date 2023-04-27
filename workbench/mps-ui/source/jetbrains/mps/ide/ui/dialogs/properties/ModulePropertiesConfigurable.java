@@ -1505,13 +1505,17 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         myCheckBoxes.add(checkBox);
       }
 
-      Collections.sort(myCheckBoxes);
       final JPanel panel = new JPanel();
       panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
       final int i = 5;
       panel.setBorder(BorderFactory.createEmptyBorder(i, i, i, i));
-      for (FacetCheckBox checkBox : myCheckBoxes) {
-        checkBox.addTo(panel);
+      if (myCheckBoxes.isEmpty()) {
+        panel.add(new JBLabel("No facets suitable for the module found"));
+      } else {
+        Collections.sort(myCheckBoxes);
+        for (FacetCheckBox checkBox : myCheckBoxes) {
+          checkBox.addTo(panel);
+        }
       }
 
       setTabComponent(panel);

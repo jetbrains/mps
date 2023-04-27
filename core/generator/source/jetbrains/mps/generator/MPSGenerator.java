@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,7 @@ import jetbrains.mps.extapi.module.SRepositoryRegistry;
 import jetbrains.mps.generator.impl.dependencies.GenerationDependenciesCache;
 import jetbrains.mps.generator.info.GeneratorPathsComponent;
 import jetbrains.mps.generator.trace.TraceRegistry;
+import jetbrains.mps.project.Solution;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.FacetsFacade.FacetFactory;
@@ -46,6 +47,11 @@ public final class MPSGenerator extends ComponentPlugin implements ComponentHost
     @Override
     public String getPresentation() {
       return "Custom Generation";
+    }
+
+    @Override
+    public boolean isApplicable(@NotNull SModule module) {
+      return module instanceof Solution;
     }
   };
   private ModelGenerationStatusManager myGenerationStatusManager;

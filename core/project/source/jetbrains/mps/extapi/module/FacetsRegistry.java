@@ -18,11 +18,14 @@ package jetbrains.mps.extapi.module;
 import jetbrains.mps.classloading.DumbIdeaPluginFacet;
 import jetbrains.mps.classloading.IdeaPluginModuleFacet;
 import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.project.DevKit;
+import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.facets.JavaModuleFacetImpl;
 import jetbrains.mps.project.facets.TestsFacet;
 import jetbrains.mps.project.facets.TestsFacetImpl;
 import jetbrains.mps.smodel.BootstrapLanguages;
+import jetbrains.mps.smodel.Language;
 import jetbrains.mps.util.containers.MultiMap;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -55,6 +58,11 @@ public class FacetsRegistry extends FacetsFacade implements CoreComponent {
     public String getPresentation() {
       return "Tests";
     }
+
+    @Override
+    public boolean isApplicable(@NotNull SModule module) {
+      return !(module instanceof DevKit);
+    }
   };
 
   private final FacetFactory JAVA_MODULE_FACET_FACTORY = new FacetFactory() {
@@ -67,6 +75,11 @@ public class FacetsRegistry extends FacetsFacade implements CoreComponent {
     @Override
     public String getPresentation() {
       return "Java";
+    }
+
+    @Override
+    public boolean isApplicable(@NotNull SModule module) {
+      return !(module instanceof DevKit);
     }
   };
 
@@ -165,6 +178,8 @@ public class FacetsRegistry extends FacetsFacade implements CoreComponent {
 
   private void setUpDumbIdeaFacet() {
     // FIXME drop once 2022.3 is out
+    // NOTE there are uses of 'ideaPlugin' facet in mps-extensions and mbeddr branches mps/2022.2 we
+    // still use to build MPS 2023.1
     FacetFactory existingFactory = getFacetFactory(IdeaPluginModuleFacet.FACET_TYPE);
     if (existingFactory == null) {
       DUMB_IDEA_PLUGIN_FACET_FACTORY = new FacetFactory() {
