@@ -8,7 +8,6 @@ import jetbrains.mps.generator.template.ReferenceMacroContext;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.ReferenceTargetQuery;
 import java.util.HashMap;
@@ -25,21 +24,12 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object referenceMacro_GetReferent_0_0(final ReferenceMacroContext _context) {
     final SModel structureAspectModel = SModuleOperations.getAspect(_context.getOriginalInputModel().getModule(), "structure");
     SNode xmodelTarget = _context.getOutputNodeByMappingLabel("StructureAspectDescriptorCons", structureAspectModel);
-    if ((xmodelTarget == null)) {
-      // Compatibility code for non-migrated structure aspect models (those without devkit/plan)
-      return SModelOperations.getModelName(structureAspectModel) + ".StructureAspectDescriptor";
-    }
     return xmodelTarget;
   }
   public static Object referenceMacro_GetReferent_0_1(final ReferenceMacroContext _context) {
     final SModel structureAspectModel = SModuleOperations.getAspect(_context.getOriginalInputModel().getModule(), "structure");
     SNode xmodelTarget = _context.getOutputNodeByMappingLabel("ConceptPresentationAspectClass", structureAspectModel);
-    if ((xmodelTarget == null)) {
-      // Compatibility code for non-migrated structure aspect models (those without devkit/plan)
-      return SModelOperations.getModelName(structureAspectModel) + ".ConceptPresentationAspectImpl";
-    } else {
-      return xmodelTarget;
-    }
+    return xmodelTarget;
   }
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {

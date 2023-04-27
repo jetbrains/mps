@@ -22,9 +22,6 @@
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
-      <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
-        <child id="1082485599096" name="statements" index="9aQI4" />
-      </concept>
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
         <reference id="2820489544401957798" name="classifier" index="HV5vE" />
@@ -38,9 +35,6 @@
       </concept>
       <concept id="1137021947720" name="jetbrains.mps.baseLanguage.structure.ConceptFunction" flags="in" index="2VMwT0">
         <child id="1137022507850" name="body" index="2VODD2" />
-      </concept>
-      <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
-        <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
@@ -75,14 +69,12 @@
       </concept>
       <concept id="1068580123152" name="jetbrains.mps.baseLanguage.structure.EqualsExpression" flags="nn" index="3clFbC" />
       <concept id="1068580123159" name="jetbrains.mps.baseLanguage.structure.IfStatement" flags="nn" index="3clFbJ">
-        <child id="1082485599094" name="ifFalseStatement" index="9aQIa" />
         <child id="1068580123160" name="condition" index="3clFbw" />
         <child id="1068580123161" name="ifTrue" index="3clFbx" />
       </concept>
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
-      <concept id="1068581242875" name="jetbrains.mps.baseLanguage.structure.PlusExpression" flags="nn" index="3cpWs3" />
       <concept id="1068581242878" name="jetbrains.mps.baseLanguage.structure.ReturnStatement" flags="nn" index="3cpWs6">
         <child id="1068581517676" name="expression" index="3cqZAk" />
       </concept>
@@ -105,9 +97,6 @@
       </concept>
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
-      </concept>
-      <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
@@ -154,8 +143,6 @@
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
-      <concept id="1212008292747" name="jetbrains.mps.lang.smodel.structure.Model_GetLongNameOperation" flags="nn" index="LkI2h" />
-      <concept id="1171999116870" name="jetbrains.mps.lang.smodel.structure.Node_IsNullOperation" flags="nn" index="3w_OXm" />
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
         <reference id="1138405853777" name="concept" index="ehGHo" />
       </concept>
@@ -170,14 +157,6 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
-      </concept>
-    </language>
-    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
-      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="nn" index="3oM_SD">
-        <property id="155656958578482949" name="value" index="3oM_SC" />
-      </concept>
-      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="nn" index="1PaTwC">
-        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -268,63 +247,6 @@
                                     </node>
                                   </node>
                                 </node>
-                                <node concept="3clFbJ" id="yEe$4QTyK6" role="3cqZAp">
-                                  <node concept="3clFbS" id="yEe$4QTyK8" role="3clFbx">
-                                    <node concept="3SKdUt" id="yEe$4QU3pK" role="3cqZAp">
-                                      <node concept="1PaTwC" id="ATZLwXnZcN" role="1aUNEU">
-                                        <node concept="3oM_SD" id="ATZLwXnZcO" role="1PaTwD">
-                                          <property role="3oM_SC" value="Compatibility" />
-                                        </node>
-                                        <node concept="3oM_SD" id="ATZLwXnZcP" role="1PaTwD">
-                                          <property role="3oM_SC" value="code" />
-                                        </node>
-                                        <node concept="3oM_SD" id="ATZLwXnZcQ" role="1PaTwD">
-                                          <property role="3oM_SC" value="for" />
-                                        </node>
-                                        <node concept="3oM_SD" id="ATZLwXnZcR" role="1PaTwD">
-                                          <property role="3oM_SC" value="non-migrated" />
-                                        </node>
-                                        <node concept="3oM_SD" id="ATZLwXnZcS" role="1PaTwD">
-                                          <property role="3oM_SC" value="structure" />
-                                        </node>
-                                        <node concept="3oM_SD" id="ATZLwXnZcT" role="1PaTwD">
-                                          <property role="3oM_SC" value="aspect" />
-                                        </node>
-                                        <node concept="3oM_SD" id="ATZLwXnZcU" role="1PaTwD">
-                                          <property role="3oM_SC" value="models" />
-                                        </node>
-                                        <node concept="3oM_SD" id="ATZLwXnZcV" role="1PaTwD">
-                                          <property role="3oM_SC" value="(those" />
-                                        </node>
-                                        <node concept="3oM_SD" id="ATZLwXnZcW" role="1PaTwD">
-                                          <property role="3oM_SC" value="without" />
-                                        </node>
-                                        <node concept="3oM_SD" id="ATZLwXnZcX" role="1PaTwD">
-                                          <property role="3oM_SC" value="devkit/plan)" />
-                                        </node>
-                                      </node>
-                                    </node>
-                                    <node concept="3cpWs6" id="yEe$4QTDkV" role="3cqZAp">
-                                      <node concept="3cpWs3" id="yEe$4QTs2n" role="3cqZAk">
-                                        <node concept="Xl_RD" id="yEe$4QTs2H" role="3uHU7w">
-                                          <property role="Xl_RC" value=".StructureAspectDescriptor" />
-                                        </node>
-                                        <node concept="2OqwBi" id="5jjUT6_q_IB" role="3uHU7B">
-                                          <node concept="37vLTw" id="5jjUT6_qDpz" role="2Oq$k0">
-                                            <ref role="3cqZAo" node="5jjUT6_qDpr" resolve="model" />
-                                          </node>
-                                          <node concept="LkI2h" id="5jjUT6_qCQ3" role="2OqNvi" />
-                                        </node>
-                                      </node>
-                                    </node>
-                                  </node>
-                                  <node concept="2OqwBi" id="yEe$4QTiPi" role="3clFbw">
-                                    <node concept="37vLTw" id="yEe$4QTgam" role="2Oq$k0">
-                                      <ref role="3cqZAo" node="yEe$4QTgah" resolve="xmodelTarget" />
-                                    </node>
-                                    <node concept="3w_OXm" id="yEe$4QTjX5" role="2OqNvi" />
-                                  </node>
-                                </node>
                                 <node concept="3cpWs6" id="yEe$4QTJWN" role="3cqZAp">
                                   <node concept="37vLTw" id="yEe$4QTOfq" role="3cqZAk">
                                     <ref role="3cqZAo" node="yEe$4QTgah" resolve="xmodelTarget" />
@@ -404,70 +326,9 @@
                                     </node>
                                   </node>
                                 </node>
-                                <node concept="3clFbJ" id="yEe$4QUaph" role="3cqZAp">
-                                  <node concept="3clFbS" id="yEe$4QUapj" role="3clFbx">
-                                    <node concept="3SKdUt" id="yEe$4QUep5" role="3cqZAp">
-                                      <node concept="1PaTwC" id="ATZLwXnZcY" role="1aUNEU">
-                                        <node concept="3oM_SD" id="ATZLwXnZcZ" role="1PaTwD">
-                                          <property role="3oM_SC" value="Compatibility" />
-                                        </node>
-                                        <node concept="3oM_SD" id="ATZLwXnZd0" role="1PaTwD">
-                                          <property role="3oM_SC" value="code" />
-                                        </node>
-                                        <node concept="3oM_SD" id="ATZLwXnZd1" role="1PaTwD">
-                                          <property role="3oM_SC" value="for" />
-                                        </node>
-                                        <node concept="3oM_SD" id="ATZLwXnZd2" role="1PaTwD">
-                                          <property role="3oM_SC" value="non-migrated" />
-                                        </node>
-                                        <node concept="3oM_SD" id="ATZLwXnZd3" role="1PaTwD">
-                                          <property role="3oM_SC" value="structure" />
-                                        </node>
-                                        <node concept="3oM_SD" id="ATZLwXnZd4" role="1PaTwD">
-                                          <property role="3oM_SC" value="aspect" />
-                                        </node>
-                                        <node concept="3oM_SD" id="ATZLwXnZd5" role="1PaTwD">
-                                          <property role="3oM_SC" value="models" />
-                                        </node>
-                                        <node concept="3oM_SD" id="ATZLwXnZd6" role="1PaTwD">
-                                          <property role="3oM_SC" value="(those" />
-                                        </node>
-                                        <node concept="3oM_SD" id="ATZLwXnZd7" role="1PaTwD">
-                                          <property role="3oM_SC" value="without" />
-                                        </node>
-                                        <node concept="3oM_SD" id="ATZLwXnZd8" role="1PaTwD">
-                                          <property role="3oM_SC" value="devkit/plan)" />
-                                        </node>
-                                      </node>
-                                    </node>
-                                    <node concept="3cpWs6" id="yEe$4QUbLR" role="3cqZAp">
-                                      <node concept="3cpWs3" id="yEe$4QUmCu" role="3cqZAk">
-                                        <node concept="2OqwBi" id="yEe$4QUopv" role="3uHU7B">
-                                          <node concept="37vLTw" id="5jjUT6_qMlr" role="2Oq$k0">
-                                            <ref role="3cqZAo" node="5jjUT6_qIbx" resolve="structureAspectModel" />
-                                          </node>
-                                          <node concept="LkI2h" id="yEe$4QUqA$" role="2OqNvi" />
-                                        </node>
-                                        <node concept="Xl_RD" id="yEe$4QUg9F" role="3uHU7w">
-                                          <property role="Xl_RC" value=".ConceptPresentationAspectImpl" />
-                                        </node>
-                                      </node>
-                                    </node>
-                                  </node>
-                                  <node concept="2OqwBi" id="yEe$4QUaIF" role="3clFbw">
-                                    <node concept="37vLTw" id="yEe$4QU5Q4" role="2Oq$k0">
-                                      <ref role="3cqZAo" node="yEe$4QU5PZ" resolve="xmodelTarget" />
-                                    </node>
-                                    <node concept="3w_OXm" id="yEe$4QUbBk" role="2OqNvi" />
-                                  </node>
-                                  <node concept="9aQIb" id="yEe$4QUhKm" role="9aQIa">
-                                    <node concept="3clFbS" id="yEe$4QUhKn" role="9aQI4">
-                                      <node concept="3cpWs6" id="yEe$4QUbH$" role="3cqZAp">
-                                        <node concept="37vLTw" id="yEe$4QUbJY" role="3cqZAk">
-                                          <ref role="3cqZAo" node="yEe$4QU5PZ" resolve="xmodelTarget" />
-                                        </node>
-                                      </node>
-                                    </node>
+                                <node concept="3cpWs6" id="yEe$4QUbH$" role="3cqZAp">
+                                  <node concept="37vLTw" id="yEe$4QUbJY" role="3cqZAk">
+                                    <ref role="3cqZAo" node="yEe$4QU5PZ" resolve="xmodelTarget" />
                                   </node>
                                 </node>
                               </node>
