@@ -205,5 +205,20 @@
       </node>
     </node>
   </node>
+  <node concept="3_zdsH" id="3Q06tl87RQq">
+    <ref role="3_znuS" to="tpf3:hHiwH3m" resolve="GenerationContextOp_GetOutputByLabel" />
+    <node concept="3__wT9" id="3Q06tl87RQr" role="3_A6iZ">
+      <node concept="3clFbS" id="3Q06tl87RQs" role="2VODD2">
+        <node concept="3AgYrR" id="3Q06tl87RW3" role="3cqZAp">
+          <node concept="2OqwBi" id="3Q06tl87S5j" role="3Ah4Yx">
+            <node concept="3__QtB" id="3Q06tl87RWy" role="2Oq$k0" />
+            <node concept="3TrEf2" id="3Q06tl87Sjt" role="2OqNvi">
+              <ref role="3Tt5mk" to="tpf3:5Wn7$dQZ8U2" resolve="forModel" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 
