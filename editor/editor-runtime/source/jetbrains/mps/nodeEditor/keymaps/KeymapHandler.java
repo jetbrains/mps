@@ -52,9 +52,11 @@ public abstract class KeymapHandler<E> {
 
   public Collection<KeyMapAction> getAllRegisteredActions(EditorCell selectedCell, EditorContext context) {
     Set<KeyMapAction> result = new HashSet<>();
-    for (Pair<KeyMap, EditorCell> pair : getRegisteredKeymaps(selectedCell, context)) {
-      result.addAll(pair.o1.getAllActions());
-    }
+    new ModelAccessHelper(context.getRepository()).runReadAction(() -> {
+      for (Pair<KeyMap, EditorCell> pair : getRegisteredKeymaps(selectedCell, context)) {
+        result.addAll(pair.o1.getAllActions());
+      }
+    });
     return result;
   }
 

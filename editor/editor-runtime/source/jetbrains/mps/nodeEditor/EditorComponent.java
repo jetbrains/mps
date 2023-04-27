@@ -1460,7 +1460,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     if (!myEditorConfiguration.hasContextMenu) {
       return;
     }
-    getModelAccess().runReadAction(() -> showPopupMenu(e));
+    showPopupMenu(e);
   }
 
   private void showPopupMenu(MouseEvent e) {
