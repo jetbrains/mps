@@ -21190,9 +21190,6 @@
       <property role="1hAc7j" value="7P1WhNABvta/backspace_action_id" />
       <node concept="1hAIg9" id="66$cnFnS9Oh" role="1hA7z_">
         <node concept="3clFbS" id="66$cnFnS9Oi" role="2VODD2">
-          <node concept="1gVbGN" id="PGF4MD$uB3" role="3cqZAp">
-            <node concept="3clFbT" id="PGF4MD$uB4" role="1gVkn0" />
-          </node>
           <node concept="3cpWs8" id="7UIE6YoeU$4" role="3cqZAp">
             <node concept="3cpWsn" id="7UIE6YoeU$5" role="3cpWs9">
               <property role="TrG5h" value="currentNode" />
@@ -21268,9 +21265,6 @@
       <property role="1hAc7j" value="13S4mXuSN7V/insert_action_id" />
       <node concept="1hAIg9" id="4O6oCpsJZ8T" role="1hA7z_">
         <node concept="3clFbS" id="4O6oCpsJZ8U" role="2VODD2">
-          <node concept="1gVbGN" id="PGF4MD$uve" role="3cqZAp">
-            <node concept="3clFbT" id="PGF4MD$uwV" role="1gVkn0" />
-          </node>
           <node concept="3cpWs8" id="1v077Wg2TWZ" role="3cqZAp">
             <node concept="3cpWsn" id="1v077Wg2TX0" role="3cpWs9">
               <property role="TrG5h" value="next" />
