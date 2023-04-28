@@ -137,6 +137,14 @@ public class SNodeTreeNode extends MPSTreeNodeEx implements NodeTargetProvider {
   }
 
   @Override
+  public boolean isLeaf() {
+    if (isInitialized()) {
+      return this.getChildCount() == 0;
+    }
+    return super.isLeaf();
+  }
+
+  @Override
   public boolean isInitialized() {
     return myInitialized;
   }
