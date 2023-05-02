@@ -53,6 +53,7 @@ import jetbrains.mps.text.impl.DebugInfoBuilder;
 import jetbrains.mps.generator.impl.plan.CrossModelEnvironment;
 import jetbrains.mps.util.IStatus;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
+import jetbrains.mps.project.facets.JavaModuleFacet;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.make.java.ModelDependencies;
@@ -363,6 +364,12 @@ public class TextGen_Facet extends IFacet.Stub {
                 // For other scenarios where module dependencies are necessary, this set is not necessarily right.
                 mpsProject.getModelAccess().runReadAction(() -> {
                   for (SModule changedModule : SetSequence.fromSet(moduleStaleFilesMap.keySet())) {
+                    if (changedModule.getFacet(JavaModuleFacet.class) == null) {
+                      // Seems that there's no reason to keep deps.cp if there's no classloading to happen,
+                      // and JMF seems to be the only CL-bound facet at the moment.
+                      // Perhaps, shall also look into classloading option, !=LoadClasses.NotAvailable?
+                      continue;
+                    }
                     HashSet<SModuleReference> moduleDeps = new HashSet<>();
                     HashSet<SModuleReference> lrtDeps = new HashSet<>();
                     HashSet<SLanguage> ulDeps = new HashSet<>();
