@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.generator.cache;
 
-import jetbrains.mps.smodel.SModelOperations;
+import jetbrains.mps.project.facets.GenerationTargetFacet;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
@@ -24,8 +24,11 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Per-repository, model-associated caches.
@@ -43,14 +46,27 @@ public abstract class BaseModelCache<T> {
   public abstract String getCacheFileName();
 
   @Nullable
-  protected IFile getCacheFile(SModel modelDescriptor) {
-    IFile cachesDir = SModelOperations.getOutputCacheLocation(modelDescriptor);
-    if (cachesDir == null) {
-      return null;
+  protected IFile getCacheFile(final SModel model) {
+    // account for multiple GTFs, take the one to answer with cache dir and prefer existing files
+    final Stream<GenerationTargetFacet> allFacets = GenerationTargetFacet.stream(model);
+    IFile firstNotNullNonExistentFile = null;
+    for (IFile cachesDir : allFacets.map(gtf -> gtf.getOutputCacheLocation(model)).filter(Objects::nonNull).collect(Collectors.toList())) {
+      final IFile descendant = cachesDir.findChild(getCacheFileName());
+      if (descendant.isDirectory()) {
+        // generally, files answer isDirectory/isFile along with existence check, but as long as our IFile API doesn't
+        // document this explicitly not have isFile() method,  I've got additional exists() check.
+        continue;
+      }
+      if (!descendant.exists()) {
+        if (firstNotNullNonExistentFile == null) {
+          firstNotNullNonExistentFile = descendant;
+        }
+        continue;
+      }
+      return descendant;
     }
-
-    final IFile descendant = cachesDir.findChild(getCacheFileName());
-    return descendant.isDirectory() ? null : descendant;
+    // I believe use of this method in update() expects non-existent file to get one created
+    return firstNotNullNonExistentFile;
   }
 
   // In fact, can be application-wide if we use compound key (repo+modelref)

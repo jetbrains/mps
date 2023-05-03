@@ -15,8 +15,8 @@
  */
 package jetbrains.mps.smodel;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.dependency.ModelDependenciesManager;
-import jetbrains.mps.project.facets.GenerationTargetFacet;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.facets.TestsFacet;
 import jetbrains.mps.smodel.language.LanguageRegistry;
@@ -28,7 +28,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.module.SModuleFacet;
+import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.ArrayList;
@@ -36,9 +36,6 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 
 public class SModelOperations {
 
@@ -71,11 +68,18 @@ public class SModelOperations {
    * Pair method to {@link #getOutputLocation(SModel)}, responsible for
    * {@linkplain jetbrains.mps.project.facets.GenerationTargetFacet#getOutputCacheLocation(SModel) model cache file location}.
    *
+   * @deprecated This method knows about 2 module facets only. Consider using
+   *             {@link jetbrains.mps.project.facets.GenerationTargetFacet#find(SModel)} for general scenario or
+   *             iterate {@link SModule#getFacets() module facets} in case you need to
+   *
    * PROVISIONAL CODE. Same considerations as for {@link #getOutputLocation(SModel)} apply.
    */
   @Nullable
+  @Deprecated(since = "2023.1", forRemoval = true)
   public static IFile getOutputCacheLocation(@NotNull SModel model) {
+    // there are no uses in MPS, nor in mps-extensions/mbeddr
     assert model.getModule() != null;
+    Logger.getLogger(SModelOperations.class).warnDeprecatedUse("Stop using SModelOperations.getOutputCacheLocation() as it doesn't look into generic GenerationTargetFacet");
     if (SModelStereotype.isTestModel(model)) {
       // XXX TestsFacet is GTF, but due to legacy, have to give it priority.
       TestsFacet facet = model.getModule().getFacet(TestsFacet.class);
@@ -84,14 +88,11 @@ public class SModelOperations {
       }
       // fall-through
     }
-    // FIXME perhaps, shall keep this method with JMF and gradually deprecate/remove its usages, rather than to switch
-    //       to GTF here right away. New code shall use GTF w/o knowledge of Tests/Java and other facets. However, need
-    //       to deal with multiple GTF story (e.e. tests + java or tests + plaintext)
-    final Predicate<SModuleFacet> testsFacet = TestsFacet.class::isInstance;
-    GenerationTargetFacet jmf = StreamSupport.stream(model.getModule().getFacets().spliterator(), false).filter(GenerationTargetFacet.class::isInstance).filter(
-        testsFacet.negate()).map(GenerationTargetFacet.class::cast).findFirst().orElse(null);
+    // FIXME decided to keep this method with JMF and gradually deprecate/remove its usages,
+    //       instead of switching to GenerationTargetFacet.find(), which is more suited for scenarios where few facets are available.
+    //       (e.g. tests + java or tests + plaintext)
+    JavaModuleFacet jmf = model.getModule().getFacet(JavaModuleFacet.class);
     return jmf == null ? null : jmf.getOutputCacheLocation(model);
-
   }
 
   @Nullable
