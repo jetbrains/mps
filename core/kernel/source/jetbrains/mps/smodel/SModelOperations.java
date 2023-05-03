@@ -46,12 +46,19 @@ public class SModelOperations {
    * PROVISIONAL CODE. Needed for transition from cumbersome {@link jetbrains.mps.generator.fileGenerator.FileGenerationUtil} to facet-backed output
    * locations. Doesn't support facets other than {@link JavaModuleFacet} and {@link TestsFacet}
    *
+   * @deprecated This method knows about 2 module facets only. Consider using
+   *             {@link jetbrains.mps.project.facets.GenerationTargetFacet#find(SModel)}  or
+   *             {@link jetbrains.mps.project.facets.GenerationTargetFacet#stream(SModel)} for general scenario or
+   *             iterate {@link SModule#getFacets() module facets} directly in case you need more sophisticated logic
+   *
    * @return {@code null} if model is not capable to produce output for a model (e.g. deployed/packaged module)
    * @see jetbrains.mps.project.facets.JavaModuleFacet
    * @see jetbrains.mps.project.facets.TestsFacet
    */
   @Nullable
+  @Deprecated(since = "2023.1", forRemoval = true)
   public static IFile getOutputLocation(@NotNull SModel model) {
+    // there are 15 uses in mbeddr
     assert model.getModule() != null;
     if (SModelStereotype.isTestModel(model)) {
       TestsFacet facet = model.getModule().getFacet(TestsFacet.class);
@@ -69,8 +76,9 @@ public class SModelOperations {
    * {@linkplain jetbrains.mps.project.facets.GenerationTargetFacet#getOutputCacheLocation(SModel) model cache file location}.
    *
    * @deprecated This method knows about 2 module facets only. Consider using
-   *             {@link jetbrains.mps.project.facets.GenerationTargetFacet#find(SModel)} for general scenario or
-   *             iterate {@link SModule#getFacets() module facets} in case you need to
+   *             {@link jetbrains.mps.project.facets.GenerationTargetFacet#find(SModel)}  or
+   *             {@link jetbrains.mps.project.facets.GenerationTargetFacet#stream(SModel)} for general scenario or
+   *             iterate {@link SModule#getFacets() module facets} ddirectly in case you need more sophisticated logic
    *
    * PROVISIONAL CODE. Same considerations as for {@link #getOutputLocation(SModel)} apply.
    */

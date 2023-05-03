@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,9 @@ import jetbrains.mps.generator.cache.ParseFacility;
 import jetbrains.mps.generator.cache.ParseFacility.Parser;
 import jetbrains.mps.generator.generationTypes.StreamHandler;
 import jetbrains.mps.module.ReloadableModule;
-import jetbrains.mps.smodel.SModelOperations;
+import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.project.facets.TestsFacet;
+import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.util.JDOMUtil;
 import jetbrains.mps.vfs.IFile;
 import org.jdom.Document;
@@ -112,7 +114,7 @@ public final class TraceInfoCache {
    *
    * Note, cl.getResource() looks not into module only, but in dependent modules too. Though it's not intended and indeed poor, it's not
    * that different from the old approach (classpath in JavaModuleFacet lists all dependencies as well, and classloader for IDEA plugin would
-   * search plugin CP completely, too). FIXME however, I'd like to have this fixed with ReloadeableModule.getOwnResource()
+   * search plugin CP completely, too). FIXME however, I'd like to have this fixed with ModuleRuntime.getOwnResource()
    */
   @Nullable
   private URL getDeployedLocation(@NotNull SModel sm) {
@@ -139,9 +141,20 @@ public final class TraceInfoCache {
   @Nullable
   //todo [MM] why does the return type differ from that of getDeployedLocation?
   private IFile getWorkspaceLocation(@NotNull SModel model) {
-    // FIXME SModelOperations.getOutputLocation deals with TestsFacet and JMF, shall ask any GenerationTargetFacet instead,
-    //       OTOH, trace.info is about Java anyway, seems fine to restrict to Java-specific module facets only
-    IFile outputLocation = SModelOperations.getOutputLocation(model);
+    // Intentionally don't ask any GenerationTargetFacet, trace.info is about Java anyway, it's fine to
+    // restrict to Java-specific module facets only. The code below is what used to be in SModelOperations.getOutputLocation()
+    IFile outputLocation = null;
+    if (SModelStereotype.isTestModel(model)) {
+      TestsFacet facet = model.getModule().getFacet(TestsFacet.class);
+      if (facet != null) {
+        outputLocation = facet.getOutputLocation(model);
+      }
+      // fall-through
+    }
+    if (outputLocation == null) {
+      JavaModuleFacet jmf = model.getModule().getFacet(JavaModuleFacet.class);
+      outputLocation = jmf == null ? null : jmf.getOutputLocation(model);
+    }
     if (outputLocation == null) {
       return null;
     }

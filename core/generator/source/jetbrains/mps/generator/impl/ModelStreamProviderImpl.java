@@ -17,7 +17,6 @@ package jetbrains.mps.generator.impl;
 
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.project.facets.GenerationTargetFacet;
-import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -40,7 +39,8 @@ public class ModelStreamProviderImpl implements ModelStreamManager.Provider {
   }
 
   private static IFile getOutputDir(SModel model) {
-    IFile loc = SModelOperations.getOutputLocation(model);
+    final GenerationTargetFacet gtf = GenerationTargetFacet.find(model);
+    IFile loc = gtf == null ? null : gtf.getOutputLocation(model);
     if (loc == null) {
       throw new IllegalArgumentException(String.format("No output location for %s", model.getName()));
     }
@@ -54,7 +54,7 @@ public class ModelStreamProviderImpl implements ModelStreamManager.Provider {
     // FIXME likely need to iterate over all GTFs ans find the one that answers with outputCacheLocation != null
     IFile loc = gtf == null ? null : gtf.getOutputCacheLocation(model);
     if (loc == null) {
-      throw new IllegalArgumentException(String.format("No output location for %s", model.getName()));
+      throw new IllegalArgumentException(String.format("No cache location for %s", model.getName()));
     }
     return loc;
   }

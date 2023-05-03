@@ -25,11 +25,13 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.smodel.SModelOperations;
+import java.util.stream.Stream;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.project.facets.GenerationTargetFacet;
+import java.util.Objects;
 import jetbrains.mps.make.facets.Make_Facet.Target_make;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.resources.behavior.Resource__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
@@ -96,21 +98,17 @@ public class Binaries_Facet extends IFacet.Stub {
                 final SRepository repository = monitor.getSession().getProject().getRepository();
                 final Wrappers._boolean fail = new Wrappers._boolean(false);
                 repository.getModelAccess().runReadAction(() -> {
-                  Iterable<SModel> models = Sequence.fromIterable(input).translate(new ITranslator2<MResource, SModel>() {
+                  for (final SModel model : Sequence.fromIterable(input).translate(new ITranslator2<MResource, SModel>() {
                     public Iterable<SModel> translate(MResource res) {
-                      return Sequence.fromIterable(res.models()).ofType(SModel.class).where(new IWhereFilter<SModel>() {
-                        public boolean accept(SModel it) {
-                          return SModelOperations.getOutputLocation(it) != null;
-                        }
-                      });
+                      return Sequence.fromIterable(res.models()).ofType(SModel.class);
                     }
-                  });
-
-                  for (SModel model : Sequence.fromIterable(models)) {
-                    final IFile outputDir = Target_make.vars(pa.global()).alternateOutput().invoke(SModelOperations.getOutputLocation(model));
+                  })) {
+                    Stream<IFile> possibleLocations = GenerationTargetFacet.stream(model).map((GenerationTargetFacet f) -> f.getOutputLocation(model));
+                    IFile outputLocation = possibleLocations.filter(Objects::nonNull).findFirst().orElse(null);
+                    final IFile outputDir = Target_make.vars(pa.global()).alternateOutput().invoke(outputLocation);
                     Iterable<Tuples._2<IFile, byte[]>> generatedBinaryFiles;
                     try {
-                      generatedBinaryFiles = ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.nodes(model, CONCEPTS.Resource$gs)).translate(new ITranslator2<SNode, Tuples._2<IFile, byte[]>>() {
+                      generatedBinaryFiles = ListSequence.fromList(SModelOperations.nodes(model, CONCEPTS.Resource$gs)).translate(new ITranslator2<SNode, Tuples._2<IFile, byte[]>>() {
                         public Iterable<Tuples._2<IFile, byte[]>> translate(SNode it) {
                           return (List<Tuples._2<IFile, byte[]>>) Resource__BehaviorDescriptor.generate_id7Mb2akaesv8.invoke(it, outputDir);
                         }

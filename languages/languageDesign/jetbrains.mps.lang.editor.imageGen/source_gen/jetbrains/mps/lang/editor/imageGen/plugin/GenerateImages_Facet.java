@@ -24,11 +24,12 @@ import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.smodel.SModelOperations;
+import jetbrains.mps.project.facets.GenerationTargetFacet;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.make.facets.Make_Facet.Target_make;
 import jetbrains.mps.internal.make.runtime.util.DeltaKey;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -97,7 +98,7 @@ public class GenerateImages_Facet extends IFacet.Stub {
                   // TODO: check status & outputPath... see TextGen facet
                   Iterable<GResource> resourcesWithOutput = Sequence.fromIterable(input).where(new IWhereFilter<GResource>() {
                     public boolean accept(GResource it) {
-                      return SModelOperations.getOutputLocation(it.model()) != null && it.status().getOutputModel() != null;
+                      return it.status().getOutputModel() != null && GenerationTargetFacet.find(it.model()) != null && GenerationTargetFacet.find(it.model()).getOutputLocation(it.model()) != null;
                     }
                   });
                   Iterable<Tuples._2<SModel, SModel>> allModels = Sequence.fromIterable(resourcesWithOutput).select(new ISelector<GResource, Tuples._2<SModel, SModel>>() {
@@ -112,15 +113,16 @@ public class GenerateImages_Facet extends IFacet.Stub {
                   ProgressMonitor collectingNodesMonitor = progressMonitor.subTask(1);
                   collectingNodesMonitor.start("Collecting nodes to print", Sequence.fromIterable(allModels).count());
                   for (Tuples._2<SModel, SModel> modelsPair : Sequence.fromIterable(allModels)) {
-                    collectingNodesMonitor.step(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.getModelName(modelsPair._0()));
-                    // XXX what if there are multiple GenerationTargetFacet (now it's only JavaModuleFacet), shall we generate into each? Or identify them somehow?
-                    IFile modelOutputLocation = SModelOperations.getOutputLocation(modelsPair._0());
+                    collectingNodesMonitor.step(SModelOperations.getModelName(modelsPair._0()));
+                    // XXX deficient approach to handle multiple GenerationTargetFacet, just take the first one that answers with output location.
+                    //    Perhaps, we shall generate into each? Or identify them somehow?
+                    IFile modelOutputLocation = GenerationTargetFacet.find(modelsPair._0()).getOutputLocation(modelsPair._0());
                     IFile outputDir = Target_make.vars(pa.global()).alternateOutput().invoke(modelOutputLocation);
                     if (!(MapSequence.fromMap(folder2PrintRunnables).containsKey(outputDir))) {
                       MapSequence.fromMap(folder2PrintRunnables).put(outputDir, ListSequence.fromList(new ArrayList<PrintNodeRunnable>()));
                     }
                     final DeltaKey dk = new DeltaKey(modelsPair._0().getModule(), modelsPair._0());
-                    for (SNode imageGenerator : ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.roots(modelsPair._1(), CONCEPTS.ImageGenerator$Ng))) {
+                    for (SNode imageGenerator : ListSequence.fromList(SModelOperations.roots(modelsPair._1(), CONCEPTS.ImageGenerator$Ng))) {
                       SNodeId nodeId = PersistenceFacade.getInstance().createNodeId(SPropertyOperations.getString(imageGenerator, PROPS.id$7kFL));
                       SNode node = modelsPair._0().getNode(nodeId);
 
