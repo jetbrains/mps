@@ -10,6 +10,7 @@
       <root url="jar://$PROJECT_DIR$/lib/3rd-party-rt.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/app.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/util_rt.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/util-8.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

@@ -22,6 +22,7 @@
     <orderEntry type="library" name="org.jdom" level="project" />
     <orderEntry type="library" name="objectweb.asm" level="project" />
     <orderEntry type="library" name="KotlinCoreLibs" level="project" />
+    <orderEntry type="library" name="IntelliJ Platform" level="project" />
     <orderEntry type="module" module-name="testbench" scope="TEST" />
     <orderEntry type="library" scope="TEST" name="JUnit4" level="project" />
     <orderEntry type="library" scope="TEST" name="Idea-platform" level="project" />
