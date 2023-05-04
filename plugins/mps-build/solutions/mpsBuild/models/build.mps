@@ -44449,6 +44449,7 @@
         <property role="TrG5h" value="org.junit.junit5" />
         <property role="3LESm3" value="63b449db-0918-4a4a-a891-2c430ab133e4" />
         <property role="BnDLt" value="true" />
+        <property role="aoJFB" value="77WRb6jODAF/none" />
         <property role="2GAjPV" value="true" />
         <node concept="398BVA" id="1ULLXZL0gZH" role="3LF7KH">
           <ref role="398BVh" node="ymnOULASEN" resolve="mps_home" />
