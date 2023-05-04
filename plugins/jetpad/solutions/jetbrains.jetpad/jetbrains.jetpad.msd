@@ -7,9 +7,7 @@
     </modelRoot>
   </models>
   <facets>
-    <facet type="java">
-      <classes generated="true"/> <!-- FIXME left generated=true for JMFI not to guess classes_gen but leave null -->
-    </facet>
+    <facet type="java" compile="ext" classes="provided" ext="no"/>
   </facets>
   <stubModelEntries>
     <stubModelEntry path="${mps_home}/plugins/jetpad/lib/base-1.0.0-jvm6.jar" />

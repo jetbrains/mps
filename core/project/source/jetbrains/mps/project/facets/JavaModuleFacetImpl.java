@@ -255,8 +255,8 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
       // FIXME LEHA
       FileSystem fs = getAbstractModule().getFileSystem();
       // JFTR, intentionally pretty much the same logic is below in classGenPath
-      // FIXME what about pure stub modules that claim to be 'java' but don't have any generated classes
-      //       seems odd to keep <classes generated=true> there.
+      // FYI, pure stub modules that claim to be 'java' but don't have any generated classes are fine with
+      //      null default for myGeneratedClassesLocation (now that legacy 'classes_gen' default is no longer here)
       for (Memento m : memento.getChildren(CLASSES_KEY)) {
         if (Boolean.parseBoolean(m.get(GENERATED_KEY))) {
           final String v;
