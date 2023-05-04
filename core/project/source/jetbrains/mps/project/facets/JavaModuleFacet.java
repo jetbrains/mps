@@ -22,6 +22,7 @@ import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.structure.modules.SolutionKind;
 import jetbrains.mps.smodel.Language;
+import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -98,7 +99,8 @@ public interface JavaModuleFacet extends SModuleFacet, GenerationTargetFacet {
     if (getModule() instanceof AbstractModule ) {
       // there's no output location for packaged/deployed modules
       String outputPath = ProjectPathUtil.getGeneratorOutputPath(((AbstractModule) getModule()).getModuleDescriptor());
-      return outputPath == null ? null : ((AbstractModule) getModule()).getFileSystem().getFile(outputPath);
+      final String expanded = outputPath == null ? null : MacrosFactory.forModule(getModule()).expandPath(outputPath);
+      return outputPath == null ? null : ((AbstractModule) getModule()).getFileSystem().getFile(expanded);
     }
     return null;
   }

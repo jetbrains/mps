@@ -152,7 +152,7 @@
     <delete dir="${build.layout}" />
   </target>
   
-  <target name="compileJava" depends="java.compile.jetbrains.mps.samples.xmlPersistence, java.compile.jetbrains.mps.samples.xmlPersistence.build, java.compile.jetbrains.mps.samples.xmlPersistence.ideaPlugin" />
+  <target name="compileJava" depends="java.compile.jetbrains.mps.samples.xmlPersistence, java.compile.jetbrains.mps.samples.xmlPersistence.ideaPlugin" />
   
   <target name="processResources" />
   
@@ -314,18 +314,6 @@
     </javac>
   </target>
   
-  <target name="java.compile.jetbrains.mps.samples.xmlPersistence.build">
-    <mkdir dir="${basedir}/languages/jetbrains.mps.samples.xmlPersistence.build/source_gen" />
-    <mkdir dir="${build.tmp}/java/out/jetbrains.mps.samples.xmlPersistence.build" />
-    <javac destdir="${build.tmp}/java/out/jetbrains.mps.samples.xmlPersistence.build" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
-      <compilerarg value="-Xlint:none" />
-      <src>
-        <path location="${basedir}/languages/jetbrains.mps.samples.xmlPersistence.build/source_gen" />
-      </src>
-      <classpath />
-    </javac>
-  </target>
-  
   <target name="java.compile.jetbrains.mps.samples.xmlPersistence.ideaPlugin">
     <mkdir dir="${basedir}/languages/jetbrains.mps.samples.xmlPersistence.ideaPlugin/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.samples.xmlPersistence.ideaPlugin" />
@@ -340,7 +328,6 @@
   
   <target name="cleanSources">
     <delete dir="${basedir}/languages/jetbrains.mps.samples.xmlPersistence/source_gen" />
-    <delete dir="${basedir}/languages/jetbrains.mps.samples.xmlPersistence.build/source_gen" />
     <delete dir="${basedir}/languages/jetbrains.mps.samples.xmlPersistence.ideaPlugin/source_gen" />
   </target>
 </project>

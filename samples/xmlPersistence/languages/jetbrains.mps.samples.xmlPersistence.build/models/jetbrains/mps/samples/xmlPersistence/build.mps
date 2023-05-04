@@ -107,6 +107,7 @@
       </concept>
       <concept id="868032131020265945" name="jetbrains.mps.build.mps.structure.BuildMPSPlugin" flags="ng" index="3b7kt6" />
       <concept id="5253498789149381388" name="jetbrains.mps.build.mps.structure.BuildMps_Module" flags="ng" index="3bQrTs">
+        <property id="1500819558096356884" name="doNotCompile" index="2GAjPV" />
         <child id="5253498789149547825" name="sources" index="3bR31x" />
         <child id="5253498789149547704" name="dependencies" index="3bR37C" />
       </concept>
@@ -123,7 +124,9 @@
         <property id="2889113830911481881" name="deployFolderName" index="3ZfqAx" />
         <child id="8137134783396676835" name="location" index="1HemKq" />
       </concept>
-      <concept id="3189788309731840247" name="jetbrains.mps.build.mps.structure.BuildMps_Solution" flags="ng" index="1E1JtA" />
+      <concept id="3189788309731840247" name="jetbrains.mps.build.mps.structure.BuildMps_Solution" flags="ng" index="1E1JtA">
+        <property id="269707337715731330" name="sourcesKind" index="aoJFB" />
+      </concept>
       <concept id="322010710375871467" name="jetbrains.mps.build.mps.structure.BuildMps_AbstractModule" flags="ng" index="3LEN3z">
         <property id="8369506495128725901" name="compact" index="BnDLt" />
         <property id="322010710375892619" name="uuid" index="3LESm3" />
@@ -258,6 +261,8 @@
       <property role="BnDLt" value="true" />
       <property role="TrG5h" value="jetbrains.mps.samples.xmlPersistence.build" />
       <property role="3LESm3" value="62966f85-ed0f-4be2-8008-5b0e8a2a3f82" />
+      <property role="2GAjPV" value="true" />
+      <property role="aoJFB" value="eYcmk9QOli/sources" />
       <node concept="55IIr" id="7ZoWiKcez8b" role="3LF7KH">
         <node concept="2Ry0Ak" id="7ZoWiKcez8c" role="iGT6I">
           <property role="2Ry0Am" value="languages" />
