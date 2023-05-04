@@ -39,14 +39,14 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.build.mps.behavior.BuildMps_AbstractModule__BehaviorDescriptor;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.persistence.PersistenceRegistry;
-import jetbrains.mps.build.mps.behavior.BuildMps_Solution__BehaviorDescriptor;
 import jetbrains.mps.build.util.RelativePathHelper;
+import jetbrains.mps.project.facets.JavaModuleFacet;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.extapi.persistence.SourceRoot;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.build.mps.behavior.BuildMps_Solution__BehaviorDescriptor;
 import jetbrains.mps.project.facets.TestsFacet;
 import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.project.facets.TestsFacetImpl;
@@ -705,22 +705,6 @@ public final class ModuleChecker {
       }
     });
 
-    final boolean doNotCompile;
-    if (myModuleDescriptor instanceof SolutionDescriptor && SNodeOperations.isInstanceOf(module, CONCEPTS.BuildMps_Solution$R7)) {
-      SNode solutionModule = SNodeOperations.cast(module, CONCEPTS.BuildMps_Solution$R7);
-      final boolean gotSourcesToCompile = ((boolean) BuildMps_Solution__BehaviorDescriptor.hasSources_id6ogfLD6hwDf.invoke(solutionModule) && hasModels) || (boolean) BuildMps_Solution__BehaviorDescriptor.hasTestsSources_id6ogfLD6evrW.invoke(solutionModule) || !(myModuleDescriptor.getSourcePaths().isEmpty());
-      doNotCompile = !(((SolutionDescriptor) myModuleDescriptor).getCompileInMPS()) || !(gotSourcesToCompile);
-    } else {
-      // languages and generators are always compiled in MPS. NO idea about other module kinds (once/if possible).
-      doNotCompile = false;
-    }
-    if (type.doCheck && SPropertyOperations.getBoolean(module, PROPS.doNotCompile$4EF) != doNotCompile) {
-      report("compile in MPS flag doesn't match file content " + SPropertyOperations.getString(myModule, PROPS.name$MnvL) + ", should be: " + doNotCompile);
-    }
-
-    if (type.doPartialImport) {
-      SPropertyOperations.assign(module, PROPS.doNotCompile$4EF, doNotCompile);
-    }
 
     final BuildModuleFacade buildModuleFacade = new BuildModuleFacade(module);
     if (type.doPartialImport || type.doFullImport) {
@@ -737,6 +721,11 @@ public final class ModuleChecker {
       // getLoadedModule(), below, needs myRepository which is available in doFullImport || doPartialImport
       SModule loadedModule = getLoadedModule();
       if (loadedModule != null) {
+        final JavaModuleFacet jmf = loadedModule.getFacet(JavaModuleFacet.class);
+        // here used to be some confusing logic with presence of sources and models, I see no reason to check it here
+        // shall be checking rule, if necessary
+        SPropertyOperations.assign(module, PROPS.doNotCompile$4EF, jmf == null || jmf.getCompile() != JavaModuleFacet.Compile.MPS);
+
         for (ModelRoot mr : loadedModule.getModelRoots()) {
           // XXX it's not clear why we do not copy model roots other than default here.
           if (!(mr instanceof DefaultModelRoot)) {
@@ -1405,8 +1394,8 @@ public final class ModuleChecker {
     /*package*/ static final SProperty compact$3xo1 = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x742675d05378e98dL, "compact");
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
     /*package*/ static final SProperty uuid$pC01 = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid");
-    /*package*/ static final SProperty doNotCompile$4EF = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x14d3fb6fb84ac614L, "doNotCompile");
     /*package*/ static final SProperty extracted$UUL7 = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c195c50L, 0x70ece8f91dd584e6L, "extracted");
+    /*package*/ static final SProperty doNotCompile$4EF = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x14d3fb6fb84ac614L, "doNotCompile");
     /*package*/ static final SProperty useMakeTask$aRFt = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xc0bde9fc71699d9L, 0x3f7149bc568e8eb4L, "useMakeTask");
     /*package*/ static final SProperty reexport$kN5t = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL, 0x48e82d5083341cc1L, "reexport");
     /*package*/ static final SProperty reexport$1qdl = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd9079dceL, 0x52fab202d8f26228L, "reexport");
