@@ -109,10 +109,6 @@ public class SolutionDescriptorPersistence {
       result.setAttribute("uuid", descriptor.getId().toString());
     }
     result.setAttribute("moduleVersion", Integer.toString(descriptor.getModuleVersion()));
-    if (descriptor.getKind() != SolutionKind.NONE) {
-      result.setAttribute(PLUGIN_KIND, descriptor.getKind().name());
-    }
-    result.setAttribute(COMPILE_IN_MPS, Boolean.toString(descriptor.getCompileInMPS()));
     if (descriptor.getOutputPath() != null) {
       String p = myMacroHelper.shrinkPath(descriptor.getOutputPath());
       if (!(SOURCE_GEN_DEFAULT.equals(p))) {
