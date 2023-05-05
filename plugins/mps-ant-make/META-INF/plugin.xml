@@ -6,7 +6,7 @@
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
   <category>Custom Languages</category>
   <version>2023.1</version>
-  <idea-version since-build="231.1" until-build="241.1"/>
+  <idea-version since-build="231.1" until-build="232.1"/>
   <!-- intentionally no depends, as I find 'j.m.core' dependency simply wrong,
        and 'com.intellij' confusing and wrong - this code doesn't depend on workbench (IdeaPlugin.xml is part of [mps-workbench] -->
 
