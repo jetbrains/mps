@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -95,26 +95,31 @@ public class GraphHolder<V> {
     return edgeRemoved;
   }
 
-  public Graph<V> getGraph() {
-    return myGraph;
-  }
-
-  public Graph<V> getConjugateGraph() {
-    return myConjugateGraph;
-  }
-
   public boolean contains(V v) {
     checkGraphsCorrectness();
     return getVertices().contains(v);
   }
 
-  public Collection<? extends V> getOutgoingEdges(V v) {
+  public void fillOutgoingEdgesShallow(Iterable<? extends V> vv, Collection<? super V> result) {
     checkGraphsCorrectness();
-    return myGraph.getOuts(v);
+    for(V v : vv) {
+      result.addAll(myGraph.getOuts(v));
+    }
+  }
+
+  public void fillOutgoingEdgesDeep(Iterable<? extends V> vv, Collection<? super V> result) {
+    checkGraphsCorrectness();
+    myGraph.dfs(vv, result::add);
+  }
+
+  public void fillIncomingEdgesDeep(Iterable<? extends V> vv, Collection<? super V> result) {
+    checkGraphsCorrectness();
+    myConjugateGraph.dfs(vv, result::add);
   }
 
   // TODO : merge with jetbrains.mps.util.Graph (mps.util.Graph needs to be modified for a bit)
-  static class Graph<V> {
+  //    FWIF, there's no more j.m.util.Graph, but jetbrains.mps.make.unittest.Graph, bidirectional.
+  private static class Graph<V> {
     private final Map<V, Set<V>> myOuts = new LinkedHashMap<>();
     private int myEdgesCount;
 

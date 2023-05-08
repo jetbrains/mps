@@ -16,7 +16,6 @@
 package jetbrains.mps.classloading;
 
 import jetbrains.mps.classloading.ErrorContainer.SearchError;
-import jetbrains.mps.classloading.GraphHolder.Graph;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
 import org.jetbrains.annotations.NotNull;
@@ -29,7 +28,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -77,6 +75,7 @@ public class ModuleUpdater {
         if (myWatchableCondition.met(module)) {
           myModulesToAdd.add(module);
           myModulesToRemove.add(module.getModuleReference());
+          // XXX do we need to care about myModulesToReload here?
         }
         myRefStorage.moduleAdded(module);
       }
@@ -86,10 +85,11 @@ public class ModuleUpdater {
   public void removeModules(@NotNull Collection<? extends SModuleReference> mRefs) {
     synchronized (LOCK) {
       for (SModuleReference mRef : mRefs) {
-        if (myRefStorage.moduleRemoved(mRef) != null) {
+        final ReloadableModule instance = myRefStorage.moduleRemoved(mRef);
+        if (instance != null) {
           // need to clean up myModulesToLoad and myModulesToReload
-          removeMRefFromModules(mRef, myModulesToAdd);
-          removeMRefFromModules(mRef, myModulesToReload);
+          myModulesToAdd.remove(instance);
+          myModulesToReload.remove(instance);
           myModulesToRemove.add(mRef);
           myChangedFlag = true;
         }
@@ -100,14 +100,6 @@ public class ModuleUpdater {
   public Collection<SModuleReference> getModules() {
     synchronized (LOCK) {
       return myDepGraphHolder.getVertices();
-    }
-  }
-
-  private void removeMRefFromModules(SModuleReference mRef, Collection<ReloadableModule> modules) {
-    for (Iterator<ReloadableModule> iterator = modules.iterator(); iterator.hasNext();) {
-      ReloadableModule module = iterator.next();
-      SModuleReference ref = module.getModuleReference();
-      if (mRef.equals(ref)) iterator.remove();
     }
   }
 
@@ -244,7 +236,8 @@ public class ModuleUpdater {
       // I didn't find any code that ensured modulesToReload are indeed part of the graph
       // and take logic that used to be here as a way to make sure we don't face such scenario.
       assert myDepGraphHolder.contains(mRef);
-      Collection<SModuleReference> currentDeps = new HashSet<>(myDepGraphHolder.getOutgoingEdges(mRef));
+      Collection<SModuleReference> currentDeps = new HashSet<>();
+      myDepGraphHolder.fillOutgoingEdgesShallow(Collections.singleton(mRef), currentDeps);
       if (usedModulesCollector.getModulesWithAbsentDeps().containsKey(module)) {
         // XXX why we ignore update of other modulesToReload?
         // why not updated=true; continue;?
@@ -298,9 +291,7 @@ public class ModuleUpdater {
   public Collection<SModuleReference> getDirectDeps(Iterable<SModuleReference> mRefs) {
     synchronized (LOCK) {
       final Collection<SModuleReference> result = new ArrayList<>();
-      for (SModuleReference mRef : mRefs) {
-        result.addAll(myDepGraphHolder.getOutgoingEdges(mRef));
-      }
+      myDepGraphHolder.fillOutgoingEdgesShallow(mRefs, result);
       return result;
     }
   }
@@ -308,18 +299,16 @@ public class ModuleUpdater {
   public Collection<SModuleReference> getDeps(Iterable<SModuleReference> mRefs) {
     synchronized (LOCK) {
       final Collection<SModuleReference> result = new ArrayList<>();
-      Graph<SModuleReference> depGraph = myDepGraphHolder.getGraph();
-      depGraph.dfs(mRefs, result::add);
-      return Collections.unmodifiableCollection(result);
+      myDepGraphHolder.fillOutgoingEdgesDeep(mRefs, result);
+      return result;
     }
   }
 
   public Collection<SModuleReference> getBackDeps(Iterable<? extends SModuleReference> mRefs) {
     synchronized (LOCK) {
       final Collection<SModuleReference> result = new LinkedHashSet<>();
-      Graph<SModuleReference> backDepGraph = myDepGraphHolder.getConjugateGraph();
-      backDepGraph.dfs(mRefs, result::add);
-      return Collections.unmodifiableCollection(result);
+      myDepGraphHolder.fillIncomingEdgesDeep(mRefs, result);
+      return result;
     }
   }
 
