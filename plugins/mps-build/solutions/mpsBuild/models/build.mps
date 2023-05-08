@@ -50673,11 +50673,6 @@
           <ref role="3bR37D" node="mXGwHwhVPj" resolve="JDK" />
         </node>
       </node>
-      <node concept="1SiIV0" id="2B78zTpKyi9" role="3bR37C">
-        <node concept="3bR9La" id="2B78zTpKyia" role="1SiIV1">
-          <ref role="3bR37D" node="6zkSwmUIjUi" resolve="jetbrains.mps.lang.aspect" />
-        </node>
-      </node>
       <node concept="1SiIV0" id="4xqDcS7F1yp" role="3bR37C">
         <node concept="3bR9La" id="4xqDcS7F1yq" role="1SiIV1">
           <ref role="3bR37D" node="4SM2EuqHUPF" resolve="jetbrains.mps.lang.modelapi" />

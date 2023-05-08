@@ -22,7 +22,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptClickableGenerator = createDescriptorForClickableGenerator();
   /*package*/ final ConceptDescriptor myConceptClickableNode = createDescriptorForClickableNode();
   /*package*/ final ConceptDescriptor myConceptGlobalScope = createDescriptorForGlobalScope();
-  /*package*/ final ConceptDescriptor myConceptGlobalScope_old = createDescriptorForGlobalScope_old();
   /*package*/ final ConceptDescriptor myConceptGlobalStatisticTarget = createDescriptorForGlobalStatisticTarget();
   /*package*/ final ConceptDescriptor myConceptINodeSetReference = createDescriptorForINodeSetReference();
   /*package*/ final ConceptDescriptor myConceptIStatisticsTarget = createDescriptorForIStatisticsTarget();
@@ -32,7 +31,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptModelStatisticsTarget = createDescriptorForModelStatisticsTarget();
   /*package*/ final ConceptDescriptor myConceptModuleProperties = createDescriptorForModuleProperties();
   /*package*/ final ConceptDescriptor myConceptNodeReference = createDescriptorForNodeReference();
-  /*package*/ final ConceptDescriptor myConceptOfAspectOperation_old = createDescriptorForOfAspectOperation_old();
   /*package*/ final ConceptDescriptor myConceptProjectStatisticsTarget = createDescriptorForProjectStatisticsTarget();
   /*package*/ final ConceptDescriptor myConceptRemoveGenSources = createDescriptorForRemoveGenSources();
   /*package*/ final ConceptDescriptor myConceptShowBrokenReferences = createDescriptorForShowBrokenReferences();
@@ -55,7 +53,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
     deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
     deps.extendedLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel");
-    deps.extendedLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections");
     deps.extendedLanguage(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, "jetbrains.mps.console.base");
     deps.aggregatedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
     deps.aggregatedLanguage(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, "jetbrains.mps.lang.modelapi");
@@ -64,7 +61,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAbsractMake, myConceptActionCallDeclaredParameter, myConceptActionCallGlobalParameter, myConceptActionCallParameter, myConceptCallActionExpression, myConceptClean, myConceptClickableGenerator, myConceptClickableNode, myConceptGlobalScope, myConceptGlobalScope_old, myConceptGlobalStatisticTarget, myConceptINodeSetReference, myConceptIStatisticsTarget, myConceptMake, myConceptModelProperties, myConceptModelReference, myConceptModelStatisticsTarget, myConceptModuleProperties, myConceptNodeReference, myConceptOfAspectOperation_old, myConceptProjectStatisticsTarget, myConceptRemoveGenSources, myConceptShowBrokenReferences, myConceptShowExpression, myConceptShowGenPlan, myConceptStatCommand, myConceptSubtreeStatisticsTarget, myConceptVisibleModulesScope, myConceptWithDependencies);
+    return Arrays.asList(myConceptAbsractMake, myConceptActionCallDeclaredParameter, myConceptActionCallGlobalParameter, myConceptActionCallParameter, myConceptCallActionExpression, myConceptClean, myConceptClickableGenerator, myConceptClickableNode, myConceptGlobalScope, myConceptGlobalStatisticTarget, myConceptINodeSetReference, myConceptIStatisticsTarget, myConceptMake, myConceptModelProperties, myConceptModelReference, myConceptModelStatisticsTarget, myConceptModuleProperties, myConceptNodeReference, myConceptProjectStatisticsTarget, myConceptRemoveGenSources, myConceptShowBrokenReferences, myConceptShowExpression, myConceptShowGenPlan, myConceptStatCommand, myConceptSubtreeStatisticsTarget, myConceptVisibleModulesScope, myConceptWithDependencies);
   }
 
   @Override
@@ -89,8 +86,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptClickableNode;
       case LanguageConceptSwitch.GlobalScope:
         return myConceptGlobalScope;
-      case LanguageConceptSwitch.GlobalScope_old:
-        return myConceptGlobalScope_old;
       case LanguageConceptSwitch.GlobalStatisticTarget:
         return myConceptGlobalStatisticTarget;
       case LanguageConceptSwitch.INodeSetReference:
@@ -109,8 +104,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptModuleProperties;
       case LanguageConceptSwitch.NodeReference:
         return myConceptNodeReference;
-      case LanguageConceptSwitch.OfAspectOperation_old:
-        return myConceptOfAspectOperation_old;
       case LanguageConceptSwitch.ProjectStatisticsTarget:
         return myConceptProjectStatisticsTarget;
       case LanguageConceptSwitch.RemoveGenSources:
@@ -228,16 +221,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.alias("global");
     return b.create();
   }
-  private static ConceptDescriptor createDescriptorForGlobalScope_old() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.console.ideCommands", "GlobalScope_old", 0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x3bc64421763add42L);
-    b.class_(false, false, false);
-    // extends: jetbrains.mps.lang.smodel.query.structure.ScopeParameter_old
-    b.super_(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421763add4bL);
-    b.origin("r:135a606f-0376-4c5c-9ab8-4030f051a062(jetbrains.mps.console.ideCommands.structure)/4307205004134636866");
-    b.version(3);
-    b.alias("global");
-    return b.create();
-  }
   private static ConceptDescriptor createDescriptorForGlobalStatisticTarget() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.console.ideCommands", "GlobalStatisticTarget", 0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x67f2bafb7a579cb8L);
     b.class_(false, false, false);
@@ -324,18 +307,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:135a606f-0376-4c5c-9ab8-4030f051a062(jetbrains.mps.console.ideCommands.structure)/7820875636625654703");
     b.version(3);
     b.alias("node");
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForOfAspectOperation_old() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.console.ideCommands", "OfAspectOperation_old", 0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x5252d9021b8b45a8L);
-    b.class_(false, true, false);
-    // extends: jetbrains.mps.baseLanguage.collections.structure.SequenceOperation
-    b.super_(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c26c9a2d9L);
-    b.parent(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x5252d9021b8b6c03L);
-    b.origin("r:135a606f-0376-4c5c-9ab8-4030f051a062(jetbrains.mps.console.ideCommands.structure)/5932042262275638696");
-    b.version(3);
-    b.associate("requestedAspect_old", 0x7cd422dbfa7b06f8L).target(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x2fa4a8cdf0c9b076L).optional(true).origin("8994852683961272056").done();
-    b.alias("ofAspect");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForProjectStatisticsTarget() {

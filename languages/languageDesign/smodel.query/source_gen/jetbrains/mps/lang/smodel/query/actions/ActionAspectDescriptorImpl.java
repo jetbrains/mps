@@ -18,8 +18,6 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
       switch (concept.getName()) {
         case "CustomScope":
           return Collections.<NodeFactory>singletonList(new ScopeParameterLiteral_factories.NodeFactory_2362304834939062502());
-        case "CustomScope_old":
-          return Collections.<NodeFactory>singletonList(new ScopeParameterLiteral_factories_old.NodeFactory_3492877759609298945());
         case "QueryExpression":
           return Collections.<NodeFactory>singletonList(new QueryExpression_NodeFactories.NodeFactory_4307205004138627840());
         default:

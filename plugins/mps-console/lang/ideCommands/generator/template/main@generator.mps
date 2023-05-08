@@ -63,6 +63,9 @@
         <child id="1070534934092" name="expression" index="10QFUP" />
       </concept>
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu" />
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ng" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
+      </concept>
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
       </concept>
@@ -303,12 +306,6 @@
       <ref role="30HIoZ" to="caxt:7mV0m3L$tuv" resolve="ShowExpression" />
       <node concept="j$656" id="YwfKjlWCPN" role="1lVwrX">
         <ref role="v9R2y" node="YwfKjlWCO7" resolve="reduce_ShowExpression" />
-      </node>
-    </node>
-    <node concept="3aamgX" id="3J6h25QO0bv" role="3acgRq">
-      <ref role="30HIoZ" to="caxt:3J6h25QeHP2" resolve="GlobalScope_old" />
-      <node concept="j$656" id="3J6h25QO0bw" role="1lVwrX">
-        <ref role="v9R2y" node="3J6h25QO0bt" resolve="reduce_GlobalScopeLiteral_old" />
       </node>
     </node>
     <node concept="3aamgX" id="238_VGTQshV" role="3acgRq">
@@ -1244,37 +1241,6 @@
       <node concept="3Tm1VV" id="YwfKjlWDwB" role="1B3o_S" />
     </node>
   </node>
-  <node concept="13MO4I" id="3J6h25QO0bt">
-    <property role="TrG5h" value="reduce_GlobalScopeLiteral_old" />
-    <property role="3GE5qa" value="query.parameter.old" />
-    <ref role="3gUMe" to="caxt:3J6h25QeHP2" resolve="GlobalScope_old" />
-    <node concept="312cEu" id="3J6h25QO0gm" role="13RCb5">
-      <property role="2bfB8j" value="true" />
-      <property role="TrG5h" value="Main" />
-      <node concept="2YIFZL" id="3J6h25QO0gn" role="jymVt">
-        <property role="TrG5h" value="execute" />
-        <node concept="3cqZAl" id="3J6h25QO0go" role="3clF45" />
-        <node concept="37vLTG" id="3J6h25QO0gp" role="3clF46">
-          <property role="TrG5h" value="context" />
-          <node concept="3uibUv" id="3mC5XuEEWGy" role="1tU5fm">
-            <ref role="3uigEE" to="moux:1ycrhFMLI_B" resolve="QueryExecutionContext" />
-          </node>
-        </node>
-        <node concept="3Tm1VV" id="3J6h25QO0gt" role="1B3o_S" />
-        <node concept="3clFbS" id="3J6h25QO0gu" role="3clF47">
-          <node concept="3clFbF" id="3J6h25QOG$P" role="3cqZAp">
-            <node concept="2ShNRf" id="7jPdBzQFMWN" role="3clFbG">
-              <node concept="1pGfFk" id="7jPdBzQFN35" role="2ShVmc">
-                <ref role="37wK5l" to="fyhk:~FilteredGlobalScope.&lt;init&gt;()" resolve="FilteredGlobalScope" />
-              </node>
-              <node concept="raruj" id="7jPdBzQFQ1J" role="lGtFl" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="3J6h25QO0hE" role="1B3o_S" />
-    </node>
-  </node>
   <node concept="13MO4I" id="238_VGTQhpb">
     <property role="TrG5h" value="reduce_GlobalScopeLiteral" />
     <property role="3GE5qa" value="query.parameter" />
@@ -1285,19 +1251,34 @@
       <node concept="2YIFZL" id="238_VGTQhpd" role="jymVt">
         <property role="TrG5h" value="execute" />
         <node concept="3cqZAl" id="238_VGTQhpe" role="3clF45" />
-        <node concept="37vLTG" id="238_VGTQhpf" role="3clF46">
-          <property role="TrG5h" value="context" />
-          <node concept="3uibUv" id="238_VGTQhpg" role="1tU5fm">
-            <ref role="3uigEE" to="moux:1ycrhFMLI_B" resolve="QueryExecutionContext" />
+        <node concept="37vLTG" id="369lFd3uFjn" role="3clF46">
+          <property role="TrG5h" value="consoleContext" />
+          <node concept="3uibUv" id="369lFd3uFjo" role="1tU5fm">
+            <ref role="3uigEE" to="qgo0:jysm2GDsTL" resolve="ConsoleContext" />
           </node>
         </node>
         <node concept="3Tm1VV" id="238_VGTQhph" role="1B3o_S" />
         <node concept="3clFbS" id="238_VGTQhpi" role="3clF47">
-          <node concept="3clFbF" id="238_VGTQhpj" role="3cqZAp">
-            <node concept="2YIFZM" id="238_VGTQjFT" role="3clFbG">
-              <ref role="37wK5l" to="z1c3:~GlobalScope.getInstance()" resolve="getInstance" />
-              <ref role="1Pybhc" to="z1c3:~GlobalScope" resolve="GlobalScope" />
-              <node concept="raruj" id="238_VGTQjME" role="lGtFl" />
+          <node concept="3clFbF" id="369lFd3uFDL" role="3cqZAp">
+            <node concept="2ShNRf" id="369lFd3uFDH" role="3clFbG">
+              <node concept="1pGfFk" id="369lFd3uGLX" role="2ShVmc">
+                <property role="373rjd" value="true" />
+                <ref role="37wK5l" to="z1c3:~GlobalScope.&lt;init&gt;(org.jetbrains.mps.openapi.module.SRepository)" resolve="GlobalScope" />
+                <node concept="2OqwBi" id="369lFd3uHe8" role="37wK5m">
+                  <node concept="2OqwBi" id="369lFd3uGVo" role="2Oq$k0">
+                    <node concept="37vLTw" id="369lFd3uGNn" role="2Oq$k0">
+                      <ref role="3cqZAo" node="369lFd3uFjn" resolve="consoleContext" />
+                    </node>
+                    <node concept="liA8E" id="369lFd3uH1X" role="2OqNvi">
+                      <ref role="37wK5l" to="qgo0:3MPHfSuPT3Y" resolve="getProject" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="369lFd3uHzP" role="2OqNvi">
+                    <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
+                  </node>
+                </node>
+              </node>
+              <node concept="raruj" id="369lFd3uHCl" role="lGtFl" />
             </node>
           </node>
         </node>
@@ -1315,10 +1296,10 @@
       <node concept="2YIFZL" id="238_VGTQjNm" role="jymVt">
         <property role="TrG5h" value="execute" />
         <node concept="3cqZAl" id="238_VGTQjNn" role="3clF45" />
-        <node concept="37vLTG" id="238_VGTQjNo" role="3clF46">
-          <property role="TrG5h" value="context" />
-          <node concept="3uibUv" id="238_VGTQjNp" role="1tU5fm">
-            <ref role="3uigEE" to="moux:1ycrhFMLI_B" resolve="QueryExecutionContext" />
+        <node concept="37vLTG" id="369lFd3uEzS" role="3clF46">
+          <property role="TrG5h" value="consoleContext" />
+          <node concept="3uibUv" id="369lFd3uEzT" role="1tU5fm">
+            <ref role="3uigEE" to="qgo0:jysm2GDsTL" resolve="ConsoleContext" />
           </node>
         </node>
         <node concept="3Tm1VV" id="238_VGTQjNq" role="1B3o_S" />
@@ -1326,7 +1307,20 @@
           <node concept="3clFbF" id="238_VGTQjNs" role="3cqZAp">
             <node concept="2ShNRf" id="238_VGTQjOj" role="3clFbG">
               <node concept="1pGfFk" id="238_VGTQjXV" role="2ShVmc">
-                <ref role="37wK5l" to="fyhk:~FilteredGlobalScope.&lt;init&gt;()" resolve="FilteredGlobalScope" />
+                <ref role="37wK5l" to="fyhk:~FilteredGlobalScope.&lt;init&gt;(org.jetbrains.mps.openapi.module.SRepository)" resolve="FilteredGlobalScope" />
+                <node concept="2OqwBi" id="369lFd3uF0S" role="37wK5m">
+                  <node concept="2OqwBi" id="369lFd3uEIX" role="2Oq$k0">
+                    <node concept="37vLTw" id="369lFd3uEAm" role="2Oq$k0">
+                      <ref role="3cqZAo" node="369lFd3uEzS" resolve="consoleContext" />
+                    </node>
+                    <node concept="liA8E" id="369lFd3uEPs" role="2OqNvi">
+                      <ref role="37wK5l" to="qgo0:3MPHfSuPT3Y" resolve="getProject" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="369lFd3uFgp" role="2OqNvi">
+                    <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
+                  </node>
+                </node>
               </node>
               <node concept="raruj" id="238_VGTQk1s" role="lGtFl" />
             </node>

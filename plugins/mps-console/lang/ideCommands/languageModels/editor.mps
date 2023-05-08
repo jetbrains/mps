@@ -23,7 +23,6 @@
     <import index="25zl" ref="r:7bd127a5-e641-4c13-b150-b9c9b96f76ae(jetbrains.mps.lang.modelapi.editor)" />
     <import index="zqge" ref="r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
-    <import index="tp2u" ref="r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)" implicit="true" />
     <import index="dvox" ref="r:9dfd3567-3b1f-4edb-85a0-3981ca2bfd8c(jetbrains.mps.lang.modelapi.structure)" implicit="true" />
   </imports>
   <registry>
@@ -575,34 +574,6 @@
         </node>
         <node concept="l2Vlx" id="2tFdLTRKabv" role="2iSdaV" />
       </node>
-    </node>
-  </node>
-  <node concept="24kQdi" id="59iQg8rz2HX">
-    <property role="3GE5qa" value="expression.callAction" />
-    <ref role="1XX52x" to="caxt:59iQg8ryOmC" resolve="OfAspectOperation_old" />
-    <node concept="3EZMnI" id="3ZZC$G5C4uw" role="2wV5jI">
-      <node concept="PMmxH" id="2wdLO7KhY6T" role="3EZMnx">
-        <ref role="1k5W1q" to="tpen:hgVS8CF" resolve="KeyWord" />
-        <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
-      </node>
-      <node concept="3F0ifn" id="3ZZC$G5C4u_" role="3EZMnx">
-        <property role="3F0ifm" value="&lt;" />
-        <ref role="1k5W1q" to="tp2u:hGdV7pS" resolve="LeftAngleBracket" />
-      </node>
-      <node concept="1iCGBv" id="7Nk8HJUuNkV" role="3EZMnx">
-        <ref role="1NtTu8" to="caxt:7Nk8HJUuKrS" resolve="requestedAspect_old" />
-        <node concept="1sVBvm" id="7Nk8HJUuNkZ" role="1sWHZn">
-          <node concept="3F0A7n" id="7Nk8HJUuNld" role="2wV5jI">
-            <property role="1Intyy" value="true" />
-            <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
-          </node>
-        </node>
-      </node>
-      <node concept="3F0ifn" id="3ZZC$G5C4uB" role="3EZMnx">
-        <property role="3F0ifm" value="&gt;" />
-        <ref role="1k5W1q" to="tp2u:hGdWaJB" resolve="RightAngleBracket" />
-      </node>
-      <node concept="2iRfu4" id="3ZZC$G5C4ux" role="2iSdaV" />
     </node>
   </node>
   <node concept="24kQdi" id="YwfKjlWn7V">
@@ -1229,10 +1200,6 @@
         </node>
       </node>
     </node>
-  </node>
-  <node concept="22mcaB" id="1wEcoXjJ7K5">
-    <ref role="aqKnT" to="caxt:59iQg8ryOmC" resolve="OfAspectOperation_old" />
-    <node concept="22hDWj" id="xzgvwPPq1c" role="22hAXT" />
   </node>
   <node concept="22mcaB" id="1wEcoXjJ7Kc">
     <ref role="aqKnT" to="caxt:4PRmqZe_ouN" resolve="ModuleProperties" />

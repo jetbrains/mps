@@ -1413,7 +1413,7 @@
               <node concept="2OqwBi" id="6CFNGGphKlv" role="2Oq$k0">
                 <node concept="2OqwBi" id="6CFNGGphKlw" role="2Oq$k0">
                   <node concept="37vLTw" id="6C7L5Q5Ep7m" role="2Oq$k0">
-                    <ref role="3cqZAo" node="6C7L5Q5Ep7i" resolve="sourcePaths" />
+                    <ref role="3cqZAo" node="6C7L5Q5Ep7i" resolve="sourcePathsByReference" />
                   </node>
                   <node concept="liA8E" id="6CFNGGphKl$" role="2OqNvi">
                     <ref role="37wK5l" to="33ny:~Collection.stream()" resolve="stream" />
@@ -1462,7 +1462,7 @@
         <node concept="3clFbF" id="6CFNGGphKlT" role="3cqZAp">
           <node concept="2OqwBi" id="6CFNGGphKlU" role="3clFbG">
             <node concept="37vLTw" id="6C7L5Q5Ep7n" role="2Oq$k0">
-              <ref role="3cqZAo" node="6C7L5Q5Ep7i" resolve="sourcePaths" />
+              <ref role="3cqZAo" node="6C7L5Q5Ep7i" resolve="sourcePathsByReference" />
             </node>
             <node concept="liA8E" id="6CFNGGphKlY" role="2OqNvi">
               <ref role="37wK5l" to="33ny:~Collection.clear()" resolve="clear" />
@@ -1472,7 +1472,7 @@
         <node concept="3clFbF" id="6CFNGGphKlZ" role="3cqZAp">
           <node concept="2OqwBi" id="6CFNGGphKm0" role="3clFbG">
             <node concept="37vLTw" id="6C7L5Q5Ep7o" role="2Oq$k0">
-              <ref role="3cqZAo" node="6C7L5Q5Ep7i" resolve="sourcePaths" />
+              <ref role="3cqZAo" node="6C7L5Q5Ep7i" resolve="sourcePathsByReference" />
             </node>
             <node concept="liA8E" id="6CFNGGphKm4" role="2OqNvi">
               <ref role="37wK5l" to="33ny:~Collection.addAll(java.util.Collection)" resolve="addAll" />

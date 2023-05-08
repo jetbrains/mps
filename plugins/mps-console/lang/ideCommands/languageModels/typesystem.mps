@@ -14,7 +14,6 @@
     <import index="tp4k" ref="r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)" />
     <import index="tp4s" ref="r:00000000-0000-4000-0000-011c89590360(jetbrains.mps.lang.plugin.behavior)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
-    <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="ydhz" ref="r:ae7d1f20-2cfe-46ef-a88a-193353a8b62b(jetbrains.mps.console.base.typesystem)" />
     <import index="xlb7" ref="r:cf42fd0a-68d2-493b-8b77-961658617704(jetbrains.mps.lang.modelapi.behavior)" implicit="true" />
@@ -167,7 +166,6 @@
         <child id="1174660783414" name="rightExpression" index="1ZfhKB" />
       </concept>
       <concept id="1174663118805" name="jetbrains.mps.lang.typesystem.structure.CreateLessThanInequationStatement" flags="nn" index="1ZobV4" />
-      <concept id="1174663239020" name="jetbrains.mps.lang.typesystem.structure.CreateGreaterThanInequationStatement" flags="nn" index="1ZoDhX" />
       <concept id="1174665551739" name="jetbrains.mps.lang.typesystem.structure.TypeVarDeclaration" flags="ng" index="1ZxtTE" />
       <concept id="1174666260556" name="jetbrains.mps.lang.typesystem.structure.TypeVarReference" flags="nn" index="1Z$b5t">
         <reference id="1174666276259" name="typeVarDeclaration" index="1Z$eMM" />
@@ -1128,53 +1126,6 @@
     <node concept="1YaCAy" id="2tFdLTRKaC7" role="1YuTPh">
       <property role="TrG5h" value="absractMake" />
       <ref role="1YaFvo" to="caxt:2tFdLTRKaaq" resolve="AbsractMake" />
-    </node>
-  </node>
-  <node concept="1YbPZF" id="59iQg8rzHxh">
-    <property role="TrG5h" value="typeof_OfAspectOperation" />
-    <node concept="3clFbS" id="59iQg8rzHxi" role="18ibNy">
-      <node concept="1ZoDhX" id="2rpbYG7pQr4" role="3cqZAp">
-        <property role="3wDh2S" value="false" />
-        <node concept="mw_s8" id="2rpbYG7pQr6" role="1ZfhK$">
-          <node concept="2c44tf" id="2rpbYG7pQr7" role="mwGJk">
-            <node concept="A3Dl8" id="59iQg8rzIl2" role="2c44tc">
-              <node concept="H_c77" id="59iQg8rzIlW" role="A3Ik2" />
-            </node>
-          </node>
-        </node>
-        <node concept="mw_s8" id="2rpbYG7pQrc" role="1ZfhKB">
-          <node concept="1Z2H0r" id="2rpbYG7pQrd" role="mwGJk">
-            <node concept="2OqwBi" id="2rpbYG7pQre" role="1Z2MuG">
-              <node concept="1YBJjd" id="59iQg8rzHWS" role="2Oq$k0">
-                <ref role="1YBMHb" node="59iQg8rzHxk" resolve="ofAspectOperation" />
-              </node>
-              <node concept="2qgKlT" id="2rpbYG7pQrg" role="2OqNvi">
-                <ref role="37wK5l" to="tpek:hEwIP$m" resolve="getOperand" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="1Z5TYs" id="hz1N4AP" role="3cqZAp">
-        <node concept="mw_s8" id="hz1N55C" role="1ZfhK$">
-          <node concept="1Z2H0r" id="hz1N55D" role="mwGJk">
-            <node concept="1YBJjd" id="59iQg8rzI5G" role="1Z2MuG">
-              <ref role="1YBMHb" node="59iQg8rzHxk" resolve="ofAspectOperation" />
-            </node>
-          </node>
-        </node>
-        <node concept="mw_s8" id="hz1N6aE" role="1ZfhKB">
-          <node concept="2c44tf" id="hz1N6aF" role="mwGJk">
-            <node concept="A3Dl8" id="59iQg8rzIzX" role="2c44tc">
-              <node concept="H_c77" id="59iQg8rzI$S" role="A3Ik2" />
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="1YaCAy" id="59iQg8rzHxk" role="1YuTPh">
-      <property role="TrG5h" value="ofAspectOperation" />
-      <ref role="1YaFvo" to="caxt:59iQg8ryOmC" resolve="OfAspectOperation_old" />
     </node>
   </node>
   <node concept="1YbPZF" id="6_TW7xV9dnY">

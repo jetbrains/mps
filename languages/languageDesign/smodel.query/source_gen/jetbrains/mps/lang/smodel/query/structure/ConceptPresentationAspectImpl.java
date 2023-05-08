@@ -10,16 +10,13 @@ import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
   private ConceptPresentation props_CustomScope;
-  private ConceptPresentation props_CustomScope_old;
   private ConceptPresentation props_ExpressionHelpProvider;
   private ConceptPresentation props_HelpProvider;
   private ConceptPresentation props_InstancesExpression;
   private ConceptPresentation props_ModelsExpression;
   private ConceptPresentation props_ModelsScope;
-  private ConceptPresentation props_ModelsScope_old;
   private ConceptPresentation props_ModulesExpression;
   private ConceptPresentation props_ModulesScope;
-  private ConceptPresentation props_ModulesScope_old;
   private ConceptPresentation props_NodesExpression;
   private ConceptPresentation props_OperationHelpProvider;
   private ConceptPresentation props_QueryExpression;
@@ -29,7 +26,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_QueryParameterIncludeReadOnly_old;
   private ConceptPresentation props_QueryParameterList;
   private ConceptPresentation props_QueryParameterScope;
-  private ConceptPresentation props_QueryParameterScope_old;
   private ConceptPresentation props_ReferencesExpression;
   private ConceptPresentation props_ScopeParameter;
   private ConceptPresentation props_ScopeParameter_old;
@@ -49,15 +45,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_CustomScope = cpb.create();
         }
         return props_CustomScope;
-      case LanguageConceptSwitch.CustomScope_old:
-        if (props_CustomScope_old == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.deprecated(true);
-          cpb.shortDesc("? extends SearchScope");
-          cpb.rawPresentation("custom");
-          props_CustomScope_old = cpb.create();
-        }
-        return props_CustomScope_old;
       case LanguageConceptSwitch.ExpressionHelpProvider:
         if (props_ExpressionHelpProvider == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -94,14 +81,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ModelsScope = cpb.create();
         }
         return props_ModelsScope;
-      case LanguageConceptSwitch.ModelsScope_old:
-        if (props_ModelsScope_old == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.deprecated(true);
-          cpb.rawPresentation("models");
-          props_ModelsScope_old = cpb.create();
-        }
-        return props_ModelsScope_old;
       case LanguageConceptSwitch.ModulesExpression:
         if (props_ModulesExpression == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -118,14 +97,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ModulesScope = cpb.create();
         }
         return props_ModulesScope;
-      case LanguageConceptSwitch.ModulesScope_old:
-        if (props_ModulesScope_old == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.deprecated(true);
-          cpb.rawPresentation("modules");
-          props_ModulesScope_old = cpb.create();
-        }
-        return props_ModulesScope_old;
       case LanguageConceptSwitch.NodesExpression:
         if (props_NodesExpression == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -190,15 +161,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_QueryParameterScope = cpb.create();
         }
         return props_QueryParameterScope;
-      case LanguageConceptSwitch.QueryParameterScope_old:
-        if (props_QueryParameterScope_old == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.deprecated(true);
-          cpb.shortDesc("used search scope (deprecated)");
-          cpb.rawPresentation("scope");
-          props_QueryParameterScope_old = cpb.create();
-        }
-        return props_QueryParameterScope_old;
       case LanguageConceptSwitch.ReferencesExpression:
         if (props_ReferencesExpression == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
