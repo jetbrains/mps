@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -350,11 +350,13 @@ public class NodeSubstituteChooser implements KeyboardHandler {
 
   private void rebuildMenuEntries() {
     if (myIsSmart) {
-      // Command is required here because in "smart" mode:
+      // Write is required here because in "smart" mode:
       // - new temp model will be created & registered in the repository inside temp module
       // - this model will be modified by "smart" complete acton type calculation process
-      // this command should not be associated with the current document to not show up in the undo stack
-      getModelAccess().executeCommand(this::doRebuildMenuEntries);
+      // Used to be a command, but since we lifted this restriction, seems 'write' is best suited as
+      // this activity should not be associated with the current document not to show up in the undo stack
+      // FWIW, likely there's already proper model access, but as there are few code paths leading here, can't tell for sure.
+      getModelAccess().runWriteAction(this::doRebuildMenuEntries);
     } else {
       getModelAccess().runReadAction(this::doRebuildMenuEntries);
     }
