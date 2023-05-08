@@ -19,6 +19,7 @@ import jetbrains.mps.classloading.ErrorContainer.SearchError;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -48,10 +49,10 @@ public class ModuleUpdater {
   private final SRepository myRepository;
   private final CLDependencies usedModulesCollector;
 
-  public ModuleUpdater(SRepository repository, Condition<ReloadableModule> watchableCondition, ReferenceStorage<ReloadableModule> refStorage) {
+  public ModuleUpdater(SRepository repository, Condition<ReloadableModule> watchableCondition) {
     myRepository = repository;
     myWatchableCondition = watchableCondition;
-    myRefStorage = refStorage;
+    myRefStorage = new ReferenceStorage<>();;
     usedModulesCollector= new CLDependencies(repository);
   }
 
@@ -145,6 +146,12 @@ public class ModuleUpdater {
   /*package*/ CLDependencies getClassLoadingDeps() {
     return usedModulesCollector;
   }
+
+  @Nullable
+  /*package*/ ReloadableModule resolveRef(SModuleReference ref) {
+    return myRefStorage.resolveRef(ref);
+  }
+
 
   private void updateRemoved(Set<? extends SModuleReference> modulesToRemove) {
     for (SModuleReference mRef : modulesToRemove) {

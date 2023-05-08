@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -73,12 +73,11 @@ public class ModulesWatcher {
 
   private final SRepository myRepository;
   private final Map<SModuleReference, ClassLoadingStatus> myStatusMap = new HashMap<>();
-  private final ReferenceStorage<ReloadableModule> myRefStorage = new ReferenceStorage<>();
   private final ModuleUpdater myModuleUpdater;
 
   public ModulesWatcher(SRepository repository, final Condition<ReloadableModule> watchableCondition) {
     myRepository = repository;
-    myModuleUpdater = new ModuleUpdater(repository, watchableCondition, myRefStorage);
+    myModuleUpdater = new ModuleUpdater(repository, watchableCondition);
   }
 
   private void update() {
@@ -231,11 +230,6 @@ public class ModulesWatcher {
     return (resolvedModule == null || resolvedModule.getRepository() == null);
   }
 
-  @Nullable
-  private ReloadableModule resolveRef(SModuleReference ref) {
-    return myRefStorage.resolveRef(ref);
-  }
-
   @TestOnly
   Map<SModuleReference, String> findAndPrintInvalidModulesProblems() {
     return findInvalidModules(true);
@@ -334,7 +328,7 @@ public class ModulesWatcher {
   private Collection<ReloadableModule> resolveRefs(final Iterable<? extends SModuleReference> refs) {
     final Collection<ReloadableModule> modules = new LinkedHashSet<>();
     for (SModuleReference mRef : refs) {
-      ReloadableModule module = resolveRef(mRef);
+      ReloadableModule module = myModuleUpdater.resolveRef(mRef);
       if (module != null) {
         modules.add(module);
       }
