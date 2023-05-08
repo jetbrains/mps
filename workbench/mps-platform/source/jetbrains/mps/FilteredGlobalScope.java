@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps;
 
-import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.FilteredScope;
 import jetbrains.mps.project.GlobalScope;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -33,17 +32,6 @@ import org.jetbrains.mps.util.Condition;
  */
 public class FilteredGlobalScope extends FilteredScope {
   private final Condition<SModule> myCondition;
-  /**
-   * @deprecated this cons assumes single global repository, which is a non-existent thing. Use {@link #FilteredGlobalScope(SRepository)} instead
-   *             There are no uses neither in MPS, not in mbeddr, will be removed in 2022.3
-   */
-  @Deprecated(since = "2019.1", forRemoval = true)
-  public FilteredGlobalScope() {
-    this(GlobalScope.getInstance());
-    if (Logger.getLogger(FilteredGlobalScope.class).isWarningLevel()) {
-      Logger.getLogger(FilteredGlobalScope.class).warning("FilteredGlobalScope() no-arg cons is scheduled for removal, stop using", new Throwable());
-    }
-  }
 
   public FilteredGlobalScope(SRepository repository) {
     // not that filtered *global* scope cares about a repo, but if you insist on using VR logic, and don't want to use deprecated cons,
