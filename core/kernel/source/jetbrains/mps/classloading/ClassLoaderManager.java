@@ -20,6 +20,7 @@ import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.module.ReloadableModule.DeploymentStatus;
+import jetbrains.mps.module.ReloadableModuleBase;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.facets.JavaModuleFacet.LoadClasses;
@@ -203,7 +204,7 @@ public class ClassLoaderManager implements CoreComponent {
     myRepository = repository;
     myModulesWatcher = new ModulesWatcher(myRepository, myWatchableCondition);
     myClassLoadersHolder = new MPSClassLoadersRegistry(myModulesWatcher);
-    myRepositoryListener = new ModuleEventsHandler(repository, myModulesWatcher);
+    myRepositoryListener = new ModuleEventsHandler(repository, this);
     myBroadCaster = new ClassLoadingBroadCaster(repository.getModelAccess(), myClassLoadersHolder.getDisposer());
   }
 
@@ -213,17 +214,13 @@ public class ClassLoaderManager implements CoreComponent {
       throw new IllegalStateException("ClassLoaderManager is already initialized");
     }
     INSTANCE = this;
-    myRepository.getModelAccess().runWriteAction(() -> {
-      myRepositoryListener.init(this);
-    });
+    myRepositoryListener.init();
   }
 
   @Override
   public void dispose() {
-    myRepository.getModelAccess().runWriteAction(() -> {
-      myClassLoadersHolder.dispose();
-      myRepositoryListener.dispose();
-    });
+    myClassLoadersHolder.dispose();
+    myRepositoryListener.dispose();
     INSTANCE = null;
   }
 
@@ -636,6 +633,30 @@ public class ClassLoaderManager implements CoreComponent {
       return DeploymentStatuses.NOT_IN_REPO;
       //fixme return dependency problem sometimes
     }
+  }
+
+  /*package*/ void processModuleChanges(List<ReloadableModuleBase> toLoad, List<SModuleReference> toUnload, List<ReloadableModuleBase> toUpdate) {
+    if (!toUnload.isEmpty()) {
+      // fixme this is wrong but otherwise we will never unload them
+      unloadModules(toUnload, new EmptyProgressMonitor());
+      myModulesWatcher.removeModules(toUnload);
+    }
+    if (!toLoad.isEmpty()) {
+      myModulesWatcher.addModules(toLoad);
+      // fixme decouple! the handler must only change the state (valid/invalid to load) it must not do any reloading
+      //  it will be possible when we generate classpath and do not have to grab the read lock when calculating the dependencies
+      //  then we will be able to return the up-to-date classloader without
+      // TODO ^^^ as the logic moved to CLM, update the comment
+      preLoadModules(toLoad, new EmptyProgressMonitor());
+    }
+    if (!toUpdate.isEmpty()) {
+      // fixme ?
+      //   likely, the use of CLM, as the comment above, for preLoadModules() suggests
+      doReloadModules(toUpdate, new EmptyProgressMonitor());
+      // XXX myModulesWatcher.updateModules() happens from CLM.doReloadModules(). Shall either move all myModulesWatcher notifications into CLM
+      //     or to move updateModules here!
+    }
+
   }
 
   enum DeploymentStatuses implements DeploymentStatus {

@@ -17,7 +17,6 @@ package jetbrains.mps.classloading;
 
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.module.ReloadableModuleBase;
-import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.smodel.SRepositoryBatchListener;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -46,21 +45,19 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * No such module events can happen outside of write action.
  */
 class ModuleEventsHandler implements SRepositoryBatchListener {
-  private ClassLoaderManager myManager;
-  private final ModulesWatcher myModulesWatcher;
+  private final ClassLoaderManager myManager;
   private final ModuleEventsDispatcher myDispatcher;
 
   // order for modules loading in order to reproduce any error
   private static final Comparator<Object> MODULE_COMPARATOR = Comparator.comparing(Object::toString);
   private final AtomicBoolean myPaused = new AtomicBoolean();
 
-  public ModuleEventsHandler(@NotNull SRepository repository, ModulesWatcher modulesWatcher) {
-    myModulesWatcher = modulesWatcher;
+  public ModuleEventsHandler(@NotNull SRepository repository, ClassLoaderManager classLoaderManager) {
+    myManager = classLoaderManager;
     myDispatcher = new ModuleEventsDispatcher(repository);
   }
 
-  public void init(ClassLoaderManager classLoaderManager) {
-    myManager = classLoaderManager;
+  public void init() {
     myDispatcher.init();
     myDispatcher.addRepositoryBatchEventsListener(this);
   }
@@ -96,25 +93,7 @@ class ModuleEventsHandler implements SRepositoryBatchListener {
     modulesToUpdate.sort(MODULE_COMPARATOR);
     List<ReloadableModuleBase> modulesToLoad = visitor.getModulesToLoad();
     modulesToLoad.sort(MODULE_COMPARATOR);
-    if (!modulesToUnload.isEmpty()) {
-      // fixme this is wrong but otherwise we will never unload them
-      myManager.unloadModules(modulesToUnload, new EmptyProgressMonitor());
-      myModulesWatcher.removeModules(modulesToUnload);
-    }
-    if (!modulesToLoad.isEmpty()) {
-      myModulesWatcher.addModules(modulesToLoad);
-      // fixme decouple! the handler must only change the state (valid/invalid to load) it must not do any reloading
-      //  it will be possible when we generate classpath and do not have to grab the read lock when calculating the dependencies
-      //  then we will be able to return the up-to-date classloader without
-      myManager.preLoadModules(modulesToLoad, new EmptyProgressMonitor());
-    }
-    if (!modulesToUpdate.isEmpty()) {
-      // fixme ?
-      //   likely, the use of CLM, as the comment above, for preLoadModules() suggests
-      myManager.doReloadModules(modulesToUpdate, new EmptyProgressMonitor());
-      // XXX myModulesWatcher.updateModules() happens from CLM.doReloadModules(). Shall either move all myModulesWatcher notifications into CLM
-      //     or to move updateModules here!
-    }
+    myManager.processModuleChanges(modulesToLoad, modulesToUnload, modulesToUpdate);
   }
 
   public void pause() {

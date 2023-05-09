@@ -20,9 +20,9 @@ import jetbrains.mps.module.ReloadableModuleBase;
 import jetbrains.mps.module.ReloadableModuleBase.SModuleDependenciesListener;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleListener;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
-import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 import org.jetbrains.mps.openapi.module.SRepositoryListener;
 import org.jetbrains.mps.openapi.module.event.SModuleAddedEvent;
 import org.jetbrains.mps.openapi.module.event.SModuleChangedEvent;
@@ -99,8 +99,10 @@ public class BatchEventsProcessor {
   /**
    *  This class listens for module's add/removal, for 'moduleChanged' event (triggered by AbstractModule)
    *  and for internal (so far) 'dependenciesChanged' event.
+   *  I don't use {@code SRepositoryContentAdapter} as I don't need {@code SRepositoryAttachListener} and imposed
+   *  model read on listener add/remove
    */
-  private class MySRepositoryListener extends SRepositoryContentAdapter implements SModuleDependenciesListener {
+  private class MySRepositoryListener implements SRepositoryListener, SModuleListener, SModuleDependenciesListener {
     private void addEventToList(@NotNull SRepositoryEvent event) {
       synchronized (LOCK) {
         myEvents.add(event);
