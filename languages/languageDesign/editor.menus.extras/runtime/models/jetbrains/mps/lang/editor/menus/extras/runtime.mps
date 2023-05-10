@@ -1182,14 +1182,23 @@
       <node concept="10P_77" id="7GARn1zPo8G" role="3clF45" />
       <node concept="37vLTG" id="7GARn1zPo8H" role="3clF46">
         <property role="TrG5h" value="pattern" />
-        <node concept="3uibUv" id="7GARn1zPo8I" role="1tU5fm">
-          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-        </node>
+        <node concept="17QB3L" id="$EISvd2DFr" role="1tU5fm" />
         <node concept="2AHcQZ" id="7GARn1zPo8J" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
       </node>
       <node concept="3clFbS" id="7GARn1zPo8K" role="3clF47">
+        <node concept="3cpWs8" id="$EISvd2$xR" role="3cqZAp">
+          <node concept="3cpWsn" id="$EISvd2$xS" role="3cpWs9">
+            <property role="TrG5h" value="event" />
+            <node concept="3uibUv" id="$EISvd2bmZ" role="1tU5fm">
+              <ref role="3uigEE" to="qkt:~AnActionEvent" resolve="AnActionEvent" />
+            </node>
+            <node concept="1rXfSq" id="$EISvd2$xT" role="33vP2m">
+              <ref role="37wK5l" node="7GARn1zPoLr" resolve="createAnActionEventWithTemplatePresentation" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="7GARn1zPosE" role="3cqZAp">
           <node concept="2OqwBi" id="7GARn1zPoAB" role="3clFbG">
             <node concept="37vLTw" id="7GARn1zPosD" role="2Oq$k0">
@@ -1197,23 +1206,23 @@
             </node>
             <node concept="liA8E" id="7GARn1zPoHW" role="2OqNvi">
               <ref role="37wK5l" to="qkt:~AnAction.update(com.intellij.openapi.actionSystem.AnActionEvent)" resolve="update" />
-              <node concept="1rXfSq" id="7GARn1zPpkE" role="37wK5m">
-                <ref role="37wK5l" node="7GARn1zPoLr" resolve="createAnActionEventWithTemplatePresentation" />
+              <node concept="37vLTw" id="$EISvd2$xU" role="37wK5m">
+                <ref role="3cqZAo" node="$EISvd2$xS" resolve="createAnActionEventWithTemplatePresentation" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="7GARn1zPpyc" role="3cqZAp">
-          <node concept="2OqwBi" id="7GARn1zPpUo" role="3clFbG">
-            <node concept="2OqwBi" id="7GARn1zPpGP" role="2Oq$k0">
-              <node concept="37vLTw" id="7GARn1zPpya" role="2Oq$k0">
-                <ref role="3cqZAo" node="20Jj4S2CjU1" resolve="myAction" />
+        <node concept="3clFbF" id="$EISvd2B62" role="3cqZAp">
+          <node concept="2OqwBi" id="$EISvd2Cpu" role="3clFbG">
+            <node concept="2OqwBi" id="$EISvd2BDm" role="2Oq$k0">
+              <node concept="37vLTw" id="$EISvd2B60" role="2Oq$k0">
+                <ref role="3cqZAo" node="$EISvd2$xS" resolve="event" />
               </node>
-              <node concept="liA8E" id="7GARn1zPpOL" role="2OqNvi">
-                <ref role="37wK5l" to="qkt:~AnAction.getTemplatePresentation()" resolve="getTemplatePresentation" />
+              <node concept="liA8E" id="$EISvd2C4d" role="2OqNvi">
+                <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation()" resolve="getPresentation" />
               </node>
             </node>
-            <node concept="liA8E" id="7GARn1zPq2i" role="2OqNvi">
+            <node concept="liA8E" id="$EISvd2CLN" role="2OqNvi">
               <ref role="37wK5l" to="qkt:~Presentation.isEnabled()" resolve="isEnabled" />
             </node>
           </node>
@@ -1312,12 +1321,17 @@
                 <ref role="1PxDUh" to="qkt:~ActionPlaces" resolve="ActionPlaces" />
                 <ref role="3cqZAo" to="qkt:~ActionPlaces.UNKNOWN" resolve="UNKNOWN" />
               </node>
-              <node concept="2OqwBi" id="7GARn1zPoLi" role="37wK5m">
-                <node concept="37vLTw" id="7GARn1zPoLj" role="2Oq$k0">
-                  <ref role="3cqZAo" node="20Jj4S2CjU1" resolve="myAction" />
+              <node concept="2OqwBi" id="4NH0zSyKIhT" role="37wK5m">
+                <node concept="2OqwBi" id="7GARn1zPoLi" role="2Oq$k0">
+                  <node concept="37vLTw" id="7GARn1zPoLj" role="2Oq$k0">
+                    <ref role="3cqZAo" node="20Jj4S2CjU1" resolve="myAction" />
+                  </node>
+                  <node concept="liA8E" id="7GARn1zPoLk" role="2OqNvi">
+                    <ref role="37wK5l" to="qkt:~AnAction.getTemplatePresentation()" resolve="getTemplatePresentation" />
+                  </node>
                 </node>
-                <node concept="liA8E" id="7GARn1zPoLk" role="2OqNvi">
-                  <ref role="37wK5l" to="qkt:~AnAction.getTemplatePresentation()" resolve="getTemplatePresentation" />
+                <node concept="liA8E" id="4NH0zSyKILt" role="2OqNvi">
+                  <ref role="37wK5l" to="qkt:~Presentation.clone()" resolve="clone" />
                 </node>
               </node>
               <node concept="2YIFZM" id="7GARn1zPoLl" role="37wK5m">
