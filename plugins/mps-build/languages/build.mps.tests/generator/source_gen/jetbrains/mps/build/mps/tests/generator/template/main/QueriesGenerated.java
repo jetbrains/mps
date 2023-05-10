@@ -28,9 +28,9 @@ import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.build.mps.util.ModulePlugins;
 import jetbrains.mps.generator.template.TemplateVarContext;
 import jetbrains.mps.build.mps.util.MPSModulesClosure;
-import jetbrains.mps.build.mps.util.ModulePlugins;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.SourceNodesQuery;
 import java.util.HashMap;
@@ -216,7 +216,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }, true);
   }
   public static Iterable<SNode> sourceNodesQuery_0_5(final SourceSubstituteMacroNodesContext _context) {
-    return ((List<SNode>) _context.getVariable("var:requiredPlugins"));
+    return ((ModulePlugins) _context.getVariable("var:requiredPlugins")).getPlugins(_context, true);
   }
   public static Iterable<SNode> sourceNodesQuery_0_6(final SourceSubstituteMacroNodesContext _context) {
     return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.BuildProject$ae), LINKS.macros$r8_A), CONCEPTS.BuildFolderMacro$mR)).where(new IWhereFilter<SNode>() {
@@ -247,7 +247,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object varMacro_Value_0_3(final TemplateVarContext _context) {
     ModulePlugins plugins = new ModulePlugins(SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$ae));
     plugins.collect(((MPSModulesClosure) _context.getVariable("var:closure")).getAllModules(), Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.requiredPlugins$eyJB), LINKS.plugin$qDpN)).toListSequence());
-    return plugins.getPlugins(_context, true);
+    return plugins;
   }
   public static Object varMacro_Value_0_4(final TemplateVarContext _context) {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq) == null) || (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.compressArgs$RBk7) == null)) {
@@ -259,7 +259,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return "true".equals(text);
   }
   public static Object varMacro_Value_0_5(final TemplateVarContext _context) {
-    return ((MPSModulesClosure) _context.getVariable("var:closure")).getAllModules();
+    return ((ModulePlugins) _context.getVariable("var:requiredPlugins")).getModulesNotInPlugins();
   }
   private final Map<String, SourceNodesQuery> snsqMethods = new HashMap<String, SourceNodesQuery>();
   {
