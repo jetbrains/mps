@@ -97,7 +97,7 @@ public class GraphHolder<V> {
 
   public boolean contains(V v) {
     checkGraphsCorrectness();
-    return getVertices().contains(v);
+    return myGraph.containsVertex(v);
   }
 
   public void fillOutgoingEdgesShallow(Iterable<? extends V> vv, Collection<? super V> result) {
