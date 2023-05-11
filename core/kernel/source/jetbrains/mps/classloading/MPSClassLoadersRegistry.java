@@ -64,13 +64,17 @@ class MPSClassLoadersRegistry {
     myModulesWatcher = modulesWatcher;
   }
 
-  /*package*/ MPSModuleClassLoader getClassLoader(@NotNull ReloadableModule module) {
-    MPSModuleClassLoader moduleClassLoader = getModuleClassLoader(module.getModuleReference());
+  /*package*/ MPSModuleClassLoader getClassLoader(@NotNull SModuleReference mref) {
+    MPSModuleClassLoader moduleClassLoader = getModuleClassLoader(mref);
     if (moduleClassLoader != null) {
       return moduleClassLoader;
     }
 
-    return getNonReloadableClassLoader(module);
+    synchronized (this) {
+      // added synchronize here to honour sync of fillExternalClassLoader() method
+      // although not sure if I understand (a) why it was there (b) while myMPSClassLoaders access is not controlled
+      return myIDEAClassLoaders.get(mref);
+    }
   }
 
   @Nullable
@@ -80,11 +84,13 @@ class MPSClassLoadersRegistry {
   }
 
   /**
-   * @return null if classloader is not found
+   * FIXME these CLs used to be non-reloadable, but I don't see a reason to treat them differently compared
+   *       to a CL of a regular MPS module. We can reload them as needed
    */
-  @Nullable
-  /*package*/ synchronized MPSModuleClassLoader getNonReloadableClassLoader(@NotNull ReloadableModule module) {
-    return myIDEAClassLoaders.computeIfAbsent(module.getModuleReference(), (ref) -> createDelegateClassLoader(module));
+  /*package*/ synchronized void prepareExternalClassLoader(@NotNull Collection<ReloadableModule> modules) {
+    for (ReloadableModule m : modules) {
+      myIDEAClassLoaders.computeIfAbsent(m.getModuleReference(), (ref) -> createDelegateClassLoader(m));
+    }
   }
 
   /**
@@ -168,7 +174,9 @@ class MPSClassLoadersRegistry {
 
   private ModuleClassLoaderSupport prepareModuleClassLoader(@NotNull ReloadableModule module) {
     LOG.debug("Creating ModuleClassLoader for " + module);
-    Collection<ReloadableModule> deps = myModulesWatcher.getResolvedDependencies(Collections.singletonList(module));
+    Collection<SModuleReference> deps = myModulesWatcher.getDependencies(Collections.singletonList(module.getModuleReference()));
+    // we don't need SModule/ReloadableModule instance for dependencies, all CLs (or at least their respective support)
+    // have to be initialized the moment we ask for dependencies
     final ModuleClassLoaderSupport support = ModuleClassLoaderSupport.create(module, () -> deps.stream()
                                                                                                .map(this::getClassLoader)
                                                                                                .distinct()

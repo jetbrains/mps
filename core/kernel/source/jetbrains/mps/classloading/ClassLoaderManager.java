@@ -296,7 +296,8 @@ public class ClassLoaderManager implements CoreComponent {
       return DEFAULT_DELEGATING_TO_SYSTEM_CL;
     }
     doLoadModules(Collections.singleton(reloadableModule), new EmptyProgressMonitor());
-    return doGetClassLoader(reloadableModule);
+    MPSModuleClassLoader classLoader = myClassLoadersHolder.getClassLoader(reloadableModule.getModuleReference());
+    return classLoader != null ? classLoader : DEFAULT_DELEGATING_TO_SYSTEM_CL;
   }
 
   /**
@@ -334,15 +335,6 @@ public class ClassLoaderManager implements CoreComponent {
     } finally {
       myRepository.getModelAccess().runReadAction(myRepositoryListener::proceed);
     }
-  }
-
-  @NotNull
-  private MPSModuleClassLoader doGetClassLoader(@NotNull ReloadableModule module) {
-    MPSModuleClassLoader classLoader = myClassLoadersHolder.getClassLoader(module);
-    if (classLoader != null) {
-      return classLoader;
-    }
-    return DEFAULT_DELEGATING_TO_SYSTEM_CL;
   }
 
   /**
@@ -421,8 +413,7 @@ public class ClassLoaderManager implements CoreComponent {
             return jmf != null && jmf.getLoadClasses() == LoadClasses.ManagedByContributor;
           }
         };
-        final Set<ReloadableModule> extLoaderModules = filterModules(modulesToLoad, myNotLoadedCondition, extLoader);
-        extLoaderModules.forEach(myClassLoadersHolder::getNonReloadableClassLoader);
+        myClassLoadersHolder.prepareExternalClassLoader(filterModules(modulesToLoad, myNotLoadedCondition, extLoader));
         modulesToLoad = filterModules(modulesToLoad, myMPSLoadableCondition, myNotLoadedCondition);
         if (modulesToLoad.isEmpty()) return Collections.emptySet();
 
