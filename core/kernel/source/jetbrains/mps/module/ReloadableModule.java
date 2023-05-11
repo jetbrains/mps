@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -70,7 +70,7 @@ public interface ReloadableModule extends SModule {
    * a ModuleClassLoader. ModuleClassLoader's #loadClass method yields some additional information
    * about the reasons of class which could not be found.
    * Clients of this API are supposed to process it on their own behalf.
-   * * @see jetbrains.mps.classloading.ModuleClassNotFoundException * @see jetbrains.mps.classloading.ModuleIsNotLoadableException
+   * @see jetbrains.mps.classloading.ModuleClassNotFoundException
    * warning: this method is lazy implemented!
    */
   @NotNull
@@ -83,7 +83,6 @@ public interface ReloadableModule extends SModule {
    * a ModuleClassLoader.
    *
    * @see jetbrains.mps.classloading.ModuleClassNotFoundException
-   * @see jetbrains.mps.classloading.ModuleIsNotLoadableException
    * @see jetbrains.mps.classloading.ModuleClassLoader
    * @see jetbrains.mps.classloading.ModuleClassLoader#loadOwnClass(String)
    * warning: this method is lazy implemented!

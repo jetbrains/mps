@@ -238,24 +238,18 @@ public class ClassLoaderManager implements CoreComponent {
 
   /**
    * TODO refactor all usages of getClass()
-   * Contract: @param module must be loadable ({@link #myLoadableCondition}
    * So if {@link } method returns true and the class file is in place you will get the class
    *
    * @deprecated use module-specific methods which throw different ClassNotFoundExceptions,
    * you need to process it on your own (probably show some user notification)
    *
-   * @see jetbrains.mps.module.ReloadableModule
-   * @see ModuleIsNotLoadableException
    * @see ModuleClassNotFoundException
    */
 @Deprecated(since = "3.2", forRemoval = true)
   @Nullable
   public Class<?> getClass(@NotNull SModule module, String classFqName) {
-    assertCanLoad(module);
     try {
-      return ((ReloadableModule) module).getClass(classFqName);
-    } catch (ModuleIsNotLoadableException e) {
-      LOG.error("Exception during class loading. Probably one of the solutions has no solution kind set or lacks in Idea plugin facet.", e);
+      return getClassLoader(module).loadClass(classFqName);
     } catch (ClassNotFoundException e) {
       LOG.error("Exception during class loading", e);
     }
@@ -278,7 +272,6 @@ public class ClassLoaderManager implements CoreComponent {
    * INTERNAL USE ONLY: use module-specific methods which throw ClassNotFoundException,
    * you need to process it by yourself (probably show some user notification)
    *
-   * @see ModuleIsNotLoadableException
    * @see jetbrains.mps.module.ReloadableModule
    */
   @Internal

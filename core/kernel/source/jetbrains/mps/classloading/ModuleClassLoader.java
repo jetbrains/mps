@@ -50,7 +50,6 @@ import java.util.concurrent.ConcurrentMap;
  * For example, all language modules possess an instance of such classloader.
  *
  * @author apyshkin
- * @see jetbrains.mps.classloading.ModuleIsNotLoadableException
  * @see jetbrains.mps.classloading.ModuleClassNotFoundException
  */
 public final class ModuleClassLoader extends MPSModuleClassLoader {
