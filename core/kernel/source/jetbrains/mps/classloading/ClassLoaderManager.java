@@ -23,7 +23,6 @@ import jetbrains.mps.module.ReloadableModule.DeploymentStatus;
 import jetbrains.mps.module.ReloadableModuleBase;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.project.facets.JavaModuleFacet;
-import jetbrains.mps.project.facets.JavaModuleFacet.LoadClasses;
 import jetbrains.mps.smodel.tempmodel.TempModule;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.NotCondition;
@@ -368,19 +367,23 @@ public class ClassLoaderManager implements CoreComponent {
 
         // transitive closure
         modulesPreLoad.addAll(myModulesWatcher.getResolvedDependencies(modulesPreLoad));
+        // XXX is it ok to assume dependencies could not be in 'lazy_loaded' state at the moment? Why myUnloadedCondition?
         modulesPreLoad = filterModules(modulesPreLoad, myUnloadedCondition, myValidCondition);
         if (modulesPreLoad.isEmpty()) return Collections.emptySet();
         monitor.advance(1);
 
         // add valid back dependencies too; [if now (with new modules) they are fine to load]
         modulesPreLoad.addAll(myModulesWatcher.getResolvedBackDependencies(modulesPreLoad));
-        modulesPreLoad = filterModules(modulesPreLoad, myUnloadedCondition, myMPSLoadableCondition, myValidCondition);
-        if (modulesPreLoad.isEmpty()) return Collections.emptySet();
+        // XXX again, why myUnloadedCondition, can't there be backdeps with LAZY?
+        modulesPreLoad = filterModules(modulesPreLoad, myUnloadedCondition, myValidCondition);
+        if (modulesPreLoad.isEmpty()) {
+          return Collections.emptySet();
+        }
 
-        // AFAIU, modulesPreLoad exclude modules with ManagedByContributor class loading (myMPSLoadableCondition)
+        Set<ReloadableModule> modulesToNotify = myClassLoadersHolder.onLazyLoaded(modulesPreLoad);
+        // AFAIU, here, with modulesToNotify(), we exclude modules with ManagedByContributor class loading
         // and I wonder if this is truly what we need here. Is it true that no DeployListener ever needs anything from
         // a module with IDEA CL (directly; indirect access works through CL delegation)?
-        Set<ReloadableModule> modulesToNotify = myClassLoadersHolder.onLazyLoaded(modulesPreLoad);
         myBroadCaster.onLoad(modulesToNotify, monitor.subTask(5, SubProgressKind.AS_COMMENT));
 
         return modulesToNotify;
@@ -393,7 +396,6 @@ public class ClassLoaderManager implements CoreComponent {
   /**
    * Creates ModuleClassLoader for those modules which are MPS-loadable and valid
    *
-   * @see #myMPSLoadableCondition
    * @see #myValidCondition
    */
   @NotNull
@@ -402,20 +404,16 @@ public class ClassLoaderManager implements CoreComponent {
     try {
       return runTransaction(() -> {
         Set<ReloadableModule> modulesToLoad = filterModules(modules, myValidCondition);
-        if (modulesToLoad.isEmpty()) return Collections.emptySet();
+        if (modulesToLoad.isEmpty()) {
+          return Collections.emptySet();
+        }
 
         // transitive closure
         modulesToLoad.addAll(myModulesWatcher.getResolvedDependencies(modulesToLoad));
-        Condition<ReloadableModule> extLoader = new Condition<ReloadableModule>() {
-          @Override
-          public boolean met(ReloadableModule m) {
-            final JavaModuleFacet jmf = m.getFacet(JavaModuleFacet.class);
-            return jmf != null && jmf.getLoadClasses() == LoadClasses.ManagedByContributor;
-          }
-        };
-        myClassLoadersHolder.prepareExternalClassLoader(filterModules(modulesToLoad, myNotLoadedCondition, extLoader));
-        modulesToLoad = filterModules(modulesToLoad, myMPSLoadableCondition, myNotLoadedCondition);
-        if (modulesToLoad.isEmpty()) return Collections.emptySet();
+        modulesToLoad = filterModules(modulesToLoad, myNotLoadedCondition);
+        if (modulesToLoad.isEmpty()) {
+          return Collections.emptySet();
+        }
 
         LOG.debug("Loading " + modulesToLoad.size() + " modules");
         monitor.advance(1);
@@ -437,8 +435,6 @@ public class ClassLoaderManager implements CoreComponent {
    *
    * FIXME not sure supplied modules match myMPSLoadableCondition, perhaps externally-managed modules are
    *       among these, as well. If yes, this means we dispatch different set of modules in onLoaded and in onUnloaded
-   *
-   * @see #myMPSLoadableCondition
    */
   @NotNull
   Collection<ReloadableModule> unloadModules(Iterable<? extends SModuleReference> modules, @NotNull ProgressMonitor monitor) {
@@ -457,6 +453,8 @@ public class ClassLoaderManager implements CoreComponent {
 
         LOG.debug("Unloading " + modulesToUnload.size() + " modules");
         Collection<ReloadableModule> unloadedModules = myBroadCaster.onUnload(modulesToUnload, monitor.subTask(5, SubProgressKind.AS_COMMENT));
+        // FIXME likely, due to the nature of myBroadCaster.onUnload, modulesToUnload would contain modules with MPS-managed CL only
+        //       (broadcaster keeps map of modules it sent event for, and it doesn't send any for non-MPS compile modules at the moment)
         myClassLoadersHolder.doUnloadModules(modulesToUnload);
 
         return unloadedModules;
@@ -715,19 +713,14 @@ public class ClassLoaderManager implements CoreComponent {
    */
   @Deprecated(forRemoval = true, since = "2023.1")
   public boolean isLoadedByMPS(@NotNull ReloadableModule module) {
-    return myMPSLoadableCondition.met(module);
+    return ModuleClassLoaderSupport.canCreate(module);
   }
-
-  /**
-   * it is possible to create ModuleClassLoader for such module
-   */
-  private final Condition<ReloadableModule> myMPSLoadableCondition = ModuleClassLoaderSupport::canCreate;
 
   /**
    * status of this module is valid in the dependencies graph
    * @see ModulesWatcher
    */
-  private final Condition<ReloadableModule> myValidCondition = new Condition<ReloadableModule>() {
+  private final Condition<ReloadableModule> myValidCondition = new Condition<>() {
     @Override
     public boolean met(ReloadableModule module) {
       SModuleReference mRef = module.getModuleReference();
