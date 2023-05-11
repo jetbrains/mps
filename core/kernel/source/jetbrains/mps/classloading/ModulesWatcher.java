@@ -75,7 +75,7 @@ public class ModulesWatcher {
   private final Map<SModuleReference, ClassLoadingStatus> myStatusMap = new HashMap<>();
   private final ModuleUpdater myModuleUpdater;
 
-  public ModulesWatcher(SRepository repository, final Condition<ReloadableModule> watchableCondition) {
+  public ModulesWatcher(SRepository repository, final Condition<SModule> watchableCondition) {
     myRepository = repository;
     myModuleUpdater = new ModuleUpdater(repository, watchableCondition);
   }

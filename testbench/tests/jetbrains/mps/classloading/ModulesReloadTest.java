@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -301,17 +301,11 @@ public class ModulesReloadTest extends ModuleMpsTest {
   }
 
   @Test
-  public void testUnload1() {
+  public void testUnload() {
     final Language l1 = createLanguage();
-    getModelAccess().runWriteAction(new Runnable() {
-      @Override
-      public void run() {
-        removeModule(l1);
-        Assert.assertSame(l1.getClassLoader(), defaultCL());
-        Assert.assertFalse(myManager.getModulesWatcher().isModuleWatched(l1));
-      }
-    });
+    removeModule(l1);
     Assert.assertSame(l1.getClassLoader(), defaultCL());
+    Assert.assertFalse(myManager.getModulesWatcher().isModuleWatched(l1));
   }
 
   @Test

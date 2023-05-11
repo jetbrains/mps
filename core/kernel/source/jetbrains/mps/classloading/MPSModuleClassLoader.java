@@ -47,6 +47,9 @@ public abstract class MPSModuleClassLoader extends ClassLoader {
     }
   }
 
+  // I'd love to have loadOwnClass() here, in superclass, but as there's no easy way to implement it properly
+  // in IDEA delegating CL, and I hesitate about loadOwnClass == loadClass, let me stick just to this comment now.
+
   static {
     registerAsParallelCapable0();
     // XXX I wonder if we do it here, in the base abstract class, do we need to have the same

@@ -43,13 +43,13 @@ public class ModuleUpdater {
   private final Set<ReloadableModule> myModulesToAdd = new LinkedHashSet<>();
   private final Set<ReloadableModule> myModulesToReload = new LinkedHashSet<>();
   private final Set<SModuleReference> myModulesToRemove = new LinkedHashSet<>();
-  private final Condition<ReloadableModule> myWatchableCondition;
+  private final Condition<SModule> myWatchableCondition;
   private final GraphHolder<SModuleReference> myDepGraphHolder = new GraphHolder<>();
   private final ReferenceStorage<ReloadableModule> myRefStorage;
   private final SRepository myRepository;
   private final CLDependencies usedModulesCollector;
 
-  public ModuleUpdater(SRepository repository, Condition<ReloadableModule> watchableCondition) {
+  public ModuleUpdater(SRepository repository, Condition<SModule> watchableCondition) {
     myRepository = repository;
     myWatchableCondition = watchableCondition;
     myRefStorage = new ReferenceStorage<>();;
@@ -185,12 +185,12 @@ public class ModuleUpdater {
         continue;
       }
       assert module != null;
-      Collection<ReloadableModule> deps = getDepsWithErrors(module);
+      Collection<SModule> deps = getDepsWithErrors(module);
       if (deps.isEmpty()) {
         // indeed, useless if, kept for the record there's different logic prior to my change
         continue;
       }
-      for (ReloadableModule dep : deps) {
+      for (SModule dep : deps) {
         if (allRefs.contains(dep.getModuleReference())) {
           myDepGraphHolder.addEdge(ref, dep.getModuleReference());
         } else {
@@ -250,10 +250,10 @@ public class ModuleUpdater {
         // why not updated=true; continue;?
         return true;
       }
-      Collection<ReloadableModule> newModuleDeps = getDepsWithErrors(module);
+      Collection<SModule> newModuleDeps = getDepsWithErrors(module);
       // XXX do I need to skip if there are no newModuleDeps (assuming this means error) - not to remove existing edges.
       // if (newModuleDeps.isEmpty()) { continue; }
-      for (ReloadableModule moduleDep : newModuleDeps) {
+      for (SModule moduleDep : newModuleDeps) {
         SModuleReference depRef = moduleDep.getModuleReference();
         if (!currentDeps.contains(depRef)) {
           if (allRefs.contains(depRef)) {
@@ -274,22 +274,17 @@ public class ModuleUpdater {
 
   // XXX might want to convert to Stream<>
   @NotNull
-  private Collection<ReloadableModule> getDepsWithErrors(@NotNull ReloadableModule module) {
+  private Collection<SModule> getDepsWithErrors(@NotNull ReloadableModule module) {
     myRepository.getModelAccess().checkReadAccess();
     if (module.getRepository() == null) {
       return Collections.emptyList();
     }
 
     Collection<SModule> directlyUsedModules = usedModulesCollector.directlyUsedModules(module);
-    Set<ReloadableModule> deps = new LinkedHashSet<>();
+    Set<SModule> deps = new LinkedHashSet<>();
     for (SModule dep : directlyUsedModules) {
-      if (dep instanceof ReloadableModule) {
-        ReloadableModule reloadableModule = (ReloadableModule) dep;
-        // FIXME now, myWatchableCondition shall respect JMF.LoadClasses only,
-        //       just need to review myWatchableCondition uses carefully
-        if (myWatchableCondition.met(reloadableModule)) {
-          deps.add(reloadableModule);
-        }
+      if (myWatchableCondition.met(dep)) {
+        deps.add(dep);
       }
     }
     return deps;

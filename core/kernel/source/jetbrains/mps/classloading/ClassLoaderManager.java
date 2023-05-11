@@ -54,12 +54,13 @@ import static jetbrains.mps.classloading.ClassLoadingProgress.UNLOADED;
  * A ClassLoaderManager is a singleton and provides an internal API for loading classes
  * within MPS.
  * NOTE: External API is placed in {@link jetbrains.mps.module.ReloadableModule} interface.
- * Using the methods of this class is not recommended.
+ * Using the methods of this class is not recommended. This is no longer true
  *
- * In order to get Class from a module call {@link #getClass} method.
- * @see #myLoadableCondition
+ * This class intimately deals with {@link JavaModuleFacet} as it's (at the moment) the only mechanism
+ * to describe classloading (perhaps, we can add another facet to address classloading of e.g. Kotlin modules)
+ * therefore, it "watches" (keep track of) modules with Java facet and coming with classes (check {@link JavaModuleFacet.Compile})
  *
- * General information:
+ * General information (FIXME OUTDATED):
  * A MPS java module is loadable iff it is possible to associate some ClassLoader with it.
  * Currently there are two types of <it>loadable</it> modules:
  * 1. <it>Reloadable</it> modules are modules which ClassLoader maybe redeployed on-the-fly
@@ -77,7 +78,7 @@ import static jetbrains.mps.classloading.ClassLoadingProgress.UNLOADED;
  * When module is added, CLManager marks it as ({@code LAZY_LOADED}) and broadcasts the event to
  * {@link jetbrains.mps.classloading.DeployListener} clients.
  * When module's classes (or ClassLoader) are requested, the actual module load happens.
- * When module is removed from the repository, CLManager unloaded module's data from its' storage.
+ * When module is removed from the repository, CLManager unloaded module's data from its storage.
  * @see ClassLoadingProgress for more information on module's loading progress and module's lifecycle
  *
  * Every module add/remove/reload triggers events dispatching to MPSClassesListeners
@@ -202,6 +203,8 @@ public class ClassLoaderManager implements CoreComponent {
     myRepository = repository;
     myModulesWatcher = new ModulesWatcher(myRepository, myWatchableCondition);
     myClassLoadersHolder = new MPSClassLoadersRegistry(myModulesWatcher);
+    // XXX ModuleEventsHandler implies we care about ReloadableModuleBase instances, and the rest of this code
+    //     sort of assumes it receives these instances (e.g. conditions)
     myRepositoryListener = new ModuleEventsHandler(repository, this);
     myBroadCaster = new ClassLoadingBroadCaster(repository.getModelAccess(), myClassLoadersHolder.getDisposer());
   }
@@ -281,7 +284,11 @@ public class ClassLoaderManager implements CoreComponent {
   @Internal
   @NotNull
   public MPSModuleClassLoader getClassLoader(final SModule module) {
-    if (!myLoadableCondition.met(module)) {
+    if (!myWatchableCondition.met(module)) {
+      // FTR, prior to use of JMF for condition, we didn't get into this if for a module removed inside the same write.
+      //      Instead, refresh(), below, brought the watcher state up-to-date. Now, module removed from a repo got no
+      //      facets, and we get into this if right away. Not sure how important is this scenario (see related change in
+      //      ModuleReloadTest#testUnload1()
       return DEFAULT_DELEGATING_TO_SYSTEM_CL;
     }
 
@@ -368,6 +375,9 @@ public class ClassLoaderManager implements CoreComponent {
 
     try {
       return runTransaction(() -> {
+        // TODO would be great to send out events only for modules with non-empty CL, i.e. to avoid
+        //       warnings like "Missing language runtime class" on loaded + "No language with id" on unloaded
+        //       for modules not yet compiled
         Set<ReloadableModule> modulesPreLoad = filterModules(modules, myValidCondition);
         if (modulesPreLoad.isEmpty()) return Collections.emptySet();
 
@@ -708,14 +718,13 @@ public class ClassLoaderManager implements CoreComponent {
   }
 
   /**
-   * it is possible to associate a ClassLoader with such module
+   * the modules we want to watch (and trace the dependencies between them)
+   * Answers if it is possible to associate a ClassLoader (whether IDEA-delegating or true MPS module CL) with the module
    */
-  private final Condition<SModule> myLoadableCondition = module -> module instanceof ReloadableModule;
-
-  /**
-   * the modules which we want to watch (and trace the dependencies between them)
-   */
-  private final Condition<ReloadableModule> myWatchableCondition = module -> true;
+  private final Condition<SModule> myWatchableCondition = module -> {
+    final JavaModuleFacet jmf = module.getFacet(JavaModuleFacet.class);
+    return jmf != null && jmf.getCompile().isCompiled();
+  };
 
   /**
    * @deprecated dubious single use, bad name (rather answers if module *can* get MPS CL, not if module got any or has been loaded)
