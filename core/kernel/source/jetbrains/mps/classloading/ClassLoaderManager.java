@@ -719,6 +719,10 @@ public class ClassLoaderManager implements CoreComponent {
    */
   private final Condition<ReloadableModule> myWatchableCondition = module -> true;
 
+  /**
+   * @deprecated dubious single use, bad name (rather answers if module *can* get MPS CL, not if module got any or has been loaded)
+   */
+  @Deprecated(forRemoval = true, since = "2023.1")
   public boolean isLoadedByMPS(@NotNull ReloadableModule module) {
     return myMPSLoadableCondition.met(module);
   }

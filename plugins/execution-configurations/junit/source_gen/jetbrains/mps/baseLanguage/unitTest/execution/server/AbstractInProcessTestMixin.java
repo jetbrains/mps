@@ -13,8 +13,8 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.module.ModuleClassLoaderIsNullException;
-import jetbrains.mps.module.ReloadableModule;
+import jetbrains.mps.classloading.MPSModuleClassLoader;
+import jetbrains.mps.classloading.ModuleClassLoader;
 
 public abstract class AbstractInProcessTestMixin extends AbstractJUnitTestMixin {
 
@@ -52,11 +52,12 @@ public abstract class AbstractInProcessTestMixin extends AbstractJUnitTestMixin 
   }
 
   @NotNull
-  protected Class<?> loadTestClass(String fqName, SModule module) throws ClassNotFoundException, ModuleClassLoaderIsNullException {
-    if (module instanceof ReloadableModule && myClassloaderManager.isLoadedByMPS(((ReloadableModule) module))) {
-      return ((ReloadableModule) module).getOwnClass(fqName);
+  protected Class<?> loadTestClass(String fqName, SModule module) throws ClassNotFoundException {
+    MPSModuleClassLoader cl = myClassloaderManager.getClassLoader(module);
+    if (cl instanceof ModuleClassLoader) {
+      return ((ModuleClassLoader) cl).loadOwnClass(fqName);
     } else {
-      throw new ClassNotFoundException("Module's " + module + " classes are managed by MPS (try setting compileInMPS flag to true)");
+      return cl.loadClass(fqName);
     }
   }
 }
