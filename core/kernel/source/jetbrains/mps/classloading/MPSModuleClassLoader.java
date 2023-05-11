@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,23 +34,31 @@ public abstract class MPSModuleClassLoader extends ClassLoader {
     super(parent);
   }
 
-  /**
-   * @return true if the class loader is managed by MPS
-   * for instance, it might be a non-reloadable classloader
-   * which delegates directly to IDEA class loading subsystem (which is non-reloadable)
-   */
-  public abstract boolean isReloadableClassLoader();
+  protected MPSModuleClassLoader(String name, ClassLoader parent) {
+    super(name, parent);
+  }
+
+  @Override
+  public String toString() {
+    if (getName() != null) {
+      return String.format("MPS Module CL %s@%x", getName(), hashCode());
+    } else {
+      return super.toString();
+    }
+  }
 
   static {
     registerAsParallelCapable0();
+    // XXX I wonder if we do it here, in the base abstract class, do we need to have the same
+    //     in subclasses?
   }
 
   /**
    * MPS has a cyclic delegation classloading model (module A.a1 triggers class B.b which in turn triggers the loading of
    * the class A.a2 in the case when A depends on B and vice versa; the implicit class loading is triggered in the #defineClass invocation
-   * in the {@link ModuleClassLoader#loadFromSelf(String)} method).
+   * in the {@code ModuleClassLoader#loadFromSelf(String)} method).
    *
-   * Thus according to jls we declare ModuleClassLoader and all its ancestors as a parallel capable.
+   * Thus, according to jls we declare ModuleClassLoader and all its ancestors as a parallel capable.
    * Without this registration the threading model of the MPS classloading is flawed.
    * @since 3.4
    */

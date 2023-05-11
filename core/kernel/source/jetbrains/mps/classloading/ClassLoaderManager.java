@@ -169,11 +169,9 @@ public class ClassLoaderManager implements CoreComponent {
 
   private static ClassLoaderManager INSTANCE;
 
-  static final MPSModuleClassLoader DEFAULT_DELEGATING_TO_SYSTEM_CL = new MPSModuleClassLoader(getSystemClassLoader()) {
-    @Override
-    public boolean isReloadableClassLoader() {
-      return false;
-    }
+  static final MPSModuleClassLoader DEFAULT_DELEGATING_TO_SYSTEM_CL = new MPSModuleClassLoader("Delegate to System CL", getSystemClassLoader()) {
+    // I want to keep MPSModuleClassLoader abstract for now just to avoid confusion one can create and use
+    // MPSModuleClassLoader instances directly
   };
 
   /**

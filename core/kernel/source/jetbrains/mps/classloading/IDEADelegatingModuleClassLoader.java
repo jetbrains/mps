@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,16 +27,6 @@ public final class IDEADelegatingModuleClassLoader extends MPSModuleClassLoader 
   }
 
   public IDEADelegatingModuleClassLoader(ClassLoader delegate) {
-    super(delegate);
-  }
-
-  @Override
-  public boolean isReloadableClassLoader() {
-    return false;
-  }
-
-  @Override
-  public String toString() {
-    return "MPS delegating to IDEA CL:" + getParent();
+    super("Delegate to IDEA CL " + delegate.toString(), delegate);
   }
 }

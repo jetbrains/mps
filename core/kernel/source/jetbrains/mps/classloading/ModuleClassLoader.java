@@ -90,7 +90,7 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
   }
 
   public ModuleClassLoader(@NotNull ModuleClassLoaderSupport support) {
-    super(support.getRootClassLoader());
+    super(NameUtil.compactNamespace(support.getModule().getModuleName()), support.getRootClassLoader());
     mySupport = support;
   }
 
@@ -346,12 +346,8 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
   }
 
   public String toString() {
-    return String.format("%s ModuleClassLoader %s", mySupport.getModule(), myDisposed ? "[DISPOSED]" : "");
-  }
-
-  @Override
-  public boolean isReloadableClassLoader() {
-    return true;
+    final String rv = super.toString();
+    return myDisposed ? rv + "[DISPOSED]" : rv;
   }
 
   public static class ModuleClassLoaderIsDisposedException extends IllegalStateException {
