@@ -23,6 +23,7 @@ import jetbrains.mps.module.ReloadableModule.DeploymentStatus;
 import jetbrains.mps.module.ReloadableModuleBase;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.project.facets.JavaModuleFacet.LoadClasses;
 import jetbrains.mps.smodel.tempmodel.TempModule;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.NotCondition;
@@ -705,7 +706,7 @@ public class ClassLoaderManager implements CoreComponent {
    */
   private final Condition<SModule> myWatchableCondition = module -> {
     final JavaModuleFacet jmf = module.getFacet(JavaModuleFacet.class);
-    return jmf != null && jmf.getCompile().isCompiled();
+    return jmf != null && jmf.getLoadClasses().classesAvailable();
   };
 
   /**

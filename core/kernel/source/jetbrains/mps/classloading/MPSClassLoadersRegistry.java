@@ -151,7 +151,7 @@ class MPSClassLoadersRegistry {
       } else {
         myMPSLoadableModules.put(mRef, ClassLoadingProgress.LAZY_LOADED);
         final JavaModuleFacet jmf = module.getFacet(JavaModuleFacet.class);
-        assert jmf != null && jmf.getCompile().isCompiled();
+        assert jmf != null && jmf.getLoadClasses().classesAvailable();
 //        if (jmf.getCompile() == Compile.MPS) {
           lazyLoaded2Notify.add(module);
 //        }
@@ -172,14 +172,14 @@ class MPSClassLoadersRegistry {
         throw new IllegalStateException("Module " + moduleReference + " is in UNLOADED state, i.e. the class loading clients know nothing about this module");
       } else if (progress == ClassLoadingProgress.LAZY_LOADED) {
         final JavaModuleFacet jmf = module.getFacet(JavaModuleFacet.class);
-        if (jmf.getCompile() == Compile.MPS) {
+        if (jmf.getLoadClasses() == LoadClasses.ManagedByMPS) {
           ModuleClassLoaderSupport clSupport = prepareModuleClassLoader(module);
           myMPSClassLoaders.put(moduleReference, clSupport);
-        } else if (jmf.getCompile() == Compile.External) {
+        } else if (jmf.getLoadClasses() == LoadClasses.ManagedByContributor) {
           forExtLoader.add(module); // do these at once later
         } else {
-          // shall not happen, jmf.getCompile().isCompiled() is precondition of myWatchableCondition
-          LOG.error(String.format("Module %s got unexpected compilation setting: %s", module.getModuleName(), jmf.getCompile()));
+          // shall not happen, jmf.getLoadClasses().classesAvailable() is precondition of myWatchableCondition
+          LOG.error(String.format("Module %s got unexpected class loading setting: %s", module.getModuleName(), jmf.getLoadClasses()));
         }
         myMPSLoadableModules.put(moduleReference, ClassLoadingProgress.LOADED);
       } // XXX else if LOADED -> error, duplicate load attempt?
