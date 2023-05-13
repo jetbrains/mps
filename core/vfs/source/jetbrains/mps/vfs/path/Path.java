@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.vfs.path;
 
-import jetbrains.mps.vfs.Watchable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -39,7 +38,7 @@ import java.util.List;
  *
  * @author apyshkin
  */
-public interface Path extends /*Comparable<Path>,*/ /*AP: do I want this?*/ Watchable, PathUtil {
+public interface Path extends /*Comparable<Path>,*/ /*AP: do I want this?*/ PathUtil {
   char SYSTEM_SEPARATOR_CHAR = File.separatorChar;
   String SYSTEM_SEPARATOR = File.separator;
 
