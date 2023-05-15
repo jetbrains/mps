@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,10 +34,9 @@ import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.MPSBundle;
 import jetbrains.mps.idea.core.project.StubSolutionIdea;
-import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.structure.modules.ModuleDescriptor;
+import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.vfs.VFSManager;
@@ -236,9 +235,8 @@ public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager impl
     //         just slightly reworked the code (in an unique creative manner) that used to rely on CommonPaths
     List<String> excludedPaths = new ArrayList<String>();
     final SModule mpsCore = PersistenceFacade.getInstance().createModuleReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)").resolve(repository);
-    ModuleDescriptor mpsCoreDesc;
-    if (mpsCore instanceof AbstractModule && (mpsCoreDesc = ((AbstractModule) mpsCore).getModuleDescriptor()) != null) {
-      excludedPaths.addAll(mpsCoreDesc.getJavaLibs());
+    if (mpsCore != null && mpsCore.getFacet(JavaModuleFacet.class) != null) {
+      excludedPaths.addAll(mpsCore.getFacet(JavaModuleFacet.class).getLibraryClassPath());
     }
 
     // turn into short names
