@@ -63,6 +63,7 @@
       <concept id="1214307303872" name="jetbrains.mps.lang.plugin.structure.GetComponentBlock" flags="in" index="2UmK3q" />
       <concept id="6547237850567458268" name="jetbrains.mps.lang.plugin.structure.BaseToolDeclaration" flags="ng" index="2XNcJY">
         <property id="2498620720770664572" name="position" index="2bmUCM" />
+        <property id="43535111852086466" name="isAvailableOnStartup" index="tEvSQ" />
         <property id="6547237850567462620" name="caption" index="2XNbzY" />
         <child id="8096638938275469615" name="toolDisposeBlock" index="uR5co" />
         <child id="8096638938275469614" name="toolInitBlock" index="uR5cp" />
@@ -476,6 +477,7 @@
     <property role="TrG5h" value="ContextActionsTool" />
     <property role="2XNbzY" value="Context Actions" />
     <property role="2bmUCM" value="2aGS$UDXOxV/RIGHT" />
+    <property role="tEvSQ" value="true" />
     <node concept="2BZ0e9" id="5tr7YH$U8Tk" role="2XNbBz">
       <property role="TrG5h" value="myComponent" />
       <node concept="3Tm6S6" id="5tr7YH$U8Tl" role="1B3o_S" />
@@ -620,14 +622,6 @@
               <node concept="2BZ7hE" id="1PgelZsjR6p" role="2OqNvi">
                 <ref role="2WH_rO" node="7pClCNYa4$I" resolve="myController" />
               </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="4NheBEYgiyp" role="3cqZAp">
-          <node concept="2OqwBi" id="4NheBEYgiJr" role="3clFbG">
-            <node concept="2WthIp" id="4NheBEYgiyn" role="2Oq$k0" />
-            <node concept="liA8E" id="4NheBEYgiSi" role="2OqNvi">
-              <ref role="37wK5l" to="71xd:~BaseTool.makeAvailableLater()" resolve="makeAvailableLater" />
             </node>
           </node>
         </node>

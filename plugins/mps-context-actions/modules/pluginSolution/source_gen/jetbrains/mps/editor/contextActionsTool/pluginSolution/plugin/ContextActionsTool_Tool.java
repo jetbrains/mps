@@ -29,11 +29,14 @@ public class ContextActionsTool_Tool extends GeneratedTool {
 
     ContextActionsTool_Tool.this.myComponent = new ToolComponent(ContextActionsTool_Tool.this);
     ContextActionsTool_Tool.this.myController = new ToolController(mpsProject, ContextActionsTool_Tool.this.myComponent, new SelectionMenuProviderByCellAndConcept(MenuLocations.CONTEXT_ACTIONS_TOOL));
-    ContextActionsTool_Tool.this.makeAvailableLater();
   }
   public void dispose() {
     ContextActionsTool_Tool.this.myController.dispose();
     super.dispose();
+  }
+  @Override
+  protected boolean isInitiallyAvailable() {
+    return true;
   }
   private DefaultActionGroup createGearActionGroup() {
     DefaultActionGroup gearActionGroup = new DefaultActionGroup();
