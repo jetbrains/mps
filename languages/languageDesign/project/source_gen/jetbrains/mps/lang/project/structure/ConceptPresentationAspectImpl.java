@@ -120,7 +120,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_ModelRoot;
       case LanguageConceptSwitch.Module:
         if (props_Module == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL);
+          cpb.deprecateAggregation(0x19bfb4173fb52669L, "stubModels");
           props_Module = cpb.create();
         }
         return props_Module;

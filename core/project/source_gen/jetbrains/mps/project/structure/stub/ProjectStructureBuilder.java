@@ -163,10 +163,13 @@ public class ProjectStructureBuilder {
     for (SLanguage ref : mySourceModule.getUsedLanguages()) {
       SLinkOperations.getChildren(module, LINKS.usedLanguages$74h$).add(convert(ref.getSourceModuleReference()));
     }
-    for (String path : mySource.getJavaLibs()) {
-      SNode node = SModelOperations.createNewNode(myModel, null, CONCEPTS.StubEntry$ta);
-      SPropertyOperations.assign(node, PROPS.path$Cl8o, path);
-      SLinkOperations.getChildren(module, LINKS.stubModels$s4S7).add(node);
+    JavaModuleFacet jmf = mySourceModule.getFacet(JavaModuleFacet.class);
+    if (jmf != null) {
+      for (String path : jmf.getLibraryClassPath()) {
+        SNode node = SModelOperations.createNewNode(myModel, null, CONCEPTS.StubEntry$ta);
+        SPropertyOperations.assign(node, PROPS.path$Cl8o, path);
+        SLinkOperations.getChildren(module, LINKS.stubModels$s4S7).add(node);
+      }
     }
     for (String s : mySource.getSourcePaths()) {
       SLinkOperations.getChildren(module, LINKS.sourcePaths$EX$p).add(convertSourcePath(s));

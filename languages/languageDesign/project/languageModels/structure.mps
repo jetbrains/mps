@@ -20,7 +20,10 @@
       <concept id="6491077959632463275" name="jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo" flags="ng" index="3l_iC">
         <child id="6491077959632463286" name="oldProperty" index="3l_iP" />
       </concept>
-      <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9" />
+      <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
+        <property id="1225118929411" name="build" index="YLPcu" />
+        <property id="1225118933224" name="comment" index="YLQ7P" />
+      </concept>
       <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
         <property id="7862711839422615217" name="text" index="t5JxN" />
       </concept>
@@ -113,6 +116,10 @@
       <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="1855399583446017641" />
       <ref role="20lvS9" node="1AZH1sZHigy" resolve="StubEntry" />
+      <node concept="asaX9" id="6jQ5SYbIfxw" role="lGtFl">
+        <property role="YLPcu" value="2023.1" />
+        <property role="YLQ7P" value="Wrong name (it's java libraries). Drop unless there's sound usecase (tell me about one!) " />
+      </node>
     </node>
     <node concept="1TJgyj" id="eY0iPzBvYZ" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
