@@ -498,6 +498,9 @@ public final class ModulesMiner {
             result.getJavaLibPersistedValues().add(path);
           }
         }
+        // hack, see DD.getLibrariesResolved() for explanation
+        deploymentDescriptor.getLibrariesResolved().clear();
+        deploymentDescriptor.getLibrariesResolved().addAll(deploymentLibraries);
 
         // fix @java_stub locations, if any
         fixJavaStubModelRoots(result, sourceDescriptorFile, moduleHome, deploymentLibraries);

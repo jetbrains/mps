@@ -50,6 +50,7 @@ import java.util.LinkedHashSet;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 /**
  * todo: divide into two parts: JavaModuleFacetSrcImpl && JavaModuleFacetPackagedImpl
@@ -279,7 +280,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
       if (moduleDescriptor != null) {
         final DeploymentDescriptor dd = moduleDescriptor.getDeploymentDescriptor();
         if (dd != null) {
-          dd.getLibraries().stream().map(PathSpec::new).forEach(libraries::add);
+          dd.getLibrariesResolved().stream().map(PathSpec::new).forEach(libraries::add);
         } else {
           // account for isPackaged() == true w/o DD scenario. However, I don't think it's something we shall strive to keep,
           // instead, shall force use of DD for packaged/deployed scenarios
@@ -322,7 +323,9 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
       FileSystem fs = getAbstractModule().getFileSystem();
       final Function<String, String> expandPath = macroHelper::expandPath;
       Function<String, IFile> tr = expandPath.andThen(fs::getFile);
-      libraries.forEach(l -> l.resolve(tr));
+      // don't re-resolve PathSpec that were instantiated with IFile
+      final Predicate<PathSpec> resolved = PathSpec::resolved;
+      libraries.stream().filter(resolved.negate()).forEach(l -> l.resolve(tr));
       myLibraryBundle = new PathSpecBundle(libraries);
     }
     // configure defaults for transition
@@ -547,6 +550,8 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     });
   }
 
+  // XXX if we split source/deployed JMF, methods to manipulate Java Library specification shall be part of sources; deployed JMF will look into
+  // libraries of DeploymentDescriptor
   public void setJavaLibrarySpec(@NotNull PathSpecBundle javaLibPaths) {
     myLibraryBundle = javaLibPaths;
   }
