@@ -66,6 +66,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
   // there's hardcoded knowledge in ModuleDescriptorPersistence that 'path' attributes are FS location and
   // has to be piped though MacroHelper to get expanded/shrunken
   private static final String PATH_KEY = "path";
+  private static final String LOCATION_KEY = "location";
 
   private static final String JAVA_LANGUAGE_LEVEL = "languageLevel";
 
@@ -86,6 +87,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
   @Nullable
   private JavaLanguageLevel myJavaLanguageLevel = null;
   private PathSpecBundle myLibraryBundle = new PathSpecBundle();
+  private boolean myTransitionLibraryBundle = true;
 
   public JavaModuleFacetImpl(@NotNull SModule module) {
     super(FACET_TYPE, module);
@@ -238,9 +240,13 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
       memento.put(KEY_CLASSLOADER, myLoadClasses.toPersistenceValue());
       memento.put(KEY_EXTENSION, myLoadExtensions.toPersistenceValue());
     }
-    for (PathSpec jl : myLibraryBundle) {
-      final Memento mm = memento.createChild(LIBRARY_KEY);
-      mm.put(PATH_KEY, jl.value());
+    if (!myTransitionLibraryBundle) {
+      for (PathSpec jl : myLibraryBundle) {
+        final Memento mm = memento.createChild(LIBRARY_KEY);
+        // to avoid MDP logic to process "path" attributes with MacroHelper. Not ready yet to
+        // turn it off, and likely shall have it deprecated for some time to ensure compatibility/transition
+        mm.put(LOCATION_KEY, jl.value());
+      }
     }
   }
 
@@ -287,6 +293,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
           moduleDescriptor.getJavaLibPersistedValues().stream().map(PathSpec::new).forEach(libraries::add);
         }
       }
+      myTransitionLibraryBundle = true;
     } else {
       // FIXME LEHA
       FileSystem fs = getAbstractModule().getFileSystem();
@@ -307,13 +314,15 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
         }
       }
       for (Memento m : memento.getChildren(LIBRARY_KEY)) {
-        final String p = m.get(PATH_KEY);
+        final String p = m.get(LOCATION_KEY);
         if (p != null) {
           libraries.add(new PathSpec(p));
         }
         // XXX shall I warn about bad value here or in persistence? Latter seems to be generic and shall not care about mandatory attributes.
         // Perhaps, makes sense to keep some sort of 'invalid' path specification?
       }
+      // don't care if we import some legacy values, as long as there's at least 1 pathspec already, save these
+      myTransitionLibraryBundle = libraries.isEmpty();
       if (moduleDescriptor != null) {
         moduleDescriptor.getJavaLibPersistedValues().stream().map(PathSpec::new).forEach(libraries::add);
       }
@@ -554,6 +563,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
   // libraries of DeploymentDescriptor
   public void setJavaLibrarySpec(@NotNull PathSpecBundle javaLibPaths) {
     myLibraryBundle = javaLibPaths;
+    myTransitionLibraryBundle = false;
   }
 
   public PathSpecBundle getJavaLibrarySpec() {
