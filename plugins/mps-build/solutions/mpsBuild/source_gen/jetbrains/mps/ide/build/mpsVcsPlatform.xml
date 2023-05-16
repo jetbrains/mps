@@ -117,7 +117,7 @@
         </dependencies>
         <uses />
         <library jar="../../vcs-git/lib/git4idea-rt.jar" />
-        <library jar="../../vcs-git/lib/git4idea.jar" />
+        <library jar="../../vcs-git/lib/vcs-git.jar" />
         <sources jar="." descriptor="jetbrains.mps.git4idea.stubs.msd" />
       </module>
     </echoxml>
