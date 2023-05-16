@@ -290,10 +290,13 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
    * according to {@code LanguageDescriptorPersistence}, legacy entries were {@code classPath} and {@code runtimeClassPath}.
    * This method is just a better name for what used to be {@code getAdditionalJavaStubPaths()}.
    * FIXME WHY DOES IT USE String for File location, which FS shall I use to resolve these locations?
-   * todo: move to java facet
+   * @deprecated replaced with {@link jetbrains.mps.project.facets.JavaModuleFacetImpl#getJavaLibrarySpec()}, although if all you need is
+   *             to access libraries, {@link jetbrains.mps.project.facets.JavaModuleFacet#getLibraryClassPath()} might be better alternative
+   *             This method will be removed after few releases (as it's part of well-known MD class, we'll keep it for a couple of releases)
    */
+  @Deprecated(since = "2023.1", forRemoval = true)
   public final Collection<String> getJavaLibs() {
-//    Logger.getLogger(getClass()).warnDeprecatedUse("Java Libraries are part of JavaModuleFacet specification now");
+    Logger.getLogger(getClass()).warnDeprecatedUse("Java Libraries are part of JavaModuleFacet specification now");
     return myJavaLibsWarnWrap;
   }
 

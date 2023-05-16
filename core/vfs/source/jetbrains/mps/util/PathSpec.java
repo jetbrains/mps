@@ -65,7 +65,7 @@ public class PathSpec {
     return myResolvedFile;
   }
 
-  public String resolvedValue() {
+  public String resolvedPath() {
     checkAccessResolved();
     return myResolvedFile.getPath();
   }

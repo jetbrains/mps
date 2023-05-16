@@ -56,6 +56,8 @@ import jetbrains.mps.project.facets.JavaModuleFacet.LoadExtensions;
 import jetbrains.mps.project.facets.JavaModuleFacetImpl;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
+import jetbrains.mps.util.PathSpec;
+import jetbrains.mps.util.PathSpecBundle;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
@@ -80,6 +82,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 // FIXME #apply() shall not deal with ModuleDescriptor directly, instead, JavaModuleFacet.save() shall put that there (better yet,
 // to memento, not to be different from other facets, provided we don't use isCompileInMPS and getKind directly from descriptor)
@@ -341,7 +344,10 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
   }
 
   private JComponent getLibrariesTable() {
-    final Collection<String> additionalJavaStubPaths = myJavaModuleFacet.getAbstractModule().getModuleDescriptor().getJavaLibs();
+    final PathSpecBundle jls = myJavaModuleFacet.getJavaLibrarySpec();
+    // FIXME it's not right to ignore unresolved reference and silently ignore them. Although convertStringPaths2VirtualFile() can
+    //       present invalid file, it's not clear how to approach unresolved PathSpec here. Need a dedicated TableModel, instead
+    final Collection<String> additionalJavaStubPaths = jls.paths().filter(PathSpec::resolved).map(PathSpec::resolvedPath).collect(Collectors.toList());
     myLibrariesTableModel = new FilesTableModel(convertStringPaths2VirtualFile(additionalJavaStubPaths));
     myLibrariesTableModel.addTableModelListener(e -> myLibrariesChanged = true);
     final JBTable librariesTable = new JBTable(myLibrariesTableModel);
@@ -469,20 +475,25 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     }
 
     if (myLibrariesChanged) {
-      final Collection<String> libraryPaths = myJavaModuleFacet.getAbstractModule().getModuleDescriptor().getJavaLibs();
       // Remember list of libraries before update
-      final Collection<String> oldLibraries = new ArrayList<>(libraryPaths);
-      libraryPaths.clear();
-      final Collection<String> libraryPathsTable = convertVirtualFile2StringPaths(myLibrariesTableModel.getFiles());
-      if (!libraryPathsTable.isEmpty()) {
-        libraryPaths.addAll(libraryPathsTable);
+      final PathSpecBundle oldLibraries = myJavaModuleFacet.getJavaLibrarySpec();
+      ArrayList<PathSpec> pathSpecs = new ArrayList<>();
+      final LinkedHashSet<String> libraryPathsTable = new LinkedHashSet<>();
+      for (VirtualFile lf : myLibrariesTableModel.getFiles()) {
+        // FIXME shall convert to IFile and use respective PathSpec constructor!
+        pathSpecs.add(new PathSpec(lf.getPath()));
+        // FIXME review model root fixing code, below
+        libraryPathsTable.add(lf.getPath());
       }
+      myJavaModuleFacet.setJavaLibrarySpec(new PathSpecBundle(pathSpecs));
       myLibrariesChanged = false;
 
       // Try to create java_classes model roots for added libraries
+      // FIXME I don't like this 'automatic' approach. Instead, shall be explicit action, either in ModelRoot tab or an extended control
+      //       for the path element (e.g. additional decorator button. Could be two "for all missing" and based on selection)
       final Collection<ModelRootDescriptor> modelRoots = myJavaModuleFacet.getAbstractModule().getModuleDescriptor().getModelRootDescriptors();
       // Need to handle only newly added libraries
-      libraryPathsTable.removeAll(oldLibraries);
+      oldLibraries.paths().filter(PathSpec::resolved).map(PathSpec::resolvedPath).forEach(libraryPathsTable::remove);
       for (String file : libraryPathsTable) {
         final ModelRootDescriptor javaStubsModelRoot = ModelRootDescriptor.addJavaStubModelRoot(new File(file), modelRoots);
         if (javaStubsModelRoot != null) {

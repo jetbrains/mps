@@ -132,7 +132,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     // XXX for deployed modules, we could use DD.getLibraries here. But as long as MM updates MD.getJavaLibs() of a source module,
     //     and we grabbed these during load(), just stick to myLibraryBundle.
     // XXX I wonder if we truly need to care about PS.resolved(), i.e. if we need IFile or any string with substituted macro is fine.
-    myLibraryBundle.paths().filter(PathSpec::resolved).map(PathSpec::resolvedValue).forEach(libraryClassPath::add);
+    myLibraryBundle.paths().filter(PathSpec::resolved).map(PathSpec::resolvedPath).forEach(libraryClassPath::add);
     // for packaged modules, we can't tell if classes deployed with it shall go into libraryCP or into #getClassPath(). Now they
     // go into latter, as there's (a) no uses for #getLibraryClassPath; (b) there's no need to compile deployed modules, hence no
     // reason to have its external classes available in libraries.
