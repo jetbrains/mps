@@ -11,6 +11,8 @@ import java.util.function.Function;
 import java.util.regex.Matcher;
 
 /**
+ * Help to specify a file system location, with optional use of macro values in paths
+ *
  * @author Artem Tikhomirov
  * @since 2023.1
  */
@@ -68,6 +70,21 @@ public class PathSpec {
   public String resolvedPath() {
     checkAccessResolved();
     return myResolvedFile.getPath();
+  }
+
+  /**
+   * PROVISIONAL API
+   * I expect to further shape API around path expansion/shrinking a bit outside of present {@link MacroHelper} scope, so this
+   * is transitional API to move on with just few code changes around; don't expect it to stay long
+   */
+  public String shrink(@NotNull MacroHelper macroHelper) {
+    if (myResolvedFile != null) {
+      return macroHelper.shrinkPath(myResolvedFile, myValue);
+    } else {
+      // startsWithMacro(), not hasMacro(), as a tribute to legacy logic (macros in the start of a path only).
+      // Hope to rework this logic once get closer to a MacroHelper replacement.
+      return startsWithMacro() ? myValue : macroHelper.shrinkPath(myValue, null);
+    }
   }
 
   private void checkAccessResolved() {

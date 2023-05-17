@@ -241,11 +241,12 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
       memento.put(KEY_EXTENSION, myLoadExtensions.toPersistenceValue());
     }
     if (!myTransitionLibraryBundle) {
+      final MacroHelper mh = MacrosFactory.forModule(getModule());
       for (PathSpec jl : myLibraryBundle) {
         final Memento mm = memento.createChild(LIBRARY_KEY);
         // to avoid MDP logic to process "path" attributes with MacroHelper. Not ready yet to
         // turn it off, and likely shall have it deprecated for some time to ensure compatibility/transition
-        mm.put(LOCATION_KEY, jl.value());
+        mm.put(LOCATION_KEY, jl.shrink(mh));
       }
     }
   }
