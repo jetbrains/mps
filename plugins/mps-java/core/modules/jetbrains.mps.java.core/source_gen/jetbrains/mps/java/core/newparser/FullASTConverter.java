@@ -287,11 +287,13 @@ public class FullASTConverter extends ASTConverterWithExpressions {
             currentSwitchCase = SLinkOperations.getTarget(result, LINKS.defaultBlock$QOu8);
             addBlock(SLinkOperations.getTarget(result, LINKS.defaultBlock$QOu8), caseStatement.sourceStart, caseStatement.sourceEnd);
           } else {
-            SNode switchCase = convertCaseStatement((CaseStatement) stmt);
-            if ((switchCase != null)) {
-              ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.case$8PWE)).addElement(switchCase);
+            for (Expression expr : caseStatement.constantExpressions) {
+              SNode switchCase = convertCaseStatement(caseStatement, expr);
+              if ((switchCase != null)) {
+                ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.case$8PWE)).addElement(switchCase);
+              }
+              currentSwitchCase = ((switchCase == null) ? null : SLinkOperations.getTarget(switchCase, LINKS.body$5LhG));
             }
-            currentSwitchCase = ((switchCase == null) ? null : SLinkOperations.getTarget(switchCase, LINKS.body$5LhG));
           }
         } else
         if ((currentSwitchCase != null)) {
@@ -314,9 +316,8 @@ public class FullASTConverter extends ASTConverterWithExpressions {
     });
     return result;
   }
-  /*package*/ SNode convertCaseStatement(CaseStatement x) throws JavaParseException {
-    // TODO: support multiple expressions
-    SNode expression = convertExpressionWrap(x.constantExpressions[0]);
+  /*package*/ SNode convertCaseStatement(CaseStatement x, Expression expr) throws JavaParseException {
+    SNode expression = convertExpressionWrap(expr);
     SNode switchCase = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, "jetbrains.mps.baseLanguage.structure.SwitchCase"));
     SLinkOperations.setTarget(switchCase, LINKS.expression$QQk6, expression);
     SLinkOperations.setTarget(switchCase, LINKS.body$5LhG, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
