@@ -13,6 +13,8 @@ import jetbrains.mps.project.structure.modules.SolutionKind;
 import jetbrains.mps.util.xml.XmlUtil;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Collection;
 
 /**
@@ -79,11 +81,17 @@ public class SolutionDescriptorPersistence {
           }
 
 
-          Element stubModelEntries = XmlUtil.first(rootElement, "stubModelEntries");
-          if (stubModelEntries != null) {
-            List<String> roots = ModuleDescriptorPersistence.loadStubModelEntries(stubModelEntries, myMacroHelper);
-            result_8ckma3_a0a0a0b0k.getJavaLibPersistedValues().addAll(roots);
-          }
+          List<String> javaLibs = Sequence.fromIterable(XmlUtil.children(XmlUtil.first(rootElement, "stubModelEntries"), "stubModelEntry")).select(new ISelector<Element, String>() {
+            public String select(Element it) {
+              return it.getAttributeValue("path");
+            }
+          }).toListSequence();
+          result_8ckma3_a0a0a0b0k.getJavaLibOriginalValues().addAll(javaLibs);
+          result_8ckma3_a0a0a0b0k.getJavaLibPersistedValues().addAll(ListSequence.fromList(javaLibs).select(new ISelector<String, String>() {
+            public String select(String it) {
+              return myMacroHelper.expandPath(it);
+            }
+          }).toListSequence());
 
           ModuleDescriptorPersistence.loadDependencies(result_8ckma3_a0a0a0b0k, rootElement);
 

@@ -495,6 +495,8 @@ public final class ModulesMiner {
           deploymentLibraries.add(jar);
           if (jar.exists()) {
             String path = jar.getPath();
+            // FWIW, we mangle getJavaLibPersistedValues() here, and don't touch getJavaLibOriginalValues(), but as long as we are
+            // processing deployed modules (not project), I don't expect this to break anything.
             result.getJavaLibPersistedValues().add(path);
           }
         }

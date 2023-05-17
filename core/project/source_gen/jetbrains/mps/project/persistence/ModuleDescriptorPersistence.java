@@ -33,7 +33,6 @@ import org.jetbrains.mps.openapi.persistence.Memento;
 import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import org.jdom.Attribute;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.project.ModuleId;
@@ -244,22 +243,6 @@ public class ModuleDescriptorPersistence {
 
   private static boolean isPathAttribute(String name) {
     return name.equals("path") || name.endsWith("Path");
-  }
-
-  public static List<String> loadStubModelEntries(Element stubModelEntriesElement, final MacroHelper macroHelper) {
-    return Sequence.fromIterable(XmlUtil.children(stubModelEntriesElement, "stubModelEntry")).select(new ISelector<Element, String>() {
-      public String select(Element mre) {
-        return loadStubModelEntry(mre, macroHelper);
-      }
-    }).where(new IWhereFilter<String>() {
-      public boolean accept(String it) {
-        return it != null;
-      }
-    }).toListSequence();
-  }
-
-  private static String loadStubModelEntry(Element modelRootElement, MacroHelper macroHelper) {
-    return macroHelper.expandPath(modelRootElement.getAttributeValue("path"));
   }
 
   public static void saveFacets(Element result, Collection<ModuleFacetDescriptor> facets, MacroHelper macroHelper) {

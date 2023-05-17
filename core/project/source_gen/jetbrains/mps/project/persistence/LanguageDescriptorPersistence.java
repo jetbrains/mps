@@ -14,9 +14,10 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import java.util.List;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
@@ -102,11 +103,17 @@ public class LanguageDescriptorPersistence {
           }
 
           // odd 'stubModelEntry' name for auxiliary classpath is due to legacy
-          Element stubModelEntries = XmlUtil.first(languageElement, "stubModelEntries");
-          if (stubModelEntries != null) {
-            List<String> roots = ModuleDescriptorPersistence.loadStubModelEntries(stubModelEntries, myMacroHelper);
-            result_v3r4p8_a0a0a0c0g.getJavaLibPersistedValues().addAll(roots);
-          }
+          List<String> javaLibs = Sequence.fromIterable(XmlUtil.children(XmlUtil.first(languageElement, "stubModelEntries"), "stubModelEntry")).select(new ISelector<Element, String>() {
+            public String select(Element mee) {
+              return mee.getAttributeValue("path");
+            }
+          }).toListSequence();
+          result_v3r4p8_a0a0a0c0g.getJavaLibOriginalValues().addAll(javaLibs);
+          result_v3r4p8_a0a0a0c0g.getJavaLibPersistedValues().addAll(ListSequence.fromList(javaLibs).select(new ISelector<String, String>() {
+            public String select(String it) {
+              return myMacroHelper.expandPath(it);
+            }
+          }).toListSequence());
 
           for (Element entryElement : Sequence.fromIterable(XmlUtil.children(XmlUtil.first(languageElement, "sourcePath"), "source"))) {
             result_v3r4p8_a0a0a0c0g.getSourcePaths().add(myMacroHelper.expandPath(entryElement.getAttributeValue("path")));
