@@ -2111,6 +2111,21 @@
         </node>
       </node>
     </node>
+    <node concept="398rNT" id="4mf44un9N3W" role="1l3spd">
+      <property role="TrG5h" value="kotlinc_home" />
+      <node concept="398BVA" id="4mf44un9N5k" role="398pKh">
+        <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+        <node concept="2Ry0Ak" id="4mf44un9N5T" role="iGT6I">
+          <property role="2Ry0Am" value="plugins" />
+          <node concept="2Ry0Ak" id="4mf44un9N5W" role="2Ry0An">
+            <property role="2Ry0Am" value="mps-kotlin" />
+            <node concept="2Ry0Ak" id="4mf44un9N5Z" role="2Ry0An">
+              <property role="2Ry0Am" value="kotlinc" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="1l3spV" id="6S1jmf0xDFD" role="1l3spN">
       <node concept="398223" id="6S1jmf0xDGV" role="39821P">
         <node concept="398223" id="10txAzI7l9a" role="39821P">
@@ -3573,7 +3588,7 @@
           <node concept="L2wRC" id="4Gy9vLLbALu" role="39821P">
             <ref role="L2wRA" node="4Hc8TwAmyoE" resolve="jetbrains.mps.tool.builder" />
             <node concept="3yLZsm" id="4Gy9vLLbAXz" role="3yL2VB">
-              <property role="3yLZsk" value="/lib/mpsant/mpt-tool.jar" />
+              <property role="3yLZsk" value="/lib/mpsant/mps-tool.jar" />
               <node concept="398BVA" id="4Gy9vLLbB3c" role="3yLZsn">
                 <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
                 <node concept="2Ry0Ak" id="4Gy9vLLbB3d" role="iGT6I">
@@ -24668,21 +24683,6 @@
     </node>
     <node concept="2sgV4H" id="6IJvZDkyhyp" role="1l3spa">
       <ref role="1l3spb" node="6IJvZDkyfZ_" resolve="mpsTrueBootstrap" />
-    </node>
-    <node concept="398rNT" id="4mf44un9N3W" role="1l3spd">
-      <property role="TrG5h" value="kotlinc_home" />
-      <node concept="398BVA" id="4mf44un9N5k" role="398pKh">
-        <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-        <node concept="2Ry0Ak" id="4mf44un9N5T" role="iGT6I">
-          <property role="2Ry0Am" value="plugins" />
-          <node concept="2Ry0Ak" id="4mf44un9N5W" role="2Ry0An">
-            <property role="2Ry0Am" value="mps-kotlin" />
-            <node concept="2Ry0Ak" id="4mf44un9N5Z" role="2Ry0An">
-              <property role="2Ry0Am" value="kotlinc" />
-            </node>
-          </node>
-        </node>
-      </node>
     </node>
   </node>
   <node concept="1l3spW" id="2eDSGe9d1ot">
@@ -47348,7 +47348,7 @@
           <node concept="L2wRC" id="GF9IugXStk" role="39821P">
             <ref role="L2wRA" node="4wxeloVufXp" resolve="jetbrains.mps.git4idea.stubs" />
             <node concept="3yLZsm" id="GF9IugXSvy" role="3yL2VB">
-              <property role="3yLZsk" value="../../vcs-git/lib/git4idea.jar" />
+              <property role="3yLZsk" value="../../vcs-git/lib/vcs-git.jar" />
               <node concept="398BVA" id="GF9IugYBPZ" role="3yLZsn">
                 <ref role="398BVh" node="6ifcnI8$2ke" resolve="mps_home" />
                 <node concept="2Ry0Ak" id="GF9IugYBQ5" role="iGT6I">
@@ -49429,7 +49429,7 @@
           <node concept="L2wRC" id="5lGJ4TaEMfC" role="39821P">
             <ref role="L2wRA" node="5lGJ4Tajp1p" resolve="jetbrains.mps.migration.component" />
             <node concept="3yLZsm" id="5lGJ4TaGkU1" role="3yL2VB">
-              <property role="3yLZsk" value="../lib/migration-platorm.jar" />
+              <property role="3yLZsk" value="../lib/migration-platform.jar" />
               <node concept="398BVA" id="5lGJ4TaGkUF" role="3yLZsn">
                 <ref role="398BVh" node="77ZqjhZbMDY" resolve="mps_home" />
                 <node concept="2Ry0Ak" id="5lGJ4TaGkW$" role="iGT6I">

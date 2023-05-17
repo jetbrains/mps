@@ -137,7 +137,7 @@
           <language id="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" />
           <language id="l:c7fb639f-be78-4307-89b0-b5959c3fa8c8:jetbrains.mps.lang.text" />
         </uses>
-        <library jar="../lib/migration-platorm.jar" />
+        <library jar="../lib/migration-platform.jar" />
         <sources jar="jetbrains.mps.migration.component-src.jar" descriptor="jetbrains.mps.migration.component.msd" />
       </module>
     </echoxml>
