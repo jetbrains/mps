@@ -23,8 +23,7 @@ import java.util.HashSet;
 import jetbrains.mps.lang.dataFlow.framework.analyzers.InitializedVariablesAnalyzer;
 import jetbrains.mps.lang.dataFlow.framework.analyzers.MayBeInitializedVariablesAnalyzer;
 import jetbrains.mps.lang.dataFlow.framework.analyzers.LivenessAnalyzer;
-import jetbrains.mps.lang.dataFlow.framework.instructions.IfJumpInstruction;
-import jetbrains.mps.lang.dataFlow.framework.instructions.JumpInstruction;
+import jetbrains.mps.lang.dataFlow.framework.instructions.AbstractJumpInstruction;
 
 @GeneratedClass(node = "r:3dddb2c7-b2ba-4381-896a-2e702ca1fb6e(jetbrains.mps.lang.dataFlow.framework)/4074113095384029388", model = "r:3dddb2c7-b2ba-4381-896a-2e702ca1fb6e(jetbrains.mps.lang.dataFlow.framework)")
 public class Program {
@@ -353,8 +352,8 @@ public class Program {
   }
   public void updateJumpsOnInsert(int position, boolean before) {
     for (Instruction i : myInstructions) {
-      if (i instanceof IfJumpInstruction) {
-        IfJumpInstruction ifJump = ((IfJumpInstruction) i);
+      if (i instanceof AbstractJumpInstruction) {
+        AbstractJumpInstruction ifJump = ((AbstractJumpInstruction) i);
         int jumpTo = ifJump.getJumpTo();
         if (jumpTo > position) {
           ifJump.setJumpTo(jumpTo + 1);
@@ -364,21 +363,6 @@ public class Program {
             ifJump.updateJumps(jumpTo + 1);
           } else {
             ifJump.setJumpTo(jumpTo + 1);
-          }
-        }
-      } else
-      if (i instanceof JumpInstruction) {
-        JumpInstruction jump = ((JumpInstruction) i);
-        int jumpTo = jump.getJumpTo();
-        if (jumpTo > position) {
-          jump.setJumpTo(jumpTo + 1);
-        } else
-        if (jumpTo == position) {
-          jump.updateJumps(jumpTo + 1);
-          if (before) {
-            jump.updateJumps(jumpTo + 1);
-          } else {
-            jump.setJumpTo(jumpTo + 1);
           }
         }
       }

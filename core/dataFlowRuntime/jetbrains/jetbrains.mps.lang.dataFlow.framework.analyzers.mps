@@ -15,7 +15,6 @@
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
-      <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1219920932475" name="jetbrains.mps.baseLanguage.structure.VariableArityType" flags="in" index="8X2XB">
         <child id="1219921048460" name="componentType" index="8Xvag" />
       </concept>
@@ -491,22 +490,12 @@
           </node>
         </node>
         <node concept="3clFbJ" id="3yaa4ph8twP" role="3cqZAp">
-          <node concept="22lmx$" id="3yaa4ph8twQ" role="3clFbw">
-            <node concept="2ZW3vV" id="3yaa4ph8twT" role="3uHU7B">
-              <node concept="37vLTw" id="3yaa4ph8twR" role="2ZW6bz">
-                <ref role="3cqZAo" node="3yaa4ph8twk" resolve="instruction" />
-              </node>
-              <node concept="3uibUv" id="3yaa4ph8twS" role="2ZW6by">
-                <ref role="3uigEE" to="9fia:3yaa4ph8uPR" resolve="JumpInstruction" />
-              </node>
+          <node concept="2ZW3vV" id="3yaa4ph8twT" role="3clFbw">
+            <node concept="37vLTw" id="3yaa4ph8twR" role="2ZW6bz">
+              <ref role="3cqZAo" node="3yaa4ph8twk" resolve="instruction" />
             </node>
-            <node concept="2ZW3vV" id="3yaa4ph8twW" role="3uHU7w">
-              <node concept="37vLTw" id="3yaa4ph8twU" role="2ZW6bz">
-                <ref role="3cqZAo" node="3yaa4ph8twk" resolve="instruction" />
-              </node>
-              <node concept="3uibUv" id="3yaa4ph8twV" role="2ZW6by">
-                <ref role="3uigEE" to="9fia:3yaa4ph8uJT" resolve="IfJumpInstruction" />
-              </node>
+            <node concept="3uibUv" id="3yaa4ph8twS" role="2ZW6by">
+              <ref role="3uigEE" to="9fia:3G6nPQbN2N6" resolve="AbstractJumpInstruction" />
             </node>
           </node>
           <node concept="3clFbS" id="3yaa4ph8twY" role="3clFbx">
@@ -515,64 +504,19 @@
                 <property role="3TUv4t" value="true" />
                 <property role="TrG5h" value="to" />
                 <node concept="10Oyi0" id="3yaa4ph8tx1" role="1tU5fm" />
-              </node>
-            </node>
-            <node concept="3clFbJ" id="3yaa4ph8tx2" role="3cqZAp">
-              <node concept="2ZW3vV" id="3yaa4ph8tx5" role="3clFbw">
-                <node concept="37vLTw" id="3yaa4ph8tx3" role="2ZW6bz">
-                  <ref role="3cqZAo" node="3yaa4ph8twk" resolve="instruction" />
-                </node>
-                <node concept="3uibUv" id="3yaa4ph8tx4" role="2ZW6by">
-                  <ref role="3uigEE" to="9fia:3yaa4ph8uPR" resolve="JumpInstruction" />
-                </node>
-              </node>
-              <node concept="9aQIb" id="3yaa4ph8txg" role="9aQIa">
-                <node concept="3clFbS" id="3yaa4ph8txh" role="9aQI4">
-                  <node concept="3clFbF" id="3yaa4ph8txi" role="3cqZAp">
-                    <node concept="37vLTI" id="3yaa4ph8txj" role="3clFbG">
-                      <node concept="37vLTw" id="3yaa4ph8txk" role="37vLTJ">
-                        <ref role="3cqZAo" node="3yaa4ph8twZ" resolve="to" />
+                <node concept="2OqwBi" id="3G6nPQbZ3Ow" role="33vP2m">
+                  <node concept="1eOMI4" id="3G6nPQbZ3Ox" role="2Oq$k0">
+                    <node concept="10QFUN" id="3G6nPQbZ3Oy" role="1eOMHV">
+                      <node concept="37vLTw" id="3G6nPQbZ3Oz" role="10QFUP">
+                        <ref role="3cqZAo" node="3yaa4ph8twk" resolve="instruction" />
                       </node>
-                      <node concept="2OqwBi" id="3yaa4ph8zmm" role="37vLTx">
-                        <node concept="1eOMI4" id="3yaa4ph8txp" role="2Oq$k0">
-                          <node concept="10QFUN" id="3yaa4ph8txm" role="1eOMHV">
-                            <node concept="37vLTw" id="3yaa4ph8txn" role="10QFUP">
-                              <ref role="3cqZAo" node="3yaa4ph8twk" resolve="instruction" />
-                            </node>
-                            <node concept="3uibUv" id="3yaa4ph8txo" role="10QFUM">
-                              <ref role="3uigEE" to="9fia:3yaa4ph8uJT" resolve="IfJumpInstruction" />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="liA8E" id="3yaa4ph8zmn" role="2OqNvi">
-                          <ref role="37wK5l" to="9fia:3yaa4ph8uKc" resolve="getJumpTo" />
-                        </node>
+                      <node concept="3uibUv" id="3G6nPQbZ3O$" role="10QFUM">
+                        <ref role="3uigEE" to="9fia:3G6nPQbN2N6" resolve="AbstractJumpInstruction" />
                       </node>
                     </node>
                   </node>
-                </node>
-              </node>
-              <node concept="3clFbS" id="3yaa4ph8tx7" role="3clFbx">
-                <node concept="3clFbF" id="3yaa4ph8tx8" role="3cqZAp">
-                  <node concept="37vLTI" id="3yaa4ph8tx9" role="3clFbG">
-                    <node concept="37vLTw" id="3yaa4ph8txa" role="37vLTJ">
-                      <ref role="3cqZAo" node="3yaa4ph8twZ" resolve="to" />
-                    </node>
-                    <node concept="2OqwBi" id="3yaa4ph8zmz" role="37vLTx">
-                      <node concept="1eOMI4" id="3yaa4ph8txf" role="2Oq$k0">
-                        <node concept="10QFUN" id="3yaa4ph8txc" role="1eOMHV">
-                          <node concept="37vLTw" id="3yaa4ph8txd" role="10QFUP">
-                            <ref role="3cqZAo" node="3yaa4ph8twk" resolve="instruction" />
-                          </node>
-                          <node concept="3uibUv" id="3yaa4ph8txe" role="10QFUM">
-                            <ref role="3uigEE" to="9fia:3yaa4ph8uPR" resolve="JumpInstruction" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="liA8E" id="3yaa4ph8zm$" role="2OqNvi">
-                        <ref role="37wK5l" to="9fia:3yaa4ph8uQa" resolve="getJumpTo" />
-                      </node>
-                    </node>
+                  <node concept="liA8E" id="3G6nPQbZ3O_" role="2OqNvi">
+                    <ref role="37wK5l" to="9fia:3yaa4ph8uQa" resolve="getJumpTo" />
                   </node>
                 </node>
               </node>

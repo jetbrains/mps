@@ -13,8 +13,7 @@ import jetbrains.mps.lang.dataFlow.framework.Program;
 import java.util.List;
 import jetbrains.mps.lang.dataFlow.framework.ProgramState;
 import jetbrains.mps.lang.dataFlow.framework.instructions.WriteInstruction;
-import jetbrains.mps.lang.dataFlow.framework.instructions.JumpInstruction;
-import jetbrains.mps.lang.dataFlow.framework.instructions.IfJumpInstruction;
+import jetbrains.mps.lang.dataFlow.framework.instructions.AbstractJumpInstruction;
 import jetbrains.mps.lang.dataFlow.framework.AnalysisDirection;
 
 @GeneratedClass(node = "r:f076de5c-ea08-4e23-95cb-3ac8654d592e(jetbrains.mps.lang.dataFlow.framework.analyzers)/4074113095384029126", model = "r:f076de5c-ea08-4e23-95cb-3ac8654d592e(jetbrains.mps.lang.dataFlow.framework.analyzers)")
@@ -50,13 +49,8 @@ public class MayBeInitializedVariablesAnalyzer implements DataFlowAnalyzer<VarSe
       WriteInstruction write = (WriteInstruction) instruction;
       result.add(write.getVariableIndex());
     }
-    if (instruction instanceof JumpInstruction || instruction instanceof IfJumpInstruction) {
-      final int to;
-      if (instruction instanceof JumpInstruction) {
-        to = ((JumpInstruction) instruction).getJumpTo();
-      } else {
-        to = ((IfJumpInstruction) instruction).getJumpTo();
-      }
+    if (instruction instanceof AbstractJumpInstruction) {
+      final int to = ((AbstractJumpInstruction) instruction).getJumpTo();
       final int current = s.getInstruction().getIndex();
       if (to < current) {
         // jumping backwards

@@ -13,8 +13,7 @@ import jetbrains.mps.lang.dataFlow.framework.Program;
 import jetbrains.mps.lang.dataFlow.DataFlow;
 import java.util.List;
 import jetbrains.mps.lang.dataFlow.framework.instructions.Instruction;
-import jetbrains.mps.lang.dataFlow.framework.instructions.JumpInstruction;
-import jetbrains.mps.lang.dataFlow.framework.instructions.IfJumpInstruction;
+import jetbrains.mps.lang.dataFlow.framework.instructions.AbstractJumpInstruction;
 import jetbrains.mps.lang.dataFlow.framework.instructions.RetInstruction;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -40,7 +39,7 @@ public class check_Expression_NonTypesystemRule extends AbstractNonTypesystemRul
           int endInstructionIndex = instructions.size() - 1;
 
           for (Instruction instruction : instructions) {
-            if ((instruction instanceof JumpInstruction && ((JumpInstruction) instruction).getJumpTo() == endInstructionIndex) || (instruction instanceof IfJumpInstruction && ((IfJumpInstruction) instruction).getJumpTo() == endInstructionIndex) || instruction instanceof RetInstruction) {
+            if ((instruction instanceof AbstractJumpInstruction && ((AbstractJumpInstruction) instruction).getJumpTo() == endInstructionIndex) || instruction instanceof RetInstruction) {
               isInfiniteLoop = false;
               break;
             }

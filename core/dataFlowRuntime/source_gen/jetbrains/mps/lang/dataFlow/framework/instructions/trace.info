@@ -10,11 +10,12 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root nodeRef="r:48cf50db-7ea3-4b1e-ab16-c3d84cbcf0df(jetbrains.mps.lang.dataFlow.framework.instructions)/4074113095384028753">
     <file name="NopInstruction.java">
-      <node id="4074113095384044439" at="12,51,13,29" concept="11" />
+      <node id="4074113095384044439" at="12,51,13,29" concept="12" />
       <node id="4074113095384028771" at="18,39,19,17" concept="9" />
       <node id="4074113095384028756" at="9,0,11,0" concept="2" trace="NopInstruction#()V" />
       <node id="4074113095384028760" at="12,0,15,0" concept="2" trace="NopInstruction#(Ljava/lang/String;)V" />
@@ -32,8 +33,8 @@
   </root>
   <root nodeRef="r:48cf50db-7ea3-4b1e-ab16-c3d84cbcf0df(jetbrains.mps.lang.dataFlow.framework.instructions)/4074113095384029363">
     <file name="TryInstruction.java">
-      <node id="4074113095384045272" at="10,27,11,12" concept="11" />
-      <node id="4074113095384045273" at="14,51,15,29" concept="11" />
+      <node id="4074113095384045272" at="10,27,11,12" concept="12" />
+      <node id="4074113095384045273" at="14,51,15,29" concept="12" />
       <node id="4074113095384029382" at="19,39,20,17" concept="9" />
       <node id="4074113095384029366" at="10,0,13,0" concept="2" trace="TryInstruction#()V" />
       <node id="4074113095384029371" at="14,0,17,0" concept="2" trace="TryInstruction#(Ljava/lang/String;)V" />
@@ -135,7 +136,7 @@
       <node id="4074113095384030746" at="56,0,65,0" concept="7" trace="buildCaches#()V" />
       <node id="4074113095384030788" at="68,0,78,0" concept="7" trace="succ#()Ljava/util/Set;" />
       <node id="4074113095384030826" at="78,0,88,0" concept="7" trace="pred#()Ljava/util/Set;" />
-      <node id="4074113095384031042" at="140,0,150,0" concept="10" trace="presentationOf#(Ljava/lang/Object;)Ljava/lang/String;" />
+      <node id="4074113095384031042" at="140,0,150,0" concept="11" trace="presentationOf#(Ljava/lang/Object;)Ljava/lang/String;" />
       <node id="4074113095384030887" at="93,0,106,0" concept="7" trace="pred#(Ljetbrains/mps/lang/dataFlow/framework/ProgramState;)Ljava/util/List;" />
       <scope id="4074113095384030669" at="27,24,27,24" />
       <scope id="4074113095384030675" at="29,48,30,40" />
@@ -265,7 +266,7 @@
   </root>
   <root nodeRef="r:48cf50db-7ea3-4b1e-ab16-c3d84cbcf0df(jetbrains.mps.lang.dataFlow.framework.instructions)/4074113095384031920">
     <file name="RetInstruction.java">
-      <node id="4074113095384044180" at="15,51,16,29" concept="11" />
+      <node id="4074113095384044180" at="15,51,16,29" concept="12" />
       <node id="4074113095384031941" at="19,50,20,50" concept="8" />
       <node id="4074113095384031946" at="20,50,21,59" concept="8" />
       <node id="4074113095384031955" at="22,28,23,64" concept="3" />
@@ -376,7 +377,7 @@
       <node id="4074113095384032173" at="13,0,14,0" concept="4" trace="myInfo" />
       <node id="4074113095384032177" at="14,0,15,0" concept="4" trace="myReturns" />
       <node id="4074113095384032183" at="15,0,16,0" concept="4" trace="myChildTryFinallies" />
-      <node id="4074113095384044230" at="18,55,19,29" concept="11" />
+      <node id="4074113095384044230" at="18,55,19,29" concept="12" />
       <node id="4074113095384032204" at="22,39,23,21" concept="9" />
       <node id="4074113095384032211" at="26,29,27,24" concept="3" />
       <node id="4074113095384032222" at="29,38,30,22" concept="3" />
@@ -460,7 +461,7 @@
     <file name="EndTryInstruction.java">
       <node id="4074113095384032364" at="13,0,14,0" concept="4" trace="myInfo" />
       <node id="4074113095384032368" at="14,0,15,0" concept="4" trace="myReturns" />
-      <node id="4074113095384045074" at="17,54,18,29" concept="11" />
+      <node id="4074113095384045074" at="17,54,18,29" concept="12" />
       <node id="4074113095384032389" at="21,39,22,20" concept="9" />
       <node id="4074113095384032396" at="25,29,26,24" concept="3" />
       <node id="4074113095384032407" at="28,37,29,22" concept="3" />
@@ -562,7 +563,7 @@
       <node id="4074113095384034037" at="11,0,12,0" concept="4" trace="myVariableIndex" />
       <node id="4074113095384034046" at="12,38,13,16" concept="3" />
       <node id="4074113095384034050" at="13,16,14,48" concept="3" />
-      <node id="4074113095384045275" at="16,64,17,29" concept="11" />
+      <node id="4074113095384045275" at="16,64,17,29" concept="12" />
       <node id="4074113095384034063" at="17,29,18,16" concept="3" />
       <node id="4074113095384034067" at="18,16,19,48" concept="3" />
       <node id="4074113095384034077" at="21,31,22,17" concept="9" />
@@ -600,8 +601,8 @@
     <file name="EndInstruction.java">
       <node id="4074113095384034149" at="15,0,16,0" concept="4" trace="myReturns" />
       <node id="4074113095384034155" at="16,0,17,0" concept="4" trace="myRootTryFinallies" />
-      <node id="4074113095384044939" at="17,27,18,12" concept="11" />
-      <node id="4074113095384044940" at="20,51,21,29" concept="11" />
+      <node id="4074113095384044939" at="17,27,18,12" concept="12" />
+      <node id="4074113095384044940" at="20,51,21,29" concept="12" />
       <node id="4074113095384034177" at="24,39,25,17" concept="9" />
       <node id="4074113095384034184" at="28,29,29,24" concept="3" />
       <node id="4074113095384034195" at="31,40,32,42" concept="3" />
@@ -672,59 +673,30 @@
   </root>
   <root nodeRef="r:48cf50db-7ea3-4b1e-ab16-c3d84cbcf0df(jetbrains.mps.lang.dataFlow.framework.instructions)/4074113095384034297">
     <file name="IfJumpInstruction.java">
-      <node id="4074113095384034300" at="12,0,13,0" concept="4" trace="myJumpTo" />
-      <node id="4074113095384044471" at="15,54,16,29" concept="11" />
-      <node id="4074113095384034318" at="18,26,19,20" concept="9" />
-      <node id="4074113095384034326" at="21,37,22,22" concept="3" />
-      <node id="4074113095384034336" at="24,39,25,46" concept="3" />
-      <node id="4074113095384034342" at="25,46,26,45" concept="3" />
-      <node id="4074113095384034354" at="28,75,29,38" concept="3" />
-      <node id="4074113095384034363" at="32,29,33,24" concept="3" />
-      <node id="4074113095384034365" at="33,24,34,45" concept="3" />
-      <node id="4074113095384034379" at="37,50,38,46" concept="8" />
-      <node id="4074113095384034384" at="38,46,39,79" concept="3" />
-      <node id="4074113095384034391" at="39,79,40,18" concept="9" />
-      <node id="4074113095384034399" at="43,39,44,32" concept="9" />
-      <node id="4074113095384034304" at="13,0,15,0" concept="2" trace="IfJumpInstruction#()V" />
-      <node id="4074113095384034308" at="15,0,18,0" concept="2" trace="IfJumpInstruction#(Ljava/lang/String;)V" />
-      <node id="4074113095384034316" at="18,0,21,0" concept="7" trace="getJumpTo#()I" />
-      <node id="4074113095384034322" at="21,0,24,0" concept="7" trace="setJumpTo#(I)V" />
-      <node id="4074113095384034350" at="28,0,31,0" concept="7" trace="setJumpTo#(Ljetbrains/mps/lang/dataFlow/framework/StructuralProgramBuilder/Position;)V" />
-      <node id="4074113095384034332" at="24,0,28,0" concept="7" trace="updateJumps#(I)V" />
-      <node id="4074113095384034396" at="42,0,46,0" concept="7" trace="commandPresentation#()Ljava/lang/String;" />
-      <node id="4074113095384034360" at="31,0,36,0" concept="7" trace="buildCaches#()V" />
-      <node id="4074113095384034373" at="36,0,42,0" concept="7" trace="succ#(Ljetbrains/mps/lang/dataFlow/framework/ProgramState;)Ljava/util/List;" />
-      <scope id="4074113095384034306" at="13,30,13,30" />
-      <scope id="4074113095384034312" at="15,54,16,29" />
-      <scope id="4074113095384034317" at="18,26,19,20" />
-      <scope id="4074113095384034325" at="21,37,22,22" />
-      <scope id="4074113095384034353" at="28,75,29,38" />
-      <scope id="4074113095384034398" at="43,39,44,32" />
-      <scope id="4074113095384034304" at="13,0,15,0" />
-      <scope id="4074113095384034335" at="24,39,26,45" />
-      <scope id="4074113095384034362" at="32,29,34,45" />
-      <scope id="4074113095384034308" at="15,0,18,0">
+      <node id="4074113095384044471" at="13,54,14,29" concept="12" />
+      <node id="4074113095384034379" at="17,50,18,46" concept="8" />
+      <node id="4074113095384034384" at="18,46,19,79" concept="3" />
+      <node id="4074113095384034391" at="19,79,20,18" concept="9" />
+      <node id="4074113095384034399" at="23,39,24,32" concept="9" />
+      <node id="4074113095384034304" at="11,0,13,0" concept="2" trace="IfJumpInstruction#()V" />
+      <node id="4074113095384034308" at="13,0,16,0" concept="2" trace="IfJumpInstruction#(Ljava/lang/String;)V" />
+      <node id="4074113095384034396" at="22,0,26,0" concept="7" trace="commandPresentation#()Ljava/lang/String;" />
+      <node id="4074113095384034373" at="16,0,22,0" concept="7" trace="succ#(Ljetbrains/mps/lang/dataFlow/framework/ProgramState;)Ljava/util/List;" />
+      <scope id="4074113095384034306" at="11,30,11,30" />
+      <scope id="4074113095384034312" at="13,54,14,29" />
+      <scope id="4074113095384034398" at="23,39,24,32" />
+      <scope id="4074113095384034304" at="11,0,13,0" />
+      <scope id="4074113095384034308" at="13,0,16,0">
         <var name="ruleNodeReference" id="4074113095384034310" />
       </scope>
-      <scope id="4074113095384034316" at="18,0,21,0" />
-      <scope id="4074113095384034322" at="21,0,24,0">
-        <var name="jumpTo" id="4074113095384034323" />
-      </scope>
-      <scope id="4074113095384034350" at="28,0,31,0">
-        <var name="position" id="4074113095384034351" />
-      </scope>
-      <scope id="4074113095384034377" at="37,50,40,18">
+      <scope id="4074113095384034377" at="17,50,20,18">
         <var name="result" id="4074113095384034378" />
       </scope>
-      <scope id="4074113095384034332" at="24,0,28,0">
-        <var name="jumpTo" id="4074113095384034333" />
-      </scope>
-      <scope id="4074113095384034396" at="42,0,46,0" />
-      <scope id="4074113095384034360" at="31,0,36,0" />
-      <scope id="4074113095384034373" at="36,0,42,0">
+      <scope id="4074113095384034396" at="22,0,26,0" />
+      <scope id="4074113095384034373" at="16,0,22,0">
         <var name="s" id="4074113095384034375" />
       </scope>
-      <unit id="4074113095384034297" at="10,0,47,0" name="jetbrains.mps.lang.dataFlow.framework.instructions.IfJumpInstruction" />
+      <unit id="4074113095384034297" at="9,0,27,0" name="jetbrains.mps.lang.dataFlow.framework.instructions.IfJumpInstruction" />
     </file>
   </root>
   <root nodeRef="r:48cf50db-7ea3-4b1e-ab16-c3d84cbcf0df(jetbrains.mps.lang.dataFlow.framework.instructions)/4074113095384034410">
@@ -752,7 +724,7 @@
       <node id="4074113095384034465" at="13,53,14,16" concept="3" />
       <node id="4074113095384034469" at="14,16,15,48" concept="3" />
       <node id="4074113095384034474" at="15,48,16,20" concept="3" />
-      <node id="4074113095384044441" at="18,79,19,29" concept="11" />
+      <node id="4074113095384044441" at="18,79,19,29" concept="12" />
       <node id="4074113095384034488" at="19,29,20,16" concept="3" />
       <node id="4074113095384034492" at="20,16,21,48" concept="3" />
       <node id="4074113095384034497" at="21,48,22,20" concept="3" />
@@ -795,59 +767,74 @@
   </root>
   <root nodeRef="r:48cf50db-7ea3-4b1e-ab16-c3d84cbcf0df(jetbrains.mps.lang.dataFlow.framework.instructions)/4074113095384034679">
     <file name="JumpInstruction.java">
-      <node id="4074113095384034682" at="13,0,14,0" concept="4" trace="myJumpTo" />
-      <node id="4074113095384044047" at="16,52,17,29" concept="11" />
-      <node id="4074113095384034700" at="19,26,20,20" concept="9" />
-      <node id="4074113095384034708" at="22,37,23,22" concept="3" />
-      <node id="4074113095384034718" at="25,39,26,46" concept="3" />
-      <node id="4074113095384034724" at="26,46,27,45" concept="3" />
-      <node id="4074113095384034736" at="29,75,30,38" concept="3" />
-      <node id="4074113095384034745" at="33,29,34,24" concept="3" />
-      <node id="4074113095384034747" at="34,24,35,45" concept="3" />
-      <node id="4074113095384034761" at="38,50,39,50" concept="8" />
-      <node id="4074113095384034765" at="39,50,40,79" concept="3" />
-      <node id="4074113095384034772" at="40,79,41,18" concept="9" />
-      <node id="4074113095384034780" at="44,39,45,30" concept="9" />
-      <node id="4074113095384034686" at="14,0,16,0" concept="2" trace="JumpInstruction#()V" />
-      <node id="4074113095384034690" at="16,0,19,0" concept="2" trace="JumpInstruction#(Ljava/lang/String;)V" />
-      <node id="4074113095384034698" at="19,0,22,0" concept="7" trace="getJumpTo#()I" />
-      <node id="4074113095384034704" at="22,0,25,0" concept="7" trace="setJumpTo#(I)V" />
-      <node id="4074113095384034732" at="29,0,32,0" concept="7" trace="setJumpTo#(Ljetbrains/mps/lang/dataFlow/framework/StructuralProgramBuilder/Position;)V" />
-      <node id="4074113095384034714" at="25,0,29,0" concept="7" trace="updateJumps#(I)V" />
-      <node id="4074113095384034777" at="43,0,47,0" concept="7" trace="commandPresentation#()Ljava/lang/String;" />
-      <node id="4074113095384034742" at="32,0,37,0" concept="7" trace="buildCaches#()V" />
-      <node id="4074113095384034755" at="37,0,43,0" concept="7" trace="succ#(Ljetbrains/mps/lang/dataFlow/framework/ProgramState;)Ljava/util/List;" />
-      <scope id="4074113095384034688" at="14,28,14,28" />
-      <scope id="4074113095384034694" at="16,52,17,29" />
-      <scope id="4074113095384034699" at="19,26,20,20" />
-      <scope id="4074113095384034707" at="22,37,23,22" />
-      <scope id="4074113095384034735" at="29,75,30,38" />
-      <scope id="4074113095384034779" at="44,39,45,30" />
-      <scope id="4074113095384034686" at="14,0,16,0" />
-      <scope id="4074113095384034717" at="25,39,27,45" />
-      <scope id="4074113095384034744" at="33,29,35,45" />
-      <scope id="4074113095384034690" at="16,0,19,0">
+      <node id="4074113095384044047" at="14,52,15,29" concept="12" />
+      <node id="4253191753483437589" at="18,50,19,56" concept="10" />
+      <node id="4074113095384034761" at="19,56,20,50" concept="8" />
+      <node id="4074113095384034765" at="20,50,21,79" concept="3" />
+      <node id="4074113095384034772" at="21,79,22,18" concept="9" />
+      <node id="4074113095384034780" at="25,39,26,30" concept="9" />
+      <node id="4074113095384034686" at="12,0,14,0" concept="2" trace="JumpInstruction#()V" />
+      <node id="4074113095384034690" at="14,0,17,0" concept="2" trace="JumpInstruction#(Ljava/lang/String;)V" />
+      <node id="4074113095384034777" at="24,0,28,0" concept="7" trace="commandPresentation#()Ljava/lang/String;" />
+      <node id="4074113095384034755" at="17,0,24,0" concept="7" trace="succ#(Ljetbrains/mps/lang/dataFlow/framework/ProgramState;)Ljava/util/List;" />
+      <scope id="4074113095384034688" at="12,28,12,28" />
+      <scope id="4074113095384034694" at="14,52,15,29" />
+      <scope id="4074113095384034779" at="25,39,26,30" />
+      <scope id="4074113095384034686" at="12,0,14,0" />
+      <scope id="4074113095384034690" at="14,0,17,0">
         <var name="ruleNodeReference" id="4074113095384034692" />
       </scope>
-      <scope id="4074113095384034698" at="19,0,22,0" />
-      <scope id="4074113095384034704" at="22,0,25,0">
-        <var name="jumpTo" id="4074113095384034705" />
-      </scope>
-      <scope id="4074113095384034732" at="29,0,32,0">
-        <var name="position" id="4074113095384034733" />
-      </scope>
-      <scope id="4074113095384034759" at="38,50,41,18">
+      <scope id="4074113095384034759" at="18,50,22,18">
         <var name="result" id="4074113095384034760" />
       </scope>
-      <scope id="4074113095384034714" at="25,0,29,0">
-        <var name="jumpTo" id="4074113095384034715" />
-      </scope>
-      <scope id="4074113095384034777" at="43,0,47,0" />
-      <scope id="4074113095384034742" at="32,0,37,0" />
-      <scope id="4074113095384034755" at="37,0,43,0">
+      <scope id="4074113095384034777" at="24,0,28,0" />
+      <scope id="4074113095384034755" at="17,0,24,0">
         <var name="s" id="4074113095384034757" />
       </scope>
-      <unit id="4074113095384034679" at="11,0,48,0" name="jetbrains.mps.lang.dataFlow.framework.instructions.JumpInstruction" />
+      <unit id="4074113095384034679" at="10,0,29,0" name="jetbrains.mps.lang.dataFlow.framework.instructions.JumpInstruction" />
+    </file>
+  </root>
+  <root nodeRef="r:48cf50db-7ea3-4b1e-ab16-c3d84cbcf0df(jetbrains.mps.lang.dataFlow.framework.instructions)/4253191753480023238">
+    <file name="AbstractJumpInstruction.java">
+      <node id="4253191753481277173" at="10,0,11,0" concept="4" trace="myJumpTo" />
+      <node id="4253191753481277253" at="13,60,14,29" concept="12" />
+      <node id="4074113095384034700" at="16,26,17,20" concept="9" />
+      <node id="4074113095384034708" at="19,37,20,22" concept="3" />
+      <node id="4074113095384034718" at="22,39,23,46" concept="3" />
+      <node id="4074113095384034724" at="23,46,24,45" concept="3" />
+      <node id="4074113095384034736" at="26,75,27,38" concept="3" />
+      <node id="4074113095384034745" at="30,29,31,24" concept="3" />
+      <node id="4074113095384034747" at="31,24,32,45" concept="3" />
+      <node id="4253191753481277167" at="11,0,13,0" concept="2" trace="AbstractJumpInstruction#()V" />
+      <node id="4253191753481277277" at="13,0,16,0" concept="2" trace="AbstractJumpInstruction#(Ljava/lang/String;)V" />
+      <node id="4074113095384034698" at="16,0,19,0" concept="7" trace="getJumpTo#()I" />
+      <node id="4074113095384034704" at="19,0,22,0" concept="7" trace="setJumpTo#(I)V" />
+      <node id="4074113095384034732" at="26,0,29,0" concept="7" trace="setJumpTo#(Ljetbrains/mps/lang/dataFlow/framework/StructuralProgramBuilder/Position;)V" />
+      <node id="4074113095384034714" at="22,0,26,0" concept="7" trace="updateJumps#(I)V" />
+      <node id="4074113095384034742" at="29,0,34,0" concept="7" trace="buildCaches#()V" />
+      <scope id="4253191753481277273" at="11,36,11,36" />
+      <scope id="4253191753481277269" at="13,60,14,29" />
+      <scope id="4074113095384034699" at="16,26,17,20" />
+      <scope id="4074113095384034707" at="19,37,20,22" />
+      <scope id="4074113095384034735" at="26,75,27,38" />
+      <scope id="4253191753481277167" at="11,0,13,0" />
+      <scope id="4074113095384034717" at="22,39,24,45" />
+      <scope id="4074113095384034744" at="30,29,32,45" />
+      <scope id="4253191753481277277" at="13,0,16,0">
+        <var name="ruleNodeReference" id="4253191753481277267" />
+      </scope>
+      <scope id="4074113095384034698" at="16,0,19,0" />
+      <scope id="4074113095384034704" at="19,0,22,0">
+        <var name="jumpTo" id="4074113095384034705" />
+      </scope>
+      <scope id="4074113095384034732" at="26,0,29,0">
+        <var name="position" id="4074113095384034733" />
+      </scope>
+      <scope id="4074113095384034714" at="22,0,26,0">
+        <var name="jumpTo" id="4074113095384034715" />
+      </scope>
+      <scope id="4074113095384034742" at="29,0,34,0" />
+      <unit id="4253191753480023238" at="8,0,35,0" name="jetbrains.mps.lang.dataFlow.framework.instructions.AbstractJumpInstruction" />
     </file>
   </root>
 </debug-info>
