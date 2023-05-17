@@ -27,27 +27,26 @@
     </modelRoot>
   </models>
   <facets>
-    <facet type="java" compile="ext" classes="provided" ext="no"/>
-  </facets>
-  <stubModelEntries>
-    <stubModelEntry path="${mps_home}/lib/mps-core.jar" />
-    <stubModelEntry path="${mps_home}/lib/mps-logging.jar" />
-    <stubModelEntry path="${mps_home}/lib/mps-messaging.jar" />
-    <stubModelEntry path="${mps_home}/lib/mps-boot-util.jar" />
-    <stubModelEntry path="${mps_home}/lib/mps-project-check.jar" />
+    <facet type="java" compile="ext" classes="provided" ext="no">
+      <library location="${mps_home}/lib/mps-core.jar" />
+      <library location="${mps_home}/lib/mps-logging.jar" />
+      <library location="${mps_home}/lib/mps-messaging.jar" />
+      <library location="${mps_home}/lib/mps-boot-util.jar" />
+      <library location="${mps_home}/lib/mps-project-check.jar" />
 
-    <!-- shall extract next out of MPS.Core -->
-    <stubModelEntry path="${mps_home}/lib/mps-persistence.jar" />
-    <!-- moreover, next are exposed through respective solutions, do we need them in MPS.Core? mps-core code does depend from runtime classes, but do we need to manifest this as java libs of MPS.Core-->
-    <stubModelEntry path="${mps_home}/lib/mps-closures.jar" />
-    <stubModelEntry path="${mps_home}/lib/mps-collections.jar" />
-    <stubModelEntry path="${mps_home}/lib/mps-tuples.jar" />
-    <!-- Some code expects MPS.Core to provide next libraries as classpath. Don't want to add guava, xstream, asm-all unless have to do so-->
-    <stubModelEntry path="${platform_lib}/util.jar" />
-    <stubModelEntry path="${platform_lib}/util-8.jar" />
-    <stubModelEntry path="${platform_lib}/util_rt.jar" />
-    <stubModelEntry path="${platform_lib}/3rd-party-rt.jar" />
-  </stubModelEntries>
+      <!-- shall extract next out of MPS.Core -->
+      <library location="${mps_home}/lib/mps-persistence.jar" />
+      <!-- moreover, next are exposed through respective solutions, do we need them in MPS.Core? mps-core code does depend from runtime classes, but do we need to manifest this as java libs of MPS.Core-->
+      <library location="${mps_home}/lib/mps-closures.jar" />
+      <library location="${mps_home}/lib/mps-collections.jar" />
+      <library location="${mps_home}/lib/mps-tuples.jar" />
+      <!-- Some code expects MPS.Core to provide next libraries as classpath. Don't want to add guava, xstream, asm-all unless have to do so-->
+      <library location="${platform_lib}/util.jar" />
+      <library location="${platform_lib}/util-8.jar" />
+      <library location="${platform_lib}/util_rt.jar" />
+      <library location="${platform_lib}/3rd-party-rt.jar" />
+    </facet>
+  </facets>
   <sourcePath />
   <dependencies>
     <dependency reexport="true">6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)</dependency>

@@ -4622,7 +4622,7 @@
                           <node concept="liA8E" id="3xFN89FFZwD" role="2OqNvi">
                             <ref role="37wK5l" to="33ny:~Collection.addAll(java.util.Collection)" resolve="addAll" />
                             <node concept="37vLTw" id="3xFN89FG1A6" role="37wK5m">
-                              <ref role="3cqZAo" node="2wNMEwGdiXa" resolve="roots" />
+                              <ref role="3cqZAo" node="2wNMEwGdiXa" resolve="javaLibs" />
                             </node>
                           </node>
                         </node>
@@ -4640,7 +4640,7 @@
                             <node concept="2OqwBi" id="3xFN89FGjs$" role="37wK5m">
                               <node concept="2OqwBi" id="3xFN89FG4cn" role="2Oq$k0">
                                 <node concept="37vLTw" id="3GM_nagTzB7" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="2wNMEwGdiXa" resolve="roots" />
+                                  <ref role="3cqZAo" node="2wNMEwGdiXa" resolve="javaLibs" />
                                 </node>
                                 <node concept="3$u5V9" id="3xFN89FG6yN" role="2OqNvi">
                                   <node concept="1bVj0M" id="3xFN89FG6yP" role="23t8la">

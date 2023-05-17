@@ -11,12 +11,10 @@
   <facets>
     <facet type="java" compile="mps" classes="mps" ext="yes">
       <classes generated="true" path="${module}/classes_gen" />
+      <library location="${module}/lib/dummy.jar" />
     </facet>
   </facets>
   <accessoryModels />
-  <stubModelEntries>
-    <stubModelEntry path="${module}/lib/dummy.jar" />
-  </stubModelEntries>
   <sourcePath />
   <languageVersions>
     <language slang="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" version="12" />

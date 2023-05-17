@@ -8,11 +8,9 @@
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="no">
       <classes generated="true" />
+      <library location="${lib_ext}/diffutils-1.2.1.jar" />
     </facet>
   </facets>
-  <stubModelEntries>
-    <stubModelEntry path="${lib_ext}/diffutils-1.2.1.jar" />
-  </stubModelEntries>
   <sourcePath />
   <dependencies>
     <dependency reexport="true">6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)</dependency>

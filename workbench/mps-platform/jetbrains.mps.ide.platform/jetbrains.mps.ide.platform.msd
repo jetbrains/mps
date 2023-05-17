@@ -9,11 +9,9 @@
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="yes">
       <classes generated="true" />
+      <library location="${mps_home}/workbench/mps-platform/classes" />
     </facet>
   </facets>
-  <stubModelEntries>
-    <stubModelEntry path="${mps_home}/workbench/mps-platform/classes" />
-  </stubModelEntries>
   <sourcePath />
   <dependencies>
     <dependency reexport="true">8fe4c62a-2020-4ff4-8eda-f322a55bdc9f(jetbrains.mps.refactoring.runtime)</dependency>

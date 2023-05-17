@@ -43,19 +43,18 @@
     </modelRoot>
   </models>
   <facets>
-    <facet type="java" compile="ext" classes="provided" ext="no"/>
+    <facet type="java" compile="ext" classes="provided" ext="no">
+      <library location="${platform_lib}/app.jar" />
+      <library location="${platform_lib}/java-impl.jar" />
+      <library location="${platform_lib}/testFramework.jar" /> <!-- c.i.testFramework.TestApplicationManager in IdeaEnvironment -->
+      <library location="${platform_lib}/stats.jar" /> <!-- to satisfy dependencies of com.intellij.ide.impl.TrustedPathsSettings -->
+      <library location="${platform_lib}/util.jar" />
+      <library location="${platform_lib}/util_rt.jar" />
+      <library location="${platform_lib}/jps-model.jar" />
+      <library location="${platform_lib}/3rd-party-rt.jar" />
+      <library location="${platform_lib}/forms_rt.jar" />
+    </facet>
   </facets>
-  <stubModelEntries>
-    <stubModelEntry path="${platform_lib}/app.jar" />
-    <stubModelEntry path="${platform_lib}/java-impl.jar" />
-    <stubModelEntry path="${platform_lib}/testFramework.jar" /> <!-- c.i.testFramework.TestApplicationManager in IdeaEnvironment -->
-    <stubModelEntry path="${platform_lib}/stats.jar" /> <!-- to satisfy dependencies of com.intellij.ide.impl.TrustedPathsSettings -->
-    <stubModelEntry path="${platform_lib}/util.jar" />
-    <stubModelEntry path="${platform_lib}/util_rt.jar" />
-    <stubModelEntry path="${platform_lib}/jps-model.jar" />
-    <stubModelEntry path="${platform_lib}/3rd-party-rt.jar" />
-    <stubModelEntry path="${platform_lib}/forms_rt.jar" />
-  </stubModelEntries>
   <sourcePath />
   <dependencies>
     <dependency reexport="true">6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)</dependency>

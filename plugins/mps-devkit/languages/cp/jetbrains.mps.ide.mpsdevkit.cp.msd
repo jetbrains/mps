@@ -4,11 +4,9 @@
   <facets>
     <facet compile="ext" classes="provided" ext="no" languageLevel="JAVA_8" type="java">
       <classes generated="true" />
+      <library location="${mps_home}/plugins/mps-devkit/lib/mpsdevkit.jar" />
     </facet>
   </facets>
-  <stubModelEntries>
-    <stubModelEntry path="${mps_home}/plugins/mps-devkit/lib/mpsdevkit.jar" />
-  </stubModelEntries>
   <sourcePath />
   <languageVersions />
   <dependencyVersions>

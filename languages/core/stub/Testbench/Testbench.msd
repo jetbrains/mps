@@ -8,12 +8,11 @@
     </modelRoot>
   </models>
   <facets>
-    <facet type="java" compile="ext" classes="provided" ext="no"/>
+    <facet type="java" compile="ext" classes="provided" ext="no">
+      <library location="${mps_home}/lib/mps-environment.jar" />
+      <library location="${mps_home}/lib/mps-test.jar" />
+    </facet>
   </facets>
-  <stubModelEntries>
-    <stubModelEntry path="${mps_home}/lib/mps-environment.jar" />
-    <stubModelEntry path="${mps_home}/lib/mps-test.jar" />
-  </stubModelEntries>
   <sourcePath />
   <dependencies>
     <dependency reexport="true">847a3235-09f9-403c-b6a9-1c294a212e92(Ant)</dependency>

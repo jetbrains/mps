@@ -9,18 +9,12 @@
   </models>
   <facets>
     <facet type="java" compile="ext" classes="mps" ext="no">
-      <!--
-          this module lives under home/languages/ and can't rely on parent CL ('provided') to load classes
-          as it doesn't end up in IDEA's CP
-       -->
       <classes generated="true" />
+      <library location="${module}/lib/hamcrest-library-1.3.jar" />
+      <library location="${module}/lib/jmock-2.8.2.jar" />
+      <library location="${module}/lib/jmock-junit4-2.8.2.jar" />
     </facet>
   </facets>
-  <stubModelEntries>
-    <stubModelEntry path="${module}/lib/hamcrest-library-1.3.jar" />
-    <stubModelEntry path="${module}/lib/jmock-2.8.2.jar" />
-    <stubModelEntry path="${module}/lib/jmock-junit4-2.8.2.jar" />
-  </stubModelEntries>
   <sourcePath />
   <dependencies>
     <dependency reexport="false">6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)</dependency>

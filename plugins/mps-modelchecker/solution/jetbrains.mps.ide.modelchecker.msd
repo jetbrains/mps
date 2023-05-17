@@ -12,11 +12,9 @@
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="yes">
       <classes generated="true" />
+      <library location="${mps_home}/plugins/mps-modelchecker/classes" />
     </facet>
   </facets>
-  <stubModelEntries>
-    <stubModelEntry path="${mps_home}/plugins/mps-modelchecker/classes" />
-  </stubModelEntries>
   <sourcePath />
   <dependencies>
     <dependency reexport="true">a381759b-acec-4e2e-8745-7bf905520fca(jetbrains.mps.ide.modelchecker.platform)</dependency>

@@ -13,12 +13,11 @@
     </modelRoot>
   </models>
   <facets>
-    <facet type="java" compile="ext" classes="provided" ext="no"/>
+    <facet type="java" compile="ext" classes="provided" ext="no">
+      <library location="${platform_lib}/annotations.jar" />
+      <library location="${mps_home}/lib/mps-annotations.jar" />
+    </facet>
   </facets>
-  <stubModelEntries>
-    <stubModelEntry path="${platform_lib}/annotations.jar" />
-    <stubModelEntry path="${mps_home}/lib/mps-annotations.jar" />
-  </stubModelEntries>
   <sourcePath />
   <dependencies>
     <dependency reexport="true">6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)</dependency>

@@ -1560,7 +1560,7 @@
                                 <node concept="2OqwBi" id="38ougpFqJNJ" role="33vP2m">
                                   <node concept="2ShNRf" id="38ougpFqJNK" role="2Oq$k0">
                                     <node concept="1pGfFk" id="38ougpFqJNL" role="2ShVmc">
-                                      <ref role="37wK5l" to="o3n2:5DY7s5F2Pa1" resolve="MacroContext" />
+                                      <ref role="37wK5l" to="o3n2:5DY7s5F2Pa1" resolve="MacroHelper.MacroContext" />
                                       <node concept="37vLTw" id="38ougpFqLAy" role="37wK5m">
                                         <ref role="3cqZAo" node="38ougpFqL9I" resolve="project" />
                                       </node>

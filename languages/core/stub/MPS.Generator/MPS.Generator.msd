@@ -7,11 +7,10 @@
     </modelRoot>
   </models>
   <facets>
-    <facet type="java" compile="ext" classes="provided" ext="no"/>
+    <facet type="java" compile="ext" classes="provided" ext="no">
+      <library location="${mps_home}/lib/mps-generator.jar" />
+    </facet>
   </facets>
-  <stubModelEntries>
-    <stubModelEntry path="${mps_home}/lib/mps-generator.jar" />
-  </stubModelEntries>
   <sourcePath />
   <dependencies>
     <dependency reexport="true">6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)</dependency>

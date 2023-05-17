@@ -15,12 +15,10 @@
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="yes">
       <classes generated="true" />
+      <library location="${module}/classes" />
+      <library location="${platform_lib}/3rd-party-rt.jar" />
     </facet>
   </facets>
-  <stubModelEntries>
-    <stubModelEntry path="${module}/classes" />
-    <stubModelEntry path="${platform_lib}/3rd-party-rt.jar" />
-  </stubModelEntries>
   <sourcePath />
   <dependencies>
     <dependency reexport="false">ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)</dependency>

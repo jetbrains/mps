@@ -1226,14 +1226,14 @@
           <node concept="3cpWsn" id="1Unlav_1tk0" role="3cpWs9">
             <property role="TrG5h" value="r" />
             <node concept="3uibUv" id="1Unlav_3oz0" role="1tU5fm">
-              <ref role="3uigEE" node="1Unlav_2McA" resolve="Repo" />
+              <ref role="3uigEE" node="1Unlav_2McA" resolve="ModuleLoader.Repo" />
             </node>
             <node concept="2ShNRf" id="1Unlav_1uDy" role="33vP2m">
               <node concept="1pGfFk" id="1Unlav_3q_7" role="2ShVmc">
-                <ref role="37wK5l" node="1Unlav_3gKN" resolve="Repo" />
+                <ref role="37wK5l" node="1Unlav_3gKN" resolve="ModuleLoader.Repo" />
                 <node concept="2ShNRf" id="1Unlav_5x$w" role="37wK5m">
                   <node concept="HV5vD" id="1Unlav_5x$x" role="2ShVmc">
-                    <ref role="HV5vE" node="1Unlav_55ET" resolve="ModelAccessNoLimit" />
+                    <ref role="HV5vE" node="1Unlav_55ET" resolve="ModuleLoader.ModelAccessNoLimit" />
                   </node>
                 </node>
               </node>

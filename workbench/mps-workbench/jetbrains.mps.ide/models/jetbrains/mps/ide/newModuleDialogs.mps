@@ -1322,7 +1322,7 @@
               <node concept="2OqwBi" id="6CFNGGphKkN" role="2Oq$k0">
                 <node concept="2OqwBi" id="6CFNGGphKkO" role="2Oq$k0">
                   <node concept="37vLTw" id="1oxeqEd8P5r" role="2Oq$k0">
-                    <ref role="3cqZAo" node="1oxeqEd8P5n" resolve="javaLibPersistedValues" />
+                    <ref role="3cqZAo" node="1oxeqEd8P5n" resolve="javaLibs" />
                   </node>
                   <node concept="liA8E" id="6CFNGGphKkS" role="2OqNvi">
                     <ref role="37wK5l" to="33ny:~Collection.stream()" resolve="stream" />
@@ -1354,7 +1354,7 @@
         <node concept="3clFbF" id="6CFNGGphKld" role="3cqZAp">
           <node concept="2OqwBi" id="6CFNGGphKle" role="3clFbG">
             <node concept="37vLTw" id="1oxeqEd8P5s" role="2Oq$k0">
-              <ref role="3cqZAo" node="1oxeqEd8P5n" resolve="javaLibPersistedValues" />
+              <ref role="3cqZAo" node="1oxeqEd8P5n" resolve="javaLibs" />
             </node>
             <node concept="liA8E" id="6CFNGGphKli" role="2OqNvi">
               <ref role="37wK5l" to="33ny:~Collection.clear()" resolve="clear" />
@@ -1364,7 +1364,7 @@
         <node concept="3clFbF" id="6CFNGGphKlj" role="3cqZAp">
           <node concept="2OqwBi" id="6CFNGGphKlk" role="3clFbG">
             <node concept="37vLTw" id="1oxeqEd8P5t" role="2Oq$k0">
-              <ref role="3cqZAo" node="1oxeqEd8P5n" resolve="javaLibPersistedValues" />
+              <ref role="3cqZAo" node="1oxeqEd8P5n" resolve="javaLibs" />
             </node>
             <node concept="liA8E" id="6CFNGGphKlo" role="2OqNvi">
               <ref role="37wK5l" to="33ny:~Collection.addAll(java.util.Collection)" resolve="addAll" />

@@ -1207,7 +1207,7 @@
             <node concept="liA8E" id="7GARn1zPoHW" role="2OqNvi">
               <ref role="37wK5l" to="qkt:~AnAction.update(com.intellij.openapi.actionSystem.AnActionEvent)" resolve="update" />
               <node concept="37vLTw" id="$EISvd2$xU" role="37wK5m">
-                <ref role="3cqZAo" node="$EISvd2$xS" resolve="createAnActionEventWithTemplatePresentation" />
+                <ref role="3cqZAo" node="$EISvd2$xS" resolve="event" />
               </node>
             </node>
           </node>

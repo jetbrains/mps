@@ -14,12 +14,9 @@
   </models>
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="no">
-      <classes generated="true" />
+      <library location="${platform_lib}/app.jar" />
     </facet>
   </facets>
-  <stubModelEntries>
-    <stubModelEntry path="${platform_lib}/app.jar" />
-  </stubModelEntries>
   <sourcePath />
   <dependencies>
     <dependency reexport="true">6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)</dependency>

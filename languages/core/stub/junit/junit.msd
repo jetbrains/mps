@@ -9,11 +9,9 @@
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="no">
       <classes generated="true" />
+      <library location="${platform_lib}/junit4.jar" />
     </facet>
   </facets>
-  <stubModelEntries>
-    <stubModelEntry path="${platform_lib}/junit4.jar" />
-  </stubModelEntries>
   <sourcePath />
   <dependencies>
     <dependency reexport="false">6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)</dependency>

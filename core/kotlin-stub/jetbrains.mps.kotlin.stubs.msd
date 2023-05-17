@@ -12,11 +12,9 @@
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="yes">
       <classes generated="true" />
+      <library location="${platform_lib}/kotlinx-metadata-jvm-0.4.2.jar" />
     </facet>
   </facets>
-  <stubModelEntries>
-    <stubModelEntry path="${platform_lib}/kotlinx-metadata-jvm-0.4.2.jar" />
-  </stubModelEntries>
   <sourcePath />
   <dependencies>
     <dependency reexport="false">8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)</dependency>
