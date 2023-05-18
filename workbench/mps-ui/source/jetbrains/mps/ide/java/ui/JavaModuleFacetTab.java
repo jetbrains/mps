@@ -342,6 +342,9 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       final VirtualFile startingPoint = (VirtualFile) sourcePathTable.getValueAt(selectedIndices[0], 0);
       final VirtualFile[] files = chooser.apply(startingPoint);
       if (files.length != 0) {
+        for (int i = 0; i < selectedIndices.length; i++) {
+          selectedIndices[i] = sourcePathTable.convertRowIndexToModel(selectedIndices[i]);
+        }
         mySourcePathsTableModel.replace(selectedIndices, files);
       }
     });
@@ -436,9 +439,13 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
         return;
       }
       // take the first/any one as a location hint
-      final Object startingPoint = myLibrariesTableModel.getValueAt(selectedIndices[0], 0);
+      final Object startingPoint = librariesTable.getValueAt(selectedIndices[0], 0);
       final VirtualFile[] files = chooseLibraryFile.apply(startingPoint);
       if (files.length != 0) {
+        for (int i = 0; i < selectedIndices.length; i++) {
+          // in case there's a row sorter, take model index from view's. Not our case, but anyway, doesn't hurt to keep this in mind.
+          selectedIndices[i] = librariesTable.convertRowIndexToModel(selectedIndices[i]);
+        }
         // don't use 'Edit' to delete elements
         myLibrariesTableModel.replace(selectedIndices, files);
       }
@@ -650,6 +657,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     }
 
     public void replace(int[] selectedIndices, VirtualFile[] files) {
+      Arrays.sort(selectedIndices);
       for (int i = selectedIndices.length - 1; i >= 0; i--) {
         myFiles.remove(selectedIndices[i]);
       }
@@ -712,6 +720,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     }
 
     /*package*/ void replace(int[] selectedIndices, VirtualFile[] files) {
+      Arrays.sort(selectedIndices);
       for (int i = selectedIndices.length - 1; i >= 0; i--) {
         myPaths.remove(selectedIndices[i]);
       }
