@@ -25,9 +25,7 @@ import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.testFramework.LightVirtualFile;
 import com.intellij.ui.AnActionButtonUpdater;
-import com.intellij.ui.ColoredTableCellRenderer;
 import com.intellij.ui.IdeBorderFactory;
-import com.intellij.ui.SimpleTextAttributes;
 import com.intellij.ui.TableUtil;
 import com.intellij.ui.TitledSeparator;
 import com.intellij.ui.ToolbarDecorator;
@@ -44,6 +42,8 @@ import com.intellij.util.ui.ItemRemovable;
 import com.intellij.util.ui.JBUI;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.icons.MPSIcons.General;
+import jetbrains.mps.ide.platform.ui.PathSpecTableRenderer;
+import jetbrains.mps.ide.platform.ui.VirtualFileTableRenderer;
 import jetbrains.mps.ide.ui.dialogs.properties.MPSPropertiesConfigurable;
 import jetbrains.mps.ide.ui.dialogs.properties.PropertiesBundle;
 import jetbrains.mps.ide.ui.dialogs.properties.tabs.BaseTab;
@@ -58,17 +58,16 @@ import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.util.PathSpec;
 import jetbrains.mps.util.PathSpecBundle;
+import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
 import org.jetbrains.mps.openapi.ui.persistence.FacetTab;
 
-import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-import javax.swing.JTable;
 import javax.swing.event.ChangeListener;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
@@ -89,7 +88,7 @@ import java.util.stream.Collectors;
 public class JavaModuleFacetTab extends BaseTab implements FacetTab {
   private FilesTableModel mySourcePathsTableModel;
   private boolean mySourcePathsChanged = false;
-  private FilesTableModel myLibrariesTableModel;
+  private PathSpecTableModel myLibrariesTableModel;
   private boolean myLibrariesChanged = false;
   private TitledSeparator myUsageScenarioLabel;
   private JBCheckBox myCompileIDEA;
@@ -301,7 +300,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     mySourcePathsTableModel.addTableModelListener(e -> mySourcePathsChanged = true);
     final JBTable sourcePathTable = new JBTable(mySourcePathsTableModel);
     sourcePathTable.setTableHeader(null);
-    final TableCellRenderer renderer = new VirtualFileRenderer();
+    final TableCellRenderer renderer = new VirtualFileTableRenderer();
     sourcePathTable.setDefaultRenderer(VirtualFile.class, renderer);
     sourcePathTable.setShowHorizontalLines(false);
     sourcePathTable.setShowVerticalLines(false);
@@ -348,12 +347,24 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     // FIXME it's not right to ignore unresolved reference and silently ignore them. Although convertStringPaths2VirtualFile() can
     //       present invalid file, it's not clear how to approach unresolved PathSpec here. Need a dedicated TableModel, instead
     final Collection<String> additionalJavaStubPaths = jls.paths().filter(PathSpec::resolved).map(PathSpec::resolvedPath).collect(Collectors.toList());
-    myLibrariesTableModel = new FilesTableModel(convertStringPaths2VirtualFile(additionalJavaStubPaths));
+    myLibrariesTableModel = new PathSpecTableModel(jls);
     myLibrariesTableModel.addTableModelListener(e -> myLibrariesChanged = true);
-    final JBTable librariesTable = new JBTable(myLibrariesTableModel);
+    final JBTable librariesTable = new JBTable(myLibrariesTableModel) {
+      private final TableCellRenderer r1 = new VirtualFileTableRenderer();
+      private final TableCellRenderer r2 = new PathSpecTableRenderer();
+      @Override
+      public TableCellRenderer getCellRenderer(int row, int column) {
+        final Object val = getModel().getValueAt(row, column);
+        if (val instanceof VirtualFile) {
+          return r1;
+        }
+        if (val instanceof PathSpec) {
+          return r2;
+        }
+        return super.getCellRenderer(row, column);
+      }
+    };
     librariesTable.setTableHeader(null);
-    final TableCellRenderer renderer = new VirtualFileRenderer();
-    librariesTable.setDefaultRenderer(VirtualFile.class, renderer);
     librariesTable.setShowHorizontalLines(false);
     librariesTable.setShowVerticalLines(false);
     librariesTable.setAutoCreateRowSorter(false);
@@ -361,6 +372,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     librariesTable.addFocusListener(new FocusAdapter() {
       @Override
       public void focusLost(FocusEvent focusEvent) {
+        // XXX why do we clear selection when focus is lost?
         librariesTable.clearSelection();
         super.focusLost(focusEvent);
       }
@@ -373,15 +385,18 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       // for LocalFileSystem justification, see similar code in #getSourcePathsTable(), above.
       final VirtualFile moduleDir = LocalFileSystem.getInstance().findFileByPath(myJavaModuleFacet.getAbstractModule().getModuleSourceDir().getPath());
       final VirtualFile[] files = FileChooser.chooseFiles(descriptor, getTabComponent(), null, moduleDir);
-      myLibrariesTableModel.addAll(Arrays.asList(files));
+      // XXX perhaps, shall take FileSystemBridge from a project and pass IFile into the table model?
+      myLibrariesTableModel.addNew(files);
     }).setRemoveAction(anActionButton -> {
       TableUtil.removeSelectedItems(librariesTable);
-      myLibrariesTableModel.fireTableDataChanged();
+//    }).setEditAction(anActionButton -> {
+//        FIXME implement MPS-28213  - take selected file as starting point, remember its index, ask for a new one and replace
     });
     if (myJavaModuleFacet.getModule().isReadOnly()) {
       final AnActionButtonUpdater disableEdit = (u) -> false;
       decorator.setAddActionUpdater(disableEdit);
       decorator.setRemoveActionUpdater(disableEdit);
+//      decorator.setEditActionUpdater(disableEdit);
     }
     decorator.setToolbarBorder(IdeBorderFactory.createBorder());
     decorator.setPreferredSize(new Dimension(500, 100));
@@ -477,15 +492,9 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     if (myLibrariesChanged) {
       // Remember list of libraries before update
       final PathSpecBundle oldLibraries = myJavaModuleFacet.getJavaLibrarySpec();
-      ArrayList<PathSpec> pathSpecs = new ArrayList<>();
+      // FIXME review model root fixing code, below
       final LinkedHashSet<String> libraryPathsTable = new LinkedHashSet<>();
-      for (VirtualFile lf : myLibrariesTableModel.getFiles()) {
-        // FIXME shall convert to IFile and use respective PathSpec constructor!
-        pathSpecs.add(new PathSpec(lf.getPath()));
-        // FIXME review model root fixing code, below
-        libraryPathsTable.add(lf.getPath());
-      }
-      myJavaModuleFacet.setJavaLibrarySpec(new PathSpecBundle(pathSpecs));
+      myJavaModuleFacet.setJavaLibrarySpec(myLibrariesTableModel.toPathBundle(libraryPathsTable));
       myLibrariesChanged = false;
 
       // Try to create java_classes model roots for added libraries
@@ -589,22 +598,57 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     }
   }
 
-  // TODO: extract as common class to render VirtualFiles as table items along with FilesTableModel
-  private static class VirtualFileRenderer extends ColoredTableCellRenderer {
+  private static class PathSpecTableModel extends AbstractTableModel implements ItemRemovable {
+    private final List<Object> myPaths = new ArrayList<>();
+
+    PathSpecTableModel(@NotNull PathSpecBundle paths) {
+      paths.forEach(myPaths::add);
+    }
+
     @Override
-    protected void customizeCellRenderer(JTable table, Object value, boolean selected, boolean hasFocus, int row, int column) {
-      setPaintFocusBorder(false);
-      setFocusBorderAroundIcon(true);
-      setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
-      if (value != null) {
-        VirtualFile file = (VirtualFile) value;
-        final String path = file.getPath();
-        if (!file.exists()) {
-          append(path, SimpleTextAttributes.ERROR_ATTRIBUTES);
-        } else {
-          append(path);
+    public int getRowCount() {
+      return myPaths.size();
+    }
+
+    @Override
+    public void removeRow(int idx) {
+      myPaths.remove(idx);
+      fireTableRowsDeleted(idx, idx);
+    }
+
+    @Override
+    public int getColumnCount() {
+      return 1;
+    }
+
+    @Override
+    public Object getValueAt(int rowIndex, int columnIndex) {
+      return myPaths.get(rowIndex);
+    }
+
+    /*package*/ void addNew(VirtualFile[] files) {
+      myPaths.addAll(Arrays.asList(files));
+    }
+
+    /*package*/ PathSpecBundle toPathBundle(Collection<String> provisionalHackCollectPaths) {
+      ArrayList<PathSpec> pathSpecs = new ArrayList<>();
+      for (Object ee : myPaths) {
+        if (ee instanceof VirtualFile) {
+          // FIXME shall convert to IFile and use respective PathSpec constructor!
+          final String path = ((VirtualFile) ee).getPath();
+          pathSpecs.add(new PathSpec(path));
+          provisionalHackCollectPaths.add(path);
+        } else if (ee instanceof PathSpec) {
+          final PathSpec ps = (PathSpec) ee;
+          pathSpecs.add(ps);
+          provisionalHackCollectPaths.add(ps.resolved() ? ps.resolvedPath() : ps.value());
+        } else if (ee instanceof IFile) {
+          // we don't use IFile at the moment, but we'd better start to
+          pathSpecs.add(new PathSpec((IFile) ee));
+          provisionalHackCollectPaths.add(((IFile) ee).getPath());
         }
       }
+      return new PathSpecBundle(pathSpecs);
     }
   }
 

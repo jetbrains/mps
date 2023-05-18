@@ -9,6 +9,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.regex.Matcher;
+import java.util.stream.Stream;
+import java.util.stream.Stream.Builder;
 
 /**
  * Help to specify a file system location, with optional use of macro values in paths
@@ -50,6 +52,19 @@ public class PathSpec {
   public boolean startsWithMacro() {
     final Matcher mm = MacroHelper.MACRO_PATTERN.matcher(myValue);
     return mm.find() && mm.start() == 0;
+  }
+
+  public Stream<String> allMacro() {
+    final Builder<String> builder = Stream.builder();
+    final Matcher mm = MacroHelper.MACRO_PATTERN.matcher(myValue);
+    while (mm.find()) {
+      final String macroName = myValue.substring(mm.start(), mm.end());
+      if (macroName.isBlank()) {
+        continue;
+      }
+      builder.add(macroName);
+    }
+    return builder.build();
   }
 
   public Optional<IFile> resolve(@NotNull Function<String, IFile> expandMacro) {
