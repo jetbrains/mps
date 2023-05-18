@@ -330,7 +330,6 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       mySourcePathsTableModel.addAll(new ArrayList<>(Arrays.asList(files)));
     }).setRemoveAction(anActionButton -> {
       TableUtil.removeSelectedItems(sourcePathTable);
-      mySourcePathsTableModel.fireTableDataChanged();
     });
     if (myJavaModuleFacet.getModule().isReadOnly()) {
       final AnActionButtonUpdater disableEdit = (u) -> false;
@@ -632,6 +631,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     @Override
     public void removeRow(int idx) {
       myFiles.remove(idx);
+      fireTableRowsDeleted(idx, idx);
     }
   }
 
