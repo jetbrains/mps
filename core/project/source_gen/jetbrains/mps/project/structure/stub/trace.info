@@ -83,7 +83,7 @@
       <node id="5221322343054881595" at="168,53,169,90" concept="9" />
       <node id="5221322343054912538" at="169,90,170,64" concept="4" />
       <node id="269654322145296764" at="170,64,171,77" concept="4" />
-      <node id="269654322145291679" at="174,48,175,92" concept="4" />
+      <node id="269654322145291679" at="173,55,174,94" concept="4" />
       <node id="269654322145296805" at="178,53,179,88" concept="9" />
       <node id="1666927970458491681" at="179,88,180,74" concept="4" />
       <node id="1666927970458565689" at="180,74,181,50" concept="9" />
@@ -215,7 +215,7 @@
       <node id="6966544519551925962" at="131,5,134,5" concept="6" />
       <node id="269654322145296879" at="147,0,150,5" concept="6" />
       <node id="2721285250110587642" at="162,5,165,5" concept="6" />
-      <node id="269654322145291664" at="173,5,176,5" concept="6" />
+      <node id="269654322145291664" at="172,7,175,7" concept="6" />
       <node id="1666927970458641454" at="181,50,184,5" concept="7" />
       <node id="2721285250110525118" at="204,135,207,5" concept="6" />
       <node id="2721285250110587663" at="207,5,210,5" concept="6" />
@@ -233,13 +233,13 @@
       <node id="7323700755999994366" at="62,0,68,0" concept="2" trace="ProjectStructureBuilder#(Ljetbrains/mps/project/AbstractModule;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
       <node id="2721285250110587541" at="192,0,198,0" concept="8" trace="convert#(Lorg/jetbrains/mps/openapi/module/SDependency;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="6921375397022945015" at="276,39,282,9" concept="0" />
-      <node id="7275028153355343761" at="166,73,173,5" concept="7" />
       <node id="2721285250110587168" at="245,0,253,0" concept="8" trace="convert#(Lorg/jetbrains/mps/openapi/module/SModuleReference;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="6921375397022801594" at="275,83,283,7" concept="7" />
       <node id="4198951972171373425" at="69,26,78,5" concept="7" />
       <node id="6707002530640667247" at="151,71,160,7" concept="7" />
       <node id="269654322145296795" at="178,0,187,0" concept="8" trace="convert#(Ljetbrains/mps/project/structure/model/ModelRootDescriptor;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="7323700756000654986" at="289,46,298,5" concept="6" />
+      <node id="7275028153355343761" at="166,73,176,5" concept="7" />
       <node id="4243809718336239951" at="289,0,300,0" concept="8" trace="collectModels#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4198951972171373412" at="69,0,81,0" concept="8" trace="convert#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="4198951972171373840" at="150,5,162,5" concept="6" />
@@ -266,7 +266,7 @@
       <scope id="6966544519551925963" at="132,64,133,90" />
       <scope id="269654322145296880" at="148,73,149,84" />
       <scope id="2721285250110587643" at="163,61,164,113" />
-      <scope id="269654322145291665" at="174,48,175,92" />
+      <scope id="269654322145291665" at="173,55,174,94" />
       <scope id="1666927970458641456" at="182,46,183,64" />
       <scope id="2721285250110525119" at="205,64,206,90" />
       <scope id="2721285250110587664" at="208,60,209,89" />
@@ -314,7 +314,7 @@
       <scope id="269654322145296753" at="168,53,171,77">
         <var name="node" id="5221322343054881596" />
       </scope>
-      <scope id="269654322145291664" at="173,5,176,5">
+      <scope id="269654322145291664" at="172,7,175,7">
         <var name="s" id="269654322145291667" />
       </scope>
       <scope id="269654322145291626" at="187,45,190,18">
@@ -353,7 +353,6 @@
       <scope id="269654322145296752" at="167,22,172,7">
         <var name="path" id="269654322145296755" />
       </scope>
-      <scope id="7275028153355343763" at="167,22,172,7" />
       <scope id="269654322145291624" at="187,0,192,0">
         <var name="s" id="269654322145291635" />
       </scope>
@@ -379,6 +378,7 @@
         <var name="path" id="1666927970458565692" />
         <var name="result" id="269654322145296806" />
       </scope>
+      <scope id="7275028153355343763" at="167,22,175,7" />
       <scope id="2721285250110587168" at="245,0,253,0">
         <var name="ref" id="2721285250110587176" />
       </scope>

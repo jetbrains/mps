@@ -170,9 +170,9 @@ public class ProjectStructureBuilder {
         SPropertyOperations.assign(node, PROPS.path$Cl8o, path);
         SLinkOperations.getChildren(module, LINKS.stubModels$s4S7).add(node);
       }
-    }
-    for (String s : mySource.getSourcePaths()) {
-      SLinkOperations.getChildren(module, LINKS.sourcePaths$EX$p).add(convertSourcePath(s));
+      for (String s : jmf.getAdditionalSourcePaths()) {
+        SLinkOperations.getChildren(module, LINKS.sourcePaths$EX$p).add(convertSourcePath(s));
+      }
     }
   }
   private SNode convert(ModelRootDescriptor source) {

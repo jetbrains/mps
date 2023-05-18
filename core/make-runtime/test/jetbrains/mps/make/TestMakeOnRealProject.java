@@ -215,11 +215,9 @@ public class TestMakeOnRealProject implements EnvironmentAware {
   }
 
   private void collectSpecificFilesFromDir(File file, final String extension, Collection<File> classes) {
-    com.intellij.openapi.util.io.FileUtil.processFilesRecursively(file, new FilteringProcessor<File>(new Condition<File>() {
-      public boolean value(File file) {
-        return file.getName().endsWith("." + extension);
-      }
-    }, new CollectProcessor<File>(classes)));
+    com.intellij.openapi.util.io.FileUtil.processFilesRecursively(file,
+            new FilteringProcessor<>(file1 -> file1.getName().endsWith("." + extension),
+                new CollectProcessor<>(classes)));
   }
 
   private void createTmpModules() {
@@ -237,10 +235,12 @@ public class TestMakeOnRealProject implements EnvironmentAware {
         myCreatedSolution = createNewSolution();
         createJavaFiles(myCreatedSolution);
 
-        IFile generatorOutputPath = myCreatedSolution.getFacet(JavaModuleFacet.class).getOutputRoot();
-        // XXX where from comes the assumption resources/ dir is sibling to source_gen? Why this location is not part of any facet?
+        final JavaModuleFacetImpl solutionJMF = myCreatedSolution.getFacet(JavaModuleFacetImpl.class);
+        IFile generatorOutputPath = solutionJMF.getOutputRoot();
+        // resources/ dir as sibling of source_gen seems to be just an arbitrary location we choose to place
+        // under the module home as it's easy to construct path there.
         IFile resourceDir = generatorOutputPath.getParent().findChild("resources");
-        myCreatedSolution.getModuleDescriptor().getSourcePaths().add(resourceDir.getPath());
+        solutionJMF.setAdditionalSourcePaths(Collections.singleton(resourceDir.getPath()));
         createFile(resourceDir, "res.0.1/test.txt", "test");
       }
     });
