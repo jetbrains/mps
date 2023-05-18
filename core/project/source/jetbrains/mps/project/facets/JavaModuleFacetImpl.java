@@ -291,6 +291,17 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
         } else {
           // account for isPackaged() == true w/o DD scenario. However, I don't think it's something we shall strive to keep,
           // instead, shall force use of DD for packaged/deployed scenarios
+          // Nevertheless, there are scenarios in MPS itself, e.g. MPS.Core and other pure stub modules that get packaged in mps-stubs.jar
+          // in their source form (w/o any DD whatsoever)
+          for (Memento m : memento.getChildren(LIBRARY_KEY)) {
+            // FIXME duplicating code with "source" code branch, below
+            final String p = m.get(LOCATION_KEY);
+            if (p != null) {
+              // generally, I expect paths in this scenario to limit macro use to general platform_lib and mps_home,
+              // as ${module} is not that unambiguous for modules inside an archive
+              libraries.add(new PathSpec(p));
+            }
+          }
           moduleDescriptor.getJavaLibPersistedValues().stream().map(PathSpec::new).forEach(libraries::add);
         }
       }
