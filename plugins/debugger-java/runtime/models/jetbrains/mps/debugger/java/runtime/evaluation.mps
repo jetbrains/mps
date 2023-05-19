@@ -1946,6 +1946,15 @@
     <node concept="3uibUv" id="2KV5YDxCrRU" role="1zkMxy">
       <ref role="3uigEE" to="qgwr:46sxDGTfnGj" resolve="EvaluationUtils" />
     </node>
+    <node concept="Wx3nA" id="5j5ipK2ftOy" role="jymVt">
+      <property role="3TUv4t" value="true" />
+      <property role="TrG5h" value="JAVA_LANG_OBJECT_CLASSNAME" />
+      <node concept="3Tm1VV" id="5j5ipK2ftOz" role="1B3o_S" />
+      <node concept="17QB3L" id="5j5ipK2ftO$" role="1tU5fm" />
+      <node concept="Xl_RD" id="5j5ipK2ftO_" role="33vP2m">
+        <property role="Xl_RC" value="java.lang.Object" />
+      </node>
+    </node>
     <node concept="3clFbW" id="2KV5YDxCrRQ" role="jymVt">
       <node concept="3cqZAl" id="2KV5YDxCrRR" role="3clF45" />
       <node concept="3Tm1VV" id="2KV5YDxCrRS" role="1B3o_S" />
@@ -3674,9 +3683,8 @@
                       <node concept="2OqwBi" id="5j5ipK2duTm" role="2Oq$k0">
                         <node concept="1rXfSq" id="5j5ipK2duJK" role="2Oq$k0">
                           <ref role="37wK5l" node="2KV5YDxCs3X" resolve="createArrayProxy" />
-                          <node concept="10M0yZ" id="5j5ipK2ftOB" role="37wK5m">
-                            <ref role="1PxDUh" to="qgwr:46sxDGTfnGj" resolve="EvaluationUtils" />
-                            <ref role="3cqZAo" to="qgwr:5j5ipK2ftOy" resolve="JAVA_LANG_OBJECT" />
+                          <node concept="37vLTw" id="2Ad15yJk3cl" role="37wK5m">
+                            <ref role="3cqZAo" node="5j5ipK2ftOy" resolve="JAVA_LANG_OBJECT_CLASSNAME" />
                           </node>
                           <node concept="37vLTw" id="5j5ipK2duL3" role="37wK5m">
                             <ref role="3cqZAo" node="5j5ipK2bb_W" resolve="virtualMachine" />
@@ -3722,8 +3730,8 @@
                     <node concept="3cpWs6" id="5j5ipK2hYDu" role="3cqZAp">
                       <node concept="1rXfSq" id="5j5ipK2hZen" role="3cqZAk">
                         <ref role="37wK5l" node="2KV5YDxCrYr" resolve="findClassTypeSilently" />
-                        <node concept="37vLTw" id="5j5ipK2hZeO" role="37wK5m">
-                          <ref role="3cqZAo" to="qgwr:5j5ipK2ftOy" resolve="JAVA_LANG_OBJECT" />
+                        <node concept="37vLTw" id="2Ad15yJkSDH" role="37wK5m">
+                          <ref role="3cqZAo" node="5j5ipK2ftOy" resolve="JAVA_LANG_OBJECT_CLASSNAME" />
                         </node>
                         <node concept="37vLTw" id="5j5ipK2hZfK" role="37wK5m">
                           <ref role="3cqZAo" node="5j5ipK2bb_W" resolve="virtualMachine" />
