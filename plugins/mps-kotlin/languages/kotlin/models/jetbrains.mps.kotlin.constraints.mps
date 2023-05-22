@@ -521,10 +521,10 @@
           </node>
           <node concept="3clFbH" id="nhyiqu0I9A" role="3cqZAp" />
           <node concept="3clFbF" id="2yYXHtlg6vN" role="3cqZAp">
-            <node concept="2YIFZM" id="213J8ch7hCl" role="3clFbG">
-              <ref role="37wK5l" node="213J8ch7gRc" resolve="isValidNonKeyword" />
+            <node concept="2YIFZM" id="1TlnM4CV6QK" role="3clFbG">
+              <ref role="37wK5l" node="213J8cgUBOZ" resolve="isValid" />
               <ref role="1Pybhc" node="2yYXHtlg3J3" resolve="Identifiers" />
-              <node concept="1Wqviy" id="213J8ch7hCm" role="37wK5m" />
+              <node concept="1Wqviy" id="1TlnM4CV6QL" role="37wK5m" />
             </node>
           </node>
         </node>

@@ -36,7 +36,7 @@ public class IIdentifier_Constraints extends BaseConstraintsDescriptor {
     private static boolean staticValidateProperty(SNode node, String propertyValue) {
       // TODO we might want to allow quoted string (just use following code). That would however cause several edition issues (typing anything after a name will not trigger transforms anymore) which need to be adequately handled.
 
-      return Identifiers.isValidNonKeyword(propertyValue);
+      return Identifiers.isValid(propertyValue);
     }
   }
   @Override
