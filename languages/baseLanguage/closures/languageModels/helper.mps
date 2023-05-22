@@ -26,13 +26,13 @@
     <import index="urs3" ref="r:fc76aa36-3cff-41c7-b94b-eee0e8341932(jetbrains.mps.internal.collections.runtime)" />
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
     <import index="tp2g" ref="r:00000000-0000-4000-0000-011c89590334(jetbrains.mps.baseLanguage.closures.constraints)" />
-    <import index="8ov6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow(MPS.Core/)" />
-    <import index="dau9" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow.framework.instructions(MPS.Core/)" />
-    <import index="1fjm" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow.framework(MPS.Core/)" />
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="o8zo" ref="r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)" />
     <import index="pz2c" ref="r:2a308ea0-c7e3-4fa5-a624-ad74ee5cfab5(jetbrains.mps.baseLanguage.util)" />
+    <import index="8qxk" ref="r:3dddb2c7-b2ba-4381-896a-2e702ca1fb6e(jetbrains.mps.lang.dataFlow.framework)" />
+    <import index="9fia" ref="r:48cf50db-7ea3-4b1e-ab16-c3d84cbcf0df(jetbrains.mps.lang.dataFlow.framework.instructions)" />
+    <import index="aplb" ref="2af156ab-65c1-4a62-bd0d-ea734f71eab6/r:a1d8bbbf-d4f0-431f-8dcd-a6badc777315(jetbrains.mps.dataFlow.runtime/jetbrains.mps.lang.dataFlow)" />
     <import index="b0pz" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.facets(MPS.Core/)" implicit="true" />
   </imports>
   <registry>
@@ -9133,16 +9133,16 @@
           <node concept="3cpWsn" id="5t97zErGafe" role="3cpWs9">
             <property role="TrG5h" value="prg" />
             <node concept="3uibUv" id="5t97zErGaff" role="1tU5fm">
-              <ref role="3uigEE" to="1fjm:~Program" resolve="Program" />
+              <ref role="3uigEE" to="8qxk:3yaa4ph8tzc" resolve="Program" />
             </node>
             <node concept="2OqwBi" id="5t97zErGafg" role="33vP2m">
               <node concept="2ShNRf" id="4mpxoQucTf1" role="2Oq$k0">
                 <node concept="1pGfFk" id="4mpxoQucZdI" role="2ShVmc">
-                  <ref role="37wK5l" to="8ov6:~MPSProgramBuilder.&lt;init&gt;()" resolve="MPSProgramBuilder" />
+                  <ref role="37wK5l" to="aplb:4mpxoQud1f6" resolve="MPSProgramBuilder" />
                 </node>
               </node>
               <node concept="liA8E" id="5t97zErGafi" role="2OqNvi">
-                <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.buildProgram(java.lang.Object)" resolve="buildProgram" />
+                <ref role="37wK5l" to="8qxk:3yaa4ph8umS" resolve="buildProgram" />
                 <node concept="37vLTw" id="2BHiRxgl3IT" role="37wK5m">
                   <ref role="3cqZAo" node="5t97zErG9at" resolve="start" />
                 </node>
@@ -9158,7 +9158,7 @@
                   <node concept="3cpWsn" id="5t97zErGahv" role="3cpWs9">
                     <property role="TrG5h" value="ri" />
                     <node concept="3uibUv" id="5t97zErGahw" role="1tU5fm">
-                      <ref role="3uigEE" to="dau9:~ReadInstruction" resolve="ReadInstruction" />
+                      <ref role="3uigEE" to="9fia:3yaa4ph8uFE" resolve="ReadInstruction" />
                     </node>
                     <node concept="1eOMI4" id="5t97zErGahx" role="33vP2m">
                       <node concept="10QFUN" id="5t97zErGahy" role="1eOMHV">
@@ -9166,7 +9166,7 @@
                           <ref role="3cqZAo" node="5t97zErGafr" resolve="ins" />
                         </node>
                         <node concept="3uibUv" id="5t97zErGah$" role="10QFUM">
-                          <ref role="3uigEE" to="dau9:~ReadInstruction" resolve="ReadInstruction" />
+                          <ref role="3uigEE" to="9fia:3yaa4ph8uFE" resolve="ReadInstruction" />
                         </node>
                       </node>
                     </node>
@@ -9182,7 +9182,7 @@
                           <ref role="3cqZAo" node="5t97zErGahv" resolve="ri" />
                         </node>
                         <node concept="liA8E" id="5t97zErGaid" role="2OqNvi">
-                          <ref role="37wK5l" to="dau9:~ReadInstruction.getVariable()" resolve="getVariable" />
+                          <ref role="37wK5l" to="9fia:3yaa4ph8uGr" resolve="getVariable" />
                         </node>
                       </node>
                     </node>
@@ -9223,7 +9223,7 @@
               </node>
               <node concept="2ZW3vV" id="5t97zErGafM" role="3clFbw">
                 <node concept="3uibUv" id="5t97zErGafP" role="2ZW6by">
-                  <ref role="3uigEE" to="dau9:~ReadInstruction" resolve="ReadInstruction" />
+                  <ref role="3uigEE" to="9fia:3yaa4ph8uFE" resolve="ReadInstruction" />
                 </node>
                 <node concept="37vLTw" id="3GM_nagTsmr" role="2ZW6bz">
                   <ref role="3cqZAo" node="5t97zErGafr" resolve="ins" />
@@ -9232,7 +9232,7 @@
               <node concept="3eNFk2" id="5t97zErGafQ" role="3eNLev">
                 <node concept="2ZW3vV" id="5t97zErGafU" role="3eO9$A">
                   <node concept="3uibUv" id="5t97zErGafX" role="2ZW6by">
-                    <ref role="3uigEE" to="dau9:~WriteInstruction" resolve="WriteInstruction" />
+                    <ref role="3uigEE" to="9fia:3yaa4ph8uM7" resolve="WriteInstruction" />
                   </node>
                   <node concept="37vLTw" id="3GM_nagTyIS" role="2ZW6bz">
                     <ref role="3cqZAo" node="5t97zErGafr" resolve="ins" />
@@ -9243,7 +9243,7 @@
                     <node concept="3cpWsn" id="5t97zErGal1" role="3cpWs9">
                       <property role="TrG5h" value="wi" />
                       <node concept="3uibUv" id="5t97zErGalR" role="1tU5fm">
-                        <ref role="3uigEE" to="dau9:~WriteInstruction" resolve="WriteInstruction" />
+                        <ref role="3uigEE" to="9fia:3yaa4ph8uM7" resolve="WriteInstruction" />
                       </node>
                       <node concept="1eOMI4" id="5t97zErGal3" role="33vP2m">
                         <node concept="10QFUN" id="5t97zErGal4" role="1eOMHV">
@@ -9251,7 +9251,7 @@
                             <ref role="3cqZAo" node="5t97zErGafr" resolve="ins" />
                           </node>
                           <node concept="3uibUv" id="5t97zErGam8" role="10QFUM">
-                            <ref role="3uigEE" to="dau9:~WriteInstruction" resolve="WriteInstruction" />
+                            <ref role="3uigEE" to="9fia:3yaa4ph8uM7" resolve="WriteInstruction" />
                           </node>
                         </node>
                       </node>
@@ -9267,7 +9267,7 @@
                             <ref role="3cqZAo" node="5t97zErGal1" resolve="wi" />
                           </node>
                           <node concept="liA8E" id="5t97zErGald" role="2OqNvi">
-                            <ref role="37wK5l" to="dau9:~WriteInstruction.getVariable()" resolve="getVariable" />
+                            <ref role="37wK5l" to="9fia:3yaa4ph8uN8" resolve="getVariable" />
                           </node>
                         </node>
                       </node>
@@ -9334,13 +9334,13 @@
               <ref role="3cqZAo" node="5t97zErGafe" resolve="prg" />
             </node>
             <node concept="liA8E" id="5t97zErGafD" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:~Program.getInstructions()" resolve="getInstructions" />
+              <ref role="37wK5l" to="8qxk:3yaa4ph8t$L" resolve="getInstructions" />
             </node>
           </node>
           <node concept="3cpWsn" id="5t97zErGafr" role="1Duv9x">
             <property role="TrG5h" value="ins" />
             <node concept="3uibUv" id="5t97zErGafv" role="1tU5fm">
-              <ref role="3uigEE" to="dau9:~Instruction" resolve="Instruction" />
+              <ref role="3uigEE" to="9fia:3yaa4ph8tQC" resolve="Instruction" />
             </node>
           </node>
         </node>

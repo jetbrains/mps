@@ -8760,6 +8760,11 @@
             <ref role="3bR37D" node="7Kfy9QB6L0C" resolve="collections.runtime" />
           </node>
         </node>
+        <node concept="1SiIV0" id="5zKdOPJhjkg" role="3bR37C">
+          <node concept="3bR9La" id="5zKdOPJhjkh" role="1SiIV1">
+            <ref role="3bR37D" node="7Kfy9QB6LfK" resolve="jetbrains.mps.dataFlow.runtime" />
+          </node>
+        </node>
         <node concept="1SiIV0" id="2a9bszgruSK" role="3bR37C">
           <node concept="1Busua" id="2a9bszgruSJ" role="1SiIV1">
             <ref role="1Busuk" node="7Kfy9QB6KYb" resolve="jetbrains.mps.baseLanguage" />
@@ -41470,6 +41475,11 @@
         <node concept="1SiIV0" id="l1L199Kyez" role="3bR37C">
           <node concept="3bR9La" id="l1L199Kye$" role="1SiIV1">
             <ref role="3bR37D" node="7Kfy9QB6L4p" resolve="jetbrains.mps.lang.behavior" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="6On3cqDVzJX" role="3bR37C">
+          <node concept="3bR9La" id="6On3cqDVzJY" role="1SiIV1">
+            <ref role="3bR37D" node="7Kfy9QB6LfK" resolve="jetbrains.mps.dataFlow.runtime" />
           </node>
         </node>
         <node concept="1SiIV0" id="4X1d9kMCbFM" role="3bR37C">

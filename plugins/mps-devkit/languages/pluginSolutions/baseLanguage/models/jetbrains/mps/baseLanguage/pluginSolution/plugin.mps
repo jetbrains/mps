@@ -20,7 +20,6 @@
   </languages>
   <imports>
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
-    <import index="1fjm" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow.framework(MPS.Core/)" />
     <import index="tpem" ref="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)" />
     <import index="cxih" ref="r:c6e01f98-6040-4dd0-a88b-62f17e77e610(jetbrains.mps.ide.dataFlow.presentation)" />
     <import index="lzd0" ref="r:97aec248-a91c-439e-a7f1-5184e2da6816(jetbrains.mps.lang.dataFlow.pluginSolution.plugin)" />
@@ -97,6 +96,7 @@
     <import index="d6hs" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.errors.item(MPS.Core/)" />
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
     <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
+    <import index="8qxk" ref="r:3dddb2c7-b2ba-4381-896a-2e702ca1fb6e(jetbrains.mps.lang.dataFlow.framework)" />
   </imports>
   <registry>
     <language id="97a52717-898f-4598-8150-573d9fd03868" name="jetbrains.mps.lang.dataFlow.analyzers">
@@ -751,7 +751,7 @@
           <node concept="3cpWsn" id="56NpvCqHVcM" role="3cpWs9">
             <property role="TrG5h" value="runner" />
             <node concept="3uibUv" id="56NpvCqHVcN" role="1tU5fm">
-              <ref role="3uigEE" to="1fjm:~AnalyzerRunner" resolve="AnalyzerRunner" />
+              <ref role="3uigEE" to="8qxk:3yaa4ph8u69" resolve="AnalyzerRunner" />
               <node concept="3uibUv" id="56NpvCqHVcO" role="11_B2D">
                 <ref role="3uigEE" to="33ny:~Map" resolve="Map" />
                 <node concept="3Tqbb2" id="56NpvCqHVcP" role="11_B2D" />
@@ -814,7 +814,7 @@
                                   <ref role="3cqZAo" node="56NpvCqHVcM" resolve="runner" />
                                 </node>
                                 <node concept="liA8E" id="1ekf28usyLK" role="2OqNvi">
-                                  <ref role="37wK5l" to="1fjm:~AnalyzerRunner.getProgramCopy()" resolve="getProgramCopy" />
+                                  <ref role="37wK5l" to="8qxk:3yaa4ph8ua2" resolve="getProgramCopy" />
                                 </node>
                               </node>
                             </node>

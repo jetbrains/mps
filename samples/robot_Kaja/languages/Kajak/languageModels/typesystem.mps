@@ -8,11 +8,11 @@
     <import index="c2kz" ref="r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="aplb" ref="2af156ab-65c1-4a62-bd0d-ea734f71eab6/r:a1d8bbbf-d4f0-431f-8dcd-a6badc777315(jetbrains.mps.dataFlow.runtime/jetbrains.mps.lang.dataFlow)" />
-    <import index="1fjm" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow.framework(MPS.Core/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
-    <import index="dau9" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow.framework.instructions(MPS.Core/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
+    <import index="8qxk" ref="r:3dddb2c7-b2ba-4381-896a-2e702ca1fb6e(jetbrains.mps.lang.dataFlow.framework)" />
+    <import index="9fia" ref="r:48cf50db-7ea3-4b1e-ab16-c3d84cbcf0df(jetbrains.mps.lang.dataFlow.framework.instructions)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -856,7 +856,7 @@
             <node concept="3cpWsn" id="5K3A7hVfeyM" role="3cpWs9">
               <property role="TrG5h" value="program" />
               <node concept="3uibUv" id="5K3A7hVfeyI" role="1tU5fm">
-                <ref role="3uigEE" to="1fjm:~Program" resolve="Program" />
+                <ref role="3uigEE" to="8qxk:3yaa4ph8tzc" resolve="Program" />
               </node>
               <node concept="2YIFZM" id="5K3A7hVfeyN" role="33vP2m">
                 <ref role="1Pybhc" to="aplb:3HJD4JbIw9v" resolve="DataFlow" />
@@ -891,7 +891,7 @@
                   <ref role="3cqZAo" node="5K3A7hVfeyM" resolve="program" />
                 </node>
                 <node concept="liA8E" id="5gPwU2XAv7E" role="2OqNvi">
-                  <ref role="37wK5l" to="1fjm:~Program.size()" resolve="size" />
+                  <ref role="37wK5l" to="8qxk:3yaa4ph8t_v" resolve="size" />
                 </node>
               </node>
             </node>
@@ -902,7 +902,7 @@
               <node concept="3uibUv" id="5K3A7hVk5Aa" role="1tU5fm">
                 <ref role="3uigEE" to="33ny:~Set" resolve="Set" />
                 <node concept="3uibUv" id="5K3A7hVk5Ad" role="11_B2D">
-                  <ref role="3uigEE" to="dau9:~Instruction" resolve="Instruction" />
+                  <ref role="3uigEE" to="9fia:3yaa4ph8tQC" resolve="Instruction" />
                 </node>
               </node>
               <node concept="2OqwBi" id="5K3A7hVk5Ao" role="33vP2m">
@@ -910,7 +910,7 @@
                   <ref role="3cqZAo" node="5K3A7hVfeyM" resolve="program" />
                 </node>
                 <node concept="liA8E" id="5K3A7hVk5Aq" role="2OqNvi">
-                  <ref role="37wK5l" to="1fjm:~Program.getUnreachableInstructions()" resolve="getUnreachableInstructions" />
+                  <ref role="37wK5l" to="8qxk:3yaa4ph8tHU" resolve="getUnreachableInstructions" />
                 </node>
               </node>
             </node>
@@ -923,7 +923,7 @@
             <node concept="3cpWsn" id="hNAEdLY" role="1Duv9x">
               <property role="TrG5h" value="n" />
               <node concept="3uibUv" id="5K3A7hVk$Af" role="1tU5fm">
-                <ref role="3uigEE" to="dau9:~Instruction" resolve="Instruction" />
+                <ref role="3uigEE" to="9fia:3yaa4ph8tQC" resolve="Instruction" />
               </node>
             </node>
             <node concept="3clFbS" id="hNAEdLT" role="2LFqv$">
@@ -934,7 +934,7 @@
                     <node concept="3Tqbb2" id="5K3A7hVkJ6K" role="10QFUM" />
                     <node concept="2OqwBi" id="5K3A7hVkAPD" role="10QFUP">
                       <node concept="liA8E" id="5K3A7hVkAPE" role="2OqNvi">
-                        <ref role="37wK5l" to="dau9:~Instruction.getSource()" resolve="getSource" />
+                        <ref role="37wK5l" to="9fia:3yaa4ph8tRD" resolve="getSource" />
                       </node>
                       <node concept="37vLTw" id="5K3A7hVkAPF" role="2Oq$k0">
                         <ref role="3cqZAo" node="hNAEdLY" resolve="n" />

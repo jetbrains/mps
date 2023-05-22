@@ -12,15 +12,15 @@
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
-    <import index="dau9" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow.framework.instructions(MPS.Core/)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
-    <import index="1fjm" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow.framework(MPS.Core/)" />
     <import index="jkm4" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui(MPS.IDEA/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="lzb2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui(MPS.IDEA/)" />
     <import index="dxuu" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing(JDK/)" />
     <import index="kz9k" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.navigation(MPS.Editor/)" />
     <import index="z1c3" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
+    <import index="9fia" ref="r:48cf50db-7ea3-4b1e-ab16-c3d84cbcf0df(jetbrains.mps.lang.dataFlow.framework.instructions)" />
+    <import index="8qxk" ref="r:3dddb2c7-b2ba-4381-896a-2e702ca1fb6e(jetbrains.mps.lang.dataFlow.framework)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
   <registry>
@@ -495,7 +495,7 @@
     <node concept="312cEg" id="3HJD4JbIvEE" role="jymVt">
       <property role="TrG5h" value="myInstruction" />
       <node concept="3uibUv" id="3HJD4JbIvEF" role="1tU5fm">
-        <ref role="3uigEE" to="dau9:~Instruction" resolve="Instruction" />
+        <ref role="3uigEE" to="9fia:3yaa4ph8tQC" resolve="Instruction" />
       </node>
       <node concept="3Tm6S6" id="3HJD4JbIvEG" role="1B3o_S" />
     </node>
@@ -504,7 +504,7 @@
       <node concept="37vLTG" id="3HJD4JbIvEJ" role="3clF46">
         <property role="TrG5h" value="instruction" />
         <node concept="3uibUv" id="3HJD4JbIvEK" role="1tU5fm">
-          <ref role="3uigEE" to="dau9:~Instruction" resolve="Instruction" />
+          <ref role="3uigEE" to="9fia:3yaa4ph8tQC" resolve="Instruction" />
         </node>
       </node>
       <node concept="3clFbS" id="3HJD4JbIvEL" role="3clF47">
@@ -562,13 +562,13 @@
               <node concept="Xjq3P" id="3HJD4JbIvF8" role="2Oq$k0" />
             </node>
             <node concept="liA8E" id="3HJD4JbIvF9" role="2OqNvi">
-              <ref role="37wK5l" to="dau9:~Instruction.succ()" resolve="succ" />
+              <ref role="37wK5l" to="9fia:3yaa4ph8tT4" resolve="succ" />
             </node>
           </node>
           <node concept="3cpWsn" id="3HJD4JbIvFa" role="1Duv9x">
             <property role="TrG5h" value="instruction" />
             <node concept="3uibUv" id="3HJD4JbIvFb" role="1tU5fm">
-              <ref role="3uigEE" to="dau9:~Instruction" resolve="Instruction" />
+              <ref role="3uigEE" to="9fia:3yaa4ph8tQC" resolve="Instruction" />
             </node>
           </node>
           <node concept="3clFbS" id="3HJD4JbIvFc" role="2LFqv$">
@@ -640,13 +640,13 @@
               <node concept="Xjq3P" id="3HJD4JbIvFA" role="2Oq$k0" />
             </node>
             <node concept="liA8E" id="3HJD4JbIvFB" role="2OqNvi">
-              <ref role="37wK5l" to="dau9:~Instruction.pred()" resolve="pred" />
+              <ref role="37wK5l" to="9fia:3yaa4ph8tTE" resolve="pred" />
             </node>
           </node>
           <node concept="3cpWsn" id="3HJD4JbIvFC" role="1Duv9x">
             <property role="TrG5h" value="instruction" />
             <node concept="3uibUv" id="3HJD4JbIvFD" role="1tU5fm">
-              <ref role="3uigEE" to="dau9:~Instruction" resolve="Instruction" />
+              <ref role="3uigEE" to="9fia:3yaa4ph8tQC" resolve="Instruction" />
             </node>
           </node>
           <node concept="3clFbS" id="3HJD4JbIvFE" role="2LFqv$">
@@ -684,7 +684,7 @@
       <property role="TrG5h" value="getInstruction" />
       <node concept="3Tm1VV" id="3HJD4JbIvFP" role="1B3o_S" />
       <node concept="3uibUv" id="3HJD4JbIvFQ" role="3clF45">
-        <ref role="3uigEE" to="dau9:~Instruction" resolve="Instruction" />
+        <ref role="3uigEE" to="9fia:3yaa4ph8tQC" resolve="Instruction" />
       </node>
       <node concept="3clFbS" id="3HJD4JbIvFR" role="3clF47">
         <node concept="3cpWs6" id="3HJD4JbIvFS" role="3cqZAp">
@@ -713,7 +713,7 @@
               <node concept="Xjq3P" id="3HJD4JbIvG4" role="2Oq$k0" />
             </node>
             <node concept="liA8E" id="3HJD4JbIvG5" role="2OqNvi">
-              <ref role="37wK5l" to="dau9:~Instruction.toString()" resolve="toString" />
+              <ref role="37wK5l" to="9fia:3yaa4ph8tWC" resolve="toString" />
             </node>
           </node>
         </node>
@@ -854,7 +854,7 @@
           <node concept="3cpWsn" id="3HJD4JbIvHe" role="3cpWs9">
             <property role="TrG5h" value="instruction" />
             <node concept="3uibUv" id="3HJD4JbIvHf" role="1tU5fm">
-              <ref role="3uigEE" to="dau9:~Instruction" resolve="Instruction" />
+              <ref role="3uigEE" to="9fia:3yaa4ph8tQC" resolve="Instruction" />
             </node>
             <node concept="2OqwBi" id="3HJD4JbIvHg" role="33vP2m">
               <node concept="37vLTw" id="2BHiRxgmDzi" role="2Oq$k0">
@@ -888,7 +888,7 @@
                             <ref role="3cqZAo" node="3HJD4JbIvHe" resolve="instruction" />
                           </node>
                           <node concept="liA8E" id="6bzHk29ognp" role="2OqNvi">
-                            <ref role="37wK5l" to="dau9:~Instruction.getSource()" resolve="getSource" />
+                            <ref role="37wK5l" to="9fia:3yaa4ph8tRD" resolve="getSource" />
                           </node>
                         </node>
                         <node concept="3uibUv" id="6bzHk29ognq" role="10QFUM">
@@ -913,7 +913,7 @@
                 <ref role="3cqZAo" node="3HJD4JbIvHe" resolve="instruction" />
               </node>
               <node concept="liA8E" id="6bzHk29ogo8" role="2OqNvi">
-                <ref role="37wK5l" to="dau9:~Instruction.getSource()" resolve="getSource" />
+                <ref role="37wK5l" to="9fia:3yaa4ph8tRD" resolve="getSource" />
               </node>
             </node>
           </node>
@@ -941,7 +941,7 @@
                 <ref role="3cqZAo" node="3HJD4JbIvHe" resolve="instruction" />
               </node>
               <node concept="liA8E" id="6j7_9uL$zBe" role="2OqNvi">
-                <ref role="37wK5l" to="dau9:~Instruction.toString()" resolve="toString" />
+                <ref role="37wK5l" to="9fia:3yaa4ph8tWC" resolve="toString" />
               </node>
             </node>
           </node>
@@ -957,7 +957,7 @@
                 <ref role="3cqZAo" node="3HJD4JbIvHe" resolve="instruction" />
               </node>
               <node concept="liA8E" id="GzG95Qnug7" role="2OqNvi">
-                <ref role="37wK5l" to="dau9:~Instruction.getRuleReference()" resolve="getRuleReference" />
+                <ref role="37wK5l" to="9fia:3yaa4ph8tWM" resolve="getRuleReference" />
               </node>
             </node>
           </node>
@@ -968,7 +968,7 @@
               <ref role="3cqZAo" node="3HJD4JbIvHe" resolve="instruction" />
             </node>
             <node concept="3uibUv" id="3HJD4JbIvHm" role="2ZW6by">
-              <ref role="3uigEE" to="dau9:~IfJumpInstruction" resolve="IfJumpInstruction" />
+              <ref role="3uigEE" to="9fia:3yaa4ph8uJT" resolve="IfJumpInstruction" />
             </node>
           </node>
           <node concept="3clFbS" id="3HJD4JbIvHn" role="3clFbx">
@@ -1008,7 +1008,7 @@
               <ref role="3cqZAo" node="3HJD4JbIvHe" resolve="instruction" />
             </node>
             <node concept="3uibUv" id="3HJD4JbIvH$" role="2ZW6by">
-              <ref role="3uigEE" to="dau9:~JumpInstruction" resolve="JumpInstruction" />
+              <ref role="3uigEE" to="9fia:3yaa4ph8uPR" resolve="JumpInstruction" />
             </node>
           </node>
           <node concept="3clFbS" id="3HJD4JbIvH_" role="3clFbx">
@@ -1048,7 +1048,7 @@
               <ref role="3cqZAo" node="3HJD4JbIvHe" resolve="instruction" />
             </node>
             <node concept="3uibUv" id="3HJD4JbIvHM" role="2ZW6by">
-              <ref role="3uigEE" to="dau9:~WriteInstruction" resolve="WriteInstruction" />
+              <ref role="3uigEE" to="9fia:3yaa4ph8uM7" resolve="WriteInstruction" />
             </node>
           </node>
           <node concept="3clFbS" id="3HJD4JbIvHN" role="3clFbx">
@@ -1088,7 +1088,7 @@
               <ref role="3cqZAo" node="3HJD4JbIvHe" resolve="instruction" />
             </node>
             <node concept="3uibUv" id="3HJD4JbIvI0" role="2ZW6by">
-              <ref role="3uigEE" to="dau9:~ReadInstruction" resolve="ReadInstruction" />
+              <ref role="3uigEE" to="9fia:3yaa4ph8uFE" resolve="ReadInstruction" />
             </node>
           </node>
           <node concept="3clFbS" id="3HJD4JbIvI1" role="3clFbx">
@@ -1128,7 +1128,7 @@
               <ref role="3cqZAo" node="3HJD4JbIvHe" resolve="instruction" />
             </node>
             <node concept="3uibUv" id="3HJD4JbIvIe" role="2ZW6by">
-              <ref role="3uigEE" to="dau9:~RetInstruction" resolve="RetInstruction" />
+              <ref role="3uigEE" to="9fia:3yaa4ph8uaK" resolve="RetInstruction" />
             </node>
           </node>
           <node concept="3clFbS" id="3HJD4JbIvIf" role="3clFbx">
@@ -7110,7 +7110,7 @@
     <node concept="312cEg" id="3HJD4JbIwri" role="jymVt">
       <property role="TrG5h" value="myProgram" />
       <node concept="3uibUv" id="3HJD4JbIwrj" role="1tU5fm">
-        <ref role="3uigEE" to="1fjm:~Program" resolve="Program" />
+        <ref role="3uigEE" to="8qxk:3yaa4ph8tzc" resolve="Program" />
       </node>
       <node concept="3Tm6S6" id="3HJD4JbIwrk" role="1B3o_S" />
     </node>
@@ -7119,7 +7119,7 @@
       <node concept="37vLTG" id="3HJD4JbIwrn" role="3clF46">
         <property role="TrG5h" value="program" />
         <node concept="3uibUv" id="3HJD4JbIwro" role="1tU5fm">
-          <ref role="3uigEE" to="1fjm:~Program" resolve="Program" />
+          <ref role="3uigEE" to="8qxk:3yaa4ph8tzc" resolve="Program" />
         </node>
       </node>
       <node concept="3clFbS" id="3HJD4JbIwrp" role="3clF47">
@@ -7161,7 +7161,7 @@
                   <node concept="Xjq3P" id="3HJD4JbIwrF" role="2Oq$k0" />
                 </node>
                 <node concept="liA8E" id="3HJD4JbIwrG" role="2OqNvi">
-                  <ref role="37wK5l" to="1fjm:~Program.getStart()" resolve="getStart" />
+                  <ref role="37wK5l" to="8qxk:3yaa4ph8t_I" resolve="getStart" />
                 </node>
               </node>
             </node>
@@ -7194,7 +7194,7 @@
                   <node concept="Xjq3P" id="3HJD4JbIwrS" role="2Oq$k0" />
                 </node>
                 <node concept="liA8E" id="3HJD4JbIwrT" role="2OqNvi">
-                  <ref role="37wK5l" to="1fjm:~Program.getEnd()" resolve="getEnd" />
+                  <ref role="37wK5l" to="8qxk:3yaa4ph8t_P" resolve="getEnd" />
                 </node>
               </node>
             </node>
@@ -7252,13 +7252,13 @@
               <node concept="Xjq3P" id="3HJD4JbIwsd" role="2Oq$k0" />
             </node>
             <node concept="liA8E" id="3HJD4JbIwse" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:~Program.getInstructions()" resolve="getInstructions" />
+              <ref role="37wK5l" to="8qxk:3yaa4ph8t$L" resolve="getInstructions" />
             </node>
           </node>
           <node concept="3cpWsn" id="3HJD4JbIwsf" role="1Duv9x">
             <property role="TrG5h" value="instruction" />
             <node concept="3uibUv" id="3HJD4JbIwsg" role="1tU5fm">
-              <ref role="3uigEE" to="dau9:~Instruction" resolve="Instruction" />
+              <ref role="3uigEE" to="9fia:3yaa4ph8tQC" resolve="Instruction" />
             </node>
           </node>
           <node concept="3clFbS" id="3HJD4JbIwsh" role="2LFqv$">
