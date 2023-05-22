@@ -200,11 +200,13 @@ public class CreateRootNodeGroup extends BaseGroup {
             langRootsGroup.addSeparator();
             two.forEach(addLangGroup);
           }
+          CreateRootNodeGroup.this.add(langRootsGroup);
         }
       }
     });
 
-    if (getChildrenCount() == 0) {
+    if (getChildrenCount() <= 3) {
+      // we always add 3 separators, they are treated as children
       add(ActionManager.getInstance().getAction(
           "jetbrains.mps.ide.editor.actions.AddLanguageImport_Action"/* FIXME AddLanguageImport_Action.class.getName()*/));
     }
