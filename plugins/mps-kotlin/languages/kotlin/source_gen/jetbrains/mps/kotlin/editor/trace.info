@@ -26,7 +26,7 @@
       <unit at="25,0,69,0" name="jetbrains.mps.kotlin.editor.Annotation_SubstituteMenu" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="22,0,911,0" name="jetbrains.mps.kotlin.editor.EditorAspectDescriptorImpl" />
+      <unit at="22,0,913,0" name="jetbrains.mps.kotlin.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="InfixCallOperator_SubstituteMenu.java">
       <unit at="61,0,64,0" name="jetbrains.mps.kotlin.editor.InfixCallOperator_SubstituteMenu$CONCEPTS" />
@@ -23035,8 +23035,8 @@
       <node id="2936055411798378299" at="68,72,69,189" concept="8" />
       <node id="2936055411798378299" at="69,189,70,60" concept="3" />
       <node id="2936055411798378299" at="70,60,71,48" concept="3" />
-      <node id="2936055411798378299" at="71,48,72,43" concept="3" />
-      <node id="2936055411798378299" at="72,43,73,20" concept="9" />
+      <node id="2936055411798378299" at="71,48,72,54" concept="3" />
+      <node id="2936055411798378299" at="72,54,73,20" concept="9" />
       <node id="2936055411798378299" at="75,6,76,0" concept="11" />
       <node id="2936055411798378299" at="76,0,77,49" concept="3" />
       <node id="2936055411798378299" at="77,49,78,50" concept="8" />
@@ -27586,8 +27586,8 @@
       <unit id="2954821879860436521" at="19,0,35,0" name="jetbrains.mps.kotlin.editor.CallOperation_Explicit_SubtituteMenu" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="2954821879860436521" at="873,84,874,101" concept="9" />
-      <scope id="2954821879860436521" at="873,84,874,101" />
+      <node id="2954821879860436521" at="875,84,876,101" concept="9" />
+      <scope id="2954821879860436521" at="875,84,876,101" />
     </file>
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/2979665926836853824">
@@ -28573,8 +28573,8 @@
       <unit id="2998782254610868475" at="31,0,212,0" name="jetbrains.mps.kotlin.editor.ClassParameter_ValVarSubstitution" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="2998782254610868475" at="882,81,883,98" concept="9" />
-      <scope id="2998782254610868475" at="882,81,883,98" />
+      <node id="2998782254610868475" at="884,81,885,98" concept="9" />
+      <scope id="2998782254610868475" at="884,81,885,98" />
     </file>
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/2998782254613021108">
@@ -36900,6 +36900,108 @@
       <unit id="5622728304613336115" at="23,0,114,0" name="jetbrains.mps.kotlin.editor.StringLiteral_InsertExpression" />
     </file>
   </root>
+  <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/5686928198623515958">
+    <file name="EnumEntry_SubstituteMenu.java">
+      <node id="5686928198623515958" at="31,37,32,205" concept="14" />
+      <node id="5686928198623515958" at="36,118,37,140" concept="8" />
+      <node id="5686928198623515963" at="37,140,38,117" concept="3" />
+      <node id="5686928198623515958" at="38,117,39,18" concept="9" />
+      <node id="5686928198623515963" at="46,77,47,37" concept="8" />
+      <node id="5686928198623515963" at="47,37,48,25" concept="8" />
+      <node id="5686928198623515963" at="49,11,50,69" concept="3" />
+      <node id="5686928198623515963" at="51,29,52,113" concept="3" />
+      <node id="5686928198623515963" at="52,113,53,20" concept="9" />
+      <node id="5686928198623515963" at="54,7,55,0" concept="11" />
+      <node id="5686928198623515963" at="55,0,56,52" concept="3" />
+      <node id="5686928198623515963" at="57,11,58,207" concept="3" />
+      <node id="5686928198623515963" at="58,207,59,72" concept="3" />
+      <node id="5686928198623515963" at="60,17,61,53" concept="3" />
+      <node id="5686928198623515963" at="62,7,63,0" concept="11" />
+      <node id="5686928198623515963" at="63,0,64,18" concept="9" />
+      <node id="5686928198623515963" at="67,0,68,0" concept="4" trace="_context" />
+      <node id="5686928198623515963" at="68,0,69,0" concept="4" trace="myTraceInfo" />
+      <node id="5686928198623515963" at="69,50,70,46" concept="14" />
+      <node id="5686928198623515963" at="70,46,71,27" concept="3" />
+      <node id="5686928198623515963" at="74,64,75,32" concept="3" />
+      <node id="5686928198623543086" at="80,56,81,88" concept="8" />
+      <node id="5686928198623521324" at="81,88,82,68" concept="3" />
+      <node id="5686928198623557542" at="82,68,83,21" concept="9" />
+      <node id="5686928198623515963" at="87,49,88,27" concept="9" />
+      <node id="5686928198623571302" at="92,62,93,63" concept="9" />
+      <node id="5686928198623579781" at="97,65,98,28" concept="9" />
+      <node id="5686928198623561656" at="101,79,102,140" concept="3" />
+      <node id="5686928198623515958" at="108,0,109,0" concept="12" trace="EnumEntry$ji" />
+      <node id="5686928198623515958" at="112,0,113,0" concept="12" trace="name$MnvL" />
+      <node id="5686928198623515958" at="31,0,34,0" concept="2" trace="EnumEntry_SubstituteMenu#()V" />
+      <node id="5686928198623515963" at="74,0,77,0" concept="7" trace="setTraceInfo#(Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;)V" />
+      <node id="5686928198623515963" at="69,0,73,0" concept="2" trace="Item#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)V" />
+      <node id="5686928198623515963" at="86,0,90,0" concept="7" trace="getTraceInfo#()Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;" />
+      <node id="5686928198623558035" at="100,0,104,0" concept="7" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)V" />
+      <node id="5686928198623566813" at="90,0,95,0" concept="7" trace="getMatchingText#(Ljava/lang/String;)Ljava/lang/String;" />
+      <node id="5686928198623579213" at="95,0,100,0" concept="7" trace="getDescriptionText#(Ljava/lang/String;)Ljava/lang/String;" />
+      <node id="5686928198623515963" at="48,25,54,7" concept="15" />
+      <node id="5686928198623515963" at="56,52,62,7" concept="15" />
+      <node id="5686928198623515958" at="34,0,41,0" concept="7" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <node id="5686928198623515963" at="78,0,85,0" concept="7" trace="createNode#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="5686928198623515963" at="44,0,66,0" concept="7" trace="createItem#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuItem;" />
+      <scope id="5686928198623515958" at="31,37,32,205" />
+      <scope id="5686928198623515963" at="49,11,50,69" />
+      <scope id="5686928198623515963" at="60,17,61,53" />
+      <scope id="5686928198623515963" at="74,64,75,32" />
+      <scope id="5686928198623515963" at="87,49,88,27" />
+      <scope id="5686928198623566813" at="92,62,93,63" />
+      <scope id="5686928198623579213" at="97,65,98,28" />
+      <scope id="5686928198623558037" at="101,79,102,140" />
+      <scope id="5686928198623515963" at="51,29,53,20" />
+      <scope id="5686928198623515963" at="57,11,59,72" />
+      <scope id="5686928198623515963" at="69,50,71,27" />
+      <scope id="5686928198623515958" at="31,0,34,0" />
+      <scope id="5686928198623515958" at="36,118,39,18">
+        <var name="result" id="5686928198623515958" />
+      </scope>
+      <scope id="5686928198623515963" at="51,7,54,7">
+        <var name="t" id="5686928198623515963" />
+      </scope>
+      <scope id="5686928198623515963" at="74,0,77,0">
+        <var name="traceInfo" id="5686928198623515963" />
+      </scope>
+      <scope id="5686928198623515963" at="80,56,83,21">
+        <var name="entry" id="5686928198623543087" />
+      </scope>
+      <scope id="5686928198623515963" at="69,0,73,0">
+        <var name="context" id="5686928198623515963" />
+      </scope>
+      <scope id="5686928198623515963" at="86,0,90,0" />
+      <scope id="5686928198623558035" at="100,0,104,0">
+        <var name="createdNode" id="5686928198623558035" />
+        <var name="pattern" id="5686928198623558035" />
+      </scope>
+      <scope id="5686928198623566813" at="90,0,95,0">
+        <var name="pattern" id="5686928198623566813" />
+      </scope>
+      <scope id="5686928198623579213" at="95,0,100,0">
+        <var name="pattern" id="5686928198623579213" />
+      </scope>
+      <scope id="5686928198623515958" at="34,0,41,0">
+        <var name="_context" id="5686928198623515958" />
+      </scope>
+      <scope id="5686928198623515963" at="78,0,85,0">
+        <var name="pattern" id="5686928198623515963" />
+      </scope>
+      <scope id="5686928198623515963" at="46,77,64,18">
+        <var name="description" id="5686928198623515963" />
+        <var name="item" id="5686928198623515963" />
+      </scope>
+      <scope id="5686928198623515963" at="44,0,66,0">
+        <var name="_context" id="5686928198623515963" />
+      </scope>
+      <unit id="5686928198623515958" at="107,0,110,0" name="jetbrains.mps.kotlin.editor.EnumEntry_SubstituteMenu$CONCEPTS" />
+      <unit id="5686928198623515958" at="111,0,114,0" name="jetbrains.mps.kotlin.editor.EnumEntry_SubstituteMenu$PROPS" />
+      <unit id="5686928198623515963" at="66,0,105,0" name="jetbrains.mps.kotlin.editor.EnumEntry_SubstituteMenu$SMP_Action_shwab_a$Item" />
+      <unit id="5686928198623515963" at="42,0,106,0" name="jetbrains.mps.kotlin.editor.EnumEntry_SubstituteMenu$SMP_Action_shwab_a" />
+      <unit id="5686928198623515958" at="30,0,115,0" name="jetbrains.mps.kotlin.editor.EnumEntry_SubstituteMenu" />
+    </file>
+  </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/5817876352939336756">
     <file name="ComponentFunctionCall_SubstituteMenu.java">
       <node id="5817876352939336756" at="26,49,27,217" concept="14" />
@@ -44715,8 +44817,8 @@
       <unit id="8206368354797004582" at="22,0,54,0" name="jetbrains.mps.kotlin.editor.BinaryExpression_AllSubconcepts" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="8206368354797004582" at="864,79,865,96" concept="9" />
-      <scope id="8206368354797004582" at="864,79,865,96" />
+      <node id="8206368354797004582" at="866,79,867,96" concept="9" />
+      <scope id="8206368354797004582" at="866,79,867,96" />
     </file>
   </root>
   <root nodeRef="r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)/8206368354797010245">

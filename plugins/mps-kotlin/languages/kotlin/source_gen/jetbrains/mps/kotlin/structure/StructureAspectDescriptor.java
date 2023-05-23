@@ -1406,9 +1406,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc83114d2ab6L);
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x298a6a355c110274L);
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6e77b7e7a89e49faL);
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x7b9f2288076b136aL);
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798373683");
     b.version(3);
-    b.associate("constructor", 0x54037f6c70310ef6L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2a5d3409768d2f2bL).optional(false).origin("6053822427831537398").done();
+    b.associate("constructor", 0x54037f6c70310ef6L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2a5d3409768d2f2bL).optional(true).origin("6053822427831537398").done();
     b.alias("EnumEntry");
     return b.create();
   }

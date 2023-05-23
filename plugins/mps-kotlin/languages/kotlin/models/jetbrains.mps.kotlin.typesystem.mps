@@ -26,6 +26,7 @@
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="tbhz" ref="r:7d051f7f-1a28-4ed6-9de6-95fd49d3fa23(jetbrains.mps.kotlin.scopes)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
+    <import index="94s8" ref="r:133e8cac-c6ad-447f-a90c-5146ca3b1aed(jetbrains.mps.kotlin.constraints)" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
@@ -108,6 +109,7 @@
       <concept id="1225271177708" name="jetbrains.mps.baseLanguage.structure.StringType" flags="in" index="17QB3L" />
       <concept id="1225271221393" name="jetbrains.mps.baseLanguage.structure.NPENotEqualsExpression" flags="nn" index="17QLQc" />
       <concept id="1225271283259" name="jetbrains.mps.baseLanguage.structure.NPEEqualsExpression" flags="nn" index="17R0WA" />
+      <concept id="1225271408483" name="jetbrains.mps.baseLanguage.structure.IsNotEmptyOperation" flags="nn" index="17RvpY" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
@@ -3448,6 +3450,71 @@
       <ref role="1YaFvo" to="hcm8:2yYXHtl6Jkt" resolve="TryExpression" />
     </node>
   </node>
+  <node concept="18kY7G" id="1WN66f3DIDl">
+    <property role="TrG5h" value="check_EnumClassDeclaration" />
+    <property role="3GE5qa" value="declaration.class.enum" />
+    <node concept="3clFbS" id="1WN66f3DIDm" role="18ibNy">
+      <node concept="3clFbF" id="1WN66f3DTLB" role="3cqZAp">
+        <node concept="2OqwBi" id="1WN66f3DUuG" role="3clFbG">
+          <property role="hSjvv" value="true" />
+          <node concept="2OqwBi" id="1WN66f3DLo1" role="2Oq$k0">
+            <property role="hSjvv" value="true" />
+            <node concept="2OqwBi" id="1WN66f3DJf5" role="2Oq$k0">
+              <property role="hSjvv" value="true" />
+              <node concept="1YBJjd" id="1WN66f3DILB" role="2Oq$k0">
+                <ref role="1YBMHb" node="1WN66f3DIDo" resolve="enumClassDeclaration" />
+              </node>
+              <node concept="3Tsc0h" id="1WN66f3DK17" role="2OqNvi">
+                <ref role="3TtcxE" to="hcm8:1Izr$$XgfU_" resolve="superclasses" />
+              </node>
+            </node>
+            <node concept="3zZkjj" id="1WN66f3DTAV" role="2OqNvi">
+              <node concept="1bVj0M" id="1WN66f3DTAX" role="23t8la">
+                <node concept="3clFbS" id="1WN66f3DTAY" role="1bW5cS">
+                  <node concept="3clFbF" id="1WN66f3DTAZ" role="3cqZAp">
+                    <node concept="2OqwBi" id="1WN66f3DTB7" role="3clFbG">
+                      <node concept="37vLTw" id="1WN66f3DTB8" role="2Oq$k0">
+                        <ref role="3cqZAo" node="1WN66f3DTBa" resolve="it" />
+                      </node>
+                      <node concept="2qgKlT" id="1WN66f3DTB9" role="2OqNvi">
+                        <ref role="37wK5l" to="hez:1$jFvlEiPXX" resolve="isClass" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="Rh6nW" id="1WN66f3DTBa" role="1bW2Oz">
+                  <property role="TrG5h" value="it" />
+                  <node concept="2jxLKc" id="1WN66f3DTBb" role="1tU5fm" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2es0OD" id="1WN66f3DVku" role="2OqNvi">
+            <node concept="1bVj0M" id="1WN66f3DVkw" role="23t8la">
+              <node concept="3clFbS" id="1WN66f3DVkx" role="1bW5cS">
+                <node concept="2MkqsV" id="1WN66f3DVAn" role="3cqZAp">
+                  <node concept="Xl_RD" id="1WN66f3DW5C" role="2MkJ7o">
+                    <property role="Xl_RC" value="Enum class cannot inherit from classes" />
+                  </node>
+                  <node concept="37vLTw" id="1WN66f3DWoH" role="1urrMF">
+                    <ref role="3cqZAo" node="1WN66f3DVky" resolve="it" />
+                  </node>
+                </node>
+              </node>
+              <node concept="Rh6nW" id="1WN66f3DVky" role="1bW2Oz">
+                <property role="TrG5h" value="it" />
+                <node concept="2jxLKc" id="1WN66f3DVkz" role="1tU5fm" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="1WN66f3DIDo" role="1YuTPh">
+      <property role="TrG5h" value="enumClassDeclaration" />
+      <ref role="1YaFvo" to="hcm8:2yYXHtlhVmE" resolve="EnumClassDeclaration" />
+    </node>
+  </node>
   <node concept="18kY7G" id="$q1KckWPIA">
     <property role="TrG5h" value="check_IClassLike_InheritedMembers" />
     <property role="3GE5qa" value="declaration.class" />
@@ -5209,69 +5276,165 @@
       <ref role="1YaFvo" to="hcm8:2yYXHtl6JhD" resolve="ClassDeclaration" />
     </node>
   </node>
-  <node concept="18kY7G" id="1WN66f3DIDl">
-    <property role="TrG5h" value="check_EnumClassDeclaration" />
-    <property role="3GE5qa" value="declaration.class.enum" />
-    <node concept="3clFbS" id="1WN66f3DIDm" role="18ibNy">
-      <node concept="3clFbF" id="1WN66f3DTLB" role="3cqZAp">
-        <node concept="2OqwBi" id="1WN66f3DUuG" role="3clFbG">
-          <property role="hSjvv" value="true" />
-          <node concept="2OqwBi" id="1WN66f3DLo1" role="2Oq$k0">
-            <property role="hSjvv" value="true" />
-            <node concept="2OqwBi" id="1WN66f3DJf5" role="2Oq$k0">
-              <property role="hSjvv" value="true" />
-              <node concept="1YBJjd" id="1WN66f3DILB" role="2Oq$k0">
-                <ref role="1YBMHb" node="1WN66f3DIDo" resolve="enumClassDeclaration" />
-              </node>
-              <node concept="3Tsc0h" id="1WN66f3DK17" role="2OqNvi">
-                <ref role="3TtcxE" to="hcm8:1Izr$$XgfU_" resolve="superclasses" />
-              </node>
+  <node concept="18kY7G" id="1TlnM4CUYn1">
+    <property role="TrG5h" value="check_IIdentifier_KeywordClash" />
+    <property role="3GE5qa" value="identifier" />
+    <node concept="3clFbS" id="1TlnM4CUYn2" role="18ibNy">
+      <node concept="3SKdUt" id="1TlnM4D5pn6" role="3cqZAp">
+        <node concept="1PaTwC" id="1TlnM4D5pn7" role="1aUNEU">
+          <node concept="3oM_SD" id="1TlnM4D5pnV" role="1PaTwD">
+            <property role="3oM_SC" value="This" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5pnX" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5po0" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5po4" role="1PaTwD">
+            <property role="3oM_SC" value="'soft'" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5po9" role="1PaTwD">
+            <property role="3oM_SC" value="constraint" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5pof" role="1PaTwD">
+            <property role="3oM_SC" value="as" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5pom" role="1PaTwD">
+            <property role="3oM_SC" value="it" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5poL" role="1PaTwD">
+            <property role="3oM_SC" value="shouldn't" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5poU" role="1PaTwD">
+            <property role="3oM_SC" value="prevent" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5pp4" role="1PaTwD">
+            <property role="3oM_SC" value="user" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5ppf" role="1PaTwD">
+            <property role="3oM_SC" value="from" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5ppr" role="1PaTwD">
+            <property role="3oM_SC" value="typing" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5ppC" role="1PaTwD">
+            <property role="3oM_SC" value="keywords" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5ppQ" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5pq5" role="1PaTwD">
+            <property role="3oM_SC" value="names" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5pql" role="1PaTwD">
+            <property role="3oM_SC" value="as" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5pqA" role="1PaTwD">
+            <property role="3oM_SC" value="long" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5pqS" role="1PaTwD">
+            <property role="3oM_SC" value="as" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5prO" role="1PaTwD">
+            <property role="3oM_SC" value="it" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5ps8" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5pst" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5psN" role="1PaTwD">
+            <property role="3oM_SC" value="transitive" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5ptV" role="1PaTwD">
+            <property role="3oM_SC" value="state" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5puj" role="1PaTwD">
+            <property role="3oM_SC" value="(for" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5puG" role="1PaTwD">
+            <property role="3oM_SC" value="typing" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5pv6" role="1PaTwD">
+            <property role="3oM_SC" value="'isSomething'," />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5pvx" role="1PaTwD">
+            <property role="3oM_SC" value="one" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5pvX" role="1PaTwD">
+            <property role="3oM_SC" value="need" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5pwq" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5pwS" role="1PaTwD">
+            <property role="3oM_SC" value="type" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5pxn" role="1PaTwD">
+            <property role="3oM_SC" value="'is'" />
+          </node>
+          <node concept="3oM_SD" id="1TlnM4D5pxR" role="1PaTwD">
+            <property role="3oM_SC" value="first)" />
+          </node>
+        </node>
+      </node>
+      <node concept="3cpWs8" id="4VG1L3AgkRs" role="3cqZAp">
+        <node concept="3cpWsn" id="4VG1L3AgkRt" role="3cpWs9">
+          <property role="TrG5h" value="name" />
+          <node concept="17QB3L" id="4VG1L3AgkQX" role="1tU5fm" />
+          <node concept="2OqwBi" id="4VG1L3AgkRu" role="33vP2m">
+            <node concept="1YBJjd" id="4VG1L3AgkRv" role="2Oq$k0">
+              <ref role="1YBMHb" node="1TlnM4CUYn4" resolve="iIdentifier" />
             </node>
-            <node concept="3zZkjj" id="1WN66f3DTAV" role="2OqNvi">
-              <node concept="1bVj0M" id="1WN66f3DTAX" role="23t8la">
-                <node concept="3clFbS" id="1WN66f3DTAY" role="1bW5cS">
-                  <node concept="3clFbF" id="1WN66f3DTAZ" role="3cqZAp">
-                    <node concept="2OqwBi" id="1WN66f3DTB7" role="3clFbG">
-                      <node concept="37vLTw" id="1WN66f3DTB8" role="2Oq$k0">
-                        <ref role="3cqZAo" node="1WN66f3DTBa" resolve="it" />
-                      </node>
-                      <node concept="2qgKlT" id="1WN66f3DTB9" role="2OqNvi">
-                        <ref role="37wK5l" to="hez:1$jFvlEiPXX" resolve="isClass" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-                <node concept="Rh6nW" id="1WN66f3DTBa" role="1bW2Oz">
-                  <property role="TrG5h" value="it" />
-                  <node concept="2jxLKc" id="1WN66f3DTBb" role="1tU5fm" />
-                </node>
-              </node>
+            <node concept="3TrcHB" id="4VG1L3AgkRw" role="2OqNvi">
+              <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
             </node>
           </node>
-          <node concept="2es0OD" id="1WN66f3DVku" role="2OqNvi">
-            <node concept="1bVj0M" id="1WN66f3DVkw" role="23t8la">
-              <node concept="3clFbS" id="1WN66f3DVkx" role="1bW5cS">
-                <node concept="2MkqsV" id="1WN66f3DVAn" role="3cqZAp">
-                  <node concept="Xl_RD" id="1WN66f3DW5C" role="2MkJ7o">
-                    <property role="Xl_RC" value="Enum class cannot inherit from classes" />
-                  </node>
-                  <node concept="37vLTw" id="1WN66f3DWoH" role="1urrMF">
-                    <ref role="3cqZAo" node="1WN66f3DVky" resolve="it" />
-                  </node>
+        </node>
+      </node>
+      <node concept="3clFbJ" id="1TlnM4CVawh" role="3cqZAp">
+        <node concept="3clFbS" id="1TlnM4CVawj" role="3clFbx">
+          <node concept="2MkqsV" id="1TlnM4CVd6Q" role="3cqZAp">
+            <node concept="3cpWs3" id="1TlnM4CVd7i" role="2MkJ7o">
+              <node concept="3cpWs3" id="1TlnM4D0KuJ" role="3uHU7B">
+                <node concept="Xl_RD" id="1TlnM4D0KuM" role="3uHU7B">
+                  <property role="Xl_RC" value="'" />
+                </node>
+                <node concept="37vLTw" id="4VG1L3AgkRx" role="3uHU7w">
+                  <ref role="3cqZAo" node="4VG1L3AgkRt" resolve="name" />
                 </node>
               </node>
-              <node concept="Rh6nW" id="1WN66f3DVky" role="1bW2Oz">
-                <property role="TrG5h" value="it" />
-                <node concept="2jxLKc" id="1WN66f3DVkz" role="1tU5fm" />
+              <node concept="Xl_RD" id="1TlnM4CVd75" role="3uHU7w">
+                <property role="Xl_RC" value="' is a reserved keyword" />
               </node>
+            </node>
+            <node concept="1YBJjd" id="1TlnM4CVdYz" role="1urrMF">
+              <ref role="1YBMHb" node="1TlnM4CUYn4" resolve="iIdentifier" />
+            </node>
+          </node>
+        </node>
+        <node concept="1Wc70l" id="4VG1L3AgkPU" role="3clFbw">
+          <node concept="2OqwBi" id="4VG1L3Aglo9" role="3uHU7B">
+            <node concept="37vLTw" id="4VG1L3AgkTQ" role="2Oq$k0">
+              <ref role="3cqZAo" node="4VG1L3AgkRt" resolve="name" />
+            </node>
+            <node concept="17RvpY" id="4VG1L3AglQV" role="2OqNvi" />
+          </node>
+          <node concept="2YIFZM" id="1TlnM4CVcXK" role="3uHU7w">
+            <ref role="37wK5l" to="94s8:2yYXHtlgolv" resolve="isKeyword" />
+            <ref role="1Pybhc" to="94s8:2yYXHtlg3J3" resolve="Identifiers" />
+            <node concept="37vLTw" id="4VG1L3AgkRy" role="37wK5m">
+              <ref role="3cqZAo" node="4VG1L3AgkRt" resolve="name" />
             </node>
           </node>
         </node>
       </node>
     </node>
-    <node concept="1YaCAy" id="1WN66f3DIDo" role="1YuTPh">
-      <property role="TrG5h" value="enumClassDeclaration" />
-      <ref role="1YaFvo" to="hcm8:2yYXHtlhVmE" resolve="EnumClassDeclaration" />
+    <node concept="1YaCAy" id="1TlnM4CUYn4" role="1YuTPh">
+      <property role="TrG5h" value="iIdentifier" />
+      <ref role="1YaFvo" to="hcm8:2yYXHtl6JcK" resolve="IIdentifier" />
     </node>
   </node>
 </model>

@@ -12,6 +12,8 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.kotlin.api.declaration.FunctionDeclaration;
+import jetbrains.mps.kotlin.scopes.signed.SignatureScope;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.kotlin.api.declaration.ParameterDeclaration;
 import jetbrains.mps.kotlin.overloading.Argument;
 import java.util.List;
@@ -21,6 +23,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.kotlin.scopes.signed.ListSignatureScope;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.kotlin.api.members.SourcedSignature;
+import jetbrains.mps.kotlin.signatures.FunctionSignature;
+import jetbrains.mps.kotlin.api.members.TypeExpander;
 import java.util.Collections;
 import jetbrains.mps.kotlin.overloading.NodeArgument;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -29,7 +36,6 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class EnumEntry__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af533L, "jetbrains.mps.kotlin.structure.EnumEntry");
@@ -40,6 +46,7 @@ public final class EnumEntry__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SReferenceLink> getTargetLink_id5D4bOjrrcOr = new SMethodBuilder<SReferenceLink>(new SJavaCompoundTypeImpl(SReferenceLink.class)).name("getTargetLink").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6504375734615461147L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<MemberReceiver> getReceiver_id5D4bOjrrgiZ = new SMethodBuilder<MemberReceiver>(new SJavaCompoundTypeImpl(MemberReceiver.class)).name("getReceiver").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6504375734615475391L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<FunctionDeclaration> getFunctionDescriptor_id26mUjU3xhgD = new SMethodBuilder<FunctionDeclaration>(new SJavaCompoundTypeImpl(FunctionDeclaration.class)).name("getFunctionDescriptor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2420378304462001193L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Iterable<SignatureScope>> getFunctionScopeParts_id6dAo8EmAhT7 = new SMethodBuilder<Iterable<SignatureScope>>(new SJavaCompoundTypeImpl((Class<Iterable<SignatureScope>>) ((Class) Object.class))).name("getFunctionScopeParts").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7162518405727723079L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(SContainmentLink.class, ""));
   public static final SMethod<Iterable<ParameterDeclaration>> getAvailableParameters_id1$jFvlD0xqw = new SMethodBuilder<Iterable<ParameterDeclaration>>(new SJavaCompoundTypeImpl((Class<Iterable<ParameterDeclaration>>) ((Class) Object.class))).name("getAvailableParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1806979145046038176L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Iterable<Argument>> getArguments_id1VI7K1jROBX = new SMethodBuilder<Iterable<Argument>>(new SJavaCompoundTypeImpl((Class<Iterable<Argument>>) ((Class) Object.class))).name("getArguments").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2228752951862577661L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Iterable<SNode>> getTypeArguments_id5JfKd21NW9H = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getTypeArguments").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6615718379394155117L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
@@ -47,7 +54,7 @@ public final class EnumEntry__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> isAnnotationTargetAllowed_id6nA1THM505G = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAnnotationTargetAllowed").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7342564606689411436L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> isAbstractClass_id$q1KckYQOy = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAbstractClass").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(655844405554146594L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLocal_id1vYW8S3rTh_, getThisType_id46gC9M6gB68, getFunctionName_id4nn3FPlEjh5, getTargetLink_id5D4bOjrrcOr, getReceiver_id5D4bOjrrgiZ, getFunctionDescriptor_id26mUjU3xhgD, getAvailableParameters_id1$jFvlD0xqw, getArguments_id1VI7K1jROBX, getTypeArguments_id5JfKd21NW9H, getType_id1TQsu41FTV5, isAnnotationTargetAllowed_id6nA1THM505G, isAbstractClass_id$q1KckYQOy);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLocal_id1vYW8S3rTh_, getThisType_id46gC9M6gB68, getFunctionName_id4nn3FPlEjh5, getTargetLink_id5D4bOjrrcOr, getReceiver_id5D4bOjrrgiZ, getFunctionDescriptor_id26mUjU3xhgD, getFunctionScopeParts_id6dAo8EmAhT7, getAvailableParameters_id1$jFvlD0xqw, getArguments_id1VI7K1jROBX, getTypeArguments_id5JfKd21NW9H, getType_id1TQsu41FTV5, isAnnotationTargetAllowed_id6nA1THM505G, isAbstractClass_id$q1KckYQOy);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -71,6 +78,18 @@ public final class EnumEntry__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static FunctionDeclaration getFunctionDescriptor_id26mUjU3xhgD(@NotNull SNode __thisNode__) {
     return KotlinFunctionDeclaration.of(SLinkOperations.getTarget(__thisNode__, LINKS.constructor$jJZA));
+  }
+  /*package*/ static Iterable<SignatureScope> getFunctionScopeParts_id6dAo8EmAhT7(@NotNull SAbstractConcept __thisConcept__, SNode referenceNode, final SNode contextNode, SContainmentLink containment) {
+
+    return Sequence.<SignatureScope>singleton(new ListSignatureScope(() -> {
+      return Sequence.fromIterable(IClassLike__BehaviorDescriptor.getConstructors_id2NtWm0y9fFa.invoke(SNodeOperations.getNodeAncestor(contextNode, CONCEPTS.EnumClassDeclaration$xK, true, false))).select(new ISelector<SNode, SourcedSignature>() {
+        public SourcedSignature select(SNode it) {
+          FunctionDeclaration decl = KotlinFunctionDeclaration.of(it);
+          FunctionSignature sig = new FunctionSignature(decl, ((TypeExpander) null));
+          return new SourcedSignature(it, sig);
+        }
+      });
+    }));
   }
   @NotNull
   /*package*/ static Iterable<ParameterDeclaration> getAvailableParameters_id1$jFvlD0xqw(@NotNull SNode __thisNode__) {
@@ -125,17 +144,17 @@ public final class EnumEntry__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((MemberReceiver) getReceiver_id5D4bOjrrgiZ(node));
       case 5:
         return (T) ((FunctionDeclaration) getFunctionDescriptor_id26mUjU3xhgD(node));
-      case 6:
-        return (T) ((Iterable<ParameterDeclaration>) getAvailableParameters_id1$jFvlD0xqw(node));
       case 7:
-        return (T) ((Iterable<Argument>) getArguments_id1VI7K1jROBX(node));
+        return (T) ((Iterable<ParameterDeclaration>) getAvailableParameters_id1$jFvlD0xqw(node));
       case 8:
-        return (T) ((Iterable<SNode>) getTypeArguments_id5JfKd21NW9H(node));
+        return (T) ((Iterable<Argument>) getArguments_id1VI7K1jROBX(node));
       case 9:
-        return (T) ((TypeReference) getType_id1TQsu41FTV5(node));
+        return (T) ((Iterable<SNode>) getTypeArguments_id5JfKd21NW9H(node));
       case 10:
-        return (T) ((Boolean) isAnnotationTargetAllowed_id6nA1THM505G(node, (SAbstractConcept) parameters[0]));
+        return (T) ((TypeReference) getType_id1TQsu41FTV5(node));
       case 11:
+        return (T) ((Boolean) isAnnotationTargetAllowed_id6nA1THM505G(node, (SAbstractConcept) parameters[0]));
+      case 12:
         return (T) ((Boolean) isAbstractClass_id$q1KckYQOy(node));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -149,6 +168,8 @@ public final class EnumEntry__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 6:
+        return (T) ((Iterable<SignatureScope>) getFunctionScopeParts_id6dAo8EmAhT7(concept, (SNode) parameters[0], (SNode) parameters[1], (SContainmentLink) parameters[2]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

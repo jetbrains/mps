@@ -20524,5 +20524,91 @@
     </node>
     <node concept="22hDWj" id="1ACpgrxdlIr" role="22hAXT" />
   </node>
+  <node concept="22mcaB" id="4VG1L3A6PkQ">
+    <property role="3GE5qa" value="declaration.class.enum" />
+    <ref role="aqKnT" to="hcm8:2yYXHtl6JkN" resolve="EnumEntry" />
+    <node concept="3eGOop" id="4VG1L3A6PkV" role="3ft7WO">
+      <node concept="16NfWO" id="4VG1L3A71Jt" role="upBLP">
+        <node concept="uGdhv" id="4VG1L3A71RW" role="16NeZM">
+          <node concept="3clFbS" id="4VG1L3A71RY" role="2VODD2">
+            <node concept="3clFbF" id="4VG1L3A72PA" role="3cqZAp">
+              <node concept="3K4zz7" id="4VG1L3A73Ur" role="3clFbG">
+                <node concept="ub8z3" id="4VG1L3A741p" role="3K4E3e" />
+                <node concept="10Nm6u" id="4VG1L3A742u" role="3K4GZi" />
+                <node concept="2YIFZM" id="4VG1L3A72Rd" role="3K4Cdx">
+                  <ref role="37wK5l" to="94s8:213J8cgUBOZ" resolve="isValid" />
+                  <ref role="1Pybhc" to="94s8:2yYXHtlg3J3" resolve="Identifiers" />
+                  <node concept="ub8z3" id="4VG1L3A72Wy" role="37wK5m" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="16NL0t" id="4VG1L3A74Ld" role="upBLP">
+        <node concept="2h3Zct" id="4VG1L3A74U5" role="16NL0q">
+          <property role="2h4Kg1" value="enum entry" />
+        </node>
+      </node>
+      <node concept="ucgPf" id="4VG1L3A6PkX" role="3aKz83">
+        <node concept="3clFbS" id="4VG1L3A6PkZ" role="2VODD2">
+          <node concept="3cpWs8" id="4VG1L3A6VWI" role="3cqZAp">
+            <node concept="3cpWsn" id="4VG1L3A6VWJ" role="3cpWs9">
+              <property role="TrG5h" value="entry" />
+              <node concept="3Tqbb2" id="4VG1L3A6VWl" role="1tU5fm">
+                <ref role="ehGHo" to="hcm8:2yYXHtl6JkN" resolve="EnumEntry" />
+              </node>
+              <node concept="2ShNRf" id="4VG1L3A6VWK" role="33vP2m">
+                <node concept="2fJWfE" id="4VG1L3A6VWL" role="2ShVmc">
+                  <node concept="3Tqbb2" id="4VG1L3A6VWM" role="3zrR0E">
+                    <ref role="ehGHo" to="hcm8:2yYXHtl6JkN" resolve="EnumEntry" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="4VG1L3A6QCG" role="3cqZAp">
+            <node concept="37vLTI" id="4VG1L3A6YaO" role="3clFbG">
+              <node concept="ub8z3" id="4VG1L3A6Ywz" role="37vLTx" />
+              <node concept="2OqwBi" id="4VG1L3A6Wlm" role="37vLTJ">
+                <node concept="37vLTw" id="4VG1L3A6VWN" role="2Oq$k0">
+                  <ref role="3cqZAo" node="4VG1L3A6VWJ" resolve="entry" />
+                </node>
+                <node concept="3TrcHB" id="4VG1L3A6WTC" role="2OqNvi">
+                  <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3cpWs6" id="4VG1L3A6ZuA" role="3cqZAp">
+            <node concept="37vLTw" id="4VG1L3A6Zvz" role="3cqZAk">
+              <ref role="3cqZAo" node="4VG1L3A6VWJ" resolve="entry" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="upBMk" id="4VG1L3A6ZAj" role="upBLP">
+        <node concept="uqdF1" id="4VG1L3A6ZAk" role="upBLF">
+          <node concept="3clFbS" id="4VG1L3A6ZAl" role="2VODD2">
+            <node concept="3clFbF" id="4VG1L3A70uS" role="3cqZAp">
+              <node concept="2OqwBi" id="4VG1L3A70Mv" role="3clFbG">
+                <node concept="uqdCJ" id="4VG1L3A70uR" role="2Oq$k0" />
+                <node concept="1OKiuA" id="4VG1L3A71hF" role="2OqNvi">
+                  <node concept="1Q80Hx" id="4VG1L3A71iw" role="lBI5i" />
+                  <node concept="eBIwv" id="4VG1L3A71j8" role="lGT1i">
+                    <ref role="fyFUz" to="tpck:h0TrG11" resolve="name" />
+                  </node>
+                  <node concept="3cmrfG" id="4VG1L3A71kG" role="3dN3m$">
+                    <property role="3cmrfH" value="-1" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="22hDWj" id="4VG1L3A6PkR" role="22hAXT" />
+  </node>
 </model>
 

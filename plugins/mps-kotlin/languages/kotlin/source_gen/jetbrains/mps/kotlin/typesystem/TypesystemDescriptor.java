@@ -64,6 +64,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_IIdentifier_KeywordClash_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_IInheritExplicitly_UniqueSuperClass_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
