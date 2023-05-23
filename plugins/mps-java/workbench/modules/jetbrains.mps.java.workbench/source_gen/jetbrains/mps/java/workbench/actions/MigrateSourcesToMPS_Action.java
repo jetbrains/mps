@@ -6,7 +6,7 @@ import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.project.facets.JavaModuleFacetImpl;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.annotations.NotNull;
@@ -16,8 +16,8 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import java.util.List;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import jetbrains.mps.util.PathSpec;
 import jetbrains.mps.java.core.newparser.JavaToMpsConverter;
 import jetbrains.mps.ide.messages.MessagesViewTool;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -28,8 +28,7 @@ import com.intellij.openapi.progress.ProgressIndicator;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.ide.projectPane.ProjectPane;
-import jetbrains.mps.project.facets.JavaModuleFacetImpl;
-import java.util.Collections;
+import jetbrains.mps.util.PathSpecBundle;
 
 public class MigrateSourcesToMPS_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -45,8 +44,8 @@ public class MigrateSourcesToMPS_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    JavaModuleFacet jmf = ((SModule) MapSequence.fromMap(_params).get("module")).getFacet(JavaModuleFacet.class);
-    return jmf != null && !(jmf.getAdditionalSourcePaths().isEmpty());
+    JavaModuleFacetImpl jmf = ((SModule) MapSequence.fromMap(_params).get("module")).getFacet(JavaModuleFacetImpl.class);
+    return jmf != null && !(jmf.getSourcePathSpec().isEmpty());
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -82,16 +81,10 @@ public class MigrateSourcesToMPS_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    JavaModuleFacet jmf = ((SModule) MapSequence.fromMap(_params).get("module")).getFacet(JavaModuleFacet.class);
+    JavaModuleFacetImpl jmf = ((SModule) MapSequence.fromMap(_params).get("module")).getFacet(JavaModuleFacetImpl.class);
 
-    if (jmf == null || jmf.getAdditionalSourcePaths().isEmpty()) {
-      return;
-    }
-
-    List<IFile> sourcePaths = ListSequence.fromList(new ArrayList<IFile>());
-    for (String path : jmf.getAdditionalSourcePaths()) {
-      ListSequence.fromList(sourcePaths).addElement(((MPSProject) MapSequence.fromMap(_params).get("project")).getFileSystem().getFile(path));
-    }
+    List<IFile> sourcePaths = new ArrayList<>();
+    jmf.getSourcePathSpec().paths().filter(PathSpec::resolved).map(PathSpec::resolvedFile).forEach(sourcePaths::add);
 
     final JavaToMpsConverter parser = new JavaToMpsConverter(((SModule) MapSequence.fromMap(_params).get("module")), ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository(), ((Project) MapSequence.fromMap(_params).get("ideaProject")).getService(MessagesViewTool.class).newHandler());
     final List<IFile> filesToParse = Sequence.fromIterable(JavaConvertUtil.flattenDirs(sourcePaths)).toListSequence();
@@ -105,8 +98,6 @@ public class MigrateSourcesToMPS_Action extends BaseAction {
     // workaround for project pane not rebuilding itself when a model has been added
     // not in a command but in a write action
     ProjectPane.getInstance(((MPSProject) MapSequence.fromMap(_params).get("project"))).rebuild();
-    if (jmf instanceof JavaModuleFacetImpl) {
-      ((JavaModuleFacetImpl) jmf).setAdditionalSourcePaths(Collections.<String>emptyList());
-    }
+    jmf.setSourcePathSpec(new PathSpecBundle());
   }
 }

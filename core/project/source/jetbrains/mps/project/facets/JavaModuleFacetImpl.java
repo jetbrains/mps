@@ -624,6 +624,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
    *
    * @since 2023.1
    */
+  @NotNull
   public PathSpecBundle getJavaLibrarySpec() {
     return myLibraryBundle;
   }
@@ -637,6 +638,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
    * @return extra locations with source files to compile along with module's own generated artifacts from {@link #getOutputRoot()}, or empty collection.
    * @since 2023.1
    */
+  @NotNull
   public PathSpecBundle getSourcePathSpec() {
     return myAdditionalSources;
   }
