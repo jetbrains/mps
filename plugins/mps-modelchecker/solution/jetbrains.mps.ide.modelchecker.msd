@@ -15,7 +15,6 @@
       <library location="${mps_home}/plugins/mps-modelchecker/classes" />
     </facet>
   </facets>
-  <sourcePath />
   <dependencies>
     <dependency reexport="true">a381759b-acec-4e2e-8745-7bf905520fca(jetbrains.mps.ide.modelchecker.platform)</dependency>
     <dependency reexport="false">2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)</dependency>

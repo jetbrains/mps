@@ -8,12 +8,10 @@
   <facets>
     <facet type="java" compile="mps" classes="mps" ext="yes">
       <classes generated="true" path="${module}/classes_gen" />
+      <source location="${module}/resources" />
     </facet>
     <facet type="tests" />
   </facets>
-  <sourcePath>
-    <source path="${module}/resources" />
-  </sourcePath>
   <dependencies>
     <dependency reexport="false">6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)</dependency>
     <dependency reexport="false">8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)</dependency>

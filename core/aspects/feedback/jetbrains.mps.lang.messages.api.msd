@@ -12,7 +12,6 @@
       <library location="${mps_home}/lib/mps-messages-api.jar" />
     </facet>
   </facets>
-  <sourcePath />
   <dependencies>
     <dependency reexport="true">9e9ef4e2-decf-4e97-bf80-9109e8b759bb(jetbrains.mps.lang.feedback.api)</dependency>
     <dependency reexport="true">9e98f4e2-decf-4e97-bf80-9109e8b759aa(jetbrains.mps.lang.feedback.context)</dependency>

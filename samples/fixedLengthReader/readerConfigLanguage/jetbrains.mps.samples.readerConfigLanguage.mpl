@@ -124,7 +124,6 @@
       <mapping-priorities />
     </generator>
   </generators>
-  <sourcePath />
   <dependencies>
     <dependency reexport="false">479c7a8c-02f9-43b5-9139-d910cb22f298(jetbrains.mps.core.xml)</dependency>
     <dependency reexport="false" scope="generate-into">f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)</dependency>

@@ -11,7 +11,6 @@
     </facet>
   </facets>
   <accessoryModels />
-  <sourcePath />
   <dependencies>
     <dependency reexport="false">6be63454-b482-4f5d-b8b7-d3f627e961a7(UtilSolution)</dependency>
     <dependency reexport="false">b4fa1e36-714a-4c77-8e95-3eae9632decb(BHL5)</dependency>

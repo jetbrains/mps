@@ -11,7 +11,6 @@
     </facet>
     <facet type="tests" />
   </facets>
-  <sourcePath />
   <dependencies>
     <dependency reexport="false">2b800570-3758-4c14-86fb-871266fb9d11(constraints.test)</dependency>
   </dependencies>

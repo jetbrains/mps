@@ -65,7 +65,6 @@
       <mapping-priorities />
     </generator>
   </generators>
-  <sourcePath />
   <dependencies>
     <dependency reexport="false">baa9238b-36da-4ccb-a76b-8ad70e222183(jetbrains.mps.samples.highlevel.simpleStructure)</dependency>
     <dependency reexport="false" scope="generate-into">18bc6592-03a6-4e29-a83a-7ff23bde13ba(jetbrains.mps.lang.editor)</dependency>

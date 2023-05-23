@@ -7,7 +7,6 @@
       <library location="${mps_home}/plugins/mps-devkit/lib/mpsdevkit.jar" />
     </facet>
   </facets>
-  <sourcePath />
   <languageVersions />
   <dependencyVersions>
     <module reference="3362c68c-9a29-468f-94d0-93cd46ab6ca8(jetbrains.mps.ide.mpsdevkit.cp)" version="0" />

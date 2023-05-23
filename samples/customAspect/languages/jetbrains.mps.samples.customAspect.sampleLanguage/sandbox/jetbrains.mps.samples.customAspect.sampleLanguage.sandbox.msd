@@ -10,7 +10,6 @@
       <classes generated="true" path="${module}/classes_gen" />
     </facet>
   </facets>
-  <sourcePath />
   <languageVersions>
     <language slang="l:ceab5195-25ea-4f22-9b92-103b95ca8c0c:jetbrains.mps.lang.core" version="2" />
     <language slang="l:4ac0b19e-3e88-4e61-bab3-507ba2cceae8:jetbrains.mps.samples.customAspect.sampleLanguage" version="0" />

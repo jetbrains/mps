@@ -11,7 +11,6 @@
     </facet>
     <facet type="tests" />
   </facets>
-  <sourcePath />
   <dependencies>
     <dependency reexport="false">9de7c5ce-ea6f-4fb4-a7ba-45e62b53cbad(decl)</dependency>
     <dependency reexport="false">d3d2b6e3-a4b3-43d5-bb29-420d39fa86ab(ref)</dependency>

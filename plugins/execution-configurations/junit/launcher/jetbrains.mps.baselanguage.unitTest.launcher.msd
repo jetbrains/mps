@@ -10,7 +10,6 @@
       <classes generated="true" path="${mps_home}/plugins/execution-configurations/classes" />
     </facet>
   </facets>
-  <sourcePath />
   <dependencies>
     <dependency reexport="false">f647e48e-4568-4f4c-b48a-1546492c6a2e(org.jdom)</dependency>
     <dependency reexport="false">d9e6c08a-a7b1-4ef6-8c54-57d93e9e0ce0(jetbrains.mps.tool.common)</dependency>

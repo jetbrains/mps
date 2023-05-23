@@ -13,7 +13,6 @@
       <library location="${mps_home}/plugins/vcs-git/lib/vcs-git.jar" />
     </facet>
   </facets>
-  <sourcePath />
   <dependencies>
     <dependency reexport="false">498d89d2-c2e9-11e2-ad49-6cf049e62fe5(MPS.IDEA)</dependency>
     <dependency reexport="false">3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)</dependency>

@@ -160,7 +160,6 @@
       </mapping-priorities>
     </generator>
   </generators>
-  <sourcePath />
   <dependencies>
     <dependency reexport="false">6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)</dependency>
     <dependency reexport="false">77a6e046-32d5-4d60-823e-d1c337b22c4d(jetbrains.mps.baseLanguage.math.pluginSolution)</dependency>

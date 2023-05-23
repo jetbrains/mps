@@ -8,7 +8,6 @@
   <facets>
     <facet folders="true" type="plaintext" />
   </facets>
-  <sourcePath />
   <dependencies>
     <dependency reexport="false">422c2909-59d6-41a9-b318-40e6256b250f(jetbrains.mps.ide.build)</dependency>
   </dependencies>

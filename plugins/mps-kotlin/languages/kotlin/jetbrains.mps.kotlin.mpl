@@ -20,7 +20,6 @@
     <model modelUID="b50d89c0-0fb9-4105-b652-222148c26a9b/kotlin:kotlin.text(jetbrains.mps.kotlin.stdlib/)" />
     <model modelUID="b50d89c0-0fb9-4105-b652-222148c26a9b/kotlin:kotlin.comparisons(jetbrains.mps.kotlin.stdlib/)" />
   </accessoryModels>
-  <sourcePath />
   <dependencies>
     <dependency reexport="false">6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)</dependency>
     <dependency reexport="false">2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)</dependency>

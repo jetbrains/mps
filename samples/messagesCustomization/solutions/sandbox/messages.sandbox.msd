@@ -11,7 +11,6 @@
     </facet>
     <facet type="tests" />
   </facets>
-  <sourcePath />
   <dependencies>
     <dependency reexport="false">7cf7c95b-c81e-4da9-a056-45e480a7abd3(messages.customization)</dependency>
   </dependencies>

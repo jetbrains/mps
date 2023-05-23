@@ -21,7 +21,6 @@
       <library location="${mps_home}/plugins/mps-testing/languages/junit5/lib/junit-platform-reporting-1.9.3.jar" />
     </facet>
   </facets>
-  <sourcePath />
   <dependencies>
     <dependency reexport="true">6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)</dependency>
   </dependencies>

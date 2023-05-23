@@ -63,7 +63,6 @@
       <mapping-priorities />
     </generator>
   </generators>
-  <sourcePath />
   <dependencies>
     <dependency reexport="false" scope="generate-into">3f028972-a290-4cf2-a87e-9b8f7e56076b(jetbrains.mps.samples.customizedDebugger.Bottomline)</dependency>
   </dependencies>

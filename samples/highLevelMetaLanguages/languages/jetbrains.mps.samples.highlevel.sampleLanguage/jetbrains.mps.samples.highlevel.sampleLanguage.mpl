@@ -11,7 +11,6 @@
     </facet>
   </facets>
   <accessoryModels />
-  <sourcePath />
   <dependencies>
     <dependency reexport="false">baa9238b-36da-4ccb-a76b-8ad70e222183(jetbrains.mps.samples.highlevel.simpleStructure)</dependency>
   </dependencies>

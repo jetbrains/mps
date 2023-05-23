@@ -54,7 +54,6 @@
       <mapping-priorities />
     </generator>
   </generators>
-  <sourcePath />
   <dependencies>
     <dependency reexport="false">06144ad3-3416-4d7e-bbaf-076e158e80cf(jetbrains.mps.samples.requirementTracking.RequirementDefinition)</dependency>
     <dependency reexport="false">81a3307b-d10f-4e90-8043-ff6aa5380c33(jetbrains.mps.samples.requirementTracking.Traces)</dependency>

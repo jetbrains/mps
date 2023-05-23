@@ -11,7 +11,6 @@
     </facet>
     <facet type="tests" />
   </facets>
-  <sourcePath />
   <dependencies>
     <dependency reexport="false">2b679aa1-c9e8-4a47-84b9-ce94c2202df5(BHL4)</dependency>
     <dependency reexport="false">6be63454-b482-4f5d-b8b7-d3f627e961a7(UtilSolution)</dependency>

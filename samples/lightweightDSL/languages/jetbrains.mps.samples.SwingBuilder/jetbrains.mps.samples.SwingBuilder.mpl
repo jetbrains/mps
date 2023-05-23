@@ -68,7 +68,6 @@
       <mapping-priorities />
     </generator>
   </generators>
-  <sourcePath />
   <dependencies>
     <dependency reexport="false">f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)</dependency>
     <dependency reexport="false">14676325-ef8e-4fcf-b902-937f5612d1ba(jetbrains.mps.samples.LightweightDSL.plugin)</dependency>

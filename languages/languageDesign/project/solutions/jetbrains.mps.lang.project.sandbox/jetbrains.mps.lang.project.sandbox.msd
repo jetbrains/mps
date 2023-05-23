@@ -10,7 +10,6 @@
       <classes generated="true" path="${module}/classes_gen" />
     </facet>
   </facets>
-  <sourcePath />
   <languageVersions />
   <dependencyVersions>
     <module reference="06f5ffaf-622a-41ae-87c7-44614319e92b(jetbrains.mps.lang.project.sandbox)" version="0" />

@@ -65,7 +65,6 @@
       <mapping-priorities />
     </generator>
   </generators>
-  <sourcePath />
   <dependencies>
     <dependency reexport="false">4b7c56eb-9347-4ed1-a5d9-938a850b9e1d(jetbrains.mps.baseLanguage.date)</dependency>
   </dependencies>
