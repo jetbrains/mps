@@ -310,6 +310,13 @@ public class MigrationTask {
   private void runForceSave(final ProgressMonitor m) {
     final Project project = mySession.getProject();
     final String caption = "Force-saving project modules, models...";
+    try {
+      // HACK. Give IDEA wizard (when we run this task from IDE) a chance to complete wizard page initialization.
+      // w/o this sleep, invokeAndWait freezes UI update and previous step UI is there, which is very confusing
+      Thread.sleep(500);
+    } catch (Exception ex) {
+      // ignore
+    }
     runLocalHistoryRecord(caption, () -> ApplicationManager.getApplication().invokeAndWait(() -> project.getRepository().getModelAccess().runWriteAction(() -> {
       List<SModule> allModules = project.getProjectModulesWithGenerators();
       m.start(caption, ListSequence.fromList(allModules).count() + 10);

@@ -11,6 +11,7 @@ import javax.swing.JComponent;
 import java.awt.BorderLayout;
 import javax.swing.BorderFactory;
 import com.intellij.ui.IdeBorderFactory;
+import com.intellij.util.ui.update.UiNotifyConnector;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.progress.ProgressManager;
@@ -55,6 +56,7 @@ public class MigrationStep extends BaseStep {
     myErrorPanel.add(this.myErrorLabel, BorderLayout.NORTH);
 
     myErrorPanel.setVisible(false);
+    UiNotifyConnector.doWhenFirstShown(mainPanel, this::executeToFirstError);
   }
 
   @Override
@@ -67,7 +69,6 @@ public class MigrationStep extends BaseStep {
     //     so we can create myProgress here, if necessary.
     myProgress.setModalityProgress(null);
     super._init();
-    executeToFirstError();
   }
 
   private void executeToFirstError() throws ProcessCanceledException {
