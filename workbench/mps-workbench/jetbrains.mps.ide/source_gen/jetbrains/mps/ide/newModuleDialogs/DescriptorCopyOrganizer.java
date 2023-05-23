@@ -118,7 +118,10 @@ import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
   /**
    * will go away when these paths are restrained to be relative [from the module file] or absolute without regard to the module file
    * moreover these paths will move to the java module facet implementation
+   * 
+   * @deprecated in 2023.1, java library and source paths moved to JMF, and are preserved with PathSpec, no need to convert paths from one descriptor to another
    */
+  @Deprecated(forRemoval = true, since = "2023.1")
   private void hackFacetProperties(@NotNull ModuleDescriptor copyDescriptor) {
     resaveFacetsUnderNewFile(copyDescriptor);
 
@@ -127,13 +130,14 @@ import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
     List<String> newStubPaths = javaLibs.stream().map(myModulePathConverter::source2Target).collect(Collectors.<String>toList());
     javaLibs.clear();
     javaLibs.addAll(newStubPaths);
-    final Collection<String> sourcePathsByReference = copyDescriptor.getSourcePaths();
+    final Collection<String> sourcePathsByReference = copyDescriptor.getSourcePathPersistedValue();
     List<String> newSourcePaths = sourcePathsByReference.stream().map(myModulePathConverter::source2Target).collect(Collectors.<String>toList());
     sourcePathsByReference.clear();
     sourcePathsByReference.addAll(newSourcePaths);
   }
 
   private void resaveFacetsUnderNewFile(ModuleDescriptor copyDescriptor) {
+    // FIXME why all this odd logic with ModuleDescriptorPersistence write/read memento?!
     final List<ModuleFacetDescriptor> newFacetDescriptors = new ArrayList<ModuleFacetDescriptor>();
     copyDescriptor.getModuleFacetDescriptors().forEach((ModuleFacetDescriptor it) -> {
       Element tmp = new Element("tmp");

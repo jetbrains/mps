@@ -95,9 +95,17 @@ public class SolutionDescriptorPersistence {
 
           ModuleDescriptorPersistence.loadDependencies(result_8ckma3_a0a0a0b0k, rootElement);
 
-          for (Element entryElement : Sequence.fromIterable(XmlUtil.children(XmlUtil.first(rootElement, SOURCE_PATH), SOURCE_PATH_SOURCE))) {
-            result_8ckma3_a0a0a0b0k.getSourcePaths().add(myMacroHelper.expandPath(entryElement.getAttributeValue("path")));
-          }
+          List<String> sources = Sequence.fromIterable(XmlUtil.children(XmlUtil.first(rootElement, SOURCE_PATH), SOURCE_PATH_SOURCE)).select(new ISelector<Element, String>() {
+            public String select(Element it) {
+              return it.getAttributeValue("path");
+            }
+          }).toListSequence();
+          result_8ckma3_a0a0a0b0k.getSourcePathOriginalValue().addAll(sources);
+          result_8ckma3_a0a0a0b0k.getSourcePathPersistedValue().addAll(ListSequence.fromList(sources).select(new ISelector<String, String>() {
+            public String select(String it) {
+              return myMacroHelper.expandPath(it);
+            }
+          }).toListSequence());
           return result_8ckma3_a0a0a0b0k;
         }
       }.invoke();
@@ -148,11 +156,14 @@ public class SolutionDescriptorPersistence {
       result.addContent(stubModelEntries);
     }
 
-    Element sourcePath = new Element(SOURCE_PATH);
-    for (String p : descriptor.getSourcePaths()) {
-      XmlUtil.tagWithAttribute(sourcePath, SOURCE_PATH_SOURCE, "path", myMacroHelper.shrinkPath(p));
+    Collection<String> sources = descriptor.getSourcePathPersistedValue();
+    if (!(sources.isEmpty())) {
+      Element sourcePath = new Element(SOURCE_PATH);
+      for (String p : sources) {
+        XmlUtil.tagWithAttribute(sourcePath, SOURCE_PATH_SOURCE, "path", myMacroHelper.shrinkPath(p));
+      }
+      result.addContent(sourcePath);
     }
-    result.addContent(sourcePath);
 
     ModuleDescriptorPersistence.saveDependencies(result, descriptor);
     return result;

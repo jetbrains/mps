@@ -1389,7 +1389,7 @@
                 <ref role="3cqZAo" node="6CFNGGphKkE" resolve="copyDescriptor" />
               </node>
               <node concept="liA8E" id="6C7L5Q5Ep7l" role="2OqNvi">
-                <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getSourcePaths()" resolve="getSourcePaths" />
+                <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getSourcePathPersistedValue()" resolve="getSourcePathPersistedValue" />
               </node>
             </node>
           </node>
@@ -1474,6 +1474,28 @@
             <property role="1dT_AB" value="moreover these paths will move to the java module facet implementation" />
           </node>
         </node>
+        <node concept="TZ5HI" id="7xB_kuJt_Uf" role="3nqlJM">
+          <node concept="TZ5HA" id="7xB_kuJt_Ug" role="3HnX3l">
+            <node concept="1dT_AC" id="7xB_kuJu1jy" role="1dT_Ay">
+              <property role="1dT_AB" value="in 2023.1, java library and source paths moved to JMF, and are preserved with PathSpec, no need to convert paths from one descriptor to another" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="7xB_kuJt_Uh" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <node concept="2B6LJw" id="7xB_kuJtBQL" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+          <node concept="3clFbT" id="7xB_kuJtPmu" role="2B70Vg">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+        <node concept="2B6LJw" id="7xB_kuJtQKL" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+          <node concept="Xl_RD" id="7xB_kuJtTCE" role="2B70Vg">
+            <property role="Xl_RC" value="2023.1" />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="2tJIrI" id="3G0t6VsJUlS" role="jymVt" />
@@ -1488,6 +1510,40 @@
         </node>
       </node>
       <node concept="3clFbS" id="3G0t6VsJQ8E" role="3clF47">
+        <node concept="3SKdUt" id="7xB_kuJuMUb" role="3cqZAp">
+          <node concept="1PaTwC" id="7xB_kuJuMUc" role="1aUNEU">
+            <node concept="3oM_SD" id="7xB_kuJuP6_" role="1PaTwD">
+              <property role="3oM_SC" value="FIXME" />
+            </node>
+            <node concept="3oM_SD" id="7xB_kuJuP6B" role="1PaTwD">
+              <property role="3oM_SC" value="why" />
+            </node>
+            <node concept="3oM_SD" id="7xB_kuJuP9c" role="1PaTwD">
+              <property role="3oM_SC" value="all" />
+            </node>
+            <node concept="3oM_SD" id="7xB_kuJuPa6" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="7xB_kuJuPab" role="1PaTwD">
+              <property role="3oM_SC" value="odd" />
+            </node>
+            <node concept="3oM_SD" id="7xB_kuJuPah" role="1PaTwD">
+              <property role="3oM_SC" value="logic" />
+            </node>
+            <node concept="3oM_SD" id="7xB_kuJuPbe" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="7xB_kuJuPcc" role="1PaTwD">
+              <property role="3oM_SC" value="ModuleDescriptorPersistence" />
+            </node>
+            <node concept="3oM_SD" id="7xB_kuJuPhp" role="1PaTwD">
+              <property role="3oM_SC" value="write/read" />
+            </node>
+            <node concept="3oM_SD" id="7xB_kuJuPip" role="1PaTwD">
+              <property role="3oM_SC" value="memento?!" />
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="3G0t6VsJQ8F" role="3cqZAp">
           <node concept="3cpWsn" id="3G0t6VsJQ8G" role="3cpWs9">
             <property role="TrG5h" value="newFacetDescriptors" />

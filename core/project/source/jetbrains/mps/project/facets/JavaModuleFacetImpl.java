@@ -60,6 +60,8 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
   private static final Logger LOG = Logger.getLogger(JavaModuleFacetImpl.class);
   private static final String CLASSES_KEY = "classes";
   private static final String LIBRARY_KEY = "library";
+  private static final String SOURCE_KEY = "source";
+
   // just an indicator this entry describes classes derived from generated source code. Not sure I ever get to other entries,
   // though eventually I'd like to move everything Java-related stuff out of MD to this facet (e.g. Java libraries)
   private static final String GENERATED_KEY = "generated";
@@ -87,7 +89,9 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
   @Nullable
   private JavaLanguageLevel myJavaLanguageLevel = null;
   private PathSpecBundle myLibraryBundle = new PathSpecBundle();
+  private PathSpecBundle myAdditionalSources = new PathSpecBundle();
   private boolean myTransitionLibraryBundle = true;
+  private boolean myTransitionExtraSources = true;
 
   public JavaModuleFacetImpl(@NotNull SModule module) {
     super(FACET_TYPE, module);
@@ -186,27 +190,37 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     return path;
   }
 
+  /**
+   * To manipulate the value, use {@link #getSourcePathSpec()} instead
+   */
   @Override
   public Set<String> getAdditionalSourcePaths() {
-    ModuleDescriptor moduleDescriptor = getAbstractModule().getModuleDescriptor();
-
-    if (moduleDescriptor == null) {
+    if (myAdditionalSources.isEmpty()) {
       return Collections.emptySet();
     }
-
     // XXX I don't see any reason to make set unique here, but at least keep the ordering
-    return new LinkedHashSet<>(moduleDescriptor.getSourcePaths());
+    LinkedHashSet<String> rv = new LinkedHashSet<>();
+    myAdditionalSources.paths().filter(PathSpec::resolved).map(PathSpec::resolvedPath).forEach(rv::add);
+    return rv;
   }
 
+  /**
+   * @deprecated use {@link #setSourcePathSpec(PathSpecBundle)} instead
+   */
+  @Deprecated(since = "2023.1", forRemoval = true)
   public void setAdditionalSourcePaths(Collection<String> newValue) {
+    final FileSystem fs = getAbstractModule().getFileSystem();
+    ArrayList<PathSpec> converted = new ArrayList<>();
+    newValue.stream().map(fs::getFile).map(PathSpec::new).forEach(converted::add);
+    setSourcePathSpec(new PathSpecBundle(converted));
+    // clear persisted values in MD just in case there are some, not to save them in addition to new path spec
     ModuleDescriptor moduleDescriptor = getAbstractModule().getModuleDescriptor();
     if (moduleDescriptor == null) {
       return;
     }
     // here we imply getSourcePaths() returns value-by-reference
-    final Collection<String> persistedPaths = moduleDescriptor.getSourcePaths();
+    final Collection<String> persistedPaths = moduleDescriptor.getSourcePathPersistedValue();
     persistedPaths.clear();
-    persistedPaths.addAll(newValue);
   }
 
   @Override
@@ -248,6 +262,14 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
         // to avoid MDP logic to process "path" attributes with MacroHelper. Not ready yet to
         // turn it off, and likely shall have it deprecated for some time to ensure compatibility/transition
         mm.put(LOCATION_KEY, jl.shrink(mh));
+      }
+    }
+    if (!myTransitionExtraSources) {
+      memento.clearChildren(SOURCE_KEY);
+      final MacroHelper mh = MacrosFactory.forModule(getModule());
+      for (PathSpec sl : myAdditionalSources) {
+        final Memento mm = memento.createChild(SOURCE_KEY);
+        mm.put(LOCATION_KEY, sl.shrink(mh));
       }
     }
   }
@@ -340,15 +362,34 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
         moduleDescriptor.getJavaLibPersistedValues().stream().map(PathSpec::new).forEach(libraries::add);
       }
     }
-    if (!libraries.isEmpty()) {
+    // extract sources regardless the fact we are not going to use them for deployed modules. Just for the sake of
+    // completeness (user can see original values in module properties)
+    ArrayList<PathSpec> sources = new ArrayList<>();
+    for (Memento m : memento.getChildren(SOURCE_KEY)) {
+      final String p = m.get(LOCATION_KEY);
+      if (p != null) {
+        sources.add(new PathSpec(p));
+      }
+    }
+    myTransitionExtraSources = sources.isEmpty();
+    if (moduleDescriptor != null) {
+      moduleDescriptor.getSourcePathPersistedValue().stream().map(PathSpec::new).forEach(sources::add);
+    }
+    if (!libraries.isEmpty() || !sources.isEmpty()) {
       final MacroHelper macroHelper = MacrosFactory.forModule(getModule());
       FileSystem fs = getAbstractModule().getFileSystem();
       final Function<String, String> expandPath = macroHelper::expandPath;
       Function<String, IFile> tr = expandPath.andThen(fs::getFile);
       // don't re-resolve PathSpec that were instantiated with IFile
       final Predicate<PathSpec> resolved = PathSpec::resolved;
-      libraries.stream().filter(resolved.negate()).forEach(l -> l.resolve(tr));
-      myLibraryBundle = new PathSpecBundle(libraries);
+      if (!libraries.isEmpty()) {
+        libraries.stream().filter(resolved.negate()).forEach(l -> l.resolve(tr));
+        myLibraryBundle = new PathSpecBundle(libraries);
+      }
+      if (!sources.isEmpty()) {
+        sources.stream().filter(resolved.negate()).forEach(s -> s.resolve(tr));
+        myAdditionalSources = new PathSpecBundle(sources);
+      }
     }
     // configure defaults for transition
     myTransitionalNewValues = true;
@@ -579,7 +620,24 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     myTransitionLibraryBundle = false;
   }
 
+  /**
+   *
+   * @since 2023.1
+   */
   public PathSpecBundle getJavaLibrarySpec() {
     return myLibraryBundle;
+  }
+
+  public void setSourcePathSpec(@NotNull PathSpecBundle extraSources) {
+    myAdditionalSources = extraSources;
+    myTransitionExtraSources = false;
+  }
+
+  /**
+   * @return extra locations with source files to compile along with module's own generated artifacts from {@link #getOutputRoot()}, or empty collection.
+   * @since 2023.1
+   */
+  public PathSpecBundle getSourcePathSpec() {
+    return myAdditionalSources;
   }
 }

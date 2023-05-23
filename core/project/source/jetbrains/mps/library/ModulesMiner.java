@@ -656,7 +656,7 @@ public final class ModulesMiner {
     }
 
     // I can tolerate use of MD.getSourcePaths here as MM knows about MD anyway
-    for (String p : descriptor.getSourcePaths()) {
+    for (String p : descriptor.getSourcePathPersistedValue()) {
       myExcludes.add(fileSystem.getFile(p));
     }
 

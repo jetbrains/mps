@@ -137,6 +137,7 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
   private final Collection<String> myJavaLibs = new LinkedHashSet<>();
   private final Collection<String> myJavaLibs2 = new LinkedHashSet<>();
   private final Collection<String> mySourcePaths = new LinkedHashSet<>();
+  private final Collection<String> mySourcePaths2 = new LinkedHashSet<>();
   private DeploymentDescriptor myDeploymentDescriptor; // FIXME must be removed
 
   private Throwable myLoadException;
@@ -333,9 +334,23 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
      *  - There's unused {@link AbstractModule#getSourcePaths()}
      *  - JavaModuleFacet manifests these {@link jetbrains.mps.project.facets.JavaModuleFacet#getAdditionalSourcePaths()}, likely using module descriptor just as a storage (it's what JMF does anyway)
      *  - Make respects these to compile a module
+     * @deprecated not an attribute of every module, use {@link jetbrains.mps.project.facets.JavaModuleFacet#getAdditionalSourcePaths()} instead
      */
+  @Deprecated(since = "2023.1", forRemoval = true)
   public final Collection<String> getSourcePaths() {
+    Logger.getLogger(getClass()).warnDeprecatedUse("Additional source paths are part of JavaModuleFacet specification now");
+    return getSourcePathPersistedValue();
+  }
+
+  @Deprecated(forRemoval = true, since = "0")
+  public final Collection<String> getSourcePathPersistedValue() {
     return mySourcePaths;
+  }
+
+  // solely for migration; to keep original macro w/o extra shrink/expand
+  @Deprecated(forRemoval = true, since = "0")
+  public final Collection<String> getSourcePathOriginalValue() {
+    return mySourcePaths2;
   }
 
   @Nullable
@@ -496,7 +511,7 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     descriptorCopy.getLanguageVersions().putAll(getLanguageVersions());
     descriptorCopy.getDependencyVersions().putAll(getDependencyVersions());
     descriptorCopy.getJavaLibPersistedValues().addAll(getJavaLibPersistedValues());
-    descriptorCopy.getSourcePaths().addAll(getSourcePaths());
+    descriptorCopy.getSourcePathPersistedValue().addAll(getSourcePathPersistedValue());
     copyDeploymentDescriptor(descriptorCopy);
     descriptorCopy.setLoadException(getLoadException());
     descriptorCopy.setUseTransientOutput(isUseTransientOutput());

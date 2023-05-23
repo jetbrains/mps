@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.make;
 
-import com.intellij.openapi.util.Condition;
 import com.intellij.util.CommonProcessors.CollectProcessor;
 import com.intellij.util.FilteringProcessor;
 import jetbrains.mps.persistence.DefaultModelRoot;
@@ -41,6 +40,8 @@ import jetbrains.mps.testbench.TestModuleFactoryBase;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.EnvironmentAware;
 import jetbrains.mps.util.IFileUtil;
+import jetbrains.mps.util.PathSpec;
+import jetbrains.mps.util.PathSpecBundle;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.EditableSModel;
@@ -240,7 +241,7 @@ public class TestMakeOnRealProject implements EnvironmentAware {
         // resources/ dir as sibling of source_gen seems to be just an arbitrary location we choose to place
         // under the module home as it's easy to construct path there.
         IFile resourceDir = generatorOutputPath.getParent().findChild("resources");
-        solutionJMF.setAdditionalSourcePaths(Collections.singleton(resourceDir.getPath()));
+        solutionJMF.setSourcePathSpec(new PathSpecBundle(Collections.singleton(new PathSpec(resourceDir))));
         createFile(resourceDir, "res.0.1/test.txt", "test");
       }
     });
