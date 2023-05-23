@@ -4,20 +4,24 @@ package jetbrains.mps.ide.migration;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import java.util.List;
+import java.util.Map;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
+import java.util.List;
 import org.jetbrains.mps.openapi.module.SModule;
+import java.util.HashMap;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.SLanguageHierarchy;
 import jetbrains.mps.smodel.language.LanguageRuntime;
-import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.project.AbstractModule;
+import java.util.ArrayList;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/1520098040411268050", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 /*package*/ class MigrationScriptCollector {
   private final LanguageRegistry myLanguageRegistry;
-  private final List<ScriptApplied<MigrationScriptReference>> myResult = ListSequence.fromList(new ArrayList<ScriptApplied<MigrationScriptReference>>());
+  private final Map<MigrationScriptReference, List<SModule>> myGroupedByScript = new HashMap<>();
+  private final Map<SLanguage, MigrationScriptReference[]> myLanguage2Scripts = new HashMap<>();
 
   /*package*/ MigrationScriptCollector(LanguageRegistry languageRegistry) {
     myLanguageRegistry = languageRegistry;
@@ -28,21 +32,47 @@ import jetbrains.mps.project.AbstractModule;
     //      then we go back to LanguageRuntime again. Perhaps, worth to add a method to SLanguageHierarchy
     //      with Consumer<LR> to avoid going back and forth with SLanguage <-> LR?
     final SLanguageHierarchy lh = new SLanguageHierarchy(myLanguageRegistry, module.getUsedLanguages());
-    myLanguageRegistry.withAvailableLanguages(lh.getExtended().stream(), (LanguageRuntime lr) -> {
-      SLanguage lang = lr.getIdentity();
-      // XXX rather assert than Math.max; it's bad language to give anything <0 from getVersion
-      final int actualLangVersion = Math.max(lr.getVersion(), 0);
-      int engagedVer = ((AbstractModule) module).getUsedLanguageVersion(lang, false);
+    lh.forEachExtended(new SLanguageHierarchy.HierarchyVisitor() {
+      @Override
+      public void accept(LanguageRuntime lr) {
+        SLanguage lang = lr.getIdentity();
+        MigrationScriptReference[] langScripts = myLanguage2Scripts.get(lang);
+        if (langScripts == null) {
+          // XXX rather assert than Math.max; it's bad language to give anything <0 from getVersion
+          final int actualLangVersion = Math.max(lr.getVersion(), 0);
+          langScripts = new MigrationScriptReference[actualLangVersion];
+          // we don't necessarily gonna use all versions, but as long as it's cheaper 
+          // to create a new MigrationScriptReference than to walk same range of versions again and again,
+          // instantiating MSR just for the sake of equals, do it once for the whole range
+          for (int i = 0; i < actualLangVersion; i++) {
+            langScripts[i] = new MigrationScriptReference(lang, i);
+          }
+          // alternatively, may keep a Pair<MSR,List> right in myLanguage2Scripts, to avoid extra myGroupedByScript map
+        }
+        int engagedVer = ((AbstractModule) module).getUsedLanguageVersion(lang, false);
 
-      engagedVer = Math.max(engagedVer, 0);
+        engagedVer = Math.max(engagedVer, 0);
 
-      for (int i = engagedVer; i < actualLangVersion; i++) {
-        ListSequence.fromList(myResult).addElement(new ScriptApplied(module, new MigrationScriptReference(lang, i)));
+        for (int i = engagedVer; i < langScripts.length; i++) {
+          List<SModule> v = myGroupedByScript.get(langScripts[i]);
+          if (v == null) {
+            v = new ArrayList<>();
+            myGroupedByScript.put(langScripts[i], v);
+          }
+          v.add(module);
+        }
       }
     });
   }
 
   /*package*/ List<ScriptApplied<MigrationScriptReference>> result() {
-    return myResult;
+    final List<ScriptApplied<MigrationScriptReference>> rv = ListSequence.fromList(new ArrayList<ScriptApplied<MigrationScriptReference>>());
+
+    for (MigrationScriptReference sr : SetSequence.fromSet(myGroupedByScript.keySet())) {
+      for (SModule m : ListSequence.fromList(myGroupedByScript.get(sr))) {
+        ListSequence.fromList(rv).addElement(new ScriptApplied<MigrationScriptReference>(m, sr));
+      }
+    }
+    return rv;
   }
 }

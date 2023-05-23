@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,9 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Build a closure of extended or extending languages for a given set of language.
@@ -89,6 +91,29 @@ public class SLanguageHierarchy {
   @NotNull
   public Set<SLanguage> getExtended() {
     return getExtendedLangs(new DefaultErrorHandler(getInitial()));
+  }
+
+  /**
+   * Gives access to {@link #getExtended() set of extended} languages in their runtime form.
+   * Delivers runtime instances within respective {@code LanguageRegistry}'s lock (see {@link LanguageRegistry#withAvailableLanguages(Consumer)}.
+   * @since 2023.1
+   */
+  public void forEachExtended(@NotNull final HierarchyVisitor visitor) {
+    final boolean[] found = new boolean[1];
+    // XXX I don't like individual lock per language from myLanguages, OTOH (a) common scenario is to pass single language to this class
+    //     (b) fine-grained lock granularity might not be bad per se.
+    //     Need this as I want to notify missing runtimes
+    for (SLanguage l : myLanguages) {
+      found[0] = false;
+      myRegistry.withAvailableLanguages(Stream.of(l), lr -> {
+        found[0] = true;
+        visitor.accept(lr);
+        lr.getExtendedLanguages().forEach(visitor);
+      });
+      if (!found[0]) {
+         visitor.acceptMissing(l);
+      }
+    }
   }
 
   @NotNull
@@ -169,5 +194,11 @@ public class SLanguageHierarchy {
      * @param language -- the language which is not deployed (LanguageRegistry does not contain it)
      */
     void handleLanguageIsNotDeployed(SLanguage language);
+  }
+
+  public interface HierarchyVisitor extends Consumer<LanguageRuntime> {
+    default void acceptMissing(@NotNull SLanguage missingRuntime) {
+      // no-op
+    }
   }
 }
