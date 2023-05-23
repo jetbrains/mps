@@ -435,7 +435,6 @@
       <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
         <reference id="1116615189566" name="classifier" index="3VsUkX" />
       </concept>
-      <concept id="1178893518978" name="jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" flags="nn" index="1VxSAg" />
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
       <concept id="1170345865475" name="jetbrains.mps.baseLanguage.structure.AnonymousClass" flags="ig" index="1Y3b0j">
         <reference id="1170346070688" name="classifier" index="1Y3XeK" />
@@ -467,9 +466,6 @@
       </concept>
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
         <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
-        <child id="2667874559098216723" name="text" index="3HnX3l" />
       </concept>
       <concept id="6612597108003615641" name="jetbrains.mps.baseLanguage.javadoc.structure.HTMLElement" flags="ng" index="2U$1Ah">
         <property id="6612597108003615642" name="name" index="2U$1Ai" />
@@ -1691,72 +1687,6 @@
       <node concept="2hMVRd" id="47QEcUfsm59" role="1tU5fm">
         <node concept="3uibUv" id="4r0sY_pPjOn" role="2hN53Y">
           <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
-        </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="3IZXeSRzW9T" role="jymVt" />
-    <node concept="3clFbW" id="47QEcUfsm5f" role="jymVt">
-      <node concept="37vLTG" id="47QEcUfsm5$" role="3clF46">
-        <property role="TrG5h" value="ideaProject" />
-        <node concept="3uibUv" id="47QEcUfsm5_" role="1tU5fm">
-          <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
-        </node>
-      </node>
-      <node concept="3clFbS" id="47QEcUfsm5i" role="3clF47">
-        <node concept="1VxSAg" id="70GEktGVhLO" role="3cqZAp">
-          <ref role="37wK5l" node="70GEktGV9cc" resolve="DefaultMakeTask" />
-          <node concept="2YIFZM" id="70GEktGVjhi" role="37wK5m">
-            <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProjectOrFail(com.intellij.openapi.project.Project)" resolve="fromIdeaProjectOrFail" />
-            <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
-            <node concept="37vLTw" id="70GEktGVkzo" role="37wK5m">
-              <ref role="3cqZAo" node="47QEcUfsm5$" resolve="ideaProject" />
-            </node>
-          </node>
-          <node concept="37vLTw" id="70GEktGVlMd" role="37wK5m">
-            <ref role="3cqZAo" node="47QEcUfsm5A" resolve="title" />
-          </node>
-          <node concept="37vLTw" id="70GEktGVni0" role="37wK5m">
-            <ref role="3cqZAo" node="47QEcUfsm5C" resolve="modules" />
-          </node>
-          <node concept="37vLTw" id="70GEktGVop8" role="37wK5m">
-            <ref role="3cqZAo" node="47QEcUfsm5F" resolve="needClean" />
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="47QEcUfsm5h" role="1B3o_S" />
-      <node concept="3cqZAl" id="47QEcUfsm5g" role="3clF45" />
-      <node concept="37vLTG" id="47QEcUfsm5A" role="3clF46">
-        <property role="TrG5h" value="title" />
-        <node concept="17QB3L" id="47QEcUfsm5B" role="1tU5fm" />
-      </node>
-      <node concept="37vLTG" id="47QEcUfsm5C" role="3clF46">
-        <property role="TrG5h" value="modules" />
-        <node concept="2hMVRd" id="47QEcUfsm5D" role="1tU5fm">
-          <node concept="3uibUv" id="4r0sY_pRHyx" role="2hN53Y">
-            <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
-          </node>
-        </node>
-      </node>
-      <node concept="37vLTG" id="47QEcUfsm5F" role="3clF46">
-        <property role="TrG5h" value="needClean" />
-        <node concept="10P_77" id="47QEcUfsm5G" role="1tU5fm" />
-      </node>
-      <node concept="P$JXv" id="70GEktGV_H_" role="lGtFl">
-        <node concept="TZ5HI" id="70GEktGV_HA" role="3nqlJM">
-          <node concept="TZ5HA" id="70GEktGV_HB" role="3HnX3l">
-            <node concept="1dT_AC" id="70GEktGV_Mq" role="1dT_Ay">
-              <property role="1dT_AB" value="remove once 2021.3 is out" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="70GEktGV_HC" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-        <node concept="2B6LJw" id="70GEktGV_Ms" role="2B76xF">
-          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
-          <node concept="3clFbT" id="70GEktGVAzX" role="2B70Vg">
-            <property role="3clFbU" value="true" />
-          </node>
         </node>
       </node>
     </node>

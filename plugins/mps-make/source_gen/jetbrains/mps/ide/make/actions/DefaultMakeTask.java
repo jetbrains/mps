@@ -8,8 +8,6 @@ import java.util.Set;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.LinkedHashSet;
-import com.intellij.openapi.project.Project;
-import jetbrains.mps.ide.project.ProjectHelper;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.progress.ProgressIndicator;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
@@ -25,15 +23,6 @@ public class DefaultMakeTask extends Task.Modal {
   private final MPSProject myProject;
   private boolean needClean;
   private Set<SModule> modules = SetSequence.fromSet(new LinkedHashSet<SModule>());
-
-  /**
-   * 
-   * @deprecated remove once 2021.3 is out
-   */
-  @Deprecated(forRemoval = true)
-  public DefaultMakeTask(Project ideaProject, String title, Set<SModule> modules, boolean needClean) {
-    this(ProjectHelper.fromIdeaProjectOrFail(ideaProject), title, modules, needClean);
-  }
 
   public DefaultMakeTask(MPSProject mpsProject, String title, Set<SModule> modules, boolean needClean) {
     super(mpsProject.getProject(), title, true);
