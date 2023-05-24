@@ -69,7 +69,7 @@ public class PathSpec {
 
   public Optional<IFile> resolve(@NotNull Function<String, IFile> expandMacro) {
     myResolvedFile = expandMacro.apply(myValue);
-    return Optional.of(myResolvedFile);
+    return Optional.ofNullable(myResolvedFile);
   }
 
   public boolean resolved() {

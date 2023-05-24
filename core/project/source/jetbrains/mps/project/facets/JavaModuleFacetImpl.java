@@ -36,6 +36,7 @@ import jetbrains.mps.util.PathSpecBundle;
 import jetbrains.mps.util.annotation.Hack;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.openapi.FileSystem;
+import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.TestOnly;
@@ -378,8 +379,22 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     if (!libraries.isEmpty() || !sources.isEmpty()) {
       final MacroHelper macroHelper = MacrosFactory.forModule(getModule());
       FileSystem fs = getAbstractModule().getFileSystem();
-      final Function<String, String> expandPath = macroHelper::expandPath;
-      Function<String, IFile> tr = expandPath.andThen(fs::getFile);
+      Function<String, IFile> tr = (s) -> {
+        final String expanded = macroHelper.expandPath(s);
+        if (MacrosFactory.containsMacro(expanded)) {
+          return null;
+        }
+        // XXX not clear if this code shall be part of the function or rather PathSpec.resolve().
+        //     On the one hand, better to keep it in one place. On the other, catching PFE there might be too
+        //     much of internal knowledge (assumption of what Function uses under the hood) for the PathSpec.
+        //     Moreover, not clear how to handle exception then, except for null (!resolved) - log, ignore?
+        //     Therefore, seems that the function that does conversion shall be responsible to error handling.
+        try {
+          return fs.getFile(expanded);
+        } catch (PathFormatException ex) {
+          return null;
+        }
+      };
       // don't re-resolve PathSpec that were instantiated with IFile
       final Predicate<PathSpec> resolved = PathSpec::resolved;
       if (!libraries.isEmpty()) {
