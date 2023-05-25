@@ -60,7 +60,7 @@ import jetbrains.mps.migration.global.MigrationOptions;
       final Wrappers._T<SModule> module = new Wrappers._T<SModule>();
       final SRepository repo = myProject.getRepository();
       repo.getModelAccess().runReadAction(() -> module.value = repo.getModules().iterator().next());
-      processor.process(new ScriptApplied(module.value, ListSequence.fromList(getModuleMig()).first().getReference()));
+      processor.process(new ScriptApplied(module.value, ListSequence.fromList(getModuleMig()).first()));
     }
     public void checkLibs(ProgressMonitor m, Processor<Pair<SModule, SModule>> processor) {
       // todo

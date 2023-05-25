@@ -6409,19 +6409,14 @@
                       <ref role="37wK5l" to="yyf4:~Processor.process(java.lang.Object)" resolve="process" />
                       <node concept="2ShNRf" id="4biA4YBv2e6" role="37wK5m">
                         <node concept="1pGfFk" id="4biA4YBv2e7" role="2ShVmc">
-                          <ref role="37wK5l" to="bim2:6fMyXCHDbdU" resolve="ScriptApplied" />
+                          <ref role="37wK5l" to="bim2:3xQJezt_h0_" resolve="ScriptApplied" />
                           <node concept="37vLTw" id="4biA4YBv2e8" role="37wK5m">
                             <ref role="3cqZAo" node="4biA4YBv2dN" resolve="module" />
                           </node>
-                          <node concept="2OqwBi" id="4biA4YBv2e9" role="37wK5m">
-                            <node concept="2OqwBi" id="4biA4YBv2ea" role="2Oq$k0">
-                              <node concept="1uHKPH" id="4biA4YBv2ee" role="2OqNvi" />
-                              <node concept="1rXfSq" id="4WgzjbQVCql" role="2Oq$k0">
-                                <ref role="37wK5l" node="5waAvQsY$OP" resolve="getModuleMig" />
-                              </node>
-                            </node>
-                            <node concept="liA8E" id="4biA4YBv2ef" role="2OqNvi">
-                              <ref role="37wK5l" to="6f4m:4F5w8gPX8b4" resolve="getReference" />
+                          <node concept="2OqwBi" id="4biA4YBv2ea" role="37wK5m">
+                            <node concept="1uHKPH" id="3xQJeztAAUo" role="2OqNvi" />
+                            <node concept="1rXfSq" id="4WgzjbQVCql" role="2Oq$k0">
+                              <ref role="37wK5l" node="5waAvQsY$OP" resolve="getModuleMig" />
                             </node>
                           </node>
                         </node>

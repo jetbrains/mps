@@ -26,6 +26,9 @@ public abstract class AppliedScript {
   private final List<SModuleReference> myModules;
   private final List<ScriptApplied<BaseScriptReference>> myLegacyValues;
 
+  /**
+   * use solely for scenarios when there's no script instance, iow represents broken migration scenario
+   */
   public AppliedScript(@NotNull final BaseScriptReference<?> scriptRef, Iterable<SModule> affectedModules) {
     myScriptRef = scriptRef;
     myScript = null;
@@ -41,7 +44,7 @@ public abstract class AppliedScript {
     }).toListSequence();
   }
 
-  public AppliedScript(@NotNull BaseScript script, Iterable<SModule> affectedModules) {
+  public AppliedScript(@NotNull final BaseScript script, Iterable<SModule> affectedModules) {
     myScriptRef = script.getReference();
     myScript = script;
     myModules = Sequence.fromIterable(affectedModules).select(new ISelector<SModule, SModuleReference>() {
@@ -51,7 +54,7 @@ public abstract class AppliedScript {
     }).toListSequence();
     myLegacyValues = Sequence.fromIterable(affectedModules).select(new ISelector<SModule, ScriptApplied<BaseScriptReference>>() {
       public ScriptApplied<BaseScriptReference> select(SModule it) {
-        return new ScriptApplied<BaseScriptReference>(it, myScriptRef);
+        return new ScriptApplied<BaseScriptReference>(it, script);
       }
     }).toListSequence();
   }

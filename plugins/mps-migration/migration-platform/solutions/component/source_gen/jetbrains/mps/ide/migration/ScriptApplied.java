@@ -4,21 +4,32 @@ package jetbrains.mps.ide.migration;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.lang.migration.runtime.base.BaseScriptReference;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModuleReference;
+import jetbrains.mps.lang.migration.runtime.base.BaseScript;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.annotations.Nullable;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/7201972523303742950", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 public class ScriptApplied<T extends BaseScriptReference> {
-  @NotNull
-  private SModuleReference myModule;
-  @NotNull
-  private T myScriptRef;
+  private final SModuleReference myModule;
+  private final T myScriptRef;
+  private final BaseScript myScript;
 
   public ScriptApplied(SModule module, T scriptRef) {
     myModule = module.getModuleReference();
     myScriptRef = scriptRef;
+    myScript = null;
+  }
+
+  /**
+   * Use when there's valid (existing) script code
+   */
+  public ScriptApplied(@NotNull SModule module, @NotNull BaseScript scriptInstance) {
+    myModule = module.getModuleReference();
+    myScriptRef = (T) scriptInstance.getReference();
+    myScript = scriptInstance;
   }
 
   public SModuleReference getModuleReference() {
@@ -36,6 +47,11 @@ public class ScriptApplied<T extends BaseScriptReference> {
 
   public T getScriptReference() {
     return myScriptRef;
+  }
+
+  @Nullable
+  public BaseScript getScriptInstance() {
+    return myScript;
   }
 
   @Override

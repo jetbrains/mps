@@ -422,7 +422,7 @@ __switch__:
           });
           return Sequence.fromIterable(scripts).select(new ISelector<MigrationScript, ScriptApplied>() {
             public ScriptApplied select(MigrationScript script) {
-              return new ScriptApplied(module, script.getReference());
+              return new ScriptApplied(module, script);
             }
           });
         }
