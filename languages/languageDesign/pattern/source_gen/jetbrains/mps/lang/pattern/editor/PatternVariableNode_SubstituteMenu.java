@@ -76,7 +76,7 @@ public class PatternVariableNode_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        return createPatternVariableNode_y43w6t_a0a0a(pattern.substring(1));
+        return createPatternVariableNode_y43w6t_a0a0a(((pattern == null || pattern.length() == 0) ? "" : pattern.substring(1)));
       }
 
       @Override

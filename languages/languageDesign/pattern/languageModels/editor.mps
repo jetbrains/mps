@@ -409,6 +409,11 @@
       <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
         <child id="1144230900587" name="variable" index="1Duv9x" />
       </concept>
+      <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
+        <child id="1163668914799" name="condition" index="3K4Cdx" />
+        <child id="1163668922816" name="ifTrue" index="3K4E3e" />
+        <child id="1163668934364" name="ifFalse" index="3K4GZi" />
+      </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
@@ -3626,14 +3631,23 @@
                 <ref role="2pJxaS" to="tp3t:2g69lt1BJHK" resolve="PatternVariableNode" />
                 <node concept="2pJxcG" id="64p9aapLoOo" role="2pJxcM">
                   <ref role="2pJxcJ" to="tpck:h0TrG11" resolve="name" />
-                  <node concept="WxPPo" id="64p9aapLoOp" role="28ntcv">
-                    <node concept="2OqwBi" id="64p9aapLoOq" role="WxPPp">
-                      <node concept="ub8z3" id="64p9aapLoOr" role="2Oq$k0" />
-                      <node concept="liA8E" id="64p9aapLoOs" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~String.substring(int)" resolve="substring" />
-                        <node concept="3cmrfG" id="64p9aapLoOt" role="37wK5m">
-                          <property role="3cmrfH" value="1" />
+                  <node concept="WxPPo" id="7Ukaenu4ckC" role="28ntcv">
+                    <node concept="3K4zz7" id="7Ukaenu4dxg" role="WxPPp">
+                      <node concept="Xl_RD" id="7Ukaenu4d$D" role="3K4E3e">
+                        <property role="Xl_RC" value="" />
+                      </node>
+                      <node concept="2OqwBi" id="7Ukaenu4clz" role="3K4Cdx">
+                        <node concept="17RlXB" id="7Ukaenu4d4_" role="2OqNvi" />
+                        <node concept="ub8z3" id="7Ukaenu4dNl" role="2Oq$k0" />
+                      </node>
+                      <node concept="2OqwBi" id="64p9aapLoOq" role="3K4GZi">
+                        <node concept="liA8E" id="64p9aapLoOs" role="2OqNvi">
+                          <ref role="37wK5l" to="wyt6:~String.substring(int)" resolve="substring" />
+                          <node concept="3cmrfG" id="64p9aapLoOt" role="37wK5m">
+                            <property role="3cmrfH" value="1" />
+                          </node>
                         </node>
+                        <node concept="ub8z3" id="7Ukaenu4dXA" role="2Oq$k0" />
                       </node>
                     </node>
                   </node>
@@ -3648,15 +3662,6 @@
           <node concept="3clFbS" id="64p9aapLoOw" role="2VODD2">
             <node concept="3clFbJ" id="64p9aapLoOx" role="3cqZAp">
               <node concept="1Wc70l" id="64p9aapLoOy" role="3clFbw">
-                <node concept="2OqwBi" id="64p9aapLoOz" role="3uHU7B">
-                  <node concept="ub8z3" id="64p9aapLoO$" role="2Oq$k0" />
-                  <node concept="liA8E" id="64p9aapLoO_" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String)" resolve="startsWith" />
-                    <node concept="Xl_RD" id="64p9aapLoOA" role="37wK5m">
-                      <property role="Xl_RC" value="%" />
-                    </node>
-                  </node>
-                </node>
                 <node concept="2YIFZM" id="64p9aapLoOB" role="3uHU7w">
                   <ref role="37wK5l" to="18ew:~JavaNameUtil.isJavaIdentifier(java.lang.String)" resolve="isJavaIdentifier" />
                   <ref role="1Pybhc" to="18ew:~JavaNameUtil" resolve="JavaNameUtil" />
@@ -3667,6 +3672,15 @@
                       <node concept="3cmrfG" id="64p9aapLoOF" role="37wK5m">
                         <property role="3cmrfH" value="1" />
                       </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="2OqwBi" id="64p9aapLoOz" role="3uHU7B">
+                  <node concept="ub8z3" id="64p9aapLoO$" role="2Oq$k0" />
+                  <node concept="liA8E" id="64p9aapLoO_" role="2OqNvi">
+                    <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String)" resolve="startsWith" />
+                    <node concept="Xl_RD" id="64p9aapLoOA" role="37wK5m">
+                      <property role="Xl_RC" value="%" />
                     </node>
                   </node>
                 </node>
