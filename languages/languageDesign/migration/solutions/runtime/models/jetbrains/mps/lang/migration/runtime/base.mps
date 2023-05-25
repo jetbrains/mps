@@ -4774,53 +4774,81 @@
       <property role="DiZV1" value="false" />
       <property role="od$2w" value="false" />
       <node concept="3clFbS" id="2RCunBMpg0m" role="3clF47">
-        <node concept="3clFbJ" id="2RCunBMpg0n" role="3cqZAp">
-          <node concept="3clFbS" id="2RCunBMpg0o" role="3clFbx">
-            <node concept="3cpWs6" id="6QpvLQNNGWg" role="3cqZAp">
-              <node concept="2YIFZM" id="6QpvLQNNGWi" role="3cqZAk">
-                <ref role="37wK5l" to="wyt6:~Math.max(int,int)" resolve="max" />
-                <ref role="1Pybhc" to="wyt6:~Math" resolve="Math" />
-                <node concept="3cmrfG" id="6QpvLQNNGWj" role="37wK5m">
-                  <property role="3cmrfH" value="0" />
-                </node>
-                <node concept="2OqwBi" id="6QpvLQNNGWk" role="37wK5m">
-                  <node concept="1eOMI4" id="6QpvLQNNGWl" role="2Oq$k0">
-                    <node concept="10QFUN" id="6QpvLQNNGWm" role="1eOMHV">
-                      <node concept="37vLTw" id="6QpvLQNNGWn" role="10QFUP">
-                        <ref role="3cqZAo" node="2RCunBMpg0D" resolve="module" />
-                      </node>
-                      <node concept="3uibUv" id="6QpvLQNNGWo" role="10QFUM">
-                        <ref role="3uigEE" to="z1c3:~AbstractModule" resolve="AbstractModule" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="6QpvLQNNGWp" role="2OqNvi">
-                    <ref role="37wK5l" to="z1c3:~AbstractModule.getUsedLanguageVersion(org.jetbrains.mps.openapi.language.SLanguage,boolean)" resolve="getUsedLanguageVersion" />
-                    <node concept="37vLTw" id="6QpvLQNNGWq" role="37wK5m">
-                      <ref role="3cqZAo" node="2RCunBMpg0G" resolve="usedLang" />
-                    </node>
-                    <node concept="3clFbT" id="6QpvLQNNGWr" role="37wK5m" />
-                  </node>
+        <node concept="3cpWs8" id="6QpvLQNQLGU" role="3cqZAp">
+          <node concept="3cpWsn" id="6QpvLQNQLGV" role="3cpWs9">
+            <property role="TrG5h" value="ver" />
+            <node concept="10Oyi0" id="6QpvLQNQLx0" role="1tU5fm" />
+            <node concept="2OqwBi" id="6QpvLQNQLGW" role="33vP2m">
+              <node concept="37vLTw" id="6QpvLQNQLGX" role="2Oq$k0">
+                <ref role="3cqZAo" node="2RCunBMpg0D" resolve="module" />
+              </node>
+              <node concept="liA8E" id="6QpvLQNQLGY" role="2OqNvi">
+                <ref role="37wK5l" to="lui2:~SModule.getUsedLanguageVersion(org.jetbrains.mps.openapi.language.SLanguage)" resolve="getUsedLanguageVersion" />
+                <node concept="37vLTw" id="6QpvLQNQLGZ" role="37wK5m">
+                  <ref role="3cqZAo" node="2RCunBMpg0G" resolve="usedLang" />
                 </node>
               </node>
-            </node>
-          </node>
-          <node concept="2ZW3vV" id="2RCunBMpg0y" role="3clFbw">
-            <node concept="3uibUv" id="2RCunBMpg0z" role="2ZW6by">
-              <ref role="3uigEE" to="z1c3:~AbstractModule" resolve="AbstractModule" />
-            </node>
-            <node concept="37vLTw" id="2RCunBMpg0$" role="2ZW6bz">
-              <ref role="3cqZAo" node="2RCunBMpg0D" resolve="module" />
             </node>
           </node>
         </node>
-        <node concept="YS8fn" id="2RCunBMpg0_" role="3cqZAp">
-          <node concept="2ShNRf" id="2RCunBMpg0A" role="YScLw">
-            <node concept="1pGfFk" id="2RCunBMpg0B" role="2ShVmc">
-              <ref role="37wK5l" to="wyt6:~IllegalArgumentException.&lt;init&gt;(java.lang.String)" resolve="IllegalArgumentException" />
-              <node concept="Xl_RD" id="2RCunBMpg0C" role="37wK5m">
-                <property role="Xl_RC" value="We are able to work only with AbstractModule instances" />
-              </node>
+        <node concept="3SKdUt" id="6QpvLQNQLTd" role="3cqZAp">
+          <node concept="1PaTwC" id="6QpvLQNQLTe" role="1aUNEU">
+            <node concept="3oM_SD" id="6QpvLQNQLXw" role="1PaTwD">
+              <property role="3oM_SC" value="XXX" />
+            </node>
+            <node concept="3oM_SD" id="6QpvLQNQLXy" role="1PaTwD">
+              <property role="3oM_SC" value="I" />
+            </node>
+            <node concept="3oM_SD" id="6QpvLQNQLYr" role="1PaTwD">
+              <property role="3oM_SC" value="wonder" />
+            </node>
+            <node concept="3oM_SD" id="6QpvLQNQM0b" role="1PaTwD">
+              <property role="3oM_SC" value="if" />
+            </node>
+            <node concept="3oM_SD" id="6QpvLQNQM16" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="6QpvLQNQM1c" role="1PaTwD">
+              <property role="3oM_SC" value="shall" />
+            </node>
+            <node concept="3oM_SD" id="6QpvLQNQM1j" role="1PaTwD">
+              <property role="3oM_SC" value="process" />
+            </node>
+            <node concept="3oM_SD" id="6QpvLQNQM2h" role="1PaTwD">
+              <property role="3oM_SC" value="-1," />
+            </node>
+            <node concept="3oM_SD" id="6QpvLQNQM7N" role="1PaTwD">
+              <property role="3oM_SC" value="legal" />
+            </node>
+            <node concept="3oM_SD" id="6QpvLQNQM8P" role="1PaTwD">
+              <property role="3oM_SC" value="value" />
+            </node>
+            <node concept="3oM_SD" id="6QpvLQNQM9S" role="1PaTwD">
+              <property role="3oM_SC" value="from" />
+            </node>
+            <node concept="3oM_SD" id="6QpvLQNQMa6" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="6QpvLQNQMdH" role="1PaTwD">
+              <property role="3oM_SC" value="method," />
+            </node>
+            <node concept="3oM_SD" id="6QpvLQNQM3g" role="1PaTwD">
+              <property role="3oM_SC" value="somehow" />
+            </node>
+            <node concept="3oM_SD" id="6QpvLQNQM5W" role="1PaTwD">
+              <property role="3oM_SC" value="here?" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="6QpvLQNNGWg" role="3cqZAp">
+          <node concept="2YIFZM" id="6QpvLQNNGWi" role="3cqZAk">
+            <ref role="37wK5l" to="wyt6:~Math.max(int,int)" resolve="max" />
+            <ref role="1Pybhc" to="wyt6:~Math" resolve="Math" />
+            <node concept="3cmrfG" id="6QpvLQNNGWj" role="37wK5m">
+              <property role="3cmrfH" value="0" />
+            </node>
+            <node concept="37vLTw" id="6QpvLQNQLH0" role="37wK5m">
+              <ref role="3cqZAo" node="6QpvLQNQLGV" resolve="usedLanguageVersion" />
             </node>
           </node>
         </node>
@@ -4846,9 +4874,6 @@
       <node concept="10Oyi0" id="2RCunBMpg0J" role="3clF45" />
       <node concept="3Tm1VV" id="2RCunBMpg0K" role="1B3o_S" />
       <node concept="P$JXv" id="6QpvLQNNDxb" role="lGtFl">
-        <node concept="TZ5HA" id="6QpvLQNNDxc" role="TZ5H$">
-          <node concept="1dT_AC" id="6QpvLQNNDxd" role="1dT_Ay" />
-        </node>
         <node concept="x79VA" id="6QpvLQNNDxk" role="3nqlJM">
           <property role="x79VB" value="version &gt;= 0" />
         </node>
@@ -4894,7 +4919,6 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbH" id="3xQJeztGTDE" role="3cqZAp" />
           </node>
           <node concept="2ZW3vV" id="3xQJeztFY$s" role="3clFbw">
             <node concept="3uibUv" id="3xQJeztFY$t" role="2ZW6by">
@@ -4904,13 +4928,17 @@
               <ref role="3cqZAo" node="3xQJeztFY$z" resolve="module" />
             </node>
           </node>
-        </node>
-        <node concept="YS8fn" id="3xQJeztFY$v" role="3cqZAp">
-          <node concept="2ShNRf" id="3xQJeztFY$w" role="YScLw">
-            <node concept="1pGfFk" id="3xQJeztFY$x" role="2ShVmc">
-              <ref role="37wK5l" to="wyt6:~IllegalArgumentException.&lt;init&gt;(java.lang.String)" resolve="IllegalArgumentException" />
-              <node concept="Xl_RD" id="3xQJeztFY$y" role="37wK5m">
-                <property role="Xl_RC" value="We are able to work only with AbstractModule instances" />
+          <node concept="9aQIb" id="1YhSWKH9f7L" role="9aQIa">
+            <node concept="3clFbS" id="1YhSWKH9f7M" role="9aQI4">
+              <node concept="YS8fn" id="3xQJeztFY$v" role="3cqZAp">
+                <node concept="2ShNRf" id="3xQJeztFY$w" role="YScLw">
+                  <node concept="1pGfFk" id="3xQJeztFY$x" role="2ShVmc">
+                    <ref role="37wK5l" to="wyt6:~IllegalArgumentException.&lt;init&gt;(java.lang.String)" resolve="IllegalArgumentException" />
+                    <node concept="Xl_RD" id="3xQJeztFY$y" role="37wK5m">
+                      <property role="Xl_RC" value="We are able to work only with AbstractModule instances" />
+                    </node>
+                  </node>
+                </node>
               </node>
             </node>
           </node>

@@ -60,21 +60,19 @@ public class MigrationModuleUtil {
 
   /**
    * 
-   * 
    * @return version >= 0
    */
   public static int getUsedLanguageVersion(@NotNull SModule module, @NotNull SLanguage usedLang) {
-    if (module instanceof AbstractModule) {
-      return Math.max(0, ((AbstractModule) module).getUsedLanguageVersion(usedLang, false));
-    }
-    throw new IllegalArgumentException("We are able to work only with AbstractModule instances");
+    int ver = module.getUsedLanguageVersion(usedLang);
+    // XXX I wonder if we shall process -1, legal value from the method, somehow here?
+    return Math.max(0, ver);
   }
   public static void putUsedLanguageVersion(@NotNull SModule module, @NotNull SLanguage usedLang, int version) {
     if (module instanceof AbstractModule) {
       ((AbstractModule) module).getModuleDescriptor().getLanguageVersions().put(usedLang, version);
-
+    } else {
+      throw new IllegalArgumentException("We are able to work only with AbstractModule instances");
     }
-    throw new IllegalArgumentException("We are able to work only with AbstractModule instances");
   }
 
   public static void setDepVersion(SModule module, SModuleReference dependency, int version) {

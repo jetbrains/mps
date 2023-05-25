@@ -32,7 +32,6 @@ import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import jetbrains.mps.scope.VisibleDepsSearchScope;
 import jetbrains.mps.smodel.SModelInternal;
-import jetbrains.mps.util.annotation.Hack;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.openapi.FileSystem;
 import org.jetbrains.annotations.Contract;
@@ -896,34 +895,12 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
 
   @Override
   public int getUsedLanguageVersion(@NotNull SLanguage usedLanguage) {
-    return getUsedLanguageVersion(usedLanguage, true);
-  }
-
-  /**
-   * has a fallback if the usedLanguage is absent in the module descriptor. if it happens then returns simply the current usedLanguage version
-   *
-   * @param check is whether to show error for not found version
-   * @deprecated hack for migration, will be gone after 3.4
-   */
-  @Deprecated(since = "3.4", forRemoval = true)
-  @Hack
-  public int getUsedLanguageVersion(@NotNull SLanguage usedLanguage, boolean check) {
     ModuleDescriptor moduleDescriptor = getModuleDescriptor();
     if (!checkDescriptorNotNull(moduleDescriptor)) {
       return -1;
     }
     Integer res = moduleDescriptor.getLanguageVersions().get(usedLanguage);
-    if (res == null) {
-      if (check) {
-        LOG.warning(String.format(
-            "#getUsedLanguageVersion can't find a version for language %s in module %s, so it is falling back to the current version of the language. " +
-            "Probably the language is not imported into this module or #validateLanguageVersions() was not called on this module in appropriate moment." +
-            "NB: there might be migrations which must be applied, however they are not going to.",
-            usedLanguage.getQualifiedName(), getModuleName()), new Throwable());
-      }
-      return usedLanguage.getLanguageVersion();
-    }
-    return res;
+    return res == null ? -1 : res.intValue();
   }
 
   public int getDependencyVersion(@NotNull SModule dependency) {
