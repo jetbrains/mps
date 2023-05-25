@@ -51,8 +51,8 @@ public class MigrationSetup {
       msc.fillFor(module);
       rsc.fillFor(module);
     }
-    ListSequence.fromList(myModuleMigrations).addSequence(ListSequence.fromList(msc.result()));
-    ListSequence.fromList(myModuleMigrations).addSequence(ListSequence.fromList(rsc.result()));
+    ListSequence.fromList(myModuleMigrations).addSequence(ListSequence.fromList(msc.result(mpsProject)));
+    ListSequence.fromList(myModuleMigrations).addSequence(ListSequence.fromList(rsc.result(mpsProject)));
 
     myBrokenDepsOfProjectModules = false;
     myNeedImportVersionUpdate = false;

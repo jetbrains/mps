@@ -89,6 +89,8 @@ public class RefactoringScriptReference implements BaseScriptReference<Refactori
     // todo store ModuleRef instead of SModule
     final Wrappers._T<RefactoringScript> implementation = new Wrappers._T<RefactoringScript>(null);
     p.getRepository().getModelAccess().runReadAction(() -> {
+      // FIXME once the only use in RefactoringScriptCollector, don't need read action here
+      //      besides, perhaps can go w/o module resolution, just keep instance in RefactoringScriptCollector until result()
       SModule module = RefactoringScriptReference.this.getModule(p.getRepository());
       if (module instanceof Language) {
         Language depModule = (Language) module;

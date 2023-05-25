@@ -14,15 +14,16 @@ import jetbrains.mps.smodel.SLanguageHierarchy;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.project.AbstractModule;
 import java.util.ArrayList;
+import jetbrains.mps.project.Project;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
+import jetbrains.mps.lang.migration.runtime.base.MigrationScript;
 import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.lang.migration.runtime.base.MigrationScript;
 import java.util.Set;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -76,18 +77,26 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
     });
   }
 
-  /*package*/ List<AppliedScript> result() {
+  /*package*/ List<AppliedScript> result(Project mpsProject) {
     final List<AppliedScript> rv = ListSequence.fromList(new ArrayList<AppliedScript>());
 
     for (MigrationScriptReference sr : SetSequence.fromSet(myGroupedByScript.keySet())) {
-      ListSequence.fromList(rv).addElement(new AppliedLanguageScript(sr, myGroupedByScript.get(sr)));
+      MigrationScript ms = sr.resolve(mpsProject, false);
+      if (ms != null) {
+        ListSequence.fromList(rv).addElement(new AppliedLanguageScript(ms, myGroupedByScript.get(sr)));
+      } else {
+        ListSequence.fromList(rv).addElement(new AppliedLanguageScript(sr, myGroupedByScript.get(sr)));
+      }
     }
     return rv;
   }
 
   private static class AppliedLanguageScript extends AppliedScript {
-    private AppliedLanguageScript(MigrationScriptReference msr, Iterable<SModule> modules) {
+    /*package*/ AppliedLanguageScript(MigrationScriptReference msr, Iterable<SModule> modules) {
       super(msr, modules);
+    }
+    /*package*/ AppliedLanguageScript(MigrationScript ms, Iterable<SModule> modules) {
+      super(ms, modules);
     }
 
     @NotNull

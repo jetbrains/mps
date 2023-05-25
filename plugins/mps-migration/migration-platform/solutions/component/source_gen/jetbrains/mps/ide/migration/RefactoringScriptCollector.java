@@ -14,14 +14,15 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.project.AbstractModule;
 import java.util.ArrayList;
+import jetbrains.mps.project.Project;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.migration.runtime.base.RefactoringScript;
 import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.lang.migration.runtime.base.RefactoringScript;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/1520098040411279238", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
@@ -56,17 +57,25 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
     }
   }
 
-  /*package*/ List<AppliedScript> result() {
+  /*package*/ List<AppliedScript> result(Project mpsProject) {
     final List<AppliedScript> rv = ListSequence.fromList(new ArrayList<AppliedScript>());
     for (RefactoringScriptReference sr : SetSequence.fromSet(myGroupedByScript.keySet())) {
-      ListSequence.fromList(rv).addElement(new AppliedRefacroringScript(sr, myGroupedByScript.get(sr)));
+      RefactoringScript rs = sr.resolve(mpsProject, false);
+      if (rs != null) {
+        ListSequence.fromList(rv).addElement(new AppliedRefacroringScript(rs, myGroupedByScript.get(sr)));
+      } else {
+        ListSequence.fromList(rv).addElement(new AppliedRefacroringScript(sr, myGroupedByScript.get(sr)));
+      }
     }
     return rv;
   }
 
   private static class AppliedRefacroringScript extends AppliedScript {
-    private AppliedRefacroringScript(RefactoringScriptReference rsr, Iterable<SModule> modules) {
+    /*package*/ AppliedRefacroringScript(RefactoringScriptReference rsr, Iterable<SModule> modules) {
       super(rsr, modules);
+    }
+    /*package*/ AppliedRefacroringScript(RefactoringScript rs, Iterable<SModule> modules) {
+      super(rs, modules);
     }
 
     @NotNull
