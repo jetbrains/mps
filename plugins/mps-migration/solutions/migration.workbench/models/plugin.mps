@@ -7483,6 +7483,54 @@
                                   <ref role="2AI5Lk" to="wyt6:~Override" />
                                 </node>
                               </node>
+                              <node concept="2tJIrI" id="214fFd$ByXA" role="jymVt" />
+                              <node concept="3clFb_" id="214fFd$BCdd" role="jymVt">
+                                <property role="TrG5h" value="refreshScriptInstances" />
+                                <node concept="3Tm1VV" id="214fFd$BCdf" role="1B3o_S" />
+                                <node concept="3cqZAl" id="214fFd$BCdg" role="3clF45" />
+                                <node concept="37vLTG" id="214fFd$BCdh" role="3clF46">
+                                  <property role="TrG5h" value="mpsProject" />
+                                  <node concept="3uibUv" id="214fFd$BCdi" role="1tU5fm">
+                                    <ref role="3uigEE" to="z1c4:~Project" resolve="Project" />
+                                  </node>
+                                </node>
+                                <node concept="3clFbS" id="214fFd$BCdk" role="3clF47">
+                                  <node concept="3SKdUt" id="214fFd$BNjw" role="3cqZAp">
+                                    <node concept="1PaTwC" id="214fFd$BNjx" role="1aUNEU">
+                                      <node concept="3oM_SD" id="214fFd$BNj_" role="1PaTwD">
+                                        <property role="3oM_SC" value="no-op," />
+                                      </node>
+                                      <node concept="3oM_SD" id="214fFd$BReU" role="1PaTwD">
+                                        <property role="3oM_SC" value="our" />
+                                      </node>
+                                      <node concept="3oM_SD" id="214fFd$BReX" role="1PaTwD">
+                                        <property role="3oM_SC" value="project" />
+                                      </node>
+                                      <node concept="3oM_SD" id="214fFd$BRfR" role="1PaTwD">
+                                        <property role="3oM_SC" value="migration" />
+                                      </node>
+                                      <node concept="3oM_SD" id="214fFd$BRgM" role="1PaTwD">
+                                        <property role="3oM_SC" value="doesn't" />
+                                      </node>
+                                      <node concept="3oM_SD" id="214fFd$BRhY" role="1PaTwD">
+                                        <property role="3oM_SC" value="reload" />
+                                      </node>
+                                      <node concept="3oM_SD" id="214fFd$BRpl" role="1PaTwD">
+                                        <property role="3oM_SC" value="any" />
+                                      </node>
+                                      <node concept="3oM_SD" id="214fFd$BRlb" role="1PaTwD">
+                                        <property role="3oM_SC" value="language/module" />
+                                      </node>
+                                      <node concept="3oM_SD" id="214fFd$BRqe" role="1PaTwD">
+                                        <property role="3oM_SC" value="migrations" />
+                                      </node>
+                                    </node>
+                                  </node>
+                                </node>
+                                <node concept="2AHcQZ" id="214fFd$BCdl" role="2AJF6D">
+                                  <ref role="2AI5Lk" to="wyt6:~Override" />
+                                </node>
+                              </node>
                             </node>
                           </node>
                         </node>

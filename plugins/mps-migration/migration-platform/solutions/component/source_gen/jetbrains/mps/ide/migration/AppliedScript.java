@@ -13,6 +13,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.project.Project;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 
 /**
@@ -22,7 +23,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/4068647021694757046", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 public abstract class AppliedScript {
   private final BaseScriptReference<?> myScriptRef;
-  protected final BaseScript myScript;
+  protected BaseScript myScript;
   private final List<SModuleReference> myModules;
   private final List<ScriptApplied<BaseScriptReference>> myLegacyValues;
 
@@ -73,6 +74,8 @@ public abstract class AppliedScript {
   }
 
   public abstract Collection<ScriptApplied> toBeExecutedImmediately(SRepository repo);
+
+  public abstract void refreshScriptInstances(Project mpsProject);
 
   public Iterable<ScriptApplied> asLegacy() {
     return ListSequence.fromList(myLegacyValues).ofType(ScriptApplied.class);

@@ -24,6 +24,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/1520098040411279238", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 /*package*/ class RefactoringScriptCollector {
@@ -87,7 +88,7 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
     @Override
     public Collection<ScriptApplied> toBeExecutedImmediately(final SRepository repo) {
       if (!(scriptPresent())) {
-        // FIXME assert, instead? we are not supposed to un when there AS without script instance
+        // not assert, see MigrationScriptCollector
         return Sequence.fromIterable(Sequence.fromIterable(Collections.<ScriptApplied>emptyList())).toListSequence();
       }
       final RefactoringScriptReference sr = scriptReference();
@@ -118,6 +119,16 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
       }
       int dv = Math.max(0, ((AbstractModule) m).getDependencyVersion(ref.getModule(m.getRepository()), false));
       return dv <= ref.getFromVersion();
+    }
+
+    @Override
+    public void refreshScriptInstances(Project mpsProject) {
+      myScript = RefactoringScriptReference.resolve(mpsProject.getRepository(), scriptReference());
+      Sequence.fromIterable(asLegacy()).visitAll(new IVisitor<ScriptApplied>() {
+        public void visit(ScriptApplied it) {
+          it.updateScriptInstance(myScript);
+        }
+      });
     }
   }
 }

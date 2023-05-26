@@ -45,6 +45,8 @@ public class MigrationSetup {
         return it.shouldBeExecuted(mpsProject);
       }
     }));
+    // FIXME provided project migrations, once executed, may invalidate set of language/module migrations,
+    //      I think it's reasonable to collect the two independently, not at the same moment.
     MigrationScriptCollector msc = new MigrationScriptCollector(languageRegistry);
     RefactoringScriptCollector rsc = new RefactoringScriptCollector();
     for (SModule module : Sequence.fromIterable(modules)) {

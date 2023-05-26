@@ -25,6 +25,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Set;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/1520098040411268050", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
@@ -105,7 +106,8 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
     @Override
     public Collection<ScriptApplied> toBeExecutedImmediately(final SRepository repo) {
       if (!(scriptPresent())) {
-        // FIXME assert, instead? we are not supposed to un when there AS without script instance
+        // Can't be assert. Although we are not supposed to run when there AS without script instance,
+        // we may face this scenario when refreshScriptInstances() after project migrations invalidated
         return Sequence.fromIterable(Sequence.fromIterable(Collections.<ScriptApplied>emptyList())).toListSequence();
       }
       final MigrationScriptReference sr = scriptReference();
@@ -148,6 +150,16 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
       }
       int dv = MigrationModuleUtil.getUsedLanguageVersion(m, ref.getLanguage());
       return dv <= ref.getFromVersion();
+    }
+
+    @Override
+    public void refreshScriptInstances(Project mpsProject) {
+      myScript = MigrationScriptReference.resolve(mpsProject.getComponent(LanguageRegistry.class), scriptReference());
+      Sequence.fromIterable(asLegacy()).visitAll(new IVisitor<ScriptApplied>() {
+        public void visit(ScriptApplied it) {
+          it.updateScriptInstance(myScript);
+        }
+      });
     }
 
   }

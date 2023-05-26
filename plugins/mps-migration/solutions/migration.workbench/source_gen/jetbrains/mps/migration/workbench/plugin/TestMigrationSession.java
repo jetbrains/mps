@@ -182,6 +182,11 @@ import jetbrains.mps.migration.global.MigrationOptions;
               }
             }, true).toListSequence();
           }
+
+          @Override
+          public void refreshScriptInstances(Project mpsProject) {
+            // no-op, our project migration doesn't reload any language/module migrations
+          }
         });
       }
     });

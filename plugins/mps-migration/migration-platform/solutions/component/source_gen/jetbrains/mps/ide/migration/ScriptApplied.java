@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 public class ScriptApplied<T extends BaseScriptReference> {
   private final SModuleReference myModule;
   private final T myScriptRef;
-  private final BaseScript myScript;
+  private BaseScript myScript;
 
   public ScriptApplied(SModule module, T scriptRef) {
     myModule = module.getModuleReference();
@@ -52,6 +52,13 @@ public class ScriptApplied<T extends BaseScriptReference> {
   @Nullable
   public BaseScript getScriptInstance() {
     return myScript;
+  }
+
+  /**
+   * internal implementation facility to deal with reloading of original classloaders
+   */
+  /*package*/ void updateScriptInstance(BaseScript script) {
+    myScript = script;
   }
 
   @Override
