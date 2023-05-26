@@ -28,6 +28,7 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.util.Status;
 import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.migration.global.CleanupProjectMigration;
 import jetbrains.mps.migration.global.ProjectMigrationWithOptions;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -162,7 +163,7 @@ public interface MigrationSession {
         return null;
       }
 
-      // FIXME shall use exisitng script instance from AppliedScript, but as long as we use legacy ScriptApplied here,
+      // FIXME shall use existing script instance from AppliedScript, but as long as we use legacy ScriptApplied here,
       //      it holds necessary script instance (null shall not happen if pre-check passed). 
       //     Nevertheless, shall switch to AS and take its caption.
       final String caption = CollectionSequence.fromCollection(sa).first().getScriptInstance().getCaption();
@@ -188,6 +189,7 @@ public interface MigrationSession {
               toApply = nextStepModuleImpl();
             } while (toApply != null && CollectionSequence.fromCollection(toApply).isNotEmpty());
           } catch (Throwable ex) {
+            Logger.getLogger(MigrationSession.class).error(String.format("Failed to execute module step %s", getDescription()), ex);
             return new Status.ERROR(ex.getMessage());
           }
           return new Status.OK();
@@ -228,6 +230,7 @@ public interface MigrationSession {
             getExecutor().execute(m);
             return new Status.OK();
           } catch (Throwable ex) {
+            Logger.getLogger(MigrationSession.class).error(String.format("Failed to execute project step %s", getDescription()), ex);
             return new Status.ERROR(ex.getMessage());
           }
         }
@@ -262,6 +265,7 @@ public interface MigrationSession {
             getExecutor().execute(m);
             return new Status.OK();
           } catch (Throwable ex) {
+            Logger.getLogger(MigrationSession.class).error(String.format("Failed to execute cleanup step %s", getDescription()), ex);
             m.forceExecutionNextTime(getProject());
             return new Status.ERROR(ex.getMessage());
           }

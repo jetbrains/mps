@@ -7,6 +7,7 @@ import jetbrains.mps.logging.Logger;
 import com.intellij.history.LocalHistoryAction;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.persistence.PersistenceRegistry;
+import jetbrains.mps.util.Status;
 import java.util.List;
 import jetbrains.mps.ide.migration.ScriptApplied;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -26,7 +27,7 @@ import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.ide.save.SaveRepositoryCommand;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.configurationStore.StoreUtil;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -113,8 +114,9 @@ public class MigrationTask {
     }
 
     if (checkAndIncStage(1)) {
-      if (!(runCleanupMigrations(monitor.subTask(10)))) {
-        throw new MigrationExceptionError();
+      Status cmStatus = runCleanupMigrations(monitor.subTask(10));
+      if (!(cmStatus.isOk())) {
+        throw new MigrationExceptionError(cmStatus);
       }
     }
 
@@ -155,11 +157,25 @@ public class MigrationTask {
 
     // from here, we don't ignore errors
     addGlobalLabel(mySession.getProject(), STARTED);
-    if (!(runProjectMigrations(monitor.subTask(5)))) {
-      throw new MigrationExceptionError();
+    Status pmStatus = runProjectMigrations(monitor.subTask(5));
+    if (!(pmStatus.isOk())) {
+      throw new MigrationExceptionError(pmStatus);
     }
-    if (!(runLanguageMigrations(monitor.subTask(30)))) {
-      throw new MigrationExceptionError();
+    //  
+    // ANOTHER TIMING HACK
+    try {
+      // As long as we run in EDT, there are chances project migrations modified a project language with a plugin aspect.
+      // Then CLM notifies LanguageRegistry, which delayed plugin notification. This notification is processed in EDT
+      // and, once processed, notifies CLM that language's CL can get disposed. I've seen ModuleCL disposed errors while
+      // applying language migrations, and this is an attempt to give CLM, LR and PLR to process these notifications.
+      Thread.sleep(500);
+    } catch (Exception ex) {
+      // ignore
+    }
+
+    Status lmStatus = runLanguageMigrations(monitor.subTask(30));
+    if (!(lmStatus.isOk())) {
+      throw new MigrationExceptionError(lmStatus);
     }
     addGlobalLabel(mySession.getProject(), FINISHED);
 
@@ -195,20 +211,19 @@ public class MigrationTask {
     return myIsComplete;
   }
 
-  private boolean executeSingleStep(final ProgressMonitor m, final String localHistCaption, final MigrationRunnable execute) {
-    final Wrappers._boolean cleanExec = new Wrappers._boolean(true);
+  private Status executeSingleStep(final ProgressMonitor m, final String localHistCaption, final MigrationRunnable execute) {
+    final Wrappers._T<Status> execStatus = new Wrappers._T<Status>(new Status.ERROR("Not started"));
 
     final SRepository repo = mySession.getProject().getRepository();
     ApplicationManager.getApplication().invokeAndWait(() -> {
+      // FIXME seems I can use runLocalHistoryRecord() instead
       assert myCurrentChange == null;
       myCurrentChange = LocalHistory.getInstance().startAction(APPLY + localHistCaption);
-      repo.getModelAccess().executeCommand(() -> {
-        if (!(execute.run(m).isOk())) {
-          cleanExec.value = false;
-        }
-      });
+      // again, do I need EDT as long as I don't use command?
+      repo.getModelAccess().runWriteAction(() -> execStatus.value = execute.run(m));
 
       m.step("Saving project...");
+      // XXX perhaps, shall move to write action, above?
       new SaveRepositoryCommand(repo).execute();
       saveProject();
 
@@ -216,7 +231,7 @@ public class MigrationTask {
       myCurrentChange = null;
     });
 
-    return cleanExec.value;
+    return execStatus.value;
   }
 
   /**
@@ -237,35 +252,38 @@ public class MigrationTask {
 
   }
 
-  private boolean runCleanupMigrations(final ProgressMonitor m) {
+  private Status runCleanupMigrations(final ProgressMonitor m) {
     int cleanupStepsCount = projectStepsCount(true);
-    m.start("Cleaning...", cleanupStepsCount);
-    final AtomicBoolean success = new AtomicBoolean(true);
-    if (cleanupStepsCount != 0) {
-      addGlobalLabel(mySession.getProject(), "Cleanup started");
-      mySession.getProject().getComponent(ClassLoaderManager.class).runNonReloadableSection(new Runnable() {
-        @Override
-        public void run() {
-          while (true) {
-            MigrationRunnable pm = mySession.nextStepCleanup();
-            if (pm == null) {
-              break;
-            }
-
-            m.step(pm.getDescription());
-            if (!(executeSingleStep(m, pm.getDescription(), pm))) {
-              success.set(false);
-              break;
-            }
-
-            m.advance(1);
-          }
-        }
-      });
-      addGlobalLabel(mySession.getProject(), "Cleanup finished");
+    if (cleanupStepsCount == 0) {
+      return new Status.OK("Nothing to do");
     }
+    m.start("Cleaning...", cleanupStepsCount);
+    final AtomicReference<Status> result = new AtomicReference<>(new Status.ERROR("Not executed"));
+    addGlobalLabel(mySession.getProject(), "Cleanup started");
+    mySession.getProject().getComponent(ClassLoaderManager.class).runNonReloadableSection(new Runnable() {
+      @Override
+      public void run() {
+        do {
+          MigrationRunnable pm = mySession.nextStepCleanup();
+          if (pm == null) {
+            result.set(Status.NO_ERRORS);
+            break;
+          }
+
+          m.step(pm.getDescription());
+          Status executeSingleStep = executeSingleStep(m, pm.getDescription(), pm);
+          if (!(executeSingleStep.isOk())) {
+            result.set(executeSingleStep);
+            break;
+          }
+
+          m.advance(1);
+        } while (true);
+      }
+    });
+    addGlobalLabel(mySession.getProject(), "Cleanup finished");
     m.done();
-    return success.get();
+    return result.get();
   }
 
   private List<ScriptApplied> findMissingMigrations(ProgressMonitor m) {
@@ -342,9 +360,11 @@ public class MigrationTask {
     }
   }
 
-  private boolean runProjectMigrations(final ProgressMonitor m) {
+  private Status runProjectMigrations(final ProgressMonitor m) {
     m.start("Running project migrations...", projectStepsCount(false));
-    final AtomicBoolean success = new AtomicBoolean(true);
+    // I like status approach of runCleanupMigrations() better; telling blank "success" vs "not executed" gives 
+    // more information. But left close to the original code for now
+    final AtomicReference<Status> success = new AtomicReference<>(Status.NO_ERRORS);
     mySession.getProject().getComponent(ClassLoaderManager.class).runNonReloadableSection(new Runnable() {
       @Override
       public void run() {
@@ -355,8 +375,9 @@ public class MigrationTask {
           }
 
           m.step(pm.getDescription());
-          if (!(executeSingleStep(m, pm.getDescription(), pm))) {
-            success.set(false);
+          Status executeSingleStep = executeSingleStep(m, pm.getDescription(), pm);
+          if (!(executeSingleStep.isOk())) {
+            success.set(executeSingleStep);
             break;
           }
 
@@ -368,9 +389,9 @@ public class MigrationTask {
     return success.get();
   }
 
-  private boolean runLanguageMigrations(final ProgressMonitor m) {
+  private Status runLanguageMigrations(final ProgressMonitor m) {
     m.start("Running language migrations...", moduleStepsCount());
-    final AtomicBoolean success = new AtomicBoolean(true);
+    final AtomicReference<Status> success = new AtomicReference<>(Status.NO_ERRORS);
 
     // FIXME why non-reloadable section when we don't compile any module here and can't deploy anything?
     //     perhaps, as fixed module could let some language complete its deps and make it loadable?
@@ -385,8 +406,9 @@ public class MigrationTask {
           }
 
           m.step(sa.getDescription());
-          if (!(executeSingleStep(m, sa.getDescription(), sa))) {
-            success.set(false);
+          Status executeSingleStep = executeSingleStep(m, sa.getDescription(), sa);
+          if (!(executeSingleStep.isOk())) {
+            success.set(executeSingleStep);
             break;
           }
 
