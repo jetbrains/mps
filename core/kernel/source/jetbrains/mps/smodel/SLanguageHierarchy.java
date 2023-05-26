@@ -100,6 +100,23 @@ public class SLanguageHierarchy {
    */
   public void forEachExtended(@NotNull final HierarchyVisitor visitor) {
     final boolean[] found = new boolean[1];
+    final HierarchyVisitor unique = new HierarchyVisitor() {
+      private final HashSet<LanguageRuntime> mySeen1 = new HashSet<>();
+      private final HashSet<SLanguage> mySeen2 = new HashSet<>();
+      @Override
+      public void accept(LanguageRuntime languageRuntime) {
+        if (mySeen1.add(languageRuntime)) {
+          visitor.accept(languageRuntime);
+        }
+      }
+
+      @Override
+      public void acceptMissing(@NotNull SLanguage missingRuntime) {
+        if (mySeen2.add(missingRuntime)) {
+          visitor.acceptMissing(missingRuntime);
+        }
+      }
+    };
     // XXX I don't like individual lock per language from myLanguages, OTOH (a) common scenario is to pass single language to this class
     //     (b) fine-grained lock granularity might not be bad per se.
     //     Need this as I want to notify missing runtimes
@@ -107,11 +124,11 @@ public class SLanguageHierarchy {
       found[0] = false;
       myRegistry.withAvailableLanguages(Stream.of(l), lr -> {
         found[0] = true;
-        visitor.accept(lr);
-        lr.getExtendedLanguages().forEach(visitor);
+        unique.accept(lr);
+        lr.getExtendedLanguages().forEach(unique);
       });
       if (!found[0]) {
-         visitor.acceptMissing(l);
+         unique.acceptMissing(l);
       }
     }
   }
