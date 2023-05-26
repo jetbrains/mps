@@ -20,6 +20,9 @@ import com.intellij.history.LocalHistory;
 import jetbrains.mps.ide.project.ProjectHelper;
 import java.awt.Color;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.ide.migration.AppliedScript;
 import jetbrains.mps.ide.migration.MigrationRunnable;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -28,6 +31,7 @@ import jetbrains.mps.ide.save.SaveRepositoryCommand;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.configurationStore.StoreUtil;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.atomic.AtomicBoolean;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,9 +39,7 @@ import jetbrains.mps.util.Pair;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.ide.migration.AppliedScript;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.migration.global.ProjectMigration;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -104,13 +106,14 @@ public class MigrationTask {
         if (update) {
           // add label to local history if requested
           runVersionsUpdate(m.subTask(20));
-          if (!(migrate)) {
-            return;
-          }
+          refreshScriptInstances();
         }
       } finally {
         m.done();
       }
+    }
+    if (!(migrate)) {
+      return;
     }
 
     if (checkAndIncStage(1)) {
@@ -161,17 +164,6 @@ public class MigrationTask {
     if (!(pmStatus.isOk())) {
       throw new MigrationExceptionError(pmStatus);
     }
-    //  
-    // ANOTHER TIMING HACK
-    try {
-      // As long as we run in EDT, there are chances project migrations modified a project language with a plugin aspect.
-      // Then CLM notifies LanguageRegistry, which delayed plugin notification. This notification is processed in EDT
-      // and, once processed, notifies CLM that language's CL can get disposed. I've seen ModuleCL disposed errors while
-      // applying language migrations, and this is an attempt to give CLM, LR and PLR to process these notifications.
-      Thread.sleep(500);
-    } catch (Exception ex) {
-      // ignore
-    }
 
     Status lmStatus = runLanguageMigrations(monitor.subTask(30));
     if (!(lmStatus.isOk())) {
@@ -209,6 +201,23 @@ public class MigrationTask {
 
   public boolean isComplete() {
     return myIsComplete;
+  }
+
+  private void refreshScriptInstances() {
+    // Sort of a hack. Each time there's a modification that may trigger module registration/un-registration
+    //  (pretty much anything, like version update or applying project migration), need to get new BaseScript 
+    //  instances, otherwise we may face disposed classloader (LangRegistry notifies PluginLoaderRegistry of gone CL
+    //  EDT pumps events at invokeAndWait, PLR releases CL and it becomes disposed.
+    // Besides, seems that I can't do it inside MigrationSession.updateModuleImports and nextStepXXX, at least shall
+    // keep this refresh outside of original write to get SModule events distributed on write complete.
+    final Project mpsProject = mySession.getProject();
+    mpsProject.getModelAccess().runReadAction(() -> {
+      CollectionSequence.fromCollection(mySession.getModuleMigrations()).visitAll(new IVisitor<AppliedScript>() {
+        public void visit(AppliedScript as) {
+          as.refreshScriptInstances(mpsProject);
+        }
+      });
+    });
   }
 
   private Status executeSingleStep(final ProgressMonitor m, final String localHistCaption, final MigrationRunnable execute) {
@@ -259,6 +268,7 @@ public class MigrationTask {
     }
     m.start("Cleaning...", cleanupStepsCount);
     final AtomicReference<Status> result = new AtomicReference<>(new Status.ERROR("Not executed"));
+    final AtomicBoolean activity = new AtomicBoolean(false);
     addGlobalLabel(mySession.getProject(), "Cleanup started");
     mySession.getProject().getComponent(ClassLoaderManager.class).runNonReloadableSection(new Runnable() {
       @Override
@@ -272,6 +282,7 @@ public class MigrationTask {
 
           m.step(pm.getDescription());
           Status executeSingleStep = executeSingleStep(m, pm.getDescription(), pm);
+          activity.set(true);
           if (!(executeSingleStep.isOk())) {
             result.set(executeSingleStep);
             break;
@@ -283,6 +294,10 @@ public class MigrationTask {
     });
     addGlobalLabel(mySession.getProject(), "Cleanup finished");
     m.done();
+
+    if (activity.get()) {
+      refreshScriptInstances();
+    }
     return result.get();
   }
 
@@ -365,6 +380,7 @@ public class MigrationTask {
     // I like status approach of runCleanupMigrations() better; telling blank "success" vs "not executed" gives 
     // more information. But left close to the original code for now
     final AtomicReference<Status> success = new AtomicReference<>(Status.NO_ERRORS);
+    final AtomicBoolean activity = new AtomicBoolean(false);
     mySession.getProject().getComponent(ClassLoaderManager.class).runNonReloadableSection(new Runnable() {
       @Override
       public void run() {
@@ -376,6 +392,7 @@ public class MigrationTask {
 
           m.step(pm.getDescription());
           Status executeSingleStep = executeSingleStep(m, pm.getDescription(), pm);
+          activity.set(true);
           if (!(executeSingleStep.isOk())) {
             success.set(executeSingleStep);
             break;
@@ -386,12 +403,17 @@ public class MigrationTask {
       }
     });
     m.done();
+    if (activity.get()) {
+      refreshScriptInstances();
+    }
+
     return success.get();
   }
 
   private Status runLanguageMigrations(final ProgressMonitor m) {
     m.start("Running language migrations...", moduleStepsCount());
     final AtomicReference<Status> success = new AtomicReference<>(Status.NO_ERRORS);
+    final AtomicBoolean activity = new AtomicBoolean(false);
 
     // FIXME why non-reloadable section when we don't compile any module here and can't deploy anything?
     //     perhaps, as fixed module could let some language complete its deps and make it loadable?
@@ -407,6 +429,7 @@ public class MigrationTask {
 
           m.step(sa.getDescription());
           Status executeSingleStep = executeSingleStep(m, sa.getDescription(), sa);
+          activity.set(true);
           if (!(executeSingleStep.isOk())) {
             success.set(executeSingleStep);
             break;
@@ -416,8 +439,11 @@ public class MigrationTask {
         }
       }
     });
-
     m.done();
+    if (activity.get()) {
+      refreshScriptInstances();
+    }
+
     return success.get();
   }
 

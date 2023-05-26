@@ -25,7 +25,6 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.util.Status;
 import jetbrains.mps.util.NameUtil;
@@ -85,7 +84,6 @@ public interface MigrationSession {
     private final Set<ProjectMigration> myExecutedInSession = SetSequence.fromSet(new HashSet<ProjectMigration>());
     private final MigrationOptions myOptions = new MigrationOptions();
     private final List<ScriptApplied> myWereRun = ListSequence.fromList(new ArrayList<ScriptApplied>());
-    private boolean myProjectMigrationsPresent;
 
     public MigrationSessionBase() {
     }
@@ -158,19 +156,6 @@ public interface MigrationSession {
     @Nullable
     @Override
     public MigrationRunnable nextStepModule() {
-      if (myProjectMigrationsPresent) {
-        // If there are project modules that contributed migrations, project migrations might have lead to CL reload
-        // and invalidation of script instances we keep in AppliedScript. Therefore
-        final SRepository repo = getProject().getRepository();
-        repo.getModelAccess().runReadAction(() -> {
-          CollectionSequence.fromCollection(getModuleMigrations()).visitAll(new IVisitor<AppliedScript>() {
-            public void visit(AppliedScript as) {
-              as.refreshScriptInstances(getProject());
-            }
-          });
-        });
-
-      }
       final Collection<ScriptApplied> sa = nextStepModuleImpl();
       if (sa == null || CollectionSequence.fromCollection(sa).isEmpty()) {
         return null;
@@ -239,7 +224,6 @@ public interface MigrationSession {
         @NotNull
         @Override
         public Status run(ProgressMonitor progress) {
-          myProjectMigrationsPresent = true;
           try {
             getExecutor().execute(m);
             return new Status.OK();
