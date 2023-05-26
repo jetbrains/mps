@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.function.Supplier;
 
 // to become final and/or package-local once MPS-extensions stop using it
 public class LightBulbMenu extends JLabel {
@@ -49,7 +50,8 @@ public class LightBulbMenu extends JLabel {
     setBackground(Color.WHITE);
 
     setToolTipText("Click or press");
-    putClientProperty(HelpTooltipManager.SHORTCUT_PROPERTY, KeymapUtil.getKeystrokeText(shortcut));
+    Supplier<String> tooltipWithShortcut = () -> KeymapUtil.getKeystrokeText(shortcut);
+    putClientProperty(HelpTooltipManager.SHORTCUT_PROPERTY, tooltipWithShortcut);
 
     setPreferredSize(new Dimension(getWidth(), getHeight()));
     setSize(getWidth(), getHeight());
