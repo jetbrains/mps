@@ -511,6 +511,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.property("sourceCardinality", 0xf98054bb04L).type(MetaIdFactory.dataTypeId(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f3944c2L)).origin("4241665505353454118").done();
     b.property("unordered", 0x213ed46fe94fc232L).type(PrimitiveTypeId.BOOLEAN).origin("2395585628928459314").done();
     b.property("linkId", 0x35a81382d82a4e4L).type(MetaIdFactory.dataTypeId(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x3b4187227177134aL)).origin("241647608299431140").done();
+    b.property("transient", 0x49c10ffd24d03d21L).type(PrimitiveTypeId.BOOLEAN).origin("5314546615192665377").done();
     b.associate("specializedLink", 0xf98051c244L).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL).optional(true).origin("1071599698500").done();
     b.associate("target", 0xf98055fef0L).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL).optional(false).origin("1071599976176").done();
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
@@ -546,6 +547,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/1071489288299");
     b.version(3);
     b.property("propertyId", 0x35a81382d82a4d9L).type(MetaIdFactory.dataTypeId(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x3b4187227177134aL)).origin("241647608299431129").done();
+    b.property("transient", 0x49c10ffd24d03843L).type(PrimitiveTypeId.BOOLEAN).origin("5314546615192664131").done();
     b.associate("dataType", 0xfc26f42fe5L).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL).optional(false).origin("1082985295845").done();
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
     return b.create();

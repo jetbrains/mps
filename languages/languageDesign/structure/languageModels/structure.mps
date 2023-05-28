@@ -121,25 +121,11 @@
       <property role="TrG5h" value="metaClass" />
       <property role="IQ2nx" value="1071599937831" />
       <ref role="AX2Wp" node="3Ftr4R6BFyl" resolve="LinkMetaclass" />
-      <node concept="3l_iC" id="3Ftr4R6BH8_" role="lGtFl">
-        <node concept="1TJgyi" id="fA0lm$B" role="3l_iP">
-          <property role="TrG5h" value="metaClass" />
-          <property role="IQ2nx" value="1071599937831" />
-          <ref role="AX2Wp" node="3Ftr4R6BFyl" resolve="LinkMetaclass" />
-        </node>
-      </node>
     </node>
     <node concept="1TJgyi" id="3Ftr4R6BH8A" role="1TKVEl">
       <property role="TrG5h" value="sourceCardinality" />
       <property role="IQ2nx" value="1071599893252" />
       <ref role="AX2Wp" node="3Ftr4R6BFyf" resolve="Cardinality" />
-      <node concept="3l_iC" id="3Ftr4R6BH8B" role="lGtFl">
-        <node concept="1TJgyi" id="fA0lbG4" role="3l_iP">
-          <property role="TrG5h" value="sourceCardinality" />
-          <property role="IQ2nx" value="1071599893252" />
-          <ref role="AX2Wp" node="3Ftr4R6BFyf" resolve="Cardinality" />
-        </node>
-      </node>
     </node>
     <node concept="1TJgyi" id="24YP6ZDjW8M" role="1TKVEl">
       <property role="TrG5h" value="unordered" />
@@ -150,6 +136,11 @@
       <property role="TrG5h" value="linkId" />
       <property role="IQ2nx" value="241647608299431140" />
       <ref role="AX2Wp" node="3H1xM9LtLda" resolve="IDNumber" />
+    </node>
+    <node concept="1TJgyi" id="4B13ZO$O3Ox" role="1TKVEl">
+      <property role="IQ2nx" value="5314546615192665377" />
+      <property role="TrG5h" value="transient" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
     <node concept="1TJgyj" id="fA0ks94" role="1TKVEi">
       <property role="20kJfa" value="specializedLink" />
@@ -189,6 +180,11 @@
       <property role="TrG5h" value="propertyId" />
       <property role="IQ2nx" value="241647608299431129" />
       <ref role="AX2Wp" node="3H1xM9LtLda" resolve="IDNumber" />
+    </node>
+    <node concept="1TJgyi" id="4B13ZO$O3x3" role="1TKVEl">
+      <property role="IQ2nx" value="5314546615192664131" />
+      <property role="TrG5h" value="transient" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
     <node concept="PrWs8" id="50$LP2ztBgn" role="PzmwI">
       <ref role="PrY4T" to="tpck:19gBtYEAf4C" resolve="InterfacePart" />
