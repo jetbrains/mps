@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -107,7 +107,7 @@ public class BareNodeWriter {
 
     writeReferences(node);
 
-    writeNodes(IterableUtil.asCollection(node.getChildren()));
+    writeChildren(node);
 
     myOut.writeByte('}');
   }
@@ -125,6 +125,10 @@ public class BareNodeWriter {
       myOut.writeReferenceLink(r.getLink());
       writeReferenceTarget(r);
     }
+  }
+
+  protected void writeChildren(SNode node) throws IOException {
+    writeNodes(IterableUtil.asCollection(node.getChildren()));
   }
 
   protected void writeReferenceTarget(SReference reference) throws IOException {
