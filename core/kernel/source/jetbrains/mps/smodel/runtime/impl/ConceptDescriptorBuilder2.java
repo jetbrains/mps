@@ -125,15 +125,6 @@ public class ConceptDescriptorBuilder2 {
     return this;
   }
 
-  /*
-   * FIXME is there template code to use this one?
-   * invoked [0..n] times
-   */
-  public ConceptDescriptorBuilder2 prop(String name, long propertyId) {
-    addProperty(new BasePropertyDescriptor(MetaIdFactory.propId(myConceptId, propertyId), name, null,null, false));
-    return this;
-  }
-
   /**
    * invoked [0..n] times
    */
