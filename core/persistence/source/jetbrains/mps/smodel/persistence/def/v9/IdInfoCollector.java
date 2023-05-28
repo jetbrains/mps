@@ -64,6 +64,7 @@ public class IdInfoCollector {
       fillProperties(n1);
       fillAssociations(n1);
       if (n1.getParent() != null) {
+        // FIXME pass smodel here or assert parent == null for input nodes and remove this if() altogether
         fillAggregation(n1);
       }
       for (SNode n2 : SNodeUtil.getDescendants(n1, null, false)) {
@@ -87,6 +88,10 @@ public class IdInfoCollector {
   private void fillProperties(SNode n) {
     for (SProperty prop : n.getProperties()) {
       SPropertyId propId = MetaIdHelper.getProperty(prop);
+      if (myMetaInfoProvider.isTransient(propId)) {
+        myRegistry.markTransient(prop);
+        continue;
+      }
       final ConceptInfo conceptInfo = registerConcept(prop, propId);
       if (!conceptInfo.knows(propId)) {
         final String propertyName = myMetaInfoProvider.getPropertyName(propId);
@@ -98,6 +103,10 @@ public class IdInfoCollector {
     for (SReference ref : n.getReferences()) {
       final SReferenceLink l = ref.getLink();
       SReferenceLinkId linkId = MetaIdHelper.getAssociation(l);
+      if (myMetaInfoProvider.isTransient(linkId)) {
+        myRegistry.markTransient(l);
+        continue;
+      }
       final ConceptInfo conceptInfo = registerConcept(l, linkId);
       if (!conceptInfo.knows(linkId)) {
         final String name = myMetaInfoProvider.getAssociationName(linkId);
@@ -110,6 +119,11 @@ public class IdInfoCollector {
   private void fillAggregation(SNode n) {
     final SContainmentLink l = n.getContainmentLink();
     SContainmentLinkId linkId = MetaIdHelper.getAggregation(l);
+    if (myMetaInfoProvider.isTransient(linkId)) {
+      // FIXME not quite effective to do it for each child in the role, but decided not to address performance issues until they show up
+      myRegistry.markTransient(l);
+      return;
+    }
     final ConceptInfo conceptInfo = registerConcept(l, linkId);
     if (!conceptInfo.knows(linkId)) {
       final String name = myMetaInfoProvider.getAggregationName(linkId);
