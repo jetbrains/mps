@@ -5437,5 +5437,88 @@
       <ref role="1YaFvo" to="hcm8:2yYXHtl6JcK" resolve="IIdentifier" />
     </node>
   </node>
+  <node concept="18kY7G" id="A2XqWvW0N$">
+    <property role="TrG5h" value="check_EnumClassDeclaration_TypeParameters" />
+    <property role="3GE5qa" value="declaration.class.enum" />
+    <node concept="3clFbS" id="A2XqWvW0N_" role="18ibNy">
+      <node concept="3SKdUt" id="A2XqWvWaPO" role="3cqZAp">
+        <node concept="1PaTwC" id="A2XqWvWaPP" role="1aUNEU">
+          <node concept="3oM_SD" id="A2XqWvWaQn" role="1PaTwD">
+            <property role="3oM_SC" value="Not" />
+          </node>
+          <node concept="3oM_SD" id="A2XqWvWaRu" role="1PaTwD">
+            <property role="3oM_SC" value="supported" />
+          </node>
+          <node concept="3oM_SD" id="A2XqWvWaY0" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="A2XqWvWaY4" role="1PaTwD">
+            <property role="3oM_SC" value="Kotlin" />
+          </node>
+          <node concept="3oM_SD" id="A2XqWvWaZe" role="1PaTwD">
+            <property role="3oM_SC" value="for" />
+          </node>
+          <node concept="3oM_SD" id="A2XqWvWaZk" role="1PaTwD">
+            <property role="3oM_SC" value="several" />
+          </node>
+          <node concept="3oM_SD" id="A2XqWvWb0w" role="1PaTwD">
+            <property role="3oM_SC" value="reason" />
+          </node>
+          <node concept="3oM_SD" id="A2XqWvWb1H" role="1PaTwD">
+            <property role="3oM_SC" value="(typing," />
+          </node>
+          <node concept="3oM_SD" id="A2XqWvWb40" role="1PaTwD">
+            <property role="3oM_SC" value="generation," />
+          </node>
+          <node concept="3oM_SD" id="A2XqWvWb5f" role="1PaTwD">
+            <property role="3oM_SC" value="methods" />
+          </node>
+          <node concept="3oM_SD" id="A2XqWvWb7$" role="1PaTwD">
+            <property role="3oM_SC" value="on" />
+          </node>
+          <node concept="3oM_SD" id="A2XqWvWb8P" role="1PaTwD">
+            <property role="3oM_SC" value="enum" />
+          </node>
+          <node concept="3oM_SD" id="A2XqWvWb92" role="1PaTwD">
+            <property role="3oM_SC" value="class)" />
+          </node>
+        </node>
+      </node>
+      <node concept="3clFbF" id="A2XqWvW4C6" role="3cqZAp">
+        <node concept="2OqwBi" id="A2XqWvW8a8" role="3clFbG">
+          <node concept="2OqwBi" id="A2XqWvW55B" role="2Oq$k0">
+            <node concept="1YBJjd" id="A2XqWvW4C2" role="2Oq$k0">
+              <ref role="1YBMHb" node="A2XqWvW0NB" resolve="enumClassDeclaration" />
+            </node>
+            <node concept="3Tsc0h" id="A2XqWvW5Tz" role="2OqNvi">
+              <ref role="3TtcxE" to="hcm8:2yYXHtlq$RQ" resolve="typeParameters" />
+            </node>
+          </node>
+          <node concept="2es0OD" id="A2XqWvWa37" role="2OqNvi">
+            <node concept="1bVj0M" id="A2XqWvWa39" role="23t8la">
+              <node concept="3clFbS" id="A2XqWvWa3a" role="1bW5cS">
+                <node concept="2MkqsV" id="A2XqWvWacJ" role="3cqZAp">
+                  <node concept="Xl_RD" id="A2XqWvWag3" role="2MkJ7o">
+                    <property role="Xl_RC" value="Enum class cannot have type parameters" />
+                  </node>
+                  <node concept="37vLTw" id="A2XqWvWaxd" role="1urrMF">
+                    <ref role="3cqZAo" node="A2XqWvWa3b" resolve="it" />
+                  </node>
+                </node>
+              </node>
+              <node concept="Rh6nW" id="A2XqWvWa3b" role="1bW2Oz">
+                <property role="TrG5h" value="it" />
+                <node concept="2jxLKc" id="A2XqWvWa3c" role="1tU5fm" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="A2XqWvW0NB" role="1YuTPh">
+      <property role="TrG5h" value="enumClassDeclaration" />
+      <ref role="1YaFvo" to="hcm8:2yYXHtlhVmE" resolve="EnumClassDeclaration" />
+    </node>
+  </node>
 </model>
 
