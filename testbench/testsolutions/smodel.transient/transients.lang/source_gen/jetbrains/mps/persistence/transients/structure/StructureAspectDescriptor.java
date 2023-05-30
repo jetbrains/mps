@@ -55,9 +55,9 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.property("one", 0x2efbf375dd4e47adL).type(PrimitiveTypeId.STRING).origin("3385567232448677805").done();
     b.property("two", 0x2efbf375dd4e47afL).type(PrimitiveTypeId.STRING).origin("3385567232448677807").makeTransient(true).done();
     b.associate("first", 0x2efbf375dd4e43a1L).target(0x8a1d24e1cf4e440aL, 0x985508a714a1c1f3L, 0x2efbf375dd4e3c6eL).optional(true).origin("3385567232448676769").done();
-    b.associate("second", 0x2efbf375dd4e4663L).target(0x8a1d24e1cf4e440aL, 0x985508a714a1c1f3L, 0x2efbf375dd4e3c6eL).optional(true).origin("3385567232448677475").done();
+    b.associate("second", 0x2efbf375dd4e4663L).target(0x8a1d24e1cf4e440aL, 0x985508a714a1c1f3L, 0x2efbf375dd4e3c6eL).optional(true).origin("3385567232448677475").makeTransient(true).done();
     b.aggregate("role1", 0x2efbf375dd4e40deL).target(0x8a1d24e1cf4e440aL, 0x985508a714a1c1f3L, 0x2efbf375dd4e3c6eL).optional(true).ordered(true).multiple(true).origin("3385567232448676062").done();
-    b.aggregate("role2", 0x2efbf375dd4e4224L).target(0x8a1d24e1cf4e440aL, 0x985508a714a1c1f3L, 0x2efbf375dd4e3c6eL).optional(true).ordered(true).multiple(true).origin("3385567232448676388").done();
+    b.aggregate("role2", 0x2efbf375dd4e4224L).target(0x8a1d24e1cf4e440aL, 0x985508a714a1c1f3L, 0x2efbf375dd4e3c6eL).optional(true).ordered(true).multiple(true).origin("3385567232448676388").makeTransient(true).done();
     return b.create();
   }
 }
