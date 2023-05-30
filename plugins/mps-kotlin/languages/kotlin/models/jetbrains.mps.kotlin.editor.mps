@@ -7063,9 +7063,6 @@
             </node>
           </node>
         </node>
-        <node concept="A1WHu" id="5q426iHvQg8" role="3vIgyS">
-          <ref role="A1WHt" node="3E7baJHWgk3" resolve="SuperInterface_Specify_Transform" />
-        </node>
         <node concept="OXEIz" id="1xjvXvNPKJf" role="P5bDN">
           <node concept="UkePV" id="1xjvXvNPKKw" role="OY2wv">
             <ref role="Ul1FP" to="hcm8:213J8cgKswc" resolve="ISuperTypeSpecifier" />
@@ -11526,67 +11523,6 @@
     </node>
     <node concept="22hDWg" id="3E7baJHPBvK" role="22hAXT">
       <property role="TrG5h" value="TypeParameter_Specify_Transform" />
-    </node>
-  </node>
-  <node concept="3ICUPy" id="3E7baJHWgk3">
-    <property role="3GE5qa" value="declaration.inheritance.regular" />
-    <ref role="aqKnT" to="hcm8:213J8cgIr6k" resolve="SuperClassSpecifier" />
-    <node concept="1Qtc8_" id="3E7baJHWgk6" role="IW6Ez">
-      <node concept="mvV$s" id="3E7baJHXhWw" role="1Qtc8A">
-        <node concept="A1WHr" id="5D4bOjqUmH6" role="A14EM">
-          <ref role="2ZyFGn" to="hcm8:2gj5XQXEpsk" resolve="ITypeArguments" />
-        </node>
-      </node>
-      <node concept="IWgqT" id="3E7baJHWgki" role="1Qtc8A">
-        <node concept="1hCUdq" id="3E7baJHWgkk" role="1hCUd6">
-          <node concept="3clFbS" id="3E7baJHWgkm" role="2VODD2">
-            <node concept="3clFbF" id="3E7baJHWgpe" role="3cqZAp">
-              <node concept="Xl_RD" id="3E7baJHWgpd" role="3clFbG">
-                <property role="Xl_RC" value="by" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="IWg2L" id="3E7baJHWgko" role="IWgqQ">
-          <node concept="3clFbS" id="3E7baJHWgkq" role="2VODD2">
-            <node concept="3clFbF" id="3E7baJHWguz" role="3cqZAp">
-              <node concept="2OqwBi" id="3E7baJHWh2S" role="3clFbG">
-                <node concept="2OqwBi" id="3E7baJHWgCn" role="2Oq$k0">
-                  <node concept="7Obwk" id="3E7baJHWguy" role="2Oq$k0" />
-                  <node concept="3TrEf2" id="3E7baJHWgRR" role="2OqNvi">
-                    <ref role="3Tt5mk" to="hcm8:213J8cgIr6n" resolve="delegate" />
-                  </node>
-                </node>
-                <node concept="2DeJnY" id="3E7baJHWhnY" role="2OqNvi" />
-              </node>
-            </node>
-            <node concept="3clFbF" id="3E7baJHWhrh" role="3cqZAp">
-              <node concept="2OqwBi" id="3E7baJHWi11" role="3clFbG">
-                <node concept="2OqwBi" id="3E7baJHWh_F" role="2Oq$k0">
-                  <node concept="7Obwk" id="3E7baJHWhrg" role="2Oq$k0" />
-                  <node concept="3TrEf2" id="3E7baJHWhPQ" role="2OqNvi">
-                    <ref role="3Tt5mk" to="hcm8:213J8cgIr6n" resolve="delegate" />
-                  </node>
-                </node>
-                <node concept="1OKiuA" id="3E7baJHWiBr" role="2OqNvi">
-                  <node concept="1Q80Hx" id="3E7baJHWiGK" role="lBI5i" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3cWJ9i" id="3E7baJHWgka" role="1Qtc8$">
-        <node concept="CtIbL" id="3E7baJHWgkc" role="CtIbM">
-          <property role="CtIbK" value="30NnNOohrQL/RIGHT" />
-        </node>
-        <node concept="CtIbL" id="3E7baJHXhVl" role="CtIbM">
-          <property role="CtIbK" value="1A4kJjlVmVt/LEFT" />
-        </node>
-      </node>
-    </node>
-    <node concept="22hDWg" id="3E7baJHWgk4" role="22hAXT">
-      <property role="TrG5h" value="SuperInterface_Specify_Transform" />
     </node>
   </node>
   <node concept="22mcaB" id="3Z7f0Vk3Sdy">
@@ -17646,6 +17582,11 @@
     <ref role="aqKnT" to="hcm8:1$jFvlEWaYg" resolve="IClassSuperSpecifier" />
     <node concept="22hDWj" id="1$jFvlF10UC" role="22hAXT" />
     <node concept="1Qtc8_" id="1$jFvlF113B" role="IW6Ez">
+      <node concept="mvV$s" id="A2XqWvWQea" role="1Qtc8A">
+        <node concept="A1WHr" id="A2XqWvWQeb" role="A14EM">
+          <ref role="2ZyFGn" to="hcm8:2gj5XQXEpsk" resolve="ITypeArguments" />
+        </node>
+      </node>
       <node concept="IWgqT" id="1$jFvlF11eQ" role="1Qtc8A">
         <node concept="1hCUdq" id="1$jFvlF11eS" role="1hCUd6">
           <node concept="3clFbS" id="1$jFvlF11eU" role="2VODD2">

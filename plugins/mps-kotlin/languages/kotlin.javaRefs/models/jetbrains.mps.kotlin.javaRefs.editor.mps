@@ -339,6 +339,11 @@
             <ref role="1NtTu8" to="tpee:hCjj90d" resolve="nestedName" />
           </node>
         </node>
+        <node concept="OXEIz" id="1$jFvlEBslM" role="P5bDN">
+          <node concept="UkePV" id="1$jFvlEBsp5" role="OY2wv">
+            <ref role="Ul1FP" to="hcm8:213J8cgKswc" resolve="ISuperTypeSpecifier" />
+          </node>
+        </node>
       </node>
       <node concept="PMmxH" id="ZgHBwZxJmo" role="3EZMnx">
         <ref role="PMmxG" to="r5qz:2gj5XQXEpCS" resolve="TypeArguments_Component" />
