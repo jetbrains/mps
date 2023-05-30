@@ -35,6 +35,6 @@ public class CircularDependenciesScanner implements SuperTypesVisitor {
   }
 
   public Optional<SNode> getCircularReference() {
-    return Optional.of(firstCircularTypeFound);
+    return (firstCircularTypeFound == null ? Optional.empty() : Optional.of(firstCircularTypeFound));
   }
 }

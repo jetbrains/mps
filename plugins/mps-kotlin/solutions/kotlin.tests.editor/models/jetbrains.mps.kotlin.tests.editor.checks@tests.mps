@@ -5,6 +5,7 @@
     <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="6" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
     <use id="6b3888c1-9802-44d8-8baf-f8e6c33ed689" name="jetbrains.mps.kotlin" version="11" />
+    <use id="eb56ebf4-df56-438e-af06-fc1cd08b495a" name="jetbrains.mps.kotlin.smodel" version="0" />
   </languages>
   <imports>
     <import index="lrl3" ref="r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)" />
@@ -47,6 +48,9 @@
       <concept id="1243006380186890016" name="jetbrains.mps.kotlin.structure.UnaryExpression" flags="ng" index="21Pmin">
         <child id="1243006380186890019" name="operand" index="21Pmik" />
       </concept>
+      <concept id="7996321249597408849" name="jetbrains.mps.kotlin.structure.IInheritExplicitly" flags="ng" index="6Oumu">
+        <child id="1991556721067228837" name="superclasses" index="AST3G" />
+      </concept>
       <concept id="5622728304609204267" name="jetbrains.mps.kotlin.structure.EmptyDeclaration" flags="ng" index="eKYAL" />
       <concept id="7358760241248942182" name="jetbrains.mps.kotlin.structure.Comment" flags="ng" index="gXE$l">
         <child id="7358760241248948562" name="lines" index="gXG0x" />
@@ -55,8 +59,14 @@
         <child id="2936055411798374534" name="fileAnnotations" index="1XD0Th" />
       </concept>
       <concept id="1991556721070973461" name="jetbrains.mps.kotlin.structure.EmptyStatement" flags="ng" index="AQkLs" />
+      <concept id="6013275720582937818" name="jetbrains.mps.kotlin.structure.IInheritable" flags="ng" index="ICcUM">
+        <child id="6013275720582937819" name="inheritance" index="ICcUN" />
+      </concept>
       <concept id="2324909103759097704" name="jetbrains.mps.kotlin.structure.IWithClassBody" flags="ng" index="KS$fF">
         <child id="2324909103759097705" name="members" index="KS$fE" />
+      </concept>
+      <concept id="2324909103760650644" name="jetbrains.mps.kotlin.structure.SuperClassSpecifier" flags="ng" index="KYwOn">
+        <reference id="2324909103760650645" name="target" index="KYwOm" />
       </concept>
       <concept id="1314219036499415210" name="jetbrains.mps.kotlin.structure.AbstractPropertyDeclaration" flags="ng" index="TDTJE">
         <property id="2936055411806090009" name="isReadonly" index="1Xb$ne" />
@@ -81,6 +91,10 @@
         <reference id="6664176324866782075" name="class" index="1SePDO" />
       </concept>
       <concept id="2936055411798373599" name="jetbrains.mps.kotlin.structure.ClassType" flags="ng" index="1XD088" />
+      <concept id="2936055411798373622" name="jetbrains.mps.kotlin.structure.ConstructorSuperSpecifier" flags="ng" index="1XD08x">
+        <reference id="2324909103760693884" name="target" index="KYurZ" />
+      </concept>
+      <concept id="2936055411798373620" name="jetbrains.mps.kotlin.structure.OpenInheritanceModifier" flags="ng" index="1XD08z" />
       <concept id="2936055411798373537" name="jetbrains.mps.kotlin.structure.PropertyDeclaration" flags="ng" index="1XD09Q">
         <child id="1314219036499436525" name="declaration" index="TDYyH" />
       </concept>
@@ -104,6 +118,7 @@
         <child id="5533310174486461755" name="finally" index="UAV_M" />
         <child id="5533310174486461754" name="catches" index="UAV_N" />
       </concept>
+      <concept id="2936055411798373645" name="jetbrains.mps.kotlin.structure.TypeParameter" flags="ng" index="1XD0fq" />
       <concept id="2936055411798373673" name="jetbrains.mps.kotlin.structure.KotlinFile" flags="ng" index="1XD0fY">
         <child id="2936055411798374537" name="declarations" index="1XD0Tu" />
       </concept>
@@ -131,6 +146,14 @@
       <concept id="2936055411798373152" name="jetbrains.mps.kotlin.structure.CatchBlock" flags="ng" index="1XD0nR">
         <child id="2936055411798373827" name="type" index="1XD0ck" />
       </concept>
+      <concept id="2936055411803573749" name="jetbrains.mps.kotlin.structure.ITypeParameters" flags="ng" index="1XPbGy">
+        <child id="2936055411803573750" name="typeParameters" index="1XPbGx" />
+      </concept>
+      <concept id="2936055411801360063" name="jetbrains.mps.kotlin.structure.InterfaceDeclaration" flags="ng" index="1XXB1C" />
+      <concept id="2936055411801306538" name="jetbrains.mps.kotlin.structure.EnumClassDeclaration" flags="ng" index="1XYkdX" />
+    </language>
+    <language id="eb56ebf4-df56-438e-af06-fc1cd08b495a" name="jetbrains.mps.kotlin.smodel">
+      <concept id="5594483833294516546" name="jetbrains.mps.kotlin.smodel.structure.ConceptTypeParameter" flags="ng" index="2szew_" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
@@ -932,6 +955,157 @@
                 </node>
               </node>
             </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1lH9Xt" id="A2XqWwkyzi">
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
+    <property role="TrG5h" value="EnumTypeParameters" />
+    <node concept="1qefOq" id="A2XqWwkyDM" role="1SKRRt">
+      <node concept="1XD0fY" id="A2XqWwkyDL" role="1qenE9">
+        <property role="TrG5h" value="enumClass" />
+        <node concept="eKYAL" id="A2XqWwkyFZ" role="1XD0Tu" />
+        <node concept="1XYkdX" id="A2XqWwkE1C" role="1XD0Tu">
+          <property role="TrG5h" value="WithTypeParameter" />
+          <node concept="1XD0fq" id="A2XqWwkE7m" role="1XPbGx">
+            <property role="TrG5h" value="T" />
+            <node concept="7CXmI" id="A2XqWwkEsQ" role="lGtFl">
+              <node concept="1TM$A" id="A2XqWwkEug" role="7EUXB">
+                <node concept="2PYRI3" id="A2XqWwkEuh" role="3lydEf">
+                  <ref role="39XzEq" to="lrl3:A2XqWvWacJ" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2szew_" id="A2XqWwkEkB" role="1XPbGx">
+            <property role="TrG5h" value="U" />
+            <node concept="7CXmI" id="A2XqWwkEz2" role="lGtFl">
+              <node concept="1TM$A" id="A2XqWwkE$s" role="7EUXB">
+                <node concept="2PYRI3" id="A2XqWwkE$t" role="3lydEf">
+                  <ref role="39XzEq" to="lrl3:A2XqWvWacJ" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="7CXmI" id="A2XqWwkEFo" role="lGtFl">
+          <node concept="7OXhh" id="A2XqWwkEGv" role="7EUXB">
+            <property role="GvXf4" value="true" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1lH9Xt" id="A2XqWwkDRm">
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
+    <property role="TrG5h" value="CircularInheritance" />
+    <node concept="1qefOq" id="A2XqWwkDRn" role="1SKRRt">
+      <node concept="1XD0fY" id="A2XqWwkDRo" role="1qenE9">
+        <property role="TrG5h" value="circular" />
+        <node concept="eKYAL" id="A2XqWwkDRp" role="1XD0Tu" />
+        <node concept="1XD0aY" id="A2XqWwkDRq" role="1XD0Tu">
+          <property role="TrG5h" value="Root" />
+          <node concept="1XD08z" id="A2XqWwkDRr" role="ICcUN" />
+        </node>
+        <node concept="eKYAL" id="A2XqWwkDRs" role="1XD0Tu" />
+        <node concept="1XD0aY" id="A2XqWwkDRt" role="1XD0Tu">
+          <property role="TrG5h" value="NotCircular" />
+          <node concept="1XD08x" id="A2XqWwkDRu" role="AST3G">
+            <ref role="KYurZ" node="A2XqWwkDRq" resolve="Root" />
+          </node>
+        </node>
+        <node concept="eKYAL" id="A2XqWwkDRv" role="1XD0Tu" />
+        <node concept="1XD0aY" id="A2XqWwkDRw" role="1XD0Tu">
+          <property role="TrG5h" value="DirectCircular" />
+          <node concept="1XD08z" id="A2XqWwkDRx" role="ICcUN" />
+          <node concept="1XD08x" id="A2XqWwkDRy" role="AST3G">
+            <ref role="KYurZ" node="A2XqWwkDRw" resolve="DirectCircular" />
+          </node>
+          <node concept="7CXmI" id="A2XqWwkDRz" role="lGtFl">
+            <node concept="1TM$A" id="A2XqWwkDR$" role="7EUXB">
+              <node concept="2PYRI3" id="A2XqWwkDR_" role="3lydEf">
+                <ref role="39XzEq" to="lrl3:A2XqWwfieV" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="eKYAL" id="A2XqWwkDRA" role="1XD0Tu" />
+        <node concept="1XD0aY" id="A2XqWwkDRB" role="1XD0Tu">
+          <property role="TrG5h" value="IndirectCircular1" />
+          <node concept="1XD08z" id="A2XqWwkDRC" role="ICcUN" />
+          <node concept="1XD08x" id="A2XqWwkDRD" role="AST3G">
+            <ref role="KYurZ" node="A2XqWwkDRw" resolve="DirectCircular" />
+          </node>
+          <node concept="7CXmI" id="A2XqWwkDRE" role="lGtFl">
+            <node concept="1TM$A" id="A2XqWwkDRF" role="7EUXB">
+              <node concept="2PYRI3" id="A2XqWwkDRG" role="3lydEf">
+                <ref role="39XzEq" to="lrl3:A2XqWwfieV" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="eKYAL" id="A2XqWwkDRH" role="1XD0Tu" />
+        <node concept="1XD0aY" id="A2XqWwkDRI" role="1XD0Tu">
+          <property role="TrG5h" value="IndirectCircular2" />
+          <node concept="1XD08z" id="A2XqWwkDRJ" role="ICcUN" />
+          <node concept="1XD08x" id="A2XqWwkDRK" role="AST3G">
+            <ref role="KYurZ" node="A2XqWwkDRO" resolve="IndirectCircular3" />
+          </node>
+          <node concept="7CXmI" id="A2XqWwkDRL" role="lGtFl">
+            <node concept="1TM$A" id="A2XqWwkDRM" role="7EUXB">
+              <node concept="2PYRI3" id="A2XqWwkDRN" role="3lydEf">
+                <ref role="39XzEq" to="lrl3:A2XqWwfieV" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1XD0aY" id="A2XqWwkDRO" role="1XD0Tu">
+          <property role="TrG5h" value="IndirectCircular3" />
+          <node concept="1XD08z" id="A2XqWwkDRP" role="ICcUN" />
+          <node concept="1XD08x" id="A2XqWwkDRQ" role="AST3G">
+            <ref role="KYurZ" node="A2XqWwkDRI" resolve="IndirectCircular2" />
+          </node>
+          <node concept="7CXmI" id="A2XqWwkDRR" role="lGtFl">
+            <node concept="1TM$A" id="A2XqWwkDRS" role="7EUXB">
+              <node concept="2PYRI3" id="A2XqWwkDRT" role="3lydEf">
+                <ref role="39XzEq" to="lrl3:A2XqWwfieV" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="eKYAL" id="A2XqWwkDRU" role="1XD0Tu" />
+        <node concept="eKYAL" id="A2XqWwkDRV" role="1XD0Tu" />
+        <node concept="1XXB1C" id="A2XqWwkDRW" role="1XD0Tu">
+          <property role="TrG5h" value="Interface1" />
+          <node concept="KYwOn" id="A2XqWwkDRX" role="AST3G">
+            <ref role="KYwOm" node="A2XqWwkDS1" resolve="Interface2" />
+          </node>
+          <node concept="7CXmI" id="A2XqWwkDRY" role="lGtFl">
+            <node concept="1TM$A" id="A2XqWwkDRZ" role="7EUXB">
+              <node concept="2PYRI3" id="A2XqWwkDS0" role="3lydEf">
+                <ref role="39XzEq" to="lrl3:A2XqWwfieV" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1XXB1C" id="A2XqWwkDS1" role="1XD0Tu">
+          <property role="TrG5h" value="Interface2" />
+          <node concept="KYwOn" id="A2XqWwkDS2" role="AST3G">
+            <ref role="KYwOm" node="A2XqWwkDRW" resolve="Interface1" />
+          </node>
+          <node concept="7CXmI" id="A2XqWwkDS3" role="lGtFl">
+            <node concept="1TM$A" id="A2XqWwkDS4" role="7EUXB">
+              <node concept="2PYRI3" id="A2XqWwkDS5" role="3lydEf">
+                <ref role="39XzEq" to="lrl3:A2XqWwfieV" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="7CXmI" id="A2XqWwkEKA" role="lGtFl">
+          <node concept="7OXhh" id="A2XqWwkELH" role="7EUXB">
+            <property role="GvXf4" value="true" />
           </node>
         </node>
       </node>

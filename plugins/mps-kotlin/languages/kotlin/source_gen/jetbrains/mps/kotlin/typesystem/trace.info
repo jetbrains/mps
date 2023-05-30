@@ -1751,7 +1751,7 @@
       <node id="685380225822665695" at="26,7,27,0" concept="12" />
       <node id="685380225822651300" at="27,0,28,36" concept="4" />
       <node id="685380225822629209" at="29,5,30,17" concept="10" />
-      <node id="685380225822679617" at="37,49,38,47" concept="10" />
+      <node id="685380225822679617" at="37,49,38,101" concept="10" />
       <node id="685380225822629199" at="23,27,26,7" concept="7" />
       <node id="685380225822629213" at="33,0,36,0" concept="8" trace="exitType#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="685380225822677976" at="37,0,40,0" concept="8" trace="getCircularReference#()Ljava/util/Optional;" />
@@ -1759,7 +1759,7 @@
       <node id="685380225822629193" at="20,0,32,0" concept="8" trace="enterType#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <scope id="685380225822629218" at="34,37,34,37" />
       <scope id="685380225822629200" at="24,88,25,20" />
-      <scope id="685380225822677979" at="37,49,38,47" />
+      <scope id="685380225822677979" at="37,49,38,101" />
       <scope id="685380225822629213" at="33,0,36,0">
         <var name="clazz" id="685380225822629216" />
       </scope>

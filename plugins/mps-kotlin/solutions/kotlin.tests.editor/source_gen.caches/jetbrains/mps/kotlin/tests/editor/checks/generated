@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="c4cyvrwxcdzu2ihu5riql805e2qyyh8">
-  <files names="AnnotationUseSite_Test.java:TryCatch_Test.java" />
+<product version="3" modelHash="8uld52xyikdptje0pty3rgugahr0gyc">
+  <files names="AnnotationUseSite_Test.java:CircularInheritance_Test.java:EnumTypeParameters_Test.java:TryCatch_Test.java" />
 </product>
 
