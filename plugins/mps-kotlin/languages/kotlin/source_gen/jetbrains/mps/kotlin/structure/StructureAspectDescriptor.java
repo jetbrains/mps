@@ -1511,8 +1511,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5aee73f62d23451L);
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798373413");
     b.version(3);
-    b.associate("nextFunction", 0x75af38675680fab9L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2a5d3409768d2f2bL).optional(true).origin("8480058639846013625").done();
     b.associate("iteratorFunction", 0x75af38675680f11cL).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2a5d3409768d2f2bL).optional(true).origin("8480058639846011164").specialize(0x45d70ebd55a93439L, 0x3b847d7171e0e680L).done();
+    b.associate("nextFunction", 0x75af38675680fab9L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2a5d3409768d2f2bL).optional(true).origin("8480058639846013625").done();
     b.aggregate("_variables", 0x28bef6d7551af707L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af571L).optional(true).ordered(true).multiple(true).origin("2936055411798374151").done();
     b.aggregate("in", 0x28bef6d7551af708L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L).optional(false).ordered(true).multiple(false).origin("2936055411798374152").done();
     b.aggregate("_body", 0x28bef6d7551af70aL).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3e7L).optional(true).ordered(true).multiple(false).origin("2936055411798374154").done();

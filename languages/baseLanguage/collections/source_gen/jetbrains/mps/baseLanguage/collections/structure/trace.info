@@ -1812,9 +1812,9 @@
       <node id="1205679737078" at="2269,90,2270,71" concept="1" />
       <node id="1205679737078" at="2270,71,2271,119" concept="1" />
       <node id="1205679737078" at="2271,119,2272,17" concept="1" />
-      <node id="1205679832066" at="2272,17,2273,186" concept="1" />
-      <node id="1205679819055" at="2273,186,2274,232" concept="1" />
-      <node id="1205679737078" at="2274,232,2275,49" concept="1" />
+      <node id="1205679819055" at="2272,17,2273,232" concept="1" />
+      <node id="1205679832066" at="2273,232,2274,186" concept="1" />
+      <node id="1205679737078" at="2274,186,2275,49" concept="1" />
       <node id="1205679737078" at="2275,49,2276,22" concept="1" />
       <node id="1205679737078" at="2276,22,2277,22" concept="6" />
       <node id="1205679737078" at="2266,0,2279,0" concept="9" trace="createDescriptorForSortOperation#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
@@ -2146,9 +2146,9 @@
       <node id="1209727891789" at="874,90,875,71" concept="1" />
       <node id="1209727891789" at="875,71,876,119" concept="1" />
       <node id="1209727891789" at="876,119,877,17" concept="1" />
-      <node id="1209727996925" at="877,17,878,185" concept="1" />
-      <node id="1209727951854" at="878,185,879,230" concept="1" />
-      <node id="1209727891789" at="879,230,880,49" concept="1" />
+      <node id="1209727951854" at="877,17,878,230" concept="1" />
+      <node id="1209727996925" at="878,230,879,185" concept="1" />
+      <node id="1209727891789" at="879,185,880,49" concept="1" />
       <node id="1209727891789" at="880,49,881,20" concept="1" />
       <node id="1209727891789" at="881,20,882,22" concept="6" />
       <node id="1209727891789" at="871,0,884,0" concept="9" trace="createDescriptorForComparatorSortOperation#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
@@ -4767,9 +4767,9 @@
       <node id="1522217801069396578" at="1106,90,1107,71" concept="1" />
       <node id="1522217801069396578" at="1107,71,1108,125" concept="1" />
       <node id="1522217801069396578" at="1108,125,1109,17" concept="1" />
-      <node id="1522217801069421796" at="1109,17,1110,192" concept="1" />
-      <node id="1522217801069396579" at="1110,192,1111,235" concept="1" />
-      <node id="1522217801069396578" at="1111,235,1112,49" concept="1" />
+      <node id="1522217801069396579" at="1109,17,1110,235" concept="1" />
+      <node id="1522217801069421796" at="1110,235,1111,192" concept="1" />
+      <node id="1522217801069396578" at="1111,192,1112,49" concept="1" />
       <node id="1522217801069396578" at="1112,49,1113,24" concept="1" />
       <node id="1522217801069396578" at="1113,24,1114,22" concept="6" />
       <node id="1522217801069396578" at="1103,0,1116,0" concept="9" trace="createDescriptorForFoldLeftOperation#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
@@ -4807,9 +4807,9 @@
       <node id="1522217801069421831" at="1119,90,1120,71" concept="1" />
       <node id="1522217801069421831" at="1120,71,1121,125" concept="1" />
       <node id="1522217801069421831" at="1121,125,1122,17" concept="1" />
-      <node id="1522217801069421833" at="1122,17,1123,192" concept="1" />
-      <node id="1522217801069421832" at="1123,192,1124,235" concept="1" />
-      <node id="1522217801069421831" at="1124,235,1125,49" concept="1" />
+      <node id="1522217801069421832" at="1122,17,1123,235" concept="1" />
+      <node id="1522217801069421833" at="1123,235,1124,192" concept="1" />
+      <node id="1522217801069421831" at="1124,192,1125,49" concept="1" />
       <node id="1522217801069421831" at="1125,49,1126,25" concept="1" />
       <node id="1522217801069421831" at="1126,25,1127,22" concept="6" />
       <node id="1522217801069421831" at="1116,0,1129,0" concept="9" trace="createDescriptorForFoldRightOperation#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />

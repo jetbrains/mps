@@ -554,10 +554,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL);
     b.origin("r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1418611629042457277");
     b.version(3);
+    b.aggregate("type_M", 0x13afebc2af52a85aL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL).optional(true).ordered(true).multiple(false).origin("1418611629042608218").specialize(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL).done();
     b.aggregate("matrix", 0x13afebc2af508f96L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1418611629042470806").done();
     b.aggregate("vector", 0x13afebc2af508f97L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1418611629042470807").done();
     b.aggregate("context", 0x1a6fbb5a434b4c0cL).target(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1a6fbb5a434b008bL).optional(true).ordered(true).multiple(false).origin("1904947163751468044").done();
-    b.aggregate("type_M", 0x13afebc2af52a85aL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL).optional(true).ordered(true).multiple(false).origin("1418611629042608218").specialize(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL).done();
     b.alias("lsolve");
     return b.create();
   }

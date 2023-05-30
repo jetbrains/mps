@@ -459,8 +459,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:f3383ae6-205a-4e7c-8dd9-c29966e29e49(jetbrains.mps.execution.configurations.structure)/2401501559171345993");
     b.version(3);
     b.associate("configurationKind", 0x2153d8f1c1f48ae2L).target(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f46e4aL).optional(false).origin("2401501559171353314").done();
-    b.aggregate("icon", 0x421a8d20ae9f689eL).target(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c3774289eeeL).optional(true).ordered(true).multiple(false).origin("4763274727405873310").done();
     b.aggregate("editor", 0x341c0c910ea7bee3L).target(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91013dL).optional(false).ordered(true).multiple(false).origin("3754890006475816675").specialize(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910020L, 0xd244b712f910021L).done();
+    b.aggregate("icon", 0x421a8d20ae9f689eL).target(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c3774289eeeL).optional(true).ordered(true).multiple(false).origin("4763274727405873310").done();
     b.alias("run configuration");
     return b.create();
   }
@@ -583,8 +583,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL);
     b.origin("r:f3383ae6-205a-4e7c-8dd9-c29966e29e49(jetbrains.mps.execution.configurations.structure)/946964771156870353");
     b.version(3);
-    b.aggregate("tool", 0x161fc6929dcff3a0L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(true).ordered(true).multiple(false).origin("1594211126127621024").done();
     b.aggregate("process", 0xd244b712f9d44d2L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("946964771156870354").specialize(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL).done();
+    b.aggregate("tool", 0x161fc6929dcff3a0L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(true).ordered(true).multiple(false).origin("1594211126127621024").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("start process handler");
     return b.create();

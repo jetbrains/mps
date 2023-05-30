@@ -2703,8 +2703,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(3);
     b.stub(0x26c84408aa729003L);
     b.property("reverse", 0x10aacd1bfe1L).type(PrimitiveTypeId.BOOLEAN).origin("1145360728033").done();
-    b.associate("elementActionMap", 0x11126d75849L).target(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951978cfeL).optional(true).origin("1173177718857").done();
     b.associate("linkDeclaration", 0xf9eb0ad393L).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL).optional(false).origin("1073390211987").specialize(0x10964446123L, 0x10973779681L).done();
+    b.associate("elementActionMap", 0x11126d75849L).target(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951978cfeL).optional(true).origin("1173177718857").done();
     b.aggregate("elementMenuDescriptor", 0x10f54188d34L).target(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f6aaacL).optional(true).ordered(true).multiple(false).origin("1165347032372").done();
     b.aggregate("filter", 0x1134299ee53L).target(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x113401f5070L).optional(true).ordered(true).multiple(false).origin("1182233390675").done();
     b.aggregate("addHints", 0x650641cc62245646L).target(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x40953da3e594b7a8L).optional(true).ordered(true).multiple(false).origin("7279578193766667846").done();

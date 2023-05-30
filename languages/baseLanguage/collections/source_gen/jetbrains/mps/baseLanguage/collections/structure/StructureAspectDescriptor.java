@@ -875,8 +875,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.super_(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1188372895aL);
     b.origin("r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1209727891789");
     b.version(3);
-    b.aggregate("ascending", 0x119a96853fdL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(true).ordered(true).multiple(false).origin("1209727996925").done();
     b.aggregate("comparator", 0x119a967a3eeL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1209727951854").specialize(0x1188372895aL, 0x11883748452L).done();
+    b.aggregate("ascending", 0x119a96853fdL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(true).ordered(true).multiple(false).origin("1209727996925").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("sort");
     return b.create();
@@ -1107,8 +1107,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.super_(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1188372895aL);
     b.origin("r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1522217801069396578");
     b.version(3);
-    b.aggregate("seed", 0x152001066784e4e4L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1522217801069421796").done();
     b.aggregate("comb", 0x1520010667848263L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1522217801069396579").specialize(0x1188372895aL, 0x11883748452L).done();
+    b.aggregate("seed", 0x152001066784e4e4L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1522217801069421796").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("foldLeft");
     return b.create();
@@ -1120,8 +1120,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.super_(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1188372895aL);
     b.origin("r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1522217801069421831");
     b.version(3);
-    b.aggregate("seed", 0x152001066784e509L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1522217801069421833").done();
     b.aggregate("comb", 0x152001066784e508L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1522217801069421832").specialize(0x1188372895aL, 0x11883748452L).done();
+    b.aggregate("seed", 0x152001066784e509L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1522217801069421833").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("foldRight");
     return b.create();
@@ -2270,8 +2270,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.super_(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1188372895aL);
     b.origin("r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1205679737078");
     b.version(3);
-    b.aggregate("ascending", 0x118b81e3c02L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1205679832066").done();
     b.aggregate("toComparable", 0x118b81e092fL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1205679819055").specialize(0x1188372895aL, 0x11883748452L).done();
+    b.aggregate("ascending", 0x118b81e3c02L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1205679832066").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("sortBy");
     return b.create();
