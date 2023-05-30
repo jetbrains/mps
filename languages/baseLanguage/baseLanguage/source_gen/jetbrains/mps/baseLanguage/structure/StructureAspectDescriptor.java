@@ -1214,8 +1214,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.associate("classifier", 0x1107e0fd2a0L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L).optional(false).origin("1170346070688").done();
     b.associate("constructorDeclaration", 0x2898e2398ac3c05cL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L).optional(false).origin("2925336694746234972").specialize(0x11857355952L, 0xf8c78301adL).done();
     b.aggregate("parameter", 0x1107e104a89L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(true).ordered(true).multiple(true).origin("1170346101385").done();
-    b.aggregate("typeParameter", 0x117ac45a693L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL).optional(true).ordered(true).multiple(true).origin("1201186121363").done();
     b.aggregate("constructorArgument", 0x2898e2398ac3c05eL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(true).ordered(true).multiple(true).origin("2925336694746234974").specialize(0x11857355952L, 0xf8c78301aeL).done();
+    b.aggregate("typeParameter", 0x117ac45a693L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL).optional(true).ordered(true).multiple(true).origin("1201186121363").done();
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
     return b.create();
   }
