@@ -27,6 +27,7 @@
     <import index="tbhz" ref="r:7d051f7f-1a28-4ed6-9de6-95fd49d3fa23(jetbrains.mps.kotlin.scopes)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="94s8" ref="r:133e8cac-c6ad-447f-a90c-5146ca3b1aed(jetbrains.mps.kotlin.constraints)" />
+    <import index="mx11" ref="r:fa9de6a8-90b7-4d2a-a9a9-a40c05cf603b(jetbrains.mps.kotlin.api.types.identifiers)" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
@@ -47,11 +48,15 @@
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
         <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
+      <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
+      </concept>
+      <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
+        <reference id="2820489544401957798" name="classifier" index="HV5vE" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
@@ -214,11 +219,13 @@
         <child id="1199542457201" name="resultType" index="1ajl9A" />
       </concept>
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
+        <property id="890797661671409019" name="forceMultiLine" index="3yWfEV" />
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
+      <concept id="6832197706140896242" name="jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment" flags="ng" index="z59LJ" />
       <concept id="6832197706140518104" name="jetbrains.mps.baseLanguage.javadoc.structure.DocMethodParameterReference" flags="ng" index="zr_55" />
       <concept id="6832197706140518103" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseParameterReference" flags="ng" index="zr_5a">
         <reference id="6832197706140518108" name="param" index="zr_51" />
@@ -5518,6 +5525,241 @@
     <node concept="1YaCAy" id="A2XqWvW0NB" role="1YuTPh">
       <property role="TrG5h" value="enumClassDeclaration" />
       <ref role="1YaFvo" to="hcm8:2yYXHtlhVmE" resolve="EnumClassDeclaration" />
+    </node>
+  </node>
+  <node concept="18kY7G" id="A2XqWweTbJ">
+    <property role="TrG5h" value="check_IInheritExplicitly_CircularReferences" />
+    <property role="3GE5qa" value="declaration.inheritance" />
+    <node concept="3clFbS" id="A2XqWweTbK" role="18ibNy">
+      <node concept="3cpWs8" id="A2XqWwfg46" role="3cqZAp">
+        <node concept="3cpWsn" id="A2XqWwfg47" role="3cpWs9">
+          <property role="TrG5h" value="scanner" />
+          <node concept="3uibUv" id="A2XqWwfg48" role="1tU5fm">
+            <ref role="3uigEE" node="A2XqWwf1Hd" resolve="CircularDependenciesScanner" />
+          </node>
+          <node concept="2ShNRf" id="A2XqWwfg71" role="33vP2m">
+            <node concept="HV5vD" id="A2XqWwfghz" role="2ShVmc">
+              <property role="373rjd" value="true" />
+              <ref role="HV5vE" node="A2XqWwf1Hd" resolve="CircularDependenciesScanner" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3clFbF" id="A2XqWweTpW" role="3cqZAp">
+        <node concept="2OqwBi" id="A2XqWweT_I" role="3clFbG">
+          <node concept="1YBJjd" id="A2XqWweTpU" role="2Oq$k0">
+            <ref role="1YBMHb" node="A2XqWweTbM" resolve="iInheritExplicitly" />
+          </node>
+          <node concept="2qgKlT" id="A2XqWweTLw" role="2OqNvi">
+            <ref role="37wK5l" to="hez:1WN66f3AYxj" resolve="visitSuperTypes" />
+            <node concept="37vLTw" id="A2XqWwfglb" role="37wK5m">
+              <ref role="3cqZAo" node="A2XqWwfg47" resolve="scanner" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3clFbH" id="A2XqWwfjjc" role="3cqZAp" />
+      <node concept="3clFbF" id="A2XqWwfgyZ" role="3cqZAp">
+        <node concept="2OqwBi" id="A2XqWwfh6w" role="3clFbG">
+          <node concept="2OqwBi" id="A2XqWwfgI_" role="2Oq$k0">
+            <node concept="37vLTw" id="A2XqWwfgyX" role="2Oq$k0">
+              <ref role="3cqZAo" node="A2XqWwfg47" resolve="scanner" />
+            </node>
+            <node concept="liA8E" id="A2XqWwfgUT" role="2OqNvi">
+              <ref role="37wK5l" node="A2XqWwfdJo" resolve="getCircularReference" />
+            </node>
+          </node>
+          <node concept="liA8E" id="A2XqWwfhtN" role="2OqNvi">
+            <ref role="37wK5l" to="33ny:~Optional.ifPresent(java.util.function.Consumer)" resolve="ifPresent" />
+            <node concept="1bVj0M" id="A2XqWwfhxn" role="37wK5m">
+              <property role="3yWfEV" value="true" />
+              <node concept="3clFbS" id="A2XqWwfhxo" role="1bW5cS">
+                <node concept="2MkqsV" id="A2XqWwfieV" role="3cqZAp">
+                  <node concept="Xl_RD" id="A2XqWwfipA" role="2MkJ7o">
+                    <property role="Xl_RC" value="There's a cycle in the inheritance hierarchy for this type" />
+                  </node>
+                  <node concept="1YBJjd" id="A2XqWwfikI" role="1urrMF">
+                    <ref role="1YBMHb" node="A2XqWweTbM" resolve="iInheritExplicitly" />
+                  </node>
+                </node>
+              </node>
+              <node concept="gl6BB" id="A2XqWwfhDb" role="1bW2Oz">
+                <property role="TrG5h" value="circular" />
+                <node concept="2jxLKc" id="A2XqWwfhDc" role="1tU5fm" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="A2XqWweTbM" role="1YuTPh">
+      <property role="TrG5h" value="iInheritExplicitly" />
+      <ref role="1YaFvo" to="hcm8:6VSCWXCakph" resolve="IInheritExplicitly" />
+    </node>
+  </node>
+  <node concept="312cEu" id="A2XqWwf1Hd">
+    <property role="3GE5qa" value="declaration.inheritance" />
+    <property role="TrG5h" value="CircularDependenciesScanner" />
+    <node concept="312cEg" id="A2XqWwf4yA" role="jymVt">
+      <property role="TrG5h" value="firstCircularTypeFound" />
+      <node concept="3Tm1VV" id="A2XqWwf458" role="1B3o_S" />
+      <node concept="3Tqbb2" id="A2XqWwf5cB" role="1tU5fm" />
+      <node concept="10Nm6u" id="A2XqWwf5wo" role="33vP2m" />
+    </node>
+    <node concept="312cEg" id="A2XqWwf1OZ" role="jymVt">
+      <property role="TrG5h" value="superTypes" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm1VV" id="A2XqWwf1P0" role="1B3o_S" />
+      <node concept="3uibUv" id="A2XqWwf1P1" role="1tU5fm">
+        <ref role="3uigEE" to="33ny:~Set" resolve="Set" />
+        <node concept="3uibUv" id="A2XqWwf1P2" role="11_B2D">
+          <ref role="3uigEE" to="mx11:6GqgvHqhqpA" resolve="TypeKey" />
+        </node>
+      </node>
+      <node concept="2ShNRf" id="A2XqWwf1P3" role="33vP2m">
+        <node concept="1pGfFk" id="A2XqWwf1P4" role="2ShVmc">
+          <property role="373rjd" value="true" />
+          <ref role="37wK5l" to="33ny:~LinkedHashSet.&lt;init&gt;()" resolve="LinkedHashSet" />
+        </node>
+      </node>
+      <node concept="z59LJ" id="A2XqWwf1P5" role="lGtFl">
+        <node concept="TZ5HA" id="A2XqWwf1P6" role="TZ5H$">
+          <node concept="1dT_AC" id="A2XqWwf1P7" role="1dT_Ay">
+            <property role="1dT_AB" value="Linked hash set is used as it keeps order in supertypes." />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="A2XqWwf1P8" role="jymVt" />
+    <node concept="3clFb_" id="A2XqWwf1P9" role="jymVt">
+      <property role="TrG5h" value="enterType" />
+      <node concept="3Tm1VV" id="A2XqWwf1Pa" role="1B3o_S" />
+      <node concept="10P_77" id="A2XqWwf1Pb" role="3clF45" />
+      <node concept="37vLTG" id="A2XqWwf1Pc" role="3clF46">
+        <property role="TrG5h" value="type" />
+        <node concept="3Tqbb2" id="A2XqWwf1Pd" role="1tU5fm">
+          <ref role="ehGHo" to="hcm8:2yYXHtl6Jh1" resolve="IType" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="A2XqWwf1Pe" role="3clF47">
+        <node concept="3clFbJ" id="A2XqWwf65E" role="3cqZAp">
+          <node concept="3clFbS" id="A2XqWwf65G" role="3clFbx">
+            <node concept="3SKdUt" id="A2XqWwfbf6" role="3cqZAp">
+              <node concept="1PaTwC" id="A2XqWwfbf7" role="1aUNEU">
+                <node concept="3oM_SD" id="A2XqWwfbuf" role="1PaTwD">
+                  <property role="3oM_SC" value="Most" />
+                </node>
+                <node concept="3oM_SD" id="A2XqWwfbuh" role="1PaTwD">
+                  <property role="3oM_SC" value="regular" />
+                </node>
+                <node concept="3oM_SD" id="A2XqWwfbvp" role="1PaTwD">
+                  <property role="3oM_SC" value="case:" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbJ" id="A2XqWwf1Pf" role="3cqZAp">
+              <node concept="3clFbS" id="A2XqWwf1Pg" role="3clFbx">
+                <node concept="3cpWs6" id="A2XqWwf1Ph" role="3cqZAp">
+                  <node concept="3clFbT" id="A2XqWwf1Pi" role="3cqZAk">
+                    <property role="3clFbU" value="true" />
+                  </node>
+                </node>
+              </node>
+              <node concept="2OqwBi" id="A2XqWwf1Pj" role="3clFbw">
+                <node concept="37vLTw" id="A2XqWwf1Pk" role="2Oq$k0">
+                  <ref role="3cqZAo" node="A2XqWwf1OZ" resolve="superTypes" />
+                </node>
+                <node concept="liA8E" id="A2XqWwf1Pl" role="2OqNvi">
+                  <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object)" resolve="add" />
+                  <node concept="2OqwBi" id="A2XqWwf1Pm" role="37wK5m">
+                    <node concept="37vLTw" id="A2XqWwf1Pn" role="2Oq$k0">
+                      <ref role="3cqZAo" node="A2XqWwf1Pc" resolve="type" />
+                    </node>
+                    <node concept="2qgKlT" id="A2XqWwf1Po" role="2OqNvi">
+                      <ref role="37wK5l" to="hez:JmO2PmZtH5" resolve="typeKey" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbH" id="A2XqWwfaJv" role="3cqZAp" />
+            <node concept="3clFbF" id="A2XqWwf7e$" role="3cqZAp">
+              <node concept="37vLTI" id="A2XqWwf7_m" role="3clFbG">
+                <node concept="37vLTw" id="A2XqWwf7Nz" role="37vLTx">
+                  <ref role="3cqZAo" node="A2XqWwf1Pc" resolve="type" />
+                </node>
+                <node concept="37vLTw" id="A2XqWwf7ey" role="37vLTJ">
+                  <ref role="3cqZAo" node="A2XqWwf4yA" resolve="firstCircularTypeFound" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbC" id="A2XqWwf6Ek" role="3clFbw">
+            <node concept="10Nm6u" id="A2XqWwf6WS" role="3uHU7w" />
+            <node concept="37vLTw" id="A2XqWwf6lJ" role="3uHU7B">
+              <ref role="3cqZAo" node="A2XqWwf4yA" resolve="firstCircularTypeFound" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="A2XqWwf1Pp" role="3cqZAp">
+          <node concept="3clFbT" id="A2XqWwf1Pq" role="3cqZAk" />
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="A2XqWwf1Pr" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="A2XqWwf1Ps" role="jymVt" />
+    <node concept="3clFb_" id="A2XqWwf1Pt" role="jymVt">
+      <property role="TrG5h" value="exitType" />
+      <node concept="3Tm1VV" id="A2XqWwf1Pu" role="1B3o_S" />
+      <node concept="3cqZAl" id="A2XqWwf1Pv" role="3clF45" />
+      <node concept="37vLTG" id="A2XqWwf1Pw" role="3clF46">
+        <property role="TrG5h" value="clazz" />
+        <node concept="3Tqbb2" id="A2XqWwf1Px" role="1tU5fm">
+          <ref role="ehGHo" to="hcm8:2yYXHtl6Jh1" resolve="IType" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="A2XqWwf1Py" role="3clF47" />
+      <node concept="2AHcQZ" id="A2XqWwf1PD" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="A2XqWwfcJi" role="jymVt" />
+    <node concept="3clFb_" id="A2XqWwfdJo" role="jymVt">
+      <property role="TrG5h" value="getCircularReference" />
+      <node concept="3clFbS" id="A2XqWwfdJr" role="3clF47">
+        <node concept="3cpWs6" id="A2XqWwfe91" role="3cqZAp">
+          <node concept="3K4zz7" id="7JKAzf0SSoJ" role="3cqZAk">
+            <node concept="2YIFZM" id="7JKAzf0STvH" role="3K4E3e">
+              <ref role="37wK5l" to="33ny:~Optional.empty()" resolve="empty" />
+              <ref role="1Pybhc" to="33ny:~Optional" resolve="Optional" />
+            </node>
+            <node concept="3clFbC" id="7JKAzf0SQp8" role="3K4Cdx">
+              <node concept="10Nm6u" id="7JKAzf0SQr7" role="3uHU7w" />
+              <node concept="37vLTw" id="7JKAzf0SQ3l" role="3uHU7B">
+                <ref role="3cqZAo" node="A2XqWwf4yA" resolve="firstCircularTypeFound" />
+              </node>
+            </node>
+            <node concept="2YIFZM" id="A2XqWwfeAk" role="3K4GZi">
+              <ref role="37wK5l" to="33ny:~Optional.of(java.lang.Object)" resolve="of" />
+              <ref role="1Pybhc" to="33ny:~Optional" resolve="Optional" />
+              <node concept="37vLTw" id="A2XqWwfeOp" role="37wK5m">
+                <ref role="3cqZAo" node="A2XqWwf4yA" resolve="firstCircularTypeFound" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="A2XqWwfdf_" role="1B3o_S" />
+      <node concept="3uibUv" id="A2XqWwfdxW" role="3clF45">
+        <ref role="3uigEE" to="33ny:~Optional" resolve="Optional" />
+        <node concept="3Tqbb2" id="A2XqWwfdH3" role="11_B2D" />
+      </node>
+    </node>
+    <node concept="3Tm1VV" id="A2XqWwf1He" role="1B3o_S" />
+    <node concept="3uibUv" id="A2XqWwf1Ny" role="EKbjA">
+      <ref role="3uigEE" to="2q9i:18X2O0FJI_g" resolve="SuperTypesVisitor" />
     </node>
   </node>
 </model>
