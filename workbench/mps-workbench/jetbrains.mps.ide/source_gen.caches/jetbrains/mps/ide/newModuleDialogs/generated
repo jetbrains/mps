@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-88nu445b2n3239r6ixut54fb4985l13">
-  <files names="AbstractModuleCreationDialog.java:CopyModuleHelper.java:DescriptorCopyOrganizer.java" />
+<product version="3" modelHash="7i8171xcg7rcmlsjggtb1yw9g512tyr">
+  <files names="CopyModuleHelper.java:DescriptorCopyOrganizer.java" />
 </product>
 
