@@ -18,7 +18,6 @@ public class AnalyzeModule_ActionGroup extends GeneratedActionGroup {
     setIsInternal(false);
     setPopup(true);
     addNamedAnchor(LABEL_ID_analyze);
-    AnalyzeModule_ActionGroup.this.addAction("jetbrains.mps.ide.platform.actions.AnalyzeDependencies_Action");
     addNamedAnchor(LABEL_ID_other);
   }
 }

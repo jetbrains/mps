@@ -1002,8 +1002,8 @@
       <node concept="10WQ6h" id="Ymhd0bfr94" role="ftvYc">
         <property role="TrG5h" value="modelUsages" />
       </node>
-      <node concept="tCFHf" id="4VblCrNX9TK" role="ftvYc">
-        <ref role="tCJdB" to="9oh:222i7iS8zo1" resolve="AnalyzeDependencies" />
+      <node concept="10WQ6h" id="7TKpiq3XB37" role="ftvYc">
+        <property role="TrG5h" value="analyze" />
       </node>
       <node concept="10WQ6h" id="1gEYwydCqUZ" role="ftvYc">
         <property role="TrG5h" value="check" />
@@ -23775,9 +23775,6 @@
     <node concept="ftmFs" id="6XVANXZCfqD" role="ftER_">
       <node concept="10WQ6h" id="2Y91NYHo6WU" role="ftvYc">
         <property role="TrG5h" value="analyze" />
-      </node>
-      <node concept="tCFHf" id="4rg2DEV9Vh2" role="ftvYc">
-        <ref role="tCJdB" to="9oh:222i7iS8zo1" resolve="AnalyzeDependencies" />
       </node>
       <node concept="10WQ6h" id="5HJn1LT79wn" role="ftvYc">
         <property role="TrG5h" value="other" />

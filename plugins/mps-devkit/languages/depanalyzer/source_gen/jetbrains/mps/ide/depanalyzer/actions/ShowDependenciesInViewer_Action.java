@@ -16,7 +16,6 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.ide.depanalyzer.DependencyTree;
-import jetbrains.mps.ide.platform.actions.DependenciesUtil;
 
 public class ShowDependenciesInViewer_Action extends BaseAction {
   private static final Icon ICON = null;

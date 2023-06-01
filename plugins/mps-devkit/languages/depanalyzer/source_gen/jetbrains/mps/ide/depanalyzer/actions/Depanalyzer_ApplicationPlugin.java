@@ -6,7 +6,7 @@ import jetbrains.mps.plugins.applicationplugins.BaseApplicationPlugin;
 import com.intellij.openapi.extensions.PluginId;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.actions.AnalyzeModule_ActionGroup;
-import jetbrains.mps.ide.actions.Analyze_ActionGroup;
+import jetbrains.mps.ide.actions.ModelActions_ActionGroup;
 import java.util.List;
 import jetbrains.mps.plugins.actions.BaseKeymapChanges;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -25,16 +25,21 @@ public class Depanalyzer_ApplicationPlugin extends BaseApplicationPlugin {
 
   public void createGroups() {
     // actions w/o parameters
+    addAction(new AnalyzeModelDependencies_Action());
     addAction(new AnalyzeModuleDependencies_Action());
     addAction(new SafeDeleteModuleDependency_Action());
     addAction(new ShowDependenciesInViewer_Action());
     addAction(new ShowInDependenciesViewer_Action());
     // groups
-    addGroup(new ContributeToAnalyzeModule_ActionGroup(this));
+    addGroup(new ContributeAnalyzeModel_ActionGroup(this));
+    addGroup(new ContributeAnalyzeModule_ActionGroup(this));
   }
   public void adjustRegularGroups() {
-    insertGroupIntoAnother(ContributeToAnalyzeModule_ActionGroup.ID, AnalyzeModule_ActionGroup.ID, AnalyzeModule_ActionGroup.LABEL_ID_other);
-    insertGroupIntoAnother(ContributeToAnalyzeModule_ActionGroup.ID, Analyze_ActionGroup.ID, Analyze_ActionGroup.LABEL_ID_module);
+    insertGroupIntoAnother(ContributeAnalyzeModule_ActionGroup.ID, AnalyzeModule_ActionGroup.ID, AnalyzeModule_ActionGroup.LABEL_ID_analyze);
+    insertGroupIntoAnother(ContributeAnalyzeModule_ActionGroup.ID, "AnalyzePlatform_ActionGroupmodule", null);
+    insertGroupIntoAnother(ContributeAnalyzeModel_ActionGroup.ID, AnalyzeModule_ActionGroup.ID, AnalyzeModule_ActionGroup.LABEL_ID_other);
+    insertGroupIntoAnother(ContributeAnalyzeModel_ActionGroup.ID, ModelActions_ActionGroup.ID, ModelActions_ActionGroup.LABEL_ID_analyze);
+    insertGroupIntoAnother(ContributeAnalyzeModel_ActionGroup.ID, "AnalyzePlatform_ActionGroupmodel", null);
   }
   public List<BaseKeymapChanges> initKeymaps() {
     List<BaseKeymapChanges> res = ListSequence.fromList(new ArrayList<BaseKeymapChanges>());

@@ -18,7 +18,6 @@ import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.ide.platform.actions.DependenciesUtil;
 import com.intellij.openapi.ui.Messages;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModuleReference;

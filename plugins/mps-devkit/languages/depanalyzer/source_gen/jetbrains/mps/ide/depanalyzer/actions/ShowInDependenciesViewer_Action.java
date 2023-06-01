@@ -18,7 +18,6 @@ import com.intellij.openapi.actionSystem.CommonDataKeys;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.ide.platform.actions.DependenciesUtil;
 
 public class ShowInDependenciesViewer_Action extends BaseAction {
   private static final Icon ICON = null;
