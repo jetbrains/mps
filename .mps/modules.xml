@@ -322,6 +322,12 @@
       <modulePath path="$PROJECT_DIR$/plugins/mps-httpsupport/solutions/nodeaccess/jetbrains.mps.ide.httpsupport.nodeaccess.msd" folder="platform.httpsupport" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-httpsupport/solutions/runtime/jetbrains.mps.ide.httpsupport.runtime.msd" folder="platform.httpsupport" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-ide/modules/tools.todo/jetbrains.mps.ide.tools.todo.msd" folder="workbench.mps-ide" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-ide/modules/ide.refactoring/jetbrains.mps.ide.refactoring.msd" folder="workbench.mps-ide" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-ide/modules/bl.lightweightdsl/jetbrains.mps.baseLanguage.lightweightdsl.pluginSolution.msd" folder="core.baseLanguage.lightweightdsl" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-ide/modules/lang.core/jetbrains.mps.lang.core.pluginSolution.msd" folder="core.languages" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-ide/modules/lang.script/jetbrains.mps.lang.script.pluginSolution.msd" folder="core.aspects.script" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-ide/modules/lang.text/jetbrains.mps.lang.text.pluginSolution.msd" folder="core.languages.text" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-ide/modules/lang.typesystem/jetbrains.mps.lang.typesystem.pluginSolution.msd" folder="core.aspects.typesystem" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-idea-integration/MPSPlugin/jetbrains.mps.ideaIntegration.msd" folder="platform" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-java/core/modules/jetbrains.mps.java.core/jetbrains.mps.java.core.msd" folder="platform.mpsjava" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-java/platform/modules/jetbrains.mps.java.platform/jetbrains.mps.java.platform.msd" folder="platform.mpsjava" />
@@ -661,15 +667,9 @@
       <modulePath path="$PROJECT_DIR$/workbench/mps-debugger/jetbrains.mps.debugger.core.msd" folder="workbench.debugger" />
       <modulePath path="$PROJECT_DIR$/workbench/mps-editor/jetbrains.mps.ide.editor.msd" folder="workbench.editor" />
       <modulePath path="$PROJECT_DIR$/workbench/mps-platform/jetbrains.mps.ide.platform/jetbrains.mps.ide.platform.msd" folder="platform" />
-      <modulePath path="$PROJECT_DIR$/workbench/mps-platform/jetbrains.mps.ide.refactoring.platform/jetbrains.mps.ide.refactoring.platform.msd" folder="workbench.refactoring" />
+      <modulePath path="$PROJECT_DIR$/workbench/mps-platform/jetbrains.mps.ide.refactoring.platform/jetbrains.mps.ide.refactoring.platform.msd" folder="platform" />
       <modulePath path="$PROJECT_DIR$/workbench/mps-ui/jetbrains.mps.ide.ui.msd" folder="workbench.ui" />
-      <modulePath path="$PROJECT_DIR$/workbench/mps-workbench/jetbrains.mps.ide.refactoring/jetbrains.mps.ide.refactoring.msd" folder="workbench.refactoring" />
       <modulePath path="$PROJECT_DIR$/workbench/mps-workbench/jetbrains.mps.ide/jetbrains.mps.ide.msd" folder="workbench" />
-      <modulePath path="$PROJECT_DIR$/workbench/mps-workbench/pluginSolutions/baseLanguage.lightweightdsl/jetbrains.mps.baseLanguage.lightweightdsl.pluginSolution.msd" folder="core.baseLanguage.lightweightdsl" />
-      <modulePath path="$PROJECT_DIR$/workbench/mps-workbench/pluginSolutions/lang.core/jetbrains.mps.lang.core.pluginSolution.msd" folder="core.languages" />
-      <modulePath path="$PROJECT_DIR$/workbench/mps-workbench/pluginSolutions/lang.script/jetbrains.mps.lang.script.pluginSolution.msd" folder="core.aspects.script" />
-      <modulePath path="$PROJECT_DIR$/workbench/mps-workbench/pluginSolutions/lang.text/jetbrains.mps.lang.text.pluginSolution.msd" folder="core.languages.text" />
-      <modulePath path="$PROJECT_DIR$/workbench/mps-workbench/pluginSolutions/lang.typesystem/jetbrains.mps.lang.typesystem.pluginSolution.msd" folder="core.aspects.typesystem" />
     </projectModules>
   </component>
 </project>
