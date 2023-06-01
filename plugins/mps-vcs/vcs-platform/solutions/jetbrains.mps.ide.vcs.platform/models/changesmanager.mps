@@ -5425,6 +5425,19 @@
               </node>
             </node>
           </node>
+          <node concept="3clFbF" id="2JwSLRbyYXr" role="3cqZAp">
+            <node concept="1rXfSq" id="4hiugqyyWwr" role="3clFbG">
+              <ref role="37wK5l" node="2JwSLRbyYSU" resolve="disposeModelChangesManager" />
+              <node concept="2OqwBi" id="791rit5f635" role="37wK5m">
+                <node concept="liA8E" id="791rit5f636" role="2OqNvi">
+                  <ref role="37wK5l" to="mhbf:~SModel.getReference()" resolve="getReference" />
+                </node>
+                <node concept="37vLTw" id="1nctWZUZ9wV" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1nctWZUZ0DB" resolve="model" />
+                </node>
+              </node>
+            </node>
+          </node>
         </node>
         <node concept="2AHcQZ" id="1nctWZUZ0DE" role="2AJF6D">
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
@@ -5481,55 +5494,6 @@
         </node>
       </node>
       <node concept="2tJIrI" id="1nctWZUZ7Gn" role="jymVt" />
-      <node concept="3clFb_" id="1nctWZUZ8b_" role="jymVt">
-        <property role="1EzhhJ" value="false" />
-        <property role="TrG5h" value="beforeModelRemoved" />
-        <property role="DiZV1" value="false" />
-        <property role="od$2w" value="false" />
-        <node concept="3Tm1VV" id="1nctWZUZ8bA" role="1B3o_S" />
-        <node concept="3cqZAl" id="1nctWZUZ8bC" role="3clF45" />
-        <node concept="37vLTG" id="1nctWZUZ8bD" role="3clF46">
-          <property role="TrG5h" value="module" />
-          <node concept="3uibUv" id="1nctWZUZ8bE" role="1tU5fm">
-            <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
-          </node>
-        </node>
-        <node concept="37vLTG" id="1nctWZUZ8bF" role="3clF46">
-          <property role="TrG5h" value="model" />
-          <node concept="3uibUv" id="1nctWZUZ8bG" role="1tU5fm">
-            <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
-          </node>
-        </node>
-        <node concept="3clFbS" id="1nctWZUZ8bH" role="3clF47">
-          <node concept="3clFbF" id="2JwSLRbyYXr" role="3cqZAp">
-            <node concept="1rXfSq" id="4hiugqyyWwr" role="3clFbG">
-              <ref role="37wK5l" node="2JwSLRbyYSU" resolve="disposeModelChangesManager" />
-              <node concept="2OqwBi" id="791rit5f635" role="37wK5m">
-                <node concept="liA8E" id="791rit5f636" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:~SModel.getReference()" resolve="getReference" />
-                </node>
-                <node concept="37vLTw" id="1nctWZUZ9wV" role="2Oq$k0">
-                  <ref role="3cqZAo" node="1nctWZUZ8bF" resolve="model" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbF" id="1nctWZUZ8bM" role="3cqZAp">
-            <node concept="3nyPlj" id="1nctWZUZ8bL" role="3clFbG">
-              <ref role="37wK5l" to="lui2:~SRepositoryContentAdapter.beforeModelRemoved(org.jetbrains.mps.openapi.module.SModule,org.jetbrains.mps.openapi.model.SModel)" resolve="beforeModelRemoved" />
-              <node concept="37vLTw" id="1nctWZUZ8bJ" role="37wK5m">
-                <ref role="3cqZAo" node="1nctWZUZ8bD" resolve="module" />
-              </node>
-              <node concept="37vLTw" id="1nctWZUZ8bK" role="37wK5m">
-                <ref role="3cqZAo" node="1nctWZUZ8bF" resolve="model" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="2AHcQZ" id="1nctWZUZ8bI" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-        </node>
-      </node>
     </node>
     <node concept="2tJIrI" id="6y_kxB1U_7F" role="jymVt" />
     <node concept="312cEu" id="6h1S4muEXWg" role="jymVt">

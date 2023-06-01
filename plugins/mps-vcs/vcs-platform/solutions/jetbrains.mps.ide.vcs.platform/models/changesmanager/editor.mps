@@ -1185,8 +1185,13 @@
                                                           <node concept="liA8E" id="1KUoCipvEbZ" role="2OqNvi">
                                                             <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
                                                           </node>
-                                                          <node concept="37vLTw" id="3GM_nagTAZg" role="2Oq$k0">
-                                                            <ref role="3cqZAo" node="1KUoCipvEaw" resolve="editedNode" />
+                                                          <node concept="2OqwBi" id="48lEE9jxJrt" role="2Oq$k0">
+                                                            <node concept="37vLTw" id="3GM_nagTAZg" role="2Oq$k0">
+                                                              <ref role="3cqZAo" node="1KUoCipvEaw" resolve="editedNode" />
+                                                            </node>
+                                                            <node concept="liA8E" id="48lEE9jxKGy" role="2OqNvi">
+                                                              <ref role="37wK5l" to="mhbf:~SNode.getContainingRoot()" resolve="getContainingRoot" />
+                                                            </node>
                                                           </node>
                                                         </node>
                                                         <node concept="liA8E" id="1KUoCipvEc1" role="2OqNvi">
@@ -8071,9 +8076,6 @@
         </node>
         <node concept="3clFbF" id="2Xanblty7qg" role="3cqZAp">
           <node concept="2OqwBi" id="2Xanblty7qi" role="3clFbG">
-            <node concept="1rXfSq" id="7uQHEcHfmcL" role="2Oq$k0">
-              <ref role="37wK5l" to="exr9:~EditorComponent.getScrollPane()" resolve="getScrollPane" />
-            </node>
             <node concept="liA8E" id="2Xanblty7qm" role="2OqNvi">
               <ref role="37wK5l" to="dxuu:~JComponent.setPreferredSize(java.awt.Dimension)" resolve="setPreferredSize" />
               <node concept="2OqwBi" id="2Xanblty7qo" role="37wK5m">
@@ -8085,16 +8087,19 @@
                 </node>
               </node>
             </node>
+            <node concept="1rXfSq" id="7uQHEcHfmcL" role="2Oq$k0">
+              <ref role="37wK5l" to="exr9:~EditorComponent.getScrollPane()" resolve="getScrollPane" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="2Xanblty7qu" role="3cqZAp">
           <node concept="2OqwBi" id="2Xanblty7qw" role="3clFbG">
             <node concept="2OqwBi" id="1gM_IjhvHsH" role="2Oq$k0">
-              <node concept="1rXfSq" id="7uQHEcHfs9w" role="2Oq$k0">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getScrollPane()" resolve="getScrollPane" />
-              </node>
               <node concept="liA8E" id="1gM_IjhvHsL" role="2OqNvi">
                 <ref role="37wK5l" to="dxuu:~JScrollPane.getViewport()" resolve="getViewport" />
+              </node>
+              <node concept="1rXfSq" id="7uQHEcHfs9w" role="2Oq$k0">
+                <ref role="37wK5l" to="exr9:~EditorComponent.getScrollPane()" resolve="getScrollPane" />
               </node>
             </node>
             <node concept="liA8E" id="2Xanblty7q$" role="2OqNvi">
