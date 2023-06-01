@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="bcp1mx55886tbudqlxqp0jffgxzc5k1">
-  <files names="AddToToolsInternal_ActionGroup.java:AnalyzeClasspath_Action.java:AnalyzeJavaActions_ActionGroup.java:CalcClassifiersInRootsStatistic_Action.java:ChangeMethodSignatureDialog.java:ChangeMethodSignature_Action.java:Default_KeymapChanges.java:MigrateSourcesToMPS_Action.java:ModelNewActions_ActionGroup.java:NewModelFromSource_Action.java:ParamDefaultValueEditor.java:ParamDefautValueSectionPanel.java:RefactoringAdditions_ActionGroup.java:SizedEmbeddableEditor.java:SolutionActionsEx_ActionGroup.java:TouchBarDefault_shift_ActionGroup.java:Workbench_ApplicationPlugin.java:startup.properties" />
+<product version="3" modelHash="-5sp1r6xzx3runcx19nei7e33l1bw8dg">
+  <files names="AddToToolsInternal_ActionGroup.java:AnalyzeClasspath_Action.java:AnalyzeJavaActions_ActionGroup.java:CalcClassifiersInRootsStatistic_Action.java:ChangeMethodSignatureDialog.java:ChangeMethodSignature_Action.java:ClasspathExplorer_Tool.java:ClasspathTree.java:Default_KeymapChanges.java:MigrateSourcesToMPS_Action.java:ModelNewActions_ActionGroup.java:NewModelFromSource_Action.java:ParamDefaultValueEditor.java:ParamDefautValueSectionPanel.java:RefactoringAdditions_ActionGroup.java:SizedEmbeddableEditor.java:SolutionActionsEx_ActionGroup.java:TouchBarDefault_shift_ActionGroup.java:Workbench_ApplicationPlugin.java:Workbench_ProjectPlugin.java:startup.properties" />
 </product>
 

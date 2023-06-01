@@ -49,9 +49,6 @@
       <implementation-class>jetbrains.mps.ide.generator.TransientModelsComponent</implementation-class>
     </component>
     <component>
-      <implementation-class>jetbrains.mps.ide.classpath.ClassPathViewerTool</implementation-class>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.ide.hierarchy.HierarchyViewTool</implementation-class>
     </component>
     <component>

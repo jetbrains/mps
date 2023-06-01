@@ -12,7 +12,7 @@ import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.ide.classpath.ClassPathViewerTool;
+import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
 
 public class AnalyzeClasspath_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -49,8 +49,8 @@ public class AnalyzeClasspath_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    ClassPathViewerTool tool = ((MPSProject) MapSequence.fromMap(_params).get("project")).getComponent(ClassPathViewerTool.class);
-    tool.openToolLater(true);
-    tool.analyzeModule(((SModule) MapSequence.fromMap(_params).get("module")));
+    ClasspathExplorer_Tool cpExplorer = ((MPSProject) MapSequence.fromMap(_params).get("project")).getProject().getComponent(ProjectPluginManager.class).getTool(ClasspathExplorer_Tool.class);
+    cpExplorer.openToolLater(true);
+    cpExplorer.analyzeModule(((SModule) MapSequence.fromMap(_params).get("module")));
   }
 }
