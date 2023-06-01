@@ -4,6 +4,7 @@ package jetbrains.mps.ide.depanalyzer.actions;
 
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.depanalyzer.DependencyViewerScope;
+import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -18,7 +19,7 @@ public final class DependenciesUtil {
   }
 
   public static void openDependenciesTool(Project ideaProject, DependencyViewerScope scope, boolean setActive) {
-    AnalyzeDependenciesViewTool tool = ideaProject.getComponent(AnalyzeDependenciesViewTool.class);
+    AnalyzeDependencies_Tool tool = ideaProject.getComponent(ProjectPluginManager.class).getTool(AnalyzeDependencies_Tool.class);
     if (scope != null) {
       tool.setContent(scope, null, false);
     }
@@ -29,7 +30,7 @@ public final class DependenciesUtil {
    * requires EDT
    */
   public static void openDependenciesTool(@NotNull MPSProject mpsProject, @NotNull SModule from, @Nullable SModule to, boolean meta) {
-    AnalyzeDependenciesViewTool tool = mpsProject.getComponent(AnalyzeDependenciesViewTool.class);
+    AnalyzeDependencies_Tool tool = mpsProject.getProject().getComponent(ProjectPluginManager.class).getTool(AnalyzeDependencies_Tool.class);
     DependencyViewerScope fromScope = new DependencyViewerScope(mpsProject.getRepository());
     fromScope.add(from);
     DependencyViewerScope toScope = null;

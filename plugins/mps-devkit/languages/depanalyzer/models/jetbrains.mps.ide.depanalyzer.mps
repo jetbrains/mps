@@ -79,6 +79,9 @@
       </concept>
     </language>
     <language id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin">
+      <concept id="1208528650020" name="jetbrains.mps.lang.plugin.structure.ToolType" flags="in" index="1xUVSX">
+        <reference id="1208529537963" name="tool" index="1xYkEM" />
+      </concept>
       <concept id="3205675194086589964" name="jetbrains.mps.lang.plugin.structure.ActionAccessOperation" flags="nn" index="3$FdUm">
         <reference id="3205675194086671728" name="action" index="3$FpRE" />
       </concept>
@@ -10403,8 +10406,8 @@
       </node>
       <node concept="37vLTG" id="7ctIhG_bUtU" role="3clF46">
         <property role="TrG5h" value="tool" />
-        <node concept="3uibUv" id="3P7s6VtYjGI" role="1tU5fm">
-          <ref role="3uigEE" to="71xd:~BaseTool" resolve="BaseTool" />
+        <node concept="1xUVSX" id="7TKpiq41ZcB" role="1tU5fm">
+          <ref role="1xYkEM" to="pwkq:7TKpiq41OHp" resolve="AnalyzeDependencies" />
         </node>
       </node>
       <node concept="37vLTG" id="2vCf6P40bEY" role="3clF46">
