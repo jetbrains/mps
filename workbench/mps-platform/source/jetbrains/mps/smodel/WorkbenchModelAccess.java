@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -171,6 +171,14 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
   }
 
   private boolean tryWrite(final Runnable r) {
+    if (canRead() && !canWrite()) {
+      // This is an attempt to prevent scenarios like MPS-35610, when attempt to start a write operation leads to read operation being cancelled.
+      // We addressed this on the spot, for popup menu in EC, but generally may face same issue elsewhere.
+      // When/if we decide to rewrite scheduling and the way we interact with IDEA reads/writes, we'd better take this scenario into account.
+      //  To me, it looks like our write requests get executed even in nested EDT pump (~ modal?), and likely this makes IDEA "uneasy".
+      return false;
+    }
+
     final LockRunnable lockRunnable = new LockRunnable(getWriteLock(), WAIT_FOR_WRITE_LOCK_MILLIS, wrapWithModelWriteDispatch(r));
 
     // XXX there's only 1 use of the method, and it's from EDT executor, are there any chance not to be in EDT here?
