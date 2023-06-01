@@ -39848,9 +39848,6 @@
       <property role="2eq24a" value="true" />
       <property role="26Ea6C" value="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5071" />
     </node>
-    <node concept="26EafG" id="BJYGrH08Xy" role="26Ea7d">
-      <property role="26EafJ" value="lib/3rd-party-native.jar" />
-    </node>
     <node concept="26EafG" id="4nX__hM7qzd" role="26Ea7d">
       <property role="26EafJ" value="lib/3rd-party-rt.jar" />
     </node>
@@ -40022,12 +40019,6 @@
     <node concept="26EafG" id="4nX__hM7r7q" role="26Ea7d">
       <property role="26EafJ" value="lib/mps-workbench.jar" />
     </node>
-    <node concept="26EafG" id="4nX__hM7r8t" role="26Ea7d">
-      <property role="26EafJ" value="lib/platform-objectSerializer-annotations.jar" />
-    </node>
-    <node concept="26EafG" id="4nX__hM7r9x" role="26Ea7d">
-      <property role="26EafJ" value="lib/platform-statistics-devkit.jar" />
-    </node>
     <node concept="26EafG" id="4nX__hM7raA" role="26Ea7d">
       <property role="26EafJ" value="lib/protobuf.jar" />
     </node>
@@ -40043,17 +40034,14 @@
     <node concept="26EafG" id="4nX__hM7qUg" role="26Ea7d">
       <property role="26EafJ" value="lib/testFramework.jar" />
     </node>
-    <node concept="26EafG" id="4nX__hM7qV7" role="26Ea7d">
-      <property role="26EafJ" value="lib/tools-testsBootstrap.jar" />
-    </node>
     <node concept="26EafG" id="4nX__hM7qVZ" role="26Ea7d">
       <property role="26EafJ" value="lib/util.jar" />
     </node>
+    <node concept="26EafG" id="3_YjmvD08yb" role="26Ea7d">
+      <property role="26EafJ" value="lib/util-8.jar" />
+    </node>
     <node concept="26EafG" id="4nX__hM7qWS" role="26Ea7d">
       <property role="26EafJ" value="lib/util_rt.jar" />
-    </node>
-    <node concept="26EafG" id="4nX__hM7qyX" role="26Ea7d">
-      <property role="26EafJ" value="lib/xml-dom-impl.jar" />
     </node>
     <node concept="26EafG" id="68rp5VxCl2R" role="26Ea7d">
       <property role="26EafJ" value="lib/ant/lib/ant.jar" />
