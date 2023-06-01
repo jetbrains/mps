@@ -523,6 +523,7 @@
       <plugin path="${artifacts.mps}/plugins/mps-build" />
       <plugin path="${artifacts.mps}/plugins/mps-core" />
       <plugin path="${artifacts.mps}/plugins/mps-devkit" />
+      <plugin path="${artifacts.mps}/plugins/mps-ide" />
       <plugin path="${artifacts.mps}/plugins/mps-make" />
       <plugin path="${artifacts.mps}/plugins/mps-migration" />
       <plugin path="${artifacts.mps}/plugins/mps-modelchecker" />
@@ -631,8 +632,6 @@
       <library file="${artifacts.mps}/languages/util/jetbrains.mps.runtime.jar" />
       <library file="${artifacts.mps}/languages/workbench-stub.jar" />
       <library file="${artifacts.mps}/languages/workbench/jetbrains.mps.ide.jar" />
-      <library file="${artifacts.mps}/languages/workbench/jetbrains.mps.ide.refactoring.jar" />
-      <library file="${artifacts.mps}/languages/workbench/jetbrains.mps.lang.core.pluginSolution.jar" />
       <chunk>
         <module file="${basedir}/testbench/testsolutions/clone.module.test/clone.module.test.msd" />
         <module file="${basedir}/testbench/testsolutions/JavaCompilationXmlConflict.test/JavaCompilationXmlConflict.test.msd" />
@@ -974,11 +973,11 @@
         <fileset file="${artifacts.mps}/languages/baseLanguage/jetbrains.mps.baseLanguage.scopes.jar" />
         <fileset file="${artifacts.mps}/plugins/mps-testing/languages/baseLanguage/jetbrains.mps.baseLanguage.unitTest.runtime.jar" />
         <fileset file="${artifacts.mps}/plugins/mps-make/languages/jetbrains.mps.ide.make.jar" />
-        <fileset file="${artifacts.mps}/languages/workbench/jetbrains.mps.ide.refactoring.jar" />
+        <fileset file="${artifacts.mps}/plugins/mps-ide/languages/mps-ide/jetbrains.mps.ide.refactoring.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.behavior.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.constraints.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.core.jar" />
-        <fileset file="${artifacts.mps}/languages/workbench/jetbrains.mps.lang.core.pluginSolution.jar" />
+        <fileset file="${artifacts.mps}/plugins/mps-ide/languages/mps-ide/jetbrains.mps.lang.core.pluginSolution.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.editor.jar" />
         <fileset file="${artifacts.mps}/plugins/mps-devkit/languages/jetbrains.mps.lang.migration.pluginSolution.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.modelapi.jar" />
@@ -1286,14 +1285,13 @@
       <library file="${artifacts.mps}/languages/util/jetbrains.mps.runtime.jar" />
       <library file="${artifacts.mps}/languages/workbench-stub.jar" />
       <library file="${artifacts.mps}/languages/workbench/jetbrains.mps.ide.jar" />
-      <library file="${artifacts.mps}/languages/workbench/jetbrains.mps.ide.refactoring.jar" />
-      <library file="${artifacts.mps}/languages/workbench/jetbrains.mps.lang.core.pluginSolution.jar" />
       <library file="${build.layout}/languages/jetbrains.mps.persistence.transients.jar" />
       
       <plugin id="com.intellij.modules.mps" path="${artifacts.mps}/lib/mps-workbench.jar" />
       <plugin id="jetbrains.mps.build" path="${artifacts.mps}/plugins/mps-build" />
       <plugin id="jetbrains.mps.core" path="${artifacts.mps}/plugins/mps-core" />
       <plugin id="jetbrains.mps.ide.devkit" path="${artifacts.mps}/plugins/mps-devkit" />
+      <plugin id="jetbrains.mps.ide" path="${artifacts.mps}/plugins/mps-ide" />
       <plugin id="jetbrains.mps.ide.make" path="${artifacts.mps}/plugins/mps-make" />
       <plugin id="jetbrains.mps.ide.migration.workbench" path="${artifacts.mps}/plugins/mps-migration" />
       <plugin id="jetbrains.mps.ide.modelchecker" path="${artifacts.mps}/plugins/mps-modelchecker" />
