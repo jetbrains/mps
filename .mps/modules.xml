@@ -321,6 +321,7 @@
       <modulePath path="$PROJECT_DIR$/plugins/mps-httpsupport/language/jetbrains.mps.ide.httpsupport.mpl" folder="platform.httpsupport" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-httpsupport/solutions/nodeaccess/jetbrains.mps.ide.httpsupport.nodeaccess.msd" folder="platform.httpsupport" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-httpsupport/solutions/runtime/jetbrains.mps.ide.httpsupport.runtime.msd" folder="platform.httpsupport" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-ide/modules/tools.todo/jetbrains.mps.ide.tools.todo.msd" folder="workbench.mps-ide" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-idea-integration/MPSPlugin/jetbrains.mps.ideaIntegration.msd" folder="platform" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-java/core/modules/jetbrains.mps.java.core/jetbrains.mps.java.core.msd" folder="platform.mpsjava" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-java/platform/modules/jetbrains.mps.java.platform/jetbrains.mps.java.platform.msd" folder="platform.mpsjava" />

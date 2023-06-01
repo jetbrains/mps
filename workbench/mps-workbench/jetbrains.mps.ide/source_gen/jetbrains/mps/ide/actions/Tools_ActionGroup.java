@@ -21,7 +21,6 @@ public class Tools_ActionGroup extends GeneratedActionGroup {
     addNamedAnchor(LABEL_ID_migration);
     Tools_ActionGroup.this.addSeparator();
     Tools_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ShowBookmarks_Action");
-    Tools_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ShowTodoViewer_Action");
     addNamedAnchor(LABEL_ID_customTools);
     Tools_ActionGroup.this.addSeparator();
     addNamedAnchor(LABEL_ID_devkitTools);

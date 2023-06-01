@@ -2,7 +2,7 @@
 <solution name="jetbrains.mps.ide" uuid="019b622b-0aef-4dd3-86d0-4eef01f3f6bb" moduleVersion="0">
   <compileInIDEA />
   <models>
-    <modelRoot contentPath="${module}" type="default">
+    <modelRoot type="default" contentPath="${module}">
       <sourceRoot location="models" />
     </modelRoot>
   </models>

@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082485599095:jetbrains.mps.baseLanguage.structure.BlockStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1144226303539:jetbrains.mps.baseLanguage.structure.ForeachStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root nodeRef="r:a807e16c-6905-4da7-b0d7-e84d28559259(jetbrains.mps.ide.tools.todo)/1267345526754793607">
+    <file name="ContributeToTools_ActionGroup.java">
+      <node id="1267345526754793607" at="10,0,11,0" concept="11" trace="ID" />
+      <node id="1267345526754793607" at="12,75,13,43" concept="12" />
+      <node id="1267345526754793607" at="13,43,14,25" concept="2" />
+      <node id="1267345526754793607" at="14,25,15,20" concept="2" />
+      <node id="1267345526754793714" at="15,20,16,103" concept="2" />
+      <node id="1267345526754793607" at="12,0,18,0" concept="1" trace="ContributeToTools_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
+      <scope id="1267345526754793607" at="12,75,16,103" />
+      <scope id="1267345526754793607" at="12,0,18,0">
+        <var name="plugin" id="1267345526754793607" />
+      </scope>
+      <unit id="1267345526754793607" at="9,0,19,0" name="jetbrains.mps.ide.tools.todo.ContributeToTools_ActionGroup" />
+    </file>
+    <file name="Todo_ApplicationPlugin.java">
+      <node id="1267345526754793607" at="24,13,25,54" concept="2" />
+      <node id="1267345526754793669" at="27,37,28,123" concept="2" />
+    </file>
+  </root>
+  <root nodeRef="r:a807e16c-6905-4da7-b0d7-e84d28559259(jetbrains.mps.ide.tools.todo)/1267345526754793900">
+    <file name="Todo_ApplicationPlugin.java">
+      <node id="1267345526754793900" at="11,0,12,0" concept="3" trace="myId" />
+      <node id="1267345526754793900" at="17,27,18,16" concept="8" />
+      <node id="1267345526754793900" at="21,30,22,29" concept="9" />
+      <node id="1267345526754793900" at="23,43,24,13" concept="9" />
+      <node id="1267345526754793900" at="13,0,15,0" concept="1" trace="Todo_ApplicationPlugin#()V" />
+      <node id="1267345526754793900" at="27,0,30,0" concept="6" trace="adjustRegularGroups#()V" />
+      <node id="1267345526754793900" at="16,0,20,0" concept="6" trace="getId#()Lcom/intellij/openapi/extensions/PluginId;" />
+      <node id="1267345526754793900" at="21,0,27,0" concept="6" trace="createGroups#()V" />
+      <scope id="1267345526754793900" at="13,35,13,35" />
+      <scope id="1267345526754793900" at="17,27,18,16" />
+      <scope id="1267345526754793900" at="27,37,28,123" />
+      <scope id="1267345526754793900" at="13,0,15,0" />
+      <scope id="1267345526754793900" at="27,0,30,0" />
+      <scope id="1267345526754793900" at="16,0,20,0" />
+      <scope id="1267345526754793900" at="21,30,25,54" />
+      <scope id="1267345526754793900" at="21,0,27,0" />
+      <unit id="1267345526754793900" at="10,0,31,0" name="jetbrains.mps.ide.tools.todo.Todo_ApplicationPlugin" />
+    </file>
+    <file name="Todo_ProjectPlugin.java">
+      <node id="1267345526754793900" at="15,56,16,76" concept="7" />
+      <node id="1267345526754793900" at="17,74,18,17" concept="8" />
+      <node id="1267345526754793900" at="13,0,15,0" concept="1" trace="Todo_ProjectPlugin#()V" />
+      <node id="1267345526754793900" at="15,0,20,0" concept="6" trace="initAllTools1#(Lcom/intellij/openapi/project/Project;)Ljava/util/List;" />
+      <scope id="1267345526754793900" at="13,31,13,31" />
+      <scope id="1267345526754793900" at="13,0,15,0" />
+      <scope id="1267345526754793900" at="15,56,18,17">
+        <var name="tools" id="1267345526754793900" />
+      </scope>
+      <scope id="1267345526754793900" at="15,0,20,0">
+        <var name="project" id="1267345526754793900" />
+      </scope>
+      <unit id="1267345526754793900" at="12,0,21,0" name="jetbrains.mps.ide.tools.todo.Todo_ProjectPlugin" />
+    </file>
+    <file name="startup.properties">
+      <unit id="1267345526754793900" at="1,0,6,0" name="jetbrains.mps.ide.tools.todo.startup" />
+    </file>
+  </root>
+  <root nodeRef="r:a807e16c-6905-4da7-b0d7-e84d28559259(jetbrains.mps.ide.tools.todo)/5426495936043631331">
+    <file name="ShowTodoViewer_Action.java">
+      <node id="5426495936043631331" at="17,0,18,0" concept="11" trace="ICON" />
+      <node id="5426495936043631331" at="19,34,20,31" concept="12" />
+      <node id="5426495936043631331" at="20,31,21,34" concept="2" />
+      <node id="5426495936043631331" at="21,34,22,52" concept="2" />
+      <node id="5426495936043631331" at="25,32,26,16" concept="8" />
+      <node id="5426495936043631331" at="30,53,31,19" concept="8" />
+      <node id="5426495936043631332" at="33,5,34,56" concept="7" />
+      <node id="5426495936043631332" at="34,56,35,53" concept="2" />
+      <node id="5426495936043631333" at="36,22,37,21" concept="8" />
+      <node id="5426495936043631331" at="39,5,40,16" concept="8" />
+      <node id="5426495936043631336" at="43,96,44,152" concept="2" />
+      <node id="5426495936043631331" at="29,95,32,5" concept="5" />
+      <node id="5426495936043631333" at="35,53,38,7" concept="5" />
+      <node id="5426495936043631331" at="24,0,28,0" concept="6" trace="isDumbAware#()Z" />
+      <node id="5426495936043631331" at="42,0,46,0" concept="6" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="5426495936043631331" at="19,0,24,0" concept="1" trace="ShowTodoViewer_Action#()V" />
+      <node id="5426495936043631332" at="32,5,39,5" concept="0" />
+      <node id="5426495936043631331" at="28,0,42,0" concept="6" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
+      <scope id="5426495936043631331" at="25,32,26,16" />
+      <scope id="5426495936043631331" at="30,53,31,19" />
+      <scope id="5426495936043631333" at="36,22,37,21" />
+      <scope id="5426495936043631331" at="43,96,44,152" />
+      <scope id="5426495936043631331" at="19,34,22,52" />
+      <scope id="5426495936043631331" at="24,0,28,0" />
+      <scope id="5426495936043631331" at="42,0,46,0">
+        <var name="_params" id="5426495936043631331" />
+        <var name="event" id="5426495936043631331" />
+      </scope>
+      <scope id="5426495936043631331" at="19,0,24,0" />
+      <scope id="5426495936043631332" at="33,5,38,7">
+        <var name="p" id="5426495936043631332" />
+      </scope>
+      <scope id="5426495936043631331" at="29,95,40,16" />
+      <scope id="5426495936043631331" at="28,0,42,0">
+        <var name="_params" id="5426495936043631331" />
+        <var name="event" id="5426495936043631331" />
+      </scope>
+      <unit id="5426495936043631331" at="16,0,47,0" name="jetbrains.mps.ide.tools.todo.ShowTodoViewer_Action" />
+    </file>
+    <file name="Todo_ApplicationPlugin.java">
+      <node id="5426495936043631331" at="22,29,23,43" concept="2" />
+    </file>
+  </root>
+  <root nodeRef="r:a807e16c-6905-4da7-b0d7-e84d28559259(jetbrains.mps.ide.tools.todo)/5426495936043631345">
+    <file name="TodoViewer_Tool.java">
+      <node id="5426495936043631345" at="15,0,16,0" concept="11" trace="ICON" />
+      <node id="5426495936043631352" at="16,0,17,0" concept="3" trace="myComponent" />
+      <node id="5426495936043631345" at="17,43,18,71" concept="12" />
+      <node id="5426495936043631345" at="20,37,21,24" concept="2" />
+      <node id="5426495936043631357" at="21,24,22,116" concept="2" />
+      <node id="5426495936043631371" at="24,25,25,71" concept="7" />
+      <node id="5426495936043631381" at="26,28,27,57" concept="2" />
+      <node id="5426495936043631391" at="28,5,29,47" concept="2" />
+      <node id="5426495936043631397" at="29,47,30,44" concept="2" />
+      <node id="5426495936043631345" at="30,44,31,20" concept="2" />
+      <node id="5426495936043631345" at="34,44,35,16" concept="8" />
+      <node id="5426495936043631348" at="37,36,38,44" concept="8" />
+      <node id="5426495936043631345" at="17,0,20,0" concept="1" trace="TodoViewer_Tool#(Lcom/intellij/openapi/project/Project;)V" />
+      <node id="5426495936043631379" at="25,71,28,5" concept="5" />
+      <node id="5426495936043631345" at="37,0,40,0" concept="6" trace="getComponent#()Ljavax/swing/JComponent;" />
+      <node id="5426495936043631345" at="20,0,24,0" concept="6" trace="init#(Lcom/intellij/openapi/project/Project;)V" />
+      <node id="5426495936043631345" at="33,0,37,0" concept="6" trace="isInitiallyAvailable#()Z" />
+      <node id="5426495936043631345" at="24,0,33,0" concept="6" trace="dispose#()V" />
+      <scope id="5426495936043631345" at="17,43,18,71" />
+      <scope id="5426495936043631380" at="26,28,27,57" />
+      <scope id="5426495936043631345" at="34,44,35,16" />
+      <scope id="5426495936043631347" at="37,36,38,44" />
+      <scope id="5426495936043631345" at="20,37,22,116" />
+      <scope id="5426495936043631345" at="17,0,20,0">
+        <var name="project" id="5426495936043631345" />
+      </scope>
+      <scope id="5426495936043631345" at="37,0,40,0" />
+      <scope id="5426495936043631345" at="20,0,24,0">
+        <var name="project" id="5426495936043631345" />
+      </scope>
+      <scope id="5426495936043631345" at="33,0,37,0" />
+      <scope id="5426495936043631345" at="24,25,31,20">
+        <var name="container" id="5426495936043631372" />
+      </scope>
+      <scope id="5426495936043631345" at="24,0,33,0" />
+      <unit id="5426495936043631345" at="14,0,41,0" name="jetbrains.mps.ide.tools.todo.TodoViewer_Tool" />
+    </file>
+    <file name="Todo_ProjectPlugin.java">
+      <node id="5426495936043631345" at="16,76,17,74" concept="2" />
+    </file>
+  </root>
+  <root nodeRef="r:a807e16c-6905-4da7-b0d7-e84d28559259(jetbrains.mps.ide.tools.todo)/5426495936043638617">
+    <file name="TodoViewer.java">
+      <node id="5426495936043638750" at="46,0,47,0" concept="11" trace="TODO_ICON" />
+      <node id="5426495936043638741" at="47,0,48,0" concept="3" trace="myUsagesView" />
+      <node id="5426495936043638744" at="48,0,49,0" concept="3" trace="myProject" />
+      <node id="5426495936043638747" at="49,0,50,0" concept="3" trace="myTool" />
+      <node id="5426495936043638767" at="51,66,52,23" concept="2" />
+      <node id="5426495936043638773" at="52,23,53,24" concept="2" />
+      <node id="5426495936043638777" at="53,24,54,34" concept="2" />
+      <node id="5426495936043638781" at="54,34,55,82" concept="7" />
+      <node id="5426495936043638788" at="55,82,56,36" concept="2" />
+      <node id="5426495936043638803" at="59,46,60,34" concept="2" />
+      <node id="5426495936043638806" at="60,34,61,22" concept="2" />
+      <node id="5426495936043638809" at="61,22,62,18" concept="2" />
+      <node id="5426495936043638820" at="68,31,69,29" concept="2" />
+      <node id="5426495936043638828" at="73,37,74,23" concept="8" />
+      <node id="5426495936043638836" at="77,32,78,21" concept="8" />
+      <node id="5942678091151541903" at="81,26,82,28" concept="2" />
+      <node id="5426495936043638845" at="82,28,83,16" concept="2" />
+      <node id="5426495936043638847" at="83,16,84,80" concept="7" />
+      <node id="5426495936043638857" at="84,80,85,92" concept="7" />
+      <node id="5426495936043638864" at="85,92,86,56" concept="2" />
+      <node id="3923570236744349128" at="86,56,87,103" concept="7" />
+      <node id="5426495936043638875" at="89,62,90,41" concept="2" />
+      <node id="5426495936043638880" at="92,80,93,58" concept="2" />
+      <node id="2588796496434741579" at="93,58,94,76" concept="7" />
+      <node id="2588796496434875023" at="94,76,95,110" concept="2" />
+      <node id="3923570236744354445" at="95,110,96,146" concept="2" />
+      <node id="5426495936043638903" at="96,146,97,71" concept="2" />
+      <node id="8803113920831926583" at="97,71,98,100" concept="7" />
+      <node id="8803113920831957485" at="98,100,99,79" concept="9" />
+      <node id="8803113920831950207" at="99,79,100,83" concept="7" />
+      <node id="8803113920831971106" at="100,83,101,145" concept="7" />
+      <node id="3923570236744399707" at="101,145,102,50" concept="2" />
+      <node id="5426495936043638934" at="102,50,103,34" concept="2" />
+      <node id="6250351953473660605" at="110,47,111,21" concept="7" />
+      <node id="6250351953474736913" at="112,73,113,117" concept="8" />
+      <node id="6250351953475279205" at="114,7,115,149" concept="8" />
+      <node id="5426495936043638650" at="118,55,119,95" concept="8" />
+      <node id="5426495936043638664" at="122,34,123,34" concept="8" />
+      <node id="5426495936043638676" at="126,99,127,26" concept="7" />
+      <node id="5426495936043638687" at="128,51,129,45" concept="7" />
+      <node id="5426495936043638693" at="129,45,130,36" concept="2" />
+      <node id="5426495936043638701" at="131,7,132,36" concept="8" />
+      <node id="8803113920831984145" at="135,50,136,66" concept="9" />
+      <node id="5426495936043638713" at="136,66,137,36" concept="8" />
+      <node id="5426495936043638617" at="142,0,143,0" concept="11" trace="TextCommentPart$LX" />
+      <node id="5426495936043638617" at="143,0,144,0" concept="11" trace="IGenericComment$bD" />
+      <node id="5426495936043638617" at="147,0,148,0" concept="11" trace="text$ag2i" />
+      <node id="5426495936043638624" at="106,0,108,0" concept="1" trace="MyNodeRepresentator#()V" />
+      <node id="5426495936043638815" at="67,25,70,5" concept="5" />
+      <node id="5426495936043638824" at="73,0,76,0" concept="6" trace="getTool#()Ljetbrains/mps/ide/tools/todo/TodoViewer_Tool;" />
+      <node id="5426495936043638832" at="77,0,80,0" concept="6" trace="getProject#()Ljetbrains/mps/project/Project;" />
+      <node id="7899446653864390906" at="89,0,92,0" concept="6" trace="actionPerformed#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)V" />
+      <node id="6250351953471781311" at="111,21,114,7" concept="5" />
+      <node id="5426495936043638644" at="117,0,121,0" concept="6" trace="getResultsText#(Ljetbrains/mps/ide/findusages/view/treeholder/tree/TextOptions;)Ljava/lang/String;" />
+      <node id="5426495936043638660" at="121,0,125,0" concept="6" trace="getResultsIcon#()Ljavax/swing/Icon;" />
+      <node id="5426495936043638680" at="127,26,131,7" concept="5" />
+      <node id="5426495936043638811" at="67,0,72,0" concept="6" trace="dispose#()V" />
+      <node id="3923570236744203309" at="87,103,92,80" concept="2" />
+      <node id="5426495936043638707" at="134,0,139,0" concept="6" trace="getCategoryIcon#(Ljava/lang/String;)Ljavax/swing/Icon;" />
+      <node id="5426495936043638797" at="58,0,64,0" concept="6" trace="mouseClicked#(Ljava/awt/event/MouseEvent;)V" />
+      <node id="5426495936043638792" at="56,36,64,7" concept="2" />
+      <node id="5426495936043638628" at="108,0,117,0" concept="6" trace="getPresentation#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="5426495936043638666" at="125,0,134,0" concept="6" trace="getCategoryText#(Ljetbrains/mps/ide/findusages/view/treeholder/tree/TextOptions;Ljava/lang/String;Z)Ljava/lang/String;" />
+      <node id="5426495936043638759" at="51,0,66,0" concept="1" trace="TodoViewer#(Ljetbrains/mps/project/Project;Ljetbrains/mps/ide/tools/todo/TodoViewer_Tool;)V" />
+      <node id="5426495936043638838" at="81,0,105,0" concept="6" trace="refresh#()V" />
+      <scope id="5426495936043638627" at="106,34,106,34" />
+      <scope id="5426495936043638819" at="68,31,69,29" />
+      <scope id="5426495936043638827" at="73,37,74,23" />
+      <scope id="5426495936043638835" at="77,32,78,21" />
+      <scope id="7899446653864390913" at="89,62,90,41" />
+      <scope id="6250351953471781313" at="112,73,113,117" />
+      <scope id="5426495936043638649" at="118,55,119,95" />
+      <scope id="5426495936043638663" at="122,34,123,34" />
+      <scope id="5426495936043638624" at="106,0,108,0" />
+      <scope id="5426495936043638686" at="128,51,130,36">
+        <var name="size" id="5426495936043638688" />
+      </scope>
+      <scope id="5426495936043638712" at="135,50,137,36" />
+      <scope id="5426495936043638802" at="59,46,62,18" />
+      <scope id="5426495936043638814" at="67,25,70,5" />
+      <scope id="5426495936043638824" at="73,0,76,0" />
+      <scope id="5426495936043638832" at="77,0,80,0" />
+      <scope id="7899446653864390906" at="89,0,92,0">
+        <var name="p0" id="7899446653864390910" />
+      </scope>
+      <scope id="5426495936043638644" at="117,0,121,0">
+        <var name="options" id="5426495936043638647" />
+      </scope>
+      <scope id="5426495936043638660" at="121,0,125,0" />
+      <scope id="5426495936043638811" at="67,0,72,0" />
+      <scope id="5426495936043638633" at="110,47,115,149">
+        <var name="n" id="6250351953473660608" />
+      </scope>
+      <scope id="5426495936043638707" at="134,0,139,0">
+        <var name="category" id="5426495936043638710" />
+      </scope>
+      <scope id="5426495936043638797" at="58,0,64,0">
+        <var name="e" id="5426495936043638800" />
+      </scope>
+      <scope id="5426495936043638675" at="126,99,132,36">
+        <var name="counter" id="5426495936043638677" />
+      </scope>
+      <scope id="5426495936043638628" at="108,0,117,0">
+        <var name="node" id="5426495936043638631" />
+      </scope>
+      <scope id="5426495936043638666" at="125,0,134,0">
+        <var name="category" id="5426495936043638671" />
+        <var name="isResultsSection" id="5426495936043638673" />
+        <var name="options" id="5426495936043638669" />
+      </scope>
+      <scope id="5426495936043638766" at="51,66,64,7">
+        <var name="label" id="5426495936043638782" />
+      </scope>
+      <scope id="5426495936043638759" at="51,0,66,0">
+        <var name="project" id="5426495936043638762" />
+        <var name="tool" id="5426495936043638764" />
+      </scope>
+      <scope id="5426495936043638841" at="81,26,103,34">
+        <var name="actionEvent" id="8803113920831971107" />
+        <var name="dataContext" id="8803113920831926584" />
+        <var name="presentation" id="8803113920831950208" />
+        <var name="project" id="5426495936043638858" />
+        <var name="scope" id="2588796496434741580" />
+        <var name="searchTodoAction" id="3923570236744349129" />
+        <var name="viewOptions" id="5426495936043638848" />
+      </scope>
+      <scope id="5426495936043638838" at="81,0,105,0" />
+      <unit id="5426495936043638617" at="146,0,149,0" name="jetbrains.mps.ide.tools.todo.TodoViewer$PROPS" />
+      <unit id="7899446653864390904" at="88,94,92,5" name="jetbrains.mps.ide.tools.todo.TodoViewer$2" />
+      <unit id="5426495936043638617" at="141,0,145,0" name="jetbrains.mps.ide.tools.todo.TodoViewer$CONCEPTS" />
+      <unit id="5426495936043638796" at="57,25,64,5" name="jetbrains.mps.ide.tools.todo.TodoViewer$1" />
+      <unit id="5426495936043638620" at="105,0,140,0" name="jetbrains.mps.ide.tools.todo.TodoViewer$MyNodeRepresentator" />
+      <unit id="5426495936043638617" at="45,0,150,0" name="jetbrains.mps.ide.tools.todo.TodoViewer" />
+    </file>
+  </root>
+  <root nodeRef="r:a807e16c-6905-4da7-b0d7-e84d28559259(jetbrains.mps.ide.tools.todo)/5916754392152578755">
+    <file name="TodoFinder.java">
+      <node id="1937421445113933435" at="27,34,28,20" concept="8" />
+      <node id="3923570236742540169" at="32,73,33,73" concept="7" />
+      <node id="5916754392152578770" at="33,73,34,135" concept="7" />
+      <node id="5916754392152578783" at="34,135,35,62" concept="7" />
+      <node id="5916754392152578806" at="37,88,38,84" concept="2" />
+      <node id="5927578063296257530" at="40,5,41,0" concept="10" />
+      <node id="5927578063296262925" at="41,0,42,176" concept="7" />
+      <node id="281208147575752214" at="44,98,45,84" concept="2" />
+      <node id="5916754392152578826" at="47,5,48,19" concept="8" />
+      <node id="5916754392152578755" at="52,0,53,0" concept="11" trace="TextCommentPart$LX" />
+      <node id="5916754392152578755" at="53,0,54,0" concept="11" trace="IGenericComment$bD" />
+      <node id="5916754392152578757" at="24,0,26,0" concept="1" trace="TodoFinder#()V" />
+      <node id="5916754392152578804" at="36,97,39,7" concept="5" />
+      <node id="281208147575752209" at="43,89,46,7" concept="5" />
+      <node id="1937421445113931086" at="26,0,30,0" concept="6" trace="getDescription#()Ljava/lang/String;" />
+      <node id="5916754392152578790" at="35,62,40,5" concept="4" />
+      <node id="281208147575752201" at="42,176,47,5" concept="4" />
+      <node id="5916754392152578762" at="30,0,50,0" concept="6" trace="find#(Ljetbrains/mps/ide/findusages/model/SearchQuery;Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)Ljetbrains/mps/ide/findusages/model/SearchResults;" />
+      <scope id="5916754392152578760" at="24,23,24,23" />
+      <scope id="1937421445113931097" at="27,34,28,20" />
+      <scope id="5916754392152578805" at="37,88,38,84" />
+      <scope id="281208147575752213" at="44,98,45,84" />
+      <scope id="5916754392152578757" at="24,0,26,0" />
+      <scope id="5916754392152578791" at="36,97,39,7" />
+      <scope id="281208147575752208" at="43,89,46,7" />
+      <scope id="1937421445113931086" at="26,0,30,0" />
+      <scope id="5916754392152578790" at="35,62,40,5">
+        <var name="node" id="5916754392152578824" />
+      </scope>
+      <scope id="281208147575752201" at="42,176,47,5">
+        <var name="node" id="281208147575752202" />
+      </scope>
+      <scope id="5916754392152578769" at="32,73,48,19">
+        <var name="comments" id="5927578063296262926" />
+        <var name="results" id="5916754392152578784" />
+        <var name="s" id="3923570236742540170" />
+        <var name="textCommentParts" id="5916754392152578771" />
+      </scope>
+      <scope id="5916754392152578762" at="30,0,50,0">
+        <var name="monitor" id="5916754392152578767" />
+        <var name="query" id="5916754392152578765" />
+      </scope>
+      <unit id="5916754392152578755" at="51,0,55,0" name="jetbrains.mps.ide.tools.todo.TodoFinder$CONCEPTS" />
+      <unit id="5916754392152578755" at="23,0,56,0" name="jetbrains.mps.ide.tools.todo.TodoFinder" />
+    </file>
+  </root>
+</debug-info>
+
