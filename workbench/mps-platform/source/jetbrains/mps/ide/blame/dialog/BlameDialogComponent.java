@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.ide.blame.dialog;
 
+import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.components.PersistentStateComponent;
@@ -51,6 +52,20 @@ public class BlameDialogComponent implements ApplicationComponent, PersistentSta
 
   @Override
   public void disposeComponent() {
+  }
+
+  private void setDefaultAction() {
+    final String LAST_OK_ACTION = "IdeErrorsDialog.LAST_OK_ACTION";
+    final String DEFAULT_ACTION_NAME = "DEFAULT";
+    String lastActionName = PropertiesComponent.getInstance().getValue(LAST_OK_ACTION);
+    if (lastActionName == null) {
+      PropertiesComponent.getInstance().setValue(LAST_OK_ACTION, DEFAULT_ACTION_NAME);
+    }
+  }
+
+  @Override
+  public void initializeComponent() {
+    setDefaultAction();
   }
 
   @Override
