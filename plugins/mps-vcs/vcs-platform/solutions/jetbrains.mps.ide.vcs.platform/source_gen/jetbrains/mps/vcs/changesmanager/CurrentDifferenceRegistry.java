@@ -215,6 +215,7 @@ public class CurrentDifferenceRegistry {
     @Override
     protected void stopListening(SModel model) {
       model.removeModelListener(this);
+      disposeModelChangesManager(model.getReference());
     }
 
 
@@ -226,11 +227,6 @@ public class CurrentDifferenceRegistry {
       updateModelIfTracked(model.getReference(), true);
     }
 
-    @Override
-    public void beforeModelRemoved(SModule module, SModel model) {
-      disposeModelChangesManager(model.getReference());
-      super.beforeModelRemoved(module, model);
-    }
   }
 
   private static class MyEventsCollector extends ModelsEventsCollector {
