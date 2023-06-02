@@ -1262,6 +1262,31 @@
         <ref role="3uigEE" node="6rx4kZDk5A9" resolve="EnvironmentConfig" />
       </node>
     </node>
+    <node concept="2tJIrI" id="5jpAAQ6WDgQ" role="jymVt" />
+    <node concept="3clFb_" id="5jpAAQ6WBiG" role="jymVt">
+      <property role="1EzhhJ" value="false" />
+      <property role="TrG5h" value="withIDEPlugin" />
+      <property role="od$2w" value="false" />
+      <property role="DiZV1" value="false" />
+      <property role="2aFKle" value="false" />
+      <node concept="3clFbS" id="5jpAAQ6WBiH" role="3clF47">
+        <node concept="3cpWs6" id="5jpAAQ6WBiI" role="3cqZAp">
+          <node concept="1rXfSq" id="5jpAAQ6WBiJ" role="3cqZAk">
+            <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
+            <node concept="Xl_RD" id="5jpAAQ6WBiK" role="37wK5m">
+              <property role="Xl_RC" value="mps-ide" />
+            </node>
+            <node concept="Xl_RD" id="5jpAAQ6WBiL" role="37wK5m">
+              <property role="Xl_RC" value="jetbrains.mps.ide" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="5jpAAQ6WBiM" role="1B3o_S" />
+      <node concept="3uibUv" id="5jpAAQ6WBiN" role="3clF45">
+        <ref role="3uigEE" node="6rx4kZDk5A9" resolve="EnvironmentConfig" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="2btCvgzFLl1" role="jymVt" />
     <node concept="3clFb_" id="2btCvgzFJ_H" role="jymVt">
       <property role="1EzhhJ" value="false" />
@@ -1302,8 +1327,13 @@
       <node concept="3clFbS" id="2btCvgzFoBr" role="3clF47">
         <node concept="3cpWs6" id="2btCvgzFG60" role="3cqZAp">
           <node concept="2OqwBi" id="2btCvgzFG61" role="3cqZAk">
-            <node concept="1rXfSq" id="2btCvgzFG62" role="2Oq$k0">
-              <ref role="37wK5l" node="6BLo1MgrFYe" resolve="withCorePlugin" />
+            <node concept="2OqwBi" id="5jpAAQ6WKFQ" role="2Oq$k0">
+              <node concept="1rXfSq" id="2btCvgzFG62" role="2Oq$k0">
+                <ref role="37wK5l" node="6BLo1MgrFYe" resolve="withCorePlugin" />
+              </node>
+              <node concept="liA8E" id="5jpAAQ6WMn_" role="2OqNvi">
+                <ref role="37wK5l" node="5jpAAQ6WBiG" resolve="withIDEPlugin" />
+              </node>
             </node>
             <node concept="liA8E" id="2btCvgzFG63" role="2OqNvi">
               <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />

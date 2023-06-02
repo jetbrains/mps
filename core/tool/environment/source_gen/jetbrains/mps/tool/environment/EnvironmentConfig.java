@@ -122,12 +122,16 @@ public class EnvironmentConfig {
     return addDistributedPlugin("mps-core", "jetbrains.mps.core");
   }
 
+  public EnvironmentConfig withIDEPlugin() {
+    return addDistributedPlugin("mps-ide", "jetbrains.mps.ide");
+  }
+
   public EnvironmentConfig withMakePlugin() {
     return withCorePlugin().addDistributedPlugin("mps-make", "jetbrains.mps.ide.make");
   }
 
   public EnvironmentConfig withTestingPlugin() {
-    return withCorePlugin().addDistributedPlugin("mps-testing", "jetbrains.mps.testing");
+    return withCorePlugin().withIDEPlugin().addDistributedPlugin("mps-testing", "jetbrains.mps.testing");
   }
 
   public EnvironmentConfig withGit4IdeaPlugin() {
