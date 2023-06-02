@@ -584,7 +584,7 @@
       <sysproperty key="idea.home.path" value="${ideaPath}"/>
       <sysproperty key="java.system.class.loader" value="com.intellij.util.lang.PathClassLoader"/>
       <sysproperty key="idea.load.plugins.id"
-                   value="jetbrains.mps.core,jetbrains.mps.testing,jetbrains.mps.lang.editor.tests,com.intellij.java"/>
+                   value="jetbrains.mps.core,jetbrains.mps.ide,jetbrains.mps.testing,jetbrains.mps.lang.editor.tests,com.intellij.java"/>
       <sysproperty key="idea.launcher.bin.path" value="${ideaPath}/bin"/>
       <sysproperty key="file.encoding" value="UTF-8"/>
       <!-- TODO: remove property after investigation and fix MPS-25217 -->
