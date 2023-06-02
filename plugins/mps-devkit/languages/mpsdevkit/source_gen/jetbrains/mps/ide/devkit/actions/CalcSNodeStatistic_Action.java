@@ -33,6 +33,7 @@ public class CalcSNodeStatistic_Action extends BaseAction {
     super("Calc properties/refs/children statistic for SNodes", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

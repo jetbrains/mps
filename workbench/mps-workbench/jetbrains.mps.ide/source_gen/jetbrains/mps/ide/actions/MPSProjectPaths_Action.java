@@ -21,6 +21,7 @@ public class MPSProjectPaths_Action extends BaseAction {
     super("Project Modules", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

@@ -22,6 +22,7 @@ public class CellProperties_Action extends BaseAction {
     super("Cell Properties", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

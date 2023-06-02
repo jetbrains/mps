@@ -22,6 +22,7 @@ public class ExpandNode_Action extends BaseAction {
     super("Expand All", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

@@ -38,6 +38,7 @@ public class GoToConceptDescendants_Action extends BaseAction {
     super("Concept Implementation(s)", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

@@ -4,7 +4,6 @@ package jetbrains.mps.ide.editor.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.workbench.action.BaseAction;
-import com.intellij.openapi.actionSystem.UpdateInBackground;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
@@ -23,13 +22,14 @@ import jetbrains.mps.nodeEditor.EditorComponent;
 import java.awt.Point;
 
 @GeneratedClass(node = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)/3207605520775490121", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
-public class ShowGenerationActions_Action extends BaseAction implements UpdateInBackground {
+public class ShowGenerationActions_Action extends BaseAction {
   private static final Icon ICON = null;
 
   public ShowGenerationActions_Action() {
     super("Insert...", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

@@ -23,6 +23,7 @@ public class FindTextInProject_Action extends BaseAction {
     super("Find Text in Project", "Full-text search in property values", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

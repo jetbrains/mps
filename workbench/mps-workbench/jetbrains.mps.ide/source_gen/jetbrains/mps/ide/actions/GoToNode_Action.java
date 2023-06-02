@@ -22,6 +22,7 @@ public class GoToNode_Action extends BaseAction {
     super("Go to Source Node", "go to source node", ICON);
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

@@ -56,6 +56,7 @@ public class FindUnusedAndDeprecatedConcepts_Action extends BaseAction {
     super("Find unused and deprecated concepts", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

@@ -29,6 +29,7 @@ public class MoveFileOrDirectory_Action extends BaseAction {
     super("Move...", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.NONE);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

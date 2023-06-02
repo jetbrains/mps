@@ -48,6 +48,7 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
     super("Calc Classifiers in Roots Statistic", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

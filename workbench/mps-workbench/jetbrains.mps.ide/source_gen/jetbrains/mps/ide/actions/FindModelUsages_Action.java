@@ -28,6 +28,7 @@ public class FindModelUsages_Action extends BaseAction {
     super("Find Usages", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

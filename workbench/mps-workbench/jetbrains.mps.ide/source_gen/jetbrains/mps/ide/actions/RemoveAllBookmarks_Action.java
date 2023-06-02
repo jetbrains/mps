@@ -22,6 +22,7 @@ public class RemoveAllBookmarks_Action extends BaseAction {
     super("Remove All Bookmarks", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

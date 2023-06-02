@@ -28,6 +28,7 @@ public class ShowNodeInfo_Action extends BaseAction {
     super("Show Node Info", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

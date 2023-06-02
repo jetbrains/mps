@@ -29,6 +29,7 @@ public class ResolveNonconflictingChanges_Action extends BaseAction {
     super("Try to resolve non-conflicting changes in MPS models", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

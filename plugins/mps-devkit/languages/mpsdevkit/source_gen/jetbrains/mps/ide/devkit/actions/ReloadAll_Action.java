@@ -25,6 +25,7 @@ public class ReloadAll_Action extends BaseAction {
     super("Reload All Classes", "Reload all MPS classes", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

@@ -36,6 +36,7 @@ public class CreateReferenceConcept_Action extends BaseAction {
     super("Create Reference Concept", "Adds a new concept with single reference to the current", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

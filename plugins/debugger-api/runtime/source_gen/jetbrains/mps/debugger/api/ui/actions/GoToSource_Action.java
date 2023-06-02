@@ -22,6 +22,7 @@ public class GoToSource_Action extends BaseAction {
     super("Go To Source", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

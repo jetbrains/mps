@@ -33,6 +33,7 @@ public class ShowNodeType_Action extends BaseAction {
     super("Show Type", "Show node's type", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

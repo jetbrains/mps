@@ -27,6 +27,7 @@ public class DoNotSuppressErrors_Action extends BaseAction {
     super("Do not Supress Errors", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

@@ -24,6 +24,7 @@ public class AddModelImport_Action extends BaseAction {
     super("Add Model Import", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

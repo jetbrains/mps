@@ -27,6 +27,7 @@ public class BackgroundableProgressAction_Action extends BaseAction {
     super("BackgroundableProgressAction", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

@@ -34,6 +34,7 @@ public class FindDeprecatedCode_Action extends BaseAction {
     super("Find Deprecated Code in Project", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

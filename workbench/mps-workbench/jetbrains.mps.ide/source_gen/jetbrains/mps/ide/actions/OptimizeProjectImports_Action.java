@@ -33,6 +33,7 @@ public class OptimizeProjectImports_Action extends BaseAction {
     super("Optimize Imports", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

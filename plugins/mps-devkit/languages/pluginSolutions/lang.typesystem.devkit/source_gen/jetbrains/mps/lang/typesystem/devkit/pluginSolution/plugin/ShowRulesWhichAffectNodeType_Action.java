@@ -30,6 +30,7 @@ public class ShowRulesWhichAffectNodeType_Action extends BaseAction {
     super("Show Rules Which Affect Node's Type", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

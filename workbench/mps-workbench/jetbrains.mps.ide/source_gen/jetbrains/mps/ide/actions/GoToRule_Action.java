@@ -25,6 +25,7 @@ public class GoToRule_Action extends BaseAction {
     super("Go to Rule", "go to rule action", ICON);
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

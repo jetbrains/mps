@@ -21,6 +21,7 @@ public class RemoveTransientModels_Action extends BaseAction {
     super("Remove Transient Models", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

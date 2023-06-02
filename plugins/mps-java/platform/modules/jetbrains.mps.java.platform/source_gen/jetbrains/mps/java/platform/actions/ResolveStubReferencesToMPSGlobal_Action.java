@@ -32,6 +32,7 @@ public class ResolveStubReferencesToMPSGlobal_Action extends BaseAction {
     super("Resolve Stub References to MPS Code in the Whole Project", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

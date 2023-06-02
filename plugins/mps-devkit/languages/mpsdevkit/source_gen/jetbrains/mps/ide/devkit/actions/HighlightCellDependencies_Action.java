@@ -27,6 +27,7 @@ public class HighlightCellDependencies_Action extends BaseAction {
     super("Highlighted Cell's Dependent Nodes", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

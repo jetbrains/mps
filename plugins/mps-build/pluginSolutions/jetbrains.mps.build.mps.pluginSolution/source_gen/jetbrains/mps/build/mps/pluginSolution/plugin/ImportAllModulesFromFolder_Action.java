@@ -41,6 +41,7 @@ public class ImportAllModulesFromFolder_Action extends BaseAction {
     super("Import All Modules from Folder", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

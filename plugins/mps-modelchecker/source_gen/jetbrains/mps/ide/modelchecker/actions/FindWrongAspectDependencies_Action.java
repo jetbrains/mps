@@ -31,6 +31,7 @@ public class FindWrongAspectDependencies_Action extends BaseAction {
     super("Find Wrong Aspect Dependencies", "Finds wrong references between core, editor and workbench", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

@@ -23,6 +23,7 @@ public class CompileProject_Action extends BaseAction {
     super("Compile Java Files", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

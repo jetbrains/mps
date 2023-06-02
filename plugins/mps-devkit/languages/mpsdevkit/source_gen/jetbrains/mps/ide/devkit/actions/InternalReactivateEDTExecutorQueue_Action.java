@@ -21,6 +21,7 @@ public class InternalReactivateEDTExecutorQueue_Action extends BaseAction {
     super("Reactivate EDT Queue", "Reactivate MPS internal EDT Queue", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

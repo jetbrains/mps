@@ -32,6 +32,7 @@ public class ModifyInstancesByCondition_Action extends BaseAction {
     super("Modify Instances by Condition", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

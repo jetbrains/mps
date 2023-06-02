@@ -22,6 +22,7 @@ public class ShowBookmarksDialog_Action extends BaseAction {
     super("Show Bookmarks Dialog", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

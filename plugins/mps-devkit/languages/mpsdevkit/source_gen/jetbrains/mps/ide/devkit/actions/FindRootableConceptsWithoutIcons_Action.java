@@ -39,6 +39,7 @@ public class FindRootableConceptsWithoutIcons_Action extends BaseAction {
     super("Find Rootable Concepts without Icons", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.NONE);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

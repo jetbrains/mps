@@ -26,6 +26,7 @@ public class CopyNodeReference_Action extends BaseAction {
     super("Copy Reference", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

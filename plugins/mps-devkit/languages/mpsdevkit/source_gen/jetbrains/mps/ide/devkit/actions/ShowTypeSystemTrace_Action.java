@@ -23,6 +23,7 @@ public class ShowTypeSystemTrace_Action extends BaseAction {
     super("Show Typesystem Trace", "Show typesystem trace", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

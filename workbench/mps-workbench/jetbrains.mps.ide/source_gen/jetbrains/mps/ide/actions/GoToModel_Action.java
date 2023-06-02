@@ -32,6 +32,7 @@ public class GoToModel_Action extends BaseAction {
     super("Go to Model", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

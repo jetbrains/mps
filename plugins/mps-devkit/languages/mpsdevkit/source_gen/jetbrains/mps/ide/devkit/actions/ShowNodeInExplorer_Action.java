@@ -19,6 +19,7 @@ public class ShowNodeInExplorer_Action extends BaseAction {
     super("Show Node in Explorer", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

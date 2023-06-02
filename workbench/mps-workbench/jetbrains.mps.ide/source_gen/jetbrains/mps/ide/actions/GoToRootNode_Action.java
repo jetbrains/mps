@@ -36,6 +36,7 @@ public class GoToRootNode_Action extends BaseAction {
     this.savedText = savedText_par;
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

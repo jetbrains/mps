@@ -32,6 +32,7 @@ public class HighlightInstances_Action extends BaseAction {
     super("Highlight Instances", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setActionAccess(ActionAccess.READ_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

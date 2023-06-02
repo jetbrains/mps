@@ -21,6 +21,7 @@ public class RunMigrationAssistant_Action extends BaseAction {
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
     this.setMnemonic("u".charAt(0));
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

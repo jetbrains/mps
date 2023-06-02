@@ -41,6 +41,7 @@ public class FindUsagesOfDeprecated_Action extends BaseAction {
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
     this.setMnemonic("d".charAt(0));
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

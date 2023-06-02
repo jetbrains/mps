@@ -24,6 +24,7 @@ public class ViewBreakpoints_Action extends BaseAction {
     super("View Breakpoints", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

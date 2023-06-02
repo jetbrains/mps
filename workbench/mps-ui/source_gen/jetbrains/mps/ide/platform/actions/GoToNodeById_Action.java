@@ -35,6 +35,7 @@ public class GoToNodeById_Action extends BaseAction {
     super("Go to Node by ID", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

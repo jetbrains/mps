@@ -24,6 +24,7 @@ public class BuildAllGenerators_Action extends BaseAction {
     super("Rebuild All Generators", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

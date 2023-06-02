@@ -35,6 +35,7 @@ public class AddAccessoryModel_Action extends BaseAction {
     super("Add Accessory Model", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

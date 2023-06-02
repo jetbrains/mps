@@ -38,6 +38,7 @@ public class RunMigrationScripts_Action extends BaseAction {
     this.global = global_par;
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

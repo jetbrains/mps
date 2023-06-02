@@ -40,6 +40,7 @@ public class TestMergeAction_Action extends BaseAction {
     super("Merge test data from ZIP", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

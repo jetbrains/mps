@@ -26,6 +26,7 @@ public class ShowDiffFromChanges_Action extends BaseAction {
     super("Show Difference", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

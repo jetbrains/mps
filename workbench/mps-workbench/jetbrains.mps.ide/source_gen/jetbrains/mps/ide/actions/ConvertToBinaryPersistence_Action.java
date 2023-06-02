@@ -4,7 +4,6 @@ package jetbrains.mps.ide.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.workbench.action.BaseAction;
-import com.intellij.openapi.actionSystem.UpdateInBackground;
 import jetbrains.mps.logging.Logger;
 import javax.swing.Icon;
 import jetbrains.mps.workbench.action.ActionAccess;
@@ -39,7 +38,7 @@ import jetbrains.mps.persistence.ModelCannotBeCreatedException;
 import org.jetbrains.mps.openapi.persistence.ModelSaveException;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/6981599660810253824", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
-public class ConvertToBinaryPersistence_Action extends BaseAction implements UpdateInBackground {
+public class ConvertToBinaryPersistence_Action extends BaseAction {
   private static final Logger LOG = Logger.getLogger(ConvertToBinaryPersistence_Action.class);
   private static final Icon ICON = null;
 
@@ -47,6 +46,7 @@ public class ConvertToBinaryPersistence_Action extends BaseAction implements Upd
     super("Convert to binary format", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

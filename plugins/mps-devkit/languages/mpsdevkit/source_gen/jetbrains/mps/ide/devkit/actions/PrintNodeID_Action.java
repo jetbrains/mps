@@ -19,6 +19,7 @@ public class PrintNodeID_Action extends BaseAction {
     super("Copy Node ID", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

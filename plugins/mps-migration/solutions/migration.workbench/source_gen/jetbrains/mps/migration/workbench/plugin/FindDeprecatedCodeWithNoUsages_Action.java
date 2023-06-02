@@ -34,6 +34,7 @@ public class FindDeprecatedCodeWithNoUsages_Action extends BaseAction {
     super("Find Deprecated Code with No Usages", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

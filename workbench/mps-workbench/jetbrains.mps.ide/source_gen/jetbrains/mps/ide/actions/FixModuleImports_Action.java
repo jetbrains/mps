@@ -20,6 +20,7 @@ public class FixModuleImports_Action extends BaseAction {
     super("Fix Module Imports", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

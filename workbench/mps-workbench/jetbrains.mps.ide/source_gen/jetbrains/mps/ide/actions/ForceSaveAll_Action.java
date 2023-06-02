@@ -35,6 +35,7 @@ public class ForceSaveAll_Action extends BaseAction {
     super("Force Save All", "Updates all models' and modules' files", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.NONE);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

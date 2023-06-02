@@ -77,40 +77,41 @@
       <node id="5426495936043631331" at="19,34,20,31" concept="12" />
       <node id="5426495936043631331" at="20,31,21,34" concept="2" />
       <node id="5426495936043631331" at="21,34,22,52" concept="2" />
-      <node id="5426495936043631331" at="25,32,26,16" concept="8" />
-      <node id="5426495936043631331" at="30,53,31,19" concept="8" />
-      <node id="5426495936043631332" at="33,5,34,56" concept="7" />
-      <node id="5426495936043631332" at="34,56,35,53" concept="2" />
-      <node id="5426495936043631333" at="36,22,37,21" concept="8" />
-      <node id="5426495936043631331" at="39,5,40,16" concept="8" />
-      <node id="5426495936043631336" at="43,96,44,152" concept="2" />
-      <node id="5426495936043631331" at="29,95,32,5" concept="5" />
-      <node id="5426495936043631333" at="35,53,38,7" concept="5" />
-      <node id="5426495936043631331" at="24,0,28,0" concept="6" trace="isDumbAware#()Z" />
-      <node id="5426495936043631331" at="42,0,46,0" concept="6" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="5426495936043631331" at="19,0,24,0" concept="1" trace="ShowTodoViewer_Action#()V" />
-      <node id="5426495936043631332" at="32,5,39,5" concept="0" />
-      <node id="5426495936043631331" at="28,0,42,0" concept="6" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <scope id="5426495936043631331" at="25,32,26,16" />
-      <scope id="5426495936043631331" at="30,53,31,19" />
-      <scope id="5426495936043631333" at="36,22,37,21" />
-      <scope id="5426495936043631331" at="43,96,44,152" />
-      <scope id="5426495936043631331" at="19,34,22,52" />
-      <scope id="5426495936043631331" at="24,0,28,0" />
-      <scope id="5426495936043631331" at="42,0,46,0">
+      <node id="5426495936043631331" at="22,52,23,29" concept="2" />
+      <node id="5426495936043631331" at="26,32,27,16" concept="8" />
+      <node id="5426495936043631331" at="31,53,32,19" concept="8" />
+      <node id="5426495936043631332" at="34,5,35,56" concept="7" />
+      <node id="5426495936043631332" at="35,56,36,53" concept="2" />
+      <node id="5426495936043631333" at="37,22,38,21" concept="8" />
+      <node id="5426495936043631331" at="40,5,41,16" concept="8" />
+      <node id="5426495936043631336" at="44,96,45,152" concept="2" />
+      <node id="5426495936043631331" at="30,95,33,5" concept="5" />
+      <node id="5426495936043631333" at="36,53,39,7" concept="5" />
+      <node id="5426495936043631331" at="25,0,29,0" concept="6" trace="isDumbAware#()Z" />
+      <node id="5426495936043631331" at="43,0,47,0" concept="6" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="5426495936043631331" at="19,0,25,0" concept="1" trace="ShowTodoViewer_Action#()V" />
+      <node id="5426495936043631332" at="33,5,40,5" concept="0" />
+      <node id="5426495936043631331" at="29,0,43,0" concept="6" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
+      <scope id="5426495936043631331" at="26,32,27,16" />
+      <scope id="5426495936043631331" at="31,53,32,19" />
+      <scope id="5426495936043631333" at="37,22,38,21" />
+      <scope id="5426495936043631331" at="44,96,45,152" />
+      <scope id="5426495936043631331" at="19,34,23,29" />
+      <scope id="5426495936043631331" at="25,0,29,0" />
+      <scope id="5426495936043631331" at="43,0,47,0">
         <var name="_params" id="5426495936043631331" />
         <var name="event" id="5426495936043631331" />
       </scope>
-      <scope id="5426495936043631331" at="19,0,24,0" />
-      <scope id="5426495936043631332" at="33,5,38,7">
+      <scope id="5426495936043631332" at="34,5,39,7">
         <var name="p" id="5426495936043631332" />
       </scope>
-      <scope id="5426495936043631331" at="29,95,40,16" />
-      <scope id="5426495936043631331" at="28,0,42,0">
+      <scope id="5426495936043631331" at="19,0,25,0" />
+      <scope id="5426495936043631331" at="30,95,41,16" />
+      <scope id="5426495936043631331" at="29,0,43,0">
         <var name="_params" id="5426495936043631331" />
         <var name="event" id="5426495936043631331" />
       </scope>
-      <unit id="5426495936043631331" at="16,0,47,0" name="jetbrains.mps.ide.tools.todo.ShowTodoViewer_Action" />
+      <unit id="5426495936043631331" at="16,0,48,0" name="jetbrains.mps.ide.tools.todo.ShowTodoViewer_Action" />
     </file>
     <file name="Todo_ApplicationPlugin.java">
       <node id="5426495936043631331" at="22,29,23,43" concept="2" />

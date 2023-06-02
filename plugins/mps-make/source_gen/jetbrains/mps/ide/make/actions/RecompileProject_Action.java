@@ -23,6 +23,7 @@ public class RecompileProject_Action extends BaseAction {
     super("Recompile Java Files", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
