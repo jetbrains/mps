@@ -37,8 +37,8 @@ public class PlatformCheckbox_CLICK_Toggles_Test extends BaseTransformationTest 
     public void testMethodImpl() throws Exception {
       initEditorComponent("7013563450911367694", "7013563450911367697");
       {
-        int x_y07yvj_a0 = 0;
-        int y_y07yvj_a0 = 0;
+        int x_y07yvj_a0 = 5;
+        int y_y07yvj_a0 = 5;
         Component eventTargetComponent_y07yvj_a0 = processMouseEvent(x_y07yvj_a0, y_y07yvj_a0, MouseEvent.MOUSE_PRESSED);
         processSecondaryMouseEvent(eventTargetComponent_y07yvj_a0, x_y07yvj_a0, y_y07yvj_a0, MouseEvent.MOUSE_RELEASED);
         processSecondaryMouseEvent(eventTargetComponent_y07yvj_a0, x_y07yvj_a0, y_y07yvj_a0, MouseEvent.MOUSE_CLICKED);

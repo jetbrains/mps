@@ -185,8 +185,8 @@
     <property role="3YCmrE" value="Clicking on a checkbox toggles it" />
     <node concept="3clFbS" id="65lbGMleZar" role="LjaKd">
       <node concept="37Q87h" id="65lbGMleZas" role="3cqZAp">
-        <property role="37OD1f" value="0" />
-        <property role="37OD10" value="0" />
+        <property role="37OD1f" value="5" />
+        <property role="37OD10" value="5" />
         <node concept="3clFbS" id="65lbGMleZat" role="9aQI4" />
       </node>
     </node>
