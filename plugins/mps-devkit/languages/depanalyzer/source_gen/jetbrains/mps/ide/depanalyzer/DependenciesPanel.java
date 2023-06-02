@@ -6,7 +6,6 @@ import javax.swing.JPanel;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.tools.BaseTool;
-import jetbrains.mps.ide.depanalyzer.actions.AnalyzeDependencies_Tool;
 import java.awt.BorderLayout;
 import com.intellij.ui.components.JBScrollPane;
 import com.intellij.openapi.ui.Splitter;
@@ -42,7 +41,7 @@ public class DependenciesPanel extends JPanel {
   private BaseTool myTool;
   private ReferencesFinder myReferencesFinder = null;
   private boolean myIsMeta;
-  public DependenciesPanel(AnalyzeDependencies_Tool tool, MPSProject project) {
+  public DependenciesPanel(BaseTool tool, MPSProject project) {
     super(new BorderLayout());
     myTool = tool;
     myIsMeta = false;
