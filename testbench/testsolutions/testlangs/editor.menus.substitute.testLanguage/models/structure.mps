@@ -891,6 +891,9 @@
     <property role="3GE5qa" value="exception" />
     <property role="TrG5h" value="TestSubstituteExceptionActionTypeChild" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="3ncFFKzo2s2" role="PzmwI">
+      <ref role="PrY4T" to="tpck:hYa1RjM" resolve="IType" />
+    </node>
   </node>
   <node concept="1TIwiD" id="6d5vlMPwAvu">
     <property role="EcuMT" value="7153261420283586526" />
