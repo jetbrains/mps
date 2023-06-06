@@ -16,6 +16,7 @@
 package jetbrains.mps.typesystem.inference;
 
 import gnu.trove.THashSet;
+import gnu.trove.TObjectIntHashMap;
 import jetbrains.mps.errors.IRuleConflictWarningProducer;
 import jetbrains.mps.lang.typesystem.runtime.CheckingRuleSet;
 import jetbrains.mps.lang.typesystem.runtime.ComparisonRule_Runtime;
@@ -36,10 +37,14 @@ import jetbrains.mps.util.Pair;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Deque;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RulesManager {
 
@@ -80,6 +85,13 @@ public class RulesManager {
         return;
       }
 
+      List<LanguageRuntime> sortedLanguages = sortedLanguageRuntimes(Stream.concat(myLoadedLanguages.stream(), myLanguagesToLoad.stream()));
+      TObjectIntHashMap<String> languageRanks = new TObjectIntHashMap<>(sortedLanguages.size());
+      int rank = 0;
+      for (LanguageRuntime lang : sortedLanguages) {
+        languageRanks.put(lang.getNamespace(), rank++);
+      }
+
       for (LanguageRuntime language : myLanguagesToLoad) {
         assert !myLoadedLanguages.contains(language);
         myLoadedLanguages.add(language);
@@ -96,7 +108,7 @@ public class RulesManager {
           continue;
         }
         try {
-          myInferenceRules.addRuleSetItem(typesystem.getInferenceRules());
+          myInferenceRules.addRuleSetItem(typesystem.getInferenceRules(), languageRanks::get);
           mySubtypingRules.addRuleSetItem(typesystem.getSubtypingRules());
           mySubstituteTypeRules.addRuleSetItem(typesystem.getSubstituteTypeRules());
           Set<ComparisonRule_Runtime> comparisonRule_runtimes = typesystem.getComparisonRules();
@@ -114,6 +126,54 @@ public class RulesManager {
       myNeedsLoading = false;
     }
   }
+
+  /**
+   * Returns the list of all languages topologically sorted from most specific to most abstract
+   */
+  private List<LanguageRuntime> sortedLanguageRuntimes(Stream<LanguageRuntime> allLanguages) {
+    // depth-first search using "extends" relation
+    LinkedList<LanguageRuntime> sorted = new LinkedList<>();
+    Deque<LanguageRuntime> stack = new LinkedList<>();
+    Set<LanguageRuntime> finished = new HashSet<>();
+    Set<LanguageRuntime> visited = new HashSet<>();
+
+    List<LanguageRuntime> languageRuntimes = allLanguages
+                                                 .sorted(Comparator.comparingInt(System::identityHashCode))
+                                                 .collect(Collectors.toList());
+    for (LanguageRuntime next : languageRuntimes) {
+      if (!finished.contains(next)) {
+        stack.push(next);
+        while (!stack.isEmpty()) {
+          LanguageRuntime peek = stack.peek();
+          if (finished.contains(peek)) {
+            stack.pop();
+            continue;
+          }
+          if (visited.contains(peek)) {
+            sorted.addFirst(peek);
+            finished.add(peek);
+            visited.remove(peek);
+            stack.pop();
+            continue;
+          }
+          visited.add(peek);
+
+          List<LanguageRuntime> extended = peek.getExtendedLanguages()
+                                               .stream()
+                                               .sorted(Comparator.comparingInt(System::identityHashCode))
+                                               .collect(Collectors.toList());
+          for (LanguageRuntime ext : extended) {
+            if (!finished.contains(ext) && !visited.contains(ext)) {
+              stack.push(ext);
+            }
+          }
+        }
+      }
+    }
+
+    return sorted;
+  }
+
 
   public void unloadLanguages(Iterable<LanguageRuntime> languages) {
     for (LanguageRuntime language : languages) {

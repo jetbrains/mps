@@ -15,30 +15,33 @@
  */
 package jetbrains.mps.lang.typesystem.runtime;
 
-import gnu.trove.THashSet;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.languageScope.LanguageScope;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.newTypesystem.rules.SingleTermRules;
+import jetbrains.mps.typesystem.inference.NamespaceRank;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.function.BiFunction;
 
 /*
  *  Synchronized.
  */
 public class RuleSet<T extends IApplicableToConcept> {
 
-  private Logger LOG = Logger.getLogger(RuleSet.class);
+  private final Logger LOG = Logger.getLogger(RuleSet.class);
 
   private static final String TYPESYSTEM_SUFFIX = ".typesystem";
-  private final ConcurrentMap<SAbstractConcept, Set<T>> myRules = new ConcurrentHashMap<>();
+  private final ConcurrentMap<SAbstractConcept, List<T>> myRules = new ConcurrentHashMap<>();
 
   private final SingleTermRules<T> mySingleTermRules = new SingleTermRules<T>() {
 
@@ -59,10 +62,10 @@ public class RuleSet<T extends IApplicableToConcept> {
   };
 
 
-  public void addRuleSetItem(Set<T> rules) {
+  public void addRuleSetItem(Set<T> rules, NamespaceRank namespaceRank) {
     for (T rule : rules) {
       try {
-        addRule_internal(rule);
+        addRule_internal(rule, namespaceRank);
       } catch (Throwable ex) {
         LOG.error("Error initializing rule '"+String.valueOf(rule)+"'", ex);
       }
@@ -70,20 +73,34 @@ public class RuleSet<T extends IApplicableToConcept> {
     mySingleTermRules.purgeCache();
   }
 
+  public void addRuleSetItem(Set<T> rules) {
+    addRuleSetItem(rules, NamespaceRank.ZERO);
+  }
+
   @Deprecated
   public void addRule(T rule) {
-    addRule_internal(rule);
+    addRule_internal(rule, NamespaceRank.ZERO);
     mySingleTermRules.purgeCache();
   }
 
-  private void addRule_internal(T rule) {
+  private void addRule_internal(T rule, NamespaceRank namespaceRank) {
     SAbstractConcept concept = rule.getApplicableConcept();
-    Set<T> existingRules = myRules.get(concept);
-    while (existingRules == null) {
-      myRules.putIfAbsent(concept, Collections.synchronizedSet(new THashSet<>(2)));
-      existingRules = myRules.get(concept);
-    }
-    existingRules.add(rule);
+    myRules.compute(concept, updateRules(rule, namespaceRank));
+  }
+
+  private BiFunction<SAbstractConcept, List<T>, List<T>> updateRules(T newRule, NamespaceRank namespaceRank) {
+    return (concept, rules) -> {
+      if (rules == null || !rules.contains(newRule)) {
+        // copy on write pattern
+        ArrayList<T> rulesCopy = rules != null ? new ArrayList<>(rules) : new ArrayList<>(2);
+        rulesCopy.add(newRule);
+        if (rulesCopy.size() > 1 && namespaceRank != NamespaceRank.ZERO) {
+          rulesCopy.sort(Comparator.comparing(this::getNamespace, Comparator.comparingInt(namespaceRank::getRank)));
+        }
+        rules = rulesCopy;
+      }
+      return rules;
+    };
   }
 
   /**
@@ -96,18 +113,14 @@ public class RuleSet<T extends IApplicableToConcept> {
   }
 
   private Iterable<T> getAllApplicableTo(SAbstractConcept concept, LanguageScope scope) {
-    if (!myRules.containsKey(concept)) return Collections.emptyList();
-
-    List<T> result = new ArrayList<>(4);
-    Set<T> rules = myRules.get(concept);
-    synchronized (rules) {
-      for (T rule : rules) {
-        if (scope.containsNamespace(getNamespace(rule))) {
-          result.add(rule);
-        }
-      }
+    List<T> rules = myRules.getOrDefault(concept, Collections.emptyList());
+    if (!rules.isEmpty()) {
+      // operate on a copy
+      ArrayList<T> rulesCopy = new ArrayList<>(rules);
+      rulesCopy.removeIf(r -> !scope.containsNamespace(getNamespace(r)));
+      rules = Collections.unmodifiableList(rulesCopy);
     }
-    return Collections.unmodifiableList(result);
+    return rules;
   }
 
   private String getNamespace(T rule) {
