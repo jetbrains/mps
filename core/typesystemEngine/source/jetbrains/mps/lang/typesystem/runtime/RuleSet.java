@@ -31,13 +31,14 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.function.BiFunction;
 
 /*
  *  Synchronized.
  */
 public class RuleSet<T extends IApplicableToConcept> {
 
-  private Logger LOG = Logger.getLogger(RuleSet.class);
+  private final Logger LOG = Logger.getLogger(RuleSet.class);
 
   private static final String TYPESYSTEM_SUFFIX = ".typesystem";
   private final ConcurrentMap<SAbstractConcept, List<T>> myRules = new ConcurrentHashMap<>();
@@ -84,22 +85,22 @@ public class RuleSet<T extends IApplicableToConcept> {
 
   private void addRule_internal(T rule, NamespaceRank namespaceRank) {
     SAbstractConcept concept = rule.getApplicableConcept();
-    List<T> existingRules = myRules.get(concept);
-    while (existingRules == null) {
-      myRules.putIfAbsent(concept, Collections.synchronizedList(new ArrayList<>(2)));
-      existingRules = myRules.get(concept);
-    }
-    if (!existingRules.contains(rule)) {
-      existingRules.add(rule);
-      if (existingRules.size() > 1 && namespaceRank != NamespaceRank.ZERO) {
-        synchronized (existingRules) {
-          existingRules.sort(Comparator.comparing(Object::getClass,
-                              Comparator.comparing(Class::getPackageName,
-                              Comparator.comparing(s -> s.substring(0, s.length() - ".typesystem".length()),
-                              Comparator.comparingInt(namespaceRank::getRank)))));
+    myRules.compute(concept, updateRules(rule, namespaceRank));
+  }
+  
+  private BiFunction<SAbstractConcept, List<T>, List<T>> updateRules(T newRule, NamespaceRank namespaceRank) {
+    return (concept, rules) -> {
+      if (rules == null || !rules.contains(newRule)) {
+        // copy on write pattern
+        ArrayList<T> rulesCopy = rules != null ? new ArrayList<>(rules) : new ArrayList<>(2);
+        rulesCopy.add(newRule);
+        if (rulesCopy.size() > 1 && namespaceRank != NamespaceRank.ZERO) {
+          rulesCopy.sort(Comparator.comparing(this::getNamespace, Comparator.comparingInt(namespaceRank::getRank)));
         }
+        rules = rulesCopy;
       }
-    }
+      return rules;
+    };
   }
 
   /**
@@ -112,18 +113,14 @@ public class RuleSet<T extends IApplicableToConcept> {
   }
 
   private Iterable<T> getAllApplicableTo(SAbstractConcept concept, LanguageScope scope) {
-    if (!myRules.containsKey(concept)) return Collections.emptyList();
-
-    List<T> result = new ArrayList<>(4);
-    List<T> rules = myRules.get(concept);
-    synchronized (rules) {
-      for (T rule : rules) {
-        if (scope.containsNamespace(getNamespace(rule))) {
-          result.add(rule);
-        }
-      }
+    List<T> rules = myRules.getOrDefault(concept, Collections.emptyList());
+    if (!rules.isEmpty()) {
+      // operate on a copy
+      ArrayList<T> rulesCopy = new ArrayList<>(rules);
+      rulesCopy.removeIf(r -> !scope.containsNamespace(getNamespace(r)));
+      rules = Collections.unmodifiableList(rulesCopy);
     }
-    return Collections.unmodifiableList(result);
+    return rules;
   }
 
   private String getNamespace(T rule) {
