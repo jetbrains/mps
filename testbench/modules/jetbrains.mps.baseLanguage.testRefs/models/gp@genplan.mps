@@ -3,7 +3,7 @@
   <persistence version="9" />
   <attribute name="doNotGenerate" value="true" />
   <languages>
-    <use id="7ab1a6fa-0a11-4b95-9e48-75f363d6cb00" name="jetbrains.mps.lang.generator.plan" version="1" />
+    <use id="7ab1a6fa-0a11-4b95-9e48-75f363d6cb00" name="jetbrains.mps.lang.generator.plan" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
   </languages>
   <imports>
@@ -14,11 +14,14 @@
       <concept id="3705377275350227759" name="jetbrains.mps.lang.generator.plan.structure.IncludePlan" flags="ng" index="NozSJ">
         <reference id="3705377275350227762" name="plan" index="NozSM" />
       </concept>
+      <concept id="1152961914448136207" name="jetbrains.mps.lang.generator.plan.structure.LanguageEntry" flags="ng" index="2Qf6Nf">
+        <child id="1152961914448136208" name="language" index="2Qf6Ng" />
+      </concept>
       <concept id="1820634577908471803" name="jetbrains.mps.lang.generator.plan.structure.Plan" flags="ng" index="2VgMpV">
         <child id="1820634577908471815" name="steps" index="2VgMA7" />
       </concept>
       <concept id="1820634577908471810" name="jetbrains.mps.lang.generator.plan.structure.Transform" flags="ng" index="2VgMA2">
-        <child id="2944629966652439181" name="languages" index="1t_9vn" />
+        <child id="1152961914448142326" name="entries" index="2Qf7GQ" />
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
@@ -36,9 +39,11 @@
   <node concept="2VgMpV" id="1y5ThBEIxV7">
     <property role="TrG5h" value="BL" />
     <node concept="2VgMA2" id="1y5ThBEP2Td" role="2VgMA7">
-      <node concept="2V$Bhx" id="1y5ThBEP2Tj" role="1t_9vn">
-        <property role="2V$B1T" value="b654d0ef-8981-4c92-8304-246f1dfe4618" />
-        <property role="2V$B1Q" value="jetbrains.mps.baseLanguage.testRefs.testLang" />
+      <node concept="2Qf6Nf" id="6pkKjyUzzCq" role="2Qf7GQ">
+        <node concept="2V$Bhx" id="1y5ThBEP2Tj" role="2Qf6Ng">
+          <property role="2V$B1T" value="b654d0ef-8981-4c92-8304-246f1dfe4618" />
+          <property role="2V$B1Q" value="jetbrains.mps.baseLanguage.testRefs.testLang" />
+        </node>
       </node>
     </node>
     <node concept="NozSJ" id="1y5ThBEIxVX" role="2VgMA7">

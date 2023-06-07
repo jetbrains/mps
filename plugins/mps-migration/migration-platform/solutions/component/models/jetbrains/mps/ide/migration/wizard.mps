@@ -788,7 +788,7 @@
               <ref role="3cqZAo" node="59PMlsVObHR" resolve="mainPanel" />
             </node>
             <node concept="37Ijox" id="4Mz2ninEvK5" role="37wK5m">
-              <ref role="37Ijqf" node="301Q3qjkbpQ" resolve="executeToFirstError" />
+              <ref role="37Ijqf" node="301Q3qjkbpQ" resolve="scheduleTaskExecutionInEDT" />
               <node concept="Xjq3P" id="4Mz2ninEtUC" role="wWaWy" />
             </node>
           </node>

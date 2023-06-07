@@ -4,7 +4,7 @@
   <attribute name="doNotGenerate" value="true" />
   <languages>
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
-    <use id="7ab1a6fa-0a11-4b95-9e48-75f363d6cb00" name="jetbrains.mps.lang.generator.plan" version="1" />
+    <use id="7ab1a6fa-0a11-4b95-9e48-75f363d6cb00" name="jetbrains.mps.lang.generator.plan" version="2" />
   </languages>
   <imports>
     <import index="7j7i" ref="r:647e430d-4f1a-4d18-8ace-69f2d9711419(jetbrains.mps.lang.descriptor.aspects@genplan)" />
@@ -30,7 +30,6 @@
       <concept id="1820634577908471810" name="jetbrains.mps.lang.generator.plan.structure.Transform" flags="ng" index="2VgMA2">
         <property id="2209292798354050154" name="individualStepPerGenerator" index="1s431M" />
         <child id="1152961914448142326" name="entries" index="2Qf7GQ" />
-        <child id="2944629966652439181" name="languages" index="1t_9vn" />
       </concept>
       <concept id="2959971211779300533" name="jetbrains.mps.lang.generator.plan.structure.TextDocLine" flags="ng" index="16rNan">
         <property id="2959971211779300563" name="text" index="16rNbL" />
@@ -69,9 +68,11 @@
   <node concept="2VgMpV" id="6yWySl3tjvl">
     <property role="TrG5h" value="LangTypesystemPlan" />
     <node concept="2VgMA2" id="p4S6WR3TYX" role="2VgMA7">
-      <node concept="2V$Bhx" id="p4S6WR3TZ3" role="1t_9vn">
-        <property role="2V$B1T" value="ceab5195-25ea-4f22-9b92-103b95ca8c0c" />
-        <property role="2V$B1Q" value="jetbrains.mps.lang.core" />
+      <node concept="2Qf6Nf" id="6pkKjyUzzBY" role="2Qf7GQ">
+        <node concept="2V$Bhx" id="p4S6WR3TZ3" role="2Qf6Ng">
+          <property role="2V$B1T" value="ceab5195-25ea-4f22-9b92-103b95ca8c0c" />
+          <property role="2V$B1Q" value="jetbrains.mps.lang.core" />
+        </node>
       </node>
     </node>
     <node concept="3uMcMo" id="48M4TcWdc2N" role="2VgMA7">
@@ -95,17 +96,23 @@
       </node>
     </node>
     <node concept="2VgMA2" id="p4S6WRbOUx" role="2VgMA7">
-      <node concept="2V$Bhx" id="p4S6WR8VTH" role="1t_9vn">
-        <property role="2V$B1T" value="7fa12e9c-b949-4976-b4fa-19accbc320b4" />
-        <property role="2V$B1Q" value="jetbrains.mps.lang.dataFlow" />
+      <node concept="2Qf6Nf" id="6pkKjyUzzBZ" role="2Qf7GQ">
+        <node concept="2V$Bhx" id="p4S6WR8VTH" role="2Qf6Ng">
+          <property role="2V$B1T" value="7fa12e9c-b949-4976-b4fa-19accbc320b4" />
+          <property role="2V$B1Q" value="jetbrains.mps.lang.dataFlow" />
+        </node>
       </node>
-      <node concept="2V$Bhx" id="p4S6WR8VTM" role="1t_9vn">
-        <property role="2V$B1T" value="97a52717-898f-4598-8150-573d9fd03868" />
-        <property role="2V$B1Q" value="jetbrains.mps.lang.dataFlow.analyzers" />
+      <node concept="2Qf6Nf" id="6pkKjyUzzC0" role="2Qf7GQ">
+        <node concept="2V$Bhx" id="p4S6WR8VTM" role="2Qf6Ng">
+          <property role="2V$B1T" value="97a52717-898f-4598-8150-573d9fd03868" />
+          <property role="2V$B1Q" value="jetbrains.mps.lang.dataFlow.analyzers" />
+        </node>
       </node>
-      <node concept="2V$Bhx" id="p4S6WR9xjr" role="1t_9vn">
-        <property role="2V$B1T" value="d4615e3b-d671-4ba9-af01-2b78369b0ba7" />
-        <property role="2V$B1Q" value="jetbrains.mps.lang.pattern" />
+      <node concept="2Qf6Nf" id="6pkKjyUzzC1" role="2Qf7GQ">
+        <node concept="2V$Bhx" id="p4S6WR9xjr" role="2Qf6Ng">
+          <property role="2V$B1T" value="d4615e3b-d671-4ba9-af01-2b78369b0ba7" />
+          <property role="2V$B1Q" value="jetbrains.mps.lang.pattern" />
+        </node>
       </node>
     </node>
     <node concept="26qawf" id="4LuITgyAqcO" role="2VgMA7">
@@ -114,9 +121,11 @@
       </node>
     </node>
     <node concept="2VgMA2" id="p4S6WR6s9J" role="2VgMA7">
-      <node concept="2V$Bhx" id="p4S6WR6sa1" role="1t_9vn">
-        <property role="2V$B1T" value="3a13115c-633c-4c5c-bbcc-75c4219e9555" />
-        <property role="2V$B1Q" value="jetbrains.mps.lang.quotation" />
+      <node concept="2Qf6Nf" id="6pkKjyUzzC2" role="2Qf7GQ">
+        <node concept="2V$Bhx" id="p4S6WR6sa1" role="2Qf6Ng">
+          <property role="2V$B1T" value="3a13115c-633c-4c5c-bbcc-75c4219e9555" />
+          <property role="2V$B1Q" value="jetbrains.mps.lang.quotation" />
+        </node>
       </node>
     </node>
     <node concept="2VgMA2" id="1VVI8eHQmJR" role="2VgMA7">
@@ -129,17 +138,23 @@
       </node>
     </node>
     <node concept="2VgMA2" id="2fM90PxfrMy" role="2VgMA7">
-      <node concept="2V$Bhx" id="p4S6WR6s9u" role="1t_9vn">
-        <property role="2V$B1T" value="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" />
-        <property role="2V$B1Q" value="jetbrains.mps.lang.actions" />
+      <node concept="2Qf6Nf" id="6pkKjyUzzC3" role="2Qf7GQ">
+        <node concept="2V$Bhx" id="p4S6WR6s9u" role="2Qf6Ng">
+          <property role="2V$B1T" value="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" />
+          <property role="2V$B1Q" value="jetbrains.mps.lang.actions" />
+        </node>
       </node>
-      <node concept="2V$Bhx" id="2fM90PxfrMI" role="1t_9vn">
-        <property role="2V$B1T" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1" />
-        <property role="2V$B1Q" value="jetbrains.mps.lang.smodel" />
+      <node concept="2Qf6Nf" id="6pkKjyUzzC4" role="2Qf7GQ">
+        <node concept="2V$Bhx" id="2fM90PxfrMI" role="2Qf6Ng">
+          <property role="2V$B1T" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1" />
+          <property role="2V$B1Q" value="jetbrains.mps.lang.smodel" />
+        </node>
       </node>
-      <node concept="2V$Bhx" id="55a5Ypj4OPh" role="1t_9vn">
-        <property role="2V$B1T" value="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" />
-        <property role="2V$B1Q" value="jetbrains.mps.lang.slanguage" />
+      <node concept="2Qf6Nf" id="6pkKjyUzzC5" role="2Qf7GQ">
+        <node concept="2V$Bhx" id="55a5Ypj4OPh" role="2Qf6Ng">
+          <property role="2V$B1T" value="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" />
+          <property role="2V$B1Q" value="jetbrains.mps.lang.slanguage" />
+        </node>
       </node>
     </node>
     <node concept="NozSJ" id="2fM90PxfrMg" role="2VgMA7">
