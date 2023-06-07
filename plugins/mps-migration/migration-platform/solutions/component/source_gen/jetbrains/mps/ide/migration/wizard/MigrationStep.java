@@ -56,22 +56,17 @@ public class MigrationStep extends BaseStep {
     myErrorPanel.add(this.myErrorLabel, BorderLayout.NORTH);
 
     myErrorPanel.setVisible(false);
-    UiNotifyConnector.doWhenFirstShown(mainPanel, this::executeToFirstError);
+    UiNotifyConnector.doWhenFirstShown(mainPanel, this::scheduleTaskExecutionInEDT);
   }
 
-  @Override
-  public void _init() {
+
+  private void scheduleTaskExecutionInEDT() throws ProcessCanceledException {
     // let PI know actual modality state. Without that, it would answer with NON_MODAL; and yes,->
     // FIXME I can not do it earlier as both cons and doCreateComponent are invoked without any UI shown,
-    //      it's weird and bad design, but I can't fix it right now. And don't forget to fix this 
-    //      odd "run from ui init" approach. It's bad, too.
-    // XXX unless there's mps code to invoke getComponent(), seems that IDEA invokes _init() prior to doCreateComponent(),
-    //     so we can create myProgress here, if necessary.
+    //      it's weird and bad design, but I can't fix it right now 
+    // Note, IDEA invokes _init() each time it shows the page, and since we may show it twice (nice design,
+    //     check getNextStepId() which tells same step is the next one when there are errors.
     myProgress.setModalityProgress(null);
-    super._init();
-  }
-
-  private void executeToFirstError() throws ProcessCanceledException {
     ApplicationManager.getApplication().executeOnPooledThread(() -> ProgressManager.getInstance().runProcess(() -> {
       mySession.setError(null);
 
@@ -158,8 +153,10 @@ public class MigrationStep extends BaseStep {
   public void nextButtonAction() {
     if (isErrorReplyState()) {
       myErrorPanel.setVisible(false);
+      if (!(myTask.isComplete())) {
+        scheduleTaskExecutionInEDT();
+      }
     }
-    // the "next" action will invoke _init(), which will continue running the task
   }
 
   @Override

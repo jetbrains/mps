@@ -3768,7 +3768,7 @@
                                     <node concept="1Y3b0j" id="3xQJeztN15q" role="YeSDq">
                                       <property role="2bfB8j" value="true" />
                                       <property role="373rjd" value="true" />
-                                      <ref role="1Y3XeK" to="w1kc:~SLanguageHierarchy$HierarchyVisitor" resolve="HierarchyVisitor" />
+                                      <ref role="1Y3XeK" to="w1kc:~SLanguageHierarchy$HierarchyVisitor" resolve="SLanguageHierarchy.HierarchyVisitor" />
                                       <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                                       <node concept="3Tm1VV" id="3xQJeztN15r" role="1B3o_S" />
                                       <node concept="3clFb_" id="3xQJeztN15L" role="jymVt">
@@ -3904,7 +3904,7 @@
                                           </node>
                                         </node>
                                         <node concept="2AHcQZ" id="3xQJeztSCBL" role="2AJF6D">
-                                          <ref role="2AI5Lk" to="wyt6:~Override" />
+                                          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                                         </node>
                                       </node>
                                     </node>
@@ -10442,7 +10442,7 @@
         <node concept="3clFbF" id="6fMyXCHwbUO" role="3cqZAp">
           <node concept="2OqwBi" id="6fMyXCHwcby" role="3clFbG">
             <node concept="37vLTw" id="6fMyXCHP14r" role="2Oq$k0">
-              <ref role="3cqZAo" node="6fMyXCHP14m" resolve="ref" />
+              <ref role="3cqZAo" node="6fMyXCHP14m" resolve="script" />
             </node>
             <node concept="liA8E" id="6fMyXCHwcw2" role="2OqNvi">
               <ref role="37wK5l" to="6f4m:6fMyXCHptSZ" resolve="setSession" />
@@ -10455,7 +10455,7 @@
         <node concept="3clFbF" id="6fMyXCHRIya" role="3cqZAp">
           <node concept="2OqwBi" id="6fMyXCHRIGZ" role="3clFbG">
             <node concept="37vLTw" id="6fMyXCHRIy8" role="2Oq$k0">
-              <ref role="3cqZAo" node="6fMyXCHP14m" resolve="ref" />
+              <ref role="3cqZAo" node="6fMyXCHP14m" resolve="script" />
             </node>
             <node concept="liA8E" id="6fMyXCHRITd" role="2OqNvi">
               <ref role="37wK5l" to="6f4m:6fMyXCHRqQb" resolve="setTaskExecutor" />
@@ -10492,7 +10492,7 @@
         <node concept="3clFbF" id="V9q2W$LBA6" role="3cqZAp">
           <node concept="2OqwBi" id="V9q2W$LC5S" role="3clFbG">
             <node concept="37vLTw" id="V9q2W$LBA4" role="2Oq$k0">
-              <ref role="3cqZAo" node="6fMyXCHP14m" resolve="ref" />
+              <ref role="3cqZAo" node="6fMyXCHP14m" resolve="script" />
             </node>
             <node concept="liA8E" id="V9q2W$LKOe" role="2OqNvi">
               <ref role="37wK5l" to="6f4m:V9q2W$LFdJ" resolve="setRefactoringProcessor" />
@@ -10554,7 +10554,7 @@
         <node concept="3clFbF" id="4yRsQKnvqEh" role="3cqZAp">
           <node concept="2OqwBi" id="4yRsQKnv89S" role="3clFbG">
             <node concept="37vLTw" id="6fMyXCHP14s" role="2Oq$k0">
-              <ref role="3cqZAo" node="6fMyXCHP14m" resolve="ref" />
+              <ref role="3cqZAo" node="6fMyXCHP14m" resolve="script" />
             </node>
             <node concept="liA8E" id="4yRsQKnv89U" role="2OqNvi">
               <ref role="37wK5l" to="6f4m:6fMyXCHoysg" resolve="execute" />
@@ -16169,7 +16169,7 @@
       <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="3xQJezsQ$ga" role="1B3o_S" />
       <node concept="3uibUv" id="3xQJezsQ_Ut" role="1tU5fm">
-        <ref role="3uigEE" node="3xQJezsQut3" resolve="LangUseStats" />
+        <ref role="3uigEE" node="3xQJezsQut3" resolve="MigrationScriptCollector.LangUseStats" />
       </node>
     </node>
     <node concept="2tJIrI" id="1kouhOEuMuw" role="jymVt" />
@@ -16191,7 +16191,7 @@
             <node concept="2ShNRf" id="3xQJezsQDpt" role="37vLTx">
               <node concept="HV5vD" id="3xQJezsQKS9" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="HV5vE" node="3xQJezsQut3" resolve="LangUseStats" />
+                <ref role="HV5vE" node="3xQJezsQut3" resolve="MigrationScriptCollector.LangUseStats" />
               </node>
             </node>
             <node concept="37vLTw" id="3xQJezsQCYR" role="37vLTJ">
@@ -16248,8 +16248,8 @@
                   <node concept="1Y3b0j" id="7WCeg2bUdU3" role="YeSDq">
                     <property role="2bfB8j" value="true" />
                     <property role="373rjd" value="true" />
-                    <ref role="1Y3XeK" to="w1kc:~SLanguageHierarchy$HierarchyVisitor" resolve="HierarchyVisitor" />
-                    <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" />
+                    <ref role="1Y3XeK" to="w1kc:~SLanguageHierarchy$HierarchyVisitor" resolve="SLanguageHierarchy.HierarchyVisitor" />
+                    <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                     <node concept="3Tm1VV" id="7WCeg2bUdU4" role="1B3o_S" />
                     <node concept="3clFb_" id="7WCeg2bUdUq" role="jymVt">
                       <property role="TrG5h" value="accept" />
@@ -16751,7 +16751,7 @@
                                   </node>
                                 </node>
                                 <node concept="37vLTw" id="2Awzv$89jgs" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="2Awzv$89jgl" resolve="" />
+                                  <ref role="3cqZAo" node="2Awzv$89jgl" resolve="v" />
                                 </node>
                               </node>
                             </node>
@@ -16782,7 +16782,7 @@
                         </node>
                       </node>
                       <node concept="2AHcQZ" id="7WCeg2bUdUy" role="2AJF6D">
-                        <ref role="2AI5Lk" to="wyt6:~Override" />
+                        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                       </node>
                     </node>
                   </node>
@@ -16872,7 +16872,7 @@
                       <node concept="2ShNRf" id="3xQJezt421B" role="25WWJ7">
                         <node concept="1pGfFk" id="3xQJezt4BsB" role="2ShVmc">
                           <property role="373rjd" value="true" />
-                          <ref role="37wK5l" node="3xQJeztwGaX" resolve="AppliedLanguageScript" />
+                          <ref role="37wK5l" node="3xQJeztwGaX" resolve="MigrationScriptCollector.AppliedLanguageScript" />
                           <node concept="37vLTw" id="3xQJeztx3DN" role="37wK5m">
                             <ref role="3cqZAo" node="3xQJeztvNs4" resolve="ms" />
                           </node>
@@ -16910,7 +16910,7 @@
                         <node concept="2ShNRf" id="3xQJeztwxRS" role="25WWJ7">
                           <node concept="1pGfFk" id="3xQJeztwxRT" role="2ShVmc">
                             <property role="373rjd" value="true" />
-                            <ref role="37wK5l" node="3xQJezt4v59" resolve="AppliedLanguageScript" />
+                            <ref role="37wK5l" node="3xQJezt4v59" resolve="MigrationScriptCollector.AppliedLanguageScript" />
                             <node concept="2GrUjf" id="3xQJeztwxRU" role="37wK5m">
                               <ref role="2Gs0qQ" node="7WCeg2bUH87" resolve="sr" />
                             </node>
@@ -16998,7 +16998,7 @@
           <node concept="XkiVB" id="3xQJeztwGb6" role="3cqZAp">
             <ref role="37wK5l" node="3xQJezs$v_G" resolve="AppliedScript" />
             <node concept="37vLTw" id="3xQJeztwGb7" role="37wK5m">
-              <ref role="3cqZAo" node="3xQJeztwGaY" resolve="msr" />
+              <ref role="3cqZAo" node="3xQJeztwGaY" resolve="ms" />
             </node>
             <node concept="37vLTw" id="3xQJeztwGb8" role="37wK5m">
               <ref role="3cqZAo" node="3xQJeztwGb0" resolve="modules" />
@@ -17033,7 +17033,7 @@
           </node>
         </node>
         <node concept="2AHcQZ" id="3xQJezto8nD" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" />
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
       <node concept="2tJIrI" id="3xQJeztomSb" role="jymVt" />
@@ -17391,7 +17391,7 @@
           </node>
         </node>
         <node concept="2AHcQZ" id="3xQJeztoolf" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" />
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
       <node concept="2tJIrI" id="3xQJeztoPqL" role="jymVt" />
@@ -17915,7 +17915,7 @@
                       </node>
                     </node>
                     <node concept="37vLTw" id="7WCeg2bYIg4" role="37vLTJ">
-                      <ref role="3cqZAo" node="7WCeg2bYDG8" resolve="pairs" />
+                      <ref role="3cqZAo" node="7WCeg2bYDG8" resolve="scripts" />
                     </node>
                   </node>
                 </node>
@@ -17928,7 +17928,7 @@
                             <ref role="3cqZAo" node="7WCeg2bYYpX" resolve="i" />
                           </node>
                           <node concept="37vLTw" id="7WCeg2bZ6h5" role="AHHXb">
-                            <ref role="3cqZAo" node="7WCeg2bYDG8" resolve="pairs" />
+                            <ref role="3cqZAo" node="7WCeg2bYDG8" resolve="scripts" />
                           </node>
                         </node>
                         <node concept="2ShNRf" id="7WCeg2bZj3N" role="37vLTx">
@@ -17976,7 +17976,7 @@
               <node concept="3clFbC" id="7WCeg2bYgT7" role="3clFbw">
                 <node concept="10Nm6u" id="7WCeg2bYhYJ" role="3uHU7w" />
                 <node concept="37vLTw" id="7WCeg2bYd23" role="3uHU7B">
-                  <ref role="3cqZAo" node="7WCeg2bYDG8" resolve="pairs" />
+                  <ref role="3cqZAo" node="7WCeg2bYDG8" resolve="scripts" />
                 </node>
               </node>
             </node>
@@ -18177,7 +18177,7 @@
                       <node concept="2ShNRf" id="3xQJezt5226" role="25WWJ7">
                         <node concept="1pGfFk" id="3xQJezt579P" role="2ShVmc">
                           <property role="373rjd" value="true" />
-                          <ref role="37wK5l" node="3xQJeztv0vI" resolve="AppliedRefacroringScript" />
+                          <ref role="37wK5l" node="3xQJeztv0vI" resolve="RefactoringScriptCollector.AppliedRefacroringScript" />
                           <node concept="37vLTw" id="3xQJeztuX5y" role="37wK5m">
                             <ref role="3cqZAo" node="3xQJeztuy7_" resolve="rs" />
                           </node>
@@ -18215,7 +18215,7 @@
                         <node concept="2ShNRf" id="3xQJeztuU3n" role="25WWJ7">
                           <node concept="1pGfFk" id="3xQJeztuU3o" role="2ShVmc">
                             <property role="373rjd" value="true" />
-                            <ref role="37wK5l" node="3xQJezt4PHj" resolve="AppliedRefacroringScript" />
+                            <ref role="37wK5l" node="3xQJezt4PHj" resolve="RefactoringScriptCollector.AppliedRefacroringScript" />
                             <node concept="2GrUjf" id="3xQJeztuU3p" role="37wK5m">
                               <ref role="2Gs0qQ" node="7WCeg2c0by5" resolve="sr" />
                             </node>
@@ -18304,7 +18304,7 @@
           <node concept="XkiVB" id="3xQJeztv0vR" role="3cqZAp">
             <ref role="37wK5l" node="3xQJezs$v_G" resolve="AppliedScript" />
             <node concept="37vLTw" id="3xQJeztv0vS" role="37wK5m">
-              <ref role="3cqZAo" node="3xQJeztv0vJ" resolve="rsr" />
+              <ref role="3cqZAo" node="3xQJeztv0vJ" resolve="rs" />
             </node>
             <node concept="37vLTw" id="3xQJeztv0vT" role="37wK5m">
               <ref role="3cqZAo" node="3xQJeztv0vL" resolve="modules" />
@@ -18336,7 +18336,7 @@
           </node>
         </node>
         <node concept="2AHcQZ" id="3xQJeztjHSW" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" />
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
         <node concept="3uibUv" id="3xQJeztjMc3" role="3clF45">
           <ref role="3uigEE" to="6f4m:4uVwhQyPurf" resolve="RefactoringScriptReference" />
@@ -18578,7 +18578,7 @@
           </node>
         </node>
         <node concept="2AHcQZ" id="3xQJeztjZXf" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" />
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
       <node concept="2tJIrI" id="3xQJeztndbw" role="jymVt" />
