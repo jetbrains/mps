@@ -11,7 +11,6 @@ import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -36,11 +35,7 @@ public class check_ArrayClone_NonTypesystemRule extends AbstractNonTypesystemRul
 
     SNode operand = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(instanceMethodCallOperation), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR);
     Iterable<SReference> operandRefs = SNodeOperations.getReferences(operand);
-    if (Sequence.fromIterable(operandRefs).any(new IWhereFilter<SReference>() {
-      public boolean accept(SReference it) {
-        return SLinkOperations.isDynamic(it);
-      }
-    })) {
+    if (Sequence.fromIterable(operandRefs).any((it) -> SLinkOperations.isDynamic(it))) {
       // let's not mess with dynamic references
       return;
     }

@@ -21,9 +21,8 @@ import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
+import java.util.Iterator;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.ReductionRuleCondition;
 import java.util.HashMap;
@@ -234,103 +233,95 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_1_2(final SourceSubstituteMacroNodesContext _context) {
     List<SNode> values = SLinkOperations.getChildren(_context.getNode(), LINKS.value$zdY6);
-    return ListSequence.fromList(values).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(final SNode value) {
-        return new Iterable<SNode>() {
-          public Iterator<SNode> iterator() {
-            return new YieldingIterator<SNode>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
+    return ListSequence.fromList(values).translate((value) -> {
+      return (Iterable<SNode>) () -> {
+        return new YieldingIterator<SNode>() {
+          private int __CP__ = 0;
+          protected boolean moveToNext() {
 __loop__:
-                do {
+            do {
 __switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 2:
-                      this._2_quantity_it = ListSequence.fromList(SLinkOperations.getChildren(value, LINKS.quantity$N__5)).iterator();
-                    case 3:
-                      if (!(this._2_quantity_it.hasNext())) {
-                        this.__CP__ = 1;
-                        break;
-                      }
-                      this._2_quantity = this._2_quantity_it.next();
-                      this.__CP__ = 4;
-                      break;
-                    case 5:
-                      this.__CP__ = 3;
-                      this.yield(_2_quantity);
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    case 4:
-                      this.__CP__ = 5;
-                      break;
-                    default:
-                      break __loop__;
+              switch (this.__CP__) {
+                case -1:
+                  assert false : "Internal error";
+                  return false;
+                case 2:
+                  this._2_quantity_it = ListSequence.fromList(SLinkOperations.getChildren(value, LINKS.quantity$N__5)).iterator();
+                case 3:
+                  if (!(this._2_quantity_it.hasNext())) {
+                    this.__CP__ = 1;
+                    break;
                   }
-                } while (true);
-                return false;
+                  this._2_quantity = this._2_quantity_it.next();
+                  this.__CP__ = 4;
+                  break;
+                case 5:
+                  this.__CP__ = 3;
+                  this.yield(_2_quantity);
+                  return true;
+                case 0:
+                  this.__CP__ = 2;
+                  break;
+                case 4:
+                  this.__CP__ = 5;
+                  break;
+                default:
+                  break __loop__;
               }
-              private SNode _2_quantity;
-              private Iterator<SNode> _2_quantity_it;
-            };
+            } while (true);
+            return false;
           }
+          private SNode _2_quantity;
+          private Iterator<SNode> _2_quantity_it;
         };
-      }
-    }).toListSequence();
+      };
+    }).toList();
   }
   public static Iterable<SNode> sourceNodesQuery_1_3(final SourceSubstituteMacroNodesContext _context) {
     List<SNode> events = SLinkOperations.getChildren(_context.getNode(), LINKS.event$1jnv);
-    return ListSequence.fromList(events).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(final SNode event) {
-        return new Iterable<SNode>() {
-          public Iterator<SNode> iterator() {
-            return new YieldingIterator<SNode>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
+    return ListSequence.fromList(events).translate((event) -> {
+      return (Iterable<SNode>) () -> {
+        return new YieldingIterator<SNode>() {
+          private int __CP__ = 0;
+          protected boolean moveToNext() {
 __loop__:
-                do {
+            do {
 __switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 2:
-                      this._2_postingRule_it = ListSequence.fromList(SLinkOperations.getChildren(event, LINKS.postingRule$_OR2)).iterator();
-                    case 3:
-                      if (!(this._2_postingRule_it.hasNext())) {
-                        this.__CP__ = 1;
-                        break;
-                      }
-                      this._2_postingRule = this._2_postingRule_it.next();
-                      this.__CP__ = 4;
-                      break;
-                    case 5:
-                      this.__CP__ = 3;
-                      this.yield(_2_postingRule);
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    case 4:
-                      this.__CP__ = 5;
-                      break;
-                    default:
-                      break __loop__;
+              switch (this.__CP__) {
+                case -1:
+                  assert false : "Internal error";
+                  return false;
+                case 2:
+                  this._2_postingRule_it = ListSequence.fromList(SLinkOperations.getChildren(event, LINKS.postingRule$_OR2)).iterator();
+                case 3:
+                  if (!(this._2_postingRule_it.hasNext())) {
+                    this.__CP__ = 1;
+                    break;
                   }
-                } while (true);
-                return false;
+                  this._2_postingRule = this._2_postingRule_it.next();
+                  this.__CP__ = 4;
+                  break;
+                case 5:
+                  this.__CP__ = 3;
+                  this.yield(_2_postingRule);
+                  return true;
+                case 0:
+                  this.__CP__ = 2;
+                  break;
+                case 4:
+                  this.__CP__ = 5;
+                  break;
+                default:
+                  break __loop__;
               }
-              private SNode _2_postingRule;
-              private Iterator<SNode> _2_postingRule_it;
-            };
+            } while (true);
+            return false;
           }
+          private SNode _2_postingRule;
+          private Iterator<SNode> _2_postingRule_it;
         };
-      }
-    }).toListSequence();
+      };
+    }).toList();
   }
   public static Iterable<SNode> sourceNodesQuery_1_4(final SourceSubstituteMacroNodesContext _context) {
     return SModelOperations.roots(_context.getInputModel(), CONCEPTS.Plan$Qb);

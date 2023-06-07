@@ -158,7 +158,7 @@ public class NewModelFromSource_Action extends BaseAction {
     for (VirtualFile vfile : chosen) {
       ListSequence.fromList(chosenIFiles).addElement(((MPSProject) MapSequence.fromMap(_params).get("project")).getFileSystem().fromVirtualFile(vfile));
     }
-    final List<IFile> ifilesToParse = Sequence.fromIterable(JavaConvertUtil.flattenDirs(chosenIFiles)).toListSequence();
+    final List<IFile> ifilesToParse = Sequence.fromIterable(JavaConvertUtil.flattenDirs(chosenIFiles)).toList();
 
     final JavaToMpsConverter parser = new JavaToMpsConverter(((SModule) MapSequence.fromMap(_params).get("module")), repository, ((Project) MapSequence.fromMap(_params).get("ideaProject")).getService(MessagesViewTool.class).newHandler());
 

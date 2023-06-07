@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.kotlin.behavior.IInheritExplicitly__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.kotlin.behavior.ISuperTypeSpecifier__BehaviorDescriptor;
 import jetbrains.mps.kotlin.behavior.IClassLike__BehaviorDescriptor;
 import jetbrains.mps.kotlin.behavior.IClassType__BehaviorDescriptor;
@@ -53,11 +52,7 @@ public class SuperConstructorDelegationCall_Constraints extends BaseConstraintsD
 
             // No primary, need super() scope
             if (!((boolean) IInheritExplicitly__BehaviorDescriptor.hasPrimaryConstructor_id1$jFvlEi5P5.invoke(parent))) {
-              SNode classSpecifier = ListSequence.fromList(SLinkOperations.getChildren(parent, LINKS.superclasses$6CkZ)).findFirst(new IWhereFilter<SNode>() {
-                public boolean accept(SNode it) {
-                  return (boolean) ISuperTypeSpecifier__BehaviorDescriptor.isClass_id1$jFvlEiPXX.invoke(it);
-                }
-              });
+              SNode classSpecifier = ListSequence.fromList(SLinkOperations.getChildren(parent, LINKS.superclasses$6CkZ)).findFirst((it) -> (boolean) ISuperTypeSpecifier__BehaviorDescriptor.isClass_id1$jFvlEiPXX.invoke(it));
 
               {
                 final SNode classType = ISuperTypeSpecifier__BehaviorDescriptor.getInheritedType_id5q426iHvzD9.invoke(classSpecifier);

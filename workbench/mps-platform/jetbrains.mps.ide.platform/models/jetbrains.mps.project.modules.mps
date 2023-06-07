@@ -6,7 +6,7 @@
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
   </languages>
@@ -223,6 +223,7 @@
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -296,7 +297,6 @@
       <concept id="1153944233411" name="jetbrains.mps.baseLanguage.collections.structure.ForEachVariableReference" flags="nn" index="2GrUjf">
         <reference id="1153944258490" name="variable" index="2Gs0qQ" />
       </concept>
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="9042586985346099698" name="jetbrains.mps.baseLanguage.collections.structure.MultiForEachStatement" flags="nn" index="1_o_46">
         <child id="9042586985346099734" name="forEach" index="1_o_by" />
       </concept>
@@ -474,7 +474,7 @@
                             <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                             <node concept="2OqwBi" id="1kRpwI5O1yx" role="37wK5m">
                               <node concept="37vLTw" id="1kRpwI5O1dl" role="2Oq$k0">
-                                <ref role="3cqZAo" node="1kRpwI5Oa6e" resolve="d" />
+                                <ref role="3cqZAo" node="5W7E4fV0Y5s" />
                               </node>
                               <node concept="liA8E" id="1kRpwI5O1yy" role="2OqNvi">
                                 <ref role="37wK5l" to="w0gx:~ModuleFacetDescriptor.getType()" resolve="getType" />
@@ -484,9 +484,9 @@
                         </node>
                       </node>
                     </node>
-                    <node concept="Rh6nW" id="1kRpwI5Oa6e" role="1bW2Oz">
+                    <node concept="gl6BB" id="5W7E4fV0Y5s" role="1bW2Oz">
                       <property role="TrG5h" value="d" />
-                      <node concept="2jxLKc" id="1kRpwI5Oa6f" role="1tU5fm" />
+                      <node concept="2jxLKc" id="5W7E4fV0Y5t" role="1tU5fm" />
                     </node>
                   </node>
                 </node>

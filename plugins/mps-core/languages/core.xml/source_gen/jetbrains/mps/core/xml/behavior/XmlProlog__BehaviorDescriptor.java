@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -33,11 +32,7 @@ public final class XmlProlog__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static boolean isInValidPosition_id1Qs9WekWY$K(@NotNull SNode __thisNode__, SNode element) {
-    SNode declaration = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.elements$fMpf)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) XmlPrologElement__BehaviorDescriptor.isFirst_id1653mnvAgw8.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(it)));
-      }
-    });
+    SNode declaration = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.elements$fMpf)).findFirst((it) -> (boolean) XmlPrologElement__BehaviorDescriptor.isFirst_id1653mnvAgw8.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(it))));
     if (declaration == null) {
       return true;
     }

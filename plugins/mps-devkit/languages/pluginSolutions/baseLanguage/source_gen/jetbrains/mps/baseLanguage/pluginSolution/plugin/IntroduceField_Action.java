@@ -25,7 +25,6 @@ import com.intellij.featureStatistics.FeatureUsageTracker;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.ide.platform.dialogs.choosers.NodeChooserDialog;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.AbstractIntroduceFieldRefactoring;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.IntroduceStaticFieldRefactoring;
@@ -129,11 +128,7 @@ public class IntroduceField_Action extends BaseAction {
         }
         current = SNodeOperations.getParent(current);
       }
-      candidateClasses.value = ListSequence.fromList(SNodeOperations.getNodeAncestors(nodeToRefactor, CONCEPTS.ClassConcept$bK, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(it, CONCEPTS.AnonymousClass$Bt));
-        }
-      }).toListSequence();
+      candidateClasses.value = ListSequence.fromList(SNodeOperations.getNodeAncestors(nodeToRefactor, CONCEPTS.ClassConcept$bK, false)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.AnonymousClass$Bt))).toList();
     });
 
     final Wrappers._T<SNode> desiredTargetClass = new Wrappers._T<SNode>();

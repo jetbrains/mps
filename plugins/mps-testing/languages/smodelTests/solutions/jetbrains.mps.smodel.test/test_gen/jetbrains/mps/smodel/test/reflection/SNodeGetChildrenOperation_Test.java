@@ -14,12 +14,10 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.model.SNode;
 import org.junit.Assert;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.List;
 
 @MPSLaunch
@@ -76,13 +74,7 @@ public class SNodeGetChildrenOperation_Test extends BaseTransformationTest {
         addNodeById("5815925154349132136");
         addNodeById("2166349271756548530");
       });
-      runWithinCommand(() -> {
-        TestUtilities.assertEquals(Sequence.fromArray(new SContainmentLink[]{LINKS.child_1_n$IYmu, LINKS.childSubConcept_0_n$apX}), ListSequence.fromList(SNodeOperations.getChildren(getNodeById("8758390115029078426"))).select(new ISelector<SNode, SContainmentLink>() {
-          public SContainmentLink select(SNode it) {
-            return it.getContainmentLink();
-          }
-        }));
-      });
+      runWithinCommand(() -> TestUtilities.assertEquals(Sequence.fromArray(new SContainmentLink[]{LINKS.child_1_n$IYmu, LINKS.childSubConcept_0_n$apX}), ListSequence.fromList(SNodeOperations.getChildren(getNodeById("8758390115029078426"))).select((it) -> it.getContainmentLink())));
     }
     public void test_childContaininLinksForSpecializedChildren() throws Exception {
       runWithinCommand(() -> {
@@ -98,13 +90,7 @@ public class SNodeGetChildrenOperation_Test extends BaseTransformationTest {
         addNodeById("5815925154349132136");
         addNodeById("2166349271756548530");
       });
-      runWithinCommand(() -> {
-        TestUtilities.assertEquals(Sequence.fromArray(new SContainmentLink[]{LINKS.child_1_n$IYmu, LINKS.childSubConcept_0_n$apX}), ListSequence.fromList(SNodeOperations.getChildren(getNodeById("8758390115029078426"))).select(new ISelector<SNode, SContainmentLink>() {
-          public SContainmentLink select(SNode it) {
-            return it.getContainmentLink();
-          }
-        }));
-      });
+      runWithinCommand(() -> TestUtilities.assertEquals(Sequence.fromArray(new SContainmentLink[]{LINKS.child_1_n$IYmu, LINKS.childSubConcept_0_n$apX}), ListSequence.fromList(SNodeOperations.getChildren(getNodeById("8758390115029078426"))).select((it) -> it.getContainmentLink())));
     }
     public void test_unspecifiedChildren() throws Exception {
       runWithinCommand(() -> {
@@ -117,11 +103,7 @@ public class SNodeGetChildrenOperation_Test extends BaseTransformationTest {
         SNode unspecifiedChild = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x3dd540b968e9fc4L, "jetbrains.mps.lang.smodelTests.structure.GrandChild"));
         SContainmentLink unspecifiedChildRole = TestBody.this.addUnspecifiedChild(getNodeById("2166349271756548531"), unspecifiedChild);
         Assert.assertEquals(initialSize + 1, ListSequence.fromList(SNodeOperations.getChildren(getNodeById("2166349271756548531"))).count());
-        Iterable<SNode> unspecifiedChildren = ListSequence.fromList(SNodeOperations.getChildren(getNodeById("2166349271756548531"))).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return !(SNodeOperations.getContainingLink(it).isValid());
-          }
-        });
+        Iterable<SNode> unspecifiedChildren = ListSequence.fromList(SNodeOperations.getChildren(getNodeById("2166349271756548531"))).where((it) -> !(SNodeOperations.getContainingLink(it).isValid()));
         Assert.assertEquals(1, Sequence.fromIterable(unspecifiedChildren).count());
         SNode theChild = Sequence.fromIterable(unspecifiedChildren).first();
         Assert.assertEquals(unspecifiedChildRole, theChild.getContainmentLink());

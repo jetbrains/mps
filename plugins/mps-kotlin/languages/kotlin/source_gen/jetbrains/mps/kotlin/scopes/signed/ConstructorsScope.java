@@ -32,7 +32,7 @@ public class ConstructorsScope implements SignatureScope {
   private final SNode myContextNode;
 
   public ConstructorsScope(Iterable<SModel> models, SNode contextNode) {
-    myModels = SetSequence.fromSetWithValues(new HashSet<SModel>(), Sequence.fromIterable(models).where(new NotNullWhereFilter<SModel>()));
+    myModels = SetSequence.fromSetWithValues(new HashSet<SModel>(), Sequence.fromIterable(models).where(new NotNullWhereFilter()));
     myContextNode = contextNode;
   }
 
@@ -63,7 +63,7 @@ public class ConstructorsScope implements SignatureScope {
       }
     }
 
-    return SignatureBuilder.create(result, FunctionSignature.class).withSignature((SNode node) -> new FunctionSignature(KotlinFunctionDeclaration.of(node), (TypeExpander) null)).build(null);
+    return SignatureBuilder.create(result, FunctionSignature.class).withSignature((node) -> new FunctionSignature(KotlinFunctionDeclaration.of(node), (TypeExpander) null)).build(null);
   }
 
   @Override

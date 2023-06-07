@@ -45,7 +45,6 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -288,11 +287,7 @@ public class IncompleteDeclaration_TransformationMenu extends TransformationMenu
       @Override
       public void execute(@NotNull String pattern) {
         SNode createdNode = getSubstituteItem().createNode(pattern);
-        if (ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.funModifiers$vmCQ)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return Objects.equals(SNodeOperations.getConcept(it), SNodeOperations.getConcept(createdNode));
-          }
-        })) {
+        if (ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.funModifiers$vmCQ)).any((it) -> Objects.equals(SNodeOperations.getConcept(it), SNodeOperations.getConcept(createdNode)))) {
           return;
         }
         ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.funModifiers$vmCQ)).addElement(createdNode);

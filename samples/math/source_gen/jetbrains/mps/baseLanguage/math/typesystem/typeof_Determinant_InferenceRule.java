@@ -25,19 +25,17 @@ public class typeof_Determinant_InferenceRule extends AbstractInferenceRule_Runt
   public void applyRule(final SNode determinant, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
       final SNode detmat = typeCheckingContext.typeOf(SLinkOperations.getTarget(determinant, LINKS.param$CBMQ), "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "6955172009299969866", true);
-      typeCheckingContext.whenConcrete(detmat, new Runnable() {
-        public void run() {
-          if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(detmat), CONCEPTS.MatrixOrVectorType$JN)) {
-            {
-              SNode _nodeToCheck_1029348928467 = determinant;
-              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "6955172009299969892", 0, null);
-              typeCheckingContext.createEquation((SNode) MathTypeUtil.getElementType(typeCheckingContext.getExpandedNode(detmat)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "3417571330831779750", true), _info_12389875345);
-            }
-          } else {
-            {
-              final MessageTarget errorTarget = new NodeMessageTarget();
-              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(determinant, LINKS.param$CBMQ), "Expression should be subtype of matrix", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "6955172009299969905", null, errorTarget);
-            }
+      typeCheckingContext.whenConcrete(detmat, () -> {
+        if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(detmat), CONCEPTS.MatrixOrVectorType$JN)) {
+          {
+            SNode _nodeToCheck_1029348928467 = determinant;
+            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "6955172009299969892", 0, null);
+            typeCheckingContext.createEquation((SNode) MathTypeUtil.getElementType(typeCheckingContext.getExpandedNode(detmat)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "3417571330831779750", true), _info_12389875345);
+          }
+        } else {
+          {
+            final MessageTarget errorTarget = new NodeMessageTarget();
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(determinant, LINKS.param$CBMQ), "Expression should be subtype of matrix", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "6955172009299969905", null, errorTarget);
           }
         }
       }, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "6955172009299968733", false, false);

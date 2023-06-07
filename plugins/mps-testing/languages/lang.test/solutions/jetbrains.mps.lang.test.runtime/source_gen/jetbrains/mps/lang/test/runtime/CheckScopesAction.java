@@ -11,7 +11,6 @@ import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 
 public class CheckScopesAction {
   private final SNode myNodeToCheck;
@@ -27,10 +26,6 @@ public class CheckScopesAction {
   public void check() {
     Iterable<SNode> availableElements = ModelConstraints.getReferenceDescriptor(myNodeToCheck, myLinkToCheck).getScope().getAvailableElements(null);
 
-    Assert.assertEquals(SetSequence.fromSetWithValues(new HashSet(), myExpectedElements), SetSequence.fromSetWithValues(new HashSet(), Sequence.fromIterable(availableElements).select(new ISelector<SNode, SNodeReference>() {
-      public SNodeReference select(SNode it) {
-        return it.getReference();
-      }
-    })));
+    Assert.assertEquals(SetSequence.fromSetWithValues(new HashSet<>(), myExpectedElements), SetSequence.fromSetWithValues(new HashSet<>(), Sequence.fromIterable(availableElements).select((it) -> it.getReference())));
   }
 }

@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SNodeMatcher;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -107,11 +106,7 @@ public final class TypeVariableReference__BehaviorDescriptor extends BaseBHDescr
   }
   /*package*/ static SNode expandGenerics_id3$PgO9fYTB5(@NotNull final SNode __thisNode__, Map<SNode, SNode> substitutions, List<SNode> expTrace) {
     if (MapSequence.fromMap(substitutions).containsKey(SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$Lz1I))) {
-      if (ListSequence.fromList(expTrace).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return new SNodeMatcher().match(__thisNode__, it);
-        }
-      })) {
+      if (ListSequence.fromList(expTrace).any((it) -> new SNodeMatcher().match(__thisNode__, it))) {
         return __thisNode__;
       }
       SNode exp = MapSequence.fromMap(substitutions).get(SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$Lz1I));

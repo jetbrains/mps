@@ -15,7 +15,6 @@ import kotlinx.metadata.KmTypeVisitor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import kotlinx.metadata.KmTypeParameterExtensionVisitor;
@@ -84,13 +83,11 @@ public class TypeParameterVisitor extends KmTypeParameterVisitor {
     }
 
     if (myUpperBoundCallback != null) {
-      myUpperBoundCallback.invoke(ListSequence.fromList(upperBounds).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          SNode constraint = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af51cL, "jetbrains.mps.kotlin.structure.TypeConstraint"));
-          SLinkOperations.setTarget(constraint, LINKS.parameter$oxR8, getNode());
-          SLinkOperations.setTarget(constraint, LINKS.type$PR1I, it);
-          return constraint;
-        }
+      myUpperBoundCallback.invoke(ListSequence.fromList(upperBounds).select((it) -> {
+        SNode constraint = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af51cL, "jetbrains.mps.kotlin.structure.TypeConstraint"));
+        SLinkOperations.setTarget(constraint, LINKS.parameter$oxR8, getNode());
+        SLinkOperations.setTarget(constraint, LINKS.type$PR1I, it);
+        return constraint;
       }), (upperBoundIds != null ? upperBoundIds.toString() : null));
     }
 

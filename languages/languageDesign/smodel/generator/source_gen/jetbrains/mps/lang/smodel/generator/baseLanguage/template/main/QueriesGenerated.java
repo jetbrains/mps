@@ -65,7 +65,6 @@ import jetbrains.mps.lang.smodel.generator.baseLanguage.util.EnumSwitchQuieries;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.behavior.ConceptSwitchStatement__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.behavior.EnumSwitchExpression__BehaviorDescriptor;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.baseLanguage.behavior.StatementList__BehaviorDescriptor;
@@ -1281,11 +1280,7 @@ public class QueriesGenerated {
     // I don't want to have noneMatched = true; in each concept switch
     Iterable<SNode> seq = SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.case$A3Bo), CONCEPTS.SubconceptCase$o1);
     // if all alternatives are with return, shall inject default block without condition, see MPS-28799
-    return Sequence.fromIterable(seq).isNotEmpty() && !(Sequence.fromIterable(seq).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.body$u5yl), LINKS.statement$53DE)).last(), CONCEPTS.ReturnStatement$lt);
-      }
-    }));
+    return Sequence.fromIterable(seq).isNotEmpty() && !(Sequence.fromIterable(seq).all((it) -> SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.body$u5yl), LINKS.statement$53DE)).last(), CONCEPTS.ReturnStatement$lt)));
   }
   public static boolean ifMacro_Condition_110_0(final IfMacroContext _context) {
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(_context.getNode())), CONCEPTS.ExpressionStatement$O8)) {

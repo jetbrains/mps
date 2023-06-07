@@ -18,11 +18,7 @@ public class ConceptSwitchStatement_DataFlow extends DataFlowBuilder {
     _context.getBuilder().emitIfJump(_context.getBuilder().before(SLinkOperations.getTarget(_context.getNode(), LINKS.defaultBlock$xR7U)), "r:00000000-0000-4000-0000-011c895902fc(jetbrains.mps.lang.smodel.dataFlow)/1207558718604");
     for (SNode switchCase : SLinkOperations.getChildren(_context.getNode(), LINKS.case$A3Bo)) {
       _context.getBuilder().build((SNode) switchCase);
-      _context.getBuilder().emitMayBeUnreachable(new Runnable() {
-        public void run() {
-          _context.getBuilder().emitJump(_context.getBuilder().after(_context.getNode()), "r:00000000-0000-4000-0000-011c895902fc(jetbrains.mps.lang.smodel.dataFlow)/3564379068314596551");
-        }
-      });
+      _context.getBuilder().emitMayBeUnreachable(() -> _context.getBuilder().emitJump(_context.getBuilder().after(_context.getNode()), "r:00000000-0000-4000-0000-011c895902fc(jetbrains.mps.lang.smodel.dataFlow)/3564379068314596551"));
     }
     _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.defaultBlock$xR7U));
   }

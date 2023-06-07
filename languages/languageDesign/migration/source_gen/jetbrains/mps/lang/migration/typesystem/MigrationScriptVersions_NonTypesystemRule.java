@@ -13,7 +13,6 @@ import jetbrains.mps.lang.migration.util.MigrationsCheckUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -26,12 +25,10 @@ public class MigrationScriptVersions_NonTypesystemRule extends AbstractNonTypesy
   }
   public void applyRule(final SNode iMigrationUnit, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     Map<SNode, Collection<String>> errors = MigrationsCheckUtil.checkMigrationsVersions(SNodeOperations.getModel(iMigrationUnit).getModule());
-    CollectionSequence.fromCollection(MapSequence.fromMap(errors).get(iMigrationUnit)).visitAll(new IVisitor<String>() {
-      public void visit(String it) {
-        {
-          final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(iMigrationUnit, it, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "1987432259747751432", null, errorTarget);
-        }
+    CollectionSequence.fromCollection(MapSequence.fromMap(errors).get(iMigrationUnit)).visitAll((it) -> {
+      {
+        final MessageTarget errorTarget = new NodeMessageTarget();
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(iMigrationUnit, it, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "1987432259747751432", null, errorTarget);
       }
     });
   }

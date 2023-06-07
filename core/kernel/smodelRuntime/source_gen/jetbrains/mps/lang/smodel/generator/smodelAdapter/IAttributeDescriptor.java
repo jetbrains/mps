@@ -10,11 +10,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import java.util.List;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.logging.Logger;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
@@ -72,11 +70,7 @@ public interface IAttributeDescriptor {
     }
 
     protected Iterable<SNode> doGet(SNode node) {
-      return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return match(it);
-        }
-      });
+      return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43)).where((it) -> match(it));
     }
 
     protected final SAbstractConcept attrConcept() {
@@ -144,19 +138,11 @@ public interface IAttributeDescriptor {
     private void deleteAll(SNode node) {
       List<SNode> list = new ArrayList<SNode>();
       ListSequence.fromList(list).addSequence(Sequence.fromIterable(doGet(node)));
-      ListSequence.fromList(list).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNodeOperations.deleteNode(it);
-        }
-      });
+      ListSequence.fromList(list).visitAll((it) -> SNodeOperations.deleteNode(it));
     }
 
     /*package*/ void deleteOne(SNode node, final SNode attrValue) {
-      SNodeOperations.deleteNode(Sequence.fromIterable(doGet(node)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return it == attrValue;
-        }
-      }));
+      SNodeOperations.deleteNode(Sequence.fromIterable(doGet(node)).findFirst((it) -> it == attrValue));
     }
 
     @Override

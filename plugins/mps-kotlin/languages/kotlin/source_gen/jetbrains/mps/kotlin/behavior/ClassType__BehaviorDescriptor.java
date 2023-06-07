@@ -23,14 +23,12 @@ import jetbrains.mps.kotlin.api.builtins.BuiltIn;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.annotations.ApiStatus;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.kotlin.api.declaration.FunctionDeclaration;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -86,11 +84,7 @@ public final class ClassType__BehaviorDescriptor extends BaseBHDescriptor {
     IClassLike__BehaviorDescriptor.populateNonMemberSignatures_id1pD7IS2T3rZ.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.class$ExdX), visitor);
 
     // Members signatures
-    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.class$ExdX), LINKS.members$gqdV)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        IClassMemberDeclaration__BehaviorDescriptor.populateSignatures_id18X2O0FJBER.invoke(it, visitor);
-      }
-    });
+    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.class$ExdX), LINKS.members$gqdV)).visitAll((it) -> IClassMemberDeclaration__BehaviorDescriptor.populateSignatures_id18X2O0FJBER.invoke(it, visitor));
   }
   /*package*/ static SignatureScope getStaticScope_id1ODRHGtufGw(@NotNull SNode __thisNode__, SignatureFilter filter, SNode contextNode) {
     return (SignatureScope) IClassLike__BehaviorDescriptor.getStaticScope_id3HHsmlLCHdO.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.class$ExdX), filter, contextNode);
@@ -131,15 +125,11 @@ public final class ClassType__BehaviorDescriptor extends BaseBHDescriptor {
 
     final SNode constructor = Sequence.fromIterable(IClassLike__BehaviorDescriptor.getConstructors_id2NtWm0y9fFa.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.class$ExdX))).first();
     if (constructor != null) {
-      return () -> {
-        return createFunctionCallExpression_km6jsf_a0a0a0k0g(constructor, ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.typeProjections$vhti)).select(new ISelector<SNode, SNode>() {
-          public SNode select(SNode it) {
-            // This could be computed is a smarter way (in+out => nothing, ...)
-            SNode type = SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.TypeProjection$5e), LINKS.type$x3no);
-            return ((type != null) ? type : createNullableType_km6jsf_a0c0a0a0b0a0a0a0k0g(BuiltIn.ANY.toClassType()));
-          }
-        }));
-      };
+      return () -> createFunctionCallExpression_km6jsf_a0a0a0k0g(constructor, ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.typeProjections$vhti)).select((it) -> {
+        // This could be computed is a smarter way (in+out => nothing, ...)
+        SNode type = SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.TypeProjection$5e), LINKS.type$x3no);
+        return ((type != null) ? type : createNullableType_km6jsf_a0c0a0a0b0a0a0a0k0g(BuiltIn.ANY.toClassType()));
+      }));
     }
     return null;
   }

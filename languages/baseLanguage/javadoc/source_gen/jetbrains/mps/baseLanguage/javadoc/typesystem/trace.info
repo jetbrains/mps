@@ -250,49 +250,42 @@
       </scope>
     </file>
     <file name="check_BaseDocCommentDuplication_NonTypesystemRule.java">
-      <node id="174203568773664342" at="26,39,27,117" concept="6" />
-      <node id="174203568773667750" at="30,7,31,66" concept="5" />
-      <node id="174203568773667750" at="31,66,32,249" concept="5" />
-      <node id="174203568773653589" at="36,50,37,38" concept="6" />
-      <node id="174203568773653589" at="39,68,40,102" concept="6" />
-      <node id="174203568773653589" at="42,30,43,17" concept="6" />
-      <node id="174203568773653589" at="47,0,48,0" concept="7" trace="BaseDocComment$bU" />
-      <node id="174203568773653589" at="22,0,24,0" concept="1" trace="check_BaseDocCommentDuplication_NonTypesystemRule#()V" />
-      <node id="174203568773664074" at="26,0,29,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="174203568773653589" at="36,0,39,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="174203568773653589" at="39,0,42,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="174203568773653589" at="42,0,45,0" concept="4" trace="overrides#()Z" />
-      <node id="174203568773667750" at="29,9,33,7" concept="0" />
-      <node id="174203568773667466" at="24,127,34,5" concept="3" />
-      <node id="174203568773653589" at="24,0,36,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-      <scope id="174203568773653589" at="22,62,22,62" />
-      <scope id="174203568773664075" at="26,39,27,117" />
-      <scope id="174203568773653589" at="36,50,37,38" />
-      <scope id="174203568773653589" at="39,68,40,102" />
-      <scope id="174203568773653589" at="42,30,43,17" />
-      <scope id="174203568773653589" at="22,0,24,0" />
-      <scope id="174203568773667750" at="30,7,32,249">
+      <node id="174203568773667750" at="25,7,26,66" concept="5" />
+      <node id="174203568773667750" at="26,66,27,249" concept="5" />
+      <node id="174203568773653589" at="31,50,32,38" concept="6" />
+      <node id="174203568773653589" at="34,68,35,102" concept="6" />
+      <node id="174203568773653589" at="37,30,38,17" concept="6" />
+      <node id="174203568773653589" at="42,0,43,0" concept="7" trace="BaseDocComment$bU" />
+      <node id="174203568773653589" at="21,0,23,0" concept="1" trace="check_BaseDocCommentDuplication_NonTypesystemRule#()V" />
+      <node id="174203568773653589" at="31,0,34,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="174203568773653589" at="34,0,37,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="174203568773653589" at="37,0,40,0" concept="4" trace="overrides#()Z" />
+      <node id="174203568773667750" at="24,202,28,7" concept="0" />
+      <node id="174203568773667466" at="23,127,29,5" concept="3" />
+      <node id="174203568773653589" at="23,0,31,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="174203568773653589" at="21,62,21,62" />
+      <scope id="174203568773653589" at="31,50,32,38" />
+      <scope id="174203568773653589" at="34,68,35,102" />
+      <scope id="174203568773653589" at="37,30,38,17" />
+      <scope id="174203568773653589" at="21,0,23,0" />
+      <scope id="174203568773667750" at="25,7,27,249">
         <var name="_reporter_2309309498" id="174203568773667750" />
         <var name="errorTarget" id="174203568773667750" />
       </scope>
-      <scope id="174203568773664074" at="26,0,29,0">
-        <var name="it" id="174203568773664074" />
-      </scope>
-      <scope id="174203568773653589" at="36,0,39,0" />
-      <scope id="174203568773653589" at="39,0,42,0">
+      <scope id="174203568773653589" at="31,0,34,0" />
+      <scope id="174203568773653589" at="34,0,37,0">
         <var name="argument" id="174203568773653589" />
       </scope>
-      <scope id="174203568773653589" at="42,0,45,0" />
-      <scope id="174203568773667504" at="29,9,33,7" />
-      <scope id="174203568773653590" at="24,127,34,5" />
-      <scope id="174203568773653589" at="24,0,36,0">
+      <scope id="174203568773653589" at="37,0,40,0" />
+      <scope id="174203568773667504" at="24,202,28,7" />
+      <scope id="174203568773653590" at="23,127,29,5" />
+      <scope id="174203568773653589" at="23,0,31,0">
         <var name="baseDocComment" id="174203568773653589" />
         <var name="status" id="174203568773653589" />
         <var name="typeCheckingContext" id="174203568773653589" />
       </scope>
-      <unit id="174203568773653589" at="46,0,49,0" name="jetbrains.mps.baseLanguage.javadoc.typesystem.check_BaseDocCommentDuplication_NonTypesystemRule$CONCEPTS" />
-      <unit id="174203568773664074" at="25,93,29,5" name="jetbrains.mps.baseLanguage.javadoc.typesystem.check_BaseDocCommentDuplication_NonTypesystemRule$1" />
-      <unit id="174203568773653589" at="21,0,50,0" name="jetbrains.mps.baseLanguage.javadoc.typesystem.check_BaseDocCommentDuplication_NonTypesystemRule" />
+      <unit id="174203568773653589" at="41,0,44,0" name="jetbrains.mps.baseLanguage.javadoc.typesystem.check_BaseDocCommentDuplication_NonTypesystemRule$CONCEPTS" />
+      <unit id="174203568773653589" at="20,0,45,0" name="jetbrains.mps.baseLanguage.javadoc.typesystem.check_BaseDocCommentDuplication_NonTypesystemRule" />
     </file>
   </root>
 </debug-info>

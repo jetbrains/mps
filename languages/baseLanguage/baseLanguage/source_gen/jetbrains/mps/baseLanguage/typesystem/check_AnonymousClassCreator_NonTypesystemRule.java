@@ -9,7 +9,6 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -23,13 +22,11 @@ public class check_AnonymousClassCreator_NonTypesystemRule extends AbstractNonTy
   public check_AnonymousClassCreator_NonTypesystemRule() {
   }
   public void applyRule(final SNode anonymousClassCreator, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(anonymousClassCreator, LINKS.cls$Saf6), LINKS.typeParameter$F9H8)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        if (!((boolean) Type__BehaviorDescriptor.isValueType_id4ctkEngAqej.invoke(it))) {
-          {
-            final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it, "A supertype may not specify any wildcard", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8187342170686443221", null, errorTarget);
-          }
+    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(anonymousClassCreator, LINKS.cls$Saf6), LINKS.typeParameter$F9H8)).visitAll((it) -> {
+      if (!((boolean) Type__BehaviorDescriptor.isValueType_id4ctkEngAqej.invoke(it))) {
+        {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it, "A supertype may not specify any wildcard", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8187342170686443221", null, errorTarget);
         }
       }
     });

@@ -5,7 +5,6 @@ package jetbrains.mps.baseLanguage.behavior;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -19,11 +18,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class AnnotationUtil {
   public static void attachAnnotation(SNode target, final SNode targetAnnotation) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(target, LINKS.annotation$K49I)).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(Objects.equals(SLinkOperations.getTarget(it, LINKS.annotation$12Ek), targetAnnotation));
-      }
-    })) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(target, LINKS.annotation$K49I)).all((it) -> !(Objects.equals(SLinkOperations.getTarget(it, LINKS.annotation$12Ek), targetAnnotation)))) {
       SNode annotation = SNodeFactoryOperations.addNewChild(target, LINKS.annotation$K49I, null);
       SLinkOperations.setTarget(annotation, LINKS.annotation$12Ek, targetAnnotation);
     }
@@ -31,11 +26,7 @@ public class AnnotationUtil {
 
   public static void attachUniqueAnnotation(SNode target, final SNodeReference targetAnnotation) {
     // unique: if there's such annotation already, do nothing
-    if (ListSequence.fromList(SLinkOperations.getChildren(target, LINKS.annotation$K49I)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getPointer(it, LINKS.annotation$12Ek), targetAnnotation);
-      }
-    })) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(target, LINKS.annotation$K49I)).any((it) -> Objects.equals(SLinkOperations.getPointer(it, LINKS.annotation$12Ek), targetAnnotation))) {
       return;
     }
     SNode annotation = SNodeFactoryOperations.addNewChild(target, LINKS.annotation$K49I, null);
@@ -43,22 +34,14 @@ public class AnnotationUtil {
   }
 
   public static void detachAnnotation(SNode target, final SNode targetAnnotation) {
-    SNode foundAnnotation = ListSequence.fromList(SLinkOperations.getChildren(target, LINKS.annotation$K49I)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getTarget(it, LINKS.annotation$12Ek), targetAnnotation);
-      }
-    });
+    SNode foundAnnotation = ListSequence.fromList(SLinkOperations.getChildren(target, LINKS.annotation$K49I)).findFirst((it) -> Objects.equals(SLinkOperations.getTarget(it, LINKS.annotation$12Ek), targetAnnotation));
     if ((foundAnnotation != null)) {
       SNodeOperations.deleteNode(foundAnnotation);
     }
   }
 
   public static void detachUniqueAnnotation(SNode target, final SNodeReference targetAnnotation) {
-    SNodeOperations.deleteNode(ListSequence.fromList(SLinkOperations.getChildren(target, LINKS.annotation$K49I)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getPointer(it, LINKS.annotation$12Ek), targetAnnotation);
-      }
-    }));
+    SNodeOperations.deleteNode(ListSequence.fromList(SLinkOperations.getChildren(target, LINKS.annotation$K49I)).findFirst((it) -> Objects.equals(SLinkOperations.getPointer(it, LINKS.annotation$12Ek), targetAnnotation)));
   }
 
   public AnnotationUtil() {

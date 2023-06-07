@@ -23,9 +23,7 @@ public class RawClassifierUsage_Test {
   }
 
   public void rawClassifier(SomeClass object) {
-    // TODO Here: closure generator cannot detect that raw types are used, implementation of function call should erase all generics in case of function call (be it getRelated or getUnrelated)
-    List<Object> list1 = Sequence.fromIterable(object.getRelated()).select((List<Object> it) -> it.get(0)).toList();
-    List<Number> list2 = Sequence.fromIterable(object.getUnrelated()).select((List<Number> it) -> it.get(0)).toList();
+    // TODO Here: closure generator cannot detect that raw types are used, implementation of function call should erase all generics in case of function call (be it from getRelated or getUnrelated)
   }
 
   public void partiallyRawClassifier(SomeClass<List> object) {
@@ -39,7 +37,6 @@ public class RawClassifierUsage_Test {
   }
 
   public void partiallyDeepRawClassifier(SomeClass<List<List<Map<String, List>>>> object) {
-    // There: generator should detect that getRelated returns a raw type. Because of that, the select cannot be a lambda (or it should be of type {Object => void})
     List<List<List<Map<String, List>>>> list1 = Sequence.fromIterable(object.getRelated()).select(new _FunctionTypes._return_P1_E0<List<List<Map<String, List>>>, List<List<List<Map<String, List>>>>>() {
       public List<List<Map<String, List>>> invoke(List<List<List<Map<String, List>>>> it) {
         return it.get(0);

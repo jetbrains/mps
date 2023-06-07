@@ -19,8 +19,6 @@ import java.util.List;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.smodel.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import java.io.IOException;
@@ -89,19 +87,7 @@ public abstract class KotlinStubModelDescriptor<T extends SNode> extends LazyEdi
 
   protected Iterable<IFile> getTopFiles() {
     Collection<IFile> paths = getSource().getAffectedFiles();
-    return CollectionSequence.fromCollection(paths).where(new IWhereFilter<IFile>() {
-      public boolean accept(IFile it) {
-        return it != null;
-      }
-    }).translate(new ITranslator2<IFile, IFile>() {
-      public Iterable<IFile> translate(IFile it) {
-        return it.getChildren();
-      }
-    }).where(new IWhereFilter<IFile>() {
-      public boolean accept(IFile it) {
-        return !(it.isDirectory()) && isIncluded(it);
-      }
-    });
+    return CollectionSequence.fromCollection(paths).where((it) -> it != null).translate((it) -> it.getChildren()).where((it) -> !(it.isDirectory()) && isIncluded(it));
   }
 
 

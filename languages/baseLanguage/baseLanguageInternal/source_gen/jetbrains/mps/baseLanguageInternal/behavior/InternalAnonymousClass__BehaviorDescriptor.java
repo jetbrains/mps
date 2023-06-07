@@ -17,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -55,11 +54,7 @@ public final class InternalAnonymousClass__BehaviorDescriptor extends BaseBHDesc
   }
   /*package*/ static int getIndexInContainingClass_id2XVui9ut6EM(@NotNull SNode __thisNode__) {
     final SNode ancestor = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$Ix, false, false);
-    int index = ListSequence.fromList(SNodeOperations.getNodeDescendantsWhereConceptInList(ancestor, new SAbstractConcept[]{CONCEPTS.AnonymousClass$Bt, CONCEPTS.InternalAnonymousClass$21}, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.getNodeAncestor(it, CONCEPTS.Classifier$Ix, false, false) == ancestor;
-      }
-    }).indexOf(__thisNode__) + 1;
+    int index = ListSequence.fromList(SNodeOperations.getNodeDescendantsWhereConceptInList(ancestor, new SAbstractConcept[]{CONCEPTS.AnonymousClass$Bt, CONCEPTS.InternalAnonymousClass$21}, false, new SAbstractConcept[]{})).where((it) -> SNodeOperations.getNodeAncestor(it, CONCEPTS.Classifier$Ix, false, false) == ancestor).indexOf(__thisNode__) + 1;
     return index;
   }
   /*package*/ static SNode getSuperclass_idi3H_lLu(@NotNull SNode __thisNode__) {

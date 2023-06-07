@@ -24,7 +24,6 @@ import jetbrains.mps.lang.scopes.runtime.SimpleScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.behavior.IMemberContainer__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -65,11 +64,7 @@ public class PullUpMethod_Constraints extends BaseConstraintsDescriptor {
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode ancestor = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ExtractInterfaceMigration$Jf, true, false);
-            return new SimpleScope(ListSequence.fromList(IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invoke(SLinkOperations.getTarget(ancestor, LINKS.newClassifier$$g2j))).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return SNodeOperations.isInstanceOf(it, CONCEPTS.InstanceMethodDeclaration$39);
-              }
-            })) {
+            return new SimpleScope(ListSequence.fromList(IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invoke(SLinkOperations.getTarget(ancestor, LINKS.newClassifier$$g2j))).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.InstanceMethodDeclaration$39))) {
               @Nullable
               @Override
               public String getReferenceText(@NotNull SNode target) {

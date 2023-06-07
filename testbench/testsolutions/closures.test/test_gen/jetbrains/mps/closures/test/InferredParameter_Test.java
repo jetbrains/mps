@@ -31,7 +31,7 @@ public class InferredParameter_Test {
   }
   @Test
   public void test_functionType() throws Exception {
-    _FunctionTypes._void_P4_E0<? super Integer, ? super Double, ? super String, ? super ArrayList<Integer>> method = (Integer intVar, Double doubleVar, String strVar, ArrayList<Integer> list) -> {
+    _FunctionTypes._void_P4_E0<? super Integer, ? super Double, ? super String, ? super ArrayList<Integer>> method = (intVar, doubleVar, strVar, list) -> {
       Integer.bitCount(intVar);
       Double.isFinite(doubleVar);
       strVar.substring(intVar);
@@ -42,7 +42,7 @@ public class InferredParameter_Test {
   }
   @Test
   public void test_genericType() throws Exception {
-    IGeneric<Integer> method = (Integer val, int count, AbstractGeneric<Integer> computer) -> {
+    IGeneric<Integer> method = (val, count, computer) -> {
       ArrayList<Integer> list = new ArrayList<Integer>();
       for (int i = 0; i < count; i++) {
         list.add(i);
@@ -52,9 +52,9 @@ public class InferredParameter_Test {
 
     AbstractGeneric<IGeneric<Double>> nested = new AbstractGeneric<IGeneric<Double>>() {
       public IGeneric<Double> convert(IGeneric<Double> item, List<IGeneric<Double>> list) {
-        list.forEach((IGeneric<Double> it) -> {
-          it.resultOf(3.0, 2, new AbstractGeneric<K>() {
-            public K convert(K doublValue, List<K> nestedList) {
+        list.forEach((it) -> {
+          it.resultOf(3.0, 2, new AbstractGeneric<Double>() {
+            public Double convert(Double doublValue, List<Double> nestedList) {
               return doublValue + nestedList.size();
             }
           });
@@ -68,21 +68,21 @@ public class InferredParameter_Test {
   }
   @Test
   public void test_castContext() throws Exception {
-    double perform = ((ISimple) (int input) -> input * 2.0).perform(3);
+    double perform = ((ISimple) (input) -> input * 2.0).perform(3);
 
     Assert.assertNotNull(perform);
   }
   @Test
   public void test_callContext() throws Exception {
     ArrayList<Integer> integers = new ArrayList();
-    integers.forEach((Integer input) -> input.bitCount(2));
+    integers.forEach((input) -> input.bitCount(2));
   }
   @Test
   public void test_assignContext() throws Exception {
-    ISimple value = (int input) -> 3 * input;
+    ISimple value = (input) -> 3 * input;
     value.perform(5);
 
-    value = (int input2) -> input2 + 3;
+    value = (input2) -> input2 + 3;
     value.perform(3);
 
     AbstractGeneric<String> generic;
@@ -96,14 +96,14 @@ public class InferredParameter_Test {
   }
   @Test
   public void test_varAssignment() throws Exception {
-    ISimple value = (ISimple) (int input) -> 1;
+    ISimple value = (ISimple) (input) -> 1;
 
     Assert.assertNotNull(value);
   }
   @Test
   public void test_methodParamInferrence() throws Exception {
     String[] content = new String[]{"A", "D", "C", "B"};
-    Arrays.sort(content, (String _this_0, String str) -> _this_0.compareToIgnoreCase(str));
+    Arrays.sort(content, (_this_0, str) -> _this_0.compareToIgnoreCase(str));
     Assert.assertEquals(content[1], "B");
   }
   @Test
@@ -111,7 +111,7 @@ public class InferredParameter_Test {
     List<StringBuilder> builders = ListSequence.fromListAndArray(new ArrayList<StringBuilder>(), new StringBuilder("Hello"), new StringBuilder("World"));
 
     // Chained calls with inferred type from "builders", using stream API
-    Stream<String> map = builders.stream().map((StringBuilder content) -> ItemContainer.init(content)).map((ItemContainer<? super StringBuilder> _this_0) -> _this_0.get()).map((E _this_0) -> _this_0.toString());
+    Stream<String> map = builders.stream().map((content) -> ItemContainer.init(content)).map((_this_0) -> _this_0.get()).map((_this_0) -> _this_0.toString());
     Assert.assertEquals(map.findFirst().get(), "Hello");
   }
   @Test
@@ -119,7 +119,7 @@ public class InferredParameter_Test {
     List<StringBuilder> builders = ListSequence.fromListAndArray(new ArrayList<StringBuilder>(), new StringBuilder("Hello"), new StringBuilder("World"));
 
     // Chained calls with inferred type from "builders", using java implementation of sequences
-    Iterable<String> strings = ListSequence.fromList(builders).select((StringBuilder content) -> ItemContainer.init(content)).select((ItemContainer<? super StringBuilder> _this_0) -> _this_0.get()).select((E _this_0) -> _this_0.toString());
+    Iterable<String> strings = ListSequence.fromList(builders).select((content) -> ItemContainer.init(content)).select((_this_0) -> _this_0.get()).select((_this_0) -> _this_0.toString());
     Assert.assertEquals(Sequence.fromIterable(strings).first(), "Hello");
   }
   @Test
@@ -127,7 +127,7 @@ public class InferredParameter_Test {
     Iterable<StringBuilder> builders = ListSequence.fromListAndArray(new ArrayList<StringBuilder>(), new StringBuilder("Hello"), new StringBuilder("World"));
 
     // Chained calls with inferred type from "builders", using sequences
-    Iterable<String> strings = Sequence.fromIterable(builders).select((StringBuilder content) -> ItemContainer.init(content)).select((ItemContainer<? super StringBuilder> _this_0) -> _this_0.get()).select((E _this_0) -> _this_0.toString());
+    Iterable<String> strings = Sequence.fromIterable(builders).select((content) -> ItemContainer.init(content)).select((_this_0) -> _this_0.get()).select((_this_0) -> _this_0.toString());
     Assert.assertEquals(Sequence.fromIterable(strings).first(), "Hello");
   }
   public interface IGeneric<K> {

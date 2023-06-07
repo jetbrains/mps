@@ -9,6 +9,7 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typesystem.inference.EquationInfo;
+import jetbrains.mps.baseLanguage.typesystem.InferenceHelper;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -28,11 +29,7 @@ public class typeof_SequenceCreator_InferenceRule extends AbstractInferenceRule_
         typeCheckingContext.createEquation((SNode) typeCheckingContext.getRepresentative(elementType_typevar_7830826264638926826), (SNode) SLinkOperations.getTarget(creator, LINKS.elementType$J92K), _info_12389875345);
       }
     }
-    {
-      SNode _nodeToCheck_1029348928467 = creator;
-      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1224414570410", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1224414558830", true), (SNode) _quotation_createNode_qzfpnd_a1a0c0c0b(typeCheckingContext.getRepresentative(elementType_typevar_7830826264638926826)), _info_12389875345);
-    }
+    InferenceHelper.addEquation(typeCheckingContext, _quotation_createNode_qzfpnd_b0c0b(typeCheckingContext.getRepresentative(elementType_typevar_7830826264638926826)), (SLinkOperations.getTarget(creator, LINKS.elementType$J92K) == null), typeCheckingContext.typeOf(creator, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "8010275703121630219", true));
     if ((SLinkOperations.getTarget(creator, LINKS.initializer$R2lS) != null)) {
       {
         SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(creator, LINKS.initializer$R2lS);
@@ -50,7 +47,7 @@ public class typeof_SequenceCreator_InferenceRule extends AbstractInferenceRule_
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_qzfpnd_a1a0c0c0b(Object parameter_1) {
+  private static SNode _quotation_createNode_qzfpnd_b0c0b(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10c260e9444L, "SequenceType"));

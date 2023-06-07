@@ -15,8 +15,8 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.plugins.relations.CreateAspectContext;
 import jetbrains.mps.smodel.language.LanguageAspectDescriptor;
@@ -62,14 +62,12 @@ public class Version_Control_TabDescriptor extends RelationDescriptor {
       return nodes;
     }
 
-    ListSequence.fromList(nodes).addSequence(ListSequence.fromList(SModelOperations.roots(vcsModel, CONCEPTS.VCSHints$kA)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.concepts$nb$7)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.cncpt$ubC$) == node;
-          }
-        });
-      }
+    ListSequence.fromList(nodes).addSequence(ListSequence.fromList(SModelOperations.roots(vcsModel, CONCEPTS.VCSHints$kA)).where((it) -> {
+      return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.concepts$nb$7)).any(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+        public Boolean invoke(SNode it) {
+          return SLinkOperations.getTarget(it, LINKS.cncpt$ubC$) == node;
+        }
+      });
     }));
     return nodes;
   }

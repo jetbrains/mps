@@ -11,7 +11,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -42,26 +41,14 @@ public class AnonymousClass_CurlyBraces {
             final SNode classCreator = SNodeFactoryOperations.replaceWithNewChild(parent, CONCEPTS.ClassCreator$ZG);
             SLinkOperations.setTarget(classCreator, LINKS.baseMethodDeclaration$pyYw, SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$pyYw));
             SPropertyOperations.assign(classCreator, PROPS.inferTypeParams$bgj_, SPropertyOperations.getBoolean(node, PROPS.inferTypeParams$bgj_));
-            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeParameter$F9H8)).visitAll(new IVisitor<SNode>() {
-              public void visit(SNode it) {
-                ListSequence.fromList(SLinkOperations.getChildren(classCreator, LINKS.typeParameter$uYiw)).addElement(it);
-              }
-            });
-            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$pzdx)).visitAll(new IVisitor<SNode>() {
-              public void visit(SNode it) {
-                ListSequence.fromList(SLinkOperations.getChildren(classCreator, LINKS.actualArgument$pzdx)).addElement(it);
-              }
-            });
+            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeParameter$F9H8)).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(classCreator, LINKS.typeParameter$uYiw)).addElement(it));
+            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$pzdx)).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(classCreator, LINKS.actualArgument$pzdx)).addElement(it));
             SelectionUtil.selectCell(editorContext, classCreator, SelectionManager.LAST_CELL);
           } else {
             final SNode defaultClassCreator = SNodeFactoryOperations.replaceWithNewChild(parent, CONCEPTS.DefaultClassCreator$TC);
             SLinkOperations.setTarget(defaultClassCreator, LINKS.classifier$9NRM, SLinkOperations.getTarget(node, LINKS.classifier$q_Y$));
             SPropertyOperations.assign(defaultClassCreator, PROPS.inferTypeParams$bgj_, SPropertyOperations.getBoolean(node, PROPS.inferTypeParams$bgj_));
-            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeParameter$F9H8)).visitAll(new IVisitor<SNode>() {
-              public void visit(SNode it) {
-                ListSequence.fromList(SLinkOperations.getChildren(defaultClassCreator, LINKS.typeParameter$KPP3)).addElement(it);
-              }
-            });
+            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeParameter$F9H8)).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(defaultClassCreator, LINKS.typeParameter$KPP3)).addElement(it));
             SelectionUtil.selectCell(editorContext, defaultClassCreator, SelectionManager.LAST_CELL);
 
           }

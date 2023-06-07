@@ -30,7 +30,6 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import com.intellij.openapi.progress.ProgressManager;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.ide.platform.dialogs.choosers.NodeChooserDialog;
 import javax.swing.AbstractListModel;
 import javax.swing.JList;
@@ -134,11 +133,7 @@ public abstract class ListPanel<T> extends JBPanel {
 
     synchronized (myLock) {
       ListSequence.fromList(this.myCandidates).removeSequence(ListSequence.fromList(this.myValues));
-      return ListSequence.fromList(this.myCandidates).select(new ISelector<T, SNodeReference>() {
-        public SNodeReference select(T it) {
-          return unwrap(it);
-        }
-      }).toListSequence();
+      return ListSequence.fromList(this.myCandidates).select((it) -> unwrap(it)).toList();
     }
   }
 

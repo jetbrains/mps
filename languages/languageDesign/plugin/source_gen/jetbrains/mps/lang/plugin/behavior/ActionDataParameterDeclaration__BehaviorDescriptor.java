@@ -18,20 +18,17 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.smodel.ModelImports;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import java.util.Deque;
 import jetbrains.mps.internal.collections.runtime.LinkedListSequence;
 import java.util.LinkedList;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -65,19 +62,11 @@ public final class ActionDataParameterDeclaration__BehaviorDescriptor extends Ba
     return ListSequence.fromListAndArray(new ArrayList<SAbstractConcept>(), CONCEPTS.ActionDataParameterReferenceOperation$dX);
   }
   /*package*/ static String getDescription_id2DsqYJxu5P(@NotNull SAbstractConcept __thisConcept__, SNode parameterObject) {
-    SNode annotation = ListSequence.fromList(SLinkOperations.getChildren(parameterObject, LINKS.annotation$K49I)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.actions(MPS.Platform/)", "~MPSCommonDataKeys$Description"));
-      }
-    }).first();
+    SNode annotation = ListSequence.fromList(SLinkOperations.getChildren(parameterObject, LINKS.annotation$K49I)).where((it) -> SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.actions(MPS.Platform/)", "~MPSCommonDataKeys$Description"))).first();
     if (annotation == null) {
       return "";
     }
-    SNode value = ListSequence.fromList(SLinkOperations.getChildren(annotation, LINKS.value$uK2B)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.hasPointer(it, LINKS.key$bSmV, new SNodePointer("742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.actions(MPS.Platform/)", "~MPSCommonDataKeys$Description.description()"));
-      }
-    }).first();
+    SNode value = ListSequence.fromList(SLinkOperations.getChildren(annotation, LINKS.value$uK2B)).where((it) -> SLinkOperations.hasPointer(it, LINKS.key$bSmV, new SNodePointer("742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.actions(MPS.Platform/)", "~MPSCommonDataKeys$Description.description()"))).first();
     if (value == null) {
       return "";
     }
@@ -97,51 +86,27 @@ public final class ActionDataParameterDeclaration__BehaviorDescriptor extends Ba
         }
       }
     }
-    Iterable<SNode> clsWithStaticFields = ListSequence.fromList(allModels).translate(new ITranslator2<SModel, SNode>() {
-      public Iterable<SNode> translate(SModel it) {
-        return SModelOperations.roots(it, CONCEPTS.ClassConcept$bK);
-      }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Sequence.fromIterable(Classifier__BehaviorDescriptor.staticFields_id4_LVZ3pBr7M.invoke(it)).isNotEmpty();
-      }
-    });
+    Iterable<SNode> clsWithStaticFields = ListSequence.fromList(allModels).translate((it) -> SModelOperations.roots(it, CONCEPTS.ClassConcept$bK)).where((it) -> Sequence.fromIterable(Classifier__BehaviorDescriptor.staticFields_id4_LVZ3pBr7M.invoke(it)).isNotEmpty());
     // I collect extended *ClassifierType*, not *Classifier* (e.g. by getAllExtendedClassifiers or getAllSuperClassifiers)
     // as I'm going to check CT.classifier reference target only, and don't care to get full node (let alone can't decide which 
     // one of these getAll... is the right one ;)
-    return Sequence.fromIterable(clsWithStaticFields).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ((boolean) ActionDataParameterDeclaration__BehaviorDescriptor.isCommonDataKeysDescendant_id2KcpybedV57.invoke(__thisConcept__, it));
-      }
-    }).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return (Iterable<SNode>) Classifier__BehaviorDescriptor.staticFields_id4_LVZ3pBr7M.invoke(it);
-      }
-    });
+    return Sequence.fromIterable(clsWithStaticFields).where((it) -> ((boolean) ActionDataParameterDeclaration__BehaviorDescriptor.isCommonDataKeysDescendant_id2KcpybedV57.invoke(__thisConcept__, it))).translate((it) -> (Iterable<SNode>) Classifier__BehaviorDescriptor.staticFields_id4_LVZ3pBr7M.invoke(it));
   }
   /*package*/ static boolean isCommonDataKeysDescendant_id2KcpybedV57(@NotNull SAbstractConcept __thisConcept__, SNode cc) {
     if (SNodeOperations.is(cc, new SNodePointer("498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.actionSystem(MPS.IDEA/)", "~CommonDataKeys"))) {
       return true;
     }
-    final Deque<List<SNode>> q = LinkedListSequence.fromLinkedListNew(new LinkedList<List<SNode>>());
+    final Deque<List<SNode>> q = LinkedListSequence.fromLinkedList(new LinkedList<List<SNode>>());
     LinkedListSequence.fromLinkedListNew(q).addElement(Classifier__BehaviorDescriptor.getExtendedClassifierTypes_id1UeCwxlWKny.invoke(cc));
     do {
       List<SNode> extendedClassifiers = LinkedListSequence.fromLinkedListNew(q).removeElementAt(0);
       if (ListSequence.fromList(extendedClassifiers).isEmpty()) {
         continue;
       }
-      if (ListSequence.fromList(extendedClassifiers).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SLinkOperations.hasPointer(it, LINKS.classifier$cxMr, new SNodePointer("498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.actionSystem(MPS.IDEA/)", "~CommonDataKeys"));
-        }
-      })) {
+      if (ListSequence.fromList(extendedClassifiers).any((it) -> SLinkOperations.hasPointer(it, LINKS.classifier$cxMr, new SNodePointer("498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.actionSystem(MPS.IDEA/)", "~CommonDataKeys")))) {
         return true;
       }
-      Sequence.fromIterable(SLinkOperations.collect(extendedClassifiers, LINKS.classifier$cxMr)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          LinkedListSequence.fromLinkedListNew(q).addElement(Classifier__BehaviorDescriptor.getExtendedClassifierTypes_id1UeCwxlWKny.invoke(it));
-        }
-      });
+      Sequence.fromIterable(SLinkOperations.collect(extendedClassifiers, LINKS.classifier$cxMr)).visitAll((it) -> LinkedListSequence.fromLinkedListNew(q).addElement(Classifier__BehaviorDescriptor.getExtendedClassifierTypes_id1UeCwxlWKny.invoke(it)));
     } while (LinkedListSequence.fromLinkedListNew(q).isNotEmpty());
     return false;
   }

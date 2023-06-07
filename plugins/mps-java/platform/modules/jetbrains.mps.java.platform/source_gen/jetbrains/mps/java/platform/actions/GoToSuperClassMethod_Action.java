@@ -12,7 +12,6 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.IInterfacedFinder;
 import jetbrains.mps.ide.findusages.view.FindUtils;
@@ -57,11 +56,7 @@ public class GoToSuperClassMethod_Action extends BaseAction {
     if ((mn == null)) {
       return false;
     }
-    if (ListSequence.fromList(SLinkOperations.getChildren(mn, LINKS.annotation$K49I)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Override"));
-      }
-    })) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(mn, LINKS.annotation$K49I)).any((it) -> SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Override")))) {
       IInterfacedFinder finder = FindUtils.getFinder("jetbrains.mps.baseLanguage.findUsages.BaseMethod_Finder");
       return finder != null && finder.isApplicable(mn);
     } else {

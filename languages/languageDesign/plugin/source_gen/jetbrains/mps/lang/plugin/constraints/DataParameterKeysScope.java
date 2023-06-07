@@ -9,7 +9,6 @@ import jetbrains.mps.lang.plugin.behavior.ActionDataParameterDeclaration__Behavi
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -30,21 +29,15 @@ public class DataParameterKeysScope extends Scope {
     if (prefix == null) {
       return getAllStaticFields();
     }
-    return Sequence.fromIterable(getAllStaticFields()).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        String referenceText = getReferenceText(it);
-        return referenceText != null && referenceText.startsWith(prefix);
-      }
+    return Sequence.fromIterable(getAllStaticFields()).where((it) -> {
+      String referenceText = getReferenceText(it);
+      return referenceText != null && referenceText.startsWith(prefix);
     });
   }
 
   @Nullable
   public SNode resolve(SNode contextNode, @NotNull final String refText) {
-    Iterable<SNode> candidates = Sequence.fromIterable(getAllStaticFields()).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return refText.equals(getReferenceText(it));
-      }
-    });
+    Iterable<SNode> candidates = Sequence.fromIterable(getAllStaticFields()).where((it) -> refText.equals(getReferenceText(it)));
     if (Sequence.fromIterable(candidates).count() == 1) {
       return Sequence.fromIterable(candidates).first();
     }

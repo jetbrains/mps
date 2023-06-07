@@ -14,7 +14,6 @@ import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -76,12 +75,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
       if (SNodeOperations.isInstanceOf(sourceMethodConcept, CONCEPTS.ConceptDeclaration$gH)) {
         sourceMethodConcept = null;
       }
-      Iterable<SNode> paramList = ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return _quotation_createNode_7wts1u_a0a0a0a2a0e0j(it);
-        }
-      });
-      defaultExpr = _quotation_createNode_7wts1u_a0d0a4a9(sourceMethodConcept, ((SNode) BHReflection.invoke0(baseMethod, CONCEPTS.ConceptMethodDeclaration$N0, SMethodIdV2.create("getOverridenMethod", 1225196403956L, 0x28bccc7daff7d4f3L))), Sequence.fromIterable(paramList).toListSequence());
+      Iterable<SNode> paramList = ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).select((it) -> _quotation_createNode_7wts1u_a0a0a0a2a0e0j(it));
+      defaultExpr = _quotation_createNode_7wts1u_a0d0a4a9(sourceMethodConcept, ((SNode) BHReflection.invoke0(baseMethod, CONCEPTS.ConceptMethodDeclaration$N0, SMethodIdV2.create("getOverridenMethod", 1225196403956L, 0x28bccc7daff7d4f3L))), Sequence.fromIterable(paramList).toList());
     }
 
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), CONCEPTS.VoidType$BF)) {

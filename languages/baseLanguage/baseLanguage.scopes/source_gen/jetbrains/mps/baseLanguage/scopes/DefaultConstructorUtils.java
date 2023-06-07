@@ -8,7 +8,6 @@ import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.behavior.ClassifierMember__BehaviorDescriptor;
 import java.util.List;
@@ -40,11 +39,7 @@ public final class DefaultConstructorUtils {
   }
   private static boolean containsVisibleNoArgumentsConstructor(SNode currentClass, SNode startClass) {
     if (Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(currentClass)).isNotEmpty()) {
-      SNode constructor = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(currentClass)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).isEmpty();
-        }
-      });
+      SNode constructor = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(currentClass)).findFirst((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).isEmpty());
       if ((constructor == null)) {
         return false;
       }
@@ -62,11 +57,7 @@ public final class DefaultConstructorUtils {
     if ((superClass == null) || Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(superClass)).isEmpty()) {
       return constructors;
     }
-    Iterable<SNode> suitableConstructors = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(superClass)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) ClassifierMember__BehaviorDescriptor.isVisible_id70J2WaK_oVl.invoke(it, currentClass, currentClass);
-      }
-    });
+    Iterable<SNode> suitableConstructors = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(superClass)).where((it) -> (boolean) ClassifierMember__BehaviorDescriptor.isVisible_id70J2WaK_oVl.invoke(it, currentClass, currentClass));
     ListSequence.fromList(constructors).addSequence(Sequence.fromIterable(suitableConstructors));
     return constructors;
   }

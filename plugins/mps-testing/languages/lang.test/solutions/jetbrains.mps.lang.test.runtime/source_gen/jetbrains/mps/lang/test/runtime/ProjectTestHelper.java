@@ -16,7 +16,6 @@ import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -122,11 +121,7 @@ public class ProjectTestHelper {
       helper.asCommand(() -> {
         SNode orig = helper.lookupNode(nodeId);
         SNode copy = CopyUtil.copy(orig, copiedRoots, true);
-        ListSequence.fromList(SNodeOperations.getNodeDescendants(copy, CONCEPTS.AbstractTestNodeAnnotation$lh, false, new SAbstractConcept[]{})).toListSequence().visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            SNodeOperations.deleteNode(it);
-          }
-        });
+        ListSequence.fromList(ListSequence.fromList(SNodeOperations.getNodeDescendants(copy, CONCEPTS.AbstractTestNodeAnnotation$lh, false, new SAbstractConcept[]{})).toList()).visitAll((it) -> SNodeOperations.deleteNode(it));
         model().addRootNode(copy);
       });
       return this;
@@ -154,11 +149,7 @@ public class ProjectTestHelper {
 
     public void done() throws Exception {
       helper.asCommand(() -> {
-        ListSequence.fromList(ListSequence.fromListWithValues(new ArrayList<SNode>(), copiedRoots.values())).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            SNodeOperations.deleteNode(it);
-          }
-        });
+        ListSequence.fromList(ListSequence.fromListWithValues(new ArrayList<SNode>(), copiedRoots.values())).visitAll((it) -> SNodeOperations.deleteNode(it));
         copiedRoots.clear();
       });
     }

@@ -22,7 +22,7 @@ public class check_IInheritExplicitly_CircularReferences_NonTypesystemRule exten
     CircularDependenciesScanner scanner = new CircularDependenciesScanner();
     IInheritExplicitly__BehaviorDescriptor.visitSuperTypes_id1WN66f3AYxj.invoke(iInheritExplicitly, scanner);
 
-    scanner.getCircularReference().ifPresent((SNode circular) -> {
+    scanner.getCircularReference().ifPresent((circular) -> {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(iInheritExplicitly, "There's a cycle in the inheritance hierarchy for this type", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "685380225822696379", null, errorTarget);

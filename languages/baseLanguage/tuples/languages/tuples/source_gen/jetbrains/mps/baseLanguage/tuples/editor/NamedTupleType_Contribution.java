@@ -64,7 +64,7 @@ public class NamedTupleType_Contribution extends SubstituteMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(final SubstituteMenuContext _context) {
-      return ListSequence.fromList(SModelOperations.nodesIncludingImported(_context.getModel(), CONCEPTS.NamedTupleDeclaration$aM)).where((SNode ntd) -> VisibilityUtil.isVisible(_context.getParentNode(), ntd)).toListSequence();
+      return ListSequence.fromList(SModelOperations.nodesIncludingImported(_context.getModel(), CONCEPTS.NamedTupleDeclaration$aM)).where((ntd) -> VisibilityUtil.isVisible(_context.getParentNode(), ntd)).toList();
     }
     private class SMP_Action_rx1mqb_a0 extends SingleItemSubstituteMenuPart {
       private final SNode myParameterObject;

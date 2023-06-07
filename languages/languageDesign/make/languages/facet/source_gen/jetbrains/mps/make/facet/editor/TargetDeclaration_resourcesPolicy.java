@@ -28,7 +28,7 @@ public class TargetDeclaration_resourcesPolicy extends AbstractCellMenuComponent
     }
 
     protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
-      return ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1740bd43b75c4b23L, "jetbrains.mps.make.facet.structure.ResourcesPolicy"))).toListSequence();
+      return ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1740bd43b75c4b23L, "jetbrains.mps.make.facet.structure.ResourcesPolicy"))).toList();
 
     }
     protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {

@@ -77,7 +77,7 @@ public class HttpRequest {
     if (path.startsWith("/")) {
       path = path.substring(1);
     }
-    return Sequence.fromIterable(Sequence.fromArray(path.split("/"))).toListSequence();
+    return Sequence.fromIterable(Sequence.fromArray(path.split("/"))).toList();
   }
 
   private static String getReferrerHost(io.netty.handler.codec.http.HttpRequest request) throws URISyntaxException {

@@ -10,7 +10,6 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -34,16 +33,10 @@ public class FunctionInheritance extends MigrationScriptBase {
     {
       SearchScope scope_yiy9y1_a0e = CommandUtil.createScope(m);
       final SearchScope scope_yiy9y1_a0e_0 = new EditableFilteringScope(scope_yiy9y1_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_yiy9y1_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.FunctionDeclaration$oD, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          if ((SLinkOperations.getTarget(it, LINKS._inheritance$Geug) != null)) {
-            SLinkOperations.setTarget(it, LINKS.inheritance$TFvr, SLinkOperations.getTarget(it, LINKS._inheritance$Geug));
-          }
+      QueryExecutionContext context = () -> scope_yiy9y1_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.FunctionDeclaration$oD, false)).visitAll((it) -> {
+        if ((SLinkOperations.getTarget(it, LINKS._inheritance$Geug) != null)) {
+          SLinkOperations.setTarget(it, LINKS.inheritance$TFvr, SLinkOperations.getTarget(it, LINKS._inheritance$Geug));
         }
       });
     }

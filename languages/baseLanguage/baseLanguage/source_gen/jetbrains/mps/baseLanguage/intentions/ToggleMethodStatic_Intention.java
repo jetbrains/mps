@@ -18,7 +18,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
@@ -70,11 +69,7 @@ public final class ToggleMethodStatic_Intention extends AbstractIntentionDescrip
       SLinkOperations.setTarget(method, LINKS.body$5xQk, SLinkOperations.getTarget(node, LINKS.body$5xQk));
       SPropertyOperations.assign(method, PROPS.isFinal$eVPk, SPropertyOperations.getBoolean(node, PROPS.isFinal$eVPk));
       SPropertyOperations.assign(method, PROPS.isSynchronized$58UL, SPropertyOperations.getBoolean(node, PROPS.isSynchronized$58UL));
-      ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.modifiers$F5MM)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$F5MM)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(it, CONCEPTS.DefaultModifier$rO));
-        }
-      }));
+      ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.modifiers$F5MM)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$F5MM)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.DefaultModifier$rO))));
       ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$5xBj)));
       SLinkOperations.setTarget(method, LINKS.returnType$5xoi, SLinkOperations.getTarget(node, LINKS.returnType$5xoi));
       ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.throwsItem$CdW$)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.throwsItem$CdW$)));

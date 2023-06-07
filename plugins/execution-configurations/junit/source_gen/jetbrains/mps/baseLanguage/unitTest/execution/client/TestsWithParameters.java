@@ -14,7 +14,7 @@ import com.intellij.execution.ExecutionException;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 
@@ -45,7 +45,7 @@ public final class TestsWithParameters {
 
   @NotNull
   public static TestsWithParameters createFromTest2RunList(@NotNull List<ITestNodeWrapper> tests2Run) throws ExecutionException {
-    List<ITestNodeWrapper> testsNoNull = ListSequence.fromList(tests2Run).where(new NotNullWhereFilter<ITestNodeWrapper>()).toListSequence();
+    List<ITestNodeWrapper> testsNoNull = ListSequence.fromList(tests2Run).where(new NotNullWhereFilter()).toList();
     if (ListSequence.fromList(testsNoNull).isEmpty()) {
       throw new ExecutionException("No tests to run");
     }
@@ -64,8 +64,8 @@ public final class TestsWithParameters {
         ListSequence.fromList(testsToSkip).addElement(test);
       }
     }
-    String skipped = IterableUtils.join(ListSequence.fromList(testsToSkip).select(new ISelector<ITestNodeWrapper, String>() {
-      public String select(ITestNodeWrapper it) {
+    String skipped = IterableUtils.join(ListSequence.fromList(testsToSkip).select(new _FunctionTypes._return_P1_E0<String, ITestNodeWrapper>() {
+      public String invoke(ITestNodeWrapper it) {
         return it.getName();
       }
     }), " ");

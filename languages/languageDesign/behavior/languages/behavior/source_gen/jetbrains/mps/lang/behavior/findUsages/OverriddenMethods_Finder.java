@@ -14,13 +14,11 @@ import jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.lang.behavior.behavior.ConceptMethodDeclaration__BehaviorDescriptor;
 import jetbrains.mps.ide.findusages.view.FindUtils;
-import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -65,49 +63,37 @@ public class OverriddenMethods_Finder extends GeneratedFinder {
     try {
       // top-most ancestor by the lang.behavior
       final SNode topMostOverriddenMethod = ConceptMethodDeclaration__BehaviorDescriptor.getOverridenMethod_idhP3pnNO.invoke(node);
-      FindUtils.searchForResults(monitor.subTask(1), new IFinder.FindCallback() {
-        public void onUsageFound(@NotNull SearchResult<?> searchResult) {
-          SNode nodeParam = (SNode) searchResult.getObject();
-          new _FunctionTypes._void_P1_E0<SNode>() {
-            public void invoke(SNode ancestorConcept) {
-              if (ancestorConcept == ConceptMethodDeclaration__BehaviorDescriptor.getContainingConcept_idi3POAMX.invoke(node)) {
-                return;
-              }
-              SModel cncptModel = SNodeOperations.getModel(ancestorConcept);
-              if (cncptModel == null) {
-                if (LOG.isErrorLevel()) {
-                  LOG.error("Could not found the ancestorConcept model while looking for the ancestors for the concept '" + SNodeOperations.present(ancestorConcept) + "'");
-                }
-                return;
-
-              }
-              SModel aspectModel = SModuleOperations.getAspect(cncptModel.getModule(), "behavior");
-              if (aspectModel == null) {
-                if (LOG.isErrorLevel()) {
-                  LOG.error("Could not found the aspect behavior model while looking for the ancestors for the concept '" + SNodeOperations.present(ancestorConcept) + "'");
-                }
-                return;
-              }
-              if (monitor.isCanceled()) {
-                return;
-              }
-              SNode ancestorBehavior = SNodeOperations.cast(Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspects_id4G9PD8$NvPM.invoke(SNodeOperations.cast(ancestorConcept, CONCEPTS.AbstractConceptDeclaration$KA), aspectModel)).where(new IWhereFilter<SNode>() {
-                public boolean accept(SNode it) {
-                  return SNodeOperations.isInstanceOf(it, CONCEPTS.ConceptBehavior$2);
-                }
-              }).first(), CONCEPTS.ConceptBehavior$2);
-              List<SNode> candidateMethodsInAncestor = ListSequence.fromList(SLinkOperations.getChildren(ancestorBehavior, LINKS.method$w_in)).where(new IWhereFilter<SNode>() {
-                public boolean accept(SNode it) {
-                  return ConceptMethodDeclaration__BehaviorDescriptor.getOverridenMethod_idhP3pnNO.invoke(it) == topMostOverriddenMethod;
-                }
-              }).toListSequence();
-              // supposedly there are no more than one method
-              for (SNode candidateMethod : ListSequence.fromList(candidateMethodsInAncestor)) {
-                callback.onUsageFound(createSingleResult(candidateMethod));
-              }
+      FindUtils.searchForResults(monitor.subTask(1), (searchResult) -> {
+        SNode nodeParam = (SNode) searchResult.getObject();
+        ((_FunctionTypes._void_P1_E0<SNode>) (SNode ancestorConcept) -> {
+          if (ancestorConcept == ConceptMethodDeclaration__BehaviorDescriptor.getContainingConcept_idi3POAMX.invoke(node)) {
+            return;
+          }
+          SModel cncptModel = SNodeOperations.getModel(ancestorConcept);
+          if (cncptModel == null) {
+            if (LOG.isErrorLevel()) {
+              LOG.error("Could not found the ancestorConcept model while looking for the ancestors for the concept '" + SNodeOperations.present(ancestorConcept) + "'");
             }
-          }.invoke(nodeParam);
-        }
+            return;
+
+          }
+          SModel aspectModel = SModuleOperations.getAspect(cncptModel.getModule(), "behavior");
+          if (aspectModel == null) {
+            if (LOG.isErrorLevel()) {
+              LOG.error("Could not found the aspect behavior model while looking for the ancestors for the concept '" + SNodeOperations.present(ancestorConcept) + "'");
+            }
+            return;
+          }
+          if (monitor.isCanceled()) {
+            return;
+          }
+          SNode ancestorBehavior = SNodeOperations.cast(Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspects_id4G9PD8$NvPM.invoke(SNodeOperations.cast(ancestorConcept, CONCEPTS.AbstractConceptDeclaration$KA), aspectModel)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.ConceptBehavior$2)).first(), CONCEPTS.ConceptBehavior$2);
+          List<SNode> candidateMethodsInAncestor = ListSequence.fromList(SLinkOperations.getChildren(ancestorBehavior, LINKS.method$w_in)).where((it) -> ConceptMethodDeclaration__BehaviorDescriptor.getOverridenMethod_idhP3pnNO.invoke(it) == topMostOverriddenMethod).toList();
+          // supposedly there are no more than one method
+          for (SNode candidateMethod : ListSequence.fromList(candidateMethodsInAncestor)) {
+            callback.onUsageFound(createSingleResult(candidateMethod));
+          }
+        }).invoke(nodeParam);
       }, new SearchQuery(ConceptMethodDeclaration__BehaviorDescriptor.getContainingConcept_idi3POAMX.invoke(node), scope), FindUtils.getFinder("jetbrains.mps.lang.structure.findUsages.ConceptAncestors_Finder"));
     } finally {
       monitor.done();

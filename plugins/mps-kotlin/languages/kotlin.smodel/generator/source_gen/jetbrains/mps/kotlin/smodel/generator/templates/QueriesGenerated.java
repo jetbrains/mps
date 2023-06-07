@@ -31,8 +31,6 @@ import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.kotlin.overloading.FunctionParamHelper;
 import jetbrains.mps.kotlin.behavior.IFunctionCall__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.kotlin.overloading.Argument;
 import jetbrains.mps.kotlin.overloading.ParamException;
 import java.util.Collections;
 import jetbrains.mps.generator.template.MappingScriptContext;
@@ -42,7 +40,6 @@ import jetbrains.mps.kotlin.smodel.generator.util.ReferencesId;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.kotlin.api.declaration.TypeParameterDeclaration;
 import jetbrains.mps.kotlin.behavior.IConstructorSuperSpecifier__BehaviorDescriptor;
 import java.util.Iterator;
@@ -344,11 +341,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
     // We have to order parameters as the method called has ...args rather than explicit ones
     try {
-      return Sequence.fromIterable(FunctionParamHelper.toOrderedList(IFunctionCall__BehaviorDescriptor.getFunctionDescriptor_id26mUjU3xhgD.invoke(_context.getNode()).getParameters(), IFunctionCall__BehaviorDescriptor.getArguments_id1VI7K1jROBX.invoke(_context.getNode()))).select(new ISelector<Argument, SNode>() {
-        public SNode select(Argument it) {
-          return it.getExpression();
-        }
-      });
+      return Sequence.fromIterable(FunctionParamHelper.toOrderedList(IFunctionCall__BehaviorDescriptor.getFunctionDescriptor_id26mUjU3xhgD.invoke(_context.getNode()).getParameters(), IFunctionCall__BehaviorDescriptor.getArguments_id1VI7K1jROBX.invoke(_context.getNode()))).select((it) -> it.getExpression());
     } catch (ParamException exception) {
       _context.showErrorMessage(_context.getNode(), exception.getMessage());
       return Sequence.fromIterable(Collections.<SNode>emptyList());
@@ -357,30 +350,22 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Iterable<SNode> sourceNodesQuery_1_1(final SourceSubstituteMacroNodesContext _context) {
     // We have to order parameters as the method called has ...args rather than explicit ones
     try {
-      return Sequence.fromIterable(FunctionParamHelper.toOrderedList(IFunctionCall__BehaviorDescriptor.getFunctionDescriptor_id26mUjU3xhgD.invoke(_context.getNode()).getParameters(), IFunctionCall__BehaviorDescriptor.getArguments_id1VI7K1jROBX.invoke(_context.getNode()))).select(new ISelector<Argument, SNode>() {
-        public SNode select(Argument it) {
-          return it.getExpression();
-        }
-      });
+      return Sequence.fromIterable(FunctionParamHelper.toOrderedList(IFunctionCall__BehaviorDescriptor.getFunctionDescriptor_id26mUjU3xhgD.invoke(_context.getNode()).getParameters(), IFunctionCall__BehaviorDescriptor.getArguments_id1VI7K1jROBX.invoke(_context.getNode()))).select((it) -> it.getExpression());
     } catch (ParamException exception) {
       _context.showErrorMessage(_context.getNode(), exception.getMessage());
       return Sequence.fromIterable(Collections.<SNode>emptyList());
     }
   }
   public static void mappingScript_CodeBlock_3(final MappingScriptContext _context) {
-    Iterable<SNode> nodes = ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.ConceptType$Jb)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SNodeOperations.as(SNodeOperations.getParent(it), CONCEPTS.ReceiverType$$f);
-      }
-    });
-    ReferencesId.extractRefs(_context.getModel(), "Concepts", nodes, (SNode ref) -> SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(ref, LINKS.type$NVFj), CONCEPTS.ConceptType$Jb), LINKS.concept$PItp), (SNode concept) -> {
+    Iterable<SNode> nodes = ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.ConceptType$Jb)).select((it) -> SNodeOperations.as(SNodeOperations.getParent(it), CONCEPTS.ReceiverType$$f));
+    ReferencesId.extractRefs(_context.getModel(), "Concepts", nodes, (ref) -> SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(ref, LINKS.type$NVFj), CONCEPTS.ConceptType$Jb), LINKS.concept$PItp), (concept) -> {
       SNodeReference targetMethod = (SNodeOperations.isInstanceOf(concept, CONCEPTS.InterfaceConceptDeclaration$CG) ? new SNodePointer("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)", "~MetaAdapterFactory.getInterfaceConcept(long,long,long,java.lang.String)") : new SNodePointer("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)", "~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)"));
       String referenceName = ReferencesId.referenceName(SPropertyOperations.getString(concept, PROPS.name$MnvL), null, concept, _context);
       return MultiTuple.<String,SNode>from(referenceName, ReferencesId.metaAdapterCall(targetMethod, ReferencesId.conceptArguments(concept), NameUtil.nodeFQName(concept)));
     });
   }
   public static void mappingScript_CodeBlock_5(final MappingScriptContext _context) {
-    ReferencesId.extractRefs(_context.getModel(), "Links", SModelOperations.nodes(_context.getModel(), CONCEPTS.LinkReference$dY), (SNode ref) -> SLinkOperations.getTarget(ref, LINKS.link$pSen), (SNode link) -> {
+    ReferencesId.extractRefs(_context.getModel(), "Links", SModelOperations.nodes(_context.getModel(), CONCEPTS.LinkReference$dY), (ref) -> SLinkOperations.getTarget(ref, LINKS.link$pSen), (link) -> {
       SNodeReference targetMethod = (SEnumOperations.isMember(SPropertyOperations.getEnum(link, PROPS.metaClass$PeKc), 0xfc6f4e95b8L) ? new SNodePointer("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)", "~MetaAdapterFactory.getReferenceLink(long,long,long,long,java.lang.String)") : new SNodePointer("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)", "~MetaAdapterFactory.getContainmentLink(long,long,long,long,java.lang.String)"));
 
       String referenceName = ReferencesId.referenceName(SPropertyOperations.getString(link, PROPS.name$MnvL), SPropertyOperations.getString(link, PROPS.linkId$mi9g), LinkDeclaration__BehaviorDescriptor.getConceptDeclaration_id7jb4LXpbWaP.invoke(link), _context);
@@ -388,7 +373,7 @@ public class QueriesGenerated extends QueryProviderBase {
     });
   }
   public static void mappingScript_CodeBlock_7(final MappingScriptContext _context) {
-    ReferencesId.extractRefs(_context.getModel(), "Properties", SModelOperations.nodes(_context.getModel(), CONCEPTS.PropertyReference$2w), (SNode node) -> SLinkOperations.getTarget(node, LINKS.link$$6vY), (SNode property) -> {
+    ReferencesId.extractRefs(_context.getModel(), "Properties", SModelOperations.nodes(_context.getModel(), CONCEPTS.PropertyReference$2w), (node) -> SLinkOperations.getTarget(node, LINKS.link$$6vY), (property) -> {
       SNode conceptDeclaration = PropertyDeclaration__BehaviorDescriptor.getConceptDeclaration_id2OF3rgRewqT.invoke(property);
 
       String referenceName = ReferencesId.referenceName(SPropertyOperations.getString(property, PROPS.name$MnvL), SPropertyOperations.getString(property, PROPS.propertyId$m5HU), conceptDeclaration, _context);
@@ -398,41 +383,37 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static void mappingScript_CodeBlock_10(final MappingScriptContext _context) {
     // TODO make that behavior generic in type parameters definition? (some "isSugar" method?)
-    ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.IConstructorSuperSpecifier$wm)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        Iterable<TypeParameterDeclaration> typeParameters = IConstructorSuperSpecifier__BehaviorDescriptor.getConstructorDescriptor_idnhyiqudFLy.invoke(it).getTypeParameters();
-        {
-          Iterator<TypeParameterDeclaration> parameter_it = Sequence.fromIterable(typeParameters).iterator();
-          Iterator<SNode> argument_it = ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.typeArguments$86s6)).iterator();
-          TypeParameterDeclaration parameter_var;
-          SNode argument_var;
-          while (parameter_it.hasNext() && argument_it.hasNext()) {
-            parameter_var = parameter_it.next();
-            argument_var = argument_it.next();
-            // Detach arguments that do no map to a concrete (not concept) type parameter
-            if (parameter_var instanceof ConceptTypeParameterDeclaration) {
-              SNodeOperations.deleteNode(argument_var);
-            }
+    ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.IConstructorSuperSpecifier$wm)).visitAll((it) -> {
+      Iterable<TypeParameterDeclaration> typeParameters = IConstructorSuperSpecifier__BehaviorDescriptor.getConstructorDescriptor_idnhyiqudFLy.invoke(it).getTypeParameters();
+      {
+        Iterator<TypeParameterDeclaration> parameter_it = Sequence.fromIterable(typeParameters).iterator();
+        Iterator<SNode> argument_it = ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.typeArguments$86s6)).iterator();
+        TypeParameterDeclaration parameter_var;
+        SNode argument_var;
+        while (parameter_it.hasNext() && argument_it.hasNext()) {
+          parameter_var = parameter_it.next();
+          argument_var = argument_it.next();
+          // Detach arguments that do no map to a concrete (not concept) type parameter
+          if (parameter_var instanceof ConceptTypeParameterDeclaration) {
+            SNodeOperations.deleteNode(argument_var);
           }
         }
       }
     });
 
-    Sequence.fromIterable(SNodeOperations.ofConcept(SModelOperations.nodes(_context.getModel(), CONCEPTS.IProjectedTypeArguments$ql), CONCEPTS.IType$Ni)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        Iterable<TypeParameterDeclaration> typeParameters = IType__BehaviorDescriptor.getTypeParameters_id7an2tsIdpkM.invoke(it);
-        {
-          Iterator<TypeParameterDeclaration> parameter_it = Sequence.fromIterable(typeParameters).iterator();
-          Iterator<SNode> argument_it = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(it, CONCEPTS.IProjectedTypeArguments$ql), LINKS.typeProjections$vhti)).iterator();
-          TypeParameterDeclaration parameter_var;
-          SNode argument_var;
-          while (parameter_it.hasNext() && argument_it.hasNext()) {
-            parameter_var = parameter_it.next();
-            argument_var = argument_it.next();
-            // Detach arguments that do no map to a concrete (not concept) type parameter
-            if (parameter_var instanceof ConceptTypeParameterDeclaration) {
-              SNodeOperations.deleteNode(argument_var);
-            }
+    Sequence.fromIterable(SNodeOperations.ofConcept(SModelOperations.nodes(_context.getModel(), CONCEPTS.IProjectedTypeArguments$ql), CONCEPTS.IType$Ni)).visitAll((it) -> {
+      Iterable<TypeParameterDeclaration> typeParameters = IType__BehaviorDescriptor.getTypeParameters_id7an2tsIdpkM.invoke(it);
+      {
+        Iterator<TypeParameterDeclaration> parameter_it = Sequence.fromIterable(typeParameters).iterator();
+        Iterator<SNode> argument_it = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(it, CONCEPTS.IProjectedTypeArguments$ql), LINKS.typeProjections$vhti)).iterator();
+        TypeParameterDeclaration parameter_var;
+        SNode argument_var;
+        while (parameter_it.hasNext() && argument_it.hasNext()) {
+          parameter_var = parameter_it.next();
+          argument_var = argument_it.next();
+          // Detach arguments that do no map to a concrete (not concept) type parameter
+          if (parameter_var instanceof ConceptTypeParameterDeclaration) {
+            SNodeOperations.deleteNode(argument_var);
           }
         }
       }

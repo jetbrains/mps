@@ -14,7 +14,7 @@ import java.util.Map;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.Set;
 import java.util.HashMap;
@@ -26,7 +26,6 @@ import jetbrains.mps.lang.dataFlow.framework.instructions.WriteInstruction;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.scope.FilteringScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.Objects;
 import jetbrains.mps.baseLanguage.search.VisibilityUtil;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -150,11 +149,11 @@ public class InlineMethodRefactoring {
     return statement;
   }
   private void replaceLocalStaticMethodCalls(SNode body, SNode classAncestor) {
-    for (SNode localCall : ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.LocalMethodCall$zT, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
+    for (SNode localCall : ListSequence.fromList(ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.LocalMethodCall$zT, false, new SAbstractConcept[]{})).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      public Boolean invoke(SNode it) {
         return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$pyYw), CONCEPTS.StaticMethodDeclaration$FJ);
       }
-    }).toListSequence()) {
+    }).toList())) {
       SNode newCall = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, "jetbrains.mps.baseLanguage.structure.StaticMethodCall"));
       SLinkOperations.setTarget(newCall, LINKS.classConcept$M5BC, classAncestor);
       SLinkOperations.setTarget(newCall, LINKS.baseMethodDeclaration$pyYw, SNodeOperations.cast(SLinkOperations.getTarget(localCall, LINKS.baseMethodDeclaration$pyYw), CONCEPTS.StaticMethodDeclaration$FJ));
@@ -164,11 +163,11 @@ public class InlineMethodRefactoring {
     }
   }
   private void replaceLocalInstanceCalls(SNode body, SNode classAncestor) {
-    for (SNode localCall : ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.LocalMethodCall$zT, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
+    for (SNode localCall : ListSequence.fromList(ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.LocalMethodCall$zT, false, new SAbstractConcept[]{})).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      public Boolean invoke(SNode it) {
         return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$pyYw), CONCEPTS.InstanceMethodDeclaration$39);
       }
-    }).toListSequence()) {
+    }).toList())) {
       SNode newCall = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation"));
       SLinkOperations.setTarget(newCall, LINKS.baseMethodDeclaration$pyYw, SNodeOperations.cast(SLinkOperations.getTarget(localCall, LINKS.baseMethodDeclaration$pyYw), CONCEPTS.InstanceMethodDeclaration$39));
       ListSequence.fromList(SLinkOperations.getChildren(newCall, LINKS.actualArgument$pzdx)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(localCall, LINKS.actualArgument$pzdx)));
@@ -183,8 +182,8 @@ public class InlineMethodRefactoring {
     }
   }
   private void replaceParameters(SNode returnExpression, Map<SNode, SNode> parameters) {
-    for (SNode ref : ListSequence.fromList(SNodeOperations.getNodeDescendants(returnExpression, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
+    for (SNode ref : ListSequence.fromList(SNodeOperations.getNodeDescendants(returnExpression, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      public Boolean invoke(SNode it) {
         return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.ParameterDeclaration$RG);
       }
     })) {
@@ -217,8 +216,8 @@ public class InlineMethodRefactoring {
   }
   private Set<SNode> findUsedParameters() {
     Set<SNode> usedParameters = SetSequence.fromSet(new HashSet<SNode>());
-    for (SNode paramReference : ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(this.myMethodDeclaration, LINKS.body$5xQk), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
+    for (SNode paramReference : ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(this.myMethodDeclaration, LINKS.body$5xQk), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      public Boolean invoke(SNode it) {
         return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.ParameterDeclaration$RG);
       }
     })) {
@@ -286,7 +285,7 @@ public class InlineMethodRefactoring {
     SNode list = SNodeOperations.cast(SNodeOperations.getParent(statement), CONCEPTS.StatementList$m_);
     int start = ListSequence.fromList(SLinkOperations.getChildren(list, LINKS.statement$53DE)).indexOf(statement);
     for (int i = start; i < ListSequence.fromList(SLinkOperations.getChildren(list, LINKS.statement$53DE)).count(); i++) {
-      SNode st = ListSequence.fromList(ListSequence.fromList(SLinkOperations.getChildren(list, LINKS.statement$53DE)).toListSequence()).getElement(i);
+      SNode st = ListSequence.fromList(ListSequence.fromList(SLinkOperations.getChildren(list, LINKS.statement$53DE)).toList()).getElement(i);
       for (SNode declaration : ListSequence.fromList(SNodeOperations.getNodeDescendants(st, CONCEPTS.VariableDeclaration$Y0, false, new SAbstractConcept[]{}))) {
         if (SPropertyOperations.getString(declaration, PROPS.name$MnvL).equals(name)) {
           return false;
@@ -302,13 +301,13 @@ public class InlineMethodRefactoring {
           return !(SNodeOperations.isInstanceOf(node, CONCEPTS.LocalVariableDeclaration$41));
         }
       };
-      Iterable<SNode> localVariables = Sequence.fromIterable(variables.getAvailableElements("")).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
+      Iterable<SNode> localVariables = Sequence.fromIterable(variables.getAvailableElements("")).select(new _FunctionTypes._return_P1_E0<SNode, SNode>() {
+        public SNode invoke(SNode it) {
           return SNodeOperations.as(it, CONCEPTS.LocalVariableDeclaration$41);
         }
       });
-      if (Sequence.fromIterable(localVariables).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
+      if (Sequence.fromIterable(localVariables).any(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+        public Boolean invoke(SNode it) {
           return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), name);
         }
       })) {

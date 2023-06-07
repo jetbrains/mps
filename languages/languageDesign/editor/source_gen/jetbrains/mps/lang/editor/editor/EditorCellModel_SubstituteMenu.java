@@ -28,8 +28,6 @@ import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
 import jetbrains.mps.scope.Scope;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.smodel.runtime.IconResource;
@@ -1282,15 +1280,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       if (scope == null) {
         return Collections.emptyList();
       }
-      return Sequence.fromIterable(scope.getAvailableElements("")).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SNodeOperations.as(it, CONCEPTS.EditorComponentDeclaration$WM);
-        }
-      }).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return it != null;
-        }
-      });
+      return Sequence.fromIterable(scope.getAvailableElements("")).select((it) -> SNodeOperations.as(it, CONCEPTS.EditorComponentDeclaration$WM)).where((it) -> it != null);
     }
     private class SMP_Action_le0q3j_a91 extends SingleItemSubstituteMenuPart {
       private final SNode myParameterObject;

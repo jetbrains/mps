@@ -17,8 +17,6 @@ import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -43,11 +41,7 @@ public class IfInstanceOfVarReference_Constraints extends BaseConstraintsDescrip
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forResolvableElements(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getContextNode(), CONCEPTS.IfInstanceOfStatement$rG, false)).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                return SLinkOperations.getTarget(it, LINKS.variable$jFwR);
-              }
-            }));
+            return ListScope.forResolvableElements(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getContextNode(), CONCEPTS.IfInstanceOfStatement$rG, false)).select((it) -> SLinkOperations.getTarget(it, LINKS.variable$jFwR)));
           }
         };
       }

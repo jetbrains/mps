@@ -27,7 +27,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.scope.ListScope;
@@ -66,11 +65,7 @@ public class BinaryOperationReference_Constraints extends BaseConstraintsDescrip
               SModule langModule = language.getSourceModuleReference().resolve(repo);
               if (langModule instanceof Language) {
                 SModel sm = SModuleOperations.getAspect(langModule, "structure");
-                ListSequence.fromList(result).addSequence(ListSequence.fromList(SModelOperations.roots(sm, CONCEPTS.ConceptDeclaration$gH)).where(new IWhereFilter<SNode>() {
-                  public boolean accept(SNode it) {
-                    return (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id4UTtJHK9fEJ.invoke(it, CONCEPTS.BinaryOperation$W1) && !(SPropertyOperations.getBoolean(it, PROPS.abstract$ibpT));
-                  }
-                }));
+                ListSequence.fromList(result).addSequence(ListSequence.fromList(SModelOperations.roots(sm, CONCEPTS.ConceptDeclaration$gH)).where((it) -> (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id4UTtJHK9fEJ.invoke(it, CONCEPTS.BinaryOperation$W1) && !(SPropertyOperations.getBoolean(it, PROPS.abstract$ibpT))));
               }
             }
             return ListScope.forResolvableElements(result);

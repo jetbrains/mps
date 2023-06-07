@@ -7,7 +7,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Objects;
 import jetbrains.mps.lang.dataFlow.framework.Program;
 import jetbrains.mps.lang.dataFlow.MPSProgramBuilder;
@@ -45,8 +45,8 @@ public class InlineVariableReferenceRefactoring extends InlineVariableRefactorin
       nodeToSelect = SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(myAssignment, CONCEPTS.VariableDeclaration$Y0), LINKS.initializer$2twD));
       SNodeOperations.replaceWithAnother(this.myReference, nodeToSelect);
     } else if (SNodeOperations.isInstanceOf(myAssignment, CONCEPTS.AssignmentExpression$SE)) {
-      if (ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.cast(myAssignment, CONCEPTS.AssignmentExpression$SE), LINKS.rValue$spNK), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
+      if (ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.cast(myAssignment, CONCEPTS.AssignmentExpression$SE), LINKS.rValue$spNK), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+        public Boolean invoke(SNode it) {
           return Objects.equals(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), variable);
         }
       }).isNotEmpty()) {

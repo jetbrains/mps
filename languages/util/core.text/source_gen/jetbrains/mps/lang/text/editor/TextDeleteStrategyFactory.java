@@ -13,7 +13,6 @@ import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -197,19 +196,11 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       SNode edgeElement;
       if (myIsForward) {
         edgeElement = ListSequence.fromList(SLinkOperations.getChildren(myNeighbourLine, LINKS.elements$_j45)).first();
-        ListSequence.fromList(SLinkOperations.getChildren(myNeighbourLine, LINKS.elements$_j45)).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            ListSequence.fromList(SLinkOperations.getChildren(myCurrentLine, LINKS.elements$_j45)).addElement(it);
-          }
-        });
+        ListSequence.fromList(SLinkOperations.getChildren(myNeighbourLine, LINKS.elements$_j45)).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(myCurrentLine, LINKS.elements$_j45)).addElement(it));
         SNodeOperations.deleteNode(TextStrategy.findLineContainer(myNeighbourLine));
       } else {
         edgeElement = ListSequence.fromList(SLinkOperations.getChildren(myCurrentLine, LINKS.elements$_j45)).first();
-        ListSequence.fromList(SLinkOperations.getChildren(myCurrentLine, LINKS.elements$_j45)).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            ListSequence.fromList(SLinkOperations.getChildren(myNeighbourLine, LINKS.elements$_j45)).addElement(it);
-          }
-        });
+        ListSequence.fromList(SLinkOperations.getChildren(myCurrentLine, LINKS.elements$_j45)).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(myNeighbourLine, LINKS.elements$_j45)).addElement(it));
         SNodeOperations.deleteNode(TextStrategy.findLineContainer(myCurrentLine));
       }
       if (SNodeOperations.isInstanceOf(edgeElement, CONCEPTS.Word$Dn) && SNodeOperations.isInstanceOf(myCurrentNode, CONCEPTS.Word$Dn)) {

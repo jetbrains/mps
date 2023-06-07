@@ -15,7 +15,7 @@ public class typeof_IInferredExpression_InferenceRule extends AbstractInferenceR
   public typeof_IInferredExpression_InferenceRule() {
   }
   public void applyRule(final SNode expr, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    InferenceDependencyHelper.addInferenceDependencies(typeCheckingContext, expr);
+    InferenceHelper.addInferenceDependencies(typeCheckingContext, expr);
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.IInferredExpression$UL;

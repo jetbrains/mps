@@ -18,8 +18,6 @@ import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.make.facet.behavior.FacetDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -44,11 +42,7 @@ public class TargetDeclaration_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forResolvableElements(Sequence.fromIterable(FacetDeclaration__BehaviorDescriptor.allExtends_id6O0kUTrsU9c.invoke(SNodeOperations.as((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), CONCEPTS.FacetDeclaration$Nd))).skip(1).translate(new ITranslator2<SNode, SNode>() {
-              public Iterable<SNode> translate(SNode fd) {
-                return SLinkOperations.getChildren(fd, LINKS.targetDeclaration$z39X);
-              }
-            }));
+            return ListScope.forResolvableElements(Sequence.fromIterable(FacetDeclaration__BehaviorDescriptor.allExtends_id6O0kUTrsU9c.invoke(SNodeOperations.as((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), CONCEPTS.FacetDeclaration$Nd))).skip(1).translate((fd) -> SLinkOperations.getChildren(fd, LINKS.targetDeclaration$z39X)));
           }
         };
       }

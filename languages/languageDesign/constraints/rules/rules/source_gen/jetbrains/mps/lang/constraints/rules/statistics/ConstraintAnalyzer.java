@@ -14,10 +14,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Iterator;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -27,7 +24,6 @@ import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -98,15 +94,7 @@ public class ConstraintAnalyzer {
       if (ListSequence.fromList(expressions).isEmpty()) {
         return createBooleanConstant_6fp4o1_a0a0a5f();
       }
-      return ListSequence.fromList(expressions).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SNodeOperations.copyNode(it);
-        }
-      }).toListSequence().foldLeft((SNode) null, new ILeftCombinator<SNode, SNode>() {
-        public SNode combine(SNode s, SNode it) {
-          return (s == null ? it : createAndExpression_6fp4o1_a0a0a0a1a5f(s, it));
-        }
-      });
+      return ListSequence.fromList(ListSequence.fromList(expressions).select((it) -> SNodeOperations.copyNode(it)).toList()).foldLeft((SNode) null, (SNode s, SNode it) -> (s == null ? it : createAndExpression_6fp4o1_a0a0a0a1a5f(s, it)));
     }
     public void addDefinition(SNode declaration) {
       SNode declarationCopy = SNodeOperations.copyNode(declaration);
@@ -269,11 +257,7 @@ public class ConstraintAnalyzer {
     return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(statement)), CONCEPTS.Statement$P6) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(statement)), CONCEPTS.SingleLineComment$Kw);
   }
   public SNode getSingleReturn(SNode statementList, boolean allowImplicit) {
-    List<SNode> statements = ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$53DE)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(isComment(it));
-      }
-    }).toListSequence();
+    List<SNode> statements = ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$53DE)).where((it) -> !(isComment(it))).toList();
     if (ListSequence.fromList(statements).count() != 1) {
       return null;
     }
@@ -349,11 +333,7 @@ public class ConstraintAnalyzer {
         while (statementIterator.hasNext()) {
           ListSequence.fromList(statementsRest).addElement(statementIterator.next());
         }
-        if (ListSequence.fromList(statementsRest).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return !(isComment(it));
-          }
-        }).isNotEmpty()) {
+        if (ListSequence.fromList(statementsRest).where((it) -> !(isComment(it))).isNotEmpty()) {
           if (analyzeConceptFunctionIfLatter(statementsRest, latterBuilder, implicitReturn) != IfLatterResult.CLOSED) {
             return IfLatterResult.FAILED;
           }
@@ -414,11 +394,7 @@ public class ConstraintAnalyzer {
     if (SNodeOperations.isInstanceOf(expression, CONCEPTS.ConceptFunctionParameter$Tk)) {
       SNode defToReplace = null;
       SAbstractConcept cncpt = SNodeOperations.getConcept(expression);
-      defToReplace = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(RuleBlockMember__BehaviorDescriptor.getRuleKind_id1BFxp3HHhyj.invoke(SNodeOperations.getNodeAncestor(expression, CONCEPTS.RuleBlockMember$3Q, false, false)), LINKS.context$axR$), LINKS.defs$jAYX), CONCEPTS.TypedDef$H3)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SConceptOperations.conceptAlias(SNodeOperations.getConcept(expression)));
-        }
-      }).first();
+      defToReplace = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(RuleBlockMember__BehaviorDescriptor.getRuleKind_id1BFxp3HHhyj.invoke(SNodeOperations.getNodeAncestor(expression, CONCEPTS.RuleBlockMember$3Q, false, false)), LINKS.context$axR$), LINKS.defs$jAYX), CONCEPTS.TypedDef$H3)).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SConceptOperations.conceptAlias(SNodeOperations.getConcept(expression)))).first();
       if ((defToReplace != null)) {
         SNodeOperations.replaceWithAnother(expression, createTypedDefReference_6fp4o1_a0a0a2a0a41(defToReplace));
       }
@@ -428,7 +404,7 @@ public class ConstraintAnalyzer {
         SNodeOperations.replaceWithAnother(expression, createTypedDefReference_6fp4o1_a0a0a1a0a0o(defToReplace));
       }
     } else {
-      for (SNode desc : ListSequence.fromList(SNodeOperations.getNodeDescendants(expression, CONCEPTS.Expression$mB, false, new SAbstractConcept[]{})).toListSequence()) {
+      for (SNode desc : ListSequence.fromList(ListSequence.fromList(SNodeOperations.getNodeDescendants(expression, CONCEPTS.Expression$mB, false, new SAbstractConcept[]{})).toList())) {
         replaceConceptFunctions(desc, replaceVariables);
       }
     }
@@ -441,16 +417,8 @@ public class ConstraintAnalyzer {
     {
       SearchScope scope_6fp4o1_d0q = CommandUtil.createScope(searchScope);
       final SearchScope scope_6fp4o1_d0q_0 = scope_6fp4o1_d0q;
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_6fp4o1_d0q_0;
-        }
-      };
-      List<SNode> allConstraintsCFs = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptConstraints$Yt, false)).translate(new ITranslator2<SNode, SNode>() {
-        public Iterable<SNode> translate(SNode it) {
-          return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(it, LINKS.canBeChild$kqlq), SLinkOperations.getTarget(it, LINKS.canBeParent$fXfw), SLinkOperations.getTarget(it, LINKS.canBeRoot$uK7h), SLinkOperations.getTarget(it, LINKS.canBeAncestor$gbks));
-        }
-      }).where(new NotNullWhereFilter<SNode>()).toListSequence();
+      QueryExecutionContext context = () -> scope_6fp4o1_d0q_0;
+      List<SNode> allConstraintsCFs = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptConstraints$Yt, false)).translate((it) -> ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(it, LINKS.canBeChild$kqlq), SLinkOperations.getTarget(it, LINKS.canBeParent$fXfw), SLinkOperations.getTarget(it, LINKS.canBeRoot$uK7h), SLinkOperations.getTarget(it, LINKS.canBeAncestor$gbks))).where(new NotNullWhereFilter()).toList();
       Map<Class<Result>, List<SNode>> classified = MapSequence.fromMap(new HashMap<Class<Result>, List<SNode>>());
       for (SNode cf : ListSequence.fromList(allConstraintsCFs)) {
         Result result = new ConstraintAnalyzer().analyzeConceptFunction(cf);

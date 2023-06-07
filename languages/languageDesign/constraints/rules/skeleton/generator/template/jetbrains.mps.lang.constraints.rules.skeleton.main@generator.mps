@@ -225,6 +225,7 @@
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -335,7 +336,6 @@
       <concept id="1204796164442" name="jetbrains.mps.baseLanguage.collections.structure.InternalSequenceOperation" flags="nn" index="23sCx2">
         <child id="1204796294226" name="closure" index="23t8la" />
       </concept>
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1225727723840" name="jetbrains.mps.baseLanguage.collections.structure.FindFirstOperation" flags="nn" index="1z4cxt" />
       <concept id="1176501494711" name="jetbrains.mps.baseLanguage.collections.structure.IsNotEmptyOperation" flags="nn" index="3GX2aA" />
     </language>
@@ -905,7 +905,7 @@
                                         <node concept="2OqwBi" id="_8ACpCqm4U" role="33vP2m">
                                           <node concept="2OqwBi" id="_8ACpCqm4V" role="2Oq$k0">
                                             <node concept="37vLTw" id="_8ACpCqm4W" role="2Oq$k0">
-                                              <ref role="3cqZAo" node="_8ACpCqm5a" resolve="it" />
+                                              <ref role="3cqZAo" node="5W7E4fV0W5c" />
                                             </node>
                                             <node concept="2qgKlT" id="_8ACpCqm4X" role="2OqNvi">
                                               <ref role="37wK5l" to="wev6:2BHFktfnfdc" resolve="toModelReference" />
@@ -933,7 +933,7 @@
                                         <node concept="2OqwBi" id="_8ACpCqm55" role="3uHU7B">
                                           <node concept="2OqwBi" id="_8ACpCqm56" role="2Oq$k0">
                                             <node concept="37vLTw" id="_8ACpCqm57" role="2Oq$k0">
-                                              <ref role="3cqZAo" node="_8ACpCqm5a" resolve="it" />
+                                              <ref role="3cqZAo" node="5W7E4fV0W5c" />
                                             </node>
                                             <node concept="3TrcHB" id="_8ACpCqm58" role="2OqNvi">
                                               <ref role="3TsBF5" to="hypd:5LsHsRgAFYL" resolve="stereotype" />
@@ -944,9 +944,9 @@
                                       </node>
                                     </node>
                                   </node>
-                                  <node concept="Rh6nW" id="_8ACpCqm5a" role="1bW2Oz">
+                                  <node concept="gl6BB" id="5W7E4fV0W5c" role="1bW2Oz">
                                     <property role="TrG5h" value="it" />
-                                    <node concept="2jxLKc" id="_8ACpCqm5b" role="1tU5fm" />
+                                    <node concept="2jxLKc" id="5W7E4fV0W5d" role="1tU5fm" />
                                   </node>
                                 </node>
                               </node>

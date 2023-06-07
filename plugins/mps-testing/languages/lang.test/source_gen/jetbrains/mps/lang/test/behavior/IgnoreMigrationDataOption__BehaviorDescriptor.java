@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.migration.behavior.IMigrationUnit__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -40,11 +39,7 @@ public final class IgnoreMigrationDataOption__BehaviorDescriptor extends BaseBHD
     return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.MigrationTestCase$7Q);
   }
   /*package*/ static List<SNode> getProducingData_id5j9sOBrGDSz(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(IgnoreMigrationDataOption__BehaviorDescriptor.getTestCase_id5j9sOBrGD7H.invoke(__thisNode__), LINKS.migration$BNbu)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return IMigrationUnit__BehaviorDescriptor.getProducedAnnotationData_id5TUCQr2CN0$.invoke(SLinkOperations.getTarget(it, LINKS.migration$XW2Z)) != null;
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SLinkOperations.getChildren(IgnoreMigrationDataOption__BehaviorDescriptor.getTestCase_id5j9sOBrGD7H.invoke(__thisNode__), LINKS.migration$BNbu)).where((it) -> IMigrationUnit__BehaviorDescriptor.getProducedAnnotationData_id5TUCQr2CN0$.invoke(SLinkOperations.getTarget(it, LINKS.migration$XW2Z)) != null).toList();
   }
 
   /*package*/ IgnoreMigrationDataOption__BehaviorDescriptor() {

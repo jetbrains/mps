@@ -11,7 +11,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.editor.behavior.EditorCellModel__BehaviorDescriptor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -28,13 +27,11 @@ public class check_EditorCellModel_emptyCell_NonTypesystemRule extends AbstractN
     if (emptyCellModel == null) {
       return;
     }
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(emptyCellModel, CONCEPTS.EditorCellModel$gN, true, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        if (!((boolean) EditorCellModel__BehaviorDescriptor.canBeUsedAsEmptyCell_id6RO52Mcgrfa.invoke(it))) {
-          {
-            final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(it, "Using this cell as empty may prevent user from adding child node", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "7539455902806115580", null, errorTarget);
-          }
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(emptyCellModel, CONCEPTS.EditorCellModel$gN, true, new SAbstractConcept[]{})).visitAll((it) -> {
+      if (!((boolean) EditorCellModel__BehaviorDescriptor.canBeUsedAsEmptyCell_id6RO52Mcgrfa.invoke(it))) {
+        {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(it, "Using this cell as empty may prevent user from adding child node", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "7539455902806115580", null, errorTarget);
         }
       }
     });

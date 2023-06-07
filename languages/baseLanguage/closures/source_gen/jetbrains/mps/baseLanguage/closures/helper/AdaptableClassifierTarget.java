@@ -8,7 +8,6 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.closures.behavior.FunctionType__BehaviorDescriptor;
@@ -34,15 +33,22 @@ public class AdaptableClassifierTarget {
       ListSequence.fromList(allAdaptable).addElement(SLinkOperations.getTarget(adaptable, LINKS.classifier$cxMr));
     }
     List<SNode> trgList = getOrCreateTargets(adaptable);
-    if (!(ListSequence.fromList(trgList).any(new IWhereFilter<SNode>() {
-      @Override
-      public boolean accept(SNode cr) {
-        return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(target, LINKS.classifier$cxMr)).equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(cr));
-      }
-    }))) {
+    if ((findContained(trgList, INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(target, LINKS.classifier$cxMr))) == null)) {
       ListSequence.fromList(trgList).addElement(SLinkOperations.getTarget(target, LINKS.classifier$cxMr));
       Values.ADAPTABLE.set(genContext, SLinkOperations.getTarget(target, LINKS.classifier$cxMr), SLinkOperations.getTarget(adaptable, LINKS.classifier$cxMr));
     }
+  }
+  /**
+   * Search for the classifier node having the same fq name as provided.
+   */
+  private SNode findContained(List<SNode> classifiers, String targetFQName) {
+    // used to be some sequence operation with findFirst/any and anonymous classes (if closure are truly safe to use there, it may be replaced by actual collection operations and closures)
+    for (SNode next : classifiers) {
+      if (targetFQName.equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(next))) {
+        return next;
+      }
+    }
+    return null;
   }
   private List<SNode> getOrCreateTargets(SNode adaptable) {
     List<SNode> trgList = (List<SNode>) genContext.getStepObject(Keys.NEEDS_ADAPTER.compose(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(adaptable, LINKS.classifier$cxMr))));
@@ -67,12 +73,7 @@ public class AdaptableClassifierTarget {
     ntype = (ntype == null ? TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(expr), CONCEPTS.ClassifierType$bL) : ntype);
     assert ntype != null;
     final String trgFQname = (String) Values.PREP_DATA.get(genContext, expr);
-    SNode target = ListSequence.fromList(getTargets(SLinkOperations.getTarget(ntype, LINKS.classifier$cxMr))).findFirst(new IWhereFilter<SNode>() {
-      @Override
-      public boolean accept(SNode cr) {
-        return trgFQname.equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(cr));
-      }
-    });
+    SNode target = findContained(getTargets(SLinkOperations.getTarget(ntype, LINKS.classifier$cxMr)), trgFQname);
     assert Values.ADAPTABLE.get(genContext, target) != null;
     return target;
   }

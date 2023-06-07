@@ -11,12 +11,10 @@ import com.intellij.openapi.vfs.newvfs.events.VFileEvent;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.nodefs.NodeVirtualFileSystem;
 import java.util.function.Supplier;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.newvfs.events.VFileContentChangeEvent;
 import com.intellij.openapi.vfs.newvfs.events.VFileCreateEvent;
@@ -37,11 +35,7 @@ public final class FSChangesWatcher implements BulkFileListener {
     if (application.isDisposed()) {
       return;
     }
-    final List<VFileEvent> eventsOfInterest = ListSequence.fromList(events).where(new IWhereFilter<VFileEvent>() {
-      public boolean accept(VFileEvent it) {
-        return !(VirtualFileUtils.isFileEventFromMPS(it)) && !(NodeVirtualFileSystem.isFromNodeFileSystem(it));
-      }
-    }).ofType(VFileEvent.class).toListSequence();
+    final List<VFileEvent> eventsOfInterest = ListSequence.fromList(events).where((it) -> !(VirtualFileUtils.isFileEventFromMPS(it)) && !(NodeVirtualFileSystem.isFromNodeFileSystem(it))).ofType(VFileEvent.class).toList();
     if (ListSequence.fromList(eventsOfInterest).isEmpty()) {
       return;
     }
@@ -52,13 +46,11 @@ public final class FSChangesWatcher implements BulkFileListener {
       }
     }, new ReloadAction<FileProcessor>() {
       public void runAction(final FileProcessor participant) {
-        ListSequence.fromList(eventsOfInterest).visitAll(new IVisitor<VFileEvent>() {
-          public void visit(VFileEvent it) {
-            if (LOG.isDebugLevel()) {
-              LOG.debug("Got event " + it);
-            }
-            processAfterEvent(it, participant);
+        ListSequence.fromList(eventsOfInterest).visitAll((it) -> {
+          if (LOG.isDebugLevel()) {
+            LOG.debug("Got event " + it);
           }
+          processAfterEvent(it, participant);
         });
       }
     });

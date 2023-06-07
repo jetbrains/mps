@@ -9,8 +9,6 @@ import jetbrains.mps.migration.workbench.util.DeprecatedNodeProperties;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.ide.findusages.model.CategoryKind;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 
 /*package*/ final class UsagesFormattingUtil {
 
@@ -19,15 +17,13 @@ import jetbrains.mps.internal.collections.runtime.IMapping;
     final CategoryKind versionKind = CategoryKind.DEFAULT_CATEGORY_KIND;
     final CategoryKind categoryKind = CategoryKind.DEFAULT_CATEGORY_KIND;
 
-    return MapSequence.fromMap(nodes).select(new ISelector<IMapping<SNode, DeprecatedNodeProperties>, SearchResult<SNode>>() {
-      public SearchResult<SNode> select(IMapping<SNode, DeprecatedNodeProperties> it) {
-        SNode node = it.key();
-        String ver = it.value().version;
+    return MapSequence.fromMap(nodes).select((it) -> {
+      SNode node = it.key();
+      String ver = it.value().version;
 
-        Pair cat2 = new Pair(versionKind, (ver == null ? "Unknown" : "ToRemove in " + ver));
-        Pair cat3 = new Pair(categoryKind, it.value().category);
-        return new SearchResult<SNode>(node, node, topCategory, cat2, cat3);
-      }
+      Pair cat2 = new Pair(versionKind, (ver == null ? "Unknown" : "ToRemove in " + ver));
+      Pair cat3 = new Pair(categoryKind, it.value().category);
+      return new SearchResult<SNode>(node, node, topCategory, cat2, cat3);
     });
   }
 }

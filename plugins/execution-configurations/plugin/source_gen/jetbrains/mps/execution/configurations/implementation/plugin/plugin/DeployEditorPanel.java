@@ -12,7 +12,6 @@ import jetbrains.mps.ide.common.LayoutUtil;
 import java.util.List;
 import jetbrains.mps.execution.lib.PointerUtils;
 import jetbrains.mps.execution.lib.ClonableList;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 
 public class DeployEditorPanel extends JBPanel {
   private final PluginsListPanel myPluginsPanel;
@@ -32,11 +31,7 @@ public class DeployEditorPanel extends JBPanel {
   public void apply(DeployPluginsSettings_Configuration settings) {
     ClonableList<String> list = settings.getPluginsToDeploy();
     list.clear();
-    ListSequence.fromList(list.getData()).addSequence(ListSequence.fromList(myPluginsPanel.getItems()).select(new ISelector<SNodeReference, String>() {
-      public String select(SNodeReference it) {
-        return PointerUtils.pointerToString(it);
-      }
-    }));
+    ListSequence.fromList(list.getData()).addSequence(ListSequence.fromList(myPluginsPanel.getItems()).select((it) -> PointerUtils.pointerToString(it)));
   }
 
   public void dispose() {

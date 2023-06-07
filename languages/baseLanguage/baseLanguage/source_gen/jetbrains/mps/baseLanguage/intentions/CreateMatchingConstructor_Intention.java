@@ -16,12 +16,10 @@ import java.util.List;
 import jetbrains.mps.baseLanguage.scopes.DefaultConstructorUtils;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.openapi.application.ApplicationManager;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
@@ -75,11 +73,7 @@ public final class CreateMatchingConstructor_Intention extends AbstractIntention
       ApplicationManager.getApplication().invokeLater(() -> {
         Iterable<SNode> selectedSuperConstructors;
         if (ListSequence.fromList(visibleSuperConstructors).count() > 1) {
-          SelectSuperConstructorsDialog dialog = new SelectSuperConstructorsDialog(ListSequence.fromList(visibleSuperConstructors).select(new ISelector<SNode, SNodeReference>() {
-            public SNodeReference select(SNode it) {
-              return SNodeOperations.getPointer(it);
-            }
-          }).toGenericArray(SNodeReference.class), ((MPSProject) (editorContext.getOperationContext().getProject())).getProject());
+          SelectSuperConstructorsDialog dialog = new SelectSuperConstructorsDialog(ListSequence.fromList(visibleSuperConstructors).select((it) -> SNodeOperations.getPointer(it)).toGenericArray(SNodeReference.class), ((MPSProject) (editorContext.getOperationContext().getProject())).getProject());
           dialog.setTitle("Create constructor matching super");
 
           dialog.show();
@@ -88,32 +82,24 @@ public final class CreateMatchingConstructor_Intention extends AbstractIntention
             return;
           }
           Iterable<SNodeReference> selection = (Iterable<SNodeReference>) dialog.getSelectedElements();
-          Iterable<SNode> resolved = Sequence.fromIterable(selection).select(new ISelector<SNodeReference, SNode>() {
-            public SNode select(SNodeReference it) {
-              return SNodeOperations.as(it.resolve(editorContext.getRepository()), CONCEPTS.ConstructorDeclaration$yG);
-            }
-          });
+          Iterable<SNode> resolved = Sequence.fromIterable(selection).select((it) -> SNodeOperations.as(it.resolve(editorContext.getRepository()), CONCEPTS.ConstructorDeclaration$yG));
           selectedSuperConstructors = resolved;
         } else {
           selectedSuperConstructors = visibleSuperConstructors;
         }
         final Iterable<SNode> selectedSuperConstructorsFinal = selectedSuperConstructors;
 
-        editorContext.getRepository().getModelAccess().executeCommand(() -> {
-          Sequence.fromIterable(selectedSuperConstructorsFinal).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode superConstructor) {
-              SNode currentSuperConstructorCopy = SNodeOperations.copyNode(superConstructor);
-              SLinkOperations.setNewChild(currentSuperConstructorCopy, LINKS.body$5xQk, null);
-              SNode superCall = SLinkOperations.addNewChild(SLinkOperations.getTarget(currentSuperConstructorCopy, LINKS.body$5xQk), LINKS.statement$53DE, CONCEPTS.SuperConstructorInvocation$wU);
-              SLinkOperations.setTarget(superCall, LINKS.baseMethodDeclaration$pyYw, superConstructor);
-              for (SNode param : SLinkOperations.getChildren(currentSuperConstructorCopy, LINKS.parameter$5xBj)) {
-                SNode arg = SLinkOperations.addNewChild(superCall, LINKS.actualArgument$pzdx, CONCEPTS.VariableReference$TC);
-                SLinkOperations.setTarget(arg, LINKS.variableDeclaration$N1XG, param);
-              }
-              ClassConcept__BehaviorDescriptor.addConstructor_id32Td0Ia9Mgr.invoke(thisClass, currentSuperConstructorCopy);
-            }
-          });
-        });
+        editorContext.getRepository().getModelAccess().executeCommand(() -> Sequence.fromIterable(selectedSuperConstructorsFinal).visitAll((superConstructor) -> {
+          SNode currentSuperConstructorCopy = SNodeOperations.copyNode(superConstructor);
+          SLinkOperations.setNewChild(currentSuperConstructorCopy, LINKS.body$5xQk, null);
+          SNode superCall = SLinkOperations.addNewChild(SLinkOperations.getTarget(currentSuperConstructorCopy, LINKS.body$5xQk), LINKS.statement$53DE, CONCEPTS.SuperConstructorInvocation$wU);
+          SLinkOperations.setTarget(superCall, LINKS.baseMethodDeclaration$pyYw, superConstructor);
+          for (SNode param : SLinkOperations.getChildren(currentSuperConstructorCopy, LINKS.parameter$5xBj)) {
+            SNode arg = SLinkOperations.addNewChild(superCall, LINKS.actualArgument$pzdx, CONCEPTS.VariableReference$TC);
+            SLinkOperations.setTarget(arg, LINKS.variableDeclaration$N1XG, param);
+          }
+          ClassConcept__BehaviorDescriptor.addConstructor_id32Td0Ia9Mgr.invoke(thisClass, currentSuperConstructorCopy);
+        }));
       });
 
     }

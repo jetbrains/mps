@@ -21,7 +21,7 @@ public class Map_Test {
   }
   @Test
   public void test_initializer() throws Exception {
-    Map<String, String> map = MapSequence.<String, String>fromMapAndKeysArray(new HashMap<String, String>(), "key1").withValues("value1");
+    Map<String, String> map = MapSequence.fromMapAndEntryArray(new HashMap<String, String>(), Map.entry("key1", "value1"));
     Assert.assertEquals("value1", MapSequence.fromMap(map).get("key1"));
   }
 }

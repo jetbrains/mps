@@ -1390,42 +1390,40 @@ __switch__:
     final List<Integer> input = ListSequence.fromListAndArray(new ArrayList<Integer>(), 1, 2, 3);
     List<Iterable<Integer>> exp = ListSequence.fromListAndArray(new ArrayList<Iterable<Integer>>(), ListSequence.fromListAndArray(new ArrayList<Integer>(), 4, 5), ListSequence.fromListAndArray(new ArrayList<Integer>(), 4, 5), ListSequence.fromListAndArray(new ArrayList<Integer>(), 4, 5));
     List<Iterable<Integer>> res = ListSequence.fromList(new ArrayList<Iterable<Integer>>());
-    ListSequence.fromList(res).addSequence(Sequence.fromIterable(new _FunctionTypes._return_P0_E0<ISequence<Iterable<Integer>>>() {
-      public ISequence<Iterable<Integer>> invoke() {
-        return ListSequence.fromList(input).select((final Integer it) -> {
-          return (Iterable<Integer>) () -> {
-            return new YieldingIterator<Integer>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
+    ListSequence.fromList(res).addSequence(Sequence.fromIterable(((_FunctionTypes._return_P0_E0<ISequence<Iterable<Integer>>>) () -> {
+      return ListSequence.fromList(input).select((it) -> {
+        return (Iterable<Integer>) () -> {
+          return new YieldingIterator<Integer>() {
+            private int __CP__ = 0;
+            protected boolean moveToNext() {
 __loop__:
-                do {
+              do {
 __switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 2:
-                      this.__CP__ = 3;
-                      this.yield(4);
-                      return true;
-                    case 3:
-                      this.__CP__ = 1;
-                      this.yield(5);
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    default:
-                      break __loop__;
-                  }
-                } while (true);
-                return false;
-              }
-            };
+                switch (this.__CP__) {
+                  case -1:
+                    assert false : "Internal error";
+                    return false;
+                  case 2:
+                    this.__CP__ = 3;
+                    this.yield(4);
+                    return true;
+                  case 3:
+                    this.__CP__ = 1;
+                    this.yield(5);
+                    return true;
+                  case 0:
+                    this.__CP__ = 2;
+                    break;
+                  default:
+                    break __loop__;
+                }
+              } while (true);
+              return false;
+            }
           };
-        });
-      }
-    }.invoke()));
+        };
+      });
+    }).invoke()));
     this.assertEquals(exp, res);
   }
   @Test
@@ -1434,55 +1432,53 @@ __switch__:
     final List<Integer> input = ListSequence.fromListAndArray(new ArrayList<Integer>(), 1, 2, 3);
     List<Iterable<Integer>> exp = ListSequence.fromListAndArray(new ArrayList<Iterable<Integer>>(), ListSequence.fromList(new ArrayList<Integer>()), ListSequence.fromListAndArray(new ArrayList<Integer>(), 4), ListSequence.fromList(new ArrayList<Integer>()));
     List<Iterable<Integer>> res = ListSequence.fromList(new ArrayList<Iterable<Integer>>());
-    ListSequence.fromList(res).addSequence(Sequence.fromIterable(new _FunctionTypes._return_P0_E0<ISequence<Iterable<Integer>>>() {
-      public ISequence<Iterable<Integer>> invoke() {
-        return ListSequence.fromList(input).select((final Integer it) -> {
-          return (Iterable<Integer>) () -> {
-            return new YieldingIterator<Integer>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
+    ListSequence.fromList(res).addSequence(Sequence.fromIterable(((_FunctionTypes._return_P0_E0<ISequence<Iterable<Integer>>>) () -> {
+      return ListSequence.fromList(input).select((it) -> {
+        return (Iterable<Integer>) () -> {
+          return new YieldingIterator<Integer>() {
+            private int __CP__ = 0;
+            protected boolean moveToNext() {
 __loop__:
-                do {
+              do {
 __switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 2:
-                      if (it == 2) {
-                        this.__CP__ = 3;
-                        break;
-                      }
-                      this.__CP__ = 1;
+                switch (this.__CP__) {
+                  case -1:
+                    assert false : "Internal error";
+                    return false;
+                  case 2:
+                    if (it == 2) {
+                      this.__CP__ = 3;
                       break;
-                    case 4:
-                      this.__CP__ = 1;
-                      this.yield(4);
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    case 3:
-                      this.__CP__ = 4;
-                      break;
-                    default:
-                      break __loop__;
-                  }
-                } while (true);
-                return false;
-              }
-            };
+                    }
+                    this.__CP__ = 1;
+                    break;
+                  case 4:
+                    this.__CP__ = 1;
+                    this.yield(4);
+                    return true;
+                  case 0:
+                    this.__CP__ = 2;
+                    break;
+                  case 3:
+                    this.__CP__ = 4;
+                    break;
+                  default:
+                    break __loop__;
+                }
+              } while (true);
+              return false;
+            }
           };
-        });
-      }
-    }.invoke()));
+        };
+      });
+    }).invoke()));
     this.assertEquals(exp, res);
   }
   @Test
   public void test_mps3477() throws Exception {
     List<Integer> exp = ListSequence.fromListAndArray(new ArrayList<Integer>(), 10, 0, 20, 11, 1, 21, 12, 2, 22, 13, 3, 23, 14, 4, 24, 15, 5, 25, 16, 6, 26, 17, 7, 27, 18, 8, 28, 19, 9, 29);
     final List<Integer> res = ListSequence.fromList(new ArrayList<Integer>());
-    _FunctionTypes._return_P2_E0<? extends Iterable<Integer>, ? super Integer, ? super Integer> foo = (final Integer start, final Integer end) -> {
+    _FunctionTypes._return_P2_E0<? extends Iterable<Integer>, ? super Integer, ? super Integer> foo = (Integer start, Integer end) -> {
       return (Iterable<Integer>) () -> {
         return new YieldingIterator<Integer>() {
           private int __CP__ = 0;
@@ -1777,7 +1773,7 @@ __switch__:
   public void test_mps10640() throws Exception {
     Object input = new Object[]{"a", "b", new Object[]{"c", "d"}};
     Iterable<Object> output = new _FunctionTypes._return_P1_E0<Iterable<Object>, Object>() {
-      public Iterable<Object> invoke(final Object o) {
+      public Iterable<Object> invoke(Object o) {
         return new Iterable<Object>() {
           public Iterator<Object> iterator() {
             return new YieldingIterator<Object>() {
@@ -1852,80 +1848,72 @@ __switch__:
         };
       }
     }.invoke(input);
-    Sequence.fromIterable(output).disjunction(ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList(), "a", "b", "c", "d"))).isEmpty();
+    Sequence.fromIterable(output).disjunction(ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<>(), "a", "b", "c", "d"))).isEmpty();
   }
   @Test
   public void test_mps15041() throws Exception {
-    Iterable<? extends Number> seq = new _FunctionTypes._return_P0_E0<Iterable<? extends Number>>() {
-      public Iterable<Number> invoke() {
-        return new Iterable<Number>() {
-          public Iterator<Number> iterator() {
-            return new YieldingIterator<Number>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
+    Iterable<? extends Number> seq = ((_FunctionTypes._return_P0_E0<Iterable<? extends Number>>) () -> {
+      return (Iterable<Number>) () -> {
+        return new YieldingIterator<Number>() {
+          private int __CP__ = 0;
+          protected boolean moveToNext() {
 __loop__:
-                do {
+            do {
 __switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 5:
-                      this._5__yield_75e5vq_d0a0a0a32a_it = Sequence.fromIterable(numberSubtypes()).iterator();
-                    case 6:
-                      if (!(this._5__yield_75e5vq_d0a0a0a32a_it.hasNext())) {
-                        this.__CP__ = 1;
-                        break;
-                      }
-                      this._5__yield_75e5vq_d0a0a0a32a = this._5__yield_75e5vq_d0a0a0a32a_it.next();
-                      this.__CP__ = 7;
-                      break;
-                    case 2:
-                      this.__CP__ = 3;
-                      this.yield(ListSequence.fromList(numberSubtypes()).getElement(0));
-                      return true;
-                    case 3:
-                      this.__CP__ = 4;
-                      this.yield(ListSequence.fromList(numberSubtypes()).getElement(1));
-                      return true;
-                    case 4:
-                      this.__CP__ = 5;
-                      this.yield(ListSequence.fromList(numberSubtypes()).getElement(2));
-                      return true;
-                    case 8:
-                      this.__CP__ = 6;
-                      this.yield(_5__yield_75e5vq_d0a0a0a32a);
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    case 7:
-                      this.__CP__ = 8;
-                      break;
-                    default:
-                      break __loop__;
+              switch (this.__CP__) {
+                case -1:
+                  assert false : "Internal error";
+                  return false;
+                case 5:
+                  this._5__yield_75e5vq_d0a0a0a32a_it = Sequence.fromIterable(numberSubtypes()).iterator();
+                case 6:
+                  if (!(this._5__yield_75e5vq_d0a0a0a32a_it.hasNext())) {
+                    this.__CP__ = 1;
+                    break;
                   }
-                } while (true);
-                return false;
+                  this._5__yield_75e5vq_d0a0a0a32a = this._5__yield_75e5vq_d0a0a0a32a_it.next();
+                  this.__CP__ = 7;
+                  break;
+                case 2:
+                  this.__CP__ = 3;
+                  this.yield(ListSequence.fromList(numberSubtypes()).getElement(0));
+                  return true;
+                case 3:
+                  this.__CP__ = 4;
+                  this.yield(ListSequence.fromList(numberSubtypes()).getElement(1));
+                  return true;
+                case 4:
+                  this.__CP__ = 5;
+                  this.yield(ListSequence.fromList(numberSubtypes()).getElement(2));
+                  return true;
+                case 8:
+                  this.__CP__ = 6;
+                  this.yield(_5__yield_75e5vq_d0a0a0a32a);
+                  return true;
+                case 0:
+                  this.__CP__ = 2;
+                  break;
+                case 7:
+                  this.__CP__ = 8;
+                  break;
+                default:
+                  break __loop__;
               }
-              private Number _5__yield_75e5vq_d0a0a0a32a;
-              private Iterator<? extends Number> _5__yield_75e5vq_d0a0a0a32a_it;
-            };
+            } while (true);
+            return false;
           }
+          private Number _5__yield_75e5vq_d0a0a0a32a;
+          private Iterator<? extends Number> _5__yield_75e5vq_d0a0a0a32a_it;
         };
-      }
-    }.invoke();
+      };
+    }).invoke();
     Assert.assertEquals(Integer.valueOf(42), Sequence.fromIterable(seq).first());
     Assert.assertEquals(Long.valueOf(100500L), Sequence.fromIterable(seq).skip(1).first());
     Assert.assertEquals(Double.valueOf(2.718281828), Sequence.fromIterable(seq).skip(2).first());
     Assert.assertEquals(Integer.valueOf(42), Sequence.fromIterable(seq).first());
     Assert.assertEquals(Long.valueOf(100500L), Sequence.fromIterable(seq).skip(1).first());
     Assert.assertEquals(Double.valueOf(2.718281828), Sequence.fromIterable(seq).skip(2).first());
-    Iterable<? extends Number> seq2 = new _FunctionTypes._return_P0_E0<List<? extends Number>>() {
-      public List<? extends Number> invoke() {
-        return numberSubtypes();
-      }
-    }.invoke();
+    Iterable<? extends Number> seq2 = ((_FunctionTypes._return_P0_E0<List<? extends Number>>) () -> numberSubtypes()).invoke();
     Assert.assertEquals(Integer.valueOf(42), Sequence.fromIterable(seq).first());
     Assert.assertEquals(Long.valueOf(100500L), Sequence.fromIterable(seq).skip(1).first());
     Assert.assertEquals(Double.valueOf(2.718281828), Sequence.fromIterable(seq).skip(2).first());

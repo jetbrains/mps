@@ -14,7 +14,6 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -44,22 +43,14 @@ public final class ITestCase__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static List<SNode> getUncommentedTestSet_id6I8tQNTsM_Z(@NotNull SNode __thisNode__) {
     List<SNode> method = ITestCase__BehaviorDescriptor.getTestSet_idhGB2z8L.invoke(__thisNode__);
-    return ListSequence.fromList(method).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SNodeOperations.getNodeAncestor(it, CONCEPTS.BaseCommentAttribute$nv, false, false) == null);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(method).where((it) -> (SNodeOperations.getNodeAncestor(it, CONCEPTS.BaseCommentAttribute$nv, false, false) == null)).toList();
   }
   /*package*/ static List<SNode> getTestMethods_id1RfJDyhAUar(@NotNull SNode __thisNode__) {
     return new ArrayList<SNode>();
   }
   /*package*/ static List<SNode> getUncommentedTestMethods_id6I8tQNTvi0f(@NotNull SNode __thisNode__) {
     List<SNode> method = ITestCase__BehaviorDescriptor.getTestSet_idhGB2z8L.invoke(__thisNode__);
-    return ListSequence.fromList(method).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SNodeOperations.getNodeAncestor(it, CONCEPTS.BaseCommentAttribute$nv, false, false) == null);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(method).where((it) -> (SNodeOperations.getNodeAncestor(it, CONCEPTS.BaseCommentAttribute$nv, false, false) == null)).toList();
   }
   /*package*/ static String getClassName_idhGBnqtL(@NotNull SNode __thisNode__) {
     SModel model = __thisNode__.getModel();

@@ -19,9 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.List;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
@@ -92,19 +89,7 @@ public class SetConceptChange extends NodeChange {
       newNode.addChild(SNodeOperations.getContainingLink(child), SNodeOperations.deleteNode(child));
     }
     // fix references to the node itself
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(newNode, null, true, new SAbstractConcept[]{})).translate(new ITranslator2<SNode, SReference>() {
-      public Iterable<SReference> translate(SNode n) {
-        return SNodeOperations.getReferences(n);
-      }
-    }).where(new IWhereFilter<SReference>() {
-      public boolean accept(SReference r) {
-        return SLinkOperations.getTargetNode(r) == node;
-      }
-    }).visitAll(new IVisitor<SReference>() {
-      public void visit(SReference ref) {
-        ref.getSourceNode().setReferenceTarget(ref.getLink(), newNode);
-      }
-    });
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(newNode, null, true, new SAbstractConcept[]{})).translate((n) -> SNodeOperations.getReferences(n)).where((r) -> SLinkOperations.getTargetNode(r) == node).visitAll((ref) -> ref.getSourceNode().setReferenceTarget(ref.getLink(), newNode));
 
     SNodeOperations.replaceWithAnother(node, newNode);
   }
@@ -136,7 +121,7 @@ public class SetConceptChange extends NodeChange {
 
   @Override
   public List<Tuples._2<SNodeId, MessageTarget>> createMessageTargetsWithIds(boolean isNewModel) {
-    return LinkedListSequence.fromListAndArrayNew(new LinkedList<Tuples._2<SNodeId, MessageTarget>>(), MultiTuple.<SNodeId,MessageTarget>from(getAffectedNodeId(isNewModel), ((MessageTarget) new NodeMessageTarget())));
+    return LinkedListSequence.fromListAndArray(new LinkedList<Tuples._2<SNodeId, MessageTarget>>(), MultiTuple.<SNodeId,MessageTarget>from(getAffectedNodeId(isNewModel), ((MessageTarget) new NodeMessageTarget())));
   }
   @Override
   public boolean conflictsWith(@NotNull ModelChange otherChange) {

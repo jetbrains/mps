@@ -8,8 +8,6 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -17,11 +15,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class IconHelper {
   public static String createId(SModel m) {
-    Set<String> used = SetSequence.fromSetWithValues(new HashSet<String>(), ListSequence.fromList(SModelOperations.nodes(m, CONCEPTS.TextIcon$X0)).select(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.iconId$SZ3g);
-      }
-    }));
+    Set<String> used = SetSequence.fromSetWithValues(new HashSet<String>(), ListSequence.fromList(SModelOperations.nodes(m, CONCEPTS.TextIcon$X0)).select((it) -> SPropertyOperations.getString(it, PROPS.iconId$SZ3g)));
     int id = 1;
     while (SetSequence.fromSet(used).contains(id + "")) {
       id++;

@@ -39,10 +39,8 @@ import jetbrains.mps.textgen.trace.DebugInfoRoot;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
@@ -191,26 +189,10 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
   private SNodePointer getBestNodeForPosition(DebugInfo debugInfo, @NotNull final String fileName, final int line) {
     List<Pair<TraceablePositionInfo, DebugInfoRoot>> nicePositions = ListSequence.fromList(new ArrayList<Pair<TraceablePositionInfo, DebugInfoRoot>>());
     Iterable<DebugInfoRoot> roots = debugInfo.getRoots();
-    for (DebugInfoRoot root : Sequence.fromIterable(roots).where(new IWhereFilter<DebugInfoRoot>() {
-      public boolean accept(DebugInfoRoot it) {
-        return it.getFileNames().contains(fileName);
-      }
-    })) {
+    for (DebugInfoRoot root : Sequence.fromIterable(roots).where((it) -> it.getFileNames().contains(fileName))) {
       Collection<TraceablePositionInfo> positions = root.getPositions();
       // for each root we get the nearest position that contains the given line
-      TraceablePositionInfo info = CollectionSequence.fromCollection(positions).where(new IWhereFilter<TraceablePositionInfo>() {
-        public boolean accept(TraceablePositionInfo it) {
-          return it.contains(fileName, line);
-        }
-      }).sort(new ISelector<TraceablePositionInfo, Integer>() {
-        public Integer select(TraceablePositionInfo it) {
-          return it.getStartLine();
-        }
-      }, true).findLast(new IWhereFilter<TraceablePositionInfo>() {
-        public boolean accept(TraceablePositionInfo it) {
-          return it.getStartLine() <= line;
-        }
-      });
+      TraceablePositionInfo info = CollectionSequence.fromCollection(positions).where((it) -> it.contains(fileName, line)).sort((it) -> it.getStartLine(), true).findLast((it) -> it.getStartLine() <= line);
       if (info != null) {
         ListSequence.fromList(nicePositions).addElement(new Pair(info, root));
       }
@@ -220,15 +202,7 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
     }
 
     // now, between all those "best local" positions, we select the global best one
-    Pair<TraceablePositionInfo, DebugInfoRoot> bestPosition = ListSequence.fromList(nicePositions).sort(new ISelector<Pair<TraceablePositionInfo, DebugInfoRoot>, Integer>() {
-      public Integer select(Pair<TraceablePositionInfo, DebugInfoRoot> it) {
-        return it.o1.getStartLine();
-      }
-    }, true).findLast(new IWhereFilter<Pair<TraceablePositionInfo, DebugInfoRoot>>() {
-      public boolean accept(Pair<TraceablePositionInfo, DebugInfoRoot> it) {
-        return it.o1.getStartLine() <= line;
-      }
-    });
+    Pair<TraceablePositionInfo, DebugInfoRoot> bestPosition = ListSequence.fromList(nicePositions).sort((it) -> it.o1.getStartLine(), true).findLast((it) -> it.o1.getStartLine() <= line);
 
     return new SNodePointer(bestPosition.o2.getNodeRef().getModelReference(), PersistenceFacade.getInstance().createNodeId(bestPosition.o1.getNodeId()));
   }
@@ -298,11 +272,7 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
           return;
         }
         Iterable<SNode> allMethods = SNodeOperations.ofConcept(SNodeOperations.getChildren(cls), CONCEPTS.BaseMethodDeclaration$kD);
-        SNode method = Sequence.fromIterable(allMethods).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return methodName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL)) && ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).count() == parameterCount;
-          }
-        });
+        SNode method = Sequence.fromIterable(allMethods).findFirst((it) -> methodName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL)) && ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).count() == parameterCount);
         if (method == null) {
           if (LOG.isErrorLevel()) {
             LOG.error(String.format("Can't find a method %s.%s", classFqName, methodName));

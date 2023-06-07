@@ -27,15 +27,15 @@ public class SModelConverters extends Extension.Default<TypeConverterEngine<SNod
 
   public void activate() {
     engine = new TypeConverterEngine<>();
-    engine.declareMapping(CONCEPTS.SNodeType$hR, (SNode it) -> createNodeType_1wzh1g_a0a1a0b0e(asConceptProjection(SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.SNodeType$hR), LINKS.concept$OMgE))));
+    engine.declareMapping(CONCEPTS.SNodeType$hR, (it) -> createNodeType_1wzh1g_a0a1a0b0e(asConceptProjection(SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.SNodeType$hR), LINKS.concept$OMgE))));
 
-    engine.declareMapping(CONCEPTS.SConceptType$pb, (SNode it) -> createConceptType_1wzh1g_a0a1a0d0e(SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.SConceptType$pb), LINKS.conceptDeclaraton$K4R0)));
+    engine.declareMapping(CONCEPTS.SConceptType$pb, (it) -> createConceptType_1wzh1g_a0a1a0d0e(SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.SConceptType$pb), LINKS.conceptDeclaraton$K4R0)));
 
-    engine.declareMapping(CONCEPTS.SNodePointerType$3X, (SNode it) -> createNodeReferenceType_1wzh1g_a0a1a0f0e(asConceptProjection(SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.SNodePointerType$3X), LINKS.concept$cytz))));
+    engine.declareMapping(CONCEPTS.SNodePointerType$3X, (it) -> createNodeReferenceType_1wzh1g_a0a1a0f0e(asConceptProjection(SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.SNodePointerType$3X), LINKS.concept$cytz))));
 
     // No concept equivalent -> BaseConcept
-    engine.declareMapping(CONCEPTS.AggregationLinkType$1r, (SNode it) -> createAggregationLinkType_1wzh1g_a0a1a0i0e());
-    engine.declareMapping(CONCEPTS.AssociationLinkType$9A, (SNode it) -> createReferenceLinkType_1wzh1g_a0a1a0j0e());
+    engine.declareMapping(CONCEPTS.AggregationLinkType$1r, (it) -> createAggregationLinkType_1wzh1g_a0a1a0i0e());
+    engine.declareMapping(CONCEPTS.AssociationLinkType$9A, (it) -> createReferenceLinkType_1wzh1g_a0a1a0j0e());
   }
 
   public TypeConverterEngine<SNode, SNode> get() {

@@ -82,9 +82,9 @@ public class FindUsagesOfDeprecated_Action extends BaseAction {
 
           CategoryKind locationCategoryKind = CategoryKind.DEFAULT_CATEGORY_KIND;
           Pair c1 = new Pair(locationCategoryKind, "Deprecated Library Code");
-          myResults.addAll(Sequence.fromIterable(UsagesFormattingUtil.prepare(depLibs, c1)).toListSequence());
+          myResults.addAll(Sequence.fromIterable(UsagesFormattingUtil.prepare(depLibs, c1)).toList());
           Pair c2 = new Pair(locationCategoryKind, "Deprecated Project Code");
-          myResults.addAll(Sequence.fromIterable(UsagesFormattingUtil.prepare(depProj, c2)).toListSequence());
+          myResults.addAll(Sequence.fromIterable(UsagesFormattingUtil.prepare(depProj, c2)).toList());
         });
       }
       @Override

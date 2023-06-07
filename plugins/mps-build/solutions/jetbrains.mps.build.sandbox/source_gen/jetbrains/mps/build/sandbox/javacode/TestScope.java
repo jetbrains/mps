@@ -9,7 +9,6 @@ import jetbrains.mps.baseLanguage.scopes.Scopes;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
@@ -25,11 +24,7 @@ public class TestScope extends Scope {
   @Override
   public Iterable<SNode> getAvailableElements(@Nullable String prefix) {
     Scopes.forVariables(CONCEPTS.DotExpression$yW, this, null);
-    return Sequence.fromIterable(((Iterable<SNode>) ListSequence.fromList(new ArrayList<SNode>()))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.DotExpression$yW);
-      }
-    });
+    return Sequence.fromIterable(((Iterable<SNode>) ListSequence.fromList(new ArrayList<SNode>()))).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.DotExpression$yW));
   }
   @Nullable
   @Override
@@ -39,11 +34,7 @@ public class TestScope extends Scope {
   @Nullable
   @Override
   public String getReferenceText(SNode contextNode, @NotNull SNode node) {
-    return new _FunctionTypes._return_P0_E0<String>() {
-      public String invoke() {
-        return "wow";
-      }
-    }.invoke();
+    return ((_FunctionTypes._return_P0_E0<String>) () -> "wow").invoke();
   }
 
   private static final class CONCEPTS {

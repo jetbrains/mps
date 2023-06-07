@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -38,11 +37,7 @@ public final class TypeAlias__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode getThisType_id1hJVIB$ehhK(@NotNull SNode __thisNode__) {
-    return createTypeAliasType_fe3fel_a0a0(__thisNode__, ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.typeParameters$eq6K)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return (SNode) IType__BehaviorDescriptor.asProjection_idJmO2PmVt2A.invoke(createTypeParameterReference_fe3fel_a0a0a0a0b0a0a0(it), SPropertyOperations.getEnum(it, PROPS.variance$xP5D));
-      }
-    }));
+    return createTypeAliasType_fe3fel_a0a0(__thisNode__, ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.typeParameters$eq6K)).select((it) -> (SNode) IType__BehaviorDescriptor.asProjection_idJmO2PmVt2A.invoke(createTypeParameterReference_fe3fel_a0a0a0a0b0a0a0(it), SPropertyOperations.getEnum(it, PROPS.variance$xP5D))));
   }
 
   /*package*/ TypeAlias__BehaviorDescriptor() {

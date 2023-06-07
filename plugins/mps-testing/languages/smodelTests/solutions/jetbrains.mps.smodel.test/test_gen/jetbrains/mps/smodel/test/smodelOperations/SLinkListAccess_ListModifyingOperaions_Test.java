@@ -21,7 +21,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -358,11 +357,7 @@ public class SLinkListAccess_ListModifyingOperaions_Test extends BaseTransformat
       runWithinCommand(() -> {
         int initialSize = ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2282909602806268544"), LINKS.child_1_n$IYmu)).count();
         Assert.assertTrue(ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2282909602806268544"), LINKS.child_1_n$IYmu)).contains(getNodeById("2282909602806391310")));
-        ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2282909602806268544"), LINKS.child_1_n$IYmu)).removeWhere(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SPropertyOperations.getString(it, PROPS.name$MnvL).equals(SPropertyOperations.getString(getNodeById("2282909602806391310"), PROPS.name$MnvL));
-          }
-        });
+        ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2282909602806268544"), LINKS.child_1_n$IYmu)).removeWhere((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).equals(SPropertyOperations.getString(getNodeById("2282909602806391310"), PROPS.name$MnvL)));
         Assert.assertEquals(initialSize - 1, ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2282909602806268544"), LINKS.child_1_n$IYmu)).count());
         Assert.assertFalse(ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2282909602806268544"), LINKS.child_1_n$IYmu)).contains(getNodeById("2282909602806391310")));
         Assert.assertNull(SNodeOperations.getParent(getNodeById("2282909602806391310")));

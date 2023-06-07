@@ -9,9 +9,7 @@ import jetbrains.mps.vcs.diff.changes.ModifiedNodesGroup;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.vcs.diff.changes.WrappingNodesGroup;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import org.jetbrains.mps.openapi.model.SNodeId;
@@ -20,10 +18,8 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.util.Objects;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.util.LongestCommonSubsequenceFinder;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.vcs.diff.changes.ModifiedNode;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IListSequence;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -52,20 +48,12 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
   }
 
   private Collection<ModifiedNodesGroup> getAllGroups() {
-    return CollectionSequence.fromCollection(getGroups(false)).concat(CollectionSequence.fromCollection(getGroups(true))).toListSequence();
+    return CollectionSequence.fromCollection(getGroups(false)).concat(CollectionSequence.fromCollection(getGroups(true))).toList();
   }
 
   /*package*/ void collectWrappedGroups() {
-    List<ModifiedNodesGroup> notMoveGroups = CollectionSequence.fromCollection(getAllGroups()).where(new IWhereFilter<ModifiedNodesGroup>() {
-      public boolean accept(ModifiedNodesGroup it) {
-        return it.isInsertOrDelete();
-      }
-    }).toListSequence();
-    ListSequence.fromList(notMoveGroups).visitAll(new IVisitor<ModifiedNodesGroup>() {
-      public void visit(ModifiedNodesGroup notMoveGroup) {
-        collectWrappedGroups(notMoveGroup);
-      }
-    });
+    List<ModifiedNodesGroup> notMoveGroups = CollectionSequence.fromCollection(getAllGroups()).where((it) -> it.isInsertOrDelete()).toList();
+    ListSequence.fromList(notMoveGroups).visitAll((notMoveGroup) -> collectWrappedGroups(notMoveGroup));
   }
 
   private void collectWrappedGroups(final ModifiedNodesGroup notMoveGroup) {
@@ -87,113 +75,59 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
     // group consequent moves with same target top node id together
     final List<Tuples._2<SNodeId, List<ModifiedNodesGroup>>> idAndMovesList = ListSequence.fromList(new ArrayList<Tuples._2<SNodeId, List<ModifiedNodesGroup>>>());
     final Wrappers._T<SNodeId> prevNotMovedNodeId = new Wrappers._T<SNodeId>(null);
-    ListSequence.fromList(oppositeGroups).where(new IWhereFilter<ModifiedNodesGroup>() {
-      public boolean accept(ModifiedNodesGroup it) {
-        return it.isMove();
+    ListSequence.fromList(oppositeGroups).where((it) -> it.isMove()).visitAll((it) -> {
+
+      SNodeId notMovedNodeId = getWrappingNodeId(it, notMoveGroup);
+
+      // if move is outside this not move group then we don't have a wrapping here
+      if (notMovedNodeId == null) {
+        return;
       }
-    }).visitAll(new IVisitor<ModifiedNodesGroup>() {
-      public void visit(ModifiedNodesGroup it) {
 
-        SNodeId notMovedNodeId = getWrappingNodeId(it, notMoveGroup);
-
-        // if move is outside this not move group then we don't have a wrapping here
-        if (notMovedNodeId == null) {
-          return;
-        }
-
-        if (!(Objects.equals(prevNotMovedNodeId.value, notMovedNodeId))) {
-          ListSequence.fromList(idAndMovesList).addElement(MultiTuple.<SNodeId,List<ModifiedNodesGroup>>from(notMovedNodeId, ListSequence.fromList(new ArrayList<ModifiedNodesGroup>())));
-        }
-        ListSequence.fromList(ListSequence.fromList(idAndMovesList).last()._1()).addElement(it);
-        prevNotMovedNodeId.value = notMovedNodeId;
+      if (!(Objects.equals(prevNotMovedNodeId.value, notMovedNodeId))) {
+        ListSequence.fromList(idAndMovesList).addElement(MultiTuple.<SNodeId,List<ModifiedNodesGroup>>from(notMovedNodeId, ListSequence.fromList(new ArrayList<ModifiedNodesGroup>())));
       }
+      ListSequence.fromList(ListSequence.fromList(idAndMovesList).last()._1()).addElement(it);
+      prevNotMovedNodeId.value = notMovedNodeId;
     });
     if (ListSequence.fromList(idAndMovesList).isEmpty()) {
       return;
     }
 
     // we don't want different unwrapped moves to cross each other
-    LongestCommonSubsequenceFinder<SNodeId> finder = new LongestCommonSubsequenceFinder<SNodeId>(ListSequence.fromList(idAndMovesList).select(new ISelector<Tuples._2<SNodeId, List<ModifiedNodesGroup>>, SNodeId>() {
-      public SNodeId select(Tuples._2<SNodeId, List<ModifiedNodesGroup>> it) {
-        return it._0();
-      }
-    }).toListSequence(), notMoveGroup.getIds());
+    LongestCommonSubsequenceFinder<SNodeId> finder = new LongestCommonSubsequenceFinder<SNodeId>(ListSequence.fromList(idAndMovesList).select((it) -> it._0()).toList(), notMoveGroup.getIds());
 
-    Collection<ModifiedNodesGroup> wrappingGroups = ListSequence.fromList(finder.getCommonIndices()).select(new ISelector<Tuples._2<Integer, Integer>, ModifiedNodesGroup>() {
-      public ModifiedNodesGroup select(Tuples._2<Integer, Integer> indices) {
-        final Tuples._2<SNodeId, List<ModifiedNodesGroup>> idAndMoves = ListSequence.fromList(idAndMovesList).getElement((int) indices._0());
-        ModifiedNode notMoveNode = ListSequence.fromList(notMoveGroup.getModifiedNodes()).findFirst(new IWhereFilter<ModifiedNode>() {
-          public boolean accept(ModifiedNode it) {
-            return Objects.equals(it.getNodeId(), idAndMoves._0());
-          }
-        });
-        return createWrappingGroup(notMoveNode, idAndMoves._1());
-      }
-    }).where(new NotNullWhereFilter<ModifiedNodesGroup>()).toListSequence();
+    Collection<ModifiedNodesGroup> wrappingGroups = ListSequence.fromList(finder.getCommonIndices()).select((indices) -> {
+      final Tuples._2<SNodeId, List<ModifiedNodesGroup>> idAndMoves = ListSequence.fromList(idAndMovesList).getElement((int) indices._0());
+      ModifiedNode notMoveNode = ListSequence.fromList(notMoveGroup.getModifiedNodes()).findFirst((it) -> Objects.equals(it.getNodeId(), idAndMoves._0()));
+      return createWrappingGroup(notMoveNode, idAndMoves._1());
+    }).where(new NotNullWhereFilter()).toList();
 
     if (CollectionSequence.fromCollection(wrappingGroups).isEmpty()) {
       return;
     }
 
 
-    Collection<ModifiedNodesGroup> newNotMoveGroups = ListSequence.fromList(finder.getDifferentIndices()).select(new ISelector<Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>>, IListSequence<ModifiedNode>>() {
-      public IListSequence<ModifiedNode> select(Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>> indices) {
-        return ListSequence.fromList(notMoveGroup.getModifiedNodes()).page((int) indices._1()._0(), (int) indices._1()._1()).toListSequence();
-      }
-    }).where(new IWhereFilter<IListSequence<ModifiedNode>>() {
-      public boolean accept(IListSequence<ModifiedNode> nodes) {
-        return ListSequence.fromList(nodes).isNotEmpty();
-      }
-    }).select(new ISelector<IListSequence<ModifiedNode>, ModifiedNodesGroup>() {
-      public ModifiedNodesGroup select(IListSequence<ModifiedNode> nodes) {
-        return new ModifiedNodesGroup(getModel(notMoveGroup.isNew()), nodes, null);
-      }
-    }).toListSequence();
+    Collection<ModifiedNodesGroup> newNotMoveGroups = ListSequence.fromList(finder.getDifferentIndices()).select((indices) -> ListSequence.fromList(notMoveGroup.getModifiedNodes()).page((int) indices._1()._0(), (int) indices._1()._1()).toList()).where((nodes) -> ListSequence.fromList(nodes).isNotEmpty()).select((nodes) -> new ModifiedNodesGroup(getModel(notMoveGroup.isNew()), nodes, null)).toList();
 
     final List<SNodeId> siblings = notMoveGroup.getSiblings();
-    List<ModifiedNodesGroup> newGroups = CollectionSequence.fromCollection(wrappingGroups).concat(CollectionSequence.fromCollection(newNotMoveGroups)).sort(new ISelector<ModifiedNodesGroup, Integer>() {
-      public Integer select(ModifiedNodesGroup it) {
-        return ListSequence.fromList(siblings).indexOf(it.getFirstNodeId());
-      }
-    }, true).toListSequence();
+    List<ModifiedNodesGroup> newGroups = CollectionSequence.fromCollection(wrappingGroups).concat(CollectionSequence.fromCollection(newNotMoveGroups)).sort((it) -> ListSequence.fromList(siblings).indexOf(it.getFirstNodeId()), true).toList();
 
     replaceGroupByNewGroups(newGroups, notMoveGroup);
     // collect internal changes
-    CollectionSequence.fromCollection(wrappingGroups).ofType(WrappingNodesGroup.class).visitAll(new IVisitor<WrappingNodesGroup>() {
-      public void visit(WrappingNodesGroup wrappingGroup) {
-        List<ModifiedNodesGroup> wrappedGroups = ListSequence.fromListWithValues(new ArrayList<ModifiedNodesGroup>(), wrappingGroup.getWrappedGroups());
-        ListSequence.fromList(wrappedGroups).where(new IWhereFilter<ModifiedNodesGroup>() {
-          public boolean accept(ModifiedNodesGroup wrappedGroup) {
-            return wrappedGroup.isInsertOrDelete();
-          }
-        }).visitAll(new IVisitor<ModifiedNodesGroup>() {
-          public void visit(ModifiedNodesGroup it) {
-            collectWrappedGroups(it);
-          }
-        });
-      }
+    CollectionSequence.fromCollection(wrappingGroups).ofType(WrappingNodesGroup.class).visitAll((wrappingGroup) -> {
+      List<ModifiedNodesGroup> wrappedGroups = ListSequence.fromListWithValues(new ArrayList<ModifiedNodesGroup>(), wrappingGroup.getWrappedGroups());
+      ListSequence.fromList(wrappedGroups).where((wrappedGroup) -> wrappedGroup.isInsertOrDelete()).visitAll((it) -> collectWrappedGroups(it));
     });
 
     // now that the wrapping group is created we can try to find unwrapping changes inside
-    ListSequence.fromList(oppositeGroups).where(new IWhereFilter<ModifiedNodesGroup>() {
-      public boolean accept(ModifiedNodesGroup it) {
-        return it.isInsertOrDelete();
-      }
-    }).visitAll(new IVisitor<ModifiedNodesGroup>() {
-      public void visit(ModifiedNodesGroup it) {
-        collectWrappedGroups(it);
-      }
-    });
+    ListSequence.fromList(oppositeGroups).where((it) -> it.isInsertOrDelete()).visitAll((it) -> collectWrappedGroups(it));
   }
 
   @Nullable
   private SNodeId getWrappingNodeId(ModifiedNodesGroup unwrappedMove, ModifiedNodesGroup notMoveGroup) {
     final SNodeId oppositeParentId = unwrappedMove.getOppositeMove().getParentId();
-    return check_eh55ud_a1a51(ListSequence.fromList(notMoveGroup.getModifiedNodes()).findFirst(new IWhereFilter<ModifiedNode>() {
-      public boolean accept(ModifiedNode notMoveNode) {
-        return SetSequence.fromSet(notMoveNode.getAllAffectedNodeIds()).contains(oppositeParentId);
-      }
-    }));
+    return check_eh55ud_a1a51(ListSequence.fromList(notMoveGroup.getModifiedNodes()).findFirst((notMoveNode) -> SetSequence.fromSet(notMoveNode.getAllAffectedNodeIds()).contains(oppositeParentId)));
   }
 
   @Nullable
@@ -203,11 +137,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
       return null;
     }
 
-    UnwrappedMovesGroup movesGroup = CollectionSequence.fromCollection(getUnwrappedMovesGroups(unwrappedMoves)).findFirst(new IWhereFilter<UnwrappedMovesGroup>() {
-      public boolean accept(UnwrappedMovesGroup it) {
-        return CollectionSequence.fromCollection(it.myParents).isEmpty();
-      }
-    });
+    UnwrappedMovesGroup movesGroup = CollectionSequence.fromCollection(getUnwrappedMovesGroups(unwrappedMoves)).findFirst((it) -> CollectionSequence.fromCollection(it.myParents).isEmpty());
     if (movesGroup == null) {
       return null;
     }
@@ -233,7 +163,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
       List<SNodeId> unwrappedSiblings = ListSequence.fromList(myGroups).first().getSiblings();
       int start = ListSequence.fromList(unwrappedSiblings).indexOf(ListSequence.fromList(myGroups).first().getFirstNodeId());
       int end = ListSequence.fromList(unwrappedSiblings).indexOf(ListSequence.fromList(ListSequence.fromList(myGroups).last().getIds()).last());
-      return ListSequence.fromList(unwrappedSiblings).page(start, end + 1).toListSequence();
+      return ListSequence.fromList(unwrappedSiblings).page(start, end + 1).toList();
     }
   }
 
@@ -242,22 +172,16 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
     Collection<UnwrappedMovesGroup> movesGroups = CollectionSequence.fromCollection(new ArrayList<UnwrappedMovesGroup>());
     for (ModifiedNodesGroup move : ListSequence.fromList(unwrappedMoves)) {
       final Tuples._2<SNode, SContainmentLink> place = MultiTuple.<SNode,SContainmentLink>from(move.getOppositeMove().getParentNode(), move.getOppositeMove().getLink());
-      final Wrappers._T<UnwrappedMovesGroup> movesGroup = new Wrappers._T<UnwrappedMovesGroup>(CollectionSequence.fromCollection(movesGroups).findFirst(new IWhereFilter<UnwrappedMovesGroup>() {
-        public boolean accept(UnwrappedMovesGroup it) {
-          return Objects.equals(it.myParentNode, place._0()) && Objects.equals(it.myLink, place._1());
-        }
-      }));
+      final Wrappers._T<UnwrappedMovesGroup> movesGroup = new Wrappers._T<UnwrappedMovesGroup>(CollectionSequence.fromCollection(movesGroups).findFirst((it) -> Objects.equals(it.myParentNode, place._0()) && Objects.equals(it.myLink, place._1())));
       if (movesGroup.value != null) {
         ListSequence.fromList(movesGroup.value.myGroups).addElement(move);
         continue;
       }
       movesGroup.value = new UnwrappedMovesGroup(place._0(), place._1());
       ListSequence.fromList(movesGroup.value.myGroups).addElement(move);
-      CollectionSequence.fromCollection(movesGroups).visitAll(new IVisitor<UnwrappedMovesGroup>() {
-        public void visit(UnwrappedMovesGroup it) {
-          findDescendants(movesGroup.value, it);
-          findDescendants(it, movesGroup.value);
-        }
+      CollectionSequence.fromCollection(movesGroups).visitAll((it) -> {
+        findDescendants(movesGroup.value, it);
+        findDescendants(it, movesGroup.value);
       });
       CollectionSequence.fromCollection(movesGroups).addElement(movesGroup.value);
     }
@@ -272,35 +196,17 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
   }
 
   private List<ModifiedNodesGroup> getUnwrappedGroups(final UnwrappedMovesGroup movesGroup, boolean isNew) {
-    List<ModifiedNodesGroup> unwrappedGroups = CollectionSequence.fromCollection(getGroups(!(isNew))).where(new IWhereFilter<ModifiedNodesGroup>() {
-      public boolean accept(ModifiedNodesGroup it) {
-        return Objects.equals(ListSequence.fromList(movesGroup.myGroups).first().getParentId(), it.getParentId()) && Objects.equals(ListSequence.fromList(movesGroup.myGroups).first().getLink(), it.getLink()) && ListSequence.fromList(movesGroup.myGroups).first().getBegin() <= it.getBegin() && ListSequence.fromList(movesGroup.myGroups).last().getBegin() >= it.getBegin();
-      }
-    }).sort(new ISelector<ModifiedNodesGroup, Integer>() {
-      public Integer select(ModifiedNodesGroup it) {
-        return it.getBegin();
-      }
-    }, true).toListSequence();
+    List<ModifiedNodesGroup> unwrappedGroups = CollectionSequence.fromCollection(getGroups(!(isNew))).where((it) -> Objects.equals(ListSequence.fromList(movesGroup.myGroups).first().getParentId(), it.getParentId()) && Objects.equals(ListSequence.fromList(movesGroup.myGroups).first().getLink(), it.getLink()) && ListSequence.fromList(movesGroup.myGroups).first().getBegin() <= it.getBegin() && ListSequence.fromList(movesGroup.myGroups).last().getBegin() >= it.getBegin()).sort((it) -> it.getBegin(), true).toList();
     return unwrappedGroups;
   }
 
   private static List<ModifiedNodesGroup> createUnwrappedMoves(LongestCommonSubsequenceFinder<?> finder, final List<SNodeId> unwrappedIds, UnwrappedMovesGroup movesGroup) {
 
-    final Iterable<SNodeId> commonIds = ListSequence.fromList(finder.getCommonIndices()).select(new ISelector<Tuples._2<Integer, Integer>, SNodeId>() {
-      public SNodeId select(Tuples._2<Integer, Integer> it) {
-        return ListSequence.fromList(unwrappedIds).getElement((int) it._0());
-      }
-    });
-    List<ModifiedNodesGroup> result = ListSequence.fromList(movesGroup.myGroups).where(new IWhereFilter<ModifiedNodesGroup>() {
-      public boolean accept(ModifiedNodesGroup move) {
-        return ListSequence.fromList(move.getIds()).intersect(Sequence.fromIterable(commonIds)).isNotEmpty();
-      }
-    }).toListSequence();
-    ListSequence.fromList(result).visitAll(new IVisitor<ModifiedNodesGroup>() {
-      public void visit(ModifiedNodesGroup it) {
-        it.setIsWrappedMove();
-        it.getOppositeMove().setIsWrappedMove();
-      }
+    final Iterable<SNodeId> commonIds = ListSequence.fromList(finder.getCommonIndices()).select((it) -> ListSequence.fromList(unwrappedIds).getElement((int) it._0()));
+    List<ModifiedNodesGroup> result = ListSequence.fromList(movesGroup.myGroups).where((move) -> ListSequence.fromList(move.getIds()).intersect(Sequence.fromIterable(commonIds)).isNotEmpty()).toList();
+    ListSequence.fromList(result).visitAll((it) -> {
+      it.setIsWrappedMove();
+      it.getOppositeMove().setIsWrappedMove();
     });
     return result;
   }
@@ -308,20 +214,14 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
   private List<ModifiedNodesGroup> createWrappedNotMoveGroups(LongestCommonSubsequenceFinder<?> finder, final List<SNodeId> wrappedIds, final boolean isNew) {
     final List<ModifiedNodesGroup> wrappedNotMoveGroups = ListSequence.fromList(new ArrayList<ModifiedNodesGroup>());
 
-    ListSequence.fromList(finder.getDifferentIndices()).visitAll(new IVisitor<Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>>>() {
-      public void visit(Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>> indices) {
-        List<SNodeId> ids = ListSequence.fromList(wrappedIds).page((int) indices._1()._0(), (int) indices._1()._1()).toListSequence();
-        if (ListSequence.fromList(ids).isEmpty()) {
-          return;
-        }
-        int newEndIndex = (int) indices._1()._1();
-        SNodeId newBeforeId = (newEndIndex < ListSequence.fromList(wrappedIds).count() ? ListSequence.fromList(wrappedIds).getElement(newEndIndex) : null);
-        ListSequence.fromList(wrappedNotMoveGroups).addSequence(ListSequence.fromList(myGroupsBuilder.createGroups(ids, newBeforeId, null, isNew)).where(new IWhereFilter<ModifiedNodesGroup>() {
-          public boolean accept(ModifiedNodesGroup it) {
-            return !(it.isMove());
-          }
-        }));
+    ListSequence.fromList(finder.getDifferentIndices()).visitAll((indices) -> {
+      List<SNodeId> ids = ListSequence.fromList(wrappedIds).page((int) indices._1()._0(), (int) indices._1()._1()).toList();
+      if (ListSequence.fromList(ids).isEmpty()) {
+        return;
       }
+      int newEndIndex = (int) indices._1()._1();
+      SNodeId newBeforeId = (newEndIndex < ListSequence.fromList(wrappedIds).count() ? ListSequence.fromList(wrappedIds).getElement(newEndIndex) : null);
+      ListSequence.fromList(wrappedNotMoveGroups).addSequence(ListSequence.fromList(myGroupsBuilder.createGroups(ids, newBeforeId, null, isNew)).where((it) -> !(it.isMove())));
     });
     CollectionSequence.fromCollection(getGroups(isNew)).addSequence(ListSequence.fromList(wrappedNotMoveGroups));
     return wrappedNotMoveGroups;
@@ -331,11 +231,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 
     final SNodeId newParentId = ListSequence.fromList(movesGroup.myGroups).first().getOppositeMove().getParentId();
     final SContainmentLink newRole = ListSequence.fromList(movesGroup.myGroups).first().getOppositeMove().getLink();
-    final List<SNodeId> wrappedIds = ListSequence.fromList(DiffUtil.getChildrenInRole(getModel(isNew).getNode(newParentId), newRole)).select(new ISelector<SNode, SNodeId>() {
-      public SNodeId select(SNode it) {
-        return it.getNodeId();
-      }
-    }).toListSequence();
+    final List<SNodeId> wrappedIds = ListSequence.fromList(DiffUtil.getChildrenInRole(getModel(isNew).getNode(newParentId), newRole)).select((it) -> it.getNodeId()).toList();
     List<SNodeId> unwrappedIds = movesGroup.getUnwrappedIds();
 
     LongestCommonSubsequenceFinder<SNodeId> finder = new LongestCommonSubsequenceFinder<SNodeId>(unwrappedIds, wrappedIds);
@@ -346,21 +242,9 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 
     List<ModifiedNodesGroup> allWrappedGroups = ListSequence.fromList(new ArrayList<ModifiedNodesGroup>());
     ListSequence.fromList(allWrappedGroups).addSequence(ListSequence.fromList(wrappedNotMoveGroups));
-    ListSequence.fromList(allWrappedGroups).addSequence(CollectionSequence.fromCollection(getGroups(isNew)).where(new IWhereFilter<ModifiedNodesGroup>() {
-      public boolean accept(ModifiedNodesGroup it) {
-        return it.isMove() && !(it.isWrappedMove()) && Objects.equals(it.getParentId(), newParentId) && Objects.equals(it.getLink(), newRole);
-      }
-    }));
-    ListSequence.fromList(allWrappedGroups).addSequence(ListSequence.fromList(orderedUnwrappedMoves).select(new ISelector<ModifiedNodesGroup, ModifiedNodesGroup>() {
-      public ModifiedNodesGroup select(ModifiedNodesGroup it) {
-        return it.getOppositeMove();
-      }
-    }));
-    allWrappedGroups = ListSequence.fromList(allWrappedGroups).sort(new ISelector<ModifiedNodesGroup, Integer>() {
-      public Integer select(ModifiedNodesGroup it) {
-        return ListSequence.fromList(wrappedIds).indexOf(it.getFirstNodeId());
-      }
-    }, true).toListSequence();
+    ListSequence.fromList(allWrappedGroups).addSequence(CollectionSequence.fromCollection(getGroups(isNew)).where((it) -> it.isMove() && !(it.isWrappedMove()) && Objects.equals(it.getParentId(), newParentId) && Objects.equals(it.getLink(), newRole)));
+    ListSequence.fromList(allWrappedGroups).addSequence(ListSequence.fromList(orderedUnwrappedMoves).select((it) -> it.getOppositeMove()));
+    allWrappedGroups = ListSequence.fromList(allWrappedGroups).sort((it) -> ListSequence.fromList(wrappedIds).indexOf(it.getFirstNodeId()), true).toList();
 
     ModifiedNodesGroup nextGroup = null;
     SNodeId nextNodeId = null;

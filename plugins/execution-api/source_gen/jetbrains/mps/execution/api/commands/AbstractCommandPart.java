@@ -7,7 +7,6 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 
 @GeneratedClass(node = "r:da044acc-81a4-4fd8-b89a-91df4cfe6214(jetbrains.mps.execution.api.commands)/6868250101935611940", model = "r:da044acc-81a4-4fd8-b89a-91df4cfe6214(jetbrains.mps.execution.api.commands)")
@@ -26,11 +25,7 @@ public abstract class AbstractCommandPart implements CommandPart {
     return myCommand;
   }
   protected final void addCommands(Iterable<String> list) {
-    ListSequence.fromList(myCommand).addSequence(Sequence.fromIterable(list).where(new IWhereFilter<String>() {
-      public boolean accept(String it) {
-        return (it != null && it.length() > 0);
-      }
-    }));
+    ListSequence.fromList(myCommand).addSequence(Sequence.fromIterable(list).where((it) -> (it != null && it.length() > 0)));
   }
   protected final void addCommands(String... list) {
     addCommands(Sequence.fromArray(list));

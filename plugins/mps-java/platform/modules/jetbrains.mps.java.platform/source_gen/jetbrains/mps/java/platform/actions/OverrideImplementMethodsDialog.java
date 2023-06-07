@@ -20,7 +20,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import java.util.Objects;
 import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -90,7 +89,7 @@ public class OverrideImplementMethodsDialog extends GroupedNodesChooser {
     for (SNode c : allSuperClassifiers) {
       MapSequence.fromMap(containerIndex).put(c, i++);
     }
-    return Sequence.fromIterable(methods).sort((SNode a, SNode b) -> {
+    return Sequence.fromIterable(methods).sort((a, b) -> {
       SNode parentA = SNodeOperations.getParent(a);
       SNode parentB = SNodeOperations.getParent(b);
       if (parentA == parentB) {
@@ -114,11 +113,7 @@ public class OverrideImplementMethodsDialog extends GroupedNodesChooser {
   }
 
   public static SNodeReference[] toNodePointers(Iterable<SNode> methods) {
-    return Sequence.fromIterable(methods).select(new ISelector<SNode, SNodeReference>() {
-      public SNodeReference select(SNode it) {
-        return SNodeOperations.getPointer(it);
-      }
-    }).toGenericArray(SNodeReference.class);
+    return Sequence.fromIterable(methods).select((it) -> SNodeOperations.getPointer(it)).toGenericArray(SNodeReference.class);
   }
 
   private static final class CONCEPTS {

@@ -379,67 +379,60 @@
       </scope>
     </file>
     <file name="check_MethodIsNotOverriddenTwice_NonTypesystemRule.java">
-      <node id="1279830762537759535" at="30,39,31,82" concept="10" />
-      <node id="1279830762537579635" at="37,11,38,70" concept="9" />
-      <node id="1279830762537579635" at="38,70,39,342" concept="9" />
-      <node id="1279830762537579627" at="45,50,46,38" concept="10" />
-      <node id="1279830762537579627" at="48,68,49,102" concept="10" />
-      <node id="1279830762537579627" at="51,30,52,17" concept="10" />
-      <node id="1279830762537579627" at="56,0,57,0" concept="13" trace="method$w_in" />
-      <node id="1279830762537579627" at="57,0,58,0" concept="13" trace="overriddenMethod$quKH" />
-      <node id="1279830762537579627" at="61,0,62,0" concept="13" trace="name$MnvL" />
-      <node id="1279830762537579627" at="65,0,66,0" concept="13" trace="ConceptBehavior$2" />
-      <node id="1279830762537579627" at="26,0,28,0" concept="3" trace="check_MethodIsNotOverriddenTwice_NonTypesystemRule#()V" />
-      <node id="1279830762537759533" at="30,0,33,0" concept="8" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="1279830762537579627" at="45,0,48,0" concept="8" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="1279830762537579627" at="48,0,51,0" concept="8" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="1279830762537579627" at="51,0,54,0" concept="8" trace="overrides#()Z" />
-      <node id="1279830762537579635" at="36,177,40,11" concept="1" />
-      <node id="1279830762537759526" at="28,128,33,7" concept="9" />
-      <node id="1279830762537631183" at="35,76,41,9" concept="7" />
-      <node id="1279830762537616690" at="34,67,42,7" concept="6" />
-      <node id="1279830762537688166" at="33,7,43,5" concept="6" />
-      <node id="1279830762537579627" at="28,0,45,0" concept="8" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-      <scope id="1279830762537579627" at="26,63,26,63" />
-      <scope id="1279830762537759534" at="30,39,31,82" />
-      <scope id="1279830762537579627" at="45,50,46,38" />
-      <scope id="1279830762537579627" at="48,68,49,102" />
-      <scope id="1279830762537579627" at="51,30,52,17" />
-      <scope id="1279830762537579627" at="26,0,28,0" />
-      <scope id="1279830762537579635" at="37,11,39,342">
+      <node id="1279830762537759526" at="27,128,28,209" concept="9" />
+      <node id="1279830762537579635" at="32,11,33,70" concept="9" />
+      <node id="1279830762537579635" at="33,70,34,342" concept="9" />
+      <node id="1279830762537579627" at="40,50,41,38" concept="10" />
+      <node id="1279830762537579627" at="43,68,44,102" concept="10" />
+      <node id="1279830762537579627" at="46,30,47,17" concept="10" />
+      <node id="1279830762537579627" at="51,0,52,0" concept="13" trace="method$w_in" />
+      <node id="1279830762537579627" at="52,0,53,0" concept="13" trace="overriddenMethod$quKH" />
+      <node id="1279830762537579627" at="56,0,57,0" concept="13" trace="name$MnvL" />
+      <node id="1279830762537579627" at="60,0,61,0" concept="13" trace="ConceptBehavior$2" />
+      <node id="1279830762537579627" at="25,0,27,0" concept="3" trace="check_MethodIsNotOverriddenTwice_NonTypesystemRule#()V" />
+      <node id="1279830762537579627" at="40,0,43,0" concept="8" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1279830762537579627" at="43,0,46,0" concept="8" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="1279830762537579627" at="46,0,49,0" concept="8" trace="overrides#()Z" />
+      <node id="1279830762537579635" at="31,177,35,11" concept="1" />
+      <node id="1279830762537631183" at="30,76,36,9" concept="7" />
+      <node id="1279830762537616690" at="29,67,37,7" concept="6" />
+      <node id="1279830762537688166" at="28,209,38,5" concept="6" />
+      <node id="1279830762537579627" at="27,0,40,0" concept="8" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="1279830762537579627" at="25,63,25,63" />
+      <scope id="1279830762537579627" at="40,50,41,38" />
+      <scope id="1279830762537579627" at="43,68,44,102" />
+      <scope id="1279830762537579627" at="46,30,47,17" />
+      <scope id="1279830762537579627" at="25,0,27,0" />
+      <scope id="1279830762537579635" at="32,11,34,342">
         <var name="_reporter_2309309498" id="1279830762537579635" />
         <var name="errorTarget" id="1279830762537579635" />
       </scope>
-      <scope id="1279830762537759533" at="30,0,33,0">
-        <var name="it" id="1279830762537759533" />
-      </scope>
-      <scope id="1279830762537579627" at="45,0,48,0" />
-      <scope id="1279830762537579627" at="48,0,51,0">
+      <scope id="1279830762537579627" at="40,0,43,0" />
+      <scope id="1279830762537579627" at="43,0,46,0">
         <var name="argument" id="1279830762537579627" />
       </scope>
-      <scope id="1279830762537579627" at="51,0,54,0" />
-      <scope id="1279830762537631185" at="36,177,40,11" />
-      <scope id="1279830762537616696" at="35,76,41,9" />
-      <scope id="1279830762537616690" at="34,67,42,7">
+      <scope id="1279830762537579627" at="46,0,49,0" />
+      <scope id="1279830762537631185" at="31,177,35,11" />
+      <scope id="1279830762537616696" at="30,76,36,9" />
+      <scope id="1279830762537616690" at="29,67,37,7">
         <var name="anotherMethod" id="1279830762537616692" />
       </scope>
-      <scope id="1279830762537688172" at="34,67,42,7" />
-      <scope id="1279830762537688166" at="33,7,43,5">
+      <scope id="1279830762537688172" at="29,67,37,7" />
+      <scope id="1279830762537688166" at="28,209,38,5">
         <var name="method" id="1279830762537688168" />
       </scope>
-      <scope id="1279830762537579628" at="28,128,43,5">
+      <scope id="1279830762537579628" at="27,128,38,5">
         <var name="overridingMethods" id="1279830762537759527" />
       </scope>
-      <scope id="1279830762537579627" at="28,0,45,0">
+      <scope id="1279830762537579627" at="27,0,40,0">
         <var name="conceptBehavior" id="1279830762537579627" />
         <var name="status" id="1279830762537579627" />
         <var name="typeCheckingContext" id="1279830762537579627" />
       </scope>
-      <unit id="1279830762537579627" at="60,0,63,0" name="jetbrains.mps.lang.behavior.typesystem.check_MethodIsNotOverriddenTwice_NonTypesystemRule$PROPS" />
-      <unit id="1279830762537579627" at="64,0,67,0" name="jetbrains.mps.lang.behavior.typesystem.check_MethodIsNotOverriddenTwice_NonTypesystemRule$CONCEPTS" />
-      <unit id="1279830762537759533" at="29,137,33,5" name="jetbrains.mps.lang.behavior.typesystem.check_MethodIsNotOverriddenTwice_NonTypesystemRule$1" />
-      <unit id="1279830762537579627" at="55,0,59,0" name="jetbrains.mps.lang.behavior.typesystem.check_MethodIsNotOverriddenTwice_NonTypesystemRule$LINKS" />
-      <unit id="1279830762537579627" at="25,0,68,0" name="jetbrains.mps.lang.behavior.typesystem.check_MethodIsNotOverriddenTwice_NonTypesystemRule" />
+      <unit id="1279830762537579627" at="55,0,58,0" name="jetbrains.mps.lang.behavior.typesystem.check_MethodIsNotOverriddenTwice_NonTypesystemRule$PROPS" />
+      <unit id="1279830762537579627" at="59,0,62,0" name="jetbrains.mps.lang.behavior.typesystem.check_MethodIsNotOverriddenTwice_NonTypesystemRule$CONCEPTS" />
+      <unit id="1279830762537579627" at="50,0,54,0" name="jetbrains.mps.lang.behavior.typesystem.check_MethodIsNotOverriddenTwice_NonTypesystemRule$LINKS" />
+      <unit id="1279830762537579627" at="24,0,63,0" name="jetbrains.mps.lang.behavior.typesystem.check_MethodIsNotOverriddenTwice_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:f7f8a091-d98d-402d-85c4-5f05cb2b8c61(jetbrains.mps.lang.behavior.typesystem)/1437112813707220502">

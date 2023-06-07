@@ -11,9 +11,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.dataFlow.framework.Program;
 import jetbrains.mps.lang.dataFlow.MPSProgramBuilder;
@@ -40,60 +38,24 @@ public class check_FieldDeclarationCanBeLocalVariable_NonTypesystemRule extends 
       return;
     }
 
-    Iterable<SNode> refs = ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getContainingRoot(variableDeclaration), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == variableDeclaration;
-      }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SNodeOperations.getNodeAncestor(it, CONCEPTS.SingleLineComment$Kw, false, false) == null) && (SNodeOperations.getNodeAncestor(it, CONCEPTS.BaseCommentAttribute$nv, false, false) == null);
-      }
-    });
-    Iterable<SNode> ops = (SNodeOperations.isInstanceOf(variableDeclaration, CONCEPTS.FieldDeclaration$ie) ? ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getContainingRoot(variableDeclaration), CONCEPTS.FieldReferenceOperation$fU, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getTarget(it, LINKS.fieldDeclaration$H7Ag), variableDeclaration);
-      }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SNodeOperations.getNodeAncestor(it, CONCEPTS.SingleLineComment$Kw, false, false) == null) && (SNodeOperations.getNodeAncestor(it, CONCEPTS.BaseCommentAttribute$nv, false, false) == null);
-      }
-    }).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SNodeOperations.getParent(it);
-      }
-    }) : null);
+    Iterable<SNode> refs = ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getContainingRoot(variableDeclaration), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where((it) -> SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == variableDeclaration).where((it) -> (SNodeOperations.getNodeAncestor(it, CONCEPTS.SingleLineComment$Kw, false, false) == null) && (SNodeOperations.getNodeAncestor(it, CONCEPTS.BaseCommentAttribute$nv, false, false) == null));
+    Iterable<SNode> ops = (SNodeOperations.isInstanceOf(variableDeclaration, CONCEPTS.FieldDeclaration$ie) ? ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getContainingRoot(variableDeclaration), CONCEPTS.FieldReferenceOperation$fU, false, new SAbstractConcept[]{})).where((it) -> Objects.equals(SLinkOperations.getTarget(it, LINKS.fieldDeclaration$H7Ag), variableDeclaration)).where((it) -> (SNodeOperations.getNodeAncestor(it, CONCEPTS.SingleLineComment$Kw, false, false) == null) && (SNodeOperations.getNodeAncestor(it, CONCEPTS.BaseCommentAttribute$nv, false, false) == null)).select((it) -> SNodeOperations.getParent(it)) : null);
     Iterable<SNode> alls = Sequence.fromIterable(refs).union(Sequence.fromIterable(ops));
 
     if (Sequence.fromIterable(alls).isEmpty()) {
       return;
     }
-    if (Sequence.fromIterable(alls).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SNodeOperations.getNodeAncestor(it, CONCEPTS.BaseMethodDeclaration$kD, false, false) == null);
-      }
-    })) {
+    if (Sequence.fromIterable(alls).any((it) -> (SNodeOperations.getNodeAncestor(it, CONCEPTS.BaseMethodDeclaration$kD, false, false) == null))) {
       return;
     }
-    final Iterable<SNode> methods = Sequence.fromIterable(alls).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SNodeOperations.getNodeAncestor(it, CONCEPTS.BaseMethodDeclaration$kD, false, false);
-      }
-    });
+    final Iterable<SNode> methods = Sequence.fromIterable(alls).select((it) -> SNodeOperations.getNodeAncestor(it, CONCEPTS.BaseMethodDeclaration$kD, false, false));
 
-    if (Sequence.fromIterable(methods).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(it, Sequence.fromIterable(methods).first());
-      }
-    })) {
+    if (Sequence.fromIterable(methods).all((it) -> Objects.equals(it, Sequence.fromIterable(methods).first()))) {
       SNode method = Sequence.fromIterable(methods).first();
       Program program = new MPSProgramBuilder().buildProgram(SLinkOperations.getTarget(method, LINKS.body$5xQk));
 
       // find a read instruction for variableDeclaration not preceded by a write instruction
-      boolean uninitializedRead = ListSequence.fromList(ListSequence.fromListWithValues(new ArrayList<ReadInstruction>(), program.getUninitializedReads())).any(new IWhereFilter<ReadInstruction>() {
-        public boolean accept(ReadInstruction it) {
-          return Objects.equals(it.getVariable(), variableDeclaration);
-        }
-      });
+      boolean uninitializedRead = ListSequence.fromList(ListSequence.fromListWithValues(new ArrayList<ReadInstruction>(), program.getUninitializedReads())).any((it) -> Objects.equals(it.getVariable(), variableDeclaration));
 
       if (!(uninitializedRead)) {
         {

@@ -15,8 +15,6 @@ import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
@@ -79,15 +77,7 @@ public class ToolController implements ItemExecutor {
         final Wrappers._T<List<ToolComponent.IItem>> items = new Wrappers._T<List<ToolComponent.IItem>>(null);
         myProject.getRepository().getModelAccess().runReadAction(() -> {
           items.value = queryItems(selection);
-          items.value = ListSequence.fromList(items.value).where(new IWhereFilter<ToolComponent.IItem>() {
-            public boolean accept(ToolComponent.IItem it) {
-              return it.isVisible();
-            }
-          }).sort(new ISelector<ToolComponent.IItem, String>() {
-            public String select(ToolComponent.IItem it) {
-              return it.getLabel();
-            }
-          }, true).toListSequence();
+          items.value = ListSequence.fromList(items.value).where((it) -> it.isVisible()).sort((it) -> it.getLabel(), true).toList();
         });
         ThreadUtils.runInUIThreadNoWait(() -> myToolComponent.loadItems(items.value));
       } catch (Exception ex) {

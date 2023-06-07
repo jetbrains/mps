@@ -17,7 +17,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -46,11 +45,7 @@ public final class Annotation__BehaviorDescriptor extends BaseBHDescriptor {
       parameters = IFunctionDeclaration__BehaviorDescriptor.getParameters_id6f3juM$_Kx4.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.constructor$F_F2));
     }
 
-    return ListSequence.fromList(parameters).select(new ISelector<SNode, KotlinParameterDeclaration>() {
-      public KotlinParameterDeclaration select(SNode parameter) {
-        return new KotlinParameterDeclaration(parameter);
-      }
-    });
+    return ListSequence.fromList(parameters).select((parameter) -> new KotlinParameterDeclaration(parameter));
   }
 
   /*package*/ Annotation__BehaviorDescriptor() {

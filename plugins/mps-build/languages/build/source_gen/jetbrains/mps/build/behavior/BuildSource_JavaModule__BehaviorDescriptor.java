@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -40,11 +39,7 @@ public final class BuildSource_JavaModule__BehaviorDescriptor extends BaseBHDesc
   }
 
   /*package*/ static Iterable<SNode> getTestSources_idV7XPpsMQaR(@NotNull SNode __thisNode__) {
-    return Sequence.fromIterable(SLinkOperations.collectMany(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.sources$9b9b), CONCEPTS.BuildSource_JavaContentRoot$q4), LINKS.folders$JA5L)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.kind$ItBG), 0x48d5d03db92974f9L);
-      }
-    });
+    return Sequence.fromIterable(SLinkOperations.collectMany(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.sources$9b9b), CONCEPTS.BuildSource_JavaContentRoot$q4), LINKS.folders$JA5L)).where((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.kind$ItBG), 0x48d5d03db92974f9L));
   }
   /*package*/ static SNode getOptions_idgpKvTnoZBS(@NotNull SNode __thisNode__) {
     SNode options = SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.options$FDHw), LINKS.compileOptions$Eyr4);

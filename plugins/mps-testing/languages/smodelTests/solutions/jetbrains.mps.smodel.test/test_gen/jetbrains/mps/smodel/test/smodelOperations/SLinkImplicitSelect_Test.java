@@ -17,7 +17,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -129,11 +128,7 @@ public class SLinkImplicitSelect_Test extends BaseTransformationTest {
 
     public void assertEquals(Iterable<SNode> expected, final Iterable<SNode> actual) {
       Assert.assertEquals(Sequence.fromIterable(expected).count(), Sequence.fromIterable(actual).count());
-      Sequence.fromIterable(expected).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          Assert.assertTrue(Sequence.fromIterable(actual).contains(it));
-        }
-      });
+      Sequence.fromIterable(expected).visitAll((it) -> Assert.assertTrue(Sequence.fromIterable(actual).contains(it)));
     }
   }
 

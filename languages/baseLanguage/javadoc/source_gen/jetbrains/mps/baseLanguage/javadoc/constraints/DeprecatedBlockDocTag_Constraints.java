@@ -14,7 +14,6 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -41,11 +40,7 @@ public class DeprecatedBlockDocTag_Constraints extends BaseConstraintsDescriptor
     };
   }
   private static boolean staticCanBeAChild(final SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(parentNode, CONCEPTS.BaseDocComment$bU), LINKS.tags$stUD)).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.DeprecatedBlockDocTag$8n)) || Objects.equals(it, node);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(parentNode, CONCEPTS.BaseDocComment$bU), LINKS.tags$stUD)).all((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.DeprecatedBlockDocTag$8n)) || Objects.equals(it, node));
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:28bcf003-0004-46b6-9fe7-2093e7fb1368(jetbrains.mps.baseLanguage.javadoc.constraints)", "1227128029536560255");
 

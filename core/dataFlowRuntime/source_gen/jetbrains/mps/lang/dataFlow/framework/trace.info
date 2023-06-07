@@ -940,9 +940,9 @@
       <node id="4074113095384031488" at="64,7,65,59" concept="3" />
       <node id="4074113095384031498" at="66,5,67,51" concept="9" />
       <node id="4074113095384031505" at="68,48,69,115" concept="3" />
-      <node id="4074113095384031521" at="71,48,72,109" concept="3" />
+      <node id="4074113095384031521" at="71,48,72,89" concept="3" />
       <node id="4074113095384111319" at="77,7,78,60" concept="9" />
-      <node id="4074113095384111325" at="78,60,79,157" concept="10" />
+      <node id="4074113095384111325" at="78,60,79,141" concept="10" />
       <node id="4074113095384031378" at="35,0,38,0" concept="1" trace="AnalyzerRules#(Ljava/lang/String;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/lang/dataFlow/framework/Program;)V" />
       <node id="4074113095384031429" at="45,23,48,5" concept="7" />
       <node id="4074113095384031468" at="57,93,60,7" concept="7" />
@@ -950,7 +950,7 @@
       <node id="4074113095384031502" at="67,51,70,5" concept="6" />
       <node id="4074113095384031518" at="70,5,73,5" concept="6" />
       <node id="4074113095384031443" at="50,36,54,5" concept="7" />
-      <node id="4074113095384111317" at="76,66,80,7" concept="0" />
+      <node id="4074113095384111317" at="76,46,80,7" concept="0" />
       <node id="4074113095384031543" at="75,66,81,7" concept="10" />
       <node id="4074113095384031395" at="38,0,45,0" concept="1" trace="AnalyzerRules#(Ljava/lang/String;Ljava/util/Collection;Ljetbrains/mps/lang/dataFlow/framework/Program;Ljetbrains/mps/lang/dataFlow/framework/ProgramBuilderContext;)V" />
       <node id="4074113095384031539" at="75,0,83,0" concept="8" trace="getRules#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/util/stream/Stream;" />
@@ -961,9 +961,9 @@
       <scope id="4074113095384031473" at="58,36,59,17" />
       <scope id="4074113095384031486" at="62,27,63,17" />
       <scope id="4074113095384031504" at="68,48,69,115" />
-      <scope id="4074113095384031520" at="71,48,72,109" />
+      <scope id="4074113095384031520" at="71,48,72,89" />
       <scope id="4074113095384031448" at="51,24,53,13" />
-      <scope id="4074113095384111318" at="77,7,79,157">
+      <scope id="4074113095384111318" at="77,7,79,141">
         <var name="modes" id="4074113095384111320" />
       </scope>
       <scope id="4074113095384031378" at="35,0,38,0">
@@ -977,7 +977,7 @@
       <scope id="4074113095384031518" at="70,5,73,5">
         <var name="descendant" id="4074113095384031533" />
       </scope>
-      <scope id="4074113095384111316" at="76,66,80,7" />
+      <scope id="4074113095384111316" at="76,46,80,7" />
       <scope id="4074113095384031406" at="38,123,43,24" />
       <scope id="4074113095384031542" at="75,66,81,7" />
       <scope id="4074113095384031395" at="38,0,45,0">

@@ -21,7 +21,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -59,11 +58,7 @@ public class TestEditorMenuTraceCellMenuPropertyPostfixHints_Test extends BaseTr
 
         EditorMenuTraceInfo editorMenuTraceInfo = action.getEditorMenuTraceInfo();
         SNode ed = EditorMenuTraceTestUtil.editorDeclNode(new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774803494772"), getEditorComponent());
-        EditorMenuTraceTestUtil.checkTraceInfoPath(editorMenuTraceInfo, SNodeOperations.getPointer(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(ed, LINKS.cellModel$L8Uc), CONCEPTS.CellModel_Property$uh, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SLinkOperations.hasPointer(it, LINKS.relationDeclaration$E2hc, new SNodePointer("r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)", "1384684774804762046"));
-          }
-        }).first(), LINKS.menuDescriptor$ptP$), LINKS.cellMenuPart$jjJD), CONCEPTS.CellMenuPart_PropertyPostfixHints$cd)).first()));
+        EditorMenuTraceTestUtil.checkTraceInfoPath(editorMenuTraceInfo, SNodeOperations.getPointer(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(ed, LINKS.cellModel$L8Uc), CONCEPTS.CellModel_Property$uh, false, new SAbstractConcept[]{})).where((it) -> SLinkOperations.hasPointer(it, LINKS.relationDeclaration$E2hc, new SNodePointer("r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)", "1384684774804762046"))).first(), LINKS.menuDescriptor$ptP$), LINKS.cellMenuPart$jjJD), CONCEPTS.CellMenuPart_PropertyPostfixHints$cd)).first()));
       });
     }
   }

@@ -23,7 +23,6 @@ import jetbrains.mps.kotlin.scopes.signed.ConstructorsScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -60,11 +59,7 @@ public final class FunctionCallExpression__BehaviorDescriptor extends BaseBHDesc
   /*package*/ static Iterable<ParameterDeclaration> getAvailableParameters_id1$jFvlD0xqw(@NotNull SNode __thisNode__) {
     // Stubs: annotations refer to class declaration rather than constructor, since parameters of the primary constructor are referred here, it needs to be resolved from the class declaration directly
     if ((SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(__thisNode__, LINKS.function$Weyv), CONCEPTS.ClassDeclaration$Jm), LINKS.primaryConstructor$QvZc) != null)) {
-      return ListSequence.fromList(IFunctionDeclaration__BehaviorDescriptor.getParameters_id6f3juM$_Kx4.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.function$Weyv), CONCEPTS.ClassDeclaration$Jm), LINKS.primaryConstructor$QvZc))).select(new ISelector<SNode, KotlinParameterDeclaration>() {
-        public KotlinParameterDeclaration select(SNode parameter) {
-          return new KotlinParameterDeclaration(parameter);
-        }
-      });
+      return ListSequence.fromList(IFunctionDeclaration__BehaviorDescriptor.getParameters_id6f3juM$_Kx4.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.function$Weyv), CONCEPTS.ClassDeclaration$Jm), LINKS.primaryConstructor$QvZc))).select((parameter) -> new KotlinParameterDeclaration(parameter));
     }
 
     return IArguments__BehaviorDescriptor.getAvailableParameters_id1$jFvlD0xqw.invoke0(__thisNode__, CONCEPTS.AbstractFunctionCall$C9);

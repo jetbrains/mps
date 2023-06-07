@@ -114,7 +114,7 @@ public class SourcedSignature {
       attributes = new HashMap<>();
     }
     // Only update non defined values
-    from.forEach((SignatureAttributeKey<?> key, final Object value) -> attributes.compute(key, (SignatureAttributeKey<?> prevKey, Object previous) -> (previous == null ? value : previous)));
+    from.forEach((SignatureAttributeKey<?> key, final Object value) -> attributes.compute(key, (prevKey, previous) -> (previous == null ? value : previous)));
   }
 
   @Nullable

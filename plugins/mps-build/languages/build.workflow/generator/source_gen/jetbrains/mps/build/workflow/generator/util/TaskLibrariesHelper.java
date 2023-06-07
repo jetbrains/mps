@@ -52,7 +52,7 @@ public class TaskLibrariesHelper {
         }
       }
     }
-    List<SNode> parts = Sequence.fromIterable(SLinkOperations.collectMany(libs, LINKS.parts$BIl9)).toListSequence();
+    List<SNode> parts = Sequence.fromIterable(SLinkOperations.collectMany(libs, LINKS.parts$BIl9)).toList();
     Map<SNode, SNode> map = new HashMap<SNode, SNode>();
     parts = (List<SNode>) CopyUtil.copy((List<SNode>) parts, map);
     ListSequence.fromList(SLinkOperations.getChildren(project, LINKS.imports$B1XX)).clear();

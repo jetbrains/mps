@@ -11,7 +11,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
@@ -37,11 +36,7 @@ public class State_Constraints extends BaseConstraintsDescriptor {
       return result;
     }
     private static boolean staticValidateProperty(SNode node, boolean propertyValue) {
-      return propertyValue == false || Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(node, false), CONCEPTS.State$lb)).all(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SPropertyOperations.getBoolean(it, PROPS.isInitial$jQH1) == false;
-        }
-      });
+      return propertyValue == false || Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(node, false), CONCEPTS.State$lb)).all((it) -> SPropertyOperations.getBoolean(it, PROPS.isInitial$jQH1) == false);
     }
   }
   @Override

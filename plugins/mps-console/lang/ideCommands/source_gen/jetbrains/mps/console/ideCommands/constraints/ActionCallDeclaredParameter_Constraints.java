@@ -23,8 +23,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -66,15 +64,7 @@ public class ActionCallDeclaredParameter_Constraints extends BaseConstraintsDesc
           public Scope createScope(final ReferenceConstraintsContext _context) {
             final SNode enclosingNode = (((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode())));
             if (SNodeOperations.isInstanceOf(enclosingNode, CONCEPTS.CallActionExpression$DP)) {
-              return new NamedElementsScope(ListSequence.fromList(SNodeOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.CallActionExpression$DP), LINKS.action$MdPi))).where(new IWhereFilter<SNode>() {
-                public boolean accept(SNode it) {
-                  return SNodeOperations.isInstanceOf(it, CONCEPTS.ActionDataParameterDeclaration$Tg);
-                }
-              }).select(new ISelector<SNode, SNode>() {
-                public SNode select(SNode it) {
-                  return SNodeOperations.cast(it, CONCEPTS.ActionDataParameterDeclaration$Tg);
-                }
-              }));
+              return new NamedElementsScope(ListSequence.fromList(SNodeOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.CallActionExpression$DP), LINKS.action$MdPi))).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.ActionDataParameterDeclaration$Tg)).select((it) -> SNodeOperations.cast(it, CONCEPTS.ActionDataParameterDeclaration$Tg)));
             }
             return null;
           }

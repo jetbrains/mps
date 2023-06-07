@@ -5,7 +5,6 @@ package jetbrains.mps.kotlin.behavior;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kotlin.api.declaration.ParameterDeclaration;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.annotations.Nullable;
 
 public class CopyFunctionDeclaration extends KotlinFunctionDeclaration {
@@ -22,11 +21,7 @@ public class CopyFunctionDeclaration extends KotlinFunctionDeclaration {
   @Override
   public Iterable<ParameterDeclaration> getParameters() {
     // All parameters are optional
-    return ListSequence.fromList(IFunctionDeclaration__BehaviorDescriptor.getParameters_id6f3juM$_Kx4.invoke(myDeclaration)).select(new ISelector<SNode, OptionalKotlinParameter>() {
-      public OptionalKotlinParameter select(SNode parameter) {
-        return new OptionalKotlinParameter(parameter);
-      }
-    });
+    return ListSequence.fromList(IFunctionDeclaration__BehaviorDescriptor.getParameters_id6f3juM$_Kx4.invoke(myDeclaration)).select((parameter) -> new OptionalKotlinParameter(parameter));
   }
 
   @Nullable

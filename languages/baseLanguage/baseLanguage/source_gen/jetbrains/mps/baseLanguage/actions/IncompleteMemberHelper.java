@@ -8,7 +8,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.util.JavaNameUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.IncompleteMemberDeclaration__BehaviorDescriptor;
@@ -17,7 +16,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopes;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -32,11 +30,7 @@ public class IncompleteMemberHelper {
 
   public static boolean isJavaKeyWordNotApplicableAsModifier(SNode member, String pattern) {
     List<SConcept> subConcepts = SConceptOperations.getAllSubConcepts2(CONCEPTS.PrimitiveType$sR, SNodeOperations.getModel(member));
-    Iterable<String> aliases = ListSequence.fromList(subConcepts).select(new ISelector<SConcept, String>() {
-      public String select(SConcept it) {
-        return SConceptOperations.conceptAlias(it);
-      }
-    });
+    Iterable<String> aliases = ListSequence.fromList(subConcepts).select((it) -> SConceptOperations.conceptAlias(it));
 
     return JavaNameUtil.isJavaReserved(pattern) && !(Sequence.fromIterable(aliases).contains(pattern)) && !(pattern.equals("abstract") && (boolean) IncompleteMemberDeclaration__BehaviorDescriptor.canBeMadeAbstract_id5py1MO2Oyuj.invoke(member) || pattern.equals("transient") && !(SPropertyOperations.getBoolean(member, PROPS.transient$OE_x)) || pattern.equals("final") && !(SPropertyOperations.getBoolean(member, PROPS.final$G76J)) || pattern.equals("public") && (SLinkOperations.getTarget(member, LINKS.visibility$Yyua) == null) || pattern.equals("private") && (SLinkOperations.getTarget(member, LINKS.visibility$Yyua) == null) || pattern.equals("protected") && (SLinkOperations.getTarget(member, LINKS.visibility$Yyua) == null) || pattern.equals("synchronized") && !(SPropertyOperations.getBoolean(member, PROPS.synchronized$HFI0)) || pattern.equals("static") && !(SPropertyOperations.getBoolean(member, PROPS.static$G1Ho)));
   }
@@ -44,11 +38,7 @@ public class IncompleteMemberHelper {
   public static boolean isKnownTypeName(SNode member, final String pattern) {
     Scope visibleClassifiersScope = ClassifierScopes.getVisibleClassifiersScope(member, true);
     Iterable<SNode> availableElements = (visibleClassifiersScope != null ? visibleClassifiersScope.getAvailableElements(pattern) : ListSequence.fromList(new ArrayList<SNode>()));
-    return pattern.equals("string") || pattern.equals("map") || pattern.equals("set") || pattern.equals("list") || pattern.equals("sorted_set") || pattern.equals("sorted_map") || Sequence.fromIterable(availableElements).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.Classifier$Ix), PROPS.name$MnvL), pattern);
-      }
-    }).isNotEmpty();
+    return pattern.equals("string") || pattern.equals("map") || pattern.equals("set") || pattern.equals("list") || pattern.equals("sorted_set") || pattern.equals("sorted_map") || Sequence.fromIterable(availableElements).where((it) -> Objects.equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.Classifier$Ix), PROPS.name$MnvL), pattern)).isNotEmpty();
   }
 
   public static boolean canSubstitute(boolean strictly, String pattern, String matchingText) {

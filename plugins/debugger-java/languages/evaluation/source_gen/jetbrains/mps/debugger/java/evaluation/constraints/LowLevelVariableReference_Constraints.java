@@ -20,7 +20,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -49,11 +48,7 @@ public class LowLevelVariableReference_Constraints extends BaseConstraintsDescri
             if (SPropertyOperations.getBoolean(evaluator, PROPS.isShowContext$I6Gy)) {
               return ListScope.forResolvableElements(SLinkOperations.getChildren(evaluator, LINKS.variables$I5Ku));
             }
-            return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(evaluator, LINKS.variables$I5Ku)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return !(SPropertyOperations.getBoolean(it, PROPS.isOutOfScope$49K_));
-              }
-            }));
+            return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(evaluator, LINKS.variables$I5Ku)).where((it) -> !(SPropertyOperations.getBoolean(it, PROPS.isOutOfScope$49K_))));
           }
         };
       }

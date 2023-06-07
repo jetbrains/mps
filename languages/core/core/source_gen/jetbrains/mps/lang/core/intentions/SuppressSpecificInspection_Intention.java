@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
@@ -59,11 +58,7 @@ public final class SuppressSpecificInspection_Intention extends AbstractIntentio
   private List<IssueKindReportItem> parameter(final SNode node, final EditorContext editorContext) {
     EditorComponent editorComponent = (EditorComponent) editorContext.getEditorComponent();
     Collection<IssueKindReportItem> reportItemsForCell = editorComponent.getReportItemsForCell(editorComponent.getSelectedCell());
-    return ListSequence.fromListWithValues(new ArrayList<IssueKindReportItem>(), CollectionSequence.fromCollection(reportItemsForCell).where(new IWhereFilter<IssueKindReportItem>() {
-      public boolean accept(IssueKindReportItem it) {
-        return Objects.equals(it.getSeverity(), MessageStatus.WARNING);
-      }
-    }));
+    return ListSequence.fromListWithValues(new ArrayList<IssueKindReportItem>(), CollectionSequence.fromCollection(reportItemsForCell).where((it) -> Objects.equals(it.getSeverity(), MessageStatus.WARNING)));
   }
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable implements ParameterizedIntentionExecutable {
     private IssueKindReportItem myParameter;

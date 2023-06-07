@@ -18,13 +18,11 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -91,11 +89,7 @@ public class GenerateSetters_Action extends BaseAction {
     final Wrappers._T<SNode> classConcept = new Wrappers._T<SNode>();
     repo.getModelAccess().runReadAction(() -> {
       classConcept.value = GenerateSetters_Action.this.getClassConcept(_params);
-      fields.value = Sequence.fromIterable(GenerateSetters_Action.this.getFieldDeclarationsWithoutSetters(classConcept.value, _params)).select(new ISelector<SNode, SNodeReference>() {
-        public SNodeReference select(SNode it) {
-          return SNodeOperations.getPointer(it);
-        }
-      }).toGenericArray(SNodeReference.class);
+      fields.value = Sequence.fromIterable(GenerateSetters_Action.this.getFieldDeclarationsWithoutSetters(classConcept.value, _params)).select((it) -> SNodeOperations.getPointer(it)).toGenericArray(SNodeReference.class);
     });
 
     SelectFieldsDialog selectFieldsDialog = new SelectFieldsDialog(fields.value, false, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
@@ -135,17 +129,11 @@ public class GenerateSetters_Action extends BaseAction {
   private Iterable<SNode> getFieldDeclarationsWithoutSetters(final SNode classConcept, final Map<String, Object> _params) {
     Iterable<SNode> fields = ((Iterable<SNode>) BHReflection.invoke0(classConcept, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("fields", 5292274854859383272L, 0x5745e3015c8914d3L)));
     Iterable<SNode> staticFields = ((Iterable<SNode>) BHReflection.invoke0(classConcept, CONCEPTS.Classifier$Ix, SMethodIdV2.create("staticFields", 5292274854859223538L, 0x5745e3015c8914d3L)));
-    return Sequence.fromIterable(fields).union(Sequence.fromIterable(staticFields)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode field) {
-        final String setterName = GenerateGettersAndSettersUtil.getFieldSetterName(field, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
-        Iterable<SNode> methods = ((Iterable<SNode>) BHReflection.invoke0(classConcept, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)));
-        Iterable<SNode> statMethods = ((Iterable<SNode>) BHReflection.invoke0(classConcept, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("staticMethods", 5292274854859435867L, 0x5745e3015c8914d3L)));
-        return !(Sequence.fromIterable(methods).union(Sequence.fromIterable(statMethods)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode method) {
-            return setterName.equals(SPropertyOperations.getString(method, PROPS.name$MnvL)) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).count() == 1;
-          }
-        }));
-      }
+    return Sequence.fromIterable(fields).union(Sequence.fromIterable(staticFields)).where((field) -> {
+      final String setterName = GenerateGettersAndSettersUtil.getFieldSetterName(field, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
+      Iterable<SNode> methods = ((Iterable<SNode>) BHReflection.invoke0(classConcept, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)));
+      Iterable<SNode> statMethods = ((Iterable<SNode>) BHReflection.invoke0(classConcept, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("staticMethods", 5292274854859435867L, 0x5745e3015c8914d3L)));
+      return !(Sequence.fromIterable(methods).union(Sequence.fromIterable(statMethods)).any((method) -> setterName.equals(SPropertyOperations.getString(method, PROPS.name$MnvL)) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).count() == 1));
     });
   }
   private static SNode createDotExpression_fimngf_a0a0e0a0a41a0(SNode p0) {

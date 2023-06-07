@@ -36,13 +36,11 @@ import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import com.sun.jdi.InvalidStackFrameException;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import org.jetbrains.mps.openapi.model.SModelName;
 import jetbrains.mps.java.stub.JavaPackageNameStub;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.ide.findusages.model.scopes.ModelsScope;
 import org.jetbrains.mps.openapi.module.FindUsagesFacade;
@@ -159,11 +157,7 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
       }
 
       // now mark vars which are currently out of scope
-      Sequence.fromIterable(MapSequence.fromMap(declaredVariables).values()).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SPropertyOperations.set(it, PROPS.isOutOfScope$49K_, !(SetSequence.fromSet(foundVars).contains(it)));
-        }
-      });
+      Sequence.fromIterable(MapSequence.fromMap(declaredVariables).values()).visitAll((it) -> SPropertyOperations.set(it, PROPS.isOutOfScope$49K_, !(SetSequence.fromSet(foundVars).contains(it))));
 
       if (needUpdateVariables()) {
         // create static context type
@@ -211,11 +205,7 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
     // first, try @java_stub model
     final String qualifiedModelName = modelFqNameFromUnitName(unitName);
     for (SModel stub : repoFacade.getModelsByName(new SModelName(new JavaPackageNameStub(qualifiedModelName).asModelId().getModelName()))) {
-      SNode node = ListSequence.fromList(SModelOperations.nodes(stub, CONCEPTS.UnitConcept$1g)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(((String) BHReflection.invoke0(it, CONCEPTS.UnitConcept$1g, SMethodIdV2.create("getUnitName", 5067982036267369911L, 0x223441e8c194cd94L))), unitName) && SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$Ix);
-        }
-      });
+      SNode node = ListSequence.fromList(SModelOperations.nodes(stub, CONCEPTS.UnitConcept$1g)).findFirst((it) -> Objects.equals(((String) BHReflection.invoke0(it, CONCEPTS.UnitConcept$1g, SMethodIdV2.create("getUnitName", 5067982036267369911L, 0x223441e8c194cd94L))), unitName) && SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$Ix));
       if (node != null) {
         return node;
       }
@@ -226,19 +216,11 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
     //     incompletely matching name (i.e. match qualified name only).
     //     With that, there's little reason to handle @java_stub explicitly, above (other than give them priority), perhaps, shall
     //     combine into single piece of code? Need to pay attention, though, if stubs get indexed or not (common code could't use FindUsagesFacade if not, then)
-    ModelsScope scope = new ModelsScope(Sequence.fromIterable(((Iterable<SModel>) repoFacade.getAllModels())).where(new IWhereFilter<SModel>() {
-      public boolean accept(SModel it) {
-        return it.getName().getLongName().equals(qualifiedModelName);
-      }
-    }));
+    ModelsScope scope = new ModelsScope(Sequence.fromIterable(((Iterable<SModel>) repoFacade.getAllModels())).where((it) -> it.getName().getLongName().equals(qualifiedModelName)));
     FindUsagesFacade findUsages = FindUsagesFacade.getInstance();
     SAbstractConcept concept = CONCEPTS.UnitConcept$1g;
     Set<SNode> instances = findUsages.findInstances(scope, Collections.singleton(concept), false, new EmptyProgressMonitor());
-    return SNodeOperations.cast(SetSequence.fromSet(instances).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$Ix) && ((String) BHReflection.invoke0(SNodeOperations.cast(it, CONCEPTS.UnitConcept$1g), CONCEPTS.UnitConcept$1g, SMethodIdV2.create("getUnitName", 5067982036267369911L, 0x223441e8c194cd94L))).equals(unitName);
-      }
-    }), CONCEPTS.UnitConcept$1g);
+    return SNodeOperations.cast(SetSequence.fromSet(instances).findFirst((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$Ix) && ((String) BHReflection.invoke0(SNodeOperations.cast(it, CONCEPTS.UnitConcept$1g), CONCEPTS.UnitConcept$1g, SMethodIdV2.create("getUnitName", 5067982036267369911L, 0x223441e8c194cd94L))).equals(unitName)), CONCEPTS.UnitConcept$1g);
   }
 
   private boolean needUpdateVariables() {
@@ -275,17 +257,9 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
     }
     @Override
     public SNode findVariable(final SReference variableReference) {
-      SNode matchingVar = ListSequence.fromList(SLinkOperations.getChildren(myEvaluatorNode, LINKS.variables$I5Ku)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode variable) {
-          return Objects.equals(SNodePointer.deserialize(SPropertyOperations.getString(variable, PROPS.highLevelNodeId$vUtS)), SNodeOperations.getPointer(SLinkOperations.getTargetNode(variableReference)));
-        }
-      });
+      SNode matchingVar = ListSequence.fromList(SLinkOperations.getChildren(myEvaluatorNode, LINKS.variables$I5Ku)).findFirst((variable) -> Objects.equals(SNodePointer.deserialize(SPropertyOperations.getString(variable, PROPS.highLevelNodeId$vUtS)), SNodeOperations.getPointer(SLinkOperations.getTargetNode(variableReference))));
       if (matchingVar == null) {
-        matchingVar = ListSequence.fromList(SLinkOperations.getChildren(myEvaluatorNode, LINKS.variables$I5Ku)).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode variable) {
-            return Objects.equals(SPropertyOperations.getString(variable, PROPS.name$MnvL), SPropertyOperations.getString(SNodeOperations.cast(SLinkOperations.getTargetNode(variableReference), CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL));
-          }
-        });
+        matchingVar = ListSequence.fromList(SLinkOperations.getChildren(myEvaluatorNode, LINKS.variables$I5Ku)).findFirst((variable) -> Objects.equals(SPropertyOperations.getString(variable, PROPS.name$MnvL), SPropertyOperations.getString(SNodeOperations.cast(SLinkOperations.getTargetNode(variableReference), CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL)));
       }
       return matchingVar;
     }

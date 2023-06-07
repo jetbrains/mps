@@ -137,6 +137,7 @@
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -208,7 +209,6 @@
       <concept id="1227008614712" name="jetbrains.mps.baseLanguage.collections.structure.LinkedListCreator" flags="nn" index="2Jqq0_" />
       <concept id="1227022179634" name="jetbrains.mps.baseLanguage.collections.structure.AddLastElementOperation" flags="nn" index="2Ke9KJ" />
       <concept id="1227026082377" name="jetbrains.mps.baseLanguage.collections.structure.RemoveFirstElementOperation" flags="nn" index="2Kt2Hk" />
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1160612413312" name="jetbrains.mps.baseLanguage.collections.structure.AddElementOperation" flags="nn" index="TSZUe" />
       <concept id="1160666733551" name="jetbrains.mps.baseLanguage.collections.structure.AddAllElementsOperation" flags="nn" index="X8dFx" />
       <concept id="1202120902084" name="jetbrains.mps.baseLanguage.collections.structure.WhereOperation" flags="nn" index="3zZkjj" />
@@ -709,11 +709,11 @@
                                 </node>
                               </node>
                             </node>
-                            <node concept="Rh6nW" id="2C" role="1bW2Oz">
+                            <node concept="gl6BB" id="2C" role="1bW2Oz">
                               <property role="TrG5h" value="it" />
-                              <uo k="s:originTrace" v="n:8153794773742376827" />
+                              <uo k="s:originTrace" v="n:6847626768367734643" />
                               <node concept="2jxLKc" id="2J" role="1tU5fm">
-                                <uo k="s:originTrace" v="n:8153794773742376828" />
+                                <uo k="s:originTrace" v="n:6847626768367734644" />
                               </node>
                             </node>
                           </node>
@@ -1189,11 +1189,11 @@
                                 </node>
                               </node>
                             </node>
-                            <node concept="Rh6nW" id="4S" role="1bW2Oz">
+                            <node concept="gl6BB" id="4S" role="1bW2Oz">
                               <property role="TrG5h" value="it" />
-                              <uo k="s:originTrace" v="n:8153794773742437601" />
+                              <uo k="s:originTrace" v="n:6847626768367734645" />
                               <node concept="2jxLKc" id="4Z" role="1tU5fm">
-                                <uo k="s:originTrace" v="n:8153794773742437602" />
+                                <uo k="s:originTrace" v="n:6847626768367734646" />
                               </node>
                             </node>
                           </node>

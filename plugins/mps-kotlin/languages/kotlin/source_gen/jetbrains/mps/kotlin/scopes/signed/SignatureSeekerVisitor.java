@@ -9,7 +9,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kotlin.scopes.VisibilityAccess;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.kotlin.api.members.SourcedSignature;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.kotlin.scopes.SignatureFilterImpl;
 
 /**
@@ -32,11 +31,7 @@ public class SignatureSeekerVisitor extends TypeMembersVisitor {
     Iterable<SourcedSignature> members = this.getMembers();
     if (Sequence.fromIterable(members).isEmpty()) {
       return SignatureScope.ContainmentStatus.NO;
-    } else if (expectedSource != null && Sequence.fromIterable(members).any(new IWhereFilter<SourcedSignature>() {
-      public boolean accept(SourcedSignature it) {
-        return it.getSource() == expectedSource;
-      }
-    })) {
+    } else if (expectedSource != null && Sequence.fromIterable(members).any((it) -> it.getSource() == expectedSource)) {
       return SignatureScope.ContainmentStatus.YES;
     } else {
       return SignatureScope.ContainmentStatus.SIGNATURE;

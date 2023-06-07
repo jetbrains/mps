@@ -9,7 +9,6 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -21,11 +20,7 @@ public class check_BuildMps_TipsMps_NonTypesystemRule extends AbstractNonTypesys
   public check_BuildMps_TipsMps_NonTypesystemRule() {
   }
   public void applyRule(final SNode buildMps_TipsMps, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (ListSequence.fromList(SNodeOperations.getAllSiblings(buildMps_TipsMps, false)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMps_TipsMps$y5);
-      }
-    })) {
+    if (ListSequence.fromList(SNodeOperations.getAllSiblings(buildMps_TipsMps, false)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMps_TipsMps$y5))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(buildMps_TipsMps, "Duplicated imports from MPS generic distribution", "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "153860590141661666", null, errorTarget);

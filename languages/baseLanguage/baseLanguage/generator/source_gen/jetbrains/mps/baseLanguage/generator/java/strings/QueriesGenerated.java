@@ -7,8 +7,6 @@ import jetbrains.mps.generator.impl.query.QueryProviderBase;
 import jetbrains.mps.generator.template.CreateRootRuleContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.generator.template.BaseMappingRuleContext;
@@ -17,6 +15,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.behavior.IOperation__BehaviorDescriptor;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
@@ -54,11 +53,7 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean createRootRule_Condition_6_0(final CreateRootRuleContext _context) {
-    return !(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.SubstringExpression$uY).isEmpty()) || ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.TrimOperation$$f)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.trimKind$5DDk), 0x11d47df9507L));
-      }
-    });
+    return !(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.SubstringExpression$uY).isEmpty()) || ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.TrimOperation$$f)).any((it) -> !(SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.trimKind$5DDk), 0x11d47df9507L)));
   }
   public static boolean rule_Condition_6_0(final BaseMappingRuleContext _context) {
     return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.BaseStringOperation$Ae);
@@ -117,18 +112,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.startIndex$vALN) != null;
   }
   public static boolean ifMacro_Condition_9_0(final IfMacroContext _context) {
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.TrimOperation$$f)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.trimKind$5DDk), 0x11d47df9508L);
-      }
-    });
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.TrimOperation$$f)).any((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.trimKind$5DDk), 0x11d47df9508L));
   }
   public static boolean ifMacro_Condition_9_1(final IfMacroContext _context) {
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.TrimOperation$$f)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.trimKind$5DDk), 0x11d47df9509L);
-      }
-    });
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.TrimOperation$$f)).any((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.trimKind$5DDk), 0x11d47df9509L));
   }
   public static boolean ifMacro_Condition_9_2(final IfMacroContext _context) {
     return !(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.SubstringExpression$uY).isEmpty());
@@ -216,21 +203,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.arguments$3huj);
   }
   public static Object varMacro_Value_0_0(final TemplateVarContext _context) {
-    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.ClassConcept$bK, false)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it);
-      }
-    }).first()) + ".IsNotEmptyStringMethod";
+    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.ClassConcept$bK, false)).where((it) -> (boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it)).first()) + ".IsNotEmptyStringMethod";
   }
   public static Object varMacro_Value_11_0(final TemplateVarContext _context) {
     // ExtractStaticMethodExpression looks for first non static class
     // and as long as there's no alternative to ESME, this code shall
     // respect the way ContextUtil.getContextForMethod works
-    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.ClassConcept$bK, false)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it);
-      }
-    }).first()) + ".IsEmptyStringMethod";
+    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.ClassConcept$bK, false)).where((it) -> (boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it)).first()) + ".IsEmptyStringMethod";
   }
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {

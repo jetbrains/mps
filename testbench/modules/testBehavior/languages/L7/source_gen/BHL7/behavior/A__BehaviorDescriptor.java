@@ -16,7 +16,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import UtilSolution.util.TestResults;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -68,18 +67,10 @@ public final class A__BehaviorDescriptor extends BaseBHDescriptor {
     return true;
   }
   /*package*/ static Iterable<Boolean> seqMethod_id2eC$PxWCGmD(@NotNull final SNode __thisNode__) {
-    return Sequence.fromIterable(Sequence.fromIterable(Collections.<Boolean>emptyList())).select(new ISelector<Boolean, Boolean>() {
-      public Boolean select(Boolean it) {
-        return ((boolean) A__BehaviorDescriptor.boolMethod1_id2eC$PxWCtoT.invoke(__thisNode__));
-      }
-    });
+    return Sequence.fromIterable(Sequence.fromIterable(Collections.<Boolean>emptyList())).select((it) -> ((boolean) A__BehaviorDescriptor.boolMethod1_id2eC$PxWCtoT.invoke(__thisNode__)));
   }
   /*package*/ static Iterable<Boolean> seqMethod2_id2eC$PxWDDfD(@NotNull final SNode __thisNode__) {
-    return Sequence.fromIterable(Sequence.fromIterable(Collections.<Boolean>emptyList())).select(new ISelector<Boolean, Boolean>() {
-      public Boolean select(Boolean it) {
-        return ((boolean) A__BehaviorDescriptor.boolMethod1_id2eC$PxWCtoT.invoke(__thisNode__));
-      }
-    });
+    return Sequence.fromIterable(Sequence.fromIterable(Collections.<Boolean>emptyList())).select((it) -> ((boolean) A__BehaviorDescriptor.boolMethod1_id2eC$PxWCtoT.invoke(__thisNode__)));
   }
 
   /*package*/ A__BehaviorDescriptor() {

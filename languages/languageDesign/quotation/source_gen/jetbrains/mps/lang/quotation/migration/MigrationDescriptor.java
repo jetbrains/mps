@@ -9,7 +9,7 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 
 public class MigrationDescriptor implements MigrationAspectDescriptor {
-  private Map<Integer, MigrationScript> myScripts = MapSequence.<Integer, MigrationScript>fromMapAndKeysArray(new HashMap<Integer, MigrationScript>(), 0, 1, 2, 3, 4).withValues(new WrapNullLiteral(), new MigrateEnumPropertyUsagesAndPropertyAntiquotation(), new LightQuotation_InitLinkExpression(), new EncapsulateModelNodeId(), new LightQuotation_InitProperyExpression());
+  private Map<Integer, MigrationScript> myScripts = MapSequence.fromMapAndEntryArray(new HashMap<Integer, MigrationScript>(), Map.entry(0, new WrapNullLiteral()), Map.entry(1, new MigrateEnumPropertyUsagesAndPropertyAntiquotation()), Map.entry(2, new LightQuotation_InitLinkExpression()), Map.entry(3, new EncapsulateModelNodeId()), Map.entry(4, new LightQuotation_InitProperyExpression()));
   public MigrationScript getScript(int fromVersion) {
     return MapSequence.fromMap(myScripts).get(fromVersion);
   }

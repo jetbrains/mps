@@ -25,7 +25,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.IGenericType__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SNodeMatcher;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -95,11 +94,7 @@ public final class KotlinTypeParameterReference__BehaviorDescriptor extends Base
   /*package*/ static SNode expandGenerics_id3$PgO9fYTB5(@NotNull final SNode __thisNode__, Map<SNode, SNode> substitutions, List<SNode> expTrace) {
     if (MapSequence.fromMap(substitutions).containsKey(SLinkOperations.getTarget(__thisNode__, LINKS.typeParameter$U125))) {
       // TODO is this matching still relevant?
-      if (ListSequence.fromList(expTrace).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return new SNodeMatcher().match(__thisNode__, it);
-        }
-      })) {
+      if (ListSequence.fromList(expTrace).any((it) -> new SNodeMatcher().match(__thisNode__, it))) {
         return __thisNode__;
       }
       SNode exp = MapSequence.fromMap(substitutions).get(SLinkOperations.getTarget(__thisNode__, LINKS.typeParameter$U125));

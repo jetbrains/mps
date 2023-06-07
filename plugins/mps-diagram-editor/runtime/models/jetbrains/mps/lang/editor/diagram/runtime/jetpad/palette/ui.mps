@@ -4,7 +4,7 @@
   <languages>
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="0" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
@@ -187,6 +187,7 @@
       <concept id="4079382982702596667" name="jetbrains.mps.baseLanguage.checkedDots.structure.CheckedDotExpression" flags="nn" index="2EnYce" />
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -218,7 +219,6 @@
         <child id="1237721435807" name="elementType" index="HW$YZ" />
       </concept>
       <concept id="1227022210526" name="jetbrains.mps.baseLanguage.collections.structure.ClearAllElementsOperation" flags="nn" index="2Kehj3" />
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1160600644654" name="jetbrains.mps.baseLanguage.collections.structure.ListCreatorWithInit" flags="nn" index="Tc6Ow" />
       <concept id="1240325842691" name="jetbrains.mps.baseLanguage.collections.structure.AsSequenceOperation" flags="nn" index="39bAoz" />
       <concept id="1202120902084" name="jetbrains.mps.baseLanguage.collections.structure.WhereOperation" flags="nn" index="3zZkjj" />
@@ -431,14 +431,14 @@
                             <ref role="3cqZAo" node="6KNGF9gTYu" resolve="myPalette" />
                           </node>
                           <node concept="37vLTw" id="6KNGF9gTYR" role="37wK5m">
-                            <ref role="3cqZAo" node="6KNGF9gTYS" resolve="element" />
+                            <ref role="3cqZAo" node="5W7E4fV0XoW" />
                           </node>
                         </node>
                       </node>
                     </node>
-                    <node concept="Rh6nW" id="6KNGF9gTYS" role="1bW2Oz">
+                    <node concept="gl6BB" id="5W7E4fV0XoW" role="1bW2Oz">
                       <property role="TrG5h" value="element" />
-                      <node concept="2jxLKc" id="6KNGF9gTYT" role="1tU5fm" />
+                      <node concept="2jxLKc" id="5W7E4fV0XoX" role="1tU5fm" />
                     </node>
                   </node>
                 </node>
@@ -462,14 +462,14 @@
                           <ref role="3uigEE" node="6KNGF9gTZi" resolve="PaletteToggleActionAdapter" />
                         </node>
                         <node concept="37vLTw" id="BmcO$nDHop" role="2ZW6bz">
-                          <ref role="3cqZAo" node="BmcO$nDHaT" resolve="it" />
+                          <ref role="3cqZAo" node="5W7E4fV0XoY" />
                         </node>
                       </node>
                     </node>
                   </node>
-                  <node concept="Rh6nW" id="BmcO$nDHaT" role="1bW2Oz">
+                  <node concept="gl6BB" id="5W7E4fV0XoY" role="1bW2Oz">
                     <property role="TrG5h" value="it" />
-                    <node concept="2jxLKc" id="BmcO$nDHaU" role="1tU5fm" />
+                    <node concept="2jxLKc" id="5W7E4fV0XoZ" role="1tU5fm" />
                   </node>
                 </node>
               </node>
@@ -482,7 +482,7 @@
                       <node concept="1eOMI4" id="BmcO$nDKrB" role="2Oq$k0">
                         <node concept="10QFUN" id="BmcO$nDKrC" role="1eOMHV">
                           <node concept="37vLTw" id="BmcO$nDKrA" role="10QFUP">
-                            <ref role="3cqZAo" node="BmcO$nDJhK" resolve="it" />
+                            <ref role="3cqZAo" node="5W7E4fV0Xp0" />
                           </node>
                           <node concept="3uibUv" id="BmcO$nDKMv" role="10QFUM">
                             <ref role="3uigEE" node="6KNGF9gTZi" resolve="PaletteToggleActionAdapter" />
@@ -496,9 +496,9 @@
                     </node>
                   </node>
                 </node>
-                <node concept="Rh6nW" id="BmcO$nDJhK" role="1bW2Oz">
+                <node concept="gl6BB" id="5W7E4fV0Xp0" role="1bW2Oz">
                   <property role="TrG5h" value="it" />
-                  <node concept="2jxLKc" id="BmcO$nDJhL" role="1tU5fm" />
+                  <node concept="2jxLKc" id="5W7E4fV0Xp1" role="1tU5fm" />
                 </node>
               </node>
             </node>

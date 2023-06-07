@@ -25,23 +25,20 @@ public class SimpleParallelForSample {
       for (final int a : numbers) {
 
         final int localA = a;
+        final Runnable runnable = () -> {
+          try {
+            Logger.log("Current value: " + localA);
 
-        final Runnable runnable = new Runnable() {
-          public void run() {
-            try {
-              Logger.log("Current value: " + localA);
-
-              // Notice there's no need to declare the InterruptedException on the main method
-              Thread.sleep(1000);
-              value.length();
-              Logger.log("Done with " + localA);
-            } catch (RuntimeException e) {
-              ListSequence.fromList(exceptions_e0b).addElement(e);
-            } catch (InterruptedException e) {
-              ListSequence.fromList(exceptions_e0b).addElement(e);
-            } finally {
-              latch_e0b.countDown();
-            }
+            // Notice there's no need to declare the InterruptedException on the main method
+            Thread.sleep(1000);
+            value.length();
+            Logger.log("Done with " + localA);
+          } catch (RuntimeException e) {
+            ListSequence.fromList(exceptions_e0b).addElement(e);
+          } catch (InterruptedException e) {
+            ListSequence.fromList(exceptions_e0b).addElement(e);
+          } finally {
+            latch_e0b.countDown();
           }
         };
 

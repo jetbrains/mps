@@ -13,11 +13,8 @@ import java.util.List;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import java.util.LinkedList;
@@ -87,56 +84,24 @@ public abstract class HierarchicalNodeGroupChange extends StructureChange {
 
   /*package*/ static void applyChanges(Iterable<HierarchicalNodeGroupChange> changes, final SModel model, final NodeCopier nodeCopier) {
 
-    Sequence.fromIterable(changes).ofType(NodeGroupWrapChange.class).where(new IWhereFilter<NodeGroupWrapChange>() {
-      public boolean accept(NodeGroupWrapChange it) {
-        return it.isWrap();
+    Sequence.fromIterable(changes).ofType(NodeGroupWrapChange.class).where((it) -> it.isWrap()).visitAll((it) -> it.apply(model, nodeCopier));
+    Collection<NodeGroupNotMoveChange> notMoveChanges = Sequence.fromIterable(changes).ofType(NodeGroupNotMoveChange.class).toList();
+    CollectionSequence.fromCollection(notMoveChanges).select((it) -> it.getGroup(true)).visitAll((it) -> {
+      if (it.isEmpty() || it.isApplied(model)) {
+        return;
       }
-    }).visitAll(new IVisitor<NodeGroupWrapChange>() {
-      public void visit(NodeGroupWrapChange it) {
-        it.apply(model, nodeCopier);
-      }
+      it.insertCopyIntoModel(model, nodeCopier);
+      it.setIsApplied(model);
     });
-    Collection<NodeGroupNotMoveChange> notMoveChanges = Sequence.fromIterable(changes).ofType(NodeGroupNotMoveChange.class).toListSequence();
-    CollectionSequence.fromCollection(notMoveChanges).select(new ISelector<NodeGroupNotMoveChange, ModifiedNodesGroup>() {
-      public ModifiedNodesGroup select(NodeGroupNotMoveChange it) {
-        return it.getGroup(true);
+    Sequence.fromIterable(changes).ofType(NodeGroupMoveChange.class).visitAll((it) -> it.apply(model, nodeCopier));
+    CollectionSequence.fromCollection(notMoveChanges).select((it) -> it.getGroup(false)).visitAll((it) -> {
+      if (it.isEmpty() || it.isApplied(model)) {
+        return;
       }
-    }).visitAll(new IVisitor<ModifiedNodesGroup>() {
-      public void visit(ModifiedNodesGroup it) {
-        if (it.isEmpty() || it.isApplied(model)) {
-          return;
-        }
-        it.insertCopyIntoModel(model, nodeCopier);
-        it.setIsApplied(model);
-      }
+      it.deleteFromModel(model);
+      it.setIsApplied(model);
     });
-    Sequence.fromIterable(changes).ofType(NodeGroupMoveChange.class).visitAll(new IVisitor<NodeGroupMoveChange>() {
-      public void visit(NodeGroupMoveChange it) {
-        it.apply(model, nodeCopier);
-      }
-    });
-    CollectionSequence.fromCollection(notMoveChanges).select(new ISelector<NodeGroupNotMoveChange, ModifiedNodesGroup>() {
-      public ModifiedNodesGroup select(NodeGroupNotMoveChange it) {
-        return it.getGroup(false);
-      }
-    }).visitAll(new IVisitor<ModifiedNodesGroup>() {
-      public void visit(ModifiedNodesGroup it) {
-        if (it.isEmpty() || it.isApplied(model)) {
-          return;
-        }
-        it.deleteFromModel(model);
-        it.setIsApplied(model);
-      }
-    });
-    Sequence.fromIterable(changes).ofType(NodeGroupWrapChange.class).where(new IWhereFilter<NodeGroupWrapChange>() {
-      public boolean accept(NodeGroupWrapChange it) {
-        return !(it.isWrap());
-      }
-    }).visitAll(new IVisitor<NodeGroupWrapChange>() {
-      public void visit(NodeGroupWrapChange it) {
-        it.apply(model, nodeCopier);
-      }
-    });
+    Sequence.fromIterable(changes).ofType(NodeGroupWrapChange.class).where((it) -> !(it.isWrap())).visitAll((it) -> it.apply(model, nodeCopier));
   }
 
   @Override
@@ -145,33 +110,19 @@ public abstract class HierarchicalNodeGroupChange extends StructureChange {
       return ListSequence.fromListAndArray(new LinkedList<Tuples._2<SNodeId, MessageTarget>>(), MultiTuple.<SNodeId,MessageTarget>from(getParentId(isNew), ((MessageTarget) new DeletedNodeMessageTarget(getLink(isNew), getEnd(isNew)))));
     }
     final List<Tuples._2<SNodeId, MessageTarget>> result = ListSequence.fromList(new ArrayList<Tuples._2<SNodeId, MessageTarget>>());
-    ListSequence.fromList(getGroup(isNew).getModifiedNodes()).visitAll(new IVisitor<ModifiedNode>() {
-      public void visit(ModifiedNode it) {
-        SNode child = it.getNode();
-        if (child == null) {
-          return;
-        }
-        ListSequence.fromList(result).addElement(MultiTuple.<SNodeId,MessageTarget>from(child.getNodeId(), ((MessageTarget) new NodeMessageTarget())));
-        ListSequence.fromList(AttributeOperations.getAllAttributes(child)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode attr) {
-            return !(AttributeOperations.isChildAttribute(attr));
-          }
-        }).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode attr) {
-            ListSequence.fromList(result).addElement(MultiTuple.<SNodeId,MessageTarget>from(attr.getNodeId(), ((MessageTarget) new NodeMessageTarget())));
-          }
-        });
+    ListSequence.fromList(getGroup(isNew).getModifiedNodes()).visitAll((it) -> {
+      SNode child = it.getNode();
+      if (child == null) {
+        return;
       }
+      ListSequence.fromList(result).addElement(MultiTuple.<SNodeId,MessageTarget>from(child.getNodeId(), ((MessageTarget) new NodeMessageTarget())));
+      ListSequence.fromList(AttributeOperations.getAllAttributes(child)).where((attr) -> !(AttributeOperations.isChildAttribute(attr))).visitAll((attr) -> ListSequence.fromList(result).addElement(MultiTuple.<SNodeId,MessageTarget>from(attr.getNodeId(), ((MessageTarget) new NodeMessageTarget()))));
     });
     return result;
   }
 
   protected String getMultiLineIdsString(boolean isNew) {
-    List<String> allIds = ListSequence.fromList(getIds(isNew)).select(new ISelector<SNodeId, String>() {
-      public String select(SNodeId id) {
-        return "#" + id;
-      }
-    }).toListSequence();
+    List<String> allIds = ListSequence.fromList(getIds(isNew)).select((id) -> "#" + id).toList();
     int size = ListSequence.fromList(allIds).count();
     if (size == 1) {
       return ListSequence.fromList(allIds).getElement(0);

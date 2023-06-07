@@ -17,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -44,11 +43,7 @@ public final class IWillBeClassifier__BehaviorDescriptor extends BaseBHDescripto
   }
   /*package*/ static SNode resolve_id3ZSHU3ph184(@NotNull SNode __thisNode__, SModel targetModel) {
     final String clsName = IWillBeClassifier__BehaviorDescriptor.classifierName_id3ZSHU3pg$b_.invoke(__thisNode__);
-    return ListSequence.fromList(SModelOperations.roots(targetModel, CONCEPTS.Classifier$Ix)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode cls) {
-        return clsName.equals(SPropertyOperations.getString(cls, PROPS.name$MnvL));
-      }
-    });
+    return ListSequence.fromList(SModelOperations.roots(targetModel, CONCEPTS.Classifier$Ix)).findFirst((cls) -> clsName.equals(SPropertyOperations.getString(cls, PROPS.name$MnvL)));
   }
 
   /*package*/ IWillBeClassifier__BehaviorDescriptor() {

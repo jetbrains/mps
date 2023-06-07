@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-5b5s2hvo0cxfjzhc8saaloawszj7qi1">
+<product version="3" modelHash="a4ihge6904r8tn3h8eqqi2tty0kjavd">
   <files names="ModelOrNodeChooser.java:NodeHierarchyChooser.java:RefactoringAccessImpl.java:RefactoringViewItemImpl.java:RenameModelDialog.java:RenameModuleDialog.java" />
 </product>
 

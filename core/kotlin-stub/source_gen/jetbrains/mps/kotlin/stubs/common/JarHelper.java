@@ -17,9 +17,7 @@ import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.java.stub.PackageScopeControl;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import java.util.HashSet;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.vfs.path.Path;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SModelId;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -29,7 +27,7 @@ import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.persistence.FolderSetDataSource;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 
 /**
@@ -89,22 +87,10 @@ public class JarHelper {
 
     // FIXME though IFile("whatever.jar") could be already from JAR FS (e.g. CommonPaths creates IFiles using JAR FS for jar files right away), I found no way to figure it out
     // therefore have to resort to this stupid way to step into jar
-    SetSequence.fromSet(jarsToLoad).select(new ISelector<IFile, IFile>() {
-      public IFile select(IFile it) {
-        return modelRoot.getFileSystem().getFile(it.getPath() + Path.ARCHIVE_SEPARATOR);
-      }
-    }).visitAll(new IVisitor<IFile>() {
-      public void visit(IFile it) {
-        SetSequence.fromSet(cpRootsToLoad).addElement(it);
-      }
-    });
+    SetSequence.fromSet(jarsToLoad).select((it) -> modelRoot.getFileSystem().getFile(it.getPath() + Path.ARCHIVE_SEPARATOR)).visitAll((it) -> SetSequence.fromSet(cpRootsToLoad).addElement(it));
 
     final Map<SModelId, SModel> result = MapSequence.fromMap(new HashMap<SModelId, SModel>());
-    SetSequence.fromSet(cpRootsToLoad).visitAll(new IVisitor<IFile>() {
-      public void visit(IFile it) {
-        descriptorProducer.getModelDescriptors(result, it, "", modelRoot.getModule(), packageScope, modelRoot);
-      }
-    });
+    SetSequence.fromSet(cpRootsToLoad).visitAll((it) -> descriptorProducer.getModelDescriptors(result, it, "", modelRoot.getModule(), packageScope, modelRoot));
 
     return MapSequence.fromMap(result).values();
   }
@@ -117,11 +103,7 @@ public class JarHelper {
 
     default void getModelDescriptors(final Map<SModelId, SModel> result, IFile file, String prefix, SModule module, PackageScopeControl psc, ModelRoot mr) {
       List<IFile> children = file.getChildren();
-      for (IFile subdir : ListSequence.fromList(children).where(new IWhereFilter<IFile>() {
-        public boolean accept(IFile it) {
-          return it.isDirectory();
-        }
-      })) {
+      for (IFile subdir : ListSequence.fromList(children).where((it) -> it.isDirectory())) {
         String pack = (prefix.length() == 0 ? subdir.getName() : prefix + '.' + subdir.getName());
         if (psc != null && !(psc.isIncluded(pack))) {
           if (psc.isAnyChildIncluded(pack)) {
@@ -130,8 +112,8 @@ public class JarHelper {
           continue;
         }
         List<IFile> subchildren = subdir.getChildren();
-        Iterable<IFile> rootsClasses = ListSequence.fromList(subchildren).where(new IWhereFilter<IFile>() {
-          public boolean accept(IFile file) {
+        Iterable<IFile> rootsClasses = ListSequence.fromList(subchildren).where(new _FunctionTypes._return_P1_E0<Boolean, IFile>() {
+          public Boolean invoke(IFile file) {
             return isFileIncluded(file);
           }
         });

@@ -69,14 +69,14 @@ public class AnalyzerRules {
       descendants.addAll(SNodeOperations.getNodeDescendants(myNodeToApply, null, false, new SAbstractConcept[]{}));
     }
     for (final SNode descendant : descendants) {
-      getRules(descendant).forEach((DataFlowConstructor rule) -> rule.performActions(myProgram, descendant));
+      getRules(descendant).forEach((rule) -> rule.performActions(myProgram, descendant));
     }
   }
   private Stream<DataFlowConstructor> getRules(final SNode node) {
-    return myRules.stream().filter((DataFlowConstructor rule) -> {
+    return myRules.stream().filter((rule) -> {
       {
         Collection<IDataFlowModeId> modes = rule.getModes();
-        return (modes.isEmpty() || modes.stream().anyMatch((IDataFlowModeId mode) -> myContext.getBuilderModes().contains(mode))) && rule.isApplicable(node);
+        return (modes.isEmpty() || modes.stream().anyMatch((mode) -> myContext.getBuilderModes().contains(mode))) && rule.isApplicable(node);
       }
     });
   }

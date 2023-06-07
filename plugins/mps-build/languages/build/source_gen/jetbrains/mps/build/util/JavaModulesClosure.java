@@ -11,8 +11,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -96,22 +94,10 @@ public class JavaModulesClosure {
     return libraries;
   }
   public Iterable<SNode> getJars() {
-    return Sequence.fromIterable(((Iterable<SNode>) jars)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.customLocation$T4ZX) == null);
-      }
-    }).toListSequence();
+    return Sequence.fromIterable(((Iterable<SNode>) jars)).where((it) -> (SLinkOperations.getTarget(it, LINKS.customLocation$T4ZX) == null)).toList();
   }
   public Iterable<SNode> getExternalJars() {
-    return Sequence.fromIterable(((Iterable<SNode>) jars)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.customLocation$T4ZX) != null);
-      }
-    }).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.customLocation$T4ZX), LINKS.jar$JLD3);
-      }
-    }).concat(SetSequence.fromSet(externalJars)).toListSequence();
+    return Sequence.fromIterable(((Iterable<SNode>) jars)).where((it) -> (SLinkOperations.getTarget(it, LINKS.customLocation$T4ZX) != null)).select((it) -> SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.customLocation$T4ZX), LINKS.jar$JLD3)).concat(SetSequence.fromSet(externalJars)).toList();
   }
   public Iterable<Tuples._2<SNode, String>> getExternalJarsInFolder() {
     return externalJarsInFolder;

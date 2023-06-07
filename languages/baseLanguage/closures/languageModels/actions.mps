@@ -597,7 +597,7 @@
                                   <ref role="cht4Q" to="tp2c:htajhBZ" resolve="FunctionType" />
                                 </node>
                                 <node concept="37vLTw" id="6QWJOWBMOTW" role="1m5AlR">
-                                  <ref role="3cqZAo" node="6QWJOWBM4Sb" resolve="paramType" />
+                                  <ref role="3cqZAo" node="6QWJOWBM4Sb" resolve="expectedParamType" />
                                 </node>
                               </node>
                               <node concept="2qgKlT" id="6QWJOWBMSd8" role="2OqNvi">
@@ -620,7 +620,7 @@
                     </node>
                     <node concept="2OqwBi" id="6QWJOWBMl$0" role="3clFbw">
                       <node concept="37vLTw" id="6QWJOWBMlpp" role="2Oq$k0">
-                        <ref role="3cqZAo" node="6QWJOWBM4Sb" resolve="paramType" />
+                        <ref role="3cqZAo" node="6QWJOWBM4Sb" resolve="expectedParamType" />
                       </node>
                       <node concept="1mIQ4w" id="6QWJOWBMlMY" role="2OqNvi">
                         <node concept="chp4Y" id="6QWJOWBMlPP" role="cj9EA">
@@ -639,7 +639,7 @@
                                   <ref role="cht4Q" to="tpee:g7uibYu" resolve="ClassifierType" />
                                 </node>
                                 <node concept="37vLTw" id="6QWJOWBMBHo" role="1m5AlR">
-                                  <ref role="3cqZAo" node="6QWJOWBM4Sb" resolve="paramType" />
+                                  <ref role="3cqZAo" node="6QWJOWBM4Sb" resolve="expectedParamType" />
                                 </node>
                               </node>
                               <node concept="3TrEf2" id="6QWJOWBMCvz" role="2OqNvi">

@@ -14,16 +14,12 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.vcs.diff.changes.NodeChange;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Collections;
-import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.vcs.diff.changes.SetPropertyChange;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.smodel.DynamicReference;
@@ -37,6 +33,7 @@ import jetbrains.mps.vcs.diff.changes.SetConceptChange;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
+import java.util.Iterator;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
 import jetbrains.mps.smodel.runtime.StaticScope;
@@ -99,63 +96,47 @@ public final class DiffUtil {
   /*package*/ static Iterable<NodeChange> collectPropertyChanges(@NotNull final ChangeSet changeSet, @NotNull final SNode oldNode, @NotNull final SNode newNode) {
     Iterable<SProperty> oldProperties = oldNode.getProperties();
     Iterable<SProperty> newProperties = newNode.getProperties();
-    return Sequence.fromIterable(oldProperties).union(Sequence.fromIterable(newProperties)).translate(new ITranslator2<SProperty, NodeChange>() {
-      public Iterable<NodeChange> translate(SProperty property) {
-        return collectPropertyChanges(changeSet, oldNode, newNode, property);
-      }
-    });
+    return Sequence.fromIterable(oldProperties).union(Sequence.fromIterable(newProperties)).translate((property) -> collectPropertyChanges(changeSet, oldNode, newNode, property));
   }
 
   /*package*/ static Iterable<NodeChange> collectPropertyChanges(@NotNull final ChangeSet changeSet, @NotNull final SNode oldNode, @NotNull final SNode newNode, @NotNull final SProperty property) {
     if (propertiesAreEqual(oldNode, newNode, property)) {
       return Sequence.fromIterable(Collections.<NodeChange>emptyList());
     }
-    return Sequence.fromClosure(new ISequenceClosure<NodeChange>() {
-      public Iterable<NodeChange> iterable() {
-        return new Iterable<NodeChange>() {
-          public Iterator<NodeChange> iterator() {
-            return new YieldingIterator<NodeChange>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
+    return Sequence.fromClosure(() -> {
+      return (Iterable<NodeChange>) () -> {
+        return new YieldingIterator<NodeChange>() {
+          private int __CP__ = 0;
+          protected boolean moveToNext() {
 __loop__:
-                do {
+            do {
 __switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 2:
-                      this.__CP__ = 1;
-                      this.yield(((NodeChange) new SetPropertyChange(changeSet, oldNode.getNodeId(), newNode.getNodeId(), property, newNode.getProperty(property))));
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    default:
-                      break __loop__;
-                  }
-                } while (true);
-                return false;
+              switch (this.__CP__) {
+                case -1:
+                  assert false : "Internal error";
+                  return false;
+                case 2:
+                  this.__CP__ = 1;
+                  this.yield(((NodeChange) new SetPropertyChange(changeSet, oldNode.getNodeId(), newNode.getNodeId(), property, newNode.getProperty(property))));
+                  return true;
+                case 0:
+                  this.__CP__ = 2;
+                  break;
+                default:
+                  break __loop__;
               }
-            };
+            } while (true);
+            return false;
           }
         };
-      }
+      };
     });
   }
 
   /*package*/ static Iterable<NodeChange> collectReferenceChanges(@NotNull final ChangeSet changeSet, @NotNull final SNode oldNode, @NotNull final SNode newNode) {
     List<SReference> oldReferences = (List<SReference>) oldNode.getReferences();
     List<SReference> newReferences = (List<SReference>) newNode.getReferences();
-    return ListSequence.fromList(oldReferences).concat(ListSequence.fromList(newReferences)).select(new ISelector<SReference, SReferenceLink>() {
-      public SReferenceLink select(SReference r) {
-        return r.getLink();
-      }
-    }).distinct().translate(new ITranslator2<SReferenceLink, NodeChange>() {
-      public Iterable<NodeChange> translate(SReferenceLink it) {
-        return collectReferenceChanges(changeSet, oldNode, newNode, it);
-      }
-    });
+    return ListSequence.fromList(oldReferences).concat(ListSequence.fromList(newReferences)).select((r) -> r.getLink()).distinct().translate((it) -> collectReferenceChanges(changeSet, oldNode, newNode, it));
   }
 
   /*package*/ static Iterable<NodeChange> collectReferenceChanges(@NotNull final ChangeSet changeSet, @NotNull final SNode oldNode, @NotNull final SNode newNode, @NotNull final SReferenceLink role) {
@@ -170,37 +151,33 @@ __switch__:
     final SReference newReference = newNode.getReference(role);
     final SNodeId newTargetId = (newReference instanceof DynamicReference ? null : check_z8xa03_a0a7a51(newReference));
     final SModelReference targetModel = check_z8xa03_a0i0p(newReference);
-    return Sequence.fromClosure(new ISequenceClosure<NodeChange>() {
-      public Iterable<NodeChange> iterable() {
-        return new Iterable<NodeChange>() {
-          public Iterator<NodeChange> iterator() {
-            return new YieldingIterator<NodeChange>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
+    return Sequence.fromClosure(() -> {
+      return (Iterable<NodeChange>) () -> {
+        return new YieldingIterator<NodeChange>() {
+          private int __CP__ = 0;
+          protected boolean moveToNext() {
 __loop__:
-                do {
+            do {
 __switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 2:
-                      this.__CP__ = 1;
-                      this.yield((NodeChange) new SetReferenceChange(changeSet, oldNode.getNodeId(), newNode.getNodeId(), role, targetModel, newTargetId, check_z8xa03_g0a0a0a0a9a51(newReference), refsAreEqual));
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    default:
-                      break __loop__;
-                  }
-                } while (true);
-                return false;
+              switch (this.__CP__) {
+                case -1:
+                  assert false : "Internal error";
+                  return false;
+                case 2:
+                  this.__CP__ = 1;
+                  this.yield((NodeChange) new SetReferenceChange(changeSet, oldNode.getNodeId(), newNode.getNodeId(), role, targetModel, newTargetId, check_z8xa03_g0a0a0a0a9a51(newReference), refsAreEqual));
+                  return true;
+                case 0:
+                  this.__CP__ = 2;
+                  break;
+                default:
+                  break __loop__;
               }
-            };
+            } while (true);
+            return false;
           }
         };
-      }
+      };
     });
   }
 
@@ -225,11 +202,7 @@ __switch__:
   /*package*/ static boolean allReferencesAreEqual(@NotNull SNode oldNode, @NotNull SNode newNode) {
     List<SReference> oldReferences = (List<SReference>) oldNode.getReferences();
     List<SReference> newReferences = (List<SReference>) newNode.getReferences();
-    for (SReferenceLink role : ListSequence.fromList(oldReferences).concat(ListSequence.fromList(newReferences)).select(new ISelector<SReference, SReferenceLink>() {
-      public SReferenceLink select(SReference r) {
-        return r.getLink();
-      }
-    }).distinct()) {
+    for (SReferenceLink role : ListSequence.fromList(oldReferences).concat(ListSequence.fromList(newReferences)).select((r) -> r.getLink()).distinct()) {
       if (!(referencesAreEqual(oldNode, newNode, role))) {
         return false;
       }
@@ -247,37 +220,33 @@ __switch__:
     if (Objects.equals(oldNode.getConcept(), newNode.getConcept())) {
       return Sequence.fromIterable(Collections.<NodeChange>emptyList());
     } else {
-      return Sequence.fromClosure(new ISequenceClosure<NodeChange>() {
-        public Iterable<NodeChange> iterable() {
-          return new Iterable<NodeChange>() {
-            public Iterator<NodeChange> iterator() {
-              return new YieldingIterator<NodeChange>() {
-                private int __CP__ = 0;
-                protected boolean moveToNext() {
+      return Sequence.fromClosure(() -> {
+        return (Iterable<NodeChange>) () -> {
+          return new YieldingIterator<NodeChange>() {
+            private int __CP__ = 0;
+            protected boolean moveToNext() {
 __loop__:
-                  do {
+              do {
 __switch__:
-                    switch (this.__CP__) {
-                      case -1:
-                        assert false : "Internal error";
-                        return false;
-                      case 2:
-                        this.__CP__ = 1;
-                        this.yield((NodeChange) new SetConceptChange(changeSet, oldNode.getNodeId(), oldConcept, newConcept));
-                        return true;
-                      case 0:
-                        this.__CP__ = 2;
-                        break;
-                      default:
-                        break __loop__;
-                    }
-                  } while (true);
-                  return false;
+                switch (this.__CP__) {
+                  case -1:
+                    assert false : "Internal error";
+                    return false;
+                  case 2:
+                    this.__CP__ = 1;
+                    this.yield((NodeChange) new SetConceptChange(changeSet, oldNode.getNodeId(), oldConcept, newConcept));
+                    return true;
+                  case 0:
+                    this.__CP__ = 2;
+                    break;
+                  default:
+                    break __loop__;
                 }
-              };
+              } while (true);
+              return false;
             }
           };
-        }
+        };
       });
     }
   }
@@ -403,7 +372,7 @@ __switch__:
   }
   private static List<SNode> check_z8xa03_a0a32(Iterable<SNode> checkedDotOperand) {
     if (null != checkedDotOperand) {
-      return Sequence.fromIterable(checkedDotOperand).toListSequence();
+      return Sequence.fromIterable(checkedDotOperand).toList();
     }
     return null;
   }

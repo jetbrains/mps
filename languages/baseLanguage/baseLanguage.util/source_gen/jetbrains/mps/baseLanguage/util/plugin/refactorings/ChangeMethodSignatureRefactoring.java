@@ -17,11 +17,10 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.util.VariableInitializationUtil;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -124,8 +123,8 @@ public class ChangeMethodSignatureRefactoring {
 
     for (final Wrappers._int index = new Wrappers._int(0); index.value < ListSequence.fromList(oldParams).count(); index.value += 1) {
       // Deleted parameter
-      if ((ListSequence.fromList(newParams).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
+      if ((ListSequence.fromList(newParams).findFirst(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+        public Boolean invoke(SNode it) {
           return it.getNodeId().toString().equals(ListSequence.fromList(myParameters.getIdList()).getElement(index.value));
         }
       }) == null)) {
@@ -141,8 +140,8 @@ public class ChangeMethodSignatureRefactoring {
         }
 
         // Find references
-        Iterable<SNode> refs = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(myDeclaration, LINKS.body$5xQk), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
+        Iterable<SNode> refs = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(myDeclaration, LINKS.body$5xQk), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+          public Boolean invoke(SNode it) {
             return SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == replacedParam;
           }
         });
@@ -155,8 +154,8 @@ public class ChangeMethodSignatureRefactoring {
 
           SLinkOperations.setTarget(newDecl, LINKS.initializer$2twD, VariableInitializationUtil.createDefaultInitializer(newDecl));
 
-          Sequence.fromIterable(refs).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode it) {
+          Sequence.fromIterable(refs).visitAll(new _FunctionTypes._void_P1_E0<SNode>() {
+            public void invoke(SNode it) {
               SLinkOperations.setTarget(it, LINKS.variableDeclaration$N1XG, newDecl);
             }
           });

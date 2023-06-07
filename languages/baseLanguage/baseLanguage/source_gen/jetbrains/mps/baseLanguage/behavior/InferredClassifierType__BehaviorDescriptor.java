@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -36,11 +35,7 @@ public final class InferredClassifierType__BehaviorDescriptor extends BaseBHDesc
   }
 
   /*package*/ static SNode getPublicType_idhEwIXGa(@NotNull SNode __thisNode__) {
-    return createClassifierType_5ynnrd_a0a0(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr), ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$oqG$)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SNodeOperations.copyNode(it);
-      }
-    }));
+    return createClassifierType_5ynnrd_a0a0(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr), ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$oqG$)).select((it) -> SNodeOperations.copyNode(it)));
   }
 
   /*package*/ InferredClassifierType__BehaviorDescriptor() {

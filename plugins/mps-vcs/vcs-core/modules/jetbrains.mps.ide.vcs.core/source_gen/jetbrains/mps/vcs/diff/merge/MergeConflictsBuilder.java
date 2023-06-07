@@ -27,7 +27,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.util.EqualUtil;
 import jetbrains.mps.vcs.diff.changes.SetPropertyChange;
 import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
@@ -40,7 +39,6 @@ import jetbrains.mps.vcs.diff.changes.ModuleDependencyChange;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.vcs.diff.changes.UsedLanguageChange;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
 import java.util.ArrayList;
 
@@ -166,11 +164,7 @@ public class MergeConflictsBuilder implements ChangeConflictsBuilder {
           final SContainmentLink containingLink = (RuntimeFlags.isMergeDriverMode() ? SNodeOperations.getContainingLink(node) : SNodeOperations.getContainingLinkInChildrenAndChildAttributesCollection(node));
           Tuples._2<SNodeId, SContainmentLink> nodeRole = MultiTuple.<SNodeId,SContainmentLink>from(parent.getNodeId(), containingLink);
           final int index = (RuntimeFlags.isMergeDriverMode() ? ListSequence.fromList(SNodeOperations.getChildren(parent, containingLink)).indexOf(node) : Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(parent, containingLink)).indexOf(node));
-          NodeGroupChange conflicting = ListSequence.fromList(MapSequence.fromMap(arrangedChanges).get(nodeRole)).findFirst(new IWhereFilter<NodeGroupChange>() {
-            public boolean accept(NodeGroupChange ch) {
-              return ch.getBegin() <= index && index < ch.getEnd();
-            }
-          });
+          NodeGroupChange conflicting = ListSequence.fromList(MapSequence.fromMap(arrangedChanges).get(nodeRole)).findFirst((ch) -> ch.getBegin() <= index && index < ch.getEnd());
           if (conflicting != null) {
             addPossibleConflict(change, conflicting);
             break;
@@ -283,16 +277,8 @@ public class MergeConflictsBuilder implements ChangeConflictsBuilder {
   private void collectSymmetricAndConflictedUsedLanguageChanges() {
     final Map<SLanguage, UsedLanguageChange> mine = MapSequence.fromMap(new HashMap<SLanguage, UsedLanguageChange>());
     final Map<SLanguage, UsedLanguageChange> repo = MapSequence.fromMap(new HashMap<SLanguage, UsedLanguageChange>());
-    Sequence.fromIterable(myMineChangeSet.getModelChanges(UsedLanguageChange.class)).visitAll(new IVisitor<UsedLanguageChange>() {
-      public void visit(UsedLanguageChange ch) {
-        MapSequence.fromMap(mine).put(ch.getLanguage(), ch);
-      }
-    });
-    Sequence.fromIterable(myRepositoryChangeSet.getModelChanges(UsedLanguageChange.class)).visitAll(new IVisitor<UsedLanguageChange>() {
-      public void visit(UsedLanguageChange ch) {
-        MapSequence.fromMap(repo).put(ch.getLanguage(), ch);
-      }
-    });
+    Sequence.fromIterable(myMineChangeSet.getModelChanges(UsedLanguageChange.class)).visitAll((ch) -> MapSequence.fromMap(mine).put(ch.getLanguage(), ch));
+    Sequence.fromIterable(myRepositoryChangeSet.getModelChanges(UsedLanguageChange.class)).visitAll((ch) -> MapSequence.fromMap(repo).put(ch.getLanguage(), ch));
 
     for (SLanguage lang : SetSequence.fromSet(MapSequence.fromMap(mine).keySet()).intersect(SetSequence.fromSet(MapSequence.fromMap(repo).keySet()))) {
       UsedLanguageChange mineChange = MapSequence.fromMap(mine).get(lang);
@@ -379,11 +365,7 @@ public class MergeConflictsBuilder implements ChangeConflictsBuilder {
 
   private static <K, C extends ModelChange> Map<K, C> arrangeChanges(ChangeSet changeSet, final _FunctionTypes._return_P1_E0<? extends K, ? super C> changeToKey, Class<C> changeClass) {
     final Map<K, C> map = MapSequence.fromMap(new HashMap<K, C>());
-    Sequence.fromIterable(changeSet.getModelChanges(changeClass)).visitAll(new IVisitor<C>() {
-      public void visit(C ch) {
-        MapSequence.fromMap(map).put(changeToKey.invoke(ch), ch);
-      }
-    });
+    Sequence.fromIterable(changeSet.getModelChanges(changeClass)).visitAll((ch) -> MapSequence.fromMap(map).put(changeToKey.invoke(ch), ch));
     return map;
   }
 }

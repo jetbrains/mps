@@ -38,7 +38,7 @@ import jetbrains.mps.execution.lib.PointerUtils;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import org.jetbrains.mps.openapi.module.SModuleReference;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.awt.Component;
 
 public final class ScopeAndPanels {
@@ -318,8 +318,8 @@ public final class ScopeAndPanels {
     final List<ITestNodeWrapper> methods = ListSequence.fromList(new ArrayList<ITestNodeWrapper>());
     if (myProject != null) {
       myProject.getModelAccess().runReadAction(() -> {
-        ListSequence.fromList(TestUtils.wrapPointerStrings(myProject, settings.getTestMethods())).visitAll(new IVisitor<ITestNodeWrapper>() {
-          public void visit(ITestNodeWrapper it) {
+        ListSequence.fromList(TestUtils.wrapPointerStrings(myProject, settings.getTestMethods())).visitAll(new _FunctionTypes._void_P1_E0<ITestNodeWrapper>() {
+          public void invoke(ITestNodeWrapper it) {
             ListSequence.fromList(methods).addElement(it);
           }
         });
@@ -332,8 +332,8 @@ public final class ScopeAndPanels {
     final List<ITestNodeWrapper> classes = ListSequence.fromList(new ArrayList<ITestNodeWrapper>());
     if (myProject != null) {
       myProject.getModelAccess().runReadAction(() -> {
-        ListSequence.fromList(TestUtils.wrapPointerStrings(myProject, settings.getTestCases())).visitAll(new IVisitor<ITestNodeWrapper>() {
-          public void visit(ITestNodeWrapper it) {
+        ListSequence.fromList(TestUtils.wrapPointerStrings(myProject, settings.getTestCases())).visitAll(new _FunctionTypes._void_P1_E0<ITestNodeWrapper>() {
+          public void invoke(ITestNodeWrapper it) {
             ListSequence.fromList(classes).addElement(it);
           }
         });

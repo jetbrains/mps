@@ -15,7 +15,6 @@ import jetbrains.mps.errors.BaseQuickFixProvider;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -37,11 +36,7 @@ public class check_PropertyAttribute_NonTypesystemRule extends AbstractNonTypesy
       }
     } else {
       Iterable<SProperty> properties = SNodeOperations.getConcept(SNodeOperations.getParent(propertyAttribute)).getProperties();
-      SProperty existingProperty = Sequence.fromIterable(properties).findFirst(new IWhereFilter<SProperty>() {
-        public boolean accept(SProperty it) {
-          return Objects.equals(it, PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(propertyAttribute));
-        }
-      });
+      SProperty existingProperty = Sequence.fromIterable(properties).findFirst((it) -> Objects.equals(it, PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(propertyAttribute)));
       String reportName = PropertyAttribute__BehaviorDescriptor.getNameForReporting_id5gACAVBzOt1.invoke(propertyAttribute);
       if (existingProperty == null) {
         {

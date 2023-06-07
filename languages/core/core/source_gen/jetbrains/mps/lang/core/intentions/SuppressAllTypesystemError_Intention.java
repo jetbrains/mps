@@ -24,7 +24,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.errors.item.FlavouredItem;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
@@ -68,7 +67,7 @@ public final class SuppressAllTypesystemError_Intention extends AbstractIntentio
     public void execute(final SNode node, final EditorContext editorContext) {
       if (ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1).list(node)).isEmpty()) {
         SNode annotation = SNodeFactoryOperations.addNewAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1), CONCEPTS.SuppressErrorsAnnotation$D1);
-        Map<String, String> flavours = MapSequence.<String, String>fromMapAndKeysArray(new HashMap<String, String>(), IssueKindReportItem.FLAVOUR_ISSUE_KIND.getId()).withValues(IssueKindReportItem.TYPESYSTEM.deriveItemKind().toString());
+        Map<String, String> flavours = MapSequence.fromMapAndEntryArray(new HashMap<String, String>(), Map.entry(IssueKindReportItem.FLAVOUR_ISSUE_KIND.getId(), IssueKindReportItem.TYPESYSTEM.deriveItemKind().toString()));
         SPropertyOperations.assign(annotation, PROPS.filter$LICx, new FlavouredItem.ReportItemPredicate(flavours).serialize());
         SPropertyOperations.assign(annotation, PROPS.message$_mpB, "all typesystem messages");
       } else {
@@ -93,15 +92,7 @@ public final class SuppressAllTypesystemError_Intention extends AbstractIntentio
       if (CollectionSequence.fromCollection(reportItemsForCell).isEmpty()) {
         return false;
       }
-      return CollectionSequence.fromCollection(reportItemsForCell).all(new IWhereFilter<IssueKindReportItem>() {
-        public boolean accept(IssueKindReportItem it) {
-          return Objects.equals(it.getIssueKind().getChecker(), IssueKindReportItem.TYPESYSTEM);
-        }
-      }) && CollectionSequence.fromCollection(reportItemsForCell).any(new IWhereFilter<IssueKindReportItem>() {
-        public boolean accept(IssueKindReportItem it) {
-          return Objects.equals(it.getSeverity(), MessageStatus.ERROR);
-        }
-      });
+      return CollectionSequence.fromCollection(reportItemsForCell).all((it) -> Objects.equals(it.getIssueKind().getChecker(), IssueKindReportItem.TYPESYSTEM)) && CollectionSequence.fromCollection(reportItemsForCell).any((it) -> Objects.equals(it.getSeverity(), MessageStatus.ERROR));
     }
 
 

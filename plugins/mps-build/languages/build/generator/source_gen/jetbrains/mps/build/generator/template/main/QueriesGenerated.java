@@ -9,8 +9,6 @@ import jetbrains.mps.build.util.FileSetUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.build.behavior.BuildLayout_Node__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.build.behavior.BuildLayout_File__BehaviorDescriptor;
@@ -18,6 +16,7 @@ import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.build.behavior.BuildLayout_Container__BehaviorDescriptor;
 import jetbrains.mps.build.util.Context;
 import jetbrains.mps.build.behavior.BuildLayout_NamedContainer__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.build.behavior.BuildLayout_JarManifest__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
@@ -25,7 +24,6 @@ import jetbrains.mps.build.behavior.BuildLayout_CopyProcessor__BehaviorDescripto
 import jetbrains.mps.build.behavior.BuildString__BehaviorDescriptor;
 import jetbrains.mps.build.behavior.BuildLayout_EchoXml__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.build.behavior.BuildLayout_EchoProperties__BehaviorDescriptor;
 import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
 import jetbrains.mps.build.behavior.BuildVariableMacroInitValue__BehaviorDescriptor;
@@ -57,7 +55,6 @@ import java.util.Map;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import java.util.Collections;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.LinkedHashMap;
 import jetbrains.mps.build.behavior.IWorkflowParticipant__BehaviorDescriptor;
@@ -147,11 +144,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.module$qsl4), CONCEPTS.BuildSource_JavaModule$NC);
   }
   public static boolean rule_Condition_2_1(final BaseMappingRuleContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.handlers$AdkY)).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_CopyProcessor$ty);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.handlers$AdkY)).all((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_CopyProcessor$ty));
   }
   public static boolean rule_Condition_2_2(final BaseMappingRuleContext _context) {
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.handlers$AdkY)).isNotEmpty();
@@ -163,18 +156,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return isNotEmptyString(SPropertyOperations.getString(_context.getNode(), PROPS.filemode$Xiae)) && (boolean) BuildLayout_File__BehaviorDescriptor.canHaveFilemode_id7UAfeVQUccL.invoke(_context.getNode());
   }
   public static boolean rule_Condition_10_2(final BaseMappingRuleContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parameters$xu7T)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_CopyHandler$W9);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parameters$xu7T)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_CopyHandler$W9));
   }
   public static boolean rule_Condition_10_3(final BaseMappingRuleContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parameters$WlG4)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_CopyHandler$W9);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parameters$WlG4)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_CopyHandler$W9));
   }
   public static Object propertyMacro_GetValue_0_0(final PropertyMacroContext _context) {
     return (String) BuildLayout_Container__BehaviorDescriptor.getChildrenOutputDir_WithMacro_id450ejGzh8bb.invoke(_context.getNode(), Context.defaultContext(_context));
@@ -329,11 +314,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return "copy." + _context.getNode().getNodeId().toString();
   }
   public static Object propertyMacro_GetValue_0_47(final PropertyMacroContext _context) {
-    return IterableUtils.join(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.entries$cw3W)).select(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.key$cvQo) + "=" + BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(it, LINKS.value$cw5p), Context.defaultContext(_context).getMacros(_context.getNode()));
-      }
-    }), "${line.separator}");
+    return IterableUtils.join(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.entries$cw3W)).select((it) -> SPropertyOperations.getString(it, PROPS.key$cvQo) + "=" + BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(it, LINKS.value$cw5p), Context.defaultContext(_context).getMacros(_context.getNode()))), "${line.separator}");
   }
   public static Object propertyMacro_GetValue_0_48(final PropertyMacroContext _context) {
     return (String) BuildLayout_EchoProperties__BehaviorDescriptor.getOutputPath_WithMacro_idbgY2XVZG2p.invoke(_context.getNode(), Context.defaultContext(_context));
@@ -590,11 +571,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return (String) BuildLayout_Container__BehaviorDescriptor.getPrepareSubTaskId_id450ejGzh8bD.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.layout$r7bw));
   }
   public static Object propertyMacro_GetValue_1_12(final PropertyMacroContext _context) {
-    return IterableUtils.join(Sequence.fromIterable(((Iterable<SNode>) ((MacroHelper) _context.getVariable("var:macroHelper")).getMacrosToExport())).select(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return ((MacroHelper) _context.getVariable("var:macroHelper")).getExportName(it) + "=${" + ((MacroHelper) _context.getVariable("var:macroHelper")).getName(it) + "}";
-      }
-    }), "${line.separator}");
+    return IterableUtils.join(Sequence.fromIterable(((Iterable<SNode>) ((MacroHelper) _context.getVariable("var:macroHelper")).getMacrosToExport())).select((it) -> ((MacroHelper) _context.getVariable("var:macroHelper")).getExportName(it) + "=${" + ((MacroHelper) _context.getVariable("var:macroHelper")).getName(it) + "}"), "${line.separator}");
   }
   public static Object propertyMacro_GetValue_1_13(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.path$URGX);
@@ -1203,34 +1180,18 @@ public class QueriesGenerated extends QueryProviderBase {
     // dependency unconditional - generally, fetchDependencies is empty anyway.
     final SNode ownerProject = SNodeOperations.getContainingRoot(_context.getNode());
     // JFTR, JavaModulesClosure works without translating nodes to 'original' model, we are fine to use == here
-    if (Sequence.fromIterable(((JavaModulesClosure) _context.getVariable("var:depsClosure")).getModules()).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.getContainingRoot(it) != ownerProject;
-      }
-    })) {
+    if (Sequence.fromIterable(((JavaModulesClosure) _context.getVariable("var:depsClosure")).getModules()).any((it) -> SNodeOperations.getContainingRoot(it) != ownerProject)) {
       // module from another project, assume it's part of layout of that project. 
       // JEU.requireModule used to also check artifacts.findArtifact() != null; I don't care.
       return true;
     }
-    if (Sequence.fromIterable(((JavaModulesClosure) _context.getVariable("var:depsClosure")).getExternalJars()).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.getContainingRoot(it) != ownerProject;
-      }
-    })) {
+    if (Sequence.fromIterable(((JavaModulesClosure) _context.getVariable("var:depsClosure")).getExternalJars()).any((it) -> SNodeOperations.getContainingRoot(it) != ownerProject)) {
       return true;
     }
-    if (Sequence.fromIterable(((JavaModulesClosure) _context.getVariable("var:depsClosure")).getExternalJarsInFolder()).any(new IWhereFilter<Tuples._2<SNode, String>>() {
-      public boolean accept(Tuples._2<SNode, String> it) {
-        return SNodeOperations.getContainingRoot(it._0()) != ownerProject;
-      }
-    })) {
+    if (Sequence.fromIterable(((JavaModulesClosure) _context.getVariable("var:depsClosure")).getExternalJarsInFolder()).any((it) -> SNodeOperations.getContainingRoot(it._0()) != ownerProject)) {
       return true;
     }
-    if (Sequence.fromIterable(((JavaModulesClosure) _context.getVariable("var:depsClosure")).getLibraries()).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.getContainingRoot(it) != ownerProject;
-      }
-    })) {
+    if (Sequence.fromIterable(((JavaModulesClosure) _context.getVariable("var:depsClosure")).getLibraries()).any((it) -> SNodeOperations.getContainingRoot(it) != ownerProject)) {
       // JEU.requireLibrary also checks canExportByParts() or presence of layout node (the only one being possible
       // afaik BuildLayout_ExportAsJavaLibrary, mostly unused), I decided it' just too much - as long as library comes
       // from a different project, I don't see a reason why I can't say 'fetchDependencies' first
@@ -1270,16 +1231,8 @@ public class QueriesGenerated extends QueryProviderBase {
       return false;
     }
     final SNode ownerProject = SNodeOperations.getContainingRoot(_context.getNode());
-    boolean externalProjectImport1 = Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(descendants, CONCEPTS.BuildLayout_Import$wO), LINKS.target$AFU4)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.getContainingRoot(it) != ownerProject;
-      }
-    });
-    boolean externalProjectImport2 = Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(descendants, CONCEPTS.BuildLayout_ImportContent$wC), LINKS.target$HFO4)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.getContainingRoot(it) != ownerProject;
-      }
-    });
+    boolean externalProjectImport1 = Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(descendants, CONCEPTS.BuildLayout_Import$wO), LINKS.target$AFU4)).any((it) -> SNodeOperations.getContainingRoot(it) != ownerProject);
+    boolean externalProjectImport2 = Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(descendants, CONCEPTS.BuildLayout_ImportContent$wC), LINKS.target$HFO4)).any((it) -> SNodeOperations.getContainingRoot(it) != ownerProject);
     return externalProjectImport1 || externalProjectImport2;
   }
   public static boolean ifMacro_Condition_1_4(final IfMacroContext _context) {
@@ -1347,11 +1300,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getBoolean(_context.getNode(), PROPS.includeRecursively$d4V7);
   }
   public static boolean ifMacro_Condition_10_0(final IfMacroContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parameters$xu7T)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_CopyHandler$W9);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parameters$xu7T)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_CopyHandler$W9));
   }
   public static boolean ifMacro_Condition_14_0(final IfMacroContext _context) {
     String archiveName = BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.archivePath$ic$p));
@@ -1516,13 +1465,11 @@ public class QueriesGenerated extends QueryProviderBase {
     return SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.handlers$AdkY), CONCEPTS.BuildLayout_CopyProcessor$ty);
   }
   public static Iterable<SNode> sourceNodesQuery_0_4(final SourceSubstituteMacroNodesContext _context) {
-    return Sequence.fromIterable(((Iterable<Map.Entry<String, String>>) BuildLayout_CopyProcessor__BehaviorDescriptor.getTaskArguments_id6R_3WZ31H2E.invoke(_context.getNode()).entrySet())).select(new ISelector<Map.Entry<String, String>, SNode>() {
-      public SNode select(Map.Entry<String, String> it) {
-        SNode loopnode = SModelOperations.createNewNode(_context.getOutputModel(), null, CONCEPTS.GeneratorInternal_Mapping$5j);
-        SPropertyOperations.assign(loopnode, PROPS.key$7zhw, it.getKey());
-        SPropertyOperations.assign(loopnode, PROPS.value$7CER, it.getValue());
-        return loopnode;
-      }
+    return Sequence.fromIterable(((Iterable<Map.Entry<String, String>>) BuildLayout_CopyProcessor__BehaviorDescriptor.getTaskArguments_id6R_3WZ31H2E.invoke(_context.getNode()).entrySet())).select((it) -> {
+      SNode loopnode = SModelOperations.createNewNode(_context.getOutputModel(), null, CONCEPTS.GeneratorInternal_Mapping$5j);
+      SPropertyOperations.assign(loopnode, PROPS.key$7zhw, it.getKey());
+      SPropertyOperations.assign(loopnode, PROPS.value$7CER, it.getValue());
+      return loopnode;
     });
   }
   public static Iterable<SNode> sourceNodesQuery_0_5(final SourceSubstituteMacroNodesContext _context) {
@@ -1532,15 +1479,11 @@ public class QueriesGenerated extends QueryProviderBase {
     return SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.handlers$AdkY), CONCEPTS.BuildLayout_CopyMapper$jW);
   }
   public static Iterable<SNode> sourceNodesQuery_0_7(final SourceSubstituteMacroNodesContext _context) {
-    List<SNode> list = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.handlers$AdkY), CONCEPTS.BuildLayout_CopyMapper$jW)).toListSequence();
+    List<SNode> list = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.handlers$AdkY), CONCEPTS.BuildLayout_CopyMapper$jW)).toList();
     return (ListSequence.fromList(list).count() == 1 ? list : Collections.<SNode>emptyList());
   }
   public static Iterable<SNode> sourceNodesQuery_0_8(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.selectors$LiDN)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildFileSelectorInAttribute$a3));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.selectors$LiDN)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildFileSelectorInAttribute$a3)));
   }
   public static Iterable<SNode> sourceNodesQuery_0_9(final SourceSubstituteMacroNodesContext _context) {
     return SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.selectors$LiDN), CONCEPTS.BuildFileSelectorInAttribute$a3);
@@ -1574,11 +1517,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return ((JavaModulesClosure) _context.getVariable("var:depsClosure")).getLibraries();
   }
   public static Iterable<SNode> sourceNodesQuery_0_17(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.dependencies$eBQR)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildSource_JavaDependencyLibrary$TO)) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildSource_JavaDependencyModule$Wc)) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildSource_JavaDependencyJar$QH)) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildSource_JavaDependencyExternalJar$__));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.dependencies$eBQR)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildSource_JavaDependencyLibrary$TO)) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildSource_JavaDependencyModule$Wc)) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildSource_JavaDependencyJar$QH)) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildSource_JavaDependencyExternalJar$__)));
   }
   public static Iterable<SNode> sourceNodesQuery_0_18(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.sources$9b9b), CONCEPTS.BuildSource_JavaResources$E8), LINKS.fileset$JPIq);
@@ -1587,24 +1526,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return SNodeOperations.ofConcept(SLinkOperations.getChildren(((SNode) _context.getVariable("var:javaOpts")), LINKS.resourceSelectors$RxsW), CONCEPTS.BuildFileSelectorInAttribute$a3);
   }
   public static Iterable<SNode> sourceNodesQuery_0_20(final SourceSubstituteMacroNodesContext _context) {
-    Iterable<String> folders = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.sources$9b9b), CONCEPTS.BuildSource_JavaFiles$ZS)).select(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return (String) BuildSourcePath__BehaviorDescriptor.getAntPath_id7ro1ZztyOh5.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.resset$gVd3), LINKS.path$zL7z), Context.defaultContext(_context));
-      }
-    });
-    folders = Sequence.fromIterable(folders).concat(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.sources$9b9b), CONCEPTS.BuildSource_JavaContentRoot$q4)).translate(new ITranslator2<SNode, String>() {
-      public Iterable<String> translate(SNode it) {
-        final String relativePath = BuildSourcePath__BehaviorDescriptor.getAntPath_id7ro1ZztyOh5.invoke(SLinkOperations.getTarget(it, LINKS.basePath$98j3), Context.defaultContext(_context));
-        return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.folders$JA5L)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode ifolder) {
-            return SEnumOperations.isMember(SPropertyOperations.getEnum(ifolder, PROPS.kind$ItBG), 0x48d5d03db92974f8L) || SEnumOperations.isMember(SPropertyOperations.getEnum(ifolder, PROPS.kind$ItBG), 0x48d5d03db92974f9L);
-          }
-        }).select(new ISelector<SNode, String>() {
-          public String select(SNode ifolder) {
-            return relativePath + "/" + SPropertyOperations.getString(ifolder, PROPS.relativePath$fLZ3);
-          }
-        });
-      }
+    Iterable<String> folders = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.sources$9b9b), CONCEPTS.BuildSource_JavaFiles$ZS)).select((it) -> (String) BuildSourcePath__BehaviorDescriptor.getAntPath_id7ro1ZztyOh5.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.resset$gVd3), LINKS.path$zL7z), Context.defaultContext(_context)));
+    folders = Sequence.fromIterable(folders).concat(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.sources$9b9b), CONCEPTS.BuildSource_JavaContentRoot$q4)).translate((it) -> {
+      final String relativePath = BuildSourcePath__BehaviorDescriptor.getAntPath_id7ro1ZztyOh5.invoke(SLinkOperations.getTarget(it, LINKS.basePath$98j3), Context.defaultContext(_context));
+      return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.folders$JA5L)).where((ifolder) -> SEnumOperations.isMember(SPropertyOperations.getEnum(ifolder, PROPS.kind$ItBG), 0x48d5d03db92974f8L) || SEnumOperations.isMember(SPropertyOperations.getEnum(ifolder, PROPS.kind$ItBG), 0x48d5d03db92974f9L)).select((ifolder) -> relativePath + "/" + SPropertyOperations.getString(ifolder, PROPS.relativePath$fLZ3));
     }));
     List<SNode> result = new ArrayList<SNode>();
     for (String fname : folders) {
@@ -1615,18 +1540,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return result;
   }
   public static Iterable<SNode> sourceNodesQuery_0_21(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(((SNode) _context.getVariable("var:javaOpts")), LINKS.resourceSelectors$RxsW)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildFileSelectorInAttribute$a3));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(((SNode) _context.getVariable("var:javaOpts")), LINKS.resourceSelectors$RxsW)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildFileSelectorInAttribute$a3)));
   }
   public static Iterable<SNode> sourceNodesQuery_0_22(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.folders$JA5L)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.kind$ItBG), 0x48d5d03db92974f8L) || SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.kind$ItBG), 0x48d5d03db92974f9L);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.folders$JA5L)).where((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.kind$ItBG), 0x48d5d03db92974f8L) || SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.kind$ItBG), 0x48d5d03db92974f9L));
   }
   public static Iterable<SNode> sourceNodesQuery_0_23(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.elements$fli0);
@@ -1635,21 +1552,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.selectors$hp_C), CONCEPTS.BuildFileSelectorInAttribute$a3);
   }
   public static Iterable<SNode> sourceNodesQuery_0_25(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.selectors$hp_C)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildFileSelectorInAttribute$a3));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.selectors$hp_C)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildFileSelectorInAttribute$a3)));
   }
   public static Iterable<SNode> sourceNodesQuery_0_26(final SourceSubstituteMacroNodesContext _context) {
     return SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.selectors$Ch2r), CONCEPTS.BuildFileSelectorInAttribute$a3);
   }
   public static Iterable<SNode> sourceNodesQuery_0_27(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.selectors$Ch2r)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildFileSelectorInAttribute$a3));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.selectors$Ch2r)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildFileSelectorInAttribute$a3)));
   }
   public static Iterable<SNode> sourceNodesQuery_0_28(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.parts$iDQo);
@@ -1725,21 +1634,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.selectors$LiDN), CONCEPTS.BuildFileSelectorInAttribute$a3);
   }
   public static Iterable<SNode> sourceNodesQuery_2_1(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.selectors$LiDN)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildFileSelectorInAttribute$a3));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.selectors$LiDN)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildFileSelectorInAttribute$a3)));
   }
   public static Iterable<SNode> sourceNodesQuery_2_2(final SourceSubstituteMacroNodesContext _context) {
     return SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.selectors$hp_C), CONCEPTS.BuildFileSelectorInAttribute$a3);
   }
   public static Iterable<SNode> sourceNodesQuery_2_3(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.selectors$hp_C)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildFileSelectorInAttribute$a3));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.selectors$hp_C)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildFileSelectorInAttribute$a3)));
   }
   public static Iterable<SNode> sourceNodesQuery_4_0(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.attrs$62ss);
@@ -1754,49 +1655,25 @@ public class QueriesGenerated extends QueryProviderBase {
     return new JavaExternalLibraryHelper(helper, ((SNode) _context.getVariable("library")), _context).artifacts();
   }
   public static Iterable<SNode> sourceNodesQuery_10_0(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parameters$xu7T)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_CopyHandler$W9);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parameters$xu7T)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_CopyHandler$W9));
   }
   public static Iterable<SNode> sourceNodesQuery_10_1(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parameters$xu7T)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_CopyHandler$W9);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parameters$xu7T)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_CopyHandler$W9));
   }
   public static Iterable<SNode> sourceNodesQuery_10_2(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parameters$WlG4)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_CopyHandler$W9);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parameters$WlG4)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_CopyHandler$W9));
   }
   public static Iterable<SNode> sourceNodesQuery_10_3(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parameters$WlG4)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_CopyHandler$W9));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parameters$WlG4)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_CopyHandler$W9)));
   }
   public static Iterable<SNode> sourceNodesQuery_10_4(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parameters$WlG4)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_CopyHandler$W9));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parameters$WlG4)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_CopyHandler$W9)));
   }
   public static Iterable<SNode> sourceNodesQuery_16_0(final SourceSubstituteMacroNodesContext _context) {
     return FileSetUtil.getExplicitFilemodeRoots(_context.getNode());
   }
   public static SNode weavingRule_ContextQuery_0_0(final WeavingMappingRuleContext _context) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getOutputNodeByInputNodeAndMappingLabel(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BuildProject$ae, false, false), "buildProjectToBwfProject"), LINKS.parts$$VTL), CONCEPTS.BwfTaskPart$sR)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.hasPointer(it, LINKS.task$ai78, new SNodePointer("r:0d66e868-9778-4307-b6f9-4795c00f662f(jetbrains.mps.build.workflow.preset.general)", "4701820937132277082"));
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getOutputNodeByInputNodeAndMappingLabel(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BuildProject$ae, false, false), "buildProjectToBwfProject"), LINKS.parts$$VTL), CONCEPTS.BwfTaskPart$sR)).findFirst((it) -> SLinkOperations.hasPointer(it, LINKS.task$ai78, new SNodePointer("r:0d66e868-9778-4307-b6f9-4795c00f662f(jetbrains.mps.build.workflow.preset.general)", "4701820937132277082")));
   }
   public static void mappingScript_CodeBlock_17(final MappingScriptContext _context) {
     for (SNode root : SModelOperations.roots(_context.getModel(), CONCEPTS.BuildProject$ae)) {
@@ -1853,11 +1730,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object varMacro_Value_0_8(final TemplateVarContext _context) {
     SNode options = SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$FDHw), LINKS.compileOptions$Eyr4);
     if (options == null) {
-      options = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(_context.getNode(), false), CONCEPTS.BuildSource_JavaOptions$D)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return isEmptyString(SPropertyOperations.getString(it, PROPS.optionsName$Rr_z));
-        }
-      });
+      options = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(_context.getNode(), false), CONCEPTS.BuildSource_JavaOptions$D)).findFirst((it) -> isEmptyString(SPropertyOperations.getString(it, PROPS.optionsName$Rr_z)));
     }
     return options;
   }
@@ -1882,11 +1755,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object varMacro_Value_1_4(final TemplateVarContext _context) {
     List<Tuples._2<SNode, String>> dependencies = new ProjectDependency(_context, _context.getNode()).collectDependencies().getDependencies();
-    return ListSequence.fromList(dependencies).select(new ISelector<Tuples._2<SNode, String>, SNode>() {
-      public SNode select(Tuples._2<SNode, String> it) {
-        return createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a914(it._1(), it._0());
-      }
-    }).toListSequence();
+    return ListSequence.fromList(dependencies).select((it) -> createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a914(it._1(), it._0())).toList();
   }
   public static Object varMacro_Value_1_5(final TemplateVarContext _context) {
     return new MacroHelper.MacroContext(_context.getNode(), _context).getMacros(_context.getNode());

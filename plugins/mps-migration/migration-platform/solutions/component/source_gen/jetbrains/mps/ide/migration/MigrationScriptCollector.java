@@ -23,9 +23,8 @@ import java.util.Collection;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Set;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/1520098040411268050", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
@@ -108,40 +107,28 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
       if (!(scriptPresent())) {
         // Can't be assert. Although we are not supposed to run when there AS without script instance,
         // we may face this scenario when refreshScriptInstances() after project migrations invalidated
-        return Sequence.fromIterable(Sequence.fromIterable(Collections.<ScriptApplied>emptyList())).toListSequence();
+        return Sequence.fromIterable(Sequence.fromIterable(Collections.<ScriptApplied>emptyList())).toList();
       }
       final MigrationScriptReference sr = scriptReference();
-      return Sequence.fromIterable(asLegacy()).where(new IWhereFilter<ScriptApplied>() {
-        public boolean accept(ScriptApplied sa) {
+      return Sequence.fromIterable(asLegacy()).where(new _FunctionTypes._return_P1_E0<Boolean, ScriptApplied>() {
+        public Boolean invoke(ScriptApplied sa) {
           final SModule moduleToMigrate = sa.getModule(repo);
 
           final int v = MigrationModuleUtil.getUsedLanguageVersion(moduleToMigrate, sr.getLanguage());
           if (v != sr.getFromVersion()) {
             return false;
           }
-          if (Sequence.fromIterable(((MigrationScript) myScript).executeAfter()).any(new IWhereFilter<MigrationScriptReference>() {
-            public boolean accept(MigrationScriptReference s) {
-              return needsToBeApplied(s, moduleToMigrate);
-            }
-          })) {
+          if (Sequence.fromIterable(((MigrationScript) myScript).executeAfter()).any((s) -> needsToBeApplied(s, moduleToMigrate))) {
             return false;
           }
 
           final Set<SModule> moduleDependencies = MigrationModuleUtil.getModuleDependencies(moduleToMigrate);
-          if (Sequence.fromIterable(((MigrationScript) myScript).requiresData()).any(new IWhereFilter<MigrationScriptReference>() {
-            public boolean accept(final MigrationScriptReference s) {
-              return SetSequence.fromSet(moduleDependencies).any(new IWhereFilter<SModule>() {
-                public boolean accept(SModule dep) {
-                  return needsToBeApplied(s, dep);
-                }
-              });
-            }
-          })) {
+          if (Sequence.fromIterable(((MigrationScript) myScript).requiresData()).any((final MigrationScriptReference s) -> SetSequence.fromSet(moduleDependencies).any((dep) -> needsToBeApplied(s, dep)))) {
             return false;
           }
           return true;
         }
-      }).toListSequence();
+      }).toList();
     }
 
     private static boolean needsToBeApplied(MigrationScriptReference ref, SModule m) {
@@ -155,8 +142,8 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
     @Override
     public void refreshScriptInstances(Project mpsProject) {
       myScript = MigrationScriptReference.resolve(mpsProject.getComponent(LanguageRegistry.class), scriptReference());
-      Sequence.fromIterable(asLegacy()).visitAll(new IVisitor<ScriptApplied>() {
-        public void visit(ScriptApplied it) {
+      Sequence.fromIterable(asLegacy()).visitAll(new _FunctionTypes._void_P1_E0<ScriptApplied>() {
+        public void invoke(ScriptApplied it) {
           it.updateScriptInstance(myScript);
         }
       });

@@ -70,7 +70,7 @@ public final class FileIcon__BehaviorDescriptor extends BaseBHDescriptor {
     ListSequence.fromList(res).addElement(FileIcon__BehaviorDescriptor.copyFile_id34SjXUxB1C6.invokeSpecial(__thisNode__, name + "@2x." + ext, outputDir, ((boolean) false)));
     ListSequence.fromList(res).addElement(FileIcon__BehaviorDescriptor.copyFile_id34SjXUxB1C6.invokeSpecial(__thisNode__, name + "@2x_dark." + ext, outputDir, ((boolean) false)));
     ListSequence.fromList(res).addElement(FileIcon__BehaviorDescriptor.copyFile_id34SjXUxB1C6.invokeSpecial(__thisNode__, name + "_dark." + ext, outputDir, ((boolean) false)));
-    return ListSequence.fromList(res).where(new NotNullWhereFilter<Tuples._2<IFile, byte[]>>()).toListSequence();
+    return ListSequence.fromList(res).where(new NotNullWhereFilter()).toList();
   }
   /*package*/ static Tuples._2<IFile, byte[]> copyFile_id34SjXUxB1C6(@NotNull SNode __thisNode__, String source, IFile outputDir, boolean mustExist) {
     IFile sourceFile;

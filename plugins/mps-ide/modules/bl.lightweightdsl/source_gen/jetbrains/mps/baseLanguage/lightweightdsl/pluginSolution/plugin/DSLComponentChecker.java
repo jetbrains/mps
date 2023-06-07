@@ -15,7 +15,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -25,11 +24,7 @@ public class DSLComponentChecker extends BaseEventProcessingEditorChecker {
   @Override
   public UpdateResult update(EditorComponent editorComponent, boolean b, boolean b1, Cancellable cancellable) {
     final Set<EditorMessage> messages = SetSequence.fromSet(new HashSet<EditorMessage>());
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(((SNode) editorComponent.getEditedNode()), CONCEPTS.MemberInstance$YT, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        messages.add(new DSLComponentMessage(it, DSLComponentChecker.this, "Go to declaration"));
-      }
-    });
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(((SNode) editorComponent.getEditedNode()), CONCEPTS.MemberInstance$YT, false, new SAbstractConcept[]{})).visitAll((it) -> messages.add(new DSLComponentMessage(it, DSLComponentChecker.this, "Go to declaration")));
     return new UpdateResult.Completed(true, messages);
   }
 

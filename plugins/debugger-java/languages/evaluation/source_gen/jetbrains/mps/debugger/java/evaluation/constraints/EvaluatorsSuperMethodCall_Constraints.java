@@ -25,7 +25,6 @@ import jetbrains.mps.debugger.java.evaluation.behavior.DebuggedType__BehaviorDes
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.scopes.Members;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import java.util.HashMap;
@@ -71,11 +70,7 @@ public class EvaluatorsSuperMethodCall_Constraints extends BaseConstraintsDescri
             SNode classifier = SLinkOperations.getTarget(DebuggedType__BehaviorDescriptor.getHighClassifierType_id3WhGjgvCHCA.invoke(SLinkOperations.getTarget(thisNode, LINKS.debuggedType$boAT)), LINKS.classifier$cxMr);
             SNode enclosingClass = SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$bK);
 
-            Iterable<SNode> methods = Sequence.fromIterable(Members.visibleInstanceMethods(ClassConcept__BehaviorDescriptor.getSuperclass_idi3H_lLu.invoke(enclosingClass), _context.getContextNode())).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return !((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(it)) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.ClassConcept$bK);
-              }
-            });
+            Iterable<SNode> methods = Sequence.fromIterable(Members.visibleInstanceMethods(ClassConcept__BehaviorDescriptor.getSuperclass_idi3H_lLu.invoke(enclosingClass), _context.getContextNode())).where((it) -> !((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(it)) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.ClassConcept$bK));
 
             return new NamedElementsScope(methods);
           }

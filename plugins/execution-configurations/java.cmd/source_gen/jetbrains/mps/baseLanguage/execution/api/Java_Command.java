@@ -11,7 +11,6 @@ import org.jetbrains.mps.openapi.project.Project;
 import jetbrains.mps.execution.api.commands.CommandPart;
 import com.intellij.execution.process.ProcessHandler;
 import com.intellij.execution.ExecutionException;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.execution.api.commands.ListCommandPart;
 import jetbrains.mps.execution.api.commands.ProcessHandlerBuilder;
 import jetbrains.mps.execution.api.commands.KeyValueCommandPart;
@@ -115,17 +114,15 @@ public class Java_Command {
   }
 
   public ProcessHandler createProcess(String className) throws ExecutionException {
-    return new Java_Command().setWorkingDirectory_File(myWorkingDirectory_File).setJrePath_String(myJrePath_String).setProgramParameter_String(myProgramParameter_String).setVirtualMachineParameter_String(myVirtualMachineParameter_String).setProject_Project(myProject_Project).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(className, ListSequence.fromList(myClassPath_ListString).select(new ISelector<String, File>() {
-      public File select(String it) {
-        if (it.startsWith("\"") && it.endsWith("\"")) {
-          return new File(it.substring(1, it.length() - 2));
-        }
-        return new File(it);
+    return new Java_Command().setWorkingDirectory_File(myWorkingDirectory_File).setJrePath_String(myJrePath_String).setProgramParameter_String(myProgramParameter_String).setVirtualMachineParameter_String(myVirtualMachineParameter_String).setProject_Project(myProject_Project).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(className, ListSequence.fromList(myClassPath_ListString).select((it) -> {
+      if (it.startsWith("\"") && it.endsWith("\"")) {
+        return new File(it.substring(1, it.length() - 2));
       }
-    }).toListSequence());
+      return new File(it);
+    }).toList());
   }
   public ProcessHandler createProcess(String className, List<File> classPath) throws ExecutionException {
-    return new Java_Command().setWorkingDirectory_File(myWorkingDirectory_File).setJrePath_String(myJrePath_String).setVirtualMachineParameter_ProcessBuilderCommandPart(new ListCommandPart(ListSequence.fromListAndArray(new ArrayList(), myVirtualMachineParameter_String))).setProject_Project(myProject_Project).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(new ListCommandPart(ListSequence.fromListAndArray(new ArrayList(), myProgramParameter_String)), className, classPath);
+    return new Java_Command().setWorkingDirectory_File(myWorkingDirectory_File).setJrePath_String(myJrePath_String).setVirtualMachineParameter_ProcessBuilderCommandPart(new ListCommandPart(ListSequence.fromListAndArray(new ArrayList<>(), myVirtualMachineParameter_String))).setProject_Project(myProject_Project).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(new ListCommandPart(ListSequence.fromListAndArray(new ArrayList<>(), myProgramParameter_String)), className, classPath);
   }
   public ProcessHandler createProcess(CommandPart programParameter, String className, List<File> classPath) throws ExecutionException {
     if ((className == null || className.length() == 0)) {
@@ -236,7 +233,7 @@ public class Java_Command {
     return 16384;
   }
   public static List<String> getClasspath(Iterable<SModule> modules) {
-    Set<String> classpath = JavaModuleOperations.collectExecuteClasspath(Sequence.fromIterable(modules).toListSequence().toGenericArray(SModule.class));
+    Set<String> classpath = JavaModuleOperations.collectExecuteClasspath(ListSequence.fromList(Sequence.fromIterable(modules).toList()).toGenericArray(SModule.class));
 
     return new ArrayList<String>(classpath);
   }

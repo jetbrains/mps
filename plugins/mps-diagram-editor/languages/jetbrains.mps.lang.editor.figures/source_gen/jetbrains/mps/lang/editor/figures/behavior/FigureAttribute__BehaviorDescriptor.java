@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -40,11 +39,7 @@ public final class FigureAttribute__BehaviorDescriptor extends BaseBHDescriptor 
     return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.ClassConcept$bK);
   }
   /*package*/ static Iterable<SNode> getPrameterAttributes_id4H19mAwT3wD(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(ClassConcept__BehaviorDescriptor.getAllSuperClassifiers_id4fAeKISQjDi.invoke(FigureAttribute__BehaviorDescriptor.getFigureClass_id4H19mAwT6pg.invoke(__thisNode__))).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SNodeOperations.getNodeDescendants(it, CONCEPTS.FigureParameterAttribute$tq, false, new SAbstractConcept[]{});
-      }
-    });
+    return ListSequence.fromList(ClassConcept__BehaviorDescriptor.getAllSuperClassifiers_id4fAeKISQjDi.invoke(FigureAttribute__BehaviorDescriptor.getFigureClass_id4H19mAwT6pg.invoke(__thisNode__))).translate((it) -> SNodeOperations.getNodeDescendants(it, CONCEPTS.FigureParameterAttribute$tq, false, new SAbstractConcept[]{}));
   }
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     return SPropertyOperations.getString(FigureAttribute__BehaviorDescriptor.getFigureClass_id4H19mAwT6pg.invoke(__thisNode__), PROPS.name$MnvL);

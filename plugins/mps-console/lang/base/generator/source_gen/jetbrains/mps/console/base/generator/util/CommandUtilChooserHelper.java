@@ -8,18 +8,13 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.TemplateQueryContext;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 
 public class CommandUtilChooserHelper {
 
   private static <T> T getKindPropertyOrShowError(_FunctionTypes._return_P1_E0<? extends T, ? super ShowingKind> kindProperty, SNode nodeWithType, TemplateQueryContext gencontext) {
     ShowingKind kind = ShowingKind.getKind(TypecheckingFacade.getFromContext().getTypeOf(nodeWithType));
     if (kind == null) {
-      gencontext.showErrorMessage(nodeWithType, "#show is applicable only to sequences of " + Sequence.fromIterable(Sequence.fromArray(ShowingKind.values())).select(new ISelector<ShowingKind, String>() {
-        public String select(ShowingKind it) {
-          return it.getKindLabel();
-        }
-      }));
+      gencontext.showErrorMessage(nodeWithType, "#show is applicable only to sequences of " + Sequence.fromIterable(Sequence.fromArray(ShowingKind.values())).select((it) -> it.getKindLabel()));
       return null;
     } else {
       return kindProperty.invoke(kind);

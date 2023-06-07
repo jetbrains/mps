@@ -55,7 +55,7 @@ public class Typesystem_TabDescriptor extends RelationDescriptor {
   }
   public List<SNode> getNodes(SNode node) {
     List<SNode> rules = GoToRulesHelper.getRules(node, true);
-    return ListSequence.fromList(rules).sort((SNode a, SNode b) -> {
+    return ListSequence.fromList(rules).sort((a, b) -> {
       boolean aConceptRef = SNodeOperations.isInstanceOf(SLinkOperations.getTarget(a, LINKS.applicableNode$Ro4C), CONCEPTS.ConceptReference$14);
       boolean bConceptRef = SNodeOperations.isInstanceOf(SLinkOperations.getTarget(b, LINKS.applicableNode$Ro4C), CONCEPTS.ConceptReference$14);
 
@@ -80,7 +80,7 @@ public class Typesystem_TabDescriptor extends RelationDescriptor {
       }
 
       return 0;
-    }, false).toListSequence();
+    }, false).toList();
   }
   public boolean isSingle() {
     return false;

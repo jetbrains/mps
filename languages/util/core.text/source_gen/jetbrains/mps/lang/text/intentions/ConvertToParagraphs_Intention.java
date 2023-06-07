@@ -14,7 +14,6 @@ import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -61,22 +60,20 @@ public final class ConvertToParagraphs_Intention extends AbstractIntentionDescri
 
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.lines$U$m7)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNode p = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph"));
-          if (SNodeOperations.isInstanceOf(it, CONCEPTS.BulletLine$ef)) {
-            SNode b = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b6ef400337260c3L, "jetbrains.mps.lang.text.structure.BulletPoint"));
-            SPropertyOperations.assign(b, PROPS.indentation$8ZOp, SPropertyOperations.getInteger(SNodeOperations.as(it, CONCEPTS.BulletLine$ef), PROPS.indentation$8ZOp));
-            p = b;
-          } else if (SNodeOperations.isInstanceOf(it, CONCEPTS.NumberedLine$k0)) {
-            SNode n = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x5d9ea196218822ebL, "jetbrains.mps.lang.text.structure.NumberedPoint"));
-            SPropertyOperations.assign(n, PROPS.indentation$8ZOp, SPropertyOperations.getInteger(SNodeOperations.as(it, CONCEPTS.NumberedLine$k0), PROPS.indentation$8ZOp));
-            p = n;
-          }
-          ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.paragraphs$ZAOz)).addElement(p);
-          SNodeOperations.deleteNode(it);
-          Paragraph__BehaviorDescriptor.initializeFromLine_id6n6K0Pj71DU.invoke(p, it);
+      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.lines$U$m7)).visitAll((it) -> {
+        SNode p = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph"));
+        if (SNodeOperations.isInstanceOf(it, CONCEPTS.BulletLine$ef)) {
+          SNode b = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b6ef400337260c3L, "jetbrains.mps.lang.text.structure.BulletPoint"));
+          SPropertyOperations.assign(b, PROPS.indentation$8ZOp, SPropertyOperations.getInteger(SNodeOperations.as(it, CONCEPTS.BulletLine$ef), PROPS.indentation$8ZOp));
+          p = b;
+        } else if (SNodeOperations.isInstanceOf(it, CONCEPTS.NumberedLine$k0)) {
+          SNode n = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x5d9ea196218822ebL, "jetbrains.mps.lang.text.structure.NumberedPoint"));
+          SPropertyOperations.assign(n, PROPS.indentation$8ZOp, SPropertyOperations.getInteger(SNodeOperations.as(it, CONCEPTS.NumberedLine$k0), PROPS.indentation$8ZOp));
+          p = n;
         }
+        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.paragraphs$ZAOz)).addElement(p);
+        SNodeOperations.deleteNode(it);
+        Paragraph__BehaviorDescriptor.initializeFromLine_id6n6K0Pj71DU.invoke(p, it);
       });
       SLinkOperations.addNewChild(node, LINKS.lines$U$m7, CONCEPTS.Line$yC);
       SelectionUtil.selectCell(editorContext, ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.paragraphs$ZAOz)).first(), SelectionManager.FIRST_CELL);

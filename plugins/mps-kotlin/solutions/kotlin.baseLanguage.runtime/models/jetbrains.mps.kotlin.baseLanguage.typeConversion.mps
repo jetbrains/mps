@@ -4,7 +4,7 @@
   <attribute name="doNotGenerate" value="false" />
   <languages>
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
     <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
@@ -204,6 +204,7 @@
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -306,7 +307,6 @@
       <concept id="1153944233411" name="jetbrains.mps.baseLanguage.collections.structure.ForEachVariableReference" flags="nn" index="2GrUjf">
         <reference id="1153944258490" name="variable" index="2Gs0qQ" />
       </concept>
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1202128969694" name="jetbrains.mps.baseLanguage.collections.structure.SelectOperation" flags="nn" index="3$u5V9" />
       <concept id="31378964227347002" name="jetbrains.mps.baseLanguage.collections.structure.SelectNotNullOperation" flags="ng" index="1KnU$U" />
     </language>
@@ -1142,7 +1142,7 @@
                       <node concept="3clFbF" id="77yS8CrY4$z" role="3cqZAp">
                         <node concept="2OqwBi" id="77yS8CrY4$$" role="3clFbG">
                           <node concept="37vLTw" id="77yS8CrY4$_" role="2Oq$k0">
-                            <ref role="3cqZAo" node="77yS8CrY4$C" resolve="it" />
+                            <ref role="3cqZAo" node="5W7E4fV0Xus" />
                           </node>
                           <node concept="liA8E" id="77yS8CrY4$A" role="2OqNvi">
                             <ref role="37wK5l" node="4mCQDm_nsqr" resolve="convert" />
@@ -1153,9 +1153,9 @@
                         </node>
                       </node>
                     </node>
-                    <node concept="Rh6nW" id="77yS8CrY4$C" role="1bW2Oz">
+                    <node concept="gl6BB" id="5W7E4fV0Xus" role="1bW2Oz">
                       <property role="TrG5h" value="it" />
-                      <node concept="2jxLKc" id="77yS8CrY4$D" role="1tU5fm" />
+                      <node concept="2jxLKc" id="5W7E4fV0Xut" role="1tU5fm" />
                     </node>
                   </node>
                 </node>

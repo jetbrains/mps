@@ -16,7 +16,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
@@ -68,11 +67,7 @@ public abstract class ModelTreeBuilder implements TreeExpansionListener {
     return new ModelTreeNode(folderName, IdeIcons.CLOSED_FOLDER, IdeIcons.OPENED_FOLDER);
   }
   public static Iterable<SNode> sortChildNodes(Iterable<SNode> nodes) {
-    return Sequence.fromIterable(nodes).sort(new ISelector<SNode, String>() {
-      public String select(SNode node) {
-        return SPropertyOperations.getString(node, PROPS.virtualPackage$EkXl) + "|" + ((String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getPresentation", 1213877396640L, 0x553941aeb020c32eL)));
-      }
-    }, true);
+    return Sequence.fromIterable(nodes).sort((node) -> SPropertyOperations.getString(node, PROPS.virtualPackage$EkXl) + "|" + ((String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getPresentation", 1213877396640L, 0x553941aeb020c32eL))), true);
   }
   public static void insertChildSNodeTreeNode(ModelTreeNode sModelTreeNode, ModelTreeNode sNodeTreeNode, String virtualPackage) {
     ModelTreeNode parentTreeNode = sModelTreeNode;

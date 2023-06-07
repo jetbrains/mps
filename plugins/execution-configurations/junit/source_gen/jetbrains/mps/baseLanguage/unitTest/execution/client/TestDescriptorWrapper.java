@@ -31,7 +31,7 @@ public class TestDescriptorWrapper implements ITestNodeWrapper<SNode> {
     myTestCase = container;
     if (testDescriptor.isContainer()) {
       final TestDescriptorWrapper thisTestCase = this;
-      myTestMethods = testDescriptor.getTests().stream().<ITestNodeWrapper<SNode>>map((TestDescriptor td) -> new TestDescriptorWrapper(td, thisTestCase)).toList();
+      myTestMethods = testDescriptor.getTests().stream().<ITestNodeWrapper<SNode>>map((td) -> new TestDescriptorWrapper(td, thisTestCase)).toList();
 
     } else {
       myTestMethods = Collections.emptyList();

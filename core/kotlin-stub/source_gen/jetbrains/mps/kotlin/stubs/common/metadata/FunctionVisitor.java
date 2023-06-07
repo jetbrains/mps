@@ -22,8 +22,6 @@ import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import kotlinx.metadata.internal.metadata.deserialization.Flags;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -51,7 +49,7 @@ public class FunctionVisitor extends KmFunctionVisitor {
     // Could have same fq name as parameter but should not happen as forbidden in the language
     context.setChildId(param, name);
 
-    return TypeParameterVisitor.create(param, name, id, flags, variance, context, (Iterable<SNode> constraints, String desc) -> {
+    return TypeParameterVisitor.create(param, name, id, flags, variance, context, (constraints, desc) -> {
       functionId.addTypeParameter(desc);
 
       // Excess parameters bounds as constraints
@@ -72,7 +70,7 @@ public class FunctionVisitor extends KmFunctionVisitor {
   @Override
   public KmValueParameterVisitor visitValueParameter(int flags, @NotNull String name) {
     SNode param = SLinkOperations.addNewChild(node, LINKS.parameters$dfEr, null);
-    return ParameterVisitor.create(param, context, flags, (String argumentId) -> functionId.addArgument(argumentId), name);
+    return ParameterVisitor.create(param, context, flags, (argumentId) -> functionId.addArgument(argumentId), name);
   }
 
   @Nullable
@@ -98,11 +96,7 @@ public class FunctionVisitor extends KmFunctionVisitor {
     SPropertyOperations.assign(func, PROPS.name$MnvL, name);
     SLinkOperations.setTarget(func, LINKS.visibility$vnSV, SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(EnumFlags.getVisibility(Flags.VISIBILITY.get(flags)))));
     SLinkOperations.setTarget(func, LINKS.inheritance$TFvr, SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(EnumFlags.getModality(Flags.MODALITY.get(flags)))));
-    Sequence.fromIterable(EnumFlags.getFunctionModifiers(flags)).visitAll(new IVisitor<SAbstractConcept>() {
-      public void visit(SAbstractConcept it) {
-        ListSequence.fromList(SLinkOperations.getChildren(func, LINKS.modifiers$XKtM)).addElement(SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(it)));
-      }
-    });
+    Sequence.fromIterable(EnumFlags.getFunctionModifiers(flags)).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(func, LINKS.modifiers$XKtM)).addElement(SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(it))));
     return new FunctionVisitor(func, receiverName, ctx);
   }
 

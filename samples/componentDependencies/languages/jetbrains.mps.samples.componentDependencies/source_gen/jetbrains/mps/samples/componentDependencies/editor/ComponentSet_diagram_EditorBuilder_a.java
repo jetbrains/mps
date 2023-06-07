@@ -34,7 +34,6 @@ import java.util.HashSet;
 import java.util.ListIterator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.jetpad.projectional.diagram.view.ConnectionRoutingView;
 import jetbrains.jetpad.projectional.diagram.layout.OrthogonalRouter;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -174,11 +173,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
       Set<SNode> existingConnectors = new HashSet<SNode>(myConnectors);
       ListIterator<SNode> connectorsIterator = myConnectors.listIterator();
       syncDiagramElements(SLinkOperations.getChildren(getSNode(), LINKS.component$l$9M), blocksIterator, existingBlocks, connectorsIterator, existingConnectors);
-      syncDiagramElements(ListSequence.fromList(SLinkOperations.getChildren(getSNode(), LINKS.component$l$9M)).translate(new ITranslator2<SNode, SNode>() {
-        public Iterable<SNode> translate(SNode it) {
-          return SLinkOperations.getChildren(it, LINKS.dep$WgPG);
-        }
-      }), blocksIterator, existingBlocks, connectorsIterator, existingConnectors);
+      syncDiagramElements(ListSequence.fromList(SLinkOperations.getChildren(getSNode(), LINKS.component$l$9M)).translate((it) -> SLinkOperations.getChildren(it, LINKS.dep$WgPG)), blocksIterator, existingBlocks, connectorsIterator, existingConnectors);
       purgeTailNodes(blocksIterator);
       purgeTailNodes(connectorsIterator);
     }

@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -32,11 +31,7 @@ public final class ITypeArguments__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Iterable<SNode> getTypeProjections_idFn6l2JqIEF(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.typeArguments$86s6)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return (SNode) IType__BehaviorDescriptor.asInvariantProjection_id2gj5XQXIqKf.invoke(it);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.typeArguments$86s6)).select((it) -> (SNode) IType__BehaviorDescriptor.asInvariantProjection_id2gj5XQXIqKf.invoke(it));
   }
 
   /*package*/ ITypeArguments__BehaviorDescriptor() {

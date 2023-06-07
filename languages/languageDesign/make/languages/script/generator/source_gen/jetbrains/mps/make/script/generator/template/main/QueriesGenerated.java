@@ -18,7 +18,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.generator.template.IfMacroContext;
 import java.util.List;
@@ -176,16 +176,12 @@ public class QueriesGenerated extends QueryProviderBase {
     final SNode ipacls = SLinkOperations.getTarget(_quotation_createNode_x583g4_a0a0a83(), LINKS.classifier$cxMr);
     final SNode jobcls = SLinkOperations.getTarget(_quotation_createNode_x583g4_a0a1a83(), LINKS.classifier$cxMr);
     final SNode cfgcls = SLinkOperations.getTarget(_quotation_createNode_x583g4_a0a2a83(), LINKS.classifier$cxMr);
-    SNode imd = ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.InstanceMethodDeclaration$39, false)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode imd) {
+    SNode imd = ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.InstanceMethodDeclaration$39, false)).findFirst(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      public Boolean invoke(SNode imd) {
         return (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(imd), CONCEPTS.AnonymousClass$Bt), LINKS.classifier$q_Y$), jobcls) || (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(imd), CONCEPTS.AnonymousClass$Bt), LINKS.classifier$q_Y$), cfgcls);
       }
     });
-    return (imd != null ? ListSequence.fromList(SLinkOperations.getChildren(imd, LINKS.parameter$5xBj)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode p) {
-        return ipacls == SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(p, LINKS.type$a1UY), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr);
-      }
-    }) : null);
+    return (imd != null ? ListSequence.fromList(SLinkOperations.getChildren(imd, LINKS.parameter$5xBj)).findFirst((p) -> ipacls == SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(p, LINKS.type$a1UY), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr)) : null);
   }
   public static Object referenceMacro_GetReferent_0_17(final ReferenceMacroContext _context) {
     SNode ancestorJob = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.JobDefinition$Sj, false, false);

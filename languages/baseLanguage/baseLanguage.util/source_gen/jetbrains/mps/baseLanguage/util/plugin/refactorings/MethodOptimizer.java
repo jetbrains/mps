@@ -8,7 +8,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -30,18 +30,18 @@ public class MethodOptimizer {
     }
   }
   public static void removeUnusedDeclarations(SNode body) {
-    List<SNode> references = ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
+    List<SNode> references = ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      public Boolean invoke(SNode it) {
         return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41);
       }
-    }).toListSequence();
+    }).toList();
     for (SNode declaration : ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.LocalVariableDeclaration$41, false, new SAbstractConcept[]{}))) {
       removeUnusedDeclaration(references, declaration);
     }
   }
   public static void removeUnusedDeclaration(List<SNode> references, final SNode declaration) {
-    if (ListSequence.fromList(references).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
+    if (ListSequence.fromList(references).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      public Boolean invoke(SNode it) {
         return SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == declaration;
       }
     }).isEmpty() && SNodeOperations.isInstanceOf(SNodeOperations.getParent(declaration), CONCEPTS.LocalVariableDeclarationStatement$4w)) {
@@ -67,11 +67,11 @@ public class MethodOptimizer {
             SNodeOperations.deleteNode(beforeLastStatement);
 
             if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41)) {
-              removeUnusedDeclaration(ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-                public boolean accept(SNode it) {
+              removeUnusedDeclaration(ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+                public Boolean invoke(SNode it) {
                   return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41);
                 }
-              }).toListSequence(), SNodeOperations.cast(SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41));
+              }).toList(), SNodeOperations.cast(SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41));
 
             }
 

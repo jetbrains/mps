@@ -19,7 +19,6 @@ import jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ConnectorDecorator
 import jetbrains.jetpad.projectional.view.View;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.nodeEditor.cells.jetpad.JetpadUtils;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.CrossView;
 
 @MPSLaunch
@@ -54,11 +53,7 @@ public class LinkDecoratorTest_Test extends BaseTransformationTest {
       Assert.assertTrue(descendantMapper.getTarget() instanceof ConnectorDecoratorView);
       ConnectorDecoratorView connectorDecoratorView = (ConnectorDecoratorView) descendantMapper.getTarget();
       Assert.assertTrue(connectorDecoratorView.hasError.get());
-      View cross = Sequence.fromIterable(JetpadUtils.getAllChildren(connectorDecoratorView)).findFirst(new IWhereFilter<View>() {
-        public boolean accept(View it) {
-          return it instanceof CrossView;
-        }
-      });
+      View cross = Sequence.fromIterable(JetpadUtils.getAllChildren(connectorDecoratorView)).findFirst((it) -> it instanceof CrossView);
       Assert.assertTrue(cross != null);
       Assert.assertTrue(cross.visible().get());
 

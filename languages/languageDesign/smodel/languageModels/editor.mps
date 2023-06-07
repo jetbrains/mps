@@ -555,6 +555,7 @@
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -738,7 +739,6 @@
         <child id="1237721435808" name="initValue" index="HW$Y0" />
         <child id="1237721435807" name="elementType" index="HW$YZ" />
       </concept>
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1160600644654" name="jetbrains.mps.baseLanguage.collections.structure.ListCreatorWithInit" flags="nn" index="Tc6Ow" />
       <concept id="1160612413312" name="jetbrains.mps.baseLanguage.collections.structure.AddElementOperation" flags="nn" index="TSZUe" />
       <concept id="4611582986551314327" name="jetbrains.mps.baseLanguage.collections.structure.OfTypeOperation" flags="nn" index="UnYns">
@@ -10549,7 +10549,7 @@
                     <node concept="3clFbF" id="78qQRpbgbKK" role="3cqZAp">
                       <node concept="2OqwBi" id="78qQRpbgcJh" role="3clFbG">
                         <node concept="37vLTw" id="78qQRpbgbKJ" role="2Oq$k0">
-                          <ref role="3cqZAo" node="78qQRpbg9TO" resolve="it" />
+                          <ref role="3cqZAo" node="5W7E4fV0WrY" />
                         </node>
                         <node concept="liA8E" id="78qQRpbgdQj" role="2OqNvi">
                           <ref role="37wK5l" to="z1c3:~AbstractModule.getModuleReference()" resolve="getModuleReference" />
@@ -10557,9 +10557,9 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="Rh6nW" id="78qQRpbg9TO" role="1bW2Oz">
+                  <node concept="gl6BB" id="5W7E4fV0WrY" role="1bW2Oz">
                     <property role="TrG5h" value="it" />
-                    <node concept="2jxLKc" id="78qQRpbg9TP" role="1tU5fm" />
+                    <node concept="2jxLKc" id="5W7E4fV0WrZ" role="1tU5fm" />
                   </node>
                 </node>
               </node>

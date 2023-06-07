@@ -23,7 +23,7 @@ public class HidingBySignatureScope extends CompositeSignatureScope {
   }
 
   public static SignatureScope of(Iterable<SignatureScope> scopes) {
-    List<SignatureScope> list = Sequence.fromIterable(scopes).where(new NotNullWhereFilter<SignatureScope>()).toListSequence();
+    List<SignatureScope> list = Sequence.fromIterable(scopes).where(new NotNullWhereFilter()).toList();
     if (ListSequence.fromList(list).isEmpty()) {
       return null;
     } else {

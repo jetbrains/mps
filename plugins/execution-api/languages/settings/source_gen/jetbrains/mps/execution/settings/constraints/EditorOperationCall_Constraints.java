@@ -24,7 +24,6 @@ import java.util.Collections;
 import java.util.List;
 import jetbrains.mps.execution.settings.behavior.SettingsEditor__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.execution.settings.behavior.EditorOperationDeclaration__BehaviorDescriptor;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -55,11 +54,7 @@ public class EditorOperationCall_Constraints extends BaseConstraintsDescriptor {
               return ListScope.forResolvableElements(Sequence.fromIterable(Collections.<SNode>emptyList()));
             }
             List<SNode> operations = SettingsEditor__BehaviorDescriptor.getDeclaredOperations_idO$iR4J$gbn.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(editorType, LINKS.configuration$1ugl), LINKS.editor$QMzP));
-            return ListScope.forResolvableElements(ListSequence.fromList(operations).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return ((SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.SettingsEditor$nO, false, false) != null) ? (EditorOperationDeclaration__BehaviorDescriptor.getJavaMethod_idO$iR4J$gaJ.invoke(it) != null) : (EditorOperationDeclaration__BehaviorDescriptor.getPublicJavaMethod_idbkrofm9Fgz.invoke(it) != null));
-              }
-            }));
+            return ListScope.forResolvableElements(ListSequence.fromList(operations).where((it) -> ((SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.SettingsEditor$nO, false, false) != null) ? (EditorOperationDeclaration__BehaviorDescriptor.getJavaMethod_idO$iR4J$gaJ.invoke(it) != null) : (EditorOperationDeclaration__BehaviorDescriptor.getPublicJavaMethod_idbkrofm9Fgz.invoke(it) != null))));
           }
         };
       }

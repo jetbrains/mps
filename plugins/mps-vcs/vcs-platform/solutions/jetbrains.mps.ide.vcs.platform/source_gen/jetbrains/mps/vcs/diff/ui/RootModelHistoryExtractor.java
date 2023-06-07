@@ -20,7 +20,6 @@ import jetbrains.mps.vcs.history.CommitsGraph;
 import jetbrains.mps.vcs.history.RootCommitsGraphTraverser;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 import org.jetbrains.annotations.Nullable;
@@ -86,11 +85,7 @@ import jetbrains.mps.vcs.diff.ChangeSetBuilder;
       if (node == null) {
         return Collections.emptyList();
       }
-      return ListSequence.fromList(node.getParents()).select(new ISelector<CommitsGraphNode, VcsFileRevision>() {
-        public VcsFileRevision select(CommitsGraphNode it) {
-          return it.getRevision();
-        }
-      }).toListSequence();
+      return ListSequence.fromList(node.getParents()).select((it) -> it.getRevision()).toList();
     }
   }
 

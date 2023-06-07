@@ -14,7 +14,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 
 public class TypeConverterEngine<S extends SNode, R extends SNode> {
@@ -107,11 +106,7 @@ public class TypeConverterEngine<S extends SNode, R extends SNode> {
 
   public static <I extends SNode, O extends SNode> O convertFromList(final I input, Iterable<TypeConverterEngine<I, O>> converters) {
     // Try all converters
-    Iterable<ConversionResult<O>> results = Sequence.fromIterable(converters).select(new ISelector<TypeConverterEngine<I, O>, ConversionResult<O>>() {
-      public ConversionResult<O> select(TypeConverterEngine<I, O> it) {
-        return it.convert(input);
-      }
-    }).where(new NotNullWhereFilter<ConversionResult<O>>());
+    Iterable<ConversionResult<O>> results = Sequence.fromIterable(converters).select((it) -> it.convert(input)).where(new NotNullWhereFilter());
 
     // Select the fittest result (closest concept or if same higher priority)
     ConversionResult<O> result = null;

@@ -16,7 +16,6 @@ import jetbrains.mps.baseLanguage.behavior.IBLDeprecatable__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.core.behavior.IDeprecatable__BehaviorDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -59,11 +58,7 @@ public final class AddDeprecatedBlockDocTag_Intention extends AbstractIntentionD
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       IBLDeprecatable__BehaviorDescriptor.markDeprecated_id6Va_BJexupi.invoke(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.IBLDeprecatable$ah));
-      editorContext.selectWRTFocusPolicy(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tags$stUD)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.DeprecatedBlockDocTag$8n);
-        }
-      }).first());
+      editorContext.selectWRTFocusPolicy(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tags$stUD)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.DeprecatedBlockDocTag$8n)).first());
     }
 
     @Override

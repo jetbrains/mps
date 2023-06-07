@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -36,11 +35,7 @@ public final class MultiLambdaParameter__BehaviorDescriptor extends BaseBHDescri
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return "(" + IterableUtils.join(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.variables$EO9Z)).select(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SNodeOperations.present(it);
-      }
-    }), ", ") + ")";
+    return "(" + IterableUtils.join(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.variables$EO9Z)).select((it) -> SNodeOperations.present(it)), ", ") + ")";
   }
   /*package*/ static Iterable<SNode> getVariables_id1xjvXvOr9B8(@NotNull SNode __thisNode__) {
     return SLinkOperations.getChildren(__thisNode__, LINKS.variables$EO9Z);

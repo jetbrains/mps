@@ -19,7 +19,6 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -55,11 +54,7 @@ public final class ModuleSuite__BehaviorDescriptor extends BaseBHDescriptor {
     return moduleReference.resolve(SNodeOperations.getModel(__thisNode__).getRepository());
   }
   /*package*/ static Iterable<SNode> getNotMutedTests_id7tF7F0nXrAX(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.testRef$R3jf)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SPropertyOperations.getBoolean(it, PROPS.muted$5$LF));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.testRef$R3jf)).where((it) -> !(SPropertyOperations.getBoolean(it, PROPS.muted$5$LF)));
   }
 
   /*package*/ ModuleSuite__BehaviorDescriptor() {

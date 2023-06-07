@@ -4,7 +4,7 @@
   <languages>
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="0" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
   </languages>
@@ -158,6 +158,7 @@
       <concept id="4079382982702596667" name="jetbrains.mps.baseLanguage.checkedDots.structure.CheckedDotExpression" flags="nn" index="2EnYce" />
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -195,7 +196,6 @@
         <reference id="1153944258490" name="variable" index="2Gs0qQ" />
       </concept>
       <concept id="1235566831861" name="jetbrains.mps.baseLanguage.collections.structure.AllOperation" flags="nn" index="2HxqBE" />
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1165525191778" name="jetbrains.mps.baseLanguage.collections.structure.GetFirstOperation" flags="nn" index="1uHKPH" />
       <concept id="1202128969694" name="jetbrains.mps.baseLanguage.collections.structure.SelectOperation" flags="nn" index="3$u5V9" />
     </language>
@@ -281,7 +281,7 @@
                             <node concept="liA8E" id="6U5aI53c27b" role="2OqNvi">
                               <ref role="37wK5l" to="lcr:2n7wcdLaAWi" resolve="getStatus" />
                               <node concept="37vLTw" id="2BHiRxgm7Cy" role="37wK5m">
-                                <ref role="3cqZAo" node="4C2otrAbWfc" resolve="np" />
+                                <ref role="3cqZAo" node="5W7E4fV0X_e" />
                               </node>
                             </node>
                             <node concept="2YIFZM" id="3bmhQqpJ26k" role="2Oq$k0">
@@ -312,9 +312,9 @@
                         </node>
                       </node>
                     </node>
-                    <node concept="Rh6nW" id="4C2otrAbWfc" role="1bW2Oz">
+                    <node concept="gl6BB" id="5W7E4fV0X_e" role="1bW2Oz">
                       <property role="TrG5h" value="np" />
-                      <node concept="2jxLKc" id="4C2otrAbWfd" role="1tU5fm" />
+                      <node concept="2jxLKc" id="5W7E4fV0X_f" role="1tU5fm" />
                     </node>
                   </node>
                 </node>
@@ -355,14 +355,14 @@
                         <node concept="1uHKPH" id="4C2otrAbWfF" role="2OqNvi" />
                       </node>
                       <node concept="37vLTw" id="2BHiRxgm9Ag" role="3uHU7B">
-                        <ref role="3cqZAo" node="4C2otrAbWft" resolve="s" />
+                        <ref role="3cqZAo" node="5W7E4fV0X_g" />
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="Rh6nW" id="4C2otrAbWft" role="1bW2Oz">
+                <node concept="gl6BB" id="5W7E4fV0X_g" role="1bW2Oz">
                   <property role="TrG5h" value="s" />
-                  <node concept="2jxLKc" id="4C2otrAbWfu" role="1tU5fm" />
+                  <node concept="2jxLKc" id="5W7E4fV0X_h" role="1tU5fm" />
                 </node>
               </node>
             </node>

@@ -23,11 +23,7 @@ public class TryUniversalStatement_DataFlow extends DataFlowBuilder {
         _context.getBuilder().emitIfJump(_context.getBuilder().before(c), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/5252852921988984471");
       }
       if ((SLinkOperations.getTarget(_context.getNode(), LINKS.finallyClause$KUl) != null)) {
-        _context.getBuilder().emitMayBeUnreachable(new Runnable() {
-          public void run() {
-            _context.getBuilder().emitIfJump(_context.getBuilder().label(_context.getNode(), "exit"), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/8970362107895603566");
-          }
-        });
+        _context.getBuilder().emitMayBeUnreachable(() -> _context.getBuilder().emitIfJump(_context.getBuilder().label(_context.getNode(), "exit"), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/8970362107895603566"));
       }
       _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.body$KFk));
       for (final Instruction instruction : _context.getBuilder().getInstructionsFor(SLinkOperations.getTarget(_context.getNode(), LINKS.body$KFk))) {
@@ -35,32 +31,16 @@ public class TryUniversalStatement_DataFlow extends DataFlowBuilder {
           continue;
         }
         for (final SNode catchClause : DataFlowTryCatchUtil.getPossibleCatches((SNode) InstructionUtil.getSource(instruction), SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$Q4F))) {
-          _context.getBuilder().emitMayBeUnreachable(new Runnable() {
-            public void run() {
-              _context.getBuilder().emitIfJump(_context.getBuilder().before(catchClause), _context.getBuilder().insertAfter(instruction), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/5252852921988984504");
-            }
-          });
+          _context.getBuilder().emitMayBeUnreachable(() -> _context.getBuilder().emitIfJump(_context.getBuilder().before(catchClause), _context.getBuilder().insertAfter(instruction), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/5252852921988984504"));
         }
       }
-      _context.getBuilder().emitMayBeUnreachable(new Runnable() {
-        public void run() {
-          _context.getBuilder().emitJump(_context.getBuilder().label(_context.getNode(), "afterCatches"), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/5252852921988984523");
-        }
-      });
+      _context.getBuilder().emitMayBeUnreachable(() -> _context.getBuilder().emitJump(_context.getBuilder().label(_context.getNode(), "afterCatches"), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/5252852921988984523"));
       for (SNode c : SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$Q4F)) {
         _context.getBuilder().build((SNode) c);
-        _context.getBuilder().emitMayBeUnreachable(new Runnable() {
-          public void run() {
-            _context.getBuilder().emitJump(_context.getBuilder().label(_context.getNode(), "afterCatches"), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/5252852921988984530");
-          }
-        });
+        _context.getBuilder().emitMayBeUnreachable(() -> _context.getBuilder().emitJump(_context.getBuilder().label(_context.getNode(), "afterCatches"), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/5252852921988984530"));
       }
       _context.getBuilder().emitLabel("exit");
-      _context.getBuilder().emitMayBeUnreachable(new Runnable() {
-        public void run() {
-          _context.getBuilder().emitRet("r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/8970362107909540179");
-        }
-      });
+      _context.getBuilder().emitMayBeUnreachable(() -> _context.getBuilder().emitRet("r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/8970362107909540179"));
       _context.getBuilder().emitLabel("afterCatches");
     };
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.finallyClause$KUl) != null)) {

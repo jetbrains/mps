@@ -14,15 +14,12 @@ import java.util.Collections;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
@@ -32,6 +29,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.nodeEditor.messageTargets.CellFinder;
 import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
@@ -83,11 +81,7 @@ public final class EditorCellMessageUtil {
         Collections.emptyList();
       }
       final int firstCellY = ListSequence.fromList(leafCells).first().getY();
-      return ListSequence.fromList(leafCells).where(new IWhereFilter<EditorCell>() {
-        public boolean accept(EditorCell it) {
-          return it.getY() == firstCellY;
-        }
-      }).toListSequence();
+      return ListSequence.fromList(leafCells).where((it) -> it.getY() == firstCellY).toList();
     } else {
       EditorCell cell = getCellInBothWays((jetbrains.mps.nodeEditor.EditorComponent) editor, messageTarget, node);
       if (cell == null) {
@@ -100,11 +94,7 @@ public final class EditorCellMessageUtil {
       final Wrappers._T<Iterable<SNode>> descendants = new Wrappers._T<Iterable<SNode>>();
       new ModelAccessHelper(editor.getEditorContext().getRepository()).runReadAction(() -> descendants.value = SNodeOperations.getNodeDescendants(node, null, true, new SAbstractConcept[]{}));
       List<EditorCell> attributeCells = ListSequence.fromList(new ArrayList<EditorCell>());
-      findAttributeCells(node, Sequence.fromIterable(descendants.value).select(new ISelector<SNode, SNodeId>() {
-        public SNodeId select(SNode it) {
-          return it.getNodeId();
-        }
-      }), cell, attributeCells);
+      findAttributeCells(node, Sequence.fromIterable(descendants.value).select((it) -> it.getNodeId()), cell, attributeCells);
       return attributeCells;
     }
   }
@@ -207,11 +197,7 @@ public final class EditorCellMessageUtil {
   public static boolean cellHasChildrenWithDifferentNode(EditorCell cell) {
     if (cell instanceof EditorCell_Collection) {
       final EditorCell_Collection collectionCell = (EditorCell_Collection) cell;
-      return Sequence.fromIterable(((Iterable<EditorCell>) collectionCell)).any(new IWhereFilter<EditorCell>() {
-        public boolean accept(EditorCell child) {
-          return child.getSNode() != collectionCell.getSNode();
-        }
-      });
+      return Sequence.fromIterable(((Iterable<EditorCell>) collectionCell)).any((child) -> child.getSNode() != collectionCell.getSNode());
     } else {
       return false;
     }

@@ -4,7 +4,7 @@
   <languages>
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="817e4e70-961e-4a95-98a1-15e9f32231f1" name="jetbrains.mps.ide.httpsupport" version="-1" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="5" />
     <use id="443f4c36-fcf5-4eb6-9500-8d06ed259e3e" name="jetbrains.mps.baseLanguage.classifiers" version="-1" />
@@ -270,6 +270,7 @@
       <concept id="8064396509828172209" name="jetbrains.mps.baseLanguage.structure.UnaryMinus" flags="nn" index="1ZRNhn" />
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1235746970280" name="jetbrains.mps.baseLanguage.closures.structure.CompactInvokeFunctionExpression" flags="nn" index="2Sg_IR">
         <child id="1235746996653" name="function" index="2SgG2M" />
         <child id="1235747002942" name="parameter" index="2SgHGx" />
@@ -326,7 +327,6 @@
       <concept id="1153944233411" name="jetbrains.mps.baseLanguage.collections.structure.ForEachVariableReference" flags="nn" index="2GrUjf">
         <reference id="1153944258490" name="variable" index="2Gs0qQ" />
       </concept>
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1165525191778" name="jetbrains.mps.baseLanguage.collections.structure.GetFirstOperation" flags="nn" index="1uHKPH" />
       <concept id="1225727723840" name="jetbrains.mps.baseLanguage.collections.structure.FindFirstOperation" flags="nn" index="1z4cxt" />
       <concept id="1176501494711" name="jetbrains.mps.baseLanguage.collections.structure.IsNotEmptyOperation" flags="nn" index="3GX2aA" />
@@ -1738,7 +1738,7 @@
                                 <node concept="2OqwBi" id="7jkoQKX7bi6" role="3clFbG">
                                   <node concept="2OqwBi" id="7jkoQKX7bi7" role="2Oq$k0">
                                     <node concept="37vLTw" id="7jkoQKX7bi8" role="2Oq$k0">
-                                      <ref role="3cqZAo" node="7jkoQKX7bic" resolve="it" />
+                                      <ref role="3cqZAo" node="5W7E4fV0Xp8" />
                                     </node>
                                     <node concept="liA8E" id="7jkoQKX7bi9" role="2OqNvi">
                                       <ref role="37wK5l" to="fwk:~DebugInfoRoot.getFileNames()" resolve="getFileNames" />
@@ -1753,9 +1753,9 @@
                                 </node>
                               </node>
                             </node>
-                            <node concept="Rh6nW" id="7jkoQKX7bic" role="1bW2Oz">
+                            <node concept="gl6BB" id="5W7E4fV0Xp8" role="1bW2Oz">
                               <property role="TrG5h" value="it" />
-                              <node concept="2jxLKc" id="7jkoQKX7bid" role="1tU5fm" />
+                              <node concept="2jxLKc" id="5W7E4fV0Xp9" role="1tU5fm" />
                             </node>
                           </node>
                         </node>

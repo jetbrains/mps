@@ -20,7 +20,6 @@ import jetbrains.mps.baseLanguage.scopes.ClassifiersScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.scopes.VisibilityUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
@@ -76,11 +75,7 @@ public class staticAccess extends SubstituteMenuBase {
         }
       };
       Iterable<SNode> availableElements = visibleClassifiers.getAvailableElements("");
-      Iterable<SNode> seq = Sequence.fromIterable(availableElements).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SNodeOperations.cast(it, CONCEPTS.Classifier$Ix);
-        }
-      });
+      Iterable<SNode> seq = Sequence.fromIterable(availableElements).select((it) -> SNodeOperations.cast(it, CONCEPTS.Classifier$Ix));
       return seq;
     }
     private class SMP_Action_6orr95_a0 extends SingleItemSubstituteMenuPart {

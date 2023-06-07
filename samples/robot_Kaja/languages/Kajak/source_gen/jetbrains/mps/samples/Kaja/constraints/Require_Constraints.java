@@ -22,9 +22,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.scope.ListScope;
 import java.util.HashMap;
@@ -65,23 +63,7 @@ public class Require_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            final Iterable<SNode> libraries = ListSequence.fromList(SModelOperations.rootsIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.Library$oJ)).where(new IWhereFilter<SNode>() {
-              public boolean accept(final SNode library) {
-                return ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Script$FS, true, false), CONCEPTS.Require$2c, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-                  public boolean accept(SNode it) {
-                    return it != _context.getContextNode();
-                  }
-                }).select(new ISelector<SNode, SNode>() {
-                  public SNode select(SNode it) {
-                    return SLinkOperations.getTarget(it, LINKS.library$JYHK);
-                  }
-                }).all(new IWhereFilter<SNode>() {
-                  public boolean accept(SNode it) {
-                    return it != library;
-                  }
-                });
-              }
-            });
+            final Iterable<SNode> libraries = ListSequence.fromList(SModelOperations.rootsIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.Library$oJ)).where((final SNode library) -> ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Script$FS, true, false), CONCEPTS.Require$2c, false, new SAbstractConcept[]{})).where((it) -> it != _context.getContextNode()).select((it) -> SLinkOperations.getTarget(it, LINKS.library$JYHK)).all((it) -> it != library));
             return ListScope.forNamedElements(libraries);
           }
         };

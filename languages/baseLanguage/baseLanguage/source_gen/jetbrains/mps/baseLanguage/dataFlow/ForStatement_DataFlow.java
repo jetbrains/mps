@@ -30,17 +30,9 @@ public class ForStatement_DataFlow extends DataFlowBuilder {
     }
     _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.body$c1sm));
     for (final SNode iteration : SLinkOperations.getChildren(_context.getNode(), LINKS.iteration$nuP3)) {
-      _context.getBuilder().emitMayBeUnreachable(new Runnable() {
-        public void run() {
-          _context.getBuilder().build((SNode) iteration);
-        }
-      });
+      _context.getBuilder().emitMayBeUnreachable(() -> _context.getBuilder().build((SNode) iteration));
     }
-    _context.getBuilder().emitMayBeUnreachable(new Runnable() {
-      public void run() {
-        _context.getBuilder().emitJump(_context.getBuilder().label(_context.getNode(), "start"), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/9092976468699818459");
-      }
-    });
+    _context.getBuilder().emitMayBeUnreachable(() -> _context.getBuilder().emitJump(_context.getBuilder().label(_context.getNode(), "start"), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/9092976468699818459"));
   }
 
   private static final class LINKS {

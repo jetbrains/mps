@@ -29,9 +29,6 @@ import jetbrains.mps.scope.EmptyScope;
 import jetbrains.mps.lang.scopes.runtime.ScopeUtils;
 import jetbrains.mps.baseLanguage.scopes.Scopes;
 import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.smodel.SNodePointer;
@@ -295,11 +292,7 @@ public final class BaseMethodDeclaration__BehaviorDescriptor extends BaseBHDescr
   }
   /*package*/ static List<SNode> getTypeApplicationParameters_id7bu6bIyR2DR(@NotNull SNode __thisNode__, int actualArgs) {
     List<SNode> result = new ArrayList<SNode>();
-    ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$5xBj)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.type$a1UY);
-      }
-    }));
+    ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$5xBj)).select((it) -> SLinkOperations.getTarget(it, LINKS.type$a1UY)));
 
     if (SNodeOperations.isInstanceOf(ListSequence.fromList(result).last(), CONCEPTS.VariableArityType$KF)) {
       int formalParams = ListSequence.fromList(result).count();
@@ -318,29 +311,9 @@ public final class BaseMethodDeclaration__BehaviorDescriptor extends BaseBHDescr
     return result;
   }
   /*package*/ static List<SNode> getInferrableTypeVars_id5W9RYt5baxk(@NotNull final SNode __thisNode__) {
-    List<SNode> returnTypeVars = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(__thisNode__, LINKS.returnType$5xoi), CONCEPTS.TypeVariableReference$WL, false, new SAbstractConcept[]{})).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.typeVariableDeclaration$Lz1I);
-      }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.getParent(it) == __thisNode__;
-      }
-    }).toListSequence();
-    List<SNode> boundTypeVars = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$5xBj)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode p) {
-        return SNodeOperations.getNodeDescendants(p, CONCEPTS.TypeVariableReference$WL, false, new SAbstractConcept[]{});
-      }
-    }).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.typeVariableDeclaration$Lz1I);
-      }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.getParent(it) == __thisNode__;
-      }
-    }).toListSequence();
-    return ListSequence.fromList(returnTypeVars).subtract(ListSequence.fromList(boundTypeVars)).toListSequence();
+    List<SNode> returnTypeVars = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(__thisNode__, LINKS.returnType$5xoi), CONCEPTS.TypeVariableReference$WL, false, new SAbstractConcept[]{})).select((it) -> SLinkOperations.getTarget(it, LINKS.typeVariableDeclaration$Lz1I)).where((it) -> SNodeOperations.getParent(it) == __thisNode__).toList();
+    List<SNode> boundTypeVars = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$5xBj)).translate((p) -> SNodeOperations.getNodeDescendants(p, CONCEPTS.TypeVariableReference$WL, false, new SAbstractConcept[]{})).select((it) -> SLinkOperations.getTarget(it, LINKS.typeVariableDeclaration$Lz1I)).where((it) -> SNodeOperations.getParent(it) == __thisNode__).toList();
+    return ListSequence.fromList(returnTypeVars).subtract(ListSequence.fromList(boundTypeVars)).toList();
   }
   /*package*/ static void markDeprecated_id6Va_BJexupi(@NotNull SNode __thisNode__) {
     IBLDeprecatable__BehaviorDescriptor.markDeprecated_id6Va_BJexupi.invoke0(__thisNode__, CONCEPTS.IBLDeprecatable$ah);
@@ -364,11 +337,7 @@ public final class BaseMethodDeclaration__BehaviorDescriptor extends BaseBHDescr
     final List<SNode> ancestors = SNodeOperations.getNodeAncestors(forChild, null, true);
 
     // Expression contained in return expression or in last statement
-    return Sequence.fromIterable(RulesFunctions_BaseLanguage.collectReturnStatements(__thisNode__)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ListSequence.fromList(ancestors).contains(it);
-      }
-    }) || ListSequence.fromList(ancestors).contains(IMethodLike__BehaviorDescriptor.getLastStatement_idi2fhS7A.invoke(__thisNode__));
+    return Sequence.fromIterable(RulesFunctions_BaseLanguage.collectReturnStatements(__thisNode__)).any((it) -> ListSequence.fromList(ancestors).contains(it)) || ListSequence.fromList(ancestors).contains(IMethodLike__BehaviorDescriptor.getLastStatement_idi2fhS7A.invoke(__thisNode__));
   }
 
   /*package*/ BaseMethodDeclaration__BehaviorDescriptor() {

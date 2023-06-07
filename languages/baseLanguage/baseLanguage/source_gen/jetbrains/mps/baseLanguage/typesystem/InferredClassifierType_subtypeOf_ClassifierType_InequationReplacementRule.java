@@ -17,7 +17,6 @@ import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.baseLanguage.behavior.IGenericType__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.Iterator;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
@@ -49,17 +48,15 @@ public class InferredClassifierType_subtypeOf_ClassifierType_InequationReplaceme
     if (ListSequence.fromList(SLinkOperations.getChildren(supertype, LINKS.parameter$oqG$)).count() == 0) {
       // Raw classifier, in case types were inferred from other source we should substitue
       IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(subtype, subs);
-      rightParams = ListSequence.fromList(rightParams).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          {
-            final SNode generic = it;
-            if (SNodeOperations.isInstanceOf(generic, CONCEPTS.IGenericType$13)) {
-              return SNodeOperations.as(IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(generic, subs), CONCEPTS.Type$bu);
-            }
+      rightParams = ListSequence.fromList(rightParams).select((it) -> {
+        {
+          final SNode generic = it;
+          if (SNodeOperations.isInstanceOf(generic, CONCEPTS.IGenericType$13)) {
+            return SNodeOperations.as(IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(generic, subs), CONCEPTS.Type$bu);
           }
-          return it;
         }
-      }).toListSequence();
+        return it;
+      }).toList();
     }
 
     {
@@ -95,17 +92,15 @@ public class InferredClassifierType_subtypeOf_ClassifierType_InequationReplaceme
       if (ListSequence.fromList(SLinkOperations.getChildren(supertype, LINKS.parameter$oqG$)).count() == 0) {
         // Raw classifier, in case types were inferred from other source we should substitue
         IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(subtype, subs);
-        rightParams = ListSequence.fromList(rightParams).select(new ISelector<SNode, SNode>() {
-          public SNode select(SNode it) {
-            {
-              final SNode generic = it;
-              if (SNodeOperations.isInstanceOf(generic, CONCEPTS.IGenericType$13)) {
-                return SNodeOperations.as(IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(generic, subs), CONCEPTS.Type$bu);
-              }
+        rightParams = ListSequence.fromList(rightParams).select((it) -> {
+          {
+            final SNode generic = it;
+            if (SNodeOperations.isInstanceOf(generic, CONCEPTS.IGenericType$13)) {
+              return SNodeOperations.as(IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(generic, subs), CONCEPTS.Type$bu);
             }
-            return it;
           }
-        }).toListSequence();
+          return it;
+        }).toList();
       }
 
       {

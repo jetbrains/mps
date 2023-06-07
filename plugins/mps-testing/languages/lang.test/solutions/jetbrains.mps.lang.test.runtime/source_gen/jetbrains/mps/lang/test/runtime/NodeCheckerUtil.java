@@ -80,7 +80,7 @@ public class NodeCheckerUtil {
    * works with node from original model
    */
   public static void checkNodeForErrorMessages(SNode node, boolean allowErrors, boolean allowWarnings, boolean includeSelf, @Nullable ComponentHost host, CheckExpectedMessageRunnable... excluded) {
-    Runnable checkErrorsAction = new CheckErrorMessagesRunnable(node, allowWarnings, allowErrors, host).includeSelf(includeSelf).exclude(Sequence.fromIterable(Sequence.fromArray(excluded)).toListSequence());
+    Runnable checkErrorsAction = new CheckErrorMessagesRunnable(node, allowWarnings, allowErrors, host).includeSelf(includeSelf).exclude(Sequence.fromIterable(Sequence.fromArray(excluded)).toList());
     checkErrorsAction.run();
   }
 

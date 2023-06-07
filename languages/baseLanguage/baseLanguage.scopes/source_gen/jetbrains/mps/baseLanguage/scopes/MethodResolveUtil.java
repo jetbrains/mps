@@ -12,13 +12,11 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.IMapping;
@@ -131,11 +129,7 @@ public class MethodResolveUtil {
       }
     }
     if (ListSequence.fromList(candidates).count() > 1) {
-      List<SNode> candidates1 = ListSequence.fromList(candidates).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).last(), LINKS.type$a1UY), CONCEPTS.VariableArityType$KF));
-        }
-      }).toListSequence();
+      List<SNode> candidates1 = ListSequence.fromList(candidates).where((it) -> !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).last(), LINKS.type$a1UY), CONCEPTS.VariableArityType$KF))).toList();
       if (ListSequence.fromList(candidates1).isNotEmpty()) {
         candidates = candidates1;
       }
@@ -179,11 +173,7 @@ public class MethodResolveUtil {
       }
     }
     if (mostSpecific) {
-      List<SNode> goodParamTypes = SetSequence.fromSet(MapSequence.fromMap(typesOfParamToMethods).keySet()).select(new ISelector<NodeWrapper, SNode>() {
-        public SNode select(NodeWrapper it) {
-          return it.myNode;
-        }
-      }).toListSequence();
+      List<SNode> goodParamTypes = SetSequence.fromSet(MapSequence.fromMap(typesOfParamToMethods).keySet()).select((it) -> it.myNode).toList();
       Iterable<SNode> mostSpecificTypes = selectMostSpecific(goodParamTypes);
       if (!(Sequence.fromIterable(mostSpecificTypes).isEmpty())) {
         result = new ArrayList<SNode>();
@@ -300,11 +290,7 @@ with_next_t:
     if ((resolvedMethod != null)) {
       return MultiTuple.<SNode,Boolean>from(resolvedMethod, true);
     } else {
-      return resolveMethodByCandidatesAndTypes(methodCall, Sequence.fromIterable(((Iterable<SNode>) scope.getAvailableElements(name))).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), name);
-        }
-      }), false);
+      return resolveMethodByCandidatesAndTypes(methodCall, Sequence.fromIterable(((Iterable<SNode>) scope.getAvailableElements(name))).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), name)), false);
     }
   }
 
@@ -312,7 +298,7 @@ with_next_t:
 
     List<SNode> actualArgs = IFixableMethodReference__BehaviorDescriptor.getActualArguments_id5DBbMQ33xDf.invoke(methodRef);
 
-    Pair<List<SNode>, Boolean> parmCountPair = MethodResolveUtil.selectByVisibilityReportNoGoodMethodNode(Sequence.fromIterable(candidates).toListSequence(), methodRef);
+    Pair<List<SNode>, Boolean> parmCountPair = MethodResolveUtil.selectByVisibilityReportNoGoodMethodNode(Sequence.fromIterable(candidates).toList(), methodRef);
     List<SNode> methodDeclarationsGoodParams = parmCountPair.o1;
 
     if (methodDeclarationsGoodParams.size() == 1) {

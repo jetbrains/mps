@@ -36,7 +36,7 @@ public final class ReferencesFinder {
     if (myInitialScope == null) {
       throw new IllegalStateException();
     }
-    List<SNode> nodes = Sequence.fromIterable(selection.getNodes()).toListSequence();
+    List<SNode> nodes = Sequence.fromIterable(selection.getNodes()).toList();
     monitor.start("computing references' targets", ListSequence.fromList(nodes).count());
     Set<SNode> targets = new HashSet<SNode>();
     ArrayList<SearchResult<SNode>> results = new ArrayList<SearchResult<SNode>>();
@@ -95,7 +95,7 @@ public final class ReferencesFinder {
     if (myInitialScope == null) {
       throw new IllegalStateException();
     }
-    List<SNode> nodes = Sequence.fromIterable(selection.getNodes()).toListSequence();
+    List<SNode> nodes = Sequence.fromIterable(selection.getNodes()).toList();
     monitor.start("filtering references", ListSequence.fromList(nodes).count());
     ArrayList<SearchResult<SNode>> results = new ArrayList<SearchResult<SNode>>();
     for (SNode node : ListSequence.fromList(nodes)) {

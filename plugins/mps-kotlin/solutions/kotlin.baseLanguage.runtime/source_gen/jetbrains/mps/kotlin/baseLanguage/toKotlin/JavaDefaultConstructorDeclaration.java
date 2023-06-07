@@ -10,7 +10,6 @@ import java.util.Collections;
 import jetbrains.mps.kotlin.api.declaration.TypeParameterDeclaration;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.IClassifier__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -36,11 +35,7 @@ public class JavaDefaultConstructorDeclaration implements FunctionDeclaration {
   }
   @Override
   public Iterable<TypeParameterDeclaration> getTypeParameters() {
-    return ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$Lipp)).select(new ISelector<SNode, JavaTypeParameterDeclaration>() {
-      public JavaTypeParameterDeclaration select(SNode it) {
-        return new JavaTypeParameterDeclaration(it);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$Lipp)).select((it) -> new JavaTypeParameterDeclaration(it));
   }
   @Override
   public SNode getReturnType() {

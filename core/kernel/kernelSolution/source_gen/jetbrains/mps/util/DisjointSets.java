@@ -9,7 +9,6 @@ import java.util.HashMap;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.HashSet;
 
 @GeneratedClass(node = "r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)/8018595893829093050", model = "r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)")
@@ -42,14 +41,12 @@ public class DisjointSets<T> {
   }
   public Iterable<Set<T>> getSets() {
     final Map<T, Set<T>> rootToSet = MapSequence.fromMap(new HashMap<T, Set<T>>());
-    SetSequence.fromSet(MapSequence.fromMap(myParent).keySet()).visitAll(new IVisitor<T>() {
-      public void visit(T x) {
-        T r = getRoot(x);
-        if (MapSequence.fromMap(rootToSet).get(r) == null) {
-          MapSequence.fromMap(rootToSet).put(r, SetSequence.fromSet(new HashSet<T>()));
-        }
-        SetSequence.fromSet(MapSequence.fromMap(rootToSet).get(r)).addElement(x);
+    SetSequence.fromSet(MapSequence.fromMap(myParent).keySet()).visitAll((x) -> {
+      T r = getRoot(x);
+      if (MapSequence.fromMap(rootToSet).get(r) == null) {
+        MapSequence.fromMap(rootToSet).put(r, SetSequence.fromSet(new HashSet<T>()));
       }
+      SetSequence.fromSet(MapSequence.fromMap(rootToSet).get(r)).addElement(x);
     });
     return MapSequence.fromMap(rootToSet).values();
   }

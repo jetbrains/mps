@@ -12,7 +12,6 @@ import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -53,11 +52,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return ((SNodeId.Regular) ((SNode) _context.getNode()).getNodeId()).getId() + "";
   }
   public static Object referenceMacro_GetReferent_1_0(final ReferenceMacroContext _context) {
-    return ListSequence.fromList(SModelOperations.nodes(_context.getOriginalInputModel(), CONCEPTS.SimpleConceptDeclaration$Do)).findFirst(new IWhereFilter<org.jetbrains.mps.openapi.model.SNode>() {
-      public boolean accept(org.jetbrains.mps.openapi.model.SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL));
-      }
-    });
+    return ListSequence.fromList(SModelOperations.nodes(_context.getOriginalInputModel(), CONCEPTS.SimpleConceptDeclaration$Do)).findFirst((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL)));
   }
   public static Iterable<org.jetbrains.mps.openapi.model.SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.properties$IJ1F);

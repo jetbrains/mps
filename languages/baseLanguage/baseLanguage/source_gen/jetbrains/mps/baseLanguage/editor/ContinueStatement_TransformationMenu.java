@@ -21,9 +21,7 @@ import jetbrains.mps.kernel.model.SModelUtil;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.model.SNode;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.transformation.ConstraintsFilteringTransformationMenuPartDecorator;
@@ -101,47 +99,43 @@ public class ContinueStatement_TransformationMenu extends TransformationMenuBase
   public class TMP_Group_j8waen_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (SLinkOperations.getTarget(_context.getNode(), LINKS.loopLabelReference$oRXB) == null) && ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.AbstractLoopStatement$Xv, false)).translate(new ITranslator2<SNode, SNode>() {
-        public Iterable<SNode> translate(final SNode it) {
-          return new Iterable<SNode>() {
-            public Iterator<SNode> iterator() {
-              return new YieldingIterator<SNode>() {
-                private int __CP__ = 0;
-                protected boolean moveToNext() {
+      return (SLinkOperations.getTarget(_context.getNode(), LINKS.loopLabelReference$oRXB) == null) && ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.AbstractLoopStatement$Xv, false)).translate((it) -> {
+        return (Iterable<SNode>) () -> {
+          return new YieldingIterator<SNode>() {
+            private int __CP__ = 0;
+            protected boolean moveToNext() {
 __loop__:
-                  do {
+              do {
 __switch__:
-                    switch (this.__CP__) {
-                      case -1:
-                        assert false : "Internal error";
-                        return false;
-                      case 2:
-                        if (!(SLinkOperations.getTarget(it, LINKS.loopLabel$sgvV) == null)) {
-                          this.__CP__ = 3;
-                          break;
-                        }
-                        this.__CP__ = 1;
-                        break;
-                      case 4:
-                        this.__CP__ = 1;
-                        this.yield(SLinkOperations.getTarget(it, LINKS.loopLabel$sgvV));
-                        return true;
-                      case 0:
-                        this.__CP__ = 2;
-                        break;
-                      case 3:
-                        this.__CP__ = 4;
-                        break;
-                      default:
-                        break __loop__;
+                switch (this.__CP__) {
+                  case -1:
+                    assert false : "Internal error";
+                    return false;
+                  case 2:
+                    if (!(SLinkOperations.getTarget(it, LINKS.loopLabel$sgvV) == null)) {
+                      this.__CP__ = 3;
+                      break;
                     }
-                  } while (true);
-                  return false;
+                    this.__CP__ = 1;
+                    break;
+                  case 4:
+                    this.__CP__ = 1;
+                    this.yield(SLinkOperations.getTarget(it, LINKS.loopLabel$sgvV));
+                    return true;
+                  case 0:
+                    this.__CP__ = 2;
+                    break;
+                  case 3:
+                    this.__CP__ = 4;
+                    break;
+                  default:
+                    break __loop__;
                 }
-              };
+              } while (true);
+              return false;
             }
           };
-        }
+        };
       }).isNotEmpty();
     }
 
@@ -171,48 +165,44 @@ __switch__:
       @Nullable
       @Override
       protected Iterable<? extends SNode> getParameters(TransformationMenuContext _context) {
-        return ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.AbstractLoopStatement$Xv, false)).translate(new ITranslator2<SNode, SNode>() {
-          public Iterable<SNode> translate(final SNode it) {
-            return new Iterable<SNode>() {
-              public Iterator<SNode> iterator() {
-                return new YieldingIterator<SNode>() {
-                  private int __CP__ = 0;
-                  protected boolean moveToNext() {
+        return ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.AbstractLoopStatement$Xv, false)).translate((it) -> {
+          return (Iterable<SNode>) () -> {
+            return new YieldingIterator<SNode>() {
+              private int __CP__ = 0;
+              protected boolean moveToNext() {
 __loop__:
-                    do {
+                do {
 __switch__:
-                      switch (this.__CP__) {
-                        case -1:
-                          assert false : "Internal error";
-                          return false;
-                        case 2:
-                          if ((SLinkOperations.getTarget(it, LINKS.loopLabel$sgvV) != null)) {
-                            this.__CP__ = 3;
-                            break;
-                          }
-                          this.__CP__ = 1;
-                          break;
-                        case 4:
-                          this.__CP__ = 1;
-                          this.yield(SLinkOperations.getTarget(it, LINKS.loopLabel$sgvV));
-                          return true;
-                        case 0:
-                          this.__CP__ = 2;
-                          break;
-                        case 3:
-                          this.__CP__ = 4;
-                          break;
-                        default:
-                          break __loop__;
+                  switch (this.__CP__) {
+                    case -1:
+                      assert false : "Internal error";
+                      return false;
+                    case 2:
+                      if ((SLinkOperations.getTarget(it, LINKS.loopLabel$sgvV) != null)) {
+                        this.__CP__ = 3;
+                        break;
                       }
-                    } while (true);
-                    return false;
+                      this.__CP__ = 1;
+                      break;
+                    case 4:
+                      this.__CP__ = 1;
+                      this.yield(SLinkOperations.getTarget(it, LINKS.loopLabel$sgvV));
+                      return true;
+                    case 0:
+                      this.__CP__ = 2;
+                      break;
+                    case 3:
+                      this.__CP__ = 4;
+                      break;
+                    default:
+                      break __loop__;
                   }
-                };
+                } while (true);
+                return false;
               }
             };
-          }
-        }).toListSequence();
+          };
+        }).toList();
       }
       @NotNull
       @Override

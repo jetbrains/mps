@@ -10,7 +10,6 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
@@ -35,16 +34,8 @@ public class RemoveLocalPropertyTypeParameters extends MigrationScriptBase {
     {
       SearchScope scope_qtmi2o_a0e = CommandUtil.createScope(m);
       final SearchScope scope_qtmi2o_a0e_0 = new EditableFilteringScope(scope_qtmi2o_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_qtmi2o_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LocalPropertyDeclaration$eD, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.typeParameters$eq6K)).clear();
-        }
-      });
+      QueryExecutionContext context = () -> scope_qtmi2o_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LocalPropertyDeclaration$eD, false)).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.typeParameters$eq6K)).clear());
     }
   }
   public MigrationScriptReference getReference() {

@@ -13,15 +13,16 @@ import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.closures.helper.Flags;
-import jetbrains.mps.internal.collections.runtime.Sequence;
+import java.util.stream.StreamSupport;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import java.util.function.Predicate;
 import java.util.List;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.closures.helper.ClosureContext;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.closures.constraints.ClassifierTypeUtil;
 import jetbrains.mps.baseLanguage.closures.behavior.FunctionMethodDeclaration__BehaviorDescriptor;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
@@ -31,14 +32,14 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.baseLanguage.closures.helper.StatementListUtil;
-import jetbrains.mps.baseLanguage.closures.helper.ClosureLiteralUtil;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.baseLanguage.closures.behavior.FunctionType__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.closures.helper.FunctionTypeUtil;
 import jetbrains.mps.generator.template.TemplateArgumentContext;
+import jetbrains.mps.baseLanguage.closures.helper.ClosureLiteralUtil;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import java.util.function.Function;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -201,15 +202,15 @@ public class QueriesGenerated extends QueryProviderBase {
     return !(Values.PREP_DATA.isSet(_context, _context.getNode())) || Values.POST_DATA.isSet(_context, _context.getNode());
   }
   public static boolean rule_Condition_30_0(final BaseMappingRuleContext _context) {
-    return !(Flags.FUNCTION_METHOD.isFlagged(_context, _context.getNode())) && Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(_context.getNode())).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode m) {
+    return !(Flags.FUNCTION_METHOD.isFlagged(_context, _context.getNode())) && StreamSupport.stream(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(_context.getNode()).spliterator(), false).anyMatch(new Predicate<SNode>() {
+      public boolean test(SNode m) {
         return SNodeOperations.isInstanceOf(m, CONCEPTS.FunctionMethodDeclaration$ee);
       }
     });
   }
   public static boolean rule_Condition_30_1(final BaseMappingRuleContext _context) {
-    return !(Flags.FUNCTION_METHOD.isFlagged(_context, _context.getNode())) && Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(_context.getNode())).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode m) {
+    return !(Flags.FUNCTION_METHOD.isFlagged(_context, _context.getNode())) && StreamSupport.stream(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(_context.getNode()).spliterator(), false).anyMatch(new Predicate<SNode>() {
+      public boolean test(SNode m) {
         return SNodeOperations.isInstanceOf(m, CONCEPTS.FunctionMethodDeclaration$ee);
       }
     });
@@ -671,22 +672,24 @@ public class QueriesGenerated extends QueryProviderBase {
   public static boolean ifMacro_Condition_29_2(final IfMacroContext _context) {
     SNode adaptable = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.Classifier$Ix);
     Map<SNode, SNode> theMap = (Map<SNode, SNode>) Values.THE_MAP.get(_context, adaptable);
-    SNode parmType = ListSequence.fromList(SLinkOperations.getChildren(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(adaptable)).first(), LINKS.parameter$5xBj)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode pd) {
-        return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(pd, LINKS.type$a1UY), CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I) == _context.getNode();
+
+    for (SNode parameter : SLinkOperations.getChildren(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(adaptable)).first(), LINKS.parameter$5xBj)) {
+      if (SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(parameter, LINKS.type$a1UY), CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I) == _context.getNode()) {
+        return (MapSequence.fromMap(theMap).get(_context.getNode()) != null);
       }
-    });
-    return (parmType != null) && (MapSequence.fromMap(theMap).get(_context.getNode()) != null);
+    }
+    return false;
   }
   public static boolean ifMacro_Condition_29_3(final IfMacroContext _context) {
     SNode adaptable = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.Classifier$Ix);
     Map<SNode, SNode> theMap = (Map<SNode, SNode>) Values.THE_MAP.get(_context, adaptable);
-    SNode parmType = ListSequence.fromList(SLinkOperations.getChildren(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(adaptable)).first(), LINKS.parameter$5xBj)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode pd) {
-        return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(pd, LINKS.type$a1UY), CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I) == _context.getNode();
+
+    for (SNode parameter : SLinkOperations.getChildren(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(adaptable)).first(), LINKS.parameter$5xBj)) {
+      if (SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(parameter, LINKS.type$a1UY), CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I) == _context.getNode()) {
+        return (MapSequence.fromMap(theMap).get(_context.getNode()) == null);
       }
-    });
-    return (parmType != null) && (MapSequence.fromMap(theMap).get(_context.getNode()) == null);
+    }
+    return false;
   }
   public static boolean ifMacro_Condition_30_0(final IfMacroContext _context) {
     return true;
@@ -705,10 +708,6 @@ public class QueriesGenerated extends QueryProviderBase {
       // Annotations and final are not usable on unbound lambda parameters either
       return hasUnboundType || SPropertyOperations.getBoolean(it, PROPS.isFinal$gvTP) || ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.annotation$K49I)).isNotEmpty();
     });
-  }
-  public static boolean ifMacro_Condition_41_1(final IfMacroContext _context) {
-    // Raw types: use legacy logic to have the (approximated) full type parameters
-    return ClosureLiteralUtil.containsRawTypes(((ClosureContext) _context.getVariable("context")).getActualType()) || ClosureLiteralUtil.containsRawTypes(((ClosureContext) _context.getVariable("context")).getClassifierType());
   }
   public static SNode sourceNodeQuery_0_0(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.initializer$2twD);
@@ -982,23 +981,25 @@ public class QueriesGenerated extends QueryProviderBase {
     final Map<SNode, SNode> theMap = FunctionTypeUtil.mapAdaptableTargetTVDs(SLinkOperations.getTarget(SNodeOperations.cast(ntype, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr), trg);
     final List<SNode> params = SLinkOperations.getChildren(SNodeOperations.cast(ntype, CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$);
 
-    return ListSequence.fromList(SLinkOperations.getChildren(trg, LINKS.typeVariableDeclaration$Lipp)).select(new ISelector<SNode, IMapping<SNode, SNode>>() {
-      public IMapping<SNode, SNode> select(final SNode tvd) {
-        return MapSequence.fromMap(theMap).findFirst(new IWhereFilter<IMapping<SNode, SNode>>() {
-          public boolean accept(IMapping<SNode, SNode> m) {
-            return m.value() == tvd;
+    // use stream instead of deprecated adapters or closure runtime classes
+    return SLinkOperations.getChildren(trg, LINKS.typeVariableDeclaration$Lipp).stream().map(new Function<SNode, SNode>() {
+      public SNode apply(final SNode tvd) {
+        for (IMapping<? extends SNode, ? extends SNode> mapping : MapSequence.fromMap(theMap).mappingsSet()) {
+          if (mapping.value() == tvd) {
+            return mapping.key();
           }
-        });
+        }
+        return null;
       }
-    }).where(new IWhereFilter<IMapping<SNode, SNode>>() {
-      public boolean accept(IMapping<SNode, SNode> m) {
+    }).filter(new Predicate<SNode>() {
+      public boolean test(SNode m) {
         return m != null;
       }
-    }).select(new ISelector<IMapping<SNode, SNode>, SNode>() {
-      public SNode select(IMapping<SNode, SNode> m) {
-        return ListSequence.fromList(params).getElement(SNodeOperations.getIndexInParent(m.key()));
+    }).map(new Function<SNode, SNode>() {
+      public SNode apply(SNode m) {
+        return ListSequence.fromList(params).getElement(SNodeOperations.getIndexInParent(m));
       }
-    });
+    }).toList();
   }
   public static Iterable<SNode> sourceNodesQuery_5_0(final SourceSubstituteMacroNodesContext _context) {
     return (List<SNode>) Values.CHUNK_OF_STATEMENTS.get(_context, _context.getNode());
@@ -1124,19 +1125,16 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(_context.getNode(), CONCEPTS.DotExpression$yW), LINKS.operation$gs9E), CONCEPTS.InstanceMethodCallOperation$uu), LINKS.actualArgument$pzdx);
   }
   public static Iterable<SNode> sourceNodesQuery_33_0(final SourceSubstituteMacroNodesContext _context) {
-    return Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(_context.getNode())).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode m) {
-        return SNodeOperations.isInstanceOf(m, CONCEPTS.FunctionMethodDeclaration$ee);
-      }
-    });
+    return SNodeOperations.ofConcept(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(_context.getNode()), CONCEPTS.FunctionMethodDeclaration$ee);
   }
   public static Iterable<SNode> sourceNodesQuery_33_1(final SourceSubstituteMacroNodesContext _context) {
     List<SNode> parameter = SLinkOperations.getChildren(SNodeOperations.cast(ClassifierTypeUtil.getTypeCoercedToClassifierType(FunctionMethodDeclaration__BehaviorDescriptor.functionType_id2uAWGxT6YKz.invoke(SNodeOperations.cast(_context.getNode(), CONCEPTS.FunctionMethodDeclaration$ee))), CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$);
-    return ListSequence.fromList(parameter).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode pt) {
+
+    return parameter.stream().map(new Function<SNode, SNode>() {
+      public SNode apply(SNode pt) {
         return FunctionTypeUtil.unmeet(FunctionTypeUtil.unbound(pt));
       }
-    });
+    }).toList();
   }
   public static Iterable<SNode> sourceNodesQuery_34_0(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.parameter$5xBj);
@@ -1146,18 +1144,15 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_40_0(final SourceSubstituteMacroNodesContext _context) {
     List<SNode> parameter = SLinkOperations.getChildren(SNodeOperations.cast(ClassifierTypeUtil.getTypeCoercedToClassifierType(FunctionMethodDeclaration__BehaviorDescriptor.functionType_id2uAWGxT6YKz.invoke(SNodeOperations.cast(_context.getNode(), CONCEPTS.FunctionMethodDeclaration$ee))), CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$);
-    return ListSequence.fromList(parameter).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode pt) {
+
+    return parameter.stream().map(new Function<SNode, SNode>() {
+      public SNode apply(SNode pt) {
         return FunctionTypeUtil.unmeet(FunctionTypeUtil.unbound(pt));
       }
-    });
+    }).toList();
   }
   public static Iterable<SNode> sourceNodesQuery_40_1(final SourceSubstituteMacroNodesContext _context) {
-    return Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(_context.getNode())).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode m) {
-        return SNodeOperations.isInstanceOf(m, CONCEPTS.FunctionMethodDeclaration$ee);
-      }
-    });
+    return SNodeOperations.ofConcept(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(_context.getNode()), CONCEPTS.FunctionMethodDeclaration$ee);
   }
   public static Iterable<SNode> sourceNodesQuery_41_0(final SourceSubstituteMacroNodesContext _context) {
     // No parameters, keep all unbound parameters (convert all to inferred parameter)
@@ -1179,9 +1174,9 @@ public class QueriesGenerated extends QueryProviderBase {
     return ClosureLiteralUtil.parameterList(_context.getNode(), ((ClosureContext) _context.getVariable("context")), _context);
   }
   public static Iterable<SNode> sourceNodesQuery_41_2(final SourceSubstituteMacroNodesContext _context) {
-    // This code should be used for legacy use cases only (eg. raw types). In practice, there is no obvious 
-    // way to find the type parameters here (we need type system, inference system... but none of these data
-    // are exported of it)
+    // This could be omitted in some cases (no raw type, no return type) but it would bring unstable behavior
+    // Keeping this brings different issues: the classifier type here is not issued from typesystem (unless we target a function type class), but from hardcoded logic that misses some information, meaning types there may be completely wrong
+    // The best is to fall into cases where lambdas are used, which allows more stability without the need to guess types
     SNode ct = ((ClosureContext) _context.getVariable("context")).getClassifierType();
     List<SNode> res = new ArrayList<SNode>();
     for (SNode type : SLinkOperations.getChildren(ct, LINKS.parameter$oqG$)) {
@@ -2580,7 +2575,6 @@ public class QueriesGenerated extends QueryProviderBase {
     imcMethods.put("3641404106731751955", new IfMC(i++));
     imcMethods.put("2857237956452627652", new IfMC(i++));
     imcMethods.put("7830826264598093072", new IfMC(i++));
-    imcMethods.put("5043206195225374475", new IfMC(i++));
   }
   @NotNull
   @Override
@@ -2634,8 +2628,6 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.ifMacro_Condition_34_1(ctx);
         case 18:
           return QueriesGenerated.ifMacro_Condition_41_0(ctx);
-        case 19:
-          return QueriesGenerated.ifMacro_Condition_41_1(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for if macro %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }

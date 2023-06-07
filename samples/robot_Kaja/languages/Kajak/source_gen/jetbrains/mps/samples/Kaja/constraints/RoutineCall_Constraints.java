@@ -20,10 +20,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -47,17 +44,9 @@ public class RoutineCall_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            final CompositeScope scope = new CompositeScope(SimpleRoleScope.forNamedElements(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Script$FS, true, false), LINKS.definitions$6Wm1), SimpleRoleScope.forNamedElements(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Library$oJ, true, false), LINKS.definitions$K53V), ListScope.forNamedElements(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Script$FS, true, false), LINKS.body$KJNw), LINKS.commands$z6Pr)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return SNodeOperations.isInstanceOf(it, CONCEPTS.RoutineDefinition$Gg);
-              }
-            })));
+            final CompositeScope scope = new CompositeScope(SimpleRoleScope.forNamedElements(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Script$FS, true, false), LINKS.definitions$6Wm1), SimpleRoleScope.forNamedElements(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Library$oJ, true, false), LINKS.definitions$K53V), ListScope.forNamedElements(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Script$FS, true, false), LINKS.body$KJNw), LINKS.commands$z6Pr)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.RoutineDefinition$Gg))));
 
-            ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Script$FS, true, false), CONCEPTS.Require$2c, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
-              public void visit(SNode it) {
-                scope.addScope(SimpleRoleScope.forNamedElements(SLinkOperations.getTarget(it, LINKS.library$JYHK), LINKS.definitions$K53V));
-              }
-            });
+            ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Script$FS, true, false), CONCEPTS.Require$2c, false, new SAbstractConcept[]{})).visitAll((it) -> scope.addScope(SimpleRoleScope.forNamedElements(SLinkOperations.getTarget(it, LINKS.library$JYHK), LINKS.definitions$K53V)));
             return scope;
           }
         };

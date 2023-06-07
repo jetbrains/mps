@@ -8,7 +8,6 @@ import jetbrains.mps.text.impl.TextGenSupport;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -20,11 +19,7 @@ public class ClassifierDocComment_TextGen extends TextGenDescriptorBase {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     DocCommentTextGen.docCommentStart(ctx.getPrimaryInput(), ctx);
 
-    for (SNode item : ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.tags$stUD)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.ParameterBlockDocTag$ie);
-      }
-    })) {
+    for (SNode item : ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.tags$stUD)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.ParameterBlockDocTag$ie))) {
       tgs.appendNode(item);
     }
     for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.param$Wb3e)) {

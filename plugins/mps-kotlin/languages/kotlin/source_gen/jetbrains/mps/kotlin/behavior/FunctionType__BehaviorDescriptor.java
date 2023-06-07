@@ -26,7 +26,6 @@ import jetbrains.mps.kotlin.api.members.SignatureBuilder;
 import jetbrains.mps.kotlin.signatures.FunctionSignature;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
 import jetbrains.mps.kotlin.api.types.identifiers.FunctionType;
@@ -71,7 +70,7 @@ public final class FunctionType__BehaviorDescriptor extends BaseBHDescriptor {
     return __thisNode__;
   }
   /*package*/ static void populateTypeSignatures_id5q426iHK5S9(@NotNull final SNode __thisNode__, final SignatureCollector visitor) {
-    SignatureBuilder.create(__thisNode__, FunctionSignature.class).withSignature((SNode _node) -> new FunctionSignature(new FunctionTypeInvokeDeclaration(__thisNode__), visitor)).declareTo(visitor);
+    SignatureBuilder.create(__thisNode__, FunctionSignature.class).withSignature((_node) -> new FunctionSignature(new FunctionTypeInvokeDeclaration(__thisNode__), visitor)).declareTo(visitor);
   }
   /*package*/ static String getDetailedPresentation_id22G2W3WJ92t(@NotNull SNode __thisNode__) {
     return IType__BehaviorDescriptor.toString_id4nn3FPlZH$r.invoke(__thisNode__, ((boolean) false));
@@ -89,11 +88,7 @@ public final class FunctionType__BehaviorDescriptor extends BaseBHDescriptor {
         builder.append(IType__BehaviorDescriptor.toString_id4nn3FPlZH$r.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.receiverType$7yLT), ((boolean) erased))).append(".");
       }
       builder.append("(");
-      builder.append(IterableUtils.join(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameters$jkhy)).select(new ISelector<SNode, String>() {
-        public String select(SNode it) {
-          return (String) IType__BehaviorDescriptor.toString_id4nn3FPlZH$r.invoke(SLinkOperations.getTarget(it, LINKS.type$69zk), ((boolean) erased));
-        }
-      }), ", "));
+      builder.append(IterableUtils.join(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameters$jkhy)).select((it) -> (String) IType__BehaviorDescriptor.toString_id4nn3FPlZH$r.invoke(SLinkOperations.getTarget(it, LINKS.type$69zk), ((boolean) erased))), ", "));
       builder.append(") -> ");
       builder.append(IType__BehaviorDescriptor.toString_id4nn3FPlZH$r.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.returnType$jkY_), ((boolean) erased)));
     }

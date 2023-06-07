@@ -150,6 +150,7 @@
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -219,7 +220,6 @@
         <child id="1204796294226" name="closure" index="23t8la" />
       </concept>
       <concept id="1235566554328" name="jetbrains.mps.baseLanguage.collections.structure.AnyOperation" flags="nn" index="2HwmR7" />
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
     </language>
   </registry>
   <node concept="312cEu" id="6pZ_jf9QLlb">
@@ -659,7 +659,7 @@
                               <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
                             </node>
                             <node concept="37vLTw" id="41Q_yvR$KrB" role="33vP2m">
-                              <ref role="3cqZAo" node="41Q_yvR$Kq4" resolve="it" />
+                              <ref role="3cqZAo" node="5W7E4fV0W3A" />
                             </node>
                           </node>
                         </node>
@@ -694,9 +694,9 @@
                           </node>
                         </node>
                       </node>
-                      <node concept="Rh6nW" id="41Q_yvR$Kq4" role="1bW2Oz">
+                      <node concept="gl6BB" id="5W7E4fV0W3A" role="1bW2Oz">
                         <property role="TrG5h" value="it" />
-                        <node concept="2jxLKc" id="41Q_yvR$Kq5" role="1tU5fm" />
+                        <node concept="2jxLKc" id="5W7E4fV0W3B" role="1tU5fm" />
                       </node>
                     </node>
                   </node>

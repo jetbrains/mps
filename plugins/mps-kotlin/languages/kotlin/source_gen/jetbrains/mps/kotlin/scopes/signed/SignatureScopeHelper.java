@@ -9,7 +9,6 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
 import jetbrains.mps.kotlin.scopes.SignatureFilterImpl;
 import jetbrains.mps.kotlin.signatures.FunctionSignature;
@@ -49,17 +48,15 @@ public class SignatureScopeHelper {
 
     final List<SignatureScope> scopes = ListSequence.fromList(new ArrayList<SignatureScope>());
 
-    Sequence.fromIterable(receiver.getTypeReceivers()).visitAll(new IVisitor<MemberReceiver.TypeReceiver>() {
-      public void visit(MemberReceiver.TypeReceiver typeRef) {
-        SNode type = typeRef.getType().compute();
+    Sequence.fromIterable(receiver.getTypeReceivers()).visitAll((typeRef) -> {
+      SNode type = typeRef.getType().compute();
 
-        if (typeRef.isStatic()) {
-          // getFullStaticScope is not used on purpose: instance scope of companion type should be added by adding the companion to the call receiver as an non static type (we need both types for the type system, FullStaticScope + InstanceScope on companion would give redundant members)
-          ListSequence.fromList(scopes).addElement(IType__BehaviorDescriptor.getStaticScope_id1ODRHGtufGw.invoke(type, filter, contextNode));
-        } else {
-          // Also retrieves scope for receiver types
-          ListSequence.fromList(scopes).addSequence(Sequence.fromIterable(IType__BehaviorDescriptor.getInstanceScopes_id1ODRHGtuist.invoke(type, filter, contextNode, ((boolean) true))));
-        }
+      if (typeRef.isStatic()) {
+        // getFullStaticScope is not used on purpose: instance scope of companion type should be added by adding the companion to the call receiver as an non static type (we need both types for the type system, FullStaticScope + InstanceScope on companion would give redundant members)
+        ListSequence.fromList(scopes).addElement(IType__BehaviorDescriptor.getStaticScope_id1ODRHGtufGw.invoke(type, filter, contextNode));
+      } else {
+        // Also retrieves scope for receiver types
+        ListSequence.fromList(scopes).addSequence(Sequence.fromIterable(IType__BehaviorDescriptor.getInstanceScopes_id1ODRHGtuist.invoke(type, filter, contextNode, ((boolean) true))));
       }
     });
 

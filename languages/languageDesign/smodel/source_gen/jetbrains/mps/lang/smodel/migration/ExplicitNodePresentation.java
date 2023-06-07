@@ -35,11 +35,7 @@ public class ExplicitNodePresentation extends MigrationScriptBase {
     {
       SearchScope scope_skz2ag_a0e = CommandUtil.createScope(m);
       final SearchScope scope_skz2ag_a0e_0 = new EditableFilteringScope(scope_skz2ag_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_skz2ag_a0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_skz2ag_a0e_0;
       for (SNode pe : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PlusExpression$k0, false))) {
         // handle ""+node and node+"" cases
         if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(pe, LINKS.leftExpression$sEj), CONCEPTS.StringLiteral$xu) && SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(pe, LINKS.rightExpression$nvX)), CONCEPTS.SNodeType$hR)) {

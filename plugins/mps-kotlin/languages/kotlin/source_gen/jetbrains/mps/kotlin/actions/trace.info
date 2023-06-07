@@ -5,7 +5,6 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <root>
     <file name="ActionAspectDescriptorImpl.java">
@@ -28,20 +27,20 @@
       <node id="4929770680975399570" at="57,77,58,188" concept="1" />
       <node id="8889685123373027103" at="65,7,66,41" concept="4" />
       <node id="8889685123373028226" at="67,83,68,119" concept="1" />
-      <node id="2998782254608413844" at="75,0,76,0" concept="6" trace="Parameter$o8" />
-      <node id="2998782254608413844" at="76,0,77,0" concept="6" trace="ClassParameter$wQ" />
-      <node id="2998782254608413844" at="77,0,78,0" concept="6" trace="ITypeArguments$p9" />
-      <node id="2998782254608413844" at="78,0,79,0" concept="6" trace="IArguments$xj" />
-      <node id="2998782254608413844" at="79,0,80,0" concept="6" trace="ILambdaAsArgument$MX" />
-      <node id="2998782254608413844" at="83,0,84,0" concept="6" trace="defaultValue$1bcs" />
-      <node id="2998782254608413844" at="84,0,85,0" concept="6" trace="type$1aXr" />
-      <node id="2998782254608413844" at="85,0,86,0" concept="6" trace="typeArguments$86s6" />
-      <node id="2998782254608413844" at="86,0,87,0" concept="6" trace="arguments$zJyV" />
-      <node id="2998782254608413844" at="87,0,88,0" concept="6" trace="lambda$U$kC" />
-      <node id="2998782254608413844" at="91,0,92,0" concept="6" trace="name$MnvL" />
-      <node id="2998782254608413844" at="92,0,93,0" concept="6" trace="isVararg$GaYv" />
-      <node id="2998782254608413844" at="93,0,94,0" concept="6" trace="isReadOnly$MDeP" />
-      <node id="2998782254608413844" at="94,0,95,0" concept="6" trace="isProperty$MCKN" />
+      <node id="2998782254608413844" at="75,0,76,0" concept="5" trace="Parameter$o8" />
+      <node id="2998782254608413844" at="76,0,77,0" concept="5" trace="ClassParameter$wQ" />
+      <node id="2998782254608413844" at="77,0,78,0" concept="5" trace="ITypeArguments$p9" />
+      <node id="2998782254608413844" at="78,0,79,0" concept="5" trace="IArguments$xj" />
+      <node id="2998782254608413844" at="79,0,80,0" concept="5" trace="ILambdaAsArgument$MX" />
+      <node id="2998782254608413844" at="83,0,84,0" concept="5" trace="defaultValue$1bcs" />
+      <node id="2998782254608413844" at="84,0,85,0" concept="5" trace="type$1aXr" />
+      <node id="2998782254608413844" at="85,0,86,0" concept="5" trace="typeArguments$86s6" />
+      <node id="2998782254608413844" at="86,0,87,0" concept="5" trace="arguments$zJyV" />
+      <node id="2998782254608413844" at="87,0,88,0" concept="5" trace="lambda$U$kC" />
+      <node id="2998782254608413844" at="91,0,92,0" concept="5" trace="name$MnvL" />
+      <node id="2998782254608413844" at="92,0,93,0" concept="5" trace="isVararg$GaYv" />
+      <node id="2998782254608413844" at="93,0,94,0" concept="5" trace="isReadOnly$MDeP" />
+      <node id="2998782254608413844" at="94,0,95,0" concept="5" trace="isProperty$MCKN" />
       <node id="1806979145075647222" at="46,42,49,9" concept="2" />
       <node id="4929770680975399567" at="56,42,59,9" concept="2" />
       <node id="8889685123373027103" at="66,41,69,9" concept="2" />
@@ -140,18 +139,18 @@
       <node id="1806979145044532411" at="51,90,52,157" concept="1" />
       <node id="2998782254624348423" at="59,7,60,44" concept="4" />
       <node id="2998782254624348426" at="61,90,62,136" concept="1" />
-      <node id="2998782254613442269" at="69,0,70,0" concept="6" trace="IVisible$LZ" />
-      <node id="2998782254613442269" at="70,0,71,0" concept="6" trace="IInheritable$pc" />
-      <node id="2998782254613442269" at="71,0,72,0" concept="6" trace="IncompleteDeclaration$r_" />
-      <node id="2998782254613442269" at="75,0,76,0" concept="6" trace="visibility$vnSV" />
-      <node id="2998782254613442269" at="76,0,77,0" concept="6" trace="inheritance$TFvr" />
-      <node id="2998782254613442269" at="77,0,78,0" concept="6" trace="modifiers$XKtM" />
-      <node id="2998782254613442269" at="78,0,79,0" concept="6" trace="funModifiers$vmCQ" />
-      <node id="2998782254613442269" at="79,0,80,0" concept="6" trace="modifier$C$4W" />
-      <node id="2998782254613442269" at="80,0,81,0" concept="6" trace="classModifier$gUVP" />
-      <node id="2998782254613442269" at="84,0,85,0" concept="6" trace="isOverride$Gfqk" />
-      <node id="2998782254613442269" at="85,0,86,0" concept="6" trace="isOverride$3ngh" />
-      <node id="2998782254613442269" at="86,0,87,0" concept="6" trace="isOverride$4zN7" />
+      <node id="2998782254613442269" at="69,0,70,0" concept="5" trace="IVisible$LZ" />
+      <node id="2998782254613442269" at="70,0,71,0" concept="5" trace="IInheritable$pc" />
+      <node id="2998782254613442269" at="71,0,72,0" concept="5" trace="IncompleteDeclaration$r_" />
+      <node id="2998782254613442269" at="75,0,76,0" concept="5" trace="visibility$vnSV" />
+      <node id="2998782254613442269" at="76,0,77,0" concept="5" trace="inheritance$TFvr" />
+      <node id="2998782254613442269" at="77,0,78,0" concept="5" trace="modifiers$XKtM" />
+      <node id="2998782254613442269" at="78,0,79,0" concept="5" trace="funModifiers$vmCQ" />
+      <node id="2998782254613442269" at="79,0,80,0" concept="5" trace="modifier$C$4W" />
+      <node id="2998782254613442269" at="80,0,81,0" concept="5" trace="classModifier$gUVP" />
+      <node id="2998782254613442269" at="84,0,85,0" concept="5" trace="isOverride$Gfqk" />
+      <node id="2998782254613442269" at="85,0,86,0" concept="5" trace="isOverride$3ngh" />
+      <node id="2998782254613442269" at="86,0,87,0" concept="5" trace="isOverride$4zN7" />
       <node id="2998782254613442859" at="22,44,25,9" concept="2" />
       <node id="1179778492882587969" at="30,102,33,7" concept="2" />
       <node id="1806979145044531683" at="50,44,53,9" concept="2" />
@@ -240,9 +239,9 @@
       <node id="7138249191279644219" at="20,84,21,167" concept="1" />
       <node id="5332309673433999413" at="21,167,22,121" concept="1" />
       <node id="5332309673434007966" at="22,121,23,129" concept="1" />
-      <node id="7138249191279644115" at="30,0,31,0" concept="6" trace="NumericBaseLiteral$6e" />
-      <node id="7138249191279644115" at="34,0,35,0" concept="6" trace="long$1NZg" />
-      <node id="7138249191279644115" at="35,0,36,0" concept="6" trace="unsigned$iUpc" />
+      <node id="7138249191279644115" at="30,0,31,0" concept="5" trace="NumericBaseLiteral$6e" />
+      <node id="7138249191279644115" at="34,0,35,0" concept="5" trace="long$1NZg" />
+      <node id="7138249191279644115" at="35,0,36,0" concept="5" trace="unsigned$iUpc" />
       <node id="7138249191279644129" at="19,41,24,9" concept="2" />
       <node id="7138249191279644129" at="17,102,25,7" concept="0" />
       <node id="7138249191279644116" at="17,0,27,0" concept="3" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;ILorg/jetbrains/mps/openapi/model/SModel;)V" />
@@ -266,36 +265,29 @@
   </root>
   <root nodeRef="r:9eb3c98a-23c5-4e3d-a5e1-afeeb17e8674(jetbrains.mps.kotlin.actions)/7208671122137144283">
     <file name="StructureFactories.java">
-      <node id="7208671122137144301" at="19,7,20,39" concept="4" />
-      <node id="7208671122137210273" at="23,43,24,50" concept="5" />
-      <node id="7208671122137144283" at="33,0,34,0" concept="6" trace="IStatementHolder$84" />
-      <node id="7208671122137144283" at="37,0,38,0" concept="6" trace="statements$R3pt" />
-      <node id="7208671122137200510" at="23,0,26,0" concept="3" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="7208671122137144426" at="21,80,26,14" concept="1" />
-      <node id="7208671122137144301" at="20,39,27,9" concept="2" />
-      <node id="7208671122137144301" at="18,102,28,7" concept="0" />
-      <node id="7208671122137144284" at="18,0,30,0" concept="3" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;ILorg/jetbrains/mps/openapi/model/SModel;)V" />
-      <scope id="7208671122137200511" at="23,43,24,50" />
-      <scope id="7208671122137200510" at="23,0,26,0">
-        <var name="it" id="7208671122137200510" />
-      </scope>
-      <scope id="7208671122137144303" at="21,80,26,14" />
-      <scope id="7208671122137144301" at="19,7,27,9">
+      <node id="7208671122137144301" at="18,7,19,39" concept="4" />
+      <node id="7208671122137144426" at="20,80,21,232" concept="1" />
+      <node id="7208671122137144283" at="28,0,29,0" concept="5" trace="IStatementHolder$84" />
+      <node id="7208671122137144283" at="32,0,33,0" concept="5" trace="statements$R3pt" />
+      <node id="7208671122137144301" at="19,39,22,9" concept="2" />
+      <node id="7208671122137144301" at="17,102,23,7" concept="0" />
+      <node id="7208671122137144284" at="17,0,25,0" concept="3" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;ILorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <scope id="7208671122137144303" at="20,80,21,232" />
+      <scope id="7208671122137144301" at="18,7,22,9">
         <var name="block" id="7208671122137144301" />
       </scope>
-      <scope id="7208671122137144284" at="18,102,28,7" />
-      <scope id="7208671122137144284" at="18,0,30,0">
+      <scope id="7208671122137144284" at="17,102,23,7" />
+      <scope id="7208671122137144284" at="17,0,25,0">
         <var name="enclosingNode" id="7208671122137144284" />
         <var name="index" id="7208671122137144284" />
         <var name="model" id="7208671122137144284" />
         <var name="newNode" id="7208671122137144284" />
         <var name="sampleNode" id="7208671122137144284" />
       </scope>
-      <unit id="7208671122137144283" at="32,0,35,0" name="jetbrains.mps.kotlin.actions.StructureFactories$CONCEPTS" />
-      <unit id="7208671122137144283" at="36,0,39,0" name="jetbrains.mps.kotlin.actions.StructureFactories$LINKS" />
-      <unit id="7208671122137200510" at="22,197,26,11" name="jetbrains.mps.kotlin.actions.StructureFactories$NodeFactory_7208671122137144284$1" />
-      <unit id="7208671122137144284" at="17,0,31,0" name="jetbrains.mps.kotlin.actions.StructureFactories$NodeFactory_7208671122137144284" />
-      <unit id="7208671122137144283" at="16,0,40,0" name="jetbrains.mps.kotlin.actions.StructureFactories" />
+      <unit id="7208671122137144283" at="27,0,30,0" name="jetbrains.mps.kotlin.actions.StructureFactories$CONCEPTS" />
+      <unit id="7208671122137144283" at="31,0,34,0" name="jetbrains.mps.kotlin.actions.StructureFactories$LINKS" />
+      <unit id="7208671122137144284" at="16,0,26,0" name="jetbrains.mps.kotlin.actions.StructureFactories$NodeFactory_7208671122137144284" />
+      <unit id="7208671122137144283" at="15,0,35,0" name="jetbrains.mps.kotlin.actions.StructureFactories" />
     </file>
   </root>
 </debug-info>

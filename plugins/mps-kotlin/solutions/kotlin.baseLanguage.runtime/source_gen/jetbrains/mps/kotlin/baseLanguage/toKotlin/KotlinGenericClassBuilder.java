@@ -9,7 +9,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.IClassifierType__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -22,11 +21,7 @@ public class KotlinGenericClassBuilder extends KotlinClassTypeBuilder {
   @Override
   public SNode convert(SNode source) {
     SNode converted = SNodeOperations.cast(super.convert(source), CONCEPTS.ClassType$jI);
-    ListSequence.fromList(SLinkOperations.getChildren(converted, LINKS.typeProjections$vhti)).addSequence(Sequence.fromIterable(IClassifierType__BehaviorDescriptor.getTypeParameters_id6r77ob2URYe.invoke(SNodeOperations.cast(source, CONCEPTS.ClassifierType$bL))).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return JavaToKtConversion.convertProjection(it);
-      }
-    }));
+    ListSequence.fromList(SLinkOperations.getChildren(converted, LINKS.typeProjections$vhti)).addSequence(Sequence.fromIterable(IClassifierType__BehaviorDescriptor.getTypeParameters_id6r77ob2URYe.invoke(SNodeOperations.cast(source, CONCEPTS.ClassifierType$bL))).select((it) -> JavaToKtConversion.convertProjection(it)));
     return converted;
   }
 

@@ -13,8 +13,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.List;
 import com.intellij.openapi.vcs.VcsDirectoryMapping;
 import com.intellij.openapi.vcs.ProjectLevelVcsManager;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import com.intellij.openapi.vcs.impl.projectlevelman.AllVcses;
@@ -58,21 +56,9 @@ public class MergeDriverNotification {
     showNotifications();
   }
   private void showNotifications() {
-    final Set<String> vcsNames = SetSequence.fromSetWithValues(new HashSet<String>(), ListSequence.fromList(((List<VcsDirectoryMapping>) ProjectLevelVcsManager.getInstance(myProject).getDirectoryMappings())).select(new ISelector<VcsDirectoryMapping, String>() {
-      public String select(VcsDirectoryMapping dm) {
-        return dm.getVcs();
-      }
-    }).where(new IWhereFilter<String>() {
-      public boolean accept(String vn) {
-        return (vn != null && vn.length() > 0);
-      }
-    }));
+    final Set<String> vcsNames = SetSequence.fromSetWithValues(new HashSet<String>(), ListSequence.fromList(((List<VcsDirectoryMapping>) ProjectLevelVcsManager.getInstance(myProject).getDirectoryMappings())).select((dm) -> dm.getVcs()).where((vn) -> (vn != null && vn.length() > 0)));
     ThreadUtils.runInUIThreadNoWait(() -> {
-      String whichVcses = IterableUtils.join(SetSequence.fromSet(vcsNames).select(new ISelector<String, String>() {
-        public String select(String vn) {
-          return AllVcses.getInstance(myProject).getByName(vn).getDisplayName();
-        }
-      }), "and");
+      String whichVcses = IterableUtils.join(SetSequence.fromSet(vcsNames).select((vn) -> AllVcses.getInstance(myProject).getByName(vn).getDisplayName()), "and");
       String message = "<p>This project uses " + whichVcses + ". For better integration with MPS, it is necessary to update VCS settings (<a href=\"https://www.jetbrains.com/help/mps/version-control-integration.html#vcsadd-ons\"" + ">More info</a>).<p><a href=\"install\">Update</a></p>";
       myLastNotification = new Notification("MergeDriver", "VCS Addons", message, NotificationType.WARNING, new NotificationListener() {
         @Override

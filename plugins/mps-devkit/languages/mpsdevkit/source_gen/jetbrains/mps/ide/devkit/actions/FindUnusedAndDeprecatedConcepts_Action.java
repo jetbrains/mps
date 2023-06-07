@@ -36,8 +36,6 @@ import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.ide.findusages.model.scopes.ProjectScope;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.core.behavior.IDeprecatable__BehaviorDescriptor;
 import com.intellij.openapi.progress.ProgressManager;
 import jetbrains.mps.ide.findusages.model.IResultProvider;
@@ -131,20 +129,8 @@ public class FindUnusedAndDeprecatedConcepts_Action extends BaseAction {
 
           monitor.step("Filter unused and deprecated...");
           // FIXME why it's not a dedicated IFinder that takes AbstractConceptDeclaration instances as search query and nodes/models as scope?
-          Iterable<SNode> allConcepts = SNodeOperations.ofConcept(Sequence.fromIterable(searchResults).select(new ISelector<SearchResult<Object>, Object>() {
-            public Object select(SearchResult<Object> it) {
-              return it.getObject();
-            }
-          }).ofType(SNode.class), CONCEPTS.AbstractConceptDeclaration$KA);
-          List<SNodeReference> rv = Sequence.fromIterable(allConcepts).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode concept) {
-              return (boolean) IDeprecatable__BehaviorDescriptor.isDeprecated_idhOwoPtR.invoke(concept) || !(conceptsInUse.contains(NameUtil.nodeFQName(concept)));
-            }
-          }).select(new ISelector<SNode, SNodeReference>() {
-            public SNodeReference select(SNode it) {
-              return SNodeOperations.getPointer(it);
-            }
-          }).toListSequence();
+          Iterable<SNode> allConcepts = SNodeOperations.ofConcept(Sequence.fromIterable(searchResults).select((it) -> it.getObject()).ofType(SNode.class), CONCEPTS.AbstractConceptDeclaration$KA);
+          List<SNodeReference> rv = Sequence.fromIterable(allConcepts).where((concept) -> (boolean) IDeprecatable__BehaviorDescriptor.isDeprecated_idhOwoPtR.invoke(concept) || !(conceptsInUse.contains(NameUtil.nodeFQName(concept)))).select((it) -> SNodeOperations.getPointer(it)).toList();
           monitor.done();
           return rv;
         });
@@ -162,15 +148,7 @@ public class FindUnusedAndDeprecatedConcepts_Action extends BaseAction {
       public SearchResults find(SearchQuery query, ProgressMonitor progress) {
         final SRepository repo = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository();
         SearchResults<SNode> results = new SearchResults<SNode>();
-        for (SNode node : ListSequence.fromList(nodes).select(new ISelector<SNodeReference, SNode>() {
-          public SNode select(SNodeReference it) {
-            return it.resolve(repo);
-          }
-        }).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return it != null;
-          }
-        })) {
+        for (SNode node : ListSequence.fromList(nodes).select((it) -> it.resolve(repo)).where((it) -> it != null)) {
           results.addSearchResult(new SearchResult<SNode>(node, "Uncategorized"));
         }
         return results;

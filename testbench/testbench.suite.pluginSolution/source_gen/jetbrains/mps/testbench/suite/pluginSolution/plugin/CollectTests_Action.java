@@ -27,7 +27,6 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -35,7 +34,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.testbench.testcollector.TestCollector;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.testbench.suite.behavior.IModuleRef__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.testbench.suite.behavior.ITestRef__BehaviorDescriptor;
@@ -122,11 +120,7 @@ public class CollectTests_Action extends BaseAction {
     final SRepository projectRepo = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository();
     projectRepo.getModelAccess().runReadAction(() -> {
       Iterable<Solution> allSolutions = new ModuleRepositoryFacade(projectRepo).getAllModules(Solution.class);
-      solutions.value = Sequence.fromIterable(allSolutions).select(new ISelector<Solution, SModuleReference>() {
-        public SModuleReference select(Solution s) {
-          return s.getModuleReference();
-        }
-      }).toListSequence();
+      solutions.value = Sequence.fromIterable(allSolutions).select((s) -> s.getModuleReference()).toList();
     });
 
     int done = 0;
@@ -151,28 +145,18 @@ public class CollectTests_Action extends BaseAction {
           projectRepo.getModelAccess().runReadAction(() -> collected.value = new TestCollector().collectTests(smodel, tests));
 
           if (collected.value) {
-            ThreadUtils.runInUIThreadAndWait(() -> {
-              projectRepo.getModelAccess().executeCommand(() -> {
-                SNode suite = ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.ModuleSuite$mR)).findFirst(new IWhereFilter<SNode>() {
-                  public boolean accept(SNode it) {
-                    return IModuleRef__BehaviorDescriptor.moduleReference_id173Z5qAOun8.invoke(SLinkOperations.getTarget(it, LINKS.moduleRef$vM9R)).equals(module.value.getModuleReference());
-                  }
-                });
-                if (suite != null) {
-                  for (final SNode tref : tests) {
-                    if (!(ListSequence.fromList(SLinkOperations.getChildren(suite, LINKS.testRef$R3jf)).any(new IWhereFilter<SNode>() {
-                      public boolean accept(SNode it) {
-                        return (boolean) ITestRef__BehaviorDescriptor.isSame_id1ouvi_ymQH.invoke(it, tref);
-                      }
-                    }))) {
-                      ListSequence.fromList(SLinkOperations.getChildren(suite, LINKS.testRef$R3jf)).addElement(SNodeOperations.cast(tref, CONCEPTS.ITestRef$zt));
-                      ((SModelInternal) model).addModelImport(smodel.getReference());
-                      ((AbstractModule) ((SModel) MapSequence.fromMap(_params).get("modelDesc")).getModule()).addDependency(module.value.getModuleReference(), false);
-                    }
+            ThreadUtils.runInUIThreadAndWait(() -> projectRepo.getModelAccess().executeCommand(() -> {
+              SNode suite = ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.ModuleSuite$mR)).findFirst((it) -> IModuleRef__BehaviorDescriptor.moduleReference_id173Z5qAOun8.invoke(SLinkOperations.getTarget(it, LINKS.moduleRef$vM9R)).equals(module.value.getModuleReference()));
+              if (suite != null) {
+                for (final SNode tref : tests) {
+                  if (!(ListSequence.fromList(SLinkOperations.getChildren(suite, LINKS.testRef$R3jf)).any((it) -> (boolean) ITestRef__BehaviorDescriptor.isSame_id1ouvi_ymQH.invoke(it, tref)))) {
+                    ListSequence.fromList(SLinkOperations.getChildren(suite, LINKS.testRef$R3jf)).addElement(SNodeOperations.cast(tref, CONCEPTS.ITestRef$zt));
+                    ((SModelInternal) model).addModelImport(smodel.getReference());
+                    ((AbstractModule) ((SModel) MapSequence.fromMap(_params).get("modelDesc")).getModule()).addDependency(module.value.getModuleReference(), false);
                   }
                 }
-              });
-            });
+              }
+            }));
           }
         }
       }

@@ -198,13 +198,11 @@ public class DimensionUtil {
     } else {
       {
         final SNode t1 = typeCheckingContext.typeOf(ListSequence.fromList(components).getElement(n), "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "757772128652013457", true);
-        typeCheckingContext.whenConcrete(t1, new Runnable() {
-          public void run() {
-            List<SNode> types2 = new ArrayList<SNode>();
-            ListSequence.fromList(types2).addSequence(ListSequence.fromList(types));
-            ListSequence.fromList(types2).addElement(typeCheckingContext.getExpandedNode(t1));
-            checkDim(typeCheckingContext, components, n + 1, types2, row, node);
-          }
+        typeCheckingContext.whenConcrete(t1, () -> {
+          List<SNode> types2 = new ArrayList<SNode>();
+          ListSequence.fromList(types2).addSequence(ListSequence.fromList(types));
+          ListSequence.fromList(types2).addElement(typeCheckingContext.getExpandedNode(t1));
+          checkDim(typeCheckingContext, components, n + 1, types2, row, node);
         }, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "757772128651891776", false, false);
       }
     }

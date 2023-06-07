@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="73736c50-f124-433b-b789-2828a15a0adc" name="jetbrains.mps.baseLanguage.collections.trove" version="0" />
@@ -129,6 +129,7 @@
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1200830824066" name="jetbrains.mps.baseLanguage.closures.structure.YieldStatement" flags="nn" index="2n63Yl">
         <child id="1200830928149" name="expression" index="2n6tg2" />
       </concept>
@@ -191,7 +192,6 @@
         <child id="1237721435808" name="initValue" index="HW$Y0" />
         <child id="1237721435807" name="elementType" index="HW$YZ" />
       </concept>
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1237909114519" name="jetbrains.mps.baseLanguage.collections.structure.GetValuesOperation" flags="nn" index="T8wYR" />
       <concept id="1160612413312" name="jetbrains.mps.baseLanguage.collections.structure.AddElementOperation" flags="nn" index="TSZUe" />
       <concept id="1160666733551" name="jetbrains.mps.baseLanguage.collections.structure.AddAllElementsOperation" flags="nn" index="X8dFx" />
@@ -613,15 +613,15 @@
                         </node>
                         <node concept="TSZUe" id="HQjE4XgE68" role="2OqNvi">
                           <node concept="37vLTw" id="HQjE4XgE67" role="25WWJ7">
-                            <ref role="3cqZAo" node="7b2diHqzAk4" resolve="i" />
+                            <ref role="3cqZAo" node="5W7E4fV0Y2c" />
                           </node>
                         </node>
                       </node>
                     </node>
                   </node>
-                  <node concept="Rh6nW" id="7b2diHqzAk4" role="1bW2Oz">
+                  <node concept="gl6BB" id="5W7E4fV0Y2c" role="1bW2Oz">
                     <property role="TrG5h" value="i" />
-                    <node concept="2jxLKc" id="1P4c1XrzT93" role="1tU5fm" />
+                    <node concept="2jxLKc" id="5W7E4fV0Y2d" role="1tU5fm" />
                   </node>
                 </node>
               </node>
@@ -685,15 +685,15 @@
                             <node concept="10QFUN" id="7b2diHqzAky" role="10QFUP">
                               <node concept="3cpWsb" id="7b2diHqzAkz" role="10QFUM" />
                               <node concept="37vLTw" id="2BHiRxghhTo" role="10QFUP">
-                                <ref role="3cqZAo" node="7b2diHqzAk_" resolve="l" />
+                                <ref role="3cqZAo" node="5W7E4fV0Y2e" />
                               </node>
                             </node>
                           </node>
                         </node>
                       </node>
-                      <node concept="Rh6nW" id="7b2diHqzAk_" role="1bW2Oz">
+                      <node concept="gl6BB" id="5W7E4fV0Y2e" role="1bW2Oz">
                         <property role="TrG5h" value="l" />
-                        <node concept="2jxLKc" id="1P4c1XrzT8X" role="1tU5fm" />
+                        <node concept="2jxLKc" id="5W7E4fV0Y2f" role="1tU5fm" />
                       </node>
                     </node>
                   </node>

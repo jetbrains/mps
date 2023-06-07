@@ -18,7 +18,7 @@ import jetbrains.mps.workbench.action.BaseGroup;
   public ScriptsMenuBuilder(MPSProject mpsProject, boolean applyToSelection) {
     this.applyToSelection = applyToSelection;
     this.allLanguages = ListSequence.fromListWithValues(new ArrayList<Language>(), new ModuleRepositoryFacade(mpsProject).getAllModules(Language.class));
-    ListSequence.fromList(this.allLanguages).sort((Language l1, Language l2) -> l1.getModuleName().compareTo(l2.getModuleName()), true);
+    ListSequence.fromList(this.allLanguages).sort((l1, l2) -> l1.getModuleName().compareTo(l2.getModuleName()), true);
     this.allScripts = ScriptsActionGroupHelper.getMigrationScripts(this.allLanguages);
   }
   public BaseGroup create_ByCategoryPopup() {

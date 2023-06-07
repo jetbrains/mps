@@ -24,8 +24,7 @@
       <unit at="8,0,18,0" name="jetbrains.mps.lang.plugin.plugin.FacetAspectDescriptor" />
     </file>
     <file name="FacetManifest.java">
-      <unit at="21,55,25,5" name="jetbrains.mps.lang.plugin.plugin.FacetManifest$1" />
-      <unit at="12,0,28,0" name="jetbrains.mps.lang.plugin.plugin.FacetManifest" />
+      <unit at="11,0,23,0" name="jetbrains.mps.lang.plugin.plugin.FacetManifest" />
     </file>
     <file name="IconContainer.java">
       <unit at="7,0,10,0" name="jetbrains.mps.lang.plugin.plugin.IconContainer" />
@@ -292,7 +291,7 @@
       <unit id="1675754527181903316" at="36,0,215,0" name="jetbrains.mps.lang.plugin.plugin.CopyPluginXml_Facet" />
     </file>
     <file name="FacetManifest.java">
-      <node id="1675754527181903316" at="14,26,15,72" concept="3" />
+      <node id="1675754527181903316" at="13,26,14,72" concept="3" />
     </file>
   </root>
   <root nodeRef="r:01d327ba-040c-402c-a2b6-8832116588df(jetbrains.mps.lang.plugin.plugin)/3193873080290339088">
@@ -335,16 +334,11 @@
   </root>
   <root nodeRef="r:01d327ba-040c-402c-a2b6-8832116588df(jetbrains.mps.lang.plugin.plugin)/4726480899536586749">
     <file name="URLFunction_HelpCenterDocUrl.java">
-      <node id="3569916352002070174" at="11,30,12,54" concept="9" />
-      <node id="4726480899536705523" at="11,0,14,0" concept="7" trace="invoke#()Ljava/lang/String;" />
-      <node id="4726480899536586749" at="9,33,14,15" concept="9" />
-      <node id="4726480899536586749" at="9,0,16,0" concept="12" trace="getUrl#()Ljava/lang/String;" />
-      <scope id="4726480899536705524" at="11,30,12,54" />
-      <scope id="4726480899536705523" at="11,0,14,0" />
-      <scope id="4726480899536586749" at="9,33,14,15" />
-      <scope id="4726480899536586749" at="9,0,16,0" />
-      <unit id="4726480899536705523" at="10,15,14,5" name="jetbrains.mps.lang.plugin.plugin.URLFunction_HelpCenterDocUrl$1" />
-      <unit id="4726480899536586749" at="8,0,17,0" name="jetbrains.mps.lang.plugin.plugin.URLFunction_HelpCenterDocUrl" />
+      <node id="4726480899536586749" at="9,33,10,106" concept="9" />
+      <node id="4726480899536586749" at="9,0,12,0" concept="12" trace="getUrl#()Ljava/lang/String;" />
+      <scope id="4726480899536586749" at="9,33,10,106" />
+      <scope id="4726480899536586749" at="9,0,12,0" />
+      <unit id="4726480899536586749" at="8,0,13,0" name="jetbrains.mps.lang.plugin.plugin.URLFunction_HelpCenterDocUrl" />
     </file>
   </root>
 </debug-info>

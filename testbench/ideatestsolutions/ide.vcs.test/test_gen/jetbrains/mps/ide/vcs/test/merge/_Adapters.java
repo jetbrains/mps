@@ -16,13 +16,4 @@ public class _Adapters {
       this.adapted.invoke();
     }
   }
-  public static class _return_P0_E0_to_Runnable_adapter implements Runnable {
-    private _FunctionTypes._return_P0_E0<? extends Object> adapted;
-    public _return_P0_E0_to_Runnable_adapter(_FunctionTypes._return_P0_E0<? extends Object> adapted) {
-      this.adapted = adapted;
-    }
-    public void run() {
-      this.adapted.invoke();
-    }
-  }
 }

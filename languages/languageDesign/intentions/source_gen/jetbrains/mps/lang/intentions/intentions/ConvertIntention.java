@@ -9,7 +9,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
@@ -72,11 +71,7 @@ public class ConvertIntention extends IntentionsFactory {
 
 
   public void copyFunctionBody(SNode from, SNode to) {
-    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(to, LINKS.body$5xQk), LINKS.statement$53DE)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(from, LINKS.statement$53DE)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SNodeOperations.copyNode(it);
-      }
-    }));
+    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(to, LINKS.body$5xQk), LINKS.statement$53DE)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(from, LINKS.statement$53DE)).select((it) -> SNodeOperations.copyNode(it)));
   }
   public SNode createParameterReference(List<SNode> parameters, int argumentNumber) {
     SNode nodeRef = SNodeFactoryOperations.createNewNode(CONCEPTS.VariableReference$TC, null);

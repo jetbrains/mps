@@ -11,14 +11,11 @@ import jetbrains.mps.kotlin.api.members.SignatureCollector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.kotlin.api.members.SignatureBuilder;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.kotlin.behavior.TypeReference;
 import jetbrains.mps.kotlin.behavior.IVariableIdentifier__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -107,17 +104,15 @@ public class PropertySignature implements MemberSignature {
   }
 
   public static void declareAllTo(Iterable<SNode> named, final boolean mutable, SNode receiver, final SignatureCollector collector) {
-    Iterable<SNode> nonNullNamed = Sequence.fromIterable(named).where(new NotNullWhereFilter<SNode>());
+    Iterable<SNode> nonNullNamed = Sequence.fromIterable(named).where(new NotNullWhereFilter());
     SignatureBuilder.create(nonNullNamed, PropertySignature.class).withExtensionReceiverType(receiver).withSignatures((SNode it) -> signaturesOf(it, mutable)).declareTo(collector);
 
     // Enforce null receiver to prevent infinite recursion
     if (receiver == null) {
-      Sequence.fromIterable(nonNullNamed).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNode receivedFunctionType = receivedFunctionType(it);
-          if ((receivedFunctionType != null)) {
-            declareTo(it, receivedFunctionType, collector);
-          }
+      Sequence.fromIterable(nonNullNamed).visitAll((it) -> {
+        SNode receivedFunctionType = receivedFunctionType(it);
+        if ((receivedFunctionType != null)) {
+          declareTo(it, receivedFunctionType, collector);
         }
       });
     }
@@ -145,7 +140,7 @@ public class PropertySignature implements MemberSignature {
       return;
     }
 
-    SignatureBuilder.create(named, PropertySignature.class).withExtensionReceiverType(receiver).withSignatures((SNode node) -> signaturesOf(named, mutable)).declareTo(collector);
+    SignatureBuilder.create(named, PropertySignature.class).withExtensionReceiverType(receiver).withSignatures((node) -> signaturesOf(named, mutable)).declareTo(collector);
 
     if (receiver == null) {
       SNode functionTypeReceiver = receivedFunctionType(named);
@@ -160,41 +155,37 @@ public class PropertySignature implements MemberSignature {
     final PropertySignature getter = new PropertySignature(SPropertyOperations.getString(variable, PROPS.name$MnvL), AccessorKind.GETTER);
 
     if (mutable) {
-      return Sequence.fromClosure(new ISequenceClosure<PropertySignature>() {
-        public Iterable<PropertySignature> iterable() {
-          return new Iterable<PropertySignature>() {
-            public Iterator<PropertySignature> iterator() {
-              return new YieldingIterator<PropertySignature>() {
-                private int __CP__ = 0;
-                protected boolean moveToNext() {
+      return Sequence.fromClosure(() -> {
+        return (Iterable<PropertySignature>) () -> {
+          return new YieldingIterator<PropertySignature>() {
+            private int __CP__ = 0;
+            protected boolean moveToNext() {
 __loop__:
-                  do {
+              do {
 __switch__:
-                    switch (this.__CP__) {
-                      case -1:
-                        assert false : "Internal error";
-                        return false;
-                      case 2:
-                        this.__CP__ = 3;
-                        this.yield(getter);
-                        return true;
-                      case 3:
-                        this.__CP__ = 1;
-                        this.yield(new PropertySignature(SPropertyOperations.getString(variable, PROPS.name$MnvL), AccessorKind.SETTER));
-                        return true;
-                      case 0:
-                        this.__CP__ = 2;
-                        break;
-                      default:
-                        break __loop__;
-                    }
-                  } while (true);
-                  return false;
+                switch (this.__CP__) {
+                  case -1:
+                    assert false : "Internal error";
+                    return false;
+                  case 2:
+                    this.__CP__ = 3;
+                    this.yield(getter);
+                    return true;
+                  case 3:
+                    this.__CP__ = 1;
+                    this.yield(new PropertySignature(SPropertyOperations.getString(variable, PROPS.name$MnvL), AccessorKind.SETTER));
+                    return true;
+                  case 0:
+                    this.__CP__ = 2;
+                    break;
+                  default:
+                    break __loop__;
                 }
-              };
+              } while (true);
+              return false;
             }
           };
-        }
+        };
       });
     } else {
       return Sequence.<PropertySignature>singleton(getter);

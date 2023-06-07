@@ -10,7 +10,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SConcept;
 import java.util.ArrayList;
 import jetbrains.mps.plugins.relations.CreateAspectContext;
@@ -45,11 +44,7 @@ public class Producer_TabDescriptor extends RelationDescriptor {
   }
   public List<SNode> getNodes(SNode node) {
     final SNode nodeFinal = node;
-    return ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(node), CONCEPTS.RunConfigurationProducer$AW)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.configuration$H39x), LINKS.persistentConfiguration$QL_P) == nodeFinal;
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(node), CONCEPTS.RunConfigurationProducer$AW)).where((it) -> SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.configuration$H39x), LINKS.persistentConfiguration$QL_P) == nodeFinal).toList();
   }
   public boolean isSingle() {
     return false;

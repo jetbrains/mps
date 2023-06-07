@@ -14,16 +14,10 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Collections;
-import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.build.behavior.BuildString__BehaviorDescriptor;
 import jetbrains.mps.build.mps.behavior.BuildMps_Branding__BehaviorDescriptor;
@@ -57,206 +51,152 @@ public final class MpsStartupScript__BehaviorDescriptor extends BaseBHDescriptor
 
   @Deprecated(since = "2021.2.1")
   /*package*/ static String getDefaultVmoptions_id54lRqzvuHDj(@NotNull SNode __thisNode__, boolean is64bit) {
-    return trim_9sggks_a0a0r(Sequence.fromIterable(MpsStartupScript__BehaviorDescriptor.getVmOptions_id2lwFGYOX$qJ.invokeSpecial(__thisNode__, ((boolean) is64bit))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SPropertyOperations.getBoolean(it, PROPS.commented$92Mp));
-      }
-    }).foldLeft("", new ILeftCombinator<SNode, String>() {
-      public String combine(String s, SNode it) {
-        return s + " " + SPropertyOperations.getString(it, PROPS.options$D2Jv);
-      }
-    }));
+    return trim_9sggks_a0a0r(Sequence.fromIterable(MpsStartupScript__BehaviorDescriptor.getVmOptions_id2lwFGYOX$qJ.invokeSpecial(__thisNode__, ((boolean) is64bit))).where((it) -> !(SPropertyOperations.getBoolean(it, PROPS.commented$92Mp))).foldLeft("", (String s, SNode it) -> s + " " + SPropertyOperations.getString(it, PROPS.options$D2Jv)));
   }
   @Deprecated(since = "2021.2.1")
   /*package*/ static String getCommentedVmoptions_id31jVCtHh$86(@NotNull SNode __thisNode__, boolean is64bit) {
-    return trim_9sggks_a0a0s(Sequence.fromIterable(MpsStartupScript__BehaviorDescriptor.getCommentedOptions_id54lRqzvvwVL.invokeSpecial(__thisNode__, ((boolean) is64bit))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getBoolean(it, PROPS.commented$92Mp);
-      }
-    }).foldLeft("", new ILeftCombinator<SNode, String>() {
-      public String combine(String s, SNode it) {
-        return s + " #" + SPropertyOperations.getString(it, PROPS.options$D2Jv);
-      }
-    }));
+    return trim_9sggks_a0a0s(Sequence.fromIterable(MpsStartupScript__BehaviorDescriptor.getCommentedOptions_id54lRqzvvwVL.invokeSpecial(__thisNode__, ((boolean) is64bit))).where((it) -> SPropertyOperations.getBoolean(it, PROPS.commented$92Mp)).foldLeft("", (String s, SNode it) -> s + " #" + SPropertyOperations.getString(it, PROPS.options$D2Jv)));
   }
   @Deprecated(since = "2021.2.1")
   /*package*/ static Iterable<SNode> getCommentedOptions_id54lRqzvvwVL(@NotNull SNode __thisNode__, boolean is64bit) {
-    return Sequence.fromIterable(MpsStartupScript__BehaviorDescriptor.getVmOptions_id2lwFGYOX$qJ.invokeSpecial(__thisNode__, ((boolean) is64bit))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getBoolean(it, PROPS.commented$92Mp);
-      }
-    });
+    return Sequence.fromIterable(MpsStartupScript__BehaviorDescriptor.getVmOptions_id2lwFGYOX$qJ.invokeSpecial(__thisNode__, ((boolean) is64bit))).where((it) -> SPropertyOperations.getBoolean(it, PROPS.commented$92Mp));
   }
   /*package*/ static Iterable<SNode> getVmOptions_id2lwFGYOX$qJ(@NotNull SNode __thisNode__, boolean is64bit) {
     return SNodeOperations.ofConcept(((is64bit ? SLinkOperations.getChildren(__thisNode__, LINKS.vmOptions64$zvnw) : SLinkOperations.getChildren(__thisNode__, LINKS.vmOptions$y$aq))), CONCEPTS.SimpleVmOptions$48);
   }
   @Deprecated(since = "2021.2.1")
   /*package*/ static Iterable<SNode> getDefaultVmOptionsLines_id2lwFGYOXBOk(@NotNull SNode __thisNode__, boolean is64bit) {
-    return Sequence.fromIterable(Sequence.fromArray(MpsStartupScript__BehaviorDescriptor.getDefaultVmoptions_id54lRqzvuHDj.invokeSpecial(__thisNode__, ((boolean) is64bit)).split("\\s"))).where(new IWhereFilter<String>() {
-      public boolean accept(String it) {
-        return (it != null && it.length() > 0);
-      }
-    }).select(new ISelector<String, SNode>() {
-      public SNode select(String it) {
-        return createTextLine_p7akvg_a0a0a0a0e(it);
-      }
-    });
+    return Sequence.fromIterable(Sequence.fromArray(MpsStartupScript__BehaviorDescriptor.getDefaultVmoptions_id54lRqzvuHDj.invokeSpecial(__thisNode__, ((boolean) is64bit)).split("\\s"))).where((it) -> (it != null && it.length() > 0)).select((it) -> createTextLine_p7akvg_a0a0a0a0e(it));
   }
   @Deprecated(since = "2021.2.1")
   /*package*/ static Iterable<SNode> getCommentedVmOptionsLines_id31jVCtHhzv9(@NotNull SNode __thisNode__, boolean is64bit) {
-    return Sequence.fromIterable(MpsStartupScript__BehaviorDescriptor.getCommentedOptions_id54lRqzvvwVL.invokeSpecial(__thisNode__, ((boolean) is64bit))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return isNotEmptyString(SPropertyOperations.getString(it, PROPS.options$D2Jv));
-      }
-    }).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return createTextLine_p7akvg_a0a0a0a0f("#" + SPropertyOperations.getString(it, PROPS.options$D2Jv));
-      }
-    });
+    return Sequence.fromIterable(MpsStartupScript__BehaviorDescriptor.getCommentedOptions_id54lRqzvvwVL.invokeSpecial(__thisNode__, ((boolean) is64bit))).where((it) -> isNotEmptyString(SPropertyOperations.getString(it, PROPS.options$D2Jv))).select((it) -> createTextLine_p7akvg_a0a0a0a0f("#" + SPropertyOperations.getString(it, PROPS.options$D2Jv)));
   }
   /*package*/ static Iterable<SNode> getVmOptionsTextLines_id2M0p1n5GA6s(@NotNull SNode __thisNode__, boolean is64bit) {
-    return Sequence.fromIterable(MpsStartupScript__BehaviorDescriptor.getVmOptions_id2lwFGYOX$qJ.invokeSpecial(__thisNode__, ((boolean) is64bit))).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(final SNode it) {
-        if (isEmptyString(SPropertyOperations.getString(it, PROPS.options$D2Jv)) || SPropertyOperations.getString(it, PROPS.options$D2Jv).isBlank()) {
-          // Ignore empty lines
-          return Sequence.fromIterable(Collections.<SNode>emptyList());
-        } else if (SPropertyOperations.getBoolean(it, PROPS.commented$92Mp)) {
-          // Pass through commented lines without changes
-          return Sequence.fromClosure(new ISequenceClosure<SNode>() {
-            public Iterable<SNode> iterable() {
-              return new Iterable<SNode>() {
-                public Iterator<SNode> iterator() {
-                  return new YieldingIterator<SNode>() {
-                    private int __CP__ = 0;
-                    protected boolean moveToNext() {
+    return Sequence.fromIterable(MpsStartupScript__BehaviorDescriptor.getVmOptions_id2lwFGYOX$qJ.invokeSpecial(__thisNode__, ((boolean) is64bit))).translate((final SNode it) -> {
+      if (isEmptyString(SPropertyOperations.getString(it, PROPS.options$D2Jv)) || SPropertyOperations.getString(it, PROPS.options$D2Jv).isBlank()) {
+        // Ignore empty lines
+        return Sequence.fromIterable(Collections.<SNode>emptyList());
+      } else if (SPropertyOperations.getBoolean(it, PROPS.commented$92Mp)) {
+        // Pass through commented lines without changes
+        return Sequence.fromClosure(() -> {
+          return (Iterable<SNode>) () -> {
+            return new YieldingIterator<SNode>() {
+              private int __CP__ = 0;
+              protected boolean moveToNext() {
 __loop__:
-                      do {
+                do {
 __switch__:
-                        switch (this.__CP__) {
-                          case -1:
-                            assert false : "Internal error";
-                            return false;
-                          case 2:
-                            this.__CP__ = 1;
-                            this.yield(it);
-                            return true;
-                          case 0:
-                            this.__CP__ = 2;
-                            break;
-                          default:
-                            break __loop__;
-                        }
-                      } while (true);
+                  switch (this.__CP__) {
+                    case -1:
+                      assert false : "Internal error";
                       return false;
+                    case 2:
+                      this.__CP__ = 1;
+                      this.yield(it);
+                      return true;
+                    case 0:
+                      this.__CP__ = 2;
+                      break;
+                    default:
+                      break __loop__;
+                  }
+                } while (true);
+                return false;
+              }
+            };
+          };
+        });
+      } else {
+        // Detect legacy options
+        final String[] options = SPropertyOperations.getString(it, PROPS.options$D2Jv).split("\\s");
+        if (options.length > 1) {
+          // If space characters were found - convert meaningful entries to a list of options
+          return Sequence.fromClosure(() -> {
+            return (Iterable<SNode>) () -> {
+              return new YieldingIterator<SNode>() {
+                private int __CP__ = 0;
+                protected boolean moveToNext() {
+__loop__:
+                  do {
+__switch__:
+                    switch (this.__CP__) {
+                      case -1:
+                        assert false : "Internal error";
+                        return false;
+                      case 2:
+                        this._2_option_idx = 0;
+                      case 3:
+                        if (this._2_option_idx >= options.length) {
+                          this.__CP__ = 1;
+                          break;
+                        }
+                        this._2_option = options[this._2_option_idx++];
+                        this.__CP__ = 4;
+                        break;
+                      case 5:
+                        if (!(_2_option.isBlank())) {
+                          this.__CP__ = 6;
+                          break;
+                        }
+                        this.__CP__ = 3;
+                        break;
+                      case 7:
+                        this.__CP__ = 3;
+                        this.yield(createSimpleVmOptions_p7akvg_a0a0a0a0a0b0c0a0a0a0a0a0a6(_2_option));
+                        return true;
+                      case 0:
+                        this.__CP__ = 2;
+                        break;
+                      case 4:
+                        this.__CP__ = 5;
+                        break;
+                      case 6:
+                        this.__CP__ = 7;
+                        break;
+                      default:
+                        break __loop__;
                     }
-                  };
+                  } while (true);
+                  return false;
                 }
+                private String _2_option;
+                private int _2_option_idx;
               };
-            }
+            };
           });
         } else {
-          // Detect legacy options
-          final String[] options = SPropertyOperations.getString(it, PROPS.options$D2Jv).split("\\s");
-          if (options.length > 1) {
-            // If space characters were found - convert meaningful entries to a list of options
-            return Sequence.fromClosure(new ISequenceClosure<SNode>() {
-              public Iterable<SNode> iterable() {
-                return new Iterable<SNode>() {
-                  public Iterator<SNode> iterator() {
-                    return new YieldingIterator<SNode>() {
-                      private int __CP__ = 0;
-                      protected boolean moveToNext() {
+          return Sequence.fromClosure(() -> {
+            return (Iterable<SNode>) () -> {
+              return new YieldingIterator<SNode>() {
+                private int __CP__ = 0;
+                protected boolean moveToNext() {
 __loop__:
-                        do {
+                  do {
 __switch__:
-                          switch (this.__CP__) {
-                            case -1:
-                              assert false : "Internal error";
-                              return false;
-                            case 2:
-                              this._2_option_idx = 0;
-                            case 3:
-                              if (this._2_option_idx >= options.length) {
-                                this.__CP__ = 1;
-                                break;
-                              }
-                              this._2_option = options[this._2_option_idx++];
-                              this.__CP__ = 4;
-                              break;
-                            case 5:
-                              if (!(_2_option.isBlank())) {
-                                this.__CP__ = 6;
-                                break;
-                              }
-                              this.__CP__ = 3;
-                              break;
-                            case 7:
-                              this.__CP__ = 3;
-                              this.yield(createSimpleVmOptions_p7akvg_a0a0a0a0a0b0c0a0a0a0a0a0a6(_2_option));
-                              return true;
-                            case 0:
-                              this.__CP__ = 2;
-                              break;
-                            case 4:
-                              this.__CP__ = 5;
-                              break;
-                            case 6:
-                              this.__CP__ = 7;
-                              break;
-                            default:
-                              break __loop__;
-                          }
-                        } while (true);
+                    switch (this.__CP__) {
+                      case -1:
+                        assert false : "Internal error";
                         return false;
-                      }
-                      private String _2_option;
-                      private int _2_option_idx;
-                    };
-                  }
-                };
-              }
-            });
-          } else {
-            return Sequence.fromClosure(new ISequenceClosure<SNode>() {
-              public Iterable<SNode> iterable() {
-                return new Iterable<SNode>() {
-                  public Iterator<SNode> iterator() {
-                    return new YieldingIterator<SNode>() {
-                      private int __CP__ = 0;
-                      protected boolean moveToNext() {
-__loop__:
-                        do {
-__switch__:
-                          switch (this.__CP__) {
-                            case -1:
-                              assert false : "Internal error";
-                              return false;
-                            case 2:
-                              this.__CP__ = 1;
-                              this.yield(it);
-                              return true;
-                            case 0:
-                              this.__CP__ = 2;
-                              break;
-                            default:
-                              break __loop__;
-                          }
-                        } while (true);
-                        return false;
-                      }
-                    };
-                  }
-                };
-              }
-            });
-          }
+                      case 2:
+                        this.__CP__ = 1;
+                        this.yield(it);
+                        return true;
+                      case 0:
+                        this.__CP__ = 2;
+                        break;
+                      default:
+                        break __loop__;
+                    }
+                  } while (true);
+                  return false;
+                }
+              };
+            };
+          });
         }
       }
-    }).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return createTextLine_p7akvg_a0a0a0a0g(((SPropertyOperations.getBoolean(it, PROPS.commented$92Mp) ? "#" : "")) + SPropertyOperations.getString(it, PROPS.options$D2Jv));
-      }
-    });
+    }).select((it) -> createTextLine_p7akvg_a0a0a0a0g(((SPropertyOperations.getBoolean(it, PROPS.commented$92Mp) ? "#" : "")) + SPropertyOperations.getString(it, PROPS.options$D2Jv)));
   }
   /*package*/ static String getVmOptionsFileName_id2lwFGYOYlNP(@NotNull SNode __thisNode__, boolean is64bit) {
     return BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.branding$Eg1g), LINKS.script$MlVT), null) + ((is64bit ? "64" : "")) + "." + MpsStartupScript__BehaviorDescriptor.getVmOptionsExtension_id54lRqzvvwXR.invoke(__thisNode__);

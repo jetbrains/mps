@@ -6,39 +6,35 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 
 public class Abc {
   public Abc() {
-    new _FunctionTypes._return_P0_E0<Node>() {
-      public Node invoke() {
-        final Node result_pb5_a0a0a0 = new Node("abc");
-        final String result_pb5_a0a0a0a0 = "abc";
-        result_pb5_a0a0a0.setText(result_pb5_a0a0a0a0);
-        return result_pb5_a0a0a0;
-      }
-    }.invoke();
+    ((_FunctionTypes._return_P0_E0<Node>) () -> {
+      final Node result_pb5_a0a0a0 = new Node("abc");
+      final String result_pb5_a0a0a0a0 = "abc";
+      result_pb5_a0a0a0.setText(result_pb5_a0a0a0a0);
+      return result_pb5_a0a0a0;
+    }).invoke();
   }
   public void aaa() {
-    new _FunctionTypes._return_P0_E0<Node>() {
-      public Node invoke() {
-        final Node result_pb5_a0a0a1 = new Node("root");
-        final Node result_pb5_a0a0a0a1 = new Node("c1");
-        final Node result_pb5_a0a0a0a0a1 = new Node("c2");
-        final int result_pb5_a0a0a0a0a0a1 = 22;
-        result_pb5_a0a0a0a0a1.setXYZ(result_pb5_a0a0a0a0a0a1);
-        final String result_pb5_a1a0a0a0a0a1 = "text to set";
-        result_pb5_a0a0a0a0a1.setText(result_pb5_a1a0a0a0a0a1);
-        result_pb5_a0a0a0a1.add(result_pb5_a0a0a0a0a1);
-        final Node result_pb5_a1a0a0a0a1 = new Node("c2");
-        result_pb5_a0a0a0a1.add(result_pb5_a1a0a0a0a1);
-        final Node result_pb5_a2a0a0a0a1 = new Node("c3");
-        result_pb5_a0a0a0a1.add(result_pb5_a2a0a0a0a1);
-        final Node result_pb5_a3a0a0a0a1 = new Node("c2");
-        result_pb5_a0a0a0a1.add(result_pb5_a3a0a0a0a1);
-        final Node result_pb5_a4a0a0a0a1 = new Node("c1");
-        result_pb5_a0a0a0a1.add(result_pb5_a4a0a0a0a1);
-        final Node result_pb5_a5a0a0a0a1 = new Node("c1");
-        result_pb5_a0a0a0a1.add(result_pb5_a5a0a0a0a1);
-        result_pb5_a0a0a1.add(result_pb5_a0a0a0a1);
-        return result_pb5_a0a0a1;
-      }
-    }.invoke();
+    ((_FunctionTypes._return_P0_E0<Node>) () -> {
+      final Node result_pb5_a0a0a1 = new Node("root");
+      final Node result_pb5_a0a0a0a1 = new Node("c1");
+      final Node result_pb5_a0a0a0a0a1 = new Node("c2");
+      final int result_pb5_a0a0a0a0a0a1 = 22;
+      result_pb5_a0a0a0a0a1.setXYZ(result_pb5_a0a0a0a0a0a1);
+      final String result_pb5_a1a0a0a0a0a1 = "text to set";
+      result_pb5_a0a0a0a0a1.setText(result_pb5_a1a0a0a0a0a1);
+      result_pb5_a0a0a0a1.add(result_pb5_a0a0a0a0a1);
+      final Node result_pb5_a1a0a0a0a1 = new Node("c2");
+      result_pb5_a0a0a0a1.add(result_pb5_a1a0a0a0a1);
+      final Node result_pb5_a2a0a0a0a1 = new Node("c3");
+      result_pb5_a0a0a0a1.add(result_pb5_a2a0a0a0a1);
+      final Node result_pb5_a3a0a0a0a1 = new Node("c2");
+      result_pb5_a0a0a0a1.add(result_pb5_a3a0a0a0a1);
+      final Node result_pb5_a4a0a0a0a1 = new Node("c1");
+      result_pb5_a0a0a0a1.add(result_pb5_a4a0a0a0a1);
+      final Node result_pb5_a5a0a0a0a1 = new Node("c1");
+      result_pb5_a0a0a0a1.add(result_pb5_a5a0a0a0a1);
+      result_pb5_a0a0a1.add(result_pb5_a0a0a0a1);
+      return result_pb5_a0a0a1;
+    }).invoke();
   }
 }

@@ -12,8 +12,6 @@ import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.lang.test.runtime.NodeCheckerUtil;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.checkers.SuppressErrorsChecker;
 
 @MPSLaunch
@@ -70,11 +68,7 @@ public class TypeCheckingErrors_Test extends BaseTransformationTest {
         addNodeById("5532302989585163343");
       });
       runWithinCommand(() -> {
-        assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(getNodeById("1089557578627275112"), null)).all(new IWhereFilter<NodeReportItem>() {
-          public boolean accept(NodeReportItem it) {
-            return SuppressErrorsChecker.FLAVOUR_ACTIVE_SUPPRESSOR.canGet(it);
-          }
-        });
+        assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(getNodeById("1089557578627275112"), null)).all((it) -> SuppressErrorsChecker.FLAVOUR_ACTIVE_SUPPRESSOR.canGet(it));
       });
     }
     public void test_lbt_subtypeof_param() throws Exception {

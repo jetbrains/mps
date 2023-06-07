@@ -14,7 +14,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -35,16 +34,8 @@ public class DeployScriptCreator {
     SLinkOperations.getChildren(deployProject, LINKS.plugins$AsCR).add(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5c3f3e2c1ce9ac67L, "jetbrains.mps.build.structure.BuildJavaPlugin")));
     SLinkOperations.getChildren(deployProject, LINKS.plugins$AsCR).add(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xc0bde9fc71699d9L, "jetbrains.mps.build.mps.structure.BuildMPSPlugin")));
 
-    Iterable<SNode> pluginNodes = ListSequence.fromList(plugins).select(new ISelector<SNodeReference, SNode>() {
-      public SNode select(SNodeReference it) {
-        return it.resolve(project.getRepository());
-      }
-    }).ofType(SNode.class);
-    Iterable<SNode> projects = Sequence.fromIterable(pluginNodes).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SNodeOperations.getContainingRoot(it);
-      }
-    }).ofType(SNode.class).distinct();
+    Iterable<SNode> pluginNodes = ListSequence.fromList(plugins).select((it) -> it.resolve(project.getRepository())).ofType(SNode.class);
+    Iterable<SNode> projects = Sequence.fromIterable(pluginNodes).select((it) -> SNodeOperations.getContainingRoot(it)).ofType(SNode.class).distinct();
 
     for (SNode projectNode : Sequence.fromIterable(projects)) {
       ListSequence.fromList(SLinkOperations.getChildren(deployProject, LINKS.dependencies$redY)).addElement(_quotation_createNode_ppcj9p_a0a0a41a0(projectNode));

@@ -20,11 +20,8 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.baseLanguage.behavior.StatementList__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.baseLanguage.behavior.ResourceVariableHelper;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.baseLanguage.behavior.Statement__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -70,16 +67,8 @@ public class check_CaughtWasThrown_NonTypesystemRule extends AbstractNonTypesyst
                 }
                 if (matches_13ophr_b1a0b0a0b0) {
                   SetSequence.fromSet(thrown.value).addSequence(SetSequence.fromSet(StatementList__BehaviorDescriptor.uncaughtThrowables_id2SVUfbZ9Qq1.invoke(SLinkOperations.getTarget(matchedNode_13ophr_b0a1a0a1a, LINKS.body$KFk), ((boolean) false))));
-                  SetSequence.fromSet(thrown.value).addSequence(Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(ListSequence.fromList(SLinkOperations.getChildren(matchedNode_13ophr_b0a1a0a1a, LINKS.resource$hgXi)).translate(new ITranslator2<SNode, SNode>() {
-                    public Iterable<SNode> translate(SNode it) {
-                      return new ResourceVariableHelper(it).getCloseThrown();
-                    }
-                  }), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr)));
-                  ListSequence.fromList(SLinkOperations.getChildren(matchedNode_13ophr_b0a1a0a1a, LINKS.resource$hgXi)).visitAll(new IVisitor<SNode>() {
-                    public void visit(SNode res) {
-                      Statement__BehaviorDescriptor.collectUncaughtMethodThrowables_id4Gt7ANIVBW7.invoke(SNodeOperations.asSConcept(CONCEPTS.Statement$P6), thrown.value, SLinkOperations.getTarget(res, LINKS.initializer$2twD));
-                    }
-                  });
+                  SetSequence.fromSet(thrown.value).addSequence(Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(ListSequence.fromList(SLinkOperations.getChildren(matchedNode_13ophr_b0a1a0a1a, LINKS.resource$hgXi)).translate((it) -> new ResourceVariableHelper(it).getCloseThrown()), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr)));
+                  ListSequence.fromList(SLinkOperations.getChildren(matchedNode_13ophr_b0a1a0a1a, LINKS.resource$hgXi)).visitAll((res) -> Statement__BehaviorDescriptor.collectUncaughtMethodThrowables_id4Gt7ANIVBW7.invoke(SNodeOperations.asSConcept(CONCEPTS.Statement$P6), thrown.value, SLinkOperations.getTarget(res, LINKS.initializer$2twD)));
                 } else {
                   boolean matches_13ophr_c1a0b0a0b0 = false;
                   {
@@ -96,11 +85,7 @@ public class check_CaughtWasThrown_NonTypesystemRule extends AbstractNonTypesyst
             }
           }
 
-          if (!(SetSequence.fromSet(thrown.value).any(new IWhereFilter<SNode>() {
-            public boolean accept(SNode t) {
-              return TypecheckingFacade.getFromContext().isSubtype(_quotation_createNode_r5g8rc_a0a0a0a0a0d0a1a0a1a1(t), caughtType) || TypecheckingFacade.getFromContext().isSubtype(caughtType, _quotation_createNode_r5g8rc_b0a0a0a0a0d0a1a0a1a1(t));
-            }
-          }))) {
+          if (!(SetSequence.fromSet(thrown.value).any((t) -> TypecheckingFacade.getFromContext().isSubtype(_quotation_createNode_r5g8rc_a0a0a0a0a0d0a1a0a1a1(t), caughtType) || TypecheckingFacade.getFromContext().isSubtype(caughtType, _quotation_createNode_r5g8rc_b0a0a0a0a0d0a1a0a1a1(t))))) {
             {
               final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(caughtType, "Caught exception " + SNodeOperations.present(caughtType) + " is never thrown in the corresponding try block", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8512491756795014519", null, errorTarget);

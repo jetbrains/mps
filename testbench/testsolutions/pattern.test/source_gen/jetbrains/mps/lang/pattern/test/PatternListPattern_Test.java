@@ -30,29 +30,27 @@ public class PatternListPattern_Test extends BaseTransformationTest {
 
   @Test
   public void testMethod() throws Throwable {
-    getProject().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNode nodeToMatch = _quotation_createNode_i79cpz_a0a0a0a0a0a0e();
-        DefaultMatchingPattern pattern = new Pattern_i79cpz_a0b0a0a0a0a0e(_quotation_createNode_i79cpz_a0a0b0a0a0a0a0e());
-        final boolean matches = pattern.match(nodeToMatch);
-        Assert.assertTrue("Pattern match expected", matches);
+    getProject().getModelAccess().runReadAction(() -> {
+      SNode nodeToMatch = _quotation_createNode_i79cpz_a0a0a0a0a4();
+      DefaultMatchingPattern pattern = new Pattern_i79cpz_a0b0a0a0a4(_quotation_createNode_i79cpz_a0a0b0a0a0a4());
+      final boolean matches = pattern.match(nodeToMatch);
+      Assert.assertTrue("Pattern match expected", matches);
+      {
+        Iterator<SNode> listIt = pattern.getMatchedList("list").iterator();
         {
-          Iterator<SNode> listIt = pattern.getMatchedList("list").iterator();
-          {
-            List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), listIt.next());
-            List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_i79cpz_a0a0b0b0e0a0a0a0a0e());
-            Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-          }
-          {
-            List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), listIt.next());
-            List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_i79cpz_a0a0b0c0e0a0a0a0a0e());
-            Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-          }
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), listIt.next());
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_i79cpz_a0a0b0b0e0a0a0a4());
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), listIt.next());
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_i79cpz_a0a0b0c0e0a0a0a4());
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
         }
       }
     });
   }
-  private static SNode _quotation_createNode_i79cpz_a0a0a0a0a0a0e() {
+  private static SNode _quotation_createNode_i79cpz_a0a0a0a0a4() {
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
@@ -79,7 +77,7 @@ public class PatternListPattern_Test extends BaseTransformationTest {
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation"), quotedNode_3);
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_i79cpz_a0a0b0a0a0a0a0e() {
+  private static SNode _quotation_createNode_i79cpz_a0a0b0a0a0a4() {
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
@@ -100,14 +98,14 @@ public class PatternListPattern_Test extends BaseTransformationTest {
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation"), quotedNode_3);
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_i79cpz_a0a0b0b0e0a0a0a0a0e() {
+  private static SNode _quotation_createNode_i79cpz_a0a0b0b0e0a0a0a4() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc59b314L, "IntegerConstant"));
     quotedNode_1 = nb.getResult();
     nb.setProperty(MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value"), "10");
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_i79cpz_a0a0b0c0e0a0a0a0a0e() {
+  private static SNode _quotation_createNode_i79cpz_a0a0b0c0e0a0a0a4() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc59b314L, "IntegerConstant"));
     quotedNode_1 = nb.getResult();

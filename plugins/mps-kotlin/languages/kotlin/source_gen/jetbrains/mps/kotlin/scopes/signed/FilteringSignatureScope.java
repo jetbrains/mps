@@ -4,7 +4,6 @@ package jetbrains.mps.kotlin.scopes.signed;
 
 import jetbrains.mps.kotlin.api.members.SourcedSignature;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kotlin.signatures.MemberSignature;
 
@@ -16,11 +15,7 @@ public abstract class FilteringSignatureScope implements SignatureScope {
 
   @Override
   public Iterable<SourcedSignature> getElements(String prefix) {
-    return Sequence.fromIterable(myNested.getElements(prefix)).where(new IWhereFilter<SourcedSignature>() {
-      public boolean accept(SourcedSignature it) {
-        return !(isExcluded(it.getSource())) && !(isExcluded(it.getSignature()));
-      }
-    });
+    return Sequence.fromIterable(myNested.getElements(prefix)).where((it) -> !(isExcluded(it.getSource())) && !(isExcluded(it.getSignature())));
   }
 
   @Override

@@ -11,7 +11,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.behavior.Expression__BehaviorDescriptor;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -62,11 +62,11 @@ public abstract class IntroduceVariableRefactoring {
       if (variableSuffixes != null) {
         ListSequence.fromList(expectedNames).addSequence(ListSequence.fromList(variableSuffixes));
       }
-      this.myExpectedNames = ListSequence.fromList(expectedNames).where(new IWhereFilter<String>() {
-        public boolean accept(String it) {
+      this.myExpectedNames = ListSequence.fromList(expectedNames).where(new _FunctionTypes._return_P1_E0<Boolean, String>() {
+        public Boolean invoke(String it) {
           return it.matches("[a-zA-Z0-9_]*");
         }
-      }).toListSequence();
+      }).toList();
       if (ListSequence.fromList(this.myExpectedNames).isEmpty()) {
         ListSequence.fromList(this.myExpectedNames).addElement("");
       }
@@ -92,11 +92,11 @@ public abstract class IntroduceVariableRefactoring {
       if (SPropertyOperations.getString(var, PROPS.name$MnvL) != null) {
         ListSequence.fromList(expectedNames).addElement(((variableExpectedName != null && variableExpectedName.length() > 0) ? NameUtil.decapitalize(variableExpectedName) : NameUtil.decapitalize(SPropertyOperations.getString(var, PROPS.name$MnvL) + "_Field")));
       }
-      this.myExpectedNames = ListSequence.fromList(expectedNames).where(new IWhereFilter<String>() {
-        public boolean accept(String it) {
+      this.myExpectedNames = ListSequence.fromList(expectedNames).where(new _FunctionTypes._return_P1_E0<Boolean, String>() {
+        public Boolean invoke(String it) {
           return it.matches("[a-zA-Z0-9_]*");
         }
-      }).toListSequence();
+      }).toList();
       if (ListSequence.fromList(this.myExpectedNames).isEmpty()) {
         ListSequence.fromList(this.myExpectedNames).addElement("");
       }
@@ -164,11 +164,11 @@ public abstract class IntroduceVariableRefactoring {
   }
   protected void findDuplicates() {
     this.myDuplicates = new SimpleDuplicatesFinder(this.getExpression()).findDuplicates(this.getRootToFindDuplicates(this.getExpression()));
-    this.myDuplicates = ListSequence.fromList(this.myDuplicates).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
+    this.myDuplicates = ListSequence.fromList(this.myDuplicates).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      public Boolean invoke(SNode it) {
         return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.ExpressionStatement$O8));
       }
-    }).toListSequence();
+    }).toList();
   }
   protected SNode findContainer(SNode node) {
     return SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false);

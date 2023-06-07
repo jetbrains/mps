@@ -19,7 +19,7 @@ public class check_DuplicatedConstructors_NonTypesystemRule extends AbstractNonT
   public check_DuplicatedConstructors_NonTypesystemRule() {
   }
   public void applyRule(final SNode classConcept, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    List<SNode> constructors = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(classConcept)).toListSequence();
+    List<SNode> constructors = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(classConcept)).toList();
     if (ListSequence.fromList(constructors).count() > 1) {
       for (SNode constructor : constructors) {
         RulesFunctions_BaseLanguage.checkDuplicates(typeCheckingContext, constructor, classConcept, constructors);

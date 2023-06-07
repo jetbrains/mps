@@ -10,7 +10,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.List;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.ide.util.treeView.smartTree.Grouper;
 import com.intellij.ide.util.treeView.smartTree.Sorter;
@@ -38,11 +37,7 @@ public class MemberContainerStructureModel implements StructureViewModel {
 
   public MemberContainerStructureModel(MPSProject project, SNode memberContainer) {
     container = new Presentation(memberContainer);
-    members = ListSequence.fromList(((List<SNode>) BHReflection.invoke0(memberContainer, CONCEPTS.IMemberContainer$yM, SMethodIdV2.create("getMembers", 1213877531970L, 0x5745e3015c8914d3L)))).select(new ISelector<SNode, Presentation>() {
-      public Presentation select(SNode it) {
-        return new Presentation(it);
-      }
-    }).toGenericArray(Presentation.class);
+    members = ListSequence.fromList(((List<SNode>) BHReflection.invoke0(memberContainer, CONCEPTS.IMemberContainer$yM, SMethodIdV2.create("getMembers", 1213877531970L, 0x5745e3015c8914d3L)))).select((it) -> new Presentation(it)).toGenericArray(Presentation.class);
     myProject = project;
   }
 

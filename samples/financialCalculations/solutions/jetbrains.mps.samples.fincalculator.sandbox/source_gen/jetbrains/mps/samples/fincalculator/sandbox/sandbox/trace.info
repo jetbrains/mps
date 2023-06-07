@@ -80,11 +80,11 @@
       <node id="1241366278147" at="115,92,116,54" concept="3" />
       <node id="1241366278147" at="116,54,117,93" concept="3" />
       <node id="1241366278147" at="117,93,118,52" concept="3" />
-      <node id="1241366278147" at="123,25,124,21" concept="3" />
+      <node id="1241366278147" at="121,42,122,44" concept="3" />
       <node id="1241366278147" at="18,0,21,0" concept="6" trace="insertUpdate#(Ljavax/swing/event/DocumentEvent;)V" />
       <node id="1241366278147" at="21,0,24,0" concept="6" trace="removeUpdate#(Ljavax/swing/event/DocumentEvent;)V" />
       <node id="1241366278147" at="24,0,27,0" concept="6" trace="changedUpdate#(Ljavax/swing/event/DocumentEvent;)V" />
-      <node id="1241366278147" at="123,0,126,0" concept="6" trace="run#()V" />
+      <node id="1241366278147" at="121,0,124,0" concept="10" trace="main#([Ljava/lang/String;)V" />
       <node id="1241366278147" at="29,0,33,0" concept="6" trace="actionPerformed#(Ljava/awt/event/ActionEvent;)V" />
       <node id="2094486643673695598" at="93,24,97,5" concept="11" />
       <node id="2094486643673695638" at="97,5,101,5" concept="11" />
@@ -92,9 +92,7 @@
       <node id="2094486643674641586" at="105,5,109,5" concept="11" />
       <node id="2094486643673695811" at="110,45,114,5" concept="11" />
       <node id="4779620959590792742" at="63,73,68,5" concept="0" />
-      <node id="1241366278147" at="121,42,126,7" concept="3" />
       <node id="1241366278147" at="28,0,34,0" concept="4" trace="actionListener" />
-      <node id="1241366278147" at="121,0,128,0" concept="10" trace="main#([Ljava/lang/String;)V" />
       <node id="1241366278147" at="17,0,28,0" concept="4" trace="listener" />
       <node id="1241366278147" at="93,0,120,0" concept="6" trace="update#()V" />
       <node id="1241366278147" at="53,0,92,0" concept="2" trace="Salary#()V" />
@@ -127,7 +125,7 @@
       <scope id="2094486643673695811" at="113,5,114,5">
         <var name="e" id="2094486643673695811" />
       </scope>
-      <scope id="1241366278147" at="123,25,124,21" />
+      <scope id="1241366278147" at="121,42,122,44" />
       <scope id="1241366278147" at="18,0,21,0">
         <var name="p0" id="1241366278147" />
       </scope>
@@ -140,22 +138,19 @@
       <scope id="4779620959590792742" at="64,5,67,49">
         <var name="localBox" id="4779620959590792742" />
       </scope>
-      <scope id="1241366278147" at="123,0,126,0" />
+      <scope id="1241366278147" at="121,0,124,0">
+        <var name="args" id="1241366278147" />
+      </scope>
       <scope id="1241366278147" at="29,0,33,0">
         <var name="p1" id="1241366278147" />
-      </scope>
-      <scope id="1241366278147" at="121,42,126,7" />
-      <scope id="1241366278147" at="121,0,128,0">
-        <var name="args" id="1241366278147" />
       </scope>
       <scope id="1241366278147" at="93,24,118,52" />
       <scope id="1241366278147" at="93,0,120,0" />
       <scope id="1241366278147" at="53,19,90,21" />
       <scope id="1241366278147" at="53,0,92,0" />
-      <unit id="1241366278147" at="122,35,126,5" name="jetbrains.mps.samples.fincalculator.sandbox.sandbox.Salary$3" />
       <unit id="1241366278147" at="28,46,33,3" name="jetbrains.mps.samples.fincalculator.sandbox.sandbox.Salary$2" />
       <unit id="1241366278147" at="17,42,27,3" name="jetbrains.mps.samples.fincalculator.sandbox.sandbox.Salary$1" />
-      <unit id="1241366278147" at="16,0,129,0" name="jetbrains.mps.samples.fincalculator.sandbox.sandbox.Salary" />
+      <unit id="1241366278147" at="16,0,125,0" name="jetbrains.mps.samples.fincalculator.sandbox.sandbox.Salary" />
     </file>
   </root>
   <root nodeRef="r:1ce92b75-a0c5-43f1-a14e-cfe3b58c497c(jetbrains.mps.samples.fincalculator.sandbox.sandbox)/5087448708488150029">
@@ -312,7 +307,7 @@
       <node id="5087448708488172162" at="262,9,263,72" concept="3" />
       <node id="5087448708488150029" at="265,5,266,24" concept="3" />
       <node id="5087448708488150029" at="266,24,267,71" concept="3" />
-      <node id="5087448708488150029" at="272,25,273,34" concept="3" />
+      <node id="5087448708488150029" at="270,42,271,57" concept="3" />
       <node id="5087448708488150029" at="29,0,32,0" concept="6" trace="insertUpdate#(Ljavax/swing/event/DocumentEvent;)V" />
       <node id="5087448708488150029" at="32,0,35,0" concept="6" trace="removeUpdate#(Ljavax/swing/event/DocumentEvent;)V" />
       <node id="5087448708488150029" at="35,0,38,0" concept="6" trace="changedUpdate#(Ljavax/swing/event/DocumentEvent;)V" />
@@ -324,7 +319,7 @@
       <node id="2369396721458010127" at="96,28,99,5" concept="5" />
       <node id="2369396721458013132" at="99,5,102,5" concept="5" />
       <node id="5087448708488168809" at="243,74,246,9" concept="5" />
-      <node id="5087448708488150029" at="272,0,275,0" concept="6" trace="run#()V" />
+      <node id="5087448708488150029" at="270,0,273,0" concept="10" trace="main#([Ljava/lang/String;)V" />
       <node id="5087448708488150029" at="40,0,44,0" concept="6" trace="actionPerformed#(Ljava/awt/event/ActionEvent;)V" />
       <node id="5087448708488165891" at="215,24,219,5" concept="11" />
       <node id="5087448708488166685" at="219,5,223,5" concept="11" />
@@ -338,10 +333,8 @@
       <node id="5087448708488170209" at="176,5,181,5" concept="0" />
       <node id="5087448708488170392" at="181,5,186,5" concept="0" />
       <node id="5087448708488170523" at="186,5,191,5" concept="0" />
-      <node id="5087448708488150029" at="270,42,275,7" concept="3" />
       <node id="5087448708488150029" at="39,0,45,0" concept="4" trace="actionListener" />
       <node id="5087448708488168809" at="241,57,247,7" concept="12" />
-      <node id="5087448708488150029" at="270,0,277,0" concept="10" trace="main#([Ljava/lang/String;)V" />
       <node id="5087448708488168990" at="145,0,153,7" concept="0" />
       <node id="5087448708488169181" at="153,7,161,7" concept="0" />
       <node id="5087448708488169319" at="161,7,169,7" concept="0" />
@@ -406,7 +399,7 @@
       <scope id="5087448708488172162" at="264,5,265,5">
         <var name="e" id="5087448708488172162" />
       </scope>
-      <scope id="5087448708488150029" at="272,25,273,34" />
+      <scope id="5087448708488150029" at="270,42,271,57" />
       <scope id="5087448708488150029" at="29,0,32,0">
         <var name="p0" id="5087448708488150029" />
       </scope>
@@ -430,12 +423,13 @@
       <scope id="5087448708488170523" at="187,5,190,49">
         <var name="localBox" id="5087448708488170523" />
       </scope>
-      <scope id="5087448708488150029" at="272,0,275,0" />
+      <scope id="5087448708488150029" at="270,0,273,0">
+        <var name="args" id="5087448708488150029" />
+      </scope>
       <scope id="5087448708488150029" at="40,0,44,0">
         <var name="p1" id="5087448708488150029" />
       </scope>
       <scope id="5087448708488168809" at="242,34,246,9" />
-      <scope id="5087448708488150029" at="270,42,275,7" />
       <scope id="5087448708488168990" at="146,7,152,49">
         <var name="button" id="5087448708488168990" />
       </scope>
@@ -446,9 +440,6 @@
         <var name="button" id="5087448708488169319" />
       </scope>
       <scope id="2369396721458009928" at="96,28,103,17" />
-      <scope id="5087448708488150029" at="270,0,277,0">
-        <var name="args" id="5087448708488150029" />
-      </scope>
       <scope id="2369396721458009928" at="96,0,105,0" />
       <scope id="2369396721458003016" at="84,29,94,17" />
       <scope id="4779620959590852239" at="119,5,129,54">
@@ -470,10 +461,9 @@
       <scope id="5087448708488150029" at="215,0,269,0" />
       <scope id="5087448708488150029" at="107,32,212,21" />
       <scope id="5087448708488150029" at="107,0,214,0" />
-      <unit id="5087448708488150029" at="271,35,275,5" name="jetbrains.mps.samples.fincalculator.sandbox.sandbox.Mortgage_Evaluation$3" />
       <unit id="5087448708488150029" at="39,46,44,3" name="jetbrains.mps.samples.fincalculator.sandbox.sandbox.Mortgage_Evaluation$2" />
       <unit id="5087448708488150029" at="28,42,38,3" name="jetbrains.mps.samples.fincalculator.sandbox.sandbox.Mortgage_Evaluation$1" />
-      <unit id="5087448708488150029" at="27,0,278,0" name="jetbrains.mps.samples.fincalculator.sandbox.sandbox.Mortgage_Evaluation" />
+      <unit id="5087448708488150029" at="27,0,274,0" name="jetbrains.mps.samples.fincalculator.sandbox.sandbox.Mortgage_Evaluation" />
     </file>
   </root>
   <root nodeRef="r:1ce92b75-a0c5-43f1-a14e-cfe3b58c497c(jetbrains.mps.samples.fincalculator.sandbox.sandbox)/5087448708488150084">
@@ -530,23 +520,21 @@
       <node id="5087448708488150084" at="108,37,109,58" concept="3" />
       <node id="5087448708488150084" at="109,58,110,50" concept="3" />
       <node id="5087448708488150084" at="110,50,111,62" concept="3" />
-      <node id="5087448708488150084" at="116,25,117,34" concept="3" />
+      <node id="5087448708488150084" at="114,42,115,57" concept="3" />
       <node id="5982026979499741593" at="54,10,56,5" concept="0" />
       <node id="5087448708488150084" at="23,0,26,0" concept="6" trace="insertUpdate#(Ljavax/swing/event/DocumentEvent;)V" />
       <node id="5087448708488150084" at="26,0,29,0" concept="6" trace="removeUpdate#(Ljavax/swing/event/DocumentEvent;)V" />
       <node id="5087448708488150084" at="29,0,32,0" concept="6" trace="changedUpdate#(Ljavax/swing/event/DocumentEvent;)V" />
-      <node id="5087448708488150084" at="116,0,119,0" concept="6" trace="run#()V" />
+      <node id="5087448708488150084" at="114,0,117,0" concept="10" trace="main#([Ljava/lang/String;)V" />
       <node id="5087448708488150084" at="34,0,38,0" concept="6" trace="actionPerformed#(Ljava/awt/event/ActionEvent;)V" />
       <node id="5982026979499578607" at="89,24,93,5" concept="11" />
       <node id="5982026979499578613" at="93,5,97,5" concept="11" />
       <node id="5982026979499578621" at="97,5,101,5" concept="11" />
       <node id="5982026979499728274" at="51,41,56,5" concept="5" />
       <node id="5982026979499858874" at="102,102,107,5" concept="0" />
-      <node id="5087448708488150084" at="114,42,119,7" concept="3" />
       <node id="5087448708488150084" at="33,0,39,0" concept="4" trace="actionListener" />
       <node id="5982026979499727127" at="51,0,58,0" concept="6" trace="accumulated_interest#()D" />
       <node id="5982026979499858874" at="75,48,82,5" concept="0" />
-      <node id="5087448708488150084" at="114,0,121,0" concept="10" trace="main#([Ljava/lang/String;)V" />
       <node id="5087448708488150084" at="22,0,33,0" concept="4" trace="listener" />
       <node id="5087448708488150084" at="89,0,113,0" concept="6" trace="update#()V" />
       <node id="5087448708488150084" at="61,0,88,0" concept="2" trace="Mortgage_Simulation#()V" />
@@ -571,7 +559,7 @@
       <scope id="5982026979499578621" at="100,5,101,5">
         <var name="e" id="5982026979499578621" />
       </scope>
-      <scope id="5087448708488150084" at="116,25,117,34" />
+      <scope id="5087448708488150084" at="114,42,115,57" />
       <scope id="5087448708488150084" at="23,0,26,0">
         <var name="p0" id="5087448708488150084" />
       </scope>
@@ -585,7 +573,9 @@
         <var name="model" id="5982026979499858874" />
         <var name="t" id="5982026979499858874" />
       </scope>
-      <scope id="5087448708488150084" at="116,0,119,0" />
+      <scope id="5087448708488150084" at="114,0,117,0">
+        <var name="args" id="5087448708488150084" />
+      </scope>
       <scope id="5087448708488150084" at="34,0,38,0">
         <var name="p1" id="5087448708488150084" />
       </scope>
@@ -594,19 +584,14 @@
         <var name="pane" id="5982026979499858874" />
         <var name="table" id="5982026979499858874" />
       </scope>
-      <scope id="5087448708488150084" at="114,42,119,7" />
       <scope id="5982026979499727127" at="51,0,58,0" />
-      <scope id="5087448708488150084" at="114,0,121,0">
-        <var name="args" id="5087448708488150084" />
-      </scope>
       <scope id="5087448708488150084" at="89,24,111,62" />
       <scope id="5087448708488150084" at="89,0,113,0" />
       <scope id="5087448708488150084" at="61,32,86,21" />
       <scope id="5087448708488150084" at="61,0,88,0" />
-      <unit id="5087448708488150084" at="115,35,119,5" name="jetbrains.mps.samples.fincalculator.sandbox.sandbox.Mortgage_Simulation$3" />
       <unit id="5087448708488150084" at="33,46,38,3" name="jetbrains.mps.samples.fincalculator.sandbox.sandbox.Mortgage_Simulation$2" />
       <unit id="5087448708488150084" at="22,42,32,3" name="jetbrains.mps.samples.fincalculator.sandbox.sandbox.Mortgage_Simulation$1" />
-      <unit id="5087448708488150084" at="21,0,122,0" name="jetbrains.mps.samples.fincalculator.sandbox.sandbox.Mortgage_Simulation" />
+      <unit id="5087448708488150084" at="21,0,118,0" name="jetbrains.mps.samples.fincalculator.sandbox.sandbox.Mortgage_Simulation" />
     </file>
   </root>
   <root nodeRef="r:1ce92b75-a0c5-43f1-a14e-cfe3b58c497c(jetbrains.mps.samples.fincalculator.sandbox.sandbox)/5087448708488165563">
@@ -763,13 +748,13 @@
       <node id="5087448708488165563" at="234,116,235,52" concept="3" />
       <node id="5087448708488165563" at="235,52,236,57" concept="3" />
       <node id="5087448708488165563" at="236,57,237,60" concept="3" />
-      <node id="5087448708488165563" at="242,25,243,23" concept="3" />
+      <node id="5087448708488165563" at="240,42,241,46" concept="3" />
       <node id="5087448708488165563" at="27,0,30,0" concept="6" trace="insertUpdate#(Ljavax/swing/event/DocumentEvent;)V" />
       <node id="5087448708488165563" at="30,0,33,0" concept="6" trace="removeUpdate#(Ljavax/swing/event/DocumentEvent;)V" />
       <node id="5087448708488165563" at="33,0,36,0" concept="6" trace="changedUpdate#(Ljavax/swing/event/DocumentEvent;)V" />
       <node id="2369396721463987474" at="77,87,80,5" concept="5" />
       <node id="2369396721463694466" at="214,74,217,9" concept="5" />
-      <node id="5087448708488165563" at="242,0,245,0" concept="6" trace="run#()V" />
+      <node id="5087448708488165563" at="240,0,243,0" concept="10" trace="main#([Ljava/lang/String;)V" />
       <node id="5087448708488165563" at="38,0,42,0" concept="6" trace="actionPerformed#(Ljava/awt/event/ActionEvent;)V" />
       <node id="2369396721463691837" at="186,41,190,5" concept="11" />
       <node id="2369396721463691845" at="190,5,194,5" concept="11" />
@@ -777,11 +762,9 @@
       <node id="2369396721463692083" at="198,5,202,5" concept="11" />
       <node id="2369396721463695432" at="202,5,206,5" concept="11" />
       <node id="2369396721463694004" at="221,23,225,5" concept="11" />
-      <node id="5087448708488165563" at="240,42,245,7" concept="3" />
       <node id="5087448708488165563" at="37,0,43,0" concept="4" trace="actionListener" />
       <node id="2369396721463694466" at="212,57,218,7" concept="12" />
       <node id="2369396721463985414" at="76,0,83,0" concept="6" trace="calculateNonNegativeIncome#()D" />
-      <node id="5087448708488165563" at="240,0,247,0" concept="10" trace="main#([Ljava/lang/String;)V" />
       <node id="2369396721463694668" at="138,0,146,7" concept="0" />
       <node id="2369396721463694832" at="146,7,154,7" concept="0" />
       <node id="2369396721463694916" at="154,7,162,7" concept="0" />
@@ -828,7 +811,7 @@
       <scope id="2369396721463694004" at="224,5,225,5">
         <var name="e" id="2369396721463694004" />
       </scope>
-      <scope id="5087448708488165563" at="242,25,243,23" />
+      <scope id="5087448708488165563" at="240,42,241,46" />
       <scope id="5087448708488165563" at="27,0,30,0">
         <var name="p0" id="5087448708488165563" />
       </scope>
@@ -838,7 +821,9 @@
       <scope id="5087448708488165563" at="33,0,36,0">
         <var name="p0" id="5087448708488165563" />
       </scope>
-      <scope id="5087448708488165563" at="242,0,245,0" />
+      <scope id="5087448708488165563" at="240,0,243,0">
+        <var name="args" id="5087448708488165563" />
+      </scope>
       <scope id="5087448708488165563" at="38,0,42,0">
         <var name="p1" id="5087448708488165563" />
       </scope>
@@ -846,7 +831,6 @@
       <scope id="2369396721463985414" at="76,47,81,13">
         <var name="v" id="2369396721463987410" />
       </scope>
-      <scope id="5087448708488165563" at="240,42,245,7" />
       <scope id="2369396721463694668" at="139,7,145,49">
         <var name="button" id="2369396721463694668" />
       </scope>
@@ -857,9 +841,6 @@
         <var name="button" id="2369396721463694916" />
       </scope>
       <scope id="2369396721463985414" at="76,0,83,0" />
-      <scope id="5087448708488165563" at="240,0,247,0">
-        <var name="args" id="5087448708488165563" />
-      </scope>
       <scope id="2369396721463694466" at="209,5,219,58">
         <var name="elements" id="2369396721463694466" />
         <var name="iterator" id="2369396721463694466" />
@@ -878,10 +859,9 @@
       <scope id="5087448708488165563" at="185,0,239,0" />
       <scope id="5087448708488165563" at="86,21,182,21" />
       <scope id="5087448708488165563" at="86,0,184,0" />
-      <unit id="5087448708488165563" at="241,35,245,5" name="jetbrains.mps.samples.fincalculator.sandbox.sandbox.Tax_Form$3" />
       <unit id="5087448708488165563" at="37,46,42,3" name="jetbrains.mps.samples.fincalculator.sandbox.sandbox.Tax_Form$2" />
       <unit id="5087448708488165563" at="26,42,36,3" name="jetbrains.mps.samples.fincalculator.sandbox.sandbox.Tax_Form$1" />
-      <unit id="5087448708488165563" at="25,0,248,0" name="jetbrains.mps.samples.fincalculator.sandbox.sandbox.Tax_Form" />
+      <unit id="5087448708488165563" at="25,0,244,0" name="jetbrains.mps.samples.fincalculator.sandbox.sandbox.Tax_Form" />
     </file>
   </root>
   <root nodeRef="r:1ce92b75-a0c5-43f1-a14e-cfe3b58c497c(jetbrains.mps.samples.fincalculator.sandbox.sandbox)/5087448708488165645">
@@ -962,11 +942,11 @@
       <node id="5087448708488165645" at="130,95,131,53" concept="3" />
       <node id="5087448708488165645" at="131,53,132,95" concept="3" />
       <node id="5087448708488165645" at="132,95,133,53" concept="3" />
-      <node id="5087448708488165645" at="138,25,139,32" concept="3" />
+      <node id="5087448708488165645" at="136,42,137,55" concept="3" />
       <node id="5087448708488165645" at="18,0,21,0" concept="6" trace="insertUpdate#(Ljavax/swing/event/DocumentEvent;)V" />
       <node id="5087448708488165645" at="21,0,24,0" concept="6" trace="removeUpdate#(Ljavax/swing/event/DocumentEvent;)V" />
       <node id="5087448708488165645" at="24,0,27,0" concept="6" trace="changedUpdate#(Ljavax/swing/event/DocumentEvent;)V" />
-      <node id="5087448708488165645" at="138,0,141,0" concept="6" trace="run#()V" />
+      <node id="5087448708488165645" at="136,0,139,0" concept="10" trace="main#([Ljava/lang/String;)V" />
       <node id="5087448708488165645" at="29,0,33,0" concept="6" trace="actionPerformed#(Ljava/awt/event/ActionEvent;)V" />
       <node id="5087448708488172436" at="97,24,101,5" concept="11" />
       <node id="5087448708488172604" at="101,5,105,5" concept="11" />
@@ -975,9 +955,7 @@
       <node id="5087448708488173552" at="113,5,117,5" concept="11" />
       <node id="5087448708488173836" at="117,5,121,5" concept="11" />
       <node id="5087448708488174014" at="121,5,125,5" concept="11" />
-      <node id="5087448708488165645" at="136,42,141,7" concept="3" />
       <node id="5087448708488165645" at="28,0,34,0" concept="4" trace="actionListener" />
-      <node id="5087448708488165645" at="136,0,143,0" concept="10" trace="main#([Ljava/lang/String;)V" />
       <node id="5087448708488165645" at="17,0,28,0" concept="4" trace="listener" />
       <node id="5087448708488165645" at="59,0,96,0" concept="2" trace="Simple_Investment#()V" />
       <node id="5087448708488165645" at="97,0,135,0" concept="6" trace="update#()V" />
@@ -1020,7 +998,7 @@
       <scope id="5087448708488174014" at="124,5,125,5">
         <var name="e" id="5087448708488174014" />
       </scope>
-      <scope id="5087448708488165645" at="138,25,139,32" />
+      <scope id="5087448708488165645" at="136,42,137,55" />
       <scope id="5087448708488165645" at="18,0,21,0">
         <var name="p0" id="5087448708488165645" />
       </scope>
@@ -1030,22 +1008,19 @@
       <scope id="5087448708488165645" at="24,0,27,0">
         <var name="p0" id="5087448708488165645" />
       </scope>
-      <scope id="5087448708488165645" at="138,0,141,0" />
+      <scope id="5087448708488165645" at="136,0,139,0">
+        <var name="args" id="5087448708488165645" />
+      </scope>
       <scope id="5087448708488165645" at="29,0,33,0">
         <var name="p1" id="5087448708488165645" />
-      </scope>
-      <scope id="5087448708488165645" at="136,42,141,7" />
-      <scope id="5087448708488165645" at="136,0,143,0">
-        <var name="args" id="5087448708488165645" />
       </scope>
       <scope id="5087448708488165645" at="59,30,94,21" />
       <scope id="5087448708488165645" at="97,24,133,53" />
       <scope id="5087448708488165645" at="59,0,96,0" />
       <scope id="5087448708488165645" at="97,0,135,0" />
-      <unit id="5087448708488165645" at="137,35,141,5" name="jetbrains.mps.samples.fincalculator.sandbox.sandbox.Simple_Investment$3" />
       <unit id="5087448708488165645" at="28,46,33,3" name="jetbrains.mps.samples.fincalculator.sandbox.sandbox.Simple_Investment$2" />
       <unit id="5087448708488165645" at="17,42,27,3" name="jetbrains.mps.samples.fincalculator.sandbox.sandbox.Simple_Investment$1" />
-      <unit id="5087448708488165645" at="16,0,144,0" name="jetbrains.mps.samples.fincalculator.sandbox.sandbox.Simple_Investment" />
+      <unit id="5087448708488165645" at="16,0,140,0" name="jetbrains.mps.samples.fincalculator.sandbox.sandbox.Simple_Investment" />
     </file>
   </root>
 </debug-info>

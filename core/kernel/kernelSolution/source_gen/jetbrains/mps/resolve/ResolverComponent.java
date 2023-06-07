@@ -68,7 +68,7 @@ public class ResolverComponent implements CoreComponent {
     return false;
   }
   public void resolveScopesOnly(Iterable<SReference> references, SRepository repository) {
-    List<SReference> unresolvedReferences = Sequence.fromIterable(references).sort(REFERENCE_COMPARATOR, true).toListSequence();
+    List<SReference> unresolvedReferences = Sequence.fromIterable(references).sort(REFERENCE_COMPARATOR, true).toList();
     boolean performResolve = true;
     while (performResolve) {
       performResolve = false;

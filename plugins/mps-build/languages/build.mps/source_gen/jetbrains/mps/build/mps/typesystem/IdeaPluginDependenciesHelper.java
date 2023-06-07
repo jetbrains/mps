@@ -11,7 +11,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.build.mps.util.MPSModulesClosure;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Collections;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -36,9 +35,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
       return;
     }
 
-    List<SNode> pc = Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(plugin, LINKS.content$9T6D), CONCEPTS.BuildMps_IdeaPluginModule$rY), LINKS.target$ccfo)).union(Sequence.fromIterable(SLinkOperations.collectMany(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(plugin, LINKS.content$9T6D), CONCEPTS.BuildMps_IdeaPluginGroup$_R), LINKS.group$qLbS), LINKS.modules$JlQo))).toListSequence();
+    List<SNode> pc = Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(plugin, LINKS.content$9T6D), CONCEPTS.BuildMps_IdeaPluginModule$rY), LINKS.target$ccfo)).union(Sequence.fromIterable(SLinkOperations.collectMany(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(plugin, LINKS.content$9T6D), CONCEPTS.BuildMps_IdeaPluginGroup$_R), LINKS.group$qLbS), LINKS.modules$JlQo))).toList();
     visible.addAll(pc);
-    visible.addAll(Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(pc, CONCEPTS.BuildMps_Language$RA), LINKS.generator$OCOG)).toListSequence());
+    visible.addAll(Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(pc, CONCEPTS.BuildMps_Language$RA), LINKS.generator$OCOG)).toList());
     for (SNode dep : ListSequence.fromList(SLinkOperations.getChildren(plugin, LINKS.dependencies$9_ak))) {
       collectVisible(SLinkOperations.getTarget(dep, LINKS.target$cxAi), seen);
     }
@@ -49,11 +48,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     }
     if (SNodeOperations.isInstanceOf(module, CONCEPTS.BuildMps_Module$JW)) {
       MPSModulesClosure runtimeDependencies = new MPSModulesClosure(SNodeOperations.cast(module, CONCEPTS.BuildMps_Module$JW), new MPSModulesClosure.ModuleDependenciesOptions()).runtimeClosure();
-      Iterable<SNode> seq = Sequence.fromIterable(runtimeDependencies.getAllModules()).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(visible.contains(it));
-        }
-      });
+      Iterable<SNode> seq = Sequence.fromIterable(runtimeDependencies.getAllModules()).where((it) -> !(visible.contains(it)));
       return seq;
     }
     return Sequence.fromIterable(Collections.<SNode>emptyList());

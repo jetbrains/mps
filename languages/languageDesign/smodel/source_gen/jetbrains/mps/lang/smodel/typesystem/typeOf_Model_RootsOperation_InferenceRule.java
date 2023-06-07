@@ -37,13 +37,11 @@ public class typeOf_Model_RootsOperation_InferenceRule extends AbstractInference
       }
       {
         final SNode ca = typeCheckingContext.typeOf(SLinkOperations.getTarget(node, LINKS.conceptArgument$6vat), "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "6750920497477070734", true);
-        typeCheckingContext.whenConcrete(ca, new Runnable() {
-          public void run() {
-            {
-              SNode _nodeToCheck_1029348928467 = node;
-              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1203711981680", 0, null);
-              typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1203711981682", true), (SNode) _quotation_createNode_baohfs_a1a0c0a0a0a1a0b0b0a1a1(SLinkOperations.getTarget(SNodeOperations.as(typeCheckingContext.getExpandedNode(ca), CONCEPTS.SConceptType$pb), LINKS.conceptDeclaraton$K4R0)), _info_12389875345);
-            }
+        typeCheckingContext.whenConcrete(ca, () -> {
+          {
+            SNode _nodeToCheck_1029348928467 = node;
+            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1203711981680", 0, null);
+            typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1203711981682", true), (SNode) _quotation_createNode_baohfs_a1a0c0a0b0a1a1a0b0b(SLinkOperations.getTarget(SNodeOperations.as(typeCheckingContext.getExpandedNode(ca), CONCEPTS.SConceptType$pb), LINKS.conceptDeclaraton$K4R0)), _info_12389875345);
           }
         }, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "6750920497477070721", false, false);
       }
@@ -77,7 +75,7 @@ public class typeOf_Model_RootsOperation_InferenceRule extends AbstractInference
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_baohfs_a1a0c0a0a0a1a0b0b0a1a1(Object parameter_1) {
+  private static SNode _quotation_createNode_baohfs_a1a0c0a0b0a1a1a0b0b(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x10aae26be32L, "SNodeListType"));
     quotedNode_2 = nb.getResult();

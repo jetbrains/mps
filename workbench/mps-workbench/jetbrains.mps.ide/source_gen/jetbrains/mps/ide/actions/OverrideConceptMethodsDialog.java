@@ -21,7 +21,6 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Objects;
 import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -88,7 +87,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     for (SNode c : ((List<SNode>) BHReflection.invoke0(baseClass, CONCEPTS.ConceptBehavior$2, SMethodIdV2.create("getAllSuperBehaviors", 1818770337282950280L, 0x28bccc7daff7d4f3L)))) {
       MapSequence.fromMap(containerIndex).put(c, i++);
     }
-    return Sequence.fromIterable(methods).sort((SNode a, SNode b) -> {
+    return Sequence.fromIterable(methods).sort((a, b) -> {
       SNode parentA = SNodeOperations.getParent(a);
       SNode parentB = SNodeOperations.getParent(b);
       if (parentA == parentB) {
@@ -107,11 +106,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     }, true);
   }
   public static SNodeReference[] toNodePointers(Iterable<SNode> methods) {
-    return Sequence.fromIterable(methods).select(new ISelector<SNode, SNodePointer>() {
-      public SNodePointer select(SNode it) {
-        return new SNodePointer(it);
-      }
-    }).toGenericArray(SNodePointer.class);
+    return Sequence.fromIterable(methods).select((it) -> new SNodePointer(it)).toGenericArray(SNodePointer.class);
   }
 
   private static final class CONCEPTS {

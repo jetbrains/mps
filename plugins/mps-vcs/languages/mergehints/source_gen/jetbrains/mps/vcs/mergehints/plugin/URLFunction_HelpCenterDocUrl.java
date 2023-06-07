@@ -7,10 +7,6 @@ import jetbrains.mps.help.HelpURLProvider;
 
 public final class URLFunction_HelpCenterDocUrl {
   public static String getUrl() {
-    return new _FunctionTypes._return_P0_E0<String>() {
-      public String invoke() {
-        return HelpURLProvider.getInstance().getURL();
-      }
-    }.invoke();
+    return ((_FunctionTypes._return_P0_E0<String>) () -> HelpURLProvider.getInstance().getURL()).invoke();
   }
 }

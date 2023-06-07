@@ -16,7 +16,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.text.behavior.IHoldLines__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.text.behavior.TextElement__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -35,15 +34,7 @@ public final class IComment__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getTextualRepresentation_idfB3l80ylIb(@NotNull SNode __thisNode__) {
-    return IterableUtils.join(ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(__thisNode__)).select(new ISelector<SNode, String>() {
-      public String select(SNode line) {
-        return IterableUtils.join(ListSequence.fromList(SLinkOperations.getChildren(line, LINKS.elements$_j45)).select(new ISelector<SNode, String>() {
-          public String select(SNode element) {
-            return (String) TextElement__BehaviorDescriptor.getTextualRepresentation_idfB3l81it7u.invoke(element);
-          }
-        }), " ");
-      }
-    }), "\n");
+    return IterableUtils.join(ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(__thisNode__)).select((line) -> IterableUtils.join(ListSequence.fromList(SLinkOperations.getChildren(line, LINKS.elements$_j45)).select((element) -> (String) TextElement__BehaviorDescriptor.getTextualRepresentation_idfB3l81it7u.invoke(element)), " ")), "\n");
   }
 
   /*package*/ IComment__BehaviorDescriptor() {

@@ -14,7 +14,6 @@ import jetbrains.mps.baseLanguage.behavior.IInferredExpression__BehaviorDescript
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -42,11 +41,7 @@ public class anonymousClassExtendsItsClassifier_SubtypingRule extends SubtypingR
           if ((boolean) IInferredExpression__BehaviorDescriptor.needInference_idQ$FjPqwIoN.invoke(matchedNode_q6q799_b0)) {
             SNode clType = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x31acf7c12169ea33L, "jetbrains.mps.baseLanguage.structure.InferredClassifierType"));
             SLinkOperations.setTarget(clType, LINKS.classifier$cxMr, SLinkOperations.getTarget(matchedNode_q6q799_b0, LINKS.classifier$q_Y$));
-            ListSequence.fromList(SLinkOperations.getChildren(clType, LINKS.parameter$oqG$)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(classifierType, LINKS.parameter$oqG$)).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                return SNodeOperations.copyNode(it);
-              }
-            }));
+            ListSequence.fromList(SLinkOperations.getChildren(clType, LINKS.parameter$oqG$)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(classifierType, LINKS.parameter$oqG$)).select((it) -> SNodeOperations.copyNode(it)));
             ListSequence.fromList(result).addElement(clType);
           } else {
             ListSequence.fromList(result).addElement(_quotation_createNode_r0kks7_a0a0a0a0a0c0b0b0b(SLinkOperations.getTarget(matchedNode_q6q799_b0, LINKS.classifier$q_Y$), SLinkOperations.getChildren(matchedNode_q6q799_b0, LINKS.typeParameter$F9H8)));

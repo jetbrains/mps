@@ -56,11 +56,11 @@ public abstract class AbstractRefactoringTest extends EnvironmentAwareTestCase {
 
   public void doMake(final List<SModule> modules, final boolean cleanMake) {
     if (LOG.isInfoLevel()) {
-      LOG.info("Making modules: " + ListSequence.fromList(modules).toListSequence());
+      LOG.info("Making modules: " + ListSequence.fromList(modules).toList());
     }
     MakeSession session = new MakeSession(project, new LogHandler(Logger.getLogger(AbstractRefactoringTest.class)).restrict(MessageKind.ERROR), true);
     final Wrappers._T<List<? extends IResource>> inputRes = new Wrappers._T<List<? extends IResource>>(null);
-    project.getRepository().getModelAccess().runReadAction(() -> inputRes.value = Sequence.fromIterable(new MakeActionParameters(project).cleanMake(cleanMake).modules(modules).collectInput()).toListSequence());
+    project.getRepository().getModelAccess().runReadAction(() -> inputRes.value = Sequence.fromIterable(new MakeActionParameters(project).cleanMake(cleanMake).modules(modules).collectInput()).toList());
     // FIXME install proper IMakeService in MpsTestsSuite (likely, TestMakeService, to avoid 
     // superfluous tool.builder dependency here)
     Future<IResult> res = new BuildMakeService().make(session, inputRes.value);

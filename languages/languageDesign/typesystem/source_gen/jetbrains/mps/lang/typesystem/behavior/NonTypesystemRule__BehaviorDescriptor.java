@@ -23,9 +23,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import java.util.Collections;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -60,18 +58,12 @@ public final class NonTypesystemRule__BehaviorDescriptor extends BaseBHDescripto
   }
   /*package*/ static Iterable<SNode> findSuperRules_id21kJG8Hh$W9(@NotNull SNode __thisNode__) {
     SNode applicableConcept = ApplicableNodeCondition__BehaviorDescriptor.getApplicableConcept_idhEwIszL.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.applicableNode$Ro4C));
-    List<SNode> allSuperConcepts = Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(applicableConcept, ((boolean) false))).toListSequence();
-    return ListSequence.fromList(allSuperConcepts).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode superConcept) {
-        Iterable<SModel> models = SNodeOperations.getModel(superConcept).getModule().getModels();
-        SModel typesystemModel = Sequence.fromIterable(models).where(new IWhereFilter<SModel>() {
-          public boolean accept(SModel it) {
-            return SModuleOperations.isAspect(it, "typesystem");
-          }
-        }).first();
-        // typesystem aspect model is not mandatory for a language!
-        return (typesystemModel != null ? SNodeOperations.ofConcept(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspects_id4G9PD8$NvPM.invoke(superConcept, typesystemModel), CONCEPTS.NonTypesystemRule$um) : Sequence.fromIterable(Collections.<SNode>emptyList()));
-      }
+    List<SNode> allSuperConcepts = Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(applicableConcept, ((boolean) false))).toList();
+    return ListSequence.fromList(allSuperConcepts).translate((superConcept) -> {
+      Iterable<SModel> models = SNodeOperations.getModel(superConcept).getModule().getModels();
+      SModel typesystemModel = Sequence.fromIterable(models).where((it) -> SModuleOperations.isAspect(it, "typesystem")).first();
+      // typesystem aspect model is not mandatory for a language!
+      return (typesystemModel != null ? SNodeOperations.ofConcept(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspects_id4G9PD8$NvPM.invoke(superConcept, typesystemModel), CONCEPTS.NonTypesystemRule$um) : Sequence.fromIterable(Collections.<SNode>emptyList()));
     });
   }
 

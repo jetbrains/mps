@@ -18,7 +18,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -33,11 +32,7 @@ public class SuppressErrorsChecker extends BaseEventProcessingEditorChecker {
     SNode node = editorComponent.getEditedNode();
     for (SNode n : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.ICanSuppressErrors$q8, true, new SAbstractConcept[]{}))) {
       List<SNode> suppresses = new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1).list(n);
-      if (ListSequence.fromList(suppresses).all(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SuppressErrorsMessage.getOwnCell(editorComponent, it) != null;
-        }
-      })) {
+      if (ListSequence.fromList(suppresses).all((it) -> SuppressErrorsMessage.getOwnCell(editorComponent, it) != null)) {
         for (SNode s : ListSequence.fromList(suppresses)) {
           SetSequence.fromSet(messages).addElement(new SuppressErrorsMessage(s, this, "Errors suppressed"));
         }

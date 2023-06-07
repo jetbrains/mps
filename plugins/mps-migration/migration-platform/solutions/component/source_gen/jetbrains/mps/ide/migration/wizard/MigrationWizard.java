@@ -9,8 +9,8 @@ import java.util.List;
 import jetbrains.mps.migration.global.ProjectMigration;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.migration.global.ProjectMigrationWithOptions;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import javax.swing.JButton;
@@ -24,12 +24,12 @@ public class MigrationWizard extends AbstractWizardEx {
 
   private static List<BaseStep> createSteps(final MigrationSession session) {
     Iterable<ProjectMigration> projectMig = session.getProjectMigrations();
-    Sequence.fromIterable(projectMig).ofType(ProjectMigrationWithOptions.class).translate(new ITranslator2<ProjectMigrationWithOptions, ProjectMigrationWithOptions.Option>() {
-      public Iterable<ProjectMigrationWithOptions.Option> translate(ProjectMigrationWithOptions it) {
+    Sequence.fromIterable(projectMig).ofType(ProjectMigrationWithOptions.class).translate(new _FunctionTypes._return_P1_E0<Collection<ProjectMigrationWithOptions.Option>, ProjectMigrationWithOptions>() {
+      public Collection<ProjectMigrationWithOptions.Option> invoke(ProjectMigrationWithOptions it) {
         return it.getOptions();
       }
-    }).visitAll(new IVisitor<ProjectMigrationWithOptions.Option>() {
-      public void visit(ProjectMigrationWithOptions.Option it) {
+    }).visitAll(new _FunctionTypes._void_P1_E0<ProjectMigrationWithOptions.Option>() {
+      public void invoke(ProjectMigrationWithOptions.Option it) {
         session.getOptions().addOption(it);
       }
     });

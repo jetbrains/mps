@@ -14,7 +14,6 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -42,11 +41,7 @@ public class IHasModifiers_Constraints extends BaseConstraintsDescriptor {
   }
   private static boolean staticCanBeAParent(SNode node, final SNode childNode, final SAbstractConcept childConcept, SContainmentLink link) {
     if (Objects.equals(link, LINKS.modifiers$F5MM)) {
-      return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$F5MM)).all(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(it, childNode) || !(Objects.equals(SNodeOperations.getConcept(it), childConcept));
-        }
-      });
+      return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$F5MM)).all((it) -> Objects.equals(it, childNode) || !(Objects.equals(SNodeOperations.getConcept(it), childConcept)));
     }
     return true;
   }

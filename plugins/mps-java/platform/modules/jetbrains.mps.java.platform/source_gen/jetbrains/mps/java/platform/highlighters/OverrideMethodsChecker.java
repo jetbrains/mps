@@ -14,7 +14,6 @@ import jetbrains.mps.baseLanguage.search.ClassifierSuccessors;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
 import jetbrains.mps.nodeEditor.EditorMessage;
@@ -73,11 +72,7 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
       return UpdateResult.CANCELLED;
     }
 
-    Iterable<SNode> classifiers = ListSequence.fromList(SNodeOperations.getNodeDescendants(rootNode, CONCEPTS.Classifier$Ix, true, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.ClassConcept$bK) || SNodeOperations.isInstanceOf(it, CONCEPTS.Interface$db);
-      }
-    });
+    Iterable<SNode> classifiers = ListSequence.fromList(SNodeOperations.getNodeDescendants(rootNode, CONCEPTS.Classifier$Ix, true, new SAbstractConcept[]{})).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.ClassConcept$bK) || SNodeOperations.isInstanceOf(it, CONCEPTS.Interface$db));
 
     if (Sequence.fromIterable(classifiers).isEmpty()) {
       return new UpdateResult.Completed(true, Collections.<EditorMessage>emptySet());
@@ -104,11 +99,7 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
       StringBuilder tooltip = new StringBuilder();
       int messageCounter = 0;
       Set<SNode> baseMethods = finder.getBaseMethods(overridingMethod);
-      boolean overrides = ((boolean) (Boolean) BHReflection.invoke0(overridingMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("isAnAbstractMethod", 2464886109384052181L, 0x5745e3015c8914d3L))) || SetSequence.fromSet(baseMethods).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("isAnAbstractMethod", 2464886109384052181L, 0x5745e3015c8914d3L)));
-        }
-      }).isNotEmpty();
+      boolean overrides = ((boolean) (Boolean) BHReflection.invoke0(overridingMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("isAnAbstractMethod", 2464886109384052181L, 0x5745e3015c8914d3L))) || SetSequence.fromSet(baseMethods).where((it) -> !((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("isAnAbstractMethod", 2464886109384052181L, 0x5745e3015c8914d3L)))).isNotEmpty();
       for (SNode baseMethod : SetSequence.fromSet(baseMethods)) {
         SNode baseClassifier = SNodeOperations.cast(SNodeOperations.getParent(baseMethod), CONCEPTS.Classifier$Ix);
         tooltip.append((overrides ? "Overrides" : "Implements"));
@@ -153,11 +144,7 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
     SetSequence.fromSet(messages).addElement(new SubclassedClassifierEditorMessage(container, this, superClassifierTooltip.toString(), isInterface));
 
     Map<String, Set<SNode>> nameToMethodsMap = MapSequence.fromMap(new HashMap<String, Set<SNode>>());
-    for (SNode method : Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(container, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return OverridingMethodsCalculator.canBeOverridden(it);
-      }
-    })) {
+    for (SNode method : Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(container, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).where((it) -> OverridingMethodsCalculator.canBeOverridden(it))) {
       SetSequence.fromSet(OverridingMethodsCalculator.safeGet(nameToMethodsMap, SPropertyOperations.getString(method, PROPS.name$MnvL))).addElement(method);
     }
     if (MapSequence.fromMap(nameToMethodsMap).isEmpty()) {
@@ -190,20 +177,12 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
   private Map<SNode, Set<SNode>> createOverridenToOverridingMethodsMap(Map<String, Set<SNode>> nameToMethodsMap, Iterable<SNode> derivedClassifiers) {
     Map<SNode, Set<SNode>> result = MapSequence.fromMap(new HashMap<SNode, Set<SNode>>());
     for (SNode derivedClassifier : Sequence.fromIterable(derivedClassifiers)) {
-      for (final SNode derivedClassifierMethod : Sequence.fromIterable(OverridingMethodsCalculator.getInstanceMethods(derivedClassifier)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return OverridingMethodsCalculator.canOverride(it);
-        }
-      })) {
+      for (final SNode derivedClassifierMethod : Sequence.fromIterable(OverridingMethodsCalculator.getInstanceMethods(derivedClassifier)).where((it) -> OverridingMethodsCalculator.canOverride(it))) {
         Set<SNode> similarMethods = MapSequence.fromMap(nameToMethodsMap).get(SPropertyOperations.getString(derivedClassifierMethod, PROPS.name$MnvL));
         if (similarMethods == null) {
           continue;
         }
-        SNode overridenMethod = SetSequence.fromSet(similarMethods).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return ((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("hasSameSignature", 1213877350435L, 0x5745e3015c8914d3L), derivedClassifierMethod));
-          }
-        });
+        SNode overridenMethod = SetSequence.fromSet(similarMethods).findFirst((it) -> ((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("hasSameSignature", 1213877350435L, 0x5745e3015c8914d3L), derivedClassifierMethod)));
         if (overridenMethod != null) {
           Set<SNode> overridingMethods = OverridingMethodsCalculator.safeGet(result, overridenMethod);
           SetSequence.fromSet(overridingMethods).addElement(derivedClassifierMethod);

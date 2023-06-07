@@ -9,13 +9,12 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SNodePointer;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
@@ -52,11 +51,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
   public static boolean ifMacro_Condition_0_0(final IfMacroContext _context) {
-    return ListSequence.fromList(Classifier__BehaviorDescriptor.getAllSuperClassifiers_id59G_UM6ah0X.invoke(_context.getNode())).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return "jetbrains.mps.testbench.EnvironmentAwareTestCase".equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(it));
-      }
-    });
+    return ListSequence.fromList(Classifier__BehaviorDescriptor.getAllSuperClassifiers_id59G_UM6ah0X.invoke(_context.getNode())).any((it) -> "jetbrains.mps.testbench.EnvironmentAwareTestCase".equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(it)));
   }
   public static boolean ifMacro_Condition_0_1(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.beforeTest$aL0S) != null);
@@ -67,11 +62,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static boolean ifMacro_Condition_2_0(final IfMacroContext _context) {
     // there are BTestCases with explicit JUnit4 annotations, e.g.
     // in j.m.make.tests
-    return !(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(_context.getNode(), LINKS.annotation$K49I), LINKS.annotation$12Ek)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.is(it, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~Test"));
-      }
-    }));
+    return !(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(_context.getNode(), LINKS.annotation$K49I), LINKS.annotation$12Ek)).any((it) -> SNodeOperations.is(it, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~Test"))));
   }
   public static boolean ifMacro_Condition_3_0(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.message$SzPZ), LINKS.message$FmaW) != null);

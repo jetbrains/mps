@@ -18,6 +18,7 @@ import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 import jetbrains.mps.nodeEditor.cells.jetpad.AbstractJetpadCell;
 import java.awt.image.BufferedImage;
 import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.util.Computable;
 import jetbrains.mps.nodeEditor.cells.jetpad.DiagramCell;
 
 public class DecoratorTestRunner {
@@ -33,7 +34,11 @@ public class DecoratorTestRunner {
       ((AbstractJetpadCell) cell).paint(new BufferedImage(cell.getWidth(), cell.getHeight(), BufferedImage.TYPE_INT_RGB).getGraphics());
     }
     // see getMapper(), below, for reasons to have model read here
-    return new ModelAccessHelper(editorRepo).runReadAction(() -> getMapper(node, editorComponent));
+    return new ModelAccessHelper(editorRepo).runReadAction(new Computable<Mapper>() {
+      public Mapper compute() {
+        return getMapper(node, editorComponent);
+      }
+    });
   }
   public static Mapper getMapper(SNode node, EditorComponent editorComponent) {
 

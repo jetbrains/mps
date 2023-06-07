@@ -13,7 +13,6 @@ import com.sun.jdi.InternalException;
 import com.sun.jdi.request.EventRequest;
 import org.jetbrains.annotations.Nullable;
 import com.sun.jdi.ThreadReference;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 
 @GeneratedClass(node = "r:6c060161-192f-4aa3-a797-df89b30aa449(jetbrains.mps.debugger.java.runtime.engine.events)/7672976942235813584", model = "r:6c060161-192f-4aa3-a797-df89b30aa449(jetbrains.mps.debugger.java.runtime.engine.events)")
@@ -86,19 +85,11 @@ public class ContextManager {
   }
   @Nullable
   public synchronized Context findContextForThread(final ThreadReference threadReference) {
-    EventContext context = ListSequence.fromList(mySuspendedContexts).findFirst(new IWhereFilter<EventContext>() {
-      public boolean accept(EventContext it) {
-        return Objects.equals(it.getThread(), threadReference);
-      }
-    });
+    EventContext context = ListSequence.fromList(mySuspendedContexts).findFirst((it) -> Objects.equals(it.getThread(), threadReference));
     if (context != null) {
       return context;
     }
-    context = ListSequence.fromList(mySuspendedContexts).findFirst(new IWhereFilter<EventContext>() {
-      public boolean accept(EventContext it) {
-        return it.getSuspendPolicy() == EventRequest.SUSPEND_ALL;
-      }
-    });
+    context = ListSequence.fromList(mySuspendedContexts).findFirst((it) -> it.getSuspendPolicy() == EventRequest.SUSPEND_ALL);
     if (context != null) {
       return context;
     }

@@ -9,7 +9,7 @@
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
     <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="0" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
   </languages>
   <imports>
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
@@ -97,6 +97,7 @@
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -191,7 +192,6 @@
       <concept id="1153944233411" name="jetbrains.mps.baseLanguage.collections.structure.ForEachVariableReference" flags="nn" index="2GrUjf">
         <reference id="1153944258490" name="variable" index="2Gs0qQ" />
       </concept>
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1202120902084" name="jetbrains.mps.baseLanguage.collections.structure.WhereOperation" flags="nn" index="3zZkjj" />
       <concept id="1202128969694" name="jetbrains.mps.baseLanguage.collections.structure.SelectOperation" flags="nn" index="3$u5V9" />
     </language>
@@ -397,7 +397,7 @@
                             <node concept="2OqwBi" id="3oudiFxSGQ1" role="2Oq$k0">
                               <node concept="2OqwBi" id="3oudiFxSGQ2" role="2Oq$k0">
                                 <node concept="37vLTw" id="3oudiFxSGQ3" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="3oudiFxSBNd" resolve="it" />
+                                  <ref role="3cqZAo" node="5W7E4fV0WW_" />
                                 </node>
                                 <node concept="3TrEf2" id="3oudiFxT0I6" role="2OqNvi">
                                   <ref role="3Tt5mk" to="6p:4WGKd_KDfBh" resolve="prop" />
@@ -413,9 +413,9 @@
                           </node>
                         </node>
                       </node>
-                      <node concept="Rh6nW" id="3oudiFxSBNd" role="1bW2Oz">
+                      <node concept="gl6BB" id="5W7E4fV0WW_" role="1bW2Oz">
                         <property role="TrG5h" value="it" />
-                        <node concept="2jxLKc" id="3oudiFxSBNe" role="1tU5fm" />
+                        <node concept="2jxLKc" id="5W7E4fV0WWA" role="1tU5fm" />
                       </node>
                     </node>
                   </node>
@@ -428,11 +428,11 @@
                           <node concept="1pGfFk" id="3oudiFxSJBo" role="2ShVmc">
                             <ref role="37wK5l" to="6f4m:7KaEUqipM5k" resolve="UsageOfMigrateNodeNotMigratedProblem" />
                             <node concept="37vLTw" id="3oudiFxSJJt" role="37wK5m">
-                              <ref role="3cqZAo" node="3oudiFxSJ2k" resolve="it" />
+                              <ref role="3cqZAo" node="5W7E4fV0WWB" />
                             </node>
                             <node concept="2OqwBi" id="3oudiFxSLod" role="37wK5m">
                               <node concept="37vLTw" id="3oudiFxSL4s" role="2Oq$k0">
-                                <ref role="3cqZAo" node="3oudiFxSJ2k" resolve="it" />
+                                <ref role="3cqZAo" node="5W7E4fV0WWB" />
                               </node>
                               <node concept="3TrEf2" id="3oudiFxT0Bf" role="2OqNvi">
                                 <ref role="3Tt5mk" to="6p:4WGKd_KDfBh" resolve="prop" />
@@ -442,9 +442,9 @@
                         </node>
                       </node>
                     </node>
-                    <node concept="Rh6nW" id="3oudiFxSJ2k" role="1bW2Oz">
+                    <node concept="gl6BB" id="5W7E4fV0WWB" role="1bW2Oz">
                       <property role="TrG5h" value="it" />
-                      <node concept="2jxLKc" id="3oudiFxSJ2l" role="1tU5fm" />
+                      <node concept="2jxLKc" id="5W7E4fV0WWC" role="1tU5fm" />
                     </node>
                   </node>
                 </node>

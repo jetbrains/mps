@@ -10,7 +10,6 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
@@ -34,17 +33,9 @@ public class check_PropertyNameUniqueness_NonTypesystemRule extends AbstractNonT
   public void applyRule(final SNode property, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode propertyClassifier = SNodeOperations.getNodeAncestor(property, CONCEPTS.Classifier$Ix, false, false);
 
-    Iterable<SNode> visibleMembers = Sequence.fromIterable(Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(propertyClassifier)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(Objects.equals(it, property));
-      }
-    });
+    Iterable<SNode> visibleMembers = Sequence.fromIterable(Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(propertyClassifier)).where((it) -> !(Objects.equals(it, property)));
 
-    SNode duplicate = Sequence.fromIterable(SNodeOperations.ofConcept(visibleMembers, CONCEPTS.Property$iK)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(property, PROPS.name$MnvL));
-      }
-    });
+    SNode duplicate = Sequence.fromIterable(SNodeOperations.ofConcept(visibleMembers, CONCEPTS.Property$iK)).findFirst((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(property, PROPS.name$MnvL)));
     if ((duplicate != null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
@@ -54,11 +45,7 @@ public class check_PropertyNameUniqueness_NonTypesystemRule extends AbstractNonT
 
 
     Iterable<SNode> visibleMethods = SNodeOperations.ofConcept(visibleMembers, CONCEPTS.BaseMethodDeclaration$kD);
-    SNode dupMethod = Sequence.fromIterable(visibleMethods).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode method) {
-        return Objects.equals(SPropertyOperations.getString(method, PROPS.name$MnvL), Property__BehaviorDescriptor.getGetterMethodName_idhEwIJ02.invoke(property)) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).isEmpty();
-      }
-    });
+    SNode dupMethod = Sequence.fromIterable(visibleMethods).findFirst((method) -> Objects.equals(SPropertyOperations.getString(method, PROPS.name$MnvL), Property__BehaviorDescriptor.getGetterMethodName_idhEwIJ02.invoke(property)) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).isEmpty());
     if ((dupMethod != null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
@@ -67,11 +54,7 @@ public class check_PropertyNameUniqueness_NonTypesystemRule extends AbstractNonT
     }
 
     if ((boolean) Property__BehaviorDescriptor.hasSetter_idhEwIJ0S.invoke(property)) {
-      dupMethod = Sequence.fromIterable(visibleMethods).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode method) {
-          return Objects.equals(SPropertyOperations.getString(method, PROPS.name$MnvL), Property__BehaviorDescriptor.getSetterMethodName_idhEwIJ0b.invoke(property)) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).count() == 1 && (TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).first(), LINKS.type$a1UY), SLinkOperations.getTarget(property, LINKS.type$56v0)) || TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(property, LINKS.type$56v0), SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).first(), LINKS.type$a1UY)));
-        }
-      });
+      dupMethod = Sequence.fromIterable(visibleMethods).findFirst((method) -> Objects.equals(SPropertyOperations.getString(method, PROPS.name$MnvL), Property__BehaviorDescriptor.getSetterMethodName_idhEwIJ0b.invoke(property)) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).count() == 1 && (TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).first(), LINKS.type$a1UY), SLinkOperations.getTarget(property, LINKS.type$56v0)) || TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(property, LINKS.type$56v0), SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).first(), LINKS.type$a1UY))));
       if ((dupMethod != null)) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();

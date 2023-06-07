@@ -16,8 +16,6 @@ import jetbrains.mps.vcs.util.MergeStrategy;
 import jetbrains.mps.vcs.mergehints.runtime.VCSAspectUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.util.NameUtil;
@@ -30,7 +28,6 @@ import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import java.util.ArrayList;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.vcs.diff.DiffUtil;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -172,11 +169,7 @@ public class NodeGroupChange extends StructureChange {
     if (myPreparedIdsToDelete == null) {
       List<SNode> children = getChangedCollection(false);
       assert children != null;
-      myPreparedIdsToDelete = ListSequence.fromList(children).page(myBegin, myEnd).select(new ISelector<SNode, SNodeId>() {
-        public SNodeId select(SNode it) {
-          return it.getNodeId();
-        }
-      }).toListSequence();
+      myPreparedIdsToDelete = ListSequence.fromList(children).page(myBegin, myEnd).select((it) -> it.getNodeId()).toList();
       myBeforeAnchorId = (myEnd >= ListSequence.fromList(children).count() ? null : children.get(myEnd).getNodeId());
     }
   }
@@ -192,24 +185,16 @@ public class NodeGroupChange extends StructureChange {
   }
 
   private void deleteOldNodes(@NotNull final SModel model) {
-    ListSequence.fromList(myPreparedIdsToDelete).visitAll(new IVisitor<SNodeId>() {
-      public void visit(SNodeId id) {
-        check_yjf6x2_a0a0a0a0yb(model.getNode(id));
-      }
-    });
+    ListSequence.fromList(myPreparedIdsToDelete).visitAll((id) -> check_yjf6x2_a0a0a0a0yb(model.getNode(id)));
     myPreparedIdsToDelete = null;
   }
 
   private Iterable<SNode> copyNodesToInsert(@NotNull final NodeCopier nodeCopier) {
-    return ListSequence.fromList(getChangedCollection(true)).page(myResultBegin, myResultEnd).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode child) {
-        return nodeCopier.copyNode(child);
-      }
-    });
+    return ListSequence.fromList(getChangedCollection(true)).page(myResultBegin, myResultEnd).select((child) -> nodeCopier.copyNode(child));
   }
 
   private void insertNewNodes(@NotNull SModel model, NodeCopier nodeCopier) {
-    List<SNode> nodesToAdd = Sequence.fromIterable(copyNodesToInsert(nodeCopier)).toListSequence();
+    List<SNode> nodesToAdd = Sequence.fromIterable(copyNodesToInsert(nodeCopier)).toList();
     if (ListSequence.fromList(nodesToAdd).isEmpty()) {
       return;
     }
@@ -257,11 +242,7 @@ public class NodeGroupChange extends StructureChange {
 
   private String getNewIdsAsString(List<SNode> newChildren) {
 
-    List<String> allIds = ListSequence.fromList(newChildren).page(myResultBegin, myResultEnd).select(new ISelector<SNode, String>() {
-      public String select(SNode n) {
-        return "#" + n.getNodeId();
-      }
-    }).toListSequence();
+    List<String> allIds = ListSequence.fromList(newChildren).page(myResultBegin, myResultEnd).select((n) -> "#" + n.getNodeId()).toList();
     int size = ListSequence.fromList(allIds).count();
     if (size == 1) {
       return ListSequence.fromList(allIds).getElement(0);
@@ -371,26 +352,14 @@ public class NodeGroupChange extends StructureChange {
       }
       SNode child = editedChildren.get(i);
       ListSequence.fromList(result).addElement(MultiTuple.<SNodeId,MessageTarget>from(child.getNodeId(), ((MessageTarget) new NodeMessageTarget())));
-      ListSequence.fromList(AttributeOperations.getAllAttributes(child)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode attr) {
-          return !(AttributeOperations.isChildAttribute(attr));
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode attr) {
-          ListSequence.fromList(result).addElement(MultiTuple.<SNodeId,MessageTarget>from(attr.getNodeId(), ((MessageTarget) new NodeMessageTarget())));
-        }
-      });
+      ListSequence.fromList(AttributeOperations.getAllAttributes(child)).where((attr) -> !(AttributeOperations.isChildAttribute(attr))).visitAll((attr) -> ListSequence.fromList(result).addElement(MultiTuple.<SNodeId,MessageTarget>from(attr.getNodeId(), ((MessageTarget) new NodeMessageTarget()))));
     }
     return result;
   }
 
   /*package*/ boolean containsDeletedNode(@NotNull SNodeId nodeId) {
 
-    Iterable<SNodeId> deletedNodeIds = ListSequence.fromList(getChangedCollection(false)).page(myBegin, myEnd).select(new ISelector<SNode, SNodeId>() {
-      public SNodeId select(SNode it) {
-        return it.getNodeId();
-      }
-    });
+    Iterable<SNodeId> deletedNodeIds = ListSequence.fromList(getChangedCollection(false)).page(myBegin, myEnd).select((it) -> it.getNodeId());
     if (Sequence.fromIterable(deletedNodeIds).isEmpty()) {
       return false;
     }
@@ -453,7 +422,7 @@ public class NodeGroupChange extends StructureChange {
   }
   private static List<SNode> check_yjf6x2_a0a0a34(Iterable<SNode> checkedDotOperand, NodeGroupChange checkedDotThisExpression) {
     if (null != checkedDotOperand) {
-      return Sequence.fromIterable(checkedDotOperand).toListSequence();
+      return Sequence.fromIterable(checkedDotOperand).toList();
     }
     return null;
   }

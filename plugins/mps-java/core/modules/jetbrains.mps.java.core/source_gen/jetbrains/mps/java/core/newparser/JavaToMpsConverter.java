@@ -21,7 +21,6 @@ import jetbrains.mps.messages.IMessageHandler;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.messages.Message;
@@ -32,25 +31,22 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.smodel.ModelDependencyUpdate;
 import jetbrains.mps.util.IFileUtil;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.util.Pair;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.ResolveInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
+import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
@@ -147,11 +143,9 @@ public class JavaToMpsConverter {
   }
 
   public void saveAll() {
-    ListSequence.fromList(myModels).visitAll(new IVisitor<SModel>() {
-      public void visit(SModel it) {
-        ((EditableSModel) it).setChanged(true);
-        ((EditableSModel) it).save();
-      }
+    ListSequence.fromList(myModels).visitAll((it) -> {
+      ((EditableSModel) it).setChanged(true);
+      ((EditableSModel) it).save();
     });
   }
 
@@ -195,11 +189,7 @@ public class JavaToMpsConverter {
             continue;
           }
           Set<SNode> roots = MapSequence.fromMap(classesPerPackage).get(pakage);
-          SetSequence.fromSet(roots).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode it) {
-              MapSequence.fromMap(myRootsToModels).put(it, model);
-            }
-          });
+          SetSequence.fromSet(roots).visitAll((it) -> MapSequence.fromMap(myRootsToModels).put(it, model));
 
           ListSequence.fromList(mySuccessfulFiles).addSequence(ListSequence.fromList(MapSequence.fromMap(filesPerPackage).get(pakage)));
           ListSequence.fromList(myAttachedRoots).addSequence(SetSequence.fromSet(roots));
@@ -214,7 +204,7 @@ public class JavaToMpsConverter {
           // todo be more accurate with duplicates
           MapSequence.fromMap(myRootsToModels).put(root, myModel);
         }
-        myModels = Sequence.fromIterable(Sequence.<SModel>singleton(myModel)).toListSequence();
+        myModels = Sequence.fromIterable(Sequence.<SModel>singleton(myModel)).toList();
         myAttachedRoots = myRoots;
       }
     });
@@ -231,19 +221,15 @@ public class JavaToMpsConverter {
 
     // actually attach roots
     modelAccess.replaceNodes(() -> {
-      ListSequence.fromList(myModels).visitAll(new IVisitor<SModel>() {
-        public void visit(SModel it) {
-          ((SModelBase) it).addLanguage(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"));
-          ((SModelBase) it).addLanguage(MetaAdapterFactory.getLanguage(0xf280165065d5424eL, 0xbb1b463a8781b786L, "jetbrains.mps.baseLanguage.javadoc"));
-        }
+      ListSequence.fromList(myModels).visitAll((it) -> {
+        ((SModelBase) it).addLanguage(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"));
+        ((SModelBase) it).addLanguage(MetaAdapterFactory.getLanguage(0xf280165065d5424eL, 0xbb1b463a8781b786L, "jetbrains.mps.baseLanguage.javadoc"));
       });
 
-      MapSequence.fromMap(myRootsToModels).visitAll(new IVisitor<IMapping<SNode, SModel>>() {
-        public void visit(IMapping<SNode, SModel> it) {
-          SModel m = it.value();
-          SNode root = it.key();
-          SModelOperations.addRootNode(m, root);
-        }
+      MapSequence.fromMap(myRootsToModels).visitAll((it) -> {
+        SModel m = it.value();
+        SNode root = it.key();
+        SModelOperations.addRootNode(m, root);
       });
     });
 
@@ -258,7 +244,7 @@ public class JavaToMpsConverter {
   public void tryResolveRefs(Iterable<SNode> nodes, FeatureKind level, ProgressMonitor progress) {
     if (myModels == null) {
       assert myModel != null;
-      myModels = Sequence.fromIterable(Sequence.<SModel>singleton(myModel)).toListSequence();
+      myModels = Sequence.fromIterable(Sequence.<SModel>singleton(myModel)).toList();
     }
     tryResolveRefs(nodes, level, progress, IncrementalModelAccess.INSIDE_COMMAND_OR_UPDATE_MODE);
   }
@@ -294,31 +280,23 @@ public class JavaToMpsConverter {
 
     resolveUpdatePass("variable references", nodes, (SNode node) -> getVariableRefs(node), progress.subTask(1), modelAccess);
 
-    resolveUpdatePass("dot operands", nodes, (SNode node) -> {
-      return ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.DotExpression$yW, false, new SAbstractConcept[]{})).translate(new ITranslator2<SNode, SReference>() {
-        public Iterable<SReference> translate(SNode it) {
-          return deepReferences(SLinkOperations.getTarget(it, LINKS.operand$w6IR));
-        }
-      });
-    }, progress.subTask(1), modelAccess);
+    resolveUpdatePass("dot operands", nodes, (SNode node) -> ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.DotExpression$yW, false, new SAbstractConcept[]{})).translate((it) -> deepReferences(SLinkOperations.getTarget(it, LINKS.operand$w6IR))), progress.subTask(1), modelAccess);
 
     resolveUpdatePass("dot operations", nodes, (SNode node) -> {
-      return ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.DotExpression$yW, false, new SAbstractConcept[]{})).translate(new ITranslator2<SNode, SReference>() {
-        public Iterable<SReference> translate(SNode it) {
-          if (Sequence.fromIterable(deepReferences(SLinkOperations.getTarget(it, LINKS.operand$w6IR))).any(new IWhereFilter<SReference>() {
-            public boolean accept(SReference it) {
-              return SLinkOperations.isDynamic(it);
-            }
-          })) {
-            return ListSequence.fromList(new ArrayList<SReference>());
+      return ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.DotExpression$yW, false, new SAbstractConcept[]{})).translate((it) -> {
+        if (Sequence.fromIterable(deepReferences(SLinkOperations.getTarget(it, LINKS.operand$w6IR))).any(new _FunctionTypes._return_P1_E0<Boolean, SReference>() {
+          public Boolean invoke(SReference it) {
+            return SLinkOperations.isDynamic(it);
+          }
+        })) {
+          return ListSequence.fromList(new ArrayList<SReference>());
+        } else {
+          if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.operation$gs9E), CONCEPTS.FieldReferenceOperation$fU)) {
+            return Sequence.<SReference>singleton(SNodeOperations.getReference(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.operation$gs9E), CONCEPTS.FieldReferenceOperation$fU), LINKS.fieldDeclaration$H7Ag));
+          } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.operation$gs9E), CONCEPTS.InstanceMethodCallOperation$uu)) {
+            return Sequence.<SReference>singleton(SNodeOperations.getReference(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.operation$gs9E), CONCEPTS.InstanceMethodCallOperation$uu), LINKS.baseMethodDeclaration$pyYw));
           } else {
-            if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.operation$gs9E), CONCEPTS.FieldReferenceOperation$fU)) {
-              return Sequence.<SReference>singleton(SNodeOperations.getReference(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.operation$gs9E), CONCEPTS.FieldReferenceOperation$fU), LINKS.fieldDeclaration$H7Ag));
-            } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.operation$gs9E), CONCEPTS.InstanceMethodCallOperation$uu)) {
-              return Sequence.<SReference>singleton(SNodeOperations.getReference(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.operation$gs9E), CONCEPTS.InstanceMethodCallOperation$uu), LINKS.baseMethodDeclaration$pyYw));
-            } else {
-              return ListSequence.fromList(new ArrayList<SReference>());
-            }
+            return ListSequence.fromList(new ArrayList<SReference>());
           }
         }
       });
@@ -327,16 +305,8 @@ public class JavaToMpsConverter {
     resolveUpdatePass("classifiers in static access", nodes, (SNode node) -> {
       List<SReference> result = ListSequence.fromList(new ArrayList<SReference>());
 
-      ListSequence.fromList(result).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.StaticMethodCall$Fg, false, new SAbstractConcept[]{})).select(new ISelector<SNode, SReference>() {
-        public SReference select(SNode it) {
-          return SNodeOperations.getReference(it, LINKS.classConcept$M5BC);
-        }
-      }));
-      ListSequence.fromList(result).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.StaticFieldReference$cU, false, new SAbstractConcept[]{})).select(new ISelector<SNode, SReference>() {
-        public SReference select(SNode it) {
-          return SNodeOperations.getReference(it, LINKS.classifier$BPY8);
-        }
-      }));
+      ListSequence.fromList(result).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.StaticMethodCall$Fg, false, new SAbstractConcept[]{})).select((it) -> SNodeOperations.getReference(it, LINKS.classConcept$M5BC)));
+      ListSequence.fromList(result).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.StaticFieldReference$cU, false, new SAbstractConcept[]{})).select((it) -> SNodeOperations.getReference(it, LINKS.classifier$BPY8)));
 
       return result;
     }, progress.subTask(1), modelAccess);
@@ -344,16 +314,8 @@ public class JavaToMpsConverter {
     resolveUpdatePass("static member references", nodes, (SNode node) -> {
       List<SReference> result = ListSequence.fromList(new ArrayList<SReference>());
 
-      ListSequence.fromList(result).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.StaticMethodCall$Fg, false, new SAbstractConcept[]{})).select(new ISelector<SNode, SReference>() {
-        public SReference select(SNode it) {
-          return SNodeOperations.getReference(it, LINKS.baseMethodDeclaration$pyYw);
-        }
-      }));
-      ListSequence.fromList(result).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.StaticFieldReference$cU, false, new SAbstractConcept[]{})).select(new ISelector<SNode, SReference>() {
-        public SReference select(SNode it) {
-          return SNodeOperations.getReference(it, LINKS.variableDeclaration$N1XG);
-        }
-      }));
+      ListSequence.fromList(result).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.StaticMethodCall$Fg, false, new SAbstractConcept[]{})).select((it) -> SNodeOperations.getReference(it, LINKS.baseMethodDeclaration$pyYw)));
+      ListSequence.fromList(result).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.StaticFieldReference$cU, false, new SAbstractConcept[]{})).select((it) -> SNodeOperations.getReference(it, LINKS.variableDeclaration$N1XG)));
 
       return result;
     }, progress.subTask(1), modelAccess);
@@ -485,11 +447,7 @@ public class JavaToMpsConverter {
           SNode operand = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(fieldRefOp), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR);
 
           Iterable<SReference> operandRefs = SNodeOperations.getReferences(operand);
-          if (Sequence.fromIterable(operandRefs).any(new IWhereFilter<SReference>() {
-            public boolean accept(SReference it) {
-              return SLinkOperations.isDynamic(it);
-            }
-          })) {
+          if (Sequence.fromIterable(operandRefs).any((it) -> SLinkOperations.isDynamic(it))) {
             continue;
           }
 
@@ -511,11 +469,7 @@ public class JavaToMpsConverter {
           SNode operand = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(imco), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR);
 
           Iterable<SReference> operandRefs = SNodeOperations.getReferences(operand);
-          if (Sequence.fromIterable(operandRefs).any(new IWhereFilter<SReference>() {
-            public boolean accept(SReference it) {
-              return SLinkOperations.isDynamic(it);
-            }
-          })) {
+          if (Sequence.fromIterable(operandRefs).any((it) -> SLinkOperations.isDynamic(it))) {
             continue;
           }
 
@@ -612,11 +566,7 @@ public class JavaToMpsConverter {
     modelAccess.replaceNodes(() -> {
       for (SNode node : SetSequence.fromSet(MapSequence.fromMap(toRemove).keySet())) {
         Iterable<SNode> imps = MapSequence.fromMap(toRemove).get(node);
-        Sequence.fromIterable(imps).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            SNodeOperations.deleteNode(it);
-          }
-        });
+        Sequence.fromIterable(imps).visitAll((it) -> SNodeOperations.deleteNode(it));
 
         SNode importAnnotation = new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).get(node);
         if (ListSequence.fromList(SLinkOperations.getChildren(importAnnotation, LINKS.entries$neZo)).isEmpty()) {
@@ -706,11 +656,7 @@ public class JavaToMpsConverter {
 
   private SNode makeEnumConstRef(SNode enumClass, final String constName) {
     // Q: maybe not findFirst, but rather fail if there are more than one...
-    SNode enumConst = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(enumClass, CONCEPTS.EnumClass$Vk), LINKS.enumConstant$qtgW)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return constName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-      }
-    });
+    SNode enumConst = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(enumClass, CONCEPTS.EnumClass$Vk), LINKS.enumConstant$qtgW)).findFirst((it) -> constName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL)));
     if ((enumConst == null)) {
       return null;
     }
@@ -751,11 +697,7 @@ public class JavaToMpsConverter {
       return null;
     }
 
-    SNode enumConst = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(claz, CONCEPTS.EnumClass$Vk), LINKS.enumConstant$qtgW)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL).equals(enumConstName);
-      }
-    });
+    SNode enumConst = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(claz, CONCEPTS.EnumClass$Vk), LINKS.enumConstant$qtgW)).findFirst((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).equals(enumConstName));
     SNode enumConstRef = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference"));
     SLinkOperations.setTarget(enumConstRef, LINKS.enumClass$bGAj, SNodeOperations.cast(claz, CONCEPTS.EnumClass$Vk));
     SLinkOperations.setTarget(enumConstRef, LINKS.enumConstantDeclaration$f1_N, enumConst);
@@ -831,22 +773,16 @@ public class JavaToMpsConverter {
     // FIXME share or re-use code with the corresponding NonTypesystemRule
 
     final Map<String, SNode> importsByName = MapSequence.fromMap(new HashMap<String, SNode>());
-    ListSequence.fromList(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).get(root), LINKS.entries$neZo)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SPropertyOperations.getBoolean(it, PROPS.onDemand$Gmdi));
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        MapSequence.fromMap(importsByName).put(((String) BHReflection.invoke0(it, CONCEPTS.Tokens$ej, SMethodIdV2.create("lastToken", 1296023605440030462L, 0x5745e3015c8914d3L))), it);
+    ListSequence.fromList(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).get(root), LINKS.entries$neZo)).where((it) -> !(SPropertyOperations.getBoolean(it, PROPS.onDemand$Gmdi))).visitAll((it) -> {
+      MapSequence.fromMap(importsByName).put(((String) BHReflection.invoke0(it, CONCEPTS.Tokens$ej, SMethodIdV2.create("lastToken", 1296023605440030462L, 0x5745e3015c8914d3L))), it);
 
-      }
     });
 
     boolean unknownPresent = false;
     boolean dynRefsPresent = false;
     Set<SNode> retain = SetSequence.fromSet(new HashSet<SNode>());
 
-    Deque<SNode> stack = DequeSequence.fromDequeNew(new LinkedList<SNode>());
+    Deque<SNode> stack = DequeSequence.fromDeque(new LinkedList<SNode>());
     DequeSequence.fromDequeNew(stack).pushElement(root);
 
     while (DequeSequence.fromDequeNew(stack).isNotEmpty()) {
@@ -891,18 +827,10 @@ public class JavaToMpsConverter {
 
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.ClassConcept$bK)) {
       ListSequence.fromList(refs).addSequence(ListSequence.fromList(SNodeOperations.getReferences(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK), LINKS.superclass$Mp9$))));
-      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK), LINKS.implementedInterface$rujG)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          ListSequence.fromList(refs).addSequence(Sequence.fromIterable(deepReferences(it)));
-        }
-      });
+      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK), LINKS.implementedInterface$rujG)).visitAll((it) -> ListSequence.fromList(refs).addSequence(Sequence.fromIterable(deepReferences(it))));
 
     } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.Interface$db)) {
-      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.Interface$db), LINKS.extendedInterface$PDVO)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          ListSequence.fromList(refs).addSequence(Sequence.fromIterable(deepReferences(it)));
-        }
-      });
+      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.Interface$db), LINKS.extendedInterface$PDVO)).visitAll((it) -> ListSequence.fromList(refs).addSequence(Sequence.fromIterable(deepReferences(it))));
     }
 
     for (SNode inner : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.Classifier$Ix, false, new SAbstractConcept[]{}))) {
@@ -954,23 +882,11 @@ public class JavaToMpsConverter {
   }
 
   private Iterable<SReference> getVariableRefs(SNode node) {
-    return ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.StaticFieldReference$cU));
-      }
-    }).select(new ISelector<SNode, SReference>() {
-      public SReference select(SNode it) {
-        return SNodeOperations.getReference(it, LINKS.variableDeclaration$N1XG);
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.StaticFieldReference$cU))).select((it) -> SNodeOperations.getReference(it, LINKS.variableDeclaration$N1XG));
   }
 
   private Iterable<SReference> getDotExpLeftParts(SNode node) {
-    return ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.DotExpression$yW, false, new SAbstractConcept[]{})).translate(new ITranslator2<SNode, SReference>() {
-      public Iterable<SReference> translate(SNode it) {
-        return deepReferences(SLinkOperations.getTarget(it, LINKS.operand$w6IR));
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.DotExpression$yW, false, new SAbstractConcept[]{})).translate((it) -> deepReferences(SLinkOperations.getTarget(it, LINKS.operand$w6IR)));
   }
 
   private void resolveRefs(Iterable<SReference> refs, Map<SNodeReference, List<Pair<SReferenceLink, ResolveInfo>>> result) {
@@ -1005,11 +921,7 @@ public class JavaToMpsConverter {
       if (node == null) {
         continue;
       }
-      ListSequence.fromList(MapSequence.fromMap(refMap).get(nodeRef)).visitAll(new IVisitor<Pair<SReferenceLink, ResolveInfo>>() {
-        public void visit(Pair<SReferenceLink, ResolveInfo> it) {
-          node.setReference(it.o1, it.o2);
-        }
-      });
+      ListSequence.fromList(MapSequence.fromMap(refMap).get(nodeRef)).visitAll((it) -> node.setReference(it.o1, it.o2));
     }
   }
 

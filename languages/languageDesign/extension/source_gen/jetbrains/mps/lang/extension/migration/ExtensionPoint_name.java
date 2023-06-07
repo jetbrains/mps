@@ -10,13 +10,11 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.migration.runtime.base.RefactoringRuntime;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import jetbrains.mps.internal.collections.runtime.ISequence;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptMemberNotMigratedProblem;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -42,20 +40,8 @@ public class ExtensionPoint_name extends MigrationScriptBase {
     {
       SearchScope scope_3c5dbg_a0e = CommandUtil.createScope(m);
       final SearchScope scope_3c5dbg_a0e_0 = new EditableFilteringScope(scope_3c5dbg_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_3c5dbg_a0e_0;
-        }
-      };
-      Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(CONCEPTS.INamedConcept$Kd)) || ExtensionPoint_name.isMovedConcept(SNodeOperations.getConcept(it));
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode node) {
-          RefactoringRuntime.changePropertyInstance(node, PROPS.extensionName$fXXK, PROPS.name$MnvL);
-        }
-      });
+      QueryExecutionContext context = () -> scope_3c5dbg_a0e_0;
+      Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where((it) -> SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(CONCEPTS.INamedConcept$Kd)) || ExtensionPoint_name.isMovedConcept(SNodeOperations.getConcept(it))).visitAll((SNode node) -> RefactoringRuntime.changePropertyInstance(node, PROPS.extensionName$fXXK, PROPS.name$MnvL));
     }
   }
   @Override
@@ -63,23 +49,11 @@ public class ExtensionPoint_name extends MigrationScriptBase {
     {
       SearchScope scope_3c5dbg_a0f = CommandUtil.createScope(m);
       final SearchScope scope_3c5dbg_a0f_0 = new EditableFilteringScope(scope_3c5dbg_a0f);
-      final QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_3c5dbg_a0f_0;
-        }
-      };
-      return Sequence.fromClosure(new ISequenceClosure<Problem>() {
-        public Iterable<Problem> iterable() {
-          return Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(CONCEPTS.ExtensionPointDeclaration$sb)) || SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(CONCEPTS.INamedConcept$Kd));
-            }
-          }).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return it.hasProperty(PROPS.extensionName$fXXK);
-            }
-          }).select(new ISelector<SNode, Problem>() {
-            public Problem select(SNode it) {
+      final QueryExecutionContext context = () -> scope_3c5dbg_a0f_0;
+      return Sequence.fromClosure(new _FunctionTypes._return_P0_E0<ISequence<Problem>>() {
+        public ISequence<Problem> invoke() {
+          return Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where((it) -> SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(CONCEPTS.ExtensionPointDeclaration$sb)) || SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(CONCEPTS.INamedConcept$Kd))).where((it) -> it.hasProperty(PROPS.extensionName$fXXK)).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+            public Problem invoke(SNode it) {
               return DeprecatedConceptMemberNotMigratedProblem.deprecatedProperty(it, PROPS.extensionName$fXXK);
             }
           });

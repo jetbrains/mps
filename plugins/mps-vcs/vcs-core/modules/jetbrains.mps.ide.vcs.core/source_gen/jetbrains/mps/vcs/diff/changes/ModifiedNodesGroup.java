@@ -14,14 +14,11 @@ import java.util.HashSet;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Collections;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.LinkedList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
@@ -146,11 +143,7 @@ public class ModifiedNodesGroup {
 
   @NotNull
   public List<SNodeId> getIds() {
-    return ListSequence.fromList(myNodes).select(new ISelector<ModifiedNode, SNodeId>() {
-      public SNodeId select(ModifiedNode it) {
-        return it.getNodeId();
-      }
-    }).toListSequence();
+    return ListSequence.fromList(myNodes).select((it) -> it.getNodeId()).toList();
   }
 
   public void setNextGroup(ModifiedNodesGroup nextGroup) {
@@ -200,11 +193,7 @@ public class ModifiedNodesGroup {
     if (parent == null) {
       return ListSequence.fromList(new LinkedList<SNodeId>());
     }
-    return Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(parent, myLink)).select(new ISelector<SNode, SNodeId>() {
-      public SNodeId select(SNode it) {
-        return it.getNodeId();
-      }
-    }).toListSequence();
+    return Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(parent, myLink)).select((it) -> it.getNodeId()).toList();
   }
 
   public int getEnd() {
@@ -249,41 +238,17 @@ public class ModifiedNodesGroup {
 
   @NotNull
   private List<SNode> copyNodes(@NotNull final NodeCopier nodeCopier) {
-    List<SNode> copiedNodes = ListSequence.fromList(myNodes).select(new ISelector<ModifiedNode, SNode>() {
-      public SNode select(ModifiedNode it) {
-        return nodeCopier.copyNode(it.getNode());
-      }
-    }).toListSequence();
+    List<SNode> copiedNodes = ListSequence.fromList(myNodes).select((it) -> nodeCopier.copyNode(it.getNode())).toList();
     //  insert only really new nodes, the moved nodes should be moved separately
     final Set<SNodeId> dependantIds = SetSequence.fromSet(new HashSet<SNodeId>());
-    SetSequence.fromSet(dependantIds).addSequence(SetSequence.fromSet(myDependantGroups).translate(new ITranslator2<ModifiedNodesGroup, SNodeId>() {
-      public Iterable<SNodeId> translate(ModifiedNodesGroup it) {
-        return it.getIds();
-      }
-    }).toListSequence());
-    SetSequence.fromSet(dependantIds).addSequence(SetSequence.fromSet(dependantIds).select(new ISelector<SNodeId, SNodeId>() {
-      public SNodeId select(SNodeId id) {
-        return nodeCopier.getReplacementId(id);
-      }
-    }).toListSequence());
-    ListSequence.fromList(copiedNodes).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode node) {
-        deleteDependantNodes(node, nodeCopier, dependantIds);
-      }
-    });
+    SetSequence.fromSet(dependantIds).addSequence(ListSequence.fromList(SetSequence.fromSet(myDependantGroups).translate((it) -> it.getIds()).toList()));
+    SetSequence.fromSet(dependantIds).addSequence(ListSequence.fromList(SetSequence.fromSet(dependantIds).select((id) -> nodeCopier.getReplacementId(id)).toList()));
+    ListSequence.fromList(copiedNodes).visitAll((node) -> deleteDependantNodes(node, nodeCopier, dependantIds));
     return copiedNodes;
   }
 
   public void deleteFromModel(@NotNull final SModel model) {
-    ListSequence.fromList(myNodes).select(new ISelector<ModifiedNode, SNodeId>() {
-      public SNodeId select(ModifiedNode it) {
-        return it.getNodeId();
-      }
-    }).visitAll(new IVisitor<SNodeId>() {
-      public void visit(SNodeId id) {
-        check_1a4m4r_a0a0a0a0fd(model.getNode(id));
-      }
-    });
+    ListSequence.fromList(myNodes).select((it) -> it.getNodeId()).visitAll((id) -> check_1a4m4r_a0a0a0a0fd(model.getNode(id)));
   }
 
   /*package*/ void insertNodes(@NotNull List<SNode> nodes, @NotNull SModel model, @NotNull NodeCopier nodeCopier) {
@@ -303,7 +268,7 @@ public class ModifiedNodesGroup {
       parent = SNodeOperations.getParent(beforeAnchor);
     }
 
-    for (SNode node : ListSequence.fromList(nodes).where(new NotNullWhereFilter<SNode>())) {
+    for (SNode node : ListSequence.fromList(nodes).where(new NotNullWhereFilter())) {
       // nodes of type ChildAttribute can be inserted to 'smodelAttribute' role only.
       // still, we want to show the commented nodes in the same changed group with regular nodes, see MPS-26874
       SContainmentLink link = (node.isInstanceOfConcept(CONCEPTS.ChildAttribute$m8) ? LINKS.smodelAttribute$KJ43 : this.getLink());
@@ -399,36 +364,22 @@ public class ModifiedNodesGroup {
 
   @NotNull
   /*package*/ List<SNode> extractNodes(@NotNull final SModel model, @NotNull final NodeCopier nodeCopier) {
-    List<SNode> nodes = ListSequence.fromList(getIds()).select(new ISelector<SNodeId, SNode>() {
-      public SNode select(SNodeId id) {
-        return nodeCopier.getNode(model, id);
-      }
-    }).toListSequence();
-    ListSequence.fromList(nodes).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SNodeOperations.deleteNode(it);
-      }
-    });
+    List<SNode> nodes = ListSequence.fromList(getIds()).select((id) -> nodeCopier.getNode(model, id)).toList();
+    ListSequence.fromList(nodes).visitAll((it) -> SNodeOperations.deleteNode(it));
     return nodes;
   }
 
   public Set<SNodeId> getDependantGroupNodeIds() {
-    return SetSequence.fromSetWithValues(new HashSet<SNodeId>(), SetSequence.fromSet(myDependantGroups).translate(new ITranslator2<ModifiedNodesGroup, SNodeId>() {
-      public Iterable<SNodeId> translate(ModifiedNodesGroup it) {
-        return it.getIds();
-      }
-    }));
+    return SetSequence.fromSetWithValues(new HashSet<SNodeId>(), SetSequence.fromSet(myDependantGroups).translate((it) -> it.getIds()));
   }
 
   private void deleteDependantNodes(SNode insertedNode, final NodeCopier nodeCopier, final Set<SNodeId> dependantIds) {
-    ListSequence.fromList(SNodeOperations.getChildren(insertedNode)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode child) {
-        SNodeId childId = child.getNodeId();
-        if (SetSequence.fromSet(dependantIds).contains(childId)) {
-          nodeCopier.deleteNode(child);
-        } else {
-          deleteDependantNodes(child, nodeCopier, dependantIds);
-        }
+    ListSequence.fromList(SNodeOperations.getChildren(insertedNode)).visitAll((child) -> {
+      SNodeId childId = child.getNodeId();
+      if (SetSequence.fromSet(dependantIds).contains(childId)) {
+        nodeCopier.deleteNode(child);
+      } else {
+        deleteDependantNodes(child, nodeCopier, dependantIds);
       }
     });
   }
@@ -510,11 +461,7 @@ public class ModifiedNodesGroup {
     }
     sb.append("group of ");
     sb.append(myLink.getName() + "s ");
-    sb.append(IterableUtils.join(ListSequence.fromList(getIds()).select(new ISelector<SNodeId, String>() {
-      public String select(SNodeId id) {
-        return "#" + id;
-      }
-    }), ", "));
+    sb.append(IterableUtils.join(ListSequence.fromList(getIds()).select((id) -> "#" + id), ", "));
     sb.append(" of parent #").append(myParentId);
     return sb.toString();
   }

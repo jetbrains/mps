@@ -16,9 +16,6 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -59,15 +56,7 @@ public final class SetIdsInMoveMigrations_Intention extends AbstractIntentionDes
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       final SRepository repo = editorContext.getRepository();
-      Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.part$ITsP), CONCEPTS.MoveNodeMigrationPart$zn)).translate(new ITranslator2<SNode, SNode>() {
-        public Iterable<SNode> translate(SNode it) {
-          return SLinkOperations.getChildren(it, LINKS.specialization$dM5g);
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          RefactoringIdHelper.migrate(repo, it);
-        }
-      });
+      Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.part$ITsP), CONCEPTS.MoveNodeMigrationPart$zn)).translate((it) -> SLinkOperations.getChildren(it, LINKS.specialization$dM5g)).visitAll((it) -> RefactoringIdHelper.migrate(repo, it));
     }
 
     @Override
@@ -79,15 +68,7 @@ public final class SetIdsInMoveMigrations_Intention extends AbstractIntentionDes
     }
 
     private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-      return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.part$ITsP), CONCEPTS.MoveNodeMigrationPart$zn)).translate(new ITranslator2<SNode, SNode>() {
-        public Iterable<SNode> translate(SNode it) {
-          return SLinkOperations.getChildren(it, LINKS.specialization$dM5g);
-        }
-      }).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return RefactoringIdHelper.isApplicable(it);
-        }
-      });
+      return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.part$ITsP), CONCEPTS.MoveNodeMigrationPart$zn)).translate((it) -> SLinkOperations.getChildren(it, LINKS.specialization$dM5g)).any((it) -> RefactoringIdHelper.isApplicable(it));
     }
 
 

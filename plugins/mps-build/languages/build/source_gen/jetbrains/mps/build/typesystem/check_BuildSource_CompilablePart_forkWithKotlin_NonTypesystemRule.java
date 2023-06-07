@@ -16,7 +16,6 @@ import jetbrains.mps.errors.BaseQuickFixProvider;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -50,11 +49,7 @@ public class check_BuildSource_CompilablePart_forkWithKotlin_NonTypesystemRule e
 
       // 2. one must set kotlinc_home
       SNode project = SNodeOperations.getNodeAncestor(node, CONCEPTS.BuildProject$ae, false, false);
-      if ((project != null) && !(ListSequence.fromList(SLinkOperations.getChildren(project, LINKS.macros$r8_A)).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.BuildFolderMacro$mR), PROPS.name$MnvL), KotlincMacroHelper.KOTLINC_HOME);
-        }
-      }))) {
+      if ((project != null) && !(ListSequence.fromList(SLinkOperations.getChildren(project, LINKS.macros$r8_A)).any((it) -> Objects.equals(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.BuildFolderMacro$mR), PROPS.name$MnvL), KotlincMacroHelper.KOTLINC_HOME)))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(node, "define $" + KotlincMacroHelper.KOTLINC_HOME + " macro to use kotlin compiler", "r:2349e4dd-6518-4a4c-9022-c7887bed8b52(jetbrains.mps.build.typesystem)", "4427790052271477931", null, errorTarget);

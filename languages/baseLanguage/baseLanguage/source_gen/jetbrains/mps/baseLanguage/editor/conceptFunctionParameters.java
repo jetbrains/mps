@@ -18,7 +18,6 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Collections;
 import jetbrains.mps.baseLanguage.behavior.ConceptFunction__BehaviorDescriptor;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
@@ -68,11 +67,7 @@ public class conceptFunctionParameters extends SubstituteMenuBase {
     protected Iterable<? extends SConcept> getParameters(SubstituteMenuContext _context) {
       List<SNode> functions = SNodeOperations.getNodeAncestors(_context.getParentNode(), CONCEPTS.ConceptFunction$mf, false);
       // skip Closure
-      SNode parentFunction = ListSequence.fromList(functions).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(it, CONCEPTS.Closure$yC));
-        }
-      }).first();
+      SNode parentFunction = ListSequence.fromList(functions).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.Closure$yC))).first();
       if (parentFunction == null) {
         return Collections.emptyList();
       }

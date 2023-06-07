@@ -18,7 +18,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -50,11 +49,7 @@ public final class CommentLine__BehaviorDescriptor extends BaseBHDescriptor {
     return null;
   }
   /*package*/ static String buildCommentText_id7Qt73fl2z8k(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$QuzQ)).foldLeft("", new ILeftCombinator<SNode, String>() {
-      public String combine(String s, SNode it) {
-        return s + CommentLinePart__BehaviorDescriptor.buildCommentText_id7Qt73fl2F3N.invoke(it);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$QuzQ)).foldLeft("", (String s, SNode it) -> s + CommentLinePart__BehaviorDescriptor.buildCommentText_id7Qt73fl2F3N.invoke(it));
   }
 
   /*package*/ CommentLine__BehaviorDescriptor() {

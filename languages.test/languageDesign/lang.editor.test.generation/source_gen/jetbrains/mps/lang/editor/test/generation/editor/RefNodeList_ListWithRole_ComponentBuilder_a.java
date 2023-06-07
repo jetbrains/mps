@@ -53,11 +53,10 @@ import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Replace
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Item;
-import java.util.function.Function;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.action.NodeSubstituteActionWrapper;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.nodeEditor.menus.EditorMenuTraceInfoImpl;
-import java.util.stream.Collectors;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
@@ -76,7 +75,6 @@ import jetbrains.mps.lang.editor.cellProviders.PropertyCellContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
@@ -87,6 +85,7 @@ import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Replace
 import jetbrains.mps.lang.editor.generator.internal.PrimaryReplaceChildMenuCellMenuPart;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceChild_CustomChildConcept;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceChild_Item;
+import java.util.stream.Collectors;
 import jetbrains.mps.editor.runtime.style.DefaultBaseLine;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Superscript;
 import jetbrains.mps.editor.runtime.style.ScriptKind;
@@ -514,20 +513,16 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       @Override
       public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-        List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-        Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-          public SubstituteAction apply(SubstituteAction action) {
-            return new NodeSubstituteActionWrapper(action) {
-              @Override
-              public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-                EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-                result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308604400608")));
-                return result;
-              }
-            };
-          }
-        };
-        return actions.stream().map(mapper).collect(Collectors.toList());
+        return ListSequence.fromList(super.createActions(cellContext, editorContext)).select((action) -> {
+          return (SubstituteAction) new NodeSubstituteActionWrapper(action) {
+            @Override
+            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+              result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308604400608")));
+              return result;
+            }
+          };
+        }).toList();
       }
 
       protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
@@ -980,20 +975,16 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       @Override
       public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-        List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-        Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-          public SubstituteAction apply(SubstituteAction action) {
-            return new NodeSubstituteActionWrapper(action) {
-              @Override
-              public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-                EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-                result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308604513042")));
-                return result;
-              }
-            };
-          }
-        };
-        return actions.stream().map(mapper).collect(Collectors.toList());
+        return ListSequence.fromList(super.createActions(cellContext, editorContext)).select((action) -> {
+          return (SubstituteAction) new NodeSubstituteActionWrapper(action) {
+            @Override
+            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+              result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308604513042")));
+              return result;
+            }
+          };
+        }).toList();
       }
 
       protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
@@ -1495,20 +1486,16 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       @Override
       public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-        List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-        Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-          public SubstituteAction apply(SubstituteAction action) {
-            return new NodeSubstituteActionWrapper(action) {
-              @Override
-              public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-                EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-                result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308604719354")));
-                return result;
-              }
-            };
-          }
-        };
-        return actions.stream().map(mapper).collect(Collectors.toList());
+        return ListSequence.fromList(super.createActions(cellContext, editorContext)).select((action) -> {
+          return (SubstituteAction) new NodeSubstituteActionWrapper(action) {
+            @Override
+            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+              result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308604719354")));
+              return result;
+            }
+          };
+        }).toList();
       }
 
       protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
@@ -1998,20 +1985,16 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       @Override
       public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-        List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-        Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-          public SubstituteAction apply(SubstituteAction action) {
-            return new NodeSubstituteActionWrapper(action) {
-              @Override
-              public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-                EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-                result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308604913935")));
-                return result;
-              }
-            };
-          }
-        };
-        return actions.stream().map(mapper).collect(Collectors.toList());
+        return ListSequence.fromList(super.createActions(cellContext, editorContext)).select((action) -> {
+          return (SubstituteAction) new NodeSubstituteActionWrapper(action) {
+            @Override
+            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+              result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308604913935")));
+              return result;
+            }
+          };
+        }).toList();
       }
 
       protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
@@ -2423,11 +2406,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
         editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new PropertyCellContext(myNode, property), new SubstituteInfoPartExt[]{new RefNodeList_generic_cellMenu_i8r80j_a0c31a0a(), new RefNodeList_generic_cellMenu_i8r80j_b0c31a0a(), new RefNodeList_customReplace_cellMenu_i8r80j_c0c31a0a(), new RefNodeList_customReplace_cellMenu_i8r80j_d0c31a0a(), new RefNodeList_component_cellMenu_i8r80j_e0c31a0a(), new RefNodeList_generic_cellMenu_i8r80j_f0c31a0a(), new RefNodeList_theProperty_postfixCellMenu_i8r80j_g0c31a0a(), new RefNodeList_theProperty_cellMenu_i8r80j_h0c31a0a(), new ReplaceWith_Constant_cellMenu_i8r80j_i0c31a0a(), new SChildSubstituteInfoPartEx(editorCell)}));
         setCellContext(editorCell);
         Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
-        Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
-          }
-        });
+        Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where((it) -> Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property));
         if (Sequence.fromIterable(currentPropertyAttributes).isNotEmpty()) {
           EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
           return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentPropertyAttributes).first(), AttributeKind.PROPERTY, editorCell);
@@ -2554,20 +2533,16 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       @Override
       public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-        List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-        Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-          public SubstituteAction apply(SubstituteAction action) {
-            return new NodeSubstituteActionWrapper(action) {
-              @Override
-              public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-                EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-                result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308605114194")));
-                return result;
-              }
-            };
-          }
-        };
-        return actions.stream().map(mapper).collect(Collectors.toList());
+        return ListSequence.fromList(super.createActions(cellContext, editorContext)).select((action) -> {
+          return (SubstituteAction) new NodeSubstituteActionWrapper(action) {
+            @Override
+            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+              result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308605114194")));
+              return result;
+            }
+          };
+        }).toList();
       }
 
       protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
@@ -2585,20 +2560,16 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       @Override
       public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-        List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-        Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-          public SubstituteAction apply(SubstituteAction action) {
-            return new NodeSubstituteActionWrapper(action) {
-              @Override
-              public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-                EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-                result.setDescriptor(new EditorMenuDescriptorBase("property postfix hints", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308605114220")));
-                return result;
-              }
-            };
-          }
-        };
-        return actions.stream().map(mapper).collect(Collectors.toList());
+        return ListSequence.fromList(super.createActions(cellContext, editorContext)).select((action) -> {
+          return (SubstituteAction) new NodeSubstituteActionWrapper(action) {
+            @Override
+            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+              result.setDescriptor(new EditorMenuDescriptorBase("property postfix hints", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308605114220")));
+              return result;
+            }
+          };
+        }).toList();
       }
 
       protected List<String> getPostfixes(SNode node, EditorContext editorContext) {
@@ -2611,20 +2582,16 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       @Override
       public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-        List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-        Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-          public SubstituteAction apply(SubstituteAction action) {
-            return new NodeSubstituteActionWrapper(action) {
-              @Override
-              public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-                EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-                result.setDescriptor(new EditorMenuDescriptorBase("property postfix values", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308605114238")));
-                return result;
-              }
-            };
-          }
-        };
-        return actions.stream().map(mapper).collect(Collectors.toList());
+        return ListSequence.fromList(super.createActions(cellContext, editorContext)).select((action) -> {
+          return (SubstituteAction) new NodeSubstituteActionWrapper(action) {
+            @Override
+            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+              result.setDescriptor(new EditorMenuDescriptorBase("property postfix values", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308605114238")));
+              return result;
+            }
+          };
+        }).toList();
       }
 
       protected List<String> getPropertyValues(SNode node, EditorContext editorContext) {
@@ -3285,20 +3252,16 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       @Override
       public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-        List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-        Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-          public SubstituteAction apply(SubstituteAction action) {
-            return new NodeSubstituteActionWrapper(action) {
-              @Override
-              public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-                EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-                result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308605473925")));
-                return result;
-              }
-            };
-          }
-        };
-        return actions.stream().map(mapper).collect(Collectors.toList());
+        return ListSequence.fromList(super.createActions(cellContext, editorContext)).select((action) -> {
+          return (SubstituteAction) new NodeSubstituteActionWrapper(action) {
+            @Override
+            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+              result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308605473925")));
+              return result;
+            }
+          };
+        }).toList();
       }
 
       protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
@@ -3337,20 +3300,16 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       @Override
       public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-        List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-        Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-          public SubstituteAction apply(SubstituteAction action) {
-            return new NodeSubstituteActionWrapper(action) {
-              @Override
-              public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-                EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-                result.setDescriptor(new EditorMenuDescriptorBase("replace child item: " + RefNodeList_children_cellMenu_i8r80j_k0b61a0a.this.getMatchingText(), new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308605473978")));
-                return result;
-              }
-            };
-          }
-        };
-        return actions.stream().map(mapper).collect(Collectors.toList());
+        return super.createActions(cellContext, editorContext).stream().map((action) -> {
+          return new NodeSubstituteActionWrapper(action) {
+            @Override
+            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+              result.setDescriptor(new EditorMenuDescriptorBase("replace child item: " + RefNodeList_children_cellMenu_i8r80j_k0b61a0a.this.getMatchingText(), new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308605473978")));
+              return result;
+            }
+          };
+        }).collect(Collectors.toList());
       }
 
 

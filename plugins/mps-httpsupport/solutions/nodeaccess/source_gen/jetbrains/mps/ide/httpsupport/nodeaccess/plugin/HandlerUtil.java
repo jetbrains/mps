@@ -24,7 +24,6 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.textgen.trace.BaseLanguageNodeLookup;
 import jetbrains.mps.textgen.trace.DebugInfoRoot;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.common.FileOpenUtil;
 import javax.swing.JComponent;
@@ -109,20 +108,14 @@ public class HandlerUtil {
 
     Stream<DebugInfo> debugInfos = new DefaultTraceInfoProvider(project.getRepository()).debugInfo(modelName);
     Iterator<DebugInfo> it = debugInfos.iterator();
-    _FunctionTypes._return_P1_E0<? extends SNodeReference, ? super DebugInfo> nodeChooser = (line != null ? new _FunctionTypes._return_P1_E0<SNodeReference, DebugInfo>() {
-      public SNodeReference invoke(DebugInfo info) {
-        return new BaseLanguageNodeLookup(info).getNodeAt(fileName, line);
-      }
-    } : new _FunctionTypes._return_P1_E0<SNodeReference, DebugInfo>() {
-      public SNodeReference invoke(DebugInfo info) {
-        Iterable<DebugInfoRoot> roots = info.getRoots();
-        return Sequence.fromIterable(roots).findFirst(new IWhereFilter<DebugInfoRoot>() {
-          public boolean accept(DebugInfoRoot it) {
-            return it.getFileNames().contains(fileName);
-          }
-        }).getNodeRef();
-      }
-    });
+    _FunctionTypes._return_P1_E0<? extends SNodeReference, ? super DebugInfo> nodeChooser = (line != null ? ((_FunctionTypes._return_P1_E0<SNodeReference, DebugInfo>) (DebugInfo info) -> new BaseLanguageNodeLookup(info).getNodeAt(fileName, line)) : ((_FunctionTypes._return_P1_E0<SNodeReference, DebugInfo>) (DebugInfo info) -> {
+      Iterable<DebugInfoRoot> roots = info.getRoots();
+      return Sequence.fromIterable(roots).findFirst(new _FunctionTypes._return_P1_E0<Boolean, DebugInfoRoot>() {
+        public Boolean invoke(DebugInfoRoot it) {
+          return it.getFileNames().contains(fileName);
+        }
+      }).getNodeRef();
+    }));
     while (it.hasNext()) {
       SNodeReference reference = nodeChooser.invoke(it.next());
       if (HandlerUtil.openNode(project, reference) != null) {

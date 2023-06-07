@@ -10,10 +10,8 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -42,42 +40,28 @@ public class LongAndUnsignedAsLiteral extends MigrationScriptBase {
     {
       SearchScope scope_pga33a_a0e = CommandUtil.createScope(m);
       final SearchScope scope_pga33a_a0e_0 = new EditableFilteringScope(scope_pga33a_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_pga33a_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.UnsignedLiteral$kI, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNode converted = convert(SPropertyOperations.getString(it, PROPS.value$xhdM));
-          if (converted != null) {
-            SPropertyOperations.assign(converted, PROPS.unsigned$iUpc, true);
-            SNodeOperations.replaceWithAnother(it, converted);
-          }
+      QueryExecutionContext context = () -> scope_pga33a_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.UnsignedLiteral$kI, false)).visitAll((it) -> {
+        SNode converted = convert(SPropertyOperations.getString(it, PROPS.value$xhdM));
+        if (converted != null) {
+          SPropertyOperations.assign(converted, PROPS.unsigned$iUpc, true);
+          SNodeOperations.replaceWithAnother(it, converted);
         }
       });
 
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LongLiteral$kf, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNode converted = convert(SPropertyOperations.getString(it, PROPS.value$xbNW));
-          if (converted != null) {
-            SPropertyOperations.assign(converted, PROPS.long$1NZg, true);
-            SNodeOperations.replaceWithAnother(it, converted);
-          }
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LongLiteral$kf, false)).visitAll((it) -> {
+        SNode converted = convert(SPropertyOperations.getString(it, PROPS.value$xbNW));
+        if (converted != null) {
+          SPropertyOperations.assign(converted, PROPS.long$1NZg, true);
+          SNodeOperations.replaceWithAnother(it, converted);
         }
       });
 
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IntegerLiteral$7a, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SPropertyOperations.getString(it, PROPS.value$x4lo).startsWith("-");
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNode minus = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x45d70ebd5587138aL, "jetbrains.mps.kotlin.structure.UnaryMinusOperation"));
-          SNodeOperations.replaceWithAnother(it, minus);
-          SLinkOperations.setTarget(minus, LINKS.operand$YS5t, it);
-          SPropertyOperations.assign(it, PROPS.value$x4lo, SPropertyOperations.getString(it, PROPS.value$x4lo).substring(1));
-        }
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IntegerLiteral$7a, false)).where((it) -> SPropertyOperations.getString(it, PROPS.value$x4lo).startsWith("-")).visitAll((it) -> {
+        SNode minus = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x45d70ebd5587138aL, "jetbrains.mps.kotlin.structure.UnaryMinusOperation"));
+        SNodeOperations.replaceWithAnother(it, minus);
+        SLinkOperations.setTarget(minus, LINKS.operand$YS5t, it);
+        SPropertyOperations.assign(it, PROPS.value$x4lo, SPropertyOperations.getString(it, PROPS.value$x4lo).substring(1));
       });
     }
   }

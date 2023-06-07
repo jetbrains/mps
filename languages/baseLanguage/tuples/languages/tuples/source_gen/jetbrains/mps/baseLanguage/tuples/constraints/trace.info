@@ -28,44 +28,44 @@
   </root>
   <root nodeRef="r:3d04bd03-b6d9-4be1-8a52-d7b756e1d85b(jetbrains.mps.baseLanguage.tuples.constraints)/1239575916907">
     <file name="NamedTupleComponentReference_Constraints.java">
-      <node id="1239575916907" at="29,53,30,52" concept="9" />
-      <node id="1239575919368" at="41,63,42,148" concept="5" />
-      <node id="6836281137582777092" at="45,80,46,480" concept="5" />
-      <node id="1239575916907" at="50,6,51,131" concept="4" />
-      <node id="1239575919368" at="51,131,52,42" concept="1" />
-      <node id="1239575916907" at="52,42,53,22" concept="5" />
-      <node id="1239575916907" at="57,0,58,0" concept="7" trace="NamedTupleComponentReference$e7" />
-      <node id="1239575916907" at="58,0,59,0" concept="7" trace="NamedTupleLiteral$rD" />
-      <node id="1239575916907" at="62,0,63,0" concept="7" trace="componentDeclaration$nkzL" />
-      <node id="1239575916907" at="63,0,64,0" concept="7" trace="tupleDeclaration$Pcb7" />
-      <node id="1239575916907" at="64,0,65,0" concept="7" trace="component$wCHx" />
-      <node id="1239575916907" at="29,0,32,0" concept="0" trace="NamedTupleComponentReference_Constraints#()V" />
-      <node id="1239575919368" at="40,0,44,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="1239575919368" at="44,0,48,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
-      <node id="1239575919368" at="38,56,48,10" concept="5" />
-      <node id="1239575919368" at="36,0,50,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-      <node id="1239575919368" at="34,90,50,6" concept="4" />
-      <node id="1239575916907" at="33,0,55,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="1239575916907" at="29,53,30,52" />
-      <scope id="1239575919368" at="41,63,42,148" />
-      <scope id="1239575919368" at="45,80,46,480" />
-      <scope id="1239575916907" at="29,0,32,0" />
-      <scope id="1239575919368" at="40,0,44,0" />
-      <scope id="1239575919368" at="44,0,48,0">
+      <node id="1239575916907" at="28,53,29,52" concept="9" />
+      <node id="1239575919368" at="40,63,41,148" concept="5" />
+      <node id="6836281137582777092" at="44,80,45,474" concept="5" />
+      <node id="1239575916907" at="49,6,50,131" concept="4" />
+      <node id="1239575919368" at="50,131,51,42" concept="1" />
+      <node id="1239575916907" at="51,42,52,22" concept="5" />
+      <node id="1239575916907" at="56,0,57,0" concept="7" trace="NamedTupleComponentReference$e7" />
+      <node id="1239575916907" at="57,0,58,0" concept="7" trace="NamedTupleLiteral$rD" />
+      <node id="1239575916907" at="61,0,62,0" concept="7" trace="componentDeclaration$nkzL" />
+      <node id="1239575916907" at="62,0,63,0" concept="7" trace="tupleDeclaration$Pcb7" />
+      <node id="1239575916907" at="63,0,64,0" concept="7" trace="component$wCHx" />
+      <node id="1239575916907" at="28,0,31,0" concept="0" trace="NamedTupleComponentReference_Constraints#()V" />
+      <node id="1239575919368" at="39,0,43,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="1239575919368" at="43,0,47,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="1239575919368" at="37,56,47,10" concept="5" />
+      <node id="1239575919368" at="35,0,49,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="1239575919368" at="33,90,49,6" concept="4" />
+      <node id="1239575916907" at="32,0,54,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="1239575916907" at="28,53,29,52" />
+      <scope id="1239575919368" at="40,63,41,148" />
+      <scope id="1239575919368" at="44,80,45,474" />
+      <scope id="1239575916907" at="28,0,31,0" />
+      <scope id="1239575919368" at="39,0,43,0" />
+      <scope id="1239575919368" at="43,0,47,0">
         <var name="_context" id="1239575919368" />
       </scope>
-      <scope id="1239575919368" at="38,56,48,10" />
-      <scope id="1239575919368" at="36,0,50,0" />
-      <scope id="1239575916907" at="34,90,53,22">
+      <scope id="1239575919368" at="37,56,47,10" />
+      <scope id="1239575919368" at="35,0,49,0" />
+      <scope id="1239575916907" at="33,90,52,22">
         <var name="d0" id="1239575919368" />
         <var name="references" id="1239575916907" />
       </scope>
-      <scope id="1239575916907" at="33,0,55,0" />
-      <unit id="1239575916907" at="56,0,60,0" name="jetbrains.mps.baseLanguage.tuples.constraints.NamedTupleComponentReference_Constraints$CONCEPTS" />
-      <unit id="1239575916907" at="61,0,66,0" name="jetbrains.mps.baseLanguage.tuples.constraints.NamedTupleComponentReference_Constraints$LINKS" />
-      <unit id="1239575919368" at="39,19,48,9" name="jetbrains.mps.baseLanguage.tuples.constraints.NamedTupleComponentReference_Constraints$1$1" />
-      <unit id="1239575919368" at="35,48,50,5" name="jetbrains.mps.baseLanguage.tuples.constraints.NamedTupleComponentReference_Constraints$1" />
-      <unit id="1239575916907" at="28,0,67,0" name="jetbrains.mps.baseLanguage.tuples.constraints.NamedTupleComponentReference_Constraints" />
+      <scope id="1239575916907" at="32,0,54,0" />
+      <unit id="1239575916907" at="55,0,59,0" name="jetbrains.mps.baseLanguage.tuples.constraints.NamedTupleComponentReference_Constraints$CONCEPTS" />
+      <unit id="1239575916907" at="60,0,65,0" name="jetbrains.mps.baseLanguage.tuples.constraints.NamedTupleComponentReference_Constraints$LINKS" />
+      <unit id="1239575919368" at="38,19,47,9" name="jetbrains.mps.baseLanguage.tuples.constraints.NamedTupleComponentReference_Constraints$1$1" />
+      <unit id="1239575919368" at="34,48,49,5" name="jetbrains.mps.baseLanguage.tuples.constraints.NamedTupleComponentReference_Constraints$1" />
+      <unit id="1239575916907" at="27,0,66,0" name="jetbrains.mps.baseLanguage.tuples.constraints.NamedTupleComponentReference_Constraints" />
     </file>
   </root>
   <root nodeRef="r:3d04bd03-b6d9-4be1-8a52-d7b756e1d85b(jetbrains.mps.baseLanguage.tuples.constraints)/1239576894334">
@@ -78,7 +78,7 @@
       <node id="1239576894334" at="49,0,50,22" concept="5" />
       <node id="1239576896089" at="62,63,63,148" concept="5" />
       <node id="6836281137582777948" at="66,80,67,374" concept="4" />
-      <node id="6836281137582777960" at="67,374,68,300" concept="5" />
+      <node id="6836281137582777960" at="67,374,68,294" concept="5" />
       <node id="1239576894334" at="72,6,73,131" concept="4" />
       <node id="1239576896089" at="73,131,74,42" concept="1" />
       <node id="1239576894334" at="74,42,75,22" concept="5" />
@@ -107,7 +107,7 @@
       <scope id="1239576894334" at="46,55,47,71" />
       <scope id="1239576896089" at="62,63,63,148" />
       <scope id="1227128029536560711" at="77,128,78,255" />
-      <scope id="1239576896089" at="66,80,68,300">
+      <scope id="1239576896089" at="66,80,68,294">
         <var name="ntt" id="6836281137582777949" />
       </scope>
       <scope id="1239576894334" at="35,0,38,0" />

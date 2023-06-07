@@ -20,10 +20,8 @@ import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -67,50 +65,40 @@ public class RenameReferencesParticipant extends RefactoringParticipantBase<SNod
     {
       SearchScope scope_xv67ae_b0i = CommandUtil.createScope(searchScope);
       final SearchScope scope_xv67ae_b0i_0 = new EditableFilteringScope(scope_xv67ae_b0i);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_xv67ae_b0i_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_xv67ae_b0i_0;
       final SNode movingNode = initialState.resolve(repository);
       Collection<SReference> usages;
       if (movingNode != null) {
         usages = CommandUtil.usages(CommandUtil.selectScope(null, context), movingNode);
       } else {
-        usages = Sequence.fromIterable(CommandUtil.references(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SReference>() {
-          public boolean accept(SReference it) {
-            return Objects.equals(it.getTargetNodeReference(), initialState);
-          }
-        }).toListSequence();
+        usages = Sequence.fromIterable(CommandUtil.references(CommandUtil.selectScope(null, context))).where((it) -> Objects.equals(it.getTargetNodeReference(), initialState)).toList();
       }
-      return CollectionSequence.fromCollection(usages).select(new ISelector<SReference, RefactoringParticipant.Change<SNodeReference, String>>() {
-        public RefactoringParticipant.Change<SNodeReference, String> select(SReference ref) {
-          final SNodeReference containingNode = ref.getSourceNode().getReference();
-          final SReferenceLink role = ref.getLink();
-          final SearchResults searchResults = new SearchResults(SetSequence.fromSetAndArray(new HashSet<SNode>(), movingNode), ListSequence.fromListAndArray(new ArrayList<SearchResult<SNode>>(), new SearchResult<SNode>(ref.getSourceNode(), "reference")));
-          RefactoringParticipant.Change<SNodeReference, String> change = new MoveNodeRefactoringParticipant.ChangeBase<SNodeReference, String>() {
-            public SearchResults getSearchResults() {
-              return searchResults;
-            }
-            public void confirm(final String finalState, final SRepository repository, RefactoringSession refactoringSession) {
-              refactoringSession.registerChange(() -> {
-                SNode node = containingNode.resolve(repository);
-                if (node == null) {
-                  return;
-                }
-                if (node.getModel() instanceof EditableSModel && node.getReference(role) instanceof jetbrains.mps.smodel.SReference) {
-                  ((jetbrains.mps.smodel.SReference) node.getReference(role)).setResolveInfo(finalState);
-                  as_xv67ae_a0a1a2a0a0a0b0a0a3a0a0a0a0g0b0i(node.getModel(), EditableSModel.class).setChanged(true);
-                }
-              });
-            }
-          };
-          return change;
-        }
-      }).toListSequence();
+      return CollectionSequence.fromCollection(usages).select((ref) -> {
+        final SNodeReference containingNode = ref.getSourceNode().getReference();
+        final SReferenceLink role = ref.getLink();
+        final SearchResults searchResults = new SearchResults(SetSequence.fromSetAndArray(new HashSet<SNode>(), movingNode), ListSequence.fromListAndArray(new ArrayList<SearchResult<SNode>>(), new SearchResult<SNode>(ref.getSourceNode(), "reference")));
+        RefactoringParticipant.Change<SNodeReference, String> change = new MoveNodeRefactoringParticipant.ChangeBase<SNodeReference, String>() {
+          public SearchResults getSearchResults() {
+            return searchResults;
+          }
+          public void confirm(final String finalState, final SRepository repository, RefactoringSession refactoringSession) {
+            refactoringSession.registerChange(() -> {
+              SNode node = containingNode.resolve(repository);
+              if (node == null) {
+                return;
+              }
+              if (node.getModel() instanceof EditableSModel && node.getReference(role) instanceof jetbrains.mps.smodel.SReference) {
+                ((jetbrains.mps.smodel.SReference) node.getReference(role)).setResolveInfo(finalState);
+                as_xv67ae_a0a1a2a0a0a0b0a0a3a0a0a6a1a8(node.getModel(), EditableSModel.class).setChanged(true);
+              }
+            });
+          }
+        };
+        return change;
+      }).toList();
     }
   }
-  private static <T> T as_xv67ae_a0a1a2a0a0a0b0a0a3a0a0a0a0g0b0i(Object o, Class<T> type) {
+  private static <T> T as_xv67ae_a0a1a2a0a0a0b0a0a3a0a0a6a1a8(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

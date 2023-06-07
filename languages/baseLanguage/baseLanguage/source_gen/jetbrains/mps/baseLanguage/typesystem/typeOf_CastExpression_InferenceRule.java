@@ -17,7 +17,6 @@ import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class typeOf_CastExpression_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeOf_CastExpression_InferenceRule() {
@@ -34,20 +33,18 @@ public class typeOf_CastExpression_InferenceRule extends AbstractInferenceRule_R
 
       {
         final SNode exprType = typeCheckingContext.typeOf(SLinkOperations.getTarget(castExpression, LINKS.expression$XDmN), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8014486391942994088", true);
-        typeCheckingContext.whenConcrete(exprType, new Runnable() {
-          public void run() {
-            if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(exprType), CONCEPTS.IInferredType$Qo)) {
-              {
-                SNode _nodeToCheck_1029348928467 = castExpression;
-                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, "type " + SNodeOperations.present(typeCheckingContext.getExpandedNode(exprType)) + " is not comparable with " + SNodeOperations.present(castType), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6469607165247481719", 0, null);
-                typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getExpandedNode(exprType), (SNode) castType, false, true, _info_12389875345);
-              }
-            } else {
-              {
-                SNode _nodeToCheck_1029348928467 = castExpression;
-                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6469607165247478858", 0, null);
-                typeCheckingContext.createComparableEquation((SNode) typeCheckingContext.getExpandedNode(exprType), (SNode) rawCastType, false, _info_12389875345);
-              }
+        typeCheckingContext.whenConcrete(exprType, () -> {
+          if (InferenceHelper.isInferredFromContext(typeCheckingContext.getExpandedNode(exprType))) {
+            {
+              SNode _nodeToCheck_1029348928467 = castExpression;
+              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, "type " + SNodeOperations.present(typeCheckingContext.getExpandedNode(exprType)) + " is not comparable with " + SNodeOperations.present(castType), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6469607165247481719", 0, null);
+              typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getExpandedNode(exprType), (SNode) castType, false, true, _info_12389875345);
+            }
+          } else {
+            {
+              SNode _nodeToCheck_1029348928467 = castExpression;
+              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6469607165247478858", 0, null);
+              typeCheckingContext.createComparableEquation((SNode) typeCheckingContext.getExpandedNode(exprType), (SNode) rawCastType, false, _info_12389875345);
             }
           }
         }, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8014486391942993672", true, false);
@@ -79,7 +76,6 @@ public class typeOf_CastExpression_InferenceRule extends AbstractInferenceRule_R
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
-    /*package*/ static final SInterfaceConcept IInferredType$Qo = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6f392ce92f8c71c7L, "jetbrains.mps.baseLanguage.structure.IInferredType");
     /*package*/ static final SConcept CastExpression$$8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, "jetbrains.mps.baseLanguage.structure.CastExpression");
   }
 }

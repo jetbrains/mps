@@ -21,7 +21,6 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SNodeId;
 import jetbrains.mps.findUsages.NodeUsageLookup;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -89,11 +88,7 @@ public class KotlinStubModelsFastFindSupport implements FindUsagesParticipant, D
 
     // only consider nodes that look like nodes from stubs (foreign ids)
     // todo also filter by concept? there is a limited set to be referenced to in kotlin stubs
-    Set<SNode> filteredNode = SetSequence.fromSetWithValues(new HashSet<SNode>(), SetSequence.fromSet(nodes).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return it.getNodeId() instanceof SNodeId.StringBasedId;
-      }
-    }));
+    Set<SNode> filteredNode = SetSequence.fromSetWithValues(new HashSet<SNode>(), SetSequence.fromSet(nodes).where((it) -> it.getNodeId() instanceof SNodeId.StringBasedId));
 
     Set<SModel> candidates = findCandidates(models, filteredNode, processedConsumer, (SNode key) -> {
       // Use same procedure as in indexer
@@ -124,11 +119,7 @@ public class KotlinStubModelsFastFindSupport implements FindUsagesParticipant, D
 
     // Take only concepts from kotlin: there is no sub-languages found in stubs yet
     final SLanguage bl = MetaAdapterFactory.getLanguage(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, "jetbrains.mps.kotlin");
-    concepts = SetSequence.fromSetWithValues(new HashSet<SAbstractConcept>(), SetSequence.fromSet(concepts).where(new IWhereFilter<SAbstractConcept>() {
-      public boolean accept(SAbstractConcept it) {
-        return bl.equals(it.getLanguage());
-      }
-    }));
+    concepts = SetSequence.fromSetWithValues(new HashSet<SAbstractConcept>(), SetSequence.fromSet(concepts).where((it) -> bl.equals(it.getLanguage())));
 
     Set<SModel> candidates = findCandidates(models, concepts, processedConsumer, (SAbstractConcept k) -> k.getQualifiedName());
     monitor.start("", candidates.size());
@@ -149,11 +140,7 @@ public class KotlinStubModelsFastFindSupport implements FindUsagesParticipant, D
       return;
     }
 
-    modelReferences = SetSequence.fromSetWithValues(new HashSet<SModelReference>(), SetSequence.fromSet(modelReferences).where(new IWhereFilter<SModelReference>() {
-      public boolean accept(SModelReference it) {
-        return KotlinLanguage.ModelKind.COMMON.stereotype.equals(it.getName().getStereotype());
-      }
-    }));
+    modelReferences = SetSequence.fromSetWithValues(new HashSet<SModelReference>(), SetSequence.fromSet(modelReferences).where((it) -> KotlinLanguage.ModelKind.COMMON.stereotype.equals(it.getName().getStereotype())));
     Set<SModel> candidates = findCandidates(scope, modelReferences, processedConsumer, (SModelReference key) -> key.getModelName());
     ModelImportLookup mil = new ModelImportLookup(modelReferences, consumer);
     mil.withUses(candidates, new EmptyProgressMonitor());

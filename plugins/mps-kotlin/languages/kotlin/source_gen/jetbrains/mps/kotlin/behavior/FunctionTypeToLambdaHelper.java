@@ -8,7 +8,6 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.kotlin.api.declaration.ParameterDeclaration;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -25,31 +24,25 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public class FunctionTypeToLambdaHelper {
   public static SNode createLambda(Iterable<SNode> parameterTypes) {
     final Set<String> names = SetSequence.fromSet(new HashSet<String>());
-    List<SNode> list = Sequence.fromIterable(parameterTypes).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        String name = IType__BehaviorDescriptor.toString_id4nn3FPlZH$r.invoke(it, ((boolean) true));
-        name = ((name == null || name.length() == 0) ? "param" : name.substring(0, 1).toLowerCase() + name.substring(1));
-        if (SetSequence.fromSet(names).contains(name)) {
-          int index = 0;
-          while (SetSequence.fromSet(names).contains(name + (++index))) {
-          }
-          name = name + index;
+    List<SNode> list = Sequence.fromIterable(parameterTypes).select((it) -> {
+      String name = IType__BehaviorDescriptor.toString_id4nn3FPlZH$r.invoke(it, ((boolean) true));
+      name = ((name == null || name.length() == 0) ? "param" : name.substring(0, 1).toLowerCase() + name.substring(1));
+      if (SetSequence.fromSet(names).contains(name)) {
+        int index = 0;
+        while (SetSequence.fromSet(names).contains(name + (++index))) {
         }
-
-        SetSequence.fromSet(names).addElement(name);
-        return createVariableDeclaration_pdb775_a5a0a0a0b0a(name, SNodeOperations.copyNode(it));
+        name = name + index;
       }
-    }).toListSequence();
+
+      SetSequence.fromSet(names).addElement(name);
+      return createVariableDeclaration_pdb775_a5a0a0a0b0a(name, SNodeOperations.copyNode(it));
+    }).toList();
 
     return createLambdaLiteral_pdb775_a3a0(list);
   }
 
   public static SNode createLambda(Iterable<ParameterDeclaration> parameter, final NodeTypeVarSubs subs) {
-    return createLambdaLiteral_pdb775_a0a2(Sequence.fromIterable(parameter).select(new ISelector<ParameterDeclaration, SNode>() {
-      public SNode select(ParameterDeclaration it) {
-        return createVariableDeclaration_pdb775_a0a0a0a0a0a0a2(SPropertyOperations.getString(it.getNode(), PROPS.name$MnvL), SNodeOperations.copyNode(subs.expand(it.getType())));
-      }
-    }).toListSequence());
+    return createLambdaLiteral_pdb775_a0a2(Sequence.fromIterable(parameter).select((it) -> createVariableDeclaration_pdb775_a0a0a0a0a0a0a2(SPropertyOperations.getString(it.getNode(), PROPS.name$MnvL), SNodeOperations.copyNode(subs.expand(it.getType())))).toList());
   }
 
   private static SNode createVariableDeclaration_pdb775_a5a0a0a0b0a(String p0, SNode p1) {

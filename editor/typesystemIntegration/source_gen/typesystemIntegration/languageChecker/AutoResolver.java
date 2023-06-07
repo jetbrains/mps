@@ -34,7 +34,6 @@ import jetbrains.mps.typesystem.checking.HighlightUtil;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.checkers.CheckingSession;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.nodeEditor.cells.EditorCell;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -104,11 +103,7 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
         }
       });
     }
-    for (LanguageErrorsComponent.ApprovableError error : Sequence.fromIterable(MapSequence.fromMap(nodesToErrors).values()).translate(new ITranslator2<Collection<LanguageErrorsComponent.ApprovableError>, LanguageErrorsComponent.ApprovableError>() {
-      public Iterable<LanguageErrorsComponent.ApprovableError> translate(Collection<LanguageErrorsComponent.ApprovableError> it) {
-        return it;
-      }
-    })) {
+    for (LanguageErrorsComponent.ApprovableError error : Sequence.fromIterable(MapSequence.fromMap(nodesToErrors).values()).translate((it) -> it)) {
       if (error.myApproved) {
         consumer.consume(error.getError());
       }

@@ -21,7 +21,6 @@ import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import jetbrains.mps.logging.Logger;
@@ -131,11 +130,7 @@ public class Type_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-          return ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getParentNode(), CONCEPTS.GenericDeclaration$bC, true)).translate(new ITranslator2<SNode, SNode>() {
-            public Iterable<SNode> translate(SNode it) {
-              return SLinkOperations.getChildren(it, LINKS.typeVariableDeclaration$Lipp);
-            }
-          }).toListSequence();
+          return ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getParentNode(), CONCEPTS.GenericDeclaration$bC, true)).translate((it) -> SLinkOperations.getChildren(it, LINKS.typeVariableDeclaration$Lipp)).toList();
         }
         private class SMP_Action_mqq6an_a0a0 extends SingleItemSubstituteMenuPart {
           private final SNode myParameterObject;
@@ -240,7 +235,7 @@ public class Type_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-          return (List<SNode>) Sequence.fromIterable(ClassifierScopes.getThrowablesScope(_context.getParentNode()).getAvailableElements(null)).toListSequence();
+          return (List<SNode>) Sequence.fromIterable(ClassifierScopes.getThrowablesScope(_context.getParentNode()).getAvailableElements(null)).toList();
         }
         private class SMP_Action_mqq6an_a1a0 extends SingleItemSubstituteMenuPart {
           private final SNode myParameterObject;

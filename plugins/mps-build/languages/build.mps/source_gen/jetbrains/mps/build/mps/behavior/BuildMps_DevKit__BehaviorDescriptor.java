@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -35,15 +34,7 @@ public final class BuildMps_DevKit__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static Iterable<SNode> getExportedModules_id6qlcPcvboVF(@NotNull SNode __thisNode__) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.exports$Qvxv), CONCEPTS.BuildMps_DevKitExportLanguage$EV)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.language$qqxl);
-      }
-    }).concat(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.exports$Qvxv), CONCEPTS.BuildMps_DevKitExportSolution$71)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.solution$qxKS);
-      }
-    }));
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.exports$Qvxv), CONCEPTS.BuildMps_DevKitExportLanguage$EV)).select((it) -> SLinkOperations.getTarget(it, LINKS.language$qqxl)).concat(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.exports$Qvxv), CONCEPTS.BuildMps_DevKitExportSolution$71)).select((it) -> SLinkOperations.getTarget(it, LINKS.solution$qxKS)));
   }
 
   /*package*/ BuildMps_DevKit__BehaviorDescriptor() {

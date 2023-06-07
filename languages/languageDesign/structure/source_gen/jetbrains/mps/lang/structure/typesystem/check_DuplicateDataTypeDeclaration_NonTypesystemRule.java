@@ -11,7 +11,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -34,11 +33,7 @@ public class check_DuplicateDataTypeDeclaration_NonTypesystemRule extends Abstra
       return;
     }
 
-    if (ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(dataTypeDeclaration), CONCEPTS.INamedConcept$Kd)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(Objects.equals(it, dataTypeDeclaration)) && name.equalsIgnoreCase(SPropertyOperations.getString(it, PROPS.name$MnvL));
-      }
-    })) {
+    if (ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(dataTypeDeclaration), CONCEPTS.INamedConcept$Kd)).any((it) -> !(Objects.equals(it, dataTypeDeclaration)) && name.equalsIgnoreCase(SPropertyOperations.getString(it, PROPS.name$MnvL)))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(dataTypeDeclaration, "Duplicated name of DataTypeDeclaration " + name + " in model", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1005490780661498260", null, errorTarget);

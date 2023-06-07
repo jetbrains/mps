@@ -14,7 +14,6 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.structure.behavior.DataTypeDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
@@ -61,11 +60,7 @@ public final class AddNodeMacroParam_ifMacro_Intention extends AbstractIntention
     if (sourceNode == null) {
       return null;
     }
-    return ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(sourceNode)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) DataTypeDeclaration__BehaviorDescriptor.isSimpleBoolean_idhKtGpIQ.invoke(SLinkOperations.getTarget(it, LINKS.dataType$5j5Y));
-      }
-    }).toListSequence();
+    return ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(sourceNode)).where((it) -> (boolean) DataTypeDeclaration__BehaviorDescriptor.isSimpleBoolean_idhKtGpIQ.invoke(SLinkOperations.getTarget(it, LINKS.dataType$5j5Y))).toList();
   }
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable implements ParameterizedIntentionExecutable {
     private SNode myParameter;

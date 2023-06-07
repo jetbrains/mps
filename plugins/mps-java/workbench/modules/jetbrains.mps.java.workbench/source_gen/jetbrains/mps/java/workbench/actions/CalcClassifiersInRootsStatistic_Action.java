@@ -113,7 +113,7 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
     }
 
     final Set<SNode> classifiers = SetSequence.fromSet(new HashSet<SNode>());
-    SetSequence.fromSet(classifiers).addSequence(Sequence.fromIterable(SLinkOperations.collect(types.value, LINKS.classifier$cxMr)).where(new NotNullWhereFilter<SNode>()));
+    SetSequence.fromSet(classifiers).addSequence(Sequence.fromIterable(SLinkOperations.collect(types.value, LINKS.classifier$cxMr)).where(new NotNullWhereFilter()));
     if (SetSequence.fromSet(classifiers).count() > 50) {
       sb.append(String.format("%s: classifier types = %d; classifiers = %d%n", nodeName, ListSequence.fromList(types.value).count(), SetSequence.fromSet(classifiers).count()));
     }

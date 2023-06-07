@@ -18,7 +18,6 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
@@ -65,11 +64,7 @@ public class SolutionRef_SubstituteMenu extends SubstituteMenuBase {
     @Override
     protected Iterable<? extends SModuleReference> getParameters(SubstituteMenuContext _context) {
       Iterable<Solution> allSolutions = new ModuleRepositoryFacade(_context.getEditorContext().getRepository()).getAllModules(Solution.class);
-      return Sequence.fromIterable(allSolutions).select(new ISelector<Solution, SModuleReference>() {
-        public SModuleReference select(Solution s) {
-          return s.getModuleReference();
-        }
-      }).toListSequence();
+      return Sequence.fromIterable(allSolutions).select((s) -> s.getModuleReference()).toList();
     }
     private class SMP_Action_omknhr_a0 extends SingleItemSubstituteMenuPart {
       private final SModuleReference myParameterObject;

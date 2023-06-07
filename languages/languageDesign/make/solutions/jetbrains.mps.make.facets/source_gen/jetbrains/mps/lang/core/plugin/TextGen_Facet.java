@@ -21,7 +21,6 @@ import jetbrains.mps.make.script.IConfig;
 import jetbrains.mps.make.facet.ITargetEx2;
 import jetbrains.mps.smodel.resources.GResource;
 import java.util.stream.IntStream;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.make.script.IFeedback;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.generator.impl.dependencies.GenerationDependenciesCache;
@@ -61,7 +60,6 @@ import jetbrains.mps.make.delta.IDelta;
 import jetbrains.mps.smodel.resources.DResource;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.generator.ModelGenerationStatusManager;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.resources.TResource;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.make.script.IPropertiesPool;
@@ -168,11 +166,7 @@ public class TextGen_Facet extends IFacet.Stub {
           progressMonitor.start("", IntStream.of(1000).sum());
           switch (0) {
             case 0:
-              if (Sequence.fromIterable(input).any(new IWhereFilter<GResource>() {
-                public boolean accept(GResource it) {
-                  return !(it.status().isOk());
-                }
-              })) {
+              if (Sequence.fromIterable(input).any((it) -> !(it.status().isOk()))) {
                 monitor.reportFeedback(new IFeedback.ERROR(String.valueOf("Generation was not OK")));
                 return new IResult.FAILURE(_output_21gswx_a0b);
               }
@@ -193,11 +187,7 @@ public class TextGen_Facet extends IFacet.Stub {
                 if (sfm == null) {
                   sfm = new ModuleStaleFileManager(resource.module(), Target_make.vars(pa.global()).alternateOutput(), genDepsCache, messageHandler);
                   moduleStaleFilesMap.put(resource.module(), sfm);
-                  sfm.collectRetainedFiles(Sequence.fromIterable(resource.retainedModels()).where(new IWhereFilter<SModel>() {
-                    public boolean accept(SModel smd) {
-                      return GenerationFacade.canGenerate(smd);
-                    }
-                  }));
+                  sfm.collectRetainedFiles(Sequence.fromIterable(resource.retainedModels()).where((smd) -> GenerationFacade.canGenerate(smd)));
                 }
                 // Perhaps, shall check res.status.isError(), however not sure if there
                 // couldn't be an output model with error state, and we'd like to see erroneous text to localize error
@@ -408,11 +398,7 @@ public class TextGen_Facet extends IFacet.Stub {
                 }
                 // notify that status for models we've been generating could have changed
                 ModelGenerationStatusManager genStatusManager = monitor.getSession().getProject().getComponent(ModelGenerationStatusManager.class);
-                genStatusManager.invalidateData(Sequence.fromIterable(input).select(new ISelector<GResource, SModel>() {
-                  public SModel select(GResource it) {
-                    return it.model();
-                  }
-                }));
+                genStatusManager.invalidateData(Sequence.fromIterable(input).select((it) -> it.model()));
 
                 // output result
                 for (GResource resource : SetSequence.fromSet(MapSequence.fromMap(deltas2).keySet())) {

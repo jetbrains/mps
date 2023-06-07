@@ -13,7 +13,6 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.ide.migration.util.MigrationDataUtil;
 import jetbrains.mps.lang.migration.runtime.base.RefactoringScriptReference;
 import jetbrains.mps.migration.global.ProjectMigration;
@@ -25,6 +24,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.refactoring.participant.RefactoringSessionImpl;
 import jetbrains.mps.lang.migration.runtime.base.RefactoringScript;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.refactoring.participant.RefactoringUI;
 import jetbrains.mps.refactoring.participant.RefactoringParticipant;
 import jetbrains.mps.refactoring.participant.RefactoringSession;
@@ -41,12 +41,10 @@ public class MigrationExecutorImpl implements MigrationExecutor {
   private DataCollector myDataCollector = new DataCollector() {
     public Map<SModule, SNode> collectData(SModule module, final MigrationScriptReference scriptReference) {
       final Map<SModule, SNode> requiredData = MapSequence.fromMap(new HashMap<SModule, SNode>());
-      SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(module)).visitAll(new IVisitor<SModule>() {
-        public void visit(SModule it) {
-          SNode dataString = MigrationDataUtil.readData(it, scriptReference);
-          if (dataString != null) {
-            MapSequence.fromMap(requiredData).put(it, dataString);
-          }
+      SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(module)).visitAll((it) -> {
+        SNode dataString = MigrationDataUtil.readData(it, scriptReference);
+        if (dataString != null) {
+          MapSequence.fromMap(requiredData).put(it, dataString);
         }
       });
       return requiredData;
@@ -117,7 +115,11 @@ public class MigrationExecutorImpl implements MigrationExecutor {
     RefactoringScript script = (RefactoringScript) sa.getScriptInstance();
     script.setSession(refactoringSession);
     script.setTaskExecutor((Runnable task) -> RefactoringSessionTaskQueue.getInstance(refactoringSession).putTask(task));
-    script.setRefactoringProcessor((RefactoringUI ui, RefactoringParticipant.PersistentRefactoringParticipant p, Iterable<SNode> initialState, Map<SNode, SNode> initialToFinal) -> doRun(module, p, ui, initialState, initialToFinal, refactoringSession));
+    script.setRefactoringProcessor(new _FunctionTypes._void_P4_E0<RefactoringUI, RefactoringParticipant.PersistentRefactoringParticipant, Iterable<SNode>, Map<SNode, SNode>>() {
+      public void invoke(RefactoringUI ui, RefactoringParticipant.PersistentRefactoringParticipant p, Iterable<SNode> initialState, Map<SNode, SNode> initialToFinal) {
+        doRun(module, p, ui, initialState, initialToFinal, refactoringSession);
+      }
+    });
     script.execute(module);
     RefactoringSessionTaskQueue.getInstance(refactoringSession).runAll();
     refactoringSession.performAllRegistered();
@@ -129,7 +131,7 @@ public class MigrationExecutorImpl implements MigrationExecutor {
   }
 
   private <IP, FP> void doRun(AbstractModule module, RefactoringParticipant.PersistentRefactoringParticipant<?, ?, IP, FP> participant, RefactoringUI ui, Iterable<SNode> initialState, final Map<SNode, SNode> initialToFinal, RefactoringSession refactoringSession) {
-    RefactoringProcessor.<IP,FP,SNode,SNode>performRefactoring(new RefactoringParticipant.DeserializingParticipantStateFactory<IP, FP>(), ui, refactoringSession, MigrationExecutorImpl.this.myProject.getRepository(), new ModulesScope(module), ((Iterable<? extends RefactoringParticipant<?, ?, IP, FP>>) Sequence.<RefactoringParticipant<?, ?, IP, FP>>singleton(participant)), Sequence.fromIterable(initialState).toListSequence(), null, (Iterable<RefactoringParticipant.ParticipantApplied<?, ?, IP, FP, SNode, SNode>> changes) -> initialToFinal, null);
+    RefactoringProcessor.<IP,FP,SNode,SNode>performRefactoring(new RefactoringParticipant.DeserializingParticipantStateFactory<IP, FP>(), ui, refactoringSession, MigrationExecutorImpl.this.myProject.getRepository(), new ModulesScope(module), Sequence.singleton(participant), Sequence.fromIterable(initialState).toList(), null, (Iterable<RefactoringParticipant.ParticipantApplied<?, ?, IP, FP, SNode, SNode>> changes) -> initialToFinal, null);
   }
 
   private static class RefactoringSessionTaskQueue {

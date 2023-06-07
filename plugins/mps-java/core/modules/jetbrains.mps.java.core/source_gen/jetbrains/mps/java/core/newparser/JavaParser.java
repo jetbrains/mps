@@ -26,7 +26,6 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.eclipse.jdt.internal.compiler.ast.ImportReference;
@@ -168,7 +167,7 @@ public class JavaParser {
       positions.value = ((FullASTConverter) converter).getPositions();
     }
 
-    Iterable<FullASTConverter.CodeBlock> blcks = Sequence.fromIterable(blocks).sort((FullASTConverter.CodeBlock a, FullASTConverter.CodeBlock b) -> a.getEndPos() - b.getEndPos(), true);
+    Iterable<FullASTConverter.CodeBlock> blcks = Sequence.fromIterable(blocks).sort((a, b) -> a.getEndPos() - b.getEndPos(), true);
     for (int[] comment : comments) {
       if (comment[1] > 0) {
         // javadoc
@@ -199,11 +198,7 @@ public class JavaParser {
         }
       }
       if ((block != null)) {
-        int pos = ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.statement$53DE)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return !(MapSequence.fromMap(positions.value).containsKey(it)) || Math.abs(MapSequence.fromMap(positions.value).get(it)) <= linestart;
-          }
-        }).count();
+        int pos = ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.statement$53DE)).where((it) -> !(MapSequence.fromMap(positions.value).containsKey(it)) || Math.abs(MapSequence.fromMap(positions.value).get(it)) <= linestart).count();
 
         List<String> commentsToProcess = CommentHelper.processComment(CommentHelper.splitString(content, lineends, linestart, Math.abs(comment[1])));
         SNode multiLineComment;
@@ -339,7 +334,7 @@ public class JavaParser {
   }
 
   public static void tryResolveDynamicRefs(Iterable<SNode> nodes) {
-    Deque<SNode> stack = DequeSequence.fromDequeNew(new LinkedList<SNode>());
+    Deque<SNode> stack = DequeSequence.fromDeque(new LinkedList<SNode>());
     DequeSequence.fromDequeNew(stack).addSequence(Sequence.fromIterable(nodes));
 
     while (DequeSequence.fromDequeNew(stack).isNotEmpty()) {

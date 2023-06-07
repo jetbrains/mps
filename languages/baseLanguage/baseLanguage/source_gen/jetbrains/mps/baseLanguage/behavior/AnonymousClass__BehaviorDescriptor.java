@@ -24,10 +24,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.lang.scopes.runtime.ScopeUtils;
@@ -90,19 +87,13 @@ public final class AnonymousClass__BehaviorDescriptor extends BaseBHDescriptor {
     }
 
     SNode first = ListSequence.fromList(ancestors).removeElementAt(0);
-    String nonanonymousPrefix = ListSequence.fromList(ancestors).select(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        if (SNodeOperations.isInstanceOf(it, CONCEPTS.AnonymousClass$Bt)) {
-          return "" + (int) AnonymousClass__BehaviorDescriptor.getIndexInContainingClass_id3BacVlMg8ub.invoke(SNodeOperations.cast(it, CONCEPTS.AnonymousClass$Bt));
-        } else {
-          return SPropertyOperations.getString(it, PROPS.name$MnvL);
-        }
+    String nonanonymousPrefix = ListSequence.fromList(ancestors).select((it) -> {
+      if (SNodeOperations.isInstanceOf(it, CONCEPTS.AnonymousClass$Bt)) {
+        return "" + (int) AnonymousClass__BehaviorDescriptor.getIndexInContainingClass_id3BacVlMg8ub.invoke(SNodeOperations.cast(it, CONCEPTS.AnonymousClass$Bt));
+      } else {
+        return SPropertyOperations.getString(it, PROPS.name$MnvL);
       }
-    }).reduceLeft(new ILeftCombinator<String, String>() {
-      public String combine(String a, String b) {
-        return a + "$" + b;
-      }
-    });
+    }).reduceLeft((a, b) -> a + "$" + b);
     nonanonymousPrefix = (nonanonymousPrefix != null ? "$" + nonanonymousPrefix : "");
     return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(first) + nonanonymousPrefix + "$" + ((int) AnonymousClass__BehaviorDescriptor.getIndexInContainingClass_id3BacVlMg8ub.invokeSpecial(__thisNode__));
   }
@@ -119,11 +110,7 @@ public final class AnonymousClass__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static int getIndexInContainingClass_id3BacVlMg8ub(@NotNull SNode __thisNode__) {
     final SNode ancestor = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$Ix, false, false);
-    return ListSequence.fromList(SNodeOperations.getNodeDescendants(ancestor, CONCEPTS.AnonymousClass$Bt, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.getNodeAncestor(it, CONCEPTS.Classifier$Ix, false, false) == ancestor;
-      }
-    }).indexOf(__thisNode__) + 1;
+    return ListSequence.fromList(SNodeOperations.getNodeDescendants(ancestor, CONCEPTS.AnonymousClass$Bt, false, new SAbstractConcept[]{})).where((it) -> SNodeOperations.getNodeAncestor(it, CONCEPTS.Classifier$Ix, false, false) == ancestor).indexOf(__thisNode__) + 1;
   }
   /*package*/ static boolean isDescendant_checkLoops_id6dL7A1DpKoA(@NotNull SNode __thisNode__, SNode nodeToCompare, Set<SNode> visited, StubClassDiscovery scd) {
     if (SNodeOperations.is(nodeToCompare, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object"))) {
@@ -227,11 +214,7 @@ public final class AnonymousClass__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static SNode getThisType_id2RtWPFZ12w7(@NotNull SNode __thisNode__) {
     SNode thisType = Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invokeSuper(__thisNode__, CONCEPTS.AnonymousClass$Bt);
     if (((boolean) IInferredExpression__BehaviorDescriptor.needInference_idQ$FjPqwIoN.invoke(__thisNode__))) {
-      ListSequence.fromList(SLinkOperations.getChildren(thisType, LINKS.parameter$oqG$)).addSequence(Sequence.fromIterable(AnonymousClass__BehaviorDescriptor.getConcreteTypeParameter_id4H6sh0LUNF7.invoke(__thisNode__)).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SNodeOperations.copyNode(it);
-        }
-      }));
+      ListSequence.fromList(SLinkOperations.getChildren(thisType, LINKS.parameter$oqG$)).addSequence(Sequence.fromIterable(AnonymousClass__BehaviorDescriptor.getConcreteTypeParameter_id4H6sh0LUNF7.invoke(__thisNode__)).select((it) -> SNodeOperations.copyNode(it)));
     }
     return thisType;
   }

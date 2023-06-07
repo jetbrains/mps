@@ -22,7 +22,6 @@ import jetbrains.mps.baseLanguage.scopes.ClassifierScopeUtils;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopes;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import jetbrains.mps.logging.Logger;
@@ -34,7 +33,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.actions.ExpectedType_FactoryUtil;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.Objects;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
@@ -101,11 +99,7 @@ public class AbstractCreator_SubstituteMenu extends SubstituteMenuBase {
         Scope scope = ClassifierScopes.getVisibleClassifiersScope(_context.getParentNode(), false);
         availableElements = SNodeOperations.ofConcept(scope.getAvailableElements(null), CONCEPTS.Classifier$Ix);
       }
-      return Sequence.fromIterable(availableElements).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.Interface$db) || (SNodeOperations.isInstanceOf(it, CONCEPTS.ClassConcept$bK) && SPropertyOperations.getBoolean(SNodeOperations.cast(it, CONCEPTS.ClassConcept$bK), PROPS.abstractClass$Ta1X));
-        }
-      }).toListSequence();
+      return Sequence.fromIterable(availableElements).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.Interface$db) || (SNodeOperations.isInstanceOf(it, CONCEPTS.ClassConcept$bK) && SPropertyOperations.getBoolean(SNodeOperations.cast(it, CONCEPTS.ClassConcept$bK), PROPS.abstractClass$Ta1X))).toList();
     }
     private class SMP_Action_p790zr_a0 extends SingleItemSubstituteMenuPart {
       private final SNode myParameterObject;
@@ -172,35 +166,29 @@ public class AbstractCreator_SubstituteMenu extends SubstituteMenuBase {
             ListSequence.fromList(expectedTypeParams).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(expectedType, CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$)));
           }
 
-          ListSequence.fromList(SLinkOperations.getChildren(myParameterObject, LINKS.typeVariableDeclaration$Lipp)).visitAll(new IVisitor<SNode>() {
-            public void visit(final SNode originalVar) {
-              SNode newTypeParam = null;
-              if (ListSequence.fromList(expectedTypeParams).isNotEmpty()) {
-                newTypeParam = SNodeOperations.copyNode(ListSequence.fromList(expectedTypeParams).removeElementAt(0));
-                if (SNodeOperations.isInstanceOf(newTypeParam, CONCEPTS.WildCardType$uV)) {
-                  newTypeParam = null;
-                } else if (SNodeOperations.isInstanceOf(newTypeParam, CONCEPTS.LowerBoundType$nl)) {
-                  newTypeParam = SLinkOperations.getTarget(SNodeOperations.cast(newTypeParam, CONCEPTS.LowerBoundType$nl), LINKS.bound$$a6H);
-                } else if (SNodeOperations.isInstanceOf(newTypeParam, CONCEPTS.UpperBoundType$RS)) {
-                  newTypeParam = SLinkOperations.getTarget(SNodeOperations.cast(newTypeParam, CONCEPTS.UpperBoundType$RS), LINKS.bound$ciZM);
-                }
+          ListSequence.fromList(SLinkOperations.getChildren(myParameterObject, LINKS.typeVariableDeclaration$Lipp)).visitAll((final SNode originalVar) -> {
+            SNode newTypeParam = null;
+            if (ListSequence.fromList(expectedTypeParams).isNotEmpty()) {
+              newTypeParam = SNodeOperations.copyNode(ListSequence.fromList(expectedTypeParams).removeElementAt(0));
+              if (SNodeOperations.isInstanceOf(newTypeParam, CONCEPTS.WildCardType$uV)) {
+                newTypeParam = null;
+              } else if (SNodeOperations.isInstanceOf(newTypeParam, CONCEPTS.LowerBoundType$nl)) {
+                newTypeParam = SLinkOperations.getTarget(SNodeOperations.cast(newTypeParam, CONCEPTS.LowerBoundType$nl), LINKS.bound$$a6H);
+              } else if (SNodeOperations.isInstanceOf(newTypeParam, CONCEPTS.UpperBoundType$RS)) {
+                newTypeParam = SLinkOperations.getTarget(SNodeOperations.cast(newTypeParam, CONCEPTS.UpperBoundType$RS), LINKS.bound$ciZM);
               }
-              if ((newTypeParam != null)) {
-                ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(creator, LINKS.cls$Saf6), LINKS.typeParameter$F9H8)).addElement(newTypeParam);
-              } else {
-                newTypeParam = SNodeFactoryOperations.addNewChild(SLinkOperations.getTarget(creator, LINKS.cls$Saf6), LINKS.typeParameter$F9H8, CONCEPTS.ClassifierType$bL);
-                SLinkOperations.setPointer(SNodeOperations.cast(newTypeParam, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object"));
-              }
-              // replace all type vars with new ones
-              Iterable<SNode> typeVarRefs = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(creator, LINKS.cls$Saf6), CONCEPTS.TypeVariableReference$WL, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-                public boolean accept(SNode it) {
-                  return Objects.equals(SLinkOperations.getTarget(it, LINKS.typeVariableDeclaration$Lz1I), originalVar);
-                }
-              });
-              for (SNode typeVar : Sequence.fromIterable(typeVarRefs)) {
-                SNodeOperations.replaceWithAnother(typeVar, SNodeOperations.copyNode(newTypeParam));
-                SLinkOperations.setTarget(typeVar, LINKS.typeVariableDeclaration$Lz1I, newTypeParam);
-              }
+            }
+            if ((newTypeParam != null)) {
+              ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(creator, LINKS.cls$Saf6), LINKS.typeParameter$F9H8)).addElement(newTypeParam);
+            } else {
+              newTypeParam = SNodeFactoryOperations.addNewChild(SLinkOperations.getTarget(creator, LINKS.cls$Saf6), LINKS.typeParameter$F9H8, CONCEPTS.ClassifierType$bL);
+              SLinkOperations.setPointer(SNodeOperations.cast(newTypeParam, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object"));
+            }
+            // replace all type vars with new ones
+            Iterable<SNode> typeVarRefs = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(creator, LINKS.cls$Saf6), CONCEPTS.TypeVariableReference$WL, false, new SAbstractConcept[]{})).where((it) -> Objects.equals(SLinkOperations.getTarget(it, LINKS.typeVariableDeclaration$Lz1I), originalVar));
+            for (SNode typeVar : Sequence.fromIterable(typeVarRefs)) {
+              SNodeOperations.replaceWithAnother(typeVar, SNodeOperations.copyNode(newTypeParam));
+              SLinkOperations.setTarget(typeVar, LINKS.typeVariableDeclaration$Lz1I, newTypeParam);
             }
           });
           return creator;

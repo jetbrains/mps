@@ -23,8 +23,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.test.runtime.CheckScopesAction;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -85,11 +83,7 @@ public final class ScopesTest__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static void perform_id1kgh5YabdhC(@NotNull SNode __thisNode__, SNode node, @Nullable ComponentHost host) {
     SReference checkingReference = ScopesTest__BehaviorDescriptor.getCheckingReference_id4IvydoGvimX.invoke(__thisNode__);
-    new CheckScopesAction(checkingReference.getSourceNode(), checkingReference.getLink(), ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.nodes$Many)).select(new ISelector<SNode, SNodeReference>() {
-      public SNodeReference select(SNode it) {
-        return SLinkOperations.getPointer(it, LINKS.ref$RHE6);
-      }
-    }).toListSequence()).check();
+    new CheckScopesAction(checkingReference.getSourceNode(), checkingReference.getLink(), ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.nodes$Many)).select((it) -> SLinkOperations.getPointer(it, LINKS.ref$RHE6)).toList()).check();
   }
 
   /*package*/ ScopesTest__BehaviorDescriptor() {

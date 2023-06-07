@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopeUtils;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -31,11 +30,7 @@ public final class AnonymousClassCreator__BehaviorDescriptor extends BaseBHDescr
   }
 
   /*package*/ static Iterable<SNode> retrieveInstantiationPoints_id5qAZxlfYyVZ(@NotNull SAbstractConcept __thisConcept__, SNode type, SNode contextNode) {
-    return Sequence.fromIterable(ClassifierScopeUtils.getVisibleNestedClassConceptsIncludingInherited(type, contextNode)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it));
-      }
-    });
+    return Sequence.fromIterable(ClassifierScopeUtils.getVisibleNestedClassConceptsIncludingInherited(type, contextNode)).where((it) -> !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it)));
   }
 
   /*package*/ AnonymousClassCreator__BehaviorDescriptor() {

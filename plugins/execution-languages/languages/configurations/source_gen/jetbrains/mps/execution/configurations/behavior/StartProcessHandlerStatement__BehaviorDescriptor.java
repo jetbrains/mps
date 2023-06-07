@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -53,11 +52,7 @@ public final class StartProcessHandlerStatement__BehaviorDescriptor extends Base
       return null;
     }
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.tool$8wlU), CONCEPTS.NamedTupleLiteral$rD)) {
-      SNode first = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.tool$8wlU), CONCEPTS.NamedTupleLiteral$rD), LINKS.componentRef$hTGc)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.componentDeclaration$nkzL), PROPS.name$MnvL).equals(name);
-        }
-      });
+      SNode first = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.tool$8wlU), CONCEPTS.NamedTupleLiteral$rD), LINKS.componentRef$hTGc)).findFirst((it) -> SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.componentDeclaration$nkzL), PROPS.name$MnvL).equals(name));
       return SLinkOperations.getTarget(first, LINKS.value$fBTf);
     }
     return null;

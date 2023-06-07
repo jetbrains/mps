@@ -20,11 +20,9 @@ import jetbrains.mps.workbench.MPSDataKeys;
 import jetbrains.mps.workbench.dialogs.DeleteDialog;
 import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.ide.IdeBundle;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -84,7 +82,7 @@ public class DeleteNode_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Wrappers._T<List<SNode>> affNodes = new Wrappers._T<List<SNode>>();
-    ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().runReadAction(() -> affNodes.value = Sequence.fromIterable(DeleteNode_Action.this.getAffectedNodes(_params)).toListSequence());
+    ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().runReadAction(() -> affNodes.value = Sequence.fromIterable(DeleteNode_Action.this.getAffectedNodes(_params)).toList());
     final DeleteNodesHelper helper = new DeleteNodesHelper(affNodes.value, ((MPSProject) MapSequence.fromMap(_params).get("project")));
 
     final Wrappers._boolean hasAspects = new Wrappers._boolean(false);
@@ -101,29 +99,13 @@ public class DeleteNode_Action extends BaseAction {
   }
   private Iterable<SNode> getAffectedNodes(final Map<String, Object> _params) {
     Iterable<SNode> list = ((List<SNode>) MapSequence.fromMap(_params).get("nodes"));
-    Iterable<SNode> modifiableNodes = Sequence.fromIterable(list).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(check_v2o7qu_a0a0a0a0b0a(it.getModel()));
-      }
-    });
+    Iterable<SNode> modifiableNodes = Sequence.fromIterable(list).where((it) -> !(check_v2o7qu_a0a0a0a0b0a(it.getModel())));
     if (((List<Pair<SModel, String>>) MapSequence.fromMap(_params).get("packs")) == null || ((List<Pair<SModel, String>>) MapSequence.fromMap(_params).get("packs")).isEmpty()) {
       return modifiableNodes;
     }
 
     Set<Pair<SModel, String>> packs = SetSequence.fromSetWithValues(new HashSet<Pair<SModel, String>>(), ((List<Pair<SModel, String>>) MapSequence.fromMap(_params).get("packs")));
-    Iterable<SNode> nodeFromPacks = SetSequence.fromSet(packs).where(new IWhereFilter<Pair<SModel, String>>() {
-      public boolean accept(Pair<SModel, String> it) {
-        return !(it.o1.isReadOnly());
-      }
-    }).translate(new ITranslator2<Pair<SModel, String>, SNode>() {
-      public Iterable<SNode> translate(final Pair<SModel, String> pack) {
-        return ListSequence.fromList(SModelOperations.roots(((SModel) pack.o1), null)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode node) {
-            return SPropertyOperations.getString(node, PROPS.virtualPackage$EkXl) != null && SPropertyOperations.getString(node, PROPS.virtualPackage$EkXl).startsWith(pack.o2);
-          }
-        });
-      }
-    });
+    Iterable<SNode> nodeFromPacks = SetSequence.fromSet(packs).where((it) -> !(it.o1.isReadOnly())).translate((final Pair<SModel, String> pack) -> ListSequence.fromList(SModelOperations.roots(((SModel) pack.o1), null)).where((node) -> SPropertyOperations.getString(node, PROPS.virtualPackage$EkXl) != null && SPropertyOperations.getString(node, PROPS.virtualPackage$EkXl).startsWith(pack.o2)));
     return Sequence.fromIterable(nodeFromPacks).union(Sequence.fromIterable(modifiableNodes));
   }
   private static boolean check_v2o7qu_a0a0a0a0b0a(SModel checkedDotOperand) {

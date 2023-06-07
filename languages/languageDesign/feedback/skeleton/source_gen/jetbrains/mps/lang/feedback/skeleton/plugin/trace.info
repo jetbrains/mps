@@ -18,16 +18,11 @@
   </root>
   <root nodeRef="r:cc9efe31-86c5-4ceb-80d1-8a8efeb255e0(jetbrains.mps.lang.feedback.skeleton.plugin)/4726480899536586749">
     <file name="URLFunction_HelpCenterDocUrl.java">
-      <node id="3569916352002070174" at="11,30,12,54" concept="4" />
-      <node id="4726480899536705523" at="11,0,14,0" concept="3" trace="invoke#()Ljava/lang/String;" />
-      <node id="4726480899536586749" at="9,33,14,15" concept="4" />
-      <node id="4726480899536586749" at="9,0,16,0" concept="6" trace="getUrl#()Ljava/lang/String;" />
-      <scope id="4726480899536705524" at="11,30,12,54" />
-      <scope id="4726480899536705523" at="11,0,14,0" />
-      <scope id="4726480899536586749" at="9,33,14,15" />
-      <scope id="4726480899536586749" at="9,0,16,0" />
-      <unit id="4726480899536705523" at="10,15,14,5" name="jetbrains.mps.lang.feedback.skeleton.plugin.URLFunction_HelpCenterDocUrl$1" />
-      <unit id="4726480899536586749" at="8,0,17,0" name="jetbrains.mps.lang.feedback.skeleton.plugin.URLFunction_HelpCenterDocUrl" />
+      <node id="4726480899536586749" at="9,33,10,106" concept="4" />
+      <node id="4726480899536586749" at="9,0,12,0" concept="6" trace="getUrl#()Ljava/lang/String;" />
+      <scope id="4726480899536586749" at="9,33,10,106" />
+      <scope id="4726480899536586749" at="9,0,12,0" />
+      <unit id="4726480899536586749" at="8,0,13,0" name="jetbrains.mps.lang.feedback.skeleton.plugin.URLFunction_HelpCenterDocUrl" />
     </file>
   </root>
   <root nodeRef="r:cc9efe31-86c5-4ceb-80d1-8a8efeb255e0(jetbrains.mps.lang.feedback.skeleton.plugin)/6285588811486191329">

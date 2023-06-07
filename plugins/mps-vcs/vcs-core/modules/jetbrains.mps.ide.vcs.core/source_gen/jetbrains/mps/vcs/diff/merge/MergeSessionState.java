@@ -11,8 +11,6 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 
 /**
  * Use MergeSession.MergeSessionFullState
@@ -31,11 +29,7 @@ public class MergeSessionState {
     myResultModel = MergeTemporaryModel.readonlyCloneOf(resultModel);
     myResolvedChanges = SetSequence.fromSetWithValues(new HashSet<ModelChange>(), resolvedChanges);
     myIdReplacementCache = MapSequence.fromMap(new HashMap<SNodeId, SNodeId>(MapSequence.fromMap(idReplacementCache).count()));
-    MapSequence.fromMap(idReplacementCache).visitAll(new IVisitor<IMapping<SNodeId, SNodeId>>() {
-      public void visit(IMapping<SNodeId, SNodeId> m) {
-        MapSequence.fromMap(myIdReplacementCache).put(m.key(), m.value());
-      }
-    });
+    MapSequence.fromMap(idReplacementCache).visitAll((m) -> MapSequence.fromMap(myIdReplacementCache).put(m.key(), m.value()));
   }
   @Deprecated
   /*package*/ MergeSessionState(MergeSessionState copy) {

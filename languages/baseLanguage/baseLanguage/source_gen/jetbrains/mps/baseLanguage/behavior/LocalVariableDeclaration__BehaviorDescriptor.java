@@ -21,7 +21,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Iterator;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.ide.code.CodeStyleSettings;
 import jetbrains.mps.ide.code.CodeStyleSettingsRegistry;
 import jetbrains.mps.lang.scopes.runtime.ScopeUtils;
@@ -64,11 +63,7 @@ public final class LocalVariableDeclaration__BehaviorDescriptor extends BaseBHDe
   /*package*/ static boolean isVariableReferencedInClosures_idhSV9vo4(@NotNull SNode __thisNode__) {
     SNode container = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IStatementListContainer$xz, false, false);
     {
-      Iterator<SNode> ref_it = ListSequence.fromList(SNodeOperations.getNodeDescendants(container, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41);
-        }
-      }).toListSequence().iterator();
+      Iterator<SNode> ref_it = ListSequence.fromList(ListSequence.fromList(SNodeOperations.getNodeDescendants(container, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41)).toList()).iterator();
       SNode ref_var;
       while (ref_it.hasNext()) {
         ref_var = ref_it.next();

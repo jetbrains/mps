@@ -12,7 +12,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import java.util.Objects;
 import jetbrains.mps.baseLanguage.behavior.IBinaryLike__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -108,11 +107,7 @@ public class ParenthesisUtil {
       result = ListSequence.fromList(result).reversedList();
     }
 
-    result = ListSequence.fromList(result).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return completingByRightParen && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).get(it) != null) || !(completingByRightParen) && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(it) != null);
-      }
-    }).toListSequence();
+    result = ListSequence.fromList(result).where((it) -> completingByRightParen && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).get(it) != null) || !(completingByRightParen) && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(it) != null)).toList();
 
     return result;
   }

@@ -8,8 +8,6 @@ import jetbrains.mps.logging.Logger;
 import jetbrains.mps.generator.template.CreateRootRuleContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.execution.configurations.behavior.RunConfiguration__BehaviorDescriptor;
 import jetbrains.mps.generator.template.BaseMappingRuleContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -27,6 +25,7 @@ import jetbrains.mps.util.NodeNameUtil;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.execution.api.configurations.BaseMpsBeforeTaskProvider;
 import jetbrains.mps.execution.settings.behavior.PersistentConfiguration__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.execution.configurations.behavior.ConfigurationFromExecutorReference__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -75,11 +74,7 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean createRootRule_Condition_0_0(final CreateRootRuleContext _context) {
-    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.RunConfigurationKind$C3)).isNotEmpty() || ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.RunConfigurationProducer$AW)).isNotEmpty() || ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.RunConfiguration$B$)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) RunConfiguration__BehaviorDescriptor.isForeign_id3wpI_WC06mf.invoke(it);
-      }
-    }).isNotEmpty();
+    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.RunConfigurationKind$C3)).isNotEmpty() || ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.RunConfigurationProducer$AW)).isNotEmpty() || ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.RunConfiguration$B$)).where((it) -> (boolean) RunConfiguration__BehaviorDescriptor.isForeign_id3wpI_WC06mf.invoke(it)).isNotEmpty();
   }
   public static boolean createRootRule_Condition_0_1(final CreateRootRuleContext _context) {
     return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.BeforeTask$oR)).isNotEmpty();
@@ -451,11 +446,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.execute$95i7), LINKS.body$e68K), LINKS.statement$53DE);
   }
   public static Iterable<SNode> sourceNodesQuery_3_0(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.persistentProperty$YKAP)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) PersistentPropertyDeclaration__BehaviorDescriptor.isTemplate_idO$iR4J$g8G.invoke(it);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.persistentProperty$YKAP)).where((it) -> (boolean) PersistentPropertyDeclaration__BehaviorDescriptor.isTemplate_idO$iR4J$g8G.invoke(it));
   }
   public static Iterable<SNode> sourceNodesQuery_3_1(final SourceSubstituteMacroNodesContext _context) {
     List<SNode> beforeTaskCalls = check_x583g4_a0a0ue(RunConfiguration__BehaviorDescriptor.getExecutor_id3gs394eDyIj.invoke(_context.getNode()));
@@ -481,32 +472,20 @@ public class QueriesGenerated extends QueryProviderBase {
     return (List<SNode>) PersistentConfiguration__BehaviorDescriptor.getTemplateProperties_idO$iR4J$g3e.invoke(_context.getNode());
   }
   public static Iterable<SNode> sourceNodesQuery_9_0(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.RunConfiguration$B$)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.configurationKind$$GNc) == _context.getNode();
-      }
-    });
+    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.RunConfiguration$B$)).where((it) -> SLinkOperations.getTarget(it, LINKS.configurationKind$$GNc) == _context.getNode());
   }
   public static Iterable<SNode> sourceNodesQuery_9_1(final SourceSubstituteMacroNodesContext _context) {
     return SModelOperations.roots(_context.getInputModel(), CONCEPTS.RunConfigurationKind$C3);
   }
   public static Iterable<SNode> sourceNodesQuery_9_2(final SourceSubstituteMacroNodesContext _context) {
     // XXX in fact, with generic addFactoryFor(), there's no sense to distinguish 'foreign' factories,
-    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.RunConfiguration$B$)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) RunConfiguration__BehaviorDescriptor.isForeign_id3wpI_WC06mf.invoke(it);
-      }
-    });
+    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.RunConfiguration$B$)).where((it) -> (boolean) RunConfiguration__BehaviorDescriptor.isForeign_id3wpI_WC06mf.invoke(it));
   }
   public static Iterable<SNode> sourceNodesQuery_9_3(final SourceSubstituteMacroNodesContext _context) {
     return SModelOperations.roots(_context.getInputModel(), CONCEPTS.RunConfigurationProducer$AW);
   }
   public static Iterable<SNode> sourceNodesQuery_9_4(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.RunConfiguration$B$)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) RunConfiguration__BehaviorDescriptor.isForeign_id3wpI_WC06mf.invoke(it);
-      }
-    });
+    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.RunConfiguration$B$)).where((it) -> (boolean) RunConfiguration__BehaviorDescriptor.isForeign_id3wpI_WC06mf.invoke(it));
   }
   public static Iterable<SNode> sourceNodesQuery_13_0(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.produce$hvdx);

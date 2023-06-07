@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import jetbrains.mps.smodel.ModelReadRunnable;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.progress.ProgressManager;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
@@ -34,7 +33,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.smodel.SModelFileTracker;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import com.intellij.openapi.vcs.checkin.CheckinHandlerFactory;
@@ -82,11 +81,7 @@ public class ModelCheckerCheckinHandler extends CheckinHandler {
       modelsToCheck = new ArrayList<>(modelsToCommit);
       final String title = "Look up affected models";
       ModelReadRunnable r = new ModelReadRunnable(mpsProject.getModelAccess(), () -> {
-        List<SModelReference> mrl = ListSequence.fromList(modelsToCommit).select(new ISelector<SModel, SModelReference>() {
-          public SModelReference select(SModel this0) {
-            return this0.getReference();
-          }
-        }).toListSequence();
+        List<SModelReference> mrl = ListSequence.fromList(modelsToCommit).select((this0) -> this0.getReference()).toList();
         ProgressIndicator pi = ProgressManager.getInstance().getProgressIndicator();
         ProgressMonitor pm = (pi == null ? new EmptyProgressMonitor() : new ProgressMonitorAdapter(pi));
 
@@ -107,15 +102,11 @@ public class ModelCheckerCheckinHandler extends CheckinHandler {
   private static List<SModel> getModelsByFiles(MPSProject mpsProject, Iterable<VirtualFile> files) {
     final IdeaFileSystem fs = mpsProject.getFileSystem();
     final SModelFileTracker ft = SModelFileTracker.getInstance(mpsProject.getRepository());
-    return Sequence.fromIterable(files).where(new IWhereFilter<VirtualFile>() {
-      public boolean accept(@NotNull VirtualFile virtualFile) {
+    return Sequence.fromIterable(files).where(new _FunctionTypes._return_P1_E0<Boolean, VirtualFile>() {
+      public Boolean invoke(@NotNull VirtualFile virtualFile) {
         return fs.canConvert(virtualFile);
       }
-    }).select(new ISelector<VirtualFile, SModel>() {
-      public SModel select(VirtualFile file) {
-        return ft.findModel(fs.fromVirtualFile(file));
-      }
-    }).where(new NotNullWhereFilter<SModel>()).toListSequence();
+    }).select((file) -> ft.findModel(fs.fromVirtualFile(file))).where(new NotNullWhereFilter()).toList();
   }
 
   public static class ModelCheckerCheckinHandlerFactory extends CheckinHandlerFactory {

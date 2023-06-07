@@ -39,11 +39,9 @@ import jetbrains.mps.vcs.diff.ChangeSetBuilder;
 import jetbrains.mps.vcs.changesmanager.NodeFileStatusMapping;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.model.SNode;
 import com.intellij.openapi.vcs.FileStatus;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import com.intellij.openapi.vcs.changes.Change;
 import java.util.List;
@@ -59,7 +57,6 @@ import jetbrains.mps.ide.vfs.FileSystemBridge;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 
 @GeneratedClass(node = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)/3089989024970166387", model = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)")
 public abstract class ChangesTestBase implements EnvironmentAware {
@@ -199,28 +196,14 @@ public abstract class ChangesTestBase implements EnvironmentAware {
     final NodeFileStatusMapping fsm = NodeFileStatusMapping.getInstance(myIdeaProject);
     final SModel model = myDiff.getModelDescriptor();
     // query for first time
-    ourProject.getRepository().getModelAccess().runReadAction(() -> {
-      ListSequence.fromList(SModelOperations.roots(model, null)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode r) {
-          fsm.getStatus(r);
-        }
-      });
-    });
+    ourProject.getRepository().getModelAccess().runReadAction(() -> ListSequence.fromList(SModelOperations.roots(model, null)).visitAll((r) -> fsm.getStatus(r)));
     // wait while statuses update
     myWaitHelper.waitForDiffRegistry();
-    ourProject.getRepository().getModelAccess().runReadAction(() -> {
-      ListSequence.fromList(SModelOperations.roots(model, null)).visitAll(new IVisitor<SNode>() {
-        public void visit(final SNode r) {
-          FileStatus actual = fsm.getStatus(r);
-          FileStatus expected = check_l1nwgz_a0b0a0a0a0g0nb(Sequence.fromIterable(Sequence.fromArray(statuses)).findFirst(new IWhereFilter<RootStatusItem>() {
-            public boolean accept(RootStatusItem it) {
-              return it.rootName().equals(r.getName());
-            }
-          }));
-          Assert.assertSame(expected, actual);
-        }
-      });
-    });
+    ourProject.getRepository().getModelAccess().runReadAction(() -> ListSequence.fromList(SModelOperations.roots(model, null)).visitAll((final SNode r) -> {
+      FileStatus actual = fsm.getStatus(r);
+      FileStatus expected = check_l1nwgz_a0b0a0a0a0g0nb(Sequence.fromIterable(Sequence.fromArray(statuses)).findFirst((it) -> it.rootName().equals(r.getName())));
+      Assert.assertSame(expected, actual);
+    }));
   }
 
   protected void revertMemChangesAndWait(final boolean withAsserts) {
@@ -285,15 +268,7 @@ public abstract class ChangesTestBase implements EnvironmentAware {
   }
 
   protected String getChangeSetString(List<ModelChange> modelChanges) {
-    return IterableUtils.join(ListSequence.fromList(modelChanges).select(new ISelector<ModelChange, String>() {
-      public String select(ModelChange c) {
-        return c.toString();
-      }
-    }).sort(new ISelector<String, String>() {
-      public String select(String s) {
-        return s;
-      }
-    }, true), "|");
+    return IterableUtils.join(ListSequence.fromList(modelChanges).select((c) -> c.toString()).sort((s) -> s, true), "|");
   }
   private static FileStatus check_l1nwgz_a0b0a0a0a0g0nb(RootStatusItem checkedDotOperand) {
     if (null != checkedDotOperand) {

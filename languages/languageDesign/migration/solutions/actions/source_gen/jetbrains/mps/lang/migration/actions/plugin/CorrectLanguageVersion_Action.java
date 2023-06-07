@@ -19,7 +19,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.lang.migration.behavior.IMigrationUnit__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -79,11 +78,7 @@ public class CorrectLanguageVersion_Action extends BaseAction {
     lang.setLanguageVersion(CorrectLanguageVersion_Action.this.getLastScriptVersion(migrarions, _params) + 1);
   }
   private int getLastScriptVersion(List<SNode> migrations, final Map<String, Object> _params) {
-    return (int) IMigrationUnit__BehaviorDescriptor.fromVersion_id4uVwhQyFcnl.invoke(ListSequence.fromList(migrations).sort(new ISelector<SNode, Integer>() {
-      public Integer select(SNode it) {
-        return (int) IMigrationUnit__BehaviorDescriptor.fromVersion_id4uVwhQyFcnl.invoke(it);
-      }
-    }, false).first());
+    return (int) IMigrationUnit__BehaviorDescriptor.fromVersion_id4uVwhQyFcnl.invoke(ListSequence.fromList(migrations).sort((it) -> (int) IMigrationUnit__BehaviorDescriptor.fromVersion_id4uVwhQyFcnl.invoke(it), false).first());
   }
 
   private static final class CONCEPTS {

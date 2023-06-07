@@ -22,7 +22,6 @@ import jetbrains.mps.smodel.SModel;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import jetbrains.mps.vcspersistence.VCSPersistenceSupport;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 
 @GeneratedClass(node = "r:e4939376-be00-4167-9510-67715eca6425(jetbrains.mps.vcs.platform.util)/6933307669479990701", model = "r:e4939376-be00-4167-9510-67715eca6425(jetbrains.mps.vcs.platform.util)")
 public class MergeBackupUtil {
@@ -113,10 +112,6 @@ public class MergeBackupUtil {
   }
   public static Iterable<File> findZipFilesForModelFile(final String modelFileName) {
     File[] files = new File(MergeBackupUtil.getMergeBackupDirPath()).listFiles((File dir, String name) -> name.contains(modelFileName) && name.endsWith(".zip"));
-    return Sequence.fromIterable(Sequence.fromArray(files)).sort(new ISelector<File, String>() {
-      public String select(File f) {
-        return f.getName();
-      }
-    }, false);
+    return Sequence.fromIterable(Sequence.fromArray(files)).sort((f) -> f.getName(), false);
   }
 }

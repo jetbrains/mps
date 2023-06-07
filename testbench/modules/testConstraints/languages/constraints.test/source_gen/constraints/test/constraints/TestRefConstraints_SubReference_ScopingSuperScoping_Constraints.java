@@ -18,8 +18,6 @@ import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -45,11 +43,7 @@ public class TestRefConstraints_SubReference_ScopingSuperScoping_Constraints ext
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forNamedElements(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.TestRefConstraints_Container$Wp, true, false), LINKS.targets$T$Wx)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return SPropertyOperations.getBoolean(it, PROPS.inScope$PWeu) && SPropertyOperations.getBoolean(it, PROPS.inScopeAdvanced$knMw);
-              }
-            }));
+            return ListScope.forNamedElements(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.TestRefConstraints_Container$Wp, true, false), LINKS.targets$T$Wx)).where((it) -> SPropertyOperations.getBoolean(it, PROPS.inScope$PWeu) && SPropertyOperations.getBoolean(it, PROPS.inScopeAdvanced$knMw)));
           }
         };
       }

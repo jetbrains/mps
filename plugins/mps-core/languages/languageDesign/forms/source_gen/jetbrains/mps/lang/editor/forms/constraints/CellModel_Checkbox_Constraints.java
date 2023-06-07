@@ -20,7 +20,6 @@ import jetbrains.mps.lang.editor.behavior.AbstractComponent__BehaviorDescriptor;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.structure.behavior.DataTypeDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.HashMap;
@@ -47,11 +46,7 @@ public class CellModel_Checkbox_Constraints extends BaseConstraintsDescriptor {
           public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode editorComponent = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.BaseEditorComponent$49, true, false);
             SNode editedConcept = AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(editorComponent);
-            return ListScope.forResolvableElements(ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(editedConcept)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return (boolean) DataTypeDeclaration__BehaviorDescriptor.isSimpleBoolean_idhKtGpIQ.invoke(SLinkOperations.getTarget(it, LINKS.dataType$5j5Y));
-              }
-            }));
+            return ListScope.forResolvableElements(ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(editedConcept)).where((it) -> (boolean) DataTypeDeclaration__BehaviorDescriptor.isSimpleBoolean_idhKtGpIQ.invoke(SLinkOperations.getTarget(it, LINKS.dataType$5j5Y))));
           }
         };
       }

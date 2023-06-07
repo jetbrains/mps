@@ -21,7 +21,6 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
@@ -66,7 +65,7 @@ public class LogBuilder {
     session.registerChange(() -> {
       SModel migrationModel = LanguageAspect.MIGRATION.getOrCreate(module);
       SModelInternal sm = (SModelInternal) (SModel) migrationModel;
-      for (SModelReference reference : ListSequence.fromList(SNodeOperations.getNodeDescendants(myRefactoringStep, null, true, new SAbstractConcept[]{})).translate((SNode it) -> SNodeOperations.getReferences(it)).select((SReference it) -> it.getTargetSModelReference()).distinct()) {
+      for (SModelReference reference : ListSequence.fromList(SNodeOperations.getNodeDescendants(myRefactoringStep, null, true, new SAbstractConcept[]{})).translate((it) -> SNodeOperations.getReferences(it)).select((it) -> it.getTargetSModelReference()).distinct()) {
         if (!(SModelOperations.getImportedModelUIDs(migrationModel).contains(reference))) {
           sm.addModelImport(reference);
         }
@@ -76,7 +75,7 @@ public class LogBuilder {
       module.setModuleVersion(moduleVersion + 1);
 
       Iterable<SModule> modules = searchScope.getModules();
-      List<SModule> modulesToIncrementDependencyVersion = Sequence.fromIterable(modules).where((SModule m) -> MigrationModuleUtil.isModuleMigrateable(m)).where((SModule m) -> SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(m)).contains(module)).toList();
+      List<SModule> modulesToIncrementDependencyVersion = Sequence.fromIterable(modules).where((m) -> MigrationModuleUtil.isModuleMigrateable(m)).where((m) -> SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(m)).contains(module)).toList();
       for (SModule m : ListSequence.fromList(modulesToIncrementDependencyVersion)) {
         int depVersion = MigrationModuleUtil.getDependencyVersion(m, module);
         if (moduleVersion != depVersion) {
@@ -100,7 +99,7 @@ public class LogBuilder {
       SLinkOperations.setNewChild(myRefactoringStep, LINKS.options$KIbw, CONCEPTS.RefactoringOptions$1J);
     }
     for (RefactoringParticipant.Option option : Sequence.fromIterable(selectedOptions)) {
-      if (!(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(myRefactoringStep, LINKS.options$KIbw), LINKS.options$l6Xl)).select((SNode it) -> new RefactoringParticipant.Option(SPropertyOperations.getString(it, PROPS.optionId$l6wK), SPropertyOperations.getString(it, PROPS.description$GF4B))).contains(option))) {
+      if (!(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(myRefactoringStep, LINKS.options$KIbw), LINKS.options$l6Xl)).select((it) -> new RefactoringParticipant.Option(SPropertyOperations.getString(it, PROPS.optionId$l6wK), SPropertyOperations.getString(it, PROPS.description$GF4B))).contains(option))) {
         ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(myRefactoringStep, LINKS.options$KIbw), LINKS.options$l6Xl)).addElement(createRefactoringOption_1o8b1n_a0a0a0a1a6(option.getId(), option.getDescription()));
       }
     }

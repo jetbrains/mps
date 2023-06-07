@@ -60,7 +60,7 @@ public final class ClonableList<T> extends AbstractList<T> implements Cloneable,
   @NotNull
   @Override
   public ClonableList<T> copy() {
-    ClonableList<T> result = new ClonableList(myData);
+    ClonableList<T> result = new ClonableList<>(myData);
     return result;
   }
 

@@ -23,12 +23,12 @@ public class ClassMemberSignatures {
    */
   public static <T extends MemberSignature, U extends SNode> SignatureBuilder<T, U> addClassMemberAttributes(SignatureBuilder<T, U> builder, final SNode visible, final SNode inheritable, final boolean isOverride) {
     if ((visible != null)) {
-      builder.withAttribute(SignatureAttributeKey.VISIBILITY, (T sig, U node) -> SNodeOperations.getConcept(SLinkOperations.getTarget(visible, LINKS.visibility$vnSV)));
+      builder.withAttribute(SignatureAttributeKey.VISIBILITY, (sig, node) -> SNodeOperations.getConcept(SLinkOperations.getTarget(visible, LINKS.visibility$vnSV)));
     }
 
     if ((inheritable != null)) {
-      builder.withAttribute(SignatureAttributeKey.ABSTRACT, (T sig, U node) -> (boolean) IInheritable__BehaviorDescriptor.isAbstract_id4KPNZIZDjbY.invoke(inheritable));
-      builder.withAttribute(SignatureAttributeKey.MODALITY, (T sig, U node) -> {
+      builder.withAttribute(SignatureAttributeKey.ABSTRACT, (sig, node) -> (boolean) IInheritable__BehaviorDescriptor.isAbstract_id4KPNZIZDjbY.invoke(inheritable));
+      builder.withAttribute(SignatureAttributeKey.MODALITY, (sig, node) -> {
         if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(inheritable, LINKS.inheritance$TFvr), CONCEPTS.AbstractInheritanceModifier$GA)) {
           // abstract => isAbstract=true + open
           return CONCEPTS.OpenInheritanceModifier$RJ;
@@ -38,7 +38,7 @@ public class ClassMemberSignatures {
       });
     }
 
-    builder.withAttribute(SignatureAttributeKey.OVERRIDE, (T sig, U node) -> isOverride);
+    builder.withAttribute(SignatureAttributeKey.OVERRIDE, (sig, node) -> isOverride);
 
     return builder;
   }

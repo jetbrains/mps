@@ -10,7 +10,6 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -25,11 +24,7 @@ public class check_BuildMps_GeneratorOptions_NonTypesystemRule extends AbstractN
   public void applyRule(final SNode genOpts, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(genOpts), CONCEPTS.BuildProject$ae)) {
       SNode bp = SNodeOperations.cast(SNodeOperations.getParent(genOpts), CONCEPTS.BuildProject$ae);
-      if (ListSequence.fromList(SLinkOperations.getChildren(bp, LINKS.parts$mGDj)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMps_GeneratorOptions$A8) && it != genOpts;
-        }
-      }).isNotEmpty()) {
+      if (ListSequence.fromList(SLinkOperations.getChildren(bp, LINKS.parts$mGDj)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMps_GeneratorOptions$A8) && it != genOpts).isNotEmpty()) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(genOpts, "Generation options are expected to be specified at most once per project", "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "4297162197627237167", null, errorTarget);

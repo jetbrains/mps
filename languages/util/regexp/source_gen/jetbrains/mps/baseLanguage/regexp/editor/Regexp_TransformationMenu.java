@@ -56,7 +56,6 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.lang.editor.menus.transformation.SubstituteMenuItemAsActionItem;
 import jetbrains.mps.editor.runtime.menus.SubstituteItemProxy;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -647,16 +646,14 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
     protected Iterable<? extends SConcept> getParameters(TransformationMenuContext _context) {
       final List<SAbstractConcept> excludeList = ListSequence.fromListAndArray(new ArrayList<SAbstractConcept>(), CONCEPTS.BinaryRegexp$I5, CONCEPTS.UnaryRegexp$Nw, CONCEPTS.PredefinedSymbolClassRegexp$tU, CONCEPTS.RegexpDeclarationReferenceRegexp$LD, CONCEPTS.MatchVariableReferenceRegexp$AQ);
       List<SConcept> regexps = SConceptOperations.getAllSubConcepts2(CONCEPTS.Regexp$aA, _context.getModel());
-      return ListSequence.fromList(regexps).where(new IWhereFilter<SConcept>() {
-        public boolean accept(SConcept it) {
-          for (SAbstractConcept exclude : ListSequence.fromList(excludeList)) {
-            if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(it), SNodeOperations.asSConcept(exclude))) {
-              return false;
-            }
+      return ListSequence.fromList(regexps).where((it) -> {
+        for (SAbstractConcept exclude : ListSequence.fromList(excludeList)) {
+          if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(it), SNodeOperations.asSConcept(exclude))) {
+            return false;
           }
-          return true;
         }
-      }).toListSequence();
+        return true;
+      }).toList();
     }
     @NotNull
     @Override

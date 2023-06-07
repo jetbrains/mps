@@ -22,6 +22,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
   }
 
   /*package*/ List<ErrorReportingItem> getErrorList() {
-    return Sequence.fromIterable(MapSequence.fromMap(myHostPlusType2Msg).values()).toListSequence();
+    return Sequence.fromIterable(MapSequence.fromMap(myHostPlusType2Msg).values()).toList();
   }
 }

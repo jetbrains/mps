@@ -18,7 +18,6 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 
 @GeneratedClass(node = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)/8195773907765992281", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
 public class AggregatingChecker<O> implements IAbstractChecker<O, IssueKindReportItem> {
@@ -66,11 +65,7 @@ public class AggregatingChecker<O> implements IAbstractChecker<O, IssueKindRepor
           });
         }
       }
-      for (MySuppressableError approved : Sequence.fromIterable(MapSequence.fromMap(consumerResultMap).values()).translate(new ITranslator2<Collection<MySuppressableError>, MySuppressableError>() {
-        public Iterable<MySuppressableError> translate(Collection<MySuppressableError> it) {
-          return it;
-        }
-      })) {
+      for (MySuppressableError approved : Sequence.fromIterable(MapSequence.fromMap(consumerResultMap).values()).translate((it) -> it)) {
         if (!(approved.isSuppressed())) {
           errorCollector.consume(approved.getError());
         }

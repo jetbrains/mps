@@ -31,11 +31,7 @@ public class typeof_OverrideAnnotation_InferenceRule extends AbstractInferenceRu
   }
   public IsApplicableStatus isApplicableAndPattern(final SNode argument) {
     if (argument.getConcept().isSubConceptOf(getApplicableConcept())) {
-      return new IsApplicableStatus(new IsApplicableStatus.Probe() {
-        public boolean eval() {
-          return (boolean) PresenceCondition__BehaviorDescriptor.isSatisfied_id5zzawu2JLe0.invoke(SLinkOperations.getTarget(argument, LINKS.condition$SdSJ));
-        }
-      }, null);
+      return new IsApplicableStatus(() -> (boolean) PresenceCondition__BehaviorDescriptor.isSatisfied_id5zzawu2JLe0.invoke(SLinkOperations.getTarget(argument, LINKS.condition$SdSJ)), null);
     } else {
       return new IsApplicableStatus(false, null);
     }

@@ -14,7 +14,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -34,11 +33,7 @@ public final class AbstractPropertyDeclaration__BehaviorDescriptor extends BaseB
   }
 
   /*package*/ static boolean hasExplicityType_id2n1mrwy6RU_(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(AbstractPropertyDeclaration__BehaviorDescriptor.getDeclarations_id7RZWrHVaXCH.invoke(__thisNode__)).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.type$RmkT) != null);
-      }
-    });
+    return ListSequence.fromList(AbstractPropertyDeclaration__BehaviorDescriptor.getDeclarations_id7RZWrHVaXCH.invoke(__thisNode__)).all((it) -> (SLinkOperations.getTarget(it, LINKS.type$RmkT) != null));
   }
   /*package*/ static boolean isDeconstructing_id7RZWrHVbnio(@NotNull SNode __thisNode__) {
     return false;

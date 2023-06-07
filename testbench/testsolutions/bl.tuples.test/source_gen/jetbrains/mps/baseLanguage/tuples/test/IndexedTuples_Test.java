@@ -9,7 +9,6 @@ import org.junit.Assert;
 import java.util.Objects;
 import jetbrains.mps.baseLanguage.tuples.util.A;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -94,11 +93,7 @@ public class IndexedTuples_Test {
   @Test
   public void test_mps5466() throws Exception {
     Iterable<Tuples._2<String, Boolean>> seq = A.foo();
-    Assert.assertSame(1, Sequence.fromIterable(seq).where(new IWhereFilter<Tuples._2<String, Boolean>>() {
-      public boolean accept(Tuples._2<String, Boolean> it) {
-        return it._1() != true;
-      }
-    }).count());
+    Assert.assertSame(1, Sequence.fromIterable(seq).where((it) -> it._1() != true).count());
   }
   @Test
   public void test_listOfTuples() throws Exception {
@@ -133,24 +128,14 @@ public class IndexedTuples_Test {
   @Test
   public void test_mps7408() throws Exception {
     MPS7408 foo = new MPS7408();
-    Tuples._2<_FunctionTypes._return_P0_E0<? extends Boolean>, _FunctionTypes._void_P0_E0> asd = MultiTuple.<_FunctionTypes._return_P0_E0<? extends Boolean>,_FunctionTypes._void_P0_E0>from(new _FunctionTypes._return_P0_E0<Boolean>() {
-      public Boolean invoke() {
-        return true;
-      }
-    }, new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-      }
-    });
+    Tuples._2<_FunctionTypes._return_P0_E0<? extends Boolean>, _FunctionTypes._void_P0_E0> asd = MultiTuple.<_FunctionTypes._return_P0_E0<? extends Boolean>,_FunctionTypes._void_P0_E0>from(((_FunctionTypes._return_P0_E0<Boolean>) () -> true), ((_FunctionTypes._void_P0_E0) () -> {
+    }));
     foo.waitFor(asd);
     Assert.assertSame(1, ListSequence.fromList(foo.jobs).count());
   }
   @Test
   public void test_mps7409() throws Exception {
-    Tuples._1<_FunctionTypes._return_P0_E0<? extends Boolean>> t = MultiTuple.<_FunctionTypes._return_P0_E0<? extends Boolean>>from(new _FunctionTypes._return_P0_E0<Boolean>() {
-      public Boolean invoke() {
-        return false;
-      }
-    });
+    Tuples._1<_FunctionTypes._return_P0_E0<? extends Boolean>> t = MultiTuple.<_FunctionTypes._return_P0_E0<? extends Boolean>>from(((_FunctionTypes._return_P0_E0<Boolean>) () -> false));
     Assert.assertFalse(t._0().invoke());
   }
   @Test

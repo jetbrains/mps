@@ -7,7 +7,6 @@ import jetbrains.mps.make.facet.FacetRegistry;
 import org.junit.Test;
 import jetbrains.mps.make.script.ScriptBuilder;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.make.facet.ITarget;
 import jetbrains.mps.make.script.IScript;
 import org.junit.Assert;
@@ -24,49 +23,29 @@ public class ScriptBuilder_Test extends MockTestCase {
   @Test
   public void test_make() throws Exception {
     ScriptBuilder scb = new ScriptBuilder(myFacetRegistry);
-    scb.withFacetNames(Sequence.fromIterable(Sequence.fromArray(facets)).select(new ISelector<IFacet, IFacet.Name>() {
-      public IFacet.Name select(IFacet f) {
-        return f.getName();
-      }
-    }));
+    scb.withFacetNames(Sequence.fromIterable(Sequence.fromArray(facets)).select((f) -> f.getName()));
     scb.withFinalTarget(new ITarget.Name("make"));
     IScript sc = scb.toScript();
     Assert.assertNotNull(sc);
     Assert.assertTrue(sc.isValid());
     List<ITarget.Name> expected = ListSequence.fromListAndArray(new ArrayList<ITarget.Name>(), new ITarget.Name("cfg"), new ITarget.Name("gen"), new ITarget.Name("textgen"), new ITarget.Name("make"));
-    Utils.assertSameSequence(expected, Sequence.fromIterable(sc.allTargets()).select(new ISelector<ITarget, ITarget.Name>() {
-      public ITarget.Name select(ITarget t) {
-        return t.getName();
-      }
-    }));
+    Utils.assertSameSequence(expected, Sequence.fromIterable(sc.allTargets()).select((t) -> t.getName()));
   }
   @Test
   public void test_gen() throws Exception {
     ScriptBuilder scb = new ScriptBuilder(myFacetRegistry);
-    scb.withFacetNames(Sequence.fromIterable(Sequence.fromArray(facets)).select(new ISelector<IFacet, IFacet.Name>() {
-      public IFacet.Name select(IFacet f) {
-        return f.getName();
-      }
-    }));
+    scb.withFacetNames(Sequence.fromIterable(Sequence.fromArray(facets)).select((f) -> f.getName()));
     scb.withFinalTarget(new ITarget.Name("make"));
     IScript sc = scb.toScript();
     Assert.assertNotNull(sc);
     Assert.assertTrue(sc.isValid());
     List<ITarget.Name> expected = ListSequence.fromListAndArray(new ArrayList<ITarget.Name>(), new ITarget.Name("cfg"), new ITarget.Name("gen"), new ITarget.Name("textgen"), new ITarget.Name("make"));
-    Utils.assertSameSequence(expected, Sequence.fromIterable(sc.allTargets()).select(new ISelector<ITarget, ITarget.Name>() {
-      public ITarget.Name select(ITarget t) {
-        return t.getName();
-      }
-    }));
+    Utils.assertSameSequence(expected, Sequence.fromIterable(sc.allTargets()).select((t) -> t.getName()));
   }
   @Test
   public void test_notExisting() throws Exception {
     ScriptBuilder scb = new ScriptBuilder(myFacetRegistry);
-    scb.withFacetNames(Sequence.fromIterable(Sequence.fromArray(facets)).select(new ISelector<IFacet, IFacet.Name>() {
-      public IFacet.Name select(IFacet f) {
-        return f.getName();
-      }
-    }));
+    scb.withFacetNames(Sequence.fromIterable(Sequence.fromArray(facets)).select((f) -> f.getName()));
     scb.withAuxTarget(new ITarget.Name("none"));
     IScript sc = scb.toScript();
     Assert.assertNotNull(sc);
@@ -85,11 +64,7 @@ public class ScriptBuilder_Test extends MockTestCase {
     Assert.assertTrue(Sequence.fromIterable(sc.validationErrors()).count() == 1);
     // Fake ScriptBuilder invocation, to satisfy mock expectations of setUp/tearDown
     scb = new ScriptBuilder(myFacetRegistry);
-    scb.withFacetNames(Sequence.fromIterable(Sequence.fromArray(facets)).select(new ISelector<IFacet, IFacet.Name>() {
-      public IFacet.Name select(IFacet f) {
-        return f.getName();
-      }
-    }));
+    scb.withFacetNames(Sequence.fromIterable(Sequence.fromArray(facets)).select((f) -> f.getName()));
     scb.toScript();
   }
   @After

@@ -18,8 +18,6 @@ import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SNode;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -42,11 +40,7 @@ public class MethodDocReference_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forNamedElements(ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.BaseMethodDeclaration$kD)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.AnonymousClass$Bt));
-              }
-            }));
+            return ListScope.forNamedElements(ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.BaseMethodDeclaration$kD)).where((it) -> !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.AnonymousClass$Bt))));
           }
         };
       }

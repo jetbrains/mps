@@ -25,9 +25,6 @@ import jetbrains.mps.nodeEditor.selection.EditorCellLabelSelection;
 import jetbrains.mps.nodeEditor.selection.EditorCellSelection;
 import jetbrains.mps.openapi.editor.selection.MultipleSelection;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.SNodePointer;
 
 @GeneratedClass(node = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)/7064627997011532320", model = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)")
@@ -77,17 +74,7 @@ public class EvaluateExpression_Action extends BaseAction {
       if (((EditorComponent) MapSequence.fromMap(_params).get("component")) != null) {
         final Selection selection = ((EditorComponent) MapSequence.fromMap(_params).get("component")).getSelectionManager().getSelection();
         if ((selection instanceof EditorCellLabelSelection && ((EditorCellLabelSelection) selection).hasNonTrivialSelection()) || (selection instanceof EditorCellSelection && !(selection instanceof EditorCellLabelSelection)) || (selection instanceof MultipleSelection)) {
-          ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess().runReadAction(() -> {
-            ListSequence.fromList(nodePointers).addSequence(Sequence.fromIterable(Sequence.fromClosure(new ISequenceClosure<SNode>() {
-              public Iterable<SNode> iterable() {
-                return selection.getSelectedNodes();
-              }
-            })).select(new ISelector<SNode, SNodePointer>() {
-              public SNodePointer select(SNode it) {
-                return new SNodePointer(it);
-              }
-            }));
-          });
+          ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess().runReadAction(() -> ListSequence.fromList(nodePointers).addSequence(Sequence.fromIterable(Sequence.fromClosure(() -> selection.getSelectedNodes())).select((it) -> new SNodePointer(it))));
         }
       }
       evaluationProvider.showEvaluationDialog(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), nodePointers);

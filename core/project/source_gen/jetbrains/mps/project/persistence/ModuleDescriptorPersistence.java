@@ -8,7 +8,6 @@ import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import org.jdom.Element;
 import jetbrains.mps.util.xml.XmlUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -21,7 +20,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.List;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
@@ -52,17 +50,13 @@ public class ModuleDescriptorPersistence {
   public static void loadDependencies(final ModuleDescriptor descriptor, Element root) {
     descriptor.getDependencies().addAll(loadDependenciesList(XmlUtil.first(root, "dependencies")));
 
-    Sequence.fromIterable(XmlUtil.children(XmlUtil.first(root, "languageVersions"), "language")).visitAll(new IVisitor<Element>() {
-      public void visit(Element it) {
-        SLanguage lang = PersistenceFacade.getInstance().createLanguage(it.getAttributeValue("slang"));
-        descriptor.getLanguageVersions().put(lang, Integer.parseInt(it.getAttributeValue("version")));
-      }
+    Sequence.fromIterable(XmlUtil.children(XmlUtil.first(root, "languageVersions"), "language")).visitAll((it) -> {
+      SLanguage lang = PersistenceFacade.getInstance().createLanguage(it.getAttributeValue("slang"));
+      descriptor.getLanguageVersions().put(lang, Integer.parseInt(it.getAttributeValue("version")));
     });
-    Sequence.fromIterable(XmlUtil.children(XmlUtil.first(root, "dependencyVersions"), "module")).visitAll(new IVisitor<Element>() {
-      public void visit(Element it) {
-        SModuleReference id = PersistenceFacade.getInstance().createModuleReference(it.getAttributeValue("reference"));
-        descriptor.getDependencyVersions().put(id, Integer.parseInt(it.getAttributeValue("version")));
-      }
+    Sequence.fromIterable(XmlUtil.children(XmlUtil.first(root, "dependencyVersions"), "module")).visitAll((it) -> {
+      SModuleReference id = PersistenceFacade.getInstance().createModuleReference(it.getAttributeValue("reference"));
+      descriptor.getDependencyVersions().put(id, Integer.parseInt(it.getAttributeValue("version")));
     });
 
     if (descriptor instanceof LanguageDescriptor) {
@@ -128,34 +122,24 @@ public class ModuleDescriptorPersistence {
       if (!(ld.getRuntimeModules().isEmpty())) {
         Element runtime = new Element("runtime");
         Set<SModuleReference> runtimeModules = ld.getRuntimeModules();
-        saveDependencyList(runtime, SetSequence.fromSet(runtimeModules).select(new ISelector<SModuleReference, Dependency>() {
-          public Dependency select(SModuleReference it) {
-            return new Dependency(it, false);
-          }
-        }).toListSequence());
+        saveDependencyList(runtime, SetSequence.fromSet(runtimeModules).select((it) -> new Dependency(it, false)).toList());
         result.addContent(runtime);
       }
     }
   }
 
   public static List<Dependency> loadDependenciesList(Element depElement) {
-    return Sequence.fromIterable(XmlUtil.children(depElement, "dependency")).select(new ISelector<Element, Dependency>() {
-      public Dependency select(final Element d) {
-        return new _FunctionTypes._return_P0_E0<Dependency>() {
-          public Dependency invoke() {
-            final Dependency result_dxyzb6_a0a0a0a0a0a8 = new Dependency();
-            final SModuleReference result_dxyzb6_a0a0a0a0a0a0a8 = PersistenceFacade.getInstance().createModuleReference(d.getText());
-            result_dxyzb6_a0a0a0a0a0a8.setModuleRef(result_dxyzb6_a0a0a0a0a0a0a8);
-            final boolean result_dxyzb6_a1a0a0a0a0a0a8 = XmlUtil.booleanWithDefault(d, "reexport", true);
-            result_dxyzb6_a0a0a0a0a0a8.setReexport(result_dxyzb6_a1a0a0a0a0a0a8);
-            SDependencyScope s = SDependencyScope.fromIdentity(d.getAttributeValue("scope"));
-            final SDependencyScope result_dxyzb6_a3a0a0a0a0a0a8 = (s == null ? SDependencyScope.DEFAULT : s);
-            result_dxyzb6_a0a0a0a0a0a8.setScope(result_dxyzb6_a3a0a0a0a0a0a8);
-            return result_dxyzb6_a0a0a0a0a0a8;
-          }
-        }.invoke();
-      }
-    }).toListSequence();
+    return Sequence.fromIterable(XmlUtil.children(depElement, "dependency")).select((final Element d) -> ((_FunctionTypes._return_P0_E0<Dependency>) () -> {
+      final Dependency result_dxyzb6_a0a0a0a0a0a8 = new Dependency();
+      final SModuleReference result_dxyzb6_a0a0a0a0a0a0a8 = PersistenceFacade.getInstance().createModuleReference(d.getText());
+      result_dxyzb6_a0a0a0a0a0a8.setModuleRef(result_dxyzb6_a0a0a0a0a0a0a8);
+      final boolean result_dxyzb6_a1a0a0a0a0a0a8 = XmlUtil.booleanWithDefault(d, "reexport", true);
+      result_dxyzb6_a0a0a0a0a0a8.setReexport(result_dxyzb6_a1a0a0a0a0a0a8);
+      SDependencyScope s = SDependencyScope.fromIdentity(d.getAttributeValue("scope"));
+      final SDependencyScope result_dxyzb6_a3a0a0a0a0a0a8 = (s == null ? SDependencyScope.DEFAULT : s);
+      result_dxyzb6_a0a0a0a0a0a8.setScope(result_dxyzb6_a3a0a0a0a0a0a8);
+      return result_dxyzb6_a0a0a0a0a0a8;
+    }).invoke()).toList();
   }
 
   private static void saveDependencyList(Element result, Collection<Dependency> dependencies) {

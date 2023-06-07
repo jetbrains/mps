@@ -20,8 +20,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -131,17 +129,11 @@ public final class ReplaceForEachLoopWithIndexedLoop_Intention extends AbstractI
         SLinkOperations.setTarget(variable, LINKS.initializer$2twD, listAccess);
       }
       final SNode fake_node = node;
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(node, LINKS.body$c1sm), null, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (SNodeOperations.isInstanceOf(it, CONCEPTS.VariableReference$TC) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41));
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          if (SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG) == SLinkOperations.getTarget(fake_node, LINKS.variable$JNH6)) {
-            SNode itemReference = SNodeFactoryOperations.createNewNode(CONCEPTS.VariableReference$TC, null);
-            SLinkOperations.setTarget(itemReference, LINKS.variableDeclaration$N1XG, variable);
-            SNodeOperations.replaceWithAnother(it, itemReference);
-          }
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(node, LINKS.body$c1sm), null, false, new SAbstractConcept[]{})).where((it) -> (SNodeOperations.isInstanceOf(it, CONCEPTS.VariableReference$TC) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41))).visitAll((it) -> {
+        if (SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG) == SLinkOperations.getTarget(fake_node, LINKS.variable$JNH6)) {
+          SNode itemReference = SNodeFactoryOperations.createNewNode(CONCEPTS.VariableReference$TC, null);
+          SLinkOperations.setTarget(itemReference, LINKS.variableDeclaration$N1XG, variable);
+          SNodeOperations.replaceWithAnother(it, itemReference);
         }
       });
       SLinkOperations.setTarget(forStatement, LINKS.body$c1sm, SLinkOperations.getTarget(node, LINKS.body$c1sm));

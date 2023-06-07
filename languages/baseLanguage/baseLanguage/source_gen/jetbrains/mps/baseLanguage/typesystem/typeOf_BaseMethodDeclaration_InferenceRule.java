@@ -23,7 +23,6 @@ import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class typeOf_BaseMethodDeclaration_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeOf_BaseMethodDeclaration_InferenceRule() {
@@ -64,7 +63,7 @@ public class typeOf_BaseMethodDeclaration_InferenceRule extends AbstractInferenc
       }
     } else {
       // should return subtypes of the 'expected type'
-      for (SNode returnStatement : Sequence.fromIterable(returnStatements)) {
+      for (final SNode returnStatement : Sequence.fromIterable(returnStatements)) {
         if ((SLinkOperations.getTarget(returnStatement, LINKS.expression$eJ92) == null)) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
@@ -74,51 +73,49 @@ public class typeOf_BaseMethodDeclaration_InferenceRule extends AbstractInferenc
           if (!(CheckingUtil.isValidByteOrShortExpression(expectedRetType, SLinkOperations.getTarget(returnStatement, LINKS.expression$eJ92)))) {
             {
               final SNode returnType = typeCheckingContext.typeOf(SLinkOperations.getTarget(returnStatement, LINKS.expression$eJ92), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8014486391935827927", true);
-              typeCheckingContext.whenConcrete(returnType, new Runnable() {
-                public void run() {
-                  String expectedTypeStr = (SNodeOperations.isInstanceOf(expectedRetType, CONCEPTS.Type$bu) ? BaseConcept__BehaviorDescriptor.getDetailedPresentation_id22G2W3WJ92t.invoke(expectedRetType) : "" + SNodeOperations.present(expectedRetType));
+              typeCheckingContext.whenConcrete(returnType, () -> {
+                String expectedTypeStr = (SNodeOperations.isInstanceOf(expectedRetType, CONCEPTS.Type$bu) ? BaseConcept__BehaviorDescriptor.getDetailedPresentation_id22G2W3WJ92t.invoke(expectedRetType) : "" + SNodeOperations.present(expectedRetType));
 
-                  if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(returnType), CONCEPTS.IInferredType$Qo)) {
+                if (InferenceHelper.isInferredFromContext(typeCheckingContext.getExpandedNode(returnType))) {
+                  {
+                    SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(returnStatement, LINKS.expression$eJ92);
+                    EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, "" + expectedTypeStr + " is expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8014486391935871495", 0, null);
+                    {
+                      BaseQuickFixProvider intentionProvider = null;
+                      intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "8014486391935871496", false);
+                      intentionProvider.putArgument("desiredType", expectedRetType);
+                      intentionProvider.putArgument("expression", SLinkOperations.getTarget(returnStatement, LINKS.expression$eJ92));
+                      _info_12389875345.addIntentionProvider(intentionProvider);
+                    }
+                    {
+                      BaseQuickFixProvider intentionProvider = null;
+                      intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeMethodReturnType_QuickFix", "8014486391935871503", false);
+                      intentionProvider.putArgument("desiredType", SLinkOperations.getTarget(returnStatement, LINKS.expression$eJ92));
+                      intentionProvider.putArgument("expression", bmd);
+                      _info_12389875345.addIntentionProvider(intentionProvider);
+                    }
+                    typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getExpandedNode(returnType), (SNode) expectedRetType, false, true, _info_12389875345);
+                  }
+                } else {
+                  if (!(typeCheckingContext.isSingleTypeComputation())) {
                     {
                       SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(returnStatement, LINKS.expression$eJ92);
-                      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, "" + expectedTypeStr + " is expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8014486391935871495", 0, null);
+                      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, "" + expectedTypeStr + " is expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1185363921400", 0, null);
                       {
                         BaseQuickFixProvider intentionProvider = null;
-                        intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "8014486391935871496", false);
+                        intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "2388917569181956696", false);
                         intentionProvider.putArgument("desiredType", expectedRetType);
                         intentionProvider.putArgument("expression", SLinkOperations.getTarget(returnStatement, LINKS.expression$eJ92));
                         _info_12389875345.addIntentionProvider(intentionProvider);
                       }
                       {
                         BaseQuickFixProvider intentionProvider = null;
-                        intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeMethodReturnType_QuickFix", "8014486391935871503", false);
+                        intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeMethodReturnType_QuickFix", "7387411948770338366", false);
                         intentionProvider.putArgument("desiredType", SLinkOperations.getTarget(returnStatement, LINKS.expression$eJ92));
                         intentionProvider.putArgument("expression", bmd);
                         _info_12389875345.addIntentionProvider(intentionProvider);
                       }
-                      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getExpandedNode(returnType), (SNode) expectedRetType, false, true, _info_12389875345);
-                    }
-                  } else {
-                    if (!(typeCheckingContext.isSingleTypeComputation())) {
-                      {
-                        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(returnStatement, LINKS.expression$eJ92);
-                        EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, "" + expectedTypeStr + " is expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1185363921400", 0, null);
-                        {
-                          BaseQuickFixProvider intentionProvider = null;
-                          intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "2388917569181956696", false);
-                          intentionProvider.putArgument("desiredType", expectedRetType);
-                          intentionProvider.putArgument("expression", SLinkOperations.getTarget(returnStatement, LINKS.expression$eJ92));
-                          _info_12389875345.addIntentionProvider(intentionProvider);
-                        }
-                        {
-                          BaseQuickFixProvider intentionProvider = null;
-                          intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeMethodReturnType_QuickFix", "7387411948770338366", false);
-                          intentionProvider.putArgument("desiredType", SLinkOperations.getTarget(returnStatement, LINKS.expression$eJ92));
-                          intentionProvider.putArgument("expression", bmd);
-                          _info_12389875345.addIntentionProvider(intentionProvider);
-                        }
-                        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getExpandedNode(returnType), (SNode) expectedRetType, true, true, _info_12389875345);
-                      }
+                      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getExpandedNode(returnType), (SNode) expectedRetType, true, true, _info_12389875345);
                     }
                   }
                 }
@@ -161,64 +158,62 @@ public class typeOf_BaseMethodDeclaration_InferenceRule extends AbstractInferenc
           SNode returnType = typeCheckingContext.typeOf(SLinkOperations.getTarget(lastExpression, LINKS.expression$5L7M), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1178765601477", true);
           {
             final SNode rt = returnType;
-            typeCheckingContext.whenConcrete(rt, new Runnable() {
-              public void run() {
-                if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(rt), CONCEPTS.VoidType$BF)) {
-                  if (!(typeCheckingContext.isSingleTypeComputation())) {
-                    {
-                      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(SNodeOperations.cast(lastStatement, CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M);
-                      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, SNodeOperations.present(expectedRetType) + " is expected to be returned from the method", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7854334384277266343", 0, null);
-                      {
-                        BaseQuickFixProvider intentionProvider = null;
-                        intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeMethodReturnType_QuickFix", "7854334384277266351", false);
-                        intentionProvider.putArgument("desiredType", SLinkOperations.getTarget(lastExpression, LINKS.expression$5L7M));
-                        intentionProvider.putArgument("expression", bmd);
-                        _info_12389875345.addIntentionProvider(intentionProvider);
-                      }
-                      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getExpandedNode(rt), (SNode) expectedRetType, true, true, _info_12389875345);
-                    }
-                  }
-                } else if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(rt), CONCEPTS.IInferredType$Qo)) {
+            typeCheckingContext.whenConcrete(rt, () -> {
+              if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(rt), CONCEPTS.VoidType$BF)) {
+                if (!(typeCheckingContext.isSingleTypeComputation())) {
                   {
                     SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(SNodeOperations.cast(lastStatement, CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M);
-                    EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, SNodeOperations.present(expectedRetType) + " is expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8014486391934541476", 0, null);
+                    EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, SNodeOperations.present(expectedRetType) + " is expected to be returned from the method", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7854334384277266343", 0, null);
                     {
                       BaseQuickFixProvider intentionProvider = null;
-                      intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "8014486391934541477", false);
+                      intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeMethodReturnType_QuickFix", "7854334384277266351", false);
+                      intentionProvider.putArgument("desiredType", SLinkOperations.getTarget(lastExpression, LINKS.expression$5L7M));
+                      intentionProvider.putArgument("expression", bmd);
+                      _info_12389875345.addIntentionProvider(intentionProvider);
+                    }
+                    typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getExpandedNode(rt), (SNode) expectedRetType, true, true, _info_12389875345);
+                  }
+                }
+              } else if (InferenceHelper.isInferredFromContext(typeCheckingContext.getExpandedNode(rt))) {
+                {
+                  SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(SNodeOperations.cast(lastStatement, CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M);
+                  EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, SNodeOperations.present(expectedRetType) + " is expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8014486391934541476", 0, null);
+                  {
+                    BaseQuickFixProvider intentionProvider = null;
+                    intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "8014486391934541477", false);
+                    intentionProvider.putArgument("desiredType", expectedRetType);
+                    intentionProvider.putArgument("expression", SLinkOperations.getTarget(lastExpression, LINKS.expression$5L7M));
+                    _info_12389875345.addIntentionProvider(intentionProvider);
+                  }
+                  {
+                    BaseQuickFixProvider intentionProvider = null;
+                    intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeMethodReturnType_QuickFix", "8014486391934541484", false);
+                    intentionProvider.putArgument("desiredType", SLinkOperations.getTarget(lastExpression, LINKS.expression$5L7M));
+                    intentionProvider.putArgument("expression", bmd);
+                    _info_12389875345.addIntentionProvider(intentionProvider);
+                  }
+                  typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getExpandedNode(rt), (SNode) expectedRetType, false, true, _info_12389875345);
+                }
+              } else {
+                if (!(typeCheckingContext.isSingleTypeComputation())) {
+                  {
+                    SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(SNodeOperations.cast(lastStatement, CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M);
+                    EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, SNodeOperations.present(expectedRetType) + " is expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1185363855090", 0, null);
+                    {
+                      BaseQuickFixProvider intentionProvider = null;
+                      intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "2388917569181940867", false);
                       intentionProvider.putArgument("desiredType", expectedRetType);
                       intentionProvider.putArgument("expression", SLinkOperations.getTarget(lastExpression, LINKS.expression$5L7M));
                       _info_12389875345.addIntentionProvider(intentionProvider);
                     }
                     {
                       BaseQuickFixProvider intentionProvider = null;
-                      intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeMethodReturnType_QuickFix", "8014486391934541484", false);
+                      intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeMethodReturnType_QuickFix", "7387411948770159653", false);
                       intentionProvider.putArgument("desiredType", SLinkOperations.getTarget(lastExpression, LINKS.expression$5L7M));
                       intentionProvider.putArgument("expression", bmd);
                       _info_12389875345.addIntentionProvider(intentionProvider);
                     }
-                    typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getExpandedNode(rt), (SNode) expectedRetType, false, true, _info_12389875345);
-                  }
-                } else {
-                  if (!(typeCheckingContext.isSingleTypeComputation())) {
-                    {
-                      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(SNodeOperations.cast(lastStatement, CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M);
-                      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, SNodeOperations.present(expectedRetType) + " is expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1185363855090", 0, null);
-                      {
-                        BaseQuickFixProvider intentionProvider = null;
-                        intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "2388917569181940867", false);
-                        intentionProvider.putArgument("desiredType", expectedRetType);
-                        intentionProvider.putArgument("expression", SLinkOperations.getTarget(lastExpression, LINKS.expression$5L7M));
-                        _info_12389875345.addIntentionProvider(intentionProvider);
-                      }
-                      {
-                        BaseQuickFixProvider intentionProvider = null;
-                        intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeMethodReturnType_QuickFix", "7387411948770159653", false);
-                        intentionProvider.putArgument("desiredType", SLinkOperations.getTarget(lastExpression, LINKS.expression$5L7M));
-                        intentionProvider.putArgument("expression", bmd);
-                        _info_12389875345.addIntentionProvider(intentionProvider);
-                      }
-                      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getExpandedNode(rt), (SNode) expectedRetType, true, true, _info_12389875345);
-                    }
+                    typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getExpandedNode(rt), (SNode) expectedRetType, true, true, _info_12389875345);
                   }
                 }
               }
@@ -302,7 +297,6 @@ public class typeOf_BaseMethodDeclaration_InferenceRule extends AbstractInferenc
   private static final class CONCEPTS {
     /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
     /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
-    /*package*/ static final SInterfaceConcept IInferredType$Qo = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6f392ce92f8c71c7L, "jetbrains.mps.baseLanguage.structure.IInferredType");
     /*package*/ static final SConcept ExpressionStatement$O8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
     /*package*/ static final SConcept VoidType$BF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
     /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");

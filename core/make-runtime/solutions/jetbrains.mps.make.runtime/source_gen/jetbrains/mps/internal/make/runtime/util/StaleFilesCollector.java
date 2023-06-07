@@ -8,7 +8,6 @@ import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import java.util.Queue;
@@ -37,15 +36,7 @@ public class StaleFilesCollector {
   }
 
   private List<IFile> collectFilesToDelete() {
-    String[] pathsToKeep = SetSequence.fromSet(filesToKeep).select(new ISelector<IFile, String>() {
-      public String select(IFile f) {
-        return (f.isDirectory() ? DirUtil.normalizeAsDir(f.getPath()) : DirUtil.normalize(f.getPath()));
-      }
-    }).sort(new ISelector<String, String>() {
-      public String select(String p) {
-        return p;
-      }
-    }, true).toListSequence().toGenericArray(String.class);
+    String[] pathsToKeep = ListSequence.fromList(SetSequence.fromSet(filesToKeep).select((f) -> (f.isDirectory() ? DirUtil.normalizeAsDir(f.getPath()) : DirUtil.normalize(f.getPath()))).sort((p) -> p, true).toList()).toGenericArray(String.class);
 
     List<IFile> filesToDelete = ListSequence.fromList(new ArrayList<IFile>());
 
@@ -55,15 +46,7 @@ public class StaleFilesCollector {
       String dirpath = DirUtil.normalizeAsDir(dir.getPath());
       int diridx = Arrays.binarySearch(pathsToKeep, dirpath);
 
-      for (Tuples._2<IFile, String> fileAndPath : Sequence.fromIterable(getChildren(dir)).select(new ISelector<IFile, Tuples._2<IFile, String>>() {
-        public Tuples._2<IFile, String> select(IFile f) {
-          return MultiTuple.<IFile,String>from(f, DirUtil.normalize(f.getPath()));
-        }
-      }).sort(new ISelector<Tuples._2<IFile, String>, String>() {
-        public String select(Tuples._2<IFile, String> t) {
-          return t._1();
-        }
-      }, true)) {
+      for (Tuples._2<IFile, String> fileAndPath : Sequence.fromIterable(getChildren(dir)).select((f) -> MultiTuple.<IFile,String>from(f, DirUtil.normalize(f.getPath()))).sort((t) -> t._1(), true)) {
         if (fileAndPath._0().isDirectory()) {
           int fidx = Arrays.binarySearch(pathsToKeep, DirUtil.normalizeAsDir(fileAndPath._1()));
           fidx = (fidx < 0 ? -1 - fidx : fidx);

@@ -22,9 +22,7 @@ import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import java.util.Set;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.vfs.path.Path;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
@@ -34,7 +32,6 @@ import java.util.ArrayList;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.java.stub.JavaPackageNameStub;
@@ -136,22 +133,10 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
 
     // FIXME though IFile("whatever.jar") could be already from JAR FS (e.g. CommonPaths creates IFiles using JAR FS for jar files right away), I found no way to figure it out
     //        therefore have to resort to this stupid way to step into jar
-    SetSequence.fromSet(jarsToLoad).select(new ISelector<IFile, IFile>() {
-      public IFile select(IFile it) {
-        return getFileSystem().getFile(it.getPath() + Path.ARCHIVE_SEPARATOR);
-      }
-    }).visitAll(new IVisitor<IFile>() {
-      public void visit(IFile it) {
-        SetSequence.fromSet(cpRootsToLoad).addElement(it);
-      }
-    });
+    SetSequence.fromSet(jarsToLoad).select((it) -> getFileSystem().getFile(it.getPath() + Path.ARCHIVE_SEPARATOR)).visitAll((it) -> SetSequence.fromSet(cpRootsToLoad).addElement(it));
 
     final Map<SModelId, SModel> result = MapSequence.fromMap(new HashMap<SModelId, SModel>());
-    SetSequence.fromSet(cpRootsToLoad).visitAll(new IVisitor<IFile>() {
-      public void visit(IFile it) {
-        getModelDescriptors(result, it, "");
-      }
-    });
+    SetSequence.fromSet(cpRootsToLoad).visitAll((it) -> getModelDescriptors(result, it, ""));
 
     if (myDocSupplier != null) {
       for (SModel m : MapSequence.fromMap(result).values()) {
@@ -209,11 +194,7 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
 
   /*package*/ static void getModelDescriptors_(final Map<SModelId, SModel> result, IFile file, String prefix, SModule module, PackageScopeControl psc, ModelRoot mr) {
     List<IFile> children = file.getChildren();
-    for (IFile subdir : ListSequence.fromList(children).where(new IWhereFilter<IFile>() {
-      public boolean accept(IFile it) {
-        return it.isDirectory();
-      }
-    })) {
+    for (IFile subdir : ListSequence.fromList(children).where((it) -> it.isDirectory())) {
       String dirName = subdir.getName();
       if (prefix.length() == 0 && "META-INF".equals(dirName)) {
         // we know for sure no packages under META-INF/ folder
@@ -228,11 +209,7 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
       }
 
       List<IFile> subchildren = subdir.getChildren();
-      Iterable<IFile> rootClasses = ListSequence.fromList(subchildren).where(new IWhereFilter<IFile>() {
-        public boolean accept(IFile it) {
-          return it.getName().endsWith(".class") && !(it.getName().contains("$"));
-        }
-      });
+      Iterable<IFile> rootClasses = ListSequence.fromList(subchildren).where((it) -> it.getName().endsWith(".class") && !(it.getName().contains("$")));
 
       if (Sequence.fromIterable(rootClasses).isNotEmpty()) {
         SModelReference modelReference = new JavaPackageNameStub(pack).asModelReference(module.getModuleReference());

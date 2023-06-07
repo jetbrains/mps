@@ -9,10 +9,7 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.console.ideCommands.behavior.ActionCallParameter__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -28,20 +25,8 @@ public class check_CallActionDuplicatedParameters_NonTypesystemRule extends Abst
   }
   public void applyRule(final SNode callAction, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     final Iterable<SNode> parameters = SLinkOperations.getChildren(callAction, LINKS.parameter$Me4j);
-    Iterable<SNode> parameterFields = Sequence.fromIterable(parameters).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return (SNode) ActionCallParameter__BehaviorDescriptor.getParameterDeclaration_id4PRmqZe_o$D.invoke(it);
-      }
-    }).distinct();
-    Iterable<? extends Iterable<SNode>> grouped = Sequence.fromIterable(parameterFields).select(new ISelector<SNode, ISequence<SNode>>() {
-      public ISequence<SNode> select(final SNode c) {
-        return Sequence.fromIterable(parameters).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode p) {
-            return Objects.equals(ActionCallParameter__BehaviorDescriptor.getParameterDeclaration_id4PRmqZe_o$D.invoke(p), c);
-          }
-        });
-      }
-    });
+    Iterable<SNode> parameterFields = Sequence.fromIterable(parameters).select((it) -> (SNode) ActionCallParameter__BehaviorDescriptor.getParameterDeclaration_id4PRmqZe_o$D.invoke(it)).distinct();
+    Iterable<? extends Iterable<SNode>> grouped = Sequence.fromIterable(parameterFields).select((final SNode c) -> Sequence.fromIterable(parameters).where((p) -> Objects.equals(ActionCallParameter__BehaviorDescriptor.getParameterDeclaration_id4PRmqZe_o$D.invoke(p), c)));
 
     for (Iterable<SNode> group : Sequence.fromIterable(grouped)) {
       if (Sequence.fromIterable(group).count() > 1) {

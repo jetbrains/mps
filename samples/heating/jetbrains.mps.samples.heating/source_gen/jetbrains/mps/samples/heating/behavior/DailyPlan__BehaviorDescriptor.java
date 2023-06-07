@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -34,11 +33,7 @@ public final class DailyPlan__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode slotByStartTime_id2XgRSpVOzcU(@NotNull SNode __thisNode__, final int startTime) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.items$4wAy)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getInteger(it, PROPS.start$f2z3) == startTime;
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.items$4wAy)).findFirst((it) -> SPropertyOperations.getInteger(it, PROPS.start$f2z3) == startTime);
   }
 
   /*package*/ DailyPlan__BehaviorDescriptor() {

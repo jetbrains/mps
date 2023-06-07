@@ -88,7 +88,7 @@ public class namedTupleDeclaration_extends_Contribution extends SubstituteMenuBa
       @Nullable
       @Override
       protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-        return Sequence.fromIterable(SNodeOperations.ofConcept(ClassifierScopes.getVisibleClassifiersScope(_context.getParentNode(), false).getAvailableElements(null), CONCEPTS.Interface$db)).where((SNode it) -> new TupleIntefaceUtils(it).isTupleInterface());
+        return Sequence.fromIterable(SNodeOperations.ofConcept(ClassifierScopes.getVisibleClassifiersScope(_context.getParentNode(), false).getAvailableElements(null), CONCEPTS.Interface$db)).where((it) -> new TupleIntefaceUtils(it).isTupleInterface());
       }
       private class SMP_Action_evf1f9_a0a extends SingleItemSubstituteMenuPart {
         private final SNode myParameterObject;

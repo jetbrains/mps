@@ -9,7 +9,6 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.kotlin.behavior.IClassLike__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -28,18 +27,16 @@ public class check_EnumClassDeclaration_PrivateConstructor_NonTypesystemRule ext
   public check_EnumClassDeclaration_PrivateConstructor_NonTypesystemRule() {
   }
   public void applyRule(final SNode enumClassDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    Sequence.fromIterable(IClassLike__BehaviorDescriptor.getConstructors_id2NtWm0y9fFa.invoke(enumClassDeclaration)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        // Note: it.visibility should not be null in this case, otherwise it is a error from the kotlin language
-        if (!(Objects.equals(it, enumClassDeclaration)) && !(SConceptOperations.isExactly(SNodeOperations.asSConcept(IVisible__BehaviorDescriptor.getVisibility_id2WVyZr44ojH.invoke(it)), CONCEPTS.PrivateVisibility$WS)) && (SLinkOperations.getTarget(it, LINKS.visibility$vnSV) != null)) {
+    Sequence.fromIterable(IClassLike__BehaviorDescriptor.getConstructors_id2NtWm0y9fFa.invoke(enumClassDeclaration)).visitAll((it) -> {
+      // Note: it.visibility should not be null in this case, otherwise it is a error from the kotlin language
+      if (!(Objects.equals(it, enumClassDeclaration)) && !(SConceptOperations.isExactly(SNodeOperations.asSConcept(IVisible__BehaviorDescriptor.getVisibility_id2WVyZr44ojH.invoke(it)), CONCEPTS.PrivateVisibility$WS)) && (SLinkOperations.getTarget(it, LINKS.visibility$vnSV) != null)) {
+        {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(it, LINKS.visibility$vnSV), "Constructor must be private in enum class", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "5058569165285937096", null, errorTarget);
           {
-            final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(it, LINKS.visibility$vnSV), "Constructor must be private in enum class", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "5058569165285937096", null, errorTarget);
-            {
-              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.kotlin.typesystem.RemoveVisibilityModifier_QuickFix", "5058569165285951103", false);
-              intentionProvider.putArgument("modifier", SLinkOperations.getTarget(it, LINKS.visibility$vnSV));
-              _reporter_2309309498.addIntentionProvider(intentionProvider);
-            }
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.kotlin.typesystem.RemoveVisibilityModifier_QuickFix", "5058569165285951103", false);
+            intentionProvider.putArgument("modifier", SLinkOperations.getTarget(it, LINKS.visibility$vnSV));
+            _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }
       }

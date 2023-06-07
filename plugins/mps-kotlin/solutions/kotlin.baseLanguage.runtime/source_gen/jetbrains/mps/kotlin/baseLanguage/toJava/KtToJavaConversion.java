@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.structure.ExtensionPoint;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
@@ -27,11 +26,7 @@ public class KtToJavaConversion {
 
   public static void convertProjectionsInto(Iterable<SNode> types, List<SNode> targetList) {
     // Convert all into the target list
-    ListSequence.fromList(targetList).addSequence(Sequence.fromIterable(types).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode type) {
-        return KtToJavaConversion.convertProjection(type);
-      }
-    }));
+    ListSequence.fromList(targetList).addSequence(Sequence.fromIterable(types).select((type) -> KtToJavaConversion.convertProjection(type)));
   }
 
   public static SNode convertProjection(SNode type) {

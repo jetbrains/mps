@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.structure.behavior.IConceptAspect__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Map;
@@ -16,9 +15,7 @@ import jetbrains.mps.smodel.Language;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.module.SModuleReference;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -28,12 +25,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class MoveConceptUtil {
 
   public static List<SNode> getConceptsAspects(final Iterable<SNode> concepts, SModel aspectModel) {
-    return ListSequence.fromList(SModelOperations.roots(aspectModel, CONCEPTS.IConceptAspect$Z3)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        List<SNode> baseConcepts = IConceptAspect__BehaviorDescriptor.getBaseConceptCollection_id4$$3zrO3UBG.invoke(it);
-        return ListSequence.fromList(baseConcepts).isNotEmpty() && Sequence.fromIterable(concepts).containsSequence(ListSequence.fromList(baseConcepts));
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SModelOperations.roots(aspectModel, CONCEPTS.IConceptAspect$Z3)).where((it) -> {
+      List<SNode> baseConcepts = IConceptAspect__BehaviorDescriptor.getBaseConceptCollection_id4$$3zrO3UBG.invoke(it);
+      return ListSequence.fromList(baseConcepts).isNotEmpty() && Sequence.fromIterable(concepts).containsSequence(ListSequence.fromList(baseConcepts));
+    }).toList();
   }
   public static Map<LanguageAspect, List<SNode>> getAspectNodes(Language language, Iterable<SNode> nodes) {
     // map with aspects to roots solely attached to list of given nodes
@@ -49,40 +44,16 @@ public class MoveConceptUtil {
 
 
   public static List<SModuleReference> calculateExtendsDependencies(Iterable<SNode> conceptsToMove) {
-    Iterable<SNode> targExtends = Sequence.fromIterable(conceptsToMove).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return (List<SNode>) AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(it);
-      }
-    }).subtract(Sequence.fromIterable(conceptsToMove));
-    return Sequence.fromIterable(targExtends).select(new ISelector<SNode, SModel>() {
-      public SModel select(SNode it) {
-        return SNodeOperations.getModel(it);
-      }
-    }).distinct().select(new ISelector<SModel, SModuleReference>() {
-      public SModuleReference select(SModel it) {
-        return check_ce40do_a0a0a0a0b0f(Language.getLanguageFor(it));
-      }
-    }).where(new IWhereFilter<SModuleReference>() {
-      public boolean accept(SModuleReference it) {
-        return it != null;
-      }
-    }).toListSequence();
+    Iterable<SNode> targExtends = Sequence.fromIterable(conceptsToMove).translate((it) -> (List<SNode>) AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(it)).subtract(Sequence.fromIterable(conceptsToMove));
+    return Sequence.fromIterable(targExtends).select((it) -> SNodeOperations.getModel(it)).distinct().select((it) -> check_ce40do_a0a0a0a0b0f(Language.getLanguageFor(it))).where((it) -> it != null).toList();
   }
 
   public static void setExtendsDependencies(Iterable<SNode> conceptsToMove, SModel sourceModel, Language sourceLanguage, final Language targetLanguage) {
     Iterable<SNode> conceptsToRest = ListSequence.fromList(SModelOperations.roots(sourceModel, CONCEPTS.AbstractConceptDeclaration$KA)).subtract(Sequence.fromIterable(conceptsToMove));
-    if (Sequence.fromIterable(conceptsToRest).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return (List<SNode>) AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(it);
-      }
-    }).intersect(Sequence.fromIterable(conceptsToMove)).isNotEmpty()) {
+    if (Sequence.fromIterable(conceptsToRest).translate((it) -> (List<SNode>) AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(it)).intersect(Sequence.fromIterable(conceptsToMove)).isNotEmpty()) {
       sourceLanguage.addExtendedLanguage(targetLanguage.getModuleReference());
     }
-    for (SModuleReference ext : ListSequence.fromList(MoveConceptUtil.calculateExtendsDependencies(conceptsToMove)).where(new IWhereFilter<SModuleReference>() {
-      public boolean accept(SModuleReference it) {
-        return !(Objects.equals(targetLanguage.getModuleReference(), it));
-      }
-    })) {
+    for (SModuleReference ext : ListSequence.fromList(MoveConceptUtil.calculateExtendsDependencies(conceptsToMove)).where((it) -> !(Objects.equals(targetLanguage.getModuleReference(), it)))) {
       targetLanguage.addExtendedLanguage(ext);
     }
   }

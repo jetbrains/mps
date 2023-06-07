@@ -21,14 +21,12 @@ import jetbrains.mps.make.facet.behavior.FacetDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
+import java.util.Iterator;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
@@ -75,57 +73,49 @@ public class TargetDependency_SubstituteMenu extends SubstituteMenuBase {
     @Override
     protected Iterable<? extends Tuples._2<SEnumerationLiteral, SNode>> getParameters(SubstituteMenuContext _context) {
       final Iterable<SNode> relatedFacets = FacetDeclaration__BehaviorDescriptor.allRelated_id7fB872uckWE.invoke(SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.FacetDeclaration$Nd, false, false));
-      return ListSequence.fromList(SModelOperations.nodesIncludingImported(_context.getModel(), CONCEPTS.TargetDeclaration$Kf)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode fct) {
-          return Sequence.fromIterable(relatedFacets).contains(SNodeOperations.getNodeAncestor(fct, CONCEPTS.FacetDeclaration$Nd, false, false));
-        }
-      }).translate(new ITranslator2<SNode, Tuples._2<SEnumerationLiteral, SNode>>() {
-        public Iterable<Tuples._2<SEnumerationLiteral, SNode>> translate(final SNode td) {
-          return new Iterable<Tuples._2<SEnumerationLiteral, SNode>>() {
-            public Iterator<Tuples._2<SEnumerationLiteral, SNode>> iterator() {
-              return new YieldingIterator<Tuples._2<SEnumerationLiteral, SNode>>() {
-                private int __CP__ = 0;
-                protected boolean moveToNext() {
+      return ListSequence.fromList(SModelOperations.nodesIncludingImported(_context.getModel(), CONCEPTS.TargetDeclaration$Kf)).where((fct) -> Sequence.fromIterable(relatedFacets).contains(SNodeOperations.getNodeAncestor(fct, CONCEPTS.FacetDeclaration$Nd, false, false))).translate((td) -> {
+        return (Iterable<Tuples._2<SEnumerationLiteral, SNode>>) () -> {
+          return new YieldingIterator<Tuples._2<SEnumerationLiteral, SNode>>() {
+            private int __CP__ = 0;
+            protected boolean moveToNext() {
 __loop__:
-                  do {
+              do {
 __switch__:
-                    switch (this.__CP__) {
-                      case -1:
-                        assert false : "Internal error";
-                        return false;
-                      case 2:
-                        this._2_em_it = SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x73e720709e3139e2L, "jetbrains.mps.make.facet.structure.TargetDependencyQualifier")).iterator();
-                      case 3:
-                        if (!(this._2_em_it.hasNext())) {
-                          this.__CP__ = 1;
-                          break;
-                        }
-                        this._2_em = this._2_em_it.next();
-                        this.__CP__ = 4;
-                        break;
-                      case 5:
-                        this.__CP__ = 3;
-                        this.yield(MultiTuple.<SEnumerationLiteral,SNode>from(_2_em, td));
-                        return true;
-                      case 0:
-                        this.__CP__ = 2;
-                        break;
-                      case 4:
-                        this.__CP__ = 5;
-                        break;
-                      default:
-                        break __loop__;
+                switch (this.__CP__) {
+                  case -1:
+                    assert false : "Internal error";
+                    return false;
+                  case 2:
+                    this._2_em_it = SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x73e720709e3139e2L, "jetbrains.mps.make.facet.structure.TargetDependencyQualifier")).iterator();
+                  case 3:
+                    if (!(this._2_em_it.hasNext())) {
+                      this.__CP__ = 1;
+                      break;
                     }
-                  } while (true);
-                  return false;
+                    this._2_em = this._2_em_it.next();
+                    this.__CP__ = 4;
+                    break;
+                  case 5:
+                    this.__CP__ = 3;
+                    this.yield(MultiTuple.<SEnumerationLiteral,SNode>from(_2_em, td));
+                    return true;
+                  case 0:
+                    this.__CP__ = 2;
+                    break;
+                  case 4:
+                    this.__CP__ = 5;
+                    break;
+                  default:
+                    break __loop__;
                 }
-                private SEnumerationLiteral _2_em;
-                private Iterator<SEnumerationLiteral> _2_em_it;
-              };
+              } while (true);
+              return false;
             }
+            private SEnumerationLiteral _2_em;
+            private Iterator<SEnumerationLiteral> _2_em_it;
           };
-        }
-      }).toListSequence();
+        };
+      }).toList();
     }
     private class SMP_Action_70edxa_a0 extends SingleItemSubstituteMenuPart {
       private final Tuples._2<SEnumerationLiteral, SNode> myParameterObject;

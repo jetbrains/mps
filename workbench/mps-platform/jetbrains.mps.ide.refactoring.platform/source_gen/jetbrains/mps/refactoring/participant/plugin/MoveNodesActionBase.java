@@ -13,10 +13,10 @@ import java.util.Collection;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
+import java.util.Map;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.ide.platform.refactoring.MoveNodesDialog;
@@ -44,15 +44,7 @@ public class MoveNodesActionBase implements MoveNodesAction {
       return true;
     }
     Iterable<SContainmentLink> applicableLinks;
-    applicableLinks = CollectionSequence.fromCollection(containmentLinks).where(new IWhereFilter<SContainmentLink>() {
-      public boolean accept(final SContainmentLink link) {
-        return ListSequence.fromList(nodesToMove).all(new IWhereFilter<SNode>() {
-          public boolean accept(SNode node) {
-            return SNodeOperations.getConcept(node).isSubConceptOf(link.getTargetConcept());
-          }
-        });
-      }
-    });
+    applicableLinks = CollectionSequence.fromCollection(containmentLinks).where((final SContainmentLink link) -> ListSequence.fromList(nodesToMove).all((node) -> SNodeOperations.getConcept(node).isSubConceptOf(link.getTargetConcept())));
     if (Sequence.fromIterable(applicableLinks).count() == 1) {
       selectedObject.setRole(Sequence.fromIterable(applicableLinks).first());
       return true;
@@ -74,7 +66,7 @@ public class MoveNodesActionBase implements MoveNodesAction {
     }
 
     MoveNodesUtil.NodeProcessor processor = new MoveNodesUtil.NodeCreatingProcessor(newLocation, project);
-    MoveNodesUtil.moveTo(project, getName(), MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), processor).withValues(nodesToMove));
+    MoveNodesUtil.moveTo(project, getName(), MapSequence.fromMapAndEntryArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), Map.entry(processor, nodesToMove)));
   }
   public NodeLocation askLocation(final MPSProject project, final List<SNode> nodesToMove) {
     final Wrappers._T<SModel> currentModel = new Wrappers._T<SModel>();
@@ -90,13 +82,7 @@ public class MoveNodesActionBase implements MoveNodesAction {
           project.getRepository().getModelAccess().runReadAction(() -> roleIsDefined.value = tryToSetRole(project.getRepository(), nodesToMove, (NodeLocation.NodeLocationChild) selectedObject));
           return roleIsDefined.value;
         } else if (selectedObject instanceof NodeLocation.NodeLocationRoot) {
-          return new ModelAccessHelper(project.getRepository()).runReadAction(() -> {
-            return ListSequence.fromList(nodesToMove).all(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return selectedObject.canInsert(project.getRepository(), it);
-              }
-            });
-          });
+          return new ModelAccessHelper(project.getRepository()).runReadAction(() -> ListSequence.fromList(nodesToMove).all((it) -> selectedObject.canInsert(project.getRepository(), it)));
         } else {
           return false;
         }

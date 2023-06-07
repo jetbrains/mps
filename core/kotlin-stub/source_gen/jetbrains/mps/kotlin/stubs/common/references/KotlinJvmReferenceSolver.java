@@ -20,11 +20,8 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -85,59 +82,53 @@ public class KotlinJvmReferenceSolver {
     final Wrappers._T<List<VisibleModel>> fallBackModels = new Wrappers._T<List<VisibleModel>>(null);
     final Wrappers._T<T> fallBackStereotype = new Wrappers._T<T>(ListSequence.fromList(stereotypes).first());
 
-    Tuples._2<ResolveInfo, T> result = ListSequence.fromList(stereotypes).select(new ISelector<T, Tuples._2<ResolveInfo, T>>() {
-      public Tuples._2<ResolveInfo, T> select(T stereotype) {
-        // Filter models based on model stereotype
-        List<VisibleModel> possibleModels = ListSequence.fromList(stereotype.getModelStereotypes()).translate(new ITranslator2<String, VisibleModel>() {
-          public Iterable<VisibleModel> translate(String it) {
-            return findModels(new SModelName(pack, it));
-          }
-        }).toListSequence();
+    Tuples._2<ResolveInfo, T> result = ListSequence.fromList(stereotypes).select((stereotype) -> {
+      // Filter models based on model stereotype
+      List<VisibleModel> possibleModels = ListSequence.fromList(stereotype.getModelStereotypes()).translate((it) -> findModels(new SModelName(pack, it))).toList();
 
-        // Nothing
-        if (ListSequence.fromList(possibleModels).isEmpty()) {
-          // Impossible to infer concept
-          return null;
-        }
-
-        // Some matches
-        if (ListSequence.fromList(possibleModels).count() == 1) {
-          // One possible model
-          final SModelReference modelReference = ListSequence.fromList(possibleModels).first().getModelReference();
-          addImport(modelReference);
-
-          // We do not check whether the model contains the reference here, we assume it does.
-          return MultiTuple.<ResolveInfo,T>from(ResolveInfo.of(new SNodePointer(modelReference, stereotype.getTargetNodeId()), stereotype.getResolveInfo()), stereotype);
-        } else {
-          // Many options: find first containing searched root
-          SNodeId targetTopClassifier = stereotype.getTopClassifierId();
-
-          for (VisibleModel vm : possibleModels) {
-            final SModelReference modelRef = vm.getModelReference();
-            if (Objects.equals(myModelReference, modelRef)) {
-              // Done already
-              continue;
-            }
-
-            // Found!
-            if (vm.isKnownRoot(targetTopClassifier)) {
-              addImport(modelRef);
-              return MultiTuple.<ResolveInfo,T>from(ResolveInfo.of(new SNodePointer(modelRef, stereotype.getTargetNodeId()), stereotype.getResolveInfo()), stereotype);
-            }
-          }
-
-        }
-
-        // We will select the first stereotype if nothing can be found, which is why we only recover the first list of models
-        if (fallBackModels.value == null) {
-          fallBackModels.value = possibleModels;
-          // We overwrite default stereotype (first)
-          fallBackStereotype.value = stereotype;
-        }
-
+      // Nothing
+      if (ListSequence.fromList(possibleModels).isEmpty()) {
+        // Impossible to infer concept
         return null;
       }
-    }).where(new NotNullWhereFilter<Tuples._2<ResolveInfo, T>>()).first();
+
+      // Some matches
+      if (ListSequence.fromList(possibleModels).count() == 1) {
+        // One possible model
+        final SModelReference modelReference = ListSequence.fromList(possibleModels).first().getModelReference();
+        addImport(modelReference);
+
+        // We do not check whether the model contains the reference here, we assume it does.
+        return MultiTuple.<ResolveInfo,T>from(ResolveInfo.of(new SNodePointer(modelReference, stereotype.getTargetNodeId()), stereotype.getResolveInfo()), stereotype);
+      } else {
+        // Many options: find first containing searched root
+        SNodeId targetTopClassifier = stereotype.getTopClassifierId();
+
+        for (VisibleModel vm : possibleModels) {
+          final SModelReference modelRef = vm.getModelReference();
+          if (Objects.equals(myModelReference, modelRef)) {
+            // Done already
+            continue;
+          }
+
+          // Found!
+          if (vm.isKnownRoot(targetTopClassifier)) {
+            addImport(modelRef);
+            return MultiTuple.<ResolveInfo,T>from(ResolveInfo.of(new SNodePointer(modelRef, stereotype.getTargetNodeId()), stereotype.getResolveInfo()), stereotype);
+          }
+        }
+
+      }
+
+      // We will select the first stereotype if nothing can be found, which is why we only recover the first list of models
+      if (fallBackModels.value == null) {
+        fallBackModels.value = possibleModels;
+        // We overwrite default stereotype (first)
+        fallBackStereotype.value = stereotype;
+      }
+
+      return null;
+    }).where(new NotNullWhereFilter()).first();
 
     // Anything found in models
     if (result != null) {
@@ -145,15 +136,7 @@ public class KotlinJvmReferenceSolver {
     }
 
     // Otherwise: fallback to first stereotype with compatible models
-    ListSequence.fromList(fallBackModels.value).select(new ISelector<VisibleModel, SModelReference>() {
-      public SModelReference select(VisibleModel this0) {
-        return this0.getModelReference();
-      }
-    }).where(new NotNullWhereFilter<SModelReference>()).visitAll(new IVisitor<SModelReference>() {
-      public void visit(SModelReference mr) {
-        KotlinJvmReferenceSolver.this.addImport(mr);
-      }
-    });
+    ListSequence.fromList(fallBackModels.value).select((this0) -> this0.getModelReference()).where(new NotNullWhereFilter()).visitAll((mr) -> KotlinJvmReferenceSolver.this.addImport(mr));
     return MultiTuple.<ResolveInfo,T>from(ResolveInfo.of(fallBackStereotype.value.getResolveInfo()), fallBackStereotype.value);
   }
 

@@ -21,7 +21,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopeUtils;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Objects;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -110,11 +109,7 @@ public final class InstanceMethodDeclaration__BehaviorDescriptor extends BaseBHD
       return null;
     }
     Iterable<SNode> implementedInterfaces = SNodeOperations.ofConcept(ClassifierScopeUtils.getExtendedClassifiers(containingClassifier), CONCEPTS.Interface$db);
-    for (SNode method : Sequence.fromIterable(implementedInterfaces).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return (Iterable<SNode>) Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(it);
-      }
-    })) {
+    for (SNode method : Sequence.fromIterable(implementedInterfaces).translate((it) -> (Iterable<SNode>) Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(it))) {
       if (Objects.equals(SPropertyOperations.getString(method, PROPS.name$MnvL), SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL)) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).count() == ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$5xBj)).count() && (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(method, __thisNode__)) {
         return method;
       }
@@ -131,11 +126,7 @@ public final class InstanceMethodDeclaration__BehaviorDescriptor extends BaseBHD
       parent = ((superclass == null) ? SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object") : SLinkOperations.getTarget(superclass, LINKS.classifier$cxMr));
     }
     Set<SNode> extendedClassifiers = ClassifierScopeUtils.getExtendedClassifiers(parent);
-    Iterable<SNode> instanceMethods = SetSequence.fromSet(extendedClassifiers).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return (Iterable<SNode>) Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(it);
-      }
-    });
+    Iterable<SNode> instanceMethods = SetSequence.fromSet(extendedClassifiers).translate((it) -> (Iterable<SNode>) Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(it));
     for (SNode methodCandidate : instanceMethods) {
       if (methodCandidate != __thisNode__ && Objects.equals(SPropertyOperations.getString(methodCandidate, PROPS.name$MnvL), SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL)) && ListSequence.fromList(SLinkOperations.getChildren(methodCandidate, LINKS.parameter$5xBj)).count() == ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$5xBj)).count()) {
         if ((boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(methodCandidate, __thisNode__)) {

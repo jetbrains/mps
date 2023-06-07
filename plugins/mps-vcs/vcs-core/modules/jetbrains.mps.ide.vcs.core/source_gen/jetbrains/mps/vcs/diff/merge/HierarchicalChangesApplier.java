@@ -8,8 +8,6 @@ import java.util.List;
 import jetbrains.mps.vcs.diff.changes.HierarchicalNodeGroupChange;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.vcs.diff.changes.NodeGroupWrapChange;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.vcs.diff.changes.ModifiedNodesGroup;
 import java.util.ArrayList;
@@ -18,7 +16,6 @@ import jetbrains.mps.vcs.diff.ChangeSet;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.vcs.diff.changes.WrappingNodesGroup;
 import jetbrains.mps.vcs.diff.changes.NodeGroupNotMoveChange;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
 
 @GeneratedClass(node = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)/7822689919781181313", model = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)")
@@ -48,27 +45,11 @@ import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
   }
 
   private void applyWrapChanges(List<HierarchicalNodeGroupChange> changes) {
-    ListSequence.fromList(changes).ofType(NodeGroupWrapChange.class).where(new IWhereFilter<NodeGroupWrapChange>() {
-      public boolean accept(NodeGroupWrapChange it) {
-        return it.isWrap();
-      }
-    }).visitAll(new IVisitor<NodeGroupWrapChange>() {
-      public void visit(NodeGroupWrapChange it) {
-        applyWrapChange(it);
-      }
-    });
+    ListSequence.fromList(changes).ofType(NodeGroupWrapChange.class).where((it) -> it.isWrap()).visitAll((it) -> applyWrapChange(it));
   }
 
   private void applyUnwrapChanges(List<HierarchicalNodeGroupChange> changes) {
-    ListSequence.fromList(changes).ofType(NodeGroupWrapChange.class).where(new IWhereFilter<NodeGroupWrapChange>() {
-      public boolean accept(NodeGroupWrapChange it) {
-        return !(it.isWrap());
-      }
-    }).visitAll(new IVisitor<NodeGroupWrapChange>() {
-      public void visit(NodeGroupWrapChange it) {
-        applyWrapChange(it);
-      }
-    });
+    ListSequence.fromList(changes).ofType(NodeGroupWrapChange.class).where((it) -> !(it.isWrap())).visitAll((it) -> applyWrapChange(it));
   }
 
   private void applyWrapChange(NodeGroupWrapChange change) {
@@ -87,11 +68,7 @@ import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
 
   private List<ModifiedNodesGroup> getWrapChangeInternalGroups(final NodeGroupWrapChange wrapChange) {
     final List<ModifiedNodesGroup> internalGroups = ListSequence.fromList(new ArrayList<ModifiedNodesGroup>());
-    ListSequence.fromList(getChangeOppositeChangeSet(wrapChange).getModelChanges()).ofType(HierarchicalNodeGroupChange.class).visitAll(new IVisitor<HierarchicalNodeGroupChange>() {
-      public void visit(HierarchicalNodeGroupChange change) {
-        tryAddChangeGroupsToWrapChangeInternalGroups(wrapChange, change, internalGroups);
-      }
-    });
+    ListSequence.fromList(getChangeOppositeChangeSet(wrapChange).getModelChanges()).ofType(HierarchicalNodeGroupChange.class).visitAll((change) -> tryAddChangeGroupsToWrapChangeInternalGroups(wrapChange, change, internalGroups));
     return internalGroups;
   }
 
@@ -104,15 +81,7 @@ import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
     if (change instanceof NodeGroupWrapChange) {
       WrappingNodesGroup wrappingGroup = as_nggbvs_a0a0a0a0r(change, NodeGroupWrapChange.class).getWrappingGroup();
       tryToAddGroupToWrapChangeInternalGroups(wrapChange, wrappingGroup, internalGroups);
-      ListSequence.fromList(wrappingGroup.getUnwrappedGroups()).where(new IWhereFilter<ModifiedNodesGroup>() {
-        public boolean accept(ModifiedNodesGroup it) {
-          return it.isWrappedMove();
-        }
-      }).visitAll(new IVisitor<ModifiedNodesGroup>() {
-        public void visit(ModifiedNodesGroup it) {
-          tryToAddGroupToWrapChangeInternalGroups(wrapChange, it, internalGroups);
-        }
-      });
+      ListSequence.fromList(wrappingGroup.getUnwrappedGroups()).where((it) -> it.isWrappedMove()).visitAll((it) -> tryToAddGroupToWrapChangeInternalGroups(wrapChange, it, internalGroups));
     } else {
       tryToAddGroupToWrapChangeInternalGroups(wrapChange, change.getGroup(false), internalGroups);
       tryToAddGroupToWrapChangeInternalGroups(wrapChange, change.getGroup(true), internalGroups);
@@ -127,11 +96,7 @@ import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
 
   private void setSymmetricGroupsApplied(NodeGroupWrapChange change) {
     if (MapSequence.fromMap(myMergeSession.getSymmetricChanges()).containsKey(change)) {
-      ListSequence.fromList(MapSequence.fromMap(myMergeSession.getSymmetricChanges()).get(change)).ofType(HierarchicalNodeGroupChange.class).visitAll(new IVisitor<HierarchicalNodeGroupChange>() {
-        public void visit(HierarchicalNodeGroupChange it) {
-          it.getGroup(true).setIsApplied(myMergeSession.getResultModel());
-        }
-      });
+      ListSequence.fromList(MapSequence.fromMap(myMergeSession.getSymmetricChanges()).get(change)).ofType(HierarchicalNodeGroupChange.class).visitAll((it) -> it.getGroup(true).setIsApplied(myMergeSession.getResultModel()));
     }
   }
 
@@ -143,37 +108,19 @@ import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
       updateWrapChangeInternalGroups((NodeGroupWrapChange) ListSequence.fromList(MapSequence.fromMap(myMergeSession.getSymmetricChanges()).get(wrapChange)).getElement(0), true);
     } else {
       final WrappingNodesGroup wrappingGroup = wrapChange.getWrappingGroup();
-      ListSequence.fromList(wrapChangeInternalGroups).visitAll(new IVisitor<ModifiedNodesGroup>() {
-        public void visit(ModifiedNodesGroup it) {
-          it.setParentId((wrapChange.isWrap() ? wrappingGroup.getWrappedParentId() : wrappingGroup.getUnwrappedParentId()));
-        }
-      });
+      ListSequence.fromList(wrapChangeInternalGroups).visitAll((it) -> it.setParentId((wrapChange.isWrap() ? wrappingGroup.getWrappedParentId() : wrappingGroup.getUnwrappedParentId())));
     }
   }
 
   private void updateWrapChangeInternalGroups(final NodeGroupWrapChange wrapChange, final boolean isSymmetric) {
-    ListSequence.fromList(wrapChange.getChangeSet().getModelChanges()).ofType(HierarchicalNodeGroupChange.class).where(new IWhereFilter<HierarchicalNodeGroupChange>() {
-      public boolean accept(HierarchicalNodeGroupChange it) {
-        return it != wrapChange && (it != ListSequence.fromList(MapSequence.fromMap(myMergeSession.getSymmetricChanges()).get(wrapChange)).getElement(0));
-      }
-    }).visitAll(new IVisitor<HierarchicalNodeGroupChange>() {
-      public void visit(HierarchicalNodeGroupChange change) {
-        if (change instanceof NodeGroupWrapChange) {
-          WrappingNodesGroup wrappingGroup = as_nggbvs_a0a0a0a0a0a0a0a0z(change, NodeGroupWrapChange.class).getWrappingGroup();
-          updateSymmetricWrapChangeInternalGroup(wrapChange, wrappingGroup, isSymmetric);
-          ListSequence.fromList(wrappingGroup.getUnwrappedGroups()).where(new IWhereFilter<ModifiedNodesGroup>() {
-            public boolean accept(ModifiedNodesGroup it) {
-              return it.isWrappedMove();
-            }
-          }).visitAll(new IVisitor<ModifiedNodesGroup>() {
-            public void visit(ModifiedNodesGroup it) {
-              updateSymmetricWrapChangeInternalGroup(wrapChange, it, isSymmetric);
-            }
-          });
-        } else {
-          updateSymmetricWrapChangeInternalGroup(wrapChange, change.getGroup(false), isSymmetric);
-          updateSymmetricWrapChangeInternalGroup(wrapChange, change.getGroup(true), isSymmetric);
-        }
+    ListSequence.fromList(wrapChange.getChangeSet().getModelChanges()).ofType(HierarchicalNodeGroupChange.class).where((it) -> it != wrapChange && (it != ListSequence.fromList(MapSequence.fromMap(myMergeSession.getSymmetricChanges()).get(wrapChange)).getElement(0))).visitAll((change) -> {
+      if (change instanceof NodeGroupWrapChange) {
+        WrappingNodesGroup wrappingGroup = as_nggbvs_a0a0a0a0a0a0a52(change, NodeGroupWrapChange.class).getWrappingGroup();
+        updateSymmetricWrapChangeInternalGroup(wrapChange, wrappingGroup, isSymmetric);
+        ListSequence.fromList(wrappingGroup.getUnwrappedGroups()).where((it) -> it.isWrappedMove()).visitAll((it) -> updateSymmetricWrapChangeInternalGroup(wrapChange, it, isSymmetric));
+      } else {
+        updateSymmetricWrapChangeInternalGroup(wrapChange, change.getGroup(false), isSymmetric);
+        updateSymmetricWrapChangeInternalGroup(wrapChange, change.getGroup(true), isSymmetric);
       }
     });
   }
@@ -198,68 +145,36 @@ import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
   }
 
   private void insertNotMoveGroups(List<HierarchicalNodeGroupChange> changes) {
-    ListSequence.fromList(changes).ofType(NodeGroupNotMoveChange.class).where(new IWhereFilter<NodeGroupNotMoveChange>() {
-      public boolean accept(NodeGroupNotMoveChange it) {
-        return !(SetSequence.fromSet(myMergeSession.getResolvedChanges()).contains(it));
+    ListSequence.fromList(changes).ofType(NodeGroupNotMoveChange.class).where((it) -> !(SetSequence.fromSet(myMergeSession.getResolvedChanges()).contains(it))).select((it) -> it.getGroup(true)).visitAll((it) -> {
+      if (it.isEmpty() || it.isApplied(myMergeSession.getResultModel())) {
+        return;
       }
-    }).select(new ISelector<NodeGroupNotMoveChange, ModifiedNodesGroup>() {
-      public ModifiedNodesGroup select(NodeGroupNotMoveChange it) {
-        return it.getGroup(true);
-      }
-    }).visitAll(new IVisitor<ModifiedNodesGroup>() {
-      public void visit(ModifiedNodesGroup it) {
-        if (it.isEmpty() || it.isApplied(myMergeSession.getResultModel())) {
-          return;
-        }
-        it.insertCopyIntoModel(myMergeSession.getResultModel(), myMergeSession.getNodeCopier());
-        it.setIsApplied(myMergeSession.getResultModel());
-      }
+      it.insertCopyIntoModel(myMergeSession.getResultModel(), myMergeSession.getNodeCopier());
+      it.setIsApplied(myMergeSession.getResultModel());
     });
   }
 
   private void excludeNotMoveChanges(List<HierarchicalNodeGroupChange> changes) {
-    ListSequence.fromList(changes).ofType(NodeGroupNotMoveChange.class).visitAll(new IVisitor<NodeGroupNotMoveChange>() {
-      public void visit(NodeGroupNotMoveChange it) {
-        myMergeSession.excludeChangeWithConflictedChanges(it);
-      }
-    });
+    ListSequence.fromList(changes).ofType(NodeGroupNotMoveChange.class).visitAll((it) -> myMergeSession.excludeChangeWithConflictedChanges(it));
   }
 
   private void deleteNotMoveGroups(List<HierarchicalNodeGroupChange> changes) {
-    ListSequence.fromList(changes).ofType(NodeGroupNotMoveChange.class).where(new IWhereFilter<NodeGroupNotMoveChange>() {
-      public boolean accept(NodeGroupNotMoveChange it) {
-        return !(SetSequence.fromSet(myMergeSession.getResolvedChanges()).contains(it));
+    ListSequence.fromList(changes).ofType(NodeGroupNotMoveChange.class).where((it) -> !(SetSequence.fromSet(myMergeSession.getResolvedChanges()).contains(it))).select((it) -> it.getGroup(false)).visitAll((it) -> {
+      if (it.isEmpty() || it.isApplied(myMergeSession.getResultModel())) {
+        return;
       }
-    }).select(new ISelector<NodeGroupNotMoveChange, ModifiedNodesGroup>() {
-      public ModifiedNodesGroup select(NodeGroupNotMoveChange it) {
-        return it.getGroup(false);
-      }
-    }).visitAll(new IVisitor<ModifiedNodesGroup>() {
-      public void visit(ModifiedNodesGroup it) {
-        if (it.isEmpty() || it.isApplied(myMergeSession.getResultModel())) {
-          return;
-        }
-        it.deleteFromModel(myMergeSession.getResultModel());
-        it.setIsApplied(myMergeSession.getResultModel());
-      }
+      it.deleteFromModel(myMergeSession.getResultModel());
+      it.setIsApplied(myMergeSession.getResultModel());
     });
   }
 
   private void applyMoveChanges(List<HierarchicalNodeGroupChange> changes) {
-    ListSequence.fromList(changes).ofType(NodeGroupMoveChange.class).where(new IWhereFilter<NodeGroupMoveChange>() {
-      public boolean accept(NodeGroupMoveChange it) {
-        return !(SetSequence.fromSet(myMergeSession.getResolvedChanges()).contains(it));
-      }
-    }).visitAll(new IVisitor<NodeGroupMoveChange>() {
-      public void visit(NodeGroupMoveChange it) {
-        myMergeSession.applyChange(it);
-      }
-    });
+    ListSequence.fromList(changes).ofType(NodeGroupMoveChange.class).where((it) -> !(SetSequence.fromSet(myMergeSession.getResolvedChanges()).contains(it))).visitAll((it) -> myMergeSession.applyChange(it));
   }
   private static <T> T as_nggbvs_a0a0a0a0r(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_nggbvs_a0a0a0a0a0a0a0a0z(Object o, Class<T> type) {
+  private static <T> T as_nggbvs_a0a0a0a0a0a0a52(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

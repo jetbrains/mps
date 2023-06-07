@@ -15,7 +15,6 @@ import jetbrains.mps.scope.VisibleDepsSearchScope;
 import jetbrains.mps.scope.FilteringScope;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.scope.ModelsScope;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -78,11 +77,7 @@ public class Scopes {
    * @return Scope that covers definite roots of structure aspect
    */
   /*package*/ static Scope structureRootsScope(Iterable<Language> languages, SAbstractConcept metaConcept) {
-    return new ModelsScope(Sequence.fromIterable(languages).select(new ISelector<Language, SModel>() {
-      public SModel select(Language it) {
-        return SModuleOperations.getAspect(it, "structure");
-      }
-    }).where(new NotNullWhereFilter<SModel>()), true, metaConcept);
+    return new ModelsScope(Sequence.fromIterable(languages).select((it) -> SModuleOperations.getAspect(it, "structure")).where(new NotNullWhereFilter()), true, metaConcept);
   }
   private static <T> T as_kflra7_a0a0a0(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);

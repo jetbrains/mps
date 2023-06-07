@@ -89,7 +89,7 @@ public class JUnitBTestCaseTest_Test extends BaseTransformationTest {
 
     public void checkTests(@Nullable String vmParams, @Nullable File workingDir, List<ITestNodeWrapper> testsToSucceed, List<ITestNodeWrapper> testsToFail) {
       try {
-        List<ITestNodeWrapper> allTests = ListSequence.fromList(testsToSucceed).union(ListSequence.fromList(testsToFail)).toListSequence();
+        List<ITestNodeWrapper> allTests = ListSequence.fromList(testsToSucceed).union(ListSequence.fromList(testsToFail)).toList();
         ProcessHandler process = new JUnit_Command().setVirtualMachineParameter_String(vmParams).setWorkingDirectory_File(workingDir).createProcess(myProject, allTests);
         CheckTestStateListener checkListener = new CheckTestStateListener(testsToSucceed, testsToFail);
         TestRunState runState = new TestRunState(allTests);

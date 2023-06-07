@@ -10,7 +10,6 @@ import jetbrains.mps.baseLanguage.behavior.Expression__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -31,11 +30,7 @@ public class ParameterNameUtil {
         ListSequence.fromList(expectedNames).addSequence(ListSequence.fromList(variableSuffixes));
       }
     }
-    List<String> candidates = ListSequence.fromList(expectedNames).where(new IWhereFilter<String>() {
-      public boolean accept(String it) {
-        return it.matches("[a-zA-Z0-9_]*");
-      }
-    }).toListSequence();
+    List<String> candidates = ListSequence.fromList(expectedNames).where((it) -> it.matches("[a-zA-Z0-9_]*")).toList();
     if (ListSequence.fromList(candidates).isEmpty()) {
       ListSequence.fromList(candidates).addElement("");
     }

@@ -12,7 +12,6 @@ import jetbrains.mps.project.Project;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.workbench.NavigationService;
 import jetbrains.mps.ide.findusages.model.scopes.ModelsScope;
@@ -34,11 +33,7 @@ import org.jetbrains.annotations.NotNull;
     myProject = mpsProject;
     mpsProject.getModelAccess().runReadAction(() -> {
       Iterable<SModel> mds = mpsProject.getProjectModels();
-      Iterable<SModel> stubModels = Sequence.fromIterable(mds).where(new IWhereFilter<SModel>() {
-        public boolean accept(SModel it) {
-          return SModelStereotype.isStubModel(it);
-        }
-      });
+      Iterable<SModel> stubModels = Sequence.fromIterable(mds).where((it) -> SModelStereotype.isStubModel(it));
       final NavigationService navService = mpsProject.getProject().getService(NavigationService.class);
       Iterable<NavigationParticipant.NavigationTarget> descr = navService.getNavigationRoots(new ModelsScope(stubModels), new EmptyProgressMonitor());
 

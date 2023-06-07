@@ -17,7 +17,6 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.platform.refactoring.RefactoringViewAction;
 import jetbrains.mps.ide.platform.refactoring.RefactoringViewItem;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.Collections;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 
@@ -25,7 +24,7 @@ public class ScriptsUtil {
 
   public static void executeScript(final ConsoleContext context, SNode script) {
     // it's essential to have collection one can iterate outside of model read (inside invokeLater, see MPS-32986)
-    final List<SNode> commands = Sequence.fromIterable(AbstractConsoleScript__BehaviorDescriptor.getCommands_id1whNchEKZry.invoke(script)).toListSequence();
+    final List<SNode> commands = Sequence.fromIterable(AbstractConsoleScript__BehaviorDescriptor.getCommands_id1whNchEKZry.invoke(script)).toList();
     SwingUtilities.invokeLater(() -> executeCommands(context, commands, 0));
   }
 
@@ -45,11 +44,7 @@ public class ScriptsUtil {
           Iterable<SNode> includedNodes;
           if (refactoringViewItem instanceof RefactoringViewItem.RefactoringViewItemEx) {
             List<SNodeReference> nodeRefs = as_bb8vid_a0a0a0b0a0a0a0a0b0a2a5(refactoringViewItem, RefactoringViewItem.RefactoringViewItemEx.class).getIncludedResultNodes();
-            includedNodes = ListSequence.fromList(nodeRefs).select(new ISelector<SNodeReference, SNode>() {
-              public SNode select(SNodeReference it) {
-                return it.resolve(projectRepo);
-              }
-            });
+            includedNodes = ListSequence.fromList(nodeRefs).select((it) -> it.resolve(projectRepo));
           } else {
             includedNodes = nodes;
           }
@@ -66,11 +61,7 @@ public class ScriptsUtil {
   }
 
   private static SearchResults<SNode> nodesToRefactoringResult(Iterable<SNode> nodes) {
-    return new SearchResults<SNode>(Collections.emptyList(), Sequence.fromIterable(nodes).select(new ISelector<SNode, SearchResult<SNode>>() {
-      public SearchResult<SNode> select(SNode it) {
-        return new SearchResult<SNode>(it, "Nodes to refactor");
-      }
-    }).toListSequence());
+    return new SearchResults<SNode>(Collections.emptyList(), Sequence.fromIterable(nodes).select((it) -> new SearchResult<SNode>(it, "Nodes to refactor")).toList());
   }
   private static <T> T as_bb8vid_a0a0a0b0a0a0a0a0b0a2a5(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);

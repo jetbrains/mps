@@ -23,7 +23,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.transformation.WrapSubstituteMenuTransformationMenuPart;
 import org.jetbrains.annotations.Nullable;
@@ -87,11 +86,7 @@ public class AddParametersToDefaultClassCreatorToCreateClassCreator extends Tran
       super.initialize(_context);
       constructorsWithParams = new Computable<Iterable<SNode>>() {
         public Iterable<SNode> compute() {
-          return Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.as(SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$9NRM), CONCEPTS.ClassConcept$bK))).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).isNotEmpty();
-            }
-          });
+          return Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.as(SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$9NRM), CONCEPTS.ClassConcept$bK))).where((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).isNotEmpty());
         }
       }.compute();
     }

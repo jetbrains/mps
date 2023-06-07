@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -34,11 +33,7 @@ public final class BuildLayout_CustomCopy__BehaviorDescriptor extends BaseBHDesc
   }
 
   /*package*/ static boolean isImplicit_id19QsrPuCW11(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.handlers$AdkY)).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_CopyProcessor$ty);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.handlers$AdkY)).all((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_CopyProcessor$ty));
   }
 
   /*package*/ BuildLayout_CustomCopy__BehaviorDescriptor() {

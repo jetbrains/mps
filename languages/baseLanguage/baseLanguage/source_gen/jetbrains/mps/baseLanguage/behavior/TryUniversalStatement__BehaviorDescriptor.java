@@ -24,7 +24,6 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -60,11 +59,7 @@ public final class TryUniversalStatement__BehaviorDescriptor extends BaseBHDescr
     Set<SNode> thrownsFromBody = SetSequence.fromSet(new HashSet<SNode>());
     StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.body$KFk), thrownsFromBody, ((boolean) ignoreMayBeThrowables));
     for (SNode resourceVar : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.resource$hgXi))) {
-      SetSequence.fromSet(thrownsFromBody).addSequence(Sequence.fromIterable(SNodeOperations.ofConcept(new ResourceVariableHelper(resourceVar).getCloseThrown(), CONCEPTS.ClassifierType$bL)).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.classifier$cxMr);
-        }
-      }));
+      SetSequence.fromSet(thrownsFromBody).addSequence(Sequence.fromIterable(SNodeOperations.ofConcept(new ResourceVariableHelper(resourceVar).getCloseThrown(), CONCEPTS.ClassifierType$bL)).select((it) -> SLinkOperations.getTarget(it, LINKS.classifier$cxMr)));
       Statement__BehaviorDescriptor.collectUncaughtMethodThrowables_id4Gt7ANIVBW7.invoke(SNodeOperations.asSConcept(CONCEPTS.Statement$P6), thrownsFromBody, SLinkOperations.getTarget(resourceVar, LINKS.initializer$2twD));
     }
 

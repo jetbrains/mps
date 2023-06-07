@@ -6,7 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.smodel.tempmodel.TempModule;
 import jetbrains.mps.smodel.tempmodel.TempModule2;
@@ -26,11 +25,7 @@ import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 public class MigrationModuleUtil {
   public static Iterable<SModule> getMigrateableModulesFromProject(Project p) {
     Iterable<SModule> modules = p.getProjectModulesWithGenerators();
-    return Sequence.fromIterable(modules).where(new IWhereFilter<SModule>() {
-      public boolean accept(SModule it) {
-        return isModuleMigrateable(it);
-      }
-    });
+    return Sequence.fromIterable(modules).where((it) -> isModuleMigrateable(it));
   }
 
   public static boolean isModuleMigrateable(SModule m) {

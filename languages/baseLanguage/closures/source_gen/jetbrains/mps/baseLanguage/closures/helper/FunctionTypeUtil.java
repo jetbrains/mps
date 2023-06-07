@@ -11,8 +11,6 @@ import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -23,6 +21,7 @@ import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Iterator;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -32,9 +31,15 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class FunctionTypeUtil {
+  /**
+   * 
+   * @deprecated call getRuntimeSignature on FunctionType directly
+   */
+  @Deprecated
   public static String getRuntimeSignature(SNode ft) {
     return FunctionType__BehaviorDescriptor.getRuntimeSignature_idhEwIOjZ.invoke(ft);
   }
+
   public static SNode getResultType(SNode functionTypeOrClassifier) {
     if (SNodeOperations.isInstanceOf(functionTypeOrClassifier, CONCEPTS.TypeVariableReference$WL)) {
       return null;
@@ -72,7 +77,7 @@ with_throws:
     for (SNode tt : ttypes) {
       SNode clstt = SNodeOperations.as(tt, CONCEPTS.ClassifierType$bL);
       if (clstt != null) {
-        if (!((boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SLinkOperations.getTarget(clstt, LINKS.classifier$cxMr), SLinkOperations.getTarget(_quotation_createNode_2t0coq_a0a0a0a1a2a3(), LINKS.classifier$cxMr)))) {
+        if (!((boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SLinkOperations.getTarget(clstt, LINKS.classifier$cxMr), SLinkOperations.getTarget(_quotation_createNode_2t0coq_a0a0a0a1a2a4(), LINKS.classifier$cxMr)))) {
           for (int i = 0; i < ListSequence.fromList(visited).count(); ++i) {
             SNode restt = ListSequence.fromList(visited).getElement(i);
             if ((boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SLinkOperations.getTarget(restt, LINKS.classifier$cxMr), SLinkOperations.getTarget(clstt, LINKS.classifier$cxMr))) {
@@ -90,12 +95,12 @@ with_throws:
     return result;
   }
   private static SNode getFunctionMethod(SNode functionTypeOrClassifier) {
-    return Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SLinkOperations.getTarget(SNodeOperations.cast(functionTypeOrClassifier, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr))).findFirst(new IWhereFilter<SNode>() {
-      @Override
-      public boolean accept(SNode m) {
-        return !("equals".equals(SPropertyOperations.getString(m, PROPS.name$MnvL))) && (boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(m);
+    for (SNode method : Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SLinkOperations.getTarget(SNodeOperations.cast(functionTypeOrClassifier, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr))) {
+      if (!("equals".equals(SPropertyOperations.getString(method, PROPS.name$MnvL))) && (boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(method)) {
+        return method;
       }
-    });
+    }
+    return null;
   }
   public static SNode unmeet(SNode possiblyMeet) {
     SNode tmp = possiblyMeet;
@@ -107,11 +112,10 @@ with_meet:
           continue with_meet;
         }
       }
-      return _quotation_createNode_2t0coq_a1a1a5();
+      return _quotation_createNode_2t0coq_a1a1a6();
     }
     if (SNodeOperations.isInstanceOf(tmp, CONCEPTS.ClassifierType$bL)) {
-      List<SNode> params = SLinkOperations.getChildren(SNodeOperations.cast(tmp, CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$);
-      for (SNode p : params) {
+      for (SNode p : SLinkOperations.getChildren(SNodeOperations.cast(tmp, CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$)) {
         SNode up = unmeet(p);
         if (up != p) {
           SNodeOperations.replaceWithAnother(p, up);
@@ -156,22 +160,14 @@ with_meet:
     new ClosureLiteralTarget(genContext).setReturnDependency(ldep, rexpr);
   }
 
-
-  /**
-   * Allows checking if a return statement returns explicitly a value. Provide a method to check on a whole lambda
-   */
-  private static class HasReturnedExpressionPredicate extends IWhereFilter<SNode> {
-    private static HasReturnedExpressionPredicate it = new HasReturnedExpressionPredicate();
-
-    @Override
-    public boolean accept(SNode rs) {
-      return (SLinkOperations.getTarget(rs, LINKS.expression$eJ92) != null);
+  private static boolean hasReturnedExpression(SNode closure) {
+    // Used to be !all(expr.isNull), which would return true when there was no return statements
+    for (SNode ret : SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(closure, LINKS.body$Ujx2), CONCEPTS.ReturnStatement$lt, false, new SAbstractConcept[]{CONCEPTS.BaseMethodDeclaration$kD, CONCEPTS.ClosureLiteral$rp})) {
+      if ((SLinkOperations.getTarget(ret, LINKS.expression$eJ92) != null)) {
+        return true;
+      }
     }
-
-    public boolean testClosure(SNode node) {
-      // Used to be !all(expr.isNull), which would return true when there was no return statements
-      return ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(node, LINKS.body$Ujx2), CONCEPTS.ReturnStatement$lt, false, new SAbstractConcept[]{CONCEPTS.BaseMethodDeclaration$kD, CONCEPTS.ClosureLiteral$rp})).any(this);
-    }
+    return false;
   }
 
   public static void prepAdaptations(TemplateQueryContext genContext, SNode ltype, SNode rexpr) {
@@ -200,7 +196,7 @@ with_meet:
       SNode leftFunctionType = ((lFType != null) ? lFType : TypecheckingFacade.getFromContext().coerceType(lCType, CONCEPTS.FunctionType$9U));
 
       // Expects a return type or closure returns nothing: no obvious issue
-      if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(leftFunctionType, LINKS.resultType$2oOC), CONCEPTS.VoidType$BF)) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(rFType, LINKS.resultType$2oOC), CONCEPTS.VoidType$BF) || !(HasReturnedExpressionPredicate.it.testClosure(SNodeOperations.cast(rexpr, CONCEPTS.ClosureLiteral$rp)))) {
+      if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(leftFunctionType, LINKS.resultType$2oOC), CONCEPTS.VoidType$BF)) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(rFType, LINKS.resultType$2oOC), CONCEPTS.VoidType$BF) || !(hasReturnedExpression(SNodeOperations.cast(rexpr, CONCEPTS.ClosureLiteral$rp)))) {
 
         // Regular dependency
         new ClosureLiteralTarget(genContext).setTarget(SNodeOperations.cast(rexpr, CONCEPTS.ClosureLiteral$rp), ((lCType != null) ? lCType : FunctionType__BehaviorDescriptor.getDeclarationRuntimeType_idH4u0Q2K3hM.invoke(lFType, rFType)), rFType);
@@ -241,14 +237,14 @@ with_meet:
       MapSequence.fromMap(theMap).put(adTVD, trgTVD);
     }
   }
-  private static SNode _quotation_createNode_2t0coq_a0a0a0a1a2a3() {
+  private static SNode _quotation_createNode_2t0coq_a0a0a0a1a2a4() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
     quotedNode_1 = nb.getResult();
     nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~RuntimeException");
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_2t0coq_a1a1a5() {
+  private static SNode _quotation_createNode_2t0coq_a1a1a6() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType"));
     quotedNode_1 = nb.getResult();

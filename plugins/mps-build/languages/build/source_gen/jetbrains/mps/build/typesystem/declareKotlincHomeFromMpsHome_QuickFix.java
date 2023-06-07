@@ -8,7 +8,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -27,11 +26,7 @@ public class declareKotlincHomeFromMpsHome_QuickFix extends QuickFix_Runtime {
   }
   public void execute(SNode node) {
     // Search for $mps_home or define it
-    SNode from = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(((SNode) declareKotlincHomeFromMpsHome_QuickFix.this.getField("project")[0]), LINKS.macros$r8_A), CONCEPTS.BuildFolderMacro$mR)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), KotlincMacroHelper.MPS_HOME);
-      }
-    });
+    SNode from = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(((SNode) declareKotlincHomeFromMpsHome_QuickFix.this.getField("project")[0]), LINKS.macros$r8_A), CONCEPTS.BuildFolderMacro$mR)).findFirst((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), KotlincMacroHelper.MPS_HOME));
     if ((from == null)) {
       from = SLinkOperations.addNewChild(((SNode) declareKotlincHomeFromMpsHome_QuickFix.this.getField("project")[0]), LINKS.macros$r8_A, CONCEPTS.BuildFolderMacro$mR);
       SPropertyOperations.assign(from, PROPS.name$MnvL, KotlincMacroHelper.MPS_HOME);

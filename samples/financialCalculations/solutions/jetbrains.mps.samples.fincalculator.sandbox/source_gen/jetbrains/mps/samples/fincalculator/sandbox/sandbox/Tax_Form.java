@@ -238,10 +238,6 @@ public class Tax_Form extends CalculationFrame {
   }
 
   public static void main(String[] args) {
-    SwingUtilities.invokeLater(new Runnable() {
-      public void run() {
-        new Tax_Form();
-      }
-    });
+    SwingUtilities.invokeLater(Tax_Form::new);
   }
 }

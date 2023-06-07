@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -49,11 +48,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       return SNodeOperations.as(lineContainer, CONCEPTS.Line$yC);
     }
 
-    Iterable<SNode> lines = ListSequence.fromList(SNodeOperations.getNodeDescendants(lineContainer, CONCEPTS.Line$yC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.getContainingLink(it).isMultiple());
-      }
-    });
+    Iterable<SNode> lines = ListSequence.fromList(SNodeOperations.getNodeDescendants(lineContainer, CONCEPTS.Line$yC, false, new SAbstractConcept[]{})).where((it) -> !(SNodeOperations.getContainingLink(it).isMultiple()));
     if (Sequence.fromIterable(lines).count() <= 1) {
       return Sequence.fromIterable(lines).first();
     } else {

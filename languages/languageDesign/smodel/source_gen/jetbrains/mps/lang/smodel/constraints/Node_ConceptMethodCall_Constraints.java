@@ -22,7 +22,6 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.scope.EmptyScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.scope.ListScope;
 import java.util.HashMap;
@@ -93,20 +92,12 @@ public class Node_ConceptMethodCall_Constraints extends BaseConstraintsDescripto
               return new EmptyScope();
             }
 
-            Iterable<SNode> methods = Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getVisibleConceptMethods_idwrIPXhfIPX.invoke(conceptNode, enclosingNode)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return SPropertyOperations.getBoolean(it, PROPS.isStatic$JhJe) == isStatic.value;
-              }
-            }).toListSequence();
+            Iterable<SNode> methods = Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getVisibleConceptMethods_idwrIPXhfIPX.invoke(conceptNode, enclosingNode)).where((it) -> SPropertyOperations.getBoolean(it, PROPS.isStatic$JhJe) == isStatic.value).toList();
 
             // to remove? (ap)
             if (SNodeOperations.isInstanceOf(leftType, CONCEPTS.ConceptNodeType$92)) {
               // conceptNode<> is subtype of node<AbstractConceptDeclaration>, why can't I invoke methods of the latter (used to workaround with node.conceptNode.asNode.methodCall, which is stupid)
-              methods = Sequence.fromIterable(methods).concat(Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getVisibleConceptMethods_idwrIPXhfIPX.invoke(defaultConceptTypeValue, enclosingNode)).where(new IWhereFilter<SNode>() {
-                public boolean accept(SNode it) {
-                  return SPropertyOperations.getBoolean(it, PROPS.isStatic$JhJe) == false;
-                }
-              })).toListSequence();
+              methods = Sequence.fromIterable(methods).concat(Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getVisibleConceptMethods_idwrIPXhfIPX.invoke(defaultConceptTypeValue, enclosingNode)).where((it) -> SPropertyOperations.getBoolean(it, PROPS.isStatic$JhJe) == false)).toList();
             }
 
             return ListScope.forResolvableElements(methods);

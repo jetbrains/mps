@@ -26,7 +26,7 @@ public class typeof_ActionDataParameterDeclaration_InferenceRule extends Abstrac
   }
   public void applyRule(final SNode declaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode dt = ActionParameter__BehaviorDescriptor.getType_id112RIkggjzD.invoke(declaration);
-    List<SNode> icList = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(declaration, LINKS.condition$wuLH), CONCEPTS.IsInstanceCondition$n)).toListSequence();
+    List<SNode> icList = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(declaration, LINKS.condition$wuLH), CONCEPTS.IsInstanceCondition$n)).toList();
     // indeed, we don't prevent multiple is() conditions, but cast to the first one seems reasonable.
     if (ListSequence.fromList(icList).isNotEmpty() && SNodeOperations.isInstanceOf(dt, CONCEPTS.ClassifierType$bL)) {
       {

@@ -18,9 +18,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import java.util.Collections;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -66,16 +64,8 @@ public final class PureMigrationScript__BehaviorDescriptor extends BaseBHDescrip
       result.append("Addition to: ").append(IMigrationUnit__BehaviorDescriptor.getDescription_id1RqXnPV415t.invoke(SLinkOperations.getTarget(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.part$ITsP), CONCEPTS.IncludeMigrationPart$Qj)).first(), LINKS.target$yqIO)));
       return result.toString();
     }
-    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$ITsP)).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.MoveNodeMigrationPart$zn);
-      }
-    })) {
-      List<Tuples._2<SNode, SNode>> movedNodes = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$ITsP)).select(new ISelector<SNode, Tuples._2<SNode, SNode>>() {
-        public Tuples._2<SNode, SNode> select(SNode it) {
-          return MultiTuple.<SNode,SNode>from(((SNode) AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.MoveNodeMigrationPart$zn), LINKS.fromNode$UG1d)).resolve(SNodeOperations.getModel(it).getRepository())), ((SNode) AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.MoveNodeMigrationPart$zn), LINKS.toNode$UGvf)).resolve(SNodeOperations.getModel(it).getRepository())));
-        }
-      }).toListSequence();
+    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$ITsP)).all((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.MoveNodeMigrationPart$zn))) {
+      List<Tuples._2<SNode, SNode>> movedNodes = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$ITsP)).select((it) -> MultiTuple.<SNode,SNode>from(((SNode) AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.MoveNodeMigrationPart$zn), LINKS.fromNode$UG1d)).resolve(SNodeOperations.getModel(it).getRepository())), ((SNode) AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.MoveNodeMigrationPart$zn), LINKS.toNode$UGvf)).resolve(SNodeOperations.getModel(it).getRepository())))).toList();
       if (ListSequence.fromList(movedNodes).isNotEmpty() && SNodeOperations.isInstanceOf(ListSequence.fromList(movedNodes).first()._0(), CONCEPTS.INamedConcept$Kd) && ListSequence.fromList(movedNodes).isNotEmpty() && SNodeOperations.isInstanceOf(ListSequence.fromList(movedNodes).first()._1(), CONCEPTS.INamedConcept$Kd)) {
         result.append("Automatic migration");
         result.append(": move node `").append(SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(movedNodes).first()._1(), CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL)).append("`");

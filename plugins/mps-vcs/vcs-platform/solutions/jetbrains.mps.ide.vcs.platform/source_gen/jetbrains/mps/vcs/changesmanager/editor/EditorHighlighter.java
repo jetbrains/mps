@@ -21,8 +21,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.vcs.diff.ChangeSet;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
@@ -70,26 +68,10 @@ public class EditorHighlighter implements EditorMessageOwner {
 
             ChangeSet changeSet = myCurrentDifference.getChangeSet();
             if (changeSet != null) {
-              ListSequence.fromList(changeSet.getModelChanges()).where(new IWhereFilter<ModelChange>() {
-                public boolean accept(ModelChange c) {
-                  return editedNode.getContainingRoot().getNodeId().equals(c.getRootId());
-                }
-              }).visitAll(new IVisitor<ModelChange>() {
-                public void visit(ModelChange c) {
-                  createMessages(c);
-                }
-              });
+              ListSequence.fromList(changeSet.getModelChanges()).where((c) -> editedNode.getContainingRoot().getNodeId().equals(c.getRootId())).visitAll((c) -> createMessages(c));
             }
             synchronized (myChangesMessages) {
-              Sequence.fromIterable(MapSequence.fromMap(myChangesMessages).values()).visitAll(new IVisitor<List<ChangeEditorMessage>>() {
-                public void visit(List<ChangeEditorMessage> messages) {
-                  ListSequence.fromList(messages).visitAll(new IVisitor<ChangeEditorMessage>() {
-                    public void visit(ChangeEditorMessage m) {
-                      getHighlightManager().mark(m);
-                    }
-                  });
-                }
-              });
+              Sequence.fromIterable(MapSequence.fromMap(myChangesMessages).values()).visitAll((messages) -> ListSequence.fromList(messages).visitAll((m) -> getHighlightManager().mark(m)));
             }
             getHighlightManager().repaintAndRebuildEditorMessages();
             ThreadUtils.runInUIThreadNoWait(() -> {
@@ -130,11 +112,7 @@ public class EditorHighlighter implements EditorMessageOwner {
   private List<ChangeEditorMessage> removeMessages(ModelChange change) {
     synchronized (myChangesMessages) {
       List<ChangeEditorMessage> messages = MapSequence.fromMap(myChangesMessages).get(change);
-      if (messages == null || getHighlightManager() == null || ListSequence.fromList(messages).any(new IWhereFilter<ChangeEditorMessage>() {
-        public boolean accept(ChangeEditorMessage m) {
-          return m.getNode() == null;
-        }
-      })) {
+      if (messages == null || getHighlightManager() == null || ListSequence.fromList(messages).any((m) -> m.getNode() == null)) {
         return ListSequence.fromList(new ArrayList<ChangeEditorMessage>());
       }
       MapSequence.fromMap(myChangesMessages).removeKey(change);
@@ -152,13 +130,7 @@ public class EditorHighlighter implements EditorMessageOwner {
       return Collections.emptyList();
     }
     SRepository repo = myEditorComponent.getEditorContext().getRepository();
-    repo.getModelAccess().runReadAction(() -> {
-      messages.value = ListSequence.fromList(messages.value).where(new IWhereFilter<ChangeEditorMessage>() {
-        public boolean accept(ChangeEditorMessage m) {
-          return !(changeNodeIsDeleted(m));
-        }
-      }).toListSequence();
-    });
+    repo.getModelAccess().runReadAction(() -> messages.value = ListSequence.fromList(messages.value).where((m) -> !(changeNodeIsDeleted(m))).toList());
     return messages.value;
   }
 
@@ -172,11 +144,7 @@ public class EditorHighlighter implements EditorMessageOwner {
       myDisposed = true;
       try {
         synchronized (myChangesMessages) {
-          SetSequence.fromSet(MapSequence.fromMap(myChangesMessages).keySet()).toListSequence().visitAll(new IVisitor<ModelChange>() {
-            public void visit(ModelChange ch) {
-              removeMessages(ch);
-            }
-          });
+          ListSequence.fromList(SetSequence.fromSet(MapSequence.fromMap(myChangesMessages).keySet()).toList()).visitAll((ch) -> removeMessages(ch));
         }
         getHighlightManager().clearForOwner(this);
         if (myStripsPainter != null) {

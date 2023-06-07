@@ -31,8 +31,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
@@ -42,7 +40,6 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
@@ -251,15 +248,7 @@ public class WordRangeSelection extends AbstractMultipleSelection {
     for (SNode l : lines) {
       SNode lc = SNodeFactoryOperations.createNewNode(SNodeOperations.getConcept(l), l);
       ListSequence.fromList(SLinkOperations.getChildren(lc, LINKS.elements$_j45)).clear();
-      ListSequence.fromList(SLinkOperations.getChildren(lc, LINKS.elements$_j45)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$_j45)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return selectedNodes.contains(it);
-        }
-      }).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SNodeOperations.copyNode(it);
-        }
-      }));
+      ListSequence.fromList(SLinkOperations.getChildren(lc, LINKS.elements$_j45)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$_j45)).where((it) -> selectedNodes.contains(it)).select((it) -> SNodeOperations.copyNode(it)));
       ListSequence.fromList(copiesOfLines).addElement(lc);
       ListSequence.fromList(SLinkOperations.getChildren(artificialParent, LINKS.lines$U$m7)).addElement(lc);
     }
@@ -505,11 +494,7 @@ public class WordRangeSelection extends AbstractMultipleSelection {
   }
 
   private static SNode findWordOnNonEmptyLine(SNode foundLine, boolean above) {
-    return Sequence.fromIterable(Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(Sequence.fromIterable(SNodeOperations.ofConcept(((above ? ListSequence.fromList(SNodeOperations.getPrevSiblings(foundLine, false)).reversedList() : SNodeOperations.getNextSiblings(foundLine, false))), CONCEPTS.Line$yC)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Sequence.fromIterable(Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(it)).isNotEmpty();
-      }
-    }))).first();
+    return Sequence.fromIterable(Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(Sequence.fromIterable(SNodeOperations.ofConcept(((above ? ListSequence.fromList(SNodeOperations.getPrevSiblings(foundLine, false)).reversedList() : SNodeOperations.getNextSiblings(foundLine, false))), CONCEPTS.Line$yC)).findFirst((it) -> Sequence.fromIterable(Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(it)).isNotEmpty()))).first();
   }
 
   public void turnBold() {
@@ -651,11 +636,7 @@ public class WordRangeSelection extends AbstractMultipleSelection {
     return null;
   }
   private Iterable<? extends SNode> getChildIterable() {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(myFirstParentNode, true), CONCEPTS.Line$yC)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode line) {
-        return SLinkOperations.getChildren(line, LINKS.elements$_j45);
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(myFirstParentNode, true), CONCEPTS.Line$yC)).translate((line) -> SLinkOperations.getChildren(line, LINKS.elements$_j45));
   }
   @Override
   public void ensureVisible() {
@@ -675,11 +656,7 @@ public class WordRangeSelection extends AbstractMultipleSelection {
   }
 
   public static Iterable<? extends SNode> getChildIterable(SNode lines) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(lines, true), CONCEPTS.Line$yC)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode p) {
-        return (Iterable<SNode>) Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(p);
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(lines, true), CONCEPTS.Line$yC)).translate((p) -> (Iterable<SNode>) Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(p));
   }
 
   private static final class CONCEPTS {

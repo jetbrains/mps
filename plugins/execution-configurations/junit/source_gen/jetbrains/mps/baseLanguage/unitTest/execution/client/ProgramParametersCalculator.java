@@ -19,7 +19,6 @@ import org.jdom.Document;
 import java.io.IOException;
 import org.jetbrains.mps.annotations.Mutable;
 import jetbrains.mps.tool.common.PluginData;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.tool.common.RepositoryDescriptor;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -32,10 +31,8 @@ import java.util.Map;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
@@ -107,11 +104,7 @@ import jetbrains.mps.project.PathMacros;
 
   private void addPluginsToStartupArgs(@Mutable final ScriptData startupArgs) {
     List<PluginData> plugins = new UserProvidedPluginsCalculator(mySettings).calculate();
-    ListSequence.fromList(plugins).visitAll(new IVisitor<PluginData>() {
-      public void visit(PluginData it) {
-        startupArgs.addPlugin(it);
-      }
-    });
+    ListSequence.fromList(plugins).visitAll((it) -> startupArgs.addPlugin(it));
   }
 
   private void addModulesAndDepsToStartupArgs(@Mutable ScriptData startupArgs) {
@@ -153,26 +146,14 @@ import jetbrains.mps.project.PathMacros;
   private Set<SModule> collectExecuteCP(Iterable<SModule> modules) {
     // yes, assuming that...
     final Map<Solution, List<Language>> allRTs2Lang = this.getRTs2LangInRepo();
-    Collection<SModule> modulesWithDeps = getExecuteDeps(Sequence.fromIterable(modules).toListSequence());
-    Iterable<SModule> javaModules = CollectionSequence.fromCollection(modulesWithDeps).where(new IWhereFilter<SModule>() {
-      public boolean accept(SModule it) {
-        return it.getFacet(JavaModuleFacet.class) != null;
-      }
-    });
+    Collection<SModule> modulesWithDeps = getExecuteDeps(Sequence.fromIterable(modules).toList());
+    Iterable<SModule> javaModules = CollectionSequence.fromCollection(modulesWithDeps).where((it) -> it.getFacet(JavaModuleFacet.class) != null);
     // rt modules in our closure
-    Iterable<SModule> rtsModules = Sequence.fromIterable(javaModules).where(new IWhereFilter<SModule>() {
-      public boolean accept(SModule it) {
-        return it instanceof Solution && MapSequence.fromMap(allRTs2Lang).containsKey((Solution) it);
-      }
-    });
-    Iterable<Language> usedLangsForRTs = Sequence.fromIterable(rtsModules).translate(new ITranslator2<SModule, Language>() {
-      public Iterable<Language> translate(SModule it) {
-        return MapSequence.fromMap(allRTs2Lang).get((Solution) it);
-      }
-    }).where(new NotNullWhereFilter<Language>()).distinct();
+    Iterable<SModule> rtsModules = Sequence.fromIterable(javaModules).where((it) -> it instanceof Solution && MapSequence.fromMap(allRTs2Lang).containsKey((Solution) it));
+    Iterable<Language> usedLangsForRTs = Sequence.fromIterable(rtsModules).translate((it) -> MapSequence.fromMap(allRTs2Lang).get((Solution) it)).where(new NotNullWhereFilter()).distinct();
     // used lang for runtimes we need since we are not capable of locating the runtime classes
     // when we are running java class for example
-    return SetSequence.fromSetWithValues(new HashSet<SModule>(), Sequence.fromIterable(javaModules).union(CollectionSequence.fromCollection(getExecuteDeps(Sequence.fromIterable(usedLangsForRTs).toListSequence()))));
+    return SetSequence.fromSetWithValues(new HashSet<SModule>(), Sequence.fromIterable(javaModules).union(CollectionSequence.fromCollection(getExecuteDeps(Sequence.fromIterable(usedLangsForRTs).toList()))));
   }
 
   private Collection<SModule> getExecuteDeps(List<? extends SModule> modules) {
@@ -183,22 +164,16 @@ import jetbrains.mps.project.PathMacros;
   private Map<Solution, List<Language>> getRTs2LangInRepo() {
     final Map<Solution, List<Language>> res = MapSequence.fromMap(new HashMap<Solution, List<Language>>());
     Iterable<SModule> allModules = myRepo.getModules();
-    Sequence.fromIterable(allModules).where(new IWhereFilter<SModule>() {
-      public boolean accept(SModule it) {
-        return it instanceof Language;
-      }
-    }).visitAll(new IVisitor<SModule>() {
-      public void visit(SModule it) {
-        Language language = ((Language) it);
-        Collection<SModuleReference> rtRefs = language.getRuntimeModulesReferences();
-        for (SModuleReference rtRef : CollectionSequence.fromCollection(rtRefs)) {
-          Solution resolvedRT = (Solution) rtRef.resolve(myRepo);
-          if (resolvedRT != null) {
-            if (MapSequence.fromMap(res).get(resolvedRT) == null) {
-              MapSequence.fromMap(res).put(resolvedRT, ListSequence.fromList(new ArrayList<Language>()));
-            }
-            ListSequence.fromList(MapSequence.fromMap(res).get(resolvedRT)).addElement(language);
+    Sequence.fromIterable(allModules).where((it) -> it instanceof Language).visitAll((it) -> {
+      Language language = ((Language) it);
+      Collection<SModuleReference> rtRefs = language.getRuntimeModulesReferences();
+      for (SModuleReference rtRef : CollectionSequence.fromCollection(rtRefs)) {
+        Solution resolvedRT = (Solution) rtRef.resolve(myRepo);
+        if (resolvedRT != null) {
+          if (MapSequence.fromMap(res).get(resolvedRT) == null) {
+            MapSequence.fromMap(res).put(resolvedRT, ListSequence.fromList(new ArrayList<Language>()));
           }
+          ListSequence.fromList(MapSequence.fromMap(res).get(resolvedRT)).addElement(language);
         }
       }
     });

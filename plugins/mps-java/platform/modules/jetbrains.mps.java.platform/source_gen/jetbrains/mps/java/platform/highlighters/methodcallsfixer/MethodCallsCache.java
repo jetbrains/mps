@@ -15,8 +15,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -58,15 +56,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     if (methodCallPointers == null) {
       return Sequence.fromIterable(Collections.<SNode>emptyList());
     }
-    return SNodeOperations.ofConcept(SetSequence.fromSet(methodCallPointers).where(new IWhereFilter<SNodeReference>() {
-      public boolean accept(SNodeReference it) {
-        return it != null;
-      }
-    }).select(new ISelector<SNodeReference, SNode>() {
-      public SNode select(SNodeReference it) {
-        return it.resolve(myRepository);
-      }
-    }), CONCEPTS.IMethodCall$M9);
+    return SNodeOperations.ofConcept(SetSequence.fromSet(methodCallPointers).where((it) -> it != null).select((it) -> it.resolve(myRepository)), CONCEPTS.IMethodCall$M9);
   }
 
   /*package*/ void putCheckedMethodCall(SNode methodCallNode, SNode methodNode, String methodName) {

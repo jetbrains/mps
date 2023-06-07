@@ -16,11 +16,7 @@ public class ForeachStatement_DataFlow extends DataFlowBuilder {
     _context.getBuilder().emitIfJump(_context.getBuilder().after(_context.getNode()), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1207221459040");
     _context.getBuilder().emitWrite(SLinkOperations.getTarget(_context.getNode(), LINKS.variable$JNH6), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1206989539741");
     _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.body$c1sm));
-    _context.getBuilder().emitMayBeUnreachable(new Runnable() {
-      public void run() {
-        _context.getBuilder().emitJump(_context.getBuilder().label(_context.getNode(), "condition"), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1207221465420");
-      }
-    });
+    _context.getBuilder().emitMayBeUnreachable(() -> _context.getBuilder().emitJump(_context.getBuilder().label(_context.getNode(), "condition"), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1207221465420"));
   }
 
   private static final class LINKS {

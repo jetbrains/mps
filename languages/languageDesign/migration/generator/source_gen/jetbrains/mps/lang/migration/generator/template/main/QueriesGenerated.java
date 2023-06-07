@@ -25,7 +25,6 @@ import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
@@ -42,8 +41,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.TemplateArgumentContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.pattern.behavior.PatternExpression__BehaviorDescriptor;
 import jetbrains.mps.generator.template.TemplateVarContext;
 import jetbrains.mps.generator.impl.query.ReductionRuleCondition;
@@ -143,15 +140,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object propertyMacro_GetValue_2_2(final PropertyMacroContext _context) {
     SModule module = _context.getOriginalInputModel().getModule();
     Map<SNode, Collection<String>> errors = MigrationsCheckUtil.checkMigrationsVersions(module);
-    MapSequence.fromMap(errors).visitAll(new IVisitor<IMapping<SNode, Collection<String>>>() {
-      public void visit(final IMapping<SNode, Collection<String>> entry) {
-        CollectionSequence.fromCollection(entry.value()).visitAll(new IVisitor<String>() {
-          public void visit(String error) {
-            _context.showErrorMessage(entry.key(), error);
-          }
-        });
-      }
-    });
+    MapSequence.fromMap(errors).visitAll((final IMapping<SNode, Collection<String>> entry) -> CollectionSequence.fromCollection(entry.value()).visitAll((error) -> _context.showErrorMessage(entry.key(), error)));
     return MigrationScript__BehaviorDescriptor.getGeneratedClassName_id7w5LXrJJkLe.invoke(SNodeOperations.asSConcept(CONCEPTS.MigrationScript$KN));
   }
   public static Object propertyMacro_GetValue_3_0(final PropertyMacroContext _context) {
@@ -569,22 +558,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return (Iterable<SNode>) IMigrationUnit__BehaviorDescriptor.getExecuteAfter_id2bWK$jI6RRp.invoke(_context.getNode());
   }
   public static Iterable<SNode> sourceNodesQuery_1_6(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.member$L_2d)).where(new IWhereFilter<SNode>() {
-      public boolean accept(final SNode member) {
-        return !(SNodeOperations.isInstanceOf(member, CONCEPTS.MemberInstance$YT)) && !(Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNode("90746344-04fd-4286-97d5-b46ae6a81709/r:52a3d974-bd4f-4651-ba6e-a2de5e336d95(jetbrains.mps.lang.migration/jetbrains.mps.lang.migration.methods)", "2260648088429212842"), LINKS.classLikeMember$ZDsQ), CONCEPTS.CustomMemberDescriptor$8z), LINKS.cncpt$IpcN)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode cusomConcept) {
-            return SNodeOperations.isInstanceOf(member, SNodeOperations.asSConcept(SNodeOperations.asSConcept(cusomConcept)));
-          }
-        }));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.member$L_2d)).where((final SNode member) -> !(SNodeOperations.isInstanceOf(member, CONCEPTS.MemberInstance$YT)) && !(Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNode("90746344-04fd-4286-97d5-b46ae6a81709/r:52a3d974-bd4f-4651-ba6e-a2de5e336d95(jetbrains.mps.lang.migration/jetbrains.mps.lang.migration.methods)", "2260648088429212842"), LINKS.classLikeMember$ZDsQ), CONCEPTS.CustomMemberDescriptor$8z), LINKS.cncpt$IpcN)).any((cusomConcept) -> SNodeOperations.isInstanceOf(member, SNodeOperations.asSConcept(SNodeOperations.asSConcept(cusomConcept))))));
   }
   public static Iterable<SNode> sourceNodesQuery_2_0(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.MigrationScript$KN)).sort(new ISelector<SNode, Integer>() {
-      public Integer select(SNode it) {
-        return SPropertyOperations.getInteger(it, PROPS.fromVersion$A7Tf);
-      }
-    }, true);
+    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.MigrationScript$KN)).sort((it) -> SPropertyOperations.getInteger(it, PROPS.fromVersion$A7Tf), true);
   }
   public static Iterable<SNode> sourceNodesQuery_4_0(final SourceSubstituteMacroNodesContext _context) {
     return SNodeOperations.ofConcept(PatternExpression__BehaviorDescriptor.getVariables_id4dzCQkRGUKX.invoke(SLinkOperations.getTarget(SNodeOperations.cast(_context.getOriginalCopiedInputNode(_context.getNode()), CONCEPTS.TransformStatement$iG), LINKS.pattern$W39N)), CONCEPTS.PatternVariableDeclaration$ZH);

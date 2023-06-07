@@ -9,7 +9,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.build.util.DependenciesHelper;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.build.behavior.BuildLayout_PathElement__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
@@ -27,30 +26,20 @@ public class ModuleFinder {
     }
 
     final DependenciesHelper helper = DependenciesHelper.get(genContext, project, "build.mps");
-    return Sequence.fromIterable(modules).select(new ISelector<SNode, String>() {
-      public String select(SNode module) {
-        // similar code is in BuildMps_Module.fetchDependencies() behavior (at least).
-        SNode layoutNode = helper.getArtifact(module);
-        if (layoutNode == null) {
-          genContext.showErrorMessage(node, "mps module " + SPropertyOperations.getString(module, PROPS.name$MnvL) + " was not found in the layout of `" + SPropertyOperations.getString(project, PROPS.name$MnvL) + "'");
-          return null;
-        }
-        String val = BuildLayout_PathElement__BehaviorDescriptor.location_id6b4RkXS8sT2.invoke(layoutNode, helper, module);
-        if (val == null) {
-          genContext.showErrorMessage(node, "no location for module" + SPropertyOperations.getString(module, PROPS.name$MnvL));
-          return null;
-        }
-        return val;
+    return Sequence.fromIterable(modules).select((module) -> {
+      // similar code is in BuildMps_Module.fetchDependencies() behavior (at least).
+      SNode layoutNode = helper.getArtifact(module);
+      if (layoutNode == null) {
+        genContext.showErrorMessage(node, "mps module " + SPropertyOperations.getString(module, PROPS.name$MnvL) + " was not found in the layout of `" + SPropertyOperations.getString(project, PROPS.name$MnvL) + "'");
+        return null;
       }
-    }).where(new NotNullWhereFilter<String>()).sort(new ISelector<String, String>() {
-      public String select(String it) {
-        return it;
+      String val = BuildLayout_PathElement__BehaviorDescriptor.location_id6b4RkXS8sT2.invoke(layoutNode, helper, module);
+      if (val == null) {
+        genContext.showErrorMessage(node, "no location for module" + SPropertyOperations.getString(module, PROPS.name$MnvL));
+        return null;
       }
-    }, true).distinct().select(new ISelector<String, SNode>() {
-      public SNode select(String it) {
-        return createGeneratorInternal_String_8pqt49_a0a0a0e0a(it);
-      }
-    });
+      return val;
+    }).where(new NotNullWhereFilter()).sort((it) -> it, true).distinct().select((it) -> createGeneratorInternal_String_8pqt49_a0a0a0e0a(it));
   }
   private static SNode createGeneratorInternal_String_8pqt49_a0a0a0e0a(String p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_String$CC);

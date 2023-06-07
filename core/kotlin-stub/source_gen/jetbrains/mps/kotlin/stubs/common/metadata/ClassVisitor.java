@@ -24,7 +24,6 @@ import kotlinx.metadata.KmPropertyVisitor;
 import kotlinx.metadata.KmTypeAliasVisitor;
 import kotlinx.metadata.KmTypeVisitor;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import kotlinx.metadata.KmConstructorVisitor;
 import kotlinx.metadata.KmClassExtensionVisitor;
 import kotlinx.metadata.KmExtensionType;
@@ -117,7 +116,7 @@ public class ClassVisitor extends KmClassVisitor {
     assert SNodeOperations.isInstanceOf(getNode(), CONCEPTS.ITypeParameters$G$) : "node of concept " + SNodeOperations.getConcept(getNode()).getName() + " does not support type parameters";
     SNode typeParam = SLinkOperations.addNewChild(SNodeOperations.cast(getNode(), CONCEPTS.ITypeParameters$G$), LINKS.typeParameters$eq6K, CONCEPTS.TypeParameter$oc);
     context.setId(typeParam, fqName + "." + name);
-    return TypeParameterVisitor.create(typeParam, name, id, flags, variance, context, (Iterable<SNode> upperBounds, String desc) -> ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(getNode(), CONCEPTS.ITypeConstrained$KK), LINKS.constraints$BRhr)).addSequence(Sequence.fromIterable(upperBounds)));
+    return TypeParameterVisitor.create(typeParam, name, id, flags, variance, context, (upperBounds, desc) -> ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(getNode(), CONCEPTS.ITypeConstrained$KK), LINKS.constraints$BRhr)).addSequence(Sequence.fromIterable(upperBounds)));
   }
 
   @Nullable
@@ -158,11 +157,7 @@ public class ClassVisitor extends KmClassVisitor {
               superType.setReference(LINKS.target$mYQV, SNodeOperations.getReference(classType, LINKS.class$ExdX).describeTarget());
 
               // Note, move of 'type' grandchildren of 'classType' node is intentional as it's disposable
-              ListSequence.fromList(SLinkOperations.getChildren(superType, LINKS.typeArguments$86s6)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(classType, LINKS.typeProjections$vhti)).select(new ISelector<SNode, SNode>() {
-                public SNode select(SNode it) {
-                  return SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.TypeProjection$5e), LINKS.type$x3no);
-                }
-              }));
+              ListSequence.fromList(SLinkOperations.getChildren(superType, LINKS.typeArguments$86s6)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(classType, LINKS.typeProjections$vhti)).select((it) -> SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.TypeProjection$5e), LINKS.type$x3no)));
               ListSequence.fromList(SLinkOperations.getChildren(inheriting, LINKS.superclasses$6CkZ)).addElement(superType);
             }
           }
@@ -175,11 +170,7 @@ public class ClassVisitor extends KmClassVisitor {
               superType.setReference(LINKS.classifier$dpcA, SNodeOperations.getReference(javaClassType, LINKS.javaClass$CQOW).describeTarget());
 
               // Note, move of 'type' grandchildren of 'classType' node is intentional as it's disposable
-              ListSequence.fromList(SLinkOperations.getChildren(superType, LINKS.typeArguments$86s6)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(javaClassType, LINKS.typeProjections$vhti)).select(new ISelector<SNode, SNode>() {
-                public SNode select(SNode it) {
-                  return SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.TypeProjection$5e), LINKS.type$x3no);
-                }
-              }));
+              ListSequence.fromList(SLinkOperations.getChildren(superType, LINKS.typeArguments$86s6)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(javaClassType, LINKS.typeProjections$vhti)).select((it) -> SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.TypeProjection$5e), LINKS.type$x3no)));
               ListSequence.fromList(SLinkOperations.getChildren(inheriting, LINKS.superclasses$6CkZ)).addElement(superType);
             }
           }

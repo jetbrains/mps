@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -55,11 +54,7 @@ public final class ConceptFunctionParameter__BehaviorDescriptor extends BaseBHDe
   }
   /*package*/ static SNode findConceptFunction_idhEwJh7Q(@NotNull final SNode __thisNode__) {
     List<SNode> functions = SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.ConceptFunction$mf, false);
-    return ListSequence.fromList(functions).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ListSequence.fromList(ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke(it)).contains(SNodeOperations.getConcept(__thisNode__));
-      }
-    }).first();
+    return ListSequence.fromList(functions).where((it) -> ListSequence.fromList(ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke(it)).contains(SNodeOperations.getConcept(__thisNode__))).first();
   }
   /*package*/ static String getParameterName_idhP8qAbK(@NotNull SNode __thisNode__) {
     return SConceptOperations.conceptAlias(SNodeOperations.getConcept(__thisNode__));

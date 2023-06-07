@@ -21,11 +21,10 @@ import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.progress.ProgressIndicator;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.ide.platform.dialogs.choosers.NodeChooserDialog;
 import jetbrains.mps.smodel.ModelAccessHelper;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
@@ -53,13 +52,7 @@ public abstract class NodeChooser extends TextFieldWithBrowseButton.NoPathComple
         final Wrappers._T<List<SNodeReference>> toChooseFrom = new Wrappers._T<List<SNodeReference>>();
         ProgressManager.getInstance().run(new Task.Modal(project, "Searching for nodes", false) {
           public void run(@NotNull final ProgressIndicator indicator) {
-            mpsProject.getModelAccess().runReadAction(() -> {
-              toChooseFrom.value = ListSequence.fromList(findToChooseFromOnInit(findUsegesManager, mpsProject.getScope(), new ProgressMonitorAdapter(indicator))).select(new ISelector<SNode, SNodeReference>() {
-                public SNodeReference select(SNode it) {
-                  return SNodeOperations.getPointer(it);
-                }
-              }).toListSequence();
-            });
+            mpsProject.getModelAccess().runReadAction(() -> toChooseFrom.value = ListSequence.fromList(findToChooseFromOnInit(findUsegesManager, mpsProject.getScope(), new ProgressMonitorAdapter(indicator))).select((it) -> SNodeOperations.getPointer(it)).toList());
           }
         });
 

@@ -14,9 +14,7 @@ import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.behavior.DotExpression__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -55,11 +53,7 @@ public final class SetSinglelineDotExpressionLineStyle_Intention extends Abstrac
 
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      ListSequence.fromList(DotExpression__BehaviorDescriptor.getAllDots_id2c6AtCN58E1.invoke(node)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SPropertyOperations.assign(it, PROPS.isMultiline$uBO0, false);
-        }
-      });
+      ListSequence.fromList(DotExpression__BehaviorDescriptor.getAllDots_id2c6AtCN58E1.invoke(node)).visitAll((it) -> SPropertyOperations.assign(it, PROPS.isMultiline$uBO0, false));
     }
 
     @Override
@@ -71,11 +65,7 @@ public final class SetSinglelineDotExpressionLineStyle_Intention extends Abstrac
     }
 
     private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-      return ListSequence.fromList(DotExpression__BehaviorDescriptor.getAllDots_id2c6AtCN58E1.invoke(node)).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SPropertyOperations.getBoolean(it, PROPS.isMultiline$uBO0);
-        }
-      });
+      return ListSequence.fromList(DotExpression__BehaviorDescriptor.getAllDots_id2c6AtCN58E1.invoke(node)).any((it) -> SPropertyOperations.getBoolean(it, PROPS.isMultiline$uBO0));
     }
 
 

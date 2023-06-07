@@ -9,8 +9,6 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.editor.behavior.CellActionMapDeclaration__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.lang.editor.behavior.ImportCycle;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -22,12 +20,10 @@ public class check_CellActionMapDeclarationAcyclicImports_NonTypesystemRule exte
   public check_CellActionMapDeclarationAcyclicImports_NonTypesystemRule() {
   }
   public void applyRule(final SNode cellActionMap, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    Sequence.fromIterable(CellActionMapDeclaration__BehaviorDescriptor.detectCycles_id7pqJbakYMN2.invoke(cellActionMap)).visitAll(new IVisitor<ImportCycle>() {
-      public void visit(ImportCycle cycle) {
-        {
-          final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(cycle.getFirstImport(), "Cycle in imports: " + cycle, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6782712264211226823", null, errorTarget);
-        }
+    Sequence.fromIterable(CellActionMapDeclaration__BehaviorDescriptor.detectCycles_id7pqJbakYMN2.invoke(cellActionMap)).visitAll((cycle) -> {
+      {
+        final MessageTarget errorTarget = new NodeMessageTarget();
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(cycle.getFirstImport(), "Cycle in imports: " + cycle, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6782712264211226823", null, errorTarget);
       }
     });
   }

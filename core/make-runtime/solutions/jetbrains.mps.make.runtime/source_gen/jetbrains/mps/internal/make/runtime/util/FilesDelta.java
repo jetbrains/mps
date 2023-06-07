@@ -10,8 +10,6 @@ import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.make.delta.IDeltaVisitor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
@@ -94,15 +92,13 @@ public class FilesDelta implements IDelta {
   }
 
   private boolean acceptFilesVisitor(final Visitor visitor) {
-    MapSequence.fromMap(files).visitAll(new IVisitor<IMapping<IFile, Status>>() {
-      public void visit(IMapping<IFile, Status> m) {
-        if (m.value() == Status.KEPT && !(m.key().isDirectory())) {
-          visitor.acceptKept(m.key());
-        } else if (m.value() == Status.WRITTEN) {
-          visitor.acceptWritten(m.key());
-        } else if (m.value() == Status.DELETED || m.value() == Status.STALE) {
-          visitor.acceptDeleted(m.key());
-        }
+    MapSequence.fromMap(files).visitAll((m) -> {
+      if (m.value() == Status.KEPT && !(m.key().isDirectory())) {
+        visitor.acceptKept(m.key());
+      } else if (m.value() == Status.WRITTEN) {
+        visitor.acceptWritten(m.key());
+      } else if (m.value() == Status.DELETED || m.value() == Status.STALE) {
+        visitor.acceptDeleted(m.key());
       }
     });
     return true;

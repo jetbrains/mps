@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -50,18 +49,10 @@ public final class AbstractNodeMacroNamespace__BehaviorDescriptor extends BaseBH
     } else {
       // Otherwise find it manually
       SNode ancestor = parent;
-      while (ancestor != null && !(ListSequence.fromList(new IAttributeDescriptor.AllAttributes().list(ancestor)).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(macroConcept));
-        }
-      }))) {
+      while (ancestor != null && !(ListSequence.fromList(new IAttributeDescriptor.AllAttributes().list(ancestor)).any((it) -> SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(macroConcept))))) {
         ancestor = SNodeOperations.getParent(ancestor);
       }
-      return SNodeOperations.cast(ListSequence.fromList(new IAttributeDescriptor.AllAttributes().list(ancestor)).findLast(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(macroConcept));
-        }
-      }), CONCEPTS.NodeMacro$qU);
+      return SNodeOperations.cast(ListSequence.fromList(new IAttributeDescriptor.AllAttributes().list(ancestor)).findLast((it) -> SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(macroConcept))), CONCEPTS.NodeMacro$qU);
     }
   }
 

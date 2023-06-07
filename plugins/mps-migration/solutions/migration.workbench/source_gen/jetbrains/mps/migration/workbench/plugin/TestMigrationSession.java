@@ -18,14 +18,11 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import org.jetbrains.mps.openapi.model.SReference;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.errors.item.UnresolvedReferenceReportItem;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
@@ -37,11 +34,12 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.ide.migration.MigrationSetup;
 import java.util.Collection;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptBase;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.migration.global.ProjectMigrationWithOptions;
 import java.util.Collections;
 import jetbrains.mps.migration.global.MigrationOptions;
@@ -71,24 +69,14 @@ import jetbrains.mps.migration.global.MigrationOptions;
         return;
       }
       final Wrappers._T<SReference> ref = new Wrappers._T<SReference>(null);
-      myProject.getRepository().getModelAccess().runReadAction(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<SReference>() {
-        public SReference invoke() {
-          {
-            SearchScope scope_51bgm5_a0a0a2a2a0a5 = CommandUtil.createScope(myProject);
-            final SearchScope scope_51bgm5_a0a0a2a2a0a5_0 = new EditableFilteringScope(scope_51bgm5_a0a0a2a2a0a5);
-            QueryExecutionContext context = new QueryExecutionContext() {
-              public SearchScope getDefaultSearchScope() {
-                return scope_51bgm5_a0a0a2a2a0a5_0;
-              }
-            };
-            return ref.value = Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).translate(new ITranslator2<SNode, SReference>() {
-              public Iterable<SReference> translate(SNode it) {
-                return IterableUtil.asCollection(it.getReferences());
-              }
-            }).first();
-          }
+      myProject.getRepository().getModelAccess().runReadAction(() -> {
+        {
+          SearchScope scope_51bgm5_a0a0a2a2a0a5 = CommandUtil.createScope(myProject);
+          final SearchScope scope_51bgm5_a0a0a2a2a0a5_0 = new EditableFilteringScope(scope_51bgm5_a0a0a2a2a0a5);
+          QueryExecutionContext context = () -> scope_51bgm5_a0a0a2a2a0a5_0;
+          ref.value = Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).translate((it) -> IterableUtil.asCollection(it.getReferences())).first();
         }
-      }));
+      });
       assert ref.value != null;
       processor.process(new UnresolvedReferenceReportItem(ref.value, null));
     }
@@ -160,7 +148,7 @@ import jetbrains.mps.migration.global.MigrationOptions;
     final List<AppliedScript> res = ListSequence.fromList(new ArrayList<AppliedScript>());
     final SRepository repo = myProject.getRepository();
     repo.getModelAccess().runReadAction(() -> {
-      List<SModule> modules = Sequence.fromIterable(((Iterable<SModule>) repo.getModules())).take(3).toListSequence();
+      List<SModule> modules = Sequence.fromIterable(((Iterable<SModule>) repo.getModules())).take(3).toList();
       for (int si = 0, x = ListSequence.fromList(getModuleMig()).count(); si < x; si++) {
         MigrationTestConfigDialog.Result.LMigration cfg = ListSequence.fromList(mySettings.lMigrations).getElement(si);
         List<SModule> mm = ListSequence.fromList(new ArrayList<SModule>());
@@ -176,11 +164,11 @@ import jetbrains.mps.migration.global.MigrationOptions;
           public Collection<ScriptApplied> toBeExecutedImmediately(SRepository repo) {
             // XXX here we rely on fact asLegacy gives same ScriptApplied values again and again, and when they get executed and recorded in passedM, 
             //    we can safely use except. 
-            return Sequence.fromIterable(asLegacy()).subtract(ListSequence.fromList(passedM)).sort(new ISelector<ScriptApplied, Integer>() {
-              public Integer select(ScriptApplied it) {
+            return Sequence.fromIterable(asLegacy()).subtract(ListSequence.fromList(passedM)).sort(new _FunctionTypes._return_P1_E0<Integer, ScriptApplied>() {
+              public Integer invoke(ScriptApplied it) {
                 return ((MigrationScriptReference) it.getScriptReference()).getFromVersion();
               }
-            }, true).toListSequence();
+            }, true).toList();
           }
 
           @Override
@@ -207,23 +195,17 @@ import jetbrains.mps.migration.global.MigrationOptions;
   }
 
   private List<ProjectMigration> createProjectMigs() {
-    return ListSequence.fromList(mySettings.pMigrations).select(new ISelector<MigrationTestConfigDialog.Result.PMigration, ProjectMigration>() {
-      public ProjectMigration select(MigrationTestConfigDialog.Result.PMigration pmig) {
-        if (pmig.isCleanup) {
-          return (ProjectMigration) new MyCleanupProjectMigration("cleanup: " + pmig.id, pmig.hasOptions, pmig.error);
-        } else {
-          return (ProjectMigration) new MyProjectMigration("project: " + pmig.id, pmig.hasOptions, pmig.error);
-        }
+    return ListSequence.fromList(mySettings.pMigrations).select((pmig) -> {
+      if (pmig.isCleanup) {
+        return (ProjectMigration) new MyCleanupProjectMigration("cleanup: " + pmig.id, pmig.hasOptions, pmig.error);
+      } else {
+        return (ProjectMigration) new MyProjectMigration("project: " + pmig.id, pmig.hasOptions, pmig.error);
       }
-    }).toListSequence();
+    }).toList();
   }
 
   private List<MigrationScript> createLanguageMigs() {
-    return ListSequence.fromList(mySettings.lMigrations).select(new ISelector<MigrationTestConfigDialog.Result.LMigration, MigrationScript>() {
-      public MigrationScript select(MigrationTestConfigDialog.Result.LMigration lmig) {
-        return (MigrationScript) new MyModuleMigration(lmig.language, lmig.version, lmig.error);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(mySettings.lMigrations).select((lmig) -> (MigrationScript) new MyModuleMigration(lmig.language, lmig.version, lmig.error)).toList();
   }
 
   private static class MyModuleMigration extends MigrationScriptBase {

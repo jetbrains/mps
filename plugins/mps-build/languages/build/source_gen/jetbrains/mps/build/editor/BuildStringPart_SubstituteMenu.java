@@ -17,9 +17,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
@@ -83,15 +81,7 @@ public class BuildStringPart_SubstituteMenu extends SubstituteMenuBase {
       if (scope == null) {
         return null;
       }
-      return Sequence.fromIterable(scope.getAvailableElements(null)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildVariableMacro$Rk);
-        }
-      }).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SNodeOperations.cast(it, CONCEPTS.BuildVariableMacro$Rk);
-        }
-      }).toListSequence();
+      return Sequence.fromIterable(scope.getAvailableElements(null)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BuildVariableMacro$Rk)).select((it) -> SNodeOperations.cast(it, CONCEPTS.BuildVariableMacro$Rk)).toList();
     }
     private class SMP_Action_fvo6kj_a0 extends SingleItemSubstituteMenuPart {
       private final SNode myParameterObject;

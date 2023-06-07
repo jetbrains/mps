@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -40,11 +39,7 @@ public class JavaTypeParameterDeclaration extends DefaultTypeParameterDeclaratio
     if ((SLinkOperations.getTarget(myTypeVariableDeclaration, LINKS.bound$aZCB) != null)) {
       ListSequence.fromList(bounds).addElement(JavaToKtConversion.convert(SLinkOperations.getTarget(myTypeVariableDeclaration, LINKS.bound$aZCB)));
     }
-    ListSequence.fromList(bounds).addSequence(ListSequence.fromList(SLinkOperations.getChildren(myTypeVariableDeclaration, LINKS.auxBounds$jgLr)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode type) {
-        return JavaToKtConversion.convert(type);
-      }
-    }));
+    ListSequence.fromList(bounds).addSequence(ListSequence.fromList(SLinkOperations.getChildren(myTypeVariableDeclaration, LINKS.auxBounds$jgLr)).select((type) -> JavaToKtConversion.convert(type)));
     return bounds;
   }
   @Override

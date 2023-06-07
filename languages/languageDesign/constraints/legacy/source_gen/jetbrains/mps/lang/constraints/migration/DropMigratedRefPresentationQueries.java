@@ -37,11 +37,7 @@ public class DropMigratedRefPresentationQueries extends MigrationScriptBase {
     {
       SearchScope scope_yimnkw_a0e = CommandUtil.createScope(m);
       final SearchScope scope_yimnkw_a0e_0 = new EditableFilteringScope(scope_yimnkw_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_yimnkw_a0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_yimnkw_a0e_0;
       Collection<SNode> conceptConstraints = CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptConstraints$Yt, false);
       for (SNode rc : Sequence.fromIterable(SLinkOperations.collectMany(conceptConstraints, LINKS.referent$k0ZK))) {
         if ((SLinkOperations.getTarget(rc, LINKS.presentation$VLnP) == null)) {

@@ -4,7 +4,6 @@ package jetbrains.mps.kotlin.scopes.signed;
 
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.kotlin.behavior.IVisible__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -15,11 +14,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TopLevelVisibility {
   public static <T extends SNode> Iterable<T> visibleTo(Iterable<T> declarations, final SNode contextNode) {
-    return Sequence.fromIterable(declarations).where(new IWhereFilter<T>() {
-      public boolean accept(T it) {
-        return visibleTo(it, contextNode);
-      }
-    });
+    return Sequence.fromIterable(declarations).where((it) -> visibleTo(it, contextNode));
   }
   /**
    * Checks if the declaration is visible to the context node in a top level context.

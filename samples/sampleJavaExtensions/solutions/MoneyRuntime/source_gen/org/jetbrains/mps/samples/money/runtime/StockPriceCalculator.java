@@ -5,21 +5,11 @@ package org.jetbrains.mps.samples.money.runtime;
 import java.math.BigDecimal;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 
 public final class StockPriceCalculator {
   public static Iterable<BigDecimal> calculateMovingAverage(List<DailyStockPrice> prices) {
     List<DailyStockPrice> pricesToUse = retrievePricesWithin(prices);
-    BigDecimal sum = ListSequence.fromList(pricesToUse).select(new ISelector<DailyStockPrice, BigDecimal>() {
-      public BigDecimal select(DailyStockPrice it) {
-        return it.getAdjustedClose();
-      }
-    }).reduceLeft(new ILeftCombinator<BigDecimal, BigDecimal>() {
-      public BigDecimal combine(BigDecimal a, BigDecimal b) {
-        return a.add(b);
-      }
-    });
+    BigDecimal sum = ListSequence.fromList(pricesToUse).select((it) -> it.getAdjustedClose()).reduceLeft((a, b) -> a.add(b));
     BigDecimal divided = sum.divide(BigDecimal.valueOf(ListSequence.fromList(pricesToUse).count()));
     return null;
 

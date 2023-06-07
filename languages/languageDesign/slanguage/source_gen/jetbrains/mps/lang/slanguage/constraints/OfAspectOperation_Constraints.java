@@ -18,8 +18,6 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.scope.ModelsScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -44,11 +42,7 @@ public class OfAspectOperation_Constraints extends BaseConstraintsDescriptor {
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             Iterable<SModule> modules = SNodeOperations.getModel(_context.getContextNode()).getModule().getRepository().getModules();
-            return new ModelsScope(Sequence.fromIterable(modules).select(new ISelector<SModule, SModel>() {
-              public SModel select(SModule it) {
-                return SModuleOperations.getAspect(it, "plugin");
-              }
-            }), true, LINKS.requestedAspect$fCKn.getTargetConcept());
+            return new ModelsScope(Sequence.fromIterable(modules).select((it) -> SModuleOperations.getAspect(it, "plugin")), true, LINKS.requestedAspect$fCKn.getTargetConcept());
           }
         };
       }

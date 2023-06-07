@@ -102,13 +102,11 @@ public class typeof_LocalExtendedMethodCall_InferenceRule extends AbstractInfere
         if (SNodeOperations.isInstanceOf(_type, CONCEPTS.IGenericType$13)) {
           {
             final SNode A = argt_var;
-            typeCheckingContext.whenConcrete(A, new Runnable() {
-              public void run() {
-                {
-                  SNode _nodeToCheck_1029348928467 = lexmcall;
-                  EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:d9557470-9267-4b7b-ab45-4dc4cc5d697c(jetbrains.mps.baseLanguage.extensionMethods.typesystem)", "9033423951287571569", 0, null);
-                  typeCheckingContext.createGreaterThanInequality((SNode) IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(SNodeOperations.cast(_type, CONCEPTS.IGenericType$13), subs), (SNode) typeCheckingContext.getExpandedNode(A), false, true, _info_12389875345);
-                }
+            typeCheckingContext.whenConcrete(A, () -> {
+              {
+                SNode _nodeToCheck_1029348928467 = lexmcall;
+                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:d9557470-9267-4b7b-ab45-4dc4cc5d697c(jetbrains.mps.baseLanguage.extensionMethods.typesystem)", "9033423951287571569", 0, null);
+                typeCheckingContext.createGreaterThanInequality((SNode) IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(SNodeOperations.cast(_type, CONCEPTS.IGenericType$13), subs), (SNode) typeCheckingContext.getExpandedNode(A), false, true, _info_12389875345);
               }
             }, "r:d9557470-9267-4b7b-ab45-4dc4cc5d697c(jetbrains.mps.baseLanguage.extensionMethods.typesystem)", "9033423951287571567", true, false);
           }

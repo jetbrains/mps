@@ -4,22 +4,12 @@ package jetbrains.mps.closures.test;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.IListSequence;
 
 public class AddClosureToList_Test {
   public void testCollection(List<Runnable> runnables) {
     // MPS-10199
-    // collection lang have no support for closures generation:
-    // - add one?
-    // - make lambda generation default if uncertain?
-    // - add mechanism to detect type AFTER several generation steps? (addElement should get the correct type)
-    // this is actually quite important as we need a balance between automation from closure lang and customization from use site languages
-    ListSequence.fromList(runnables).addElement(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        System.out.println("wahoo!");
-      }
-    });
+    ListSequence.fromList(runnables).addElement(() -> System.out.println("wahoo!"));
   }
 
   public void testNative(IListSequence<Runnable> listSequence) {

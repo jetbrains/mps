@@ -17,9 +17,7 @@ import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -75,27 +73,15 @@ public final class ExpandBoolean_Intention extends AbstractIntentionDescriptor i
       //  
       final SNode fake_node = node;
       Iterable<SNode> refs;
-      refs = ListSequence.fromList(SNodeOperations.getNodeDescendants(ListSequence.fromList(SLinkOperations.getChildren(ifTrue, LINKS.statement$53DE)).first(), null, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.VariableReference$TC) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG) == SLinkOperations.getTarget(fake_node, LINKS.variableDeclaration$N1XG);
-        }
+      refs = ListSequence.fromList(SNodeOperations.getNodeDescendants(ListSequence.fromList(SLinkOperations.getChildren(ifTrue, LINKS.statement$53DE)).first(), null, false, new SAbstractConcept[]{})).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.VariableReference$TC) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG) == SLinkOperations.getTarget(fake_node, LINKS.variableDeclaration$N1XG));
+      Sequence.fromIterable(refs).visitAll((it) -> {
+        SNode booleanConstant = SNodeFactoryOperations.replaceWithNewChild(it, CONCEPTS.BooleanConstant$n4);
+        SPropertyOperations.set(booleanConstant, PROPS.value$5y_M, true);
       });
-      Sequence.fromIterable(refs).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNode booleanConstant = SNodeFactoryOperations.replaceWithNewChild(it, CONCEPTS.BooleanConstant$n4);
-          SPropertyOperations.set(booleanConstant, PROPS.value$5y_M, true);
-        }
-      });
-      refs = ListSequence.fromList(SNodeOperations.getNodeDescendants(ListSequence.fromList(SLinkOperations.getChildren(ifFalse, LINKS.statement$53DE)).first(), null, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.VariableReference$TC) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG) == SLinkOperations.getTarget(fake_node, LINKS.variableDeclaration$N1XG);
-        }
-      });
-      Sequence.fromIterable(refs).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNode booleanConstant = SNodeFactoryOperations.replaceWithNewChild(it, CONCEPTS.BooleanConstant$n4);
-          SPropertyOperations.set(booleanConstant, PROPS.value$5y_M, false);
-        }
+      refs = ListSequence.fromList(SNodeOperations.getNodeDescendants(ListSequence.fromList(SLinkOperations.getChildren(ifFalse, LINKS.statement$53DE)).first(), null, false, new SAbstractConcept[]{})).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.VariableReference$TC) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG) == SLinkOperations.getTarget(fake_node, LINKS.variableDeclaration$N1XG));
+      Sequence.fromIterable(refs).visitAll((it) -> {
+        SNode booleanConstant = SNodeFactoryOperations.replaceWithNewChild(it, CONCEPTS.BooleanConstant$n4);
+        SPropertyOperations.set(booleanConstant, PROPS.value$5y_M, false);
       });
       //  
       SNodeOperations.deleteNode(statementNode);

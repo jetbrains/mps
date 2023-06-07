@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
     <use id="696c1165-4a59-463b-bc5d-902caab85dd0" name="jetbrains.mps.make.facet" version="0" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
@@ -303,6 +303,7 @@
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199542442495" name="jetbrains.mps.baseLanguage.closures.structure.FunctionType" flags="in" index="1ajhzC">
         <child id="1199542457201" name="resultType" index="1ajl9A" />
         <child id="1199542501692" name="parameterType" index="1ajw0F" />
@@ -393,7 +394,6 @@
       <concept id="1201306600024" name="jetbrains.mps.baseLanguage.collections.structure.ContainsKeyOperation" flags="nn" index="2Nt0df">
         <child id="1201654602639" name="key" index="38cxEo" />
       </concept>
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1160600644654" name="jetbrains.mps.baseLanguage.collections.structure.ListCreatorWithInit" flags="nn" index="Tc6Ow" />
       <concept id="4611582986551314327" name="jetbrains.mps.baseLanguage.collections.structure.OfTypeOperation" flags="nn" index="UnYns">
         <child id="4611582986551314344" name="requestedType" index="UnYnz" />
@@ -3225,7 +3225,7 @@
                       <node concept="2OqwBi" id="60e6c$4Tlw9" role="3clFbG">
                         <node concept="2OqwBi" id="60e6c$4TkQQ" role="2Oq$k0">
                           <node concept="37vLTw" id="60e6c$4Tkjr" role="2Oq$k0">
-                            <ref role="3cqZAo" node="60e6c$4TkeD" resolve="it" />
+                            <ref role="3cqZAo" node="5W7E4fV0Xaw" />
                           </node>
                           <node concept="2sxana" id="60e6c$4Tl2F" role="2OqNvi">
                             <ref role="2sxfKC" to="fn29:1Xl3kQ1uadN" resolve="models" />
@@ -3235,9 +3235,9 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="Rh6nW" id="60e6c$4TkeD" role="1bW2Oz">
+                  <node concept="gl6BB" id="5W7E4fV0Xaw" role="1bW2Oz">
                     <property role="TrG5h" value="it" />
-                    <node concept="2jxLKc" id="60e6c$4TkeE" role="1tU5fm" />
+                    <node concept="2jxLKc" id="5W7E4fV0Xax" role="1tU5fm" />
                   </node>
                 </node>
               </node>

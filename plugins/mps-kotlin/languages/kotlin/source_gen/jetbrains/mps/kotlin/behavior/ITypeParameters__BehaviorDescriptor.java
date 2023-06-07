@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -34,11 +33,7 @@ public final class ITypeParameters__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static Iterable<TypeParameterDeclaration> getTypeParameterDescriptors_id28CvMylfXMr(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.typeParameters$eq6K)).select(new ISelector<SNode, TypeParameterDeclaration>() {
-      public TypeParameterDeclaration select(SNode it) {
-        return (TypeParameterDeclaration) ITypeParameter__BehaviorDescriptor.getDescriptor_id28CvMylflrH.invoke(it);
-      }
-    }).where(new NotNullWhereFilter<TypeParameterDeclaration>());
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.typeParameters$eq6K)).select((it) -> (TypeParameterDeclaration) ITypeParameter__BehaviorDescriptor.getDescriptor_id28CvMylflrH.invoke(it)).where(new NotNullWhereFilter());
   }
 
   /*package*/ ITypeParameters__BehaviorDescriptor() {

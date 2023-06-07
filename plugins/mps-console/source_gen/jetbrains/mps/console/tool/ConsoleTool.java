@@ -48,7 +48,7 @@ public class ConsoleTool extends BaseTabbedProjectTool implements PersistentStat
   }
 
   private static Map<String, KeyStroke> getKeymap() {
-    return MapSequence.<String, KeyStroke>fromMapAndKeysArray(new HashMap<String, KeyStroke>(), KeymapManager.DEFAULT_IDEA_KEYMAP).withValues(KeyStroke.getKeyStroke("alt F11"));
+    return MapSequence.fromMapAndEntryArray(new HashMap<String, KeyStroke>(), Map.entry(KeymapManager.DEFAULT_IDEA_KEYMAP, KeyStroke.getKeyStroke("alt F11")));
   }
 
   @Override

@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -35,11 +34,7 @@ public final class JavaAnnotation__BehaviorDescriptor extends BaseBHDescriptor {
 
   @NotNull
   /*package*/ static Iterable<ParameterDeclaration> getAvailableParameters_id1$jFvlD0xqw(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.annotation$XpH6), LINKS.method$_DCK)).select(new ISelector<SNode, JavaAnnotationParameterDeclaration>() {
-      public JavaAnnotationParameterDeclaration select(SNode method) {
-        return new JavaAnnotationParameterDeclaration(method);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.annotation$XpH6), LINKS.method$_DCK)).select((method) -> new JavaAnnotationParameterDeclaration(method));
   }
 
   /*package*/ JavaAnnotation__BehaviorDescriptor() {

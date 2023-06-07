@@ -10,7 +10,6 @@ import java.util.Queue;
 import jetbrains.mps.internal.collections.runtime.QueueSequence;
 import java.util.LinkedList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -22,11 +21,7 @@ public class Cycles_Test {
     graph.addEdges("A", "B");
     Assert.assertTrue(ListSequence.fromList(cd.findCycles()).isEmpty());
     final Queue<String> q = QueueSequence.fromQueueAndArray(new LinkedList<String>(), "A", "B");
-    Sequence.fromIterable(cd.topologicalSort()).visitAll(new IVisitor<String>() {
-      public void visit(String v) {
-        Assert.assertEquals(QueueSequence.fromQueue(q).removeFirstElement(), v);
-      }
-    });
+    Sequence.fromIterable(cd.topologicalSort()).visitAll((v) -> Assert.assertEquals(QueueSequence.fromQueue(q).removeFirstElement(), v));
     graph.addEdges("B", "A");
     List<List<String>> cycles = cd.findCycles();
     Assert.assertSame(1, ListSequence.fromList(cycles).count());
@@ -43,7 +38,7 @@ public class Cycles_Test {
     graph.addEdges("B", "B");
     List<List<String>> cycles2 = cd.findCycles();
     Assert.assertSame(2, ListSequence.fromList(cycles2).count());
-    Assert.assertTrue(ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList(), ListSequence.fromListAndArray(new ArrayList<String>(), "A"), ListSequence.fromListAndArray(new ArrayList<String>(), "B"))).disjunction(ListSequence.fromList(cycles2)).isEmpty());
+    Assert.assertTrue(ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<List<String>>(), ListSequence.fromListAndArray(new ArrayList<>(), "A"), ListSequence.fromListAndArray(new ArrayList<>(), "B"))).disjunction(ListSequence.fromList(cycles2)).isEmpty());
   }
   @Test
   public void test_oneCycle() throws Exception {
@@ -135,11 +130,7 @@ public class Cycles_Test {
     // The idea here is to see how MPS-15018 fix (a3220e6e) affects the outcome graph
     // Compare the outcome with the result in totalOrderCompactNoSelfEdges(), above, to see the difference
     // It's still unclear to me how come this change helps to address the issue, the test added just to capture this difference
-    Sequence.fromIterable(graph.getVertices()).visitAll(new IVisitor<String>() {
-      public void visit(String it) {
-        graph.addEdges(it, it);
-      }
-    });
+    Sequence.fromIterable(graph.getVertices()).visitAll((it) -> graph.addEdges(it, it));
     // 
     GraphAnalyzer<String> cd = graph.getCycleDetector();
     List<List<String>> cycles = cd.totalOrder(true);

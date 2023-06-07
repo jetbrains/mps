@@ -26,7 +26,6 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.debug.api.breakpoints.BreakpointLocation;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
@@ -149,11 +148,7 @@ public class TraceInfoTest implements EnvironmentAware {
   public void internalClassTest() {
     invokeTestWithModelRead(() -> {
       SNode testClass = SNodeOperations.cast(new SNodePointer("r:fc539459-610a-408b-8472-ac3a7316412f(jetbrains.mps.traceInfo.test@tests)", "8529179251482782650").resolve(myProject.getRepository()), CONCEPTS.ClassConcept$bK);
-      SNode statement = Sequence.fromIterable(SLinkOperations.collectMany(SLinkOperations.collect(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(testClass)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SPropertyOperations.getString(it, PROPS.name$MnvL).equals("internalClassTest");
-        }
-      }), LINKS.body$5xQk), LINKS.statement$53DE)).first();
+      SNode statement = Sequence.fromIterable(SLinkOperations.collectMany(SLinkOperations.collect(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(testClass)).where((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).equals("internalClassTest")), LINKS.body$5xQk), LINKS.statement$53DE)).first();
       BreakpointLocation location = new BreakpointLocation(statement);
       Assert.assertEquals("jetbrains.mps.traceInfo.test.TestClass", location.getTargetUnitName());
     });

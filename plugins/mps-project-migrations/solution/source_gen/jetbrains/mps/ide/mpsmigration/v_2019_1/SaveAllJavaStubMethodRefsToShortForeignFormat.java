@@ -10,16 +10,12 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.smodel.Generator;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.smodel.SModelStereotype;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 
 public class SaveAllJavaStubMethodRefsToShortForeignFormat extends BaseProjectMigration {
@@ -33,62 +29,42 @@ public class SaveAllJavaStubMethodRefsToShortForeignFormat extends BaseProjectMi
     {
       SearchScope scope_k1moov_a0c = CommandUtil.createScope(project);
       final SearchScope scope_k1moov_a0c_0 = new EditableFilteringScope(scope_k1moov_a0c);
-      final QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_k1moov_a0c_0;
-        }
-      };
+      final QueryExecutionContext context = () -> scope_k1moov_a0c_0;
       project.getRepository().getModelAccess().runReadAction(() -> {
-        Sequence.fromIterable(CommandUtil.modules(CommandUtil.selectScope(null, context))).visitAll(new IVisitor<SModule>() {
-          public void visit(SModule it) {
-            if (it instanceof AbstractModule) {
-              AbstractModule module = (AbstractModule) it;
-              module.updateExternalReferences();
-              if (!(module instanceof Generator)) {
-                // generators are saved as part of owning Language's save, no need to do it twice
-                module.save();
-              }
+        Sequence.fromIterable(CommandUtil.modules(CommandUtil.selectScope(null, context))).visitAll((it) -> {
+          if (it instanceof AbstractModule) {
+            AbstractModule module = (AbstractModule) it;
+            module.updateExternalReferences();
+            if (!(module instanceof Generator)) {
+              // generators are saved as part of owning Language's save, no need to do it twice
+              module.save();
             }
           }
         });
-        Sequence.fromIterable(CommandUtil.references(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SReference>() {
-          public boolean accept(SReference it) {
-            SNode targetNode = it.getTargetNode();
-            if (targetNode == null) {
-              // broken?
-              return false;
-            }
-            return ((SReference) it) instanceof StaticReference && SModelStereotype.isStubModel(targetNode.getModel());
+        Sequence.fromIterable(CommandUtil.references(CommandUtil.selectScope(null, context))).where((it) -> {
+          SNode targetNode = it.getTargetNode();
+          if (targetNode == null) {
+            // broken?
+            return false;
           }
-        }).visitAll(new IVisitor<SReference>() {
-          public void visit(SReference it) {
-            StaticReference reference = (StaticReference) ((SReference) it);
-            reference.setTargetNodeId((reference.getTargetNode()).getNodeId());
-          }
+          return ((SReference) it) instanceof StaticReference && SModelStereotype.isStubModel(targetNode.getModel());
+        }).visitAll((it) -> {
+          StaticReference reference = (StaticReference) ((SReference) it);
+          reference.setTargetNodeId((reference.getTargetNode()).getNodeId());
         });
-        Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SModel>() {
-          public boolean accept(SModel it) {
-            return !(SModelStereotype.isStubModel(it)) && it instanceof EditableSModel;
-          }
-        }).where(new IWhereFilter<SModel>() {
-          public boolean accept(SModel it) {
-            return !(((EditableSModel) it).isReadOnly());
-          }
-        }).visitAll(new IVisitor<SModel>() {
-          public void visit(SModel it) {
-            EditableSModel model = (EditableSModel) it;
-            try {
-              // ensure model is loaded
-              model.load();
-              // and force to save model
-              model.setChanged(true);
-              if (model.isChanged()) {
-                model.save();
-              }
-            } catch (Exception ex) {
-              if (LOG.isErrorLevel()) {
-                LOG.error("Error re-saving model " + model.getName(), ex);
-              }
+        Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).where((it) -> !(SModelStereotype.isStubModel(it)) && it instanceof EditableSModel).where((it) -> !(((EditableSModel) it).isReadOnly())).visitAll((it) -> {
+          EditableSModel model = (EditableSModel) it;
+          try {
+            // ensure model is loaded
+            model.load();
+            // and force to save model
+            model.setChanged(true);
+            if (model.isChanged()) {
+              model.save();
+            }
+          } catch (Exception ex) {
+            if (LOG.isErrorLevel()) {
+              LOG.error("Error re-saving model " + model.getName(), ex);
             }
           }
         });

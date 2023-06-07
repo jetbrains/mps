@@ -17,10 +17,7 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -46,25 +43,9 @@ public final class AbstractNodeRefExpression__BehaviorDescriptor extends BaseBHD
     Iterable<SNode> children = thisList;
     Iterable<SNode> result = Sequence.fromIterable(Collections.<SNode>emptyList());
     while (Sequence.fromIterable(children).isNotEmpty()) {
-      children = Sequence.fromIterable(children).translate(new ITranslator2<SNode, SNode>() {
-        public Iterable<SNode> translate(SNode it) {
-          return SNodeOperations.getChildren(it);
-        }
-      });
-      result = Sequence.fromIterable(result).concat(Sequence.fromIterable(children).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.INamedConcept$Kd);
-        }
-      }).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SNodeOperations.cast(it, CONCEPTS.INamedConcept$Kd);
-        }
-      }));
-      children = Sequence.fromIterable(children).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(it, CONCEPTS.INamedConcept$Kd));
-        }
-      });
+      children = Sequence.fromIterable(children).translate((it) -> SNodeOperations.getChildren(it));
+      result = Sequence.fromIterable(result).concat(Sequence.fromIterable(children).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.INamedConcept$Kd)).select((it) -> SNodeOperations.cast(it, CONCEPTS.INamedConcept$Kd)));
+      children = Sequence.fromIterable(children).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.INamedConcept$Kd)));
     }
     return result;
   }

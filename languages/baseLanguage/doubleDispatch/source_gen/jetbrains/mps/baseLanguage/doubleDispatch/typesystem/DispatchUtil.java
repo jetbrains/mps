@@ -7,11 +7,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -27,91 +24,79 @@ public class DispatchUtil {
     return SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).first(), LINKS.type$a1UY), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK);
   }
   public static boolean isReadyMethod(SNode method) {
-    return SPropertyOperations.getString(method, PROPS.name$MnvL) != null && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.type$a1UY) != null && !(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(it, LINKS.type$a1UY))), CONCEPTS.Type$bu));
-      }
-    }) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.modifiers$F5MM)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.DispatchModifier$PK);
-      }
-    });
+    return SPropertyOperations.getString(method, PROPS.name$MnvL) != null && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).all((it) -> SLinkOperations.getTarget(it, LINKS.type$a1UY) != null && !(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(it, LINKS.type$a1UY))), CONCEPTS.Type$bu))) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.modifiers$F5MM)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.DispatchModifier$PK));
   }
   public static Iterable<SNode> ancestors(final SNode arg, boolean concreteFirst) {
     // true for baseLanguage,
     // for smodel it would be node<BaseConcept>
     final SNode rootOfHierarchy = SNodeOperations.cast(SLinkOperations.getTarget(_quotation_createNode_pzuztq_a0a0c0d(), LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK);
 
-    Iterable<SNode> classes = Sequence.fromClosure(new ISequenceClosure<SNode>() {
-      public Iterable<SNode> iterable() {
-        return new Iterable<SNode>() {
-          public Iterator<SNode> iterator() {
-            return new YieldingIterator<SNode>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
+    Iterable<SNode> classes = Sequence.fromClosure(() -> {
+      return (Iterable<SNode>) () -> {
+        return new YieldingIterator<SNode>() {
+          private int __CP__ = 0;
+          protected boolean moveToNext() {
 __loop__:
-                do {
+            do {
 __switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 7:
-                      if (_3_cl == rootOfHierarchy) {
-                        this.__CP__ = 8;
-                        break;
-                      }
-                      this.__CP__ = 9;
-                      break;
-                    case 11:
-                      if (_3_cl == null) {
-                        this.__CP__ = 12;
-                        break;
-                      }
-                      this.__CP__ = 4;
-                      break;
-                    case 4:
-                      if (_3_cl != null) {
-                        this.__CP__ = 5;
-                        break;
-                      }
-                      this.__CP__ = 1;
-                      break;
-                    case 6:
-                      this.__CP__ = 7;
-                      this.yield(_3_cl);
-                      return true;
-                    case 0:
-                      this._3_cl = arg;
-
-                      this.__CP__ = 4;
-                      break;
-                    case 5:
-                      this.__CP__ = 6;
-                      break;
-                    case 9:
-
-                      _3_cl = SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(_3_cl, LINKS.superclass$Mp9$), LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK);
-                      this.__CP__ = 11;
-                      break;
-                    case 8:
-                      this.__CP__ = 1;
-                      break;
-                    case 12:
-                      _3_cl = rootOfHierarchy;
-                      this.__CP__ = 4;
-                      break;
-                    default:
-                      break __loop__;
+              switch (this.__CP__) {
+                case -1:
+                  assert false : "Internal error";
+                  return false;
+                case 7:
+                  if (_3_cl == rootOfHierarchy) {
+                    this.__CP__ = 8;
+                    break;
                   }
-                } while (true);
-                return false;
+                  this.__CP__ = 9;
+                  break;
+                case 11:
+                  if (_3_cl == null) {
+                    this.__CP__ = 12;
+                    break;
+                  }
+                  this.__CP__ = 4;
+                  break;
+                case 4:
+                  if (_3_cl != null) {
+                    this.__CP__ = 5;
+                    break;
+                  }
+                  this.__CP__ = 1;
+                  break;
+                case 6:
+                  this.__CP__ = 7;
+                  this.yield(_3_cl);
+                  return true;
+                case 0:
+                  this._3_cl = arg;
+
+                  this.__CP__ = 4;
+                  break;
+                case 5:
+                  this.__CP__ = 6;
+                  break;
+                case 9:
+
+                  _3_cl = SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(_3_cl, LINKS.superclass$Mp9$), LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK);
+                  this.__CP__ = 11;
+                  break;
+                case 8:
+                  this.__CP__ = 1;
+                  break;
+                case 12:
+                  _3_cl = rootOfHierarchy;
+                  this.__CP__ = 4;
+                  break;
+                default:
+                  break __loop__;
               }
-              private SNode _3_cl;
-            };
+            } while (true);
+            return false;
           }
+          private SNode _3_cl;
         };
-      }
+      };
     });
 
     if (concreteFirst) {
@@ -119,7 +104,7 @@ __switch__:
       return classes;
     } else {
       // becomes strict
-      return ListSequence.fromList(Sequence.fromIterable(classes).toListSequence()).reversedList();
+      return ListSequence.fromList(Sequence.fromIterable(classes).toList()).reversedList();
     }
   }
   public static boolean isParent(SNode base, SNode clas) {

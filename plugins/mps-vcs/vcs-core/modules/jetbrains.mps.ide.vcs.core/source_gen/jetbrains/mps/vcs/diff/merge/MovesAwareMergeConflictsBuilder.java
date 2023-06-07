@@ -17,17 +17,13 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.Collection;
 import jetbrains.mps.vcs.diff.changes.HierarchicalNodeGroupChange;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.Collections;
 import java.util.ArrayList;
@@ -41,6 +37,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.vcs.diff.DiffUtil;
 import jetbrains.mps.vcs.diff.changes.WrappingNodesGroup;
 import java.util.function.Function;
+import jetbrains.mps.internal.collections.runtime.IListSequence;
 
 @GeneratedClass(node = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)/2244785825716135804", model = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)")
 public class MovesAwareMergeConflictsBuilder implements ChangeConflictsBuilder {
@@ -94,21 +91,9 @@ public class MovesAwareMergeConflictsBuilder implements ChangeConflictsBuilder {
   }
 
   private void collectSymmetricHierarchicalChanges() {
-    List<SNodeId> mineRootIds = ListSequence.fromList(SModelOperations.roots(myMineModel, null)).select(new ISelector<SNode, SNodeId>() {
-      public SNodeId select(SNode it) {
-        return it.getNodeId();
-      }
-    }).toListSequence();
-    List<SNodeId> repoRootIds = ListSequence.fromList(SModelOperations.roots(myRepositoryModel, null)).select(new ISelector<SNode, SNodeId>() {
-      public SNodeId select(SNode it) {
-        return it.getNodeId();
-      }
-    }).toListSequence();
-    ListSequence.fromList(mineRootIds).intersect(ListSequence.fromList(repoRootIds)).visitAll(new IVisitor<SNodeId>() {
-      public void visit(SNodeId rootId) {
-        buildSymmetricChangesForNode(getMyNode(rootId), getRepoNode(rootId));
-      }
-    });
+    List<SNodeId> mineRootIds = ListSequence.fromList(SModelOperations.roots(myMineModel, null)).select((it) -> it.getNodeId()).toList();
+    List<SNodeId> repoRootIds = ListSequence.fromList(SModelOperations.roots(myRepositoryModel, null)).select((it) -> it.getNodeId()).toList();
+    ListSequence.fromList(mineRootIds).intersect(ListSequence.fromList(repoRootIds)).visitAll((rootId) -> buildSymmetricChangesForNode(getMyNode(rootId), getRepoNode(rootId)));
   }
 
   private void buildSymmetricChangesForNode(@NotNull final SNode myNode, @NotNull final SNode repoNode) {
@@ -116,19 +101,11 @@ public class MovesAwareMergeConflictsBuilder implements ChangeConflictsBuilder {
     final Map<SContainmentLink, List<SNodeId>> myRoleToChildCollection = getRoleToChildCollectionMap(myNode);
     final Map<SContainmentLink, List<SNodeId>> repoRoleToChildCollection = getRoleToChildCollectionMap(repoNode);
 
-    SetSequence.fromSet(MapSequence.fromMap(myRoleToChildCollection).keySet()).intersect(SetSequence.fromSet(MapSequence.fromMap(repoRoleToChildCollection).keySet())).visitAll(new IVisitor<SContainmentLink>() {
-      public void visit(SContainmentLink role) {
-        buildSymmetricChangesForNodeRole(MapSequence.fromMap(myRoleToChildCollection).get(role), MapSequence.fromMap(repoRoleToChildCollection).get(role), myNode.getNodeId(), repoNode.getNodeId(), role);
-      }
-    });
+    SetSequence.fromSet(MapSequence.fromMap(myRoleToChildCollection).keySet()).intersect(SetSequence.fromSet(MapSequence.fromMap(repoRoleToChildCollection).keySet())).visitAll((role) -> buildSymmetricChangesForNodeRole(MapSequence.fromMap(myRoleToChildCollection).get(role), MapSequence.fromMap(repoRoleToChildCollection).get(role), myNode.getNodeId(), repoNode.getNodeId(), role));
   }
 
   private Collection<HierarchicalNodeGroupChange> getChangesInRole(ChangeSet changeSet, final SNodeId parentId, final SContainmentLink role) {
-    return ListSequence.fromList(changeSet.getModelChanges()).ofType(HierarchicalNodeGroupChange.class).where(new IWhereFilter<HierarchicalNodeGroupChange>() {
-      public boolean accept(HierarchicalNodeGroupChange it) {
-        return Objects.equals(it.getParentId(true), parentId) && Objects.equals(it.getLink(true), role);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(changeSet.getModelChanges()).ofType(HierarchicalNodeGroupChange.class).where((it) -> Objects.equals(it.getParentId(true), parentId) && Objects.equals(it.getLink(true), role)).toList();
   }
 
   private void buildSymmetricChangesForNodeRole(@NotNull List<SNodeId> myChildrenIds, @NotNull List<SNodeId> repoChildrenIds, @NotNull SNodeId myParentId, @NotNull SNodeId repoParentId, @NotNull SContainmentLink role) {
@@ -195,11 +172,7 @@ public class MovesAwareMergeConflictsBuilder implements ChangeConflictsBuilder {
       return MapSequence.fromMap(mySymmetricNodeIds).get(nodeId);
     }
     if (MapSequence.fromMap(mySymmetricNodeIds).containsValue(nodeId)) {
-      return MapSequence.fromMap(mySymmetricNodeIds).findFirst(new IWhereFilter<IMapping<SNodeId, SNodeId>>() {
-        public boolean accept(IMapping<SNodeId, SNodeId> it) {
-          return Objects.equals(it.value(), nodeId);
-        }
-      }).key();
+      return MapSequence.fromMap(mySymmetricNodeIds).findFirst((it) -> Objects.equals(it.value(), nodeId)).key();
     }
     return null;
   }
@@ -219,28 +192,16 @@ public class MovesAwareMergeConflictsBuilder implements ChangeConflictsBuilder {
   }
 
   private List<HierarchicalNodeGroupChange> getSuccessiveChanges(Collection<HierarchicalNodeGroupChange> changes, final SNodeId anchorId) {
-    final HierarchicalNodeGroupChange lastChange = CollectionSequence.fromCollection(changes).findFirst(new IWhereFilter<HierarchicalNodeGroupChange>() {
-      public boolean accept(HierarchicalNodeGroupChange it) {
-        return it.getGroup(true).getNextGroup() == null && Objects.equals(it.getGroup(true).getNextNodeId(), anchorId);
-      }
-    });
+    final HierarchicalNodeGroupChange lastChange = CollectionSequence.fromCollection(changes).findFirst((it) -> it.getGroup(true).getNextGroup() == null && Objects.equals(it.getGroup(true).getNextNodeId(), anchorId));
     if (lastChange == null) {
       return Collections.emptyList();
     }
     List<HierarchicalNodeGroupChange> result = ListSequence.fromList(new ArrayList<HierarchicalNodeGroupChange>());
     ListSequence.fromList(result).addElement(lastChange);
-    final Wrappers._T<HierarchicalNodeGroupChange> prevChange = new Wrappers._T<HierarchicalNodeGroupChange>(CollectionSequence.fromCollection(changes).findFirst(new IWhereFilter<HierarchicalNodeGroupChange>() {
-      public boolean accept(HierarchicalNodeGroupChange it) {
-        return it.getGroup(true).getNextGroup() == lastChange.getGroup(true);
-      }
-    }));
+    final Wrappers._T<HierarchicalNodeGroupChange> prevChange = new Wrappers._T<HierarchicalNodeGroupChange>(CollectionSequence.fromCollection(changes).findFirst((it) -> it.getGroup(true).getNextGroup() == lastChange.getGroup(true)));
     while (prevChange.value != null) {
       ListSequence.fromList(result).addElement(prevChange.value);
-      prevChange.value = CollectionSequence.fromCollection(changes).findFirst(new IWhereFilter<HierarchicalNodeGroupChange>() {
-        public boolean accept(HierarchicalNodeGroupChange it) {
-          return it.getGroup(true).getNextGroup() == prevChange.value.getGroup(true);
-        }
-      });
+      prevChange.value = CollectionSequence.fromCollection(changes).findFirst((it) -> it.getGroup(true).getNextGroup() == prevChange.value.getGroup(true));
     }
     return result;
   }
@@ -367,15 +328,13 @@ public class MovesAwareMergeConflictsBuilder implements ChangeConflictsBuilder {
 
   /*package*/ static Map<SContainmentLink, List<SNodeId>> getRoleToChildCollectionMap(SNode node) {
     final Map<SContainmentLink, List<SNodeId>> roleToChildCollection = new HashMap<SContainmentLink, List<SNodeId>>();
-    ListSequence.fromList(SNodeOperations.getChildren(node)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode child) {
-        SContainmentLink link = SNodeOperations.getContainingLinkInChildrenAndChildAttributesCollection(child);
-        roleToChildCollection.computeIfAbsent(link, new Function<SContainmentLink, List<SNodeId>>() {
-          public List<SNodeId> apply(SContainmentLink link) {
-            return ListSequence.fromList(new ArrayList<SNodeId>());
-          }
-        }).add(child.getNodeId());
-      }
+    ListSequence.fromList(SNodeOperations.getChildren(node)).visitAll((child) -> {
+      SContainmentLink link = SNodeOperations.getContainingLinkInChildrenAndChildAttributesCollection(child);
+      roleToChildCollection.computeIfAbsent(link, new Function<SContainmentLink, List<SNodeId>>() {
+        public IListSequence<SNodeId> apply(SContainmentLink link) {
+          return ListSequence.fromList(new ArrayList<SNodeId>());
+        }
+      }).add(child.getNodeId());
     });
     for (SContainmentLink role : CollectionSequence.fromCollection(SNodeOperations.getConcept(node).getContainmentLinks())) {
       if (!(MapSequence.fromMap(roleToChildCollection).containsKey(role))) {

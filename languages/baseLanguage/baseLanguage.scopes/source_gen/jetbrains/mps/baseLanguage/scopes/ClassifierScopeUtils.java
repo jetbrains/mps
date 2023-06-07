@@ -9,9 +9,7 @@ import java.util.Collections;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Set;
 import org.jetbrains.annotations.NotNull;
 import java.util.LinkedHashSet;
@@ -37,15 +35,7 @@ public class ClassifierScopeUtils {
   }
 
   public static Iterable<SNode> getVisibleNestedClassConceptsIncludingInherited(@Nullable SNode type, final SNode contextNode) {
-    Iterable<SNode> visibleInheritedNestedClassifiers = SNodeOperations.ofConcept(SetSequence.fromSet(ClassifierScopeUtils.getExtendedClassifiers(SLinkOperations.getTarget(type, LINKS.classifier$cxMr))).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return (Iterable<SNode>) Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(it);
-      }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return VisibilityUtil.isVisible(contextNode, it);
-      }
-    }), CONCEPTS.ClassConcept$bK);
+    Iterable<SNode> visibleInheritedNestedClassifiers = SNodeOperations.ofConcept(SetSequence.fromSet(ClassifierScopeUtils.getExtendedClassifiers(SLinkOperations.getTarget(type, LINKS.classifier$cxMr))).translate((it) -> (Iterable<SNode>) Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(it)).where((it) -> VisibilityUtil.isVisible(contextNode, it)), CONCEPTS.ClassConcept$bK);
     return visibleInheritedNestedClassifiers;
   }
 

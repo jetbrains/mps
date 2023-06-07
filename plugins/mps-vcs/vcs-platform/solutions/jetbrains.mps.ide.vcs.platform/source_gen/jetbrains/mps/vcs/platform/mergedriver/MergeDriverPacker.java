@@ -20,7 +20,6 @@ import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.LinkedHashSet;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import com.intellij.openapi.application.ApplicationManager;
 
 @GeneratedClass(node = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)/287989868854455048", model = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)")
@@ -98,25 +97,13 @@ public abstract class MergeDriverPacker {
     //      E.g. may share PERSISTENCE cp with <copyModels> task. Alternatively, may switch MergeDriverMain to use 
     //      MpsEnvironment (more than just PERSISTENCE level, indeed) to share with <generate> task?
     final String mpsCorePath = getMPSCorePath();
-    SetSequence.fromSet(classpathItems).addSequence(Sequence.fromIterable(mpsLibJars).select(new ISelector<String, String>() {
-      public String select(String it) {
-        return mpsCorePath + File.separator + it;
-      }
-    }));
-    SetSequence.fromSet(classpathItems).addSequence(Sequence.fromIterable(mpsAddJars).select(new ISelector<String, String>() {
-      public String select(String it) {
-        return mpsCorePath + File.separator + it;
-      }
-    }));
+    SetSequence.fromSet(classpathItems).addSequence(Sequence.fromIterable(mpsLibJars).select((it) -> mpsCorePath + File.separator + it));
+    SetSequence.fromSet(classpathItems).addSequence(Sequence.fromIterable(mpsAddJars).select((it) -> mpsCorePath + File.separator + it));
 
     SetSequence.fromSet(classpathItems).addElement(getVCSCorePluginPath() + File.separator + "lib" + File.separator + getVCSCoreFileName());
 
     final String ideaLibPath = PathManager.getLibPath();
-    SetSequence.fromSet(classpathItems).addSequence(Sequence.fromIterable(ideaLibJars).select(new ISelector<String, String>() {
-      public String select(String it) {
-        return ideaLibPath + File.separator + it;
-      }
-    }));
+    SetSequence.fromSet(classpathItems).addSequence(Sequence.fromIterable(ideaLibJars).select((it) -> ideaLibPath + File.separator + it));
     return classpathItems;
   }
 

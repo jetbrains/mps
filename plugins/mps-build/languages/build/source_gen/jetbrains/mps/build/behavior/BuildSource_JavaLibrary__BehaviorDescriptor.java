@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -34,15 +33,13 @@ public final class BuildSource_JavaLibrary__BehaviorDescriptor extends BaseBHDes
   }
 
   /*package*/ static boolean canExportByParts_id4RsV8qJGJnM(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.elements$fli0)).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        SNode jlCP = SNodeOperations.as(it, CONCEPTS.BuildSource_JavaLibraryCP$up);
-        if (jlCP == null) {
-          return false;
-        }
-        SNode classpath = SLinkOperations.getTarget(jlCP, LINKS.classpath$WEG$);
-        return SNodeOperations.isInstanceOf(classpath, CONCEPTS.BuildSource_JavaJar$ne) || SNodeOperations.isInstanceOf(classpath, CONCEPTS.BuildSource_JavaLibraryExternalJar$gz) || SNodeOperations.isInstanceOf(classpath, CONCEPTS.BuildSource_JavaLibraryExternalJarFolder$A1);
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.elements$fli0)).all((it) -> {
+      SNode jlCP = SNodeOperations.as(it, CONCEPTS.BuildSource_JavaLibraryCP$up);
+      if (jlCP == null) {
+        return false;
       }
+      SNode classpath = SLinkOperations.getTarget(jlCP, LINKS.classpath$WEG$);
+      return SNodeOperations.isInstanceOf(classpath, CONCEPTS.BuildSource_JavaJar$ne) || SNodeOperations.isInstanceOf(classpath, CONCEPTS.BuildSource_JavaLibraryExternalJar$gz) || SNodeOperations.isInstanceOf(classpath, CONCEPTS.BuildSource_JavaLibraryExternalJarFolder$A1);
     });
   }
 

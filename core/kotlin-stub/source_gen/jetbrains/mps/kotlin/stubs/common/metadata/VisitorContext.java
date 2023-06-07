@@ -17,12 +17,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.IMapping;
-import java.util.function.Function;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.kotlin.stubs.common.references.StereotypeReference;
 import org.jetbrains.mps.openapi.model.ResolveInfo;
 import jetbrains.mps.kotlin.stubs.common.KotlinId;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -79,11 +77,7 @@ public class VisitorContext {
   public void setTypeParameter(SNode reference, int index) {
     if (ListSequence.fromList(parameters).count() <= index || ListSequence.fromList(parameters).getElement(index) == null) {
       // Add to late inits type parameters
-      lateInitParameterRefs.computeIfAbsent(index, new Function<Integer, List<SNode>>() {
-        public List<SNode> apply(Integer index) {
-          return ListSequence.fromList(new ArrayList<SNode>());
-        }
-      }).add(reference);
+      lateInitParameterRefs.computeIfAbsent(index, (i_) -> ListSequence.fromList(new ArrayList<>())).add(reference);
     } else {
       SLinkOperations.setTarget(reference, LINKS.parameter$ofYr, ListSequence.fromList(parameters).getElement(index));
     }
@@ -114,11 +108,7 @@ public class VisitorContext {
     }
 
     // Get late init values and fix those
-    ListSequence.fromList(MapSequence.fromMap(lateInitParameterRefs).get(id)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SLinkOperations.setTarget(it, LINKS.parameter$ofYr, param);
-      }
-    });
+    ListSequence.fromList(MapSequence.fromMap(lateInitParameterRefs).get(id)).visitAll((it) -> SLinkOperations.setTarget(it, LINKS.parameter$ofYr, param));
     ListSequence.fromList(MapSequence.fromMap(lateInitParameterRefs).get(id)).clear();
   }
 

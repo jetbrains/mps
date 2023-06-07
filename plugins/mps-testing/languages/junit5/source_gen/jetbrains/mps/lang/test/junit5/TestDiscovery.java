@@ -33,7 +33,7 @@ public class TestDiscovery {
     for (SModel model : models) {
       TestDiscoveryRequest request = new TestDiscoveryRequest(new TestDescriptor());
       for (final SNode root : SModelOperations.roots(((SModel) model), null)) {
-        request.discover(root).ifPresent((TestDescriptor descriptor) -> {
+        request.discover(root).ifPresent((descriptor) -> {
           myDiscoveryVisitor.visitTestRoot(root, descriptor.getFullName(), moduleCL);
 
         });

@@ -30,7 +30,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
@@ -122,11 +121,7 @@ public final class Interface__BehaviorDescriptor extends BaseBHDescriptor {
     return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invokeSuper(__thisNode__, CONCEPTS.Interface$db, kind, child));
   }
   /*package*/ static List<SNode> getExtendedClassifierTypes_id1UeCwxlWKny(@NotNull SNode __thisNode__) {
-    Iterable<SNode> extendedClassifiers = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.extendedInterface$PDVO)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.classifier$cxMr) != null);
-      }
-    });
+    Iterable<SNode> extendedClassifiers = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.extendedInterface$PDVO)).where((it) -> (SLinkOperations.getTarget(it, LINKS.classifier$cxMr) != null));
     if (Sequence.fromIterable(extendedClassifiers).isEmpty()) {
       return ListSequence.fromListAndArray(new ArrayList<SNode>(), createClassifierType_8wwxv0_a0a0a1a4());
     } else {
@@ -147,7 +142,7 @@ public final class Interface__BehaviorDescriptor extends BaseBHDescriptor {
     }
   }
   /*package*/ static void enumerateSupertypes_id65_8Gi1dKDs(@NotNull SNode __thisNode__, ClassifierHierarchyVisitor visitor) {
-    for (SNode extendedInterface : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.extendedInterface$PDVO)).where(new NotNullWhereFilter<SNode>())) {
+    for (SNode extendedInterface : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.extendedInterface$PDVO)).where(new NotNullWhereFilter())) {
       IClassifierType__BehaviorDescriptor.enumerateTypesHierarchy_id65_8Gi1edLu.invoke(extendedInterface, visitor);
     }
   }

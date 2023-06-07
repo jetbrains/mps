@@ -18,7 +18,6 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.ide.findusages.model.SearchResult;
 
 public class RefactoringAccessImpl extends RefactoringAccessEx {
   private static final int MAX_SEARCH_RESULTS = 30000;
@@ -69,7 +68,7 @@ public class RefactoringAccessImpl extends RefactoringAccessEx {
     if (searchResults.getSearchResults2().size() > MAX_SEARCH_RESULTS) {
       Messages.showWarningDialog(project, "More than " + MAX_SEARCH_RESULTS + " usages found. Only first " + MAX_SEARCH_RESULTS + " results will be displayed.", "Refactor");
 
-      SearchResults truncatedSearchResults = new SearchResults(searchResults.getSearchedObjects(), ListSequence.fromList((ListSequence.fromListWithValues(new ArrayList<SearchResult<Object>>(), searchResults.getSearchResults2()))).take(MAX_SEARCH_RESULTS).toListSequence());
+      SearchResults truncatedSearchResults = new SearchResults<>(searchResults.getSearchedObjects(), ListSequence.fromList(ListSequence.fromListWithValues(new ArrayList<>(), searchResults.getSearchResults2())).take(MAX_SEARCH_RESULTS).toList());
       return truncatedSearchResults;
     }
     return searchResults;

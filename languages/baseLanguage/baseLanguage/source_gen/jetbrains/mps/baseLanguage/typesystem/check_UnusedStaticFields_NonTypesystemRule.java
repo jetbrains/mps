@@ -11,7 +11,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -23,26 +22,10 @@ public class check_UnusedStaticFields_NonTypesystemRule extends AbstractNonTypes
   }
   public void applyRule(final SNode staticFieldDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(staticFieldDeclaration, LINKS.visibility$Yyua), CONCEPTS.PrivateVisibility$l0)) {
-      Iterable<SNode> refs = ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getContainingRoot(staticFieldDeclaration), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == staticFieldDeclaration;
-        }
-      }).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (SNodeOperations.getNodeAncestor(it, CONCEPTS.SingleLineComment$Kw, false, false) == null);
-        }
-      });
+      Iterable<SNode> refs = ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getContainingRoot(staticFieldDeclaration), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where((it) -> SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == staticFieldDeclaration).where((it) -> (SNodeOperations.getNodeAncestor(it, CONCEPTS.SingleLineComment$Kw, false, false) == null));
       VariableReferenceUtil.checkField(typeCheckingContext, staticFieldDeclaration, refs);
     } else if ((SLinkOperations.getTarget(staticFieldDeclaration, LINKS.visibility$Yyua) == null)) {
-      Iterable<SNode> refs = ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(staticFieldDeclaration), CONCEPTS.VariableReference$TC)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == staticFieldDeclaration;
-        }
-      }).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (SNodeOperations.getNodeAncestor(it, CONCEPTS.SingleLineComment$Kw, false, false) == null);
-        }
-      });
+      Iterable<SNode> refs = ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(staticFieldDeclaration), CONCEPTS.VariableReference$TC)).where((it) -> SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == staticFieldDeclaration).where((it) -> (SNodeOperations.getNodeAncestor(it, CONCEPTS.SingleLineComment$Kw, false, false) == null));
       VariableReferenceUtil.checkField(typeCheckingContext, staticFieldDeclaration, refs);
     }
   }

@@ -20,7 +20,6 @@ import jetbrains.mps.progress.ProgressMonitorAdapter;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import jetbrains.mps.util.IterableUtil;
@@ -68,11 +67,7 @@ public class CalcSNodeStatistic_Action extends BaseAction {
           if (LOG.isWarningLevel()) {
             LOG.warning("Modules: " + Sequence.fromIterable(modules).count());
           }
-          Iterable<SModel> models = Sequence.fromIterable(modules).translate(new ITranslator2<SModule, SModel>() {
-            public Iterable<SModel> translate(SModule it) {
-              return it.getModels();
-            }
-          });
+          Iterable<SModel> models = Sequence.fromIterable(modules).translate((it) -> it.getModels());
           if (LOG.isWarningLevel()) {
             LOG.warning("Models: " + Sequence.fromIterable(models).count());
           }

@@ -23,7 +23,6 @@ import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
@@ -93,18 +92,14 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
     return null;
   }
   /*package*/ static Iterable<SNode> findConceptAspects_id4G9PD8$NvPM(@NotNull final SNode __thisNode__, SModel model) {
-    return ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.IConceptAspect$Z3)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ListSequence.fromList(IConceptAspect__BehaviorDescriptor.getBaseConceptCollection_id4$$3zrO3UBG.invoke(it)).contains(__thisNode__);
-      }
-    });
+    return ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.IConceptAspect$Z3)).where((it) -> ListSequence.fromList(IConceptAspect__BehaviorDescriptor.getBaseConceptCollection_id4$$3zrO3UBG.invoke(it)).contains(__thisNode__));
   }
   /*package*/ static String getPresentation_id280s3ZNTXNS(@NotNull SNode __thisNode__) {
     return (isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.conceptAlias$OL_L)) ? SPropertyOperations.getString(__thisNode__, PROPS.conceptAlias$OL_L) : SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL));
   }
   @Deprecated
   /*package*/ static List<SNode> getAvailableConceptMethods_idhEwILGo(@NotNull SNode __thisNode__, SNode context) {
-    return Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getVisibleConceptMethods_idwrIPXhfIPX.invoke(__thisNode__, context)).toListSequence();
+    return Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getVisibleConceptMethods_idwrIPXhfIPX.invoke(__thisNode__, context)).toList();
   }
   /*package*/ static Iterable<SNode> getVisibleConceptMethods_idwrIPXhfIPX(@NotNull SNode __thisNode__, SNode context) {
     Set<SNode> methods = SetSequence.fromSet(new HashSet<SNode>());
@@ -113,7 +108,7 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
     }
 
     SNode contextBehaviour = SNodeOperations.getNodeAncestor(context, CONCEPTS.ConceptBehavior$2, true, false);
-    List<SNode> allSupers = Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(__thisNode__, ((boolean) true))).toListSequence();
+    List<SNode> allSupers = Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(__thisNode__, ((boolean) true))).toList();
     ListSequence.fromList(allSupers).addElement(SPointerOperations.resolveNode(new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"), SNodeOperations.getModel(__thisNode__).getRepository()));
     for (SNode concept : allSupers) {
       SModel bma = SModuleOperations.getAspect(SNodeOperations.getModel(concept).getModule(), "behavior");
@@ -184,41 +179,31 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
   /*package*/ static List<SNode> getLinkDeclarations_idhEwILKK(@NotNull SNode __thisNode__) {
     // aka ConceptAndSuperConceptsCache.getLinkDeclarationsExcludingOverridden
 
-    List<SNode> allLinks = Sequence.fromIterable(SLinkOperations.collectMany(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(__thisNode__, ((boolean) true)), LINKS.linkDeclaration$YU1f)).distinct().toListSequence();
+    List<SNode> allLinks = Sequence.fromIterable(SLinkOperations.collectMany(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(__thisNode__, ((boolean) true)), LINKS.linkDeclaration$YU1f)).distinct().toList();
     final Set<SNode> overridden = SetSequence.fromSet(new HashSet<SNode>());
     // here I imply concepts are sorted from top to bottom, i.e. this concept coming first, its immediate superconcepts next and so on up to BaseConcept.
     // therefore, the moment we get to a link declaration that has been overridden in a subconcept, we expect it to be recorded in the 'overridden' set.
     // 
     // Two scenarios in mind: given (C1.r1), (C2.r2) and (C3.r3), C3 extends C2 extends C1; first scenario is transitive, r2 specializes r1, r3 specializes r2; 
     // second when both r2 and r3 specialize r1. For C3, there'd be 1 link declaration in the first scenario, namely {r3}, while for the second case it would be {r3,r2}
-    ListSequence.fromList(allLinks).removeWhere(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        if ((SLinkOperations.getTarget(it, LINKS.specializedLink$7ZCN) != null)) {
-          SetSequence.fromSet(overridden).addElement(SLinkOperations.getTarget(it, LINKS.specializedLink$7ZCN));
-        }
-        return SetSequence.fromSet(overridden).contains(it);
+    ListSequence.fromList(allLinks).removeWhere((it) -> {
+      if ((SLinkOperations.getTarget(it, LINKS.specializedLink$7ZCN) != null)) {
+        SetSequence.fromSet(overridden).addElement(SLinkOperations.getTarget(it, LINKS.specializedLink$7ZCN));
       }
+      return SetSequence.fromSet(overridden).contains(it);
     });
     return allLinks;
   }
   /*package*/ static List<SNode> getReferenceLinkDeclarations_idhEwILL0(@NotNull SNode __thisNode__) {
     List<SNode> links = AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(__thisNode__);
-    return ListSequence.fromList(links).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b8L);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(links).where((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b8L)).toList();
   }
   /*package*/ static List<SNode> getAggregationLinkDeclarations_idhEwILLp(@NotNull SNode __thisNode__) {
     List<SNode> links = AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(__thisNode__);
-    return ListSequence.fromList(links).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b9L);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(links).where((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b9L)).toList();
   }
   /*package*/ static List<SNode> getPropertyDeclarations_idhEwILLM(@NotNull SNode __thisNode__) {
-    return Sequence.fromIterable(SLinkOperations.collectMany(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(__thisNode__, ((boolean) true)), LINKS.propertyDeclaration$YUgg)).distinct().toListSequence();
+    return Sequence.fromIterable(SLinkOperations.collectMany(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(__thisNode__, ((boolean) true)), LINKS.propertyDeclaration$YUgg)).distinct().toList();
   }
   /*package*/ static boolean isSubconceptOf_id73yVtVlWOga(@NotNull SNode __thisNode__, SNode superconcept) {
     if (SNodeOperations.is(superconcept, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"))) {
@@ -257,11 +242,7 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
     return concepts;
   }
   /*package*/ static void collectSuperConcepts_id2A8AB0rB3NH(@NotNull SAbstractConcept __thisConcept__, SNode concept, final Set<SNode> result) {
-    List<SNode> seq = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(concept)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SetSequence.fromSet(result).contains(it));
-      }
-    }).toListSequence();
+    List<SNode> seq = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(concept)).where((it) -> !(SetSequence.fromSet(result).contains(it))).toList();
     SetSequence.fromSet(result).addSequence(ListSequence.fromList(seq));
     for (SNode superConcept : ListSequence.fromList(seq)) {
       AbstractConceptDeclaration__BehaviorDescriptor.collectSuperConcepts_id2A8AB0rB3NH.invokeSpecial(__thisConcept__, superConcept, result);

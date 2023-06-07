@@ -30,7 +30,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import BHL7.behavior.K__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import BHL7.behavior.L__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -489,21 +488,13 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
   @Test
   public void test_booleanMethodCall2() throws Exception {
     final SNode nodeA = createA_a2wy8c_a0a0uc0();
-    boolean boolMethod2 = new _FunctionTypes._return_P0_E0<Boolean>() {
-      public Boolean invoke() {
-        return (boolean) BHL7.behavior.A__BehaviorDescriptor.boolMethod2_idjZ8XPdgmd$.invoke(nodeA);
-      }
-    }.invoke();
+    boolean boolMethod2 = ((_FunctionTypes._return_P0_E0<Boolean>) () -> (boolean) BHL7.behavior.A__BehaviorDescriptor.boolMethod2_idjZ8XPdgmd$.invoke(nodeA)).invoke();
     Assert.assertSame(true, boolMethod2);
   }
   @Test
   public void test_seqMethodCall() throws Exception {
     final SNode nodeA = createA_a2wy8c_a0a0vc0();
-    Iterable<Boolean> seq = Sequence.fromIterable(BHL7.behavior.A__BehaviorDescriptor.seqMethod_id2eC$PxWCGmD.invoke(nodeA)).select(new ISelector<Boolean, Boolean>() {
-      public Boolean select(Boolean it) {
-        return (boolean) BHL7.behavior.A__BehaviorDescriptor.boolMethod1_id2eC$PxWCtoT.invoke(nodeA);
-      }
-    });
+    Iterable<Boolean> seq = Sequence.fromIterable(BHL7.behavior.A__BehaviorDescriptor.seqMethod_id2eC$PxWCGmD.invoke(nodeA)).select((it) -> (boolean) BHL7.behavior.A__BehaviorDescriptor.boolMethod1_id2eC$PxWCtoT.invoke(nodeA));
     Assert.assertTrue(Sequence.fromIterable(seq).isEmpty());
   }
   @Test

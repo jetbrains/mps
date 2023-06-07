@@ -1532,7 +1532,7 @@
                     <node concept="3clFbF" id="77je8e34jfw" role="3cqZAp">
                       <node concept="2Sg_IR" id="77je8e34jfx" role="3clFbG">
                         <node concept="37vLTw" id="77je8e34jfy" role="2SgG2M">
-                          <ref role="3cqZAo" node="77je8e32uNZ" resolve="transform" />
+                          <ref role="3cqZAo" node="77je8e32uNZ" resolve="setBounds" />
                         </node>
                         <node concept="2YIFZM" id="77je8e34jfz" role="2SgHGx">
                           <ref role="37wK5l" to="tp2g:hv18AMC" resolve="getTypeCoercedToClassifierType" />
@@ -1662,7 +1662,7 @@
                     <node concept="3clFbF" id="77je8e34BjK" role="3cqZAp">
                       <node concept="2Sg_IR" id="77je8e32VeL" role="3clFbG">
                         <node concept="37vLTw" id="77je8e32VeM" role="2SgG2M">
-                          <ref role="3cqZAo" node="77je8e32uNZ" resolve="transform" />
+                          <ref role="3cqZAo" node="77je8e32uNZ" resolve="setBounds" />
                         </node>
                         <node concept="37vLTw" id="77je8e32W8a" role="2SgHGx">
                           <ref role="3cqZAo" node="77je8e34_sO" resolve="it" />
@@ -1828,7 +1828,7 @@
         <node concept="TUZQ0" id="77je8e351h7" role="3nqlJM">
           <property role="TUZQ4" value="transformation method to use the correct &quot;bound&quot; form of the type, boolean provided indicates that the type is of something that is an output of the function" />
           <node concept="zr_55" id="77je8e351h9" role="zr_5Q">
-            <ref role="zr_51" node="77je8e32uNZ" resolve="transform" />
+            <ref role="zr_51" node="77je8e32uNZ" resolve="setBounds" />
           </node>
         </node>
       </node>

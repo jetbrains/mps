@@ -37,52 +37,48 @@ public class typeof_ComplexLiteral_InferenceRule extends AbstractInferenceRule_R
     }
     {
       final SNode t1v = typeCheckingContext.getRepresentative(tI_typevar_1238420378223);
-      typeCheckingContext.whenConcrete(t1v, new Runnable() {
-        public void run() {
-          if (SLinkOperations.getTarget(literal, LINKS.real$eLdH) != null) {
-            {
-              final SNode t2v = typeCheckingContext.getRepresentative(tR_typevar_1238420360404);
-              typeCheckingContext.whenConcrete(t2v, new Runnable() {
-                public void run() {
-                  if (TypecheckingFacade.getFromContext().isSubtype(typeCheckingContext.getRepresentative(tR_typevar_1238420360404), MathTypeUtil.qDouble) && TypecheckingFacade.getFromContext().isSubtype(typeCheckingContext.getRepresentative(tI_typevar_1238420378223), MathTypeUtil.qDouble)) {
-                    {
-                      SNode _nodeToCheck_1029348928467 = literal;
-                      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238426927645", 0, null);
-                      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238426927650", true), (SNode) SNodeOperations.copyNode(MathTypeUtil.qComplex), _info_12389875345);
-                    }
-                  } else if (TypecheckingFacade.getFromContext().isSubtype(typeCheckingContext.getRepresentative(tR_typevar_1238420360404), MathTypeUtil.qBigDecimal) && TypecheckingFacade.getFromContext().isSubtype(typeCheckingContext.getRepresentative(tI_typevar_1238420378223), MathTypeUtil.qBigDecimal)) {
-                    {
-                      SNode _nodeToCheck_1029348928467 = literal;
-                      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238426927669", 0, null);
-                      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238426927674", true), (SNode) SNodeOperations.copyNode(MathTypeUtil.qBigComplex), _info_12389875345);
-                    }
-                  } else {
-                    {
-                      final MessageTarget errorTarget = new NodeMessageTarget();
-                      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(literal, "Arguments's type should be subtype of BigDecimal", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238426927693", null, errorTarget);
-                    }
-                  }
+      typeCheckingContext.whenConcrete(t1v, () -> {
+        if (SLinkOperations.getTarget(literal, LINKS.real$eLdH) != null) {
+          {
+            final SNode t2v = typeCheckingContext.getRepresentative(tR_typevar_1238420360404);
+            typeCheckingContext.whenConcrete(t2v, () -> {
+              if (TypecheckingFacade.getFromContext().isSubtype(typeCheckingContext.getRepresentative(tR_typevar_1238420360404), MathTypeUtil.qDouble) && TypecheckingFacade.getFromContext().isSubtype(typeCheckingContext.getRepresentative(tI_typevar_1238420378223), MathTypeUtil.qDouble)) {
+                {
+                  SNode _nodeToCheck_1029348928467 = literal;
+                  EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238426927645", 0, null);
+                  typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238426927650", true), (SNode) SNodeOperations.copyNode(MathTypeUtil.qComplex), _info_12389875345);
                 }
-              }, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238426914994", false, false);
+              } else if (TypecheckingFacade.getFromContext().isSubtype(typeCheckingContext.getRepresentative(tR_typevar_1238420360404), MathTypeUtil.qBigDecimal) && TypecheckingFacade.getFromContext().isSubtype(typeCheckingContext.getRepresentative(tI_typevar_1238420378223), MathTypeUtil.qBigDecimal)) {
+                {
+                  SNode _nodeToCheck_1029348928467 = literal;
+                  EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238426927669", 0, null);
+                  typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238426927674", true), (SNode) SNodeOperations.copyNode(MathTypeUtil.qBigComplex), _info_12389875345);
+                }
+              } else {
+                {
+                  final MessageTarget errorTarget = new NodeMessageTarget();
+                  IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(literal, "Arguments's type should be subtype of BigDecimal", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238426927693", null, errorTarget);
+                }
+              }
+            }, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238426914994", false, false);
+          }
+        } else {
+          if (TypecheckingFacade.getFromContext().isSubtype(typeCheckingContext.getRepresentative(tI_typevar_1238420378223), MathTypeUtil.qDouble)) {
+            {
+              SNode _nodeToCheck_1029348928467 = literal;
+              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238426926358", 0, null);
+              typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238426926363", true), (SNode) SNodeOperations.copyNode(MathTypeUtil.qComplex), _info_12389875345);
+            }
+          } else if (TypecheckingFacade.getFromContext().isSubtype(typeCheckingContext.getRepresentative(tI_typevar_1238420378223), MathTypeUtil.qBigDecimal)) {
+            {
+              SNode _nodeToCheck_1029348928467 = literal;
+              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238426926382", 0, null);
+              typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238426926387", true), (SNode) SNodeOperations.copyNode(MathTypeUtil.qBigComplex), _info_12389875345);
             }
           } else {
-            if (TypecheckingFacade.getFromContext().isSubtype(typeCheckingContext.getRepresentative(tI_typevar_1238420378223), MathTypeUtil.qDouble)) {
-              {
-                SNode _nodeToCheck_1029348928467 = literal;
-                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238426926358", 0, null);
-                typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238426926363", true), (SNode) SNodeOperations.copyNode(MathTypeUtil.qComplex), _info_12389875345);
-              }
-            } else if (TypecheckingFacade.getFromContext().isSubtype(typeCheckingContext.getRepresentative(tI_typevar_1238420378223), MathTypeUtil.qBigDecimal)) {
-              {
-                SNode _nodeToCheck_1029348928467 = literal;
-                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238426926382", 0, null);
-                typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238426926387", true), (SNode) SNodeOperations.copyNode(MathTypeUtil.qBigComplex), _info_12389875345);
-              }
-            } else {
-              {
-                final MessageTarget errorTarget = new NodeMessageTarget();
-                IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(literal, "Arguments's type should be subtype of BigDecimal", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238426926406", null, errorTarget);
-              }
+            {
+              final MessageTarget errorTarget = new NodeMessageTarget();
+              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(literal, "Arguments's type should be subtype of BigDecimal", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238426926406", null, errorTarget);
             }
           }
         }

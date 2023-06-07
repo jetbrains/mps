@@ -21,7 +21,6 @@ import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.FilteredGlobalScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.ide.ui.dialogs.properties.choosers.CommonChoosers;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.project.dependency.VisibilityUtil;
@@ -75,11 +74,7 @@ public class AddAccessoryModel_Action extends BaseAction {
     modelAccess.runReadAction(() -> {
       // XXX perhaps, shall use scope based on project's repository
       Iterable<SModel> descriptors = new FilteredGlobalScope(repository).getModels();
-      ListSequence.fromList(models).addSequence(Sequence.fromIterable(descriptors).select(new ISelector<SModel, SModelReference>() {
-        public SModelReference select(SModel it) {
-          return it.getReference();
-        }
-      }));
+      ListSequence.fromList(models).addSequence(Sequence.fromIterable(descriptors).select((it) -> it.getReference()));
     });
     final SModelReference result = CommonChoosers.showModelChooser(((MPSProject) MapSequence.fromMap(_params).get("project")), null, models);
     if (result == null) {

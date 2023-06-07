@@ -16,11 +16,9 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Collections;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -45,11 +43,7 @@ public final class ValueArgument__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static ParameterDeclaration getNamedTarget_id2PMtXoK3vgE(@NotNull final SNode __thisNode__) {
     // Get the parameter back from function definition (because parameter may not be a kotlin parameter)
-    return Sequence.fromIterable(IArguments__BehaviorDescriptor.getAvailableParameters_id1$jFvlD0xqw.invoke(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.IArguments$xj))).findFirst(new IWhereFilter<ParameterDeclaration>() {
-      public boolean accept(ParameterDeclaration it) {
-        return it != null && it.getNode() == SLinkOperations.getTarget(__thisNode__, LINKS.parameter$8rO1);
-      }
-    });
+    return Sequence.fromIterable(IArguments__BehaviorDescriptor.getAvailableParameters_id1$jFvlD0xqw.invoke(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.IArguments$xj))).findFirst((it) -> it != null && it.getNode() == SLinkOperations.getTarget(__thisNode__, LINKS.parameter$8rO1));
   }
   /*package*/ static SNode getArgExpression_id26mUjU3EUyw(@NotNull SNode __thisNode__) {
     return SLinkOperations.getTarget(__thisNode__, LINKS.expression$RzsN);
@@ -62,11 +56,7 @@ public final class ValueArgument__BehaviorDescriptor extends BaseBHDescriptor {
     if ((provider == null)) {
       return Sequence.fromIterable(Collections.<SNode>emptyList());
     }
-    return Sequence.fromIterable(IArguments__BehaviorDescriptor.getAvailableParameters_id1$jFvlD0xqw.invoke(provider)).select(new ISelector<ParameterDeclaration, SNode>() {
-      public SNode select(ParameterDeclaration this0) {
-        return this0.getNode();
-      }
-    }).where(new NotNullWhereFilter<SNode>());
+    return Sequence.fromIterable(IArguments__BehaviorDescriptor.getAvailableParameters_id1$jFvlD0xqw.invoke(provider)).select((this0) -> this0.getNode()).where(new NotNullWhereFilter());
   }
 
   /*package*/ ValueArgument__BehaviorDescriptor() {

@@ -25,12 +25,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.traceable.behavior.UnitConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -97,11 +95,7 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
       SNode superClassifier = SLinkOperations.getTarget(__thisNode__, LINKS.superclass$Mp9$);
       ListSequence.fromList(extendsClassifiers).addElement(((SLinkOperations.getTarget(superClassifier, LINKS.classifier$cxMr) != null) ? superClassifier : _quotation_createNode_xjj00_a0a0c0b0a()));
     }
-    ListSequence.fromList(extendsClassifiers).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.implementedInterface$rujG)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.classifier$cxMr) != null);
-      }
-    }));
+    ListSequence.fromList(extendsClassifiers).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.implementedInterface$rujG)).where((it) -> (SLinkOperations.getTarget(it, LINKS.classifier$cxMr) != null)));
     return extendsClassifiers;
   }
   /*package*/ static List<IconResource> getIconMarks_id6TtJ6IUkhQJ(@NotNull SNode __thisNode__) {
@@ -135,15 +129,7 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
       return true;
     }
     if (SNodeOperations.isInstanceOf(nodeToCompare, CONCEPTS.Interface$db)) {
-      return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.implementedInterface$rujG)).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode ct) {
-          return SLinkOperations.getTarget(ct, LINKS.classifier$cxMr);
-        }
-      }).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode ifc) {
-          return (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(ifc, nodeToCompare);
-        }
-      });
+      return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.implementedInterface$rujG)).select((ct) -> SLinkOperations.getTarget(ct, LINKS.classifier$cxMr)).any((ifc) -> (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(ifc, nodeToCompare));
     }
     return false;
   }
@@ -163,11 +149,7 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
     return (boolean) Classifier__BehaviorDescriptor.checkLoops_id3sXyOQUqKq5.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.superclass$Mp9$), LINKS.classifier$cxMr), visited);
   }
   /*package*/ static SNode getMainMethod_idhEwIClG(@NotNull SNode __thisNode__) {
-    return Sequence.fromIterable(ClassConcept__BehaviorDescriptor.staticMethods_id4_LVZ3pCeXr.invoke(__thisNode__)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) StaticMethodDeclaration__BehaviorDescriptor.isMainMethod_idhEwJkuu.invoke(it);
-      }
-    }).first();
+    return Sequence.fromIterable(ClassConcept__BehaviorDescriptor.staticMethods_id4_LVZ3pCeXr.invoke(__thisNode__)).where((it) -> (boolean) StaticMethodDeclaration__BehaviorDescriptor.isMainMethod_idhEwJkuu.invoke(it)).first();
   }
   /*package*/ static boolean hasStaticMemebers_idhFq8xqE(@NotNull SNode __thisNode__) {
     return ((boolean) Classifier__BehaviorDescriptor.hasStaticMemebers_idhFq8xqE.invokeSuper(__thisNode__, CONCEPTS.ClassConcept$bK)) || Sequence.fromIterable(ClassConcept__BehaviorDescriptor.staticMethods_id4_LVZ3pCeXr.invoke(__thisNode__)).isNotEmpty();
@@ -177,20 +159,8 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
     ListSequence.fromList(methods).addSequence(ListSequence.fromList(IMemberContainer__BehaviorDescriptor.getMethodsToOverride_id4GM03FJm3zL.invokeSuper(__thisNode__, CONCEPTS.ClassConcept$bK)));
     SNode superclass = ClassConcept__BehaviorDescriptor.getSuperclass_idi3H_lLu.invoke(__thisNode__);
     final Iterable<SNode> myConstructors = SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(__thisNode__)), CONCEPTS.ConstructorDeclaration$yG);
-    Iterable<SNode> superConstructors = Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(superclass), CONCEPTS.ConstructorDeclaration$yG)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$Yyua), CONCEPTS.PrivateVisibility$l0));
-      }
-    });
-    Iterable<SNode> unimplementedConstructors = Sequence.fromIterable(superConstructors).where(new IWhereFilter<SNode>() {
-      public boolean accept(final SNode candidate) {
-        return !(Sequence.fromIterable(myConstructors).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode m) {
-            return (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameParameters_idJuSt8W4$Q2.invoke(candidate, m);
-          }
-        }));
-      }
-    });
+    Iterable<SNode> superConstructors = Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(superclass), CONCEPTS.ConstructorDeclaration$yG)).where((it) -> !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$Yyua), CONCEPTS.PrivateVisibility$l0)));
+    Iterable<SNode> unimplementedConstructors = Sequence.fromIterable(superConstructors).where((final SNode candidate) -> !(Sequence.fromIterable(myConstructors).any((m) -> (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameParameters_idJuSt8W4$Q2.invoke(candidate, m))));
     ListSequence.fromList(methods).addSequence(Sequence.fromIterable(unimplementedConstructors));
     return methods;
   }
@@ -274,7 +244,7 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
     if ((superClass != null)) {
       IClassifierType__BehaviorDescriptor.enumerateTypesHierarchy_id65_8Gi1edLu.invoke(superClass, visitor);
     }
-    for (SNode implementedInterface : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.implementedInterface$rujG)).where(new NotNullWhereFilter<SNode>())) {
+    for (SNode implementedInterface : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.implementedInterface$rujG)).where(new NotNullWhereFilter())) {
       IClassifierType__BehaviorDescriptor.enumerateTypesHierarchy_id65_8Gi1edLu.invoke(implementedInterface, visitor);
     }
   }

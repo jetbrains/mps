@@ -120,11 +120,7 @@ public final class MPSInstance_Configuration extends BaseMpsRunConfiguration imp
   @Override
   public void checkConfiguration() throws RuntimeConfigurationException {
     final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
-    checkConfiguration(new PersistentConfigurationContext() {
-      public jetbrains.mps.project.Project getProject() {
-        return mpsProject;
-      }
-    });
+    checkConfiguration(() -> mpsProject);
   }
   @Override
   public boolean canExecute(String executorId) {

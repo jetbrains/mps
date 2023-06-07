@@ -38,7 +38,6 @@ import com.sun.jdi.ThreadReference;
 import jetbrains.mps.debugger.java.runtime.engine.requests.StepRequestor;
 import jetbrains.mps.debugger.java.runtime.engine.requests.ClassPrepareRequestor;
 import com.sun.jdi.request.ClassPrepareRequest;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import com.sun.jdi.event.ClassPrepareEvent;
 import com.sun.jdi.ClassType;
 import com.sun.jdi.InterfaceType;
@@ -227,11 +226,7 @@ public class RequestManager implements IRequestManager {
   public void setInvalid(Requestor requestor, String message) {
     ManagerThread.assertIsMangerThread();
     myInvalidRequestsAndWarnings.put(requestor, message);
-    ListSequence.fromList(myWarningsListeners).visitAll(new IVisitor<_FunctionTypes._void_P0_E0>() {
-      public void visit(_FunctionTypes._void_P0_E0 it) {
-        it.invoke();
-      }
-    });
+    ListSequence.fromList(myWarningsListeners).visitAll((it) -> it.invoke());
   }
   @Nullable
   public String getWarning(Requestor requestor) {

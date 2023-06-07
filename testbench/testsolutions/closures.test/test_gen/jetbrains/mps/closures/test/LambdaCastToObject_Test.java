@@ -7,11 +7,7 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 public class LambdaCastToObject_Test {
   public void mps18582() {
     // MPS-18582
-    Object s = new _FunctionTypes._return_P0_E0<Object>() {
-      public Object invoke() {
-        return new Object();
-      }
-    };
+    Object s = ((_FunctionTypes._return_P0_E0<Object>) () -> new Object());
   }
 
 }

@@ -22,9 +22,9 @@ import java.util.ArrayList;
 import jetbrains.mps.ide.migration.MigrationSetup;
 import jetbrains.mps.ide.migration.MigrationExecutor;
 import org.jetbrains.mps.openapi.module.SRepository;
+import java.util.function.Supplier;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.util.Status;
 import jetbrains.mps.util.NameUtil;
@@ -140,16 +140,18 @@ public interface MigrationSession {
      */
     protected Collection<ScriptApplied> nextStepModuleImpl() {
       final SRepository repo = getProject().getRepository();
-      return repo.getModelAccess().computeReadAction(() -> {
-        return CollectionSequence.fromCollection(getModuleMigrations()).select(new ISelector<AppliedScript, Collection<ScriptApplied>>() {
-          public Collection<ScriptApplied> select(AppliedScript it) {
-            return it.toBeExecutedImmediately(repo);
-          }
-        }).findFirst(new IWhereFilter<Collection<ScriptApplied>>() {
-          public boolean accept(Collection<ScriptApplied> it) {
-            return CollectionSequence.fromCollection(it).isNotEmpty();
-          }
-        });
+      return repo.getModelAccess().computeReadAction(new Supplier<Collection<ScriptApplied>>() {
+        public Collection<ScriptApplied> get() {
+          return CollectionSequence.fromCollection(getModuleMigrations()).select(new _FunctionTypes._return_P1_E0<Collection<ScriptApplied>, AppliedScript>() {
+            public Collection<ScriptApplied> invoke(AppliedScript it) {
+              return it.toBeExecutedImmediately(repo);
+            }
+          }).findFirst(new _FunctionTypes._return_P1_E0<Boolean, Collection<ScriptApplied>>() {
+            public Boolean invoke(Collection<ScriptApplied> it) {
+              return CollectionSequence.fromCollection(it).isNotEmpty();
+            }
+          });
+        }
       });
     }
 
@@ -199,15 +201,7 @@ public interface MigrationSession {
     @Nullable
     public MigrationRunnable nextStepProject() {
       // important thing is that we only consider PMs of the required cleanup state only not to add odd PMs to considered
-      final ProjectMigration m = CollectionSequence.fromCollection(getProjectMigrations()).where(new IWhereFilter<ProjectMigration>() {
-        public boolean accept(ProjectMigration it) {
-          return false == it instanceof CleanupProjectMigration;
-        }
-      }).findFirst(new IWhereFilter<ProjectMigration>() {
-        public boolean accept(ProjectMigration it) {
-          return consider(it);
-        }
-      });
+      final ProjectMigration m = CollectionSequence.fromCollection(getProjectMigrations()).where((it) -> false == it instanceof CleanupProjectMigration).findFirst((it) -> consider(it));
       if (m == null) {
         return null;
       }
@@ -238,11 +232,7 @@ public interface MigrationSession {
     @Override
     @Nullable
     public MigrationRunnable nextStepCleanup() {
-      final CleanupProjectMigration m = CollectionSequence.fromCollection(getProjectMigrations()).ofType(CleanupProjectMigration.class).findFirst(new IWhereFilter<CleanupProjectMigration>() {
-        public boolean accept(CleanupProjectMigration it) {
-          return consider(it);
-        }
-      });
+      final CleanupProjectMigration m = CollectionSequence.fromCollection(getProjectMigrations()).ofType(CleanupProjectMigration.class).findFirst((it) -> consider(it));
       if (m == null) {
         return null;
       }
@@ -283,7 +273,7 @@ public interface MigrationSession {
     @Override
     public void updateModuleImports(ProgressMonitor progress) {
       // needs model write, I suppose
-      List<SModule> modules = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(getProject())).toListSequence();
+      List<SModule> modules = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(getProject())).toList();
       progress.start("Updating versions...", ListSequence.fromList(modules).count());
       ModuleVersionUpdate mv = new ModuleVersionUpdate(getProject());
       for (SModule m : ListSequence.fromList(modules)) {

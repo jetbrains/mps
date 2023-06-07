@@ -10,7 +10,7 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.project.Project;
@@ -33,31 +33,23 @@ public abstract class AppliedScript {
   public AppliedScript(@NotNull final BaseScriptReference<?> scriptRef, Iterable<SModule> affectedModules) {
     myScriptRef = scriptRef;
     myScript = null;
-    myModules = Sequence.fromIterable(affectedModules).select(new ISelector<SModule, SModuleReference>() {
-      public SModuleReference select(SModule this0) {
-        return this0.getModuleReference();
-      }
-    }).toListSequence();
-    myLegacyValues = Sequence.fromIterable(affectedModules).select(new ISelector<SModule, ScriptApplied<BaseScriptReference>>() {
-      public ScriptApplied<BaseScriptReference> select(SModule it) {
+    myModules = Sequence.fromIterable(affectedModules).select((this0) -> this0.getModuleReference()).toList();
+    myLegacyValues = Sequence.fromIterable(affectedModules).select(new _FunctionTypes._return_P1_E0<ScriptApplied<BaseScriptReference>, SModule>() {
+      public ScriptApplied<BaseScriptReference> invoke(SModule it) {
         return new ScriptApplied<BaseScriptReference>(it, scriptRef);
       }
-    }).toListSequence();
+    }).toList();
   }
 
   public AppliedScript(@NotNull final BaseScript script, Iterable<SModule> affectedModules) {
     myScriptRef = script.getReference();
     myScript = script;
-    myModules = Sequence.fromIterable(affectedModules).select(new ISelector<SModule, SModuleReference>() {
-      public SModuleReference select(SModule this0) {
-        return this0.getModuleReference();
-      }
-    }).toListSequence();
-    myLegacyValues = Sequence.fromIterable(affectedModules).select(new ISelector<SModule, ScriptApplied<BaseScriptReference>>() {
-      public ScriptApplied<BaseScriptReference> select(SModule it) {
+    myModules = Sequence.fromIterable(affectedModules).select((this0) -> this0.getModuleReference()).toList();
+    myLegacyValues = Sequence.fromIterable(affectedModules).select(new _FunctionTypes._return_P1_E0<ScriptApplied<BaseScriptReference>, SModule>() {
+      public ScriptApplied<BaseScriptReference> invoke(SModule it) {
         return new ScriptApplied<BaseScriptReference>(it, script);
       }
-    }).toListSequence();
+    }).toList();
   }
 
   @NotNull

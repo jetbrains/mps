@@ -14,7 +14,6 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.scopes.Members;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -45,11 +44,7 @@ outer:
         continue;
 
       }
-      Iterable<SNode> methodsByName = Sequence.fromIterable(Members.visibleInstanceMethods(classifierType, usingStatement)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "dispose");
-        }
-      });
+      Iterable<SNode> methodsByName = Sequence.fromIterable(Members.visibleInstanceMethods(classifierType, usingStatement)).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "dispose"));
       for (SNode bmd : methodsByName) {
         if (ListSequence.fromList(SLinkOperations.getChildren(bmd, LINKS.parameter$5xBj)).isEmpty()) {
           continue outer;

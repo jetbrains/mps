@@ -9212,7 +9212,7 @@
       </node>
     </node>
     <node concept="2AHcQZ" id="6vGufITxUht" role="2AJF6D">
-      <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+      <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
     </node>
   </node>
   <node concept="312cEu" id="5Ffu4tBUyy6">

@@ -19,7 +19,6 @@ import java.util.Collections;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.Nullable;
 import javax.swing.JComponent;
@@ -65,12 +64,8 @@ public class NodeChooserDialog extends DialogWrapper {
     this(project, new ChooseByNameData(new NodesPresentation(ProjectHelper.getProjectRepository(project))).derivePrompts("node").setScope(nodes, Collections.<SNodeReference>emptySet()));
   }
 
-  public NodeChooserDialog(Project project, final List<SNode> nodes) {
-    this(project, ListSequence.fromList(nodes).select(new ISelector<SNode, SNodeReference>() {
-      public SNodeReference select(SNode it) {
-        return SNodeOperations.getPointer(it);
-      }
-    }));
+  public NodeChooserDialog(Project project, final List<? extends SNode> nodes) {
+    this(project, ListSequence.fromList(nodes).select((it) -> SNodeOperations.getPointer(it)));
   }
 
   @Nullable

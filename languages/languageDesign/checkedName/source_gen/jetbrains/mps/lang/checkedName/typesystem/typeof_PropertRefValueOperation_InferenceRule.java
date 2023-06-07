@@ -23,13 +23,11 @@ public class typeof_PropertRefValueOperation_InferenceRule extends AbstractInfer
   public void applyRule(final SNode propertyPointerValueOperation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
       final SNode pointerType = typeCheckingContext.typeOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(propertyPointerValueOperation), "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "8697758915834103344", true);
-      typeCheckingContext.whenConcrete(pointerType, new Runnable() {
-        public void run() {
-          {
-            SNode _nodeToCheck_1029348928467 = propertyPointerValueOperation;
-            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "8697758915834077809", 0, null);
-            typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "8697758915834077255", true), (SNode) DataTypeDeclaration__BehaviorDescriptor.toBaseLanguageType_idhEwI9ym.invoke(SLinkOperations.getTarget(SNodeOperations.as(typeCheckingContext.getExpandedNode(pointerType), CONCEPTS.PropertyPointerType$Jt), LINKS.dataType$ciaU)), _info_12389875345);
-          }
+      typeCheckingContext.whenConcrete(pointerType, () -> {
+        {
+          SNode _nodeToCheck_1029348928467 = propertyPointerValueOperation;
+          EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "8697758915834077809", 0, null);
+          typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "8697758915834077255", true), (SNode) DataTypeDeclaration__BehaviorDescriptor.toBaseLanguageType_idhEwI9ym.invoke(SLinkOperations.getTarget(SNodeOperations.as(typeCheckingContext.getExpandedNode(pointerType), CONCEPTS.PropertyPointerType$Jt), LINKS.dataType$ciaU)), _info_12389875345);
         }
       }, "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "8697758915834102963", false, false);
     }

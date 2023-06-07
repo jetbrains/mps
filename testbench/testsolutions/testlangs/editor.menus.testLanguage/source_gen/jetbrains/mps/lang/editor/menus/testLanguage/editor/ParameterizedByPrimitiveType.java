@@ -19,8 +19,6 @@ import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
 import org.jetbrains.annotations.Nullable;
 import java.util.Arrays;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import jetbrains.mps.logging.Logger;
@@ -71,45 +69,41 @@ public class ParameterizedByPrimitiveType extends TransformationMenuBase {
       if (i > 5) {
         return Arrays.asList(1, 2, 3);
       } else {
-        return Sequence.fromClosure(new ISequenceClosure<Integer>() {
-          public Iterable<Integer> iterable() {
-            return new Iterable<Integer>() {
-              public Iterator<Integer> iterator() {
-                return new YieldingIterator<Integer>() {
-                  private int __CP__ = 0;
-                  protected boolean moveToNext() {
+        return Sequence.fromClosure(() -> {
+          return (Iterable<Integer>) () -> {
+            return new YieldingIterator<Integer>() {
+              private int __CP__ = 0;
+              protected boolean moveToNext() {
 __loop__:
-                    do {
+                do {
 __switch__:
-                      switch (this.__CP__) {
-                        case -1:
-                          assert false : "Internal error";
-                          return false;
-                        case 2:
-                          this.__CP__ = 3;
-                          this.yield(1);
-                          return true;
-                        case 3:
-                          this.__CP__ = 4;
-                          this.yield(2);
-                          return true;
-                        case 4:
-                          this.__CP__ = 1;
-                          this.yield(3);
-                          return true;
-                        case 0:
-                          this.__CP__ = 2;
-                          break;
-                        default:
-                          break __loop__;
-                      }
-                    } while (true);
-                    return false;
+                  switch (this.__CP__) {
+                    case -1:
+                      assert false : "Internal error";
+                      return false;
+                    case 2:
+                      this.__CP__ = 3;
+                      this.yield(1);
+                      return true;
+                    case 3:
+                      this.__CP__ = 4;
+                      this.yield(2);
+                      return true;
+                    case 4:
+                      this.__CP__ = 1;
+                      this.yield(3);
+                      return true;
+                    case 0:
+                      this.__CP__ = 2;
+                      break;
+                    default:
+                      break __loop__;
                   }
-                };
+                } while (true);
+                return false;
               }
             };
-          }
+          };
         });
       }
     }

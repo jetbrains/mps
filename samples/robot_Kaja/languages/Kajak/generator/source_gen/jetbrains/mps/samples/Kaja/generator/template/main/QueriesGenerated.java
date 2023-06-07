@@ -14,7 +14,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.generator.template.MapSrcMacroContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -23,8 +22,7 @@ import jetbrains.mps.lang.text.behavior.IHoldLines__BehaviorDescriptor;
 import jetbrains.mps.generator.template.MappingScriptContext;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -111,11 +109,7 @@ public class QueriesGenerated {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.definitions$6Wm1);
   }
   public static Iterable<SNode> sourceNodesQuery_1_2(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.body$KJNw), LINKS.commands$z6Pr)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.Require$2c);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.body$KJNw), LINKS.commands$z6Pr)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.Require$2c));
   }
   public static Iterable<SNode> sourceNodesQuery_1_3(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(_context.getNode(), CONCEPTS.Require$2c), LINKS.library$JYHK), LINKS.definitions$K53V);
@@ -135,79 +129,41 @@ public class QueriesGenerated {
   }
   public static void mappingScript_CodeBlock_14(final MappingScriptContext _context) {
     List<SNode> roots = SModelOperations.roots(_context.getModel(), CONCEPTS.Script$FS);
-    ListSequence.fromList(roots).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.body$KJNw), LINKS.commands$z6Pr)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(it, CONCEPTS.RoutineDefinition$Gg);
-          }
-        });
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SNode script = SNodeOperations.getNodeAncestor(it, CONCEPTS.Script$FS, false, false);
-        SNodeOperations.deleteNode(it);
-        ListSequence.fromList(SLinkOperations.getChildren(script, LINKS.definitions$6Wm1)).addElement(SNodeOperations.cast(it, CONCEPTS.RoutineDefinition$Gg));
-      }
+    ListSequence.fromList(roots).translate((it) -> {
+      return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.body$KJNw), LINKS.commands$z6Pr)).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+        public Boolean invoke(SNode it) {
+          return SNodeOperations.isInstanceOf(it, CONCEPTS.RoutineDefinition$Gg);
+        }
+      });
+    }).visitAll((it) -> {
+      SNode script = SNodeOperations.getNodeAncestor(it, CONCEPTS.Script$FS, false, false);
+      SNodeOperations.deleteNode(it);
+      ListSequence.fromList(SLinkOperations.getChildren(script, LINKS.definitions$6Wm1)).addElement(SNodeOperations.cast(it, CONCEPTS.RoutineDefinition$Gg));
     });
   }
   public static void mappingScript_CodeBlock_17(final MappingScriptContext _context) {
-    ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.EmptyLine$iH)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SNodeOperations.deleteNode(it);
-      }
-    });
+    ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.EmptyLine$iH)).visitAll((it) -> SNodeOperations.deleteNode(it));
   }
   public static void mappingScript_CodeBlock_24(final MappingScriptContext _context) {
-    ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.Script$FS)).visitAll(new IVisitor<SNode>() {
-      public void visit(final SNode script) {
-        final Iterable<SNode> requireCommands = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(script, LINKS.body$KJNw), LINKS.commands$z6Pr)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(it, CONCEPTS.Require$2c);
-          }
+    ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.Script$FS)).visitAll((final SNode script) -> {
+      final Iterable<SNode> requireCommands = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(script, LINKS.body$KJNw), LINKS.commands$z6Pr)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.Require$2c));
+
+      Sequence.fromIterable(requireCommands).visitAll((final SNode requireCommand) -> {
+        Iterable<SNode> definitions = SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(requireCommand, CONCEPTS.Require$2c), LINKS.library$JYHK), LINKS.definitions$K53V);
+
+        final Map<SNode, SNode> newToOld = MapSequence.fromMap(new HashMap<SNode, SNode>());
+
+        Sequence.fromIterable(definitions).visitAll((final SNode definition) -> {
+          final SNode copy = SNodeOperations.copyNode(definition);
+          MapSequence.fromMap(newToOld).put(copy, definition);
+          SPropertyOperations.assign(copy, PROPS.name$MnvL, SPropertyOperations.getString(definition, PROPS.name$MnvL) + "_from_library_" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(requireCommand, CONCEPTS.Require$2c), LINKS.library$JYHK), PROPS.name$MnvL));
+          ListSequence.fromList(SLinkOperations.getChildren(script, LINKS.definitions$6Wm1)).addElement(copy);
+          ListSequence.fromList(SNodeOperations.getNodeDescendants(script, CONCEPTS.RoutineCall$mS, false, new SAbstractConcept[]{})).where((it) -> SLinkOperations.getTarget(it, LINKS.definition$J8D4) == definition).visitAll((it) -> SLinkOperations.setTarget(it, LINKS.definition$J8D4, copy));
         });
+        SNodeOperations.deleteNode(requireCommand);
 
-        Sequence.fromIterable(requireCommands).visitAll(new IVisitor<SNode>() {
-          public void visit(final SNode requireCommand) {
-            Iterable<SNode> definitions = SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(requireCommand, CONCEPTS.Require$2c), LINKS.library$JYHK), LINKS.definitions$K53V);
-
-            final Map<SNode, SNode> newToOld = MapSequence.fromMap(new HashMap<SNode, SNode>());
-
-            Sequence.fromIterable(definitions).visitAll(new IVisitor<SNode>() {
-              public void visit(final SNode definition) {
-                final SNode copy = SNodeOperations.copyNode(definition);
-                MapSequence.fromMap(newToOld).put(copy, definition);
-                SPropertyOperations.assign(copy, PROPS.name$MnvL, SPropertyOperations.getString(definition, PROPS.name$MnvL) + "_from_library_" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(requireCommand, CONCEPTS.Require$2c), LINKS.library$JYHK), PROPS.name$MnvL));
-                ListSequence.fromList(SLinkOperations.getChildren(script, LINKS.definitions$6Wm1)).addElement(copy);
-                ListSequence.fromList(SNodeOperations.getNodeDescendants(script, CONCEPTS.RoutineCall$mS, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-                  public boolean accept(SNode it) {
-                    return SLinkOperations.getTarget(it, LINKS.definition$J8D4) == definition;
-                  }
-                }).visitAll(new IVisitor<SNode>() {
-                  public void visit(SNode it) {
-                    SLinkOperations.setTarget(it, LINKS.definition$J8D4, copy);
-                  }
-                });
-              }
-            });
-            SNodeOperations.deleteNode(requireCommand);
-
-            MapSequence.fromMap(newToOld).visitAll(new IVisitor<IMapping<SNode, SNode>>() {
-              public void visit(final IMapping<SNode, SNode> entry) {
-                ListSequence.fromList(SNodeOperations.getNodeDescendants(script, CONCEPTS.RoutineCall$mS, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-                  public boolean accept(SNode it) {
-                    return SLinkOperations.getTarget(it, LINKS.definition$J8D4) == entry.value();
-                  }
-                }).visitAll(new IVisitor<SNode>() {
-                  public void visit(SNode it) {
-                    SLinkOperations.setTarget(it, LINKS.definition$J8D4, entry.key());
-                  }
-                });
-              }
-            });
-          }
-        });
-      }
+        MapSequence.fromMap(newToOld).visitAll((final IMapping<SNode, SNode> entry) -> ListSequence.fromList(SNodeOperations.getNodeDescendants(script, CONCEPTS.RoutineCall$mS, false, new SAbstractConcept[]{})).where((it) -> SLinkOperations.getTarget(it, LINKS.definition$J8D4) == entry.value()).visitAll((it) -> SLinkOperations.setTarget(it, LINKS.definition$J8D4, entry.key())));
+      });
     });
   }
 

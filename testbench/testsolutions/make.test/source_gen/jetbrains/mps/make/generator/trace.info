@@ -20,8 +20,7 @@
       <unit at="8,0,18,0" name="jetbrains.mps.make.generator.FacetAspectDescriptor" />
     </file>
     <file name="FacetManifest.java">
-      <unit at="24,55,28,5" name="jetbrains.mps.make.generator.FacetManifest$1" />
-      <unit at="12,0,31,0" name="jetbrains.mps.make.generator.FacetManifest" />
+      <unit at="11,0,26,0" name="jetbrains.mps.make.generator.FacetManifest" />
     </file>
   </root>
   <root nodeRef="r:5dff607f-6ca4-4c05-bbd2-b8285801fc60(jetbrains.mps.make.generator)/2551169102353069011">
@@ -72,7 +71,7 @@
       <unit id="2551169102353069018" at="7,0,20,0" name="jetbrains.mps.make.generator.Bar_Option" />
     </file>
     <file name="FacetManifest.java">
-      <node id="2551169102353069011" at="16,65,17,67" concept="2" />
+      <node id="2551169102353069011" at="15,65,16,67" concept="2" />
     </file>
     <file name="TextGen__Facet.java">
       <node id="2551169102353069011" at="26,0,27,0" concept="3" trace="targets" />
@@ -240,7 +239,7 @@
   </root>
   <root nodeRef="r:5dff607f-6ca4-4c05-bbd2-b8285801fc60(jetbrains.mps.make.generator)/671853460608595937">
     <file name="FacetManifest.java">
-      <node id="671853460608595937" at="15,69,16,65" concept="2" />
+      <node id="671853460608595937" at="14,69,15,65" concept="2" />
     </file>
     <file name="Maker__Facet.java">
       <node id="671853460608595937" at="24,0,25,0" concept="3" trace="targets" />
@@ -391,7 +390,7 @@
   </root>
   <root nodeRef="r:5dff607f-6ca4-4c05-bbd2-b8285801fc60(jetbrains.mps.make.generator)/671853460608595941">
     <file name="FacetManifest.java">
-      <node id="671853460608595941" at="14,26,15,69" concept="2" />
+      <node id="671853460608595941" at="13,26,14,69" concept="2" />
     </file>
     <file name="Generator__Facet.java">
       <node id="671853460608595941" at="30,0,31,0" concept="3" trace="targets" />
@@ -845,7 +844,7 @@
   </root>
   <root nodeRef="r:5dff607f-6ca4-4c05-bbd2-b8285801fc60(jetbrains.mps.make.generator)/9000373783400844597">
     <file name="FacetManifest.java">
-      <node id="9000373783400844597" at="17,67,18,66" concept="2" />
+      <node id="9000373783400844597" at="16,67,17,66" concept="2" />
     </file>
     <file name="Worker__Facet.java">
       <node id="9000373783400844597" at="26,0,27,0" concept="3" trace="targets" />

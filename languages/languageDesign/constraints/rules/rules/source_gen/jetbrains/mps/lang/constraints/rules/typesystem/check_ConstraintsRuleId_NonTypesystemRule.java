@@ -15,7 +15,6 @@ import jetbrains.mps.errors.BaseQuickFixProvider;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.structure.util.ConceptIdHelper;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -39,11 +38,7 @@ public class check_ConstraintsRuleId_NonTypesystemRule extends AbstractNonTypesy
         }
       }
     } else {
-      if (ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(rule), CONCEPTS.Rule$DP)).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return it != rule && Objects.equals(SPropertyOperations.getString(it, PROPS.ruleId$WGdw), SPropertyOperations.getString(rule, PROPS.ruleId$WGdw));
-        }
-      })) {
+      if (ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(rule), CONCEPTS.Rule$DP)).any((it) -> it != rule && Objects.equals(SPropertyOperations.getString(it, PROPS.ruleId$WGdw), SPropertyOperations.getString(rule, PROPS.ruleId$WGdw)))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(rule, "Duplicate rule id", "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)", "5424895381998262898", null, errorTarget);

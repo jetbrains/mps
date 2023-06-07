@@ -18,8 +18,6 @@ import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.kotlin.behavior.IClassLike__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SNode;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -42,11 +40,7 @@ public class ThisConstructorDelegationCall_Constraints extends BaseConstraintsDe
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return new NamedElementsScope(Sequence.fromIterable(IClassLike__BehaviorDescriptor.getConstructors_id2NtWm0y9fFa.invoke(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ClassDeclaration$Jm, true, false))).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return it != SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.SecondaryConstructor$Lg, true, false);
-              }
-            }));
+            return new NamedElementsScope(Sequence.fromIterable(IClassLike__BehaviorDescriptor.getConstructors_id2NtWm0y9fFa.invoke(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ClassDeclaration$Jm, true, false))).where((it) -> it != SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.SecondaryConstructor$Lg, true, false)));
           }
         };
       }

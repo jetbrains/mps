@@ -15,7 +15,6 @@ import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
@@ -63,15 +62,11 @@ public final class ForbidIncomingReferencesInSubconcepts_Intention extends Abstr
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       Collection<SModel> allModels = new ModuleRepositoryFacade(editorContext.getRepository()).getAllModels();
-      Iterable<SModel> seq = Sequence.fromIterable(((Iterable<SModel>) allModels)).where(new IWhereFilter<SModel>() {
-        public boolean accept(SModel md) {
-          return SModuleOperations.isAspect(md, "structure");
-        }
-      });
+      Iterable<SModel> seq = Sequence.fromIterable(((Iterable<SModel>) allModels)).where((md) -> SModuleOperations.isAspect(md, "structure"));
 
       for (SModel model : Sequence.fromIterable(seq)) {
         for (SNode cd : ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.ConceptDeclaration$gH))) {
-          List<SNode> allSupers = Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(cd, ((boolean) true))).toListSequence();
+          List<SNode> allSupers = Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(cd, ((boolean) true))).toList();
           ListSequence.fromList(allSupers).addElement(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"));
 
           if (ListSequence.fromList(allSupers).contains(node)) {

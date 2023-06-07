@@ -54,10 +54,7 @@ import com.intellij.diff.tools.util.DiffSplitter;
 import java.awt.Graphics;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import javax.swing.JPanel;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.repository.CommandListener;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -367,11 +364,7 @@ public class MergeRootsPane implements PropertyChangeListener {
 
   public void setRoodId(SNodeId rootId, final MergeSession mergeSession) {
     myMergeSession = mergeSession;
-    MapSequence.fromMap(myDiffLayoutPart).visitAll(new IVisitor<IMapping<DiffChangeGroupLayout, Boolean>>() {
-      public void visit(IMapping<DiffChangeGroupLayout, Boolean> it) {
-        it.key().setChangeSet((it.value() ? mergeSession.getMyChangeSet() : mergeSession.getRepositoryChangeSet()));
-      }
-    });
+    MapSequence.fromMap(myDiffLayoutPart).visitAll((it) -> it.key().setChangeSet((it.value() ? mergeSession.getMyChangeSet() : mergeSession.getRepositoryChangeSet())));
     setRootId(rootId);
   }
 
@@ -424,17 +417,9 @@ public class MergeRootsPane implements PropertyChangeListener {
   }
 
   private void highlightAllChanges() {
-    ListSequence.fromList(myChangeGroupLayouts).visitAll(new IVisitor<ChangeGroupLayout>() {
-      public void visit(ChangeGroupLayout b) {
-        b.invalidate();
-      }
-    });
+    ListSequence.fromList(myChangeGroupLayouts).visitAll((b) -> b.invalidate());
 
-    List<ModelChange> changesForRoot = ListSequence.fromList(myMergeSession.getChangesForRoot(myRootId)).where(new IWhereFilter<ModelChange>() {
-      public boolean accept(ModelChange ch) {
-        return !(myMergeSession.isChangeResolved(ch));
-      }
-    }).toListSequence();
+    List<ModelChange> changesForRoot = ListSequence.fromList(myMergeSession.getChangesForRoot(myRootId)).where((ch) -> !(myMergeSession.isChangeResolved(ch))).toList();
     for (ModelChange change : ListSequence.fromList(changesForRoot)) {
       higlightChange(myResultEditor, myMergeSession.getResultModel(), true, change);
       if (myMergeSession.isMyChange(change)) {
@@ -443,11 +428,7 @@ public class MergeRootsPane implements PropertyChangeListener {
         higlightChange(myRepositoryEditor, myMergeSession.getRepositoryModel(), false, change);
       }
     }
-    ListSequence.fromList(myChangeGroupLayouts).visitAll(new IVisitor<ChangeGroupLayout>() {
-      public void visit(ChangeGroupLayout b) {
-        b.invalidate();
-      }
-    });
+    ListSequence.fromList(myChangeGroupLayouts).visitAll((b) -> b.invalidate());
     myMineEditor.repaintAndRebuildEditorMessages();
     myResultEditor.repaintAndRebuildEditorMessages();
     myRepositoryEditor.repaintAndRebuildEditorMessages();
@@ -502,11 +483,7 @@ public class MergeRootsPane implements PropertyChangeListener {
 
   /*package*/ void setMergeSession(final MergeSession mergeSession) {
     myMergeSession = mergeSession;
-    MapSequence.fromMap(myDiffLayoutPart).visitAll(new IVisitor<IMapping<DiffChangeGroupLayout, Boolean>>() {
-      public void visit(IMapping<DiffChangeGroupLayout, Boolean> it) {
-        it.key().setChangeSet((it.value() ? mergeSession.getMyChangeSet() : mergeSession.getRepositoryChangeSet()));
-      }
-    });
+    MapSequence.fromMap(myDiffLayoutPart).visitAll((it) -> it.key().setChangeSet((it.value() ? mergeSession.getMyChangeSet() : mergeSession.getRepositoryChangeSet())));
     myResultEditor.editRoot(getRootNodeId(myMergeSession.getResultModel()), myMergeSession.getResultModel());
     rehighlight();
 
@@ -523,11 +500,7 @@ public class MergeRootsPane implements PropertyChangeListener {
       if (myDisposed) {
         return;
       }
-      ListSequence.fromList(myGutterMessagesRebuilders).visitAll(new IVisitor<ChangeGroupMessages>() {
-        public void visit(ChangeGroupMessages it) {
-          it.dispose();
-        }
-      });
+      ListSequence.fromList(myGutterMessagesRebuilders).visitAll((it) -> it.dispose());
       myDiffRegistry.getCommandQueue().runTask(() -> {
         if (myMergeSession.getMyModel() instanceof EditableSModel) {
           myDiffRegistry.getCurrentDifference((EditableSModel) myMergeSession.getMyModel()).removeDifferenceListener(myDifferenceListener);

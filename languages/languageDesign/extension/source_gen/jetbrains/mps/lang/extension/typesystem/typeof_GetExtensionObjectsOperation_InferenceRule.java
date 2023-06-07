@@ -35,21 +35,19 @@ public class typeof_GetExtensionObjectsOperation_InferenceRule extends AbstractI
 
     {
       final SNode operandType = typeCheckingContext.typeOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(geoo), "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "3999125756866734019", true);
-      typeCheckingContext.whenConcrete(operandType, new Runnable() {
-        public void run() {
-          SNode objectType = null;
-          {
-            SNode coercedNode_gzb1x_b0d0 = TypecheckingFacade.getFromContext().coerceType(typeCheckingContext.getExpandedNode(operandType), CONCEPTS.ExtensionPointType$bp);
-            if (coercedNode_gzb1x_b0d0 != null) {
-              objectType = SLinkOperations.getTarget(SLinkOperations.getTarget(coercedNode_gzb1x_b0d0, LINKS.extensionPoint$bd5i), LINKS.objectType$ULR3);
-            } else {
-            }
+      typeCheckingContext.whenConcrete(operandType, () -> {
+        SNode objectType = null;
+        {
+          SNode coercedNode_gzb1x_b0d0 = TypecheckingFacade.getFromContext().coerceType(typeCheckingContext.getExpandedNode(operandType), CONCEPTS.ExtensionPointType$bp);
+          if (coercedNode_gzb1x_b0d0 != null) {
+            objectType = SLinkOperations.getTarget(SLinkOperations.getTarget(coercedNode_gzb1x_b0d0, LINKS.extensionPoint$bd5i), LINKS.objectType$ULR3);
+          } else {
           }
-          {
-            SNode _nodeToCheck_1029348928467 = geoo;
-            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "3175313036448577264", 0, null);
-            typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "3175313036448577258", true), (SNode) _quotation_createNode_4o3874_a1a0c0c0a0a1a0b0d0b(objectType), _info_12389875345);
-          }
+        }
+        {
+          SNode _nodeToCheck_1029348928467 = geoo;
+          EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "3175313036448577264", 0, null);
+          typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "3175313036448577258", true), (SNode) _quotation_createNode_4o3874_a1a0c0c0b0a1a3a1(objectType), _info_12389875345);
         }
       }, "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "3999125756866733643", false, false);
     }
@@ -70,7 +68,7 @@ public class typeof_GetExtensionObjectsOperation_InferenceRule extends AbstractI
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2c10fa62142eb538L, 0x2c10fa62142eb539L, "extensionPoint"), (SNode) parameter_1);
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_4o3874_a1a0c0c0a0a1a0b0d0b(Object parameter_1) {
+  private static SNode _quotation_createNode_4o3874_a1a0c0c0b0a1a3a1(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10c260e9444L, "SequenceType"));

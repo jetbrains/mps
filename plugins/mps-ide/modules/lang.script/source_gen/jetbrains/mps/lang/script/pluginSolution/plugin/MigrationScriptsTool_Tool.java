@@ -22,6 +22,7 @@ import jetbrains.mps.ide.findusages.model.SearchQuery;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.util.Computable;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import javax.swing.JOptionPane;
 import jetbrains.mps.ide.findusages.view.icons.IconManager;
@@ -45,7 +46,11 @@ public class MigrationScriptsTool_Tool extends BaseTabbedProjectTool {
             final MigrationScriptFinder finder = new MigrationScriptFinder(scripts);
             final IResultProvider provider = FindUtils.makeProvider(finder);
             final SearchQuery query = new SearchQuery(scope);
-            final SearchResults results = new ModelAccessHelper(ProjectHelper.getModelAccess(getProject())).runReadAction(() -> FindUtils.getSearchResults(new ProgressMonitorAdapter(indicator), query, provider));
+            final SearchResults results = new ModelAccessHelper(ProjectHelper.getModelAccess(getProject())).runReadAction(new Computable<SearchResults>() {
+              public SearchResults compute() {
+                return FindUtils.getSearchResults(new ProgressMonitorAdapter(indicator), query, provider);
+              }
+            });
             ApplicationManager.getApplication().invokeLater(new Runnable() {
               @Override
               public void run() {

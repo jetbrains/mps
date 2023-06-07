@@ -11,7 +11,6 @@ import org.jetbrains.mps.openapi.module.SModule;
 import java.util.Set;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.module.SDependency;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.project.AbstractModule;
@@ -19,16 +18,13 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import java.util.Map;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 import java.util.Objects;
 import java.util.HashMap;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.LinkedHashSet;
 import java.util.Collection;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
@@ -97,31 +93,19 @@ public final class ModuleDependencyVersions {
     // it's tempting to use lr.getAllLanguages().containsAll(usedLanguages), but there's array list which might
     // get huge and ineffective for contains(); converting it to set is too much, too. 
     // Hence, just the same SLanguage.isValid check as it used to be in VersionFixer, just done right.
-    if (SetSequence.fromSet(usedLanguages).any(new IWhereFilter<SLanguage>() {
-      public boolean accept(SLanguage it) {
-        return myLanguageRegistry.getLanguage(it) == null;
-      }
-    })) {
+    if (SetSequence.fromSet(usedLanguages).any((it) -> myLanguageRegistry.getLanguage(it) == null)) {
       return false;
     }
 
     Iterable<SDependency> deps = module.getDeclaredDependencies();
-    if (Sequence.fromIterable(deps).any(new IWhereFilter<SDependency>() {
-      public boolean accept(SDependency it) {
-        return it.getTargetModule().resolve(myModuleRepo) == null;
-      }
-    })) {
+    if (Sequence.fromIterable(deps).any((it) -> it.getTargetModule().resolve(myModuleRepo) == null)) {
       return false;
     }
 
     if (module instanceof AbstractModule) {
       // todo this should be removed when there's API for accessing devkit "references"
       Set<SModuleReference> devkits = ((AbstractModule) module).collectLanguagesAndDevkits().devkits;
-      if (SetSequence.fromSet(devkits).any(new IWhereFilter<SModuleReference>() {
-        public boolean accept(SModuleReference it) {
-          return it.resolve(myModuleRepo) == null;
-        }
-      })) {
+      if (SetSequence.fromSet(devkits).any((it) -> it.resolve(myModuleRepo) == null)) {
         return false;
       }
     }
@@ -165,36 +149,22 @@ public final class ModuleDependencyVersions {
         Iterable<SModuleReference> keysToRemove = oldDepsFiltered.keySet();
         changed.value = changed.value || Sequence.fromIterable(keysToRemove).isNotEmpty();
         if (!(dryRun)) {
-          Sequence.fromIterable(keysToRemove).visitAll(new IVisitor<SModuleReference>() {
-            public void visit(SModuleReference it) {
-              md.getDependencyVersions().remove(it);
-            }
-          });
+          Sequence.fromIterable(keysToRemove).visitAll((it) -> md.getDependencyVersions().remove(it));
         } else {
           if (LOG.isDebugLevel()) {
-            LOG.debug(String.format("Existing dependencies to remove in %s: %s", module.getModuleName(), IterableUtils.join(Sequence.fromIterable(keysToRemove).where(new IWhereFilter<SModuleReference>() {
-              public boolean accept(SModuleReference it) {
-                return !(MapSequence.fromMap(newDepVersions).containsKey(it));
-              }
-            }).select(new ISelector<SModuleReference, String>() {
-              public String select(SModuleReference it) {
-                return it.getModuleName();
-              }
-            }).toListSequence(), ",")));
+            LOG.debug(String.format("Existing dependencies to remove in %s: %s", module.getModuleName(), IterableUtils.join(ListSequence.fromList(Sequence.fromIterable(keysToRemove).where((it) -> !(MapSequence.fromMap(newDepVersions).containsKey(it))).select((it) -> it.getModuleName()).toList()), ",")));
           }
         }
       }
-      MapSequence.fromMap(newDepVersions).visitAll(new IVisitor<IMapping<SModuleReference, Integer>>() {
-        public void visit(IMapping<SModuleReference, Integer> it) {
-          boolean willBeChanged = !(Objects.equals(md.getDependencyVersions().get(it.key()), it.value()));
-          changed.value = changed.value || willBeChanged;
-          if (willBeChanged) {
-            if (!(dryRun)) {
-              md.getDependencyVersions().put(it.key(), it.value());
-            } else {
-              if (LOG.isDebugLevel()) {
-                LOG.debug(String.format("Dependency to update in %s: %s", module.getModuleName(), it.key().getModuleName()));
-              }
+      MapSequence.fromMap(newDepVersions).visitAll((it) -> {
+        boolean willBeChanged = !(Objects.equals(md.getDependencyVersions().get(it.key()), it.value()));
+        changed.value = changed.value || willBeChanged;
+        if (willBeChanged) {
+          if (!(dryRun)) {
+            md.getDependencyVersions().put(it.key(), it.value());
+          } else {
+            if (LOG.isDebugLevel()) {
+              LOG.debug(String.format("Dependency to update in %s: %s", module.getModuleName(), it.key().getModuleName()));
             }
           }
         }
@@ -207,17 +177,11 @@ public final class ModuleDependencyVersions {
       if (!(dryRun)) {
         if (myRemoveOddImports) {
           Iterable<SLanguage> keysToRemove = langVersions.keySet();
-          Sequence.fromIterable(keysToRemove).visitAll(new IVisitor<SLanguage>() {
-            public void visit(SLanguage it) {
-              md.getLanguageVersions().remove(it);
-            }
-          });
+          Sequence.fromIterable(keysToRemove).visitAll((it) -> md.getLanguageVersions().remove(it));
         }
-        MapSequence.fromMap(newLangVersions).visitAll(new IVisitor<IMapping<SLanguage, Integer>>() {
-          public void visit(IMapping<SLanguage, Integer> it) {
-            if (!(Objects.equals(md.getLanguageVersions().get(it.key()), it.value()))) {
-              md.getLanguageVersions().put(it.key(), it.value());
-            }
+        MapSequence.fromMap(newLangVersions).visitAll((it) -> {
+          if (!(Objects.equals(md.getLanguageVersions().get(it.key()), it.value()))) {
+            md.getLanguageVersions().put(it.key(), it.value());
           }
         });
       }
@@ -264,16 +228,8 @@ public final class ModuleDependencyVersions {
 
   private Map<SModuleReference, Integer> filterValidDependencyVersions(Map<SModuleReference, Integer> dependencyVersions) {
     final Map<SModuleReference, Integer> versions = new HashMap<SModuleReference, Integer>(dependencyVersions);
-    List<SModuleReference> missed = SetSequence.fromSet(MapSequence.fromMap(versions).keySet()).where(new IWhereFilter<SModuleReference>() {
-      public boolean accept(SModuleReference it) {
-        return it.resolve(myModuleRepo) == null;
-      }
-    }).toListSequence();
-    ListSequence.fromList(missed).visitAll(new IVisitor<SModuleReference>() {
-      public void visit(SModuleReference it) {
-        MapSequence.fromMap(versions).removeKey(it);
-      }
-    });
+    List<SModuleReference> missed = SetSequence.fromSet(MapSequence.fromMap(versions).keySet()).where((it) -> it.resolve(myModuleRepo) == null).toList();
+    ListSequence.fromList(missed).visitAll((it) -> MapSequence.fromMap(versions).removeKey(it));
     return versions;
   }
 

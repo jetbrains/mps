@@ -13,7 +13,6 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.migration.global.ProjectMigrationsRegistry;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.ModuleDependencyVersions;
 import java.util.Collection;
@@ -40,11 +39,7 @@ public class MigrationSetup {
   public MigrationSetup(@NotNull final Project mpsProject, @NotNull final Iterable<SModule> modules) {
     final LanguageRegistry languageRegistry = mpsProject.getComponent(LanguageRegistry.class);
     List<ProjectMigration> migrations = ProjectMigrationsRegistry.getInstance().getMigrations(mpsProject);
-    ListSequence.fromList(myProjectMigrations).addSequence(ListSequence.fromList(migrations).where(new IWhereFilter<ProjectMigration>() {
-      public boolean accept(ProjectMigration it) {
-        return it.shouldBeExecuted(mpsProject);
-      }
-    }));
+    ListSequence.fromList(myProjectMigrations).addSequence(ListSequence.fromList(migrations).where((it) -> it.shouldBeExecuted(mpsProject)));
     // FIXME provided project migrations, once executed, may invalidate set of language/module migrations,
     //      I think it's reasonable to collect the two independently, not at the same moment.
     MigrationScriptCollector msc = new MigrationScriptCollector(languageRegistry);

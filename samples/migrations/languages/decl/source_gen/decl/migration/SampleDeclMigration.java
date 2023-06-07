@@ -16,14 +16,12 @@ import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -53,34 +51,24 @@ public class SampleDeclMigration extends MigrationScriptBase {
     {
       SearchScope scope_i4ro0d_d0e = CommandUtil.createScope(searchScope);
       final SearchScope scope_i4ro0d_d0e_0 = new EditableFilteringScope(scope_i4ro0d_d0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_i4ro0d_d0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_i4ro0d_d0e_0;
 
       // get all old instances in all models of the module
-      List<SNode> components = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.OldComponent$2b, true)).toListSequence();
+      List<SNode> components = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.OldComponent$2b, true)).toList();
 
       // for each old instance create a new one
-      ListSequence.fromList(components).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode oldNode) {
-          SNode newNode = _quotation_createNode_i4ro0d_a0a0a0a5a3a5(SLinkOperations.getChildren(oldNode, LINKS.member$dqVz), SPropertyOperations.getString(oldNode, PROPS.name$MnvL));
-          // add it to the model
-          SModelOperations.addRootNode(SNodeOperations.getModel(oldNode), newNode);
+      ListSequence.fromList(components).visitAll((oldNode) -> {
+        SNode newNode = _quotation_createNode_i4ro0d_a0a0a0a5a3a5(SLinkOperations.getChildren(oldNode, LINKS.member$dqVz), SPropertyOperations.getString(oldNode, PROPS.name$MnvL));
+        // add it to the model
+        SModelOperations.addRootNode(SNodeOperations.getModel(oldNode), newNode);
 
-          // create the data annotation to hold mapping between old and new ids of the instances
-          SPropertyOperations.set(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.setTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.MigrationDataAnnotation$Ct).addNew(newNode, CONCEPTS.MigrationDataAnnotation$Ct), LINKS.dataNode$lPK2, createDeclMigrationData_i4ro0d_a0f0a0a5a3a5(oldNode.getNodeId().toString(), newNode.getNodeId().toString()))), CONCEPTS.MigrationDataAnnotation$Ct), PROPS.createdByScript$dQMM, SampleDeclMigration.this.getReference().serialize());
+        // create the data annotation to hold mapping between old and new ids of the instances
+        SPropertyOperations.set(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.setTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.MigrationDataAnnotation$Ct).addNew(newNode, CONCEPTS.MigrationDataAnnotation$Ct), LINKS.dataNode$lPK2, createDeclMigrationData_i4ro0d_a0f0a0a5a3a5(oldNode.getNodeId().toString(), newNode.getNodeId().toString()))), CONCEPTS.MigrationDataAnnotation$Ct), PROPS.createdByScript$dQMM, SampleDeclMigration.this.getReference().serialize());
 
-        }
       });
 
       // remove the old instances from their models
-      ListSequence.fromList(components).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNodeOperations.deleteNode(it);
-        }
-      });
+      ListSequence.fromList(components).visitAll((it) -> SNodeOperations.deleteNode(it));
     }
   }
   @Override
@@ -88,19 +76,13 @@ public class SampleDeclMigration extends MigrationScriptBase {
     {
       SearchScope scope_i4ro0d_a0f = CommandUtil.createScope(m);
       final SearchScope scope_i4ro0d_a0f_0 = new EditableFilteringScope(scope_i4ro0d_a0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_i4ro0d_a0f_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.OldComponent$2b, false)).select(new ISelector<SNode, NotMigratedNode>() {
-        public NotMigratedNode select(SNode it) {
-          return new NotMigratedNode(it) {
-            public String getMessage() {
-              return "old component should be replaced by a new one";
-            }
-          };
-        }
+      QueryExecutionContext context = () -> scope_i4ro0d_a0f_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.OldComponent$2b, false)).select((it) -> {
+        return new NotMigratedNode(it) {
+          public String getMessage() {
+            return "old component should be replaced by a new one";
+          }
+        };
       });
     }
   }

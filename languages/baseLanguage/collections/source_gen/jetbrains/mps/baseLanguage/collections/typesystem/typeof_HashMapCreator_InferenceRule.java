@@ -9,6 +9,7 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typesystem.inference.EquationInfo;
+import jetbrains.mps.baseLanguage.typesystem.InferenceHelper;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -36,11 +37,7 @@ public class typeof_HashMapCreator_InferenceRule extends AbstractInferenceRule_R
         typeCheckingContext.createEquation((SNode) typeCheckingContext.getRepresentative(valueType_typevar_7830826264642622950), (SNode) SLinkOperations.getTarget(hashMapCreator, LINKS.valueType$2EUo), _info_12389875345);
       }
     }
-    {
-      SNode _nodeToCheck_1029348928467 = hashMapCreator;
-      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1198082330971", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1198082325421", true), (SNode) _quotation_createNode_dvqbcx_a1a0c0f0b(typeCheckingContext.getRepresentative(keyType_typevar_7830826264642622863), typeCheckingContext.getRepresentative(valueType_typevar_7830826264642622950)), _info_12389875345);
-    }
+    InferenceHelper.addEquation(typeCheckingContext, _quotation_createNode_dvqbcx_b0f0b(typeCheckingContext.getRepresentative(keyType_typevar_7830826264642622863), typeCheckingContext.getRepresentative(valueType_typevar_7830826264642622950)), (SLinkOperations.getTarget(hashMapCreator, LINKS.keyType$Uj4M) == null) || (SLinkOperations.getTarget(hashMapCreator, LINKS.valueType$2EUo) == null), typeCheckingContext.typeOf(hashMapCreator, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1294329538173223213", true));
     if ((SLinkOperations.getTarget(hashMapCreator, LINKS.initSize$f8Q) != null)) {
       if (!(typeCheckingContext.isSingleTypeComputation())) {
         {
@@ -60,7 +57,7 @@ public class typeof_HashMapCreator_InferenceRule extends AbstractInferenceRule_R
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_dvqbcx_a1a0c0f0b(Object parameter_1, Object parameter_2) {
+  private static SNode _quotation_createNode_dvqbcx_b0f0b(Object parameter_1, Object parameter_2) {
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
     SNode quotedNode_5 = null;

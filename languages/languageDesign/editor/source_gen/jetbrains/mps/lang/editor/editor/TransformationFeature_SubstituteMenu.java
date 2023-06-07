@@ -23,13 +23,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.editor.behavior.TransformationLocation__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.editor.actions.TransformationMenuActionsUtil;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.editor.menus.substitute.SimpleConceptSubstituteMenuPart;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
@@ -102,24 +99,12 @@ public class TransformationFeature_SubstituteMenu extends SubstituteMenuBase {
         }
         protected Collection getConcepts(SubstituteMenuContext _context) {
           SNode section = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.TransformationMenuSection$SB, true, false);
-          final Iterable<SConcept> availableFeatures = ListSequence.fromList(SLinkOperations.getChildren(section, LINKS.locations$m8FB)).translate(new ITranslator2<SNode, SConcept>() {
-            public Iterable<SConcept> translate(SNode it) {
-              return (Collection<SConcept>) TransformationLocation__BehaviorDescriptor.getAvailableFeatures_id1A4kJjlZ$rL.invoke(it);
-            }
-          });
-          Iterable<SConcept> concepts = Sequence.fromIterable(TransformationMenuActionsUtil.getSubconceptsWithCurrentChildConceptsExcluded(CONCEPTS.TransformationFeature$e4, _context.getParentNode(), LINKS.features$gNd, _context.getCurrentTargetNode())).select(new ISelector<SAbstractConcept, SConcept>() {
-            public SConcept select(SAbstractConcept it) {
-              return SNodeOperations.castConcept(it, CONCEPTS.TransformationFeature$e4);
-            }
-          });
+          final Iterable<SConcept> availableFeatures = ListSequence.fromList(SLinkOperations.getChildren(section, LINKS.locations$m8FB)).translate((it) -> (Collection<SConcept>) TransformationLocation__BehaviorDescriptor.getAvailableFeatures_id1A4kJjlZ$rL.invoke(it));
+          Iterable<SConcept> concepts = Sequence.fromIterable(TransformationMenuActionsUtil.getSubconceptsWithCurrentChildConceptsExcluded(CONCEPTS.TransformationFeature$e4, _context.getParentNode(), LINKS.features$gNd, _context.getCurrentTargetNode())).select((it) -> SNodeOperations.castConcept(it, CONCEPTS.TransformationFeature$e4));
           if (section != null) {
-            concepts = Sequence.fromIterable(concepts).where(new IWhereFilter<SConcept>() {
-              public boolean accept(SConcept it) {
-                return Sequence.fromIterable(availableFeatures).contains(it);
-              }
-            });
+            concepts = Sequence.fromIterable(concepts).where((it) -> Sequence.fromIterable(availableFeatures).contains(it));
           }
-          return Sequence.fromIterable(concepts).toListSequence();
+          return Sequence.fromIterable(concepts).toList();
         }
 
         @Override

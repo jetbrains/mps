@@ -15,7 +15,6 @@ import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.BaseQuickFixProvider;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.LinkAttribute__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -43,11 +42,7 @@ public class check_LinkAttribute_NonTypesystemRule extends AbstractNonTypesystem
       }
     } else {
       Iterable<SReferenceLink> links = SNodeOperations.getConcept(SNodeOperations.getParent(linkAttribute)).getReferenceLinks();
-      SReferenceLink existingLink = Sequence.fromIterable(links).findFirst(new IWhereFilter<SReferenceLink>() {
-        public boolean accept(SReferenceLink it) {
-          return Objects.equals(it, LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(linkAttribute));
-        }
-      });
+      SReferenceLink existingLink = Sequence.fromIterable(links).findFirst((it) -> Objects.equals(it, LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(linkAttribute)));
       String reportName = LinkAttribute__BehaviorDescriptor.getNameForReporting_id5gACAVBuLQd.invoke(linkAttribute);
       if (existingLink == null) {
         {

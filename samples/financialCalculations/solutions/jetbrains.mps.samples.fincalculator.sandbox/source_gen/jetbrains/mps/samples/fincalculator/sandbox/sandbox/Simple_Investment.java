@@ -134,10 +134,6 @@ public class Simple_Investment extends CalculationFrame {
   }
 
   public static void main(String[] args) {
-    SwingUtilities.invokeLater(new Runnable() {
-      public void run() {
-        new Simple_Investment();
-      }
-    });
+    SwingUtilities.invokeLater(Simple_Investment::new);
   }
 }

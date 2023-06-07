@@ -11,7 +11,6 @@ import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
@@ -45,11 +44,7 @@ public class OptimizeModelImports_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     List<SModel> m = ((List<SModel>) MapSequence.fromMap(_params).get("models"));
-    return ListSequence.fromList(m).where(new IWhereFilter<SModel>() {
-      public boolean accept(SModel it) {
-        return it instanceof EditableSModel && !(it.isReadOnly());
-      }
-    }).isNotEmpty();
+    return ListSequence.fromList(m).where((it) -> it instanceof EditableSModel && !(it.isReadOnly())).isNotEmpty();
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {

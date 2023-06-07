@@ -21,7 +21,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.IClassifierType__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.behavior.IClassifierMember__BehaviorDescriptor;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import java.util.HashMap;
@@ -58,15 +57,7 @@ public class PrivateInstanceMethodCallOperation_Constraints extends BaseConstrai
               return new EmptyScope();
             }
 
-            Iterable<SNode> privateMethods = (Iterable<SNode>) Sequence.fromIterable(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(classifierType)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return SNodeOperations.isInstanceOf(it, CONCEPTS.InstanceMethodDeclaration$39);
-              }
-            }).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return !((boolean) IClassifierMember__BehaviorDescriptor.isVisible_id5laDzmpBPv8.invoke(it, classifierType, _context.getContextNode()));
-              }
-            });
+            Iterable<SNode> privateMethods = Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(classifierType), CONCEPTS.InstanceMethodDeclaration$39)).where((it) -> !((boolean) IClassifierMember__BehaviorDescriptor.isVisible_id5laDzmpBPv8.invoke(it, classifierType, _context.getContextNode())));
             return new NamedElementsScope(privateMethods);
           }
         };

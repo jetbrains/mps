@@ -17,12 +17,8 @@ import jetbrains.mps.vcs.diff.ui.common.Bounds;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessage;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessageFactory;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
 import java.awt.Rectangle;
@@ -50,20 +46,8 @@ public class BaseVersionEditorComponent extends EditorComponent implements Edito
 
       setBackground(EditorSettings.getInstance().getCaretRowColor());
 
-      Iterable<ChangeEditorMessage> messages = ListSequence.fromList(changeGroup.getChanges()).translate(new ITranslator2<ModelChange, ChangeEditorMessage>() {
-        public Iterable<ChangeEditorMessage> translate(ModelChange ch) {
-          return ChangeEditorMessageFactory.createMessages(myBaseModel, true, ch, BaseVersionEditorComponent.this, null);
-        }
-      });
-      verticalBounds.value = Sequence.fromIterable(messages).select(new ISelector<ChangeEditorMessage, Bounds>() {
-        public Bounds select(ChangeEditorMessage m) {
-          return m.getBounds(BaseVersionEditorComponent.this);
-        }
-      }).reduceLeft(new ILeftCombinator<Bounds, Bounds>() {
-        public Bounds combine(Bounds a, Bounds b) {
-          return a.merge(b);
-        }
-      });
+      Iterable<ChangeEditorMessage> messages = ListSequence.fromList(changeGroup.getChanges()).translate((ch) -> ChangeEditorMessageFactory.createMessages(myBaseModel, true, ch, BaseVersionEditorComponent.this, null));
+      verticalBounds.value = Sequence.fromIterable(messages).select((m) -> m.getBounds(BaseVersionEditorComponent.this)).reduceLeft((a, b) -> a.merge(b));
     });
     int rightMost = 0;
     for (EditorCell leafCell = CellTraversalUtil.getFirstLeaf(getRootCell()); leafCell != null; leafCell = CellTraversalUtil.getNextLeaf(leafCell)) {

@@ -18,7 +18,6 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.kotlin.behavior.VisibilityModifier__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import org.jetbrains.annotations.ApiStatus;
 import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
@@ -71,11 +70,7 @@ public class TypeMembersVisitor extends SuperTypesGenericVisitor implements Sign
     if (visibility != null && !((boolean) VisibilityModifier__BehaviorDescriptor.isApplicable_id6jE_6duQ0AR.invoke(SNodeOperations.asSConcept(visibility), contextNode, source, getAccessOnCurrentType()))) {
 
       // Not applicable here, remove existing child signature that has not overridden visibility (attribute set to null)
-      ListSequence.fromList(members).removeWhere(new IWhereFilter<SourcedSignature>() {
-        public boolean accept(SourcedSignature it) {
-          return Objects.equals(it.getSignature(), signature) && it.getAttribute(SignatureAttributeKey.VISIBILITY) == null;
-        }
-      });
+      ListSequence.fromList(members).removeWhere((it) -> Objects.equals(it.getSignature(), signature) && it.getAttribute(SignatureAttributeKey.VISIBILITY) == null);
 
       // And leave
       return;
@@ -86,11 +81,7 @@ public class TypeMembersVisitor extends SuperTypesGenericVisitor implements Sign
       ListSequence.fromList(members).addElement(new SourcedSignature(source, signature, attributes));
     } else if (context != null) {
       // Copy attributes to inheriting member
-      SourcedSignature same = ListSequence.fromList(members).findFirst(new IWhereFilter<SourcedSignature>() {
-        public boolean accept(SourcedSignature it) {
-          return Objects.equals(it.getSignature(), signature);
-        }
-      });
+      SourcedSignature same = ListSequence.fromList(members).findFirst((it) -> Objects.equals(it.getSignature(), signature));
       if (same != null) {
         same.addAttributes(attributes);
       }
@@ -104,11 +95,7 @@ public class TypeMembersVisitor extends SuperTypesGenericVisitor implements Sign
 
   public Iterable<SourcedSignature> getMembers() {
     // Filtering on attributes happen here: we needed overridden ones before
-    return ListSequence.fromList(members).where(new IWhereFilter<SourcedSignature>() {
-      public boolean accept(SourcedSignature it) {
-        return filter.acceptAttributes(it.getAttributes());
-      }
-    });
+    return ListSequence.fromList(members).where((it) -> filter.acceptAttributes(it.getAttributes()));
   }
 
   @Override

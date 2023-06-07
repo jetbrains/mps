@@ -9,7 +9,6 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -23,12 +22,10 @@ public class check_EnumClassDeclaration_TypeParameters_NonTypesystemRule extends
   }
   public void applyRule(final SNode enumClassDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // Not supported in Kotlin for several reason (typing, generation, methods on enum class)
-    ListSequence.fromList(SLinkOperations.getChildren(enumClassDeclaration, LINKS.typeParameters$eq6K)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        {
-          final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it, "Enum class cannot have type parameters", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "685380225817682735", null, errorTarget);
-        }
+    ListSequence.fromList(SLinkOperations.getChildren(enumClassDeclaration, LINKS.typeParameters$eq6K)).visitAll((it) -> {
+      {
+        final MessageTarget errorTarget = new NodeMessageTarget();
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it, "Enum class cannot have type parameters", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "685380225817682735", null, errorTarget);
       }
     });
   }

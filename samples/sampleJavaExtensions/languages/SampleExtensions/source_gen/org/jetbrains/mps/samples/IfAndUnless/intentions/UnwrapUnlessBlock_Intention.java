@@ -16,7 +16,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import java.util.Objects;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
@@ -62,11 +61,9 @@ public final class UnwrapUnlessBlock_Intention extends AbstractIntentionDescript
         final SNode statementList = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.StatementList$m_);
         final Wrappers._int index = new Wrappers._int(ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$53DE)).indexOf(node));
         ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$53DE)).removeElementAt(index.value);
-        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.body$$Vnx), LINKS.statement$53DE)).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$53DE)).insertElement(index.value, it);
-            index.value += 1;
-          }
+        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.body$$Vnx), LINKS.statement$53DE)).visitAll((it) -> {
+          ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$53DE)).insertElement(index.value, it);
+          index.value += 1;
         });
       } else {
         SNode statement = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.BlockStatement$u4);

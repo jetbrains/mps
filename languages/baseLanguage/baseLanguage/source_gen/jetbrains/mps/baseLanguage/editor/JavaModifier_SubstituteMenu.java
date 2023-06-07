@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
@@ -58,11 +57,7 @@ public class JavaModifier_SubstituteMenu extends SubstituteMenuBase {
         return true;
       }
       List<SNode> modifiers = SLinkOperations.getChildren(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.IHasModifiers$et), LINKS.modifiers$F5MM);
-      return ListSequence.fromList(modifiers).all(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(Objects.equals(SNodeOperations.getConcept(it), concept));
-        }
-      });
+      return ListSequence.fromList(modifiers).all((it) -> !(Objects.equals(SNodeOperations.getConcept(it), concept)));
     }
 
     @Override

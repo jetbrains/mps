@@ -10,7 +10,6 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.IClassifierMember__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.StaticFieldDeclaration__BehaviorDescriptor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
@@ -26,11 +25,7 @@ public class check_InnerClassesCantHaveStaticDeclarations_NonTypesystemRule exte
   public check_InnerClassesCantHaveStaticDeclarations_NonTypesystemRule() {
   }
   public void applyRule(final SNode classConcept, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((boolean) Classifier__BehaviorDescriptor.isInner_idsWroEc0xXl.invoke(classConcept) && !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(classConcept)) && (Sequence.fromIterable(Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(classConcept)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it) && (!(SNodeOperations.isInstanceOf(it, CONCEPTS.StaticFieldDeclaration$jR)) || !((boolean) StaticFieldDeclaration__BehaviorDescriptor.isConstantValue_id3dsApLDTYgy.invoke(SNodeOperations.cast(it, CONCEPTS.StaticFieldDeclaration$jR))))) || SNodeOperations.isInstanceOf(it, CONCEPTS.Interface$db);
-      }
-    }))) {
+    if ((boolean) Classifier__BehaviorDescriptor.isInner_idsWroEc0xXl.invoke(classConcept) && !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(classConcept)) && (Sequence.fromIterable(Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(classConcept)).any((it) -> ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it) && (!(SNodeOperations.isInstanceOf(it, CONCEPTS.StaticFieldDeclaration$jR)) || !((boolean) StaticFieldDeclaration__BehaviorDescriptor.isConstantValue_id3dsApLDTYgy.invoke(SNodeOperations.cast(it, CONCEPTS.StaticFieldDeclaration$jR))))) || SNodeOperations.isInstanceOf(it, CONCEPTS.Interface$db)))) {
       {
         final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$MnvL);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classConcept, "Non-static inner classes cannot have static declarations", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "498633765600371255", null, errorTarget);

@@ -9,7 +9,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import java.io.File;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.util.FileUtil;
@@ -55,11 +54,7 @@ public enum FileType {
   public static FileType get(@NotNull ModelFactoryService service, @Nullable final String filetype, File file) {
     // try to recognize by filetype
     if (filetype != null) {
-      FileType type = Sequence.fromIterable(Sequence.fromArray(FileType.values())).findFirst(new IWhereFilter<FileType>() {
-        public boolean accept(FileType t) {
-          return filetype.equals(t.mySuffix);
-        }
-      });
+      FileType type = Sequence.fromIterable(Sequence.fromArray(FileType.values())).findFirst((t) -> filetype.equals(t.mySuffix));
       if (type != null) {
         return type;
       }
@@ -71,11 +66,7 @@ public enum FileType {
     final Wrappers._T<String> fileName = new Wrappers._T<String>(file.getName());
     if (fileName.value.endsWith(SVN_BASE)) {
       fileName.value = fileName.value.substring(0, fileName.value.length() - FileType.SVN_BASE.length());
-      FileType type = Sequence.fromIterable(Sequence.fromArray(FileType.values())).findFirst(new IWhereFilter<FileType>() {
-        public boolean accept(FileType t) {
-          return fileName.value.endsWith(t.mySuffix);
-        }
-      });
+      FileType type = Sequence.fromIterable(Sequence.fromArray(FileType.values())).findFirst((t) -> fileName.value.endsWith(t.mySuffix));
       if (type != null) {
         return type;
       }
@@ -103,11 +94,7 @@ public enum FileType {
       return null;
     }
 
-    FileType res = Sequence.fromIterable(Sequence.fromArray(FileType.values())).findFirst(new IWhereFilter<FileType>() {
-      public boolean accept(FileType t) {
-        return t.myXmlRoot.equals(handler.rootName);
-      }
-    });
+    FileType res = Sequence.fromIterable(Sequence.fromArray(FileType.values())).findFirst((t) -> t.myXmlRoot.equals(handler.rootName));
     // manually check per-root persistence
     if (res == FileType.MODEL) {
       if ("root".equals(handler.contentAttr)) {

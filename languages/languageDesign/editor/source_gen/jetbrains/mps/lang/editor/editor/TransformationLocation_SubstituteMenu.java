@@ -21,9 +21,8 @@ import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.editor.actions.TransformationMenuActionsUtil;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.SimpleConceptSubstituteMenuPart;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
@@ -95,12 +94,8 @@ public class TransformationLocation_SubstituteMenu extends SubstituteMenuBase {
           super(new EditorMenuDescriptorBase("simple actions for the list of concepts", new SNodePointer("r:00000000-0000-4000-0000-011c89590299(jetbrains.mps.lang.editor.editor)", "1741258697587150552")));
         }
         protected Collection getConcepts(SubstituteMenuContext _context) {
-          Iterable<SConcept> result = Sequence.fromIterable(TransformationMenuActionsUtil.getSubconceptsWithCurrentChildConceptsExcluded(CONCEPTS.TransformationLocation$ez, _context.getParentNode(), LINKS.locations$m8FB, _context.getCurrentTargetNode())).select(new ISelector<SAbstractConcept, SConcept>() {
-            public SConcept select(SAbstractConcept it) {
-              return SNodeOperations.castConcept(it, CONCEPTS.TransformationLocation$ez);
-            }
-          });
-          return Sequence.fromIterable(result).toListSequence();
+          Iterable<SConcept> result = Sequence.fromIterable(TransformationMenuActionsUtil.getSubconceptsWithCurrentChildConceptsExcluded(CONCEPTS.TransformationLocation$ez, _context.getParentNode(), LINKS.locations$m8FB, _context.getCurrentTargetNode())).select((it) -> SNodeOperations.castConcept(it, CONCEPTS.TransformationLocation$ez));
+          return Sequence.fromIterable(result).toList();
         }
 
         @Override

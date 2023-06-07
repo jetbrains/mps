@@ -79,7 +79,7 @@ public class MethodReference_SubstituteMenu extends SubstituteMenuBase {
         }
       };
       Iterable<SNode> availableElements = visibleClassifiers.getAvailableElements("");
-      Iterable<SNode> seq = Sequence.fromIterable(availableElements).select((SNode it) -> SNodeOperations.cast(it, CONCEPTS.Classifier$Ix));
+      Iterable<SNode> seq = Sequence.fromIterable(availableElements).select((it) -> SNodeOperations.cast(it, CONCEPTS.Classifier$Ix));
       return seq;
     }
     private class SMP_Action_srfaef_a0 extends SingleItemSubstituteMenuPart {

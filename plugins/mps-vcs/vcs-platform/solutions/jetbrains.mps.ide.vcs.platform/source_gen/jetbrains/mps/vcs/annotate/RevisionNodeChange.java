@@ -17,19 +17,14 @@ import java.util.HashSet;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.vcs.diff.changes.StructureChange;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.errors.messageTargets.DeletedNodeMessageTarget;
 import java.util.Collections;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
 import jetbrains.mps.vcs.diff.changes.NodeGroupWrapChange;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.vcs.diff.changes.ModifiedNodesGroup;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
 import java.util.Objects;
@@ -58,12 +53,10 @@ import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
     myRevisionGraphNode = graphNode;
     myMessageTarget = messageTarget;
 
-    CollectionSequence.fromCollection(nodeIds).visitAll(new IVisitor<SNodeId>() {
-      public void visit(SNodeId id) {
-        SetSequence.fromSet(myNodeIds).addSequence(SetSequence.fromSet(graphNode.getCurrentNodeIds(id)));
-        if (messageTarget instanceof NodeMessageTarget) {
-          collectChildNodeIds(model.getNode(id), movedNodesIds);
-        }
+    CollectionSequence.fromCollection(nodeIds).visitAll((id) -> {
+      SetSequence.fromSet(myNodeIds).addSequence(SetSequence.fromSet(graphNode.getCurrentNodeIds(id)));
+      if (messageTarget instanceof NodeMessageTarget) {
+        collectChildNodeIds(model.getNode(id), movedNodesIds);
       }
     });
   }
@@ -75,11 +68,7 @@ import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
     myRevisionGraphNode = graphNode;
     myMessageTarget = messageTarget;
 
-    CollectionSequence.fromCollection(nodesIds).visitAll(new IVisitor<SNodeId>() {
-      public void visit(SNodeId id) {
-        SetSequence.fromSet(myNodeIds).addSequence(SetSequence.fromSet(graphNode.getCurrentNodeIds(id)));
-      }
-    });
+    CollectionSequence.fromCollection(nodesIds).visitAll((id) -> SetSequence.fromSet(myNodeIds).addSequence(SetSequence.fromSet(graphNode.getCurrentNodeIds(id))));
     // this constructor is for move changes and for move parts of wrap changes
     collectMovedChildIds(nodesIds, model);
   }
@@ -103,11 +92,7 @@ import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
       return Collections.emptyList();
     }
 
-    List<SNodeId> nodeIds = ListSequence.fromList(targetIds).select(new ISelector<Tuples._2<SNodeId, MessageTarget>, SNodeId>() {
-      public SNodeId select(Tuples._2<SNodeId, MessageTarget> it) {
-        return it._0();
-      }
-    }).toListSequence();
+    List<SNodeId> nodeIds = ListSequence.fromList(targetIds).select((it) -> it._0()).toList();
     final SModel model = modelChange.getChangeSet().getNewModel();
     final String description = modelChange.getShortDescription();
     final ChangeType changeType = modelChange.getType();
@@ -127,15 +112,7 @@ import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
       Collection<SNodeId> wrappingIds = Collections.singletonList(wrapChange.getWrappingGroup().getWrappingNodeId());
       ListSequence.fromList(changes).addElement(createNotMoveNodeChange(graphNode, changeType, description, messageTarget, wrappingIds, model, movedNodesIds));
     } else {
-      ListSequence.fromList(wrapChange.getWrappingGroup().getWrappedGroups()).where(new IWhereFilter<ModifiedNodesGroup>() {
-        public boolean accept(ModifiedNodesGroup it) {
-          return it.isWrappedMove();
-        }
-      }).visitAll(new IVisitor<ModifiedNodesGroup>() {
-        public void visit(ModifiedNodesGroup it) {
-          ListSequence.fromList(changes).addElement(createMoveNodeChange(graphNode, changeType, description, messageTarget, it.getIds(), model));
-        }
-      });
+      ListSequence.fromList(wrapChange.getWrappingGroup().getWrappedGroups()).where((it) -> it.isWrappedMove()).visitAll((it) -> ListSequence.fromList(changes).addElement(createMoveNodeChange(graphNode, changeType, description, messageTarget, it.getIds(), model)));
     }
     return changes;
   }
@@ -171,19 +148,7 @@ import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
   }
 
   private void collectMovedChildIds(Collection<SNodeId> movedNodeIds, final SModel model) {
-    CollectionSequence.fromCollection(movedNodeIds).select(new ISelector<SNodeId, SNode>() {
-      public SNode select(SNodeId it) {
-        return (SNode) model.getNode(it);
-      }
-    }).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode movedNode) {
-        return SNodeOperations.getChildren(movedNode);
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode child) {
-        ListSequence.fromList(myMovedChildIds).addSequence(SetSequence.fromSet(myRevisionGraphNode.getCurrentNodeIds(child.getNodeId())));
-      }
-    });
+    CollectionSequence.fromCollection(movedNodeIds).select((it) -> (SNode) model.getNode(it)).translate((movedNode) -> SNodeOperations.getChildren(movedNode)).visitAll((child) -> ListSequence.fromList(myMovedChildIds).addSequence(SetSequence.fromSet(myRevisionGraphNode.getCurrentNodeIds(child.getNodeId()))));
   }
 
   private void collectChildNodeIds(SNode node, Set<SNodeId> movedNodesIds) {

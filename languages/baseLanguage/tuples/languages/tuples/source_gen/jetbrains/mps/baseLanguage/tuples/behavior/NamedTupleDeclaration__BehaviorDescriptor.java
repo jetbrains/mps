@@ -19,7 +19,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.ArrayList;
@@ -27,8 +26,6 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.baseLanguage.behavior.IClassifier__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.IClassifierType__BehaviorDescriptor;
@@ -73,11 +70,7 @@ public final class NamedTupleDeclaration__BehaviorDescriptor extends BaseBHDescr
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     StringBuilder sb = new StringBuilder(NamedTupleDeclaration__BehaviorDescriptor.getLeftBracket_id1653mnvAgnc.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(__thisNode__))));
     String sep = "";
-    for (SNode cmp : ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(__thisNode__)).reversedList().translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode ntd) {
-        return SLinkOperations.getChildren(ntd, LINKS.component$wCHx);
-      }
-    })) {
+    for (SNode cmp : ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(__thisNode__)).reversedList().translate((ntd) -> SLinkOperations.getChildren(ntd, LINKS.component$wCHx))) {
       sb.append(sep).append(SPropertyOperations.getString(cmp, PROPS.name$MnvL));
       sep = ", ";
     }
@@ -123,21 +116,13 @@ public final class NamedTupleDeclaration__BehaviorDescriptor extends BaseBHDescr
       return true;
     }
     if (SNodeOperations.isInstanceOf(nodeToCompare, CONCEPTS.Interface$db)) {
-      return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.implements$1gsv)).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode ct) {
-          return SLinkOperations.getTarget(ct, LINKS.classifier$cxMr);
-        }
-      }).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode ifc) {
-          return (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(ifc, nodeToCompare);
-        }
-      });
+      return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.implements$1gsv)).select((ct) -> SLinkOperations.getTarget(ct, LINKS.classifier$cxMr)).any((ifc) -> (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(ifc, nodeToCompare));
     }
     return false;
   }
   /*package*/ static SNode getThisType_id2RtWPFZ12w7(@NotNull SNode __thisNode__) {
     _FunctionTypes._return_P1_E0<? extends SNode, ? super SNode> tvd2tvr = (SNode tvr) -> _quotation_createNode_ds5lpv_a0a0a0a4(tvr);
-    return _quotation_createNode_ds5lpv_a1a4(__thisNode__, ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.typeVariableDeclaration$Lipp)).select(tvd2tvr).toListSequence());
+    return _quotation_createNode_ds5lpv_a1a4(__thisNode__, ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.typeVariableDeclaration$Lipp)).select(tvd2tvr).toList());
   }
   /*package*/ static void enumerateMembers_id65_8Gi2s6iV(@NotNull SNode __thisNode__, ClassifierHierarchyVisitor visitor) {
     for (SNode method : SLinkOperations.getChildren(__thisNode__, LINKS.method$_DCK)) {
@@ -150,11 +135,7 @@ public final class NamedTupleDeclaration__BehaviorDescriptor extends BaseBHDescr
     if ((superTuple != null)) {
       IClassifierType__BehaviorDescriptor.enumerateTypesHierarchy_id65_8Gi1edLu.invoke(superTuple, visitor);
     }
-    for (SNode implementedInterface : SNodeOperations.ofConcept(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.implements$1gsv)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (it != null);
-      }
-    }), CONCEPTS.IClassifierType$B1)) {
+    for (SNode implementedInterface : SNodeOperations.ofConcept(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.implements$1gsv)).where((it) -> (it != null)), CONCEPTS.IClassifierType$B1)) {
       IClassifierType__BehaviorDescriptor.enumerateTypesHierarchy_id65_8Gi1edLu.invoke(implementedInterface, visitor);
     }
     IClassifier__BehaviorDescriptor.enumerateSupertypes_id65_8Gi1dKDs.invokeSuper(__thisNode__, CONCEPTS.NamedTupleDeclaration$aM, visitor);

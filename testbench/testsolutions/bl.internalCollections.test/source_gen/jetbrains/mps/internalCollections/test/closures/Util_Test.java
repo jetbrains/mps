@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public abstract class Util_Test {
-  public void assertIterableEquals(Iterable exp, Iterable test) {
+  public void assertIterableEquals(Iterable<?> exp, Iterable<?> test) {
     Iterator expIt = exp.iterator();
     Iterator testIt = test.iterator();
     while (expIt.hasNext() && testIt.hasNext()) {
@@ -20,7 +20,7 @@ public abstract class Util_Test {
     Assert.assertFalse(expIt.hasNext());
     Assert.assertFalse(testIt.hasNext());
   }
-  public void assertIterableEqualsAsSet(Iterable exp, Iterable test) {
+  public void assertIterableEqualsAsSet(Iterable<?> exp, Iterable<?> test) {
     HashSet expSet = new HashSet();
     for (Object e : exp) {
       Assert.assertTrue(expSet.add(e));
@@ -32,7 +32,7 @@ public abstract class Util_Test {
     Assert.assertTrue(expSet.isEmpty());
     Assert.assertFalse(testIt.hasNext());
   }
-  public void assertIterableEqualsIgnoreOrder(Iterable exp, Iterable test) {
+  public void assertIterableEqualsIgnoreOrder(Iterable<?> exp, Iterable<?> test) {
     HashMap<Object, Integer> cardMap = new HashMap<Object, Integer>();
     for (Object e : exp) {
       Integer card = cardMap.get(e);
@@ -80,7 +80,7 @@ public abstract class Util_Test {
   public Iterable<Integer> expectEven10() {
     return Arrays.asList(2, 4, 6, 8, 10);
   }
-  public void assertIteratorYields(Iterator it, Object... values) {
+  public void assertIteratorYields(Iterator<?> it, Object... values) {
     for (Object v : values) {
       Assert.assertSame(v, it.next());
     }

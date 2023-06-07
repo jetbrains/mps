@@ -21,14 +21,11 @@ import jetbrains.mps.kernel.model.SModelUtil;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.transformation.ConstraintsFilteringTransformationMenuPartDecorator;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import jetbrains.mps.logging.Logger;
@@ -103,19 +100,11 @@ public class BreakStatement_TransformationMenu extends TransformationMenuBase {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       if ((SLinkOperations.getTarget(_context.getNode(), LINKS.loopLabelReference$_Wnw) == null)) {
-        boolean loopsWithLabels = ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.AbstractLoopStatement$Xv, false)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return (SLinkOperations.getTarget(it, LINKS.loopLabel$sgvV) != null);
-          }
-        }).isNotEmpty();
+        boolean loopsWithLabels = ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.AbstractLoopStatement$Xv, false)).where((it) -> (SLinkOperations.getTarget(it, LINKS.loopLabel$sgvV) != null)).isNotEmpty();
         if (loopsWithLabels) {
           return true;
         }
-        boolean switchStatementsWithLabels = ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.SwitchStatement$kN, false)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return (SLinkOperations.getTarget(it, LINKS.switchLabel$nNiT) != null);
-          }
-        }).isNotEmpty();
+        boolean switchStatementsWithLabels = ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.SwitchStatement$kN, false)).where((it) -> (SLinkOperations.getTarget(it, LINKS.switchLabel$nNiT) != null)).isNotEmpty();
         return switchStatementsWithLabels;
       }
       return false;
@@ -148,89 +137,81 @@ public class BreakStatement_TransformationMenu extends TransformationMenuBase {
       @Override
       protected Iterable<? extends SNode> getParameters(TransformationMenuContext _context) {
         List<SNode> labels = new ArrayList<SNode>();
-        ListSequence.fromList(labels).addSequence(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.AbstractLoopStatement$Xv, false)).translate(new ITranslator2<SNode, SNode>() {
-          public Iterable<SNode> translate(final SNode it) {
-            return new Iterable<SNode>() {
-              public Iterator<SNode> iterator() {
-                return new YieldingIterator<SNode>() {
-                  private int __CP__ = 0;
-                  protected boolean moveToNext() {
+        ListSequence.fromList(labels).addSequence(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.AbstractLoopStatement$Xv, false)).translate((it) -> {
+          return (Iterable<SNode>) () -> {
+            return new YieldingIterator<SNode>() {
+              private int __CP__ = 0;
+              protected boolean moveToNext() {
 __loop__:
-                    do {
+                do {
 __switch__:
-                      switch (this.__CP__) {
-                        case -1:
-                          assert false : "Internal error";
-                          return false;
-                        case 2:
-                          if ((SLinkOperations.getTarget(it, LINKS.loopLabel$sgvV) != null)) {
-                            this.__CP__ = 3;
-                            break;
-                          }
-                          this.__CP__ = 1;
-                          break;
-                        case 4:
-                          this.__CP__ = 1;
-                          this.yield(SLinkOperations.getTarget(it, LINKS.loopLabel$sgvV));
-                          return true;
-                        case 0:
-                          this.__CP__ = 2;
-                          break;
-                        case 3:
-                          this.__CP__ = 4;
-                          break;
-                        default:
-                          break __loop__;
+                  switch (this.__CP__) {
+                    case -1:
+                      assert false : "Internal error";
+                      return false;
+                    case 2:
+                      if ((SLinkOperations.getTarget(it, LINKS.loopLabel$sgvV) != null)) {
+                        this.__CP__ = 3;
+                        break;
                       }
-                    } while (true);
-                    return false;
+                      this.__CP__ = 1;
+                      break;
+                    case 4:
+                      this.__CP__ = 1;
+                      this.yield(SLinkOperations.getTarget(it, LINKS.loopLabel$sgvV));
+                      return true;
+                    case 0:
+                      this.__CP__ = 2;
+                      break;
+                    case 3:
+                      this.__CP__ = 4;
+                      break;
+                    default:
+                      break __loop__;
                   }
-                };
+                } while (true);
+                return false;
               }
             };
-          }
+          };
         }));
-        ListSequence.fromList(labels).addSequence(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.SwitchStatement$kN, false)).translate(new ITranslator2<SNode, SNode>() {
-          public Iterable<SNode> translate(final SNode it) {
-            return new Iterable<SNode>() {
-              public Iterator<SNode> iterator() {
-                return new YieldingIterator<SNode>() {
-                  private int __CP__ = 0;
-                  protected boolean moveToNext() {
+        ListSequence.fromList(labels).addSequence(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.SwitchStatement$kN, false)).translate((it) -> {
+          return (Iterable<SNode>) () -> {
+            return new YieldingIterator<SNode>() {
+              private int __CP__ = 0;
+              protected boolean moveToNext() {
 __loop__:
-                    do {
+                do {
 __switch__:
-                      switch (this.__CP__) {
-                        case -1:
-                          assert false : "Internal error";
-                          return false;
-                        case 2:
-                          if ((SLinkOperations.getTarget(it, LINKS.switchLabel$nNiT) != null)) {
-                            this.__CP__ = 3;
-                            break;
-                          }
-                          this.__CP__ = 1;
-                          break;
-                        case 4:
-                          this.__CP__ = 1;
-                          this.yield(SLinkOperations.getTarget(it, LINKS.switchLabel$nNiT));
-                          return true;
-                        case 0:
-                          this.__CP__ = 2;
-                          break;
-                        case 3:
-                          this.__CP__ = 4;
-                          break;
-                        default:
-                          break __loop__;
+                  switch (this.__CP__) {
+                    case -1:
+                      assert false : "Internal error";
+                      return false;
+                    case 2:
+                      if ((SLinkOperations.getTarget(it, LINKS.switchLabel$nNiT) != null)) {
+                        this.__CP__ = 3;
+                        break;
                       }
-                    } while (true);
-                    return false;
+                      this.__CP__ = 1;
+                      break;
+                    case 4:
+                      this.__CP__ = 1;
+                      this.yield(SLinkOperations.getTarget(it, LINKS.switchLabel$nNiT));
+                      return true;
+                    case 0:
+                      this.__CP__ = 2;
+                      break;
+                    case 3:
+                      this.__CP__ = 4;
+                      break;
+                    default:
+                      break __loop__;
                   }
-                };
+                } while (true);
+                return false;
               }
             };
-          }
+          };
         }));
         return labels;
       }

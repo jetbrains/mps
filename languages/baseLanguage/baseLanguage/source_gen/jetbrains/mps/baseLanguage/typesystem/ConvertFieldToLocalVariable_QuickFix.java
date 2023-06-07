@@ -12,7 +12,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -44,11 +43,9 @@ public class ConvertFieldToLocalVariable_QuickFix extends QuickFix_Runtime {
     } else {
       SPropertyOperations.assign(var, PROPS.isFinal$gvTP, SPropertyOperations.getBoolean(variableDeclaration, PROPS.isFinal$gvTP));
     }
-    Sequence.fromIterable(((Iterable<SNode>) ConvertFieldToLocalVariable_QuickFix.this.getField("alls")[0])).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SNode ref = SNodeOperations.replaceWithNewChild(it, CONCEPTS.VariableReference$TC);
-        SLinkOperations.setTarget(ref, LINKS.variableDeclaration$N1XG, var);
-      }
+    Sequence.fromIterable(((Iterable<SNode>) ConvertFieldToLocalVariable_QuickFix.this.getField("alls")[0])).visitAll((it) -> {
+      SNode ref = SNodeOperations.replaceWithNewChild(it, CONCEPTS.VariableReference$TC);
+      SLinkOperations.setTarget(ref, LINKS.variableDeclaration$N1XG, var);
     });
     SNodeOperations.deleteNode(node);
   }

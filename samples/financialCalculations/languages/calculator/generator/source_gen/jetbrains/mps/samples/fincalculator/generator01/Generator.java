@@ -34,8 +34,9 @@ public class Generator extends TemplateModuleInterpreted2 {
 
   @Override
   public Collection<SLanguage> getTargetLanguages() {
-    SLanguage[] rv = new SLanguage[1];
+    SLanguage[] rv = new SLanguage[2];
     rv[0] = MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+    rv[1] = MetaAdapterFactory.getLanguage(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, "jetbrains.mps.baseLanguage.methodReferences");
     return Arrays.asList(rv);
   }
 

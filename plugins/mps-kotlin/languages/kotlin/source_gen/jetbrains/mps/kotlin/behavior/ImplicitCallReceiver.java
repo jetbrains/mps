@@ -5,7 +5,6 @@ package jetbrains.mps.kotlin.behavior;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -18,11 +17,7 @@ public class ImplicitCallReceiver implements MemberReceiver {
 
   @Override
   public Iterable<TypeReference> getTypeReferences() {
-    return ListSequence.fromList(SNodeOperations.getNodeAncestors(myNode, CONCEPTS.IThisReceiverProvider$mP, false)).translate(new ITranslator2<SNode, TypeReference>() {
-      public Iterable<TypeReference> translate(SNode it) {
-        return (Iterable<TypeReference>) IThisReceiverProvider__BehaviorDescriptor.getThisTypeReferences_idxpyqH1FuA0.invoke(it);
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getNodeAncestors(myNode, CONCEPTS.IThisReceiverProvider$mP, false)).translate((it) -> (Iterable<TypeReference>) IThisReceiverProvider__BehaviorDescriptor.getThisTypeReferences_idxpyqH1FuA0.invoke(it));
   }
 
   private static final class CONCEPTS {

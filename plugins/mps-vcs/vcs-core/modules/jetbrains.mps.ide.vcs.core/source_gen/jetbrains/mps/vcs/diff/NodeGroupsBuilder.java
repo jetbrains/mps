@@ -16,27 +16,21 @@ import java.util.LinkedList;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.vcs.diff.changes.IdChangeGroup;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcs.diff.changes.ModifiedNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import java.util.List;
 import jetbrains.mps.util.LongestCommonSubsequenceFinder;
 import java.util.Map;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
@@ -65,11 +59,7 @@ import jetbrains.mps.vcs.diff.changes.WrappingNodesGroup;
 
   private void buildGroupsHierarchy(final SNode node, @Nullable ModifiedNodesGroup parentGroup, final boolean isNew) {
 
-    final Wrappers._T<ModifiedNodesGroup> nodeGroup = new Wrappers._T<ModifiedNodesGroup>(CollectionSequence.fromCollection(getGroups(isNew)).findFirst(new IWhereFilter<ModifiedNodesGroup>() {
-      public boolean accept(ModifiedNodesGroup it) {
-        return ListSequence.fromList(it.getIds()).contains(node.getNodeId());
-      }
-    }));
+    final Wrappers._T<ModifiedNodesGroup> nodeGroup = new Wrappers._T<ModifiedNodesGroup>(CollectionSequence.fromCollection(getGroups(isNew)).findFirst((it) -> ListSequence.fromList(it.getIds()).contains(node.getNodeId())));
 
     if (nodeGroup.value != null) {
       if (parentGroup != null && !(nodeGroup.value instanceof IdChangeGroup)) {
@@ -78,11 +68,7 @@ import jetbrains.mps.vcs.diff.changes.WrappingNodesGroup;
     } else {
       nodeGroup.value = parentGroup;
     }
-    ListSequence.fromList(SNodeOperations.getChildren(node)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode childNode) {
-        buildGroupsHierarchy(childNode, nodeGroup.value, isNew);
-      }
-    });
+    ListSequence.fromList(SNodeOperations.getChildren(node)).visitAll((childNode) -> buildGroupsHierarchy(childNode, nodeGroup.value, isNew));
   }
 
 
@@ -130,96 +116,72 @@ import jetbrains.mps.vcs.diff.changes.WrappingNodesGroup;
 
     Iterable<ModifiedNode> topNodes = Sequence.fromIterable(getTopModifiedNodes(false)).concat(Sequence.fromIterable(getTopModifiedNodes(true))).distinct();
 
-    QueueSequence.fromQueue(myLinks).addSequence(Sequence.fromIterable(topNodes).select(new ISelector<ModifiedNode, Tuples._2<SNodeId, SContainmentLink>>() {
-      public Tuples._2<SNodeId, SContainmentLink> select(ModifiedNode it) {
-        return MultiTuple.<SNodeId,SContainmentLink>from(it.getParentId(), it.getLink());
-      }
-    }).distinct().select(new ISelector<Tuples._2<SNodeId, SContainmentLink>, ParentsLink>() {
-      public ParentsLink select(Tuples._2<SNodeId, SContainmentLink> it) {
-        return new ParentsLink(it._0(), it._0(), it._1());
-      }
-    }));
+    QueueSequence.fromQueue(myLinks).addSequence(Sequence.fromIterable(topNodes).select((it) -> MultiTuple.<SNodeId,SContainmentLink>from(it.getParentId(), it.getLink())).distinct().select((it) -> new ParentsLink(it._0(), it._0(), it._1())));
   }
 
   private Iterable<ModifiedNode> getTopModifiedNodes(boolean isNew) {
-    return Sequence.fromIterable(MapSequence.fromMap(myNodesBuilder.getModifiedNodes(isNew)).values()).where(new IWhereFilter<ModifiedNode>() {
-      public boolean accept(ModifiedNode it) {
-        return it.getParent() == null;
-      }
-    }).translate(new ITranslator2<ModifiedNode, ModifiedNode>() {
-      public Iterable<ModifiedNode> translate(final ModifiedNode it) {
-        return Sequence.fromClosure(new ISequenceClosure<ModifiedNode>() {
-          public Iterable<ModifiedNode> iterable() {
-            return new Iterable<ModifiedNode>() {
-              public Iterator<ModifiedNode> iterator() {
-                return new YieldingIterator<ModifiedNode>() {
-                  private int __CP__ = 0;
-                  protected boolean moveToNext() {
+    return Sequence.fromIterable(MapSequence.fromMap(myNodesBuilder.getModifiedNodes(isNew)).values()).where((it) -> it.getParent() == null).translate((final ModifiedNode it) -> {
+      return Sequence.fromClosure(() -> {
+        return (Iterable<ModifiedNode>) () -> {
+          return new YieldingIterator<ModifiedNode>() {
+            private int __CP__ = 0;
+            protected boolean moveToNext() {
 __loop__:
-                    do {
+              do {
 __switch__:
-                      switch (this.__CP__) {
-                        case -1:
-                          assert false : "Internal error";
-                          return false;
-                        case 3:
-                          if (it.isMove()) {
-                            this.__CP__ = 4;
-                            break;
-                          }
-                          this.__CP__ = 1;
-                          break;
-                        case 2:
-                          this.__CP__ = 3;
-                          this.yield(it);
-                          return true;
-                        case 5:
-                          this.__CP__ = 1;
-                          this.yield(it.getOppositeNode());
-                          return true;
-                        case 0:
-                          this.__CP__ = 2;
-                          break;
-                        case 4:
-                          this.__CP__ = 5;
-                          break;
-                        default:
-                          break __loop__;
-                      }
-                    } while (true);
+                switch (this.__CP__) {
+                  case -1:
+                    assert false : "Internal error";
                     return false;
-                  }
-                };
-              }
-            };
-          }
-        });
-      }
+                  case 3:
+                    if (it.isMove()) {
+                      this.__CP__ = 4;
+                      break;
+                    }
+                    this.__CP__ = 1;
+                    break;
+                  case 2:
+                    this.__CP__ = 3;
+                    this.yield(it);
+                    return true;
+                  case 5:
+                    this.__CP__ = 1;
+                    this.yield(it.getOppositeNode());
+                    return true;
+                  case 0:
+                    this.__CP__ = 2;
+                    break;
+                  case 4:
+                    this.__CP__ = 5;
+                    break;
+                  default:
+                    break __loop__;
+                }
+              } while (true);
+              return false;
+            }
+          };
+        };
+      });
     });
   }
 
   private void addMovedFromDeletedParentGroups(SNode parent, SContainmentLink link, boolean isNew) {
     List<ModifiedNodesGroup> groups = createGroups(getLinkChildrenIds(parent, link), null, null, isNew);
-    ListSequence.fromList(groups).visitAll(new IVisitor<ModifiedNodesGroup>() {
-      public void visit(ModifiedNodesGroup it) {
-        ModifiedNodesGroup nextGroup = it.getNextGroup();
-        // not move groups do not make sense in this context.
-        // we should not use them as next groups for move groups.
-        if (nextGroup != null && !(nextGroup.isMove())) {
-          it.setNextNodeId(nextGroup.getFirstNodeId());
-          it.setNextGroup(null);
-        }
-        ModifiedNodesGroup prevGroup = it.getPrevGroup();
-        if (prevGroup != null && !(prevGroup.isMove())) {
-          it.setPrevGroup(null);
-        }
+    ListSequence.fromList(groups).visitAll((it) -> {
+      ModifiedNodesGroup nextGroup = it.getNextGroup();
+      // not move groups do not make sense in this context.
+      // we should not use them as next groups for move groups.
+      if (nextGroup != null && !(nextGroup.isMove())) {
+        it.setNextNodeId(nextGroup.getFirstNodeId());
+        it.setNextGroup(null);
+      }
+      ModifiedNodesGroup prevGroup = it.getPrevGroup();
+      if (prevGroup != null && !(prevGroup.isMove())) {
+        it.setPrevGroup(null);
       }
     });
-    CollectionSequence.fromCollection(getGroups(isNew)).addSequence(ListSequence.fromList(groups).where(new IWhereFilter<ModifiedNodesGroup>() {
-      public boolean accept(ModifiedNodesGroup it) {
-        return it.isMove();
-      }
-    }));
+    CollectionSequence.fromCollection(getGroups(isNew)).addSequence(ListSequence.fromList(groups).where((it) -> it.isMove()));
   }
 
   private void collectGroupsInRole(final SNode oldParent, final SNode newParent, final SContainmentLink link) {
@@ -235,25 +197,19 @@ __switch__:
 
     final List<SNodeId> oldChildrenIds = getLinkChildrenIds(oldParent, link);
     final List<SNodeId> newChildrenIds = getLinkChildrenIds(newParent, link);
-    ListSequence.fromList(new LongestCommonSubsequenceFinder<SNodeId>(oldChildrenIds, newChildrenIds).getDifferentIndices()).visitAll(new IVisitor<Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>>>() {
-      public void visit(Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>> indices) {
-        List<SNodeId> oldDiffIds = ListSequence.fromList(oldChildrenIds).page((int) indices._0()._0(), (int) indices._0()._1()).toListSequence();
-        List<SNodeId> newDiffIds = ListSequence.fromList(newChildrenIds).page((int) indices._1()._0(), (int) indices._1()._1()).toListSequence();
-        int oldEndIndex = (int) indices._0()._1();
-        int newEndIndex = (int) indices._1()._1();
-        SNodeId oldBeforeId = (oldEndIndex < ListSequence.fromList(oldChildrenIds).count() ? ListSequence.fromList(oldChildrenIds).getElement(oldEndIndex) : null);
-        SNodeId newBeforeId = (newEndIndex < ListSequence.fromList(newChildrenIds).count() ? ListSequence.fromList(newChildrenIds).getElement(newEndIndex) : null);
-        collectGroupsWithSameAnchor(oldParent.getNodeId(), newParent.getNodeId(), link, oldDiffIds, newDiffIds, oldBeforeId, newBeforeId);
-      }
+    ListSequence.fromList(new LongestCommonSubsequenceFinder<SNodeId>(oldChildrenIds, newChildrenIds).getDifferentIndices()).visitAll((indices) -> {
+      List<SNodeId> oldDiffIds = ListSequence.fromList(oldChildrenIds).page((int) indices._0()._0(), (int) indices._0()._1()).toList();
+      List<SNodeId> newDiffIds = ListSequence.fromList(newChildrenIds).page((int) indices._1()._0(), (int) indices._1()._1()).toList();
+      int oldEndIndex = (int) indices._0()._1();
+      int newEndIndex = (int) indices._1()._1();
+      SNodeId oldBeforeId = (oldEndIndex < ListSequence.fromList(oldChildrenIds).count() ? ListSequence.fromList(oldChildrenIds).getElement(oldEndIndex) : null);
+      SNodeId newBeforeId = (newEndIndex < ListSequence.fromList(newChildrenIds).count() ? ListSequence.fromList(newChildrenIds).getElement(newEndIndex) : null);
+      collectGroupsWithSameAnchor(oldParent.getNodeId(), newParent.getNodeId(), link, oldDiffIds, newDiffIds, oldBeforeId, newBeforeId);
     });
   }
 
   private static List<SNodeId> getLinkChildrenIds(SNode parent, SContainmentLink link) {
-    return ListSequence.fromList(DiffUtil.getChildrenInRole(parent, link)).select(new ISelector<SNode, SNodeId>() {
-      public SNodeId select(SNode it) {
-        return it.getNodeId();
-      }
-    }).toListSequence();
+    return ListSequence.fromList(DiffUtil.getChildrenInRole(parent, link)).select((it) -> it.getNodeId()).toList();
   }
 
   private void collectGroupsWithSameAnchor(final SNodeId oldParentId, final SNodeId newParentId, final SContainmentLink link, List<SNodeId> oldDiffIds, List<SNodeId> newDiffIds, SNodeId oldBeforeId, SNodeId newBeforeId) {
@@ -263,36 +219,22 @@ __switch__:
     List<ModifiedNodesGroup> oldGroups = createGroups(oldDiffIds, oldBeforeId, idChanges, false);
     final List<ModifiedNodesGroup> newGroups = createGroups(newDiffIds, newBeforeId, idChanges, true);
 
-    ListSequence.fromList(oldGroups).ofType(IdChangeGroup.class).visitAll(new IVisitor<IdChangeGroup>() {
-      public void visit(final IdChangeGroup oldGroup) {
-        IdChangeGroup newGroup = ListSequence.fromList(newGroups).ofType(IdChangeGroup.class).findFirst(new IWhereFilter<IdChangeGroup>() {
-          public boolean accept(IdChangeGroup newGroup) {
-            return Objects.equals(newGroup.getId(), MapSequence.fromMap(idChanges).get(oldGroup.getId()));
-          }
-        });
-        oldGroup.setOppositeGroup(newGroup);
-        newGroup.setOppositeGroup(oldGroup);
-        // collect ID changes
-        addIdChange(oldParentId, newParentId, link, oldGroup, newGroup);
-      }
+    ListSequence.fromList(oldGroups).ofType(IdChangeGroup.class).visitAll((final IdChangeGroup oldGroup) -> {
+      IdChangeGroup newGroup = ListSequence.fromList(newGroups).ofType(IdChangeGroup.class).findFirst(new _FunctionTypes._return_P1_E0<Boolean, IdChangeGroup>() {
+        public Boolean invoke(IdChangeGroup newGroup) {
+          return Objects.equals(newGroup.getId(), MapSequence.fromMap(idChanges).get(oldGroup.getId()));
+        }
+      });
+      oldGroup.setOppositeGroup(newGroup);
+      newGroup.setOppositeGroup(oldGroup);
+      // collect ID changes
+      addIdChange(oldParentId, newParentId, link, oldGroup, newGroup);
     });
 
-    final NodeIdChange parentIdChange = CollectionSequence.fromCollection(myNodeIdChanges).findFirst(new IWhereFilter<NodeIdChange>() {
-      public boolean accept(NodeIdChange it) {
-        return Objects.equals(it.getNodeId(false), oldParentId) && Objects.equals(it.getNodeId(true), newParentId);
-      }
-    });
+    final NodeIdChange parentIdChange = CollectionSequence.fromCollection(myNodeIdChanges).findFirst((it) -> Objects.equals(it.getNodeId(false), oldParentId) && Objects.equals(it.getNodeId(true), newParentId));
     if (parentIdChange != null) {
-      ListSequence.fromList(oldGroups).visitAll(new IVisitor<ModifiedNodesGroup>() {
-        public void visit(ModifiedNodesGroup it) {
-          it.setParentIdChangeGroup(parentIdChange.getGroup(false));
-        }
-      });
-      ListSequence.fromList(newGroups).visitAll(new IVisitor<ModifiedNodesGroup>() {
-        public void visit(ModifiedNodesGroup it) {
-          it.setParentIdChangeGroup(parentIdChange.getGroup(true));
-        }
-      });
+      ListSequence.fromList(oldGroups).visitAll((it) -> it.setParentIdChangeGroup(parentIdChange.getGroup(false)));
+      ListSequence.fromList(newGroups).visitAll((it) -> it.setParentIdChangeGroup(parentIdChange.getGroup(true)));
     }
 
     CollectionSequence.fromCollection(getGroups(false)).addSequence(ListSequence.fromList(oldGroups));
@@ -309,69 +251,39 @@ __switch__:
     final Map<SContainmentLink, List<SNode>> oldChildren = ChangeSetBuilder.getRoleToChildCollectionMap(oldNode);
     final Map<SContainmentLink, List<SNode>> newChildren = ChangeSetBuilder.getRoleToChildCollectionMap(newNode);
 
-    SetSequence.fromSet(MapSequence.fromMap(oldChildren).keySet()).concat(SetSequence.fromSet(MapSequence.fromMap(newChildren).keySet())).distinct().visitAll(new IVisitor<SContainmentLink>() {
-      public void visit(SContainmentLink childLink) {
+    SetSequence.fromSet(MapSequence.fromMap(oldChildren).keySet()).concat(SetSequence.fromSet(MapSequence.fromMap(newChildren).keySet())).distinct().visitAll((childLink) -> {
 
-        // remove moves caused by this ID change
-        removeIdChangeCausedMovedGroups(MapSequence.fromMap(oldChildren).get(childLink), MapSequence.fromMap(newChildren).get(childLink));
+      // remove moves caused by this ID change
+      removeIdChangeCausedMovedGroups(MapSequence.fromMap(oldChildren).get(childLink), MapSequence.fromMap(newChildren).get(childLink));
 
-        ParentsLink newLink = new ParentsLink(oldGroup.getId(), newGroup.getId(), childLink);
+      ParentsLink newLink = new ParentsLink(oldGroup.getId(), newGroup.getId(), childLink);
 
-        if (!(linkIsInQueue(newLink))) {
+      if (!(linkIsInQueue(newLink))) {
 
-          // these links were added to the queue before we have found this ID change
-          // we should remove them from the queue
-          QueueSequence.fromQueue(myLinks).removeSequence(ListSequence.fromList(getLinksWithSameParentId(newLink)));
+        // these links were added to the queue before we have found this ID change
+        // we should remove them from the queue
+        QueueSequence.fromQueue(myLinks).removeSequence(ListSequence.fromList(getLinksWithSameParentId(newLink)));
 
-          // collect changes for children of nodes with changed IDs
-          QueueSequence.fromQueue(myLinks).addLastElement(newLink);
-        }
+        // collect changes for children of nodes with changed IDs
+        QueueSequence.fromQueue(myLinks).addLastElement(newLink);
       }
     });
   }
 
   private boolean linkIsInQueue(final ParentsLink parentsLink) {
-    return QueueSequence.fromQueue(myLinks).any(new IWhereFilter<ParentsLink>() {
-      public boolean accept(ParentsLink it) {
-        return Objects.equals(it.myLink, parentsLink.myLink) && Objects.equals(it.myOldParentId, parentsLink.myOldParentId) && Objects.equals(it.myNewParentId, parentsLink.myNewParentId);
-      }
-    });
+    return QueueSequence.fromQueue(myLinks).any((it) -> Objects.equals(it.myLink, parentsLink.myLink) && Objects.equals(it.myOldParentId, parentsLink.myOldParentId) && Objects.equals(it.myNewParentId, parentsLink.myNewParentId));
   }
 
   private List<ParentsLink> getLinksWithSameParentId(final ParentsLink parentsLink) {
-    return QueueSequence.fromQueue(myLinks).where(new IWhereFilter<ParentsLink>() {
-      public boolean accept(ParentsLink it) {
-        return Objects.equals(it.myLink, parentsLink.myLink) && (Objects.equals(it.myOldParentId, parentsLink.myOldParentId) || Objects.equals(it.myNewParentId, parentsLink.myNewParentId)) && Objects.equals(it.myOldParentId, it.myNewParentId);
-      }
-    }).toListSequence();
+    return QueueSequence.fromQueue(myLinks).where((it) -> Objects.equals(it.myLink, parentsLink.myLink) && (Objects.equals(it.myOldParentId, parentsLink.myOldParentId) || Objects.equals(it.myNewParentId, parentsLink.myNewParentId)) && Objects.equals(it.myOldParentId, it.myNewParentId)).toList();
   }
 
   private void removeIdChangeCausedMovedGroups(List<SNode> oldNodes, List<SNode> newNodes) {
-    final List<SNodeId> oldIds = ListSequence.fromList(oldNodes).select(new ISelector<SNode, SNodeId>() {
-      public SNodeId select(SNode it) {
-        return it.getNodeId();
-      }
-    }).toListSequence();
-    final List<SNodeId> newIds = ListSequence.fromList(newNodes).select(new ISelector<SNode, SNodeId>() {
-      public SNodeId select(SNode it) {
-        return it.getNodeId();
-      }
-    }).toListSequence();
-    Collection<ModifiedNodesGroup> oldMoves = CollectionSequence.fromCollection(myOldGroups).where(new IWhereFilter<ModifiedNodesGroup>() {
-      public boolean accept(ModifiedNodesGroup it) {
-        return ListSequence.fromList(oldIds).contains(it.getFirstNodeId());
-      }
-    }).toListSequence();
-    Collection<ModifiedNodesGroup> newMoves = CollectionSequence.fromCollection(myNewGroups).where(new IWhereFilter<ModifiedNodesGroup>() {
-      public boolean accept(ModifiedNodesGroup it) {
-        return ListSequence.fromList(newIds).contains(it.getFirstNodeId());
-      }
-    }).toListSequence();
-    CollectionSequence.fromCollection(oldMoves).concat(CollectionSequence.fromCollection(newMoves)).visitAll(new IVisitor<ModifiedNodesGroup>() {
-      public void visit(ModifiedNodesGroup it) {
-        removeGroup(it);
-      }
-    });
+    final List<SNodeId> oldIds = ListSequence.fromList(oldNodes).select((it) -> it.getNodeId()).toList();
+    final List<SNodeId> newIds = ListSequence.fromList(newNodes).select((it) -> it.getNodeId()).toList();
+    Collection<ModifiedNodesGroup> oldMoves = CollectionSequence.fromCollection(myOldGroups).where((it) -> ListSequence.fromList(oldIds).contains(it.getFirstNodeId())).toList();
+    Collection<ModifiedNodesGroup> newMoves = CollectionSequence.fromCollection(myNewGroups).where((it) -> ListSequence.fromList(newIds).contains(it.getFirstNodeId())).toList();
+    CollectionSequence.fromCollection(oldMoves).concat(CollectionSequence.fromCollection(newMoves)).visitAll((it) -> removeGroup(it));
   }
 
   private void removeGroup(ModifiedNodesGroup group) {
@@ -419,11 +331,9 @@ __switch__:
       ListSequence.fromList(groups).addElement(new ModifiedNodesGroup(getModel(isNew), groupNodes, beforeId));
     }
     final Wrappers._T<ModifiedNodesGroup> nextGroup = new Wrappers._T<ModifiedNodesGroup>(null);
-    ListSequence.fromList(groups).reversedList().visitAll(new IVisitor<ModifiedNodesGroup>() {
-      public void visit(ModifiedNodesGroup it) {
-        it.setNextGroup(nextGroup.value);
-        nextGroup.value = it;
-      }
+    ListSequence.fromList(groups).reversedList().visitAll((it) -> {
+      it.setNextGroup(nextGroup.value);
+      nextGroup.value = it;
     });
     return groups;
   }
@@ -484,28 +394,16 @@ __switch__:
   }
 
   private Collection<ModifiedNodesGroup> getAllGroups() {
-    return CollectionSequence.fromCollection(getGroups(false)).concat(CollectionSequence.fromCollection(getGroups(true))).toListSequence();
+    return CollectionSequence.fromCollection(getGroups(false)).concat(CollectionSequence.fromCollection(getGroups(true))).toList();
   }
 
   private void setOppositeMoves() {
-    CollectionSequence.fromCollection(getAllGroups()).where(new IWhereFilter<ModifiedNodesGroup>() {
-      public boolean accept(ModifiedNodesGroup it) {
-        return it.isMove();
-      }
-    }).visitAll(new IVisitor<ModifiedNodesGroup>() {
-      public void visit(ModifiedNodesGroup it) {
-        it.setOppositeMove(getOppositeMove(it));
-      }
-    });
+    CollectionSequence.fromCollection(getAllGroups()).where((it) -> it.isMove()).visitAll((it) -> it.setOppositeMove(getOppositeMove(it)));
   }
 
   private ModifiedNodesGroup getOppositeMove(final ModifiedNodesGroup group) {
     assert group.isMove();
-    return CollectionSequence.fromCollection(((group.isNew() ? myOldGroups : myNewGroups))).findFirst(new IWhereFilter<ModifiedNodesGroup>() {
-      public boolean accept(ModifiedNodesGroup it) {
-        return it.isMove() && Objects.equals(it.getIds(), group.getIds());
-      }
-    });
+    return CollectionSequence.fromCollection(((group.isNew() ? myOldGroups : myNewGroups))).findFirst((it) -> it.isMove() && Objects.equals(it.getIds(), group.getIds()));
   }
 
   /*package*/ List<ModifiedNodesGroup> getOppositeGroupsFromSamePosition(ModifiedNodesGroup notMoveGroup) {
@@ -513,24 +411,12 @@ __switch__:
     final SNodeId parentId = getOppositeGroupParentId(notMoveGroup);
     final SContainmentLink link = getOppositeGroupLink(notMoveGroup);
     final SNodeId nextNodeId = getOppositeGroupNextNodeId(notMoveGroup);
-    return CollectionSequence.fromCollection(getGroups(!(notMoveGroup.isNew()))).where(new IWhereFilter<ModifiedNodesGroup>() {
-      public boolean accept(ModifiedNodesGroup it) {
-        return Objects.equals(parentId, it.getParentId()) && Objects.equals(link, it.getLink()) && Objects.equals(nextNodeId, it.getActualNextNodeId());
-      }
-    }).sort(new ISelector<ModifiedNodesGroup, Integer>() {
-      public Integer select(ModifiedNodesGroup it) {
-        return it.getBegin();
-      }
-    }, true).toListSequence();
+    return CollectionSequence.fromCollection(getGroups(!(notMoveGroup.isNew()))).where((it) -> Objects.equals(parentId, it.getParentId()) && Objects.equals(link, it.getLink()) && Objects.equals(nextNodeId, it.getActualNextNodeId())).sort((it) -> it.getBegin(), true).toList();
   }
 
   /*package*/ List<ModifiedNodesGroup> getOppositeNotMoveGroupsWithSamePosition(final ModifiedNodesGroup notMoveGroup) {
     assert notMoveGroup.isInsertOrDelete();
-    return ListSequence.fromList(getOppositeGroupsFromSamePosition(notMoveGroup)).where(new IWhereFilter<ModifiedNodesGroup>() {
-      public boolean accept(ModifiedNodesGroup it) {
-        return it.isInsertOrDelete() && it.isNotEmpty() && notMoveGroup.getWrappingGroup() == it.getOppositeWrappingGroup() && notMoveGroup.getOppositeWrappingGroup() == it.getWrappingGroup();
-      }
-    }).toListSequence();
+    return ListSequence.fromList(getOppositeGroupsFromSamePosition(notMoveGroup)).where((it) -> it.isInsertOrDelete() && it.isNotEmpty() && notMoveGroup.getWrappingGroup() == it.getOppositeWrappingGroup() && notMoveGroup.getOppositeWrappingGroup() == it.getWrappingGroup()).toList();
   }
 
   /*package*/ ModifiedNodesGroup createEmptyGroup(ModifiedNodesGroup notMoveGroup) {
@@ -552,15 +438,7 @@ __switch__:
   /*package*/ List<ModifiedNodesGroup> getNotMoveGroupsWithSamePosition(final ModifiedNodesGroup notMoveGroup) {
     assert notMoveGroup.isInsertOrDelete();
     final SNodeId nextNodeId = notMoveGroup.getActualNextNodeId();
-    return CollectionSequence.fromCollection(getGroups(notMoveGroup.isNew())).where(new IWhereFilter<ModifiedNodesGroup>() {
-      public boolean accept(ModifiedNodesGroup it) {
-        return it.isInsertOrDelete() && it.isNotEmpty() && Objects.equals(notMoveGroup.getParentId(), it.getParentId()) && Objects.equals(notMoveGroup.getLink(), it.getLink()) && Objects.equals(nextNodeId, it.getActualNextNodeId());
-      }
-    }).sort(new ISelector<ModifiedNodesGroup, Integer>() {
-      public Integer select(ModifiedNodesGroup it) {
-        return it.getBegin();
-      }
-    }, true).toListSequence();
+    return CollectionSequence.fromCollection(getGroups(notMoveGroup.isNew())).where((it) -> it.isInsertOrDelete() && it.isNotEmpty() && Objects.equals(notMoveGroup.getParentId(), it.getParentId()) && Objects.equals(notMoveGroup.getLink(), it.getLink()) && Objects.equals(nextNodeId, it.getActualNextNodeId())).sort((it) -> it.getBegin(), true).toList();
   }
 
   private SNodeId getOppositeGroupNextNodeId(ModifiedNodesGroup notMoveGroup) {
@@ -574,11 +452,7 @@ __switch__:
         return ((WrappingNodesGroup) nextGroup).getFirstUnwrappedGroup().getFirstNodeId();
       }
       WrappingNodesGroup oppositeWrappingGroup = nextGroup.getOppositeWrappingGroup();
-      if (oppositeWrappingGroup != null && ListSequence.fromList(oppositeWrappingGroup.getUnwrappedGroups()).where(new IWhereFilter<ModifiedNodesGroup>() {
-        public boolean accept(ModifiedNodesGroup it) {
-          return it.isWrappedMove();
-        }
-      }).first() == nextGroup) {
+      if (oppositeWrappingGroup != null && ListSequence.fromList(oppositeWrappingGroup.getUnwrappedGroups()).where((it) -> it.isWrappedMove()).first() == nextGroup) {
         while (oppositeWrappingGroup.getWrappingGroup() != null) {
           if (oppositeWrappingGroup.getWrappingGroup() == notMoveGroup.getOppositeWrappingGroup()) {
             break;

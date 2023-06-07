@@ -18,7 +18,6 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.Set;
 import java.util.HashSet;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.event.SModelEventVisitorAdapter;
 import jetbrains.mps.smodel.event.SModelLanguageEvent;
 import jetbrains.mps.smodel.event.SModelDevKitEvent;
@@ -26,7 +25,6 @@ import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.event.SModelEvent;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.ide.platform.watching.ReloadListener;
 
@@ -91,11 +89,7 @@ import jetbrains.mps.ide.platform.watching.ReloadListener;
 
     public void run() {
       myTask = null;
-      List<SModule> toUpdate = SetSequence.fromSet(modulesTouched).distinct().where(new IWhereFilter<SModule>() {
-        public boolean accept(SModule it) {
-          return isProjectMigrateableModule(it);
-        }
-      }).toListSequence();
+      List<SModule> toUpdate = SetSequence.fromSet(modulesTouched).distinct().where((it) -> isProjectMigrateableModule(it)).toList();
       if (!(touchedUnderReload)) {
         updateSingleModuleDescriptorSilently(toUpdate);
       }
@@ -130,11 +124,7 @@ import jetbrains.mps.ide.platform.watching.ReloadListener;
       myModelListener = new ModelsEventsCollector(repository.getModelAccess()) {
         @Override
         protected void eventsHappened(List<SModelEvent> events) {
-          ListSequence.fromList(events).visitAll(new IVisitor<SModelEvent>() {
-            public void visit(SModelEvent it) {
-              it.accept(myVisitor);
-            }
-          });
+          ListSequence.fromList(events).visitAll((it) -> it.accept(myVisitor));
         }
       };
       super.startListening(repository);

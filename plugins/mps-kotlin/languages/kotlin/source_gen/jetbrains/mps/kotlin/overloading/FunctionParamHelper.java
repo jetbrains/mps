@@ -11,7 +11,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import java.util.Iterator;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -27,9 +26,9 @@ public class FunctionParamHelper {
    */
   public static Iterable<Argument> toOrderedList(Iterable<ParameterDeclaration> functionParameters, Iterable<Argument> arguments) throws ParamException {
     // Sequence seem to instantiate several times the parameters, so we do it once and for all
-    List<ParameterDeclaration> parameters = Sequence.fromIterable(functionParameters).toListSequence();
+    List<ParameterDeclaration> parameters = Sequence.fromIterable(functionParameters).toList();
 
-    FunctionParamMapper<String, ParamException> mapper = new FunctionParamMapper<String, ParamException>(ParamErrorHandler.THROW, (ParameterDeclaration node) -> SPropertyOperations.getString(node.getNode(), PROPS.name$MnvL), parameters);
+    FunctionParamMapper<String, ParamException> mapper = new FunctionParamMapper<String, ParamException>(ParamErrorHandler.THROW, (node) -> SPropertyOperations.getString(node.getNode(), PROPS.name$MnvL), parameters);
     List<ParameterDeclaration> orderedParameters = mapper.checkArguments(arguments);
 
     // Zip parameters with their index
@@ -47,15 +46,7 @@ public class FunctionParamHelper {
     }
 
     // Then sort by parameter and extract the expression
-    return ListSequence.fromList(zipped).sort(new ISelector<Tuples._2<Integer, Argument>, Integer>() {
-      public Integer select(Tuples._2<Integer, Argument> it) {
-        return (int) it._0();
-      }
-    }, true).select(new ISelector<Tuples._2<Integer, Argument>, Argument>() {
-      public Argument select(Tuples._2<Integer, Argument> it) {
-        return it._1();
-      }
-    });
+    return ListSequence.fromList(zipped).sort((it) -> (int) it._0(), true).select((it) -> it._1());
   }
 
   /**

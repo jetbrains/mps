@@ -15,14 +15,12 @@ import javax.swing.event.ChangeListener;
 import java.util.concurrent.atomic.AtomicInteger;
 import jetbrains.mps.openapi.editor.update.UpdaterListener;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.openapi.editor.update.UpdaterListenerAdapter;
 import javax.swing.event.ChangeEvent;
 import org.jetbrains.annotations.NotNull;
 import java.awt.Graphics;
 import jetbrains.mps.nodeEditor.AdditionalPainter;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -34,11 +32,8 @@ import com.intellij.openapi.util.Disposer;
 import java.util.List;
 import java.util.ArrayList;
 import com.intellij.openapi.util.Pair;
-import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import java.util.Objects;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import javax.swing.JComponent;
 import java.awt.Component;
 import java.awt.Graphics2D;
@@ -78,11 +73,7 @@ public final class TripleChangeGroupLayout {
     myUpdaterListener = createUpdaterListener();
     check_fgmqy5_a6a61(myLeftLayout, myGroupInvalidateListener);
     check_fgmqy5_a7a61(myRightLayout, myGroupInvalidateListener);
-    ListSequence.fromList(getEditors()).visitAll(new IVisitor<DiffEditor>() {
-      public void visit(DiffEditor it) {
-        initEditor(it);
-      }
-    });
+    ListSequence.fromList(getEditors()).visitAll((it) -> initEditor(it));
   }
 
   private void initEditor(DiffEditor diffEditor) {
@@ -171,11 +162,7 @@ public final class TripleChangeGroupLayout {
 
       @Override
       public void paintBackground(final Graphics g, final EditorComponent editor) {
-        ListSequence.fromList(diffEditor.getLayers(myIsInspector)).visitAll(new IVisitor<DiffEditorChangeLayer>() {
-          public void visit(DiffEditorChangeLayer layer) {
-            layer.paintRectangle(g, editor.getWidth(), editor.getBackground());
-          }
-        });
+        ListSequence.fromList(diffEditor.getLayers(myIsInspector)).visitAll((layer) -> layer.paintRectangle(g, editor.getWidth(), editor.getBackground()));
       }
 
       @Override
@@ -195,20 +182,8 @@ public final class TripleChangeGroupLayout {
 
       @Override
       public void paint(final Graphics g, final EditorComponent editor) {
-        ListSequence.fromList(diffEditor.getLayers(myIsInspector)).visitAll(new IVisitor<DiffEditorChangeLayer>() {
-          public void visit(DiffEditorChangeLayer layer) {
-            layer.paintRectangleBorders(g, editor.getWidth(), editor.getBackground());
-          }
-        });
-        ListSequence.fromList(diffEditor.getLayers(myIsInspector)).where(new IWhereFilter<DiffEditorChangeLayer>() {
-          public boolean accept(DiffEditorChangeLayer layer) {
-            return layer.isSelected();
-          }
-        }).visitAll(new IVisitor<DiffEditorChangeLayer>() {
-          public void visit(DiffEditorChangeLayer it) {
-            it.paintSelectedRectangle(g, editor.getWidth(), editor.getBackground());
-          }
-        });
+        ListSequence.fromList(diffEditor.getLayers(myIsInspector)).visitAll((layer) -> layer.paintRectangleBorders(g, editor.getWidth(), editor.getBackground()));
+        ListSequence.fromList(diffEditor.getLayers(myIsInspector)).where((layer) -> layer.isSelected()).visitAll((it) -> it.paintSelectedRectangle(g, editor.getWidth(), editor.getBackground()));
       }
 
       @Override
@@ -265,20 +240,8 @@ public final class TripleChangeGroupLayout {
         final int foldingLineWidth = getLeftHighlighter().getFoldingLineWidth();
         final Color editorColor = getEditorComponent().getBackground();
         final Color lineColor = getDottedLineFgLineColor();
-        ListSequence.fromList(diffEditor.getLayers(myIsInspector)).visitAll(new IVisitor<DiffEditorChangeLayer>() {
-          public void visit(DiffEditorChangeLayer layer) {
-            layer.paintHighlighter(g, x, width, foldingLineX, foldingLineWidth, editorColor, lineColor, diffEditor.isRightToLeft());
-          }
-        });
-        ListSequence.fromList(diffEditor.getLayers(myIsInspector)).where(new IWhereFilter<DiffEditorChangeLayer>() {
-          public boolean accept(DiffEditorChangeLayer layer) {
-            return layer.isSelected();
-          }
-        }).visitAll(new IVisitor<DiffEditorChangeLayer>() {
-          public void visit(DiffEditorChangeLayer layer) {
-            layer.paintHighlighterBorders(g, x, width, foldingLineX, foldingLineWidth, lineColor, diffEditor.isRightToLeft());
-          }
-        });
+        ListSequence.fromList(diffEditor.getLayers(myIsInspector)).visitAll((layer) -> layer.paintHighlighter(g, x, width, foldingLineX, foldingLineWidth, editorColor, lineColor, diffEditor.isRightToLeft()));
+        ListSequence.fromList(diffEditor.getLayers(myIsInspector)).where((layer) -> layer.isSelected()).visitAll((layer) -> layer.paintHighlighterBorders(g, x, width, foldingLineX, foldingLineWidth, lineColor, diffEditor.isRightToLeft()));
       }
     };
   }
@@ -301,15 +264,7 @@ public final class TripleChangeGroupLayout {
         if (!(EditorUtil.isChangeFontSize(e))) {
           return;
         }
-        ListSequence.fromList(getEditors()).where(new IWhereFilter<DiffEditor>() {
-          public boolean accept(DiffEditor it) {
-            return it != diffEditor;
-          }
-        }).visitAll(new IVisitor<DiffEditor>() {
-          public void visit(DiffEditor it) {
-            it.getEditorComponent(myIsInspector).processChangeFontSizeEvent(e);
-          }
-        });
+        ListSequence.fromList(getEditors()).where((it) -> it != diffEditor).visitAll((it) -> it.getEditorComponent(myIsInspector).processChangeFontSizeEvent(e));
       }
     };
   }
@@ -326,11 +281,7 @@ public final class TripleChangeGroupLayout {
   }
 
   public void dispose() {
-    ListSequence.fromList(getEditors()).visitAll(new IVisitor<DiffEditor>() {
-      public void visit(DiffEditor it) {
-        disposeEditor(it);
-      }
-    });
+    ListSequence.fromList(getEditors()).visitAll((it) -> disposeEditor(it));
     check_fgmqy5_a1a63(myLeftLayout, myGroupInvalidateListener);
     check_fgmqy5_a2a63(myRightLayout, myGroupInvalidateListener);
     // we should always use Disposer#dispose for Disposable objects instead of direct call
@@ -363,61 +314,45 @@ public final class TripleChangeGroupLayout {
       ListSequence.fromList(centerLayers).addSequence(ListSequence.fromList(layers.first));
       ListSequence.fromList(rightLayers).addSequence(ListSequence.fromList(layers.second));
     }
-    List<List<DiffEditorChangeLayer>> layers = Sequence.fromIterable(Sequence.fromClosure(new ISequenceClosure<List<DiffEditorChangeLayer>>() {
-      public Iterable<List<DiffEditorChangeLayer>> iterable() {
-        return new Iterable<List<DiffEditorChangeLayer>>() {
-          public Iterator<List<DiffEditorChangeLayer>> iterator() {
-            return new YieldingIterator<List<DiffEditorChangeLayer>>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
+    List<List<DiffEditorChangeLayer>> layers = Sequence.fromIterable(Sequence.fromClosure(() -> {
+      return (Iterable<List<DiffEditorChangeLayer>>) () -> {
+        return new YieldingIterator<List<DiffEditorChangeLayer>>() {
+          private int __CP__ = 0;
+          protected boolean moveToNext() {
 __loop__:
-                do {
+            do {
 __switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 2:
-                      this.__CP__ = 3;
-                      this.yield(leftLayers);
-                      return true;
-                    case 3:
-                      this.__CP__ = 4;
-                      this.yield(centerLayers);
-                      return true;
-                    case 4:
-                      this.__CP__ = 1;
-                      this.yield(rightLayers);
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    default:
-                      break __loop__;
-                  }
-                } while (true);
-                return false;
+              switch (this.__CP__) {
+                case -1:
+                  assert false : "Internal error";
+                  return false;
+                case 2:
+                  this.__CP__ = 3;
+                  this.yield(leftLayers);
+                  return true;
+                case 3:
+                  this.__CP__ = 4;
+                  this.yield(centerLayers);
+                  return true;
+                case 4:
+                  this.__CP__ = 1;
+                  this.yield(rightLayers);
+                  return true;
+                case 0:
+                  this.__CP__ = 2;
+                  break;
+                default:
+                  break __loop__;
               }
-            };
+            } while (true);
+            return false;
           }
         };
-      }
-    })).toListSequence();
-    ListSequence.fromList(layers).visitAll(new IVisitor<List<DiffEditorChangeLayer>>() {
-      public void visit(List<DiffEditorChangeLayer> it) {
-        buildLayersHierarchy(it);
-      }
-    });
-    ListSequence.fromList(layers).visitAll(new IVisitor<List<DiffEditorChangeLayer>>() {
-      public void visit(List<DiffEditorChangeLayer> it) {
-        sortLayers(it);
-      }
-    });
-    ListSequence.fromList(layers).visitAll(new IVisitor<List<DiffEditorChangeLayer>>() {
-      public void visit(List<DiffEditorChangeLayer> it) {
-        calculateLayersCoordinates(it);
-      }
-    });
+      };
+    })).toList();
+    ListSequence.fromList(layers).visitAll((it) -> buildLayersHierarchy(it));
+    ListSequence.fromList(layers).visitAll((it) -> sortLayers(it));
+    ListSequence.fromList(layers).visitAll((it) -> calculateLayersCoordinates(it));
     if (leftEditor != null) {
       leftEditor.setLayers(leftLayers, myIsInspector);
     }
@@ -446,31 +381,11 @@ __switch__:
         }
       }
     }
-    ListSequence.fromList(layers).where(new IWhereFilter<DiffEditorChangeLayer>() {
-      public boolean accept(DiffEditorChangeLayer it) {
-        return !(it.hasParent());
-      }
-    }).visitAll(new IVisitor<DiffEditorChangeLayer>() {
-      public void visit(DiffEditorChangeLayer it) {
-        it.setRankAndParent(0, null);
-      }
-    });
+    ListSequence.fromList(layers).where((it) -> !(it.hasParent())).visitAll((it) -> it.setRankAndParent(0, null));
   }
 
   private static void sortLayers(List<DiffEditorChangeLayer> layers) {
-    List<DiffEditorChangeLayer> sortedLayers = ListSequence.fromList(layers).sort(new ISelector<DiffEditorChangeLayer, Integer>() {
-      public Integer select(DiffEditorChangeLayer it) {
-        return it.getRank();
-      }
-    }, true).alsoSort(new ISelector<DiffEditorChangeLayer, Integer>() {
-      public Integer select(DiffEditorChangeLayer it) {
-        return getNeighbourRank(it, false);
-      }
-    }, true).alsoSort(new ISelector<DiffEditorChangeLayer, Integer>() {
-      public Integer select(DiffEditorChangeLayer it) {
-        return getNeighbourRank(it, true);
-      }
-    }, true).toListSequence();
+    List<DiffEditorChangeLayer> sortedLayers = ListSequence.fromList(layers).sort((it) -> it.getRank(), true).alsoSort((it) -> getNeighbourRank(it, false), true).alsoSort((it) -> getNeighbourRank(it, true), true).toList();
     ListSequence.fromList(layers).clear();
     ListSequence.fromList(layers).addSequence(ListSequence.fromList(sortedLayers));
   }
@@ -484,23 +399,7 @@ __switch__:
   }
 
   private static void calculateLayersCoordinates(final List<DiffEditorChangeLayer> layers) {
-    ListSequence.fromList(layers).sort(new ISelector<DiffEditorChangeLayer, Integer>() {
-      public Integer select(DiffEditorChangeLayer it) {
-        return it.getGroupBounds()._0();
-      }
-    }, true).alsoSort(new ISelector<DiffEditorChangeLayer, Integer>() {
-      public Integer select(DiffEditorChangeLayer it) {
-        return it.getGroupBounds()._1();
-      }
-    }, true).visitAll(new IVisitor<DiffEditorChangeLayer>() {
-      public void visit(final DiffEditorChangeLayer layer) {
-        layer.calculateCoordinates(ListSequence.fromList(layers).where(new IWhereFilter<DiffEditorChangeLayer>() {
-          public boolean accept(DiffEditorChangeLayer it) {
-            return it != layer;
-          }
-        }));
-      }
-    });
+    ListSequence.fromList(layers).sort((it) -> it.getGroupBounds()._0(), true).alsoSort((it) -> it.getGroupBounds()._1(), true).visitAll((final DiffEditorChangeLayer layer) -> layer.calculateCoordinates(ListSequence.fromList(layers).where((it) -> it != layer)));
   }
 
   private List<DiffEditor> getEditors() {
@@ -522,15 +421,13 @@ __switch__:
     final boolean drawBorders = (layout.isMerge() ? DiffSettingsUtil.getTrackMovedNodesMergeOption() : DiffSettingsUtil.getTrackMovedNodesDiffOption());
     final List<DiffEditorChangeLayer> leftLayers = ListSequence.fromList(new ArrayList<DiffEditorChangeLayer>());
     final List<DiffEditorChangeLayer> rightLayers = ListSequence.fromList(new ArrayList<DiffEditorChangeLayer>());
-    ListSequence.fromList(layout.getChangeGroups()).visitAll(new IVisitor<ChangeGroup>() {
-      public void visit(ChangeGroup group) {
-        DiffEditorChangeLayer leftLayer = new DiffEditorChangeLayer(group, true, drawBorders);
-        DiffEditorChangeLayer rightLayer = new DiffEditorChangeLayer(group, false, drawBorders);
-        leftLayer.setOppositeLayer(rightLayer);
-        rightLayer.setOppositeLayer(leftLayer);
-        ListSequence.fromList(leftLayers).addElement(leftLayer);
-        ListSequence.fromList(rightLayers).addElement(rightLayer);
-      }
+    ListSequence.fromList(layout.getChangeGroups()).visitAll((group) -> {
+      DiffEditorChangeLayer leftLayer = new DiffEditorChangeLayer(group, true, drawBorders);
+      DiffEditorChangeLayer rightLayer = new DiffEditorChangeLayer(group, false, drawBorders);
+      leftLayer.setOppositeLayer(rightLayer);
+      rightLayer.setOppositeLayer(leftLayer);
+      ListSequence.fromList(leftLayers).addElement(leftLayer);
+      ListSequence.fromList(rightLayers).addElement(rightLayer);
     });
     return new Pair(leftLayers, rightLayers);
   }
@@ -564,30 +461,10 @@ __switch__:
     List<DiffEditorChangeLayer> leftLayers = leftEditor.getLayers(myIsInspector);
     final List<DiffEditorChangeLayer> rightLayers = rightEditor.getLayers(myIsInspector);
 
-    List<LayerPolygonsPainter> painters = ListSequence.fromList(leftLayers).where(new IWhereFilter<DiffEditorChangeLayer>() {
-      public boolean accept(DiffEditorChangeLayer leftLayer) {
-        return ListSequence.fromList(rightLayers).contains(leftLayer.getOppositeLayer());
-      }
-    }).select(new ISelector<DiffEditorChangeLayer, LayerPolygonsPainter>() {
-      public LayerPolygonsPainter select(DiffEditorChangeLayer leftLayer) {
-        return new LayerPolygonsPainter(leftLayer, leftLayer.getOppositeLayer(), leftOffset.value, rightOffset.value);
-      }
-    }).toListSequence();
+    List<LayerPolygonsPainter> painters = ListSequence.fromList(leftLayers).where((leftLayer) -> ListSequence.fromList(rightLayers).contains(leftLayer.getOppositeLayer())).select((leftLayer) -> new LayerPolygonsPainter(leftLayer, leftLayer.getOppositeLayer(), leftOffset.value, rightOffset.value)).toList();
 
-    ListSequence.fromList(painters).visitAll(new IVisitor<LayerPolygonsPainter>() {
-      public void visit(LayerPolygonsPainter it) {
-        it.fillPolygon(gg, dividerWidth);
-      }
-    });
-    ListSequence.fromList(painters).where(new IWhereFilter<LayerPolygonsPainter>() {
-      public boolean accept(LayerPolygonsPainter it) {
-        return it.drawsBorders();
-      }
-    }).visitAll(new IVisitor<LayerPolygonsPainter>() {
-      public void visit(LayerPolygonsPainter it) {
-        it.drawBorders(gg, dividerWidth);
-      }
-    });
+    ListSequence.fromList(painters).visitAll((it) -> it.fillPolygon(gg, dividerWidth));
+    ListSequence.fromList(painters).where((it) -> it.drawsBorders()).visitAll((it) -> it.drawBorders(gg, dividerWidth));
     config.restore();
   }
 
@@ -641,41 +518,19 @@ __switch__:
   }
 
   /*package*/ synchronized void selectLayers(Iterable<DiffEditorChangeLayer> layers) {
-    ListSequence.fromList(getEditors()).visitAll(new IVisitor<DiffEditor>() {
-      public void visit(DiffEditor it) {
-        ListSequence.fromList(it.getLayers(myIsInspector)).visitAll(new IVisitor<DiffEditorChangeLayer>() {
-          public void visit(DiffEditorChangeLayer layer) {
-            layer.setSelected(false);
-          }
-        });
-      }
-    });
+    ListSequence.fromList(getEditors()).visitAll((it) -> ListSequence.fromList(it.getLayers(myIsInspector)).visitAll((layer) -> layer.setSelected(false)));
     if (Sequence.fromIterable(layers).isEmpty()) {
       return;
     }
-    final int maxRank = Sequence.fromIterable(layers).sort(new ISelector<DiffEditorChangeLayer, Integer>() {
-      public Integer select(DiffEditorChangeLayer it) {
-        return it.getRank();
-      }
-    }, true).last().getRank();
-    Sequence.fromIterable(layers).where(new IWhereFilter<DiffEditorChangeLayer>() {
-      public boolean accept(DiffEditorChangeLayer it) {
-        return it.getRank() == maxRank;
-      }
-    }).visitAll(new IVisitor<DiffEditorChangeLayer>() {
-      public void visit(DiffEditorChangeLayer it) {
-        it.setSelected(true);
-        it.getOppositeLayer().setSelected(true);
-      }
+    final int maxRank = Sequence.fromIterable(layers).sort((it) -> it.getRank(), true).last().getRank();
+    Sequence.fromIterable(layers).where((it) -> it.getRank() == maxRank).visitAll((it) -> {
+      it.setSelected(true);
+      it.getOppositeLayer().setSelected(true);
     });
   }
 
   /*package*/ void repaintEditorMessagesAndSplitters() {
-    ListSequence.fromList(getEditors()).visitAll(new IVisitor<DiffEditor>() {
-      public void visit(DiffEditor it) {
-        it.repaintAndRebuildEditorMessages();
-      }
-    });
+    ListSequence.fromList(getEditors()).visitAll((it) -> it.repaintAndRebuildEditorMessages());
     check_fgmqy5_a1a26(myLeftLayout);
     check_fgmqy5_a2a26(myRightLayout);
   }

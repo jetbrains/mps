@@ -7,10 +7,7 @@ import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
 import java.util.UUID;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.structure.behavior.PropertyDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.structure.behavior.LinkDeclaration__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -29,7 +26,6 @@ import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -47,50 +43,42 @@ public class ReferencesId {
     final SConceptId conceptId = MetaIdByDeclaration.getConceptId(concept);
     final UUID idValue = conceptId.getLanguageId().getIdValue();
 
-    return Sequence.fromIterable(Sequence.fromClosure(new ISequenceClosure<Long>() {
-      public Iterable<Long> iterable() {
-        return new Iterable<Long>() {
-          public Iterator<Long> iterator() {
-            return new YieldingIterator<Long>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
+    return Sequence.fromIterable(Sequence.fromClosure(() -> {
+      return (Iterable<Long>) () -> {
+        return new YieldingIterator<Long>() {
+          private int __CP__ = 0;
+          protected boolean moveToNext() {
 __loop__:
-                do {
+            do {
 __switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 2:
-                      this.__CP__ = 3;
-                      this.yield(idValue.getMostSignificantBits());
-                      return true;
-                    case 3:
-                      this.__CP__ = 4;
-                      this.yield(idValue.getLeastSignificantBits());
-                      return true;
-                    case 4:
-                      this.__CP__ = 1;
-                      this.yield(conceptId.getIdValue());
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    default:
-                      break __loop__;
-                  }
-                } while (true);
-                return false;
+              switch (this.__CP__) {
+                case -1:
+                  assert false : "Internal error";
+                  return false;
+                case 2:
+                  this.__CP__ = 3;
+                  this.yield(idValue.getMostSignificantBits());
+                  return true;
+                case 3:
+                  this.__CP__ = 4;
+                  this.yield(idValue.getLeastSignificantBits());
+                  return true;
+                case 4:
+                  this.__CP__ = 1;
+                  this.yield(conceptId.getIdValue());
+                  return true;
+                case 0:
+                  this.__CP__ = 2;
+                  break;
+                default:
+                  break __loop__;
               }
-            };
+            } while (true);
+            return false;
           }
         };
-      }
-    })).select(new ISelector<Long, SNode>() {
-      public SNode select(Long longValue) {
-        return ReferencesId.toKotlinArgument(longValue);
-      }
-    });
+      };
+    })).select((longValue) -> ReferencesId.toKotlinArgument(longValue));
   }
 
   public static Iterable<SNode> propertyArguments(SNode prop) {
@@ -133,21 +121,19 @@ __switch__:
     final Map<R, SNode> mapping = MapSequence.fromMap(new HashMap<R, SNode>());
     final SNode file = createKotlinFile_wpvnqp_a0c0m("_" + name);
 
-    Sequence.fromIterable(references).visitAll(new IVisitor<E>() {
-      public void visit(E it) {
-        R declaration = refAccessor.invoke(it);
+    Sequence.fromIterable(references).visitAll((it) -> {
+      R declaration = refAccessor.invoke(it);
 
-        if (!(MapSequence.fromMap(mapping).containsKey(declaration))) {
-          Tuples._2<String, SNode> pair = propertyCreator.invoke(declaration);
-          SNode newDeclaration = _quotation_createNode_wpvnqp_a0b0c0a0a4a21(pair._0(), pair._1());
-          ListSequence.fromList(SLinkOperations.getChildren(file, LINKS.declarations$NgHw)).addElement(newDeclaration);
-          MapSequence.fromMap(mapping).put(declaration, SLinkOperations.getTarget(newDeclaration, LINKS.declaration$IdZv));
-        }
-
-        // Replace with variable reference
-        SNode ref = SNodeOperations.replaceWithNewChild(it, CONCEPTS.VariableRefExpression$J$);
-        SLinkOperations.setTarget(ref, LINKS.target$xQFr, MapSequence.fromMap(mapping).get(declaration));
+      if (!(MapSequence.fromMap(mapping).containsKey(declaration))) {
+        Tuples._2<String, SNode> pair = propertyCreator.invoke(declaration);
+        SNode newDeclaration = _quotation_createNode_wpvnqp_a0b0c0a0a4a21(pair._0(), pair._1());
+        ListSequence.fromList(SLinkOperations.getChildren(file, LINKS.declarations$NgHw)).addElement(newDeclaration);
+        MapSequence.fromMap(mapping).put(declaration, SLinkOperations.getTarget(newDeclaration, LINKS.declaration$IdZv));
       }
+
+      // Replace with variable reference
+      SNode ref = SNodeOperations.replaceWithNewChild(it, CONCEPTS.VariableRefExpression$J$);
+      SLinkOperations.setTarget(ref, LINKS.target$xQFr, MapSequence.fromMap(mapping).get(declaration));
     });
 
     if (ListSequence.fromList(SLinkOperations.getChildren(file, LINKS.declarations$NgHw)).isNotEmpty()) {

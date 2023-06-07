@@ -21,8 +21,6 @@ import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.kotlin.scopes.SuperTypesVisitorImpl;
 import jetbrains.mps.kotlin.behavior.IClassLike__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.kotlin.api.types.identifiers.TypeKey;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import java.util.HashMap;
@@ -50,11 +48,7 @@ public class SuperExpression_Constraints extends BaseConstraintsDescriptor {
           public Scope createScope(final ReferenceConstraintsContext _context) {
             final SRepository repo = _context.getContextNode().getModel().getRepository();
             SNode target = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.IClassDeclaration$bQ, true, false);
-            return ListScope.forNamedElements(Sequence.fromIterable(SuperTypesVisitorImpl.getSupertypes(IClassLike__BehaviorDescriptor.getThisType_id46gC9M6gB68.invoke(target))).select(new ISelector<TypeKey, SNode>() {
-              public SNode select(TypeKey it) {
-                return SPointerOperations.resolveNode(it.getClassifierTarget(), repo);
-              }
-            }).where(new NotNullWhereFilter<SNode>()));
+            return ListScope.forNamedElements(Sequence.fromIterable(SuperTypesVisitorImpl.getSupertypes(IClassLike__BehaviorDescriptor.getThisType_id46gC9M6gB68.invoke(target))).select((it) -> SPointerOperations.resolveNode(it.getClassifierTarget(), repo)).where(new NotNullWhereFilter()));
           }
         };
       }

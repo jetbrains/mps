@@ -112,10 +112,6 @@ public class Mortgage_Simulation extends CalculationFrame {
   }
 
   public static void main(String[] args) {
-    SwingUtilities.invokeLater(new Runnable() {
-      public void run() {
-        new Mortgage_Simulation();
-      }
-    });
+    SwingUtilities.invokeLater(Mortgage_Simulation::new);
   }
 }

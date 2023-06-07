@@ -14,7 +14,6 @@ import java.util.List;
 import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuItem;
 import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.openapi.editor.menus.transformation.ActionItem;
 
 @MPSLaunch
@@ -41,11 +40,7 @@ public class ActionLookup_SubconceptDefinesAMenuWithoutSuperconceptsLocation_Tes
     public void testMethodImpl() throws Exception {
       initEditorComponent("7552401496952062169", "");
       List<TransformationMenuItem> items = MenuLoadingUtils.loadDefaultMenu(getEditorComponent(), "test location");
-      Assert.assertTrue("Expected 'action from base menu' in " + items, ListSequence.fromList(items).any(new IWhereFilter<TransformationMenuItem>() {
-        public boolean accept(TransformationMenuItem it) {
-          return it instanceof ActionItem && "action from base menu".equals(((ActionItem) it).getLabelText(""));
-        }
-      }));
+      Assert.assertTrue("Expected 'action from base menu' in " + items, ListSequence.fromList(items).any((it) -> it instanceof ActionItem && "action from base menu".equals(((ActionItem) it).getLabelText(""))));
     }
   }
 }

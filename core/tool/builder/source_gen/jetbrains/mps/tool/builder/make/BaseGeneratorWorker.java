@@ -13,7 +13,6 @@ import java.util.Collection;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.resources.MResource;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.make.MakeSession;
 import jetbrains.mps.tool.builder.WorkerMessageHandler;
 import jetbrains.mps.internal.make.cfg.JavaCompileFacetInitializer;
@@ -82,12 +81,8 @@ public abstract class BaseGeneratorWorker extends CoreWorker {
       s.append(m);
     }
     info(s.toString());
-    Iterable<MResource> resources = Sequence.fromIterable(collectResources(project, modules)).toListSequence();
-    if (mySkipUnmodifiedModels && Sequence.fromIterable(resources).all(new IWhereFilter<MResource>() {
-      public boolean accept(MResource it) {
-        return Sequence.fromIterable(it.models()).isEmpty();
-      }
-    })) {
+    Iterable<MResource> resources = Sequence.fromIterable(collectResources(project, modules)).toList();
+    if (mySkipUnmodifiedModels && Sequence.fromIterable(resources).all((it) -> Sequence.fromIterable(it.models()).isEmpty())) {
       info("No models to generate. Skipping generation.");
       return;
     }
@@ -119,7 +114,7 @@ public abstract class BaseGeneratorWorker extends CoreWorker {
       }
 
       if (mySkipUnmodifiedModels) {
-        List<SModel> modelsList = (models.value == null ? ListSequence.fromList(new ArrayList<SModel>()) : Sequence.fromIterable(models.value).toListSequence());
+        List<SModel> modelsList = (models.value == null ? ListSequence.fromList(new ArrayList<SModel>()) : Sequence.fromIterable(models.value).toList());
         int numberOfAllModels = ListSequence.fromList(modelsList).count();
 
         ModelGenerationStatusManager mgsm = project.getComponent(ModelGenerationStatusManager.class);

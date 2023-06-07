@@ -24,7 +24,7 @@ import javax.swing.SwingUtilities;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.TestDescriptorWrapper;
 import java.util.LinkedList;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestNodeEvent;
@@ -164,7 +164,7 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
       return ListSequence.fromList(new LinkedList<ITestNodeWrapper>());
     }
     Iterable<ITestNodeWrapper> testMethods = MapSequence.fromMap(myTestCase2MethodsMap).get(testNode);
-    return Sequence.fromIterable(testMethods).toListSequence();
+    return Sequence.fromIterable(testMethods).toList();
   }
 
   @NotNull
@@ -224,8 +224,8 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
   }
 
   public boolean hasNotPassedTests() {
-    return MapSequence.fromMap(myTests2State).any(new IWhereFilter<IMapping<ITestNodeWrapper, TestState>>() {
-      public boolean accept(IMapping<ITestNodeWrapper, TestState> it) {
+    return MapSequence.fromMap(myTests2State).any(new _FunctionTypes._return_P1_E0<Boolean, IMapping<ITestNodeWrapper, TestState>>() {
+      public Boolean invoke(IMapping<ITestNodeWrapper, TestState> it) {
         return it.value() != TestState.PASSED;
       }
     });
@@ -252,8 +252,8 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
 
   private void selectFirstFailedTestIfNeeded() {
     if (UnitTestOptions.isSelectFirstFailed()) {
-      IMapping<ITestNodeWrapper, TestState> state = MapSequence.fromMap(myTests2State).findFirst(new IWhereFilter<IMapping<ITestNodeWrapper, TestState>>() {
-        public boolean accept(IMapping<ITestNodeWrapper, TestState> it) {
+      IMapping<ITestNodeWrapper, TestState> state = MapSequence.fromMap(myTests2State).findFirst(new _FunctionTypes._return_P1_E0<Boolean, IMapping<ITestNodeWrapper, TestState>>() {
+        public Boolean invoke(IMapping<ITestNodeWrapper, TestState> it) {
           return it.value() != TestState.PASSED;
         }
       });

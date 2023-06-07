@@ -27,7 +27,6 @@ import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -178,16 +177,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 
     public void synchronize() {
-      myInputPort.set(MultiTuple.<SNode>from(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(getSNode()), CONCEPTS.Component$8s), LINKS.out$ZC8_)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SPropertyOperations.getString(it, PROPS.name$MnvL).equals(SPropertyOperations.getString(SLinkOperations.getTarget(getSNode(), LINKS.to$GB6T), PROPS.name$MnvL));
-        }
-      })));
-      myOutputPort.set(MultiTuple.<SNode>from(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getSNode(), LINKS.to$GB6T), LINKS.in$ZBcx)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SPropertyOperations.getString(it, PROPS.name$MnvL).equals(SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(getSNode()), CONCEPTS.Component$8s), PROPS.name$MnvL));
-        }
-      })));
+      myInputPort.set(MultiTuple.<SNode>from(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(getSNode()), CONCEPTS.Component$8s), LINKS.out$ZC8_)).findFirst((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).equals(SPropertyOperations.getString(SLinkOperations.getTarget(getSNode(), LINKS.to$GB6T), PROPS.name$MnvL)))));
+      myOutputPort.set(MultiTuple.<SNode>from(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getSNode(), LINKS.to$GB6T), LINKS.in$ZBcx)).findFirst((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).equals(SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(getSNode()), CONCEPTS.Component$8s), PROPS.name$MnvL)))));
     }
     private PolyLineConnection createConnection() {
       PolyLineConnection connection = new PolyLineConnection();

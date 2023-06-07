@@ -63,7 +63,7 @@ public class IgnoreModuleInVcs_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     // TODO: investigate and remove
-    List<VirtualFile> unversionedFiles = Sequence.fromIterable(VcsActionsUtil.getUnversionedFilesForModules(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSCommonDataKeys.MODULES))).toListSequence();
+    List<VirtualFile> unversionedFiles = Sequence.fromIterable(VcsActionsUtil.getUnversionedFilesForModules(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSCommonDataKeys.MODULES))).toList();
     // IgnoreUnversionedDialog.ignoreSelectedFiles(project, unversionedFiles);
   }
 }

@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -35,18 +34,10 @@ public final class JavaImports__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Iterable<SNode> staticOnDemand_id4ykJ8Y6iCVz(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.entries$neZo)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getBoolean(it, PROPS.static$JAuQ) && SPropertyOperations.getBoolean(it, PROPS.onDemand$Gmdi);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.entries$neZo)).where((it) -> SPropertyOperations.getBoolean(it, PROPS.static$JAuQ) && SPropertyOperations.getBoolean(it, PROPS.onDemand$Gmdi));
   }
   /*package*/ static Iterable<SNode> staticSingleName_id4ykJ8Y6iJRa(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.entries$neZo)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getBoolean(it, PROPS.static$JAuQ) && !(SPropertyOperations.getBoolean(it, PROPS.onDemand$Gmdi));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.entries$neZo)).where((it) -> SPropertyOperations.getBoolean(it, PROPS.static$JAuQ) && !(SPropertyOperations.getBoolean(it, PROPS.onDemand$Gmdi)));
   }
 
   /*package*/ JavaImports__BehaviorDescriptor() {

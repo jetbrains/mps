@@ -11,7 +11,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.plugin.behavior.KeyMapKeystroke__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -28,11 +27,7 @@ public class check_KeyMapKeystrokeRemRepl_NonTypesystemRule extends AbstractNonT
     if ((simpleShortcutChange == null) || !((boolean) KeyMapKeystroke__BehaviorDescriptor.hasRemove_id4qYinf8$eal.invoke(keyMapKeystroke))) {
       return;
     }
-    if (ListSequence.fromList(SLinkOperations.getChildren(simpleShortcutChange, LINKS.keystroke$Nxja)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) KeyMapKeystroke__BehaviorDescriptor.hasReplaceAll_id4qYinf8$enm.invoke(it);
-      }
-    })) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(simpleShortcutChange, LINKS.keystroke$Nxja)).any((it) -> (boolean) KeyMapKeystroke__BehaviorDescriptor.hasReplaceAll_id4qYinf8$enm.invoke(it))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(keyMapKeystroke, "Adding 'remove' modificator for action is redundant if there is other action with 'replace all' modificator", "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "5097592589863133346", null, errorTarget);

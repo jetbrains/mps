@@ -14,7 +14,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -44,13 +43,11 @@ public class typeof_DefaultMethodCallOperation_InferenceRule extends AbstractInf
         argument_var = argument_it.next();
         if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(parameter_var.value, LINKS.type$a1UY), CONCEPTS.VariableArityType$KF)) {
           List<SNode> varArgs = SNodeOperations.getNextSiblings(argument_var, true);
-          ListSequence.fromList(varArgs).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode it) {
-              {
-                SNode _nodeToCheck_1029348928467 = it;
-                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590371(jetbrains.mps.baseLanguage.classifiers.typesystem)", "3675217221541911434", 0, null);
-                typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590371(jetbrains.mps.baseLanguage.classifiers.typesystem)", "3675217221541911436", true), (SNode) SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(parameter_var.value, LINKS.type$a1UY), CONCEPTS.VariableArityType$KF), LINKS.componentType$ypmi), false, true, _info_12389875345);
-              }
+          ListSequence.fromList(varArgs).visitAll((it) -> {
+            {
+              SNode _nodeToCheck_1029348928467 = it;
+              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590371(jetbrains.mps.baseLanguage.classifiers.typesystem)", "3675217221541911434", 0, null);
+              typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590371(jetbrains.mps.baseLanguage.classifiers.typesystem)", "3675217221541911436", true), (SNode) SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(parameter_var.value, LINKS.type$a1UY), CONCEPTS.VariableArityType$KF), LINKS.componentType$ypmi), false, true, _info_12389875345);
             }
           });
           break;

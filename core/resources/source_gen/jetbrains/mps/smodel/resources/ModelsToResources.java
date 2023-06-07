@@ -8,10 +8,8 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.generator.GenerationFacade;
 import jetbrains.mps.make.resources.IResource;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -42,18 +40,14 @@ public class ModelsToResources {
 
   public Iterable<IResource> resources() {
     Iterable<SModel> smds = Sequence.fromIterable(models).where(myCanGenerateCondition).distinct();
-    smds = Sequence.fromIterable(smds).sort(new ISelector<SModel, String>() {
-      public String select(SModel desc) {
-        return desc.getModule().getModuleName();
-      }
-    }, true);
+    smds = Sequence.fromIterable(smds).sort((desc) -> desc.getModule().getModuleName(), true);
     return arrangeByModule(smds);
   }
 
   private Iterable<IResource> arrangeByModule(Iterable<SModel> smds) {
     final Wrappers._T<List<SModel>> models = new Wrappers._T<List<SModel>>(null);
-    return (Iterable<IResource>) Sequence.fromIterable(smds).concat(Sequence.fromIterable(Sequence.<SModel>singleton(null))).translate(new ITranslator2<SModel, MResource>() {
-      public Iterable<MResource> translate(final SModel smd) {
+    return (Iterable<IResource>) Sequence.fromIterable(smds).concat(Sequence.fromIterable(Sequence.<SModel>singleton(null))).translate(new _FunctionTypes._return_P1_E0<Iterable<MResource>, SModel>() {
+      public Iterable<MResource> invoke(SModel smd) {
         return new Iterable<MResource>() {
           public Iterator<MResource> iterator() {
             return new YieldingIterator<MResource>() {
@@ -150,10 +144,10 @@ __switch__:
           }
         };
       }
-    }).select(new ISelector<MResource, IResource>() {
-      public IResource select(MResource r) {
+    }).select(new _FunctionTypes._return_P1_E0<IResource, MResource>() {
+      public IResource invoke(MResource r) {
         return (IResource) r;
       }
-    }).toListSequence();
+    }).toList();
   }
 }

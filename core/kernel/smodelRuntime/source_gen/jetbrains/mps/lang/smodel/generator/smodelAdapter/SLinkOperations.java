@@ -20,9 +20,7 @@ import java.util.List;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 
 /**
  * Runtime for various operations generally from smodel language
@@ -225,11 +223,7 @@ public final class SLinkOperations {
    * Null elements in the source collections are tolerated (and ignored)
    */
   public static Iterable<SNode> collect(Iterable<SNode> collection, final SReferenceLink l) {
-    return Sequence.fromIterable(collection).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return getTarget(it, l);
-      }
-    }).where(new NotNullWhereFilter<SNode>());
+    return Sequence.fromIterable(collection).select((it) -> getTarget(it, l)).where(new NotNullWhereFilter());
   }
 
   /**
@@ -238,11 +232,7 @@ public final class SLinkOperations {
    * Null elements in the source collections are tolerated (and ignored)
    */
   public static Iterable<SNode> collect(Iterable<SNode> collection, final SContainmentLink l) {
-    return Sequence.fromIterable(collection).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return getTarget(it, l);
-      }
-    }).where(new NotNullWhereFilter<SNode>());
+    return Sequence.fromIterable(collection).select((it) -> getTarget(it, l)).where(new NotNullWhereFilter());
   }
 
   /**
@@ -251,10 +241,6 @@ public final class SLinkOperations {
    * Null elements in the source collections are tolerated (and ignored)
    */
   public static Iterable<SNode> collectMany(Iterable<SNode> collection, final SContainmentLink l) {
-    return Sequence.fromIterable(collection).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return getChildren(it, l);
-      }
-    });
+    return Sequence.fromIterable(collection).translate((it) -> getChildren(it, l));
   }
 }

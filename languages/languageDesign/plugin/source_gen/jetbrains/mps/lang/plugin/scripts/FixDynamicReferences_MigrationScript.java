@@ -8,13 +8,12 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
+import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -40,11 +39,7 @@ public final class FixDynamicReferences_MigrationScript extends BaseMigrationScr
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return ListSequence.fromList(SNodeOperations.getReferences(node)).any(new IWhereFilter<SReference>() {
-          public boolean accept(SReference it) {
-            return SLinkOperations.isDynamic(it);
-          }
-        });
+        return ListSequence.fromList(SNodeOperations.getReferences(node)).any((it) -> SLinkOperations.isDynamic(it));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {

@@ -9,7 +9,6 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.LinkedHashSet;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.debug.api.breakpoints.ILocationBreakpoint;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -39,11 +38,7 @@ public class BreakpointCreatorsManager {
     if (node == null) {
       return false;
     }
-    return SetSequence.fromSet(myCreators).findFirst(new IWhereFilter<BreakpointCreator>() {
-      public boolean accept(BreakpointCreator it) {
-        return it._0().invoke(SNodeOperations.getConcept(node), node);
-      }
-    }) != null;
+    return SetSequence.fromSet(myCreators).findFirst((it) -> it._0().invoke(SNodeOperations.getConcept(node), node)) != null;
   }
   private ILocationBreakpoint createBreakpoint(SAbstractConcept concept, SNode node, Project project) {
     for (BreakpointCreator creator : SetSequence.fromSet(myCreators)) {

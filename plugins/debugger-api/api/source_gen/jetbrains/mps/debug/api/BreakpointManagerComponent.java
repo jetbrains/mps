@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.ListIterator;
 import java.util.Collections;
 import com.intellij.openapi.project.Project;
@@ -115,16 +114,8 @@ public class BreakpointManagerComponent implements Disposable, PersistentStateCo
 
     loadStateInternal(state, oldBreakpoints, newBreakpoints);
 
-    SetSequence.fromSet(oldBreakpoints).subtract(SetSequence.fromSet(newBreakpoints)).visitAll(new IVisitor<IBreakpoint>() {
-      public void visit(IBreakpoint it) {
-        fireBreakpointRemoved(it);
-      }
-    });
-    SetSequence.fromSet(newBreakpoints).subtract(SetSequence.fromSet(oldBreakpoints)).visitAll(new IVisitor<IBreakpoint>() {
-      public void visit(IBreakpoint it) {
-        fireBreakpointAdded(it);
-      }
-    });
+    SetSequence.fromSet(oldBreakpoints).subtract(SetSequence.fromSet(newBreakpoints)).visitAll((it) -> fireBreakpointRemoved(it));
+    SetSequence.fromSet(newBreakpoints).subtract(SetSequence.fromSet(oldBreakpoints)).visitAll((it) -> fireBreakpointAdded(it));
   }
   private void loadStateInternal(Element state, Set<IBreakpoint> oldBreakpoints, Set<IBreakpoint> newBreakpoints) {
     synchronized (myBreakpoints) {
@@ -175,16 +166,8 @@ public class BreakpointManagerComponent implements Disposable, PersistentStateCo
       loadStateInternal(getState(), oldBreakpoints, newBreakpoints);
     }
 
-    SetSequence.fromSet(oldBreakpoints).subtract(SetSequence.fromSet(newBreakpoints)).visitAll(new IVisitor<IBreakpoint>() {
-      public void visit(IBreakpoint it) {
-        fireBreakpointRemoved(it);
-      }
-    });
-    SetSequence.fromSet(newBreakpoints).subtract(SetSequence.fromSet(oldBreakpoints)).visitAll(new IVisitor<IBreakpoint>() {
-      public void visit(IBreakpoint it) {
-        fireBreakpointAdded(it);
-      }
-    });
+    SetSequence.fromSet(oldBreakpoints).subtract(SetSequence.fromSet(newBreakpoints)).visitAll((it) -> fireBreakpointRemoved(it));
+    SetSequence.fromSet(newBreakpoints).subtract(SetSequence.fromSet(oldBreakpoints)).visitAll((it) -> fireBreakpointAdded(it));
   }
   public Set<IBreakpoint> getAllIBreakpoints() {
     synchronized (myBreakpoints) {

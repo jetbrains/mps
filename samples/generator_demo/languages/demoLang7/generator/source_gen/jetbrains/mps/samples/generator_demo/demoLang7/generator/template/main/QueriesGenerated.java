@@ -9,11 +9,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.generator.template.IfMacroContext;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.WeavingMappingRuleContext;
 import java.util.Map;
 import java.util.HashMap;
@@ -45,21 +44,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL).equals("label");
   }
   public static Object propertyMacro_GetValue_2_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attribute$666x)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL).equals("text");
-      }
-    }), PROPS.value$5Qmy);
+    return SPropertyOperations.getString(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attribute$666x)).findFirst((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).equals("text")), PROPS.value$5Qmy);
   }
   public static Object propertyMacro_GetValue_2_1(final PropertyMacroContext _context) {
     return _context.createUniqueName(_context.getTemplateValue(), null);
   }
   public static Object propertyMacro_GetValue_3_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attribute$666x)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL).equals("text");
-      }
-    }), PROPS.value$5Qmy);
+    return SPropertyOperations.getString(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attribute$666x)).findFirst((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).equals("text")), PROPS.value$5Qmy);
   }
   public static Object propertyMacro_GetValue_3_1(final PropertyMacroContext _context) {
     return _context.createUniqueName(_context.getTemplateValue(), null);
@@ -71,18 +62,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getOutputNodeByInputNodeAndMappingLabel(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.XMLDocument$6G, false, false), "addContentMethod"), LINKS.parameter$5xBj)).first();
   }
   public static boolean ifMacro_Condition_2_0(final IfMacroContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attribute$666x)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL).equals("text");
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attribute$666x)).any((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).equals("text"));
   }
   public static boolean ifMacro_Condition_3_0(final IfMacroContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attribute$666x)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL).equals("text");
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attribute$666x)).any((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).equals("text"));
   }
   public static SNode weavingRule_ContextQuery_1_0(final WeavingMappingRuleContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.XMLDocument$6G, false, false), "main-class");

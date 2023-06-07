@@ -24,15 +24,11 @@ import java.util.Collections;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.kotlin.signatures.FunctionSignature;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.kotlin.scopes.signed.TopLevelVisibility;
 import jetbrains.mps.kotlin.api.members.SignatureBuilder;
 import jetbrains.mps.kotlin.api.members.TypeExpander;
 import jetbrains.mps.kotlin.api.members.SignatureAttributeKey;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -74,19 +70,7 @@ public final class IClassLike__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static SignatureScope getStaticScope_id3HHsmlLCHdO(@NotNull SNode __thisNode__, SignatureFilter filter, final SNode contextNode) {
     if (filter.acceptKind(FunctionSignature.class)) {
       // Only non-inner classes (otherwise, belongs to instance functions)
-      Iterable<SNode> constructors = Sequence.fromIterable(SNodeOperations.ofConcept(IDeclarationHolder__BehaviorDescriptor.getMembers_id213J8chg2xy.invoke(__thisNode__), CONCEPTS.IClassLike$go)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode klass) {
-          return !((boolean) IClassLike__BehaviorDescriptor.hasModifier_id2NtWm0y2Y2A.invoke(klass, CONCEPTS.InnerClassModifier$wL));
-        }
-      }).translate(new ITranslator2<SNode, SNode>() {
-        public Iterable<SNode> translate(SNode klass) {
-          return (Iterable<SNode>) IClassLike__BehaviorDescriptor.getConstructors_id2NtWm0y9fFa.invoke(klass);
-        }
-      }).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode cons) {
-          return TopLevelVisibility.visibleTo(cons, contextNode);
-        }
-      });
+      Iterable<SNode> constructors = Sequence.fromIterable(SNodeOperations.ofConcept(IDeclarationHolder__BehaviorDescriptor.getMembers_id213J8chg2xy.invoke(__thisNode__), CONCEPTS.IClassLike$go)).where((klass) -> !((boolean) IClassLike__BehaviorDescriptor.hasModifier_id2NtWm0y2Y2A.invoke(klass, CONCEPTS.InnerClassModifier$wL))).translate((klass) -> (Iterable<SNode>) IClassLike__BehaviorDescriptor.getConstructors_id2NtWm0y9fFa.invoke(klass)).where((cons) -> TopLevelVisibility.visibleTo(cons, contextNode));
 
       return SignatureBuilder.create(constructors, FunctionSignature.class).withSignature((SNode it) -> new FunctionSignature(KotlinFunctionDeclaration.of(it), (TypeExpander) null)).withAttribute(SignatureAttributeKey.VISIBILITY, (FunctionSignature _sig, SNode node) -> {
         // Class as constructors may have special visibility handling
@@ -112,57 +96,53 @@ public final class IClassLike__BehaviorDescriptor extends BaseBHDescriptor {
     return modifier == null;
   }
   /*package*/ static Iterable<TypeReference> getThisTypeReferences_idxpyqH1FuA0(@NotNull final SNode __thisNode__) {
-    return Sequence.fromClosure(new ISequenceClosure<TypeReference>() {
-      public Iterable<TypeReference> iterable() {
-        return new Iterable<TypeReference>() {
-          public Iterator<TypeReference> iterator() {
-            return new YieldingIterator<TypeReference>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
+    return Sequence.fromClosure(() -> {
+      return (Iterable<TypeReference>) () -> {
+        return new YieldingIterator<TypeReference>() {
+          private int __CP__ = 0;
+          protected boolean moveToNext() {
 __loop__:
-                do {
+            do {
 __switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 5:
-                      if ((_4_companion != null)) {
-                        this.__CP__ = 6;
-                        break;
-                      }
-                      this.__CP__ = 1;
-                      break;
-                    case 2:
-                      this.__CP__ = 3;
-                      this.yield((TypeReference) new ThisTypeReference(__thisNode__));
-                      return true;
-                    case 7:
-                      this.__CP__ = 1;
-                      this.yield(new ThisTypeReference(_4_companion));
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    case 3:
-
-                      this._4_companion = IClassLike__BehaviorDescriptor.getCompanion_id1dpU28wP77w.invoke(__thisNode__);
-                      this.__CP__ = 5;
-                      break;
-                    case 6:
-                      this.__CP__ = 7;
-                      break;
-                    default:
-                      break __loop__;
+              switch (this.__CP__) {
+                case -1:
+                  assert false : "Internal error";
+                  return false;
+                case 5:
+                  if ((_4_companion != null)) {
+                    this.__CP__ = 6;
+                    break;
                   }
-                } while (true);
-                return false;
+                  this.__CP__ = 1;
+                  break;
+                case 2:
+                  this.__CP__ = 3;
+                  this.yield((TypeReference) new ThisTypeReference(__thisNode__));
+                  return true;
+                case 7:
+                  this.__CP__ = 1;
+                  this.yield(new ThisTypeReference(_4_companion));
+                  return true;
+                case 0:
+                  this.__CP__ = 2;
+                  break;
+                case 3:
+
+                  this._4_companion = IClassLike__BehaviorDescriptor.getCompanion_id1dpU28wP77w.invoke(__thisNode__);
+                  this.__CP__ = 5;
+                  break;
+                case 6:
+                  this.__CP__ = 7;
+                  break;
+                default:
+                  break __loop__;
               }
-              private SNode _4_companion;
-            };
+            } while (true);
+            return false;
           }
+          private SNode _4_companion;
         };
-      }
+      };
     });
   }
   /*package*/ static boolean collectScope_id7DyvjiA20yV(@NotNull SNode __thisNode__, ScopeCollector collector, SNode childNode) {

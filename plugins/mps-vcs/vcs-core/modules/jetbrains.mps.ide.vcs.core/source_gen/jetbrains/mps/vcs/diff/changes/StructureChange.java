@@ -18,11 +18,9 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.smodel.StaticReference;
 import java.util.Objects;
@@ -38,23 +36,17 @@ public abstract class StructureChange extends ModelChange {
 
   /*package*/ static void fixInnerModelReferences(Iterable<SNode> copiedNodes, SModelReference sourceModelReference, SModel newModel) {
     // set references that are not in the model back to old mode
-    Set<SNodeId> nodeIds = SetSequence.fromSetWithValues(new HashSet<SNodeId>(), ListSequence.fromList(SModelOperations.nodes(newModel, null)).select(new ISelector<SNode, SNodeId>() {
-      public SNodeId select(SNode it) {
-        return it.getNodeId();
-      }
-    }));
+    Set<SNodeId> nodeIds = SetSequence.fromSetWithValues(new HashSet<SNodeId>(), ListSequence.fromList(SModelOperations.nodes(newModel, null)).select((it) -> it.getNodeId()));
     for (SNode copiedNode : Sequence.fromIterable(copiedNodes)) {
       fixInnerModelReferences(copiedNode, sourceModelReference, newModel, nodeIds);
     }
   }
 
   private static void fixInnerModelReferences(SNode copiedNode, final SModelReference sourceModelReference, final SModel newModel, final Set<SNodeId> nodeIds) {
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(copiedNode, null, true, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode node) {
-        for (SReference reference : SNodeOperations.getReferences(node)) {
-          if (reference instanceof StaticReference && sourceModelReference.equals(reference.getTargetSModelReference()) && SetSequence.fromSet(nodeIds).contains(reference.getTargetNodeId())) {
-            ((StaticReference) reference).setTargetSModelReference(SModelOperations.getPointer(newModel));
-          }
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(copiedNode, null, true, new SAbstractConcept[]{})).visitAll((node) -> {
+      for (SReference reference : SNodeOperations.getReferences(node)) {
+        if (reference instanceof StaticReference && sourceModelReference.equals(reference.getTargetSModelReference()) && SetSequence.fromSet(nodeIds).contains(reference.getTargetNodeId())) {
+          ((StaticReference) reference).setTargetSModelReference(SModelOperations.getPointer(newModel));
         }
       }
     });

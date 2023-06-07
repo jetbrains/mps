@@ -9,13 +9,12 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.generator.template.BaseMappingRuleContext;
 import jetbrains.mps.generator.impl.GeneratorUtilEx;
 import jetbrains.mps.generator.impl.RuleUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.generator.impl.template.VariableNameSource;
 import jetbrains.mps.generator.impl.template.MetaObjectGenerationHelper;
@@ -55,8 +54,6 @@ import jetbrains.mps.lang.pattern.behavior.PatternExpression__BehaviorDescriptor
 import java.util.Iterator;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.generator.template.TemplateArgumentContext;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
@@ -106,11 +103,7 @@ public class QueriesGenerated extends QueryProviderBase {
     if (!(SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.ClassConcept$bK)) || new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(_context.getNode()) != null) {
       return true;
     }
-    return Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.as(_context.getNode(), CONCEPTS.ClassConcept$bK), LINKS.annotation$K49I), LINKS.annotation$12Ek)).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.is(it, new SNodePointer("215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~Generated")));
-      }
-    });
+    return Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.as(_context.getNode(), CONCEPTS.ClassConcept$bK), LINKS.annotation$K49I), LINKS.annotation$12Ek)).all((it) -> !(SNodeOperations.is(it, new SNodePointer("215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~Generated"))));
   }
   public static boolean rule_Condition_1_0(final BaseMappingRuleContext _context) {
     return new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(_context.getNode()) != null;
@@ -1159,22 +1152,14 @@ public class QueriesGenerated extends QueryProviderBase {
     return GenUtil.getVarHack(_context, _context.getNode());
   }
   public static Object referenceMacro_GetReferent_19_1(final ReferenceMacroContext _context) {
-    SNode selected = Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("nodes"))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return GenUtil.getVarHack(_context, it) != null;
-      }
-    }).first();
+    SNode selected = Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("nodes"))).where((it) -> GenUtil.getVarHack(_context, it) != null).first();
     return GenUtil.getVarHack(_context, selected);
   }
   public static Object referenceMacro_GetReferent_19_2(final ReferenceMacroContext _context) {
     return GenUtil.getVarHack(_context, _context.getNode());
   }
   public static Object referenceMacro_GetReferent_19_3(final ReferenceMacroContext _context) {
-    SNode selected = Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("nodes"))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return GenUtil.getVarHack(_context, it) != null;
-      }
-    }).first();
+    SNode selected = Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("nodes"))).where((it) -> GenUtil.getVarHack(_context, it) != null).first();
     return GenUtil.getVarHack(_context, selected);
   }
   public static Object referenceMacro_GetReferent_20_0(final ReferenceMacroContext _context) {
@@ -1701,11 +1686,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return original.getProperty(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(_context.getNode())) != null;
   }
   public static boolean ifMacro_Condition_10_2(final IfMacroContext _context) {
-    return ListSequence.fromList(SNodeOperations.getChildren(_context.getNode())).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(RuleUtil.isTemplateLanguageElement(it));
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getChildren(_context.getNode())).any((it) -> !(RuleUtil.isTemplateLanguageElement(it)));
   }
   public static boolean ifMacro_Condition_10_3(final IfMacroContext _context) {
     return GenUtil.isNullableNodeVariable(_context, _context.getNode());
@@ -1752,11 +1733,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static boolean ifMacro_Condition_13_9(final IfMacroContext _context) {
     // FIXME this is provisional code, need to generate ALL LDs, not only private, 
     // but want to minimize number of changes in compiled generators at the moments
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.mappingLabel$Wvfj)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getBoolean(it, PROPS.private$lobx);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.mappingLabel$Wvfj)).any((it) -> SPropertyOperations.getBoolean(it, PROPS.private$lobx));
   }
   public static boolean ifMacro_Condition_13_10(final IfMacroContext _context) {
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.patternReductionRule$iaya)).isNotEmpty() || ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.reductionMappingRule$epW2)).isNotEmpty();
@@ -1787,11 +1764,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean ifMacro_Condition_13_19(final IfMacroContext _context) {
     // FIXME see declaration
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.mappingLabel$Wvfj)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getBoolean(it, PROPS.private$lobx);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.mappingLabel$Wvfj)).any((it) -> SPropertyOperations.getBoolean(it, PROPS.private$lobx));
   }
   public static boolean ifMacro_Condition_13_20(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.condition$2Y_U) != null);
@@ -1824,11 +1797,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.referenceReductionRule$11fs)).isNotEmpty();
   }
   public static boolean ifMacro_Condition_13_30(final IfMacroContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.mappingLabel$Wvfj)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getBoolean(it, PROPS.private$lobx);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.mappingLabel$Wvfj)).any((it) -> SPropertyOperations.getBoolean(it, PROPS.private$lobx));
   }
   public static boolean ifMacro_Condition_14_0(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.mappingLabel$jbOO) != null) && isNotEmptyString(SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.mappingLabel$jbOO), PROPS.name$MnvL));
@@ -1925,39 +1894,19 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean ifMacro_Condition_19_0(final IfMacroContext _context) {
     //  FIXME resembles reduce_fragmentParts a lot
-    Iterable<SNode> selected = Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("nodes"))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return GenUtil.getVarHack(_context, it) != null;
-      }
-    });
+    Iterable<SNode> selected = Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("nodes"))).where((it) -> GenUtil.getVarHack(_context, it) != null);
 
-    return Sequence.fromIterable(selected).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return GenUtil.isNodeVariable(_context, it);
-      }
-    });
+    return Sequence.fromIterable(selected).all((it) -> GenUtil.isNodeVariable(_context, it));
   }
   public static boolean ifMacro_Condition_19_1(final IfMacroContext _context) {
-    Iterable<SNode> selected = Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("nodes"))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return GenUtil.getVarHack(_context, it) != null;
-      }
-    });
+    Iterable<SNode> selected = Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("nodes"))).where((it) -> GenUtil.getVarHack(_context, it) != null);
     return Sequence.fromIterable(selected).count() == 1 && GenUtil.isCollectionVariable(_context, Sequence.fromIterable(selected).first());
   }
   public static boolean ifMacro_Condition_19_2(final IfMacroContext _context) {
-    return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("nodes"))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return GenUtil.getVarHack(_context, it) != null;
-      }
-    }).count() > 1;
+    return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("nodes"))).where((it) -> GenUtil.getVarHack(_context, it) != null).count() > 1;
   }
   public static boolean ifMacro_Condition_19_3(final IfMacroContext _context) {
-    Iterable<SNode> selected = Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("nodes"))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return GenUtil.getVarHack(_context, it) != null;
-      }
-    });
+    Iterable<SNode> selected = Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("nodes"))).where((it) -> GenUtil.getVarHack(_context, it) != null);
 
     return Sequence.fromIterable(selected).count() == 1;
   }
@@ -1990,11 +1939,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean ifMacro_Condition_24_0(final IfMacroContext _context) {
     List<SNode> fragments = SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(_context.getNode(), LINKS.contentNode$QgS3), CONCEPTS.TemplateFragment$eq, false, new SAbstractConcept[]{});
-    Iterable<SNode> selected = ListSequence.fromList(fragments).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return _context.getTransientObject(SNodeOperations.getParent(it)) != null;
-      }
-    });
+    Iterable<SNode> selected = ListSequence.fromList(fragments).where((it) -> _context.getTransientObject(SNodeOperations.getParent(it)) != null);
 
     if (Sequence.fromIterable(selected).count() == 1) {
       String varname = (String) _context.getTransientObject(SNodeOperations.getParent(Sequence.fromIterable(selected).first()));
@@ -2405,7 +2350,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.body$e68K);
   }
   public static SNode sourceNodeQuery_6_0(final SourceSubstituteMacroNodeContext _context) {
-    return ListSequence.fromList(Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getChildren(_context.getNode()), CONCEPTS.NodeMacro$qU)).toListSequence()).getElement(((Integer) _context.getVariable("macrosToSkip")));
+    return ListSequence.fromList(Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getChildren(_context.getNode()), CONCEPTS.NodeMacro$qU)).toList()).getElement(((Integer) _context.getVariable("macrosToSkip")));
   }
   public static SNode sourceNodeQuery_7_0(final SourceSubstituteMacroNodeContext _context) {
     return SNodeOperations.getParent(_context.getNode());
@@ -2671,19 +2616,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return GenUtil.getExtractedMethodName(_context, _context.getNode());
   }
   public static Object templateArgumentQuery_8_0(final TemplateArgumentContext _context) {
-    return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("fragments"))).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SNodeOperations.getNodeDescendants(it, CONCEPTS.MapSrcNodeMacro$p5, false, new SAbstractConcept[]{});
-      }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.mapperFunction$vvDY) == null);
-      }
-    }).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SNodeOperations.getParent(it);
-      }
-    }).distinct();
+    return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("fragments"))).translate((it) -> SNodeOperations.getNodeDescendants(it, CONCEPTS.MapSrcNodeMacro$p5, false, new SAbstractConcept[]{})).where((it) -> (SLinkOperations.getTarget(it, LINKS.mapperFunction$vvDY) == null)).select((it) -> SNodeOperations.getParent(it)).distinct();
   }
   public static Object templateArgumentQuery_12_0(final TemplateArgumentContext _context) {
     // XXX I believe mapperFunction.isNull check here is of no true meaning, what's wrong with substitute(mapperFunction) call that goes on
@@ -2695,15 +2628,7 @@ public class QueriesGenerated extends QueryProviderBase {
 
     // XXX I feel this extracted is useless in case MapSrc macro is not the first one in the list of macros, see reduce_Node and condition 
     //    macrosToSkip == 0 there
-    return ListSequence.fromList(SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.MapSrcNodeMacro$p5, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.getParent(it) != _context.getNode() && (SLinkOperations.getTarget(it, LINKS.mapperFunction$vvDY) == null);
-      }
-    }).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SNodeOperations.getParent(it);
-      }
-    }).distinct();
+    return ListSequence.fromList(SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.MapSrcNodeMacro$p5, false, new SAbstractConcept[]{})).where((it) -> SNodeOperations.getParent(it) != _context.getNode() && (SLinkOperations.getTarget(it, LINKS.mapperFunction$vvDY) == null)).select((it) -> SNodeOperations.getParent(it)).distinct();
   }
   public static Object templateArgumentQuery_13_0(final TemplateArgumentContext _context) {
     return "DropRootRule" + (Integer) _context.getVariable("loop:index");
@@ -2720,11 +2645,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object templateArgumentQuery_24_0(final TemplateArgumentContext _context) {
     List<SNode> fragments = SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(_context.getNode(), LINKS.contentNode$QgS3), CONCEPTS.TemplateFragment$eq, false, new SAbstractConcept[]{});
 
-    return ListSequence.fromList(fragments).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SNodeOperations.getParent(it);
-      }
-    });
+    return ListSequence.fromList(fragments).select((it) -> SNodeOperations.getParent(it));
   }
   public static Object templateArgumentQuery_38_0(final TemplateArgumentContext _context) {
     return new int[]{0};
@@ -2934,25 +2855,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return "switchContext" + ((int[]) _context.getVariable("varindex"))[0];
   }
   public static Iterable<SNode> sourceNodesQuery_0_0(final SourceSubstituteMacroNodesContext _context) {
-    return Sequence.fromIterable(SLinkOperations.collect((ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.CreateRootRule$wZ)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.MappingConfiguration$7j);
-      }
-    })), LINKS.conditionFunction$vPeH)).where(new NotNullWhereFilter<SNode>());
+    return Sequence.fromIterable(SLinkOperations.collect((ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.CreateRootRule$wZ)).where((it) -> SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.MappingConfiguration$7j))), LINKS.conditionFunction$vPeH)).where(new NotNullWhereFilter());
   }
   public static Iterable<SNode> sourceNodesQuery_0_1(final SourceSubstituteMacroNodesContext _context) {
-    return Sequence.fromIterable(SLinkOperations.collect(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.DropRootRule$SN)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.MappingConfiguration$7j);
-      }
-    }), LINKS.conditionFunction$1Ger)).where(new NotNullWhereFilter<SNode>());
+    return Sequence.fromIterable(SLinkOperations.collect(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.DropRootRule$SN)).where((it) -> SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.MappingConfiguration$7j)), LINKS.conditionFunction$1Ger)).where(new NotNullWhereFilter());
   }
   public static Iterable<SNode> sourceNodesQuery_0_2(final SourceSubstituteMacroNodesContext _context) {
-    return Sequence.fromIterable(SLinkOperations.collect(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.DropAttributeRule$mD)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.MappingConfiguration$7j);
-      }
-    }), LINKS.condition$LWP1)).where(new NotNullWhereFilter<SNode>());
+    return Sequence.fromIterable(SLinkOperations.collect(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.DropAttributeRule$mD)).where((it) -> SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.MappingConfiguration$7j)), LINKS.condition$LWP1)).where(new NotNullWhereFilter());
   }
   public static Iterable<SNode> sourceNodesQuery_0_3(final SourceSubstituteMacroNodesContext _context) {
     // If we found condition or a rule with condition inside a template declaration or under rule
@@ -2962,143 +2871,75 @@ public class QueriesGenerated extends QueryProviderBase {
     // inside Switch and MC, while Pattern and RootMR could be inside MC only)
     // which I consider more complicated query compared to the one with ancestors, though I don't
     // like that conditions here and in inject_DirectMethodAccess are different
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.BaseMappingRule_Condition$Ru)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.InlineSwitch_Case$ml) || SNodeOperations.getNodeAncestorWhereConceptInList(it, new SAbstractConcept[]{CONCEPTS.RuleConsequence$uG, CONCEPTS.TemplateDeclaration$5G}, false, false) == null;
-      }
-    });
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.BaseMappingRule_Condition$Ru)).where((it) -> SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.InlineSwitch_Case$ml) || SNodeOperations.getNodeAncestorWhereConceptInList(it, new SAbstractConcept[]{CONCEPTS.RuleConsequence$uG, CONCEPTS.TemplateDeclaration$5G}, false, false) == null);
   }
   public static Iterable<SNode> sourceNodesQuery_0_4(final SourceSubstituteMacroNodesContext _context) {
     // isAttribute check is to ensure we don't process PropertyMacro which is template target (i.e. if one generates template models)
     // Note, this check (containmentLink == smodelAttributes) won't suffice once we we have PropertyMacro not as a top template node
     // (i.e. if we produce a template with few PropertyMacro inside it), although not sure if we ever get to such scenario.
-    return SLinkOperations.collect(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.PropertyMacro$c9)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isAttribute(it);
-      }
-    }), LINKS.propertyValueFunction$7Sh_);
+    return SLinkOperations.collect(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.PropertyMacro$c9)).where((it) -> SNodeOperations.isAttribute(it)), LINKS.propertyValueFunction$7Sh_);
   }
   public static Iterable<SNode> sourceNodesQuery_0_5(final SourceSubstituteMacroNodesContext _context) {
     // see LOOP propertyMacro, above, for isAttribute reasoning
-    return SLinkOperations.collect(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.ReferenceMacro$30)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isAttribute(it);
-      }
-    }), LINKS.referentFunction$6c9k);
+    return SLinkOperations.collect(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.ReferenceMacro$30)).where((it) -> SNodeOperations.isAttribute(it)), LINKS.referentFunction$6c9k);
   }
   public static Iterable<SNode> sourceNodesQuery_0_6(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.collect(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.ReferenceReductionRule$t0), LINKS.referentFunction$8CUG);
   }
   public static Iterable<SNode> sourceNodesQuery_0_7(final SourceSubstituteMacroNodesContext _context) {
     // see LOOP propertyMacro, above, for isAttribute reasoning
-    return SLinkOperations.collect(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.IfMacro$Xy)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isAttribute(it);
-      }
-    }), LINKS.conditionFunction$yWGz);
+    return SLinkOperations.collect(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.IfMacro$Xy)).where((it) -> SNodeOperations.isAttribute(it)), LINKS.conditionFunction$yWGz);
   }
   public static Iterable<SNode> sourceNodesQuery_0_8(final SourceSubstituteMacroNodesContext _context) {
     // see LOOP propertyMacro, above, for isAttribute reasoning
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.SourceSubstituteMacro_SourceNodeQuery$i3)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isAttribute(SNodeOperations.getParent(it));
-      }
-    });
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.SourceSubstituteMacro_SourceNodeQuery$i3)).where((it) -> SNodeOperations.isAttribute(SNodeOperations.getParent(it)));
   }
   public static Iterable<SNode> sourceNodesQuery_0_9(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.TemplateArgumentQueryExpression$Zq)).union(Sequence.fromIterable(SLinkOperations.collectMany(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.ITemplateCall$ab), LINKS.actualArgument$ZcRg)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.TemplateArgumentQueryExpression$Zq)) && GeneratorUtilEx.shallGenerateFunctionToEvaluate(it);
-      }
-    }));
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.TemplateArgumentQueryExpression$Zq)).union(Sequence.fromIterable(SLinkOperations.collectMany(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.ITemplateCall$ab), LINKS.actualArgument$ZcRg)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.TemplateArgumentQueryExpression$Zq)) && GeneratorUtilEx.shallGenerateFunctionToEvaluate(it)));
   }
   public static Iterable<SNode> sourceNodesQuery_0_10(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.as(_context.getNode(), CONCEPTS.TemplateArgumentQueryExpression$Zq), LINKS.query$31w3), LINKS.body$e68K), LINKS.statement$53DE);
   }
   public static Iterable<SNode> sourceNodesQuery_0_11(final SourceSubstituteMacroNodesContext _context) {
     // see LOOP propertyMacro, above, for isAttribute reasoning
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.SourceSubstituteMacro_SourceNodesQuery$Rq)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.WeaveEach_RuleConsequence$tI) || SNodeOperations.isAttribute(SNodeOperations.getParent(it));
-      }
-    });
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.SourceSubstituteMacro_SourceNodesQuery$Rq)).where((it) -> SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.WeaveEach_RuleConsequence$tI) || SNodeOperations.isAttribute(SNodeOperations.getParent(it)));
   }
   public static Iterable<SNode> sourceNodesQuery_0_12(final SourceSubstituteMacroNodesContext _context) {
     // see LOOP propertyMacro, above, for isAttribute reasoning
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.MapSrcMacro_MapperFunction$fO)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isAttribute(SNodeOperations.getParent(it));
-      }
-    });
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.MapSrcMacro_MapperFunction$fO)).where((it) -> SNodeOperations.isAttribute(SNodeOperations.getParent(it)));
   }
   public static Iterable<SNode> sourceNodesQuery_0_13(final SourceSubstituteMacroNodesContext _context) {
     // see LOOP propertyMacro, above, for isAttribute reasoning
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.MapSrcMacro_PostMapperFunction$Yp)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isAttribute(SNodeOperations.getParent(it));
-      }
-    });
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.MapSrcMacro_PostMapperFunction$Yp)).where((it) -> SNodeOperations.isAttribute(SNodeOperations.getParent(it)));
   }
   public static Iterable<SNode> sourceNodesQuery_0_14(final SourceSubstituteMacroNodesContext _context) {
-    return SLinkOperations.collect(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.Weaving_MappingRule$qb)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.MappingConfiguration$7j);
-      }
-    }), LINKS.contextNodeQuery$ix$f);
+    return SLinkOperations.collect(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.Weaving_MappingRule$qb)).where((it) -> SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.MappingConfiguration$7j)), LINKS.contextNodeQuery$ix$f);
   }
   public static Iterable<SNode> sourceNodesQuery_0_15(final SourceSubstituteMacroNodesContext _context) {
     // WeaveAnchorQuery could be hosted both in $WEAVE$ macro and under a rule
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.WeavingAnchorQuery$jP)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isAttribute(SNodeOperations.getParent(it)) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.Weaving_MappingRule$qb);
-      }
-    });
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.WeavingAnchorQuery$jP)).where((it) -> SNodeOperations.isAttribute(SNodeOperations.getParent(it)) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.Weaving_MappingRule$qb));
   }
   public static Iterable<SNode> sourceNodesQuery_0_16(final SourceSubstituteMacroNodesContext _context) {
-    return SLinkOperations.collect(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.MappingScript$kP)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.codeBlock$Tu8f) != null);
-      }
-    }), LINKS.codeBlock$Tu8f);
+    return SLinkOperations.collect(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.MappingScript$kP)).where((it) -> (SLinkOperations.getTarget(it, LINKS.codeBlock$Tu8f) != null)), LINKS.codeBlock$Tu8f);
   }
   public static Iterable<SNode> sourceNodesQuery_0_17(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.PatternReduction_MappingRule$VL)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.MappingConfiguration$7j);
-      }
-    });
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.PatternReduction_MappingRule$VL)).where((it) -> SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.MappingConfiguration$7j));
   }
   public static Iterable<SNode> sourceNodesQuery_0_18(final SourceSubstituteMacroNodesContext _context) {
-    return SLinkOperations.collect(ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.MappingConfiguration$7j)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(it) == null && (SLinkOperations.getTarget(it, LINKS.condition$2Y_U) != null);
-      }
-    }), LINKS.condition$2Y_U);
+    return SLinkOperations.collect(ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.MappingConfiguration$7j)).where((it) -> new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(it) == null && (SLinkOperations.getTarget(it, LINKS.condition$2Y_U) != null)), LINKS.condition$2Y_U);
   }
   public static Iterable<SNode> sourceNodesQuery_0_19(final SourceSubstituteMacroNodesContext _context) {
     // see LOOP propertyMacro, above, for isAttribute reasoning
-    return SLinkOperations.collect(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.InsertMacro$pL)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isAttribute(it);
-      }
-    }), LINKS.createNodeQuery$ZB7Q);
+    return SLinkOperations.collect(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.InsertMacro$pL)).where((it) -> SNodeOperations.isAttribute(it)), LINKS.createNodeQuery$ZB7Q);
   }
   public static Iterable<SNode> sourceNodesQuery_0_20(final SourceSubstituteMacroNodesContext _context) {
     // see LOOP propertyMacro, above, for isAttribute reasoning
-    return SLinkOperations.collect(SLinkOperations.collectMany(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.VarMacro2$rh)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isAttribute(it);
-      }
-    }), LINKS.variables$Eqmf), LINKS.value$EuM$);
+    return SLinkOperations.collect(SLinkOperations.collectMany(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.VarMacro2$rh)).where((it) -> SNodeOperations.isAttribute(it)), LINKS.variables$Eqmf), LINKS.value$EuM$);
   }
   public static Iterable<SNode> sourceNodesQuery_0_21(final SourceSubstituteMacroNodesContext _context) {
     // XXX I keep TQC type (not LabelKeyQueryContext) for argument here intentionally, as there's no use for specific subclass yet in the query body.
     //    Once there's anything that would need specific LKQC, I'd need to regenerate this class anyway, can introduce the proper parameter type then.
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.LabelMacroInputQuery$qC)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isAttribute(SNodeOperations.getParent(it));
-      }
-    });
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.LabelMacroInputQuery$qC)).where((it) -> SNodeOperations.isAttribute(SNodeOperations.getParent(it)));
   }
   public static Iterable<SNode> sourceNodesQuery_8_0(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.parameter$5PGb);
@@ -3140,11 +2981,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SNodeOperations.ofConcept(SNodeOperations.getChildren(_context.getNode()), CONCEPTS.ReferenceMacro$30);
   }
   public static Iterable<SNode> sourceNodesQuery_10_5(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SNodeOperations.getChildren(_context.getNode())).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(RuleUtil.isTemplateLanguageElement(it));
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getChildren(_context.getNode())).where((it) -> !(RuleUtil.isTemplateLanguageElement(it)));
   }
   public static Iterable<SNode> sourceNodesQuery_13_0(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.patternReductionRule$iaya);
@@ -3177,11 +3014,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.referenceReductionRule$11fs);
   }
   public static Iterable<SNode> sourceNodesQuery_13_10(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.mappingLabel$Wvfj)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getBoolean(it, PROPS.private$lobx);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.mappingLabel$Wvfj)).where((it) -> SPropertyOperations.getBoolean(it, PROPS.private$lobx));
   }
   public static Iterable<SNode> sourceNodesQuery_13_11(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.reductionMappingRule$epW2);
@@ -3214,18 +3047,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.actualArgument$ZcRg);
   }
   public static Iterable<SNode> sourceNodesQuery_19_0(final SourceSubstituteMacroNodesContext _context) {
-    return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("nodes"))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return GenUtil.getVarHack(_context, it) != null;
-      }
-    });
+    return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("nodes"))).where((it) -> GenUtil.getVarHack(_context, it) != null);
   }
   public static Iterable<SNode> sourceNodesQuery_19_1(final SourceSubstituteMacroNodesContext _context) {
-    return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("nodes"))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return GenUtil.getVarHack(_context, it) != null;
-      }
-    });
+    return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("nodes"))).where((it) -> GenUtil.getVarHack(_context, it) != null);
   }
   public static Iterable<SNode> sourceNodesQuery_23_0(final SourceSubstituteMacroNodesContext _context) {
     List<SNode> result = (ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.case$HNKv)).count() > 1 ? ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.case$HNKv)).tailListSequence(1) : new ArrayList<SNode>());
@@ -3264,11 +3089,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SModelOperations.roots(_context.getInputModel(), CONCEPTS.TemplateDeclaration$5G);
   }
   public static Iterable<SNode> sourceNodesQuery_40_3(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.INamedConcept$Kd)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(it) != null;
-      }
-    });
+    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.INamedConcept$Kd)).where((it) -> new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(it) != null);
   }
   public static Iterable<SNode> sourceNodesQuery_42_0(final SourceSubstituteMacroNodesContext _context) {
     // see reduce_TemplateDeclarationReferenceConsequence for details
@@ -3769,177 +3590,89 @@ public class QueriesGenerated extends QueryProviderBase {
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.actualArgument$ZcRg)).iterator();
   }
   public static Object varMacro_Value_55_0(final TemplateVarContext _context) {
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.Reduction_MappingRule$9X)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.MappingConfiguration$7j) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.TemplateSwitch$j_)) && (SLinkOperations.getTarget(it, LINKS.conditionFunction$wXQT) != null);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.Reduction_MappingRule$9X)).where((it) -> (SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.MappingConfiguration$7j) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.TemplateSwitch$j_)) && (SLinkOperations.getTarget(it, LINKS.conditionFunction$wXQT) != null)).toList();
   }
   public static Object varMacro_Value_55_1(final TemplateVarContext _context) {
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.ReferenceReductionRule$t0)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.MappingConfiguration$7j)) && (SLinkOperations.getTarget(it, LINKS.conditionFunction$i59i) != null);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.ReferenceReductionRule$t0)).where((it) -> (SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.MappingConfiguration$7j)) && (SLinkOperations.getTarget(it, LINKS.conditionFunction$i59i) != null)).toList();
   }
   public static Object varMacro_Value_55_2(final TemplateVarContext _context) {
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.Root_MappingRule$NH)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.MappingConfiguration$7j) && (SLinkOperations.getTarget(it, LINKS.conditionFunction$wXQT) != null);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.Root_MappingRule$NH)).where((it) -> SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.MappingConfiguration$7j) && (SLinkOperations.getTarget(it, LINKS.conditionFunction$wXQT) != null)).toList();
   }
   public static Object varMacro_Value_55_3(final TemplateVarContext _context) {
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.CreateRootRule$wZ)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.MappingConfiguration$7j) && (SLinkOperations.getTarget(it, LINKS.conditionFunction$vPeH) != null);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.CreateRootRule$wZ)).where((it) -> SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.MappingConfiguration$7j) && (SLinkOperations.getTarget(it, LINKS.conditionFunction$vPeH) != null)).toList();
   }
   public static Object varMacro_Value_55_4(final TemplateVarContext _context) {
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.DropRootRule$SN)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.MappingConfiguration$7j) && (SLinkOperations.getTarget(it, LINKS.conditionFunction$1Ger) != null);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.DropRootRule$SN)).where((it) -> SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.MappingConfiguration$7j) && (SLinkOperations.getTarget(it, LINKS.conditionFunction$1Ger) != null)).toList();
   }
   public static Object varMacro_Value_55_5(final TemplateVarContext _context) {
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.DropAttributeRule$mD)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.MappingConfiguration$7j) && (SLinkOperations.getTarget(it, LINKS.condition$LWP1) != null);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.DropAttributeRule$mD)).where((it) -> SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.MappingConfiguration$7j) && (SLinkOperations.getTarget(it, LINKS.condition$LWP1) != null)).toList();
   }
   public static Object varMacro_Value_55_6(final TemplateVarContext _context) {
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.PatternReduction_MappingRule$VL)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.MappingConfiguration$7j);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.PatternReduction_MappingRule$VL)).where((it) -> SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.MappingConfiguration$7j)).toList();
   }
   public static Object varMacro_Value_55_7(final TemplateVarContext _context) {
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.Weaving_MappingRule$qb)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.MappingConfiguration$7j);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.Weaving_MappingRule$qb)).where((it) -> SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.MappingConfiguration$7j)).toList();
   }
   public static Object varMacro_Value_55_8(final TemplateVarContext _context) {
     // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.WeaveMacro$t$)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isAttribute(it) && (SLinkOperations.getTarget(it, LINKS.anchorQuery$IPGu) != null);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.WeaveMacro$t$)).where((it) -> SNodeOperations.isAttribute(it) && (SLinkOperations.getTarget(it, LINKS.anchorQuery$IPGu) != null)).toList();
   }
   public static Object varMacro_Value_55_9(final TemplateVarContext _context) {
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.MappingScript$kP)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.codeBlock$Tu8f) != null);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.MappingScript$kP)).where((it) -> (SLinkOperations.getTarget(it, LINKS.codeBlock$Tu8f) != null)).toList();
   }
   public static Object varMacro_Value_55_10(final TemplateVarContext _context) {
-    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.MappingConfiguration$7j)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(it) == null && (SLinkOperations.getTarget(it, LINKS.condition$2Y_U) != null);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.MappingConfiguration$7j)).where((it) -> new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(it) == null && (SLinkOperations.getTarget(it, LINKS.condition$2Y_U) != null)).toList();
   }
   public static Object varMacro_Value_55_11(final TemplateVarContext _context) {
     // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.SourceSubstituteMacro_SourceNodeQuery$i3)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isAttribute(SNodeOperations.getParent(it));
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.SourceSubstituteMacro_SourceNodeQuery$i3)).where((it) -> SNodeOperations.isAttribute(SNodeOperations.getParent(it))).toList();
   }
   public static Object varMacro_Value_55_12(final TemplateVarContext _context) {
     // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.SourceSubstituteMacro_SourceNodesQuery$Rq)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.WeaveEach_RuleConsequence$tI) || SNodeOperations.isAttribute(SNodeOperations.getParent(it));
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.SourceSubstituteMacro_SourceNodesQuery$Rq)).where((it) -> SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.WeaveEach_RuleConsequence$tI) || SNodeOperations.isAttribute(SNodeOperations.getParent(it))).toList();
   }
   public static Object varMacro_Value_55_13(final TemplateVarContext _context) {
     // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.PropertyMacro$c9)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isAttribute(it);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.PropertyMacro$c9)).where((it) -> SNodeOperations.isAttribute(it)).toList();
   }
   public static Object varMacro_Value_55_14(final TemplateVarContext _context) {
     // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.IfMacro$Xy)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isAttribute(it);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.IfMacro$Xy)).where((it) -> SNodeOperations.isAttribute(it)).toList();
   }
   public static Object varMacro_Value_55_15(final TemplateVarContext _context) {
     return SModelOperations.nodes(_context.getInputModel(), CONCEPTS.InlineSwitch_Case$ml);
   }
   public static Object varMacro_Value_55_16(final TemplateVarContext _context) {
     // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.ReferenceMacro$30)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isAttribute(it);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.ReferenceMacro$30)).where((it) -> SNodeOperations.isAttribute(it)).toList();
   }
   public static Object varMacro_Value_55_17(final TemplateVarContext _context) {
     return SModelOperations.nodes(_context.getInputModel(), CONCEPTS.ReferenceReductionRule$t0);
   }
   public static Object varMacro_Value_55_18(final TemplateVarContext _context) {
     // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning
-    return Sequence.fromIterable(SLinkOperations.collectMany(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.VarMacro2$rh)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isAttribute(it);
-      }
-    }), LINKS.variables$Eqmf)).toListSequence();
+    return Sequence.fromIterable(SLinkOperations.collectMany(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.VarMacro2$rh)).where((it) -> SNodeOperations.isAttribute(it)), LINKS.variables$Eqmf)).toList();
   }
   public static Object varMacro_Value_55_19(final TemplateVarContext _context) {
     return SModelOperations.nodes(_context.getInputModel(), CONCEPTS.TemplateArgumentQueryExpression$Zq);
   }
   public static Object varMacro_Value_55_20(final TemplateVarContext _context) {
-    return Sequence.fromIterable(SLinkOperations.collectMany(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.ITemplateCall$ab), LINKS.actualArgument$ZcRg)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.TemplateArgumentQueryExpression$Zq)) && GeneratorUtilEx.shallGenerateFunctionToEvaluate(it);
-      }
-    }).toListSequence();
+    return Sequence.fromIterable(SLinkOperations.collectMany(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.ITemplateCall$ab), LINKS.actualArgument$ZcRg)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.TemplateArgumentQueryExpression$Zq)) && GeneratorUtilEx.shallGenerateFunctionToEvaluate(it)).toList();
   }
   public static Object varMacro_Value_55_21(final TemplateVarContext _context) {
     // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.InsertMacro$pL)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isAttribute(it);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.InsertMacro$pL)).where((it) -> SNodeOperations.isAttribute(it)).toList();
   }
   public static Object varMacro_Value_55_22(final TemplateVarContext _context) {
     // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.MapSrcMacro_MapperFunction$fO)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isAttribute(SNodeOperations.getParent(it));
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.MapSrcMacro_MapperFunction$fO)).where((it) -> SNodeOperations.isAttribute(SNodeOperations.getParent(it))).toList();
   }
   public static Object varMacro_Value_55_23(final TemplateVarContext _context) {
     // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.MapSrcMacro_PostMapperFunction$Yp)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isAttribute(SNodeOperations.getParent(it));
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.MapSrcMacro_PostMapperFunction$Yp)).where((it) -> SNodeOperations.isAttribute(SNodeOperations.getParent(it))).toList();
   }
   public static Object varMacro_Value_55_24(final TemplateVarContext _context) {
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.LabelMacroInputQuery$qC)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isAttribute(SNodeOperations.getParent(it));
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.LabelMacroInputQuery$qC)).where((it) -> SNodeOperations.isAttribute(SNodeOperations.getParent(it))).toList();
   }
   public static Object varMacro_Value_83_0(final TemplateVarContext _context) {
     return ((MetaObjectGenerationHelper) _context.getVariable("mogh")).getConcepts();

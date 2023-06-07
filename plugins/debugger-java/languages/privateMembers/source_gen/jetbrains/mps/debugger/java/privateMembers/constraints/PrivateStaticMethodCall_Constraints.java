@@ -17,11 +17,9 @@ import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.scope.EmptyScope;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.IClassifierType__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.IClassifier__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -50,11 +48,7 @@ public class PrivateStaticMethodCall_Constraints extends BaseConstraintsDescript
             }
             SNode call = SNodeOperations.as(_context.getContextNode(), CONCEPTS.PrivateStaticMethodCall$BY);
 
-            Iterable<SNode> staticMembers = (Iterable<SNode>) Sequence.fromIterable(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(SLinkOperations.getTarget(call, LINKS.classConcept$M5BC)))).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return SNodeOperations.isInstanceOf(it, CONCEPTS.StaticMethodDeclaration$FJ);
-              }
-            });
+            Iterable<SNode> staticMembers = SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(SLinkOperations.getTarget(call, LINKS.classConcept$M5BC))), CONCEPTS.StaticMethodDeclaration$FJ);
             return new NamedElementsScope(staticMembers);
           }
         };

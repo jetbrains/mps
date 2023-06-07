@@ -7,7 +7,6 @@ import java.util.List;
 import jetbrains.mps.baseLanguage.unitTest.behavior.ITestCase__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.unitTest.behavior.ITestable__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.unitTest.behavior.ITestMethod__BehaviorDescriptor;
 import java.util.ArrayList;
@@ -39,11 +38,7 @@ public class LanguageTestWrapper extends AbstractTestWrapper<SNode> {
     // With that, indeed, we loose extensibility of TNWF, but I don't care too much as it's MPS-controlled factory anyway (let alone I doubt there's ever need to
     // have anything else under a wrapper for ITestCase).
     //  Proper fix would be to introduce tryToWrap(ITestNodeWrapper container, node<>) method, that would respect owner testcase explicitly.
-    myMethods = ListSequence.fromList(ITestCase__BehaviorDescriptor.getUncommentedTestMethods_id6I8tQNTvi0f.invoke(test)).select(new ISelector<SNode, LanguageTestWrapper>() {
-      public LanguageTestWrapper select(SNode it) {
-        return new LanguageTestWrapper(LanguageTestWrapper.this, it);
-      }
-    }).ofType(ITestNodeWrapper.class).toListSequence();
+    myMethods = ListSequence.fromList(ITestCase__BehaviorDescriptor.getUncommentedTestMethods_id6I8tQNTvi0f.invoke(test)).select((it) -> new LanguageTestWrapper(LanguageTestWrapper.this, it)).ofType(ITestNodeWrapper.class).toList();
   }
 
   @Deprecated

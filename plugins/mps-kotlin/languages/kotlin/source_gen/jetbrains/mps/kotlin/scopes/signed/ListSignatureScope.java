@@ -5,8 +5,6 @@ package jetbrains.mps.kotlin.scopes.signed;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.kotlin.api.members.SourcedSignature;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -20,36 +18,26 @@ public class ListSignatureScope implements SignatureScope {
 
   @Override
   public Iterable<SourcedSignature> getElements(final String prefix) {
-    return Sequence.fromIterable(myProducer.invoke()).where(new IWhereFilter<SourcedSignature>() {
-      public boolean accept(SourcedSignature it) {
-        return (prefix == null || prefix.length() == 0) || it.getSignature().getDescriptionText().startsWith(prefix);
-      }
-    });
+    return Sequence.fromIterable(myProducer.invoke()).where((it) -> (prefix == null || prefix.length() == 0) || it.getSignature().getDescriptionText().startsWith(prefix));
   }
 
   @Override
   public SignatureScope.ContainmentStatus contains(final SourcedSignature declaration) {
-    SignatureScope.ContainmentStatus status = Sequence.fromIterable(myProducer.invoke()).select(new ISelector<SourcedSignature, SignatureScope.ContainmentStatus>() {
-      public SignatureScope.ContainmentStatus select(SourcedSignature it) {
-        if (!(Objects.equals(it.getSignature(), declaration.getSignature()))) {
-          return null;
-        } else if (Objects.equals(it.getSource(), declaration.getSource())) {
-          return SignatureScope.ContainmentStatus.YES;
-        } else {
-          return SignatureScope.ContainmentStatus.SIGNATURE;
-        }
+    SignatureScope.ContainmentStatus status = Sequence.fromIterable(myProducer.invoke()).select((it) -> {
+      if (!(Objects.equals(it.getSignature(), declaration.getSignature()))) {
+        return null;
+      } else if (Objects.equals(it.getSource(), declaration.getSource())) {
+        return SignatureScope.ContainmentStatus.YES;
+      } else {
+        return SignatureScope.ContainmentStatus.SIGNATURE;
       }
-    }).where(new NotNullWhereFilter<SignatureScope.ContainmentStatus>()).first();
+    }).where(new NotNullWhereFilter()).first();
 
     return (status == null ? SignatureScope.ContainmentStatus.NO : status);
   }
 
   @Override
   public boolean contains(final SNode source) {
-    return Sequence.fromIterable(myProducer.invoke()).any(new IWhereFilter<SourcedSignature>() {
-      public boolean accept(SourcedSignature it) {
-        return Objects.equals(it.getSource(), source);
-      }
-    });
+    return Sequence.fromIterable(myProducer.invoke()).any((it) -> Objects.equals(it.getSource(), source));
   }
 }

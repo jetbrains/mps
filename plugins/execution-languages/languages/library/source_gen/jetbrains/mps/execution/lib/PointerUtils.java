@@ -10,7 +10,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.ArrayList;
 
@@ -48,11 +47,7 @@ public final class PointerUtils {
   }
 
   public static ClonableList<String> nodesToCloneableList(List<SNode> nodes) {
-    return new ClonableList<String>(ListSequence.fromList(nodes).select(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return PointerUtils.pointerToString(SNodeOperations.getPointer(it));
-      }
-    }).toListSequence());
+    return new ClonableList<String>(ListSequence.fromList(nodes).select((it) -> PointerUtils.pointerToString(SNodeOperations.getPointer(it))).toList());
   }
 
   public static ClonableList<String> nodeToCloneableList(SNode node) {

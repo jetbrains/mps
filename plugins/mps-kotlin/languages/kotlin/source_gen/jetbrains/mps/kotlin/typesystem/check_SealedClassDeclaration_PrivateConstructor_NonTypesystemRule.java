@@ -11,9 +11,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.kotlin.behavior.IClassLike__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.kotlin.behavior.IVisible__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -30,22 +28,16 @@ public class check_SealedClassDeclaration_PrivateConstructor_NonTypesystemRule e
   }
   public void applyRule(final SNode classDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classDeclaration, LINKS.inheritance$TFvr), CONCEPTS.SealedInheritanceModifier$vk)) {
-      Sequence.fromIterable(IClassLike__BehaviorDescriptor.getConstructors_id2NtWm0y9fFa.invoke(classDeclaration)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(Objects.equals(it, classDeclaration));
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SConcept visibility = IVisible__BehaviorDescriptor.getVisibility_id2WVyZr44ojH.invoke(it);
-          if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(visibility), CONCEPTS.PrivateVisibility$WS)) || !(SConceptOperations.isExactly(SNodeOperations.asSConcept(visibility), CONCEPTS.ProtectedVisibility$XQ))) {
+      Sequence.fromIterable(IClassLike__BehaviorDescriptor.getConstructors_id2NtWm0y9fFa.invoke(classDeclaration)).where((it) -> !(Objects.equals(it, classDeclaration))).visitAll((it) -> {
+        SConcept visibility = IVisible__BehaviorDescriptor.getVisibility_id2WVyZr44ojH.invoke(it);
+        if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(visibility), CONCEPTS.PrivateVisibility$WS)) || !(SConceptOperations.isExactly(SNodeOperations.asSConcept(visibility), CONCEPTS.ProtectedVisibility$XQ))) {
+          {
+            final MessageTarget errorTarget = new NodeMessageTarget();
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(it, LINKS.visibility$vnSV), "Constructor must be private or protected in sealed class", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405550943452", null, errorTarget);
             {
-              final MessageTarget errorTarget = new NodeMessageTarget();
-              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(it, LINKS.visibility$vnSV), "Constructor must be private or protected in sealed class", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405550943452", null, errorTarget);
-              {
-                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.kotlin.typesystem.RemoveVisibilityModifier_QuickFix", "655844405550943453", false);
-                intentionProvider.putArgument("modifier", SLinkOperations.getTarget(it, LINKS.visibility$vnSV));
-                _reporter_2309309498.addIntentionProvider(intentionProvider);
-              }
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.kotlin.typesystem.RemoveVisibilityModifier_QuickFix", "655844405550943453", false);
+              intentionProvider.putArgument("modifier", SLinkOperations.getTarget(it, LINKS.visibility$vnSV));
+              _reporter_2309309498.addIntentionProvider(intentionProvider);
             }
           }
         }

@@ -16,8 +16,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -36,15 +34,7 @@ public final class LinkInlineDocTag__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ static String buildCommentText_id7Qt73fl50wX(@NotNull SNode __thisNode__) {
     String result = "link " + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.reference$AFth));
     if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.line$27GN)).isNotEmpty()) {
-      return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.line$27GN)).select(new ISelector<SNode, String>() {
-        public String select(SNode it) {
-          return (String) CommentLine__BehaviorDescriptor.buildCommentText_id7Qt73fl2z8k.invoke(it);
-        }
-      }).foldLeft(result + " ", new ILeftCombinator<String, String>() {
-        public String combine(String s, String it) {
-          return s + "\n" + it;
-        }
-      });
+      return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.line$27GN)).select((it) -> (String) CommentLine__BehaviorDescriptor.buildCommentText_id7Qt73fl2z8k.invoke(it)).foldLeft(result + " ", (String s, String it) -> s + "\n" + it);
     } else {
       return result;
     }

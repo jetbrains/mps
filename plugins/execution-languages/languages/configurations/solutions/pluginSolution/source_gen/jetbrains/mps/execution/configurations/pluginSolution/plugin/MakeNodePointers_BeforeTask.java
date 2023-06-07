@@ -15,9 +15,7 @@ import jetbrains.mps.generator.ModelGenerationStatusManager;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.ArrayList;
 import jetbrains.mps.smodel.resources.ModelsToResources;
@@ -63,16 +61,10 @@ public class MakeNodePointers_BeforeTask extends BaseMpsBeforeTaskProvider<MakeN
       final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(project);
       List<IResource> resources = new ModelAccessHelper(mpsProject.getModelAccess()).runReadAction(() -> {
         final ModelGenerationStatusManager statusManager = mpsProject.getComponent(ModelGenerationStatusManager.class);
-        Iterable<SModel> models = ListSequence.fromList(myNodePointers).where(new NotNullWhereFilter<SNodeReference>()).select(new ISelector<SNodeReference, SModel>() {
-          public SModel select(SNodeReference it) {
-            SNode n = it.resolve(mpsProject.getRepository());
-            return (n == null ? null : n.getModel());
-          }
-        }).distinct().where(new IWhereFilter<SModel>() {
-          public boolean accept(SModel it) {
-            return statusManager.generationRequired(it);
-          }
-        });
+        Iterable<SModel> models = ListSequence.fromList(myNodePointers).where(new NotNullWhereFilter()).select((it) -> {
+          SNode n = it.resolve(mpsProject.getRepository());
+          return (n == null ? null : n.getModel());
+        }).distinct().where((it) -> statusManager.generationRequired(it));
         if (Sequence.fromIterable(models).isEmpty()) {
           return null;
         }

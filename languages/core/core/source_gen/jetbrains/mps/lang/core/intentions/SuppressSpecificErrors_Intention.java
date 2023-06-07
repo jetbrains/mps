@@ -17,7 +17,6 @@ import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
@@ -64,11 +63,7 @@ public final class SuppressSpecificErrors_Intention extends AbstractIntentionDes
     if (SNodeOperations.hasRole(node, LINKS.smodelAttribute$KJ43)) {
       ListSequence.fromList(reportItemsForCell).addSequence(CollectionSequence.fromCollection(editorComponent.getReportItemsForCell(editorComponent.findNodeCell(SNodeOperations.getParent(node)))));
     }
-    return ListSequence.fromListWithValues(new ArrayList<IssueKindReportItem>(), ListSequence.fromList(reportItemsForCell).where(new IWhereFilter<IssueKindReportItem>() {
-      public boolean accept(IssueKindReportItem it) {
-        return Objects.equals(it.getSeverity(), MessageStatus.ERROR);
-      }
-    }));
+    return ListSequence.fromListWithValues(new ArrayList<IssueKindReportItem>(), ListSequence.fromList(reportItemsForCell).where((it) -> Objects.equals(it.getSeverity(), MessageStatus.ERROR)));
   }
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable implements ParameterizedIntentionExecutable {
     private IssueKindReportItem myParameter;

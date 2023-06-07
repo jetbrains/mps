@@ -20,7 +20,6 @@ import jetbrains.mps.smodel.language.CreateAspectContext;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -70,11 +69,7 @@ public class MessageIntentionHelper {
       }
       assert feedbackModel != null;
       List<SNode> roots = SModelOperations.roots(feedbackModel, CONCEPTS.FeedbackPerConceptRoot$Vm);
-      SNode newFeedbackRoot = ListSequence.fromList(roots).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(SLinkOperations.getTarget(it, LINKS.concept$NMNv), myConcept);
-        }
-      });
+      SNode newFeedbackRoot = ListSequence.fromList(roots).findFirst((it) -> Objects.equals(SLinkOperations.getTarget(it, LINKS.concept$NMNv), myConcept));
       if (newFeedbackRoot == null) {
         newFeedbackRoot = SModelOperations.createNewRootNode(feedbackModel, MetaAdapterFactory.getConcept(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, "jetbrains.mps.lang.feedback.skeleton.structure.FeedbackPerConceptRoot"));
         SLinkOperations.setTarget(newFeedbackRoot, LINKS.concept$NMNv, myConcept);

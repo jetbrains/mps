@@ -16,10 +16,7 @@ import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -42,15 +39,7 @@ public class RelatedFacetReference_Constraints extends BaseConstraintsDescriptor
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forResolvableElements(Sequence.fromIterable(new FacetsScope(_context.getContextNode()).getAvailableElements(null)).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                return SNodeOperations.cast(it, CONCEPTS.FacetDeclaration$Nd);
-              }
-            }).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return !(it == (((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))));
-              }
-            }));
+            return ListScope.forResolvableElements(Sequence.fromIterable(new FacetsScope(_context.getContextNode()).getAvailableElements(null)).select((it) -> SNodeOperations.cast(it, CONCEPTS.FacetDeclaration$Nd)).where((it) -> !(it == (((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))))));
           }
         };
       }

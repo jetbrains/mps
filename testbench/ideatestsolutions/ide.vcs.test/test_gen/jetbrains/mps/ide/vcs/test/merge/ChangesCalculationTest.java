@@ -27,11 +27,9 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.vcs.diff.changes.NodeIdChange;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.vcs.diff.changes.NodeGroupChange;
 import jetbrains.mps.vcs.diff.ChangeSet;
 import java.util.List;
@@ -53,7 +51,6 @@ import jetbrains.mps.vcs.diff.ChangeSetImpl;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.vcs.diff.ModelChangeSet;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -147,11 +144,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
 
   private void changeReference(boolean trackMovedNodes) {
     SetReferenceChange change;
-    final SNode method1 = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(myRootNode, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method1");
-      }
-    }).first();
+    final SNode method1 = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(myRootNode, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method1")).first();
     change = new SetReferenceChange(createFakeChangeSet(), SLinkOperations.getTarget(method1, LINKS.returnType$5xoi).getNodeId(), LINKS.classifier$cxMr, myTestModel.getReference(), myRootNodeId, "Root");
     testDiffCorrectness(() -> SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(method1, LINKS.returnType$5xoi), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, myRootNode), trackMovedNodes, change);
   }
@@ -167,18 +160,10 @@ public class ChangesCalculationTest extends ChangesTestBase {
   }
 
   private void testIdChange(boolean trackMovedNodes) {
-    final SNode method1Body = SLinkOperations.getTarget(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(myRootNode, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method1");
-      }
-    }).first(), LINKS.body$5xQk);
+    final SNode method1Body = SLinkOperations.getTarget(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(myRootNode, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method1")).first(), LINKS.body$5xQk);
     final SNode newReturnStmt = createReturnStatement_7w1430_a0b0gb();
     final SNode newNull = createNullLiteral_7w1430_a0c0gb();
-    final SNode oldReturnStmt = SNodeOperations.cast(ListSequence.fromList(SNodeOperations.getChildren(method1Body)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.ReturnStatement$lt);
-      }
-    }), CONCEPTS.ReturnStatement$lt);
+    final SNode oldReturnStmt = SNodeOperations.cast(ListSequence.fromList(SNodeOperations.getChildren(method1Body)).findFirst((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.ReturnStatement$lt)), CONCEPTS.ReturnStatement$lt);
     final SNode oldNull = SNodeOperations.cast(ListSequence.fromList(SNodeOperations.getChildren(oldReturnStmt)).first(), CONCEPTS.NullLiteral$QQ);
     testDiffCorrectness(() -> {
       newReturnStmt.insertChildBefore(LINKS.expression$eJ92, newNull, null);
@@ -199,11 +184,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
 
   @Test
   public void addChild() {
-    testDiffCorrectness(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
-      public SNode invoke() {
-        return SLinkOperations.setTarget(myRootNode, LINKS.superclass$Mp9$, _quotation_createNode_7w1430_a0a0a0a0mb());
-      }
-    }), false, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, myRootNodeId, LINKS.superclass$Mp9$, 0, 0, 0, 1));
+    testDiffCorrectness(() -> SLinkOperations.setTarget(myRootNode, LINKS.superclass$Mp9$, _quotation_createNode_7w1430_a0a0a0a0mb()), false, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, myRootNodeId, LINKS.superclass$Mp9$, 0, 0, 0, 1));
   }
 
   @Test
@@ -217,13 +198,11 @@ public class ChangesCalculationTest extends ChangesTestBase {
   }
 
   private void addSameRoleChildren(boolean trackMovedNodes) {
-    testDiffCorrectness(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
-      public SNode invoke() {
-        ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.implementedInterface$rujG)).addElement(_quotation_createNode_7w1430_a0a0a0a0a24());
-        ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.implementedInterface$rujG)).addElement(_quotation_createNode_7w1430_a0a1a0a0a24());
-        return ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.implementedInterface$rujG)).addElement(_quotation_createNode_7w1430_a0a2a0a0a24());
-      }
-    }), trackMovedNodes, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, myRootNodeId, LINKS.implementedInterface$rujG, 0, 0, 0, 3));
+    testDiffCorrectness(() -> {
+      ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.implementedInterface$rujG)).addElement(_quotation_createNode_7w1430_a0a0a0a0a24());
+      ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.implementedInterface$rujG)).addElement(_quotation_createNode_7w1430_a0a1a0a0a24());
+      ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.implementedInterface$rujG)).addElement(_quotation_createNode_7w1430_a0a2a0a0a24());
+    }, trackMovedNodes, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, myRootNodeId, LINKS.implementedInterface$rujG, 0, 0, 0, 3));
   }
 
   @Test
@@ -281,21 +260,13 @@ public class ChangesCalculationTest extends ChangesTestBase {
 
   @Test
   public void removeChild() {
-    final SNode method1 = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(myRootNode, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method1");
-      }
-    }).first();
+    final SNode method1 = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(myRootNode, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method1")).first();
     testDiffCorrectness(() -> SNodeOperations.deleteNode(method1), false, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, myRootNodeId, LINKS.member$L_2d, 0, 1, 0, 0));
   }
 
   @Test
   public void removeChildTrackMovedNodes() {
-    final SNode method1 = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(myRootNode, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method1");
-      }
-    }).first();
+    final SNode method1 = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(myRootNode, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method1")).first();
     SNodeId nextNodeId = check_7w1430_a0b0oc(method1.getNextSibling());
     SNodeId parentId = check_7w1430_a0c0oc(method1.getParent());
     ChangeSet changeSet = createFakeChangeSet();
@@ -305,11 +276,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
   }
 
   private void removeChildAttribute(boolean trackMovedNodes) {
-    final SNode commented = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collect(new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.member$L_2d).list(myRootNode), LINKS.commentedNode$MYvG), CONCEPTS.InstanceMethodDeclaration$39)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "commented");
-      }
-    }).first();
+    final SNode commented = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collect(new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.member$L_2d).list(myRootNode), LINKS.commentedNode$MYvG), CONCEPTS.InstanceMethodDeclaration$39)).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "commented")).first();
     testDiffCorrectness(() -> SNodeOperations.deleteNode(SNodeOperations.cast(SNodeOperations.getParent(commented), CONCEPTS.BaseCommentAttribute$nv)), trackMovedNodes, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, myRootNodeId, LINKS.member$L_2d, 1, 2, 1, 1));
   }
 
@@ -324,11 +291,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
   }
 
   private void replaceChild(boolean trackMovedNodes) {
-    final SNode method1 = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(myRootNode, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method1");
-      }
-    }).first();
+    final SNode method1 = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(myRootNode, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method1")).first();
     testDiffCorrectness(() -> {
       SNodeOperations.deleteNode(method1);
       ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.member$L_2d)).insertElement(0, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember")));
@@ -347,22 +310,14 @@ public class ChangesCalculationTest extends ChangesTestBase {
 
   @Test
   public void commentChild() {
-    final SNode method1 = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(myRootNode, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method1");
-      }
-    }).first();
+    final SNode method1 = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(myRootNode, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method1")).first();
     testDiffCorrectness(() -> CommentUtil.commentOut(method1), false, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, myRootNodeId, LINKS.member$L_2d, 0, 1, 0, 1));
   }
 
   @Test
   public void commentChildTrackMovedNodes() {
 
-    final SNode commentedNode = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(myRootNode, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method1");
-      }
-    });
+    final SNode commentedNode = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(myRootNode, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).findFirst((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method1"));
 
     final Wrappers._T<SNode> commentNode = new Wrappers._T<SNode>();
     ourProject.getModelAccess().runReadAction(() -> commentNode.value = CommentUtil.commentOut(commentedNode));
@@ -420,32 +375,16 @@ public class ChangesCalculationTest extends ChangesTestBase {
   }
 
   private void testDiffCorrectness(List<ModelChange> realChanges, ModelChange... expectedChanges) {
-    Set<String> actualStrings = SetSequence.fromSetWithValues(new HashSet<String>(), ListSequence.fromList(realChanges).select(new ISelector<ModelChange, String>() {
-      public String select(ModelChange it) {
-        return it.toString();
-      }
-    }));
-    Set<String> expectedStrings = SetSequence.fromSetWithValues(new HashSet<String>(), Sequence.fromIterable(Sequence.fromArray(expectedChanges)).select(new ISelector<ModelChange, String>() {
-      public String select(ModelChange it) {
-        return it.toString();
-      }
-    }));
+    Set<String> actualStrings = SetSequence.fromSetWithValues(new HashSet<String>(), ListSequence.fromList(realChanges).select((it) -> it.toString()));
+    Set<String> expectedStrings = SetSequence.fromSetWithValues(new HashSet<String>(), Sequence.fromIterable(Sequence.fromArray(expectedChanges)).select((it) -> it.toString()));
     Assert.assertEquals(expectedStrings, actualStrings);
   }
 
 
   private void testDiffCorrectness(Runnable todo, boolean trackMovedNodes, ModelChange... expectedChanges) {
     List<ModelChange> realChanges = applyAndDiff(todo, trackMovedNodes);
-    Set<String> actualStrings = SetSequence.fromSetWithValues(new HashSet<String>(), ListSequence.fromList(realChanges).select(new ISelector<ModelChange, String>() {
-      public String select(ModelChange it) {
-        return it.toString();
-      }
-    }));
-    Set<String> expectedStrings = SetSequence.fromSetWithValues(new HashSet<String>(), Sequence.fromIterable(Sequence.fromArray(expectedChanges)).select(new ISelector<ModelChange, String>() {
-      public String select(ModelChange it) {
-        return it.toString();
-      }
-    }));
+    Set<String> actualStrings = SetSequence.fromSetWithValues(new HashSet<String>(), ListSequence.fromList(realChanges).select((it) -> it.toString()));
+    Set<String> expectedStrings = SetSequence.fromSetWithValues(new HashSet<String>(), Sequence.fromIterable(Sequence.fromArray(expectedChanges)).select((it) -> it.toString()));
     Assert.assertEquals(expectedStrings, actualStrings);
   }
 

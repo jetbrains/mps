@@ -9,15 +9,12 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.behavior.Expression__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.Objects;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -31,37 +28,17 @@ public class check_DuplicateCase_NonTypesystemRule extends AbstractNonTypesystem
   public check_DuplicateCase_NonTypesystemRule() {
   }
   public void applyRule(final SNode switchStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    Iterable<SNode> exprs = ListSequence.fromList(SLinkOperations.getChildren(switchStatement, LINKS.case$8PWE)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.expression$QQk6);
-      }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(it);
-      }
-    });
+    Iterable<SNode> exprs = ListSequence.fromList(SLinkOperations.getChildren(switchStatement, LINKS.case$8PWE)).select((it) -> SLinkOperations.getTarget(it, LINKS.expression$QQk6)).where((it) -> (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(it));
     final SModule module = SNodeOperations.getModel(switchStatement).getModule();
-    final Iterable<Tuples._2<SNode, Object>> values = Sequence.fromIterable(exprs).select(new ISelector<SNode, Tuples._2<SNode, Object>>() {
-      public Tuples._2<SNode, Object> select(SNode it) {
-        Object v = Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(it, module);
-        return MultiTuple.<SNode,Object>from(it, v);
-      }
+    final Iterable<Tuples._2<SNode, Object>> values = Sequence.fromIterable(exprs).select((it) -> {
+      Object v = Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(it, module);
+      return MultiTuple.<SNode,Object>from(it, v);
     });
-    Sequence.fromIterable(values).visitAll(new IVisitor<Tuples._2<SNode, Object>>() {
-      public void visit(final Tuples._2<SNode, Object> current) {
-        if (current._1() != null && Sequence.fromIterable(values).where(new IWhereFilter<Tuples._2<SNode, Object>>() {
-          public boolean accept(Tuples._2<SNode, Object> it) {
-            return !(Objects.equals(it._0(), current._0()));
-          }
-        }).any(new IWhereFilter<Tuples._2<SNode, Object>>() {
-          public boolean accept(Tuples._2<SNode, Object> it) {
-            return current._1().equals(it._1());
-          }
-        })) {
-          {
-            final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(current._0(), "Duplicate case", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257", null, errorTarget);
-          }
+    Sequence.fromIterable(values).visitAll((final Tuples._2<SNode, Object> current) -> {
+      if (current._1() != null && Sequence.fromIterable(values).where((it) -> !(Objects.equals(it._0(), current._0()))).any((it) -> current._1().equals(it._1()))) {
+        {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(current._0(), "Duplicate case", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257", null, errorTarget);
         }
       }
     });

@@ -17,7 +17,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.baseLanguage.scopes.Members;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import jetbrains.mps.logging.Logger;
@@ -66,11 +65,7 @@ public class CreateEnumConstantReferences extends SubstituteMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-      Iterable<SNode> enums = ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.EnumClass$Vk)).translate(new ITranslator2<SNode, SNode>() {
-        public Iterable<SNode> translate(SNode it) {
-          return Members.visibleEnumConstants(it);
-        }
-      });
+      Iterable<SNode> enums = ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.EnumClass$Vk)).translate((it) -> Members.visibleEnumConstants(it));
       return enums;
     }
     private class SMP_Action_wqfk8k_a0 extends SingleItemSubstituteMenuPart {

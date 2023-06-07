@@ -18,10 +18,7 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -62,27 +59,7 @@ public final class Statement__BehaviorDescriptor extends BaseBHDescriptor {
     Statement__BehaviorDescriptor.collectUncaughtMethodThrowables_id4Gt7ANIVBW7.invoke(SNodeOperations.asSConcept(CONCEPTS.Statement$P6), throwables, __thisNode__);
   }
   /*package*/ static void collectUncaughtMethodThrowables_id4Gt7ANIVBW7(@NotNull SAbstractConcept __thisConcept__, final Set<SNode> throwables, SNode arg) {
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(arg, CONCEPTS.IMethodCall$M9, true, new SAbstractConcept[]{})).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$pyYw), LINKS.throwsItem$CdW$);
-      }
-    }).union(ListSequence.fromList(SNodeOperations.getNodeDescendants(arg, CONCEPTS.DefaultClassifierMethodCallOperation$9$, false, new SAbstractConcept[]{})).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.member$oLt6), LINKS.throwsItem$CdW$);
-      }
-    })).union(ListSequence.fromList(SNodeOperations.getNodeDescendants(arg, CONCEPTS.IThrowCheckedExceptions$Ox, false, new SAbstractConcept[]{})).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return (List<SNode>) IThrowCheckedExceptions__BehaviorDescriptor.getThrownExceptions_id6sjyiRHavr0.invoke(it);
-      }
-    })).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.ClassifierType$bL);
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode throwable) {
-        SetSequence.fromSet(throwables).addElement(SLinkOperations.getTarget(SNodeOperations.cast(throwable, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr));
-      }
-    });
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(arg, CONCEPTS.IMethodCall$M9, true, new SAbstractConcept[]{})).translate((it) -> SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$pyYw), LINKS.throwsItem$CdW$)).union(ListSequence.fromList(SNodeOperations.getNodeDescendants(arg, CONCEPTS.DefaultClassifierMethodCallOperation$9$, false, new SAbstractConcept[]{})).translate((it) -> SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.member$oLt6), LINKS.throwsItem$CdW$))).union(ListSequence.fromList(SNodeOperations.getNodeDescendants(arg, CONCEPTS.IThrowCheckedExceptions$Ox, false, new SAbstractConcept[]{})).translate((it) -> (List<SNode>) IThrowCheckedExceptions__BehaviorDescriptor.getThrownExceptions_id6sjyiRHavr0.invoke(it))).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.ClassifierType$bL)).visitAll((throwable) -> SetSequence.fromSet(throwables).addElement(SLinkOperations.getTarget(SNodeOperations.cast(throwable, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr)));
   }
 
   /*package*/ Statement__BehaviorDescriptor() {

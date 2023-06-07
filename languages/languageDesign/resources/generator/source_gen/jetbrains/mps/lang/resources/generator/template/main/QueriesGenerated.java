@@ -20,7 +20,6 @@ import jetbrains.mps.generator.template.IfMacroContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.CreateRootCondition;
 import java.util.HashMap;
@@ -155,18 +154,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.calculator$qerM);
   }
   public static Iterable<SNode> sourceNodesQuery_2_0(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.IconExpression$d3)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(SLinkOperations.getTarget(it, LINKS.icon$OBvj)) != null;
-      }
-    });
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.IconExpression$d3)).where((it) -> Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(SLinkOperations.getTarget(it, LINKS.icon$OBvj)) != null);
   }
   public static Iterable<SNode> sourceNodesQuery_2_1(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.IconExpression$d3)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(SLinkOperations.getTarget(it, LINKS.icon$OBvj)) == null;
-      }
-    });
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.IconExpression$d3)).where((it) -> Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(SLinkOperations.getTarget(it, LINKS.icon$OBvj)) == null);
   }
   public static Iterable<SNode> sourceNodesQuery_2_2(final SourceSubstituteMacroNodesContext _context) {
     return SModelOperations.nodes(_context.getInputModel(), CONCEPTS.IconResourceExpression$Qx);

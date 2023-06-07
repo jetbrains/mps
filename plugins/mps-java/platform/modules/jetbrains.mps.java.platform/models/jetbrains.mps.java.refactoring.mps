@@ -4,7 +4,7 @@
   <languages>
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
   </languages>
@@ -129,6 +129,7 @@
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -207,7 +208,6 @@
       <concept id="540871147943773365" name="jetbrains.mps.baseLanguage.collections.structure.SingleArgumentSequenceOperation" flags="nn" index="25WWJ4">
         <child id="540871147943773366" name="argument" index="25WWJ7" />
       </concept>
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1160612413312" name="jetbrains.mps.baseLanguage.collections.structure.AddElementOperation" flags="nn" index="TSZUe" />
       <concept id="1160666733551" name="jetbrains.mps.baseLanguage.collections.structure.AddAllElementsOperation" flags="nn" index="X8dFx" />
       <concept id="1167380149909" name="jetbrains.mps.baseLanguage.collections.structure.RemoveElementOperation" flags="nn" index="3dhRuq" />
@@ -478,7 +478,7 @@
                         <node concept="2OqwBi" id="F2hJxqAVu6" role="3clFbG">
                           <node concept="2OqwBi" id="F2hJxqAVu7" role="2Oq$k0">
                             <node concept="37vLTw" id="F2hJxqAVua" role="2Oq$k0">
-                              <ref role="3cqZAo" node="F2hJxqAVue" resolve="it" />
+                              <ref role="3cqZAo" node="5W7E4fV0XtK" />
                             </node>
                             <node concept="3TrEf2" id="F2hJxqAVub" role="2OqNvi">
                               <ref role="3Tt5mk" to="tpee:fzcqZ_w" resolve="variableDeclaration" />
@@ -492,9 +492,9 @@
                         </node>
                       </node>
                     </node>
-                    <node concept="Rh6nW" id="F2hJxqAVue" role="1bW2Oz">
+                    <node concept="gl6BB" id="5W7E4fV0XtK" role="1bW2Oz">
                       <property role="TrG5h" value="it" />
-                      <node concept="2jxLKc" id="F2hJxqAVuf" role="1tU5fm" />
+                      <node concept="2jxLKc" id="5W7E4fV0XtL" role="1tU5fm" />
                     </node>
                   </node>
                 </node>

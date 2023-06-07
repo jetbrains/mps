@@ -39,7 +39,6 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -167,11 +166,7 @@ public class addComment_Expression extends TransformationMenuBase {
   public class TMP_Group_ouazrg_b0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(final TransformationMenuContext _context) {
-      return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ExpressionStatement$O8)) && (SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.ExpressionStatement$O8, false, false) != null) && ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.Expression$mB, false)).all(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (SNodeOperations.isInstanceOf(it, CONCEPTS.BinaryOperation$W1) && ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), null, true)).contains(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.BinaryOperation$W1), LINKS.leftExpression$sEj))) || (SNodeOperations.isInstanceOf(it, CONCEPTS.DotExpression$yW) && ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), null, true)).contains(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.DotExpression$yW), LINKS.operand$w6IR))) || (SNodeOperations.isInstanceOf(it, CONCEPTS.TernaryOperatorExpression$aq) && ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), null, true)).contains(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.TernaryOperatorExpression$aq), LINKS.condition$nwNI))) || (SNodeOperations.isInstanceOf(it, CONCEPTS.BaseAssignmentExpression$PA) && ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), null, true)).contains(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.BaseAssignmentExpression$PA), LINKS.lValue$splI)));
-        }
-      });
+      return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ExpressionStatement$O8)) && (SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.ExpressionStatement$O8, false, false) != null) && ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.Expression$mB, false)).all((it) -> (SNodeOperations.isInstanceOf(it, CONCEPTS.BinaryOperation$W1) && ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), null, true)).contains(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.BinaryOperation$W1), LINKS.leftExpression$sEj))) || (SNodeOperations.isInstanceOf(it, CONCEPTS.DotExpression$yW) && ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), null, true)).contains(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.DotExpression$yW), LINKS.operand$w6IR))) || (SNodeOperations.isInstanceOf(it, CONCEPTS.TernaryOperatorExpression$aq) && ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), null, true)).contains(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.TernaryOperatorExpression$aq), LINKS.condition$nwNI))) || (SNodeOperations.isInstanceOf(it, CONCEPTS.BaseAssignmentExpression$PA) && ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), null, true)).contains(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.BaseAssignmentExpression$PA), LINKS.lValue$splI))));
     }
 
     @NotNull

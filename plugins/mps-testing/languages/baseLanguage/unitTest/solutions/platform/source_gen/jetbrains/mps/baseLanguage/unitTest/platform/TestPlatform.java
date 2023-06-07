@@ -57,7 +57,7 @@ public class TestPlatform {
   public TestSession openSession(TestSessionConfig config) {
     final TestSession testSession = config.create();
     myCurrentSession.push(testSession);
-    myTestSessionListeners.forEach((TestSessionListener li) -> li.sessionOpened(testSession));
+    myTestSessionListeners.forEach((li) -> li.sessionOpened(testSession));
     return testSession;
   }
 
@@ -67,21 +67,21 @@ public class TestPlatform {
 
     }
     myCurrentSession.pop();
-    myTestSessionListeners.forEach((TestSessionListener li) -> li.sessionClosed(testSession));
+    myTestSessionListeners.forEach((li) -> li.sessionClosed(testSession));
   }
 
   public class AggregateTestDiscoveryParticipant implements TestDiscoveryParticipant {
 
     @Override
     public Optional<TestDescriptor> discover(final SNode sNode, final TestDiscoveryRequest request) {
-      Optional<Optional<TestDescriptor>> first = myDiscoveryParticipants.stream().map((TestDiscoveryParticipant tdp) -> tdp.discover(sNode, request)).filter(Optional::isPresent).findFirst();
+      Optional<Optional<TestDescriptor>> first = myDiscoveryParticipants.stream().map((tdp) -> tdp.discover(sNode, request)).filter(Optional::isPresent).findFirst();
       return (first.isPresent() ? first.get() : Optional.empty());
     }
 
     @Override
     public List<SAbstractConcept> sourceConcepts() {
       final ArrayList<SAbstractConcept> acc = new ArrayList<SAbstractConcept>();
-      myDiscoveryParticipants.forEach((TestDiscoveryParticipant tdp) -> acc.addAll(tdp.sourceConcepts()));
+      myDiscoveryParticipants.forEach((tdp) -> acc.addAll(tdp.sourceConcepts()));
       return Collections.unmodifiableList(acc);
     }
   }

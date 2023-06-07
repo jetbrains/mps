@@ -64,7 +64,7 @@ public class FileSystemListenersContainer {
     /*package*/ final List<FileSystemListener> descendantsListeners = ListSequence.fromList(new ArrayList<FileSystemListener>());
 
     public List<FileSystemListener> getMeAndDescendants() {
-      return ListSequence.fromList(concretePathListeners).union(ListSequence.fromList(descendantsListeners)).toListSequence();
+      return ListSequence.fromList(concretePathListeners).union(ListSequence.fromList(descendantsListeners)).toList();
     }
   }
 

@@ -22,7 +22,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.util.Function;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 
 @GeneratedClass(node = "r:4e6037e6-9135-44f8-9403-04d79fc40f4a(jetbrains.mps.ide.editor.util)/1616056205644408858", model = "r:4e6037e6-9135-44f8-9403-04d79fc40f4a(jetbrains.mps.ide.editor.util)")
 public final class GoToContextMenuHelper extends GoToContextMenuHelperBase<NodeNavigatable> {
@@ -107,20 +106,12 @@ public final class GoToContextMenuHelper extends GoToContextMenuHelperBase<NodeN
 
   @NotNull
   public GoToContextMenuHelperBase.ContextMenuComposite<NodeNavigatable> showMenuWithNodes(@NotNull List<SNodeReference> nodes, @NotNull RelativePoint point) {
-    return showMenu(ListSequence.fromList(nodes).distinct().select(new ISelector<SNodeReference, NodeNavigatable>() {
-      public NodeNavigatable select(SNodeReference it) {
-        return new NodeNavigatable(myProject, it);
-      }
-    }).toListSequence(), point);
+    return showMenu(ListSequence.fromList(nodes).distinct().select((it) -> new NodeNavigatable(myProject, it)).toList(), point);
   }
 
   @NotNull
   public GoToContextMenuHelperBase.ContextMenuComposite<NodeNavigatable> buildPopupWithNodes(@NotNull List<SNodeReference> foundUsages) {
-    return buildPopup(ListSequence.fromList(foundUsages).select(new ISelector<SNodeReference, NodeNavigatable>() {
-      public NodeNavigatable select(SNodeReference it) {
-        return new NodeNavigatable(myProject, it);
-      }
-    }).toListSequence());
+    return buildPopup(ListSequence.fromList(foundUsages).select((it) -> new NodeNavigatable(myProject, it)).toList());
   }
 
   private static Function<NodeNavigatable, String> adaptNamerForNavigatable(final Function<SNodeReference, String> namer) {

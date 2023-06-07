@@ -45,8 +45,6 @@ import org.eclipse.jdt.internal.compiler.ast.ConstructorDeclaration;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.eclipse.jdt.internal.compiler.ast.SwitchStatement;
 import org.eclipse.jdt.internal.compiler.ast.CaseStatement;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.eclipse.jdt.internal.compiler.ast.Argument;
 import org.eclipse.jdt.internal.compiler.ast.ArrayAllocationExpression;
@@ -307,11 +305,9 @@ public class FullASTConverter extends ASTConverterWithExpressions {
         getBlock(currentSwitchCase).setEndPos(x.sourceEnd);
       }
     }
-    ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.case$8PWE)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.body$5LhG), LINKS.statement$53DE)).isEmpty()) {
-          SLinkOperations.setTarget(it, LINKS.body$5LhG, null);
-        }
+    ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.case$8PWE)).visitAll((it) -> {
+      if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.body$5LhG), LINKS.statement$53DE)).isEmpty()) {
+        SLinkOperations.setTarget(it, LINKS.body$5LhG, null);
       }
     });
     return result;
@@ -390,11 +386,7 @@ public class FullASTConverter extends ASTConverterWithExpressions {
     SNode forStatement = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, "jetbrains.mps.baseLanguage.structure.ForStatement"));
     List<SNode> init = convertStatements(x.initializations);
     SNode result = forStatement;
-    if (ListSequence.fromList(init).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.ExpressionStatement$O8);
-      }
-    })) {
+    if (ListSequence.fromList(init).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.ExpressionStatement$O8))) {
       // we don't support for ( a=5, b=6; ...) {} in baseLanguage, workaround here
       result = _quotation_createNode_f46ocm_a0b0d0gb(init, forStatement);
     } else if (!(init.isEmpty())) {
@@ -677,11 +669,7 @@ public class FullASTConverter extends ASTConverterWithExpressions {
       result = Sequence.fromIterable(conss).first();
     } else {
       final int argCount = args.length;
-      Iterable<SNode> subset = Sequence.fromIterable(conss).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).count() == argCount;
-        }
-      });
+      Iterable<SNode> subset = Sequence.fromIterable(conss).where((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).count() == argCount);
       result = Sequence.fromIterable(subset).first();
     }
     return result;
@@ -720,11 +708,7 @@ public class FullASTConverter extends ASTConverterWithExpressions {
     ListSequence.fromList(myBlocks).addElement(new CodeBlock(node, myCud, Math.abs(start), Math.abs(end)));
   }
   private CodeBlock getBlock(final SNode node) {
-    return ListSequence.fromList(myBlocks).findFirst(new IWhereFilter<CodeBlock>() {
-      public boolean accept(CodeBlock it) {
-        return it.getStatementList() == node;
-      }
-    });
+    return ListSequence.fromList(myBlocks).findFirst((it) -> it.getStatementList() == node);
   }
   private SNode findBlock(final int sourcePos) {
     long min = Long.MAX_VALUE;
@@ -732,11 +716,7 @@ public class FullASTConverter extends ASTConverterWithExpressions {
 
     // we could maintain the stack of blocks
     // then we would just take the topmost element from the stack
-    for (CodeBlock block : ListSequence.fromList(myBlocks).where(new IWhereFilter<CodeBlock>() {
-      public boolean accept(CodeBlock it) {
-        return it.getStartPos() <= sourcePos && sourcePos <= it.getEndPos();
-      }
-    })) {
+    for (CodeBlock block : ListSequence.fromList(myBlocks).where((it) -> it.getStartPos() <= sourcePos && sourcePos <= it.getEndPos())) {
       long w = block.getEndPos() - block.getStartPos();
       if (w < min) {
         min = w;

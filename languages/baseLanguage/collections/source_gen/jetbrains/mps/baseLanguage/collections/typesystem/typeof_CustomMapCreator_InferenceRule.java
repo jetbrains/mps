@@ -31,7 +31,7 @@ public class typeof_CustomMapCreator_InferenceRule extends AbstractInferenceRule
     // This follows some legacy implementation: keyType and valueType do NOT hold semantic meaning as of their bounded type parameter. Instead, all non null types in order [keyType, valueType] represent type parameters for our container (value may be the first type argument)
     // Initial intention was probably that all container would have at most two parameters, and some type would need only one (key or value). But this is hard to understand and probably to use.
     // This would really need a full reimplementation to use a list of type argument (eg. key/valueType is not enforced or checked to be a key/value type, there's no need for it). For instance, if a container with type params T,U,V has actual type map<list<T>, map<U,V>>, this implementation will not follow (unless diamond operator is used)
-    Iterator<SNode> specifiedTypes = ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<>(), SLinkOperations.getTarget(cmc, LINKS.keyType$Uj4M), SLinkOperations.getTarget(cmc, LINKS.valueType$2EUo))).where(new NotNullWhereFilter<SNode>()).iterator();
+    Iterator<SNode> specifiedTypes = ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<>(), SLinkOperations.getTarget(cmc, LINKS.keyType$Uj4M), SLinkOperations.getTarget(cmc, LINKS.valueType$2EUo))).where(new NotNullWhereFilter()).iterator();
     for (SNode parameterDeclaration : SLinkOperations.getChildren(SLinkOperations.getTarget(cmc, LINKS.containerDeclaration$QVZa), LINKS.typeVariableDeclaration$Lipp)) {
       SNode typeArgument = null;
       if (specifiedTypes.hasNext()) {

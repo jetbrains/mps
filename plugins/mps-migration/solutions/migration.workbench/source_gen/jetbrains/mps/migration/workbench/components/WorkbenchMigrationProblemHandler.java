@@ -9,7 +9,6 @@ import jetbrains.mps.errors.item.IssueKindReportItem;
 import java.util.List;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerTool;
@@ -27,11 +26,7 @@ public class WorkbenchMigrationProblemHandler implements MigrationProblemHandler
 
   @Override
   public void showProblems(Collection<IssueKindReportItem> problems) {
-    List<SearchResult<IssueKindReportItem>> items = CollectionSequence.fromCollection(problems).select(new ISelector<IssueKindReportItem, SearchResult<IssueKindReportItem>>() {
-      public SearchResult<IssueKindReportItem> select(IssueKindReportItem p) {
-        return new SearchResult<IssueKindReportItem>(p, IssueKindReportItem.PATH_OBJECT.get(p).resolve(myMpsProject.getRepository()), IssueKindReportItem.FLAVOUR_ISSUE_KIND.get(p).getSpecialization());
-      }
-    }).where(new NotNullWhereFilter<SearchResult<IssueKindReportItem>>()).toListSequence();
+    List<SearchResult<IssueKindReportItem>> items = CollectionSequence.fromCollection(problems).select((p) -> new SearchResult<IssueKindReportItem>(p, IssueKindReportItem.PATH_OBJECT.get(p).resolve(myMpsProject.getRepository()), IssueKindReportItem.FLAVOUR_ISSUE_KIND.get(p).getSpecialization())).where(new NotNullWhereFilter()).toList();
 
     if (ListSequence.fromList(items).isEmpty()) {
       return;

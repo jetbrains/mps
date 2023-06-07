@@ -11,11 +11,8 @@ import java.util.List;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.vcs.diff.changes.NodeCopier;
 import org.junit.Assert;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.vcs.diff.changes.NodeGroupChange;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -66,38 +63,18 @@ public class ChangesRollbackTest extends ChangesTestBase {
     testChanges(changesRunnable);
     final SModel model = getTestModel();
     List<ModelChange> changes = ListSequence.fromListWithValues(new ArrayList<ModelChange>(), myDiff.getChangeSet().getModelChanges());
-    ListSequence.fromList(changes).reversedList().visitAll(new IVisitor<ModelChange>() {
-      public void visit(final ModelChange change) {
-        testChanges(() -> change.getOppositeChange().apply(model, new NodeCopier(model)));
-      }
-    });
+    ListSequence.fromList(changes).reversedList().visitAll((final ModelChange change) -> testChanges(() -> change.getOppositeChange().apply(model, new NodeCopier(model))));
     Assert.assertTrue(ListSequence.fromList(myDiff.getChangeSet().getModelChanges()).isEmpty());
   }
 
   private void rollbackChangesAutomaticallyAndCheckNoDifference(Runnable changesRunnable) {
     testChanges(changesRunnable);
     final SModel model = getTestModel();
-    final List<ModelChange> oppositeChanges = ListSequence.fromList(check_p3cuek_a0a0c0k(myDiff.getChangeSet())).select(new ISelector<ModelChange, ModelChange>() {
-      public ModelChange select(ModelChange ch) {
-        return ch.getOppositeChange();
-      }
-    }).toListSequence();
+    final List<ModelChange> oppositeChanges = ListSequence.fromList(check_p3cuek_a0a0c0k(myDiff.getChangeSet())).select((ch) -> ch.getOppositeChange()).toList();
     testChanges(() -> {
       final NodeCopier nc = new NodeCopier(model);
-      ListSequence.fromList(oppositeChanges).where(new IWhereFilter<ModelChange>() {
-        public boolean accept(ModelChange ch) {
-          return ch instanceof NodeGroupChange;
-        }
-      }).visitAll(new IVisitor<ModelChange>() {
-        public void visit(ModelChange ch) {
-          ((NodeGroupChange) ch).prepare();
-        }
-      });
-      ListSequence.fromList(oppositeChanges).visitAll(new IVisitor<ModelChange>() {
-        public void visit(ModelChange ch) {
-          ch.apply(model, nc);
-        }
-      });
+      ListSequence.fromList(oppositeChanges).where((ch) -> ch instanceof NodeGroupChange).visitAll((ch) -> ((NodeGroupChange) ch).prepare());
+      ListSequence.fromList(oppositeChanges).visitAll((ch) -> ch.apply(model, nc));
       nc.restoreIds(true);
     });
     Assert.assertTrue(ListSequence.fromList(myDiff.getChangeSet().getModelChanges()).isEmpty());

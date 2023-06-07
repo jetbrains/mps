@@ -16,15 +16,13 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -55,59 +53,57 @@ public final class Line__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static void initializeFromParagraphs_id2iG$EWuZbnH(@NotNull final SNode __thisNode__, SNode l) {
     final Wrappers._T<SNode> currentWord = new Wrappers._T<SNode>(null);
-    ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.letters$rNyA)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        if (SNodeOperations.isInstanceOf(it, CONCEPTS.Letter$kd)) {
-          SNode letter = SNodeOperations.as(it, CONCEPTS.Letter$kd);
-          String value = SPropertyOperations.getString(letter, PROPS.value$X7Tp);
-          if (Objects.equals(value, " ")) {
-            if (currentWord.value != null) {
-              Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(__thisNode__, currentWord.value);
-              currentWord.value = null;
-            }
-            return;
-          } else {
-            if (currentWord.value == null) {
-              currentWord.value = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word"));
-              SPropertyOperations.assign(currentWord.value, PROPS.bold$SBR1, SPropertyOperations.getBoolean(letter, PROPS.bold$Xqbk));
-              SPropertyOperations.assign(currentWord.value, PROPS.italic$SC$4, SPropertyOperations.getBoolean(letter, PROPS.italic$Xqql));
-              SPropertyOperations.assign(currentWord.value, PROPS.underlined$SQS1, SPropertyOperations.getBoolean(letter, PROPS.underlined$XqDm));
-            }
-            SPropertyOperations.plusAssignStringProp(currentWord.value, PROPS.value$zQr_, SPropertyOperations.getString(letter, PROPS.value$X7Tp));
-          }
-
-        } else {
+    ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.letters$rNyA)).visitAll((it) -> {
+      if (SNodeOperations.isInstanceOf(it, CONCEPTS.Letter$kd)) {
+        SNode letter = SNodeOperations.as(it, CONCEPTS.Letter$kd);
+        String value = SPropertyOperations.getString(letter, PROPS.value$X7Tp);
+        if (Objects.equals(value, " ")) {
           if (currentWord.value != null) {
             Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(__thisNode__, currentWord.value);
             currentWord.value = null;
           }
+          return;
+        } else {
+          if (currentWord.value == null) {
+            currentWord.value = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word"));
+            SPropertyOperations.assign(currentWord.value, PROPS.bold$SBR1, SPropertyOperations.getBoolean(letter, PROPS.bold$Xqbk));
+            SPropertyOperations.assign(currentWord.value, PROPS.italic$SC$4, SPropertyOperations.getBoolean(letter, PROPS.italic$Xqql));
+            SPropertyOperations.assign(currentWord.value, PROPS.underlined$SQS1, SPropertyOperations.getBoolean(letter, PROPS.underlined$XqDm));
+          }
+          SPropertyOperations.plusAssignStringProp(currentWord.value, PROPS.value$zQr_, SPropertyOperations.getString(letter, PROPS.value$X7Tp));
+        }
 
-          if (SNodeOperations.isInstanceOf(it, CONCEPTS.NodeWrapperTextualElement$vh)) {
-            SNode w = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, "jetbrains.mps.lang.text.structure.NodeWrapperElement"));
-            SLinkOperations.setTarget(w, LINKS.node$KGJq, SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.NodeWrapperTextualElement$vh), LINKS.node$pn2z));
-            Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(__thisNode__, w);
-          }
-          if (SNodeOperations.isInstanceOf(it, CONCEPTS.EmptyParagraphLetter$W6)) {
-            Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(__thisNode__, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")));
-            return;
-          }
-          if (SNodeOperations.isInstanceOf(it, CONCEPTS.UrlTextualElement$cU)) {
-            String address = SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.UrlTextualElement$cU), PROPS.address$M$I6);
-            SNode p = SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.UrlTextualElement$cU), LINKS.text$A10X);
-            String text = IterableUtils.join(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(p, LINKS.letters$rNyA), CONCEPTS.Letter$kd)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return !(Objects.equals(SPropertyOperations.getString(it, PROPS.value$X7Tp), " "));
-              }
-            }).select(new ISelector<SNode, String>() {
-              public String select(SNode it) {
-                return SPropertyOperations.getString(it, PROPS.value$X7Tp);
-              }
-            }), " ").replaceAll(" ", "");
-            SNode w = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word"));
-            SPropertyOperations.assign(w, PROPS.value$zQr_, text);
-            SPropertyOperations.assign(w, PROPS.url$SIrt, address);
-            Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(__thisNode__, w);
-          }
+      } else {
+        if (currentWord.value != null) {
+          Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(__thisNode__, currentWord.value);
+          currentWord.value = null;
+        }
+
+        if (SNodeOperations.isInstanceOf(it, CONCEPTS.NodeWrapperTextualElement$vh)) {
+          SNode w = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, "jetbrains.mps.lang.text.structure.NodeWrapperElement"));
+          SLinkOperations.setTarget(w, LINKS.node$KGJq, SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.NodeWrapperTextualElement$vh), LINKS.node$pn2z));
+          Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(__thisNode__, w);
+        }
+        if (SNodeOperations.isInstanceOf(it, CONCEPTS.EmptyParagraphLetter$W6)) {
+          Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(__thisNode__, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")));
+          return;
+        }
+        if (SNodeOperations.isInstanceOf(it, CONCEPTS.UrlTextualElement$cU)) {
+          String address = SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.UrlTextualElement$cU), PROPS.address$M$I6);
+          SNode p = SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.UrlTextualElement$cU), LINKS.text$A10X);
+          String text = IterableUtils.join(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(p, LINKS.letters$rNyA), CONCEPTS.Letter$kd)).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+            public Boolean invoke(SNode it) {
+              return !(Objects.equals(SPropertyOperations.getString(it, PROPS.value$X7Tp), " "));
+            }
+          }).select(new _FunctionTypes._return_P1_E0<String, SNode>() {
+            public String invoke(SNode it) {
+              return SPropertyOperations.getString(it, PROPS.value$X7Tp);
+            }
+          }), " ").replaceAll(" ", "");
+          SNode w = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word"));
+          SPropertyOperations.assign(w, PROPS.value$zQr_, text);
+          SPropertyOperations.assign(w, PROPS.url$SIrt, address);
+          Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(__thisNode__, w);
         }
       }
     });
@@ -124,11 +120,7 @@ public final class Line__BehaviorDescriptor extends BaseBHDescriptor {
     }
 
     final Wrappers._T<SNode> currentPosition = new Wrappers._T<SNode>(position);
-    ListSequence.fromList(SLinkOperations.getChildren(other, LINKS.elements$_j45)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode element) {
-        currentPosition.value = SNodeOperations.insertNextSiblingChild(currentPosition.value, element);
-      }
-    });
+    ListSequence.fromList(SLinkOperations.getChildren(other, LINKS.elements$_j45)).visitAll((element) -> currentPosition.value = SNodeOperations.insertNextSiblingChild(currentPosition.value, element));
     if (ListSequence.fromList(SLinkOperations.getChildren(other, LINKS.elements$_j45)).isNotEmpty() && isEmptyString(trim_chdj22_a0a0e0v(SPropertyOperations.getString(SNodeOperations.as(position, CONCEPTS.Word$Dn), PROPS.value$zQr_)))) {
       SNodeOperations.deleteNode(position);
     }
@@ -153,11 +145,7 @@ public final class Line__BehaviorDescriptor extends BaseBHDescriptor {
     ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.elements$_j45)).addSequence(Sequence.fromIterable(elements));
   }
   /*package*/ static boolean isEmptyLine_id1YnOZxAO76B(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.elements$_j45)).isEmpty() || ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.elements$_j45)).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.Word$Dn) && isEmptyString(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Word$Dn), PROPS.value$zQr_));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.elements$_j45)).isEmpty() || ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.elements$_j45)).all((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.Word$Dn) && isEmptyString(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Word$Dn), PROPS.value$zQr_)));
   }
   /*package*/ static Iterable<SNode> getTextElements_idWJz9iATjyN(@NotNull SNode __thisNode__) {
     return SLinkOperations.getChildren(__thisNode__, LINKS.elements$_j45);

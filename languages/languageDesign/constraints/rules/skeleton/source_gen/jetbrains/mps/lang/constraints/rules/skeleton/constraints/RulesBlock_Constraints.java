@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.scope.FilteringScope;
 import java.util.HashMap;
@@ -47,11 +46,7 @@ public class RulesBlock_Constraints extends BaseConstraintsDescriptor {
           public Scope createScope(final ReferenceConstraintsContext _context) {
             ModelPlusImportedScope scope = new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), true, CONCEPTS.RuleKind$7C);
             final SNode myBlock = _context.getContextNode();
-            final Iterable<SNode> excludeThem = SLinkOperations.collect(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.RulesConstraintsRoot$vG, true, false), LINKS.block$zsJD), CONCEPTS.RulesBlock$W)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return !(Objects.equals(it, myBlock));
-              }
-            }), LINKS.kind$9HAE);
+            final Iterable<SNode> excludeThem = SLinkOperations.collect(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.RulesConstraintsRoot$vG, true, false), LINKS.block$zsJD), CONCEPTS.RulesBlock$W)).where((it) -> !(Objects.equals(it, myBlock))), LINKS.kind$9HAE);
             return new FilteringScope(scope) {
               @Override
               public boolean isExcluded(SNode node) {

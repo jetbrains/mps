@@ -22,25 +22,13 @@ public class TryCatchStatement_DataFlow extends DataFlowBuilder {
         continue;
       }
       for (final SNode catchClause : DataFlowTryCatchUtil.getPossibleCatches((SNode) InstructionUtil.getSource(instruction), SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$dMnP))) {
-        _context.getBuilder().emitMayBeUnreachable(new Runnable() {
-          public void run() {
-            _context.getBuilder().emitIfJump(_context.getBuilder().before(catchClause), _context.getBuilder().insertAfter(instruction), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/7597254041024527756");
-          }
-        });
+        _context.getBuilder().emitMayBeUnreachable(() -> _context.getBuilder().emitIfJump(_context.getBuilder().before(catchClause), _context.getBuilder().insertAfter(instruction), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/7597254041024527756"));
       }
     }
-    _context.getBuilder().emitMayBeUnreachable(new Runnable() {
-      public void run() {
-        _context.getBuilder().emitJump(_context.getBuilder().after(_context.getNode()), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1207218496728");
-      }
-    });
+    _context.getBuilder().emitMayBeUnreachable(() -> _context.getBuilder().emitJump(_context.getBuilder().after(_context.getNode()), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1207218496728"));
     for (SNode c : SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$dMnP)) {
       _context.getBuilder().build((SNode) c);
-      _context.getBuilder().emitMayBeUnreachable(new Runnable() {
-        public void run() {
-          _context.getBuilder().emitJump(_context.getBuilder().after(_context.getNode()), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/8768955936812442517");
-        }
-      });
+      _context.getBuilder().emitMayBeUnreachable(() -> _context.getBuilder().emitJump(_context.getBuilder().after(_context.getNode()), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/8768955936812442517"));
     }
   }
 

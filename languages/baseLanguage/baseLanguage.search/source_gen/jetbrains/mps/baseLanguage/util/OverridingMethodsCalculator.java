@@ -10,14 +10,13 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.HashSet;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import java.util.List;
@@ -44,8 +43,8 @@ public final class OverridingMethodsCalculator {
     Iterable<SNode> result = SLinkOperations.getChildren(enumConstant, LINKS.method$pGvv);
 
     Map<String, Set<SNode>> nameToMethodsMap = MapSequence.fromMap(new HashMap<String, Set<SNode>>());
-    for (SNode methodToCheck : Sequence.fromIterable(result).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
+    for (SNode methodToCheck : Sequence.fromIterable(result).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      public Boolean invoke(SNode it) {
         return canOverride(it);
       }
     })) {
@@ -60,8 +59,8 @@ public final class OverridingMethodsCalculator {
 
   public OverridingMethodsCalculator(SNode container, Iterable<SNode> methods) {
     Map<String, Set<SNode>> nameToMethodsMap = MapSequence.fromMap(new HashMap<String, Set<SNode>>());
-    for (SNode methodToCheck : Sequence.fromIterable(methods).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
+    for (SNode methodToCheck : Sequence.fromIterable(methods).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      public Boolean invoke(SNode it) {
         return canOverride(it);
       }
     })) {
@@ -92,22 +91,22 @@ public final class OverridingMethodsCalculator {
       if (addIfNotContains(visitedClassifiers, superClass)) {
         collectOverridingMethods(classifier, superClass, nameToMethodsMap, visitedClassifiers);
       }
-      Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(clazz, LINKS.implementedInterface$rujG), LINKS.classifier$cxMr)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode implementedInterface) {
+      Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(clazz, LINKS.implementedInterface$rujG), LINKS.classifier$cxMr)).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+        public Boolean invoke(SNode implementedInterface) {
           return implementedInterface != null && addIfNotContains(visitedClassifiers, implementedInterface);
         }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode intfc) {
+      }).visitAll(new _FunctionTypes._void_P1_E0<SNode>() {
+        public void invoke(SNode intfc) {
           collectOverridingMethods(classifier, intfc, nameToMethodsMap, visitedClassifiers);
         }
       });
     } else if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.Interface$db)) {
-      Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.cast(classifier, CONCEPTS.Interface$db), LINKS.extendedInterface$PDVO), LINKS.classifier$cxMr)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode extendedInterface) {
+      Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.cast(classifier, CONCEPTS.Interface$db), LINKS.extendedInterface$PDVO), LINKS.classifier$cxMr)).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+        public Boolean invoke(SNode extendedInterface) {
           return extendedInterface != null && addIfNotContains(visitedClassifiers, extendedInterface);
         }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode intfc) {
+      }).visitAll(new _FunctionTypes._void_P1_E0<SNode>() {
+        public void invoke(SNode intfc) {
           collectOverridingMethods(classifier, intfc, nameToMethodsMap, visitedClassifiers);
         }
       });
@@ -116,8 +115,8 @@ public final class OverridingMethodsCalculator {
 
   private void collectOverridingMethods(final SNode classifier, final SNode superClassifier, Map<String, Set<SNode>> nameToMethodsMap, Set<SNode> visitedClassifiers) {
     Map<String, Set<SNode>> methodNameToMethodMapCopy = copyMap(nameToMethodsMap);
-    for (final SNode superClassifierMethod : Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(superClassifier, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
+    for (final SNode superClassifierMethod : Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(superClassifier, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      public Boolean invoke(SNode it) {
         // not very comprehensible condition (it is a dummy anonymous stub for enum constant) AP
         boolean enumConstant = SNodeOperations.isInstanceOf(classifier, CONCEPTS.AnonymousClass$Bt) && SNodeOperations.getModel(classifier) == null;
         return canBeOverridden(it) && ((SLinkOperations.getTarget(it, LINKS.visibility$Yyua) != null) || enumConstant || packagesAreTheSame(superClassifier, classifier));
@@ -127,11 +126,11 @@ public final class OverridingMethodsCalculator {
       if (methodsWithNameOfSuperMethod == null) {
         continue;
       }
-      List<SNode> overridingMethods = SetSequence.fromSet(methodsWithNameOfSuperMethod).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
+      List<SNode> overridingMethods = SetSequence.fromSet(methodsWithNameOfSuperMethod).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+        public Boolean invoke(SNode it) {
           return ((boolean) (Boolean) BHReflection.invoke0(superClassifierMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("hasSameSignature", 1213877350435L, 0x5745e3015c8914d3L), it));
         }
-      }).toListSequence();
+      }).toList();
       for (SNode overridingMethod : ListSequence.fromList(overridingMethods)) {
         SetSequence.fromSet(safeGet(myOverriding2BaseMethodsMap, overridingMethod)).addElement(superClassifierMethod);
       }

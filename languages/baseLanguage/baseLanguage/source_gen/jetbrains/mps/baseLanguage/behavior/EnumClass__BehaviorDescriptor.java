@@ -18,7 +18,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -83,38 +82,16 @@ public final class EnumClass__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static List<SNode> getMethodsToImplement_id4GM03FJm5q2(@NotNull SNode __thisNode__) {
     List<SNode> methodsToImplement = IMemberContainer__BehaviorDescriptor.getMethodsToImplement_id4GM03FJm5q2.invokeSuper(__thisNode__, CONCEPTS.EnumClass$Vk);
     final List<SNode> ownMethods = Classifier__BehaviorDescriptor.getOwnMethods_id1DPgsAlM_WC.invoke(SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Enum"));
-    Iterable<SNode> remaining = ListSequence.fromList(methodsToImplement).where(new IWhereFilter<SNode>() {
-      public boolean accept(final SNode toBeImplemented) {
-        return !(ListSequence.fromList(ownMethods).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode own) {
-            return !((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(own)) && (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(toBeImplemented, own);
-          }
-        }));
-      }
-    });
-    return Sequence.fromIterable(remaining).toListSequence();
+    Iterable<SNode> remaining = ListSequence.fromList(methodsToImplement).where((final SNode toBeImplemented) -> !(ListSequence.fromList(ownMethods).any((own) -> !((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(own)) && (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(toBeImplemented, own))));
+    return Sequence.fromIterable(remaining).toList();
   }
   /*package*/ static List<SNode> getMethodsToOverride_id4GM03FJm3zL(@NotNull SNode __thisNode__) {
     final List<SNode> methodsToOverride = IMemberContainer__BehaviorDescriptor.getMethodsToOverride_id4GM03FJm3zL.invokeSuper(__thisNode__, CONCEPTS.EnumClass$Vk);
-    Iterable<SNode> ownMethods = ListSequence.fromList(Classifier__BehaviorDescriptor.getOwnMethods_id1DPgsAlM_WC.invoke(SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Enum"))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.InstanceMethodDeclaration$39) || SNodeOperations.isInstanceOf(it, CONCEPTS.ConstructorDeclaration$yG);
-      }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        SNode v = SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.IVisible$zu), LINKS.visibility$Yyua);
-        return (v != null) && !(SNodeOperations.isInstanceOf(v, CONCEPTS.PrivateVisibility$l0)) && !(SPropertyOperations.getBoolean(SNodeOperations.as(it, CONCEPTS.InstanceMethodDeclaration$39), PROPS.isFinal$eVPk));
-      }
+    Iterable<SNode> ownMethods = ListSequence.fromList(Classifier__BehaviorDescriptor.getOwnMethods_id1DPgsAlM_WC.invoke(SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Enum"))).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.InstanceMethodDeclaration$39) || SNodeOperations.isInstanceOf(it, CONCEPTS.ConstructorDeclaration$yG)).where((it) -> {
+      SNode v = SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.IVisible$zu), LINKS.visibility$Yyua);
+      return (v != null) && !(SNodeOperations.isInstanceOf(v, CONCEPTS.PrivateVisibility$l0)) && !(SPropertyOperations.getBoolean(SNodeOperations.as(it, CONCEPTS.InstanceMethodDeclaration$39), PROPS.isFinal$eVPk));
     });
-    Iterable<SNode> allToBeAdded = Sequence.fromIterable(ownMethods).where(new IWhereFilter<SNode>() {
-      public boolean accept(final SNode own) {
-        return !(ListSequence.fromList(methodsToOverride).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode toBeOverriden) {
-            return (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(own, toBeOverriden);
-          }
-        }));
-      }
-    });
+    Iterable<SNode> allToBeAdded = Sequence.fromIterable(ownMethods).where((final SNode own) -> !(ListSequence.fromList(methodsToOverride).any((toBeOverriden) -> (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(own, toBeOverriden))));
     return ListSequence.fromList(methodsToOverride).addSequence(Sequence.fromIterable(allToBeAdded));
   }
 

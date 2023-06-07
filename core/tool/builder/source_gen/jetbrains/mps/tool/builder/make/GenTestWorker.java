@@ -133,11 +133,7 @@ public class GenTestWorker extends BaseGeneratorWorker {
         public void populate(IPropertiesPool ppool) {
           Tuples._2<_FunctionTypes._return_P1_E0<? extends String, ? super IFile>, Set<File>> dparams = (Tuples._2<_FunctionTypes._return_P1_E0<? extends String, ? super IFile>, Set<File>>) ppool.properties(new ITarget.Name("jetbrains.mps.tool.gentest.Diff.diff"), Object.class);
           if (dparams != null) {
-            dparams._0(new _FunctionTypes._return_P1_E0<String, IFile>() {
-              public String invoke(IFile f) {
-                return pathOfTmpFile(f);
-              }
-            });
+            dparams._0(((_FunctionTypes._return_P1_E0<String, IFile>) (IFile f) -> pathOfTmpFile(f)));
             dparams._1(myWhatToDo.getExcludedFromDiffFiles());
           }
         }

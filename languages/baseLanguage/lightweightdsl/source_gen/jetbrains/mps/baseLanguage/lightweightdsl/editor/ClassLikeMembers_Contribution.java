@@ -23,7 +23,6 @@ import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.lightweightdsl.behavior.DSLClassMember__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.smodel.runtime.IconResourceUtil;
@@ -117,11 +116,7 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.findPlaceholders_id5ZzANK5B6wZ.invoke(myParameterObject, SNodeOperations.cast(_context.getParentNode(), CONCEPTS.ClassConcept$bK))).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode it) {
-              SNodeOperations.deleteNode(it);
-            }
-          });
+          Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.findPlaceholders_id5ZzANK5B6wZ.invoke(myParameterObject, SNodeOperations.cast(_context.getParentNode(), CONCEPTS.ClassConcept$bK))).visitAll((it) -> SNodeOperations.deleteNode(it));
           return ((SNode) DSLClassMember__BehaviorDescriptor.create_id7ay_HjIOVVe.invoke(myParameterObject, _context.getModel()));
         }
 
@@ -221,11 +216,7 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.findPlaceholders_id5ZzANK5B6wZ.invoke(myParameterObject, SNodeOperations.cast(_context.getParentNode(), CONCEPTS.ClassConcept$bK))).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode it) {
-              SNodeOperations.deleteNode(it);
-            }
-          });
+          Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.findPlaceholders_id5ZzANK5B6wZ.invoke(myParameterObject, SNodeOperations.cast(_context.getParentNode(), CONCEPTS.ClassConcept$bK))).visitAll((it) -> SNodeOperations.deleteNode(it));
           return ((SNode) DSLClassMember__BehaviorDescriptor.create_id7ay_HjIOVVe.invoke(myParameterObject, _context.getModel()));
         }
 
@@ -325,11 +316,7 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.findPlaceholders_id5ZzANK5B6wZ.invoke(myParameterObject, SNodeOperations.cast(_context.getParentNode(), CONCEPTS.ClassConcept$bK))).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode it) {
-              SNodeOperations.deleteNode(it);
-            }
-          });
+          Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.findPlaceholders_id5ZzANK5B6wZ.invoke(myParameterObject, SNodeOperations.cast(_context.getParentNode(), CONCEPTS.ClassConcept$bK))).visitAll((it) -> SNodeOperations.deleteNode(it));
           return ((SNode) DSLClassMember__BehaviorDescriptor.create_id7ay_HjIOVVe.invoke(myParameterObject, _context.getModel()));
         }
 

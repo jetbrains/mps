@@ -17,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.generator.behavior.ContextVariableProvider__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -45,11 +44,7 @@ public final class GenerationContextOp_ContextVarRef__BehaviorDescriptor extends
       {
         final SNode provider = n;
         if (SNodeOperations.isInstanceOf(provider, CONCEPTS.ContextVariableProvider$BN)) {
-          if (ListSequence.fromList(ContextVariableProvider__BehaviorDescriptor.contextVariables_id6suuiWX_oN7.invoke(provider)).any(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SPropertyOperations.getString(it, PROPS.name$MnvL).equals(SPropertyOperations.getString(__thisNode__, PROPS.contextVarName$KIbb));
-            }
-          })) {
+          if (ListSequence.fromList(ContextVariableProvider__BehaviorDescriptor.contextVariables_id6suuiWX_oN7.invoke(provider)).any((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).equals(SPropertyOperations.getString(__thisNode__, PROPS.contextVarName$KIbb)))) {
             return provider;
           }
         }

@@ -10,10 +10,8 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.scopes.Members;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -28,17 +26,11 @@ public class check_StaticFieldReference_NonTypesystemRule extends AbstractNonTyp
   public check_StaticFieldReference_NonTypesystemRule() {
   }
   public void applyRule(final SNode staticFieldReference, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    Iterable<SNode> collidingDeclarations = Sequence.fromIterable(Members.visibleStaticFields(SLinkOperations.getTarget(staticFieldReference, LINKS.classifier$BPY8), staticFieldReference)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(SLinkOperations.getTarget(staticFieldReference, LINKS.variableDeclaration$N1XG), PROPS.name$MnvL)) && !(Objects.equals(it, SLinkOperations.getTarget(staticFieldReference, LINKS.variableDeclaration$N1XG)));
-      }
-    });
-    Sequence.fromIterable(collidingDeclarations).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        {
-          final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(staticFieldReference, "Reference to " + SPropertyOperations.getString(SLinkOperations.getTarget(staticFieldReference, LINKS.variableDeclaration$N1XG), PROPS.name$MnvL) + " is ambiguous, both " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(staticFieldReference, LINKS.variableDeclaration$N1XG)) + " and " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(it) + " match.", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "518225087815268273", null, errorTarget);
-        }
+    Iterable<SNode> collidingDeclarations = Sequence.fromIterable(Members.visibleStaticFields(SLinkOperations.getTarget(staticFieldReference, LINKS.classifier$BPY8), staticFieldReference)).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(SLinkOperations.getTarget(staticFieldReference, LINKS.variableDeclaration$N1XG), PROPS.name$MnvL)) && !(Objects.equals(it, SLinkOperations.getTarget(staticFieldReference, LINKS.variableDeclaration$N1XG))));
+    Sequence.fromIterable(collidingDeclarations).visitAll((it) -> {
+      {
+        final MessageTarget errorTarget = new NodeMessageTarget();
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(staticFieldReference, "Reference to " + SPropertyOperations.getString(SLinkOperations.getTarget(staticFieldReference, LINKS.variableDeclaration$N1XG), PROPS.name$MnvL) + " is ambiguous, both " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(staticFieldReference, LINKS.variableDeclaration$N1XG)) + " and " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(it) + " match.", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "518225087815268273", null, errorTarget);
       }
     });
   }

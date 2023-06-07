@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import java.util.Arrays;
 
@@ -62,11 +61,7 @@ import java.util.Arrays;
     }
     debug(l, "");
     myNestLevelDebug++;
-    for (DepLink ch : ListSequence.fromList(l.children()).where(new IWhereFilter<DepLink>() {
-      public boolean accept(DepLink it) {
-        return elementMatch.met(it);
-      }
-    })) {
+    for (DepLink ch : ListSequence.fromList(l.children()).where((it) -> elementMatch.met(it))) {
       if (myCurrent.seen(ch)) {
         if (Objects.equals(ch.getRoleModuleKey(), myTargetKey)) {
           // cycle found

@@ -10,7 +10,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.lang.scopes.runtime.ScopeUtils;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -38,11 +37,7 @@ public final class LoggingGenerationUtil {
     for (SNode logStatement : ListSequence.fromList(SNodeOperations.getNodeDescendants(contextNode, CONCEPTS.IMessage$D6, false, new SAbstractConcept[]{}))) {
       Scope scope = ScopeUtils.parentScope(logStatement, CONCEPTS.VariableDeclaration$Y0);
 
-      if (Sequence.fromIterable(scope.getAvailableElements(baseName)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(it, CONCEPTS.VariableDeclaration$Y0)) || baseName.equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.VariableDeclaration$Y0), PROPS.name$MnvL));
-        }
-      }).isNotEmpty()) {
+      if (Sequence.fromIterable(scope.getAvailableElements(baseName)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.VariableDeclaration$Y0)) || baseName.equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.VariableDeclaration$Y0), PROPS.name$MnvL))).isNotEmpty()) {
         return baseName + "_" + Integer.toString(Math.abs(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(contextNode).hashCode()));
       }
     }

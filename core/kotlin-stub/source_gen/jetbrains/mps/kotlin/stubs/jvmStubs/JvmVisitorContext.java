@@ -49,7 +49,7 @@ public class JvmVisitorContext extends VisitorContext {
           if (metadata instanceof KotlinClassMetadata.Class) {
             // Class file
             final AtomicReference<SNode> klass = new AtomicReference<SNode>();
-            ((KotlinClassMetadata.Class) metadata).accept(new ClassVisitor(context, true, (SNode newValue) -> klass.set(newValue)));
+            ((KotlinClassMetadata.Class) metadata).accept(new ClassVisitor(context, true, (newValue) -> klass.set(newValue)));
             if (klass.get() != null) {
               this.addClass(klass.get());
               return klass.get();

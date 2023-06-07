@@ -96,7 +96,7 @@ public class InstanceMethodCallSubstitute extends SubstituteMenuBase {
       protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
         SNode instance = ExtensionMethodDeclaration__BehaviorDescriptor.getThisType_id6XkcKt_eUWM.invoke(SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ExtensionMethodDeclaration$mW, false, false));
         SNode classifierType = TypecheckingFacade.getFromContext().strongCoerceType(instance, CONCEPTS.ClassifierType$bL);
-        return Sequence.fromIterable(Members.visibleInstanceMethods(classifierType, _context.getCurrentTargetNode())).toListSequence();
+        return Sequence.fromIterable(Members.visibleInstanceMethods(classifierType, _context.getCurrentTargetNode())).toList();
       }
       private class SMP_Action_ru4l93_a0a extends SingleItemSubstituteMenuPart {
         private final SNode myParameterObject;

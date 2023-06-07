@@ -19,7 +19,6 @@ import jetbrains.mps.lang.editor.diagram.runtime.jetpad.palette.openapi.PaletteE
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.List;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import java.util.ArrayList;
 import jetbrains.mps.smodel.action.ModelActions;
@@ -41,11 +40,7 @@ public class PaletteElementsCreationActionGroup implements PaletteActionGroup {
   }
   public PaletteElement[] getElements() {
     mySubstituteInfo.invalidateActions();
-    return ListSequence.fromList(((List<SubstituteAction>) mySubstituteInfo.getMatchingActions("", false))).select(new ISelector<SubstituteAction, PaletteElementsCreationAction>() {
-      public PaletteElementsCreationAction select(SubstituteAction it) {
-        return new PaletteElementsCreationAction(myDiagramCell, it, myCallback, myEditorContext);
-      }
-    }).toGenericArray(PaletteElementsCreationAction.class);
+    return ListSequence.fromList(((List<SubstituteAction>) mySubstituteInfo.getMatchingActions("", false))).select((it) -> new PaletteElementsCreationAction(myDiagramCell, it, myCallback, myEditorContext)).toGenericArray(PaletteElementsCreationAction.class);
   }
   public boolean isPopup() {
     return true;

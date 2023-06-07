@@ -34,9 +34,8 @@ import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
@@ -150,11 +149,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
 
     protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
-      return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.ExponentialOperation$AR, SNodeOperations.getModel(node))).where(new IWhereFilter<SConcept>() {
-        public boolean accept(SConcept it) {
-          return !(it.isAbstract());
-        }
-      }).toListSequence();
+      return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.ExponentialOperation$AR, SNodeOperations.getModel(node))).where((it) -> !(it.isAbstract())).toList();
 
     }
     protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {

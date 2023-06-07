@@ -21,7 +21,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SPropertySubstituteInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
@@ -39,7 +38,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import com.intellij.openapi.ui.ComboBox;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.List;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
@@ -116,11 +114,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
       Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
-      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
-        }
-      });
+      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where((it) -> Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property));
       if (Sequence.fromIterable(currentPropertyAttributes).isNotEmpty()) {
         EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
         return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentPropertyAttributes).first(), AttributeKind.PROPERTY, editorCell);
@@ -157,11 +151,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
       Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
-      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
-        }
-      });
+      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where((it) -> Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property));
       if (Sequence.fromIterable(currentPropertyAttributes).isNotEmpty()) {
         EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
         return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentPropertyAttributes).first(), AttributeKind.PROPERTY, editorCell);
@@ -232,11 +222,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     if (config == null) {
       return new ComboBox<String>();
     }
-    Iterable<String> names = ListSequence.fromList(SLinkOperations.getChildren(config, LINKS.categories$dcsC)).select(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    });
+    Iterable<String> names = ListSequence.fromList(SLinkOperations.getChildren(config, LINKS.categories$dcsC)).select((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL));
     List<String> namesWithEmptyLine = ListSequence.fromListWithValues(new ArrayList<String>(), names);
     ListSequence.fromList(namesWithEmptyLine).insertElement(0, "");
     final JComboBox categorySelector = new ComboBox<String>(ListSequence.fromList(namesWithEmptyLine).toGenericArray(String.class));
@@ -347,11 +333,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     public boolean filter(SNode childNode) {
       SNode notes = SNodeOperations.cast(SNodeOperations.getParent(childNode), CONCEPTS.Notes$8V);
       final String selectedCategory = SPropertyOperations.getString(notes, PROPS.selectedCategory$e2a6);
-      return (!(SPropertyOperations.getBoolean(notes, PROPS.showActive$mtqX)) || SPropertyOperations.getBoolean(SLinkOperations.getTarget(childNode, LINKS.status$SqjC), PROPS.active$jVBo)) && ((selectedCategory == null || selectedCategory.length() == 0) || ListSequence.fromList(SLinkOperations.getChildren(childNode, LINKS.category$RXsH)).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.target$P7Pa), PROPS.name$MnvL), selectedCategory);
-        }
-      }));
+      return (!(SPropertyOperations.getBoolean(notes, PROPS.showActive$mtqX)) || SPropertyOperations.getBoolean(SLinkOperations.getTarget(childNode, LINKS.status$SqjC), PROPS.active$jVBo)) && ((selectedCategory == null || selectedCategory.length() == 0) || ListSequence.fromList(SLinkOperations.getChildren(childNode, LINKS.category$RXsH)).any((it) -> Objects.equals(SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.target$P7Pa), PROPS.name$MnvL), selectedCategory)));
     }
     @Override
     protected void createInnerCells() {
@@ -384,11 +366,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     public boolean accept(SNode childNode) {
       SNode notes = SNodeOperations.cast(SNodeOperations.getParent(childNode), CONCEPTS.Notes$8V);
       final String selectedCategory = SPropertyOperations.getString(notes, PROPS.selectedCategory$e2a6);
-      return (!(SPropertyOperations.getBoolean(notes, PROPS.showActive$mtqX)) || SPropertyOperations.getBoolean(SLinkOperations.getTarget(childNode, LINKS.status$SqjC), PROPS.active$jVBo)) && ((selectedCategory == null || selectedCategory.length() == 0) || ListSequence.fromList(SLinkOperations.getChildren(childNode, LINKS.category$RXsH)).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.target$P7Pa), PROPS.name$MnvL), selectedCategory);
-        }
-      }));
+      return (!(SPropertyOperations.getBoolean(notes, PROPS.showActive$mtqX)) || SPropertyOperations.getBoolean(SLinkOperations.getTarget(childNode, LINKS.status$SqjC), PROPS.active$jVBo)) && ((selectedCategory == null || selectedCategory.length() == 0) || ListSequence.fromList(SLinkOperations.getChildren(childNode, LINKS.category$RXsH)).any((it) -> Objects.equals(SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.target$P7Pa), PROPS.name$MnvL), selectedCategory)));
     }
     public String getModuleReference() {
       return "4b0f115a-8868-4d72-8d61-97071eaaa5f1(jetbrains.mps.samples.notesOrganizer)";

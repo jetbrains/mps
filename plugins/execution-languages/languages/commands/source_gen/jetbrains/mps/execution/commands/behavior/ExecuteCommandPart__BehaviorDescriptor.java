@@ -15,10 +15,8 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.ArrayList;
 import jetbrains.mps.execution.common.behavior.IGeneratedToClass__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -50,20 +48,12 @@ public final class ExecuteCommandPart__BehaviorDescriptor extends BaseBHDescript
 
   /*package*/ static List<SNode> getParameters_id5keEkmeCqHW(@NotNull SNode __thisNode__) {
     if ((boolean) CommandDeclaration__BehaviorDescriptor.isDebuggable_idJzCdmU6yOQ.invoke(ExecuteCommandPart__BehaviorDescriptor.getCommandDeclaration_id5keEkmeCqIg.invoke(__thisNode__))) {
-      return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameterDeclaration$lr1c)).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SNodeOperations.cast(it, CONCEPTS.CommandParameterDeclaration$BK);
-        }
-      }).union(Sequence.fromIterable(Sequence.<SNode>singleton(SLinkOperations.getTarget(ExecuteCommandPart__BehaviorDescriptor.getCommandDeclaration_id5keEkmeCqIg.invoke(__thisNode__), LINKS.debuggerParameter$d8Sj)))).toListSequence();
+      return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameterDeclaration$lr1c)).select((it) -> SNodeOperations.cast(it, CONCEPTS.CommandParameterDeclaration$BK)).union(Sequence.fromIterable(Sequence.<SNode>singleton(SLinkOperations.getTarget(ExecuteCommandPart__BehaviorDescriptor.getCommandDeclaration_id5keEkmeCqIg.invoke(__thisNode__), LINKS.debuggerParameter$d8Sj)))).toList();
     }
     return SLinkOperations.getChildren(__thisNode__, LINKS.parameterDeclaration$lr1c);
   }
   /*package*/ static List<SNode> getRequiredParameters_id5keEkmeCqJD(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(ExecuteCommandPart__BehaviorDescriptor.getParameters_id5keEkmeCqHW.invoke(__thisNode__)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) CommandParameterDeclaration__BehaviorDescriptor.isRequired_id7c4O8d8q0tV.invoke(it);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(ExecuteCommandPart__BehaviorDescriptor.getParameters_id5keEkmeCqHW.invoke(__thisNode__)).where((it) -> (boolean) CommandParameterDeclaration__BehaviorDescriptor.isRequired_id7c4O8d8q0tV.invoke(it)).toList();
   }
   /*package*/ static SNode getCommandDeclaration_id5keEkmeCqIg(@NotNull SNode __thisNode__) {
     return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.CommandDeclaration$1L, false, false);

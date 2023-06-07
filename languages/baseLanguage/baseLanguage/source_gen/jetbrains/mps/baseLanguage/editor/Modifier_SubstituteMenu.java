@@ -21,7 +21,6 @@ import java.util.stream.Collectors;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
@@ -80,11 +79,7 @@ public class Modifier_SubstituteMenu extends SubstituteMenuBase {
         // link is null when it is called from the transformation menu so constraints are not checked,
         // and we check them again
         List<SNode> modifiers = SLinkOperations.getChildren(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.IHasModifiers$et), LINKS.modifiers$F5MM);
-        return ListSequence.fromList(modifiers).all(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return !(Objects.equals(SNodeOperations.getConcept(it), concept));
-          }
-        });
+        return ListSequence.fromList(modifiers).all((it) -> !(Objects.equals(SNodeOperations.getConcept(it), concept)));
       }
 
       @Override
@@ -119,7 +114,7 @@ public class Modifier_SubstituteMenu extends SubstituteMenuBase {
         super(new EditorMenuDescriptorBase("simple actions for the list of concepts", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "4125212090849265460")));
       }
       protected Collection getConcepts(SubstituteMenuContext _context) {
-        return Sequence.fromIterable(Sequence.<SConcept>singleton(SNodeOperations.getConcept(_context.getCurrentTargetNode()))).toListSequence();
+        return Sequence.fromIterable(Sequence.<SConcept>singleton(SNodeOperations.getConcept(_context.getCurrentTargetNode()))).toList();
       }
 
       @Override

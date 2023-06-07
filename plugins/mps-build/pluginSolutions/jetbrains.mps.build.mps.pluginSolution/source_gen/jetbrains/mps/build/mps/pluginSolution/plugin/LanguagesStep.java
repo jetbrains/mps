@@ -55,7 +55,7 @@ public class LanguagesStep extends AbstractStep {
   public CheckBoxTree createCheckTree() {
     ModulesListData data = new ModulesListData(this.myProject.getProjectModules());
     List<ModuleData> children = data.getModules();
-    ListSequence.fromList(children).sort((ModuleData data1, ModuleData data2) -> {
+    ListSequence.fromList(children).sort((data1, data2) -> {
       SModule module1 = data1.getModule();
       SModule module2 = data2.getModule();
       if (module1.getClass().getName().equals(module2.getClass().getName())) {
@@ -106,7 +106,7 @@ public class LanguagesStep extends AbstractStep {
       this.fillWithParents(item, modules);
     }
     List<NodeData> toSort = ListSequence.fromListWithValues(new LinkedList<NodeData>(), modules);
-    ListSequence.fromList(toSort).sort((NodeData a, NodeData b) -> {
+    ListSequence.fromList(toSort).sort((a, b) -> {
       if ((a instanceof NamespaceData) && (b instanceof ModuleData)) {
         return -1;
       } else if ((a instanceof ModuleData) && (b instanceof NamespaceData)) {

@@ -23,25 +23,13 @@ public class TryFinallyStatement_DataFlow extends DataFlowBuilder {
         continue;
       }
       for (final SNode catchClause : DataFlowTryCatchUtil.getPossibleCatches((SNode) InstructionUtil.getSource(instruction), SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$l$PD))) {
-        _context.getBuilder().emitMayBeUnreachable(new Runnable() {
-          public void run() {
-            _context.getBuilder().emitIfJump(_context.getBuilder().before(catchClause), _context.getBuilder().insertAfter(instruction), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/7597254041024568860");
-          }
-        });
+        _context.getBuilder().emitMayBeUnreachable(() -> _context.getBuilder().emitIfJump(_context.getBuilder().before(catchClause), _context.getBuilder().insertAfter(instruction), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/7597254041024568860"));
       }
     }
-    _context.getBuilder().emitMayBeUnreachable(new Runnable() {
-      public void run() {
-        _context.getBuilder().emitJump(_context.getBuilder().label(_context.getNode(), "afterCatches"), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1207141036944");
-      }
-    });
+    _context.getBuilder().emitMayBeUnreachable(() -> _context.getBuilder().emitJump(_context.getBuilder().label(_context.getNode(), "afterCatches"), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1207141036944"));
     for (SNode c : SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$l$PD)) {
       _context.getBuilder().build((SNode) c);
-      _context.getBuilder().emitMayBeUnreachable(new Runnable() {
-        public void run() {
-          _context.getBuilder().emitJump(_context.getBuilder().label(_context.getNode(), "afterCatches"), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1207141053010");
-        }
-      });
+      _context.getBuilder().emitMayBeUnreachable(() -> _context.getBuilder().emitJump(_context.getBuilder().label(_context.getNode(), "afterCatches"), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1207141053010"));
     }
     _context.getBuilder().emitLabel("afterCatches");
     _context.getBuilder().emitFinally("r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1206957590308");

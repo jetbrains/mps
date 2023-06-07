@@ -43,18 +43,16 @@ public class typeof_SmartClosureParameterDeclaration_InferenceRule extends Abstr
       }
       {
         final SNode sequenceTypeConcrete = typeCheckingContext.getRepresentative(seqType_typevar_2684739085678948053);
-        typeCheckingContext.whenConcrete(sequenceTypeConcrete, new Runnable() {
-          public void run() {
-            {
-              SNode _nodeToCheck_1029348928467 = scpd;
-              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7668447476859120558", 0, null);
-              typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_5rdbtv_a0a0c0a0a0a1a0b0d0a0b(typeCheckingContext.getRepresentative(paramType_typevar_1230315924141)), (SNode) typeCheckingContext.getRepresentative(seqType_typevar_2684739085678948053), false, true, _info_12389875345);
-            }
-            {
-              SNode _nodeToCheck_1029348928467 = scpd;
-              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7668447476859120577", 0, null);
-              typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7668447476859120581", true), (SNode) typeCheckingContext.getRepresentative(paramType_typevar_1230315924141), _info_12389875345);
-            }
+        typeCheckingContext.whenConcrete(sequenceTypeConcrete, () -> {
+          {
+            SNode _nodeToCheck_1029348928467 = scpd;
+            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7668447476859120558", 0, null);
+            typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_5rdbtv_a0a0c0a0b0a1a3a0a1(typeCheckingContext.getRepresentative(paramType_typevar_1230315924141)), (SNode) typeCheckingContext.getRepresentative(seqType_typevar_2684739085678948053), false, true, _info_12389875345);
+          }
+          {
+            SNode _nodeToCheck_1029348928467 = scpd;
+            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7668447476859120577", 0, null);
+            typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7668447476859120581", true), (SNode) typeCheckingContext.getRepresentative(paramType_typevar_1230315924141), _info_12389875345);
           }
         }, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "2684739085678948093", false, false);
       }
@@ -152,7 +150,7 @@ public class typeof_SmartClosureParameterDeclaration_InferenceRule extends Abstr
   public boolean overrides() {
     return true;
   }
-  private static SNode _quotation_createNode_5rdbtv_a0a0c0a0a0a1a0b0d0a0b(Object parameter_1) {
+  private static SNode _quotation_createNode_5rdbtv_a0a0c0a0b0a1a3a0a1(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10c260e9444L, "SequenceType"));

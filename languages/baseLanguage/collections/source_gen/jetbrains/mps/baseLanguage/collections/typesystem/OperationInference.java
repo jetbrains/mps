@@ -21,17 +21,15 @@ public class OperationInference {
   public static void inferParamType(final TypeCheckingContext typeCheckingContext, SNode operation, final SNode elemType) {
     {
       final SNode operandType = typeCheckingContext.typeOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(operation), "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "2321665441774762101", true);
-      typeCheckingContext.whenConcrete(operandType, new Runnable() {
-        public void run() {
-          SNode sequenceType = SNodeOperations.as(typeCheckingContext.getExpandedNode(operandType), CONCEPTS.SequenceType$_s);
-          if ((sequenceType == null)) {
-            sequenceType = TypecheckingFacade.getFromContext().coerceType(typeCheckingContext.getExpandedNode(operandType), CONCEPTS.SequenceType$_s);
-          }
-          {
-            SNode _nodeToCheck_1029348928467 = null;
-            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "2321665441774790217", 0, null);
-            typeCheckingContext.createEquation((SNode) elemType, (SNode) SLinkOperations.getTarget(sequenceType, LINKS.elementType$KpjL), _info_12389875345);
-          }
+      typeCheckingContext.whenConcrete(operandType, () -> {
+        SNode sequenceType = SNodeOperations.as(typeCheckingContext.getExpandedNode(operandType), CONCEPTS.SequenceType$_s);
+        if ((sequenceType == null)) {
+          sequenceType = TypecheckingFacade.getFromContext().coerceType(typeCheckingContext.getExpandedNode(operandType), CONCEPTS.SequenceType$_s);
+        }
+        {
+          SNode _nodeToCheck_1029348928467 = null;
+          EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "2321665441774790217", 0, null);
+          typeCheckingContext.createEquation((SNode) elemType, (SNode) SLinkOperations.getTarget(sequenceType, LINKS.elementType$KpjL), _info_12389875345);
         }
       }, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "2321665441774761274", false, false);
     }
@@ -76,13 +74,11 @@ public class OperationInference {
     // Expected arg is the element type
     {
       final SNode concreteElementType = elemType;
-      typeCheckingContext.whenConcrete(concreteElementType, new Runnable() {
-        public void run() {
-          {
-            SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.argument$ZmGN);
-            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "2321665441776750735", 0, null);
-            typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "2321665441776750737", true), (SNode) ClassifierTypeUtil.unbounded(SNodeOperations.as(typeCheckingContext.getExpandedNode(concreteElementType), CONCEPTS.Type$bu)), false, true, _info_12389875345);
-          }
+      typeCheckingContext.whenConcrete(concreteElementType, () -> {
+        {
+          SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.argument$ZmGN);
+          EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "2321665441776750735", 0, null);
+          typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "2321665441776750737", true), (SNode) ClassifierTypeUtil.unbounded(SNodeOperations.as(typeCheckingContext.getExpandedNode(concreteElementType), CONCEPTS.Type$bu)), false, true, _info_12389875345);
         }
       }, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "2321665441775387610", false, false);
     }

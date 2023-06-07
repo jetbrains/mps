@@ -23,9 +23,7 @@ import jetbrains.mps.openapi.editor.selection.SingularSelection;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.JViewport;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 
 @GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/4652592318748338723", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
 public class DiffEditorsGroup {
@@ -149,7 +147,7 @@ public class DiffEditorsGroup {
         }
         int index = SNodeOperations.getIndexInChildrenAndChildAttributesCollection(visibleNode);
         if (index != 0) {
-          visibleNode = ListSequence.fromList(Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(parent, link)).toListSequence()).getElement(index - 1);
+          visibleNode = ListSequence.fromList(Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(parent, link)).toList()).getElement(index - 1);
         } else {
           visibleNode = parent;
         }
@@ -191,11 +189,7 @@ public class DiffEditorsGroup {
       }
       myViewportSetInProgress = true;
       final DiffEditor myDiffEditor = (DiffEditor) (((JViewport) event.getSource()).getClientProperty(DIFF_EDITOR_PROPERTY_KEY));
-      ListSequence.fromList(myDiffEditors).visitAll(new IVisitor<DiffEditor>() {
-        public void visit(DiffEditor other) {
-          synchronizeViewWithOther(myDiffEditor, other, myIsInspector);
-        }
-      });
+      ListSequence.fromList(myDiffEditors).visitAll((other) -> synchronizeViewWithOther(myDiffEditor, other, myIsInspector));
       myViewportSetInProgress = false;
     }
   }
@@ -206,11 +200,7 @@ public class DiffEditorsGroup {
   }
 
   private DiffEditor getDiffEditor(final jetbrains.mps.openapi.editor.EditorComponent component) {
-    return ListSequence.fromList(myDiffEditors).findFirst(new IWhereFilter<DiffEditor>() {
-      public boolean accept(DiffEditor it) {
-        return it.getMainEditor() == component || it.getInspector() == component;
-      }
-    });
+    return ListSequence.fromList(myDiffEditors).findFirst((it) -> it.getMainEditor() == component || it.getInspector() == component);
   }
 
   public List<DiffEditor> getEditors() {

@@ -22,8 +22,6 @@ import java.util.List;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.SLanguageHierarchy;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.util.NameUtil;
@@ -56,11 +54,7 @@ public class LanguageMigrations_ActionGroup extends GeneratedActionGroup {
     final ArrayList<DefaultActionGroup> allGroupsUnsorted = new ArrayList<>();
     final LanguageRegistry languageRegistry = mpsProject.getComponent(LanguageRegistry.class);
     // calculate extended once, not per-module 
-    List<SLanguage> allUsedLanguages = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(mpsProject)).translate(new ITranslator2<SModule, SLanguage>() {
-      public Iterable<SLanguage> translate(SModule this0) {
-        return this0.getUsedLanguages();
-      }
-    }).distinct().toListSequence();
+    List<SLanguage> allUsedLanguages = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(mpsProject)).translate((this0) -> this0.getUsedLanguages()).distinct().toList();
     new SLanguageHierarchy(languageRegistry, allUsedLanguages).forEachExtended(new SLanguageHierarchy.HierarchyVisitor() {
       @Override
       public void accept(LanguageRuntime lr) {

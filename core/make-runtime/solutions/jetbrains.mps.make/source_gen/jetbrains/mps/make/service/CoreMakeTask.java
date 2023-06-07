@@ -23,12 +23,10 @@ import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.make.runtime.script.CompositeResult;
 import jetbrains.mps.internal.make.runtime.script.Script;
 import jetbrains.mps.internal.make.runtime.script.TimeStatisticResource;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -86,18 +84,10 @@ public class CoreMakeTask {
         }
 
         if (RuntimeFlags.isInternalMode()) {
-          myMessageHandler.handle(new Message(MessageKind.INFORMATION, "Modules cluster " + (idx.value + 1) + "/" + clsize + " [" + IterableUtils.join(Sequence.fromIterable(cl).select(new ISelector<IResource, String>() {
-            public String select(IResource r) {
-              return (r).describe();
-            }
-          }), ", ") + "]"));
+          myMessageHandler.handle(new Message(MessageKind.INFORMATION, "Modules cluster " + (idx.value + 1) + "/" + clsize + " [" + IterableUtils.join(Sequence.fromIterable(cl).select((r) -> (r).describe()), ", ") + "]"));
         }
 
-        monitor.step((idx.value + 1) + "/" + clsize + " " + IterableUtils.join(Sequence.fromIterable(cl).select(new ISelector<IResource, String>() {
-          public String select(IResource r) {
-            return (r).describe();
-          }
-        }), ","));
+        monitor.step((idx.value + 1) + "/" + clsize + " " + IterableUtils.join(Sequence.fromIterable(cl).select((r) -> (r).describe()), ","));
         myResult = scr.execute(CoreMakeTask.this.myController, cl, monitor.subTask(1));
         if (CoreMakeTask.this.myResult instanceof CompositeResult) {
           IResource timeStatResource = Sequence.fromIterable(((CompositeResult) CoreMakeTask.this.myResult).getResult(Script.TIME_STATISTIC_RESULT_NAME).output()).first();
@@ -113,20 +103,12 @@ public class CoreMakeTask {
         return true;
       });
     } finally {
-      long overallTime = Sequence.fromIterable(MapSequence.fromMap(timeStatistic).values()).foldLeft(0L, new ILeftCombinator<Long, Long>() {
-        public Long combine(Long s, Long it) {
-          return s + it;
-        }
-      });
+      long overallTime = Sequence.fromIterable(MapSequence.fromMap(timeStatistic).values()).foldLeft(0L, (Long s, Long it) -> s + it);
       List<ITarget.Name> otherTargets = ListSequence.fromList(new ArrayList<ITarget.Name>());
 
       long currentTime = 0;
       // XXX if we don't need this stats for our users, may condition output with isInternalMode()
-      for (IMapping<ITarget.Name, Long> stat : MapSequence.fromMap(timeStatistic).sort(new ISelector<IMapping<ITarget.Name, Long>, Long>() {
-        public Long select(IMapping<ITarget.Name, Long> it) {
-          return it.value();
-        }
-      }, false)) {
+      for (IMapping<ITarget.Name, Long> stat : MapSequence.fromMap(timeStatistic).sort((it) -> it.value(), false)) {
         if (currentTime < overallTime * 0.95) {
           myMessageHandler.handle(new Message(MessageKind.INFORMATION, CoreMakeTask.class, String.format("\"%s\" target execution time: %d ms", stat.key().name(), stat.value())));
           currentTime += stat.value();
@@ -134,11 +116,7 @@ public class CoreMakeTask {
           ListSequence.fromList(otherTargets).addElement(stat.key());
         }
       }
-      myMessageHandler.handle(new Message(MessageKind.INFORMATION, CoreMakeTask.class, String.format("Other targets execution time: %d ms; %s", (overallTime - currentTime), IterableUtils.join(ListSequence.fromList(otherTargets).select(new ISelector<ITarget.Name, String>() {
-        public String select(ITarget.Name it) {
-          return it.name() + ": " + MapSequence.fromMap(timeStatistic).get(it) + " ms";
-        }
-      }), ", "))));
+      myMessageHandler.handle(new Message(MessageKind.INFORMATION, CoreMakeTask.class, String.format("Other targets execution time: %d ms; %s", (overallTime - currentTime), IterableUtils.join(ListSequence.fromList(otherTargets).select((it) -> it.name() + ": " + MapSequence.fromMap(timeStatistic).get(it) + " ms"), ", "))));
       monitor.done();
     }
   }

@@ -22,7 +22,6 @@ import java.util.List;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.structure.behavior.LinkDeclaration__BehaviorDescriptor;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -53,11 +52,7 @@ public class SLinkAccess_Constraints extends BaseConstraintsDescriptor {
             }
             SNode dotOperandConcept = SNodeOperation__BehaviorDescriptor.getLeftNodeConcept_idhEwJdFJ.invoke(SNodeOperations.asSConcept(CONCEPTS.SNodeOperation$pA), enclosingDot);
             List<SNode> links = AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(dotOperandConcept);
-            return ListScope.forResolvableElements(ListSequence.fromList(links).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return (boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(it);
-              }
-            }));
+            return ListScope.forResolvableElements(ListSequence.fromList(links).where((it) -> (boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(it)));
           }
         };
       }

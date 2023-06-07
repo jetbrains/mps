@@ -24,7 +24,6 @@ import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.scope.EmptyScope;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.scopes.MethodsScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.scopes.Members;
@@ -82,16 +81,8 @@ public class QualifiedSuperMethodCall_Constraints extends BaseConstraintsDescrip
               return new EmptyScope();
             }
 
-            SNode extendedClassifierType = ListSequence.fromList(Classifier__BehaviorDescriptor.getExtendedClassifierTypes_id1UeCwxlWKny.invoke(superClassifier)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK);
-              }
-            }).first();
-            MethodsScope scope = new MethodsScope(extendedClassifierType, Sequence.fromIterable(Members.visibleInstanceMethods(extendedClassifierType, _context.getContextNode())).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return !((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(it));
-              }
-            }));
+            SNode extendedClassifierType = ListSequence.fromList(Classifier__BehaviorDescriptor.getExtendedClassifierTypes_id1UeCwxlWKny.invoke(superClassifier)).where((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK)).first();
+            MethodsScope scope = new MethodsScope(extendedClassifierType, Sequence.fromIterable(Members.visibleInstanceMethods(extendedClassifierType, _context.getContextNode())).where((it) -> !((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(it))));
             return scope;
           }
         };

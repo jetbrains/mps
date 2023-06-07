@@ -12,7 +12,6 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
 import org.jetbrains.annotations.Nullable;
@@ -51,19 +50,11 @@ public class ReloadSession {
 
   /*package*/ boolean wantsToShowProgress() {
     // if at least one participant wants to show, we say that all reload session wants
-    return Sequence.fromIterable(getParticipants()).any(new IWhereFilter<ReloadParticipant>() {
-      public boolean accept(ReloadParticipant it) {
-        return it.wantsToShowProgress();
-      }
-    });
+    return Sequence.fromIterable(getParticipants()).any((it) -> it.wantsToShowProgress());
   }
 
   /*package*/ void updateStatus() {
-    myEmpty = Sequence.fromIterable(getParticipants()).all(new IWhereFilter<ReloadParticipant>() {
-      public boolean accept(ReloadParticipant it) {
-        return it.isEmpty();
-      }
-    });
+    myEmpty = Sequence.fromIterable(getParticipants()).all((it) -> it.isEmpty());
   }
 
   /*package*/ void doReload(ProgressMonitor monitor) {

@@ -18,16 +18,13 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.ide.findusages.view.UsagesViewTool;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import java.util.Collections;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.NodeRepresentatorBase;
@@ -47,15 +44,7 @@ public final class ShowBrokenReferences__BehaviorDescriptor extends BaseBHDescri
   }
 
   /*package*/ static void doExecute_id2SpVAIqougW(@NotNull SNode __thisNode__, final ConsoleContext context, ConsoleStream console) {
-    final List<SReference> brokenReferences = Sequence.fromIterable(INodeSetReference__BehaviorDescriptor.getNodes_id4x3U0fq41hN.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.target$s$Bi), context)).translate(new ITranslator2<SNode, SReference>() {
-      public Iterable<SReference> translate(SNode it) {
-        return SNodeOperations.getReferences(it);
-      }
-    }).where(new IWhereFilter<SReference>() {
-      public boolean accept(SReference it) {
-        return jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(it) == null;
-      }
-    }).toListSequence();
+    final List<SReference> brokenReferences = Sequence.fromIterable(INodeSetReference__BehaviorDescriptor.getNodes_id4x3U0fq41hN.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.target$s$Bi), context)).translate((it) -> SNodeOperations.getReferences(it)).where((it) -> jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(it) == null).toList();
     if (ListSequence.fromList(brokenReferences).count() == 0) {
       console.addText("no broken references");
     } else {
@@ -65,11 +54,7 @@ public final class ShowBrokenReferences__BehaviorDescriptor extends BaseBHDescri
         assert tool != null;
         project.getRepository().getModelAccess().runReadAction(() -> {
           final List<SearchResult> res = ListSequence.fromList(new ArrayList<SearchResult>());
-          ListSequence.fromList(brokenReferences).visitAll(new IVisitor<SReference>() {
-            public void visit(SReference it) {
-              ListSequence.fromList(res).addElement(new SearchResult<SReference>(it, it.getSourceNode()));
-            }
-          });
+          ListSequence.fromList(brokenReferences).visitAll((it) -> ListSequence.fromList(res).addElement(new SearchResult<SReference>(it, it.getSourceNode())));
           SearchResults sr = new SearchResults(Collections.emptyList(), res);
           tool.show(sr, "No results to show", new NodeRepresentatorBase<SReference>() {
             @Override

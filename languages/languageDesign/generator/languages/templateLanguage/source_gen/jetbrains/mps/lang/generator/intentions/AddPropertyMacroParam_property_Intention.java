@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import jetbrains.mps.lang.generator.helper.EditingUtil;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -72,20 +71,12 @@ public final class AddPropertyMacroParam_property_Intention extends AbstractInte
     }
 
     List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
-    final SNode propertyDeclaration = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(SNodeOperations.asNode(SNodeOperations.getConcept(node)))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), p);
-      }
-    }).first();
+    final SNode propertyDeclaration = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(SNodeOperations.asNode(SNodeOperations.getConcept(node)))).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), p)).first();
     if (propertyDeclaration == null) {
       return result;
     }
 
-    return ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(sourceNodeConcept)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.dataType$5j5Y) == SLinkOperations.getTarget(propertyDeclaration, LINKS.dataType$5j5Y);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(sourceNodeConcept)).where((it) -> SLinkOperations.getTarget(it, LINKS.dataType$5j5Y) == SLinkOperations.getTarget(propertyDeclaration, LINKS.dataType$5j5Y)).toList();
   }
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable implements ParameterizedIntentionExecutable {
     private SNode myParameter;

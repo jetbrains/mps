@@ -7,7 +7,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.scopes.VisibilityUtil;
@@ -27,11 +26,7 @@ public class JavaClassProtectedConstructorScope extends VisibleClassConstructors
 
   @Override
   public Iterable<SNode> getAvailableElements(@Nullable String prefix) {
-    return Sequence.fromIterable(classifiers.getAvailableElements(prefix)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode classifier) {
-        return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getChildren(classifier), CONCEPTS.ConstructorDeclaration$yG)).where(JavaClassProtectedConstructorScope.this::isVisible);
-      }
-    });
+    return Sequence.fromIterable(classifiers.getAvailableElements(prefix)).translate((classifier) -> Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getChildren(classifier), CONCEPTS.ConstructorDeclaration$yG)).where(JavaClassProtectedConstructorScope.this::isVisible));
   }
 
   protected boolean isVisible(SNode node) {

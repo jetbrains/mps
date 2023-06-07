@@ -10,7 +10,6 @@ import java.util.Set;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.build.workflow.util.XmlSignature;
 import java.util.List;
@@ -23,7 +22,6 @@ import java.util.Collections;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import java.util.LinkedHashSet;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.make.dependencies.graph.IVertex;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -42,16 +40,14 @@ public class CycleHelper {
   }
   public void optimizeDependencies(SNode m) {
     final Set<String> seenDependencies = new HashSet<String>();
-    ListSequence.fromList(SLinkOperations.getChildren(m, LINKS.dependencies$_S_Y)).removeWhere(new IWhereFilter<SNode>() {
-      public boolean accept(SNode dep) {
-        if (!(SNodeOperations.isInstanceOf(dep, CONCEPTS.BwfJavaClassPath$at))) {
-          return false;
-        }
-        SNode cp = SLinkOperations.getTarget(SNodeOperations.cast(dep, CONCEPTS.BwfJavaClassPath$at), LINKS.classpath$Bst8);
-        XmlSignature s = new XmlSignature().add(cp);
-        String id = (s.hasErrors() ? "dep." + cp.getNodeId().toString() : s.getResult());
-        return !(seenDependencies.add(id));
+    ListSequence.fromList(SLinkOperations.getChildren(m, LINKS.dependencies$_S_Y)).removeWhere((dep) -> {
+      if (!(SNodeOperations.isInstanceOf(dep, CONCEPTS.BwfJavaClassPath$at))) {
+        return false;
       }
+      SNode cp = SLinkOperations.getTarget(SNodeOperations.cast(dep, CONCEPTS.BwfJavaClassPath$at), LINKS.classpath$Bst8);
+      XmlSignature s = new XmlSignature().add(cp);
+      String id = (s.hasErrors() ? "dep." + cp.getNodeId().toString() : s.getResult());
+      return !(seenDependencies.add(id));
     });
   }
   public void processCycles() {
@@ -93,16 +89,8 @@ public class CycleHelper {
       cyclesToName.add(cycleX);
       SNodeOperations.insertPrevSiblingChild(first, cycleX);
       SPropertyOperations.assign(cycleX, PROPS.noWarnings$LEpn, true);
-      SPropertyOperations.assign(cycleX, PROPS.fork$H$9A, Sequence.fromIterable(((Iterable<SNode>) cycleModules)).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SPropertyOperations.getBoolean(it, PROPS.fork$H$9A);
-        }
-      }));
-      SPropertyOperations.assign(cycleX, PROPS.conditionalCompile$z2HS, Sequence.fromIterable(((Iterable<SNode>) cycleModules)).all(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SPropertyOperations.getBoolean(it, PROPS.conditionalCompile$z2HS);
-        }
-      }));
+      SPropertyOperations.assign(cycleX, PROPS.fork$H$9A, Sequence.fromIterable(((Iterable<SNode>) cycleModules)).any((it) -> SPropertyOperations.getBoolean(it, PROPS.fork$H$9A)));
+      SPropertyOperations.assign(cycleX, PROPS.conditionalCompile$z2HS, Sequence.fromIterable(((Iterable<SNode>) cycleModules)).all((it) -> SPropertyOperations.getBoolean(it, PROPS.conditionalCompile$z2HS)));
 
       // build cycle sources & dependencies; trying to avoid duplication (which is not critical)
       Set<String> seenSources = new HashSet<String>();
@@ -117,11 +105,7 @@ public class CycleHelper {
       for (Module m : cycle) {
         SNode module = m.getModule();
         heapSize = Math.max(heapSize, SPropertyOperations.getInteger(module, PROPS.heapSize$LySR));
-        ListSequence.fromList(SLinkOperations.getChildren(module, LINKS.dependencies$_S_Y)).removeWhere(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(it, CONCEPTS.BwfJavaModuleReference$v1) && cycleModules.contains(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.BwfJavaModuleReference$v1), LINKS.target$_Nc8));
-          }
-        });
+        ListSequence.fromList(SLinkOperations.getChildren(module, LINKS.dependencies$_S_Y)).removeWhere((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BwfJavaModuleReference$v1) && cycleModules.contains(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.BwfJavaModuleReference$v1), LINKS.target$_Nc8)));
         for (SNode dep : SLinkOperations.getChildren(module, LINKS.dependencies$_S_Y)) {
           if (SNodeOperations.isInstanceOf(dep, CONCEPTS.BwfJavaModuleReference$v1)) {
             seenModules.add(SLinkOperations.getTarget(SNodeOperations.cast(dep, CONCEPTS.BwfJavaModuleReference$v1), LINKS.target$_Nc8));
@@ -140,11 +124,7 @@ public class CycleHelper {
 
         }
 
-        for (SNode task : ListSequence.fromList(SLinkOperations.getChildren(module, LINKS.taskDeps$_zcK)).select(new ISelector<SNode, SNode>() {
-          public SNode select(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.target$y_c8);
-          }
-        })) {
+        for (SNode task : ListSequence.fromList(SLinkOperations.getChildren(module, LINKS.taskDeps$_zcK)).select((it) -> SLinkOperations.getTarget(it, LINKS.target$y_c8))) {
           if ((task != null)) {
             taskDependency.add(task);
           }
@@ -164,11 +144,7 @@ public class CycleHelper {
       }
       SPropertyOperations.assign(cycleX, PROPS.heapSize$LySR, heapSize);
       SLinkOperations.setNewChild(cycleX, LINKS.sources$L7Yt, null);
-      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(cycleX, LINKS.sources$L7Yt), LINKS.elements$5C58)).addSequence(Sequence.fromIterable(((Iterable<SNode>) sources)).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return CopyUtil.copy(it);
-        }
-      }));
+      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(cycleX, LINKS.sources$L7Yt), LINKS.elements$5C58)).addSequence(Sequence.fromIterable(((Iterable<SNode>) sources)).select((it) -> CopyUtil.copy(it)));
       for (SNode dep : deps) {
         SNode cp = SModelOperations.createNewNode(model, null, CONCEPTS.BwfJavaClassPath$at);
         SLinkOperations.setTarget(cp, LINKS.classpath$Bst8, CopyUtil.copy(dep));

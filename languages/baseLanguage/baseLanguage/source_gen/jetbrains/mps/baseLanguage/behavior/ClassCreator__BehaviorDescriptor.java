@@ -27,10 +27,8 @@ import jetbrains.mps.smodel.LanguageID;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopeUtils;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.scopes.DefaultConstructorUtils;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -101,15 +99,7 @@ public final class ClassCreator__BehaviorDescriptor extends BaseBHDescriptor {
     return ((boolean) IMethodCall__BehaviorDescriptor.isInTypeInferenceContext_id4cxv$9$kw67.invoke0(__thisNode__, CONCEPTS.IMethodCall$M9));
   }
   /*package*/ static Iterable<SNode> retrieveInstantiationPoints_id5qAZxlfY81X(@NotNull SAbstractConcept __thisConcept__, SNode type, SNode contextNode) {
-    return Sequence.fromIterable(ClassifierScopeUtils.getVisibleNestedClassConceptsIncludingInherited(type, contextNode)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it)) && !(SPropertyOperations.getBoolean(it, PROPS.abstractClass$Ta1X)) && !(DefaultConstructorUtils.hasDefaultConstructor(it));
-      }
-    }).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return (Iterable<SNode>) ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.cast(it, CONCEPTS.ClassConcept$bK));
-      }
-    });
+    return Sequence.fromIterable(ClassifierScopeUtils.getVisibleNestedClassConceptsIncludingInherited(type, contextNode)).where((it) -> !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it)) && !(SPropertyOperations.getBoolean(it, PROPS.abstractClass$Ta1X)) && !(DefaultConstructorUtils.hasDefaultConstructor(it))).translate((it) -> (Iterable<SNode>) ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.cast(it, CONCEPTS.ClassConcept$bK)));
   }
   /*package*/ static SNode getTargetClassifier_id1k0fX3j6Qov(@NotNull SNode __thisNode__) {
     return SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$pyYw), CONCEPTS.ClassConcept$bK, false, false);

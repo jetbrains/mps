@@ -7,7 +7,7 @@
   <root nodeRef="r:63ab318d-3516-42a0-885d-d53a40aa2360(jetbrains.mps.baseLanguage.unitTest.runtime.plugin)/5113316557572516679">
     <file name="EnvironmentAccessoryHandler.java">
       <node id="1069472376966580678" at="12,0,13,0" concept="1" trace="environmentStack" />
-      <node id="1069472376966594778" at="16,84,17,31" concept="0" />
+      <node id="1069472376966594778" at="16,72,17,31" concept="0" />
       <node id="5113316557572519127" at="17,31,18,50" concept="0" />
       <node id="5113316557572534527" at="18,50,19,0" concept="3" />
       <node id="1069472376966619866" at="20,14,21,34" concept="0" />
@@ -19,7 +19,7 @@
       <node id="5113316557572517049" at="14,0,25,0" concept="2" trace="sessionOpened#(Ljetbrains/mps/baseLanguage/unitTest/platform/TestSession;)V" />
       <scope id="1069472376966618041" at="20,14,22,0" />
       <scope id="5113316557572517063" at="27,54,29,70" />
-      <scope id="5113316557572530431" at="16,84,19,0" />
+      <scope id="5113316557572530431" at="16,72,19,0" />
       <scope id="5113316557572517057" at="26,0,31,0">
         <var name="testSession" id="5113316557572517058" />
       </scope>

@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
@@ -57,15 +56,7 @@ public final class BTestCase__BehaviorDescriptor extends BaseBHDescriptor {
       List<SNode> superMethods = ITestCase__BehaviorDescriptor.getTestSet_idhGB2z8L.invoke(SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.superclass$Mp9$), LINKS.classifier$cxMr), CONCEPTS.ITestCase$Fp));
       ListSequence.fromList(methods).addSequence(ListSequence.fromList(superMethods));
     }
-    ListSequence.fromList(methods).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.testMethodList$EShx), LINKS.testMethod$eMP1)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode method) {
-        return (ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.annotation$K49I)).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode annotation) {
-            return SLinkOperations.hasPointer(annotation, LINKS.annotation$12Ek, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~Ignore"));
-          }
-        }) == null);
-      }
-    }));
+    ListSequence.fromList(methods).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.testMethodList$EShx), LINKS.testMethod$eMP1)).where((method) -> (ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.annotation$K49I)).findFirst((annotation) -> SLinkOperations.hasPointer(annotation, LINKS.annotation$12Ek, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~Ignore"))) == null)));
     return methods;
   }
   /*package*/ static List<SNode> getTestMethods_id1RfJDyhAUar(@NotNull SNode __thisNode__) {

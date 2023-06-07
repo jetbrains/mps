@@ -19,7 +19,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import jetbrains.mps.logging.Logger;
@@ -101,11 +100,7 @@ public class AddMenuPart_ParameterizedSubstitute extends SubstituteMenuBase {
         tmpVar = tmpVar && _context.getEditorContext() != null;
         tmpVar = tmpVar && _context.getModel() != null;
 
-        return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.ActionTestAbstractChild$7r, _context.getModel())).where(new IWhereFilter<SConcept>() {
-          public boolean accept(SConcept it) {
-            return !(Objects.equals(it, CONCEPTS.ActionTestAbstractChild$7r));
-          }
-        });
+        return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.ActionTestAbstractChild$7r, _context.getModel())).where((it) -> !(Objects.equals(it, CONCEPTS.ActionTestAbstractChild$7r)));
       }
       private class SMP_Action_qp9nsj_a0a extends SingleItemSubstituteMenuPart {
         private final SConcept myParameterObject;

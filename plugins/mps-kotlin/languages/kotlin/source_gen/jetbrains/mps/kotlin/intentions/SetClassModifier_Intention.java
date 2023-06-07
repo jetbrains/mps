@@ -53,7 +53,7 @@ public final class SetClassModifier_Intention extends AbstractIntentionDescripto
     return list;
   }
   private List<SAbstractConcept> parameter(final SNode node, final EditorContext editorContext) {
-    return Sequence.fromIterable(Sequence.fromArray(new SAbstractConcept[]{CONCEPTS.InnerClassModifier$wL, CONCEPTS.AnnotationClassModifier$vN, CONCEPTS.DataClassModifier$wi})).toListSequence();
+    return Sequence.fromIterable(Sequence.fromArray(new SAbstractConcept[]{CONCEPTS.InnerClassModifier$wL, CONCEPTS.AnnotationClassModifier$vN, CONCEPTS.DataClassModifier$wi})).toList();
   }
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable implements ParameterizedIntentionExecutable {
     private SAbstractConcept myParameter;

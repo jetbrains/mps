@@ -15,12 +15,9 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.smodel.adapter.BootstrapAdapterFactory;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -93,13 +90,7 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
         addNodeById("2906110183022354865");
         addNodeById("2906110183022432276");
       });
-      runWithinCommand(() -> {
-        TestUtilities.assertEquals(Sequence.fromArray(new SNode[]{getNodeById("2906110183022219847"), getNodeById("2906110183022219848"), getNodeById("2906110183022311236")}), ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022219844"))).select(new ISelector<SReference, SNode>() {
-          public SNode select(SReference it) {
-            return SLinkOperations.getTargetNode(it);
-          }
-        }));
-      });
+      runWithinCommand(() -> TestUtilities.assertEquals(Sequence.fromArray(new SNode[]{getNodeById("2906110183022219847"), getNodeById("2906110183022219848"), getNodeById("2906110183022311236")}), ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022219844"))).select((it) -> SLinkOperations.getTargetNode(it))));
     }
     public void test_linkDeclaration() throws Exception {
       runWithinCommand(() -> {
@@ -109,13 +100,7 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
         addNodeById("2906110183022354865");
         addNodeById("2906110183022432276");
       });
-      runWithinCommand(() -> {
-        TestUtilities.assertEquals(Sequence.fromArray(new SReferenceLink[]{LINKS.root$cBIX, LINKS.leftChild$f5Cu, LINKS.rightChild$f5Rv}), ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022219844"))).select(new ISelector<SReference, SReferenceLink>() {
-          public SReferenceLink select(SReference it) {
-            return SLinkOperations.getRefLink(it);
-          }
-        }));
-      });
+      runWithinCommand(() -> TestUtilities.assertEquals(Sequence.fromArray(new SReferenceLink[]{LINKS.root$cBIX, LINKS.leftChild$f5Cu, LINKS.rightChild$f5Rv}), ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022219844"))).select((it) -> SLinkOperations.getRefLink(it))));
     }
     public void test_roles() throws Exception {
       runWithinCommand(() -> {
@@ -125,13 +110,7 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
         addNodeById("2906110183022354865");
         addNodeById("2906110183022432276");
       });
-      runWithinCommand(() -> {
-        TestUtilities.assertEquals(Sequence.fromArray(new SReferenceLink[]{LINKS.root$cBIX, LINKS.leftChild$f5Cu, LINKS.rightChild$f5Rv}), ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022219844"))).select(new ISelector<SReference, SReferenceLink>() {
-          public SReferenceLink select(SReference it) {
-            return SLinkOperations.getRefLink(it);
-          }
-        }));
-      });
+      runWithinCommand(() -> TestUtilities.assertEquals(Sequence.fromArray(new SReferenceLink[]{LINKS.root$cBIX, LINKS.leftChild$f5Cu, LINKS.rightChild$f5Rv}), ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022219844"))).select((it) -> SLinkOperations.getRefLink(it))));
     }
     public void test_resolveInfo() throws Exception {
       runWithinCommand(() -> {
@@ -143,20 +122,8 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
       });
       runWithinCommand(() -> {
         // Resolving references by accessing .target node:
-        ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022219844"))).visitAll(new IVisitor<SReference>() {
-          public void visit(SReference it) {
-            SLinkOperations.getTargetNode(it);
-          }
-        });
-        ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022219844"))).select(new ISelector<SReference, String>() {
-          public String select(SReference it) {
-            return SLinkOperations.getResolveInfo(it);
-          }
-        }).visitAll(new IVisitor<String>() {
-          public void visit(String it) {
-            Assert.assertNotNull(it);
-          }
-        });
+        ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022219844"))).visitAll((it) -> SLinkOperations.getTargetNode(it));
+        ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022219844"))).select((it) -> SLinkOperations.getResolveInfo(it)).visitAll((it) -> Assert.assertNotNull(it));
       });
     }
     public void test_unspecifiedReferences() throws Exception {
@@ -173,11 +140,7 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
         String unspecifiedReferenceName = TestBody.this.addUnspecifiedReference(getNodeById("2906110183022432277"), getNodeById("2906110183022219849"));
         Assert.assertEquals(initialSize + 1, ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022432277"))).count());
         // Checking if unspecified reference is working properly
-        Iterable<SReference> unspecifiedReferences = ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022432277"))).where(new IWhereFilter<SReference>() {
-          public boolean accept(SReference it) {
-            return (SLinkOperations.findLinkDeclaration(it) == null);
-          }
-        });
+        Iterable<SReference> unspecifiedReferences = ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022432277"))).where((it) -> (SLinkOperations.findLinkDeclaration(it) == null));
         Assert.assertEquals(1, Sequence.fromIterable(unspecifiedReferences).count());
         SReference theReference = Sequence.fromIterable(unspecifiedReferences).first();
         Assert.assertEquals(unspecifiedReferenceName, check_s3ecl5_a8a0a1a8n(SLinkOperations.getRefLink(theReference)));
@@ -202,22 +165,14 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
         SLinkOperations.getTarget(getNodeById("2906110183022354866"), LINKS.rightChild$f5Rv);
 
         int initialSize = ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022432277"))).count();
-        Assert.assertTrue(ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022432277"))).where(new IWhereFilter<SReference>() {
-          public boolean accept(SReference it) {
-            return (SLinkOperations.getTargetNode(it) == null);
-          }
-        }).isEmpty());
+        Assert.assertTrue(ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022432277"))).where((it) -> (SLinkOperations.getTargetNode(it) == null)).isEmpty());
         final SNode deletedNode = SLinkOperations.getTarget(getNodeById("2906110183022432277"), LINKS.root$cBIX);
         SNodeOperations.deleteNode(deletedNode);
         Assert.assertEquals(initialSize, ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022432277"))).count());
         // the whole test method runs within a command, our model implementation makes sure reference resolution during
         // command works even for nodes deleted during the same command (UnregisteredNodes)
         // Perhaps, need another test to check association target truly gone once command is over
-        Iterable<SReference> brokenReferences = ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022432277"))).where(new IWhereFilter<SReference>() {
-          public boolean accept(SReference it) {
-            return SNodeOperations.getModel(SLinkOperations.getTargetNode(it)) == null;
-          }
-        });
+        Iterable<SReference> brokenReferences = ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022432277"))).where((it) -> SNodeOperations.getModel(SLinkOperations.getTargetNode(it)) == null);
         Assert.assertEquals(1, Sequence.fromIterable(brokenReferences).count());
         SReference theReference = Sequence.fromIterable(brokenReferences).first();
         Assert.assertSame(deletedNode, SLinkOperations.getTargetNode(theReference));

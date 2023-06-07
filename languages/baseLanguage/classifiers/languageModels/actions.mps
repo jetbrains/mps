@@ -2,7 +2,7 @@
 <model ref="r:00000000-0000-4000-0000-011c8959036c(jetbrains.mps.baseLanguage.classifiers.actions)">
   <persistence version="9" />
   <languages>
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
@@ -88,6 +88,7 @@
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -182,7 +183,6 @@
       </concept>
       <concept id="1204980550705" name="jetbrains.mps.baseLanguage.collections.structure.VisitAllOperation" flags="nn" index="2es0OD" />
       <concept id="1151702311717" name="jetbrains.mps.baseLanguage.collections.structure.ToListOperation" flags="nn" index="ANE8D" />
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1160666733551" name="jetbrains.mps.baseLanguage.collections.structure.AddAllElementsOperation" flags="nn" index="X8dFx" />
       <concept id="1197683403723" name="jetbrains.mps.baseLanguage.collections.structure.MapType" flags="in" index="3rvAFt">
         <child id="1197683466920" name="keyType" index="3rvQeY" />
@@ -412,7 +412,7 @@
                     <node concept="3clFbF" id="1_s71rgDOu2" role="3cqZAp">
                       <node concept="2OqwBi" id="1_s71rgDP$I" role="3clFbG">
                         <node concept="37vLTw" id="1_s71rgDOu1" role="2Oq$k0">
-                          <ref role="3cqZAo" node="1_s71rgDIuY" resolve="it" />
+                          <ref role="3cqZAo" node="5W7E4fV0VSL" />
                         </node>
                         <node concept="1_qnLN" id="1_s71rgDXOt" role="2OqNvi">
                           <ref role="1_rbq0" to="tpee:f$Xjq0c" resolve="ThisExpression" />
@@ -420,9 +420,9 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="Rh6nW" id="1_s71rgDIuY" role="1bW2Oz">
+                  <node concept="gl6BB" id="5W7E4fV0VSL" role="1bW2Oz">
                     <property role="TrG5h" value="it" />
-                    <node concept="2jxLKc" id="1_s71rgDIuZ" role="1tU5fm" />
+                    <node concept="2jxLKc" id="5W7E4fV0VSM" role="1tU5fm" />
                   </node>
                 </node>
               </node>

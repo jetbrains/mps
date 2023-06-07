@@ -17,7 +17,6 @@ import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import java.awt.Color;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
@@ -30,9 +29,6 @@ import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.vcs.diff.changes.NodeGroupWrapChange;
 import jetbrains.mps.vcs.diff.changes.WrappingNodesGroup;
 import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.vcs.diff.changes.ModifiedNodesGroup;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Collections;
 import jetbrains.mps.errors.messageTargets.DeletedNodeMessageTarget;
 import java.awt.Rectangle;
@@ -63,11 +59,7 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
     myHighlighted = highlighted;
     // change messages should be created inside read action
     // we calculate descendant ids and attributed node here in order to avoid using read action during painting
-    myDescendantIds = SetSequence.fromSetWithValues(new HashSet<SNodeId>(), ListSequence.fromList(SNodeOperations.getNodeDescendants(((SNode) node), null, true, new SAbstractConcept[]{})).select(new ISelector<SNode, SNodeId>() {
-      public SNodeId select(SNode it) {
-        return it.getNodeId();
-      }
-    }));
+    myDescendantIds = SetSequence.fromSetWithValues(new HashSet<SNodeId>(), ListSequence.fromList(SNodeOperations.getNodeDescendants(((SNode) node), null, true, new SAbstractConcept[]{})).select((it) -> it.getNodeId()));
     myAttributedNode = ((AttributeOperations.isAttribute(node) && !(AttributeOperations.isChildAttribute(node))) ? node.getParent() : null);
   }
 
@@ -150,15 +142,7 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
       } else if (myChange instanceof NodeGroupWrapChange) {
         WrappingNodesGroup wrappingGroup = ((NodeGroupWrapChange) myChange).getWrappingGroup();
         if (Objects.equals(ListSequence.fromList(wrappingGroup.getIds()).first(), getNode().getNodeId())) {
-          movedIds = ListSequence.fromList(wrappingGroup.getWrappedGroups()).where(new IWhereFilter<ModifiedNodesGroup>() {
-            public boolean accept(ModifiedNodesGroup it) {
-              return it.isWrappedMove();
-            }
-          }).translate(new ITranslator2<ModifiedNodesGroup, SNodeId>() {
-            public Iterable<SNodeId> translate(ModifiedNodesGroup it) {
-              return it.getIds();
-            }
-          });
+          movedIds = ListSequence.fromList(wrappingGroup.getWrappedGroups()).where((it) -> it.isWrappedMove()).translate((it) -> it.getIds());
         } else {
           movedIds = myDescendantIds;
         }
@@ -205,11 +189,7 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
     // "conflicted" red frame. In this case, we repaint conflicted red frame again
     EditorCell_Collection parent = cell.getParent();
     if (parent != null && parent.getCellsCount() == 1) {
-      ChangeEditorMessage messageToRepaint = Sequence.fromIterable(((Iterable<ChangeEditorMessage>) CellMessagesUtil.getMessages(parent, ChangeEditorMessage.class))).findFirst(new IWhereFilter<ChangeEditorMessage>() {
-        public boolean accept(ChangeEditorMessage m) {
-          return m.isConflicted();
-        }
-      });
+      ChangeEditorMessage messageToRepaint = Sequence.fromIterable(((Iterable<ChangeEditorMessage>) CellMessagesUtil.getMessages(parent, ChangeEditorMessage.class))).findFirst((m) -> m.isConflicted());
       if (messageToRepaint != null) {
         messageToRepaint.paint(graphics, (EditorComponent) cell.getEditorComponent(), parent);
       }
@@ -264,7 +244,7 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
 
   private Rectangle getFirstPseudoLineBounds(jetbrains.mps.openapi.editor.EditorComponent editor) {
     Iterable<EditorCell> leafCells = new _FunctionTypes._return_P1_E0<Iterable<EditorCell>, EditorCell>() {
-      public Iterable<EditorCell> invoke(final EditorCell cell) {
+      public Iterable<EditorCell> invoke(EditorCell cell) {
         return new Iterable<EditorCell>() {
           public Iterator<EditorCell> iterator() {
             return new YieldingIterator<EditorCell>() {
@@ -347,11 +327,7 @@ __switch__:
       return new Rectangle();
     }
     final int firstCellY = Sequence.fromIterable(leafCells).first().getY();
-    return GeometryUtil.getBounds(Sequence.fromIterable(leafCells).where(new IWhereFilter<EditorCell>() {
-      public boolean accept(EditorCell it) {
-        return it.getY() == firstCellY;
-      }
-    }).toGenericArray(EditorCell.class));
+    return GeometryUtil.getBounds(Sequence.fromIterable(leafCells).where((it) -> it.getY() == firstCellY).toGenericArray(EditorCell.class));
   }
 
   public Bounds getBounds(jetbrains.mps.openapi.editor.EditorComponent editor) {

@@ -15,7 +15,6 @@ import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -45,16 +44,12 @@ public abstract class AbstractInitializeFieldRefactoring {
     ListSequence.fromList(mayInitialize).addSequence(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classifier, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("instanceInitializers", 7702003619977535145L, 0x5745e3015c8914d3L)))));
     ListSequence.fromList(mayInitialize).addSequence(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classifier, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("constructors", 5292274854859503373L, 0x5745e3015c8914d3L)))));
     ListSequence.fromList(doNotInitialize).addSequence(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classifier, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("constructors", 5292274854859503373L, 0x5745e3015c8914d3L)))));
-    for (SNode member : ListSequence.fromList(mayInitialize).where(new NotNullWhereFilter<SNode>())) {
+    for (SNode member : ListSequence.fromList(mayInitialize).where(new NotNullWhereFilter())) {
       if (ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.as(member, CONCEPTS.ConceptDeclaration$gH), CONCEPTS.ThisConstructorInvocation$q$, false, new SAbstractConcept[]{})).isNotEmpty()) {
         ListSequence.fromList(doNotInitialize).removeElement(member);
         continue;
       }
-      for (SNode reference : ListSequence.fromList(SNodeOperations.getNodeDescendants(member, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), CONCEPTS.FieldDeclaration$ie);
-        }
-      })) {
+      for (SNode reference : ListSequence.fromList(SNodeOperations.getNodeDescendants(member, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), CONCEPTS.FieldDeclaration$ie))) {
         if (SLinkOperations.getTarget(reference, LINKS.variableDeclaration$N1XG) == field && CheckingUtil.isAssigned(reference)) {
           ListSequence.fromList(doNotInitialize).removeElement(member);
           if (SNodeOperations.isInstanceOf(member, CONCEPTS.InstanceInitializer$4x)) {

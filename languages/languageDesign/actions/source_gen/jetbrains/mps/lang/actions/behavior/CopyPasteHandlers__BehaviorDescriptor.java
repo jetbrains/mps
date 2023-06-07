@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.kernel.model.SModelUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -41,16 +40,8 @@ public final class CopyPasteHandlers__BehaviorDescriptor extends BaseBHDescripto
 
   /*package*/ static List<SNode> getBaseConceptCollection_id4$$3zrO3UBG(@NotNull SNode __thisNode__) {
     final List<SNode> result = new ArrayList<SNode>();
-    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.preProcessor$8IAF)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        ListSequence.fromList(result).addElement(SLinkOperations.getTarget(it, LINKS.concept$u0zD));
-      }
-    });
-    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.postProcessor$8InE)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        ListSequence.fromList(result).addElement(SLinkOperations.getTarget(it, LINKS.concept$Zuzq));
-      }
-    });
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.preProcessor$8IAF)).visitAll((it) -> ListSequence.fromList(result).addElement(SLinkOperations.getTarget(it, LINKS.concept$u0zD)));
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.postProcessor$8InE)).visitAll((it) -> ListSequence.fromList(result).addElement(SLinkOperations.getTarget(it, LINKS.concept$Zuzq)));
     return result;
   }
   /*package*/ static void setBaseConcept_id5r_35Ihc58c(@NotNull SNode __thisNode__, SNode baseConcept) {

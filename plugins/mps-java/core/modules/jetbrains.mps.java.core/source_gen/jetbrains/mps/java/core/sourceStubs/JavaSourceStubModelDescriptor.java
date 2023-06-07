@@ -27,12 +27,10 @@ import jetbrains.mps.java.core.newparser.JavaParser;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import java.io.InputStream;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.io.IOException;
 import jetbrains.mps.java.core.newparser.FeatureKind;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.java.core.newparser.JavaParseException;
 import jetbrains.mps.java.core.newparser.YetUnknownResolver;
 import jetbrains.mps.progress.EmptyProgressMonitor;
@@ -115,11 +113,7 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
         InputStream is = getSource().openInputStream(fileName);
         // we've come from event and file has been deleted
         if (is == null) {
-          SetSequence.fromSet(oldNodes).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode it) {
-              SNodeOperations.deleteNode(it);
-            }
-          });
+          SetSequence.fromSet(oldNodes).visitAll((it) -> SNodeOperations.deleteNode(it));
           MapSequence.fromMap(myRootsPerFile).removeKey(fileName);
           continue;
         }
@@ -135,11 +129,7 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
           for (SNode newNode : ListSequence.fromList(parseResult.getNodes())) {
             final SNodeId newNodeId = newNode.getNodeId();
             // oldNodes is usually very very small (number of root classes in java file)
-            SNode oldNode = SetSequence.fromSet(oldNodes).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return it.getNodeId().equals(newNodeId);
-              }
-            }).first();
+            SNode oldNode = SetSequence.fromSet(oldNodes).where((it) -> it.getNodeId().equals(newNodeId)).first();
             if (oldNode == null) {
               into.addRootNode(newNode);
               SetSequence.fromSet(oldNodes).removeElement(oldNode);
@@ -150,11 +140,7 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
           }
         }
 
-        SetSequence.fromSet(oldNodes).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            SNodeOperations.deleteNode(it);
-          }
-        });
+        SetSequence.fromSet(oldNodes).visitAll((it) -> SNodeOperations.deleteNode(it));
         MapSequence.fromMap(myRootsPerFile).put(fileName, SetSequence.fromSetWithValues(new HashSet<SNode>(), parseResult.getNodes()));
 
       } catch (IOException e) {

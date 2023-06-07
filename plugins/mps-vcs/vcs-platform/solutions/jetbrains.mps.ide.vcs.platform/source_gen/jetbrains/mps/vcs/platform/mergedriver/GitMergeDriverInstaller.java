@@ -13,14 +13,12 @@ import jetbrains.mps.vcs.platform.util.PluginUtil;
 import java.util.List;
 import com.intellij.openapi.vcs.VcsRoot;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Iterator;
 import jetbrains.mps.util.NameUtil;
 import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import com.intellij.openapi.vcs.ProjectLevelVcsManager;
 import git4idea.GitVcs;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import com.intellij.openapi.vcs.VcsException;
 import jetbrains.mps.vcs.core.mergedriver.MergeDriverMain;
 
@@ -55,18 +53,10 @@ import jetbrains.mps.vcs.core.mergedriver.MergeDriverMain;
     List<AbstractInstaller.State> states = getAllStates(gitRoots);
 
     if (dryRun) {
-      if (ListSequence.fromList(states).all(new IWhereFilter<AbstractInstaller.State>() {
-        public boolean accept(AbstractInstaller.State s) {
-          return s == AbstractInstaller.State.INSTALLED;
-        }
-      })) {
+      if (ListSequence.fromList(states).all((s) -> s == AbstractInstaller.State.INSTALLED)) {
         return AbstractInstaller.State.INSTALLED;
       }
-      return (ListSequence.fromList(states).any(new IWhereFilter<AbstractInstaller.State>() {
-        public boolean accept(AbstractInstaller.State s) {
-          return s == AbstractInstaller.State.NOT_INSTALLED;
-        }
-      }) ? AbstractInstaller.State.NOT_INSTALLED : AbstractInstaller.State.OUTDATED);
+      return (ListSequence.fromList(states).any((s) -> s == AbstractInstaller.State.NOT_INSTALLED) ? AbstractInstaller.State.NOT_INSTALLED : AbstractInstaller.State.OUTDATED);
     }
 
     // copy driver files to the proper place (only once)
@@ -105,18 +95,10 @@ import jetbrains.mps.vcs.core.mergedriver.MergeDriverMain;
   }
 
   private List<VcsRoot> getGitRoots() {
-    return Sequence.fromIterable(Sequence.fromArray(ProjectLevelVcsManager.getInstance(myProject).getAllVcsRoots())).where(new IWhereFilter<VcsRoot>() {
-      public boolean accept(VcsRoot it) {
-        return it.getVcs() instanceof GitVcs;
-      }
-    }).toListSequence();
+    return Sequence.fromIterable(Sequence.fromArray(ProjectLevelVcsManager.getInstance(myProject).getAllVcsRoots())).where((it) -> it.getVcs() instanceof GitVcs).toList();
   }
   private List<AbstractInstaller.State> getAllStates(List<VcsRoot> roots) {
-    return ListSequence.fromList(roots).select(new ISelector<VcsRoot, AbstractInstaller.State>() {
-      public AbstractInstaller.State select(VcsRoot r) {
-        return installForRoot(r, true);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(roots).select((r) -> installForRoot(r, true)).toList();
   }
   private List<AbstractInstaller.State> getAllStates() {
     return getAllStates(getGitRoots());
@@ -160,11 +142,7 @@ import jetbrains.mps.vcs.core.mergedriver.MergeDriverMain;
   @Override
   public String getActionTitle() {
     List<AbstractInstaller.State> statuses = getAllStates();
-    return "Git merge driver and settings for " + ListSequence.fromList(statuses).where(new IWhereFilter<AbstractInstaller.State>() {
-      public boolean accept(AbstractInstaller.State it) {
-        return it != AbstractInstaller.State.INSTALLED;
-      }
-    }).count() + " out of " + NameUtil.formatNumericalString(ListSequence.fromList(statuses).count(), "repository");
+    return "Git merge driver and settings for " + ListSequence.fromList(statuses).where((it) -> it != AbstractInstaller.State.INSTALLED).count() + " out of " + NameUtil.formatNumericalString(ListSequence.fromList(statuses).count(), "repository");
   }
   @Override
   public String getAffectedVcsName() {

@@ -16,7 +16,6 @@ import jetbrains.mps.kotlin.scopes.signed.ScopeCollector;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -35,14 +34,10 @@ public final class IDeclarationHolder__BehaviorDescriptor extends BaseBHDescript
 
   /*package*/ static void populatesNestedDeclarations_id213J8chg2jD(@NotNull SNode __thisNode__, final SignatureCollector collector, final SNode contextNode) {
     // Declaration scope -> order does not matter
-    ListSequence.fromList(IDeclarationHolder__BehaviorDescriptor.getMembers_id213J8chg2xy.invoke(__thisNode__)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        IDeclarationScopePart__BehaviorDescriptor.populateDeclarations_id213J8cgCCAN.invoke(it, collector, contextNode);
-      }
-    });
+    ListSequence.fromList(IDeclarationHolder__BehaviorDescriptor.getMembers_id213J8chg2xy.invoke(__thisNode__)).visitAll((it) -> IDeclarationScopePart__BehaviorDescriptor.populateDeclarations_id213J8cgCCAN.invoke(it, collector, contextNode));
   }
   /*package*/ static boolean collectScope_id7DyvjiA20yV(@NotNull final SNode __thisNode__, ScopeCollector collector, final SNode childNode) {
-    collector.declareCollectedScope((SignatureCollector sigCollector) -> IDeclarationHolder__BehaviorDescriptor.populatesNestedDeclarations_id213J8chg2jD.invoke(__thisNode__, sigCollector, childNode));
+    collector.declareCollectedScope((sigCollector) -> IDeclarationHolder__BehaviorDescriptor.populatesNestedDeclarations_id213J8chg2jD.invoke(__thisNode__, sigCollector, childNode));
     return true;
   }
 

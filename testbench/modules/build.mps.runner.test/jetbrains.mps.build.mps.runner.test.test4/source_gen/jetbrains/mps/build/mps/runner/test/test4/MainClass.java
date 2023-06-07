@@ -10,13 +10,11 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.ide.ThreadUtils;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -39,38 +37,18 @@ public class MainClass {
     System.out.println("Test model access...");
     final List<SModel> projectModels = new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> ListSequence.fromListWithValues(new ArrayList<SModel>(), project.getProjectModels()));
     assert ListSequence.fromList(projectModels).count() == 1 : "Project models count: " + ListSequence.fromList(projectModels).count();
-    final SModel model = new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> {
-      return ListSequence.fromList(projectModels).findFirst(new IWhereFilter<SModel>() {
-        public boolean accept(SModel it) {
-          return MPS_MODEL.equals(it.getName().getValue());
-        }
-      });
-    });
+    final SModel model = new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> ListSequence.fromList(projectModels).findFirst((it) -> MPS_MODEL.equals(it.getName().getValue())));
     assert model != null;
     // check model content
-    final SNode node = new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> {
-      return ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.ClassConcept$bK)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return MODEL_CLASSNAME.equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-        }
-      });
-    });
+    final SNode node = new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.ClassConcept$bK)).findFirst((it) -> MODEL_CLASSNAME.equals(SPropertyOperations.getString(it, PROPS.name$MnvL))));
     assert node != null;
 
     // test write access
     final Wrappers._T<SNode> result = new Wrappers._T<SNode>(null);
-    ThreadUtils.runInUIThreadAndWait(() -> {
-      project.getModelAccess().executeCommand(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
-        public SNode invoke() {
-          ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addElement(_quotation_createNode_ea23db_a0a0a0a0a0a0p0e());
-          return result.value = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.member$L_2d), CONCEPTS.FieldDeclaration$ie)).findFirst(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return "n".equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-            }
-          });
-        }
-      }));
-    });
+    ThreadUtils.runInUIThreadAndWait(() -> project.getModelAccess().executeCommand(() -> {
+      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addElement(_quotation_createNode_ea23db_a0a0a0a0a0a0p0e());
+      result.value = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.member$L_2d), CONCEPTS.FieldDeclaration$ie)).findFirst((it) -> "n".equals(SPropertyOperations.getString(it, PROPS.name$MnvL)));
+    }));
     assert result.value != null;
 
     // create resulting file to signal everything is OK

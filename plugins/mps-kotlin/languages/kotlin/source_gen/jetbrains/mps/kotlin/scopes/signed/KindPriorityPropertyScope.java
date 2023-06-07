@@ -9,7 +9,6 @@ import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.kotlin.signatures.PropertySignature;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -42,21 +41,15 @@ public class KindPriorityPropertyScope implements SignatureScope {
     final HashSet<String> names = new HashSet<>();
 
     // First return unique setters while saving their name, then return getters in when the setter has not been defined before
-    return Sequence.fromIterable(nestedScope.getElements(prefix)).where(new IWhereFilter<SourcedSignature>() {
-      public boolean accept(SourcedSignature it) {
-        PropertySignature signature = as_1p4rxv_a0a0a0a0a0a0e0g(it.getSignature(), PropertySignature.class);
-        if (signature.getKind() != priority) {
-          SetSequence.fromSet(lowPriority).addElement(it);
-          return false;
-        } else {
-          return names.add(signature.getDescriptionText());
-        }
+    return Sequence.fromIterable(nestedScope.getElements(prefix)).where((it) -> {
+      PropertySignature signature = as_1p4rxv_a0a0a0a0a4a6(it.getSignature(), PropertySignature.class);
+      if (signature.getKind() != priority) {
+        SetSequence.fromSet(lowPriority).addElement(it);
+        return false;
+      } else {
+        return names.add(signature.getDescriptionText());
       }
-    }).concat(SetSequence.fromSet(lowPriority).where(new IWhereFilter<SourcedSignature>() {
-      public boolean accept(SourcedSignature it) {
-        return !(names.contains(as_1p4rxv_a0a0a0a0a0a0a0a0e0g(it.getSignature(), PropertySignature.class).getName()));
-      }
-    }));
+    }).concat(SetSequence.fromSet(lowPriority).where((it) -> !(names.contains(as_1p4rxv_a0a0a0a0a0a0a4a6(it.getSignature(), PropertySignature.class).getName()))));
   }
 
   @Override
@@ -106,10 +99,10 @@ public class KindPriorityPropertyScope implements SignatureScope {
   }
 
 
-  private static <T> T as_1p4rxv_a0a0a0a0a0a0e0g(Object o, Class<T> type) {
+  private static <T> T as_1p4rxv_a0a0a0a0a4a6(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_1p4rxv_a0a0a0a0a0a0a0a0e0g(Object o, Class<T> type) {
+  private static <T> T as_1p4rxv_a0a0a0a0a0a0a4a6(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 

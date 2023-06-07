@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.behavior.IClassifierMember__BehaviorDescriptor;
 import java.util.List;
 import java.util.ArrayList;
@@ -33,11 +32,7 @@ public final class BL_CopyPasteHandlers_PastePostProcessor_1 implements PastePos
   @Override
   public void postProcessNode(SNode pastedNode) {
 
-    if (ListSequence.fromList(SNodeOperations.getNodeAncestors(pastedNode, CONCEPTS.ClassifierMember$At, false)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it));
-      }
-    }).isEmpty()) {
+    if (ListSequence.fromList(SNodeOperations.getNodeAncestors(pastedNode, CONCEPTS.ClassifierMember$At, false)).where((it) -> !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it))).isEmpty()) {
       return;
     }
     SNode containingClass = SNodeOperations.getNodeAncestor(pastedNode, CONCEPTS.ClassConcept$bK, false, false);
@@ -72,11 +67,7 @@ public final class BL_CopyPasteHandlers_PastePostProcessor_1 implements PastePos
         final String resolveInfo = SLinkOperations.getResolveInfo(fieldDeclarationReference);
 
         for (SNode nextClassConcept : ListSequence.fromList(possibleClassConcepts)) {
-          if (Sequence.fromIterable(Members.visibleInstanceFields(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(nextClassConcept), pastedNode)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SPropertyOperations.getString(it, PROPS.name$MnvL).equals(resolveInfo);
-            }
-          }).isNotEmpty()) {
+          if (Sequence.fromIterable(Members.visibleInstanceFields(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(nextClassConcept), pastedNode)).where((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).equals(resolveInfo)).isNotEmpty()) {
             if (nextClassConcept != containingClass) {
               SLinkOperations.setTarget(pastedNode, LINKS.classConcept$zzjZ, nextClassConcept);
             } else if (SNodeOperations.getReference(pastedNode, LINKS.classConcept$zzjZ) != null) {
@@ -98,19 +89,11 @@ public final class BL_CopyPasteHandlers_PastePostProcessor_1 implements PastePos
         SNode exactSignatureMatch = null;
         for (SNode nextClassConcept : ListSequence.fromList(possibleClassConcepts)) {
           Iterable<SNode> visibleInstanceMethods = Members.visibleInstanceMethods(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(nextClassConcept), pastedNode);
-          if (Sequence.fromIterable(visibleInstanceMethods).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SPropertyOperations.getString(it, PROPS.name$MnvL).equals(resolveInfo) && (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(it, SLinkOperations.getTarget(methodCallOperation, LINKS.baseMethodDeclaration$pyYw));
-            }
-          }).isNotEmpty()) {
+          if (Sequence.fromIterable(visibleInstanceMethods).where((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).equals(resolveInfo) && (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(it, SLinkOperations.getTarget(methodCallOperation, LINKS.baseMethodDeclaration$pyYw))).isNotEmpty()) {
             exactSignatureMatch = nextClassConcept;
             break;
           } else {
-            if (byNameMatch == null && Sequence.fromIterable(visibleInstanceMethods).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return SPropertyOperations.getString(it, PROPS.name$MnvL).equals(resolveInfo);
-              }
-            }).isNotEmpty()) {
+            if (byNameMatch == null && Sequence.fromIterable(visibleInstanceMethods).where((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).equals(resolveInfo)).isNotEmpty()) {
               byNameMatch = nextClassConcept;
             }
           }

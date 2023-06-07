@@ -7,7 +7,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 
 @GeneratedClass(node = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)/3961775458390497664", model = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)")
 public class FilteringScope extends DelegatingScope {
@@ -28,11 +27,7 @@ public class FilteringScope extends DelegatingScope {
   @Override
   public Iterable<SNode> getAvailableElements(@Nullable String prefix) {
     Iterable<SNode> availableElements = super.getAvailableElements(prefix);
-    return Sequence.fromIterable(availableElements).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(isExcluded(it));
-      }
-    });
+    return Sequence.fromIterable(availableElements).where((it) -> !(isExcluded(it)));
   }
 
   @Override

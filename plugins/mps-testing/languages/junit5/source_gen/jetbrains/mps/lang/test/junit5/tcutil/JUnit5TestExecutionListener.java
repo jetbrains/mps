@@ -24,7 +24,6 @@ import org.junit.platform.engine.TestSource;
 import org.junit.platform.engine.support.descriptor.ClassSource;
 import org.junit.platform.engine.support.descriptor.MethodSource;
 import java.util.Optional;
-import org.junit.platform.engine.support.descriptor.FilePosition;
 import org.junit.platform.engine.support.descriptor.CompositeTestSource;
 import org.junit.platform.engine.support.descriptor.FileSource;
 import java.io.File;
@@ -65,7 +64,7 @@ public class JUnit5TestExecutionListener implements TestExecutionListener {
   }
   @Override
   public void reportingEntryPublished(final TestIdentifier testIdentifier, ReportEntry entry) {
-    entry.getKeyValuePairs().forEach((String key, String value) -> {
+    entry.getKeyValuePairs().forEach((key, value) -> {
       if ("stdout".equals(key)) {
         myPrintStream.print("##teamcity[testStdOut");
         myPrintStream.print(idAndName(testIdentifier));
@@ -312,21 +311,21 @@ public class JUnit5TestExecutionListener implements TestExecutionListener {
   }
   private String getParentId(TestIdentifier testIdentifier) {
     Optional<TestIdentifier> parent = myTestPlan.getParent(testIdentifier);
-    return parent.map((TestIdentifier identifier) -> (shouldSkipContainer(identifier) ? getParentId(identifier) : identifier.getUniqueId() + myIdSuffix)).orElse("0");
+    return parent.map((identifier) -> (shouldSkipContainer(identifier) ? getParentId(identifier) : identifier.getUniqueId() + myIdSuffix)).orElse("0");
   }
   private String getLocationHint(TestIdentifier root) {
     return getLocationHint(root, myTestPlan.getParent(root).orElse(null));
   }
   /*package*/ static String getLocationHint(final TestIdentifier root, final TestIdentifier rootParent) {
-    return root.getSource().map((TestSource testSource) -> getLocationHintValue(testSource, (rootParent != null ? rootParent.getSource().orElse(null) : null))).filter((String maybeLocationHintValue) -> !(NO_LOCATION_HINT_VALUE.equals(maybeLocationHintValue))).map((String locationHintValue) -> "locationHint='" + locationHintValue + "'" + getMetaInfo(root)).orElse(NO_LOCATION_HINT);
+    return root.getSource().map((testSource) -> getLocationHintValue(testSource, (rootParent != null ? rootParent.getSource().orElse(null) : null))).filter((maybeLocationHintValue) -> !(NO_LOCATION_HINT_VALUE.equals(maybeLocationHintValue))).map((locationHintValue) -> "locationHint='" + locationHintValue + "'" + getMetaInfo(root)).orElse(NO_LOCATION_HINT);
   }
   private static String getMetaInfo(TestIdentifier root) {
-    return root.getSource().map((TestSource testSource) -> {
+    return root.getSource().map((testSource) -> {
       if (testSource instanceof MethodSource) {
         return " metainfo='" + ((MethodSource) testSource).getMethodParameterTypes() + "'";
       }
       if (testSource instanceof ClassSource) {
-        return ((ClassSource) testSource).getPosition().map((FilePosition position) -> " metainfo='" + position.getLine() + ":" + position.getColumn() + "'").orElse(NO_LOCATION_HINT);
+        return ((ClassSource) testSource).getPosition().map((position) -> " metainfo='" + position.getLine() + ":" + position.getColumn() + "'").orElse(NO_LOCATION_HINT);
       }
       return NO_LOCATION_HINT;
     }).orElse(NO_LOCATION_HINT);
@@ -345,7 +344,7 @@ public class JUnit5TestExecutionListener implements TestExecutionListener {
     if (testSource instanceof FileSource) {
       FileSource fileSource = (FileSource) testSource;
       File file = fileSource.getFile();
-      String line = fileSource.getPosition().map((FilePosition position) -> ":" + position.getLine()).orElse("");
+      String line = fileSource.getPosition().map((position) -> ":" + position.getLine()).orElse("");
       return "file://" + file.getAbsolutePath() + line;
     }
     if (testSource instanceof MethodSource) {
@@ -371,7 +370,7 @@ public class JUnit5TestExecutionListener implements TestExecutionListener {
     return MapSerializerUtil.escapeStr(str, MapSerializerUtil.STD_ESCAPER);
   }
   /*package*/ static String getClassName(TestIdentifier description) {
-    return description.getSource().map((TestSource source) -> {
+    return description.getSource().map((source) -> {
       if (source instanceof MethodSource) {
         return ((MethodSource) source).getClassName();
       }
@@ -382,7 +381,7 @@ public class JUnit5TestExecutionListener implements TestExecutionListener {
     }).orElse(null);
   }
   /*package*/ static String getMethodName(TestIdentifier testIdentifier) {
-    return testIdentifier.getSource().map((TestSource source) -> {
+    return testIdentifier.getSource().map((source) -> {
       if (source instanceof MethodSource) {
         return ((MethodSource) source).getMethodName();
       }
@@ -390,7 +389,7 @@ public class JUnit5TestExecutionListener implements TestExecutionListener {
     }).orElse(null);
   }
   /*package*/ static String getMethodSignature(TestIdentifier testIdentifier) {
-    return testIdentifier.getSource().map((TestSource source) -> {
+    return testIdentifier.getSource().map((source) -> {
       if (source instanceof MethodSource) {
         String parameterTypes = ((MethodSource) source).getMethodParameterTypes();
         return ((MethodSource) source).getMethodName() + ((parameterTypes != null ? "(" + parameterTypes + ")" : ""));

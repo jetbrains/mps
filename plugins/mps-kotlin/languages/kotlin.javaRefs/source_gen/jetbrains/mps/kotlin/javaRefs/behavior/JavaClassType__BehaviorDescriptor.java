@@ -27,7 +27,6 @@ import jetbrains.mps.kotlin.baseLanguage.typeConversion.ClassToClassEnum;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaTypeParameterDeclaration;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
@@ -37,8 +36,6 @@ import jetbrains.mps.kotlin.scopes.signed.FilterSignatureCollector;
 import jetbrains.mps.kotlin.signatures.FunctionSignature;
 import jetbrains.mps.kotlin.signatures.PropertySignature;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import jetbrains.mps.kotlin.api.members.SignatureBuilder;
 import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaMethodDeclaration;
@@ -100,8 +97,8 @@ public final class JavaClassType__BehaviorDescriptor extends BaseBHDescriptor {
     return Sequence.fromIterable(Collections.emptyList());
   }
   /*package*/ static Iterable<TypeParameterDeclaration> getTypeParameters_id7an2tsIdpkM(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), LINKS.typeVariableDeclaration$Lipp)).select(new ISelector<SNode, JavaTypeParameterDeclaration>() {
-      public JavaTypeParameterDeclaration select(@NotNull SNode typeVariableDeclaration) {
+    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), LINKS.typeVariableDeclaration$Lipp)).select(new _FunctionTypes._return_P1_E0<JavaTypeParameterDeclaration, SNode>() {
+      public JavaTypeParameterDeclaration invoke(@NotNull SNode typeVariableDeclaration) {
         return new JavaTypeParameterDeclaration(typeVariableDeclaration);
       }
     });
@@ -111,11 +108,7 @@ public final class JavaClassType__BehaviorDescriptor extends BaseBHDescriptor {
     pres.append((isNotEmptyString(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), PROPS.name$MnvL)) ? SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), PROPS.name$MnvL) : "<no class>"));
     if (!(erased) && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.typeProjections$vhti)).isNotEmpty()) {
       pres.append("<");
-      pres.append(IterableUtils.join(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.typeProjections$vhti)).select(new ISelector<SNode, String>() {
-        public String select(SNode it) {
-          return ((it != null) ? BaseConcept__BehaviorDescriptor.getDetailedPresentation_id22G2W3WJ92t.invoke(it) : "?");
-        }
-      }), ", "));
+      pres.append(IterableUtils.join(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.typeProjections$vhti)).select((it) -> ((it != null) ? BaseConcept__BehaviorDescriptor.getDetailedPresentation_id22G2W3WJ92t.invoke(it) : "?")), ", "));
       pres.append(">");
     }
     return pres.toString();
@@ -128,59 +121,33 @@ public final class JavaClassType__BehaviorDescriptor extends BaseBHDescriptor {
 
       if (acceptFunctions) {
         // Directly get the constructors of nested classes
-        Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), LINKS.member$L_2d), CONCEPTS.ClassConcept$bK)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            // Only static classes, non static are instance fields
-            return SPropertyOperations.getBoolean(it, PROPS.isStatic$3WAz) && JavaSignatures.isAllowedVisibility(it, contextNode);
+        Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), LINKS.member$L_2d), CONCEPTS.ClassConcept$bK)).where((it) -> {
+          // Only static classes, non static are instance fields
+          return SPropertyOperations.getBoolean(it, PROPS.isStatic$3WAz) && JavaSignatures.isAllowedVisibility(it, contextNode);
+        }).visitAll((klass) -> {
+          Iterable<SNode> constructors = ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(klass);
+          if (Sequence.fromIterable(constructors).isEmpty() && !(SNodeOperations.isInstanceOf(klass, CONCEPTS.EnumClass$Vk))) {
+            JavaSignatures.declareConstructor(collector, klass);
           }
-        }).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode klass) {
-            Iterable<SNode> constructors = ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(klass);
-            if (Sequence.fromIterable(constructors).isEmpty() && !(SNodeOperations.isInstanceOf(klass, CONCEPTS.EnumClass$Vk))) {
-              JavaSignatures.declareConstructor(collector, klass);
-            }
 
-            SignatureBuilder.create(Sequence.fromIterable(constructors).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return JavaSignatures.isAllowedVisibility(it, contextNode);
-              }
-            }), FunctionSignature.class).withSignature((SNode node) -> new FunctionSignature(new JavaMethodDeclaration(node), (TypeExpander) null));
-          }
+          SignatureBuilder.create(Sequence.fromIterable(constructors).where((it) -> JavaSignatures.isAllowedVisibility(it, contextNode)), FunctionSignature.class).withSignature((SNode node) -> new FunctionSignature(new JavaMethodDeclaration(node), (TypeExpander) null));
         });
       }
 
       // Unlike kotlin, companion member (static) of a java class are also contained in the class
       if (acceptFunctions || acceptProperty) {
-        Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), LINKS.member$L_2d), CONCEPTS.StaticMethodDeclaration$FJ)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return JavaSignatures.isAllowedVisibility(it, contextNode);
-          }
-        }).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            // This will apply the filter on signatures
-            JavaSignatures.declareMethod(collector, it);
-          }
+        Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), LINKS.member$L_2d), CONCEPTS.StaticMethodDeclaration$FJ)).where((it) -> JavaSignatures.isAllowedVisibility(it, contextNode)).visitAll((it) -> {
+          // This will apply the filter on signatures
+          JavaSignatures.declareMethod(collector, it);
         });
       }
 
       if (acceptProperty) {
         // Static properties
-        Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), LINKS.member$L_2d), CONCEPTS.StaticFieldDeclaration$jR)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return JavaSignatures.isAllowedVisibility(it, contextNode);
-          }
-        }).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            JavaSignatures.declareField(collector, it);
-          }
-        });
+        Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), LINKS.member$L_2d), CONCEPTS.StaticFieldDeclaration$jR)).where((it) -> JavaSignatures.isAllowedVisibility(it, contextNode)).visitAll((it) -> JavaSignatures.declareField(collector, it));
 
         // Enum variables
-        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), CONCEPTS.EnumClass$Vk), LINKS.enumConstant$qtgW)).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            JavaSignatures.declareField(collector, it, true);
-          }
-        });
+        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), CONCEPTS.EnumClass$Vk), LINKS.enumConstant$qtgW)).visitAll((it) -> JavaSignatures.declareField(collector, it, true));
       }
 
       return collector.getCollected();
@@ -196,11 +163,7 @@ public final class JavaClassType__BehaviorDescriptor extends BaseBHDescriptor {
 
     // Support for SAM methods
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), CONCEPTS.Interface$db)) {
-      Iterator<SNode> methods = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), LINKS.member$L_2d), CONCEPTS.InstanceMethodDeclaration$39)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode m) {
-          return (boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(m) && !("equals".equals(SPropertyOperations.getString(m, PROPS.name$MnvL)));
-        }
-      }).iterator();
+      Iterator<SNode> methods = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), LINKS.member$L_2d), CONCEPTS.InstanceMethodDeclaration$39)).where((m) -> (boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(m) && !("equals".equals(SPropertyOperations.getString(m, PROPS.name$MnvL)))).iterator();
       final SNode sam = (methods.hasNext() ? methods.next() : null);
       if ((sam == null) || methods.hasNext()) {
         return null;
@@ -217,12 +180,10 @@ public final class JavaClassType__BehaviorDescriptor extends BaseBHDescriptor {
     return () -> {
       SNode constructor = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), LINKS.member$L_2d), CONCEPTS.ConstructorDeclaration$yG)).first();
       if (constructor != null) {
-        return createJavaMethodCall_x7iids_a0a1a0h0i(constructor, ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.typeProjections$vhti)).select(new ISelector<SNode, SNode>() {
-          public SNode select(SNode it) {
-            // This could be computed is a smarter way (in+out => nothing, ...)
-            SNode type = SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.TypeProjection$5e), LINKS.type$x3no);
-            return ((type != null) ? type : createNullableType_x7iids_a0c0a0a0b0a0a1a0h0i(BuiltIn.ANY.toClassType()));
-          }
+        return createJavaMethodCall_x7iids_a0a1a0h0i(constructor, ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.typeProjections$vhti)).select((it) -> {
+          // This could be computed is a smarter way (in+out => nothing, ...)
+          SNode type = SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.TypeProjection$5e), LINKS.type$x3no);
+          return ((type != null) ? type : createNullableType_x7iids_a0c0a0a0b0a0a1a0h0i(BuiltIn.ANY.toClassType()));
         }));
       }
       return createJavaDefaultConstructorCall_x7iids_a2a0h0i(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW));

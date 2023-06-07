@@ -209,6 +209,7 @@
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -377,7 +378,6 @@
       <concept id="1227008614712" name="jetbrains.mps.baseLanguage.collections.structure.LinkedListCreator" flags="nn" index="2Jqq0_" />
       <concept id="1227022179634" name="jetbrains.mps.baseLanguage.collections.structure.AddLastElementOperation" flags="nn" index="2Ke9KJ" />
       <concept id="1227026082377" name="jetbrains.mps.baseLanguage.collections.structure.RemoveFirstElementOperation" flags="nn" index="2Kt2Hk" />
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1160600644654" name="jetbrains.mps.baseLanguage.collections.structure.ListCreatorWithInit" flags="nn" index="Tc6Ow" />
       <concept id="1160612413312" name="jetbrains.mps.baseLanguage.collections.structure.AddElementOperation" flags="nn" index="TSZUe" />
       <concept id="1162935959151" name="jetbrains.mps.baseLanguage.collections.structure.GetSizeOperation" flags="nn" index="34oBXx" />
@@ -3211,7 +3211,7 @@
                                 <ref role="37wK5l" to="tpek:4_LVZ3pBKCn" resolve="methods" />
                               </node>
                               <node concept="37vLTw" id="5Vvmn_Qkitm" role="2Oq$k0">
-                                <ref role="3cqZAo" node="5Vvmn_Qkito" resolve="ifc" />
+                                <ref role="3cqZAo" node="5W7E4fV0VSY" />
                               </node>
                             </node>
                             <node concept="34oBXx" id="5Vvmn_Qkitn" role="2OqNvi" />
@@ -3219,9 +3219,9 @@
                         </node>
                       </node>
                     </node>
-                    <node concept="Rh6nW" id="5Vvmn_Qkito" role="1bW2Oz">
+                    <node concept="gl6BB" id="5W7E4fV0VSY" role="1bW2Oz">
                       <property role="TrG5h" value="ifc" />
-                      <node concept="2jxLKc" id="5Vvmn_Qkitp" role="1tU5fm" />
+                      <node concept="2jxLKc" id="5W7E4fV0VSZ" role="1tU5fm" />
                     </node>
                   </node>
                 </node>

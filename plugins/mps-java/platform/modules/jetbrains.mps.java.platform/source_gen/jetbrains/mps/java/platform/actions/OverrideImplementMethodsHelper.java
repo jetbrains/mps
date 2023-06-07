@@ -15,11 +15,9 @@ import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.SModelStereotype;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Map;
 import jetbrains.mps.util.JavaNameUtil;
@@ -79,11 +77,7 @@ public class OverrideImplementMethodsHelper {
   /*package*/ void update(SNode method, SNode baseMethod) {
     if (SModelStereotype.isStubModel(SNodeOperations.getModel(baseMethod))) {
       // we only need to find good names for parameters, if they are cryptic e.g. java_sourcestubs deliver proper names
-      final SNode startNode = (ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).all(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SPropertyOperations.getString(it, PROPS.name$MnvL).matches("p[0-9]+");
-        }
-      }) ? method : SLinkOperations.getTarget(method, LINKS.body$5xQk));
+      final SNode startNode = (ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).all((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).matches("p[0-9]+")) ? method : SLinkOperations.getTarget(method, LINKS.body$5xQk));
       setVariableNames(startNode, MapSequence.fromMap(new HashMap<String, Integer>()));
     }
     if (myRemoveAttributes) {
@@ -104,11 +98,7 @@ public class OverrideImplementMethodsHelper {
       }
     }
 
-    Iterable<SNode> paramList = ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return _quotation_createNode_tfz3o4_a0a0a0a4a11(it);
-      }
-    });
+    Iterable<SNode> paramList = ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).select((it) -> _quotation_createNode_tfz3o4_a0a0a0a4a11(it));
     if (SNodeOperations.isInstanceOf(baseMethod, CONCEPTS.InstanceMethodDeclaration$39)) {
       boolean isAbstractMethod = ((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.cast(baseMethod, CONCEPTS.InstanceMethodDeclaration$39), CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("isAnAbstractMethod", 2464886109384052181L, 0x5745e3015c8914d3L)));
       SNode defaultExpr = null;
@@ -119,17 +109,13 @@ public class OverrideImplementMethodsHelper {
           SNode curClassifier = SNodeOperations.cast(SNodeOperations.getParent(method), CONCEPTS.Classifier$Ix);
           final SNode baseInterface = SNodeOperations.cast(SNodeOperations.getParent(baseMethod), CONCEPTS.Interface$db);
           List<SNode> directAncestors = ((List<SNode>) BHReflection.invoke0(curClassifier, CONCEPTS.Classifier$Ix, SMethodIdV2.create("getExtendedClassifierTypes", 2201875424516179426L, 0x5745e3015c8914d3L)));
-          SNode directParentWhichExtendsBase = ListSequence.fromList(directAncestors).findFirst(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return ListSequence.fromList(((List<SNode>) BHReflection.invoke0(SNodeOperations.cast(((SNode) BHReflection.invoke0(it, CONCEPTS.IClassifierType$B1, SMethodIdV2.create("getClassifier", 7405920559687237513L, 0x5745e3015c8914d3L))), CONCEPTS.Classifier$Ix), CONCEPTS.Classifier$Ix, SMethodIdV2.create("getAllSuperClassifiers", 5939288775835848765L, 0x5745e3015c8914d3L)))).contains(baseInterface);
-            }
-          });
+          SNode directParentWhichExtendsBase = ListSequence.fromList(directAncestors).findFirst((it) -> ListSequence.fromList(((List<SNode>) BHReflection.invoke0(SNodeOperations.cast(((SNode) BHReflection.invoke0(it, CONCEPTS.IClassifierType$B1, SMethodIdV2.create("getClassifier", 7405920559687237513L, 0x5745e3015c8914d3L))), CONCEPTS.Classifier$Ix), CONCEPTS.Classifier$Ix, SMethodIdV2.create("getAllSuperClassifiers", 5939288775835848765L, 0x5745e3015c8914d3L)))).contains(baseInterface));
           if (directParentWhichExtendsBase != null && SNodeOperations.isInstanceOf(((SNode) BHReflection.invoke0(directParentWhichExtendsBase, CONCEPTS.IClassifierType$B1, SMethodIdV2.create("getClassifier", 7405920559687237513L, 0x5745e3015c8914d3L))), CONCEPTS.Interface$db)) {
-            defaultExpr = _quotation_createNode_tfz3o4_a0a0e0a0a2a5a11(Sequence.fromIterable(paramList).toListSequence(), ((SNode) BHReflection.invoke0(directParentWhichExtendsBase, CONCEPTS.IClassifierType$B1, SMethodIdV2.create("getClassifier", 7405920559687237513L, 0x5745e3015c8914d3L))), baseMethod);
+            defaultExpr = _quotation_createNode_tfz3o4_a0a0e0a0a2a5a11(Sequence.fromIterable(paramList).toList(), ((SNode) BHReflection.invoke0(directParentWhichExtendsBase, CONCEPTS.IClassifierType$B1, SMethodIdV2.create("getClassifier", 7405920559687237513L, 0x5745e3015c8914d3L))), baseMethod);
           }
         }
         if (defaultExpr == null) {
-          defaultExpr = _quotation_createNode_tfz3o4_a0a0b0a2a5a11(baseMethod, Sequence.fromIterable(paramList).toListSequence());
+          defaultExpr = _quotation_createNode_tfz3o4_a0a0b0a2a5a11(baseMethod, Sequence.fromIterable(paramList).toList());
         }
       }
       if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), CONCEPTS.VoidType$BF)) {
@@ -141,7 +127,7 @@ public class OverrideImplementMethodsHelper {
       }
     } else {
       if (SNodeOperations.isInstanceOf(baseMethod, CONCEPTS.ConstructorDeclaration$yG)) {
-        SNode superConstructor = _quotation_createNode_tfz3o4_a0a0a0a5a11(Sequence.fromIterable(paramList).toListSequence());
+        SNode superConstructor = _quotation_createNode_tfz3o4_a0a0a0a5a11(Sequence.fromIterable(paramList).toList());
         SLinkOperations.setTarget(superConstructor, LINKS.baseMethodDeclaration$pyYw, SNodeOperations.cast(baseMethod, CONCEPTS.ConstructorDeclaration$yG));
         ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$5xQk), LINKS.statement$53DE)).addElement(superConstructor);
       }

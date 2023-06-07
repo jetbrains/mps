@@ -25,7 +25,6 @@ import jetbrains.mps.baseLanguage.scopes.FieldSignature;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.scope.CompositeScope;
@@ -102,20 +101,8 @@ public final class EnumConstantDeclaration__BehaviorDescriptor extends BaseBHDes
 
     List<SNode> methods = new ArrayList<SNode>();
     List<SNode> methodsToImplement = IMemberContainer__BehaviorDescriptor.getMethodsToImplement_id4GM03FJm5q2.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.EnumClass$Vk));
-    ListSequence.fromList(methodsToImplement).addSequence(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.EnumClass$Vk))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(it);
-      }
-    }));
-    ListSequence.fromList(methods).addSequence(ListSequence.fromList(methodsToImplement).where(new IWhereFilter<SNode>() {
-      public boolean accept(final SNode method) {
-        return !(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.method$pGvv)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode constantBelongingMethod) {
-            return (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(constantBelongingMethod, method);
-          }
-        }));
-      }
-    }));
+    ListSequence.fromList(methodsToImplement).addSequence(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.EnumClass$Vk))).where((it) -> (boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(it)));
+    ListSequence.fromList(methods).addSequence(ListSequence.fromList(methodsToImplement).where((final SNode method) -> !(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.method$pGvv)).any((constantBelongingMethod) -> (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(constantBelongingMethod, method)))));
     return methods;
   }
   /*package*/ static List<SNode> getMethodsToOverride_id4GM03FJm3zL(@NotNull final SNode __thisNode__) {
@@ -125,30 +112,14 @@ public final class EnumConstantDeclaration__BehaviorDescriptor extends BaseBHDes
 
     List<SNode> methods = new ArrayList<SNode>();
     List<SNode> methodsToOverride = IMemberContainer__BehaviorDescriptor.getMethodsToOverride_id4GM03FJm3zL.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.EnumClass$Vk));
-    ListSequence.fromList(methodsToOverride).addSequence(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.EnumClass$Vk))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(it)) && !(SPropertyOperations.getBoolean(it, PROPS.isFinal$eVPk)) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$Yyua), CONCEPTS.PrivateVisibility$l0));
-      }
-    }));
-    ListSequence.fromList(methods).addSequence(ListSequence.fromList(methodsToOverride).where(new IWhereFilter<SNode>() {
-      public boolean accept(final SNode method) {
-        return !(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.method$pGvv)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode constantBelongingMethod) {
-            return (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(constantBelongingMethod, method);
-          }
-        }));
-      }
-    }));
+    ListSequence.fromList(methodsToOverride).addSequence(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.EnumClass$Vk))).where((it) -> !((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(it)) && !(SPropertyOperations.getBoolean(it, PROPS.isFinal$eVPk)) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$Yyua), CONCEPTS.PrivateVisibility$l0))));
+    ListSequence.fromList(methods).addSequence(ListSequence.fromList(methodsToOverride).where((final SNode method) -> !(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.method$pGvv)).any((constantBelongingMethod) -> (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(constantBelongingMethod, method)))));
     return methods;
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.SuperMethodKind$AJ)) {
       Scope visibleMembers = Classifier__BehaviorDescriptor.getVisibleMembers_id70J2WaK$Uj3.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.EnumClass$Vk), child, kind);
-      Iterable<SNode> methods = Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.EnumClass$Vk))).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(it)) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$Yyua), CONCEPTS.PrivateVisibility$l0));
-        }
-      });
+      Iterable<SNode> methods = Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.EnumClass$Vk))).where((it) -> !((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(it)) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$Yyua), CONCEPTS.PrivateVisibility$l0)));
       Scope visibleEumMembers = ListScope.forNamedElements(methods);
       return new CompositeScope(visibleMembers, visibleEumMembers);
     }

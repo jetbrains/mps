@@ -27,8 +27,6 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
 import com.intellij.ui.ScrollPaneFactory;
 import java.awt.Dimension;
@@ -38,8 +36,6 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.vcs.diff.ui.common.Bounds;
 import jetbrains.mps.vcs.diff.ui.common.DiffModelUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
@@ -54,7 +50,6 @@ import com.intellij.openapi.util.Ref;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.workbench.action.BaseAction;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Collections;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
 import jetbrains.mps.vcs.diff.changes.AddRootChange;
@@ -97,16 +92,8 @@ public class ModelDifferenceViewer implements DataProvider {
     myProject.getRepository().getModelAccess().runWriteAction(() -> {
       // create metamodels before renaming the models in order to avoid problems
       // with stereotypes like in MPS-32651 and MPS-33991
-      myMetadataModels = ListSequence.fromList(myModels).select(new ISelector<SModel, SModel>() {
-        public SModel select(SModel it) {
-          return createRegisteredMetaModel(it);
-        }
-      }).toListSequence();
-      ListSequence.fromList(myModels).visitAll(new IVisitor<SModel>() {
-        public void visit(SModel it) {
-          registerModelIfNeeded(it, perRootPersistence);
-        }
-      });
+      myMetadataModels = ListSequence.fromList(myModels).select((it) -> createRegisteredMetaModel(it)).toList();
+      ListSequence.fromList(myModels).visitAll((it) -> registerModelIfNeeded(it, perRootPersistence));
     });
     final boolean trackMovedNodes = DiffSettingsUtil.getTrackMovedNodesDiffOption();
     // TODO changesets should be probably built in a separate thread
@@ -195,15 +182,7 @@ public class ModelDifferenceViewer implements DataProvider {
   }
 
   private void addModelDiffListeners(Iterable<SModel> models) {
-    Sequence.fromIterable(models).where(new IWhereFilter<SModel>() {
-      public boolean accept(SModel it) {
-        return isModelEditable(it);
-      }
-    }).visitAll(new IVisitor<SModel>() {
-      public void visit(SModel it) {
-        addDifferenceListener(((EditableSModel) it));
-      }
-    });
+    Sequence.fromIterable(models).where((it) -> isModelEditable(it)).visitAll((it) -> addDifferenceListener(((EditableSModel) it)));
   }
 
   public String getDimensionServiceKey() {
@@ -215,11 +194,7 @@ public class ModelDifferenceViewer implements DataProvider {
   }
 
   public void dispose() {
-    MapSequence.fromMap(myDiffListeners).visitAll(new IVisitor<IMapping<EditableSModel, MyDifferenceListener>>() {
-      public void visit(IMapping<EditableSModel, MyDifferenceListener> it) {
-        removeDifferenceListener(it.key(), it.value());
-      }
-    });
+    MapSequence.fromMap(myDiffListeners).visitAll((it) -> removeDifferenceListener(it.key(), it.value()));
     if (myTree != null) {
       myTree.dispose();
     }
@@ -253,25 +228,13 @@ public class ModelDifferenceViewer implements DataProvider {
 
   private void unregisterModels() {
     if (myRegisteredModels != null) {
-      CollectionSequence.fromCollection(myRegisteredModels).visitAll(new IVisitor<SModel>() {
-        public void visit(SModel it) {
-          DiffModelUtil.unregisterModel(it);
-        }
-      });
+      CollectionSequence.fromCollection(myRegisteredModels).visitAll((it) -> DiffModelUtil.unregisterModel(it));
     }
   }
 
   /*package*/ void rebuildChangeSets() {
-    ListSequence.fromList(myChangeSets).where(new NotNullWhereFilter<ModelChangeSet>()).visitAll(new IVisitor<ModelChangeSet>() {
-      public void visit(ModelChangeSet it) {
-        ChangeSetBuilder.rebuildChangeSet(it, DiffSettingsUtil.getTrackMovedNodesDiffOption());
-      }
-    });
-    ListSequence.fromList(myMetadataChangeSets).where(new NotNullWhereFilter<ModelChangeSet>()).visitAll(new IVisitor<ModelChangeSet>() {
-      public void visit(ModelChangeSet it) {
-        ChangeSetBuilder.rebuildChangeSet(it);
-      }
-    });
+    ListSequence.fromList(myChangeSets).where(new NotNullWhereFilter()).visitAll((it) -> ChangeSetBuilder.rebuildChangeSet(it, DiffSettingsUtil.getTrackMovedNodesDiffOption()));
+    ListSequence.fromList(myMetadataChangeSets).where(new NotNullWhereFilter()).visitAll((it) -> ChangeSetBuilder.rebuildChangeSet(it));
     if (myTree != null) {
       myTree.rebuildLater();
     }
@@ -384,15 +347,7 @@ public class ModelDifferenceViewer implements DataProvider {
         ListSequence.fromList(actions).addElement(new RevertRootsAction("roots") {
           @Override
           protected Iterable<ModelChange> getChanges() {
-            return Sequence.fromIterable(Sequence.fromArray(getSelectedNodes(DiffModelTree.RootTreeNode.class, null))).translate(new ITranslator2<DiffModelTree.RootTreeNode, ModelChange>() {
-              public Iterable<ModelChange> translate(final DiffModelTree.RootTreeNode r) {
-                return (myChangeSets == null ? Sequence.fromIterable(Collections.<ModelChange>emptyList()) : ListSequence.fromList(myChangeSets).where(new NotNullWhereFilter<ModelChangeSet>()).translate(new ITranslator2<ModelChangeSet, ModelChange>() {
-                  public Iterable<ModelChange> translate(ModelChangeSet it) {
-                    return it.getChangesForRoot(r.getRootId());
-                  }
-                }));
-              }
-            });
+            return Sequence.fromIterable(Sequence.fromArray(getSelectedNodes(DiffModelTree.RootTreeNode.class, null))).translate((final DiffModelTree.RootTreeNode r) -> (myChangeSets == null ? Sequence.fromIterable(Collections.<ModelChange>emptyList()) : ListSequence.fromList(myChangeSets).where(new NotNullWhereFilter()).translate((it) -> it.getChangesForRoot(r.getRootId()))));
           }
           @Override
           protected void after() {
@@ -400,18 +355,10 @@ public class ModelDifferenceViewer implements DataProvider {
           }
           @Override
           protected String getRevertTitle() {
-            Iterable<SNodeId> roots = Sequence.fromIterable(Sequence.fromArray(getSelectedNodes(DiffModelTree.RootTreeNode.class, null))).select(new ISelector<DiffModelTree.RootTreeNode, SNodeId>() {
-              public SNodeId select(DiffModelTree.RootTreeNode rtn) {
-                return rtn.getRootId();
-              }
-            });
+            Iterable<SNodeId> roots = Sequence.fromIterable(Sequence.fromArray(getSelectedNodes(DiffModelTree.RootTreeNode.class, null))).select((rtn) -> rtn.getRootId());
             if (Sequence.fromIterable(roots).count() == 1) {
               return (Sequence.fromIterable(roots).first() == null ? "Properties" : "Root");
-            } else if (Sequence.fromIterable(roots).any(new IWhereFilter<SNodeId>() {
-              public boolean accept(SNodeId r) {
-                return r == null;
-              }
-            })) {
+            } else if (Sequence.fromIterable(roots).any((r) -> r == null)) {
               return "Roots and Properties ";
             }
             return "Roots";
@@ -451,11 +398,7 @@ public class ModelDifferenceViewer implements DataProvider {
     }
     @Override
     protected Iterable<SNodeId> getAffectedRoots() {
-      return ListSequence.fromList(myChangeSets).where(new NotNullWhereFilter<ModelChangeSet>()).translate(new ITranslator2<ModelChangeSet, SNodeId>() {
-        public Iterable<SNodeId> translate(ModelChangeSet it) {
-          return it.getAffectedRoots();
-        }
-      }).distinct();
+      return ListSequence.fromList(myChangeSets).where(new NotNullWhereFilter()).translate((it) -> it.getAffectedRoots()).distinct();
     }
     @Override
     protected void onUnselect() {

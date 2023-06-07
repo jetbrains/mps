@@ -15,7 +15,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.lightweightdsl.behavior.DSLDescriptor__BehaviorDescriptor;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.openapi.intentions.ParameterizedIntentionExecutable;
@@ -56,11 +55,7 @@ public final class AddClasslikeAnnotation_Intention extends AbstractIntentionDes
     return list;
   }
   private List<SNode> parameter(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(SModelOperations.rootsIncludingImported(SNodeOperations.getModel(node), CONCEPTS.DSLDescriptor$zD)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.is(DSLDescriptor__BehaviorDescriptor.getPreferredConcept_id1_lSsE3TA5X.invoke(it), new SNodePointer("r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)", "1068390468198")));
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SModelOperations.rootsIncludingImported(SNodeOperations.getModel(node), CONCEPTS.DSLDescriptor$zD)).where((it) -> !(SNodeOperations.is(DSLDescriptor__BehaviorDescriptor.getPreferredConcept_id1_lSsE3TA5X.invoke(it), new SNodePointer("r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)", "1068390468198")))).toList();
   }
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable implements ParameterizedIntentionExecutable {
     private SNode myParameter;

@@ -15,7 +15,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -62,11 +61,7 @@ public class ReferenceableConceptsChecker extends SpecificChecker {
       IssueKindReportItem.ItemKind itemKind2 = getCategory().deriveItemKind("non-referenceable named concept");
 
       for (SNode concept : ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.AbstractConceptDeclaration$KA))) {
-        for (SNode ref : ListSequence.fromList(SLinkOperations.getChildren(concept, LINKS.linkDeclaration$YU1f)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b8L);
-          }
-        })) {
+        for (SNode ref : ListSequence.fromList(SLinkOperations.getChildren(concept, LINKS.linkDeclaration$YU1f)).where((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b8L))) {
           SNode target = SLinkOperations.getTarget(ref, LINKS.target$m40F);
           if (SNodeOperations.isInstanceOf(target, CONCEPTS.ConceptDeclaration$gH)) {
             SNode decl = SNodeOperations.cast(target, CONCEPTS.ConceptDeclaration$gH);

@@ -8,7 +8,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.VariableDeclaration__BehaviorDescriptor;
@@ -49,19 +49,19 @@ public class IntroduceLocalVariableRefactoring extends IntroduceVariableRefactor
   public SNode getRootToFindDuplicates(final SNode node) {
     List<SNode> ancestors = SNodeOperations.getNodeAncestors(node, null, false);
     SNode statementListContainer = SNodeOperations.getNodeAncestor(node, CONCEPTS.IStatementListContainer$xz, false, false);
-    SNode metaContainer = ListSequence.fromList(ancestors).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
+    SNode metaContainer = ListSequence.fromList(ancestors).findFirst(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      public Boolean invoke(SNode it) {
         return (int) BaseConcept__BehaviorDescriptor.getMetaLevel_id3t0v3yFOD1A.invoke(it) != (int) BaseConcept__BehaviorDescriptor.getMetaLevel_id3t0v3yFOD1A.invoke(node);
       }
     });
     int statementListContainerIndex = ListSequence.fromList(ancestors).indexOf(statementListContainer);
     int metaContainerIndex = ListSequence.fromList(ancestors).indexOf(metaContainer);
     if (statementListContainerIndex >= 0 && metaContainerIndex >= 0) {
-      ancestors = ListSequence.fromList(ancestors).take(Math.min(statementListContainerIndex, metaContainerIndex)).toListSequence();
+      ancestors = ListSequence.fromList(ancestors).take(Math.min(statementListContainerIndex, metaContainerIndex)).toList();
     } else if (statementListContainerIndex < 0 && metaContainerIndex >= 0) {
-      ancestors = ListSequence.fromList(ancestors).take(metaContainerIndex).toListSequence();
+      ancestors = ListSequence.fromList(ancestors).take(metaContainerIndex).toList();
     } else if (statementListContainerIndex >= 0 && metaContainerIndex < 0) {
-      ancestors = ListSequence.fromList(ancestors).take(statementListContainerIndex).toListSequence();
+      ancestors = ListSequence.fromList(ancestors).take(statementListContainerIndex).toList();
     }
 
     return Sequence.fromIterable(SNodeOperations.ofConcept(ancestors, CONCEPTS.StatementList$m_)).last();
@@ -98,8 +98,8 @@ public class IntroduceLocalVariableRefactoring extends IntroduceVariableRefactor
     }
   }
   public static boolean isApplicable(SNode expr) {
-    return SNodeOperations.isInstanceOf(expr, CONCEPTS.Expression$mB) && ListSequence.fromList(SNodeOperations.getNodeAncestors(expr, CONCEPTS.Statement$P6, false)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
+    return SNodeOperations.isInstanceOf(expr, CONCEPTS.Expression$mB) && ListSequence.fromList(SNodeOperations.getNodeAncestors(expr, CONCEPTS.Statement$P6, false)).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      public Boolean invoke(SNode it) {
         return SNodeOperations.hasRole(it, LINKS.statement$53DE);
       }
     }).isNotEmpty();

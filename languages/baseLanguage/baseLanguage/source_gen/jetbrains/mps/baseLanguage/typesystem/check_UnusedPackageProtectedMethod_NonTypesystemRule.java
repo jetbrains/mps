@@ -11,7 +11,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.behavior.IFixableMethodReference__BehaviorDescriptor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
@@ -40,11 +39,7 @@ public class check_UnusedPackageProtectedMethod_NonTypesystemRule extends Abstra
             }
           }
           if (matches_toq0jf_a0a0a) {
-            if (!(ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(matchedNode_toq0jf_a0a0), CONCEPTS.IFixableMethodReference$z6)).any(new IWhereFilter<SNode>() {
-              public boolean accept(SNode call) {
-                return IFixableMethodReference__BehaviorDescriptor.getMethodDeclaration_id5DBbMQ3xohB.invoke(call) == matchedNode_toq0jf_a0a0 && !(ListSequence.fromList(SNodeOperations.getNodeAncestors(call, null, false)).contains(matchedNode_toq0jf_a0a0));
-              }
-            }))) {
+            if (!(ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(matchedNode_toq0jf_a0a0), CONCEPTS.IFixableMethodReference$z6)).any((call) -> IFixableMethodReference__BehaviorDescriptor.getMethodDeclaration_id5DBbMQ3xohB.invoke(call) == matchedNode_toq0jf_a0a0 && !(ListSequence.fromList(SNodeOperations.getNodeAncestors(call, null, false)).contains(matchedNode_toq0jf_a0a0))))) {
               {
                 final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$MnvL);
                 IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(matchedNode_toq0jf_a0a0, "Package protected method " + SNodeOperations.present(matchedNode_toq0jf_a0a0) + " is never used", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7938578788781949884", null, errorTarget);

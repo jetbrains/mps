@@ -29,21 +29,19 @@ public class Patternv3_Test extends BaseTransformationTest {
 
   @Test
   public void testMethod() throws Throwable {
-    getProject().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNode nodeToMatch = _quotation_createNode_oo3baa_a0a0a0a0a0a0e();
-        DefaultMatchingPattern pattern = new Pattern_oo3baa_a0b0a0a0a0a0e(_quotation_createNode_oo3baa_a0a0b0a0a0a0a0e());
-        final boolean matches = pattern.match(nodeToMatch);
-        Assert.assertTrue("Pattern match expected", matches);
-        {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_oo3baa_a0a0a0e0a0a0a0a0e());
-          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), pattern.getMatchedNode("printed"));
-          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-        }
+    getProject().getModelAccess().runReadAction(() -> {
+      SNode nodeToMatch = _quotation_createNode_oo3baa_a0a0a0a0a4();
+      DefaultMatchingPattern pattern = new Pattern_oo3baa_a0b0a0a0a4(_quotation_createNode_oo3baa_a0a0b0a0a0a4());
+      final boolean matches = pattern.match(nodeToMatch);
+      Assert.assertTrue("Pattern match expected", matches);
+      {
+        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_oo3baa_a0a0a0e0a0a0a4());
+        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), pattern.getMatchedNode("printed"));
+        Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
       }
     });
   }
-  private static SNode _quotation_createNode_oo3baa_a0a0a0a0a0a0e() {
+  private static SNode _quotation_createNode_oo3baa_a0a0a0a0a4() {
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
@@ -65,7 +63,7 @@ public class Patternv3_Test extends BaseTransformationTest {
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation"), quotedNode_3);
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_oo3baa_a0a0b0a0a0a0a0e() {
+  private static SNode _quotation_createNode_oo3baa_a0a0b0a0a0a4() {
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
@@ -86,7 +84,7 @@ public class Patternv3_Test extends BaseTransformationTest {
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation"), quotedNode_3);
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_oo3baa_a0a0a0e0a0a0a0a0e() {
+  private static SNode _quotation_createNode_oo3baa_a0a0a0e0a0a0a4() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf93d565d10L, "StringLiteral"));
     quotedNode_1 = nb.getResult();

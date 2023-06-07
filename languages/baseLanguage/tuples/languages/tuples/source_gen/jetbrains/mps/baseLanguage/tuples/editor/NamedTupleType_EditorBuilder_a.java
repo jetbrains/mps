@@ -164,7 +164,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     }
     editorCell.setSubstituteInfo(new SReferenceSubstituteInfoSmartReferenceDecorator(new SReferenceSubstituteInfo(editorCell, referenceLink, CONCEPTS.NamedTupleDeclaration$aM)));
     Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.LinkAttribute$v_);
-    Iterable<SNode> currentReferenceAttributes = Sequence.fromIterable(referenceAttributes).where((SNode it) -> Objects.equals(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(it), referenceLink));
+    Iterable<SNode> currentReferenceAttributes = Sequence.fromIterable(referenceAttributes).where((it) -> Objects.equals(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(it), referenceLink));
     if (Sequence.fromIterable(currentReferenceAttributes).isNotEmpty()) {
       EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
       return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentReferenceAttributes).first(), AttributeKind.REFERENCE, editorCell);
@@ -197,7 +197,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
         public String getText() {
           StringBuilder sb = new StringBuilder();
           String sep = "";
-          for (SNode ntcd : ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(myNode)).reversedList().translate((SNode ntd) -> SLinkOperations.getChildren(ntd, LINKS.component$wCHx))) {
+          for (SNode ntcd : ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(myNode)).reversedList().translate((ntd) -> SLinkOperations.getChildren(ntd, LINKS.component$wCHx))) {
             sb.append(sep).append(SPropertyOperations.getString(ntcd, PROPS.name$MnvL));
             sep = ", ";
           }

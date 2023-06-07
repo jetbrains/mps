@@ -29,9 +29,7 @@ import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.generator.template.TemplateVarContext;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
 import jetbrains.mps.lang.behavior.generator.template.util.LanguageIdCalculator;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -394,11 +392,7 @@ public class QueriesGenerated {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.annotation$K49I);
   }
   public static Iterable<SNode> sourceNodesQuery_6_6(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.method$w_in)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SPropertyOperations.getBoolean(it, PROPS.isAbstract$qvtK));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.method$w_in)).where((it) -> !(SPropertyOperations.getBoolean(it, PROPS.isAbstract$qvtK)));
   }
   public static Iterable<SNode> sourceNodesQuery_6_7(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.method$w_in);
@@ -411,11 +405,7 @@ public class QueriesGenerated {
   }
   public static Object varMacro_Value_3_0(final TemplateVarContext _context) {
     SModel bhModel = _context.getInputModel();
-    return ListSequence.fromList(SModelOperations.nodes(bhModel, CONCEPTS.ConceptBehavior$2)).sort(new ISelector<SNode, Long>() {
-      public Long select(SNode it) {
-        return MetaIdByDeclaration.getConceptId(SLinkOperations.getTarget(it, LINKS.concept$u6dL)).getIdValue();
-      }
-    }, true).toListSequence();
+    return ListSequence.fromList(SModelOperations.nodes(bhModel, CONCEPTS.ConceptBehavior$2)).sort((it) -> MetaIdByDeclaration.getConceptId(SLinkOperations.getTarget(it, LINKS.concept$u6dL)).getIdValue(), true).toList();
   }
   public static Object varMacro_Value_4_0(final TemplateVarContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.baseMethodDeclaration$pyYw);

@@ -52,7 +52,7 @@ public class RemoveUsedParameter_Test extends BaseTransformationTest {
         ChangeMethodSignatureParameters params = new ChangeMethodSignatureParameters(getNodeById("6221851280922498867"));
         ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$5xBj)).clear();
         ChangeMethodSignatureRefactoring ref = new ChangeMethodSignatureRefactoring(params, getNodeById("6221851280922498867"));
-        ref.setUsages(Sequence.fromIterable(Sequence.<SNode>singleton(getNodeById("6221851280922946029"))).toListSequence());
+        ref.setUsages(Sequence.fromIterable(Sequence.<SNode>singleton(getNodeById("6221851280922946029"))).toList());
         ref.doRefactoring();
         {
           List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("6221851280922498864"));

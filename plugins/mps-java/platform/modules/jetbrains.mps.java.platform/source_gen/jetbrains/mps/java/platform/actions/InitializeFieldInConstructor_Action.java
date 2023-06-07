@@ -20,11 +20,9 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.List;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -97,11 +95,7 @@ public class InitializeFieldInConstructor_Action extends BaseAction {
 
     final InitializeFieldInConstructorRefactoring refactoring = new InitializeFieldInConstructorRefactoring();
     refactoring.isApplicable(field);
-    Iterable<SNode> constructors = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(clazz, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("constructors", 5292274854859503373L, 0x5745e3015c8914d3L)))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return refactoring.doesNotContainFieldInitialization(it);
-      }
-    });
+    Iterable<SNode> constructors = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(clazz, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("constructors", 5292274854859503373L, 0x5745e3015c8914d3L)))).where((it) -> refactoring.doesNotContainFieldInitialization(it));
 
     SNodeReference[] selectedConstructors;
     SRepository repository = event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getRepository();
@@ -113,11 +107,7 @@ public class InitializeFieldInConstructor_Action extends BaseAction {
     } else if (Sequence.fromIterable(constructors).count() == 1) {
       selectedConstructors = new SNodeReference[]{SNodeOperations.getPointer(Sequence.fromIterable(constructors).first())};
     } else {
-      SNodeReference[] ctors = Sequence.fromIterable(constructors).select(new ISelector<SNode, SNodeReference>() {
-        public SNodeReference select(SNode it) {
-          return SNodeOperations.getPointer(it);
-        }
-      }).toGenericArray(SNodeReference.class);
+      SNodeReference[] ctors = Sequence.fromIterable(constructors).select((it) -> SNodeOperations.getPointer(it)).toGenericArray(SNodeReference.class);
       SelectConstructorsDialog selectConstructorsDialog = new SelectConstructorsDialog(ctors, event.getData(MPSCommonDataKeys.MPS_PROJECT));
       selectConstructorsDialog.setTitle("Choose Constructors to Add Initialization to");
       selectConstructorsDialog.show();

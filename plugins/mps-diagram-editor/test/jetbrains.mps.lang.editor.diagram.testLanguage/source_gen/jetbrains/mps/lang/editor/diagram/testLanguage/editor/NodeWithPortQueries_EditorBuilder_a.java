@@ -17,7 +17,6 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.HashSet;
 import jetbrains.jetpad.mapper.Mapper;
 import jetbrains.jetpad.projectional.diagram.view.DiagramNodeView;
@@ -141,16 +140,8 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       myPropertyCell_tny8cn_a2a.synchronize();
       myPropertyCell_tny8cn_a3a.synchronize();
       myPropertyCell_tny8cn_a4a.synchronize();
-      syncPortObjects(ListSequence.fromList(SLinkOperations.getChildren(getSNode(), LINKS.inputs$oxFv)).select(new ISelector<SNode, String>() {
-        public String select(SNode it) {
-          return SPropertyOperations.getString(it, PROPS.name$MnvL);
-        }
-      }), myInputPorts.listIterator(), new HashSet<String>(myInputPorts));
-      syncPortObjects(ListSequence.fromList(SLinkOperations.getChildren(getSNode(), LINKS.outputs$oKtu)).select(new ISelector<SNode, String>() {
-        public String select(SNode it) {
-          return SPropertyOperations.getString(it, PROPS.name$MnvL);
-        }
-      }), myOutputPorts.listIterator(), new HashSet<String>(myOutputPorts));
+      syncPortObjects(ListSequence.fromList(SLinkOperations.getChildren(getSNode(), LINKS.inputs$oxFv)).select((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL)), myInputPorts.listIterator(), new HashSet<String>(myInputPorts));
+      syncPortObjects(ListSequence.fromList(SLinkOperations.getChildren(getSNode(), LINKS.outputs$oKtu)).select((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL)), myOutputPorts.listIterator(), new HashSet<String>(myOutputPorts));
     }
     public Mapper<SNode, DiagramNodeView> createMapper() {
       return new Mapper<SNode, DiagramNodeView>(getSNode(), createDiagramNodeView()) {

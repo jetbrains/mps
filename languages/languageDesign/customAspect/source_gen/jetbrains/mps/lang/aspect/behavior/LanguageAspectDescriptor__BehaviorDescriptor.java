@@ -17,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -38,11 +37,7 @@ public final class LanguageAspectDescriptor__BehaviorDescriptor extends BaseBHDe
   }
 
   /*package*/ static SNode getMethod_id7phNEaHi8Cl(@NotNull SNode __thisNode__, final SNodeReference md) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.member$L_2d), CONCEPTS.MethodInstance$jE)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getPointer(it, LINKS.decl$QvLv), md);
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.member$L_2d), CONCEPTS.MethodInstance$jE)).findFirst((it) -> Objects.equals(SLinkOperations.getPointer(it, LINKS.decl$QvLv), md));
   }
   /*package*/ static SNode getDescriptor_idUBgfI9eMAt(@NotNull SNode __thisNode__) {
     return SNodeOperations.getNode("r:10b498c7-d1bd-4b96-8a49-bb59f0e63af3(jetbrains.mps.lang.aspect.methods)", "293220601665589234");

@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -60,11 +59,7 @@ public final class Builder__BehaviorDescriptor extends BaseBHDescriptor {
     return false;
   }
   /*package*/ static SNode getContextBuilder_id67LR$5LPv$c(@NotNull SAbstractConcept __thisConcept__, SNode context) {
-    return SLinkOperations.getTarget(ListSequence.fromList(SNodeOperations.getNodeAncestors(context, CONCEPTS.BuilderContainer$fr, false)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !((boolean) BuilderContainer__BehaviorDescriptor.isLeaf_idNLqHO$EE0f.invoke(it));
-      }
-    }), LINKS.builder$HP0i);
+    return SLinkOperations.getTarget(ListSequence.fromList(SNodeOperations.getNodeAncestors(context, CONCEPTS.BuilderContainer$fr, false)).findFirst((it) -> !((boolean) BuilderContainer__BehaviorDescriptor.isLeaf_idNLqHO$EE0f.invoke(it))), LINKS.builder$HP0i);
   }
 
   /*package*/ Builder__BehaviorDescriptor() {

@@ -25,8 +25,6 @@ import jetbrains.mps.build.behavior.BuildProject__BehaviorDescriptor;
 import jetbrains.mps.build.util.Context;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import com.intellij.execution.process.ProcessHandler;
 import jetbrains.mps.ant.execution.Ant_Command;
@@ -80,15 +78,7 @@ public class BuildScript_Configuration_RunProfileState implements RunProfileStat
         // It dated back to initial revision, and I see no reason to keep it, assume default target is better.
         // Perhaps, shall ask user to specify one (or leave it to extra ant options
         mainTaskName.value = null;
-        undefinedMacro.value = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(projectNode, LINKS.macros$r8_A), CONCEPTS.BuildFolderMacro$mR)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return (SLinkOperations.getTarget(it, LINKS.defaultPath$9tbQ) == null);
-          }
-        }).select(new ISelector<SNode, String>() {
-          public String select(SNode it) {
-            return SPropertyOperations.getString(it, PROPS.name$MnvL);
-          }
-        }).toListSequence();
+        undefinedMacro.value = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(projectNode, LINKS.macros$r8_A), CONCEPTS.BuildFolderMacro$mR)).where((it) -> (SLinkOperations.getTarget(it, LINKS.defaultPath$9tbQ) == null)).select((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL)).toList();
       }
     });
     if (file.value == null) {

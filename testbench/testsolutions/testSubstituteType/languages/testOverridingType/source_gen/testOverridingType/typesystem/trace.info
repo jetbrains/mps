@@ -110,57 +110,52 @@
       <node id="2401040147804524711" at="24,87,25,195" concept="5" />
       <node id="2401040147804524711" at="25,195,26,304" concept="2" />
       <node id="6560794580689850748" at="29,50,30,42" concept="6" />
-      <node id="6115607286671941409" at="35,31,36,157" concept="6" />
-      <node id="6560794580689850748" at="39,12,40,49" concept="6" />
-      <node id="6560794580689850748" at="43,30,44,17" concept="6" />
-      <node id="1207964005026965387" at="46,98,47,16" concept="6" />
-      <node id="6560794580689850748" at="51,0,52,0" concept="8" trace="substitute$S6Bg" />
-      <node id="6560794580689850748" at="52,0,53,0" concept="8" trace="condition$SdSJ" />
-      <node id="6560794580689850748" at="56,0,57,0" concept="8" trace="OverrideAnnotation$xy" />
+      <node id="6560794580689850748" at="33,71,34,189" concept="6" />
+      <node id="6560794580689850748" at="35,12,36,49" concept="6" />
+      <node id="6560794580689850748" at="39,30,40,17" concept="6" />
+      <node id="1207964005026965387" at="42,98,43,16" concept="6" />
+      <node id="6560794580689850748" at="47,0,48,0" concept="8" trace="substitute$S6Bg" />
+      <node id="6560794580689850748" at="48,0,49,0" concept="8" trace="condition$SdSJ" />
+      <node id="6560794580689850748" at="52,0,53,0" concept="8" trace="OverrideAnnotation$xy" />
       <node id="6560794580689850748" at="20,0,22,0" concept="1" trace="typeof_OverrideAnnotation_InferenceRule#()V" />
-      <node id="6560794580689850748" at="39,10,41,5" concept="0" />
+      <node id="6560794580689850748" at="35,10,37,5" concept="0" />
       <node id="6560794580689850748" at="29,0,32,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="6560794580689850748" at="35,0,38,0" concept="4" trace="eval#()Z" />
-      <node id="6560794580689850748" at="43,0,46,0" concept="4" trace="overrides#()Z" />
-      <node id="6560794580689850748" at="46,0,49,0" concept="4" trace="supersedesAttributed#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Z" />
+      <node id="6560794580689850748" at="39,0,42,0" concept="4" trace="overrides#()Z" />
+      <node id="6560794580689850748" at="42,0,45,0" concept="4" trace="supersedesAttributed#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Z" />
       <node id="2401040147804524711" at="22,131,27,5" concept="0" />
-      <node id="6560794580689850748" at="33,71,38,15" concept="6" />
+      <node id="6560794580689850748" at="32,74,37,5" concept="3" />
       <node id="6560794580689850748" at="22,0,29,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-      <node id="6560794580689850748" at="32,74,41,5" concept="3" />
-      <node id="6560794580689850748" at="32,0,43,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="6560794580689850748" at="32,0,39,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <scope id="6560794580689850748" at="20,52,20,52" />
       <scope id="6560794580689850748" at="29,50,30,42" />
-      <scope id="7391008184910793745" at="35,31,36,157" />
-      <scope id="6560794580689850748" at="39,12,40,49" />
-      <scope id="6560794580689850748" at="43,30,44,17" />
-      <scope id="1870027727456291615" at="46,98,47,16" />
+      <scope id="6560794580689850748" at="33,71,34,189" />
+      <scope id="6560794580689850748" at="35,12,36,49" />
+      <scope id="6560794580689850748" at="39,30,40,17" />
+      <scope id="1870027727456291615" at="42,98,43,16" />
       <scope id="6560794580689850748" at="20,0,22,0" />
       <scope id="2401040147804524711" at="23,5,26,304">
         <var name="_info_12389875345" id="2401040147804524711" />
         <var name="_nodeToCheck_1029348928467" id="2401040147804524711" />
       </scope>
       <scope id="6560794580689850748" at="29,0,32,0" />
-      <scope id="6560794580689850748" at="35,0,38,0" />
-      <scope id="6560794580689850748" at="43,0,46,0" />
-      <scope id="6560794580689850748" at="46,0,49,0">
+      <scope id="6560794580689850748" at="39,0,42,0" />
+      <scope id="6560794580689850748" at="42,0,45,0">
         <var name="overrideAnnotation" id="6560794580689850748" />
         <var name="status" id="6560794580689850748" />
       </scope>
       <scope id="6560794580689850749" at="22,131,27,5" />
-      <scope id="6560794580689850748" at="33,71,38,15" />
+      <scope id="6560794580689850748" at="32,74,37,5" />
       <scope id="6560794580689850748" at="22,0,29,0">
         <var name="overrideAnnotation" id="6560794580689850748" />
         <var name="status" id="6560794580689850748" />
         <var name="typeCheckingContext" id="6560794580689850748" />
       </scope>
-      <scope id="6560794580689850748" at="32,74,41,5" />
-      <scope id="6560794580689850748" at="32,0,43,0">
+      <scope id="6560794580689850748" at="32,0,39,0">
         <var name="argument" id="6560794580689850748" />
       </scope>
-      <unit id="6560794580689850748" at="55,0,58,0" name="testOverridingType.typesystem.typeof_OverrideAnnotation_InferenceRule$CONCEPTS" />
-      <unit id="6560794580689850748" at="34,40,38,7" name="testOverridingType.typesystem.typeof_OverrideAnnotation_InferenceRule$1" />
-      <unit id="6560794580689850748" at="50,0,54,0" name="testOverridingType.typesystem.typeof_OverrideAnnotation_InferenceRule$LINKS" />
-      <unit id="6560794580689850748" at="19,0,59,0" name="testOverridingType.typesystem.typeof_OverrideAnnotation_InferenceRule" />
+      <unit id="6560794580689850748" at="51,0,54,0" name="testOverridingType.typesystem.typeof_OverrideAnnotation_InferenceRule$CONCEPTS" />
+      <unit id="6560794580689850748" at="46,0,50,0" name="testOverridingType.typesystem.typeof_OverrideAnnotation_InferenceRule$LINKS" />
+      <unit id="6560794580689850748" at="19,0,55,0" name="testOverridingType.typesystem.typeof_OverrideAnnotation_InferenceRule" />
     </file>
   </root>
   <root nodeRef="r:d8c6e16f-e698-4fc4-9c7f-4a279bcfaaf0(testOverridingType.typesystem)/6572489169071324640">

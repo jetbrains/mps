@@ -13,8 +13,6 @@ import jetbrains.mps.project.MPSExtentions;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcs.diff.merge.MergeSession;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
@@ -88,11 +86,7 @@ import jetbrains.mps.extapi.model.SModelData;
         LOG.info("Merging " + baseModel.getReference() + "...");
       }
       final MergeSession mergeSession = MergeSession.createMergeSession(baseModel, localModel, latestModel);
-      int conflictingChangesCount = Sequence.fromIterable(mergeSession.getAllChanges()).where(new IWhereFilter<ModelChange>() {
-        public boolean accept(ModelChange c) {
-          return Sequence.fromIterable(mergeSession.getConflictedWith(c)).isNotEmpty();
-        }
-      }).count();
+      int conflictingChangesCount = Sequence.fromIterable(mergeSession.getAllChanges()).where((c) -> Sequence.fromIterable(mergeSession.getConflictedWith(c)).isNotEmpty()).count();
       if (conflictingChangesCount == 0) {
         if (LOG.isInfoLevel()) {
           LOG.info(String.format("%s: %d changes detected: %d local and %d latest.", myModelName, Sequence.fromIterable(mergeSession.getAllChanges()).count(), ListSequence.fromList(mergeSession.getMyChangeSet().getModelChanges()).count(), ListSequence.fromList(mergeSession.getRepositoryChangeSet().getModelChanges()).count()));

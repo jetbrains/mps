@@ -9,7 +9,6 @@ import java.util.Set;
 import jetbrains.mps.debugger.java.api.state.proxy.ValueWrapperFactory;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 
 @GeneratedClass(node = "r:4388830e-b413-4ab4-a4d2-e76a7bc17a27(jetbrains.mps.debugger.java.runtime.state.customViewers)/7129857096176465096", model = "r:4388830e-b413-4ab4-a4d2-e76a7bc17a27(jetbrains.mps.debugger.java.runtime.state.customViewers)")
 public class BaseLanguageCustomViewers implements ApplicationComponent {
@@ -26,18 +25,10 @@ public class BaseLanguageCustomViewers implements ApplicationComponent {
     SetSequence.fromSet(myFactories).addElement(new ArrayWrapperFactory());
     SetSequence.fromSet(myFactories).addElement(new PrimitiveWrapperFactory());
     SetSequence.fromSet(myFactories).addElement(new StringWrapperFactory());
-    SetSequence.fromSet(myFactories).visitAll(new IVisitor<ValueWrapperFactory>() {
-      public void visit(ValueWrapperFactory it) {
-        myCustomViewerManager.addFactory(it);
-      }
-    });
+    SetSequence.fromSet(myFactories).visitAll((it) -> myCustomViewerManager.addFactory(it));
   }
   public void disposeComponent() {
-    SetSequence.fromSet(myFactories).visitAll(new IVisitor<ValueWrapperFactory>() {
-      public void visit(ValueWrapperFactory it) {
-        myCustomViewerManager.removeFactory(it);
-      }
-    });
+    SetSequence.fromSet(myFactories).visitAll((it) -> myCustomViewerManager.removeFactory(it));
     SetSequence.fromSet(myFactories).clear();
   }
 }

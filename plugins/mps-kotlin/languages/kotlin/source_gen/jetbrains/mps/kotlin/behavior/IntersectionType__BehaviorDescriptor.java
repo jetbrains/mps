@@ -18,7 +18,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.kotlin.api.types.identifiers.UnmatchableType;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -43,11 +42,7 @@ public final class IntersectionType__BehaviorDescriptor extends BaseBHDescriptor
     }
   }
   /*package*/ static String toString_id4nn3FPlZH$r(@NotNull SNode __thisNode__, final boolean erased) {
-    return IterableUtils.join(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.components$_ids)).select(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return (String) IType__BehaviorDescriptor.toString_id4nn3FPlZH$r.invoke(it, ((boolean) erased));
-      }
-    }), " & ");
+    return IterableUtils.join(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.components$_ids)).select((it) -> (String) IType__BehaviorDescriptor.toString_id4nn3FPlZH$r.invoke(it, ((boolean) erased))), " & ");
   }
   @NotNull
   /*package*/ static TypeKey typeKey_idJmO2PmZtH5(@NotNull SNode __thisNode__) {

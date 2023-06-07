@@ -22,12 +22,9 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.fileTypes.MPSFileTypesManager;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.List;
 import jetbrains.mps.vfs.refresh.FileSystemListener;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.util.io.FileUtil;
 import jetbrains.mps.InternalFlag;
@@ -113,29 +110,17 @@ import java.util.Arrays;
 
   /*package*/ void processDelete(String path) {
     final IFile file = FS.getFile(path);
-    ListSequence.fromList(getData(path, EventKind.REMOVED)).visitAll(new IVisitor<ListenerData>() {
-      public void visit(ListenerData it) {
-        it.removed.add(file);
-      }
-    });
+    ListSequence.fromList(getData(path, EventKind.REMOVED)).visitAll((it) -> it.removed.add(file));
   }
 
   /*package*/ void processCreate(String path) {
     final IFile file = FS.getFile(path);
-    ListSequence.fromList(getData(path, EventKind.CREATED)).visitAll(new IVisitor<ListenerData>() {
-      public void visit(ListenerData it) {
-        it.added.add(file);
-      }
-    });
+    ListSequence.fromList(getData(path, EventKind.CREATED)).visitAll((it) -> it.added.add(file));
   }
 
   /*package*/ void processContentChanged(String path) {
     final IFile file = FS.getFile(path);
-    ListSequence.fromList(getData(path, EventKind.CONTENT_CHANGED)).visitAll(new IVisitor<ListenerData>() {
-      public void visit(ListenerData it) {
-        it.changed.add(file);
-      }
-    });
+    ListSequence.fromList(getData(path, EventKind.CONTENT_CHANGED)).visitAll((it) -> it.changed.add(file));
   }
 
   @Override
@@ -145,26 +130,14 @@ import java.util.Arrays;
 
   public List<ListenerData> getData(final String eventPath, final EventKind kind) {
     FileSystemListenersContainer.ListenersForPath listeners = myListenersContainer.getListenersForPath(eventPath);
-    Iterable<FileSystemListener> ancestors = ListSequence.fromList(listeners.ancestorListeners).where(new IWhereFilter<FileSystemListener>() {
-      public boolean accept(FileSystemListener l) {
-        return acceptAncestor(eventPath, l, kind);
-      }
-    });
+    Iterable<FileSystemListener> ancestors = ListSequence.fromList(listeners.ancestorListeners).where((l) -> acceptAncestor(eventPath, l, kind));
     Iterable<FileSystemListener> concretePathListeners = listeners.concretePathListeners;
-    Iterable<FileSystemListener> descendants = ListSequence.fromList(listeners.descendantsListeners).where(new IWhereFilter<FileSystemListener>() {
-      public boolean accept(FileSystemListener l) {
-        return acceptDescendant(eventPath, l, kind);
-      }
-    });
+    Iterable<FileSystemListener> descendants = ListSequence.fromList(listeners.descendantsListeners).where((l) -> acceptDescendant(eventPath, l, kind));
     List<FileSystemListener> allListeners = ListSequence.fromList(new ArrayList<FileSystemListener>());
     ListSequence.fromList(allListeners).addSequence(Sequence.fromIterable(ancestors));
     ListSequence.fromList(allListeners).addSequence(Sequence.fromIterable(concretePathListeners));
     ListSequence.fromList(allListeners).addSequence(Sequence.fromIterable(descendants));
-    return ListSequence.fromList(allListeners).select(new ISelector<FileSystemListener, ListenerData>() {
-      public ListenerData select(FileSystemListener listener) {
-        return createNewDataIfAbsent(listener);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(allListeners).select((listener) -> createNewDataIfAbsent(listener)).toList();
   }
 
   private ListenerData createNewDataIfAbsent(FileEventProcessor listener) {

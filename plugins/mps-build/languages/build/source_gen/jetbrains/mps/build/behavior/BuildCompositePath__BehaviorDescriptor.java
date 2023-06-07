@@ -21,7 +21,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.vfs.FileSystem;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -79,19 +78,11 @@ public final class BuildCompositePath__BehaviorDescriptor extends BaseBHDescript
       return ListSequence.fromList(new ArrayList<String>());
     }
     List<IFile> children = file.getChildren();
-    Iterable<String> names = ListSequence.fromList(children).select(new ISelector<IFile, String>() {
-      public String select(IFile it) {
-        return it.getName();
-      }
-    });
+    Iterable<String> names = ListSequence.fromList(children).select((it) -> it.getName());
     if (file.getParent() != null) {
       names = Sequence.fromIterable(names).union(Sequence.fromIterable(Sequence.<String>singleton("..")));
     }
-    return Sequence.fromIterable(names).sort(new ISelector<String, String>() {
-      public String select(String it) {
-        return it;
-      }
-    }, true).toListSequence();
+    return Sequence.fromIterable(names).sort((it) -> it, true).toList();
   }
   /*package*/ static IFile getFile_idIG8oXsODon(@NotNull SNode __thisNode__, Context context) {
     String basePath = BuildRelativePath__BehaviorDescriptor.getBasePath_id4jjtc7WZMYz.invoke(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.BuildRelativePath$Kc, false, false), context);

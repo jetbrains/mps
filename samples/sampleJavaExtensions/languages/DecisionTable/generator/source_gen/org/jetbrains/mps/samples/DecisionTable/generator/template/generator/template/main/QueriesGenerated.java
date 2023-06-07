@@ -16,7 +16,6 @@ import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import org.jetbrains.mps.samples.DecisionTable.behavior.DecisionTable__BehaviorDescriptor;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.generator.template.WeavingMappingRuleContext;
 import java.util.Map;
 import java.util.HashMap;
@@ -81,24 +80,20 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.expectedType$2Lhp);
   }
   public static Iterable<SNode> sourceNodesQuery_0_0(final SourceSubstituteMacroNodesContext _context) {
-    return SetSequence.fromSet(DecisionTable__BehaviorDescriptor.referencedLVDs_id3mtcPBWFCmw.invoke(_context.getNode())).toListSequence();
+    return SetSequence.fromSet(DecisionTable__BehaviorDescriptor.referencedLVDs_id3mtcPBWFCmw.invoke(_context.getNode())).toList();
   }
   public static Iterable<SNode> sourceNodesQuery_0_1(final SourceSubstituteMacroNodesContext _context) {
-    return SetSequence.fromSet(DecisionTable__BehaviorDescriptor.referencedParams_id3mtcPBWFDo3.invoke(_context.getNode())).toListSequence();
+    return SetSequence.fromSet(DecisionTable__BehaviorDescriptor.referencedParams_id3mtcPBWFDo3.invoke(_context.getNode())).toList();
   }
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
-    return SetSequence.fromSet(DecisionTable__BehaviorDescriptor.referencedLVDs_id3mtcPBWFCmw.invoke(_context.getNode())).toListSequence();
+    return SetSequence.fromSet(DecisionTable__BehaviorDescriptor.referencedLVDs_id3mtcPBWFCmw.invoke(_context.getNode())).toList();
   }
   public static Iterable<SNode> sourceNodesQuery_1_1(final SourceSubstituteMacroNodesContext _context) {
-    return SetSequence.fromSet(DecisionTable__BehaviorDescriptor.referencedParams_id3mtcPBWFDo3.invoke(_context.getNode())).toListSequence();
+    return SetSequence.fromSet(DecisionTable__BehaviorDescriptor.referencedParams_id3mtcPBWFDo3.invoke(_context.getNode())).toList();
   }
   public static Iterable<SNode> sourceNodesQuery_1_2(final SourceSubstituteMacroNodesContext _context) {
     List<SNode> rowHeaders = SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.DecisionTable$ri, false, false), LINKS.rowHeaders$2LYs);
-    ListSequence.fromList(rowHeaders).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        it.putUserObject("colHeader", _context.getNode());
-      }
-    });
+    ListSequence.fromList(rowHeaders).visitAll((it) -> it.putUserObject("colHeader", _context.getNode()));
     return rowHeaders;
   }
   public static Iterable<SNode> sourceNodesQuery_1_3(final SourceSubstituteMacroNodesContext _context) {

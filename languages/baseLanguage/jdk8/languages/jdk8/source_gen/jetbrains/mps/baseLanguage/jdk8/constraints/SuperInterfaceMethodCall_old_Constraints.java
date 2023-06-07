@@ -25,7 +25,6 @@ import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.scopes.MethodsScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.scopes.Members;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -79,11 +78,7 @@ public class SuperInterfaceMethodCall_old_Constraints extends BaseConstraintsDes
               return new EmptyScope();
             }
             SNode classifierType = Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(superClassifier);
-            MethodsScope scope = new MethodsScope(classifierType, Sequence.fromIterable(Members.visibleInstanceMethods(classifierType, _context.getContextNode())).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return !((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(it));
-              }
-            }));
+            MethodsScope scope = new MethodsScope(classifierType, Sequence.fromIterable(Members.visibleInstanceMethods(classifierType, _context.getContextNode())).where((it) -> !((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(it))));
             return scope;
           }
         };

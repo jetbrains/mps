@@ -21,10 +21,8 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.internal.make.runtime.script.TargetRange;
 import jetbrains.mps.internal.make.runtime.script.Script;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.internal.make.runtime.util.GraphAnalyzer;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 
 @GeneratedClass(node = "r:9e5578e0-37f0-4c9b-a301-771bcb453678(jetbrains.mps.make.script)/1479818508463261244", model = "r:9e5578e0-37f0-4c9b-a301-771bcb453678(jetbrains.mps.make.script)")
 public class ScriptBuilder {
@@ -125,11 +123,7 @@ public class ScriptBuilder {
     return facetsView;
   }
   private void collectTargets(Iterable<IFacet.Name> sortedFacets, TargetRange tr, final Map<IFacet.Name, IFacet> facetsView) {
-    List<ITarget> allTargets = ListSequence.fromList(Sequence.fromIterable(sortedFacets).translate(new ITranslator2<IFacet.Name, ITarget>() {
-      public Iterable<ITarget> translate(IFacet.Name fname) {
-        return MapSequence.fromMap(facetsView).get(fname).targets();
-      }
-    }).toListSequence()).reversedList();
+    List<ITarget> allTargets = ListSequence.fromList(Sequence.fromIterable(sortedFacets).translate((fname) -> MapSequence.fromMap(facetsView).get(fname).targets()).toList()).reversedList();
     for (ITarget trg : ListSequence.fromList(allTargets)) {
       if (SetSequence.fromSet(requestedTargets).contains(trg.getName())) {
         tr.addTarget(trg);
@@ -143,11 +137,7 @@ public class ScriptBuilder {
     if (ListSequence.fromList(errors).isNotEmpty()) {
       return;
     }
-    tr.addRelatedPrecursors(Sequence.fromIterable(MapSequence.fromMap(facetsView).values()).translate(new ITranslator2<IFacet, ITarget>() {
-      public Iterable<ITarget> translate(IFacet fct) {
-        return fct.targets();
-      }
-    }));
+    tr.addRelatedPrecursors(Sequence.fromIterable(MapSequence.fromMap(facetsView).values()).translate((fct) -> fct.targets()));
   }
   private void collectRefs(final Map<IFacet.Name, FacetRefs> refs, Map<IFacet.Name, IFacet> facetsView) {
     for (IFacet fct : Sequence.fromIterable(MapSequence.fromMap(facetsView).values())) {
@@ -166,19 +156,11 @@ public class ScriptBuilder {
     GraphAnalyzer<IFacet.Name> ga = new GraphAnalyzer<IFacet.Name>() {
       @Override
       public Iterable<IFacet.Name> forwardEdges(IFacet.Name v) {
-        return ListSequence.fromList(MapSequence.fromMap(refs).get(v).extendedBy).select(new ISelector<IFacet, IFacet.Name>() {
-          public IFacet.Name select(IFacet f) {
-            return f.getName();
-          }
-        });
+        return ListSequence.fromList(MapSequence.fromMap(refs).get(v).extendedBy).select((f) -> f.getName());
       }
       @Override
       public Iterable<IFacet.Name> backwardEdges(IFacet.Name v) {
-        return ListSequence.fromList(MapSequence.fromMap(refs).get(v).extended).select(new ISelector<IFacet, IFacet.Name>() {
-          public IFacet.Name select(IFacet f) {
-            return f.getName();
-          }
-        });
+        return ListSequence.fromList(MapSequence.fromMap(refs).get(v).extended).select((f) -> f.getName());
       }
       @Override
       public Iterable<IFacet.Name> vertices() {

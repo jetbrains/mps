@@ -20,7 +20,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.core.behavior.ISuppressErrors__BehaviorDescriptor;
@@ -66,11 +65,7 @@ public final class LoopMacro__BehaviorDescriptor extends BaseBHDescriptor {
     return "cv:" + SPropertyOperations.getString(__thisNode__, PROPS.counterVarName$YOXn);
   }
   /*package*/ static boolean isLoopVariableUsed_id5UJTmNZqi81(@NotNull SNode __thisNode__, final SEnumerationLiteral variable) {
-    return ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getParent(__thisNode__), CONCEPTS.LoopMacroNamespaceAccessor$DO, false, new SAbstractConcept[]{})).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getEnum(it, PROPS.variable$ww9P) == variable;
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getParent(__thisNode__), CONCEPTS.LoopMacroNamespaceAccessor$DO, false, new SAbstractConcept[]{})).any((it) -> SPropertyOperations.getEnum(it, PROPS.variable$ww9P) == variable);
   }
   /*package*/ static List<SNode> contextVariables_id6suuiWX_oN7(@NotNull SNode __thisNode__) {
     List<SNode> rv = new ArrayList<SNode>();
@@ -85,11 +80,7 @@ public final class LoopMacro__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static boolean suppress_id2WmWrdnSpX7(@NotNull SNode __thisNode__, SNode child) {
     // child is not under any other macro except this one
-    return ((boolean) ISuppressErrors__BehaviorDescriptor.suppress_id2WmWrdnSpX7.invokeSuper(__thisNode__, CONCEPTS.LoopMacro$1T, child)) && ListSequence.fromList(SNodeOperations.getNodeAncestors(child, null, true)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Sequence.fromIterable(SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(it), CONCEPTS.AbstractMacro$bo)).isNotEmpty();
-      }
-    }) == SNodeOperations.getParent(__thisNode__);
+    return ((boolean) ISuppressErrors__BehaviorDescriptor.suppress_id2WmWrdnSpX7.invokeSuper(__thisNode__, CONCEPTS.LoopMacro$1T, child)) && ListSequence.fromList(SNodeOperations.getNodeAncestors(child, null, true)).findFirst((it) -> Sequence.fromIterable(SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(it), CONCEPTS.AbstractMacro$bo)).isNotEmpty()) == SNodeOperations.getParent(__thisNode__);
   }
 
   /*package*/ LoopMacro__BehaviorDescriptor() {

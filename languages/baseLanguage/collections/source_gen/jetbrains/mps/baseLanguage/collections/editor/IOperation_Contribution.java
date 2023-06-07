@@ -32,6 +32,7 @@ public class IOperation_Contribution extends SubstituteMenuBase {
     result.add(new SMP_Include_kt4yqg_a());
     result.add(new SMP_Include_kt4yqg_b());
     result.add(new SMP_Include_kt4yqg_c());
+    result.add(new SMP_Include_kt4yqg_d());
     return result;
   }
 
@@ -55,6 +56,23 @@ public class IOperation_Contribution extends SubstituteMenuBase {
   public class SMP_Include_kt4yqg_b extends IncludeSubstituteMenuSubstituteMenuPart {
 
     public SMP_Include_kt4yqg_b() {
+      super(new EditorMenuDescriptorBase("include " + "named substitute menu " + "substitute_IOperation_StreamType", new SNodePointer("r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)", "5830215984125596064")));
+    }
+
+    @Nullable
+    @Override
+    protected SubstituteMenuLookup getMenuLookup(SubstituteMenuContext _context) {
+      final EditorContext editorContext = _context.getEditorContext();
+      SAbstractConcept conceptToFindMenuFor = getConceptToFindMenuFor(_context);
+      return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.baseLanguage.collections.editor.substitute_IOperation_StreamType");
+    }
+    private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
+      return CONCEPTS.IOperation$ga;
+    }
+  }
+  public class SMP_Include_kt4yqg_c extends IncludeSubstituteMenuSubstituteMenuPart {
+
+    public SMP_Include_kt4yqg_c() {
       super(new EditorMenuDescriptorBase("include " + "named substitute menu " + "substitute_IOperation_ArrayType", new SNodePointer("r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)", "1741258697586933273")));
     }
 
@@ -69,9 +87,9 @@ public class IOperation_Contribution extends SubstituteMenuBase {
       return CONCEPTS.IOperation$ga;
     }
   }
-  public class SMP_Include_kt4yqg_c extends IncludeSubstituteMenuSubstituteMenuPart {
+  public class SMP_Include_kt4yqg_d extends IncludeSubstituteMenuSubstituteMenuPart {
 
-    public SMP_Include_kt4yqg_c() {
+    public SMP_Include_kt4yqg_d() {
       super(new EditorMenuDescriptorBase("include " + "named substitute menu " + "substitute_IOperation_MappingType", new SNodePointer("r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)", "1741258697586933408")));
     }
 

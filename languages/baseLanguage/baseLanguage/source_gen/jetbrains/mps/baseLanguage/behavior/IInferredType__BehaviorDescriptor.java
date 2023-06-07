@@ -13,44 +13,24 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.baseLanguage.typesystem.InferenceHelper;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class IInferredType__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6f392ce92f8c71c7L, "jetbrains.mps.baseLanguage.structure.IInferredType");
 
   public static final SMethod<SNode> getTypeToInfer_id6WTbe$Jz7ah = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTypeToInfer").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8014486391919243921L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> getTypeToInferRecursively_idnSboOd3Ft4 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTypeToInferRecursively").modifiers(9, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(430143848246589252L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypeToInfer_id6WTbe$Jz7ah, getTypeToInferRecursively_idnSboOd3Ft4);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypeToInfer_id6WTbe$Jz7ah);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
+  @Deprecated
   /*package*/ static SNode getTypeToInfer_id6WTbe$Jz7ah(@NotNull SAbstractConcept __thisConcept__, SNode initialType) {
-    return ((SNode) IInferredType__BehaviorDescriptor.getTypeToInferRecursively_idnSboOd3Ft4.invoke(__thisConcept__, SNodeOperations.copyNode(initialType)));
-  }
-  /*package*/ static SNode getTypeToInferRecursively_idnSboOd3Ft4(@NotNull SAbstractConcept __thisConcept__, SNode initialType) {
-    // Remove bounds as we wont use them for inference
-    if (SNodeOperations.isInstanceOf(initialType, CONCEPTS.LowerBoundType$nl)) {
-      initialType = SLinkOperations.getTarget(SNodeOperations.cast(initialType, CONCEPTS.LowerBoundType$nl), LINKS.bound$$a6H);
-    } else if (SNodeOperations.isInstanceOf(initialType, CONCEPTS.UpperBoundType$RS)) {
-      initialType = SLinkOperations.getTarget(SNodeOperations.cast(initialType, CONCEPTS.UpperBoundType$RS), LINKS.bound$ciZM);
-    }
-
-    for (SNode child : SNodeOperations.getChildren(initialType)) {
-      SNode changed = IInferredType__BehaviorDescriptor.getTypeToInferRecursively_idnSboOd3Ft4.invoke(__thisConcept__, child);
-      if (changed != child) {
-        SNodeOperations.replaceWithAnother(child, SNodeOperations.copyNode(changed));
-      }
-    }
-
-    return initialType;
+    return InferenceHelper.getTypeToInfer(initialType);
   }
 
   /*package*/ IInferredType__BehaviorDescriptor() {
@@ -82,8 +62,6 @@ public final class IInferredType__BehaviorDescriptor extends BaseBHDescriptor {
     switch (methodIndex) {
       case 0:
         return (T) ((SNode) getTypeToInfer_id6WTbe$Jz7ah(concept, (SNode) parameters[0]));
-      case 1:
-        return (T) ((SNode) getTypeToInferRecursively_idnSboOd3Ft4(concept, (SNode) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -99,15 +77,5 @@ public final class IInferredType__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept LowerBoundType$nl = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, "jetbrains.mps.baseLanguage.structure.LowerBoundType");
-    /*package*/ static final SConcept UpperBoundType$RS = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, "jetbrains.mps.baseLanguage.structure.UpperBoundType");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink bound$$a6H = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, 0x110dae9f25bL, "bound");
-    /*package*/ static final SContainmentLink bound$ciZM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, 0x110daeaa84bL, "bound");
   }
 }

@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.kotlin.api.declaration.ParameterDeclaration;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.kotlin.api.declaration.TypeParameterDeclaration;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.kotlin.api.declaration.FunctionDeclaration;
@@ -27,11 +26,7 @@ public class KotlinFunctionDeclaration implements InferrableFunctionDeclaration 
   }
   @Override
   public Iterable<ParameterDeclaration> getParameters() {
-    return ListSequence.fromList(IFunctionDeclaration__BehaviorDescriptor.getParameters_id6f3juM$_Kx4.invoke(myDeclaration)).select(new ISelector<SNode, KotlinParameterDeclaration>() {
-      public KotlinParameterDeclaration select(SNode param) {
-        return KotlinParameterDeclaration.of(param);
-      }
-    });
+    return ListSequence.fromList(IFunctionDeclaration__BehaviorDescriptor.getParameters_id6f3juM$_Kx4.invoke(myDeclaration)).select((param) -> KotlinParameterDeclaration.of(param));
   }
   @Override
   public Iterable<TypeParameterDeclaration> getTypeParameters() {

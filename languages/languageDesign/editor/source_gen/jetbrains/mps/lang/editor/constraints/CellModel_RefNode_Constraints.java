@@ -21,7 +21,6 @@ import java.util.List;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.structure.behavior.LinkDeclaration__BehaviorDescriptor;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -49,11 +48,7 @@ public class CellModel_RefNode_Constraints extends BaseConstraintsDescriptor {
             SNode editorComponent = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.BaseEditorComponent$49, true, false);
             SNode editedConcept = AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(editorComponent);
             List<SNode> links = AbstractConceptDeclaration__BehaviorDescriptor.getAggregationLinkDeclarations_idhEwILLp.invoke(editedConcept);
-            return ListScope.forResolvableElements(ListSequence.fromList(links).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return (boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(it);
-              }
-            }).toListSequence());
+            return ListScope.forResolvableElements(ListSequence.fromList(links).where((it) -> (boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(it)).toList());
           }
         };
       }

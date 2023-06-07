@@ -30,12 +30,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.vcs.diff.merge.MergeSession;
 import org.junit.Assert;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.vcs.diff.ModelChangeSet;
 import jetbrains.mps.vcs.diff.ChangeSetBuilder;
 import jetbrains.mps.vcs.diff.ChangeSet;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -152,13 +150,11 @@ public class MergeTest extends ChangesTestBase {
 
   @Test
   public void testConflictingChanges_AddChidlrenWithDifferentIds() {
-    testMergeNumberOfConflictingChanges(new _Adapters._return_P0_E0_to__void_P0_E0_adapter(new _FunctionTypes._return_P0_E0<SModel>() {
-      public SModel invoke() {
-        ChangesTestUtil.addBlockStatementToMethod2(getMineClassRoot(), null, false);
-        ChangesTestUtil.addBlockStatementToMethod2(getTheirsClassRoot(), null, true);
-        return myMineModel;
-      }
-    }), 2);
+    testMergeNumberOfConflictingChanges(new _Adapters._return_P0_E0_to__void_P0_E0_adapter(((_FunctionTypes._return_P0_E0<SModel>) () -> {
+      ChangesTestUtil.addBlockStatementToMethod2(getMineClassRoot(), null, false);
+      ChangesTestUtil.addBlockStatementToMethod2(getTheirsClassRoot(), null, true);
+      return myMineModel;
+    })), 2);
   }
 
 
@@ -340,8 +336,8 @@ public class MergeTest extends ChangesTestBase {
     change.invoke();
     final MergeSession session = MergeSession.createMergeSession(myBaseModel, myMineModel, myTheirsModel);
 
-    Assert.assertSame(Sequence.fromIterable(session.getAllChanges()).where(new IWhereFilter<ModelChange>() {
-      public boolean accept(ModelChange change) {
+    Assert.assertSame(Sequence.fromIterable(session.getAllChanges()).where(new _FunctionTypes._return_P1_E0<Boolean, ModelChange>() {
+      public Boolean invoke(ModelChange change) {
         return Sequence.fromIterable(session.getConflictedWith(change)).isNotEmpty();
       }
     }).count(), numberOfConflictingChanges);
@@ -359,13 +355,9 @@ public class MergeTest extends ChangesTestBase {
 
     final MergeSession session = MergeSession.createMergeSession(myBaseModel, myMineModel, myTheirsModel);
 
-    Assert.assertTrue(Sequence.fromIterable(session.getAllChanges()).all(new IWhereFilter<ModelChange>() {
-      public boolean accept(ModelChange c) {
-        return Sequence.fromIterable(session.getConflictedWith(c)).isEmpty();
-      }
-    }));
+    Assert.assertTrue(Sequence.fromIterable(session.getAllChanges()).all((c) -> Sequence.fromIterable(session.getConflictedWith(c)).isEmpty()));
 
-    session.applyChanges(Sequence.fromIterable(session.getAllChanges()).toListSequence());
+    session.applyChanges(Sequence.fromIterable(session.getAllChanges()).toList());
     ModelChangeSet changes = ChangeSetBuilder.buildChangeSet(expectedModel, session.getResultModel());
 
     Assert.assertTrue(dumpChangeSet(changes, session), ListSequence.fromList(changes.getModelChanges()).isEmpty());
@@ -389,17 +381,9 @@ public class MergeTest extends ChangesTestBase {
 
   private static String dumpChangeSet(ChangeSet changeSet, MergeSession session) {
     StringBuffer buf = new StringBuffer();
-    for (ModelChange change : ListSequence.fromList(changeSet.getModelChanges()).sort(new ISelector<ModelChange, String>() {
-      public String select(ModelChange c) {
-        return c.toString();
-      }
-    }, true)) {
+    for (ModelChange change : ListSequence.fromList(changeSet.getModelChanges()).sort((c) -> c.toString(), true)) {
       buf.append(change).append("\n");
-      for (ModelChange conflicting : Sequence.fromIterable(session.getConflictedWith(change)).sort(new ISelector<ModelChange, String>() {
-        public String select(ModelChange c) {
-          return c.toString();
-        }
-      }, true)) {
+      for (ModelChange conflicting : Sequence.fromIterable(session.getConflictedWith(change)).sort((c) -> c.toString(), true)) {
         buf.append("    ").append(conflicting).append("\n");
       }
     }

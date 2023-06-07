@@ -18,9 +18,7 @@ import jetbrains.mps.build.mps.util.ModulePlugins;
 import jetbrains.mps.build.mps.util.MPSModulesClosure;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.build.mps.util.ModuleFinder;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.generator.template.TemplateVarContext;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.SourceNodesQuery;
@@ -95,32 +93,20 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Iterable<SNode> sourceNodesQuery_0_0(final SourceSubstituteMacroNodesContext _context) {
     ModulePlugins modulePlugins = new ModulePlugins(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BuildProject$ae, false, false));
     Iterable<SNode> allModules = ((MPSModulesClosure) _context.getVariable("var:closure")).getAllModules();
-    List<SNode> additionalPlugins = ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.requiredPlugin$RiWU)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.plugin$9MhS);
-      }
-    }).toListSequence();
+    List<SNode> additionalPlugins = ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.requiredPlugin$RiWU)).select((it) -> SLinkOperations.getTarget(it, LINKS.plugin$9MhS)).toList();
     modulePlugins.collect(allModules, additionalPlugins);
     return modulePlugins.getPlugins(_context, true);
 
   }
   public static Iterable<SNode> sourceNodesQuery_0_1(final SourceSubstituteMacroNodesContext _context) {
     Iterable<SNode> libs = ((MPSModulesClosure) _context.getVariable("var:closure")).getAllModules();
-    return ModuleFinder.findModules(Sequence.fromIterable(libs).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.getNodeAncestor(it, CONCEPTS.BuildProject$ae, false, false) != ((SNode) _context.getVariable("var:buildProject"));
-      }
-    }), _context, _context.getNode());
+    return ModuleFinder.findModules(Sequence.fromIterable(libs).where((it) -> SNodeOperations.getNodeAncestor(it, CONCEPTS.BuildProject$ae, false, false) != ((SNode) _context.getVariable("var:buildProject"))), _context, _context.getNode());
   }
   public static Iterable<SNode> sourceNodesQuery_0_2(final SourceSubstituteMacroNodesContext _context) {
     // see reduce_TestModules, LOOP for mps.tests.path for details
     Iterable<SNode> libs = ((MPSModulesClosure) _context.getVariable("var:closure")).getAllModules();
     final SNode project = ((SNode) _context.getVariable("var:buildProject"));
-    return Sequence.fromIterable(libs).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.getNodeAncestor(it, CONCEPTS.BuildProject$ae, false, false) == project;
-      }
-    });
+    return Sequence.fromIterable(libs).where((it) -> SNodeOperations.getNodeAncestor(it, CONCEPTS.BuildProject$ae, false, false) == project);
   }
   public static Iterable<SNode> sourceNodesQuery_0_3(final SourceSubstituteMacroNodesContext _context) {
     return SNodeOperations.ofConcept(SLinkOperations.getChildren(((SNode) _context.getVariable("var:buildProject")), LINKS.macros$r8_A), CONCEPTS.BuildFolderMacro$mR);

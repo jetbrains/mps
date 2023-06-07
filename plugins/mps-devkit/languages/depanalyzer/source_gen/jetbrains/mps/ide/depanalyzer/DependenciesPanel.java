@@ -105,7 +105,7 @@ public class DependenciesPanel extends JPanel {
             ProgressMonitor monitor = new ProgressMonitorAdapter(indicator);
             try {
               if (myIsMeta) {
-                results[0] = myReferencesFinder.getUsedConcepts(Sequence.fromIterable(myActiveScope.getNodes()).toListSequence(), monitor);
+                results[0] = myReferencesFinder.getUsedConcepts(Sequence.fromIterable(myActiveScope.getNodes()).toList(), monitor);
               } else {
                 results[0] = myReferencesFinder.findRefsFromScopeToOuter(myActiveScope, myTargetsView.limitedTo(), monitor);
               }
@@ -137,7 +137,7 @@ public class DependenciesPanel extends JPanel {
         myMPSProject.getRepository().getModelAccess().runReadAction(() -> {
           try {
             if (myIsMeta) {
-              result.value = myReferencesFinder.getLanguageUsagesSearchResults(Sequence.fromIterable(myActiveScope.getNodes()).toListSequence(), targetScope, monitor);
+              result.value = myReferencesFinder.getLanguageUsagesSearchResults(Sequence.fromIterable(myActiveScope.getNodes()).toList(), targetScope, monitor);
             } else {
               result.value = myReferencesFinder.getRefsBetweenScopes(myActiveScope, targetScope, monitor);
             }

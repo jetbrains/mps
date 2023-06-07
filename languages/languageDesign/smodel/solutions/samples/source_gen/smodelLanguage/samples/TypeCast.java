@@ -7,7 +7,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -36,11 +35,7 @@ public class TypeCast {
   }
   public void cast_children_to_List(SNode statements) {
     List list1 = SLinkOperations.getChildren(statements, LINKS.statement$53DE);
-    List<SNode> list2 = ListSequence.fromList(SLinkOperations.getChildren(statements, LINKS.statement$53DE)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return it;
-      }
-    }).toListSequence();
+    List<SNode> list2 = ListSequence.fromList(SLinkOperations.getChildren(statements, LINKS.statement$53DE)).select((it) -> it).toList();
     List<SNode> list3 = (List<SNode>) SLinkOperations.getChildren(statements, LINKS.statement$53DE);
   }
 

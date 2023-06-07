@@ -22,12 +22,8 @@ public class GenericsCompilation {
   }
 
   public void test(FakeStream<Integer> stream) {
-    // complex outside generator: type of return or parameter on the funciton are BiFunction.T/U/R, but we actually need CollectionMerger.A/B/R that are inferred from statement (two first args) and receiver (stream of int)
-    stream.mergeInCollection("", new File(""), new CollectionMerger<Integer, U, V>() {
-      public R apply(List<Integer> a, List<String> b) {
-        return Collections.emptyList();
-      }
-    });
+    // complex outside generator: type of return or parameter on the function are BiFunction.T/U/R, but we actually need CollectionMerger.A/B/R that are inferred from statement (two first args) and receiver (stream of int)
+    // TODO this is not implemented properly for abstract classes, we would need input from the typesystem, which would only be possible using a coderules based implementation
     stream.mergeInCollectionInterface("", new File(""), (a, b) -> Collections.emptyList());
   }
 }

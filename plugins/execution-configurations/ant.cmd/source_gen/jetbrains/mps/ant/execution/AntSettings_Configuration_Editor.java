@@ -12,7 +12,6 @@ import java.awt.GridBagLayout;
 import jetbrains.mps.ide.common.LayoutUtil;
 import javax.swing.JLabel;
 import com.intellij.openapi.options.ConfigurationException;
-import com.intellij.openapi.util.Factory;
 
 public class AntSettings_Configuration_Editor extends SettingsEditorEx<AntSettings_Configuration> {
   private JCheckBox myUseAlternativeAnt;
@@ -49,10 +48,6 @@ public class AntSettings_Configuration_Editor extends SettingsEditorEx<AntSettin
     myAntOptions.setText(configuration.getAntOptions());
   }
   public AntSettings_Configuration_Editor() {
-    super(new Factory<AntSettings_Configuration>() {
-      public AntSettings_Configuration create() {
-        return new AntSettings_Configuration();
-      }
-    });
+    super(() -> new AntSettings_Configuration());
   }
 }

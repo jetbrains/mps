@@ -15,8 +15,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.kotlin.scopes.signed.SignatureScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -41,15 +39,7 @@ public final class IThisReceiverProvider__BehaviorDescriptor extends BaseBHDescr
 
   /*package*/ static boolean collectScope_id7DyvjiA20yV(@NotNull SNode __thisNode__, final ScopeCollector collector, final SNode childNode) {
     // Declare scopes for each type
-    Sequence.fromIterable(IThisReceiverProvider__BehaviorDescriptor.getThisTypeReferences_idxpyqH1FuA0.invoke(__thisNode__)).visitAll(new IVisitor<TypeReference>() {
-      public void visit(TypeReference thisRef) {
-        Sequence.fromIterable(IType__BehaviorDescriptor.getInstanceScopes_id1ODRHGtuist.invoke(thisRef.compute(), collector.getFilter(), childNode, ((boolean) true))).visitAll(new IVisitor<SignatureScope>() {
-          public void visit(SignatureScope scope) {
-            collector.declareScope(scope);
-          }
-        });
-      }
-    });
+    Sequence.fromIterable(IThisReceiverProvider__BehaviorDescriptor.getThisTypeReferences_idxpyqH1FuA0.invoke(__thisNode__)).visitAll((thisRef) -> Sequence.fromIterable(IType__BehaviorDescriptor.getInstanceScopes_id1ODRHGtuist.invoke(thisRef.compute(), collector.getFilter(), childNode, ((boolean) true))).visitAll((scope) -> collector.declareScope(scope)));
 
     return true;
   }

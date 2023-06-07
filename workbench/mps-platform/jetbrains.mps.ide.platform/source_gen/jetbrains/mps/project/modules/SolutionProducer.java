@@ -10,7 +10,6 @@ import jetbrains.mps.project.Solution;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
-import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.facets.JavaModuleFacetImpl;
 import jetbrains.mps.smodel.GeneralModuleFactory;
@@ -37,7 +36,7 @@ public class SolutionProducer {
 
     SolutionDescriptor descriptor = createSolutionDescriptor(namespace, descriptorFile);
     if (myJavaFacetLevel == JavaFacetLevel.Off) {
-      descriptor.getModuleFacetDescriptors().removeIf((ModuleFacetDescriptor d) -> JavaModuleFacet.FACET_TYPE.equals(d.getType()));
+      descriptor.getModuleFacetDescriptors().removeIf((d) -> JavaModuleFacet.FACET_TYPE.equals(d.getType()));
     }
     if (myJavaFacetLevel == JavaFacetLevel.Regular || myJavaFacetLevel == JavaFacetLevel.Contributor) {
       // XXX would be better to have this value set inside JMFI.forNewJavaCodeModule()

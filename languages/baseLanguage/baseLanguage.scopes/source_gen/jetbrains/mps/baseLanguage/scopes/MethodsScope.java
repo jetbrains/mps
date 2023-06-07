@@ -34,7 +34,7 @@ public class MethodsScope extends Scope {
         if (MapSequence.fromMap(nameToMethods).containsKey(name)) {
           ListSequence.fromList(MapSequence.fromMap(nameToMethods).get(name)).addElement(method);
         } else {
-          MapSequence.fromMap(nameToMethods).put(name, ListSequence.fromListAndArray(new ArrayList(), method));
+          MapSequence.fromMap(nameToMethods).put(name, ListSequence.fromListAndArray(new ArrayList<>(), method));
         }
       }
     }

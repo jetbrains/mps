@@ -11,7 +11,6 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.baseLanguage.behavior.IClassifierMember__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
@@ -42,11 +41,7 @@ public class check_GenericNewExpression_PointingToNonStaticFromStatic_NonTypesys
     if (target.value == null) {
       return;
     }
-    SNode method = ListSequence.fromList(SNodeOperations.getNodeAncestors(genericNewExpression, CONCEPTS.IClassifierMember$Na, false)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode member) {
-        return Objects.equals(SNodeOperations.getParent(member), SNodeOperations.getParent(target.value));
-      }
-    });
+    SNode method = ListSequence.fromList(SNodeOperations.getNodeAncestors(genericNewExpression, CONCEPTS.IClassifierMember$Na, false)).findFirst((member) -> Objects.equals(SNodeOperations.getParent(member), SNodeOperations.getParent(target.value)));
     if ((method == null) || !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(method))) {
       return;
     }

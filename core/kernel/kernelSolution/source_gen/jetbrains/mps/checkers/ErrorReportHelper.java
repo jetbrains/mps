@@ -11,10 +11,8 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.SModelStereotype;
 import org.jetbrains.mps.util.Condition;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import java.util.Map;
@@ -46,31 +44,21 @@ public class ErrorReportHelper {
       return false;
     }
     final Condition<SNode> acceptingSuppressors = Condition.<SNode>always();
-    return Sequence.fromIterable(new ErrorReportHelper().getActiveSuppressors(node, reportItem)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return acceptingSuppressors.met(it);
-      }
-    }).isEmpty();
+    return Sequence.fromIterable(new ErrorReportHelper().getActiveSuppressors(node, reportItem)).where((it) -> acceptingSuppressors.met(it)).isEmpty();
   }
 
   public Iterable<SNode> getActiveSuppressors(final SNode node, final NodeReportItem reportItem) {
-    Iterable<SNode> possibleSuppressors = ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode a) {
-        return ListSequence.fromList(getNodeAttributes(a)).concat(Sequence.fromIterable(Sequence.<SNode>singleton(a)));
-      }
-    });
-    return Sequence.fromIterable(SNodeOperations.ofConcept(possibleSuppressors, CONCEPTS.ISuppressErrors$qB)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode attr) {
-        boolean res = false;
-        try {
-          res = ((boolean) (Boolean) BHReflection.invoke0(attr, CONCEPTS.ISuppressErrors$qB, SMethodIdV2.create("suppress", 3567142084961743867L, 0x553941aeb020c32eL), reportItem));
-        } catch (Throwable t) {
-          if (LOG.isErrorLevel()) {
-            LOG.error("Exception while invoking #suppress() on node " + SNodeOperations.present(node), t);
-          }
+    Iterable<SNode> possibleSuppressors = ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).translate((a) -> ListSequence.fromList(getNodeAttributes(a)).concat(Sequence.fromIterable(Sequence.<SNode>singleton(a))));
+    return Sequence.fromIterable(SNodeOperations.ofConcept(possibleSuppressors, CONCEPTS.ISuppressErrors$qB)).where((attr) -> {
+      boolean res = false;
+      try {
+        res = ((boolean) (Boolean) BHReflection.invoke0(attr, CONCEPTS.ISuppressErrors$qB, SMethodIdV2.create("suppress", 3567142084961743867L, 0x553941aeb020c32eL), reportItem));
+      } catch (Throwable t) {
+        if (LOG.isErrorLevel()) {
+          LOG.error("Exception while invoking #suppress() on node " + SNodeOperations.present(node), t);
         }
-        return res;
       }
+      return res;
     });
   }
 

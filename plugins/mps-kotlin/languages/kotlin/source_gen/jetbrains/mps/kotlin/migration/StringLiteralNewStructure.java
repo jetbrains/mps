@@ -10,10 +10,8 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -37,29 +35,17 @@ public class StringLiteralNewStructure extends MigrationScriptBase {
     {
       SearchScope scope_gblszs_a0e = CommandUtil.createScope(m);
       final SearchScope scope_gblszs_a0e_0 = new EditableFilteringScope(scope_gblszs_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_gblszs_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.StringLiteral$V8, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS._content$JVfe)).isNotEmpty();
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNode newLine = SLinkOperations.addNewChild(it, LINKS.lines$FNV, null);
-          ListSequence.fromList(SLinkOperations.getChildren(newLine, LINKS.parts$AoNt)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS._content$JVfe)));
-          ListSequence.fromList(SLinkOperations.getChildren(it, LINKS._content$JVfe)).clear();
-        }
+      QueryExecutionContext context = () -> scope_gblszs_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.StringLiteral$V8, false)).where((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS._content$JVfe)).isNotEmpty()).visitAll((it) -> {
+        SNode newLine = SLinkOperations.addNewChild(it, LINKS.lines$FNV, null);
+        ListSequence.fromList(SLinkOperations.getChildren(newLine, LINKS.parts$AoNt)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS._content$JVfe)));
+        ListSequence.fromList(SLinkOperations.getChildren(it, LINKS._content$JVfe)).clear();
       });
 
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MultiLineStringLiteral$vQ, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNode stringLit = SNodeOperations.replaceWithNewChild(it, CONCEPTS.StringLiteral$V8);
-          SNode line = SLinkOperations.addNewChild(stringLit, LINKS.lines$FNV, null);
-          ListSequence.fromList(SLinkOperations.getChildren(line, LINKS.parts$AoNt)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.content___$Cmtz)));
-        }
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MultiLineStringLiteral$vQ, false)).visitAll((it) -> {
+        SNode stringLit = SNodeOperations.replaceWithNewChild(it, CONCEPTS.StringLiteral$V8);
+        SNode line = SLinkOperations.addNewChild(stringLit, LINKS.lines$FNV, null);
+        ListSequence.fromList(SLinkOperations.getChildren(line, LINKS.parts$AoNt)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.content___$Cmtz)));
       });
     }
 

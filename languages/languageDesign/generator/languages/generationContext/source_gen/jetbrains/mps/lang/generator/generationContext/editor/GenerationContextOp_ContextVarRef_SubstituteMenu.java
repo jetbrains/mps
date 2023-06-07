@@ -18,7 +18,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.generator.behavior.ContextVariableProvider__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
@@ -75,11 +74,7 @@ public class GenerationContextOp_ContextVarRef_SubstituteMenu extends Substitute
       List<String> rv = ListSequence.fromList(new ArrayList<String>());
       while (n != null) {
         if (SNodeOperations.isInstanceOf(n, CONCEPTS.ContextVariableProvider$BN)) {
-          ListSequence.fromList(rv).addSequence(ListSequence.fromList(ContextVariableProvider__BehaviorDescriptor.contextVariables_id6suuiWX_oN7.invoke(SNodeOperations.cast(n, CONCEPTS.ContextVariableProvider$BN))).select(new ISelector<SNode, String>() {
-            public String select(SNode it) {
-              return SPropertyOperations.getString(it, PROPS.name$MnvL);
-            }
-          }));
+          ListSequence.fromList(rv).addSequence(ListSequence.fromList(ContextVariableProvider__BehaviorDescriptor.contextVariables_id6suuiWX_oN7.invoke(SNodeOperations.cast(n, CONCEPTS.ContextVariableProvider$BN))).select((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL)));
         }
         n = Scope.parent(n);
       }

@@ -22,7 +22,6 @@ import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.generator.template.IfMacroContext;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
@@ -44,7 +43,6 @@ import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.language.SProperty;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SNodePointer;
@@ -298,25 +296,13 @@ public class QueriesGenerated {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "nodeVariableQ");
   }
   public static boolean ifMacro_Condition_0_0(final IfMacroContext _context) {
-    return ListSequence.fromList(SNodeOperations.getChildren(_context.getNode())).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.Antiquotation$UQ) || SNodeOperations.isInstanceOf(it, CONCEPTS.ListAntiquotation$XK));
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getChildren(_context.getNode())).all((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.Antiquotation$UQ) || SNodeOperations.isInstanceOf(it, CONCEPTS.ListAntiquotation$XK)));
   }
   public static boolean ifMacro_Condition_0_1(final IfMacroContext _context) {
-    return ListSequence.fromList(SNodeOperations.getChildren(_context.getNode())).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.Antiquotation$UQ);
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getChildren(_context.getNode())).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.Antiquotation$UQ));
   }
   public static boolean ifMacro_Condition_0_2(final IfMacroContext _context) {
-    return ListSequence.fromList(SNodeOperations.getChildren(_context.getNode())).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.ListAntiquotation$XK);
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getChildren(_context.getNode())).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.ListAntiquotation$XK));
   }
   public static boolean ifMacro_Condition_3_0(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate_old$cFl5) != null) || (SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$AyVT) != null);
@@ -651,11 +637,7 @@ public class QueriesGenerated {
     return result;
   }
   public static Iterable<SNode> sourceNodesQuery_9_1(final SourceSubstituteMacroNodesContext _context) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(_context.getNode()), CONCEPTS.PropertyAntiquotation$13)).sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it).getName();
-      }
-    }, true);
+    return Sequence.fromIterable(SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(_context.getNode()), CONCEPTS.PropertyAntiquotation$13)).sort((it) -> PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it).getName(), true);
   }
   public static Iterable<SNode> sourceNodesQuery_9_2(final SourceSubstituteMacroNodesContext _context) {
     final List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
@@ -710,11 +692,7 @@ public class QueriesGenerated {
     return result;
   }
   public static Iterable<SNode> sourceNodesQuery_9_3(final SourceSubstituteMacroNodesContext _context) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(_context.getNode()), CONCEPTS.ReferenceAntiquotation$Xh)).sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return (String) LinkAttribute__BehaviorDescriptor.getNameForReporting_id5gACAVBuLQd.invoke(it);
-      }
-    }, true);
+    return Sequence.fromIterable(SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(_context.getNode()), CONCEPTS.ReferenceAntiquotation$Xh)).sort((it) -> (String) LinkAttribute__BehaviorDescriptor.getNameForReporting_id5gACAVBuLQd.invoke(it), true);
   }
   public static Iterable<SNode> sourceNodesQuery_9_4(final SourceSubstituteMacroNodesContext _context) {
     List<SNode> result = new ArrayList<SNode>();

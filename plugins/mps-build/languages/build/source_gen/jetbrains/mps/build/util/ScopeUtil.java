@@ -12,10 +12,8 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.scope.FilteringScope;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
 import jetbrains.mps.scope.DelegatingScope;
 import org.jetbrains.annotations.Nullable;
@@ -58,26 +56,16 @@ public class ScopeUtil {
   }
 
   public static Iterable<Scope> imported(Iterable<SNode> importDeclarations, final SAbstractConcept concept, final SNode child) {
-    return Sequence.fromIterable(importDeclarations).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        // searching for smart references
-        return ListSequence.fromList(SNodeOperations.getReferences(it)).count() == 1 && SNodeOperations.isInstanceOf(SLinkOperations.getTargetNode(ListSequence.fromList(SNodeOperations.getReferences(it)).first()), CONCEPTS.ScopeProvider$aq);
-      }
-    }).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        // that references providers
-        return SNodeOperations.cast(SLinkOperations.getTargetNode(ListSequence.fromList(SNodeOperations.getReferences(it)).first()), CONCEPTS.ScopeProvider$aq);
-      }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        // check for cycles
-        return !(ListSequence.fromList(SNodeOperations.getNodeDescendants(it, null, false, new SAbstractConcept[]{})).contains(child));
-      }
-    }).select(new ISelector<SNode, Scope>() {
-      public Scope select(SNode it) {
-        return (Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(it, concept, child);
-      }
-    });
+    return Sequence.fromIterable(importDeclarations).where((it) -> {
+      // searching for smart references
+      return ListSequence.fromList(SNodeOperations.getReferences(it)).count() == 1 && SNodeOperations.isInstanceOf(SLinkOperations.getTargetNode(ListSequence.fromList(SNodeOperations.getReferences(it)).first()), CONCEPTS.ScopeProvider$aq);
+    }).select((it) -> {
+      // that references providers
+      return SNodeOperations.cast(SLinkOperations.getTargetNode(ListSequence.fromList(SNodeOperations.getReferences(it)).first()), CONCEPTS.ScopeProvider$aq);
+    }).where((it) -> {
+      // check for cycles
+      return !(ListSequence.fromList(SNodeOperations.getNodeDescendants(it, null, false, new SAbstractConcept[]{})).contains(child));
+    }).select((it) -> (Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(it, concept, child));
   }
 
   public static Scope unique(Scope scope) {
@@ -124,11 +112,7 @@ public class ScopeUtil {
       this.includeLayoutRoots = includeLayoutRoots;
     }
     private Iterable<SNode> getAllNodes() {
-      Iterable<SNode> seq = Sequence.fromIterable(artifacts.getArtifacts()).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (boolean) BuildLayout_Node__BehaviorDescriptor.isFile_id1bWeed$oPZ2.invoke(it) || (boolean) BuildLayout_Node__BehaviorDescriptor.isFolder_id1bWeed$oPYW.invoke(it);
-        }
-      });
+      Iterable<SNode> seq = Sequence.fromIterable(artifacts.getArtifacts()).where((it) -> (boolean) BuildLayout_Node__BehaviorDescriptor.isFile_id1bWeed$oPZ2.invoke(it) || (boolean) BuildLayout_Node__BehaviorDescriptor.isFolder_id1bWeed$oPYW.invoke(it));
       if (includeLayoutRoots) {
         seq = Sequence.fromIterable(seq).concat(Sequence.fromIterable(artifacts.getLayouts()));
       }
@@ -137,7 +121,7 @@ public class ScopeUtil {
     @Override
     public Iterable<SNode> getAvailableElements(@Nullable String prefix) {
       if ((prefix == null || prefix.length() == 0)) {
-        return Sequence.fromIterable(getAllNodes()).toListSequence();
+        return Sequence.fromIterable(getAllNodes()).toList();
       }
       List<SNode> result = new ArrayList<SNode>();
       for (SNode n : getAllNodes()) {
@@ -196,11 +180,7 @@ public class ScopeUtil {
     }
     @Override
     public Iterable<SNode> getAvailableElements(@Nullable String prefix) {
-      return Sequence.fromIterable(wrapped.getAvailableElements(prefix)).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return unwrap(it);
-        }
-      }).toListSequence();
+      return Sequence.fromIterable(wrapped.getAvailableElements(prefix)).select((it) -> unwrap(it)).toList();
     }
     @Override
     public String getReferenceText(SNode contextNode, SNode node) {

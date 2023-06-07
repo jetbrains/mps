@@ -16,7 +16,6 @@ import jetbrains.mps.util.NameUtil;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.lang.smodel.generator.baseLanguage.util.PropertiesUtil;
 import jetbrains.mps.generator.template.IfMacroContext;
@@ -27,8 +26,6 @@ import jetbrains.mps.lang.smodel.typesystem.RulesUtil;
 import jetbrains.mps.kernel.model.SModelUtil;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.generator.template.MappingScriptContext;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.ReductionRuleCondition;
 import java.util.HashMap;
@@ -130,11 +127,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return "d" + (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_4_0(final PropertyMacroContext _context) {
-    SNode constraints = ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.ConceptConstraints$Yt)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.concept$EVpZ) == _context.getNode();
-      }
-    }).first();
+    SNode constraints = ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.ConceptConstraints$Yt)).where((it) -> SLinkOperations.getTarget(it, LINKS.concept$EVpZ) == _context.getNode()).first();
     return NameUtil.longNameFromNamespaceAndShortName(SModelOperations.getModelName(_context.getInputModel()), SPropertyOperations.getString(constraints, PROPS.name$MnvL));
   }
   public static Object propertyMacro_GetValue_7_0(final PropertyMacroContext _context) {
@@ -331,18 +324,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.member$oLt6), LINKS.returnType$5xoi);
   }
   public static Iterable<SNode> sourceNodesQuery_3_0(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.property$FqKH)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.propertyGetter$AxNa) != null) || (SLinkOperations.getTarget(it, LINKS.propertySetter$GW6Y) != null) || (SLinkOperations.getTarget(it, LINKS.propertyValidator$WazF) != null);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.property$FqKH)).where((it) -> (SLinkOperations.getTarget(it, LINKS.propertyGetter$AxNa) != null) || (SLinkOperations.getTarget(it, LINKS.propertySetter$GW6Y) != null) || (SLinkOperations.getTarget(it, LINKS.propertyValidator$WazF) != null));
   }
   public static Iterable<SNode> sourceNodesQuery_3_1(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.property$FqKH)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.propertyGetter$AxNa) != null) || (SLinkOperations.getTarget(it, LINKS.propertySetter$GW6Y) != null) || (SLinkOperations.getTarget(it, LINKS.propertyValidator$WazF) != null);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.property$FqKH)).where((it) -> (SLinkOperations.getTarget(it, LINKS.propertyGetter$AxNa) != null) || (SLinkOperations.getTarget(it, LINKS.propertySetter$GW6Y) != null) || (SLinkOperations.getTarget(it, LINKS.propertyValidator$WazF) != null));
   }
   public static Iterable<SNode> sourceNodesQuery_3_2(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.referent$k0ZK);
@@ -366,15 +351,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.actualArgument$Owly);
   }
   public static void mappingScript_CodeBlock_10(final MappingScriptContext _context) {
-    ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.ConceptConstraints$Yt)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SLinkOperations.getChildren(it, LINKS.methodDeclaration$fJnG);
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SPropertyOperations.assign(it, PROPS.name$MnvL, "_additional_" + SPropertyOperations.getString(it, PROPS.name$MnvL));
-      }
-    });
+    ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.ConceptConstraints$Yt)).translate((it) -> SLinkOperations.getChildren(it, LINKS.methodDeclaration$fJnG)).visitAll((it) -> SPropertyOperations.assign(it, PROPS.name$MnvL, "_additional_" + SPropertyOperations.getString(it, PROPS.name$MnvL)));
   }
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {

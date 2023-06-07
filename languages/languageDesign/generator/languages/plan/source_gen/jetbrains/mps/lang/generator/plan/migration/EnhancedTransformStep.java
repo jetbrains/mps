@@ -8,7 +8,6 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.List;
 import java.util.ArrayList;
@@ -37,12 +36,8 @@ public class EnhancedTransformStep extends MigrationScriptBase {
       if (mm.isReadOnly()) {
         continue;
       }
-      for (SNode trStep : ListSequence.fromList(SModelOperations.nodes(mm, CONCEPTS.Transform$a_)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.languages$AUhz)).isNotEmpty();
-        }
-      })) {
-        List<SNode> lil = ListSequence.fromListWithValues(new ArrayList(), SLinkOperations.getChildren(trStep, LINKS.languages$AUhz));
+      for (SNode trStep : ListSequence.fromList(SModelOperations.nodes(mm, CONCEPTS.Transform$a_)).where((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.languages$AUhz)).isNotEmpty())) {
+        List<SNode> lil = ListSequence.fromListWithValues(new ArrayList<>(), SLinkOperations.getChildren(trStep, LINKS.languages$AUhz));
         ListSequence.fromList(SLinkOperations.getChildren(trStep, LINKS.languages$AUhz)).clear();
         for (SNode li : ListSequence.fromList(lil)) {
           SNode entry = SLinkOperations.addNewChild(trStep, LINKS.entries$T03u, null);

@@ -16,8 +16,6 @@ import java.util.Set;
 import jetbrains.mps.lang.dataFlow.DataFlow;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -61,20 +59,8 @@ public class check_UninitializedLocalField_NonTypesystemRule extends AbstractNon
           SNode myInitializer = SNodeOperations.getNodeAncestor(body, CONCEPTS.StaticInitializer$Ev, false, false);
           final int myIndexInClass = ((myInitializer != null) ? SNodeOperations.getIndexInParent(myInitializer) : Integer.MAX_VALUE);
 
-          Iterable<SNode> initializers = Sequence.fromIterable(Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(SNodeOperations.cast(SNodeOperations.getParent(field), CONCEPTS.Classifier$Ix))).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SNodeOperations.isInstanceOf(it, CONCEPTS.StaticInitializer$Ev) && SNodeOperations.getIndexInParent(it) < myIndexInClass;
-            }
-          }).select(new ISelector<SNode, SNode>() {
-            public SNode select(SNode it) {
-              return SNodeOperations.as(it, CONCEPTS.StaticInitializer$Ev);
-            }
-          });
-          if (!(Sequence.fromIterable(initializers).any(new IWhereFilter<SNode>() {
-            public boolean accept(SNode initializer) {
-              return VariableReferenceUtil.containsWrite(SLinkOperations.getTarget(initializer, LINKS.statementList$_Gji), field);
-            }
-          }))) {
+          Iterable<SNode> initializers = Sequence.fromIterable(Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(SNodeOperations.cast(SNodeOperations.getParent(field), CONCEPTS.Classifier$Ix))).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.StaticInitializer$Ev) && SNodeOperations.getIndexInParent(it) < myIndexInClass).select((it) -> SNodeOperations.as(it, CONCEPTS.StaticInitializer$Ev));
+          if (!(Sequence.fromIterable(initializers).any((initializer) -> VariableReferenceUtil.containsWrite(SLinkOperations.getTarget(initializer, LINKS.statementList$_Gji), field)))) {
             if (SPropertyOperations.getBoolean(field, PROPS.isFinal$gvTP)) {
               {
                 final MessageTarget errorTarget = new NodeMessageTarget();

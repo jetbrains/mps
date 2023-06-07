@@ -8,11 +8,10 @@ import jetbrains.mps.generator.template.BaseMappingRuleContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.doubleDispatch.generator.util.DispatchGenUtil;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.TemplateArgumentContext;
@@ -44,11 +43,7 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
-    boolean methodHasDispatchModifier = SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MethodDeclaration$_P) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MethodDeclaration$_P), LINKS.modifiers$F5MM)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.DispatchModifier$PK);
-      }
-    });
+    boolean methodHasDispatchModifier = SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MethodDeclaration$_P) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MethodDeclaration$_P), LINKS.modifiers$F5MM)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.DispatchModifier$PK));
 
     return methodHasDispatchModifier && Sequence.fromIterable(DispatchGenUtil.getMatchingMethods(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MethodDeclaration$_P))).isNotEmpty();
   }
@@ -81,11 +76,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static SNode sourceNodeQuery_1_0(final SourceSubstituteMacroNodeContext _context) {
     SNode newDecl = SNodeOperations.copyNode(_context.getNode());
-    ListSequence.fromList(SLinkOperations.getChildren(newDecl, LINKS.modifiers$F5MM)).removeWhere(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.DispatchModifier$PK);
-      }
-    });
+    ListSequence.fromList(SLinkOperations.getChildren(newDecl, LINKS.modifiers$F5MM)).removeWhere((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.DispatchModifier$PK));
     return newDecl;
   }
   public static SNode sourceNodeQuery_2_0(final SourceSubstituteMacroNodeContext _context) {

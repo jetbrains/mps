@@ -14,13 +14,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -66,23 +64,11 @@ public class NodePatcher {
     }
   }
   public static void removeSourceLevelAnnotations(SNode node, SRepository repo) {
-    final SNode retentionAnno = ListSequence.fromList(SModelOperations.roots(PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang.annotation(JDK/)").resolve(repo), CONCEPTS.Annotation$he)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL).equals("Retention");
-      }
-    });
+    final SNode retentionAnno = ListSequence.fromList(SModelOperations.roots(PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang.annotation(JDK/)").resolve(repo), CONCEPTS.Annotation$he)).findFirst((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).equals("Retention"));
 
     for (SNode thisAnnoInst : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.AnnotationInstance$yl, false, new SAbstractConcept[]{}))) {
       // getting value of retention annotation for this annotation
-      SNode retensionExp = SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(thisAnnoInst, LINKS.annotation$12Ek), LINKS.annotation$K49I)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.annotation$12Ek) == retentionAnno;
-        }
-      }), LINKS.value$uK2B)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.key$bSmV), PROPS.name$MnvL).equals("value");
-        }
-      }), LINKS.value$Y7om);
+      SNode retensionExp = SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(thisAnnoInst, LINKS.annotation$12Ek), LINKS.annotation$K49I)).findFirst((it) -> SLinkOperations.getTarget(it, LINKS.annotation$12Ek) == retentionAnno), LINKS.value$uK2B)).findFirst((it) -> SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.key$bSmV), PROPS.name$MnvL).equals("value")), LINKS.value$Y7om);
 
       if ((retensionExp == null) || !(SNodeOperations.isInstanceOf(retensionExp, CONCEPTS.EnumConstantReference$kA))) {
         continue;
@@ -100,16 +86,8 @@ public class NodePatcher {
   }
   public static void sortNestedClass(SNode node) {
     List<SNode> nested = new ArrayList<SNode>();
-    ListSequence.fromList(nested).addSequence(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    }, true));
-    ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).removeWhere(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$Ix);
-      }
-    });
+    ListSequence.fromList(nested).addSequence(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).sort((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL), true));
+    ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).removeWhere((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$Ix));
     ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addSequence(ListSequence.fromList(nested));
   }
   public static void removeSModelAttrs(SNode node) {

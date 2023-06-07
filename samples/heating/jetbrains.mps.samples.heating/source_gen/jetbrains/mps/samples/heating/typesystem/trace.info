@@ -245,49 +245,42 @@
   </root>
   <root nodeRef="r:6d78acb4-911e-4959-8535-0a1b3e5c1b7e(jetbrains.mps.samples.heating.typesystem)/5224141982809132419">
     <file name="MoveItemToTheRightPositionWithinDailyPlan_QuickFix.java">
-      <node id="5224141982809132419" at="19,63,20,135" concept="8" />
-      <node id="5224141982809133134" at="22,44,23,73" concept="6" />
-      <node id="5224141982809141196" at="25,35,26,68" concept="5" />
-      <node id="5224141982809270800" at="27,69,28,13" concept="6" />
-      <node id="5224141982809141920" at="29,5,30,99" concept="5" />
-      <node id="5224141982809164438" at="32,39,33,125" concept="6" />
-      <node id="5224141982809166927" at="36,32,37,64" concept="2" />
-      <node id="5224141982809132419" at="42,0,43,0" concept="7" trace="Slot$rU" />
-      <node id="5224141982809132419" at="43,0,44,0" concept="7" trace="DailyPlan$zP" />
-      <node id="5224141982809132419" at="47,0,48,0" concept="7" trace="start$f2z3" />
-      <node id="5224141982809132419" at="51,0,52,0" concept="7" trace="items$4wAy" />
-      <node id="5224141982809132419" at="19,0,22,0" concept="1" trace="MoveItemToTheRightPositionWithinDailyPlan_QuickFix#()V" />
-      <node id="5224141982809132419" at="22,0,25,0" concept="4" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="5224141982809245936" at="26,68,29,5" concept="3" />
-      <node id="5224141982809164436" at="32,0,35,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="5224141982809166051" at="35,7,38,5" concept="3" />
-      <node id="5224141982809164429" at="30,99,35,7" concept="5" />
-      <node id="5224141982809132419" at="25,0,40,0" concept="4" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <scope id="5224141982809132419" at="19,63,20,135" />
-      <scope id="5224141982809132476" at="22,44,23,73" />
-      <scope id="5224141982809245939" at="27,69,28,13" />
-      <scope id="5224141982809164437" at="32,39,33,125" />
-      <scope id="5224141982809166054" at="36,32,37,64" />
-      <scope id="5224141982809132419" at="19,0,22,0" />
-      <scope id="5224141982809132419" at="22,0,25,0">
+      <node id="5224141982809132419" at="18,63,19,135" concept="8" />
+      <node id="5224141982809133134" at="21,44,22,73" concept="6" />
+      <node id="5224141982809141196" at="24,35,25,68" concept="5" />
+      <node id="5224141982809270800" at="26,69,27,13" concept="6" />
+      <node id="5224141982809141920" at="28,5,29,99" concept="5" />
+      <node id="5224141982809164429" at="29,99,30,233" concept="5" />
+      <node id="5224141982809166927" at="31,32,32,64" concept="2" />
+      <node id="5224141982809132419" at="37,0,38,0" concept="7" trace="Slot$rU" />
+      <node id="5224141982809132419" at="38,0,39,0" concept="7" trace="DailyPlan$zP" />
+      <node id="5224141982809132419" at="42,0,43,0" concept="7" trace="start$f2z3" />
+      <node id="5224141982809132419" at="46,0,47,0" concept="7" trace="items$4wAy" />
+      <node id="5224141982809132419" at="18,0,21,0" concept="1" trace="MoveItemToTheRightPositionWithinDailyPlan_QuickFix#()V" />
+      <node id="5224141982809132419" at="21,0,24,0" concept="4" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="5224141982809245936" at="25,68,28,5" concept="3" />
+      <node id="5224141982809166051" at="30,233,33,5" concept="3" />
+      <node id="5224141982809132419" at="24,0,35,0" concept="4" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <scope id="5224141982809132419" at="18,63,19,135" />
+      <scope id="5224141982809132476" at="21,44,22,73" />
+      <scope id="5224141982809245939" at="26,69,27,13" />
+      <scope id="5224141982809166054" at="31,32,32,64" />
+      <scope id="5224141982809132419" at="18,0,21,0" />
+      <scope id="5224141982809132419" at="21,0,24,0">
         <var name="node" id="5224141982809132419" />
       </scope>
-      <scope id="5224141982809164436" at="32,0,35,0">
-        <var name="it" id="5224141982809164436" />
-      </scope>
-      <scope id="5224141982809132421" at="25,35,38,5">
+      <scope id="5224141982809132421" at="24,35,33,5">
         <var name="dailyPlan" id="5224141982809141921" />
         <var name="item" id="5224141982809141197" />
         <var name="nextSibling" id="5224141982809164430" />
       </scope>
-      <scope id="5224141982809132419" at="25,0,40,0">
+      <scope id="5224141982809132419" at="24,0,35,0">
         <var name="node" id="5224141982809132419" />
       </scope>
-      <unit id="5224141982809132419" at="46,0,49,0" name="jetbrains.mps.samples.heating.typesystem.MoveItemToTheRightPositionWithinDailyPlan_QuickFix$PROPS" />
-      <unit id="5224141982809132419" at="50,0,53,0" name="jetbrains.mps.samples.heating.typesystem.MoveItemToTheRightPositionWithinDailyPlan_QuickFix$LINKS" />
-      <unit id="5224141982809164436" at="31,118,35,5" name="jetbrains.mps.samples.heating.typesystem.MoveItemToTheRightPositionWithinDailyPlan_QuickFix$1" />
-      <unit id="5224141982809132419" at="41,0,45,0" name="jetbrains.mps.samples.heating.typesystem.MoveItemToTheRightPositionWithinDailyPlan_QuickFix$CONCEPTS" />
-      <unit id="5224141982809132419" at="18,0,54,0" name="jetbrains.mps.samples.heating.typesystem.MoveItemToTheRightPositionWithinDailyPlan_QuickFix" />
+      <unit id="5224141982809132419" at="41,0,44,0" name="jetbrains.mps.samples.heating.typesystem.MoveItemToTheRightPositionWithinDailyPlan_QuickFix$PROPS" />
+      <unit id="5224141982809132419" at="45,0,48,0" name="jetbrains.mps.samples.heating.typesystem.MoveItemToTheRightPositionWithinDailyPlan_QuickFix$LINKS" />
+      <unit id="5224141982809132419" at="36,0,40,0" name="jetbrains.mps.samples.heating.typesystem.MoveItemToTheRightPositionWithinDailyPlan_QuickFix$CONCEPTS" />
+      <unit id="5224141982809132419" at="17,0,49,0" name="jetbrains.mps.samples.heating.typesystem.MoveItemToTheRightPositionWithinDailyPlan_QuickFix" />
     </file>
   </root>
 </debug-info>

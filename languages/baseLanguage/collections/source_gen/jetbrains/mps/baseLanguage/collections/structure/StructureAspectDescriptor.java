@@ -593,7 +593,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, true, false);
     // extends: jetbrains.mps.baseLanguage.structure.Type
     b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL);
-    b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6f392ce92f8c71c7L);
     b.origin("r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/5686963296372573083");
     b.version(3);
     b.aggregate("elementType", 0x4eec26fcbaf8c39cL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL).optional(false).ordered(true).multiple(false).origin("5686963296372573084").done();
@@ -1646,7 +1645,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     // extends: jetbrains.mps.baseLanguage.structure.Type
     b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL);
     b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x38ff5220e0ac710dL);
-    b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6f392ce92f8c71c7L);
     b.origin("r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1151688443754");
     b.version(3);
     b.aggregate("elementType", 0x10c25fe95c5L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL).optional(false).ordered(true).multiple(false).origin("1151688676805").done();
@@ -1744,7 +1742,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     // extends: jetbrains.mps.baseLanguage.structure.Type
     b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL);
     b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x38ff5220e0ac710dL);
-    b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6f392ce92f8c71c7L);
     b.origin("r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1197683403723");
     b.version(3);
     b.aggregate("keyType", 0x116db7f62a8L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL).optional(false).ordered(true).multiple(false).origin("1197683466920").done();
@@ -2167,7 +2164,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     // extends: jetbrains.mps.baseLanguage.structure.Type
     b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL);
     b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x38ff5220e0ac710dL);
-    b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6f392ce92f8c71c7L);
     b.origin("r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1151689724996");
     b.version(3);
     b.aggregate("elementType", 0x10c260ee40eL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL).optional(true).ordered(true).multiple(false).origin("1151689745422").done();
@@ -2196,7 +2192,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     // extends: jetbrains.mps.baseLanguage.structure.Type
     b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL);
     b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x38ff5220e0ac710dL);
-    b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6f392ce92f8c71c7L);
     b.origin("r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1226511727824");
     b.version(3);
     b.aggregate("elementType", 0x11d91cc51e3L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL).optional(false).ordered(true).multiple(false).origin("1226511765987").done();

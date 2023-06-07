@@ -18,7 +18,6 @@ import java.util.LinkedList;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -43,11 +42,7 @@ public class check_Dependency_NonTypesystemRule extends AbstractNonTypesystemRul
           }
           return;
         }
-        QueueSequence.fromQueue(queue).addSequence(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(nextComponent, LINKS.dep$WgPG), LINKS.to$GB6T)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return !(SetSequence.fromSet(visitedComponents).contains(it));
-          }
-        }));
+        QueueSequence.fromQueue(queue).addSequence(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(nextComponent, LINKS.dep$WgPG), LINKS.to$GB6T)).where((it) -> !(SetSequence.fromSet(visitedComponents).contains(it))));
       }
     }
   }

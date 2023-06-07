@@ -11,7 +11,6 @@ import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.kotlin.behavior.IIdentifier__BehaviorDescriptor;
 import jetbrains.mps.kotlin.behavior.KtEnvironmentConfig;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -44,21 +43,15 @@ public class ImportContext {
   }
 
   public Iterable<String> getImports() {
-    return SetSequence.fromSet(importedRefs).select(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        String packageName = IKotlinRoot__BehaviorDescriptor.getPackageName_id74Z9X$ygjTm.invoke(SNodeOperations.getNodeAncestor(it, CONCEPTS.IKotlinRoot$xV, true, false));
-        String name = ((boolean) IIdentifier__BehaviorDescriptor.isRegular_idnhyiqtKtUT.invoke(SNodeOperations.asSConcept(CONCEPTS.IIdentifier$wg), SPropertyOperations.getString(it, PROPS.name$MnvL)) ? SPropertyOperations.getString(it, PROPS.name$MnvL) : "`" + SPropertyOperations.getString(it, PROPS.name$MnvL) + "`");
+    return SetSequence.fromSet(importedRefs).select((it) -> {
+      String packageName = IKotlinRoot__BehaviorDescriptor.getPackageName_id74Z9X$ygjTm.invoke(SNodeOperations.getNodeAncestor(it, CONCEPTS.IKotlinRoot$xV, true, false));
+      String name = ((boolean) IIdentifier__BehaviorDescriptor.isRegular_idnhyiqtKtUT.invoke(SNodeOperations.asSConcept(CONCEPTS.IIdentifier$wg), SPropertyOperations.getString(it, PROPS.name$MnvL)) ? SPropertyOperations.getString(it, PROPS.name$MnvL) : "`" + SPropertyOperations.getString(it, PROPS.name$MnvL) + "`");
 
-        if ((packageName == null || packageName.length() == 0)) {
-          return name;
-        }
-        return packageName + "." + name;
+      if ((packageName == null || packageName.length() == 0)) {
+        return name;
       }
-    }).union(SetSequence.fromSet(arbitraryImports)).sort(new ISelector<String, String>() {
-      public String select(String it) {
-        return it;
-      }
-    }, true);
+      return packageName + "." + name;
+    }).union(SetSequence.fromSet(arbitraryImports)).sort((it) -> it, true);
   }
 
   private static final class CONCEPTS {

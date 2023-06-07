@@ -144,6 +144,7 @@
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
       <concept id="1046929382682558545" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteralType" flags="ig" index="9cv3F" />
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1235746970280" name="jetbrains.mps.baseLanguage.closures.structure.CompactInvokeFunctionExpression" flags="nn" index="2Sg_IR">
         <child id="1235746996653" name="function" index="2SgG2M" />
         <child id="1235747002942" name="parameter" index="2SgHGx" />
@@ -238,7 +239,6 @@
         <child id="1237721435807" name="elementType" index="HW$YZ" />
         <child id="1237731803878" name="copyFrom" index="I$8f6" />
       </concept>
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1160600644654" name="jetbrains.mps.baseLanguage.collections.structure.ListCreatorWithInit" flags="nn" index="Tc6Ow" />
       <concept id="1160612413312" name="jetbrains.mps.baseLanguage.collections.structure.AddElementOperation" flags="nn" index="TSZUe" />
       <concept id="1160666733551" name="jetbrains.mps.baseLanguage.collections.structure.AddAllElementsOperation" flags="nn" index="X8dFx" />
@@ -577,7 +577,7 @@
                                     <ref role="37wK5l" node="4SIS$II3IU2" resolve="getOwningModule" />
                                     <node concept="2OqwBi" id="4SIS$II3ISU" role="37wK5m">
                                       <node concept="37vLTw" id="2BHiRxgmMIx" role="2Oq$k0">
-                                        <ref role="3cqZAo" node="4SIS$II3ITf" resolve="cc" />
+                                        <ref role="3cqZAo" node="5W7E4fV0VV7" />
                                       </node>
                                       <node concept="I4A8Y" id="4SIS$II3ISW" role="2OqNvi" />
                                     </node>
@@ -630,15 +630,15 @@
                                                 <ref role="37wK5l" to="c17a:~SLanguage.getSourceModuleReference()" resolve="getSourceModuleReference" />
                                               </node>
                                               <node concept="37vLTw" id="4UTtJHKyoyr" role="2Oq$k0">
-                                                <ref role="3cqZAo" node="4UTtJHKwTtt" resolve="it" />
+                                                <ref role="3cqZAo" node="5W7E4fV0VV5" />
                                               </node>
                                             </node>
                                           </node>
                                         </node>
                                       </node>
-                                      <node concept="Rh6nW" id="4UTtJHKwTtt" role="1bW2Oz">
+                                      <node concept="gl6BB" id="5W7E4fV0VV5" role="1bW2Oz">
                                         <property role="TrG5h" value="it" />
-                                        <node concept="2jxLKc" id="4UTtJHKwTtu" role="1tU5fm" />
+                                        <node concept="2jxLKc" id="5W7E4fV0VV6" role="1tU5fm" />
                                       </node>
                                     </node>
                                   </node>
@@ -656,9 +656,9 @@
                               </node>
                             </node>
                           </node>
-                          <node concept="Rh6nW" id="4SIS$II3ITf" role="1bW2Oz">
+                          <node concept="gl6BB" id="5W7E4fV0VV7" role="1bW2Oz">
                             <property role="TrG5h" value="cc" />
-                            <node concept="2jxLKc" id="4SIS$II3ITg" role="1tU5fm" />
+                            <node concept="2jxLKc" id="5W7E4fV0VV8" role="1tU5fm" />
                           </node>
                         </node>
                       </node>
@@ -669,7 +669,7 @@
                           <node concept="3clFbF" id="4SIS$II3ITk" role="3cqZAp">
                             <node concept="2OqwBi" id="4SIS$II3ITl" role="3clFbG">
                               <node concept="37vLTw" id="2BHiRxgm7Ei" role="2Oq$k0">
-                                <ref role="3cqZAo" node="4SIS$II3ITo" resolve="cc" />
+                                <ref role="3cqZAo" node="5W7E4fV0VV9" />
                               </node>
                               <node concept="3Tsc0h" id="4SIS$II3ITn" role="2OqNvi">
                                 <ref role="3TtcxE" to="tp2q:5i_Pov1WWxe" resolve="containerDeclaration" />
@@ -677,9 +677,9 @@
                             </node>
                           </node>
                         </node>
-                        <node concept="Rh6nW" id="4SIS$II3ITo" role="1bW2Oz">
+                        <node concept="gl6BB" id="5W7E4fV0VV9" role="1bW2Oz">
                           <property role="TrG5h" value="cc" />
-                          <node concept="2jxLKc" id="4SIS$II3ITp" role="1tU5fm" />
+                          <node concept="2jxLKc" id="5W7E4fV0VVa" role="1tU5fm" />
                         </node>
                       </node>
                     </node>
@@ -815,7 +815,7 @@
                   <node concept="3clFbF" id="4SIS$II3IUP" role="3cqZAp">
                     <node concept="2Sg_IR" id="4SIS$II3IUQ" role="3clFbG">
                       <node concept="37vLTw" id="2BHiRxglwyO" role="2SgG2M">
-                        <ref role="3cqZAo" node="4SIS$II3IUS" resolve="prov" />
+                        <ref role="3cqZAo" node="5W7E4fV0VVb" />
                       </node>
                       <node concept="37vLTw" id="6j36NaoDFmi" role="2SgHGx">
                         <ref role="3cqZAo" node="6j36NaoDvkO" resolve="repo" />
@@ -823,9 +823,9 @@
                     </node>
                   </node>
                 </node>
-                <node concept="Rh6nW" id="4SIS$II3IUS" role="1bW2Oz">
+                <node concept="gl6BB" id="5W7E4fV0VVb" role="1bW2Oz">
                   <property role="TrG5h" value="prov" />
-                  <node concept="2jxLKc" id="4SIS$II3IUT" role="1tU5fm" />
+                  <node concept="2jxLKc" id="5W7E4fV0VVc" role="1tU5fm" />
                 </node>
               </node>
             </node>

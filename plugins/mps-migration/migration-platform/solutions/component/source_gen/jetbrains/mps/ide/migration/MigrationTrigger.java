@@ -37,11 +37,9 @@ import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.migration.global.ProjectMigration;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.migration.global.CleanupProjectMigration;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.progress.ProgressIndicator;
@@ -53,12 +51,13 @@ import com.intellij.openapi.application.ModalityState;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import jetbrains.mps.internal.collections.runtime.ISequence;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScript;
 import jetbrains.mps.smodel.SLanguageHierarchy;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import org.jetbrains.mps.openapi.util.Processor;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import jetbrains.mps.ide.migration.wizard.MigrationWizard;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
@@ -213,13 +212,11 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     // if a new language is added to a repo, all modules in project using it
     // should be checked for whether their migration is needed
     final Set<SModule> modules2Check = SetSequence.fromSet(new HashSet<SModule>());
-    Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(myMpsProject)).visitAll(new IVisitor<SModule>() {
-      public void visit(SModule it) {
-        Set<SLanguage> used = new HashSet<SLanguage>(it.getUsedLanguages());
-        used.retainAll(addedLanguages);
-        if (!(used.isEmpty())) {
-          SetSequence.fromSet(modules2Check).addElement(it);
-        }
+    Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(myMpsProject)).visitAll((it) -> {
+      Set<SLanguage> used = new HashSet<SLanguage>(it.getUsedLanguages());
+      used.retainAll(addedLanguages);
+      if (!(used.isEmpty())) {
+        SetSequence.fromSet(modules2Check).addElement(it);
       }
     });
 
@@ -241,11 +238,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
       List<ProjectMigration> projectMigrations = ProjectMigrationsRegistry.getInstance().getMigrations(myMpsProject);
       // generally, shouldBeExecuted has fixed implementation which checks project properties if it was already applied
       // hence, no model read
-      boolean hasCleanups = ListSequence.fromList(projectMigrations).ofType(CleanupProjectMigration.class).any(new IWhereFilter<CleanupProjectMigration>() {
-        public boolean accept(CleanupProjectMigration it) {
-          return it.shouldBeExecuted(myMpsProject);
-        }
-      });
+      boolean hasCleanups = ListSequence.fromList(projectMigrations).ofType(CleanupProjectMigration.class).any((it) -> it.shouldBeExecuted(myMpsProject));
       myNotifications.showDeployWarn(hasCleanups);
       return;
     }
@@ -306,7 +299,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
                 ProgressManager.getInstance().run(new Task.Modal(myProject, "Collecting Errors", false) {
                   public void run(@NotNull final ProgressIndicator progressIndicator) {
                     myMpsProject.getRepository().getModelAccess().runReadAction(() -> {
-                      List<IssueKindReportItem> problems = Sequence.fromIterable(result._1().getProblems(progressIndicator)).toListSequence();
+                      List<IssueKindReportItem> problems = Sequence.fromIterable(result._1().getProblems(progressIndicator)).toList();
                       showProblems(problems);
                     });
                   }
@@ -357,8 +350,8 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
       // FIXME and in ExecuteRerunnableMigrations!
       // XXX quite suspicious use - why do we collect MigrationScripts here for all version languages just to collect MS necessary
       //    for migration with MigrationSetup next to this activity?
-      Iterable<ScriptApplied> checks = ListSequence.fromList(modules).translate(new ITranslator2<SModule, ScriptApplied>() {
-        public Iterable<ScriptApplied> translate(final SModule module) {
+      Iterable<ScriptApplied> checks = ListSequence.fromList(modules).translate(new _FunctionTypes._return_P1_E0<ISequence<ScriptApplied>, SModule>() {
+        public ISequence<ScriptApplied> invoke(final SModule module) {
           List<MigrationScript> scripts = ListSequence.fromList(new ArrayList<MigrationScript>());
           new SLanguageHierarchy(myLanguageRegistry, module.getUsedLanguages()).forEachExtended(new SLanguageHierarchy.HierarchyVisitor() {
             @Override
@@ -377,8 +370,8 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
             }
           });
 
-          return ListSequence.fromList(scripts).select(new ISelector<MigrationScript, ScriptApplied>() {
-            public ScriptApplied select(MigrationScript script) {
+          return ListSequence.fromList(scripts).select(new _FunctionTypes._return_P1_E0<ScriptApplied, MigrationScript>() {
+            public ScriptApplied invoke(MigrationScript script) {
               return new ScriptApplied(module, script);
             }
           });
@@ -388,9 +381,11 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
 
       // we're in model read here, safe to instantiate MigrationSetup
       MigrationSetup migrationSetup = new MigrationSetup(myMpsProject);
-      new MigrationCheckerImpl(myMpsProject, migrationSetup).findNotMigrated(progress.subTask(7), checks, (Problem p) -> {
-        ListSequence.fromList(problems).addElement(p);
-        return ListSequence.fromList(problems).count() < 1000;
+      new MigrationCheckerImpl(myMpsProject, migrationSetup).findNotMigrated(progress.subTask(7), checks, new Processor<Problem>() {
+        public boolean process(Problem p) {
+          ListSequence.fromList(problems).addElement(p);
+          return ListSequence.fromList(problems).count() < 1000;
+        }
       });
     });
     if (ListSequence.fromList(problems).isEmpty()) {
@@ -480,11 +475,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     @Override
     public void afterLanguagesLoaded(Iterable<LanguageRuntime> loaded) {
       checkNotDeployedLanguages();
-      checkMigrationNeededOnLanguageReload(Sequence.fromIterable(loaded).select(new ISelector<LanguageRuntime, SLanguage>() {
-        public SLanguage select(LanguageRuntime this0) {
-          return this0.getIdentity();
-        }
-      }).toListSequence());
+      checkMigrationNeededOnLanguageReload(Sequence.fromIterable(loaded).select((this0) -> this0.getIdentity()).toList());
     }
 
     @Override

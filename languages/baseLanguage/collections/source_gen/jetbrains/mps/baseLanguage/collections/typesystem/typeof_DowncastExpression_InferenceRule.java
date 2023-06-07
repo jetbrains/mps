@@ -22,18 +22,16 @@ public class typeof_DowncastExpression_InferenceRule extends AbstractInferenceRu
   public void applyRule(final SNode expression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
       final SNode expType = typeCheckingContext.typeOf(SLinkOperations.getTarget(expression, LINKS.expression$baGI), "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1228231559409", true);
-      typeCheckingContext.whenConcrete(expType, new Runnable() {
-        public void run() {
-          {
-            SNode coercedNode_y5vcz7_a0a0 = TypecheckingFacade.getFromContext().coerceType(typeCheckingContext.getExpandedNode(expType), CONCEPTS.Type$bu);
-            if (coercedNode_y5vcz7_a0a0 != null) {
-              {
-                SNode _nodeToCheck_1029348928467 = expression;
-                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1228231787457", 0, null);
-                typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1228231710394", true), (SNode) ClassifierTypeUtil.getTypeCoercedToClassifierType(coercedNode_y5vcz7_a0a0), _info_12389875345);
-              }
-            } else {
+      typeCheckingContext.whenConcrete(expType, () -> {
+        {
+          SNode coercedNode_y5vcz7_a0a0 = TypecheckingFacade.getFromContext().coerceType(typeCheckingContext.getExpandedNode(expType), CONCEPTS.Type$bu);
+          if (coercedNode_y5vcz7_a0a0 != null) {
+            {
+              SNode _nodeToCheck_1029348928467 = expression;
+              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1228231787457", 0, null);
+              typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1228231710394", true), (SNode) ClassifierTypeUtil.getTypeCoercedToClassifierType(coercedNode_y5vcz7_a0a0), _info_12389875345);
             }
+          } else {
           }
         }
       }, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1228231553787", false, false);

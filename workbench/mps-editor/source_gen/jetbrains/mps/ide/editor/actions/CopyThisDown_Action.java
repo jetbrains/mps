@@ -14,7 +14,6 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
@@ -41,11 +40,7 @@ public class CopyThisDown_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     Iterable<EditorCell> seq;
-    return EditorActionUtils.isWriteActionEnabled(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")), ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("inputNodes"))).select(new ISelector<SNode, EditorCell>() {
-      public EditorCell select(SNode it) {
-        return (EditorCell) ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).findNodeCell(it);
-      }
-    }));
+    return EditorActionUtils.isWriteActionEnabled(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")), ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("inputNodes"))).select((it) -> (EditorCell) ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).findNodeCell(it)));
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {

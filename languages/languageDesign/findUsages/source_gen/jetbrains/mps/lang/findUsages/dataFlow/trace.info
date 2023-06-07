@@ -44,23 +44,18 @@
       <node id="1207323166495" at="16,110,17,49" concept="0" />
       <node id="1207323191691" at="17,49,18,182" concept="0" />
       <node id="1207060341794" at="18,182,19,108" concept="0" />
-      <node id="1207323226796" at="21,25,22,197" concept="0" />
-      <node id="6148399791136986501" at="28,0,29,0" concept="2" trace="queryNode$e0cY" />
-      <node id="6148399791136986501" at="29,0,30,0" concept="2" trace="monitor$e0F0" />
-      <node id="6148399791136986501" at="30,0,31,0" concept="2" trace="queryScope$e0rZ" />
-      <node id="6148399791136986501" at="31,0,32,0" concept="2" trace="callback$Mbt7" />
-      <node id="1207323226795" at="21,0,24,0" concept="1" trace="run#()V" />
-      <node id="1207323226795" at="19,108,24,7" concept="0" />
-      <node id="6148399791136986501" at="13,0,26,0" concept="1" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
-      <scope id="1207323226795" at="21,25,22,197" />
-      <scope id="1207323226795" at="21,0,24,0" />
-      <scope id="6148399791136986503" at="13,60,24,7" />
-      <scope id="6148399791136986501" at="13,0,26,0">
+      <node id="1207323226795" at="19,108,20,243" concept="0" />
+      <node id="6148399791136986501" at="24,0,25,0" concept="2" trace="queryNode$e0cY" />
+      <node id="6148399791136986501" at="25,0,26,0" concept="2" trace="monitor$e0F0" />
+      <node id="6148399791136986501" at="26,0,27,0" concept="2" trace="queryScope$e0rZ" />
+      <node id="6148399791136986501" at="27,0,28,0" concept="2" trace="callback$Mbt7" />
+      <node id="6148399791136986501" at="13,0,22,0" concept="1" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="6148399791136986503" at="13,60,20,243" />
+      <scope id="6148399791136986501" at="13,0,22,0">
         <var name="_context" id="6148399791136986501" />
       </scope>
-      <unit id="1207323226795" at="20,51,24,5" name="jetbrains.mps.lang.findUsages.dataFlow.OnEachNodeFoundByExpression_DataFlow$1" />
-      <unit id="6148399791136986501" at="27,0,33,0" name="jetbrains.mps.lang.findUsages.dataFlow.OnEachNodeFoundByExpression_DataFlow$LINKS" />
-      <unit id="6148399791136986501" at="12,0,34,0" name="jetbrains.mps.lang.findUsages.dataFlow.OnEachNodeFoundByExpression_DataFlow" />
+      <unit id="6148399791136986501" at="23,0,29,0" name="jetbrains.mps.lang.findUsages.dataFlow.OnEachNodeFoundByExpression_DataFlow$LINKS" />
+      <unit id="6148399791136986501" at="12,0,30,0" name="jetbrains.mps.lang.findUsages.dataFlow.OnEachNodeFoundByExpression_DataFlow" />
     </file>
   </root>
   <root nodeRef="r:390b21f6-c313-46da-a7d6-8dd5e6a64da3(jetbrains.mps.lang.findUsages.dataFlow)/6413574678187369355">

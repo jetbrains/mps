@@ -13,7 +13,6 @@ import jetbrains.mps.build.tips.behavior.MPSTipsAndTricks__BehaviorDescriptor;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.SourceNodesQuery;
 import java.util.HashMap;
@@ -100,11 +99,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.collectMany(SLinkOperations.getChildren(_context.getNode(), LINKS.tips$D4lw), LINKS.text$K34q);
   }
   public static Iterable<SNode> sourceNodesQuery_2_1(final SourceSubstituteMacroNodesContext _context) {
-    return SLinkOperations.collectMany(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.tips$D4lw)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.image$yQz6) != null) && isNotEmptyString(SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.image$yQz6), PROPS.file$Q7$W));
-      }
-    }), LINKS.text$K34q);
+    return SLinkOperations.collectMany(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.tips$D4lw)).where((it) -> (SLinkOperations.getTarget(it, LINKS.image$yQz6) != null) && isNotEmptyString(SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.image$yQz6), PROPS.file$Q7$W))), LINKS.text$K34q);
   }
   public static Iterable<SNode> sourceNodesQuery_2_2(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.collectMany(SLinkOperations.getChildren(_context.getNode(), LINKS.tips$D4lw), LINKS.text$K34q);

@@ -44,7 +44,7 @@ public final class InterfaceConceptDeclaration__BehaviorDescriptor extends BaseB
   }
 
   /*package*/ static List<SNode> getImmediateSuperconcepts_idhMuxyK2(@NotNull SNode __thisNode__) {
-    return Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(__thisNode__, LINKS.extends$nawU), LINKS.intfc$zM4e)).where(new NotNullWhereFilter<SNode>()).toListSequence();
+    return Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(__thisNode__, LINKS.extends$nawU), LINKS.intfc$zM4e)).where(new NotNullWhereFilter()).toList();
   }
   /*package*/ static List<SNode> getAllMethodsInPriorityOrder_id7TwdR6lloGH(@NotNull SNode __thisNode__) {
     List<SNode> methods = ListSequence.fromList(new ArrayList<SNode>());

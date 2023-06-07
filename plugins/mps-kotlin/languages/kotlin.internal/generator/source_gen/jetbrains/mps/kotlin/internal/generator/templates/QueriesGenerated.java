@@ -13,9 +13,7 @@ import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.MappingScriptContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.List;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.kotlin.behavior.INavigationTarget__BehaviorDescriptor;
@@ -66,38 +64,24 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(_context.getNode(), LINKS.target$xQFr), CONCEPTS.Assignment$zN, false, false), LINKS.right$Uro5);
   }
   public static void mappingScript_CodeBlock_1(final MappingScriptContext _context) {
-    ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.GenericLeftExpression$Z4)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SNodeOperations.getContainingLink(it), LINKS.target$C6zp);
+    ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.GenericLeftExpression$Z4)).where((it) -> Objects.equals(SNodeOperations.getContainingLink(it), LINKS.target$C6zp)).visitAll((it) -> {
+      // Substitute all "this" by the navigation operand (use with(x) if more than one)
+      List<SNode> getters = SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(it, LINKS.getter$Kg37), CONCEPTS.ThisExpression$_g, false, new SAbstractConcept[]{});
+      final SNode navigationOperand = INavigationTarget__BehaviorDescriptor.getNavigationOperand_id2gj5XQXMv4y.invoke(it);
+      if (ListSequence.fromList(getters).count() > 1) {
+        SLinkOperations.setTarget(it, LINKS.getter$Kg37, _quotation_createNode_x583g4_a0a0d0a0a0a8(SNodeOperations.copyNode(navigationOperand), SLinkOperations.getTarget(it, LINKS.getter$Kg37)));
+      } else {
+        ListSequence.fromList(getters).visitAll((thisOp) -> SNodeOperations.replaceWithAnother(thisOp, SNodeOperations.copyNode(navigationOperand)));
       }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        // Substitute all "this" by the navigation operand (use with(x) if more than one)
-        List<SNode> getters = SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(it, LINKS.getter$Kg37), CONCEPTS.ThisExpression$_g, false, new SAbstractConcept[]{});
-        final SNode navigationOperand = INavigationTarget__BehaviorDescriptor.getNavigationOperand_id2gj5XQXMv4y.invoke(it);
-        if (ListSequence.fromList(getters).count() > 1) {
-          SLinkOperations.setTarget(it, LINKS.getter$Kg37, _quotation_createNode_x583g4_a0a0d0a0a0a8(SNodeOperations.copyNode(navigationOperand), SLinkOperations.getTarget(it, LINKS.getter$Kg37)));
-        } else {
-          ListSequence.fromList(getters).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode thisOp) {
-              SNodeOperations.replaceWithAnother(thisOp, SNodeOperations.copyNode(navigationOperand));
-            }
-          });
-        }
 
-        List<SNode> setters = SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(it, LINKS.setter$wD09), CONCEPTS.ThisExpression$_g, false, new SAbstractConcept[]{});
-        if (ListSequence.fromList(setters).count() > 1) {
-          SLinkOperations.setTarget(it, LINKS.setter$wD09, _quotation_createNode_x583g4_a0a0g0a0a0a8(SNodeOperations.copyNode(navigationOperand), SLinkOperations.getTarget(it, LINKS.setter$wD09)));
-        } else {
-          ListSequence.fromList(setters).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode thisOp) {
-              SNodeOperations.replaceWithAnother(thisOp, SNodeOperations.copyNode(navigationOperand));
-            }
-          });
-        }
-
-        SNodeOperations.replaceWithAnother(SNodeOperations.getParent(it), it);
+      List<SNode> setters = SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(it, LINKS.setter$wD09), CONCEPTS.ThisExpression$_g, false, new SAbstractConcept[]{});
+      if (ListSequence.fromList(setters).count() > 1) {
+        SLinkOperations.setTarget(it, LINKS.setter$wD09, _quotation_createNode_x583g4_a0a0g0a0a0a8(SNodeOperations.copyNode(navigationOperand), SLinkOperations.getTarget(it, LINKS.setter$wD09)));
+      } else {
+        ListSequence.fromList(setters).visitAll((thisOp) -> SNodeOperations.replaceWithAnother(thisOp, SNodeOperations.copyNode(navigationOperand)));
       }
+
+      SNodeOperations.replaceWithAnother(SNodeOperations.getParent(it), it);
     });
   }
   public static SNode insertMacro_Query_0_0(final InsertMacroContext _context) {

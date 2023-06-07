@@ -21,7 +21,6 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.kotlin.behavior.IFunctionDeclaration__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.kotlin.behavior.Parameter__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -62,11 +61,7 @@ public class ThisConstructorDelegationCall_SubstituteMenu extends SubstituteMenu
       }
       @Override
       public String getMatchingText(String pattern) {
-        return "this(" + IterableUtils.join(ListSequence.fromList(IFunctionDeclaration__BehaviorDescriptor.getParameters_id6f3juM$_Kx4.invoke(referencedNode)).select(new ISelector<SNode, String>() {
-          public String select(SNode it) {
-            return (String) Parameter__BehaviorDescriptor.getPresentationInFunction_id7uO8z1BmBpf.invoke(it, ((boolean) false));
-          }
-        }), ",") + ")";
+        return "this(" + IterableUtils.join(ListSequence.fromList(IFunctionDeclaration__BehaviorDescriptor.getParameters_id6f3juM$_Kx4.invoke(referencedNode)).select((it) -> (String) Parameter__BehaviorDescriptor.getPresentationInFunction_id7uO8z1BmBpf.invoke(it, ((boolean) false))), ",") + ")";
       }
       @Override
       public String getVisibleMatchingText(String pattern) {

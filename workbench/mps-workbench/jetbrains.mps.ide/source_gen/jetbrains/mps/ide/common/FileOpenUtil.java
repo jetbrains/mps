@@ -10,7 +10,6 @@ import com.intellij.openapi.util.ThrowableComputable;
 import com.intellij.psi.search.FilenameIndex;
 import com.intellij.psi.search.GlobalSearchScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.IndexNotReadyException;
 import com.intellij.util.SlowOperations;
@@ -42,11 +41,7 @@ public final class FileOpenUtil {
     ThrowableComputable<VirtualFile, RuntimeException> f = () -> {
       try {
         Iterable<VirtualFile> vfByName = FilenameIndex.getVirtualFilesByName(fileName, GlobalSearchScope.allScope(project));
-        return Sequence.fromIterable(vfByName).where(new IWhereFilter<VirtualFile>() {
-          public boolean accept(VirtualFile it) {
-            return it.getPath().endsWith(fullFileName);
-          }
-        }).first();
+        return Sequence.fromIterable(vfByName).where((it) -> it.getPath().endsWith(fullFileName)).first();
       } catch (ProcessCanceledException | IndexNotReadyException ex) {
         //  ignore, can not report anything,pretend we didn't find any
         return null;

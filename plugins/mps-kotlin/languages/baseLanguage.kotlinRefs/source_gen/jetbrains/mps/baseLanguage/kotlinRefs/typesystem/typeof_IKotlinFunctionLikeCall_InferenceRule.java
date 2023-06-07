@@ -28,9 +28,9 @@ import jetbrains.mps.kotlin.overloading.ParamErrorHandler;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
-import jetbrains.mps.kotlin.api.declaration.ParameterDeclaration;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.kotlin.overloading.NodeArgument;
+import jetbrains.mps.kotlin.api.declaration.ParameterDeclaration;
 import jetbrains.mps.errors.BaseQuickFixProvider;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -79,146 +79,142 @@ public class typeof_IKotlinFunctionLikeCall_InferenceRule extends AbstractInfere
 
     {
       final SNode receiverType = typeCheckingContext.getRepresentative(expectedReceiverType_typevar_5494632093666910775);
-      typeCheckingContext.whenConcrete(receiverType, new Runnable() {
-        public void run() {
-          {
-            final SNode genericType = typeCheckingContext.getExpandedNode(receiverType);
-            if (SNodeOperations.isInstanceOf(genericType, CONCEPTS.IGenericType$13)) {
-              IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(genericType, subs);
+      typeCheckingContext.whenConcrete(receiverType, () -> {
+        {
+          final SNode genericType = typeCheckingContext.getExpandedNode(receiverType);
+          if (SNodeOperations.isInstanceOf(genericType, CONCEPTS.IGenericType$13)) {
+            IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(genericType, subs);
+          }
+        }
+
+        // check the inference context
+        // TODO implement for kotlin?
+        Iterable<TypeParameterDeclaration> typeVariableDeclaration = IKotlinFunctionLikeCall__BehaviorDescriptor.getFunctionTypeParameters_id1t03WaySlJT.invoke(fCall);
+        SRepository repository = SNodeOperations.getModel(fCall).getRepository();
+        if (ListSequence.fromList(SLinkOperations.getChildren(fCall, LINKS.typeArgument$Q6Au)).isEmpty() && Sequence.fromIterable(typeVariableDeclaration).isNotEmpty()) {
+          for (TypeParameterDeclaration tvd : Sequence.fromIterable(typeVariableDeclaration)) {
+            SNode node = SPointerOperations.resolveNode(tvd.getNode(), repository);
+            if (!(MapSequence.fromMap(subs).containsKey(node))) {
+              final SNode T_typevar_4695112407844173847 = typeCheckingContext.createNewRuntimeTypesVariable();
+              MapSequence.fromMap(subs).put(node, typeCheckingContext.getRepresentative(T_typevar_4695112407844173847));
+            }
+          }
+          for (TypeParameterDeclaration tvd : Sequence.fromIterable(typeVariableDeclaration)) {
+            SNode bound = KtToJavaConversion.convert(ListSequence.fromList(tvd.getUpperBounds()).first());
+            {
+              final SNode generic = bound;
+              if (SNodeOperations.isInstanceOf(generic, CONCEPTS.IGenericType$13)) {
+                IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(generic, subs);
+                SNode node = SPointerOperations.resolveNode(tvd.getNode(), repository);
+                {
+                  SNode _nodeToCheck_1029348928467 = fCall;
+                  EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:6b6fe053-7210-4624-8790-609860b309f1(jetbrains.mps.baseLanguage.kotlinRefs.typesystem)", "5302270944911972807", 0, null);
+                  typeCheckingContext.createLessThanInequality((SNode) MapSequence.fromMap(subs).get(node), (SNode) IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(SNodeOperations.copyNode(generic), subs), false, false, _info_12389875345);
+                }
+              }
             }
           }
 
-          // check the inference context
-          // TODO implement for kotlin?
-          Iterable<TypeParameterDeclaration> typeVariableDeclaration = IKotlinFunctionLikeCall__BehaviorDescriptor.getFunctionTypeParameters_id1t03WaySlJT.invoke(fCall);
-          SRepository repository = SNodeOperations.getModel(fCall).getRepository();
-          if (ListSequence.fromList(SLinkOperations.getChildren(fCall, LINKS.typeArgument$Q6Au)).isEmpty() && Sequence.fromIterable(typeVariableDeclaration).isNotEmpty()) {
-            for (TypeParameterDeclaration tvd : Sequence.fromIterable(typeVariableDeclaration)) {
-              SNode node = SPointerOperations.resolveNode(tvd.getNode(), repository);
-              if (!(MapSequence.fromMap(subs).containsKey(node))) {
-                final SNode T_typevar_4695112407844173847 = typeCheckingContext.createNewRuntimeTypesVariable();
-                MapSequence.fromMap(subs).put(node, typeCheckingContext.getRepresentative(T_typevar_4695112407844173847));
+        } else {
+          {
+            Iterator<TypeParameterDeclaration> tvd_it = Sequence.fromIterable(typeVariableDeclaration).iterator();
+            Iterator<SNode> targ_it = ListSequence.fromList(SLinkOperations.getChildren(fCall, LINKS.typeArgument$Q6Au)).iterator();
+            TypeParameterDeclaration tvd_var;
+            SNode targ_var;
+            while (tvd_it.hasNext() && targ_it.hasNext()) {
+              tvd_var = tvd_it.next();
+              targ_var = targ_it.next();
+              SNode node = SPointerOperations.resolveNode(tvd_var.getNode(), repository);
+              MapSequence.fromMap(subs).put(node, targ_var);
+              if (SNodeOperations.isInstanceOf(targ_var, CONCEPTS.IGenericType$13)) {
+                IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(targ_var, CONCEPTS.IGenericType$13), subs);
               }
             }
-            for (TypeParameterDeclaration tvd : Sequence.fromIterable(typeVariableDeclaration)) {
-              SNode bound = KtToJavaConversion.convert(ListSequence.fromList(tvd.getUpperBounds()).first());
+          }
+        }
+
+        List<SNode> argl = SLinkOperations.getChildren(fCall, LINKS.actualArgument$Q6nt);
+
+        // Parameter mapping and verification (will check variable arity and parameter count)
+        FunctionParamMapper<String, RuntimeException> mapper = new FunctionParamMapper<String, RuntimeException>(new ParamErrorHandler<>() {
+          @Override
+          public void error(String message) throws RuntimeException {
+            // Casually report the error if any
+            {
+              final MessageTarget errorTarget = new NodeMessageTarget();
+              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(fCall, message, "r:6b6fe053-7210-4624-8790-609860b309f1(jetbrains.mps.baseLanguage.kotlinRefs.typesystem)", "1057254320151226075", null, errorTarget);
+            }
+          }
+        }, (node) -> SPropertyOperations.getString(node.getNode(), PROPS.name$MnvL), IKotlinFunctionLikeCall__BehaviorDescriptor.getFunctionParameters_idUG7NftR_2Q.invoke(fCall));
+
+        List<SNode> typel = ListSequence.fromList(mapper.checkArguments(NodeArgument.ofList(SLinkOperations.getChildren(fCall, LINKS.actualArgument$Q6nt)))).select(ParameterDeclaration::typeOf).select(KtToJavaConversion::convert).toList();
+
+        for (SNode type : ListSequence.fromList(typel)) {
+          if (SNodeOperations.isInstanceOf(type, CONCEPTS.IGenericType$13)) {
+            IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(type, CONCEPTS.IGenericType$13), subs);
+          }
+        }
+
+        SNode retType = IKotlinFunctionLikeCall__BehaviorDescriptor.getFunctionReturnType_idUG7NftRy8a.invoke(fCall);
+        if (SNodeOperations.isInstanceOf(retType, CONCEPTS.IGenericType$13)) {
+          IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(retType, CONCEPTS.IGenericType$13), subs);
+          retType = IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(SNodeOperations.cast(retType, CONCEPTS.IGenericType$13), subs);
+        }
+        {
+          SNode _nodeToCheck_1029348928467 = fCall;
+          EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:6b6fe053-7210-4624-8790-609860b309f1(jetbrains.mps.baseLanguage.kotlinRefs.typesystem)", "4695112407843789343", 0, null);
+          typeCheckingContext.createLessThanInequality((SNode) retType, (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:6b6fe053-7210-4624-8790-609860b309f1(jetbrains.mps.baseLanguage.kotlinRefs.typesystem)", "4660288602099522945", true), false, true, _info_12389875345);
+        }
+
+        {
+          Iterator<SNode> type_it = ListSequence.fromList(typel).iterator();
+          Iterator<SNode> arg_it = ListSequence.fromList(argl).iterator();
+          SNode type_var;
+          SNode arg_var;
+          while (type_it.hasNext() && arg_it.hasNext()) {
+            type_var = type_it.next();
+            arg_var = arg_it.next();
+            final SNode _type = type_var;
+            final SNode _arg = arg_var;
+
+            if (SNodeOperations.isInstanceOf(_type, CONCEPTS.IGenericType$13)) {
               {
-                final SNode generic = bound;
-                if (SNodeOperations.isInstanceOf(generic, CONCEPTS.IGenericType$13)) {
-                  IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(generic, subs);
-                  SNode node = SPointerOperations.resolveNode(tvd.getNode(), repository);
+                final SNode A = typeCheckingContext.typeOf(arg_var, "r:6b6fe053-7210-4624-8790-609860b309f1(jetbrains.mps.baseLanguage.kotlinRefs.typesystem)", "9033423951295792137", true);
+                typeCheckingContext.whenConcrete(A, () -> {
                   {
                     SNode _nodeToCheck_1029348928467 = fCall;
-                    EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:6b6fe053-7210-4624-8790-609860b309f1(jetbrains.mps.baseLanguage.kotlinRefs.typesystem)", "5302270944911972807", 0, null);
-                    typeCheckingContext.createLessThanInequality((SNode) MapSequence.fromMap(subs).get(node), (SNode) IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(SNodeOperations.copyNode(generic), subs), false, false, _info_12389875345);
-                  }
-                }
-              }
-            }
-
-          } else {
-            {
-              Iterator<TypeParameterDeclaration> tvd_it = Sequence.fromIterable(typeVariableDeclaration).iterator();
-              Iterator<SNode> targ_it = ListSequence.fromList(SLinkOperations.getChildren(fCall, LINKS.typeArgument$Q6Au)).iterator();
-              TypeParameterDeclaration tvd_var;
-              SNode targ_var;
-              while (tvd_it.hasNext() && targ_it.hasNext()) {
-                tvd_var = tvd_it.next();
-                targ_var = targ_it.next();
-                SNode node = SPointerOperations.resolveNode(tvd_var.getNode(), repository);
-                MapSequence.fromMap(subs).put(node, targ_var);
-                if (SNodeOperations.isInstanceOf(targ_var, CONCEPTS.IGenericType$13)) {
-                  IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(targ_var, CONCEPTS.IGenericType$13), subs);
-                }
-              }
-            }
-          }
-
-          List<SNode> argl = SLinkOperations.getChildren(fCall, LINKS.actualArgument$Q6nt);
-
-          // Parameter mapping and verification (will check variable arity and parameter count)
-          FunctionParamMapper<String, RuntimeException> mapper = new FunctionParamMapper<String, RuntimeException>(new ParamErrorHandler<>() {
-            @Override
-            public void error(String message) throws RuntimeException {
-              // Casually report the error if any
-              {
-                final MessageTarget errorTarget = new NodeMessageTarget();
-                IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(fCall, message, "r:6b6fe053-7210-4624-8790-609860b309f1(jetbrains.mps.baseLanguage.kotlinRefs.typesystem)", "1057254320151226075", null, errorTarget);
-              }
-            }
-          }, (ParameterDeclaration node) -> SPropertyOperations.getString(node.getNode(), PROPS.name$MnvL), IKotlinFunctionLikeCall__BehaviorDescriptor.getFunctionParameters_idUG7NftR_2Q.invoke(fCall));
-
-          List<SNode> typel = ListSequence.fromList(mapper.checkArguments(NodeArgument.ofList(SLinkOperations.getChildren(fCall, LINKS.actualArgument$Q6nt)))).select(ParameterDeclaration::typeOf).select(KtToJavaConversion::convert).toListSequence();
-
-          for (SNode type : ListSequence.fromList(typel)) {
-            if (SNodeOperations.isInstanceOf(type, CONCEPTS.IGenericType$13)) {
-              IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(type, CONCEPTS.IGenericType$13), subs);
-            }
-          }
-
-          SNode retType = IKotlinFunctionLikeCall__BehaviorDescriptor.getFunctionReturnType_idUG7NftRy8a.invoke(fCall);
-          if (SNodeOperations.isInstanceOf(retType, CONCEPTS.IGenericType$13)) {
-            IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(retType, CONCEPTS.IGenericType$13), subs);
-            retType = IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(SNodeOperations.cast(retType, CONCEPTS.IGenericType$13), subs);
-          }
-          {
-            SNode _nodeToCheck_1029348928467 = fCall;
-            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:6b6fe053-7210-4624-8790-609860b309f1(jetbrains.mps.baseLanguage.kotlinRefs.typesystem)", "4695112407843789343", 0, null);
-            typeCheckingContext.createLessThanInequality((SNode) retType, (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:6b6fe053-7210-4624-8790-609860b309f1(jetbrains.mps.baseLanguage.kotlinRefs.typesystem)", "4660288602099522945", true), false, true, _info_12389875345);
-          }
-
-          {
-            Iterator<SNode> type_it = ListSequence.fromList(typel).iterator();
-            Iterator<SNode> arg_it = ListSequence.fromList(argl).iterator();
-            SNode type_var;
-            SNode arg_var;
-            while (type_it.hasNext() && arg_it.hasNext()) {
-              type_var = type_it.next();
-              arg_var = arg_it.next();
-              final SNode _type = type_var;
-              final SNode _arg = arg_var;
-
-              if (SNodeOperations.isInstanceOf(_type, CONCEPTS.IGenericType$13)) {
-                {
-                  final SNode A = typeCheckingContext.typeOf(arg_var, "r:6b6fe053-7210-4624-8790-609860b309f1(jetbrains.mps.baseLanguage.kotlinRefs.typesystem)", "9033423951295792137", true);
-                  typeCheckingContext.whenConcrete(A, new Runnable() {
-                    public void run() {
-                      {
-                        SNode _nodeToCheck_1029348928467 = fCall;
-                        EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:6b6fe053-7210-4624-8790-609860b309f1(jetbrains.mps.baseLanguage.kotlinRefs.typesystem)", "9033423951293505964", 0, null);
-                        {
-                          BaseQuickFixProvider intentionProvider = null;
-                          intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "7196467959883378327", false);
-                          intentionProvider.putArgument("desiredType", _type);
-                          intentionProvider.putArgument("expression", _arg);
-                          _info_12389875345.addIntentionProvider(intentionProvider);
-                        }
-                        typeCheckingContext.createGreaterThanInequality((SNode) IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(SNodeOperations.cast(_type, CONCEPTS.IGenericType$13), subs), (SNode) typeCheckingContext.getExpandedNode(A), false, true, _info_12389875345);
-                      }
-                    }
-                  }, "r:6b6fe053-7210-4624-8790-609860b309f1(jetbrains.mps.baseLanguage.kotlinRefs.typesystem)", "9033423951293505962", false, false);
-                }
-              } else {
-                if (!(typeCheckingContext.isSingleTypeComputation())) {
-                  {
-                    SNode _nodeToCheck_1029348928467 = arg_var;
-                    EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:6b6fe053-7210-4624-8790-609860b309f1(jetbrains.mps.baseLanguage.kotlinRefs.typesystem)", "9033423951293505984", 0, null);
+                    EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:6b6fe053-7210-4624-8790-609860b309f1(jetbrains.mps.baseLanguage.kotlinRefs.typesystem)", "9033423951293505964", 0, null);
                     {
                       BaseQuickFixProvider intentionProvider = null;
-                      intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "4017912752407613595", false);
+                      intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "7196467959883378327", false);
                       intentionProvider.putArgument("desiredType", _type);
                       intentionProvider.putArgument("expression", _arg);
                       _info_12389875345.addIntentionProvider(intentionProvider);
                     }
-                    typeCheckingContext.createGreaterThanInequality((SNode) _type, (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:6b6fe053-7210-4624-8790-609860b309f1(jetbrains.mps.baseLanguage.kotlinRefs.typesystem)", "9033423951293505986", true), true, true, _info_12389875345);
+                    typeCheckingContext.createGreaterThanInequality((SNode) IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(SNodeOperations.cast(_type, CONCEPTS.IGenericType$13), subs), (SNode) typeCheckingContext.getExpandedNode(A), false, true, _info_12389875345);
                   }
+                }, "r:6b6fe053-7210-4624-8790-609860b309f1(jetbrains.mps.baseLanguage.kotlinRefs.typesystem)", "9033423951293505962", false, false);
+              }
+            } else {
+              if (!(typeCheckingContext.isSingleTypeComputation())) {
+                {
+                  SNode _nodeToCheck_1029348928467 = arg_var;
+                  EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:6b6fe053-7210-4624-8790-609860b309f1(jetbrains.mps.baseLanguage.kotlinRefs.typesystem)", "9033423951293505984", 0, null);
+                  {
+                    BaseQuickFixProvider intentionProvider = null;
+                    intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "4017912752407613595", false);
+                    intentionProvider.putArgument("desiredType", _type);
+                    intentionProvider.putArgument("expression", _arg);
+                    _info_12389875345.addIntentionProvider(intentionProvider);
+                  }
+                  typeCheckingContext.createGreaterThanInequality((SNode) _type, (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:6b6fe053-7210-4624-8790-609860b309f1(jetbrains.mps.baseLanguage.kotlinRefs.typesystem)", "9033423951293505986", true), true, true, _info_12389875345);
                 }
               }
             }
           }
-
-          // TODO implement for kotlin?
         }
+
+        // TODO implement for kotlin?
       }, "r:6b6fe053-7210-4624-8790-609860b309f1(jetbrains.mps.baseLanguage.kotlinRefs.typesystem)", "5494632093666931981", true, false);
     }
   }

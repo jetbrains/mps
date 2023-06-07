@@ -6,12 +6,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import javax.swing.JComponent;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Objects;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -26,11 +25,11 @@ public abstract class AbstractIntroduceFieldRefactoring extends IntroduceVariabl
     this.myFieldInitialization = place;
   }
   public boolean isInitializeInFieldAvailable() {
-    return getExpression() != null && ListSequence.fromList(SNodeOperations.getNodeDescendants(getExpression(), CONCEPTS.VariableReference$TC, true, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
+    return getExpression() != null && ListSequence.fromList(ListSequence.fromList(SNodeOperations.getNodeDescendants(getExpression(), CONCEPTS.VariableReference$TC, true, new SAbstractConcept[]{})).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      public Boolean invoke(SNode it) {
         return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41);
       }
-    }).toListSequence().isEmpty();
+    }).toList()).isEmpty();
   }
   public static boolean isApplicable(SNode node) {
     return (SNodeOperations.isInstanceOf(node, CONCEPTS.Expression$mB) || SNodeOperations.isInstanceOf(node, CONCEPTS.LocalVariableDeclaration$41)) && (SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false) != null);
@@ -49,12 +48,12 @@ public abstract class AbstractIntroduceFieldRefactoring extends IntroduceVariabl
     if (myVariable == null) {
       return;
     }
-    Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(myVariable, CONCEPTS.StatementList$m_, false, false), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{}), CONCEPTS.VariableReference$TC)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
+    Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(myVariable, CONCEPTS.StatementList$m_, false, false), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{}), CONCEPTS.VariableReference$TC)).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      public Boolean invoke(SNode it) {
         return Objects.equals(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), myVariable);
       }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
+    }).visitAll(new _FunctionTypes._void_P1_E0<SNode>() {
+      public void invoke(SNode it) {
         SLinkOperations.setTarget(it, LINKS.variableDeclaration$N1XG, newDeclaration);
       }
     });

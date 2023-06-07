@@ -12,7 +12,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.structure.behavior.IConceptAspect__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.language.LanguageAspectDescriptor;
@@ -44,12 +43,10 @@ public class ConceptEditorHelper {
     return result;
   }
   public static List<SNode> sortRootsByConcept(List<SNode> roots, final SAbstractConcept[] conceptOrder) {
-    return ListSequence.fromList(roots).sort(new ISelector<SNode, Integer>() {
-      public Integer select(SNode root) {
-        int conceptIndex = Sequence.fromIterable(Sequence.fromArray(conceptOrder)).indexOf(SNodeOperations.getConcept(root));
-        return (conceptIndex == -1 ? conceptOrder.length : conceptIndex);
-      }
-    }, true).toListSequence();
+    return ListSequence.fromList(roots).sort((root) -> {
+      int conceptIndex = Sequence.fromIterable(Sequence.fromArray(conceptOrder)).indexOf(SNodeOperations.getConcept(root));
+      return (conceptIndex == -1 ? conceptOrder.length : conceptIndex);
+    }, true).toList();
   }
 
   public static Iterable<SConcept> getAvailableConceptAspects(@Nullable LanguageAspectDescriptor ad, final SNode cd) {

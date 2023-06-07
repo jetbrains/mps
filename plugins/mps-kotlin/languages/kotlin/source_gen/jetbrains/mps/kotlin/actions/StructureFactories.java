@@ -8,7 +8,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -19,11 +18,7 @@ public class StructureFactories {
       {
         final SNode block = sampleNode;
         if (SNodeOperations.isInstanceOf(block, CONCEPTS.IStatementHolder$84)) {
-          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.statements$R3pt)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.statements$R3pt)).select(new ISelector<SNode, SNode>() {
-            public SNode select(SNode it) {
-              return SNodeOperations.copyNode(it);
-            }
-          }));
+          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.statements$R3pt)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.statements$R3pt)).select((it) -> SNodeOperations.copyNode(it)));
         }
       }
     }

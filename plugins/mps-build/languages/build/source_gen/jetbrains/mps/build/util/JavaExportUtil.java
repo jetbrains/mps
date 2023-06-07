@@ -11,8 +11,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -80,15 +78,9 @@ public class JavaExportUtil {
     SNode artifact = SNodeOperations.as(artifacts.findArtifact(library), CONCEPTS.BuildLayout_Node$Rb);
     if (artifact != null) {
       if (SNodeOperations.isInstanceOf(artifact, CONCEPTS.BuildLayout_ExportAsJavaLibrary$KO)) {
-        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(artifact, CONCEPTS.BuildLayout_ExportAsJavaLibrary$KO), LINKS.children$aMRO)).select(new ISelector<SNode, SNode>() {
-          public SNode select(SNode it) {
-            return SNodeOperations.as(artifacts.findArtifact(it), CONCEPTS.BuildLayout_Node$Rb);
-          }
-        }).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            if (it != null) {
-              builder.add(it);
-            }
+        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(artifact, CONCEPTS.BuildLayout_ExportAsJavaLibrary$KO), LINKS.children$aMRO)).select((it) -> SNodeOperations.as(artifacts.findArtifact(it), CONCEPTS.BuildLayout_Node$Rb)).visitAll((it) -> {
+          if (it != null) {
+            builder.add(it);
           }
         });
       } else {
@@ -103,11 +95,7 @@ public class JavaExportUtil {
 
     // search for artifacts
     // XXX how come we concat BuildSource_JavaModule with BuildSourcePath, and use findArtifact for both?
-    Iterable<SNode> required = Sequence.fromIterable(closure.getModules()).concat(Sequence.fromIterable(closure.getJars()).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.path$M9si);
-      }
-    })).concat(Sequence.fromIterable(Sequence.<SNode>singleton(target)));
+    Iterable<SNode> required = Sequence.fromIterable(closure.getModules()).concat(Sequence.fromIterable(closure.getJars()).select((it) -> SLinkOperations.getTarget(it, LINKS.path$M9si))).concat(Sequence.fromIterable(Sequence.<SNode>singleton(target)));
     for (SNode n : Sequence.fromIterable(required)) {
       if (SNodeOperations.getContainingRoot(n) == SNodeOperations.getContainingRoot(contextNode)) {
         continue;

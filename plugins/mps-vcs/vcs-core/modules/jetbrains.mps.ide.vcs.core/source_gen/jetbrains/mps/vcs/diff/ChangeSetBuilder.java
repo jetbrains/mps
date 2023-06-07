@@ -23,17 +23,14 @@ import java.util.Map;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.HashMap;
 import java.util.function.Function;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.internal.collections.runtime.IListSequence;
 import java.util.Objects;
 import jetbrains.mps.util.LongestCommonSubsequenceFinder;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.vcs.diff.changes.NodeGroupChange;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.vcs.diff.changes.NodeIdChange;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.extapi.model.SModelBase;
@@ -52,6 +49,7 @@ import jetbrains.mps.vcs.diff.changes.EngagedLanguageChange;
 import jetbrains.mps.extapi.model.ModelWithAttributes;
 import jetbrains.mps.vcs.diff.changes.ModelAttributeChange;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
+import jetbrains.mps.internal.collections.runtime.IMapping;
 
 @GeneratedClass(node = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)/4652592318748341229", model = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)")
 public final class ChangeSetBuilder {
@@ -143,11 +141,7 @@ public final class ChangeSetBuilder {
       final Map<SContainmentLink, List<SNode>> roleToOldChildCollection = getRoleToChildCollectionMap(oldNode);
       final Map<SContainmentLink, List<SNode>> roleToNewChildCollection = getRoleToChildCollectionMap(newNode);
 
-      SetSequence.fromSet(MapSequence.fromMap(roleToOldChildCollection).keySet()).concat(SetSequence.fromSet(MapSequence.fromMap(roleToNewChildCollection).keySet())).distinct().visitAll(new IVisitor<SContainmentLink>() {
-        public void visit(SContainmentLink role) {
-          buildForNodeRole(roleToOldChildCollection.getOrDefault(role, ListSequence.fromList(new ArrayList<SNode>())), roleToNewChildCollection.getOrDefault(role, ListSequence.fromList(new ArrayList<SNode>())), oldNode.getNodeId(), newNode.getNodeId(), role);
-        }
-      });
+      SetSequence.fromSet(MapSequence.fromMap(roleToOldChildCollection).keySet()).concat(SetSequence.fromSet(MapSequence.fromMap(roleToNewChildCollection).keySet())).distinct().visitAll((role) -> buildForNodeRole(roleToOldChildCollection.getOrDefault(role, ListSequence.fromList(new ArrayList<SNode>())), roleToNewChildCollection.getOrDefault(role, ListSequence.fromList(new ArrayList<SNode>())), oldNode.getNodeId(), newNode.getNodeId(), role));
     }
   }
 
@@ -159,21 +153,15 @@ public final class ChangeSetBuilder {
     //      scattered around and is not apparent.
     if (RuntimeFlags.isMergeDriverMode()) {
       // see MPS-35421, SNodeOperations.getContainingLinkInChildrenAndChildAttributesCollection() case
-      ListSequence.fromList(SNodeOperations.getChildren(node)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode child) {
-          roleToChildCollection.computeIfAbsent(child.getContainmentLink(), (SContainmentLink link) -> ListSequence.fromList(new ArrayList<SNode>())).add(child);
-        }
-      });
+      ListSequence.fromList(SNodeOperations.getChildren(node)).visitAll((child) -> roleToChildCollection.computeIfAbsent(child.getContainmentLink(), (SContainmentLink link) -> ListSequence.fromList(new ArrayList<SNode>())).add(child));
     } else {
-      ListSequence.fromList(SNodeOperations.getChildren(node)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode child) {
-          SContainmentLink link = SNodeOperations.getContainingLinkInChildrenAndChildAttributesCollection(child);
-          roleToChildCollection.computeIfAbsent(link, new Function<SContainmentLink, List<SNode>>() {
-            public List<SNode> apply(SContainmentLink link) {
-              return ListSequence.fromList(new ArrayList<SNode>());
-            }
-          }).add(child);
-        }
+      ListSequence.fromList(SNodeOperations.getChildren(node)).visitAll((child) -> {
+        SContainmentLink link = SNodeOperations.getContainingLinkInChildrenAndChildAttributesCollection(child);
+        roleToChildCollection.computeIfAbsent(link, new Function<SContainmentLink, List<SNode>>() {
+          public IListSequence<SNode> apply(SContainmentLink link) {
+            return ListSequence.fromList(new ArrayList<SNode>());
+          }
+        }).add(child);
       });
     }
     return roleToChildCollection;
@@ -181,16 +169,8 @@ public final class ChangeSetBuilder {
 
   public void buildForNodeRole(final List<SNode> oldChildren, List<SNode> newChildren, final SNodeId oldParentId, final SNodeId newParentId, final SContainmentLink role) {
 
-    final List<SNodeId> oldIds = ListSequence.fromList(oldChildren).select(new ISelector<SNode, SNodeId>() {
-      public SNodeId select(SNode n) {
-        return n.getNodeId();
-      }
-    }).toListSequence();
-    final List<SNodeId> newIds = ListSequence.fromList(newChildren).select(new ISelector<SNode, SNodeId>() {
-      public SNodeId select(SNode n) {
-        return n.getNodeId();
-      }
-    }).toListSequence();
+    final List<SNodeId> oldIds = ListSequence.fromList(oldChildren).select((n) -> n.getNodeId()).toList();
+    final List<SNodeId> newIds = ListSequence.fromList(newChildren).select((n) -> n.getNodeId()).toList();
 
     if (Objects.equals(oldIds, newIds)) {
       for (SNode child : ListSequence.fromList(oldChildren)) {
@@ -201,20 +181,12 @@ public final class ChangeSetBuilder {
 
     LongestCommonSubsequenceFinder<SNodeId> finder = new LongestCommonSubsequenceFinder<SNodeId>(oldIds, newIds);
     List<Tuples._2<Integer, Integer>> commonIndices = finder.getCommonIndices();
-    ListSequence.fromList(commonIndices).select(new ISelector<Tuples._2<Integer, Integer>, SNode>() {
-      public SNode select(Tuples._2<Integer, Integer> in) {
-        return ListSequence.fromList(oldChildren).getElement((int) in._0());
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode child) {
-        buildForNode(child, getNewNode(child.getNodeId()));
-      }
-    });
+    ListSequence.fromList(commonIndices).select((in) -> ListSequence.fromList(oldChildren).getElement((int) in._0())).visitAll((child) -> buildForNode(child, getNewNode(child.getNodeId())));
 
     // Finding inserts, deletions and replacements
     for (Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>> indices : ListSequence.fromList(finder.getDifferentIndices())) {
-      final List<SNodeId> oldIds1 = ListSequence.fromList(oldIds).page((int) indices._0()._0(), (int) indices._0()._1()).toListSequence();
-      List<SNodeId> newIds1 = ListSequence.fromList(newIds).page((int) indices._1()._0(), (int) indices._1()._1()).toListSequence();
+      final List<SNodeId> oldIds1 = ListSequence.fromList(oldIds).page((int) indices._0()._0(), (int) indices._0()._1()).toList();
+      List<SNodeId> newIds1 = ListSequence.fromList(newIds).page((int) indices._1()._0(), (int) indices._1()._1()).toList();
       final Map<SNodeId, SNodeId> newToOldMap = MapSequence.fromMap(new HashMap<SNodeId, SNodeId>());
       for (SNodeId oldNodeId : oldIds1) {
         for (SNodeId newNodeId : newIds1) {
@@ -231,11 +203,7 @@ public final class ChangeSetBuilder {
         ListSequence.fromList(myNewChanges).addElement(new NodeGroupChange(myChangeSet, oldParentId, newParentId, role, (int) indices._0()._0(), (int) indices._0()._1(), (int) indices._1()._0(), (int) indices._1()._1()));
         continue;
       }
-      List<SNodeId> newIds2 = ListSequence.fromList(newIds1).select(new ISelector<SNodeId, SNodeId>() {
-        public SNodeId select(SNodeId it) {
-          return (MapSequence.fromMap(newToOldMap).containsKey(it) ? MapSequence.fromMap(newToOldMap).get(it) : it);
-        }
-      }).toListSequence();
+      List<SNodeId> newIds2 = ListSequence.fromList(newIds1).select((it) -> (MapSequence.fromMap(newToOldMap).containsKey(it) ? MapSequence.fromMap(newToOldMap).get(it) : it)).toList();
       LongestCommonSubsequenceFinder<SNodeId> finder1 = new LongestCommonSubsequenceFinder<SNodeId>(oldIds1, newIds2);
       List<Tuples._2<Integer, Integer>> commonIndices1 = finder1.getCommonIndices();
       for (Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>> indices1 : ListSequence.fromList(finder1.getDifferentIndices())) {
@@ -249,11 +217,7 @@ public final class ChangeSetBuilder {
         if (newStart1 < ListSequence.fromList(newIds2).count()) {
           final Wrappers._T<SNodeId> newNodeId = new Wrappers._T<SNodeId>(ListSequence.fromList(newIds2).getElement(newStart1));
           if (MapSequence.fromMap(newToOldMap).containsValue(newNodeId.value)) {
-            newNodeId.value = check_nbyrtw_a0a0b0h0i0l0db(MapSequence.fromMap(newToOldMap).findFirst(new IWhereFilter<IMapping<SNodeId, SNodeId>>() {
-              public boolean accept(IMapping<SNodeId, SNodeId> it) {
-                return Objects.equals(it.value(), newNodeId.value);
-              }
-            }));
+            newNodeId.value = check_nbyrtw_a0a0b0h0i0l0db(MapSequence.fromMap(newToOldMap).findFirst((it) -> Objects.equals(it.value(), newNodeId.value)));
           }
           newStart = ListSequence.fromList(newIds).indexOf(newNodeId.value);
         } else {
@@ -263,11 +227,7 @@ public final class ChangeSetBuilder {
         if (newEnd1 < ListSequence.fromList(newIds2).count()) {
           final Wrappers._T<SNodeId> newNodeId = new Wrappers._T<SNodeId>(ListSequence.fromList(newIds2).getElement(newEnd1));
           if (MapSequence.fromMap(newToOldMap).containsValue(newNodeId.value)) {
-            newNodeId.value = check_nbyrtw_a0a0b0j0i0l0db(MapSequence.fromMap(newToOldMap).findFirst(new IWhereFilter<IMapping<SNodeId, SNodeId>>() {
-              public boolean accept(IMapping<SNodeId, SNodeId> it) {
-                return Objects.equals(it.value(), newNodeId.value);
-              }
-            }));
+            newNodeId.value = check_nbyrtw_a0a0b0j0i0l0db(MapSequence.fromMap(newToOldMap).findFirst((it) -> Objects.equals(it.value(), newNodeId.value)));
           }
           newEnd = ListSequence.fromList(newIds).indexOf(newNodeId.value);
         } else {
@@ -276,22 +236,12 @@ public final class ChangeSetBuilder {
         ListSequence.fromList(myNewChanges).addElement(new NodeGroupChange(myChangeSet, oldParentId, newParentId, role, oldStart, oldEnd, newStart, newEnd));
       }
       // Finding changes for children
-      ListSequence.fromList(commonIndices1).select(new ISelector<Tuples._2<Integer, Integer>, SNodeId>() {
-        public SNodeId select(Tuples._2<Integer, Integer> in) {
-          return ListSequence.fromList(oldIds1).getElement((int) in._0());
-        }
-      }).visitAll(new IVisitor<SNodeId>() {
-        public void visit(final SNodeId oldNodeId) {
-          SNodeId newNodeId = check_nbyrtw_a0a0a0a01a11a92(MapSequence.fromMap(newToOldMap).findFirst(new IWhereFilter<IMapping<SNodeId, SNodeId>>() {
-            public boolean accept(IMapping<SNodeId, SNodeId> it) {
-              return Objects.equals(it.value(), oldNodeId);
-            }
-          }));
-          assert newNodeId != null;
-          assert ListSequence.fromList(oldIds).contains(oldNodeId) && ListSequence.fromList(newIds).contains(newNodeId);
-          ListSequence.fromList(myNewChanges).addElement(new NodeIdChange(myChangeSet, oldParentId, newParentId, role, oldNodeId, newNodeId));
-          buildForNode(getOldNode(oldNodeId), getNewNode(newNodeId));
-        }
+      ListSequence.fromList(commonIndices1).select((in) -> ListSequence.fromList(oldIds1).getElement((int) in._0())).visitAll((final SNodeId oldNodeId) -> {
+        SNodeId newNodeId = check_nbyrtw_a0a0a0a01a11a92(MapSequence.fromMap(newToOldMap).findFirst((it) -> Objects.equals(it.value(), oldNodeId)));
+        assert newNodeId != null;
+        assert ListSequence.fromList(oldIds).contains(oldNodeId) && ListSequence.fromList(newIds).contains(newNodeId);
+        ListSequence.fromList(myNewChanges).addElement(new NodeIdChange(myChangeSet, oldParentId, newParentId, role, oldNodeId, newNodeId));
+        buildForNode(getOldNode(oldNodeId), getNewNode(newNodeId));
       });
     }
   }
@@ -304,16 +254,8 @@ public final class ChangeSetBuilder {
       added = _tmp_nbyrtw_c0fb._0();
       deleted = _tmp_nbyrtw_c0fb._1();
     }
-    ListSequence.fromList(myNewChanges).addSequence(Sequence.fromIterable(added).select(new ISelector<D, DependencyChange>() {
-      public DependencyChange select(D r) {
-        return changeCreator.invoke(r, false);
-      }
-    }));
-    ListSequence.fromList(myNewChanges).addSequence(Sequence.fromIterable(deleted).select(new ISelector<D, DependencyChange>() {
-      public DependencyChange select(D r) {
-        return changeCreator.invoke(r, true);
-      }
-    }));
+    ListSequence.fromList(myNewChanges).addSequence(Sequence.fromIterable(added).select((r) -> changeCreator.invoke(r, false)));
+    ListSequence.fromList(myNewChanges).addSequence(Sequence.fromIterable(deleted).select((r) -> changeCreator.invoke(r, true)));
   }
 
   private void buildForImports() {
@@ -384,11 +326,7 @@ public final class ChangeSetBuilder {
   }
 
   private void build(boolean withOpposite) {
-    Iterable<SNodeId> allRootIds = ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.roots(myOldModel, null)).concat(ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.roots(myNewModel, null))).select(new ISelector<SNode, SNodeId>() {
-      public SNodeId select(SNode n) {
-        return n.getNodeId();
-      }
-    });
+    Iterable<SNodeId> allRootIds = ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.roots(myOldModel, null)).concat(ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.roots(myNewModel, null))).select((n) -> n.getNodeId());
     for (SNodeId rootId : SetSequence.fromSetWithValues(new HashSet<SNodeId>(), allRootIds)) {
       buildForRoot(getOldNode(rootId), getNewNode(rootId));
     }
@@ -401,11 +339,7 @@ public final class ChangeSetBuilder {
   }
 
   public void commit() {
-    ListSequence.fromList(myNewChanges).visitAll(new IVisitor<ModelChange>() {
-      public void visit(ModelChange it) {
-        myChangeSet.add(it);
-      }
-    });
+    ListSequence.fromList(myNewChanges).visitAll((it) -> myChangeSet.add(it));
     ListSequence.fromList(myNewChanges).clear();
     myChangeSet.fillRootToChange();
   }

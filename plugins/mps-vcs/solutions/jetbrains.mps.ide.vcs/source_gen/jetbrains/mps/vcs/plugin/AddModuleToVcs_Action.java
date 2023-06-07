@@ -72,7 +72,7 @@ public class AddModuleToVcs_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    List<VirtualFile> unversionedFiles = Sequence.fromIterable(VcsActionsUtil.getUnversionedFilesForModules(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSCommonDataKeys.MODULES))).toListSequence();
+    List<VirtualFile> unversionedFiles = Sequence.fromIterable(VcsActionsUtil.getUnversionedFilesForModules(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSCommonDataKeys.MODULES))).toList();
     ChangeListManagerImpl changeListManager = ChangeListManagerImpl.getInstanceImpl(event.getData(CommonDataKeys.PROJECT));
     changeListManager.addUnversionedFiles(changeListManager.getDefaultChangeList(), unversionedFiles);
   }

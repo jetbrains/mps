@@ -6,7 +6,6 @@ import jetbrains.mps.execution.api.settings.SettingsEditorEx;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.util.Factory;
 
 public class JavaRunParameters_Configuration_Editor extends SettingsEditorEx<JavaRunParameters_Configuration> {
   private JavaConfigurationEditorComponent myJavaOptionsEditor;
@@ -28,11 +27,7 @@ public class JavaRunParameters_Configuration_Editor extends SettingsEditorEx<Jav
   }
   private Project myProject;
   public JavaRunParameters_Configuration_Editor(final Project project) {
-    super(new Factory<JavaRunParameters_Configuration>() {
-      public JavaRunParameters_Configuration create() {
-        return new JavaRunParameters_Configuration(project);
-      }
-    });
+    super(() -> new JavaRunParameters_Configuration(project));
     myProject = project;
   }
 }

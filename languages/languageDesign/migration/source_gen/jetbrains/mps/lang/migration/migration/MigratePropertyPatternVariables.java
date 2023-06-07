@@ -35,11 +35,7 @@ public class MigratePropertyPatternVariables extends MigrationScriptBase {
     {
       SearchScope scope_mymgc3_a0e = CommandUtil.createScope(m);
       final SearchScope scope_mymgc3_a0e_0 = new EditableFilteringScope(scope_mymgc3_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_mymgc3_a0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_mymgc3_a0e_0;
       new PropertyPatternVariableMigration<SNode>() {
         @Override
         protected Iterable<SNode> getUsagesToMigrate() {

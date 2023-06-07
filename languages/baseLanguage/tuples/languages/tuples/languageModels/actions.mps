@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
@@ -57,6 +57,7 @@
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -104,7 +105,6 @@
       <concept id="540871147943773365" name="jetbrains.mps.baseLanguage.collections.structure.SingleArgumentSequenceOperation" flags="nn" index="25WWJ4">
         <child id="540871147943773366" name="argument" index="25WWJ7" />
       </concept>
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1160612413312" name="jetbrains.mps.baseLanguage.collections.structure.AddElementOperation" flags="nn" index="TSZUe" />
       <concept id="1175845471038" name="jetbrains.mps.baseLanguage.collections.structure.ReverseOperation" flags="nn" index="35Qw8J" />
       <concept id="1201792049884" name="jetbrains.mps.baseLanguage.collections.structure.TranslateOperation" flags="nn" index="3goQfb" />
@@ -138,7 +138,7 @@
                     <node concept="3clFbF" id="2xDx7r6nqKY" role="3cqZAp">
                       <node concept="2OqwBi" id="2xDx7r6nqL1" role="3clFbG">
                         <node concept="37vLTw" id="2BHiRxgmhB6" role="2Oq$k0">
-                          <ref role="3cqZAo" node="2xDx7r6nqIK" resolve="ntd" />
+                          <ref role="3cqZAo" node="5W7E4fV0W05" />
                         </node>
                         <node concept="3Tsc0h" id="2xDx7r6nqL6" role="2OqNvi">
                           <ref role="3TtcxE" to="cx9y:i2pHZMD" resolve="component" />
@@ -146,9 +146,9 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="Rh6nW" id="2xDx7r6nqIK" role="1bW2Oz">
+                  <node concept="gl6BB" id="5W7E4fV0W05" role="1bW2Oz">
                     <property role="TrG5h" value="ntd" />
-                    <node concept="2jxLKc" id="1P4c1XrzT84" role="1tU5fm" />
+                    <node concept="2jxLKc" id="5W7E4fV0W06" role="1tU5fm" />
                   </node>
                 </node>
               </node>

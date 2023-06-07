@@ -22,7 +22,6 @@ import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.lang.constraints.rules.util.RequiredDefsCalculator;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.generator.template.MapSrcMacroPostProcContext;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.generator.template.WeavingMappingRuleContext;
@@ -173,11 +172,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return new RequiredDefsCalculator().calculate(_context.getNode());
   }
   public static Iterable<SNode> sourceNodesQuery_2_0(final SourceSubstituteMacroNodesContext _context) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.TypedDefReference$yw, false, new SAbstractConcept[]{}), LINKS.declaration$xU6a)).distinct(), CONCEPTS.DefForRule$_k)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.condition$h$Ae) != null);
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.TypedDefReference$yw, false, new SAbstractConcept[]{}), LINKS.declaration$xU6a)).distinct(), CONCEPTS.DefForRule$_k)).where((it) -> (SLinkOperations.getTarget(it, LINKS.condition$h$Ae) != null));
   }
   public static Iterable<SNode> sourceNodesQuery_3_0(final SourceSubstituteMacroNodesContext _context) {
     return ((Iterable<SNode>) _context.getVariable("var:rules"));
@@ -198,11 +193,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "constraints2RootClass");
   }
   public static SNode weaving_AnchorQuery_0_0(final WeavingAnchorContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(_context.getMainContextNode(), CONCEPTS.ClassConcept$bK), LINKS.member$L_2d)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.ConstructorDeclaration$yG);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(_context.getMainContextNode(), CONCEPTS.ClassConcept$bK), LINKS.member$L_2d)).findFirst((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.ConstructorDeclaration$yG));
   }
   public static Object varMacro_Value_2_0(final TemplateVarContext _context) {
     // source node not specified or (likely, erroneously) points to the same (transient) model,

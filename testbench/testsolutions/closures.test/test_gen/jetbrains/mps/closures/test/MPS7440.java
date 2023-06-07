@@ -8,11 +8,7 @@ public class MPS7440 {
   public MPS7440() {
   }
   public void test() {
-    XyzUtil.withAbc(new _Adapters._return_P1_E0_to__void_P1_E0_adapter<Abc>(new _FunctionTypes._return_P1_E0<Integer, Abc>() {
-      public Integer invoke(Abc abc) {
-        return 1;
-      }
-    }));
+    XyzUtil.withAbc(new _Adapters._return_P1_E0_to__void_P1_E0_adapter<Abc>(((_FunctionTypes._return_P1_E0<Integer, Abc>) (Abc abc) -> 1)));
   }
   public static class XyzUtil {
     public XyzUtil() {

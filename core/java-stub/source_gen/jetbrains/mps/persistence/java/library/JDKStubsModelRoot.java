@@ -19,8 +19,6 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.persistence.Memento;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.util.MacroHelper;
@@ -66,11 +64,7 @@ public class JDKStubsModelRoot extends ModelRootBase {
   public Iterable<SModel> loadModels() {
     Map<SModelId, SModel> result = MapSequence.fromMap(new HashMap<SModelId, SModel>());
     // todo decide whether to use IdeaFS here
-    for (IFile file : ListSequence.fromList(myJrtPaths).select(new ISelector<QualifiedPath, IFile>() {
-      public IFile select(QualifiedPath it) {
-        return myVfsManager.getFile(it);
-      }
-    })) {
+    for (IFile file : ListSequence.fromList(myJrtPaths).select((it) -> myVfsManager.getFile(it))) {
       JavaClassStubsModelRoot.getModelDescriptors_(result, file, "", getModule(), myScopeControl, this);
     }
     return MapSequence.fromMap(result).values();
@@ -79,11 +73,7 @@ public class JDKStubsModelRoot extends ModelRootBase {
   public String getPresentation() {
     final StringBuilder res = new StringBuilder();
     res.append("JdkStubsModelRoot[");
-    ListSequence.fromList(myJrtPaths).visitAll(new IVisitor<QualifiedPath>() {
-      public void visit(QualifiedPath it) {
-        res.append(it + ",");
-      }
-    });
+    ListSequence.fromList(myJrtPaths).visitAll((it) -> res.append(it + ","));
     res.append("]");
     return res.toString();
   }
@@ -106,11 +96,7 @@ public class JDKStubsModelRoot extends ModelRootBase {
       myScopeControl.load(packScope);
     }
     Iterable<Memento> children = memento.getChildren("path");
-    myJrtPaths = Sequence.fromIterable(children).select(new ISelector<Memento, QualifiedPath>() {
-      public QualifiedPath select(Memento it) {
-        return QualifiedPath.deserialize(it.get("value"), new MacroHelper.MacroNoHelper());
-      }
-    }).toListSequence();
+    myJrtPaths = Sequence.fromIterable(children).select((it) -> QualifiedPath.deserialize(it.get("value"), new MacroHelper.MacroNoHelper())).toList();
   }
 
   public void addPath(QualifiedPath qp) {

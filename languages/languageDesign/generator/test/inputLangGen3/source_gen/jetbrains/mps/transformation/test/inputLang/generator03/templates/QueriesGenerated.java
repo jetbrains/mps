@@ -14,7 +14,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.generator.template.TemplateVarContext;
 import jetbrains.mps.generator.template.TemplateQueryContext;
 import java.util.Map;
@@ -81,11 +80,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Iterable<SNode> sourceNodesQuery_2_1(final SourceSubstituteMacroNodesContext _context) {
     // FIXME I'd like to use LOOP.inputNode here once MPS-32699 is merged into master
     final SNode rtc = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.RefTestClass$MJ);
-    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.ClassExport$s7)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.clz$Kh$s) == rtc;
-      }
-    });
+    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.ClassExport$s7)).where((it) -> SLinkOperations.getTarget(it, LINKS.clz$Kh$s) == rtc);
   }
   public static Object varMacro_Value_2_0(final TemplateVarContext _context) {
     return _context.getNode();

@@ -73,12 +73,8 @@ public class MoveReferenceLinkSpecialization extends MoveConceptMemberSpecializa
     {
       SearchScope scope_w90w7j_a0e = CommandUtil.createScope(searchScope);
       final SearchScope scope_w90w7j_a0e_0 = new EditableFilteringScope(scope_w90w7j_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_w90w7j_a0e_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(oldLink.getOwner()), false)).toListSequence();
+      QueryExecutionContext context = () -> scope_w90w7j_a0e_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(oldLink.getOwner()), false)).toList();
     }
   }
   public void doReplaceInstance(SNode instance, SReferenceLink oldLink, SReferenceLink newLink) {

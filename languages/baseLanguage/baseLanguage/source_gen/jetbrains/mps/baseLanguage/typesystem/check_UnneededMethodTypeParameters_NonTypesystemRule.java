@@ -9,10 +9,8 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -26,22 +24,12 @@ public class check_UnneededMethodTypeParameters_NonTypesystemRule extends Abstra
   public check_UnneededMethodTypeParameters_NonTypesystemRule() {
   }
   public void applyRule(final SNode baseMethodDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    ListSequence.fromList(SLinkOperations.getChildren(baseMethodDeclaration, LINKS.typeVariableDeclaration$Lipp)).visitAll(new IVisitor<SNode>() {
-      public void visit(final SNode typeVarDeclaration) {
-        boolean unused = ListSequence.fromList(SNodeOperations.getNodeDescendants(baseMethodDeclaration, CONCEPTS.TypeVariableReference$WL, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return ListSequence.fromList(SNodeOperations.getNodeAncestors(it, CONCEPTS.SingleLineComment$Kw, false)).isEmpty();
-          }
-        }).all(new IWhereFilter<SNode>() {
-          public boolean accept(SNode ref) {
-            return !(Objects.equals(SLinkOperations.getTarget(ref, LINKS.typeVariableDeclaration$Lz1I), typeVarDeclaration));
-          }
-        });
-        if (unused) {
-          {
-            final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(typeVarDeclaration, "Type variable is not needed", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7430872850866111925", null, errorTarget);
-          }
+    ListSequence.fromList(SLinkOperations.getChildren(baseMethodDeclaration, LINKS.typeVariableDeclaration$Lipp)).visitAll((final SNode typeVarDeclaration) -> {
+      boolean unused = ListSequence.fromList(SNodeOperations.getNodeDescendants(baseMethodDeclaration, CONCEPTS.TypeVariableReference$WL, false, new SAbstractConcept[]{})).where((it) -> ListSequence.fromList(SNodeOperations.getNodeAncestors(it, CONCEPTS.SingleLineComment$Kw, false)).isEmpty()).all((ref) -> !(Objects.equals(SLinkOperations.getTarget(ref, LINKS.typeVariableDeclaration$Lz1I), typeVarDeclaration)));
+      if (unused) {
+        {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(typeVarDeclaration, "Type variable is not needed", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7430872850866111925", null, errorTarget);
         }
       }
     });

@@ -22,7 +22,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -63,11 +62,7 @@ public class TestEditorMenuTraceCellMenuReplaceChildPrimary_Test extends BaseTra
         SNodeReference simpleConceptAction = SNodeOperations.getPointer(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(sm, LINKS.parts$yGO4), CONCEPTS.SubstituteMenuPart_AddConcept$6k)).first());
 
         SNode ed = EditorMenuTraceTestUtil.editorDeclNode(new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774803494772"), getEditorComponent());
-        SNodeReference replaceChildPrimary = SNodeOperations.getPointer(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(ed, LINKS.cellModel$L8Uc), CONCEPTS.CellModel_RefNode$8, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SLinkOperations.hasPointer(it, LINKS.relationDeclaration$E2hc, new SNodePointer("r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)", "1384684774803700240"));
-          }
-        }).first(), LINKS.menuDescriptor$ptP$), LINKS.cellMenuPart$jjJD), CONCEPTS.CellMenuPart_ReplaceChildPrimary$lI)).first());
+        SNodeReference replaceChildPrimary = SNodeOperations.getPointer(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(ed, LINKS.cellModel$L8Uc), CONCEPTS.CellModel_RefNode$8, false, new SAbstractConcept[]{})).where((it) -> SLinkOperations.hasPointer(it, LINKS.relationDeclaration$E2hc, new SNodePointer("r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)", "1384684774803700240"))).first(), LINKS.menuDescriptor$ptP$), LINKS.cellMenuPart$jjJD), CONCEPTS.CellMenuPart_ReplaceChildPrimary$lI)).first());
 
         EditorMenuTraceTestUtil.checkTraceInfoPath(editorMenuTraceInfo, simpleConceptAction, new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774805662621"), replaceChildPrimary);
       });

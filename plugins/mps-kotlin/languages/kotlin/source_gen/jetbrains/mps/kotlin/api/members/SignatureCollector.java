@@ -47,7 +47,7 @@ public interface SignatureCollector extends TypeExpander {
    */
   @Deprecated(since = "2023.1")
   default <T extends MemberSignature> void addSimpleDeclaration(SNode source, SNode receiverType, Class<T> signatureKind, final _FunctionTypes._return_P0_E0<? extends T> signatureBuilder) {
-    SignatureBuilder.create(source, signatureKind).withExtensionReceiverType(receiverType).withSignature((SNode node) -> signatureBuilder.invoke()).declareTo(this);
+    SignatureBuilder.create(source, signatureKind).withExtensionReceiverType(receiverType).withSignature((node) -> signatureBuilder.invoke()).declareTo(this);
   }
 
   /**
@@ -57,7 +57,7 @@ public interface SignatureCollector extends TypeExpander {
    */
   @Deprecated(since = "2023.1")
   default <T extends MemberSignature> void addDeclaration(SNode declaration, SNode explicitReceiver, Class<T> signatureKind, final _FunctionTypes._return_P0_E0<? extends Iterable<T>> signatureProducer) {
-    SignatureBuilder.create(declaration, signatureKind).withExtensionReceiverType(explicitReceiver).withSignatures((SNode node) -> signatureProducer.invoke()).declareTo(this);
+    SignatureBuilder.create(declaration, signatureKind).withExtensionReceiverType(explicitReceiver).withSignatures((node) -> signatureProducer.invoke()).declareTo(this);
   }
 
 

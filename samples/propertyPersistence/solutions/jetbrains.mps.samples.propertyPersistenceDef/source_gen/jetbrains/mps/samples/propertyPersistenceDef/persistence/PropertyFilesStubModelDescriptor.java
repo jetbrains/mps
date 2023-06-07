@@ -26,12 +26,10 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import java.io.InputStream;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -84,11 +82,7 @@ public class PropertyFilesStubModelDescriptor extends RegularModelDescriptor {
         try {
           // we've come from an event and the file has been deleted
           if (in == null) {
-            SetSequence.fromSet(oldNodes).visitAll(new IVisitor<SNode>() {
-              public void visit(SNode it) {
-                SNodeOperations.deleteNode(it);
-              }
-            });
+            SetSequence.fromSet(oldNodes).visitAll((it) -> SNodeOperations.deleteNode(it));
             MapSequence.fromMap(myRootsPerFile).removeKey(fileName);
             continue;
           }
@@ -112,11 +106,7 @@ public class PropertyFilesStubModelDescriptor extends RegularModelDescriptor {
           }
 
           final SNodeId newNodeId = propertyFileRootNode.getNodeId();
-          SNode oldNode = SetSequence.fromSet(oldNodes).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return it.getNodeId().equals(newNodeId);
-            }
-          }).first();
+          SNode oldNode = SetSequence.fromSet(oldNodes).where((it) -> it.getNodeId().equals(newNodeId)).first();
           if (oldNode == null) {
             into.addRootNode(propertyFileRootNode);
             SetSequence.fromSet(oldNodes).removeElement(oldNode);
@@ -125,11 +115,7 @@ public class PropertyFilesStubModelDescriptor extends RegularModelDescriptor {
           }
           MapSequence.fromMap(myRootsById).put(propertyFileRootNode.getNodeId(), propertyFileRootNode);
 
-          SetSequence.fromSet(oldNodes).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode it) {
-              SNodeOperations.deleteNode(it);
-            }
-          });
+          SetSequence.fromSet(oldNodes).visitAll((it) -> SNodeOperations.deleteNode(it));
           // We only have one root contributed by a file into the model, so the collection only holds a single entry
           MapSequence.fromMap(myRootsPerFile).put(fileName, SetSequence.fromSetAndArray(new HashSet<SNode>(), propertyFileRootNode));
         } finally {

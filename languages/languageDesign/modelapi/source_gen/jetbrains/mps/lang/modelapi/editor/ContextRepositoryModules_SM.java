@@ -17,7 +17,6 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
@@ -67,11 +66,7 @@ public class ContextRepositoryModules_SM extends SubstituteMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SModuleReference> getParameters(SubstituteMenuContext _context) {
-      return Sequence.fromIterable(((Iterable<SModule>) _context.getEditorContext().getRepository().getModules())).select(new ISelector<SModule, SModuleReference>() {
-        public SModuleReference select(SModule it) {
-          return it.getModuleReference();
-        }
-      });
+      return Sequence.fromIterable(((Iterable<SModule>) _context.getEditorContext().getRepository().getModules())).select((it) -> it.getModuleReference());
     }
     private class SMP_Action_5f0wb9_a0 extends SingleItemSubstituteMenuPart {
       private final SModuleReference myParameterObject;

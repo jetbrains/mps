@@ -9,6 +9,7 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -18,7 +19,6 @@ import java.util.Iterator;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.baseLanguage.closures.util.FunctionalInterfaceHelper;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.closures.constraints.ClassifierTypeUtil;
@@ -32,10 +32,9 @@ import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SInterfaceConcept;
-import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_MethodReference_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_MethodReference_InferenceRule() {
@@ -54,155 +53,152 @@ public class typeof_MethodReference_InferenceRule extends AbstractInferenceRule_
     // This shallow when concrete allow both to have the type inferred from above and to fill the missing type variables within if any
     {
       final SNode targetType = typeCheckingContext.getRepresentative(internalType_typevar_8014486391912031404);
-      typeCheckingContext.whenConcrete(targetType, new Runnable() {
-        public void run() {
-          {
-            final SNode operandType = typeCheckingContext.typeOf(SLinkOperations.getTarget(methodRef, LINKS.target$Woec), "r:9a698d99-93bf-42e4-8ae2-c535d539938c(jetbrains.mps.baseLanguage.methodReferences.typesystem)", "4809526991094669329", true);
-            typeCheckingContext.whenConcrete(operandType, new Runnable() {
-              public void run() {
-                final SNode method = SLinkOperations.getTarget(methodRef, LINKS.method$8Sfb);
+      typeCheckingContext.whenConcrete(targetType, () -> {
+        {
+          final SNode operandType = typeCheckingContext.typeOf(SLinkOperations.getTarget(methodRef, LINKS.target$Woec), "r:9a698d99-93bf-42e4-8ae2-c535d539938c(jetbrains.mps.baseLanguage.methodReferences.typesystem)", "4809526991094669329", true);
+          typeCheckingContext.whenConcrete(operandType, new Runnable() {
+            public void run() {
+              final SNode method = SLinkOperations.getTarget(methodRef, LINKS.method$8Sfb);
 
-                SNode targetMethod;
-                List<SNode> targetThrows = new ArrayList<SNode>();
-                List<SNode> targetMethodParamTypes;
-                SNode targetRetType;
-                String errorMsg = null;
+              final Wrappers._T<SNode> targetMethod = new Wrappers._T<SNode>(null);
+              final Wrappers._T<List<SNode>> targetThrows = new Wrappers._T<List<SNode>>(new ArrayList<SNode>());
+              final Wrappers._T<List<SNode>> targetMethodParamTypes = new Wrappers._T<List<SNode>>(new ArrayList<SNode>());
+              final Wrappers._T<SNode> targetRetType = new Wrappers._T<SNode>(null);
+              final Wrappers._T<String> errorMsg = new Wrappers._T<String>(null);
 
-                // Type variables from the method reference
-                final Map<SNode, SNode> subs = MapSequence.fromMap(new HashMap<SNode, SNode>());
-                Iterator<SNode> typeval = ListSequence.fromList(SLinkOperations.getChildren(methodRef, LINKS.typeParameters$5Tel)).iterator();
-                for (SNode typevar : ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.typeVariableDeclaration$Lipp))) {
-                  if (typeval.hasNext()) {
-                    MapSequence.fromMap(subs).put(typevar, typeval.next());
-                  } else {
-                    final SNode var_typevar_4809526991094728326 = typeCheckingContext.createNewRuntimeTypesVariable();
-                    MapSequence.fromMap(subs).put(typevar, typeCheckingContext.getRepresentative(var_typevar_4809526991094728326));
-                  }
-                }
-
-                // Handle function type or classifier
-                if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(targetType), CONCEPTS.FunctionType$9U)) {
-                  SNode fncType = SNodeOperations.cast(typeCheckingContext.getExpandedNode(targetType), CONCEPTS.FunctionType$9U);
-                  targetMethodParamTypes = SLinkOperations.getChildren(fncType, LINKS.parameterType$qJs$);
-                  targetRetType = SLinkOperations.getTarget(fncType, LINKS.resultType$2oOC);
-                  targetMethod = fncType;
-                  targetThrows = SLinkOperations.getChildren(fncType, LINKS.throwsType$A8I9);
+              // Type variables from the method reference
+              final Map<SNode, SNode> subs = MapSequence.fromMap(new HashMap<SNode, SNode>());
+              Iterator<SNode> typeval = ListSequence.fromList(SLinkOperations.getChildren(methodRef, LINKS.typeParameters$5Tel)).iterator();
+              for (SNode typevar : ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.typeVariableDeclaration$Lipp))) {
+                if (typeval.hasNext()) {
+                  MapSequence.fromMap(subs).put(typevar, typeval.next());
                 } else {
-                  SNode classifierType = TypecheckingFacade.getFromContext().coerceType(typeCheckingContext.getExpandedNode(targetType), CONCEPTS.ClassifierType$bL);
-                  SNode classifier = SLinkOperations.getTarget(classifierType, LINKS.classifier$cxMr);
-
-                  Tuples._2<SNode, String> functionalMethod = FunctionalInterfaceHelper.getFunctionalMethod(classifier);
-
-                  targetMethod = functionalMethod._0();
-                  errorMsg = functionalMethod._1();
-
-                  GenericHelper.collectGenerics(typeCheckingContext, classifierType, subs);
-
-                  targetMethodParamTypes = Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.cast(targetMethod, CONCEPTS.BaseMethodDeclaration$kD), LINKS.parameter$5xBj), LINKS.type$a1UY)).toList();
-                  targetRetType = ClassifierTypeUtil.resolveType(SLinkOperations.getTarget(SNodeOperations.cast(targetMethod, CONCEPTS.BaseMethodDeclaration$kD), LINKS.returnType$5xoi), classifierType);
-                  targetThrows = SLinkOperations.getChildren(SNodeOperations.cast(targetMethod, CONCEPTS.BaseMethodDeclaration$kD), LINKS.throwsItem$CdW$);
+                  final SNode var_typevar_4809526991094728326 = typeCheckingContext.createNewRuntimeTypesVariable();
+                  MapSequence.fromMap(subs).put(typevar, typeCheckingContext.getRepresentative(var_typevar_4809526991094728326));
                 }
+              }
 
-                // This method is necessary here because of the other collect generic above, is same classifier is used we need the correct type parameters to be used
-                GenericHelper.collectGenerics(typeCheckingContext, typeCheckingContext.getExpandedNode(operandType), subs);
+              // Handle function type or classifier
+              if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(targetType), CONCEPTS.FunctionType$9U)) {
+                SNode fncType = SNodeOperations.cast(typeCheckingContext.getExpandedNode(targetType), CONCEPTS.FunctionType$9U);
+                targetMethodParamTypes.value = SLinkOperations.getChildren(fncType, LINKS.parameterType$qJs$);
+                targetRetType.value = SLinkOperations.getTarget(fncType, LINKS.resultType$2oOC);
+                targetMethod.value = fncType;
+                targetThrows.value = SLinkOperations.getChildren(fncType, LINKS.throwsType$A8I9);
+              } else {
+                final SNode classifierType = TypecheckingFacade.getFromContext().coerceType(typeCheckingContext.getExpandedNode(targetType), CONCEPTS.ClassifierType$bL);
+                SNode classifier = SLinkOperations.getTarget(classifierType, LINKS.classifier$cxMr);
 
-                if ((targetMethod != null) && errorMsg == null) {
-                  List<SNode> refMethodParamTypes = new ArrayList<SNode>();
+                GenericHelper.collectGenerics(typeCheckingContext, classifierType, subs);
 
-                  // Static call (on type) but likely to be an instance method -> instance provided as first arg
-                  if ((boolean) MethodReference__BehaviorDescriptor.isOperandTypeFirstParameter_id4aYRP41Um04.invoke(methodRef)) {
-                    // Might need the substitutions from expected type
-                    GenericHelper.collectGenerics(typeCheckingContext, ListSequence.fromList(targetMethodParamTypes).first(), subs);
-                    ListSequence.fromList(refMethodParamTypes).insertElement(0, typeCheckingContext.getExpandedNode(operandType));
-                  }
-
-                  ListSequence.fromList(refMethodParamTypes).addSequence(ListSequence.fromList(ITypeApplicable__BehaviorDescriptor.getTypeApplicationParameters_id7bu6bIyR2DR.invoke(methodRef, ((int) ListSequence.fromList(targetMethodParamTypes).count()))).select((SNode it) -> GenericHelper.expandedOf(it, subs)));
-
-                  if (ListSequence.fromList(refMethodParamTypes).count() != ListSequence.fromList(targetMethodParamTypes).count()) {
-                    errorMsg = "wrong parameter number";
-                  } else {
-                    // Check/infer parameters
-                    {
-                      Iterator<SNode> refParamType_it = ListSequence.fromList(refMethodParamTypes).iterator();
-                      Iterator<SNode> targetParamType_it = ListSequence.fromList(targetMethodParamTypes).iterator();
-                      SNode refParamType_var;
-                      SNode targetParamType_var;
-                      while (refParamType_it.hasNext() && targetParamType_it.hasNext()) {
-                        refParamType_var = refParamType_it.next();
-                        targetParamType_var = targetParamType_it.next();
-                        {
-                          SNode _nodeToCheck_1029348928467 = methodRef;
-                          EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:9a698d99-93bf-42e4-8ae2-c535d539938c(jetbrains.mps.baseLanguage.methodReferences.typesystem)", "4809526991094834030", 0, null);
-                          {
-                            BaseQuickFixProvider intentionProvider = null;
-                            intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.methodReferences.typesystem.WrapMethodRefIntoClosure_QuickFix", "6655213410651131567", false);
-                            intentionProvider.putArgument("methodRef", methodRef);
-                            intentionProvider.putArgument("targetSignature", targetMethod);
-                            _info_12389875345.addIntentionProvider(intentionProvider);
-                          }
-                          typeCheckingContext.createLessThanInequality((SNode) GenericHelper.expandedOf(targetParamType_var, subs), (SNode) refParamType_var, false, true, _info_12389875345);
-                        }
-                      }
-                    }
-
-                    // Check/infer return type
-                    if (!(SNodeOperations.isInstanceOf(targetRetType, CONCEPTS.VoidType$BF))) {
-                      SNode returnType = GenericHelper.expandedOf(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), subs);
-                      if ((boolean) MethodReference__BehaviorDescriptor.isConstructor_id5DBbMQ1v9ur.invoke(methodRef)) {
-                        returnType = typeCheckingContext.getExpandedNode(operandType);
-                      }
-
-                      if (SNodeOperations.isInstanceOf(returnType, CONCEPTS.VoidType$BF)) {
-                        errorMsg = "method returns null";
-                      }
-
-                      {
-                        SNode _nodeToCheck_1029348928467 = methodRef;
-                        EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:9a698d99-93bf-42e4-8ae2-c535d539938c(jetbrains.mps.baseLanguage.methodReferences.typesystem)", "4809526991094825833", 0, null);
-                        {
-                          BaseQuickFixProvider intentionProvider = null;
-                          intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.methodReferences.typesystem.WrapMethodRefIntoClosure_QuickFix", "6655213410651121550", false);
-                          intentionProvider.putArgument("methodRef", methodRef);
-                          intentionProvider.putArgument("targetSignature", targetMethod);
-                          _info_12389875345.addIntentionProvider(intentionProvider);
-                        }
-                        typeCheckingContext.createLessThanInequality((SNode) returnType, (SNode) GenericHelper.expandedOf(targetRetType, subs), false, true, _info_12389875345);
-                      }
-                    }
-
-                    // Runtime exceptions unchecked
-                    SNode targetType = _quotation_createNode_7gf7o9_a0h0a7a91a0a0b0a1a0a0a0b0a1a7a1(ListSequence.fromList(targetThrows).select((SNode it) -> GenericHelper.expandedOf(it, subs)).toList());
-
-                    // Check/infer throws
-                    for (SNode refType : ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.throwsItem$CdW$))) {
-                      {
-                        SNode _nodeToCheck_1029348928467 = methodRef;
-                        EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, "unhandled thrown type " + BaseConcept__BehaviorDescriptor.getDetailedPresentation_id22G2W3WJ92t.invoke(refType), "r:9a698d99-93bf-42e4-8ae2-c535d539938c(jetbrains.mps.baseLanguage.methodReferences.typesystem)", "931816624637804521", 0, null);
-                        typeCheckingContext.createLessThanInequality((SNode) GenericHelper.expandedOf(refType, subs), (SNode) targetType, false, true, _info_12389875345);
-                      }
-                    }
-                  }
-
-                } else if (errorMsg == null) {
-                  errorMsg = "no method to substitute";
-                }
-
-                if (errorMsg != null) {
-                  {
-                    final MessageTarget errorTarget = new NodeMessageTarget();
-                    IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(methodRef, BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(methodRef) + " is not a subtype of " + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(typeCheckingContext.getExpandedNode(targetType)) + ": " + errorMsg, "r:9a698d99-93bf-42e4-8ae2-c535d539938c(jetbrains.mps.baseLanguage.methodReferences.typesystem)", "4809526991095266437", null, errorTarget);
-                    {
-                      BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.methodReferences.typesystem.WrapMethodRefIntoClosure_QuickFix", "4809526991095266438", false);
-                      intentionProvider.putArgument("methodRef", methodRef);
-                      intentionProvider.putArgument("targetSignature", targetMethod);
-                      _reporter_2309309498.addIntentionProvider(intentionProvider);
-                    }
-                  }
-                }
+                FunctionalInterfaceHelper.getClassifierFunctionalMethod(classifier).ifValid((foundMethod) -> {
+                  targetMethod.value = foundMethod;
+                  targetMethodParamTypes.value = Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(foundMethod, LINKS.parameter$5xBj), LINKS.type$a1UY)).toList();
+                  targetRetType.value = ClassifierTypeUtil.resolveType(SLinkOperations.getTarget(foundMethod, LINKS.returnType$5xoi), classifierType);
+                  targetThrows.value = SLinkOperations.getChildren(foundMethod, LINKS.throwsItem$CdW$);
+                }).ifError((message) -> errorMsg.value = message);
 
               }
-            }, "r:9a698d99-93bf-42e4-8ae2-c535d539938c(jetbrains.mps.baseLanguage.methodReferences.typesystem)", "4809526991094667871", false, false);
-          }
+
+              // This method is necessary here because of the other collect generic above, is same classifier is used we need the correct type parameters to be used
+              GenericHelper.collectGenerics(typeCheckingContext, typeCheckingContext.getExpandedNode(operandType), subs);
+
+              if ((targetMethod.value != null) && errorMsg.value == null) {
+                List<SNode> refMethodParamTypes = new ArrayList<SNode>();
+
+                // Static call (on type) but likely to be an instance method -> instance provided as first arg
+                if ((boolean) MethodReference__BehaviorDescriptor.isOperandTypeFirstParameter_id4aYRP41Um04.invoke(methodRef)) {
+                  // Might need the substitutions from expected type
+                  GenericHelper.collectGenerics(typeCheckingContext, ClassifierTypeUtil.unbounded(ListSequence.fromList(targetMethodParamTypes.value).first()), subs);
+                  ListSequence.fromList(refMethodParamTypes).insertElement(0, typeCheckingContext.getExpandedNode(operandType));
+                }
+
+                ListSequence.fromList(refMethodParamTypes).addSequence(ListSequence.fromList(ITypeApplicable__BehaviorDescriptor.getTypeApplicationParameters_id7bu6bIyR2DR.invoke(methodRef, ((int) ListSequence.fromList(targetMethodParamTypes.value).count()))).select((it) -> GenericHelper.expandedOf(it, subs)));
+
+                if (ListSequence.fromList(refMethodParamTypes).count() != ListSequence.fromList(targetMethodParamTypes.value).count()) {
+                  errorMsg.value = "wrong parameter number";
+                } else {
+                  // Check/infer parameters
+                  {
+                    Iterator<SNode> refParamType_it = ListSequence.fromList(refMethodParamTypes).iterator();
+                    Iterator<SNode> targetParamType_it = ListSequence.fromList(targetMethodParamTypes.value).iterator();
+                    SNode refParamType_var;
+                    SNode targetParamType_var;
+                    while (refParamType_it.hasNext() && targetParamType_it.hasNext()) {
+                      refParamType_var = refParamType_it.next();
+                      targetParamType_var = targetParamType_it.next();
+                      {
+                        SNode _nodeToCheck_1029348928467 = methodRef;
+                        EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:9a698d99-93bf-42e4-8ae2-c535d539938c(jetbrains.mps.baseLanguage.methodReferences.typesystem)", "4809526991094834030", 0, null);
+                        {
+                          BaseQuickFixProvider intentionProvider = null;
+                          intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.methodReferences.typesystem.WrapMethodRefIntoClosure_QuickFix", "6655213410651131567", false);
+                          intentionProvider.putArgument("methodRef", methodRef);
+                          intentionProvider.putArgument("targetSignature", targetMethod.value);
+                          _info_12389875345.addIntentionProvider(intentionProvider);
+                        }
+                        typeCheckingContext.createLessThanInequality((SNode) GenericHelper.expandedOf(targetParamType_var, subs), (SNode) refParamType_var, false, true, _info_12389875345);
+                      }
+                    }
+                  }
+
+                  // Check/infer return type
+                  if (!(SNodeOperations.isInstanceOf(targetRetType.value, CONCEPTS.VoidType$BF))) {
+                    SNode returnType = GenericHelper.expandedOf(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), subs);
+                    if ((boolean) MethodReference__BehaviorDescriptor.isConstructor_id5DBbMQ1v9ur.invoke(methodRef)) {
+                      returnType = typeCheckingContext.getExpandedNode(operandType);
+                    }
+
+                    if (SNodeOperations.isInstanceOf(returnType, CONCEPTS.VoidType$BF)) {
+                      errorMsg.value = "method returns null";
+                    }
+
+                    {
+                      SNode _nodeToCheck_1029348928467 = methodRef;
+                      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:9a698d99-93bf-42e4-8ae2-c535d539938c(jetbrains.mps.baseLanguage.methodReferences.typesystem)", "4809526991094825833", 0, null);
+                      {
+                        BaseQuickFixProvider intentionProvider = null;
+                        intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.methodReferences.typesystem.WrapMethodRefIntoClosure_QuickFix", "6655213410651121550", false);
+                        intentionProvider.putArgument("methodRef", methodRef);
+                        intentionProvider.putArgument("targetSignature", targetMethod.value);
+                        _info_12389875345.addIntentionProvider(intentionProvider);
+                      }
+                      typeCheckingContext.createLessThanInequality((SNode) returnType, (SNode) GenericHelper.expandedOf(targetRetType.value, subs), false, true, _info_12389875345);
+                    }
+                  }
+
+                  // Runtime exceptions unchecked
+                  SNode targetType = _quotation_createNode_7gf7o9_a0h0a7a91a1a0b0a0b0a1a7a1(ListSequence.fromList(targetThrows.value).select((it) -> GenericHelper.expandedOf(it, subs)).toList());
+
+                  // Check/infer throws
+                  for (SNode refType : ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.throwsItem$CdW$))) {
+                    {
+                      SNode _nodeToCheck_1029348928467 = methodRef;
+                      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, "unhandled thrown type " + BaseConcept__BehaviorDescriptor.getDetailedPresentation_id22G2W3WJ92t.invoke(refType), "r:9a698d99-93bf-42e4-8ae2-c535d539938c(jetbrains.mps.baseLanguage.methodReferences.typesystem)", "931816624637804521", 0, null);
+                      typeCheckingContext.createLessThanInequality((SNode) GenericHelper.expandedOf(refType, subs), (SNode) targetType, false, true, _info_12389875345);
+                    }
+                  }
+                }
+
+              } else if (errorMsg.value == null) {
+                errorMsg.value = "no method to substitute";
+              }
+
+              if (errorMsg.value != null) {
+                {
+                  final MessageTarget errorTarget = new NodeMessageTarget();
+                  IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(methodRef, BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(methodRef) + " is not a subtype of " + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(typeCheckingContext.getExpandedNode(targetType)) + ": " + errorMsg.value, "r:9a698d99-93bf-42e4-8ae2-c535d539938c(jetbrains.mps.baseLanguage.methodReferences.typesystem)", "4809526991095266437", null, errorTarget);
+                  {
+                    BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.methodReferences.typesystem.WrapMethodRefIntoClosure_QuickFix", "4809526991095266438", false);
+                    intentionProvider.putArgument("methodRef", methodRef);
+                    intentionProvider.putArgument("targetSignature", targetMethod.value);
+                    _reporter_2309309498.addIntentionProvider(intentionProvider);
+                  }
+                }
+              }
+
+            }
+          }, "r:9a698d99-93bf-42e4-8ae2-c535d539938c(jetbrains.mps.baseLanguage.methodReferences.typesystem)", "4809526991094667871", false, false);
         }
       }, "r:9a698d99-93bf-42e4-8ae2-c535d539938c(jetbrains.mps.baseLanguage.methodReferences.typesystem)", "4809526991094631695", true, false, "Cannot infer type: method reference requires an explicit target type");
     }
@@ -216,7 +212,7 @@ public class typeof_MethodReference_InferenceRule extends AbstractInferenceRule_
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_7gf7o9_a1a0c0a0b0a0a1a0b0a1a2a1() {
+  private static SNode _quotation_createNode_7gf7o9_a1a0c0a0b0b0a1a0b0c0b() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core"), 0x10802efe25aL, "BaseConcept"));
     quotedNode_1 = nb.getResult();
@@ -227,7 +223,7 @@ public class typeof_MethodReference_InferenceRule extends AbstractInferenceRule_
     n0.forChild(LINKS.targetType$3iY9).initNode(p0, CONCEPTS.Type$bu, true);
     return n0.getResult();
   }
-  private static SNode _quotation_createNode_7gf7o9_a0h0a7a91a0a0b0a1a0a0a0b0a1a7a1(Object parameter_1) {
+  private static SNode _quotation_createNode_7gf7o9_a0h0a7a91a1a0b0a0b0a1a7a1(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
@@ -241,17 +237,6 @@ public class typeof_MethodReference_InferenceRule extends AbstractInferenceRule_
       quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument"), SNodeOperations.copyIfNecessary(child));
     }
     return quotedNode_2;
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IInferredType$Qo = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6f392ce92f8c71c7L, "jetbrains.mps.baseLanguage.structure.IInferredType");
-    /*package*/ static final SConcept FunctionType$9U = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, "jetbrains.mps.baseLanguage.closures.structure.FunctionType");
-    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
-    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
-    /*package*/ static final SConcept VoidType$BF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
-    /*package*/ static final SConcept MethodReference$G8 = MetaAdapterFactory.getConcept(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x34d254ec4f4136fL, "jetbrains.mps.baseLanguage.methodReferences.structure.MethodReference");
-    /*package*/ static final SConcept MethodReferenceType$Wb = MetaAdapterFactory.getConcept(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x6f392ce92f1d3d32L, "jetbrains.mps.baseLanguage.methodReferences.structure.MethodReferenceType");
-    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 
   private static final class LINKS {
@@ -268,5 +253,14 @@ public class typeof_MethodReference_InferenceRule extends AbstractInferenceRule_
     /*package*/ static final SContainmentLink returnType$5xoi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
     /*package*/ static final SContainmentLink throwsItem$CdW$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
     /*package*/ static final SContainmentLink targetType$3iY9 = MetaAdapterFactory.getContainmentLink(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x6f392ce92f1d3d32L, 0x6f392ce92f1d3d33L, "targetType");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept FunctionType$9U = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, "jetbrains.mps.baseLanguage.closures.structure.FunctionType");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept VoidType$BF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
+    /*package*/ static final SConcept MethodReference$G8 = MetaAdapterFactory.getConcept(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x34d254ec4f4136fL, "jetbrains.mps.baseLanguage.methodReferences.structure.MethodReference");
+    /*package*/ static final SConcept MethodReferenceType$Wb = MetaAdapterFactory.getConcept(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x6f392ce92f1d3d32L, "jetbrains.mps.baseLanguage.methodReferences.structure.MethodReferenceType");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 }

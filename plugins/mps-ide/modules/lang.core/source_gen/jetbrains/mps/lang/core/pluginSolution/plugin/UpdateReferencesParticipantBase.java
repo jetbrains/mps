@@ -17,7 +17,6 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.refactoring.participant.RefactoringSession;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.structure.ExtensionPoint;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -25,7 +24,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.Collections;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SReference;
@@ -91,15 +89,7 @@ public abstract class UpdateReferencesParticipantBase<T> extends RefactoringPart
     @Override
     protected boolean shouldUpdateReference(final List<RefactoringParticipant.Option> selectedOptions, final SRepository repository, final SNode containingNode, final SReferenceLink role, final SNode movingNode, final RefactoringSession refactoringSession) {
       // check other references participants
-      if (Sequence.fromIterable(new ExtensionPoint<MoveNodeRefactoringParticipant<?, ?>>("jetbrains.mps.refactoring.participant.MoveNodeParticipantEP").getObjects()).ofType(UpdateReferencesParticipant.class).where(new IWhereFilter<UpdateReferencesParticipant>() {
-        public boolean accept(UpdateReferencesParticipant it) {
-          return isOverridingParticipant(it);
-        }
-      }).any(new IWhereFilter<UpdateReferencesParticipant>() {
-        public boolean accept(UpdateReferencesParticipant it) {
-          return it.shouldUpdateReference(selectedOptions, repository, containingNode, role, movingNode, refactoringSession);
-        }
-      })) {
+      if (Sequence.fromIterable(new ExtensionPoint<MoveNodeRefactoringParticipant<?, ?>>("jetbrains.mps.refactoring.participant.MoveNodeParticipantEP").getObjects()).ofType(UpdateReferencesParticipant.class).where((it) -> isOverridingParticipant(it)).any((it) -> it.shouldUpdateReference(selectedOptions, repository, containingNode, role, movingNode, refactoringSession))) {
         return false;
       }
       return super.shouldUpdateReference(selectedOptions, repository, containingNode, role, movingNode, refactoringSession);
@@ -170,26 +160,14 @@ public abstract class UpdateReferencesParticipantBase<T> extends RefactoringPart
 
   public List<List<RefactoringParticipant.Change<NodeData<T>, NodeData<T>>>> getChanges(List<NodeData<T>> initialStates, final SRepository repository, final List<RefactoringParticipant.Option> selectedOptions, SearchScope searchScope, ProgressMonitor progressMonitor) {
     if (!(ListSequence.fromList(selectedOptions).contains(OPTION))) {
-      return ListSequence.fromList(initialStates).select(new ISelector<NodeData<T>, List<RefactoringParticipant.Change<NodeData<T>, NodeData<T>>>>() {
-        public List<RefactoringParticipant.Change<NodeData<T>, NodeData<T>>> select(NodeData<T> it) {
-          return (List<RefactoringParticipant.Change<NodeData<T>, NodeData<T>>>) Collections.<RefactoringParticipant.Change<NodeData<T>, NodeData<T>>>emptyList();
-        }
-      }).toListSequence();
+      return ListSequence.fromList(initialStates).select((it) -> (List<RefactoringParticipant.Change<NodeData<T>, NodeData<T>>>) Collections.<RefactoringParticipant.Change<NodeData<T>, NodeData<T>>>emptyList()).toList();
     }
     Collection<SReference> usages;
-    List<SNode> movedNodes = ListSequence.fromList(initialStates).select(new ISelector<NodeData<T>, SNode>() {
-      public SNode select(NodeData<T> it) {
-        return it.baseData().reference().resolve(repository);
-      }
-    }).toListSequence();
+    List<SNode> movedNodes = ListSequence.fromList(initialStates).select((it) -> it.baseData().reference().resolve(repository)).toList();
     {
       SearchScope scope_82eo7d_d0s = CommandUtil.createScope(searchScope);
       final SearchScope scope_82eo7d_d0s_0 = new EditableFilteringScope(scope_82eo7d_d0s);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_82eo7d_d0s_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_82eo7d_d0s_0;
       if (!(ListSequence.fromList(movedNodes).contains(null))) {
         // all source nodes are present, so we can run find usages (we are probably inside in-project refactoring)
         progressMonitor.start("References in current project", 1);
@@ -198,11 +176,7 @@ public abstract class UpdateReferencesParticipantBase<T> extends RefactoringPart
         progressMonitor.start("References in current project", Sequence.fromIterable(CommandUtil.references(CommandUtil.selectScope(null, context))).count());
         usages = CollectionSequence.fromCollection(new ArrayList<SReference>());
         for (SReference ref : Sequence.fromIterable(CommandUtil.references(CommandUtil.selectScope(null, context)))) {
-          if (ListSequence.fromList(initialStates).select(new ISelector<NodeData<T>, SNodeReference>() {
-            public SNodeReference select(NodeData<T> it) {
-              return it.baseData().reference();
-            }
-          }).contains(ref.getTargetNodeReference())) {
+          if (ListSequence.fromList(initialStates).select((it) -> it.baseData().reference()).contains(ref.getTargetNodeReference())) {
             CollectionSequence.fromCollection(usages).addElement(ref);
           }
           progressMonitor.advance(1);
@@ -244,11 +218,7 @@ public abstract class UpdateReferencesParticipantBase<T> extends RefactoringPart
       }
       ListSequence.fromList(MapSequence.fromMap(result).get(ref.getTargetNodeReference())).addElement(change);
     }
-    return ListSequence.fromList(initialStates).select(new ISelector<NodeData<T>, List<RefactoringParticipant.Change<NodeData<T>, NodeData<T>>>>() {
-      public List<RefactoringParticipant.Change<NodeData<T>, NodeData<T>>> select(NodeData<T> initialState) {
-        return MapSequence.fromMap(result).get(initialState.baseData().reference());
-      }
-    }).toListSequence();
+    return ListSequence.fromList(initialStates).select((initialState) -> MapSequence.fromMap(result).get(initialState.baseData().reference())).toList();
   }
   protected boolean shouldUpdateReference(final List<RefactoringParticipant.Option> selectedOptions, SRepository repository, final SNode containingNode, final SReferenceLink role, SNode movingNode, RefactoringSession refactoringSession) {
     NodeCopyTracker copyMap = NodeCopyTracker.get(refactoringSession);

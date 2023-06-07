@@ -18,16 +18,14 @@ import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.core.behavior.IDeprecatable__BehaviorDescriptor;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.execution.commands.behavior.ExecuteCommandPart__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
@@ -52,11 +50,7 @@ public class ExecuteCommandPart_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forResolvableElements(ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.ExecuteCommandPart$hx)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return !((boolean) IDeprecatable__BehaviorDescriptor.isDeprecated_idhOwoPtR.invoke(it));
-              }
-            }));
+            return ListScope.forResolvableElements(ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.ExecuteCommandPart$hx)).where((it) -> !((boolean) IDeprecatable__BehaviorDescriptor.isDeprecated_idhOwoPtR.invoke(it))));
           }
         };
       }
@@ -87,11 +81,7 @@ public class ExecuteCommandPart_Constraints extends BaseConstraintsDescriptor {
       if (ListSequence.fromList(requiredParameters).isEmpty()) {
         return "()";
       }
-      String joined = IterableUtils.join(ListSequence.fromList(requiredParameters).select(new ISelector<SNode, String>() {
-        public String select(SNode it) {
-          return SPropertyOperations.getString(it, PROPS.name$MnvL) + ", ";
-        }
-      }), " ");
+      String joined = IterableUtils.join(ListSequence.fromList(requiredParameters).select((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL) + ", "), " ");
       return "(" + joined.substring(0, joined.length() - 2) + ")";
     }
   }

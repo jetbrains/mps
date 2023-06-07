@@ -5,9 +5,6 @@ package jetbrains.mps.kotlin.scopes.signed;
 import java.util.List;
 import jetbrains.mps.kotlin.api.members.SourcedSignature;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
@@ -21,11 +18,7 @@ public class CompositeSignatureScope implements SignatureScope {
 
   @Override
   public Iterable<SourcedSignature> getElements(final String prefix) {
-    return ListSequence.fromList(myScopes).translate(new ITranslator2<SignatureScope, SourcedSignature>() {
-      public Iterable<SourcedSignature> translate(SignatureScope it) {
-        return it.getElements(prefix);
-      }
-    });
+    return ListSequence.fromList(myScopes).translate((it) -> it.getElements(prefix));
   }
 
   @Override
@@ -33,24 +26,12 @@ public class CompositeSignatureScope implements SignatureScope {
     if (ListSequence.fromList(myScopes).isEmpty()) {
       return SignatureScope.ContainmentStatus.NO;
     }
-    return ListSequence.fromList(myScopes).select(new ISelector<SignatureScope, SignatureScope.ContainmentStatus>() {
-      public SignatureScope.ContainmentStatus select(SignatureScope it) {
-        return it.contains(declaration);
-      }
-    }).findFirst(new IWhereFilter<SignatureScope.ContainmentStatus>() {
-      public boolean accept(SignatureScope.ContainmentStatus it) {
-        return it != SignatureScope.ContainmentStatus.NO;
-      }
-    });
+    return ListSequence.fromList(myScopes).select((it) -> it.contains(declaration)).findFirst((it) -> it != SignatureScope.ContainmentStatus.NO);
   }
 
   @Override
   public boolean contains(final SNode source) {
-    return ListSequence.fromList(myScopes).any(new IWhereFilter<SignatureScope>() {
-      public boolean accept(SignatureScope it) {
-        return it.contains(source);
-      }
-    });
+    return ListSequence.fromList(myScopes).any((it) -> it.contains(source));
   }
 
   public List<? extends SignatureScope> getScopes() {
@@ -58,7 +39,7 @@ public class CompositeSignatureScope implements SignatureScope {
   }
 
   public static SignatureScope of(Iterable<SignatureScope> scopes) {
-    List<SignatureScope> seq = Sequence.fromIterable(scopes).where(new NotNullWhereFilter<SignatureScope>()).toListSequence();
+    List<SignatureScope> seq = Sequence.fromIterable(scopes).where(new NotNullWhereFilter()).toList();
     if (ListSequence.fromList(seq).isEmpty()) {
       return null;
     } else if (ListSequence.fromList(seq).count() == 1) {

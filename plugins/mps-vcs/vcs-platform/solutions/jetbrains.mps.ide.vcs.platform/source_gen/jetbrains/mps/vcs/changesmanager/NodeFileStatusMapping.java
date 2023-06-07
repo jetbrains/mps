@@ -21,7 +21,6 @@ import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import java.util.List;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.vcs.diff.changes.AddRootChange;
 import jetbrains.mps.vcs.diff.changes.DeleteRootChange;
 import org.jetbrains.annotations.Nullable;
@@ -94,24 +93,12 @@ public class NodeFileStatusMapping implements Disposable {
           return FileStatus.NOT_CHANGED;
         }
         List<ModelChange> modelChanges = check_onkh7z_a0f0b0a0a0a0r(diff.getChangeSet());
-        List<ModelChange> rootChanges = ListSequence.fromList(modelChanges).where(new IWhereFilter<ModelChange>() {
-          public boolean accept(ModelChange ch) {
-            return root.getNodeId().equals(ch.getRootId());
-          }
-        }).distinct().toListSequence();
+        List<ModelChange> rootChanges = ListSequence.fromList(modelChanges).where((ch) -> root.getNodeId().equals(ch.getRootId())).distinct().toList();
         if (ListSequence.fromList(rootChanges).isNotEmpty()) {
-          if (ListSequence.fromList(rootChanges).any(new IWhereFilter<ModelChange>() {
-            public boolean accept(ModelChange it) {
-              return it instanceof AddRootChange;
-            }
-          })) {
+          if (ListSequence.fromList(rootChanges).any((it) -> it instanceof AddRootChange)) {
             return FileStatus.ADDED;
           }
-          if (ListSequence.fromList(rootChanges).any(new IWhereFilter<ModelChange>() {
-            public boolean accept(ModelChange it) {
-              return it instanceof DeleteRootChange;
-            }
-          })) {
+          if (ListSequence.fromList(rootChanges).any((it) -> it instanceof DeleteRootChange)) {
             return FileStatus.DELETED;
           }
 

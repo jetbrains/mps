@@ -21,9 +21,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.internal.make.runtime.util.DeltaReconciler;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.make.delta.IDelta;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.make.delta.IInternalDelta;
 import jetbrains.mps.internal.make.runtime.util.FilesDelta;
 import jetbrains.mps.make.script.IConfig;
@@ -83,15 +80,7 @@ public class Make_Facet extends IFacet.Stub {
               try {
                 FileSystem.getInstance().runWriteTransaction(() -> {
                   final List<IFile> writtenFiles = ListSequence.fromList(new ArrayList<IFile>());
-                  DeltaReconciler reconciler = new DeltaReconciler(Sequence.fromIterable(input).translate(new ITranslator2<DResource, IDelta>() {
-                    public Iterable<IDelta> translate(DResource res) {
-                      return res.delta();
-                    }
-                  }).where(new IWhereFilter<IDelta>() {
-                    public boolean accept(IDelta d) {
-                      return !(d instanceof IInternalDelta);
-                    }
-                  }));
+                  DeltaReconciler reconciler = new DeltaReconciler(Sequence.fromIterable(input).translate((res) -> res.delta()).where((d) -> !(d instanceof IInternalDelta)));
                   reconciler.reconcileAll();
                   reconciler.visitAll(new FilesDelta.Visitor() {
                     @Override
@@ -100,15 +89,7 @@ public class Make_Facet extends IFacet.Stub {
                       return true;
                     }
                   });
-                  DeltaReconciler internalReconciler = new DeltaReconciler(Sequence.fromIterable(input).translate(new ITranslator2<DResource, IDelta>() {
-                    public Iterable<IDelta> translate(DResource res) {
-                      return res.delta();
-                    }
-                  }).where(new IWhereFilter<IDelta>() {
-                    public boolean accept(IDelta d) {
-                      return d instanceof IInternalDelta;
-                    }
-                  }));
+                  DeltaReconciler internalReconciler = new DeltaReconciler(Sequence.fromIterable(input).translate((res) -> res.delta()).where((d) -> d instanceof IInternalDelta));
                   internalReconciler.reconcileAll();
                   internalReconciler.visitAll(new FilesDelta.Visitor() {
                     @Override
@@ -287,11 +268,7 @@ public class Make_Facet extends IFacet.Stub {
           switch (0) {
             case 0:
               if (vars(pa.global()).alternateOutput() == null) {
-                vars(pa.global()).alternateOutput(new _FunctionTypes._return_P1_E0<IFile, IFile>() {
-                  public IFile invoke(IFile f) {
-                    return f;
-                  }
-                });
+                vars(pa.global()).alternateOutput(((_FunctionTypes._return_P1_E0<IFile, IFile>) (IFile f) -> f));
               }
             default:
               return true;

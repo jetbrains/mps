@@ -10,9 +10,7 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -28,19 +26,7 @@ public class check_TypeVariableDeclarationForwardReferences_NonTypesystemRule ex
   public check_TypeVariableDeclarationForwardReferences_NonTypesystemRule() {
   }
   public void applyRule(final SNode typeVariableDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    Iterable<SNode> fwdRefs = ListSequence.fromList(SNodeOperations.getNodeDescendants(typeVariableDeclaration, CONCEPTS.TypeVariableReference$WL, false, new SAbstractConcept[]{})).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I);
-      }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SNodeOperations.getParent(it), SNodeOperations.getParent(typeVariableDeclaration));
-      }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.getIndexInParent(it) > SNodeOperations.getIndexInParent(typeVariableDeclaration);
-      }
-    });
+    Iterable<SNode> fwdRefs = ListSequence.fromList(SNodeOperations.getNodeDescendants(typeVariableDeclaration, CONCEPTS.TypeVariableReference$WL, false, new SAbstractConcept[]{})).select((it) -> SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I)).where((it) -> Objects.equals(SNodeOperations.getParent(it), SNodeOperations.getParent(typeVariableDeclaration))).where((it) -> SNodeOperations.getIndexInParent(it) > SNodeOperations.getIndexInParent(typeVariableDeclaration));
     if (Sequence.fromIterable(fwdRefs).isNotEmpty()) {
       String msg = "Illegal forward reference to type parameter " + SPropertyOperations.getString(Sequence.fromIterable(fwdRefs).first(), PROPS.name$MnvL);
       {

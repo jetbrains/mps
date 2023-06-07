@@ -45,23 +45,20 @@ public class ThreadSafeSample {
       for (final String name : names) {
 
         final String localA = name;
-
-        final Runnable runnable = new Runnable() {
-          public void run() {
+        final Runnable runnable = () -> {
+          try {
             try {
-              try {
-                // Notice no warning nor error reported
-                box.store(localA);
-                // If the DropBox class was annotated as "@non thread safe", we would get an error reported
-                // No annotation on the class would result in a warning
-              } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-              }
-            } catch (RuntimeException e) {
-              ListSequence.fromList(exceptions_n0c).addElement(e);
-            } finally {
-              latch_n0c.countDown();
+              // Notice no warning nor error reported
+              box.store(localA);
+              // If the DropBox class was annotated as "@non thread safe", we would get an error reported
+              // No annotation on the class would result in a warning
+            } catch (InterruptedException e) {
+              throw new RuntimeException(e);
             }
+          } catch (RuntimeException e) {
+            ListSequence.fromList(exceptions_n0c).addElement(e);
+          } finally {
+            latch_n0c.countDown();
           }
         };
 
@@ -91,17 +88,14 @@ public class ThreadSafeSample {
       for (final String name : names) {
 
         final String localA = name;
-
-        final Runnable runnable = new Runnable() {
-          public void run() {
-            try {
-              String finalString = localA + fixedValue.toUpperCase() + fixedFieldValue;
-              log("Result: " + finalString);
-            } catch (RuntimeException e) {
-              ListSequence.fromList(exceptions_u0c).addElement(e);
-            } finally {
-              latch_u0c.countDown();
-            }
+        final Runnable runnable = () -> {
+          try {
+            String finalString = localA + fixedValue.toUpperCase() + fixedFieldValue;
+            log("Result: " + finalString);
+          } catch (RuntimeException e) {
+            ListSequence.fromList(exceptions_u0c).addElement(e);
+          } finally {
+            latch_u0c.countDown();
           }
         };
 

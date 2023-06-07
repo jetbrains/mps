@@ -10,7 +10,6 @@ import jetbrains.mps.baseLanguage.behavior.IParameter__BehaviorDescriptor;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -30,31 +29,19 @@ public class ReferenceConversionHelper {
   public static Iterable<SNode> retrieveDescendentRefsAndConceptFunctionParams(SNode node) {
     final List<SNode> flowInterruptors = ReferenceConversionHelper.retrieveFlowInterruptors(node);
 
-    return ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.IVariableReference$C, false, new SAbstractConcept[]{})).union(ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.ConceptFunctionParameter$Tk, false, new SAbstractConcept[]{}))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode ref) {
-        return !(ListSequence.fromList(flowInterruptors).contains(SNodeOperations.getNodeAncestorWhereConceptInList(ref, new SAbstractConcept[]{CONCEPTS.IControlFlowInterrupter$Ra, CONCEPTS.IStatementListContainer$xz, CONCEPTS.IContainsStatementList$v9}, false, false)));
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.IVariableReference$C, false, new SAbstractConcept[]{})).union(ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.ConceptFunctionParameter$Tk, false, new SAbstractConcept[]{}))).where((ref) -> !(ListSequence.fromList(flowInterruptors).contains(SNodeOperations.getNodeAncestorWhereConceptInList(ref, new SAbstractConcept[]{CONCEPTS.IControlFlowInterrupter$Ra, CONCEPTS.IStatementListContainer$xz, CONCEPTS.IContainsStatementList$v9}, false, false))));
   }
 
   public static Iterable<SNode> retrieveDescendentRefs(SNode node) {
     final List<SNode> flowInterruptors = ReferenceConversionHelper.retrieveFlowInterruptors(node);
 
-    return ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.IVariableReference$C, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode ref) {
-        return !(ListSequence.fromList(flowInterruptors).contains(SNodeOperations.getNodeAncestorWhereConceptInList(ref, new SAbstractConcept[]{CONCEPTS.IControlFlowInterrupter$Ra, CONCEPTS.IStatementListContainer$xz, CONCEPTS.IContainsStatementList$v9}, false, false)));
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.IVariableReference$C, false, new SAbstractConcept[]{})).where((ref) -> !(ListSequence.fromList(flowInterruptors).contains(SNodeOperations.getNodeAncestorWhereConceptInList(ref, new SAbstractConcept[]{CONCEPTS.IControlFlowInterrupter$Ra, CONCEPTS.IStatementListContainer$xz, CONCEPTS.IContainsStatementList$v9}, false, false))));
   }
 
   public static Iterable<SNode> retrieveDescendentMethodCalls(SNode node) {
     final List<SNode> flowInterruptors = ReferenceConversionHelper.retrieveFlowInterruptors(node);
 
-    return ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.IMethodCall$M9, true, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode call) {
-        return !(ListSequence.fromList(flowInterruptors).contains(SNodeOperations.getNodeAncestorWhereConceptInList(call, new SAbstractConcept[]{CONCEPTS.IControlFlowInterrupter$Ra, CONCEPTS.IStatementListContainer$xz, CONCEPTS.IContainsStatementList$v9}, false, false)));
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.IMethodCall$M9, true, new SAbstractConcept[]{})).where((call) -> !(ListSequence.fromList(flowInterruptors).contains(SNodeOperations.getNodeAncestorWhereConceptInList(call, new SAbstractConcept[]{CONCEPTS.IControlFlowInterrupter$Ra, CONCEPTS.IStatementListContainer$xz, CONCEPTS.IContainsStatementList$v9}, false, false))));
   }
 
   private static List<SNode> retrieveFlowInterruptors(SNode node) {

@@ -29,7 +29,6 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import difflib.Patch;
 import difflib.DiffUtils;
 import java.io.BufferedReader;
@@ -47,8 +46,6 @@ import jetbrains.mps.make.facet.FacetRegistry;
 import jetbrains.mps.make.facet.IFacet;
 import jetbrains.mps.make.facet.ITarget;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.make.resources.IResource;
 import java.util.Collections;
 import jetbrains.mps.smodel.resources.ModelsToResources;
@@ -170,21 +167,17 @@ public class ModuleGenerationHolder {
     Iterable<String> onames = Sequence.fromArray(orig.list());
     Iterable<String> rnames = Sequence.fromArray(revd.list());
     if (Sequence.fromIterable(onames).disjunction(Sequence.fromIterable(rnames)).isNotEmpty()) {
-      Sequence.fromIterable(onames).subtract(Sequence.fromIterable(rnames)).visitAll(new IVisitor<String>() {
-        public void visit(String it) {
-          if (ignoredFile(it)) {
-            return;
-          }
-          ListSequence.fromList(diffs).addElement("Removed: " + new File(orig, it));
+      Sequence.fromIterable(onames).subtract(Sequence.fromIterable(rnames)).visitAll((it) -> {
+        if (ignoredFile(it)) {
+          return;
         }
+        ListSequence.fromList(diffs).addElement("Removed: " + new File(orig, it));
       });
-      Sequence.fromIterable(rnames).subtract(Sequence.fromIterable(onames)).visitAll(new IVisitor<String>() {
-        public void visit(String it) {
-          if (ignoredFile(it)) {
-            return;
-          }
-          ListSequence.fromList(diffs).addElement("Created: " + new File(orig, it));
+      Sequence.fromIterable(rnames).subtract(Sequence.fromIterable(onames)).visitAll((it) -> {
+        if (ignoredFile(it)) {
+          return;
         }
+        ListSequence.fromList(diffs).addElement("Created: " + new File(orig, it));
       });
     }
     for (String name : Sequence.fromIterable(onames).intersect(Sequence.fromIterable(rnames))) {
@@ -292,20 +285,12 @@ public class ModuleGenerationHolder {
     return new ScriptBuilder(project.getComponent(FacetRegistry.class)).withFacetNames(new IFacet.Name("jetbrains.mps.lang.resources.Binaries"), new IFacet.Name("jetbrains.mps.make.facets.Generate"), new IFacet.Name("jetbrains.mps.make.facets.TextGen"), new IFacet.Name("jetbrains.mps.make.facets.Make"), new IFacet.Name("jetbrains.mps.lang.editor.imageGen.GenerateImages")).withFinalTarget(new ITarget.Name("jetbrains.mps.make.facets.Make.make"));
   }
   private static Iterable<SModule> withGenerators(Iterable<SModule> modules) {
-    return Sequence.fromIterable(modules).concat(Sequence.fromIterable(modules).ofType(Language.class).translate(new ITranslator2<Language, Generator>() {
-      public Iterable<Generator> translate(Language it) {
-        return it.getGenerators();
-      }
-    }));
+    return Sequence.fromIterable(modules).concat(Sequence.fromIterable(modules).ofType(Language.class).translate((it) -> it.getGenerators()));
   }
   private static Iterable<IResource> collectResources(Project project, final SModule module) {
     return new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> {
 
-      Iterable<SModel> models = Sequence.fromIterable(withGenerators(Collections.singletonList(module))).translate(new ITranslator2<SModule, SModel>() {
-        public Iterable<SModel> translate(SModule mod) {
-          return mod.getModels();
-        }
-      });
+      Iterable<SModel> models = Sequence.fromIterable(withGenerators(Collections.singletonList(module))).translate((mod) -> mod.getModels());
       return new ModelsToResources(models).resources();
     });
   }

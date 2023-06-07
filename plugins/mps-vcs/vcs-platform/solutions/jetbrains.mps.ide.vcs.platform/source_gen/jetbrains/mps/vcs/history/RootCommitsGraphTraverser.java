@@ -18,10 +18,7 @@ import jetbrains.mps.smodel.DefaultSModelDescriptor;
 import jetbrains.mps.smodel.InvalidSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.Collection;
@@ -30,7 +27,7 @@ import java.util.HashSet;
 @GeneratedClass(node = "r:2897a5d4-aed7-4a4e-ac07-fbc830f9ed9b(jetbrains.mps.vcs.history)/4498559492711807995", model = "r:2897a5d4-aed7-4a4e-ac07-fbc830f9ed9b(jetbrains.mps.vcs.history)")
 public final class RootCommitsGraphTraverser {
 
-  private final Deque<CommitsGraphNode> myBranches = DequeSequence.fromDequeNew(new LinkedList<CommitsGraphNode>());
+  private final Deque<CommitsGraphNode> myBranches = DequeSequence.fromDeque(new LinkedList<CommitsGraphNode>());
   private final Map<CommitsGraphNode, Set<CommitsGraphNode>> myForkCommits = MapSequence.fromMap(new HashMap<CommitsGraphNode, Set<CommitsGraphNode>>());
   private final CommitsGraphNodeConsumer myCommitConsumer;
   private final VirtualFile myFile;
@@ -142,23 +139,17 @@ public final class RootCommitsGraphTraverser {
   private CommitsGraphNode getNextNode() {
     if (DequeSequence.fromDequeNew(myBranches).isEmpty()) {
       // This can happen if we annotate some arbitrary revision rather than the head revision.
-      MapSequence.fromMap(myForkCommits).visitAll(new IVisitor<IMapping<CommitsGraphNode, Set<CommitsGraphNode>>>() {
-        public void visit(IMapping<CommitsGraphNode, Set<CommitsGraphNode>> it) {
-          CommitsGraphNode forkCommit = it.key();
-          Set<CommitsGraphNode> processedChildren = it.value();
-          if (SetSequence.fromSet(processedChildren).all(new IWhereFilter<CommitsGraphNode>() {
-            public boolean accept(CommitsGraphNode processedChild) {
-              return processedChild.isIgnored();
-            }
-          })) {
-            forkCommit.setIgnored();
-          }
-          DequeSequence.fromDequeNew(myBranches).pushElement(forkCommit);
+      MapSequence.fromMap(myForkCommits).visitAll((it) -> {
+        CommitsGraphNode forkCommit = it.key();
+        Set<CommitsGraphNode> processedChildren = it.value();
+        if (SetSequence.fromSet(processedChildren).all((processedChild) -> processedChild.isIgnored())) {
+          forkCommit.setIgnored();
         }
+        DequeSequence.fromDequeNew(myBranches).pushElement(forkCommit);
       });
       MapSequence.fromMap(myForkCommits).clear();
     }
-    CommitsGraphNode node = DequeSequence.fromDequeNew(myBranches).sort((CommitsGraphNode a, CommitsGraphNode b) -> a.compareTo(b), false).first();
+    CommitsGraphNode node = DequeSequence.fromDequeNew(myBranches).sort((a, b) -> a.compareTo(b), false).first();
     DequeSequence.fromDequeNew(myBranches).removeElement(node);
     return node;
   }
@@ -170,7 +161,7 @@ public final class RootCommitsGraphTraverser {
       return;
     }
     myCommitConsumer.commitProcessingStarted(node);
-    List<CommitsGraphNode> parents = ListSequence.fromList(node.getParents()).toListSequence();
+    List<CommitsGraphNode> parents = ListSequence.fromList(node.getParents()).toList();
     assert ListSequence.fromList(parents).count() < 3;
     if (ListSequence.fromList(parents).isEmpty()) {
       myCommitConsumer.processLastCommit(node);
@@ -191,11 +182,7 @@ public final class RootCommitsGraphTraverser {
   }
 
   private boolean hasNotIgnoredBranch() {
-    return DequeSequence.fromDequeNew(myBranches).any(new IWhereFilter<CommitsGraphNode>() {
-      public boolean accept(CommitsGraphNode it) {
-        return !(it.isIgnored());
-      }
-    }) || MapSequence.fromMap(myForkCommits).isNotEmpty();
+    return DequeSequence.fromDequeNew(myBranches).any((it) -> !(it.isIgnored())) || MapSequence.fromMap(myForkCommits).isNotEmpty();
   }
 
   public void stop() {
@@ -227,11 +214,7 @@ public final class RootCommitsGraphTraverser {
 
   private void pushForkParent(final CommitsGraphNode parentNode) {
     Collection<CommitsGraphNode> children = parentNode.getChildren();
-    if (CollectionSequence.fromCollection(children).all(new IWhereFilter<CommitsGraphNode>() {
-      public boolean accept(CommitsGraphNode node) {
-        return node.isIgnored() || parentNode.isIgnoredByChild(node);
-      }
-    })) {
+    if (CollectionSequence.fromCollection(children).all((node) -> node.isIgnored() || parentNode.isIgnoredByChild(node))) {
       parentNode.setIgnored();
     }
     MapSequence.fromMap(myForkCommits).removeKey(parentNode);

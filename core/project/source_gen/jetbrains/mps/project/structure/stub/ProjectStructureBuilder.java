@@ -39,7 +39,6 @@ import jetbrains.mps.project.structure.modules.mappingpriorities.MappingConfig_S
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.SModelStereotype;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -287,11 +286,7 @@ public class ProjectStructureBuilder {
   }
 
   protected void collectModels(SNode module) {
-    for (SModel m : Sequence.fromIterable(((Iterable<SModel>) mySourceModule.getModels())).sort(new ISelector<SModel, String>() {
-      public String select(SModel it) {
-        return SModelOperations.getModelName(it);
-      }
-    }, true)) {
+    for (SModel m : Sequence.fromIterable(((Iterable<SModel>) mySourceModule.getModels())).sort((it) -> SModelOperations.getModelName(it), true)) {
       if (!(SModelStereotype.isStubModel(m))) {
         ListSequence.fromList(SLinkOperations.getChildren(module, LINKS.model$2Sf4)).addElement(convert(m.getReference()));
       }

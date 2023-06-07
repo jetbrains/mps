@@ -10,14 +10,12 @@ import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.generator.template.TemplateArgumentContext;
 import jetbrains.mps.smodel.SNodePointer;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.CreateRootCondition;
 import java.util.HashMap;
@@ -45,11 +43,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SModuleOperations.isAspect(_context.getOriginalInputModel(), "documentation");
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.ConceptDocumentation$mT)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.cncpt$CYFe) == _context.getNode();
-      }
-    }), PROPS.text$sz8T);
+    return SPropertyOperations.getString(ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.ConceptDocumentation$mT)).findFirst((it) -> SLinkOperations.getTarget(it, LINKS.cncpt$CYFe) == _context.getNode()), PROPS.text$sz8T);
   }
   public static Object referenceMacro_GetReferent_1_0(final ReferenceMacroContext _context) {
     return _context.getNode();
@@ -61,11 +55,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return new SNodePointer("r:ed8e9175-44d1-47ad-9d2b-75c7b10d01f8(jetbrains.mps.samples.customAspect.documentation.runtime)", "2897519568668564140");
   }
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SModelOperations.roots(_context.getOriginalInputModel(), CONCEPTS.ConceptDocumentation$mT)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.cncpt$CYFe);
-      }
-    }).distinct();
+    return ListSequence.fromList(SModelOperations.roots(_context.getOriginalInputModel(), CONCEPTS.ConceptDocumentation$mT)).select((it) -> SLinkOperations.getTarget(it, LINKS.cncpt$CYFe)).distinct();
   }
   private final Map<String, CreateRootCondition> crcMethods = new HashMap<String, CreateRootCondition>();
   {

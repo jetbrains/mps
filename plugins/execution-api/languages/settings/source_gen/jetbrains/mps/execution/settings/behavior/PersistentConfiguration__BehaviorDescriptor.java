@@ -17,7 +17,6 @@ import org.jetbrains.annotations.NonNls;
 import jetbrains.mps.execution.common.behavior.IGeneratedToClass__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.classifiers.behavior.IClassifier__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.classifiers.behavior.IMember__BehaviorDescriptor;
@@ -65,18 +64,10 @@ public final class PersistentConfiguration__BehaviorDescriptor extends BaseBHDes
     return createPersistentConfigurationType_4ves9l_a0a3(__thisNode__);
   }
   /*package*/ static List<SNode> getTemplateProperties_idO$iR4J$g3e(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.persistentProperty$YKAP)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) PersistentPropertyDeclaration__BehaviorDescriptor.isTemplate_idO$iR4J$g8G.invoke(it);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.persistentProperty$YKAP)).where((it) -> (boolean) PersistentPropertyDeclaration__BehaviorDescriptor.isTemplate_idO$iR4J$g8G.invoke(it)).toList();
   }
   /*package*/ static List<SNode> getNonTemplateProperties_idO$iR4J$g3y(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.persistentProperty$YKAP)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !((boolean) PersistentPropertyDeclaration__BehaviorDescriptor.isTemplate_idO$iR4J$g8G.invoke(it));
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.persistentProperty$YKAP)).where((it) -> !((boolean) PersistentPropertyDeclaration__BehaviorDescriptor.isTemplate_idO$iR4J$g8G.invoke(it))).toList();
   }
   /*package*/ static String getEditorSuffix_idO$iR4J$g3R(@NotNull SNode __thisNode__) {
     return "Editor";
@@ -84,11 +75,7 @@ public final class PersistentConfiguration__BehaviorDescriptor extends BaseBHDes
   /*package*/ static List<SNode> getMembers_idhEwJink(@NotNull SNode __thisNode__, SNode contextNode) {
     List<SNode> allMemebers = IClassifier__BehaviorDescriptor.getMembers_idhEwJink.invoke0(__thisNode__, CONCEPTS.IClassifier$BZ, contextNode);
     if ((SNodeOperations.getNodeAncestor(contextNode, CONCEPTS.SettingsEditor$nO, false, false) != null)) {
-      return ListSequence.fromList(allMemebers).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(it, CONCEPTS.PersistentConfigurationMethod$Mo)) || !(SNodeOperations.isInstanceOf(IMember__BehaviorDescriptor.getVisiblity_idhEwIBC5.invoke(it), CONCEPTS.PrivateVisibility$l0));
-        }
-      }).toListSequence();
+      return ListSequence.fromList(allMemebers).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.PersistentConfigurationMethod$Mo)) || !(SNodeOperations.isInstanceOf(IMember__BehaviorDescriptor.getVisiblity_idhEwIBC5.invoke(it), CONCEPTS.PrivateVisibility$l0))).toList();
     }
     return allMemebers;
   }

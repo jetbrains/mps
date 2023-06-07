@@ -19,10 +19,6 @@ import java.util.Set;
 import jetbrains.mps.util.DisjointSets;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.nodeEditor.cells.EditorCell;
 
 @GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/4652592318748337213", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
@@ -93,40 +89,12 @@ public abstract class ChangeGroupLayout {
     }
     List<ChangeGroup> list = ListSequence.fromList(new ArrayList<ChangeGroup>());
     for (Set<ModelChange> s : Sequence.fromIterable(ds.getSets())) {
-      Bounds lb = SetSequence.fromSet(s).select(new ISelector<ModelChange, Bounds>() {
-        public Bounds select(ModelChange ch) {
-          return MapSequence.fromMap(left).get(ch);
-        }
-      }).reduceLeft(new ILeftCombinator<Bounds, Bounds>() {
-        public Bounds combine(Bounds a, Bounds b) {
-          return a.merge(b);
-        }
-      });
-      Bounds rb = SetSequence.fromSet(s).select(new ISelector<ModelChange, Bounds>() {
-        public Bounds select(ModelChange ch) {
-          return MapSequence.fromMap(right).get(ch);
-        }
-      }).reduceLeft(new ILeftCombinator<Bounds, Bounds>() {
-        public Bounds combine(Bounds a, Bounds b) {
-          return a.merge(b);
-        }
-      });
-      List<ModelChange> sortedChanges = SetSequence.fromSet(s).sort(new ISelector<ModelChange, Integer>() {
-        public Integer select(ModelChange ch) {
-          return (int) MapSequence.fromMap(right).get(ch).start();
-        }
-      }, true).sort(new ISelector<ModelChange, Integer>() {
-        public Integer select(ModelChange ch) {
-          return (int) MapSequence.fromMap(left).get(ch).start();
-        }
-      }, true).toListSequence();
+      Bounds lb = SetSequence.fromSet(s).select((ch) -> MapSequence.fromMap(left).get(ch)).reduceLeft((a, b) -> a.merge(b));
+      Bounds rb = SetSequence.fromSet(s).select((ch) -> MapSequence.fromMap(right).get(ch)).reduceLeft((a, b) -> a.merge(b));
+      List<ModelChange> sortedChanges = SetSequence.fromSet(s).sort((ch) -> (int) MapSequence.fromMap(right).get(ch).start(), true).sort((ch) -> (int) MapSequence.fromMap(left).get(ch).start(), true).toList();
       ListSequence.fromList(list).addElement(new ChangeGroup(lb, rb, sortedChanges, myConflictChecker));
     }
-    return ListSequence.fromList(list).sort(new ISelector<ChangeGroup, Integer>() {
-      public Integer select(ChangeGroup g) {
-        return (int) g.getLeftBounds().start();
-      }
-    }, true).toListSequence();
+    return ListSequence.fromList(list).sort((g) -> (int) g.getLeftBounds().start(), true).toList();
   }
 
   public void addInvalidateListener(@NotNull ChangeGroupInvalidateListener listener) {
@@ -152,11 +120,7 @@ public abstract class ChangeGroupLayout {
 
   public void invalidate() {
     myChangeGroups.set(null);
-    ListSequence.fromList(myInvalidateListeners).visitAll(new IVisitor<ChangeGroupInvalidateListener>() {
-      public void visit(ChangeGroupInvalidateListener it) {
-        it.changeGroupsInvalidated();
-      }
-    });
+    ListSequence.fromList(myInvalidateListeners).visitAll((it) -> it.changeGroupsInvalidated());
   }
 
   public int getEditorVerticalOffset() {
@@ -171,19 +135,7 @@ public abstract class ChangeGroupLayout {
   private static Bounds findBounds(Iterable<ChangeEditorMessage> messages, final EditorComponent editorComponent) {
     Bounds bounds = null;
     if (Sequence.fromIterable(messages).isNotEmpty()) {
-      bounds = Sequence.fromIterable(messages).select(new ISelector<ChangeEditorMessage, Bounds>() {
-        public Bounds select(ChangeEditorMessage m) {
-          return m.getBounds(editorComponent);
-        }
-      }).where(new IWhereFilter<Bounds>() {
-        public boolean accept(Bounds b) {
-          return b.length() > 0;
-        }
-      }).reduceLeft(new ILeftCombinator<Bounds, Bounds>() {
-        public Bounds combine(Bounds a, Bounds b) {
-          return a.merge(b);
-        }
-      });
+      bounds = Sequence.fromIterable(messages).select((m) -> m.getBounds(editorComponent)).where((b) -> b.length() > 0).reduceLeft((a, b) -> a.merge(b));
     }
     if (bounds == null || bounds.length() <= 0) {
       int y = check_cuq72k_a0a0c0mb(check_cuq72k_a0a0a2a83(editorComponent));

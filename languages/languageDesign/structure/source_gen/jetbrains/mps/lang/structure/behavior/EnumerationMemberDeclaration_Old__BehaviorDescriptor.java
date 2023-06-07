@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -62,11 +61,7 @@ public final class EnumerationMemberDeclaration_Old__BehaviorDescriptor extends 
   }
   /*package*/ static SNode findReplacement_id54m$yuDZW0l(@NotNull final SNode __thisNode__) {
     // old-enum-member | old-enum | enum-migration-info | new-enum
-    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.getParent(SNodeOperations.getParent(__thisNode__))), CONCEPTS.EnumerationDeclaration$hv), LINKS.members$wmsL)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.oldMember$tsh) == __thisNode__;
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.getParent(SNodeOperations.getParent(__thisNode__))), CONCEPTS.EnumerationDeclaration$hv), LINKS.members$wmsL)).findFirst((it) -> SLinkOperations.getTarget(it, LINKS.oldMember$tsh) == __thisNode__);
   }
 
   /*package*/ EnumerationMemberDeclaration_Old__BehaviorDescriptor() {

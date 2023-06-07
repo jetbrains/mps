@@ -21,10 +21,10 @@ import jetbrains.mps.lang.generator.intentions.MacroIntentionsUtil;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
-import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
@@ -88,7 +88,7 @@ public class NewTemplateInRootMappingRoot_Action extends BaseAction {
       SLinkOperations.setTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(root), LINKS.applicableConcept$LAIX, SLinkOperations.getTarget(rule, LINKS.applicableConcept$Hpnk));
       SLinkOperations.setTarget(rule, LINKS.template$n_Qy, root);
       SelectionUtil.selectCell(editorContext, rule, "templateName");
-    }, (SConcept c) -> {
+    }, (c) -> {
       if (SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.TemplateSwitch$j_)) {
         return false;
       }

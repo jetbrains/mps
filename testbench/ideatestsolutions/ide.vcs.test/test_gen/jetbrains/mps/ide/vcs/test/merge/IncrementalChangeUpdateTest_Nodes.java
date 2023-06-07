@@ -8,7 +8,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import jetbrains.mps.smodel.SNodePointer;
 import org.junit.Test;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -50,11 +49,7 @@ public class IncrementalChangeUpdateTest_Nodes extends ChangesTestBase {
 
   @Test
   public void testAddRoot() {
-    testChanges(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
-      public SNode invoke() {
-        return SModelOperations.addRootNode(((SModel) getTestModel()), createClassConcept_2k50sb_a0a0a0a0a8());
-      }
-    }));
+    testChanges(() -> SModelOperations.addRootNode(((SModel) getTestModel()), createClassConcept_2k50sb_a0a0a0a0a8()));
   }
 
   @Test
@@ -69,23 +64,17 @@ public class IncrementalChangeUpdateTest_Nodes extends ChangesTestBase {
 
   @Test
   public void addChild() {
-    testChanges(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
-      public SNode invoke() {
-        return SLinkOperations.setTarget(getTestRoot(), LINKS.superclass$Mp9$, _quotation_createNode_2k50sb_a0a0a0a0o());
-      }
-    }));
+    testChanges(() -> SLinkOperations.setTarget(getTestRoot(), LINKS.superclass$Mp9$, _quotation_createNode_2k50sb_a0a0a0a0o()));
   }
 
   @Test
   public void addSameRoleChildren() {
-    testChanges(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
-      public SNode invoke() {
-        SNode testRoot = getTestRoot();
-        ListSequence.fromList(SLinkOperations.getChildren(testRoot, LINKS.implementedInterface$rujG)).addElement(_quotation_createNode_2k50sb_a0a1a0a0a61());
-        ListSequence.fromList(SLinkOperations.getChildren(testRoot, LINKS.implementedInterface$rujG)).addElement(_quotation_createNode_2k50sb_a0a2a0a0a61());
-        return ListSequence.fromList(SLinkOperations.getChildren(testRoot, LINKS.implementedInterface$rujG)).addElement(_quotation_createNode_2k50sb_a0a3a0a0a61());
-      }
-    }));
+    testChanges(() -> {
+      SNode testRoot = getTestRoot();
+      ListSequence.fromList(SLinkOperations.getChildren(testRoot, LINKS.implementedInterface$rujG)).addElement(_quotation_createNode_2k50sb_a0a1a0a0a61());
+      ListSequence.fromList(SLinkOperations.getChildren(testRoot, LINKS.implementedInterface$rujG)).addElement(_quotation_createNode_2k50sb_a0a2a0a0a61());
+      ListSequence.fromList(SLinkOperations.getChildren(testRoot, LINKS.implementedInterface$rujG)).addElement(_quotation_createNode_2k50sb_a0a3a0a0a61());
+    });
   }
 
   @Test

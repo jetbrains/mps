@@ -14,7 +14,6 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.openapi.intentions.ParameterizedIntentionExecutable;
@@ -52,11 +51,7 @@ public final class UnsuppressError_Intention extends AbstractIntentionDescriptor
     return list;
   }
   private List<SNode> parameter(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1).list(node)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return isNotEmptyString(SPropertyOperations.getString(it, PROPS.message$_mpB));
-      }
-    }).toListSequence();
+    return ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1).list(node)).where((it) -> isNotEmptyString(SPropertyOperations.getString(it, PROPS.message$_mpB))).toList();
   }
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable implements ParameterizedIntentionExecutable {
     private SNode myParameter;

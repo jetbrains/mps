@@ -15,7 +15,6 @@ import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
@@ -54,20 +53,12 @@ public final class ToggleMethodDefault_Intention extends AbstractIntentionDescri
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       String methodName = SPropertyOperations.getString(node, PROPS.name$MnvL);
-      return (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$F5MM)).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.DefaultModifier$rO);
-        }
-      }) ? "Make '" + methodName + "' Not Default" : "Make '" + methodName + "' Default");
+      return (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$F5MM)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.DefaultModifier$rO)) ? "Make '" + methodName + "' Not Default" : "Make '" + methodName + "' Default");
     }
 
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$F5MM)).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.DefaultModifier$rO);
-        }
-      })) {
+      if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$F5MM)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.DefaultModifier$rO))) {
         for (SNode modifier : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$F5MM))) {
           if (SNodeOperations.isInstanceOf(modifier, CONCEPTS.DefaultModifier$rO)) {
             SNodeOperations.deleteNode(modifier);

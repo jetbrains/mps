@@ -10,7 +10,6 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -18,7 +17,6 @@ import jetbrains.mps.kotlin.behavior.IVisible__BehaviorDescriptor;
 import jetbrains.mps.kotlin.behavior.IConstructorDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.kotlin.behavior.IInheritable__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -42,49 +40,31 @@ public class OptionalMemberModifiers extends MigrationScriptBase {
     {
       SearchScope scope_ll0a9_a0e = CommandUtil.createScope(m);
       final SearchScope scope_ll0a9_a0e_0 = new EditableFilteringScope(scope_ll0a9_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_ll0a9_a0e_0;
+      QueryExecutionContext context = () -> scope_ll0a9_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IVisible$LZ, false)).where((it) -> {
+        if ((SLinkOperations.getTarget(it, LINKS.visibility$vnSV) != null) && Objects.equals(SNodeOperations.getConcept(SLinkOperations.getTarget(it, LINKS.visibility$vnSV)), IVisible__BehaviorDescriptor.getDefaultVisibility_id2WVyZr43qIN.invoke(it))) {
+          return true;
         }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IVisible$LZ, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          if ((SLinkOperations.getTarget(it, LINKS.visibility$vnSV) != null) && Objects.equals(SNodeOperations.getConcept(SLinkOperations.getTarget(it, LINKS.visibility$vnSV)), IVisible__BehaviorDescriptor.getDefaultVisibility_id2WVyZr43qIN.invoke(it))) {
-            return true;
-          }
 
-          // One specific case: constructor of sealed and enum classes
-          {
-            final SNode constructor = it;
-            if (SNodeOperations.isInstanceOf(constructor, CONCEPTS.IConstructorDeclaration$rR)) {
-              SNode constructedClass = IConstructorDeclaration__BehaviorDescriptor.getConstructedClass_id7WpE6U5evQG.invoke(constructor);
+        // One specific case: constructor of sealed and enum classes
+        {
+          final SNode constructor = it;
+          if (SNodeOperations.isInstanceOf(constructor, CONCEPTS.IConstructorDeclaration$rR)) {
+            SNode constructedClass = IConstructorDeclaration__BehaviorDescriptor.getConstructedClass_id7WpE6U5evQG.invoke(constructor);
 
-              if (SNodeOperations.isInstanceOf(constructedClass, CONCEPTS.EnumClassDeclaration$xK) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$vnSV), CONCEPTS.PublicVisibility$Me)) {
-                return true;
-              }
+            if (SNodeOperations.isInstanceOf(constructedClass, CONCEPTS.EnumClassDeclaration$xK) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$vnSV), CONCEPTS.PublicVisibility$Me)) {
+              return true;
+            }
 
-              if (SConceptOperations.isExactly(SNodeOperations.asSConcept(IInheritable__BehaviorDescriptor.getInheritance_id6jE_6duswG9.invoke(constructedClass)), CONCEPTS.SealedInheritanceModifier$vk) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$vnSV), CONCEPTS.PublicVisibility$Me)) {
-                return true;
-              }
+            if (SConceptOperations.isExactly(SNodeOperations.asSConcept(IInheritable__BehaviorDescriptor.getInheritance_id6jE_6duswG9.invoke(constructedClass)), CONCEPTS.SealedInheritanceModifier$vk) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$vnSV), CONCEPTS.PublicVisibility$Me)) {
+              return true;
             }
           }
-          return false;
         }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNodeOperations.deleteNode(SLinkOperations.getTarget(it, LINKS.visibility$vnSV));
-        }
-      });
+        return false;
+      }).visitAll((it) -> SNodeOperations.deleteNode(SLinkOperations.getTarget(it, LINKS.visibility$vnSV)));
 
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IInheritable$pc, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS.inheritance$TFvr) != null) && Objects.equals(SNodeOperations.getConcept(SLinkOperations.getTarget(it, LINKS.inheritance$TFvr)), IInheritable__BehaviorDescriptor.getDefaultInheritance_id6jE_6dusz0P.invoke(it));
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNodeOperations.deleteNode(SLinkOperations.getTarget(it, LINKS.inheritance$TFvr));
-        }
-      });
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IInheritable$pc, false)).where((it) -> (SLinkOperations.getTarget(it, LINKS.inheritance$TFvr) != null) && Objects.equals(SNodeOperations.getConcept(SLinkOperations.getTarget(it, LINKS.inheritance$TFvr)), IInheritable__BehaviorDescriptor.getDefaultInheritance_id6jE_6dusz0P.invoke(it))).visitAll((it) -> SNodeOperations.deleteNode(SLinkOperations.getTarget(it, LINKS.inheritance$TFvr)));
 
     }
   }

@@ -7,11 +7,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -19,7 +18,6 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
-import java.util.List;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -38,21 +36,15 @@ public class MigrateDeclarations extends MigrationScriptBase {
     return null;
   }
   public void doExecute(final SModule m) {
-    Iterable<SModel> models = Sequence.fromIterable(((Iterable<SModel>) m.getModels())).where(new IWhereFilter<SModel>() {
-      public boolean accept(SModel it) {
-        return !(SModuleOperations.isAspect(it, "migration"));
-      }
-    });
-    Sequence.fromIterable(models).translate(new ITranslator2<SModel, SNode>() {
-      public Iterable<SNode> translate(SModel m) {
+    Iterable<SModel> models = Sequence.fromIterable(((Iterable<SModel>) m.getModels())).where((it) -> !(SModuleOperations.isAspect(it, "migration")));
+    Sequence.fromIterable(models).translate(new _FunctionTypes._return_P1_E0<List<SNode>, SModel>() {
+      public List<SNode> invoke(SModel m) {
         return SModelOperations.nodes(m, CONCEPTS.OldComponent$Yo);
       }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode oldNode) {
-        SNode newNode = _quotation_createNode_9wc3oy_a0a0a0a1a5(SLinkOperations.getChildren(oldNode, LINKS.member$oURK), SPropertyOperations.getString(oldNode, PROPS.name$MnvL));
-        ((jetbrains.mps.smodel.SNode) newNode).setId(((jetbrains.mps.smodel.SNode) oldNode).getNodeId());
-        SNodeOperations.replaceWithAnother(oldNode, newNode);
-      }
+    }).visitAll((oldNode) -> {
+      SNode newNode = _quotation_createNode_9wc3oy_a0a0a0a1a5(SLinkOperations.getChildren(oldNode, LINKS.member$oURK), SPropertyOperations.getString(oldNode, PROPS.name$MnvL));
+      ((jetbrains.mps.smodel.SNode) newNode).setId(((jetbrains.mps.smodel.SNode) oldNode).getNodeId());
+      SNodeOperations.replaceWithAnother(oldNode, newNode);
     });
   }
   public MigrationScriptReference getReference() {

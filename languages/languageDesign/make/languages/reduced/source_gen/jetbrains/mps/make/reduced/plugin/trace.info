@@ -19,13 +19,12 @@
       <unit at="8,0,18,0" name="jetbrains.mps.make.reduced.plugin.FacetAspectDescriptor" />
     </file>
     <file name="FacetManifest.java">
-      <unit at="21,55,25,5" name="jetbrains.mps.make.reduced.plugin.FacetManifest$1" />
-      <unit at="12,0,28,0" name="jetbrains.mps.make.reduced.plugin.FacetManifest" />
+      <unit at="11,0,23,0" name="jetbrains.mps.make.reduced.plugin.FacetManifest" />
     </file>
   </root>
   <root nodeRef="r:6e2bf134-8b14-4a22-a511-dbed551042c1(jetbrains.mps.make.reduced.plugin)/8795824097439267909">
     <file name="FacetManifest.java">
-      <node id="8795824097439267909" at="14,26,15,70" concept="2" />
+      <node id="8795824097439267909" at="13,26,14,70" concept="2" />
     </file>
     <file name="ReportFiles_Facet.java">
       <node id="8795824097439267909" at="33,0,34,0" concept="3" trace="targets" />

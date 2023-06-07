@@ -9,9 +9,7 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.kotlin.behavior.ISuperTypeSpecifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -24,16 +22,10 @@ public class check_EnumClassDeclaration_NonTypesystemRule extends AbstractNonTyp
   public check_EnumClassDeclaration_NonTypesystemRule() {
   }
   public void applyRule(final SNode enumClassDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    ListSequence.fromList(SLinkOperations.getChildren(enumClassDeclaration, LINKS.superclasses$6CkZ)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) ISuperTypeSpecifier__BehaviorDescriptor.isClass_id1$jFvlEiPXX.invoke(it);
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        {
-          final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it, "Enum class cannot inherit from classes", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "2248167455751387543", null, errorTarget);
-        }
+    ListSequence.fromList(SLinkOperations.getChildren(enumClassDeclaration, LINKS.superclasses$6CkZ)).where((it) -> (boolean) ISuperTypeSpecifier__BehaviorDescriptor.isClass_id1$jFvlEiPXX.invoke(it)).visitAll((it) -> {
+      {
+        final MessageTarget errorTarget = new NodeMessageTarget();
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it, "Enum class cannot inherit from classes", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "2248167455751387543", null, errorTarget);
       }
     });
   }

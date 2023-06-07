@@ -14,7 +14,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.model.SNode;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/4676109734476338389", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
@@ -58,11 +57,7 @@ public final class ModifiedNode {
   public Set<SNodeId> getAllAffectedNodeIds() {
     final Set<SNodeId> result = SetSequence.fromSet(new HashSet<SNodeId>());
     SetSequence.fromSet(result).addElement(getNodeId());
-    CollectionSequence.fromCollection(myChildren).visitAll(new IVisitor<ModifiedNode>() {
-      public void visit(ModifiedNode it) {
-        SetSequence.fromSet(result).addSequence(SetSequence.fromSet(it.getAllAffectedNodeIds()));
-      }
-    });
+    CollectionSequence.fromCollection(myChildren).visitAll((it) -> SetSequence.fromSet(result).addSequence(SetSequence.fromSet(it.getAllAffectedNodeIds())));
     return result;
   }
 

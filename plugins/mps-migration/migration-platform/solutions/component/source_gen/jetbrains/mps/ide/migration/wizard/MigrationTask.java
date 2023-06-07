@@ -22,8 +22,6 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import java.awt.Color;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.ide.migration.AppliedScript;
 import jetbrains.mps.ide.migration.MigrationRunnable;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -35,13 +33,12 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.atomic.AtomicBoolean;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import java.util.ArrayList;
+import org.jetbrains.mps.openapi.util.Processor;
 import java.util.HashMap;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.migration.global.ProjectMigration;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.migration.global.CleanupProjectMigration;
@@ -214,13 +211,7 @@ public class MigrationTask {
     // Besides, seems that I can't do it inside MigrationSession.updateModuleImports and nextStepXXX, at least shall
     // keep this refresh outside of original write to get SModule events distributed on write complete.
     final Project mpsProject = mySession.getProject();
-    mpsProject.getModelAccess().runReadAction(() -> {
-      CollectionSequence.fromCollection(mySession.getModuleMigrations()).visitAll(new IVisitor<AppliedScript>() {
-        public void visit(AppliedScript as) {
-          as.refreshScriptInstances(mpsProject);
-        }
-      });
-    });
+    mpsProject.getModelAccess().runReadAction(() -> CollectionSequence.fromCollection(mySession.getModuleMigrations()).visitAll((as) -> as.refreshScriptInstances(mpsProject)));
   }
 
   private Status executeSingleStep(final ProgressMonitor m, final String localHistCaption, final MigrationRunnable execute) {
@@ -306,9 +297,11 @@ public class MigrationTask {
 
   private List<ScriptApplied> findMissingMigrations(ProgressMonitor m) {
     final List<ScriptApplied> res = ListSequence.fromList(new ArrayList<ScriptApplied>());
-    mySession.getChecker().checkMigrations(m, (ScriptApplied sa) -> {
-      ListSequence.fromList(res).addElement(sa);
-      return true;
+    mySession.getChecker().checkMigrations(m, new Processor<ScriptApplied>() {
+      public boolean process(ScriptApplied sa) {
+        ListSequence.fromList(res).addElement(sa);
+        return true;
+      }
     });
     return res;
   }
@@ -454,9 +447,11 @@ public class MigrationTask {
     final Wrappers._boolean haveNotMigrated = new Wrappers._boolean(false);
     // FIXME each time we use checker from within a session, it can take already executed migrations internally
     //      the only scenario to address is use of MigrationCheckerImpl independently
-    mySession.getChecker().findNotMigrated(m, mySession.getExecutedModuleMigrations(), (Problem p) -> {
-      haveNotMigrated.value = true;
-      return false;
+    mySession.getChecker().findNotMigrated(m, mySession.getExecutedModuleMigrations(), new Processor<Problem>() {
+      public boolean process(Problem p) {
+        haveNotMigrated.value = true;
+        return false;
+      }
     });
     return haveNotMigrated.value;
   }
@@ -464,11 +459,7 @@ public class MigrationTask {
   private int moduleStepsCount() {
     // FIXME see MigrationSessionBase.nextStepModule for use of PM initialized with this value. we report 1 unit for each executed ScriptApplied, which is
     //      one per module x script x version, that's why I go with non-distinct affected modules here. However, it's not effective
-    return CollectionSequence.fromCollection(mySession.getModuleMigrations()).translate(new ITranslator2<AppliedScript, SModuleReference>() {
-      public Iterable<SModuleReference> translate(AppliedScript it) {
-        return it.affectedModules();
-      }
-    }).count();
+    return CollectionSequence.fromCollection(mySession.getModuleMigrations()).translate((it) -> it.affectedModules()).count();
   }
 
   private int projectStepsCount(boolean isCleanup) {

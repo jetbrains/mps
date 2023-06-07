@@ -17,7 +17,7 @@ import java.util.Deque;
 import jetbrains.mps.internal.collections.runtime.LinkedListSequence;
 import java.util.LinkedList;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.SNodeHashStrategy;
 import jetbrains.mps.smodel.SNodeMatcher;
@@ -51,7 +51,7 @@ public class MethodParameter extends MethodParameterModel {
     }
     List<SNode> found = new ArrayList<SNode>();
     Set<NodeWrapper> visited = SetSequence.fromSet(new HashSet<NodeWrapper>());
-    final Deque<SNode> queue = LinkedListSequence.fromListAndArrayNew(new LinkedList<SNode>(), myType);
+    final Deque<SNode> queue = LinkedListSequence.fromListAndArray(new LinkedList<SNode>(), myType);
     while (!(LinkedListSequence.fromLinkedListNew(queue).isEmpty())) {
       SNode t = LinkedListSequence.fromLinkedListNew(queue).removeElementAt(0);
       if (SetSequence.fromSet(visited).contains(new NodeWrapper(t))) {
@@ -59,8 +59,8 @@ public class MethodParameter extends MethodParameterModel {
       }
       ListSequence.fromList(found).addElement(t);
       SetSequence.fromSet(visited).addElement(new NodeWrapper(t));
-      ListSequence.fromList(Type__BehaviorDescriptor.getSupertypes_id4w2h6RLlygH.invoke(t)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
+      ListSequence.fromList(Type__BehaviorDescriptor.getSupertypes_id4w2h6RLlygH.invoke(t)).visitAll(new _FunctionTypes._void_P1_E0<SNode>() {
+        public void invoke(SNode it) {
           LinkedListSequence.fromLinkedListNew(queue).addElement(it);
         }
       });

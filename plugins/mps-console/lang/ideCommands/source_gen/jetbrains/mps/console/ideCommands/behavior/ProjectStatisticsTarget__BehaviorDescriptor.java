@@ -19,9 +19,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -43,34 +41,18 @@ public final class ProjectStatisticsTarget__BehaviorDescriptor extends BaseBHDes
     List<Tuples._2<String, Integer>> result = ListSequence.fromList(new ArrayList<Tuples._2<String, Integer>>());
 
     List<SModule> modules = context.getProject().getProjectModulesWithGenerators();
-    Iterable<SModel> models = ListSequence.fromList(modules).translate(new ITranslator2<SModule, SModel>() {
-      public Iterable<SModel> translate(SModule it) {
-        return it.getModels();
-      }
-    });
+    Iterable<SModel> models = ListSequence.fromList(modules).translate((it) -> it.getModels());
 
     ListSequence.fromList(result).addElement(MultiTuple.<String,Integer>from("Modules", ListSequence.fromList(modules).count()));
-    ListSequence.fromList(result).addElement(MultiTuple.<String,Integer>from("Non-packaged modules", ListSequence.fromList(modules).where(new IWhereFilter<SModule>() {
-      public boolean accept(SModule it) {
-        return it.isPackaged();
-      }
-    }).count()));
+    ListSequence.fromList(result).addElement(MultiTuple.<String,Integer>from("Non-packaged modules", ListSequence.fromList(modules).where((it) -> it.isPackaged()).count()));
     ListSequence.fromList(result).addElement(MultiTuple.<String,Integer>from("Models", Sequence.fromIterable(models).count()));
-    ListSequence.fromList(result).addElement(MultiTuple.<String,Integer>from("Editable models", Sequence.fromIterable(models).where(new IWhereFilter<SModel>() {
-      public boolean accept(SModel it) {
-        return !(it.isReadOnly());
-      }
-    }).count()));
+    ListSequence.fromList(result).addElement(MultiTuple.<String,Integer>from("Editable models", Sequence.fromIterable(models).where((it) -> !(it.isReadOnly())).count()));
 
     return result;
   }
   /*package*/ static Iterable<SNode> getNodes_id4x3U0fq41hN(@NotNull SNode __thisNode__, ConsoleContext context) {
     Iterable<SModel> models = context.getProject().getScope().getModels();
-    return Sequence.fromIterable(models).translate(new ITranslator2<SModel, SNode>() {
-      public Iterable<SNode> translate(SModel it) {
-        return SNodeUtil.getDescendants(it);
-      }
-    }).toListSequence();
+    return Sequence.fromIterable(models).translate((it) -> SNodeUtil.getDescendants(it)).toList();
   }
 
   /*package*/ ProjectStatisticsTarget__BehaviorDescriptor() {

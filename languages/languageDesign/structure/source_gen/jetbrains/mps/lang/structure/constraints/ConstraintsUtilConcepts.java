@@ -10,10 +10,8 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.scope.VisibleDepsSearchScope;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Deque;
@@ -37,17 +35,9 @@ public class ConstraintsUtilConcepts {
 
     Iterable<SModule> visibleModules = new VisibleDepsSearchScope(contextModule.getRepository(), contextModule).getModules();
 
-    Iterable<SModel> strucModels = Sequence.fromIterable(visibleModules).ofType(Language.class).select(new ISelector<Language, SModel>() {
-      public SModel select(Language it) {
-        return SModuleOperations.getAspect(it, "structure");
-      }
-    }).where(new NotNullWhereFilter<SModel>());
+    Iterable<SModel> strucModels = Sequence.fromIterable(visibleModules).ofType(Language.class).select((it) -> SModuleOperations.getAspect(it, "structure")).where(new NotNullWhereFilter());
 
-    return Sequence.fromIterable(strucModels).translate(new ITranslator2<SModel, SNode>() {
-      public Iterable<SNode> translate(SModel it) {
-        return SModelOperations.roots(it, SNodeOperations.asSConcept(metaConcept));
-      }
-    });
+    return Sequence.fromIterable(strucModels).translate((it) -> SModelOperations.roots(it, SNodeOperations.asSConcept(metaConcept)));
   }
 
   public static Iterable<SNode> getAvailableLanguageConcepts(SNode contextNode, final SAbstractConcept metaConcept) {
@@ -56,7 +46,7 @@ public class ConstraintsUtilConcepts {
       return Collections.emptyList();
     }
 
-    Deque<Language> languagesToVisit = DequeSequence.fromDequeNew(new LinkedList<Language>());
+    Deque<Language> languagesToVisit = DequeSequence.fromDeque(new LinkedList<Language>());
     Set<Language> visibleLanguages = SetSequence.fromSet(new HashSet<Language>());
     DequeSequence.fromDequeNew(languagesToVisit).addLastElement(language);
     SetSequence.fromSet(visibleLanguages).addElement(language);
@@ -70,15 +60,7 @@ public class ConstraintsUtilConcepts {
         }
       }
     }
-    return SetSequence.fromSet(visibleLanguages).select(new ISelector<Language, SModel>() {
-      public SModel select(Language it) {
-        return SModuleOperations.getAspect(it, "structure");
-      }
-    }).where(new NotNullWhereFilter<SModel>()).translate(new ITranslator2<SModel, SNode>() {
-      public Iterable<SNode> translate(SModel it) {
-        return SModelOperations.roots(it, SNodeOperations.asSConcept(metaConcept));
-      }
-    });
+    return SetSequence.fromSet(visibleLanguages).select((it) -> SModuleOperations.getAspect(it, "structure")).where(new NotNullWhereFilter()).translate((it) -> SModelOperations.roots(it, SNodeOperations.asSConcept(metaConcept)));
   }
 
   /**

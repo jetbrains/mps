@@ -22,7 +22,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopes;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
@@ -143,11 +142,7 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         protected Iterable<? extends SNode> getParameters(final SubstituteMenuContext _context) {
-          return (List<SNode>) Sequence.fromIterable(ClassifierScopes.getVisibleClassesScope(_context.getParentNode()).getAvailableElements(null)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return !(SPropertyOperations.getBoolean(SNodeOperations.cast(it, CONCEPTS.ClassConcept$bK), PROPS.isFinal$f7C_)) && !(Objects.equals(it, _context.getParentNode())) && (boolean) ClassConcept__BehaviorDescriptor.canBeExtendedOrInstantiatedAt_id2YFkRQdLLqk.invoke(SNodeOperations.as(it, CONCEPTS.ClassConcept$bK), _context.getParentNode());
-            }
-          }).toListSequence();
+          return (List<SNode>) Sequence.fromIterable(ClassifierScopes.getVisibleClassesScope(_context.getParentNode()).getAvailableElements(null)).where((it) -> !(SPropertyOperations.getBoolean(SNodeOperations.cast(it, CONCEPTS.ClassConcept$bK), PROPS.isFinal$f7C_)) && !(Objects.equals(it, _context.getParentNode())) && (boolean) ClassConcept__BehaviorDescriptor.canBeExtendedOrInstantiatedAt_id2YFkRQdLLqk.invoke(SNodeOperations.as(it, CONCEPTS.ClassConcept$bK), _context.getParentNode())).toList();
         }
         private class SMP_Action_6wdawe_a0a0 extends SingleItemSubstituteMenuPart {
           private final SNode myParameterObject;
@@ -273,7 +268,7 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-          return (List<SNode>) Sequence.fromIterable(ClassifierScopes.getVisibleInterfacesScope(_context.getParentNode()).getAvailableElements(null)).toListSequence();
+          return (List<SNode>) Sequence.fromIterable(ClassifierScopes.getVisibleInterfacesScope(_context.getParentNode()).getAvailableElements(null)).toList();
         }
         private class SMP_Action_6wdawe_a0b0 extends SingleItemSubstituteMenuPart {
           private final SNode myParameterObject;
@@ -399,11 +394,7 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         protected Iterable<? extends SNode> getParameters(final SubstituteMenuContext _context) {
-          return (List<SNode>) Sequence.fromIterable(ClassifierScopes.getVisibleInterfacesScope(_context.getParentNode()).getAvailableElements(null)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return !(Objects.equals(it, _context.getParentNode()));
-            }
-          }).toListSequence();
+          return (List<SNode>) Sequence.fromIterable(ClassifierScopes.getVisibleInterfacesScope(_context.getParentNode()).getAvailableElements(null)).where((it) -> !(Objects.equals(it, _context.getParentNode()))).toList();
         }
         private class SMP_Action_6wdawe_a0c0 extends SingleItemSubstituteMenuPart {
           private final SNode myParameterObject;

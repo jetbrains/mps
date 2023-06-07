@@ -23,8 +23,6 @@ import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -52,15 +50,7 @@ public final class GlobalStatisticTarget__BehaviorDescriptor extends BaseBHDescr
   }
   /*package*/ static Iterable<SNode> getNodes_id4x3U0fq41hN(@NotNull SNode __thisNode__, ConsoleContext c) {
     Iterable<SModule> modules = c.getProject().getRepository().getModules();
-    return Sequence.fromIterable(modules).translate(new ITranslator2<SModule, SModel>() {
-      public Iterable<SModel> translate(SModule it) {
-        return it.getModels();
-      }
-    }).translate(new ITranslator2<SModel, SNode>() {
-      public Iterable<SNode> translate(SModel it) {
-        return SNodeUtil.getDescendants(it);
-      }
-    });
+    return Sequence.fromIterable(modules).translate((it) -> it.getModels()).translate((it) -> SNodeUtil.getDescendants(it));
   }
 
   /*package*/ GlobalStatisticTarget__BehaviorDescriptor() {

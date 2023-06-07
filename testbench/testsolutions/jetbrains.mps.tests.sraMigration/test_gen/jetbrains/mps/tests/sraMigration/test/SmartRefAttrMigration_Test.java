@@ -25,7 +25,6 @@ import java.io.File;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.util.Reference;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
@@ -275,21 +274,13 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
   private SNode findGeneratedSMN(SModelReference modelRef, SNodeReference conceptRef) {
     final SNode concept = resolveCD(conceptRef);
     SModel model = modelRef.resolve(project.getRepository());
-    return ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.SubstituteMenu_Named$cm)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.GeneratedSubstituteMenuAttribute$Ya).get(it) != null) && SLinkOperations.getTarget(it, LINKS.conceptDeclaration$h3E) == concept;
-      }
-    }).first();
+    return ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.SubstituteMenu_Named$cm)).where((it) -> (new IAttributeDescriptor.NodeAttribute(CONCEPTS.GeneratedSubstituteMenuAttribute$Ya).get(it) != null) && SLinkOperations.getTarget(it, LINKS.conceptDeclaration$h3E) == concept).first();
   }
 
   private SNode findSMD(SModelReference modelRef, SNodeReference conceptRef) {
     final SNode concept = resolveCD(conceptRef);
     SModel model = modelRef.resolve(project.getRepository());
-    return ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.SubstituteMenu_Default$sV)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.conceptDeclaration$h3E) == concept;
-      }
-    }).first();
+    return ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.SubstituteMenu_Default$sV)).where((it) -> SLinkOperations.getTarget(it, LINKS.conceptDeclaration$h3E) == concept).first();
   }
 
 

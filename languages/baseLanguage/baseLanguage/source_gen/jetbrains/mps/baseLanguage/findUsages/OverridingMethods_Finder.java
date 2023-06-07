@@ -16,9 +16,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -57,19 +54,7 @@ public class OverridingMethods_Finder extends GeneratedFinder {
         }
       }
       if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.EnumClass$Vk)) {
-        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.EnumClass$Vk), LINKS.enumConstant$qtgW)).translate(new ITranslator2<SNode, SNode>() {
-          public Iterable<SNode> translate(SNode it) {
-            return SLinkOperations.getChildren(it, LINKS.method$pGvv);
-          }
-        }).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(it, node);
-          }
-        }).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            callback.onUsageFound(createSingleResult(it));
-          }
-        });
+        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.EnumClass$Vk), LINKS.enumConstant$qtgW)).translate((it) -> SLinkOperations.getChildren(it, LINKS.method$pGvv)).where((it) -> (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(it, node)).visitAll((it) -> callback.onUsageFound(createSingleResult(it)));
       }
     } finally {
       monitor.done();

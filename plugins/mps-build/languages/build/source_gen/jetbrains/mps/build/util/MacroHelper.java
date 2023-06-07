@@ -14,7 +14,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.build.behavior.BuildMacro__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.generator.template.TemplateQueryContext;
 import java.util.concurrent.ConcurrentMap;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -99,25 +98,13 @@ public final class MacroHelper {
     return availableMacros;
   }
   public Iterable<SNode> getVarsContainers() {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(this.project, LINKS.dependencies$redY), CONCEPTS.BuildProjectDependency$sN)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return depPrefixes.containsKey(it);
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(this.project, LINKS.dependencies$redY), CONCEPTS.BuildProjectDependency$sN)).where((it) -> depPrefixes.containsKey(it));
   }
   public Iterable<SNode> getMacrosToExport() {
-    return Sequence.fromIterable(((Iterable<SNode>) availableMacros)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return exportNames.containsKey(it);
-      }
-    });
+    return Sequence.fromIterable(((Iterable<SNode>) availableMacros)).where((it) -> exportNames.containsKey(it));
   }
   public Iterable<SNode> getMacrosToImport() {
-    return Sequence.fromIterable(((Iterable<SNode>) availableMacros)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return importNames.containsKey(it);
-      }
-    });
+    return Sequence.fromIterable(((Iterable<SNode>) availableMacros)).where((it) -> importNames.containsKey(it));
   }
   public String getName(SNode macro) {
     return macroToName.get(context.getOriginalMacro(macro));

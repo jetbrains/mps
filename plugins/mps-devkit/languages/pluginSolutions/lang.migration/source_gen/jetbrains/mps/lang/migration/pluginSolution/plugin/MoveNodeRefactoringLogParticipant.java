@@ -89,7 +89,7 @@ public class MoveNodeRefactoringLogParticipant extends RefactoringParticipantBas
   @Override
   public List<List<RefactoringParticipant.Change<SNodeReference, SNodeReference>>> getChanges(List<SNodeReference> initialStates, SRepository repository, List<RefactoringParticipant.Option> selectedOptions, SearchScope searchScope, ProgressMonitor progressMonitor) {
     if (!(isApplicable(initialStates, repository)) || !(ListSequence.fromList(selectedOptions).contains(OPTION))) {
-      return ListSequence.fromList(initialStates).select((SNodeReference it) -> ((List<RefactoringParticipant.Change<SNodeReference, SNodeReference>>) ListSequence.fromList(new ArrayList<RefactoringParticipant.Change<SNodeReference, SNodeReference>>()))).toList();
+      return ListSequence.fromList(initialStates).select((it) -> ((List<RefactoringParticipant.Change<SNodeReference, SNodeReference>>) ListSequence.fromList(new ArrayList<RefactoringParticipant.Change<SNodeReference, SNodeReference>>()))).toList();
     }
     for (SModule module : Sequence.fromIterable(searchScope.getModules())) {
       if (MigrationModuleUtil.isModuleMigrateable(module) && !(MigrationModuleUtil.allDependenciesActual(module))) {
@@ -105,12 +105,12 @@ public class MoveNodeRefactoringLogParticipant extends RefactoringParticipantBas
   public List<RefactoringParticipant.Change<SNodeReference, SNodeReference>> getChanges(SNodeReference initialState, SRepository repository, final List<RefactoringParticipant.Option> selectedOptions, final SearchScope searchScope) {
     final SNode sourceNode = initialState.resolve(repository);
     final SModule sourceModule = SNodeOperations.getModel(sourceNode).getModule();
-    Iterable<SerializingParticipantState<?, ?, SNode, SNode>> seq = Sequence.fromIterable(new ExtensionPoint<MoveNodeRefactoringParticipant<?, ?>>("jetbrains.mps.refactoring.participant.MoveNodeParticipantEP").getObjects()).select((MoveNodeRefactoringParticipant<?, ?> participant) -> SerializingParticipantState.create(participant));
-    final List<SerializingParticipantState<?, ?, SNode, SNode>> participantStates = Sequence.fromIterable(seq).where((SerializingParticipantState<?, ?, SNode, SNode> it) -> it != null).toList();
+    Iterable<SerializingParticipantState<?, ?, SNode, SNode>> seq = Sequence.fromIterable(new ExtensionPoint<MoveNodeRefactoringParticipant<?, ?>>("jetbrains.mps.refactoring.participant.MoveNodeParticipantEP").getObjects()).select((participant) -> SerializingParticipantState.create(participant));
+    final List<SerializingParticipantState<?, ?, SNode, SNode>> participantStates = Sequence.fromIterable(seq).where((it) -> it != null).toList();
     if (ListSequence.fromList(participantStates).isEmpty()) {
       return ListSequence.fromList(new ArrayList<RefactoringParticipant.Change<SNodeReference, SNodeReference>>());
     }
-    final List<SNode> initialStates = ListSequence.fromList(participantStates).select((SerializingParticipantState<?, ?, SNode, SNode> it) -> it.getSerializedInitial(sourceNode)).toList();
+    final List<SNode> initialStates = ListSequence.fromList(participantStates).select((it) -> it.getSerializedInitial(sourceNode)).toList();
 
     // todo: write guard migration with 'execute after'
 

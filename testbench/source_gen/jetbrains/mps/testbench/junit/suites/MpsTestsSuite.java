@@ -43,7 +43,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -183,15 +182,7 @@ public class MpsTestsSuite extends BaseMpsSuite {
             }
             // FWIW, there's JUnit4TestWrapper with similar logic (for use in execution plugin). Why not the same?
             Iterable<SNode> imd = SNodeOperations.ofConcept(SLinkOperations.getChildren(cc, LINKS.member$L_2d), CONCEPTS.InstanceMethodDeclaration$39);
-            if (Sequence.fromIterable(SLinkOperations.collectMany(Sequence.fromIterable(imd).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return !(SPropertyOperations.getBoolean(it, PROPS.isAbstract$VtH_)) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$Yyua), CONCEPTS.PublicVisibility$R0);
-              }
-            }), LINKS.annotation$K49I)).any(new IWhereFilter<SNode>() {
-              public boolean accept(SNode an) {
-                return SLinkOperations.hasPointer(an, LINKS.annotation$12Ek, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~Test"));
-              }
-            })) {
+            if (Sequence.fromIterable(SLinkOperations.collectMany(Sequence.fromIterable(imd).where((it) -> !(SPropertyOperations.getBoolean(it, PROPS.isAbstract$VtH_)) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$Yyua), CONCEPTS.PublicVisibility$R0)), LINKS.annotation$K49I)).any((an) -> SLinkOperations.hasPointer(an, LINKS.annotation$12Ek, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~Test")))) {
               String testClassName = ((String) BHReflection.invoke0(cc, CONCEPTS.INamedConcept$Kd, SMethodIdV2.create("getFqName", 1213877404258L, 0x553941aeb020c32eL)));
               try {
                 result.add(builder.safeRunnerForClass(moduleCL.loadClass(testClassName)));

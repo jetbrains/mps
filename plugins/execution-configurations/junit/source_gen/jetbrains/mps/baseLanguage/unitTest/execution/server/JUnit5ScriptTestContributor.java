@@ -38,7 +38,7 @@ public class JUnit5ScriptTestContributor extends AbstractJUnit5TestContributor i
   @Override
   protected ClassLoader testModuleContextClassLoader() {
     return ModuleClassLoaderUtil.classLoaderForTestExecution(myEnv.getPlatform(), () -> {
-      return myExecScript.getTests().stream().map((ExecutorScript.TestRecord tr) -> tr.myTestModule).toList();
+      return myExecScript.getTests().stream().map((tr) -> tr.myTestModule).toList();
 
     });
   }

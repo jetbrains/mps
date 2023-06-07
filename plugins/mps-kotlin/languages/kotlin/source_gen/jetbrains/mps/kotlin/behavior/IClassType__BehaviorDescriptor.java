@@ -21,7 +21,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -55,11 +54,7 @@ public final class IClassType__BehaviorDescriptor extends BaseBHDescriptor {
     pres.append((isNotEmptyString(SPropertyOperations.getString(classifier, PROPS.name$MnvL)) ? SPropertyOperations.getString(classifier, PROPS.name$MnvL) : "<no class>"));
     if (!(erased) && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.typeProjections$vhti)).isNotEmpty()) {
       pres.append("<");
-      pres.append(IterableUtils.join(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.typeProjections$vhti)).select(new ISelector<SNode, String>() {
-        public String select(SNode it) {
-          return ((it != null) ? BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(it) : "?");
-        }
-      }), ", "));
+      pres.append(IterableUtils.join(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.typeProjections$vhti)).select((it) -> ((it != null) ? BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(it) : "?")), ", "));
       pres.append(">");
     }
     // TODO supported in kotlin, not in jvm erased signatures

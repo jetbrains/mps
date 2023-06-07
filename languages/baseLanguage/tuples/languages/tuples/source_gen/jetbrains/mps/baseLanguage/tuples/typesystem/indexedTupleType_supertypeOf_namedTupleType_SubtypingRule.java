@@ -26,7 +26,7 @@ public class indexedTupleType_supertypeOf_namedTupleType_SubtypingRule extends S
   public SNode getSubOrSuperType(SNode ntt, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     final List<SNode> queue = ListSequence.fromList(new LinkedList<SNode>());
     final List<SNode> pts = SLinkOperations.getChildren(ntt, LINKS.parameter$oqG$);
-    return _quotation_createNode_pquv4f_a2a1(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ntt, LINKS.classifier$cxMr), LINKS.component$wCHx)).select((SNode cmp) -> {
+    return _quotation_createNode_pquv4f_a2a1(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ntt, LINKS.classifier$cxMr), LINKS.component$wCHx)).select((cmp) -> {
       SNode tmp = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType"));
       SLinkOperations.setTarget(tmp, LINKS.componentType$F$Gi, SNodeOperations.copyNode(SLinkOperations.getTarget(cmp, LINKS.type$q$C9)));
       ListSequence.fromList(queue).clear();
@@ -45,7 +45,7 @@ public class indexedTupleType_supertypeOf_namedTupleType_SubtypingRule extends S
         }
       }
       return SLinkOperations.getTarget(tmp, LINKS.componentType$F$Gi);
-    }).toListSequence());
+    }).toList());
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.NamedTupleType$DW;

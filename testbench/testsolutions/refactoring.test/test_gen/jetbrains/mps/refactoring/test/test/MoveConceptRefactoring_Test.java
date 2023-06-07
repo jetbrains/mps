@@ -21,18 +21,13 @@ import jetbrains.mps.ide.platform.refactoring.NodeLocation;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.model.ModelDeleteHelper;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.ConceptRegistry;
 import java.util.ArrayList;
@@ -42,6 +37,7 @@ import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.smodel.runtime.illegal.IllegalConceptDescriptor;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
+import java.util.Map;
 import jetbrains.mps.smodel.runtime.impl.CompiledConceptDescriptor;
 import java.util.Objects;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
@@ -60,6 +56,7 @@ import jetbrains.mps.util.Reference;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import jetbrains.mps.smodel.SNodePointer;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
@@ -93,21 +90,11 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
     }, () -> {
       return new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationRoot(getTargetModel()), project);
 
-    }, () -> {
-      project.getRepository().getModelAccess().runReadAction(() -> {
-        Iterable<SProperty> properties1 = getInstanceA().getProperties();
-        Assert.assertFalse(Sequence.fromIterable(properties1).any(new IWhereFilter<SProperty>() {
-          public boolean accept(SProperty it) {
-            return it.getOwner().getLanguage() == MetaAdapterFactory.getLanguage(0x3e00419d48014badL, 0xbf2a50479218fb53L, "testmaterial.moveConcept.SourceLanguage");
-          }
-        }));
-        Assert.assertTrue(Sequence.fromIterable(properties1).any(new IWhereFilter<SProperty>() {
-          public boolean accept(SProperty it) {
-            return it.getOwner().getLanguage() == MetaAdapterFactory.getLanguage(0x2f6eb168481148adL, 0xbecb56fd47d21d59L, "testmaterial.moveConcept.TargetLanguage");
-          }
-        }));
-      });
-    });
+    }, () -> project.getRepository().getModelAccess().runReadAction(() -> {
+      Iterable<SProperty> properties1 = getInstanceA().getProperties();
+      Assert.assertFalse(Sequence.fromIterable(properties1).any((it) -> it.getOwner().getLanguage() == MetaAdapterFactory.getLanguage(0x3e00419d48014badL, 0xbf2a50479218fb53L, "testmaterial.moveConcept.SourceLanguage")));
+      Assert.assertTrue(Sequence.fromIterable(properties1).any((it) -> it.getOwner().getLanguage() == MetaAdapterFactory.getLanguage(0x2f6eb168481148adL, 0xbecb56fd47d21d59L, "testmaterial.moveConcept.TargetLanguage")));
+    }));
   }
   @Test
   public void test_moveConcept_MPS_27701() throws Exception {
@@ -128,27 +115,13 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
     }, () -> {
       return new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationRoot(getTargetModel()), project);
 
-    }, () -> {
-      project.getRepository().getModelAccess().runReadAction(() -> {
-        Iterable<SProperty> properties1 = getInstanceA().getProperties();
-        Iterable<SProperty> properties2 = getInstanceB().getProperties();
-        Assert.assertTrue(Sequence.fromIterable(properties2).all(new IWhereFilter<SProperty>() {
-          public boolean accept(SProperty it) {
-            return getInstanceB().getConcept().getProperties().contains(it);
-          }
-        }));
-        Assert.assertFalse(Sequence.fromIterable(properties1).any(new IWhereFilter<SProperty>() {
-          public boolean accept(SProperty it) {
-            return it.getOwner().getLanguage() == MetaAdapterFactory.getLanguage(0x3e00419d48014badL, 0xbf2a50479218fb53L, "testmaterial.moveConcept.SourceLanguage");
-          }
-        }));
-        Assert.assertTrue(Sequence.fromIterable(properties1).any(new IWhereFilter<SProperty>() {
-          public boolean accept(SProperty it) {
-            return it.getOwner().getLanguage() == MetaAdapterFactory.getLanguage(0x2f6eb168481148adL, 0xbecb56fd47d21d59L, "testmaterial.moveConcept.TargetLanguage");
-          }
-        }));
-      });
-    });
+    }, () -> project.getRepository().getModelAccess().runReadAction(() -> {
+      Iterable<SProperty> properties1 = getInstanceA().getProperties();
+      Iterable<SProperty> properties2 = getInstanceB().getProperties();
+      Assert.assertTrue(Sequence.fromIterable(properties2).all((it) -> getInstanceB().getConcept().getProperties().contains(it)));
+      Assert.assertFalse(Sequence.fromIterable(properties1).any((it) -> it.getOwner().getLanguage() == MetaAdapterFactory.getLanguage(0x3e00419d48014badL, 0xbf2a50479218fb53L, "testmaterial.moveConcept.SourceLanguage")));
+      Assert.assertTrue(Sequence.fromIterable(properties1).any((it) -> it.getOwner().getLanguage() == MetaAdapterFactory.getLanguage(0x2f6eb168481148adL, 0xbecb56fd47d21d59L, "testmaterial.moveConcept.TargetLanguage")));
+    }));
   }
   @Test
   public void test_moveConceptWithNotDeployedConcepts() throws Exception {
@@ -158,21 +131,9 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
     // on the buildserver there are no .class files
     runCommand(() -> {
       List<SModule> projectModules = project.getProjectModulesWithGenerators();
-      ListSequence.fromList(projectModules).translate(new ITranslator2<SModule, SModel>() {
-        public Iterable<SModel> translate(SModule it) {
-          return it.getModels();
-        }
-      }).visitAll(new IVisitor<SModel>() {
-        public void visit(SModel it) {
-          new ModelDeleteHelper(it).removeGeneratedArtifacts();
-        }
-      });
+      ListSequence.fromList(projectModules).translate((it) -> it.getModels()).visitAll((it) -> new ModelDeleteHelper(it).removeGeneratedArtifacts());
       ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getClassLoaderManager().reloadModules(projectModules);
-      Iterable<LanguageRuntime> projectLanguages = ListSequence.fromList(projectModules).ofType(Language.class).select(new ISelector<Language, LanguageRuntime>() {
-        public LanguageRuntime select(Language it) {
-          return LanguageRegistry.getInstance(project.getRepository()).getLanguage(it);
-        }
-      });
+      Iterable<LanguageRuntime> projectLanguages = ListSequence.fromList(projectModules).ofType(Language.class).select((it) -> LanguageRegistry.getInstance(project.getRepository()).getLanguage(it));
       // this is a hack needed to clear global registry to unload languages like no languages were loaded at all
       ConceptRegistry.getInstance().afterLanguagesLoaded(projectLanguages);
     });
@@ -193,7 +154,7 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
       if (LOG.isInfoLevel()) {
         LOG.info("Refactoring starting...");
       }
-      MoveNodesUtil.moveTo(project, "", MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationRoot(getTargetModel()), project)).withValues(ListSequence.fromListAndArray(new ArrayList<SNode>(), getConcept_A())), new HeadlessRefactoringUI.OptionsChecker(expectedOptions));
+      MoveNodesUtil.moveTo(project, "", MapSequence.fromMapAndEntryArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), Map.entry(new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationRoot(getTargetModel()), project), ListSequence.fromListAndArray(new ArrayList<SNode>(), getConcept_A()))), new HeadlessRefactoringUI.OptionsChecker(expectedOptions));
       if (LOG.isInfoLevel()) {
         LOG.info("Refactoring finished");
       }
@@ -215,26 +176,12 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
     }, () -> {
       ConceptDescriptor conceptDescriptor = ConceptRegistry.getInstance().getConceptDescriptor(MetaAdapterByDeclaration.getConcept(getConcept_EnumPropertyContainer()));
       assert conceptDescriptor instanceof CompiledConceptDescriptor;
-    }, (List<SNode> nodesToMove) -> ListSequence.fromList(nodesToMove).addElement(getProperty_MovedProperty()), () -> new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationChild(getConcept_PropertySupercontainer(), LINKS.propertyDeclaration$YUgg), project), () -> {
-      project.getRepository().getModelAccess().runReadAction(() -> {
-        Iterable<SProperty> properties = getPropertyConceptInstance().getProperties();
-        Assert.assertTrue(Sequence.fromIterable(properties).all(new IWhereFilter<SProperty>() {
-          public boolean accept(SProperty it) {
-            return getPropertyConceptInstance().getConcept().getProperties().contains(it);
-          }
-        }));
-        Assert.assertFalse(Sequence.fromIterable(properties).any(new IWhereFilter<SProperty>() {
-          public boolean accept(SProperty it) {
-            return Objects.equals(it.getOwner().getSourceNode(), getConcept_PropertyContainer().getReference());
-          }
-        }));
-        Assert.assertTrue(Sequence.fromIterable(properties).any(new IWhereFilter<SProperty>() {
-          public boolean accept(SProperty it) {
-            return Objects.equals(it.getOwner().getSourceNode(), getConcept_PropertySupercontainer().getReference());
-          }
-        }));
-      });
-    });
+    }, (List<SNode> nodesToMove) -> ListSequence.fromList(nodesToMove).addElement(getProperty_MovedProperty()), () -> new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationChild(getConcept_PropertySupercontainer(), LINKS.propertyDeclaration$YUgg), project), () -> project.getRepository().getModelAccess().runReadAction(() -> {
+      Iterable<SProperty> properties = getPropertyConceptInstance().getProperties();
+      Assert.assertTrue(Sequence.fromIterable(properties).all((it) -> getPropertyConceptInstance().getConcept().getProperties().contains(it)));
+      Assert.assertFalse(Sequence.fromIterable(properties).any((it) -> Objects.equals(it.getOwner().getSourceNode(), getConcept_PropertyContainer().getReference())));
+      Assert.assertTrue(Sequence.fromIterable(properties).any((it) -> Objects.equals(it.getOwner().getSourceNode(), getConcept_PropertySupercontainer().getReference())));
+    }));
   }
   @Test
   public void test_moveEnumProperty() throws Exception {
@@ -248,26 +195,12 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
     }, () -> {
       ConceptDescriptor conceptDescriptor = ConceptRegistry.getInstance().getConceptDescriptor(MetaAdapterByDeclaration.getConcept(getConcept_EnumPropertyContainer()));
       assert conceptDescriptor instanceof CompiledConceptDescriptor;
-    }, (List<SNode> nodesToMove) -> ListSequence.fromList(nodesToMove).addElement(getProperty_MovedEnumProperty()), () -> new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationChild(getConcept_PropertySupercontainer(), LINKS.propertyDeclaration$YUgg), project), () -> {
-      project.getRepository().getModelAccess().runReadAction(() -> {
-        Iterable<SProperty> properties = getEnumPropertyConceptInstance().getProperties();
-        Assert.assertTrue(Sequence.fromIterable(properties).all(new IWhereFilter<SProperty>() {
-          public boolean accept(SProperty it) {
-            return getEnumPropertyConceptInstance().getConcept().getProperties().contains(it);
-          }
-        }));
-        Assert.assertFalse(Sequence.fromIterable(properties).any(new IWhereFilter<SProperty>() {
-          public boolean accept(SProperty it) {
-            return Objects.equals(it.getOwner().getSourceNode(), getConcept_EnumPropertyContainer().getReference());
-          }
-        }));
-        Assert.assertTrue(Sequence.fromIterable(properties).any(new IWhereFilter<SProperty>() {
-          public boolean accept(SProperty it) {
-            return Objects.equals(it.getOwner().getSourceNode(), getConcept_PropertySupercontainer().getReference());
-          }
-        }));
-      });
-    });
+    }, (List<SNode> nodesToMove) -> ListSequence.fromList(nodesToMove).addElement(getProperty_MovedEnumProperty()), () -> new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationChild(getConcept_PropertySupercontainer(), LINKS.propertyDeclaration$YUgg), project), () -> project.getRepository().getModelAccess().runReadAction(() -> {
+      Iterable<SProperty> properties = getEnumPropertyConceptInstance().getProperties();
+      Assert.assertTrue(Sequence.fromIterable(properties).all((it) -> getEnumPropertyConceptInstance().getConcept().getProperties().contains(it)));
+      Assert.assertFalse(Sequence.fromIterable(properties).any((it) -> Objects.equals(it.getOwner().getSourceNode(), getConcept_EnumPropertyContainer().getReference())));
+      Assert.assertTrue(Sequence.fromIterable(properties).any((it) -> Objects.equals(it.getOwner().getSourceNode(), getConcept_PropertySupercontainer().getReference())));
+    }));
   }
   @Test
   public void test_movedConceptHasCompletion_MPS27494() throws Exception {
@@ -394,21 +327,9 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
         LOG.info("Cleaning generated classes...");
       }
       List<SModule> projectModules = project.getProjectModules();
-      ListSequence.fromList(projectModules).translate(new ITranslator2<SModule, SModel>() {
-        public Iterable<SModel> translate(SModule it) {
-          return it.getModels();
-        }
-      }).visitAll(new IVisitor<SModel>() {
-        public void visit(SModel it) {
-          new ModelDeleteHelper(it).removeGeneratedArtifacts();
-        }
-      });
+      ListSequence.fromList(projectModules).translate((it) -> it.getModels()).visitAll((it) -> new ModelDeleteHelper(it).removeGeneratedArtifacts());
       ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getClassLoaderManager().reloadModules(projectModules);
-      Iterable<LanguageRuntime> projectLanguages = ListSequence.fromList(projectModules).ofType(Language.class).select(new ISelector<Language, LanguageRuntime>() {
-        public LanguageRuntime select(Language it) {
-          return LanguageRegistry.getInstance(project.getRepository()).getLanguage(it);
-        }
-      });
+      Iterable<LanguageRuntime> projectLanguages = ListSequence.fromList(projectModules).ofType(Language.class).select((it) -> LanguageRegistry.getInstance(project.getRepository()).getLanguage(it));
       // this is a hack needed to clear global registry to unload languages like no languages were loaded at all
       ConceptRegistry.getInstance().afterLanguagesLoaded(projectLanguages);
     });
@@ -438,7 +359,7 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
       }
       List<SNode> nodesToMove = ListSequence.fromList(new ArrayList<SNode>());
       setNodesToMove.invoke(nodesToMove);
-      MoveNodesUtil.moveTo(project, "", MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), nodeProcessor.invoke()).withValues(nodesToMove), new HeadlessRefactoringUI(options));
+      MoveNodesUtil.moveTo(project, "", MapSequence.fromMapAndEntryArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), Map.entry(nodeProcessor.invoke(), nodesToMove)), new HeadlessRefactoringUI(options));
       if (LOG.isInfoLevel()) {
         LOG.info("Refactoring finished");
       }

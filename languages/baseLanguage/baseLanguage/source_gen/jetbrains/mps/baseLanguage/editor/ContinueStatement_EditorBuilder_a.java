@@ -31,7 +31,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
@@ -39,8 +38,6 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
@@ -135,11 +132,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new PropertyCellContext(myNode, property), new SubstituteInfoPartExt[]{new ContinueStatement_generic_cellMenu_vgxjtu_a0a1a(), new SChildSubstituteInfoPartEx(editorCell)}));
       setCellContext(editorCell);
       Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
-      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
-        }
-      });
+      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where((it) -> Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property));
       if (Sequence.fromIterable(currentPropertyAttributes).isNotEmpty()) {
         EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
         return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentPropertyAttributes).first(), AttributeKind.PROPERTY, editorCell);
@@ -154,48 +147,44 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
 
     protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
-      return ListSequence.fromList(SNodeOperations.getNodeAncestors(node, CONCEPTS.AbstractLoopStatement$Xv, false)).translate(new ITranslator2<SNode, String>() {
-        public Iterable<String> translate(final SNode it) {
-          return new Iterable<String>() {
-            public Iterator<String> iterator() {
-              return new YieldingIterator<String>() {
-                private int __CP__ = 0;
-                protected boolean moveToNext() {
+      return ListSequence.fromList(SNodeOperations.getNodeAncestors(node, CONCEPTS.AbstractLoopStatement$Xv, false)).translate((it) -> {
+        return (Iterable<String>) () -> {
+          return new YieldingIterator<String>() {
+            private int __CP__ = 0;
+            protected boolean moveToNext() {
 __loop__:
-                  do {
+              do {
 __switch__:
-                    switch (this.__CP__) {
-                      case -1:
-                        assert false : "Internal error";
-                        return false;
-                      case 2:
-                        if (!(SPropertyOperations.hasValue(it, PROPS.label$nCHj, null))) {
-                          this.__CP__ = 3;
-                          break;
-                        }
-                        this.__CP__ = 1;
-                        break;
-                      case 4:
-                        this.__CP__ = 1;
-                        this.yield(SPropertyOperations.getString(it, PROPS.label$nCHj));
-                        return true;
-                      case 0:
-                        this.__CP__ = 2;
-                        break;
-                      case 3:
-                        this.__CP__ = 4;
-                        break;
-                      default:
-                        break __loop__;
+                switch (this.__CP__) {
+                  case -1:
+                    assert false : "Internal error";
+                    return false;
+                  case 2:
+                    if (!(SPropertyOperations.hasValue(it, PROPS.label$nCHj, null))) {
+                      this.__CP__ = 3;
+                      break;
                     }
-                  } while (true);
-                  return false;
+                    this.__CP__ = 1;
+                    break;
+                  case 4:
+                    this.__CP__ = 1;
+                    this.yield(SPropertyOperations.getString(it, PROPS.label$nCHj));
+                    return true;
+                  case 0:
+                    this.__CP__ = 2;
+                    break;
+                  case 3:
+                    this.__CP__ = 4;
+                    break;
+                  default:
+                    break __loop__;
                 }
-              };
+              } while (true);
+              return false;
             }
           };
-        }
-      }).toListSequence();
+        };
+      }).toList();
 
     }
     protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {

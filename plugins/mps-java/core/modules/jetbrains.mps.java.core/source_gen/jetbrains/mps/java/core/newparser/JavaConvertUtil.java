@@ -10,7 +10,6 @@ import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.util.IFileUtil;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 
 @GeneratedClass(node = "r:b1598fca-3527-4718-b3ee-193781dbf052(jetbrains.mps.java.core.newparser)/3813618677921512923", model = "r:b1598fca-3527-4718-b3ee-193781dbf052(jetbrains.mps.java.core.newparser)")
 public class JavaConvertUtil {
@@ -43,11 +42,7 @@ public class JavaConvertUtil {
    * E.g. we select dir 'parent' and its 2 files out of 10. Only the 2 files will be taken
    */
   private static Iterable<IFile> onlyLeaves(Iterable<IFile> all) {
-    Set<IFile> dirs = SetSequence.fromSetWithValues(new HashSet<IFile>(), Sequence.fromIterable(all).where(new IWhereFilter<IFile>() {
-      public boolean accept(IFile it) {
-        return it.isDirectory();
-      }
-    }));
+    Set<IFile> dirs = SetSequence.fromSetWithValues(new HashSet<IFile>(), Sequence.fromIterable(all).where((it) -> it.isDirectory()));
     Set<IFile> excluded = SetSequence.fromSet(new HashSet<IFile>());
 
     for (IFile item : Sequence.fromIterable(all)) {

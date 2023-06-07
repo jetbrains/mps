@@ -10,7 +10,6 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
@@ -25,19 +24,7 @@ public class check_CellActionMapDeclarationUsed_NonTypesystemRule extends Abstra
   public check_CellActionMapDeclarationUsed_NonTypesystemRule() {
   }
   public void applyRule(final SNode cellActionMapDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(cellActionMapDeclaration), CONCEPTS.EditorCellModel$gN)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getTarget(it, LINKS.actionMap$oNO2), cellActionMapDeclaration);
-      }
-    }) == null) && (ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(cellActionMapDeclaration), CONCEPTS.CellModel_RefNodeList$Uo)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getTarget(it, LINKS.elementActionMap$HSG7), cellActionMapDeclaration);
-      }
-    }) == null) && (ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(cellActionMapDeclaration), CONCEPTS.CellActionMapImport$sV)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getTarget(it, LINKS.cellActionMap$$ow7), cellActionMapDeclaration);
-      }
-    }) == null)) {
+    if ((ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(cellActionMapDeclaration), CONCEPTS.EditorCellModel$gN)).findFirst((it) -> Objects.equals(SLinkOperations.getTarget(it, LINKS.actionMap$oNO2), cellActionMapDeclaration)) == null) && (ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(cellActionMapDeclaration), CONCEPTS.CellModel_RefNodeList$Uo)).findFirst((it) -> Objects.equals(SLinkOperations.getTarget(it, LINKS.elementActionMap$HSG7), cellActionMapDeclaration)) == null) && (ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(cellActionMapDeclaration), CONCEPTS.CellActionMapImport$sV)).findFirst((it) -> Objects.equals(SLinkOperations.getTarget(it, LINKS.cellActionMap$$ow7), cellActionMapDeclaration)) == null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(cellActionMapDeclaration, "Action map unused in its containing model", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6782712264223022226", null, errorTarget);

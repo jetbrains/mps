@@ -16,13 +16,12 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -78,11 +77,7 @@ public final class Paragraph__BehaviorDescriptor extends BaseBHDescriptor {
     return SLinkOperations.getChildren(__thisNode__, LINKS.letters$rNyA);
   }
   /*package*/ static Iterable<SNode> getNonEmptyTextualElements_id250QDwq53RO(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$rNyA)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.EmptyParagraphLetter$W6));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$rNyA)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.EmptyParagraphLetter$W6)));
 
   }
   /*package*/ static void removeTextualElementAt_id250QDwq2Yav(@NotNull SNode __thisNode__, int index) {
@@ -98,15 +93,7 @@ public final class Paragraph__BehaviorDescriptor extends BaseBHDescriptor {
     ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$rNyA)).addSequence(Sequence.fromIterable(l));
   }
   /*package*/ static boolean isEmptyParagraph_id7r4EKYUymRW(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$rNyA)).isEmpty() || !(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$rNyA)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.EmptyParagraphLetter$W6));
-      }
-    })) || ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$rNyA)).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.Letter$kd) && isEmptyString(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Letter$kd), PROPS.value$X7Tp));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$rNyA)).isEmpty() || !(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$rNyA)).any((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.EmptyParagraphLetter$W6)))) || ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$rNyA)).all((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.Letter$kd) && isEmptyString(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Letter$kd), PROPS.value$X7Tp)));
   }
   /*package*/ static void merge_id4HqBHuNzqyw(@NotNull SNode __thisNode__, SNode other) {
     Paragraph__BehaviorDescriptor.merge_id4HqBHuNzqyK.invoke(__thisNode__, other, Sequence.fromIterable(Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(__thisNode__)).last(), ((boolean) false));
@@ -117,13 +104,11 @@ public final class Paragraph__BehaviorDescriptor extends BaseBHDescriptor {
     }
 
     final Wrappers._T<SNode> currentPosition = new Wrappers._T<SNode>(position);
-    Sequence.fromIterable(Paragraph__BehaviorDescriptor.getNonEmptyTextualElements_id250QDwq53RO.invoke(other)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode element) {
-        if (inFrontOfPosition) {
-          SNodeOperations.insertPrevSiblingChild(currentPosition.value, element);
-        } else {
-          currentPosition.value = SNodeOperations.insertNextSiblingChild(currentPosition.value, element);
-        }
+    Sequence.fromIterable(Paragraph__BehaviorDescriptor.getNonEmptyTextualElements_id250QDwq53RO.invoke(other)).visitAll((element) -> {
+      if (inFrontOfPosition) {
+        SNodeOperations.insertPrevSiblingChild(currentPosition.value, element);
+      } else {
+        currentPosition.value = SNodeOperations.insertNextSiblingChild(currentPosition.value, element);
       }
     });
     if (!((boolean) Paragraph__BehaviorDescriptor.isEmptyParagraph_id7r4EKYUymRW.invoke(other)) && isEmptyString(trim_7af07r_a0a0e0kb(SPropertyOperations.getString(SNodeOperations.as(position, CONCEPTS.Letter$kd), PROPS.value$X7Tp)))) {
@@ -142,8 +127,8 @@ public final class Paragraph__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static void initializeFromLine_id6n6K0Pj71DU(@NotNull final SNode __thisNode__, SNode l) {
     Paragraph__BehaviorDescriptor.initialize_id1v077Wg2A59.invoke(__thisNode__);
-    ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$_j45)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
+    ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$_j45)).visitAll(new _FunctionTypes._void_P1_E0<SNode>() {
+      public void invoke(SNode it) {
         if (SNodeOperations.isInstanceOf(it, CONCEPTS.Word$Dn)) {
           String url = SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Word$Dn), PROPS.url$SIrt);
           if ((url != null && url.length() > 0)) {

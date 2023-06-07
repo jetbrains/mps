@@ -10,7 +10,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -31,8 +31,8 @@ public class ClassRefactoringUtils {
     for (SNode call : ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.StaticFieldReference$cU, false, new SAbstractConcept[]{}))) {
       SetSequence.fromSet(nodesToCheck).addElement(SLinkOperations.getTarget(call, LINKS.variableDeclaration$N1XG));
     }
-    for (SNode call : ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
+    for (SNode call : ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      public Boolean invoke(SNode it) {
         return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.StaticFieldDeclaration$jR);
       }
     })) {

@@ -2,7 +2,7 @@
 <model ref="r:f7f8a091-d98d-402d-85c4-5f05cb2b8c61(jetbrains.mps.lang.behavior.typesystem)">
   <persistence version="9" />
   <languages>
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
     <devkit ref="00000000-0000-4000-0000-1de82b3a4936(jetbrains.mps.devkit.aspect.typesystem)" />
   </languages>
@@ -122,6 +122,7 @@
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -289,7 +290,6 @@
       <concept id="1153944233411" name="jetbrains.mps.baseLanguage.collections.structure.ForEachVariableReference" flags="nn" index="2GrUjf">
         <reference id="1153944258490" name="variable" index="2Gs0qQ" />
       </concept>
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1160612413312" name="jetbrains.mps.baseLanguage.collections.structure.AddElementOperation" flags="nn" index="TSZUe" />
       <concept id="1162934736510" name="jetbrains.mps.baseLanguage.collections.structure.GetElementOperation" flags="nn" index="34jXtK" />
       <concept id="1162935959151" name="jetbrains.mps.baseLanguage.collections.structure.GetSizeOperation" flags="nn" index="34oBXx" />
@@ -1734,7 +1734,7 @@
                       <node concept="10Nm6u" id="172ROKPFzcL" role="3uHU7w" />
                       <node concept="2OqwBi" id="172ROKPFzcM" role="3uHU7B">
                         <node concept="37vLTw" id="172ROKPFzcN" role="2Oq$k0">
-                          <ref role="3cqZAo" node="172ROKPFzcP" resolve="it" />
+                          <ref role="3cqZAo" node="5W7E4fV0W3v" />
                         </node>
                         <node concept="3TrEf2" id="172ROKPFzcO" role="2OqNvi">
                           <ref role="3Tt5mk" to="1i04:hP3i0lZ" resolve="overriddenMethod" />
@@ -1743,9 +1743,9 @@
                     </node>
                   </node>
                 </node>
-                <node concept="Rh6nW" id="172ROKPFzcP" role="1bW2Oz">
+                <node concept="gl6BB" id="5W7E4fV0W3v" role="1bW2Oz">
                   <property role="TrG5h" value="it" />
-                  <node concept="2jxLKc" id="172ROKPFzcQ" role="1tU5fm" />
+                  <node concept="2jxLKc" id="5W7E4fV0W3w" role="1tU5fm" />
                 </node>
               </node>
             </node>

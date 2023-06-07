@@ -49,7 +49,7 @@ public final class MeetType__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static SNode eraseGenerics_id4qyz6djw13y(@NotNull SNode __thisNode__) {
     SNode copy = SNodeOperations.copyNode(__thisNode__);
-    for (SNode arg : ListSequence.fromList(SLinkOperations.getChildren(copy, LINKS.argument$r2cT)).toListSequence()) {
+    for (SNode arg : ListSequence.fromList(SLinkOperations.getChildren(copy, LINKS.argument$r2cT)).toList()) {
       if (SNodeOperations.isInstanceOf(arg, CONCEPTS.IGenericType$13)) {
         SNodeOperations.replaceWithAnother(arg, IGenericType__BehaviorDescriptor.eraseGenerics_id4qyz6djw13y.invoke(SNodeOperations.cast(arg, CONCEPTS.IGenericType$13)));
       }

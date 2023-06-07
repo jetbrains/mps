@@ -18,7 +18,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import jetbrains.mps.typechecking.TypecheckingFacade;
@@ -54,11 +53,7 @@ public final class IMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Object[] getActualArguments_idhJyuD6_(@NotNull SNode __thisNode__, final SModule module) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.actualArgument$pzdx)).select(new ISelector<SNode, Object>() {
-      public Object select(SNode it) {
-        return (Object) Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(it, module);
-      }
-    }).toGenericArray(Object.class);
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.actualArgument$pzdx)).select((it) -> (Object) Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(it, module)).toGenericArray(Object.class);
   }
   /*package*/ static SNode declaredArgumentType_id2TF6A0TNzEJ(@NotNull SNode __thisNode__, SNode expression) {
     // is 'expression' an actual argument in this method call?

@@ -13,12 +13,10 @@ import jetbrains.mps.vcs.diff.ui.common.DiffEditor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import javax.swing.JPanel;
 import com.intellij.ui.JBSplitter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import com.intellij.diff.tools.util.side.TwosideContentPanel;
 import jetbrains.mps.vcs.diff.ui.common.DiffChangeGroupLayout;
 import jetbrains.mps.vcs.diff.ChangeSetBuilder;
 import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 
 @GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/5939348756325699563", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
@@ -40,11 +38,7 @@ import jetbrains.mps.vcs.diff.changes.ModelChange;
 
   @Override
   protected JPanel createPanel() {
-    List<JBSplitter> splitters = ListSequence.fromList(getEditors()).select(new ISelector<DiffEditor, JBSplitter>() {
-      public JBSplitter select(DiffEditor it) {
-        return it.getSplitter();
-      }
-    }).toListSequence();
+    List<JBSplitter> splitters = ListSequence.fromList(getEditors()).select((it) -> it.getSplitter()).toList();
     TwosideContentPanel panel = new TwosideContentPanel(splitters);
     panel.setTitles(getTitles());
     panel.setPainter(createDividerPainter(getOldEditor(), getNewEditor()));
@@ -103,11 +97,7 @@ import jetbrains.mps.vcs.diff.changes.ModelChange;
     if (rebuildChangeSet && changeSet != null) {
       ChangeSetBuilder.rebuildChangeSet(changeSet, DiffSettingsUtil.getTrackMovedNodesDiffOption());
     }
-    ListSequence.fromList(getEditors()).visitAll(new IVisitor<DiffEditor>() {
-      public void visit(DiffEditor it) {
-        it.unhighlightAllChanges();
-      }
-    });
+    ListSequence.fromList(getEditors()).visitAll((it) -> it.unhighlightAllChanges());
 
     if (getNewEditor().getEditedNode() == null) {
       getNewEditor().editRoot(getRootId(), getNewModel());
@@ -125,11 +115,7 @@ import jetbrains.mps.vcs.diff.changes.ModelChange;
     if (changeSet == null) {
       return;
     }
-    ListSequence.fromList(getEditors()).visitAll(new IVisitor<DiffEditor>() {
-      public void visit(DiffEditor it) {
-        it.unhighlightAllChanges();
-      }
-    });
+    ListSequence.fromList(getEditors()).visitAll((it) -> it.unhighlightAllChanges());
     Iterable<ModelChange> changes = getChangesToHighlight(changeSet);
     getOldEditor().highlightChanges(getOldModel(), changes, true, getConflictChecker());
     getNewEditor().highlightChanges(getNewModel(), changes, false, getConflictChecker());

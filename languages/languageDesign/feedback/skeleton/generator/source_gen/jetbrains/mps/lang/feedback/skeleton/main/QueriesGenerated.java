@@ -17,14 +17,11 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.generator.template.MapSrcMacroPostProcContext;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.project.behavior.ModelReference__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.generator.template.WeavingMappingRuleContext;
@@ -88,31 +85,23 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.feedbacks$E$KJ);
   }
   public static void mapSrcMacro_post_1_0(final MapSrcMacroPostProcContext _context) {
-    Iterable<SNode> seq = Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:models"))).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        SModel resolved = ModelReference__BehaviorDescriptor.toModelReference_id2BHFktfnfdc.invoke(it).resolve(((SRepository) _context.getVariable("var:repo")));
-        assert resolved != null;
-        SNode feedbackClass = _context.getOutputNodeByMappingLabel("feedbackAspectClass", resolved);
-        return feedbackClass;
-      }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return it != null;
-      }
-    });
+    Iterable<SNode> seq = Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:models"))).select((it) -> {
+      SModel resolved = ModelReference__BehaviorDescriptor.toModelReference_id2BHFktfnfdc.invoke(it).resolve(((SRepository) _context.getVariable("var:repo")));
+      assert resolved != null;
+      SNode feedbackClass = _context.getOutputNodeByMappingLabel("feedbackAspectClass", resolved);
+      return feedbackClass;
+    }).where((it) -> it != null);
     if (Sequence.fromIterable(seq).isEmpty()) {
       SNodeOperations.deleteNode(SNodeOperations.getNodeAncestor(_context.getOutputNode(), CONCEPTS.IfStatement$Q4, false, false));
     } else {
       final List<SNode> args = SLinkOperations.getChildren(SNodeOperations.cast(_context.getOutputNode(), CONCEPTS.StaticMethodCall$Fg), LINKS.actualArgument$pzdx);
       ListSequence.fromList(args).clear();
-      Sequence.fromIterable(seq).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode feedbackClass) {
-          SNode newExpr = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, "jetbrains.mps.baseLanguage.structure.GenericNewExpression"));
-          SNode classCreator = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, "jetbrains.mps.baseLanguage.structure.DefaultClassCreator"));
-          SLinkOperations.setTarget(classCreator, LINKS.classifier$9NRM, feedbackClass);
-          SLinkOperations.setTarget(newExpr, LINKS.creator$BsHW, classCreator);
-          ListSequence.fromList(args).addElement(newExpr);
-        }
+      Sequence.fromIterable(seq).visitAll((feedbackClass) -> {
+        SNode newExpr = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, "jetbrains.mps.baseLanguage.structure.GenericNewExpression"));
+        SNode classCreator = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, "jetbrains.mps.baseLanguage.structure.DefaultClassCreator"));
+        SLinkOperations.setTarget(classCreator, LINKS.classifier$9NRM, feedbackClass);
+        SLinkOperations.setTarget(newExpr, LINKS.creator$BsHW, classCreator);
+        ListSequence.fromList(args).addElement(newExpr);
       });
     }
   }
@@ -130,11 +119,9 @@ public class QueriesGenerated extends QueryProviderBase {
     // rather we generate in lang.descriptor refs to all ILanguageAspect instances in all of the models in the module,
     // then we use weaves/reductions to use this references in order to restore the ref to the <GeneratedAspectDescriptor>.
     // 
-    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.language$rnIG), LINKS.model$2Sf4)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        SModel resolved = ModelReference__BehaviorDescriptor.toModelReference_id2BHFktfnfdc.invoke(it).resolve(((SRepository) _context.getVariable("var:repo")));
-        return isEmptyString(SPropertyOperations.getString(it, PROPS.stereotype$h2Bb)) && resolved != null;
-      }
+    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.language$rnIG), LINKS.model$2Sf4)).where((it) -> {
+      SModel resolved = ModelReference__BehaviorDescriptor.toModelReference_id2BHFktfnfdc.invoke(it).resolve(((SRepository) _context.getVariable("var:repo")));
+      return isEmptyString(SPropertyOperations.getString(it, PROPS.stereotype$h2Bb)) && resolved != null;
     });
   }
   private final Map<String, CreateRootCondition> crcMethods = new HashMap<String, CreateRootCondition>();

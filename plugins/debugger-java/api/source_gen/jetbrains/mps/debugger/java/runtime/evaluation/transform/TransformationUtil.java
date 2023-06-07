@@ -12,16 +12,13 @@ import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -152,11 +149,7 @@ public class TransformationUtil {
   }
   private static SNode findEvaluateMethod(SNode evaluator) {
     // TODO use this method everywhere
-    return ListSequence.fromList(SNodeOperations.getNodeDescendants(evaluator, CONCEPTS.InstanceMethodDeclaration$39, false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL).equals("evaluate");
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getNodeDescendants(evaluator, CONCEPTS.InstanceMethodDeclaration$39, false, new SAbstractConcept[]{})).findFirst((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).equals("evaluate"));
   }
   public static SNode getBoxedTypeIfNeeded(SNode rawType) {
     if (SNodeOperations.isInstanceOf(rawType, CONCEPTS.DebuggedType$zx)) {
@@ -220,19 +213,11 @@ public class TransformationUtil {
     return SLinkOperations.getTarget(_quotation_createNode_crriw5_a0a0y(), LINKS.descriptor$M2vT);
   }
   public static String getJniSignature(SNode methodDeclaration) {
-    return getJniSignature(ListSequence.fromList(SLinkOperations.getChildren(methodDeclaration, LINKS.parameter$5xBj)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.type$a1UY);
-      }
-    }), SLinkOperations.getTarget(methodDeclaration, LINKS.returnType$5xoi));
+    return getJniSignature(ListSequence.fromList(SLinkOperations.getChildren(methodDeclaration, LINKS.parameter$5xBj)).select((it) -> SLinkOperations.getTarget(it, LINKS.type$a1UY)), SLinkOperations.getTarget(methodDeclaration, LINKS.returnType$5xoi));
   }
   public static String getJniSignature(Iterable<SNode> arguments, SNode returnType) {
     final Wrappers._T<String> signature = new Wrappers._T<String>("(");
-    Sequence.fromIterable(arguments).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode type) {
-        signature.value += TransformationUtil.getJniSignatureFromType(SNodeOperations.cast(type, CONCEPTS.Type$bu));
-      }
-    });
+    Sequence.fromIterable(arguments).visitAll((type) -> signature.value += TransformationUtil.getJniSignatureFromType(SNodeOperations.cast(type, CONCEPTS.Type$bu)));
     signature.value += ")";
     signature.value += getJniSignatureFromType(returnType);
     return signature.value;

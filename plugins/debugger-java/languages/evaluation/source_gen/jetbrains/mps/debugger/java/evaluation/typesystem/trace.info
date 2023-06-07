@@ -214,62 +214,59 @@
     </file>
     <file name="typeof_DownCastToLowLevel_InferenceRule.java">
       <node id="7915630211773500854" at="22,5,23,241" concept="5" />
-      <node id="7915630211773498589" at="26,11,27,157" concept="5" />
-      <node id="7915630211773498604" at="29,15,30,70" concept="5" />
-      <node id="7915630211773498604" at="30,70,31,225" concept="5" />
-      <node id="7915630211773498604" at="31,225,32,336" concept="2" />
-      <node id="7915630211773498589" at="34,18,35,13" concept="0" />
-      <node id="7915630211773498575" at="41,50,42,42" concept="6" />
-      <node id="7915630211773498575" at="44,68,45,102" concept="6" />
-      <node id="7915630211773498575" at="47,30,48,17" concept="6" />
-      <node id="7915630211773498575" at="52,0,53,0" concept="7" trace="expression$qpom" />
-      <node id="7915630211773498575" at="53,0,54,0" concept="7" trace="lowType$CzbW" />
-      <node id="7915630211773498575" at="57,0,58,0" concept="7" trace="DebuggedType$zx" />
-      <node id="7915630211773498575" at="58,0,59,0" concept="7" trace="DownCastToLowLevel$IK" />
+      <node id="7915630211773498589" at="25,9,26,155" concept="5" />
+      <node id="7915630211773498604" at="28,13,29,68" concept="5" />
+      <node id="7915630211773498604" at="29,68,30,223" concept="5" />
+      <node id="7915630211773498604" at="30,223,31,334" concept="2" />
+      <node id="7915630211773498589" at="33,16,34,11" concept="0" />
+      <node id="7915630211773498575" at="39,50,40,42" concept="6" />
+      <node id="7915630211773498575" at="42,68,43,102" concept="6" />
+      <node id="7915630211773498575" at="45,30,46,17" concept="6" />
+      <node id="7915630211773498575" at="50,0,51,0" concept="7" trace="expression$qpom" />
+      <node id="7915630211773498575" at="51,0,52,0" concept="7" trace="lowType$CzbW" />
+      <node id="7915630211773498575" at="55,0,56,0" concept="7" trace="DebuggedType$zx" />
+      <node id="7915630211773498575" at="56,0,57,0" concept="7" trace="DownCastToLowLevel$IK" />
       <node id="7915630211773498575" at="19,0,21,0" concept="1" trace="typeof_DownCastToLowLevel_InferenceRule#()V" />
-      <node id="7915630211773498575" at="41,0,44,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="7915630211773498575" at="44,0,47,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="7915630211773498575" at="47,0,50,0" concept="4" trace="overrides#()Z" />
-      <node id="7915630211773498604" at="28,50,33,15" concept="0" />
-      <node id="7915630211773498589" at="27,157,35,13" concept="3" />
-      <node id="7915630211773498589" at="25,27,36,11" concept="0" />
-      <node id="7915630211773500854" at="25,0,38,0" concept="4" trace="run#()V" />
-      <node id="7915630211773500854" at="23,241,38,139" concept="2" />
-      <node id="7915630211773500854" at="21,131,39,5" concept="0" />
-      <node id="7915630211773498575" at="21,0,41,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <node id="7915630211773498575" at="39,0,42,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="7915630211773498575" at="42,0,45,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="7915630211773498575" at="45,0,48,0" concept="4" trace="overrides#()Z" />
+      <node id="7915630211773498604" at="27,48,32,13" concept="0" />
+      <node id="7915630211773498589" at="26,155,34,11" concept="3" />
+      <node id="7915630211773498589" at="24,49,35,9" concept="0" />
+      <node id="7915630211773500854" at="23,241,36,139" concept="2" />
+      <node id="7915630211773500854" at="21,131,37,5" concept="0" />
+      <node id="7915630211773498575" at="21,0,39,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="7915630211773498575" at="19,52,19,52" />
-      <scope id="7915630211773498575" at="41,50,42,42" />
-      <scope id="7915630211773498575" at="44,68,45,102" />
-      <scope id="7915630211773498575" at="47,30,48,17" />
+      <scope id="7915630211773498575" at="39,50,40,42" />
+      <scope id="7915630211773498575" at="42,68,43,102" />
+      <scope id="7915630211773498575" at="45,30,46,17" />
       <scope id="7915630211773498575" at="19,0,21,0" />
-      <scope id="7915630211773498604" at="29,15,32,336">
+      <scope id="7915630211773498604" at="28,13,31,334">
         <var name="_info_12389875345" id="7915630211773498604" />
         <var name="_nodeToCheck_1029348928467" id="7915630211773498604" />
       </scope>
-      <scope id="7915630211773498575" at="41,0,44,0" />
-      <scope id="7915630211773498575" at="44,0,47,0">
+      <scope id="7915630211773498575" at="39,0,42,0" />
+      <scope id="7915630211773498575" at="42,0,45,0">
         <var name="argument" id="7915630211773498575" />
       </scope>
-      <scope id="7915630211773498575" at="47,0,50,0" />
-      <scope id="7915630211773498592" at="28,50,33,15" />
-      <scope id="7915630211773498589" at="26,11,35,13">
+      <scope id="7915630211773498575" at="45,0,48,0" />
+      <scope id="7915630211773498592" at="27,48,32,13" />
+      <scope id="7915630211773498589" at="25,9,34,11">
         <var name="coercedNode_pc09cd_a0a0" id="7915630211773498589" />
       </scope>
-      <scope id="7915630211773500855" at="25,27,36,11" />
-      <scope id="7915630211773500854" at="25,0,38,0" />
-      <scope id="7915630211773500854" at="22,5,38,139">
+      <scope id="7915630211773500855" at="24,49,35,9" />
+      <scope id="7915630211773500854" at="22,5,36,139">
         <var name="e" id="7915630211773500854" />
       </scope>
-      <scope id="7915630211773498576" at="21,131,39,5" />
-      <scope id="7915630211773498575" at="21,0,41,0">
+      <scope id="7915630211773498576" at="21,131,37,5" />
+      <scope id="7915630211773498575" at="21,0,39,0">
         <var name="downCastToLowLevel" id="7915630211773498575" />
         <var name="status" id="7915630211773498575" />
         <var name="typeCheckingContext" id="7915630211773498575" />
       </scope>
-      <unit id="7915630211773498575" at="51,0,55,0" name="jetbrains.mps.debugger.java.evaluation.typesystem.typeof_DownCastToLowLevel_InferenceRule$LINKS" />
-      <unit id="7915630211773498575" at="56,0,60,0" name="jetbrains.mps.debugger.java.evaluation.typesystem.typeof_DownCastToLowLevel_InferenceRule$CONCEPTS" />
-      <unit id="7915630211773500854" at="24,46,38,7" name="jetbrains.mps.debugger.java.evaluation.typesystem.typeof_DownCastToLowLevel_InferenceRule$1" />
-      <unit id="7915630211773498575" at="18,0,61,0" name="jetbrains.mps.debugger.java.evaluation.typesystem.typeof_DownCastToLowLevel_InferenceRule" />
+      <unit id="7915630211773498575" at="49,0,53,0" name="jetbrains.mps.debugger.java.evaluation.typesystem.typeof_DownCastToLowLevel_InferenceRule$LINKS" />
+      <unit id="7915630211773498575" at="54,0,58,0" name="jetbrains.mps.debugger.java.evaluation.typesystem.typeof_DownCastToLowLevel_InferenceRule$CONCEPTS" />
+      <unit id="7915630211773498575" at="18,0,59,0" name="jetbrains.mps.debugger.java.evaluation.typesystem.typeof_DownCastToLowLevel_InferenceRule" />
     </file>
   </root>
   <root nodeRef="r:1b2caefb-8c76-452e-a59a-bbd2c73d0b03(jetbrains.mps.debugger.java.evaluation.typesystem)/8054553590745290955">

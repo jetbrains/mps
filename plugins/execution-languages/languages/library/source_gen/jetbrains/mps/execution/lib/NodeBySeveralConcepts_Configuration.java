@@ -21,7 +21,6 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.execution.lib.ui.NodeChooser;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.List;
@@ -87,19 +86,17 @@ public final class NodeBySeveralConcepts_Configuration implements IPersistentCon
     this.setNodePointer((nodePtr == null ? null : PersistenceFacade.getInstance().asString(nodePtr)));
   }
   private boolean isValid(final SNode node) {
-    return ListSequence.fromList(myTargets).findFirst(new IWhereFilter<NodesDescriptor>() {
-      public boolean accept(NodesDescriptor it) {
-        SAbstractConcept concept = it.concept();
-        _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> function = it.filter();
-        if (SNodeOperations.isInstanceOf(node, SNodeOperations.asSConcept(concept))) {
-          if (function != null) {
-            return function.invoke(node);
-          } else {
-            return true;
-          }
+    return ListSequence.fromList(myTargets).findFirst((it) -> {
+      SAbstractConcept concept = it.concept();
+      _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> function = it.filter();
+      if (SNodeOperations.isInstanceOf(node, SNodeOperations.asSConcept(concept))) {
+        if (function != null) {
+          return function.invoke(node);
+        } else {
+          return true;
         }
-        return false;
       }
+      return false;
     }) != null;
   }
   @Override

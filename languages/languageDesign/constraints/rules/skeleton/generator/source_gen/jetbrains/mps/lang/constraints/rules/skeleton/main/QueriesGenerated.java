@@ -21,7 +21,6 @@ import jetbrains.mps.generator.template.WeavingAnchorContext;
 import jetbrains.mps.baseLanguage.behavior.StatementList__BehaviorDescriptor;
 import jetbrains.mps.generator.template.TemplateVarContext;
 import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.project.behavior.ModelReference__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import java.util.Map;
@@ -94,11 +93,9 @@ public class QueriesGenerated extends QueryProviderBase {
     // then we use weaves/reductions to use this references in order to restore the ref to the <GeneratedAspectDescriptor>.
     // 
     final SRepository repository = _context.getOriginalInputModel().getRepository();
-    SNode constraintsRef = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.language$rnIG), LINKS.model$2Sf4)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        SModel resolved = ModelReference__BehaviorDescriptor.toModelReference_id2BHFktfnfdc.invoke(it).resolve(repository);
-        return isEmptyString(SPropertyOperations.getString(it, PROPS.stereotype$h2Bb)) && SModuleOperations.isAspect(resolved, "constraints");
-      }
+    SNode constraintsRef = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.language$rnIG), LINKS.model$2Sf4)).findFirst((it) -> {
+      SModel resolved = ModelReference__BehaviorDescriptor.toModelReference_id2BHFktfnfdc.invoke(it).resolve(repository);
+      return isEmptyString(SPropertyOperations.getString(it, PROPS.stereotype$h2Bb)) && SModuleOperations.isAspect(resolved, "constraints");
     });
     if (constraintsRef == null) {
       return null;

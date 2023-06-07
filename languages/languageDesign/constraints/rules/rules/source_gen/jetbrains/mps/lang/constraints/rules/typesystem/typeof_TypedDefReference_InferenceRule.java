@@ -58,11 +58,7 @@ public class typeof_TypedDefReference_InferenceRule extends AbstractInferenceRul
   }
   public IsApplicableStatus isApplicableAndPattern(final SNode argument) {
     if (argument.getConcept().isSubConceptOf(getApplicableConcept())) {
-      return new IsApplicableStatus(new IsApplicableStatus.Probe() {
-        public boolean eval() {
-          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(argument, LINKS.declaration$xU6a), CONCEPTS.NativeDef$Ok);
-        }
-      }, null);
+      return new IsApplicableStatus(() -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(argument, LINKS.declaration$xU6a), CONCEPTS.NativeDef$Ok), null);
     } else {
       return new IsApplicableStatus(false, null);
     }

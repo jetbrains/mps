@@ -10,12 +10,9 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -39,18 +36,12 @@ public class ExecutionModeNodesTestCase extends MigrationScriptBase {
     {
       SearchScope scope_l053oc_a0e = CommandUtil.createScope(m);
       final SearchScope scope_l053oc_a0e_0 = new EditableFilteringScope(scope_l053oc_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_l053oc_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodesTestCase$nd, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode node) {
-          if (!(SPropertyOperations.getBoolean(node, PROPS.needsNoWriteAction$Edij))) {
-            SPropertyOperations.setEnum(node, PROPS.accessMode$uiyo, 0x2451232bcdee06bdL, "command");
-          } else {
-            SPropertyOperations.setEnum(node, PROPS.accessMode$uiyo, 0x2451232bcdee06b9L, "none");
-          }
+      QueryExecutionContext context = () -> scope_l053oc_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodesTestCase$nd, false)).visitAll((node) -> {
+        if (!(SPropertyOperations.getBoolean(node, PROPS.needsNoWriteAction$Edij))) {
+          SPropertyOperations.setEnum(node, PROPS.accessMode$uiyo, 0x2451232bcdee06bdL, "command");
+        } else {
+          SPropertyOperations.setEnum(node, PROPS.accessMode$uiyo, 0x2451232bcdee06b9L, "none");
         }
       });
     }
@@ -60,25 +51,17 @@ public class ExecutionModeNodesTestCase extends MigrationScriptBase {
     {
       SearchScope scope_l053oc_a0f = CommandUtil.createScope(m);
       final SearchScope scope_l053oc_a0f_0 = new EditableFilteringScope(scope_l053oc_a0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_l053oc_a0f_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodesTestCase$nd, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode node) {
-          // Unset is the default value, hence equivalent to not defined. Newly created test cases will have the "command" access mode
-          return SEnumOperations.isMember(SPropertyOperations.getEnum(node, PROPS.accessMode$uiyo), 0x4bf9938bddc2d016L);
-        }
-      }).select(new ISelector<SNode, NotMigratedNode>() {
-        public NotMigratedNode select(SNode it) {
-          return new NotMigratedNode(it) {
-            @Override
-            public String getMessage() {
-              return "accessMode has not been set or migrated from needsNoWriteAction";
-            }
-          };
-        }
+      QueryExecutionContext context = () -> scope_l053oc_a0f_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodesTestCase$nd, false)).where((node) -> {
+        // Unset is the default value, hence equivalent to not defined. Newly created test cases will have the "command" access mode
+        return SEnumOperations.isMember(SPropertyOperations.getEnum(node, PROPS.accessMode$uiyo), 0x4bf9938bddc2d016L);
+      }).select((it) -> {
+        return new NotMigratedNode(it) {
+          @Override
+          public String getMessage() {
+            return "accessMode has not been set or migrated from needsNoWriteAction";
+          }
+        };
       });
     }
   }

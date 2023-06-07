@@ -15,11 +15,8 @@ import jetbrains.mps.project.SModuleOperations;
 import java.util.Collection;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
@@ -75,18 +72,10 @@ public class QueriesGenerated extends QueryProviderBase {
       return false;
     }
     Collection<SModule> visibleModules = new GlobalModuleDependenciesManager(originalModule).getModules(GlobalModuleDependenciesManager.Deptype.COMPILE);
-    if (!(CollectionSequence.fromCollection(visibleModules).select(new ISelector<SModule, SModuleReference>() {
-      public SModuleReference select(SModule it) {
-        return it.getModuleReference();
-      }
-    }).contains(PersistenceFacade.getInstance().createModuleReference("3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)")))) {
+    if (!(CollectionSequence.fromCollection(visibleModules).select((it) -> it.getModuleReference()).contains(PersistenceFacade.getInstance().createModuleReference("3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)")))) {
       return false;
     }
-    return SNodeOperations.getParent(_context.getNode()) == null && !(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.annotation$K49I)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.annotations(Annotations/)", "~GeneratedClass"));
-      }
-    }));
+    return SNodeOperations.getParent(_context.getNode()) == null && !(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.annotation$K49I)).any((it) -> SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.annotations(Annotations/)", "~GeneratedClass"))));
   }
   public static Object propertyMacro_GetValue_0_0(final PropertyMacroContext _context) {
     return "resource_" + _context.getNode().getNodeId().toString();

@@ -27,7 +27,7 @@ public class VariableArity_Test {
     new Thread(MultiProcessor::processStrings);
 
     // Same but with one value
-    ListSequence.fromList(ListSequence.fromList(new ArrayList<String>())).select((String values) -> MultiProcessor.processStrings(values));
+    ListSequence.fromList(ListSequence.fromList(new ArrayList<String>())).select((values) -> MultiProcessor.processStrings(values));
 
     // Same but with more than one value
     Arrays.sort(new String[]{}, MultiProcessor::processStrings);

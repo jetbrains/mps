@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-cqc6v95yd6xlxlp6pcsfrkriyv5phns">
+<product version="3" modelHash="-3q784h3ewc4dzol6oazk8a2on76rd16">
   <files names="ConvertMyIfToIf_Intention.java:IntentionsDescriptor.java:SurroundWithUnless_Intention.java:TurnToIfStatement_Intention.java:UnwrapUnlessBlock_Intention.java" />
 </product>
 

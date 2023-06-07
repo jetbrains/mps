@@ -12,7 +12,6 @@ import java.util.Objects;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -157,11 +156,7 @@ public class ParenthesisUtil {
     }
 
     List<SNode> myParentPath = parentPath(myExpression, completingByRightParen);
-    SNode topExp = ListSequence.fromList(myParentPath).findLast(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.IBinaryLike$eU);
-      }
-    });
+    SNode topExp = ListSequence.fromList(myParentPath).findLast((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.IBinaryLike$eU));
     if (topExp == null) {
       // No IBinaryLike ancestor of myExpression exists
       topExp = myExpression;
@@ -188,11 +183,7 @@ public class ParenthesisUtil {
       // Find the bottom-most common ancestor
       candidateParentPath.value = parentPath(candidateExpression, !(completingByRightParen));
       if (ListSequence.fromList(myParentPath).contains(ListSequence.fromList(candidateParentPath.value).last()) || ListSequence.fromList(candidateParentPath.value).contains(ListSequence.fromList(myParentPath).last())) {
-        firstCommonAncestor = ListSequence.fromList(myParentPath).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return ListSequence.fromList(candidateParentPath.value).contains(it);
-          }
-        });
+        firstCommonAncestor = ListSequence.fromList(myParentPath).findFirst((it) -> ListSequence.fromList(candidateParentPath.value).contains(it));
         assert firstCommonAncestor != null;
         if (!(SNodeOperations.isInstanceOf(firstCommonAncestor, CONCEPTS.IBinaryLike$eU))) {
           continue;
@@ -289,11 +280,7 @@ public class ParenthesisUtil {
       result = ListSequence.fromList(result).reversedList();
     }
 
-    result = ListSequence.fromList(result).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return completingByRightParen && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).get(it) != null) || !(completingByRightParen) && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(it) != null);
-      }
-    }).toListSequence();
+    result = ListSequence.fromList(result).where((it) -> completingByRightParen && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).get(it) != null) || !(completingByRightParen) && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(it) != null)).toList();
 
     return result;
   }

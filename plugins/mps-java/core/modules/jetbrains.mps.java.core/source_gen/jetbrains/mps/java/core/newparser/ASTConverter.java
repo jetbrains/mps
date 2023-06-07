@@ -25,8 +25,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.eclipse.jdt.internal.compiler.ast.FieldDeclaration;
 import org.eclipse.jdt.internal.compiler.ast.AbstractMethodDeclaration;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.List;
 import org.eclipse.jdt.internal.compiler.ast.Initializer;
@@ -64,7 +62,6 @@ import org.eclipse.jdt.internal.compiler.impl.LongConstant;
 import org.eclipse.jdt.internal.compiler.impl.ShortConstant;
 import org.eclipse.jdt.internal.compiler.impl.StringConstant;
 import org.eclipse.jdt.internal.compiler.util.Util;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -254,29 +251,13 @@ public class ASTConverter {
 
     if (SNodeOperations.isInstanceOf(cls, CONCEPTS.Annotation$he)) {
       // ! Annotation methods are stored in a deprecated child list 'methods' (not 'members')
-      Iterable<SNode> annoMethods = ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.member$L_2d)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.AnnotationMethodDeclaration$4O);
-        }
-      }).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SNodeOperations.cast(it, CONCEPTS.AnnotationMethodDeclaration$4O);
-        }
-      });
+      Iterable<SNode> annoMethods = ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.member$L_2d)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.AnnotationMethodDeclaration$4O)).select((it) -> SNodeOperations.cast(it, CONCEPTS.AnnotationMethodDeclaration$4O));
       ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(cls, CONCEPTS.Annotation$he), LINKS.method$_DCK)).addSequence(Sequence.fromIterable(annoMethods));
-      ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.member$L_2d)).removeWhere(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.AnnotationMethodDeclaration$4O);
-        }
-      });
+      ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.member$L_2d)).removeWhere((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.AnnotationMethodDeclaration$4O));
     }
 
     // sort classifier members according to their start positions
-    List<SNode> sortedMembers = ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.member$L_2d)).sort(new ISelector<SNode, Integer>() {
-      public Integer select(SNode it) {
-        return MapSequence.fromMap(memberStartPositions).get(it);
-      }
-    }, true).toListSequence();
+    List<SNode> sortedMembers = ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.member$L_2d)).sort((it) -> MapSequence.fromMap(memberStartPositions).get(it), true).toList();
     ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.member$L_2d)).clear();
     ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.member$L_2d)).addSequence(ListSequence.fromList(sortedMembers));
 
@@ -451,11 +432,7 @@ public class ASTConverter {
 
     // we have to convert type variables with a converter that already knows about type var names
     // because in typevar list there can be forward references
-    Set<String> typeVarNames = SetSequence.fromSetWithValues(new HashSet<String>(), Sequence.fromIterable(Sequence.fromArray(pars)).select(new ISelector<TypeParameter, String>() {
-      public String select(TypeParameter it) {
-        return new String(it.name);
-      }
-    }));
+    Set<String> typeVarNames = SetSequence.fromSetWithValues(new HashSet<String>(), Sequence.fromIterable(Sequence.fromArray(pars)).select((it) -> new String(it.name)));
     ASTConverter typeVarListConverter = this.withTypeVarNames(typeVarNames);
 
     for (TypeParameter par : pars) {
@@ -1041,11 +1018,7 @@ public class ASTConverter {
     protected State(State base, Set<String> typeVarNames) {
       parentState = base;
       myTypeVars = MapSequence.fromMap(new HashMap<String, SNode>());
-      SetSequence.fromSet(typeVarNames).visitAll(new IVisitor<String>() {
-        public void visit(String it) {
-          MapSequence.fromMap(myTypeVars).put(it, null);
-        }
-      });
+      SetSequence.fromSet(typeVarNames).visitAll((it) -> MapSequence.fromMap(myTypeVars).put(it, null));
     }
     public State(State base, Iterable<SNode> typeVars) {
       parentState = base;

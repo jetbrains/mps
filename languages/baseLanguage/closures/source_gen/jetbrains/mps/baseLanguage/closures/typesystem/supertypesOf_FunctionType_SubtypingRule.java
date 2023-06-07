@@ -17,18 +17,19 @@ import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-public class supertypesOf_ClosureLiteralType_SubtypingRule extends SubtypingRule_Runtime implements ISubtypingRule_Runtime {
-  public supertypesOf_ClosureLiteralType_SubtypingRule() {
+public class supertypesOf_FunctionType_SubtypingRule extends SubtypingRule_Runtime implements ISubtypingRule_Runtime {
+  public supertypesOf_FunctionType_SubtypingRule() {
   }
-  public SNode getSubOrSuperType(SNode closureLiteralType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(closureLiteralType, LINKS.runtimeIface$jayx) == null)) {
-      return FunctionType__BehaviorDescriptor.getDeclarationRuntimeType_idhTOKQzf.invoke(closureLiteralType);
+  public SNode getSubOrSuperType(SNode functionType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
+    // This rule used to be applicable to ClosureLiteralType, however regular function types (and especially them) should also inherit from this behavior: they are direct translation of the runtime type used below and, unlike closureLiteralType, cannot represent other types
+    if ((SLinkOperations.getTarget(functionType, LINKS.runtimeIface$jayx) == null)) {
+      return FunctionType__BehaviorDescriptor.getDeclarationRuntimeType_idhTOKQzf.invoke(functionType);
     } else {
-      return ClosureLiteralUtil.fillParams(_quotation_createNode_dhclly_a0a0a0a1(SLinkOperations.getTarget(closureLiteralType, LINKS.runtimeIface$jayx)), closureLiteralType);
+      return ClosureLiteralUtil.fillParams(_quotation_createNode_8hodjs_a0a0a1a1(SLinkOperations.getTarget(functionType, LINKS.runtimeIface$jayx)), functionType);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ClosureLiteralType$AF;
+    return CONCEPTS.FunctionType$9U;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -36,7 +37,7 @@ public class supertypesOf_ClosureLiteralType_SubtypingRule extends SubtypingRule
   public boolean isWeak() {
     return true;
   }
-  private static SNode _quotation_createNode_dhclly_a0a0a0a1(Object parameter_1) {
+  private static SNode _quotation_createNode_8hodjs_a0a0a1a1(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
     quotedNode_2 = nb.getResult();
@@ -49,6 +50,6 @@ public class supertypesOf_ClosureLiteralType_SubtypingRule extends SubtypingRule
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClosureLiteralType$AF = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0xe8770ba07b68051L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteralType");
+    /*package*/ static final SConcept FunctionType$9U = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, "jetbrains.mps.baseLanguage.closures.structure.FunctionType");
   }
 }

@@ -12,8 +12,6 @@ import com.intellij.ui.tabs.impl.JBEditorTabs;
 import javax.swing.SwingUtilities;
 import javax.swing.JComponent;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import com.intellij.ui.tabs.TabInfo;
 
 public class ContextActionsUtil {
@@ -78,32 +76,18 @@ public class ContextActionsUtil {
       return null;
     }
 
-    List<JComponent> selectedTabs = ListSequence.fromList(tabs).select(new ISelector<JBEditorTabs, JComponent>() {
-      public JComponent select(JBEditorTabs it) {
-        return check_7xpnm0_a0a0a0a0a3a8(it.getSelectedInfo());
-      }
-    }).where(new IWhereFilter<JComponent>() {
-      public boolean accept(JComponent it) {
-        return it != null;
-      }
-    }).toListSequence();
+    List<JComponent> selectedTabs = ListSequence.fromList(tabs).select((it) -> check_7xpnm0_a0a0a0a0a3a8(it.getSelectedInfo())).where((it) -> it != null).toList();
     if (ListSequence.fromList(selectedTabs).isEmpty()) {
       return null;
     }
 
-    List<EditorComponent> editorComponents = ListSequence.fromList(selectedTabs).select(new ISelector<JComponent, EditorComponent>() {
-      public EditorComponent select(JComponent it) {
-        return (EditorComponent) findDescendantAWTComponent(it, new Condition<Component>() {
-          public boolean value(Component candidate) {
-            return candidate instanceof EditorComponent;
-          }
-        });
-      }
-    }).where(new IWhereFilter<EditorComponent>() {
-      public boolean accept(EditorComponent it) {
-        return it != null;
-      }
-    }).toListSequence();
+    List<EditorComponent> editorComponents = ListSequence.fromList(selectedTabs).select((it) -> {
+      return (EditorComponent) findDescendantAWTComponent(it, new Condition<Component>() {
+        public boolean value(Component candidate) {
+          return candidate instanceof EditorComponent;
+        }
+      });
+    }).where((it) -> it != null).toList();
     return ListSequence.fromList(editorComponents).first();
   }
   private static JComponent check_7xpnm0_a0a0a0a0a3a8(TabInfo checkedDotOperand) {

@@ -16,8 +16,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.generator.GenerationFacade;
 
 public class BuildAspect_Action extends BaseAction {
@@ -55,16 +53,8 @@ public class BuildAspect_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Wrappers._T<List<SModel>> models = new Wrappers._T<List<SModel>>();
     event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(() -> {
-      List<Language> projectModules = ListSequence.fromList(((List<SModule>) event.getData(MPSCommonDataKeys.MPS_PROJECT).getProjectModules())).ofType(Language.class).toListSequence();
-      models.value = ListSequence.fromList(projectModules).translate(new ITranslator2<Language, SModel>() {
-        public Iterable<SModel> translate(Language it) {
-          return BuildAspect_Action.this.aspect.getAspectModels(it);
-        }
-      }).where(new IWhereFilter<SModel>() {
-        public boolean accept(SModel it) {
-          return GenerationFacade.canGenerate(it);
-        }
-      }).toListSequence();
+      List<Language> projectModules = ListSequence.fromList(((List<SModule>) event.getData(MPSCommonDataKeys.MPS_PROJECT).getProjectModules())).ofType(Language.class).toList();
+      models.value = ListSequence.fromList(projectModules).translate((it) -> BuildAspect_Action.this.aspect.getAspectModels(it)).where((it) -> GenerationFacade.canGenerate(it)).toList();
     });
     new MakeActionImpl(new MakeActionParameters(event.getData(MPSCommonDataKeys.MPS_PROJECT)).models(models.value).cleanMake(true)).executeAction();
   }

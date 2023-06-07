@@ -11,7 +11,6 @@ import jetbrains.mps.project.MPSProject;
 import java.util.List;
 import jetbrains.mps.refactoring.participant.RefactoringParticipant;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import com.intellij.openapi.progress.ProgressManager;
@@ -58,19 +57,11 @@ public class DefaultRefactoringUI implements RefactoringUI {
     if (ListSequence.fromList(options).isEmpty()) {
       return options;
     }
-    List<Integer> selectedOptionIndices = SelectOptionsDialog.selectOptions(myProject, ListSequence.fromList(options).select(new ISelector<RefactoringParticipant.Option, String>() {
-      public String select(RefactoringParticipant.Option it) {
-        return it.getDescription();
-      }
-    }).toListSequence(), ((myRefactoringName == null ? "" : myRefactoringName + ": ")) + "Select Participants", "Select how to update usages:");
+    List<Integer> selectedOptionIndices = SelectOptionsDialog.selectOptions(myProject, ListSequence.fromList(options).select((it) -> it.getDescription()).toList(), ((myRefactoringName == null ? "" : myRefactoringName + ": ")) + "Select Participants", "Select how to update usages:");
     if (selectedOptionIndices == null) {
       return null;
     }
-    return ListSequence.fromList(selectedOptionIndices).select(new ISelector<Integer, RefactoringParticipant.Option>() {
-      public RefactoringParticipant.Option select(Integer i) {
-        return ListSequence.fromList(options).getElement(i);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(selectedOptionIndices).select((i) -> ListSequence.fromList(options).getElement(i)).toList();
   }
   public void runSearch(final _FunctionTypes._void_P1_E0<? super ProgressMonitor> task) {
     ProgressManager.getInstance().run(new Task.Modal(myProject, "Refactoring", true) {

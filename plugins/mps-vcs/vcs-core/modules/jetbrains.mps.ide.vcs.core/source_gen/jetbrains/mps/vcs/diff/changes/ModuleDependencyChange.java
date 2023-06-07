@@ -7,8 +7,8 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.vcs.diff.ChangeSet;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.extapi.model.SModelBase;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Objects;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/2241895627641426680", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
@@ -44,15 +44,7 @@ public class ModuleDependencyChange extends DependencyChange {
     return myType;
   }
   public enum DependencyType {
-    USED_DEVKIT("Used Devkit", new _FunctionTypes._void_P2_E0<SModel, SModuleReference>() {
-      public void invoke(SModel model, SModuleReference module) {
-        ((SModelBase) model).addDevKit(module);
-      }
-    }, new _FunctionTypes._void_P2_E0<SModel, SModuleReference>() {
-      public void invoke(SModel model, SModuleReference module) {
-        ((SModelBase) model).deleteDevKit(module);
-      }
-    });
+    USED_DEVKIT("Used Devkit", (SModel model, SModuleReference module) -> ((SModelBase) model).addDevKit(module), (SModel model, SModuleReference module) -> ((SModelBase) model).deleteDevKit(module));
 
     private String myName;
     private _FunctionTypes._void_P2_E0<? super SModel, ? super SModuleReference> myAddTask;

@@ -14,7 +14,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -36,11 +35,7 @@ public class check_LightQuotationNode_multipleInitializers_NonTypesystemRule ext
       return;
     }
     for (final SNode link : ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getAggregationLinkDeclarations_idhEwILLp.invoke(SLinkOperations.getTarget(node, LINKS.concept$xoA0)))) {
-      List<SNode> linkInitializers = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.values$JgAV)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.NodeBuilderInitLink$XR) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.NodeBuilderInitLink$XR), LINKS.link$VNT5) == link;
-        }
-      }).toListSequence();
+      List<SNode> linkInitializers = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.values$JgAV)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.NodeBuilderInitLink$XR) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.NodeBuilderInitLink$XR), LINKS.link$VNT5) == link).toList();
       if (ListSequence.fromList(linkInitializers).count() > 1) {
         for (SNode initializer : ListSequence.fromList(linkInitializers)) {
           String string = "multiple initializers for single cardinality role `" + SPropertyOperations.getString(link, PROPS.role$Nsjf) + "'";
@@ -62,11 +57,7 @@ public class check_LightQuotationNode_multipleInitializers_NonTypesystemRule ext
       }
     }
     for (final SNode referenceLink : ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(SLinkOperations.getTarget(node, LINKS.concept$xoA0)))) {
-      List<SNode> linkInitializers = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.values$JgAV)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.NodeBuilderInitLink$XR) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.NodeBuilderInitLink$XR), LINKS.link$VNT5) == referenceLink;
-        }
-      }).toListSequence();
+      List<SNode> linkInitializers = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.values$JgAV)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.NodeBuilderInitLink$XR) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.NodeBuilderInitLink$XR), LINKS.link$VNT5) == referenceLink).toList();
       if (ListSequence.fromList(linkInitializers).count() > 1) {
         for (SNode initializer : ListSequence.fromList(linkInitializers)) {
           String message = "multiple reference initializers for role `" + SPropertyOperations.getString(referenceLink, PROPS.role$Nsjf) + "'";
@@ -88,11 +79,7 @@ public class check_LightQuotationNode_multipleInitializers_NonTypesystemRule ext
       }
     }
     for (final SNode property : ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(SLinkOperations.getTarget(node, LINKS.concept$xoA0)))) {
-      List<SNode> propInitializers = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.values$JgAV)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.NodeBuilderInitProperty$xv) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.NodeBuilderInitProperty$xv), LINKS.property$Y_u4) == property;
-        }
-      }).toListSequence();
+      List<SNode> propInitializers = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.values$JgAV)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.NodeBuilderInitProperty$xv) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.NodeBuilderInitProperty$xv), LINKS.property$Y_u4) == property).toList();
       if (ListSequence.fromList(propInitializers).count() > 1) {
         for (SNode initializer : ListSequence.fromList(propInitializers)) {
           String message = "multiple property initializers for role `" + SPropertyOperations.getString(property, PROPS.name$MnvL) + "'";

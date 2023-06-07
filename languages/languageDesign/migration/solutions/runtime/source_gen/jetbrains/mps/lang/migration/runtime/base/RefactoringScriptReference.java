@@ -15,15 +15,12 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.refactoring.participant.RefactoringParticipant;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.structure.ExtensionPoint;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import java.util.Objects;
@@ -106,37 +103,19 @@ public class RefactoringScriptReference implements BaseScriptReference<Refactori
         Language depModule = (Language) module;
         final int current = sr.getFromVersion();
         SModel migrationModel = SModuleOperations.getAspect(depModule, "migration");
-        final SNode log = ListSequence.fromList(SModelOperations.roots(migrationModel, CONCEPTS.RefactoringLog$xp)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SPropertyOperations.getInteger(it, PROPS.fromVersion$clQh) == current;
-          }
-        }).first();
+        final SNode log = ListSequence.fromList(SModelOperations.roots(migrationModel, CONCEPTS.RefactoringLog$xp)).where((it) -> SPropertyOperations.getInteger(it, PROPS.fromVersion$clQh) == current).first();
         if (log == null) {
           if (LOG.isWarningLevel()) {
             LOG.warning("Could not load refactoring log for module " + depModule + ", version " + current + ".");
           }
           return;
         }
-        Iterable<RefactoringParticipant.PersistentRefactoringParticipant<?, ?, ?, ?>> participants = Sequence.fromIterable(new ExtensionPoint<Iterable<RefactoringParticipant.PersistentRefactoringParticipant<?, ?, ?, ?>>>("jetbrains.mps.refactoring.participant.PersistentRefactoringParticipantsEP").getObjects()).translate(new ITranslator2<Iterable<RefactoringParticipant.PersistentRefactoringParticipant<?, ?, ?, ?>>, RefactoringParticipant.PersistentRefactoringParticipant<?, ?, ?, ?>>() {
-          public Iterable<RefactoringParticipant.PersistentRefactoringParticipant<?, ?, ?, ?>> translate(Iterable<RefactoringParticipant.PersistentRefactoringParticipant<?, ?, ?, ?>> it) {
-            return it;
-          }
-        });
-        List<RefactoringScriptReference> executeAfter = Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(log, LINKS.executeAfter$clBg), LINKS.refactoring$cu5K)).select(new ISelector<SNode, RefactoringScriptReference>() {
-          public RefactoringScriptReference select(SNode it) {
-            return ((RefactoringScriptReference) (RefactoringScriptReference) BHReflection.invoke0(it, CONCEPTS.RefactoringLog$xp, SMethodIdV2.create("getDescriptor", 5168866961623837055L, 0x7a1d72ee255558fL)));
-          }
-        }).toListSequence();
-        List<RefactoringPartImpl> parts = Sequence.fromIterable(participants).select(new ISelector<RefactoringParticipant.PersistentRefactoringParticipant<?, ?, ?, ?>, RefactoringPartImpl>() {
-          public RefactoringPartImpl select(final RefactoringParticipant.PersistentRefactoringParticipant<?, ?, ?, ?> participant) {
-            List<SNode> participantParts = ListSequence.fromList(SLinkOperations.getChildren(log, LINKS.part$cm5i)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return Objects.equals(SPropertyOperations.getString(it, PROPS.participant$1LmE), participant.getId());
-              }
-            }).toListSequence();
-            return new RefactoringPartImpl(SLinkOperations.getTarget(log, LINKS.options$KIbw), participantParts, participant);
-          }
-        }).toListSequence();
+        Iterable<RefactoringParticipant.PersistentRefactoringParticipant<?, ?, ?, ?>> participants = Sequence.fromIterable(new ExtensionPoint<Iterable<RefactoringParticipant.PersistentRefactoringParticipant<?, ?, ?, ?>>>("jetbrains.mps.refactoring.participant.PersistentRefactoringParticipantsEP").getObjects()).translate((it) -> it);
+        List<RefactoringScriptReference> executeAfter = Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(log, LINKS.executeAfter$clBg), LINKS.refactoring$cu5K)).select((it) -> ((RefactoringScriptReference) (RefactoringScriptReference) BHReflection.invoke0(it, CONCEPTS.RefactoringLog$xp, SMethodIdV2.create("getDescriptor", 5168866961623837055L, 0x7a1d72ee255558fL)))).toList();
+        List<RefactoringPartImpl> parts = Sequence.fromIterable(participants).select((final RefactoringParticipant.PersistentRefactoringParticipant<?, ?, ?, ?> participant) -> {
+          List<SNode> participantParts = ListSequence.fromList(SLinkOperations.getChildren(log, LINKS.part$cm5i)).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.participant$1LmE), participant.getId())).toList();
+          return new RefactoringPartImpl(SLinkOperations.getTarget(log, LINKS.options$KIbw), participantParts, participant);
+        }).toList();
         implementation.value = new BaseRefactoringScript(SPropertyOperations.getString(log, PROPS.name$MnvL), ((RefactoringScriptReference) BHReflection.invoke0(log, CONCEPTS.RefactoringLog$xp, SMethodIdV2.create("getDescriptor", 5168866961623837055L, 0x7a1d72ee255558fL))), executeAfter, parts);
       }
     });

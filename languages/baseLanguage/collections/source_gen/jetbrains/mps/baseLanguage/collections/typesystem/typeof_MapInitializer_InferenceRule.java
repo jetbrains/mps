@@ -21,39 +21,37 @@ public class typeof_MapInitializer_InferenceRule extends AbstractInferenceRule_R
   public void applyRule(final SNode mapInitializer, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
       final SNode shallowMapType = typeCheckingContext.typeOf(SNodeOperations.getParent(mapInitializer), "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7830826264643290166", true);
-      typeCheckingContext.whenConcrete(shallowMapType, new Runnable() {
-        public void run() {
-          // Only works if mapType is inferred to parent (in a shallow way so we do not make key and value type concrete)
-          {
-            final SNode mapType = typeCheckingContext.getExpandedNode(shallowMapType);
-            if (SNodeOperations.isInstanceOf(mapType, CONCEPTS.MapType$h0)) {
-              final SNode keyType_typevar_7830826264643295368 = typeCheckingContext.createNewRuntimeTypesVariable();
-              final SNode valueType_typevar_7830826264643295454 = typeCheckingContext.createNewRuntimeTypesVariable();
+      typeCheckingContext.whenConcrete(shallowMapType, () -> {
+        // Only works if mapType is inferred to parent (in a shallow way so we do not make key and value type concrete)
+        {
+          final SNode mapType = typeCheckingContext.getExpandedNode(shallowMapType);
+          if (SNodeOperations.isInstanceOf(mapType, CONCEPTS.MapType$h0)) {
+            final SNode keyType_typevar_7830826264643295368 = typeCheckingContext.createNewRuntimeTypesVariable();
+            final SNode valueType_typevar_7830826264643295454 = typeCheckingContext.createNewRuntimeTypesVariable();
 
-              // Base assumptions
+            // Base assumptions
+            {
+              SNode _nodeToCheck_1029348928467 = mapInitializer;
+              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7830826264672450777", 0, null);
+              typeCheckingContext.createEquation((SNode) typeCheckingContext.getRepresentative(keyType_typevar_7830826264643295368), (SNode) SLinkOperations.getTarget(mapType, LINKS.keyType$cmqk), _info_12389875345);
+            }
+            {
+              SNode _nodeToCheck_1029348928467 = mapInitializer;
+              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7830826264672450929", 0, null);
+              typeCheckingContext.createEquation((SNode) typeCheckingContext.getRepresentative(valueType_typevar_7830826264643295454), (SNode) SLinkOperations.getTarget(mapType, LINKS.valueType$hLQn), _info_12389875345);
+            }
+
+            // Added parameters
+            for (SNode entry : SLinkOperations.getChildren(mapInitializer, LINKS.entries$Tv6F)) {
               {
-                SNode _nodeToCheck_1029348928467 = mapInitializer;
-                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7830826264672450777", 0, null);
-                typeCheckingContext.createEquation((SNode) typeCheckingContext.getRepresentative(keyType_typevar_7830826264643295368), (SNode) SLinkOperations.getTarget(mapType, LINKS.keyType$cmqk), _info_12389875345);
+                SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(entry, LINKS.key$LlfT);
+                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "3116855336947089772", 0, null);
+                typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "3116855336947089775", true), (SNode) typeCheckingContext.getRepresentative(keyType_typevar_7830826264643295368), false, true, _info_12389875345);
               }
               {
-                SNode _nodeToCheck_1029348928467 = mapInitializer;
-                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7830826264672450929", 0, null);
-                typeCheckingContext.createEquation((SNode) typeCheckingContext.getRepresentative(valueType_typevar_7830826264643295454), (SNode) SLinkOperations.getTarget(mapType, LINKS.valueType$hLQn), _info_12389875345);
-              }
-
-              // Added parameters
-              for (SNode entry : SLinkOperations.getChildren(mapInitializer, LINKS.entries$Tv6F)) {
-                {
-                  SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(entry, LINKS.key$LlfT);
-                  EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "3116855336947089772", 0, null);
-                  typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "3116855336947089775", true), (SNode) typeCheckingContext.getRepresentative(keyType_typevar_7830826264643295368), false, true, _info_12389875345);
-                }
-                {
-                  SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(entry, LINKS.value$JmKo);
-                  EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7830826264643335329", 0, null);
-                  typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7830826264643335333", true), (SNode) typeCheckingContext.getRepresentative(valueType_typevar_7830826264643295454), false, true, _info_12389875345);
-                }
+                SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(entry, LINKS.value$JmKo);
+                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7830826264643335329", 0, null);
+                typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7830826264643335333", true), (SNode) typeCheckingContext.getRepresentative(valueType_typevar_7830826264643295454), false, true, _info_12389875345);
               }
             }
           }

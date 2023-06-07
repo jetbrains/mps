@@ -69,7 +69,7 @@ public class NamedTupleLiteral_Contribution extends SubstituteMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(final SubstituteMenuContext _context) {
-      return ListSequence.fromList(SModelOperations.nodesIncludingImported(_context.getModel(), CONCEPTS.NamedTupleDeclaration$aM)).where((SNode ntd) -> VisibilityUtil.isVisible(_context.getParentNode(), ntd)).toListSequence();
+      return ListSequence.fromList(SModelOperations.nodesIncludingImported(_context.getModel(), CONCEPTS.NamedTupleDeclaration$aM)).where((ntd) -> VisibilityUtil.isVisible(_context.getParentNode(), ntd)).toList();
     }
     private class SMP_Action_4kfnt3_a0 extends SingleItemSubstituteMenuPart {
       private final SNode myParameterObject;
@@ -116,7 +116,7 @@ public class NamedTupleLiteral_Contribution extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           _FunctionTypes._return_P1_E0<? extends SNode, ? super SNode> toRef = (SNode cmp) -> _quotation_createNode_4kfnt3_a0a0a0a0a0(cmp);
-          return _quotation_createNode_4kfnt3_a1a0a0(ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(myParameterObject)).reversedList().translate((SNode ntd) -> SLinkOperations.getChildren(ntd, LINKS.component$wCHx)).select(toRef).toListSequence(), myParameterObject);
+          return _quotation_createNode_4kfnt3_a1a0a0(ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(myParameterObject)).reversedList().translate((ntd) -> SLinkOperations.getChildren(ntd, LINKS.component$wCHx)).select(toRef).toList(), myParameterObject);
         }
 
         @Override

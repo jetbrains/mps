@@ -54,7 +54,6 @@ import org.eclipse.jdt.internal.compiler.ast.QualifiedAllocationExpression;
 import org.eclipse.jdt.internal.compiler.impl.Constant;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import org.eclipse.jdt.internal.compiler.ast.QualifiedTypeReference;
 import org.eclipse.jdt.internal.compiler.ast.SingleTypeReference;
@@ -712,11 +711,7 @@ public class ASTConverterWithExpressions extends ASTConverter {
     }
 
     SPropertyOperations.assign(unkMRef, PROPS.methodName$oxdi, new String(x.selector));
-    ListSequence.fromList(SLinkOperations.getChildren(unkMRef, LINKS.typeParameters$5Tel)).addSequence(Sequence.fromIterable(Sequence.fromArray(x.typeArguments)).select(new ISelector<TypeReference, SNode>() {
-      public SNode select(TypeReference it) {
-        return convertTypeReference(it);
-      }
-    }));
+    ListSequence.fromList(SLinkOperations.getChildren(unkMRef, LINKS.typeParameters$5Tel)).addSequence(Sequence.fromIterable(Sequence.fromArray(x.typeArguments)).select((it) -> convertTypeReference(it)));
 
     SetSequence.fromSet(getAdditionalLanguages()).addElement(MetaAdapterFactory.getLanguage(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, "jetbrains.mps.baseLanguage.methodReferences"));
 

@@ -30,7 +30,6 @@ import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import jetbrains.mps.lang.scopes.runtime.ScopeUtils;
 import jetbrains.mps.kotlin.signatures.PropertySignature;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.kotlin.api.members.TypeExpander;
 import jetbrains.mps.kotlin.scopes.InheritorHelper;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -76,13 +75,13 @@ public final class FunctionDeclaration__BehaviorDescriptor extends BaseBHDescrip
     // Receivers are included through receiver scope, instance method through instance scope (popSignatures)
     if (((SLinkOperations.getTarget(__thisNode__, LINKS.receiverType$7yLT) != null) || (SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IClassLike$go, false, false) == null)) && TopLevelVisibility.visibleTo(__thisNode__, contextNode)) {
       // Top-level: attributes are not relevant
-      SignatureBuilder.create(__thisNode__, FunctionSignature.class).withExtensionReceiverType(SLinkOperations.getTarget(__thisNode__, LINKS.receiverType$7yLT)).withSignature((SNode _node) -> new FunctionSignature(KotlinFunctionDeclaration.of(__thisNode__), collector)).declareTo(collector);
+      SignatureBuilder.create(__thisNode__, FunctionSignature.class).withExtensionReceiverType(SLinkOperations.getTarget(__thisNode__, LINKS.receiverType$7yLT)).withSignature((_node) -> new FunctionSignature(KotlinFunctionDeclaration.of(__thisNode__), collector)).declareTo(collector);
 
     }
   }
   /*package*/ static void populateSignatures_id18X2O0FJBER(@NotNull final SNode __thisNode__, final SignatureCollector collector) {
     // Provide the receiver type to test against
-    SignatureBuilder<FunctionSignature, SNode> builder = SignatureBuilder.create(__thisNode__, FunctionSignature.class).withExtensionReceiverType(SLinkOperations.getTarget(__thisNode__, LINKS.receiverType$7yLT)).withSignature((SNode _node) -> new FunctionSignature(KotlinFunctionDeclaration.of(__thisNode__), collector));
+    SignatureBuilder<FunctionSignature, SNode> builder = SignatureBuilder.create(__thisNode__, FunctionSignature.class).withExtensionReceiverType(SLinkOperations.getTarget(__thisNode__, LINKS.receiverType$7yLT)).withSignature((_node) -> new FunctionSignature(KotlinFunctionDeclaration.of(__thisNode__), collector));
 
     ClassMemberSignatures.addClassMemberAttributes(builder, __thisNode__, __thisNode__, SPropertyOperations.getBoolean(__thisNode__, PROPS.isOverride$Gfqk)).declareTo(collector);
   }
@@ -118,11 +117,7 @@ public final class FunctionDeclaration__BehaviorDescriptor extends BaseBHDescrip
     PropertySignature.declareAllTo(IFunctionDeclaration__BehaviorDescriptor.getParameters_id6f3juM$_Kx4.invoke(__thisNode__), false, null, collector);
   }
   /*package*/ static Iterable<SAbstractConcept> getModifiers_id4q11fqJUzWN(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.modifiers$XKtM)).select(new ISelector<SNode, SConcept>() {
-      public SConcept select(SNode it) {
-        return SNodeOperations.getConcept(it);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.modifiers$XKtM)).select((it) -> SNodeOperations.getConcept(it));
   }
   @NotNull
   /*package*/ static SAbstractConcept getDefaultInheritance_id6jE_6dusz0P(@NotNull SNode __thisNode__) {

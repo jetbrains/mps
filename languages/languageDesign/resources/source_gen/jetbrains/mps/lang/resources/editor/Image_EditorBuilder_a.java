@@ -106,11 +106,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private EditorCell_Image fromImageCellProvider0() {
-    String imagePath = (new _FunctionTypes._return_P0_E0<String>() {
-      public String invoke() {
-        return SPropertyOperations.getString(myNode, PROPS.file$He6o);
-      }
-    }).invoke();
+    String imagePath = (((_FunctionTypes._return_P0_E0<String>) () -> SPropertyOperations.getString(myNode, PROPS.file$He6o))).invoke();
     return EditorCell_Image.createImageCell(getEditorContext(), myNode, imagePath);
   }
   private EditorCell createConstant_1() {

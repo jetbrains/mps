@@ -10,12 +10,19 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class DiscardSmartClosureParameterDeclaration extends MigrationScriptBase {
   private final String description = "DiscardSmartClosureParameterDeclaration";
@@ -34,18 +41,17 @@ public class DiscardSmartClosureParameterDeclaration extends MigrationScriptBase
     {
       SearchScope scope_1t5xc0_a0e = CommandUtil.createScope(m);
       final SearchScope scope_1t5xc0_a0e_0 = new EditableFilteringScope(scope_1t5xc0_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_1t5xc0_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SmartClosureParameterDeclaration$bO, false)).visitAll((it) -> {
-        SNode newParam = SNodeOperations.replaceWithNewChild(it, CONCEPTS.InferredClosureParameterDeclaration$DV);
+      QueryExecutionContext context = () -> scope_1t5xc0_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SmartClosureParameterDeclaration$bO, false)).visitAll((final SNode it) -> {
+        final SNode newParam = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x2308899d335ce07aL, "jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration"));
+        SPropertyOperations.assign(newParam, PROPS.name$MnvL, SPropertyOperations.getString(it, PROPS.name$MnvL));
+        SPropertyOperations.assign(newParam, PROPS.isFinal$gvTP, SPropertyOperations.getBoolean(it, PROPS.isFinal$gvTP));
 
-        // Both are UnboundClosureParameterDeclaration, have no specific property/children, and are referred from the same concepts -> we can keep the id of the old parameter on the new one
-        if (newParam instanceof jetbrains.mps.smodel.SNode) {
-          ((jetbrains.mps.smodel.SNode) newParam).setId(it.getNodeId());
-        }
+        // Update references
+        ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.as(SNodeOperations.getParent(it), CONCEPTS.ClosureLiteral$rp), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where((desc) -> SLinkOperations.getTarget(desc, LINKS.variableDeclaration$N1XG) == it).visitAll((desc) -> SLinkOperations.setTarget(desc, LINKS.variableDeclaration$N1XG, newParam));
+
+        // Replace
+        SNodeOperations.replaceWithAnother(it, newParam);
       });
     }
   }
@@ -54,11 +60,7 @@ public class DiscardSmartClosureParameterDeclaration extends MigrationScriptBase
     {
       SearchScope scope_1t5xc0_a0f = CommandUtil.createScope(m);
       final SearchScope scope_1t5xc0_a0f_0 = new EditableFilteringScope(scope_1t5xc0_a0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_1t5xc0_a0f_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_1t5xc0_a0f_0;
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SmartClosureParameterDeclaration$bO, false)).select((it) -> {
         return new NotMigratedNode(it) {
           @Override
@@ -75,6 +77,16 @@ public class DiscardSmartClosureParameterDeclaration extends MigrationScriptBase
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept SmartClosureParameterDeclaration$bO = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x118374464e4L, "jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration");
-    /*package*/ static final SConcept InferredClosureParameterDeclaration$DV = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x2308899d335ce07aL, "jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration");
+    /*package*/ static final SConcept ClosureLiteral$rp = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral");
+    /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isFinal$gvTP = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 }

@@ -17,7 +17,6 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Objects;
 import jetbrains.mps.execution.common.behavior.IGeneratedToClass__BehaviorDescriptor;
@@ -40,11 +39,7 @@ public final class RunConfiguration__BehaviorDescriptor extends BaseBHDescriptor
 
   @Nullable
   /*package*/ static SNode getExecutor_id3gs394eDyIj(@NotNull final SNode __thisNode__) {
-    return ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(__thisNode__), CONCEPTS.AbstractRunConfigurationExecutor$Fp)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.configuration$CM7P) == __thisNode__;
-      }
-    });
+    return ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(__thisNode__), CONCEPTS.AbstractRunConfigurationExecutor$Fp)).findFirst((it) -> SLinkOperations.getTarget(it, LINKS.configuration$CM7P) == __thisNode__);
   }
   /*package*/ static boolean isForeign_id3wpI_WC06mf(@NotNull SNode __thisNode__) {
     if ((SLinkOperations.getTarget(__thisNode__, LINKS.configurationKind$$GNc) == null)) {

@@ -21,8 +21,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -76,15 +74,7 @@ public final class LocalVarToField_Intention extends AbstractIntentionDescriptor
       } else {
         Classifier__BehaviorDescriptor.addMember_id32Td0IabBk_.invoke(clz, field, ListSequence.fromListAndArray(new ArrayList<SAbstractConcept>(), CONCEPTS.ConstructorDeclaration$yG, CONCEPTS.BaseMethodDeclaration$kD));
       }
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getParent(node), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == lvd;
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SLinkOperations.setTarget(it, LINKS.variableDeclaration$N1XG, field);
-        }
-      });
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getParent(node), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where((it) -> SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == lvd).visitAll((it) -> SLinkOperations.setTarget(it, LINKS.variableDeclaration$N1XG, field));
       if ((SLinkOperations.getTarget(lvd, LINKS.initializer$2twD) != null)) {
         SNode stmt = SNodeFactoryOperations.createNewNode(SNodeOperations.getModel(clz), CONCEPTS.ExpressionStatement$O8, null);
         SNode assignmentExpression = SNodeFactoryOperations.createNewNode(SNodeOperations.getModel(clz), CONCEPTS.AssignmentExpression$SE, null);

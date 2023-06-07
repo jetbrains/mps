@@ -10,9 +10,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Set;
@@ -48,7 +46,7 @@ public class ResolveUtil {
     if (concreteMethodClassifierType == null) {
       return result;
     }
-    List<SNode> typeParameters = ListSequence.fromList(SLinkOperations.getChildren(concreteMethodClassifierType, LINKS.parameter$oqG$)).toListSequence();
+    List<SNode> typeParameters = ListSequence.fromList(SLinkOperations.getChildren(concreteMethodClassifierType, LINKS.parameter$oqG$)).toList();
     for (SNode paramType : ListSequence.fromListWithValues(new ArrayList<SNode>(), result)) {
       for (SNode typeVar : SNodeOperations.getNodeDescendants(paramType, CONCEPTS.TypeVariableReference$WL, true, new SAbstractConcept[]{})) {
         SNode variableDeclaration = SLinkOperations.getTarget(typeVar, LINKS.typeVariableDeclaration$Lz1I);
@@ -69,7 +67,7 @@ public class ResolveUtil {
   public static SNode getConcreteClassifierType(SNode typeWithVars, SNode classifierSubtype) {
     SNode result = SNodeOperations.copyNode(typeWithVars);
     List<SNode> varRefs = SNodeOperations.getNodeDescendants(result, CONCEPTS.TypeVariableReference$WL, false, new SAbstractConcept[]{});
-    List<SNode> params = ListSequence.fromList(SLinkOperations.getChildren(classifierSubtype, LINKS.parameter$oqG$)).toListSequence();
+    List<SNode> params = ListSequence.fromList(SLinkOperations.getChildren(classifierSubtype, LINKS.parameter$oqG$)).toList();
     for (SNode varRef : varRefs) {
       int index = SNodeOperations.getIndexInParent(SLinkOperations.getTarget(varRef, LINKS.typeVariableDeclaration$Lz1I));
       if (index < ListSequence.fromList(params).count()) {
@@ -115,15 +113,7 @@ public class ResolveUtil {
     SNode result = SNodeOperations.copyNode(method);
 
     ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.modifiers$F5MM)).clear();
-    ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.annotation$K49I)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.annotation$12Ek) == null) && Objects.equals((SLinkOperations.getResolveInfo(SNodeOperations.getReference(it, LINKS.annotation$12Ek))), "HotSpotIntrinsicCandidate");
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SNodeOperations.deleteNode(it);
-      }
-    });
+    ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.annotation$K49I)).where((it) -> (SLinkOperations.getTarget(it, LINKS.annotation$12Ek) == null) && Objects.equals((SLinkOperations.getResolveInfo(SNodeOperations.getReference(it, LINKS.annotation$12Ek))), "HotSpotIntrinsicCandidate")).visitAll((it) -> SNodeOperations.deleteNode(it));
 
     List<SNode> initialClassifierTypes = ListSequence.fromList(new ArrayList<SNode>());
     if (SNodeOperations.isInstanceOf(enclosingClassifier, CONCEPTS.ClassConcept$bK)) {

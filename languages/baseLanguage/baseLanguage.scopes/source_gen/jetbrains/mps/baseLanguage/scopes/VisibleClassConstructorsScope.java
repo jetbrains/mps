@@ -10,8 +10,6 @@ import jetbrains.mps.scope.EmptyScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.List;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
@@ -42,15 +40,7 @@ public class VisibleClassConstructorsScope extends Scope {
   }
   @Override
   public Iterable<SNode> getAvailableElements(@Nullable String prefix) {
-    return Sequence.fromIterable(classifiers.getAvailableElements(prefix)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode classifier) {
-        return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getChildren(classifier), CONCEPTS.ConstructorDeclaration$yG)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return VisibilityUtil.isVisible(contextNode, it);
-          }
-        });
-      }
-    });
+    return Sequence.fromIterable(classifiers.getAvailableElements(prefix)).translate((classifier) -> Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getChildren(classifier), CONCEPTS.ConstructorDeclaration$yG)).where((it) -> VisibilityUtil.isVisible(contextNode, it)));
   }
   @Override
   public boolean contains(SNode node) {
@@ -71,7 +61,7 @@ public class VisibleClassConstructorsScope extends Scope {
     }
 
     // resolve only by name
-    List<SNode> constructors = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$bK))).toListSequence();
+    List<SNode> constructors = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$bK))).toList();
     if (ListSequence.fromList(constructors).count() == 1) {
       return ListSequence.fromList(constructors).first();
     }

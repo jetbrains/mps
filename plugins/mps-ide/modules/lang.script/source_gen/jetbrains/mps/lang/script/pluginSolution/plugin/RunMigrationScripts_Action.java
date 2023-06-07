@@ -18,8 +18,6 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.awt.Component;
@@ -88,19 +86,7 @@ public class RunMigrationScripts_Action extends BaseAction {
       }
 
       ScriptsMenuBuilder menuBuilder = new ScriptsMenuBuilder(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), RunMigrationScripts_Action.this.global);
-      allScripts.value = ListSequence.fromList(menuBuilder.getAllScripts()).sort(new ISelector<SNode, String>() {
-        public String select(SNode it) {
-          return (SEnumOperations.getMemberName0(SPropertyOperations.getEnum(it, PROPS.type$NwlS)) == null ? "" : SEnumOperations.getMemberName0(SPropertyOperations.getEnum(it, PROPS.type$NwlS)));
-        }
-      }, true).alsoSort(new ISelector<SNode, String>() {
-        public String select(SNode it) {
-          return (SPropertyOperations.getString(it, PROPS.toBuild$NwNU) == null ? "" : SPropertyOperations.getString(it, PROPS.toBuild$NwNU));
-        }
-      }, true).select(new ISelector<SNode, SNodeReference>() {
-        public SNodeReference select(SNode it) {
-          return it.getReference();
-        }
-      }).toListSequence();
+      allScripts.value = ListSequence.fromList(menuBuilder.getAllScripts()).sort((it) -> (SEnumOperations.getMemberName0(SPropertyOperations.getEnum(it, PROPS.type$NwlS)) == null ? "" : SEnumOperations.getMemberName0(SPropertyOperations.getEnum(it, PROPS.type$NwlS))), true).alsoSort((it) -> (SPropertyOperations.getString(it, PROPS.toBuild$NwNU) == null ? "" : SPropertyOperations.getString(it, PROPS.toBuild$NwNU)), true).select((it) -> it.getReference()).toList();
     });
     final RunMigrationScriptsDialog dialog = new RunMigrationScriptsDialog(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), ((Frame) MapSequence.fromMap(_params).get("frame")), allScripts.value);
     int x = ((Frame) MapSequence.fromMap(_params).get("frame")).getX() + ((Frame) MapSequence.fromMap(_params).get("frame")).getWidth() / 2 - dialog.getWidth() / 2;
@@ -112,11 +98,7 @@ public class RunMigrationScripts_Action extends BaseAction {
     ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository().getModelAccess().executeCommand(() -> {
       if (dialog.isRunChecked()) {
         List<SNodeReference> checked = dialog.getCheckedScripts();
-        AbstractMigrationScriptHelper.doRunScripts(ListSequence.fromList(checked).select(new ISelector<SNodeReference, SNode>() {
-          public SNode select(SNodeReference it) {
-            return SNodeOperations.cast(it.resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()), CONCEPTS.MigrationScript$KR);
-          }
-        }).toListSequence(), scope.value, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
+        AbstractMigrationScriptHelper.doRunScripts(ListSequence.fromList(checked).select((it) -> SNodeOperations.cast(it.resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()), CONCEPTS.MigrationScript$KR)).toList(), scope.value, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
       } else if (dialog.isOpenSelected()) {
         SNodeReference selectedScript = ListSequence.fromList(dialog.getSelectedScripts()).first();
         new EditorNavigator(((MPSProject) MapSequence.fromMap(_params).get("mpsProject"))).shallFocus(true).shallSelect(true).open(selectedScript);

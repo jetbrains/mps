@@ -32,7 +32,6 @@ import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.annotations.Nullable;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -142,7 +141,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       }
 
       // Check constraints
-      ChangeMethodSignatureDialog.this.myConstraintChecker.check(myParameters.getDeclaration(), myProject.getRepository(), (NodeReportItem it) -> {
+      ChangeMethodSignatureDialog.this.myConstraintChecker.check(myParameters.getDeclaration(), myProject.getRepository(), (it) -> {
         // Ignore not rootable error
         if (!(IssueKindReportItem.CONSTRAINTS.deriveItemKind("not rootable").equals(it.getIssueKind()))) {
           ListSequence.fromList(issues).addElement(new ValidationInfo(it.getMessage()));
@@ -150,11 +149,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       }, new EmptyProgressMonitor());
 
       // No abstract concept
-      if (ListSequence.fromList(SNodeOperations.getNodeDescendants(myParameters.getDeclaration(), null, false, new SAbstractConcept[]{})).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.getConcept(it).isAbstract();
-        }
-      })) {
+      if (ListSequence.fromList(SNodeOperations.getNodeDescendants(myParameters.getDeclaration(), null, false, new SAbstractConcept[]{})).any((it) -> SNodeOperations.getConcept(it).isAbstract())) {
         ListSequence.fromList(issues).addElement(new ValidationInfo("Abstract concept instance detected. Use one of sub-concepts instead."));
       }
 

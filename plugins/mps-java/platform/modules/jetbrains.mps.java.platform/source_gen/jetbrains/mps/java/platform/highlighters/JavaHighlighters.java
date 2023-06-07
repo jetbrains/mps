@@ -19,7 +19,7 @@ import jetbrains.mps.nodeEditor.checking.DisposableEditorChecker;
 public final class JavaHighlighters implements ProjectComponent {
   private MPSProject myProject;
   private Highlighter myHighlighter;
-  private Deque<EditorChecker> myCheckers = DequeSequence.fromDequeNew(new LinkedList<EditorChecker>());
+  private Deque<EditorChecker> myCheckers = DequeSequence.fromDeque(new LinkedList<EditorChecker>());
 
   public JavaHighlighters(Project project) {
     myProject = ProjectHelper.fromIdeaProjectOrFail(project);

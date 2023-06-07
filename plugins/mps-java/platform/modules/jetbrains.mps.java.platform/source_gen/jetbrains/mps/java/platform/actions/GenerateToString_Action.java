@@ -11,7 +11,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -25,7 +24,6 @@ import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -54,11 +52,7 @@ public class GenerateToString_Action extends BaseAction {
     if (classConcept == null) {
       return false;
     }
-    return !(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode method) {
-        return "toString".equals(SPropertyOperations.getString(method, PROPS.name$MnvL)) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).isEmpty() && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), CONCEPTS.StringType$uX);
-      }
-    }));
+    return !(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).any((method) -> "toString".equals(SPropertyOperations.getString(method, PROPS.name$MnvL)) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).isEmpty() && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), CONCEPTS.StringType$uX)));
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -99,11 +93,7 @@ public class GenerateToString_Action extends BaseAction {
     final Wrappers._T<SNodeReference[]> fields = new Wrappers._T<SNodeReference[]>();
     repo.getModelAccess().runReadAction(() -> {
       classConcept.value = GenerateToString_Action.this.getClassConcept(_params);
-      fields.value = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept.value, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("fields", 5292274854859383272L, 0x5745e3015c8914d3L)))).select(new ISelector<SNode, SNodeReference>() {
-        public SNodeReference select(SNode it) {
-          return SNodeOperations.getPointer(it);
-        }
-      }).toGenericArray(SNodeReference.class);
+      fields.value = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept.value, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("fields", 5292274854859383272L, 0x5745e3015c8914d3L)))).select((it) -> SNodeOperations.getPointer(it)).toGenericArray(SNodeReference.class);
     });
 
     SelectFieldsDialog selectFieldsDialog = new SelectFieldsDialog(fields.value, true, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));

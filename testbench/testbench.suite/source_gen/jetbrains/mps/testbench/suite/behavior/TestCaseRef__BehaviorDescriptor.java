@@ -17,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.unitTest.behavior.ITestCase__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.baseLanguage.unitTest.behavior.ITestMethod__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -54,11 +53,7 @@ public final class TestCaseRef__BehaviorDescriptor extends BaseBHDescriptor {
     } else {
       testMethods = ITestCase__BehaviorDescriptor.getUncommentedTestMethods_id6I8tQNTvi0f.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.testCase$R3Mf));
     }
-    return ListSequence.fromList(testMethods).select(new ISelector<SNode, String>() {
-      public String select(SNode m) {
-        return (String) ITestMethod__BehaviorDescriptor.getTestName_idhGBohAB.invoke(m);
-      }
-    });
+    return ListSequence.fromList(testMethods).select((m) -> (String) ITestMethod__BehaviorDescriptor.getTestName_idhGBohAB.invoke(m));
   }
 
   /*package*/ TestCaseRef__BehaviorDescriptor() {

@@ -25,10 +25,7 @@ import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.Objects;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.ReductionRuleCondition;
 import java.util.HashMap;
@@ -412,15 +409,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.parameters$YKVG);
   }
   public static Iterable<SNode> sourceNodesQuery_17_0(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SConceptOperations.getAllSuperConcepts(SNodeOperations.getConcept(_context.getNode()), true)).where(new IWhereFilter<SAbstractConcept>() {
-      public boolean accept(SAbstractConcept it) {
-        return !(Objects.equals(it, CONCEPTS.IBuilderMode$kC)) && !(Objects.equals(it, CONCEPTS.BaseConcept$gP));
-      }
-    }).select(new ISelector<SAbstractConcept, SNode>() {
-      public SNode select(SAbstractConcept it) {
-        return SNodeOperations.asNode(it);
-      }
-    });
+    return ListSequence.fromList(SConceptOperations.getAllSuperConcepts(SNodeOperations.getConcept(_context.getNode()), true)).where((it) -> !(Objects.equals(it, CONCEPTS.IBuilderMode$kC)) && !(Objects.equals(it, CONCEPTS.BaseConcept$gP))).select((it) -> SNodeOperations.asNode(it));
   }
   public static Iterable<SNode> sourceNodesQuery_19_0(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.argument$d8tH);

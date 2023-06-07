@@ -12,7 +12,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.annotations.Nullable;
@@ -59,11 +58,7 @@ public final class SModelLanguageEnhancements_MigrationScript extends BaseMigrat
           return true;
         }
         if ((SNodeOperations.isInstanceOf(realType, CONCEPTS.ClassifierType$bL) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(realType, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK))) {
-          return ListSequence.fromList(Classifier__BehaviorDescriptor.getAllSuperClassifiers_id59G_UM6ah0X.invoke(SLinkOperations.getTarget(SNodeOperations.cast(realType, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr))).any(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SNodeOperations.is(it, new SNodePointer("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)", "~SNode"));
-            }
-          });
+          return ListSequence.fromList(Classifier__BehaviorDescriptor.getAllSuperClassifiers_id59G_UM6ah0X.invoke(SLinkOperations.getTarget(SNodeOperations.cast(realType, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr))).any((it) -> SNodeOperations.is(it, new SNodePointer("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)", "~SNode")));
         }
         return false;
       }
@@ -109,11 +104,7 @@ public final class SModelLanguageEnhancements_MigrationScript extends BaseMigrat
         if (!(SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$bK))) {
           return false;
         }
-        return ListSequence.fromList(Classifier__BehaviorDescriptor.getAllSuperClassifiers_id59G_UM6ah0X.invoke(classifier)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SNodeOperations.is(it, new SNodePointer("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)", "~SNode"));
-          }
-        });
+        return ListSequence.fromList(Classifier__BehaviorDescriptor.getAllSuperClassifiers_id59G_UM6ah0X.invoke(classifier)).any((it) -> SNodeOperations.is(it, new SNodePointer("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)", "~SNode")));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
@@ -149,11 +140,7 @@ public final class SModelLanguageEnhancements_MigrationScript extends BaseMigrat
         if (!(SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$bK))) {
           return false;
         }
-        return ListSequence.fromList(Classifier__BehaviorDescriptor.getAllSuperClassifiers_id59G_UM6ah0X.invoke(classifier)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SNodeOperations.is(it, new SNodePointer("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)", "~SModel"));
-          }
-        });
+        return ListSequence.fromList(Classifier__BehaviorDescriptor.getAllSuperClassifiers_id59G_UM6ah0X.invoke(classifier)).any((it) -> SNodeOperations.is(it, new SNodePointer("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)", "~SModel")));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {

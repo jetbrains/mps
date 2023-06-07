@@ -11,16 +11,16 @@ import jetbrains.mps.baseLanguage.javastub.Documentation;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMAnnotation;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMClassType;
-import jetbrains.mps.kotlin.stubs.common.references.StereotypeReference;
-import org.jetbrains.mps.openapi.model.ResolveInfo;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.baseLanguage.javastub.ASMNodeId;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMEnumValue;
+import jetbrains.mps.kotlin.stubs.common.references.StereotypeReference;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMType;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMParameterizedType;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -53,7 +53,7 @@ public class KotlinAwareClassifierUpdater extends ClassifierUpdater {
     final ASMClassType c = (ASMClassType) annotation.getType();
 
     // We create annotation depending on concept
-    return mySolvingContext.createClassReference(convertToKotlinNorm(c.getName()), (StereotypeReference.ClassStereotype stereotype, ResolveInfo resolveInfo) -> {
+    return mySolvingContext.createClassReference(convertToKotlinNorm(c.getName()), (stereotype, resolveInfo) -> {
       SNode node = stereotype.createJavaAnnotation(resolveInfo);
 
       if ((node != null)) {
@@ -90,7 +90,7 @@ public class KotlinAwareClassifierUpdater extends ClassifierUpdater {
       // TODO here, we get two stereotype variables, though it is unlikely we get both java and kotlin results at once, we may find a better way to handle that (getting the node id, adding .name for instance?)
       return mySolvingContext.createClassReference(enumClassName, (StereotypeReference.ClassStereotype s, final ResolveInfo enumResolveInfo) -> {
         // Resolve constant reference as well
-        return mySolvingContext.createClassReference(enumClassName + "." + enumValue.getConstant(), (StereotypeReference.ClassStereotype stereotype, ResolveInfo constantResolveInfo) -> {
+        return mySolvingContext.createClassReference(enumClassName + "." + enumValue.getConstant(), (stereotype, constantResolveInfo) -> {
           // Create from second stereotype
           return stereotype.createJavaEnumConstantReference(enumResolveInfo, constantResolveInfo);
         });
@@ -98,7 +98,7 @@ public class KotlinAwareClassifierUpdater extends ClassifierUpdater {
     }
 
     if (value instanceof ASMClassType) {
-      return mySolvingContext.createClassReference(convertToKotlinNorm(((ASMClassType) value).getName()), (StereotypeReference.ClassStereotype this0, ResolveInfo classResolveInfo) -> this0.createJavaClassQualifierReference(classResolveInfo));
+      return mySolvingContext.createClassReference(convertToKotlinNorm(((ASMClassType) value).getName()), (this0, classResolveInfo) -> this0.createJavaClassQualifierReference(classResolveInfo));
     }
 
     return super.getValueAsExpression(value);
@@ -106,7 +106,7 @@ public class KotlinAwareClassifierUpdater extends ClassifierUpdater {
   protected SNode getTypeByASMType(ASMType type, SNode method, SNode classifier) {
     if (type instanceof ASMClassType) {
       ASMClassType c = (ASMClassType) type;
-      SNode typeNode = mySolvingContext.createClassReference(convertToKotlinNorm(c.getName()), (StereotypeReference.ClassStereotype this0, ResolveInfo resolved) -> this0.createJavaType(resolved));
+      SNode typeNode = mySolvingContext.createClassReference(convertToKotlinNorm(c.getName()), (this0, resolved) -> this0.createJavaType(resolved));
       return typeNode;
     }
 

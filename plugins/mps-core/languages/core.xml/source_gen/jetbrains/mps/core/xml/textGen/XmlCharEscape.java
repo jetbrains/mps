@@ -6,8 +6,6 @@ import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 
 public class XmlCharEscape {
   private static final Map<Character, String> codesForIdentifiers = MapSequence.fromMap(new HashMap<Character, String>());
@@ -60,11 +58,7 @@ public class XmlCharEscape {
     return (changed ? result.toString() : value);
   }
   private static boolean startsWithPredefinedEntity(final String followingSubstring) {
-    return Sequence.fromIterable(MapSequence.fromMap(codesForIdentifiers).values()).any(new IWhereFilter<String>() {
-      public boolean accept(String it) {
-        return followingSubstring.startsWith(it);
-      }
-    });
+    return Sequence.fromIterable(MapSequence.fromMap(codesForIdentifiers).values()).any((it) -> followingSubstring.startsWith(it));
   }
   private static boolean startsWithKeyCode(String followingSubstring) {
     return followingSubstring.matches("&#[0-9]{1,3};.*");
@@ -75,11 +69,7 @@ public class XmlCharEscape {
       return false;
     }
     final String entityId = followingSubstring.substring(1, endIndex);
-    if (MapSequence.fromMap(codesForIdentifiers).any(new IWhereFilter<IMapping<Character, String>>() {
-      public boolean accept(IMapping<Character, String> it) {
-        return entityId.contains(String.valueOf(it));
-      }
-    })) {
+    if (MapSequence.fromMap(codesForIdentifiers).any((it) -> entityId.contains(String.valueOf(it)))) {
       return false;
     }
     return entityId.matches("\\S+");

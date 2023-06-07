@@ -14,7 +14,6 @@ import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.text.behavior.IHoldParagraphs__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -51,19 +50,11 @@ public class InsertOnTextualElement {
           SNode copy = SNodeOperations.insertNextSiblingChild(holder, SNodeOperations.copyNode(holder));
           next.value = ListSequence.fromList(IHoldParagraphs__BehaviorDescriptor.getParagraphs_id2MpFNjy3tMn.invoke(copy)).first();
           Paragraph__BehaviorDescriptor.clearTextualElements_id1uSfHaoOxlA.invoke(next.value);
-          ListSequence.fromList(SNodeOperations.getAllSiblings(next.value, false)).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode it) {
-              SNodeOperations.deleteNode(it);
-            }
-          });
+          ListSequence.fromList(SNodeOperations.getAllSiblings(next.value, false)).visitAll((it) -> SNodeOperations.deleteNode(it));
         }
         int pos = ((EditorCell_Label) editorContext.getSelectedCell()).getCaretPosition();
         SNode nextLetter = (pos != 0 ? SNodeOperations.getNextSibling(node) : node);
-        Sequence.fromIterable((SNodeOperations.ofConcept(SNodeOperations.getNextSiblings(nextLetter, true), CONCEPTS.TextualElement$9C))).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            Paragraph__BehaviorDescriptor.addTextualElement_id1uSfHaoOOLl.invoke(next.value, it);
-          }
-        });
+        Sequence.fromIterable((SNodeOperations.ofConcept(SNodeOperations.getNextSiblings(nextLetter, true), CONCEPTS.TextualElement$9C))).visitAll((it) -> Paragraph__BehaviorDescriptor.addTextualElement_id1uSfHaoOOLl.invoke(next.value, it));
         Paragraph__BehaviorDescriptor.initialize_id1v077Wg2A59.invoke(next.value);
         Paragraph__BehaviorDescriptor.initialize_id1v077Wg2A59.invoke(p);
         if (nextLetter != null && pos != 0) {

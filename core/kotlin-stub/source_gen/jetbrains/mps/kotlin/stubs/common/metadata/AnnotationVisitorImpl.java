@@ -5,14 +5,13 @@ package jetbrains.mps.kotlin.stubs.common.metadata;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNode;
 import kotlinx.metadata.KmAnnotation;
-import jetbrains.mps.kotlin.stubs.common.references.StereotypeReference;
-import org.jetbrains.mps.openapi.model.ResolveInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import kotlinx.metadata.KmAnnotationArgument;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
@@ -38,7 +37,7 @@ public class AnnotationVisitorImpl implements AnnotationVisitor {
   @Override
   public void visitAnnotation(KmAnnotation annotation) {
     String className = annotation.getClassName();
-    SNode node = context.createClassReference(className, (StereotypeReference.ClassStereotype this0, ResolveInfo resolved) -> this0.createKotlinAnnotation(resolved));
+    SNode node = context.createClassReference(className, (this0, resolved) -> this0.createKotlinAnnotation(resolved));
 
     // TODO change structure to enforce that?
     {
@@ -91,7 +90,7 @@ public class AnnotationVisitorImpl implements AnnotationVisitor {
       SNode enumClassType = classTypeOf(value.getEnumClassName(), context);
 
       // TODO in principle, we already resolve the parent class type, this makes superfluous solving
-      SNode refExpression = context.createClassReference(value.getEnumClassName() + "." + value.getEnumEntryName(), (StereotypeReference.ClassStereotype this0, ResolveInfo resolved) -> this0.createKotlinEnumConstantReference(resolved));
+      SNode refExpression = context.createClassReference(value.getEnumClassName() + "." + value.getEnumEntryName(), (this0, resolved) -> this0.createKotlinEnumConstantReference(resolved));
 
       return createNavigationOperation_l27wj3_a6a1a0k(enumClassType, refExpression);
     } else if (arg instanceof KmAnnotationArgument.ArrayValue) {
@@ -110,7 +109,7 @@ public class AnnotationVisitorImpl implements AnnotationVisitor {
 
       // Use annotation as function call will not handle referencing to default constructor with dynamic reference of arguments (see Annotation's getAvailableParameters in behavior)
       String className = subAnnotation.getClassName();
-      SNode expression = context.createClassReference(className, (StereotypeReference.ClassStereotype this0, ResolveInfo resolved) -> this0.createKotlinNestedAnnotation(resolved));
+      SNode expression = context.createClassReference(className, (this0, resolved) -> this0.createKotlinNestedAnnotation(resolved));
 
       // TODO assert or write warning if not empty?
       {
@@ -130,7 +129,7 @@ public class AnnotationVisitorImpl implements AnnotationVisitor {
   }
 
   /*package*/ SNode classTypeOf(String type, VisitorContext context) {
-    return context.createClassReference(type, (StereotypeReference.ClassStereotype this0, ResolveInfo resolved) -> this0.createKotlinType(resolved));
+    return context.createClassReference(type, (this0, resolved) -> this0.createKotlinType(resolved));
   }
 
   /*package*/ SNode arrayOf(SNode type, int depth, VisitorContext context) {

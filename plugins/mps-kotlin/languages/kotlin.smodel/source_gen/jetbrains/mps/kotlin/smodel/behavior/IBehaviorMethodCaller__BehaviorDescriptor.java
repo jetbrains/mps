@@ -17,11 +17,8 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.kotlin.api.members.SignatureBuilder;
-import java.util.function.Function;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.kotlin.signatures.AccessorKind;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -50,51 +47,43 @@ public final class IBehaviorMethodCaller__BehaviorDescriptor extends BaseBHDescr
     }
 
     // TODO check for visibility (see ConceptBehavior details)*
-    Iterable<SNode> methods = Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getVisibleConceptMethods_idwrIPXhfIPX.invoke(concept, __thisNode__)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SPropertyOperations.getBoolean(it, PROPS.isStatic$JhJe));
-      }
-    });
+    Iterable<SNode> methods = Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getVisibleConceptMethods_idwrIPXhfIPX.invoke(concept, __thisNode__)).where((it) -> !(SPropertyOperations.getBoolean(it, PROPS.isStatic$JhJe)));
 
     SignatureBuilder.create(methods, ConceptFunctionSignature.class).withSignature((SNode node) -> new ConceptFunctionSignature(node)).declareTo(visitor);
 
     // TODO we only give getter signature as it is not expected to have separate setter, do we?
-    SignatureBuilder.create(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(concept), LinkSignature.class).withSignatures(new Function<SNode, Iterable<LinkSignature>>() {
-      public Iterable<LinkSignature> apply(final SNode it) {
-        return new Iterable<LinkSignature>() {
-          public Iterator<LinkSignature> iterator() {
-            return new YieldingIterator<LinkSignature>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
+    SignatureBuilder.create(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(concept), LinkSignature.class).withSignatures((SNode it) -> {
+      return (Iterable<LinkSignature>) () -> {
+        return new YieldingIterator<LinkSignature>() {
+          private int __CP__ = 0;
+          protected boolean moveToNext() {
 __loop__:
-                do {
+            do {
 __switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 2:
-                      this.__CP__ = 3;
-                      this.yield(new LinkSignature(it, AccessorKind.GETTER));
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    case 3:
+              switch (this.__CP__) {
+                case -1:
+                  assert false : "Internal error";
+                  return false;
+                case 2:
+                  this.__CP__ = 3;
+                  this.yield(new LinkSignature(it, AccessorKind.GETTER));
+                  return true;
+                case 0:
+                  this.__CP__ = 2;
+                  break;
+                case 3:
 
-                      // Can only be set if no more than one element
-                      this.__CP__ = 1;
-                      break;
-                    default:
-                      break __loop__;
-                  }
-                } while (true);
-                return false;
+                  // Can only be set if no more than one element
+                  this.__CP__ = 1;
+                  break;
+                default:
+                  break __loop__;
               }
-            };
+            } while (true);
+            return false;
           }
         };
-      }
+      };
     }).declareTo(visitor);
 
     SignatureBuilder.create(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(concept), LinkSignature.class).withSignature((SNode it) -> new LinkSignature(it, AccessorKind.GETTER)).declareTo(visitor);

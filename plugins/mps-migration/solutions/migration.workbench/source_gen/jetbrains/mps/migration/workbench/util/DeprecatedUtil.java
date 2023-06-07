@@ -8,22 +8,19 @@ import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
-import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.baseLanguage.behavior.Expression__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -42,26 +39,10 @@ public class DeprecatedUtil {
 
   public static Map<SNode, DeprecatedNodeProperties> deprecated(SearchScope s) {
     final Map<SNode, DeprecatedNodeProperties> result = MapSequence.fromMap(new HashMap<SNode, DeprecatedNodeProperties>());
-    Sequence.fromIterable(depLinks(s)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        MapSequence.fromMap(result).put(it, new DeprecatedNodeProperties("Deprecated Links", getToRemoveVersion(it)));
-      }
-    });
-    Sequence.fromIterable(depProps(s)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        MapSequence.fromMap(result).put(it, new DeprecatedNodeProperties("Deprecated Properties", getToRemoveVersion(it)));
-      }
-    });
-    Sequence.fromIterable(depConcepts(s)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        MapSequence.fromMap(result).put(it, new DeprecatedNodeProperties("Deprecated Concepts", getToRemoveVersion(it)));
-      }
-    });
-    Sequence.fromIterable(depNodes(s)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        MapSequence.fromMap(result).put(it, new DeprecatedNodeProperties("Deprecated Nodes", getToRemoveVersion(it)));
-      }
-    });
+    Sequence.fromIterable(depLinks(s)).visitAll((it) -> MapSequence.fromMap(result).put(it, new DeprecatedNodeProperties("Deprecated Links", getToRemoveVersion(it))));
+    Sequence.fromIterable(depProps(s)).visitAll((it) -> MapSequence.fromMap(result).put(it, new DeprecatedNodeProperties("Deprecated Properties", getToRemoveVersion(it))));
+    Sequence.fromIterable(depConcepts(s)).visitAll((it) -> MapSequence.fromMap(result).put(it, new DeprecatedNodeProperties("Deprecated Concepts", getToRemoveVersion(it))));
+    Sequence.fromIterable(depNodes(s)).visitAll((it) -> MapSequence.fromMap(result).put(it, new DeprecatedNodeProperties("Deprecated Nodes", getToRemoveVersion(it))));
     return result;
   }
 
@@ -70,63 +51,17 @@ public class DeprecatedUtil {
     {
       SearchScope scope_i2l0ze_b0e = CommandUtil.createScope(s);
       final SearchScope scope_i2l0ze_b0e_0 = scope_i2l0ze_b0e;
-      final QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_i2l0ze_b0e_0;
+      final QueryExecutionContext context = () -> scope_i2l0ze_b0e_0;
+      Sequence.fromIterable(depLinks(s)).where((final SNode link) -> {
+        if (SEnumOperations.isMember(SPropertyOperations.getEnum(link, PROPS.metaClass$PeKc), 0xfc6f4e95b9L)) {
+          return !(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(SNodeOperations.asSConcept(SNodeOperations.getNodeAncestor(link, CONCEPTS.AbstractConceptDeclaration$KA, false, false))), false)).any((ins) -> ListSequence.fromList(SNodeOperations.getChildren(ins, MetaAdapterByDeclaration.getContainmentLink(link))).isNotEmpty()));
+        } else {
+          return !(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(SNodeOperations.asSConcept(SNodeOperations.getNodeAncestor(link, CONCEPTS.AbstractConceptDeclaration$KA, false, false))), false)).any((ins) -> ins.getReference(MetaAdapterByDeclaration.getReferenceLink(link)) != null));
         }
-      };
-      Sequence.fromIterable(depLinks(s)).where(new IWhereFilter<SNode>() {
-        public boolean accept(final SNode link) {
-          if (SEnumOperations.isMember(SPropertyOperations.getEnum(link, PROPS.metaClass$PeKc), 0xfc6f4e95b9L)) {
-            return !(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(SNodeOperations.asSConcept(SNodeOperations.getNodeAncestor(link, CONCEPTS.AbstractConceptDeclaration$KA, false, false))), false)).any(new IWhereFilter<SNode>() {
-              public boolean accept(SNode ins) {
-                return ListSequence.fromList(SNodeOperations.getChildren(ins, MetaAdapterByDeclaration.getContainmentLink(link))).isNotEmpty();
-              }
-            }));
-          } else {
-            return !(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(SNodeOperations.asSConcept(SNodeOperations.getNodeAncestor(link, CONCEPTS.AbstractConceptDeclaration$KA, false, false))), false)).any(new IWhereFilter<SNode>() {
-              public boolean accept(SNode ins) {
-                return ins.getReference(MetaAdapterByDeclaration.getReferenceLink(link)) != null;
-              }
-            }));
-          }
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          MapSequence.fromMap(result).put(it, new DeprecatedNodeProperties("Deprecated Links with No Instances", getToRemoveVersion(it)));
-        }
-      });
-      Sequence.fromIterable(depProps(s)).where(new IWhereFilter<SNode>() {
-        public boolean accept(final SNode prop) {
-          return !(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(SNodeOperations.asSConcept(SNodeOperations.getNodeAncestor(prop, CONCEPTS.AbstractConceptDeclaration$KA, false, false))), false)).any(new IWhereFilter<SNode>() {
-            public boolean accept(SNode ins) {
-              return ins.getProperty(MetaAdapterByDeclaration.getProperty(prop)) != null;
-            }
-          }));
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          MapSequence.fromMap(result).put(it, new DeprecatedNodeProperties("Deprecated Properties with No Instances", getToRemoveVersion(it)));
-        }
-      });
-      Sequence.fromIterable(depConcepts(s)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(SNodeOperations.asSConcept(it)), true)).isEmpty();
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          MapSequence.fromMap(result).put(it, new DeprecatedNodeProperties("Deprecated Concepts with No Instances", getToRemoveVersion(it)));
-        }
-      });
-      Sequence.fromIterable(depNodes(s)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return CollectionSequence.fromCollection(CommandUtil.usages(CommandUtil.selectScope(null, context), it)).isEmpty();
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          MapSequence.fromMap(result).put(it, new DeprecatedNodeProperties("Deprecated Nodes with No Usages", getToRemoveVersion(it)));
-        }
-      });
+      }).visitAll((it) -> MapSequence.fromMap(result).put(it, new DeprecatedNodeProperties("Deprecated Links with No Instances", getToRemoveVersion(it))));
+      Sequence.fromIterable(depProps(s)).where((final SNode prop) -> !(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(SNodeOperations.asSConcept(SNodeOperations.getNodeAncestor(prop, CONCEPTS.AbstractConceptDeclaration$KA, false, false))), false)).any((ins) -> ins.getProperty(MetaAdapterByDeclaration.getProperty(prop)) != null))).visitAll((it) -> MapSequence.fromMap(result).put(it, new DeprecatedNodeProperties("Deprecated Properties with No Instances", getToRemoveVersion(it))));
+      Sequence.fromIterable(depConcepts(s)).where((it) -> CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(SNodeOperations.asSConcept(it)), true)).isEmpty()).visitAll((it) -> MapSequence.fromMap(result).put(it, new DeprecatedNodeProperties("Deprecated Concepts with No Instances", getToRemoveVersion(it))));
+      Sequence.fromIterable(depNodes(s)).where((it) -> CollectionSequence.fromCollection(CommandUtil.usages(CommandUtil.selectScope(null, context), it)).isEmpty()).visitAll((it) -> MapSequence.fromMap(result).put(it, new DeprecatedNodeProperties("Deprecated Nodes with No Usages", getToRemoveVersion(it))));
     }
     return result;
   }
@@ -138,20 +73,10 @@ public class DeprecatedUtil {
     {
       SearchScope scope_i2l0ze_d0g = CommandUtil.createScope(where);
       final SearchScope scope_i2l0ze_d0g_0 = scope_i2l0ze_d0g;
-      final QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_i2l0ze_d0g_0;
-        }
-      };
-      Sequence.fromIterable(depNodes).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          final String ver = getToRemoveVersion(it);
-          CollectionSequence.fromCollection(CommandUtil.usages(CommandUtil.selectScope(null, context), it)).visitAll(new IVisitor<SReference>() {
-            public void visit(SReference iit) {
-              MapSequence.fromMap(result).put(iit.getSourceNode(), new DeprecatedNodeProperties(cat, ver));
-            }
-          });
-        }
+      final QueryExecutionContext context = () -> scope_i2l0ze_d0g_0;
+      Sequence.fromIterable(depNodes).visitAll((it) -> {
+        final String ver = getToRemoveVersion(it);
+        CollectionSequence.fromCollection(CommandUtil.usages(CommandUtil.selectScope(null, context), it)).visitAll((iit) -> MapSequence.fromMap(result).put(iit.getSourceNode(), new DeprecatedNodeProperties(cat, ver)));
       });
     }
   }
@@ -160,120 +85,58 @@ public class DeprecatedUtil {
     {
       SearchScope scope_i2l0ze_a0i = CommandUtil.createScope(s);
       final SearchScope scope_i2l0ze_a0i_0 = scope_i2l0ze_a0i;
-      final QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_i2l0ze_a0i_0;
-        }
-      };
+      final QueryExecutionContext context = () -> scope_i2l0ze_a0i_0;
       // --------concepts
       Iterable<SNode> dc = DeprecatedUtil.depConcepts(depScope);
 
       final Wrappers._T<String> cat = new Wrappers._T<String>("Deprecated Concept Instance");
-      Sequence.fromIterable(dc).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          final String ver = getToRemoveVersion(it);
-          CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(SNodeOperations.asSConcept(it)), true)).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode it) {
-              MapSequence.fromMap(result).put(it, new DeprecatedNodeProperties(cat.value, ver));
-            }
-          });
-        }
+      Sequence.fromIterable(dc).visitAll((it) -> {
+        final String ver = getToRemoveVersion(it);
+        CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(SNodeOperations.asSConcept(it)), true)).visitAll(new _FunctionTypes._void_P1_E0<SNode>() {
+          public void invoke(SNode it) {
+            MapSequence.fromMap(result).put(it, new DeprecatedNodeProperties(cat.value, ver));
+          }
+        });
       });
 
       cat.value = "Deprecated Concept Usages";
-      Sequence.fromIterable(dc).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          final String ver = getToRemoveVersion(it);
-          CollectionSequence.fromCollection(CommandUtil.usages(CommandUtil.selectScope(null, context), it)).visitAll(new IVisitor<SReference>() {
-            public void visit(SReference iit) {
-              MapSequence.fromMap(result).put(iit.getSourceNode(), new DeprecatedNodeProperties(cat.value, ver));
-            }
-          });
-        }
+      Sequence.fromIterable(dc).visitAll((it) -> {
+        final String ver = getToRemoveVersion(it);
+        CollectionSequence.fromCollection(CommandUtil.usages(CommandUtil.selectScope(null, context), it)).visitAll((iit) -> MapSequence.fromMap(result).put(iit.getSourceNode(), new DeprecatedNodeProperties(cat.value, ver)));
       });
 
       // --------properties
       Iterable<SNode> dp = DeprecatedUtil.depProps(depScope);
 
       cat.value = "Deprecated Property Instances";
-      Sequence.fromIterable(dp).visitAll(new IVisitor<SNode>() {
-        public void visit(final SNode prop) {
-          final String ver = getToRemoveVersion(prop);
-          CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(SNodeOperations.asSConcept(SNodeOperations.getNodeAncestor(prop, CONCEPTS.AbstractConceptDeclaration$KA, false, false))), false)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode ins) {
-              return ins.getProperty(MetaAdapterByDeclaration.getProperty(prop)) != null;
-            }
-          }).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode it) {
-              MapSequence.fromMap(result).put(it, new DeprecatedNodeProperties(cat.value, ver));
-            }
-          });
-        }
+      Sequence.fromIterable(dp).visitAll((final SNode prop) -> {
+        final String ver = getToRemoveVersion(prop);
+        CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(SNodeOperations.asSConcept(SNodeOperations.getNodeAncestor(prop, CONCEPTS.AbstractConceptDeclaration$KA, false, false))), false)).where((ins) -> ins.getProperty(MetaAdapterByDeclaration.getProperty(prop)) != null).visitAll((it) -> MapSequence.fromMap(result).put(it, new DeprecatedNodeProperties(cat.value, ver)));
       });
 
       cat.value = "Deprecated Property Usages";
-      Sequence.fromIterable(dp).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          final String ver = getToRemoveVersion(it);
-          CollectionSequence.fromCollection(CommandUtil.usages(CommandUtil.selectScope(null, context), it)).visitAll(new IVisitor<SReference>() {
-            public void visit(SReference iit) {
-              MapSequence.fromMap(result).put(iit.getSourceNode(), new DeprecatedNodeProperties(cat.value, ver));
-            }
-          });
-        }
+      Sequence.fromIterable(dp).visitAll((it) -> {
+        final String ver = getToRemoveVersion(it);
+        CollectionSequence.fromCollection(CommandUtil.usages(CommandUtil.selectScope(null, context), it)).visitAll((iit) -> MapSequence.fromMap(result).put(iit.getSourceNode(), new DeprecatedNodeProperties(cat.value, ver)));
       });
 
       // --------links
       Iterable<SNode> dl = DeprecatedUtil.depLinks(depScope);
 
       cat.value = "Deprecated Link Instances";
-      Sequence.fromIterable(dl).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b9L);
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(final SNode link) {
-          final String ver = getToRemoveVersion(link);
-          CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(SNodeOperations.asSConcept(SNodeOperations.getNodeAncestor(link, CONCEPTS.AbstractConceptDeclaration$KA, false, false))), false)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode ins) {
-              return ins.getChildren(MetaAdapterByDeclaration.getContainmentLink(link)).iterator().hasNext();
-            }
-          }).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode it) {
-              MapSequence.fromMap(result).put(it, new DeprecatedNodeProperties(cat.value, ver));
-            }
-          });
-        }
+      Sequence.fromIterable(dl).where((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b9L)).visitAll((final SNode link) -> {
+        final String ver = getToRemoveVersion(link);
+        CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(SNodeOperations.asSConcept(SNodeOperations.getNodeAncestor(link, CONCEPTS.AbstractConceptDeclaration$KA, false, false))), false)).where((ins) -> ins.getChildren(MetaAdapterByDeclaration.getContainmentLink(link)).iterator().hasNext()).visitAll((it) -> MapSequence.fromMap(result).put(it, new DeprecatedNodeProperties(cat.value, ver)));
       });
-      Sequence.fromIterable(dl).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b8L);
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(final SNode link) {
-          final String ver = getToRemoveVersion(link);
-          CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(SNodeOperations.asSConcept(SNodeOperations.getNodeAncestor(link, CONCEPTS.AbstractConceptDeclaration$KA, false, false))), false)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode ins) {
-              return ins.getReference(MetaAdapterByDeclaration.getReferenceLink(link)) != null;
-            }
-          }).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode it) {
-              MapSequence.fromMap(result).put(it, new DeprecatedNodeProperties(cat.value, ver));
-            }
-          });
-        }
+      Sequence.fromIterable(dl).where((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b8L)).visitAll((final SNode link) -> {
+        final String ver = getToRemoveVersion(link);
+        CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(SNodeOperations.asSConcept(SNodeOperations.getNodeAncestor(link, CONCEPTS.AbstractConceptDeclaration$KA, false, false))), false)).where((ins) -> ins.getReference(MetaAdapterByDeclaration.getReferenceLink(link)) != null).visitAll((it) -> MapSequence.fromMap(result).put(it, new DeprecatedNodeProperties(cat.value, ver)));
       });
 
       cat.value = "Deprecated Link Usages";
-      Sequence.fromIterable(dl).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          final String ver = getToRemoveVersion(it);
-          CollectionSequence.fromCollection(CommandUtil.usages(CommandUtil.selectScope(null, context), it)).visitAll(new IVisitor<SReference>() {
-            public void visit(SReference iit) {
-              MapSequence.fromMap(result).put(iit.getSourceNode(), new DeprecatedNodeProperties(cat.value, ver));
-            }
-          });
-        }
+      Sequence.fromIterable(dl).visitAll((it) -> {
+        final String ver = getToRemoveVersion(it);
+        CollectionSequence.fromCollection(CommandUtil.usages(CommandUtil.selectScope(null, context), it)).visitAll((iit) -> MapSequence.fromMap(result).put(iit.getSourceNode(), new DeprecatedNodeProperties(cat.value, ver)));
       });
     }
   }
@@ -286,49 +149,17 @@ public class DeprecatedUtil {
       }
     }
     if (SNodeOperations.isInstanceOf(n, CONCEPTS.HasAnnotation$Dg)) {
-      SNode toRemoveAnnotation = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(n, CONCEPTS.HasAnnotation$Dg), LINKS.annotation$K49I)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)", "~ToRemove"));
-        }
-      }).first();
+      SNode toRemoveAnnotation = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(n, CONCEPTS.HasAnnotation$Dg), LINKS.annotation$K49I)).where((it) -> SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)", "~ToRemove"))).first();
       if ((toRemoveAnnotation != null)) {
-        SNode value = ListSequence.fromList(SLinkOperations.getChildren(toRemoveAnnotation, LINKS.value$uK2B)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SLinkOperations.hasPointer(it, LINKS.key$bSmV, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)", "~ToRemove.version()"));
-          }
-        }).select(new ISelector<SNode, SNode>() {
-          public SNode select(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.value$Y7om);
-          }
-        }).first();
+        SNode value = ListSequence.fromList(SLinkOperations.getChildren(toRemoveAnnotation, LINKS.value$uK2B)).where((it) -> SLinkOperations.hasPointer(it, LINKS.key$bSmV, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)", "~ToRemove.version()"))).select((it) -> SLinkOperations.getTarget(it, LINKS.value$Y7om)).first();
         if ((boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(value)) {
           return "" + Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(value, null);
         }
       } else {
-        SNode deprecatedAnnotation = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(n, CONCEPTS.HasAnnotation$Dg), LINKS.annotation$K49I)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated"));
-          }
-        }).first();
+        SNode deprecatedAnnotation = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(n, CONCEPTS.HasAnnotation$Dg), LINKS.annotation$K49I)).where((it) -> SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated"))).first();
         if ((deprecatedAnnotation != null)) {
-          SNode sinceValue = ListSequence.fromList(SLinkOperations.getChildren(deprecatedAnnotation, LINKS.value$uK2B)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SLinkOperations.hasPointer(it, LINKS.key$bSmV, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated.since()"));
-            }
-          }).select(new ISelector<SNode, SNode>() {
-            public SNode select(SNode it) {
-              return SLinkOperations.getTarget(it, LINKS.value$Y7om);
-            }
-          }).first();
-          SNode forRemovalFlag = ListSequence.fromList(SLinkOperations.getChildren(deprecatedAnnotation, LINKS.value$uK2B)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SLinkOperations.hasPointer(it, LINKS.key$bSmV, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated.forRemoval()"));
-            }
-          }).select(new ISelector<SNode, SNode>() {
-            public SNode select(SNode it) {
-              return SLinkOperations.getTarget(it, LINKS.value$Y7om);
-            }
-          }).first();
+          SNode sinceValue = ListSequence.fromList(SLinkOperations.getChildren(deprecatedAnnotation, LINKS.value$uK2B)).where((it) -> SLinkOperations.hasPointer(it, LINKS.key$bSmV, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated.since()"))).select((it) -> SLinkOperations.getTarget(it, LINKS.value$Y7om)).first();
+          SNode forRemovalFlag = ListSequence.fromList(SLinkOperations.getChildren(deprecatedAnnotation, LINKS.value$uK2B)).where((it) -> SLinkOperations.hasPointer(it, LINKS.key$bSmV, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated.forRemoval()"))).select((it) -> SLinkOperations.getTarget(it, LINKS.value$Y7om)).first();
           if ((boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(forRemovalFlag) && (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(sinceValue) && (Boolean) Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(forRemovalFlag, null)) {
             return "" + Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(sinceValue, null);
           }
@@ -342,20 +173,8 @@ public class DeprecatedUtil {
     {
       SearchScope scope_i2l0ze_a0m = CommandUtil.createScope(depScope);
       final SearchScope scope_i2l0ze_a0m_0 = scope_i2l0ze_a0m;
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_i2l0ze_a0m_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AnnotationInstance$yl, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated"));
-        }
-      }).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SNodeOperations.getParent(it);
-        }
-      });
+      QueryExecutionContext context = () -> scope_i2l0ze_a0m_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AnnotationInstance$yl, false)).where((it) -> SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated"))).select((it) -> SNodeOperations.getParent(it));
     }
   }
 
@@ -363,16 +182,8 @@ public class DeprecatedUtil {
     {
       SearchScope scope_i2l0ze_a0o = CommandUtil.createScope(depScope);
       final SearchScope scope_i2l0ze_a0o_0 = scope_i2l0ze_a0o;
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_i2l0ze_a0o_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LinkDeclaration$1p, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV).get(it) != null);
-        }
-      });
+      QueryExecutionContext context = () -> scope_i2l0ze_a0o_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LinkDeclaration$1p, false)).where((it) -> (new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV).get(it) != null));
     }
   }
 
@@ -380,16 +191,8 @@ public class DeprecatedUtil {
     {
       SearchScope scope_i2l0ze_a0q = CommandUtil.createScope(depScope);
       final SearchScope scope_i2l0ze_a0q_0 = scope_i2l0ze_a0q;
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_i2l0ze_a0q_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyDeclaration$1S, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV).get(it) != null);
-        }
-      });
+      QueryExecutionContext context = () -> scope_i2l0ze_a0q_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyDeclaration$1S, false)).where((it) -> (new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV).get(it) != null));
     }
   }
 
@@ -397,16 +200,8 @@ public class DeprecatedUtil {
     {
       SearchScope scope_i2l0ze_a0s = CommandUtil.createScope(depScope);
       final SearchScope scope_i2l0ze_a0s_0 = scope_i2l0ze_a0s;
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_i2l0ze_a0s_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AbstractConceptDeclaration$KA, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV).get(it) != null);
-        }
-      });
+      QueryExecutionContext context = () -> scope_i2l0ze_a0s_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AbstractConceptDeclaration$KA, false)).where((it) -> (new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV).get(it) != null));
     }
   }
 

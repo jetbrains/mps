@@ -7,7 +7,6 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -19,11 +18,7 @@ public class ListOfNodes {
   }
   public void first(SNode sl) {
     ListSequence.fromList(SLinkOperations.getChildren(sl, LINKS.statement$53DE)).first();
-    Iterable<SNode> nodes = ListSequence.fromList(SLinkOperations.getChildren(sl, LINKS.statement$53DE)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.IfStatement$Q4);
-      }
-    });
+    Iterable<SNode> nodes = ListSequence.fromList(SLinkOperations.getChildren(sl, LINKS.statement$53DE)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.IfStatement$Q4));
   }
 
   private static final class LINKS {

@@ -57,79 +57,72 @@
   </root>
   <root nodeRef="r:9b7a7baa-7b52-4b41-8293-5aa14d41220f(jetbrains.mps.baseLanguage.overloadedOperators.constraints)/2838654975957288939">
     <file name="BinaryOperationReference_Constraints.java">
-      <node id="2838654975957288939" at="40,49,41,48" concept="10" />
-      <node id="2838654975957288955" at="52,63,53,161" concept="7" />
-      <node id="6836281137582776738" at="56,80,57,56" concept="6" />
-      <node id="6836281137582776744" at="57,56,58,0" concept="8" />
-      <node id="6836281137582776745" at="58,0,59,99" concept="6" />
-      <node id="5672696027942736257" at="59,99,60,60" concept="6" />
-      <node id="6836281137582776754" at="60,60,61,74" concept="6" />
-      <node id="5672696027943015491" at="63,64,64,25" concept="1" />
-      <node id="5672696027943132781" at="65,15,66,85" concept="6" />
-      <node id="6836281137582776768" at="67,51,68,81" concept="6" />
-      <node id="6836281137582776784" at="70,51,71,215" concept="7" />
-      <node id="6836281137582776796" at="75,13,76,59" concept="7" />
-      <node id="2838654975957288939" at="80,6,81,131" concept="6" />
-      <node id="2838654975957288955" at="81,131,82,42" concept="2" />
-      <node id="2838654975957288939" at="82,42,83,22" concept="7" />
-      <node id="2838654975957288939" at="87,0,88,0" concept="9" trace="BinaryOperationReference$wm" />
-      <node id="2838654975957288939" at="88,0,89,0" concept="9" trace="ConceptDeclaration$gH" />
-      <node id="2838654975957288939" at="89,0,90,0" concept="9" trace="BinaryOperation$W1" />
-      <node id="2838654975957288939" at="93,0,94,0" concept="9" trace="binaryOperation$5SHJ" />
-      <node id="2838654975957288939" at="97,0,98,0" concept="9" trace="abstract$ibpT" />
-      <node id="2838654975957288939" at="40,0,43,0" concept="0" trace="BinaryOperationReference_Constraints#()V" />
-      <node id="5672696027942929166" at="62,46,65,15" concept="4" />
-      <node id="6836281137582776782" at="70,0,73,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="2838654975957288955" at="51,0,55,0" concept="5" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="6836281137582776773" at="68,81,73,20" concept="2" />
-      <node id="5672696027943215469" at="66,85,74,15" concept="4" />
-      <node id="6836281137582776763" at="61,74,75,13" concept="3" />
-      <node id="2838654975957288955" at="55,0,78,0" concept="5" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
-      <node id="2838654975957288955" at="49,56,78,10" concept="7" />
-      <node id="2838654975957288955" at="47,0,80,0" concept="5" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-      <node id="2838654975957288955" at="45,90,80,6" concept="6" />
-      <node id="2838654975957288939" at="44,0,85,0" concept="5" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="2838654975957288939" at="40,49,41,48" />
-      <scope id="2838654975957288955" at="52,63,53,161" />
-      <scope id="5672696027942929168" at="63,64,64,25" />
-      <scope id="6836281137582776783" at="70,51,71,215" />
-      <scope id="2838654975957288939" at="40,0,43,0" />
-      <scope id="6836281137582776782" at="70,0,73,0">
-        <var name="it" id="6836281137582776782" />
-      </scope>
-      <scope id="2838654975957288955" at="51,0,55,0" />
-      <scope id="5672696027943215471" at="67,51,73,20">
+      <node id="2838654975957288939" at="39,49,40,48" concept="10" />
+      <node id="2838654975957288955" at="51,63,52,161" concept="7" />
+      <node id="6836281137582776738" at="55,80,56,56" concept="6" />
+      <node id="6836281137582776744" at="56,56,57,0" concept="8" />
+      <node id="6836281137582776745" at="57,0,58,99" concept="6" />
+      <node id="5672696027942736257" at="58,99,59,60" concept="6" />
+      <node id="6836281137582776754" at="59,60,60,74" concept="6" />
+      <node id="5672696027943015491" at="62,64,63,25" concept="1" />
+      <node id="5672696027943132781" at="64,15,65,85" concept="6" />
+      <node id="6836281137582776768" at="66,51,67,81" concept="6" />
+      <node id="6836281137582776773" at="67,81,68,344" concept="2" />
+      <node id="6836281137582776796" at="70,13,71,59" concept="7" />
+      <node id="2838654975957288939" at="75,6,76,131" concept="6" />
+      <node id="2838654975957288955" at="76,131,77,42" concept="2" />
+      <node id="2838654975957288939" at="77,42,78,22" concept="7" />
+      <node id="2838654975957288939" at="82,0,83,0" concept="9" trace="BinaryOperationReference$wm" />
+      <node id="2838654975957288939" at="83,0,84,0" concept="9" trace="ConceptDeclaration$gH" />
+      <node id="2838654975957288939" at="84,0,85,0" concept="9" trace="BinaryOperation$W1" />
+      <node id="2838654975957288939" at="88,0,89,0" concept="9" trace="binaryOperation$5SHJ" />
+      <node id="2838654975957288939" at="92,0,93,0" concept="9" trace="abstract$ibpT" />
+      <node id="2838654975957288939" at="39,0,42,0" concept="0" trace="BinaryOperationReference_Constraints#()V" />
+      <node id="5672696027942929166" at="61,46,64,15" concept="4" />
+      <node id="2838654975957288955" at="50,0,54,0" concept="5" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="5672696027943215469" at="65,85,69,15" concept="4" />
+      <node id="6836281137582776763" at="60,74,70,13" concept="3" />
+      <node id="2838654975957288955" at="54,0,73,0" concept="5" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="2838654975957288955" at="48,56,73,10" concept="7" />
+      <node id="2838654975957288955" at="46,0,75,0" concept="5" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="2838654975957288955" at="44,90,75,6" concept="6" />
+      <node id="2838654975957288939" at="43,0,80,0" concept="5" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="2838654975957288939" at="39,49,40,48" />
+      <scope id="2838654975957288955" at="51,63,52,161" />
+      <scope id="5672696027942929168" at="62,64,63,25" />
+      <scope id="5672696027943215471" at="66,51,68,344">
         <var name="sm" id="6836281137582776769" />
       </scope>
-      <scope id="6836281137582776767" at="62,46,74,15">
+      <scope id="2838654975957288939" at="39,0,42,0" />
+      <scope id="2838654975957288955" at="50,0,54,0" />
+      <scope id="6836281137582776767" at="61,46,69,15">
         <var name="langModule" id="5672696027943132782" />
       </scope>
-      <scope id="6836281137582776763" at="61,74,75,13">
+      <scope id="6836281137582776763" at="60,74,70,13">
         <var name="language" id="6836281137582776765" />
       </scope>
-      <scope id="2838654975957288955" at="56,80,76,59">
+      <scope id="2838654975957288955" at="55,80,71,59">
         <var name="langs" id="6836281137582776755" />
         <var name="repo" id="5672696027942736258" />
         <var name="result" id="6836281137582776739" />
         <var name="sourceModule" id="6836281137582776746" />
       </scope>
-      <scope id="2838654975957288955" at="55,0,78,0">
+      <scope id="2838654975957288955" at="54,0,73,0">
         <var name="_context" id="2838654975957288955" />
       </scope>
-      <scope id="2838654975957288955" at="49,56,78,10" />
-      <scope id="2838654975957288955" at="47,0,80,0" />
-      <scope id="2838654975957288939" at="45,90,83,22">
+      <scope id="2838654975957288955" at="48,56,73,10" />
+      <scope id="2838654975957288955" at="46,0,75,0" />
+      <scope id="2838654975957288939" at="44,90,78,22">
         <var name="d0" id="2838654975957288955" />
         <var name="references" id="2838654975957288939" />
       </scope>
-      <scope id="2838654975957288939" at="44,0,85,0" />
-      <unit id="2838654975957288939" at="92,0,95,0" name="jetbrains.mps.baseLanguage.overloadedOperators.constraints.BinaryOperationReference_Constraints$LINKS" />
-      <unit id="2838654975957288939" at="96,0,99,0" name="jetbrains.mps.baseLanguage.overloadedOperators.constraints.BinaryOperationReference_Constraints$PROPS" />
-      <unit id="6836281137582776782" at="69,150,73,17" name="jetbrains.mps.baseLanguage.overloadedOperators.constraints.BinaryOperationReference_Constraints$1$1$1" />
-      <unit id="2838654975957288939" at="86,0,91,0" name="jetbrains.mps.baseLanguage.overloadedOperators.constraints.BinaryOperationReference_Constraints$CONCEPTS" />
-      <unit id="2838654975957288955" at="50,19,78,9" name="jetbrains.mps.baseLanguage.overloadedOperators.constraints.BinaryOperationReference_Constraints$1$1" />
-      <unit id="2838654975957288955" at="46,48,80,5" name="jetbrains.mps.baseLanguage.overloadedOperators.constraints.BinaryOperationReference_Constraints$1" />
-      <unit id="2838654975957288939" at="39,0,100,0" name="jetbrains.mps.baseLanguage.overloadedOperators.constraints.BinaryOperationReference_Constraints" />
+      <scope id="2838654975957288939" at="43,0,80,0" />
+      <unit id="2838654975957288939" at="87,0,90,0" name="jetbrains.mps.baseLanguage.overloadedOperators.constraints.BinaryOperationReference_Constraints$LINKS" />
+      <unit id="2838654975957288939" at="91,0,94,0" name="jetbrains.mps.baseLanguage.overloadedOperators.constraints.BinaryOperationReference_Constraints$PROPS" />
+      <unit id="2838654975957288939" at="81,0,86,0" name="jetbrains.mps.baseLanguage.overloadedOperators.constraints.BinaryOperationReference_Constraints$CONCEPTS" />
+      <unit id="2838654975957288955" at="49,19,73,9" name="jetbrains.mps.baseLanguage.overloadedOperators.constraints.BinaryOperationReference_Constraints$1$1" />
+      <unit id="2838654975957288955" at="45,48,75,5" name="jetbrains.mps.baseLanguage.overloadedOperators.constraints.BinaryOperationReference_Constraints$1" />
+      <unit id="2838654975957288939" at="38,0,95,0" name="jetbrains.mps.baseLanguage.overloadedOperators.constraints.BinaryOperationReference_Constraints" />
     </file>
   </root>
   <root nodeRef="r:9b7a7baa-7b52-4b41-8293-5aa14d41220f(jetbrains.mps.baseLanguage.overloadedOperators.constraints)/2838654975957402179">

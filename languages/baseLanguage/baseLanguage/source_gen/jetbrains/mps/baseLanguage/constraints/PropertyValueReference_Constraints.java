@@ -24,7 +24,6 @@ import jetbrains.mps.scope.EmptyScope;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.IClassifierType__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.behavior.ClassifierMember__BehaviorDescriptor;
 import java.util.Objects;
 import java.util.HashMap;
@@ -75,11 +74,7 @@ public class PropertyValueReference_Constraints extends BaseConstraintsDescripto
             final SNode enclosingProperty = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Property$iK, false, false);
             SNode classifierType = _quotation_createNode_yrz94z_a0d0b0a0a0a0a0a0a3(classifier);
             // sic! classifierType.getMembers(), not clasifier.getMembers()
-            return new NamedElementsScope(Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(classifierType), CONCEPTS.Property$iK)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return (boolean) ClassifierMember__BehaviorDescriptor.isVisible_id70J2WaK_oVl.invoke(it, classifier, _context.getContextNode()) && Objects.equals(it, enclosingProperty);
-              }
-            }));
+            return new NamedElementsScope(Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(classifierType), CONCEPTS.Property$iK)).where((it) -> (boolean) ClassifierMember__BehaviorDescriptor.isVisible_id70J2WaK_oVl.invoke(it, classifier, _context.getContextNode()) && Objects.equals(it, enclosingProperty)));
           }
         };
       }

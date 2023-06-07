@@ -61,7 +61,7 @@ public class FunctionMemberTarget_Constraints extends BaseConstraintsDescriptor 
             SignatureFilter filter = new SignatureFilterImpl<>(FunctionSignature.class);
 
             // Regardless of using a static type or not, we need instance functions
-            List<SignatureScope> list = Sequence.fromIterable(IType__BehaviorDescriptor.getInstanceScopes_id1ODRHGtuist.invoke(type, filter, _context.getContextNode(), ((boolean) true))).toListSequence();
+            List<SignatureScope> list = Sequence.fromIterable(IType__BehaviorDescriptor.getInstanceScopes_id1ODRHGtuist.invoke(type, filter, _context.getContextNode(), ((boolean) true))).toList();
             if (ReceiverTypeHelper.isStaticReceiver(operand)) {
               ListSequence.fromList(list).addElement(IType__BehaviorDescriptor.getFullStaticScope_id7ZA3QJnL$CF.invoke(type, filter, _context.getContextNode()));
             }

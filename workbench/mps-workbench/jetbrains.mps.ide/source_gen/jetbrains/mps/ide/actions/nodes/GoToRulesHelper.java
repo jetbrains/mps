@@ -17,7 +17,6 @@ import jetbrains.mps.smodel.Language;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -71,11 +70,7 @@ public final class GoToRulesHelper {
     }
 
     // todo: populate rules from other typesystem models!
-    List<SNode> rules = ListSequence.fromList(SModelOperations.roots(typesystem, CONCEPTS.AbstractRule$o9)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode node) {
-        return isApplicable(node, concept, exactConcept);
-      }
-    }).toListSequence();
+    List<SNode> rules = ListSequence.fromList(SModelOperations.roots(typesystem, CONCEPTS.AbstractRule$o9)).where((node) -> isApplicable(node, concept, exactConcept)).toList();
 
     return rules;
   }

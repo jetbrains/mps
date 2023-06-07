@@ -14,7 +14,6 @@ import java.util.List;
 import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuItem;
 import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.openapi.editor.menus.transformation.ActionItem;
 
 @MPSLaunch
@@ -42,11 +41,7 @@ public class LoadDefaultMenu_Test extends BaseTransformationTest {
       initEditorComponent("6436886136983447642", "");
       List<TransformationMenuItem> items = MenuLoadingUtils.loadDefaultMenu(getEditorComponent(), "test location");
 
-      Assert.assertTrue("default menu should contain an item labelled 'default menu item'", ListSequence.fromList(items).any(new IWhereFilter<TransformationMenuItem>() {
-        public boolean accept(TransformationMenuItem it) {
-          return it instanceof ActionItem && "default menu item".equals(((ActionItem) it).getLabelText(""));
-        }
-      }));
+      Assert.assertTrue("default menu should contain an item labelled 'default menu item'", ListSequence.fromList(items).any((it) -> it instanceof ActionItem && "default menu item".equals(((ActionItem) it).getLabelText(""))));
     }
   }
 }

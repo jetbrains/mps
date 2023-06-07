@@ -6,7 +6,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -30,18 +29,10 @@ public class ResourceVariableHelper {
       SNode coercedNode_zbiirw_d0c = TypecheckingFacade.getFromContext().coerceType(SLinkOperations.getTarget(myVariable, LINKS.type$a1UY), CONCEPTS.ClassifierType$bL);
       if (coercedNode_zbiirw_d0c != null) {
         SNode classifier = SLinkOperations.getTarget(coercedNode_zbiirw_d0c, LINKS.classifier$cxMr);
-        if (!(ListSequence.fromList(Classifier__BehaviorDescriptor.getAllSuperClassifiers_id59G_UM6ah0X.invoke(classifier)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SNodeOperations.is(it, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~AutoCloseable"));
-          }
-        }))) {
+        if (!(ListSequence.fromList(Classifier__BehaviorDescriptor.getAllSuperClassifiers_id59G_UM6ah0X.invoke(classifier)).any((it) -> SNodeOperations.is(it, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~AutoCloseable"))))) {
           return null;
         }
-        Iterable<SNode> closeMethods = Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(coercedNode_zbiirw_d0c), CONCEPTS.InstanceMethodDeclaration$39)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return "close".equals(SPropertyOperations.getString(it, PROPS.name$MnvL)) && ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).isEmpty() && !((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(it)) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$Yyua), CONCEPTS.PublicVisibility$R0);
-          }
-        });
+        Iterable<SNode> closeMethods = Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(coercedNode_zbiirw_d0c), CONCEPTS.InstanceMethodDeclaration$39)).where((it) -> "close".equals(SPropertyOperations.getString(it, PROPS.name$MnvL)) && ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).isEmpty() && !((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(it)) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$Yyua), CONCEPTS.PublicVisibility$R0));
         // I hope closeMethods.size to be exactly 1, but don't care if it's more than 1; all throws are fine.
         return SLinkOperations.collectMany(closeMethods, LINKS.throwsItem$CdW$);
       } else {

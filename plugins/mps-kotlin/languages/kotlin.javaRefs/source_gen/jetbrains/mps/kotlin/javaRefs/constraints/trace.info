@@ -532,38 +532,31 @@
   </root>
   <root nodeRef="r:a8be947e-2401-458d-a5e8-7789d9a23eaf(jetbrains.mps.kotlin.javaRefs.constraints)/7171720247402635941">
     <file name="JavaClassProtectedConstructorScope.java">
-      <node id="7171720247402637960" at="23,73,24,23" concept="11" />
-      <node id="3050821798733939049" at="31,58,32,199" concept="6" />
-      <node id="7171720247402845415" at="37,43,38,26" concept="7" />
-      <node id="7171720247402818028" at="38,26,39,176" concept="6" />
-      <node id="7171720247402635941" at="43,0,44,0" concept="9" trace="ConstructorDeclaration$yG" />
-      <node id="7171720247402635941" at="44,0,45,0" concept="9" trace="ProtectedVisibility$hr" />
-      <node id="7171720247402635941" at="48,0,49,0" concept="9" trace="visibility$Yyua" />
-      <node id="7171720247402637904" at="23,0,26,0" concept="1" trace="JavaClassProtectedConstructorScope#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="3050821798733939045" at="31,0,34,0" concept="4" trace="translate#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
-      <node id="7171720247402770329" at="37,0,41,0" concept="4" trace="isVisible#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="7171720247402764499" at="29,72,34,7" concept="6" />
-      <node id="7171720247402739078" at="28,0,36,0" concept="4" trace="getAvailableElements#(Ljava/lang/String;)Ljava/lang/Iterable;" />
-      <scope id="7171720247402637959" at="23,73,24,23" />
-      <scope id="3050821798733939046" at="31,58,32,199" />
-      <scope id="7171720247402770332" at="37,43,39,176" />
-      <scope id="7171720247402637904" at="23,0,26,0">
+      <node id="7171720247402637960" at="22,73,23,23" concept="11" />
+      <node id="7171720247402764499" at="28,72,29,286" concept="6" />
+      <node id="7171720247402845415" at="32,43,33,26" concept="7" />
+      <node id="7171720247402818028" at="33,26,34,176" concept="6" />
+      <node id="7171720247402635941" at="38,0,39,0" concept="9" trace="ConstructorDeclaration$yG" />
+      <node id="7171720247402635941" at="39,0,40,0" concept="9" trace="ProtectedVisibility$hr" />
+      <node id="7171720247402635941" at="43,0,44,0" concept="9" trace="visibility$Yyua" />
+      <node id="7171720247402637904" at="22,0,25,0" concept="1" trace="JavaClassProtectedConstructorScope#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="7171720247402739078" at="27,0,31,0" concept="4" trace="getAvailableElements#(Ljava/lang/String;)Ljava/lang/Iterable;" />
+      <node id="7171720247402770329" at="32,0,36,0" concept="4" trace="isVisible#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <scope id="7171720247402637959" at="22,73,23,23" />
+      <scope id="7171720247402739119" at="28,72,29,286" />
+      <scope id="7171720247402770332" at="32,43,34,176" />
+      <scope id="7171720247402637904" at="22,0,25,0">
         <var name="contextNode" id="7171720247402637907" />
       </scope>
-      <scope id="3050821798733939045" at="31,0,34,0">
-        <var name="classifier" id="3050821798733939045" />
-      </scope>
-      <scope id="7171720247402770329" at="37,0,41,0">
-        <var name="node" id="7171720247402772227" />
-      </scope>
-      <scope id="7171720247402739119" at="29,72,34,7" />
-      <scope id="7171720247402739078" at="28,0,36,0">
+      <scope id="7171720247402739078" at="27,0,31,0">
         <var name="prefix" id="7171720247402739112" />
       </scope>
-      <unit id="7171720247402635941" at="47,0,50,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaClassProtectedConstructorScope$LINKS" />
-      <unit id="3050821798733939045" at="30,89,34,5" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaClassProtectedConstructorScope$1" />
-      <unit id="7171720247402635941" at="42,0,46,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaClassProtectedConstructorScope$CONCEPTS" />
-      <unit id="7171720247402635941" at="22,0,51,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaClassProtectedConstructorScope" />
+      <scope id="7171720247402770329" at="32,0,36,0">
+        <var name="node" id="7171720247402772227" />
+      </scope>
+      <unit id="7171720247402635941" at="42,0,45,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaClassProtectedConstructorScope$LINKS" />
+      <unit id="7171720247402635941" at="37,0,41,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaClassProtectedConstructorScope$CONCEPTS" />
+      <unit id="7171720247402635941" at="21,0,46,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaClassProtectedConstructorScope" />
     </file>
   </root>
   <root nodeRef="r:a8be947e-2401-458d-a5e8-7789d9a23eaf(jetbrains.mps.kotlin.javaRefs.constraints)/8216400987860028373">
@@ -577,8 +570,8 @@
       <node id="201447423893325250" at="58,225,59,0" concept="8" />
       <node id="8216400987860076004" at="59,0,60,103" concept="7" />
       <node id="3707072488409274827" at="60,103,61,105" concept="5" />
-      <node id="3707072488409311238" at="61,105,62,205" concept="5" />
-      <node id="3707072488409314529" at="62,205,63,159" concept="2" />
+      <node id="3707072488409311238" at="61,105,62,197" concept="5" />
+      <node id="3707072488409314529" at="62,197,63,159" concept="2" />
       <node id="3707072488409336047" at="63,159,64,0" concept="8" />
       <node id="3707072488409336520" at="64,0,65,111" concept="6" />
       <node id="8216400987860028373" at="69,6,70,131" concept="5" />

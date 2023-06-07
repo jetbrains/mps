@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.scopes.Members;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -47,11 +46,7 @@ public final class StaticMethodCall__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static Iterable<SNode> getAvailableMethodDeclarations_id50EF2fWdwEN(@NotNull SNode __thisNode__, final String methodName) {
-    return Sequence.fromIterable(Members.visibleStaticMethods(SLinkOperations.getTarget(__thisNode__, LINKS.classConcept$M5BC), __thisNode__)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), methodName);
-      }
-    }).toListSequence();
+    return Sequence.fromIterable(Members.visibleStaticMethods(SLinkOperations.getTarget(__thisNode__, LINKS.classConcept$M5BC), __thisNode__)).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), methodName)).toList();
   }
   /*package*/ static boolean canBeConvertedToLocal_id2RbFUmZleRt(@NotNull SNode __thisNode__) {
     SNode classConcept1 = SLinkOperations.getTarget(__thisNode__, LINKS.classConcept$M5BC);

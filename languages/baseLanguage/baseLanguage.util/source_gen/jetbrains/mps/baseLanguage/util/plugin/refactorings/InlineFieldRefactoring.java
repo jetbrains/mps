@@ -6,7 +6,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -19,15 +19,15 @@ public abstract class InlineFieldRefactoring {
   public abstract SNode doRefactoring();
 
   public Iterable<SNode> findAllReferences(final SNode variable) {
-    return ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(variable), CONCEPTS.VariableReference$TC)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
+    return ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(variable), CONCEPTS.VariableReference$TC)).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      public Boolean invoke(SNode it) {
         return SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == variable;
       }
     });
   }
   public Iterable<SNode> findAllReferenceOperations(final SNode variable) {
-    return ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(variable), CONCEPTS.FieldReferenceOperation$fU)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
+    return ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(variable), CONCEPTS.FieldReferenceOperation$fU)).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      public Boolean invoke(SNode it) {
         return SLinkOperations.getTarget(it, LINKS.fieldDeclaration$H7Ag) == variable;
       }
     });

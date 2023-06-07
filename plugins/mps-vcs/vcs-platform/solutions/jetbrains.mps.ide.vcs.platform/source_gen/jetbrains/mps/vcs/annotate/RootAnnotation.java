@@ -25,13 +25,10 @@ import com.intellij.openapi.vcs.history.VcsRevisionNumber;
 import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.vcs.diff.ModelChangeSet;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.vcs.diff.merge.MovesAwareMergeConflictsBuilder;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
 import java.util.Arrays;
@@ -41,8 +38,8 @@ import jetbrains.mps.vcs.diff.changes.StructureChange;
 import java.util.Set;
 import java.util.HashSet;
 import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.vcs.diff.changes.NodeGroupWrapChange;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.vcs.diff.changes.ModifiedNodesGroup;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.errors.messageTargets.DeletedNodeMessageTarget;
@@ -136,11 +133,7 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
       ListSequence.fromList(myProcessedCommits).addElement(node.getNodeWithLoadedModel());
     }
     synchronized (myUpdateListeners) {
-      ListSequence.fromList(myUpdateListeners).visitAll(new IVisitor<RootAnnotationUpdateListener>() {
-        public void visit(RootAnnotationUpdateListener it) {
-          it.revisionProcessed(changes);
-        }
-      });
+      ListSequence.fromList(myUpdateListeners).visitAll((it) -> it.revisionProcessed(changes));
     }
   }
 
@@ -181,15 +174,7 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
 
     MovesAwareMergeConflictsBuilder conflictsBuilder = MovesAwareMergeConflictsBuilder.createOppositeConflictsBuilder(changeSet1.getOppositeChangeSet(), changeSet2.getOppositeChangeSet());
 
-    List<ModelChange> changes = SetSequence.fromSet(MapSequence.fromMap(conflictsBuilder.getConflictingChanges()).keySet()).concat(SetSequence.fromSet(MapSequence.fromMap(conflictsBuilder.getSymmetricChanges()).keySet())).distinct().where(new IWhereFilter<ModelChange>() {
-      public boolean accept(ModelChange it) {
-        return changeIsRelevant(it);
-      }
-    }).select(new ISelector<ModelChange, ModelChange>() {
-      public ModelChange select(ModelChange it) {
-        return it.getOppositeChange();
-      }
-    }).toListSequence();
+    List<ModelChange> changes = SetSequence.fromSet(MapSequence.fromMap(conflictsBuilder.getConflictingChanges()).keySet()).concat(SetSequence.fromSet(MapSequence.fromMap(conflictsBuilder.getSymmetricChanges()).keySet())).distinct().where((it) -> changeIsRelevant(it)).select((it) -> it.getOppositeChange()).toList();
 
     processCommitChanges(changes, graphNode);
   }
@@ -223,40 +208,26 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
   }
 
   private static List<StructureChange> getRelevantChanges(List<ModelChange> changes) {
-    return ListSequence.fromList(changes).ofType(StructureChange.class).where(new IWhereFilter<StructureChange>() {
-      public boolean accept(StructureChange it) {
-        return changeIsRelevant(it);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(changes).ofType(StructureChange.class).where((it) -> changeIsRelevant(it)).toList();
   }
 
   private static Set<SNodeId> getMovedNodeIds(List<ModelChange> changes) {
-    return SetSequence.fromSetWithValues(new HashSet<SNodeId>(), ListSequence.fromList(changes).ofType(NodeGroupMoveChange.class).translate(new ITranslator2<NodeGroupMoveChange, SNodeId>() {
-      public Iterable<SNodeId> translate(NodeGroupMoveChange it) {
-        return it.getIds(true);
-      }
-    }).concat(ListSequence.fromList(changes).ofType(NodeGroupWrapChange.class).translate(new ITranslator2<NodeGroupWrapChange, SNodeId>() {
-      public Iterable<SNodeId> translate(NodeGroupWrapChange it) {
-        return ListSequence.fromList(it.getWrappingGroup().getWrappedGroups()).where(new IWhereFilter<ModifiedNodesGroup>() {
-          public boolean accept(ModifiedNodesGroup it) {
-            return it.isMove();
-          }
-        }).translate(new ITranslator2<ModifiedNodesGroup, SNodeId>() {
-          public Iterable<SNodeId> translate(ModifiedNodesGroup it) {
-            return it.getIds();
-          }
-        });
-      }
+    return SetSequence.fromSetWithValues(new HashSet<SNodeId>(), ListSequence.fromList(changes).ofType(NodeGroupMoveChange.class).translate((it) -> it.getIds(true)).concat(ListSequence.fromList(changes).ofType(NodeGroupWrapChange.class).translate((it) -> {
+      return ListSequence.fromList(it.getWrappingGroup().getWrappedGroups()).where(new _FunctionTypes._return_P1_E0<Boolean, ModifiedNodesGroup>() {
+        public Boolean invoke(ModifiedNodesGroup it) {
+          return it.isMove();
+        }
+      }).translate(new _FunctionTypes._return_P1_E0<List<SNodeId>, ModifiedNodesGroup>() {
+        public List<SNodeId> invoke(ModifiedNodesGroup it) {
+          return it.getIds();
+        }
+      });
     })));
   }
 
   private synchronized void processCommitChanges(List<ModelChange> modelChanges, final CommitsGraphNode graphNode) {
     final Set<SNodeId> movedNodesIds = getMovedNodeIds(modelChanges);
-    Collection<RevisionNodeChange> revisionNodeChanges = ListSequence.fromList(getRelevantChanges(modelChanges)).translate(new ITranslator2<StructureChange, RevisionNodeChange>() {
-      public Iterable<RevisionNodeChange> translate(StructureChange it) {
-        return getRevisionNodeChangesForModelChange(it, graphNode, movedNodesIds);
-      }
-    }).toListSequence();
+    Collection<RevisionNodeChange> revisionNodeChanges = ListSequence.fromList(getRelevantChanges(modelChanges)).translate((it) -> getRevisionNodeChangesForModelChange(it, graphNode, movedNodesIds)).toList();
     if (CollectionSequence.fromCollection(revisionNodeChanges).isNotEmpty()) {
       MapSequence.fromMap(myAnnotation).put(graphNode, new RevisionChanges(graphNode, revisionNodeChanges));
     }
@@ -265,11 +236,7 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
   private Iterable<RevisionNodeChange> getRevisionNodeChangesForModelChange(final StructureChange modelChange, final CommitsGraphNode graphNode, final Set<SNodeId> movedNodesIds) {
     final Wrappers._T<Collection<RevisionNodeChange>> modelChangeNodeChanges = new Wrappers._T<Collection<RevisionNodeChange>>();
     myModelAccess.runReadAction(() -> modelChangeNodeChanges.value = RevisionNodeChange.createRevisionNodeChanges(graphNode, modelChange, movedNodesIds));
-    return CollectionSequence.fromCollection(modelChangeNodeChanges.value).where(new IWhereFilter<RevisionNodeChange>() {
-      public boolean accept(RevisionNodeChange it) {
-        return !(it.getMessageTarget() instanceof DeletedNodeMessageTarget);
-      }
-    });
+    return CollectionSequence.fromCollection(modelChangeNodeChanges.value).where((it) -> !(it.getMessageTarget() instanceof DeletedNodeMessageTarget));
   }
 
   private ModelChangeSet calcChangeSet(final SModel prevModel, final SModel model, final boolean withOpposite) {

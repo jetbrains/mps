@@ -10,11 +10,7 @@ import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import jetbrains.mps.vcs.diff.changes.StructureChange;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import org.jetbrains.mps.openapi.model.SNodeId;
-import jetbrains.mps.errors.messageTargets.MessageTarget;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.vcs.diff.changes.AddRootChange;
 import jetbrains.mps.vcs.diff.changes.DeleteRootChange;
 
@@ -28,15 +24,7 @@ public class ChangeEditorMessageFactory {
       return Collections.emptyList();
     }
 
-    return ListSequence.fromList(((StructureChange) change).createMessageTargetsWithIds(!(isOldEditor))).where(new IWhereFilter<Tuples._2<SNodeId, MessageTarget>>() {
-      public boolean accept(Tuples._2<SNodeId, MessageTarget> it) {
-        return changeCanHaveMessageForId(change, it._0(), editedModel, isOldEditor);
-      }
-    }).select(new ISelector<Tuples._2<SNodeId, MessageTarget>, ChangeEditorMessage>() {
-      public ChangeEditorMessage select(Tuples._2<SNodeId, MessageTarget> it) {
-        return new ChangeEditorMessage(editedModel.getNode(it._0()), it._1(), owner, change, conflictChecker, highlighted);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(((StructureChange) change).createMessageTargetsWithIds(!(isOldEditor))).where((it) -> changeCanHaveMessageForId(change, it._0(), editedModel, isOldEditor)).select((it) -> new ChangeEditorMessage(editedModel.getNode(it._0()), it._1(), owner, change, conflictChecker, highlighted)).toList();
   }
 
   private static boolean changeCanHaveMessageForId(ModelChange change, SNodeId nodeId, SModel editedModel, boolean isOldEditor) {

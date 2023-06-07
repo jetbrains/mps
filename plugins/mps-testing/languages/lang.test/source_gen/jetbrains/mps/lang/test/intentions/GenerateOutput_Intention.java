@@ -22,14 +22,12 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import java.util.List;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScript;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.test.runtime.BaseMigrationTestBody;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.Iterator;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import jetbrains.mps.lang.migration.runtime.base.MigrationAspectDescriptor;
 import jetbrains.mps.lang.migration.behavior.IMigrationUnit__BehaviorDescriptor;
@@ -75,14 +73,10 @@ public final class GenerateOutput_Intention extends AbstractIntentionDescriptor 
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SModel tempModel = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule());
-      for (SNode root : ListSequence.fromList(CopyUtil.copy(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, LINKS.inputNodes$aDmk), LINKS.nodeToCheck$OBcW)).toListSequence()))) {
+      for (SNode root : ListSequence.fromList(CopyUtil.copy(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, LINKS.inputNodes$aDmk), LINKS.nodeToCheck$OBcW)).toList()))) {
         SModelOperations.addRootNode(tempModel, root);
       }
-      List<MigrationScript> migrationScripts = Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, LINKS.migration$BNbu), LINKS.migration$XW2Z)).select(new ISelector<SNode, MigrationScript>() {
-        public MigrationScript select(SNode it) {
-          return check_hr1otd_a0a0a0a0c0e9(check_hr1otd_a0a0a0a0a2a4j(LanguageRegistry.getInstance().getLanguage(((Language) SNodeOperations.getModel(it).getModule()))), it);
-        }
-      }).toListSequence();
+      List<MigrationScript> migrationScripts = Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, LINKS.migration$BNbu), LINKS.migration$XW2Z)).select((it) -> check_hr1otd_a0a0a0a0c0e9(check_hr1otd_a0a0a0a0a2a4j(LanguageRegistry.getInstance().getLanguage(((Language) SNodeOperations.getModel(it).getModule()))), it)).toList();
       Collection<SNode> output = CopyUtil.copy(BaseMigrationTestBody.runMigration(tempModel, ListSequence.fromList(migrationScripts).toGenericArray(MigrationScript.class)));
       if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.outputNodes$IIDt)).count() != CollectionSequence.fromCollection(output).count()) {
         ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.outputNodes$IIDt)).clear();
@@ -114,19 +108,13 @@ public final class GenerateOutput_Intention extends AbstractIntentionDescriptor 
     }
 
     private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-      List<MigrationScript> migrationScripts = Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, LINKS.migration$BNbu), LINKS.migration$XW2Z)).select(new ISelector<SNode, MigrationScript>() {
-        public MigrationScript select(SNode it) {
-          if (!(SNodeOperations.getModel(it).getModule() instanceof Language)) {
-            return null;
-          }
-          return check_hr1otd_a1a0a0a0a0i9(check_hr1otd_a0b0a0a0a0a8j(LanguageRegistry.getInstance().getLanguage(((Language) SNodeOperations.getModel(it).getModule()))), it);
+      List<MigrationScript> migrationScripts = Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, LINKS.migration$BNbu), LINKS.migration$XW2Z)).select((it) -> {
+        if (!(SNodeOperations.getModel(it).getModule() instanceof Language)) {
+          return null;
         }
-      }).toListSequence();
-      return ListSequence.fromList(migrationScripts).all(new IWhereFilter<MigrationScript>() {
-        public boolean accept(MigrationScript it) {
-          return it != null;
-        }
-      });
+        return check_hr1otd_a1a0a0a0a0i9(check_hr1otd_a0b0a0a0a0a8j(LanguageRegistry.getInstance().getLanguage(((Language) SNodeOperations.getModel(it).getModule()))), it);
+      }).toList();
+      return ListSequence.fromList(migrationScripts).all((it) -> it != null);
     }
 
 

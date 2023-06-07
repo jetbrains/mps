@@ -18,7 +18,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.kotlin.behavior.IFunctionDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.kotlin.behavior.KotlinParameterDeclaration;
 import jetbrains.mps.kotlin.behavior.IFunctionIdentifier__BehaviorDescriptor;
 import jetbrains.mps.kotlin.baseLanguage.toJava.KtToJavaConversion;
@@ -40,11 +39,7 @@ public final class IKotlinFunctionCall__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static Iterable<ParameterDeclaration> getFunctionParameters_idUG7NftR_2Q(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(IFunctionDeclaration__BehaviorDescriptor.getParameters_id6f3juM$_Kx4.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.target$7dy6))).select(new ISelector<SNode, KotlinParameterDeclaration>() {
-      public KotlinParameterDeclaration select(SNode parameter) {
-        return new KotlinParameterDeclaration(parameter);
-      }
-    });
+    return ListSequence.fromList(IFunctionDeclaration__BehaviorDescriptor.getParameters_id6f3juM$_Kx4.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.target$7dy6))).select((parameter) -> new KotlinParameterDeclaration(parameter));
   }
   /*package*/ static Iterable<TypeParameterDeclaration> getFunctionTypeParameters_id1t03WaySlJT(@NotNull SNode __thisNode__) {
     return IFunctionIdentifier__BehaviorDescriptor.getTypeParameters_id1VI7K1kLcNv.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.target$7dy6));

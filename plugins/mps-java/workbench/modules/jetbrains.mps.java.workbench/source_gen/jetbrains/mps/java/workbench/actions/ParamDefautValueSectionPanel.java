@@ -13,7 +13,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.border.TitledBorder;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import com.intellij.openapi.ui.ValidationInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Map;
@@ -24,7 +23,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.event.SPropertyChangeEvent;
 import org.jetbrains.mps.openapi.event.SReferenceChangeEvent;
 import org.jetbrains.mps.openapi.event.SNodeAddEvent;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.event.SNodeRemoveEvent;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -62,11 +60,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   public void dispose() {
-    ListSequence.fromList(parameters).visitAll(new IVisitor<ParamDefaultValueEditor>() {
-      public void visit(ParamDefaultValueEditor it) {
-        it.dispose();
-      }
-    });
+    ListSequence.fromList(parameters).visitAll((it) -> it.dispose());
   }
 
   public void validate(List<ValidationInfo> reports) {
@@ -86,11 +80,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   public Map<SNode, SNode> getDefaultValues() {
     final Map<SNode, SNode> mapping = MapSequence.fromMap(new HashMap<SNode, SNode>());
 
-    ListSequence.fromList(parameters).visitAll(new IVisitor<ParamDefaultValueEditor>() {
-      public void visit(ParamDefaultValueEditor it) {
-        MapSequence.fromMap(mapping).put(it.getParameter(), it.getDefaultValue());
-      }
-    });
+    ListSequence.fromList(parameters).visitAll((it) -> MapSequence.fromMap(mapping).put(it.getParameter(), it.getDefaultValue()));
 
     return mapping;
   }
@@ -145,11 +135,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
         if ((ancestor != null) && (SLinkOperations.getTarget(ancestor, LINKS.type$a1UY) != null)) {
           // Find editor (if any yet)
           boolean isArityType = SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ancestor, LINKS.type$a1UY), CONCEPTS.VariableArityType$KF);
-          ParamDefaultValueEditor editor = ListSequence.fromList(parameters).findFirst(new IWhereFilter<ParamDefaultValueEditor>() {
-            public boolean accept(ParamDefaultValueEditor it) {
-              return it.getParameter() == ancestor;
-            }
-          });
+          ParamDefaultValueEditor editor = ListSequence.fromList(parameters).findFirst((it) -> it.getParameter() == ancestor);
 
           if (editor == null) {
             // If no editor and the type is not arity type (checked inside method), there should be an editor
@@ -179,15 +165,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
     {
       final SNode param = event.getChild();
       if (SNodeOperations.isInstanceOf(param, CONCEPTS.ParameterDeclaration$RG)) {
-        ListSequence.fromList(parameters).removeWhere(new IWhereFilter<ParamDefaultValueEditor>() {
-          public boolean accept(ParamDefaultValueEditor it) {
-            if (it.getParameter() == param) {
-              it.dispose();
-              return true;
-            }
-
-            return false;
+        ListSequence.fromList(parameters).removeWhere((it) -> {
+          if (it.getParameter() == param) {
+            it.dispose();
+            return true;
           }
+
+          return false;
         });
 
         updateVisibility();

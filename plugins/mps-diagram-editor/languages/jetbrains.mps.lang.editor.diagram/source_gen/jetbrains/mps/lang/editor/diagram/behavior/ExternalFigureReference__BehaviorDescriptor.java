@@ -15,9 +15,7 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -38,18 +36,10 @@ public final class ExternalFigureReference__BehaviorDescriptor extends BaseBHDes
   }
 
   /*package*/ static List<String> getFigureParameterNames_id1iN4mn3lWCq(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.figure$O2V), LINKS.fields$KUgT)).select(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.figure$O2V), LINKS.fields$KUgT)).select((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL)).toList();
   }
   /*package*/ static SNode getFigureParameter_id1iN4mn3oxt8(@NotNull SNode __thisNode__, final String name) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.figure$O2V), LINKS.fields$KUgT)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), name);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.figure$O2V), LINKS.fields$KUgT)).findFirst((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), name));
   }
 
   /*package*/ ExternalFigureReference__BehaviorDescriptor() {

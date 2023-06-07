@@ -19,7 +19,6 @@ import jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.NodeDecoratorView;
 import jetbrains.jetpad.projectional.view.View;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.nodeEditor.cells.jetpad.JetpadUtils;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.SelectionFrameView;
 
 @MPSLaunch
@@ -54,11 +53,7 @@ public class BlockDecoratorTest_Test extends BaseTransformationTest {
       Assert.assertTrue(descendantMapper.getTarget() instanceof NodeDecoratorView);
       NodeDecoratorView nodeDecoratorView = ((NodeDecoratorView) descendantMapper.getTarget());
       Assert.assertTrue(nodeDecoratorView.hasError.get());
-      View errorView = Sequence.fromIterable(JetpadUtils.getAllChildren(nodeDecoratorView)).findFirst(new IWhereFilter<View>() {
-        public boolean accept(View it) {
-          return it instanceof SelectionFrameView;
-        }
-      });
+      View errorView = Sequence.fromIterable(JetpadUtils.getAllChildren(nodeDecoratorView)).findFirst((it) -> it instanceof SelectionFrameView);
       Assert.assertTrue(errorView != null);
       Assert.assertTrue(errorView.visible().get());
 

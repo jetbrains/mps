@@ -11,23 +11,18 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.make.facet.FacetRegistry;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.make.script.IResult;
 import jetbrains.mps.make.script.IScriptController;
 import jetbrains.mps.make.resources.IResource;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.make.facet.ITargetEx2;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.make.script.IJobMonitor;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.make.facet.ITargetEx;
 import jetbrains.mps.make.script.IFeedback;
 import jetbrains.mps.make.script.IJob;
@@ -76,11 +71,7 @@ public class Script implements IScript {
     if (targetRange.hasCycles()) {
       error("cycle(s) detected: " + targetRange.cycles());
     }
-    if (startingTarget != null && !(Sequence.fromIterable(targetRange.targetAndSortedPrecursors(finalTarget)).select(new ISelector<ITarget, ITarget.Name>() {
-      public ITarget.Name select(ITarget t) {
-        return t.getName();
-      }
-    }).contains(startingTarget))) {
+    if (startingTarget != null && !(Sequence.fromIterable(targetRange.targetAndSortedPrecursors(finalTarget)).select((t) -> t.getName()).contains(startingTarget))) {
       error("invalid starting target: " + startingTarget);
     }
     validated = true;
@@ -155,61 +146,57 @@ public class Script implements IScript {
       monitor.advance(1);
 
       final Wrappers._T<ITarget.Name> waitFor = new Wrappers._T<ITarget.Name>(startingTarget);
-      Iterable<ITarget> toExecute = Sequence.fromIterable(targetRange.targetAndSortedPrecursors(finalTarget)).translate(new ITranslator2<ITarget, ITarget>() {
-        public Iterable<ITarget> translate(final ITarget tn) {
-          return new Iterable<ITarget>() {
-            public Iterator<ITarget> iterator() {
-              return new YieldingIterator<ITarget>() {
-                private int __CP__ = 0;
-                protected boolean moveToNext() {
+      Iterable<ITarget> toExecute = Sequence.fromIterable(targetRange.targetAndSortedPrecursors(finalTarget)).translate((tn) -> {
+        return (Iterable<ITarget>) () -> {
+          return new YieldingIterator<ITarget>() {
+            private int __CP__ = 0;
+            protected boolean moveToNext() {
 __loop__:
-                  do {
+              do {
 __switch__:
-                    switch (this.__CP__) {
-                      case -1:
-                        assert false : "Internal error";
-                        return false;
-                      case 2:
-                        if (waitFor.value != null) {
-                          this.__CP__ = 3;
-                          break;
-                        }
-                        this.__CP__ = 7;
-                        break;
-                      case 4:
-                        if (waitFor.value.equals(tn.getName())) {
-                          this.__CP__ = 5;
-                          break;
-                        }
-                        this.__CP__ = 1;
-                        break;
-                      case 8:
-                        this.__CP__ = 1;
-                        this.yield(tn);
-                        return true;
-                      case 0:
-                        this.__CP__ = 2;
-                        break;
-                      case 3:
-                        this.__CP__ = 4;
-                        break;
-                      case 5:
-                        waitFor.value = null;
-                        this.__CP__ = 1;
-                        break;
-                      case 7:
-                        this.__CP__ = 8;
-                        break;
-                      default:
-                        break __loop__;
+                switch (this.__CP__) {
+                  case -1:
+                    assert false : "Internal error";
+                    return false;
+                  case 2:
+                    if (waitFor.value != null) {
+                      this.__CP__ = 3;
+                      break;
                     }
-                  } while (true);
-                  return false;
+                    this.__CP__ = 7;
+                    break;
+                  case 4:
+                    if (waitFor.value.equals(tn.getName())) {
+                      this.__CP__ = 5;
+                      break;
+                    }
+                    this.__CP__ = 1;
+                    break;
+                  case 8:
+                    this.__CP__ = 1;
+                    this.yield(tn);
+                    return true;
+                  case 0:
+                    this.__CP__ = 2;
+                    break;
+                  case 3:
+                    this.__CP__ = 4;
+                    break;
+                  case 5:
+                    waitFor.value = null;
+                    this.__CP__ = 1;
+                    break;
+                  case 7:
+                    this.__CP__ = 8;
+                    break;
+                  default:
+                    break __loop__;
                 }
-              };
+              } while (true);
+              return false;
             }
           };
-        }
+        };
       });
 
       LOG.debug("Beginning to execute script");
@@ -251,38 +238,18 @@ __switch__:
     results.addResult(TIME_STATISTIC_RESULT_NAME, new IResult.SUCCESS(Sequence.<IResource>singleton(new TimeStatisticResource(timeStatistic))));
 
     ctl.runJobWithMonitor((final IJobMonitor monit) -> {
-      monitor.start("", Sequence.fromIterable(toExecute).foldLeft(0, new ILeftCombinator<ITarget, Integer>() {
-        public Integer combine(Integer s, ITarget it) {
-          return s + workEstimate(it);
-        }
-      }));
+      monitor.start("", Sequence.fromIterable(toExecute).foldLeft(0, (Integer s, ITarget it) -> s + workEstimate(it)));
       try {
 with_targets:
         for (final ITarget trg : Sequence.fromIterable(toExecute)) {
           LOG.debug("Executing " + trg.getName());
           try {
             Iterable<ITarget> impre = targetRange.immediatePrecursors(trg.getName());
-            Iterable<IResource> preInput = Sequence.fromIterable(impre).select(new ISelector<ITarget, IResult>() {
-              public IResult select(ITarget t) {
-                return results.getResult(t.getName());
-              }
-            }).translate(new ITranslator2<IResult, IResource>() {
-              public Iterable<IResource> translate(IResult r) {
-                return r.output();
-              }
-            });
+            Iterable<IResource> preInput = Sequence.fromIterable(impre).select((t) -> results.getResult(t.getName())).translate((r) -> r.output());
             Iterable<? extends IResource> allinput = (Sequence.fromIterable(impre).isEmpty() ? scriptInput : preInput);
-            Iterable<IResource> rawInput = Sequence.fromIterable(allinput).distinct().ofType(IResource.class).toListSequence();
+            Iterable<IResource> rawInput = Sequence.fromIterable(allinput).distinct().ofType(IResource.class).toList();
             LOG.debug("Raw input: " + rawInput);
-            Iterable<IResource> input = (Iterable<IResource>) Sequence.fromIterable(rawInput).where(new IWhereFilter<IResource>() {
-              public boolean accept(final IResource res) {
-                return Sequence.fromIterable(trg.expectedInput()).any(new IWhereFilter<Class<? extends IResource>>() {
-                  public boolean accept(Class<? extends IResource> ifc) {
-                    return ifc.isInstance(res);
-                  }
-                });
-              }
-            }).toListSequence();
+            Iterable<IResource> input = (Iterable<IResource>) Sequence.fromIterable(rawInput).where((final IResource res) -> Sequence.fromIterable(trg.expectedInput()).any((ifc) -> ifc.isInstance(res))).toList();
             LOG.debug("Input: " + input);
 
             if (trg.requiresInput()) {
@@ -305,11 +272,7 @@ with_targets:
             long startTime = System.currentTimeMillis();
             IResult jr;
             try {
-              jr = job.execute(Sequence.fromIterable(input).where(new IWhereFilter<IResource>() {
-                public boolean accept(IResource it) {
-                  return !(monit.stopRequested());
-                }
-              }), monit, new PropertiesAccessor(pool), subMonitor);
+              jr = job.execute(Sequence.fromIterable(input).where((it) -> !(monit.stopRequested())), monit, new PropertiesAccessor(pool), subMonitor);
             } finally {
               MapSequence.fromMap(timeStatistic).put(trg.getName(), ((MapSequence.fromMap(timeStatistic).containsKey(trg.getName()) ? MapSequence.fromMap(timeStatistic).get(trg.getName()) : 0)) + (System.currentTimeMillis() - startTime));
             }

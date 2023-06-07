@@ -7,12 +7,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kotlin.api.declaration.ParameterDeclaration;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.kotlin.api.declaration.TypeParameterDeclaration;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.IClassifier__BehaviorDescriptor;
 import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -32,19 +30,11 @@ public class JavaMethodDeclaration implements FunctionDeclaration {
   }
   @Override
   public Iterable<ParameterDeclaration> getParameters() {
-    return ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).select(new ISelector<SNode, JavaParameterDeclaration>() {
-      public JavaParameterDeclaration select(SNode it) {
-        return new JavaParameterDeclaration(it);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).select((it) -> new JavaParameterDeclaration(it));
   }
   @Override
   public Iterable<TypeParameterDeclaration> getTypeParameters() {
-    return ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.typeVariableDeclaration$Lipp)).select(new ISelector<SNode, JavaTypeParameterDeclaration>() {
-      public JavaTypeParameterDeclaration select(SNode it) {
-        return new JavaTypeParameterDeclaration(it);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.typeVariableDeclaration$Lipp)).select((it) -> new JavaTypeParameterDeclaration(it));
   }
   @Override
   public SNode getReturnType() {
@@ -61,11 +51,7 @@ public class JavaMethodDeclaration implements FunctionDeclaration {
 
   public boolean isReturnTypeNullable(SNode originalType, boolean isConstructor) {
     // Constructors are non nullable for sure, NotNull annotation is also considered, primitive types are non nullable
-    return !(isConstructor) && !(SNodeOperations.isInstanceOf(originalType, CONCEPTS.PrimitiveType$sR)) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.annotation$K49I)).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~NotNull")));
-      }
-    });
+    return !(isConstructor) && !(SNodeOperations.isInstanceOf(originalType, CONCEPTS.PrimitiveType$sR)) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.annotation$K49I)).all((it) -> !(SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~NotNull"))));
   }
 
   @Override

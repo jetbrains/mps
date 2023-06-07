@@ -14,7 +14,6 @@ import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -55,12 +54,10 @@ public final class UpdateCommentToSingleLineStructure_Intention extends Abstract
 
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.text$XpYF)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode line) {
-          SNode comment = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment"));
-          SLinkOperations.setTarget(comment, LINKS.line$9eiT, SNodeOperations.copyNode(line));
-          SNodeOperations.insertPrevSiblingChild(node, comment);
-        }
+      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.text$XpYF)).visitAll((line) -> {
+        SNode comment = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment"));
+        SLinkOperations.setTarget(comment, LINKS.line$9eiT, SNodeOperations.copyNode(line));
+        SNodeOperations.insertPrevSiblingChild(node, comment);
       });
       SNodeOperations.deleteNode(node);
     }

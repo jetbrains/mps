@@ -18,8 +18,6 @@ import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -44,11 +42,7 @@ public class NoteMetaInfo_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forNamedElements(Sequence.fromIterable(Classifier__BehaviorDescriptor.staticFields_id4_LVZ3pBr7M.invoke(SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt(JDK/)", "~Color"))).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.type$a1UY), CONCEPTS.ClassifierType$bL) && SLinkOperations.hasPointer(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.type$a1UY), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt(JDK/)", "~Color"));
-              }
-            }));
+            return ListScope.forNamedElements(Sequence.fromIterable(Classifier__BehaviorDescriptor.staticFields_id4_LVZ3pBr7M.invoke(SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt(JDK/)", "~Color"))).where((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.type$a1UY), CONCEPTS.ClassifierType$bL) && SLinkOperations.hasPointer(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.type$a1UY), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt(JDK/)", "~Color"))));
           }
         };
       }

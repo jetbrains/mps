@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -39,11 +38,7 @@ public final class ContextVariable__BehaviorDescriptor extends BaseBHDescriptor 
   }
   /*package*/ static SNode findProvider_idhEwJh7Q(@NotNull SNode __thisNode__) {
     final SAbstractConcept providerConcept = ContextVariable__BehaviorDescriptor.getProviderConcept_idaxxf7pcCKs.invoke(__thisNode__.getConcept());
-    return ListSequence.fromList(SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.IContextVariableProvider$$H, true)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.getConcept(it).isSubConceptOf(providerConcept);
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.IContextVariableProvider$$H, true)).findFirst((it) -> SNodeOperations.getConcept(it).isSubConceptOf(providerConcept));
   }
 
   /*package*/ ContextVariable__BehaviorDescriptor() {

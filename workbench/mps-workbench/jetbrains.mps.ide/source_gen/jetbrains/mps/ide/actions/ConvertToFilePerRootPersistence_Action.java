@@ -18,7 +18,6 @@ import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.persistence.LoadedStrategyAware;
 import java.util.Objects;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
@@ -61,34 +60,18 @@ public class ConvertToFilePerRootPersistence_Action extends BaseAction {
     }
 
     List<SModel> m = ((List<SModel>) MapSequence.fromMap(_params).get("models"));
-    if (ListSequence.fromList(m).any(new IWhereFilter<SModel>() {
-      public boolean accept(SModel it) {
-        return it.isReadOnly();
-      }
-    })) {
+    if (ListSequence.fromList(m).any((it) -> it.isReadOnly())) {
       return false;
     }
     // filter out those of unknown origin (i.e. without ModelFactory, same MF as the conversion target or non-file source)
-    if (ListSequence.fromList(m).any(new IWhereFilter<SModel>() {
-      public boolean accept(SModel it) {
-        return false == it instanceof LoadedStrategyAware;
-      }
-    })) {
+    if (ListSequence.fromList(m).any((it) -> false == it instanceof LoadedStrategyAware)) {
       return false;
     }
-    if (ListSequence.fromList(m).ofType(LoadedStrategyAware.class).any(new IWhereFilter<LoadedStrategyAware>() {
-      public boolean accept(LoadedStrategyAware it) {
-        return it.getModelFactory() == null || Objects.equals(it.getModelFactory().getType(), targetType);
-      }
-    })) {
+    if (ListSequence.fromList(m).ofType(LoadedStrategyAware.class).any((it) -> it.getModelFactory() == null || Objects.equals(it.getModelFactory().getType(), targetType))) {
       return false;
     }
     // not sure model root check is relevant, do we truly care about model root kind? 
-    return ListSequence.fromList(m).all(new IWhereFilter<SModel>() {
-      public boolean accept(SModel it) {
-        return it.getSource() instanceof FileSystemBasedDataSource && it.getModelRoot() instanceof FileBasedModelRoot;
-      }
-    });
+    return ListSequence.fromList(m).all((it) -> it.getSource() instanceof FileSystemBasedDataSource && it.getModelRoot() instanceof FileBasedModelRoot);
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -137,11 +120,7 @@ public class ConvertToFilePerRootPersistence_Action extends BaseAction {
     repo.saveAll();
     for (SModel smodel : ListSequence.fromList(((List<SModel>) MapSequence.fromMap(_params).get("models")))) {
       final SModelName name = smodel.getName();
-      Iterable<SModel.Problem> problems = Sequence.fromIterable(((Iterable<SModel.Problem>) smodel.getProblems())).where(new IWhereFilter<SModel.Problem>() {
-        public boolean accept(SModel.Problem it) {
-          return it.isError();
-        }
-      });
+      Iterable<SModel.Problem> problems = Sequence.fromIterable(((Iterable<SModel.Problem>) smodel.getProblems())).where((it) -> it.isError());
       if (Sequence.fromIterable(problems).isNotEmpty()) {
         if (LOG.isErrorLevel()) {
           LOG.error(String.format("Skip converting %s: %s.", name, Sequence.fromIterable(problems).first().getText()));

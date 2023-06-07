@@ -28,12 +28,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
 import java.util.Collections;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.structure.behavior.LinkDeclaration__BehaviorDescriptor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
@@ -192,11 +190,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
           return false;
         }
 
-        if (ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.cellModel$L8Uc), CONCEPTS.EditorCellModel$gN, true, new SAbstractConcept[]{})).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SNodeOperations.getConcept(it) != CONCEPTS.CellModel_Collection$Og && SNodeOperations.getConcept(it) != CONCEPTS.EditorCellModel$gN;
-          }
-        })) {
+        if (ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.cellModel$L8Uc), CONCEPTS.EditorCellModel$gN, true, new SAbstractConcept[]{})).any((it) -> SNodeOperations.getConcept(it) != CONCEPTS.CellModel_Collection$Og && SNodeOperations.getConcept(it) != CONCEPTS.EditorCellModel$gN)) {
           return false;
         }
 
@@ -233,19 +227,11 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
         return Collections.<SNode>emptyList();
       }
 
-      Iterable<SNode> allConceptProperties = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$HJmJ))).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1156234966388"))) && !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1193676396447")));
-        }
-      });
+      Iterable<SNode> allConceptProperties = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$HJmJ))).where((it) -> !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1156234966388"))) && !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1193676396447"))));
 
       Iterable<SNode> editedProperties = assistantUtils.getAllCellValues((SNode cell) -> SLinkOperations.getTarget(SNodeOperations.as(cell, CONCEPTS.CellModel_Property$uh), LINKS.relationDeclaration$E2hc));
 
-      Iterable<SNode> notEditedProperties = Sequence.fromIterable(allConceptProperties).subtract(Sequence.fromIterable(editedProperties)).sort(new ISelector<SNode, Integer>() {
-        public Integer select(SNode it) {
-          return (SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1169194664001")) ? 0 : 1);
-        }
-      }, true);
+      Iterable<SNode> notEditedProperties = Sequence.fromIterable(allConceptProperties).subtract(Sequence.fromIterable(editedProperties)).sort((it) -> (SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1169194664001")) ? 0 : 1), true);
       return (Sequence.fromIterable(notEditedProperties).isEmpty() ? Collections.<SNode>emptyList() : Collections.singletonList(Sequence.fromIterable(notEditedProperties).first()));
     }
     @NotNull
@@ -406,11 +392,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
         return Collections.<SNode>emptyList();
       }
 
-      Iterable<SNode> allConceptLinks = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$HJmJ))).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "5169995583184591170")));
-        }
-      });
+      Iterable<SNode> allConceptLinks = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$HJmJ))).where((it) -> !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "5169995583184591170"))));
 
       Iterable<SNode> editedLinks = assistantUtils.getAllCellValues((SNode cell) -> {
         SNode refNodeListCell = SNodeOperations.as(cell, CONCEPTS.CellModel_RefNodeList$Uo);
@@ -572,11 +554,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
           return false;
         }
 
-        Iterable<SNode> allConceptProperties = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$HJmJ))).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1156234966388"))) && !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1193676396447")));
-          }
-        });
+        Iterable<SNode> allConceptProperties = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$HJmJ))).where((it) -> !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1156234966388"))) && !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1193676396447"))));
 
         Iterable<SNode> editedProperties = assistantUtils.getAllCellValues((SNode cell) -> {
           SNode propertyCell = SNodeOperations.as(cell, CONCEPTS.CellModel_Property$uh);
@@ -586,11 +564,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
           return (SNode) null;
         });
 
-        Iterable<SNode> allConceptLinks = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$HJmJ))).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "5169995583184591170")));
-          }
-        });
+        Iterable<SNode> allConceptLinks = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$HJmJ))).where((it) -> !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "5169995583184591170"))));
 
         Iterable<SNode> editedLinks = assistantUtils.getAllCellValues((SNode cell) -> {
           SNode refNodeListCell = SNodeOperations.as(cell, CONCEPTS.CellModel_RefNodeList$Uo);
@@ -731,11 +705,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
       @Override
       public void execute(@NotNull String pattern) {
         EditorAssistantUtilities assistantUtils = new EditorAssistantUtilities(_context.getNode());
-        Iterable<SNode> allLinks = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(assistantUtils.getEditorDeclaration()))).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "5169995583184591170")));
-          }
-        });
+        Iterable<SNode> allLinks = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(assistantUtils.getEditorDeclaration()))).where((it) -> !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "5169995583184591170"))));
 
         SNode left = null;
         SNode right = null;
@@ -763,16 +733,8 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
           return false;
         }
 
-        Iterable<SNode> allLinks = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(assistantUtils.getEditorDeclaration()))).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "5169995583184591170")));
-          }
-        });
-        if (Sequence.fromIterable(allLinks).count() != 2 || Sequence.fromIterable(allLinks).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b8L);
-          }
-        })) {
+        Iterable<SNode> allLinks = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(assistantUtils.getEditorDeclaration()))).where((it) -> !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "5169995583184591170"))));
+        if (Sequence.fromIterable(allLinks).count() != 2 || Sequence.fromIterable(allLinks).any((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b8L))) {
           return false;
         }
         SNode left = null;

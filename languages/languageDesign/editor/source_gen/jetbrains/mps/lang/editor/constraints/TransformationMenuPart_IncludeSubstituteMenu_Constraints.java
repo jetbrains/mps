@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.editor.behavior.IMenu__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.scopes.runtime.SimpleScope;
@@ -50,11 +49,7 @@ public class TransformationMenuPart_IncludeSubstituteMenu_Constraints extends Ba
           public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode menu = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ITransformationMenu$xi, true, false);
             SNode concept = IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(menu);
-            Iterable<SNode> links = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(concept)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b9L);
-              }
-            });
+            Iterable<SNode> links = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(concept)).where((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b9L));
             return new SimpleScope(links) {
               @Nullable
               public String getReferenceText(@NotNull SNode target) {

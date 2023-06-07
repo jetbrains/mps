@@ -681,7 +681,7 @@
       <ref role="1puQsG" node="hvb5rmz" resolve="prep_FunctionType_AssignmentExpression_adaptations" />
     </node>
     <node concept="1puMqW" id="hwBgVjP" role="1puA0r">
-      <ref role="1puQsG" node="hva6U2w" resolve="prep_FunctionType_BaseMethodCall_adaptations" />
+      <ref role="1puQsG" node="hva6U2w" resolve="prep_FunctionType_IMethodCall_adaptations" />
     </node>
     <node concept="1puMqW" id="4ATCuJslFLy" role="1puA0r">
       <ref role="1puQsG" node="4ATCuJslpOa" resolve="prep_FunctionType_ExtensionMethodCall_adaptations" />
@@ -3653,7 +3653,7 @@
                       <node concept="3clFbS" id="3JusnrwEP8i" role="2VODD2">
                         <node concept="3clFbF" id="1y7rwucQ49J" role="3cqZAp">
                           <node concept="2YIFZM" id="1y7rwucTb22" role="3clFbG">
-                            <ref role="37wK5l" to="tp2g:hwak6Ex" resolve="copyTypeRecursively" />
+                            <ref role="37wK5l" to="tp2g:hwak6Ex" resolve="unbounded" />
                             <ref role="1Pybhc" to="tp2g:hv18zCR" resolve="ClassifierTypeUtil" />
                             <node concept="30H73N" id="1y7rwucTb23" role="37wK5m" />
                           </node>
@@ -3713,7 +3713,7 @@
           <node concept="1sPUBX" id="doQwyf0RP" role="lGtFl">
             <ref role="v9R2y" node="doQwxNz7l" resolve="reduce_ClosureLiteral_switch" />
             <node concept="2YIFZM" id="doQwyf1jC" role="v9R3O">
-              <ref role="37wK5l" to="tp2d:doQwxJEWe" resolve="applicableMethod" />
+              <ref role="37wK5l" to="tp2d:doQwxJEWe" resolve="applicableContext" />
               <ref role="1Pybhc" to="tp2d:hvkyfsP" resolve="ClosureLiteralUtil" />
               <node concept="1iwH7S" id="doQwyf1pb" role="37wK5m" />
               <node concept="30H73N" id="doQwyf379" role="37wK5m" />
@@ -8130,7 +8130,7 @@
                     <ref role="1Pybhc" to="tp2d:hv7HX82" resolve="FunctionTypeUtil" />
                     <node concept="1iwH7S" id="2TF6A0TRQDA" role="37wK5m" />
                     <node concept="37vLTw" id="2TF6A0TS42d" role="37wK5m">
-                      <ref role="3cqZAo" node="2TF6A0TS423" resolve="node" />
+                      <ref role="3cqZAo" node="2TF6A0TS423" resolve="actualType" />
                     </node>
                     <node concept="37vLTw" id="2TF6A0TRQDF" role="37wK5m">
                       <ref role="3cqZAo" node="1qkP$i6QOP7" resolve="cl" />
@@ -9360,7 +9360,7 @@
                           <node concept="TSZUe" id="i05w1Sv" role="2OqNvi">
                             <node concept="2YIFZM" id="i05w1Sw" role="25WWJ7">
                               <ref role="1Pybhc" to="tp2g:hv18zCR" resolve="ClassifierTypeUtil" />
-                              <ref role="37wK5l" to="tp2g:hwak6Ex" resolve="copyTypeRecursively" />
+                              <ref role="37wK5l" to="tp2g:hwak6Ex" resolve="unbounded" />
                               <node concept="37vLTw" id="3GM_nagTwHW" role="37wK5m">
                                 <ref role="3cqZAo" node="hwdLyeg" resolve="pt" />
                               </node>
@@ -14813,7 +14813,7 @@
                       <node concept="1Y3b0j" id="3a8RrRT$jHd" role="YeSDq">
                         <property role="2bfB8j" value="true" />
                         <ref role="1Y3XeK" to="82uw:~Predicate" resolve="Predicate" />
-                        <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" />
+                        <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                         <node concept="3Tm1VV" id="3a8RrRT$jHf" role="1B3o_S" />
                         <node concept="3Tqbb2" id="3a8RrRT$jHh" role="2Ghqu4" />
                         <node concept="3clFb_" id="3a8RrRT$jHN" role="jymVt">
@@ -14905,7 +14905,7 @@
                       <node concept="1Y3b0j" id="2VH5PwTwwv9" role="YeSDq">
                         <property role="2bfB8j" value="true" />
                         <ref role="1Y3XeK" to="82uw:~Predicate" resolve="Predicate" />
-                        <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" />
+                        <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                         <node concept="3Tm1VV" id="2VH5PwTwwva" role="1B3o_S" />
                         <node concept="3Tqbb2" id="2VH5PwTwwvi" role="2Ghqu4" />
                         <node concept="3clFb_" id="2VH5PwTwwvb" role="jymVt">
@@ -18153,7 +18153,7 @@
                 <node concept="3clFbS" id="6MGFJY7aLQH" role="2VODD2">
                   <node concept="3clFbF" id="6MGFJY7aLQI" role="3cqZAp">
                     <node concept="2YIFZM" id="6MGFJY7aLQJ" role="3clFbG">
-                      <ref role="37wK5l" to="tp2d:5YrKoZhNcrU" resolve="parameterListFromFunctionType" />
+                      <ref role="37wK5l" to="tp2d:5YrKoZhNcrU" resolve="parameterList" />
                       <ref role="1Pybhc" to="tp2d:hvkyfsP" resolve="ClosureLiteralUtil" />
                       <node concept="30H73N" id="6MGFJY7aLQK" role="37wK5m" />
                       <node concept="v3LJS" id="6MGFJY7aLQL" role="37wK5m">
@@ -19509,7 +19509,7 @@
                       <node concept="2ShNRf" id="doQwy2P0s" role="3cqZAk">
                         <node concept="YeOm9" id="doQwy2P0t" role="2ShVmc">
                           <node concept="1Y3b0j" id="doQwy2P0u" role="YeSDq">
-                            <ref role="1Y3XeK" node="hvfPDEP" resolve="YieldingIterator" />
+                            <ref role="1Y3XeK" node="hvfPDEP" resolve="AClass.YieldingIterator" />
                             <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                             <node concept="5jKBG" id="doQwy2P0v" role="lGtFl">
                               <ref role="v9R2y" node="hvkCKfS" resolve="frag_YieldingIterator_anonymous_class" />

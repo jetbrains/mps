@@ -15,8 +15,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.behavior.IQueryFunction_Color__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.editor.generator.baseLanguage.template.util.QueriesUtil;
 import jetbrains.mps.lang.editor.behavior.IMenuPartWithOutputConcept__BehaviorDescriptor;
@@ -28,6 +26,7 @@ import jetbrains.mps.lang.editor.behavior.EditorCellModel__BehaviorDescriptor;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.openapi.editor.cells.KeyMap;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.nodeEditor.keymaps.AWTKeymapHandler;
 import jetbrains.mps.lang.editor.behavior.CellModel_WithRole__BehaviorDescriptor;
 import jetbrains.mps.lang.editor.behavior.CellActionMapItem__BehaviorDescriptor;
@@ -81,17 +80,14 @@ import jetbrains.mps.lang.smodel.behavior.SNodeOperation__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
 import jetbrains.mps.generator.template.TemplateArgumentContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.lang.smodel.behavior.LanguageIdentity__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Set;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.EditorDeclarationScanner;
 import java.util.ArrayList;
 import jetbrains.mps.generator.template.WeavingMappingRuleContext;
 import jetbrains.mps.generator.template.MappingScriptContext;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
@@ -232,11 +228,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.cellLayout$Of4I) == null;
   }
   public static boolean rule_Condition_49_2(final BaseMappingRuleContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.styleItem$FgZD)).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.EditableStyleClassItem$pD));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.styleItem$FgZD)).all((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.EditableStyleClassItem$pD)));
   }
   public static boolean rule_Condition_49_3(final BaseMappingRuleContext _context) {
     return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(_context.getNode())), CONCEPTS.CellModel_RefNodeList$Uo) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(_context.getNode())), CONCEPTS.CellModel_RefNode$8) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(_context.getNode())), CONCEPTS.CellModel_RefCell$7g) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(_context.getNode())), CONCEPTS.CellModel_AttributedNodeCell$m1) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(_context.getNode())), CONCEPTS.CellModel_AttributedLinkCell$_k) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(_context.getNode())), CONCEPTS.CellModel_AttributedPropertyCell$yF);
@@ -1423,11 +1415,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object referenceMacro_GetReferent_62_0(final ReferenceMacroContext _context) {
     final String methodName = AbstractStyledTextOperation__BehaviorDescriptor.getMethodToGenerate_id1653mnvAf1C.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(_context.getNode())));
-    return Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SNodeOperations.getNode("r:1e25de74-7cc0-4f15-8cec-3735c776efd2(jetbrains.mps.editor.runtime.style)", "6822392181927252916"))).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), methodName);
-      }
-    });
+    return Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SNodeOperations.getNode("r:1e25de74-7cc0-4f15-8cec-3735c776efd2(jetbrains.mps.editor.runtime.style)", "6822392181927252916"))).findFirst((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), methodName));
   }
   public static Object referenceMacro_GetReferent_64_0(final ReferenceMacroContext _context) {
     return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.member$oLt6), PROPS.name$MnvL);
@@ -1578,11 +1566,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return "_context";
   }
   public static Object referenceMacro_GetReferent_106_0(final ReferenceMacroContext _context) {
-    return Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(_context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.part$CUN7), "generatedClass"))).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).count() == 1;
-      }
-    });
+    return Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(_context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.part$CUN7), "generatedClass"))).findFirst((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).count() == 1);
   }
   public static Object referenceMacro_GetReferent_108_0(final ReferenceMacroContext _context) {
     return _context.getNode();
@@ -1634,11 +1618,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SNode) IMenuPartWithOutputConcept__BehaviorDescriptor.getOutputConcept_id3mnwiBI8ZE2.invoke(_context.getNode());
   }
   public static Object referenceMacro_GetReferent_136_0(final ReferenceMacroContext _context) {
-    return Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(_context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.part$6LQJ), "generatedClass"))).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).count() == 1;
-      }
-    });
+    return Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(_context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.part$6LQJ), "generatedClass"))).findFirst((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).count() == 1);
   }
   public static Object referenceMacro_GetReferent_139_0(final ReferenceMacroContext _context) {
     return (SNode) IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.ISubstituteMenu$Jl, false, false));
@@ -2026,11 +2006,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return true;
   }
   public static boolean ifMacro_Condition_45_0(final IfMacroContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.IStyleContainer$rq, false, false), LINKS.styleItem$FgZD)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.TextBackgroundColorStyleClassItem$4f);
-      }
-    }) == null;
+    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.IStyleContainer$rq, false, false), LINKS.styleItem$FgZD)).findFirst((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.TextBackgroundColorStyleClassItem$4f)) == null;
   }
   public static boolean ifMacro_Condition_45_1(final IfMacroContext _context) {
     return isNotEmptyString(SPropertyOperations.getString(_context.getNode(), PROPS.family$Yyw7));
@@ -2191,18 +2167,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.relationDeclaration$E2hc), LINKS.specializedLink$7ZCN) != null);
   }
   public static boolean ifMacro_Condition_90_4(final IfMacroContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.filter$8j8S) != null && (SLinkOperations.getTarget(_context.getNode(), LINKS.actionMap$oNO2) == null || ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.actionMap$oNO2), LINKS.item$ZCi9)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.actionId$On2r), 0x7d41f11ce69e74acL);
-      }
-    }).isEmpty());
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.filter$8j8S) != null && (SLinkOperations.getTarget(_context.getNode(), LINKS.actionMap$oNO2) == null || ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.actionMap$oNO2), LINKS.item$ZCi9)).where((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.actionId$On2r), 0x7d41f11ce69e74acL)).isEmpty());
   }
   public static boolean ifMacro_Condition_90_5(final IfMacroContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.filter$8j8S) != null && (SLinkOperations.getTarget(_context.getNode(), LINKS.actionMap$oNO2) == null || ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.actionMap$oNO2), LINKS.item$ZCi9)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.actionId$On2r), 0x7d41f11ce69e74adL);
-      }
-    }).isEmpty());
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.filter$8j8S) != null && (SLinkOperations.getTarget(_context.getNode(), LINKS.actionMap$oNO2) == null || ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.actionMap$oNO2), LINKS.item$ZCi9)).where((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.actionId$On2r), 0x7d41f11ce69e74adL)).isEmpty());
   }
   public static boolean ifMacro_Condition_90_6(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.relationDeclaration$E2hc), LINKS.specializedLink$7ZCN) != null);
@@ -2238,15 +2206,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.addHints$xhau) != null || SLinkOperations.getTarget(_context.getNode(), LINKS.removeHints$xhpv) != null;
   }
   public static boolean ifMacro_Condition_90_17(final IfMacroContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.filter$8j8S) != null && (SLinkOperations.getTarget(_context.getNode(), LINKS.actionMap$oNO2) == null || ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.actionMap$oNO2), LINKS.item$ZCi9)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.actionId$On2r), 0x7d41f11ce69e74acL);
-      }
-    }).isEmpty() || ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.actionMap$oNO2), LINKS.item$ZCi9)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.actionId$On2r), 0x7d41f11ce69e74adL);
-      }
-    }).isEmpty());
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.filter$8j8S) != null && (SLinkOperations.getTarget(_context.getNode(), LINKS.actionMap$oNO2) == null || ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.actionMap$oNO2), LINKS.item$ZCi9)).where((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.actionId$On2r), 0x7d41f11ce69e74acL)).isEmpty() || ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.actionMap$oNO2), LINKS.item$ZCi9)).where((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.actionId$On2r), 0x7d41f11ce69e74adL)).isEmpty());
   }
   public static boolean ifMacro_Condition_91_0(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.parentStyleClass$9316) != null) || ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.styleItem$FgZD)).isNotEmpty();
@@ -2689,11 +2649,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.query$Kyul);
   }
   public static SNode sourceNodeQuery_45_2(final SourceSubstituteMacroNodeContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.IStyleContainer$rq, false, false), LINKS.styleItem$FgZD)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.TextBackgroundColorStyleClassItem$4f);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.IStyleContainer$rq, false, false), LINKS.styleItem$FgZD)).findFirst((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.TextBackgroundColorStyleClassItem$4f));
   }
   public static SNode sourceNodeQuery_45_3(final SourceSubstituteMacroNodeContext _context) {
     return SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.query$J8Xh), CONCEPTS.QueryFunction_ColorComposit$Cd);
@@ -3275,18 +3231,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.member$oLt6), LINKS.returnType$5xoi);
   }
   public static Object templateArgumentQuery_72_0(final TemplateArgumentContext _context) {
-    return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:allEditorComponents"))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return it == _context.getNode() || SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.overridenEditorComponent$LqAZ), LINKS.editorComponent$QrWE) == _context.getNode();
-      }
-    });
+    return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:allEditorComponents"))).where((it) -> it == _context.getNode() || SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.overridenEditorComponent$LqAZ), LINKS.editorComponent$QrWE) == _context.getNode());
   }
   public static Object templateArgumentQuery_72_1(final TemplateArgumentContext _context) {
-    return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:allEditorComponents"))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return it == _context.getNode() || SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.overridenEditorComponent$LqAZ), LINKS.editorComponent$QrWE) == _context.getNode();
-      }
-    });
+    return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:allEditorComponents"))).where((it) -> it == _context.getNode() || SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.overridenEditorComponent$LqAZ), LINKS.editorComponent$QrWE) == _context.getNode());
   }
   public static Object templateArgumentQuery_144_0(final TemplateArgumentContext _context) {
     String prefix = SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
@@ -3348,15 +3296,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.contextHints$kxOz);
   }
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.childCellModel$HAw7)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.renderingCondition$O1b5);
-      }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return it != null;
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.childCellModel$HAw7)).select((it) -> SLinkOperations.getTarget(it, LINKS.renderingCondition$O1b5)).where((it) -> it != null);
   }
   public static Iterable<SNode> sourceNodesQuery_3_0(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.contextHints$4c_A);
@@ -3503,157 +3443,65 @@ public class QueriesGenerated extends QueryProviderBase {
     return ((Iterable<SNode>) _context.getVariable("var:editorDeclarations"));
   }
   public static Iterable<SNode> sourceNodesQuery_72_2(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.ConceptEditorDeclaration$BH)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.conceptDeclaration$HJmJ);
-      }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (it != null);
-      }
-    }).distinct().sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    }, true);
+    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.ConceptEditorDeclaration$BH)).select((it) -> SLinkOperations.getTarget(it, LINKS.conceptDeclaration$HJmJ)).where((it) -> (it != null)).distinct().sort((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL), true);
   }
   public static Iterable<SNode> sourceNodesQuery_72_3(final SourceSubstituteMacroNodesContext _context) {
     return ((Iterable<SNode>) _context.getVariable("var:mainEditorComponents"));
   }
   public static Iterable<SNode> sourceNodesQuery_72_4(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.EditorComponentDeclaration$WM)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return (SNode) AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(it);
-      }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (it != null);
-      }
-    }).distinct().sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    }, true);
+    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.EditorComponentDeclaration$WM)).select((it) -> (SNode) AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(it)).where((it) -> (it != null)).distinct().sort((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL), true);
   }
   public static Iterable<SNode> sourceNodesQuery_72_5(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.EditorComponentDeclaration$WM)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return (SNode) AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(it);
-      }
-    }).where(new NotNullWhereFilter<SNode>()).distinct().sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    }, true);
+    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.EditorComponentDeclaration$WM)).select((it) -> (SNode) AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(it)).where(new NotNullWhereFilter()).distinct().sort((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL), true);
   }
   public static Iterable<SNode> sourceNodesQuery_72_6(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(((List<Language>) _context.getVariable("var:externalHints"))).select(new ISelector<Language, SNode>() {
-      public SNode select(Language it) {
-        SNode lid = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, "jetbrains.mps.lang.smodel.structure.LanguageId"));
-        LanguageIdentity__BehaviorDescriptor.setLanguage_id5e7X3XCKW4J.invoke(lid, it);
-        return lid;
-      }
+    return ListSequence.fromList(((List<Language>) _context.getVariable("var:externalHints"))).select((it) -> {
+      SNode lid = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, "jetbrains.mps.lang.smodel.structure.LanguageId"));
+      LanguageIdentity__BehaviorDescriptor.setLanguage_id5e7X3XCKW4J.invoke(lid, it);
+      return lid;
     });
   }
   public static Iterable<SNode> sourceNodesQuery_72_7(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(((List<SNode>) _context.getVariable("var:styleAttributes"))).sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    }, true);
+    return ListSequence.fromList(((List<SNode>) _context.getVariable("var:styleAttributes"))).sort((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL), true);
   }
   public static Iterable<SNode> sourceNodesQuery_72_8(final SourceSubstituteMacroNodesContext _context) {
     return ((Iterable<SNode>) _context.getVariable("var:menusAndContributionsForConcept"));
   }
   public static Iterable<SNode> sourceNodesQuery_72_9(final SourceSubstituteMacroNodesContext _context) {
-    return Sequence.fromIterable(MenuRoots.getDefaultTransformationMenusAndContributions(_context.getInputModel())).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return (SNode) IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(it);
-      }
-    }).distinct().sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    }, true);
+    return Sequence.fromIterable(MenuRoots.getDefaultTransformationMenusAndContributions(_context.getInputModel())).select((it) -> (SNode) IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(it)).distinct().sort((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL), true);
   }
   public static Iterable<SNode> sourceNodesQuery_72_10(final SourceSubstituteMacroNodesContext _context) {
     // Select the matching menu and any contributions to it
-    return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:menusAndContributionsForConcept"))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return it == _context.getNode() || (SNodeOperations.isInstanceOf(it, CONCEPTS.TransformationMenuContribution$jD) && SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.TransformationMenuContribution$jD), LINKS.menuReference$uYXm), CONCEPTS.TransformationMenuReference_Named$rf), LINKS.menu$8pZB) == _context.getNode());
-      }
-    });
+    return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:menusAndContributionsForConcept"))).where((it) -> it == _context.getNode() || (SNodeOperations.isInstanceOf(it, CONCEPTS.TransformationMenuContribution$jD) && SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.TransformationMenuContribution$jD), LINKS.menuReference$uYXm), CONCEPTS.TransformationMenuReference_Named$rf), LINKS.menu$8pZB) == _context.getNode()));
   }
   public static Iterable<SNode> sourceNodesQuery_72_11(final SourceSubstituteMacroNodesContext _context) {
     // Select original menus (i.e. for a contribution select the menu it extends, for a menu select
     // itself)
-    return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:menusAndContributionsForConcept"))).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return (SNodeOperations.isInstanceOf(it, CONCEPTS.TransformationMenuContribution$jD) ? SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.TransformationMenuContribution$jD), LINKS.menuReference$uYXm), CONCEPTS.TransformationMenuReference_Named$rf), LINKS.menu$8pZB) : it);
-      }
-    }).distinct().sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return (String) INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(it);
-      }
-    }, true);
+    return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:menusAndContributionsForConcept"))).select((it) -> (SNodeOperations.isInstanceOf(it, CONCEPTS.TransformationMenuContribution$jD) ? SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.TransformationMenuContribution$jD), LINKS.menuReference$uYXm), CONCEPTS.TransformationMenuReference_Named$rf), LINKS.menu$8pZB) : it)).distinct().sort((it) -> (String) INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(it), true);
   }
   public static Iterable<SNode> sourceNodesQuery_72_12(final SourceSubstituteMacroNodesContext _context) {
-    return Sequence.fromIterable(MenuRoots.getNamedTransformationMenusAndContributions(_context.getInputModel())).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return (SNode) IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(it);
-      }
-    }).distinct().sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    }, true);
+    return Sequence.fromIterable(MenuRoots.getNamedTransformationMenusAndContributions(_context.getInputModel())).select((it) -> (SNode) IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(it)).distinct().sort((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL), true);
   }
   public static Iterable<SNode> sourceNodesQuery_72_13(final SourceSubstituteMacroNodesContext _context) {
     return ((Iterable<SNode>) _context.getVariable("var:menusAndContributionsForConcept"));
   }
   public static Iterable<SNode> sourceNodesQuery_72_14(final SourceSubstituteMacroNodesContext _context) {
-    return Sequence.fromIterable(MenuRoots.getDefaultSubstituteMenusAndContributions(_context.getInputModel())).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return (SNode) IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(it);
-      }
-    }).distinct().sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    }, true);
+    return Sequence.fromIterable(MenuRoots.getDefaultSubstituteMenusAndContributions(_context.getInputModel())).select((it) -> (SNode) IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(it)).distinct().sort((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL), true);
   }
   public static Iterable<SNode> sourceNodesQuery_72_15(final SourceSubstituteMacroNodesContext _context) {
     // Select the matching menu and any contributions to it
-    return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:menusAndContributionsForConcept"))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return it == _context.getNode() || (SNodeOperations.isInstanceOf(it, CONCEPTS.SubstituteMenu_Contribution$s3) && SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.SubstituteMenu_Contribution$s3), LINKS.menuReference$MNaS), CONCEPTS.SubstituteMenuReference_Named$5O), LINKS.menu$9WHp) == _context.getNode());
+    return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:menusAndContributionsForConcept"))).where((it) -> {
+      return it == _context.getNode() || (SNodeOperations.isInstanceOf(it, CONCEPTS.SubstituteMenu_Contribution$s3) && SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.SubstituteMenu_Contribution$s3), LINKS.menuReference$MNaS), CONCEPTS.SubstituteMenuReference_Named$5O), LINKS.menu$9WHp) == _context.getNode());
 
-      }
     });
   }
   public static Iterable<SNode> sourceNodesQuery_72_16(final SourceSubstituteMacroNodesContext _context) {
     // Select original menus (i.e. for a contribution select the menu it extends, for a menu select
     // itself)
-    return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:menusAndContributionsForConcept"))).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return (SNodeOperations.isInstanceOf(it, CONCEPTS.SubstituteMenu_Contribution$s3) ? SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.SubstituteMenu_Contribution$s3), LINKS.menuReference$MNaS), CONCEPTS.SubstituteMenuReference_Named$5O), LINKS.menu$9WHp) : it);
-      }
-    }).distinct().sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return (String) INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(it);
-      }
-    }, true);
+    return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:menusAndContributionsForConcept"))).select((it) -> (SNodeOperations.isInstanceOf(it, CONCEPTS.SubstituteMenu_Contribution$s3) ? SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.SubstituteMenu_Contribution$s3), LINKS.menuReference$MNaS), CONCEPTS.SubstituteMenuReference_Named$5O), LINKS.menu$9WHp) : it)).distinct().sort((it) -> (String) INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(it), true);
   }
   public static Iterable<SNode> sourceNodesQuery_72_17(final SourceSubstituteMacroNodesContext _context) {
-    return Sequence.fromIterable(MenuRoots.getNamedSubstituteMenusAndContributions(_context.getInputModel())).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return (SNode) IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(it);
-      }
-    }).distinct().sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    }, true);
+    return Sequence.fromIterable(MenuRoots.getNamedSubstituteMenusAndContributions(_context.getInputModel())).select((it) -> (SNode) IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(it)).distinct().sort((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL), true);
   }
   public static Iterable<SNode> sourceNodesQuery_72_18(final SourceSubstituteMacroNodesContext _context) {
     return ((List<SNode>) _context.getVariable("var:menuStyleRoots"));
@@ -3686,11 +3534,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return ((Iterable<SNode>) _context.getVariable("editorComponents"));
   }
   public static Iterable<SNode> sourceNodesQuery_100_0(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.sections$GXaM)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SLinkOperations.getChildren(it, LINKS.locations$m8FB);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.sections$GXaM)).translate((it) -> SLinkOperations.getChildren(it, LINKS.locations$m8FB));
   }
   public static Iterable<SNode> sourceNodesQuery_100_1(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.sections$GXaM);
@@ -3826,11 +3670,7 @@ public class QueriesGenerated extends QueryProviderBase {
         ListSequence.fromList(rv).addElement(lid);
       }
     }
-    return ListSequence.fromList(rv).sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.namespace$dZq1);
-      }
-    }, true);
+    return ListSequence.fromList(rv).sort((it) -> SPropertyOperations.getString(it, PROPS.namespace$dZq1), true);
   }
   public static Iterable<SNode> sourceNodesQuery_189_0(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.actualArgument$Owly);
@@ -3848,16 +3688,8 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getCopiedOutputNodeForInputNode(_context.getNode());
   }
   public static void mappingScript_CodeBlock_117(final MappingScriptContext _context) {
-    ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.TransformationMenuPart_Placeholder$G4)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SNodeOperations.deleteNode(it);
-      }
-    });
-    ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.SubstituteMenuPart_Placeholder$yH)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SNodeOperations.deleteNode(it);
-      }
-    });
+    ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.TransformationMenuPart_Placeholder$G4)).visitAll((it) -> SNodeOperations.deleteNode(it));
+    ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.SubstituteMenuPart_Placeholder$yH)).visitAll((it) -> SNodeOperations.deleteNode(it));
   }
   public static void mappingScript_CodeBlock_168(final MappingScriptContext _context) {
     for (SNode refCell : ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.CellModel_RefCell$7g))) {
@@ -3883,18 +3715,10 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
     Iterable<SNode> menus = SModelOperations.nodes(_context.getModel(), CONCEPTS.SubstituteMenu_Default$sV);
-    menus = Sequence.fromIterable(menus).concat(ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.SubstituteMenu$EF)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) IMenu_Concept__BehaviorDescriptor.isDefault_id5N_GIFFh1P5.invoke(it);
-      }
-    }));
+    menus = Sequence.fromIterable(menus).concat(ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.SubstituteMenu$EF)).where((it) -> (boolean) IMenu_Concept__BehaviorDescriptor.isDefault_id5N_GIFFh1P5.invoke(it)));
 
     for (final IMapping<SNode, SNode> smartConceptEntry : MapSequence.fromMap(smartConceptMap)) {
-      if (Sequence.fromIterable(menus).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(SLinkOperations.getTarget(it, LINKS.conceptDeclaration$h3E), smartConceptEntry.key());
-        }
-      }).isEmpty()) {
+      if (Sequence.fromIterable(menus).where((it) -> Objects.equals(SLinkOperations.getTarget(it, LINKS.conceptDeclaration$h3E), smartConceptEntry.key())).isEmpty()) {
         SNode originTemplate = SLinkOperations.getTarget(smartConceptEntry.value(), LINKS.refPresentationTemplate$di5B);
         SNode template = ((originTemplate != null) ? createSubstituteMenu_RefPresentationTemplate_x583g4_a0a1a0a8a1211(StringUtil.emptyIfNull(SPropertyOperations.getString(originTemplate, PROPS.prefix$cFJ6)), StringUtil.emptyIfNull(SPropertyOperations.getString(originTemplate, PROPS.suffix$cLnu))) : null);
         SModelOperations.addRootNode(_context.getModel(), createSubstituteMenu_x583g4_a0a2a0a8a1211(smartConceptEntry.key(), SLinkOperations.getTarget(smartConceptEntry.value(), LINKS.charactersticReference$41pR), template));
@@ -3902,24 +3726,8 @@ public class QueriesGenerated extends QueryProviderBase {
     }
   }
   public static void mappingScript_CodeBlock_191(final MappingScriptContext _context) {
-    ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.ITransformationMenu$xi)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SLinkOperations.getChildren(it, LINKS.methodDeclaration$TVoL);
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SPropertyOperations.assign(it, PROPS.name$MnvL, "_additional_" + SPropertyOperations.getString(it, PROPS.name$MnvL));
-      }
-    });
-    ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.ISubstituteMenu$Jl)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SLinkOperations.getChildren(it, LINKS.methodDeclaration$2L8$);
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SPropertyOperations.assign(it, PROPS.name$MnvL, "_additional_" + SPropertyOperations.getString(it, PROPS.name$MnvL));
-      }
-    });
+    ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.ITransformationMenu$xi)).translate((it) -> SLinkOperations.getChildren(it, LINKS.methodDeclaration$TVoL)).visitAll((it) -> SPropertyOperations.assign(it, PROPS.name$MnvL, "_additional_" + SPropertyOperations.getString(it, PROPS.name$MnvL)));
+    ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.ISubstituteMenu$Jl)).translate((it) -> SLinkOperations.getChildren(it, LINKS.methodDeclaration$2L8$)).visitAll((it) -> SPropertyOperations.assign(it, PROPS.name$MnvL, "_additional_" + SPropertyOperations.getString(it, PROPS.name$MnvL)));
   }
   public static SNode insertMacro_Query_49_0(final InsertMacroContext _context) {
     SNode refPresentation = SNodeOperations.copyNode(SLinkOperations.getTarget(_context.getNode(), LINKS.cellModel$L8Uc));
@@ -3951,11 +3759,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object varMacro_Value_17_0(final TemplateVarContext _context) {
     Iterable<ImportCycle> cycles = CellActionMapDeclaration__BehaviorDescriptor.detectCycles_id7pqJbakYMN2.invoke(_context.getNode());
     if (Sequence.fromIterable(cycles).isNotEmpty()) {
-      Sequence.fromIterable(cycles).visitAll(new IVisitor<ImportCycle>() {
-        public void visit(ImportCycle cycle) {
-          _context.showErrorMessage(cycle.getFirstImport(), "Cycle in imports: " + cycle);
-        }
-      });
+      Sequence.fromIterable(cycles).visitAll((cycle) -> _context.showErrorMessage(cycle.getFirstImport(), "Cycle in imports: " + cycle));
       return Collections.<SNode>emptyList();
     } else {
       return SLinkOperations.getChildren(_context.getNode(), LINKS.imports$QP4v);
@@ -3973,81 +3777,25 @@ public class QueriesGenerated extends QueryProviderBase {
     return priority;
   }
   public static Object varMacro_Value_72_0(final TemplateVarContext _context) {
-    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.ConceptEditorDeclaration$BH)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.conceptDeclaration$HJmJ) == _context.getNode();
-      }
-    }).sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    }, true);
+    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.ConceptEditorDeclaration$BH)).where((it) -> SLinkOperations.getTarget(it, LINKS.conceptDeclaration$HJmJ) == _context.getNode()).sort((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL), true);
   }
   public static Object varMacro_Value_72_1(final TemplateVarContext _context) {
-    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.EditorComponentDeclaration$WM)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(it) == _context.getNode();
-      }
-    }).sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    }, true);
+    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.EditorComponentDeclaration$WM)).where((it) -> AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(it) == _context.getNode()).sort((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL), true);
   }
   public static Object varMacro_Value_72_2(final TemplateVarContext _context) {
-    return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:allEditorComponents"))).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.overridenEditorComponent$LqAZ) == null ? it : SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.overridenEditorComponent$LqAZ), LINKS.editorComponent$QrWE));
-      }
-    }).distinct().sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    }, true);
+    return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:allEditorComponents"))).select((it) -> (SLinkOperations.getTarget(it, LINKS.overridenEditorComponent$LqAZ) == null ? it : SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.overridenEditorComponent$LqAZ), LINKS.editorComponent$QrWE))).distinct().sort((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL), true);
   }
   public static Object varMacro_Value_72_3(final TemplateVarContext _context) {
-    return Sequence.fromIterable(MenuRoots.getDefaultTransformationMenusAndContributions(_context.getInputModel())).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(it), _context.getNode());
-      }
-    }).sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    }, true);
+    return Sequence.fromIterable(MenuRoots.getDefaultTransformationMenusAndContributions(_context.getInputModel())).where((it) -> Objects.equals(IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(it), _context.getNode())).sort((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL), true);
   }
   public static Object varMacro_Value_72_4(final TemplateVarContext _context) {
-    return Sequence.fromIterable(MenuRoots.getNamedTransformationMenusAndContributions(_context.getInputModel())).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(it), _context.getNode());
-      }
-    }).sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    }, true);
+    return Sequence.fromIterable(MenuRoots.getNamedTransformationMenusAndContributions(_context.getInputModel())).where((it) -> Objects.equals(IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(it), _context.getNode())).sort((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL), true);
   }
   public static Object varMacro_Value_72_5(final TemplateVarContext _context) {
-    return Sequence.fromIterable(MenuRoots.getDefaultSubstituteMenusAndContributions(_context.getInputModel())).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(it), _context.getNode());
-      }
-    }).sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    }, true);
+    return Sequence.fromIterable(MenuRoots.getDefaultSubstituteMenusAndContributions(_context.getInputModel())).where((it) -> Objects.equals(IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(it), _context.getNode())).sort((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL), true);
   }
   public static Object varMacro_Value_72_6(final TemplateVarContext _context) {
-    return Sequence.fromIterable(MenuRoots.getNamedSubstituteMenusAndContributions(_context.getInputModel())).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(it), _context.getNode());
-      }
-    }).sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    }, true);
+    return Sequence.fromIterable(MenuRoots.getNamedSubstituteMenusAndContributions(_context.getInputModel())).where((it) -> Objects.equals(IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(it), _context.getNode())).sort((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL), true);
   }
   public static Object varMacro_Value_72_7(final TemplateVarContext _context) {
     return SModelOperations.roots(_context.getInputModel(), CONCEPTS.CompletionStyling$Cs);
@@ -4059,18 +3807,10 @@ public class QueriesGenerated extends QueryProviderBase {
     final SModel inputModel = _context.getInputModel();
     Iterable<SNode> d1 = SLinkOperations.collect(SModelOperations.nodes(inputModel, CONCEPTS.ConceptEditorHintDeclarationReference$ug), LINKS.hint$Facj);
     Iterable<SNode> d2 = SLinkOperations.collect(SModelOperations.nodes(inputModel, CONCEPTS.ConceptEditorHintDeclarationReferenceExpression$wG), LINKS.hint$BaV$);
-    return Sequence.fromIterable(d1).disjunction(Sequence.fromIterable(d2)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.getModel(it) != inputModel;
-      }
-    }).select(new ISelector<SNode, SModule>() {
-      public SModule select(SNode it) {
-        return SNodeOperations.getModel(it).getModule();
-      }
-    }).distinct().ofType(Language.class).toListSequence();
+    return Sequence.fromIterable(d1).disjunction(Sequence.fromIterable(d2)).where((it) -> SNodeOperations.getModel(it) != inputModel).select((it) -> SNodeOperations.getModel(it).getModule()).distinct().ofType(Language.class).toList();
   }
   public static Object varMacro_Value_72_10(final TemplateVarContext _context) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collectMany(SModelOperations.roots(_context.getInputModel(), CONCEPTS.StyleSheet$Sg), LINKS.styles$hCVz), CONCEPTS.StyleAttributeDeclaration$kv)).toListSequence();
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collectMany(SModelOperations.roots(_context.getInputModel(), CONCEPTS.StyleSheet$Sg), LINKS.styles$hCVz), CONCEPTS.StyleAttributeDeclaration$kv)).toList();
   }
   public static Object varMacro_Value_176_0(final TemplateVarContext _context) {
     return (SNode) AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BaseEditorComponent$49, false, false));
@@ -4697,7 +4437,7 @@ public class QueriesGenerated extends QueryProviderBase {
     snqMethods.put("8648766437735743063", new SNQ(i++));
     snqMethods.put("8648766437735762360", new SNQ(i++));
     snqMethods.put("1795780265123591417", new SNQ(i++));
-    snqMethods.put("5226317895495947109", new SNQ(i++));
+    snqMethods.put("762424546530516869", new SNQ(i++));
     snqMethods.put("4728417228710962079", new SNQ(i++));
     snqMethods.put("4728417228711005328", new SNQ(i++));
     snqMethods.put("1154858122099223384", new SNQ(i++));

@@ -9,9 +9,8 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.plugin.behavior.ActionParameter__BehaviorDescriptor;
 import jetbrains.mps.console.ideCommands.behavior.ActionCallParameter__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -29,24 +28,14 @@ public class check_RequiredParametersArePassed_NonTypesystemRule extends Abstrac
   public check_RequiredParametersArePassed_NonTypesystemRule() {
   }
   public void applyRule(final SNode callAction, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    Iterable<SNode> requiredParameters = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(callAction, LINKS.action$MdPi), LINKS.parameter$dZwh)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.condition$wuLH)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(it, CONCEPTS.RequiredCondition$Nh);
-          }
-        });
-      }
-    }).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return (SNode) ActionParameter__BehaviorDescriptor.getFieldDeclaration_id112RIkgil0h.invoke(it);
-      }
-    });
-    Iterable<SNode> passedParameters = ListSequence.fromList(SLinkOperations.getChildren(callAction, LINKS.parameter$Me4j)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return (SNode) ActionCallParameter__BehaviorDescriptor.getParameterDeclaration_id4PRmqZe_o$D.invoke(it);
-      }
-    });
+    Iterable<SNode> requiredParameters = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(callAction, LINKS.action$MdPi), LINKS.parameter$dZwh)).where((it) -> {
+      return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.condition$wuLH)).any(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+        public Boolean invoke(SNode it) {
+          return SNodeOperations.isInstanceOf(it, CONCEPTS.RequiredCondition$Nh);
+        }
+      });
+    }).select((it) -> (SNode) ActionParameter__BehaviorDescriptor.getFieldDeclaration_id112RIkgil0h.invoke(it));
+    Iterable<SNode> passedParameters = ListSequence.fromList(SLinkOperations.getChildren(callAction, LINKS.parameter$Me4j)).select((it) -> (SNode) ActionCallParameter__BehaviorDescriptor.getParameterDeclaration_id4PRmqZe_o$D.invoke(it));
     Iterable<SNode> missed = Sequence.fromIterable(requiredParameters).subtract(Sequence.fromIterable(passedParameters));
     if (Sequence.fromIterable(missed).isNotEmpty()) {
       {

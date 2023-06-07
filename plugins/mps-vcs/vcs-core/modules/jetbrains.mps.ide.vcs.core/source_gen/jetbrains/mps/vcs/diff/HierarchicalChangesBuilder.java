@@ -10,9 +10,7 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.ArrayList;
 import jetbrains.mps.vcs.diff.changes.ModifiedNodesGroup;
 import jetbrains.mps.vcs.diff.changes.WrappingNodesGroup;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.vcs.diff.changes.NodeGroupWrapChange;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -46,37 +44,17 @@ import jetbrains.mps.vcs.diff.changes.NodeGroupNotMoveChange;
   }
 
   private void collectWrapChanges() {
-    CollectionSequence.fromCollection(getGroups(false)).concat(CollectionSequence.fromCollection(getGroups(true))).ofType(WrappingNodesGroup.class).visitAll(new IVisitor<WrappingNodesGroup>() {
-      public void visit(WrappingNodesGroup it) {
-        CollectionSequence.fromCollection(myChanges).addElement(new NodeGroupWrapChange(getChangeSet(), it, it.isNew()));
-      }
-    });
+    CollectionSequence.fromCollection(getGroups(false)).concat(CollectionSequence.fromCollection(getGroups(true))).ofType(WrappingNodesGroup.class).visitAll((it) -> CollectionSequence.fromCollection(myChanges).addElement(new NodeGroupWrapChange(getChangeSet(), it, it.isNew())));
   }
 
   private void collectMoveChanges() {
-    CollectionSequence.fromCollection(getGroups(false)).where(new IWhereFilter<ModifiedNodesGroup>() {
-      public boolean accept(ModifiedNodesGroup it) {
-        return it.isMove() && !(it.isWrappedMove());
-      }
-    }).visitAll(new IVisitor<ModifiedNodesGroup>() {
-      public void visit(ModifiedNodesGroup it) {
-        CollectionSequence.fromCollection(myChanges).addElement(new NodeGroupMoveChange(getChangeSet(), it, it.getOppositeMove()));
-      }
-    });
+    CollectionSequence.fromCollection(getGroups(false)).where((it) -> it.isMove() && !(it.isWrappedMove())).visitAll((it) -> CollectionSequence.fromCollection(myChanges).addElement(new NodeGroupMoveChange(getChangeSet(), it, it.getOppositeMove())));
   }
 
   private void collectNotMoveChanges() {
 
-    Collection<ModifiedNodesGroup> oldNotMoveGroups = CollectionSequence.fromCollection(getGroups(false)).where(new IWhereFilter<ModifiedNodesGroup>() {
-      public boolean accept(ModifiedNodesGroup it) {
-        return it.isInsertOrDelete();
-      }
-    }).toListSequence();
-    Collection<ModifiedNodesGroup> newNotMoveGroups = CollectionSequence.fromCollection(getGroups(true)).where(new IWhereFilter<ModifiedNodesGroup>() {
-      public boolean accept(ModifiedNodesGroup it) {
-        return it.isInsertOrDelete();
-      }
-    }).toListSequence();
+    Collection<ModifiedNodesGroup> oldNotMoveGroups = CollectionSequence.fromCollection(getGroups(false)).where((it) -> it.isInsertOrDelete()).toList();
+    Collection<ModifiedNodesGroup> newNotMoveGroups = CollectionSequence.fromCollection(getGroups(true)).where((it) -> it.isInsertOrDelete()).toList();
 
     while (CollectionSequence.fromCollection(oldNotMoveGroups).isNotEmpty()) {
       ModifiedNodesGroup oldGroup1 = CollectionSequence.fromCollection(oldNotMoveGroups).first();

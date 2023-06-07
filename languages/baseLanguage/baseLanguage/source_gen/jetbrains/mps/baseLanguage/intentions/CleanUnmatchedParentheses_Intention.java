@@ -15,9 +15,7 @@ import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -56,15 +54,9 @@ public final class CleanUnmatchedParentheses_Intention extends AbstractIntention
 
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.Expression$mB, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).get(it) != null) || (new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(it) != null);
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).set(it, null);
-          new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).set(it, null);
-        }
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.Expression$mB, false, new SAbstractConcept[]{})).where((it) -> (new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).get(it) != null) || (new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(it) != null)).visitAll((it) -> {
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).set(it, null);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).set(it, null);
       });
     }
 
@@ -77,11 +69,7 @@ public final class CleanUnmatchedParentheses_Intention extends AbstractIntention
     }
 
     private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-      return (SNodeOperations.getParent(node) == null || !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Expression$mB))) && ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.Expression$mB, false, new SAbstractConcept[]{})).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).get(it) != null) || (new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(it) != null);
-        }
-      });
+      return (SNodeOperations.getParent(node) == null || !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Expression$mB))) && ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.Expression$mB, false, new SAbstractConcept[]{})).any((it) -> (new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).get(it) != null) || (new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(it) != null));
     }
 
 

@@ -17,7 +17,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -91,11 +90,7 @@ public final class AddRuntimeExceptionToMethodSignature_Intention extends Abstra
         return false;
       }
       // check if it's not thrown by a method yet
-      if (ListSequence.fromList(SLinkOperations.getChildren(methodDecl, LINKS.throwsItem$CdW$)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.ClassifierType$bL) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr) == SLinkOperations.getTarget(exceptionType, LINKS.classifier$cxMr);
-        }
-      }).isNotEmpty()) {
+      if (ListSequence.fromList(SLinkOperations.getChildren(methodDecl, LINKS.throwsItem$CdW$)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.ClassifierType$bL) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr) == SLinkOperations.getTarget(exceptionType, LINKS.classifier$cxMr)).isNotEmpty()) {
         return false;
       }
       return true;

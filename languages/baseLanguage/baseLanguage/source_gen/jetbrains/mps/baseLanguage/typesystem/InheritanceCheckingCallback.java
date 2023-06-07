@@ -13,7 +13,6 @@ import java.util.List;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopeUtils;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.IMapping;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.ArrayList;
@@ -31,8 +30,6 @@ import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescri
 import jetbrains.mps.baseLanguage.behavior.Property__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.scopes.GenericTypesUtil;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.HashSet;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -101,11 +98,7 @@ public class InheritanceCheckingCallback implements ClassifierTraversalCallback 
       return null;
     }
     @NotNull Map<Signature, InstanceMethod> mySignature2TopMostImpl = record.mySignature2TopMostImpl;
-    IMapping<Signature, InstanceMethod> firstAbstract = MapSequence.fromMap(mySignature2TopMostImpl).where(new IWhereFilter<IMapping<Signature, InstanceMethod>>() {
-      public boolean accept(IMapping<Signature, InstanceMethod> it) {
-        return it.value().isAbstractMethod();
-      }
-    }).first();
+    IMapping<Signature, InstanceMethod> firstAbstract = MapSequence.fromMap(mySignature2TopMostImpl).where((it) -> it.value().isAbstractMethod()).first();
     return (firstAbstract == null ? null : firstAbstract.value());
   }
 
@@ -339,19 +332,7 @@ public class InheritanceCheckingCallback implements ClassifierTraversalCallback 
    * @return all base methods (including abstract) in the hierarchy does not include the methods from the myClassifier
    */
   public List<InstanceMethod> getBaseMethods(final InstanceMethod method) {
-    return MapSequence.fromMap(myClassifier2Signatures).where(new IWhereFilter<IMapping<SNode, SignatureRecord>>() {
-      public boolean accept(IMapping<SNode, SignatureRecord> it) {
-        return it.key() != myClassifier;
-      }
-    }).select(new ISelector<IMapping<SNode, SignatureRecord>, InstanceMethod>() {
-      public InstanceMethod select(IMapping<SNode, SignatureRecord> it) {
-        return it.value().getTopMostImplementation(method.getSignature());
-      }
-    }).where(new IWhereFilter<InstanceMethod>() {
-      public boolean accept(InstanceMethod it) {
-        return it != null;
-      }
-    }).distinct().toListSequence();
+    return MapSequence.fromMap(myClassifier2Signatures).where((it) -> it.key() != myClassifier).select((it) -> it.value().getTopMostImplementation(method.getSignature())).where((it) -> it != null).distinct().toList();
   }
 
   /**
@@ -359,15 +340,7 @@ public class InheritanceCheckingCallback implements ClassifierTraversalCallback 
    */
   public List<InstanceMethod> getMyOverridingMethods() {
     final SignatureRecord myRecord = MapSequence.fromMap(myClassifier2Signatures).get(myClassifier);
-    return Sequence.fromIterable(SNodeOperations.ofConcept(Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(myClassifier), CONCEPTS.IInheritableFeature$4)).translate(new ITranslator2<SNode, InstanceMethod>() {
-      public Iterable<InstanceMethod> translate(SNode it) {
-        return Sequence.fromArray(createSignatures(it));
-      }
-    }).where(new IWhereFilter<InstanceMethod>() {
-      public boolean accept(InstanceMethod it) {
-        return trackMember(it) && myRecord.getTopMostImplementation(it.getSignature()) != null;
-      }
-    }).toListSequence();
+    return Sequence.fromIterable(SNodeOperations.ofConcept(Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(myClassifier), CONCEPTS.IInheritableFeature$4)).translate((it) -> Sequence.fromArray(createSignatures(it))).where((it) -> trackMember(it) && myRecord.getTopMostImplementation(it.getSignature()) != null).toList();
   }
 
   private boolean trackMember(InstanceMethod clMethod) {

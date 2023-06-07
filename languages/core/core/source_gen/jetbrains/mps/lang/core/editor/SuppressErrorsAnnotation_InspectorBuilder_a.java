@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.cells.BigCellUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
@@ -64,11 +63,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private boolean nodeCondition_tmyyum_a0_0() {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(myNode, false), CONCEPTS.SuppressErrorsAnnotation$D1)).concat(Sequence.fromIterable(Sequence.<SNode>singleton(myNode))).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return it.getProperty(PROPS.comment$_sJ2) != null;
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(myNode, false), CONCEPTS.SuppressErrorsAnnotation$D1)).concat(Sequence.fromIterable(Sequence.<SNode>singleton(myNode))).any((it) -> it.getProperty(PROPS.comment$_sJ2) != null);
   }
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
@@ -81,11 +76,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
       Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
-      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
-        }
-      });
+      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where((it) -> Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property));
       if (Sequence.fromIterable(currentPropertyAttributes).isNotEmpty()) {
         EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
         return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentPropertyAttributes).first(), AttributeKind.PROPERTY, editorCell);

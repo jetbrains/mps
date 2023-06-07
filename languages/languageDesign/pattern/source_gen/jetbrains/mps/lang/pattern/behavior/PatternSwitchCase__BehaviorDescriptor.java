@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -46,11 +45,7 @@ public final class PatternSwitchCase__BehaviorDescriptor extends BaseBHDescripto
     return null;
   }
   /*package*/ static boolean hasVariableReferences_id5sDn0OneX$C(@NotNull final SNode __thisNode__) {
-    return ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(__thisNode__, LINKS.body$7Ha9), CONCEPTS.PatternBuilderVariableReference$5T, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode vr) {
-        return ListSequence.fromList(AbstractPatternProvider__BehaviorDescriptor.getVariables_id2r4rhgaEVoa.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.pattern$8mhm))).contains(SLinkOperations.getTarget(vr, LINKS.declaration$vkQ_));
-      }
-    }).isNotEmpty();
+    return ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(__thisNode__, LINKS.body$7Ha9), CONCEPTS.PatternBuilderVariableReference$5T, false, new SAbstractConcept[]{})).where((vr) -> ListSequence.fromList(AbstractPatternProvider__BehaviorDescriptor.getVariables_id2r4rhgaEVoa.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.pattern$8mhm))).contains(SLinkOperations.getTarget(vr, LINKS.declaration$vkQ_))).isNotEmpty();
   }
 
   /*package*/ PatternSwitchCase__BehaviorDescriptor() {

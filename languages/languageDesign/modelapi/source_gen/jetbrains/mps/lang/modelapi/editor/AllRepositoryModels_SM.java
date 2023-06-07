@@ -17,7 +17,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
@@ -62,11 +61,7 @@ public class AllRepositoryModels_SM extends SubstituteMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SModel> getParameters(SubstituteMenuContext _context) {
-      return Sequence.fromIterable(((Iterable<SModule>) _context.getEditorContext().getRepository().getModules())).translate(new ITranslator2<SModule, SModel>() {
-        public Iterable<SModel> translate(SModule it) {
-          return it.getModels();
-        }
-      });
+      return Sequence.fromIterable(((Iterable<SModule>) _context.getEditorContext().getRepository().getModules())).translate((it) -> it.getModels());
     }
     private class SMP_Action_vzoe42_a0 extends SingleItemSubstituteMenuPart {
       private final SModel myParameterObject;

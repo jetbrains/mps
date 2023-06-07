@@ -18,8 +18,6 @@ import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.editor.table.behavior.CellModel_HierarchycalTable__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.structure.behavior.LinkDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.HashMap;
@@ -44,11 +42,7 @@ public class CellModel_HierarchycalTable_Constraints extends BaseConstraintsDesc
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forResolvableElements(ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getAggregationLinkDeclarations_idhEwILLp.invoke(CellModel_HierarchycalTable__BehaviorDescriptor.getContainingConceptDeclaration_id5p3TFWLvETA.invoke(_context.getReferenceNode()))).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return !((boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(it));
-              }
-            }).toListSequence());
+            return ListScope.forResolvableElements(ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getAggregationLinkDeclarations_idhEwILLp.invoke(CellModel_HierarchycalTable__BehaviorDescriptor.getContainingConceptDeclaration_id5p3TFWLvETA.invoke(_context.getReferenceNode()))).where((it) -> !((boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(it))).toList());
           }
         };
       }
@@ -64,11 +58,7 @@ public class CellModel_HierarchycalTable_Constraints extends BaseConstraintsDesc
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forResolvableElements(ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getAggregationLinkDeclarations_idhEwILLp.invoke(CellModel_HierarchycalTable__BehaviorDescriptor.getContainingConceptDeclaration_id5p3TFWLvETA.invoke(_context.getReferenceNode()))).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return !((boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(it));
-              }
-            }));
+            return ListScope.forResolvableElements(ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getAggregationLinkDeclarations_idhEwILLp.invoke(CellModel_HierarchycalTable__BehaviorDescriptor.getContainingConceptDeclaration_id5p3TFWLvETA.invoke(_context.getReferenceNode()))).where((it) -> !((boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(it))));
           }
         };
       }
@@ -87,11 +77,7 @@ public class CellModel_HierarchycalTable_Constraints extends BaseConstraintsDesc
             if ((SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.rowsLinkDeclaration$TU4_) == null)) {
               return null;
             }
-            return ListScope.forResolvableElements(ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getAggregationLinkDeclarations_idhEwILLp.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.rowsLinkDeclaration$TU4_), LINKS.target$m40F))).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return !((boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(it));
-              }
-            }));
+            return ListScope.forResolvableElements(ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getAggregationLinkDeclarations_idhEwILLp.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.rowsLinkDeclaration$TU4_), LINKS.target$m40F))).where((it) -> !((boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(it))));
           }
         };
       }

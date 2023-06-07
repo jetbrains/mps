@@ -6,7 +6,6 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.samples.LightweightDSL.plugin.transformRuntime.PipelineElement;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 
 /**
@@ -29,20 +28,16 @@ public class Demo {
     System.out.println("Initial data: \t\t" + data);
     final List<Integer> processedData = ListSequence.fromList(new ArrayList<Integer>());
     final List<PipelineElement> transformers = getTransformers();
-    ListSequence.fromList(data).visitAll(new IVisitor<Integer>() {
-      public void visit(Integer dataPiece) {
-        final Wrappers._int piece = new Wrappers._int(dataPiece);
-        ListSequence.fromList(transformers).visitAll(new IVisitor<PipelineElement>() {
-          public void visit(PipelineElement transformer) {
-            piece.value = transformer.transformValue(piece.value);
-            if (piece.value == Integer.MIN_VALUE) {
-              return;
-            }
-          }
-        });
-        if (piece.value != Integer.MIN_VALUE) {
-          ListSequence.fromList(processedData).addElement(piece.value);
+    ListSequence.fromList(data).visitAll((dataPiece) -> {
+      final Wrappers._int piece = new Wrappers._int(dataPiece);
+      ListSequence.fromList(transformers).visitAll((transformer) -> {
+        piece.value = transformer.transformValue(piece.value);
+        if (piece.value == Integer.MIN_VALUE) {
+          return;
         }
+      });
+      if (piece.value != Integer.MIN_VALUE) {
+        ListSequence.fromList(processedData).addElement(piece.value);
       }
     });
     System.out.println("Processed data: \t" + processedData);

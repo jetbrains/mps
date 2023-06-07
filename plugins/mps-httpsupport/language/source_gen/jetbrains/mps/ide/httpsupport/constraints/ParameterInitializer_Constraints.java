@@ -24,7 +24,7 @@ import jetbrains.mps.scope.FilteringScope;
 import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -70,8 +70,8 @@ public class ParameterInitializer_Constraints extends BaseConstraintsDescriptor 
 
               @Override
               public boolean isExcluded(final SNode node) {
-                return ListSequence.fromList(SLinkOperations.getChildren(bilder, LINKS.initializer$Xe8)).findFirst(new IWhereFilter<SNode>() {
-                  public boolean accept(SNode it) {
+                return ListSequence.fromList(SLinkOperations.getChildren(bilder, LINKS.initializer$Xe8)).findFirst(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+                  public Boolean invoke(SNode it) {
                     return check_9zeh4o_a0a0a0a0a0b0a0c0b0a0a0a0a0a0a3(SLinkOperations.getTarget(it, LINKS.parameter$DxS8), node);
                   }
                 }) != null && !(SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.parameter$DxS8) != null);

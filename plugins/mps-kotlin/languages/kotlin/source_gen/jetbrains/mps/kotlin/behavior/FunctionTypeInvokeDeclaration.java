@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kotlin.api.declaration.ParameterDeclaration;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.kotlin.api.declaration.TypeParameterDeclaration;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
@@ -37,11 +36,7 @@ public class FunctionTypeInvokeDeclaration implements FunctionDeclaration {
 
   @Override
   public Iterable<ParameterDeclaration> getParameters() {
-    return ListSequence.fromList(SLinkOperations.getChildren(functionType, LINKS.parameters$jkhy)).select(new ISelector<SNode, FunctionTypeInvokeParameterDeclaration>() {
-      public FunctionTypeInvokeParameterDeclaration select(SNode param) {
-        return new FunctionTypeInvokeParameterDeclaration(param);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(functionType, LINKS.parameters$jkhy)).select((param) -> new FunctionTypeInvokeParameterDeclaration(param));
   }
 
   @Override

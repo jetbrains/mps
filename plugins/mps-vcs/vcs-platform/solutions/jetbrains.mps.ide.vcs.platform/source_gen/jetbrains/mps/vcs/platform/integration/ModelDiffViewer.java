@@ -19,7 +19,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.fileTypes.MPSFileTypeFactory;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.ArrayList;
 import com.intellij.diff.requests.DiffRequest;
 import com.intellij.diff.contents.EmptyContent;
@@ -66,25 +65,13 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
     List<SModel> models;
     boolean perRootPersistence = MPSFileTypeFactory.MPS_ROOT_FILE_TYPE.equals(type) || MPSFileTypeFactory.MPS_HEADER_FILE_TYPE.equals(type);
     if (perRootPersistence) {
-      List<Tuples._2<SModel, SNodeId>> modelsIds = ListSequence.fromList(contents).select(new ISelector<DiffContent, Tuples._2<SModel, SNodeId>>() {
-        public Tuples._2<SModel, SNodeId> select(DiffContent it) {
-          return getModelAndRoot(mpsProject, it, type);
-        }
-      }).toListSequence();
+      List<Tuples._2<SModel, SNodeId>> modelsIds = ListSequence.fromList(contents).select((it) -> getModelAndRoot(mpsProject, it, type)).toList();
       rootId = (ListSequence.fromList(modelsIds).getElement(1)._1() != null ? ListSequence.fromList(modelsIds).getElement(1)._1() : ListSequence.fromList(modelsIds).getElement(0)._1());
-      models = ListSequence.fromList(modelsIds).select(new ISelector<Tuples._2<SModel, SNodeId>, SModel>() {
-        public SModel select(Tuples._2<SModel, SNodeId> it) {
-          return it._0();
-        }
-      }).toListSequence();
+      models = ListSequence.fromList(modelsIds).select((it) -> it._0()).toList();
     } else {
       //  show one root only if requested
       rootId = request.getUserData(DIFF_SHOW_ROOTID);
-      models = ListSequence.fromList(contents).select(new ISelector<DiffContent, SModel>() {
-        public SModel select(DiffContent it) {
-          return ModelDiffViewer.getModel(mpsProject, it, type);
-        }
-      }).toListSequence();
+      models = ListSequence.fromList(contents).select((it) -> ModelDiffViewer.getModel(mpsProject, it, type)).toList();
     }
     List<String> titles = ListSequence.fromList(new ArrayList<String>());
     ListSequence.fromList(titles).addSequence(ListSequence.fromList(request.getContentTitles()));

@@ -17,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -100,21 +99,13 @@ public final class CellModel_Collection__BehaviorDescriptor extends BaseBHDescri
     return false;
   }
   /*package*/ static boolean shellBeSynchronized_id3TPTV99_TMT(@NotNull final SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.childCellModel$HAw7)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ((boolean) CellModel_Collection__BehaviorDescriptor.shellBeSynchronized_id3TPTV99Aiv4.invokeSpecial(__thisNode__, it));
-      }
-    }) || ((boolean) CellModel_Collection__BehaviorDescriptor.shellBeSynchronized_id3TPTV99Aiv4.invokeSpecial(__thisNode__, SLinkOperations.getTarget(__thisNode__, LINKS.foldedCellModel$csI5)));
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.childCellModel$HAw7)).any((it) -> ((boolean) CellModel_Collection__BehaviorDescriptor.shellBeSynchronized_id3TPTV99Aiv4.invokeSpecial(__thisNode__, it))) || ((boolean) CellModel_Collection__BehaviorDescriptor.shellBeSynchronized_id3TPTV99Aiv4.invokeSpecial(__thisNode__, SLinkOperations.getTarget(__thisNode__, LINKS.foldedCellModel$csI5)));
   }
   /*package*/ static boolean shellBeSynchronized_id3TPTV99Aiv4(@NotNull SNode __thisNode__, SNode childCell) {
     return childCell != null && SNodeOperations.isInstanceOf(childCell, CONCEPTS.Synchronizeable$kF) && (boolean) Synchronizeable__BehaviorDescriptor.shellBeSynchronized_id3TPTV99_TMT.invoke(SNodeOperations.cast(childCell, CONCEPTS.Synchronizeable$kF));
   }
   /*package*/ static boolean canBeSynchronized_id3wXm3h1AYM7(@NotNull final SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.childCellModel$HAw7)).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ((boolean) CellModel_Collection__BehaviorDescriptor.canBeSynchronized_id3wXm3h1BRps.invokeSpecial(__thisNode__, it));
-      }
-    }) && ((boolean) CellModel_Collection__BehaviorDescriptor.canBeSynchronized_id3wXm3h1BRps.invokeSpecial(__thisNode__, SLinkOperations.getTarget(__thisNode__, LINKS.foldedCellModel$csI5)));
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.childCellModel$HAw7)).all((it) -> ((boolean) CellModel_Collection__BehaviorDescriptor.canBeSynchronized_id3wXm3h1BRps.invokeSpecial(__thisNode__, it))) && ((boolean) CellModel_Collection__BehaviorDescriptor.canBeSynchronized_id3wXm3h1BRps.invokeSpecial(__thisNode__, SLinkOperations.getTarget(__thisNode__, LINKS.foldedCellModel$csI5)));
   }
   /*package*/ static boolean canBeSynchronized_id3wXm3h1BRps(@NotNull SNode __thisNode__, SNode childCell) {
     return childCell == null || (SNodeOperations.isInstanceOf(childCell, CONCEPTS.Synchronizeable$kF) && (boolean) Synchronizeable__BehaviorDescriptor.canBeSynchronized_id3wXm3h1AYM7.invoke(SNodeOperations.cast(childCell, CONCEPTS.Synchronizeable$kF)));

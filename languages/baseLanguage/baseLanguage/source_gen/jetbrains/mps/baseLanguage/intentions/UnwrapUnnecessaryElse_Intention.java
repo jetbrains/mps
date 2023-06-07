@@ -16,10 +16,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.dataFlow.framework.Program;
 import jetbrains.mps.lang.dataFlow.DataFlow;
@@ -68,11 +65,7 @@ public final class UnwrapUnnecessaryElse_Intention extends AbstractIntentionDesc
       SNode elseBranch = SLinkOperations.getTarget(node, LINKS.ifFalseStatement$psZK);
       if (SNodeOperations.isInstanceOf(elseBranch, CONCEPTS.BlockStatement$u4)) {
         List<SNode> reversed = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(elseBranch, CONCEPTS.BlockStatement$u4), LINKS.statements$q65M), LINKS.statement$53DE)).reversedList();
-        ListSequence.fromList(reversed).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            SNodeOperations.insertNextSiblingChild(node, it);
-          }
-        });
+        ListSequence.fromList(reversed).visitAll((it) -> SNodeOperations.insertNextSiblingChild(node, it));
       } else {
         SNodeOperations.insertNextSiblingChild(node, elseBranch);
       }
@@ -95,21 +88,15 @@ public final class UnwrapUnnecessaryElse_Intention extends AbstractIntentionDesc
 
       List<SNode> branches = ListSequence.fromList(new ArrayList<SNode>());
       ListSequence.fromList(branches).addElement(SNodeOperations.copyNode(trueBranch));
-      ListSequence.fromList(branches).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elsifClauses$EVJW)).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SNodeOperations.copyNode(SLinkOperations.getTarget(it, LINKS.statementList$neQf));
-        }
-      }));
+      ListSequence.fromList(branches).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elsifClauses$EVJW)).select((it) -> SNodeOperations.copyNode(SLinkOperations.getTarget(it, LINKS.statementList$neQf))));
 
-      return ListSequence.fromList(branches).all(new IWhereFilter<SNode>() {
-        public boolean accept(SNode branch) {
-          SNode clonedStatements = branch;
-          SNode next = SNodeFactoryOperations.addNewChild(clonedStatements, LINKS.statement$53DE, CONCEPTS.LocalVariableDeclarationStatement$4w);
+      return ListSequence.fromList(branches).all((branch) -> {
+        SNode clonedStatements = branch;
+        SNode next = SNodeFactoryOperations.addNewChild(clonedStatements, LINKS.statement$53DE, CONCEPTS.LocalVariableDeclarationStatement$4w);
 
-          Program program = DataFlow.buildProgram(clonedStatements);
-          Set<SNode> unreachable = DataFlowUtil.getUnreachableNodes(program);
-          return SetSequence.fromSet(unreachable).contains(next);
-        }
+        Program program = DataFlow.buildProgram(clonedStatements);
+        Set<SNode> unreachable = DataFlowUtil.getUnreachableNodes(program);
+        return SetSequence.fromSet(unreachable).contains(next);
       });
     }
 

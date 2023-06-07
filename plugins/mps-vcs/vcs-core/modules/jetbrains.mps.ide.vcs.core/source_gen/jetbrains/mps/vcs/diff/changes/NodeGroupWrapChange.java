@@ -8,20 +8,15 @@ import jetbrains.mps.vcs.diff.ChangeSet;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.vcs.diff.DiffUtil;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import java.util.Map;
@@ -59,11 +54,7 @@ public final class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
     List<ModifiedNodesGroup> unwrappedGroups = wrappingGroup.getUnwrappedGroups();
     assert ListSequence.fromList(unwrappedGroups).isNotEmpty();
     final List<ModifiedNode> nodes = ListSequence.fromList(new ArrayList<ModifiedNode>());
-    ListSequence.fromList(unwrappedGroups).visitAll(new IVisitor<ModifiedNodesGroup>() {
-      public void visit(ModifiedNodesGroup it) {
-        ListSequence.fromList(nodes).addSequence(ListSequence.fromList(it.getModifiedNodes()));
-      }
-    });
+    ListSequence.fromList(unwrappedGroups).visitAll((it) -> ListSequence.fromList(nodes).addSequence(ListSequence.fromList(it.getModifiedNodes())));
     SModel model = (isNew ? changeSet.getNewModel() : changeSet.getOldModel());
     SNodeId nextNodeId = ListSequence.fromList(unwrappedGroups).last().getNextNodeId();
     return new ModifiedNodesGroup(model, nodes, nextNodeId);
@@ -84,11 +75,7 @@ public final class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
   }
 
   protected String getMultiLineIdsString(boolean isNew) {
-    List<String> allIds = ListSequence.fromList(getIds(isNew)).select(new ISelector<SNodeId, String>() {
-      public String select(SNodeId id) {
-        return "#" + id;
-      }
-    }).toListSequence();
+    List<String> allIds = ListSequence.fromList(getIds(isNew)).select((id) -> "#" + id).toList();
     int size = ListSequence.fromList(allIds).count();
     if (size == 1) {
       return ListSequence.fromList(allIds).getElement(0);
@@ -117,20 +104,8 @@ public final class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
   private String createDescription(boolean verbose) {
     String unwrappedRole = myWrappingGroup.getUnwrappedLink().getName();
     String wrappingRole = myWrappingGroup.getLink().getName();
-    List<ModifiedNodesGroup> wrappedMoves = ListSequence.fromList(myWrappingGroup.getUnwrappedGroups()).where(new IWhereFilter<ModifiedNodesGroup>() {
-      public boolean accept(ModifiedNodesGroup it) {
-        return it.isWrappedMove();
-      }
-    }).toListSequence();
-    int movedSize = ListSequence.fromList(wrappedMoves).select(new ISelector<ModifiedNodesGroup, Integer>() {
-      public Integer select(ModifiedNodesGroup it) {
-        return it.getSize();
-      }
-    }).reduceLeft(new ILeftCombinator<Integer, Integer>() {
-      public Integer combine(Integer a, Integer b) {
-        return a + b;
-      }
-    });
+    List<ModifiedNodesGroup> wrappedMoves = ListSequence.fromList(myWrappingGroup.getUnwrappedGroups()).where((it) -> it.isWrappedMove()).toList();
+    int movedSize = ListSequence.fromList(wrappedMoves).select((it) -> it.getSize()).reduceLeft((a, b) -> a + b);
     String wrappedItems = NameUtil.formatNumericalString(movedSize, unwrappedRole);
     StringBuilder sb = new StringBuilder();
     if (myIsWrap) {
@@ -163,16 +138,8 @@ public final class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
   private void wrapNodes(@NotNull SModel model, @NotNull NodeCopier nodeCopier) {
 
     List<SNode> nodes = getUnwrappedNodes(model, nodeCopier);
-    ListSequence.fromList(nodes).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SNodeOperations.deleteNode(it);
-      }
-    });
-    ListSequence.fromList(nodes).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        it.delete();
-      }
-    });
+    ListSequence.fromList(nodes).visitAll((it) -> SNodeOperations.deleteNode(it));
+    ListSequence.fromList(nodes).visitAll((it) -> it.delete());
 
     myWrappingGroup.insertCopyIntoModel(model, nodeCopier);
     myWrappingGroup.setIsApplied(model);
@@ -186,11 +153,7 @@ public final class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
 
   private void unwrapNodes(@NotNull final SModel model, @NotNull NodeCopier nodeCopier) {
     List<SNode> nodes = getWrappedNodes(model, nodeCopier);
-    ListSequence.fromList(nodes).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SNodeOperations.deleteNode(it);
-      }
-    });
+    ListSequence.fromList(nodes).visitAll((it) -> SNodeOperations.deleteNode(it));
     myWrappingGroup.deleteFromModel(model);
 
     SNode parent = nodeCopier.getNode(model, ListSequence.fromList(myWrappingGroup.getWrappedGroups()).last().getInsertParentId(model));
@@ -200,15 +163,7 @@ public final class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
     SNodeId beforeAnchorId = ListSequence.fromList(myWrappingGroup.getUnwrappedGroups()).last().getNextInsertedNodeId(model);
     SNode beforeAnchor = (beforeAnchorId == null ? null : nodeCopier.getNode(model, beforeAnchorId));
     insertNodes(nodes, parent, myWrappingGroup.getLink(), beforeAnchor);
-    ListSequence.fromList(myWrappingGroup.getUnwrappedGroups()).where(new IWhereFilter<ModifiedNodesGroup>() {
-      public boolean accept(ModifiedNodesGroup it) {
-        return it.getWrappingGroup() == myWrappingGroup;
-      }
-    }).visitAll(new IVisitor<ModifiedNodesGroup>() {
-      public void visit(ModifiedNodesGroup it) {
-        it.setIsApplied(model);
-      }
-    });
+    ListSequence.fromList(myWrappingGroup.getUnwrappedGroups()).where((it) -> it.getWrappingGroup() == myWrappingGroup).visitAll((it) -> it.setIsApplied(model));
   }
 
   @NotNull
@@ -229,11 +184,7 @@ public final class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
 
   private List<SNode> getUnwrappedNodes(@NotNull final SModel model, @NotNull NodeCopier nodeCopier) {
 
-    ModifiedNodesGroup anyUnwrappedGroup = ListSequence.fromList(myWrappingGroup.getUnwrappedGroups()).where(new IWhereFilter<ModifiedNodesGroup>() {
-      public boolean accept(ModifiedNodesGroup it) {
-        return it.isWrappedMove() && it.getOppositeWrappingGroup() == myWrappingGroup;
-      }
-    }).first();
+    ModifiedNodesGroup anyUnwrappedGroup = ListSequence.fromList(myWrappingGroup.getUnwrappedGroups()).where((it) -> it.isWrappedMove() && it.getOppositeWrappingGroup() == myWrappingGroup).first();
 
     assert anyUnwrappedGroup != null;
 
@@ -242,27 +193,11 @@ public final class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
     SNode parent = SNodeOperations.getParent(anyUnwrappedNode);
 
     List<SNode> allChildren = DiffUtil.getChildrenInRole(parent, myWrappingGroup.getUnwrappedLink());
-    final List<SNodeId> allIds = ListSequence.fromList(allChildren).select(new ISelector<SNode, SNodeId>() {
-      public SNodeId select(SNode it) {
-        return it.getNodeId();
-      }
-    }).toListSequence();
+    final List<SNodeId> allIds = ListSequence.fromList(allChildren).select((it) -> it.getNodeId()).toList();
 
-    List<ModifiedNodesGroup> effectiveUnwrappedGroups = ListSequence.fromList(myWrappingGroup.getUnwrappedGroups()).select(new ISelector<ModifiedNodesGroup, ModifiedNodesGroup>() {
-      public ModifiedNodesGroup select(ModifiedNodesGroup it) {
-        return getEffectiveUnwrappedGroup(it, model);
-      }
-    }).where(new IWhereFilter<ModifiedNodesGroup>() {
-      public boolean accept(ModifiedNodesGroup it) {
-        return ListSequence.fromList(allIds).contains(it.getFirstNodeId());
-      }
-    }).distinct().toListSequence();
+    List<ModifiedNodesGroup> effectiveUnwrappedGroups = ListSequence.fromList(myWrappingGroup.getUnwrappedGroups()).select((it) -> getEffectiveUnwrappedGroup(it, model)).where((it) -> ListSequence.fromList(allIds).contains(it.getFirstNodeId())).distinct().toList();
 
-    effectiveUnwrappedGroups = ListSequence.fromList(effectiveUnwrappedGroups).sort(new ISelector<ModifiedNodesGroup, Integer>() {
-      public Integer select(ModifiedNodesGroup it) {
-        return ListSequence.fromList(allIds).indexOf(it.getFirstNodeId());
-      }
-    }, true).toListSequence();
+    effectiveUnwrappedGroups = ListSequence.fromList(effectiveUnwrappedGroups).sort((it) -> ListSequence.fromList(allIds).indexOf(it.getFirstNodeId()), true).toList();
 
     int start = ListSequence.fromList(allIds).indexOf(ListSequence.fromList(effectiveUnwrappedGroups).first().getFirstNodeId());
     int end = ListSequence.fromList(allIds).indexOf(ListSequence.fromList(ListSequence.fromList(effectiveUnwrappedGroups).last().getIds()).last()) + 1;
@@ -270,7 +205,7 @@ public final class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
     assert start != -1;
     assert end != 0;
 
-    return ListSequence.fromList(allChildren).page(start, end).toListSequence();
+    return ListSequence.fromList(allChildren).page(start, end).toList();
   }
 
   private List<SNode> getWrappedNodes(@NotNull SModel model, @NotNull NodeCopier nodeCopier) {
@@ -319,19 +254,7 @@ public final class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
     }
     // main difference here with the super method is that we don't create messages
     // for internal changes in wrapped area and use only really wrapped unchanged groups. 
-    return ListSequence.fromList(getWrappingGroup().getUnwrappedGroups()).where(new IWhereFilter<ModifiedNodesGroup>() {
-      public boolean accept(ModifiedNodesGroup it) {
-        return it.isWrappedMove();
-      }
-    }).translate(new ITranslator2<ModifiedNodesGroup, ModifiedNode>() {
-      public Iterable<ModifiedNode> translate(ModifiedNodesGroup it) {
-        return it.getModifiedNodes();
-      }
-    }).select(new ISelector<ModifiedNode, Tuples._2<SNodeId, MessageTarget>>() {
-      public Tuples._2<SNodeId, MessageTarget> select(ModifiedNode it) {
-        return MultiTuple.<SNodeId,MessageTarget>from(it.getNodeId(), ((MessageTarget) new NodeMessageTarget()));
-      }
-    }).toListSequence();
+    return ListSequence.fromList(getWrappingGroup().getUnwrappedGroups()).where((it) -> it.isWrappedMove()).translate((it) -> it.getModifiedNodes()).select((it) -> MultiTuple.<SNodeId,MessageTarget>from(it.getNodeId(), ((MessageTarget) new NodeMessageTarget()))).toList();
   }
 
   @Override
@@ -409,15 +332,7 @@ public final class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
 
   private List<SNodeId> getWrappedIds() {
     final List<SNodeId> wrappedIds = ListSequence.fromList(new ArrayList<SNodeId>());
-    ListSequence.fromList(myWrappingGroup.getUnwrappedGroups()).where(new IWhereFilter<ModifiedNodesGroup>() {
-      public boolean accept(ModifiedNodesGroup it) {
-        return it.isWrappedMove();
-      }
-    }).visitAll(new IVisitor<ModifiedNodesGroup>() {
-      public void visit(ModifiedNodesGroup it) {
-        ListSequence.fromList(wrappedIds).addSequence(ListSequence.fromList(it.getIds()));
-      }
-    });
+    ListSequence.fromList(myWrappingGroup.getUnwrappedGroups()).where((it) -> it.isWrappedMove()).visitAll((it) -> ListSequence.fromList(wrappedIds).addSequence(ListSequence.fromList(it.getIds())));
     return wrappedIds;
   }
 

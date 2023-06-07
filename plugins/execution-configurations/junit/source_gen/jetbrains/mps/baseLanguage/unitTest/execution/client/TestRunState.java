@@ -14,13 +14,12 @@ import org.jetbrains.mps.annotations.Immutable;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.LinkedHashMap;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestMethodNodeKey;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestNodeEvent;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestRawEvent;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestNodeKey;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.annotations.Internal;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestCaseNodeKey;
 import jetbrains.mps.baseLanguage.unitTest.execution.TerminationTestEvent;
@@ -54,8 +53,8 @@ public final class TestRunState {
   private final TestRunData myInnerData = new TestRunData();
 
   private void processTestCases(List<ITestNodeWrapper> tests) {
-    for (ITestNodeWrapper testCase : ListSequence.fromList(tests).where(new IWhereFilter<ITestNodeWrapper>() {
-      public boolean accept(ITestNodeWrapper it) {
+    for (ITestNodeWrapper testCase : ListSequence.fromList(tests).where(new _FunctionTypes._return_P1_E0<Boolean, ITestNodeWrapper>() {
+      public Boolean invoke(ITestNodeWrapper it) {
         return it.isTestCase();
       }
     })) {
@@ -64,8 +63,8 @@ public final class TestRunState {
   }
 
   private void processTestMethods(List<ITestNodeWrapper> tests) {
-    for (ITestNodeWrapper testMethod : ListSequence.fromList(tests).where(new IWhereFilter<ITestNodeWrapper>() {
-      public boolean accept(ITestNodeWrapper it) {
+    for (ITestNodeWrapper testMethod : ListSequence.fromList(tests).where(new _FunctionTypes._return_P1_E0<Boolean, ITestNodeWrapper>() {
+      public Boolean invoke(ITestNodeWrapper it) {
         return !(it.isTestCase());
       }
     })) {
@@ -116,22 +115,14 @@ public final class TestRunState {
   /*package*/ void onTestStarted(TestRawEvent event) {
     log("test started : " + event);
     final TestNodeEvent nodeEvent = convertRawEventToNodeEvent(event);
-    ListSequence.fromList(myListeners).visitAll(new IVisitor<TestStateListener>() {
-      public void visit(TestStateListener it) {
-        it.onTestStart(nodeEvent);
-      }
-    });
+    ListSequence.fromList(myListeners).visitAll((it) -> it.onTestStart(nodeEvent));
     startTest(nodeEvent);
   }
 
   /*package*/ void onTestFinished(TestRawEvent event) {
     final TestNodeEvent nodeEvent = convertRawEventToNodeEvent(event);
     log("test finished : " + event);
-    ListSequence.fromList(myListeners).visitAll(new IVisitor<TestStateListener>() {
-      public void visit(TestStateListener it) {
-        it.onTestFinish(nodeEvent);
-      }
-    });
+    ListSequence.fromList(myListeners).visitAll((it) -> it.onTestFinish(nodeEvent));
     myInnerData.myCompletedTests += getCurrentEventTestsCount(nodeEvent);
     notifyUpdateListeners();
     myInnerData.myCurrentTestNode = null;
@@ -147,31 +138,19 @@ public final class TestRunState {
 
   /*package*/ void onTestRunStarted() {
     log("test run started : ");
-    ListSequence.fromList(myListeners).visitAll(new IVisitor<TestStateListener>() {
-      public void visit(TestStateListener it) {
-        it.onTestRunStarted();
-      }
-    });
+    ListSequence.fromList(myListeners).visitAll((it) -> it.onTestRunStarted());
   }
 
   /*package*/ void onTestRunFinished() {
     log("test run finished : ");
     myInnerData.myFinished = true;
-    ListSequence.fromList(myListeners).visitAll(new IVisitor<TestStateListener>() {
-      public void visit(TestStateListener it) {
-        it.onTestRunFinished();
-      }
-    });
+    ListSequence.fromList(myListeners).visitAll((it) -> it.onTestRunFinished());
   }
 
   /*package*/ void onTestAssumptionFailure(TestRawEvent event) {
     log("test assumption failed : ");
     final TestNodeEvent nodeEvent = convertRawEventToNodeEvent(event);
-    ListSequence.fromList(myListeners).visitAll(new IVisitor<TestStateListener>() {
-      public void visit(TestStateListener it) {
-        it.onTestAssumptionFailure(nodeEvent);
-      }
-    });
+    ListSequence.fromList(myListeners).visitAll((it) -> it.onTestAssumptionFailure(nodeEvent));
     myInnerData.mySkippedTests += getCurrentNotProblemTestsCount(nodeEvent);
   }
 
@@ -222,33 +201,23 @@ public final class TestRunState {
   public void onTestIgnored(TestRawEvent event) {
     log("test ignored : ");
     final TestNodeEvent nodeEvent = convertRawEventToNodeEvent(event);
-    ListSequence.fromList(myListeners).visitAll(new IVisitor<TestStateListener>() {
-      public void visit(TestStateListener it) {
-        it.onTestIgnored(nodeEvent);
-      }
-    });
+    ListSequence.fromList(myListeners).visitAll((it) -> it.onTestIgnored(nodeEvent));
     myInnerData.myIgnoredTests += getCurrentNotProblemTestsCount(nodeEvent);
   }
 
   public void onTestFailure(TestRawEvent event) {
     log("test failed : " + event);
     final TestNodeEvent nodeEvent = convertRawEventToNodeEvent(event);
-    ListSequence.fromList(myListeners).visitAll(new IVisitor<TestStateListener>() {
-      public void visit(TestStateListener it) {
-        it.onTestFailure(nodeEvent);
-      }
-    });
+    ListSequence.fromList(myListeners).visitAll((it) -> it.onTestFailure(nodeEvent));
     myInnerData.myFailedTests += getCurrentNotProblemTestsCount(nodeEvent);
   }
 
   private void removeFinishedTestEvent(TestRawEvent event) {
     final TestNodeEvent nodeEvent = convertRawEventToNodeEvent(event);
     if (nodeEvent.isTestCaseEvent()) {
-      ListSequence.fromList(myInnerData.myTestMethodsLeftToRun).removeWhere(new IWhereFilter<TestMethodNodeKey>() {
-        public boolean accept(TestMethodNodeKey it) {
-          TestCaseNodeKey testCaseKey = (TestCaseNodeKey) nodeEvent.getTestKey();
-          return it.getTestCaseNodeKey().equals(testCaseKey);
-        }
+      ListSequence.fromList(myInnerData.myTestMethodsLeftToRun).removeWhere((it) -> {
+        TestCaseNodeKey testCaseKey = (TestCaseNodeKey) nodeEvent.getTestKey();
+        return it.getTestCaseNodeKey().equals(testCaseKey);
       });
     } else {
       @NotNull TestMethodNodeKey methodKey = (TestMethodNodeKey) nodeEvent.getTestKey();
@@ -275,22 +244,14 @@ public final class TestRunState {
     // these are the tests which have not been executed yet
     List<TestMethodNodeKey> testsNotRunDueToError = myInnerData.myTestMethodsLeftToRun;
     final TerminationTestEvent event = new TerminationTestEvent(myInnerData.myCurrentTestNode, testsNotRunDueToError, !(terminatingOnException));
-    ListSequence.fromList(myListeners).visitAll(new IVisitor<TestStateListener>() {
-      public void visit(TestStateListener it) {
-        it.onTermination(event);
-      }
-    });
+    ListSequence.fromList(myListeners).visitAll((it) -> it.onTermination(event));
     notifyUpdateListeners();
   }
 
   public void onStartNotified() {
     checkConsistency();
     log("tests notified : ");
-    ListSequence.fromList(myListeners).visitAll(new IVisitor<TestStateListener>() {
-      public void visit(TestStateListener it) {
-        it.onProcessNotified();
-      }
-    });
+    ListSequence.fromList(myListeners).visitAll((it) -> it.onProcessNotified());
   }
 
   private void checkConsistency() {
@@ -315,11 +276,7 @@ public final class TestRunState {
     myInnerData.myAvailableText = text;
     myInnerData.myTextType = key;
     final TextTestEvent event = new TextTestEvent(text, key, myInnerData.myCurrentTestNode);
-    ListSequence.fromList(myListeners).visitAll(new IVisitor<TestStateListener>() {
-      public void visit(TestStateListener it) {
-        it.onTextAvailable(event);
-      }
-    });
+    ListSequence.fromList(myListeners).visitAll((it) -> it.onTextAvailable(event));
     notifyUpdateListeners();
     myInnerData.myAvailableText = null;
     myInnerData.myTextType = null;

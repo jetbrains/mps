@@ -5,6 +5,7 @@ package jetbrains.mps.internal.collections.runtime;
 import java.util.Collection;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Iterator;
+import java.util.Objects;
 
 public abstract class AbstractCollectionSequence<T> extends AbstractSequence<T> implements ICollectionSequence<T>, Collection<T> {
   protected AbstractCollectionSequence() {
@@ -142,16 +143,13 @@ public abstract class AbstractCollectionSequence<T> extends AbstractSequence<T> 
     }
     return super.containsSequence(that);
   }
-  @SuppressWarnings(value = "unchecked")
   @Override
   public boolean equals(Object o) {
     if (o instanceof AbstractCollectionSequence) {
-      Collection<T> thatColl = ((AbstractCollectionSequence<T>) o).getCollection();
-      Collection<T> thisColl = getCollection();
-      if (thisColl == thatColl) {
-        return true;
-      }
-      return (thisColl != null ? thisColl.equals(thatColl) : false);
+      return Objects.equals(as_oug180_a0a0a0a0v(o, AbstractCollectionSequence.class).getCollection(), getCollection());
+    }
+    if (o instanceof Collection) {
+      return Objects.equals(o, getCollection());
     }
     return super.equals(o);
   }
@@ -160,4 +158,7 @@ public abstract class AbstractCollectionSequence<T> extends AbstractSequence<T> 
     return getCollection().hashCode();
   }
   protected abstract Collection<T> getCollection();
+  private static <T> T as_oug180_a0a0a0a0v(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
 }

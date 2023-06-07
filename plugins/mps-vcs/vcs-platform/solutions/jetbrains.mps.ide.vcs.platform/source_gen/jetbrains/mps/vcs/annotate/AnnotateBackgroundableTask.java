@@ -16,7 +16,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.ide.editor.util.EditorComponentUtil;
 import com.intellij.openapi.fileEditor.FileEditorManager;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.nodeEditor.NodeEditorComponent;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.progress.ProgressIndicator;
@@ -64,11 +63,7 @@ public final class AnnotateBackgroundableTask extends Task.Backgroundable {
     if (editorComponent instanceof InspectorEditorComponent) {
       final List<EditorComponent> components = ListSequence.fromList(new ArrayList<EditorComponent>());
       editorComponent.getEditorContext().getRepository().getModelAccess().runReadAction(() -> ListSequence.fromList(components).addSequence(ListSequence.fromList(EditorComponentUtil.findComponentForNode(editorComponent.getEditedNode().getContainingRoot(), FileEditorManager.getInstance(project)))));
-      return ListSequence.fromList(components).where(new IWhereFilter<EditorComponent>() {
-        public boolean accept(EditorComponent it) {
-          return it instanceof NodeEditorComponent;
-        }
-      }).first();
+      return ListSequence.fromList(components).where((it) -> it instanceof NodeEditorComponent).first();
     } else {
       return editorComponent;
     }

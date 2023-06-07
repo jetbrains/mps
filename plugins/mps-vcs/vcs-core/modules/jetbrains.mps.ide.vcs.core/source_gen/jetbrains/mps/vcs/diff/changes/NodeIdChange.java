@@ -135,7 +135,7 @@ public class NodeIdChange extends NodeChange {
 
   @Override
   public List<Tuples._2<SNodeId, MessageTarget>> createMessageTargetsWithIds(boolean isNewModel) {
-    return LinkedListSequence.fromListAndArrayNew(new LinkedList<Tuples._2<SNodeId, MessageTarget>>(), MultiTuple.<SNodeId,MessageTarget>from(getNodeId(isNewModel), ((MessageTarget) new NodeMessageTarget())));
+    return LinkedListSequence.fromListAndArray(new LinkedList<Tuples._2<SNodeId, MessageTarget>>(), MultiTuple.<SNodeId,MessageTarget>from(getNodeId(isNewModel), ((MessageTarget) new NodeMessageTarget())));
   }
 
   @Override

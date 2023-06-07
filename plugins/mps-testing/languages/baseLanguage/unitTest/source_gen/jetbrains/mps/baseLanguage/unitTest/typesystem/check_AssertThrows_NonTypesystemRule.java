@@ -10,7 +10,6 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
@@ -26,11 +25,7 @@ public class check_AssertThrows_NonTypesystemRule extends AbstractNonTypesystemR
   public check_AssertThrows_NonTypesystemRule() {
   }
   public void applyRule(final SNode assertThrows, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (ListSequence.fromList(Classifier__BehaviorDescriptor.getAllSuperClassifiers_id59G_UM6ah0X.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(assertThrows, LINKS.exceptionType$dMj2), LINKS.classifier$cxMr))).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.is(it, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~AssertionError"));
-      }
-    })) {
+    if (ListSequence.fromList(Classifier__BehaviorDescriptor.getAllSuperClassifiers_id59G_UM6ah0X.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(assertThrows, LINKS.exceptionType$dMj2), LINKS.classifier$cxMr))).any((it) -> SNodeOperations.is(it, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~AssertionError")))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(assertThrows, SNodeOperations.present(SLinkOperations.getTarget(assertThrows, LINKS.exceptionType$dMj2)) + " cannot be detected by the 'assert throws' statement", "r:2b2539c5-00c8-487d-9567-ecc2b9274c7b(jetbrains.mps.baseLanguage.unitTest.typesystem)", "3224512177430652861", null, errorTarget);

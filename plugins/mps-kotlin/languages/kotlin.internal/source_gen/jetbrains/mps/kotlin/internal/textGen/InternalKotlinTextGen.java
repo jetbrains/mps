@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -15,11 +14,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public abstract class InternalKotlinTextGen extends KotlinTextGen {
   public static void imports(Iterable<SNode> headers, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    Sequence.fromIterable(headers).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        KotlinTextGen.requirePath(SPropertyOperations.getString(it, PROPS.description$xZhf), ctx);
-      }
-    });
+    Sequence.fromIterable(headers).visitAll((it) -> KotlinTextGen.requirePath(SPropertyOperations.getString(it, PROPS.description$xZhf), ctx));
   }
 
   private static final class PROPS {

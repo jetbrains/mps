@@ -20,8 +20,6 @@ import jetbrains.mps.kotlin.scopes.SignatureFilterImpl;
 import jetbrains.mps.kotlin.signatures.FunctionSignature;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.kotlin.scopes.signed.SignatureScope;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -60,11 +58,7 @@ public final class KotlinFile__BehaviorDescriptor extends BaseBHDescriptor {
     ScopeCollector collector = new ScopeCollector(filter);
     // origin = null -> must be a public function (only kind that will be visible even with a null source)
     IKotlinRoot__BehaviorDescriptor.getLocalSignatureScope_id58ySuOXQyMi.invoke(__thisNode__, collector, null);
-    return ListSequence.fromList(collector.getScopes()).any(new IWhereFilter<SignatureScope>() {
-      public boolean accept(SignatureScope it) {
-        return Sequence.fromIterable(it.getElements("main")).isNotEmpty();
-      }
-    });
+    return ListSequence.fromList(collector.getScopes()).any((it) -> Sequence.fromIterable(it.getElements("main")).isNotEmpty());
   }
   /*package*/ static String getClassName_id7klTmOSHg_9(@NotNull SNode __thisNode__, KtEnvironmentConfig envConfig) {
     return IKotlinRoot__BehaviorDescriptor.getFqName_id74Z9X$ygjSa.invoke(__thisNode__, envConfig);

@@ -14,7 +14,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.behavior.Expression__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -95,11 +94,7 @@ public class CheckingUtil {
     SNode classifier = SNodeOperations.getNodeAncestor(fieldDecl, CONCEPTS.Classifier$Ix, false, false);
     List<SNode> allFields = new ArrayList<SNode>();
     ListSequence.fromList(allFields).addSequence(Sequence.fromIterable(Classifier__BehaviorDescriptor.staticFields_id4_LVZ3pBr7M.invoke(classifier))).addSequence(Sequence.fromIterable(ClassConcept__BehaviorDescriptor.fields_id4_LVZ3pC27C.invoke(SNodeOperations.as(classifier, CONCEPTS.ClassConcept$bK))));
-    return ListSequence.fromList(allFields).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return it != fieldDecl && SPropertyOperations.hasValue(it, PROPS.name$MnvL, name);
-      }
-    });
+    return ListSequence.fromList(allFields).any((it) -> it != fieldDecl && SPropertyOperations.hasValue(it, PROPS.name$MnvL, name));
   }
 
   public static boolean isValidByteOrShortExpression(SNode expectedType, SNode expr) {

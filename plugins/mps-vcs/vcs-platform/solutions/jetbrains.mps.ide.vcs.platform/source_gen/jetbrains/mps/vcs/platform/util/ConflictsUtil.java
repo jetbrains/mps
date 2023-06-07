@@ -23,9 +23,7 @@ import com.intellij.openapi.vcs.FileStatus;
 import com.intellij.openapi.vcs.FileStatusManager;
 import jetbrains.mps.ide.vfs.FileSystemBridge;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 
 @GeneratedClass(node = "r:e4939376-be00-4167-9510-67715eca6425(jetbrains.mps.vcs.platform.util)/6933307669479741763", model = "r:e4939376-be00-4167-9510-67715eca6425(jetbrains.mps.vcs.platform.util)")
 public final class ConflictsUtil {
@@ -68,14 +66,6 @@ public final class ConflictsUtil {
 
   private static List<VirtualFile> getConflictingFiles(Iterable<IFile> files, final Project project) {
     final FileSystemBridge fsb = ProjectHelper.fromIdeaProject(project).getFileSystem();
-    return Sequence.fromIterable(files).select(new ISelector<IFile, VirtualFile>() {
-      public VirtualFile select(IFile f) {
-        return fsb.asVirtualFile(f);
-      }
-    }).where(new NotNullWhereFilter<VirtualFile>()).where(new IWhereFilter<VirtualFile>() {
-      public boolean accept(VirtualFile f) {
-        return isConflictedFile(f, project);
-      }
-    }).toListSequence();
+    return Sequence.fromIterable(files).select((f) -> fsb.asVirtualFile(f)).where(new NotNullWhereFilter()).where((f) -> isConflictedFile(f, project)).toList();
   }
 }

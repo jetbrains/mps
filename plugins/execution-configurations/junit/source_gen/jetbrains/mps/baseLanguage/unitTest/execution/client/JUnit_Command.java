@@ -72,7 +72,7 @@ public class JUnit_Command {
     TestsWithParametersAndConfiguration settings = new TestsWithParametersAndConfiguration(project.getRepository(), testsWithParams, javaRunParameters, junitParameters, myUserPlugins_UserProvidedPluginsConfiguration);
 
     String updatedVmParams = JUnit_Command.getUpdatedVMParameters(settings);
-    List<String> calculatedCP = ListSequence.fromList(JUnit_Command.getClasspath(settings)).toListSequence();
+    List<String> calculatedCP = ListSequence.fromList(JUnit_Command.getClasspath(settings)).toList();
     String workingDir = javaParams.workingDirectory();
     return new Java_Command().setVirtualMachineParameter_String(updatedVmParams).setClassPath_ListString(calculatedCP).setJrePath_String((check_txeh3_a0c0h0a1(javaParams) ? javaParams.jrePath() : null)).setWorkingDirectory_File((workingDir == null ? null : new File(workingDir))).setProgramParameter_String(JUnit_Command.getProgramParameters(settings)).setProject_Project(project).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(testsWithParams.getParameters().getExecutorClass().getName());
   }
@@ -83,7 +83,7 @@ public class JUnit_Command {
     TestsWithParametersAndConfiguration settings = new TestsWithParametersAndConfiguration(repo, testsWithParams);
 
     String vmArgs = IterableUtils.join(ListSequence.fromList(testsWithParams.getParameters().getJvmArgs()), " ") + (((myVirtualMachineParameter_String != null && myVirtualMachineParameter_String.length() > 0) ? " " + myVirtualMachineParameter_String : ""));
-    return new Java_Command().setVirtualMachineParameter_String(vmArgs).setClassPath_ListString(ListSequence.fromList(JUnit_Command.getClasspath(settings)).toListSequence()).setJrePath_String(myJrePath_String).setWorkingDirectory_File(myWorkingDirectory_File).setProgramParameter_String(JUnit_Command.getProgramParameters(settings)).setProject_Project(project).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(testsWithParams.getParameters().getExecutorClass().getName());
+    return new Java_Command().setVirtualMachineParameter_String(vmArgs).setClassPath_ListString(ListSequence.fromList(JUnit_Command.getClasspath(settings)).toList()).setJrePath_String(myJrePath_String).setWorkingDirectory_File(myWorkingDirectory_File).setProgramParameter_String(JUnit_Command.getProgramParameters(settings)).setProject_Project(project).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(testsWithParams.getParameters().getExecutorClass().getName());
   }
 
   public static IDebugger getDebugger() {

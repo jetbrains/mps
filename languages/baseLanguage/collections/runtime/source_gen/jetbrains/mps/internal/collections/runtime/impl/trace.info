@@ -118,20 +118,20 @@
   </root>
   <root nodeRef="r:242df33e-bb74-49e9-9cfb-0712ffc0ed0e(jetbrains.mps.internal.collections.runtime.impl)/6543581031674022257">
     <file name="NegateWhereFilter.java">
-      <node id="6543581031674022262" at="9,0,10,0" concept="7" trace="filter" />
-      <node id="6543581031674022273" at="10,95,11,25" concept="6" />
-      <node id="6543581031674022285" at="14,30,15,31" concept="12" />
-      <node id="6543581031674022266" at="10,0,13,0" concept="3" trace="NegateWhereFilter#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P1_E0;)V" />
-      <node id="6543581031674022279" at="13,0,17,0" concept="10" trace="accept#(null)Z" />
-      <scope id="6543581031674022272" at="10,95,11,25" />
-      <scope id="6543581031674022284" at="14,30,15,31" />
-      <scope id="6543581031674022266" at="10,0,13,0">
+      <node id="6543581031674022262" at="8,0,9,0" concept="7" trace="filter" />
+      <node id="6543581031674022273" at="9,95,10,25" concept="6" />
+      <node id="6543581031674022285" at="13,30,14,31" concept="12" />
+      <node id="6543581031674022266" at="9,0,12,0" concept="3" trace="NegateWhereFilter#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P1_E0;)V" />
+      <node id="7730170264858257640" at="13,0,16,0" concept="10" trace="invoke#(null)Ljava/lang/Boolean;" />
+      <scope id="6543581031674022272" at="9,95,10,25" />
+      <scope id="7730170264858257643" at="13,30,14,31" />
+      <scope id="6543581031674022266" at="9,0,12,0">
         <var name="filter" id="6543581031674022269" />
       </scope>
-      <scope id="6543581031674022279" at="13,0,17,0">
-        <var name="t" id="6543581031674022282" />
+      <scope id="7730170264858257640" at="13,0,16,0">
+        <var name="t" id="7730170264858257644" />
       </scope>
-      <unit id="6543581031674022257" at="8,0,18,0" name="jetbrains.mps.internal.collections.runtime.impl.NegateWhereFilter" />
+      <unit id="6543581031674022257" at="7,0,17,0" name="jetbrains.mps.internal.collections.runtime.impl.NegateWhereFilter" />
     </file>
   </root>
   <root nodeRef="r:242df33e-bb74-49e9-9cfb-0712ffc0ed0e(jetbrains.mps.internal.collections.runtime.impl)/6543581031674022292">

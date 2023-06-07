@@ -22,7 +22,6 @@ import java.util.Collections;
 import jetbrains.mps.baseLanguage.scopes.MethodResolveUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.scopes.Members;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -78,11 +77,7 @@ public final class InstanceMethodCallOperation__BehaviorDescriptor extends BaseB
     return MethodResolveUtil.getTypesByTypeVars(SLinkOperations.getTarget(instanceType, LINKS.classifier$cxMr), SLinkOperations.getChildren(instanceType, LINKS.parameter$oqG$));
   }
   /*package*/ static Iterable<SNode> getAvailableMethodDeclarations_id50EF2fWdwEN(@NotNull SNode __thisNode__, final String methodName) {
-    return Sequence.fromIterable(Members.visibleInstanceMethods(IFixableMethodReference__BehaviorDescriptor.getInstanceType_id6WzWPTX2vuB.invoke(__thisNode__), __thisNode__)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), methodName);
-      }
-    }).toListSequence();
+    return Sequence.fromIterable(Members.visibleInstanceMethods(IFixableMethodReference__BehaviorDescriptor.getInstanceType_id6WzWPTX2vuB.invoke(__thisNode__), __thisNode__)).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), methodName)).toList();
   }
   /*package*/ static boolean canBeConvertedToLocal_id4APqwMfCiZK(@NotNull SNode __thisNode__) {
     if (!(SNodeOperations.isInstanceOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(__thisNode__), CONCEPTS.ThisExpression$$o))) {

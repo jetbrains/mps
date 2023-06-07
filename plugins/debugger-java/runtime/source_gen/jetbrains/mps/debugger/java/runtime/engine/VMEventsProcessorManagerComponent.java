@@ -11,8 +11,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 import com.intellij.openapi.project.Project;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
@@ -20,6 +18,7 @@ import jetbrains.mps.debug.api.DebugSessionManagerComponent;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.debugger.java.runtime.engine.events.Context;
+import jetbrains.mps.internal.collections.runtime.IMapping;
 
 @GeneratedClass(node = "r:0b933946-5ee4-42ea-9b69-bd1790a8e611(jetbrains.mps.debugger.java.runtime.engine)/8961922059449033946", model = "r:0b933946-5ee4-42ea-9b69-bd1790a8e611(jetbrains.mps.debugger.java.runtime.engine)")
 public class VMEventsProcessorManagerComponent {
@@ -35,11 +34,7 @@ public class VMEventsProcessorManagerComponent {
 
   public EventsProcessor getEventsProcessor(final DebugSession session) {
     synchronized (myEventProcessorToSessionMap) {
-      EventsProcessor processor = check_4p75cp_a0a0a0h(MapSequence.fromMap(myEventProcessorToSessionMap).findFirst(new IWhereFilter<IMapping<EventsProcessor, DebugSession>>() {
-        public boolean accept(IMapping<EventsProcessor, DebugSession> it) {
-          return it.value() == session;
-        }
-      }));
+      EventsProcessor processor = check_4p75cp_a0a0a0h(MapSequence.fromMap(myEventProcessorToSessionMap).findFirst((it) -> it.value() == session));
       return processor;
     }
   }

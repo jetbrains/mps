@@ -17,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.scopes.runtime.ScopeUtils;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.scope.EmptyScope;
@@ -43,11 +42,7 @@ public final class MockScopeProvider__BehaviorDescriptor extends BaseBHDescripto
       return ScopeUtils.lazyParentScope(__thisNode__, kind);
     }
 
-    Iterable<SNode> nodes = SLinkOperations.collect(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.entries$buOS)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.kind$knQ$) == SNodeOperations.asNode(kind);
-      }
-    }), LINKS.nodes$gEz1), LINKS.node$V1ak);
+    Iterable<SNode> nodes = SLinkOperations.collect(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.entries$buOS)).findFirst((it) -> SLinkOperations.getTarget(it, LINKS.kind$knQ$) == SNodeOperations.asNode(kind)), LINKS.nodes$gEz1), LINKS.node$V1ak);
     return (Sequence.fromIterable(nodes).isEmpty() ? new EmptyScope() : new NamedElementsScope(nodes));
   }
 

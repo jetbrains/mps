@@ -19,13 +19,11 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.build.util.JavaExportUtil;
 import jetbrains.mps.build.behavior.BuildSource_CompilablePart__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -58,11 +56,7 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
     return SPropertyOperations.getBoolean(__thisNode__, PROPS.doNotCompile$4EF) == false;
   }
   /*package*/ static Iterable<SNode> getDependenciesUnwrapped_id3QtfwKhgryb(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.dependencies$j8Lj)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return (SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMps_ExtractedModuleDependency$e8) ? SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.BuildMps_ExtractedModuleDependency$e8), LINKS.dependency$u_ko) : it);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.dependencies$j8Lj)).select((it) -> (SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMps_ExtractedModuleDependency$e8) ? SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.BuildMps_ExtractedModuleDependency$e8), LINKS.dependency$u_ko) : it));
   }
   /*package*/ static void fetchDependencies_id57YmpYyL8F1(@NotNull SNode __thisNode__, VisibleArtifacts artifacts, RequiredDependenciesBuilder builder) {
     MPSModulesClosure closure = new MPSModulesClosure(__thisNode__, new MPSModulesClosure.ModuleDependenciesOptions()).closure();
@@ -90,11 +84,7 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
     return false;
   }
   /*package*/ static Iterable<SNode> getJarDeps_id3WZD5LHqufx(@NotNull SAbstractConcept __thisConcept__, SNode module) {
-    return SNodeOperations.ofConcept(ListSequence.fromList(SLinkOperations.getChildren(module, LINKS.dependencies$j8Lj)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return (SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMps_ExtractedModuleDependency$e8) ? SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.BuildMps_ExtractedModuleDependency$e8), LINKS.dependency$u_ko) : it);
-      }
-    }), CONCEPTS.BuildMps_ModuleDependencyJar$Rm);
+    return SNodeOperations.ofConcept(ListSequence.fromList(SLinkOperations.getChildren(module, LINKS.dependencies$j8Lj)).select((it) -> (SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMps_ExtractedModuleDependency$e8) ? SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.BuildMps_ExtractedModuleDependency$e8), LINKS.dependency$u_ko) : it)), CONCEPTS.BuildMps_ModuleDependencyJar$Rm);
   }
   /*package*/ static boolean areLocatedInTheSameRoot_id3ZROizBPX9c(@NotNull SAbstractConcept __thisConcept__, SNode first, SNode second) {
     return SNodeOperations.getContainingRoot(second) == SNodeOperations.getContainingRoot(first);
@@ -172,11 +162,7 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
     // Check for parents
     SNode node = __thisNode__;
     while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.BuildMps_Group$Jc)) {
-      options = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(SNodeOperations.getParent(node), false), CONCEPTS.BuildSource_JavaOptions$D)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return isEmptyString(SPropertyOperations.getString(it, PROPS.optionsName$Rr_z));
-        }
-      });
+      options = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(SNodeOperations.getParent(node), false), CONCEPTS.BuildSource_JavaOptions$D)).findFirst((it) -> isEmptyString(SPropertyOperations.getString(it, PROPS.optionsName$Rr_z)));
       if (options != null) {
         return options;
       }

@@ -64,7 +64,7 @@ public class ExecuteRerunnableMigrations_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final List<SModule>[] modules = new List[1];
     final MPSProject mpsProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(() -> modules[0] = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(mpsProject)).toListSequence());
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(() -> modules[0] = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(mpsProject)).toList());
     ProgressManager.getInstance().run(new Task.Modal(event.getData(CommonDataKeys.PROJECT), "Run Migrations", true) {
       public void run(@NotNull ProgressIndicator progressIndicator) {
         ProgressMonitorAdapter progressMonitor = new ProgressMonitorAdapter(progressIndicator);

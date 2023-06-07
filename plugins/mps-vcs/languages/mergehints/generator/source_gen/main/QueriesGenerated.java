@@ -21,12 +21,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Set;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.ReductionRuleCondition;
 import java.util.HashMap;
@@ -106,68 +103,48 @@ public class QueriesGenerated extends QueryProviderBase {
 
     // check for duplicates
     final Set<SNode> used = new HashSet<SNode>();
-    Sequence.fromIterable(props).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        if (!(used.add(SLinkOperations.getTarget(it, LINKS.prop$j8WS)))) {
-          _context.showErrorMessage(it, "duplicated declaration");
-        }
+    Sequence.fromIterable(props).visitAll((it) -> {
+      if (!(used.add(SLinkOperations.getTarget(it, LINKS.prop$j8WS)))) {
+        _context.showErrorMessage(it, "duplicated declaration");
       }
     });
 
     return props;
   }
   public static Iterable<SNode> sourceNodesQuery_1_1(final SourceSubstituteMacroNodesContext _context) {
-    Iterable<SNode> children = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.features$1ZkL), CONCEPTS.LinkVCSDescriptor$hA)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(it, LINKS.lnk$j8LJ), PROPS.metaClass$PeKc), 0xfc6f4e95b9L);
-      }
-    });
+    Iterable<SNode> children = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.features$1ZkL), CONCEPTS.LinkVCSDescriptor$hA)).where((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(it, LINKS.lnk$j8LJ), PROPS.metaClass$PeKc), 0xfc6f4e95b9L));
 
     // check for duplicates
     final Set<SNode> used = new HashSet<SNode>();
-    Sequence.fromIterable(children).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        if (!(used.add(SLinkOperations.getTarget(it, LINKS.lnk$j8LJ)))) {
-          _context.showErrorMessage(it, "duplicated declaration");
-        }
+    Sequence.fromIterable(children).visitAll((it) -> {
+      if (!(used.add(SLinkOperations.getTarget(it, LINKS.lnk$j8LJ)))) {
+        _context.showErrorMessage(it, "duplicated declaration");
       }
     });
 
     return children;
   }
   public static Iterable<SNode> sourceNodesQuery_1_2(final SourceSubstituteMacroNodesContext _context) {
-    Iterable<SNode> refs = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.features$1ZkL), CONCEPTS.LinkVCSDescriptor$hA)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(it, LINKS.lnk$j8LJ), PROPS.metaClass$PeKc), 0xfc6f4e95b8L);
-      }
-    });
+    Iterable<SNode> refs = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.features$1ZkL), CONCEPTS.LinkVCSDescriptor$hA)).where((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(it, LINKS.lnk$j8LJ), PROPS.metaClass$PeKc), 0xfc6f4e95b8L));
 
     // check for duplicates
     final Set<SNode> used = new HashSet<SNode>();
-    Sequence.fromIterable(refs).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        if (!(used.add(SLinkOperations.getTarget(it, LINKS.lnk$j8LJ)))) {
-          _context.showErrorMessage(it, "duplicated declaration");
-        }
+    Sequence.fromIterable(refs).visitAll((it) -> {
+      if (!(used.add(SLinkOperations.getTarget(it, LINKS.lnk$j8LJ)))) {
+        _context.showErrorMessage(it, "duplicated declaration");
       }
     });
 
     return refs;
   }
   public static Iterable<SNode> sourceNodesQuery_1_3(final SourceSubstituteMacroNodesContext _context) {
-    Iterable<SNode> concepts = ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.VCSHints$kA)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SLinkOperations.getChildren(it, LINKS.concepts$nb$7);
-      }
-    });
+    Iterable<SNode> concepts = ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.VCSHints$kA)).translate((it) -> SLinkOperations.getChildren(it, LINKS.concepts$nb$7));
 
     // check for duplicates
     final Set<SNode> used = new HashSet<SNode>();
-    Sequence.fromIterable(concepts).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        if (!(used.add(SLinkOperations.getTarget(it, LINKS.cncpt$ubC$)))) {
-          _context.showErrorMessage(it, "Merge hints for this concept are already defined. Please merge declarations for same concept.");
-        }
+    Sequence.fromIterable(concepts).visitAll((it) -> {
+      if (!(used.add(SLinkOperations.getTarget(it, LINKS.cncpt$ubC$)))) {
+        _context.showErrorMessage(it, "Merge hints for this concept are already defined. Please merge declarations for same concept.");
       }
     });
 

@@ -22,11 +22,10 @@ import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopes;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.HashMap;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -66,15 +65,7 @@ public class ResourceClassifierType_Constraints extends BaseConstraintsDescripto
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forResolvableElements(Sequence.fromIterable(SNodeOperations.ofConcept(ClassifierScopes.getVisibleClassifiersScope((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), false).getAvailableElements(null), CONCEPTS.Classifier$Ix)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(it, SLinkOperations.getTarget(_quotation_createNode_ymgo28_a0a0a0a0a0a0a1a0a0a0a0a0a0d(), LINKS.classifier$cxMr)) || Sequence.fromIterable((SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.as(it, CONCEPTS.NamedTupleDeclaration$aM), LINKS.implements$1gsv), LINKS.classifier$cxMr))).any(new IWhereFilter<SNode>() {
-                  public boolean accept(SNode it2) {
-                    return (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(it2, SLinkOperations.getTarget(_quotation_createNode_ymgo28_a0a0a0a0a0a0a0a0a0b0a0a0a0a0a0a3(), LINKS.classifier$cxMr));
-                  }
-                });
-              }
-            }));
+            return ListScope.forResolvableElements(Sequence.fromIterable(SNodeOperations.ofConcept(ClassifierScopes.getVisibleClassifiersScope((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), false).getAvailableElements(null), CONCEPTS.Classifier$Ix)).where((it) -> (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(it, SLinkOperations.getTarget(_quotation_createNode_ymgo28_a0a0a0a0a0a0a1a0a0a0a0a0a0d(), LINKS.classifier$cxMr)) || Sequence.fromIterable((SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.as(it, CONCEPTS.NamedTupleDeclaration$aM), LINKS.implements$1gsv), LINKS.classifier$cxMr))).any((it2) -> (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(it2, SLinkOperations.getTarget(_quotation_createNode_ymgo28_a0a0a0a0a0a0a0a0a0b0a0a0a0a0a0a3(), LINKS.classifier$cxMr)))));
           }
         };
       }

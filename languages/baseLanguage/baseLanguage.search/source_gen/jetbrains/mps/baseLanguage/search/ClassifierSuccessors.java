@@ -12,7 +12,7 @@ import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
 
@@ -48,11 +48,11 @@ public class ClassifierSuccessors implements CoreComponent {
   @Deprecated(forRemoval = true)
   public List<SNode> getDerivedClassifiers(final SNode classifier, final SearchScope scope) {
     Iterable<Finder> ff = myFastFinders.values();
-    return Sequence.fromIterable(ff).translate(new ITranslator2<Finder, SNode>() {
-      public Iterable<SNode> translate(Finder it) {
+    return Sequence.fromIterable(ff).translate(new _FunctionTypes._return_P1_E0<List<SNode>, Finder>() {
+      public List<SNode> invoke(Finder it) {
         return it.getDerivedClassifiers(classifier, scope);
       }
-    }).toListSequence();
+    }).toList();
   }
 
   public List<SNode> getDerivedClassifiers(Project project, SNode classifier, SearchScope scope) {

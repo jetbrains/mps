@@ -26,50 +26,46 @@ public class typeof_LinearSolveOperation_InferenceRule extends AbstractInference
   public void applyRule(final SNode op, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
       final SNode matrixType = typeCheckingContext.typeOf(SLinkOperations.getTarget(op, LINKS.matrix$CgUG), "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "5359814223490060115", true);
-      typeCheckingContext.whenConcrete(matrixType, new Runnable() {
-        public void run() {
-          {
-            final SNode vectorType = typeCheckingContext.typeOf(SLinkOperations.getTarget(op, LINKS.vector$Ch9H), "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "5359814223490060128", true);
-            typeCheckingContext.whenConcrete(vectorType, new Runnable() {
-              public void run() {
-                final SNode T_typevar_5359814223490060193 = typeCheckingContext.createNewRuntimeTypesVariable();
-                {
-                  SNode _nodeToCheck_1029348928467 = op;
-                  EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "5359814223490060213", 0, null);
-                  typeCheckingContext.createLessThanInequality((SNode) SNodeOperations.copyNode(MathTypeUtil.qFloat), (SNode) typeCheckingContext.getRepresentative(T_typevar_5359814223490060193), false, true, _info_12389875345);
-                }
-                if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(matrixType), CONCEPTS.MatrixOrVectorType$JN)) {
-                  {
-                    SNode _nodeToCheck_1029348928467 = op;
-                    EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "5359814223490060186", 0, null);
-                    typeCheckingContext.createLessThanInequality((SNode) MathUtil.getUnboxedElementType(typeCheckingContext.getExpandedNode(matrixType)), (SNode) typeCheckingContext.getRepresentative(T_typevar_5359814223490060193), false, true, _info_12389875345);
-                  }
-                } else {
-                  {
-                    final MessageTarget errorTarget = new NodeMessageTarget();
-                    IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(op, LINKS.matrix$CgUG), "Left side of the equation must have matrix type", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "5359814223490060240", null, errorTarget);
-                  }
-                }
-                if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(vectorType), CONCEPTS.MatrixOrVectorType$JN)) {
-                  {
-                    SNode _nodeToCheck_1029348928467 = op;
-                    EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "5359814223490060227", 0, null);
-                    typeCheckingContext.createLessThanInequality((SNode) MathUtil.getUnboxedElementType(typeCheckingContext.getExpandedNode(matrixType)), (SNode) typeCheckingContext.getRepresentative(T_typevar_5359814223490060193), false, true, _info_12389875345);
-                  }
-                } else {
-                  {
-                    final MessageTarget errorTarget = new NodeMessageTarget();
-                    IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(op, LINKS.vector$Ch9H), "Right side of the equation must have matrix type", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "5359814223490060245", null, errorTarget);
-                  }
-                }
-                {
-                  SNode _nodeToCheck_1029348928467 = op;
-                  EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "5359814223490060200", 0, null);
-                  typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "5359814223490060197", true), (SNode) MathTypeUtil.qVector(typeCheckingContext.getRepresentative(T_typevar_5359814223490060193)), _info_12389875345);
-                }
+      typeCheckingContext.whenConcrete(matrixType, () -> {
+        {
+          final SNode vectorType = typeCheckingContext.typeOf(SLinkOperations.getTarget(op, LINKS.vector$Ch9H), "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "5359814223490060128", true);
+          typeCheckingContext.whenConcrete(vectorType, () -> {
+            final SNode T_typevar_5359814223490060193 = typeCheckingContext.createNewRuntimeTypesVariable();
+            {
+              SNode _nodeToCheck_1029348928467 = op;
+              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "5359814223490060213", 0, null);
+              typeCheckingContext.createLessThanInequality((SNode) SNodeOperations.copyNode(MathTypeUtil.qFloat), (SNode) typeCheckingContext.getRepresentative(T_typevar_5359814223490060193), false, true, _info_12389875345);
+            }
+            if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(matrixType), CONCEPTS.MatrixOrVectorType$JN)) {
+              {
+                SNode _nodeToCheck_1029348928467 = op;
+                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "5359814223490060186", 0, null);
+                typeCheckingContext.createLessThanInequality((SNode) MathUtil.getUnboxedElementType(typeCheckingContext.getExpandedNode(matrixType)), (SNode) typeCheckingContext.getRepresentative(T_typevar_5359814223490060193), false, true, _info_12389875345);
               }
-            }, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "5359814223490060125", false, false);
-          }
+            } else {
+              {
+                final MessageTarget errorTarget = new NodeMessageTarget();
+                IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(op, LINKS.matrix$CgUG), "Left side of the equation must have matrix type", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "5359814223490060240", null, errorTarget);
+              }
+            }
+            if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(vectorType), CONCEPTS.MatrixOrVectorType$JN)) {
+              {
+                SNode _nodeToCheck_1029348928467 = op;
+                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "5359814223490060227", 0, null);
+                typeCheckingContext.createLessThanInequality((SNode) MathUtil.getUnboxedElementType(typeCheckingContext.getExpandedNode(matrixType)), (SNode) typeCheckingContext.getRepresentative(T_typevar_5359814223490060193), false, true, _info_12389875345);
+              }
+            } else {
+              {
+                final MessageTarget errorTarget = new NodeMessageTarget();
+                IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(op, LINKS.vector$Ch9H), "Right side of the equation must have matrix type", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "5359814223490060245", null, errorTarget);
+              }
+            }
+            {
+              SNode _nodeToCheck_1029348928467 = op;
+              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "5359814223490060200", 0, null);
+              typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "5359814223490060197", true), (SNode) MathTypeUtil.qVector(typeCheckingContext.getRepresentative(T_typevar_5359814223490060193)), _info_12389875345);
+            }
+          }, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "5359814223490060125", false, false);
         }
       }, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "5359814223490060106", false, false);
     }

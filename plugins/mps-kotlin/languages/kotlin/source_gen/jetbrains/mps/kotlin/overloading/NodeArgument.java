@@ -6,7 +6,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kotlin.api.declaration.ParameterDeclaration;
 import jetbrains.mps.kotlin.behavior.IArgument__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 
 public class NodeArgument implements Argument {
   private final SNode myNodeToEvaluate;
@@ -35,11 +34,7 @@ public class NodeArgument implements Argument {
   }
 
   public static Iterable<Argument> ofList(Iterable<SNode> args) {
-    return Sequence.fromIterable(args).select(new ISelector<SNode, NodeArgument>() {
-      public NodeArgument select(SNode nodeToEvaluate) {
-        return new NodeArgument(nodeToEvaluate);
-      }
-    });
+    return Sequence.fromIterable(args).select((nodeToEvaluate) -> new NodeArgument(nodeToEvaluate));
   }
   public static Iterable<Argument> of(SNode arg) {
     return Sequence.<Argument>singleton(new NodeArgument(arg));

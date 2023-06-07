@@ -10,11 +10,9 @@ import jetbrains.mps.project.Project;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.plugins.relations.RelationDescriptor;
 import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.UndoRunnable;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 import java.util.Iterator;
@@ -27,11 +25,9 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.ide.findusages.model.scopes.GlobalScope;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.progress.ProgressIndicator;
@@ -54,15 +50,9 @@ public class DeleteNodesHelper {
     myNodesToDelete = ListSequence.fromListWithValues(new ArrayList<SNode>(), nodes);
   }
   public boolean hasAspectOption() {
-    return ListSequence.fromList(myNodesToDelete).translate(new ITranslator2<SNode, RelationDescriptor>() {
-      public Iterable<RelationDescriptor> translate(final SNode node) {
-        List<RelationDescriptor> tabs = ProjectPluginManager.getApplicableTabs(ProjectHelper.toIdeaProject(myProject), node);
-        return ListSequence.fromList(tabs).where(new IWhereFilter<RelationDescriptor>() {
-          public boolean accept(RelationDescriptor it) {
-            return it.isApplicable(node) && !(it.getNodes(node).isEmpty());
-          }
-        });
-      }
+    return ListSequence.fromList(myNodesToDelete).translate((final SNode node) -> {
+      List<RelationDescriptor> tabs = ProjectPluginManager.getApplicableTabs(ProjectHelper.toIdeaProject(myProject), node);
+      return ListSequence.fromList(tabs).where((it) -> it.isApplicable(node) && !(it.getNodes(node).isEmpty()));
     }).isNotEmpty();
   }
   public void deleteNodes(final boolean safe, final boolean aspects, final boolean fromProjectPane) {
@@ -90,32 +80,20 @@ public class DeleteNodesHelper {
     };
     myRepository.getModelAccess().runReadAction(() -> {
       if (aspects) {
-        List<SNode> addNodes = ListSequence.fromList(myNodesToDelete).translate(new ITranslator2<SNode, SNode>() {
-          public Iterable<SNode> translate(final SNode node) {
-            List<RelationDescriptor> tabs = ProjectPluginManager.getApplicableTabs(ideaProject, node);
-            try {
-              return ListSequence.fromList(tabs).where(new IWhereFilter<RelationDescriptor>() {
-                public boolean accept(RelationDescriptor it) {
-                  return it.isApplicable(node);
-                }
-              }).translate(new ITranslator2<RelationDescriptor, SNode>() {
-                public Iterable<SNode> translate(final RelationDescriptor tab) {
-                  List<SNode> nodes = tab.getNodes(node);
-                  return ListSequence.fromList(nodes).where(new IWhereFilter<SNode>() {
-                    public boolean accept(SNode it) {
-                      return tab.getBaseNode(it) == node;
-                    }
-                  });
-                }
-              }).toListSequence();
-            } catch (Throwable t) {
-              if (LOG.isErrorLevel()) {
-                LOG.error("Exception in extension: ", t);
-              }
+        List<SNode> addNodes = ListSequence.fromList(myNodesToDelete).translate((final SNode node) -> {
+          List<RelationDescriptor> tabs = ProjectPluginManager.getApplicableTabs(ideaProject, node);
+          try {
+            return ListSequence.fromList(tabs).where((it) -> it.isApplicable(node)).translate((final RelationDescriptor tab) -> {
+              List<SNode> nodes = tab.getNodes(node);
+              return ListSequence.fromList(nodes).where((it) -> tab.getBaseNode(it) == node);
+            }).toList();
+          } catch (Throwable t) {
+            if (LOG.isErrorLevel()) {
+              LOG.error("Exception in extension: ", t);
             }
-            return ListSequence.fromList(new ArrayList<SNode>());
           }
-        }).toListSequence();
+          return ListSequence.fromList(new ArrayList<SNode>());
+        }).toList();
         ListSequence.fromList(myNodesToDelete).addSequence(ListSequence.fromList(addNodes));
       }
     });
@@ -136,23 +114,21 @@ public class DeleteNodesHelper {
         myRepository.getModelAccess().runReadAction(() -> {
           // XXX in fact, do we care to update uses in non-project modules? Perhaps, ProjectScope is sufficient?
           final SearchScope scope = new GlobalScope(DeleteNodesHelper.this.myProject);
-          ListSequence.fromList(myNodesToDelete).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode it) {
-              SearchResults<SNode> usages = FindUtils.getSearchResults(new EmptyProgressMonitor(), it, scope, "jetbrains.mps.lang.core.findUsages.NodeAndDescendantsUsages_Finder");
-              SetSequence.fromSet(results).addSequence(ListSequence.fromList(usages.getSearchResults2()));
+          ListSequence.fromList(myNodesToDelete).visitAll((it) -> {
+            SearchResults<SNode> usages = FindUtils.getSearchResults(new EmptyProgressMonitor(), it, scope, "jetbrains.mps.lang.core.findUsages.NodeAndDescendantsUsages_Finder");
+            SetSequence.fromSet(results).addSequence(ListSequence.fromList(usages.getSearchResults2()));
 
-              if (pm.isCanceled()) {
-                return;
-              }
+            if (pm.isCanceled()) {
+              return;
+            }
 
-              if (SNodeOperations.isInstanceOf(it, CONCEPTS.AbstractConceptDeclaration$KA)) {
-                SearchResults<SNode> instances = FindUtils.getSearchResults(new EmptyProgressMonitor(), it, scope, "jetbrains.mps.lang.structure.findUsages.ConceptInstances_Finder");
-                SetSequence.fromSet(results).addSequence(ListSequence.fromList(instances.getSearchResults2()));
-              }
+            if (SNodeOperations.isInstanceOf(it, CONCEPTS.AbstractConceptDeclaration$KA)) {
+              SearchResults<SNode> instances = FindUtils.getSearchResults(new EmptyProgressMonitor(), it, scope, "jetbrains.mps.lang.structure.findUsages.ConceptInstances_Finder");
+              SetSequence.fromSet(results).addSequence(ListSequence.fromList(instances.getSearchResults2()));
+            }
 
-              if (pm.isCanceled()) {
-                return;
-              }
+            if (pm.isCanceled()) {
+              return;
             }
           });
 
@@ -160,11 +136,7 @@ public class DeleteNodesHelper {
             return;
           }
 
-          Set<SNode> nodes = SetSequence.fromSetWithValues(new HashSet<SNode>(), SetSequence.fromSet(results).select(new ISelector<SearchResult<SNode>, SNode>() {
-            public SNode select(SearchResult<SNode> it) {
-              return it.getObject();
-            }
-          }));
+          Set<SNode> nodes = SetSequence.fromSetWithValues(new HashSet<SNode>(), SetSequence.fromSet(results).select((it) -> it.getObject()));
           for (SearchResult<SNode> searchResult : ListSequence.fromListWithValues(new ArrayList<SearchResult<SNode>>(), results)) {
             SNode resultNode = searchResult.getObject();
 
@@ -176,7 +148,7 @@ public class DeleteNodesHelper {
             }
           }
         });
-        return new SearchResults<SNode>(SetSequence.fromSetWithValues(new HashSet<SNode>(), myNodesToDelete), SetSequence.fromSet(results).toListSequence());
+        return new SearchResults<SNode>(SetSequence.fromSetWithValues(new HashSet<SNode>(), myNodesToDelete), SetSequence.fromSet(results).toList());
       }
     };
 

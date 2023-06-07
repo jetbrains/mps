@@ -17,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import java.util.ArrayList;
@@ -72,11 +71,7 @@ public final class SNodeOperation__BehaviorDescriptor extends BaseBHDescriptor {
     return SLinkOperations.getTarget(SNodeOperations.cast(leftExpression, CONCEPTS.DotExpression$yW), LINKS.operation$gs9E);
   }
   /*package*/ static SNode getParameter_idhEwJdHG(@NotNull SNode __thisNode__, final SAbstractConcept parameterConcept) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$mzxB)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(parameterConcept));
-      }
-    }).first();
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$mzxB)).where((it) -> SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(parameterConcept))).first();
   }
   /*package*/ static boolean operandCanBeNull_idhWYZ0eEN6z(@NotNull SNode __thisNode__) {
     return true;

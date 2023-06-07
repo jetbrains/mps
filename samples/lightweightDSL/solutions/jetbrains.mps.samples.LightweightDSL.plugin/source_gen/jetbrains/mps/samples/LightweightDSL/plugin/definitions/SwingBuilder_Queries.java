@@ -11,7 +11,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.lightweightdsl.util.DSLDescriptorUtil;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -24,11 +23,7 @@ public class SwingBuilder_Queries {
     SLinkOperations.setTarget(property, LINKS.type$a1UY, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d6513eL, "jetbrains.mps.baseLanguage.structure.BooleanType")));
     SPropertyOperations.assign(property, PROPS.name$MnvL, "logicalProperty");
     SLinkOperations.setTarget(property, LINKS.visibility$Yyua, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility")));
-    SLinkOperations.setTarget(property, LINKS.decl$RIl, SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(DSLDescriptorUtil.getDescriptor(node), LINKS.classLikeMember$ZDsQ)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.PropertyDescriptor$B2) && Objects.equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.PropertyDescriptor$B2), PROPS.name$MnvL), "logicalProperty");
-      }
-    }), CONCEPTS.PropertyDescriptor$B2));
+    SLinkOperations.setTarget(property, LINKS.decl$RIl, SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(DSLDescriptorUtil.getDescriptor(node), LINKS.classLikeMember$ZDsQ)).findFirst((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.PropertyDescriptor$B2) && Objects.equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.PropertyDescriptor$B2), PROPS.name$MnvL), "logicalProperty")), CONCEPTS.PropertyDescriptor$B2));
   }
 
   private static final class LINKS {

@@ -23,7 +23,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.ide.code.CodeStyleSettings;
 import jetbrains.mps.ide.code.CodeStyleSettingsRegistry;
 import org.jetbrains.annotations.Nullable;
@@ -92,11 +91,7 @@ public final class FieldDeclaration__BehaviorDescriptor extends BaseBHDescriptor
   }
   /*package*/ static boolean hasGetter_idhEwIcYw(@NotNull SNode __thisNode__, SNode classConcept) {
     final SNode fieldDeclaration = __thisNode__;
-    return Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(classConcept)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) FieldDeclaration__BehaviorDescriptor.isGetter_idhEwIcYT.invoke(fieldDeclaration, it);
-      }
-    }).isNotEmpty();
+    return Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(classConcept)).where((it) -> (boolean) FieldDeclaration__BehaviorDescriptor.isGetter_idhEwIcYT.invoke(fieldDeclaration, it)).isNotEmpty();
   }
   /*package*/ static boolean isGetter_idhEwIcYT(@NotNull SNode __thisNode__, SNode method) {
     return ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).isEmpty() && FieldDeclaration__BehaviorDescriptor.getGetterName_idhEwIcY6.invoke(__thisNode__).equals(SPropertyOperations.getString(method, PROPS.name$MnvL)) && TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(__thisNode__, LINKS.type$a1UY), SLinkOperations.getTarget(method, LINKS.returnType$5xoi));
@@ -106,11 +101,7 @@ public final class FieldDeclaration__BehaviorDescriptor extends BaseBHDescriptor
   }
   /*package*/ static boolean hasSetter_idhEwIcZv(@NotNull SNode __thisNode__, SNode classConcept) {
     final SNode fieldDeclaration = __thisNode__;
-    return Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(classConcept)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) FieldDeclaration__BehaviorDescriptor.isSetter_idhEwIcZS.invoke(fieldDeclaration, it);
-      }
-    }).isNotEmpty();
+    return Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(classConcept)).where((it) -> (boolean) FieldDeclaration__BehaviorDescriptor.isSetter_idhEwIcZS.invoke(fieldDeclaration, it)).isNotEmpty();
   }
   /*package*/ static boolean isSetter_idhEwIcZS(@NotNull SNode __thisNode__, SNode method) {
     return ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).count() == 1 && FieldDeclaration__BehaviorDescriptor.getSetterName_idhEwIcZl.invoke(__thisNode__).equals(SPropertyOperations.getString(method, PROPS.name$MnvL)) && TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).first(), LINKS.type$a1UY), SLinkOperations.getTarget(__thisNode__, LINKS.type$a1UY));

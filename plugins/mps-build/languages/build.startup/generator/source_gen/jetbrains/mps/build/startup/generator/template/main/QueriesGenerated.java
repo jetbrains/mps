@@ -18,10 +18,8 @@ import java.text.MessageFormat;
 import jetbrains.mps.build.startup.util.OpenedPackages;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.SourceNodesQuery;
 import java.util.HashMap;
@@ -394,21 +392,15 @@ public class QueriesGenerated extends QueryProviderBase {
     return (String) MpsStartupScript__BehaviorDescriptor.getVmOptionsFileName_id2lwFGYOYlNP.invoke(_context.getNode(), ((boolean) true));
   }
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
-    return Sequence.fromIterable(OpenedPackages.getMacOpenedPackages()).select(new ISelector<String, SNode>() {
-      public SNode select(String p) {
-        SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral"));
-        SPropertyOperations.assign(node, PROPS.value$w7MM, p);
-        return node;
-      }
+    return Sequence.fromIterable(OpenedPackages.getMacOpenedPackages()).select((p) -> {
+      SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral"));
+      SPropertyOperations.assign(node, PROPS.value$w7MM, p);
+      return node;
     });
   }
   public static Iterable<SNode> sourceNodesQuery_2_0(final SourceSubstituteMacroNodesContext _context) {
     // replace all the lib/xxx.jar entries with a single lib/* to shorten classpath
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.bootClasspath$_ysz)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SPropertyOperations.getString(it, PROPS.path$jtyZ).startsWith("lib/") && SPropertyOperations.getString(it, PROPS.path$jtyZ).indexOf('/', 4) == -1 && SPropertyOperations.getString(it, PROPS.path$jtyZ).endsWith(".jar"));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.bootClasspath$_ysz)).where((it) -> !(SPropertyOperations.getString(it, PROPS.path$jtyZ).startsWith("lib/") && SPropertyOperations.getString(it, PROPS.path$jtyZ).indexOf('/', 4) == -1 && SPropertyOperations.getString(it, PROPS.path$jtyZ).endsWith(".jar")));
   }
   public static Iterable<SNode> sourceNodesQuery_3_0(final SourceSubstituteMacroNodesContext _context) {
     return (Iterable<SNode>) MpsStartupScript__BehaviorDescriptor.getVmOptionsTextLines_id2M0p1n5GA6s.invoke(_context.getNode(), ((boolean) false));

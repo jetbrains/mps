@@ -15,7 +15,6 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -57,11 +56,7 @@ public class NodeHierarchyChooser extends JBScrollPane {
     protected Set<SNode> getDescendants(SNode node, Set<SNode> visited) {
       this.ancestorsProvider = new ConceptAncestorsProvider();
       Set<SNode> descendants = this.ancestorsProvider.getDescendants(node);
-      return SetSequence.fromSetWithValues(new HashSet<SNode>(), SetSequence.fromSet(descendants).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SNodeOperations.getModel(it).isReadOnly());
-        }
-      }));
+      return SetSequence.fromSetWithValues(new HashSet<SNode>(), SetSequence.fromSet(descendants).where((it) -> !(SNodeOperations.getModel(it).isReadOnly())));
     }
 
     @Override

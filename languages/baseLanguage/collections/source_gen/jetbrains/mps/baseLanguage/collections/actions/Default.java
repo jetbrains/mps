@@ -12,7 +12,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -28,11 +27,7 @@ public class Default {
         SLinkOperations.setTarget(ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.forEach$Z1RP)).first(), LINKS.input$Z7VO, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ForEachStatement$RO), LINKS.inputSequence$YoEF));
         SLinkOperations.setTarget(ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.forEach$Z1RP)).first(), LINKS.variable$Z_IN, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7d7db8f4181fea18L, "jetbrains.mps.baseLanguage.collections.structure.MultiForEachVariable")));
         SPropertyOperations.assign(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.forEach$Z1RP)).first(), LINKS.variable$Z_IN), PROPS.name$MnvL, SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ForEachStatement$RO), LINKS.variable$8Haf), PROPS.name$MnvL));
-        ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(newNode, LINKS.body$c1sm), CONCEPTS.ForEachVariableReference$CR, false, new SAbstractConcept[]{})).where((SNode it) -> SLinkOperations.getTarget(it, LINKS.variable$j6kA) == SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ForEachStatement$RO), LINKS.variable$8Haf)).visitAll(new _Adapters._return_P1_E0_to__void_P1_E0_adapter(new _FunctionTypes._return_P1_E0<SNode, SNode>() {
-          public SNode invoke(SNode it) {
-            return SNodeOperations.replaceWithAnother(it, createMultiForEachVariableReference_qjewi8_a0a0a0a0f0a0a0(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.forEach$Z1RP)).first(), LINKS.variable$Z_IN)));
-          }
-        }));
+        ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(newNode, LINKS.body$c1sm), CONCEPTS.ForEachVariableReference$CR, false, new SAbstractConcept[]{})).where((it) -> SLinkOperations.getTarget(it, LINKS.variable$j6kA) == SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ForEachStatement$RO), LINKS.variable$8Haf)).visitAll((it) -> SNodeOperations.replaceWithAnother(it, createMultiForEachVariableReference_qjewi8_a0a0a0a0f0a0a0(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.forEach$Z1RP)).first(), LINKS.variable$Z_IN))));
       }
     }
     private static SNode createMultiForEachVariableReference_qjewi8_a0a0a0a0f0a0a0(SNode p0) {
@@ -48,11 +43,7 @@ public class Default {
         SLinkOperations.setTarget(newNode, LINKS.inputSequence$YoEF, SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.MultiForEachStatement$i), LINKS.forEach$Z1RP)).first(), LINKS.input$Z7VO));
         SLinkOperations.setTarget(newNode, LINKS.variable$8Haf, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6f0962L, "jetbrains.mps.baseLanguage.collections.structure.ForEachVariable")));
         SPropertyOperations.assign(SLinkOperations.getTarget(newNode, LINKS.variable$8Haf), PROPS.name$MnvL, SPropertyOperations.getString(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.MultiForEachStatement$i), LINKS.forEach$Z1RP)).first(), LINKS.variable$Z_IN), PROPS.name$MnvL));
-        ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(newNode, LINKS.body$c1sm), CONCEPTS.MultiForEachVariableReference$4f, false, new SAbstractConcept[]{})).where((SNode it) -> SLinkOperations.getTarget(it, LINKS.variable$ZC9Q) == SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.MultiForEachStatement$i), LINKS.forEach$Z1RP)).first(), LINKS.variable$Z_IN)).visitAll(new _Adapters._return_P1_E0_to__void_P1_E0_adapter(new _FunctionTypes._return_P1_E0<SNode, SNode>() {
-          public SNode invoke(SNode it) {
-            return SNodeOperations.replaceWithAnother(it, createForEachVariableReference_qjewi8_a0a0a0a0e0a0a1(SLinkOperations.getTarget(newNode, LINKS.variable$8Haf)));
-          }
-        }));
+        ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(newNode, LINKS.body$c1sm), CONCEPTS.MultiForEachVariableReference$4f, false, new SAbstractConcept[]{})).where((it) -> SLinkOperations.getTarget(it, LINKS.variable$ZC9Q) == SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.MultiForEachStatement$i), LINKS.forEach$Z1RP)).first(), LINKS.variable$Z_IN)).visitAll((it) -> SNodeOperations.replaceWithAnother(it, createForEachVariableReference_qjewi8_a0a0a0a0e0a0a1(SLinkOperations.getTarget(newNode, LINKS.variable$8Haf))));
       }
     }
     private static SNode createForEachVariableReference_qjewi8_a0a0a0a0e0a0a1(SNode p0) {

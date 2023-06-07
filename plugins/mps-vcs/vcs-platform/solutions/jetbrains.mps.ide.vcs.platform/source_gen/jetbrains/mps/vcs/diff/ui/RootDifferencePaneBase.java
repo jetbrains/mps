@@ -23,9 +23,8 @@ import jetbrains.mps.smodel.SModelOperations;
 import java.beans.PropertyChangeEvent;
 import com.intellij.openapi.ui.Splitter;
 import com.intellij.ui.JBSplitter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.vcs.diff.ui.common.DiffEditor;
 import com.intellij.diff.tools.util.DiffSplitter;
+import jetbrains.mps.vcs.diff.ui.common.DiffEditor;
 import javax.swing.JComponent;
 import com.intellij.openapi.actionSystem.ToggleAction;
 import com.intellij.openapi.project.DumbAware;
@@ -37,13 +36,11 @@ import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnAction;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.awt.Graphics;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.vcs.diff.ui.common.Bounds;
 import com.intellij.openapi.application.ApplicationManager;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.vcs.diff.ChangeSet;
@@ -51,7 +48,6 @@ import java.util.Iterator;
 import jetbrains.mps.vcs.diff.ui.common.DiffChangeGroupLayout;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.vcs.diff.changes.NodeIdChange;
 import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
 import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
@@ -126,11 +122,7 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
       return;
     }
     Splitter sourceSplitter = (Splitter) event.getSource();
-    for (JBSplitter splitter : ListSequence.fromList(getEditors()).select(new ISelector<DiffEditor, JBSplitter>() {
-      public JBSplitter select(DiffEditor it) {
-        return it.getSplitter();
-      }
-    })) {
+    for (JBSplitter splitter : ListSequence.fromList(getEditors()).select((it) -> it.getSplitter())) {
       if (splitter == sourceSplitter) {
         continue;
       }
@@ -147,11 +139,7 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
   protected abstract JPanel createPanel();
 
   protected List<JComponent> getTitles() {
-    return ListSequence.fromList(getEditors()).select(new ISelector<DiffEditor, JComponent>() {
-      public JComponent select(DiffEditor it) {
-        return it.getTitleComponent();
-      }
-    }).toListSequence();
+    return ListSequence.fromList(getEditors()).select((it) -> it.getTitleComponent()).toList();
   }
 
   protected DefaultActionGroup createActionGroup(boolean isEditable) {
@@ -206,11 +194,7 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
     return new RevertRootsAction("") {
       @Override
       protected Iterable<ModelChange> getChanges() {
-        return ListSequence.fromList(getChangeSets()).where(new NotNullWhereFilter<ModelChangeSet>()).translate(new ITranslator2<ModelChangeSet, ModelChange>() {
-          public Iterable<ModelChange> translate(ModelChangeSet it) {
-            return it.getChangesForRoot(getRootId());
-          }
-        });
+        return ListSequence.fromList(getChangeSets()).where(new NotNullWhereFilter()).translate((it) -> it.getChangesForRoot(getRootId()));
       }
       @Override
       protected void after() {
@@ -302,11 +286,7 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
     }
     isInspectorShown = show;
     PropertiesComponent.getInstance().setValue(PARAM_SHOW_INSPECTOR, show + "");
-    ListSequence.fromList(getEditors()).visitAll(new IVisitor<DiffEditor>() {
-      public void visit(DiffEditor it) {
-        it.showInspector(show);
-      }
-    });
+    ListSequence.fromList(getEditors()).visitAll((it) -> it.showInspector(show));
 
   }
 
@@ -390,24 +370,8 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
   }
 
   private void addButtons() {
-    ListSequence.fromList(getLayouts(false)).where(new NotNullWhereFilter<ChangeGroupLayout>()).visitAll(new IVisitor<ChangeGroupLayout>() {
-      public void visit(final ChangeGroupLayout layout) {
-        ListSequence.fromList(getEditors()).visitAll(new IVisitor<DiffEditor>() {
-          public void visit(DiffEditor editor) {
-            DiffButtonsPainter.addTo(RootDifferencePaneBase.this, editor, layout, false);
-          }
-        });
-      }
-    });
-    ListSequence.fromList(getLayouts(true)).where(new NotNullWhereFilter<ChangeGroupLayout>()).visitAll(new IVisitor<ChangeGroupLayout>() {
-      public void visit(final ChangeGroupLayout layout) {
-        ListSequence.fromList(getEditors()).visitAll(new IVisitor<DiffEditor>() {
-          public void visit(DiffEditor editor) {
-            DiffButtonsPainter.addTo(RootDifferencePaneBase.this, editor, layout, true);
-          }
-        });
-      }
-    });
+    ListSequence.fromList(getLayouts(false)).where(new NotNullWhereFilter()).visitAll((final ChangeGroupLayout layout) -> ListSequence.fromList(getEditors()).visitAll((editor) -> DiffButtonsPainter.addTo(RootDifferencePaneBase.this, editor, layout, false)));
+    ListSequence.fromList(getLayouts(true)).where(new NotNullWhereFilter()).visitAll((final ChangeGroupLayout layout) -> ListSequence.fromList(getEditors()).visitAll((editor) -> DiffButtonsPainter.addTo(RootDifferencePaneBase.this, editor, layout, true)));
   }
 
   protected abstract DiffChangeGroupLayout.SplitterRepainter getSplitterRepainter(DiffEditor leftEditor, DiffEditor rightEditor);
@@ -416,11 +380,7 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
     if (changeSet == null) {
       return Sequence.fromIterable(Collections.<ModelChange>emptyList());
     }
-    return Sequence.fromIterable(changeSet.getChangesForNode(myRootId)).where(new IWhereFilter<ModelChange>() {
-      public boolean accept(ModelChange change) {
-        return changeIsVisible(change);
-      }
-    });
+    return Sequence.fromIterable(changeSet.getChangesForNode(myRootId)).where((change) -> changeIsVisible(change));
   }
 
   protected boolean changeIsVisible(ModelChange change) {
@@ -447,11 +407,7 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
 
   public void dispose() {
     myDisposed = true;
-    ListSequence.fromList(myGutterMessagesRebuilders).visitAll(new IVisitor<ChangeGroupMessages>() {
-      public void visit(ChangeGroupMessages it) {
-        it.dispose();
-      }
-    });
+    ListSequence.fromList(myGutterMessagesRebuilders).visitAll((it) -> it.dispose());
     myActionGroup.removeAll();
     myActionGroup = null;
     myMainLayout.dispose();
@@ -460,19 +416,11 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
   }
 
   protected void invalidateLayouts() {
-    ListSequence.fromList(getLayouts(false)).concat(ListSequence.fromList(getLayouts(true))).where(new NotNullWhereFilter<ChangeGroupLayout>()).visitAll(new IVisitor<ChangeGroupLayout>() {
-      public void visit(ChangeGroupLayout b) {
-        b.invalidate();
-      }
-    });
+    ListSequence.fromList(getLayouts(false)).concat(ListSequence.fromList(getLayouts(true))).where(new NotNullWhereFilter()).visitAll((b) -> b.invalidate());
   }
 
   public void repaintAndRebuildEditorMessages() {
-    ListSequence.fromList(getEditors()).visitAll(new IVisitor<DiffEditor>() {
-      public void visit(DiffEditor it) {
-        it.repaintAndRebuildEditorMessages();
-      }
-    });
+    ListSequence.fromList(getEditors()).visitAll((it) -> it.repaintAndRebuildEditorMessages());
   }
 
   private DiffEditorsGroup createEditorsGroup(List<SModel> models, List<String> titles) {
@@ -513,14 +461,6 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
   }
 
   protected void updateLayouts() {
-    ListSequence.fromList(getLayouts(false)).concat(ListSequence.fromList(getLayouts(true))).where(new NotNullWhereFilter<ChangeGroupLayout>()).select(new ISelector<ChangeGroupLayout, DiffChangeGroupLayout>() {
-      public DiffChangeGroupLayout select(ChangeGroupLayout it) {
-        return (DiffChangeGroupLayout) it;
-      }
-    }).visitAll(new IVisitor<DiffChangeGroupLayout>() {
-      public void visit(DiffChangeGroupLayout it) {
-        it.setChangeSet(getChangeSet(it.getDiffEditor(true), it.getDiffEditor(false)));
-      }
-    });
+    ListSequence.fromList(getLayouts(false)).concat(ListSequence.fromList(getLayouts(true))).where(new NotNullWhereFilter()).select((it) -> (DiffChangeGroupLayout) it).visitAll((it) -> it.setChangeSet(getChangeSet(it.getDiffEditor(true), it.getDiffEditor(false))));
   }
 }

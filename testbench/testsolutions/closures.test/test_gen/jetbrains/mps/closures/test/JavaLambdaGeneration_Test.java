@@ -5,17 +5,17 @@ package jetbrains.mps.closures.test;
 import org.junit.jupiter.api.Test;
 import java.util.function.Function;
 import java.util.List;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.function.Predicate;
 import org.junit.Assert;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import java.util.function.Consumer;
 
 public class JavaLambdaGeneration_Test {
   @Test
   public void test_conflictingNames() throws Exception {
-    Function<List<String>, Boolean> f1 = (List<String> it) -> {
-      return it.stream().anyMatch(new Predicate<String>() {
+    Function<List<String>, Boolean> f1 = (it) -> {
+      return ListSequence.fromList(it).toStream(false).anyMatch(new Predicate<String>() {
         public boolean test(String it) {
           return it.equals("target");
         }
@@ -32,7 +32,7 @@ public class JavaLambdaGeneration_Test {
   }
   @Test
   public void test_nonConflictingNames() throws Exception {
-    Function<List<String>, Boolean> f1 = (List<String> it) -> it.stream().anyMatch((String q) -> q.equals("target"));
+    Function<List<String>, Boolean> f1 = (it) -> ListSequence.fromList(it).toStream(false).anyMatch((q) -> q.equals("target"));
     Assert.assertTrue(f1.apply(ListSequence.fromListAndArray(new ArrayList<String>(), "something", "target")));
   }
   public static class ForwardReference {

@@ -20,12 +20,8 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.SModelInternal;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.annotations.Nullable;
@@ -50,23 +46,7 @@ public class ClassLikes_ActionGroup extends GeneratedActionGroup {
       return;
     }
     Iterable<SLanguage> langs = ((SModelInternal) model).importedLanguageIds();
-    Iterable<SNode> descrs = Sequence.fromIterable(langs).select(new ISelector<SLanguage, SModule>() {
-      public SModule select(SLanguage it) {
-        return it.getSourceModule();
-      }
-    }).ofType(Language.class).translate(new ITranslator2<Language, SModel>() {
-      public Iterable<SModel> translate(Language it) {
-        return it.getAccessoryModels();
-      }
-    }).translate(new ITranslator2<SModel, SNode>() {
-      public Iterable<SNode> translate(SModel it) {
-        return SModelOperations.roots(((SModel) it), CONCEPTS.DSLDescriptor$zD);
-      }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.preferredConcept$1q4V) != null) && SPropertyOperations.getBoolean(SLinkOperations.getTarget(it, LINKS.preferredConcept$1q4V), PROPS.rootable$_9pz);
-      }
-    });
+    Iterable<SNode> descrs = Sequence.fromIterable(langs).select((it) -> it.getSourceModule()).ofType(Language.class).translate((it) -> it.getAccessoryModels()).translate((it) -> SModelOperations.roots(((SModel) it), CONCEPTS.DSLDescriptor$zD)).where((it) -> (SLinkOperations.getTarget(it, LINKS.preferredConcept$1q4V) != null) && SPropertyOperations.getBoolean(SLinkOperations.getTarget(it, LINKS.preferredConcept$1q4V), PROPS.rootable$_9pz));
 
     for (SNode descr : Sequence.fromIterable(descrs)) {
       ClassLikes_ActionGroup.this.addParameterizedAction(new NewClassLike_Action(descr), descr);

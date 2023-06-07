@@ -18,13 +18,11 @@ import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.generator.template.MappingScriptContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.ReductionRuleCondition;
@@ -384,11 +382,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "Commands");
   }
   public static boolean ifMacro_Condition_6_0(final IfMacroContext _context) {
-    return SNodeOperations.isInstanceOf(ListSequence.fromList(SNodeOperations.getNextSiblings(_context.getNode(), false)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.Calculation$J0));
-      }
-    }).first(), CONCEPTS.EmptyLine$CT);
+    return SNodeOperations.isInstanceOf(ListSequence.fromList(SNodeOperations.getNextSiblings(_context.getNode(), false)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.Calculation$J0))).first(), CONCEPTS.EmptyLine$CT);
   }
   public static boolean ifMacro_Condition_13_0(final IfMacroContext _context) {
     return !(Objects.equals(SPropertyOperations.getEnum(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.Selector$ej), PROPS.value_kind$DveB), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x26b3d6d5b99a4ed6L, 0x83bed2ea6f3627c2L, 0x1d111c815ee9dbb5L, "jetbrains.mps.samples.fincalculator.structure.ValueKind"), 0x20e1c9c3baa061c7L, "logical"))) && !(Objects.equals(SPropertyOperations.getEnum(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.Selector$ej), PROPS.value_kind$DveB), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x26b3d6d5b99a4ed6L, 0x83bed2ea6f3627c2L, 0x1d111c815ee9dbb5L, "jetbrains.mps.samples.fincalculator.structure.ValueKind"), 0x20e1c9c3baa061ccL, "textual")));
@@ -448,11 +442,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.commands$LtFR);
   }
   public static Iterable<SNode> sourceNodesQuery_1_5(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.commands$LtFR)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.Calculation$J0));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.commands$LtFR)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.Calculation$J0)));
   }
   public static Iterable<SNode> sourceNodesQuery_1_6(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.commands$LtFR);
@@ -476,16 +466,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.body$xrvH), LINKS.statement$53DE);
   }
   public static void mappingScript_CodeBlock_5(final MappingScriptContext _context) {
-    ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.FieldReference$gP)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode ref) {
-        return Objects.equals(SPropertyOperations.getEnum(SLinkOperations.getTarget(ref, LINKS.field$pMHA), PROPS.value_kind$cL8P), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x26b3d6d5b99a4ed6L, 0x83bed2ea6f3627c2L, 0x1d111c815ee9dbb5L, "jetbrains.mps.samples.fincalculator.structure.ValueKind"), 0x1d111c815ee9dbb7L, "percent")) && !(Objects.equals(SPropertyOperations.getEnum(SNodeOperations.getNodeAncestor(ref, CONCEPTS.OutputField$hD, false, false), PROPS.value_kind$cL8P), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x26b3d6d5b99a4ed6L, 0x83bed2ea6f3627c2L, 0x1d111c815ee9dbb5L, "jetbrains.mps.samples.fincalculator.structure.ValueKind"), 0x1d111c815ee9dbb7L, "percent")));
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode ref) {
-        SNode div = SNodeFactoryOperations.replaceWithNewChild(ref, CONCEPTS.DivExpression$En);
-        SLinkOperations.setTarget(div, LINKS.leftExpression$sEj, ref);
-        SLinkOperations.setTarget(div, LINKS.rightExpression$nvX, createIntegerConstant_x583g4_a0c0a0a0a931());
-      }
+    ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.FieldReference$gP)).where((ref) -> Objects.equals(SPropertyOperations.getEnum(SLinkOperations.getTarget(ref, LINKS.field$pMHA), PROPS.value_kind$cL8P), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x26b3d6d5b99a4ed6L, 0x83bed2ea6f3627c2L, 0x1d111c815ee9dbb5L, "jetbrains.mps.samples.fincalculator.structure.ValueKind"), 0x1d111c815ee9dbb7L, "percent")) && !(Objects.equals(SPropertyOperations.getEnum(SNodeOperations.getNodeAncestor(ref, CONCEPTS.OutputField$hD, false, false), PROPS.value_kind$cL8P), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x26b3d6d5b99a4ed6L, 0x83bed2ea6f3627c2L, 0x1d111c815ee9dbb5L, "jetbrains.mps.samples.fincalculator.structure.ValueKind"), 0x1d111c815ee9dbb7L, "percent")))).visitAll((ref) -> {
+      SNode div = SNodeFactoryOperations.replaceWithNewChild(ref, CONCEPTS.DivExpression$En);
+      SLinkOperations.setTarget(div, LINKS.leftExpression$sEj, ref);
+      SLinkOperations.setTarget(div, LINKS.rightExpression$nvX, createIntegerConstant_x583g4_a0c0a0a0a931());
     });
   }
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();

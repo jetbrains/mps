@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="chioj9yyq6l07x0m2al3vgsabxy31xv">
+<product version="3" modelHash="4q17nct1ylmceok9ufrwst0qs2zzujk">
   <files names="AbstractDebugSession.java:AbstractDebugSessionCreator.java:AbstractDebugger.java:AbstractUiState.java:BreakpointCreator.java:BreakpointCreatorsManager.java:BreakpointInfo.java:BreakpointManagerComponent.java:DebugSessionManagerComponent.java:DebuggableFramesSelector.java:DebuggerNotPresentException.java:Debuggers.java:EmptyDebuggerSettings.java:IDebuggableFramesSelector.java:IDebugger.java:IDebuggerSettings.java:SessionChangeAdapter.java:SessionChangeListener.java" />
 </product>
 

@@ -20,7 +20,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.scopes.runtime.SimpleScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.behavior.IMemberContainer__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.scope.EmptyScope;
 import java.util.HashMap;
@@ -49,11 +48,7 @@ public class DirectMethodSpecification_Constraints extends BaseConstraintsDescri
             SNode ancestor = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ExtractInterfaceMigration$Jf, true, false);
             SNode classifierSpecification = SNodeOperations.as(SLinkOperations.getTarget(ancestor, LINKS.oldClassifier$dQay), CONCEPTS.DirectClassifierSpecification$s$);
             if (classifierSpecification != null) {
-              return new SimpleScope(ListSequence.fromList(IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invoke(SLinkOperations.getTarget(classifierSpecification, LINKS.classifier$$MQn))).where(new IWhereFilter<SNode>() {
-                public boolean accept(SNode it) {
-                  return SNodeOperations.isInstanceOf(it, CONCEPTS.InstanceMethodDeclaration$39);
-                }
-              })) {
+              return new SimpleScope(ListSequence.fromList(IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invoke(SLinkOperations.getTarget(classifierSpecification, LINKS.classifier$$MQn))).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.InstanceMethodDeclaration$39))) {
                 @Nullable
                 @Override
                 public String getReferenceText(@NotNull SNode target) {

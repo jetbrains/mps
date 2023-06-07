@@ -24,12 +24,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.baseLanguage.behavior.VariableDeclaration__BehaviorDescriptor;
 import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.IMapping;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.baseLanguage.behavior.ClassifierMember__BehaviorDescriptor;
@@ -124,11 +123,11 @@ public class ConvertAnonymousRefactoring {
   }
   private void makeConstructorBody(SNode constructorDeclaration) {
     if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(this.myClassToRefactor, LINKS.baseMethodDeclaration$pyYw), LINKS.parameter$5xBj)).isNotEmpty()) {
-      List<SNode> parameterReferences = ListSequence.fromList(this.mySuperConstructorParameters).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
+      List<SNode> parameterReferences = ListSequence.fromList(this.mySuperConstructorParameters).select(new _FunctionTypes._return_P1_E0<SNode, SNode>() {
+        public SNode invoke(SNode it) {
           return (SNode) VariableDeclaration__BehaviorDescriptor.createReference_idhEwJfME.invoke(it);
         }
-      }).toListSequence();
+      }).toList();
       SNode invocation = createSuperConstructorInvocation_qy1soj_a0b0a0q(SLinkOperations.getTarget(this.myClassToRefactor, LINKS.baseMethodDeclaration$pyYw), parameterReferences);
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(constructorDeclaration, LINKS.body$5xQk), LINKS.statement$53DE)).insertElement(0, invocation);
     }
@@ -163,8 +162,8 @@ public class ConvertAnonymousRefactoring {
     }
   }
   private void addTypeVariablesToInnerClass(SNode innerClass) {
-    ListSequence.fromList(SLinkOperations.getChildren(innerClass, LINKS.typeVariableDeclaration$Lipp)).addSequence(MapSequence.fromMap(myInnerTypeVariables).select(new ISelector<IMapping<SNode, SNode>, SNode>() {
-      public SNode select(IMapping<SNode, SNode> it) {
+    ListSequence.fromList(SLinkOperations.getChildren(innerClass, LINKS.typeVariableDeclaration$Lipp)).addSequence(MapSequence.fromMap(myInnerTypeVariables).select(new _FunctionTypes._return_P1_E0<SNode, IMapping<SNode, SNode>>() {
+      public SNode invoke(IMapping<SNode, SNode> it) {
         return it.value();
       }
     }));
@@ -185,13 +184,13 @@ public class ConvertAnonymousRefactoring {
   }
   private SNode makeInnerConstructorInvocation(SNode constructor) {
     SNode constructorInvocation = _quotation_createNode_qy1soj_a0a0x(constructor, SLinkOperations.getChildren(this.myClassToRefactor, LINKS.actualArgument$pzdx));
-    ListSequence.fromList(SLinkOperations.getChildren(constructorInvocation, LINKS.actualArgument$pzdx)).addSequence(SetSequence.fromSet(MapSequence.fromMap(this.myInnerFields).keySet()).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
+    ListSequence.fromList(SLinkOperations.getChildren(constructorInvocation, LINKS.actualArgument$pzdx)).addSequence(SetSequence.fromSet(MapSequence.fromMap(this.myInnerFields).keySet()).select(new _FunctionTypes._return_P1_E0<SNode, SNode>() {
+      public SNode invoke(SNode it) {
         return (SNode) VariableDeclaration__BehaviorDescriptor.createReference_idhEwJfME.invoke(it);
       }
     }));
-    for (SNode typeVaryable : MapSequence.fromMap(this.myInnerTypeVariables).select(new ISelector<IMapping<SNode, SNode>, SNode>() {
-      public SNode select(IMapping<SNode, SNode> it) {
+    for (SNode typeVaryable : MapSequence.fromMap(this.myInnerTypeVariables).select(new _FunctionTypes._return_P1_E0<SNode, IMapping<SNode, SNode>>() {
+      public SNode invoke(IMapping<SNode, SNode> it) {
         return it.key();
       }
     })) {
@@ -200,21 +199,21 @@ public class ConvertAnonymousRefactoring {
     return constructorInvocation;
   }
   private Iterable<SNode> getExternalReferences(final SNode node) {
-    Iterable<SNode> result = ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
+    Iterable<SNode> result = ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      public Boolean invoke(SNode it) {
         return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.ParameterDeclaration$RG);
       }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
+    }).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      public Boolean invoke(SNode it) {
         return !(ListSequence.fromList(SNodeOperations.getNodeAncestors(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), null, false)).contains(node));
       }
     });
-    result = Sequence.fromIterable(result).concat(ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
+    result = Sequence.fromIterable(result).concat(ListSequence.fromList(ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      public Boolean invoke(SNode it) {
         return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41);
       }
-    }).toListSequence().where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
+    }).toList()).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      public Boolean invoke(SNode it) {
         return !(ListSequence.fromList(SNodeOperations.getNodeAncestors(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), null, false)).contains(node));
       }
     }));

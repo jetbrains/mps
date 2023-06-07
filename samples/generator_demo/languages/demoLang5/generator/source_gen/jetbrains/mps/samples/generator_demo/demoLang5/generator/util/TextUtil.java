@@ -7,7 +7,6 @@ import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -21,11 +20,7 @@ public class TextUtil {
     // get all strings from the model
     List<SNode> strings = SModelOperations.nodes(model, CONCEPTS.StringLiteral$xu);
     // get all MPS strings
-    Iterable<SNode> mpses = ListSequence.fromList(strings).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.value$w7MM).startsWith("MPS");
-      }
-    });
+    Iterable<SNode> mpses = ListSequence.fromList(strings).where((it) -> SPropertyOperations.getString(it, PROPS.value$w7MM).startsWith("MPS"));
     for (SNode mps : Sequence.fromIterable(mpses)) {
       // convert "MPS" --> "JetBrains MPS"
       SPropertyOperations.assign(mps, PROPS.value$w7MM, "JetBrains " + SPropertyOperations.getString(mps, PROPS.value$w7MM));

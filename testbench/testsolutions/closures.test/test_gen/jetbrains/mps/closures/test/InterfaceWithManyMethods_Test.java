@@ -33,8 +33,8 @@ public class InterfaceWithManyMethods_Test {
 
   private void test() {
     // Some logic seemed to rely on the first method found, this ensures compilation works for those cases
-    run((String file) -> file.getName());
-    run((String file) -> file.getName());
+    run((file) -> file.getName());
+    run((file) -> file.getName());
     runAbstract(new AbstractMultipleMethods() {
       public String actualMethod(File file) {
         return file.getName();

@@ -48,8 +48,8 @@ public class TupleIntefaceUtils {
       }
     }
     List<Property> result = null;
-    IEnumerator<Property> ait = ListSequence.fromList(accessors).sort((Property p) -> p.name, true).enumerator();
-    IEnumerator<Property> mit = ListSequence.fromList(mutators).sort((Property p) -> p.name, true).enumerator();
+    IEnumerator<Property> ait = ListSequence.fromList(accessors).sort((p) -> p.name, true).enumerator();
+    IEnumerator<Property> mit = ListSequence.fromList(mutators).sort((p) -> p.name, true).enumerator();
     boolean hasMutators = mit.moveNext();
     while (ait.moveNext()) {
       if (result == null) {

@@ -12,8 +12,6 @@ import java.util.ArrayList;
 import jetbrains.mps.make.script.ScriptBuilder;
 import jetbrains.mps.make.facet.FacetRegistry;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.make.facet.IFacet;
 import jetbrains.mps.make.facet.ITarget;
 
 @GeneratedClass(node = "r:d357a980-6a2b-481f-acb3-29792a9d3728(jetbrains.mps.make.dependencies)/4634869729620616118", model = "r:d357a980-6a2b-481f-acb3-29792a9d3728(jetbrains.mps.make.dependencies)")
@@ -34,11 +32,7 @@ public class Cluster {
   }
   public ScriptBuilder createScriptBuilder(FacetRegistry facetRegistry) {
     ScriptBuilder scb = new ScriptBuilder(facetRegistry);
-    scb.withFacetNames(Sequence.fromIterable(facetRegistry.getFacetsForLanguages(allUsedLangNamespaces())).select(new ISelector<IFacet, IFacet.Name>() {
-      public IFacet.Name select(IFacet fct) {
-        return fct.getName();
-      }
-    }));
+    scb.withFacetNames(Sequence.fromIterable(facetRegistry.getFacetsForLanguages(allUsedLangNamespaces())).select((fct) -> fct.getName()));
     return scb.withFinalTarget(new ITarget.Name("jetbrains.mps.make.facets.Make.make"));
   }
   public void setScript(IScript script) {

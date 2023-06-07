@@ -10,12 +10,10 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -39,16 +37,8 @@ public class ModuleXml_classpathEntry extends MigrationScriptBase {
     {
       SearchScope scope_ykj178_a0e = CommandUtil.createScope(m);
       final SearchScope scope_ykj178_a0e_0 = new EditableFilteringScope(scope_ykj178_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_ykj178_a0e_0;
-        }
-      };
-      Sequence.fromIterable(findWithNoEntry(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BuildMpsLayout_ModuleXml$_e, false))).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SPropertyOperations.assign(SLinkOperations.addNewChild(it, LINKS.classpathEntries$PWzd, null), PROPS.path$oN2q, ".");
-        }
-      });
+      QueryExecutionContext context = () -> scope_ykj178_a0e_0;
+      Sequence.fromIterable(findWithNoEntry(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BuildMpsLayout_ModuleXml$_e, false))).visitAll((it) -> SPropertyOperations.assign(SLinkOperations.addNewChild(it, LINKS.classpathEntries$PWzd, null), PROPS.path$oN2q, "."));
     }
   }
   public MigrationScriptReference getReference() {
@@ -57,11 +47,7 @@ public class ModuleXml_classpathEntry extends MigrationScriptBase {
 
 
   private Iterable<SNode> findWithNoEntry(Iterable<SNode> scope) {
-    return Sequence.fromIterable(scope).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.classpathEntries$PWzd)).isEmpty() && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.as(SNodeOperations.getParent(it), CONCEPTS.BuildLayout_Folder$AH)), CONCEPTS.BuildLayout_Jar$bd), LINKS.children$aMRO), CONCEPTS.BuildLayout_CompileOutputOf$1E)).isNotEmpty();
-      }
-    });
+    return Sequence.fromIterable(scope).where((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.classpathEntries$PWzd)).isEmpty() && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.as(SNodeOperations.getParent(it), CONCEPTS.BuildLayout_Folder$AH)), CONCEPTS.BuildLayout_Jar$bd), LINKS.children$aMRO), CONCEPTS.BuildLayout_CompileOutputOf$1E)).isNotEmpty());
   }
 
   private static final class CONCEPTS {

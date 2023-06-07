@@ -59,7 +59,7 @@ public class ImplicitNodeRenamer_extension extends Extension.Default<_FunctionTy
 
           final RefactoringSessionImpl refactoringSession = new RefactoringSessionImpl(refactoringName);
           _FunctionTypes._return_P1_E0<? extends Map<SNode, String>, ? super Iterable<RefactoringParticipant.ParticipantApplied<?, ?, SNode, String, SNode, String>>> doRefactor = (Iterable<RefactoringParticipant.ParticipantApplied<?, ?, SNode, String, SNode, String>> participantStates) -> {
-            Map<SNode, String> m = MapSequence.<SNode, String>fromMapAndKeysArray(new HashMap<SNode, String>(), node).withValues(newName);
+            Map<SNode, String> m = MapSequence.fromMapAndEntryArray(new HashMap<SNode, String>(), Map.entry(node, newName));
             return m;
           };
           RefactoringProcessor.performRefactoring(new RefactoringParticipant.CollectingParticipantStateFactory<SNode, String>(), refactoringUI, refactoringSession, repository, scope, participants, initialStates, null, doRefactor, () -> refactoringSession.performAllRegistered());

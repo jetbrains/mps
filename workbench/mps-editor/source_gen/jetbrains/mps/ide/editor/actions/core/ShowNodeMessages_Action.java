@@ -13,7 +13,6 @@ import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
@@ -37,11 +36,7 @@ public class ShowNodeMessages_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return ListSequence.fromList(((List<SimpleEditorMessage>) ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getHighlightManager().getMessagesFor(((SNode) MapSequence.fromMap(_params).get("node"))))).any(new IWhereFilter<SimpleEditorMessage>() {
-      public boolean accept(SimpleEditorMessage it) {
-        return isNotEmptyString(it.getMessage());
-      }
-    });
+    return ListSequence.fromList(((List<SimpleEditorMessage>) ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getHighlightManager().getMessagesFor(((SNode) MapSequence.fromMap(_params).get("node"))))).any((it) -> isNotEmptyString(it.getMessage()));
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -81,11 +76,7 @@ public class ShowNodeMessages_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     List<SimpleEditorMessage> messages = ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getHighlightManager().getMessagesFor(((SNode) MapSequence.fromMap(_params).get("node")));
-    messages = ListSequence.fromList(messages).removeWhere(new IWhereFilter<SimpleEditorMessage>() {
-      public boolean accept(SimpleEditorMessage it) {
-        return isEmptyString(it.getMessage());
-      }
-    });
+    messages = ListSequence.fromList(messages).removeWhere((it) -> isEmptyString(it.getMessage()));
     // Try to guess messages text size
     StringBuilder sb = new StringBuilder(200 * ListSequence.fromList(messages).count());
     sb.append("<html>");

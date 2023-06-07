@@ -10,18 +10,16 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.ide.findusages.model.scopes.ModelsScope;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.behavior.IBLDeprecatable__BehaviorDescriptor;
@@ -55,122 +53,62 @@ public class UseDeprecatedInsteadOfToRemoveOrScheduledForRemoval extends Migrati
     {
       SearchScope scope_pulpev_a0e = CommandUtil.createScope(m);
       final SearchScope scope_pulpev_a0e_0 = new EditableFilteringScope(scope_pulpev_a0e);
-      final QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_pulpev_a0e_0;
-        }
-      };
+      final QueryExecutionContext context = () -> scope_pulpev_a0e_0;
 
-      Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).visitAll(new IVisitor<SModel>() {
-        public void visit(SModel currentModel) {
-          final SNode scheduledAnnotation = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SPointerOperations.resolveNode(new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~ApiStatus"), m.getRepository()), LINKS.member$L_2d), CONCEPTS.Annotation$he)).findFirst(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "ScheduledForRemoval");
-            }
-          });
-          final SNode inVersionMethod = ListSequence.fromList(SLinkOperations.getChildren(scheduledAnnotation, LINKS.method$_DCK)).findFirst(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "inVersion");
-            }
-          });
-          CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(new ModelsScope(Sequence.<SModel>singleton(currentModel)), context), CONCEPTS.AnnotationInstance$yl, false)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)", "~ToRemove")) || Objects.equals(SLinkOperations.getTarget(it, LINKS.annotation$12Ek), scheduledAnnotation);
-            }
-          }).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode toRemove) {
-              SNode valueExpr = (SLinkOperations.hasPointer(toRemove, LINKS.annotation$12Ek, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)", "~ToRemove")) ? SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(toRemove, LINKS.value$uK2B)).findFirst(new IWhereFilter<SNode>() {
-                public boolean accept(SNode it) {
-                  return SLinkOperations.hasPointer(it, LINKS.key$bSmV, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)", "~ToRemove.version()"));
-                }
-              }), LINKS.value$Y7om) : SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(toRemove, LINKS.value$uK2B)).findFirst(new IWhereFilter<SNode>() {
-                public boolean accept(SNode it) {
-                  return Objects.equals(SLinkOperations.getTarget(it, LINKS.key$bSmV), inVersionMethod);
-                }
-              }), LINKS.value$Y7om));
-              SNode annotatedNode = SNodeOperations.getParent(toRemove);
-              if (!(SNodeOperations.isInstanceOf(annotatedNode, CONCEPTS.IBLDeprecatable$ah))) {
-                return;
-              }
+      Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).visitAll((currentModel) -> {
+        final SNode scheduledAnnotation = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SPointerOperations.resolveNode(new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~ApiStatus"), m.getRepository()), LINKS.member$L_2d), CONCEPTS.Annotation$he)).findFirst((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "ScheduledForRemoval"));
+        final SNode inVersionMethod = ListSequence.fromList(SLinkOperations.getChildren(scheduledAnnotation, LINKS.method$_DCK)).findFirst((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "inVersion"));
+        CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(new ModelsScope(Sequence.<SModel>singleton(currentModel)), context), CONCEPTS.AnnotationInstance$yl, false)).where((it) -> SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)", "~ToRemove")) || Objects.equals(SLinkOperations.getTarget(it, LINKS.annotation$12Ek), scheduledAnnotation)).visitAll((toRemove) -> {
+          SNode valueExpr = (SLinkOperations.hasPointer(toRemove, LINKS.annotation$12Ek, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)", "~ToRemove")) ? SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(toRemove, LINKS.value$uK2B)).findFirst((it) -> SLinkOperations.hasPointer(it, LINKS.key$bSmV, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)", "~ToRemove.version()"))), LINKS.value$Y7om) : SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(toRemove, LINKS.value$uK2B)).findFirst((it) -> Objects.equals(SLinkOperations.getTarget(it, LINKS.key$bSmV), inVersionMethod)), LINKS.value$Y7om));
+          SNode annotatedNode = SNodeOperations.getParent(toRemove);
+          if (!(SNodeOperations.isInstanceOf(annotatedNode, CONCEPTS.IBLDeprecatable$ah))) {
+            return;
+          }
 
-              SNode sinceExpr = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral"));
-              if (SNodeOperations.isInstanceOf(valueExpr, CONCEPTS.FloatingPointConstant$3o)) {
-                SPropertyOperations.assign(sinceExpr, PROPS.value$w7MM, SPropertyOperations.getString(SNodeOperations.as(valueExpr, CONCEPTS.FloatingPointConstant$3o), PROPS.value$ENN8));
-              } else if (SNodeOperations.isInstanceOf(valueExpr, CONCEPTS.IntegerConstant$Na)) {
-                SPropertyOperations.assign(sinceExpr, PROPS.value$w7MM, String.valueOf(SPropertyOperations.getInteger(SNodeOperations.as(valueExpr, CONCEPTS.IntegerConstant$Na), PROPS.value$jgCM)));
-              } else if (SNodeOperations.isInstanceOf(valueExpr, CONCEPTS.StringLiteral$xu)) {
-                SPropertyOperations.assign(sinceExpr, PROPS.value$w7MM, SPropertyOperations.getString(SNodeOperations.as(valueExpr, CONCEPTS.StringLiteral$xu), PROPS.value$w7MM));
-              } else {
-                sinceExpr = null;
-              }
+          SNode sinceExpr = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral"));
+          if (SNodeOperations.isInstanceOf(valueExpr, CONCEPTS.FloatingPointConstant$3o)) {
+            SPropertyOperations.assign(sinceExpr, PROPS.value$w7MM, SPropertyOperations.getString(SNodeOperations.as(valueExpr, CONCEPTS.FloatingPointConstant$3o), PROPS.value$ENN8));
+          } else if (SNodeOperations.isInstanceOf(valueExpr, CONCEPTS.IntegerConstant$Na)) {
+            SPropertyOperations.assign(sinceExpr, PROPS.value$w7MM, String.valueOf(SPropertyOperations.getInteger(SNodeOperations.as(valueExpr, CONCEPTS.IntegerConstant$Na), PROPS.value$jgCM)));
+          } else if (SNodeOperations.isInstanceOf(valueExpr, CONCEPTS.StringLiteral$xu)) {
+            SPropertyOperations.assign(sinceExpr, PROPS.value$w7MM, SPropertyOperations.getString(SNodeOperations.as(valueExpr, CONCEPTS.StringLiteral$xu), PROPS.value$w7MM));
+          } else {
+            sinceExpr = null;
+          }
 
-              IBLDeprecatable__BehaviorDescriptor.markDeprecated_id6Va_BJexupi.invoke(SNodeOperations.as(annotatedNode, CONCEPTS.IBLDeprecatable$ah));
-              SNode deprecatedAnnotation = ListSequence.fromList(SNodeOperations.getNodeDescendants(annotatedNode, CONCEPTS.AnnotationInstance$yl, false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
-                public boolean accept(SNode it) {
-                  return SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated"));
-                }
-              });
-              if (deprecatedAnnotation == null) {
-                return;
-              }
+          IBLDeprecatable__BehaviorDescriptor.markDeprecated_id6Va_BJexupi.invoke(SNodeOperations.as(annotatedNode, CONCEPTS.IBLDeprecatable$ah));
+          SNode deprecatedAnnotation = ListSequence.fromList(SNodeOperations.getNodeDescendants(annotatedNode, CONCEPTS.AnnotationInstance$yl, false, new SAbstractConcept[]{})).findFirst((it) -> SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated")));
+          if (deprecatedAnnotation == null) {
+            return;
+          }
 
-              if (sinceExpr != null && ListSequence.fromList(SLinkOperations.getChildren(deprecatedAnnotation, LINKS.value$uK2B)).all(new IWhereFilter<SNode>() {
-                public boolean accept(SNode it) {
-                  return !(SLinkOperations.hasPointer(it, LINKS.key$bSmV, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated.since()")));
-                }
-              })) {
-                SNode instanceValueSince = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, "jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue"));
-                SLinkOperations.setTarget(instanceValueSince, LINKS.key$bSmV, SPointerOperations.resolveNode(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated.since()"), m.getRepository()));
-                SLinkOperations.setTarget(instanceValueSince, LINKS.value$Y7om, sinceExpr);
-                ListSequence.fromList(SLinkOperations.getChildren(deprecatedAnnotation, LINKS.value$uK2B)).addElement(instanceValueSince);
-              }
-              if (ListSequence.fromList(SLinkOperations.getChildren(deprecatedAnnotation, LINKS.value$uK2B)).all(new IWhereFilter<SNode>() {
-                public boolean accept(SNode it) {
-                  return !(SLinkOperations.hasPointer(it, LINKS.key$bSmV, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated.forRemoval()")));
-                }
-              })) {
-                SNode instanceValueToRemove = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, "jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue"));
-                SLinkOperations.setTarget(instanceValueToRemove, LINKS.key$bSmV, SPointerOperations.resolveNode(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated.forRemoval()"), m.getRepository()));
-                SLinkOperations.setTarget(instanceValueToRemove, LINKS.value$Y7om, createBooleanConstant_pulpev_a0c0m0a0a2a0a0b0a0g());
-                ListSequence.fromList(SLinkOperations.getChildren(deprecatedAnnotation, LINKS.value$uK2B)).addElement(instanceValueToRemove);
-              }
-              SNodeOperations.deleteNode(toRemove);
-            }
-          });
-        }
+          if (sinceExpr != null && ListSequence.fromList(SLinkOperations.getChildren(deprecatedAnnotation, LINKS.value$uK2B)).all((it) -> !(SLinkOperations.hasPointer(it, LINKS.key$bSmV, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated.since()"))))) {
+            SNode instanceValueSince = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, "jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue"));
+            SLinkOperations.setTarget(instanceValueSince, LINKS.key$bSmV, SPointerOperations.resolveNode(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated.since()"), m.getRepository()));
+            SLinkOperations.setTarget(instanceValueSince, LINKS.value$Y7om, sinceExpr);
+            ListSequence.fromList(SLinkOperations.getChildren(deprecatedAnnotation, LINKS.value$uK2B)).addElement(instanceValueSince);
+          }
+          if (ListSequence.fromList(SLinkOperations.getChildren(deprecatedAnnotation, LINKS.value$uK2B)).all((it) -> !(SLinkOperations.hasPointer(it, LINKS.key$bSmV, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated.forRemoval()"))))) {
+            SNode instanceValueToRemove = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, "jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue"));
+            SLinkOperations.setTarget(instanceValueToRemove, LINKS.key$bSmV, SPointerOperations.resolveNode(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated.forRemoval()"), m.getRepository()));
+            SLinkOperations.setTarget(instanceValueToRemove, LINKS.value$Y7om, createBooleanConstant_pulpev_a0c0m0a0a2a0a0b0a0g());
+            ListSequence.fromList(SLinkOperations.getChildren(deprecatedAnnotation, LINKS.value$uK2B)).addElement(instanceValueToRemove);
+          }
+          SNodeOperations.deleteNode(toRemove);
+        });
       });
     }
   }
   @Override
   public Iterable<Problem> check(SModule m) {
-    final SNode scheduledAnnotation = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SPointerOperations.resolveNode(new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~ApiStatus"), m.getRepository()), LINKS.member$L_2d), CONCEPTS.Annotation$he)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "ScheduledForRemoval");
-      }
-    });
+    final SNode scheduledAnnotation = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SPointerOperations.resolveNode(new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~ApiStatus"), m.getRepository()), LINKS.member$L_2d), CONCEPTS.Annotation$he)).findFirst((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "ScheduledForRemoval"));
 
     final List<Problem> problems = ListSequence.fromList(new ArrayList<Problem>());
     {
       SearchScope scope_pulpev_d0f = CommandUtil.createScope(m);
       final SearchScope scope_pulpev_d0f_0 = new EditableFilteringScope(scope_pulpev_d0f);
-      final QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_pulpev_d0f_0;
-        }
-      };
-      Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).visitAll(new IVisitor<SModel>() {
-        public void visit(SModel currentModel) {
-          CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(new ModelsScope(Sequence.<SModel>singleton(currentModel)), context), CONCEPTS.AnnotationInstance$yl, false)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)", "~ToRemove")) || Objects.equals(SLinkOperations.getTarget(it, LINKS.annotation$12Ek), scheduledAnnotation);
-            }
-          }).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode toRemove) {
-              ListSequence.fromList(problems).addElement(new DeprecatedConceptNotMigratedProblem(toRemove));
-            }
-          });
-        }
-      });
+      final QueryExecutionContext context = () -> scope_pulpev_d0f_0;
+      Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).visitAll((currentModel) -> CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(new ModelsScope(Sequence.<SModel>singleton(currentModel)), context), CONCEPTS.AnnotationInstance$yl, false)).where((it) -> SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)", "~ToRemove")) || Objects.equals(SLinkOperations.getTarget(it, LINKS.annotation$12Ek), scheduledAnnotation)).visitAll((toRemove) -> ListSequence.fromList(problems).addElement(new DeprecatedConceptNotMigratedProblem(toRemove))));
     }
     return problems;
   }

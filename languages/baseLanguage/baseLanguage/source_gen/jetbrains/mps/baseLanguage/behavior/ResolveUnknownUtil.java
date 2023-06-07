@@ -16,13 +16,11 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.model.ResolveInfo;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.baseLanguage.scopes.ClassifiersScope;
 import java.util.List;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -120,7 +118,7 @@ public final class ResolveUnknownUtil {
       SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, "jetbrains.mps.baseLanguage.structure.GenericNewExpression"));
       SNode creator;
 
-      SNode resolveResult = MethodResolveUtil.chooseByParameterType(x, Sequence.fromIterable(IFixableMethodReference__BehaviorDescriptor.getAvailableMethodDeclarations_id50EF2fWdwEN.invoke(x, "")).toListSequence(), SLinkOperations.getChildren(x, LINKS.actualArgument$pzdx), MethodResolveUtil.getTypesByTypeVars(typ, SLinkOperations.getChildren(typ, LINKS.typeVariableDeclaration$Lipp)));
+      SNode resolveResult = MethodResolveUtil.chooseByParameterType(x, Sequence.fromIterable(IFixableMethodReference__BehaviorDescriptor.getAvailableMethodDeclarations_id50EF2fWdwEN.invoke(x, "")).toList(), SLinkOperations.getChildren(x, LINKS.actualArgument$pzdx), MethodResolveUtil.getTypesByTypeVars(typ, SLinkOperations.getChildren(typ, LINKS.typeVariableDeclaration$Lipp)));
       SNode ctor = (resolveResult == null ? null : SNodeOperations.as(resolveResult, CONCEPTS.ConstructorDeclaration$yG));
 
       if ((ctor == null)) {
@@ -265,11 +263,7 @@ public final class ResolveUnknownUtil {
         SNode mbEnumConst = null;
 
         if (SNodeOperations.isInstanceOf(cls, CONCEPTS.EnumClass$Vk)) {
-          mbEnumConst = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(cls, CONCEPTS.EnumClass$Vk), LINKS.enumConstant$qtgW)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return memberName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-            }
-          }).first();
+          mbEnumConst = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(cls, CONCEPTS.EnumClass$Vk), LINKS.enumConstant$qtgW)).where((it) -> memberName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL))).first();
         }
 
         if (mbEnumConst != null) {
@@ -386,22 +380,14 @@ public final class ResolveUnknownUtil {
       ListSequence.fromList(chain).addElement(c);
       c = SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(c, LINKS.superclass$Mp9$), LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK);
     }
-    Iterable<SNode> conss = ListSequence.fromList(chain).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return (Iterable<SNode>) ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(it);
-      }
-    });
+    Iterable<SNode> conss = ListSequence.fromList(chain).translate((it) -> (Iterable<SNode>) ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(it));
     if (Sequence.fromIterable(conss).isEmpty()) {
       result = null;
     } else if (Sequence.fromIterable(conss).count() == 1) {
       result = Sequence.fromIterable(conss).first();
     } else {
       final int argCount = ListSequence.fromList(args).count();
-      Iterable<SNode> subset = Sequence.fromIterable(conss).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).count() == argCount;
-        }
-      });
+      Iterable<SNode> subset = Sequence.fromIterable(conss).where((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).count() == argCount);
       result = Sequence.fromIterable(subset).first();
     }
     return result;

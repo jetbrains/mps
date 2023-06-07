@@ -375,7 +375,7 @@
                           <property role="3cmrfH" value="1" />
                         </node>
                         <node concept="37vLTw" id="626_CC3iZCm" role="3uHU7B">
-                          <ref role="3cqZAo" node="626_CC3iZnr" resolve="p1" />
+                          <ref role="3cqZAo" node="626_CC3iZnr" resolve="p" />
                         </node>
                       </node>
                     </node>
@@ -699,10 +699,10 @@
           <node concept="3clFbH" id="4nX4l22tQDV" role="3cqZAp" />
           <node concept="3vlDli" id="6JB25cYyetg" role="3cqZAp">
             <node concept="37vLTw" id="4nX4l22qont" role="3tpDZB">
-              <ref role="3cqZAo" node="4nX4l22qonr" resolve="i" />
+              <ref role="3cqZAo" node="4nX4l22qonr" resolve="expected" />
             </node>
             <node concept="37vLTw" id="4nX4l22r0Z2" role="3tpDZA">
-              <ref role="3cqZAo" node="4nX4l22r0YB" resolve="reduce" />
+              <ref role="3cqZAo" node="4nX4l22r0YB" resolve="actual" />
             </node>
           </node>
         </node>

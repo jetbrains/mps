@@ -53,7 +53,7 @@ public final class ConceptDeclaration__BehaviorDescriptor extends BaseBHDescript
     if (!(SNodeOperations.is(__thisNode__, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626")))) {
       ListSequence.fromList(result).addElement((SLinkOperations.getTarget(__thisNode__, LINKS.extends$_Isg) == null ? SPointerOperations.resolveNode(new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"), SNodeOperations.getModel(__thisNode__).getRepository()) : SLinkOperations.getTarget(__thisNode__, LINKS.extends$_Isg)));
     }
-    ListSequence.fromList(result).addSequence(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(__thisNode__, LINKS.implements$u_P2), LINKS.intfc$zM4e)).where(new NotNullWhereFilter<SNode>()));
+    ListSequence.fromList(result).addSequence(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(__thisNode__, LINKS.implements$u_P2), LINKS.intfc$zM4e)).where(new NotNullWhereFilter()));
     return result;
   }
   /*package*/ static List<SNode> getAllMethodsInPriorityOrder_id7TwdR6lloFy(@NotNull SNode __thisNode__) {

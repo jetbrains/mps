@@ -22,7 +22,6 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
@@ -70,13 +69,7 @@ public class ForceSaveAll_Action extends BaseAction {
 
       final SRepository repo = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository();
       final Wrappers._T<List<SModuleReference>> moduleRefs = new Wrappers._T<List<SModuleReference>>();
-      repo.getModelAccess().runReadAction(() -> {
-        moduleRefs.value = Sequence.fromIterable((Iterable<SModule>) ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getProjectModulesWithGenerators()).ofType(AbstractModule.class).select(new ISelector<AbstractModule, SModuleReference>() {
-          public SModuleReference select(AbstractModule it) {
-            return it.getModuleReference();
-          }
-        }).toListSequence();
-      });
+      repo.getModelAccess().runReadAction(() -> moduleRefs.value = Sequence.fromIterable((Iterable<SModule>) ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getProjectModulesWithGenerators()).ofType(AbstractModule.class).select((it) -> it.getModuleReference()).toList());
 
       int saving = 1;
       for (final SModuleReference moduleRef : ListSequence.fromList(moduleRefs.value)) {

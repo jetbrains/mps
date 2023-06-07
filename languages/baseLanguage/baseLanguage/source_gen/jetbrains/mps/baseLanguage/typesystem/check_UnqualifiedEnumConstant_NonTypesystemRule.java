@@ -14,7 +14,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.scopes.Members;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
@@ -53,11 +52,7 @@ public class check_UnqualifiedEnumConstant_NonTypesystemRule extends AbstractNon
     final String enumConstName = SLinkOperations.getResolveInfo(ref);
 
     for (SNode enclosingEnum : ListSequence.fromList(SNodeOperations.getNodeAncestors(varRef, CONCEPTS.EnumClass$Vk, false))) {
-      SNode enumConst = Sequence.fromIterable(Members.visibleEnumConstants(enclosingEnum)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return enumConstName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-        }
-      });
+      SNode enumConst = Sequence.fromIterable(Members.visibleEnumConstants(enclosingEnum)).findFirst((it) -> enumConstName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL)));
       if ((enumConst == null)) {
         continue;
       }
@@ -104,11 +99,7 @@ public class check_UnqualifiedEnumConstant_NonTypesystemRule extends AbstractNon
       }
 
       // Q: maybe not findFirst, but rather fail if there are more than one...
-      SNode enumConst = Sequence.fromIterable(Members.visibleEnumConstants(SNodeOperations.cast(enumClassCandidate, CONCEPTS.EnumClass$Vk))).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return enumConstName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-        }
-      });
+      SNode enumConst = Sequence.fromIterable(Members.visibleEnumConstants(SNodeOperations.cast(enumClassCandidate, CONCEPTS.EnumClass$Vk))).findFirst((it) -> enumConstName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL)));
 
       if ((enumConst == null)) {
         return;
@@ -140,11 +131,7 @@ public class check_UnqualifiedEnumConstant_NonTypesystemRule extends AbstractNon
         continue;
       }
 
-      SNode enumConst = Sequence.fromIterable(Members.visibleEnumConstants(SNodeOperations.cast(claz, CONCEPTS.EnumClass$Vk))).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return enumConstName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-        }
-      });
+      SNode enumConst = Sequence.fromIterable(Members.visibleEnumConstants(SNodeOperations.cast(claz, CONCEPTS.EnumClass$Vk))).findFirst((it) -> enumConstName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL)));
       if ((enumConst == null)) {
         continue;
       }

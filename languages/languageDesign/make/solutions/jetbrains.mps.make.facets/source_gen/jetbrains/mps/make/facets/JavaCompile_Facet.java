@@ -22,8 +22,6 @@ import java.util.Set;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.make.ModuleMaker;
 import jetbrains.mps.make.kotlin.cache.KotlinCompileCacheHandlerImpl;
@@ -87,15 +85,7 @@ public class JavaCompile_Facet extends IFacet.Stub {
                 return new IResult.SUCCESS(_output_wf1ya0_a0a);
               }
               vars(pa.global()).compiledAnything(false);
-              final Set<SModule> toCompile = SetSequence.fromSetWithValues(new HashSet<SModule>(), Sequence.fromIterable(input).select(new ISelector<TResource, SModule>() {
-                public SModule select(TResource it) {
-                  return it.module();
-                }
-              }).where(new IWhereFilter<SModule>() {
-                public boolean accept(SModule it) {
-                  return SModuleOperations.isCompileInMps(it);
-                }
-              }).distinct());
+              final Set<SModule> toCompile = SetSequence.fromSetWithValues(new HashSet<SModule>(), Sequence.fromIterable(input).select((it) -> it.module()).where((it) -> SModuleOperations.isCompileInMps(it)).distinct());
               if (SetSequence.fromSet(toCompile).isEmpty()) {
                 return new IResult.SUCCESS(_output_wf1ya0_a0a);
               }
@@ -242,20 +232,12 @@ public class JavaCompile_Facet extends IFacet.Stub {
               if (vars(pa.global()).skipAuxCompile() != null && vars(pa.global()).skipAuxCompile()) {
                 return new IResult.SUCCESS(_output_wf1ya0_a0b);
               }
-              if (Sequence.fromIterable(input).any(new IWhereFilter<TResource>() {
-                public boolean accept(TResource it) {
-                  return it.module() == null;
-                }
-              })) {
+              if (Sequence.fromIterable(input).any((it) -> it.module() == null)) {
                 return new IResult.FAILURE(_output_wf1ya0_a0b);
               }
 
               // collect modules to compile
-              final Iterable<TResource> toCompile = Sequence.fromIterable(input).where(new IWhereFilter<TResource>() {
-                public boolean accept(TResource it) {
-                  return SModuleOperations.isCompileInIdea(it.module());
-                }
-              });
+              final Iterable<TResource> toCompile = Sequence.fromIterable(input).where((it) -> SModuleOperations.isCompileInIdea(it.module()));
 
               // compile modules
               if (Sequence.fromIterable(toCompile).isEmpty()) {
@@ -275,13 +257,7 @@ public class JavaCompile_Facet extends IFacet.Stub {
               subProgress_p0a0b.start("Compiling in IntelliJ IDEA", 1);
 
               subProgress_p0a0b.advance(1);
-              CompilationResult cr = new ModelAccessHelper(monitor.getSession().getProject().getModelAccess()).runReadAction(() -> {
-                return compiler.compileModules(Sequence.fromIterable(toCompile).select(new ISelector<TResource, SModule>() {
-                  public SModule select(TResource it) {
-                    return it.module();
-                  }
-                }).toGenericArray(SModule.class));
-              });
+              CompilationResult cr = new ModelAccessHelper(monitor.getSession().getProject().getModelAccess()).runReadAction(() -> compiler.compileModules(Sequence.fromIterable(toCompile).select((it) -> it.module()).toGenericArray(SModule.class)));
               if (!(cr.isOk())) {
                 if (cr.getErrorsCount() > 0) {
                   monitor.reportFeedback(new IFeedback.ERROR(String.valueOf(cr)));

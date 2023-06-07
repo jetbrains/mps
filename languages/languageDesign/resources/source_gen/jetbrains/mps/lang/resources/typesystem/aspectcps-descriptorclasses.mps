@@ -180,7 +180,6 @@
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
-      <concept id="1046929382682558545" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteralType" flags="ig" index="9cv3F" />
       <concept id="1199542442495" name="jetbrains.mps.baseLanguage.closures.structure.FunctionType" flags="in" index="1ajhzC">
         <child id="1199542457201" name="resultType" index="1ajl9A" />
       </concept>
@@ -2118,11 +2117,11 @@
                         </node>
                         <node concept="2c44tf" id="9H" role="10QFUP">
                           <uo k="s:originTrace" v="n:3569916352002253222" />
-                          <node concept="9cv3F" id="9I" role="2c44tc">
-                            <uo k="s:originTrace" v="n:3569916352002253223" />
+                          <node concept="1ajhzC" id="9I" role="2c44tc">
+                            <uo k="s:originTrace" v="n:4249179297012706794" />
                             <node concept="3uibUv" id="9J" role="1ajl9A">
                               <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-                              <uo k="s:originTrace" v="n:3569916352002264872" />
+                              <uo k="s:originTrace" v="n:4249179297012706795" />
                             </node>
                           </node>
                         </node>

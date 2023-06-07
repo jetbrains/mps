@@ -15,7 +15,6 @@ import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.util.NameUtil;
@@ -70,11 +69,7 @@ public final class AddFieldForUnUsedParameter_Intention extends AbstractIntentio
       SNode clazz = SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false);
       SNode contextMethodDecl = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.BaseMethodDeclaration$kD);
       //  if there are field initializers that use this, stick to the pattern, too.
-      final boolean useThis = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(contextMethodDecl, LINKS.body$5xQk), LINKS.statement$53DE), CONCEPTS.AssignmentExpression$SE), LINKS.lValue$splI), CONCEPTS.DotExpression$yW)).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.operation$gs9E), CONCEPTS.FieldReferenceOperation$fU) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.operand$w6IR), CONCEPTS.ThisExpression$$o);
-        }
-      });
+      final boolean useThis = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(contextMethodDecl, LINKS.body$5xQk), LINKS.statement$53DE), CONCEPTS.AssignmentExpression$SE), LINKS.lValue$splI), CONCEPTS.DotExpression$yW)).any((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.operation$gs9E), CONCEPTS.FieldReferenceOperation$fU) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.operand$w6IR), CONCEPTS.ThisExpression$$o));
 
       SNode field = SNodeFactoryOperations.createNewNode(CONCEPTS.FieldDeclaration$ie, null);
       SPropertyOperations.assign(field, PROPS.name$MnvL, (useThis ? SPropertyOperations.getString(node, PROPS.name$MnvL) : "my" + NameUtil.capitalize(SPropertyOperations.getString(node, PROPS.name$MnvL))));

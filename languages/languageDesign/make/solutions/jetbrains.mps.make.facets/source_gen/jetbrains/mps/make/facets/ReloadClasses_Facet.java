@@ -21,7 +21,6 @@ import jetbrains.mps.smodel.resources.TResource;
 import java.util.stream.IntStream;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.make.script.IConfig;
 import java.util.Map;
@@ -64,11 +63,7 @@ public class ReloadClasses_Facet extends IFacet.Stub {
           progressMonitor.start("", IntStream.of(1000).sum());
           switch (0) {
             case 0:
-              final Collection<? extends SModule> toReload = Sequence.fromIterable(input).select(new ISelector<TResource, SModule>() {
-                public SModule select(TResource it) {
-                  return it.module();
-                }
-              }).distinct().toListSequence();
+              final Collection<? extends SModule> toReload = Sequence.fromIterable(input).select((it) -> it.module()).distinct().toList();
 
               final ProgressMonitor subProgress_c0a0a = progressMonitor.subTask(1000);
               subProgress_c0a0a.start("Reloading classes", 1);

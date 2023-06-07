@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -46,11 +45,7 @@ public final class IClassifierType__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ static Iterable<SNode> getVisibleMembers_id5laDzmpBPtZ(@NotNull final SNode __thisNode__, final SNode contextNode) {
     // note, code that does ofConcept<> filtering of returned value might be more effective if does filtering first
     // as isVisible() operation might be quite expensive
-    return Sequence.fromIterable(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(__thisNode__)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) IClassifierMember__BehaviorDescriptor.isVisible_id5laDzmpBPv8.invoke(it, __thisNode__, contextNode);
-      }
-    });
+    return Sequence.fromIterable(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(__thisNode__)).where((it) -> (boolean) IClassifierMember__BehaviorDescriptor.isVisible_id5laDzmpBPv8.invoke(it, __thisNode__, contextNode));
   }
   @Deprecated
   /*package*/ static void populateMembers_id6r77ob2USS_(@NotNull SNode __thisNode__, MembersPopulatingContext context, SNode classifier) {

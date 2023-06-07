@@ -4,7 +4,7 @@
   <languages>
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="0" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
@@ -159,6 +159,7 @@
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -195,7 +196,6 @@
       <concept id="1237721394592" name="jetbrains.mps.baseLanguage.collections.structure.AbstractContainerCreator" flags="nn" index="HWqM0">
         <child id="1237721435807" name="elementType" index="HW$YZ" />
       </concept>
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1160612413312" name="jetbrains.mps.baseLanguage.collections.structure.AddElementOperation" flags="nn" index="TSZUe" />
     </language>
   </registry>
@@ -379,15 +379,15 @@
                       <node concept="liA8E" id="IMyJ9JmbgT" role="2OqNvi">
                         <ref role="37wK5l" to="yyf4:~Consumer.consume(java.lang.Object)" resolve="consume" />
                         <node concept="37vLTw" id="3RAxiQnE89U" role="37wK5m">
-                          <ref role="3cqZAo" node="IMyJ9JmbgX" resolve="it" />
+                          <ref role="3cqZAo" node="5W7E4fV0Xb6" />
                         </node>
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="Rh6nW" id="IMyJ9JmbgX" role="1bW2Oz">
+                <node concept="gl6BB" id="5W7E4fV0Xb6" role="1bW2Oz">
                   <property role="TrG5h" value="it" />
-                  <node concept="2jxLKc" id="IMyJ9JmbgY" role="1tU5fm" />
+                  <node concept="2jxLKc" id="5W7E4fV0Xb7" role="1tU5fm" />
                 </node>
               </node>
             </node>
@@ -899,15 +899,15 @@
                       <node concept="liA8E" id="mDYNhtw$4A" role="2OqNvi">
                         <ref role="37wK5l" to="yyf4:~Consumer.consume(java.lang.Object)" resolve="consume" />
                         <node concept="37vLTw" id="mDYNhtw$4B" role="37wK5m">
-                          <ref role="3cqZAo" node="mDYNhtw$4C" resolve="it" />
+                          <ref role="3cqZAo" node="5W7E4fV0Xb8" />
                         </node>
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="Rh6nW" id="mDYNhtw$4C" role="1bW2Oz">
+                <node concept="gl6BB" id="5W7E4fV0Xb8" role="1bW2Oz">
                   <property role="TrG5h" value="it" />
-                  <node concept="2jxLKc" id="mDYNhtw$4D" role="1tU5fm" />
+                  <node concept="2jxLKc" id="5W7E4fV0Xb9" role="1tU5fm" />
                 </node>
               </node>
             </node>

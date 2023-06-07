@@ -14,14 +14,14 @@ import org.junit.Assert;
 public class BoundsTypes_Test {
   @Test
   public void test_testLowerBoundType() throws Exception {
-    Iterable<Integer> seqInt = Sequence.fromIterable(Sequence.fromIterable(Collections.<Integer>emptyList())).select((Integer number) -> LowerBounded.identity(number));
-    Iterable<Number> seqNum = Sequence.fromIterable(Sequence.fromIterable(Collections.<Number>emptyList())).select((Number number) -> LowerBounded.identity(number));
-    Iterable<Double> seqDouble = Sequence.fromIterable(Sequence.fromIterable(Collections.<Double>emptyList())).select((Double number) -> LowerBounded.identity(number));
+    Iterable<Integer> seqInt = Sequence.fromIterable(Sequence.fromIterable(Collections.<Integer>emptyList())).select((number) -> LowerBounded.identity(number));
+    Iterable<Number> seqNum = Sequence.fromIterable(Sequence.fromIterable(Collections.<Number>emptyList())).select((number) -> LowerBounded.identity(number));
+    Iterable<Double> seqDouble = Sequence.fromIterable(Sequence.fromIterable(Collections.<Double>emptyList())).select((number) -> LowerBounded.identity(number));
   }
   @Test
   public void test_testUpperBoundType() throws Exception {
     List<List<Number>> list = ListSequence.fromListAndArray(new ArrayList<List<Number>>(), ListSequence.fromListAndArray(new ArrayList<Number>(), 3, new BigInteger("7")));
-    Iterable<Object> seqNum = ListSequence.fromList(list).select((List<Number> number) -> UpperBounded.process(number));
+    Iterable<Object> seqNum = ListSequence.fromList(list).select((number) -> UpperBounded.process(number));
     Assert.assertEquals(Sequence.fromIterable(seqNum).first(), 3);
   }
   public static class LowerBounded {

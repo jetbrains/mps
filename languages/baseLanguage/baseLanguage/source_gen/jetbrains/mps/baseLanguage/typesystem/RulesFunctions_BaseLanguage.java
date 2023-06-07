@@ -5,10 +5,9 @@ package jetbrains.mps.baseLanguage.typesystem;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import java.util.Iterator;
 import jetbrains.mps.lang.typesystem.dependencies.CheckingMethod;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import java.util.List;
@@ -21,7 +20,6 @@ import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Set;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.baseLanguage.behavior.AbstractCatchClause__BehaviorDescriptor;
@@ -48,94 +46,90 @@ public class RulesFunctions_BaseLanguage {
   public RulesFunctions_BaseLanguage() {
   }
   public static Iterable<SNode> collectReturnStatements(SNode node) {
-    Iterable<SNode> returnStatements = ListSequence.fromList(SNodeOperations.getChildren(node)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(final SNode it) {
-        return new Iterable<SNode>() {
-          public Iterator<SNode> iterator() {
-            return new YieldingIterator<SNode>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
+    Iterable<SNode> returnStatements = ListSequence.fromList(SNodeOperations.getChildren(node)).translate((it) -> {
+      return (Iterable<SNode>) () -> {
+        return new YieldingIterator<SNode>() {
+          private int __CP__ = 0;
+          protected boolean moveToNext() {
 __loop__:
-                do {
+            do {
 __switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 11:
-                      this._11_returnStmt_it = Sequence.fromIterable(collectReturnStatements(it)).iterator();
-                    case 12:
-                      if (!(this._11_returnStmt_it.hasNext())) {
-                        this.__CP__ = 3;
-                        break;
-                      }
-                      this._11_returnStmt = this._11_returnStmt_it.next();
-                      this.__CP__ = 13;
-                      break;
-                    case 4:
-                      if (SNodeOperations.isInstanceOf(it, CONCEPTS.ReturnStatement$lt)) {
-                        this.__CP__ = 5;
-                        break;
-                      }
-                      this.__CP__ = 7;
-                      break;
-                    case 7:
-                      if (SNodeOperations.isInstanceOf(it, CONCEPTS.ConceptFunction$mf) || SNodeOperations.isInstanceOf(it, CONCEPTS.SingleLineComment$Kw) || SNodeOperations.isInstanceOf(it, CONCEPTS.IStatementListContainer$xz) || SNodeOperations.isInstanceOf(it, CONCEPTS.AnonymousClass$Bt) || SNodeOperations.isInstanceOf(it, CONCEPTS.Quotation$Vl)) {
-                        this.__CP__ = 8;
-                        break;
-                      }
-                      this.__CP__ = 10;
-                      break;
-                    case 3:
-                      if (false) {
-                        this.__CP__ = 2;
-                        break;
-                      }
-                      this.__CP__ = 1;
-                      break;
-                    case 14:
-                      this.__CP__ = 12;
-                      this.yield(_11_returnStmt);
-                      return true;
-                    case 6:
-                      this.__CP__ = 3;
-                      this.yield(SNodeOperations.cast(it, CONCEPTS.ReturnStatement$lt));
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    case 2:
-                      this.__CP__ = 4;
-                      break;
-                    case 8:
-                      // don't look inside closures and other code-blocks
-                      // don't look inside commented statements
-                      // don't look inside single-line comments
-                      // don't look inside anything that implements IStatementListContainer (for extensibility)
-                      // don't look inside anonymous classes
-                      this.__CP__ = 1;
-                      break;
-                    case 10:
-                      this.__CP__ = 11;
-                      break;
-                    case 13:
-                      this.__CP__ = 14;
-                      break;
-                    case 5:
-                      this.__CP__ = 6;
-                      break;
-                    default:
-                      break __loop__;
+              switch (this.__CP__) {
+                case -1:
+                  assert false : "Internal error";
+                  return false;
+                case 11:
+                  this._11_returnStmt_it = Sequence.fromIterable(collectReturnStatements(it)).iterator();
+                case 12:
+                  if (!(this._11_returnStmt_it.hasNext())) {
+                    this.__CP__ = 3;
+                    break;
                   }
-                } while (true);
-                return false;
+                  this._11_returnStmt = this._11_returnStmt_it.next();
+                  this.__CP__ = 13;
+                  break;
+                case 4:
+                  if (SNodeOperations.isInstanceOf(it, CONCEPTS.ReturnStatement$lt)) {
+                    this.__CP__ = 5;
+                    break;
+                  }
+                  this.__CP__ = 7;
+                  break;
+                case 7:
+                  if (SNodeOperations.isInstanceOf(it, CONCEPTS.ConceptFunction$mf) || SNodeOperations.isInstanceOf(it, CONCEPTS.SingleLineComment$Kw) || SNodeOperations.isInstanceOf(it, CONCEPTS.IStatementListContainer$xz) || SNodeOperations.isInstanceOf(it, CONCEPTS.AnonymousClass$Bt) || SNodeOperations.isInstanceOf(it, CONCEPTS.Quotation$Vl)) {
+                    this.__CP__ = 8;
+                    break;
+                  }
+                  this.__CP__ = 10;
+                  break;
+                case 3:
+                  if (false) {
+                    this.__CP__ = 2;
+                    break;
+                  }
+                  this.__CP__ = 1;
+                  break;
+                case 14:
+                  this.__CP__ = 12;
+                  this.yield(_11_returnStmt);
+                  return true;
+                case 6:
+                  this.__CP__ = 3;
+                  this.yield(SNodeOperations.cast(it, CONCEPTS.ReturnStatement$lt));
+                  return true;
+                case 0:
+                  this.__CP__ = 2;
+                  break;
+                case 2:
+                  this.__CP__ = 4;
+                  break;
+                case 8:
+                  // don't look inside closures and other code-blocks
+                  // don't look inside commented statements
+                  // don't look inside single-line comments
+                  // don't look inside anything that implements IStatementListContainer (for extensibility)
+                  // don't look inside anonymous classes
+                  this.__CP__ = 1;
+                  break;
+                case 10:
+                  this.__CP__ = 11;
+                  break;
+                case 13:
+                  this.__CP__ = 14;
+                  break;
+                case 5:
+                  this.__CP__ = 6;
+                  break;
+                default:
+                  break __loop__;
               }
-              private SNode _11_returnStmt;
-              private Iterator<SNode> _11_returnStmt_it;
-            };
+            } while (true);
+            return false;
           }
+          private SNode _11_returnStmt;
+          private Iterator<SNode> _11_returnStmt_it;
         };
-      }
+      };
     });
     return returnStatements;
   }
@@ -173,11 +167,7 @@ __switch__:
   @CheckingMethod
   public static void check(final TypeCheckingContext typeCheckingContext, Set<SNode> throwables, SNode mainNode, String message) {
     List<SNode> throwTypes = ListSequence.fromListWithValues(new ArrayList<SNode>(), throwables);
-    ListSequence.fromList(throwTypes).removeWhere(new IWhereFilter<SNode>() {
-      public boolean accept(SNode tt) {
-        return TypecheckingFacade.getFromContext().isSubtype(tt, _quotation_createNode_5ahx9e_b0a0a0a0a1a4_0()) || TypecheckingFacade.getFromContext().isSubtype(tt, _quotation_createNode_5ahx9e_b0a0a0a0a1a4());
-      }
-    });
+    ListSequence.fromList(throwTypes).removeWhere((tt) -> TypecheckingFacade.getFromContext().isSubtype(tt, _quotation_createNode_5ahx9e_b0a0a0a0a1a4_0()) || TypecheckingFacade.getFromContext().isSubtype(tt, _quotation_createNode_5ahx9e_b0a0a0a0a1a4()));
     if (ListSequence.fromList(throwTypes).isEmpty()) {
       return;
     }
@@ -199,21 +189,9 @@ __switch__:
             }
           }
           if (matches_5ahx9e_a1a6a4) {
-            if (ListSequence.fromList(ancSLs).contains(SLinkOperations.getTarget(matchedNode_5ahx9e_b0g0e, LINKS.body$KFk)) || ListSequence.fromList(SNodeOperations.getNodeAncestors(mainNode, CONCEPTS.ResourceVariable$jq, true)).any(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return SNodeOperations.getParent(it) == matchedNode_5ahx9e_b0g0e;
-              }
-            })) {
-              for (final SNode caughtType : ListSequence.fromList(SLinkOperations.getChildren(matchedNode_5ahx9e_b0g0e, LINKS.catchClause$Q4F)).translate(new ITranslator2<SNode, SNode>() {
-                public Iterable<SNode> translate(SNode it) {
-                  return (List<SNode>) AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(it);
-                }
-              })) {
-                ListSequence.fromList(throwTypes).removeWhere(new IWhereFilter<SNode>() {
-                  public boolean accept(SNode tt) {
-                    return TypecheckingFacade.getFromContext().isSubtype(tt, caughtType);
-                  }
-                });
+            if (ListSequence.fromList(ancSLs).contains(SLinkOperations.getTarget(matchedNode_5ahx9e_b0g0e, LINKS.body$KFk)) || ListSequence.fromList(SNodeOperations.getNodeAncestors(mainNode, CONCEPTS.ResourceVariable$jq, true)).any((it) -> SNodeOperations.getParent(it) == matchedNode_5ahx9e_b0g0e)) {
+              for (final SNode caughtType : ListSequence.fromList(SLinkOperations.getChildren(matchedNode_5ahx9e_b0g0e, LINKS.catchClause$Q4F)).translate((it) -> (List<SNode>) AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(it))) {
+                ListSequence.fromList(throwTypes).removeWhere((tt) -> TypecheckingFacade.getFromContext().isSubtype(tt, caughtType));
               }
             }
           } else {
@@ -226,16 +204,8 @@ __switch__:
             }
             if (matches_5ahx9e_b1a6a4) {
               if (ListSequence.fromList(ancSLs).contains(SLinkOperations.getTarget(matchedNode_5ahx9e_b0g0e, LINKS.body$Gg33))) {
-                for (final SNode caughtType : ListSequence.fromList(SLinkOperations.getChildren(matchedNode_5ahx9e_b0g0e, LINKS.catchClause$l$PD)).translate(new ITranslator2<SNode, SNode>() {
-                  public Iterable<SNode> translate(SNode it) {
-                    return (List<SNode>) AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(it);
-                  }
-                })) {
-                  ListSequence.fromList(throwTypes).removeWhere(new IWhereFilter<SNode>() {
-                    public boolean accept(SNode tt) {
-                      return TypecheckingFacade.getFromContext().isSubtype(tt, caughtType);
-                    }
-                  });
+                for (final SNode caughtType : ListSequence.fromList(SLinkOperations.getChildren(matchedNode_5ahx9e_b0g0e, LINKS.catchClause$l$PD)).translate((it) -> (List<SNode>) AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(it))) {
+                  ListSequence.fromList(throwTypes).removeWhere((tt) -> TypecheckingFacade.getFromContext().isSubtype(tt, caughtType));
                 }
               }
             } else {
@@ -248,16 +218,8 @@ __switch__:
               }
               if (matches_5ahx9e_c1a6a4) {
                 if (ListSequence.fromList(ancSLs).contains(SLinkOperations.getTarget(matchedNode_5ahx9e_b0g0e, LINKS.body$pDF2))) {
-                  for (final SNode caughtType : ListSequence.fromList(SLinkOperations.getChildren(matchedNode_5ahx9e_b0g0e, LINKS.catchClause$dMnP)).translate(new ITranslator2<SNode, SNode>() {
-                    public Iterable<SNode> translate(SNode it) {
-                      return (List<SNode>) AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(it);
-                    }
-                  })) {
-                    ListSequence.fromList(throwTypes).removeWhere(new IWhereFilter<SNode>() {
-                      public boolean accept(SNode tt) {
-                        return TypecheckingFacade.getFromContext().isSubtype(tt, caughtType);
-                      }
-                    });
+                  for (final SNode caughtType : ListSequence.fromList(SLinkOperations.getChildren(matchedNode_5ahx9e_b0g0e, LINKS.catchClause$dMnP)).translate((it) -> (List<SNode>) AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(it))) {
+                    ListSequence.fromList(throwTypes).removeWhere((tt) -> TypecheckingFacade.getFromContext().isSubtype(tt, caughtType));
                   }
                 }
               } else {
@@ -270,11 +232,7 @@ __switch__:
                     List<SNode> methodThrowableTypes = IMethodLike__BehaviorDescriptor.getThrowableTypes_id5op8ooRkkc7.invoke(methodLike);
                     if (methodThrowableTypes != null) {
                       for (final SNode thr : methodThrowableTypes) {
-                        ListSequence.fromList(throwTypes).removeWhere(new IWhereFilter<SNode>() {
-                          public boolean accept(SNode tt) {
-                            return TypecheckingFacade.getFromContext().isSubtype(tt, thr);
-                          }
-                        });
+                        ListSequence.fromList(throwTypes).removeWhere((tt) -> TypecheckingFacade.getFromContext().isSubtype(tt, thr));
                       }
                       useQuickfix = true;
                     }

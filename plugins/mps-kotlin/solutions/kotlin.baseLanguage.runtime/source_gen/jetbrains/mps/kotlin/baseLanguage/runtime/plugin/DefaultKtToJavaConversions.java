@@ -44,7 +44,7 @@ public class DefaultKtToJavaConversions extends Extension.Default<TypeConverterE
     }
 
     // ClassType -> KtClassifierType
-    engine.declareMapping(CONCEPTS.ClassType$jI, (SNode it) -> {
+    engine.declareMapping(CONCEPTS.ClassType$jI, (it) -> {
       SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0x68fcefc6c20b5c6cL, "jetbrains.mps.baseLanguage.kotlinRefs.structure.KotlinClassifierType"));
       SNode clType = SNodeOperations.as(it, CONCEPTS.ClassType$jI);
       SLinkOperations.setTarget(node, LINKS.classifier$5Cta, SLinkOperations.getTarget(clType, LINKS.class$ExdX));
@@ -53,7 +53,7 @@ public class DefaultKtToJavaConversions extends Extension.Default<TypeConverterE
     });
 
     // JavaClassType -> ClassifierType
-    engine.declareMapping(CONCEPTS.JavaClassType$Gf, (SNode clType) -> {
+    engine.declareMapping(CONCEPTS.JavaClassType$Gf, (clType) -> {
       // BL type coming back to BL
       SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));
       SLinkOperations.setTarget(node, LINKS.classifier$cxMr, SLinkOperations.getTarget(SNodeOperations.as(clType, CONCEPTS.JavaClassType$Gf), LINKS.javaClass$CQOW));
@@ -62,7 +62,7 @@ public class DefaultKtToJavaConversions extends Extension.Default<TypeConverterE
     });
 
     // TypeParameterReference -> KtTypeParameterReference
-    engine.declareMapping(CONCEPTS.TypeParameterReference$ya, (SNode it) -> {
+    engine.declareMapping(CONCEPTS.TypeParameterReference$ya, (it) -> {
       SNode parameter = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.TypeParameterReference$ya), LINKS.parameter$ofYr), CONCEPTS.TypeParameter$oc);
       if (parameter == null) {
         return null;
@@ -71,10 +71,10 @@ public class DefaultKtToJavaConversions extends Extension.Default<TypeConverterE
     });
 
     // JavaTypeVariableReference -> TypeVariableReference
-    engine.declareMapping(CONCEPTS.JavaTypeVariableReferenceType$TS, (SNode it) -> createTypeVariableReference_28kwmj_a0a1a0s0b(SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.JavaTypeVariableReferenceType$TS), LINKS.typeVariable$LHQO)));
+    engine.declareMapping(CONCEPTS.JavaTypeVariableReferenceType$TS, (it) -> createTypeVariableReference_28kwmj_a0a1a0s0b(SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.JavaTypeVariableReferenceType$TS), LINKS.typeVariable$LHQO)));
 
     // KtFileClass -> KtFileClass (type specific to BL)
-    engine.declareMapping(CONCEPTS.KotlinFileClassifierType$M1, (SNode it) -> it);
+    engine.declareMapping(CONCEPTS.KotlinFileClassifierType$M1, (it) -> SNodeOperations.as(it, CONCEPTS.KotlinFileClassifierType$M1));
   }
 
   private TypeConverterEngineWithClass<SNode, SNode> engine;

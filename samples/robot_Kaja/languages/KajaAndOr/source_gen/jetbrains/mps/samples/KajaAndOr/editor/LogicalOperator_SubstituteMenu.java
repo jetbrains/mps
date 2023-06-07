@@ -17,7 +17,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
@@ -62,11 +61,7 @@ public class LogicalOperator_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SConcept> getParameters(SubstituteMenuContext _context) {
-      return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.LogicalOperator$a0, _context.getModel())).where(new IWhereFilter<SConcept>() {
-        public boolean accept(SConcept it) {
-          return !(it.isAbstract());
-        }
-      });
+      return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.LogicalOperator$a0, _context.getModel())).where((it) -> !(it.isAbstract()));
     }
     private class SMP_Action_vciz2d_a0 extends SingleItemSubstituteMenuPart {
       private final SConcept myParameterObject;

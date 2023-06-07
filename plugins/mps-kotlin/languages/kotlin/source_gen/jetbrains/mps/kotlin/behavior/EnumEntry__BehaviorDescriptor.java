@@ -24,10 +24,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.kotlin.scopes.signed.ListSignatureScope;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.kotlin.api.members.SourcedSignature;
 import jetbrains.mps.kotlin.signatures.FunctionSignature;
 import jetbrains.mps.kotlin.api.members.TypeExpander;
+import jetbrains.mps.kotlin.api.members.SourcedSignature;
 import java.util.Collections;
 import jetbrains.mps.kotlin.overloading.NodeArgument;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -81,15 +80,11 @@ public final class EnumEntry__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static Iterable<SignatureScope> getFunctionScopeParts_id6dAo8EmAhT7(@NotNull SAbstractConcept __thisConcept__, SNode referenceNode, final SNode contextNode, SContainmentLink containment) {
 
-    return Sequence.<SignatureScope>singleton(new ListSignatureScope(() -> {
-      return Sequence.fromIterable(IClassLike__BehaviorDescriptor.getConstructors_id2NtWm0y9fFa.invoke(SNodeOperations.getNodeAncestor(contextNode, CONCEPTS.EnumClassDeclaration$xK, true, false))).select(new ISelector<SNode, SourcedSignature>() {
-        public SourcedSignature select(SNode it) {
-          FunctionDeclaration decl = KotlinFunctionDeclaration.of(it);
-          FunctionSignature sig = new FunctionSignature(decl, ((TypeExpander) null));
-          return new SourcedSignature(it, sig);
-        }
-      });
-    }));
+    return Sequence.<SignatureScope>singleton(new ListSignatureScope(() -> Sequence.fromIterable(IClassLike__BehaviorDescriptor.getConstructors_id2NtWm0y9fFa.invoke(SNodeOperations.getNodeAncestor(contextNode, CONCEPTS.EnumClassDeclaration$xK, true, false))).select((it) -> {
+      FunctionDeclaration decl = KotlinFunctionDeclaration.of(it);
+      FunctionSignature sig = new FunctionSignature(decl, ((TypeExpander) null));
+      return new SourcedSignature(it, sig);
+    })));
   }
   @NotNull
   /*package*/ static Iterable<ParameterDeclaration> getAvailableParameters_id1$jFvlD0xqw(@NotNull SNode __thisNode__) {

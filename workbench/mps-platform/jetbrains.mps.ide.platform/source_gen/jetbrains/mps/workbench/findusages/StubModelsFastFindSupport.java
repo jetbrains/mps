@@ -27,7 +27,6 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SNodeId;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -98,11 +97,7 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
       return;
     }
     // likely, an optimization that takes into account the way MPS identifies nodes in stub models
-    Set<SNode> oddFilteredNodes = SetSequence.fromSetWithValues(new HashSet<SNode>(), SetSequence.fromSet(nodes).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return it.getNodeId() instanceof SNodeId.StringBasedId;
-      }
-    }));
+    Set<SNode> oddFilteredNodes = SetSequence.fromSetWithValues(new HashSet<SNode>(), SetSequence.fromSet(nodes).where((it) -> it.getNodeId() instanceof SNodeId.StringBasedId));
     Set<SModel> candidates = findCandidates(models, oddFilteredNodes, processedConsumer, (SNode key) -> key.getNodeId().toString());
     for (SNode nn : Sequence.fromIterable(SNodeOperations.ofConcept(oddFilteredNodes, CONCEPTS.TypeVariableDeclaration$4Y))) {
       // I don't know the reason why we extend supplied scope for Type variables. The code is here for a decade, I wonder if it there's any reason to keep it.
@@ -136,11 +131,7 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
 
     final SLanguage bl = MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
     // XXX odd filtering by concept language. What about subconcepts of BL concepts in languages that extend BL? 
-    concepts = SetSequence.fromSetWithValues(new HashSet<SAbstractConcept>(), SetSequence.fromSet(concepts).where(new IWhereFilter<SAbstractConcept>() {
-      public boolean accept(SAbstractConcept it) {
-        return bl.equals(it.getLanguage());
-      }
-    }));
+    concepts = SetSequence.fromSetWithValues(new HashSet<SAbstractConcept>(), SetSequence.fromSet(concepts).where((it) -> bl.equals(it.getLanguage())));
 
     // FIXME make sure there's index for concept qualified name!
     Set<SModel> candidates = findCandidates(models, concepts, processedConsumer, (SAbstractConcept k) -> k.getQualifiedName());
@@ -162,11 +153,7 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
       return;
     }
 
-    modelReferences = SetSequence.fromSetWithValues(new HashSet<SModelReference>(), SetSequence.fromSet(modelReferences).where(new IWhereFilter<SModelReference>() {
-      public boolean accept(SModelReference it) {
-        return SModelStereotype.JAVA_STUB.equals(it.getName().getStereotype());
-      }
-    }));
+    modelReferences = SetSequence.fromSetWithValues(new HashSet<SModelReference>(), SetSequence.fromSet(modelReferences).where((it) -> SModelStereotype.JAVA_STUB.equals(it.getName().getStereotype())));
     Set<SModel> candidates = findCandidates(scope, modelReferences, processedConsumer, (SModelReference key) -> key.getModelName());
     ModelImportLookup mil = new ModelImportLookup(modelReferences, consumer);
     mil.withUses(candidates, new EmptyProgressMonitor());

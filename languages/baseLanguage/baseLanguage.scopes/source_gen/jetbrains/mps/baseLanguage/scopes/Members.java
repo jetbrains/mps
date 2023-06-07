@@ -7,7 +7,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.IClassifierType__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.IClassifier__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.behavior.IClassifierMember__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -39,11 +38,7 @@ public class Members {
   }
 
   private static <AAA extends SNode> Iterable<AAA> visible(Iterable<AAA> seq, final SNode cType, final SNode contextNode) {
-    return Sequence.fromIterable(seq).where(new IWhereFilter<AAA>() {
-      public boolean accept(AAA it) {
-        return (boolean) IClassifierMember__BehaviorDescriptor.isVisible_id5laDzmpBPv8.invoke(it, cType, contextNode);
-      }
-    });
+    return Sequence.fromIterable(seq).where((it) -> (boolean) IClassifierMember__BehaviorDescriptor.isVisible_id5laDzmpBPv8.invoke(it, cType, contextNode));
   }
 
   private static final class CONCEPTS {

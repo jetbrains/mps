@@ -155,6 +155,7 @@
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -237,7 +238,6 @@
       <concept id="1201306600024" name="jetbrains.mps.baseLanguage.collections.structure.ContainsKeyOperation" flags="nn" index="2Nt0df">
         <child id="1201654602639" name="key" index="38cxEo" />
       </concept>
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1237909114519" name="jetbrains.mps.baseLanguage.collections.structure.GetValuesOperation" flags="nn" index="T8wYR" />
       <concept id="1197683403723" name="jetbrains.mps.baseLanguage.collections.structure.MapType" flags="in" index="3rvAFt">
         <child id="1197683466920" name="keyType" index="3rvQeY" />
@@ -2272,15 +2272,15 @@
                       <node concept="liA8E" id="Wg7UjTVpWV" role="2OqNvi">
                         <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String)" resolve="startsWith" />
                         <node concept="37vLTw" id="Wg7UjTVpWW" role="37wK5m">
-                          <ref role="3cqZAo" node="Wg7UjTVpWX" resolve="it" />
+                          <ref role="3cqZAo" node="5W7E4fV0WNu" />
                         </node>
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="Rh6nW" id="Wg7UjTVpWX" role="1bW2Oz">
+                <node concept="gl6BB" id="5W7E4fV0WNu" role="1bW2Oz">
                   <property role="TrG5h" value="it" />
-                  <node concept="2jxLKc" id="Wg7UjTVpWY" role="1tU5fm" />
+                  <node concept="2jxLKc" id="5W7E4fV0WNv" role="1tU5fm" />
                 </node>
               </node>
             </node>
@@ -2399,16 +2399,16 @@
                           <ref role="37wK5l" to="wyt6:~String.valueOf(java.lang.Object)" resolve="valueOf" />
                           <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                           <node concept="37vLTw" id="Wg7UjTUVb_" role="37wK5m">
-                            <ref role="3cqZAo" node="Wg7UjTUjqc" resolve="it" />
+                            <ref role="3cqZAo" node="5W7E4fV0WNw" />
                           </node>
                         </node>
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="Rh6nW" id="Wg7UjTUjqc" role="1bW2Oz">
+                <node concept="gl6BB" id="5W7E4fV0WNw" role="1bW2Oz">
                   <property role="TrG5h" value="it" />
-                  <node concept="2jxLKc" id="Wg7UjTUjqd" role="1tU5fm" />
+                  <node concept="2jxLKc" id="5W7E4fV0WNx" role="1tU5fm" />
                 </node>
               </node>
             </node>

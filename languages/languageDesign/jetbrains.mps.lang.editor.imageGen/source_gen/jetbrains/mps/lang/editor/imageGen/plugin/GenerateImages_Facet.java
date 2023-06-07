@@ -23,11 +23,9 @@ import java.util.Map;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.project.facets.GenerationTargetFacet;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.make.facets.Make_Facet.Target_make;
@@ -96,17 +94,11 @@ public class GenerateImages_Facet extends IFacet.Stub {
                 repository.getModelAccess().runReadAction(() -> {
                   progressMonitor.step("Collecting models to print");
                   // TODO: check status & outputPath... see TextGen facet
-                  Iterable<GResource> resourcesWithOutput = Sequence.fromIterable(input).where(new IWhereFilter<GResource>() {
-                    public boolean accept(GResource it) {
-                      return it.status().getOutputModel() != null && GenerationTargetFacet.find(it.model()) != null && GenerationTargetFacet.find(it.model()).getOutputLocation(it.model()) != null;
-                    }
-                  });
-                  Iterable<Tuples._2<SModel, SModel>> allModels = Sequence.fromIterable(resourcesWithOutput).select(new ISelector<GResource, Tuples._2<SModel, SModel>>() {
-                    public Tuples._2<SModel, SModel> select(GResource gResource) {
-                      SModel inputModel = gResource.model();
-                      SModel outputModel = gResource.status().getOutputModel();
-                      return MultiTuple.<SModel,SModel>from(inputModel, outputModel);
-                    }
+                  Iterable<GResource> resourcesWithOutput = Sequence.fromIterable(input).where((it) -> it.status().getOutputModel() != null && GenerationTargetFacet.find(it.model()) != null && GenerationTargetFacet.find(it.model()).getOutputLocation(it.model()) != null);
+                  Iterable<Tuples._2<SModel, SModel>> allModels = Sequence.fromIterable(resourcesWithOutput).select((gResource) -> {
+                    SModel inputModel = gResource.model();
+                    SModel outputModel = gResource.status().getOutputModel();
+                    return MultiTuple.<SModel,SModel>from(inputModel, outputModel);
                   });
                   progressMonitor.advance(1);
 

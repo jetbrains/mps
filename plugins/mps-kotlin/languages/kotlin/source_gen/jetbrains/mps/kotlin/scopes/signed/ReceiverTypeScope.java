@@ -13,10 +13,7 @@ import jetbrains.mps.kotlin.api.members.SourcedSignature;
 import jetbrains.mps.kotlin.plugin.ExtensionsHelper;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
-import jetbrains.mps.kotlin.api.extension.KotlinTypesystem;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.kotlin.scopes.DelegatedSignatureFilter;
@@ -47,17 +44,13 @@ public class ReceiverTypeScope implements SignatureScope {
   @Override
   public Iterable<SourcedSignature> getElements(final String prefix) {
     // Empty sequence if the typesystem is disabled, we might not want to see auto resolution happen there (to confirm)
-    return ExtensionsHelper.withTypesystem(myContextNode, Sequence.fromIterable(Collections.<SourcedSignature>emptyList()), (KotlinTypesystem typesystem) -> {
+    return ExtensionsHelper.withTypesystem(myContextNode, Sequence.fromIterable(Collections.<SourcedSignature>emptyList()), (typesystem) -> {
       // Here, ReceiverTypeFilter already does some light checking
       ScopeCollector collector = new ScopeCollector(new ReceiverTypeFilter());
       SignatureScope.collectHierarchyScopes(myContextNode, myContextNode, collector);
 
       // Call the kotlin typesystem: only accurate way to find type applicability
-      return typesystem.filterReceiverTypes(myReceiverType, ListSequence.fromList(collector.getScopes()).select(new ISelector<SignatureScope, Iterable<SourcedSignature>>() {
-        public Iterable<SourcedSignature> select(SignatureScope it) {
-          return it.getElements(prefix);
-        }
-      }), myContextNode);
+      return typesystem.filterReceiverTypes(myReceiverType, ListSequence.fromList(collector.getScopes()).select((it) -> it.getElements(prefix)), myContextNode);
     });
   }
 
@@ -75,11 +68,7 @@ public class ReceiverTypeScope implements SignatureScope {
     }
 
     // Check elements
-    return Sequence.fromIterable(getElements(null)).any(new IWhereFilter<SourcedSignature>() {
-      public boolean accept(SourcedSignature it) {
-        return Objects.equals(SNodeOperations.getPointer(it.getSource()), SNodeOperations.getPointer(source));
-      }
-    });
+    return Sequence.fromIterable(getElements(null)).any((it) -> Objects.equals(SNodeOperations.getPointer(it.getSource()), SNodeOperations.getPointer(source)));
   }
 
   public class ReceiverTypeFilter extends DelegatedSignatureFilter {
@@ -103,11 +92,7 @@ public class ReceiverTypeScope implements SignatureScope {
           List<SNode> upperBounds = parameter.getUpperBounds();
 
           // We need to make sure the type extends all bounds
-          return ListSequence.fromList(upperBounds).all(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return acceptReceiver(it);
-            }
-          });
+          return ListSequence.fromList(upperBounds).all((it) -> acceptReceiver(it));
         }
       }
 

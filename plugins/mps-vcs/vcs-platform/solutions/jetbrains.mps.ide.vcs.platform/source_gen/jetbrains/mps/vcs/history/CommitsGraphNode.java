@@ -18,11 +18,8 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import com.intellij.openapi.vcs.history.CurrentRevision;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.vcs.diff.changes.NodeIdChange;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Collection;
 import com.intellij.openapi.vcs.history.VcsRevisionNumber;
 import git4idea.GitRevisionNumber;
@@ -93,28 +90,18 @@ public final class CommitsGraphNode implements Comparable {
   }
 
   public void setIdChanges(Iterable<ModelChange> modelChanges) {
-    SetSequence.fromSet(myChildren).visitAll(new IVisitor<CommitsGraphNode>() {
-      public void visit(CommitsGraphNode child) {
-        MapSequence.fromMap(child.getNodeWithLoadedModel().getChangedIds()).visitAll(new IVisitor<IMapping<SNodeId, Set<SNodeId>>>() {
-          public void visit(IMapping<SNodeId, Set<SNodeId>> it) {
-            addChangedIds(it.key(), it.value());
-          }
-        });
+    SetSequence.fromSet(myChildren).visitAll((child) -> MapSequence.fromMap(child.getNodeWithLoadedModel().getChangedIds()).visitAll((it) -> addChangedIds(it.key(), it.value())));
+    Sequence.fromIterable(modelChanges).ofType(NodeIdChange.class).visitAll((nodeIdChange) -> {
+      SNodeId oldId = nodeIdChange.getNodeId(false);
+      SNodeId newId = nodeIdChange.getNodeId(true);
+      Set<SNodeId> newIds = SetSequence.fromSet(new HashSet<SNodeId>());
+      if (MapSequence.fromMap(myChangedIds).containsKey(newId)) {
+        SetSequence.fromSet(newIds).addSequence(SetSequence.fromSet(MapSequence.fromMap(myChangedIds).get(newId)));
+        MapSequence.fromMap(myChangedIds).removeKey(newId);
+      } else {
+        SetSequence.fromSet(newIds).addElement(newId);
       }
-    });
-    Sequence.fromIterable(modelChanges).ofType(NodeIdChange.class).visitAll(new IVisitor<NodeIdChange>() {
-      public void visit(NodeIdChange nodeIdChange) {
-        SNodeId oldId = nodeIdChange.getNodeId(false);
-        SNodeId newId = nodeIdChange.getNodeId(true);
-        Set<SNodeId> newIds = SetSequence.fromSet(new HashSet<SNodeId>());
-        if (MapSequence.fromMap(myChangedIds).containsKey(newId)) {
-          SetSequence.fromSet(newIds).addSequence(SetSequence.fromSet(MapSequence.fromMap(myChangedIds).get(newId)));
-          MapSequence.fromMap(myChangedIds).removeKey(newId);
-        } else {
-          SetSequence.fromSet(newIds).addElement(newId);
-        }
-        addChangedIds(oldId, newIds);
-      }
+      addChangedIds(oldId, newIds);
     });
   }
 
@@ -137,11 +124,7 @@ public final class CommitsGraphNode implements Comparable {
   }
 
   public List<CommitsGraphNode> getParentsWithRoot() {
-    return ListSequence.fromList(myParents).where(new IWhereFilter<CommitsGraphNode>() {
-      public boolean accept(CommitsGraphNode it) {
-        return !(it.isIgnored());
-      }
-    }).toListSequence();
+    return ListSequence.fromList(myParents).where((it) -> !(it.isIgnored())).toList();
   }
 
   public Collection<CommitsGraphNode> getChildren() {

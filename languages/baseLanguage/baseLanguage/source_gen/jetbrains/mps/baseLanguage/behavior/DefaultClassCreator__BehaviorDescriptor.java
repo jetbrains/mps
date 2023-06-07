@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopeUtils;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.scopes.DefaultConstructorUtils;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -39,11 +38,7 @@ public final class DefaultClassCreator__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static Iterable<SNode> retrieveInstantiationPoints_id5qAZxlfYCBV(@NotNull SAbstractConcept __thisConcept__, SNode type, SNode contextNode) {
-    return Sequence.fromIterable(ClassifierScopeUtils.getVisibleNestedClassConceptsIncludingInherited(type, contextNode)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it)) && !(SPropertyOperations.getBoolean(it, PROPS.abstractClass$Ta1X)) && DefaultConstructorUtils.hasDefaultConstructor(it);
-      }
-    });
+    return Sequence.fromIterable(ClassifierScopeUtils.getVisibleNestedClassConceptsIncludingInherited(type, contextNode)).where((it) -> !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it)) && !(SPropertyOperations.getBoolean(it, PROPS.abstractClass$Ta1X)) && DefaultConstructorUtils.hasDefaultConstructor(it));
   }
   /*package*/ static SNode getTargetClassifier_id1k0fX3j6Qov(@NotNull SNode __thisNode__) {
     return SLinkOperations.getTarget(__thisNode__, LINKS.classifier$9NRM);

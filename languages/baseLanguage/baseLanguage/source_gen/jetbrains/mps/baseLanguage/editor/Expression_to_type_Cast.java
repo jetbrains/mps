@@ -20,7 +20,6 @@ import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.transformation.ConstraintsFilteringTransformationMenuPartDecorator;
@@ -84,11 +83,7 @@ public class Expression_to_type_Cast extends TransformationMenuBase {
       while ((SNodeOperations.getParent(currentNode) != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(currentNode), CONCEPTS.Expression$mB)) {
         currentNode = SNodeOperations.cast(SNodeOperations.getParent(currentNode), CONCEPTS.Expression$mB);
       }
-      return ListSequence.fromList(SNodeOperations.getNodeDescendants(currentNode, CONCEPTS.Expression$mB, true, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).get(it) != null) || (new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(it) != null);
-        }
-      }).isEmpty();
+      return ListSequence.fromList(SNodeOperations.getNodeDescendants(currentNode, CONCEPTS.Expression$mB, true, new SAbstractConcept[]{})).where((it) -> (new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).get(it) != null) || (new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(it) != null)).isEmpty();
     }
 
     @NotNull

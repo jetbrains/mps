@@ -20,7 +20,7 @@ public class supertypeOf_MethodReferenceType_SubtypingRule extends SubtypingRule
   public supertypeOf_MethodReferenceType_SubtypingRule() {
   }
   public List<SNode> getSubOrSuperTypes(SNode methodReferenceType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    return ListSequence.fromListAndArray(new ArrayList(), SLinkOperations.getTarget(methodReferenceType, LINKS.targetType$3iY9));
+    return ListSequence.fromListAndArray(new ArrayList<>(), SLinkOperations.getTarget(methodReferenceType, LINKS.targetType$3iY9));
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.MethodReferenceType$Wb;

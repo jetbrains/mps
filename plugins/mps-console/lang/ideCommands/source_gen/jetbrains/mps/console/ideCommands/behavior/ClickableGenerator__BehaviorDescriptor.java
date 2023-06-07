@@ -21,11 +21,7 @@ import jetbrains.mps.ide.ui.dialogs.properties.MPSPropertiesConfigurable;
 import jetbrains.mps.ide.ui.dialogs.properties.ModulePropertiesConfigurable;
 import org.jetbrains.mps.openapi.ui.persistence.Tab;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import com.intellij.openapi.options.ex.SingleConfigurableEditor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -47,64 +43,52 @@ public final class ClickableGenerator__BehaviorDescriptor extends BaseBHDescript
     final SModule module = project.getRepository().getModule(PersistenceFacade.getInstance().createModuleId(SPropertyOperations.getString(__thisNode__, PROPS.moduleId$fyhj)));
 
     final MPSPropertiesConfigurable configurable = new ModulePropertiesConfigurable(module, project);
-    Iterable<Tab> tabs = Sequence.fromClosure(new ISequenceClosure<Tab>() {
-      public Iterable<Tab> iterable() {
-        return new Iterable<Tab>() {
-          public Iterator<Tab> iterator() {
-            return new YieldingIterator<Tab>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
+    Iterable<Tab> tabs = Sequence.fromClosure(() -> {
+      return (Iterable<Tab>) () -> {
+        return new YieldingIterator<Tab>() {
+          private int __CP__ = 0;
+          protected boolean moveToNext() {
 __loop__:
-                do {
+            do {
 __switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 2:
-                      this._2_i = 0;
-                    case 3:
-                      if (!(_2_i < configurable.getTabsCount())) {
-                        this.__CP__ = 1;
-                        break;
-                      }
-                      this.__CP__ = 4;
-                      break;
-                    case 5:
-                      _2_i++;
-                      this.__CP__ = 3;
-                      break;
-                    case 6:
-                      this.__CP__ = 5;
-                      this.yield(configurable.getTab(_2_i));
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    case 4:
-                      this.__CP__ = 6;
-                      break;
-                    default:
-                      break __loop__;
+              switch (this.__CP__) {
+                case -1:
+                  assert false : "Internal error";
+                  return false;
+                case 2:
+                  this._2_i = 0;
+                case 3:
+                  if (!(_2_i < configurable.getTabsCount())) {
+                    this.__CP__ = 1;
+                    break;
                   }
-                } while (true);
-                return false;
+                  this.__CP__ = 4;
+                  break;
+                case 5:
+                  _2_i++;
+                  this.__CP__ = 3;
+                  break;
+                case 6:
+                  this.__CP__ = 5;
+                  this.yield(configurable.getTab(_2_i));
+                  return true;
+                case 0:
+                  this.__CP__ = 2;
+                  break;
+                case 4:
+                  this.__CP__ = 6;
+                  break;
+                default:
+                  break __loop__;
               }
-              private int _2_i;
-            };
+            } while (true);
+            return false;
           }
+          private int _2_i;
         };
-      }
+      };
     });
-    Sequence.fromIterable(tabs).where(new IWhereFilter<Tab>() {
-      public boolean accept(Tab it) {
-        return it instanceof ModulePropertiesConfigurable.GeneratorAdvancesTab;
-      }
-    }).visitAll(new IVisitor<Tab>() {
-      public void visit(Tab it) {
-        configurable.selectTab(it);
-      }
-    });
+    Sequence.fromIterable(tabs).where((it) -> it instanceof ModulePropertiesConfigurable.GeneratorAdvancesTab).visitAll((it) -> configurable.selectTab(it));
     final SingleConfigurableEditor configurableEditor = new SingleConfigurableEditor(project.getProject(), configurable, "#MPSPropertiesConfigurable");
     configurable.setParentForCallBack(configurableEditor);
     return () -> configurableEditor.show();

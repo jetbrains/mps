@@ -9,7 +9,6 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.ArrayList;
 import java.io.File;
 
@@ -27,11 +26,7 @@ public class ListCommandPart extends AbstractCommandPart implements CommandPart 
     }
   }
   private Iterable<String> getCommands(List<? extends Object> list) {
-    return ListSequence.fromList(list).translate(new ITranslator2<Object, String>() {
-      public Iterable<String> translate(Object it) {
-        return ListCommandPart.this.getCommandsFromItem(it);
-      }
-    });
+    return ListSequence.fromList(list).translate((it) -> ListCommandPart.this.getCommandsFromItem(it));
   }
   private Iterable<String> getCommandsFromItem(Object item) {
     if (item == null) {

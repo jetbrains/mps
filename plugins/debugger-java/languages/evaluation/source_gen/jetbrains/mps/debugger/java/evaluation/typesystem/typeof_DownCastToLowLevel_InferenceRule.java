@@ -21,18 +21,16 @@ public class typeof_DownCastToLowLevel_InferenceRule extends AbstractInferenceRu
   public void applyRule(final SNode downCastToLowLevel, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
       final SNode e = typeCheckingContext.typeOf(SLinkOperations.getTarget(downCastToLowLevel, LINKS.expression$qpom), "r:1b2caefb-8c76-452e-a59a-bbd2c73d0b03(jetbrains.mps.debugger.java.evaluation.typesystem)", "7915630211773500867", true);
-      typeCheckingContext.whenConcrete(e, new Runnable() {
-        public void run() {
-          {
-            SNode coercedNode_pc09cd_a0a0 = TypecheckingFacade.getFromContext().coerceType(typeCheckingContext.getExpandedNode(e), CONCEPTS.DebuggedType$zx);
-            if (coercedNode_pc09cd_a0a0 != null) {
-              {
-                SNode _nodeToCheck_1029348928467 = downCastToLowLevel;
-                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:1b2caefb-8c76-452e-a59a-bbd2c73d0b03(jetbrains.mps.debugger.java.evaluation.typesystem)", "7915630211773498604", 0, null);
-                typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:1b2caefb-8c76-452e-a59a-bbd2c73d0b03(jetbrains.mps.debugger.java.evaluation.typesystem)", "7915630211773498601", true), (SNode) SLinkOperations.getTarget(coercedNode_pc09cd_a0a0, LINKS.lowType$CzbW), _info_12389875345);
-              }
-            } else {
+      typeCheckingContext.whenConcrete(e, () -> {
+        {
+          SNode coercedNode_pc09cd_a0a0 = TypecheckingFacade.getFromContext().coerceType(typeCheckingContext.getExpandedNode(e), CONCEPTS.DebuggedType$zx);
+          if (coercedNode_pc09cd_a0a0 != null) {
+            {
+              SNode _nodeToCheck_1029348928467 = downCastToLowLevel;
+              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:1b2caefb-8c76-452e-a59a-bbd2c73d0b03(jetbrains.mps.debugger.java.evaluation.typesystem)", "7915630211773498604", 0, null);
+              typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:1b2caefb-8c76-452e-a59a-bbd2c73d0b03(jetbrains.mps.debugger.java.evaluation.typesystem)", "7915630211773498601", true), (SNode) SLinkOperations.getTarget(coercedNode_pc09cd_a0a0, LINKS.lowType$CzbW), _info_12389875345);
             }
+          } else {
           }
         }
       }, "r:1b2caefb-8c76-452e-a59a-bbd2c73d0b03(jetbrains.mps.debugger.java.evaluation.typesystem)", "7915630211773500854", false, false);

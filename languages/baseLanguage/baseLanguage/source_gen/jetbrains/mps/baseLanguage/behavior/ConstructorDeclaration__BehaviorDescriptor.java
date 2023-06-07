@@ -22,7 +22,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.core.behavior.ISmartReferent__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -141,11 +140,7 @@ public final class ConstructorDeclaration__BehaviorDescriptor extends BaseBHDesc
     }
     SNode superclass = SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$bK);
     if (!(SNodeOperations.is(superclass, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Enum")))) {
-      Iterable<SNode> constructors = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(superclass)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$Yyua), CONCEPTS.PrivateVisibility$l0));
-        }
-      });
+      Iterable<SNode> constructors = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(superclass)).where((it) -> !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$Yyua), CONCEPTS.PrivateVisibility$l0)));
       if (Sequence.fromIterable(constructors).isEmpty()) {
         return null;
       }

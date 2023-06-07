@@ -15,14 +15,12 @@ import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.build.startup.util.DefaultStartupScript;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.LinkedHashSet;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -64,17 +62,9 @@ public final class ResetStartupScript_Intention extends AbstractIntentionDescrip
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.bootClasspath$_ysz)).clear();
-      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.bootClasspath$_ysz)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(DefaultStartupScript.getDefaultStartupScript(), LINKS.bootClasspath$_ysz)).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SNodeOperations.copyNode(it);
-        }
-      }));
+      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.bootClasspath$_ysz)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(DefaultStartupScript.getDefaultStartupScript(), LINKS.bootClasspath$_ysz)).select((it) -> SNodeOperations.copyNode(it)));
       ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.vmOptions64$zvnw)).clear();
-      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.vmOptions64$zvnw)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(DefaultStartupScript.getDefaultStartupScript(), LINKS.vmOptions64$zvnw)).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SNodeOperations.copyNode(it);
-        }
-      }));
+      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.vmOptions64$zvnw)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(DefaultStartupScript.getDefaultStartupScript(), LINKS.vmOptions64$zvnw)).select((it) -> SNodeOperations.copyNode(it)));
     }
 
     @Override
@@ -103,22 +93,10 @@ public final class ResetStartupScript_Intention extends AbstractIntentionDescrip
 
 
     private Set<String> _additional_getClassPathSet(SNode script) {
-      return SetSequence.fromSetWithValues(new LinkedHashSet<String>(), ListSequence.fromList(SLinkOperations.getChildren(script, LINKS.bootClasspath$_ysz)).select(new ISelector<SNode, String>() {
-        public String select(SNode it) {
-          return SPropertyOperations.getString(it, PROPS.path$jtyZ);
-        }
-      }));
+      return SetSequence.fromSetWithValues(new LinkedHashSet<String>(), ListSequence.fromList(SLinkOperations.getChildren(script, LINKS.bootClasspath$_ysz)).select((it) -> SPropertyOperations.getString(it, PROPS.path$jtyZ)));
     }
     private Set<String> _additional_getVMOptionsSet(SNode script) {
-      return SetSequence.fromSetWithValues(new LinkedHashSet<String>(), Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(script, LINKS.vmOptions64$zvnw), CONCEPTS.SimpleVmOptions$48)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SPropertyOperations.getBoolean(it, PROPS.commented$92Mp));
-        }
-      }).select(new ISelector<SNode, String>() {
-        public String select(SNode it) {
-          return SPropertyOperations.getString(it, PROPS.options$D2Jv);
-        }
-      }));
+      return SetSequence.fromSetWithValues(new LinkedHashSet<String>(), Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(script, LINKS.vmOptions64$zvnw), CONCEPTS.SimpleVmOptions$48)).where((it) -> !(SPropertyOperations.getBoolean(it, PROPS.commented$92Mp))).select((it) -> SPropertyOperations.getString(it, PROPS.options$D2Jv)));
     }
     @Override
     public IntentionDescriptor getDescriptor() {

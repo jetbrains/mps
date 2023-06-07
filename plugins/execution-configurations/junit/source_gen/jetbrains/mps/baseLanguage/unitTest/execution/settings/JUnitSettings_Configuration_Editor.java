@@ -6,7 +6,6 @@ import jetbrains.mps.execution.api.settings.SettingsEditorEx;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.util.Factory;
 
 public class JUnitSettings_Configuration_Editor extends SettingsEditorEx<JUnitSettings_Configuration> {
   private JUnitConfigurationEditorComponent myEditor;
@@ -29,11 +28,7 @@ public class JUnitSettings_Configuration_Editor extends SettingsEditorEx<JUnitSe
   }
   private Project myProject;
   public JUnitSettings_Configuration_Editor(final Project project) {
-    super(new Factory<JUnitSettings_Configuration>() {
-      public JUnitSettings_Configuration create() {
-        return new JUnitSettings_Configuration(project);
-      }
-    });
+    super(() -> new JUnitSettings_Configuration(project));
     myProject = project;
   }
 }

@@ -18,15 +18,12 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.smodel.SModelId;
 import jetbrains.mps.smodel.SReferenceBase;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 @GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/4652592318748339723", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
@@ -71,11 +68,7 @@ public class DiffModelUtil {
   }
   private static void resetMissedReferences(SModel model, SModelReference oldModelRef, SModelReference newModelRef) {
     // set references that are not in the model back to old model
-    Set<SNodeId> nodeIds = SetSequence.fromSetWithValues(new HashSet<SNodeId>(), ListSequence.fromList(SModelOperations.nodes(model, null)).select(new ISelector<SNode, SNodeId>() {
-      public SNodeId select(SNode it) {
-        return it.getNodeId();
-      }
-    }));
+    Set<SNodeId> nodeIds = SetSequence.fromSetWithValues(new HashSet<SNodeId>(), ListSequence.fromList(SModelOperations.nodes(model, null)).select((it) -> it.getNodeId()));
     for (SNode node : SModelOperations.nodes(model, null)) {
       for (SReference reference : SNodeOperations.getReferences(node)) {
         if (reference instanceof StaticReference && newModelRef.equals(reference.getTargetSModelReference()) && !(SetSequence.fromSet(nodeIds).contains(reference.getTargetNodeId()))) {
@@ -96,15 +89,7 @@ public class DiffModelUtil {
     for (SNode node : ListSequence.fromList(SModelOperations.nodes(model, null))) {
       // XXX FWIW, there's similar code in smodel.SModel.updateExternalReferences()
       //     Would be great to keep it in a single place
-      ListSequence.fromList(SNodeOperations.getReferences(node)).ofType(SReferenceBase.class).where(new IWhereFilter<SReferenceBase>() {
-        public boolean accept(SReferenceBase it) {
-          return modelRef.equals(it.getTargetSModelReference());
-        }
-      }).visitAll(new IVisitor<SReferenceBase>() {
-        public void visit(SReferenceBase it) {
-          it.setTargetSModelReference(oldModelRef);
-        }
-      });
+      ListSequence.fromList(SNodeOperations.getReferences(node)).ofType(SReferenceBase.class).where((it) -> modelRef.equals(it.getTargetSModelReference())).visitAll((it) -> it.setTargetSModelReference(oldModelRef));
     }
   }
 

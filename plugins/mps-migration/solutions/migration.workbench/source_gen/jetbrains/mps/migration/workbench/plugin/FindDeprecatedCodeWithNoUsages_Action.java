@@ -70,7 +70,7 @@ public class FindDeprecatedCodeWithNoUsages_Action extends BaseAction {
         event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(() -> {
           Map<SNode, DeprecatedNodeProperties> dep = DeprecatedUtil.deprecatedAndNotUsed(event.getData(MPSCommonDataKeys.MPS_PROJECT).getScope());
           Pair cat = new Pair(CategoryKind.DEFAULT_CATEGORY_KIND, "Deprecated Entities With No Usages");
-          myResults.addAll(Sequence.fromIterable(UsagesFormattingUtil.prepare(dep, cat)).toListSequence());
+          myResults.addAll(Sequence.fromIterable(UsagesFormattingUtil.prepare(dep, cat)).toList());
         });
       }
       @Override

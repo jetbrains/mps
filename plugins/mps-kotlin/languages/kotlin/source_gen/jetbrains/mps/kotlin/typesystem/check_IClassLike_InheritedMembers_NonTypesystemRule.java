@@ -23,18 +23,15 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.kotlin.api.members.SuperTypesVisitor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -64,116 +61,90 @@ public class check_IClassLike_InheritedMembers_NonTypesystemRule extends Abstrac
     };
 
     final Map<MemberSignature, SourcedSignature> superSignatures = MapSequence.fromMap(new HashMap<MemberSignature, SourcedSignature>());
-    Sequence.fromIterable(SuperTypesVisitor.visit(thisType, visitor, (TypeMembersVisitor v) -> v.getMembers())).visitAll(new IVisitor<SourcedSignature>() {
-      public void visit(SourcedSignature it) {
-        MapSequence.fromMap(superSignatures).put(it.getSignature(), it);
-      }
-    });
+    Sequence.fromIterable(SuperTypesVisitor.visit(thisType, visitor, (v) -> v.getMembers())).visitAll((it) -> MapSequence.fromMap(superSignatures).put(it.getSignature(), it));
 
     final List<SourcedSignature> newSignatures = ListSequence.fromList(new ArrayList<SourcedSignature>());
     final Map<SourcedSignature, SourcedSignature> inheritedSignatures = MapSequence.fromMap(new HashMap<SourcedSignature, SourcedSignature>());
-    SetSequence.fromSet(selfSignatures).visitAll(new IVisitor<SourcedSignature>() {
-      public void visit(SourcedSignature it) {
-        SourcedSignature superSig = MapSequence.fromMap(superSignatures).get(it.getSignature());
-        if (superSig != null) {
-          MapSequence.fromMap(inheritedSignatures).put(it, superSig);
-        } else {
-          ListSequence.fromList(newSignatures).addElement(it);
-        }
+    SetSequence.fromSet(selfSignatures).visitAll((it) -> {
+      SourcedSignature superSig = MapSequence.fromMap(superSignatures).get(it.getSignature());
+      if (superSig != null) {
+        MapSequence.fromMap(inheritedSignatures).put(it, superSig);
+      } else {
+        ListSequence.fromList(newSignatures).addElement(it);
       }
     });
 
     // Last use case: not inherited signatures
-    List<SourcedSignature> notInheritedSignatures = Sequence.fromIterable(MapSequence.fromMap(superSignatures).values()).where(new IWhereFilter<SourcedSignature>() {
-      public boolean accept(SourcedSignature it) {
-        return !(MapSequence.fromMap(inheritedSignatures).containsKey(it));
-      }
-    }).toListSequence();
+    List<SourcedSignature> notInheritedSignatures = Sequence.fromIterable(MapSequence.fromMap(superSignatures).values()).where((it) -> !(MapSequence.fromMap(inheritedSignatures).containsKey(it))).toList();
 
     // TODO offer some quick fixes, which is not an obvious task since we get signatures and concepts
     // Test: abstract, visibility, inheritance, valid/invalid use of override modifier, compatible return type...
     if (!((boolean) IClassLike__BehaviorDescriptor.isAbstractClass_id$q1KckYQOy.invoke(myClass))) {
-      SetSequence.fromSet(selfSignatures).where(new IWhereFilter<SourcedSignature>() {
-        public boolean accept(SourcedSignature it) {
-          return it.getAttribute(SignatureAttributeKey.ABSTRACT) == Boolean.TRUE;
-        }
-      }).visitAll(new IVisitor<SourcedSignature>() {
-        public void visit(SourcedSignature it) {
-          {
-            final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it.getSource(), "Abstract member '" + it.getSignature().getDescriptionText() + "' in non-abstract class '" + SPropertyOperations.getString(myClass, PROPS.name$MnvL) + "'", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554169480", null, errorTarget);
-          }
+      SetSequence.fromSet(selfSignatures).where((it) -> it.getAttribute(SignatureAttributeKey.ABSTRACT) == Boolean.TRUE).visitAll((it) -> {
+        {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it.getSource(), "Abstract member '" + it.getSignature().getDescriptionText() + "' in non-abstract class '" + SPropertyOperations.getString(myClass, PROPS.name$MnvL) + "'", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554169480", null, errorTarget);
         }
       });
 
       // TODO delegates are not handled here so we skip this check for them for now
-      if (!(SNodeOperations.isInstanceOf(myClass, CONCEPTS.IInheritExplicitly$UG)) || ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myClass, CONCEPTS.IInheritExplicitly$UG), LINKS.superclasses$6CkZ)).all(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.IClassSuperSpecifier$8I), LINKS.delegate$pKtK) == null);
-        }
-      })) {
+      if (!(SNodeOperations.isInstanceOf(myClass, CONCEPTS.IInheritExplicitly$UG)) || ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myClass, CONCEPTS.IInheritExplicitly$UG), LINKS.superclasses$6CkZ)).all((it) -> (SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.IClassSuperSpecifier$8I), LINKS.delegate$pKtK) == null))) {
 
-        ListSequence.fromList(notInheritedSignatures).findFirst(new IWhereFilter<SourcedSignature>() {
-          public boolean accept(SourcedSignature it) {
-            boolean isAbstract = it.getAttribute(SignatureAttributeKey.ABSTRACT) == Boolean.TRUE;
-            if (isAbstract) {
-              {
-                final MessageTarget errorTarget = new NodeMessageTarget();
-                IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(myClass, "Class '" + SPropertyOperations.getString(myClass, PROPS.name$MnvL) + "' is not abstract and does not implement abstract base class member " + it.getSignature().getDescriptionText(), "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554477701", null, errorTarget);
-              }
+        ListSequence.fromList(notInheritedSignatures).findFirst((it) -> {
+          boolean isAbstract = it.getAttribute(SignatureAttributeKey.ABSTRACT) == Boolean.TRUE;
+          if (isAbstract) {
+            {
+              final MessageTarget errorTarget = new NodeMessageTarget();
+              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(myClass, "Class '" + SPropertyOperations.getString(myClass, PROPS.name$MnvL) + "' is not abstract and does not implement abstract base class member " + it.getSignature().getDescriptionText(), "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554477701", null, errorTarget);
             }
-            // single error message
-            return isAbstract;
           }
+          // single error message
+          return isAbstract;
         });
       }
 
     }
 
-    ListSequence.fromList(newSignatures).visitAll(new IVisitor<SourcedSignature>() {
-      public void visit(SourcedSignature it) {
-        if (it.getAttribute(SignatureAttributeKey.OVERRIDE) == Boolean.TRUE) {
-          {
-            final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it.getSource(), "'" + it.getSignature().getDescriptionText() + "' overrides nothing", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554283735", null, errorTarget);
-          }
+    ListSequence.fromList(newSignatures).visitAll((it) -> {
+      if (it.getAttribute(SignatureAttributeKey.OVERRIDE) == Boolean.TRUE) {
+        {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it.getSource(), "'" + it.getSignature().getDescriptionText() + "' overrides nothing", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554283735", null, errorTarget);
         }
       }
     });
 
-    MapSequence.fromMap(inheritedSignatures).visitAll(new IVisitor<IMapping<SourcedSignature, SourcedSignature>>() {
-      public void visit(IMapping<SourcedSignature, SourcedSignature> it) {
-        SourcedSignature self = it.key();
-        SourcedSignature base = it.value();
+    MapSequence.fromMap(inheritedSignatures).visitAll((it) -> {
+      SourcedSignature self = it.key();
+      SourcedSignature base = it.value();
 
-        if (self.getAttribute(SignatureAttributeKey.OVERRIDE) != Boolean.TRUE) {
-          {
-            final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(self.getSource(), "'" + self.getSignature().getDescriptionText() + "' hides member of supertype and needs 'override' modifier", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554552333", null, errorTarget);
-          }
-        } else if (SConceptOperations.isExactly(SNodeOperations.asSConcept(base.getAttribute(SignatureAttributeKey.MODALITY)), CONCEPTS.FinalInheritanceModifier$H5)) {
-          {
-            final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(self.getSource(), "'" + self.getSignature().getDescriptionText() + "' in supertype is final and cannot be overridden", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554582985", null, errorTarget);
-          }
-        } else {
-          // It does override: let's look at visibility
-          SConcept selfVisibility = self.getAttribute(SignatureAttributeKey.VISIBILITY);
-          if (selfVisibility != null) {
-            SConcept baseVisibility = base.getAttribute(SignatureAttributeKey.VISIBILITY);
+      if (self.getAttribute(SignatureAttributeKey.OVERRIDE) != Boolean.TRUE) {
+        {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(self.getSource(), "'" + self.getSignature().getDescriptionText() + "' hides member of supertype and needs 'override' modifier", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554552333", null, errorTarget);
+        }
+      } else if (SConceptOperations.isExactly(SNodeOperations.asSConcept(base.getAttribute(SignatureAttributeKey.MODALITY)), CONCEPTS.FinalInheritanceModifier$H5)) {
+        {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(self.getSource(), "'" + self.getSignature().getDescriptionText() + "' in supertype is final and cannot be overridden", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554582985", null, errorTarget);
+        }
+      } else {
+        // It does override: let's look at visibility
+        SConcept selfVisibility = self.getAttribute(SignatureAttributeKey.VISIBILITY);
+        if (selfVisibility != null) {
+          SConcept baseVisibility = base.getAttribute(SignatureAttributeKey.VISIBILITY);
 
-            if (Objects.equals(baseVisibility, selfVisibility) || (baseVisibility == null && SConceptOperations.isExactly(SNodeOperations.asSConcept(selfVisibility), CONCEPTS.PublicVisibility$Me))) {
-              {
-                final MessageTarget errorTarget = new NodeMessageTarget();
-                IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(self.getSource(), "Redundant visibility modifier", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "6282552464966929825", null, errorTarget);
-              }
-            } else if (!(Objects.equals(baseVisibility, selfVisibility)) && !(SConceptOperations.isExactly(SNodeOperations.asSConcept(selfVisibility), CONCEPTS.PublicVisibility$Me))) {
-              // assumption: base is not private (filtered out by type member visitor)
-              String baseVisibilityString = (baseVisibility == null ? "public" : SConceptOperations.conceptAlias(baseVisibility));
-              {
-                final MessageTarget errorTarget = new NodeMessageTarget();
-                IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(self.getSource(), "Cannot change access privilege '" + baseVisibilityString + "' for '" + base.getSignature().getDescriptionText() + "' in supertype", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554705051", null, errorTarget);
-              }
+          if (Objects.equals(baseVisibility, selfVisibility) || (baseVisibility == null && SConceptOperations.isExactly(SNodeOperations.asSConcept(selfVisibility), CONCEPTS.PublicVisibility$Me))) {
+            {
+              final MessageTarget errorTarget = new NodeMessageTarget();
+              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(self.getSource(), "Redundant visibility modifier", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "6282552464966929825", null, errorTarget);
+            }
+          } else if (!(Objects.equals(baseVisibility, selfVisibility)) && !(SConceptOperations.isExactly(SNodeOperations.asSConcept(selfVisibility), CONCEPTS.PublicVisibility$Me))) {
+            // assumption: base is not private (filtered out by type member visitor)
+            String baseVisibilityString = (baseVisibility == null ? "public" : SConceptOperations.conceptAlias(baseVisibility));
+            {
+              final MessageTarget errorTarget = new NodeMessageTarget();
+              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(self.getSource(), "Cannot change access privilege '" + baseVisibilityString + "' for '" + base.getSignature().getDescriptionText() + "' in supertype", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554705051", null, errorTarget);
             }
           }
         }

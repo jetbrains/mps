@@ -26,7 +26,6 @@ import jetbrains.mps.kotlin.api.declaration.TypeParameterDeclaration;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import jetbrains.mps.kotlin.baseLanguage.toJava.KtToJavaConversion;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -73,11 +72,7 @@ public final class KotlinClassifierType__BehaviorDescriptor extends BaseBHDescri
     List<SNode> supertypes = DirectSuperTypesVisitor.get(thisType);
 
     // Then we convert back the result
-    return ListSequence.fromList(supertypes).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode type) {
-        return KtToJavaConversion.convert(type);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(supertypes).select((type) -> KtToJavaConversion.convert(type)).toList();
   }
 
   /*package*/ KotlinClassifierType__BehaviorDescriptor() {

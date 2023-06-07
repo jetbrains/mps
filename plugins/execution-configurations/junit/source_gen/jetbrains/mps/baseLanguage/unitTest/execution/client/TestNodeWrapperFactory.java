@@ -42,7 +42,7 @@ public enum TestNodeWrapperFactory {;
       return null;
     }
     TestDiscoveryRequest request = new TestDiscoveryRequest(new TestDescriptor());
-    Optional<ITestNodeWrapper> wrapped = request.discover(node).map((TestDescriptor descriptor) -> {
+    Optional<ITestNodeWrapper> wrapped = request.discover(node).map((descriptor) -> {
       return new TestDescriptorWrapper(descriptor, new TestDescriptorWrapper(descriptor.getContainer()));
 
     });

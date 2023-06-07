@@ -15,8 +15,8 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.refactoring.participant.plugin.MoveNodesUtil;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import java.util.ArrayList;
 import java.util.Map;
+import java.util.ArrayList;
 import jetbrains.mps.refactoring.participant.RefactoringParticipant;
 import jetbrains.mps.refactoring.participant.RefactoringSession;
 import jetbrains.mps.refactoring.participant.NodeCopyTracker;
@@ -58,7 +58,7 @@ public class MoveStaticMethod implements MoveNodesAction {
       return;
     }
 
-    MoveNodesUtil.moveTo(project, getName(), MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), new MoveNodesUtil.NodeCreatingProcessor(new MoveStaticField.NodeLocationClassifierMember(SNodeOperations.cast(whereToMove, CONCEPTS.Classifier$Ix)), project) {
+    MoveNodesUtil.moveTo(project, getName(), MapSequence.fromMapAndEntryArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), Map.entry(new MoveNodesUtil.NodeCreatingProcessor(new MoveStaticField.NodeLocationClassifierMember(SNodeOperations.cast(whereToMove, CONCEPTS.Classifier$Ix)), project) {
       @Override
       public List<SNode> getNodesToSearch(SNode nodeToMove) {
         return ListSequence.fromListAndArray(new ArrayList<SNode>(), nodeToMove);
@@ -86,7 +86,7 @@ public class MoveStaticMethod implements MoveNodesAction {
           myNodeLocation.insertNode(myProject.getRepository(), newNode);
         }
       }
-    }).withValues(ListSequence.fromListAndArray(new ArrayList<SNode>(), target)));
+    }, ListSequence.fromListAndArray(new ArrayList<SNode>(), target))));
   }
 
   private static final class CONCEPTS {

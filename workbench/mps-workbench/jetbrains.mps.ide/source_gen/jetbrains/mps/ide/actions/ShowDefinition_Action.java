@@ -114,7 +114,7 @@ public class ShowDefinition_Action extends BaseAction {
     } else if (ShowDefinition_Action.this.isMethodDeclaration(_params)) {
       results = FindUtils.getSearchResults(new EmptyProgressMonitor(), ShowDefinition_Action.this.getUnwrapped(_params), scope, "jetbrains.mps.baseLanguage.findUsages.DerivedMethods_Finder");
     } else {
-      return Sequence.fromIterable(Sequence.<SNode>singleton(ShowDefinition_Action.this.findNodeDeclaration(_params))).toListSequence();
+      return Sequence.fromIterable(Sequence.<SNode>singleton(ShowDefinition_Action.this.findNodeDeclaration(_params))).toList();
     }
     for (SearchResult<SNode> searchResult : results.getSearchResults2()) {
       SNode foundNode = searchResult.getObject();

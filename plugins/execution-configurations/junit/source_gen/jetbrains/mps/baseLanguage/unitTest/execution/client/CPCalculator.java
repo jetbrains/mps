@@ -42,7 +42,7 @@ import jetbrains.mps.string.Strings;
   public List<String> calculate() {
     boolean doINeedMPS = myTestsWithParams.getParameters().needsMPS();
     List<String> classpath = (doINeedMPS ? calcForPlatformWithMPS() : calcForPlatformWithoutMPS());
-    return ListSequence.fromList(myTestsWithParams.getParameters().getClassPath()).union(ListSequence.fromList(classpath)).toListSequence();
+    return ListSequence.fromList(myTestsWithParams.getParameters().getClassPath()).union(ListSequence.fromList(classpath)).toList();
   }
 
   private List<String> calcForPlatformWithoutMPS() {

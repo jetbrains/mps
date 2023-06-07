@@ -19,8 +19,6 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -49,28 +47,12 @@ public final class DecisionTable__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static Set<SNode> referencedLVDs_id3mtcPBWFCmw(@NotNull SNode __thisNode__) {
     Set<SNode> res = SetSequence.fromSet(new HashSet<SNode>());
-    SetSequence.fromSet(res).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41);
-      }
-    }).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41);
-      }
-    }));
+    SetSequence.fromSet(res).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41)).select((it) -> SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41)));
     return res;
   }
   /*package*/ static Set<SNode> referencedParams_id3mtcPBWFDo3(@NotNull SNode __thisNode__) {
     Set<SNode> params = SetSequence.fromSet(new HashSet<SNode>());
-    SetSequence.fromSet(params).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), CONCEPTS.ParameterDeclaration$RG);
-      }
-    }).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), CONCEPTS.ParameterDeclaration$RG);
-      }
-    }));
+    SetSequence.fromSet(params).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), CONCEPTS.ParameterDeclaration$RG)).select((it) -> SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), CONCEPTS.ParameterDeclaration$RG)));
     return params;
   }
 

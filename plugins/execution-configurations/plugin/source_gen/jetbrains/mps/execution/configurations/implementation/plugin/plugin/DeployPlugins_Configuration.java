@@ -19,7 +19,6 @@ import com.intellij.openapi.application.PathManager;
 import com.intellij.openapi.project.Project;
 import java.util.List;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import com.intellij.execution.configurations.ConfigurationFactory;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.execution.configurations.RunProfileState;
@@ -74,11 +73,7 @@ public final class DeployPlugins_Configuration extends BaseMpsRunConfiguration i
   public void removeLanguageLibraries(Element element, Project project) {
     List<Element> toRemove = ListSequence.fromList(new ArrayList<Element>());
     removeLanguageLibraries(element, project, toRemove);
-    ListSequence.fromList(toRemove).visitAll(new IVisitor<Element>() {
-      public void visit(Element it) {
-        it.detach();
-      }
-    });
+    ListSequence.fromList(toRemove).visitAll((it) -> it.detach());
   }
   private void removeLanguageLibraries(Element element, Project project, List<Element> toRemove) {
     String mpsLanguageLib = "LanguageLibrary";
@@ -174,11 +169,7 @@ public final class DeployPlugins_Configuration extends BaseMpsRunConfiguration i
   @Override
   public void checkConfiguration() throws RuntimeConfigurationException {
     final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
-    checkConfiguration(new PersistentConfigurationContext() {
-      public jetbrains.mps.project.Project getProject() {
-        return mpsProject;
-      }
-    });
+    checkConfiguration(() -> mpsProject);
   }
   @Override
   public boolean canExecute(String executorId) {

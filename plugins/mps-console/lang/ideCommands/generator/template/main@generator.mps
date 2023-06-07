@@ -4,7 +4,7 @@
   <languages>
     <use id="a5e4de53-46a3-44da-aab3-68fdf1c34ed0" name="jetbrains.mps.console.ideCommands" version="2" />
     <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="4" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="1a8554c4-eb84-43ba-8c34-6f0d90c6e75a" name="jetbrains.mps.lang.smodel.query" version="3" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="de1ad86d-6e50-4a02-b306-d4d17f64c375" name="jetbrains.mps.console.base" version="0" />
@@ -170,6 +170,7 @@
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -255,7 +256,6 @@
       <concept id="1237721394592" name="jetbrains.mps.baseLanguage.collections.structure.AbstractContainerCreator" flags="nn" index="HWqM0">
         <child id="1237721435807" name="elementType" index="HW$YZ" />
       </concept>
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1160600644654" name="jetbrains.mps.baseLanguage.collections.structure.ListCreatorWithInit" flags="nn" index="Tc6Ow" />
       <concept id="1197686869805" name="jetbrains.mps.baseLanguage.collections.structure.HashMapCreator" flags="nn" index="3rGOSV">
         <child id="1197687026896" name="keyType" index="3rHrn6" />
@@ -1165,7 +1165,7 @@
                             <ref role="37wK5l" to="moux:32notsQsTE3" resolve="getNodeReference" />
                             <ref role="1Pybhc" to="moux:hpHLh7Fj1$" resolve="CommandUtil" />
                             <node concept="37vLTw" id="5mdbChITFCH" role="37wK5m">
-                              <ref role="3cqZAo" node="5mdbChITFDz" resolve="it" />
+                              <ref role="3cqZAo" node="5W7E4fV0WMZ" />
                             </node>
                             <node concept="1ZhdrF" id="5mdbChITFCI" role="lGtFl">
                               <property role="2qtEX8" value="baseMethodDeclaration" />
@@ -1191,9 +1191,9 @@
                           </node>
                         </node>
                       </node>
-                      <node concept="Rh6nW" id="5mdbChITFDz" role="1bW2Oz">
+                      <node concept="gl6BB" id="5W7E4fV0WMZ" role="1bW2Oz">
                         <property role="TrG5h" value="it" />
-                        <node concept="2jxLKc" id="5mdbChITFD$" role="1tU5fm" />
+                        <node concept="2jxLKc" id="5W7E4fV0WN0" role="1tU5fm" />
                       </node>
                     </node>
                   </node>

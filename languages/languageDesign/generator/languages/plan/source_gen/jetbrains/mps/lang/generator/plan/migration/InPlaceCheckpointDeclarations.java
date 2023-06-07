@@ -9,7 +9,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
@@ -33,11 +32,7 @@ public class InPlaceCheckpointDeclarations extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     for (SModel model : Sequence.fromIterable(m.getModels())) {
-      for (SNode cps : ListSequence.fromList(SModelOperations.nodes(((SModel) model), CONCEPTS.Checkpoint$ZV)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS.cpSpec$v7$t) == null);
-        }
-      })) {
+      for (SNode cps : ListSequence.fromList(SModelOperations.nodes(((SModel) model), CONCEPTS.Checkpoint$ZV)).where((it) -> (SLinkOperations.getTarget(it, LINKS.cpSpec$v7$t) == null))) {
         // since there's property constraint for INamedConcept.name in Checkpoint, can't use cps.name directly
         String cpName = cps.getProperty(PROPS.name$MnvL);
         cps.setProperty(PROPS.name$MnvL, null);

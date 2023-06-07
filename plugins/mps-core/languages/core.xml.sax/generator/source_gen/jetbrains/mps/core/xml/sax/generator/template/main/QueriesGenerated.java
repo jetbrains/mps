@@ -16,7 +16,6 @@ import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
@@ -115,11 +114,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return false;
   }
   public static boolean ifMacro_Condition_0_2(final IfMacroContext _context) {
-    return ListSequence.fromList(SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.XMLSAXNodeRule$VS, false, new SAbstractConcept[]{})).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.defaultChild$biG5) != null);
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.XMLSAXNodeRule$VS, false, new SAbstractConcept[]{})).any((it) -> (SLinkOperations.getTarget(it, LINKS.defaultChild$biG5) != null));
   }
   public static boolean ifMacro_Condition_0_3(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.globalText$AInQ) != null);
@@ -128,11 +123,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.globalText$AInQ) != null);
   }
   public static boolean ifMacro_Condition_0_5(final IfMacroContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attrs$Aw1u)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getBoolean(it, PROPS.isRequired$z$lt);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attrs$Aw1u)).any((it) -> SPropertyOperations.getBoolean(it, PROPS.isRequired$z$lt));
   }
   public static boolean ifMacro_Condition_0_6(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.creator$AwIx) != null) && (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$AwIx), LINKS.body$e68K) != null) && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$AwIx), LINKS.body$e68K), LINKS.statement$53DE)).isNotEmpty();
@@ -144,11 +135,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.handler$z$$u) != null) && (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.handler$z$$u), LINKS.body$e68K) != null) && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.handler$z$$u), LINKS.body$e68K), LINKS.statement$53DE)).isNotEmpty();
   }
   public static boolean ifMacro_Condition_0_9(final IfMacroContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attrs$Aw1u)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.handler$z$$u) != null) && (SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.handler$z$$u), LINKS.body$e68K) != null) && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.handler$z$$u), LINKS.body$e68K), LINKS.statement$53DE)).isNotEmpty();
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attrs$Aw1u)).any((it) -> (SLinkOperations.getTarget(it, LINKS.handler$z$$u) != null) && (SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.handler$z$$u), LINKS.body$e68K) != null) && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.handler$z$$u), LINKS.body$e68K), LINKS.statement$53DE)).isNotEmpty());
   }
   public static boolean ifMacro_Condition_0_10(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.condition$NUPO) != null);
@@ -187,11 +174,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.validator$AwXy) != null) && (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.validator$AwXy), LINKS.body$e68K) != null) && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.validator$AwXy), LINKS.body$e68K), LINKS.statement$53DE)).isNotEmpty();
   }
   public static boolean ifMacro_Condition_0_22(final IfMacroContext _context) {
-    return ListSequence.fromList(SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.XMLSAXNodeRule$VS, false, new SAbstractConcept[]{})).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.defaultChild$biG5) != null);
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.XMLSAXNodeRule$VS, false, new SAbstractConcept[]{})).any((it) -> (SLinkOperations.getTarget(it, LINKS.defaultChild$biG5) != null));
   }
   public static boolean ifMacro_Condition_1_0(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.result$z_yu) != null);
@@ -292,11 +275,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.result$z_yu);
   }
   public static Iterable<SNode> sourceNodesQuery_0_0(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.nodes$AHTO)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.params$VQ7O)).isEmpty();
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.nodes$AHTO)).where((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.params$VQ7O)).isEmpty());
   }
   public static Iterable<SNode> sourceNodesQuery_0_1(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.parameters$ACwt);
@@ -327,11 +306,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.params$VQ7O);
   }
   public static Iterable<SNode> sourceNodesQuery_0_10(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attrs$Aw1u)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getBoolean(it, PROPS.isRequired$z$lt);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attrs$Aw1u)).where((it) -> SPropertyOperations.getBoolean(it, PROPS.isRequired$z$lt));
   }
   public static Iterable<SNode> sourceNodesQuery_0_11(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.params$VQ7O);
@@ -343,11 +318,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.handler$z$$u), LINKS.body$e68K), LINKS.statement$53DE);
   }
   public static Iterable<SNode> sourceNodesQuery_0_14(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attrs$Aw1u)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.handler$z$$u) != null) && (SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.handler$z$$u), LINKS.body$e68K) != null) && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.handler$z$$u), LINKS.body$e68K), LINKS.statement$53DE)).isNotEmpty();
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attrs$Aw1u)).where((it) -> (SLinkOperations.getTarget(it, LINKS.handler$z$$u) != null) && (SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.handler$z$$u), LINKS.body$e68K) != null) && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.handler$z$$u), LINKS.body$e68K), LINKS.statement$53DE)).isNotEmpty());
   }
   public static Iterable<SNode> sourceNodesQuery_0_15(final SourceSubstituteMacroNodesContext _context) {
     return ((Iterable<SNode>) _context.getVariable("var:args"));
@@ -359,21 +330,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.defaultChild$biG5), LINKS.handler$rZ8u), LINKS.body$e68K), LINKS.statement$53DE);
   }
   public static Iterable<SNode> sourceNodesQuery_0_18(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.children$Awgv)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.condition$NUPO) != null);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.children$Awgv)).where((it) -> (SLinkOperations.getTarget(it, LINKS.condition$NUPO) != null));
   }
   public static Iterable<SNode> sourceNodesQuery_0_19(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.condition$NUPO), LINKS.body$e68K), LINKS.statement$53DE);
   }
   public static Iterable<SNode> sourceNodesQuery_0_20(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.children$Awgv)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.handler$zG$t) != null);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.children$Awgv)).where((it) -> (SLinkOperations.getTarget(it, LINKS.handler$zG$t) != null));
   }
   public static Iterable<SNode> sourceNodesQuery_0_21(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.handler$zG$t), LINKS.body$e68K), LINKS.statement$53DE);

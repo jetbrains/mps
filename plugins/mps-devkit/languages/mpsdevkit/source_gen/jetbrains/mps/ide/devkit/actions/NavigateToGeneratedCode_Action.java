@@ -13,7 +13,6 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.generator.GeneratedCodeOpener;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 
 public class NavigateToGeneratedCode_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -59,10 +58,6 @@ public class NavigateToGeneratedCode_Action extends BaseAction {
     event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(() -> new GeneratedCodeOpener(event.getData(MPSCommonDataKeys.MPS_PROJECT)).open(NavigateToGeneratedCode_Action.this.getNodeToNavigate(event.getData(MPSCommonDataKeys.NODE), event)));
   }
   private SNode getNodeToNavigate(SNode current, final AnActionEvent event) {
-    return ListSequence.fromList(SNodeOperations.getNodeAncestors(current, null, true)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return new GeneratedCodeOpener(event.getData(MPSCommonDataKeys.MPS_PROJECT)).canOpen(it);
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getNodeAncestors(current, null, true)).findFirst((it) -> new GeneratedCodeOpener(event.getData(MPSCommonDataKeys.MPS_PROJECT)).canOpen(it));
   }
 }

@@ -16,8 +16,6 @@ import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.List;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.util.IterableUtil;
@@ -104,15 +102,7 @@ public final class ModuleLoader {
     Repo r = new Repo(new ModelAccessNoLimit());
     myRepository = new ModuleRepositoryFacade(r);
 
-    Sequence.fromIterable(SLinkOperations.collectMany(SNodeOperations.ofConcept(parts, CONCEPTS.BuildMps_Group$Jc), LINKS.modules$JlQo)).union(Sequence.fromIterable(SNodeOperations.ofConcept(parts, CONCEPTS.BuildMps_AbstractModule$FZ))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.path$iYKB) != null);
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        createModuleChecker(it).check(type);
-      }
-    });
+    Sequence.fromIterable(SLinkOperations.collectMany(SNodeOperations.ofConcept(parts, CONCEPTS.BuildMps_Group$Jc), LINKS.modules$JlQo)).union(Sequence.fromIterable(SNodeOperations.ofConcept(parts, CONCEPTS.BuildMps_AbstractModule$FZ))).where((it) -> (SLinkOperations.getTarget(it, LINKS.path$iYKB) != null)).visitAll((it) -> createModuleChecker(it).check(type));
 
     // XXX would be great to unregister all modules here, to dispose them explicitly, but as long as its our private repo, does it matter?
     // We have to dispose modules as their models/datasources attach e.g. file listeners that get notified long time after generation of a build project is over.

@@ -11,7 +11,6 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.plugins.relations.CreateAspectContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -55,11 +54,7 @@ public class Executor_TabDescriptor extends RelationDescriptor {
   }
   public SNode getNode(SNode node) {
     final SNode nodeFinal = node;
-    return ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(node), CONCEPTS.AbstractRunConfigurationExecutor$Fp)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.configuration$CM7P) == nodeFinal;
-      }
-    });
+    return ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(node), CONCEPTS.AbstractRunConfigurationExecutor$Fp)).findFirst((it) -> SLinkOperations.getTarget(it, LINKS.configuration$CM7P) == nodeFinal);
   }
   public Iterable<SConcept> getAspectConcepts(final SNode node) {
     return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.RunConfigurationExecutor$5U);

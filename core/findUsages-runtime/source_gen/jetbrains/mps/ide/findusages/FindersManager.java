@@ -15,8 +15,6 @@ import jetbrains.mps.ide.findusages.findalgorithm.finders.IInterfacedFinder;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.Collections;
 import org.jetbrains.annotations.Nullable;
 import java.util.function.Function;
@@ -31,8 +29,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 
 @GeneratedClass(node = "r:78f1dc30-d9c6-41ba-bc9c-1e73f8bda079(jetbrains.mps.ide.findusages)/8568892084424438073", model = "r:78f1dc30-d9c6-41ba-bc9c-1e73f8bda079(jetbrains.mps.ide.findusages)")
 public final class FindersManager implements CoreComponent, LanguageRegistryListener {
@@ -65,15 +61,7 @@ public final class FindersManager implements CoreComponent, LanguageRegistryList
     final Set<IInterfacedFinder> result = new HashSet<IInterfacedFinder>();
     for (LanguageFinders lf : myLanguageFindersMap.values()) {
       try {
-        Sequence.fromIterable(lf.findersForConcept(node.getConcept())).where(new IWhereFilter<IInterfacedFinder>() {
-          public boolean accept(IInterfacedFinder it) {
-            return it.isVisible(node) && it.isApplicable(node);
-          }
-        }).visitAll(new IVisitor<IInterfacedFinder>() {
-          public void visit(IInterfacedFinder it) {
-            result.add(it);
-          }
-        });
+        Sequence.fromIterable(lf.findersForConcept(node.getConcept())).where((it) -> it.isVisible(node) && it.isApplicable(node)).visitAll((it) -> result.add(it));
       } catch (Throwable t) {
         LOG.error("Finder's isApplicable method failed " + t.getMessage(), t);
       }
@@ -181,15 +169,7 @@ public final class FindersManager implements CoreComponent, LanguageRegistryList
     }
     /*package*/ Iterable<IInterfacedFinder> findersForConcept(final SAbstractConcept c) {
       Set<SAbstractConcept> keySet = myFinders.keySet();
-      return SetSequence.fromSet(keySet).where(new IWhereFilter<SAbstractConcept>() {
-        public boolean accept(SAbstractConcept it) {
-          return c.isSubConceptOf(it);
-        }
-      }).translate(new ITranslator2<SAbstractConcept, IInterfacedFinder>() {
-        public Iterable<IInterfacedFinder> translate(SAbstractConcept it) {
-          return instantiate(myFinders.get(it));
-        }
-      });
+      return SetSequence.fromSet(keySet).where((it) -> c.isSubConceptOf(it)).translate((it) -> instantiate(myFinders.get(it)));
     }
     private IInterfacedFinder instantiate(int token) {
       FindUsageAspectDescriptor descr = myLanguageRuntime.getAspect(FindUsageAspectDescriptor.class);
@@ -200,11 +180,7 @@ public final class FindersManager implements CoreComponent, LanguageRegistryList
     private Iterable<IInterfacedFinder> instantiate(List<Integer> tokens) {
       final FindUsageAspectDescriptor descr = myLanguageRuntime.getAspect(FindUsageAspectDescriptor.class);
       assert descr != null;
-      return ListSequence.fromList(tokens).select(new ISelector<Integer, IInterfacedFinder>() {
-        public IInterfacedFinder select(Integer it) {
-          return descr.instantiate(it);
-        }
-      });
+      return ListSequence.fromList(tokens).select((it) -> descr.instantiate(it));
     }
   }
 }

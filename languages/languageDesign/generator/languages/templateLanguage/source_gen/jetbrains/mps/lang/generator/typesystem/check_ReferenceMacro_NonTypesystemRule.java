@@ -12,7 +12,6 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.core.behavior.LinkAttribute__BehaviorDescriptor;
@@ -33,11 +32,7 @@ public class check_ReferenceMacro_NonTypesystemRule extends AbstractNonTypesyste
         }
       }
     }
-    if (SNodeOperations.isAttribute(macro) && Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getNextSiblings(macro, false), CONCEPTS.ReferenceMacro$30)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.linkId$P9Fc), SPropertyOperations.getString(macro, PROPS.linkId$P9Fc));
-      }
-    }).isNotEmpty()) {
+    if (SNodeOperations.isAttribute(macro) && Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getNextSiblings(macro, false), CONCEPTS.ReferenceMacro$30)).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.linkId$P9Fc), SPropertyOperations.getString(macro, PROPS.linkId$P9Fc))).isNotEmpty()) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(macro, String.format("More than 1 macro for reference %s", LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(macro)), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "2055017143027570313", null, errorTarget);

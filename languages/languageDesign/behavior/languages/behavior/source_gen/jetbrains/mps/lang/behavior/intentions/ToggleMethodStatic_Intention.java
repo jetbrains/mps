@@ -17,7 +17,6 @@ import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
@@ -64,17 +63,9 @@ public final class ToggleMethodStatic_Intention extends AbstractIntentionDescrip
     public void execute(final SNode node, final EditorContext editorContext) {
       final boolean oldStatic = SPropertyOperations.getBoolean(node, PROPS.isStatic$JhJe);
       List<SNode> thisNodes = (oldStatic ? SNodeOperations.getNodeDescendants(node, CONCEPTS.ThisConceptExpression$KM, false, new SAbstractConcept[]{}) : SNodeOperations.getNodeDescendants(node, CONCEPTS.ThisNodeExpression$v1, false, new SAbstractConcept[]{}));
-      ListSequence.fromList(thisNodes).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNodeOperations.replaceWithAnother(it, (oldStatic ? SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434b5be1L, "jetbrains.mps.lang.behavior.structure.ThisNodeExpression")) : SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x17a53cfe586da642L, "jetbrains.mps.lang.behavior.structure.ThisConceptExpression"))));
-        }
-      });
+      ListSequence.fromList(thisNodes).visitAll((it) -> SNodeOperations.replaceWithAnother(it, (oldStatic ? SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434b5be1L, "jetbrains.mps.lang.behavior.structure.ThisNodeExpression")) : SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x17a53cfe586da642L, "jetbrains.mps.lang.behavior.structure.ThisConceptExpression")))));
       List<SNode> superNodes = (oldStatic ? SNodeOperations.getNodeDescendants(node, CONCEPTS.SuperConceptExpression$_4, false, new SAbstractConcept[]{}) : SNodeOperations.getNodeDescendants(node, CONCEPTS.ThisNodeExpression$v1, false, new SAbstractConcept[]{}));
-      ListSequence.fromList(superNodes).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNodeOperations.replaceWithAnother(it, (oldStatic ? SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434b5be1L, "jetbrains.mps.lang.behavior.structure.ThisNodeExpression")) : SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x69a9d7dcb057a7a7L, "jetbrains.mps.lang.behavior.structure.SuperConceptExpression"))));
-        }
-      });
+      ListSequence.fromList(superNodes).visitAll((it) -> SNodeOperations.replaceWithAnother(it, (oldStatic ? SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434b5be1L, "jetbrains.mps.lang.behavior.structure.ThisNodeExpression")) : SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x69a9d7dcb057a7a7L, "jetbrains.mps.lang.behavior.structure.SuperConceptExpression")))));
       SPropertyOperations.set(node, PROPS.isStatic$JhJe, !(oldStatic));
       if (!((boolean) BaseMethodDeclaration__BehaviorDescriptor.hasBody_id10BRnhak8m8.invoke(node))) {
         ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.body$5xQk), LINKS.statement$53DE)).clear();

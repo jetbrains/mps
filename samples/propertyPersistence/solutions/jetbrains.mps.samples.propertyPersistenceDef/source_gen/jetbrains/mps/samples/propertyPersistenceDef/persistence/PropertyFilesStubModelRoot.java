@@ -26,7 +26,6 @@ import java.util.Set;
 import java.util.HashSet;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.extapi.persistence.CopyNotSupportedException;
 import jetbrains.mps.persistence.CopyFileBasedModelRootHelper;
 
@@ -126,11 +125,7 @@ public class PropertyFilesStubModelRoot extends FileBasedModelRoot implements Co
     }
 
     Iterable<IFile> children = dir.getChildren();
-    Iterable<IFile> subDirs = Sequence.fromIterable(children).where(new IWhereFilter<IFile>() {
-      public boolean accept(IFile it) {
-        return it.isDirectory();
-      }
-    });
+    Iterable<IFile> subDirs = Sequence.fromIterable(children).where((it) -> it.isDirectory());
 
     for (IFile subDir : Sequence.fromIterable(subDirs)) {
       Set<SModel> set = getModels(subDir);

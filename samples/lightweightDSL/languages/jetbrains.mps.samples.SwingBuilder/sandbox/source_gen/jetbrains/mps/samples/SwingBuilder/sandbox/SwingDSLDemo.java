@@ -9,8 +9,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
 import javax.swing.JTextField;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 
 public class SwingDSLDemo {
@@ -35,11 +33,7 @@ public class SwingDSLDemo {
         {
           final JTextField field = new JTextField();
           field.setColumns(10);
-          field.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent p0) {
-              fieldValue = field.getText();
-            }
-          });
+          field.addActionListener((p0) -> fieldValue = field.getText());
           p.add(field);
 
         }
@@ -52,11 +46,7 @@ public class SwingDSLDemo {
       }
       {
         JButton button = new JButton("Submit");
-        button.addActionListener(new ActionListener() {
-          public void actionPerformed(ActionEvent p0) {
-            clicked();
-          }
-        });
+        button.addActionListener((p0) -> clicked());
         frame.add(button);
       }
       frame.setVisible(true);

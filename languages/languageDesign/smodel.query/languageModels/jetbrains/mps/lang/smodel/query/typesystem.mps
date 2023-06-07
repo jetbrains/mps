@@ -76,6 +76,7 @@
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -201,7 +202,6 @@
       <concept id="1153944233411" name="jetbrains.mps.baseLanguage.collections.structure.ForEachVariableReference" flags="nn" index="2GrUjf">
         <reference id="1153944258490" name="variable" index="2Gs0qQ" />
       </concept>
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1205753243362" name="jetbrains.mps.baseLanguage.collections.structure.ChunkOperation" flags="nn" index="2WvAvU">
         <child id="1205753261887" name="length" index="2WvESB" />
       </concept>
@@ -649,14 +649,14 @@
                       <node concept="2OqwBi" id="3J6h25QRk9n" role="3clFbG">
                         <node concept="2yIwOk" id="72nsGSZeWDd" role="2OqNvi" />
                         <node concept="37vLTw" id="3J6h25QRjAQ" role="2Oq$k0">
-                          <ref role="3cqZAo" node="3J6h25QRjrI" resolve="it" />
+                          <ref role="3cqZAo" node="5W7E4fV0Wrv" />
                         </node>
                       </node>
                     </node>
                   </node>
-                  <node concept="Rh6nW" id="3J6h25QRjrI" role="1bW2Oz">
+                  <node concept="gl6BB" id="5W7E4fV0Wrv" role="1bW2Oz">
                     <property role="TrG5h" value="it" />
-                    <node concept="2jxLKc" id="3J6h25QRjrJ" role="1tU5fm" />
+                    <node concept="2jxLKc" id="5W7E4fV0Wrw" role="1tU5fm" />
                   </node>
                 </node>
               </node>
@@ -694,32 +694,32 @@
                               <node concept="2OqwBi" id="3J6h25QTeKd" role="3clFbG">
                                 <node concept="2OqwBi" id="3J6h25QTeKe" role="2Oq$k0">
                                   <node concept="37vLTw" id="3J6h25QTeKf" role="2Oq$k0">
-                                    <ref role="3cqZAo" node="3J6h25QTeKk" resolve="p" />
+                                    <ref role="3cqZAo" node="5W7E4fV0Wrx" />
                                   </node>
                                   <node concept="2yIwOk" id="5wSyoDt1ViQ" role="2OqNvi" />
                                 </node>
                                 <node concept="3O6GUB" id="3J6h25QTeKh" role="2OqNvi">
                                   <node concept="25Kdxt" id="3J6h25QTeKi" role="3QVz_e">
                                     <node concept="37vLTw" id="5VdAhx7TAkF" role="25KhWn">
-                                      <ref role="3cqZAo" node="3J6h25QTekh" resolve="c" />
+                                      <ref role="3cqZAo" node="5W7E4fV0Wrz" />
                                     </node>
                                   </node>
                                 </node>
                               </node>
                             </node>
                           </node>
-                          <node concept="Rh6nW" id="3J6h25QTeKk" role="1bW2Oz">
+                          <node concept="gl6BB" id="5W7E4fV0Wrx" role="1bW2Oz">
                             <property role="TrG5h" value="p" />
-                            <node concept="2jxLKc" id="3J6h25QTeKl" role="1tU5fm" />
+                            <node concept="2jxLKc" id="5W7E4fV0Wry" role="1tU5fm" />
                           </node>
                         </node>
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="Rh6nW" id="3J6h25QTekh" role="1bW2Oz">
+                <node concept="gl6BB" id="5W7E4fV0Wrz" role="1bW2Oz">
                   <property role="TrG5h" value="c" />
-                  <node concept="2jxLKc" id="3J6h25QTeki" role="1tU5fm" />
+                  <node concept="2jxLKc" id="5W7E4fV0Wr$" role="1tU5fm" />
                 </node>
               </node>
             </node>

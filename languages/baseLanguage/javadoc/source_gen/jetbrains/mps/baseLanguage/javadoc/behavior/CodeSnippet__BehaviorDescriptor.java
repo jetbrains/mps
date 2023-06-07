@@ -15,9 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -35,15 +33,7 @@ public final class CodeSnippet__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static String buildCommentText_id7Qt73fl2z8k(@NotNull SNode __thisNode__) {
 
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$DorC)).select(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return (String) BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(it);
-      }
-    }).foldLeft("", new ILeftCombinator<String, String>() {
-      public String combine(String s, String it) {
-        return it + "\n";
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$DorC)).select((it) -> (String) BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(it)).foldLeft("", (String s, String it) -> it + "\n");
   }
 
   /*package*/ CodeSnippet__BehaviorDescriptor() {

@@ -22,7 +22,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.build.mps.util.ModulePlugins;
 import jetbrains.mps.build.mps.util.MPSModulesClosure;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.build.util.DescendantsScope;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -63,11 +62,7 @@ public final class BuildSolutionRunnerAspect__BehaviorDescriptor extends BaseBHD
     Iterable<SNode> originalModules = Sequence.<SNode>singleton(SLinkOperations.getTarget(__thisNode__, LINKS.solution$MOiH));
     ModulePlugins plugins = new ModulePlugins(project);
     MPSModulesClosure runtimeClosure = new MPSModulesClosure(originalModules, new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits().setIncludeInitial()).designtimeClosure();
-    List<SNode> additionalPlugins = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.requiredPlugin$RiWU)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.plugin$9MhS);
-      }
-    }).toListSequence();
+    List<SNode> additionalPlugins = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.requiredPlugin$RiWU)).select((it) -> SLinkOperations.getTarget(it, LINKS.plugin$9MhS)).toList();
     plugins.collect(runtimeClosure.getAllModules(), additionalPlugins);
     for (SNode plugin : Sequence.fromIterable(plugins.getDependency())) {
       SNode pluginArtifact = SNodeOperations.as(artifacts.findArtifact(plugin), CONCEPTS.BuildLayout_Node$Rb);

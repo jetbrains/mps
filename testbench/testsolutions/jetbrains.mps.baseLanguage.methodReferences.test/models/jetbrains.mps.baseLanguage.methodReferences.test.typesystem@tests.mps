@@ -4,7 +4,7 @@
   <languages>
     <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="6" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="acfc188d-d5d6-4598-b370-6f4a983f05b2" name="jetbrains.mps.baseLanguage.methodReferences" version="0" />
     <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
   </languages>
@@ -1885,14 +1885,14 @@
                 <node concept="3uibUv" id="1jNyE7GAAVt" role="1tU5fm">
                   <ref role="3uigEE" to="33ny:~ArrayList" resolve="ArrayList" />
                   <node concept="3uibUv" id="1jNyE7GACBk" role="11_B2D">
-                    <ref role="3uigEE" node="1jNyE7GzRYs" resolve="FileContainer" />
+                    <ref role="3uigEE" node="1jNyE7GzRYs" resolve="Streams.FileContainer" />
                   </node>
                 </node>
                 <node concept="2ShNRf" id="1jNyE7GAESZ" role="33vP2m">
                   <node concept="1pGfFk" id="1jNyE7GAESP" role="2ShVmc">
                     <ref role="37wK5l" to="33ny:~ArrayList.&lt;init&gt;()" resolve="ArrayList" />
                     <node concept="3uibUv" id="1jNyE7GAESQ" role="1pMfVU">
-                      <ref role="3uigEE" node="1jNyE7GzRYs" resolve="FileContainer" />
+                      <ref role="3uigEE" node="1jNyE7GzRYs" resolve="Streams.FileContainer" />
                     </node>
                   </node>
                 </node>
@@ -1904,10 +1904,10 @@
                   <node concept="liA8E" id="4Qup9OsSJhW" role="2OqNvi">
                     <ref role="37wK5l" to="1ctc:~Stream.map(java.util.function.Function)" resolve="map" />
                     <node concept="37Ijox" id="3WnEHxCLmut" role="37wK5m">
-                      <ref role="37Ijqf" node="1jNyE7GzUkC" resolve="FileContainer" />
+                      <ref role="37Ijqf" node="1jNyE7GzUkC" resolve="Streams.FileContainer" />
                       <node concept="2FaPjH" id="3WnEHxCLmuv" role="wWaWy">
                         <node concept="3uibUv" id="3WnEHxCLmuw" role="2FaQuo">
-                          <ref role="3uigEE" node="1jNyE7GzRYs" resolve="FileContainer" />
+                          <ref role="3uigEE" node="1jNyE7GzRYs" resolve="Streams.FileContainer" />
                         </node>
                       </node>
                     </node>

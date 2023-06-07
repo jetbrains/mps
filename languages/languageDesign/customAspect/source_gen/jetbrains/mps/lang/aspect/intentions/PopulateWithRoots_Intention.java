@@ -22,15 +22,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.lang.smodel.behavior.DevkitIdentity__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.behavior.LanguageIdentity__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
@@ -83,24 +78,8 @@ public final class PopulateWithRoots_Intention extends AbstractIntentionDescript
           ListSequence.fromList(mainLanguages).addSequence(CollectionSequence.fromCollection(dk.getExportedLanguageIds()));
         }
       }
-      ListSequence.fromList(SLinkOperations.getChildren(slad, LINKS.mainLanguages$IUpc)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          ListSequence.fromList(mainLanguages).addElement(LanguageIdentity__BehaviorDescriptor.getLanguage_id34EJa6aIcyj.invoke(it));
-        }
-      });
-      for (SNode ncd : ListSequence.fromList(mainLanguages).select(new ISelector<SLanguage, SModule>() {
-        public SModule select(SLanguage it) {
-          return it.getSourceModuleReference().resolve(repo);
-        }
-      }).ofType(Language.class).translate(new ITranslator2<Language, SNode>() {
-        public Iterable<SNode> translate(Language it) {
-          return SModelOperations.roots(SModuleOperations.getAspect(it, "structure"), CONCEPTS.ConceptDeclaration$gH);
-        }
-      }).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode cd) {
-          return SPropertyOperations.getBoolean(cd, PROPS.rootable$_9pz);
-        }
-      }).subtract(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, LINKS.primary$7jJ7), LINKS.cpnt$Miim))).subtract(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, LINKS.secondary$7kd9), LINKS.cpnt$Miim))).subtract(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, LINKS.auxiliary$7pPx), LINKS.cpnt$Miim)))) {
+      ListSequence.fromList(SLinkOperations.getChildren(slad, LINKS.mainLanguages$IUpc)).visitAll((it) -> ListSequence.fromList(mainLanguages).addElement(LanguageIdentity__BehaviorDescriptor.getLanguage_id34EJa6aIcyj.invoke(it)));
+      for (SNode ncd : ListSequence.fromList(mainLanguages).select((it) -> it.getSourceModuleReference().resolve(repo)).ofType(Language.class).translate((it) -> SModelOperations.roots(SModuleOperations.getAspect(it, "structure"), CONCEPTS.ConceptDeclaration$gH)).where((cd) -> SPropertyOperations.getBoolean(cd, PROPS.rootable$_9pz)).subtract(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, LINKS.primary$7jJ7), LINKS.cpnt$Miim))).subtract(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, LINKS.secondary$7kd9), LINKS.cpnt$Miim))).subtract(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, LINKS.auxiliary$7pPx), LINKS.cpnt$Miim)))) {
         SNode cdr = SLinkOperations.addNewChild(node, LINKS.primary$7jJ7, CONCEPTS.ConceptDeclarationReference$wU);
         SLinkOperations.setTarget(cdr, LINKS.cpnt$Miim, ncd);
       }

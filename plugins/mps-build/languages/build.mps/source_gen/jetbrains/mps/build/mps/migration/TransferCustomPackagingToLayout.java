@@ -18,7 +18,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.logging.rt.LogContext;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -47,11 +46,7 @@ public class TransferCustomPackagingToLayout extends MigrationScriptBase {
     {
       SearchScope scope_2skbva_a0e = CommandUtil.createScope(m);
       final SearchScope scope_2skbva_a0e_0 = new EditableFilteringScope(scope_2skbva_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_2skbva_a0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_2skbva_a0e_0;
       for (SNode ideaPlugin : CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BuildMps_IdeaPlugin$po, false)) {
         boolean autoPackaging = true;
         List<SNode> modulesToPackage = ListSequence.fromList(new ArrayList<SNode>());
@@ -89,11 +84,7 @@ public class TransferCustomPackagingToLayout extends MigrationScriptBase {
   private void addModulePackaging(final SNode moduleSource, SNode container) {
     if (!(SNodeOperations.isInstanceOf(moduleSource, CONCEPTS.BuildMps_Generator$RQ))) {
       List<SNode> children = SLinkOperations.getChildren(container, LINKS.children$aMRO);
-      if (ListSequence.fromList(children).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMpsLayout_ModuleJars$MZ) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.BuildMpsLayout_ModuleJars$MZ), LINKS.module$iRYT) == moduleSource;
-        }
-      })) {
+      if (ListSequence.fromList(children).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMpsLayout_ModuleJars$MZ) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.BuildMpsLayout_ModuleJars$MZ), LINKS.module$iRYT) == moduleSource)) {
         return;
       }
       ListSequence.fromList(children).addElement(createBuildMpsLayout_ModuleJars_2skbva_a0a2a0a0(moduleSource));
@@ -116,11 +107,7 @@ public class TransferCustomPackagingToLayout extends MigrationScriptBase {
           }
           for (final SNode groupToPackage : ListSequence.fromList(groupsToPackage)) {
             List<SNode> modulesToInsertIntoLayout = ListSequence.fromList(new ArrayList<SNode>());
-            ListSequence.fromList(modulesToInsertIntoLayout).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(groupToPackage, LINKS.group$qLbS), LINKS.modules$JlQo)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return !(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(groupToPackage, LINKS.customPackaging$a6ku), LINKS.target$1hyd)).contains(it));
-              }
-            }).toListSequence());
+            ListSequence.fromList(modulesToInsertIntoLayout).addSequence(ListSequence.fromList(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(groupToPackage, LINKS.group$qLbS), LINKS.modules$JlQo)).where((it) -> !(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(groupToPackage, LINKS.customPackaging$a6ku), LINKS.target$1hyd)).contains(it))).toList()));
             if (ListSequence.fromList(modulesToInsertIntoLayout).isNotEmpty()) {
               SNode groupFolder = findOrCreateFolder(languagesFolder, SPropertyOperations.getString(SLinkOperations.getTarget(groupToPackage, LINKS.group$qLbS), PROPS.name$MnvL));
               for (SNode groupModule : ListSequence.fromList(modulesToInsertIntoLayout)) {
@@ -144,11 +131,7 @@ public class TransferCustomPackagingToLayout extends MigrationScriptBase {
   }
 
   private SNode findOrCreateFolder(SNode container, final String name) {
-    SNode folder = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(container, LINKS.children$aMRO), CONCEPTS.BuildLayout_Folder$AH)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(it, LINKS.containerName$ES_Y), null).equals(name);
-      }
-    });
+    SNode folder = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(container, LINKS.children$aMRO), CONCEPTS.BuildLayout_Folder$AH)).findFirst((it) -> BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(it, LINKS.containerName$ES_Y), null).equals(name));
     if (folder == null) {
       folder = _quotation_createNode_2skbva_a0a0b0f(name);
       ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.children$aMRO)).addElement(folder);

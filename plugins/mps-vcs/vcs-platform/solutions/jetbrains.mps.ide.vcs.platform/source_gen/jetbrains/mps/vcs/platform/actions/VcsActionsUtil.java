@@ -45,15 +45,13 @@ import com.intellij.openapi.vcs.changes.BinaryContentRevision;
 import java.io.IOException;
 import com.intellij.openapi.vcs.impl.VcsFileStatusProvider;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import com.intellij.openapi.vcs.FileStatus;
+import java.util.Iterator;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.vcs.annotate.AnnotationColumn;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.leftHighlighter.AbstractLeftColumn;
@@ -194,104 +192,88 @@ public final class VcsActionsUtil {
   }
 
   private static Iterable<VirtualFile> collectUnversionedFiles(final VcsFileStatusProvider fileStatusProvider, @NotNull final VirtualFile dir) {
-    return new _FunctionTypes._return_P0_E0<Iterable<VirtualFile>>() {
-      public Iterable<VirtualFile> invoke() {
-        return new Iterable<VirtualFile>() {
-          public Iterator<VirtualFile> iterator() {
-            return new YieldingIterator<VirtualFile>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
+    return ((_FunctionTypes._return_P0_E0<Iterable<VirtualFile>>) () -> {
+      return (Iterable<VirtualFile>) () -> {
+        return new YieldingIterator<VirtualFile>() {
+          private int __CP__ = 0;
+          protected boolean moveToNext() {
 __loop__:
-                do {
+            do {
 __switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 4:
-                      this._5_child_it = Sequence.fromIterable(Sequence.fromArray(dir.getChildren())).iterator();
-                    case 6:
-                      if (!(this._5_child_it.hasNext())) {
-                        this.__CP__ = 1;
-                        break;
-                      }
-                      this._5_child = this._5_child_it.next();
-                      this.__CP__ = 7;
-                      break;
-                    case 8:
-                      this._8__yield_brpb5o_a0b0a0a0o_it = Sequence.fromIterable(collectUnversionedFiles(fileStatusProvider, _5_child)).iterator();
-                    case 9:
-                      if (!(this._8__yield_brpb5o_a0b0a0a0o_it.hasNext())) {
-                        this.__CP__ = 6;
-                        break;
-                      }
-                      this._8__yield_brpb5o_a0b0a0a0o = this._8__yield_brpb5o_a0b0a0a0o_it.next();
-                      this.__CP__ = 10;
-                      break;
-                    case 2:
-                      if (fileStatusProvider.getFileStatus(dir) == FileStatus.UNKNOWN) {
-                        this.__CP__ = 3;
-                        break;
-                      }
-                      this.__CP__ = 4;
-                      break;
-                    case 5:
-                      this.__CP__ = 4;
-                      this.yield(dir);
-                      return true;
-                    case 11:
-                      this.__CP__ = 9;
-                      this.yield(_8__yield_brpb5o_a0b0a0a0o);
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    case 3:
-                      this.__CP__ = 5;
-                      break;
-                    case 7:
-                      this.__CP__ = 8;
-                      break;
-                    case 10:
-                      this.__CP__ = 11;
-                      break;
-                    default:
-                      break __loop__;
+              switch (this.__CP__) {
+                case -1:
+                  assert false : "Internal error";
+                  return false;
+                case 4:
+                  this._5_child_it = Sequence.fromIterable(Sequence.fromArray(dir.getChildren())).iterator();
+                case 6:
+                  if (!(this._5_child_it.hasNext())) {
+                    this.__CP__ = 1;
+                    break;
                   }
-                } while (true);
-                return false;
+                  this._5_child = this._5_child_it.next();
+                  this.__CP__ = 7;
+                  break;
+                case 8:
+                  this._8__yield_brpb5o_a0b0a0a0o_it = Sequence.fromIterable(collectUnversionedFiles(fileStatusProvider, _5_child)).iterator();
+                case 9:
+                  if (!(this._8__yield_brpb5o_a0b0a0a0o_it.hasNext())) {
+                    this.__CP__ = 6;
+                    break;
+                  }
+                  this._8__yield_brpb5o_a0b0a0a0o = this._8__yield_brpb5o_a0b0a0a0o_it.next();
+                  this.__CP__ = 10;
+                  break;
+                case 2:
+                  if (fileStatusProvider.getFileStatus(dir) == FileStatus.UNKNOWN) {
+                    this.__CP__ = 3;
+                    break;
+                  }
+                  this.__CP__ = 4;
+                  break;
+                case 5:
+                  this.__CP__ = 4;
+                  this.yield(dir);
+                  return true;
+                case 11:
+                  this.__CP__ = 9;
+                  this.yield(_8__yield_brpb5o_a0b0a0a0o);
+                  return true;
+                case 0:
+                  this.__CP__ = 2;
+                  break;
+                case 3:
+                  this.__CP__ = 5;
+                  break;
+                case 7:
+                  this.__CP__ = 8;
+                  break;
+                case 10:
+                  this.__CP__ = 11;
+                  break;
+                default:
+                  break __loop__;
               }
-              private VirtualFile _5_child;
-              private Iterator<VirtualFile> _5_child_it;
-              private VirtualFile _8__yield_brpb5o_a0b0a0a0o;
-              private Iterator<VirtualFile> _8__yield_brpb5o_a0b0a0a0o_it;
-            };
+            } while (true);
+            return false;
           }
+          private VirtualFile _5_child;
+          private Iterator<VirtualFile> _5_child_it;
+          private VirtualFile _8__yield_brpb5o_a0b0a0a0o;
+          private Iterator<VirtualFile> _8__yield_brpb5o_a0b0a0a0o_it;
         };
-      }
-    }.invoke();
+      };
+    }).invoke();
   }
 
   public static Iterable<VirtualFile> getUnversionedFilesForModules(@NotNull MPSProject mpsProject, List<SModule> module) {
     final VcsFileStatusProvider statusProvider = VcsFileStatusProvider.getInstance(mpsProject.getProject());
     final FileSystemBridge fsb = mpsProject.getFileSystem();
-    return ListSequence.fromList(module).ofType(AbstractModule.class).select(new ISelector<AbstractModule, IFile>() {
-      public IFile select(AbstractModule this0) {
-        return this0.getDescriptorFile();
-      }
-    }).where(new NotNullWhereFilter<IFile>()).select(new ISelector<IFile, IFile>() {
-      public IFile select(IFile this0) {
-        return this0.getParent();
-      }
-    }).select(new ISelector<IFile, VirtualFile>() {
-      public VirtualFile select(@NotNull IFile p1) {
+    return ListSequence.fromList(module).ofType(AbstractModule.class).select((this0) -> this0.getDescriptorFile()).where(new NotNullWhereFilter()).select((this0) -> this0.getParent()).select(new _FunctionTypes._return_P1_E0<VirtualFile, IFile>() {
+      public VirtualFile invoke(@NotNull IFile p1) {
         return fsb.asVirtualFile(p1);
       }
-    }).where(new NotNullWhereFilter<VirtualFile>()).translate(new ITranslator2<VirtualFile, VirtualFile>() {
-      public Iterable<VirtualFile> translate(VirtualFile vf) {
-        return collectUnversionedFiles(statusProvider, vf);
-      }
-    });
+    }).where(new NotNullWhereFilter()).translate((vf) -> collectUnversionedFiles(statusProvider, vf));
   }
 
   @Nullable

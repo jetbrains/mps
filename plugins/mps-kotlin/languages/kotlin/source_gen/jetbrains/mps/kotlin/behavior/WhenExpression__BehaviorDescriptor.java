@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.kotlin.api.members.SignatureCollector;
 import jetbrains.mps.kotlin.signatures.PropertySignature;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -34,7 +33,7 @@ public final class WhenExpression__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static boolean collectScope_id7DyvjiA20yV(@NotNull final SNode __thisNode__, ScopeCollector collector, SNode childNode) {
     if ((SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$jXBd) != null)) {
-      collector.declareCollectedScope((SignatureCollector sigCollector) -> PropertySignature.declareTo(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$jXBd), null, sigCollector));
+      collector.declareCollectedScope((sigCollector) -> PropertySignature.declareTo(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$jXBd), null, sigCollector));
     }
 
     return true;

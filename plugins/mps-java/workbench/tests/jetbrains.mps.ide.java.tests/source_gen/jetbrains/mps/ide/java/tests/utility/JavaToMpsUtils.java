@@ -50,7 +50,6 @@ import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -337,16 +336,8 @@ public class JavaToMpsUtils {
     List<SNode> binRoots = SModelOperations.roots(left, CONCEPTS.Classifier$Ix);
     List<SNode> srcRoots = SModelOperations.roots(right, CONCEPTS.Classifier$Ix);
 
-    binRoots = ListSequence.fromList(binRoots).sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    }, true).toListSequence();
-    srcRoots = ListSequence.fromList(srcRoots).sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    }, true).toListSequence();
+    binRoots = ListSequence.fromList(binRoots).sort((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL), true).toList();
+    srcRoots = ListSequence.fromList(srcRoots).sort((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL), true).toList();
 
     List<NodeDifference> diff = new NodesMatcher(binRoots, srcRoots).diff();
     if (ListSequence.fromList(diff).isEmpty()) {

@@ -6,11 +6,9 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.List;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -25,19 +23,13 @@ public class AttributeOperations {
 
   public static Iterable<SNode> getChildNodesAndAttributes(SNode parent, final SContainmentLink link) {
     Iterable<? extends SNode> children = parent.getChildren();
-    return Sequence.fromIterable(children).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        if (isChildAttribute(it)) {
-          return Objects.equals(((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(it, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodIdV2.create("getLink", 709746936026609871L, 0x553941aeb020c32eL))), link);
-        } else {
-          return Objects.equals(SNodeOperations.getContainingLink(it), link);
-        }
+    return Sequence.fromIterable(children).where((SNode it) -> {
+      if (isChildAttribute(it)) {
+        return Objects.equals(((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(it, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodIdV2.create("getLink", 709746936026609871L, 0x553941aeb020c32eL))), link);
+      } else {
+        return Objects.equals(SNodeOperations.getContainingLink(it), link);
       }
-    }).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return it;
-      }
-    });
+    }).select((it) -> it);
   }
 
 
@@ -73,25 +65,13 @@ public class AttributeOperations {
     return SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43), CONCEPTS.NodeAttribute$x2);
   }
   public static Iterable<SNode> getPropertyAttributes(SNode node, final SProperty property) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43), CONCEPTS.PropertyAttribute$Gb)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(((SProperty) BHReflection.invoke0(it, CONCEPTS.PropertyAttribute$Gb, SMethodIdV2.create("getProperty", 1341860900488756504L, 0x553941aeb020c32eL))), property);
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43), CONCEPTS.PropertyAttribute$Gb)).where((it) -> Objects.equals(((SProperty) BHReflection.invoke0(it, CONCEPTS.PropertyAttribute$Gb, SMethodIdV2.create("getProperty", 1341860900488756504L, 0x553941aeb020c32eL))), property));
   }
   public static Iterable<SNode> getLinkAttributes(SNode node, final SReferenceLink link) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43), CONCEPTS.LinkAttribute$v_)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(((SReferenceLink) BHReflection.invoke0(it, CONCEPTS.LinkAttribute$v_, SMethodIdV2.create("getLink", 1341860900489573894L, 0x553941aeb020c32eL))), link);
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43), CONCEPTS.LinkAttribute$v_)).where((it) -> Objects.equals(((SReferenceLink) BHReflection.invoke0(it, CONCEPTS.LinkAttribute$v_, SMethodIdV2.create("getLink", 1341860900489573894L, 0x553941aeb020c32eL))), link));
   }
   public static Iterable<SNode> getChildAttributes(SNode node, final SContainmentLink link) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43), CONCEPTS.ChildAttribute$m8)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(((SContainmentLink) BHReflection.invoke0(it, CONCEPTS.ChildAttribute$m8, SMethodIdV2.create("getLink", 709746936026609871L, 0x553941aeb020c32eL))), link);
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43), CONCEPTS.ChildAttribute$m8)).where((it) -> Objects.equals(((SContainmentLink) BHReflection.invoke0(it, CONCEPTS.ChildAttribute$m8, SMethodIdV2.create("getLink", 709746936026609871L, 0x553941aeb020c32eL))), link));
   }
   public static boolean hasPropertyAttributes(SNode node) {
     return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43), CONCEPTS.PropertyAttribute$Gb)).isNotEmpty();

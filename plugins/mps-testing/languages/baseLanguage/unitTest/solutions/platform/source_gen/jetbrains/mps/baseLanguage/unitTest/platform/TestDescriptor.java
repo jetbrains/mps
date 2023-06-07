@@ -71,7 +71,7 @@ public class TestDescriptor {
   }
 
   public Optional<TestDescriptor> selectTest(final TestSource testSource) {
-    return myTests.stream().filter((TestDescriptor descriptor) -> Objects.equals(descriptor.getSource(), testSource)).findFirst();
+    return myTests.stream().filter((descriptor) -> Objects.equals(descriptor.getSource(), testSource)).findFirst();
   }
 
   protected void addTest(TestDescriptor descriptor) {

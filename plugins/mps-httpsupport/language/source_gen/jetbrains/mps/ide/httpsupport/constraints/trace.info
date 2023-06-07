@@ -113,7 +113,7 @@
       <node id="4622937352052264811" at="108,0,109,0" concept="7" trace="requestHandler$_UKL" />
       <node id="4622937352052264811" at="35,0,38,0" concept="0" trace="ParameterInitializer_Constraints#()V" />
       <node id="4622937352052264811" at="45,0,48,9" concept="2" />
-      <node id="6836281137582836999" at="74,0,77,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="6836281137582836999" at="74,0,77,0" concept="3" trace="invoke#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Boolean;" />
       <node id="4622937352052264811" at="88,0,91,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
       <node id="6836281137582837002" at="91,107,94,5" concept="2" />
       <node id="4622937352052268798" at="61,0,65,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />

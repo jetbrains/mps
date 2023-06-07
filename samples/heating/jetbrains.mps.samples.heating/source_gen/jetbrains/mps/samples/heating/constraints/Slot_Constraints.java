@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -40,11 +39,7 @@ public class Slot_Constraints extends BaseConstraintsDescriptor {
       return result;
     }
     private static boolean staticValidateProperty(final SNode node, final int propertyValue) {
-      return propertyValue >= 0 && propertyValue <= 24 && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.DailyPlan$zP), LINKS.items$4wAy)).all(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(it, node) || SPropertyOperations.getInteger(it, PROPS.start$f2z3) != propertyValue;
-        }
-      });
+      return propertyValue >= 0 && propertyValue <= 24 && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.DailyPlan$zP), LINKS.items$4wAy)).all((it) -> Objects.equals(it, node) || SPropertyOperations.getInteger(it, PROPS.start$f2z3) != propertyValue);
     }
   }
   @Override

@@ -15,11 +15,7 @@ public class ElsifClause_DataFlow extends DataFlowBuilder {
     _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.condition$k0T9));
     _context.getBuilder().emitIfJump(_context.getBuilder().after(_context.getNode()), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1206536669330");
     _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.statementList$neQf));
-    _context.getBuilder().emitMayBeUnreachable(new Runnable() {
-      public void run() {
-        _context.getBuilder().emitJump(_context.getBuilder().after(ElsifClause__BehaviorDescriptor.getIfStatement_idhEwIDu9.invoke(_context.getNode())), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1217865542485");
-      }
-    });
+    _context.getBuilder().emitMayBeUnreachable(() -> _context.getBuilder().emitJump(_context.getBuilder().after(ElsifClause__BehaviorDescriptor.getIfStatement_idhEwIDu9.invoke(_context.getNode())), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1217865542485"));
   }
 
   private static final class LINKS {

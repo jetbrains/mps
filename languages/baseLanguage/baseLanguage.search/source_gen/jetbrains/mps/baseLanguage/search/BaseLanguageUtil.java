@@ -9,7 +9,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.List;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -31,8 +31,8 @@ public class BaseLanguageUtil {
     if ("java.lang.Object".equals(NameUtil.nodeFQName(toClassifier))) {
       return true;
     }
-    return ListSequence.fromList(((List<SNode>) BHReflection.invoke0(fromClassifier, CONCEPTS.Classifier$Ix, SMethodIdV2.create("getExtendedClassifierTypes", 2201875424516179426L, 0x5745e3015c8914d3L)))).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
+    return ListSequence.fromList(((List<SNode>) BHReflection.invoke0(fromClassifier, CONCEPTS.Classifier$Ix, SMethodIdV2.create("getExtendedClassifierTypes", 2201875424516179426L, 0x5745e3015c8914d3L)))).select(new _FunctionTypes._return_P1_E0<SNode, SNode>() {
+      public SNode invoke(SNode it) {
         return SLinkOperations.getTarget(it, LINKS.classifier$cxMr);
       }
     }).contains(toClassifier);

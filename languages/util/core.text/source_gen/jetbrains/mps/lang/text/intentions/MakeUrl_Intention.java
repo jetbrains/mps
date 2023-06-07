@@ -15,7 +15,6 @@ import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -62,16 +61,8 @@ public final class MakeUrl_Intention extends AbstractIntentionDescriptor impleme
 
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode firstLetter = Sequence.fromIterable(SNodeOperations.ofConcept(ListSequence.fromList(SNodeOperations.getPrevSiblings(node, true)).reversedList(), CONCEPTS.TextualElement$9C)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(it), CONCEPTS.Letter$kd)) || (SNodeOperations.getPrevSibling(it) == null) || Objects.equals(trim_2ijzk7_a0a0a0a0a0a0a0a4j(SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getPrevSibling(it), CONCEPTS.Letter$kd), PROPS.value$X7Tp)), "");
-        }
-      });
-      SNode lastLetter = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getNextSiblings(node, true), CONCEPTS.TextualElement$9C)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(it), CONCEPTS.Letter$kd)) || (SNodeOperations.getNextSibling(it) == null) || Objects.equals(trim_2ijzk7_a0a0a0a0a0a0a1a4j(SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getNextSibling(it), CONCEPTS.Letter$kd), PROPS.value$X7Tp)), "");
-        }
-      });
+      SNode firstLetter = Sequence.fromIterable(SNodeOperations.ofConcept(ListSequence.fromList(SNodeOperations.getPrevSiblings(node, true)).reversedList(), CONCEPTS.TextualElement$9C)).findFirst((it) -> !(SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(it), CONCEPTS.Letter$kd)) || (SNodeOperations.getPrevSibling(it) == null) || Objects.equals(trim_2ijzk7_a0a0a0a0a0a0e9(SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getPrevSibling(it), CONCEPTS.Letter$kd), PROPS.value$X7Tp)), ""));
+      SNode lastLetter = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getNextSiblings(node, true), CONCEPTS.TextualElement$9C)).findFirst((it) -> !(SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(it), CONCEPTS.Letter$kd)) || (SNodeOperations.getNextSibling(it) == null) || Objects.equals(trim_2ijzk7_a0a0a0a0a0b0e9(SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getNextSibling(it), CONCEPTS.Letter$kd), PROPS.value$X7Tp)), ""));
       SNode u = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x739f6249ff2c0691L, "jetbrains.mps.lang.text.structure.UrlTextualElement"));
       SLinkOperations.setTarget(u, LINKS.text$A10X, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph")));
       SNodeOperations.insertPrevSiblingChild(firstLetter, u);
@@ -106,10 +97,10 @@ public final class MakeUrl_Intention extends AbstractIntentionDescriptor impleme
     }
 
   }
-  public static String trim_2ijzk7_a0a0a0a0a0a0a0a4j(String str) {
+  public static String trim_2ijzk7_a0a0a0a0a0a0e9(String str) {
     return (str == null ? null : str.trim());
   }
-  public static String trim_2ijzk7_a0a0a0a0a0a0a1a4j(String str) {
+  public static String trim_2ijzk7_a0a0a0a0a0b0e9(String str) {
     return (str == null ? null : str.trim());
   }
   public static String trim_2ijzk7_a0a0a0a0i9(String str) {

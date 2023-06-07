@@ -13,7 +13,6 @@ import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -77,11 +76,7 @@ public class PresentationUtil {
       return SConceptOperations.conceptAlias(SNodeOperations.getConcept(operation));
     }
     if (SNodeOperations.isInstanceOf(operation, CONCEPTS.IMethodCall$M9)) {
-      return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(operation, CONCEPTS.IMethodCall$M9), LINKS.baseMethodDeclaration$pyYw), PROPS.name$MnvL) + "(" + ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(operation, CONCEPTS.IMethodCall$M9), LINKS.actualArgument$pzdx)).foldLeft("", new ILeftCombinator<SNode, String>() {
-        public String combine(String s, SNode it) {
-          return (((s == null || s.length() == 0) ? "" : s + ",")) + getExpressionPresentation(it);
-        }
-      }) + ")";
+      return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(operation, CONCEPTS.IMethodCall$M9), LINKS.baseMethodDeclaration$pyYw), PROPS.name$MnvL) + "(" + ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(operation, CONCEPTS.IMethodCall$M9), LINKS.actualArgument$pzdx)).foldLeft("", (String s, SNode it) -> (((s == null || s.length() == 0) ? "" : s + ",")) + getExpressionPresentation(it)) + ")";
     }
     return ((String) BHReflection.invoke0(operation, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getPresentation", 1213877396640L, 0x553941aeb020c32eL)));
   }

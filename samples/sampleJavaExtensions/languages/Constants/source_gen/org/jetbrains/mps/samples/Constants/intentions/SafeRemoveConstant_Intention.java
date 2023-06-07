@@ -15,10 +15,8 @@ import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -59,16 +57,8 @@ public final class SafeRemoveConstant_Intention extends AbstractIntentionDescrip
 
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      Iterable<SNode> allReferences = ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(node, CONCEPTS.Constants$Xo, false, false), CONCEPTS.ConstantReference$t4, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.original$FCV3) == node;
-        }
-      });
-      Sequence.fromIterable(allReferences).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNodeOperations.replaceWithAnother(it, SNodeOperations.copyNode(SLinkOperations.getTarget(node, LINKS.initializer$uNcK)));
-        }
-      });
+      Iterable<SNode> allReferences = ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(node, CONCEPTS.Constants$Xo, false, false), CONCEPTS.ConstantReference$t4, false, new SAbstractConcept[]{})).where((it) -> SLinkOperations.getTarget(it, LINKS.original$FCV3) == node);
+      Sequence.fromIterable(allReferences).visitAll((it) -> SNodeOperations.replaceWithAnother(it, SNodeOperations.copyNode(SLinkOperations.getTarget(node, LINKS.initializer$uNcK))));
       SNodeOperations.deleteNode(node);
     }
 

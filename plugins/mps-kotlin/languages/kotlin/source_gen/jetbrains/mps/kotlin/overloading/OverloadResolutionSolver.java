@@ -12,12 +12,8 @@ import jetbrains.mps.kotlin.api.declaration.FunctionDeclaration;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.kotlin.behavior.TypeReference;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.kotlin.signatures.FunctionSignature;
-import jetbrains.mps.kotlin.api.members.SourcedSignature;
-import jetbrains.mps.kotlin.signatures.MemberSignature;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 
 /**
  * This class handles overload resolution based on Kotlin specifications.
@@ -57,11 +53,7 @@ public class OverloadResolutionSolver {
     if (!(areReceiverTypeComputed)) {
       areReceiverTypeComputed = true;
       Iterable<TypeReference> receiverType = myCall.getReceiverTypes();
-      myCachedReceiverTypes = Sequence.fromIterable(receiverType).where(new NotNullWhereFilter<TypeReference>()).select(new ISelector<TypeReference, SNode>() {
-        public SNode select(TypeReference it) {
-          return it.compute();
-        }
-      }).toListSequence();
+      myCachedReceiverTypes = Sequence.fromIterable(receiverType).where(new NotNullWhereFilter()).select((it) -> it.compute()).toList();
     }
 
     // Actual resolution
@@ -91,22 +83,10 @@ public class OverloadResolutionSolver {
     }
 
     // Use the scope provider for the element to get the result
-    Iterable<SignatureScope> scopes = Sequence.fromIterable(myScopeProvider.invoke()).where(new NotNullWhereFilter<SignatureScope>());
+    Iterable<SignatureScope> scopes = Sequence.fromIterable(myScopeProvider.invoke()).where(new NotNullWhereFilter());
     for (SignatureScope scope : Sequence.fromIterable(scopes)) {
-      Iterable<FunctionSignature> signatures = Sequence.fromIterable(scope.getElements(myFunctionName)).select(new ISelector<SourcedSignature, MemberSignature>() {
-        public MemberSignature select(SourcedSignature it) {
-          return it.getSignature();
-        }
-      }).ofType(FunctionSignature.class).where(new IWhereFilter<FunctionSignature>() {
-        public boolean accept(FunctionSignature it) {
-          return it.getFunctionDeclaration().getName().length() == myFunctionName.length();
-        }
-      });
-      FunctionDeclaration result = inspectSet(Sequence.fromIterable(signatures).select(new ISelector<FunctionSignature, FunctionDeclaration>() {
-        public FunctionDeclaration select(FunctionSignature it) {
-          return it.getFunctionDeclaration();
-        }
-      }));
+      Iterable<FunctionSignature> signatures = Sequence.fromIterable(scope.getElements(myFunctionName)).select((it) -> it.getSignature()).ofType(FunctionSignature.class).where((it) -> it.getFunctionDeclaration().getName().length() == myFunctionName.length());
+      FunctionDeclaration result = inspectSet(Sequence.fromIterable(signatures).select((it) -> it.getFunctionDeclaration()));
 
       if (result != null) {
         return result;

@@ -14,7 +14,6 @@ import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
@@ -56,11 +55,7 @@ public final class MoveUpIntoIfBranches_Intention extends AbstractIntentionDescr
 
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode ifStmt = SNodeOperations.as(ListSequence.fromList(SNodeOperations.getPrevSiblings(node, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(it)), CONCEPTS.Statement$P6));
-        }
-      }).last(), CONCEPTS.IfStatement$Q4);
+      SNode ifStmt = SNodeOperations.as(ListSequence.fromList(SNodeOperations.getPrevSiblings(node, false)).where((it) -> !(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(it)), CONCEPTS.Statement$P6))).last(), CONCEPTS.IfStatement$Q4);
       SNodeOperations.deleteNode(node);
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ifStmt, LINKS.ifTrue$5Rg8), LINKS.statement$53DE)).addElement(node);
 
@@ -98,11 +93,7 @@ public final class MoveUpIntoIfBranches_Intention extends AbstractIntentionDescr
     }
 
     private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-      return SNodeOperations.isInstanceOf(ListSequence.fromList(SNodeOperations.getPrevSiblings(node, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(it)), CONCEPTS.Statement$P6));
-        }
-      }).last(), CONCEPTS.IfStatement$Q4);
+      return SNodeOperations.isInstanceOf(ListSequence.fromList(SNodeOperations.getPrevSiblings(node, false)).where((it) -> !(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(it)), CONCEPTS.Statement$P6))).last(), CONCEPTS.IfStatement$Q4);
     }
 
 

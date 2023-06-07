@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
@@ -234,6 +234,7 @@
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -285,7 +286,6 @@
       <concept id="1237721394592" name="jetbrains.mps.baseLanguage.collections.structure.AbstractContainerCreator" flags="nn" index="HWqM0">
         <child id="1237721435807" name="elementType" index="HW$YZ" />
       </concept>
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1205679737078" name="jetbrains.mps.baseLanguage.collections.structure.SortOperation" flags="nn" index="2S7cBI">
         <child id="1205679832066" name="ascending" index="2S7zOq" />
       </concept>
@@ -856,15 +856,15 @@
                             <node concept="liA8E" id="Jpw4evuxrU" role="2OqNvi">
                               <ref role="37wK5l" to="4hrd:~FileSystemBridge.asVirtualFile(jetbrains.mps.vfs.IFile)" resolve="asVirtualFile" />
                               <node concept="37vLTw" id="Jpw4evuxSE" role="37wK5m">
-                                <ref role="3cqZAo" node="2LgKyNIWWdX" resolve="f" />
+                                <ref role="3cqZAo" node="5W7E4fV0XTA" />
                               </node>
                             </node>
                           </node>
                         </node>
                       </node>
-                      <node concept="Rh6nW" id="2LgKyNIWWdX" role="1bW2Oz">
+                      <node concept="gl6BB" id="5W7E4fV0XTA" role="1bW2Oz">
                         <property role="TrG5h" value="f" />
-                        <node concept="2jxLKc" id="2LgKyNIWWdY" role="1tU5fm" />
+                        <node concept="2jxLKc" id="5W7E4fV0XTB" role="1tU5fm" />
                       </node>
                     </node>
                   </node>
@@ -878,7 +878,7 @@
                       <node concept="1rXfSq" id="2LgKyNIWWdM" role="3clFbG">
                         <ref role="37wK5l" node="2LgKyNISVqO" resolve="isConflictedFile" />
                         <node concept="37vLTw" id="2LgKyNIWWdN" role="37wK5m">
-                          <ref role="3cqZAo" node="2LgKyNIWWdP" resolve="f" />
+                          <ref role="3cqZAo" node="5W7E4fV0XTC" />
                         </node>
                         <node concept="37vLTw" id="2LgKyNIWZvD" role="37wK5m">
                           <ref role="3cqZAo" node="2LgKyNIWX_3" resolve="project" />
@@ -886,9 +886,9 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="Rh6nW" id="2LgKyNIWWdP" role="1bW2Oz">
+                  <node concept="gl6BB" id="5W7E4fV0XTC" role="1bW2Oz">
                     <property role="TrG5h" value="f" />
-                    <node concept="2jxLKc" id="2LgKyNIWWdQ" role="1tU5fm" />
+                    <node concept="2jxLKc" id="5W7E4fV0XTD" role="1tU5fm" />
                   </node>
                 </node>
               </node>
@@ -2177,7 +2177,7 @@
                   <node concept="3clFbF" id="nQhvklQS0y" role="3cqZAp">
                     <node concept="2OqwBi" id="nQhvklQS0z" role="3clFbG">
                       <node concept="37vLTw" id="2BHiRxgmz0K" role="2Oq$k0">
-                        <ref role="3cqZAo" node="nQhvklQS0A" resolve="f" />
+                        <ref role="3cqZAo" node="5W7E4fV0XTE" />
                       </node>
                       <node concept="liA8E" id="nQhvklQS0_" role="2OqNvi">
                         <ref role="37wK5l" to="guwi:~File.getName()" resolve="getName" />
@@ -2185,9 +2185,9 @@
                     </node>
                   </node>
                 </node>
-                <node concept="Rh6nW" id="nQhvklQS0A" role="1bW2Oz">
+                <node concept="gl6BB" id="5W7E4fV0XTE" role="1bW2Oz">
                   <property role="TrG5h" value="f" />
-                  <node concept="2jxLKc" id="nQhvklQS0B" role="1tU5fm" />
+                  <node concept="2jxLKc" id="5W7E4fV0XTF" role="1tU5fm" />
                 </node>
               </node>
               <node concept="1nlBCl" id="nQhvklQS0C" role="2S7zOq">

@@ -29,7 +29,6 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
@@ -131,16 +130,8 @@ public class ClassCreator_TransformationMenu extends TransformationMenuBase {
       public void execute(@NotNull String pattern) {
         SNode creator = SNodeFactoryOperations.createNewNode(CONCEPTS.AnonymousClassCreator$fS, null);
         final SNode cls = SNodeFactoryOperations.createNewNode(CONCEPTS.AnonymousClass$Bt, null);
-        ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.actualArgument$pzdx)).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.actualArgument$pzdx)).addElement(it);
-          }
-        });
-        ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeParameter$uYiw)).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.typeParameter$F9H8)).addElement(it);
-          }
-        });
+        ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.actualArgument$pzdx)).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.actualArgument$pzdx)).addElement(it));
+        ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeParameter$uYiw)).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.typeParameter$F9H8)).addElement(it));
         SLinkOperations.setTarget(cls, LINKS.baseMethodDeclaration$pyYw, SLinkOperations.getTarget(_context.getNode(), LINKS.baseMethodDeclaration$pyYw));
         SLinkOperations.setTarget(cls, LINKS.classifier$q_Y$, SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(_context.getNode(), LINKS.baseMethodDeclaration$pyYw)), CONCEPTS.ClassConcept$bK));
         SLinkOperations.setTarget(creator, LINKS.cls$Saf6, cls);

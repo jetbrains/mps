@@ -18,7 +18,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.kotlin.behavior.IClassMemberDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.kotlin.api.types.identifiers.ClassTypeKey;
@@ -44,11 +43,7 @@ public final class KotlinFileClassifierType__BehaviorDescriptor extends BaseBHDe
 
   /*package*/ static void populateTypeSignatures_id5q426iHK5S9(@NotNull SNode __thisNode__, final SignatureCollector visitor) {
     // Since this file is considered a class, we can take its class members (functions, properties...)
-    Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.file$5SpC), LINKS.declarations$NgHw), CONCEPTS.IClassMemberDeclaration$LK)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        IClassMemberDeclaration__BehaviorDescriptor.populateSignatures_id18X2O0FJBER.invoke(it, visitor);
-      }
-    });
+    Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.file$5SpC), LINKS.declarations$NgHw), CONCEPTS.IClassMemberDeclaration$LK)).visitAll((it) -> IClassMemberDeclaration__BehaviorDescriptor.populateSignatures_id18X2O0FJBER.invoke(it, visitor));
   }
   /*package*/ static String toString_id4nn3FPlZH$r(@NotNull SNode __thisNode__, boolean erased) {
     return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.file$5SpC), PROPS.name$MnvL) + "Kt";

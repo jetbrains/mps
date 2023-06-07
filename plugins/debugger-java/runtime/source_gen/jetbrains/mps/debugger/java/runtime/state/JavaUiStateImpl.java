@@ -9,7 +9,6 @@ import jetbrains.mps.debugger.java.api.state.proxy.JavaThread;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.debugger.java.runtime.engine.events.Context;
 import java.util.Objects;
 import jetbrains.mps.debugger.java.runtime.engine.events.EventsProcessor;
@@ -41,11 +40,7 @@ public abstract class JavaUiStateImpl extends JavaUiState {
 
     initializeThreads();
 
-    ListSequence.fromList(myThreads).visitAll(new IVisitor<JavaThread>() {
-      public void visit(JavaThread it) {
-        it.initializeFrames();
-      }
-    });
+    ListSequence.fromList(myThreads).visitAll((it) -> it.initializeFrames());
   }
   public abstract Context getContext();
   @Override

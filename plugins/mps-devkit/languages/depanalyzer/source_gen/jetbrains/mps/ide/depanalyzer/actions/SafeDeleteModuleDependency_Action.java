@@ -26,7 +26,6 @@ import java.util.Collection;
 import jetbrains.mps.project.structure.modules.Dependency;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
 
@@ -117,11 +116,7 @@ public class SafeDeleteModuleDependency_Action extends BaseAction {
       final SModuleReference to = SafeDeleteModuleDependency_Action.this.getModuleTo(_params).getModuleReference();
       ModuleDescriptor descriptor = from.getModuleDescriptor();
       Collection<Dependency> dependencies = descriptor.getDependencies();
-      List<Dependency> badDeps = CollectionSequence.fromCollection(dependencies).where(new IWhereFilter<Dependency>() {
-        public boolean accept(Dependency it) {
-          return it.getModuleRef().equals(to);
-        }
-      }).toListSequence();
+      List<Dependency> badDeps = CollectionSequence.fromCollection(dependencies).where((it) -> it.getModuleRef().equals(to)).toList();
       CollectionSequence.fromCollection(dependencies).removeSequence(ListSequence.fromList(badDeps));
       from.save();
     });

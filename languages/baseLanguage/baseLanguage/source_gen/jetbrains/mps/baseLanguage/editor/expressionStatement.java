@@ -22,7 +22,6 @@ import jetbrains.mps.util.Computable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.baseLanguage.behavior.Expression__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.transformation.WrapSubstituteMenuTransformationMenuPart;
 import org.jetbrains.annotations.Nullable;
@@ -94,15 +93,7 @@ public class expressionStatement extends TransformationMenuBase {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       final List<SNode> desc = SNodeOperations.getNodeDescendants(stmt, null, false, new SAbstractConcept[]{});
-      return (boolean) Expression__BehaviorDescriptor.isLeftMostExpression_id7q$fTYk8pKO.invoke(_context.getNode()) && (stmt != null) && ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), null, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(it, CONCEPTS.Expression$mB));
-        }
-      }).all(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(ListSequence.fromList(desc).contains(it));
-        }
-      });
+      return (boolean) Expression__BehaviorDescriptor.isLeftMostExpression_id7q$fTYk8pKO.invoke(_context.getNode()) && (stmt != null) && ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), null, false)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.Expression$mB))).all((it) -> !(ListSequence.fromList(desc).contains(it)));
     }
 
     @NotNull

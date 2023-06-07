@@ -29,12 +29,8 @@ import jetbrains.mps.baseLanguage.lightweightdsl.behavior.DSLClassMember__Behavi
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import java.util.List;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.generator.template.MappingScriptContext;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.generator.template.TemplateVarContext;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.ReductionRuleCondition;
@@ -331,11 +327,7 @@ public class QueriesGenerated extends QueryProviderBase {
       parameterMethod = DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)", "2697606110805685905"), ancestorIntention);
     }
 
-    return SNodeOperations.ofConcept(Sequence.fromIterable(SNodeOperations.ofConcept(Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(_context.getNode()), CONCEPTS.InstanceMethodDeclaration$39)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.MethodInstance$jE));
-      }
-    }).union(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)", "7538218632063981347"), ancestorIntention))).union(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)", "7538218632063982514"), ancestorIntention))).subtract(Sequence.fromIterable(parameterMethod)), CONCEPTS.InstanceMethodDeclaration$39);
+    return SNodeOperations.ofConcept(Sequence.fromIterable(SNodeOperations.ofConcept(Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(_context.getNode()), CONCEPTS.InstanceMethodDeclaration$39)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.MethodInstance$jE))).union(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)", "7538218632063981347"), ancestorIntention))).union(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)", "7538218632063982514"), ancestorIntention))).subtract(Sequence.fromIterable(parameterMethod)), CONCEPTS.InstanceMethodDeclaration$39);
   }
   public static Iterable<SNode> sourceNodesQuery_9_0(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.actualArgument$Owly);
@@ -344,49 +336,21 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.actualArgument$Owly);
   }
   public static void mappingScript_CodeBlock_12(final MappingScriptContext _context) {
-    ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.BaseIntentionDeclaration$Wx)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SLinkOperations.getChildren(it, LINKS.fieldDeclaration$sOzg);
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SPropertyOperations.assign(it, PROPS.name$MnvL, "_additional_" + SPropertyOperations.getString(it, PROPS.name$MnvL));
-      }
-    });
-    ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.BaseIntentionDeclaration$Wx)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SLinkOperations.getChildren(it, LINKS.methodDeclaration$ydlK);
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SPropertyOperations.assign(it, PROPS.name$MnvL, "_additional_" + SPropertyOperations.getString(it, PROPS.name$MnvL));
-      }
-    });
+    ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.BaseIntentionDeclaration$Wx)).translate((it) -> SLinkOperations.getChildren(it, LINKS.fieldDeclaration$sOzg)).visitAll((it) -> SPropertyOperations.assign(it, PROPS.name$MnvL, "_additional_" + SPropertyOperations.getString(it, PROPS.name$MnvL)));
+    ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.BaseIntentionDeclaration$Wx)).translate((it) -> SLinkOperations.getChildren(it, LINKS.methodDeclaration$ydlK)).visitAll((it) -> SPropertyOperations.assign(it, PROPS.name$MnvL, "_additional_" + SPropertyOperations.getString(it, PROPS.name$MnvL)));
   }
   public static Object varMacro_Value_1_0(final TemplateVarContext _context) {
-    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.BaseIntentionDeclaration$Wx)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.forConcept$zyGL) == _context.getNode();
-      }
-    });
+    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.BaseIntentionDeclaration$Wx)).where((it) -> SLinkOperations.getTarget(it, LINKS.forConcept$zyGL) == _context.getNode());
   }
   public static Object varMacro_Value_1_1(final TemplateVarContext _context) {
-    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.Intention$zo)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.forConcept$Mnu4) == _context.getNode();
-      }
-    });
+    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.Intention$zo)).where((it) -> SLinkOperations.getTarget(it, LINKS.forConcept$Mnu4) == _context.getNode());
   }
   public static Object varMacro_Value_1_2(final TemplateVarContext _context) {
     Iterable<SNode> baseIntentionConcepts = SLinkOperations.collect(SModelOperations.roots(_context.getInputModel(), CONCEPTS.BaseIntentionDeclaration$Wx), LINKS.forConcept$zyGL);
     Iterable<SNode> classlikeIntentionConcepts = SLinkOperations.collect(SModelOperations.roots(_context.getInputModel(), CONCEPTS.Intention$zo), LINKS.forConcept$Mnu4);
     Iterable<SNode> forConcept = Sequence.fromIterable(baseIntentionConcepts).union(Sequence.fromIterable(classlikeIntentionConcepts)).distinct();
 
-    return Sequence.fromIterable(forConcept).sort(new ISelector<SNode, Long>() {
-      public Long select(SNode it) {
-        return MetaIdByDeclaration.getConceptId(it).getIdValue();
-      }
-    }, true).toListSequence();
+    return Sequence.fromIterable(forConcept).sort((it) -> MetaIdByDeclaration.getConceptId(it).getIdValue(), true).toList();
   }
   public static Object varMacro_Value_4_0(final TemplateVarContext _context) {
     return SNodeOperations.cast(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)", "7538218632063982606"), SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Intention$zo, true, false))).first(), CONCEPTS.MethodInstance$jE);

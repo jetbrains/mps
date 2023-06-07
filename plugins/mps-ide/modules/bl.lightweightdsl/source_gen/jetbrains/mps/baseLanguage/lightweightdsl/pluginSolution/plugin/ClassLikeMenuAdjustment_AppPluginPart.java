@@ -12,15 +12,10 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
@@ -51,36 +46,12 @@ public class ClassLikeMenuAdjustment_AppPluginPart extends ApplicationPluginPart
         final Iterable<SLanguage> allLanguages = ClassLikeMenuAdjustment_AppPluginPart.this.myLangRegistry.getAllLanguages();
         final SRepository repo = ClassLikeMenuAdjustment_AppPluginPart.this.myDeploymentRepo;
         Iterable<SAbstractConcept> nonTrivialClassLikes = new ModelAccessHelper(repo).runReadAction(() -> {
-          Iterable<Language> languages = Sequence.fromIterable(allLanguages).select(new ISelector<SLanguage, SModule>() {
-            public SModule select(SLanguage it) {
-              return it.getSourceModuleReference().resolve(repo);
-            }
-          }).ofType(Language.class);
-          return Sequence.fromIterable(SLinkOperations.collect(Sequence.fromIterable(languages).translate(new ITranslator2<Language, SModel>() {
-            public Iterable<SModel> translate(Language it) {
-              return it.getAccessoryModels();
-            }
-          }).where(new NotNullWhereFilter<SModel>()).translate(new ITranslator2<SModel, SNode>() {
-            public Iterable<SNode> translate(SModel it) {
-              return SModelOperations.roots(((SModel) it), CONCEPTS.DSLDescriptor$zD);
-            }
-          }), LINKS.preferredConcept$1q4V)).where(new NotNullWhereFilter<SNode>()).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)", "1068390468198")));
-            }
-          }).select(new ISelector<SNode, SAbstractConcept>() {
-            public SAbstractConcept select(SNode it) {
-              return MetaAdapterByDeclaration.getConcept(it);
-            }
-          });
+          Iterable<Language> languages = Sequence.fromIterable(allLanguages).select((it) -> it.getSourceModuleReference().resolve(repo)).ofType(Language.class);
+          return Sequence.fromIterable(SLinkOperations.collect(Sequence.fromIterable(languages).translate((it) -> it.getAccessoryModels()).where(new NotNullWhereFilter()).translate((it) -> SModelOperations.roots(((SModel) it), CONCEPTS.DSLDescriptor$zD)), LINKS.preferredConcept$1q4V)).where(new NotNullWhereFilter()).where((it) -> !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)", "1068390468198")))).select((it) -> MetaAdapterByDeclaration.getConcept(it));
         });
         ClassLikeMenuAdjustment_AppPluginPart.this.myClassLikeConcepts = SetSequence.fromSetWithValues(new HashSet<SAbstractConcept>(), nonTrivialClassLikes);
       }
-      return SetSequence.fromSet(ClassLikeMenuAdjustment_AppPluginPart.this.myClassLikeConcepts).any(new IWhereFilter<SAbstractConcept>() {
-        public boolean accept(SAbstractConcept it) {
-          return c.equals(it);
-        }
-      });
+      return SetSequence.fromSet(ClassLikeMenuAdjustment_AppPluginPart.this.myClassLikeConcepts).any((it) -> c.equals(it));
     }
   };
   private Set<SAbstractConcept> myClassLikeConcepts = null;

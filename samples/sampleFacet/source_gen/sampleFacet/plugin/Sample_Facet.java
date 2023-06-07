@@ -26,8 +26,6 @@ import jetbrains.mps.make.script.IPropertiesPool;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.smodel.resources.DResource;
 import jetbrains.mps.internal.make.runtime.util.DeltaReconciler;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.make.delta.IDelta;
 import jetbrains.mps.internal.make.runtime.util.FilesDelta;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.make.script.IFeedback;
@@ -186,11 +184,7 @@ public class Sample_Facet extends IFacet.Stub {
           final Iterable<DResource> input = (Iterable<DResource>) (Iterable) rawInput;
           switch (0) {
             case 0:
-              new DeltaReconciler(Sequence.fromIterable(input).translate(new ITranslator2<DResource, IDelta>() {
-                public Iterable<IDelta> translate(DResource tres) {
-                  return tres.delta();
-                }
-              })).visitAll(new FilesDelta.Visitor() {
+              new DeltaReconciler(Sequence.fromIterable(input).translate((tres) -> tres.delta())).visitAll(new FilesDelta.Visitor() {
                 @Override
                 public boolean acceptWritten(IFile file) {
                   monitor.reportFeedback(new IFeedback.INFORMATION(String.valueOf("written file: " + file)));

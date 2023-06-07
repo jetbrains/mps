@@ -31,8 +31,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
 import jetbrains.mps.lang.text.behavior.TextualElement__BehaviorDescriptor;
@@ -42,7 +40,6 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -259,15 +256,7 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
     for (SNode l : paragraphs) {
       SNode lc = SNodeFactoryOperations.createNewNode(SNodeOperations.getConcept(l), l);
       Paragraph__BehaviorDescriptor.clearTextualElements_id1uSfHaoOxlA.invoke(lc);
-      Paragraph__BehaviorDescriptor.addAllTextualElements_id1uSfHaoPgT1.invoke(lc, Sequence.fromIterable(Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(l)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return selectedNodes.contains(it);
-        }
-      }).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SNodeOperations.copyNode(it);
-        }
-      }));
+      Paragraph__BehaviorDescriptor.addAllTextualElements_id1uSfHaoPgT1.invoke(lc, Sequence.fromIterable(Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(l)).where((it) -> selectedNodes.contains(it)).select((it) -> SNodeOperations.copyNode(it)));
       ListSequence.fromList(copiesOfParagraphs).addElement(lc);
       ListSequence.fromList(SLinkOperations.getChildren(artificialParent, LINKS.paragraphs$ZAOz)).addElement(lc);
     }
@@ -580,11 +569,7 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
     return null;
   }
   public static Iterable<? extends SNode> getChildIterable(SNode paragraph) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(paragraph, true), CONCEPTS.Paragraph$XF)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode p) {
-        return (Iterable<SNode>) Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(p);
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(paragraph, true), CONCEPTS.Paragraph$XF)).translate((p) -> (Iterable<SNode>) Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(p));
   }
   @Override
   public void ensureVisible() {

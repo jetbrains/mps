@@ -17,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -83,11 +82,7 @@ public final class ToggleMethodFinal_Intention extends AbstractIntentionDescript
         return true;
       }
       List<SNode> includingStatementLists = SNodeOperations.getNodeAncestors(contextNode, CONCEPTS.StatementList$m_, true);
-      Iterable<SNode> includingBodies = ListSequence.fromList(includingStatementLists).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.hasRole(it, LINKS.body$5xQk);
-        }
-      });
+      Iterable<SNode> includingBodies = ListSequence.fromList(includingStatementLists).where((it) -> SNodeOperations.hasRole(it, LINKS.body$5xQk));
       return Sequence.fromIterable(includingBodies).isEmpty();
     }
 

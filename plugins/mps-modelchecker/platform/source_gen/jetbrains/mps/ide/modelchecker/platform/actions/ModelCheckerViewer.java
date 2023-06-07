@@ -34,10 +34,8 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.ide.findusages.model.SearchResult;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.errors.item.NodeFlavouredItem;
 import jetbrains.mps.errors.item.ModelFlavouredItem;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.ide.findusages.model.IResultProvider;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
@@ -151,20 +149,14 @@ public class ModelCheckerViewer extends JPanel {
     final Set<SNodeReference> includedResultNodes = SetSequence.fromSetWithValues(new HashSet<SNodeReference>(), myUsagesView.getIncludedResultNodes());
     final Set<SModel> includedResultModels = SetSequence.fromSetWithValues(new HashSet<SModel>(), myUsagesView.getIncludedModels());
     List<SearchResult<IssueKindReportItem>> searchResults = getSearchResults().getSearchResults();
-    return ListSequence.fromList(searchResults).where(new IWhereFilter<SearchResult<IssueKindReportItem>>() {
-      public boolean accept(SearchResult<IssueKindReportItem> sr) {
-        IssueKindReportItem reportItem = sr.getObject();
-        QuickFixBase quickFix = QuickFixReportItem.FLAVOUR_QUICKFIX.getAutoApplicable(reportItem);
-        boolean fixable = quickFix != null;
-        boolean isNodeIssueAndFixable = NodeFlavouredItem.FLAVOUR_NODE.canGet(reportItem) && SetSequence.fromSet(includedResultNodes).contains(NodeFlavouredItem.FLAVOUR_NODE.tryToGet(reportItem)) && fixable;
-        boolean isModelIssueAndFixable = ModelFlavouredItem.FLAVOUR_MODEL.canGet(reportItem) && SetSequence.fromSet(includedResultModels).contains((SModel) sr.getPathObject()) && fixable;
-        return isNodeIssueAndFixable || isModelIssueAndFixable;
-      }
-    }).select(new ISelector<SearchResult<IssueKindReportItem>, IssueKindReportItem>() {
-      public IssueKindReportItem select(SearchResult<IssueKindReportItem> it) {
-        return it.getObject();
-      }
-    }).toListSequence();
+    return ListSequence.fromList(searchResults).where((sr) -> {
+      IssueKindReportItem reportItem = sr.getObject();
+      QuickFixBase quickFix = QuickFixReportItem.FLAVOUR_QUICKFIX.getAutoApplicable(reportItem);
+      boolean fixable = quickFix != null;
+      boolean isNodeIssueAndFixable = NodeFlavouredItem.FLAVOUR_NODE.canGet(reportItem) && SetSequence.fromSet(includedResultNodes).contains(NodeFlavouredItem.FLAVOUR_NODE.tryToGet(reportItem)) && fixable;
+      boolean isModelIssueAndFixable = ModelFlavouredItem.FLAVOUR_MODEL.canGet(reportItem) && SetSequence.fromSet(includedResultModels).contains((SModel) sr.getPathObject()) && fixable;
+      return isNodeIssueAndFixable || isModelIssueAndFixable;
+    }).select((it) -> it.getObject()).toList();
 
   }
   /*package*/ void checkModules(List<SModule> modules, String taskTargetTitle) {

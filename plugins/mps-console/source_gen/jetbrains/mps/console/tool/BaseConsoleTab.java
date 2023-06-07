@@ -41,8 +41,6 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import java.util.Collection;
 import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.project.ImportUtil;
 import jetbrains.mps.workbench.action.BaseAction;
@@ -265,15 +263,7 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
     }
     Collection<DevKit> allDevkits = new ModuleRepositoryFacade(myProject).getAllModules(DevKit.class);
     final SModelInternal modelInternal = ((SModelInternal) myModel);
-    CollectionSequence.fromCollection(allDevkits).where(new IWhereFilter<DevKit>() {
-      public boolean accept(DevKit it) {
-        return it.getAllExtendedDevkits().contains(consoleDevkit);
-      }
-    }).visitAll(new IVisitor<DevKit>() {
-      public void visit(DevKit it) {
-        modelInternal.addDevKit(it.getModuleReference());
-      }
-    });
+    CollectionSequence.fromCollection(allDevkits).where((it) -> it.getAllExtendedDevkits().contains(consoleDevkit)).visitAll((it) -> modelInternal.addDevKit(it.getModuleReference()));
   }
 
   protected void validateImports() {
@@ -419,22 +409,16 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
     }
     try {
       final Wrappers._T<SModel> loadedModel = new Wrappers._T<SModel>(PersistenceUtil.loadModelFromXml(state, myProject.getComponent(ModelFactoryService.class)));
-      ListSequence.fromList(SModelOperations.nodes(loadedModel.value, null)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(it.getConcept().isValid());
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          if ((SNodeOperations.getNodeAncestor(it, CONCEPTS.HistoryItem$vj, false, false) != null)) {
-            SNodeOperations.deleteNode(SNodeOperations.getNodeAncestor(it, CONCEPTS.HistoryItem$vj, false, false));
-            if (LOG.isErrorLevel()) {
-              LOG.error("Unknown concept on loading console history: removing enclosing history item");
-            }
-          } else {
-            loadedModel.value = null;
-            if (LOG.isErrorLevel()) {
-              LOG.error("Unknown concept on loading console history: not loading history");
-            }
+      ListSequence.fromList(SModelOperations.nodes(loadedModel.value, null)).where((it) -> !(it.getConcept().isValid())).visitAll((it) -> {
+        if ((SNodeOperations.getNodeAncestor(it, CONCEPTS.HistoryItem$vj, false, false) != null)) {
+          SNodeOperations.deleteNode(SNodeOperations.getNodeAncestor(it, CONCEPTS.HistoryItem$vj, false, false));
+          if (LOG.isErrorLevel()) {
+            LOG.error("Unknown concept on loading console history: removing enclosing history item");
+          }
+        } else {
+          loadedModel.value = null;
+          if (LOG.isErrorLevel()) {
+            LOG.error("Unknown concept on loading console history: not loading history");
           }
         }
       });

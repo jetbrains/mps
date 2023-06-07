@@ -20,9 +20,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.structure.modules.DevkitDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.Set;
@@ -197,12 +195,8 @@ public final class DependencyUtil {
       return;
     }
     AbstractModule.LangAndDevkits actualUses = ((AbstractModule) module).collectLanguagesAndDevkits();
-    Iterable<SModuleReference> languages = Sequence.fromIterable(((Iterable<SLanguage>) actualUses.languages)).select(new ISelector<SLanguage, SModuleReference>() {
-      public SModuleReference select(SLanguage it) {
-        return it.getSourceModuleReference();
-      }
-    });
-    addDeps(result, Sequence.fromIterable(languages).where(new NotNullWhereFilter<SModuleReference>()), (initialNotDependency ? Role.UsedLanguage : Role.DependencyLanguage), LinkType.UsesLanguage);
+    Iterable<SModuleReference> languages = Sequence.fromIterable(((Iterable<SLanguage>) actualUses.languages)).select((it) -> it.getSourceModuleReference());
+    addDeps(result, Sequence.fromIterable(languages).where(new NotNullWhereFilter()), (initialNotDependency ? Role.UsedLanguage : Role.DependencyLanguage), LinkType.UsesLanguage);
     addDeps(result, actualUses.devkits, (initialNotDependency ? Role.UsedDevkit : Role.DependencyDevkit), LinkType.UsesDevkit);
   }
 
@@ -241,33 +235,13 @@ public final class DependencyUtil {
     if (modules == null) {
       return;
     }
-    ListSequence.fromList(result).addSequence(Sequence.fromIterable(modules).select(new ISelector<SModuleReference, DepLink>() {
-      public DepLink select(SModuleReference module) {
-        return new DepLink(module, role, linktype);
-      }
-    }));
+    ListSequence.fromList(result).addSequence(Sequence.fromIterable(modules).select((module) -> new DepLink(module, role, linktype)));
   }
   private static Iterable<SModuleReference> getReexportDeps(SModule module) {
-    return Sequence.fromIterable(((Iterable<SDependency>) module.getDeclaredDependencies())).where(new IWhereFilter<SDependency>() {
-      public boolean accept(SDependency dep) {
-        return dep.isReexport();
-      }
-    }).select(new ISelector<SDependency, SModuleReference>() {
-      public SModuleReference select(SDependency dep) {
-        return dep.getTargetModule();
-      }
-    });
+    return Sequence.fromIterable(((Iterable<SDependency>) module.getDeclaredDependencies())).where((dep) -> dep.isReexport()).select((dep) -> dep.getTargetModule());
   }
   private static Iterable<SModuleReference> getNonreexportDeps(ModuleDescriptor descr) {
-    return SetSequence.fromSet(((Set<jetbrains.mps.project.structure.modules.Dependency>) descr.getDependencies())).where(new IWhereFilter<jetbrains.mps.project.structure.modules.Dependency>() {
-      public boolean accept(jetbrains.mps.project.structure.modules.Dependency dep) {
-        return !(dep.isReexport());
-      }
-    }).select(new ISelector<jetbrains.mps.project.structure.modules.Dependency, SModuleReference>() {
-      public SModuleReference select(jetbrains.mps.project.structure.modules.Dependency dep) {
-        return dep.getModuleRef();
-      }
-    });
+    return SetSequence.fromSet(((Set<jetbrains.mps.project.structure.modules.Dependency>) descr.getDependencies())).where((dep) -> !(dep.isReexport())).select((dep) -> dep.getModuleRef());
   }
   public enum LinkType {
     Depends("depends on"),

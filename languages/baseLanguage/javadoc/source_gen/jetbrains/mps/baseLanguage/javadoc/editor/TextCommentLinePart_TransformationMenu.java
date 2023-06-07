@@ -31,7 +31,6 @@ import java.util.Objects;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.baseLanguage.behavior.IBLDeprecatable__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
@@ -184,11 +183,7 @@ public class TextCommentLinePart_TransformationMenu extends TransformationMenuBa
           }
           if (Objects.equals(myParameterObject, "@deprecated")) {
             IBLDeprecatable__BehaviorDescriptor.markDeprecated_id6Va_BJexupi.invoke(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.IBLDeprecatable$ah, false, false));
-            _context.getEditorContext().selectWRTFocusPolicy(ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return SNodeOperations.isInstanceOf(it, CONCEPTS.DeprecatedBlockDocTag$8n);
-              }
-            }).first());
+            _context.getEditorContext().selectWRTFocusPolicy(ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.DeprecatedBlockDocTag$8n)).first());
           }
           if (Objects.equals(myParameterObject, "@see")) {
             tag = SNodeFactoryOperations.addNewChild(comment, LINKS.tags$stUD, CONCEPTS.SeeBlockDocTag$fI);

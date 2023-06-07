@@ -204,7 +204,7 @@ public enum JUnitRunTypes implements JUnitRunType {
       @Override
       public void run(@NotNull ProgressIndicator indicator) {
         final ProgressMonitor monitor = new ProgressMonitorAdapter(indicator);
-        project.getModelAccess().runReadAction(() -> result.value = ListSequence.fromList(doCollect(configuration, project, monitor)).toListSequence());
+        project.getModelAccess().runReadAction(() -> result.value = ListSequence.fromList(doCollect(configuration, project, monitor)).toList());
       }
     });
     return result.value;

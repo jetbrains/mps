@@ -13,7 +13,6 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -31,11 +30,7 @@ public class check_BuildMps_TipsBundle_NonTypesystemRule extends AbstractNonType
         }
       }
     }
-    if (ListSequence.fromList(SNodeOperations.getNodeAncestors(buildMps_TipsBundle, null, false)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Jar$bd);
-      }
-    })) {
+    if (ListSequence.fromList(SNodeOperations.getNodeAncestors(buildMps_TipsBundle, null, false)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Jar$bd))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(buildMps_TipsBundle, "tips of should not be under jar", "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "6437930869738284975", null, errorTarget);

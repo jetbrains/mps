@@ -44,7 +44,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.editor.runtime.menus.SubstituteItemProxy;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
@@ -200,11 +199,7 @@ public class FunctionDeclaration_TransformationMenu extends TransformationMenuBa
       @Override
       public void execute(@NotNull String pattern) {
         SNode createdNode = getSubstituteItem().createNode(pattern);
-        SNode modifier = ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.modifiers$XKtM)).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return Objects.equals(SNodeOperations.getConcept(it), SNodeOperations.getConcept(createdNode));
-          }
-        });
+        SNode modifier = ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.modifiers$XKtM)).findFirst((it) -> Objects.equals(SNodeOperations.getConcept(it), SNodeOperations.getConcept(createdNode)));
         if ((modifier == null)) {
           ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.modifiers$XKtM)).addElement(createdNode);
           modifier = createdNode;

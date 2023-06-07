@@ -130,7 +130,7 @@ public class ShowSurroundWithIntentions_Action extends BaseAction {
   private ActionGroup getActionGroup(final Map<String, Object> _params) {
     DefaultActionGroup actionGroup = new DefaultActionGroup();
 
-    Iterable<Pair<IntentionExecutable, SNode>> availableIntentions = Sequence.fromIterable(ShowSurroundWithIntentions_Action.this.getAvailableIntentions(_params)).sort((Pair<IntentionExecutable, SNode> a, Pair<IntentionExecutable, SNode> b) -> ShowSurroundWithIntentions_Action.this.getDescriptior(a, _params).compareTo(ShowSurroundWithIntentions_Action.this.getDescriptior(b, _params)), true);
+    Iterable<Pair<IntentionExecutable, SNode>> availableIntentions = Sequence.fromIterable(ShowSurroundWithIntentions_Action.this.getAvailableIntentions(_params)).sort((a, b) -> ShowSurroundWithIntentions_Action.this.getDescriptior(a, _params).compareTo(ShowSurroundWithIntentions_Action.this.getDescriptior(b, _params)), true);
 
     for (Pair<IntentionExecutable, SNode> pair : Sequence.fromIterable(availableIntentions)) {
       final Pair<IntentionExecutable, SNode> finalPair = pair;

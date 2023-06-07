@@ -17,8 +17,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.behavior.IMemberContainer__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -44,19 +42,7 @@ public final class ExternalViewFigureParameter__BehaviorDescriptor extends BaseB
 
   /*package*/ static SNode getParameterMethod_id4H19mAx5nwL(@NotNull SNode __thisNode__) {
     final String methodName = ExternalViewFigureParameter__BehaviorDescriptor.getGetterName_id3g73hQq7brf.invoke(__thisNode__);
-    return ListSequence.fromList(IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.ExternalViewFigure$Hu), LINKS.classifier$HHUi))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.InstanceMethodDeclaration$39);
-      }
-    }).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SNodeOperations.cast(it, CONCEPTS.InstanceMethodDeclaration$39);
-      }
-    }).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), methodName);
-      }
-    });
+    return ListSequence.fromList(IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.ExternalViewFigure$Hu), LINKS.classifier$HHUi))).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.InstanceMethodDeclaration$39)).select((it) -> SNodeOperations.cast(it, CONCEPTS.InstanceMethodDeclaration$39)).findFirst((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), methodName));
   }
   /*package*/ static String getGetterName_id3g73hQq7brf(@NotNull SNode __thisNode__) {
     return "get" + ExternalViewFigureParameter__BehaviorDescriptor.getSuffix_id3g73hQq82yQ.invokeSpecial(__thisNode__);

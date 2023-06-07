@@ -22,7 +22,6 @@ import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import java.util.List;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.scope.ListScope;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -66,11 +65,7 @@ public class ConceptMethodDeclaration_Constraints extends BaseConstraintsDescrip
           public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode concept = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ConceptBehavior$2, true, false), LINKS.concept$u6dL);
             List<SNode> methods = AbstractConceptDeclaration__BehaviorDescriptor.getVirtualConceptMethods_idhEwILHM.invoke(concept);
-            return ListScope.forResolvableElements(ListSequence.fromList(methods).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return SLinkOperations.getTarget(it, LINKS.overriddenMethod$quKH) == null;
-              }
-            }));
+            return ListScope.forResolvableElements(ListSequence.fromList(methods).where((it) -> SLinkOperations.getTarget(it, LINKS.overriddenMethod$quKH) == null));
           }
         };
       }

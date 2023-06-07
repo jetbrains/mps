@@ -19,9 +19,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.structure.constraints.Scopes;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
@@ -89,15 +87,7 @@ public class LinkDeclaration_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-        return Sequence.fromIterable(Scopes.forConcepts(_context.getParentNode(), CONCEPTS.AbstractConceptDeclaration$KA).getAvailableElements("")).select(new ISelector<SNode, SNode>() {
-          public SNode select(SNode it) {
-            return SNodeOperations.as(it, CONCEPTS.AbstractConceptDeclaration$KA);
-          }
-        }).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return it != null;
-          }
-        }).toListSequence();
+        return Sequence.fromIterable(Scopes.forConcepts(_context.getParentNode(), CONCEPTS.AbstractConceptDeclaration$KA).getAvailableElements("")).select((it) -> SNodeOperations.as(it, CONCEPTS.AbstractConceptDeclaration$KA)).where((it) -> it != null).toList();
       }
       private class SMP_Action_3looc_a0a extends SingleItemSubstituteMenuPart {
         private final SNode myParameterObject;

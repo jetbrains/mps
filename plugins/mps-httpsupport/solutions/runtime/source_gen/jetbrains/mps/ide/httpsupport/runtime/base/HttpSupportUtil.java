@@ -10,7 +10,6 @@ import jetbrains.mps.project.ProjectManager;
 import jetbrains.mps.ide.MPSCoreComponents;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import io.netty.handler.codec.http.QueryStringEncoder;
@@ -34,11 +33,7 @@ public class HttpSupportUtil {
       return null;
     }
 
-    Project project = ListSequence.fromList(openedProjects).findFirst(new IWhereFilter<Project>() {
-      public boolean accept(Project it) {
-        return it.getName().equals(name);
-      }
-    });
+    Project project = ListSequence.fromList(openedProjects).findFirst((it) -> it.getName().equals(name));
     if (project == null) {
       project = ListSequence.fromList(openedProjects).first();
       if (project != null) {

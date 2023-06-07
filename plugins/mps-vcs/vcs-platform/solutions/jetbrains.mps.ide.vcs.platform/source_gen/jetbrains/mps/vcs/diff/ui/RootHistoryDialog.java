@@ -305,7 +305,7 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
       ListSequence.fromList(contents).addElement(createDiffContent(oldRevision2));
       ListSequence.fromList(titles).addElement(createTitle(oldRevision2));
     }
-    if (ListSequence.fromList(contents).count() == ListSequence.fromList(contents).where(new NotNullWhereFilter<DiffContent>()).count()) {
+    if (ListSequence.fromList(contents).count() == ListSequence.fromList(contents).where(new NotNullWhereFilter()).count()) {
       SimpleDiffRequest rq = new SimpleDiffRequest(null, contents, titles);
       ModelDiffViewer.DIFF_SHOW_ROOTID.set(rq, myRoot);
       ModelDiffViewer.DIFF_SHOW_TREE.set(rq, false);

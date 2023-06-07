@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -37,11 +36,7 @@ public final class ConceptSwitchStatement__BehaviorDescriptor extends BaseBHDesc
   }
 
   /*package*/ static Iterable<SNode> getOrderedExactCases_id52uv6IIm2QO(@NotNull SNode __thisNode__) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.case$A3Bo), CONCEPTS.ExactConceptCase$dp)).sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.concept$HtZZ), LINKS.concept$WQBy), PROPS.name$MnvL);
-      }
-    }, true);
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.case$A3Bo), CONCEPTS.ExactConceptCase$dp)).sort((it) -> SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.concept$HtZZ), LINKS.concept$WQBy), PROPS.name$MnvL), true);
   }
 
   /*package*/ ConceptSwitchStatement__BehaviorDescriptor() {

@@ -5,7 +5,6 @@ package jetbrains.mps.kotlin.behavior;
 import jetbrains.mps.kotlin.api.generics.TypeVarSubs;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.kotlin.api.declaration.TypeParameterDeclaration;
@@ -26,11 +25,7 @@ public class NodeTypeVarSubs extends TypeVarSubs<SNode> {
   }
 
   public NodeTypeVarSubs(SNode... populatingTypes) {
-    Sequence.fromIterable(Sequence.fromArray(populatingTypes)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        IType__BehaviorDescriptor.populateSubstitutions_id4f4W8JpwgWV.invoke(it, NodeTypeVarSubs.this);
-      }
-    });
+    Sequence.fromIterable(Sequence.fromArray(populatingTypes)).visitAll((it) -> IType__BehaviorDescriptor.populateSubstitutions_id4f4W8JpwgWV.invoke(it, NodeTypeVarSubs.this));
   }
 
   public SNode expand(SNode type) {

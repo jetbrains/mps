@@ -11,7 +11,6 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.structure.behavior.DataTypeDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -35,11 +34,7 @@ public class NodeReferenceUtil {
       return SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.LinkDeclaration$1p), PROPS.role$Nsjf);
     } else {
       Iterable<SProperty> properties = SNodeOperations.getConcept(node).getProperties();
-      Iterable<SProperty> stringProperties = Sequence.fromIterable(properties).where(new IWhereFilter<SProperty>() {
-        public boolean accept(SProperty it) {
-          return !(Objects.equals(it.getOwner(), CONCEPTS.BaseConcept$gP)) && (boolean) DataTypeDeclaration__BehaviorDescriptor.isSimpleString_idhKtFG6a.invoke(SLinkOperations.getTarget(SNodeOperations.cast(it.getDeclarationNode(), CONCEPTS.PropertyDeclaration$1S), LINKS.dataType$5j5Y));
-        }
-      }).toListSequence();
+      Iterable<SProperty> stringProperties = Sequence.fromIterable(properties).where((it) -> !(Objects.equals(it.getOwner(), CONCEPTS.BaseConcept$gP)) && (boolean) DataTypeDeclaration__BehaviorDescriptor.isSimpleString_idhKtFG6a.invoke(SLinkOperations.getTarget(SNodeOperations.cast(it.getDeclarationNode(), CONCEPTS.PropertyDeclaration$1S), LINKS.dataType$5j5Y))).toList();
       if (Sequence.fromIterable(stringProperties).count() == 1) {
         return node.getProperty(Sequence.fromIterable(stringProperties).first());
       }

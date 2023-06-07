@@ -30,7 +30,6 @@ import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.scope.ListScope;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -126,13 +125,11 @@ public class LinkDeclaration_Constraints extends BaseConstraintsDescriptor {
             List<SNode> directSupers = AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(enclosingConcept);
             for (SNode concept : ListSequence.fromList(directSupers)) {
               List<SNode> links = AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(concept);
-              ListSequence.fromList(result).addSequence(ListSequence.fromList(links).where(new IWhereFilter<SNode>() {
-                public boolean accept(SNode it) {
-                  if (aggregation) {
-                    return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b9L);
-                  }
-                  return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b8L);
+              ListSequence.fromList(result).addSequence(ListSequence.fromList(links).where((it) -> {
+                if (aggregation) {
+                  return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b9L);
                 }
+                return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b8L);
               }));
             }
             return ListScope.forResolvableElements(result);

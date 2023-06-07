@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import jetbrains.mps.smodel.ModelDependencyScanner;
 import jetbrains.mps.smodel.undo.NamedCommand;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -82,11 +81,7 @@ public class OverrideImplementMethodAction {
       myProject.getModelAccess().executeCommand(new NamedCommand("Override Methods", true) {
         @Override
         public void run() {
-          List<SNode> selection = Sequence.fromIterable(selectedElements).select(new ISelector<SNodeReference, SNode>() {
-            public SNode select(SNodeReference it) {
-              return SNodeOperations.cast(it.resolve(myProject.getRepository()), CONCEPTS.BaseMethodDeclaration$kD);
-            }
-          }).toListSequence();
+          List<SNode> selection = Sequence.fromIterable(selectedElements).select((it) -> SNodeOperations.cast(it.resolve(myProject.getRepository()), CONCEPTS.BaseMethodDeclaration$kD)).toList();
 
           OverrideImplementMethodsHelper helper = new OverrideImplementMethodsHelper(myProject, contextClassifier, contextMember, dialog.isRemoveAttributes(), dialog.isInsertOverrideAnnotation(), dialog.isAddReturn());
           ListSequence.fromList(insertedMethods).addSequence(ListSequence.fromList(helper.insertMethods(selection, SNodeOperations.isInstanceOf(contextClassifier, CONCEPTS.Interface$db) && myIsOverride)));

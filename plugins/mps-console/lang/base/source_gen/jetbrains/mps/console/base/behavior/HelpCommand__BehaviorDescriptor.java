@@ -19,9 +19,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.query.behavior.HelpProvider__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Deque;
@@ -29,8 +27,6 @@ import jetbrains.mps.internal.collections.runtime.LinkedListSequence;
 import java.util.LinkedList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IListSequence;
-import jetbrains.mps.internal.collections.runtime.IRightCombinator;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -54,56 +50,30 @@ public final class HelpCommand__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static void doExecute_id2SpVAIqougW(@NotNull SNode __thisNode__, ConsoleContext context, ConsoleStream console) {
     if ((SLinkOperations.getTarget(__thisNode__, LINKS.target$GtcO) == null)) {
-      Iterable<SAbstractConcept> constructions = ListSequence.fromList(SConceptOperations.getAllSubConcepts(CONCEPTS.HelpProvider$l, context.getOutputWindow().getConsoleModel())).where(new IWhereFilter<SAbstractConcept>() {
-        public boolean accept(SAbstractConcept it) {
-          return (it instanceof SConcept) && !(it.isAbstract());
-        }
-      }).sort(new ISelector<SAbstractConcept, String>() {
-        public String select(SAbstractConcept it) {
-          return (String) HelpProvider__BehaviorDescriptor.getGroup_id60B$833p9Uj.invoke(SNodeOperations.asSConcept(it));
-        }
-      }, true).alsoSort(new ISelector<SAbstractConcept, String>() {
-        public String select(SAbstractConcept it) {
-          return (String) HelpProvider__BehaviorDescriptor.getKind_id64VftqEenf4.invoke(SNodeOperations.asSConcept(it));
-        }
-      }, true).alsoSort(new ISelector<SAbstractConcept, String>() {
-        public String select(SAbstractConcept it) {
-          return it.getName();
-        }
-      }, true);
-      Deque<SAbstractConcept> groupedConstructions = LinkedListSequence.fromLinkedListNew(new LinkedList<SAbstractConcept>());
+      Iterable<SAbstractConcept> constructions = ListSequence.fromList(SConceptOperations.getAllSubConcepts(CONCEPTS.HelpProvider$l, context.getOutputWindow().getConsoleModel())).where((it) -> (it instanceof SConcept) && !(it.isAbstract())).sort((it) -> (String) HelpProvider__BehaviorDescriptor.getGroup_id60B$833p9Uj.invoke(SNodeOperations.asSConcept(it)), true).alsoSort((it) -> (String) HelpProvider__BehaviorDescriptor.getKind_id64VftqEenf4.invoke(SNodeOperations.asSConcept(it)), true).alsoSort((it) -> it.getName(), true);
+      Deque<SAbstractConcept> groupedConstructions = LinkedListSequence.fromLinkedList(new LinkedList<SAbstractConcept>());
       for (SAbstractConcept e : Sequence.fromIterable(constructions)) {
         if (HelpProvider__BehaviorDescriptor.getGroup_id60B$833p9Uj.invoke(SNodeOperations.asSConcept(e)) != check_x46ur7_a0a0c0a0a(LinkedListSequence.fromLinkedListNew(groupedConstructions).last())) {
           LinkedListSequence.fromLinkedListNew(groupedConstructions).addElement(null);
         }
         LinkedListSequence.fromLinkedListNew(groupedConstructions).addElement(e);
       }
-      List<List<String>> resultList = ListSequence.fromListWithValues(new ArrayList<List<String>>(), LinkedListSequence.fromLinkedListNew(groupedConstructions).select(new ISelector<SAbstractConcept, IListSequence<String>>() {
-        public IListSequence<String> select(SAbstractConcept it) {
+      List<List<String>> resultList = ListSequence.fromListWithValues(new ArrayList<List<String>>(), LinkedListSequence.fromLinkedListNew(groupedConstructions).select((it) -> {
+        try {
+          return ListSequence.fromListAndArray(new ArrayList<String>(), HelpProvider__BehaviorDescriptor.getShortDisplayString_id64VftqEenfn.invoke(SNodeOperations.asSConcept(it)), HelpProvider__BehaviorDescriptor.getShortHelp_idqgIopNa9Hb.invoke(SNodeOperations.asSConcept(it)));
+        } catch (RuntimeException e) {
+          if (LOG.isWarningLevel()) {
+            LOG.warning("Concept " + it.getQualifiedName() + " implements ConsoleHelpProvider but does not implement getHelp() method", e);
+          }
           try {
-            return ListSequence.fromListAndArray(new ArrayList<String>(), HelpProvider__BehaviorDescriptor.getShortDisplayString_id64VftqEenfn.invoke(SNodeOperations.asSConcept(it)), HelpProvider__BehaviorDescriptor.getShortHelp_idqgIopNa9Hb.invoke(SNodeOperations.asSConcept(it)));
-          } catch (RuntimeException e) {
-            if (LOG.isWarningLevel()) {
-              LOG.warning("Concept " + it.getQualifiedName() + " implements ConsoleHelpProvider but does not implement getHelp() method", e);
-            }
-            try {
-              return ListSequence.fromListAndArray(new ArrayList<String>(), HelpProvider__BehaviorDescriptor.getShortDisplayString_id64VftqEenfn.invoke(SNodeOperations.asSConcept(it)), "");
-            } catch (RuntimeException e1) {
-              return ListSequence.fromListAndArray(new ArrayList<String>(), it.getName(), "");
-            }
+            return ListSequence.fromListAndArray(new ArrayList<String>(), HelpProvider__BehaviorDescriptor.getShortDisplayString_id64VftqEenfn.invoke(SNodeOperations.asSConcept(it)), "");
+          } catch (RuntimeException e1) {
+            return ListSequence.fromListAndArray(new ArrayList<String>(), it.getName(), "");
           }
         }
       }));
       List<Integer> maxLens = ListSequence.fromList(new LinkedList<Integer>());
-      for (int i = 0; i < ListSequence.fromList(resultList).select(new ISelector<List<String>, Integer>() {
-        public Integer select(List<String> it) {
-          return ListSequence.fromList(it).count();
-        }
-      }).foldRight(0, new IRightCombinator<Integer, Integer>() {
-        public Integer combine(Integer it, Integer s) {
-          return Math.max(s, it);
-        }
-      }); i++) {
+      for (int i = 0; i < ListSequence.fromList(resultList).select((it) -> ListSequence.fromList(it).count()).foldRight(0, (Integer it, Integer s) -> Math.max(s, it)); i++) {
         int maxLength = 0;
         for (List<String> row : ListSequence.fromList(resultList)) {
           int length = check_x46ur7_a0a0b0f0a0a(ListSequence.fromList(row).getElement(i));

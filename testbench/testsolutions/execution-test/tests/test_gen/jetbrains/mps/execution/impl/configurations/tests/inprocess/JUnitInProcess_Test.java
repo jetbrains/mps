@@ -67,7 +67,7 @@ public class JUnitInProcess_Test extends BaseTransformationTest {
 
     public void checkTests(final List<ITestNodeWrapper> success, final List<ITestNodeWrapper> failure) {
       try {
-        List<ITestNodeWrapper> testNodes = ListSequence.fromList(success).union(ListSequence.fromList(failure)).toListSequence();
+        List<ITestNodeWrapper> testNodes = ListSequence.fromList(success).union(ListSequence.fromList(failure)).toList();
         final TestRunState runState = new TestRunState(testNodes);
         Project ideaProject = ((MPSProject) myProject).getProject();
         JUnitTests_Configuration junitRC = new JUnitTests_Configuration(ideaProject, null, "dummyRCInitializer");

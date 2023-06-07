@@ -11,12 +11,12 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.openapi.editor.Editor;
 import jetbrains.mps.openapi.navigation.NavigationSupport;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -74,12 +74,10 @@ public class CreateQFixFromUsageHelper {
     final Wrappers._T<SNode> createdQFix = new Wrappers._T<SNode>(null);
     if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.ReportErrorStatement$v1) && cell.isErrorState() && cell.getSRole().equals(LINKS.helginsIntention_old$EFV_)) {
       created = true;
-      ex.exec(new _Adapters._return_P0_E0_to__void_P0_E0_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
-        public SNode invoke() {
-          createdQFix.value = createQFix(qFixName);
-          return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myNode, CONCEPTS.ReportErrorStatement$v1), LINKS.helginsIntention_old$EFV_)).addElement(createTypesystemIntention_5x9eia_a0a1a0a0b0p0l(createdQFix.value));
-        }
-      }));
+      ex.exec(() -> {
+        createdQFix.value = createQFix(qFixName);
+        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myNode, CONCEPTS.ReportErrorStatement$v1), LINKS.helginsIntention_old$EFV_)).addElement(createTypesystemIntention_5x9eia_a0a1a0a0b0p0l(createdQFix.value));
+      });
     } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.TypesystemIntention$sw)) {
       created = true;
       ex.exec(() -> {

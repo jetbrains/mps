@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
@@ -72,6 +72,7 @@
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -98,7 +99,6 @@
       <concept id="1204796164442" name="jetbrains.mps.baseLanguage.collections.structure.InternalSequenceOperation" flags="nn" index="23sCx2">
         <child id="1204796294226" name="closure" index="23t8la" />
       </concept>
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1165525191778" name="jetbrains.mps.baseLanguage.collections.structure.GetFirstOperation" flags="nn" index="1uHKPH" />
       <concept id="1202120902084" name="jetbrains.mps.baseLanguage.collections.structure.WhereOperation" flags="nn" index="3zZkjj" />
     </language>
@@ -136,9 +136,9 @@
                 </node>
                 <node concept="3zZkjj" id="hRzagYU" role="2OqNvi">
                   <node concept="1bVj0M" id="hRzagYV" role="23t8la">
-                    <node concept="Rh6nW" id="hRzagYW" role="1bW2Oz">
+                    <node concept="gl6BB" id="5W7E4fV0W4v" role="1bW2Oz">
                       <property role="TrG5h" value="it" />
-                      <node concept="2jxLKc" id="1P4c1XrzTc4" role="1tU5fm" />
+                      <node concept="2jxLKc" id="5W7E4fV0W4w" role="1tU5fm" />
                     </node>
                     <node concept="3clFbS" id="hRzagYY" role="1bW5cS">
                       <node concept="3clFbF" id="hRzagYZ" role="3cqZAp">
@@ -150,7 +150,7 @@
                             <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                             <node concept="2OqwBi" id="hRzagZ3" role="37wK5m">
                               <node concept="37vLTw" id="2BHiRxgm6Or" role="2Oq$k0">
-                                <ref role="3cqZAo" node="hRzagYW" resolve="it" />
+                                <ref role="3cqZAo" node="5W7E4fV0W4v" />
                               </node>
                               <node concept="3TrcHB" id="hRzagZ5" role="2OqNvi">
                                 <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
@@ -210,9 +210,9 @@
                 </node>
                 <node concept="3zZkjj" id="hRzaip5" role="2OqNvi">
                   <node concept="1bVj0M" id="hRzaip6" role="23t8la">
-                    <node concept="Rh6nW" id="hRzaip7" role="1bW2Oz">
+                    <node concept="gl6BB" id="5W7E4fV0W4x" role="1bW2Oz">
                       <property role="TrG5h" value="it" />
-                      <node concept="2jxLKc" id="1P4c1XrzTen" role="1tU5fm" />
+                      <node concept="2jxLKc" id="5W7E4fV0W4y" role="1tU5fm" />
                     </node>
                     <node concept="3clFbS" id="hRzaip9" role="1bW5cS">
                       <node concept="3clFbF" id="hRzaipa" role="3cqZAp">
@@ -224,7 +224,7 @@
                             <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                             <node concept="2OqwBi" id="hRzaipe" role="37wK5m">
                               <node concept="37vLTw" id="2BHiRxgm1AH" role="2Oq$k0">
-                                <ref role="3cqZAo" node="hRzaip7" resolve="it" />
+                                <ref role="3cqZAo" node="5W7E4fV0W4x" />
                               </node>
                               <node concept="3TrcHB" id="hRzaipg" role="2OqNvi">
                                 <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />

@@ -19,10 +19,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.ArrayList;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -49,11 +49,7 @@ public class ModificationStatement_Constraints extends BaseConstraintsDescriptor
           public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode contents = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(_context.getReferenceNode(), CONCEPTS.ModificationStatement$sT), LINKS.modifiedGroup$VNVK), LINKS.contents$WkC6);
             if (SNodeOperations.isInstanceOf(contents, CONCEPTS.ElementListContents$NF)) {
-              return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(contents, CONCEPTS.ElementListContents$NF), LINKS.reference$XMYO)).where(new IWhereFilter<SNode>() {
-                public boolean accept(SNode it) {
-                  return SNodeOperations.isInstanceOf(it, CONCEPTS.GroupAnchor$JV);
-                }
-              }).toListSequence());
+              return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(contents, CONCEPTS.ElementListContents$NF), LINKS.reference$XMYO)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.GroupAnchor$JV)).toList());
             }
             return ListScope.forResolvableElements(new ArrayList<SNode>());
           }
@@ -73,13 +69,9 @@ public class ModificationStatement_Constraints extends BaseConstraintsDescriptor
           public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> actionGroupDeclarations = SModelOperations.rootsIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.ActionGroupDeclaration$VO);
             SNode groupDeclaration = SNodeOperations.getNodeAncestor(_context.getReferenceNode(), CONCEPTS.ActionGroupDeclaration$VO, false, false);
-            List<SNode> thisGroupChildGroups = ((List<SNode>) ListSequence.fromList(SNodeOperations.getNodeDescendants(groupDeclaration, null, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return SNodeOperations.isInstanceOf(it, CONCEPTS.ActionGroupDeclaration$VO);
-              }
-            }).toListSequence());
+            List<SNode> thisGroupChildGroups = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getNodeDescendants(groupDeclaration, null, false, new SAbstractConcept[]{}), CONCEPTS.ActionGroupDeclaration$VO)).toList();
             ListSequence.fromList(thisGroupChildGroups).addElement(groupDeclaration);
-            return ListScope.forResolvableElements(ListSequence.fromList(actionGroupDeclarations).subtract(ListSequence.fromList(thisGroupChildGroups)).toListSequence());
+            return ListScope.forResolvableElements(ListSequence.fromList(actionGroupDeclarations).subtract(ListSequence.fromList(thisGroupChildGroups)).toList());
           }
         };
       }

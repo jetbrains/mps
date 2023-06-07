@@ -62,7 +62,7 @@ public class Refactorings_TabDescriptor extends RelationDescriptor {
       return new ArrayList<SNode>();
     }
 
-    return Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspects_id4G9PD8$NvPM.invoke(node, aspectModel)).toListSequence();
+    return Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspects_id4G9PD8$NvPM.invoke(node, aspectModel)).toList();
   }
   public boolean isSingle() {
     return false;

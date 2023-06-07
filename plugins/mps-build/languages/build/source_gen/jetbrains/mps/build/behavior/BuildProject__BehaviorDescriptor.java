@@ -35,9 +35,7 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.scope.CompositeScope;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -187,11 +185,7 @@ public final class BuildProject__BehaviorDescriptor extends BaseBHDescriptor {
       if (Sequence.fromIterable(((Iterable<SNode>) SLinkOperations.getChildren(containingProject, LINKS.macros$r8_A))).contains(child)) {
         definedMacro.value = SNodeOperations.cast(child, CONCEPTS.BuildMacro$qd);
       } else {
-        definedMacro.value = ListSequence.fromList(SLinkOperations.getChildren(containingProject, LINKS.macros$r8_A)).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return ListSequence.fromList(SNodeOperations.getNodeDescendants(it, null, false, new SAbstractConcept[]{})).contains(child);
-          }
-        });
+        definedMacro.value = ListSequence.fromList(SLinkOperations.getChildren(containingProject, LINKS.macros$r8_A)).findFirst((it) -> ListSequence.fromList(SNodeOperations.getNodeDescendants(it, null, false, new SAbstractConcept[]{})).contains(child));
       }
       if ((definedMacro.value != null)) {
         // we can only see what was strictly before us
@@ -201,16 +195,8 @@ public final class BuildProject__BehaviorDescriptor extends BaseBHDescriptor {
 
     List<Scope> scopes = ListSequence.fromList(new ArrayList<Scope>());
     ListSequence.fromList(scopes).addElement(rootScope);
-    ListSequence.fromList(scopes).addSequence(Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.dependencies$redY), CONCEPTS.BuildProjectDependency$sN), LINKS.script$6Ehy)).select(new ISelector<SNode, Scope>() {
-      public Scope select(SNode it) {
-        return (Scope) BuildProject__BehaviorDescriptor.getBuildMacroScope_id3h9a8EwPwcy.invoke(it, child, visited);
-      }
-    }));
-    ListSequence.fromList(scopes).addSequence(Sequence.fromIterable(ScopeUtil.imported(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.dependencies$redY)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildProjectDependency$sN));
-      }
-    }), CONCEPTS.BuildMacro$qd, child)));
+    ListSequence.fromList(scopes).addSequence(Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.dependencies$redY), CONCEPTS.BuildProjectDependency$sN), LINKS.script$6Ehy)).select((it) -> (Scope) BuildProject__BehaviorDescriptor.getBuildMacroScope_id3h9a8EwPwcy.invoke(it, child, visited)));
+    ListSequence.fromList(scopes).addSequence(Sequence.fromIterable(ScopeUtil.imported(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.dependencies$redY)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildProjectDependency$sN))), CONCEPTS.BuildMacro$qd, child)));
 
     return new CompositeScope(ListSequence.fromList(scopes).toGenericArray(Scope.class)) {
       @Override

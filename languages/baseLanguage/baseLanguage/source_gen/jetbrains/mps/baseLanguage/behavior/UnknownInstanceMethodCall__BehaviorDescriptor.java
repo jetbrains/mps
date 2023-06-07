@@ -18,7 +18,6 @@ import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.scopes.Members;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -59,11 +58,7 @@ public final class UnknownInstanceMethodCall__BehaviorDescriptor extends BaseBHD
     }
 
     SNode mDecl;
-    mDecl = Sequence.fromIterable(Members.visibleInstanceMethods(classifierType, __thisNode__)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(__thisNode__, PROPS.callee$uWRA));
-      }
-    });
+    mDecl = Sequence.fromIterable(Members.visibleInstanceMethods(classifierType, __thisNode__)).findFirst((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(__thisNode__, PROPS.callee$uWRA)));
     if ((mDecl != null)) {
       return mDecl;
     }
@@ -72,11 +67,7 @@ public final class UnknownInstanceMethodCall__BehaviorDescriptor extends BaseBHD
       for (SNode t : SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.as(instanceType, CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I), LINKS.auxBounds$jgLr)) {
         SNode ctype = TypecheckingFacade.getFromContext().strongCoerceType(t, CONCEPTS.ClassifierType$bL);
         if ((SLinkOperations.getTarget(ctype, LINKS.classifier$cxMr) != null)) {
-          mDecl = Sequence.fromIterable(Members.visibleInstanceMethods(ctype, __thisNode__)).findFirst(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(__thisNode__, PROPS.callee$uWRA));
-            }
-          });
+          mDecl = Sequence.fromIterable(Members.visibleInstanceMethods(ctype, __thisNode__)).findFirst((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(__thisNode__, PROPS.callee$uWRA)));
 
           if ((mDecl != null)) {
             return mDecl;

@@ -17,7 +17,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.kotlin.behavior.ConcreteTypeReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.kotlin.api.members.SignatureCollector;
 import jetbrains.mps.kotlin.signatures.PropertySignature;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -44,7 +43,7 @@ public final class GenericLeftExpression__BehaviorDescriptor extends BaseBHDescr
     return ConcreteTypeReference.nullSafeOf(SLinkOperations.getTarget(__thisNode__, LINKS.type$xNk6));
   }
   /*package*/ static boolean collectScope_id7DyvjiA20yV(@NotNull final SNode __thisNode__, ScopeCollector collector, SNode childNode) {
-    collector.declareCollectedScope((SignatureCollector it) -> PropertySignature.declareTo(__thisNode__, null, it));
+    collector.declareCollectedScope((it) -> PropertySignature.declareTo(__thisNode__, null, it));
     return true;
   }
 

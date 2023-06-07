@@ -113,7 +113,7 @@ public class JUnitOutOfProcess_Test extends BaseTransformationTest {
 
     public void runTestsWithSettings(JUnitTests_Configuration junit, List<ITestNodeWrapper> testsToSucceed, List<ITestNodeWrapper> testsToFail) {
       try {
-        List<ITestNodeWrapper> allTests = ListSequence.fromList(testsToSucceed).union(ListSequence.fromList(testsToFail)).toListSequence();
+        List<ITestNodeWrapper> allTests = ListSequence.fromList(testsToSucceed).union(ListSequence.fromList(testsToFail)).toList();
 
         JUnitOutOfProcessStarter.JUnitOutOfProcessStarter0 processExecutor;
         processExecutor = new JUnitOutOfProcessStarter.JUnitOutOfProcessStarter0((MPSProject) myProject, allTests, junit);

@@ -18,14 +18,11 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import java.util.HashMap;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.vcs.diff.changes.ModelChange;
 import java.awt.Graphics;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import javax.swing.JViewport;
 import java.awt.event.MouseEvent;
 import java.awt.Point;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 
 /**
  * 
@@ -79,11 +76,7 @@ public class DiffEditorSeparator extends JComponent implements TooltipComponent 
     myRepoWithChanges.getModelAccess().runReadAction(() -> {
       myChangeGroupDescriptions = MapSequence.fromMap(new HashMap<ChangeGroup, String>());
       for (ChangeGroup group : ListSequence.fromList(myChangeGroupLayout.getChangeGroups())) {
-        MapSequence.fromMap(myChangeGroupDescriptions).put(group, IterableUtils.join(ListSequence.fromList(group.getChanges()).select(new ISelector<ModelChange, String>() {
-          public String select(ModelChange ch) {
-            return ch.getDescription();
-          }
-        }), "\n\n"));
+        MapSequence.fromMap(myChangeGroupDescriptions).put(group, IterableUtils.join(ListSequence.fromList(group.getChanges()).select((ch) -> ch.getDescription()), "\n\n"));
       }
     });
   }
@@ -138,14 +131,12 @@ public class DiffEditorSeparator extends JComponent implements TooltipComponent 
     synchronized (this) {
       ensureBoundsCalculated();
       final Point p = mouseEvent.getPoint();
-      IMapping<ChangeGroup, Tuples._2<Bounds, Bounds>> group = MapSequence.fromMap(myGroupsWithBounds).findFirst(new IWhereFilter<IMapping<ChangeGroup, Tuples._2<Bounds, Bounds>>>() {
-        public boolean accept(IMapping<ChangeGroup, Tuples._2<Bounds, Bounds>> g) {
-          Bounds left = g.value()._0();
-          Bounds right = g.value()._1();
-          int v1 = vectorProduct((int) left.start(), (int) right.start(), p.x, p.y);
-          int v2 = vectorProduct((int) left.end(), (int) right.end(), p.x, p.y);
-          return v1 > 0 && v2 < 0;
-        }
+      IMapping<ChangeGroup, Tuples._2<Bounds, Bounds>> group = MapSequence.fromMap(myGroupsWithBounds).findFirst((g) -> {
+        Bounds left = g.value()._0();
+        Bounds right = g.value()._1();
+        int v1 = vectorProduct((int) left.start(), (int) right.start(), p.x, p.y);
+        int v2 = vectorProduct((int) left.end(), (int) right.end(), p.x, p.y);
+        return v1 > 0 && v2 < 0;
       });
       if (group == null) {
         return null;

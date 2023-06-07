@@ -21,7 +21,6 @@ import java.util.Collections;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.StringTokenizer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.module.SearchScope;
@@ -35,13 +34,11 @@ import java.util.Queue;
 import jetbrains.mps.internal.collections.runtime.QueueSequence;
 import java.util.LinkedList;
 import java.util.HashSet;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.baseLanguage.behavior.IMemberContainer__BehaviorDescriptor;
 import java.util.Map;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.model.SModelName;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -129,11 +126,7 @@ public class ClassifierResolveUtils {
     return name;
   }
   private static Iterable<SNode> getClassifiersInModel(SModel model) {
-    return ListSequence.fromList(SModelOperations.nodes(model, CONCEPTS.Classifier$Ix)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(anonymousClassConcept)));
-      }
-    });
+    return ListSequence.fromList(SModelOperations.nodes(model, CONCEPTS.Classifier$Ix)).where((it) -> !(SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(anonymousClassConcept))));
   }
 
   /*package*/ static SNode resolve(@NotNull String refText, @NotNull SNode contextClassifier, boolean includeAncestors) {
@@ -216,11 +209,7 @@ public class ClassifierResolveUtils {
 
     // walk through single-type imports
     // TODO static imports are not handled yet
-    for (SNode imp : ListSequence.fromList(SLinkOperations.getChildren(javaImports, LINKS.entries$neZo)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SPropertyOperations.getBoolean(it, PROPS.onDemand$Gmdi));
-      }
-    })) {
+    for (SNode imp : ListSequence.fromList(SLinkOperations.getChildren(javaImports, LINKS.entries$neZo)).where((it) -> !(SPropertyOperations.getBoolean(it, PROPS.onDemand$Gmdi)))) {
       if (!(token.equals(Tokens__BehaviorDescriptor.lastToken_id17WpDCYLyrY.invoke(imp)))) {
         continue;
       }
@@ -258,11 +247,7 @@ public class ClassifierResolveUtils {
       ListSequence.fromList(javaImportedThings).addElement(javaLangModel);
     }
 
-    for (SNode imp : ListSequence.fromList(SLinkOperations.getChildren(javaImports, LINKS.entries$neZo)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getBoolean(it, PROPS.onDemand$Gmdi);
-      }
-    })) {
+    for (SNode imp : ListSequence.fromList(SLinkOperations.getChildren(javaImports, LINKS.entries$neZo)).where((it) -> SPropertyOperations.getBoolean(it, PROPS.onDemand$Gmdi))) {
       String fqName = SPropertyOperations.getString(imp, PROPS.tokens$J1uk);
       if (SPropertyOperations.getBoolean(imp, PROPS.static$JAuQ)) {
         // StaticImportOnDemandDeclaration:   import static TypeName . * ;
@@ -344,18 +329,10 @@ public class ClassifierResolveUtils {
         if ((supr != null)) {
           QueueSequence.fromQueue(queue).addLastElement(supr);
         }
-        Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(classConcept, LINKS.implementedInterface$rujG), LINKS.classifier$cxMr)).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            QueueSequence.fromQueue(queue).addLastElement(it);
-          }
-        });
+        Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(classConcept, LINKS.implementedInterface$rujG), LINKS.classifier$cxMr)).visitAll((it) -> QueueSequence.fromQueue(queue).addLastElement(it));
 
       } else if (SNodeOperations.isInstanceOf(claz, CONCEPTS.Interface$db)) {
-        Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.cast(claz, CONCEPTS.Interface$db), LINKS.extendedInterface$PDVO), LINKS.classifier$cxMr)).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            QueueSequence.fromQueue(queue).addLastElement(it);
-          }
-        });
+        Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.cast(claz, CONCEPTS.Interface$db), LINKS.extendedInterface$PDVO), LINKS.classifier$cxMr)).visitAll((it) -> QueueSequence.fromQueue(queue).addLastElement(it));
       }
 
     }
@@ -366,11 +343,7 @@ public class ClassifierResolveUtils {
     SNode curr = base;
     while ((curr != null) && tokenizer.hasMoreTokens()) {
       final String tok = tokenizer.nextToken();
-      curr = Sequence.fromIterable(getImmediateNestedClassifiers(curr)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return tok.equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-        }
-      });
+      curr = Sequence.fromIterable(getImmediateNestedClassifiers(curr)).findFirst((it) -> tok.equals(SPropertyOperations.getString(it, PROPS.name$MnvL)));
     }
     return curr;
   }
@@ -437,11 +410,7 @@ public class ClassifierResolveUtils {
   }
 
   private static Iterable<SNode> staticImportedThings(SAbstractConcept neededConcept, SNode imports) {
-    Iterable<SNode> staticImports = ListSequence.fromList(SLinkOperations.getChildren(imports, LINKS.entries$neZo)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getBoolean(it, PROPS.static$JAuQ);
-      }
-    });
+    Iterable<SNode> staticImports = ListSequence.fromList(SLinkOperations.getChildren(imports, LINKS.entries$neZo)).where((it) -> SPropertyOperations.getBoolean(it, PROPS.static$JAuQ));
     if (Sequence.fromIterable(staticImports).isEmpty()) {
       return Sequence.fromIterable(Collections.<SNode>emptyList());
     }
@@ -476,11 +445,7 @@ public class ClassifierResolveUtils {
         }
 
         // or findAll instead of findFirst ?
-        SNode neededMember = Sequence.fromIterable(SNodeOperations.ofConcept(IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invoke(containingClas), SNodeOperations.asSConcept(neededConcept))).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return memberName.equals(it.getName());
-          }
-        });
+        SNode neededMember = Sequence.fromIterable(SNodeOperations.ofConcept(IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invoke(containingClas), SNodeOperations.asSConcept(neededConcept))).findFirst((it) -> memberName.equals(it.getName()));
 
         if ((neededMember == null)) {
           continue;
@@ -494,11 +459,7 @@ public class ClassifierResolveUtils {
   public static boolean isImportedBy(SNode node, SNode imports) {
     // TODO on-demand imports and probably inherited classes
     String name = SPropertyOperations.getString(node, PROPS.name$MnvL);
-    for (SNode singleTypeImp : ListSequence.fromList(SLinkOperations.getChildren(imports, LINKS.entries$neZo)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SPropertyOperations.getBoolean(it, PROPS.onDemand$Gmdi));
-      }
-    })) {
+    for (SNode singleTypeImp : ListSequence.fromList(SLinkOperations.getChildren(imports, LINKS.entries$neZo)).where((it) -> !(SPropertyOperations.getBoolean(it, PROPS.onDemand$Gmdi)))) {
       if (Tokens__BehaviorDescriptor.lastToken_id17WpDCYLyrY.invoke(singleTypeImp).equals(name)) {
         return true;
       }
@@ -562,11 +523,7 @@ public class ClassifierResolveUtils {
         final String classifierNestedName = classifierFQN.substring(modelNameNoStereotype.length() + 1);
         Iterable<SModel> values = myModelsWithoutStereotype.get(modelNameNoStereotype);
 
-        ListSequence.fromList(rv).addSequence(Sequence.fromIterable(values).translate(new ITranslator2<SModel, SNode>() {
-          public Iterable<SNode> translate(SModel md) {
-            return resolveClassifierByNestedName(md, classifierNestedName);
-          }
-        }));
+        ListSequence.fromList(rv).addSequence(Sequence.fromIterable(values).translate((md) -> resolveClassifierByNestedName(md, classifierNestedName)));
       }
       if (ListSequence.fromList(rv).isNotEmpty()) {
         return rv;
@@ -586,15 +543,7 @@ public class ClassifierResolveUtils {
         final String classifierNestedName = classifierFQN.substring(modelNameNoStereotype.length() + 1);
         Iterable<SModel> values = myModelsWithStereotype.get(modelNameNoStereotype);
 
-        ListSequence.fromList(rv).addSequence(Sequence.fromIterable(values).where(new IWhereFilter<SModel>() {
-          public boolean accept(SModel m) {
-            return m.getName().hasStereotype(stubStereoType);
-          }
-        }).translate(new ITranslator2<SModel, SNode>() {
-          public Iterable<SNode> translate(SModel md) {
-            return resolveClassifierByNestedName(md, classifierNestedName);
-          }
-        }));
+        ListSequence.fromList(rv).addSequence(Sequence.fromIterable(values).where((m) -> m.getName().hasStereotype(stubStereoType)).translate((md) -> resolveClassifierByNestedName(md, classifierNestedName)));
       }
       return rv;
     }

@@ -21,7 +21,6 @@ import org.jetbrains.mps.openapi.module.FindUsagesFacade;
 import jetbrains.mps.project.GlobalScope;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import java.util.HashSet;
 import jetbrains.mps.ide.findusages.model.SearchResult;
@@ -35,13 +34,9 @@ import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SReferenceBase;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 
 public class UpdateDependentModelsRefactoringParticipant extends RefactoringParticipantBase<SModelReference, SModelReference, SModel, SModel> implements MoveModelRefactoringParticipant<SModelReference, SModelReference> {
 
@@ -88,49 +83,35 @@ public class UpdateDependentModelsRefactoringParticipant extends RefactoringPart
       sourceModel.value = initialState.resolve(repository);
     });
 
-    return SetSequence.fromSet(usages.value).select(new ISelector<SModel, RefactoringParticipant.Change<SModelReference, SModelReference>>() {
-      public RefactoringParticipant.Change<SModelReference, SModelReference> select(SModel it) {
-        final SModelReference usageRef = it.getReference();
-        final SearchResults searchResults = new SearchResults(SetSequence.fromSetAndArray(new HashSet<SModel>(), sourceModel.value), ListSequence.fromListAndArray(new ArrayList<SearchResult<SModel>>(), new SearchResult<SModel>(it, "dependent model")));
-        RefactoringParticipant.Change<SModelReference, SModelReference> change = new MoveNodeRefactoringParticipant.ChangeBase<SModelReference, SModelReference>() {
-          public SearchResults getSearchResults() {
-            return searchResults;
-          }
-          public void confirm(final SModelReference finalState, final SRepository repository, RefactoringSession refactoringSession) {
-            refactoringSession.registerChange(() -> {
-              SModel usage = usageRef.resolve(repository);
-              if (usage instanceof SModelInternal && usage instanceof EditableSModel && ((SModelInternal) usage).getModelImports().contains(initialState)) {
-                ((SModelInternal) usage).addModelImport(finalState);
-                updateUsages((EditableSModel) usage, initialState, finalState);
-                ((SModelInternal) usage).deleteModelImport(initialState);
-              }
-              SModule targetModule = finalState.resolve(repository).getModule();
-              if (usage.getModule() instanceof AbstractModule && !(new GlobalModuleDependenciesManager(usage.getModule()).getModules(GlobalModuleDependenciesManager.Deptype.VISIBLE).contains(targetModule))) {
-                ((AbstractModule) usage.getModule()).addDependency(targetModule.getModuleReference(), false);
-              }
-            });
-          }
-        };
-        return change;
-      }
-    }).toListSequence();
+    return SetSequence.fromSet(usages.value).select((it) -> {
+      final SModelReference usageRef = it.getReference();
+      final SearchResults searchResults = new SearchResults(SetSequence.fromSetAndArray(new HashSet<SModel>(), sourceModel.value), ListSequence.fromListAndArray(new ArrayList<SearchResult<SModel>>(), new SearchResult<SModel>(it, "dependent model")));
+      RefactoringParticipant.Change<SModelReference, SModelReference> change = new MoveNodeRefactoringParticipant.ChangeBase<SModelReference, SModelReference>() {
+        public SearchResults getSearchResults() {
+          return searchResults;
+        }
+        public void confirm(final SModelReference finalState, final SRepository repository, RefactoringSession refactoringSession) {
+          refactoringSession.registerChange(() -> {
+            SModel usage = usageRef.resolve(repository);
+            if (usage instanceof SModelInternal && usage instanceof EditableSModel && ((SModelInternal) usage).getModelImports().contains(initialState)) {
+              ((SModelInternal) usage).addModelImport(finalState);
+              updateUsages((EditableSModel) usage, initialState, finalState);
+              ((SModelInternal) usage).deleteModelImport(initialState);
+            }
+            SModule targetModule = finalState.resolve(repository).getModule();
+            if (usage.getModule() instanceof AbstractModule && !(new GlobalModuleDependenciesManager(usage.getModule()).getModules(GlobalModuleDependenciesManager.Deptype.VISIBLE).contains(targetModule))) {
+              ((AbstractModule) usage.getModule()).addDependency(targetModule.getModuleReference(), false);
+            }
+          });
+        }
+      };
+      return change;
+    }).toList();
   }
 
   public static void updateUsages(EditableSModel usageModel, final SModelReference oldModelReference, final SModelReference newModelReference) {
     Iterable<SNode> nodes = (Iterable<SNode>) SNodeUtil.getDescendants(usageModel);
-    Sequence.fromIterable(nodes).translate(new ITranslator2<SNode, SReference>() {
-      public Iterable<SReference> translate(SNode it) {
-        return SNodeOperations.getReferences(it);
-      }
-    }).ofType(SReferenceBase.class).where(new IWhereFilter<SReferenceBase>() {
-      public boolean accept(SReferenceBase it) {
-        return Objects.equals(it.getTargetSModelReference(), oldModelReference);
-      }
-    }).visitAll(new IVisitor<SReferenceBase>() {
-      public void visit(SReferenceBase it) {
-        it.setTargetSModelReference(newModelReference);
-      }
-    });
+    Sequence.fromIterable(nodes).translate((it) -> SNodeOperations.getReferences(it)).ofType(SReferenceBase.class).where((it) -> Objects.equals(it.getTargetSModelReference(), oldModelReference)).visitAll((it) -> it.setTargetSModelReference(newModelReference));
     usageModel.setChanged(true);
   }
 

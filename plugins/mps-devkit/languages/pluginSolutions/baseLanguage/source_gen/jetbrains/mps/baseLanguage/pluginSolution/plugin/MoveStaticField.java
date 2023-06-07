@@ -15,6 +15,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.refactoring.participant.plugin.MoveNodesUtil;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.ArrayList;
 import jetbrains.mps.ide.platform.refactoring.NodeLocation;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -56,7 +57,7 @@ public class MoveStaticField implements MoveNodesAction {
       return;
     }
 
-    MoveNodesUtil.moveTo(project, getName(), MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), new MoveNodesUtil.NodeCreatingProcessor(new NodeLocationClassifierMember(SNodeOperations.cast(whereToMove, CONCEPTS.Classifier$Ix)), project)).withValues(ListSequence.fromListAndArray(new ArrayList<SNode>(), target)));
+    MoveNodesUtil.moveTo(project, getName(), MapSequence.fromMapAndEntryArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), Map.entry(new MoveNodesUtil.NodeCreatingProcessor(new NodeLocationClassifierMember(SNodeOperations.cast(whereToMove, CONCEPTS.Classifier$Ix)), project), ListSequence.fromListAndArray(new ArrayList<SNode>(), target))));
   }
 
   public static class NodeLocationClassifierMember extends NodeLocation.NodeLocationChild {

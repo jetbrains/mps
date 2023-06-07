@@ -18,7 +18,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -51,11 +50,7 @@ public final class SimpleBuilder__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static List<SNode> getPossibleChildren_id7LSrDTXb8f8(@NotNull SNode __thisNode__, SModel model) {
     List<SNode> builders = new ArrayList<SNode>();
     for (SNode child : SimpleBuilderDeclaration__BehaviorDescriptor.getChildren_id3jPK7hzSvxE.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$kO_b), model)) {
-      ListSequence.fromList(builders).addSequence(ListSequence.fromList(SimpleBuilderDeclaration__BehaviorDescriptor.getDescendants_id3jPK7hzRzcY.invoke(SLinkOperations.getTarget(child, LINKS.child$nhGb), model)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SPropertyOperations.getBoolean(it, PROPS.isAbstract$CwIU));
-        }
-      }));
+      ListSequence.fromList(builders).addSequence(ListSequence.fromList(SimpleBuilderDeclaration__BehaviorDescriptor.getDescendants_id3jPK7hzRzcY.invoke(SLinkOperations.getTarget(child, LINKS.child$nhGb), model)).where((it) -> !(SPropertyOperations.getBoolean(it, PROPS.isAbstract$CwIU))));
     }
     return builders;
   }

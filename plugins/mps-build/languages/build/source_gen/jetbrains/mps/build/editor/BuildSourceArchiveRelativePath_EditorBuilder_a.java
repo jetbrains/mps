@@ -34,7 +34,6 @@ import jetbrains.mps.build.behavior.BuildRelativePath__BehaviorDescriptor;
 import jetbrains.mps.build.util.Context;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -217,19 +216,11 @@ import org.jetbrains.mps.openapi.language.SProperty;
           return ListSequence.fromList(new ArrayList<String>());
         }
         List<IFile> children = file.getChildren();
-        Iterable<String> names = ListSequence.fromList(children).select(new ISelector<IFile, String>() {
-          public String select(IFile it) {
-            return it.getName();
-          }
-        });
+        Iterable<String> names = ListSequence.fromList(children).select((it) -> it.getName());
         if (file.getParent() != null) {
           names = Sequence.fromIterable(names).union(Sequence.fromIterable(Sequence.<String>singleton("..")));
         }
-        return Sequence.fromIterable(names).sort(new ISelector<String, String>() {
-          public String select(String it) {
-            return it;
-          }
-        }, true).toListSequence();
+        return Sequence.fromIterable(names).sort((it) -> it, true).toList();
 
       }
       protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {

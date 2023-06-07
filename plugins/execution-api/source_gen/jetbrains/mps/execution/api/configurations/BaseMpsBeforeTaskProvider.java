@@ -11,7 +11,6 @@ import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import java.lang.reflect.Method;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import java.lang.reflect.InvocationTargetException;
 import com.intellij.execution.BeforeRunTask;
@@ -82,11 +81,7 @@ public abstract class BaseMpsBeforeTaskProvider<T extends BaseMpsBeforeTaskProvi
         return false;
       }
       Object[] parameters = (Object[]) method.invoke(runConfiguration);
-      Method configureMethod = Sequence.fromIterable(Sequence.fromArray(task.getClass().getMethods())).findFirst(new IWhereFilter<Method>() {
-        public boolean accept(Method it) {
-          return Objects.equals(it.getName(), getConfigureMethodName());
-        }
-      });
+      Method configureMethod = Sequence.fromIterable(Sequence.fromArray(task.getClass().getMethods())).findFirst((it) -> Objects.equals(it.getName(), getConfigureMethodName()));
       return (Boolean) configureMethod.invoke(task, parameters);
     } catch (NoSuchMethodException e) {
     } catch (InvocationTargetException e) {

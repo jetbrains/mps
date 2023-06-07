@@ -41,9 +41,7 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.structure.constraints.Scopes;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -186,15 +184,7 @@ public class CreateFirstDeclaration extends TransformationMenuBase {
       @Nullable
       @Override
       protected Iterable<? extends SNode> getParameters(TransformationMenuContext _context) {
-        return Sequence.fromIterable(Scopes.forConcepts(_context.getNode(), CONCEPTS.DataTypeDeclaration$AD).getAvailableElements("")).select(new ISelector<SNode, SNode>() {
-          public SNode select(SNode it) {
-            return SNodeOperations.as(it, CONCEPTS.DataTypeDeclaration$AD);
-          }
-        }).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return it != null;
-          }
-        }).toListSequence();
+        return Sequence.fromIterable(Scopes.forConcepts(_context.getNode(), CONCEPTS.DataTypeDeclaration$AD).getAvailableElements("")).select((it) -> SNodeOperations.as(it, CONCEPTS.DataTypeDeclaration$AD)).where((it) -> it != null).toList();
       }
       @NotNull
       @Override

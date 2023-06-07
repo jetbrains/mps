@@ -30,7 +30,6 @@ import jetbrains.mps.typechecking.TypecheckingFacade;
 import java.util.Iterator;
 import jetbrains.mps.smodel.SNodeMatcher;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
@@ -126,7 +125,7 @@ public final class ClassifierType__BehaviorDescriptor extends BaseBHDescriptor {
     for (SNode supertype : declaredSupertypes) {
       SNode supertypeCopy = SNodeOperations.cast(SNodeOperations.copyNode(supertype), CONCEPTS.ClassifierType$bL);
       for (SNode typeParam : SLinkOperations.getChildren(supertypeCopy, LINKS.parameter$oqG$)) {
-        List<SNode> descendants = ListSequence.fromList(SNodeOperations.getNodeDescendants(typeParam, CONCEPTS.TypeVariableReference$WL, true, new SAbstractConcept[]{})).toListSequence();
+        List<SNode> descendants = ListSequence.fromList(SNodeOperations.getNodeDescendants(typeParam, CONCEPTS.TypeVariableReference$WL, true, new SAbstractConcept[]{})).toList();
         for (SNode typeVar : descendants) {
           int i = ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$Lipp)).indexOf(SLinkOperations.getTarget(typeVar, LINKS.typeVariableDeclaration$Lz1I));
           if (i < 0) {
@@ -373,7 +372,7 @@ public final class ClassifierType__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static SNode eraseGenerics_id4qyz6djw13y(@NotNull SNode __thisNode__) {
     SNode copy = SNodeOperations.copyNode(__thisNode__);
-    for (SNode c : ListSequence.fromList(SNodeOperations.getChildren(copy)).toListSequence()) {
+    for (SNode c : ListSequence.fromList(SNodeOperations.getChildren(copy)).toList()) {
       SNodeOperations.deleteNode(c);
     }
     return copy;
@@ -386,19 +385,11 @@ public final class ClassifierType__BehaviorDescriptor extends BaseBHDescriptor {
     MapSequence.fromMap(substitutions).put(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr), SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr));
 
     // avoid polluting the substitutions map with recursive references
-    if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr), LINKS.typeVariableDeclaration$Lipp)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return MapSequence.fromMap(substitutions).containsKey(it);
-      }
-    })) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr), LINKS.typeVariableDeclaration$Lipp)).any((it) -> MapSequence.fromMap(substitutions).containsKey(it))) {
       return;
     }
     final Set<SNode> tvds = SetSequence.fromSetWithValues(new HashSet<SNode>(), SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr), LINKS.typeVariableDeclaration$Lipp));
-    if (Sequence.fromIterable(MapSequence.fromMap(substitutions).values()).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SetSequence.fromSet(tvds).contains(SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I));
-      }
-    })) {
+    if (Sequence.fromIterable(MapSequence.fromMap(substitutions).values()).any((it) -> SetSequence.fromSet(tvds).contains(SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I)))) {
       return;
     }
 

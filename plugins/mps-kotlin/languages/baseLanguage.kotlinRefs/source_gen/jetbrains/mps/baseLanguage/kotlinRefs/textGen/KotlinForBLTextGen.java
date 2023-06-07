@@ -16,12 +16,9 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.kotlin.api.declaration.ParameterDeclaration;
 import jetbrains.mps.baseLanguage.kotlinRefs.behavior.IKotlinFunctionLikeCall__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Collections;
 import jetbrains.mps.kotlin.overloading.FunctionParamHelper;
 import jetbrains.mps.kotlin.overloading.NodeArgument;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.kotlin.overloading.Argument;
 import jetbrains.mps.kotlin.overloading.ParamException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -87,37 +84,21 @@ public abstract class KotlinForBLTextGen extends BaseLanguageTextGen {
 
     // Re-ordered arguments
     Iterable<ParameterDeclaration> functionParameters = IKotlinFunctionLikeCall__BehaviorDescriptor.getFunctionParameters_idUG7NftR_2Q.invoke(call);
-    if (Sequence.fromIterable(functionParameters).any(new IWhereFilter<ParameterDeclaration>() {
-      public boolean accept(ParameterDeclaration it) {
-        return it == null;
-      }
-    })) {
+    if (Sequence.fromIterable(functionParameters).any((it) -> it == null)) {
       // TODO more explicit error message?
       tgs.reportError("expecting a parameter declaration");
     }
 
     Iterable<SNode> arguments = Sequence.fromIterable(Collections.<SNode>emptyList());
-    if (ListSequence.fromList(SLinkOperations.getChildren(call, LINKS.actualArgument$Q6nt)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.parameter$UZpc) != null);
-      }
-    })) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(call, LINKS.actualArgument$Q6nt)).any((it) -> (SLinkOperations.getTarget(it, LINKS.parameter$UZpc) != null))) {
       try {
         // Reorder parameters (named args not supported in java)
-        arguments = Sequence.fromIterable(FunctionParamHelper.toOrderedList(functionParameters, NodeArgument.ofList(SLinkOperations.getChildren(call, LINKS.actualArgument$Q6nt)))).select(new ISelector<Argument, SNode>() {
-          public SNode select(Argument it) {
-            return it.getExpression();
-          }
-        });
+        arguments = Sequence.fromIterable(FunctionParamHelper.toOrderedList(functionParameters, NodeArgument.ofList(SLinkOperations.getChildren(call, LINKS.actualArgument$Q6nt)))).select((it) -> it.getExpression());
       } catch (ParamException error) {
         tgs.reportError(error.getMessage());
       }
     } else {
-      arguments = ListSequence.fromList(SLinkOperations.getChildren(call, LINKS.actualArgument$Q6nt)).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.expression$hLKM);
-        }
-      });
+      arguments = ListSequence.fromList(SLinkOperations.getChildren(call, LINKS.actualArgument$Q6nt)).select((it) -> SLinkOperations.getTarget(it, LINKS.expression$hLKM));
     }
 
     tgs.append("(");

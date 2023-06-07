@@ -21,7 +21,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.util.JavaNameUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Objects;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Collections;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -163,11 +162,7 @@ public class MembersPopulatingContext implements ClassifierHierarchyVisitor {
         ListSequence.fromList(keysToRemove).addElement(entry.getKey());
       }
     }
-    ListSequence.fromList(keysToRemove).visitAll(new IVisitor<Signature>() {
-      public void visit(Signature it) {
-        foundSignatures2Classifier.remove(it);
-      }
-    });
+    ListSequence.fromList(keysToRemove).visitAll((it) -> foundSignatures2Classifier.remove(it));
   }
 
   private SNode getCurrentClassifier() {

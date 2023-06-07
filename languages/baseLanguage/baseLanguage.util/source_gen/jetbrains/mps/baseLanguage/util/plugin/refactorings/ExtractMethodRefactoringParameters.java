@@ -10,7 +10,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.IClassifierType__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.behavior.ClassifierMember__BehaviorDescriptor;
@@ -63,8 +63,8 @@ public class ExtractMethodRefactoringParameters extends MethodModel {
     final String name = this.getName();
     final SNode classifier = this.myAnalyzer.getClassifier();
     if (classifier != null) {
-      Iterable<SNode> methods = Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(classifier)), CONCEPTS.InstanceMethodDeclaration$39)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
+      Iterable<SNode> methods = Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(classifier)), CONCEPTS.InstanceMethodDeclaration$39)).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+        public Boolean invoke(SNode it) {
           return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), name) && (boolean) ClassifierMember__BehaviorDescriptor.isVisible_id70J2WaK_oVl.invoke(it, classifier, classifier);
         }
       });

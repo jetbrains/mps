@@ -19,8 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -46,19 +44,7 @@ public class ForeignParametersExpression_Constraints extends BaseConstraintsDesc
           public Scope createScope(final ReferenceConstraintsContext _context) {
             final SNode td = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.TargetDeclaration$Kf, false, false);
             SNode fd = SNodeOperations.cast(SNodeOperations.getParent(td), CONCEPTS.FacetDeclaration$Nd);
-            return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(fd, LINKS.targetDeclaration$z39X)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode sibl) {
-                return sibl != td;
-              }
-            }).concat(ListSequence.fromList(SLinkOperations.getChildren(fd, LINKS.required$ll7a)).translate(new ITranslator2<SNode, SNode>() {
-              public Iterable<SNode> translate(SNode rfd) {
-                return SLinkOperations.getChildren(SLinkOperations.getTarget(rfd, LINKS.facet$Asbo), LINKS.targetDeclaration$z39X);
-              }
-            })).concat(ListSequence.fromList(SLinkOperations.getChildren(fd, LINKS.optional$llmb)).translate(new ITranslator2<SNode, SNode>() {
-              public Iterable<SNode> translate(SNode rfd) {
-                return SLinkOperations.getChildren(SLinkOperations.getTarget(rfd, LINKS.facet$Asbo), LINKS.targetDeclaration$z39X);
-              }
-            })));
+            return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(fd, LINKS.targetDeclaration$z39X)).where((sibl) -> sibl != td).concat(ListSequence.fromList(SLinkOperations.getChildren(fd, LINKS.required$ll7a)).translate((rfd) -> SLinkOperations.getChildren(SLinkOperations.getTarget(rfd, LINKS.facet$Asbo), LINKS.targetDeclaration$z39X))).concat(ListSequence.fromList(SLinkOperations.getChildren(fd, LINKS.optional$llmb)).translate((rfd) -> SLinkOperations.getChildren(SLinkOperations.getTarget(rfd, LINKS.facet$Asbo), LINKS.targetDeclaration$z39X))));
           }
         };
       }

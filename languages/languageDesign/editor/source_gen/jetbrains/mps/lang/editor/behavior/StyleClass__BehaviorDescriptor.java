@@ -22,7 +22,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -102,11 +101,7 @@ public final class StyleClass__BehaviorDescriptor extends BaseBHDescriptor {
         return true;
       }
       ListSequence.fromList(dependencies).addSequence(ListSequence.fromList(adding));
-      adding = ListSequence.fromListWithValues(new ArrayList<SNode>(), SNodeOperations.ofConcept(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collectMany(adding, LINKS.styleItem$FgZD), CONCEPTS.ApplyStyleClass$Oh)).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.target$vm1e), LINKS.style$$2C0);
-        }
-      }), CONCEPTS.StyleClass$_L));
+      adding = ListSequence.fromListWithValues(new ArrayList<SNode>(), SNodeOperations.ofConcept(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collectMany(adding, LINKS.styleItem$FgZD), CONCEPTS.ApplyStyleClass$Oh)).select((it) -> SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.target$vm1e), LINKS.style$$2C0)), CONCEPTS.StyleClass$_L));
     }
     return false;
   }

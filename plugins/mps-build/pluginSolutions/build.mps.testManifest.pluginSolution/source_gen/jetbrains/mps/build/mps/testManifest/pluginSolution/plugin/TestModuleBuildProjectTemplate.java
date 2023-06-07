@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
@@ -164,11 +163,7 @@ public class TestModuleBuildProjectTemplate {
   }
 
   private SNode updateReferences(SNode root, SNode testGroup) {
-    SNode group = ListSequence.fromList(SNodeOperations.getNodeDescendants(root, CONCEPTS.BuildMps_Group$Jc, false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL).endsWith("-tests");
-      }
-    });
+    SNode group = ListSequence.fromList(SNodeOperations.getNodeDescendants(root, CONCEPTS.BuildMps_Group$Jc, false, new SAbstractConcept[]{})).findFirst((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).endsWith("-tests"));
     SLinkOperations.setTarget(testGroup, LINKS.group$V1Bj, group);
 
     return root;

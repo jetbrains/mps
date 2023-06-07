@@ -24,7 +24,6 @@ import jetbrains.mps.make.delta.IDelta;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.stream.Stream;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.project.facets.GenerationTargetFacet;
@@ -32,7 +31,6 @@ import java.util.Objects;
 import jetbrains.mps.make.facets.Make_Facet.Target_make;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.resources.behavior.Resource__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.lang.resources.behavior.ResourceGenerationException;
@@ -40,7 +38,6 @@ import jetbrains.mps.make.script.IFeedback;
 import jetbrains.mps.internal.make.runtime.java.FileDeltaCollector;
 import jetbrains.mps.internal.make.runtime.util.FilesDelta;
 import jetbrains.mps.internal.make.runtime.util.DeltaKey;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.make.runtime.util.StaleFilesCollector;
 import jetbrains.mps.smodel.resources.DResource;
 import jetbrains.mps.vfs.FileSystem;
@@ -98,21 +95,13 @@ public class Binaries_Facet extends IFacet.Stub {
                 final SRepository repository = monitor.getSession().getProject().getRepository();
                 final Wrappers._boolean fail = new Wrappers._boolean(false);
                 repository.getModelAccess().runReadAction(() -> {
-                  for (final SModel model : Sequence.fromIterable(input).translate(new ITranslator2<MResource, SModel>() {
-                    public Iterable<SModel> translate(MResource res) {
-                      return Sequence.fromIterable(res.models()).ofType(SModel.class);
-                    }
-                  })) {
+                  for (final SModel model : Sequence.fromIterable(input).translate((res) -> Sequence.fromIterable(res.models()).ofType(SModel.class))) {
                     Stream<IFile> possibleLocations = GenerationTargetFacet.stream(model).map((GenerationTargetFacet f) -> f.getOutputLocation(model));
                     IFile outputLocation = possibleLocations.filter(Objects::nonNull).findFirst().orElse(null);
                     final IFile outputDir = Target_make.vars(pa.global()).alternateOutput().invoke(outputLocation);
                     Iterable<Tuples._2<IFile, byte[]>> generatedBinaryFiles;
                     try {
-                      generatedBinaryFiles = ListSequence.fromList(SModelOperations.nodes(model, CONCEPTS.Resource$gs)).translate(new ITranslator2<SNode, Tuples._2<IFile, byte[]>>() {
-                        public Iterable<Tuples._2<IFile, byte[]>> translate(SNode it) {
-                          return (List<Tuples._2<IFile, byte[]>>) Resource__BehaviorDescriptor.generate_id7Mb2akaesv8.invoke(it, outputDir);
-                        }
-                      }).where(new NotNullWhereFilter<Tuples._2<IFile, byte[]>>()).toListSequence();
+                      generatedBinaryFiles = ListSequence.fromList(SModelOperations.nodes(model, CONCEPTS.Resource$gs)).translate((it) -> (List<Tuples._2<IFile, byte[]>>) Resource__BehaviorDescriptor.generate_id7Mb2akaesv8.invoke(it, outputDir)).where(new NotNullWhereFilter()).toList();
                     } catch (ResourceGenerationException rge) {
                       monitor.reportFeedback(new IFeedback.ERROR(String.valueOf(rge.getMessage())));
                       if (LOG.isErrorLevel()) {
@@ -126,11 +115,9 @@ public class Binaries_Facet extends IFacet.Stub {
                     }
 
                     final FileDeltaCollector fdc = new FileDeltaCollector(new FilesDelta(new DeltaKey(model.getModule(), model)), outputDir, fp);
-                    Sequence.fromIterable(generatedBinaryFiles).visitAll(new IVisitor<Tuples._2<IFile, byte[]>>() {
-                      public void visit(Tuples._2<IFile, byte[]> d) {
-                        if (d._1() != null) {
-                          fdc.saveStream(d._0(), d._1());
-                        }
+                    Sequence.fromIterable(generatedBinaryFiles).visitAll((d) -> {
+                      if (d._1() != null) {
+                        fdc.saveStream(d._0(), d._1());
                       }
                     });
                     if (!(monitor.getSession().isCleanMake())) {

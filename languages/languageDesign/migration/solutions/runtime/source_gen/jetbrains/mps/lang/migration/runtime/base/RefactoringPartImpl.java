@@ -13,7 +13,6 @@ import jetbrains.mps.refactoring.participant.RefactoringUI;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
@@ -36,11 +35,7 @@ public class RefactoringPartImpl {
   }
   public <IP, FP> void performDeserializingRefactoring(final SModule module, RefactoringParticipant.PersistentRefactoringParticipant<?, ?, IP, FP> participant, RefactoringSession refactoringSession, _FunctionTypes._void_P1_E0<? super Runnable> runner, _FunctionTypes._void_P4_E0<? super RefactoringUI, ? super RefactoringParticipant.PersistentRefactoringParticipant, ? super Iterable<SNode>, ? super Map<SNode, SNode>> refactoringProcessor) {
 
-    RefactoringUI ui = new EmptyRefactoringUI((mySelectedOptionsSerialized == null ? null : ListSequence.fromList(SLinkOperations.getChildren(mySelectedOptionsSerialized, LINKS.options$l6Xl)).select(new ISelector<SNode, RefactoringParticipant.Option>() {
-      public RefactoringParticipant.Option select(SNode it) {
-        return new RefactoringParticipant.Option(SPropertyOperations.getString(it, PROPS.optionId$l6wK), SPropertyOperations.getString(it, PROPS.description$GF4B));
-      }
-    }).toListSequence()), runner);
+    RefactoringUI ui = new EmptyRefactoringUI((mySelectedOptionsSerialized == null ? null : ListSequence.fromList(SLinkOperations.getChildren(mySelectedOptionsSerialized, LINKS.options$l6Xl)).select((it) -> new RefactoringParticipant.Option(SPropertyOperations.getString(it, PROPS.optionId$l6wK), SPropertyOperations.getString(it, PROPS.description$GF4B))).toList()), runner);
 
     Map<SNode, SNode> initialToFinal = MapSequence.fromMap(new HashMap<SNode, SNode>());
     for (SNode part : ListSequence.fromList(myParts)) {

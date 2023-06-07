@@ -16,7 +16,6 @@ import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.BaseQuickFixProvider;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -44,11 +43,7 @@ public class check_AbstractConceptDeclaration_Ids_NonTypesystemRule extends Abst
         }
       }
     } else {
-      if (ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(acd), CONCEPTS.AbstractConceptDeclaration$KA)).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return it != acd && Objects.equals(SPropertyOperations.getString(it, PROPS.conceptId$rrGe), SPropertyOperations.getString(acd, PROPS.conceptId$rrGe));
-        }
-      })) {
+      if (ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(acd), CONCEPTS.AbstractConceptDeclaration$KA)).any((it) -> it != acd && Objects.equals(SPropertyOperations.getString(it, PROPS.conceptId$rrGe), SPropertyOperations.getString(acd, PROPS.conceptId$rrGe)))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(acd, "Duplicate concept id.\n" + "Please invoke the \"Correct ID\" intention on it", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "5424895381998262898", null, errorTarget);
@@ -73,11 +68,7 @@ public class check_AbstractConceptDeclaration_Ids_NonTypesystemRule extends Abst
           }
         }
       } else {
-        if (ListSequence.fromList(SLinkOperations.getChildren(acd, LINKS.propertyDeclaration$YUgg)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return it != p && Objects.equals(SPropertyOperations.getString(it, PROPS.propertyId$m5HU), SPropertyOperations.getString(p, PROPS.propertyId$m5HU));
-          }
-        })) {
+        if (ListSequence.fromList(SLinkOperations.getChildren(acd, LINKS.propertyDeclaration$YUgg)).any((it) -> it != p && Objects.equals(SPropertyOperations.getString(it, PROPS.propertyId$m5HU), SPropertyOperations.getString(p, PROPS.propertyId$m5HU)))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(p, "Duplicate property id.\n" + "Please invoke the \"Correct ID\" intention on it", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "5424895381998286923", null, errorTarget);
@@ -103,11 +94,7 @@ public class check_AbstractConceptDeclaration_Ids_NonTypesystemRule extends Abst
           }
         }
       } else {
-        if (ListSequence.fromList(SLinkOperations.getChildren(acd, LINKS.linkDeclaration$YU1f)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return it != l && Objects.equals(SPropertyOperations.getString(it, PROPS.linkId$mi9g), SPropertyOperations.getString(l, PROPS.linkId$mi9g));
-          }
-        })) {
+        if (ListSequence.fromList(SLinkOperations.getChildren(acd, LINKS.linkDeclaration$YU1f)).any((it) -> it != l && Objects.equals(SPropertyOperations.getString(it, PROPS.linkId$mi9g), SPropertyOperations.getString(l, PROPS.linkId$mi9g)))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(l, "Duplicate link id.\n" + "Please invoke the \"Correct ID\" intention on it", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "5424895381998288260", null, errorTarget);

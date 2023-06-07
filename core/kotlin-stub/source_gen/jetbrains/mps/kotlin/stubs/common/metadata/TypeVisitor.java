@@ -10,11 +10,11 @@ import java.util.StringJoiner;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.kotlin.stubs.common.references.StereotypeReference;
 import org.jetbrains.mps.openapi.model.ResolveInfo;
 import jetbrains.mps.kotlin.stubs.common.KotlinId;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import jetbrains.mps.kotlin.stubs.common.references.StereotypeReference;
 import org.jetbrains.annotations.Nullable;
 import kotlinx.metadata.KmVariance;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -53,7 +53,7 @@ public class TypeVisitor extends KmTypeVisitor {
     if (fqName.matches("kotlin\\/Function[0-9]+")) {
       node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af37dL, "jetbrains.mps.kotlin.structure.FunctionType"));
     } else {
-      node = context.createClassReference(fqName, (StereotypeReference.ClassStereotype this0, ResolveInfo resolved) -> this0.createKotlinType(resolved));
+      node = context.createClassReference(fqName, (this0, resolved) -> this0.createKotlinType(resolved));
     }
     typeIdentifier = context.packageLocalName(fqName);
   }

@@ -12,7 +12,6 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.editor.runtime.cells.ReadOnlyUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -38,11 +37,7 @@ public class MoveNodes_Action extends BaseAction {
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    if (((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")) != null && ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodesToMove"))).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode node) {
-        return ReadOnlyUtil.isCellsReadOnlyInEditor(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")), Sequence.<EditorCell>singleton(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).findNodeCell(node)));
-      }
-    })) {
+    if (((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")) != null && ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodesToMove"))).any((node) -> ReadOnlyUtil.isCellsReadOnlyInEditor(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")), Sequence.<EditorCell>singleton(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).findNodeCell(node))))) {
       event.getPresentation().setEnabled(false);
       return;
     }

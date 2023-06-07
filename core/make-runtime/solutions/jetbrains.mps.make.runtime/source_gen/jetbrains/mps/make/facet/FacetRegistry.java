@@ -17,13 +17,10 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import java.util.function.Function;
 import java.util.concurrent.CopyOnWriteArraySet;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.ArrayList;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.smodel.runtime.MakeAspectDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Collections;
 import java.util.stream.Stream;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -87,18 +84,14 @@ public final class FacetRegistry implements CoreComponent {
       throw new IllegalArgumentException("not registered");
     }
     MapSequence.fromMap(facetMap).removeKey(facet.getName());
-    facetsForLanguages = SetSequence.fromSetWithValues(new HashSet<Tuples._2<String, IFacet>>(), SetSequence.fromSet(facetsForLanguages).where(new IWhereFilter<Tuples._2<String, IFacet>>() {
-      public boolean accept(Tuples._2<String, IFacet> it) {
-        return !(facet.equals(it._1()));
-      }
-    }));
+    facetsForLanguages = SetSequence.fromSetWithValues(new HashSet<Tuples._2<String, IFacet>>(), SetSequence.fromSet(facetsForLanguages).where((it) -> !(facet.equals(it._1()))));
     final ArrayList<SLanguage> toDrop = new ArrayList<>(2);
     myLang2Facet.forEach((SLanguage k, Set<IFacet> v) -> {
       if (v.remove(facet)) {
         toDrop.add(k);
       }
     });
-    toDrop.forEach((SLanguage it) -> myLang2Facet.remove(it));
+    toDrop.forEach((it) -> myLang2Facet.remove(it));
   }
 
   public IFacet lookup(IFacet.Name fn) {
@@ -133,31 +126,15 @@ public final class FacetRegistry implements CoreComponent {
   @Deprecated(forRemoval = true, since = "2021.3")
   public Iterable<IFacet> getFacetsForLanguage(final String languageNamespace) {
     // to my best knowledge, there were no uses except for MPS implementation (Cluster)
-    return SetSequence.fromSet(facetsForLanguages).where(new IWhereFilter<Tuples._2<String, IFacet>>() {
-      public boolean accept(Tuples._2<String, IFacet> it) {
-        return languageNamespace.equals(it._0());
-      }
-    }).select(new ISelector<Tuples._2<String, IFacet>, IFacet>() {
-      public IFacet select(Tuples._2<String, IFacet> it) {
-        return it._1();
-      }
-    });
+    return SetSequence.fromSet(facetsForLanguages).where((it) -> languageNamespace.equals(it._0())).select((it) -> it._1());
   }
 
   /**
    * Unlike legacy getFacetsForLanguage(String), looks up facets for the language in the LanguageRegistry
    */
   public Iterable<IFacet> getFacetsForLanguages(Iterable<SLanguage> languages) {
-    Iterable<IFacet> legacyFacets = Sequence.fromIterable(languages).translate(new ITranslator2<SLanguage, IFacet>() {
-      public Iterable<IFacet> translate(SLanguage it) {
-        return getFacetsForLanguage(it.getQualifiedName());
-      }
-    });
-    Iterable<IFacet> newFacets = Sequence.fromIterable(languages).translate(new ITranslator2<SLanguage, IFacet>() {
-      public Iterable<IFacet> translate(SLanguage it) {
-        return myLang2Facet.getOrDefault(it, Collections.<IFacet>emptySet());
-      }
-    });
+    Iterable<IFacet> legacyFacets = Sequence.fromIterable(languages).translate((it) -> getFacetsForLanguage(it.getQualifiedName()));
+    Iterable<IFacet> newFacets = Sequence.fromIterable(languages).translate((it) -> myLang2Facet.getOrDefault(it, Collections.<IFacet>emptySet()));
     if (myLanguageRegistry == null) {
       // in fact, as long as we don't use this method in tests, we can assume LR != null
       return Sequence.fromIterable(newFacets).union(Sequence.fromIterable(legacyFacets));
@@ -167,7 +144,7 @@ public final class FacetRegistry implements CoreComponent {
     myLanguageRegistry.withAvailableLanguages(Stream.of(Sequence.fromIterable(languages).toGenericArray(SLanguage.class)), (LanguageRuntime lr) -> {
       MakeAspectDescriptor ma = lr.getAspect(MakeAspectDescriptor.class);
       if (ma != null) {
-        ma.getManifest().facets().forEach((IFacet it) -> forLang.add(it));
+        ma.getManifest().facets().forEach((it) -> forLang.add(it));
       }
     });
     // XXX Do I need to care about ordering. Seems right to have mechanism to override coming first, 

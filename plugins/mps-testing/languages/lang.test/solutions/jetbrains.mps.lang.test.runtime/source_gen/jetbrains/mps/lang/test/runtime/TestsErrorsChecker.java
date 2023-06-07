@@ -14,7 +14,6 @@ import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.util.Consumer;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.typesystemEngine.checker.TypesystemChecker;
@@ -72,27 +71,21 @@ public final class TestsErrorsChecker {
 
   public Iterable<NodeReportItem> getErrorsSpecificType(SNode node, final MessageStatus errorType) {
     Set<NodeReportItem> result = SetSequence.fromSet(new HashSet<NodeReportItem>());
-    SetSequence.fromSet(result).addSequence(Sequence.fromIterable(getErrors(node)).where(new IWhereFilter<NodeReportItem>() {
-      public boolean accept(NodeReportItem it) {
-        return it.getSeverity() == errorType;
-      }
-    }));
+    SetSequence.fromSet(result).addSequence(Sequence.fromIterable(getErrors(node)).where((it) -> it.getSeverity() == errorType));
     return result;
   }
 
   private Iterable<NodeReportItem> filterReportersByNode(final Iterable<NodeReportItem> errors, @NotNull final SNode aNode) {
-    return Sequence.fromIterable(errors).where(new IWhereFilter<NodeReportItem>() {
-      public boolean accept(NodeReportItem it) {
-        assert it.getNode() != null;
-        return it.getNode().getNodeId().equals(aNode.getNodeId());
-      }
+    return Sequence.fromIterable(errors).where((it) -> {
+      assert it.getNode() != null;
+      return it.getNode().getNodeId().equals(aNode.getNodeId());
     });
   }
 
   private Iterable<NodeReportItem> getRootErrors() {
     Set<NodeReportItem> cachedErrors = ourModelErrorsHolder.get();
     if (cachedErrors != null) {
-      return SetSequence.fromSet(cachedErrors).toListSequence();
+      return SetSequence.fromSet(cachedErrors).toList();
     }
 
     if (LOG.isDebugLevel()) {
@@ -110,15 +103,9 @@ public final class TestsErrorsChecker {
     new StructureChecker(myHost).asRootChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());
 
     final ErrorReportHelper helper = new ErrorReportHelper();
-    Set<NodeReportItem> res = SetSequence.fromSetWithValues(new HashSet<NodeReportItem>(), SetSequence.fromSet(result).where(new IWhereFilter<NodeReportItem>() {
-      public boolean accept(NodeReportItem it) {
-        SNodeReference node = NodeReportItem.FLAVOUR_NODE.tryToGet(it);
-        return node == null || Sequence.fromIterable(helper.getActiveSuppressors(node.resolve(repository), it)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode suppressor) {
-            return !(SNodeOperations.isInstanceOf(suppressor, CONCEPTS.AbstractTestNodeAnnotation$lh));
-          }
-        }).isEmpty();
-      }
+    Set<NodeReportItem> res = SetSequence.fromSetWithValues(new HashSet<NodeReportItem>(), SetSequence.fromSet(result).where((it) -> {
+      SNodeReference node = NodeReportItem.FLAVOUR_NODE.tryToGet(it);
+      return node == null || Sequence.fromIterable(helper.getActiveSuppressors(node.resolve(repository), it)).where((suppressor) -> !(SNodeOperations.isInstanceOf(suppressor, CONCEPTS.AbstractTestNodeAnnotation$lh))).isEmpty();
     }));
     ourModelErrorsHolder.set(res);
     return res;

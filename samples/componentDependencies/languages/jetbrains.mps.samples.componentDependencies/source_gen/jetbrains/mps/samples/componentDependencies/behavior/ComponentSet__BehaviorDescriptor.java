@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -32,11 +31,7 @@ public final class ComponentSet__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Iterable<SNode> retrieveDependencies_id7SUlOxgz$bp(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.component$l$9M)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SLinkOperations.getChildren(it, LINKS.dep$WgPG);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.component$l$9M)).translate((it) -> SLinkOperations.getChildren(it, LINKS.dep$WgPG));
   }
 
   /*package*/ ComponentSet__BehaviorDescriptor() {

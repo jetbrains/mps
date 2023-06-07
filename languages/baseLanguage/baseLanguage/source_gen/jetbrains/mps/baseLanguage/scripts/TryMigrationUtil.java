@@ -20,8 +20,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.ChildAttribute__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -91,15 +89,7 @@ public class TryMigrationUtil {
         }
       }
       SLinkOperations.setTarget(migratedCatchClause, LINKS.catchBody$UX12, SLinkOperations.getTarget(catchClause, LINKS.catchBody$$61I));
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(migratedCatchClause, LINKS.catchBody$UX12), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == SLinkOperations.getTarget(catchClause, LINKS.throwable$$5MH);
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SLinkOperations.setTarget(it, LINKS.variableDeclaration$N1XG, SLinkOperations.getTarget(migratedCatchClause, LINKS.throwable$UWM1));
-        }
-      });
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(migratedCatchClause, LINKS.catchBody$UX12), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where((it) -> SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == SLinkOperations.getTarget(catchClause, LINKS.throwable$$5MH)).visitAll((it) -> SLinkOperations.setTarget(it, LINKS.variableDeclaration$N1XG, SLinkOperations.getTarget(migratedCatchClause, LINKS.throwable$UWM1)));
       ListSequence.fromList(SLinkOperations.getChildren(migratedCatchClause, LINKS.smodelAttribute$KJ43)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(catchClause, LINKS.smodelAttribute$KJ43)));
       for (SNode attribute : ListSequence.fromList(SLinkOperations.getChildren(migratedCatchClause, LINKS.smodelAttribute$KJ43))) {
         if (SNodeOperations.isInstanceOf(attribute, CONCEPTS.ChildAttribute$m8) && !(SNodeOperations.getConcept(SNodeOperations.getParent(attribute)).getContainmentLinks().contains(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$m8))))) {

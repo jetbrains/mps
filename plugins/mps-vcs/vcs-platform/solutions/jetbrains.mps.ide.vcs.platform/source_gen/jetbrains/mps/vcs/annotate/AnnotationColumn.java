@@ -22,9 +22,7 @@ import java.util.Objects;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.Map;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.vcs.history.CommitsGraphNode;
@@ -35,8 +33,6 @@ import java.awt.Font;
 import com.intellij.openapi.editor.colors.EditorColors;
 import jetbrains.mps.nodeEditor.cells.FontRegistry;
 import java.awt.FontMetrics;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.openapi.editor.EditorComponentSettings;
 import jetbrains.mps.openapi.editor.cells.EditorFontMetrics;
 import java.awt.event.MouseEvent;
@@ -164,18 +160,10 @@ public final class AnnotationColumn extends AbstractLeftColumn {
   public void paint(final Graphics graphics) {
     EditorComponent.turnOnAliasingIfPossible((Graphics2D) graphics);
     final Map<AnnotationAspectSubcolumn, Integer> subcolumnToX = getSubcolumnToXMap();
-    if (ListSequence.fromList(myAspectSubcolumns).all(new IWhereFilter<AnnotationAspectSubcolumn>() {
-      public boolean accept(AnnotationAspectSubcolumn it) {
-        return it.getWidth() == 0;
-      }
-    })) {
+    if (ListSequence.fromList(myAspectSubcolumns).all((it) -> it.getWidth() == 0)) {
       return;
     }
-    CollectionSequence.fromCollection(myEditorAnnotation.getLineAnnotations()).visitAll(new IVisitor<LineAnnotation>() {
-      public void visit(LineAnnotation la) {
-        paintRevisionLine(graphics, la, subcolumnToX);
-      }
-    });
+    CollectionSequence.fromCollection(myEditorAnnotation.getLineAnnotations()).visitAll((la) -> paintRevisionLine(graphics, la, subcolumnToX));
   }
 
   private Map<AnnotationAspectSubcolumn, Integer> getSubcolumnToXMap() {
@@ -222,11 +210,7 @@ public final class AnnotationColumn extends AbstractLeftColumn {
     // display text only if at least half of it can be visible
     if (height >= metrics.getHeight()) {
       int textY = y + (height - metrics.getHeight()) / 2 + metrics.getAscent();
-      for (AnnotationAspectSubcolumn subcolumn : ListSequence.fromList(myAspectSubcolumns).where(new IWhereFilter<AnnotationAspectSubcolumn>() {
-        public boolean accept(AnnotationAspectSubcolumn s) {
-          return s.isEnabled();
-        }
-      })) {
+      for (AnnotationAspectSubcolumn subcolumn : ListSequence.fromList(myAspectSubcolumns).where((s) -> s.isEnabled())) {
         String text = subcolumn.getText(graphNode);
         int textX = MapSequence.fromMap(subcolumnToX).get(subcolumn);
         if (subcolumn.isRightAligned()) {
@@ -239,19 +223,7 @@ public final class AnnotationColumn extends AbstractLeftColumn {
 
   @Override
   public int getWidth() {
-    return ListSequence.fromList(myAspectSubcolumns).where(new IWhereFilter<AnnotationAspectSubcolumn>() {
-      public boolean accept(AnnotationAspectSubcolumn it) {
-        return it.isEnabled();
-      }
-    }).select(new ISelector<AnnotationAspectSubcolumn, Integer>() {
-      public Integer select(AnnotationAspectSubcolumn it) {
-        return it.getWidth();
-      }
-    }).reduceLeft(new ILeftCombinator<Integer, Integer>() {
-      public Integer combine(Integer a, Integer b) {
-        return a + mySubcolumnInterval + b;
-      }
-    }) + 1 + mySubcolumnInterval / 2;
+    return ListSequence.fromList(myAspectSubcolumns).where((it) -> it.isEnabled()).select((it) -> it.getWidth()).reduceLeft((a, b) -> a + mySubcolumnInterval + b) + 1 + mySubcolumnInterval / 2;
   }
 
   @Override
@@ -280,15 +252,7 @@ public final class AnnotationColumn extends AbstractLeftColumn {
     Font font = ecSettings.getDefaultFont();
     final EditorFontMetrics efm = ecSettings.getFontMetrics(font.getName(), font.getStyle(), font.getSize());
     for (AnnotationAspectSubcolumn aspectSubcolumn : ListSequence.fromList(myAspectSubcolumns)) {
-      aspectSubcolumn.computeWidth((String p1) -> efm.getWidth(p1), CollectionSequence.fromCollection(myEditorAnnotation.getLineAnnotations()).select(new ISelector<LineAnnotation, CommitsGraphNode>() {
-        public CommitsGraphNode select(LineAnnotation it) {
-          return it.getRevisionsGraphNode();
-        }
-      }).where(new IWhereFilter<CommitsGraphNode>() {
-        public boolean accept(CommitsGraphNode it) {
-          return !(it.isLocalRevision());
-        }
-      }));
+      aspectSubcolumn.computeWidth((p1) -> efm.getWidth(p1), CollectionSequence.fromCollection(myEditorAnnotation.getLineAnnotations()).select((it) -> it.getRevisionsGraphNode()).where((it) -> !(it.isLocalRevision())));
     }
     mySubcolumnInterval = efm.getWidth(' ', 1);
   }
@@ -306,11 +270,7 @@ public final class AnnotationColumn extends AbstractLeftColumn {
   }
 
   private LineAnnotation getLineAnnotation(final int y) {
-    return CollectionSequence.fromCollection(myEditorAnnotation.getLineAnnotations()).where(new IWhereFilter<LineAnnotation>() {
-      public boolean accept(LineAnnotation it) {
-        return it.getStart() <= y && it.getEnd() > y;
-      }
-    }).first();
+    return CollectionSequence.fromCollection(myEditorAnnotation.getLineAnnotations()).where((it) -> it.getStart() <= y && it.getEnd() > y).first();
   }
 
   @Nullable

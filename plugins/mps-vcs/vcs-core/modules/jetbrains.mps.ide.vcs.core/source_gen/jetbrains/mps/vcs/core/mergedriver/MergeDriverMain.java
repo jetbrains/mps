@@ -9,7 +9,6 @@ import jetbrains.mps.core.platform.PlatformFactory;
 import jetbrains.mps.core.platform.PlatformOptionsBuilder;
 import jetbrains.mps.vcs.util.MergeDriverBackupUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.io.Reader;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -17,7 +16,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import jetbrains.mps.util.FileUtil;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import java.util.logging.Logger;
 import java.util.logging.Level;
@@ -73,11 +71,7 @@ public class MergeDriverMain {
       merger = (SVN_OPTION.equals(args[1]) ? new TextMerger() : new SimpleMerger());
     }
 
-    boolean convertCRLF = GIT_OPTION.equals(args[1]) && !(hasCRLF(Sequence.fromIterable(Sequence.fromArray(files)).findFirst(new IWhereFilter<File>() {
-      public boolean accept(File f) {
-        return f != null;
-      }
-    })));
+    boolean convertCRLF = GIT_OPTION.equals(args[1]) && !(hasCRLF(Sequence.fromIterable(Sequence.fromArray(files)).findFirst((f) -> f != null)));
     int status = FileMerger.mergeFiles(merger, baseFile, currentFile, otherFile, conflictStart, conflictEnd, conflictSeparator, overwrite, convertCRLF);
     platform.dispose();
     System.exit(status);
@@ -103,15 +97,7 @@ public class MergeDriverMain {
   }
   @Nullable
   private static AbstractContentMerger selectMerger(final Platform mpsPlatform, final String filetype, File... files) {
-    FileType fileType = Sequence.fromIterable(Sequence.fromArray(files)).select(new ISelector<File, FileType>() {
-      public FileType select(File f) {
-        return FileType.get(mpsPlatform.findComponent(ModelFactoryService.class), filetype, f);
-      }
-    }).findFirst(new IWhereFilter<FileType>() {
-      public boolean accept(FileType f) {
-        return f != null;
-      }
-    });
+    FileType fileType = Sequence.fromIterable(Sequence.fromArray(files)).select((f) -> FileType.get(mpsPlatform.findComponent(ModelFactoryService.class), filetype, f)).findFirst((f) -> f != null);
     if (fileType == null) {
       return null;
     }

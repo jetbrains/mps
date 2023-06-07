@@ -9,7 +9,7 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -23,8 +23,8 @@ public class check_ParameterInitializer_NonTypesystemRule extends AbstractNonTyp
   public check_ParameterInitializer_NonTypesystemRule() {
   }
   public void applyRule(final SNode parameterInitializer, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!(ListSequence.fromList(SNodeOperations.getAllSiblings(parameterInitializer, false)).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
+    if (!(ListSequence.fromList(SNodeOperations.getAllSiblings(parameterInitializer, false)).all(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      public Boolean invoke(SNode it) {
         return !(check_5fnl8h_a0a0a0a0a0b(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.ParameterInitializer$k5), LINKS.parameter$DxS8), parameterInitializer));
       }
     }))) {

@@ -10,7 +10,6 @@ import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -43,16 +42,8 @@ public final class wrappers_PasteWrapper_12 implements PasteWrapper {
     if (SNodeOperations.isInstanceOf(method, CONCEPTS.InstanceMethodDeclaration$39) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(method), CONCEPTS.Interface$db))) {
       SPropertyOperations.set(SNodeOperations.cast(method, CONCEPTS.InstanceMethodDeclaration$39), PROPS.isAbstract$VtH_, SPropertyOperations.getBoolean(sourceNode, PROPS.isAbstract$qvtK));
     }
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(method, LINKS.body$5xQk), CONCEPTS.ThisNodeExpression$v1, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SNodeOperations.replaceWithNewChild(it, CONCEPTS.ThisExpression$$o);
-      }
-    });
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(method, LINKS.body$5xQk), CONCEPTS.ThisConceptExpression$KM, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SNodeOperations.replaceWithNewChild(it, CONCEPTS.ThisExpression$$o);
-      }
-    });
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(method, LINKS.body$5xQk), CONCEPTS.ThisNodeExpression$v1, false, new SAbstractConcept[]{})).visitAll((it) -> SNodeOperations.replaceWithNewChild(it, CONCEPTS.ThisExpression$$o));
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(method, LINKS.body$5xQk), CONCEPTS.ThisConceptExpression$KM, false, new SAbstractConcept[]{})).visitAll((it) -> SNodeOperations.replaceWithNewChild(it, CONCEPTS.ThisExpression$$o));
     // [MM] how about supers?
 
     new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).set(method, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).get(sourceNode));

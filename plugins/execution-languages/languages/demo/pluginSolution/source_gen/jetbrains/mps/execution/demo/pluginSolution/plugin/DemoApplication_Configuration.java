@@ -40,11 +40,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class DemoApplication_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration, Copyable<DemoApplication_Configuration> {
-  private NodeByConcept_Configuration myNode = new NodeByConcept_Configuration(CONCEPTS.SomeConcept$LS, new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
-    public Boolean invoke(SNode node) {
-      return SPropertyOperations.getBoolean(SNodeOperations.cast(node, CONCEPTS.SomeConcept$LS), PROPS.valid$x_$w);
-    }
-  });
+  private NodeByConcept_Configuration myNode = new NodeByConcept_Configuration(CONCEPTS.SomeConcept$LS, ((_FunctionTypes._return_P1_E0<Boolean, SNode>) (SNode node) -> SPropertyOperations.getBoolean(SNodeOperations.cast(node, CONCEPTS.SomeConcept$LS), PROPS.valid$x_$w)));
 
   @Override
   public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
@@ -118,11 +114,7 @@ public final class DemoApplication_Configuration extends BaseMpsRunConfiguration
   @Override
   public void checkConfiguration() throws RuntimeConfigurationException {
     final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
-    checkConfiguration(new PersistentConfigurationContext() {
-      public jetbrains.mps.project.Project getProject() {
-        return mpsProject;
-      }
-    });
+    checkConfiguration(() -> mpsProject);
   }
   @Override
   public boolean canExecute(String executorId) {

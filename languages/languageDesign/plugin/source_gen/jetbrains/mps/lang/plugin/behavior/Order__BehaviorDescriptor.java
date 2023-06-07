@@ -18,7 +18,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -49,11 +48,7 @@ public final class Order__BehaviorDescriptor extends BaseBHDescriptor {
     return NameUtil.toValidCamelIdentifier(n) + "_Order";
   }
   /*package*/ static boolean presents_id1jgMklchcXk(@NotNull SNode __thisNode__, final SNode tab) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.tab$IZW4)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.editorTab$J5Ao) == tab;
-      }
-    }).isNotEmpty();
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.tab$IZW4)).where((it) -> SLinkOperations.getTarget(it, LINKS.editorTab$J5Ao) == tab).isNotEmpty();
   }
   /*package*/ static SNode getOrder_id2CFL3ni7A9T(@NotNull SNode __thisNode__) {
     return __thisNode__;

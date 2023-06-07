@@ -9,8 +9,6 @@ import jetbrains.mps.kotlin.api.members.TypeExpander;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.kotlin.api.declaration.ParameterDeclaration;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
@@ -75,22 +73,10 @@ public class FunctionSignature implements MemberSignature {
   }
 
   public static String erasureOf(FunctionDeclaration declaration, final TypeExpander expander) {
-    Iterable<SNode> types = Sequence.fromIterable(declaration.getParameters()).select(new ISelector<ParameterDeclaration, SNode>() {
-      public SNode select(ParameterDeclaration this0) {
-        return this0.getType();
-      }
-    }).where(new NotNullWhereFilter<SNode>());
+    Iterable<SNode> types = Sequence.fromIterable(declaration.getParameters()).select((this0) -> this0.getType()).where(new NotNullWhereFilter());
     if (expander != null) {
-      types = Sequence.fromIterable(types).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return expander.expandType(it);
-        }
-      });
+      types = Sequence.fromIterable(types).select((it) -> expander.expandType(it));
     }
-    return IterableUtils.join(Sequence.fromIterable(types).select(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return (String) IType__BehaviorDescriptor.toString_id4nn3FPlZH$r.invoke(it, ((boolean) true));
-      }
-    }), ",");
+    return IterableUtils.join(Sequence.fromIterable(types).select((it) -> (String) IType__BehaviorDescriptor.toString_id4nn3FPlZH$r.invoke(it, ((boolean) true))), ",");
   }
 }

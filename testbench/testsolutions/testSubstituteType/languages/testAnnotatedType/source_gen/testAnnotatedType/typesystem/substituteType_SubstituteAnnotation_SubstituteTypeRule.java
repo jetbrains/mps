@@ -22,14 +22,12 @@ public class substituteType_SubstituteAnnotation_SubstituteTypeRule extends Abst
   public substituteType_SubstituteAnnotation_SubstituteTypeRule() {
   }
   public TypeSubstitution substitution(final SNode substituteAnnotation, SNode originalType, final TypeCheckingContext typeCheckingContext, final IsApplicableStatus status) {
-    return new TypeSubstitution(originalType, new _FunctionTypes._return_P0_E0<SNode>() {
-      public SNode invoke() {
-        if ((boolean) PresenceCondition__BehaviorDescriptor.isSatisfied_id5zzawu2JLe0.invoke(SLinkOperations.getTarget(substituteAnnotation, LINKS.condition$U0U$))) {
-          return PrimType__BehaviorDescriptor.substituteWith_id1hDKT6wB3pH.invoke(SNodeOperations.cast(SNodeOperations.getParent(substituteAnnotation), CONCEPTS.PrimType$1M), SLinkOperations.getTarget(substituteAnnotation, LINKS.substitute$TTD5));
-        }
-        return null;
+    return new TypeSubstitution(originalType, ((_FunctionTypes._return_P0_E0<SNode>) () -> {
+      if ((boolean) PresenceCondition__BehaviorDescriptor.isSatisfied_id5zzawu2JLe0.invoke(SLinkOperations.getTarget(substituteAnnotation, LINKS.condition$U0U$))) {
+        return PrimType__BehaviorDescriptor.substituteWith_id1hDKT6wB3pH.invoke(SNodeOperations.cast(SNodeOperations.getParent(substituteAnnotation), CONCEPTS.PrimType$1M), SLinkOperations.getTarget(substituteAnnotation, LINKS.substitute$TTD5));
       }
-    }.invoke(), "r:d9c7d7eb-2b42-4829-a0ae-81b54923bc48(testAnnotatedType.typesystem)", "7323318266641350941");
+      return null;
+    }).invoke(), "r:d9c7d7eb-2b42-4829-a0ae-81b54923bc48(testAnnotatedType.typesystem)", "7323318266641350941");
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.SubstituteAnnotation$zn;

@@ -31,7 +31,6 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.vcs.platform.util.ConflictsUtil;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcs.diff.merge.MergeTemporaryModel;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.vcs.diff.ui.common.DiffModelUtil;
 import jetbrains.mps.vcs.diff.ChangeSet;
 import jetbrains.mps.vcs.diff.ChangeSetBuilder;
@@ -47,7 +46,6 @@ import java.util.function.Function;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
@@ -55,7 +53,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.event.SModelEvent;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.internal.collections.runtime.LinkedListSequence;
 import java.util.LinkedList;
@@ -232,11 +229,7 @@ public final class ChangesTracking {
     if (baseVersionModel.value == null) {
       return;
     }
-    if (Sequence.fromIterable(((Iterable<SModel.Problem>) baseVersionModel.value.getProblems())).any(new IWhereFilter<SModel.Problem>() {
-      public boolean accept(SModel.Problem it) {
-        return it.isError();
-      }
-    })) {
+    if (Sequence.fromIterable(((Iterable<SModel.Problem>) baseVersionModel.value.getProblems())).any((it) -> it.isError())) {
       StringBuilder sb = new StringBuilder();
       for (SModel.Problem p : Sequence.fromIterable((Iterable<SModel.Problem>) baseVersionModel.value.getProblems())) {
         sb.append((p.isError() ? "error: " : "warn: ")).append(p.getText()).append("\n");
@@ -378,16 +371,8 @@ public final class ChangesTracking {
 
   private <C extends ModelChange> int removeChanges(SNodeId nodeId, final Class<C> changeClass, final _FunctionTypes._return_P1_E0<? extends Boolean, ? super C> condition) {
     Set<ModelChange> changes = (nodeId == null ? myMetadataChanges : myNodesToChanges.getValues(nodeId));
-    List<ModelChange> toRemove = SetSequence.fromSet(changes).where(new IWhereFilter<ModelChange>() {
-      public boolean accept(ModelChange ch) {
-        return changeClass.isInstance(ch) && condition.invoke((C) ch);
-      }
-    }).toListSequence();
-    ListSequence.fromList(toRemove).visitAll(new IVisitor<ModelChange>() {
-      public void visit(ModelChange it) {
-        removeChange(it);
-      }
-    });
+    List<ModelChange> toRemove = SetSequence.fromSet(changes).where((ch) -> changeClass.isInstance(ch) && condition.invoke((C) ch)).toList();
+    ListSequence.fromList(toRemove).visitAll((it) -> removeChange(it));
     return ListSequence.fromList(toRemove).count();
   }
 
@@ -397,11 +382,7 @@ public final class ChangesTracking {
       return;
     }
     Iterable<SNode> children = AttributeOperations.getChildNodesAndAttributes(oldNode, role);
-    Sequence.fromIterable(children).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode c) {
-        removeDescendantChanges(c.getNodeId());
-      }
-    });
+    Sequence.fromIterable(children).visitAll((c) -> removeDescendantChanges(c.getNodeId()));
   }
 
   private void removeDescendantChanges(SNodeId nodeId) {
@@ -416,11 +397,7 @@ public final class ChangesTracking {
     ChangeSet cs = myDifference.getChangeSet();
     ChangeSetBuilder builder = ChangeSetBuilder.createBuilder(cs);
     buildAction.invoke(builder);
-    ListSequence.fromList(builder.getNewChanges()).visitAll(new IVisitor<ModelChange>() {
-      public void visit(ModelChange ch) {
-        addChange(ch);
-      }
-    });
+    ListSequence.fromList(builder.getNewChanges()).visitAll((ch) -> addChange(ch));
   }
 
   @Nullable
@@ -430,20 +407,12 @@ public final class ChangesTracking {
 
   private void runUpdateTask(final _FunctionTypes._void_P0_E0 task, SNode currentNode, final SModelEvent event) {
     myEventConsumingMapping.addEvent(event);
-    final List<SNodeId> ancestors = ListSequence.fromList(SNodeOperations.getNodeAncestors(currentNode, null, true)).select(new ISelector<SNode, SNodeId>() {
-      public SNodeId select(SNode a) {
-        return a.getNodeId();
-      }
-    }).toListSequence();
+    final List<SNodeId> ancestors = ListSequence.fromList(SNodeOperations.getNodeAncestors(currentNode, null, true)).select((a) -> a.getNodeId()).toList();
     myQueue.runTask(() -> {
       if (myDifference.getChangeSet() == null) {
         update(true);
       } else {
-        if (ListSequence.fromList(ancestors).any(new IWhereFilter<SNodeId>() {
-          public boolean accept(SNodeId a) {
-            return myAddedNodesToChanges.containsKey(a);
-          }
-        })) {
+        if (ListSequence.fromList(ancestors).any((a) -> myAddedNodesToChanges.containsKey(a))) {
           // ignore
           myDifference.getBroadcaster().changeUpdateFinished();
         } else {
@@ -466,7 +435,7 @@ public final class ChangesTracking {
 
   private static Iterable<SNodeId> getNodeIdForNodeIdChange(@NotNull NodeIdChange nic, @Nullable Tuples._2<SNodeId, List<SNodeId>> lastParentAndNewChildrenIds) {
     if (lastParentAndNewChildrenIds == null || !(Objects.equals(lastParentAndNewChildrenIds._0(), nic.getParentNodeId()))) {
-      return LinkedListSequence.fromListAndArrayNew(new LinkedList<SNodeId>(), nic.getNodeId(true));
+      return LinkedListSequence.fromListAndArray(new LinkedList<SNodeId>(), nic.getNodeId(true));
     } else {
       return lastParentAndNewChildrenIds._1();
     }
@@ -476,11 +445,7 @@ public final class ChangesTracking {
     List<SNodeId> childrenIds;
     if (lastParentAndNewChildrenIds == null || !(Objects.equals(lastParentAndNewChildrenIds._0(), ngc.getNewParentNodeId()))) {
       List<SNode> children = ngc.getChangedCollection(true);
-      childrenIds = ListSequence.fromList(children).select(new ISelector<SNode, SNodeId>() {
-        public SNodeId select(SNode n) {
-          return n.getNodeId();
-        }
-      }).toListSequence();
+      childrenIds = ListSequence.fromList(children).select((n) -> n.getNodeId()).toList();
     } else {
       childrenIds = lastParentAndNewChildrenIds._1();
     }
@@ -626,28 +591,16 @@ public final class ChangesTracking {
       final SNodeId parentId = parent.getNodeId();
 
       final Wrappers._T<Iterable<SNode>> childrenRightAfterEvent = new Wrappers._T<Iterable<SNode>>(AttributeOperations.getChildNodesAndAttributes(((SNode) parent), childRole));
-      childrenRightAfterEvent.value = Sequence.fromIterable(childrenRightAfterEvent.value).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode n) {
-          return CopyUtil.copyAndPreserveId(n, false);
-        }
-      }).toListSequence();
+      childrenRightAfterEvent.value = Sequence.fromIterable(childrenRightAfterEvent.value).select((n) -> CopyUtil.copyAndPreserveId(n, false)).toList();
       runUpdateTask(() -> {
         removeChanges(parentId, NodeGroupChange.class, (NodeGroupChange ch) -> ch.isAbout(childRole));
         removeChanges(parentId, NodeIdChange.class, (NodeIdChange ch) -> ch.isAbout(childRole));
         removeDescendantChanges(parentId, childRole);
-        myLastParentAndNewChildrenIds = MultiTuple.<SNodeId,List<SNodeId>>from(parentId, Sequence.fromIterable(childrenRightAfterEvent.value).select(new ISelector<SNode, SNodeId>() {
-          public SNodeId select(SNode n) {
-            return n.getNodeId();
-          }
-        }).toListSequence());
+        myLastParentAndNewChildrenIds = MultiTuple.<SNodeId,List<SNodeId>>from(parentId, Sequence.fromIterable(childrenRightAfterEvent.value).select((n) -> n.getNodeId()).toList());
         buildAndAddChanges((ChangeSetBuilder b) -> {
           SNode oldParentNode = getOldNode(parentId);
-          if (oldParentNode != null && Sequence.fromIterable(childrenRightAfterEvent.value).all(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return check_5iuzi5_a0a0a0a0b0a0e0a0n0j36(check_5iuzi5_a0a0a0a0a0b0a0e0a0n0j36(myDifference.getChangeSet()), it) != null;
-            }
-          })) {
-            b.buildForNodeRole(Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(oldParentNode, childRole)).toListSequence(), Sequence.fromIterable(childrenRightAfterEvent.value).toListSequence(), parentId, parentId, childRole);
+          if (oldParentNode != null && Sequence.fromIterable(childrenRightAfterEvent.value).all((it) -> check_5iuzi5_a0a0a0a0b0a0e0a0n0j36(check_5iuzi5_a0a0a0a0a0b0a0e0a0n0j36(myDifference.getChangeSet()), it) != null)) {
+            b.buildForNodeRole(Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(oldParentNode, childRole)).toList(), Sequence.fromIterable(childrenRightAfterEvent.value).toList(), parentId, parentId, childRole);
           }
         });
       }, parent, event);

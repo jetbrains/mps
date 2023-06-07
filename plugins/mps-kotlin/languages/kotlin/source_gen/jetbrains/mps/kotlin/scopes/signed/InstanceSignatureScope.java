@@ -13,7 +13,6 @@ import jetbrains.mps.kotlin.signatures.MemberSignature;
 import jetbrains.mps.kotlin.scopes.VisibilityAccess;
 import jetbrains.mps.kotlin.scopes.TypeMembersVisitor;
 import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 
 /**
@@ -86,10 +85,6 @@ public class InstanceSignatureScope implements SignatureScope {
   @Override
   public boolean contains(final SNode source) {
     // TODO search using visitor!
-    return Sequence.fromIterable(getElements(null)).any(new IWhereFilter<SourcedSignature>() {
-      public boolean accept(SourcedSignature it) {
-        return Objects.equals(it.getSource(), source);
-      }
-    });
+    return Sequence.fromIterable(getElements(null)).any((it) -> Objects.equals(it.getSource(), source));
   }
 }

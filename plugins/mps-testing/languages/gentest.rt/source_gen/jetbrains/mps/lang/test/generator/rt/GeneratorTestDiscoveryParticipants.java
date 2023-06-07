@@ -16,7 +16,6 @@ import jetbrains.mps.baseLanguage.unitTest.platform.SNodeTestSource;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestProperties;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.List;
 import java.util.Collections;
@@ -35,15 +34,13 @@ public enum GeneratorTestDiscoveryParticipants implements TestDiscoveryParticipa
         return Optional.empty();
       }
       final TestDescriptor testContainer = new TestDescriptorBuilder(request.peekContainer()).newTestContainer(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.cast(node, CONCEPTS.GeneratorTest$C3)), SNodeTestSource.of(node)).withProperty(TestProperties.REQUIRES_MPS_PLATFORM, true).add();
-      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.GeneratorTest$C3), LINKS.tests$gTrp)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          // *the following text was copied from GeneratorTestWrapper verbatim*
-          // FIXME this is a hack. I don't want to introduce getMethodName into TestAssertion, and the only information passed during test
-          // execution is method name (JUnit's Request/Description), therefore I'm forced to use method name to match ITestNodeWrappers in UI.
-          // Perhaps, with JUnit5 there's a way to pass additional identification of a test so that we are not bound to generated method names.
-          new TestDescriptorBuilder(testContainer).newTest("testTransformAndMatch" + (SNodeOperations.getIndexInParent(it)), SNodeTestSource.of(it)).add();
+      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.GeneratorTest$C3), LINKS.tests$gTrp)).visitAll((it) -> {
+        // *the following text was copied from GeneratorTestWrapper verbatim*
+        // FIXME this is a hack. I don't want to introduce getMethodName into TestAssertion, and the only information passed during test
+        // execution is method name (JUnit's Request/Description), therefore I'm forced to use method name to match ITestNodeWrappers in UI.
+        // Perhaps, with JUnit5 there's a way to pass additional identification of a test so that we are not bound to generated method names.
+        new TestDescriptorBuilder(testContainer).newTest("testTransformAndMatch" + (SNodeOperations.getIndexInParent(it)), SNodeTestSource.of(it)).add();
 
-        }
       });
 
       return Optional.of(testContainer);

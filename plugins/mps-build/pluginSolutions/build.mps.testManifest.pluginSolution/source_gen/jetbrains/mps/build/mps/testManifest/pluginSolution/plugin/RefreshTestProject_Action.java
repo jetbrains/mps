@@ -30,7 +30,6 @@ import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.build.mps.util.ModuleLoader;
 import jetbrains.mps.ide.messages.DefaultMessageHandler;
@@ -125,34 +124,28 @@ public class RefreshTestProject_Action extends BaseAction {
       return false;
     }
 
-    ThreadUtils.runInUIThreadAndWait(() -> {
-      repo.getModelAccess().executeCommand(() -> {
-        List<SNode> manifests = new ArrayList<SNode>();
-        for (SNode mref : SLinkOperations.getChildren(event.getData(MPSCommonDataKeys.NODE), LINKS.manifest$1n3S)) {
-          SNode manifest = SLinkOperations.getTarget(mref, LINKS.manifest$GA6J);
+    ThreadUtils.runInUIThreadAndWait(() -> repo.getModelAccess().executeCommand(() -> {
+      List<SNode> manifests = new ArrayList<SNode>();
+      for (SNode mref : SLinkOperations.getChildren(event.getData(MPSCommonDataKeys.NODE), LINKS.manifest$1n3S)) {
+        SNode manifest = SLinkOperations.getTarget(mref, LINKS.manifest$GA6J);
 
-          ListSequence.fromList(manifests).addElement(manifest);
-        }
-        TestModuleBuildProjectTemplate template = new TestModuleBuildProjectTemplate(event.getData(MPSCommonDataKeys.MPS_PROJECT), target);
+        ListSequence.fromList(manifests).addElement(manifest);
+      }
+      TestModuleBuildProjectTemplate template = new TestModuleBuildProjectTemplate(event.getData(MPSCommonDataKeys.MPS_PROJECT), target);
 
-        final SNode bproj = template.createBuildProject(event.getData(MPSCommonDataKeys.NODE), manifests);
-        SPropertyOperations.set(bproj, PROPS.virtualPackage$EkXl, "generated");
+      final SNode bproj = template.createBuildProject(event.getData(MPSCommonDataKeys.NODE), manifests);
+      SPropertyOperations.set(bproj, PROPS.virtualPackage$EkXl, "generated");
 
-        SNode existing = ListSequence.fromList(SModelOperations.roots(target, CONCEPTS.BuildProject$ae)).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(bproj, PROPS.name$MnvL));
-          }
-        });
-        if ((existing != null)) {
-          SNodeOperations.replaceWithAnother(existing, bproj);
-        } else {
-          SModelOperations.addRootNode(target, bproj);
-        }
+      SNode existing = ListSequence.fromList(SModelOperations.roots(target, CONCEPTS.BuildProject$ae)).findFirst((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(bproj, PROPS.name$MnvL)));
+      if ((existing != null)) {
+        SNodeOperations.replaceWithAnother(existing, bproj);
+      } else {
+        SModelOperations.addRootNode(target, bproj);
+      }
 
-        ModuleLoader ml = new ModuleLoader(bproj, new DefaultMessageHandler(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject()));
-        ml.checkAllModules(ModuleChecker.CheckType.LOAD_IMPORTANT_PART);
-      });
-    });
+      ModuleLoader ml = new ModuleLoader(bproj, new DefaultMessageHandler(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject()));
+      ml.checkAllModules(ModuleChecker.CheckType.LOAD_IMPORTANT_PART);
+    }));
     return true;
   }
   private void displayInfo(String info, final AnActionEvent event) {

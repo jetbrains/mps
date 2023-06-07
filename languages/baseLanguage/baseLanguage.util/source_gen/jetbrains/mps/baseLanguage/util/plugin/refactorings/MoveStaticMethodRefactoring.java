@@ -11,7 +11,7 @@ import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -38,8 +38,8 @@ public class MoveStaticMethodRefactoring extends BasicMoveRefactoring {
   }
 
   public static void replaceFields(SNode movingMethod, SNode originalClass) {
-    for (SNode field : ListSequence.fromList(SNodeOperations.getNodeDescendants(movingMethod, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
+    for (SNode field : ListSequence.fromList(SNodeOperations.getNodeDescendants(movingMethod, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      public Boolean invoke(SNode it) {
         return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(it)), CONCEPTS.VariableReference$TC) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.StaticFieldDeclaration$jR);
       }
     })) {
@@ -48,11 +48,11 @@ public class MoveStaticMethodRefactoring extends BasicMoveRefactoring {
   }
 
   public static void replaceMethods(SNode movingMethod, SNode originalClass) {
-    for (SNode call : ListSequence.fromList(SNodeOperations.getNodeDescendants(movingMethod, CONCEPTS.LocalMethodCall$zT, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
+    for (SNode call : ListSequence.fromList(ListSequence.fromList(SNodeOperations.getNodeDescendants(movingMethod, CONCEPTS.LocalMethodCall$zT, false, new SAbstractConcept[]{})).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      public Boolean invoke(SNode it) {
         return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$pyYw), CONCEPTS.StaticMethodDeclaration$FJ);
       }
-    }).toListSequence()) {
+    }).toList())) {
       if (SLinkOperations.getTarget(call, LINKS.baseMethodDeclaration$pyYw) != movingMethod) {
         SNode newCall = _quotation_createNode_f5lqsg_a0a0a0a0g(originalClass, SLinkOperations.getTarget(call, LINKS.baseMethodDeclaration$pyYw));
         ListSequence.fromList(SLinkOperations.getChildren(newCall, LINKS.actualArgument$pzdx)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(call, LINKS.actualArgument$pzdx)));

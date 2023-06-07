@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -34,11 +33,7 @@ public final class BuildSource_CompilablePart__BehaviorDescriptor extends BaseBH
   }
 
   /*package*/ static SNode getOptions_idgpKvTnoZBS(@NotNull SNode __thisNode__) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(__thisNode__, false), CONCEPTS.BuildSource_JavaOptions$D)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return isEmptyString(SPropertyOperations.getString(it, PROPS.optionsName$Rr_z));
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(__thisNode__, false), CONCEPTS.BuildSource_JavaOptions$D)).findFirst((it) -> isEmptyString(SPropertyOperations.getString(it, PROPS.optionsName$Rr_z)));
   }
 
   /*package*/ BuildSource_CompilablePart__BehaviorDescriptor() {

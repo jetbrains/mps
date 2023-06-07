@@ -35,11 +35,10 @@ import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.generator.ModelGenerationPlan;
 import jetbrains.mps.smodel.resources.MResource;
 import java.util.stream.IntStream;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.util.Map;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.generator.GenPlanExtractor;
 import jetbrains.mps.generator.GenerationTaskRecorder;
 import jetbrains.mps.generator.GeneratorTask;
@@ -319,17 +318,9 @@ public class Generate_Facet extends IFacet.Stub {
               final ProgressMonitor subProgress_c0a0c = progressMonitor.subTask(1000);
               subProgress_c0a0c.start("Pre-loading models", work);
               final Project project = monitor.getSession().getProject();
-              Sequence.fromIterable(input).visitAll(new IVisitor<MResource>() {
-                public void visit(final MResource mod) {
-                  subProgress_c0a0c.advance(100);
-                  project.getModelAccess().runReadAction(() -> {
-                    Sequence.fromIterable(mod.models()).visitAll(new IVisitor<SModel>() {
-                      public void visit(SModel m) {
-                        m.load();
-                      }
-                    });
-                  });
-                }
+              Sequence.fromIterable(input).visitAll((final MResource mod) -> {
+                subProgress_c0a0c.advance(100);
+                project.getModelAccess().runReadAction(() -> Sequence.fromIterable(mod.models()).visitAll((m) -> m.load()));
               });
               subProgress_c0a0c.done();
               _output_fi61u2_a0c = Sequence.fromIterable(_output_fi61u2_a0c).concat(Sequence.fromIterable(input));
@@ -438,7 +429,7 @@ public class Generate_Facet extends IFacet.Stub {
                     for (MResource res : input) {
                       final TransientModelsModule tm = Target_configure.vars(pa.global()).transientModelsProvider().createModule(res.module().getModuleName());
                       DefaultTaskBuilder<GeneratorTask> tb = new DefaultTaskBuilder<GeneratorTask>(factory);
-                      tb.addAll(Sequence.fromIterable(res.models()).toListSequence());
+                      tb.addAll(Sequence.fromIterable(res.models()).toList());
                       List<GeneratorTask> tasks = tb.getResult();
                       for (GeneratorTask t : tasks) {
                         Target_configure.vars(pa.global()).transientModelsProvider().associate(t, tm);

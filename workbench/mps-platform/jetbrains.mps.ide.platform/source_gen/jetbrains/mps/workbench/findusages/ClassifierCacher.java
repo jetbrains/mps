@@ -20,7 +20,6 @@ import java.util.Iterator;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.List;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMClassType;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMPrimitiveType;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMEnumValue;
@@ -334,11 +333,7 @@ public class ClassifierCacher {
     }
   }
   private void addAnnotationsToParameter(List<ASMAnnotation> anns) {
-    ListSequence.fromList(anns).visitAll(new IVisitor<ASMAnnotation>() {
-      public void visit(ASMAnnotation it) {
-        createAnnotation(it);
-      }
-    });
+    ListSequence.fromList(anns).visitAll((it) -> createAnnotation(it));
   }
   private void createAnnotation(ASMAnnotation annotation) {
     instance(CONCEPTS.AnnotationInstance$yl);
@@ -379,11 +374,7 @@ public class ClassifierCacher {
     } else if (value instanceof List) {
       List<Object> list = (List<Object>) value;
       instance(CONCEPTS.ArrayLiteral$Ey);
-      ListSequence.fromList(list).visitAll(new IVisitor<Object>() {
-        public void visit(Object it) {
-          getAnnotationValue(it);
-        }
-      });
+      ListSequence.fromList(list).visitAll((it) -> getAnnotationValue(it));
     } else if (value instanceof ASMEnumValue) {
       ASMEnumValue enumValue = (ASMEnumValue) value;
       ASMClassType c = (ASMClassType) enumValue.getType();

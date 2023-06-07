@@ -46,7 +46,6 @@ import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.vcs.diff.ui.common.DiffChangeGroupLayout;
 import jetbrains.mps.smodel.SModelOperations;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.vcs.diff.StructChangeSetBuilder;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 
@@ -302,20 +301,12 @@ public class StructDifferencePane implements PropertyChangeListener {
   }
 
   private void highlightAllChanges() {
-    ListSequence.fromList(myChangeGroupLayouts).visitAll(new IVisitor<ChangeGroupLayout>() {
-      public void visit(ChangeGroupLayout b) {
-        b.invalidate();
-      }
-    });
+    ListSequence.fromList(myChangeGroupLayouts).visitAll((b) -> b.invalidate());
     for (ModelChange change : ListSequence.fromList(myChangeSet.getModelChanges())) {
       higlightChange(myOldEditor, myChangeSet.getOldModel(), true, change);
       higlightChange(myNewEditor, myChangeSet.getNewModel(), false, change);
     }
-    ListSequence.fromList(myChangeGroupLayouts).visitAll(new IVisitor<ChangeGroupLayout>() {
-      public void visit(ChangeGroupLayout b) {
-        b.invalidate();
-      }
-    });
+    ListSequence.fromList(myChangeGroupLayouts).visitAll((b) -> b.invalidate());
 
     myOldEditor.repaintAndRebuildEditorMessages();
     myNewEditor.repaintAndRebuildEditorMessages();
@@ -339,16 +330,8 @@ public class StructDifferencePane implements PropertyChangeListener {
   }
 
   public void dispose() {
-    ListSequence.fromList(myCurrentDifferences).visitAll(new IVisitor<CurrentDifference>() {
-      public void visit(CurrentDifference it) {
-        it.removeDifferenceListener(myDifferenceListener);
-      }
-    });
-    ListSequence.fromList(myGutterMessagesRebuilders).visitAll(new IVisitor<ChangeGroupMessages>() {
-      public void visit(ChangeGroupMessages it) {
-        it.dispose();
-      }
-    });
+    ListSequence.fromList(myCurrentDifferences).visitAll((it) -> it.removeDifferenceListener(myDifferenceListener));
+    ListSequence.fromList(myGutterMessagesRebuilders).visitAll((it) -> it.dispose());
     myActionGroup.removeAll();
     myActionGroup = null;
     myMainLayout.dispose();

@@ -13,18 +13,15 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.Generator;
 import org.jetbrains.mps.openapi.module.SModuleReference;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.generator.GenerationFacade;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.make.resources.IResource;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Collections;
 import jetbrains.mps.generator.ModelGenerationStatusManager;
 import jetbrains.mps.smodel.resources.ModelsToResources;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.smodel.ModelImports;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.smodel.Language;
 
@@ -94,11 +91,7 @@ public class MakeActionParameters {
   public String actionText() {
     String fmt = (myCleanBuild ? "Rebuild %s" : "Make %s");
     if (myModels != null && ListSequence.fromList(myModels).isNotEmpty()) {
-      if (!(ListSequence.fromList(myModels).any(new IWhereFilter<SModel>() {
-        public boolean accept(SModel md) {
-          return GenerationFacade.canGenerate(md);
-        }
-      }))) {
+      if (!(ListSequence.fromList(myModels).any((md) -> GenerationFacade.canGenerate(md)))) {
         return null;
       }
       if (ListSequence.fromList(myModels).count() > 1) {
@@ -108,15 +101,7 @@ public class MakeActionParameters {
       return String.format(fmt, String.format("Model '%s'", modelName));
     }
     if (myModules != null && ListSequence.fromList(myModules).isNotEmpty()) {
-      if (ListSequence.fromList(myModules).any(new IWhereFilter<SModule>() {
-        public boolean accept(SModule m) {
-          return m == null;
-        }
-      }) || ListSequence.fromList(myModules).all(new IWhereFilter<SModule>() {
-        public boolean accept(SModule m) {
-          return m.isReadOnly();
-        }
-      })) {
+      if (ListSequence.fromList(myModules).any((m) -> m == null) || ListSequence.fromList(myModules).all((m) -> m.isReadOnly())) {
         return null;
       }
       if (ListSequence.fromList(myModules).count() > 1) {
@@ -135,24 +120,16 @@ public class MakeActionParameters {
     if (myModels != null && ListSequence.fromList(myModels).isNotEmpty()) {
       smds = myModels;
     } else if (myModules != null && ListSequence.fromList(myModules).isNotEmpty()) {
-      smds = ListSequence.fromList(myModules).translate(new ITranslator2<SModule, SModel>() {
-        public Iterable<SModel> translate(SModule it) {
-          return allModelsOf(it);
-        }
-      });
+      smds = ListSequence.fromList(myModules).translate((it) -> allModelsOf(it));
     } else {
       smds = Sequence.fromIterable(Collections.<SModel>emptyList());
     }
     if (!(myCleanBuild)) {
       // assume user specified exact set of models if !isClean
-      smds = Sequence.fromIterable(smds).translate(new ITranslator2<SModel, SModel>() {
-        public Iterable<SModel> translate(SModel it) {
-          return withImports(it);
-        }
-      }).distinct();
+      smds = Sequence.fromIterable(smds).translate((it) -> withImports(it)).distinct();
       // filter dirty only
       ModelGenerationStatusManager statusManager = myProject.getComponent(ModelGenerationStatusManager.class);
-      smds = statusManager.getModifiedModels(Sequence.fromIterable(smds).toListSequence());
+      smds = statusManager.getModifiedModels(Sequence.fromIterable(smds).toList());
     }
     return new ModelsToResources(smds).resources();
   }
@@ -170,15 +147,7 @@ public class MakeActionParameters {
     Iterable<SModelReference> importedModels = new ModelImports(m).getImportedModels();
     // imported models are not necessarily from the project, they may belong to a global repository (and yet be visible through project's),
     // don't try to make them (MGSM doesn't track 'generation' status for these and may report them as dirty)
-    return Sequence.fromIterable(importedModels).select(new ISelector<SModelReference, SModel>() {
-      public SModel select(SModelReference it) {
-        return it.resolve(repo);
-      }
-    }).where(new NotNullWhereFilter<SModel>()).where(new IWhereFilter<SModel>() {
-      public boolean accept(SModel it) {
-        return !(it.isReadOnly());
-      }
-    }).union(Sequence.fromIterable(Sequence.<SModel>singleton(m)));
+    return Sequence.fromIterable(importedModels).select((it) -> it.resolve(repo)).where(new NotNullWhereFilter()).where((it) -> !(it.isReadOnly())).union(Sequence.fromIterable(Sequence.<SModel>singleton(m)));
   }
 
   private Iterable<SModel> allModelsOf(SModule module) {
@@ -187,11 +156,7 @@ public class MakeActionParameters {
       // we don't care about all known generators for the language - if it's a standalone generator module,
       // it would be processed directly (as a context module in #modules(), above)
       Iterable<Generator> generators = ((Language) module).getOwnedGenerators();
-      return Sequence.fromIterable(models).concat(Sequence.fromIterable(generators).translate(new ITranslator2<Generator, SModel>() {
-        public Iterable<SModel> translate(Generator gen) {
-          return allModelsOf(gen);
-        }
-      }));
+      return Sequence.fromIterable(models).concat(Sequence.fromIterable(generators).translate((gen) -> allModelsOf(gen)));
     }
     return models;
   }

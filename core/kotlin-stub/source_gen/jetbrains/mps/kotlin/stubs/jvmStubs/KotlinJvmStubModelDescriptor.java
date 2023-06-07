@@ -24,7 +24,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.kotlin.stubs.common.metadata.ModuleVisitor;
 import kotlinx.metadata.KmPackageVisitor;
 import java.util.function.Consumer;
-import jetbrains.mps.baseLanguage.javastub.asm.ASMClass;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -65,7 +64,7 @@ public class KotlinJvmStubModelDescriptor extends KotlinStubModelDescriptor<SNod
       } else if (metadata instanceof KotlinClassMetadata.Class) {
         // Class file
         final AtomicReference<SNode> klass = new AtomicReference<SNode>();
-        ((KotlinClassMetadata.Class) metadata).accept(new ClassVisitor(context, true, (SNode newValue) -> klass.set(newValue)));
+        ((KotlinClassMetadata.Class) metadata).accept(new ClassVisitor(context, true, (newValue) -> klass.set(newValue)));
         return klass.get();
 
       } else if (metadata instanceof KotlinClassMetadata.FileFacade) {
@@ -101,7 +100,7 @@ public class KotlinJvmStubModelDescriptor extends KotlinStubModelDescriptor<SNod
       // Otherwise: fallback to reading java class data
       SNode classifier = loader.createClassifier();
       if ((classifier != null) && !(shallow)) {
-        loader.updateClassifier(classifier, context, (ASMClass klass) -> null);
+        loader.updateClassifier(classifier, context, (klass) -> null);
       }
       return classifier;
     }

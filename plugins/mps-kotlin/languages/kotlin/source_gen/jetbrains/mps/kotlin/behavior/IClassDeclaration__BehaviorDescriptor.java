@@ -25,7 +25,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.scopes.runtime.ScopeUtils;
 import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -64,11 +63,7 @@ public final class IClassDeclaration__BehaviorDescriptor extends BaseBHDescripto
   }
   /*package*/ static SNode getThisType_id46gC9M6gB68(@NotNull SNode __thisNode__) {
     SNode thisType = IClassLike__BehaviorDescriptor.getThisType_id46gC9M6gB68.invoke0(__thisNode__, CONCEPTS.IClassLike$go);
-    ListSequence.fromList(SLinkOperations.getChildren(thisType, LINKS.typeProjections$vhti)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.typeParameters$eq6K)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return (SNode) IType__BehaviorDescriptor.asProjection_idJmO2PmVt2A.invoke(createTypeParameterReference_k687zn_a0a0a0a0a1a1(it), SPropertyOperations.getEnum(it, PROPS.variance$xP5D));
-      }
-    }));
+    ListSequence.fromList(SLinkOperations.getChildren(thisType, LINKS.typeProjections$vhti)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.typeParameters$eq6K)).select((it) -> (SNode) IType__BehaviorDescriptor.asProjection_idJmO2PmVt2A.invoke(createTypeParameterReference_k687zn_a0a0a0a0a1a1(it), SPropertyOperations.getEnum(it, PROPS.variance$xP5D))));
     return thisType;
   }
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {

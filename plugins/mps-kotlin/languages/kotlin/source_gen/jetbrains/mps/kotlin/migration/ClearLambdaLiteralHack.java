@@ -10,13 +10,10 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -42,23 +39,15 @@ public class ClearLambdaLiteralHack extends MigrationScriptBase {
     {
       SearchScope scope_dshwou_a0e = CommandUtil.createScope(m);
       final SearchScope scope_dshwou_a0e_0 = new EditableFilteringScope(scope_dshwou_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_dshwou_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LambdaLiteral$Bd, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNodeOperations.deleteNode(SLinkOperations.getTarget(it, LINKS._itTypeHolder_hack$yOMR));
-          SNodeOperations.deleteNode(SLinkOperations.getTarget(it, LINKS._thisTypeHolder_hack$QRo4));
-        }
+      QueryExecutionContext context = () -> scope_dshwou_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LambdaLiteral$Bd, false)).visitAll((it) -> {
+        SNodeOperations.deleteNode(SLinkOperations.getTarget(it, LINKS._itTypeHolder_hack$yOMR));
+        SNodeOperations.deleteNode(SLinkOperations.getTarget(it, LINKS._thisTypeHolder_hack$QRo4));
       });
 
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.FunctionCallExpression$EQ, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SLinkOperations.setTarget(it, LINKS._receiver$fya4, null);
-          SPropertyOperations.remove(it, PROPS._receiverIndex$ELkw);
-        }
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.FunctionCallExpression$EQ, false)).visitAll((it) -> {
+        SLinkOperations.setTarget(it, LINKS._receiver$fya4, null);
+        SPropertyOperations.remove(it, PROPS._receiverIndex$ELkw);
       });
     }
   }
@@ -67,28 +56,14 @@ public class ClearLambdaLiteralHack extends MigrationScriptBase {
     {
       SearchScope scope_dshwou_a0f = CommandUtil.createScope(m);
       final SearchScope scope_dshwou_a0f_0 = new EditableFilteringScope(scope_dshwou_a0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_dshwou_a0f_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LambdaLiteral$Bd, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS._itTypeHolder_hack$yOMR) != null) || (SLinkOperations.getTarget(it, LINKS._thisTypeHolder_hack$QRo4) != null);
-        }
-      }).concat(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.FunctionCallExpression$EQ, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.getReference(it, LINKS._receiver$fya4) != null;
-        }
-      })).select(new ISelector<SNode, NotMigratedNode>() {
-        public NotMigratedNode select(SNode it) {
-          return new NotMigratedNode(it) {
-            @Override
-            public String getMessage() {
-              return "deprecated structure elements not migrated";
-            }
-          };
-        }
+      QueryExecutionContext context = () -> scope_dshwou_a0f_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LambdaLiteral$Bd, false)).where((it) -> (SLinkOperations.getTarget(it, LINKS._itTypeHolder_hack$yOMR) != null) || (SLinkOperations.getTarget(it, LINKS._thisTypeHolder_hack$QRo4) != null)).concat(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.FunctionCallExpression$EQ, false)).where((it) -> SNodeOperations.getReference(it, LINKS._receiver$fya4) != null)).select((it) -> {
+        return new NotMigratedNode(it) {
+          @Override
+          public String getMessage() {
+            return "deprecated structure elements not migrated";
+          }
+        };
       });
     }
   }

@@ -25,7 +25,6 @@ import com.intellij.featureStatistics.FeatureUsageTracker;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.ide.platform.dialogs.choosers.NodeChooserDialog;
 import javax.swing.JOptionPane;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -103,13 +102,7 @@ public class IntroduceConstant_Action extends BaseAction {
     final Wrappers._T<String> error = new Wrappers._T<String>();
     final Wrappers._T<List<SNode>> candidateClasses = new Wrappers._T<List<SNode>>();
 
-    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(() -> {
-      candidateClasses.value = ListSequence.fromList(SNodeOperations.getNodeAncestors(nodeToRefactor, CONCEPTS.ClassConcept$bK, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(it, CONCEPTS.AnonymousClass$Bt));
-        }
-      }).toListSequence();
-    });
+    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(() -> candidateClasses.value = ListSequence.fromList(SNodeOperations.getNodeAncestors(nodeToRefactor, CONCEPTS.ClassConcept$bK, false)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.AnonymousClass$Bt))).toList());
 
     final Wrappers._T<SNode> desiredTargetClass = new Wrappers._T<SNode>();
     if (ListSequence.fromList(candidateClasses.value).count() > 1) {

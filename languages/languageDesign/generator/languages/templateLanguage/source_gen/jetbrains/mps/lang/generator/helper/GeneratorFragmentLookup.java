@@ -16,7 +16,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -52,11 +51,7 @@ public final class GeneratorFragmentLookup {
             ListSequence.fromList(result).addSequence(Sequence.fromIterable(fromRules(SLinkOperations.getChildren(mc, LINKS.rootMappingRule$edB6))));
             ListSequence.fromList(result).addSequence(Sequence.fromIterable(fromRules(SLinkOperations.getChildren(mc, LINKS.weavingMappingRule$ywXB))));
             ListSequence.fromList(result).addSequence(Sequence.fromIterable(fromRules(SLinkOperations.getChildren(mc, LINKS.reductionMappingRule$epW2))));
-            ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(mc, LINKS.dropRootRule$ZUxY)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return isSuperconcept(SLinkOperations.getTarget(it, LINKS.applicableConcept$n7Dv));
-              }
-            }));
+            ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(mc, LINKS.dropRootRule$ZUxY)).where((it) -> isSuperconcept(SLinkOperations.getTarget(it, LINKS.applicableConcept$n7Dv))));
           } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.TemplateSwitch$j_)) {
             ListSequence.fromList(result).addSequence(Sequence.fromIterable(fromRules(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.TemplateSwitch$j_), LINKS.reductionMappingRule$h9pm))));
           }
@@ -68,17 +63,13 @@ public final class GeneratorFragmentLookup {
 
   private boolean isSuperconcept(SNode cd) {
     if (mySuperconcepts == null) {
-      mySuperconcepts = Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(myNode, ((boolean) true))).toListSequence();
+      mySuperconcepts = Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(myNode, ((boolean) true))).toList();
     }
     return ListSequence.fromList(mySuperconcepts).contains(cd);
   }
 
   private Iterable<SNode> fromRules(Iterable<SNode> rules) {
-    return Sequence.fromIterable(rules).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SPropertyOperations.getBoolean(it, PROPS.applyToConceptInheritors$PfLi) ? isSuperconcept(SLinkOperations.getTarget(it, LINKS.applicableConcept$Hpnk)) : SLinkOperations.getTarget(it, LINKS.applicableConcept$Hpnk) == myNode);
-      }
-    });
+    return Sequence.fromIterable(rules).where((it) -> (SPropertyOperations.getBoolean(it, PROPS.applyToConceptInheritors$PfLi) ? isSuperconcept(SLinkOperations.getTarget(it, LINKS.applicableConcept$Hpnk)) : SLinkOperations.getTarget(it, LINKS.applicableConcept$Hpnk) == myNode));
   }
 
   private static final class CONCEPTS {

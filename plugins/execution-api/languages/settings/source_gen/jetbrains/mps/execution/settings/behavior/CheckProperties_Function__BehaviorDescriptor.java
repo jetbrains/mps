@@ -34,7 +34,7 @@ public final class CheckProperties_Function__BehaviorDescriptor extends BaseBHDe
     return true;
   }
   /*package*/ static List<SNode> getThrowableTypes_id5op8ooRkkc7(@NotNull SNode __thisNode__) {
-    return Sequence.fromIterable(Sequence.<SNode>singleton(_quotation_createNode_e5omi_a0a0a0b())).toListSequence();
+    return Sequence.fromIterable(Sequence.<SNode>singleton(_quotation_createNode_e5omi_a0a0a0b())).toList();
   }
 
   /*package*/ CheckProperties_Function__BehaviorDescriptor() {

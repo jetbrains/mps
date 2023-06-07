@@ -54,15 +54,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class Java_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration, Copyable<Java_Configuration> {
-  private NodeBySeveralConcepts_Configuration myNode = new NodeBySeveralConcepts_Configuration(ListSequence.fromListAndArray(new ArrayList<NodesDescriptor>(), new NodesDescriptor(CONCEPTS.ClassConcept$bK, new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
-    public Boolean invoke(SNode node) {
-      return (ClassConcept__BehaviorDescriptor.getMainMethod_idhEwIClG.invoke(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK)) != null);
-    }
-  }), new NodesDescriptor(CONCEPTS.IMainClass$iX, new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
-    public Boolean invoke(SNode node) {
-      return (boolean) IMainClass__BehaviorDescriptor.isNodeRunnable_id431DWIovi3C.invoke(SNodeOperations.cast(node, CONCEPTS.IMainClass$iX)) && Java_Command.isUnitNode(node);
-    }
-  })));
+  private NodeBySeveralConcepts_Configuration myNode = new NodeBySeveralConcepts_Configuration(ListSequence.fromListAndArray(new ArrayList<NodesDescriptor>(), new NodesDescriptor(CONCEPTS.ClassConcept$bK, ((_FunctionTypes._return_P1_E0<Boolean, SNode>) (SNode node) -> (ClassConcept__BehaviorDescriptor.getMainMethod_idhEwIClG.invoke(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK)) != null))), new NodesDescriptor(CONCEPTS.IMainClass$iX, ((_FunctionTypes._return_P1_E0<Boolean, SNode>) (SNode node) -> (boolean) IMainClass__BehaviorDescriptor.isNodeRunnable_id431DWIovi3C.invoke(SNodeOperations.cast(node, CONCEPTS.IMainClass$iX)) && Java_Command.isUnitNode(node)))));
   private JavaRunParameters_Configuration myRunParameters = new JavaRunParameters_Configuration(this.getProject());
 
   @Override
@@ -192,11 +184,7 @@ public final class Java_Configuration extends BaseMpsRunConfiguration implements
   @Override
   public void checkConfiguration() throws RuntimeConfigurationException {
     final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
-    checkConfiguration(new PersistentConfigurationContext() {
-      public jetbrains.mps.project.Project getProject() {
-        return mpsProject;
-      }
-    });
+    checkConfiguration(() -> mpsProject);
   }
   @Override
   public boolean canExecute(String executorId) {

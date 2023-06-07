@@ -16,7 +16,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.errors.item.IssueKindReportItem;
@@ -38,11 +37,7 @@ public final class ISuppressErrors__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static boolean suppress_id2WmWrdnSpX7(@NotNull SNode __thisNode__, SNode child) {
-    return !(SNodeOperations.isInstanceOf(ListSequence.fromList(SNodeOperations.getNodeAncestors(child, null, true)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.IAntisuppressErrors$MM) || SNodeOperations.isInstanceOf(it, CONCEPTS.ISuppressErrors$qB) || Sequence.fromIterable(SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(it), CONCEPTS.ISuppressErrors$qB)).isNotEmpty();
-      }
-    }), CONCEPTS.IAntisuppressErrors$MM));
+    return !(SNodeOperations.isInstanceOf(ListSequence.fromList(SNodeOperations.getNodeAncestors(child, null, true)).findFirst((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.IAntisuppressErrors$MM) || SNodeOperations.isInstanceOf(it, CONCEPTS.ISuppressErrors$qB) || Sequence.fromIterable(SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(it), CONCEPTS.ISuppressErrors$qB)).isNotEmpty()), CONCEPTS.IAntisuppressErrors$MM));
   }
   /*package*/ static boolean suppress_id3612de_vrfV(@NotNull SNode __thisNode__, NodeReportItem reportItem) {
     IssueKindReportItem.KindLevel kindLevel = reportItem.getIssueKind().getChecker().getKindLevel();

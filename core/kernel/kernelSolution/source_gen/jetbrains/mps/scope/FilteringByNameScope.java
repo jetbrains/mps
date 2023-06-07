@@ -8,7 +8,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -29,11 +28,7 @@ public class FilteringByNameScope extends Scope {
 
   @Override
   public Iterable<SNode> getAvailableElements(@Nullable String prefix) {
-    return Sequence.fromIterable(scope.getAvailableElements(prefix)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.INamedConcept$Kd)) || !(SetSequence.fromSet(filteredNames).contains(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL)));
-      }
-    });
+    return Sequence.fromIterable(scope.getAvailableElements(prefix)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.INamedConcept$Kd)) || !(SetSequence.fromSet(filteredNames).contains(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL))));
   }
 
   @Nullable

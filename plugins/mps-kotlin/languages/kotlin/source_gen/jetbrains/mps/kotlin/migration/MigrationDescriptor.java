@@ -9,7 +9,7 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 
 public class MigrationDescriptor implements MigrationAspectDescriptor {
-  private Map<Integer, MigrationScript> myScripts = MapSequence.<Integer, MigrationScript>fromMapAndKeysArray(new HashMap<Integer, MigrationScript>(), 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).withValues(new MoveControlStructureStatements(), new StringLiteralNewStructure(), new FunctionInheritance(), new DeconstructingVariables(), new Migrate_MovePropertyUp_4(), new MigrateReceiverTypes(), new LongAndUnsignedAsLiteral(), new LambdaLiteralStructure(), new RemoveLocalPropertyTypeParameters(), new ClearLambdaLiteralHack(), new OptionalMemberModifiers());
+  private Map<Integer, MigrationScript> myScripts = MapSequence.fromMapAndEntryArray(new HashMap<Integer, MigrationScript>(), Map.entry(0, new MoveControlStructureStatements()), Map.entry(1, new StringLiteralNewStructure()), Map.entry(2, new FunctionInheritance()), Map.entry(3, new DeconstructingVariables()), Map.entry(4, new Migrate_MovePropertyUp_4()), Map.entry(5, new MigrateReceiverTypes()), Map.entry(6, new LongAndUnsignedAsLiteral()), Map.entry(7, new LambdaLiteralStructure()), Map.entry(8, new RemoveLocalPropertyTypeParameters()), Map.entry(9, new ClearLambdaLiteralHack()), Map.entry(10, new OptionalMemberModifiers()));
   public MigrationScript getScript(int fromVersion) {
     return MapSequence.fromMap(myScripts).get(fromVersion);
   }

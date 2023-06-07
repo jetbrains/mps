@@ -30,7 +30,6 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import com.intellij.openapi.project.DumbService;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.make.MakeNotification;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.nio.file.Path;
 import java.nio.file.Files;
 import com.intellij.openapi.util.Disposer;
@@ -165,11 +164,7 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
   }
 
   private void notifyListeners(final MakeNotification notification) {
-    ListSequence.fromList(ListSequence.fromListWithValues(new ArrayList<IMakeNotificationListener>(), listeners)).visitAll(new IVisitor<IMakeNotificationListener>() {
-      public void visit(IMakeNotificationListener li) {
-        li.handleNotification(notification);
-      }
-    });
+    ListSequence.fromList(ListSequence.fromListWithValues(new ArrayList<IMakeNotificationListener>(), listeners)).visitAll((li) -> li.handleNotification(notification));
   }
 
   private void attemptCloseSession() {

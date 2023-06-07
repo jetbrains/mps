@@ -7,8 +7,6 @@ import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.traceable.behavior.TraceableConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -25,11 +23,9 @@ public class DummyCommant_TextGen extends TextGenDescriptorBase {
     tgs.append("/***");
     tgs.newLine();
     tgs.increaseIndent();
-    ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.contents$YQNi)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode line) {
-        tgs.appendNode(line);
-        tgs.newLine();
-      }
+    ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.contents$YQNi)).visitAll((line) -> {
+      tgs.appendNode(line);
+      tgs.newLine();
     });
     tgs.decreaseIndent();
     tgs.indent();

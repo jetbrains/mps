@@ -67,14 +67,14 @@ public class TwoModulesWithXRefsBuiltIndependently_Test extends EnvironmentAware
       // macroToDefine is needed in binaries, the property is from IDE on sources
       String mpsHomePath = System.getProperty("mps.home.path");
       String options = (mpsHomePath != null ? "-D" + MacrosFactory.MPS_HOME_MACRO_NAME + "=" + mpsHomePath : "");
-      ProcessHandler process1 = new Ant_Command().setTargetName_String("generate assemble").setOptions_String(options).setMacroToDefine_ListString(Sequence.fromIterable(Sequence.<String>singleton(MacrosFactory.MPS_HOME_MACRO_NAME)).toListSequence()).createProcess("testbench/modules/xmodel.build/p1.xml");
+      ProcessHandler process1 = new Ant_Command().setTargetName_String("generate assemble").setOptions_String(options).setMacroToDefine_ListString(Sequence.fromIterable(Sequence.<String>singleton(MacrosFactory.MPS_HOME_MACRO_NAME)).toList()).createProcess("testbench/modules/xmodel.build/p1.xml");
       process1.addProcessListener(textOutputAdapter);
       int exitCode = ProcessHandlerBuilder.startAndWait(process1);
       if (exitCode != 0) {
         Assert.fail("Exited with code " + exitCode);
       }
 
-      ProcessHandler process2 = new Ant_Command().setTargetName_String("generate").setOptions_String(options).setMacroToDefine_ListString(Sequence.fromIterable(Sequence.<String>singleton(MacrosFactory.MPS_HOME_MACRO_NAME)).toListSequence()).createProcess("testbench/modules/xmodel.build/p2.xml");
+      ProcessHandler process2 = new Ant_Command().setTargetName_String("generate").setOptions_String(options).setMacroToDefine_ListString(Sequence.fromIterable(Sequence.<String>singleton(MacrosFactory.MPS_HOME_MACRO_NAME)).toList()).createProcess("testbench/modules/xmodel.build/p2.xml");
       process2.addProcessListener(textOutputAdapter);
       exitCode = ProcessHandlerBuilder.startAndWait(process2);
       if (exitCode != 0) {

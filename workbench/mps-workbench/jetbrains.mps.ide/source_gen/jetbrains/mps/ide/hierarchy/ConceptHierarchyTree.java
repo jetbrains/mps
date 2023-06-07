@@ -23,12 +23,9 @@ import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -87,30 +84,18 @@ public class ConceptHierarchyTree extends AbstractHierarchyTree {
   private void buildCaches() {
     MapSequence.fromMap(myChildrenCache).clear();
     Iterable<Language> languages = new ModuleRepositoryFacade(myRepostitory).getAllModules(Language.class);
-    Iterable<SModel> structures = Sequence.fromIterable(languages).select(new ISelector<Language, SModel>() {
-      public SModel select(Language it) {
-        return SModuleOperations.getAspect(it, "structure");
-      }
-    }).where(new NotNullWhereFilter<SModel>());
-    Iterable<SNode> concepts = Sequence.fromIterable(structures).translate(new ITranslator2<SModel, SNode>() {
-      public Iterable<SNode> translate(SModel it) {
-        return SModelOperations.roots(it, CONCEPTS.AbstractConceptDeclaration$KA);
-      }
-    });
-    Sequence.fromIterable(concepts).visitAll(new IVisitor<SNode>() {
-      public void visit(final SNode child) {
-        List<SNode> immediate = ((List<SNode>) BHReflection.invoke0(child, CONCEPTS.AbstractConceptDeclaration$KA, SMethodIdV2.create("getImmediateSuperconcepts", 1222430305282L, 0x44a456bea0df1cf0L)));
-        ListSequence.fromList(immediate).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode parent) {
-            Set<SNode> desc = MapSequence.fromMap(myChildrenCache).get(parent);
-            if (desc == null) {
-              desc = SetSequence.fromSet(new HashSet<SNode>());
-              MapSequence.fromMap(myChildrenCache).put(parent, desc);
-            }
-            SetSequence.fromSet(desc).addElement(child);
-          }
-        });
-      }
+    Iterable<SModel> structures = Sequence.fromIterable(languages).select((it) -> SModuleOperations.getAspect(it, "structure")).where(new NotNullWhereFilter());
+    Iterable<SNode> concepts = Sequence.fromIterable(structures).translate((it) -> SModelOperations.roots(it, CONCEPTS.AbstractConceptDeclaration$KA));
+    Sequence.fromIterable(concepts).visitAll((final SNode child) -> {
+      List<SNode> immediate = ((List<SNode>) BHReflection.invoke0(child, CONCEPTS.AbstractConceptDeclaration$KA, SMethodIdV2.create("getImmediateSuperconcepts", 1222430305282L, 0x44a456bea0df1cf0L)));
+      ListSequence.fromList(immediate).visitAll((parent) -> {
+        Set<SNode> desc = MapSequence.fromMap(myChildrenCache).get(parent);
+        if (desc == null) {
+          desc = SetSequence.fromSet(new HashSet<SNode>());
+          MapSequence.fromMap(myChildrenCache).put(parent, desc);
+        }
+        SetSequence.fromSet(desc).addElement(child);
+      });
     });
   }
 

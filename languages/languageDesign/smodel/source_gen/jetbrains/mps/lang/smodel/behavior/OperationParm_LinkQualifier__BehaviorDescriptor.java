@@ -21,7 +21,6 @@ import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__Behavio
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.baseLanguage.behavior.IOperation__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -50,11 +49,7 @@ public final class OperationParm_LinkQualifier__BehaviorDescriptor extends BaseB
     return (SNodeOperations.isInstanceOf(OperationParm_LinkQualifier__BehaviorDescriptor.getOperation_id52QkhOxfj6w.invoke(__thisNode__), CONCEPTS.Node_GetChildrenOperation$C3) ? SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f4e95b7L, "jetbrains.mps.lang.structure.structure.LinkMetaclass"), 0xfc6f4e95b9L, "aggregation") : SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f4e95b7L, "jetbrains.mps.lang.structure.structure.LinkMetaclass"), 0xfc6f4e95b8L, "reference"));
   }
   /*package*/ static Iterable<SNode> getLinkAccessScope_id2xk$X1Ld2Yi(@NotNull final SNode __thisNode__) {
-    return ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(SLinkOperations.getTarget(TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(OperationParm_LinkQualifier__BehaviorDescriptor.getOperation_id52QkhOxfj6w.invoke(__thisNode__))), CONCEPTS.SNodeType$hR), LINKS.concept$OMgE))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), OperationParm_LinkQualifier__BehaviorDescriptor.getLinkMetaclass_id2LDtYz_plxI.invoke(__thisNode__));
-      }
-    });
+    return ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(SLinkOperations.getTarget(TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(OperationParm_LinkQualifier__BehaviorDescriptor.getOperation_id52QkhOxfj6w.invoke(__thisNode__))), CONCEPTS.SNodeType$hR), LINKS.concept$OMgE))).where((it) -> Objects.equals(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), OperationParm_LinkQualifier__BehaviorDescriptor.getLinkMetaclass_id2LDtYz_plxI.invoke(__thisNode__)));
   }
 
   /*package*/ OperationParm_LinkQualifier__BehaviorDescriptor() {

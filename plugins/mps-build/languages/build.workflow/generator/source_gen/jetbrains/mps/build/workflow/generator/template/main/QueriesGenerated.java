@@ -8,8 +8,6 @@ import jetbrains.mps.generator.template.BaseMappingRuleContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.build.workflow.behavior.BwfPathDeclaration__BehaviorDescriptor;
@@ -17,12 +15,12 @@ import jetbrains.mps.build.workflow.behavior.BwfJavaModule__BehaviorDescriptor;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.build.workflow.generator.util.SubTaskOrderHelper;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.build.workflow.behavior.BwfProjectPart__BehaviorDescriptor;
 import jetbrains.mps.generator.template.MapSrcMacroPostProcContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
@@ -82,11 +80,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.content$zkQy)).isEmpty() && !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.shortEmptyNotation$B8Gv));
   }
   public static boolean rule_Condition_0_3(final BaseMappingRuleContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parts$$VTL)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BwfMacro$5R) && SPropertyOperations.getBoolean(SNodeOperations.cast(it, CONCEPTS.BwfMacro$5R), PROPS.exportToProperiesFile$Q7Md);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parts$$VTL)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BwfMacro$5R) && SPropertyOperations.getBoolean(SNodeOperations.cast(it, CONCEPTS.BwfMacro$5R), PROPS.exportToProperiesFile$Q7Md));
   }
   public static Object propertyMacro_GetValue_0_0(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
@@ -238,11 +232,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.classpath$AA4B) != null);
   }
   public static boolean ifMacro_Condition_1_0(final IfMacroContext _context) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.parts$$VTL), CONCEPTS.BwfMacro$5R)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getBoolean(it, PROPS.exportToProperiesFile$Q7Md);
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.parts$$VTL), CONCEPTS.BwfMacro$5R)).any((it) -> SPropertyOperations.getBoolean(it, PROPS.exportToProperiesFile$Q7Md));
   }
   public static boolean ifMacro_Condition_1_1(final IfMacroContext _context) {
     return isNotEmptyString(SPropertyOperations.getString(_context.getNode(), PROPS.baseDirectory$BDIf));
@@ -290,74 +280,34 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getBoolean(_context.getNode(), PROPS.conditionalCompile$z2HS);
   }
   public static boolean ifMacro_Condition_3_14(final IfMacroContext _context) {
-    return ListSequence.fromList(SNodeOperations.getAllSiblings(_context.getNode(), false)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BwfJavaModule$gv);
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getAllSiblings(_context.getNode(), false)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BwfJavaModule$gv));
   }
   public static boolean ifMacro_Condition_3_15(final IfMacroContext _context) {
-    return ListSequence.fromList(SNodeOperations.getAllSiblings(_context.getNode(), false)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BwfJavaModule$gv);
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getAllSiblings(_context.getNode(), false)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BwfJavaModule$gv));
   }
   public static boolean ifMacro_Condition_3_16(final IfMacroContext _context) {
-    return ListSequence.fromList(SNodeOperations.getAllSiblings(_context.getNode(), false)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BwfJavaModule$gv);
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getAllSiblings(_context.getNode(), false)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BwfJavaModule$gv));
   }
   public static boolean ifMacro_Condition_3_17(final IfMacroContext _context) {
-    boolean result = ListSequence.fromList(SNodeOperations.getAllSiblings(_context.getNode(), false)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BwfJavaModule$gv) && "IntelliJ".equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.BwfJavaModule$gv), PROPS.compiler$_$9C));
-      }
-    });
+    boolean result = ListSequence.fromList(SNodeOperations.getAllSiblings(_context.getNode(), false)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BwfJavaModule$gv) && "IntelliJ".equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.BwfJavaModule$gv), PROPS.compiler$_$9C)));
     if (result) {
-      if (!(ListSequence.fromList(SNodeOperations.getAllSiblings(_context.getNode(), false)).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.BwfMacro$5R) && "idea_home".equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.BwfMacro$5R), PROPS.name$MnvL));
-        }
-      }))) {
-        _context.showErrorMessage(ListSequence.fromList(SNodeOperations.getAllSiblings(_context.getNode(), false)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(it, CONCEPTS.BwfJavaModule$gv) && "IntelliJ".equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.BwfJavaModule$gv), PROPS.compiler$_$9C));
-          }
-        }).first(), "${idea_home} macro is required to use IntelliJ compiler");
+      if (!(ListSequence.fromList(SNodeOperations.getAllSiblings(_context.getNode(), false)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BwfMacro$5R) && "idea_home".equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.BwfMacro$5R), PROPS.name$MnvL))))) {
+        _context.showErrorMessage(ListSequence.fromList(SNodeOperations.getAllSiblings(_context.getNode(), false)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BwfJavaModule$gv) && "IntelliJ".equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.BwfJavaModule$gv), PROPS.compiler$_$9C))).first(), "${idea_home} macro is required to use IntelliJ compiler");
       }
     }
     return result;
   }
   public static boolean ifMacro_Condition_3_18(final IfMacroContext _context) {
-    return ListSequence.fromList(SNodeOperations.getAllSiblings(_context.getNode(), false)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BwfJavaModule$gv) && "IntelliJ".equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.BwfJavaModule$gv), PROPS.compiler$_$9C));
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getAllSiblings(_context.getNode(), false)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BwfJavaModule$gv) && "IntelliJ".equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.BwfJavaModule$gv), PROPS.compiler$_$9C)));
   }
   public static boolean ifMacro_Condition_3_19(final IfMacroContext _context) {
-    return ListSequence.fromList(SNodeOperations.getAllSiblings(_context.getNode(), false)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BwfJavaModule$gv) && "IntelliJ".equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.BwfJavaModule$gv), PROPS.compiler$_$9C));
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getAllSiblings(_context.getNode(), false)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BwfJavaModule$gv) && "IntelliJ".equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.BwfJavaModule$gv), PROPS.compiler$_$9C)));
   }
   public static boolean ifMacro_Condition_3_20(final IfMacroContext _context) {
-    return ListSequence.fromList(SNodeOperations.getAllSiblings(_context.getNode(), false)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BwfJavaModule$gv) && SPropertyOperations.getBoolean(SNodeOperations.cast(it, CONCEPTS.BwfJavaModule$gv), PROPS.withKotlin$2$Am);
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getAllSiblings(_context.getNode(), false)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BwfJavaModule$gv) && SPropertyOperations.getBoolean(SNodeOperations.cast(it, CONCEPTS.BwfJavaModule$gv), PROPS.withKotlin$2$Am));
   }
   public static boolean ifMacro_Condition_3_21(final IfMacroContext _context) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(_context.getNode(), false), CONCEPTS.BwfJavaModule$gv)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getBoolean(it, PROPS.conditionalCompile$z2HS);
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(_context.getNode(), false), CONCEPTS.BwfJavaModule$gv)).any((it) -> SPropertyOperations.getBoolean(it, PROPS.conditionalCompile$z2HS));
   }
   public static SNode sourceNodeQuery_0_0(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.element$_HPX);
@@ -417,21 +367,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.attributes$ZouQ);
   }
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parts$$VTL)).sort(new ISelector<SNode, Integer>() {
-      public Integer select(SNode it) {
-        return (int) BwfProjectPart__BehaviorDescriptor.getPriority_id1Mjrj7j4T5I.invoke(it);
-      }
-    }, true);
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parts$$VTL)).sort((it) -> (int) BwfProjectPart__BehaviorDescriptor.getPriority_id1Mjrj7j4T5I.invoke(it), true);
   }
   public static Iterable<SNode> sourceNodesQuery_3_0(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.prepareStatements$6_By);
   }
   public static Iterable<SNode> sourceNodesQuery_3_1(final SourceSubstituteMacroNodesContext _context) {
-    return Sequence.fromIterable(Sequence.fromArray(SPropertyOperations.getString(_context.getNode(), PROPS.compilerOptions$rUpp).split("\\s+"))).select(new ISelector<String, SNode>() {
-      public SNode select(String it) {
-        return _quotation_createNode_x583g4_a0a0a0a0sd(it);
-      }
-    });
+    return Sequence.fromIterable(Sequence.fromArray(SPropertyOperations.getString(_context.getNode(), PROPS.compilerOptions$rUpp).split("\\s+"))).select((it) -> _quotation_createNode_x583g4_a0a0a0a0sd(it));
   }
   public static Iterable<SNode> sourceNodesQuery_3_2(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.sources$L7Yt), LINKS.elements$5C58);
@@ -455,11 +397,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(_context.getNode(), false), CONCEPTS.BwfJavaModule$gv);
   }
   public static Iterable<SNode> sourceNodesQuery_4_0(final SourceSubstituteMacroNodesContext _context) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.parts$$VTL), CONCEPTS.BwfMacro$5R)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getBoolean(it, PROPS.exportToProperiesFile$Q7Md);
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.parts$$VTL), CONCEPTS.BwfMacro$5R)).where((it) -> SPropertyOperations.getBoolean(it, PROPS.exportToProperiesFile$Q7Md));
   }
   public static void mapSrcMacro_post_0_0(final MapSrcMacroPostProcContext _context) {
     if (ListSequence.fromList(SLinkOperations.getChildren(_context.getOutputNode(), LINKS.content$zkQy)).isEmpty()) {

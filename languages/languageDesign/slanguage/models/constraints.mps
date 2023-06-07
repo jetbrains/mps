@@ -74,6 +74,7 @@
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -110,7 +111,6 @@
       <concept id="1151689724996" name="jetbrains.mps.baseLanguage.collections.structure.SequenceType" flags="in" index="A3Dl8">
         <child id="1151689745422" name="elementType" index="A3Ik2" />
       </concept>
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1202128969694" name="jetbrains.mps.baseLanguage.collections.structure.SelectOperation" flags="nn" index="3$u5V9" />
     </language>
   </registry>
@@ -167,14 +167,14 @@
                           <node concept="1qvjxa" id="5Vvmn_QkWQC" role="3clFbG">
                             <ref role="1quiSB" to="bgxn:2LiUEk8oQ$g" resolve="plugin" />
                             <node concept="37vLTw" id="5Vvmn_QkWQD" role="1qvjxb">
-                              <ref role="3cqZAo" node="5Vvmn_QkWQE" resolve="it" />
+                              <ref role="3cqZAo" node="5W7E4fV0Wrq" />
                             </node>
                           </node>
                         </node>
                       </node>
-                      <node concept="Rh6nW" id="5Vvmn_QkWQE" role="1bW2Oz">
+                      <node concept="gl6BB" id="5W7E4fV0Wrq" role="1bW2Oz">
                         <property role="TrG5h" value="it" />
-                        <node concept="2jxLKc" id="5Vvmn_QkWQF" role="1tU5fm" />
+                        <node concept="2jxLKc" id="5W7E4fV0Wrr" role="1tU5fm" />
                       </node>
                     </node>
                   </node>

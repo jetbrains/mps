@@ -13,7 +13,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
@@ -23,7 +22,7 @@ import jetbrains.mps.openapi.navigation.NavigationSupport;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -107,36 +106,28 @@ public class CreateMethodFromUsageHelper {
     boolean created = false;
     if (SNodeOperations.hasRole(myNode, LINKS.operation$gs9E)) {
       created = true;
-      ex.exec(new _Adapters._return_P0_E0_to__void_P0_E0_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
-        public SNode invoke() {
-          method.value = createDecl(cls, sameClassifier, methodName, getInferredType(SNodeOperations.getParent(myNode)));
-          return SNodeOperations.replaceWithAnother(myNode, createInstanceMethodCallOperation_tok9no_a0a1a0a0b0x0m(method.value));
-        }
-      }));
+      ex.exec(() -> {
+        method.value = createDecl(cls, sameClassifier, methodName, getInferredType(SNodeOperations.getParent(myNode)));
+        SNodeOperations.replaceWithAnother(myNode, createInstanceMethodCallOperation_tok9no_a0a1a0a0b0x0m(method.value));
+      });
     } else if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(myNode)), CONCEPTS.Expression$mB)) {
       created = true;
-      ex.exec(new _Adapters._return_P0_E0_to__void_P0_E0_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
-        public SNode invoke() {
-          method.value = createDecl(cls, sameClassifier, methodName, getInferredType(myNode));
-          return SNodeOperations.replaceWithAnother(myNode, createLocalMethodCall_tok9no_a0a1a0a0b0a32a21(method.value));
-        }
-      }));
+      ex.exec(() -> {
+        method.value = createDecl(cls, sameClassifier, methodName, getInferredType(myNode));
+        SNodeOperations.replaceWithAnother(myNode, createLocalMethodCall_tok9no_a0a1a0a0b0a32a21(method.value));
+      });
     } else if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(myNode)), CONCEPTS.Statement$P6)) {
       created = true;
-      ex.exec(new _Adapters._return_P0_E0_to__void_P0_E0_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
-        public SNode invoke() {
-          method.value = createDecl(cls, sameClassifier, methodName, createVoidType_tok9no_d0a0a0a0b0b32a21());
-          return SNodeOperations.replaceWithAnother(myNode, createExpressionStatement_tok9no_a0a1a0a0b0b32a21(method.value));
-        }
-      }));
+      ex.exec(() -> {
+        method.value = createDecl(cls, sameClassifier, methodName, createVoidType_tok9no_d0a0a0a0b0b32a21());
+        SNodeOperations.replaceWithAnother(myNode, createExpressionStatement_tok9no_a0a1a0a0b0b32a21(method.value));
+      });
     } else if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(myNode)), CONCEPTS.StatementList$m_)) {
       created = true;
-      ex.exec(new _Adapters._return_P0_E0_to__void_P0_E0_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
-        public SNode invoke() {
-          method.value = createDecl(cls, sameClassifier, methodName, createVoidType_tok9no_d0a0a0a0b0c32a21());
-          return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myNode, CONCEPTS.StatementList$m_), LINKS.statement$53DE)).addElement(createExpressionStatement_tok9no_a0a1a0a0b0c32a21(method.value));
-        }
-      }));
+      ex.exec(() -> {
+        method.value = createDecl(cls, sameClassifier, methodName, createVoidType_tok9no_d0a0a0a0b0c32a21());
+        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myNode, CONCEPTS.StatementList$m_), LINKS.statement$53DE)).addElement(createExpressionStatement_tok9no_a0a1a0a0b0c32a21(method.value));
+      });
     }
     if (!(created)) {
       return false;
@@ -166,11 +157,7 @@ public class CreateMethodFromUsageHelper {
     }
 
     SNode current = myEditorContext.getSelectedNode();
-    SNode currentMember = ListSequence.fromList(SNodeOperations.getNodeAncestors(current, null, true)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.hasRole(it, LINKS.member$L_2d);
-      }
-    });
+    SNode currentMember = ListSequence.fromList(SNodeOperations.getNodeAncestors(current, null, true)).findFirst((it) -> SNodeOperations.hasRole(it, LINKS.member$L_2d));
     if (currentMember == null) {
       Classifier__BehaviorDescriptor.addMember_id32Td0IabBk_.invoke(classifier, method, ListSequence.fromListAndArray(new ArrayList<SAbstractConcept>(), CONCEPTS.InstanceMethodDeclaration$39, CONCEPTS.StaticMethodDeclaration$FJ));
       return method;

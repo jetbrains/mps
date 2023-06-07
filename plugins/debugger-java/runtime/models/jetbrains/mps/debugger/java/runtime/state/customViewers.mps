@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
@@ -241,6 +241,7 @@
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -296,7 +297,6 @@
       <concept id="1237721394592" name="jetbrains.mps.baseLanguage.collections.structure.AbstractContainerCreator" flags="nn" index="HWqM0">
         <child id="1237721435807" name="elementType" index="HW$YZ" />
       </concept>
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1205679737078" name="jetbrains.mps.baseLanguage.collections.structure.SortOperation" flags="nn" index="2S7cBI">
         <child id="1205679832066" name="ascending" index="2S7zOq" />
       </concept>
@@ -2038,15 +2038,15 @@
                       <node concept="liA8E" id="6bMlO3sW5r9" role="2OqNvi">
                         <ref role="37wK5l" to="wtoj:2Y$mRnICmwg" resolve="addFactory" />
                         <node concept="37vLTw" id="6bMlO3sW5rj" role="37wK5m">
-                          <ref role="3cqZAo" node="6bMlO3sW4pH" resolve="it" />
+                          <ref role="3cqZAo" node="5W7E4fV0XhQ" />
                         </node>
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="Rh6nW" id="6bMlO3sW4pH" role="1bW2Oz">
+                <node concept="gl6BB" id="5W7E4fV0XhQ" role="1bW2Oz">
                   <property role="TrG5h" value="it" />
-                  <node concept="2jxLKc" id="6bMlO3sW4pI" role="1tU5fm" />
+                  <node concept="2jxLKc" id="5W7E4fV0XhR" role="1tU5fm" />
                 </node>
               </node>
             </node>
@@ -2077,15 +2077,15 @@
                       <node concept="liA8E" id="6bMlO3sW5FY" role="2OqNvi">
                         <ref role="37wK5l" to="wtoj:2Y$mRnICmwr" resolve="removeFactory" />
                         <node concept="37vLTw" id="6bMlO3sW5FZ" role="37wK5m">
-                          <ref role="3cqZAo" node="6bMlO3sW5G0" resolve="it" />
+                          <ref role="3cqZAo" node="5W7E4fV0XhS" />
                         </node>
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="Rh6nW" id="6bMlO3sW5G0" role="1bW2Oz">
+                <node concept="gl6BB" id="5W7E4fV0XhS" role="1bW2Oz">
                   <property role="TrG5h" value="it" />
-                  <node concept="2jxLKc" id="6bMlO3sW5G1" role="1tU5fm" />
+                  <node concept="2jxLKc" id="5W7E4fV0XhT" role="1tU5fm" />
                 </node>
               </node>
             </node>
@@ -2386,15 +2386,15 @@
                                   <ref role="37wK5l" to="frkw:~TypeComponent.isStatic()" resolve="isStatic" />
                                 </node>
                                 <node concept="37vLTw" id="6bMlO3sVAiL" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="6bMlO3sVAiM" resolve="it" />
+                                  <ref role="3cqZAo" node="5W7E4fV0XhU" />
                                 </node>
                               </node>
                             </node>
                           </node>
                         </node>
-                        <node concept="Rh6nW" id="6bMlO3sVAiM" role="1bW2Oz">
+                        <node concept="gl6BB" id="5W7E4fV0XhU" role="1bW2Oz">
                           <property role="TrG5h" value="it" />
-                          <node concept="2jxLKc" id="6bMlO3sVAiN" role="1tU5fm" />
+                          <node concept="2jxLKc" id="5W7E4fV0XhV" role="1tU5fm" />
                         </node>
                       </node>
                     </node>
@@ -2411,14 +2411,14 @@
                               <ref role="37wK5l" to="frkw:~TypeComponent.name()" resolve="name" />
                             </node>
                             <node concept="37vLTw" id="6bMlO3sVAiV" role="2Oq$k0">
-                              <ref role="3cqZAo" node="6bMlO3sVAiW" resolve="it" />
+                              <ref role="3cqZAo" node="5W7E4fV0XhW" />
                             </node>
                           </node>
                         </node>
                       </node>
-                      <node concept="Rh6nW" id="6bMlO3sVAiW" role="1bW2Oz">
+                      <node concept="gl6BB" id="5W7E4fV0XhW" role="1bW2Oz">
                         <property role="TrG5h" value="it" />
-                        <node concept="2jxLKc" id="6bMlO3sVAiX" role="1tU5fm" />
+                        <node concept="2jxLKc" id="5W7E4fV0XhX" role="1tU5fm" />
                       </node>
                     </node>
                     <node concept="1nlBCl" id="6bMlO3sVAiY" role="2S7zOq">

@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.openapi.intentions.ParameterizedIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
@@ -49,11 +48,7 @@ public final class ReplaceWithConcreteSubconcept_Intention extends AbstractInten
     return list;
   }
   private List<SAbstractConcept> parameter(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(SConceptOperations.getAllSubConcepts(SNodeOperations.getConcept(node), SNodeOperations.getModel(node))).where(new IWhereFilter<SAbstractConcept>() {
-      public boolean accept(SAbstractConcept it) {
-        return !(it.isAbstract());
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SConceptOperations.getAllSubConcepts(SNodeOperations.getConcept(node), SNodeOperations.getModel(node))).where((it) -> !(it.isAbstract())).toList();
   }
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable implements ParameterizedIntentionExecutable {
     private SAbstractConcept myParameter;

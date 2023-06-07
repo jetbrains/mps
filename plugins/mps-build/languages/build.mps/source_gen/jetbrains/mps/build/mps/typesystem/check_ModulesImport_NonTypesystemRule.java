@@ -24,7 +24,6 @@ import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.build.mps.util.ModuleChecker;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.DevkitDescriptor;
@@ -82,11 +81,7 @@ public class check_ModulesImport_NonTypesystemRule extends AbstractNonTypesystem
       }
     });
     ml.checkAllModules(ModuleChecker.CheckType.CHECK);
-    for (SNode dk : ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.parts$mGDj)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SNodeOperations.getNodeDescendants(it, CONCEPTS.BuildMps_DevKit$jc, true, new SAbstractConcept[]{});
-      }
-    })) {
+    for (SNode dk : ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.parts$mGDj)).translate((it) -> SNodeOperations.getNodeDescendants(it, CONCEPTS.BuildMps_DevKit$jc, true, new SAbstractConcept[]{}))) {
       // XXX would be great not to create ModuleChecker here
       ModuleDescriptor md = ml.createModuleChecker(dk).getModuleDescriptor();
       if (false == md instanceof DevkitDescriptor) {

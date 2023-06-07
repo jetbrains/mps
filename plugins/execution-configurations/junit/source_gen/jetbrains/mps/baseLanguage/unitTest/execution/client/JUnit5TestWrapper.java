@@ -11,11 +11,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.IClassifierType__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.IClassifier__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -37,15 +36,7 @@ public class JUnit5TestWrapper extends AbstractTestWrapper<SNode> {
     myQualifiedName = INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(clazz);
     myName = SPropertyOperations.getString(clazz, PROPS.name$MnvL);
     Iterable<SNode> methodNodes = SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(clazz)), CONCEPTS.InstanceMethodDeclaration$39);
-    myMethods = Sequence.fromIterable(methodNodes).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return TestNodeUtil.isJUnit4TestMethod(it);
-      }
-    }).select(new ISelector<SNode, JUnit4MethodWrapper>() {
-      public JUnit4MethodWrapper select(SNode it) {
-        return new JUnit4MethodWrapper(JUnit5TestWrapper.this, it);
-      }
-    }).toListSequence();
+    myMethods = Sequence.fromIterable(methodNodes).where((it) -> TestNodeUtil.isJUnit4TestMethod(it)).select((it) -> new JUnit4MethodWrapper(JUnit5TestWrapper.this, it)).toList();
   }
 
   @Override
@@ -67,8 +58,8 @@ public class JUnit5TestWrapper extends AbstractTestWrapper<SNode> {
   @NotNull
   @Override
   public Iterable<ITestNodeWrapper> getTestMethods() {
-    return ListSequence.fromList(myMethods).select(new ISelector<JUnit4MethodWrapper, ITestNodeWrapper>() {
-      public ITestNodeWrapper select(JUnit4MethodWrapper it) {
+    return ListSequence.fromList(myMethods).select(new _FunctionTypes._return_P1_E0<ITestNodeWrapper, JUnit4MethodWrapper>() {
+      public ITestNodeWrapper invoke(JUnit4MethodWrapper it) {
         return (ITestNodeWrapper) it;
       }
     });

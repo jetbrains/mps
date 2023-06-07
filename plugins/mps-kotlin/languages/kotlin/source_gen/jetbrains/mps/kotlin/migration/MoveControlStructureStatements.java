@@ -11,15 +11,13 @@ import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Iterator;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -42,11 +40,7 @@ public class MoveControlStructureStatements extends MigrationScriptBase {
     {
       SearchScope scope_yftl6d_a0e = CommandUtil.createScope(m);
       final SearchScope scope_yftl6d_a0e_0 = new EditableFilteringScope(scope_yftl6d_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_yftl6d_a0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_yftl6d_a0e_0;
       Collection<SNode> ifExpressions = CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IfExpression$TD, false);
 
       // Concepts whose block structure has been internalized
@@ -67,77 +61,47 @@ public class MoveControlStructureStatements extends MigrationScriptBase {
       migrate(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertySetter$s8, false), LINKS._body$JAlR);
 
       // Same for lambda literal but it had its own body handling
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LambdaLiteral$Bd, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.statements$R3pt)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS._statements$Kpvh)));
-          ListSequence.fromList(SLinkOperations.getChildren(it, LINKS._statements$Kpvh)).clear();
-        }
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LambdaLiteral$Bd, false)).visitAll((it) -> {
+        ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.statements$R3pt)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS._statements$Kpvh)));
+        ListSequence.fromList(SLinkOperations.getChildren(it, LINKS._statements$Kpvh)).clear();
       });
 
       // IElseExpression also does not include statement anymore (merged into flexibleBlock)
-      CollectionSequence.fromCollection(ifExpressions).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.else$$UEO), CONCEPTS.IStatement$fj) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.else$$UEO), CONCEPTS.IfExpression$TD));
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNode elseExpression = SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.else$$UEO), CONCEPTS.IStatement$fj);
-          SNode block = SNodeOperations.replaceWithNewChild(elseExpression, CONCEPTS.FlexibleBlock$KO);
-          ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.statements$R3pt)).addElement(elseExpression);
-        }
+      CollectionSequence.fromCollection(ifExpressions).where((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.else$$UEO), CONCEPTS.IStatement$fj) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.else$$UEO), CONCEPTS.IfExpression$TD))).visitAll((it) -> {
+        SNode elseExpression = SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.else$$UEO), CONCEPTS.IStatement$fj);
+        SNode block = SNodeOperations.replaceWithNewChild(elseExpression, CONCEPTS.FlexibleBlock$KO);
+        ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.statements$R3pt)).addElement(elseExpression);
       });
 
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EmptyClassMemberDeclaration$Ab, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNodeOperations.replaceWithNewChild(it, CONCEPTS.EmptyDeclaration$V);
-        }
-      });
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EmptyClassMemberDeclaration$Ab, false)).visitAll((it) -> SNodeOperations.replaceWithNewChild(it, CONCEPTS.EmptyDeclaration$V));
 
       // ConstructorSuperSpecifier are now dedicated to inheritance
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AnnotationList$je, false)).translate(new ITranslator2<SNode, SNode>() {
-        public Iterable<SNode> translate(SNode it) {
-          return SNodeOperations.ofConcept(SLinkOperations.getChildren(it, LINKS.annotations$HTS_), CONCEPTS.ConstructorSuperSpecifier$SH);
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          migrateAnnotation(it);
-        }
-      });
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.FileAnnotationList$h, false)).translate(new ITranslator2<SNode, SNode>() {
-        public Iterable<SNode> translate(SNode it) {
-          return SNodeOperations.ofConcept(SLinkOperations.getChildren(it, LINKS.annotations$zNfA), CONCEPTS.ConstructorSuperSpecifier$SH);
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          migrateAnnotation(it);
-        }
-      });
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AnnotationList$je, false)).translate((it) -> SNodeOperations.ofConcept(SLinkOperations.getChildren(it, LINKS.annotations$HTS_), CONCEPTS.ConstructorSuperSpecifier$SH)).visitAll((it) -> migrateAnnotation(it));
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.FileAnnotationList$h, false)).translate((it) -> SNodeOperations.ofConcept(SLinkOperations.getChildren(it, LINKS.annotations$zNfA), CONCEPTS.ConstructorSuperSpecifier$SH)).visitAll((it) -> migrateAnnotation(it));
     }
   }
   public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, "jetbrains.mps.kotlin"), 0);
   }
 
-  public static void migrate(Collection<SNode> elements, final SContainmentLink blockLink) {
-    CollectionSequence.fromCollection(elements).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode container) {
-        Iterator<? extends SNode> iterator = container.getChildren(blockLink).iterator();
-        if (iterator.hasNext()) {
-          SNode next = iterator.next();
-          // Used to be some IControlStructureBody that could contain either block or statement (now regrouped as statement list, and visually a block if necessary)
-          {
-            final SNode block = next;
-            if (SNodeOperations.isInstanceOf(block, CONCEPTS.IStatementHolder$84)) {
-              ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.statements$R3pt)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.statements$R3pt)));
-              SNodeOperations.deleteNode(block);
-            }
+  public static void migrate(Iterable<SNode> elements, final SContainmentLink blockLink) {
+    Sequence.fromIterable(elements).visitAll((container) -> {
+      Iterator<? extends SNode> iterator = container.getChildren(blockLink).iterator();
+      if (iterator.hasNext()) {
+        SNode next = iterator.next();
+        // Used to be some IControlStructureBody that could contain either block or statement (now regrouped as statement list, and visually a block if necessary)
+        {
+          final SNode block = next;
+          if (SNodeOperations.isInstanceOf(block, CONCEPTS.IStatementHolder$84)) {
+            ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.statements$R3pt)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.statements$R3pt)));
+            SNodeOperations.deleteNode(block);
           }
+        }
 
-          {
-            final SNode expression = next;
-            if (SNodeOperations.isInstanceOf(expression, CONCEPTS.IStatement$fj)) {
-              ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.statements$R3pt)).addElement(expression);
-            }
+        {
+          final SNode expression = next;
+          if (SNodeOperations.isInstanceOf(expression, CONCEPTS.IStatement$fj)) {
+            ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.statements$R3pt)).addElement(expression);
           }
         }
       }

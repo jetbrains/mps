@@ -18,9 +18,8 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.testbench.suite.behavior.ModuleSuite__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
@@ -73,11 +72,7 @@ public class TestCaseRef_SubstituteMenu extends SubstituteMenuBase {
     @Override
     protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
       SNode msuite = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ModuleSuite$mR, true, false);
-      return Sequence.fromIterable(ModuleSuite__BehaviorDescriptor.models_id173Z5qAOyPn.invoke(msuite)).translate(new ITranslator2<SModel, SNode>() {
-        public Iterable<SNode> translate(SModel smd) {
-          return SModelOperations.nodes(((SModel) smd), CONCEPTS.ITestCase$Fp);
-        }
-      }).toListSequence();
+      return Sequence.fromIterable(ModuleSuite__BehaviorDescriptor.models_id173Z5qAOyPn.invoke(msuite)).translate((smd) -> SModelOperations.nodes(((SModel) smd), CONCEPTS.ITestCase$Fp)).toList();
     }
     private class SMP_Action_dnvvk3_a0 extends SingleItemSubstituteMenuPart {
       private final SNode myParameterObject;

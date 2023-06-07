@@ -11,8 +11,6 @@ import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.editor.runtime.style.StyledTextPrinter;
 import jetbrains.mps.baseLanguage.editor.BaseMethodParameterInformationQueryUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -32,15 +30,7 @@ public class DefaultClassifierMethodParameterInformationQuery implements Paramet
     Scope scope = ModelConstraints.getReferenceDescriptor(methodCall, LINKS.member$oLt6).getScope();
     String name = SPropertyOperations.getString(SLinkOperations.getTarget(methodCall, LINKS.member$oLt6), PROPS.name$MnvL);
     Iterable<SNode> availableElements = scope.getAvailableElements((name != null ? name : ""));
-    return Sequence.fromIterable(availableElements).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SNodeOperations.as(it, CONCEPTS.DefaultClassifierMethodDeclaration$Zx);
-      }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return it != null;
-      }
-    });
+    return Sequence.fromIterable(availableElements).select((it) -> SNodeOperations.as(it, CONCEPTS.DefaultClassifierMethodDeclaration$Zx)).where((it) -> it != null);
   }
   public void getStyledMethodPresentation(SNode node, EditorContext editorContext, SNode parameterObject, StyledTextPrinter styledText) {
     BaseMethodParameterInformationQueryUtil.fillPresentation(parameterObject, this.getSelectedActualArgument(editorContext), styledText);
@@ -53,11 +43,7 @@ public class DefaultClassifierMethodParameterInformationQuery implements Paramet
     if (selectedNode == null) {
       return null;
     }
-    return ListSequence.fromList(SNodeOperations.getNodeAncestors(selectedNode, CONCEPTS.Expression$mB, true)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.DefaultClassifierMethodCallOperation$9$) && Objects.equals(SNodeOperations.getContainingLink(it), LINKS.actualArgument$Owly);
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getNodeAncestors(selectedNode, CONCEPTS.Expression$mB, true)).findFirst((it) -> SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.DefaultClassifierMethodCallOperation$9$) && Objects.equals(SNodeOperations.getContainingLink(it), LINKS.actualArgument$Owly));
   }
 
   private static final class CONCEPTS {

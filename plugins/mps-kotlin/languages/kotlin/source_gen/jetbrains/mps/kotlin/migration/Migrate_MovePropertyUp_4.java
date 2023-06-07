@@ -10,14 +10,12 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.migration.runtime.base.RefactoringRuntime;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import jetbrains.mps.internal.collections.runtime.ISequence;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptMemberNotMigratedProblem;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -39,20 +37,8 @@ public class Migrate_MovePropertyUp_4 extends MigrationScriptBase {
     {
       SearchScope scope_9fvht1_a0e = CommandUtil.createScope(m);
       final SearchScope scope_9fvht1_a0e_0 = new EditableFilteringScope(scope_9fvht1_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_9fvht1_a0e_0;
-        }
-      };
-      Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getInterfaceConcept(MetaAdapterFactory.getLanguage(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, "jetbrains.mps.kotlin"), 0x4da39967d13161a1L, "ITypeParameter"))) || Migrate_MovePropertyUp_4.isMovedConcept(SNodeOperations.getConcept(it));
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode node) {
-          RefactoringRuntime.changePropertyInstance(node, MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af50dL, 0x21e0c923289a58c0L, "variance_old"), MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x4da39967d13161a1L, 0x22287f28953f8c9bL, "variance"));
-        }
-      });
+      QueryExecutionContext context = () -> scope_9fvht1_a0e_0;
+      Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where((it) -> SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getInterfaceConcept(MetaAdapterFactory.getLanguage(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, "jetbrains.mps.kotlin"), 0x4da39967d13161a1L, "ITypeParameter"))) || Migrate_MovePropertyUp_4.isMovedConcept(SNodeOperations.getConcept(it))).visitAll((SNode node) -> RefactoringRuntime.changePropertyInstance(node, MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af50dL, 0x21e0c923289a58c0L, "variance_old"), MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x4da39967d13161a1L, 0x22287f28953f8c9bL, "variance")));
     }
   }
   @Override
@@ -60,23 +46,11 @@ public class Migrate_MovePropertyUp_4 extends MigrationScriptBase {
     {
       SearchScope scope_9fvht1_a0f = CommandUtil.createScope(m);
       final SearchScope scope_9fvht1_a0f_0 = new EditableFilteringScope(scope_9fvht1_a0f);
-      final QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_9fvht1_a0f_0;
-        }
-      };
-      return Sequence.fromClosure(new ISequenceClosure<Problem>() {
-        public Iterable<Problem> iterable() {
-          return Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, "jetbrains.mps.kotlin"), 0x28bef6d7551af50dL, "TypeParameter"))) || SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getInterfaceConcept(MetaAdapterFactory.getLanguage(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, "jetbrains.mps.kotlin"), 0x4da39967d13161a1L, "ITypeParameter")));
-            }
-          }).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return it.hasProperty(MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af50dL, 0x21e0c923289a58c0L, "variance_old"));
-            }
-          }).select(new ISelector<SNode, Problem>() {
-            public Problem select(SNode it) {
+      final QueryExecutionContext context = () -> scope_9fvht1_a0f_0;
+      return Sequence.fromClosure(new _FunctionTypes._return_P0_E0<ISequence<Problem>>() {
+        public ISequence<Problem> invoke() {
+          return Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where((it) -> SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, "jetbrains.mps.kotlin"), 0x28bef6d7551af50dL, "TypeParameter"))) || SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getInterfaceConcept(MetaAdapterFactory.getLanguage(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, "jetbrains.mps.kotlin"), 0x4da39967d13161a1L, "ITypeParameter")))).where((it) -> it.hasProperty(MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af50dL, 0x21e0c923289a58c0L, "variance_old"))).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+            public Problem invoke(SNode it) {
               return DeprecatedConceptMemberNotMigratedProblem.deprecatedProperty(it, MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af50dL, 0x21e0c923289a58c0L, "variance_old"));
             }
           });

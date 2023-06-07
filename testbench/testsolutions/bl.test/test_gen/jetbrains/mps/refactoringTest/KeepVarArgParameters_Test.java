@@ -19,7 +19,6 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ChangeMethodSignatureRefactoring;
 import org.junit.Assert;
@@ -71,11 +70,7 @@ public class KeepVarArgParameters_Test extends BaseTransformationTest {
 
         // Usages
         List<SNode> usages = ListSequence.fromList(new ArrayList<SNode>(2));
-        ListSequence.fromList(usages).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getNodeById("6365792264556597669"), LINKS.body$5xQk), LINKS.statement$53DE)).select(new ISelector<SNode, SNode>() {
-          public SNode select(SNode it) {
-            return SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M), CONCEPTS.LocalMethodCall$zT);
-          }
-        }));
+        ListSequence.fromList(usages).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getNodeById("6365792264556597669"), LINKS.body$5xQk), LINKS.statement$53DE)).select((it) -> SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M), CONCEPTS.LocalMethodCall$zT)));
 
         // Create refactoring and add usages
         ChangeMethodSignatureRefactoring ref = new ChangeMethodSignatureRefactoring(params, getNodeById("6365792264556597660"), defaultValues, false);

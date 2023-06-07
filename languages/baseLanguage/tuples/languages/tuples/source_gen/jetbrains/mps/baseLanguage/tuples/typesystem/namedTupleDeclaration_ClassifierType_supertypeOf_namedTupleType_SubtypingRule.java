@@ -23,7 +23,7 @@ public class namedTupleDeclaration_ClassifierType_supertypeOf_namedTupleType_Sub
   public namedTupleDeclaration_ClassifierType_supertypeOf_namedTupleType_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode ntt, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    return _quotation_createNode_uyx4ls_a0a1(ListSequence.fromList(SLinkOperations.getChildren(ntt, LINKS.parameter$oqG$)).toListSequence(), SLinkOperations.getTarget(ntt, LINKS.classifier$cxMr));
+    return _quotation_createNode_uyx4ls_a0a1(ListSequence.fromList(SLinkOperations.getChildren(ntt, LINKS.parameter$oqG$)).toList(), SLinkOperations.getTarget(ntt, LINKS.classifier$cxMr));
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.NamedTupleType$DW;

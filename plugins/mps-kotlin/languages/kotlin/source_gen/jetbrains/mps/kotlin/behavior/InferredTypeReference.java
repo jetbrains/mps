@@ -9,7 +9,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
@@ -70,11 +69,7 @@ public class InferredTypeReference implements TypeReference {
 
     if (dataKey != null) {
       // Data may not contain type, but we assume it does
-      return SNodeOperations.as(SLinkOperations.getTarget(ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.TypeAdditionalData$Ti).list(type)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$NzhW), dataKey);
-        }
-      }), LINKS.data$NCUk), CONCEPTS.IType$Ni);
+      return SNodeOperations.as(SLinkOperations.getTarget(ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.TypeAdditionalData$Ti).list(type)).findFirst((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$NzhW), dataKey)), LINKS.data$NCUk), CONCEPTS.IType$Ni);
     }
 
     // Regular type

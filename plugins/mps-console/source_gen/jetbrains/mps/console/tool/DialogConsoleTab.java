@@ -26,7 +26,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.annotations.NonNls;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -176,11 +175,7 @@ public class DialogConsoleTab extends BaseConsoleTab implements DataProvider {
     // method had to be invoked with proper model access
     SModel loadedModel = loadHistoryModel(state);
     List<SNode> roots = ListSequence.fromListWithValues(new ArrayList<SNode>(), SModelOperations.roots(getConsoleModel(), null));
-    ListSequence.fromList(roots).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SNodeOperations.deleteNode(it);
-      }
-    });
+    ListSequence.fromList(roots).visitAll((it) -> SNodeOperations.deleteNode(it));
     myRoot = SModelOperations.createNewRootNode(getConsoleModel(), MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, "jetbrains.mps.console.base.structure.ConsoleRoot"));
     if (loadedModel == null || ListSequence.fromList(SModelOperations.roots(loadedModel, CONCEPTS.ConsoleRoot$IN)).isEmpty()) {
       SLinkOperations.setTarget(myRoot, LINKS.history$LSLq, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0xa835f28c1aa02beL, "jetbrains.mps.console.base.structure.History")));

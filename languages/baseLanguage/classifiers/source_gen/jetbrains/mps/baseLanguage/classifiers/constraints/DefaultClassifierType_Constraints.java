@@ -19,7 +19,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.baseLanguage.classifiers.behavior.IClassifier__BehaviorDescriptor;
 import jetbrains.mps.scope.ListScope;
@@ -47,11 +46,7 @@ public class DefaultClassifierType_Constraints extends BaseConstraintsDescriptor
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> classifiers = SModelOperations.rootsIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.IClassifier$BZ);
-            classifiers = ListSequence.fromList(classifiers).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(IClassifier__BehaviorDescriptor.createType_idhEwJimy.invoke(it))), CONCEPTS.DefaultClassifierType$in);
-              }
-            }).toListSequence();
+            classifiers = ListSequence.fromList(classifiers).where((it) -> SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(IClassifier__BehaviorDescriptor.createType_idhEwJimy.invoke(it))), CONCEPTS.DefaultClassifierType$in)).toList();
             return ListScope.forResolvableElements(classifiers);
           }
         };

@@ -20,12 +20,10 @@ import jetbrains.mps.vcs.diff.merge.MovesAwareMergeConflictsBuilder;
 import jetbrains.mps.vcs.diff.merge.MergeConflictsBuilder;
 import javax.swing.JPanel;
 import com.intellij.ui.JBSplitter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.vcs.diff.ui.common.DiffEditor;
 import com.intellij.diff.tools.util.side.ThreesideContentPanel;
 import com.intellij.diff.util.Side;
+import jetbrains.mps.vcs.diff.ui.common.DiffEditor;
 import jetbrains.mps.vcs.diff.ChangeSetBuilder;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.vcs.diff.ui.common.DiffChangeGroupLayout;
 
@@ -53,11 +51,7 @@ import jetbrains.mps.vcs.diff.ui.common.DiffChangeGroupLayout;
 
   @Override
   protected JPanel createPanel() {
-    List<JBSplitter> splitters = ListSequence.fromList(getEditors()).select(new ISelector<DiffEditor, JBSplitter>() {
-      public JBSplitter select(DiffEditor it) {
-        return it.getSplitter();
-      }
-    }).toListSequence();
+    List<JBSplitter> splitters = ListSequence.fromList(getEditors()).select((it) -> it.getSplitter()).toList();
     ThreesideContentPanel panel = new ThreesideContentPanel(splitters);
     panel.setTitles(getTitles());
     panel.setPainter(createDividerPainter(getMyEditor(), getBaseEditor()), Side.LEFT);
@@ -110,11 +104,7 @@ import jetbrains.mps.vcs.diff.ui.common.DiffChangeGroupLayout;
         myConflictsBuilder = createConflictsBuilder(myChangeSet, repoChangeSet);
       }
     }
-    ListSequence.fromList(getEditors()).visitAll(new IVisitor<DiffEditor>() {
-      public void visit(DiffEditor it) {
-        it.unhighlightAllChanges();
-      }
-    });
+    ListSequence.fromList(getEditors()).visitAll((it) -> it.unhighlightAllChanges());
 
     if (getBaseEditor().getEditedNode() == null) {
       getBaseEditor().editRoot(getRootId(), getBaseModel());
@@ -144,11 +134,7 @@ import jetbrains.mps.vcs.diff.ui.common.DiffChangeGroupLayout;
 
   @Override
   protected void highlightAllChanges() {
-    ListSequence.fromList(getEditors()).visitAll(new IVisitor<DiffEditor>() {
-      public void visit(DiffEditor it) {
-        it.unhighlightAllChanges();
-      }
-    });
+    ListSequence.fromList(getEditors()).visitAll((it) -> it.unhighlightAllChanges());
     Iterable<ModelChange> myChanges = getChangesToHighlight(getMyChangeSet());
     Iterable<ModelChange> repoChanges = getChangesToHighlight(getRepoChangeSet());
 

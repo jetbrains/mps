@@ -10,7 +10,6 @@ import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.editor.runtime.impl.cellActions.CommentUtil;
@@ -41,11 +40,7 @@ public class ChangesTestUtil {
   }
 
   public static void addBlockStatementToMethod2(SNode clazz, SNode anchor, boolean innerParameter) {
-    final SNode method2 = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(clazz, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method2");
-      }
-    }).first();
+    final SNode method2 = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(clazz, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method2")).first();
     SLinkOperations.getTarget(method2, LINKS.body$5xQk).insertChildBefore(LINKS.statement$53DE, createBlockStatement(innerParameter), anchor);
   }
 

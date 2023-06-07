@@ -99,7 +99,7 @@ public class ClosureToMethodRefHelper {
       return false;
     } else if ((exprAsDotExpr != null)) {
       // Time to check operand does not contains references to lambda
-      boolean dependsOnParameter = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(exprAsDotExpr, LINKS.operand$w6IR), CONCEPTS.IVariableReference$C, false, new SAbstractConcept[]{})).any((SNode it) -> SNodeOperations.getNodeAncestor(IVariableReference__BehaviorDescriptor.getVariable_idSORzhOpB6t.invoke(it), CONCEPTS.ClosureLiteral$rp, false, false) == node);
+      boolean dependsOnParameter = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(exprAsDotExpr, LINKS.operand$w6IR), CONCEPTS.IVariableReference$C, false, new SAbstractConcept[]{})).any((it) -> SNodeOperations.getNodeAncestor(IVariableReference__BehaviorDescriptor.getVariable_idSORzhOpB6t.invoke(it), CONCEPTS.ClosureLiteral$rp, false, false) == node);
 
       if (dependsOnParameter) {
         return false;

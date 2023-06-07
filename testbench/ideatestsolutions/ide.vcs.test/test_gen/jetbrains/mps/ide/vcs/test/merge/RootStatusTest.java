@@ -6,8 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.junit.Test;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import com.intellij.openapi.vcs.FileStatus;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -16,6 +14,7 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.editor.runtime.impl.cellActions.CommentUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -33,11 +32,7 @@ public class RootStatusTest extends ChangesTestBase {
 
   @Test
   public void testAddRoot() {
-    makeChangeAndWait(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
-      public SNode invoke() {
-        return SModelOperations.addRootNode(((SModel) getTestModel()), createClassConcept_37f57n_a0a0a0a0a2());
-      }
-    }));
+    makeChangeAndWait(() -> SModelOperations.addRootNode(((SModel) getTestModel()), createClassConcept_37f57n_a0a0a0a0a2()));
     checkRootStatuses(new RootStatusItem("NewRoot", FileStatus.ADDED));
   }
 
@@ -55,11 +50,7 @@ public class RootStatusTest extends ChangesTestBase {
 
   @Test
   public void addChild() {
-    makeChangeAndWait(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
-      public SNode invoke() {
-        return SLinkOperations.setTarget(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"), LINKS.superclass$Mp9$, _quotation_createNode_37f57n_a0a0a0a0i());
-      }
-    }));
+    makeChangeAndWait(() -> SLinkOperations.setTarget(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"), LINKS.superclass$Mp9$, _quotation_createNode_37f57n_a0a0a0a0i()));
     checkRootStatuses(new RootStatusItem("Root", FileStatus.MODIFIED));
   }
   @Test

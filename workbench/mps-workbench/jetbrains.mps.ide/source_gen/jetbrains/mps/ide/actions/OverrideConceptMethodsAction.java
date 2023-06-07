@@ -15,7 +15,6 @@ import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.ModelDependencyUpdate;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -65,11 +64,7 @@ public class OverrideConceptMethodsAction {
       final Iterable<SNodeReference> selectedElements = (Iterable<SNodeReference>) dialog.getSelectedElements();
 
       myProject.getModelAccess().executeCommandInEDT(() -> {
-        List<SNode> selection = Sequence.fromIterable(selectedElements).select(new ISelector<SNodeReference, SNode>() {
-          public SNode select(SNodeReference it) {
-            return SNodeOperations.cast(it.resolve(myProject.getRepository()), CONCEPTS.BaseMethodDeclaration$kD);
-          }
-        }).toListSequence();
+        List<SNode> selection = Sequence.fromIterable(selectedElements).select((it) -> SNodeOperations.cast(it.resolve(myProject.getRepository()), CONCEPTS.BaseMethodDeclaration$kD)).toList();
         OverrideConceptMethodsHelper helper = new OverrideConceptMethodsHelper(myProject, contextClass.value, contextMethod.value, dialog.isRemoveAttributes(), dialog.isAddReturn());
         List<SNode> insertedMethods = helper.insertMethods(selection);
         if (insertedMethods.isEmpty()) {

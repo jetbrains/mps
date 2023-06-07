@@ -10,12 +10,11 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.module.SModule;
 import java.util.Collections;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.Generator;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.generator.GenerationFacade;
 import jetbrains.mps.generator.ModelGenerationStatusManager;
 import com.intellij.openapi.application.ApplicationManager;
@@ -27,7 +26,6 @@ import jetbrains.mps.make.MakeServiceComponent;
 import jetbrains.mps.make.resources.IResource;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.resources.MResource;
 
 public class RebuildHandler_ProjectPluginPart extends ProjectPluginPart {
@@ -44,30 +42,24 @@ public class RebuildHandler_ProjectPluginPart extends ProjectPluginPart {
     RebuildHandler_ProjectPluginPart.this.migrationTrigger.setRebuildHandler((final Iterable<SModuleReference> modules) -> {
       final SRepository repo = mpsProject.getRepository();
       repo.getModelAccess().runWriteAction(() -> {
-        final List<SModel> modelsToClean = Sequence.fromIterable(modules).translate(new ITranslator2<SModuleReference, SModel>() {
-          public Iterable<SModel> translate(SModuleReference it) {
-            SModule module = it.resolve(repo);
-            if (module == null) {
-              return Collections.<SModel>emptyList();
-            }
-
-            if (!(module instanceof Language)) {
-              return module.getModels();
-            }
-
-            // this code is only to fix some UI problems, see MPS-30636 for details
-            Iterable<Generator> generators = ((Language) module).getGenerators();
-            return Sequence.fromIterable(generators).translate(new ITranslator2<Generator, SModel>() {
-              public Iterable<SModel> translate(Generator it) {
-                return it.getModels();
-              }
-            }).concat(Sequence.fromIterable(module.getModels()));
+        final List<SModel> modelsToClean = Sequence.fromIterable(modules).translate((it) -> {
+          SModule module = it.resolve(repo);
+          if (module == null) {
+            return Collections.<SModel>emptyList();
           }
-        }).where(new IWhereFilter<SModel>() {
-          public boolean accept(SModel it) {
-            return GenerationFacade.canGenerate(it);
+
+          if (!(module instanceof Language)) {
+            return module.getModels();
           }
-        }).toListSequence();
+
+          // this code is only to fix some UI problems, see MPS-30636 for details
+          Iterable<Generator> generators = ((Language) module).getGenerators();
+          return Sequence.fromIterable(generators).translate(new _FunctionTypes._return_P1_E0<List<SModel>, Generator>() {
+            public List<SModel> invoke(Generator it) {
+              return it.getModels();
+            }
+          }).concat(Sequence.fromIterable(module.getModels()));
+        }).where((it) -> GenerationFacade.canGenerate(it)).toList();
         // FIXME I see no reason to clear generation status for models we are going to rebuild anyway
         mpsProject.getComponent(ModelGenerationStatusManager.class).discard(modelsToClean);
 
@@ -83,17 +75,9 @@ public class RebuildHandler_ProjectPluginPart extends ProjectPluginPart {
             final List<IResource> inputRes = ListSequence.fromList(new ArrayList<IResource>());
             repo.getModelAccess().runReadAction(() -> {
               // FIXME this is stupid code, we revert what write action above just did in a quite complicated manner
-              ListSequence.fromList(inputRes).addSequence(ListSequence.fromList(modelsToClean).select(new ISelector<SModel, SModule>() {
-                public SModule select(SModel it) {
-                  return it.getModule();
-                }
-              }).distinct().select(new ISelector<SModule, MResource>() {
-                public MResource select(final SModule module) {
-                  return new MResource(module, ListSequence.fromList(modelsToClean).where(new IWhereFilter<SModel>() {
-                    public boolean accept(SModel model) {
-                      return model.getModule() == module;
-                    }
-                  }));
+              ListSequence.fromList(inputRes).addSequence(ListSequence.fromList(modelsToClean).select((it) -> it.getModule()).distinct().select(new _FunctionTypes._return_P1_E0<MResource, SModule>() {
+                public MResource invoke(final SModule module) {
+                  return new MResource(module, ListSequence.fromList(modelsToClean).where((model) -> model.getModule() == module));
                 }
               }));
             });

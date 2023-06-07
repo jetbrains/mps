@@ -25,20 +25,18 @@ public class typeof_AsSequenceOperation_InferenceRule extends AbstractInferenceR
     // Array, or stream
     {
       final SNode operandType = typeCheckingContext.typeOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(operation), "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "4401424486475589732", true);
-      typeCheckingContext.whenConcrete(operandType, new Runnable() {
-        public void run() {
-          if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(operandType), CONCEPTS.ArrayType$rh)) {
-            {
-              SNode _nodeToCheck_1029348928467 = operation;
-              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "4401424486475602006", 0, null);
-              typeCheckingContext.createGreaterThanInequality((SNode) typeCheckingContext.getRepresentative(ELEMENT_TYPE_typevar_1240325949271), (SNode) SLinkOperations.getTarget(SNodeOperations.cast(typeCheckingContext.getExpandedNode(operandType), CONCEPTS.ArrayType$rh), LINKS.componentType$F$Gi), false, true, _info_12389875345);
-            }
-          } else {
-            {
-              SNode _nodeToCheck_1029348928467 = operation;
-              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "4401424486475602322", 0, null);
-              typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_x38lwu_a0a0c0a0a0a0a0b0a1a2a1(typeCheckingContext.getRepresentative(ELEMENT_TYPE_typevar_1240325949271)), (SNode) typeCheckingContext.getExpandedNode(operandType), false, true, _info_12389875345);
-            }
+      typeCheckingContext.whenConcrete(operandType, () -> {
+        if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(operandType), CONCEPTS.ArrayType$rh)) {
+          {
+            SNode _nodeToCheck_1029348928467 = operation;
+            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "4401424486475602006", 0, null);
+            typeCheckingContext.createGreaterThanInequality((SNode) typeCheckingContext.getRepresentative(ELEMENT_TYPE_typevar_1240325949271), (SNode) SLinkOperations.getTarget(SNodeOperations.cast(typeCheckingContext.getExpandedNode(operandType), CONCEPTS.ArrayType$rh), LINKS.componentType$F$Gi), false, true, _info_12389875345);
+          }
+        } else {
+          {
+            SNode _nodeToCheck_1029348928467 = operation;
+            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "4401424486475602322", 0, null);
+            typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_x38lwu_a0a0c0a0a0a1a0b0c0b(typeCheckingContext.getRepresentative(ELEMENT_TYPE_typevar_1240325949271)), (SNode) typeCheckingContext.getExpandedNode(operandType), false, true, _info_12389875345);
           }
         }
       }, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "4401424486475589595", true, false);
@@ -58,7 +56,7 @@ public class typeof_AsSequenceOperation_InferenceRule extends AbstractInferenceR
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_x38lwu_a0a0c0a0a0a0a0b0a1a2a1(Object parameter_1) {
+  private static SNode _quotation_createNode_x38lwu_a0a0c0a0a0a1a0b0c0b(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));

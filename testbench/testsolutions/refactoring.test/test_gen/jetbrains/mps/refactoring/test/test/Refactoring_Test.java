@@ -27,12 +27,12 @@ import jetbrains.mps.lang.migration.pluginSolution.plugin.MoveNodeRefactoringLog
 import jetbrains.mps.refactoring.participant.plugin.MoveNodesUtil;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
+import java.util.Map;
 import jetbrains.mps.ide.platform.refactoring.NodeLocation;
 import java.util.Collection;
 import jetbrains.mps.errors.item.ReportItem;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.errors.item.UnresolvedReferenceReportItem;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SReference;
@@ -42,7 +42,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.junit.jupiter.api.BeforeEach;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.project.validation.ValidationUtil;
@@ -82,7 +81,7 @@ public class Refactoring_Test extends AbstractRefactoringTest {
       ListSequence.fromList(expectedOptions).addElement(LanguageStructureMigrationParticipant.OPTION);
       ListSequence.fromList(expectedOptions).addElement(MoveNodeRefactoringLogParticipant.OPTION);
 
-      MoveNodesUtil.moveTo(project, "", MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationRoot(targetModel), project)).withValues(nodesToMove), new HeadlessRefactoringUI.OptionsChecker(expectedOptions));
+      MoveNodesUtil.moveTo(project, "", MapSequence.fromMapAndEntryArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), Map.entry(new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationRoot(targetModel), project), nodesToMove)), new HeadlessRefactoringUI.OptionsChecker(expectedOptions));
     });
   }
   @Test
@@ -100,7 +99,7 @@ public class Refactoring_Test extends AbstractRefactoringTest {
 
       ListSequence.fromList(expectedOptions).addElement(MoveNodeRefactoringLogParticipant.OPTION);
 
-      MoveNodesUtil.moveTo(project, "", MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationRoot(targetModel), project)).withValues(nodesToMove), new HeadlessRefactoringUI.OptionsChecker(expectedOptions));
+      MoveNodesUtil.moveTo(project, "", MapSequence.fromMapAndEntryArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), Map.entry(new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationRoot(targetModel), project), nodesToMove)), new HeadlessRefactoringUI.OptionsChecker(expectedOptions));
     });
   }
   @Test
@@ -113,7 +112,7 @@ public class Refactoring_Test extends AbstractRefactoringTest {
 
       List<RefactoringParticipant.Option> options = ListSequence.fromListAndArray(new ArrayList<RefactoringParticipant.Option>(), UpdateReferencesParticipantBase.UpdateReferencesParticipant.OPTION);
 
-      MoveNodesUtil.moveTo(project, "", MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationRoot(targetModel), project)).withValues(nodesToMove), new HeadlessRefactoringUI(options));
+      MoveNodesUtil.moveTo(project, "", MapSequence.fromMapAndEntryArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), Map.entry(new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationRoot(targetModel), project), nodesToMove)), new HeadlessRefactoringUI(options));
     });
 
     // not really needed, but still let's end the transaction before checking
@@ -134,27 +133,19 @@ public class Refactoring_Test extends AbstractRefactoringTest {
 
       List<RefactoringParticipant.Option> options = ListSequence.fromList(new ArrayList<RefactoringParticipant.Option>());
 
-      MoveNodesUtil.moveTo(project, "", MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationRoot(targetModel), project)).withValues(nodesToMove), new HeadlessRefactoringUI(options));
+      MoveNodesUtil.moveTo(project, "", MapSequence.fromMapAndEntryArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), Map.entry(new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationRoot(targetModel), project), nodesToMove)), new HeadlessRefactoringUI(options));
     });
 
     // !!! a separate read action is needed as otherwise we'll not see broken refs due to UnregisteredNodes
     project.getRepository().getModelAccess().runReadAction(() -> {
       Assert.assertTrue(CollectionSequence.fromCollection(getErrors(SModelOperations.roots(SModuleOperations.getAspect(myTargetLanguage, "editor"), null))).isEmpty());
       Collection<ReportItem> sourceModelErrors = getErrors(SModelOperations.roots(SModuleOperations.getAspect(mySourceLanguage, "editor"), null));
-      Assert.assertTrue(CollectionSequence.fromCollection(sourceModelErrors).all(new IWhereFilter<ReportItem>() {
-        public boolean accept(ReportItem it) {
-          return it instanceof UnresolvedReferenceReportItem;
-        }
-      }));
+      Assert.assertTrue(CollectionSequence.fromCollection(sourceModelErrors).all((it) -> it instanceof UnresolvedReferenceReportItem));
       SNode classNode = SPointerOperations.resolveNode(new SNodePointer("r:44a0ff4c-6d4a-40cf-bc8a-75a422b1094a(SourceLanguage.editor)", "6426415869175194521"), project.getRepository());
       SNode varDeclNode = SPointerOperations.resolveNode(new SNodePointer("r:44a0ff4c-6d4a-40cf-bc8a-75a422b1094a(SourceLanguage.editor)", "3794080752246627979"), project.getRepository());
       Set<SReference> expectedBrokenReferences = SetSequence.fromSetAndArray(new HashSet<SReference>(), SNodeOperations.getReference(SNodeOperations.cast(SLinkOperations.getTarget(varDeclNode, LINKS.type$a1UY), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr), SNodeOperations.getReference(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(varDeclNode, LINKS.initializer$2twD), CONCEPTS.GenericNewExpression$Fh), LINKS.creator$BsHW), CONCEPTS.DefaultClassCreator$TC), LINKS.classifier$9NRM), SNodeOperations.getReference(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(Sequence.fromIterable(ClassConcept__BehaviorDescriptor.staticInitializers_id2I6sE$IuBP7.invoke(classNode)).first(), LINKS.statementList$_Gji), LINKS.statement$53DE), CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M), CONCEPTS.DotExpression$yW), LINKS.operation$gs9E), CONCEPTS.InstanceMethodCallOperation$uu)).first(), LINKS.baseMethodDeclaration$pyYw));
       Assert.assertFalse(SetSequence.fromSet(expectedBrokenReferences).contains(null));
-      Assert.assertEquals(expectedBrokenReferences, SetSequence.fromSetWithValues(new HashSet<SReference>(), CollectionSequence.fromCollection(sourceModelErrors).ofType(UnresolvedReferenceReportItem.class).select(new ISelector<UnresolvedReferenceReportItem, SReference>() {
-        public SReference select(UnresolvedReferenceReportItem it) {
-          return it.getNode().resolve(project.getRepository()).getReference(it.getConceptFeature());
-        }
-      })));
+      Assert.assertEquals(expectedBrokenReferences, SetSequence.fromSetWithValues(new HashSet<SReference>(), CollectionSequence.fromCollection(sourceModelErrors).ofType(UnresolvedReferenceReportItem.class).select((it) -> it.getNode().resolve(project.getRepository()).getReference(it.getConceptFeature()))));
     });
   }
   @BeforeEach

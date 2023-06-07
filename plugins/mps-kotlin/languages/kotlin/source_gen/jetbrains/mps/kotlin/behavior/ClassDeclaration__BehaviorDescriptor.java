@@ -18,11 +18,8 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.kotlin.api.members.SignatureBuilder;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.kotlin.signatures.PropertySignature;
-import java.util.function.Function;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.kotlin.signatures.AccessorKind;
 import jetbrains.mps.kotlin.api.members.SignatureAttributeKey;
@@ -65,66 +62,58 @@ public final class ClassDeclaration__BehaviorDescriptor extends BaseBHDescriptor
 
     if ((primary != null)) {
       // General properties
-      SignatureBuilder.create(ListSequence.fromList(SLinkOperations.getChildren(primary, LINKS.parameters$$EEQ)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SPropertyOperations.getBoolean(it, PROPS.isProperty$MCKN);
-        }
-      }), PropertySignature.class).withSignatures(new Function<SNode, Iterable<PropertySignature>>() {
-        public Iterable<PropertySignature> apply(final SNode it) {
-          return new Iterable<PropertySignature>() {
-            public Iterator<PropertySignature> iterator() {
-              return new YieldingIterator<PropertySignature>() {
-                private int __CP__ = 0;
-                protected boolean moveToNext() {
+      SignatureBuilder.create(ListSequence.fromList(SLinkOperations.getChildren(primary, LINKS.parameters$$EEQ)).where((it) -> SPropertyOperations.getBoolean(it, PROPS.isProperty$MCKN)), PropertySignature.class).withSignatures((SNode it) -> {
+        return (Iterable<PropertySignature>) () -> {
+          return new YieldingIterator<PropertySignature>() {
+            private int __CP__ = 0;
+            protected boolean moveToNext() {
 __loop__:
-                  do {
+              do {
 __switch__:
-                    switch (this.__CP__) {
-                      case -1:
-                        assert false : "Internal error";
-                        return false;
-                      case 2:
-                        if (SPropertyOperations.getBoolean(it, PROPS.isProperty$MCKN)) {
-                          this.__CP__ = 3;
-                          break;
-                        }
-                        this.__CP__ = 1;
-                        break;
-                      case 5:
-                        if (!(SPropertyOperations.getBoolean(it, PROPS.isReadOnly$MDeP))) {
-                          this.__CP__ = 6;
-                          break;
-                        }
-                        this.__CP__ = 1;
-                        break;
-                      case 4:
-                        this.__CP__ = 5;
-                        this.yield(new PropertySignature(SPropertyOperations.getString(it, PROPS.name$MnvL), AccessorKind.GETTER));
-                        return true;
-                      case 7:
-                        this.__CP__ = 1;
-                        this.yield(new PropertySignature(SPropertyOperations.getString(it, PROPS.name$MnvL), AccessorKind.SETTER));
-                        return true;
-                      case 0:
-                        this.__CP__ = 2;
-                        break;
-                      case 3:
-                        this.__CP__ = 4;
-                        break;
-                      case 6:
-                        this.__CP__ = 7;
-                        break;
-                      default:
-                        break __loop__;
+                switch (this.__CP__) {
+                  case -1:
+                    assert false : "Internal error";
+                    return false;
+                  case 2:
+                    if (SPropertyOperations.getBoolean(it, PROPS.isProperty$MCKN)) {
+                      this.__CP__ = 3;
+                      break;
                     }
-                  } while (true);
-                  return false;
+                    this.__CP__ = 1;
+                    break;
+                  case 5:
+                    if (!(SPropertyOperations.getBoolean(it, PROPS.isReadOnly$MDeP))) {
+                      this.__CP__ = 6;
+                      break;
+                    }
+                    this.__CP__ = 1;
+                    break;
+                  case 4:
+                    this.__CP__ = 5;
+                    this.yield(new PropertySignature(SPropertyOperations.getString(it, PROPS.name$MnvL), AccessorKind.GETTER));
+                    return true;
+                  case 7:
+                    this.__CP__ = 1;
+                    this.yield(new PropertySignature(SPropertyOperations.getString(it, PROPS.name$MnvL), AccessorKind.SETTER));
+                    return true;
+                  case 0:
+                    this.__CP__ = 2;
+                    break;
+                  case 3:
+                    this.__CP__ = 4;
+                    break;
+                  case 6:
+                    this.__CP__ = 7;
+                    break;
+                  default:
+                    break __loop__;
                 }
-              };
+              } while (true);
+              return false;
             }
           };
-        }
-      }).withAttribute(SignatureAttributeKey.VISIBILITY, (PropertySignature _sig, SNode _node) -> SNodeOperations.getConcept(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$vnSV))).declareTo(visitor);
+        };
+      }).withAttribute(SignatureAttributeKey.VISIBILITY, (_sig, _node) -> SNodeOperations.getConcept(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$vnSV))).declareTo(visitor);
 
       // Data class: parameter also expose componentN functions
       if (((boolean) IClassLike__BehaviorDescriptor.hasModifier_id2NtWm0y2Y2A.invoke(__thisNode__, CONCEPTS.DataClassModifier$wi))) {
@@ -132,14 +121,14 @@ __switch__:
         SignatureBuilder.create(SLinkOperations.getChildren(primary, LINKS.parameters$$EEQ), FunctionSignature.class).withSignature((SNode parameter) -> new FunctionSignature(new ComponentFunction(parameter), "")).declareTo(visitor);
 
         // copy() function
-        SignatureBuilder.create(primary, FunctionSignature.class).withSignature((SNode _node) -> new FunctionSignature(new CopyFunctionDeclaration(primary), visitor)).declareTo(visitor);
+        SignatureBuilder.create(primary, FunctionSignature.class).withSignature((_node) -> new FunctionSignature(new CopyFunctionDeclaration(primary), visitor)).declareTo(visitor);
       }
     }
   }
   /*package*/ static boolean collectScope_id7DyvjiA20yV(@NotNull final SNode __thisNode__, ScopeCollector collector, SNode childNode) {
     // Must be set before anything else in this case, as we do not want to access members first (we may actually want NOT to access it)
     if (Objects.equals(SNodeOperations.getContainingLink(childNode), LINKS.superclasses$6CkZ)) {
-      collector.declareCollectedScope((SignatureCollector sigCollector) -> PropertySignature.declareAllTo(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.primaryConstructor$QvZc), LINKS.parameters$$EEQ), false, null, sigCollector));
+      collector.declareCollectedScope((sigCollector) -> PropertySignature.declareAllTo(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.primaryConstructor$QvZc), LINKS.parameters$$EEQ), false, null, sigCollector));
     }
 
     ISignatureScopeProvider__BehaviorDescriptor.collectScope_id7DyvjiA20yV.invoke0(__thisNode__, CONCEPTS.IClassDeclaration$bQ, collector, childNode);
@@ -151,11 +140,7 @@ __switch__:
     if ((SLinkOperations.getTarget(__thisNode__, LINKS.primaryConstructor$QvZc) == null)) {
       return null;
     }
-    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.primaryConstructor$QvZc), LINKS.parameters$$EEQ)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SPropertyOperations.getBoolean(it, PROPS.isProperty$MCKN));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.primaryConstructor$QvZc), LINKS.parameters$$EEQ)).where((it) -> !(SPropertyOperations.getBoolean(it, PROPS.isProperty$MCKN)));
   }
   /*package*/ static void populateSignatures_id18X2O0FJBER(@NotNull final SNode __thisNode__, final SignatureCollector visitor) {
     // If inner class, constructors provided here

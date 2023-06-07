@@ -8,7 +8,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -43,11 +42,7 @@ public class TestNodeUtil {
       }
       // check both java stub and regular node for EnvironmentAware as  j.m.tool.environment is part of MPS build (unlike j.m.testbench)
       // IMPORTANT! there are TWO checks is(EnvironmentAware). Please make sure one points to java stub while another points to regular node!
-      if (ListSequence.fromList(SLinkOperations.getChildren(clazz, LINKS.implementedInterface$rujG)).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SLinkOperations.hasPointer(it, LINKS.classifier$cxMr, new SNodePointer("920eaa0e-ecca-46bc-bee7-4e5c59213dd6/java:jetbrains.mps.tool.environment(Testbench/)", "~EnvironmentAware")) || SLinkOperations.hasPointer(it, LINKS.classifier$cxMr, new SNodePointer("r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)", "8946405811982722281"));
-        }
-      })) {
+      if (ListSequence.fromList(SLinkOperations.getChildren(clazz, LINKS.implementedInterface$rujG)).any((it) -> SLinkOperations.hasPointer(it, LINKS.classifier$cxMr, new SNodePointer("920eaa0e-ecca-46bc-bee7-4e5c59213dd6/java:jetbrains.mps.tool.environment(Testbench/)", "~EnvironmentAware")) || SLinkOperations.hasPointer(it, LINKS.classifier$cxMr, new SNodePointer("r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)", "8946405811982722281")))) {
         return true;
       }
       clazz = SNodeOperations.as(SLinkOperations.getTarget(SLinkOperations.getTarget(clazz, LINKS.superclass$Mp9$), LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK);
@@ -57,11 +52,7 @@ public class TestNodeUtil {
 
   public static boolean isAnnotatedToLaunch(SNode withAnnotation) {
     // MPSLaunch lives in j.m.testbench which is not part of MPS build, therefore check here for java stub only
-    return ListSequence.fromList(SLinkOperations.getChildren(withAnnotation, LINKS.annotation$K49I)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("920eaa0e-ecca-46bc-bee7-4e5c59213dd6/java:jetbrains.mps(Testbench/)", "~MPSLaunch"));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(withAnnotation, LINKS.annotation$K49I)).any((it) -> SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("920eaa0e-ecca-46bc-bee7-4e5c59213dd6/java:jetbrains.mps(Testbench/)", "~MPSLaunch")));
   }
 
   public static boolean isTestMethod(@NotNull SNode method) {

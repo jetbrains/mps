@@ -14,8 +14,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -38,21 +36,11 @@ public final class RequiredDefsCalculator {
     }
     MapSequence.fromMap(myMemorized).put(member, ListSequence.fromList(new ArrayList<SNode>()));
     final List<SNode> usedDefs = SNodeOperations.getNodeDescendants(member, CONCEPTS.TypedDefReference$yw, false, new SAbstractConcept[]{});
-    Iterable<SNode> defsDeclWithApplicabilityOrCustomCell = Sequence.fromIterable(SNodeOperations.ofConcept(Sequence.fromIterable(SLinkOperations.collect(usedDefs, LINKS.declaration$xU6a)).distinct(), CONCEPTS.DefForRule$_k)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        List<SNode> calculate0 = calculate0(it);
-        return (SLinkOperations.getTarget(it, LINKS.condition$h$Ae) != null) || ListSequence.fromList(calculate0).isNotEmpty();
-      }
+    Iterable<SNode> defsDeclWithApplicabilityOrCustomCell = Sequence.fromIterable(SNodeOperations.ofConcept(Sequence.fromIterable(SLinkOperations.collect(usedDefs, LINKS.declaration$xU6a)).distinct(), CONCEPTS.DefForRule$_k)).where((it) -> {
+      List<SNode> calculate0 = calculate0(it);
+      return (SLinkOperations.getTarget(it, LINKS.condition$h$Ae) != null) || ListSequence.fromList(calculate0).isNotEmpty();
     });
-    final List<SNode> requiredDefs = Sequence.fromIterable(defsDeclWithApplicabilityOrCustomCell).select(new ISelector<SNode, SNode>() {
-      public SNode select(final SNode def) {
-        return ListSequence.fromList(usedDefs).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode ref) {
-            return SLinkOperations.getTarget(ref, LINKS.declaration$xU6a) == def;
-          }
-        }).first();
-      }
-    }).toListSequence();
+    final List<SNode> requiredDefs = Sequence.fromIterable(defsDeclWithApplicabilityOrCustomCell).select((final SNode def) -> ListSequence.fromList(usedDefs).where((ref) -> SLinkOperations.getTarget(ref, LINKS.declaration$xU6a) == def).first()).toList();
     ListSequence.fromList(MapSequence.fromMap(myMemorized).get(member)).addSequence(ListSequence.fromList(requiredDefs));
     return requiredDefs;
   }

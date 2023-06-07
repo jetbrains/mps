@@ -33,7 +33,7 @@ public final class LanguageReferenceExpression__BehaviorDescriptor extends BaseB
 
   @NotNull
   /*package*/ static List<SModule> getVisibleModules_id3wj3sjzSgF$(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(ModuleReferenceExpression__BehaviorDescriptor.getVisibleModules_id3wj3sjzSgF$.invokeSuper(__thisNode__, CONCEPTS.LanguageReferenceExpression$yZ)).ofType(Language.class).ofType(SModule.class).toListSequence();
+    return ListSequence.fromList(ModuleReferenceExpression__BehaviorDescriptor.getVisibleModules_id3wj3sjzSgF$.invokeSuper(__thisNode__, CONCEPTS.LanguageReferenceExpression$yZ)).ofType(Language.class).ofType(SModule.class).toList();
   }
 
   /*package*/ LanguageReferenceExpression__BehaviorDescriptor() {

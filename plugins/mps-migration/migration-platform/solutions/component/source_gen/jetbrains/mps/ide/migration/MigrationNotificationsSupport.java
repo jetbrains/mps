@@ -23,9 +23,7 @@ import java.util.HashSet;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.smodel.language.LanguageRuntime;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import com.intellij.openapi.ui.popup.Balloon;
@@ -144,11 +142,7 @@ import jetbrains.mps.migration.global.ProjectMigrationsRegistry;
     final Set<SLanguage> allUsedLanguages = SetSequence.fromSet(new HashSet<SLanguage>());
     myMpsProject.getModelAccess().runReadAction(() -> {
       Iterable<SModule> projectModules = MigrationModuleUtil.getMigrateableModulesFromProject(myMpsProject);
-      SetSequence.fromSet(allUsedLanguages).addSequence(Sequence.fromIterable(projectModules).translate(new ITranslator2<SModule, SLanguage>() {
-        public Iterable<SLanguage> translate(SModule it) {
-          return it.getUsedLanguages();
-        }
-      }));
+      SetSequence.fromSet(allUsedLanguages).addSequence(Sequence.fromIterable(projectModules).translate((it) -> it.getUsedLanguages()));
     });
     // remove deployed languages (i.e. known to LanguageRegistry) from the set
     myLangRegistry.withAvailableLanguages((LanguageRuntime lr) -> SetSequence.fromSet(allUsedLanguages).removeElement(lr.getIdentity()));
@@ -157,11 +151,7 @@ import jetbrains.mps.migration.global.ProjectMigrationsRegistry;
 
   private MigrationSuspendedNotification createDeployWarn(final Set<SLanguage> problems, boolean hasCleanups) {
     final int treshold = 20;
-    Iterable<SLanguage> sortedProblems = SetSequence.fromSet(problems).sort(new ISelector<SLanguage, String>() {
-      public String select(SLanguage it) {
-        return NameUtil.compactNamespace(it.getQualifiedName());
-      }
-    }, true);
+    Iterable<SLanguage> sortedProblems = SetSequence.fromSet(problems).sort((it) -> NameUtil.compactNamespace(it.getQualifiedName()), true);
 
     StringBuilder sb = new StringBuilder();
     sb.append("Some languages used in project are not deployed. Can't check migrations applicability.<br><br>");
@@ -196,11 +186,7 @@ import jetbrains.mps.migration.global.ProjectMigrationsRegistry;
       sb.append("<br><p>There are some cleanup migrations to execute, which might fix the problem. <a href=\"" + REF_RUN_MIGRATION + "\">Run migration</a></p>");
     }
 
-    return new MigrationSuspendedNotification(sb.toString(), hasCleanups, SetSequence.fromSet(problems).select(new ISelector<SLanguage, SModuleReference>() {
-      public SModuleReference select(SLanguage it) {
-        return it.getSourceModuleReference();
-      }
-    }).where(new NotNullWhereFilter<SModuleReference>()));
+    return new MigrationSuspendedNotification(sb.toString(), hasCleanups, SetSequence.fromSet(problems).select((it) -> it.getSourceModuleReference()).where(new NotNullWhereFilter()));
   }
 
   public abstract void runAssistant();

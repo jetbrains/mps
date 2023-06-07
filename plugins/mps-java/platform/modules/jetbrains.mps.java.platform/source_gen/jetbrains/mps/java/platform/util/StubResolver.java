@@ -13,7 +13,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SReference;
@@ -26,8 +25,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.smodel.ModelImports;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.kernel.model.MissingDependenciesFixer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.scope.Scope;
@@ -50,11 +47,7 @@ public class StubResolver {
   }
   public StubResolver(SRepository contextRepo, Iterable<SModel> models) {
     // resolve only to models from sequence
-    myUsedModels = SetSequence.fromSetWithValues(new HashSet<SModelReference>(), Sequence.fromIterable(models).select(new ISelector<SModel, SModelReference>() {
-      public SModelReference select(SModel it) {
-        return SModelOperations.getPointer(it);
-      }
-    }));
+    myUsedModels = SetSequence.fromSetWithValues(new HashSet<SModelReference>(), Sequence.fromIterable(models).select((it) -> SModelOperations.getPointer(it)));
     myContextRepository = contextRepo;
   }
 
@@ -92,16 +85,8 @@ public class StubResolver {
 
     final ModelImports modelImports = new ModelImports(model);
 
-    Iterable<SModelReference> modelsToAdd = Sequence.fromIterable(MapSequence.fromMap(models).values()).where(new IWhereFilter<SModelReference>() {
-      public boolean accept(SModelReference it) {
-        return !(modelImports.getImportedModels().contains(it));
-      }
-    });
-    Sequence.fromIterable(modelsToAdd).visitAll(new IVisitor<SModelReference>() {
-      public void visit(SModelReference it) {
-        modelImports.addModelImport(it);
-      }
-    });
+    Iterable<SModelReference> modelsToAdd = Sequence.fromIterable(MapSequence.fromMap(models).values()).where((it) -> !(modelImports.getImportedModels().contains(it)));
+    Sequence.fromIterable(modelsToAdd).visitAll((it) -> modelImports.addModelImport(it));
     if (Sequence.fromIterable(modelsToAdd).isNotEmpty()) {
       new MissingDependenciesFixer(model).fixModuleDependencies();
     }
@@ -135,13 +120,7 @@ public class StubResolver {
         if (refScope instanceof ErrorScope) {
           continue;
         }
-        List<SNode> resolved = TypecheckingFacade.getFromContext().computeIsolated(() -> {
-          return Sequence.fromIterable(refScope.getAvailableElements(null)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode n) {
-              return modelRef.equals(SModelOperations.getPointer(SNodeOperations.getModel(n))) && resolveInfo.equals(jetbrains.mps.util.SNodeOperations.getResolveInfo(n));
-            }
-          }).toListSequence();
-        });
+        List<SNode> resolved = TypecheckingFacade.getFromContext().computeIsolated(() -> Sequence.fromIterable(refScope.getAvailableElements(null)).where((n) -> modelRef.equals(SModelOperations.getPointer(SNodeOperations.getModel(n))) && resolveInfo.equals(jetbrains.mps.util.SNodeOperations.getResolveInfo(n))).toList());
         if (ListSequence.fromList(resolved).count() > 1) {
           if (LOG.isErrorLevel()) {
             LOG.error("more than 1 possible resolution for " + SLinkOperations.getResolveInfo(ref) + " in model " + modelRef.getName());

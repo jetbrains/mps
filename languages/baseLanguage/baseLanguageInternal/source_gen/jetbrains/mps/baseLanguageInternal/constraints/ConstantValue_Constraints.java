@@ -26,7 +26,6 @@ import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -65,11 +64,7 @@ public class ConstantValue_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forResolvableElements(ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.StaticFieldDeclaration$jR)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return (SLinkOperations.getTarget(it, LINKS.initializer$2twD) != null) && SPropertyOperations.getBoolean(it, PROPS.isFinal$gvTP);
-              }
-            }));
+            return ListScope.forResolvableElements(ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.StaticFieldDeclaration$jR)).where((it) -> (SLinkOperations.getTarget(it, LINKS.initializer$2twD) != null) && SPropertyOperations.getBoolean(it, PROPS.isFinal$gvTP)));
           }
         };
       }

@@ -20,11 +20,9 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import java.util.Iterator;
 import jetbrains.mps.baseLanguage.logging.rt.LogContext;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
@@ -160,11 +158,7 @@ public class QuotationConverter {
       if (ListSequence.fromList(childBuildersIsList).contains(true)) {
         LogContext.with(QuotationConverter.class, null, null, null).error("Converting invalid quotation to light quotation may lead to unexpected results");
       }
-      return ListSequence.fromList(childBuilders).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode childBuilder) {
-          return createNodeBuilderInitLink_aytayy_a0a0a0a1a0g0h(linkDeclaration, childBuilder);
-        }
-      }).toListSequence();
+      return ListSequence.fromList(childBuilders).select((childBuilder) -> createNodeBuilderInitLink_aytayy_a0a0a0a1a0g0h(linkDeclaration, childBuilder)).toList();
     }
   }
   private static class ConcatHelper {
@@ -291,11 +285,7 @@ public class QuotationConverter {
     SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, "jetbrains.mps.lang.quotation.structure.NodeBuilderNode"));
     SLinkOperations.setTarget(result, LINKS.concept$xoA0, (SNode) SNodeOperations.asNode(SNodeOperations.getConcept(quotationNode)));
 
-    List<SProperty> properties = Sequence.fromIterable(((Iterable<SProperty>) SNodeOperations.getConcept(quotationNode).getProperties())).sort(new ISelector<SProperty, String>() {
-      public String select(SProperty it) {
-        return it.getName();
-      }
-    }, true).toListSequence();
+    List<SProperty> properties = Sequence.fromIterable(((Iterable<SProperty>) SNodeOperations.getConcept(quotationNode).getProperties())).sort((it) -> it.getName(), true).toList();
     for (SProperty property : properties) {
       SNode attribute = new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyAntiquotation$13, property).get(quotationNode);
       String value = quotationNode.getProperty(property);
@@ -306,11 +296,7 @@ public class QuotationConverter {
       ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.values$JgAV)).addElement(convertPropertyOrAntiquotation(property, attribute, value));
     }
 
-    List<SReferenceLink> referenceLinks = Sequence.fromIterable(((Iterable<SReferenceLink>) SNodeOperations.getConcept(quotationNode).getReferenceLinks())).sort(new ISelector<SReferenceLink, String>() {
-      public String select(SReferenceLink it) {
-        return it.getName();
-      }
-    }, true).toListSequence();
+    List<SReferenceLink> referenceLinks = Sequence.fromIterable(((Iterable<SReferenceLink>) SNodeOperations.getConcept(quotationNode).getReferenceLinks())).sort((it) -> it.getName(), true).toList();
     for (SReferenceLink link : ListSequence.fromList(referenceLinks)) {
       SNode attribute = new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAntiquotation$Xh, link).get(quotationNode);
       SReference reference = quotationNode.getReference(link);
@@ -321,17 +307,9 @@ public class QuotationConverter {
       ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.values$JgAV)).addElement(convertReferenceOrAntiquotation(link, attribute, reference));
     }
 
-    List<SContainmentLink> containmentLinks = Sequence.fromIterable(((Iterable<SContainmentLink>) SNodeOperations.getConcept(quotationNode).getContainmentLinks())).sort(new ISelector<SContainmentLink, String>() {
-      public String select(SContainmentLink it) {
-        return it.getName();
-      }
-    }, true).toListSequence();
+    List<SContainmentLink> containmentLinks = Sequence.fromIterable(((Iterable<SContainmentLink>) SNodeOperations.getConcept(quotationNode).getContainmentLinks())).sort((it) -> it.getName(), true).toList();
     for (SContainmentLink link : containmentLinks) {
-      List<SNode> children = Sequence.fromIterable(((Iterable<SNode>) quotationNode.getChildren(link))).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(it, CONCEPTS.AbstractAntiquotation$TS));
-        }
-      }).toListSequence();
+      List<SNode> children = Sequence.fromIterable(((Iterable<SNode>) quotationNode.getChildren(link))).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.AbstractAntiquotation$TS))).toList();
       if (ListSequence.fromList(children).isEmpty()) {
         continue;
       }

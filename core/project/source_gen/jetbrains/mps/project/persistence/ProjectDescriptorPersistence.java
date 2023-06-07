@@ -11,13 +11,11 @@ import org.jdom.Element;
 import jetbrains.mps.project.structure.project.ProjectDescriptor;
 import jetbrains.mps.project.structure.project.ModulePath;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.util.xml.XmlUtil;
 import java.io.IOException;
 import jetbrains.mps.util.JDOMUtil;
 import org.jdom.Document;
 import jetbrains.mps.vfs.path.Path;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 
 @GeneratedClass(node = "r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)/842994667883032218", model = "r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)")
 public class ProjectDescriptorPersistence {
@@ -55,11 +53,7 @@ public class ProjectDescriptorPersistence {
   public Element save(@NotNull ProjectDescriptor descriptor) {
     Element project = new Element("project");
     Element projectModules = new Element(PROJECT_MODULES_TAG);
-    for (ModulePath path : Sequence.fromIterable(((Iterable<ModulePath>) descriptor.getModulePaths())).sort(new ISelector<ModulePath, String>() {
-      public String select(ModulePath p) {
-        return shrinkPath(p);
-      }
-    }, true)) {
+    for (ModulePath path : Sequence.fromIterable(((Iterable<ModulePath>) descriptor.getModulePaths())).sort((p) -> shrinkPath(p), true)) {
       // TODO: move from MacrosFactory to PathMacroUtil
       XmlUtil.tagWithAttributes(projectModules, MODULE_PATH_TAG, PATH_TAG, shrinkPath(path), FOLDER_TAG, path.getVirtualFolder());
     }
@@ -122,11 +116,7 @@ public class ProjectDescriptorPersistence {
       }
       Document document = JDOMUtil.loadDocument(projectFile);
       Iterable<Element> components = document.getRootElement().getChildren("component");
-      return Sequence.fromIterable(components).findFirst(new IWhereFilter<Element>() {
-        public boolean accept(Element it) {
-          return COMPONENT_NAME.equals(it.getAttributeValue("name"));
-        }
-      });
+      return Sequence.fromIterable(components).findFirst((it) -> COMPONENT_NAME.equals(it.getAttributeValue("name")));
     } catch (Exception e) {
       throw new RuntimeException(e);
     }

@@ -15,8 +15,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.Collection;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
@@ -111,15 +109,7 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
     Set<NodeReportItem> result = SetSequence.fromSet(new HashSet<NodeReportItem>());
     SetSequence.fromSet(result).addSequence(CollectionSequence.fromCollection(myPostprocessedNodesToErrors.values()));
     Collection<? extends ApprovableError> values = myNodesToErrors.values();
-    SetSequence.fromSet(result).addSequence(CollectionSequence.fromCollection(values).where(new IWhereFilter<ApprovableError>() {
-      public boolean accept(ApprovableError it) {
-        return it.myApproved;
-      }
-    }).select(new ISelector<ApprovableError, NodeReportItem>() {
-      public NodeReportItem select(ApprovableError it) {
-        return it.getError();
-      }
-    }));
+    SetSequence.fromSet(result).addSequence(CollectionSequence.fromCollection(values).where((it) -> it.myApproved).select((it) -> it.getError()));
     return result;
   }
 

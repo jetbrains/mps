@@ -16,7 +16,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
@@ -51,11 +50,7 @@ public class check_ExtendedConceptsAreInExtendedLanguages_NonTypesystemRule exte
       // we exclude 'marker' interfaces here.
       // FIXME use ConceptDeclarationScanner, instead, to be consistent what we treat as a requirement for 'extends'
       //     just need to refactor CDS a bit to deal with 1 concept declaration, not a whole model 
-      ListSequence.fromList(superConcepts).addSequence(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.as(cd, CONCEPTS.InterfaceConceptDeclaration$CG), LINKS.extends$nawU), LINKS.intfc$zM4e)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.MarkerInterfaceAttribute$8S).get(it) == null);
-        }
-      }));
+      ListSequence.fromList(superConcepts).addSequence(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.as(cd, CONCEPTS.InterfaceConceptDeclaration$CG), LINKS.extends$nawU), LINKS.intfc$zM4e)).where((it) -> (new IAttributeDescriptor.NodeAttribute(CONCEPTS.MarkerInterfaceAttribute$8S).get(it) == null)));
     }
     for (SNode superConcept : superConcepts) {
       Language conceptLanguage = SModelUtil.getDeclaringLanguage(superConcept);

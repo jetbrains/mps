@@ -8,8 +8,7 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.mps.openapi.util.Processor;
 import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.util.Pair;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -17,8 +16,6 @@ import java.util.List;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import java.util.HashSet;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import org.jetbrains.mps.openapi.module.SDependency;
@@ -66,12 +63,8 @@ public class MigrationCheckerImpl implements MigrationChecker {
     myProject.getRepository().getModelAccess().runReadAction(() -> {
       // FIXME do I need model read here. not for AppliedScript, but for Processor, perhaps?
       Collection<AppliedScript> scripts = myManager.getModuleMigrations();
-      Iterable<ScriptApplied> problems = CollectionSequence.fromCollection(scripts).where(new IWhereFilter<AppliedScript>() {
-        public boolean accept(AppliedScript it) {
-          return !(it.scriptPresent());
-        }
-      }).translate(new ITranslator2<AppliedScript, ScriptApplied>() {
-        public Iterable<ScriptApplied> translate(AppliedScript this0) {
+      Iterable<ScriptApplied> problems = CollectionSequence.fromCollection(scripts).where((it) -> !(it.scriptPresent())).translate(new _FunctionTypes._return_P1_E0<Iterable<ScriptApplied>, AppliedScript>() {
+        public Iterable<ScriptApplied> invoke(AppliedScript this0) {
           return this0.asLegacy();
         }
       });
@@ -88,31 +81,15 @@ public class MigrationCheckerImpl implements MigrationChecker {
     m.start("Checking dependencies...", 1);
     myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        List<SModule> projectModules = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(myProject)).toListSequence();
+        List<SModule> projectModules = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(myProject)).toList();
         Collection<SModule> depModules = CollectionSequence.fromCollectionWithValues(new HashSet<SModule>(), new GlobalModuleDependenciesManager(projectModules).getModules(GlobalModuleDependenciesManager.Deptype.VISIBLE));
         CollectionSequence.fromCollection(depModules).removeSequence(Sequence.fromIterable((Iterable<SModule>) myProject.getProjectModulesWithGenerators()));
-        depModules = CollectionSequence.fromCollection(depModules).where(new IWhereFilter<SModule>() {
-          public boolean accept(SModule it) {
-            return MigrationModuleUtil.wouldBeMigrateableWhenNotPacked(it);
-          }
-        }).toListSequence();
+        depModules = CollectionSequence.fromCollection(depModules).where((it) -> MigrationModuleUtil.wouldBeMigrateableWhenNotPacked(it)).toList();
         // XXX can't we get dependency targets (with improper verions? or how do we define non-migrated?) from myManager? Why build another set of migrations
         Collection<AppliedScript> depMigrationsToRun = new MigrationSetup(myProject, depModules).getModuleMigrations();
-        Iterable<SModule> notMigratedModules = CollectionSequence.fromCollection(depMigrationsToRun).translate(new ITranslator2<AppliedScript, SModule>() {
-          public Iterable<SModule> translate(AppliedScript it) {
-            return Sequence.fromIterable(it.affectedModules()).distinct().select(new ISelector<SModuleReference, SModule>() {
-              public SModule select(SModuleReference mr) {
-                return mr.resolve(myProject.getRepository());
-              }
-            });
-          }
-        });
+        Iterable<SModule> notMigratedModules = CollectionSequence.fromCollection(depMigrationsToRun).translate((it) -> Sequence.fromIterable(it.affectedModules()).distinct().select((mr) -> mr.resolve(myProject.getRepository())));
         for (final SModule notMigrated : Sequence.fromIterable(notMigratedModules)) {
-          SModule m = ListSequence.fromList(projectModules).findFirst(new IWhereFilter<SModule>() {
-            public boolean accept(SModule depCandidate) {
-              return new GlobalModuleDependenciesManager(depCandidate).getModules(GlobalModuleDependenciesManager.Deptype.VISIBLE).contains(notMigrated);
-            }
-          });
+          SModule m = ListSequence.fromList(projectModules).findFirst((depCandidate) -> new GlobalModuleDependenciesManager(depCandidate).getModules(GlobalModuleDependenciesManager.Deptype.VISIBLE).contains(notMigrated));
           if (m == null) {
             continue;
           }
@@ -126,15 +103,11 @@ public class MigrationCheckerImpl implements MigrationChecker {
   public void checkProject(final ProgressMonitor pm, final Processor<IssueKindReportItem> processor) {
     myProject.getRepository().getModelAccess().runReadAction(() -> {
       // todo inline
-      List<SModule> modules = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(myProject)).toListSequence();
+      List<SModule> modules = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(myProject)).toList();
       pm.start("Checking...", 10 + ListSequence.fromList(modules).count());
 
       for (SModule module : ListSequence.fromList(modules)) {
-        Iterable<SDependency> deps = Sequence.fromIterable(((Iterable<SDependency>) module.getDeclaredDependencies())).where(new IWhereFilter<SDependency>() {
-          public boolean accept(SDependency it) {
-            return it.getTarget() == null;
-          }
-        });
+        Iterable<SDependency> deps = Sequence.fromIterable(((Iterable<SDependency>) module.getDeclaredDependencies())).where((it) -> it.getTarget() == null);
         for (SDependency dep : Sequence.fromIterable(deps)) {
           if (!(processor.process(new DependencyProblem(module, String.format("Unresolved dependency in module %s: Module %s not found in repository", module.getModuleName(), dep.getTargetModule().getModuleName()))))) {
             pm.done();
@@ -149,7 +122,7 @@ public class MigrationCheckerImpl implements MigrationChecker {
 
       try {
         for (SModule module : ListSequence.fromList(modules)) {
-          List<EditableSModel> models = Sequence.fromIterable(((Iterable<SModel>) module.getModels())).ofType(EditableSModel.class).toListSequence();
+          List<EditableSModel> models = Sequence.fromIterable(((Iterable<SModel>) module.getModels())).ofType(EditableSModel.class).toList();
           ProgressMonitor moduleSubtask = pm.subTask(1, SubProgressKind.AS_COMMENT);
           moduleSubtask.start(NameUtil.compactNamespace(module.getModuleName()), ListSequence.fromList(models).count());
           // find missing concepts, when language's not missing
@@ -196,13 +169,13 @@ public class MigrationCheckerImpl implements MigrationChecker {
   public void findNotMigrated(final ProgressMonitor m, final Iterable<ScriptApplied> migrationsToCheck, final Processor<Problem> processor) {
     // FIXME MigrationTrigger calls this with model read. What about MigrationTask and PostCheckError cases?
     myProject.getRepository().getModelAccess().runReadAction(() -> {
-      Iterable<SModule> modules = Sequence.fromIterable(migrationsToCheck).select(new ISelector<ScriptApplied, SModule>() {
-        public SModule select(ScriptApplied it) {
+      Iterable<SModule> modules = Sequence.fromIterable(migrationsToCheck).select(new _FunctionTypes._return_P1_E0<SModule, ScriptApplied>() {
+        public SModule invoke(ScriptApplied it) {
           return it.getModule(myProject.getRepository());
         }
       }).distinct();
-      Iterable<ScriptApplied> migrations = Sequence.fromIterable(migrationsToCheck).where(new IWhereFilter<ScriptApplied>() {
-        public boolean accept(ScriptApplied it) {
+      Iterable<ScriptApplied> migrations = Sequence.fromIterable(migrationsToCheck).where(new _FunctionTypes._return_P1_E0<Boolean, ScriptApplied>() {
+        public Boolean invoke(ScriptApplied it) {
           return it.getScriptReference() instanceof MigrationScriptReference;
         }
       });
@@ -214,11 +187,7 @@ public class MigrationCheckerImpl implements MigrationChecker {
           if (mm.isReadOnly()) {
             continue;
           }
-          for (SNode ann : ListSequence.fromList(SModelOperations.nodes(mm, CONCEPTS.MigrationAnnotation_old$2i)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return ((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.MigrationAnnotation_old$2i, SMethodIdV2.create("showInResults", 2482611074347619756L, 0x553941aeb020c32eL)));
-            }
-          })) {
+          for (SNode ann : ListSequence.fromList(SModelOperations.nodes(mm, CONCEPTS.MigrationAnnotation_old$2i)).where((it) -> ((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.MigrationAnnotation_old$2i, SMethodIdV2.create("showInResults", 2482611074347619756L, 0x553941aeb020c32eL))))) {
             if (!(processor.process(MigrateManually.fromAnnotation(ann)))) {
               m.done();
               return;

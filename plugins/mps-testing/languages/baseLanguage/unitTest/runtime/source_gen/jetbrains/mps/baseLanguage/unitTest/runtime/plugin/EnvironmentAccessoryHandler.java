@@ -13,7 +13,7 @@ public class EnvironmentAccessoryHandler implements TestSessionListener {
 
   @Override
   public void sessionOpened(TestSession testSession) {
-    testSession.getAccessory(Environment.class).ifPresentOrElse((Environment e) -> {
+    testSession.getAccessory(Environment.class).ifPresentOrElse((e) -> {
       environmentStack.push(e);
       EnvironmentAwareExtension.setEnvironment(e);
 

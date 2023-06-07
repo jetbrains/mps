@@ -8,7 +8,6 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Language;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.SModelName;
 
 @GeneratedClass(node = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)/6171083915388368126", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
@@ -23,11 +22,7 @@ public class SModuleOperations {
       return null;
     }
     List<SModel> models = ((Language) module).getModels();
-    return ListSequence.fromList(models).findFirst(new IWhereFilter<SModel>() {
-      public boolean accept(SModel it) {
-        return !(it.getName().hasStereotype()) && it.getName().getSimpleName().equals(name);
-      }
-    });
+    return ListSequence.fromList(models).findFirst((it) -> !(it.getName().hasStereotype()) && it.getName().getSimpleName().equals(name));
   }
 
   public static boolean isAspect(SModel model, String name) {

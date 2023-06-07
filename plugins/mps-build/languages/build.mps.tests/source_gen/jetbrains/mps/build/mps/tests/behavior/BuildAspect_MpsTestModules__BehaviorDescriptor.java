@@ -18,11 +18,8 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.build.mps.util.MPSModulesClosure;
 import jetbrains.mps.build.mps.util.ModulePlugins;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -47,28 +44,16 @@ public final class BuildAspect_MpsTestModules__BehaviorDescriptor extends BaseBH
   }
 
   /*package*/ static boolean hasModule_id3X9rC2XzJdP(@NotNull SNode __thisNode__, final SNode module) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.modules$V7vE)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) BuildMps_TestModules_Content__BehaviorDescriptor.contains_id3X9rC2XzJi8.invoke(it, module);
-      }
-    }) != null;
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.modules$V7vE)).findFirst((it) -> (boolean) BuildMps_TestModules_Content__BehaviorDescriptor.contains_id3X9rC2XzJi8.invoke(it, module)) != null;
   }
   /*package*/ static void fetchDependencies_id57YmpYyL8F1(@NotNull SNode __thisNode__, VisibleArtifacts artifacts, RequiredDependenciesBuilder builder) {
     SNode project = artifacts.getProject();
-    Iterable<SNode> originalModules = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.modules$V7vE)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return (Iterable<SNode>) BuildMps_TestModules_Content__BehaviorDescriptor.getModules_id3X9rC2XzJij.invoke(it);
-      }
-    });
+    Iterable<SNode> originalModules = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.modules$V7vE)).translate((it) -> (Iterable<SNode>) BuildMps_TestModules_Content__BehaviorDescriptor.getModules_id3X9rC2XzJij.invoke(it));
     MPSModulesClosure designtimeClosure = new MPSModulesClosure(originalModules, new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits()).designtimeClosure();
 
     // fetch required plugins
     ModulePlugins plugins = new ModulePlugins(project);
-    List<SNode> additionalPlugins = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.options$gctq), LINKS.requiredPlugins$eyJB)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.plugin$qDpN);
-      }
-    }).toListSequence();
+    List<SNode> additionalPlugins = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.options$gctq), LINKS.requiredPlugins$eyJB)).select((it) -> SLinkOperations.getTarget(it, LINKS.plugin$qDpN)).toList();
     plugins.collect(designtimeClosure.getAllModules(), additionalPlugins);
     for (SNode plugin : Sequence.fromIterable(plugins.getDependency())) {
       SNode pluginArtifact = SNodeOperations.as(artifacts.findArtifact(plugin), CONCEPTS.BuildLayout_Node$Rb);

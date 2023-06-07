@@ -17,11 +17,7 @@ public class OnEachNodeFoundByExpression_DataFlow extends DataFlowBuilder {
     _context.getBuilder().emitLabel("condition");
     _context.getBuilder().emitIfJump(_context.getBuilder().after(_context.getNode()), "r:390b21f6-c313-46da-a7d6-8dd5e6a64da3(jetbrains.mps.lang.findUsages.dataFlow)/1207323191691");
     _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.callback$Mbt7));
-    _context.getBuilder().emitMayBeUnreachable(new Runnable() {
-      public void run() {
-        _context.getBuilder().emitJump(_context.getBuilder().label(_context.getNode(), "condition"), "r:390b21f6-c313-46da-a7d6-8dd5e6a64da3(jetbrains.mps.lang.findUsages.dataFlow)/1207323226796");
-      }
-    });
+    _context.getBuilder().emitMayBeUnreachable(() -> _context.getBuilder().emitJump(_context.getBuilder().label(_context.getNode(), "condition"), "r:390b21f6-c313-46da-a7d6-8dd5e6a64da3(jetbrains.mps.lang.findUsages.dataFlow)/1207323226796"));
   }
 
   private static final class LINKS {

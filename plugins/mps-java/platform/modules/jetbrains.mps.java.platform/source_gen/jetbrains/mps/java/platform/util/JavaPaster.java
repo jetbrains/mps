@@ -19,7 +19,6 @@ import jetbrains.mps.java.core.newparser.JavaParser;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.smodel.ModelImports;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -122,11 +121,7 @@ public class JavaPaster {
       }
       switch (featureKind) {
         case CLASS:
-          ListSequence.fromList(nodes).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode node) {
-              SModelOperations.addRootNode(model, node);
-            }
-          });
+          ListSequence.fromList(nodes).visitAll((node) -> SModelOperations.addRootNode(model, node));
           break;
         case CLASS_CONTENT:
           for (SNode node : ListSequence.fromList(nodes)) {

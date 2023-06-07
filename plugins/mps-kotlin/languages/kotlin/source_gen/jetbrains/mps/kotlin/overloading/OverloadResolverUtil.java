@@ -7,7 +7,6 @@ import jetbrains.mps.kotlin.api.declaration.FunctionDeclaration;
 import java.util.List;
 import jetbrains.mps.kotlin.api.declaration.ParameterDeclaration;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
@@ -26,11 +25,7 @@ public class OverloadResolverUtil {
   public static Iterable<Tuples._2<FunctionDeclaration, List<ParameterDeclaration>>> filterByArguments(final FunctionCall call, Iterable<FunctionDeclaration> candidates) {
     final Iterable<Argument> arguments = call.getArguments();
 
-    return Sequence.fromIterable(candidates).select(new ISelector<FunctionDeclaration, Tuples._2<FunctionDeclaration, List<ParameterDeclaration>>>() {
-      public Tuples._2<FunctionDeclaration, List<ParameterDeclaration>> select(FunctionDeclaration candidate) {
-        return mapParameters(call, arguments, candidate);
-      }
-    }).where(new NotNullWhereFilter<Tuples._2<FunctionDeclaration, List<ParameterDeclaration>>>());
+    return Sequence.fromIterable(candidates).select((candidate) -> mapParameters(call, arguments, candidate)).where(new NotNullWhereFilter());
   }
 
   /**
@@ -46,7 +41,7 @@ public class OverloadResolverUtil {
     // 2. check argument validity for the given method (count, named parameters)
     List<ParameterDeclaration> mappedParameters;
     try {
-      FunctionParamMapper<String, ParamException> mapper = new FunctionParamMapper<>(ParamErrorHandler.THROW, (ParameterDeclaration node) -> SPropertyOperations.getString(node.getNode(), PROPS.name$MnvL), candidate.getParameters());
+      FunctionParamMapper<String, ParamException> mapper = new FunctionParamMapper<>(ParamErrorHandler.THROW, (node) -> SPropertyOperations.getString(node.getNode(), PROPS.name$MnvL), candidate.getParameters());
       mappedParameters = mapper.checkArguments(arguments);
     } catch (ParamException issue) {
       return null;

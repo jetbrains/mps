@@ -85,7 +85,7 @@ public final class MethodReference__BehaviorDescriptor extends BaseBHDescriptor 
       ListSequence.fromList(parameterType).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(type, CONCEPTS.FunctionType$9U), LINKS.parameterType$qJs$)));
     } else {
       SNode clType = TypecheckingFacade.getFromContext().coerceType(type, CONCEPTS.ClassifierType$bL);
-      SNode method = Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SLinkOperations.getTarget(clType, LINKS.classifier$cxMr))).where((SNode m) -> !("equals".equals(SPropertyOperations.getString(m, PROPS.name$MnvL))) && (boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(m)).first();
+      SNode method = Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SLinkOperations.getTarget(clType, LINKS.classifier$cxMr))).where((m) -> !("equals".equals(SPropertyOperations.getString(m, PROPS.name$MnvL))) && (boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(m)).first();
       ListSequence.fromList(parameterType).addSequence(ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)));
     }
 

@@ -18,7 +18,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
@@ -82,11 +81,7 @@ public final class AddOverrideAnnotation_Intention extends AbstractIntentionDesc
       if (classConcept == null) {
         return false;
       }
-      if (!(OverridingMethodsCalculator.canOverride(node)) || ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.annotation$K49I)).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return "java.lang.Override".equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(it, LINKS.annotation$12Ek)));
-        }
-      })) {
+      if (!(OverridingMethodsCalculator.canOverride(node)) || ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.annotation$K49I)).any((it) -> "java.lang.Override".equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(it, LINKS.annotation$12Ek))))) {
         return false;
       }
       OverridingMethodsCalculator finder = new OverridingMethodsCalculator(classConcept, Sequence.<SNode>singleton(node));

@@ -14,7 +14,6 @@ import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.typechecking.TypecheckingSession;
 import org.jetbrains.mps.openapi.util.Consumer;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 
 @GeneratedClass(node = "r:f39afe13-666a-48f2-9d7c-2f9366f78fe5(jetbrains.mps.typesystemEngine.checker)/5231630840089786268", model = "r:f39afe13-666a-48f2-9d7c-2f9366f78fe5(jetbrains.mps.typesystemEngine.checker)")
@@ -33,11 +32,7 @@ public class TypesystemChecker extends IChecker.AbstractRootChecker<NodeReportIt
   }
   @Override
   public void check(SNode root, SRepository repository, final Consumer<? super NodeReportItem> errorCollector, final ProgressMonitor monitor) {
-    SetSequence.fromSet(getErrors(root, repository)).visitAll(new IVisitor<NodeReportItem>() {
-      public void visit(NodeReportItem it) {
-        errorCollector.consume(it);
-      }
-    });
+    SetSequence.fromSet(getErrors(root, repository)).visitAll((it) -> errorCollector.consume(it));
   }
   @Override
   public IssueKindReportItem.CheckerCategory getCategory() {

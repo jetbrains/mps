@@ -34,8 +34,6 @@ import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.util.IconLoader;
@@ -171,15 +169,7 @@ public class BaseIconManager {
     RowIcon result = new RowIcon(2);
     result.setIcon(mainIcon, 0);
     result.setIcon(getIconForResource(((IconResource) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getSideIcon", 7952719687879351293L, 0x553941aeb020c32eL)))), 1);
-    List<Icon> markIcons = ListSequence.fromList(((List<IconResource>) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getIconMarks", 7952719687879564719L, 0x553941aeb020c32eL)))).select(new ISelector<IconResource, Icon>() {
-      public Icon select(IconResource it) {
-        return getIconForResource(it);
-      }
-    }).where(new IWhereFilter<Icon>() {
-      public boolean accept(Icon it) {
-        return it != null;
-      }
-    }).toListSequence();
+    List<Icon> markIcons = ListSequence.fromList(((List<IconResource>) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getIconMarks", 7952719687879564719L, 0x553941aeb020c32eL)))).select((it) -> getIconForResource(it)).where((it) -> it != null).toList();
     if (ListSequence.fromList(markIcons).isNotEmpty()) {
       LayeredIcon layeredIcon = new LayeredIcon(ListSequence.fromList(markIcons).count() + 1);
       layeredIcon.setIcon(result, 0);

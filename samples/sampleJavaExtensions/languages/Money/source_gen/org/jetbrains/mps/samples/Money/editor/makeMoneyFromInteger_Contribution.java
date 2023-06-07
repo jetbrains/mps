@@ -30,7 +30,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
@@ -125,11 +124,7 @@ public class makeMoneyFromInteger_Contribution extends TransformationMenuBase {
       @Override
       public void execute(@NotNull final String pattern) {
         Iterable<SNode> units = SLinkOperations.collectMany(SModelOperations.roots(SNodeOperations.getModel(_context.getNode()), CONCEPTS.CurrencyDefTable$aD), LINKS.units$790u);
-        SNode unit = Sequence.fromIterable(units).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SPropertyOperations.getString(it, PROPS.name$MnvL).equals(pattern);
-          }
-        });
+        SNode unit = Sequence.fromIterable(units).findFirst((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).equals(pattern));
         if (unit != null) {
           SNode ml = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x4b9a2fe559135132L, "org.jetbrains.mps.samples.Money.structure.MoneyLiteral"));
           SLinkOperations.setTarget(ml, LINKS.unit$Yo4p, unit);

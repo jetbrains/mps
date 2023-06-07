@@ -15,17 +15,12 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.vcs.diff.changes.SetConceptChange;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
 import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -36,8 +31,6 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import java.util.Collections;
 import java.util.List;
 import jetbrains.mps.util.LongestCommonSubsequenceFinder;
-import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 
 @GeneratedClass(node = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)/520259247100433587", model = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)")
@@ -86,43 +79,25 @@ import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 
   private void saveNodes() {
 
-    Collection<ModifiedNode> modifiedNodes = Sequence.fromIterable(collectModifiedNodes()).toListSequence();
+    Collection<ModifiedNode> modifiedNodes = Sequence.fromIterable(collectModifiedNodes()).toList();
 
     // save old and new nodes to maps.
-    CollectionSequence.fromCollection(modifiedNodes).visitAll(new IVisitor<ModifiedNode>() {
-      public void visit(ModifiedNode it) {
-        MapSequence.fromMap(getModifiedNodes(it.isNew())).put(it.getNodeId(), it);
-      }
-    });
+    CollectionSequence.fromCollection(modifiedNodes).visitAll((it) -> MapSequence.fromMap(getModifiedNodes(it.isNew())).put(it.getNodeId(), it));
 
-    final Set<SNodeId> conceptChangeIds = SetSequence.fromSetWithValues(new HashSet<SNodeId>(), CollectionSequence.fromCollection(getNodeChanges()).ofType(SetConceptChange.class).select(new ISelector<SetConceptChange, SNodeId>() {
-      public SNodeId select(SetConceptChange it) {
-        return it.getAffectedNodeId();
-      }
-    }));
+    final Set<SNodeId> conceptChangeIds = SetSequence.fromSetWithValues(new HashSet<SNodeId>(), CollectionSequence.fromCollection(getNodeChanges()).ofType(SetConceptChange.class).select((it) -> it.getAffectedNodeId()));
 
     // build nodes hierarchy
-    CollectionSequence.fromCollection(modifiedNodes).where(new IWhereFilter<ModifiedNode>() {
-      public boolean accept(ModifiedNode it) {
-        return !(SetSequence.fromSet(conceptChangeIds).contains(it.getParentId()));
-      }
-    }).visitAll(new IVisitor<ModifiedNode>() {
-      public void visit(ModifiedNode node) {
-        ModifiedNode parent = MapSequence.fromMap(getModifiedNodes(node.isNew())).get(node.getParentId());
-        if (parent != null && parent.isMove() == node.isMove()) {
-          parent.addChild(node);
-          node.setParent(parent);
-        }
+    CollectionSequence.fromCollection(modifiedNodes).where((it) -> !(SetSequence.fromSet(conceptChangeIds).contains(it.getParentId()))).visitAll((node) -> {
+      ModifiedNode parent = MapSequence.fromMap(getModifiedNodes(node.isNew())).get(node.getParentId());
+      if (parent != null && parent.isMove() == node.isMove()) {
+        parent.addChild(node);
+        node.setParent(parent);
       }
     });
   }
 
   private Iterable<Tuples._2<SNode, SNode>> getCommonNodes() {
-    return SetSequence.fromSet(MapSequence.fromMap(myOldNodes).keySet()).intersect(SetSequence.fromSet(MapSequence.fromMap(myNewNodes).keySet())).select(new ISelector<SNodeId, Tuples._2<SNode, SNode>>() {
-      public Tuples._2<SNode, SNode> select(SNodeId id) {
-        return MultiTuple.<SNode,SNode>from(MapSequence.fromMap(myOldNodes).get(id), MapSequence.fromMap(myNewNodes).get(id));
-      }
-    });
+    return SetSequence.fromSet(MapSequence.fromMap(myOldNodes).keySet()).intersect(SetSequence.fromSet(MapSequence.fromMap(myNewNodes).keySet())).select((id) -> MultiTuple.<SNode,SNode>from(MapSequence.fromMap(myOldNodes).get(id), MapSequence.fromMap(myNewNodes).get(id)));
   }
 
   private Iterable<ModifiedNode> collectModifiedNodes() {
@@ -130,35 +105,15 @@ import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
   }
 
   private Iterable<NodeChange> collectNodeChanges() {
-    return Sequence.fromIterable(getCommonNodes()).translate(new ITranslator2<Tuples._2<SNode, SNode>, NodeChange>() {
-      public Iterable<NodeChange> translate(Tuples._2<SNode, SNode> it) {
-        return DiffUtil.collectNodeChanges(myChangeSet, it._0(), it._1());
-      }
-    });
+    return Sequence.fromIterable(getCommonNodes()).translate((it) -> DiffUtil.collectNodeChanges(myChangeSet, it._0(), it._1()));
   }
 
   private Iterable<ModifiedNode> getDeletedNodes() {
-    return MapSequence.fromMap(myOldNodes).where(new IWhereFilter<IMapping<SNodeId, SNode>>() {
-      public boolean accept(IMapping<SNodeId, SNode> it) {
-        return !(MapSequence.fromMap(myNewNodes).containsKey(it.key()));
-      }
-    }).select(new ISelector<IMapping<SNodeId, SNode>, ModifiedNode>() {
-      public ModifiedNode select(IMapping<SNodeId, SNode> it) {
-        return createModifiedNode(it.value(), false);
-      }
-    });
+    return MapSequence.fromMap(myOldNodes).where((it) -> !(MapSequence.fromMap(myNewNodes).containsKey(it.key()))).select((it) -> createModifiedNode(it.value(), false));
   }
 
   private Iterable<ModifiedNode> getInsertedNodes() {
-    return MapSequence.fromMap(myNewNodes).where(new IWhereFilter<IMapping<SNodeId, SNode>>() {
-      public boolean accept(IMapping<SNodeId, SNode> it) {
-        return !(MapSequence.fromMap(myOldNodes).containsKey(it.key()));
-      }
-    }).select(new ISelector<IMapping<SNodeId, SNode>, ModifiedNode>() {
-      public ModifiedNode select(IMapping<SNodeId, SNode> it) {
-        return createModifiedNode(it.value(), true);
-      }
-    });
+    return MapSequence.fromMap(myNewNodes).where((it) -> !(MapSequence.fromMap(myOldNodes).containsKey(it.key()))).select((it) -> createModifiedNode(it.value(), true));
   }
 
   private ModifiedNode createModifiedNode(SNode node, boolean isNew) {
@@ -166,19 +121,11 @@ import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
   }
 
   private Iterable<ModifiedNode> getMovedNodes() {
-    return Sequence.fromIterable(getMovesToAnotherRole()).concat(Sequence.fromIterable(getMovesInsideSameRole())).translate(new ITranslator2<Tuples._2<SNode, SNode>, ModifiedNode>() {
-      public Iterable<ModifiedNode> translate(Tuples._2<SNode, SNode> it) {
-        return createMovedNodes(it);
-      }
-    });
+    return Sequence.fromIterable(getMovesToAnotherRole()).concat(Sequence.fromIterable(getMovesInsideSameRole())).translate((it) -> createMovedNodes(it));
   }
 
   private Iterable<Tuples._2<SNode, SNode>> getMovesToAnotherRole() {
-    return Sequence.fromIterable(getCommonNodes()).where(new IWhereFilter<Tuples._2<SNode, SNode>>() {
-      public boolean accept(Tuples._2<SNode, SNode> it) {
-        return !(nodesAreSiblings(it)) && !(isRoot(it._0())) && !(isRoot(it._1()));
-      }
-    });
+    return Sequence.fromIterable(getCommonNodes()).where((it) -> !(nodesAreSiblings(it)) && !(isRoot(it._0())) && !(isRoot(it._1())));
   }
 
   private static boolean nodesAreSiblings(Tuples._2<SNode, SNode> nodes) {
@@ -187,11 +134,7 @@ import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 
   private static Map<SNodeId, SNode> createIdToNodeMap(SNode root) {
     final Map<SNodeId, SNode> result = MapSequence.fromMap(new HashMap<SNodeId, SNode>());
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(root, null, true, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        MapSequence.fromMap(result).put(it.getNodeId(), it);
-      }
-    });
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(root, null, true, new SAbstractConcept[]{})).visitAll((it) -> MapSequence.fromMap(result).put(it.getNodeId(), it));
     return result;
   }
 
@@ -209,27 +152,11 @@ import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
   }
 
   private Iterable<Tuples._2<SNode, SNode>> getMovesInsideSameRole() {
-    return Sequence.fromIterable(getCommonParentLinks()).translate(new ITranslator2<Tuples._2<SNodeId, SContainmentLink>, SNodeId>() {
-      public Iterable<SNodeId> translate(Tuples._2<SNodeId, SContainmentLink> it) {
-        return getPermutatedNodeIds(it);
-      }
-    }).select(new ISelector<SNodeId, Tuples._2<SNode, SNode>>() {
-      public Tuples._2<SNode, SNode> select(SNodeId it) {
-        return MultiTuple.<SNode,SNode>from(MapSequence.fromMap(myOldNodes).get(it), MapSequence.fromMap(myNewNodes).get(it));
-      }
-    });
+    return Sequence.fromIterable(getCommonParentLinks()).translate((it) -> getPermutatedNodeIds(it)).select((it) -> MultiTuple.<SNode,SNode>from(MapSequence.fromMap(myOldNodes).get(it), MapSequence.fromMap(myNewNodes).get(it)));
   }
 
   private Iterable<Tuples._2<SNodeId, SContainmentLink>> getCommonParentLinks() {
-    return Sequence.fromIterable(getCommonNodes()).where(new IWhereFilter<Tuples._2<SNode, SNode>>() {
-      public boolean accept(Tuples._2<SNode, SNode> it) {
-        return nodesAreSiblings(it);
-      }
-    }).select(new ISelector<Tuples._2<SNode, SNode>, Tuples._2<SNodeId, SContainmentLink>>() {
-      public Tuples._2<SNodeId, SContainmentLink> select(Tuples._2<SNode, SNode> it) {
-        return getParentLink(it._0());
-      }
-    }).distinct();
+    return Sequence.fromIterable(getCommonNodes()).where((it) -> nodesAreSiblings(it)).select((it) -> getParentLink(it._0())).distinct();
   }
 
   private static Tuples._2<SNodeId, SContainmentLink> getParentLink(SNode node) {
@@ -255,23 +182,11 @@ import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
     final List<SNodeId> newIds = getSiblingIds(newNode, link);
     final Iterable<SNodeId> commonIds = ListSequence.fromList(oldIds).intersect(ListSequence.fromList(newIds));
 
-    return ListSequence.fromList(new LongestCommonSubsequenceFinder<SNodeId>(oldIds, newIds).getDifferentIndices()).translate(new ITranslator2<Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>>, SNodeId>() {
-      public Iterable<SNodeId> translate(Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>> indices) {
-        return ListSequence.fromList(newIds).page((int) indices._1()._0(), (int) indices._1()._1());
-      }
-    }).where(new IWhereFilter<SNodeId>() {
-      public boolean accept(SNodeId id) {
-        return Sequence.fromIterable(commonIds).contains(id);
-      }
-    });
+    return ListSequence.fromList(new LongestCommonSubsequenceFinder<SNodeId>(oldIds, newIds).getDifferentIndices()).translate((indices) -> ListSequence.fromList(newIds).page((int) indices._1()._0(), (int) indices._1()._1())).where((id) -> Sequence.fromIterable(commonIds).contains(id));
   }
 
   private static List<SNodeId> getSiblingIds(SNode node, SContainmentLink link) {
-    return ListSequence.fromList(DiffUtil.getChildrenInRole(node, link)).select(new ISelector<SNode, SNodeId>() {
-      public SNodeId select(SNode it) {
-        return it.getNodeId();
-      }
-    }).toListSequence();
+    return ListSequence.fromList(DiffUtil.getChildrenInRole(node, link)).select((it) -> it.getNodeId()).toList();
   }
 
   private static ModifiedNode createMovedNode(SNode node, boolean isNew) {
@@ -283,41 +198,37 @@ import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
     final ModifiedNode newNode = createMovedNode(nodes._1(), true);
     oldNode.setOppositeNode(newNode);
     newNode.setOppositeNode(oldNode);
-    return Sequence.fromClosure(new ISequenceClosure<ModifiedNode>() {
-      public Iterable<ModifiedNode> iterable() {
-        return new Iterable<ModifiedNode>() {
-          public Iterator<ModifiedNode> iterator() {
-            return new YieldingIterator<ModifiedNode>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
+    return Sequence.fromClosure(() -> {
+      return (Iterable<ModifiedNode>) () -> {
+        return new YieldingIterator<ModifiedNode>() {
+          private int __CP__ = 0;
+          protected boolean moveToNext() {
 __loop__:
-                do {
+            do {
 __switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 2:
-                      this.__CP__ = 3;
-                      this.yield(oldNode);
-                      return true;
-                    case 3:
-                      this.__CP__ = 1;
-                      this.yield(newNode);
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    default:
-                      break __loop__;
-                  }
-                } while (true);
-                return false;
+              switch (this.__CP__) {
+                case -1:
+                  assert false : "Internal error";
+                  return false;
+                case 2:
+                  this.__CP__ = 3;
+                  this.yield(oldNode);
+                  return true;
+                case 3:
+                  this.__CP__ = 1;
+                  this.yield(newNode);
+                  return true;
+                case 0:
+                  this.__CP__ = 2;
+                  break;
+                default:
+                  break __loop__;
               }
-            };
+            } while (true);
+            return false;
           }
         };
-      }
+      };
     });
   }
   private static SNodeId check_nboa6x_a0a34(SNode checkedDotOperand) {

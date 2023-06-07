@@ -39,7 +39,7 @@ public class ModuleVisitor extends KmModuleFragmentVisitor {
   @Override
   public KmClassVisitor visitClass() {
     // No LazySNode there
-    return new ClassVisitor(context, false, (SNode classLike) -> context.addClass(classLike));
+    return new ClassVisitor(context, false, (classLike) -> context.addClass(classLike));
   }
 
   @NotNull

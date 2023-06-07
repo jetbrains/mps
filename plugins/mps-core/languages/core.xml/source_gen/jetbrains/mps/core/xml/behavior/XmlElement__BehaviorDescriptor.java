@@ -16,7 +16,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -34,11 +33,7 @@ public final class XmlElement__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static boolean isMultiline_id7HilnpQ3Ckr(@NotNull SNode __thisNode__) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.content$zkQy), CONCEPTS.XmlPart$X6)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) XmlPart__BehaviorDescriptor.onNewLine_id1Qs9WekVZ9$.invoke(it);
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.content$zkQy), CONCEPTS.XmlPart$X6)).any((it) -> (boolean) XmlPart__BehaviorDescriptor.onNewLine_id1Qs9WekVZ9$.invoke(it));
   }
 
   /*package*/ XmlElement__BehaviorDescriptor() {

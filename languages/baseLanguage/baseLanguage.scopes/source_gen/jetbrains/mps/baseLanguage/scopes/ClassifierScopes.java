@@ -8,11 +8,9 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.scope.FilteringScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -34,11 +32,7 @@ public class ClassifierScopes {
   private ClassifierScopes() {
   }
   public static Scope filterVisibleClassifiersScope(@NotNull final SNode contextNode, @NotNull Scope inner) {
-    final List<SNode> vars = ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, CONCEPTS.GenericDeclaration$bC, true)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SLinkOperations.getChildren(it, LINKS.typeVariableDeclaration$Lipp);
-      }
-    }).toListSequence();
+    final List<SNode> vars = ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, CONCEPTS.GenericDeclaration$bC, true)).translate((it) -> SLinkOperations.getChildren(it, LINKS.typeVariableDeclaration$Lipp)).toList();
     return new FilteringScope(inner) {
       @Override
       public boolean isExcluded(SNode node) {
@@ -47,11 +41,7 @@ public class ClassifierScopes {
         }
         if (ListSequence.fromList(vars).isNotEmpty() && SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$Kd)) {
           final String nodeName = SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL);
-          return ListSequence.fromList(vars).any(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), nodeName);
-            }
-          });
+          return ListSequence.fromList(vars).any((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), nodeName));
         }
         return false;
       }
@@ -84,11 +74,7 @@ public class ClassifierScopes {
           return true;
         }
         SNode clazz = SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK);
-        SNode noArgCons = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(clazz)).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).isEmpty();
-          }
-        });
+        SNode noArgCons = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(clazz)).findFirst((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).isEmpty());
         if (noArgCons != null) {
           // Treat no-arg cons the same way as implicit default cons.
           // First of all, it's the way JLS tells us 'new' expression should look like (see 15.9 Class Instance Creation Expressions)
@@ -171,11 +157,7 @@ public class ClassifierScopes {
         // Useful for Classifiers contained in EditorTestCases
         // ("result" should not be able to access classifiers from "nodeToEdit")...
         // todo: VOODOO PEOPLE MAGIC PEOPLE
-        return ListSequence.fromList(ancestors).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return !(SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$Ix));
-          }
-        }).isNotEmpty() && ListSequence.fromList(ancestors).intersect(SetSequence.fromSet(enclosingClassifierAncestors)).isEmpty();
+        return ListSequence.fromList(ancestors).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$Ix))).isNotEmpty() && ListSequence.fromList(ancestors).intersect(SetSequence.fromSet(enclosingClassifierAncestors)).isEmpty();
       }
     };
   }

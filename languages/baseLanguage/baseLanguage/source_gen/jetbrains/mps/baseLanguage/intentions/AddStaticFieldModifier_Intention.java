@@ -19,7 +19,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -85,11 +84,7 @@ public final class AddStaticFieldModifier_Intention extends AbstractIntentionDes
       if (SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false) == null) {
         return false;
       }
-      for (SNode variableReference : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, null, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.VariableReference$TC);
-        }
-      })) {
+      for (SNode variableReference : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, null, false, new SAbstractConcept[]{})).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.VariableReference$TC))) {
         if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(variableReference, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.FieldDeclaration$ie)) {
           return false;
         }

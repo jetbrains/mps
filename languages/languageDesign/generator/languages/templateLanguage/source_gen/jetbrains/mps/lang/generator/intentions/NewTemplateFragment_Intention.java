@@ -14,7 +14,6 @@ import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.generator.helper.EditingUtil;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
@@ -55,11 +54,7 @@ public final class NewTemplateFragment_Intention extends AbstractIntentionDescri
 
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode applyToNode = ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SNodeOperations.isAttribute(it));
-        }
-      }).first();
+      SNode applyToNode = ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).where((it) -> !(SNodeOperations.isAttribute(it))).first();
       EditingUtil.createTemplateFragment(applyToNode);
     }
 

@@ -8,7 +8,6 @@ import jetbrains.mps.generator.template.MappingScriptContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.execution.configurations.behavior.RunConfigurationExecutor__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -35,20 +34,8 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static void mappingScript_CodeBlock_1(final MappingScriptContext _context) {
-    for (SNode executor : ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.RunConfigurationExecutor$5U)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) RunConfigurationExecutor__BehaviorDescriptor.isSimple_id5pE1_aqYZtD.invoke(it) && (boolean) RunConfigurationExecutor__BehaviorDescriptor.isDebuggable_idoym_8btfV8.invoke(it);
-      }
-    })) {
-      for (SNode builder : ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(executor, LINKS.execute$95i7), CONCEPTS.CommandBuilderExpression$rV, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode commandBuilder) {
-          return (ListSequence.fromList(SLinkOperations.getChildren(commandBuilder, LINKS.argument$Zwec)).findFirst(new IWhereFilter<SNode>() {
-            public boolean accept(SNode arg) {
-              return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(arg, LINKS.parameterDeclaration$Zibc), CONCEPTS.DebuggerSettingsCommandParameterDeclaration$7J);
-            }
-          }) == null);
-        }
-      })) {
+    for (SNode executor : ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.RunConfigurationExecutor$5U)).where((it) -> (boolean) RunConfigurationExecutor__BehaviorDescriptor.isSimple_id5pE1_aqYZtD.invoke(it) && (boolean) RunConfigurationExecutor__BehaviorDescriptor.isDebuggable_idoym_8btfV8.invoke(it))) {
+      for (SNode builder : ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(executor, LINKS.execute$95i7), CONCEPTS.CommandBuilderExpression$rV, false, new SAbstractConcept[]{})).where((commandBuilder) -> (ListSequence.fromList(SLinkOperations.getChildren(commandBuilder, LINKS.argument$Zwec)).findFirst((arg) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(arg, LINKS.parameterDeclaration$Zibc), CONCEPTS.DebuggerSettingsCommandParameterDeclaration$7J)) == null))) {
         if ((boolean) CommandDeclaration__BehaviorDescriptor.isDebuggable_idJzCdmU6yOQ.invoke(ExecuteCommandPart__BehaviorDescriptor.getCommandDeclaration_id5keEkmeCqIg.invoke(SLinkOperations.getTarget(builder, LINKS.commandPart$UR1f)))) {
           SNode debuggerSettignsParameter = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x42d74d4aa8cbc400L, "jetbrains.mps.execution.configurations.structure.DebuggerSettings_Parameter"));
           SNode debuggerSettings = _quotation_createNode_x583g4_a0b0a0a0a0b(debuggerSettignsParameter);

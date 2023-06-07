@@ -6,11 +6,9 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationScriptBase;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -25,7 +23,6 @@ import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.migration.behavior.QuotationConsequence__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -44,25 +41,13 @@ public class TransformStatementDetachFix extends MigrationScriptBase {
     return null;
   }
   public void doExecute(final SModule m) {
-    ListSequence.fromList(findAffectedVariables(m)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        addAnnotationVariableReference(it);
-      }
-    });
-    ListSequence.fromList(findAffectedAntiquotations(m)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        addAnnotationAntiquotation(it);
-      }
-    });
+    ListSequence.fromList(findAffectedVariables(m)).visitAll((it) -> addAnnotationVariableReference(it));
+    ListSequence.fromList(findAffectedAntiquotations(m)).visitAll((it) -> addAnnotationAntiquotation(it));
   }
   @Override
   public Iterable<Problem> check(SModule m) {
-    return ListSequence.fromList(findAffectedVariables(m)).concat(ListSequence.fromList(findAffectedAntiquotations(m))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u).get(it) == null);
-      }
-    }).select(new ISelector<SNode, Problem>() {
-      public Problem select(SNode it) {
+    return ListSequence.fromList(findAffectedVariables(m)).concat(ListSequence.fromList(findAffectedAntiquotations(m))).where((it) -> (new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u).get(it) == null)).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+      public Problem invoke(SNode it) {
         Problem migrated = new NotMigratedNode(it) {
           public String getMessage() {
             return "usages affected by semantics change";
@@ -101,21 +86,9 @@ public class TransformStatementDetachFix extends MigrationScriptBase {
     {
       SearchScope scope_xvsotb_b0o = CommandUtil.createScope(m);
       final SearchScope scope_xvsotb_b0o_0 = new EditableFilteringScope(scope_xvsotb_b0o);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_xvsotb_b0o_0;
-        }
-      };
-      ListSequence.fromList(affectedUsages).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodePatternVariableReference$cS, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode node) {
-          return SNodeOperations.getNodeAncestor(node, CONCEPTS.QuotationConsequence$jg, false, false) == null || !((boolean) QuotationConsequence__BehaviorDescriptor.isMyAntiquotationExpression_id4SwrQttKYC0.invoke(SNodeOperations.getNodeAncestor(node, CONCEPTS.QuotationConsequence$jg, false, false), node));
-        }
-      }));
-      ListSequence.fromList(affectedUsages).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ListPatternVariableReference$vl, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode node) {
-          return SNodeOperations.getNodeAncestor(node, CONCEPTS.QuotationConsequence$jg, false, false) == null || !((boolean) QuotationConsequence__BehaviorDescriptor.isMyAntiquotationExpression_id4SwrQttKYC0.invoke(SNodeOperations.getNodeAncestor(node, CONCEPTS.QuotationConsequence$jg, false, false), node));
-        }
-      }));
+      QueryExecutionContext context = () -> scope_xvsotb_b0o_0;
+      ListSequence.fromList(affectedUsages).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodePatternVariableReference$cS, false)).where((node) -> SNodeOperations.getNodeAncestor(node, CONCEPTS.QuotationConsequence$jg, false, false) == null || !((boolean) QuotationConsequence__BehaviorDescriptor.isMyAntiquotationExpression_id4SwrQttKYC0.invoke(SNodeOperations.getNodeAncestor(node, CONCEPTS.QuotationConsequence$jg, false, false), node))));
+      ListSequence.fromList(affectedUsages).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ListPatternVariableReference$vl, false)).where((node) -> SNodeOperations.getNodeAncestor(node, CONCEPTS.QuotationConsequence$jg, false, false) == null || !((boolean) QuotationConsequence__BehaviorDescriptor.isMyAntiquotationExpression_id4SwrQttKYC0.invoke(SNodeOperations.getNodeAncestor(node, CONCEPTS.QuotationConsequence$jg, false, false), node))));
     }
     return affectedUsages;
   }
@@ -125,20 +98,8 @@ public class TransformStatementDetachFix extends MigrationScriptBase {
     {
       SearchScope scope_xvsotb_b0q = CommandUtil.createScope(m);
       final SearchScope scope_xvsotb_b0q_0 = new EditableFilteringScope(scope_xvsotb_b0q);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_xvsotb_b0q_0;
-        }
-      };
-      ListSequence.fromList(affectedUsages).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.QuotationConsequence$jg, false)).translate(new ITranslator2<SNode, SNode>() {
-        public Iterable<SNode> translate(final SNode qc) {
-          return ListSequence.fromList(SNodeOperations.getNodeDescendants(qc, CONCEPTS.Expression$mB, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return (boolean) QuotationConsequence__BehaviorDescriptor.isMyAntiquotationExpression_id4SwrQttKYC0.invoke(qc, it) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.NodePatternVariableReference$cS)) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.ListPatternVariableReference$vl));
-            }
-          });
-        }
-      }));
+      QueryExecutionContext context = () -> scope_xvsotb_b0q_0;
+      ListSequence.fromList(affectedUsages).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.QuotationConsequence$jg, false)).translate((final SNode qc) -> ListSequence.fromList(SNodeOperations.getNodeDescendants(qc, CONCEPTS.Expression$mB, false, new SAbstractConcept[]{})).where((it) -> (boolean) QuotationConsequence__BehaviorDescriptor.isMyAntiquotationExpression_id4SwrQttKYC0.invoke(qc, it) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.NodePatternVariableReference$cS)) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.ListPatternVariableReference$vl)))));
     }
     return affectedUsages;
   }

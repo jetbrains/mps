@@ -23,7 +23,6 @@ import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.generator.template.MappingScriptContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import java.util.Map;
@@ -274,11 +273,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.operand$w6IR);
   }
   public static Iterable<SNode> sourceNodesQuery_0_0(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.FindMatchExpression$Gp, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Flags.REGEXP_NEED_VAR.isFlagged(it);
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.FindMatchExpression$Gp, false, new SAbstractConcept[]{})).where((it) -> Flags.REGEXP_NEED_VAR.isFlagged(it));
   }
   public static Iterable<SNode> sourceNodesQuery_0_1(final SourceSubstituteMacroNodesContext _context) {
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ConstructorDeclaration$yG) && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.statement$53DE)).first(), CONCEPTS.ConstructorInvocationStatement$yY)) {

@@ -43,29 +43,27 @@ public class typeof_CompactInvokeFunctionExpression_InferenceRule extends Abstra
     }
     {
       final SNode reifiedRet = typeCheckingContext.getRepresentative(ret_typevar_668767903263948995);
-      typeCheckingContext.whenConcrete(reifiedRet, new Runnable() {
-        public void run() {
+      typeCheckingContext.whenConcrete(reifiedRet, () -> {
+        {
+          SNode matchedNode_1b5x3i_a0e0 = typeCheckingContext.getExpandedNode(reifiedRet);
           {
-            SNode matchedNode_1b5x3i_a0e0 = typeCheckingContext.getExpandedNode(reifiedRet);
+            boolean matches_1b5x3i_a0a4a = false;
             {
-              boolean matches_1b5x3i_a0a4a = false;
+              SNode matchingNode_1b5x3i_a0a4a = typeCheckingContext.getExpandedNode(reifiedRet);
+              if (matchingNode_1b5x3i_a0a4a != null) {
+                matches_1b5x3i_a0a4a = matchingNode_1b5x3i_a0a4a.getConcept().isSubConceptOf(CONCEPTS.MeetType$ZG);
+              }
+            }
+            if (matches_1b5x3i_a0a4a) {
               {
-                SNode matchingNode_1b5x3i_a0a4a = typeCheckingContext.getExpandedNode(reifiedRet);
-                if (matchingNode_1b5x3i_a0a4a != null) {
-                  matches_1b5x3i_a0a4a = matchingNode_1b5x3i_a0a4a.getConcept().isSubConceptOf(CONCEPTS.MeetType$ZG);
-                }
-              }
-              if (matches_1b5x3i_a0a4a) {
-                {
-                  SNode _nodeToCheck_1029348928467 = invoke;
-                  EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "4359876593789720529", 0, null);
-                  typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "4359876593789720538", true), (SNode) ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(typeCheckingContext.getExpandedNode(reifiedRet), CONCEPTS.MeetType$ZG), LINKS.argument$r2cT)).first(), _info_12389875345);
-                }
-              } else {
                 SNode _nodeToCheck_1029348928467 = invoke;
-                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "4359876593789720540", 0, null);
-                typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "4359876593789720542", true), (SNode) typeCheckingContext.getExpandedNode(reifiedRet), _info_12389875345);
+                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "4359876593789720529", 0, null);
+                typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "4359876593789720538", true), (SNode) ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(typeCheckingContext.getExpandedNode(reifiedRet), CONCEPTS.MeetType$ZG), LINKS.argument$r2cT)).first(), _info_12389875345);
               }
+            } else {
+              SNode _nodeToCheck_1029348928467 = invoke;
+              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "4359876593789720540", 0, null);
+              typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "4359876593789720542", true), (SNode) typeCheckingContext.getExpandedNode(reifiedRet), _info_12389875345);
             }
           }
         }

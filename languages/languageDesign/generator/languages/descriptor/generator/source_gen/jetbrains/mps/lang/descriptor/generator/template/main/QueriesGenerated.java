@@ -21,8 +21,6 @@ import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.smodel.SModelStereotype;
@@ -209,15 +207,9 @@ public class QueriesGenerated {
   }
   public static Iterable<SNode> sourceNodesQuery_0_1(final SourceSubstituteMacroNodesContext _context) {
     final SRepository repo = ((SRepository) _context.getVariable("var:repo"));
-    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.language$rnIG), LINKS.model$2Sf4)).sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.qualifiedName$331j);
-      }
-    }, true).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        SModel resolved = ModelReference__BehaviorDescriptor.toModelReference_id2BHFktfnfdc.invoke(it).resolve(repo);
-        return resolved != null && ListSequence.fromList(SModelOperations.roots(resolved, null)).isNotEmpty();
-      }
+    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.language$rnIG), LINKS.model$2Sf4)).sort((it) -> SPropertyOperations.getString(it, PROPS.qualifiedName$331j), true).where((it) -> {
+      SModel resolved = ModelReference__BehaviorDescriptor.toModelReference_id2BHFktfnfdc.invoke(it).resolve(repo);
+      return resolved != null && ListSequence.fromList(SModelOperations.roots(resolved, null)).isNotEmpty();
     });
   }
   public static Iterable<SNode> sourceNodesQuery_0_2(final SourceSubstituteMacroNodesContext _context) {
@@ -226,15 +218,9 @@ public class QueriesGenerated {
   public static Iterable<SNode> sourceNodesQuery_0_3(final SourceSubstituteMacroNodesContext _context) {
     // identical to the LOOPs above
     final SRepository repo = ((SRepository) _context.getVariable("var:repo"));
-    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.language$rnIG), LINKS.model$2Sf4)).sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.qualifiedName$331j);
-      }
-    }, true).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        SModel resolved = ModelReference__BehaviorDescriptor.toModelReference_id2BHFktfnfdc.invoke(it).resolve(repo);
-        return resolved != null && ListSequence.fromList(SModelOperations.roots(resolved, null)).isNotEmpty();
-      }
+    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.language$rnIG), LINKS.model$2Sf4)).sort((it) -> SPropertyOperations.getString(it, PROPS.qualifiedName$331j), true).where((it) -> {
+      SModel resolved = ModelReference__BehaviorDescriptor.toModelReference_id2BHFktfnfdc.invoke(it).resolve(repo);
+      return resolved != null && ListSequence.fromList(SModelOperations.roots(resolved, null)).isNotEmpty();
     });
   }
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
@@ -256,11 +242,7 @@ public class QueriesGenerated {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.employedGenerators$sSfF);
   }
   public static Iterable<SNode> sourceNodesQuery_7_0(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.model$2Sf4)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SModelStereotype.isGeneratorModelStereotype(SPropertyOperations.getString(it, PROPS.stereotype$h2Bb));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.model$2Sf4)).where((it) -> SModelStereotype.isGeneratorModelStereotype(SPropertyOperations.getString(it, PROPS.stereotype$h2Bb)));
   }
   public static Iterable<SNode> sourceNodesQuery_7_1(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.depGenerators$x7ju);
@@ -312,15 +294,7 @@ public class QueriesGenerated {
     return ModelReference__BehaviorDescriptor.toModelReference_id2BHFktfnfdc.invoke(_context.getNode()).resolve(((SRepository) _context.getVariable("var:repo")));
   }
   public static Object varMacro_Value_6_0(final TemplateVarContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.model$2Sf4)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.stereotype$h2Bb), SModelStereotype.GENERATOR);
-      }
-    }).sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.qualifiedName$331j);
-      }
-    }, true).toListSequence();
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.model$2Sf4)).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.stereotype$h2Bb), SModelStereotype.GENERATOR)).sort((it) -> SPropertyOperations.getString(it, PROPS.qualifiedName$331j), true).toList();
   }
   public static Object varMacro_Value_6_1(final TemplateVarContext _context) {
     SRepository repo = _context.getOriginalInputModel().getRepository();
@@ -334,17 +308,11 @@ public class QueriesGenerated {
       }
     }
     Iterable<SLanguage> targetLanguages = ms.getTargetLanguages();
-    return Sequence.fromIterable(targetLanguages).sort(new ISelector<SLanguage, String>() {
-      public String select(SLanguage it) {
-        return it.getQualifiedName();
-      }
-    }, true).select(new ISelector<SLanguage, SNode>() {
-      public SNode select(SLanguage it) {
-        SNode lid = SModelOperations.createNewNode(_context.getOutputModel(), null, CONCEPTS.LanguageId$UR);
-        LanguageIdentity__BehaviorDescriptor.setLanguage_id34EJa6aIcyw.invoke(lid, it);
-        return lid;
-      }
-    }).toListSequence();
+    return Sequence.fromIterable(targetLanguages).sort((it) -> it.getQualifiedName(), true).select((it) -> {
+      SNode lid = SModelOperations.createNewNode(_context.getOutputModel(), null, CONCEPTS.LanguageId$UR);
+      LanguageIdentity__BehaviorDescriptor.setLanguage_id34EJa6aIcyw.invoke(lid, it);
+      return lid;
+    }).toList();
   }
   public static Object varMacro_Value_7_0(final TemplateVarContext _context) {
     // XXX COPIED FROM GeneratorRuntime template.
@@ -360,17 +328,11 @@ public class QueriesGenerated {
       }
     }
     Iterable<SLanguage> targetLanguages = ms.getTargetLanguages();
-    return Sequence.fromIterable(targetLanguages).sort(new ISelector<SLanguage, String>() {
-      public String select(SLanguage it) {
-        return it.getQualifiedName();
-      }
-    }, true).select(new ISelector<SLanguage, SNode>() {
-      public SNode select(SLanguage it) {
-        SNode lid = SModelOperations.createNewNode(_context.getOutputModel(), null, CONCEPTS.LanguageId$UR);
-        LanguageIdentity__BehaviorDescriptor.setLanguage_id34EJa6aIcyw.invoke(lid, it);
-        return lid;
-      }
-    }).toListSequence();
+    return Sequence.fromIterable(targetLanguages).sort((it) -> it.getQualifiedName(), true).select((it) -> {
+      SNode lid = SModelOperations.createNewNode(_context.getOutputModel(), null, CONCEPTS.LanguageId$UR);
+      LanguageIdentity__BehaviorDescriptor.setLanguage_id34EJa6aIcyw.invoke(lid, it);
+      return lid;
+    }).toList();
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.isEmpty();

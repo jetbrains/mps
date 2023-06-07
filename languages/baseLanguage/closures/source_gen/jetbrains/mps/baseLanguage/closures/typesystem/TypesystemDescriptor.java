@@ -68,7 +68,7 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.mySubtypingRules.add(subtypingRule);
     }
     {
-      SubtypingRule_Runtime subtypingRule = new supertypesOf_ClosureLiteralType_SubtypingRule();
+      SubtypingRule_Runtime subtypingRule = new supertypesOf_FunctionType_SubtypingRule();
       this.mySubtypingRules.add(subtypingRule);
     }
     {

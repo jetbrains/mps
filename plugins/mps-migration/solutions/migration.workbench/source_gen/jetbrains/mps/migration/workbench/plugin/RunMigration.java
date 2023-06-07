@@ -42,7 +42,7 @@ public class RunMigration extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final List<SModule>[] modules = new List[1];
-    myProject.getRepository().getModelAccess().runReadAction(() -> modules[0] = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(myProject)).toListSequence());
+    myProject.getRepository().getModelAccess().runReadAction(() -> modules[0] = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(myProject)).toList());
     ProgressManager.getInstance().run(new Task.Modal(myProject.getProject(), "Run Migration", true) {
       public void run(@NotNull ProgressIndicator progressIndicator) {
         ProgressMonitorAdapter progressMonitor = new ProgressMonitorAdapter(progressIndicator);

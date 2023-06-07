@@ -25,7 +25,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.kotlin.api.members.SignatureBuilder;
@@ -80,18 +79,10 @@ public final class ConceptType__BehaviorDescriptor extends BaseBHDescriptor {
     // Get only those declared at this concept level, as signatures do not clash we don't need overridden ones
     // Alternative: getVisibleConceptMethods
     SModel behAspectModel = SModuleOperations.getAspect(SNodeOperations.getModel(SLinkOperations.getTarget(__thisNode__, LINKS.concept$PItp)).getModule(), "behavior");
-    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspect_id7g4OXB0yku$.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.concept$PItp), behAspectModel), CONCEPTS.ConceptBehavior$2), LINKS.method$w_in)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.overriddenMethod$quKH) != null);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspect_id7g4OXB0yku$.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.concept$PItp), behAspectModel), CONCEPTS.ConceptBehavior$2), LINKS.method$w_in)).where((it) -> (SLinkOperations.getTarget(it, LINKS.overriddenMethod$quKH) != null));
   }
   /*package*/ static void populateTypeSignatures_id5q426iHK5S9(@NotNull SNode __thisNode__, SignatureCollector visitor) {
-    Iterable<SNode> methods = Sequence.fromIterable(ConceptType__BehaviorDescriptor.getBehaviorMethods_id6IkKv2hCcXi.invokeSpecial(__thisNode__)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getBoolean(it, PROPS.isStatic$JhJe);
-      }
-    });
+    Iterable<SNode> methods = Sequence.fromIterable(ConceptType__BehaviorDescriptor.getBehaviorMethods_id6IkKv2hCcXi.invokeSpecial(__thisNode__)).where((it) -> SPropertyOperations.getBoolean(it, PROPS.isStatic$JhJe));
     SignatureBuilder.create(methods, FunctionSignature.class).withSignature((SNode node) -> (FunctionSignature) new ConceptFunctionSignature(node)).declareTo(visitor);
   }
   /*package*/ static String toString_id4nn3FPlZH$r(@NotNull SNode __thisNode__, boolean erased) {

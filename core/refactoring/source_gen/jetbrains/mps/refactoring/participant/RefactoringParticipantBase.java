@@ -9,7 +9,6 @@ import org.jetbrains.mps.openapi.module.SearchScope;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 
 @GeneratedClass(node = "r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)/5418820454547629216", model = "r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)")
 public abstract class RefactoringParticipantBase<InitialDataObject, FinalDataObject, InitialPoint, FinalPoint> implements RefactoringParticipant<InitialDataObject, FinalDataObject, InitialPoint, FinalPoint> {
@@ -36,11 +35,7 @@ public abstract class RefactoringParticipantBase<InitialDataObject, FinalDataObj
 
 
   public List<RefactoringParticipant.Option> getAvailableOptions(List<InitialDataObject> initialStates, final SRepository repository) {
-    return ListSequence.fromList(initialStates).translate(new ITranslator2<InitialDataObject, RefactoringParticipant.Option>() {
-      public Iterable<RefactoringParticipant.Option> translate(InitialDataObject initialState) {
-        return getAvailableOptions(initialState, repository);
-      }
-    }).distinct().toListSequence();
+    return ListSequence.fromList(initialStates).translate((initialState) -> getAvailableOptions(initialState, repository)).distinct().toList();
   }
   public List<RefactoringParticipant.Option> getAvailableOptions(InitialDataObject initialState, SRepository repository) {
     throw new UnsupportedOperationException();

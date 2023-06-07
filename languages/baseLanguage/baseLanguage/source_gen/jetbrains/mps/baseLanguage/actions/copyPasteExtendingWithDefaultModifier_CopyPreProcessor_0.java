@@ -8,7 +8,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -25,18 +24,10 @@ public final class copyPasteExtendingWithDefaultModifier_CopyPreProcessor_0 impl
     SNode methodParent = SNodeOperations.getParent(original);
     if (SNodeOperations.isInstanceOf(methodParent, CONCEPTS.Classifier$Ix)) {
       if (SNodeOperations.isInstanceOf(methodParent, CONCEPTS.Interface$db)) {
-        if (ListSequence.fromList(SLinkOperations.getChildren(copy, LINKS.modifiers$F5MM)).all(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return !(SNodeOperations.isInstanceOf(it, CONCEPTS.DefaultModifier$rO));
-          }
-        })) {
+        if (ListSequence.fromList(SLinkOperations.getChildren(copy, LINKS.modifiers$F5MM)).all((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.DefaultModifier$rO)))) {
           SPropertyOperations.assign(copy, PROPS.isAbstract$VtH_, true);
         } else {
-          ListSequence.fromList(SLinkOperations.getChildren(copy, LINKS.modifiers$F5MM)).removeWhere(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SNodeOperations.isInstanceOf(it, CONCEPTS.DefaultModifier$rO);
-            }
-          });
+          ListSequence.fromList(SLinkOperations.getChildren(copy, LINKS.modifiers$F5MM)).removeWhere((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.DefaultModifier$rO));
           SPropertyOperations.assign(copy, PROPS.isAbstract$VtH_, false);
         }
       }

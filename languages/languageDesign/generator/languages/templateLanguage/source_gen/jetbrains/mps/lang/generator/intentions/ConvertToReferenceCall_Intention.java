@@ -19,7 +19,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.IClassifierType__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -68,11 +67,7 @@ public final class ConvertToReferenceCall_Intention extends AbstractIntentionDes
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode classifierType = TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(node, LINKS.instance$oRHo)), CONCEPTS.ClassifierType$bL);
       SNode replacement = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation"));
-      SLinkOperations.setTarget(replacement, LINKS.baseMethodDeclaration$pyYw, Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(classifierType), CONCEPTS.InstanceMethodDeclaration$39)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(node, PROPS.methodName$lufi));
-        }
-      }).first());
+      SLinkOperations.setTarget(replacement, LINKS.baseMethodDeclaration$pyYw, Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(classifierType), CONCEPTS.InstanceMethodDeclaration$39)).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(node, PROPS.methodName$lufi))).first());
       ListSequence.fromList(SLinkOperations.getChildren(replacement, LINKS.actualArgument$pzdx)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$gHks)));
       if ((new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.methodName$lufi).get(node) != null)) {
         new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, LINKS.baseMethodDeclaration$pyYw).set(replacement, createReferenceMacro_nfdvwd_a0a0e0a(SLinkOperations.getTarget(SLinkOperations.getTarget(new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.methodName$lufi).get(node), LINKS.propertyValueFunction$7Sh_), LINKS.body$e68K)));
@@ -96,11 +91,7 @@ public final class ConvertToReferenceCall_Intention extends AbstractIntentionDes
       if (classifierType == null) {
         return false;
       }
-      return Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(classifierType), CONCEPTS.InstanceMethodDeclaration$39)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(node, PROPS.methodName$lufi));
-        }
-      }).isNotEmpty();
+      return Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(classifierType), CONCEPTS.InstanceMethodDeclaration$39)).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(node, PROPS.methodName$lufi))).isNotEmpty();
     }
 
 

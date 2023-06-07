@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.ide.findusages.view.FindUtils;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
@@ -51,11 +50,7 @@ public class InterfaceMethodImplementations_Finder extends GeneratedFinder {
       for (SNode implementor : ListSequence.fromList(FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.ImplementingClasses_Finder", SNodeOperations.getParent(node), scope, monitor.subTask(1)))) {
         ListSequence.fromList(implementorsAndAncestorsList).addElement(implementor);
       }
-      for (SNode classNode : ListSequence.fromList(implementorsAndAncestorsList).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SNodeOperations.cast(it, CONCEPTS.ClassConcept$bK);
-        }
-      })) {
+      for (SNode classNode : ListSequence.fromList(implementorsAndAncestorsList).select((it) -> SNodeOperations.cast(it, CONCEPTS.ClassConcept$bK))) {
         for (SNode sMethod : Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(classNode))) {
           if ((boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(sMethod, node)) {
             callback.onUsageFound(createSingleResult(sMethod));

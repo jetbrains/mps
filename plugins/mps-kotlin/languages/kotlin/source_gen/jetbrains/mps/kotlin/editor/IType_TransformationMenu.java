@@ -20,7 +20,6 @@ import jetbrains.mps.lang.editor.menus.transformation.IncludeTransformationMenuT
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Arrays;
@@ -93,11 +92,7 @@ public class IType_TransformationMenu extends TransformationMenuBase {
     @Override
     protected SNode getNode(TransformationMenuContext _context) {
       // Include non-iType parent
-      return ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), null, false)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(it, CONCEPTS.IType$Ni));
-        }
-      });
+      return ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), null, false)).findFirst((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.IType$Ni)));
     }
 
   }

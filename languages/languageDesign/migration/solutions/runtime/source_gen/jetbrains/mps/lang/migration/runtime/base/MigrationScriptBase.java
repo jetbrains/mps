@@ -14,7 +14,6 @@ import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.model.SModel;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -166,11 +165,7 @@ public abstract class MigrationScriptBase implements MigrationScript {
   }
 
   protected void markAnnotatedNodeForReview(SNode n, List<SNode> unknownAttrs) {
-    unknownAttrs = ListSequence.fromList(unknownAttrs).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.MigrationAnnotation_old$2i));
-      }
-    }).toListSequence();
+    unknownAttrs = ListSequence.fromList(unknownAttrs).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.MigrationAnnotation_old$2i))).toList();
     if (ListSequence.fromList(unknownAttrs).isEmpty()) {
       return;
     }

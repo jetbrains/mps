@@ -3,7 +3,7 @@
   <persistence version="9" />
   <attribute name="doNotGenerate" value="false" />
   <languages>
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="-1" />
     <use id="d7a92d38-f7db-40d0-8431-763b0c3c9f20" name="jetbrains.mps.lang.intentions" version="-1" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="-1" />
@@ -242,6 +242,7 @@
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1235746970280" name="jetbrains.mps.baseLanguage.closures.structure.CompactInvokeFunctionExpression" flags="nn" index="2Sg_IR">
         <child id="1235746996653" name="function" index="2SgG2M" />
       </concept>
@@ -432,7 +433,6 @@
       <concept id="1153944233411" name="jetbrains.mps.baseLanguage.collections.structure.ForEachVariableReference" flags="nn" index="2GrUjf">
         <reference id="1153944258490" name="variable" index="2Gs0qQ" />
       </concept>
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1160612413312" name="jetbrains.mps.baseLanguage.collections.structure.AddElementOperation" flags="nn" index="TSZUe" />
       <concept id="1160666733551" name="jetbrains.mps.baseLanguage.collections.structure.AddAllElementsOperation" flags="nn" index="X8dFx" />
       <concept id="1162935959151" name="jetbrains.mps.baseLanguage.collections.structure.GetSizeOperation" flags="nn" index="34oBXx" />
@@ -826,7 +826,7 @@
                     <node concept="3clFbF" id="1GF9yVLvTeR" role="3cqZAp">
                       <node concept="2OqwBi" id="57HLayr_Cwg" role="3clFbG">
                         <node concept="37vLTw" id="57HLayr_FaP" role="2Oq$k0">
-                          <ref role="3cqZAo" node="1GF9yVLvTeU" resolve="md" />
+                          <ref role="3cqZAo" node="5W7E4fV0Wvb" />
                         </node>
                         <node concept="3zA4fs" id="57HLayr_C$J" role="2OqNvi">
                           <ref role="3zA4av" to="tpcc:2LiUEk8oQ$g" resolve="structure" />
@@ -834,9 +834,9 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="Rh6nW" id="1GF9yVLvTeU" role="1bW2Oz">
+                  <node concept="gl6BB" id="5W7E4fV0Wvb" role="1bW2Oz">
                     <property role="TrG5h" value="md" />
-                    <node concept="2jxLKc" id="1GF9yVLvTeV" role="1tU5fm" />
+                    <node concept="2jxLKc" id="5W7E4fV0Wvc" role="1tU5fm" />
                   </node>
                 </node>
               </node>

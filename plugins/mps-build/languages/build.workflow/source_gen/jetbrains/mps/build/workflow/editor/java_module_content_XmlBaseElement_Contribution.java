@@ -84,7 +84,7 @@ public class java_module_content_XmlBaseElement_Contribution extends SubstituteM
       @Nullable
       @Override
       protected Iterable<? extends String> getParameters(SubstituteMenuContext _context) {
-        return Sequence.fromIterable(Sequence.fromArray(new String[]{"fileset", "pathelement", "dirset"})).toListSequence();
+        return Sequence.fromIterable(Sequence.fromArray(new String[]{"fileset", "pathelement", "dirset"})).toList();
       }
       private class SMP_Action_fc12n3_a0a extends SingleItemSubstituteMenuPart {
         private final String myParameterObject;

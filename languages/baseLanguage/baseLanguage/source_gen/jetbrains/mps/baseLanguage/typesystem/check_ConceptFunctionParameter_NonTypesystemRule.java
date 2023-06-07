@@ -15,7 +15,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.behavior.ConceptFunction__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.ConceptFunctionParameter__BehaviorDescriptor;
@@ -33,11 +32,7 @@ public class check_ConceptFunctionParameter_NonTypesystemRule extends AbstractNo
       }
     } else {
       final SAbstractConcept parameterConcept = SNodeOperations.getConcept(parameter);
-      Iterable<SConcept> seq = ListSequence.fromList(ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke(conceptFunction)).where(new IWhereFilter<SConcept>() {
-        public boolean accept(SConcept it) {
-          return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(parameterConcept), SNodeOperations.asSConcept(it));
-        }
-      });
+      Iterable<SConcept> seq = ListSequence.fromList(ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke(conceptFunction)).where((it) -> SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(parameterConcept), SNodeOperations.asSConcept(it)));
       if (Sequence.fromIterable(seq).isEmpty() && (boolean) ConceptFunctionParameter__BehaviorDescriptor.needConceptFunction_idhZKliUO.invoke(parameter)) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();

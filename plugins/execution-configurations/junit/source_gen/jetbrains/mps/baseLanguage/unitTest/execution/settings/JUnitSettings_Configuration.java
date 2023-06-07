@@ -30,7 +30,7 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.util.Reference;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.execution.lib.ClonableList;
 
 public final class JUnitSettings_Configuration implements IPersistentConfiguration, Copyable<JUnitSettings_Configuration> {
@@ -123,7 +123,7 @@ public final class JUnitSettings_Configuration implements IPersistentConfigurati
     return getInProcessProperty() && !(this.getDebug());
   }
   public List<ITestNodeWrapper> getTests(final MPSProject project) {
-    return ListSequence.fromList(collectTests(project)).toListSequence();
+    return ListSequence.fromList(collectTests(project)).toList();
   }
   private void check(final MPSProject project) throws RuntimeConfigurationException {
     final JUnitSettings_Configuration settings = this;
@@ -141,16 +141,16 @@ public final class JUnitSettings_Configuration implements IPersistentConfigurati
     }
   }
   public List<ITestNodeWrapper> getTestsUnderProgress(final MPSProject project) {
-    return ListSequence.fromList(collectTests(project)).toListSequence();
+    return ListSequence.fromList(collectTests(project)).toList();
   }
   public List<SNodeReference> getTestsToMake(final MPSProject project) {
     final Reference<List<ITestNodeWrapper>> toTest = new Reference<List<ITestNodeWrapper>>();
     ApplicationManager.getApplication().invokeAndWait(() -> toTest.set(getTestsUnderProgress(project)), ModalityState.NON_MODAL);
-    return ListSequence.fromList(toTest.get()).select(new ISelector<ITestNodeWrapper, SNodeReference>() {
-      public SNodeReference select(ITestNodeWrapper it) {
+    return ListSequence.fromList(toTest.get()).select(new _FunctionTypes._return_P1_E0<SNodeReference, ITestNodeWrapper>() {
+      public SNodeReference invoke(ITestNodeWrapper it) {
         return it.getNodePointer();
       }
-    }).toListSequence();
+    }).toList();
   }
   private List<ITestNodeWrapper> collectTests(final MPSProject project) {
     return getJUnitRunType().collect(this, project);

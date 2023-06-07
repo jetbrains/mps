@@ -17,7 +17,6 @@ import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.behavior.IClassifierType__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.IClassifier__BehaviorDescriptor;
@@ -43,11 +42,7 @@ public class LocalPatternReference_Constraints extends BaseConstraintsDescriptor
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return new NamedElementsScope(SNodeOperations.ofConcept(Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getNodeAncestors(_context.getContextNode(), null, false), CONCEPTS.Classifier$Ix)).translate(new ITranslator2<SNode, SNode>() {
-              public Iterable<SNode> translate(SNode it) {
-                return (Iterable<SNode>) IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(it));
-              }
-            }), CONCEPTS.PatternBuilderClassifierMember$kC));
+            return new NamedElementsScope(SNodeOperations.ofConcept(Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getNodeAncestors(_context.getContextNode(), null, false), CONCEPTS.Classifier$Ix)).translate((it) -> (Iterable<SNode>) IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(it))), CONCEPTS.PatternBuilderClassifierMember$kC));
           }
         };
       }

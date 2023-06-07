@@ -24,7 +24,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.build.behavior.BuildLayout_PathElement__BehaviorDescriptor;
 import jetbrains.mps.build.util.LocalSourcePathArtifact;
 import java.util.Objects;
@@ -32,7 +31,7 @@ import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
 import jetbrains.mps.build.behavior.BuildLayout_Node__BehaviorDescriptor;
 import jetbrains.mps.build.behavior.BuildLayout_Container__BehaviorDescriptor;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -129,11 +128,7 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
         if (isGenerator) {
           module.value = BuildMps_Generator__BehaviorDescriptor.getSourceLanguage_id7YI57w6ZMdZ.invoke(SNodeOperations.cast(module.value, CONCEPTS.BuildMps_Generator$RQ));
         }
-        SNode container = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC), LINKS.content$9T6D)).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return (boolean) BuildMps_IdeaPluginContent__BehaviorDescriptor.exports_id5FtnUVJQES1.invoke(it, module.value);
-          }
-        });
+        SNode container = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC), LINKS.content$9T6D)).findFirst((it) -> (boolean) BuildMps_IdeaPluginContent__BehaviorDescriptor.exports_id5FtnUVJQES1.invoke(it, module.value));
         if ((container != null)) {
           // todo: seems to be rather messy
           SNode group = SNodeOperations.as(container, CONCEPTS.BuildMps_IdeaPluginGroup$_R);
@@ -168,22 +163,14 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
         return SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC) == node;
       }
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildLayout_Node$Rb)) {
-        return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.children$aMRO), CONCEPTS.BuildLayout_ImportContent$wC)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.target$HFO4) == node;
-          }
-        });
+        return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.children$aMRO), CONCEPTS.BuildLayout_ImportContent$wC)).any((it) -> SLinkOperations.getTarget(it, LINKS.target$HFO4) == node);
       }
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildMps_AbstractModule$FZ)) {
         final Wrappers._T<SNode> module = new Wrappers._T<SNode>(SNodeOperations.cast(node, CONCEPTS.BuildMps_AbstractModule$FZ));
         if (SNodeOperations.isInstanceOf(module.value, CONCEPTS.BuildMps_Generator$RQ)) {
           module.value = BuildMps_Generator__BehaviorDescriptor.getSourceLanguage_id7YI57w6ZMdZ.invoke(SNodeOperations.cast(module.value, CONCEPTS.BuildMps_Generator$RQ));
         }
-        SNode container = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC), LINKS.content$9T6D)).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return (boolean) BuildMps_IdeaPluginContent__BehaviorDescriptor.exports_id5FtnUVJQES1.invoke(it, module.value);
-          }
-        });
+        SNode container = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC), LINKS.content$9T6D)).findFirst((it) -> (boolean) BuildMps_IdeaPluginContent__BehaviorDescriptor.exports_id5FtnUVJQES1.invoke(it, module.value));
         SNode group = SNodeOperations.as(container, CONCEPTS.BuildMps_IdeaPluginGroup$_R);
         if ((SLinkOperations.getTarget(__thisNode__, LINKS.packagingType$WOvS) != null)) {
           if ((group != null) && !((boolean) BuildMpsLayout_Plugin__BehaviorDescriptor.isPackagedAutomatically_id36cV00CxaOW.invokeSpecial(__thisNode__))) {
@@ -253,22 +240,20 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
       return false;
     }
 
-    return !(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.children$aMRO), CONCEPTS.BuildLayout_Folder$AH)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return "lib".equals(BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(it, LINKS.containerName$ES_Y), macrosHelper)) && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(it, LINKS.children$aMRO), CONCEPTS.BuildLayout_Jar$bd)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(it, LINKS.children$aMRO), CONCEPTS.BuildLayout_Folder$AH)).any(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return "META-INF".equals(BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(it, LINKS.containerName$ES_Y), macrosHelper)) && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(it, LINKS.children$aMRO), CONCEPTS.BuildMpsLayout_PluginDescriptor$on)).any(new IWhereFilter<SNode>() {
-                  public boolean accept(SNode it) {
-                    return SLinkOperations.getTarget(it, LINKS.plugin$ZarS) == SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC);
-                  }
-                });
-              }
-            });
-          }
-        });
-      }
+    return !(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.children$aMRO), CONCEPTS.BuildLayout_Folder$AH)).any((it) -> {
+      return "lib".equals(BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(it, LINKS.containerName$ES_Y), macrosHelper)) && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(it, LINKS.children$aMRO), CONCEPTS.BuildLayout_Jar$bd)).any(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+        public Boolean invoke(SNode it) {
+          return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(it, LINKS.children$aMRO), CONCEPTS.BuildLayout_Folder$AH)).any(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+            public Boolean invoke(SNode it) {
+              return "META-INF".equals(BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(it, LINKS.containerName$ES_Y), macrosHelper)) && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(it, LINKS.children$aMRO), CONCEPTS.BuildMpsLayout_PluginDescriptor$on)).any(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+                public Boolean invoke(SNode it) {
+                  return SLinkOperations.getTarget(it, LINKS.plugin$ZarS) == SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC);
+                }
+              });
+            }
+          });
+        }
+      });
     }));
   }
   /*package*/ static boolean isPluginDescriptorPossiblyMissingInLayout_id1RsDREvCrek(@NotNull final SNode __thisNode__) {
@@ -279,62 +264,32 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
     if (ListSequence.fromList(SLinkOperations.getChildren(conflictingJar, LINKS.children$aMRO)).isEmpty()) {
       return true;
     }
-    SNode metaInfFolder = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(conflictingJar, LINKS.children$aMRO), CONCEPTS.BuildLayout_Folder$AH)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return "META-INF".equals(BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(it, LINKS.containerName$ES_Y), null));
-      }
-    });
+    SNode metaInfFolder = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(conflictingJar, LINKS.children$aMRO), CONCEPTS.BuildLayout_Folder$AH)).findFirst((it) -> "META-INF".equals(BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(it, LINKS.containerName$ES_Y), null)));
     if ((metaInfFolder == null) || ListSequence.fromList(SLinkOperations.getChildren(metaInfFolder, LINKS.children$aMRO)).isEmpty()) {
       return true;
     }
-    if (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(metaInfFolder, LINKS.children$aMRO), CONCEPTS.BuildMpsLayout_PluginDescriptor$on)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.plugin$ZarS) == SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC);
-      }
-    })) {
+    if (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(metaInfFolder, LINKS.children$aMRO), CONCEPTS.BuildMpsLayout_PluginDescriptor$on)).any((it) -> SLinkOperations.getTarget(it, LINKS.plugin$ZarS) == SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC))) {
       return false;
     }
-    return !(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(metaInfFolder, LINKS.children$aMRO), CONCEPTS.BuildLayout_File$Kk)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        String lastSegment = BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(it, LINKS.path$xmoo));
-        return (lastSegment != null && lastSegment.length() > 0) && (lastSegment.toLowerCase().endsWith(".xml"));
-      }
-    }) || Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(metaInfFolder, LINKS.children$aMRO), CONCEPTS.BuildLayout_Files$Oo), LINKS.path$Wlt3), CONCEPTS.BuildRelativePath$Kc)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return "META-INF".equals(BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(it));
-      }
-    }));
+    return !(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(metaInfFolder, LINKS.children$aMRO), CONCEPTS.BuildLayout_File$Kk)).any((it) -> {
+      String lastSegment = BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(it, LINKS.path$xmoo));
+      return (lastSegment != null && lastSegment.length() > 0) && (lastSegment.toLowerCase().endsWith(".xml"));
+    }) || Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(metaInfFolder, LINKS.children$aMRO), CONCEPTS.BuildLayout_Files$Oo), LINKS.path$Wlt3), CONCEPTS.BuildRelativePath$Kc)).any((it) -> "META-INF".equals(BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(it))));
   }
   @Nullable
   /*package*/ static SNode conflictingJar_id1RsDREvPMQ$(@NotNull final SNode __thisNode__, @Nullable final MacroHelper macros) {
-    Iterable<SNode> libFolders = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.children$aMRO), CONCEPTS.BuildLayout_Folder$AH)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return "lib".equals(BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(it, LINKS.containerName$ES_Y), macros));
-      }
-    });
+    Iterable<SNode> libFolders = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.children$aMRO), CONCEPTS.BuildLayout_Folder$AH)).where((it) -> "lib".equals(BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(it, LINKS.containerName$ES_Y), macros)));
     if (Sequence.fromIterable(libFolders).isEmpty()) {
       return null;
     }
 
-    return Sequence.fromIterable(libFolders).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SNodeOperations.ofConcept(SLinkOperations.getChildren(it, LINKS.children$aMRO), CONCEPTS.BuildLayout_Jar$bd);
-      }
-    }).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(it, LINKS.containerName$ES_Y), macros), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC), LINKS.containerName$xQbG), macros) + ".jar");
-      }
-    });
+    return Sequence.fromIterable(libFolders).translate((it) -> SNodeOperations.ofConcept(SLinkOperations.getChildren(it, LINKS.children$aMRO), CONCEPTS.BuildLayout_Jar$bd)).findFirst((it) -> Objects.equals(BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(it, LINKS.containerName$ES_Y), macros), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC), LINKS.containerName$xQbG), macros) + ".jar"));
   }
   /*package*/ static boolean confictingJarNameExists_id1RsDREvQK61(@NotNull SNode __thisNode__, @Nullable MacroHelper macros) {
     return (BuildMpsLayout_Plugin__BehaviorDescriptor.conflictingJar_id1RsDREvPMQ$.invoke(__thisNode__, macros) != null);
   }
   /*package*/ static SNode findGroup_id7cOEBlPT2gC(@NotNull SNode __thisNode__, final SNode module) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC), LINKS.content$9T6D), CONCEPTS.BuildMps_IdeaPluginGroup$_R)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.group$qLbS), LINKS.modules$JlQo)).contains(module);
-      }
-    }).first();
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC), LINKS.content$9T6D), CONCEPTS.BuildMps_IdeaPluginGroup$_R)).where((it) -> ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.group$qLbS), LINKS.modules$JlQo)).contains(module)).first();
   }
   /*package*/ static boolean isPackagedAutomatically_id36cV00CxaOW(@NotNull SNode __thisNode__) {
     return (SLinkOperations.getTarget(__thisNode__, LINKS.packagingType$WOvS) != null) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.packagingType$WOvS), CONCEPTS.BuildMpsLayout_AutoPluginLayoutType$JU);

@@ -13,13 +13,11 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.kotlin.scopes.SignatureFilter;
-import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
+import java.util.Iterator;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.kotlin.scopes.signed.SignatureScope;
 import jetbrains.mps.kotlin.scopes.signed.ListSignatureScope;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 
 /**
  * Allows to build signatures from a source node, and collect it either as a scope, as a list of sourced signature or
@@ -45,7 +43,7 @@ public class SignatureBuilder<T extends MemberSignature, U extends SNode> {
    * Map each input node to a single signature specified by the function
    */
   public SignatureBuilder<T, U> withSignature(final Function<U, T> signatureBuilder) {
-    withSignatures((U node) -> Sequence.<T>singleton(signatureBuilder.apply(node)));
+    withSignatures((node) -> Sequence.<T>singleton(signatureBuilder.apply(node)));
     return this;
   }
 
@@ -93,139 +91,135 @@ public class SignatureBuilder<T extends MemberSignature, U extends SNode> {
    * @return list of signatures
    */
   public Iterable<SourcedSignature> build(@Nullable final SignatureFilter filter) {
-    return Sequence.fromClosure(new ISequenceClosure<SourcedSignature>() {
-      public Iterable<SourcedSignature> iterable() {
-        return new Iterable<SourcedSignature>() {
-          public Iterator<SourcedSignature> iterator() {
-            return new YieldingIterator<SourcedSignature>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
+    return Sequence.fromClosure(() -> {
+      return (Iterable<SourcedSignature>) () -> {
+        return new YieldingIterator<SourcedSignature>() {
+          private int __CP__ = 0;
+          protected boolean moveToNext() {
 __loop__:
-                do {
+            do {
 __switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 5:
-                      this._5_node_it = Sequence.fromIterable(nodes).iterator();
-                    case 6:
-                      if (!(this._5_node_it.hasNext())) {
-                        this.__CP__ = 1;
-                        break;
-                      }
-                      this._5_node = this._5_node_it.next();
-                      this.__CP__ = 7;
-                      break;
-                    case 9:
-                      this._9_signature_it = Sequence.fromIterable(signatureBuilder.apply(_5_node)).iterator();
-                    case 10:
-                      if (!(this._9_signature_it.hasNext())) {
-                        this.__CP__ = 6;
-                        break;
-                      }
-                      this._9_signature = this._9_signature_it.next();
-                      this.__CP__ = 11;
-                      break;
-                    case 22:
-                      this._22_attr_it = MapSequence.fromMap(attributesMakers).iterator();
-                    case 23:
-                      if (!(this._22_attr_it.hasNext())) {
-                        this.__CP__ = 20;
-                        break;
-                      }
-                      this._22_attr = this._22_attr_it.next();
-                      this.__CP__ = 24;
-                      break;
-                    case 3:
-                      if (filter == null || (filter.acceptKind(kind) && filter.acceptReceiver(receiverType))) {
-                        this.__CP__ = 4;
-                        break;
-                      }
-                      this.__CP__ = 1;
-                      break;
-                    case 13:
-                      if (filter != null && !(filter.acceptSignature(_9_signature, _5_node))) {
-                        this.__CP__ = 14;
-                        break;
-                      }
-                      this.__CP__ = 15;
-                      break;
-                    case 18:
-                      if (attributesMakers != null) {
-                        this.__CP__ = 19;
-                        break;
-                      }
-                      this.__CP__ = 20;
-                      break;
-                    case 26:
-                      if (filter == null || filter.acceptAttributes(_17_attributes)) {
-                        this.__CP__ = 27;
-                        break;
-                      }
-                      this.__CP__ = 10;
-                      break;
-                    case 29:
-                      this.__CP__ = 10;
-                      this.yield(new SourcedSignature(_5_node, _9_signature, _17_attributes));
-                      return true;
-                    case 0:
-                      // Filter out declarations at this level
-                      this.__CP__ = 3;
-                      break;
-                    case 4:
-                      this.__CP__ = 5;
-                      break;
-                    case 7:
-                      // Build signatures for each node
-                      this.__CP__ = 9;
-                      break;
-                    case 11:
-                      // Filter again
-                      this.__CP__ = 13;
-                      break;
-                    case 15:
-
-                      // All good? Compute attributes (if applicable)
-                      this._17_attributes = null;
-                      this.__CP__ = 18;
-                      break;
-                    case 20:
-
-                      this.__CP__ = 26;
-                      break;
-                    case 14:
-                      this.__CP__ = 10;
-                      break;
-                    case 19:
-                      _17_attributes = new HashMap<>();
-                      this.__CP__ = 22;
-                      break;
-                    case 24:
-                      _17_attributes.put(_22_attr.key(), _22_attr.value().apply(_9_signature, _5_node));
-                      this.__CP__ = 23;
-                      break;
-                    case 27:
-                      // And submit to sequence
-                      this.__CP__ = 29;
-                      break;
-                    default:
-                      break __loop__;
+              switch (this.__CP__) {
+                case -1:
+                  assert false : "Internal error";
+                  return false;
+                case 5:
+                  this._5_node_it = Sequence.fromIterable(nodes).iterator();
+                case 6:
+                  if (!(this._5_node_it.hasNext())) {
+                    this.__CP__ = 1;
+                    break;
                   }
-                } while (true);
-                return false;
+                  this._5_node = this._5_node_it.next();
+                  this.__CP__ = 7;
+                  break;
+                case 9:
+                  this._9_signature_it = Sequence.fromIterable(signatureBuilder.apply(_5_node)).iterator();
+                case 10:
+                  if (!(this._9_signature_it.hasNext())) {
+                    this.__CP__ = 6;
+                    break;
+                  }
+                  this._9_signature = this._9_signature_it.next();
+                  this.__CP__ = 11;
+                  break;
+                case 22:
+                  this._22_attr_it = MapSequence.fromMap(attributesMakers).iterator();
+                case 23:
+                  if (!(this._22_attr_it.hasNext())) {
+                    this.__CP__ = 20;
+                    break;
+                  }
+                  this._22_attr = this._22_attr_it.next();
+                  this.__CP__ = 24;
+                  break;
+                case 3:
+                  if (filter == null || (filter.acceptKind(kind) && filter.acceptReceiver(receiverType))) {
+                    this.__CP__ = 4;
+                    break;
+                  }
+                  this.__CP__ = 1;
+                  break;
+                case 13:
+                  if (filter != null && !(filter.acceptSignature(_9_signature, _5_node))) {
+                    this.__CP__ = 14;
+                    break;
+                  }
+                  this.__CP__ = 15;
+                  break;
+                case 18:
+                  if (attributesMakers != null) {
+                    this.__CP__ = 19;
+                    break;
+                  }
+                  this.__CP__ = 20;
+                  break;
+                case 26:
+                  if (filter == null || filter.acceptAttributes(_17_attributes)) {
+                    this.__CP__ = 27;
+                    break;
+                  }
+                  this.__CP__ = 10;
+                  break;
+                case 29:
+                  this.__CP__ = 10;
+                  this.yield(new SourcedSignature(_5_node, _9_signature, _17_attributes));
+                  return true;
+                case 0:
+                  // Filter out declarations at this level
+                  this.__CP__ = 3;
+                  break;
+                case 4:
+                  this.__CP__ = 5;
+                  break;
+                case 7:
+                  // Build signatures for each node
+                  this.__CP__ = 9;
+                  break;
+                case 11:
+                  // Filter again
+                  this.__CP__ = 13;
+                  break;
+                case 15:
+
+                  // All good? Compute attributes (if applicable)
+                  this._17_attributes = null;
+                  this.__CP__ = 18;
+                  break;
+                case 20:
+
+                  this.__CP__ = 26;
+                  break;
+                case 14:
+                  this.__CP__ = 10;
+                  break;
+                case 19:
+                  _17_attributes = new HashMap<>();
+                  this.__CP__ = 22;
+                  break;
+                case 24:
+                  _17_attributes.put(_22_attr.key(), _22_attr.value().apply(_9_signature, _5_node));
+                  this.__CP__ = 23;
+                  break;
+                case 27:
+                  // And submit to sequence
+                  this.__CP__ = 29;
+                  break;
+                default:
+                  break __loop__;
               }
-              private U _5_node;
-              private Iterator<U> _5_node_it;
-              private T _9_signature;
-              private Iterator<T> _9_signature_it;
-              private Map<SignatureAttributeKey<?>, Object> _17_attributes;
-              private IMapping<SignatureAttributeKey<?>, BiFunction<? super T, ? super U, ?>> _22_attr;
-              private Iterator<IMapping<SignatureAttributeKey<?>, BiFunction<? super T, ? super U, ?>>> _22_attr_it;
-            };
+            } while (true);
+            return false;
           }
+          private U _5_node;
+          private Iterator<U> _5_node_it;
+          private T _9_signature;
+          private Iterator<T> _9_signature_it;
+          private Map<SignatureAttributeKey<?>, Object> _17_attributes;
+          private IMapping<SignatureAttributeKey<?>, BiFunction<? super T, ? super U, ?>> _22_attr;
+          private Iterator<IMapping<SignatureAttributeKey<?>, BiFunction<? super T, ? super U, ?>>> _22_attr_it;
         };
-      }
+      };
     });
   }
 
@@ -253,11 +247,7 @@ __switch__:
    * @param collector collector to fill
    */
   public void declareTo(final SignatureCollector collector) {
-    Sequence.fromIterable(build(collector.getFilter())).visitAll(new IVisitor<SourcedSignature>() {
-      public void visit(SourcedSignature it) {
-        collector.collect(it.getSource(), it.getSignature(), it.getAttributes());
-      }
-    });
+    Sequence.fromIterable(build(collector.getFilter())).visitAll((it) -> collector.collect(it.getSource(), it.getSignature(), it.getAttributes()));
   }
 
   public static <T extends MemberSignature, U extends SNode> SignatureBuilder<T, U> create(Iterable<U> nodes, Class<T> kind) {

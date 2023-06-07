@@ -81,7 +81,7 @@ public final class PropertyDeclaration__BehaviorDescriptor extends BaseBHDescrip
 
     // Attributes only matter in an instance context
     if (isInstance) {
-      ClassMemberSignatures.addClassMemberAttributes(signatureBuilder, null, __thisNode__, SPropertyOperations.getBoolean(__thisNode__, PROPS.isOverride$4zN7)).withAttribute(SignatureAttributeKey.VISIBILITY, (PropertySignature signature, SNode node) -> {
+      ClassMemberSignatures.addClassMemberAttributes(signatureBuilder, null, __thisNode__, SPropertyOperations.getBoolean(__thisNode__, PROPS.isOverride$4zN7)).withAttribute(SignatureAttributeKey.VISIBILITY, (signature, node) -> {
         // Setter has its own visibility (if applicable)
         if (signature.getKind() == AccessorKind.SETTER && (SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.setter$C2Xy), LINKS.visibility$vnSV) != null)) {
           return SNodeOperations.getConcept(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.setter$C2Xy), LINKS.visibility$vnSV));
@@ -123,7 +123,7 @@ public final class PropertyDeclaration__BehaviorDescriptor extends BaseBHDescrip
     return ITypeParameters__BehaviorDescriptor.getTypeParameterDescriptors_id28CvMylfXMr.invoke(__thisNode__);
   }
   /*package*/ static boolean collectScope_id7DyvjiA20yV(@NotNull final SNode __thisNode__, ScopeCollector collector, SNode childNode) {
-    collector.declareCollectedScope((SignatureCollector sigCollector) -> {
+    collector.declareCollectedScope((sigCollector) -> {
       // Property accessor has access to constructor scope (no var variables so all read only)
       Iterable<SNode> params = ClassDeclaration__BehaviorDescriptor.getPrimaryNonPropertyVariables_id1$jFvlDFKeB.invoke(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.ClassDeclaration$Jm));
       if (Sequence.fromIterable(params).isNotEmpty()) {

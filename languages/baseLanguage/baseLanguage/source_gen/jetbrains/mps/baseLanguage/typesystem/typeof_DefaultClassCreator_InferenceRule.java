@@ -15,7 +15,6 @@ import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.baseLanguage.behavior.IInferredExpression__BehaviorDescriptor;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -31,7 +30,7 @@ public class typeof_DefaultClassCreator_InferenceRule extends AbstractInferenceR
   }
   public void applyRule(final SNode defaultClassCreator, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // Since this rule override IInferredExpression, append dependencies there
-    InferenceDependencyHelper.addInferenceDependencies(typeCheckingContext, defaultClassCreator);
+    InferenceHelper.addInferenceDependencies(typeCheckingContext, defaultClassCreator);
 
     if (!(ListSequence.fromList(SLinkOperations.getChildren(defaultClassCreator, LINKS.typeParameter$KPP3)).isEmpty() || ListSequence.fromList(SLinkOperations.getChildren(defaultClassCreator, LINKS.typeParameter$KPP3)).count() == ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(defaultClassCreator, LINKS.classifier$9NRM), LINKS.typeVariableDeclaration$Lipp)).count())) {
       {
@@ -48,19 +47,17 @@ public class typeof_DefaultClassCreator_InferenceRule extends AbstractInferenceR
     // ---
     SNode constructedType;
     if ((boolean) IInferredExpression__BehaviorDescriptor.needInference_idQ$FjPqwIoN.invoke(defaultClassCreator)) {
-      List<SNode> typeVariables = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(defaultClassCreator, LINKS.classifier$9NRM), LINKS.typeVariableDeclaration$Lipp)).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          final SNode var_typevar_2811173755044072053 = typeCheckingContext.createNewRuntimeTypesVariable();
-          if ((SLinkOperations.getTarget(it, LINKS.bound$aZCB) != null)) {
-            {
-              SNode _nodeToCheck_1029348928467 = defaultClassCreator;
-              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2811173755044072056", 0, null);
-              typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getRepresentative(var_typevar_2811173755044072053), (SNode) SLinkOperations.getTarget(it, LINKS.bound$aZCB), false, true, _info_12389875345);
-            }
+      List<SNode> typeVariables = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(defaultClassCreator, LINKS.classifier$9NRM), LINKS.typeVariableDeclaration$Lipp)).select((it) -> {
+        final SNode var_typevar_2811173755044072053 = typeCheckingContext.createNewRuntimeTypesVariable();
+        if ((SLinkOperations.getTarget(it, LINKS.bound$aZCB) != null)) {
+          {
+            SNode _nodeToCheck_1029348928467 = defaultClassCreator;
+            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2811173755044072056", 0, null);
+            typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getRepresentative(var_typevar_2811173755044072053), (SNode) SLinkOperations.getTarget(it, LINKS.bound$aZCB), false, true, _info_12389875345);
           }
-          return (SNode) typeCheckingContext.getRepresentative(var_typevar_2811173755044072053);
         }
-      }).toListSequence();
+        return (SNode) typeCheckingContext.getRepresentative(var_typevar_2811173755044072053);
+      }).toList();
       constructedType = _quotation_createNode_9il0ce_a0b0h0b(typeVariables, SLinkOperations.getTarget(defaultClassCreator, LINKS.classifier$9NRM));
     } else {
       constructedType = _quotation_createNode_9il0ce_a0a0a7a1(SLinkOperations.getTarget(defaultClassCreator, LINKS.classifier$9NRM), SLinkOperations.getChildren(defaultClassCreator, LINKS.typeParameter$KPP3));

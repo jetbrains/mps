@@ -15,7 +15,6 @@ import java.util.List;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -345,11 +344,7 @@ public class BL_node_factories {
           SLinkOperations.setTarget(newNode, LINKS.type$a1UY, SNodeOperations.copyNode(SLinkOperations.getTarget(original, LINKS.type$a1UY)));
           SLinkOperations.setTarget(newNode, LINKS.initializer$2twD, SNodeOperations.copyNode(SLinkOperations.getTarget(original, LINKS.initializer$2twD)));
           SPropertyOperations.assign(newNode, PROPS.isFinal$gvTP, SPropertyOperations.getBoolean(original, PROPS.isFinal$gvTP));
-          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.annotation$K49I)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(original, LINKS.annotation$K49I)).select(new ISelector<SNode, SNode>() {
-            public SNode select(SNode it) {
-              return SNodeOperations.copyNode(it);
-            }
-          }));
+          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.annotation$K49I)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(original, LINKS.annotation$K49I)).select((it) -> SNodeOperations.copyNode(it)));
         }
       }
     }

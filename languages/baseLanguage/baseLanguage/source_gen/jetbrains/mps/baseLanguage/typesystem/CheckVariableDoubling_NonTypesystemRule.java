@@ -10,9 +10,7 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.Objects;
 import java.util.Collections;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
@@ -31,34 +29,14 @@ public class CheckVariableDoubling_NonTypesystemRule extends AbstractNonTypesyst
     Scope variablesScope = Scope.getScope(Scope.parent(localVariableDeclaration), localVariableDeclaration, CONCEPTS.VariableDeclaration$Y0);
     Iterable<SNode> variablesInScope;
     if (variablesScope != null) {
-      variablesInScope = Sequence.fromIterable(variablesScope.getAvailableElements(SPropertyOperations.getString(localVariableDeclaration, PROPS.name$MnvL))).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.VariableDeclaration$Y0);
-        }
-      }).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SNodeOperations.cast(it, CONCEPTS.VariableDeclaration$Y0);
-        }
-      }).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(localVariableDeclaration, PROPS.name$MnvL));
-        }
-      });
+      variablesInScope = Sequence.fromIterable(variablesScope.getAvailableElements(SPropertyOperations.getString(localVariableDeclaration, PROPS.name$MnvL))).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.VariableDeclaration$Y0)).select((it) -> SNodeOperations.cast(it, CONCEPTS.VariableDeclaration$Y0)).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(localVariableDeclaration, PROPS.name$MnvL)));
     } else {
       variablesInScope = Collections.emptyList();
     }
     final SNode nearestMethod = SNodeOperations.getNodeAncestor(localVariableDeclaration, CONCEPTS.IMethodLike$L7, false, false);
-    Iterable<SNode> variablesFromCurrentMethod = Sequence.fromIterable(variablesInScope).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.getNodeAncestor(it, CONCEPTS.IMethodLike$L7, false, false) == nearestMethod;
-      }
-    });
+    Iterable<SNode> variablesFromCurrentMethod = Sequence.fromIterable(variablesInScope).where((it) -> SNodeOperations.getNodeAncestor(it, CONCEPTS.IMethodLike$L7, false, false) == nearestMethod);
 
-    if (Sequence.fromIterable(variablesFromCurrentMethod).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.ParameterDeclaration$RG) || SNodeOperations.isInstanceOf(it, CONCEPTS.LocalVariableDeclaration$41);
-      }
-    })) {
+    if (Sequence.fromIterable(variablesFromCurrentMethod).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.ParameterDeclaration$RG) || SNodeOperations.isInstanceOf(it, CONCEPTS.LocalVariableDeclaration$41))) {
       {
         final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$MnvL);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(localVariableDeclaration, "Variable " + SPropertyOperations.getString(localVariableDeclaration, PROPS.name$MnvL) + " is already defined in the scope", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4164094338984214928", null, errorTarget);

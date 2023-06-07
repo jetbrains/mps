@@ -11,7 +11,6 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.util.iterable.RecursiveIterator;
 import java.util.Iterator;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -50,25 +49,25 @@ public final class RuntimeDependencies {
    */
   public void collectFor(SNode module) {
     Iterable<SNode> ul = SLinkOperations.collect(SNodeOperations.ofConcept(declaredDependencies(module), CONCEPTS.BuildMps_ModuleDependencyUseLanguage$uH), LINKS.language$udAS);
-    List<SNode> devkits = Sequence.fromIterable(includingExtended(SLinkOperations.collect(SNodeOperations.ofConcept(declaredDependencies(module), CONCEPTS.BuildMps_ModuleDependencyOnDevKit$4s), LINKS.devkit$Q_pH))).toListSequence();
+    List<SNode> devkits = Sequence.fromIterable(includingExtended(SLinkOperations.collect(SNodeOperations.ofConcept(declaredDependencies(module), CONCEPTS.BuildMps_ModuleDependencyOnDevKit$4s), LINKS.devkit$Q_pH))).toList();
     Iterable<SNode> devkitLanguages = SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.collectMany(devkits, LINKS.exports$Qvxv), CONCEPTS.BuildMps_DevKitExportLanguage$EV), LINKS.language$qqxl);
     Iterable<SNode> devkitSolutions = SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.collectMany(devkits, LINKS.exports$Qvxv), CONCEPTS.BuildMps_DevKitExportSolution$71), LINKS.solution$qxKS);
-    List<SNode> allUsedLang = Sequence.fromIterable(ul).concat(Sequence.fromIterable(devkitLanguages)).where(new NotNullWhereFilter<SNode>()).toListSequence();
+    List<SNode> allUsedLang = Sequence.fromIterable(ul).concat(Sequence.fromIterable(devkitLanguages)).where(new NotNullWhereFilter()).toList();
     myUsedLanguages.addAll(allUsedLang);
     Iterable<SNode> targetLanguages = SLinkOperations.collect(SNodeOperations.ofConcept(declaredDependencies(module), CONCEPTS.BuildMps_ModuleDependencyTargetLanguage$oN), LINKS.language$wAwY);
     // Don't want to find out RTs of extended languages at execution time, record them at once.
     // Besides, we care about RTs state the moment code was generated, if newer language version decides to change RT, deployed module won't get affected.
-    for (SNode rts : Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.collectMany(includingExtendedLanguages(ListSequence.fromList(allUsedLang).concat(Sequence.fromIterable(targetLanguages))), LINKS.runtime$lxKd), CONCEPTS.BuildMps_ModuleSolutionRuntime$b5), LINKS.solution$3MS)).where(new NotNullWhereFilter<SNode>())) {
+    for (SNode rts : Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.collectMany(includingExtendedLanguages(ListSequence.fromList(allUsedLang).concat(Sequence.fromIterable(targetLanguages))), LINKS.runtime$lxKd), CONCEPTS.BuildMps_ModuleSolutionRuntime$b5), LINKS.solution$3MS)).where(new NotNullWhereFilter())) {
       myLangRuntimes.add(rts);
     }
-    for (SNode s : Sequence.fromIterable(devkitSolutions).where(new NotNullWhereFilter<SNode>())) {
+    for (SNode s : Sequence.fromIterable(devkitSolutions).where(new NotNullWhereFilter())) {
       myCompileDeps.add(s);
     }
 
-    for (SNode m : Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(declaredDependencies(module), CONCEPTS.BuildMps_ModuleDependencyOnModule$1C), LINKS.module$kGi0)).where(new NotNullWhereFilter<SNode>())) {
+    for (SNode m : Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(declaredDependencies(module), CONCEPTS.BuildMps_ModuleDependencyOnModule$1C), LINKS.module$kGi0)).where(new NotNullWhereFilter())) {
       myCompileDeps.add(m);
     }
-    for (SNode m : Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(declaredDependencies(module), CONCEPTS.BuildMps_ModuleDependencyExtendLanguage$W), LINKS.language$NYXp)).where(new NotNullWhereFilter<SNode>())) {
+    for (SNode m : Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(declaredDependencies(module), CONCEPTS.BuildMps_ModuleDependencyExtendLanguage$W), LINKS.language$NYXp)).where(new NotNullWhereFilter())) {
       myCompileDeps.add(m);
     }
   }
@@ -87,11 +86,7 @@ public final class RuntimeDependencies {
   }
 
   private static Iterable<SNode> declaredDependencies(SNode module) {
-    return ListSequence.fromList(SLinkOperations.getChildren(module, LINKS.dependencies$j8Lj)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return (SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMps_ExtractedModuleDependency$e8) ? SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.BuildMps_ExtractedModuleDependency$e8), LINKS.dependency$u_ko) : it);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(module, LINKS.dependencies$j8Lj)).select((it) -> (SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMps_ExtractedModuleDependency$e8) ? SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.BuildMps_ExtractedModuleDependency$e8), LINKS.dependency$u_ko) : it));
   }
 
   private static Iterable<SNode> includingExtended(Iterable<SNode> devkits) {
@@ -110,7 +105,7 @@ public final class RuntimeDependencies {
         return Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(declaredDependencies(node), CONCEPTS.BuildMps_ModuleDependencyExtendLanguage$W), LINKS.language$NYXp)).iterator();
       }
     };
-    return Sequence.fromIterable(rv).where(new NotNullWhereFilter<SNode>());
+    return Sequence.fromIterable(rv).where(new NotNullWhereFilter());
   }
 
   private static final class CONCEPTS {

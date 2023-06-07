@@ -11,6 +11,7 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -25,16 +26,19 @@ public class supertypesOf_SNodeListType_SubtypingRule extends SubtypingRule_Runt
   public List<SNode> getSubOrSuperTypes(SNode type, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> supertypes = ListSequence.fromList(new ArrayList<SNode>());
     SNode elementConcept = SLinkOperations.getTarget(type, LINKS.elementConcept$hlru);
-    if (elementConcept != null) {
+
+    // what we check here is that elementConcept is 1/ non null 2/ not a RuntimeTypeVariable (seem to happen)
+    // or as gently mentioned in supertypesOf_SReferenceType: DO NOT TOUCH THIS. CONCEPT MIGHT BE A TYPE VARIABLE
+    if (SNodeOperations.isInstanceOf(elementConcept, CONCEPTS.AbstractConceptDeclaration$KA)) {
       List<SNode> superConcepts = AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(elementConcept);
       for (SNode superConcept : ListSequence.fromList(superConcepts)) {
-        ListSequence.fromList(supertypes).addElement(_quotation_createNode_f6ipu3_a0a0a1a2a1(superConcept));
+        ListSequence.fromList(supertypes).addElement(_quotation_createNode_f6ipu3_a0a0a1a5a1(superConcept));
       }
       // ==========
-      ListSequence.fromList(supertypes).addElement(_quotation_createNode_f6ipu3_a0a3a2a1());
+      ListSequence.fromList(supertypes).addElement(_quotation_createNode_f6ipu3_a0a3a5a1());
     }
-    ListSequence.fromList(supertypes).addElement(_quotation_createNode_f6ipu3_a0a3a1(elementConcept));
-    ListSequence.fromList(supertypes).addElement(_quotation_createNode_f6ipu3_a0a4a1());
+    ListSequence.fromList(supertypes).addElement(_quotation_createNode_f6ipu3_a0a6a1(elementConcept));
+    ListSequence.fromList(supertypes).addElement(_quotation_createNode_f6ipu3_a0a7a1());
     return supertypes;
   }
   public SAbstractConcept getApplicableConcept() {
@@ -46,20 +50,20 @@ public class supertypesOf_SNodeListType_SubtypingRule extends SubtypingRule_Runt
   public boolean isWeak() {
     return false;
   }
-  private static SNode _quotation_createNode_f6ipu3_a0a0a1a2a1(Object parameter_1) {
+  private static SNode _quotation_createNode_f6ipu3_a0a0a1a5a1(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x10aae26be32L, "SNodeListType"));
     quotedNode_2 = nb.getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10aae26be32L, 0x10aae27c421L, "elementConcept"), (SNode) parameter_1);
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_f6ipu3_a0a3a2a1() {
+  private static SNode _quotation_createNode_f6ipu3_a0a3a5a1() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x10aae26be32L, "SNodeListType"));
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_f6ipu3_a0a3a1(Object parameter_1) {
+  private static SNode _quotation_createNode_f6ipu3_a0a6a1(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10c25fb076aL, "ListType"));
@@ -70,7 +74,7 @@ public class supertypesOf_SNodeListType_SubtypingRule extends SubtypingRule_Runt
     quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, 0x10c25fe95c5L, "elementType"), quotedNode_3);
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_f6ipu3_a0a4a1() {
+  private static SNode _quotation_createNode_f6ipu3_a0a7a1() {
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
@@ -88,6 +92,7 @@ public class supertypesOf_SNodeListType_SubtypingRule extends SubtypingRule_Runt
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
     /*package*/ static final SConcept SNodeListType$Qe = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10aae26be32L, "jetbrains.mps.lang.smodel.structure.SNodeListType");
   }
 }

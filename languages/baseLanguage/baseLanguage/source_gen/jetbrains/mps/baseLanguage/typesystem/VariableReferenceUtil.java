@@ -20,8 +20,6 @@ import java.util.Set;
 import jetbrains.mps.baseLanguage.behavior.StatementList__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.behavior.ConstructorDeclaration__BehaviorDescriptor;
@@ -155,21 +153,9 @@ public class VariableReferenceUtil {
       SNode myInitializer = SNodeOperations.getNodeAncestor(firstStatement, CONCEPTS.InstanceInitializer$4x, false, false);
       final int myIndexInClass = ((myInitializer != null) ? SNodeOperations.getIndexInParent(myInitializer) : Integer.MAX_VALUE);
 
-      Iterable<SNode> initializers = Sequence.fromIterable(Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(SNodeOperations.cast(SNodeOperations.getParent(field), CONCEPTS.Classifier$Ix))).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.InstanceInitializer$4x) && SNodeOperations.getIndexInParent(it) < myIndexInClass;
-        }
-      }).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SNodeOperations.as(it, CONCEPTS.InstanceInitializer$4x);
-        }
-      });
+      Iterable<SNode> initializers = Sequence.fromIterable(Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(SNodeOperations.cast(SNodeOperations.getParent(field), CONCEPTS.Classifier$Ix))).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.InstanceInitializer$4x) && SNodeOperations.getIndexInParent(it) < myIndexInClass).select((it) -> SNodeOperations.as(it, CONCEPTS.InstanceInitializer$4x));
 
-      return Sequence.fromIterable(initializers).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode initializer) {
-          return containsWrite(SLinkOperations.getTarget(initializer, LINKS.statementList$fANs), field);
-        }
-      });
+      return Sequence.fromIterable(initializers).any((initializer) -> containsWrite(SLinkOperations.getTarget(initializer, LINKS.statementList$fANs), field));
     }
   }
 

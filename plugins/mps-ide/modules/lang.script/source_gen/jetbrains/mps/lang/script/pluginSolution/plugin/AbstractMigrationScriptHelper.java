@@ -24,8 +24,6 @@ import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.ide.findusages.model.scopes.ModelsScope;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.smodel.SModelStereotype;
@@ -85,24 +83,8 @@ public abstract class AbstractMigrationScriptHelper {
 
   private static SearchScope createMigrationScopeInternal(Iterable<SModule> modules, Iterable<SModel> models) {
     Set<SModel> result = SetSequence.fromSet(new HashSet<SModel>());
-    SetSequence.fromSet(result).addSequence(Sequence.fromIterable(models).where(new IWhereFilter<SModel>() {
-      public boolean accept(SModel it) {
-        return includeModel(it);
-      }
-    }));
-    SetSequence.fromSet(result).addSequence(Sequence.fromIterable(modules).where(new IWhereFilter<SModule>() {
-      public boolean accept(SModule it) {
-        return !(it.isReadOnly());
-      }
-    }).translate(new ITranslator2<SModule, SModel>() {
-      public Iterable<SModel> translate(SModule it) {
-        return it.getModels();
-      }
-    }).where(new IWhereFilter<SModel>() {
-      public boolean accept(SModel it) {
-        return includeModel(it);
-      }
-    }));
+    SetSequence.fromSet(result).addSequence(Sequence.fromIterable(models).where((it) -> includeModel(it)));
+    SetSequence.fromSet(result).addSequence(Sequence.fromIterable(modules).where((it) -> !(it.isReadOnly())).translate((it) -> it.getModels()).where((it) -> includeModel(it)));
     return new ModelsScope(result);
   }
   private static boolean includeModel(SModel model) {

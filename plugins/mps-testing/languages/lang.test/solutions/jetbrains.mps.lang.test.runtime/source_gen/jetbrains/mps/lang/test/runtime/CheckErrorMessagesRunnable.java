@@ -14,7 +14,6 @@ import jetbrains.mps.errors.item.NodeReportItem;
 import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 
 public class CheckErrorMessagesRunnable implements Runnable {
   private final SNode myNode;
@@ -56,11 +55,7 @@ public class CheckErrorMessagesRunnable implements Runnable {
       if (!(ListSequence.fromList(descendants).contains(child))) {
         continue;
       }
-      if (CollectionSequence.fromCollection(myExcludes).any(new IWhereFilter<CheckExpectedMessageRunnable>() {
-        public boolean accept(CheckExpectedMessageRunnable it) {
-          return it.isMessageExpected(reporter);
-        }
-      })) {
+      if (CollectionSequence.fromCollection(myExcludes).any((it) -> it.isMessageExpected(reporter))) {
         continue;
       }
       Assert.assertTrue(getErrorString(reporter, child), isReportItemAllowed(reporter));

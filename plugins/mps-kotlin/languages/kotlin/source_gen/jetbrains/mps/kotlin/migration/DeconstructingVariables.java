@@ -24,8 +24,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -47,11 +45,7 @@ public class DeconstructingVariables extends MigrationScriptBase {
     {
       SearchScope scope_48mnph_a0e = CommandUtil.createScope(m);
       final SearchScope scope_48mnph_a0e_0 = new EditableFilteringScope(scope_48mnph_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_48mnph_a0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_48mnph_a0e_0;
       migrate(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ForStatement$7d, false), LINKS._variables$_81g);
       migrate(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MultiLambdaParameter$2f, false), LINKS._variables$CMsL);
 
@@ -67,10 +61,10 @@ public class DeconstructingVariables extends MigrationScriptBase {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, "jetbrains.mps.kotlin"), 3);
   }
 
-  /*package*/ void migrate(Collection<SNode> nodes, SContainmentLink link) {
+  /*package*/ void migrate(Iterable<SNode> nodes, SContainmentLink link) {
     final Map<SNode, SNode> mapping = MapSequence.fromMap(new HashMap<SNode, SNode>());
 
-    for (SNode parent : CollectionSequence.fromCollection(nodes)) {
+    for (SNode parent : Sequence.fromIterable(nodes)) {
       for (SNode child : Sequence.fromIterable(parent.getChildren(link))) {
         {
           final SNode variableDeclaration = child;
@@ -86,19 +80,13 @@ public class DeconstructingVariables extends MigrationScriptBase {
         }
       }
 
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getContainingRoot(parent), CONCEPTS.VariableRefExpression$J$, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          if (MapSequence.fromMap(mapping).containsKey(SLinkOperations.getTarget(it, LINKS.target$xQFr))) {
-            SLinkOperations.setTarget(it, LINKS.target$xQFr, MapSequence.fromMap(mapping).get(SLinkOperations.getTarget(it, LINKS.target$xQFr)));
-          }
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getContainingRoot(parent), CONCEPTS.VariableRefExpression$J$, false, new SAbstractConcept[]{})).visitAll((it) -> {
+        if (MapSequence.fromMap(mapping).containsKey(SLinkOperations.getTarget(it, LINKS.target$xQFr))) {
+          SLinkOperations.setTarget(it, LINKS.target$xQFr, MapSequence.fromMap(mapping).get(SLinkOperations.getTarget(it, LINKS.target$xQFr)));
         }
       });
 
-      MapSequence.fromMap(mapping).visitAll(new IVisitor<IMapping<SNode, SNode>>() {
-        public void visit(IMapping<SNode, SNode> it) {
-          SNodeOperations.deleteNode(it.key());
-        }
-      });
+      MapSequence.fromMap(mapping).visitAll((it) -> SNodeOperations.deleteNode(it.key()));
       MapSequence.fromMap(mapping).clear();
     }
   }

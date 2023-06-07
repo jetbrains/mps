@@ -15,7 +15,6 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import com.intellij.openapi.vcs.changes.ChangeListManager;
 import com.intellij.openapi.vcs.FileStatus;
 import com.intellij.openapi.vcs.changes.ContentRevision;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import com.intellij.openapi.vcs.merge.MergeProvider;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
@@ -29,7 +28,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.vcs.diff.merge.MergeSession;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.persistence.FilePerRootDataSource;
 import java.io.File;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -72,11 +70,7 @@ public class ConflictingModelsUtil {
         }
       }
     }
-    return SetSequence.fromSet(conflictedFiles).where(new IWhereFilter<VirtualFile>() {
-      public boolean accept(VirtualFile f) {
-        return SetSequence.fromSet(ModelMergeTool.SUPPORTED_TYPES).contains(f.getFileType());
-      }
-    }).toListSequence();
+    return SetSequence.fromSet(conflictedFiles).where((f) -> SetSequence.fromSet(ModelMergeTool.SUPPORTED_TYPES).contains(f.getFileType())).toList();
   }
 
   public static boolean hasResolvableConflicts(final Project project, final MergeProvider provider, final Iterable<VirtualFile> conflictedFiles) {
@@ -122,11 +116,7 @@ public class ConflictingModelsUtil {
           final Wrappers._T<MergeSession> mergeSession = new Wrappers._T<MergeSession>();
           ProjectHelper.getModelAccess(project).runReadAction(() -> mergeSession.value = MergeSession.createMergeSession(baseModel, mineModel, repoModel));
 
-          int conflictingChangesCount = Sequence.fromIterable(mergeSession.value.getAllChanges()).where(new IWhereFilter<ModelChange>() {
-            public boolean accept(ModelChange c) {
-              return Sequence.fromIterable(mergeSession.value.getConflictedWith(c)).isNotEmpty();
-            }
-          }).count();
+          int conflictingChangesCount = Sequence.fromIterable(mergeSession.value.getAllChanges()).where((c) -> Sequence.fromIterable(mergeSession.value.getConflictedWith(c)).isNotEmpty()).count();
           if (conflictingChangesCount == 0) {
             result[0] = true;
             return;
@@ -215,11 +205,7 @@ public class ConflictingModelsUtil {
           final Wrappers._T<MergeSession> mergeSession = new Wrappers._T<MergeSession>(null);
           // read action:
           ma.runReadAction(() -> mergeSession.value = MergeSession.createMergeSession(baseModel.value, mineModel.value, repoModel.value));
-          int conflictingChangesCount = Sequence.fromIterable(mergeSession.value.getAllChanges()).where(new IWhereFilter<ModelChange>() {
-            public boolean accept(ModelChange c) {
-              return Sequence.fromIterable(mergeSession.value.getConflictedWith(c)).isNotEmpty();
-            }
-          }).count();
+          int conflictingChangesCount = Sequence.fromIterable(mergeSession.value.getAllChanges()).where((c) -> Sequence.fromIterable(mergeSession.value.getConflictedWith(c)).isNotEmpty()).count();
           if (conflictingChangesCount != 0) {
             if (LOG.isInfoLevel()) {
               LOG.info("there are still conflicted changes in " + SModelOperations.getModelName(baseModel.value));

@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Objects;
 import jetbrains.mps.scope.ListScope;
@@ -50,15 +49,7 @@ public class RequirementEntryReference_Constraints extends BaseConstraintsDescri
 
             List<SNode> allEntries = SModelOperations.nodesIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.Entry$Jp);
 
-            Iterable<SNode> possibleTargets = ListSequence.fromList(allEntries).where(new IWhereFilter<SNode>() {
-              public boolean accept(final SNode entry) {
-                return ListSequence.fromList(SLinkOperations.getChildren(currentTrace, LINKS.mentions$Vn9B)).all(new IWhereFilter<SNode>() {
-                  public boolean accept(SNode it) {
-                    return Objects.equals(it, _context.getReferenceNode()) || (SLinkOperations.getTarget(it, LINKS.targetEntry$oWVM) == null) || !(Objects.equals(SLinkOperations.getTarget(it, LINKS.targetEntry$oWVM), entry));
-                  }
-                });
-              }
-            });
+            Iterable<SNode> possibleTargets = ListSequence.fromList(allEntries).where((final SNode entry) -> ListSequence.fromList(SLinkOperations.getChildren(currentTrace, LINKS.mentions$Vn9B)).all((it) -> Objects.equals(it, _context.getReferenceNode()) || (SLinkOperations.getTarget(it, LINKS.targetEntry$oWVM) == null) || !(Objects.equals(SLinkOperations.getTarget(it, LINKS.targetEntry$oWVM), entry))));
 
             return ListScope.forNamedElements(possibleTargets);
           }

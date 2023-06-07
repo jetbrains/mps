@@ -15,7 +15,6 @@ import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import com.intellij.execution.process.ProcessHandler;
 import com.intellij.execution.ExecutionException;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import java.io.IOException;
 import com.intellij.execution.process.ProcessNotCreatedException;
 import com.intellij.execution.configurations.GeneralCommandLine;
@@ -80,7 +79,7 @@ public class ProcessHandlerBuilder {
       }
       if (c instanceof Collection) {
         // if anyone passes collection of whatever else but string, has to bear with consequences 
-        append(CollectionSequence.fromCollection(((Collection<String>) c)).toListSequence());
+        append(CollectionSequence.fromCollection(((Collection<String>) c)).toList());
         continue;
       }
       // tolerate null, what would be the benefit of failing with exception in that case?
@@ -105,11 +104,7 @@ public class ProcessHandlerBuilder {
 
     try {
       Process process = builder.start();
-      DefaultProcessHandler processHandler = new DefaultProcessHandler(process, ListSequence.fromList(myCommandLine).foldLeft("", new ILeftCombinator<String, String>() {
-        public String combine(String s, String it) {
-          return ((s == null || s.length() == 0) ? it : s + " " + it);
-        }
-      }));
+      DefaultProcessHandler processHandler = new DefaultProcessHandler(process, ListSequence.fromList(myCommandLine).foldLeft("", (String s, String it) -> ((s == null || s.length() == 0) ? it : s + " " + it)));
       return processHandler;
     } catch (IOException e) {
       LOG.error("Start process failed", e);

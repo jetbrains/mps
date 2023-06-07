@@ -18,7 +18,7 @@ import jetbrains.mps.lang.dataFlow.framework.analyzers.LivenessAnalyzer;
 import jetbrains.mps.lang.dataFlow.framework.analyzers.ReachingDefinitionsAnalyzer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -113,15 +113,15 @@ public class ExtractMethodRefactoringAnalyzer {
   }
   private boolean findIfCanBeStatic() {
     for (SNode node : ListSequence.fromList(this.myPartToExtract)) {
-      if (ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
+      if (ListSequence.fromList(ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+        public Boolean invoke(SNode it) {
           return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.FieldDeclaration$ie);
         }
-      }).toListSequence().isNotEmpty() || ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.IThisExpression$8h, false, new SAbstractConcept[]{})).isNotEmpty() || ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.LocalMethodCall$zT, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
+      }).toList()).isNotEmpty() || ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.IThisExpression$8h, false, new SAbstractConcept[]{})).isNotEmpty() || ListSequence.fromList(ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.LocalMethodCall$zT, false, new SAbstractConcept[]{})).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+        public Boolean invoke(SNode it) {
           return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$pyYw), CONCEPTS.InstanceMethodDeclaration$39);
         }
-      }).toListSequence().isNotEmpty() || ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.SuperMethodCall$pW, false, new SAbstractConcept[]{})).isNotEmpty()) {
+      }).toList()).isNotEmpty() || ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.SuperMethodCall$pW, false, new SAbstractConcept[]{})).isNotEmpty()) {
         return false;
       }
     }
@@ -158,7 +158,7 @@ public class ExtractMethodRefactoringAnalyzer {
     Set<SNode> result = SetSequence.fromSet(new HashSet<SNode>());
     SetSequence.fromSet(result).addSequence(SetSequence.fromSet(this.getVarableLiveAtExitPoints()));
     Iterable<SNode> t = SetSequence.fromSet(result).intersect(SetSequence.fromSet(this.getModificationsReachingExitPoints(true)));
-    return ListSequence.fromListWithValues(new ArrayList<SNode>(), Sequence.fromIterable(t).toListSequence());
+    return ListSequence.fromListWithValues(new ArrayList<SNode>(), Sequence.fromIterable(t).toList());
   }
   private Set<SNode> getModificationsReachingExitPoints(boolean internal) {
     Set<SNode> result = SetSequence.fromSet(new LinkedHashSet<SNode>());
@@ -276,15 +276,15 @@ public class ExtractMethodRefactoringAnalyzer {
       SetSequence.fromSet(nodeInstructions).addSequence(ListSequence.fromList(program.getInstructionsFor(node)));
     }
     AnalysisResult<Set<WriteInstruction>> reachability = program.analyze(new ReachingDefinitionsAnalyzer());
-    for (Instruction instruction : SetSequence.fromSet(nodeInstructions).where(new IWhereFilter<Instruction>() {
-      public boolean accept(Instruction it) {
+    for (Instruction instruction : SetSequence.fromSet(nodeInstructions).where(new _FunctionTypes._return_P1_E0<Boolean, Instruction>() {
+      public Boolean invoke(Instruction it) {
         return it instanceof ReadInstruction;
       }
     })) {
       final ReadInstruction read = (ReadInstruction) instruction;
       Set<WriteInstruction> writes = reachability.get(read);
-      if (SetSequence.fromSet(writes).where(new IWhereFilter<WriteInstruction>() {
-        public boolean accept(WriteInstruction it) {
+      if (SetSequence.fromSet(writes).where(new _FunctionTypes._return_P1_E0<Boolean, WriteInstruction>() {
+        public Boolean invoke(WriteInstruction it) {
           return it.getVariable() == read.getVariable();
         }
       }).isEmpty()) {

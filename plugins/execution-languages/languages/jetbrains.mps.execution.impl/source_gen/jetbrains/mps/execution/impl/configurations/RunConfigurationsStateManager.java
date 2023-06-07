@@ -18,9 +18,7 @@ import com.intellij.execution.ExecutionManager;
 import com.intellij.execution.ui.RunContentManagerImpl;
 import com.intellij.execution.configurations.RunConfiguration;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.classloading.ModuleClassLoader;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.ArrayList;
 import com.intellij.execution.impl.RunManagerImpl;
 import com.intellij.execution.RunManagerEx;
@@ -114,15 +112,7 @@ public class RunConfigurationsStateManager implements ProjectComponent, PluginRe
     final RunContentManagerImpl contentManager = (RunContentManagerImpl) executionManager.getContentManager();
 
     Iterable<RunConfiguration> allConfigurationsList = getRunManager().getAllConfigurationsList();
-    final List<String> reloadableConfigurationNames = Sequence.fromIterable(allConfigurationsList).where(new IWhereFilter<RunConfiguration>() {
-      public boolean accept(RunConfiguration it) {
-        return it.getClass().getClassLoader() instanceof ModuleClassLoader;
-      }
-    }).select(new ISelector<RunConfiguration, String>() {
-      public String select(RunConfiguration it) {
-        return it.getName();
-      }
-    }).toListSequence();
+    final List<String> reloadableConfigurationNames = Sequence.fromIterable(allConfigurationsList).where((it) -> it.getClass().getClassLoader() instanceof ModuleClassLoader).select((it) -> it.getName()).toList();
     final List<RunContentDescriptor> descriptors = ListSequence.fromList(new ArrayList<RunContentDescriptor>());
     for (RunContentDescriptor descriptor : ListSequence.fromList(contentManager.getAllDescriptors())) {
       if (ListSequence.fromList(reloadableConfigurationNames).contains(descriptor.getDisplayName())) {

@@ -11,7 +11,6 @@ import jetbrains.mps.vcs.diff.changes.NodeGroupChange;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -20,8 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.vcs.diff.StructChangeSet;
 import jetbrains.mps.vcs.diff.StructChangeSetBuilder;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import org.junit.Assert;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -60,16 +57,8 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
     // public void f3() { int var = 7; } =>
     // public void f3() { int var; }
     testDiffCorectness(3, (SNode n1, SNode n2) -> {
-      SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n1, CONCEPTS.LocalVariableDeclaration$41, false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode n) {
-          return Objects.equals(SPropertyOperations.getString(n, PROPS.name$MnvL), "var");
-        }
-      });
-      SNode n21 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n2, CONCEPTS.LocalVariableDeclaration$41, false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode n) {
-          return Objects.equals(SPropertyOperations.getString(n, PROPS.name$MnvL), "var");
-        }
-      });
+      SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n1, CONCEPTS.LocalVariableDeclaration$41, false, new SAbstractConcept[]{})).findFirst((n) -> Objects.equals(SPropertyOperations.getString(n, PROPS.name$MnvL), "var"));
+      SNode n21 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n2, CONCEPTS.LocalVariableDeclaration$41, false, new SAbstractConcept[]{})).findFirst((n) -> Objects.equals(SPropertyOperations.getString(n, PROPS.name$MnvL), "var"));
       return new ModelChange[]{new NodeGroupChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.initializer$2twD, 0, 1, 0, 0)};
     });
   }
@@ -78,16 +67,8 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
     // public void f4() { int var; } =>
     // public void f4() { int var = 12 + (9 - 8) * 7; }
     testDiffCorectness(4, (SNode n1, SNode n2) -> {
-      SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n1, CONCEPTS.LocalVariableDeclaration$41, false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode n) {
-          return Objects.equals(SPropertyOperations.getString(n, PROPS.name$MnvL), "var");
-        }
-      });
-      SNode n21 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n2, CONCEPTS.LocalVariableDeclaration$41, false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode n) {
-          return Objects.equals(SPropertyOperations.getString(n, PROPS.name$MnvL), "var");
-        }
-      });
+      SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n1, CONCEPTS.LocalVariableDeclaration$41, false, new SAbstractConcept[]{})).findFirst((n) -> Objects.equals(SPropertyOperations.getString(n, PROPS.name$MnvL), "var"));
+      SNode n21 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n2, CONCEPTS.LocalVariableDeclaration$41, false, new SAbstractConcept[]{})).findFirst((n) -> Objects.equals(SPropertyOperations.getString(n, PROPS.name$MnvL), "var"));
       return new ModelChange[]{new NodeGroupChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.initializer$2twD, 0, 0, 0, 1)};
     });
   }
@@ -229,19 +210,7 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
   }
 
   private static String toString(Iterable<ModelChange> changes) {
-    return Sequence.fromIterable(changes).select(new ISelector<ModelChange, String>() {
-      public String select(ModelChange it) {
-        return it.toString();
-      }
-    }).sort(new ISelector<String, String>() {
-      public String select(String it) {
-        return it;
-      }
-    }, true).reduceLeft(new ILeftCombinator<String, String>() {
-      public String combine(String a, String b) {
-        return a + "\n" + b;
-      }
-    });
+    return Sequence.fromIterable(changes).select((it) -> it.toString()).sort((it) -> it, true).reduceLeft((a, b) -> a + "\n" + b);
   }
   private void testDiffCorrectness(SNode n1, SNode n2, ModelChange... changes) {
     StructChangeSet diff = StructChangeSetBuilder.buildChangeSet(n1, n2, false);

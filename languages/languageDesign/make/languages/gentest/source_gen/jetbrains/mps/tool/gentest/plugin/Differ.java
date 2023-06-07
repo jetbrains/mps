@@ -6,12 +6,10 @@ import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import java.io.File;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import difflib.Patch;
 import difflib.DiffUtils;
 import java.io.BufferedReader;
@@ -28,15 +26,7 @@ public class Differ {
   private String[] retainedPaths;
   private Set<File> excludedFiles;
   public Differ(Set<String> retainedFilePaths, Set<File> excludedFiles) {
-    this.retainedPaths = SetSequence.fromSet(retainedFilePaths).select(new ISelector<String, String>() {
-      public String select(String it) {
-        return straighten(it);
-      }
-    }).sort(new ISelector<String, String>() {
-      public String select(String p) {
-        return p;
-      }
-    }, true).toListSequence().toGenericArray(String.class);
+    this.retainedPaths = ListSequence.fromList(SetSequence.fromSet(retainedFilePaths).select((it) -> straighten(it)).sort((p) -> p, true).toList()).toGenericArray(String.class);
     this.excludedFiles = excludedFiles;
   }
   public List<String> diff(String origPath, String revdPath) {
@@ -70,21 +60,17 @@ public class Differ {
     Iterable<String> onames = Sequence.fromArray(orig.list());
     Iterable<String> rnames = Sequence.fromArray(revd.list());
     if (Sequence.fromIterable(onames).disjunction(Sequence.fromIterable(rnames)).isNotEmpty()) {
-      Sequence.fromIterable(onames).subtract(Sequence.fromIterable(rnames)).visitAll(new IVisitor<String>() {
-        public void visit(String it) {
-          if (!(ignoredFile(it))) {
-            File itfile = new File(orig, it);
-            if (!(itfile.isDirectory()) || !(isRetained(itfile.getAbsolutePath()))) {
-              ListSequence.fromList(diffs).addElement("Removed: " + itfile);
-            }
+      Sequence.fromIterable(onames).subtract(Sequence.fromIterable(rnames)).visitAll((it) -> {
+        if (!(ignoredFile(it))) {
+          File itfile = new File(orig, it);
+          if (!(itfile.isDirectory()) || !(isRetained(itfile.getAbsolutePath()))) {
+            ListSequence.fromList(diffs).addElement("Removed: " + itfile);
           }
         }
       });
-      Sequence.fromIterable(rnames).subtract(Sequence.fromIterable(onames)).visitAll(new IVisitor<String>() {
-        public void visit(String it) {
-          if (!(ignoredFile(it))) {
-            ListSequence.fromList(diffs).addElement("Created: " + new File(orig, it));
-          }
+      Sequence.fromIterable(rnames).subtract(Sequence.fromIterable(onames)).visitAll((it) -> {
+        if (!(ignoredFile(it))) {
+          ListSequence.fromList(diffs).addElement("Created: " + new File(orig, it));
         }
       });
     }

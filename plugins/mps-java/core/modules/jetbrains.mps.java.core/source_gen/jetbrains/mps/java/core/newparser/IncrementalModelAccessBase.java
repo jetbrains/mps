@@ -11,7 +11,6 @@ import jetbrains.mps.smodel.loading.UpdateModeSupport;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.messages.Message;
@@ -45,26 +44,20 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
       final List<UpdateModeSupport> modelsInUpdateMode = ListSequence.fromList(new ArrayList<UpdateModeSupport>());
       try {
         // here we assume that runnable changes a lot of models, so we enter update mode for all of them
-        Sequence.fromIterable(myModels).visitAll(new IVisitor<SModel>() {
-          public void visit(SModel model) {
-            SModelData modelData = ((SModelBase) model).getModelData();
-            if (modelData instanceof UpdateModeSupport) {
-              ((UpdateModeSupport) modelData).enterUpdateMode();
-              ListSequence.fromList(modelsInUpdateMode).addElement((UpdateModeSupport) modelData);
-            } else {
-              // ignoring the model
-              myMessageHandler.handle(new Message(MessageKind.ERROR, String.format("model %s doesn't support update mode which java import relies on", SModelOperations.getModelName(model))));
-            }
+        Sequence.fromIterable(myModels).visitAll((model) -> {
+          SModelData modelData = ((SModelBase) model).getModelData();
+          if (modelData instanceof UpdateModeSupport) {
+            ((UpdateModeSupport) modelData).enterUpdateMode();
+            ListSequence.fromList(modelsInUpdateMode).addElement((UpdateModeSupport) modelData);
+          } else {
+            // ignoring the model
+            myMessageHandler.handle(new Message(MessageKind.ERROR, String.format("model %s doesn't support update mode which java import relies on", SModelOperations.getModelName(model))));
           }
         });
 
         runnable.run();
       } finally {
-        ListSequence.fromList(modelsInUpdateMode).visitAll(new IVisitor<UpdateModeSupport>() {
-          public void visit(UpdateModeSupport it) {
-            it.leaveUpdateMode();
-          }
-        });
+        ListSequence.fromList(modelsInUpdateMode).visitAll((it) -> it.leaveUpdateMode());
       }
     });
   }

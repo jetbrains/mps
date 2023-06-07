@@ -31,23 +31,21 @@ public class Person {
     this.address = newAddress;
   }
   public Element toXml() {
-    return new _FunctionTypes._return_P0_E0<Element>() {
-      public Element invoke() {
-        Element simpleElement_jqm3zu_a0a0k = new Element("person");
-        Element simpleElement_jqm3zu_a0a0a01 = new Element("name");
-        Text text_jqm3zu_a0a0a0k = new Text(Person.this.getName());
-        simpleElement_jqm3zu_a0a0a01.addContent(text_jqm3zu_a0a0a0k);
-        Element simpleElement_jqm3zu_b0a0a01 = new Element("lastName");
-        Text text_jqm3zu_a1a0a0k = new Text(Person.this.getLastName());
-        simpleElement_jqm3zu_b0a0a01.addContent(text_jqm3zu_a1a0a0k);
-        Element simpleElement_jqm3zu_c0a0a01 = new Element("address");
-        Element elementMacro_jqm3zu_a2a0a0k = Person.this.getAddress().toXml();
-        simpleElement_jqm3zu_c0a0a01.addContent(elementMacro_jqm3zu_a2a0a0k);
-        simpleElement_jqm3zu_a0a0k.addContent(simpleElement_jqm3zu_a0a0a01);
-        simpleElement_jqm3zu_a0a0k.addContent(simpleElement_jqm3zu_b0a0a01);
-        simpleElement_jqm3zu_a0a0k.addContent(simpleElement_jqm3zu_c0a0a01);
-        return simpleElement_jqm3zu_a0a0k;
-      }
-    }.invoke();
+    return ((_FunctionTypes._return_P0_E0<Element>) () -> {
+      Element simpleElement_jqm3zu_a0a0k = new Element("person");
+      Element simpleElement_jqm3zu_a0a0a01 = new Element("name");
+      Text text_jqm3zu_a0a0a0k = new Text(Person.this.getName());
+      simpleElement_jqm3zu_a0a0a01.addContent(text_jqm3zu_a0a0a0k);
+      Element simpleElement_jqm3zu_b0a0a01 = new Element("lastName");
+      Text text_jqm3zu_a1a0a0k = new Text(Person.this.getLastName());
+      simpleElement_jqm3zu_b0a0a01.addContent(text_jqm3zu_a1a0a0k);
+      Element simpleElement_jqm3zu_c0a0a01 = new Element("address");
+      Element elementMacro_jqm3zu_a2a0a0k = Person.this.getAddress().toXml();
+      simpleElement_jqm3zu_c0a0a01.addContent(elementMacro_jqm3zu_a2a0a0k);
+      simpleElement_jqm3zu_a0a0k.addContent(simpleElement_jqm3zu_a0a0a01);
+      simpleElement_jqm3zu_a0a0k.addContent(simpleElement_jqm3zu_b0a0a01);
+      simpleElement_jqm3zu_a0a0k.addContent(simpleElement_jqm3zu_c0a0a01);
+      return simpleElement_jqm3zu_a0a0k;
+    }).invoke();
   }
 }

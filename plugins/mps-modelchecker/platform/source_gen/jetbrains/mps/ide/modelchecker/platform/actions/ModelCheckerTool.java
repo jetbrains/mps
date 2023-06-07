@@ -47,7 +47,7 @@ public class ModelCheckerTool extends BaseTabbedProjectTool {
     if (checkers == null || checkers.length == 0) {
       finder = new ModelCheckerIssueFinder(mpsProject.getRepository(), ModelCheckerSettings.getInstance().getSpecificCheckers(mpsProject));
     } else {
-      finder = new ModelCheckerIssueFinder(mpsProject.getRepository(), Sequence.fromIterable(Sequence.fromArray(checkers)).toListSequence());
+      finder = new ModelCheckerIssueFinder(mpsProject.getRepository(), Sequence.fromIterable(Sequence.fromArray(checkers)).toList());
     }
     String title = (ListSequence.fromList(models).count() == 1 ? ListSequence.fromList(models).first().getName().getValue() : String.format("%d models", ListSequence.fromList(models).count()));
     finder.addModelScope(models);

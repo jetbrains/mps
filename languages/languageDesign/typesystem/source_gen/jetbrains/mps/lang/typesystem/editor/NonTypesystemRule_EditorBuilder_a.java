@@ -27,7 +27,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
@@ -36,14 +35,12 @@ import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Propert
 import java.util.List;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.nodeEditor.cellMenu.CellContext;
-import java.util.function.Function;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.action.NodeSubstituteActionWrapper;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.nodeEditor.menus.EditorMenuTraceInfoImpl;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
-import java.util.stream.Collectors;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -64,7 +61,6 @@ import jetbrains.mps.nodeEditor.cellMenu.BasicCellContext;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Item;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.typesystem.behavior.NonTypesystemRule__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandler;
@@ -148,11 +144,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
       editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new PropertyCellContext(myNode, property), new SubstituteInfoPartExt[]{new NonTypesystemRule_name_cellMenu_tg6zfx_a0b0a(), new SChildSubstituteInfoPartEx(editorCell)}));
       setCellContext(editorCell);
       Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
-      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
-        }
-      });
+      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where((it) -> Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property));
       if (Sequence.fromIterable(currentPropertyAttributes).isNotEmpty()) {
         EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
         return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentPropertyAttributes).first(), AttributeKind.PROPERTY, editorCell);
@@ -167,20 +159,16 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     }
     @Override
     public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-      List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-      Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-        public SubstituteAction apply(SubstituteAction action) {
-          return new NodeSubstituteActionWrapper(action) {
-            @Override
-            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-              result.setDescriptor(new EditorMenuDescriptorBase("property postfix values", new SNodePointer("r:00000000-0000-4000-0000-011c895902b0(jetbrains.mps.lang.typesystem.editor)", "1195214394150")));
-              return result;
-            }
-          };
-        }
-      };
-      return actions.stream().map(mapper).collect(Collectors.toList());
+      return ListSequence.fromList(super.createActions(cellContext, editorContext)).select((action) -> {
+        return (SubstituteAction) new NodeSubstituteActionWrapper(action) {
+          @Override
+          public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+            EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+            result.setDescriptor(new EditorMenuDescriptorBase("property postfix values", new SNodePointer("r:00000000-0000-4000-0000-011c895902b0(jetbrains.mps.lang.typesystem.editor)", "1195214394150")));
+            return result;
+          }
+        };
+      }).toList();
     }
 
     protected List<String> getPropertyValues(SNode node, EditorContext editorContext) {
@@ -387,20 +375,16 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     }
     @Override
     public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-      List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-      Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-        public SubstituteAction apply(SubstituteAction action) {
-          return new NodeSubstituteActionWrapper(action) {
-            @Override
-            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-              result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:00000000-0000-4000-0000-011c895902b0(jetbrains.mps.lang.typesystem.editor)", "2329696648450892951")));
-              return result;
-            }
-          };
-        }
-      };
-      return actions.stream().map(mapper).collect(Collectors.toList());
+      return ListSequence.fromList(super.createActions(cellContext, editorContext)).select((action) -> {
+        return (SubstituteAction) new NodeSubstituteActionWrapper(action) {
+          @Override
+          public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+            EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+            result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:00000000-0000-4000-0000-011c895902b0(jetbrains.mps.lang.typesystem.editor)", "2329696648450892951")));
+            return result;
+          }
+        };
+      }).toList();
     }
 
     protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
@@ -415,29 +399,21 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     }
     @Override
     public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-      List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-      Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-        public SubstituteAction apply(SubstituteAction action) {
-          return new NodeSubstituteActionWrapper(action) {
-            @Override
-            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-              result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:00000000-0000-4000-0000-011c895902b0(jetbrains.mps.lang.typesystem.editor)", "2329696648450929579")));
-              return result;
-            }
-          };
-        }
-      };
-      return actions.stream().map(mapper).collect(Collectors.toList());
+      return ListSequence.fromList(super.createActions(cellContext, editorContext)).select((action) -> {
+        return (SubstituteAction) new NodeSubstituteActionWrapper(action) {
+          @Override
+          public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+            EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+            result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:00000000-0000-4000-0000-011c895902b0(jetbrains.mps.lang.typesystem.editor)", "2329696648450929579")));
+            return result;
+          }
+        };
+      }).toList();
     }
 
     protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
       SPropertyOperations.assign(node, PROPS.overrides$PgO9, false);
-      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.overridenRules$3nIR)).addSequence(Sequence.fromIterable(NonTypesystemRule__BehaviorDescriptor.findSuperRules_id21kJG8Hh$W9.invoke(node)).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return createCheckingRuleReference_tg6zfx_a0a0a0a0b0a1a0a1b1b0(it);
-        }
-      }));
+      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.overridenRules$3nIR)).addSequence(Sequence.fromIterable(NonTypesystemRule__BehaviorDescriptor.findSuperRules_id21kJG8Hh$W9.invoke(node)).select((it) -> createCheckingRuleReference_tg6zfx_a0a0a0a0b0a1a0a1b1b0(it)));
     }
     public String getMatchingText() {
       return "choose";
@@ -546,27 +522,25 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     return editorCell;
   }
   private EditorCell createCustom_0() {
-    AbstractCellProvider provider = new _FunctionTypes._return_P0_E0<AbstractCellProvider>() {
-      public AbstractCellProvider invoke() {
-        final List<SNode> allSuperRules = Sequence.fromIterable(NonTypesystemRule__BehaviorDescriptor.findSuperRules_id21kJG8Hh$W9.invoke(myNode)).toListSequence();
-        return new AbstractCellProvider(myNode) {
-          @Override
-          public EditorCell createEditorCell(EditorContext context) {
-            jetbrains.mps.openapi.editor.cells.EditorCell_Collection collection = EditorCell_Collection.createVertical(context, myNode);
-            collection.getStyle().set(StyleAttributes.TEXT_COLOR, Color.GRAY);
-            for (SNode superRule : ListSequence.fromList(allSuperRules)) {
-              EditorCell_Collection lineCell = EditorCell_Collection.createHorizontal(context, myNode);
-              EditorCell_Constant referenceCell = new EditorCell_Constant(context, myNode, SPropertyOperations.getString(superRule, PROPS.name$MnvL));
-              lineCell.addEditorCell(referenceCell);
-              referenceCell.getStyle().set(StyleAttributes.NAVIGATABLE_NODE, superRule);
-              referenceCell.getStyle().set(StyleAttributes.FONT_STYLE, Font.PLAIN);
-              collection.addEditorCell(lineCell);
-            }
-            return collection;
+    AbstractCellProvider provider = ((_FunctionTypes._return_P0_E0<AbstractCellProvider>) () -> {
+      final List<SNode> allSuperRules = Sequence.fromIterable(NonTypesystemRule__BehaviorDescriptor.findSuperRules_id21kJG8Hh$W9.invoke(myNode)).toList();
+      return new AbstractCellProvider(myNode) {
+        @Override
+        public EditorCell createEditorCell(EditorContext context) {
+          jetbrains.mps.openapi.editor.cells.EditorCell_Collection collection = EditorCell_Collection.createVertical(context, myNode);
+          collection.getStyle().set(StyleAttributes.TEXT_COLOR, Color.GRAY);
+          for (SNode superRule : ListSequence.fromList(allSuperRules)) {
+            EditorCell_Collection lineCell = EditorCell_Collection.createHorizontal(context, myNode);
+            EditorCell_Constant referenceCell = new EditorCell_Constant(context, myNode, SPropertyOperations.getString(superRule, PROPS.name$MnvL));
+            lineCell.addEditorCell(referenceCell);
+            referenceCell.getStyle().set(StyleAttributes.NAVIGATABLE_NODE, superRule);
+            referenceCell.getStyle().set(StyleAttributes.FONT_STYLE, Font.PLAIN);
+            collection.addEditorCell(lineCell);
           }
-        };
-      }
-    }.invoke();
+          return collection;
+        }
+      };
+    }).invoke();
     EditorCell editorCell = provider.createEditorCell(getEditorContext());
     editorCell.setCellId("Custom_tg6zfx_a1b1b1a");
     return editorCell;
@@ -616,11 +590,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
       Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
-      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
-        }
-      });
+      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where((it) -> Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property));
       if (Sequence.fromIterable(currentPropertyAttributes).isNotEmpty()) {
         EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
         return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentPropertyAttributes).first(), AttributeKind.PROPERTY, editorCell);

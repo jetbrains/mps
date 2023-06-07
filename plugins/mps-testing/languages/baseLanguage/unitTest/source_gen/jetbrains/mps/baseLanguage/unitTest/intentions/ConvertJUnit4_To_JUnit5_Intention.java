@@ -15,9 +15,7 @@ import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
@@ -63,71 +61,35 @@ public final class ConvertJUnit4_To_JUnit5_Intention extends AbstractIntentionDe
     public void execute(final SNode node, final EditorContext editorContext) {
       Iterable<SNode> allMethods = SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.member$L_2d), CONCEPTS.InstanceMethodDeclaration$39);
       // JUnit4's @Test -> JUnit5's @Test
-      Sequence.fromIterable(allMethods).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNodeOperations.replaceWithAnother(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.annotation$K49I)).findFirst(new IWhereFilter<SNode>() {
-            public boolean accept(SNode a) {
-              // JUnit4's @Test annotation
-              return SLinkOperations.hasPointer(a, LINKS.annotation$12Ek, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~Test"));
-            }
-          }), createAnnotationInstance_abiijm_a0a0a0a0c0a());
-        }
-      });
+      Sequence.fromIterable(allMethods).visitAll((it) -> SNodeOperations.replaceWithAnother(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.annotation$K49I)).findFirst((a) -> {
+        // JUnit4's @Test annotation
+        return SLinkOperations.hasPointer(a, LINKS.annotation$12Ek, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~Test"));
+      }), createAnnotationInstance_abiijm_a0a0a0a0c0a()));
       // JUnit4's @Ignore -> JUnit5's @Disabled
-      Sequence.fromIterable(allMethods).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNodeOperations.replaceWithAnother(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.annotation$K49I)).findFirst(new IWhereFilter<SNode>() {
-            public boolean accept(SNode a) {
-              // JUnit4's @Test annotation
-              return SLinkOperations.hasPointer(a, LINKS.annotation$12Ek, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~Ignore"));
-            }
-          }), createAnnotationInstance_abiijm_a0a0a0a0e0a());
-        }
-      });
+      Sequence.fromIterable(allMethods).visitAll((it) -> SNodeOperations.replaceWithAnother(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.annotation$K49I)).findFirst((a) -> {
+        // JUnit4's @Test annotation
+        return SLinkOperations.hasPointer(a, LINKS.annotation$12Ek, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~Ignore"));
+      }), createAnnotationInstance_abiijm_a0a0a0a0e0a()));
       // JUnit4's @Before -> JUnit5's @BeforeEach
-      Sequence.fromIterable(allMethods).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNodeOperations.replaceWithAnother(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.annotation$K49I)).findFirst(new IWhereFilter<SNode>() {
-            public boolean accept(SNode a) {
-              // JUnit4's @Test annotation
-              return SLinkOperations.hasPointer(a, LINKS.annotation$12Ek, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~Before"));
-            }
-          }), createAnnotationInstance_abiijm_a0a0a0a0g0a());
-        }
-      });
+      Sequence.fromIterable(allMethods).visitAll((it) -> SNodeOperations.replaceWithAnother(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.annotation$K49I)).findFirst((a) -> {
+        // JUnit4's @Test annotation
+        return SLinkOperations.hasPointer(a, LINKS.annotation$12Ek, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~Before"));
+      }), createAnnotationInstance_abiijm_a0a0a0a0g0a()));
       // JUnit4's @After -> JUnit5's @AfterEach
-      Sequence.fromIterable(allMethods).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNodeOperations.replaceWithAnother(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.annotation$K49I)).findFirst(new IWhereFilter<SNode>() {
-            public boolean accept(SNode a) {
-              // JUnit4's @Test annotation
-              return SLinkOperations.hasPointer(a, LINKS.annotation$12Ek, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~After"));
-            }
-          }), createAnnotationInstance_abiijm_a0a0a0a0i0a());
-        }
-      });
+      Sequence.fromIterable(allMethods).visitAll((it) -> SNodeOperations.replaceWithAnother(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.annotation$K49I)).findFirst((a) -> {
+        // JUnit4's @Test annotation
+        return SLinkOperations.hasPointer(a, LINKS.annotation$12Ek, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~After"));
+      }), createAnnotationInstance_abiijm_a0a0a0a0i0a()));
       // JUnit4's @BeforeClass -> JUnit5's @BeforeAll
-      Sequence.fromIterable(allMethods).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNodeOperations.replaceWithAnother(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.annotation$K49I)).findFirst(new IWhereFilter<SNode>() {
-            public boolean accept(SNode a) {
-              // JUnit4's @Test annotation
-              return SLinkOperations.hasPointer(a, LINKS.annotation$12Ek, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~BeforeClass"));
-            }
-          }), createAnnotationInstance_abiijm_a0a0a0a0k0a());
-        }
-      });
+      Sequence.fromIterable(allMethods).visitAll((it) -> SNodeOperations.replaceWithAnother(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.annotation$K49I)).findFirst((a) -> {
+        // JUnit4's @Test annotation
+        return SLinkOperations.hasPointer(a, LINKS.annotation$12Ek, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~BeforeClass"));
+      }), createAnnotationInstance_abiijm_a0a0a0a0k0a()));
       // JUnit4's @AfterClass -> JUnit5's @AfterAll
-      Sequence.fromIterable(allMethods).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNodeOperations.replaceWithAnother(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.annotation$K49I)).findFirst(new IWhereFilter<SNode>() {
-            public boolean accept(SNode a) {
-              // JUnit4's @Test annotation
-              return SLinkOperations.hasPointer(a, LINKS.annotation$12Ek, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~AfterClass"));
-            }
-          }), createAnnotationInstance_abiijm_a0a0a0a0m0a());
-        }
-      });
+      Sequence.fromIterable(allMethods).visitAll((it) -> SNodeOperations.replaceWithAnother(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.annotation$K49I)).findFirst((a) -> {
+        // JUnit4's @Test annotation
+        return SLinkOperations.hasPointer(a, LINKS.annotation$12Ek, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~AfterClass"));
+      }), createAnnotationInstance_abiijm_a0a0a0a0m0a()));
     }
 
     @Override
@@ -141,16 +103,10 @@ public final class ConvertJUnit4_To_JUnit5_Intention extends AbstractIntentionDe
     private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
       if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)), CONCEPTS.ClassifierType$bL)) {
         Iterable<SNode> allMethods = SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.member$L_2d), CONCEPTS.InstanceMethodDeclaration$39);
-        Iterable<SNode> junit4TestMethods = Sequence.fromIterable(allMethods).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.annotation$K49I)).any(new IWhereFilter<SNode>() {
-              public boolean accept(SNode a) {
-                // JUnit4's @Test annotation
-                return SLinkOperations.hasPointer(a, LINKS.annotation$12Ek, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~Test"));
-              }
-            });
-          }
-        });
+        Iterable<SNode> junit4TestMethods = Sequence.fromIterable(allMethods).where((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.annotation$K49I)).any((a) -> {
+          // JUnit4's @Test annotation
+          return SLinkOperations.hasPointer(a, LINKS.annotation$12Ek, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~Test"));
+        }));
         return Sequence.fromIterable(junit4TestMethods).isNotEmpty();
       }
       return false;

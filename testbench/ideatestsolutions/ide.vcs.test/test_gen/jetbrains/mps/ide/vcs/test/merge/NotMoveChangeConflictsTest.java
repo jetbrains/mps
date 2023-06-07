@@ -161,7 +161,7 @@ public class NotMoveChangeConflictsTest extends ConflictsBuilderTest {
   public void conflictingMoveSourceAndDeletedParent() {
     // move 1 statement from if statement to another place
     SNode parent = SLinkOperations.getTarget(getMethod(getMineModel()), LINKS.body$5xQk);
-    List<SNode> movedNodes = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getIfStatement(getBaseModel()), LINKS.ifTrue$5Rg8), LINKS.statement$53DE)).page(0, 1).toListSequence();
+    List<SNode> movedNodes = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getIfStatement(getBaseModel()), LINKS.ifTrue$5Rg8), LINKS.statement$53DE)).page(0, 1).toList();
     ModelChange myChange = applyMoveChange(movedNodes, parent, myLink, ListSequence.fromList(SLinkOperations.getChildren(parent, LINKS.statement$53DE)).getElement(3));
     // delete if statement
     ModelChange theirsChange = applyNotMoveChange(SLinkOperations.getTarget(getLevel2Block1(getTheirsModel()), LINKS.statements$q65M), myLink, null, 1);
@@ -173,7 +173,7 @@ public class NotMoveChangeConflictsTest extends ConflictsBuilderTest {
   public void conflictingMoveTargetAndDeletedParent() {
     // move 1 statement from another place into if statement
     SNode parent = SLinkOperations.getTarget(getIfStatement(getMineModel()), LINKS.ifTrue$5Rg8);
-    List<SNode> movedNodes = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(0, 1).toListSequence();
+    List<SNode> movedNodes = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(0, 1).toList();
     ModelChange myChange = applyMoveChange(movedNodes, parent, myLink, ListSequence.fromList(SLinkOperations.getChildren(parent, LINKS.statement$53DE)).getElement(3));
     // delete if statement
     ModelChange theirsChange = applyNotMoveChange(SLinkOperations.getTarget(getLevel2Block1(getTheirsModel()), LINKS.statements$q65M), myLink, null, 1);

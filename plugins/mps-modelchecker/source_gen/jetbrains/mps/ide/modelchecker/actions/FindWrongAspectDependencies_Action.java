@@ -17,9 +17,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.project.SModuleOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerTool;
 
@@ -55,19 +53,7 @@ public class FindWrongAspectDependencies_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess().runReadInEDT(new Runnable() {
       public void run() {
-        List<SModel> models = ListSequence.fromListWithValues(new ArrayList<SModel>(), Sequence.fromIterable(((Iterable<SModule>) ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getProjectModules())).where(new IWhereFilter<SModule>() {
-          public boolean accept(SModule it) {
-            return SModuleOperations.canSupplyExtensionsForMPS(it);
-          }
-        }).translate(new ITranslator2<SModule, SModel>() {
-          public Iterable<SModel> translate(SModule it) {
-            return it.getModels();
-          }
-        }).where(new IWhereFilter<SModel>() {
-          public boolean accept(SModel md) {
-            return !(SModelStereotype.isStubModel(md));
-          }
-        }));
+        List<SModel> models = ListSequence.fromListWithValues(new ArrayList<SModel>(), Sequence.fromIterable(((Iterable<SModule>) ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getProjectModules())).where((it) -> SModuleOperations.canSupplyExtensionsForMPS(it)).translate((it) -> it.getModels()).where((md) -> !(SModelStereotype.isStubModel(md))));
         ModelCheckerTool.getInstance(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getProject()).checkModelsAndShowResult(models, new AspectDependenciesChecker(((MPSProject) MapSequence.fromMap(_params).get("mpsProject"))));
       }
     });

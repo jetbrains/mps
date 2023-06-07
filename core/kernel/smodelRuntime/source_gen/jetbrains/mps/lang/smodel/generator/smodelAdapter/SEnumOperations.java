@@ -8,7 +8,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SEnumeration;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Collection;
@@ -83,11 +82,7 @@ public class SEnumOperations {
    */
   @Deprecated(since = "19.1", forRemoval = true)
   public static SNode enumMemberForName(SNode enumm, final String name) {
-    return ListSequence.fromList(SLinkOperations.getChildren(enumm, LINKS.member$tmHO)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ((String) BHReflection.invoke0(it, CONCEPTS.EnumerationMemberDeclaration_Old$la, SMethodIdV2.create("getName", 1240169660918L, 0x44a456bea0df1cf0L))).equals(name);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(enumm, LINKS.member$tmHO)).findFirst((it) -> ((String) BHReflection.invoke0(it, CONCEPTS.EnumerationMemberDeclaration_Old$la, SMethodIdV2.create("getName", 1240169660918L, 0x44a456bea0df1cf0L))).equals(name));
   }
   /**
    * 
@@ -98,11 +93,7 @@ public class SEnumOperations {
     if (value == null) {
       return ((SNode) BHReflection.invoke0(enumm, CONCEPTS.EnumerationDataTypeDeclaration_Old$B8, SMethodIdV2.create("getDefaultMember", 1213877397785L, 0x44a456bea0df1cf0L)));
     }
-    return ListSequence.fromList(SLinkOperations.getChildren(enumm, LINKS.member$tmHO)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.internalValue$1ost).equals(value);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(enumm, LINKS.member$tmHO)).findFirst((it) -> SPropertyOperations.getString(it, PROPS.internalValue$1ost).equals(value));
   }
 
   private static SEnumeration getEnum(long uuidHigh, long uuidLow, String languageNameHint, long enumId, String enumNameHint) {

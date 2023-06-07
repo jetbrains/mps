@@ -21,7 +21,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -69,11 +68,7 @@ public class TestEditorMenuTraceCellMenuReplaceNode_Test extends BaseTransformat
 
         editorMenuTraceInfo = editorMenuTraceInfo.getParent();
         SNode ed = EditorMenuTraceTestUtil.editorDeclNode(new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774803494772"), getEditorComponent());
-        EditorMenuTraceTestUtil.checkTraceInfo(editorMenuTraceInfo, SNodeOperations.getPointer(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(ed, LINKS.cellModel$L8Uc), CONCEPTS.CellModel_Constant$4e, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return Objects.equals(SPropertyOperations.getString(it, PROPS.text$PIv7), "constant cell");
-          }
-        }).first(), LINKS.menuDescriptor$ptP$), LINKS.cellMenuPart$jjJD), CONCEPTS.CellMenuPart_ReplaceNode_CustomNodeConcept$iP)).first()));
+        EditorMenuTraceTestUtil.checkTraceInfo(editorMenuTraceInfo, SNodeOperations.getPointer(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(ed, LINKS.cellModel$L8Uc), CONCEPTS.CellModel_Constant$4e, false, new SAbstractConcept[]{})).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.text$PIv7), "constant cell")).first(), LINKS.menuDescriptor$ptP$), LINKS.cellMenuPart$jjJD), CONCEPTS.CellMenuPart_ReplaceNode_CustomNodeConcept$iP)).first()));
         editorMenuTraceInfo = editorMenuTraceInfo.getParent();
         Assert.assertTrue(editorMenuTraceInfo == null);
       });

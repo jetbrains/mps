@@ -10,20 +10,17 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 
 /*package*/ class DuplicationUtil {
   /*package*/ static List<SNode> getDuplications(List<SNode> nodes) {
     final Set<SAbstractConcept> childConcepts = SetSequence.fromSet(new HashSet<SAbstractConcept>());
     final List<SNode> result = new ArrayList<SNode>();
-    ListSequence.fromList(nodes).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        if (!(SetSequence.fromSet(childConcepts).contains(SNodeOperations.getConcept(it)))) {
-          SetSequence.fromSet(childConcepts).addElement(SNodeOperations.getConcept(it));
-        } else {
-          ListSequence.fromList(result).addElement(it);
-        }
+    ListSequence.fromList(nodes).visitAll((it) -> {
+      if (!(SetSequence.fromSet(childConcepts).contains(SNodeOperations.getConcept(it)))) {
+        SetSequence.fromSet(childConcepts).addElement(SNodeOperations.getConcept(it));
+      } else {
+        ListSequence.fromList(result).addElement(it);
       }
     });
     return result;

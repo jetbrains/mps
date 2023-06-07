@@ -13,9 +13,6 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -59,24 +56,12 @@ public class CommentUtil {
 
   public static Iterable<SNode> uncommentAll(SNode container) {
     List<SNode> uncommented = ListSequence.fromList(new ArrayList<SNode>());
-    ListSequence.fromList(uncommented).addSequence(Sequence.fromIterable(SNodeOperations.ofConcept(ListSequence.fromList(SNodeOperations.getChildren(container)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BaseCommentAttribute$nv);
-      }
-    }), CONCEPTS.BaseCommentAttribute$nv)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return uncomment(it);
-      }
-    }));
+    ListSequence.fromList(uncommented).addSequence(Sequence.fromIterable(SNodeOperations.ofConcept(ListSequence.fromList(SNodeOperations.getChildren(container)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BaseCommentAttribute$nv)), CONCEPTS.BaseCommentAttribute$nv)).select((it) -> uncomment(it)));
     return uncommented;
   }
 
   public static void commentOutAll(Iterable<SNode> nodes) {
-    Sequence.fromIterable(nodes).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        commentOut(it);
-      }
-    });
+    Sequence.fromIterable(nodes).visitAll((it) -> commentOut(it));
   }
 
   public static boolean isComment(SNode node) {

@@ -15,7 +15,6 @@ import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuItem;
 import jetbrains.mps.smodel.SNodePointer;
 import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.openapi.editor.menus.transformation.ActionItem;
 
 @MPSLaunch
@@ -43,11 +42,7 @@ public class LoadNamedMenu_Test extends BaseTransformationTest {
       initEditorComponent("6202297022023746489", "");
       List<TransformationMenuItem> items = MenuLoadingUtils.loadNamedMenu(getEditorComponent(), new SNodePointer("r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)", "6202297022023752048"), "test location");
 
-      Assert.assertTrue("named menu should contain an item labelled 'named menu item'", ListSequence.fromList(items).any(new IWhereFilter<TransformationMenuItem>() {
-        public boolean accept(TransformationMenuItem it) {
-          return it instanceof ActionItem && "named menu item".equals(((ActionItem) it).getLabelText(""));
-        }
-      }));
+      Assert.assertTrue("named menu should contain an item labelled 'named menu item'", ListSequence.fromList(items).any((it) -> it instanceof ActionItem && "named menu item".equals(((ActionItem) it).getLabelText(""))));
     }
   }
 }

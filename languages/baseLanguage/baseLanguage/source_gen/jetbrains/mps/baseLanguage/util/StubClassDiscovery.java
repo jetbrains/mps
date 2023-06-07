@@ -24,7 +24,6 @@ import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import jetbrains.mps.smodel.SModelStereotype;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.SNodePointer;
@@ -148,25 +147,13 @@ public final class StubClassDiscovery {
     if (SNodeOperations.getParent(stubClassifier) != null) {
       SNode root = SNodeOperations.as(SNodeOperations.getContainingRoot(stubClassifier), CONCEPTS.Classifier$Ix);
       SNode nodeRoot = findNodeClassifier(root);
-      return ListSequence.fromList(SNodeOperations.getNodeDescendants(nodeRoot, CONCEPTS.Classifier$Ix, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(it), INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(stubClassifier));
-        }
-      }).first();
+      return ListSequence.fromList(SNodeOperations.getNodeDescendants(nodeRoot, CONCEPTS.Classifier$Ix, false, new SAbstractConcept[]{})).where((it) -> Objects.equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(it), INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(stubClassifier))).first();
     }
-    SNode generatedAnnotation = ListSequence.fromList(SLinkOperations.getChildren(stubClassifier, LINKS.annotation$K49I)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.annotations(Annotations/)", "~GeneratedClass"));
-      }
-    }).first();
+    SNode generatedAnnotation = ListSequence.fromList(SLinkOperations.getChildren(stubClassifier, LINKS.annotation$K49I)).where((it) -> SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.annotations(Annotations/)", "~GeneratedClass"))).first();
     if (generatedAnnotation == null) {
       return null;
     }
-    String nodeParameter = SPropertyOperations.getString(SNodeOperations.as(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(generatedAnnotation, LINKS.value$uK2B)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.hasPointer(it, LINKS.key$bSmV, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.annotations(Annotations/)", "~GeneratedClass.node()"));
-      }
-    }).first(), LINKS.value$Y7om), CONCEPTS.StringLiteral$xu), PROPS.value$w7MM);
+    String nodeParameter = SPropertyOperations.getString(SNodeOperations.as(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(generatedAnnotation, LINKS.value$uK2B)).where((it) -> SLinkOperations.hasPointer(it, LINKS.key$bSmV, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.annotations(Annotations/)", "~GeneratedClass.node()"))).first(), LINKS.value$Y7om), CONCEPTS.StringLiteral$xu), PROPS.value$w7MM);
     if (nodeParameter == null) {
       return null;
     }
@@ -215,7 +202,7 @@ public final class StubClassDiscovery {
     if (owner == null) {
       return (SNodeOperations.isInstanceOf(stubDeclaration, CONCEPTS.Classifier$Ix) ? findNodeClassifier(SNodeOperations.cast(stubDeclaration, CONCEPTS.Classifier$Ix)) : null);
     }
-    List<SNode> ownerSameMembers = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(owner, LINKS.member$L_2d), SNodeOperations.asSConcept(SNodeOperations.getConcept(stubDeclaration)))).toListSequence();
+    List<SNode> ownerSameMembers = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(owner, LINKS.member$L_2d), SNodeOperations.asSConcept(SNodeOperations.getConcept(stubDeclaration)))).toList();
     if (ListSequence.fromList(ownerSameMembers).isEmpty()) {
       if (SNodeOperations.isInstanceOf(stubDeclaration, CONCEPTS.ConstructorDeclaration$yG)) {
         SNode scd = SNodeOperations.cast(stubDeclaration, CONCEPTS.ConstructorDeclaration$yG);
@@ -231,17 +218,9 @@ public final class StubClassDiscovery {
     SAbstractConcept cncpt = SNodeOperations.getConcept(stubDeclaration);
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return Sequence.fromIterable(SNodeOperations.ofConcept(ownerSameMembers, CONCEPTS.FieldDeclaration$ie)).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(SNodeOperations.cast(stubDeclaration, CONCEPTS.FieldDeclaration$ie), PROPS.name$MnvL));
-          }
-        });
+        return Sequence.fromIterable(SNodeOperations.ofConcept(ownerSameMembers, CONCEPTS.FieldDeclaration$ie)).findFirst((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(SNodeOperations.cast(stubDeclaration, CONCEPTS.FieldDeclaration$ie), PROPS.name$MnvL)));
       case 1:
-        return Sequence.fromIterable(SNodeOperations.ofConcept(ownerSameMembers, CONCEPTS.StaticFieldDeclaration$jR)).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(SNodeOperations.cast(stubDeclaration, CONCEPTS.StaticFieldDeclaration$jR), PROPS.name$MnvL));
-          }
-        });
+        return Sequence.fromIterable(SNodeOperations.ofConcept(ownerSameMembers, CONCEPTS.StaticFieldDeclaration$jR)).findFirst((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(SNodeOperations.cast(stubDeclaration, CONCEPTS.StaticFieldDeclaration$jR), PROPS.name$MnvL)));
       default:
         boolean noneMatched = true;
         if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.BaseMethodDeclaration$kD)) {
@@ -251,11 +230,7 @@ public final class StubClassDiscovery {
           // Not sure if it's proper to use hasSameSignature/hasSameParameters as same method parameters may use
           // counterparts (node/stub) of the same target type, and I'm afraid erasure signature may not detect they are the same in all cases.
           // FWIW, cast to ClassifierMember is ok as we know stubDeclaration is CM, therefore filtered members are CM, too
-          return SNodeOperations.as(Sequence.fromIterable(SNodeOperations.ofConcept(ownerSameMembers, CONCEPTS.BaseMethodDeclaration$kD)).findFirst(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(md, PROPS.name$MnvL)) && (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameParameters_idJuSt8W4$Q2.invoke(md, it);
-            }
-          }), CONCEPTS.ClassifierMember$At);
+          return SNodeOperations.as(Sequence.fromIterable(SNodeOperations.ofConcept(ownerSameMembers, CONCEPTS.BaseMethodDeclaration$kD)).findFirst((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(md, PROPS.name$MnvL)) && (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameParameters_idJuSt8W4$Q2.invoke(md, it)), CONCEPTS.ClassifierMember$At);
         }
     }
     return null;

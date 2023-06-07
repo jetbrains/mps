@@ -18,7 +18,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.scope.ListScope;
@@ -45,19 +44,7 @@ public class ComponentUsage_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            Iterable<SNode> unusedComponents = ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.Component$Tx)).where(new IWhereFilter<SNode>() {
-              public boolean accept(final SNode b) {
-                return ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.ComponentUsage$p$)).where(new IWhereFilter<SNode>() {
-                  public boolean accept(SNode u) {
-                    return !(Objects.equals(u, _context.getContextNode()));
-                  }
-                }).all(new IWhereFilter<SNode>() {
-                  public boolean accept(SNode u) {
-                    return !(Objects.equals(SLinkOperations.getTarget(u, LINKS.usedComponent$uCxb), b));
-                  }
-                });
-              }
-            });
+            Iterable<SNode> unusedComponents = ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.Component$Tx)).where((final SNode b) -> ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.ComponentUsage$p$)).where((u) -> !(Objects.equals(u, _context.getContextNode()))).all((u) -> !(Objects.equals(SLinkOperations.getTarget(u, LINKS.usedComponent$uCxb), b))));
             return new ListScope(unusedComponents) {
               public String getName(SNode child) {
                 return (String) Component__BehaviorDescriptor.fullName_id4Vpsm2KEoLo.invoke(SNodeOperations.cast(child, CONCEPTS.Component$Tx));

@@ -8,7 +8,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.errors.IRuleConflictWarningProducer;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
@@ -29,33 +28,24 @@ public class typeof_BinaryOperation_InferenceRule extends AbstractInferenceRule_
 
     {
       final SNode leftType = typeCheckingContext.typeOf(SLinkOperations.getTarget(operation, LINKS.leftExpression$sEj), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1387988544209571129", true);
-      typeCheckingContext.whenConcrete(leftType, new Runnable() {
-        public void run() {
-          {
-            final SNode rightType = typeCheckingContext.typeOf(SLinkOperations.getTarget(operation, LINKS.rightExpression$nvX), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1387988544209571123", true);
-            typeCheckingContext.whenConcrete(rightType, new Runnable() {
-              public void run() {
-                SNode opType = typeCheckingContext.getOverloadedOperationType(operation, typeCheckingContext.getExpandedNode(leftType), typeCheckingContext.getExpandedNode(rightType), new IRuleConflictWarningProducer() {
-                  public void produceWarning(String modelId, String ruleId) {
-                    typeCheckingContext.reportWarning(operation, "coflicting rules for overloaded operation type", modelId, ruleId, null, new NodeMessageTarget());
-
-                  }
-                });
-                if ((opType != null)) {
-                  {
-                    SNode _nodeToCheck_1029348928467 = operation;
-                    EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1387988544209571109", 0, null);
-                    typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1387988544209571113", true), (SNode) opType, _info_12389875345);
-                  }
-                } else {
-                  {
-                    final MessageTarget errorTarget = new NodeMessageTarget();
-                    IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(operation, "Operator '" + SConceptOperations.conceptAlias(SNodeOperations.getConcept(operation)) + "' cannot be applied to '" + typeCheckingContext.getExpandedNode(leftType) + "', '" + typeCheckingContext.getExpandedNode(rightType) + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1387988544209571120", null, errorTarget);
-                  }
-                }
+      typeCheckingContext.whenConcrete(leftType, () -> {
+        {
+          final SNode rightType = typeCheckingContext.typeOf(SLinkOperations.getTarget(operation, LINKS.rightExpression$nvX), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1387988544209571123", true);
+          typeCheckingContext.whenConcrete(rightType, () -> {
+            SNode opType = typeCheckingContext.getOverloadedOperationType(operation, typeCheckingContext.getExpandedNode(leftType), typeCheckingContext.getExpandedNode(rightType), (modelId, ruleId) -> typeCheckingContext.reportWarning(operation, "conflicting rules for overloaded operation type", modelId, ruleId, null, new NodeMessageTarget()));
+            if ((opType != null)) {
+              {
+                SNode _nodeToCheck_1029348928467 = operation;
+                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1387988544209571109", 0, null);
+                typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1387988544209571113", true), (SNode) opType, _info_12389875345);
               }
-            }, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1387988544209571098", false, false);
-          }
+            } else {
+              {
+                final MessageTarget errorTarget = new NodeMessageTarget();
+                IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(operation, "Operator '" + SConceptOperations.conceptAlias(SNodeOperations.getConcept(operation)) + "' cannot be applied to '" + typeCheckingContext.getExpandedNode(leftType) + "', '" + typeCheckingContext.getExpandedNode(rightType) + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1387988544209571120", null, errorTarget);
+              }
+            }
+          }, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1387988544209571098", false, false);
         }
       }, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1387988544209571096", false, false);
     }

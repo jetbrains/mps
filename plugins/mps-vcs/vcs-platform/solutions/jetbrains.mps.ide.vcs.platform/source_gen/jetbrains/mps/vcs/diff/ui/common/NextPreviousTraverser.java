@@ -16,14 +16,11 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.openapi.editor.selection.SelectionListener;
 import jetbrains.mps.openapi.editor.selection.Selection;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Arrays;
 import com.intellij.openapi.application.ApplicationManager;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.workbench.action.BaseAction;
 import jetbrains.mps.openapi.editor.cells.optional.WithCaret;
@@ -49,7 +46,7 @@ public class NextPreviousTraverser {
 
 
   public NextPreviousTraverser(@NotNull List<ChangeGroupLayout> changeGroupLayouts, @NotNull EditorComponent firstEditor) {
-    myChangeGroupLayouts = ListSequence.fromList(changeGroupLayouts).where(new NotNullWhereFilter<ChangeGroupLayout>()).toListSequence();
+    myChangeGroupLayouts = ListSequence.fromList(changeGroupLayouts).where(new NotNullWhereFilter()).toList();
     myLastEditor = firstEditor;
 
     final SelectionListener selectionListener = (EditorComponent editorComponent, Selection oldSelection, Selection newSelection) -> {
@@ -59,20 +56,8 @@ public class NextPreviousTraverser {
       setLastEditor(editorComponent);
       updateToolbar();
     };
-    ListSequence.fromList(myChangeGroupLayouts).visitAll(new IVisitor<ChangeGroupLayout>() {
-      public void visit(ChangeGroupLayout cgb) {
-        cgb.addInvalidateListener(() -> updateToolbar());
-      }
-    });
-    SetSequence.fromSet(SetSequence.fromSetWithValues(new HashSet<EditorComponent>(), ListSequence.fromList(myChangeGroupLayouts).translate(new ITranslator2<ChangeGroupLayout, EditorComponent>() {
-      public Iterable<EditorComponent> translate(ChangeGroupLayout b) {
-        return Arrays.<EditorComponent>asList(b.getLeftComponent(), b.getRightComponent());
-      }
-    }))).visitAll(new IVisitor<EditorComponent>() {
-      public void visit(EditorComponent ec) {
-        ec.getSelectionManager().addSelectionListener(selectionListener);
-      }
-    });
+    ListSequence.fromList(myChangeGroupLayouts).visitAll((cgb) -> cgb.addInvalidateListener(() -> updateToolbar()));
+    SetSequence.fromSet(SetSequence.fromSetWithValues(new HashSet<EditorComponent>(), ListSequence.fromList(myChangeGroupLayouts).translate((b) -> Arrays.<EditorComponent>asList(b.getLeftComponent(), b.getRightComponent())))).visitAll((ec) -> ec.getSelectionManager().addSelectionListener(selectionListener));
   }
 
   public void setActionToolbar(ActionToolbar actionToolbar) {
@@ -87,29 +72,17 @@ public class NextPreviousTraverser {
 
   @Nullable
   private ChangeGroupLayout getLayoutAsLeft() {
-    return ListSequence.fromList(myChangeGroupLayouts).findFirst(new IWhereFilter<ChangeGroupLayout>() {
-      public boolean accept(ChangeGroupLayout b) {
-        return b.getLeftComponent() == myLastEditor;
-      }
-    });
+    return ListSequence.fromList(myChangeGroupLayouts).findFirst((b) -> b.getLeftComponent() == myLastEditor);
   }
 
   @Nullable
   private ChangeGroupLayout getLayoutAsRight() {
-    return ListSequence.fromList(myChangeGroupLayouts).findFirst(new IWhereFilter<ChangeGroupLayout>() {
-      public boolean accept(ChangeGroupLayout b) {
-        return b.getRightComponent() == myLastEditor;
-      }
-    });
+    return ListSequence.fromList(myChangeGroupLayouts).findFirst((b) -> b.getRightComponent() == myLastEditor);
   }
 
   private synchronized void setLastEditor(EditorComponent editor) {
     myLastEditor = editor;
-    if (!(ListSequence.fromList(myChangeGroupLayouts).any(new IWhereFilter<ChangeGroupLayout>() {
-      public boolean accept(ChangeGroupLayout b) {
-        return b.getLeftComponent() == myLastEditor || b.getRightComponent() == myLastEditor;
-      }
-    }))) {
+    if (!(ListSequence.fromList(myChangeGroupLayouts).any((b) -> b.getLeftComponent() == myLastEditor || b.getRightComponent() == myLastEditor))) {
       if (LOG.isErrorLevel()) {
         LOG.error("last editor is uknown: " + myLastEditor, new AssertionError());
       }
@@ -124,17 +97,9 @@ public class NextPreviousTraverser {
     List<ChangeGroup> changeGroups = layout.getChangeGroups();
     ChangeGroup changeGroup;
     if (previous) {
-      changeGroup = ListSequence.fromList(changeGroups).findLast(new IWhereFilter<ChangeGroup>() {
-        public boolean accept(ChangeGroup cg) {
-          return (int) cg.getBounds(left).end() < currentY;
-        }
-      });
+      changeGroup = ListSequence.fromList(changeGroups).findLast((cg) -> (int) cg.getBounds(left).end() < currentY);
     } else {
-      changeGroup = ListSequence.fromList(changeGroups).findFirst(new IWhereFilter<ChangeGroup>() {
-        public boolean accept(ChangeGroup cg) {
-          return (int) cg.getBounds(left).start() > currentY;
-        }
-      });
+      changeGroup = ListSequence.fromList(changeGroups).findFirst((cg) -> (int) cg.getBounds(left).start() > currentY);
     }
     return check_mf966z_a5a42(changeGroup, left);
   }

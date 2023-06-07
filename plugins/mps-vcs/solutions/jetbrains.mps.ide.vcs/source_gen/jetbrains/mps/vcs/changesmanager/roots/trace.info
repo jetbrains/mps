@@ -59,69 +59,57 @@
   </root>
   <root nodeRef="r:21243d57-0512-4c07-bcfd-21ee53d2aeb3(jetbrains.mps.vcs.changesmanager.roots)/5332932484372864216">
     <file name="NodeTabColorProvider.java">
-      <node id="3663193852903964793" at="23,0,24,0" concept="4" trace="myProject" />
-      <node id="3663193852903964797" at="25,52,26,28" concept="3" />
-      <node id="7963818663057826246" at="33,51,34,82" concept="8" />
-      <node id="7963818663057826256" at="34,82,35,56" concept="9" />
-      <node id="5332932484372874207" at="39,43,40,60" concept="9" />
-      <node id="5332932484372874220" at="42,9,43,74" concept="9" />
-      <node id="5332932484372874242" at="44,12,45,44" concept="9" />
-      <node id="5332932484372873643" at="50,50,51,91" concept="9" />
-      <node id="5332932484372874236" at="54,36,55,42" concept="9" />
-      <node id="5332932484372874236" at="56,5,57,16" concept="9" />
-      <node id="5332932484372873654" at="60,36,61,42" concept="9" />
-      <node id="5332932484372873654" at="62,5,63,16" concept="9" />
-      <node id="5332932484372874240" at="44,10,46,5" concept="0" />
-      <node id="5332932484372864218" at="25,0,28,0" concept="2" trace="NodeTabColorProvider#(Lcom/intellij/openapi/project/Project;)V" />
-      <node id="5332932484372874203" at="39,0,42,0" concept="7" trace="accept#(Lcom/intellij/openapi/vcs/FileStatus;)Z" />
-      <node id="5332932484372874236" at="53,74,56,5" concept="6" />
-      <node id="5332932484372873654" at="59,72,62,5" concept="6" />
-      <node id="5332932484372874181" at="33,0,37,0" concept="7" trace="select#(Lorg/jetbrains/mps/openapi/model/SNodeReference;)Lcom/intellij/openapi/vcs/FileStatus;" />
-      <node id="5332932484372871060" at="48,0,53,0" concept="7" trace="getNodeColor#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/awt/Color;" />
-      <node id="5332932484372874173" at="31,70,37,24" concept="8" />
-      <node id="5332932484372874236" at="53,0,59,0" concept="12" trace="check_6tqz68_a0a1a4#(Lcom/intellij/openapi/vcs/FileStatus;)Ljava/awt/Color;" />
-      <node id="5332932484372873654" at="59,0,65,0" concept="12" trace="check_6tqz68_a0a5#(Lcom/intellij/openapi/vcs/FileStatus;)Ljava/awt/Color;" />
-      <node id="5332932484372874193" at="37,24,46,5" concept="6" />
-      <node id="5332932484372871053" at="29,0,48,0" concept="7" trace="getAspectColor#(Ljava/lang/Iterable;)Ljava/awt/Color;" />
-      <scope id="5332932484372864221" at="25,52,26,28" />
-      <scope id="5332932484372874204" at="39,43,40,60" />
-      <scope id="5332932484372874194" at="42,9,43,74" />
-      <scope id="5332932484372874241" at="44,12,45,44" />
-      <scope id="5332932484372871065" at="50,50,51,91" />
-      <scope id="5332932484372874236" at="54,36,55,42" />
-      <scope id="5332932484372873654" at="60,36,61,42" />
-      <scope id="5332932484372874182" at="33,51,35,56">
+      <node id="3663193852903964793" at="21,0,22,0" concept="4" trace="myProject" />
+      <node id="3663193852903964797" at="23,52,24,28" concept="3" />
+      <node id="7963818663057826246" at="30,90,31,80" concept="8" />
+      <node id="7963818663057826256" at="31,80,32,54" concept="9" />
+      <node id="5332932484372874220" at="34,99,35,74" concept="9" />
+      <node id="5332932484372874242" at="36,12,37,44" concept="9" />
+      <node id="5332932484372873643" at="42,50,43,91" concept="9" />
+      <node id="5332932484372874236" at="46,36,47,42" concept="9" />
+      <node id="5332932484372874236" at="48,5,49,16" concept="9" />
+      <node id="5332932484372873654" at="52,36,53,42" concept="9" />
+      <node id="5332932484372873654" at="54,5,55,16" concept="9" />
+      <node id="5332932484372874240" at="36,10,38,5" concept="0" />
+      <node id="5332932484372864218" at="23,0,26,0" concept="2" trace="NodeTabColorProvider#(Lcom/intellij/openapi/project/Project;)V" />
+      <node id="5332932484372874236" at="45,74,48,5" concept="6" />
+      <node id="5332932484372873654" at="51,72,54,5" concept="6" />
+      <node id="5332932484372874173" at="29,70,33,16" concept="8" />
+      <node id="5332932484372874193" at="33,16,38,5" concept="6" />
+      <node id="5332932484372871060" at="40,0,45,0" concept="7" trace="getNodeColor#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/awt/Color;" />
+      <node id="5332932484372874236" at="45,0,51,0" concept="12" trace="check_6tqz68_a0a1a4#(Lcom/intellij/openapi/vcs/FileStatus;)Ljava/awt/Color;" />
+      <node id="5332932484372873654" at="51,0,57,0" concept="12" trace="check_6tqz68_a0a5#(Lcom/intellij/openapi/vcs/FileStatus;)Ljava/awt/Color;" />
+      <node id="5332932484372871053" at="27,0,40,0" concept="7" trace="getAspectColor#(Ljava/lang/Iterable;)Ljava/awt/Color;" />
+      <scope id="5332932484372864221" at="23,52,24,28" />
+      <scope id="5332932484372874194" at="34,99,35,74" />
+      <scope id="5332932484372874241" at="36,12,37,44" />
+      <scope id="5332932484372871065" at="42,50,43,91" />
+      <scope id="5332932484372874236" at="46,36,47,42" />
+      <scope id="5332932484372873654" at="52,36,53,42" />
+      <scope id="5332932484372874182" at="30,90,32,54">
         <var name="s" id="7963818663057826247" />
       </scope>
-      <scope id="5332932484372864218" at="25,0,28,0">
+      <scope id="5332932484372864218" at="23,0,26,0">
         <var name="ideaProject" id="3663193852903855663" />
       </scope>
-      <scope id="5332932484372874203" at="39,0,42,0">
-        <var name="s" id="5332932484372874203" />
-      </scope>
-      <scope id="5332932484372874181" at="33,0,37,0">
-        <var name="np" id="5332932484372874181" />
-      </scope>
-      <scope id="5332932484372874236" at="53,74,57,16" />
-      <scope id="5332932484372873654" at="59,72,63,16" />
-      <scope id="5332932484372871060" at="48,0,53,0">
+      <scope id="5332932484372874236" at="45,74,49,16" />
+      <scope id="5332932484372873654" at="51,72,55,16" />
+      <scope id="5332932484372871060" at="40,0,45,0">
         <var name="node" id="5332932484372871063" />
       </scope>
-      <scope id="5332932484372874236" at="53,0,59,0">
+      <scope id="5332932484372874236" at="45,0,51,0">
         <var name="checkedDotOperand" id="5332932484372874236" />
       </scope>
-      <scope id="5332932484372873654" at="59,0,65,0">
+      <scope id="5332932484372873654" at="51,0,57,0">
         <var name="checkedDotOperand" id="5332932484372873654" />
       </scope>
-      <scope id="5332932484372871059" at="31,70,46,5">
+      <scope id="5332932484372871059" at="29,70,38,5">
         <var name="statuses" id="5332932484372874174" />
       </scope>
-      <scope id="5332932484372871053" at="29,0,48,0">
+      <scope id="5332932484372871053" at="27,0,40,0">
         <var name="nodePointers" id="5332932484372871056" />
       </scope>
-      <unit id="5332932484372874203" at="38,48,42,5" name="jetbrains.mps.vcs.changesmanager.roots.NodeTabColorProvider$2" />
-      <unit id="5332932484372874181" at="32,85,37,5" name="jetbrains.mps.vcs.changesmanager.roots.NodeTabColorProvider$1" />
-      <unit id="5332932484372864216" at="21,0,66,0" name="jetbrains.mps.vcs.changesmanager.roots.NodeTabColorProvider" />
+      <unit id="5332932484372864216" at="19,0,58,0" name="jetbrains.mps.vcs.changesmanager.roots.NodeTabColorProvider" />
     </file>
   </root>
 </debug-info>

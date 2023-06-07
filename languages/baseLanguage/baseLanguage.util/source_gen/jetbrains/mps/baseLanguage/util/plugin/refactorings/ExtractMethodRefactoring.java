@@ -11,11 +11,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.baseLanguage.behavior.Statement__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -65,8 +64,8 @@ public abstract class ExtractMethodRefactoring {
     this.replaceMatch(exactMatch, newMethod);
     MethodOptimizer.optimize(body);
     final Wrappers._boolean isSomethingImported = new Wrappers._boolean(MoveRefactoringUtils.updateImportsAfterModelChange(SLinkOperations.getTarget(newMethod, LINKS.returnType$5xoi)));
-    ListSequence.fromList(SLinkOperations.getChildren(newMethod, LINKS.parameter$5xBj)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode p) {
+    ListSequence.fromList(SLinkOperations.getChildren(newMethod, LINKS.parameter$5xBj)).visitAll(new _FunctionTypes._void_P1_E0<SNode>() {
+      public void invoke(SNode p) {
         isSomethingImported.value = isSomethingImported.value | MoveRefactoringUtils.updateImportsAfterModelChange(SLinkOperations.getTarget(p, LINKS.type$a1UY));
       }
     });
@@ -109,8 +108,8 @@ public abstract class ExtractMethodRefactoring {
     for (SNode statement : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$5xQk), LINKS.statement$53DE))) {
       ListSequence.fromList(throwables).addSequence(SetSequence.fromSet(Statement__BehaviorDescriptor.uncaughtThrowables_id4Gt7ANIVAVT.invoke(statement, ((boolean) false))));
     }
-    ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.throwsItem$CdW$)).addSequence(ListSequence.fromList(throwables).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
+    ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.throwsItem$CdW$)).addSequence(ListSequence.fromList(throwables).select(new _FunctionTypes._return_P1_E0<SNode, SNode>() {
+      public SNode invoke(SNode it) {
         return _quotation_createNode_jq3ovj_a0a0a0a0c0o(it);
       }
     }));

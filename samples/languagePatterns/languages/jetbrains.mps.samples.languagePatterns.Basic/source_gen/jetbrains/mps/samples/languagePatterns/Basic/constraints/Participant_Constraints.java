@@ -19,9 +19,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.scope.ListScope;
 import java.util.HashMap;
@@ -52,25 +50,9 @@ public class Participant_Constraints extends BaseConstraintsDescriptor {
 
             final List<SNode> allSingers = SLinkOperations.getChildren(concert, LINKS.performers$yMK7);
 
-            final Iterable<SNode> alreadyParticipatingSingersButMe = ListSequence.fromList(SLinkOperations.getChildren(performance, LINKS.participants$y5XW)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return !(Objects.equals(it, _context.getReferenceNode()));
-              }
-            }).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode participant) {
-                return SLinkOperations.getTarget(participant, LINKS.singer$rtG4);
-              }
-            });
+            final Iterable<SNode> alreadyParticipatingSingersButMe = ListSequence.fromList(SLinkOperations.getChildren(performance, LINKS.participants$y5XW)).where((it) -> !(Objects.equals(it, _context.getReferenceNode()))).select((participant) -> SLinkOperations.getTarget(participant, LINKS.singer$rtG4));
 
-            Iterable<SNode> candidates = ListSequence.fromList(allSingers).where(new IWhereFilter<SNode>() {
-              public boolean accept(final SNode singer) {
-                return Sequence.fromIterable(alreadyParticipatingSingersButMe).all(new IWhereFilter<SNode>() {
-                  public boolean accept(SNode participatingSinger) {
-                    return !(Objects.equals(participatingSinger, singer));
-                  }
-                });
-              }
-            });
+            Iterable<SNode> candidates = ListSequence.fromList(allSingers).where((final SNode singer) -> Sequence.fromIterable(alreadyParticipatingSingersButMe).all((participatingSinger) -> !(Objects.equals(participatingSinger, singer))));
 
             return ListScope.forNamedElements(candidates);
           }

@@ -22,8 +22,6 @@ import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.project.facets.JavaModuleFacet;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.make.delta.IDelta;
 import jetbrains.mps.internal.make.runtime.util.FilesDelta;
 import jetbrains.mps.textgen.trace.TraceInfoCache;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
@@ -89,19 +87,17 @@ public class CopyTraceInfo_Facet extends IFacet.Stub {
                   if (!(destination.exists())) {
                     ListSequence.fromList(toCreate).addElement(destination);
                   }
-                  Sequence.fromIterable(tres.delta()).visitAll(new IVisitor<IDelta>() {
-                    public void visit(IDelta it) {
-                      it.acceptVisitor(new FilesDelta.Visitor() {
-                        @Override
-                        public boolean acceptWritten(IFile file) {
-                          if (file.getName().equals(TraceInfoCache.TRACE_FILE_NAME)) {
-                            IFile copy = destination.findChild(file.getName());
-                            ListSequence.fromList(toCopy).addElement(MultiTuple.<IFile,IFile>from(file, copy));
-                          }
-                          return true;
+                  Sequence.fromIterable(tres.delta()).visitAll((it) -> {
+                    it.acceptVisitor(new FilesDelta.Visitor() {
+                      @Override
+                      public boolean acceptWritten(IFile file) {
+                        if (file.getName().equals(TraceInfoCache.TRACE_FILE_NAME)) {
+                          IFile copy = destination.findChild(file.getName());
+                          ListSequence.fromList(toCopy).addElement(MultiTuple.<IFile,IFile>from(file, copy));
                         }
-                      });
-                    }
+                        return true;
+                      }
+                    });
                   });
 
                   _output_zgz0lb_a0a = Sequence.fromIterable(_output_zgz0lb_a0a).concat(Sequence.fromIterable(Sequence.<IResource>singleton(tres)));
@@ -109,16 +105,8 @@ public class CopyTraceInfo_Facet extends IFacet.Stub {
                 // XXX likely, this facet has to report files, and leave it up to subsequent facets to 
                 // perform actual copy
                 FileSystem.getInstance().runWriteTransaction(() -> {
-                  ListSequence.fromList(toCreate).visitAll(new IVisitor<IFile>() {
-                    public void visit(IFile it) {
-                      it.mkdirs();
-                    }
-                  });
-                  ListSequence.fromList(toCopy).visitAll(new IVisitor<Tuples._2<IFile, IFile>>() {
-                    public void visit(Tuples._2<IFile, IFile> ftc) {
-                      IFileUtil.copyFileContent(ftc._0(), ftc._1());
-                    }
-                  });
+                  ListSequence.fromList(toCreate).visitAll((it) -> it.mkdirs());
+                  ListSequence.fromList(toCopy).visitAll((ftc) -> IFileUtil.copyFileContent(ftc._0(), ftc._1()));
                 });
               } finally {
                 progressMonitor.done();

@@ -75,17 +75,15 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
       if (!(isDefined(context))) {
         return null;
       }
-      return (Integer) new _FunctionTypes._return_P0_E0<Integer>() {
-        public Integer invoke() {
-          SNode n = context.getParentNode();
-          int depth = 1;
-          while (n != context.getAncestorNode()) {
-            n = SNodeOperations.getParent(n);
-            ++depth;
-          }
-          return depth;
+      return (Integer) ((_FunctionTypes._return_P0_E0<Integer>) () -> {
+        SNode n = context.getParentNode();
+        int depth = 1;
+        while (n != context.getAncestorNode()) {
+          n = SNodeOperations.getParent(n);
+          ++depth;
         }
-      }.invoke();
+        return depth;
+      }).invoke();
     }
 
     public static boolean isDefined(@NotNull CanBeAncestorContext context) {

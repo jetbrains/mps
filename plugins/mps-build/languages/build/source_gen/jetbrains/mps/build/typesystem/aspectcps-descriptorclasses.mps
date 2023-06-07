@@ -209,6 +209,7 @@
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -354,7 +355,6 @@
         <child id="540871147943773366" name="argument" index="25WWJ7" />
       </concept>
       <concept id="1235566554328" name="jetbrains.mps.baseLanguage.collections.structure.AnyOperation" flags="nn" index="2HwmR7" />
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1160612413312" name="jetbrains.mps.baseLanguage.collections.structure.AddElementOperation" flags="nn" index="TSZUe" />
       <concept id="1165595910856" name="jetbrains.mps.baseLanguage.collections.structure.GetLastOperation" flags="nn" index="1yVyf7" />
       <concept id="1225727723840" name="jetbrains.mps.baseLanguage.collections.structure.FindFirstOperation" flags="nn" index="1z4cxt" />
@@ -4071,11 +4071,11 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="Rh6nW" id="iN" role="1bW2Oz">
+                  <node concept="gl6BB" id="iN" role="1bW2Oz">
                     <property role="TrG5h" value="it" />
-                    <uo k="s:originTrace" v="n:7670275304420348231" />
+                    <uo k="s:originTrace" v="n:6847626768367733750" />
                     <node concept="2jxLKc" id="iT" role="1tU5fm">
-                      <uo k="s:originTrace" v="n:7670275304420348232" />
+                      <uo k="s:originTrace" v="n:6847626768367733751" />
                     </node>
                   </node>
                 </node>
@@ -4102,11 +4102,11 @@
                     </node>
                   </node>
                 </node>
-                <node concept="Rh6nW" id="iW" role="1bW2Oz">
+                <node concept="gl6BB" id="iW" role="1bW2Oz">
                   <property role="TrG5h" value="it" />
-                  <uo k="s:originTrace" v="n:7670275304420348239" />
+                  <uo k="s:originTrace" v="n:6847626768367733752" />
                   <node concept="2jxLKc" id="j1" role="1tU5fm">
-                    <uo k="s:originTrace" v="n:7670275304420348240" />
+                    <uo k="s:originTrace" v="n:6847626768367733753" />
                   </node>
                 </node>
               </node>
@@ -5031,11 +5031,11 @@
                             </node>
                           </node>
                         </node>
-                        <node concept="Rh6nW" id="ns" role="1bW2Oz">
+                        <node concept="gl6BB" id="ns" role="1bW2Oz">
                           <property role="TrG5h" value="it" />
-                          <uo k="s:originTrace" v="n:4427790052271500854" />
+                          <uo k="s:originTrace" v="n:6847626768367733758" />
                           <node concept="2jxLKc" id="n_" role="1tU5fm">
-                            <uo k="s:originTrace" v="n:4427790052271500855" />
+                            <uo k="s:originTrace" v="n:6847626768367733759" />
                           </node>
                         </node>
                       </node>
@@ -5665,11 +5665,11 @@
                         </node>
                       </node>
                     </node>
-                    <node concept="Rh6nW" id="qt" role="1bW2Oz">
+                    <node concept="gl6BB" id="qt" role="1bW2Oz">
                       <property role="TrG5h" value="it" />
-                      <uo k="s:originTrace" v="n:6647099934206924844" />
+                      <uo k="s:originTrace" v="n:6847626768367733754" />
                       <node concept="2jxLKc" id="qz" role="1tU5fm">
-                        <uo k="s:originTrace" v="n:6647099934206924845" />
+                        <uo k="s:originTrace" v="n:6847626768367733755" />
                       </node>
                     </node>
                   </node>
@@ -5971,11 +5971,11 @@
                               </node>
                             </node>
                           </node>
-                          <node concept="Rh6nW" id="rK" role="1bW2Oz">
+                          <node concept="gl6BB" id="rK" role="1bW2Oz">
                             <property role="TrG5h" value="it" />
-                            <uo k="s:originTrace" v="n:703815700952141803" />
+                            <uo k="s:originTrace" v="n:6847626768367733756" />
                             <node concept="2jxLKc" id="rZ" role="1tU5fm">
-                              <uo k="s:originTrace" v="n:703815700952141804" />
+                              <uo k="s:originTrace" v="n:6847626768367733757" />
                             </node>
                           </node>
                         </node>
@@ -6682,11 +6682,11 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="Rh6nW" id="vf" role="1bW2Oz">
+                  <node concept="gl6BB" id="vf" role="1bW2Oz">
                     <property role="TrG5h" value="it" />
-                    <uo k="s:originTrace" v="n:4427790052271640674" />
+                    <uo k="s:originTrace" v="n:6847626768367733760" />
                     <node concept="2jxLKc" id="vm" role="1tU5fm">
-                      <uo k="s:originTrace" v="n:4427790052271640675" />
+                      <uo k="s:originTrace" v="n:6847626768367733761" />
                     </node>
                   </node>
                 </node>

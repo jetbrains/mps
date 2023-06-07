@@ -20,7 +20,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -51,11 +50,7 @@ public final class TransformStatement__BehaviorDescriptor extends BaseBHDescript
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, final SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.PropertyPatternVariableDeclaration$aQ) || SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.LinkPatternVariableDeclaration$8a) || SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.PatternVariableDeclaration$ZH) || SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.ListPattern$1B)) {
-      return new NamedElementsScope(SNodeOperations.ofConcept(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(__thisNode__, LINKS.pattern$W39N), SNodeOperations.asSConcept((SAbstractConcept) kind), false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(it)), SNodeOperations.asSConcept(kind));
-        }
-      }), CONCEPTS.INamedConcept$Kd));
+      return new NamedElementsScope(SNodeOperations.ofConcept(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(__thisNode__, LINKS.pattern$W39N), SNodeOperations.asSConcept((SAbstractConcept) kind), false, new SAbstractConcept[]{})).where((it) -> SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(it)), SNodeOperations.asSConcept(kind))), CONCEPTS.INamedConcept$Kd));
     }
 
     return null;

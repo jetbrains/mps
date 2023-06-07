@@ -15,8 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -34,15 +32,7 @@ public final class CodeInlineDocTag__BehaviorDescriptor extends BaseBHDescriptor
 
   /*package*/ static String buildCommentText_id7Qt73fl50wX(@NotNull SNode __thisNode__) {
     if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.line$ymTj)).isNotEmpty()) {
-      return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.line$ymTj)).select(new ISelector<SNode, String>() {
-        public String select(SNode it) {
-          return (String) CommentLine__BehaviorDescriptor.buildCommentText_id7Qt73fl2z8k.invoke(it);
-        }
-      }).foldLeft("code: ", new ILeftCombinator<String, String>() {
-        public String combine(String s, String it) {
-          return s + "\n" + it;
-        }
-      });
+      return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.line$ymTj)).select((it) -> (String) CommentLine__BehaviorDescriptor.buildCommentText_id7Qt73fl2z8k.invoke(it)).foldLeft("code: ", (String s, String it) -> s + "\n" + it);
     } else {
       return "code:\n";
     }

@@ -22,9 +22,7 @@ import java.util.Collection;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/1520098040411279238", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 /*package*/ class RefactoringScriptCollector {
@@ -89,32 +87,24 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
     public Collection<ScriptApplied> toBeExecutedImmediately(final SRepository repo) {
       if (!(scriptPresent())) {
         // not assert, see MigrationScriptCollector
-        return Sequence.fromIterable(Sequence.fromIterable(Collections.<ScriptApplied>emptyList())).toListSequence();
+        return Sequence.fromIterable(Sequence.fromIterable(Collections.<ScriptApplied>emptyList())).toList();
       }
       final RefactoringScriptReference sr = scriptReference();
-      return Sequence.fromIterable(asLegacy()).where(new IWhereFilter<ScriptApplied>() {
-        public boolean accept(ScriptApplied sa) {
+      return Sequence.fromIterable(asLegacy()).where(new _FunctionTypes._return_P1_E0<Boolean, ScriptApplied>() {
+        public Boolean invoke(ScriptApplied sa) {
           final AbstractModule moduleToMigrate = (AbstractModule) sa.getModule(repo);
           // FIXME dependency version extraction shall be through SModuleReference
           int v = Math.max(0, moduleToMigrate.getDependencyVersion(sr.getModule(repo), false));
           if (v != sr.getFromVersion()) {
             return false;
           }
-          return Sequence.fromIterable(((RefactoringScript) myScript).getExecuteAfter()).all(new IWhereFilter<RefactoringScriptReference>() {
-            public boolean accept(RefactoringScriptReference s) {
-              return !(needsToBeApplied(s, moduleToMigrate));
-            }
-          });
+          return Sequence.fromIterable(((RefactoringScript) myScript).getExecuteAfter()).all((s) -> !(needsToBeApplied(s, moduleToMigrate)));
         }
-      }).toListSequence();
+      }).toList();
     }
 
     private boolean needsToBeApplied(RefactoringScriptReference ref, SModule m) {
-      if (!(SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(m)).select(new ISelector<SModule, SModuleReference>() {
-        public SModuleReference select(SModule this0) {
-          return this0.getModuleReference();
-        }
-      }).contains(ref.getModuleReference()))) {
+      if (!(SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(m)).select((this0) -> this0.getModuleReference()).contains(ref.getModuleReference()))) {
         return false;
       }
       int dv = Math.max(0, ((AbstractModule) m).getDependencyVersion(ref.getModule(m.getRepository()), false));
@@ -124,8 +114,8 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
     @Override
     public void refreshScriptInstances(Project mpsProject) {
       myScript = RefactoringScriptReference.resolve(mpsProject.getRepository(), scriptReference());
-      Sequence.fromIterable(asLegacy()).visitAll(new IVisitor<ScriptApplied>() {
-        public void visit(ScriptApplied it) {
+      Sequence.fromIterable(asLegacy()).visitAll(new _FunctionTypes._void_P1_E0<ScriptApplied>() {
+        public void invoke(ScriptApplied it) {
           it.updateScriptInstance(myScript);
         }
       });

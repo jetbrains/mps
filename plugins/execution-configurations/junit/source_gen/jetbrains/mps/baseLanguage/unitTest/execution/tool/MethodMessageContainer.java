@@ -23,7 +23,7 @@ import java.io.FileInputStream;
 import com.intellij.openapi.util.Key;
 import com.intellij.execution.process.ProcessOutputTypes;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 
 public class MethodMessageContainer extends MessageContainerBase<LeafTestMessage> implements TestMessage {
   private static final Logger LOG = Logger.getLogger(MethodMessageContainer.class);
@@ -130,8 +130,8 @@ public class MethodMessageContainer extends MessageContainerBase<LeafTestMessage
 
   @Nullable
   private Key findKey(final String line) {
-    return ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<Key>(), ProcessOutputTypes.STDERR, ProcessOutputTypes.SYSTEM, ProcessOutputTypes.STDOUT)).findFirst(new IWhereFilter<Key>() {
-      public boolean accept(Key it) {
+    return ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<Key>(), ProcessOutputTypes.STDERR, ProcessOutputTypes.SYSTEM, ProcessOutputTypes.STDOUT)).findFirst(new _FunctionTypes._return_P1_E0<Boolean, Key>() {
+      public Boolean invoke(Key it) {
         return line.startsWith(it.toString());
       }
     });

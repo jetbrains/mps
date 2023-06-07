@@ -15,7 +15,6 @@ import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Objects;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
@@ -58,11 +57,7 @@ public final class ConvertToList_Intention extends AbstractIntentionDescriptor i
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       List<SNode> items = SLinkOperations.getChildren(node, LINKS.items$5OzF);
-      ListSequence.fromList(items).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNodeOperations.deleteNode(it);
-        }
-      });
+      ListSequence.fromList(items).visitAll((it) -> SNodeOperations.deleteNode(it));
       SLinkOperations.setTarget(node, LINKS.list$l1dd, _quotation_createNode_mz75hy_a0a2a0(items));
     }
 

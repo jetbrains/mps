@@ -18,9 +18,8 @@ import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -46,11 +45,7 @@ public class DailyPlanReference_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return new ListScope(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.HeatingPlan$lw, false, false), LINKS.dailyPlans$SB6I)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return !(Objects.equals(it, _context.getContextNode()));
-              }
-            })) {
+            return new ListScope(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.HeatingPlan$lw, false, false), LINKS.dailyPlans$SB6I)).where((it) -> !(Objects.equals(it, _context.getContextNode())))) {
               public String getName(SNode child) {
                 return SPropertyOperations.getString(SNodeOperations.cast(child, CONCEPTS.DailyPlan$zP), PROPS.displayName$el_f);
               }

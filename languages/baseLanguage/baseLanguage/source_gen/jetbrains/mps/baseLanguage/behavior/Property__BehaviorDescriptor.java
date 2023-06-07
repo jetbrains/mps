@@ -23,7 +23,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.scopes.VisibilityUtil;
 import java.util.Objects;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopeUtils;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -133,11 +132,7 @@ public final class Property__BehaviorDescriptor extends BaseBHDescriptor {
       }
 
       // two cases: 1) from class 2) from dot expression
-      Iterable<SNode> possibleClassifiers = ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, CONCEPTS.Classifier$Ix, true)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SetSequence.fromSet(ClassifierScopeUtils.getExtendedClassifiers(it)).contains(contextClassifier);
-        }
-      });
+      Iterable<SNode> possibleClassifiers = ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, CONCEPTS.Classifier$Ix, true)).where((it) -> SetSequence.fromSet(ClassifierScopeUtils.getExtendedClassifiers(it)).contains(contextClassifier));
       if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.DotExpression$yW))) {
         // 1
         return Sequence.fromIterable(possibleClassifiers).isNotEmpty();
@@ -145,11 +140,7 @@ public final class Property__BehaviorDescriptor extends BaseBHDescriptor {
         // 2
         SNode leftClassifier = DotExpression__BehaviorDescriptor.getClassifier_idhEwIPI9.invoke(SNodeOperations.cast(contextNode, CONCEPTS.DotExpression$yW));
         final Set<SNode> extendedClassifiers = SetSequence.fromSetWithValues(new HashSet<SNode>(), ClassifierScopeUtils.getExtendedClassifiers(leftClassifier));
-        return Sequence.fromIterable(possibleClassifiers).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SetSequence.fromSet(extendedClassifiers).contains(it);
-          }
-        });
+        return Sequence.fromIterable(possibleClassifiers).any((it) -> SetSequence.fromSet(extendedClassifiers).contains(it));
       }
     }
 

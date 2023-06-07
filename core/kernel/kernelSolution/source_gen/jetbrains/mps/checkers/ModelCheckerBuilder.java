@@ -8,8 +8,6 @@ import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.smodel.Language;
@@ -42,16 +40,8 @@ public class ModelCheckerBuilder {
 
   public static abstract class ModelExtractor {
     public final List<SModel> getModels(SModule module) {
-      Iterable<SModel> models = Sequence.fromIterable(getSubModules(module)).translate(new ITranslator2<SModule, SModel>() {
-        public Iterable<SModel> translate(SModule m) {
-          return m.getModels();
-        }
-      });
-      return Sequence.fromIterable(models).where(new IWhereFilter<SModel>() {
-        public boolean accept(SModel it) {
-          return includeModel(it);
-        }
-      }).toListSequence();
+      Iterable<SModel> models = Sequence.fromIterable(getSubModules(module)).translate((m) -> m.getModels());
+      return Sequence.fromIterable(models).where((it) -> includeModel(it)).toList();
     }
     public abstract Iterable<SModule> getSubModules(SModule module);
     public abstract boolean includeModel(SModel model);
@@ -123,17 +113,9 @@ public class ModelCheckerBuilder {
   private IAbstractChecker<ItemsToCheck, IssueKindReportItem> createChecker(final List<IChecker<SModel, ? extends IssueKindReportItem>> specificModelCheckers, final List<IChecker<SModule, ? extends IssueKindReportItem>> specificModuleCheckers) {
     return new IAbstractChecker<ItemsToCheck, IssueKindReportItem>() {
       public void check(ItemsToCheck itemsToCheck, SRepository repository, Consumer<? super IssueKindReportItem> errorCollector, ProgressMonitor monitor) {
-        List<SModule> modules = ListSequence.fromList(itemsToCheck.modules).translate(new ITranslator2<SModule, SModule>() {
-          public Iterable<SModule> translate(SModule it) {
-            return myModelExtractor.getSubModules(it);
-          }
-        }).toListSequence();
+        List<SModule> modules = ListSequence.fromList(itemsToCheck.modules).translate((it) -> myModelExtractor.getSubModules(it)).toList();
         List<SModel> models = itemsToCheck.models;
-        int work = ListSequence.fromList(models).count() + ListSequence.fromList(modules).count() + ListSequence.fromList(modules).translate(new ITranslator2<SModule, SModel>() {
-          public Iterable<SModel> translate(SModule it) {
-            return myModelExtractor.getModels(it);
-          }
-        }).count();
+        int work = ListSequence.fromList(models).count() + ListSequence.fromList(modules).count() + ListSequence.fromList(modules).translate((it) -> myModelExtractor.getModels(it)).count();
         monitor.start("Checking", work);
 
         try {

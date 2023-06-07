@@ -12,7 +12,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SModelOperations;
 import org.jetbrains.annotations.NotNull;
@@ -27,8 +26,6 @@ import java.util.Set;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Collections;
 import jetbrains.mps.plugins.relations.RelationDescriptor;
 import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
@@ -52,11 +49,7 @@ public class SetNodePackage_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes"))).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode n) {
-        return SNodeOperations.getParent(n) == null && SNodeOperations.getModel(n) != null && !(SModelOperations.isReadOnly(SNodeOperations.getModel(n)));
-      }
-    });
+    return ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes"))).all((n) -> SNodeOperations.getParent(n) == null && SNodeOperations.getModel(n) != null && !(SModelOperations.isReadOnly(SNodeOperations.getModel(n))));
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -136,24 +129,8 @@ public class SetNodePackage_Action extends BaseAction {
     });
   }
   private List<String> fetchExistingPackages(List<SNode> nlist, final Map<String, Object> _params) {
-    Set<SModel> models = SetSequence.fromSetWithValues(new HashSet<SModel>(), ListSequence.fromList(nlist).select(new ISelector<SNode, SModel>() {
-      public SModel select(SNode n) {
-        return SNodeOperations.getModel(n);
-      }
-    }));
-    Set<String> packages = SetSequence.fromSetWithValues(new HashSet<String>(), SetSequence.fromSet(models).translate(new ITranslator2<SModel, SNode>() {
-      public Iterable<SNode> translate(SModel m) {
-        return jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.roots(m, CONCEPTS.BaseConcept$gP);
-      }
-    }).select(new ISelector<SNode, String>() {
-      public String select(SNode r) {
-        return SPropertyOperations.getString(r, PROPS.virtualPackage$EkXl);
-      }
-    }).where(new IWhereFilter<String>() {
-      public boolean accept(String p) {
-        return p != null;
-      }
-    }));
+    Set<SModel> models = SetSequence.fromSetWithValues(new HashSet<SModel>(), ListSequence.fromList(nlist).select((n) -> SNodeOperations.getModel(n)));
+    Set<String> packages = SetSequence.fromSetWithValues(new HashSet<String>(), SetSequence.fromSet(models).translate((m) -> jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.roots(m, CONCEPTS.BaseConcept$gP)).select((r) -> SPropertyOperations.getString(r, PROPS.virtualPackage$EkXl)).where((p) -> p != null));
     List<String> result = ListSequence.fromListWithValues(new ArrayList<String>(), packages);
     Collections.sort(result);
     return result;
@@ -161,20 +138,10 @@ public class SetNodePackage_Action extends BaseAction {
   public List<SNode> findAllAspects(Project project, final SNode node, final Map<String, Object> _params) {
     List<RelationDescriptor> tabs = ProjectPluginManager.getApplicableTabs(project, node);
     try {
-      return ListSequence.fromList(tabs).where(new IWhereFilter<RelationDescriptor>() {
-        public boolean accept(RelationDescriptor it) {
-          return it.isApplicable(node);
-        }
-      }).translate(new ITranslator2<RelationDescriptor, SNode>() {
-        public Iterable<SNode> translate(final RelationDescriptor tab) {
-          List<SNode> nodes = tab.getNodes(node);
-          return ListSequence.fromList(nodes).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return tab.getBaseNode(it) == node;
-            }
-          });
-        }
-      }).toListSequence();
+      return ListSequence.fromList(tabs).where((it) -> it.isApplicable(node)).translate((final RelationDescriptor tab) -> {
+        List<SNode> nodes = tab.getNodes(node);
+        return ListSequence.fromList(nodes).where((it) -> tab.getBaseNode(it) == node);
+      }).toList();
     } catch (Throwable t) {
       if (LOG.isErrorLevel()) {
         LOG.error("Exception in extension: ", t);

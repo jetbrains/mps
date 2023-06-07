@@ -47,7 +47,7 @@ public class PropertyVisitor extends KmPropertyVisitor {
   public KmTypeParameterVisitor visitTypeParameter(int flags, @NotNull String name, int id, @NotNull KmVariance variance) {
     SNode newParameter = SLinkOperations.addNewChild(node, LINKS.typeParameters$eq6K, CONCEPTS.TypeParameter$oc);
     context.setChildId(newParameter, name);
-    return TypeParameterVisitor.create(newParameter, name, id, flags, variance, context, (Iterable<SNode> constraints, String descriptor) -> {
+    return TypeParameterVisitor.create(newParameter, name, id, flags, variance, context, (constraints, descriptor) -> {
       typeParameters.add(descriptor);
       ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.constraints$BRhr)).addSequence(Sequence.fromIterable(constraints));
     });
@@ -71,7 +71,7 @@ public class PropertyVisitor extends KmPropertyVisitor {
     return new KmValueParameterVisitor() {
       @Override
       public KmTypeVisitor visitType(int flags) {
-        return new TypeVisitor(context, flags, (SNode type, String _id) -> SLinkOperations.setTarget(parameter, LINKS.type$Nm_o, type));
+        return new TypeVisitor(context, flags, (type, _id) -> SLinkOperations.setTarget(parameter, LINKS.type$Nm_o, type));
       }
 
       @Nullable

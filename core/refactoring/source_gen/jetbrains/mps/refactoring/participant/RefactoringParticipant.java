@@ -11,17 +11,13 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IRightCombinator;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 
 @GeneratedClass(node = "r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)/4331048896013407851", model = "r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)")
 public interface RefactoringParticipant<InitialDataObject, FinalDataObject, InitialPoint, FinalPoint> {
@@ -81,11 +77,7 @@ public interface RefactoringParticipant<InitialDataObject, FinalDataObject, Init
     KEEP();
 
     public static KeepOldNodes max(Iterable<KeepOldNodes> values) {
-      return Sequence.fromIterable(values).foldRight(KeepOldNodes.REMOVE, new IRightCombinator<KeepOldNodes, KeepOldNodes>() {
-        public KeepOldNodes combine(KeepOldNodes it, KeepOldNodes s) {
-          return (((Comparable<KeepOldNodes>) s).compareTo(it) > 0 ? s : it);
-        }
-      });
+      return Sequence.fromIterable(values).foldRight(KeepOldNodes.REMOVE, (KeepOldNodes it, KeepOldNodes s) -> (((Comparable<KeepOldNodes>) s).compareTo(it) > 0 ? s : it));
     }
   }
 
@@ -143,28 +135,16 @@ public interface RefactoringParticipant<InitialDataObject, FinalDataObject, Init
     }
     public ParticipantApplied(final ParticipantStateFactory<IP, FP, IS, FS> factory, final RefactoringParticipant<I, F, IP, FP> participant, List<IS> oldNodes) {
       this.myParticipant = participant;
-      myInitialStates = ListSequence.fromList(oldNodes).select(new ISelector<IS, I>() {
-        public I select(IS it) {
-          return factory.getInitial(participant, it);
-        }
-      }).toListSequence();
+      myInitialStates = ListSequence.fromList(oldNodes).select((it) -> factory.getInitial(participant, it)).toList();
     }
     public List<Option> getAvaliableOptions(SRepository repository) {
-      return myParticipant.getAvailableOptions(ListSequence.fromList(myInitialStates).where(new IWhereFilter<I>() {
-        public boolean accept(I it) {
-          return it != null;
-        }
-      }).toListSequence(), repository);
+      return myParticipant.getAvailableOptions(ListSequence.fromList(myInitialStates).where((it) -> it != null).toList(), repository);
     }
     public List<List<Change<I, F>>> findChanges(SRepository repository, List<Option> selectedOptions, SearchScope searchScope, ProgressMonitor progressMonitor) {
       return changes = initChanges(repository, selectedOptions, searchScope, progressMonitor);
     }
     protected <T, S> List<S> mapNotNull(List<T> arguments, _FunctionTypes._return_P1_E0<? extends List<S>, ? super List<T>> notNullMapFunc) {
-      List<S> filteredResult = notNullMapFunc.invoke(ListSequence.fromList(arguments).where(new IWhereFilter<T>() {
-        public boolean accept(T it) {
-          return it != null;
-        }
-      }).toListSequence());
+      List<S> filteredResult = notNullMapFunc.invoke(ListSequence.fromList(arguments).where((it) -> it != null).toList());
       List<S> result = ListSequence.fromList(new ArrayList<S>(ListSequence.fromList(arguments).count()));
       int j = 0;
       for (T v : arguments) {
@@ -189,11 +169,7 @@ public interface RefactoringParticipant<InitialDataObject, FinalDataObject, Init
           nodeChanges_var = nodeChanges_it.next();
           newNode_var = newNode_it.next();
           final F finalState = factory.getFinal(myParticipant, newNode_var);
-          ListSequence.fromList(nodeChanges_var).visitAll(new IVisitor<Change<I, F>>() {
-            public void visit(Change<I, F> it) {
-              it.confirm(finalState, repository, session);
-            }
-          });
+          ListSequence.fromList(nodeChanges_var).visitAll((it) -> it.confirm(finalState, repository, session));
         }
       }
     }

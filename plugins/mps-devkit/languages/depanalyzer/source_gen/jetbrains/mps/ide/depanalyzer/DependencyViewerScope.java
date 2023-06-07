@@ -13,9 +13,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -100,29 +98,13 @@ public class DependencyViewerScope {
     CollectionSequence.fromCollection(myRoots).addElement(root.getContainingRoot().getReference());
   }
   public Collection<SModel> getModels() {
-    return CollectionSequence.fromCollection(myModels).select(new ISelector<SModelReference, SModel>() {
-      public SModel select(SModelReference it) {
-        return it.resolve(myRepo);
-      }
-    }).where(new NotNullWhereFilter<SModel>()).toListSequence();
+    return CollectionSequence.fromCollection(myModels).select((it) -> it.resolve(myRepo)).where(new NotNullWhereFilter()).toList();
   }
   public Collection<SModule> getModules() {
-    return CollectionSequence.fromCollection(myModules).select(new ISelector<SModuleReference, SModule>() {
-      public SModule select(SModuleReference it) {
-        return it.resolve(myRepo);
-      }
-    }).where(new NotNullWhereFilter<SModule>()).toListSequence();
+    return CollectionSequence.fromCollection(myModules).select((it) -> it.resolve(myRepo)).where(new NotNullWhereFilter()).toList();
   }
   public Collection<SNode> getRoots() {
-    return CollectionSequence.fromCollection(myRoots).select(new ISelector<SNodeReference, SNode>() {
-      public SNode select(SNodeReference it) {
-        return it.resolve(myRepo);
-      }
-    }).where(new NotNullWhereFilter<SNode>()).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return it.getContainingRoot();
-      }
-    }).toListSequence();
+    return CollectionSequence.fromCollection(myRoots).select((it) -> it.resolve(myRepo)).where(new NotNullWhereFilter()).select((it) -> it.getContainingRoot()).toList();
   }
   public boolean isEmpty() {
     return CollectionSequence.fromCollection(myModels).isEmpty() && CollectionSequence.fromCollection(myModules).isEmpty() && CollectionSequence.fromCollection(myRoots).isEmpty();
@@ -161,20 +143,8 @@ public class DependencyViewerScope {
   }
 
   public Iterable<SNode> getNodes() {
-    Iterable<SModel> models = CollectionSequence.fromCollection(getModules()).translate(new ITranslator2<SModule, SModel>() {
-      public Iterable<SModel> translate(SModule it) {
-        return it.getModels();
-      }
-    }).concat(CollectionSequence.fromCollection(getModels()));
-    Iterable<SNode> roots = Sequence.fromIterable(models).translate(new ITranslator2<SModel, SNode>() {
-      public Iterable<SNode> translate(SModel it) {
-        return it.getRootNodes();
-      }
-    }).concat(CollectionSequence.fromCollection(getRoots()));
-    return Sequence.fromIterable(roots).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SNodeOperations.getNodeDescendants(((SNode) it), null, true, new SAbstractConcept[]{});
-      }
-    });
+    Iterable<SModel> models = CollectionSequence.fromCollection(getModules()).translate((it) -> it.getModels()).concat(CollectionSequence.fromCollection(getModels()));
+    Iterable<SNode> roots = Sequence.fromIterable(models).translate((it) -> it.getRootNodes()).concat(CollectionSequence.fromCollection(getRoots()));
+    return Sequence.fromIterable(roots).translate((it) -> SNodeOperations.getNodeDescendants(((SNode) it), null, true, new SAbstractConcept[]{}));
   }
 }

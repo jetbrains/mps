@@ -14,10 +14,8 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.build.behavior.BuildFolderMacro__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -47,21 +45,15 @@ public class PathConverter {
 
     final List<Tuples._2<String, SNode>> result = ListSequence.fromList(new ArrayList<Tuples._2<String, SNode>>());
     final List<SNode> withoutPath = ListSequence.fromList(new ArrayList<SNode>());
-    Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.macros$r8_A), CONCEPTS.BuildFolderMacro$mR)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        String path = normalizePath(BuildFolderMacro__BehaviorDescriptor.evaluate_id4jjtc7WZOzA.invoke(it, ctx), true);
-        if (path != null && path.length() > 1) {
-          ListSequence.fromList(result).addElement(MultiTuple.<String,SNode>from(path, it));
-        } else {
-          ListSequence.fromList(withoutPath).addElement(it);
-        }
+    Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.macros$r8_A), CONCEPTS.BuildFolderMacro$mR)).visitAll((it) -> {
+      String path = normalizePath(BuildFolderMacro__BehaviorDescriptor.evaluate_id4jjtc7WZOzA.invoke(it, ctx), true);
+      if (path != null && path.length() > 1) {
+        ListSequence.fromList(result).addElement(MultiTuple.<String,SNode>from(path, it));
+      } else {
+        ListSequence.fromList(withoutPath).addElement(it);
       }
     });
-    macros = ListSequence.fromList(result).sort(new ISelector<Tuples._2<String, SNode>, Integer>() {
-      public Integer select(Tuples._2<String, SNode> it) {
-        return it._0().length() * 2;
-      }
-    }, false);
+    macros = ListSequence.fromList(result).sort((it) -> it._0().length() * 2, false);
     macrosWithoutPath = withoutPath;
     myModuleLocation = null;
   }

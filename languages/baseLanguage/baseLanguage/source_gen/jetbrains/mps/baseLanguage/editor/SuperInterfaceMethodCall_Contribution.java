@@ -18,7 +18,6 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.scope.Scope;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import jetbrains.mps.logging.Logger;
@@ -72,11 +71,7 @@ public class SuperInterfaceMethodCall_Contribution extends SubstituteMenuBase {
       if (scope == null) {
         return Collections.emptyList();
       }
-      return Sequence.fromIterable(scope.getAvailableElements("")).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SNodeOperations.cast(it, CONCEPTS.Classifier$Ix);
-        }
-      });
+      return Sequence.fromIterable(scope.getAvailableElements("")).select((it) -> SNodeOperations.cast(it, CONCEPTS.Classifier$Ix));
     }
     private class SMP_Action_73nkqx_a0 extends SingleItemSubstituteMenuPart {
       private final SNode myParameterObject;

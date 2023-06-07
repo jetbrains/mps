@@ -57,7 +57,7 @@ public class NodeOperationsApplicableFlags_Test extends BaseTransformationTest {
     public void test_testApplicableSetsDoNotIntersect() throws Exception {
       runWithinCommand(() -> addNodeById("6410670351275222996"));
       runWithinCommand(() -> {
-        List<SConcept> allConcepts = Sequence.fromIterable(TestBody.this.getAllNodeOperations()).toListSequence();
+        List<SConcept> allConcepts = Sequence.fromIterable(TestBody.this.getAllNodeOperations()).toList();
         final SNode dtString = SPointerOperations.resolveNode(new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1082983041843"), SNodeOperations.getModel(getNodeById("6410670351275225853")).getRepository());
         final SNode dtLinkMetclass = SPointerOperations.resolveNode(new SNodePointer("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)", "4241665505353447573"), SNodeOperations.getModel(getNodeById("6410670351275225853")).getRepository());
         Assert.assertNotNull(dtString);

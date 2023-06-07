@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="0" />
     <use id="a936c42c-cb2c-4d64-a1dc-12986579a998" name="jetbrains.mps.lang.editor.styleTests" version="0" />
@@ -181,6 +181,7 @@
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -230,7 +231,6 @@
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1225711141656" name="jetbrains.mps.baseLanguage.collections.structure.ListElementAccessExpression" flags="nn" index="1y4W85">
         <child id="1225711182005" name="list" index="1y566C" />
         <child id="1225711191269" name="index" index="1y58nS" />
@@ -2494,9 +2494,9 @@
             </node>
           </node>
           <node concept="1bVj0M" id="rhJBLcTQp5" role="37wK5m">
-            <node concept="Rh6nW" id="rhJBLcTQp6" role="1bW2Oz">
+            <node concept="gl6BB" id="5W7E4fV0Y3m" role="1bW2Oz">
               <property role="TrG5h" value="it" />
-              <node concept="2jxLKc" id="rhJBLcTQp7" role="1tU5fm" />
+              <node concept="2jxLKc" id="5W7E4fV0Y3n" role="1tU5fm" />
             </node>
             <node concept="3clFbS" id="rhJBLcTQp8" role="1bW5cS">
               <node concept="3clFbF" id="rhJBLcTQp9" role="3cqZAp">
@@ -2513,7 +2513,7 @@
                               <ref role="3uigEE" to="g51k:~EditorCell_Label" resolve="EditorCell_Label" />
                             </node>
                             <node concept="37vLTw" id="rhJBLcTQpi" role="10QFUP">
-                              <ref role="3cqZAo" node="rhJBLcTQp6" resolve="it" />
+                              <ref role="3cqZAo" node="5W7E4fV0Y3m" />
                             </node>
                           </node>
                         </node>
@@ -2533,7 +2533,7 @@
                     <node concept="liA8E" id="rhJBLcTQpn" role="2OqNvi">
                       <ref role="37wK5l" to="wyt6:~Class.isInstance(java.lang.Object)" resolve="isInstance" />
                       <node concept="37vLTw" id="rhJBLcTQpo" role="37wK5m">
-                        <ref role="3cqZAo" node="rhJBLcTQp6" resolve="it" />
+                        <ref role="3cqZAo" node="5W7E4fV0Y3m" />
                       </node>
                     </node>
                   </node>
@@ -2575,9 +2575,9 @@
             </node>
           </node>
           <node concept="1bVj0M" id="rhJBLcW1f4" role="37wK5m">
-            <node concept="Rh6nW" id="rhJBLcW1f5" role="1bW2Oz">
+            <node concept="gl6BB" id="5W7E4fV0Y3o" role="1bW2Oz">
               <property role="TrG5h" value="it" />
-              <node concept="2jxLKc" id="rhJBLcW1f6" role="1tU5fm" />
+              <node concept="2jxLKc" id="5W7E4fV0Y3p" role="1tU5fm" />
             </node>
             <node concept="3clFbS" id="rhJBLcW1f7" role="1bW5cS">
               <node concept="3clFbF" id="rhJBLcW1f8" role="3cqZAp">
@@ -2594,7 +2594,7 @@
                               <ref role="3uigEE" to="g51k:~EditorCell_Label" resolve="EditorCell_Label" />
                             </node>
                             <node concept="37vLTw" id="rhJBLcW1fh" role="10QFUP">
-                              <ref role="3cqZAo" node="rhJBLcW1f5" resolve="it" />
+                              <ref role="3cqZAo" node="5W7E4fV0Y3o" />
                             </node>
                           </node>
                         </node>
@@ -2614,7 +2614,7 @@
                     <node concept="liA8E" id="rhJBLcW1fm" role="2OqNvi">
                       <ref role="37wK5l" to="wyt6:~Class.isInstance(java.lang.Object)" resolve="isInstance" />
                       <node concept="37vLTw" id="rhJBLcW1fn" role="37wK5m">
-                        <ref role="3cqZAo" node="rhJBLcW1f5" resolve="it" />
+                        <ref role="3cqZAo" node="5W7E4fV0Y3o" />
                       </node>
                     </node>
                   </node>

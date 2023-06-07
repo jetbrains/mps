@@ -10,7 +10,6 @@ import com.intellij.openapi.application.ApplicationManager;
 import java.util.Objects;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.vcsUtil.VcsUtil;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.vcs.VcsBundle;
 import com.intellij.openapi.vcs.actions.ShortNameType;
@@ -122,27 +121,17 @@ public class AnnotationOptions {
   }
 
   private void repaintColumns() {
-    SetSequence.fromSet(myUpdateListeners).visitAll(new IVisitor<UpdateListener>() {
-      public void visit(UpdateListener it) {
-        it.repaintColumn();
-      }
-    });
+    SetSequence.fromSet(myUpdateListeners).visitAll((it) -> it.repaintColumn());
   }
 
   private void repaintEditors() {
-    SetSequence.fromSet(myUpdateListeners).visitAll(new IVisitor<UpdateListener>() {
-      public void visit(UpdateListener it) {
-        it.repaintEditor();
-      }
-    });
+    SetSequence.fromSet(myUpdateListeners).visitAll((it) -> it.repaintEditor());
   }
 
   private void repaintAll() {
-    SetSequence.fromSet(myUpdateListeners).visitAll(new IVisitor<UpdateListener>() {
-      public void visit(UpdateListener it) {
-        it.repaintEditor();
-        it.repaintColumn();
-      }
+    SetSequence.fromSet(myUpdateListeners).visitAll((it) -> {
+      it.repaintEditor();
+      it.repaintColumn();
     });
   }
 

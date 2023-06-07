@@ -11,7 +11,6 @@ import java.util.List;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.openapi.vcs.FilePath;
 import com.intellij.vcsUtil.VcsUtil;
@@ -23,8 +22,6 @@ import java.util.Collections;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import com.intellij.vcs.log.impl.HashImpl;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -32,6 +29,7 @@ import java.util.HashSet;
 import com.intellij.vcs.log.graph.VisibleGraph;
 import com.intellij.vcs.log.graph.PermanentGraph;
 import jetbrains.mps.internal.collections.runtime.IMapping;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import java.util.ArrayList;
 
@@ -47,11 +45,7 @@ public final class CommitsGraph {
 
   @Nullable
   public CommitsGraphNode getHeadNode() {
-    List<CommitsGraphNode> heads = CollectionSequence.fromCollection(myNodes).where(new IWhereFilter<CommitsGraphNode>() {
-      public boolean accept(CommitsGraphNode it) {
-        return CollectionSequence.fromCollection(it.getChildren()).isEmpty();
-      }
-    }).toListSequence();
+    List<CommitsGraphNode> heads = CollectionSequence.fromCollection(myNodes).where((it) -> CollectionSequence.fromCollection(it.getChildren()).isEmpty()).toList();
     return (ListSequence.fromList(heads).count() == 1 ? ListSequence.fromList(heads).first() : null);
   }
 
@@ -101,18 +95,12 @@ public final class CommitsGraph {
 
     final Map<Integer, CommitsGraphNode> commitIndexToNodeMap = MapSequence.fromMap(new HashMap<Integer, CommitsGraphNode>());
 
-    Collection<CommitsGraphNode> nodes = CollectionSequence.fromCollection(revisions).select(new ISelector<VcsFileRevision, CommitsGraphNode>() {
-      public CommitsGraphNode select(VcsFileRevision it) {
-        return new CommitsGraphNode(it);
-      }
-    }).toListSequence();
+    Collection<CommitsGraphNode> nodes = CollectionSequence.fromCollection(revisions).select((it) -> new CommitsGraphNode(it)).toList();
 
-    CollectionSequence.fromCollection(nodes).visitAll(new IVisitor<CommitsGraphNode>() {
-      public void visit(CommitsGraphNode node) {
-        String hash = node.getRevision().getRevisionNumber().asString();
-        int commitIndex = dataManager.getCommitIndex(HashImpl.build(hash), rootFile);
-        MapSequence.fromMap(commitIndexToNodeMap).put(commitIndex, node);
-      }
+    CollectionSequence.fromCollection(nodes).visitAll((node) -> {
+      String hash = node.getRevision().getRevisionNumber().asString();
+      int commitIndex = dataManager.getCommitIndex(HashImpl.build(hash), rootFile);
+      MapSequence.fromMap(commitIndexToNodeMap).put(commitIndex, node);
     });
 
     Set<Integer> commitIndices = SetSequence.fromSetWithValues(new HashSet<Integer>(), MapSequence.fromMap(commitIndexToNodeMap).keySet());
@@ -123,22 +111,10 @@ public final class CommitsGraph {
     for (IMapping<Integer, CommitsGraphNode> it : MapSequence.fromMap(commitIndexToNodeMap)) {
       final CommitsGraphNode revisionNode = it.value();
       int commitIndex = it.key();
-      ListSequence.fromList(getParents(visibleGraphNormal, commitIndex, commitIndexToNodeMap)).concat(ListSequence.fromList(getParents(visibleGraphBek, commitIndex, commitIndexToNodeMap))).distinct().visitAll(new IVisitor<CommitsGraphNode>() {
-        public void visit(CommitsGraphNode parent) {
-          revisionNode.addParent(parent);
-        }
-      });
+      ListSequence.fromList(getParents(visibleGraphNormal, commitIndex, commitIndexToNodeMap)).concat(ListSequence.fromList(getParents(visibleGraphBek, commitIndex, commitIndexToNodeMap))).distinct().visitAll((parent) -> revisionNode.addParent(parent));
     }
 
-    CollectionSequence.fromCollection(nodes).where(new IWhereFilter<CommitsGraphNode>() {
-      public boolean accept(CommitsGraphNode it) {
-        return ListSequence.fromList(it.getParents()).count() > 2;
-      }
-    }).visitAll(new IVisitor<CommitsGraphNode>() {
-      public void visit(CommitsGraphNode node) {
-        deleteIndirectParents(node);
-      }
-    });
+    CollectionSequence.fromCollection(nodes).where((it) -> ListSequence.fromList(it.getParents()).count() > 2).visitAll((node) -> deleteIndirectParents(node));
     return (graphIsCorrect(nodes) ? nodes : buildLinearGraph(revisions));
   }
 
@@ -148,11 +124,11 @@ public final class CommitsGraph {
       throw new BuildException();
     }
     List<Integer> childRows = graph.getRowInfo(row).getAdjacentRows(true);
-    return ListSequence.fromList(childRows).select(new ISelector<Integer, CommitsGraphNode>() {
-      public CommitsGraphNode select(Integer row) {
+    return ListSequence.fromList(childRows).select(new _FunctionTypes._return_P1_E0<CommitsGraphNode, Integer>() {
+      public CommitsGraphNode invoke(Integer row) {
         return MapSequence.fromMap(commitIndexToNodeMap).get(graph.getRowInfo(row).getCommit());
       }
-    }).where(new NotNullWhereFilter<CommitsGraphNode>()).toListSequence();
+    }).where(new NotNullWhereFilter()).toList();
   }
 
   private static boolean graphIsCorrect(Collection<CommitsGraphNode> nodes) {
@@ -161,11 +137,7 @@ public final class CommitsGraph {
         return false;
       }
     }
-    List<CommitsGraphNode> heads = CollectionSequence.fromCollection(nodes).where(new IWhereFilter<CommitsGraphNode>() {
-      public boolean accept(CommitsGraphNode it) {
-        return CollectionSequence.fromCollection(it.getChildren()).isEmpty();
-      }
-    }).toListSequence();
+    List<CommitsGraphNode> heads = CollectionSequence.fromCollection(nodes).where((it) -> CollectionSequence.fromCollection(it.getChildren()).isEmpty()).toList();
     return ListSequence.fromList(heads).count() == 1;
   }
 
@@ -185,21 +157,15 @@ public final class CommitsGraph {
         }
       }
     }
-    ListSequence.fromList(parentsToDelete).visitAll(new IVisitor<CommitsGraphNode>() {
-      public void visit(CommitsGraphNode it) {
-        ListSequence.fromList(parents).removeElement(it);
-        CollectionSequence.fromCollection(it.getChildren()).removeElement(node);
-      }
+    ListSequence.fromList(parentsToDelete).visitAll((it) -> {
+      ListSequence.fromList(parents).removeElement(it);
+      CollectionSequence.fromCollection(it.getChildren()).removeElement(node);
     });
   }
 
   @NotNull
   private static Collection<CommitsGraphNode> buildLinearGraph(Collection<VcsFileRevision> revisions) {
-    List<CommitsGraphNode> nodes = CollectionSequence.fromCollection(revisions).select(new ISelector<VcsFileRevision, CommitsGraphNode>() {
-      public CommitsGraphNode select(VcsFileRevision it) {
-        return new CommitsGraphNode(it);
-      }
-    }).toListSequence();
+    List<CommitsGraphNode> nodes = CollectionSequence.fromCollection(revisions).select((it) -> new CommitsGraphNode(it)).toList();
     for (int i = 0; i < ListSequence.fromList(nodes).count() - 1; i++) {
       ListSequence.fromList(nodes).getElement(i).addParent(ListSequence.fromList(nodes).getElement(i + 1));
     }

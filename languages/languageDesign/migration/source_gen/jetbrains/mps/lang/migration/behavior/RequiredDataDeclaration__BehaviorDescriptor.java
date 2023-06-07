@@ -16,7 +16,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -35,11 +34,7 @@ public final class RequiredDataDeclaration__BehaviorDescriptor extends BaseBHDes
   }
 
   /*package*/ static void populateMember_id6r77ob2UW9O(@NotNull SNode __thisNode__, final MembersPopulatingContext context, SNode classifier) {
-    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.dependencies$u92h)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        context.exposeMember(it, null);
-      }
-    });
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.dependencies$u92h)).visitAll((it) -> context.exposeMember(it, null));
   }
   /*package*/ static SNode getDeclaration_id7T23sO8vZuR(@NotNull SNode __thisNode__) {
     return SNodeOperations.getNode("90746344-04fd-4286-97d5-b46ae6a81709/r:52a3d974-bd4f-4651-ba6e-a2de5e336d95(jetbrains.mps.lang.migration/jetbrains.mps.lang.migration.methods)", "4144229974054260078");

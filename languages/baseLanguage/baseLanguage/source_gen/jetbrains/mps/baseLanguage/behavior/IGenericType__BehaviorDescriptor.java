@@ -64,19 +64,17 @@ public final class IGenericType__BehaviorDescriptor extends BaseBHDescriptor {
     return type;
   }
   /*package*/ static SNode expandGenericDescendants_id3zZky3wIhhm(@NotNull SNode __thisNode__, SNode expanded, final Map<SNode, SNode> substitutions, final List<SNode> expTrace) {
-    IGenericType__BehaviorDescriptor.walkDescendants_id77p1ap9WcZw.invoke(__thisNode__, expanded, new _FunctionTypes._return_P2_E0<Boolean, SNode, Queue<SNode>>() {
-      public Boolean invoke(SNode desc, Queue<SNode> queue) {
-        if (SNodeOperations.isInstanceOf(desc, CONCEPTS.IGenericType$13)) {
-          SNode next = IGenericType__BehaviorDescriptor.expandGenerics_id3$PgO9fYTB5.invoke(SNodeOperations.cast(desc, CONCEPTS.IGenericType$13), substitutions, ListSequence.fromListWithValues(new ArrayList<SNode>(), expTrace));
-          if (next != desc) {
-            SNodeOperations.replaceWithAnother(desc, SNodeOperations.copyNode(next));
-            QueueSequence.fromQueue(queue).addSequence(ListSequence.fromList(SNodeOperations.getChildren(desc)));
-          }
-          return false;
+    IGenericType__BehaviorDescriptor.walkDescendants_id77p1ap9WcZw.invoke(__thisNode__, expanded, ((_FunctionTypes._return_P2_E0<Boolean, SNode, Queue<SNode>>) (SNode desc, Queue<SNode> queue) -> {
+      if (SNodeOperations.isInstanceOf(desc, CONCEPTS.IGenericType$13)) {
+        SNode next = IGenericType__BehaviorDescriptor.expandGenerics_id3$PgO9fYTB5.invoke(SNodeOperations.cast(desc, CONCEPTS.IGenericType$13), substitutions, ListSequence.fromListWithValues(new ArrayList<SNode>(), expTrace));
+        if (next != desc) {
+          SNodeOperations.replaceWithAnother(desc, SNodeOperations.copyNode(next));
+          QueueSequence.fromQueue(queue).addSequence(ListSequence.fromList(SNodeOperations.getChildren(desc)));
         }
-        return true;
+        return false;
       }
-    });
+      return true;
+    }));
     return expanded;
   }
   /*package*/ static void walkDescendants_id77p1ap9WcZw(@NotNull SNode __thisNode__, SNode node, _FunctionTypes._return_P2_E0<? extends Boolean, ? super SNode, ? super Queue<SNode>> walker) {

@@ -32,8 +32,6 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -105,22 +103,14 @@ public final class CellActionMapDeclaration__BehaviorDescriptor extends BaseBHDe
       return;
     }
 
-    if (Sequence.fromIterable(_traceback.value).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode imp) {
-        return Objects.equals(SLinkOperations.getTarget(next, LINKS.cellActionMap$$ow7), SLinkOperations.getTarget(imp, LINKS.cellActionMap$$ow7));
-      }
-    })) {
+    if (Sequence.fromIterable(_traceback.value).any((imp) -> Objects.equals(SLinkOperations.getTarget(next, LINKS.cellActionMap$$ow7), SLinkOperations.getTarget(imp, LINKS.cellActionMap$$ow7)))) {
       // Found a cycle which, however, doesn't contain this action map.
       // Ignore here, it is detected from a different starting point.
       return;
     }
 
     _traceback.value = Sequence.fromIterable(_traceback.value).concat(ListSequence.fromList(Collections.singletonList(next)));
-    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(next, LINKS.cellActionMap$$ow7), LINKS.imports$QP4v)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode imp) {
-        CellActionMapDeclaration__BehaviorDescriptor.detectCycles_id5Sx2dSLQoMP.invokeSpecial(__thisNode__, _traceback.value, imp, accumulator);
-      }
-    });
+    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(next, LINKS.cellActionMap$$ow7), LINKS.imports$QP4v)).visitAll((imp) -> CellActionMapDeclaration__BehaviorDescriptor.detectCycles_id5Sx2dSLQoMP.invokeSpecial(__thisNode__, _traceback.value, imp, accumulator));
   }
   /*package*/ static void forEachActionOfType_id2pg2GNQfgVG(@NotNull SNode __thisNode__, SEnumerationLiteral actionId, Consumer<? super SNode> f) {
     CellActionMapDeclaration__BehaviorDescriptor.forEachActionOfType_id2pg2GNQaQaM.invokeSpecial(__thisNode__, actionId, Collections.<SNode>emptyList(), f);
@@ -135,21 +125,17 @@ public final class CellActionMapDeclaration__BehaviorDescriptor extends BaseBHDe
     _visited.value = Sequence.fromIterable(_visited.value).concat(Sequence.fromIterable(Sequence.<SNode>singleton(__thisNode__)));
 
     // first handle imports
-    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.imports$QP4v)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode imp) {
-        if ((boolean) CellActionMapImportSelector__BehaviorDescriptor.selectsActionId_id3XXPjz_pJfc.invoke(SLinkOperations.getTarget(imp, LINKS.selector$hL1R), actionId)) {
-          CellActionMapDeclaration__BehaviorDescriptor.forEachActionOfType_id2pg2GNQaQaM.invoke(SLinkOperations.getTarget(imp, LINKS.cellActionMap$$ow7), actionId, _visited.value, f);
-        }
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.imports$QP4v)).visitAll((imp) -> {
+      if ((boolean) CellActionMapImportSelector__BehaviorDescriptor.selectsActionId_id3XXPjz_pJfc.invoke(SLinkOperations.getTarget(imp, LINKS.selector$hL1R), actionId)) {
+        CellActionMapDeclaration__BehaviorDescriptor.forEachActionOfType_id2pg2GNQaQaM.invoke(SLinkOperations.getTarget(imp, LINKS.cellActionMap$$ow7), actionId, _visited.value, f);
       }
     });
 
 
     // then handle actions defined directly in this action map
-    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.item$ZCi9)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        if (Objects.equals(CellActionMapItem__BehaviorDescriptor.getActionId_idJCy0JrvU0M.invoke(it), actionId)) {
-          f.accept(it);
-        }
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.item$ZCi9)).visitAll((it) -> {
+      if (Objects.equals(CellActionMapItem__BehaviorDescriptor.getActionId_idJCy0JrvU0M.invoke(it), actionId)) {
+        f.accept(it);
       }
     });
   }

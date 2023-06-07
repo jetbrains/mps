@@ -11,7 +11,6 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -32,22 +31,14 @@ public class check_ActionDeclaration_access_NonTypesystemRule extends AbstractNo
   public check_ActionDeclaration_access_NonTypesystemRule() {
   }
   public void applyRule(final SNode actionDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    List<SNode> editorContextParameters = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(actionDeclaration, LINKS.parameter$dZwh), CONCEPTS.ActionDataParameterDeclaration$Tg)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<SNodeReference>(), new SNodePointer("1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.ide.editor(MPS.Editor/)", "~MPSEditorDataKeys.EDITOR_COMPONENT"), new SNodePointer("1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.ide.editor(MPS.Editor/)", "~MPSEditorDataKeys.EDITOR_CONTEXT"), new SNodePointer("1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.ide.editor(MPS.Editor/)", "~MPSEditorDataKeys.EDITOR_CELL"))).contains(SLinkOperations.getPointer(it, LINKS.key$K5Gi));
-      }
-    }).toListSequence();
+    List<SNode> editorContextParameters = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(actionDeclaration, LINKS.parameter$dZwh), CONCEPTS.ActionDataParameterDeclaration$Tg)).where((it) -> ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<SNodeReference>(), new SNodePointer("1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.ide.editor(MPS.Editor/)", "~MPSEditorDataKeys.EDITOR_COMPONENT"), new SNodePointer("1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.ide.editor(MPS.Editor/)", "~MPSEditorDataKeys.EDITOR_CONTEXT"), new SNodePointer("1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.ide.editor(MPS.Editor/)", "~MPSEditorDataKeys.EDITOR_CELL"))).contains(SLinkOperations.getPointer(it, LINKS.key$K5Gi))).toList();
     if (SEnumOperations.isMember(SPropertyOperations.getEnum(actionDeclaration, PROPS.requiredAccess$TB4H), 0x6782cab5d9442894L)) {
       if (ListSequence.fromList(editorContextParameters).isEmpty()) {
         {
           final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.requiredAccess$TB4H);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(actionDeclaration, "Action should have EDITOR_COMPONENT parameter", "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "3567673624826823539", null, errorTarget);
         }
-      } else if (ListSequence.fromList(editorContextParameters).all(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(it, LINKS.condition$wuLH), CONCEPTS.RequiredCondition$Nh)).isEmpty();
-        }
-      })) {
+      } else if (ListSequence.fromList(editorContextParameters).all((it) -> Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(it, LINKS.condition$wuLH), CONCEPTS.RequiredCondition$Nh)).isEmpty())) {
         {
           final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.requiredAccess$TB4H);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(actionDeclaration, "Action should have " + SPropertyOperations.getString(SLinkOperations.getTarget(ListSequence.fromList(editorContextParameters).first(), LINKS.key$K5Gi), PROPS.name$MnvL) + " parameter with required condition.", "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "3567673624826893794", null, errorTarget);

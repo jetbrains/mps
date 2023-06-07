@@ -10,7 +10,6 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -35,16 +34,8 @@ public class Migrate_ReplaceChild_Params extends MigrationScriptBase {
     {
       SearchScope scope_s09h5g_a0e = CommandUtil.createScope(m);
       final SearchScope scope_s09h5g_a0e_0 = new EditableFilteringScope(scope_s09h5g_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_s09h5g_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.CellMenuPart_ReplaceChild_defaultConceptOfChild$v6, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNodeOperations.replaceWithAnother(it, _quotation_createNode_s09h5g_a0a0a0a0a0a0g(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x306b0e1228f7e93aL, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReplaceChild_defaultChildConcept"))));
-        }
-      });
+      QueryExecutionContext context = () -> scope_s09h5g_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.CellMenuPart_ReplaceChild_defaultConceptOfChild$v6, false)).visitAll((it) -> SNodeOperations.replaceWithAnother(it, _quotation_createNode_s09h5g_a0a0a0a0a0a0g(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x306b0e1228f7e93aL, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReplaceChild_defaultChildConcept")))));
     }
   }
   public MigrationScriptReference getReference() {

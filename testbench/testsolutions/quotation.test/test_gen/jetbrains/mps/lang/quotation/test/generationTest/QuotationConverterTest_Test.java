@@ -17,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.quotation.intentions.QuotationConverter;
 import java.util.ArrayList;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
@@ -54,16 +53,8 @@ public class QuotationConverterTest_Test extends BaseTransformationTest {
         List<SNode> testMethods = SLinkOperations.getChildren(SNodeOperations.getNode("r:1cc42aa8-6d2d-49a0-9b1f-2e5f92988fc5(jetbrains.mps.lang.quotation.test.generationTest@tests)", "3455411064017080199"), LINKS.testMethods$htrK);
         Assert.assertTrue(ListSequence.fromList(testMethods).isNotEmpty());
         for (SNode method : ListSequence.fromList(testMethods)) {
-          SNode q = Sequence.fromIterable(SNodeOperations.ofConcept(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$5xQk), LINKS.statement$53DE), CONCEPTS.LocalVariableDeclarationStatement$4w)).select(new ISelector<SNode, SNode>() {
-            public SNode select(SNode it) {
-              return SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.localVariableDeclaration$RpjM), LINKS.initializer$2twD);
-            }
-          }), CONCEPTS.Quotation$Vl)).first();
-          SNode l = Sequence.fromIterable(SNodeOperations.ofConcept(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$5xQk), LINKS.statement$53DE), CONCEPTS.LocalVariableDeclarationStatement$4w)).select(new ISelector<SNode, SNode>() {
-            public SNode select(SNode it) {
-              return SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.localVariableDeclaration$RpjM), LINKS.initializer$2twD);
-            }
-          }), CONCEPTS.NodeBuilder$GJ)).first();
+          SNode q = Sequence.fromIterable(SNodeOperations.ofConcept(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$5xQk), LINKS.statement$53DE), CONCEPTS.LocalVariableDeclarationStatement$4w)).select((it) -> SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.localVariableDeclaration$RpjM), LINKS.initializer$2twD)), CONCEPTS.Quotation$Vl)).first();
+          SNode l = Sequence.fromIterable(SNodeOperations.ofConcept(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$5xQk), LINKS.statement$53DE), CONCEPTS.LocalVariableDeclarationStatement$4w)).select((it) -> SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.localVariableDeclaration$RpjM), LINKS.initializer$2twD)), CONCEPTS.NodeBuilder$GJ)).first();
           Assert.assertNotNull(q);
           Assert.assertNotNull(l);
           SNode converted = SNodeOperations.cast(new QuotationConverter(SNodeOperations.copyNode(q)).convert(), CONCEPTS.NodeBuilder$GJ);

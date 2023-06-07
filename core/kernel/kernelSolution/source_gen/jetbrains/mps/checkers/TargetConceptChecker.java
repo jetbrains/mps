@@ -11,7 +11,6 @@ import jetbrains.mps.errors.item.IssueKindReportItem;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.errors.item.IncompatibleTargetReportItem;
@@ -50,11 +49,7 @@ public class TargetConceptChecker extends AbstractNodeCheckerInEditor implements
 
   @Override
   public void checkNodeInEditor(SNode node, LanguageErrorsCollector errorsCollector, SRepository repository) {
-    for (SNode child : ListSequence.fromList(SNodeOperations.getChildren(node)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isAttribute(it));
-      }
-    })) {
+    for (SNode child : ListSequence.fromList(SNodeOperations.getChildren(node)).where((it) -> !(SNodeOperations.isAttribute(it)))) {
       SContainmentLink link = SNodeOperations.getContainingLink(child);
       if (!(SConceptOperations.isSuperConceptOf(SNodeOperations.asSConcept(link.getTargetConcept()), SNodeOperations.asSConcept(SNodeOperations.getConcept(child))))) {
         errorsCollector.addError(new IncompatibleTargetReportItem.IncompatibleContainmentTargetReportItem(child));

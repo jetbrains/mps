@@ -18,7 +18,6 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.scope.Scope;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import jetbrains.mps.logging.Logger;
@@ -76,11 +75,7 @@ public class AbstractArgument_SubstituteMenu extends SubstituteMenuBase {
       if (linkDeclarationScope == null) {
         return Collections.emptyList();
       }
-      return Sequence.fromIterable(linkDeclarationScope.getAvailableElements("")).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SNodeOperations.cast(it, CONCEPTS.LinkDeclaration$1p);
-        }
-      });
+      return Sequence.fromIterable(linkDeclarationScope.getAvailableElements("")).select((it) -> SNodeOperations.cast(it, CONCEPTS.LinkDeclaration$1p));
     }
     private class SMP_Action_eitulo_a0 extends SingleItemSubstituteMenuPart {
       private final SNode myParameterObject;
@@ -192,11 +187,7 @@ public class AbstractArgument_SubstituteMenu extends SubstituteMenuBase {
       if (propertyDeclarationScope == null) {
         return Collections.emptyList();
       }
-      return Sequence.fromIterable(propertyDeclarationScope.getAvailableElements("")).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SNodeOperations.cast(it, CONCEPTS.PropertyDeclaration$1S);
-        }
-      });
+      return Sequence.fromIterable(propertyDeclarationScope.getAvailableElements("")).select((it) -> SNodeOperations.cast(it, CONCEPTS.PropertyDeclaration$1S));
     }
     private class SMP_Action_eitulo_a1 extends SingleItemSubstituteMenuPart {
       private final SNode myParameterObject;

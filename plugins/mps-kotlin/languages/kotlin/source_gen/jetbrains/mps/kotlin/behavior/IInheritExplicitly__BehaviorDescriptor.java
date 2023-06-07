@@ -18,7 +18,6 @@ import org.jetbrains.annotations.ApiStatus;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -55,11 +54,7 @@ public final class IInheritExplicitly__BehaviorDescriptor extends BaseBHDescript
     }
 
     // At last, visit non-class types
-    ListSequence.fromList(typesBeforeClassType).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        IType__BehaviorDescriptor.visitHierarchy_id5q426iHtYvR.invoke(it, visitor);
-      }
-    });
+    ListSequence.fromList(typesBeforeClassType).visitAll((it) -> IType__BehaviorDescriptor.visitHierarchy_id5q426iHtYvR.invoke(it, visitor));
     return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.superclasses$6CkZ)).count();
   }
 

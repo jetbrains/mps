@@ -13,7 +13,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.behavior.IFixableMethodReference__BehaviorDescriptor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
@@ -51,11 +50,7 @@ public class check_UnusedPrivateMethods_NonTypesystemRule extends AbstractNonTyp
                 while (SNodeOperations.getNodeAncestor(topClassifier, CONCEPTS.Classifier$Ix, false, false) != null) {
                   topClassifier = SNodeOperations.getNodeAncestor(topClassifier, CONCEPTS.Classifier$Ix, false, false);
                 }
-                if (!(ListSequence.fromList(SNodeOperations.getNodeDescendants(topClassifier, CONCEPTS.IFixableMethodReference$z6, false, new SAbstractConcept[]{})).any(new IWhereFilter<SNode>() {
-                  public boolean accept(SNode call) {
-                    return SLinkOperations.getTargetNode(IFixableMethodReference__BehaviorDescriptor.getMethodDeclarationReference_id5DBbMQ3ynbU.invoke(call)) == matchedNode_sl9v9q_a0a0 && !(ListSequence.fromList(SNodeOperations.getNodeAncestors(call, null, false)).contains(matchedNode_sl9v9q_a0a0));
-                  }
-                }))) {
+                if (!(ListSequence.fromList(SNodeOperations.getNodeDescendants(topClassifier, CONCEPTS.IFixableMethodReference$z6, false, new SAbstractConcept[]{})).any((call) -> SLinkOperations.getTargetNode(IFixableMethodReference__BehaviorDescriptor.getMethodDeclarationReference_id5DBbMQ3ynbU.invoke(call)) == matchedNode_sl9v9q_a0a0 && !(ListSequence.fromList(SNodeOperations.getNodeAncestors(call, null, false)).contains(matchedNode_sl9v9q_a0a0))))) {
                   {
                     final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$MnvL);
                     IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(matchedNode_sl9v9q_a0a0, "Private method " + SNodeOperations.present(matchedNode_sl9v9q_a0a0) + " is never used", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8101436443850399677", null, errorTarget);

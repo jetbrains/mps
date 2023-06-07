@@ -39,26 +39,24 @@ public class typeof_FieldReferenceOperation_InferenceRule extends AbstractInfere
 
     {
       final SNode OT = typeCheckingContext.typeOf(operand, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2635728088959155037", true);
-      typeCheckingContext.whenConcrete(OT, new Runnable() {
-        public void run() {
-          SNode fieldType = SLinkOperations.getTarget(fieldDecl, LINKS.type$a1UY);
-          if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(OT), CONCEPTS.IGenericType$13) && SNodeOperations.isInstanceOf(fieldType, CONCEPTS.IGenericType$13)) {
-            Map<SNode, SNode> subs = MapSequence.fromMap(new HashMap<SNode, SNode>());
-            IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(typeCheckingContext.getExpandedNode(OT), CONCEPTS.IGenericType$13), subs);
-            fieldType = IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(SNodeOperations.cast(fieldType, CONCEPTS.IGenericType$13), subs);
-          }
+      typeCheckingContext.whenConcrete(OT, () -> {
+        SNode fieldType = SLinkOperations.getTarget(fieldDecl, LINKS.type$a1UY);
+        if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(OT), CONCEPTS.IGenericType$13) && SNodeOperations.isInstanceOf(fieldType, CONCEPTS.IGenericType$13)) {
+          Map<SNode, SNode> subs = MapSequence.fromMap(new HashMap<SNode, SNode>());
+          IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(typeCheckingContext.getExpandedNode(OT), CONCEPTS.IGenericType$13), subs);
+          fieldType = IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(SNodeOperations.cast(fieldType, CONCEPTS.IGenericType$13), subs);
+        }
 
+        {
+          SNode _nodeToCheck_1029348928467 = fieldReference;
+          EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "185741718243176551", 0, null);
+          typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "185741718243176508", true), (SNode) fieldType, _info_12389875345);
+        }
+        if (!(typeCheckingContext.isSingleTypeComputation())) {
           {
             SNode _nodeToCheck_1029348928467 = fieldReference;
-            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "185741718243176551", 0, null);
-            typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "185741718243176508", true), (SNode) fieldType, _info_12389875345);
-          }
-          if (!(typeCheckingContext.isSingleTypeComputation())) {
-            {
-              SNode _nodeToCheck_1029348928467 = fieldReference;
-              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "185741718243176594", 0, null);
-              typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "185741718243176596", true), (SNode) _quotation_createNode_7hlfbz_a1a0c0a0e0a0a1a0b0g0b(), true, true, _info_12389875345);
-            }
+            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "185741718243176594", 0, null);
+            typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "185741718243176596", true), (SNode) _quotation_createNode_7hlfbz_a1a0c0a0e0b0a1a6a1(), true, true, _info_12389875345);
           }
         }
       }, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2635728088959155032", false, false);
@@ -74,7 +72,7 @@ public class typeof_FieldReferenceOperation_InferenceRule extends AbstractInfere
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_7hlfbz_a1a0c0a0e0a0a1a0b0g0b() {
+  private static SNode _quotation_createNode_7hlfbz_a1a0c0a0e0b0a1a6a1() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
     quotedNode_1 = nb.getResult();

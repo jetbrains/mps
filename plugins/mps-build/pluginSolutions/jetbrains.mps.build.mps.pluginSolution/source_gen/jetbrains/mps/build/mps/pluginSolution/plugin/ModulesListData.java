@@ -16,7 +16,7 @@ public class ModulesListData implements NodeData {
       ModuleData moduleData = new ModuleData(m);
       ListSequence.fromList(this.myModules).addElement(moduleData);
     }
-    ListSequence.fromList(this.myModules).sort((ModuleData p0, ModuleData p1) -> p0.getText().compareToIgnoreCase(p1.getText()), true);
+    ListSequence.fromList(this.myModules).sort((p0, p1) -> p0.getText().compareToIgnoreCase(p1.getText()), true);
   }
 
   @Override

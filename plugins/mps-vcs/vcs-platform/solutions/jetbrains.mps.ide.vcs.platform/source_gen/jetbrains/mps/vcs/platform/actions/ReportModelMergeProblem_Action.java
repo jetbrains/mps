@@ -21,10 +21,8 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import com.intellij.openapi.application.PathManager;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.vcs.platform.util.MergeBackupUtil;
 import java.util.Arrays;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import com.intellij.openapi.ui.Messages;
 
 @GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/3531370237490077457", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
@@ -78,11 +76,7 @@ public class ReportModelMergeProblem_Action extends BaseAction {
     ListSequence.fromList(filesToAttach).addElement(new File(System.getProperty("user.home") + File.separator + ".gitconfig"));
     ListSequence.fromList(filesToAttach).addElement(new File(PathManager.getConfigPath() + File.separator + "mps-merger.sh"));
     ListSequence.fromList(filesToAttach).addSequence(Sequence.fromIterable(Sequence.fromArray(new File(PathManager.getLogPath()).listFiles((File dir, String name) -> name.startsWith("mergedriver.log")))));
-    ListSequence.fromList(filesToAttach).visitAll(new IVisitor<File>() {
-      public void visit(File f) {
-        blameDialog.addFile(f);
-      }
-    });
+    ListSequence.fromList(filesToAttach).visitAll((f) -> blameDialog.addFile(f));
 
     // Select merge-backup to attach
     File backupDir = new File(MergeBackupUtil.getMergeBackupDirPath());
@@ -91,15 +85,7 @@ public class ReportModelMergeProblem_Action extends BaseAction {
       ReportModelMergeProblem_Action.this.showNoBackupsAvailable(event);
     } else {
       List<File> zipFiles = Arrays.asList(listFiles);
-      String[] zipNames = ListSequence.fromList(zipFiles).sort(new ISelector<File, Long>() {
-        public Long select(File f) {
-          return f.lastModified();
-        }
-      }, false).select(new ISelector<File, String>() {
-        public String select(File f) {
-          return f.getName();
-        }
-      }).toGenericArray(String.class);
+      String[] zipNames = ListSequence.fromList(zipFiles).sort((f) -> f.lastModified(), false).select((f) -> f.getName()).toGenericArray(String.class);
       if (zipNames.length == 0) {
         ReportModelMergeProblem_Action.this.showNoBackupsAvailable(event);
       } else {

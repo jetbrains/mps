@@ -26,7 +26,6 @@ import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.debugger.java.runtime.evaluation.container.Properties;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.debugger.java.api.evaluation.transform.TransformatorBuilder;
 import jetbrains.mps.make.script.IFeedback;
@@ -86,11 +85,7 @@ public class JavaDebugEvaluate_Facet extends IFacet.Stub {
                     if (evaluator.value != null) {
                       try {
                         assert SNodeOperations.getModel(evaluator.value) != null;
-                        SNode evaluateMethod = ListSequence.fromList(SNodeOperations.getNodeDescendants(evaluator.value, CONCEPTS.InstanceMethodDeclaration$39, false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
-                          public boolean accept(SNode it) {
-                            return "evaluate".equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-                          }
-                        });
+                        SNode evaluateMethod = ListSequence.fromList(SNodeOperations.getNodeDescendants(evaluator.value, CONCEPTS.InstanceMethodDeclaration$39, false, new SAbstractConcept[]{})).findFirst((it) -> "evaluate".equals(SPropertyOperations.getString(it, PROPS.name$MnvL)));
                         TransformatorBuilder.getInstance().build(evaluateMethod, true).transformEvaluator();
                       } catch (Throwable ex) {
                         monitor.reportFeedback(new IFeedback.ERROR(String.valueOf(ex)));

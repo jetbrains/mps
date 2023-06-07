@@ -21,7 +21,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.build.util.DescendantsScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.scope.CompositeScope;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -54,11 +53,7 @@ public final class BuildJavaPlugin__BehaviorDescriptor extends BaseBHDescriptor 
     }
 
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildSource_JavaModule$NC) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildSource_JavaLibrary$6q)) {
-      Iterable<DescendantsScope> forAllVisible = Sequence.fromIterable(BuildProject__BehaviorDescriptor.getVisibleProjects_id13YBgBBRSOL.invoke(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__), ((boolean) false))).select(new ISelector<SNode, DescendantsScope>() {
-        public DescendantsScope select(SNode it) {
-          return DescendantsScope.forNamedElements(it, LINKS.parts$mGDj, kind);
-        }
-      });
+      Iterable<DescendantsScope> forAllVisible = Sequence.fromIterable(BuildProject__BehaviorDescriptor.getVisibleProjects_id13YBgBBRSOL.invoke(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__), ((boolean) false))).select((it) -> DescendantsScope.forNamedElements(it, LINKS.parts$mGDj, kind));
       Iterable<DescendantsScope> forThis = Sequence.<DescendantsScope>singleton(DescendantsScope.forNamedElements(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__), LINKS.parts$mGDj, kind));
       return new CompositeScope(Sequence.fromIterable(forAllVisible).concat(Sequence.fromIterable(forThis)).toGenericArray(DescendantsScope.class));
     }

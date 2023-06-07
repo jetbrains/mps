@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -39,11 +38,7 @@ public final class CheckedDotExpression__BehaviorDescriptor extends BaseBHDescri
     if (ListSequence.fromList(SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.ThisExpression$$o, false, new SAbstractConcept[]{})).isNotEmpty()) {
       return true;
     }
-    if (ListSequence.fromList(SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.LocalMethodCall$zT, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$pyYw), CONCEPTS.InstanceMethodDeclaration$39);
-      }
-    }).isNotEmpty()) {
+    if (ListSequence.fromList(SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.LocalMethodCall$zT, false, new SAbstractConcept[]{})).where((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$pyYw), CONCEPTS.InstanceMethodDeclaration$39)).isNotEmpty()) {
       return true;
     }
     // todo: VariableReference on FieldDeclaration?

@@ -11,7 +11,6 @@ import java.util.List;
 import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.messages.MessageKind;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
@@ -38,11 +37,7 @@ public class SubmitToTracker_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     List<IMessage> messages = ((List<IMessage>) MapSequence.fromMap(_params).get("messages"));
-    return ListSequence.fromList(messages).any(new IWhereFilter<IMessage>() {
-      public boolean accept(IMessage it) {
-        return it.getKind() == MessageKind.ERROR;
-      }
-    });
+    return ListSequence.fromList(messages).any((it) -> it.getKind() == MessageKind.ERROR);
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {

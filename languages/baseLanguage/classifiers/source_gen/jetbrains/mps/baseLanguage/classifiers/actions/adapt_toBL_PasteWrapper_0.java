@@ -11,7 +11,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -38,11 +37,7 @@ public final class adapt_toBL_PasteWrapper_0 implements PasteWrapper {
     SPropertyOperations.assign(imd, PROPS.isFinal$eVPk, SPropertyOperations.getBoolean(sourceNode, PROPS.isFinal$eVPk));
     SPropertyOperations.assign(imd, PROPS.isSynchronized$58UL, SPropertyOperations.getBoolean(sourceNode, PROPS.isSynchronized$58UL));
     SLinkOperations.setTarget(imd, LINKS.visibility$Yyua, SLinkOperations.getTarget(sourceNode, LINKS.visibility$Yyua));
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(imd, LINKS.body$5xQk), CONCEPTS.ThisClassifierExpression$xB, false, new SAbstractConcept[]{})).toListSequence().visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SNodeOperations.replaceWithNewChild(it, CONCEPTS.ThisExpression$$o);
-      }
-    });
+    ListSequence.fromList(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(imd, LINKS.body$5xQk), CONCEPTS.ThisClassifierExpression$xB, false, new SAbstractConcept[]{})).toList()).visitAll((it) -> SNodeOperations.replaceWithNewChild(it, CONCEPTS.ThisExpression$$o));
     return imd;
   }
 

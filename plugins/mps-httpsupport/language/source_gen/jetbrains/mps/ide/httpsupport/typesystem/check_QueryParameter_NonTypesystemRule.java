@@ -9,7 +9,7 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -23,8 +23,8 @@ public class check_QueryParameter_NonTypesystemRule extends AbstractNonTypesyste
   public check_QueryParameter_NonTypesystemRule() {
   }
   public void applyRule(final SNode queryParameter, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!(ListSequence.fromList(SNodeOperations.getAllSiblings(queryParameter, false)).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
+    if (!(ListSequence.fromList(SNodeOperations.getAllSiblings(queryParameter, false)).all(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      public Boolean invoke(SNode it) {
         return !(check_z5utj9_a0a0a0a0a0b(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.QueryParameter$XL), PROPS.name$MnvL), queryParameter));
       }
     }))) {

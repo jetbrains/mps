@@ -42,11 +42,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class BuildScript_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration, Copyable<BuildScript_Configuration> {
-  private NodeByConcept_Configuration myNodePointer = new NodeByConcept_Configuration(CONCEPTS.BuildProject$ae, new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
-    public Boolean invoke(SNode node) {
-      return true;
-    }
-  });
+  private NodeByConcept_Configuration myNodePointer = new NodeByConcept_Configuration(CONCEPTS.BuildProject$ae, ((_FunctionTypes._return_P1_E0<Boolean, SNode>) (SNode node) -> true));
   private AntSettings_Configuration mySettings = new AntSettings_Configuration();
 
   @Override
@@ -149,11 +145,7 @@ public final class BuildScript_Configuration extends BaseMpsRunConfiguration imp
   @Override
   public void checkConfiguration() throws RuntimeConfigurationException {
     final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
-    checkConfiguration(new PersistentConfigurationContext() {
-      public jetbrains.mps.project.Project getProject() {
-        return mpsProject;
-      }
-    });
+    checkConfiguration(() -> mpsProject);
   }
   @Override
   public boolean canExecute(String executorId) {

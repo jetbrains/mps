@@ -8,8 +8,6 @@ import jetbrains.mps.text.impl.TextGenSupport;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -26,13 +24,11 @@ public class Comment_TextGen extends TextGenDescriptorBase {
       tgs.append("/*");
       tgs.newLine();
       tgs.increaseIndent();
-      ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.lines$mJPU)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          tgs.indent();
-          tgs.append("* ");
-          tgs.append(Line__BehaviorDescriptor.representAsText_id2iG$EWuTXv2.invoke(it));
-          tgs.newLine();
-        }
+      ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.lines$mJPU)).visitAll((it) -> {
+        tgs.indent();
+        tgs.append("* ");
+        tgs.append(Line__BehaviorDescriptor.representAsText_id2iG$EWuTXv2.invoke(it));
+        tgs.newLine();
       });
       tgs.decreaseIndent();
       tgs.newLine();

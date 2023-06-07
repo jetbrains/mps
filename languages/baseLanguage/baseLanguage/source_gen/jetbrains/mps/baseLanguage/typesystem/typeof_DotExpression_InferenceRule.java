@@ -32,16 +32,14 @@ public class typeof_DotExpression_InferenceRule extends AbstractInferenceRule_Ru
 
     {
       final SNode shallowType = typeCheckingContext.typeOf(SLinkOperations.getTarget(dotExpression, LINKS.operand$w6IR), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7329349657442388082", false);
-      typeCheckingContext.whenConcrete(shallowType, new Runnable() {
-        public void run() {
-          // This could eventually be generalized into some inferDefault method in IInferredType
-          if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(shallowType), CONCEPTS.InferredClassifierType$xd)) {
-            // Infer raw classifier at this point (to unlock other subsequent when concrete)
-            {
-              SNode _nodeToCheck_1029348928467 = dotExpression;
-              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7329349657442402994", 0, null);
-              typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getExpandedNode(shallowType), (SNode) _quotation_createNode_2123xg_a1a0c0b0b0a0a1a0b0e0b(SLinkOperations.getTarget(SNodeOperations.cast(typeCheckingContext.getExpandedNode(shallowType), CONCEPTS.InferredClassifierType$xd), LINKS.classifier$cxMr)), false, true, _info_12389875345);
-            }
+      typeCheckingContext.whenConcrete(shallowType, () -> {
+        // This could eventually be generalized into some inferDefault method in IInferredType
+        if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(shallowType), CONCEPTS.InferredClassifierType$xd)) {
+          // Infer raw classifier at this point (to unlock other subsequent when concrete)
+          {
+            SNode _nodeToCheck_1029348928467 = dotExpression;
+            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7329349657442402994", 0, null);
+            typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getExpandedNode(shallowType), (SNode) _quotation_createNode_2123xg_a1a0c0b0b0b0a1a4a1(SLinkOperations.getTarget(SNodeOperations.cast(typeCheckingContext.getExpandedNode(shallowType), CONCEPTS.InferredClassifierType$xd), LINKS.classifier$cxMr)), false, true, _info_12389875345);
           }
         }
       }, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7329349657442387996", true, false);
@@ -56,7 +54,7 @@ public class typeof_DotExpression_InferenceRule extends AbstractInferenceRule_Ru
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_2123xg_a1a0c0b0b0a0a1a0b0e0b(Object parameter_1) {
+  private static SNode _quotation_createNode_2123xg_a1a0c0b0b0b0a1a4a1(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
     quotedNode_2 = nb.getResult();

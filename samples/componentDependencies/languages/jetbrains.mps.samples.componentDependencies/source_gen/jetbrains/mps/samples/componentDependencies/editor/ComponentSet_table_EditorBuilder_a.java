@@ -11,7 +11,6 @@ import jetbrains.mps.lang.editor.table.runtime.TableModelFactory;
 import jetbrains.mps.lang.editor.table.runtime.TableModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
 import java.util.List;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
@@ -67,11 +66,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
               }
               return ListSequence.fromList(SLinkOperations.getChildren(component, LINKS.out$ZC8_)).first();
             }
-            return ListSequence.fromList(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.component$l$9M)).getElement(row - 1), LINKS.dep$WgPG)).findFirst(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return SLinkOperations.getTarget(it, LINKS.to$GB6T) == ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.component$l$9M)).getElement(column - 1);
-              }
-            });
+            return ListSequence.fromList(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.component$l$9M)).getElement(row - 1), LINKS.dep$WgPG)).findFirst((it) -> SLinkOperations.getTarget(it, LINKS.to$GB6T) == ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.component$l$9M)).getElement(column - 1));
           }
           public void createElement(int row, int column) {
           }

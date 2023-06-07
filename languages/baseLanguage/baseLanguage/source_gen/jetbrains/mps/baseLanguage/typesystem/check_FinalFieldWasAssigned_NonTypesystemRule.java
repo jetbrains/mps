@@ -17,7 +17,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -50,11 +49,7 @@ public class check_FinalFieldWasAssigned_NonTypesystemRule extends AbstractNonTy
           ListSequence.fromList(doNotInitialize).removeElement(member);
           continue;
         }
-        for (SNode reference : ListSequence.fromList(SNodeOperations.getNodeDescendants(member, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.FieldDeclaration$ie);
-          }
-        }).toListSequence()) {
+        for (SNode reference : ListSequence.fromList(SNodeOperations.getNodeDescendants(member, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.FieldDeclaration$ie)).toList()) {
           if (SLinkOperations.getTarget(reference, LINKS.variableDeclaration$N1XG) == field && CheckingUtil.isAssigned(reference)) {
             ListSequence.fromList(doNotInitialize).removeElement(member);
             if (SNodeOperations.isInstanceOf(member, CONCEPTS.InstanceInitializer$4x)) {

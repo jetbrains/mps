@@ -21,7 +21,6 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.test.runtime.CheckErrorMessagesRunnable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.baseLanguage.unitTest.behavior.ITestMethod__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -44,11 +43,7 @@ public final class CheckNodeForErrorMessagesOperation__BehaviorDescriptor extend
   }
 
   /*package*/ static void perform_id1kgh5YabdhC(@NotNull SNode __thisNode__, final SNode node, @Nullable final ComponentHost host) {
-    new CheckErrorMessagesRunnable(node, SPropertyOperations.getBoolean(__thisNode__, PROPS.allowWarnings$lvb6), SPropertyOperations.getBoolean(__thisNode__, PROPS.allowErrors$luW5), host).includeSelf(SPropertyOperations.getBoolean(__thisNode__, PROPS.includeSelf$xNXw)).exclude(ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.AbstractNodeRuleCheckOperation$eB, false, new SAbstractConcept[]{})).select(new ISelector<SNode, CheckExpectedMessageRunnable>() {
-      public CheckExpectedMessageRunnable select(final SNode excludeAnnotation) {
-        return (CheckExpectedMessageRunnable) AbstractNodeRuleCheckOperation__BehaviorDescriptor.checkAction_id7jfLc8W17Cr.invoke(excludeAnnotation, SNodeOperations.getModel(node).getRepository(), host);
-      }
-    }).toListSequence()).run();
+    new CheckErrorMessagesRunnable(node, SPropertyOperations.getBoolean(__thisNode__, PROPS.allowWarnings$lvb6), SPropertyOperations.getBoolean(__thisNode__, PROPS.allowErrors$luW5), host).includeSelf(SPropertyOperations.getBoolean(__thisNode__, PROPS.includeSelf$xNXw)).exclude(ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.AbstractNodeRuleCheckOperation$eB, false, new SAbstractConcept[]{})).select((final SNode excludeAnnotation) -> (CheckExpectedMessageRunnable) AbstractNodeRuleCheckOperation__BehaviorDescriptor.checkAction_id7jfLc8W17Cr.invoke(excludeAnnotation, SNodeOperations.getModel(node).getRepository(), host)).toList()).run();
   }
   /*package*/ static String getDefaultName_id7scb9XJdmH2(@NotNull SNode __thisNode__) {
     return "ErrorMessagesCheck";

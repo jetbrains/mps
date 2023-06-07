@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -31,11 +30,7 @@ public class BLCommand_to_Expression {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        Iterable<SNode> statements = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.body$Q1Y9), LINKS.statement$53DE)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return !(Objects.equals(SNodeOperations.getConcept(it), CONCEPTS.Statement$P6));
-          }
-        });
+        Iterable<SNode> statements = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.body$Q1Y9), LINKS.statement$53DE)).where((it) -> !(Objects.equals(SNodeOperations.getConcept(it), CONCEPTS.Statement$P6)));
         if (Sequence.fromIterable(statements).count() == 1 && SNodeOperations.isInstanceOf(Sequence.fromIterable(statements).first(), CONCEPTS.ExpressionStatement$O8)) {
           SNode replacement = createBLExpression_6b3zvz_a0a0b0a0(SLinkOperations.getTarget(SNodeOperations.cast(Sequence.fromIterable(statements).first(), CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M));
           SNodeOperations.replaceWithAnother(node, replacement);

@@ -475,11 +475,7 @@ public class BHTestRef_Test extends EnvironmentAwareTestCase {
   @Test
   public void test_booleanMethodCall2() throws Exception {
     final SNode nodeA = createA_cc8y9n_a0a0uc0();
-    boolean boolMethod2 = new _FunctionTypes._return_P0_E0<Boolean>() {
-      public Boolean invoke() {
-        return ((boolean) (Boolean) BHReflection.invoke0(nodeA, CONCEPTS.A$TR, SMethodIdV2.create("boolMethod2", 360045928603804516L, 0xf3d9214c9d1f9613L)));
-      }
-    }.invoke();
+    boolean boolMethod2 = ((_FunctionTypes._return_P0_E0<Boolean>) () -> ((boolean) (Boolean) BHReflection.invoke0(nodeA, CONCEPTS.A$TR, SMethodIdV2.create("boolMethod2", 360045928603804516L, 0xf3d9214c9d1f9613L)))).invoke();
     Assert.assertSame(true, boolMethod2);
   }
   @Test

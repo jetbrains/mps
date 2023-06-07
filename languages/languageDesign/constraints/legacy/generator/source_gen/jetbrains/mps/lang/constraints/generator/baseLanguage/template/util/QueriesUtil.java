@@ -5,7 +5,6 @@ package jetbrains.mps.lang.constraints.generator.baseLanguage.template.util;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -16,19 +15,11 @@ public class QueriesUtil {
   public QueriesUtil() {
   }
   public static SNode get_registerSelf_body(SNode clazz) {
-    SNode regiserSelfMethod = Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(clazz)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return "registerSelf".equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-      }
-    }).first();
+    SNode regiserSelfMethod = Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(clazz)).where((it) -> "registerSelf".equals(SPropertyOperations.getString(it, PROPS.name$MnvL))).first();
     return SLinkOperations.getTarget(regiserSelfMethod, LINKS.body$5xQk);
   }
   public static SNode get_unRegisterSelf_body(SNode clazz) {
-    SNode unRegiserSelfMethod = Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(clazz)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return "unRegisterSelf".equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-      }
-    }).first();
+    SNode unRegiserSelfMethod = Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(clazz)).where((it) -> "unRegisterSelf".equals(SPropertyOperations.getString(it, PROPS.name$MnvL))).first();
     return SLinkOperations.getTarget(unRegiserSelfMethod, LINKS.body$5xQk);
   }
 

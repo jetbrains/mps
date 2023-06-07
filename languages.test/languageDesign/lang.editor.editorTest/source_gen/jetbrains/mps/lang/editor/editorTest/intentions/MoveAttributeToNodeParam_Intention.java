@@ -15,7 +15,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.openapi.intentions.ParameterizedIntentionExecutable;
@@ -50,11 +49,7 @@ public final class MoveAttributeToNodeParam_Intention extends AbstractIntentionD
     return list;
   }
   private List<SNode> parameter(final SNode node, final EditorContext editorContext) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(node, false), CONCEPTS.PlaceholderChild$E9)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.PlaceholderChildAttribute$pu).get(it) == null);
-      }
-    }).toListSequence();
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(node, false), CONCEPTS.PlaceholderChild$E9)).where((it) -> (new IAttributeDescriptor.NodeAttribute(CONCEPTS.PlaceholderChildAttribute$pu).get(it) == null)).toList();
   }
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable implements ParameterizedIntentionExecutable {
     private SNode myParameter;

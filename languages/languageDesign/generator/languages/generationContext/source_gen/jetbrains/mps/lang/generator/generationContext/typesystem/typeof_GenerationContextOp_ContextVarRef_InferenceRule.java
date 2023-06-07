@@ -11,7 +11,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.generator.behavior.ContextVariableProvider__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -34,11 +33,7 @@ public class typeof_GenerationContextOp_ContextVarRef_InferenceRule extends Abst
     SNode cvd = null;
     while (n != null && cvd == null) {
       if (SNodeOperations.isInstanceOf(n, CONCEPTS.ContextVariableProvider$BN)) {
-        cvd = ListSequence.fromList(ContextVariableProvider__BehaviorDescriptor.contextVariables_id6suuiWX_oN7.invoke(SNodeOperations.cast(n, CONCEPTS.ContextVariableProvider$BN))).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SPropertyOperations.getString(cvRef, PROPS.contextVarName$KIbb).equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-          }
-        });
+        cvd = ListSequence.fromList(ContextVariableProvider__BehaviorDescriptor.contextVariables_id6suuiWX_oN7.invoke(SNodeOperations.cast(n, CONCEPTS.ContextVariableProvider$BN))).findFirst((it) -> SPropertyOperations.getString(cvRef, PROPS.contextVarName$KIbb).equals(SPropertyOperations.getString(it, PROPS.name$MnvL)));
       }
       n = Scope.parent(n);
     }

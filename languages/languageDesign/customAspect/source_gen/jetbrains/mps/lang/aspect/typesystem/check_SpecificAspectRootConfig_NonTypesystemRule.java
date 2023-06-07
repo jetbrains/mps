@@ -9,7 +9,6 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -25,13 +24,11 @@ public class check_SpecificAspectRootConfig_NonTypesystemRule extends AbstractNo
   public check_SpecificAspectRootConfig_NonTypesystemRule() {
   }
   public void applyRule(final SNode arc, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    ListSequence.fromList(SLinkOperations.getChildren(arc, LINKS.primary$7jJ7)).union(ListSequence.fromList(SLinkOperations.getChildren(arc, LINKS.secondary$7kd9))).union(ListSequence.fromList(SLinkOperations.getChildren(arc, LINKS.auxiliary$7pPx))).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        if (!(SPropertyOperations.getBoolean(SLinkOperations.getTarget(it, LINKS.cpnt$Miim), PROPS.rootable$_9pz))) {
-          {
-            final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(it, "Concept is not denoted as 'rootable'", "r:6fc198d3-4608-4f97-ad36-1c3a4d4eae24(jetbrains.mps.lang.aspect.typesystem)", "1728071633590041832", null, errorTarget);
-          }
+    ListSequence.fromList(SLinkOperations.getChildren(arc, LINKS.primary$7jJ7)).union(ListSequence.fromList(SLinkOperations.getChildren(arc, LINKS.secondary$7kd9))).union(ListSequence.fromList(SLinkOperations.getChildren(arc, LINKS.auxiliary$7pPx))).visitAll((it) -> {
+      if (!(SPropertyOperations.getBoolean(SLinkOperations.getTarget(it, LINKS.cpnt$Miim), PROPS.rootable$_9pz))) {
+        {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(it, "Concept is not denoted as 'rootable'", "r:6fc198d3-4608-4f97-ad36-1c3a4d4eae24(jetbrains.mps.lang.aspect.typesystem)", "1728071633590041832", null, errorTarget);
         }
       }
     });

@@ -10,7 +10,6 @@ import jetbrains.mps.util.Computable;
 import javax.swing.JOptionPane;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -49,11 +48,7 @@ public class GoToEditorDeclarationHelper {
     });
   }
   public static SNode findEditorDeclaration(SModel editorModel, final SNode conceptDeclaration) {
-    return ListSequence.fromList(SModelOperations.roots(editorModel, CONCEPTS.ConceptEditorDeclaration$BH)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.conceptDeclaration$HJmJ) == conceptDeclaration;
-      }
-    });
+    return ListSequence.fromList(SModelOperations.roots(editorModel, CONCEPTS.ConceptEditorDeclaration$BH)).findFirst((it) -> SLinkOperations.getTarget(it, LINKS.conceptDeclaration$HJmJ) == conceptDeclaration);
   }
   public static SNode createEditorDeclaration(SNode conceptDeclaration, SModel editorModelDescriptor) {
     SModel editorModel = editorModelDescriptor;

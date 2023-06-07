@@ -21,7 +21,6 @@ import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -66,11 +65,7 @@ public final class PropertyDescriptor__BehaviorDescriptor extends BaseBHDescript
     return res;
   }
   /*package*/ static Iterable<SNode> find_id2gzehMfi1$l(@NotNull final SNode __thisNode__, SNode cls) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(cls, LINKS.member$L_2d), CONCEPTS.PropertyInstance$7w)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.decl$RIl) == __thisNode__;
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(cls, LINKS.member$L_2d), CONCEPTS.PropertyInstance$7w)).where((it) -> SLinkOperations.getTarget(it, LINKS.decl$RIl) == __thisNode__);
   }
 
   /*package*/ PropertyDescriptor__BehaviorDescriptor() {

@@ -10,7 +10,6 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.smodel.resources.MResource;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.generator.GenerationFacade;
 
 public final class RetainedUtil {
@@ -24,16 +23,12 @@ public final class RetainedUtil {
       // XXX why only generateable models?
       // guess, we have to take all models from module and exclude those we were asked to generate
       Iterable<SModel> modelsToRetain = generateableModels(module);
-      MapSequence.fromMap(retainedModels).put(module, Sequence.fromIterable(modelsToRetain).subtract(Sequence.fromIterable(mres.models())).toListSequence());
+      MapSequence.fromMap(retainedModels).put(module, Sequence.fromIterable(modelsToRetain).subtract(Sequence.fromIterable(mres.models())).toList());
     }
     return retainedModels;
   }
 
   private static Iterable<SModel> generateableModels(SModule module) {
-    return Sequence.fromIterable(((Iterable<SModel>) module.getModels())).where(new IWhereFilter<SModel>() {
-      public boolean accept(SModel it) {
-        return GenerationFacade.canGenerate(it);
-      }
-    });
+    return Sequence.fromIterable(((Iterable<SModel>) module.getModels())).where((it) -> GenerationFacade.canGenerate(it));
   }
 }

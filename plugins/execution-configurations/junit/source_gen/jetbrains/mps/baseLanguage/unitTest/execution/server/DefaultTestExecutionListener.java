@@ -8,7 +8,6 @@ import jetbrains.mps.baseLanguage.unitTest.execution.TestEventMessage;
 import java.util.Optional;
 import org.junit.platform.engine.TestExecutionResult;
 import org.jetbrains.annotations.NotNull;
-import org.junit.platform.engine.TestSource;
 import org.junit.platform.engine.support.descriptor.ClassSource;
 import org.junit.platform.engine.support.descriptor.MethodSource;
 import org.junit.platform.engine.UniqueId;
@@ -57,7 +56,7 @@ public class DefaultTestExecutionListener implements TestExecutionListener {
 
         case FAILED:
           printSyncToken(TestEventMessage.FAILURE_TEST_BEGIN, Optional.of(testIdentifier));
-          testExecutionResult.getThrowable().ifPresent((Throwable ex) -> ex.printStackTrace(System.out));
+          testExecutionResult.getThrowable().ifPresent((ex) -> ex.printStackTrace(System.out));
           myFailuresCount++;
           // fall through
 
@@ -85,7 +84,7 @@ public class DefaultTestExecutionListener implements TestExecutionListener {
     // simply mimic the standard structure of test class/test methods
     final StringBuilder builder = new StringBuilder();
     builder.append(tokenPrefix);
-    identifier.flatMap(TestIdentifier::getSource).ifPresentOrElse((TestSource src) -> {
+    identifier.flatMap(TestIdentifier::getSource).ifPresentOrElse((src) -> {
       if (src instanceof ClassSource) {
         builder.append(((ClassSource) src).getClassName());
 

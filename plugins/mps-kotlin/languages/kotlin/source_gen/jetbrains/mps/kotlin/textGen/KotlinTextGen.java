@@ -17,12 +17,8 @@ import jetbrains.mps.kotlin.behavior.IIdentifier__BehaviorDescriptor;
 import jetbrains.mps.kotlin.behavior.IStatementHolder__BehaviorDescriptor;
 import jetbrains.mps.kotlin.overloading.FunctionParamHelper;
 import jetbrains.mps.kotlin.behavior.IFunctionCall__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.kotlin.overloading.Argument;
 import jetbrains.mps.kotlin.overloading.ParamException;
 import jetbrains.mps.kotlin.behavior.KtEnvironmentConfig;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.kotlin.behavior.IKotlinRoot__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -308,11 +304,7 @@ public abstract class KotlinTextGen {
     Iterable<SNode> list;
 
     try {
-      list = Sequence.fromIterable(FunctionParamHelper.toOrderedList(IFunctionCall__BehaviorDescriptor.getFunctionDescriptor_id26mUjU3xhgD.invoke(functionCall).getParameters(), IFunctionCall__BehaviorDescriptor.getArguments_id1VI7K1jROBX.invoke(functionCall))).select(new ISelector<Argument, SNode>() {
-        public SNode select(Argument it) {
-          return it.getExpression();
-        }
-      });
+      list = Sequence.fromIterable(FunctionParamHelper.toOrderedList(IFunctionCall__BehaviorDescriptor.getFunctionDescriptor_id26mUjU3xhgD.invoke(functionCall).getParameters(), IFunctionCall__BehaviorDescriptor.getArguments_id1VI7K1jROBX.invoke(functionCall))).select((it) -> it.getExpression());
     } catch (ParamException e) {
       tgs.reportError(e.getMessage());
       return;
@@ -391,18 +383,12 @@ public abstract class KotlinTextGen {
   }
   public static void imports(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    Sequence.fromIterable(tgs.getContextObject("imports", ImportContext.class).getImports()).where(new IWhereFilter<String>() {
-      public boolean accept(String it) {
-        return (it != null && it.length() > 0);
-      }
-    }).visitAll(new IVisitor<String>() {
-      public void visit(String it) {
-        tgs.pushTextArea("imports");
-        tgs.append("import ");
-        tgs.append(it);
-        tgs.newLine();
-        tgs.popTextArea();
-      }
+    Sequence.fromIterable(tgs.getContextObject("imports", ImportContext.class).getImports()).where((it) -> (it != null && it.length() > 0)).visitAll((it) -> {
+      tgs.pushTextArea("imports");
+      tgs.append("import ");
+      tgs.append(it);
+      tgs.newLine();
+      tgs.popTextArea();
     });
   }
   public static void fileHeader(SNode node, final TextGenContext ctx) {

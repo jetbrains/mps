@@ -42,16 +42,13 @@ import java.awt.Dimension;
 import com.intellij.openapi.util.DimensionService;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.vcs.diff.changes.MetadataChange;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
+import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.vcs.diff.ui.common.DiffModelTree;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.util.NameUtil;
 import java.util.Arrays;
 import jetbrains.mps.workbench.action.BaseAction;
@@ -224,11 +221,7 @@ public class MergeModelsPanel extends JPanel {
     // false - saving was cancelled
     applyMetadataChanges();
 
-    int result = MergeConfirmation.showMergeConfirmationAndTakeAction(this, myMergeSession, Sequence.fromIterable(myMergeSession.getAllChanges()).where(new IWhereFilter<ModelChange>() {
-      public boolean accept(ModelChange ch) {
-        return !(ch instanceof MetadataChange);
-      }
-    }), myMetadataMergeSession, (myMetadataMergeSession == null ? null : myMetadataMergeSession.getAllChanges()));
+    int result = MergeConfirmation.showMergeConfirmationAndTakeAction(this, myMergeSession, Sequence.fromIterable(myMergeSession.getAllChanges()).where((ch) -> !(ch instanceof MetadataChange)), myMetadataMergeSession, (myMetadataMergeSession == null ? null : myMetadataMergeSession.getAllChanges()));
     if (result == MergeConfirmation.RETURN) {
       return false;
     }
@@ -339,11 +332,7 @@ public class MergeModelsPanel extends JPanel {
   }
 
   public Iterable<ModelChange> getApplicableChangesInNonConflictingRoots() {
-    return Sequence.fromIterable(myMergeSession.getApplicableChangesInNonConflictingRoots()).where(new IWhereFilter<ModelChange>() {
-      public boolean accept(ModelChange it) {
-        return !(it instanceof MetadataChange);
-      }
-    });
+    return Sequence.fromIterable(myMergeSession.getApplicableChangesInNonConflictingRoots()).where((it) -> !(it instanceof MetadataChange));
   }
 
   public Iterable<ModelChange> getApplicableChangesInMetadata() {
@@ -363,15 +352,7 @@ public class MergeModelsPanel extends JPanel {
   }
 
   public boolean isAcceptYoursTheirsEnabled() {
-    return Sequence.fromIterable(getModelChangesForSelection()).where(new IWhereFilter<ModelChange>() {
-      public boolean accept(ModelChange ch) {
-        return !(myMergeSession.isChangeResolved(ch));
-      }
-    }).isNotEmpty() || myMetadataMergeSession != null && isMetadataSelected() && Sequence.fromIterable(myMetadataMergeSession.getAllChanges()).where(new IWhereFilter<ModelChange>() {
-      public boolean accept(ModelChange ch) {
-        return !(myMetadataMergeSession.isChangeResolved(ch));
-      }
-    }).isNotEmpty();
+    return Sequence.fromIterable(getModelChangesForSelection()).where((ch) -> !(myMergeSession.isChangeResolved(ch))).isNotEmpty() || myMetadataMergeSession != null && isMetadataSelected() && Sequence.fromIterable(myMetadataMergeSession.getAllChanges()).where((ch) -> !(myMetadataMergeSession.isChangeResolved(ch))).isNotEmpty();
   }
 
   public void acceptVersionForSelectedRoots(boolean mine) {
@@ -400,36 +381,16 @@ public class MergeModelsPanel extends JPanel {
 
   private Iterable<ModelChange> getModelChangesForSelection() {
     if (myMergeTree.getSelectedNodes(DiffModelTree.ModelTreeNode.class, null).length == 1) {
-      return Sequence.fromIterable(myMergeSession.getAllChanges()).where(new IWhereFilter<ModelChange>() {
-        public boolean accept(ModelChange ch) {
-          return !(ch instanceof MetadataChange);
-        }
-      });
+      return Sequence.fromIterable(myMergeSession.getAllChanges()).where((ch) -> !(ch instanceof MetadataChange));
     } else {
-      return Sequence.fromIterable(Sequence.fromArray(myMergeTree.getSelectedNodes(DiffModelTree.RootTreeNode.class, null))).select(new ISelector<DiffModelTree.RootTreeNode, SNodeId>() {
-        public SNodeId select(DiffModelTree.RootTreeNode rtn) {
-          return rtn.getRootId();
-        }
-      }).where(new IWhereFilter<SNodeId>() {
-        public boolean accept(SNodeId root) {
-          return root != null;
-        }
-      }).translate(new ITranslator2<SNodeId, ModelChange>() {
-        public Iterable<ModelChange> translate(SNodeId root) {
-          return myMergeSession.getChangesForRoot(root);
-        }
-      });
+      return Sequence.fromIterable(Sequence.fromArray(myMergeTree.getSelectedNodes(DiffModelTree.RootTreeNode.class, null))).select((rtn) -> rtn.getRootId()).where((root) -> root != null).translate((root) -> myMergeSession.getChangesForRoot(root));
     }
   }
 
   private void applyUnresolvedChanges(final MergeSession session, Iterable<ModelChange> changes, boolean mine) {
     final List<ModelChange> changesToApply = ListSequence.fromList(new ArrayList<ModelChange>());
     final List<ModelChange> changesToExclude = ListSequence.fromList(new ArrayList<ModelChange>());
-    for (ModelChange change : Sequence.fromIterable(changes).where(new IWhereFilter<ModelChange>() {
-      public boolean accept(ModelChange ch) {
-        return !(session.isChangeResolved(ch));
-      }
-    })) {
+    for (ModelChange change : Sequence.fromIterable(changes).where((ch) -> !(session.isChangeResolved(ch)))) {
       if (mine == session.isMyChange(change)) {
         ListSequence.fromList(changesToApply).addElement(change);
       } else {
@@ -492,17 +453,9 @@ public class MergeModelsPanel extends JPanel {
     @Override
     protected void updateRootCustomPresentation(@NotNull DiffModelTree.RootTreeNode rootTreeNode) {
       final MergeSession session = (rootTreeNode.getRootId() == null ? myMetadataMergeSession : myMergeSession);
-      List<ModelChange> changes = Sequence.fromIterable(((rootTreeNode.getRootId() == null ? myMetadataMergeSession.getAllChanges() : myMergeSession.getChangesForRoot(rootTreeNode.getRootId())))).where(new IWhereFilter<ModelChange>() {
-        public boolean accept(ModelChange ch) {
-          return !(session.isChangeResolved(ch));
-        }
-      }).toListSequence();
+      List<ModelChange> changes = Sequence.fromIterable(((rootTreeNode.getRootId() == null ? myMetadataMergeSession.getAllChanges() : myMergeSession.getChangesForRoot(rootTreeNode.getRootId())))).where((ch) -> !(session.isChangeResolved(ch))).toList();
 
-      int conflictedCount = ListSequence.fromList(changes).where(new IWhereFilter<ModelChange>() {
-        public boolean accept(ModelChange ch) {
-          return Sequence.fromIterable(session.getConflictedWith(ch)).isNotEmpty();
-        }
-      }).count();
+      int conflictedCount = ListSequence.fromList(changes).where((ch) -> Sequence.fromIterable(session.getConflictedWith(ch)).isNotEmpty()).count();
       int nonConflictedCount = ListSequence.fromList(changes).count() - conflictedCount;
       ChangeType compositeChangeType = null;
       rootTreeNode.setTooltipText(generateUnresolvedChangesText(ListSequence.fromList(changes).count(), conflictedCount));
@@ -518,19 +471,11 @@ public class MergeModelsPanel extends JPanel {
           }
         } else {
           compositeChangeType = ChangeType.CHANGE;
-          if (ListSequence.fromList(changes).all(new IWhereFilter<ModelChange>() {
-            public boolean accept(ModelChange ch) {
-              return ch instanceof AddRootChange || ch instanceof DeleteRootChange;
-            }
-          })) {
+          if (ListSequence.fromList(changes).all((ch) -> ch instanceof AddRootChange || ch instanceof DeleteRootChange)) {
             compositeChangeType = ListSequence.fromList(changes).first().getType();
           }
 
-          int myChangesCount = ListSequence.fromList(changes).where(new IWhereFilter<ModelChange>() {
-            public boolean accept(ModelChange ch) {
-              return session.isMyChange(ch);
-            }
-          }).count();
+          int myChangesCount = ListSequence.fromList(changes).where((ch) -> session.isMyChange(ch)).count();
           if (myChangesCount == nonConflictedCount) {
             rootTreeNode.setAdditionalText("local");
           } else if (myChangesCount == 0) {

@@ -23,12 +23,10 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.List;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -107,11 +105,7 @@ public class GenerateConstructor_Action extends BaseAction {
       } else {
         if (Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(superclass, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("constructors", 5292274854859503373L, 0x5745e3015c8914d3L)))).count() > 1) {
           needsShowConstructorsDialog.value = true;
-          ctors.value = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(superclass, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("constructors", 5292274854859503373L, 0x5745e3015c8914d3L)))).select(new ISelector<SNode, SNodeReference>() {
-            public SNodeReference select(SNode it) {
-              return SNodeOperations.getPointer(it);
-            }
-          }).toGenericArray(SNodeReference.class);
+          ctors.value = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(superclass, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("constructors", 5292274854859503373L, 0x5745e3015c8914d3L)))).select((it) -> SNodeOperations.getPointer(it)).toGenericArray(SNodeReference.class);
         } else if (Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(superclass, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("constructors", 5292274854859503373L, 0x5745e3015c8914d3L)))).count() == 1) {
           selectedConstructors.value = new SNodeReference[]{SNodeOperations.getPointer(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(superclass, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("constructors", 5292274854859503373L, 0x5745e3015c8914d3L)))).first())};
         } else {
@@ -132,11 +126,7 @@ public class GenerateConstructor_Action extends BaseAction {
 
       if (Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept.value, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("fields", 5292274854859383272L, 0x5745e3015c8914d3L)))).isNotEmpty()) {
         needsShowFieldsDialog.value = true;
-        fields.value = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept.value, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("fields", 5292274854859383272L, 0x5745e3015c8914d3L)))).select(new ISelector<SNode, SNodeReference>() {
-          public SNodeReference select(SNode it) {
-            return SNodeOperations.getPointer(it);
-          }
-        }).toGenericArray(SNodeReference.class);
+        fields.value = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept.value, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("fields", 5292274854859383272L, 0x5745e3015c8914d3L)))).select((it) -> SNodeOperations.getPointer(it)).toGenericArray(SNodeReference.class);
       } else {
         selectedFields.value = new SNodeReference[0];
       }
@@ -168,11 +158,7 @@ public class GenerateConstructor_Action extends BaseAction {
             final SNode parameter = SNodeFactoryOperations.addNewChild(constructor, LINKS.parameter$5xBj, null);
             SPropertyOperations.set(parameter, PROPS.name$MnvL, SPropertyOperations.getString(superParam, PROPS.name$MnvL));
             SLinkOperations.setTarget(parameter, LINKS.type$a1UY, SNodeOperations.copyNode(SLinkOperations.getTarget(superParam, LINKS.type$a1UY)));
-            ListSequence.fromList(SLinkOperations.getChildren(superParam, LINKS.annotation$K49I)).visitAll(new IVisitor<SNode>() {
-              public void visit(SNode it) {
-                ListSequence.fromList(SLinkOperations.getChildren(parameter, LINKS.annotation$K49I)).addElement(SNodeOperations.copyNode(it));
-              }
-            });
+            ListSequence.fromList(SLinkOperations.getChildren(superParam, LINKS.annotation$K49I)).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(parameter, LINKS.annotation$K49I)).addElement(SNodeOperations.copyNode(it)));
             SNode paramReference = SNodeFactoryOperations.addNewChild(invocation, LINKS.actualArgument$pzdx, CONCEPTS.VariableReference$TC);
             SLinkOperations.setTarget(paramReference, LINKS.variableDeclaration$N1XG, parameter);
           }

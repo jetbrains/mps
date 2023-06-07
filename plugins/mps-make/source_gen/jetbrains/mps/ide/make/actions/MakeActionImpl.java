@@ -16,7 +16,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.smodel.resources.MResource;
 import jetbrains.mps.ide.generator.GenerationCheckHelper;
 
@@ -52,12 +51,8 @@ public class MakeActionImpl {
       final ArrayList<SModel> models = new ArrayList<SModel>();
       try {
         inputRes = new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> {
-          List<IResource> rv = Sequence.fromIterable(myParams.collectInput()).toListSequence();
-          models.addAll(ListSequence.fromList(rv).translate(new ITranslator2<IResource, SModel>() {
-            public Iterable<SModel> translate(IResource it) {
-              return ((MResource) it).models();
-            }
-          }).toListSequence());
+          List<IResource> rv = Sequence.fromIterable(myParams.collectInput()).toList();
+          models.addAll(ListSequence.fromList(rv).translate((it) -> ((MResource) it).models()).toList());
           return rv;
         });
         if (!(new GenerationCheckHelper().checkModelsBeforeGenerationIfNeeded(project, models))) {

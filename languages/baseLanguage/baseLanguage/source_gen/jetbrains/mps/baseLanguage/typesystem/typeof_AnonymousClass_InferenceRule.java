@@ -18,7 +18,6 @@ import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.baseLanguage.behavior.IInferredExpression__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -39,7 +38,7 @@ public class typeof_AnonymousClass_InferenceRule extends AbstractInferenceRule_R
   }
   public void applyRule(final SNode anonymousClass, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // Since this rule override IInferredExpression, append dependencies there
-    InferenceDependencyHelper.addInferenceDependencies(typeCheckingContext, anonymousClass);
+    InferenceHelper.addInferenceDependencies(typeCheckingContext, anonymousClass);
 
     SNode cdecl = SLinkOperations.getTarget(anonymousClass, LINKS.baseMethodDeclaration$pyYw);
     if (cdecl == null) {
@@ -66,29 +65,25 @@ public class typeof_AnonymousClass_InferenceRule extends AbstractInferenceRule_R
 
     final Map<SNode, SNode> subs = MapSequence.fromMap(new HashMap<SNode, SNode>());
     // TODO: this is to avoid collecting generics from explicitly substituted types
-    List<SNode> typeParam = ListSequence.fromList(SLinkOperations.getChildren(anonymousClass, LINKS.typeParameter$F9H8)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode tp) {
-        final SNode TP_typevar_5449655299304737730 = typeCheckingContext.createNewRuntimeTypesVariable();
-        SNode tmp = typeCheckingContext.getRepresentative(TP_typevar_5449655299304737730);
-        {
-          SNode _nodeToCheck_1029348928467 = tp;
-          EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5449655299304737735", 0, null);
-          typeCheckingContext.createEquation((SNode) typeCheckingContext.getRepresentative(TP_typevar_5449655299304737730), (SNode) tp, _info_12389875345);
-        }
-        return tmp;
+    List<SNode> typeParam = ListSequence.fromList(SLinkOperations.getChildren(anonymousClass, LINKS.typeParameter$F9H8)).select((tp) -> {
+      final SNode TP_typevar_5449655299304737730 = typeCheckingContext.createNewRuntimeTypesVariable();
+      SNode tmp = typeCheckingContext.getRepresentative(TP_typevar_5449655299304737730);
+      {
+        SNode _nodeToCheck_1029348928467 = tp;
+        EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5449655299304737735", 0, null);
+        typeCheckingContext.createEquation((SNode) typeCheckingContext.getRepresentative(TP_typevar_5449655299304737730), (SNode) tp, _info_12389875345);
       }
-    }).toListSequence();
+      return tmp;
+    }).toList();
 
     SNode newType;
 
     if ((boolean) IInferredExpression__BehaviorDescriptor.needInference_idQ$FjPqwIoN.invoke(anonymousClass)) {
-      ListSequence.fromList(typeParam).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(anonymousClass, LINKS.classifier$q_Y$), LINKS.typeVariableDeclaration$Lipp)).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          // Create typevar and save it into subs (so the collection of subs does not set object instead)
-          final SNode typeval_typevar_6218131504797454943 = typeCheckingContext.createNewRuntimeTypesVariable();
-          MapSequence.fromMap(subs).put(it, typeCheckingContext.getRepresentative(typeval_typevar_6218131504797454943));
-          return typeCheckingContext.getRepresentative(typeval_typevar_6218131504797454943);
-        }
+      ListSequence.fromList(typeParam).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(anonymousClass, LINKS.classifier$q_Y$), LINKS.typeVariableDeclaration$Lipp)).select((it) -> {
+        // Create typevar and save it into subs (so the collection of subs does not set object instead)
+        final SNode typeval_typevar_6218131504797454943 = typeCheckingContext.createNewRuntimeTypesVariable();
+        MapSequence.fromMap(subs).put(it, typeCheckingContext.getRepresentative(typeval_typevar_6218131504797454943));
+        return typeCheckingContext.getRepresentative(typeval_typevar_6218131504797454943);
       }));
 
       newType = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x31acf7c12169ea33L, "jetbrains.mps.baseLanguage.structure.InferredClassifierType"));

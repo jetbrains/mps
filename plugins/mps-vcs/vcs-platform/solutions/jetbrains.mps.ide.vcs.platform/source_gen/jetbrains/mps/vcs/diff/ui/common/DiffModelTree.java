@@ -16,15 +16,12 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.event.TreeSelectionEvent;
 import jetbrains.mps.workbench.action.BaseAction;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.workbench.action.ActionUtils;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Collections;
 import java.util.Enumeration;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.annotations.Nullable;
 import javax.swing.tree.TreePath;
 import java.util.Objects;
@@ -81,11 +78,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
   }
 
   protected void setActions(Iterable<BaseAction> actions) {
-    Sequence.fromIterable(actions).visitAll(new IVisitor<BaseAction>() {
-      public void visit(BaseAction a) {
-        a.registerCustomShortcutSet(a.getShortcutSet(), DiffModelTree.this);
-      }
-    });
+    Sequence.fromIterable(actions).visitAll((a) -> a.registerCustomShortcutSet(a.getShortcutSet(), DiffModelTree.this));
     setPopupGroup(ActionUtils.groupFromActions(Sequence.fromIterable(actions).toGenericArray(BaseAction.class)), ActionPlaces.CHANGES_VIEW_POPUP);
   }
 
@@ -96,25 +89,13 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
 
   protected TreeNode rebuild() {
     ModelTreeNode modelNode = new ModelTreeNode(getModels());
-    myRootNodes = Sequence.fromIterable(getAffectedRoots()).where(new NotNullWhereFilter<SNodeId>()).select(new ISelector<SNodeId, RootTreeNode>() {
-      public RootTreeNode select(SNodeId r) {
-        return new RootTreeNode(r);
-      }
-    }).sort(new ISelector<RootTreeNode, String>() {
-      public String select(RootTreeNode rtn) {
-        return rtn.myVirtualPackage + "|" + rtn.myPresentation;
-      }
-    }, true).toListSequence();
+    myRootNodes = Sequence.fromIterable(getAffectedRoots()).where(new NotNullWhereFilter()).select((r) -> new RootTreeNode(r)).sort((rtn) -> rtn.myVirtualPackage + "|" + rtn.myPresentation, true).toList();
     for (RootTreeNode rtn : ListSequence.fromList(myRootNodes)) {
       TreeNode parentNode = modelNode;
       if (isNotEmptyString(rtn.myVirtualPackage)) {
         for (final String sub : Sequence.fromArray(rtn.myVirtualPackage.split("\\."))) {
           Iterable<TreeNode> children = Collections.list(((Enumeration) parentNode.children()));
-          TreeNode child = Sequence.fromIterable(children).findFirst(new IWhereFilter<TreeNode>() {
-            public boolean accept(TreeNode c) {
-              return c instanceof PackageTreeNode && sub.equals(c.getText());
-            }
-          });
+          TreeNode child = Sequence.fromIterable(children).findFirst((c) -> c instanceof PackageTreeNode && sub.equals(c.getText()));
           if (child == null) {
             child = new PackageTreeNode(sub);
             parentNode.add(child);
@@ -124,11 +105,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
       }
       parentNode.add(rtn);
     }
-    if (Sequence.fromIterable(getAffectedRoots()).any(new IWhereFilter<SNodeId>() {
-      public boolean accept(SNodeId r) {
-        return r == null;
-      }
-    })) {
+    if (Sequence.fromIterable(getAffectedRoots()).any((r) -> r == null)) {
       RootTreeNode metadataNode = new MetadataTreeNode();
       ListSequence.fromList(myRootNodes).addElement(metadataNode);
       modelNode.add(metadataNode);
@@ -183,11 +160,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
   protected void onSelectRoot(@Nullable SNodeId rootId) {
   }
   private RootTreeNode findRootNode(@Nullable final SNodeId nodeId) {
-    return ListSequence.fromList(myRootNodes).findFirst(new IWhereFilter<RootTreeNode>() {
-      public boolean accept(RootTreeNode r) {
-        return Objects.equals(nodeId, r.myRootId);
-      }
-    });
+    return ListSequence.fromList(myRootNodes).findFirst((r) -> Objects.equals(nodeId, r.myRootId));
   }
   private int advanceIndex(int index, boolean next) {
     return (next ? index + 1 : index - 1);
@@ -220,11 +193,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
   public static class ModelTreeNode extends TreeNode {
     public ModelTreeNode(Iterable<SModel> models) {
       super("model");
-      String modelName = SModelOperations.getModelName(Sequence.fromIterable(models).findFirst(new IWhereFilter<SModel>() {
-        public boolean accept(SModel it) {
-          return isNotEmptyString(SModelOperations.getModelName(it));
-        }
-      }));
+      String modelName = SModelOperations.getModelName(Sequence.fromIterable(models).findFirst((it) -> isNotEmptyString(SModelOperations.getModelName(it))));
       if (!(modelName == null || modelName.length() == 0)) {
         setText(modelName);
       }

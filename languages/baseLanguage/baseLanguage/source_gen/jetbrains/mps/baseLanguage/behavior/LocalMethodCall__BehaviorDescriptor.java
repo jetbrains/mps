@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.scopes.Members;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -45,15 +44,7 @@ public final class LocalMethodCall__BehaviorDescriptor extends BaseBHDescriptor 
   }
   /*package*/ static Iterable<SNode> getAvailableMethodDeclarations_id50EF2fWdwEN(@NotNull SNode __thisNode__, final String methodName) {
     SNode wrappingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$Ix, false, false);
-    return Sequence.fromIterable(Members.visibleStaticMethods(wrappingClassifier, __thisNode__)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), methodName);
-      }
-    }).union(Sequence.fromIterable(Members.visibleInstanceMethods(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(wrappingClassifier), __thisNode__)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), methodName);
-      }
-    }));
+    return Sequence.fromIterable(Members.visibleStaticMethods(wrappingClassifier, __thisNode__)).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), methodName)).union(Sequence.fromIterable(Members.visibleInstanceMethods(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(wrappingClassifier), __thisNode__)).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), methodName)));
 
   }
 

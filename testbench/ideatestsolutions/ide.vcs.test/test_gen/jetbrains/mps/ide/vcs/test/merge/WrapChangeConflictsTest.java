@@ -24,7 +24,7 @@ public class WrapChangeConflictsTest extends ConflictsBuilderTest {
   @Test
   public void changesInOneModel() {
     // wrap 5 statements with a block statement
-    List<SNode> baseStatements = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(1, 5).toListSequence();
+    List<SNode> baseStatements = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(1, 5).toList();
     SNode wrappingNode = _quotation_createNode_5bqkak_a0c0d();
     List<SNode> wrappedStatements = SLinkOperations.getChildren(SLinkOperations.getTarget(wrappingNode, LINKS.statements$q65M), LINKS.statement$53DE);
     SNodeId wrappingParentId = SLinkOperations.getTarget(wrappingNode, LINKS.statements$q65M).getNodeId();
@@ -40,13 +40,13 @@ public class WrapChangeConflictsTest extends ConflictsBuilderTest {
   @Test
   public void nonConflictingWrappes() {
     // wrap 2 statements with a block statement
-    List<SNode> baseStatements1 = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(1, 3).toListSequence();
+    List<SNode> baseStatements1 = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(1, 3).toList();
     SNode wrappingNode1 = _quotation_createNode_5bqkak_a0c0f();
     SNodeId wrappingParentId1 = SLinkOperations.getTarget(wrappingNode1, LINKS.statements$q65M).getNodeId();
     applyWrapChange(getMineModel(), baseStatements1, wrappingNode1, wrappingParentId1, myLink, null);
 
     // wrap 1 statement with a block statement
-    List<SNode> baseStatements2 = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(4, 5).toListSequence();
+    List<SNode> baseStatements2 = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(4, 5).toList();
     SNode wrappingNode2 = _quotation_createNode_5bqkak_a0i0f();
     SNodeId wrappingParentId2 = SLinkOperations.getTarget(wrappingNode2, LINKS.statements$q65M).getNodeId();
     applyWrapChange(getTheirsModel(), baseStatements2, wrappingNode2, wrappingParentId2, myLink, null);
@@ -62,7 +62,7 @@ public class WrapChangeConflictsTest extends ConflictsBuilderTest {
     wrap5Statements(getMineModel());
 
     // wrap a statement in the wrapped part
-    List<SNode> baseStatements = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(3, 4).toListSequence();
+    List<SNode> baseStatements = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(3, 4).toList();
     SNode wrappingNode2 = _quotation_createNode_5bqkak_a0h0h();
     SNodeId wrappingParentId2 = SLinkOperations.getTarget(wrappingNode2, LINKS.statements$q65M).getNodeId();
     applyWrapChange(getTheirsModel(), baseStatements, wrappingNode2, wrappingParentId2, myLink, null);
@@ -78,7 +78,7 @@ public class WrapChangeConflictsTest extends ConflictsBuilderTest {
     List<ModelChange> myChanges = wrap5Statements(getMineModel());
 
     // wrap a statement in the wrapped part
-    List<SNode> baseStatements = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(3, 4).toListSequence();
+    List<SNode> baseStatements = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(3, 4).toList();
     SNode wrappingNode2 = _quotation_createNode_5bqkak_a0h0j();
     SNodeId wrappingParentId2 = SLinkOperations.getTarget(wrappingNode2, LINKS.statements$q65M).getNodeId();
     List<ModelChange> theirsChanges = applyWrapChange(getTheirsModel(), baseStatements, wrappingNode2, wrappingParentId2, myLink, null);
@@ -90,13 +90,13 @@ public class WrapChangeConflictsTest extends ConflictsBuilderTest {
   @Test
   public void conflictingNeighbourWrappes() {
     // wrap 2 statements with a block statement
-    List<SNode> baseStatements1 = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(1, 3).toListSequence();
+    List<SNode> baseStatements1 = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(1, 3).toList();
     SNode wrappingNode1 = _quotation_createNode_5bqkak_a0c0l();
     SNodeId wrappingParentId1 = SLinkOperations.getTarget(wrappingNode1, LINKS.statements$q65M).getNodeId();
     List<ModelChange> myChanges = applyWrapChange(getMineModel(), baseStatements1, wrappingNode1, wrappingParentId1, myLink, null);
 
     // wrap 2 statements with a block statement
-    List<SNode> baseStatements2 = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(3, 5).toListSequence();
+    List<SNode> baseStatements2 = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(3, 5).toList();
     SNode wrappingNode2 = _quotation_createNode_5bqkak_a0i0l();
     SNodeId wrappingParentId2 = SLinkOperations.getTarget(wrappingNode2, LINKS.statements$q65M).getNodeId();
     List<ModelChange> theirsChanges = applyWrapChange(getTheirsModel(), baseStatements2, wrappingNode2, wrappingParentId2, myLink, null);
@@ -108,13 +108,13 @@ public class WrapChangeConflictsTest extends ConflictsBuilderTest {
   @Test
   public void conflictingIntersectingWrappes() {
     // wrap 2 statements with a block statement
-    List<SNode> baseStatements1 = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(1, 4).toListSequence();
+    List<SNode> baseStatements1 = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(1, 4).toList();
     SNode wrappingNode1 = _quotation_createNode_5bqkak_a0c0n();
     SNodeId wrappingParentId1 = SLinkOperations.getTarget(wrappingNode1, LINKS.statements$q65M).getNodeId();
     List<ModelChange> myChanges = applyWrapChange(getMineModel(), baseStatements1, wrappingNode1, wrappingParentId1, myLink, null);
 
     // wrap 2 statements with a block statement
-    List<SNode> baseStatements2 = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(2, 6).toListSequence();
+    List<SNode> baseStatements2 = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(2, 6).toList();
     SNode wrappingNode2 = _quotation_createNode_5bqkak_a0i0n();
     SNodeId wrappingParentId2 = SLinkOperations.getTarget(wrappingNode2, LINKS.statements$q65M).getNodeId();
     List<ModelChange> theirsChanges = applyWrapChange(getTheirsModel(), baseStatements2, wrappingNode2, wrappingParentId2, myLink, null);
@@ -140,7 +140,7 @@ public class WrapChangeConflictsTest extends ConflictsBuilderTest {
 
     // wrap 5 statements with a block statement
     List<ModelChange> myChanges = ListSequence.fromList(new ArrayList<ModelChange>());
-    List<SNode> baseStatements = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(1, 6).toListSequence();
+    List<SNode> baseStatements = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(1, 6).toList();
     SNode wrappingNode1 = _quotation_createNode_5bqkak_a0g0r();
     List<SNode> wrappedStatements1 = SLinkOperations.getChildren(SLinkOperations.getTarget(wrappingNode1, LINKS.statements$q65M), LINKS.statement$53DE);
     SNodeId wrappingParentId1 = SLinkOperations.getTarget(wrappingNode1, LINKS.statements$q65M).getNodeId();
@@ -170,7 +170,7 @@ public class WrapChangeConflictsTest extends ConflictsBuilderTest {
 
     // wrap 5 statements with a block statement
     List<ModelChange> myChanges = ListSequence.fromList(new ArrayList<ModelChange>());
-    List<SNode> baseStatements = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(1, 6).toListSequence();
+    List<SNode> baseStatements = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(1, 6).toList();
     SNode wrappingNode1 = _quotation_createNode_5bqkak_a0g0t();
     List<SNode> wrappedStatements1 = SLinkOperations.getChildren(SLinkOperations.getTarget(wrappingNode1, LINKS.statements$q65M), LINKS.statement$53DE);
     SNodeId wrappingParentId1 = SLinkOperations.getTarget(wrappingNode1, LINKS.statements$q65M).getNodeId();
@@ -245,7 +245,7 @@ public class WrapChangeConflictsTest extends ConflictsBuilderTest {
 
     // move a statement inside the wrapped part
     SNode theirsParent = SLinkOperations.getTarget(getMethod(getTheirsModel()), LINKS.body$5xQk);
-    applyMoveChange(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(2, 3).toListSequence(), theirsParent, myLink, ListSequence.fromList(SLinkOperations.getChildren(theirsParent, LINKS.statement$53DE)).getElement(5));
+    applyMoveChange(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(2, 3).toList(), theirsParent, myLink, ListSequence.fromList(SLinkOperations.getChildren(theirsParent, LINKS.statement$53DE)).getElement(5));
     buildConflictsAndCheck();
   }
 
@@ -259,7 +259,7 @@ public class WrapChangeConflictsTest extends ConflictsBuilderTest {
 
     // move a statement inside the wrapped part
     SNode theirsParent = SLinkOperations.getTarget(getMethod(getTheirsModel()), LINKS.body$5xQk);
-    ModelChange theirsChange = applyMoveChange(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(2, 3).toListSequence(), theirsParent, myLink, ListSequence.fromList(SLinkOperations.getChildren(theirsParent, LINKS.statement$53DE)).getElement(5));
+    ModelChange theirsChange = applyMoveChange(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(2, 3).toList(), theirsParent, myLink, ListSequence.fromList(SLinkOperations.getChildren(theirsParent, LINKS.statement$53DE)).getElement(5));
 
     addConflictingChanges(ListSequence.fromList(myChanges).getElement(0), theirsChange);
     buildConflictsAndCheck();
@@ -275,7 +275,7 @@ public class WrapChangeConflictsTest extends ConflictsBuilderTest {
 
     // move a statement from wrapped part somewhere else
     SNode theirsParent = SLinkOperations.getTarget(getIfStatement(getTheirsModel()), LINKS.ifTrue$5Rg8);
-    applyMoveChange(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(2, 3).toListSequence(), theirsParent, myLink, ListSequence.fromList(SLinkOperations.getChildren(theirsParent, LINKS.statement$53DE)).getElement(5));
+    applyMoveChange(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(2, 3).toList(), theirsParent, myLink, ListSequence.fromList(SLinkOperations.getChildren(theirsParent, LINKS.statement$53DE)).getElement(5));
     buildConflictsAndCheck();
   }
 
@@ -289,7 +289,7 @@ public class WrapChangeConflictsTest extends ConflictsBuilderTest {
 
     // move a statement from wrapped part somewhere else
     SNode theirsParent = SLinkOperations.getTarget(getIfStatement(getTheirsModel()), LINKS.ifTrue$5Rg8);
-    ModelChange theirsChange = applyMoveChange(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(2, 3).toListSequence(), theirsParent, myLink, ListSequence.fromList(SLinkOperations.getChildren(theirsParent, LINKS.statement$53DE)).getElement(5));
+    ModelChange theirsChange = applyMoveChange(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(2, 3).toList(), theirsParent, myLink, ListSequence.fromList(SLinkOperations.getChildren(theirsParent, LINKS.statement$53DE)).getElement(5));
 
     addConflictingChanges(ListSequence.fromList(myChanges).getElement(0), theirsChange);
     buildConflictsAndCheck();
@@ -305,7 +305,7 @@ public class WrapChangeConflictsTest extends ConflictsBuilderTest {
 
     // move a statement to the wrapped part
     SNode theirsParent = SLinkOperations.getTarget(getMethod(getTheirsModel()), LINKS.body$5xQk);
-    applyMoveChange(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getIfStatement(getBaseModel()), LINKS.ifTrue$5Rg8), LINKS.statement$53DE)).page(2, 3).toListSequence(), theirsParent, myLink, ListSequence.fromList(SLinkOperations.getChildren(theirsParent, LINKS.statement$53DE)).getElement(5));
+    applyMoveChange(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getIfStatement(getBaseModel()), LINKS.ifTrue$5Rg8), LINKS.statement$53DE)).page(2, 3).toList(), theirsParent, myLink, ListSequence.fromList(SLinkOperations.getChildren(theirsParent, LINKS.statement$53DE)).getElement(5));
     buildConflictsAndCheck();
   }
 
@@ -319,7 +319,7 @@ public class WrapChangeConflictsTest extends ConflictsBuilderTest {
 
     // move a statement to the wrapped part
     SNode theirsParent = SLinkOperations.getTarget(getMethod(getTheirsModel()), LINKS.body$5xQk);
-    ModelChange theirsChange = applyMoveChange(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getIfStatement(getBaseModel()), LINKS.ifTrue$5Rg8), LINKS.statement$53DE)).page(2, 3).toListSequence(), theirsParent, myLink, ListSequence.fromList(SLinkOperations.getChildren(theirsParent, LINKS.statement$53DE)).getElement(5));
+    ModelChange theirsChange = applyMoveChange(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getIfStatement(getBaseModel()), LINKS.ifTrue$5Rg8), LINKS.statement$53DE)).page(2, 3).toList(), theirsParent, myLink, ListSequence.fromList(SLinkOperations.getChildren(theirsParent, LINKS.statement$53DE)).getElement(5));
 
     addConflictingChanges(ListSequence.fromList(myChanges).getElement(0), theirsChange);
     buildConflictsAndCheck();
@@ -332,7 +332,7 @@ public class WrapChangeConflictsTest extends ConflictsBuilderTest {
 
     // move a statement to the wrapped part
     SNode theirsParent = SLinkOperations.getTarget(getMethod(getTheirsModel()), LINKS.body$5xQk);
-    ModelChange theirsChange = applyMoveChange(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getIfStatement(getBaseModel()), LINKS.ifTrue$5Rg8), LINKS.statement$53DE)).page(2, 3).toListSequence(), theirsParent, myLink, ListSequence.fromList(SLinkOperations.getChildren(theirsParent, LINKS.statement$53DE)).getElement(6));
+    ModelChange theirsChange = applyMoveChange(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getIfStatement(getBaseModel()), LINKS.ifTrue$5Rg8), LINKS.statement$53DE)).page(2, 3).toList(), theirsParent, myLink, ListSequence.fromList(SLinkOperations.getChildren(theirsParent, LINKS.statement$53DE)).getElement(6));
     addConflictingChanges(ListSequence.fromList(myChanges).getElement(0), theirsChange);
     buildConflictsAndCheck();
   }
@@ -344,14 +344,14 @@ public class WrapChangeConflictsTest extends ConflictsBuilderTest {
 
     // move a statement to the wrapped part
     SNode theirsParent = SLinkOperations.getTarget(getMethod(getTheirsModel()), LINKS.body$5xQk);
-    ModelChange theirsChange = applyMoveChange(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getIfStatement(getBaseModel()), LINKS.ifTrue$5Rg8), LINKS.statement$53DE)).page(2, 3).toListSequence(), theirsParent, myLink, ListSequence.fromList(SLinkOperations.getChildren(theirsParent, LINKS.statement$53DE)).getElement(1));
+    ModelChange theirsChange = applyMoveChange(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getIfStatement(getBaseModel()), LINKS.ifTrue$5Rg8), LINKS.statement$53DE)).page(2, 3).toList(), theirsParent, myLink, ListSequence.fromList(SLinkOperations.getChildren(theirsParent, LINKS.statement$53DE)).getElement(1));
     addConflictingChanges(ListSequence.fromList(myChanges).getElement(0), theirsChange);
     buildConflictsAndCheck();
   }
 
   private List<ModelChange> wrap5Statements(SModel model) {
     // wrap 5 statements with a block statement
-    List<SNode> baseStatements = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(1, 6).toListSequence();
+    List<SNode> baseStatements = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(1, 6).toList();
     SNode wrappingNode = _quotation_createNode_5bqkak_a0c0rb();
     SNodeId wrappingParentId = SLinkOperations.getTarget(wrappingNode, LINKS.statements$q65M).getNodeId();
     return applyWrapChange(model, baseStatements, wrappingNode, wrappingParentId, myLink, null);

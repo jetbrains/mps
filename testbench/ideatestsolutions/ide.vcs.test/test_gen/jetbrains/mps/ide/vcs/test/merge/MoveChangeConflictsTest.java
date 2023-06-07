@@ -27,15 +27,15 @@ public class MoveChangeConflictsTest extends ConflictsBuilderTest {
     List<SNode> baseStatements = SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE);
     SNode myAnchor1 = ListSequence.fromList(SLinkOperations.getChildren(myParent, LINKS.statement$53DE)).getElement(6);
     SNode myAnchor2 = ListSequence.fromList(SLinkOperations.getChildren(myParent, LINKS.statement$53DE)).getElement(0);
-    applyMoveChange(ListSequence.fromList(baseStatements).page(1, 3).toListSequence(), myParent, myLink, myAnchor1);
-    applyMoveChange(ListSequence.fromList(baseStatements).page(7, 8).toListSequence(), myParent, myLink, myAnchor2);
+    applyMoveChange(ListSequence.fromList(baseStatements).page(1, 3).toList(), myParent, myLink, myAnchor1);
+    applyMoveChange(ListSequence.fromList(baseStatements).page(7, 8).toList(), myParent, myLink, myAnchor2);
 
     baseStatements = SLinkOperations.getChildren(SLinkOperations.getTarget(getIfStatement(getBaseModel()), LINKS.ifTrue$5Rg8), LINKS.statement$53DE);
     myParent = SLinkOperations.getTarget(getLevel1Block1(getMineModel()), LINKS.statements$q65M);
 
     // move 4 statements to another parent
     SNode myAnchor3 = ListSequence.fromList(SLinkOperations.getChildren(myParent, LINKS.statement$53DE)).getElement(5);
-    applyMoveChange(ListSequence.fromList(baseStatements).page(2, 6).toListSequence(), myParent, myLink, myAnchor3);
+    applyMoveChange(ListSequence.fromList(baseStatements).page(2, 6).toList(), myParent, myLink, myAnchor3);
 
     buildConflictsAndCheck();
   }
@@ -49,8 +49,8 @@ public class MoveChangeConflictsTest extends ConflictsBuilderTest {
     SNode theirsParent = SLinkOperations.getTarget(getMethod(getTheirsModel()), LINKS.body$5xQk);
     SNode myAnchor = ListSequence.fromList(SLinkOperations.getChildren(myParent, LINKS.statement$53DE)).getElement(6);
     SNode theirsAnchor = ListSequence.fromList(SLinkOperations.getChildren(theirsParent, LINKS.statement$53DE)).getElement(0);
-    applyMoveChange(ListSequence.fromList(SLinkOperations.getChildren(baseParent, LINKS.statement$53DE)).page(1, 3).toListSequence(), myParent, myLink, myAnchor);
-    applyMoveChange(ListSequence.fromList(SLinkOperations.getChildren(baseParent, LINKS.statement$53DE)).page(7, 8).toListSequence(), theirsParent, myLink, theirsAnchor);
+    applyMoveChange(ListSequence.fromList(SLinkOperations.getChildren(baseParent, LINKS.statement$53DE)).page(1, 3).toList(), myParent, myLink, myAnchor);
+    applyMoveChange(ListSequence.fromList(SLinkOperations.getChildren(baseParent, LINKS.statement$53DE)).page(7, 8).toList(), theirsParent, myLink, theirsAnchor);
     buildConflictsAndCheck();
   }
 
@@ -64,8 +64,8 @@ public class MoveChangeConflictsTest extends ConflictsBuilderTest {
     SNode theirsParent = SLinkOperations.getTarget(getLevel1Block1(getTheirsModel()), LINKS.statements$q65M);
     SNode myAnchor = ListSequence.fromList(SLinkOperations.getChildren(myParent, LINKS.statement$53DE)).getElement(1);
     SNode theirsAnchor = ListSequence.fromList(SLinkOperations.getChildren(theirsParent, LINKS.statement$53DE)).getElement(4);
-    applyMoveChange(ListSequence.fromList(baseStatements1).page(2, 6).toListSequence(), myParent, myLink, myAnchor);
-    applyMoveChange(ListSequence.fromList(baseStatements2).page(3, 4).toListSequence(), theirsParent, myLink, theirsAnchor);
+    applyMoveChange(ListSequence.fromList(baseStatements1).page(2, 6).toList(), myParent, myLink, myAnchor);
+    applyMoveChange(ListSequence.fromList(baseStatements2).page(3, 4).toList(), theirsParent, myLink, theirsAnchor);
     buildConflictsAndCheck();
   }
 
@@ -77,14 +77,14 @@ public class MoveChangeConflictsTest extends ConflictsBuilderTest {
     // move if statement
     applyMoveChange(Arrays.asList(getIfStatement(getBaseModel())), SLinkOperations.getTarget(getMethod(getMineModel()), LINKS.body$5xQk), myLink, null);
     // move statements inside if statement
-    applyMoveChange(ListSequence.fromList(baseStatements).page(3, 4).toListSequence(), theirsParent, myLink, ListSequence.fromList(SLinkOperations.getChildren(theirsParent, LINKS.statement$53DE)).getElement(0));
+    applyMoveChange(ListSequence.fromList(baseStatements).page(3, 4).toList(), theirsParent, myLink, ListSequence.fromList(SLinkOperations.getChildren(theirsParent, LINKS.statement$53DE)).getElement(0));
     buildConflictsAndCheck();
   }
 
   @Test
   public void symmetricMoves() {
 
-    List<SNode> baseStatements = ListSequence.fromList(getIfTrueStatements(getBaseModel())).page(2, 6).toListSequence();
+    List<SNode> baseStatements = ListSequence.fromList(getIfTrueStatements(getBaseModel())).page(2, 6).toList();
     SNode myParent = SLinkOperations.getTarget(getLevel1Block1(getMineModel()), LINKS.statements$q65M);
     SNode theirsParent = SLinkOperations.getTarget(getLevel1Block1(getTheirsModel()), LINKS.statements$q65M);
     SNode myAnchor = ListSequence.fromList(SLinkOperations.getChildren(myParent, LINKS.statement$53DE)).getElement(3);
@@ -99,12 +99,12 @@ public class MoveChangeConflictsTest extends ConflictsBuilderTest {
   public void conflictingMovesDifferentNumber() {
 
     // move 3 statements
-    List<SNode> myBaseStatements1 = ListSequence.fromList(getIfTrueStatements(getBaseModel())).page(3, 6).toListSequence();
+    List<SNode> myBaseStatements1 = ListSequence.fromList(getIfTrueStatements(getBaseModel())).page(3, 6).toList();
     SNode myParent = SLinkOperations.getTarget(getLevel1Block1(getMineModel()), LINKS.statements$q65M);
     SNode myAnchor = ListSequence.fromList(SLinkOperations.getChildren(myParent, LINKS.statement$53DE)).getElement(3);
     ModelChange myChange = applyMoveChange(myBaseStatements1, myParent, myLink, myAnchor);
     // move 4 statements
-    List<SNode> baseStatements2 = ListSequence.fromList(getIfTrueStatements(getBaseModel())).page(2, 6).toListSequence();
+    List<SNode> baseStatements2 = ListSequence.fromList(getIfTrueStatements(getBaseModel())).page(2, 6).toList();
     SNode theirsParent = SLinkOperations.getTarget(getLevel1Block1(getTheirsModel()), LINKS.statements$q65M);
     SNode theirsAnchor = ListSequence.fromList(SLinkOperations.getChildren(theirsParent, LINKS.statement$53DE)).getElement(3);
     ModelChange theirsChange = applyMoveChange(baseStatements2, theirsParent, myLink, theirsAnchor);
@@ -115,7 +115,7 @@ public class MoveChangeConflictsTest extends ConflictsBuilderTest {
   @Test
   public void conflictingMovesSameSourceDifferentTarget() {
 
-    List<SNode> myBaseStatements = ListSequence.fromList(getIfTrueStatements(getBaseModel())).page(2, 6).toListSequence();
+    List<SNode> myBaseStatements = ListSequence.fromList(getIfTrueStatements(getBaseModel())).page(2, 6).toList();
     SNode myParent = SLinkOperations.getTarget(getLevel1Block1(getMineModel()), LINKS.statements$q65M);
     SNode theirsParent = SLinkOperations.getTarget(getLevel1Block1(getTheirsModel()), LINKS.statements$q65M);
     SNode myAnchor = ListSequence.fromList(SLinkOperations.getChildren(myParent, LINKS.statement$53DE)).getElement(3);
@@ -129,9 +129,9 @@ public class MoveChangeConflictsTest extends ConflictsBuilderTest {
   @Test
   public void conflictingMovesDifferentSourceSameTarget() {
 
-    List<SNode> baseStatements1 = ListSequence.fromList(getIfTrueStatements(getBaseModel())).page(2, 6).toListSequence();
+    List<SNode> baseStatements1 = ListSequence.fromList(getIfTrueStatements(getBaseModel())).page(2, 6).toList();
     SNode myParent = SLinkOperations.getTarget(getLevel1Block1(getMineModel()), LINKS.statements$q65M);
-    List<SNode> baseStatements2 = ListSequence.fromList(getLevel2Block1Statements(getBaseModel())).page(3, 4).toListSequence();
+    List<SNode> baseStatements2 = ListSequence.fromList(getLevel2Block1Statements(getBaseModel())).page(3, 4).toList();
     SNode theirsParent = SLinkOperations.getTarget(getLevel1Block1(getTheirsModel()), LINKS.statements$q65M);
     SNode myAnchor = ListSequence.fromList(SLinkOperations.getChildren(myParent, LINKS.statement$53DE)).getElement(3);
     SNode theirsAnchor = ListSequence.fromList(SLinkOperations.getChildren(theirsParent, LINKS.statement$53DE)).getElement(3);
@@ -150,13 +150,13 @@ public class MoveChangeConflictsTest extends ConflictsBuilderTest {
     ModelChange myChange = applyNotMoveChange(myParent, myLink, myAnchor, 4);
 
     // move 1 statement to another place of the same role
-    List<SNode> baseStatements = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(2, 3).toListSequence();
+    List<SNode> baseStatements = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(2, 3).toList();
     SNode theirsParent1 = SLinkOperations.getTarget(getMethod(getTheirsModel()), LINKS.body$5xQk);
     SNode theirsAnchor1 = ListSequence.fromList(SLinkOperations.getChildren(theirsParent1, LINKS.statement$53DE)).getElement(5);
     ModelChange theirsChange1 = applyMoveChange(baseStatements, theirsParent1, myLink, theirsAnchor1);
 
     // move 1 statement to another parent
-    baseStatements = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(5, 6).toListSequence();
+    baseStatements = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getMethod(getBaseModel()), LINKS.body$5xQk), LINKS.statement$53DE)).page(5, 6).toList();
     SNode theirsParent2 = SLinkOperations.getTarget(getIfStatement(getTheirsModel()), LINKS.ifTrue$5Rg8);
     SNode theirsAnchor2 = ListSequence.fromList(SLinkOperations.getChildren(theirsParent2, LINKS.statement$53DE)).getElement(3);
     ModelChange theirsChange2 = applyMoveChange(baseStatements, theirsParent2, myLink, theirsAnchor2);
@@ -175,7 +175,7 @@ public class MoveChangeConflictsTest extends ConflictsBuilderTest {
     ModelChange myChange = applyNotMoveChange(myParent, myLink, myAnchor, 0, _quotation_createNode_qub2rt_e0a4a12());
 
     // move 1 statement to the same place
-    List<SNode> baseStatements = ListSequence.fromList(getIfTrueStatements(getBaseModel())).page(2, 3).toListSequence();
+    List<SNode> baseStatements = ListSequence.fromList(getIfTrueStatements(getBaseModel())).page(2, 3).toList();
     SNode theirsParent = SLinkOperations.getTarget(getMethod(getTheirsModel()), LINKS.body$5xQk);
     SNode theirsAnchor = ListSequence.fromList(SLinkOperations.getChildren(theirsParent, LINKS.statement$53DE)).getElement(6);
     ModelChange theirsChange1 = applyMoveChange(baseStatements, theirsParent, myLink, theirsAnchor);
@@ -193,7 +193,7 @@ public class MoveChangeConflictsTest extends ConflictsBuilderTest {
     ModelChange myChange = applyNotMoveChange(myParent, myLink, myAnchor, 1);
 
     // move 1 statement to the place before deleted anchor
-    List<SNode> baseStatements = ListSequence.fromList(getIfTrueStatements(getBaseModel())).page(2, 3).toListSequence();
+    List<SNode> baseStatements = ListSequence.fromList(getIfTrueStatements(getBaseModel())).page(2, 3).toList();
     SNode theirsParent = SLinkOperations.getTarget(getMethod(getTheirsModel()), LINKS.body$5xQk);
     SNode theirsAnchor = ListSequence.fromList(SLinkOperations.getChildren(theirsParent, LINKS.statement$53DE)).getElement(6);
     ModelChange theirsChange1 = applyMoveChange(baseStatements, theirsParent, myLink, theirsAnchor);
@@ -211,7 +211,7 @@ public class MoveChangeConflictsTest extends ConflictsBuilderTest {
     applyNotMoveChange(myParent, myLink, myAnchor, 1);
 
     // move 1 statement
-    List<SNode> baseStatements = ListSequence.fromList(getIfTrueStatements(getBaseModel())).page(2, 3).toListSequence();
+    List<SNode> baseStatements = ListSequence.fromList(getIfTrueStatements(getBaseModel())).page(2, 3).toList();
     SNode theirsParent = SLinkOperations.getTarget(getMethod(getTheirsModel()), LINKS.body$5xQk);
     SNode theirsAnchor = ListSequence.fromList(SLinkOperations.getChildren(theirsParent, LINKS.statement$53DE)).getElement(5);
     applyMoveChange(baseStatements, theirsParent, myLink, theirsAnchor);

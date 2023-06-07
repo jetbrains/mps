@@ -25,6 +25,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.MPSModuleRepository;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
@@ -545,7 +546,7 @@ public class SNodeOperations {
     if (role == null) {
       return -1;
     }
-    return Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(node.getParent(), role)).toListSequence().indexOf(node);
+    return ListSequence.fromList(Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(node.getParent(), role)).toList()).indexOf(node);
   }
 
   public static List<SNode> getAllAttributes(SNode node) {

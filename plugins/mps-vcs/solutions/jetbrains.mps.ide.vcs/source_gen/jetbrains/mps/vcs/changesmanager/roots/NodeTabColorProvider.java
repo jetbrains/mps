@@ -11,10 +11,8 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.List;
 import com.intellij.openapi.vcs.FileStatus;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.vcs.changesmanager.NodeFileStatusMapping;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -29,17 +27,11 @@ public class NodeTabColorProvider implements TabColorProvider {
   @Nullable
   @Override
   public Color getAspectColor(Iterable<SNodeReference> nodePointers) {
-    final List<FileStatus> statuses = Sequence.fromIterable(nodePointers).select(new ISelector<SNodeReference, FileStatus>() {
-      public FileStatus select(SNodeReference np) {
-        FileStatus s = NodeFileStatusMapping.getInstance(myProject).getStatus(np);
-        return (s != null ? s : FileStatus.NOT_CHANGED);
-      }
-    }).toListSequence();
-    if (ListSequence.fromList(statuses).all(new IWhereFilter<FileStatus>() {
-      public boolean accept(FileStatus s) {
-        return s == ListSequence.fromList(statuses).first();
-      }
-    })) {
+    final List<FileStatus> statuses = Sequence.fromIterable(nodePointers).select((np) -> {
+      FileStatus s = NodeFileStatusMapping.getInstance(myProject).getStatus(np);
+      return (s != null ? s : FileStatus.NOT_CHANGED);
+    }).toList();
+    if (ListSequence.fromList(statuses).all((s) -> s == ListSequence.fromList(statuses).first())) {
       return check_6tqz68_a0a1a4(ListSequence.fromList(statuses).first());
     } else {
       return FileStatus.MODIFIED.getColor();

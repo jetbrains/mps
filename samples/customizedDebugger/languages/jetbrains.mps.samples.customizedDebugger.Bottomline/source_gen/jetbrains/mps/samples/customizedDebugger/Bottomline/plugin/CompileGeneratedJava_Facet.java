@@ -22,8 +22,6 @@ import java.util.Set;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.make.ModuleMaker;
 import jetbrains.mps.make.MPSCompilationResult;
@@ -71,15 +69,7 @@ public class CompileGeneratedJava_Facet extends IFacet.Stub {
               // FIXME this is a copy of JavaCompile. Perhaps, shall demonstrate 
               // java compilation support by re-using JavaCompile facet (e.g. by registering 
               // JavaCompile facet against customizedDebugger.Bottomline language through FacetRegistry?
-              final Set<SModule> toCompile = SetSequence.fromSetWithValues(new HashSet<SModule>(), Sequence.fromIterable(input).select(new ISelector<TResource, SModule>() {
-                public SModule select(TResource it) {
-                  return it.module();
-                }
-              }).where(new IWhereFilter<SModule>() {
-                public boolean accept(SModule it) {
-                  return SModuleOperations.isCompileInMps(it);
-                }
-              }).distinct());
+              final Set<SModule> toCompile = SetSequence.fromSetWithValues(new HashSet<SModule>(), Sequence.fromIterable(input).select((it) -> it.module()).where((it) -> SModuleOperations.isCompileInMps(it)).distinct());
               if (SetSequence.fromSet(toCompile).isEmpty()) {
                 return new IResult.SUCCESS(_output_widgfz_a0a);
               }

@@ -339,66 +339,59 @@
       </scope>
     </file>
     <file name="requiredArgsForCommandBuilderExpression_NonTypesystemRule.java">
-      <node id="7947003018421199285" at="31,118,32,106" concept="6" />
-      <node id="7947003018421244224" at="34,43,35,100" concept="7" />
-      <node id="7947003018421368856" at="38,11,39,70" concept="6" />
-      <node id="7947003018421368856" at="39,70,40,350" concept="6" />
-      <node id="7947003018421129634" at="46,50,47,48" concept="7" />
-      <node id="7947003018421129634" at="49,68,50,102" concept="7" />
-      <node id="7947003018421129634" at="52,30,53,17" concept="7" />
-      <node id="7947003018421129634" at="57,0,58,0" concept="8" trace="argument$Zwec" />
-      <node id="7947003018421129634" at="58,0,59,0" concept="8" trace="parameterDeclaration$Zibc" />
-      <node id="7947003018421129634" at="59,0,60,0" concept="8" trace="commandPart$UR1f" />
-      <node id="7947003018421129634" at="60,0,61,0" concept="8" trace="parameterDeclaration$lr1c" />
-      <node id="7947003018421129634" at="64,0,65,0" concept="8" trace="name$MnvL" />
-      <node id="7947003018421129634" at="68,0,69,0" concept="8" trace="CommandBuilderExpression$rV" />
-      <node id="7947003018421129634" at="27,0,29,0" concept="1" trace="requiredArgsForCommandBuilderExpression_NonTypesystemRule#()V" />
-      <node id="7947003018421244222" at="34,0,37,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="7947003018421129634" at="46,0,49,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="7947003018421129634" at="49,0,52,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="7947003018421129634" at="52,0,55,0" concept="5" trace="overrides#()Z" />
-      <node id="7947003018421368856" at="37,14,41,11" concept="0" />
-      <node id="7947003018421204414" at="32,106,42,9" concept="4" />
-      <node id="7947003018421157587" at="30,201,43,7" concept="4" />
-      <node id="7947003018421153576" at="29,137,44,5" concept="3" />
-      <node id="7947003018421129634" at="29,0,46,0" concept="5" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-      <scope id="7947003018421129634" at="27,70,27,70" />
-      <scope id="7947003018421244223" at="34,43,35,100" />
-      <scope id="7947003018421129634" at="46,50,47,48" />
-      <scope id="7947003018421129634" at="49,68,50,102" />
-      <scope id="7947003018421129634" at="52,30,53,17" />
-      <scope id="7947003018421129634" at="27,0,29,0" />
-      <scope id="7947003018421368856" at="38,11,40,350">
+      <node id="7947003018421199285" at="30,118,31,106" concept="6" />
+      <node id="7947003018421368856" at="33,11,34,70" concept="6" />
+      <node id="7947003018421368856" at="34,70,35,350" concept="6" />
+      <node id="7947003018421129634" at="41,50,42,48" concept="7" />
+      <node id="7947003018421129634" at="44,68,45,102" concept="7" />
+      <node id="7947003018421129634" at="47,30,48,17" concept="7" />
+      <node id="7947003018421129634" at="52,0,53,0" concept="8" trace="argument$Zwec" />
+      <node id="7947003018421129634" at="53,0,54,0" concept="8" trace="parameterDeclaration$Zibc" />
+      <node id="7947003018421129634" at="54,0,55,0" concept="8" trace="commandPart$UR1f" />
+      <node id="7947003018421129634" at="55,0,56,0" concept="8" trace="parameterDeclaration$lr1c" />
+      <node id="7947003018421129634" at="59,0,60,0" concept="8" trace="name$MnvL" />
+      <node id="7947003018421129634" at="63,0,64,0" concept="8" trace="CommandBuilderExpression$rV" />
+      <node id="7947003018421129634" at="26,0,28,0" concept="1" trace="requiredArgsForCommandBuilderExpression_NonTypesystemRule#()V" />
+      <node id="7947003018421129634" at="41,0,44,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="7947003018421129634" at="44,0,47,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="7947003018421129634" at="47,0,50,0" concept="5" trace="overrides#()Z" />
+      <node id="7947003018421368856" at="32,143,36,11" concept="0" />
+      <node id="7947003018421204414" at="31,106,37,9" concept="4" />
+      <node id="7947003018421157587" at="29,201,38,7" concept="4" />
+      <node id="7947003018421153576" at="28,137,39,5" concept="3" />
+      <node id="7947003018421129634" at="28,0,41,0" concept="5" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="7947003018421129634" at="26,70,26,70" />
+      <scope id="7947003018421129634" at="41,50,42,48" />
+      <scope id="7947003018421129634" at="44,68,45,102" />
+      <scope id="7947003018421129634" at="47,30,48,17" />
+      <scope id="7947003018421129634" at="26,0,28,0" />
+      <scope id="7947003018421368856" at="33,11,35,350">
         <var name="_reporter_2309309498" id="7947003018421368856" />
         <var name="errorTarget" id="7947003018421368856" />
       </scope>
-      <scope id="7947003018421244222" at="34,0,37,0">
-        <var name="it" id="7947003018421244222" />
-      </scope>
-      <scope id="7947003018421129634" at="46,0,49,0" />
-      <scope id="7947003018421129634" at="49,0,52,0">
+      <scope id="7947003018421129634" at="41,0,44,0" />
+      <scope id="7947003018421129634" at="44,0,47,0">
         <var name="argument" id="7947003018421129634" />
       </scope>
-      <scope id="7947003018421129634" at="52,0,55,0" />
-      <scope id="7947003018421204416" at="37,14,41,11" />
-      <scope id="7947003018421157589" at="31,118,42,9">
+      <scope id="7947003018421129634" at="47,0,50,0" />
+      <scope id="7947003018421204416" at="32,143,36,11" />
+      <scope id="7947003018421157589" at="30,118,37,9">
         <var name="argument" id="7947003018421199286" />
       </scope>
-      <scope id="7947003018421153579" at="30,201,43,7" />
-      <scope id="7947003018421129635" at="29,137,44,5" />
-      <scope id="7947003018421153576" at="29,137,44,5">
+      <scope id="7947003018421153579" at="29,201,38,7" />
+      <scope id="7947003018421129635" at="28,137,39,5" />
+      <scope id="7947003018421153576" at="28,137,39,5">
         <var name="argDeclaration" id="7947003018421153577" />
       </scope>
-      <scope id="7947003018421129634" at="29,0,46,0">
+      <scope id="7947003018421129634" at="28,0,41,0">
         <var name="commandBuilderExpression" id="7947003018421129634" />
         <var name="status" id="7947003018421129634" />
         <var name="typeCheckingContext" id="7947003018421129634" />
       </scope>
-      <unit id="7947003018421129634" at="63,0,66,0" name="jetbrains.mps.execution.commands.typesystem.requiredArgsForCommandBuilderExpression_NonTypesystemRule$PROPS" />
-      <unit id="7947003018421129634" at="67,0,70,0" name="jetbrains.mps.execution.commands.typesystem.requiredArgsForCommandBuilderExpression_NonTypesystemRule$CONCEPTS" />
-      <unit id="7947003018421244222" at="33,54,37,9" name="jetbrains.mps.execution.commands.typesystem.requiredArgsForCommandBuilderExpression_NonTypesystemRule$1" />
-      <unit id="7947003018421129634" at="56,0,62,0" name="jetbrains.mps.execution.commands.typesystem.requiredArgsForCommandBuilderExpression_NonTypesystemRule$LINKS" />
-      <unit id="7947003018421129634" at="26,0,71,0" name="jetbrains.mps.execution.commands.typesystem.requiredArgsForCommandBuilderExpression_NonTypesystemRule" />
+      <unit id="7947003018421129634" at="58,0,61,0" name="jetbrains.mps.execution.commands.typesystem.requiredArgsForCommandBuilderExpression_NonTypesystemRule$PROPS" />
+      <unit id="7947003018421129634" at="62,0,65,0" name="jetbrains.mps.execution.commands.typesystem.requiredArgsForCommandBuilderExpression_NonTypesystemRule$CONCEPTS" />
+      <unit id="7947003018421129634" at="51,0,57,0" name="jetbrains.mps.execution.commands.typesystem.requiredArgsForCommandBuilderExpression_NonTypesystemRule$LINKS" />
+      <unit id="7947003018421129634" at="25,0,66,0" name="jetbrains.mps.execution.commands.typesystem.requiredArgsForCommandBuilderExpression_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:3eecec87-82a4-4ea1-952b-7d3a8d81c769(jetbrains.mps.execution.commands.typesystem)/8234001627573984137">

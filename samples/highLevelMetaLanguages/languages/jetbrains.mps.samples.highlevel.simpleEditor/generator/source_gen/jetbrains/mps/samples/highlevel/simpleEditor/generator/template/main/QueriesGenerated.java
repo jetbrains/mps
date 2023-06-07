@@ -11,7 +11,6 @@ import jetbrains.mps.generator.template.ReferenceMacroContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import java.util.Map;
@@ -44,11 +43,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object referenceMacro_GetReferent_1_0(final ReferenceMacroContext _context) {
     SNode n = _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.SimpleEditorDeclaration$AR), LINKS.cncpt$Bkq3), "concept");
-    return ListSequence.fromList(SLinkOperations.getChildren(n, LINKS.propertyDeclaration$YUgg)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.prop$HoTw), PROPS.name$MnvL));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(n, LINKS.propertyDeclaration$YUgg)).findFirst((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.prop$HoTw), PROPS.name$MnvL)));
   }
   public static Object referenceMacro_GetReferent_1_1(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.cncpt$Bkq3), "concept");

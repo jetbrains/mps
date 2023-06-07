@@ -21,7 +21,6 @@ import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.persistence.def.v9.IdEncoder;
@@ -101,11 +100,7 @@ public class GoToNodeById_Action extends BaseAction {
     }
 
     final Wrappers._T<SNodeReference> nodeRef = new Wrappers._T<SNodeReference>();
-    ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess().runReadAction(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<SNodeReference>() {
-      public SNodeReference invoke() {
-        return nodeRef.value = check_ep7xsr_a0a0a0a6a0(((SModel) MapSequence.fromMap(_params).get("contextModel")).getNode(GoToNodeById_Action.this.getNodeId(value, _params).o1));
-      }
-    }));
+    ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess().runReadAction(() -> nodeRef.value = check_ep7xsr_a0a0a0a6a0(((SModel) MapSequence.fromMap(_params).get("contextModel")).getNode(GoToNodeById_Action.this.getNodeId(value, _params).o1)));
     if (nodeRef.value == null) {
       Messages.showWarningDialog(((Project) MapSequence.fromMap(_params).get("project")), String.format("Can't find node with id '%s'", value), "Node Was Not Found");
       return;

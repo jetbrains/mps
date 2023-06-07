@@ -19,7 +19,6 @@ import jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.PortDecoratorView;
 import jetbrains.jetpad.projectional.view.View;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.nodeEditor.cells.jetpad.JetpadUtils;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.SelectionFrameView;
 
 @MPSLaunch
@@ -56,11 +55,7 @@ public class PortDecoratorTest_Test extends BaseTransformationTest {
       Assert.assertTrue(descendantMapper.getTarget() instanceof PortDecoratorView);
       PortDecoratorView portDecoratorView = ((PortDecoratorView) descendantMapper.getTarget());
       Assert.assertTrue(portDecoratorView.hasError.get());
-      View errorView = Sequence.fromIterable(JetpadUtils.getAllChildren(portDecoratorView)).findFirst(new IWhereFilter<View>() {
-        public boolean accept(View it) {
-          return it instanceof SelectionFrameView;
-        }
-      });
+      View errorView = Sequence.fromIterable(JetpadUtils.getAllChildren(portDecoratorView)).findFirst((it) -> it instanceof SelectionFrameView);
       Assert.assertTrue(errorView != null);
       Assert.assertTrue(errorView.visible().get());
 

@@ -20,8 +20,6 @@ import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtConversion;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.kotlin.api.members.SourcedSignature;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -67,11 +65,7 @@ public class KotlinInBaseLanguageScopeHelper {
       }
     }
 
-    return new NamedElementsScope(SNodeOperations.ofConcept(Sequence.fromIterable(visitor.getMembers()).select(new ISelector<SourcedSignature, SNode>() {
-      public SNode select(SourcedSignature it) {
-        return it.getSource();
-      }
-    }), SNodeOperations.asSConcept(filteringConcept)));
+    return new NamedElementsScope(SNodeOperations.ofConcept(Sequence.fromIterable(visitor.getMembers()).select((it) -> it.getSource()), SNodeOperations.asSConcept(filteringConcept)));
   }
 
   private static final class CONCEPTS {

@@ -13,14 +13,12 @@ import jetbrains.mps.smodel.Language;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.module.SDependency;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -48,24 +46,12 @@ public class EditorGeneratorRefactoring extends BaseProjectMigration {
     final SModuleReference langEditor = PersistenceFacade.getInstance().createModuleReference("18bc6592-03a6-4e29-a83a-7ff23bde13ba(jetbrains.mps.lang.editor)");
     for (Language language : ListSequence.fromList(project.getProjectModules(Language.class))) {
       Iterable<SDependency> declaredDependencies = language.getDeclaredDependencies();
-      if (language != langEditor && !(Sequence.fromIterable(declaredDependencies).any(new IWhereFilter<SDependency>() {
-        public boolean accept(SDependency it) {
-          return langEditor.equals(it.getTargetModule()) && it.getScope() == SDependencyScope.EXTENDS;
-        }
-      }))) {
+      if (language != langEditor && !(Sequence.fromIterable(declaredDependencies).any((it) -> langEditor.equals(it.getTargetModule()) && it.getScope() == SDependencyScope.EXTENDS))) {
         continue;
       }
       for (Generator generator : CollectionSequence.fromCollection(language.getGenerators())) {
         for (SModel generatorModel : ListSequence.fromList(generator.getModels())) {
-          ListSequence.fromList(SModelOperations.nodes(((SModel) generatorModel), CONCEPTS.TemplateFragment$eq)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SLinkOperations.getTarget(it, LINKS.labelDeclaration$ORJN) == cellFactoryMappingLabel && SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.InstanceMethodDeclaration$39);
-            }
-          }).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode it) {
-              migrate(SNodeOperations.cast(SNodeOperations.getParent(it), CONCEPTS.InstanceMethodDeclaration$39));
-            }
-          });
+          ListSequence.fromList(SModelOperations.nodes(((SModel) generatorModel), CONCEPTS.TemplateFragment$eq)).where((it) -> SLinkOperations.getTarget(it, LINKS.labelDeclaration$ORJN) == cellFactoryMappingLabel && SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.InstanceMethodDeclaration$39)).visitAll((it) -> migrate(SNodeOperations.cast(SNodeOperations.getParent(it), CONCEPTS.InstanceMethodDeclaration$39)));
         }
       }
     }
@@ -76,15 +62,7 @@ public class EditorGeneratorRefactoring extends BaseProjectMigration {
     if (!(SNodeOperations.getContainingLink(method).isValid()) || !(SNodeOperations.getContainingLink(method).isMultiple())) {
       return;
     }
-    if (ListSequence.fromList(SNodeOperations.getAllSiblings(method, false)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode templateMethod) {
-        return SNodeOperations.isInstanceOf(templateMethod, CONCEPTS.InstanceMethodDeclaration$39) && new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq).get(templateMethod) != null && ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU).list(templateMethod)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode nodeMacro) {
-            return SLinkOperations.getTarget(SNodeOperations.as(nodeMacro, CONCEPTS.TemplateCallMacro$qa), LINKS.template$6_6) == myCellFactoryCompatibilityTemplate;
-          }
-        });
-      }
-    })) {
+    if (ListSequence.fromList(SNodeOperations.getAllSiblings(method, false)).any((templateMethod) -> SNodeOperations.isInstanceOf(templateMethod, CONCEPTS.InstanceMethodDeclaration$39) && new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq).get(templateMethod) != null && ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU).list(templateMethod)).any((nodeMacro) -> SLinkOperations.getTarget(SNodeOperations.as(nodeMacro, CONCEPTS.TemplateCallMacro$qa), LINKS.template$6_6) == myCellFactoryCompatibilityTemplate))) {
       return;
     }
 
@@ -92,11 +70,7 @@ public class EditorGeneratorRefactoring extends BaseProjectMigration {
   }
 
   private SNode getCellFactoryMappingLabel(SRepository repo) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(new SNodePointer("r:00000000-0000-4000-0000-011c8959029f(jetbrains.mps.lang.editor.generator.baseLanguage.template.main@generator)", "1096629760203").resolve(repo), CONCEPTS.MappingConfiguration$7j), LINKS.mappingLabel$Wvfj)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return "cellFactoryMethod".equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-      }
-    }).first();
+    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(new SNodePointer("r:00000000-0000-4000-0000-011c8959029f(jetbrains.mps.lang.editor.generator.baseLanguage.template.main@generator)", "1096629760203").resolve(repo), CONCEPTS.MappingConfiguration$7j), LINKS.mappingLabel$Wvfj)).where((it) -> "cellFactoryMethod".equals(SPropertyOperations.getString(it, PROPS.name$MnvL))).first();
   }
 
   @Override

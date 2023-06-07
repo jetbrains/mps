@@ -24,12 +24,9 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -61,21 +58,9 @@ public class IStyle_Constraints extends BaseConstraintsDescriptor {
               }
             }
 
-            Iterable<SNode> styles = SetSequence.fromSet(contextLanguages).select(new ISelector<Language, SModel>() {
-              public SModel select(Language it) {
-                return SModuleOperations.getAspect(it, "editor");
-              }
-            }).where(new IWhereFilter<SModel>() {
-              public boolean accept(SModel it) {
-                return it != null;
-              }
-            }).translate(new ITranslator2<SModel, SNode>() {
-              public Iterable<SNode> translate(SModel it) {
-                return SModelOperations.nodes(((SModel) it), CONCEPTS.IStyle$eb);
-              }
-            });
+            Iterable<SNode> styles = SetSequence.fromSet(contextLanguages).select((it) -> SModuleOperations.getAspect(it, "editor")).where((it) -> it != null).translate((it) -> SModelOperations.nodes(((SModel) it), CONCEPTS.IStyle$eb));
 
-            return ListScope.forResolvableElements(Sequence.fromIterable(styles).toListSequence());
+            return ListScope.forResolvableElements(Sequence.fromIterable(styles).toList());
           }
         };
       }

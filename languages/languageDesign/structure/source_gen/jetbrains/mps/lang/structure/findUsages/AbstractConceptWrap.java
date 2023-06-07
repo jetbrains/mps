@@ -10,7 +10,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -58,11 +57,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   @NotNull
   @Override
   public List<AbstractConceptLike> getImmediateParents() {
-    return ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(myPeer)).select(new ISelector<SNode, AbstractConceptWrap>() {
-      public AbstractConceptWrap select(SNode it) {
-        return wrap(it);
-      }
-    }).ofType(AbstractConceptLike.class).toListSequence();
+    return ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(myPeer)).select((it) -> wrap(it)).ofType(AbstractConceptLike.class).toList();
   }
 
   @NotNull

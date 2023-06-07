@@ -21,7 +21,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
@@ -78,11 +77,7 @@ public class SubstituteAbstractStyledTextOperation_Contribution extends Substitu
       final SNode type = TypecheckingFacade.getFromContext().getTypeOf(operand);
       List<SConcept> list = SConceptOperations.getAllSubConcepts2(CONCEPTS.AbstractStyledTextOperation$j9, _context.getModel());
       ListSequence.fromList(list).removeElement(CONCEPTS.AbstractStyledTextOperation$j9);
-      return ListSequence.fromList(list).where(new IWhereFilter<SConcept>() {
-        public boolean accept(SConcept it) {
-          return SNodeOperations.isInstanceOf(type, CONCEPTS.StyledTextType$L7);
-        }
-      }).toListSequence();
+      return ListSequence.fromList(list).where((it) -> SNodeOperations.isInstanceOf(type, CONCEPTS.StyledTextType$L7)).toList();
     }
     private class SMP_Action_86ir5e_a0 extends SingleItemSubstituteMenuPart {
       private final SConcept myParameterObject;

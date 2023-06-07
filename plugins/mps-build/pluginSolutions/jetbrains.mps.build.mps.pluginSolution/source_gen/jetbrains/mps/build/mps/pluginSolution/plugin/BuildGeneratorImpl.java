@@ -46,9 +46,7 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.Comparator;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.build.mps.util.ModuleLoader;
 import jetbrains.mps.messages.LogHandler;
@@ -315,11 +313,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
         return 0;
       }
     };
-    SNode group = _quotation_createNode_un708i_a0ab0z(SetSequence.fromSet(moduleData).sort(langFirst, true).select(new ISelector<ModuleData, SNode>() {
-      public SNode select(ModuleData it) {
-        return createModuleNode(it);
-      }
-    }).toListSequence(), name);
+    SNode group = _quotation_createNode_un708i_a0ab0z(SetSequence.fromSet(moduleData).sort(langFirst, true).select((it) -> createModuleNode(it)).toList(), name);
     SNode plugin = _quotation_createNode_un708i_a0bb0z(name, group, name, name);
     SNode tips = _quotation_createNode_un708i_a0cb0z();
 
@@ -331,11 +325,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.parts$mGDj)).addElement(plugin);
     ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.parts$mGDj)).addElement(group);
     if (Objects.equals(getDependencyKind(), DependencyStep.DependencyKind.STANDALONE)) {
-      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(buildProject, LINKS.layout$r7bw), LINKS.children$aMRO)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(_quotation_createNode_un708i_a0a0a0jb0z(buildNumber, convertToMacroRelative(_quotation_createNode_un708i_a0a0b3a0a0a0a53a52(), SNodeOperations.cast(ListSequence.fromList(macros).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "mps_home");
-        }
-      }), CONCEPTS.BuildFolderMacro$mR)), tips, branding, plugin, buildNumber, dateMacro), LINKS.children$aMRO)));
+      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(buildProject, LINKS.layout$r7bw), LINKS.children$aMRO)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(_quotation_createNode_un708i_a0a0a0jb0z(buildNumber, convertToMacroRelative(_quotation_createNode_un708i_a0a0b3a0a0a0a53a52(), SNodeOperations.cast(ListSequence.fromList(macros).findFirst((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "mps_home")), CONCEPTS.BuildFolderMacro$mR)), tips, branding, plugin, buildNumber, dateMacro), LINKS.children$aMRO)));
     } else {
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(buildProject, LINKS.layout$r7bw), LINKS.children$aMRO)).addElement(_quotation_createNode_un708i_a0a0a0jb0z_0(name + ".zip", plugin));
     }
@@ -367,11 +357,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     SNode version = _quotation_createNode_un708i_a0i0bb();
     ListSequence.fromList(SLinkOperations.getChildren(buildStandalone, LINKS.macros$r8_A)).addElement(mpsHomeMacro);
     ListSequence.fromList(SLinkOperations.getChildren(buildStandalone, LINKS.macros$r8_A)).addElement(version);
-    SNode buildNumber = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.macros$r8_A)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildVariableMacro$Rk) && Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(SLinkOperations.getTarget(_quotation_createNode_un708i_a0a0a0a0a0a0l0bb(), LINKS.macro$zsHz), PROPS.name$MnvL));
-      }
-    }), CONCEPTS.BuildVariableMacro$Rk);
+    SNode buildNumber = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.macros$r8_A)).findFirst((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BuildVariableMacro$Rk) && Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(SLinkOperations.getTarget(_quotation_createNode_un708i_a0a0a0a0a0a0l0bb(), LINKS.macro$zsHz), PROPS.name$MnvL))), CONCEPTS.BuildVariableMacro$Rk);
 
     SNode solution = SNodeOperations.as(SModelOperations.getModuleStub(targetSModel), CONCEPTS.Solution$zo);
 
@@ -404,11 +390,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     // Copy macroZip and tune it for M1
     SNode macosAarch64Zip = SNodeOperations.copyNode(macosZip);
     SLinkOperations.setTarget(macosAarch64Zip, LINKS.containerName$ES_Y, _quotation_createNode_un708i_a0rb0bb(SPropertyOperations.getString(buildProject, PROPS.name$MnvL), buildNumber));
-    SLinkOperations.setTarget(ListSequence.fromList(SNodeOperations.getNodeDescendants(macosAarch64Zip, CONCEPTS.BuildLayout_File$Kk, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(it, LINKS.path$xmoo)).contains("jna/amd64/libjnidispatch.jnilib");
-      }
-    }).first(), LINKS.path$xmoo, convertToMacroRelative(_quotation_createNode_un708i_a0a44a72(), mpsHomeMacro));
+    SLinkOperations.setTarget(ListSequence.fromList(SNodeOperations.getNodeDescendants(macosAarch64Zip, CONCEPTS.BuildLayout_File$Kk, false, new SAbstractConcept[]{})).where((it) -> BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(it, LINKS.path$xmoo)).contains("jna/amd64/libjnidispatch.jnilib")).first(), LINKS.path$xmoo, convertToMacroRelative(_quotation_createNode_un708i_a0a44a72(), mpsHomeMacro));
     ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(buildStandalone, LINKS.layout$r7bw), LINKS.children$aMRO)).addElement(macosAarch64Zip);
 
 

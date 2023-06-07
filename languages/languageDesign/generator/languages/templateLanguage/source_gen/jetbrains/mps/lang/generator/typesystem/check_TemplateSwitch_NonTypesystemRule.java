@@ -23,7 +23,6 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Generator;
 import org.jetbrains.mps.openapi.module.SDependency;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -85,11 +84,7 @@ public class check_TemplateSwitch_NonTypesystemRule extends AbstractNonTypesyste
       SModule module = SNodeOperations.getModel(templateSwitch).getModule();
       if (module instanceof Generator && !(generatorDependency.equals(module.getModuleReference()))) {
         Iterable<SDependency> declaredDependencies = module.getDeclaredDependencies();
-        if (!(Sequence.fromIterable(declaredDependencies).any(new IWhereFilter<SDependency>() {
-          public boolean accept(SDependency it) {
-            return generatorDependency.equals(it.getTargetModule()) && SDependencyScope.EXTENDS.equals(it.getScope());
-          }
-        }))) {
+        if (!(Sequence.fromIterable(declaredDependencies).any((it) -> generatorDependency.equals(it.getTargetModule()) && SDependencyScope.EXTENDS.equals(it.getScope())))) {
           String m = "Missing extends dependency to generator %s for extended switch %s";
           {
             final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.modifiedSwitch$h3H5);

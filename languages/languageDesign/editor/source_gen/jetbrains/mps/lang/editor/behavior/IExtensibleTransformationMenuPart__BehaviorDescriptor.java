@@ -18,10 +18,8 @@ import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Collection;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.ArrayList;
@@ -43,16 +41,8 @@ public final class IExtensibleTransformationMenuPart__BehaviorDescriptor extends
   }
 
   /*package*/ static Iterable<SConcept> getMissingFeatures_id6kJcyCQjeiA(@NotNull SNode __thisNode__) {
-    Set<SConcept> required = SetSequence.fromSetWithValues(new HashSet<SConcept>(), ListSequence.fromList(IExtensibleTransformationMenuPart__BehaviorDescriptor.getLocations_id6V0bp$oM1WF.invoke(__thisNode__)).translate(new ITranslator2<SNode, SConcept>() {
-      public Iterable<SConcept> translate(SNode it) {
-        return (Collection<SConcept>) TransformationLocation__BehaviorDescriptor.getRequiredFeatures_id7L5lpRJHK_w.invoke(it);
-      }
-    }));
-    Iterable<SConcept> present = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.features$gNd)).select(new ISelector<SNode, SConcept>() {
-      public SConcept select(SNode it) {
-        return SNodeOperations.getConcept(it);
-      }
-    });
+    Set<SConcept> required = SetSequence.fromSetWithValues(new HashSet<SConcept>(), ListSequence.fromList(IExtensibleTransformationMenuPart__BehaviorDescriptor.getLocations_id6V0bp$oM1WF.invoke(__thisNode__)).translate((it) -> (Collection<SConcept>) TransformationLocation__BehaviorDescriptor.getRequiredFeatures_id7L5lpRJHK_w.invoke(it)));
+    Iterable<SConcept> present = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.features$gNd)).select((it) -> SNodeOperations.getConcept(it));
     SetSequence.fromSet(required).removeSequence(Sequence.fromIterable(present));
     return required;
   }

@@ -19,11 +19,7 @@ public class substitute_WrapperType_SubstituteTypeRule extends AbstractSubstitut
   public substitute_WrapperType_SubstituteTypeRule() {
   }
   public TypeSubstitution substitution(final SNode wrapperType, SNode originalType, final TypeCheckingContext typeCheckingContext, final IsApplicableStatus status) {
-    return new TypeSubstitution(originalType, new _FunctionTypes._return_P0_E0<SNode>() {
-      public SNode invoke() {
-        return SLinkOperations.getTarget(wrapperType, LINKS.wrapped$8do);
-      }
-    }.invoke(), "r:5e8bba55-70f5-4849-b486-7e33cf1b5bd1(testWrappedType.typesystem)", "7323318266641941989");
+    return new TypeSubstitution(originalType, ((_FunctionTypes._return_P0_E0<SNode>) () -> SLinkOperations.getTarget(wrapperType, LINKS.wrapped$8do)).invoke(), "r:5e8bba55-70f5-4849-b486-7e33cf1b5bd1(testWrappedType.typesystem)", "7323318266641941989");
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.WrapperType$2s;

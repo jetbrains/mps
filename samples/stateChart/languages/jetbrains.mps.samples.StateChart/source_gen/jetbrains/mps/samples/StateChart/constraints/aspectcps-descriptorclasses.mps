@@ -166,6 +166,7 @@
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -250,7 +251,6 @@
         <child id="1151689745422" name="elementType" index="A3Ik2" />
       </concept>
       <concept id="1235566831861" name="jetbrains.mps.baseLanguage.collections.structure.AllOperation" flags="nn" index="2HxqBE" />
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1201792049884" name="jetbrains.mps.baseLanguage.collections.structure.TranslateOperation" flags="nn" index="3goQfb" />
     </language>
   </registry>
@@ -1138,11 +1138,11 @@
                         </node>
                       </node>
                     </node>
-                    <node concept="Rh6nW" id="43" role="1bW2Oz">
+                    <node concept="gl6BB" id="43" role="1bW2Oz">
                       <property role="TrG5h" value="it" />
-                      <uo k="s:originTrace" v="n:1480846759627733072" />
+                      <uo k="s:originTrace" v="n:6847626768367734966" />
                       <node concept="2jxLKc" id="4a" role="1tU5fm">
-                        <uo k="s:originTrace" v="n:1480846759627733073" />
+                        <uo k="s:originTrace" v="n:6847626768367734967" />
                       </node>
                     </node>
                   </node>
@@ -1582,11 +1582,11 @@
                                                 </node>
                                               </node>
                                             </node>
-                                            <node concept="Rh6nW" id="65" role="1bW2Oz">
+                                            <node concept="gl6BB" id="65" role="1bW2Oz">
                                               <property role="TrG5h" value="it" />
-                                              <uo k="s:originTrace" v="n:6813679070099059998" />
+                                              <uo k="s:originTrace" v="n:6847626768367734968" />
                                               <node concept="2jxLKc" id="6a" role="1tU5fm">
-                                                <uo k="s:originTrace" v="n:6813679070099059999" />
+                                                <uo k="s:originTrace" v="n:6847626768367734969" />
                                               </node>
                                             </node>
                                           </node>

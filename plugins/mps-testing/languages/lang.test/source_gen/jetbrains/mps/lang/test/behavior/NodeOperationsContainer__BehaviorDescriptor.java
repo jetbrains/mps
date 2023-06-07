@@ -16,7 +16,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.util.PathManager;
@@ -47,11 +46,7 @@ public final class NodeOperationsContainer__BehaviorDescriptor extends BaseBHDes
   }
 
   /*package*/ static void detachAllErrorOperations_id4QaU5oI0Q4j(@NotNull SNode __thisNode__) {
-    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.nodeOperations$Mgf9)).removeWhere(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.AbstractNodeRuleCheckOperation$eB);
-      }
-    });
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.nodeOperations$Mgf9)).removeWhere((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.AbstractNodeRuleCheckOperation$eB));
   }
   /*package*/ static void createNodeAndAttachReference_idnMEi6H8iBO(@NotNull SNode __thisNode__, @Nullable SNode reference, NodeReportItem reporter) {
     NodeRuleFactory factory = new NodeRuleFactory(reporter);
@@ -76,11 +71,7 @@ public final class NodeOperationsContainer__BehaviorDescriptor extends BaseBHDes
     if (project != null) {
       host.value = project.getPlatform();
     }
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.nodeOperations$Mgf9)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) NodeCheckOperation__BehaviorDescriptor.expectsErrorsInside_id77$odk0vlBj.invoke(it, reportItem, repository, host.value);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.nodeOperations$Mgf9)).any((it) -> (boolean) NodeCheckOperation__BehaviorDescriptor.expectsErrorsInside_id77$odk0vlBj.invoke(it, reportItem, repository, host.value));
   }
 
   /*package*/ NodeOperationsContainer__BehaviorDescriptor() {

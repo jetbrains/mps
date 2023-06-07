@@ -8,7 +8,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.kotlin.api.declaration.ParameterDeclaration;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaParameterDeclaration;
 import jetbrains.mps.kotlin.api.declaration.TypeParameterDeclaration;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -35,11 +34,7 @@ public class ConceptMethodDeclaration implements FunctionDeclaration {
   @NotNull
   @Override
   public Iterable<ParameterDeclaration> getParameters() {
-    return ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).select(new ISelector<SNode, JavaParameterDeclaration>() {
-      public JavaParameterDeclaration select(SNode it) {
-        return new JavaParameterDeclaration(it);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).select((it) -> new JavaParameterDeclaration(it));
   }
   @NotNull
   @Override

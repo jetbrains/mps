@@ -18,8 +18,6 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Arrays;
@@ -29,6 +27,7 @@ import jetbrains.mps.logging.Logger;
 import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -44,7 +43,6 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.structure.constraints.Scopes;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
@@ -86,11 +84,7 @@ public class CreateFirstDeclaration_ext_3 extends TransformationMenuBase {
   public class TMP_Group_zaql1a_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.linkDeclaration$YU1f)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b8L);
-        }
-      }).isEmpty();
+      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.linkDeclaration$YU1f)).where((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b8L)).isEmpty();
     }
 
     @NotNull
@@ -194,15 +188,7 @@ public class CreateFirstDeclaration_ext_3 extends TransformationMenuBase {
       @Nullable
       @Override
       protected Iterable<? extends SNode> getParameters(TransformationMenuContext _context) {
-        return Sequence.fromIterable(Scopes.forConcepts(_context.getNode(), CONCEPTS.AbstractConceptDeclaration$KA).getAvailableElements("")).select(new ISelector<SNode, SNode>() {
-          public SNode select(SNode it) {
-            return SNodeOperations.as(it, CONCEPTS.AbstractConceptDeclaration$KA);
-          }
-        }).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return it != null;
-          }
-        }).toListSequence();
+        return Sequence.fromIterable(Scopes.forConcepts(_context.getNode(), CONCEPTS.AbstractConceptDeclaration$KA).getAvailableElements("")).select((it) -> SNodeOperations.as(it, CONCEPTS.AbstractConceptDeclaration$KA)).where((it) -> it != null).toList();
       }
       @NotNull
       @Override

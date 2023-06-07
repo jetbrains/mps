@@ -11,7 +11,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -24,7 +23,6 @@ import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.List;
 import java.util.Collections;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
@@ -53,11 +51,7 @@ public class GenerateEqualsAndHashCode_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     SNode classConcept = GenerateEqualsAndHashCode_Action.this.getClassConcept(_params);
-    return !(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode method) {
-        return "equals".equals(SPropertyOperations.getString(method, PROPS.name$MnvL)) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), CONCEPTS.BooleanType$_u);
-      }
-    })) && Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("fields", 5292274854859383272L, 0x5745e3015c8914d3L)))).isNotEmpty();
+    return !(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).any((method) -> "equals".equals(SPropertyOperations.getString(method, PROPS.name$MnvL)) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), CONCEPTS.BooleanType$_u))) && Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("fields", 5292274854859383272L, 0x5745e3015c8914d3L)))).isNotEmpty();
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -99,11 +93,7 @@ public class GenerateEqualsAndHashCode_Action extends BaseAction {
 
     repo.getModelAccess().runReadAction(() -> {
       classConcept.value = GenerateEqualsAndHashCode_Action.this.getClassConcept(_params);
-      fields.value = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept.value, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("fields", 5292274854859383272L, 0x5745e3015c8914d3L)))).select(new ISelector<SNode, SNodeReference>() {
-        public SNodeReference select(SNode it) {
-          return SNodeOperations.getPointer(it);
-        }
-      }).toGenericArray(SNodeReference.class);
+      fields.value = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept.value, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("fields", 5292274854859383272L, 0x5745e3015c8914d3L)))).select((it) -> SNodeOperations.getPointer(it)).toGenericArray(SNodeReference.class);
     });
 
     final SelectFieldsDialog selectFieldsDialog = new SelectFieldsDialog(fields.value, true, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
@@ -162,11 +152,7 @@ public class GenerateEqualsAndHashCode_Action extends BaseAction {
       SNode tempDeclaration = _quotation_createNode_x9xljz_a0u0a21a0();
       SNode tempReference = SNodeFactoryOperations.createNewNode(CONCEPTS.VariableReference$TC, null);
       SLinkOperations.setTarget(tempReference, LINKS.variableDeclaration$N1XG, SLinkOperations.getTarget(tempDeclaration, LINKS.localVariableDeclaration$RpjM));
-      if (Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept.value, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("fields", 5292274854859383272L, 0x5745e3015c8914d3L)))).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.type$a1UY), CONCEPTS.DoubleType$x0);
-        }
-      })) {
+      if (Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept.value, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("fields", 5292274854859383272L, 0x5745e3015c8914d3L)))).any((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.type$a1UY), CONCEPTS.DoubleType$x0))) {
         ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(hashCodeDeclaration, LINKS.body$5xQk), LINKS.statement$53DE)).addElement(tempDeclaration);
       }
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(hashCodeDeclaration, LINKS.body$5xQk), LINKS.statement$53DE)).addElement(resultDeclaration);

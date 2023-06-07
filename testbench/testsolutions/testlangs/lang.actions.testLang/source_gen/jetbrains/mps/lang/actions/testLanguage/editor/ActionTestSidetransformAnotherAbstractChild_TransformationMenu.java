@@ -23,7 +23,6 @@ import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
@@ -102,11 +101,7 @@ public class ActionTestSidetransformAnotherAbstractChild_TransformationMenu exte
     @Nullable
     @Override
     protected Iterable<? extends SConcept> getParameters(TransformationMenuContext _context) {
-      return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.ActionTestSidetransformAnotherChildCommonSuperConcept$yl, _context.getModel())).where(new IWhereFilter<SConcept>() {
-        public boolean accept(SConcept it) {
-          return !(it.isAbstract());
-        }
-      }).toListSequence();
+      return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.ActionTestSidetransformAnotherChildCommonSuperConcept$yl, _context.getModel())).where((it) -> !(it.isAbstract())).toList();
     }
     @NotNull
     @Override
@@ -201,11 +196,7 @@ public class ActionTestSidetransformAnotherAbstractChild_TransformationMenu exte
     @Nullable
     @Override
     protected Iterable<? extends SConcept> getParameters(TransformationMenuContext _context) {
-      return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.ActionTestSidetransformAnotherChildCommonSuperConcept$yl, _context.getModel())).where(new IWhereFilter<SConcept>() {
-        public boolean accept(SConcept it) {
-          return !(it.isAbstract());
-        }
-      }).toListSequence();
+      return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.ActionTestSidetransformAnotherChildCommonSuperConcept$yl, _context.getModel())).where((it) -> !(it.isAbstract())).toList();
     }
     @NotNull
     @Override

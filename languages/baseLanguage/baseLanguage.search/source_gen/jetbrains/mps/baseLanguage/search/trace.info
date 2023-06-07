@@ -189,7 +189,7 @@
       <node id="4855017442954272590" at="39,48,40,42" concept="7" />
       <node id="8354823221613018902" at="40,42,41,41" concept="8" />
       <node id="4855017442954450552" at="49,93,50,49" concept="7" />
-      <node id="4855017442954486889" at="52,51,53,59" concept="8" />
+      <node id="4855017442954486889" at="52,44,53,59" concept="8" />
       <node id="4855017442954291590" at="59,26,60,54" concept="8" />
       <node id="4855017442954543627" at="61,5,62,42" concept="7" />
       <node id="4855017442954567604" at="63,20,64,36" concept="8" />
@@ -204,7 +204,7 @@
       <node id="8118629307786932838" at="100,0,101,0" concept="6" trace="getDerivedClassifiers#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/module/SearchScope;)Ljava/util/List;" />
       <node id="8118629307786920925" at="101,0,102,0" concept="6" trace="isIndexReady#()Z" />
       <node id="3896109655413979711" at="26,0,28,0" concept="1" trace="ClassifierSuccessors#()V" />
-      <node id="4855017442954483622" at="52,0,55,0" concept="6" trace="translate#(Ljetbrains/mps/baseLanguage/search/ClassifierSuccessors/Finder;)Ljava/lang/Iterable;" />
+      <node id="4855017442954483622" at="52,0,55,0" concept="6" trace="invoke#(Ljetbrains/mps/baseLanguage/search/ClassifierSuccessors/Finder;)Ljava/util/List;" />
       <node id="4855017442954285589" at="58,98,61,5" concept="5" />
       <node id="4855017442954550622" at="62,42,65,5" concept="5" />
       <node id="4855017442954775927" at="71,39,74,5" concept="5" />
@@ -214,7 +214,7 @@
       <node id="3896109655413989212" at="34,0,38,0" concept="6" trace="init#()V" />
       <node id="3896109655413989232" at="39,0,43,0" concept="6" trace="isIndexReady#(Ljetbrains/mps/project/Project;)Z" />
       <node id="3896109655413997566" at="94,0,98,0" concept="12" trace="getInstance#()Ljetbrains/mps/baseLanguage/search/ClassifierSuccessors;" />
-      <node id="8354823221613024570" at="50,49,55,24" concept="8" />
+      <node id="8354823221613024570" at="50,49,55,16" concept="8" />
       <node id="8118629307786932856" at="70,0,76,0" concept="6" trace="addFinder#(Ljetbrains/mps/project/Project;Ljetbrains/mps/baseLanguage/search/ClassifierSuccessors/Finder;)V" />
       <node id="3896109655413989240" at="48,0,57,0" concept="6" trace="getDerivedClassifiers#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/module/SearchScope;)Ljava/util/List;" />
       <node id="4855017442954689328" at="78,51,87,5" concept="5" />
@@ -223,7 +223,7 @@
       <scope id="3896109655413979714" at="26,33,26,33" />
       <scope id="3896109655413989211" at="30,25,31,20" />
       <scope id="3896109655413989215" at="35,22,36,20" />
-      <scope id="4855017442954483623" at="52,51,53,59" />
+      <scope id="4855017442954483623" at="52,44,53,59" />
       <scope id="4855017442954285591" at="59,26,60,54" />
       <scope id="4855017442954550624" at="63,20,64,36" />
       <scope id="4855017442954775927" at="72,29,73,84" />
@@ -251,7 +251,7 @@
       </scope>
       <scope id="8118629307786932859" at="70,75,74,5" />
       <scope id="3896109655413997566" at="94,0,98,0" />
-      <scope id="3896109655413989243" at="49,93,55,24">
+      <scope id="3896109655413989243" at="49,93,55,16">
         <var name="ff" id="4855017442954450555" />
       </scope>
       <scope id="8118629307786932856" at="70,0,76,0">
@@ -364,7 +364,7 @@
       <node id="8442551749397137331" at="24,80,27,5" concept="5" />
       <node id="8442551749397137338" at="27,5,30,5" concept="5" />
       <node id="8442551749397137346" at="30,5,33,5" concept="5" />
-      <node id="6996606993059296585" at="35,0,38,0" concept="6" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6996606993059296585" at="35,0,38,0" concept="6" trace="invoke#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="2434295018755137792" at="40,0,43,0" concept="12" trace="getSuperclass#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="2434295018755137823" at="43,68,46,5" concept="5" />
       <node id="8442551749397137363" at="33,5,38,30" concept="8" />

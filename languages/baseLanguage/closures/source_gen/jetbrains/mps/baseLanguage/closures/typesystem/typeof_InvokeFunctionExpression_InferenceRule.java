@@ -50,34 +50,32 @@ public class typeof_InvokeFunctionExpression_InferenceRule extends AbstractInfer
     }
     {
       final SNode ft = typeCheckingContext.getRepresentative(ftype_typevar_642108346586029342);
-      typeCheckingContext.whenConcrete(ft, new Runnable() {
-        public void run() {
-          try {
-            {
-              SNode _nodeToCheck_1029348928467 = invoke;
-              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "2608385503904033275", 0, null);
-              typeCheckingContext.createGreaterThanInequality((SNode) typeCheckingContext.getRepresentative(ret_typevar_642108346586029335), (SNode) FunctionTypeUtil.getResultType(typeCheckingContext.getRepresentative(ftype_typevar_642108346586029342)), false, true, _info_12389875345);
-            }
-            {
-              Iterator<SNode> pt_it = ListSequence.fromList(ptypes).iterator();
-              Iterator<SNode> fpt_it = ListSequence.fromList(FunctionTypeUtil.getParameterTypes(typeCheckingContext.getExpandedNode(ft))).iterator();
-              SNode pt_var;
-              SNode fpt_var;
-              while (pt_it.hasNext() && fpt_it.hasNext()) {
-                pt_var = pt_it.next();
-                fpt_var = fpt_it.next();
-                {
-                  SNode _nodeToCheck_1029348928467 = pt_var;
-                  EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "2762046050488680689", 0, null);
-                  typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "2762046050488680691", true), (SNode) fpt_var, false, true, _info_12389875345);
-                }
+      typeCheckingContext.whenConcrete(ft, () -> {
+        try {
+          {
+            SNode _nodeToCheck_1029348928467 = invoke;
+            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "2608385503904033275", 0, null);
+            typeCheckingContext.createGreaterThanInequality((SNode) typeCheckingContext.getRepresentative(ret_typevar_642108346586029335), (SNode) FunctionTypeUtil.getResultType(typeCheckingContext.getRepresentative(ftype_typevar_642108346586029342)), false, true, _info_12389875345);
+          }
+          {
+            Iterator<SNode> pt_it = ListSequence.fromList(ptypes).iterator();
+            Iterator<SNode> fpt_it = ListSequence.fromList(FunctionTypeUtil.getParameterTypes(typeCheckingContext.getExpandedNode(ft))).iterator();
+            SNode pt_var;
+            SNode fpt_var;
+            while (pt_it.hasNext() && fpt_it.hasNext()) {
+              pt_var = pt_it.next();
+              fpt_var = fpt_it.next();
+              {
+                SNode _nodeToCheck_1029348928467 = pt_var;
+                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "2762046050488680689", 0, null);
+                typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "2762046050488680691", true), (SNode) fpt_var, false, true, _info_12389875345);
               }
             }
-          } catch (RuntimeException ex) {
-            if (!(false)) {
-              final MessageTarget errorTarget = new NodeMessageTarget();
-              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(invoke, ex.getMessage(), "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "8679288141369466397", null, errorTarget);
-            }
+          }
+        } catch (RuntimeException ex) {
+          if (!(false)) {
+            final MessageTarget errorTarget = new NodeMessageTarget();
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(invoke, ex.getMessage(), "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "8679288141369466397", null, errorTarget);
           }
         }
       }, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "642108346586029351", false, false);

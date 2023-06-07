@@ -19,7 +19,6 @@ import jetbrains.mps.make.facet.behavior.FacetDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -44,11 +43,7 @@ public class TargetDependency_Constraints extends BaseConstraintsDescriptor {
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             Iterable<SNode> relatedFacets = FacetDeclaration__BehaviorDescriptor.allRelated_id7fB872uckWE.invoke(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.FacetDeclaration$Nd, false, false));
-            return ListScope.forResolvableElements(Sequence.fromIterable(relatedFacets).translate(new ITranslator2<SNode, SNode>() {
-              public Iterable<SNode> translate(SNode it) {
-                return SNodeOperations.getNodeDescendants(it, CONCEPTS.TargetDeclaration$Kf, false, new SAbstractConcept[]{});
-              }
-            }));
+            return ListScope.forResolvableElements(Sequence.fromIterable(relatedFacets).translate((it) -> SNodeOperations.getNodeDescendants(it, CONCEPTS.TargetDeclaration$Kf, false, new SAbstractConcept[]{})));
           }
         };
       }

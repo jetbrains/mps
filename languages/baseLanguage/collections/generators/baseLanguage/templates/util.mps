@@ -1074,23 +1074,23 @@
     </node>
     <node concept="QsSxf" id="6MGFJY8eynn" role="Qtgdg">
       <property role="TrG5h" value="COPY_SEQUENCE" />
-      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" />
+      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
     </node>
     <node concept="QsSxf" id="6MGFJY8eyuX" role="Qtgdg">
       <property role="TrG5h" value="COPY_ARRAY" />
-      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" />
+      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
     </node>
     <node concept="QsSxf" id="6MGFJY8eyCy" role="Qtgdg">
       <property role="TrG5h" value="INIT_WITH_VALUES" />
-      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" />
+      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
     </node>
     <node concept="QsSxf" id="6MGFJY8eyNx" role="Qtgdg">
       <property role="TrG5h" value="CREATE_EMPTY" />
-      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" />
+      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
     </node>
     <node concept="QsSxf" id="6MGFJY8ezpB" role="Qtgdg">
       <property role="TrG5h" value="INVALID" />
-      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" />
+      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
     </node>
     <node concept="3Tm1VV" id="6MGFJY8eK8P" role="1B3o_S" />
   </node>
@@ -1098,7 +1098,7 @@
     <property role="TrG5h" value="CreatorMethod" />
     <node concept="QsSxf" id="6MGFJY8HGxH" role="Qtgdg">
       <property role="TrG5h" value="LIST" />
-      <ref role="37wK5l" node="6MGFJY8HyyJ" resolve="CreatorMethods" />
+      <ref role="37wK5l" node="6MGFJY8HyyJ" resolve="CreatorMethod" />
       <node concept="2tJFMh" id="6MGFJY8HGxI" role="37wK5m">
         <node concept="ZC_QK" id="6MGFJY8HGxJ" role="2tJFKM">
           <ref role="2aWVGs" to="urs3:5Ffu4tBUyJF" resolve="ListSequence" />
@@ -1131,7 +1131,7 @@
     </node>
     <node concept="QsSxf" id="6MGFJY8Hy8u" role="Qtgdg">
       <property role="TrG5h" value="LINKED_LIST" />
-      <ref role="37wK5l" node="6MGFJY8HyyJ" resolve="CreatorMethods" />
+      <ref role="37wK5l" node="6MGFJY8HyyJ" resolve="CreatorMethod" />
       <node concept="2tJFMh" id="6MGFJY8Hyvi" role="37wK5m">
         <node concept="ZC_QK" id="6MGFJY8Hywq" role="2tJFKM">
           <ref role="2aWVGs" to="urs3:5Ffu4tBUyzx" resolve="LinkedListSequence" />
@@ -1164,7 +1164,7 @@
     </node>
     <node concept="QsSxf" id="6MGFJY8HIzw" role="Qtgdg">
       <property role="TrG5h" value="QUEUE" />
-      <ref role="37wK5l" node="6MGFJY8HyyJ" resolve="CreatorMethods" />
+      <ref role="37wK5l" node="6MGFJY8HyyJ" resolve="CreatorMethod" />
       <node concept="2tJFMh" id="6MGFJY8HIzx" role="37wK5m">
         <node concept="ZC_QK" id="6MGFJY8HIzy" role="2tJFKM">
           <ref role="2aWVGs" to="urs3:5Ffu4tBUz2y" resolve="QueueSequence" />
@@ -1197,7 +1197,7 @@
     </node>
     <node concept="QsSxf" id="6MGFJY8HGBx" role="Qtgdg">
       <property role="TrG5h" value="DEQUEUE" />
-      <ref role="37wK5l" node="6MGFJY8HyyJ" resolve="CreatorMethods" />
+      <ref role="37wK5l" node="6MGFJY8HyyJ" resolve="CreatorMethod" />
       <node concept="2tJFMh" id="6MGFJY8HGBy" role="37wK5m">
         <node concept="ZC_QK" id="6MGFJY8HGBz" role="2tJFKM">
           <ref role="2aWVGs" to="urs3:5Ffu4tBUwHK" resolve="DequeSequence" />
@@ -1230,7 +1230,7 @@
     </node>
     <node concept="QsSxf" id="6MGFJY8JKQm" role="Qtgdg">
       <property role="TrG5h" value="SET" />
-      <ref role="37wK5l" node="6MGFJY8HyyJ" resolve="CreatorMethods" />
+      <ref role="37wK5l" node="6MGFJY8HyyJ" resolve="CreatorMethod" />
       <node concept="2tJFMh" id="6MGFJY8JKQn" role="37wK5m">
         <node concept="ZC_QK" id="6MGFJY8JKQo" role="2tJFKM">
           <ref role="2aWVGs" to="urs3:5Ffu4tBUzbq" resolve="SetSequence" />
@@ -1263,7 +1263,7 @@
     </node>
     <node concept="QsSxf" id="6MGFJY8HGCh" role="Qtgdg">
       <property role="TrG5h" value="SORTED_SET" />
-      <ref role="37wK5l" node="6MGFJY8HyyJ" resolve="CreatorMethods" />
+      <ref role="37wK5l" node="6MGFJY8HyyJ" resolve="CreatorMethod" />
       <node concept="2tJFMh" id="6MGFJY8HGCi" role="37wK5m">
         <node concept="ZC_QK" id="6MGFJY8HGCj" role="2tJFKM">
           <ref role="2aWVGs" to="urs3:5Ffu4tBUxVs" resolve="SortedSetSequence" />

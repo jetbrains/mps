@@ -13,7 +13,6 @@ import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.text.behavior.IHoldParagraphs__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -171,11 +170,7 @@ public class LetterKeys extends KeyMapImpl {
       SNode holder = SNodeOperations.getNodeAncestor(node, CONCEPTS.IHoldParagraphs$eh, false, false);
       SNode copy = SNodeOperations.copyNode(holder);
       SNode f = ListSequence.fromList(IHoldParagraphs__BehaviorDescriptor.getParagraphs_id2MpFNjy3tMn.invoke(copy)).first();
-      ListSequence.fromList(SNodeOperations.getAllSiblings(f, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNodeOperations.deleteNode(it);
-        }
-      });
+      ListSequence.fromList(SNodeOperations.getAllSiblings(f, false)).visitAll((it) -> SNodeOperations.deleteNode(it));
       Paragraph__BehaviorDescriptor.clearTextualElements_id1uSfHaoOxlA.invoke(f);
       SNodeOperations.insertNextSiblingChild(holder, copy);
       SelectionUtil.selectCell(editorContext, Sequence.fromIterable(Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(f)).first(), SelectionManager.LAST_CELL);

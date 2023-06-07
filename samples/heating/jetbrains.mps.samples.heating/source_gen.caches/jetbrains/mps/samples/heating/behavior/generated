@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="ewthz221jjw6s588qs46eq2txe5w60q">
+<product version="3" modelHash="-3gu2e779qu3q0scut6x8l0bjdpn7hfn">
   <files names="BehaviorAspectDescriptor.java:DailyPlan__BehaviorDescriptor.java:DayRange__BehaviorDescriptor.java:HeatingPlan__BehaviorDescriptor.java:Slot__BehaviorDescriptor.java:SpecificDay__BehaviorDescriptor.java:WeekDays__BehaviorDescriptor.java:WeekendDay__BehaviorDescriptor.java" />
 </product>
 

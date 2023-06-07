@@ -10,9 +10,7 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -36,20 +34,10 @@ public class MigrateReceiverTypes extends MigrationScriptBase {
     {
       SearchScope scope_2g3j7j_a0e = CommandUtil.createScope(m);
       final SearchScope scope_2g3j7j_a0e_0 = new EditableFilteringScope(scope_2g3j7j_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_2g3j7j_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IWithReceiver$Eg, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS._receiverType$NO1r), LINKS.type$NVFj) != null);
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SLinkOperations.setTarget(it, LINKS.receiverType$7yLT, SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS._receiverType$NO1r), LINKS.type$NVFj));
-          SNodeOperations.deleteNode(SLinkOperations.getTarget(it, LINKS._receiverType$NO1r));
-        }
+      QueryExecutionContext context = () -> scope_2g3j7j_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IWithReceiver$Eg, false)).where((it) -> (SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS._receiverType$NO1r), LINKS.type$NVFj) != null)).visitAll((it) -> {
+        SLinkOperations.setTarget(it, LINKS.receiverType$7yLT, SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS._receiverType$NO1r), LINKS.type$NVFj));
+        SNodeOperations.deleteNode(SLinkOperations.getTarget(it, LINKS._receiverType$NO1r));
       });
     }
   }

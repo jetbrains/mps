@@ -7,8 +7,6 @@ import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.text.behavior.IHoldLines__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
 import jetbrains.mps.lang.text.behavior.IHoldParagraphs__BehaviorDescriptor;
 import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
@@ -17,19 +15,15 @@ public class Text_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(ctx.getPrimaryInput())).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode line) {
-        tgs.indent();
-        tgs.append(Line__BehaviorDescriptor.representAsText_id2iG$EWuTXv2.invoke(line));
-        tgs.newLine();
-      }
+    ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(ctx.getPrimaryInput())).visitAll((line) -> {
+      tgs.indent();
+      tgs.append(Line__BehaviorDescriptor.representAsText_id2iG$EWuTXv2.invoke(line));
+      tgs.newLine();
     });
-    ListSequence.fromList(IHoldParagraphs__BehaviorDescriptor.getParagraphs_id2MpFNjy3tMn.invoke(ctx.getPrimaryInput())).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode paragraph) {
-        tgs.indent();
-        tgs.append(Paragraph__BehaviorDescriptor.representAsText_id1iNeTGeVhLf.invoke(paragraph));
-        tgs.newLine();
-      }
+    ListSequence.fromList(IHoldParagraphs__BehaviorDescriptor.getParagraphs_id2MpFNjy3tMn.invoke(ctx.getPrimaryInput())).visitAll((paragraph) -> {
+      tgs.indent();
+      tgs.append(Paragraph__BehaviorDescriptor.representAsText_id1iNeTGeVhLf.invoke(paragraph));
+      tgs.newLine();
     });
   }
 }

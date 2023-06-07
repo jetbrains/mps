@@ -8,10 +8,9 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.annotations.NonNls;
 
 @GeneratedClass(node = "r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)/1171652495569015565", model = "r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)")
@@ -31,9 +30,10 @@ public interface RecursiveParticipant<InitialDataObject, FinalDataObject, Initia
     @Override
     protected List<List<RefactoringParticipant.Change<I, F>>> initChanges(final SRepository repository, final List<RefactoringParticipant.Option> selectedOptions, final SearchScope searchScope, final ProgressMonitor progressMonitor) {
       if (getParticipant() instanceof RecursiveParticipant) {
-        if (Sequence.fromIterable(myParents).any(new IWhereFilter<RefactoringParticipant.ParticipantApplied>() {
-          public boolean accept(RefactoringParticipant.ParticipantApplied parent) {
-            return Objects.equals(parent.getParticipant(), RecursiveParticipantApplied.this.getParticipant()) && ListSequence.fromList(parent.getInitialStates()).containsSequence(ListSequence.fromList(RecursiveParticipantApplied.this.getInitialStates())) && ListSequence.fromList(((List<Object>) RecursiveParticipantApplied.this.getInitialStates())).containsSequence(ListSequence.fromList(parent.getInitialStates()));
+        // Suppressed: java compiler will ignore generics anyway, since a raw type is used
+        if (Sequence.fromIterable(myParents).any(new _FunctionTypes._return_P1_E0<Boolean, RefactoringParticipant.ParticipantApplied>() {
+          public Boolean invoke(RefactoringParticipant.ParticipantApplied parent) {
+            return Objects.equals(parent.getParticipant(), RecursiveParticipantApplied.this.getParticipant()) && ListSequence.fromList(parent.getInitialStates()).containsSequence(ListSequence.fromList(RecursiveParticipantApplied.this.getInitialStates())) && ListSequence.fromList(RecursiveParticipantApplied.this.getInitialStates()).containsSequence(ListSequence.fromList(parent.getInitialStates()));
           }
         })) {
           // todo: checked exception

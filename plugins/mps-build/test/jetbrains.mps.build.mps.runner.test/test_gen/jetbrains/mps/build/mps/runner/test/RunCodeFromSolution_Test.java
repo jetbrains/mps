@@ -73,7 +73,7 @@ public class RunCodeFromSolution_Test extends EnvironmentAwareTestCase {
     try {
       String mpsHomePath = System.getProperty("mps.home.path");
       String options = (mpsHomePath != null ? "-D" + MacrosFactory.MPS_HOME_MACRO_NAME + "=" + mpsHomePath : "");
-      process = new Ant_Command().setOptions_String(options).setMacroToDefine_ListString(Sequence.fromIterable(Sequence.<String>singleton(MacrosFactory.MPS_HOME_MACRO_NAME)).toListSequence()).createProcess(scriptFile.getPath());
+      process = new Ant_Command().setOptions_String(options).setMacroToDefine_ListString(Sequence.fromIterable(Sequence.<String>singleton(MacrosFactory.MPS_HOME_MACRO_NAME)).toList()).createProcess(scriptFile.getPath());
     } catch (Throwable ex) {
       ex.printStackTrace();
       Assert.fail("Exception during execution.");

@@ -61,10 +61,10 @@ public final class FieldReferenceOperation__BehaviorDescriptor extends BaseBHDes
     Scope localsScope = Scope.getScope(Scope.parent(__thisNode__), __thisNode__, CONCEPTS.LocalVariableDeclaration$41);
     List<SNode> vars = new ArrayList<SNode>();
     if (localsScope != null) {
-      vars.addAll(Sequence.fromIterable(localsScope.getAvailableElements(null)).toListSequence());
+      vars.addAll(Sequence.fromIterable(localsScope.getAvailableElements(null)).toList());
     }
     if (paramsScope != null) {
-      vars.addAll(Sequence.fromIterable(paramsScope.getAvailableElements(null)).toListSequence());
+      vars.addAll(Sequence.fromIterable(paramsScope.getAvailableElements(null)).toList());
     }
 
     SNode field = SLinkOperations.getTarget(__thisNode__, LINKS.fieldDeclaration$H7Ag);

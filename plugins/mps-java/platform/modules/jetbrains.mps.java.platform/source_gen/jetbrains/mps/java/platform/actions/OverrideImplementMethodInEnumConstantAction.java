@@ -16,7 +16,6 @@ import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -70,11 +69,7 @@ public class OverrideImplementMethodInEnumConstantAction {
       myProject.getModelAccess().executeCommandInEDT(new Runnable() {
         @Override
         public void run() {
-          List<SNode> selection = Sequence.fromIterable(selectedElements).select(new ISelector<SNodeReference, SNode>() {
-            public SNode select(SNodeReference it) {
-              return SNodeOperations.cast(it.resolve(myProject.getRepository()), CONCEPTS.BaseMethodDeclaration$kD);
-            }
-          }).toListSequence();
+          List<SNode> selection = Sequence.fromIterable(selectedElements).select((it) -> SNodeOperations.cast(it.resolve(myProject.getRepository()), CONCEPTS.BaseMethodDeclaration$kD)).toList();
           OverrideImplementMethodsHelper helper = new OverrideImplementMethodsInEnumHelper(myProject, SNodeOperations.cast(SNodeOperations.getParent(contextEnumConstant), CONCEPTS.EnumClass$Vk), contextEnumConstant, contextMember, dialog.isRemoveAttributes(), dialog.isInsertOverrideAnnotation(), dialog.isAddReturn());
           List<SNode> insertedMethods = helper.insertMethods(selection, false);
           if (insertedMethods.isEmpty()) {

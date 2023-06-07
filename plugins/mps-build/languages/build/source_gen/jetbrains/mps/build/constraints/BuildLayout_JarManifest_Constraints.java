@@ -13,7 +13,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -40,11 +39,7 @@ public class BuildLayout_JarManifest_Constraints extends BaseConstraintsDescript
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.BuildLayout_Jar$bd)) {
-      return ListSequence.fromList(SNodeOperations.getPrevSiblings(node, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_JarManifest$lZ);
-        }
-      }).isEmpty();
+      return ListSequence.fromList(SNodeOperations.getPrevSiblings(node, false)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_JarManifest$lZ)).isEmpty();
     }
     return true;
   }

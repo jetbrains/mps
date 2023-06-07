@@ -17,7 +17,6 @@ import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -45,11 +44,7 @@ public class Transition_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            Iterable<SNode> allEventsInPath = ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getContextNode(), CONCEPTS.Stateful$Ah, true)).translate(new ITranslator2<SNode, SNode>() {
-              public Iterable<SNode> translate(SNode it) {
-                return SLinkOperations.getChildren(it, LINKS.availableTriggers$$2DI);
-              }
-            });
+            Iterable<SNode> allEventsInPath = ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getContextNode(), CONCEPTS.Stateful$Ah, true)).translate((it) -> SLinkOperations.getChildren(it, LINKS.availableTriggers$$2DI));
             return new ListScope(allEventsInPath) {
               public String getName(SNode child) {
                 return SPropertyOperations.getString(SNodeOperations.cast(child, CONCEPTS.Event$jI), PROPS.name$MnvL);

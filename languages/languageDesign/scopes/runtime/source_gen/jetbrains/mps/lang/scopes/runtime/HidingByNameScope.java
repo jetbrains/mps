@@ -15,7 +15,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -47,20 +46,8 @@ public class HidingByNameScope extends Scope {
   @Override
   public Iterable<SNode> getAvailableElements(@Nullable String prefix) {
     List<SNode> result = new ArrayList<SNode>();
-    ListSequence.fromList(result).addSequence(Sequence.fromIterable(scope.getAvailableElements(prefix)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(kindConcept));
-      }
-    }));
-    ListSequence.fromList(result).addSequence(Sequence.fromIterable(parentScope.getAvailableElements(prefix)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(kindConcept));
-      }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(hidingRootConcept))) || !(SetSequence.fromSet(names).contains(it.getName()));
-      }
-    }));
+    ListSequence.fromList(result).addSequence(Sequence.fromIterable(scope.getAvailableElements(prefix)).where((it) -> SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(kindConcept))));
+    ListSequence.fromList(result).addSequence(Sequence.fromIterable(parentScope.getAvailableElements(prefix)).where((it) -> SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(kindConcept))).where((it) -> !(SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(hidingRootConcept))) || !(SetSequence.fromSet(names).contains(it.getName()))));
     return result;
   }
 

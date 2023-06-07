@@ -25,7 +25,6 @@ import jetbrains.mps.baseLanguage.unitTest.execution.TestCaseNodeKey;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.application.ApplicationManager;
 import javax.swing.event.TableModelEvent;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 
 public class StatisticsTableModel implements TableModel {
   private static final List<String> TEST_COLUMNS = ListSequence.fromListAndArray(new ArrayList<String>(), "Test", "Time elapsed", "Usage Delta", "Usage Before", "Usage After", "Results");
@@ -177,11 +176,7 @@ public class StatisticsTableModel implements TableModel {
   }
 
   private void filter() {
-    myFilteredRows = ListSequence.fromList(myRows).where(new IWhereFilter<TestStatisticsRow>() {
-      public boolean accept(TestStatisticsRow it) {
-        return it.matches(myFilter);
-      }
-    }).toListSequence();
+    myFilteredRows = ListSequence.fromList(myRows).where((it) -> it.matches(myFilter)).toList();
     fireTableChanged();
   }
 

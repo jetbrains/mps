@@ -19,8 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -68,16 +66,10 @@ public final class TurnToParallelForEachStatement_Intention extends AbstractInte
       SLinkOperations.setTarget(variable, LINKS.type$a1UY, SNodeOperations.copyNode(SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(node, LINKS.variable$8Haf)), CONCEPTS.Type$bu)));
       SLinkOperations.setTarget(parallelFor, LINKS.loopVariable$q6dq, variable);
       SLinkOperations.setTarget(parallelFor, LINKS.inputSequence$bOOx, SLinkOperations.getTarget(node, LINKS.inputSequence$YoEF));
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(node, LINKS.body$c1sm), CONCEPTS.ForEachVariableReference$CR, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.variable$j6kA) == SLinkOperations.getTarget(node, LINKS.variable$8Haf);
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNode newReference = SNodeFactoryOperations.createNewNode(CONCEPTS.VariableReference$TC, null);
-          SLinkOperations.setTarget(newReference, LINKS.variableDeclaration$N1XG, variable);
-          SNodeOperations.replaceWithAnother(it, newReference);
-        }
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(node, LINKS.body$c1sm), CONCEPTS.ForEachVariableReference$CR, false, new SAbstractConcept[]{})).where((it) -> SLinkOperations.getTarget(it, LINKS.variable$j6kA) == SLinkOperations.getTarget(node, LINKS.variable$8Haf)).visitAll((it) -> {
+        SNode newReference = SNodeFactoryOperations.createNewNode(CONCEPTS.VariableReference$TC, null);
+        SLinkOperations.setTarget(newReference, LINKS.variableDeclaration$N1XG, variable);
+        SNodeOperations.replaceWithAnother(it, newReference);
       });
       SLinkOperations.setTarget(parallelFor, LINKS.body$c1sm, SLinkOperations.getTarget(node, LINKS.body$c1sm));
       SNodeOperations.replaceWithAnother(node, parallelFor);

@@ -19,7 +19,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import jetbrains.mps.logging.Logger;
@@ -86,11 +85,7 @@ public class RunConfigurationTypeContribution extends SubstituteMenuBase {
       @Nullable
       @Override
       protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-        return ListSequence.fromList(SModelOperations.rootsIncludingImported(_context.getModel(), CONCEPTS.RunConfiguration$B$)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedAnnotation$xW).get(it) == null);
-          }
-        }).toListSequence();
+        return ListSequence.fromList(SModelOperations.rootsIncludingImported(_context.getModel(), CONCEPTS.RunConfiguration$B$)).where((it) -> (new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedAnnotation$xW).get(it) == null)).toList();
       }
       private class SMP_Action_82l17u_a0a extends SingleItemSubstituteMenuPart {
         private final SNode myParameterObject;

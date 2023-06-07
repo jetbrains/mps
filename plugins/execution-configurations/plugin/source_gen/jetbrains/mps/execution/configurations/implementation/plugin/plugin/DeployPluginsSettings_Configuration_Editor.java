@@ -6,7 +6,6 @@ import jetbrains.mps.execution.api.settings.SettingsEditorEx;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.util.Factory;
 
 public class DeployPluginsSettings_Configuration_Editor extends SettingsEditorEx<DeployPluginsSettings_Configuration> {
   private DeployEditorPanel myEditor;
@@ -29,11 +28,7 @@ public class DeployPluginsSettings_Configuration_Editor extends SettingsEditorEx
   }
   private Project myProject;
   public DeployPluginsSettings_Configuration_Editor(final Project project) {
-    super(new Factory<DeployPluginsSettings_Configuration>() {
-      public DeployPluginsSettings_Configuration create() {
-        return new DeployPluginsSettings_Configuration(project);
-      }
-    });
+    super(() -> new DeployPluginsSettings_Configuration(project));
     myProject = project;
   }
 }

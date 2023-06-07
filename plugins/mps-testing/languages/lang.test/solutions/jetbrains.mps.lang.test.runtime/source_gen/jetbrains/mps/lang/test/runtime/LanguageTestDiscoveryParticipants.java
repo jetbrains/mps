@@ -42,7 +42,7 @@ public enum LanguageTestDiscoveryParticipants implements TestDiscoveryParticipan
         return Optional.empty();
       }
       Optional<TestDescriptor> testOptional = Optional.of(new TestDescriptorBuilder(request.peekContainer()).newTestContainer(ITestCase__BehaviorDescriptor.getClassName_idhGBnqtL.invoke(SNodeOperations.cast(node, CONCEPTS.ITestCase$Fp)), SNodeTestSource.of(node)).withProperty(TestProperties.CAN_RUN_IN_PROCESS, (boolean) ITestCase__BehaviorDescriptor.canRunInProcess_id5_jSk8paieB.invoke(SNodeOperations.cast(node, CONCEPTS.ITestCase$Fp))).withProperty(TestProperties.REQUIRES_MPS_PLATFORM, (boolean) ITestable__BehaviorDescriptor.isMpsStartRequired_id2RMg39tmiFh.invoke(SNodeOperations.cast(node, CONCEPTS.ITestCase$Fp))).add());
-      testOptional.ifPresent((TestDescriptor container) -> {
+      testOptional.ifPresent((container) -> {
         for (SNode method : ITestCase__BehaviorDescriptor.getUncommentedTestMethods_id6I8tQNTvi0f.invoke(SNodeOperations.cast(node, CONCEPTS.ITestCase$Fp))) {
           new TestDescriptorBuilder(container).newTest(ITestMethod__BehaviorDescriptor.getTestName_idhGBohAB.invoke(SNodeOperations.cast(method, CONCEPTS.ITestMethod$em)), SNodeTestSource.of(method)).add();
         }
@@ -64,7 +64,7 @@ public enum LanguageTestDiscoveryParticipants implements TestDiscoveryParticipan
       TestDescriptor container = request.peekContainer();
       Optional<TestDescriptor> testOptional = container.selectTest(SNodeTestSource.of(node));
       if (testOptional.isEmpty()) {
-        testOptional = LanguageTestDiscoveryParticipants.LanguageTestCase.discover(testCase, request).flatMap((TestDescriptor descriptor) -> descriptor.selectTest(SNodeTestSource.of(node)));
+        testOptional = LanguageTestDiscoveryParticipants.LanguageTestCase.discover(testCase, request).flatMap((descriptor) -> descriptor.selectTest(SNodeTestSource.of(node)));
       }
       return testOptional;
     }

@@ -54,7 +54,7 @@ public class subtyping_classifier_SubtypingRule extends SubtypingRule_Runtime im
       SNode supertypeCopy = SNodeOperations.cast(SNodeOperations.copyNode(supertype), CONCEPTS.ClassifierType$bL);
       boolean skip = false;
       for (SNode typeParam : SLinkOperations.getChildren(supertypeCopy, LINKS.parameter$oqG$)) {
-        List<SNode> descendants = ListSequence.fromList(SNodeOperations.getNodeDescendants(typeParam, CONCEPTS.TypeVariableReference$WL, true, new SAbstractConcept[]{})).toListSequence();
+        List<SNode> descendants = ListSequence.fromList(SNodeOperations.getNodeDescendants(typeParam, CONCEPTS.TypeVariableReference$WL, true, new SAbstractConcept[]{})).toList();
         for (SNode typeVar : descendants) {
           int i = ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$Lipp)).indexOf(SLinkOperations.getTarget(typeVar, LINKS.typeVariableDeclaration$Lz1I));
           if (i < 0) {

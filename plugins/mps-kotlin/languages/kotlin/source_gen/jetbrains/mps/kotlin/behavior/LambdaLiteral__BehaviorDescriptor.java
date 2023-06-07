@@ -19,10 +19,8 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.kotlin.signatures.PropertySignature;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Objects;
 import jetbrains.mps.kotlin.overloading.FunctionParamHelper;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -54,11 +52,7 @@ public final class LambdaLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     StringBuilder builder = new StringBuilder();
     builder.append("{");
-    String params = IterableUtils.join(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameters$hLEY)).select(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SNodeOperations.present(it);
-      }
-    }), ", ");
+    String params = IterableUtils.join(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameters$hLEY)).select((it) -> SNodeOperations.present(it)), ", ");
     if ((params != null && params.length() > 0)) {
       builder.append(" ").append(params);
     }
@@ -70,11 +64,7 @@ public final class LambdaLiteral__BehaviorDescriptor extends BaseBHDescriptor {
       // Default parameter 'it' is accessible through lambda
       PropertySignature.declareTo(__thisNode__, null, collector);
     } else {
-      PropertySignature.declareAllTo(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameters$hLEY)).translate(new ITranslator2<SNode, SNode>() {
-        public Iterable<SNode> translate(SNode it) {
-          return (Iterable<SNode>) ILambdaParameter__BehaviorDescriptor.getVariables_id1xjvXvOr9B8.invoke(it);
-        }
-      }), false, null, collector);
+      PropertySignature.declareAllTo(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameters$hLEY)).translate((it) -> (Iterable<SNode>) ILambdaParameter__BehaviorDescriptor.getVariables_id1xjvXvOr9B8.invoke(it)), false, null, collector);
     }
   }
   /*package*/ static boolean collectScope_id7DyvjiA20yV(@NotNull SNode __thisNode__, ScopeCollector collector, SNode childNode) {

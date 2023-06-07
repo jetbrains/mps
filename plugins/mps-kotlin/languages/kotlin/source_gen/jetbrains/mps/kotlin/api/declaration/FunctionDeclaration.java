@@ -11,7 +11,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
 import java.util.Iterator;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -123,11 +122,7 @@ public interface FunctionDeclaration {
    * not reason to prevent it (an operator function is a function after all).
    */
   static boolean hasModifier(@NotNull FunctionDeclaration declaration, @Nullable final SAbstractConcept modifier) {
-    return modifier == null || Sequence.fromIterable(declaration.getModifiers()).any(new IWhereFilter<SAbstractConcept>() {
-      public boolean accept(SAbstractConcept it) {
-        return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(it), SNodeOperations.asSConcept(modifier));
-      }
-    });
+    return modifier == null || Sequence.fromIterable(declaration.getModifiers()).any((it) -> SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(it), SNodeOperations.asSConcept(modifier)));
   }
 
   final class CONCEPTS {

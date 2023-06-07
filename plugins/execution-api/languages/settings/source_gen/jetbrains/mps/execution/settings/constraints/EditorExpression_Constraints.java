@@ -22,11 +22,10 @@ import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.execution.settings.behavior.PersistentConfiguration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.HashMap;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -66,11 +65,7 @@ public class EditorExpression_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forResolvableElements(ListSequence.fromList(PersistentConfiguration__BehaviorDescriptor.getContextPersistentProperties_idO$iR4J$g22.invoke(SNodeOperations.asSConcept(CONCEPTS.PersistentConfiguration$ON), (((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))))).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(it, LINKS.type$a1UY), createTemplatePersistentConfigurationType_lq9qwe_b0a0a0a0a0a1a0a0a0a0a0a0d());
-              }
-            }));
+            return ListScope.forResolvableElements(ListSequence.fromList(PersistentConfiguration__BehaviorDescriptor.getContextPersistentProperties_idO$iR4J$g22.invoke(SNodeOperations.asSConcept(CONCEPTS.PersistentConfiguration$ON), (((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))))).where((it) -> TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(it, LINKS.type$a1UY), createTemplatePersistentConfigurationType_lq9qwe_b0a0a0a0a0a1a0a0a0a0a0a0d())));
           }
         };
       }

@@ -18,13 +18,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.traceable.behavior.UnitConcept__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -60,34 +58,16 @@ public final class JUnit3TestCaseRef__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ static Iterable<String> testNames_id3z1mdFUF$j3(@NotNull SNode __thisNode__) {
     final SNode ignoreAnn = SLinkOperations.getTarget(_quotation_createNode_6e9f36_a0a0a3(), LINKS.annotation$12Ek);
 
-    return Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.klass$vilS))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode m) {
-        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(m, LINKS.visibility$Yyua), CONCEPTS.PublicVisibility$R0) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(m, LINKS.returnType$5xoi), CONCEPTS.VoidType$BF) && SPropertyOperations.getString(m, PROPS.name$MnvL).startsWith("test") && !(ListSequence.fromList(SLinkOperations.getChildren(m, LINKS.annotation$K49I)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode mann) {
-            return SLinkOperations.getTarget(mann, LINKS.annotation$12Ek) == ignoreAnn;
-          }
-        }));
-      }
-    }).select(new ISelector<SNode, String>() {
-      public String select(SNode m) {
-        return SPropertyOperations.getString(m, PROPS.name$MnvL);
-      }
-    });
+    return Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.klass$vilS))).where((m) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(m, LINKS.visibility$Yyua), CONCEPTS.PublicVisibility$R0) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(m, LINKS.returnType$5xoi), CONCEPTS.VoidType$BF) && SPropertyOperations.getString(m, PROPS.name$MnvL).startsWith("test") && !(ListSequence.fromList(SLinkOperations.getChildren(m, LINKS.annotation$K49I)).any((mann) -> SLinkOperations.getTarget(mann, LINKS.annotation$12Ek) == ignoreAnn))).select((m) -> SPropertyOperations.getString(m, PROPS.name$MnvL));
   }
   /*package*/ static Iterable<SNode> getTestClassesForModule_id1k5vvhzzWoK(@NotNull SAbstractConcept __thisConcept__, SNode module) {
-    return Sequence.fromIterable(ModuleSuite__BehaviorDescriptor.models_id173Z5qAOyPn.invoke(module)).translate(new ITranslator2<SModel, SNode>() {
-      public Iterable<SNode> translate(SModel it) {
-        return ListSequence.fromList(SModelOperations.roots(((SModel) it), CONCEPTS.ClassConcept$bK)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(it, SLinkOperations.getTarget(_quotation_createNode_6e9f36_a0a0a0a0a0a0a0a0a4(), LINKS.classifier$cxMr));
-          }
-        });
-      }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SPropertyOperations.getBoolean(it, PROPS.abstractClass$Ta1X));
-      }
-    });
+    return Sequence.fromIterable(ModuleSuite__BehaviorDescriptor.models_id173Z5qAOyPn.invoke(module)).translate((it) -> {
+      return ListSequence.fromList(SModelOperations.roots(((SModel) it), CONCEPTS.ClassConcept$bK)).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+        public Boolean invoke(SNode it) {
+          return (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(it, SLinkOperations.getTarget(_quotation_createNode_6e9f36_a0a0a0a0a0a0a0a0a4(), LINKS.classifier$cxMr));
+        }
+      });
+    }).where((it) -> !(SPropertyOperations.getBoolean(it, PROPS.abstractClass$Ta1X)));
   }
 
   /*package*/ JUnit3TestCaseRef__BehaviorDescriptor() {

@@ -37,7 +37,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SPropertySubstituteInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
@@ -92,7 +91,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
 
     protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
-      return ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92974f7L, "jetbrains.mps.build.structure.BuildSource_JavaContentFolderKind"))).toListSequence();
+      return ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92974f7L, "jetbrains.mps.build.structure.BuildSource_JavaContentFolderKind"))).toList();
 
     }
     protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
@@ -138,11 +137,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
       Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
-      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
-        }
-      });
+      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where((it) -> Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property));
       if (Sequence.fromIterable(currentPropertyAttributes).isNotEmpty()) {
         EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
         return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentPropertyAttributes).first(), AttributeKind.PROPERTY, editorCell);
@@ -168,7 +163,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
 
     protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
-      return ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3be316509db4513L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleSourcesKind"))).toListSequence();
+      return ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3be316509db4513L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleSourcesKind"))).toList();
 
     }
     protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {

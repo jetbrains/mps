@@ -6,7 +6,7 @@
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
     <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
@@ -176,6 +176,7 @@
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199542442495" name="jetbrains.mps.baseLanguage.closures.structure.FunctionType" flags="in" index="1ajhzC">
         <child id="1199542457201" name="resultType" index="1ajl9A" />
         <child id="1199542501692" name="parameterType" index="1ajw0F" />
@@ -293,7 +294,6 @@
         <child id="1151689745422" name="elementType" index="A3Ik2" />
       </concept>
       <concept id="1235566831861" name="jetbrains.mps.baseLanguage.collections.structure.AllOperation" flags="nn" index="2HxqBE" />
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1162935959151" name="jetbrains.mps.baseLanguage.collections.structure.GetSizeOperation" flags="nn" index="34oBXx" />
       <concept id="1165525191778" name="jetbrains.mps.baseLanguage.collections.structure.GetFirstOperation" flags="nn" index="1uHKPH" />
       <concept id="1165530316231" name="jetbrains.mps.baseLanguage.collections.structure.IsEmptyOperation" flags="nn" index="1v1jN8" />
@@ -4560,11 +4560,11 @@
       <property role="3TUv4t" value="true" />
       <node concept="3Tm1VV" id="5s7IH9ykupC" role="1B3o_S" />
       <node concept="3uibUv" id="5YrKoZhEB5i" role="1tU5fm">
-        <ref role="3uigEE" node="5YrKoZhDRmA" resolve="FunctionalMethodResult" />
+        <ref role="3uigEE" node="5YrKoZhDRmA" resolve="FunctionalInterfaceHelper.FunctionalMethodResult" />
       </node>
       <node concept="2ShNRf" id="5YrKoZhEFaF" role="33vP2m">
         <node concept="1pGfFk" id="5YrKoZhEFam" role="2ShVmc">
-          <ref role="37wK5l" node="5YrKoZhDRzF" resolve="FunctionalMethodResult" />
+          <ref role="37wK5l" node="5YrKoZhDRzF" resolve="FunctionalInterfaceHelper.FunctionalMethodResult" />
           <node concept="10Nm6u" id="5YrKoZhEGYj" role="37wK5m" />
           <node concept="Xl_RD" id="5s7IH9ykvFV" role="37wK5m">
             <property role="Xl_RC" value="no abstract method" />
@@ -4712,7 +4712,7 @@
         </node>
         <node concept="3Tm1VV" id="5YrKoZhF8vb" role="1B3o_S" />
         <node concept="3uibUv" id="5YrKoZhHCis" role="3clF45">
-          <ref role="3uigEE" node="5YrKoZhDRmA" resolve="FunctionalMethodResult" />
+          <ref role="3uigEE" node="5YrKoZhDRmA" resolve="FunctionalInterfaceHelper.FunctionalMethodResult" />
         </node>
         <node concept="37vLTG" id="5YrKoZhFc28" role="3clF46">
           <property role="TrG5h" value="action" />
@@ -4762,7 +4762,7 @@
         </node>
         <node concept="3Tm1VV" id="5YrKoZhHCW2" role="1B3o_S" />
         <node concept="3uibUv" id="5YrKoZhHDhK" role="3clF45">
-          <ref role="3uigEE" node="5YrKoZhDRmA" resolve="FunctionalMethodResult" />
+          <ref role="3uigEE" node="5YrKoZhDRmA" resolve="FunctionalInterfaceHelper.FunctionalMethodResult" />
         </node>
       </node>
     </node>
@@ -4845,7 +4845,7 @@
       </node>
       <node concept="3Tm1VV" id="5YrKoZhD7ct" role="1B3o_S" />
       <node concept="3uibUv" id="5YrKoZhDSwU" role="3clF45">
-        <ref role="3uigEE" node="5YrKoZhDRmA" resolve="FunctionalMethod" />
+        <ref role="3uigEE" node="5YrKoZhDRmA" resolve="FunctionalInterfaceHelper.FunctionalMethodResult" />
       </node>
     </node>
     <node concept="2tJIrI" id="5YrKoZhFvWY" role="jymVt" />
@@ -4933,7 +4933,7 @@
                               <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                               <node concept="2OqwBi" id="5YrKoZhDTcO" role="37wK5m">
                                 <node concept="37vLTw" id="5YrKoZhDTcP" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="5YrKoZhDTcU" resolve="m" />
+                                  <ref role="3cqZAo" node="5W7E4fV0VUe" />
                                 </node>
                                 <node concept="3TrcHB" id="5YrKoZhDTcQ" role="2OqNvi">
                                   <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
@@ -4947,15 +4947,15 @@
                             <ref role="37wK5l" to="tpek:28P2dHxCoRl" resolve="isAnAbstractMethod" />
                           </node>
                           <node concept="37vLTw" id="5YrKoZhDTcT" role="2Oq$k0">
-                            <ref role="3cqZAo" node="5YrKoZhDTcU" resolve="m" />
+                            <ref role="3cqZAo" node="5W7E4fV0VUe" />
                           </node>
                         </node>
                       </node>
                     </node>
                   </node>
-                  <node concept="Rh6nW" id="5YrKoZhDTcU" role="1bW2Oz">
+                  <node concept="gl6BB" id="5W7E4fV0VUe" role="1bW2Oz">
                     <property role="TrG5h" value="m" />
-                    <node concept="2jxLKc" id="5YrKoZhDTcV" role="1tU5fm" />
+                    <node concept="2jxLKc" id="5W7E4fV0VUf" role="1tU5fm" />
                   </node>
                 </node>
               </node>
@@ -5014,7 +5014,7 @@
                 <node concept="2ShNRf" id="5YrKoZhEapv" role="3cqZAk">
                   <node concept="1pGfFk" id="5YrKoZhEapw" role="2ShVmc">
                     <property role="373rjd" value="true" />
-                    <ref role="37wK5l" node="5YrKoZhDRzF" resolve="FunctionalMethod" />
+                    <ref role="37wK5l" node="5YrKoZhDRzF" resolve="FunctionalInterfaceHelper.FunctionalMethodResult" />
                     <node concept="2OqwBi" id="5YrKoZhEcq$" role="37wK5m">
                       <node concept="37vLTw" id="5YrKoZhEbSj" role="2Oq$k0">
                         <ref role="3cqZAo" node="5YrKoZhDTcB" resolve="cands" />
@@ -5202,7 +5202,7 @@
                                 </node>
                                 <node concept="2OqwBi" id="5YrKoZhDTew" role="3uHU7B">
                                   <node concept="37vLTw" id="5YrKoZhDTex" role="2Oq$k0">
-                                    <ref role="3cqZAo" node="5YrKoZhDTez" resolve="it" />
+                                    <ref role="3cqZAo" node="5W7E4fV0VUg" />
                                   </node>
                                   <node concept="2qgKlT" id="5YrKoZhDTey" role="2OqNvi">
                                     <ref role="37wK5l" to="tpek:2t8d$bukubq" resolve="getErasureSignature" />
@@ -5211,9 +5211,9 @@
                               </node>
                             </node>
                           </node>
-                          <node concept="Rh6nW" id="5YrKoZhDTez" role="1bW2Oz">
+                          <node concept="gl6BB" id="5W7E4fV0VUg" role="1bW2Oz">
                             <property role="TrG5h" value="it" />
-                            <node concept="2jxLKc" id="5YrKoZhDTe$" role="1tU5fm" />
+                            <node concept="2jxLKc" id="5W7E4fV0VUh" role="1tU5fm" />
                           </node>
                         </node>
                       </node>
@@ -5228,7 +5228,7 @@
                 <node concept="2ShNRf" id="5YrKoZhEu7g" role="3cqZAk">
                   <node concept="1pGfFk" id="5YrKoZhEvDb" role="2ShVmc">
                     <property role="373rjd" value="true" />
-                    <ref role="37wK5l" node="5YrKoZhDRzF" resolve="FunctionalMethodResult" />
+                    <ref role="37wK5l" node="5YrKoZhDRzF" resolve="FunctionalInterfaceHelper.FunctionalMethodResult" />
                     <node concept="37vLTw" id="5YrKoZhEx4p" role="37wK5m">
                       <ref role="3cqZAo" node="5YrKoZhDTdD" resolve="first" />
                     </node>
@@ -5244,7 +5244,7 @@
       </node>
       <node concept="3Tm1VV" id="5YrKoZhDTeD" role="1B3o_S" />
       <node concept="3uibUv" id="5YrKoZhDYJx" role="3clF45">
-        <ref role="3uigEE" node="5YrKoZhDRmA" resolve="FunctionalMethod" />
+        <ref role="3uigEE" node="5YrKoZhDRmA" resolve="FunctionalInterfaceHelper.FunctionalMethodResult" />
       </node>
       <node concept="P$JXv" id="5YrKoZhDTeH" role="lGtFl">
         <node concept="TZ5HA" id="5YrKoZhDTeI" role="TZ5H$">
@@ -5283,7 +5283,7 @@
           <node concept="3cpWsn" id="5YrKoZhERIU" role="3cpWs9">
             <property role="TrG5h" value="classifierFunctionalMethod" />
             <node concept="3uibUv" id="5YrKoZhEQqN" role="1tU5fm">
-              <ref role="3uigEE" node="5YrKoZhDRmA" resolve="FunctionalMethodResult" />
+              <ref role="3uigEE" node="5YrKoZhDRmA" resolve="FunctionalInterfaceHelper.FunctionalMethodResult" />
             </node>
             <node concept="1rXfSq" id="5YrKoZhERIV" role="33vP2m">
               <ref role="37wK5l" node="5YrKoZhDTcg" resolve="getClassifierFunctionalMethod" />
@@ -5331,7 +5331,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="5YrKoZhFv0b" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
       </node>
     </node>
     <node concept="2tJIrI" id="5s7IH9xO1DR" role="jymVt" />

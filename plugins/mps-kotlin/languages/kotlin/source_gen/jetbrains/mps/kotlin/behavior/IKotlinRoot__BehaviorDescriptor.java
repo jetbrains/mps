@@ -17,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.kotlin.scopes.signed.CompositeSignatureScope;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -54,11 +53,9 @@ public final class IKotlinRoot__BehaviorDescriptor extends BaseBHDescriptor {
 
     // Declare all as a single scope: same priority during resolution
     final ScopeCollector subCollector = new ScopeCollector(collector.getFilter());
-    ListSequence.fromList(SModelOperations.rootsIncludingImported(SNodeOperations.getModel(__thisNode__), CONCEPTS.IKotlinRoot$xV)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        if (it != __thisNode__) {
-          IKotlinRoot__BehaviorDescriptor.getLocalSignatureScope_id58ySuOXQyMi.invoke(it, subCollector, __thisNode__);
-        }
+    ListSequence.fromList(SModelOperations.rootsIncludingImported(SNodeOperations.getModel(__thisNode__), CONCEPTS.IKotlinRoot$xV)).visitAll((it) -> {
+      if (it != __thisNode__) {
+        IKotlinRoot__BehaviorDescriptor.getLocalSignatureScope_id58ySuOXQyMi.invoke(it, subCollector, __thisNode__);
       }
     });
 

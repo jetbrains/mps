@@ -10,7 +10,6 @@ import jetbrains.mps.nodeEditor.EditorComponent;
 import com.intellij.util.ui.update.Update;
 import com.intellij.openapi.util.Disposer;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
 import java.awt.Color;
 import jetbrains.mps.errors.MessageStatus;
@@ -56,11 +55,7 @@ public class ChangeGroupMessages {
 
   private void rebuildGutterMessages() {
     myGutter.removeMessages(OWNER);
-    ListSequence.fromList(myLayout.getChangeGroups()).visitAll(new IVisitor<ChangeGroup>() {
-      public void visit(ChangeGroup cg) {
-        myGutter.add(new MyChangeGroupMessage(cg));
-      }
-    });
+    ListSequence.fromList(myLayout.getChangeGroups()).visitAll((cg) -> myGutter.add(new MyChangeGroupMessage(cg)));
   }
 
   private class MyChangeGroupMessage implements SimpleEditorMessage {

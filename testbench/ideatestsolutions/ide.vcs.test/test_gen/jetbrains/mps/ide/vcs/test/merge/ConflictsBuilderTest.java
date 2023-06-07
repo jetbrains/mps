@@ -21,14 +21,12 @@ import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.vcs.diff.changes.NodeIdChange;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.vcs.diff.changes.NodeGroupNotMoveChange;
 import jetbrains.mps.vcs.diff.ChangeSetImpl;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.vcs.diff.changes.ModifiedNodesGroup;
 import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
@@ -44,7 +42,6 @@ import jetbrains.mps.vcs.diff.changes.SetPropertyChange;
 import jetbrains.mps.vcs.diff.merge.MovesAwareMergeConflictsBuilder;
 import org.junit.Assert;
 import java.util.Set;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
@@ -129,11 +126,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
     List<ModelChange> changes = (isMine ? myMineChanges : myTheirsChanges);
 
-    NodeIdChange idChange = ListSequence.fromList(changes).ofType(NodeIdChange.class).findFirst(new IWhereFilter<NodeIdChange>() {
-      public boolean accept(NodeIdChange it) {
-        return Objects.equals(it.getNodeId(true), newNodeId);
-      }
-    });
+    NodeIdChange idChange = ListSequence.fromList(changes).ofType(NodeIdChange.class).findFirst((it) -> Objects.equals(it.getNodeId(true), newNodeId));
     SNodeId oldNodeId = (idChange == null ? newNodeId : idChange.getNodeId(false));
     assert oldNodeId != null;
     return myBaseModel.getNode(oldNodeId);
@@ -142,39 +135,33 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   protected ModelChange applyNotMoveChange(final SNode newParent, final SContainmentLink link, final SNode newBeforeAnchor, int deleteNodes, SNode... insertNodes) {
 
     boolean isMine = Objects.equals(SNodeOperations.getModel(newParent), myMineModel);
-    final List<SNode> newChildren = Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(newParent, link)).toListSequence();
+    final List<SNode> newChildren = Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(newParent, link)).toList();
     SNode oldParent = getOldNode(newParent);
     SNode oldBeforeAnchor = getOldNode(newBeforeAnchor);
     if (oldParent == null && oldBeforeAnchor != null) {
       oldParent = SNodeOperations.getParent(oldBeforeAnchor);
     }
-    List<SNode> oldChildren = Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(oldParent, link)).toListSequence();
+    List<SNode> oldChildren = Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(oldParent, link)).toList();
     int oldAnchorIndex = (oldBeforeAnchor == null ? ListSequence.fromList(oldChildren).count() : ListSequence.fromList(oldChildren).indexOf(oldBeforeAnchor));
 
-    List<SNode> oldNodes = ListSequence.fromList(oldChildren).page(oldAnchorIndex - deleteNodes, oldAnchorIndex).toListSequence();
-    ListSequence.fromList(oldNodes).visitAll(new IVisitor<SNode>() {
-      public void visit(final SNode oldNode) {
-        SNode newNode = ListSequence.fromList(newChildren).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode newNode) {
-            return Objects.equals(oldNode.getNodeId(), newNode.getNodeId());
-          }
-        });
-        newParent.removeChild(newNode);
-      }
+    List<SNode> oldNodes = ListSequence.fromList(oldChildren).page(oldAnchorIndex - deleteNodes, oldAnchorIndex).toList();
+    ListSequence.fromList(oldNodes).visitAll((final SNode oldNode) -> {
+      SNode newNode = ListSequence.fromList(newChildren).findFirst(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+        public Boolean invoke(SNode newNode) {
+          return Objects.equals(oldNode.getNodeId(), newNode.getNodeId());
+        }
+      });
+      newParent.removeChild(newNode);
     });
-    Sequence.fromIterable(Sequence.fromArray(insertNodes)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        newParent.insertChildBefore(link, it, newBeforeAnchor);
-      }
-    });
+    Sequence.fromIterable(Sequence.fromArray(insertNodes)).visitAll((it) -> newParent.insertChildBefore(link, it, newBeforeAnchor));
 
-    ModelChange change = new NodeGroupNotMoveChange(new ChangeSetImpl(myBaseModel, SNodeOperations.getModel(newParent)), createGroup(oldParent, link, oldBeforeAnchor, oldNodes, false), createGroup(newParent, link, newBeforeAnchor, Sequence.fromIterable(Sequence.fromArray(insertNodes)).toListSequence(), false));
+    ModelChange change = new NodeGroupNotMoveChange(new ChangeSetImpl(myBaseModel, SNodeOperations.getModel(newParent)), createGroup(oldParent, link, oldBeforeAnchor, oldNodes, false), createGroup(newParent, link, newBeforeAnchor, Sequence.fromIterable(Sequence.fromArray(insertNodes)).toList(), false));
 
     addChange(change, isMine);
     return change;
   }
 
-  protected ModelChange applyMoveChange(List<SNode> oldNodes, final SNode newParent, final SContainmentLink newLink, final SNode newBeforeAnchor) {
+  protected ModelChange applyMoveChange(List<? extends SNode> oldNodes, final SNode newParent, final SContainmentLink newLink, final SNode newBeforeAnchor) {
 
     assert ListSequence.fromList(oldNodes).isNotEmpty();
     boolean isMine = Objects.equals(SNodeOperations.getModel(newParent), myMineModel);
@@ -182,22 +169,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     SNode oldBeforeAnchor = SNodeOperations.getNextSibling(ListSequence.fromList(oldNodes).last());
     SContainmentLink oldLink = SNodeOperations.getContainingLinkInChildrenAndChildAttributesCollection(ListSequence.fromList(oldNodes).first());
 
-    ListSequence.fromList(oldNodes).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode oldNode) {
-        SNode newNode = SNodeOperations.getModel(newParent).getNode(oldNode.getNodeId());
-        SNodeOperations.getModel(newParent).getNode(oldParent.getNodeId()).removeChild(newNode);
-      }
+    ListSequence.fromList(oldNodes).visitAll((oldNode) -> {
+      SNode newNode = SNodeOperations.getModel(newParent).getNode(oldNode.getNodeId());
+      SNodeOperations.getModel(newParent).getNode(oldParent.getNodeId()).removeChild(newNode);
     });
-    List<SNode> newNodes = ListSequence.fromList(oldNodes).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return CopyUtil.copyAndPreserveId(it);
-      }
-    }).toListSequence();
-    ListSequence.fromList(newNodes).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        newParent.insertChildBefore(newLink, it, newBeforeAnchor);
-      }
-    });
+    List<SNode> newNodes = ListSequence.fromList(oldNodes).select((it) -> CopyUtil.copyAndPreserveId(it)).toList();
+    ListSequence.fromList(newNodes).visitAll((it) -> newParent.insertChildBefore(newLink, it, newBeforeAnchor));
 
     ModifiedNodesGroup oldGroup = createGroup(oldParent, oldLink, oldBeforeAnchor, oldNodes, true);
     ModifiedNodesGroup newGroup = createGroup(newParent, newLink, newBeforeAnchor, newNodes, true);
@@ -209,7 +186,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return change;
   }
 
-  protected List<ModelChange> applyWrapChange(final SModel model, List<SNode> oldNodes, SNode wrappingNode, SNodeId wrappingParentId, final SContainmentLink wrappingLink, final SNode wrappingBeforeAnchor) {
+  protected List<ModelChange> applyWrapChange(final SModel model, List<? extends SNode> oldNodes, SNode wrappingNode, SNodeId wrappingParentId, final SContainmentLink wrappingLink, final SNode wrappingBeforeAnchor) {
 
     List<ModelChange> changes = ListSequence.fromList(new ArrayList<ModelChange>());
 
@@ -219,34 +196,24 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     SNode oldBeforeAnchor = SNodeOperations.getNextSibling(ListSequence.fromList(oldNodes).last());
     SContainmentLink oldLink = SNodeOperations.getContainingLinkInChildrenAndChildAttributesCollection(ListSequence.fromList(oldNodes).first());
 
-    ListSequence.fromList(oldNodes).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode oldNode) {
-        SNode newNode = model.getNode(oldNode.getNodeId());
-        model.getNode(oldParent.getNodeId()).removeChild(newNode);
-      }
+    ListSequence.fromList(oldNodes).visitAll((oldNode) -> {
+      SNode newNode = model.getNode(oldNode.getNodeId());
+      model.getNode(oldParent.getNodeId()).removeChild(newNode);
     });
-    List<SNode> newNodes = ListSequence.fromList(oldNodes).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return CopyUtil.copyAndPreserveId(it);
-      }
-    }).toListSequence();
+    List<SNode> newNodes = ListSequence.fromList(oldNodes).select((it) -> CopyUtil.copyAndPreserveId(it)).toList();
 
     SNode newParent = model.getNode(oldParent.getNodeId());
     SNode newBeforeAnchor = (oldBeforeAnchor == null ? null : model.getNode(oldBeforeAnchor.getNodeId()));
     newParent.insertChildBefore(oldLink, wrappingNode, newBeforeAnchor);
     final SNode wrappingParent = model.getNode(wrappingParentId);
-    List<SNode> wrappedChildren = Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(wrappingParent, wrappingLink)).toListSequence();
+    List<SNode> wrappedChildren = Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(wrappingParent, wrappingLink)).toList();
     int wrappingBeforeAnchorIndex = (wrappingBeforeAnchor == null ? ListSequence.fromList(wrappedChildren).count() : ListSequence.fromList(wrappedChildren).indexOf(wrappingBeforeAnchor));
 
-    ListSequence.fromList(newNodes).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        wrappingParent.insertChildBefore(wrappingLink, it, wrappingBeforeAnchor);
-      }
-    });
+    ListSequence.fromList(newNodes).visitAll((it) -> wrappingParent.insertChildBefore(wrappingLink, it, wrappingBeforeAnchor));
 
     ChangeSet changeSet = new ChangeSetImpl(myBaseModel, SNodeOperations.getModel(wrappingNode));
-    List<SNode> childrenBeforeAnchor = ListSequence.fromList(wrappedChildren).page(0, wrappingBeforeAnchorIndex).toListSequence();
-    List<SNode> childrenAfterAnchor = ListSequence.fromList(wrappedChildren).page(wrappingBeforeAnchorIndex, ListSequence.fromList(wrappedChildren).count()).toListSequence();
+    List<SNode> childrenBeforeAnchor = ListSequence.fromList(wrappedChildren).page(0, wrappingBeforeAnchorIndex).toList();
+    List<SNode> childrenAfterAnchor = ListSequence.fromList(wrappedChildren).page(wrappingBeforeAnchorIndex, ListSequence.fromList(wrappedChildren).count()).toList();
 
     if (ListSequence.fromList(childrenBeforeAnchor).isNotEmpty()) {
       ListSequence.fromList(changes).addElement(new NodeGroupNotMoveChange(changeSet, createGroup(oldParent, oldLink, ListSequence.fromList(oldNodes).first(), Collections.<SNode>emptyList(), false), createGroup(wrappingParent, wrappingLink, ListSequence.fromList(newNodes).first(), childrenBeforeAnchor, false)));
@@ -256,27 +223,15 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
 
     List<ModifiedNodesGroup> wrappedGroups = Arrays.asList(createGroup(wrappingParent, wrappingLink, null, newNodes, true));
-    ListSequence.fromList(wrappedGroups).visitAll(new IVisitor<ModifiedNodesGroup>() {
-      public void visit(ModifiedNodesGroup it) {
-        it.setIsWrappedMove();
-      }
-    });
+    ListSequence.fromList(wrappedGroups).visitAll((it) -> it.setIsWrappedMove());
     List<ModifiedNodesGroup> unwrappedGroups = Arrays.asList(createGroup(oldParent, oldLink, oldBeforeAnchor, oldNodes, true));
-    ListSequence.fromList(unwrappedGroups).visitAll(new IVisitor<ModifiedNodesGroup>() {
-      public void visit(ModifiedNodesGroup it) {
-        it.setIsWrappedMove();
-      }
-    });
+    ListSequence.fromList(unwrappedGroups).visitAll((it) -> it.setIsWrappedMove());
     SNodeId nextNodeId = (oldBeforeAnchor == null ? null : oldBeforeAnchor.getNodeId());
 
     WrappingNodesGroup wrappingGroup = new WrappingNodesGroup(model, new ModifiedNode(wrappingNode.getNodeId(), model, ChangeType.ADD, true), nextNodeId, wrappedGroups, unwrappedGroups);
 
     ListSequence.fromList(changes).addElement(new NodeGroupWrapChange(changeSet, wrappingGroup, true));
-    ListSequence.fromList(changes).visitAll(new IVisitor<ModelChange>() {
-      public void visit(ModelChange it) {
-        addChange(it, isMine);
-      }
-    });
+    ListSequence.fromList(changes).visitAll((it) -> addChange(it, isMine));
     return changes;
   }
 
@@ -298,18 +253,14 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return change;
   }
 
-  private ModifiedNodesGroup createGroup(SNode parentNode, SContainmentLink link, SNode beforeAnchor, List<SNode> nodes, boolean isMove) {
+  private ModifiedNodesGroup createGroup(SNode parentNode, SContainmentLink link, SNode beforeAnchor, List<? extends SNode> nodes, boolean isMove) {
     final SModel model = SNodeOperations.getModel(parentNode);
     final boolean isOld = Objects.equals(model, myBaseModel);
     final ChangeType changeType = (isMove ? ChangeType.MOVE : ((isOld ? ChangeType.DELETE : ChangeType.ADD)));
     if (ListSequence.fromList(nodes).isEmpty()) {
       return new ModifiedNodesGroup(model, check_bpeqw6_b0a0a3a93(beforeAnchor), parentNode.getNodeId(), link, changeType);
     } else {
-      return new ModifiedNodesGroup(model, ListSequence.fromList(nodes).select(new ISelector<SNode, ModifiedNode>() {
-        public ModifiedNode select(SNode it) {
-          return new ModifiedNode(it.getNodeId(), model, changeType, !(isOld));
-        }
-      }).toListSequence(), check_bpeqw6_c0a0a0d0nb(beforeAnchor));
+      return new ModifiedNodesGroup(model, ListSequence.fromList(nodes).select((it) -> new ModifiedNode(it.getNodeId(), model, changeType, !(isOld))).toList(), check_bpeqw6_c0a0a0d0nb(beforeAnchor));
     }
   }
 
@@ -327,32 +278,22 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
   private static Map<String, Set<String>> changesAsMapOfStrings(Map<ModelChange, List<ModelChange>> changes) {
     final Map<String, Set<String>> result = MapSequence.fromMap(new HashMap<String, Set<String>>());
-    MapSequence.fromMap(changes).visitAll(new IVisitor<IMapping<ModelChange, List<ModelChange>>>() {
-      public void visit(IMapping<ModelChange, List<ModelChange>> it) {
-        MapSequence.fromMap(result).put(it.key().getDescription(), SetSequence.fromSetWithValues(new HashSet<String>(), ListSequence.fromList(it.value()).select(new ISelector<ModelChange, String>() {
-          public String select(ModelChange it) {
-            return it.getDescription();
-          }
-        })));
-      }
+    MapSequence.fromMap(changes).visitAll((it) -> {
+      MapSequence.fromMap(result).put(it.key().getDescription(), SetSequence.fromSetWithValues(new HashSet<String>(), ListSequence.fromList(it.value()).select(new _FunctionTypes._return_P1_E0<String, ModelChange>() {
+        public String invoke(ModelChange it) {
+          return it.getDescription();
+        }
+      })));
     });
     return result;
   }
 
   private static Set<String> changesAsSetOfStrings(List<ModelChange> changes) {
-    return SetSequence.fromSetWithValues(new HashSet<String>(), ListSequence.fromList(changes).select(new ISelector<ModelChange, String>() {
-      public String select(ModelChange it) {
-        return it.getDescription();
-      }
-    }));
+    return SetSequence.fromSetWithValues(new HashSet<String>(), ListSequence.fromList(changes).select((it) -> it.getDescription()));
   }
 
   protected SNode getRoot(SModel model) {
-    return ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.ClassConcept$bK)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "Root");
-      }
-    });
+    return ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.ClassConcept$bK)).findFirst((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "Root"));
   }
 
   protected List<SNode> getLevel1Statements(SModel model) {
@@ -360,19 +301,11 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   protected SNode getMethod(SModel model) {
-    return Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(getRoot(model), CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method1");
-      }
-    });
+    return Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(getRoot(model), CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).findFirst((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method1"));
   }
 
   protected SNode getLevel1Block1(SModel model) {
-    return SNodeOperations.as(ListSequence.fromList(getLevel1Statements(model)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BlockStatement$u4);
-      }
-    }), CONCEPTS.BlockStatement$u4);
+    return SNodeOperations.as(ListSequence.fromList(getLevel1Statements(model)).findFirst((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BlockStatement$u4)), CONCEPTS.BlockStatement$u4);
   }
 
   protected List<SNode> getLevel1Block1Statements(SModel model) {
@@ -380,11 +313,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   protected SNode getLevel2Block1(SModel model) {
-    return SNodeOperations.as(ListSequence.fromList(getLevel1Block1Statements(model)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BlockStatement$u4);
-      }
-    }), CONCEPTS.BlockStatement$u4);
+    return SNodeOperations.as(ListSequence.fromList(getLevel1Block1Statements(model)).findFirst((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BlockStatement$u4)), CONCEPTS.BlockStatement$u4);
   }
 
   protected List<SNode> getLevel2Block1Statements(SModel model) {
@@ -392,11 +321,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   protected SNode getIfStatement(SModel model) {
-    return SNodeOperations.as(ListSequence.fromList(getLevel2Block1Statements(model)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.IfStatement$Q4);
-      }
-    }), CONCEPTS.IfStatement$Q4);
+    return SNodeOperations.as(ListSequence.fromList(getLevel2Block1Statements(model)).findFirst((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.IfStatement$Q4)), CONCEPTS.IfStatement$Q4);
   }
 
   protected List<SNode> getIfTrueStatements(SModel model) {

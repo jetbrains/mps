@@ -9,8 +9,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.annotations.Nullable;
 import java.util.Collections;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.kotlin.api.members.SourcedSignature;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -52,11 +50,7 @@ public class SignatureScopeAsScope extends Scope {
     if (wrapped == null) {
       return Sequence.fromIterable(Collections.<SNode>emptyList());
     }
-    return Sequence.fromIterable(SNodeOperations.ofConcept(Sequence.fromIterable(wrapped.getElements(prefix)).select(new ISelector<SourcedSignature, SNode>() {
-      public SNode select(SourcedSignature it) {
-        return it.getSource();
-      }
-    }), SNodeOperations.asSConcept(filteringConcept))).distinct();
+    return Sequence.fromIterable(SNodeOperations.ofConcept(Sequence.fromIterable(wrapped.getElements(prefix)).select((it) -> it.getSource()), SNodeOperations.asSConcept(filteringConcept))).distinct();
   }
 
   @Override
