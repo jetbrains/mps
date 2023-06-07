@@ -202,6 +202,7 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
     }
 
     if (!myTabs.contains(tab)) {
+
       myTabs.add(tab);
     }
     if (myTabbedPaneWrapper.indexOfComponent(tab.getTabComponent()) < 0) {

@@ -20,13 +20,13 @@ import jetbrains.mps.classloading.IdeaPluginModuleFacet;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.Solution;
+import jetbrains.mps.project.facets.DocumentationFacet;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.facets.JavaModuleFacetImpl;
 import jetbrains.mps.project.facets.PlainTextTargetFacet;
 import jetbrains.mps.project.facets.TestsFacet;
 import jetbrains.mps.project.facets.TestsFacetImpl;
 import jetbrains.mps.smodel.BootstrapLanguages;
-import jetbrains.mps.smodel.Language;
 import jetbrains.mps.util.containers.MultiMap;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -99,6 +99,25 @@ public class FacetsRegistry extends FacetsFacade implements CoreComponent {
     @Override
     public boolean isApplicable(@NotNull SModule module) {
       return module instanceof Solution;
+    }
+  };
+
+  private final FacetFactory DOCUMENTATION_FACET_FACTORY = new FacetFactory() {
+    @Override
+    public SModuleFacet create(@NotNull SModule module) {
+      return new DocumentationFacet(module);
+    }
+
+    @NotNull
+    @Override
+    public String getPresentation() {
+      return "Documentation";
+    }
+
+    @Override
+    public boolean isApplicable(@NotNull SModule module) {
+      // todo
+      return module instanceof jetbrains.mps.smodel.Language;
     }
   };
 
@@ -191,6 +210,7 @@ public class FacetsRegistry extends FacetsFacade implements CoreComponent {
     addFactory(JavaModuleFacet.FACET_TYPE, JAVA_MODULE_FACET_FACTORY);
     addFactory(TestsFacet.FACET_TYPE, TESTS_FACET_FACTORY);
     addFactory(PlainTextTargetFacet.FACET_TYPE, myPlainTextFacetFactory);
+    addFactory(DocumentationFacet.FACET_TYPE, DOCUMENTATION_FACET_FACTORY);
     setUpDumbIdeaFacet();
 
     registerLanguageFacet(BootstrapLanguages.getBaseLang(), JavaModuleFacet.FACET_TYPE);
@@ -233,6 +253,7 @@ public class FacetsRegistry extends FacetsFacade implements CoreComponent {
     removeFactory(myPlainTextFacetFactory);
     removeFactory(TESTS_FACET_FACTORY);
     removeFactory(JAVA_MODULE_FACET_FACTORY);
+    removeFactory(DOCUMENTATION_FACET_FACTORY);
     INSTANCE = null;
   }
 }
