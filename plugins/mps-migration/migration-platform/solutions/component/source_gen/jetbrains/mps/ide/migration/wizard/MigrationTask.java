@@ -7,6 +7,7 @@ import jetbrains.mps.logging.Logger;
 import com.intellij.history.LocalHistoryAction;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.persistence.PersistenceRegistry;
+import org.jetbrains.mps.openapi.util.SubProgressKind;
 import jetbrains.mps.util.Status;
 import java.util.List;
 import jetbrains.mps.ide.migration.ScriptApplied;
@@ -70,7 +71,9 @@ public class MigrationTask {
   public void run(ProgressMonitor pm) {
     PersistenceRegistry.getInstance().disableFastFindUsages();
     try {
-      pm.start("Migrating...", 10);
+      pm.start("Migrating...", 11);
+      // just to get some progress indication (otherwise shows as indefinite until first subtask ends)
+      pm.advance(1);
       doRun(pm.subTask(9));
       myIsComplete = true;
       pm.step("Done!");
@@ -99,7 +102,7 @@ public class MigrationTask {
     boolean migrate = mySession.requires(MigrationSession.MigrationStepKind.MIGRATE);
 
     if (checkAndIncStage(0)) {
-      ProgressMonitor m = monitor.subTask(20);
+      ProgressMonitor m = monitor.subTask(20, SubProgressKind.REPLACING);
       m.start("Saving project...", 100);
       try {
         runForceSave(m.subTask((save ? 80 : 100)));
@@ -117,21 +120,21 @@ public class MigrationTask {
     }
 
     if (checkAndIncStage(1)) {
-      Status cmStatus = runCleanupMigrations(monitor.subTask(10));
+      Status cmStatus = runCleanupMigrations(monitor.subTask(10, SubProgressKind.REPLACING));
       if (!(cmStatus.isOk())) {
         throw new MigrationExceptionError(cmStatus);
       }
     }
 
     if (checkAndIncStage(2)) {
-      List<ScriptApplied> missingMigrations = findMissingMigrations(monitor.subTask(5));
+      List<ScriptApplied> missingMigrations = findMissingMigrations(monitor.subTask(5, SubProgressKind.REPLACING));
       if (ListSequence.fromList(missingMigrations).isNotEmpty()) {
         throw new MigrationsMissingError(missingMigrations, mySession.getProject().getRepository());
       }
     }
 
     if (checkAndIncStage(3)) {
-      Map<SModule, SModule> errsToShow = checkMigratedLibs(monitor.subTask(5));
+      Map<SModule, SModule> errsToShow = checkMigratedLibs(monitor.subTask(5, SubProgressKind.REPLACING));
       if (MapSequence.fromMap(errsToShow).isNotEmpty()) {
         throw new NotMigratedLibsError(errsToShow);
       }
@@ -139,7 +142,7 @@ public class MigrationTask {
 
     if (checkAndIncStage(4)) {
       // null - no error, true - must stop, false - can ignore
-      boolean errors = checkModels(monitor.subTask(10));
+      boolean errors = checkModels(monitor.subTask(10, SubProgressKind.REPLACING));
       if (errors) {
         final PreCheckError preCheckError = new PreCheckError(mySession, errors);
         if (myHaltOnFailedPrecheck) {
@@ -160,19 +163,19 @@ public class MigrationTask {
 
     // from here, we don't ignore errors
     addGlobalLabel(mySession.getProject(), STARTED);
-    Status pmStatus = runProjectMigrations(monitor.subTask(5));
+    Status pmStatus = runProjectMigrations(monitor.subTask(5, SubProgressKind.REPLACING));
     if (!(pmStatus.isOk())) {
       throw new MigrationExceptionError(pmStatus);
     }
 
-    Status lmStatus = runLanguageMigrations(monitor.subTask(30));
+    Status lmStatus = runLanguageMigrations(monitor.subTask(30, SubProgressKind.REPLACING));
     if (!(lmStatus.isOk())) {
       throw new MigrationExceptionError(lmStatus);
     }
     addGlobalLabel(mySession.getProject(), FINISHED);
 
     // todo move from here to migration annotations
-    if (findNotMigrated(monitor.subTask(15))) {
+    if (findNotMigrated(monitor.subTask(15, SubProgressKind.REPLACING))) {
       throw new PostCheckError(mySession.getProject(), mySession.getExecutedModuleMigrations(), false, mySession.getChecker());
     }
     monitor.done();
