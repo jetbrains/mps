@@ -5,7 +5,7 @@ package jetbrains.mps.ide.devkit.actions;
 import jetbrains.mps.plugins.tool.GeneratedTool;
 import javax.swing.Icon;
 import jetbrains.mps.icons.MPSIcons;
-import jetbrains.mps.ide.typesystem.trace.TypeSystemTracePanel;
+import jetbrains.mps.ide.devkit.typesystem.trace.TypeSystemTracePanel;
 import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import com.intellij.openapi.project.Project;

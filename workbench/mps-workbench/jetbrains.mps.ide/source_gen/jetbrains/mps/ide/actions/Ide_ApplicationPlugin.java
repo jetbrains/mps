@@ -53,8 +53,6 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new GoToImplementationBehaviorMethod_Action());
     addAction(new GoToModel_Action());
     addAction(new GoToModule_Action());
-    addAction(new GoToNode_Action());
-    addAction(new GoToRule_Action());
     addAction(new GoToSuperBehaviorMethod_Action());
     addAction(new HighlightInstances_Action());
     addAction(new HighlightUsages_Action());
@@ -239,7 +237,6 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     ListSequence.fromList(res).addElement(new GnomeActionsKeymap_KeymapChanges());
     ListSequence.fromList(res).addElement(new Mac_10_5_KeymapChanges());
     ListSequence.fromList(res).addElement(new Mac_KeymapChanges());
-    ListSequence.fromList(res).addElement(new TraceActions_KeymapChanges());
     return res;
   }
 }

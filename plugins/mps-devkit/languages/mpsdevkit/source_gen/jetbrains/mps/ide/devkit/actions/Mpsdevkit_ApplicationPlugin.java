@@ -48,6 +48,8 @@ public class Mpsdevkit_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new FindUnusedAndDeprecatedConcepts_Action());
     addAction(new GoToConceptDeclaration_Action());
     addAction(new GoToEditorDeclaration_Action());
+    addAction(new GoToNode_Action());
+    addAction(new GoToRule_Action());
     addAction(new GoToRules_Action());
     addAction(new GoToUsageInMappingConfig_Action());
     addAction(new HighlightCellDependencies_Action());
@@ -133,6 +135,7 @@ public class Mpsdevkit_ApplicationPlugin extends BaseApplicationPlugin {
     ListSequence.fromList(res).addElement(new Default_KeymapChanges());
     ListSequence.fromList(res).addElement(new MacOSX105_KeymapChanges());
     ListSequence.fromList(res).addElement(new Mac_KeymapChanges());
+    ListSequence.fromList(res).addElement(new TraceActions_KeymapChanges());
     ListSequence.fromList(res).addElement(new Trace_KeymapChanges());
     return res;
   }
