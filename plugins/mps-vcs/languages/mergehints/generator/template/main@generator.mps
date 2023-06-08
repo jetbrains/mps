@@ -33,10 +33,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
-        <reference id="2820489544401957798" name="classifier" index="HV5vE" />
-        <child id="2820489544402271667" name="typeParameter" index="HU9BZ" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -121,7 +117,9 @@
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
-      <concept id="1212685548494" name="jetbrains.mps.baseLanguage.structure.ClassCreator" flags="nn" index="1pGfFk" />
+      <concept id="1212685548494" name="jetbrains.mps.baseLanguage.structure.ClassCreator" flags="nn" index="1pGfFk">
+        <child id="1212687122400" name="typeParameter" index="1pMfVU" />
+      </concept>
       <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
         <property id="521412098689998745" name="nonStatic" index="2bfB8j" />
         <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
@@ -589,9 +587,9 @@
                                         </node>
                                       </node>
                                       <node concept="2ShNRf" id="4kNgK3e5cHW" role="33vP2m">
-                                        <node concept="HV5vD" id="4kNgK3e5q_c" role="2ShVmc">
-                                          <ref role="HV5vE" to="33ny:~HashSet" resolve="HashSet" />
-                                          <node concept="3Tqbb2" id="4kNgK3e5rIC" role="HU9BZ">
+                                        <node concept="1pGfFk" id="EkFhnCxDHe" role="2ShVmc">
+                                          <ref role="37wK5l" to="33ny:~HashSet.&lt;init&gt;()" resolve="HashSet" />
+                                          <node concept="3Tqbb2" id="EkFhnCxDHf" role="1pMfVU">
                                             <ref role="ehGHo" to="tpce:f_TJgxF" resolve="PropertyDeclaration" />
                                           </node>
                                         </node>
@@ -836,9 +834,9 @@
                                         </node>
                                       </node>
                                       <node concept="2ShNRf" id="4kNgK3e7f1d" role="33vP2m">
-                                        <node concept="HV5vD" id="4kNgK3e7f1e" role="2ShVmc">
-                                          <ref role="HV5vE" to="33ny:~HashSet" resolve="HashSet" />
-                                          <node concept="3Tqbb2" id="4kNgK3e7f1f" role="HU9BZ">
+                                        <node concept="1pGfFk" id="EkFhnCxDH6" role="2ShVmc">
+                                          <ref role="37wK5l" to="33ny:~HashSet.&lt;init&gt;()" resolve="HashSet" />
+                                          <node concept="3Tqbb2" id="EkFhnCxDH7" role="1pMfVU">
                                             <ref role="ehGHo" to="tpce:f_TJgxE" resolve="LinkDeclaration" />
                                           </node>
                                         </node>
@@ -1083,9 +1081,9 @@
                                         </node>
                                       </node>
                                       <node concept="2ShNRf" id="4kNgK3e7lCC" role="33vP2m">
-                                        <node concept="HV5vD" id="4kNgK3e7lCD" role="2ShVmc">
-                                          <ref role="HV5vE" to="33ny:~HashSet" resolve="HashSet" />
-                                          <node concept="3Tqbb2" id="4kNgK3e7lCE" role="HU9BZ">
+                                        <node concept="1pGfFk" id="EkFhnCxDHi" role="2ShVmc">
+                                          <ref role="37wK5l" to="33ny:~HashSet.&lt;init&gt;()" resolve="HashSet" />
+                                          <node concept="3Tqbb2" id="EkFhnCxDHj" role="1pMfVU">
                                             <ref role="ehGHo" to="tpce:f_TJgxE" resolve="LinkDeclaration" />
                                           </node>
                                         </node>
@@ -1253,9 +1251,9 @@
                         </node>
                       </node>
                       <node concept="2ShNRf" id="4kNgK3e5Vww" role="33vP2m">
-                        <node concept="HV5vD" id="4kNgK3e5Vwx" role="2ShVmc">
-                          <ref role="HV5vE" to="33ny:~HashSet" resolve="HashSet" />
-                          <node concept="3Tqbb2" id="4kNgK3e5Vwy" role="HU9BZ">
+                        <node concept="1pGfFk" id="EkFhnCxDHa" role="2ShVmc">
+                          <ref role="37wK5l" to="33ny:~HashSet.&lt;init&gt;()" resolve="HashSet" />
+                          <node concept="3Tqbb2" id="EkFhnCxDHb" role="1pMfVU">
                             <ref role="ehGHo" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
                           </node>
                         </node>

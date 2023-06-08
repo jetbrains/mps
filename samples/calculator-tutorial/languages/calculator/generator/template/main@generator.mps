@@ -194,6 +194,11 @@
         <child id="1167770376702" name="referentFunction" index="3$ytzL" />
       </concept>
     </language>
+    <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
+        <child id="1199569916463" name="body" index="1bW5cS" />
+      </concept>
+    </language>
     <language id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext">
       <concept id="1218047638031" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_CreateUniqueName" flags="nn" index="2piZGk">
         <child id="1218047638032" name="baseName" index="2piZGb" />
@@ -946,25 +951,12 @@
           <node concept="2YIFZM" id="i472Dza" role="3clFbG">
             <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeLater(java.lang.Runnable)" resolve="invokeLater" />
             <ref role="1Pybhc" to="dxuu:~SwingUtilities" resolve="SwingUtilities" />
-            <node concept="2ShNRf" id="i472Eug" role="37wK5m">
-              <node concept="YeOm9" id="i472FPs" role="2ShVmc">
-                <node concept="1Y3b0j" id="i472FPt" role="YeSDq">
-                  <ref role="1Y3XeK" to="wyt6:~Runnable" resolve="Runnable" />
-                  <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
-                  <node concept="3Tm1VV" id="i472FPu" role="1B3o_S" />
-                  <node concept="3clFb_" id="i472FPv" role="jymVt">
-                    <property role="1EzhhJ" value="false" />
-                    <property role="TrG5h" value="run" />
-                    <node concept="3Tm1VV" id="i472FPw" role="1B3o_S" />
-                    <node concept="3cqZAl" id="i472FPx" role="3clF45" />
-                    <node concept="3clFbS" id="i472FPy" role="3clF47">
-                      <node concept="3clFbF" id="i472H0w" role="3cqZAp">
-                        <node concept="2ShNRf" id="i472H0x" role="3clFbG">
-                          <node concept="1pGfFk" id="i472HUb" role="2ShVmc">
-                            <ref role="37wK5l" node="i470JCM" resolve="CalculatorImpl" />
-                          </node>
-                        </node>
-                      </node>
+            <node concept="1bVj0M" id="EkFhnBQd_G" role="37wK5m">
+              <node concept="3clFbS" id="i472FPy" role="1bW5cS">
+                <node concept="3clFbF" id="i472H0w" role="3cqZAp">
+                  <node concept="2ShNRf" id="i472H0x" role="3clFbG">
+                    <node concept="1pGfFk" id="i472HUb" role="2ShVmc">
+                      <ref role="37wK5l" node="i470JCM" resolve="CalculatorImpl" />
                     </node>
                   </node>
                 </node>
