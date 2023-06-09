@@ -17,10 +17,12 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
+import jetbrains.mps.nodeEditor.MPSFonts;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.SPropertyAccessor;
+import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.nodeEditor.cellMenu.SPropertySubstituteInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
@@ -30,6 +32,7 @@ import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
+import jetbrains.mps.lang.core.editor.BaseStyleSheet_StyleSheet.CommentStyleClass;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -62,6 +65,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.addEditorCell(createTooltip_3());
     editorCell.addEditorCell(createConstant_3());
     editorCell.addEditorCell(createCollection_1());
+    editorCell.addEditorCell(createConstant_7());
     return editorCell;
   }
   private EditorCell createTooltip_0(final EditorContext editorContext, final SNode node) {
@@ -99,7 +103,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return createTooltip_2(getEditorContext(), myNode);
   }
   private EditorCell createConstant_2() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "enable a radar hint and hold ctrl to highlight the tooltip");
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "hold ctrl and move the mouse to highlight the available tooltips");
     editorCell.setCellId("Constant_6m31uf_a2a");
     editorCell.setDefaultText("");
     return editorCell;
@@ -123,8 +127,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createConstant_4() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "property");
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "Property");
     editorCell.setCellId("Constant_6m31uf_a4a");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
+    editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
   }
@@ -136,6 +143,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no a>");
       editorCell.setCellId("property_a");
+      Style style = new StyleImpl();
+      style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_MAGENTA));
+      editorCell.getStyle().putAll(style);
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
       Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
@@ -173,6 +184,15 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createConstant_6() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "you can show cells of different kinds in a tooltip");
     editorCell.setCellId("Constant_6m31uf_a3e0");
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createConstant_7() {
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "--------------------------------------");
+    editorCell.setCellId("Constant_6m31uf_f0");
+    Style style = new StyleImpl();
+    new CommentStyleClass(this).apply(style, editorCell);
+    editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
   }
