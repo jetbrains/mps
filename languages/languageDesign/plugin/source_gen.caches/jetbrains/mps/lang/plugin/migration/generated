@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-chmcq72c9euimqb7vt96xnqyzjenno0">
-  <files names="BaseToolDeclaration_number.java:CleanEditorTabCommandOnCreateProperty.java:CleanIdeaInitializerDescriptorVendorLogoProperty.java:ClearActionParameterIsOptional.java:CopyPrefPageIconsToResources.java:MigrationDescriptor.java" />
+<product version="3" modelHash="cnhu32p4djyp5ttvrm73q6bipey4tfh">
+  <files names="BaseToolDeclaration_number.java:CleanEditorTabCommandOnCreateProperty.java:CleanIdeaInitializerDescriptorVendorLogoProperty.java:ClearActionParameterIsOptional.java:CopyPrefPageIconsToResources.java:MigrationDescriptor.java:UpdateActionsInBackground.java" />
 </product>
 

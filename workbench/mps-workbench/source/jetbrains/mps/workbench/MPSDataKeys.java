@@ -25,10 +25,10 @@ import java.util.List;
 
 public class MPSDataKeys extends MPSEditorDataKeys {
 
-  @Description(description = "selected packages")
+  @Description(description = "selected packages", edtOnAccess = false)
   public static final DataKey<List<Pair<SModel, String>>> VIRTUAL_PACKAGES = DataKey.create("MPS_VirtualPackage_List");
 
-  @Description(description = "selected namespace")
+  @Description(description = "selected namespace", edtOnAccess = false)
   public static final DataKey<String> NAMESPACE = DataKey.create("MPS_Namespace");
 
   /**
