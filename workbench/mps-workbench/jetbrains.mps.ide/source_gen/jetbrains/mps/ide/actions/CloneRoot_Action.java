@@ -26,6 +26,7 @@ public class CloneRoot_Action extends BaseAction {
     super("Clone Root", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
     this.addPlace(null);
   }
   @Override

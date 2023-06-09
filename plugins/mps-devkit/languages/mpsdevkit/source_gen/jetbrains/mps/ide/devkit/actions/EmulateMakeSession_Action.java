@@ -26,6 +26,7 @@ public class EmulateMakeSession_Action extends BaseAction {
     this.mockSession = mockSession_par;
     this.setIsAlwaysVisible(true);
     this.setActionAccess(ActionAccess.NONE);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

@@ -28,6 +28,7 @@ public class DropEnumMigrationAttribute_Action extends BaseAction {
     super("Drop Enumeration Migration's Attribute", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

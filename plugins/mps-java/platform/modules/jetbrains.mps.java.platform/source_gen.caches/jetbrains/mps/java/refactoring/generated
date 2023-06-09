@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="gj5eq5ask9qoaunwdnokuce0biw1ys">
+<product version="3" modelHash="5b021uppw6sxqapssgcl6chkwcfwx14">
   <files names="AbstractInitializeFieldRefactoring.java:AddConstructorParameterRefactoring.java:CheckingUtil.java:InitializeFieldInConstructorRefactoring.java" />
 </product>
 

@@ -20,6 +20,7 @@ public class ShowHelpForNode_Action extends BaseAction {
     super("Show Help for Node", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

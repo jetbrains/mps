@@ -35,6 +35,7 @@ public class NewRootMappingRule_Action extends BaseAction {
     super("Create Root Mapping Rule", "Creates new 'root mapping rule' for a root template (unless such rule already exists)", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

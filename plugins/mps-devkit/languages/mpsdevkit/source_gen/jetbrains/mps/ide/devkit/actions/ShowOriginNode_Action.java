@@ -23,6 +23,7 @@ public class ShowOriginNode_Action extends BaseAction {
     super("Reveal Origin Node", "Navigate to node in original model selected transient node originates from", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

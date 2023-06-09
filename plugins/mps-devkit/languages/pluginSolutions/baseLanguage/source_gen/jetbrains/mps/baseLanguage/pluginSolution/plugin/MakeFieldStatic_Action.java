@@ -23,6 +23,7 @@ public class MakeFieldStatic_Action extends BaseAction {
     super("Make Field Static", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

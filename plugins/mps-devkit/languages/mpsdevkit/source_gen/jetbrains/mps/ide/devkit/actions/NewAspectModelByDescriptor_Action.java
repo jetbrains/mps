@@ -31,6 +31,7 @@ public class NewAspectModelByDescriptor_Action extends BaseAction {
     this.aspectId = aspectId_par;
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

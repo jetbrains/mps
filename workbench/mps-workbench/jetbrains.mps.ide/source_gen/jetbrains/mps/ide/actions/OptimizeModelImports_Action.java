@@ -36,6 +36,7 @@ public class OptimizeModelImports_Action extends BaseAction {
     super("Optimize Imports", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

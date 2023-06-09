@@ -31,6 +31,7 @@ public class ReorderModelRoots_Action extends BaseAction {
     super("Reorder Root Nodes", "Change order of root nodes in a model", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.NONE);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

@@ -22,6 +22,7 @@ public class ShowDefaultHelp_Action extends BaseAction {
     super("Show Default Help", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
     this.addPlace(null);
   }
   @Override

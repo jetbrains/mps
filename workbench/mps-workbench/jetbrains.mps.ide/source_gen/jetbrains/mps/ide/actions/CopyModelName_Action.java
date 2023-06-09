@@ -23,6 +23,7 @@ public class CopyModelName_Action extends BaseAction {
     super("Copy Model Name", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

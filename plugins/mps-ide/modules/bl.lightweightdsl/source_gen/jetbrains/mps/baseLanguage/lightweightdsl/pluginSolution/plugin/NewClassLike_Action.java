@@ -40,6 +40,7 @@ public class NewClassLike_Action extends BaseAction {
     this.descr = descr_par;
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

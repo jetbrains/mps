@@ -25,6 +25,7 @@ public class MakeSelection_Action extends BaseAction {
     this.cleanMake = cleanMake_par;
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

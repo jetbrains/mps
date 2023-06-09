@@ -30,6 +30,7 @@ public class CheckModel_Action extends BaseAction {
     super("Check Model", "Check model for unresolved references and typesystem rules", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
     this.addPlace(null);
   }
   @Override

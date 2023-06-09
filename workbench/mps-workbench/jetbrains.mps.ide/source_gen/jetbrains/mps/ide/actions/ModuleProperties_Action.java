@@ -32,6 +32,7 @@ public class ModuleProperties_Action extends BaseAction {
     super("Module Properties", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

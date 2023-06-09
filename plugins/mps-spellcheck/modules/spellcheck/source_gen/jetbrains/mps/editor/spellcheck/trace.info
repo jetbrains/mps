@@ -492,67 +492,68 @@
       <node id="411797247021062466" at="19,46,20,25" concept="4" />
       <node id="411797247021062466" at="20,25,21,35" concept="4" />
       <node id="411797247021062466" at="21,35,22,52" concept="4" />
-      <node id="411797247021062466" at="25,32,26,16" concept="11" />
-      <node id="411797247021581846" at="29,89,30,115" concept="4" />
-      <node id="411797247021062466" at="34,53,35,19" concept="11" />
-      <node id="411797247021147582" at="37,5,38,66" concept="10" />
-      <node id="411797247021147583" at="39,22,40,21" concept="11" />
-      <node id="411797247021062466" at="42,5,43,16" concept="11" />
-      <node id="411797247021556380" at="46,96,47,124" concept="4" />
-      <node id="411797247021062466" at="50,31,51,44" concept="10" />
-      <node id="411797247021062466" at="51,44,52,36" concept="4" />
-      <node id="411797247021062466" at="52,36,53,20" concept="4" />
-      <node id="411797247021062466" at="53,20,54,47" concept="4" />
-      <node id="411797247021062466" at="54,47,55,20" concept="4" />
-      <node id="411797247021062466" at="55,20,56,26" concept="11" />
-      <node id="411797247021201497" at="58,50,59,87" concept="12" />
-      <node id="411797247021201941" at="59,87,60,88" concept="12" />
-      <node id="411797247021200901" at="60,88,61,14" concept="11" />
-      <node id="411797247021062466" at="33,95,36,5" concept="8" />
-      <node id="411797247021147583" at="38,66,41,7" concept="8" />
-      <node id="411797247021062466" at="24,0,28,0" concept="9" trace="isDumbAware#()Z" />
-      <node id="411797247021062466" at="28,0,32,0" concept="9" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="411797247021062466" at="45,0,49,0" concept="9" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="411797247021062466" at="58,0,63,0" concept="15" trace="word_State#(Ljava/lang/String;)Ljava/lang/String;" />
-      <node id="411797247021062466" at="18,0,24,0" concept="2" trace="AddWordToDictionary_Action#(Ljava/lang/String;)V" />
-      <node id="411797247021147582" at="36,5,42,5" concept="0" />
-      <node id="411797247021062466" at="49,0,58,0" concept="9" trace="getActionId#()Ljava/lang/String;" />
-      <node id="411797247021062466" at="32,0,45,0" concept="9" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <scope id="411797247021062466" at="25,32,26,16" />
-      <scope id="411797247021580877" at="29,89,30,115" />
-      <scope id="411797247021062466" at="34,53,35,19" />
-      <scope id="411797247021147583" at="39,22,40,21" />
-      <scope id="411797247021062466" at="46,96,47,124" />
-      <scope id="411797247021200615" at="58,50,61,14" />
-      <scope id="411797247021062466" at="18,54,22,52" />
-      <scope id="411797247021062466" at="24,0,28,0" />
-      <scope id="411797247021062466" at="28,0,32,0">
+      <node id="411797247021062466" at="22,52,23,29" concept="4" />
+      <node id="411797247021062466" at="26,32,27,16" concept="11" />
+      <node id="411797247021581846" at="30,89,31,115" concept="4" />
+      <node id="411797247021062466" at="35,53,36,19" concept="11" />
+      <node id="411797247021147582" at="38,5,39,66" concept="10" />
+      <node id="411797247021147583" at="40,22,41,21" concept="11" />
+      <node id="411797247021062466" at="43,5,44,16" concept="11" />
+      <node id="411797247021556380" at="47,96,48,124" concept="4" />
+      <node id="411797247021062466" at="51,31,52,44" concept="10" />
+      <node id="411797247021062466" at="52,44,53,36" concept="4" />
+      <node id="411797247021062466" at="53,36,54,20" concept="4" />
+      <node id="411797247021062466" at="54,20,55,47" concept="4" />
+      <node id="411797247021062466" at="55,47,56,20" concept="4" />
+      <node id="411797247021062466" at="56,20,57,26" concept="11" />
+      <node id="411797247021201497" at="59,50,60,87" concept="12" />
+      <node id="411797247021201941" at="60,87,61,88" concept="12" />
+      <node id="411797247021200901" at="61,88,62,14" concept="11" />
+      <node id="411797247021062466" at="34,95,37,5" concept="8" />
+      <node id="411797247021147583" at="39,66,42,7" concept="8" />
+      <node id="411797247021062466" at="25,0,29,0" concept="9" trace="isDumbAware#()Z" />
+      <node id="411797247021062466" at="29,0,33,0" concept="9" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="411797247021062466" at="46,0,50,0" concept="9" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="411797247021062466" at="59,0,64,0" concept="15" trace="word_State#(Ljava/lang/String;)Ljava/lang/String;" />
+      <node id="411797247021147582" at="37,5,43,5" concept="0" />
+      <node id="411797247021062466" at="18,0,25,0" concept="2" trace="AddWordToDictionary_Action#(Ljava/lang/String;)V" />
+      <node id="411797247021062466" at="50,0,59,0" concept="9" trace="getActionId#()Ljava/lang/String;" />
+      <node id="411797247021062466" at="33,0,46,0" concept="9" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
+      <scope id="411797247021062466" at="26,32,27,16" />
+      <scope id="411797247021580877" at="30,89,31,115" />
+      <scope id="411797247021062466" at="35,53,36,19" />
+      <scope id="411797247021147583" at="40,22,41,21" />
+      <scope id="411797247021062466" at="47,96,48,124" />
+      <scope id="411797247021200615" at="59,50,62,14" />
+      <scope id="411797247021062466" at="25,0,29,0" />
+      <scope id="411797247021062466" at="29,0,33,0">
         <var name="_params" id="411797247021062466" />
         <var name="event" id="411797247021062466" />
       </scope>
-      <scope id="411797247021147582" at="37,5,41,7">
+      <scope id="411797247021147582" at="38,5,42,7">
         <var name="p" id="411797247021147582" />
       </scope>
-      <scope id="411797247021062466" at="45,0,49,0">
+      <scope id="411797247021062466" at="46,0,50,0">
         <var name="_params" id="411797247021062466" />
         <var name="event" id="411797247021062466" />
       </scope>
-      <scope id="411797247021062466" at="58,0,63,0">
+      <scope id="411797247021062466" at="18,54,23,29" />
+      <scope id="411797247021062466" at="59,0,64,0">
         <var name="object" id="411797247021062466" />
       </scope>
-      <scope id="411797247021062466" at="18,0,24,0">
-        <var name="word_par" id="411797247021062466" />
-      </scope>
-      <scope id="411797247021062466" at="50,31,56,26">
+      <scope id="411797247021062466" at="51,31,57,26">
         <var name="res" id="411797247021062466" />
       </scope>
-      <scope id="411797247021062466" at="49,0,58,0" />
-      <scope id="411797247021062466" at="33,95,43,16" />
-      <scope id="411797247021062466" at="32,0,45,0">
+      <scope id="411797247021062466" at="18,0,25,0">
+        <var name="word_par" id="411797247021062466" />
+      </scope>
+      <scope id="411797247021062466" at="50,0,59,0" />
+      <scope id="411797247021062466" at="34,95,44,16" />
+      <scope id="411797247021062466" at="33,0,46,0">
         <var name="_params" id="411797247021062466" />
         <var name="event" id="411797247021062466" />
       </scope>
-      <unit id="411797247021062466" at="14,0,64,0" name="jetbrains.mps.editor.spellcheck.AddWordToDictionary_Action" />
+      <unit id="411797247021062466" at="14,0,65,0" name="jetbrains.mps.editor.spellcheck.AddWordToDictionary_Action" />
     </file>
   </root>
 </debug-info>

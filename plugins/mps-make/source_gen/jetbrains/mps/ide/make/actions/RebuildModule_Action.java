@@ -22,6 +22,7 @@ public class RebuildModule_Action extends BaseAction {
     super("Recompile Java Files", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

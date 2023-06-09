@@ -25,6 +25,7 @@ public class SetBookmark_Action extends BaseAction {
     this.num = num_par;
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

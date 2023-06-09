@@ -26,6 +26,7 @@ public class RunProjectMigration_Action extends BaseAction {
     this.script = script_par;
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

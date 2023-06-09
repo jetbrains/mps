@@ -31,6 +31,7 @@ public class ConvertInferenceRuleToCheckingRule_Action extends BaseAction {
     super("Convert to Checking Rule", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

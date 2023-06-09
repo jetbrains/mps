@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-98irvhh7ebvdlwrxtlui82hy7mww4s1">
+<product version="3" modelHash="5u6qw28glvw24p0db33pbrwpk2y8t5l">
   <files names="CheckNoDuplicatedConceptHints_NonTypesystemRule.java:CheckNoDuplicatedLinkHints_NonTypesystemRule.java:CheckNoDuplicatedPropertyHints_NonTypesystemRule.java:TypesystemDescriptor.java" />
 </product>
 

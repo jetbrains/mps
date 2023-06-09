@@ -34,6 +34,7 @@ public class DeleteModels_Action extends BaseAction {
     this.forceSafe = forceSafe_par;
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

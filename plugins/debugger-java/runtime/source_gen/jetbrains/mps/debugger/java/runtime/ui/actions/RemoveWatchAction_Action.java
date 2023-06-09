@@ -23,6 +23,7 @@ public class RemoveWatchAction_Action extends BaseAction {
     super("Remove Watch", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

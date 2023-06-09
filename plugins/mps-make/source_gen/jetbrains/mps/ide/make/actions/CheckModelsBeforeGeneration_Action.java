@@ -21,6 +21,7 @@ public class CheckModelsBeforeGeneration_Action extends BaseAction {
     super("Check Models Before Generation", "Check models for errors before generation", ICON);
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

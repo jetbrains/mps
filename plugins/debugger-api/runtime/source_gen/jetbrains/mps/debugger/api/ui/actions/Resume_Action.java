@@ -20,6 +20,7 @@ public class Resume_Action extends BaseAction {
     super("Resume", "Resume Execution", ICON);
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

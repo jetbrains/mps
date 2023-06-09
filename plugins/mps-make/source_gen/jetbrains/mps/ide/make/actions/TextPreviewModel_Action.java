@@ -55,6 +55,7 @@ public class TextPreviewModel_Action extends BaseAction {
     super("Preview Generated Text", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

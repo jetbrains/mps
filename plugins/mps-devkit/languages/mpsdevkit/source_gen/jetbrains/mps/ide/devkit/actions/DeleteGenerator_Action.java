@@ -30,6 +30,7 @@ public class DeleteGenerator_Action extends BaseAction {
     super("Delete Generator...", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

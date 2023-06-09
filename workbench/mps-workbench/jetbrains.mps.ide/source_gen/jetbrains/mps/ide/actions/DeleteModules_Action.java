@@ -33,6 +33,7 @@ public class DeleteModules_Action extends BaseAction {
     super("Delete Module...", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

@@ -36,6 +36,7 @@ public class DeleteNode_Action extends BaseAction {
     super("Delete", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

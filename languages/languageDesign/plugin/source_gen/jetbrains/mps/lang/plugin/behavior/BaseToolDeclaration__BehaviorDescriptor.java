@@ -24,8 +24,9 @@ import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public final class BaseToolDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, "jetbrains.mps.lang.plugin.structure.BaseToolDeclaration");
@@ -54,7 +55,7 @@ public final class BaseToolDeclaration__BehaviorDescriptor extends BaseBHDescrip
     return isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.number$DT6H));
   }
   /*package*/ static SNode createType_idhEwJimy(@NotNull SNode __thisNode__) {
-    return _quotation_createNode_7ol7e8_a0a3(__thisNode__);
+    return createToolType_7ol7e8_a0a3(__thisNode__);
   }
   /*package*/ static SNode createSuperType_idhHOGPWW(@NotNull SNode __thisNode__) {
     return _quotation_createNode_7ol7e8_a0a4();
@@ -127,12 +128,10 @@ public final class BaseToolDeclaration__BehaviorDescriptor extends BaseBHDescrip
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
-  private static SNode _quotation_createNode_7ol7e8_a0a3(Object parameter_1) {
-    SNode quotedNode_2 = null;
-    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, "jetbrains.mps.lang.plugin"), 0x11961ebbf24L, "ToolType"));
-    quotedNode_2 = nb.getResult();
-    SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11961ebbf24L, 0x11961f94babL, "tool"), (SNode) parameter_1);
-    return quotedNode_2;
+  private static SNode createToolType_7ol7e8_a0a3(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ToolType$CP);
+    n0.setReferenceTarget(LINKS.tool$pL83, p0);
+    return n0.getResult();
   }
   private static SNode _quotation_createNode_7ol7e8_a0a4() {
     SNode quotedNode_1 = null;
@@ -150,5 +149,13 @@ public final class BaseToolDeclaration__BehaviorDescriptor extends BaseBHDescrip
     /*package*/ static final SProperty number$DT6H = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, 0x5adc7622e710cf2dL, "number");
     /*package*/ static final SProperty icon$E_UG = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, 0x5adc7622e710cf6eL, "icon");
     /*package*/ static final SProperty caption$A_WD = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, 0x5adc7622e710cedcL, "caption");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept ToolType$CP = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11961ebbf24L, "jetbrains.mps.lang.plugin.structure.ToolType");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SReferenceLink tool$pL83 = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11961ebbf24L, 0x11961f94babL, "tool");
   }
 }

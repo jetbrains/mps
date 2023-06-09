@@ -55,6 +55,7 @@ public class CollectTests_Action extends BaseAction {
     super("Collect Tests [obsolete]", "[deprecated] [obsolete] Collect tests into a ModuleSuite. DONT USE!", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

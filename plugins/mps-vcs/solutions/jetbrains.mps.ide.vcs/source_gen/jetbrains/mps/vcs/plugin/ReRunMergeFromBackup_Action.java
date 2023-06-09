@@ -55,6 +55,7 @@ public class ReRunMergeFromBackup_Action extends BaseAction {
     super("Rerun Merge from Backup", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

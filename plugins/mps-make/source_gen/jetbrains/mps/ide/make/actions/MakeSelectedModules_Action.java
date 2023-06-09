@@ -20,6 +20,7 @@ public class MakeSelectedModules_Action extends BaseAction {
     super("Make Module", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

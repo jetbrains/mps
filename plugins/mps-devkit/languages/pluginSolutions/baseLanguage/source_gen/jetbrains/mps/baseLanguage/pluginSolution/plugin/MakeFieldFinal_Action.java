@@ -26,6 +26,7 @@ public class MakeFieldFinal_Action extends BaseAction {
     super("Make Field Final", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

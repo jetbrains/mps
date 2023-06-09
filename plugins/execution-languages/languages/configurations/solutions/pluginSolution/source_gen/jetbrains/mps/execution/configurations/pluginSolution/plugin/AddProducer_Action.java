@@ -31,6 +31,7 @@ public class AddProducer_Action extends BaseAction {
     super("Add Producer", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

@@ -27,6 +27,7 @@ public class DeleteBreakpointAction_Action extends BaseAction {
     super("Delete", "Delete Breakpoint", ICON);
     this.setIsAlwaysVisible(true);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

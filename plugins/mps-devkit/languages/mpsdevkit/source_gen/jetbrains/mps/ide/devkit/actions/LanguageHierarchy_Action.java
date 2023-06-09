@@ -25,6 +25,7 @@ public class LanguageHierarchy_Action extends BaseAction {
     super("Language Diagram", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

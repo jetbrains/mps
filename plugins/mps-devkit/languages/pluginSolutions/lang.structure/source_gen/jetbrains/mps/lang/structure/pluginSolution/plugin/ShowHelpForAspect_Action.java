@@ -20,6 +20,7 @@ public class ShowHelpForAspect_Action extends BaseAction {
     super("Show Help for Aspect", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

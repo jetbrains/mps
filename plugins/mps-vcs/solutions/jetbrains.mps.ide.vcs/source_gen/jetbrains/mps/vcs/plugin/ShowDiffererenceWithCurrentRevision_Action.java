@@ -31,6 +31,7 @@ public class ShowDiffererenceWithCurrentRevision_Action extends BaseAction {
     super("Compare with the Same Repository Version", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

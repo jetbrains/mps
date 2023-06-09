@@ -23,6 +23,7 @@ public class GoToConceptDeclaration_Action extends BaseAction {
     super("Concept Declaration", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

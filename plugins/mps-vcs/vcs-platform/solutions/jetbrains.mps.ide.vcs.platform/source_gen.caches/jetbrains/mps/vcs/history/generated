@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="bsg5pbw2iwnop4ipvjdmch3anvac5u1">
+<product version="3" modelHash="-5pmiv7zywirqfd22nzgbhigm3md43pj">
   <files names="CommitsGraph.java:CommitsGraphNode.java:CommitsGraphNodeConsumer.java:RootCommitsGraphTraverser.java" />
 </product>
 

@@ -29,6 +29,7 @@ public class AddModuleToVcs_Action extends BaseAction {
     super("Add Module to VCS", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

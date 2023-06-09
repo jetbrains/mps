@@ -29,6 +29,7 @@ public class CopyValueAction_Action extends BaseAction {
     super("Copy Value", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

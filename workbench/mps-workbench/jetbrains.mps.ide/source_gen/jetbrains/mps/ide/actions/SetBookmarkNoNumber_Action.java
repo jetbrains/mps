@@ -25,6 +25,7 @@ public class SetBookmarkNoNumber_Action extends BaseAction {
     super("Set Bookmark", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

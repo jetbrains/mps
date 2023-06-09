@@ -23,6 +23,7 @@ public class MakeProject_Action extends BaseAction {
     super("Make _Project", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

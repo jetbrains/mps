@@ -26,6 +26,7 @@ public class CheckModule_Action extends BaseAction {
     super("Check [Module]", "Check [module] for structure and typesystem rules", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
     this.addPlace(null);
   }
   @Override

@@ -33,6 +33,7 @@ public class RenameMethod_Action extends BaseAction {
     super("Rename Method", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

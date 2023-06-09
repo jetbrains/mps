@@ -37,6 +37,7 @@ public class MigrateSourcesToMPS_Action extends BaseAction {
     super("Migrate Sources to MPS", "For a module with Java source paths, convert these into MPS models", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

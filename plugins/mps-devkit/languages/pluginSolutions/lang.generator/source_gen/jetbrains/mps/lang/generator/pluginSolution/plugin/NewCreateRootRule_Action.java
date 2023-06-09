@@ -35,6 +35,7 @@ public class NewCreateRootRule_Action extends BaseAction {
     super("Create Conditional Root Rule", "Creates new 'conditional root rule' for a root template (unless such rule already exists)", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

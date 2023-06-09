@@ -1209,86 +1209,87 @@
       <node id="3467203700125709751" at="25,37,26,43" concept="15" />
       <node id="3467203700125709751" at="26,43,27,35" concept="4" />
       <node id="3467203700125709751" at="27,35,28,40" concept="4" />
-      <node id="3467203700125709751" at="31,32,32,16" concept="10" />
-      <node id="6308040072501489430" at="35,87,36,82" concept="11" />
-      <node id="6395870068822000510" at="36,82,37,306" concept="10" />
-      <node id="3467203700125709751" at="40,89,41,85" concept="4" />
-      <node id="3467203700125709751" at="45,53,46,19" concept="10" />
-      <node id="6308040072501299055" at="48,5,49,66" concept="9" />
-      <node id="6308040072501299055" at="49,66,50,53" concept="4" />
-      <node id="6308040072501299056" at="51,22,52,21" concept="10" />
-      <node id="3467203700125709754" at="55,5,56,66" concept="9" />
-      <node id="3467203700125709754" at="56,66,57,52" concept="4" />
-      <node id="3467203700125709755" at="58,22,59,21" concept="10" />
-      <node id="3467203700125709756" at="62,5,63,64" concept="9" />
-      <node id="3467203700125709756" at="63,64,64,51" concept="4" />
-      <node id="3467203700125709751" at="65,5,66,16" concept="10" />
-      <node id="6308040072501323086" at="69,96,70,149" concept="9" />
-      <node id="1772779778784057760" at="70,149,71,73" concept="4" />
-      <node id="6308040072501303539" at="72,71,73,83" concept="4" />
-      <node id="6308040072501325753" at="74,12,75,98" concept="4" />
-      <node id="1772779778784055643" at="78,104,79,148" concept="11" />
-      <node id="6308040072501325340" at="74,10,76,5" concept="1" />
-      <node id="3467203700125709751" at="44,95,47,5" concept="7" />
-      <node id="6308040072501299056" at="50,53,53,7" concept="7" />
-      <node id="3467203700125709755" at="57,52,60,7" concept="7" />
-      <node id="1772779778784047982" at="78,0,81,0" concept="8" trace="configureImportHelper#(Ljetbrains/mps/project/LanguageImportHelper;Ljava/util/Map;)V" />
-      <node id="3467203700125709751" at="30,0,34,0" concept="8" trace="isDumbAware#()Z" />
-      <node id="3467203700125709751" at="39,0,43,0" concept="8" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="3467203700125709756" at="61,5,65,5" concept="1" />
-      <node id="3467203700125709751" at="25,0,30,0" concept="2" trace="AddLanguageImport_Action#()V" />
-      <node id="3467203700125709751" at="34,0,39,0" concept="8" trace="isApplicable#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <node id="6308040072501323775" at="71,73,76,5" concept="7" />
-      <node id="6308040072501299055" at="47,5,54,5" concept="1" />
-      <node id="3467203700125709754" at="54,5,61,5" concept="1" />
-      <node id="3467203700125709751" at="68,0,78,0" concept="8" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="3467203700125709751" at="43,0,68,0" concept="8" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <scope id="3467203700125709751" at="31,32,32,16" />
-      <scope id="3467203700125709751" at="40,89,41,85" />
-      <scope id="3467203700125709751" at="45,53,46,19" />
-      <scope id="6308040072501299056" at="51,22,52,21" />
-      <scope id="3467203700125709755" at="58,22,59,21" />
-      <scope id="6308040072501323777" at="72,71,73,83" />
-      <scope id="6308040072501325341" at="74,12,75,98" />
-      <scope id="1772779778784047984" at="78,104,79,148" />
-      <scope id="6395870068821999960" at="35,87,37,306" />
-      <scope id="3467203700125709756" at="62,5,64,51">
+      <node id="3467203700125709751" at="28,40,29,29" concept="4" />
+      <node id="3467203700125709751" at="32,32,33,16" concept="10" />
+      <node id="6308040072501489430" at="36,87,37,82" concept="11" />
+      <node id="6395870068822000510" at="37,82,38,306" concept="10" />
+      <node id="3467203700125709751" at="41,89,42,85" concept="4" />
+      <node id="3467203700125709751" at="46,53,47,19" concept="10" />
+      <node id="6308040072501299055" at="49,5,50,66" concept="9" />
+      <node id="6308040072501299055" at="50,66,51,53" concept="4" />
+      <node id="6308040072501299056" at="52,22,53,21" concept="10" />
+      <node id="3467203700125709754" at="56,5,57,66" concept="9" />
+      <node id="3467203700125709754" at="57,66,58,52" concept="4" />
+      <node id="3467203700125709755" at="59,22,60,21" concept="10" />
+      <node id="3467203700125709756" at="63,5,64,64" concept="9" />
+      <node id="3467203700125709756" at="64,64,65,51" concept="4" />
+      <node id="3467203700125709751" at="66,5,67,16" concept="10" />
+      <node id="6308040072501323086" at="70,96,71,149" concept="9" />
+      <node id="1772779778784057760" at="71,149,72,73" concept="4" />
+      <node id="6308040072501303539" at="73,71,74,83" concept="4" />
+      <node id="6308040072501325753" at="75,12,76,98" concept="4" />
+      <node id="1772779778784055643" at="79,104,80,148" concept="11" />
+      <node id="6308040072501325340" at="75,10,77,5" concept="1" />
+      <node id="3467203700125709751" at="45,95,48,5" concept="7" />
+      <node id="6308040072501299056" at="51,53,54,7" concept="7" />
+      <node id="3467203700125709755" at="58,52,61,7" concept="7" />
+      <node id="1772779778784047982" at="79,0,82,0" concept="8" trace="configureImportHelper#(Ljetbrains/mps/project/LanguageImportHelper;Ljava/util/Map;)V" />
+      <node id="3467203700125709751" at="31,0,35,0" concept="8" trace="isDumbAware#()Z" />
+      <node id="3467203700125709751" at="40,0,44,0" concept="8" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="3467203700125709756" at="62,5,66,5" concept="1" />
+      <node id="3467203700125709751" at="35,0,40,0" concept="8" trace="isApplicable#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
+      <node id="6308040072501323775" at="72,73,77,5" concept="7" />
+      <node id="3467203700125709751" at="25,0,31,0" concept="2" trace="AddLanguageImport_Action#()V" />
+      <node id="6308040072501299055" at="48,5,55,5" concept="1" />
+      <node id="3467203700125709754" at="55,5,62,5" concept="1" />
+      <node id="3467203700125709751" at="69,0,79,0" concept="8" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="3467203700125709751" at="44,0,69,0" concept="8" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
+      <scope id="3467203700125709751" at="32,32,33,16" />
+      <scope id="3467203700125709751" at="41,89,42,85" />
+      <scope id="3467203700125709751" at="46,53,47,19" />
+      <scope id="6308040072501299056" at="52,22,53,21" />
+      <scope id="3467203700125709755" at="59,22,60,21" />
+      <scope id="6308040072501323777" at="73,71,74,83" />
+      <scope id="6308040072501325341" at="75,12,76,98" />
+      <scope id="1772779778784047984" at="79,104,80,148" />
+      <scope id="6395870068821999960" at="36,87,38,306" />
+      <scope id="3467203700125709756" at="63,5,65,51">
         <var name="p" id="3467203700125709756" />
       </scope>
-      <scope id="3467203700125709751" at="25,37,28,40" />
-      <scope id="1772779778784047982" at="78,0,81,0">
+      <scope id="1772779778784047982" at="79,0,82,0">
         <var name="_params" id="1772779778784047982" />
         <var name="helper" id="1772779778784051315" />
       </scope>
-      <scope id="3467203700125709751" at="30,0,34,0" />
-      <scope id="3467203700125709751" at="39,0,43,0">
+      <scope id="3467203700125709751" at="25,37,29,29" />
+      <scope id="3467203700125709751" at="31,0,35,0" />
+      <scope id="3467203700125709751" at="40,0,44,0">
         <var name="_params" id="3467203700125709751" />
         <var name="event" id="3467203700125709751" />
       </scope>
-      <scope id="3467203700125709751" at="25,0,30,0" />
-      <scope id="3467203700125709751" at="34,0,39,0">
+      <scope id="3467203700125709751" at="35,0,40,0">
         <var name="_params" id="3467203700125709751" />
         <var name="event" id="3467203700125709751" />
       </scope>
-      <scope id="6308040072501299055" at="48,5,53,7">
+      <scope id="6308040072501299055" at="49,5,54,7">
         <var name="p" id="6308040072501299055" />
       </scope>
-      <scope id="3467203700125709754" at="55,5,60,7">
+      <scope id="3467203700125709754" at="56,5,61,7">
         <var name="p" id="3467203700125709754" />
       </scope>
-      <scope id="3467203700125709751" at="69,96,76,5">
+      <scope id="3467203700125709751" at="25,0,31,0" />
+      <scope id="3467203700125709751" at="70,96,77,5">
         <var name="helper" id="6308040072501323087" />
       </scope>
-      <scope id="3467203700125709751" at="68,0,78,0">
+      <scope id="3467203700125709751" at="69,0,79,0">
         <var name="_params" id="3467203700125709751" />
         <var name="event" id="3467203700125709751" />
       </scope>
-      <scope id="3467203700125709751" at="44,95,66,16" />
-      <scope id="3467203700125709751" at="43,0,68,0">
+      <scope id="3467203700125709751" at="45,95,67,16" />
+      <scope id="3467203700125709751" at="44,0,69,0">
         <var name="_params" id="3467203700125709751" />
         <var name="event" id="3467203700125709751" />
       </scope>
-      <unit id="3467203700125709751" at="21,0,82,0" name="jetbrains.mps.ide.editor.actions.AddLanguageImport_Action" />
+      <unit id="3467203700125709751" at="21,0,83,0" name="jetbrains.mps.ide.editor.actions.AddLanguageImport_Action" />
     </file>
   </root>
   <root nodeRef="r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)/3467203700125709779">
@@ -3430,66 +3431,67 @@
       <node id="693268764742355428" at="24,34,25,34" concept="15" />
       <node id="693268764742355428" at="25,34,26,35" concept="4" />
       <node id="693268764742355428" at="26,35,27,52" concept="4" />
-      <node id="693268764742355428" at="30,32,31,16" concept="10" />
-      <node id="693268764742411696" at="34,87,35,114" concept="10" />
-      <node id="693268764742355428" at="38,89,39,85" concept="4" />
-      <node id="693268764742355428" at="43,53,44,19" concept="10" />
-      <node id="693268764742355431" at="46,5,47,57" concept="9" />
-      <node id="693268764742355431" at="48,84,49,20" concept="4" />
-      <node id="693268764742355432" at="51,25,52,21" concept="10" />
-      <node id="693268764742355428" at="54,5,55,16" concept="10" />
-      <node id="693268764742355452" at="58,96,59,92" concept="4" />
-      <node id="693268764742518146" at="61,55,62,43" concept="10" />
-      <node id="693268764742355428" at="66,0,67,0" concept="13" trace="url$SIrt" />
-      <node id="693268764742355428" at="70,0,71,0" concept="13" trace="Word$Dn" />
-      <node id="693268764742355428" at="42,95,45,5" concept="7" />
-      <node id="693268764742355431" at="47,57,50,7" concept="7" />
-      <node id="693268764742355432" at="50,7,53,7" concept="7" />
-      <node id="693268764742518146" at="61,0,64,0" concept="14" trace="isNotEmptyString#(Ljava/lang/String;)Z" />
-      <node id="693268764742355428" at="29,0,33,0" concept="8" trace="isDumbAware#()Z" />
-      <node id="693268764742355428" at="33,0,37,0" concept="8" trace="isApplicable#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <node id="693268764742355428" at="37,0,41,0" concept="8" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="693268764742355428" at="57,0,61,0" concept="8" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="693268764742355428" at="24,0,29,0" concept="2" trace="WordRemoveLink_Action#()V" />
-      <node id="693268764742355431" at="45,5,54,5" concept="1" />
-      <node id="693268764742355428" at="41,0,57,0" concept="8" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <scope id="693268764742355428" at="30,32,31,16" />
-      <scope id="693268764742411040" at="34,87,35,114" />
-      <scope id="693268764742355428" at="38,89,39,85" />
-      <scope id="693268764742355428" at="43,53,44,19" />
-      <scope id="693268764742355431" at="48,84,49,20" />
-      <scope id="693268764742355432" at="51,25,52,21" />
-      <scope id="693268764742355428" at="58,96,59,92" />
-      <scope id="693268764742518146" at="61,55,62,43" />
-      <scope id="693268764742355428" at="24,34,27,52" />
-      <scope id="693268764742518146" at="61,0,64,0">
+      <node id="693268764742355428" at="27,52,28,29" concept="4" />
+      <node id="693268764742355428" at="31,32,32,16" concept="10" />
+      <node id="693268764742411696" at="35,87,36,114" concept="10" />
+      <node id="693268764742355428" at="39,89,40,85" concept="4" />
+      <node id="693268764742355428" at="44,53,45,19" concept="10" />
+      <node id="693268764742355431" at="47,5,48,57" concept="9" />
+      <node id="693268764742355431" at="49,84,50,20" concept="4" />
+      <node id="693268764742355432" at="52,25,53,21" concept="10" />
+      <node id="693268764742355428" at="55,5,56,16" concept="10" />
+      <node id="693268764742355452" at="59,96,60,92" concept="4" />
+      <node id="693268764742518146" at="62,55,63,43" concept="10" />
+      <node id="693268764742355428" at="67,0,68,0" concept="13" trace="url$SIrt" />
+      <node id="693268764742355428" at="71,0,72,0" concept="13" trace="Word$Dn" />
+      <node id="693268764742355428" at="43,95,46,5" concept="7" />
+      <node id="693268764742355431" at="48,57,51,7" concept="7" />
+      <node id="693268764742355432" at="51,7,54,7" concept="7" />
+      <node id="693268764742518146" at="62,0,65,0" concept="14" trace="isNotEmptyString#(Ljava/lang/String;)Z" />
+      <node id="693268764742355428" at="30,0,34,0" concept="8" trace="isDumbAware#()Z" />
+      <node id="693268764742355428" at="34,0,38,0" concept="8" trace="isApplicable#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
+      <node id="693268764742355428" at="38,0,42,0" concept="8" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="693268764742355428" at="58,0,62,0" concept="8" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="693268764742355428" at="24,0,30,0" concept="2" trace="WordRemoveLink_Action#()V" />
+      <node id="693268764742355431" at="46,5,55,5" concept="1" />
+      <node id="693268764742355428" at="42,0,58,0" concept="8" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
+      <scope id="693268764742355428" at="31,32,32,16" />
+      <scope id="693268764742411040" at="35,87,36,114" />
+      <scope id="693268764742355428" at="39,89,40,85" />
+      <scope id="693268764742355428" at="44,53,45,19" />
+      <scope id="693268764742355431" at="49,84,50,20" />
+      <scope id="693268764742355432" at="52,25,53,21" />
+      <scope id="693268764742355428" at="59,96,60,92" />
+      <scope id="693268764742518146" at="62,55,63,43" />
+      <scope id="693268764742518146" at="62,0,65,0">
         <var name="str" id="693268764742518146" />
       </scope>
-      <scope id="693268764742355428" at="29,0,33,0" />
-      <scope id="693268764742355428" at="33,0,37,0">
+      <scope id="693268764742355428" at="24,34,28,29" />
+      <scope id="693268764742355428" at="30,0,34,0" />
+      <scope id="693268764742355428" at="34,0,38,0">
         <var name="_params" id="693268764742355428" />
         <var name="event" id="693268764742355428" />
       </scope>
-      <scope id="693268764742355428" at="37,0,41,0">
+      <scope id="693268764742355428" at="38,0,42,0">
         <var name="_params" id="693268764742355428" />
         <var name="event" id="693268764742355428" />
       </scope>
-      <scope id="693268764742355428" at="57,0,61,0">
+      <scope id="693268764742355428" at="58,0,62,0">
         <var name="_params" id="693268764742355428" />
         <var name="event" id="693268764742355428" />
       </scope>
-      <scope id="693268764742355428" at="24,0,29,0" />
-      <scope id="693268764742355431" at="46,5,53,7">
+      <scope id="693268764742355428" at="24,0,30,0" />
+      <scope id="693268764742355431" at="47,5,54,7">
         <var name="node" id="693268764742355431" />
       </scope>
-      <scope id="693268764742355428" at="42,95,55,16" />
-      <scope id="693268764742355428" at="41,0,57,0">
+      <scope id="693268764742355428" at="43,95,56,16" />
+      <scope id="693268764742355428" at="42,0,58,0">
         <var name="_params" id="693268764742355428" />
         <var name="event" id="693268764742355428" />
       </scope>
-      <unit id="693268764742355428" at="65,0,68,0" name="jetbrains.mps.ide.editor.actions.WordRemoveLink_Action$PROPS" />
-      <unit id="693268764742355428" at="69,0,72,0" name="jetbrains.mps.ide.editor.actions.WordRemoveLink_Action$CONCEPTS" />
-      <unit id="693268764742355428" at="20,0,73,0" name="jetbrains.mps.ide.editor.actions.WordRemoveLink_Action" />
+      <unit id="693268764742355428" at="66,0,69,0" name="jetbrains.mps.ide.editor.actions.WordRemoveLink_Action$PROPS" />
+      <unit id="693268764742355428" at="70,0,73,0" name="jetbrains.mps.ide.editor.actions.WordRemoveLink_Action$CONCEPTS" />
+      <unit id="693268764742355428" at="20,0,74,0" name="jetbrains.mps.ide.editor.actions.WordRemoveLink_Action" />
     </file>
   </root>
   <root nodeRef="r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)/7589693931096220921">

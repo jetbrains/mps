@@ -21,6 +21,7 @@ public class AddWatchAction_Action extends BaseAction {
     super("New Watch...", "New Watch...", ICON);
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
