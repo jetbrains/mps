@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -206,7 +206,7 @@ public abstract class BaseBHDescriptor implements BHDescriptor {
       throw new IllegalArgumentException("Concept of the passed constructor and the concept of the descriptor must coincide");
     }
     SNode node = SModelOperations.createNewNode(model, null, myConcept);
-    new ConstructionHandler(myAncestorCache, myConcept).initNode(node, constructor, getParametersArray(Collections.emptyList(), parameters));
+    new ConstructionHandler(myAncestorCache, myConcept, myBehaviorRegistry).initNode(node, constructor, getParametersArray(Collections.emptyList(), parameters));
     return node;
   }
 
@@ -219,7 +219,7 @@ public abstract class BaseBHDescriptor implements BHDescriptor {
   public void initNode(@NotNull SNode node) {
     SConstructor defaultConstructor = new SDefaultConstructorImpl(this, AccessPrivileges.PUBLIC);
     Object[] emptyParameters = new Object[0];
-    new ConstructionHandler(myAncestorCache, myConcept).initNode(node, defaultConstructor,
+    new ConstructionHandler(myAncestorCache, myConcept, myBehaviorRegistry).initNode(node, defaultConstructor,
                                                                  getParametersArray(Collections.emptyList(), emptyParameters));
   }
 
@@ -305,30 +305,29 @@ public abstract class BaseBHDescriptor implements BHDescriptor {
   }
 
   private <T> T invokeVirtual(@NotNull SNode operand, @NotNull SMethod<T> method, Object... parameters) {
-    BHDescriptor descriptor = findDescriptorByVirtualMethod(method, false);
+    BHDescriptor descriptor = findDescriptorByVirtualMethod(method, myVTable);
     return descriptor.invokeSpecial(operand, method, parameters);
   }
 
   private <T> T invokeVirtual(@NotNull SAbstractConcept operand, @NotNull SMethod<T> method, Object... parameters) {
-    BHDescriptor descriptor = findDescriptorByVirtualMethod(method, false);
+    BHDescriptor descriptor = findDescriptorByVirtualMethod(method, myVTable);
     return descriptor.invokeSpecial(operand, method, parameters);
   }
 
   private <T> T invokeVirtualSuper(SNode operand, SMethod<T> method, Object... parameters) {
-    BHDescriptor descriptor = findDescriptorByVirtualMethod(method, true);
+    BHDescriptor descriptor = findDescriptorByVirtualMethod(method, mySuperVTable);
     return descriptor.invokeSpecial(operand, method, parameters);
   }
 
   private <T> T invokeVirtualSuper(SAbstractConcept operand, SMethod<T> method, Object... parameters) {
-    BHDescriptor descriptor = findDescriptorByVirtualMethod(method, true);
+    BHDescriptor descriptor = findDescriptorByVirtualMethod(method, mySuperVTable);
     return descriptor.invokeSpecial(operand, method, parameters);
   }
 
   @NotNull
-  private <T> BHDescriptor findDescriptorByVirtualMethod(SMethod<T> method, boolean superOnly) {
+  private <T> BHDescriptor findDescriptorByVirtualMethod(SMethod<T> method, SMethodVirtualTable vtable) {
     assert method.isVirtual();
-    SMethod<?> methodImplementation = superOnly ? mySuperVTable.get(method.getId())
-                                                : myVTable.get(method.getId());
+    SMethod<?> methodImplementation = vtable.get(method.getId());
     if (methodImplementation == null) {
       throw new BHMethodIsNotFoundInVTable(this, method);
     }
@@ -449,13 +448,15 @@ public abstract class BaseBHDescriptor implements BHDescriptor {
     return getConcept() + " BHDescriptor";
   }
 
-  private final class ConstructionHandler {
+  private final static class ConstructionHandler {
     private final AncestorCache myAncestorCache;
     private final SAbstractConcept myConcept;
+    private final BehaviorRegistry myRegistry;
 
-    public ConstructionHandler(AncestorCache ancestorCache, SAbstractConcept concept) {
+    public ConstructionHandler(AncestorCache ancestorCache, SAbstractConcept concept, BehaviorRegistry registry) {
       myAncestorCache = ancestorCache;
       myConcept = concept;
+      myRegistry = registry;
     }
 
     public void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
@@ -463,7 +464,7 @@ public abstract class BaseBHDescriptor implements BHDescriptor {
       //This should be considered a hack and removed when possible
       assert myConcept.getQualifiedName().equals(node.getConcept().getQualifiedName()) : "myConcept=" + myConcept + "; node.concept=" + node.getConcept();
       for (SAbstractConcept ancestor : myAncestorCache.getAncestorsConstructionOrder()) {
-        BHDescriptor ancestorDescriptor = BaseBHDescriptor.this.getBHDescriptor(ancestor);
+        BHDescriptor ancestorDescriptor = myRegistry.getBHDescriptor(ancestor);
         if (ancestorDescriptor instanceof BaseBHDescriptor) {
           ((BaseBHDescriptor) ancestorDescriptor).initNode(node, constructor, parameters);
         }
