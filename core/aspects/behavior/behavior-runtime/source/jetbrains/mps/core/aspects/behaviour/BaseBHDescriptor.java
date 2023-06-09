@@ -242,7 +242,12 @@ public abstract class BaseBHDescriptor implements BHDescriptor {
         checkParameters(this, method, parametersArray);
         return invokeSpecial0(operand, method, parametersArray);
       }
-      return invokeNonVirtualCommon(NodeOrConcept.create(operand), method, parameters);
+      BHDescriptor descriptor = findDescriptorWithDeclaredMethod(method);
+      if (descriptor != null) {
+        // XXX would be great to skip invokeSpecial() and go right into invokeSpecial0(), but it's not part of BHDescriptor API
+        return descriptor.invokeSpecial(operand, method, parameters);
+      }
+      throw new BHMethodNotFoundException(this, method);
     }
   }
 
@@ -260,7 +265,11 @@ public abstract class BaseBHDescriptor implements BHDescriptor {
         checkParameters(this, method, parametersArray); // XXX can't we have this as part of getParametersArray()?
         return invokeSpecial0(operand, method, parametersArray);
       }
-      return invokeNonVirtualCommon(NodeOrConcept.create(operand), method, parameters);
+      BHDescriptor descriptor = findDescriptorWithDeclaredMethod(method);
+      if (descriptor != null) {
+        return descriptor.invokeSpecial(operand, method, parameters);
+      }
+      throw new BHMethodNotFoundException(this, method);
     }
   }
 
@@ -284,23 +293,15 @@ public abstract class BaseBHDescriptor implements BHDescriptor {
     return invokeVirtualSuper(operand, method, parameters);
   }
 
-  private <T> T invokeNonVirtualCommon(@NotNull NodeOrConcept nodeOrConcept, @NotNull SMethod<T> method, Object... parameters) {
-    checkDescriptorIsInitialized();
-    checkForConcept(nodeOrConcept.getConcept(), myConcept);
-
-    Iterable<SAbstractConcept> ancestors = myAncestorCache.getAncestorsInvocationOrder();
-    for (SAbstractConcept ancestor : ancestors) {
+  @Nullable
+  private BHDescriptor findDescriptorWithDeclaredMethod(SMethod<?> method) {
+    for (SAbstractConcept ancestor : myAncestorCache.getAncestorsInvocationOrder()) {
       BHDescriptor descriptor = getBHDescriptor(ancestor);
       if (hasDeclaredMethod(descriptor, method)) {
-        // would be great to skip invokeSpecial() and go right into invokeSpecial0(), but it's not past of BHDescriptor API
-        if (nodeOrConcept.getNode() != null) {
-          return descriptor.invokeSpecial(nodeOrConcept.getNode(), method, parameters);
-        } else {
-          return descriptor.invokeSpecial(nodeOrConcept.getConcept(), method, parameters);
-        }
+        return descriptor;
       }
     }
-    throw new BHMethodNotFoundException(this, method);
+    return null;
   }
 
   private <T> T invokeVirtual(@NotNull SNode operand, @NotNull SMethod<T> method, Object... parameters) {
@@ -341,10 +342,8 @@ public abstract class BaseBHDescriptor implements BHDescriptor {
     checkDescriptorIsInitialized();
     checkNotStatic(method);
     checkForConcept(operand.getConcept(), myConcept);
-    @Nullable Object[] parametersArray = getParametersArray(method.getParameters(), parameters);
-    if (parametersArray != null) {
-      checkParameters(this, method, parametersArray);
-    }
+    Object[] parametersArray = getParametersArray(method.getParameters(), parameters);
+    checkParameters(this, method, parametersArray);
     return invokeSpecial0(operand, method, parametersArray);
   }
 
@@ -353,10 +352,8 @@ public abstract class BaseBHDescriptor implements BHDescriptor {
     checkDescriptorIsInitialized();
     checkStatic(method);
     checkForConcept(operand, myConcept);
-    @Nullable Object[] parametersArray = getParametersArray(method.getParameters(), parameters);
-    if (parametersArray != null) {
-      checkParameters(this, method, parametersArray);
-    }
+    Object[] parametersArray = getParametersArray(method.getParameters(), parameters);
+    checkParameters(this, method, parametersArray);
     return invokeSpecial0(operand, method, parametersArray);
   }
 
