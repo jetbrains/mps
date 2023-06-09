@@ -7,8 +7,11 @@ import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.ThrowableComputable;
+import com.intellij.openapi.util.Computable;
+import java.util.Collection;
 import com.intellij.psi.search.FilenameIndex;
 import com.intellij.psi.search.GlobalSearchScope;
+import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import com.intellij.openapi.progress.ProcessCanceledException;
@@ -41,7 +44,8 @@ public final class FileOpenUtil {
     }
     ThrowableComputable<VirtualFile, RuntimeException> f = () -> {
       try {
-        Iterable<VirtualFile> vfByName = FilenameIndex.getVirtualFilesByName(fileName, GlobalSearchScope.allScope(project));
+        Computable<Collection<VirtualFile>> computable = () -> FilenameIndex.getVirtualFilesByName(fileName, GlobalSearchScope.allScope(project));
+        Iterable<VirtualFile> vfByName = ApplicationManager.getApplication().runReadAction(computable);
         return Sequence.fromIterable(vfByName).where(new IWhereFilter<VirtualFile>() {
           public boolean accept(VirtualFile it) {
             return it.getPath().endsWith(fullFileName);

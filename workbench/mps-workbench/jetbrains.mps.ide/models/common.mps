@@ -18,6 +18,8 @@
     <import index="xygl" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.progress(MPS.IDEA/)" />
     <import index="9w4s" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util(MPS.IDEA/)" />
     <import index="zn9m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util(MPS.IDEA/)" />
+    <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
+    <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -437,6 +439,7 @@
       <property role="TrG5h" value="findFile" />
       <node concept="37vLTG" id="3EnpNH2_Hxc" role="3clF46">
         <property role="TrG5h" value="project" />
+        <property role="3TUv4t" value="true" />
         <node concept="3uibUv" id="3EnpNH2_Hxd" role="1tU5fm">
           <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
         </node>
@@ -447,6 +450,7 @@
       </node>
       <node concept="37vLTG" id="3EnpNH2_Hxg" role="3clF46">
         <property role="TrG5h" value="fileName" />
+        <property role="3TUv4t" value="true" />
         <node concept="17QB3L" id="3EnpNH2_Hxh" role="1tU5fm" />
       </node>
       <node concept="3Tm1VV" id="3EnpNH2_Hxi" role="1B3o_S" />
@@ -650,6 +654,40 @@
               <node concept="3clFbS" id="3k7bCdNBtz6" role="1bW5cS">
                 <node concept="3J1_TO" id="785kb9uCfx" role="3cqZAp">
                   <node concept="3clFbS" id="785kb9uCfz" role="1zxBo7">
+                    <node concept="3cpWs8" id="7xq9s0I0Old" role="3cqZAp">
+                      <node concept="3cpWsn" id="7xq9s0I0Ole" role="3cpWs9">
+                        <property role="TrG5h" value="computable" />
+                        <node concept="3uibUv" id="7xq9s0I0Olc" role="1tU5fm">
+                          <ref role="3uigEE" to="zn9m:~Computable" resolve="Computable" />
+                          <node concept="3uibUv" id="4XspCveWEmU" role="11_B2D">
+                            <ref role="3uigEE" to="33ny:~Collection" resolve="Collection" />
+                            <node concept="3uibUv" id="4XspCveWEmX" role="11_B2D">
+                              <ref role="3uigEE" to="jlff:~VirtualFile" resolve="VirtualFile" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="1bVj0M" id="4XspCveW$Vp" role="33vP2m">
+                          <node concept="3clFbS" id="4XspCveW$VF" role="1bW5cS">
+                            <node concept="3clFbF" id="4XspCveW_eF" role="3cqZAp">
+                              <node concept="2YIFZM" id="7xq9s0I0Oln" role="3clFbG">
+                                <ref role="1Pybhc" to="fpru:~FilenameIndex" resolve="FilenameIndex" />
+                                <ref role="37wK5l" to="fpru:~FilenameIndex.getVirtualFilesByName(java.lang.String,com.intellij.psi.search.GlobalSearchScope)" resolve="getVirtualFilesByName" />
+                                <node concept="37vLTw" id="7xq9s0I0Olo" role="37wK5m">
+                                  <ref role="3cqZAo" node="3EnpNH2_Hxg" resolve="fileName" />
+                                </node>
+                                <node concept="2YIFZM" id="7xq9s0I0Olp" role="37wK5m">
+                                  <ref role="37wK5l" to="fpru:~GlobalSearchScope.allScope(com.intellij.openapi.project.Project)" resolve="allScope" />
+                                  <ref role="1Pybhc" to="fpru:~GlobalSearchScope" resolve="GlobalSearchScope" />
+                                  <node concept="37vLTw" id="7xq9s0I0Olq" role="37wK5m">
+                                    <ref role="3cqZAo" node="3EnpNH2_Hxc" resolve="project" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
                     <node concept="3cpWs8" id="3k7bCdNBtz7" role="3cqZAp">
                       <node concept="3cpWsn" id="3k7bCdNBtz8" role="3cpWs9">
                         <property role="TrG5h" value="vfByName" />
@@ -658,17 +696,15 @@
                             <ref role="3uigEE" to="jlff:~VirtualFile" resolve="VirtualFile" />
                           </node>
                         </node>
-                        <node concept="2YIFZM" id="3k7bCdNBtzb" role="33vP2m">
-                          <ref role="1Pybhc" to="fpru:~FilenameIndex" resolve="FilenameIndex" />
-                          <ref role="37wK5l" to="fpru:~FilenameIndex.getVirtualFilesByName(java.lang.String,com.intellij.psi.search.GlobalSearchScope)" resolve="getVirtualFilesByName" />
-                          <node concept="37vLTw" id="3k7bCdNBtzd" role="37wK5m">
-                            <ref role="3cqZAo" node="3EnpNH2_Hxg" resolve="fileName" />
+                        <node concept="2OqwBi" id="6cQtqw75w6Z" role="33vP2m">
+                          <node concept="2YIFZM" id="6cQtqw75vHw" role="2Oq$k0">
+                            <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+                            <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
                           </node>
-                          <node concept="2YIFZM" id="3k7bCdNBtze" role="37wK5m">
-                            <ref role="37wK5l" to="fpru:~GlobalSearchScope.allScope(com.intellij.openapi.project.Project)" resolve="allScope" />
-                            <ref role="1Pybhc" to="fpru:~GlobalSearchScope" resolve="GlobalSearchScope" />
-                            <node concept="37vLTw" id="3k7bCdNBtzf" role="37wK5m">
-                              <ref role="3cqZAo" node="3EnpNH2_Hxc" resolve="project" />
+                          <node concept="liA8E" id="6cQtqw75wKJ" role="2OqNvi">
+                            <ref role="37wK5l" to="bd8o:~Application.runReadAction(com.intellij.openapi.util.Computable)" resolve="runReadAction" />
+                            <node concept="37vLTw" id="7xq9s0I0Olw" role="37wK5m">
+                              <ref role="3cqZAo" node="7xq9s0I0Ole" resolve="computable" />
                             </node>
                           </node>
                         </node>
