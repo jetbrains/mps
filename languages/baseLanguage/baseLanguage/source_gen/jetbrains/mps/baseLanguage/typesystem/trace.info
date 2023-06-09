@@ -10408,51 +10408,52 @@
       </scope>
     </file>
     <file name="check_StringTypeClassifierType_NonTypesystemRule.java">
-      <node id="1225197259595" at="26,7,27,66" concept="12" />
-      <node id="1225197259595" at="27,66,28,239" concept="12" />
-      <node id="3383150178652417884" at="29,9,30,170" concept="12" />
-      <node id="3383150178652417885" at="30,170,31,65" concept="6" />
-      <node id="3383150178652417884" at="31,65,32,71" concept="6" />
-      <node id="1225197179133" at="37,50,38,38" concept="13" />
-      <node id="1225197179133" at="40,68,41,102" concept="13" />
-      <node id="1225197179133" at="43,30,44,17" concept="13" />
-      <node id="1225197179133" at="48,0,49,0" concept="16" trace="classifier$cxMr" />
-      <node id="1225197179133" at="52,0,53,0" concept="16" trace="ClassifierType$bL" />
-      <node id="1225197179133" at="22,0,24,0" concept="3" trace="check_StringTypeClassifierType_NonTypesystemRule#()V" />
-      <node id="1225197179133" at="37,0,40,0" concept="11" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="1225197179133" at="40,0,43,0" concept="11" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="1225197179133" at="43,0,46,0" concept="11" trace="overrides#()Z" />
-      <node id="3383150178652417884" at="28,239,33,9" concept="1" />
-      <node id="1225197259595" at="25,156,34,7" concept="1" />
-      <node id="1225197241294" at="24,117,35,5" concept="10" />
-      <node id="1225197179133" at="24,0,37,0" concept="11" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-      <scope id="1225197179133" at="22,61,22,61" />
-      <scope id="1225197179133" at="37,50,38,38" />
-      <scope id="1225197179133" at="40,68,41,102" />
-      <scope id="1225197179133" at="43,30,44,17" />
-      <scope id="1225197179133" at="22,0,24,0" />
-      <scope id="3383150178652417884" at="29,9,32,71">
+      <node id="1225197259595" at="28,7,29,66" concept="12" />
+      <node id="1225197259595" at="29,66,30,239" concept="12" />
+      <node id="3383150178652417884" at="31,9,32,170" concept="12" />
+      <node id="3383150178652417885" at="32,170,33,65" concept="6" />
+      <node id="3383150178652417884" at="33,65,34,71" concept="6" />
+      <node id="1225197179133" at="39,50,40,38" concept="13" />
+      <node id="1225197179133" at="42,68,43,102" concept="13" />
+      <node id="1225197179133" at="45,30,46,17" concept="13" />
+      <node id="1225197179133" at="50,0,51,0" concept="16" trace="Type$bu" />
+      <node id="1225197179133" at="51,0,52,0" concept="16" trace="ClassifierType$bL" />
+      <node id="1225197179133" at="55,0,56,0" concept="16" trace="classifier$cxMr" />
+      <node id="1225197179133" at="24,0,26,0" concept="3" trace="check_StringTypeClassifierType_NonTypesystemRule#()V" />
+      <node id="1225197179133" at="39,0,42,0" concept="11" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1225197179133" at="42,0,45,0" concept="11" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="1225197179133" at="45,0,48,0" concept="11" trace="overrides#()Z" />
+      <node id="3383150178652417884" at="30,239,35,9" concept="1" />
+      <node id="1225197259595" at="27,252,36,7" concept="1" />
+      <node id="1225197241294" at="26,117,37,5" concept="10" />
+      <node id="1225197179133" at="26,0,39,0" concept="11" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="1225197179133" at="24,61,24,61" />
+      <scope id="1225197179133" at="39,50,40,38" />
+      <scope id="1225197179133" at="42,68,43,102" />
+      <scope id="1225197179133" at="45,30,46,17" />
+      <scope id="1225197179133" at="24,0,26,0" />
+      <scope id="3383150178652417884" at="31,9,34,71">
         <var name="intentionProvider" id="3383150178652417884" />
       </scope>
-      <scope id="1225197179133" at="37,0,40,0" />
-      <scope id="1225197179133" at="40,0,43,0">
+      <scope id="1225197179133" at="39,0,42,0" />
+      <scope id="1225197179133" at="42,0,45,0">
         <var name="argument" id="1225197179133" />
       </scope>
-      <scope id="1225197179133" at="43,0,46,0" />
-      <scope id="1225197259595" at="26,7,33,9">
+      <scope id="1225197179133" at="45,0,48,0" />
+      <scope id="1225197259595" at="28,7,35,9">
         <var name="_reporter_2309309498" id="1225197259595" />
         <var name="errorTarget" id="1225197259595" />
       </scope>
-      <scope id="1225197241296" at="25,156,34,7" />
-      <scope id="1225197179134" at="24,117,35,5" />
-      <scope id="1225197179133" at="24,0,37,0">
+      <scope id="1225197241296" at="27,252,36,7" />
+      <scope id="1225197179134" at="26,117,37,5" />
+      <scope id="1225197179133" at="26,0,39,0">
         <var name="node" id="1225197179133" />
         <var name="status" id="1225197179133" />
         <var name="typeCheckingContext" id="1225197179133" />
       </scope>
-      <unit id="1225197179133" at="47,0,50,0" name="jetbrains.mps.baseLanguage.typesystem.check_StringTypeClassifierType_NonTypesystemRule$LINKS" />
-      <unit id="1225197179133" at="51,0,54,0" name="jetbrains.mps.baseLanguage.typesystem.check_StringTypeClassifierType_NonTypesystemRule$CONCEPTS" />
-      <unit id="1225197179133" at="21,0,55,0" name="jetbrains.mps.baseLanguage.typesystem.check_StringTypeClassifierType_NonTypesystemRule" />
+      <unit id="1225197179133" at="54,0,57,0" name="jetbrains.mps.baseLanguage.typesystem.check_StringTypeClassifierType_NonTypesystemRule$LINKS" />
+      <unit id="1225197179133" at="49,0,53,0" name="jetbrains.mps.baseLanguage.typesystem.check_StringTypeClassifierType_NonTypesystemRule$CONCEPTS" />
+      <unit id="1225197179133" at="23,0,58,0" name="jetbrains.mps.baseLanguage.typesystem.check_StringTypeClassifierType_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/1225276837971">

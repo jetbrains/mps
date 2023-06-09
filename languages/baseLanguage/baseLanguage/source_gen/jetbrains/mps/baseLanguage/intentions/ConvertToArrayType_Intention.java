@@ -15,6 +15,7 @@ import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import java.util.Objects;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -69,7 +70,7 @@ public final class ConvertToArrayType_Intention extends AbstractIntentionDescrip
     }
 
     private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-      return !(SNodeOperations.hasRole(node, LINKS.implementedInterface$rujG)) && !(SNodeOperations.hasRole(node, LINKS.superclass$Mp9$)) && !(SNodeOperations.hasRole(node, LINKS.extendedInterface$PDVO)) && !(SNodeOperations.hasRole(node, LINKS.parameter$oqG$)) && !(SNodeOperations.hasRole(node, LINKS.componentType$SJjq));
+      return Objects.equals(SNodeOperations.getContainingLink(node).getTargetConcept(), CONCEPTS.Type$bu) && !(SNodeOperations.hasRole(node, LINKS.implementedInterface$rujG)) && !(SNodeOperations.hasRole(node, LINKS.superclass$Mp9$)) && !(SNodeOperations.hasRole(node, LINKS.extendedInterface$PDVO)) && !(SNodeOperations.hasRole(node, LINKS.parameter$oqG$)) && !(SNodeOperations.hasRole(node, LINKS.componentType$SJjq));
     }
 
 
@@ -82,6 +83,7 @@ public final class ConvertToArrayType_Intention extends AbstractIntentionDescrip
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ArrayType$rh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 
   private static final class LINKS {
