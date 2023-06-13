@@ -19,7 +19,6 @@ import java.io.File;
 
 public class ScriptJUnit5Launcher extends AbstractJUnit5Launcher {
 
-  public static final String HALT_ON_FAILURE = "launchtests.haltonfailure";
   public static final String TEST_REPORTS_DIR = "launchtests.testReportsDir";
 
   private final WorkerCallback myWorkerCallback;
@@ -47,10 +46,11 @@ public class ScriptJUnit5Launcher extends AbstractJUnit5Launcher {
     myEnvironment.closeProject(project);
     myEnvironment.dispose();
 
-    if (isHaltOnFailure() && failureDetector.hasFailures()) {
+    if (failureDetector.hasFailures()) {
       failureDetector.flushErrors(myWorkerCallback);
-      myWorkerCallback.failBuild();
     }
+    // this method throws RuntimeException in case there were errors and failOnError is set
+    myWorkerCallback.failBuild();
 
     return failureDetector.failuresCount();
   }
@@ -99,8 +99,7 @@ public class ScriptJUnit5Launcher extends AbstractJUnit5Launcher {
   }
 
   private boolean isHaltOnFailure() {
-    String property = myWhatToDo.getProperty(HALT_ON_FAILURE);
-    return (property != null ? Boolean.valueOf(property) : false);
+    return myWhatToDo.getFailOnError();
   }
 
   @Override

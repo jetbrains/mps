@@ -33,10 +33,8 @@ public class LaunchTestTask extends MpsLoadTask {
   public static final String NO_FS_ROOTS_ACCESS_CHECK_OPTION = "-DNO_FS_ROOTS_ACCESS_CHECK=true";
 
   public static final String MPS_TESTING_PLUGIN_HOME = "plugins/mps-testing";
-  public static final String JUNIT5_SERVICES_JAR = "lib/mps-testing.jar";
   public static final String LAUNCHER_SUPPORT_JAR = "languages/launcher/jetbrains.mps.lang.test.launcher.jar";
 
-  public static final String HALT_ON_FAILURE_PROPERTY = "launchtests.haltonfailure";
   public static final String TEST_REPORTS_DIR_PROPERTY = "launchtests.testReportsDir";
 
   private List<File> myModuleFile = new ArrayList<>();
@@ -63,7 +61,7 @@ public class LaunchTestTask extends MpsLoadTask {
   }
 
   public void setHaltOnFailure(boolean haltOnFailure) {
-    this.myWhatToDo.putProperty(HALT_ON_FAILURE_PROPERTY, Boolean.valueOf(haltOnFailure).toString());
+    this.myWhatToDo.updateFailOnError(haltOnFailure);
   }
 
   public void setReports(File testReportsDir) {
