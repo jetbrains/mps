@@ -143,6 +143,7 @@
     <import index="57ty" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.messages(MPS.Platform/)" />
     <import index="tpcc" ref="r:00000000-0000-4000-0000-011c89590290(jetbrains.mps.lang.structure.plugin)" />
     <import index="q9cj" ref="cac2fef0-41a6-4fcd-923f-f893d536b2ab/java:jetbrains.mps.ide.devkit.typesystem.trace(jetbrains.mps.ide.mpsdevkit/)" />
+    <import index="gspm" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui.popup(MPS.IDEA/)" />
     <import index="4hrd" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.vfs(MPS.Platform/)" implicit="true" />
   </imports>
   <registry>
@@ -5583,11 +5584,6 @@
       <node concept="1oajcY" id="5VaWw4ey5cI" role="1oa70y" />
       <node concept="3Tqbb2" id="5VaWw4ey5aX" role="1tU5fm" />
     </node>
-    <node concept="1DS2jV" id="14z8V6nEs7N" role="1NuT2Z">
-      <property role="TrG5h" value="frame" />
-      <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.FRAME" resolve="FRAME" />
-      <node concept="1oajcY" id="7HZe2EwZDn3" role="1oa70y" />
-    </node>
     <node concept="tnohg" id="14z8V6nEs7R" role="tncku">
       <node concept="3clFbS" id="14z8V6nEs7S" role="2VODD2">
         <node concept="3cpWs8" id="5oSeKmCexAf" role="3cqZAp">
@@ -5614,18 +5610,39 @@
         </node>
         <node concept="3clFbJ" id="14z8V6nEs7Z" role="3cqZAp">
           <node concept="3clFbS" id="14z8V6nEs80" role="3clFbx">
-            <node concept="3clFbF" id="14z8V6nEs81" role="3cqZAp">
-              <node concept="2YIFZM" id="14z8V6nEs82" role="3clFbG">
-                <ref role="1Pybhc" to="dxuu:~JOptionPane" resolve="JOptionPane" />
-                <ref role="37wK5l" to="dxuu:~JOptionPane.showMessageDialog(java.awt.Component,java.lang.Object)" resolve="showMessageDialog" />
-                <node concept="2OqwBi" id="14z8V6nEs83" role="37wK5m">
-                  <node concept="2WthIp" id="14z8V6nEs84" role="2Oq$k0" />
-                  <node concept="1DTwFV" id="14z8V6nEs85" role="2OqNvi">
-                    <ref role="2WH_rO" node="14z8V6nEs7N" resolve="frame" />
+            <node concept="3cpWs8" id="3SpcdWupLDO" role="3cqZAp">
+              <node concept="3cpWsn" id="3SpcdWupLDP" role="3cpWs9">
+                <property role="TrG5h" value="m" />
+                <node concept="3uibUv" id="3SpcdWupLCW" role="1tU5fm">
+                  <ref role="3uigEE" to="gspm:~JBPopup" resolve="JBPopup" />
+                </node>
+                <node concept="2OqwBi" id="3SpcdWupLDQ" role="33vP2m">
+                  <node concept="2YIFZM" id="3SpcdWupLDR" role="2Oq$k0">
+                    <ref role="37wK5l" to="gspm:~JBPopupFactory.getInstance()" resolve="getInstance" />
+                    <ref role="1Pybhc" to="gspm:~JBPopupFactory" resolve="JBPopupFactory" />
+                  </node>
+                  <node concept="liA8E" id="3SpcdWupLDS" role="2OqNvi">
+                    <ref role="37wK5l" to="gspm:~JBPopupFactory.createMessage(java.lang.String)" resolve="createMessage" />
+                    <node concept="Xl_RD" id="3SpcdWupLDT" role="37wK5m">
+                      <property role="Xl_RC" value="No tracing data available" />
+                    </node>
                   </node>
                 </node>
-                <node concept="Xl_RD" id="14z8V6nEs86" role="37wK5m">
-                  <property role="Xl_RC" value="No tracing data available" />
+              </node>
+            </node>
+            <node concept="3clFbF" id="3SpcdWupL4G" role="3cqZAp">
+              <node concept="2OqwBi" id="3SpcdWupLYv" role="3clFbG">
+                <node concept="37vLTw" id="3SpcdWupLDU" role="2Oq$k0">
+                  <ref role="3cqZAo" node="3SpcdWupLDP" resolve="m" />
+                </node>
+                <node concept="liA8E" id="3SpcdWupNVi" role="2OqNvi">
+                  <ref role="37wK5l" to="gspm:~JBPopup.showCenteredInCurrentWindow(com.intellij.openapi.project.Project)" resolve="showCenteredInCurrentWindow" />
+                  <node concept="2OqwBi" id="3SpcdWupNXR" role="37wK5m">
+                    <node concept="2WthIp" id="3SpcdWupNXU" role="2Oq$k0" />
+                    <node concept="1DTwFV" id="3SpcdWupNXW" role="2OqNvi">
+                      <ref role="2WH_rO" node="14z8V6nEs7M" resolve="project" />
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>
@@ -5774,18 +5791,39 @@
         </node>
         <node concept="3clFbJ" id="14z8V6nEs9v" role="3cqZAp">
           <node concept="3clFbS" id="14z8V6nEs9w" role="3clFbx">
-            <node concept="3clFbF" id="14z8V6nEs9x" role="3cqZAp">
-              <node concept="2YIFZM" id="14z8V6nEs9y" role="3clFbG">
-                <ref role="1Pybhc" to="dxuu:~JOptionPane" resolve="JOptionPane" />
-                <ref role="37wK5l" to="dxuu:~JOptionPane.showMessageDialog(java.awt.Component,java.lang.Object)" resolve="showMessageDialog" />
-                <node concept="2OqwBi" id="14z8V6nEs9z" role="37wK5m">
-                  <node concept="2WthIp" id="14z8V6nEs9$" role="2Oq$k0" />
-                  <node concept="1DTwFV" id="14z8V6nEs9_" role="2OqNvi">
-                    <ref role="2WH_rO" node="14z8V6nEsaE" resolve="frame" />
+            <node concept="3cpWs8" id="3SpcdWupPKW" role="3cqZAp">
+              <node concept="3cpWsn" id="3SpcdWupPKX" role="3cpWs9">
+                <property role="TrG5h" value="m" />
+                <node concept="3uibUv" id="3SpcdWupPKY" role="1tU5fm">
+                  <ref role="3uigEE" to="gspm:~JBPopup" resolve="JBPopup" />
+                </node>
+                <node concept="2OqwBi" id="3SpcdWupPKZ" role="33vP2m">
+                  <node concept="2YIFZM" id="3SpcdWupPL0" role="2Oq$k0">
+                    <ref role="37wK5l" to="gspm:~JBPopupFactory.getInstance()" resolve="getInstance" />
+                    <ref role="1Pybhc" to="gspm:~JBPopupFactory" resolve="JBPopupFactory" />
+                  </node>
+                  <node concept="liA8E" id="3SpcdWupPL1" role="2OqNvi">
+                    <ref role="37wK5l" to="gspm:~JBPopupFactory.createMessage(java.lang.String)" resolve="createMessage" />
+                    <node concept="Xl_RD" id="3SpcdWupPL2" role="37wK5m">
+                      <property role="Xl_RC" value="No tracing data available" />
+                    </node>
                   </node>
                 </node>
-                <node concept="Xl_RD" id="14z8V6nEs9A" role="37wK5m">
-                  <property role="Xl_RC" value="No tracing data available" />
+              </node>
+            </node>
+            <node concept="3clFbF" id="3SpcdWupPL3" role="3cqZAp">
+              <node concept="2OqwBi" id="3SpcdWupPL4" role="3clFbG">
+                <node concept="37vLTw" id="3SpcdWupPL5" role="2Oq$k0">
+                  <ref role="3cqZAo" node="3SpcdWupPKX" resolve="m" />
+                </node>
+                <node concept="liA8E" id="3SpcdWupPL6" role="2OqNvi">
+                  <ref role="37wK5l" to="gspm:~JBPopup.showCenteredInCurrentWindow(com.intellij.openapi.project.Project)" resolve="showCenteredInCurrentWindow" />
+                  <node concept="2OqwBi" id="3SpcdWupPL7" role="37wK5m">
+                    <node concept="2WthIp" id="3SpcdWupPL8" role="2Oq$k0" />
+                    <node concept="1DTwFV" id="3SpcdWupPL9" role="2OqNvi">
+                      <ref role="2WH_rO" node="5VaWw4ew4wl" resolve="project" />
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>
@@ -5933,11 +5971,6 @@
       <node concept="1oajcY" id="7HZe2EwZDjl" role="1oa70y" />
       <node concept="3Tm6S6" id="14z8V6nEsa$" role="1B3o_S" />
       <node concept="3Tqbb2" id="14z8V6nEsa_" role="1tU5fm" />
-    </node>
-    <node concept="1DS2jV" id="14z8V6nEsaE" role="1NuT2Z">
-      <property role="TrG5h" value="frame" />
-      <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.FRAME" resolve="FRAME" />
-      <node concept="1oajcY" id="7HZe2EwZDkK" role="1oa70y" />
     </node>
   </node>
   <node concept="tC5Ba" id="14z8V6nEsaF">

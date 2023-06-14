@@ -8,7 +8,6 @@ import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.ide.ui.tree.smodel.PackageNode;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
@@ -41,7 +40,7 @@ public class RenamePackage_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return ((PackageNode) MapSequence.fromMap(_params).get("ppNode")).getAncestor(SModelTreeNode.class) != null;
+    return ((PackageNode) event.getData(MPSCommonDataKeys.TREE_NODE)).getAncestor(SModelTreeNode.class) != null;
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -54,21 +53,18 @@ public class RenamePackage_Action extends BaseAction {
     }
     {
       MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-      MapSequence.fromMap(_params).put("project", p);
       if (p == null) {
         return false;
       }
     }
     {
       Frame p = event.getData(MPSCommonDataKeys.FRAME);
-      MapSequence.fromMap(_params).put("frame", p);
       if (p == null) {
         return false;
       }
     }
     {
       TreeNode p = event.getData(MPSCommonDataKeys.TREE_NODE);
-      MapSequence.fromMap(_params).put("ppNode", p);
       if (p == null) {
         return false;
       }
@@ -80,14 +76,14 @@ public class RenamePackage_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    PackageNode treeNode = ((PackageNode) MapSequence.fromMap(_params).get("ppNode"));
+    PackageNode treeNode = ((PackageNode) event.getData(MPSCommonDataKeys.TREE_NODE));
     final SModel model = treeNode.getAncestor(SModelTreeNode.class).getModel();
     if (model == null) {
       return;
     }
     final String packageName = treeNode.getPackage();
-    ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
-    final String newName = JOptionPane.showInputDialog(((Frame) MapSequence.fromMap(_params).get("frame")), "Enter New Package Name", packageName);
+    ModelAccess modelAccess = event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess();
+    final String newName = JOptionPane.showInputDialog(event.getData(MPSCommonDataKeys.FRAME), "Enter New Package Name", packageName);
     if (newName == null) {
       return;
     }

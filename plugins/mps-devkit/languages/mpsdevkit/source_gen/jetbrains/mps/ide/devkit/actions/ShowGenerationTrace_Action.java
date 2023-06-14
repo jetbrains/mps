@@ -15,8 +15,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.mps.openapi.model.SNode;
-import java.awt.Frame;
-import javax.swing.JOptionPane;
+import com.intellij.openapi.ui.popup.JBPopup;
+import com.intellij.openapi.ui.popup.JBPopupFactory;
 
 public class ShowGenerationTrace_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -56,19 +56,14 @@ public class ShowGenerationTrace_Action extends BaseAction {
         return false;
       }
     }
-    {
-      Frame p = event.getData(MPSCommonDataKeys.FRAME);
-      if (p == null) {
-        return false;
-      }
-    }
     return true;
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     GenerationTracerViewTool tool = event.getData(CommonDataKeys.PROJECT).getComponent(GenerationTracerViewTool.class);
     if (!(tool.showTraceInputData(event.getData(MPSCommonDataKeys.NODE)))) {
-      JOptionPane.showMessageDialog(event.getData(MPSCommonDataKeys.FRAME), "No tracing data available");
+      JBPopup m = JBPopupFactory.getInstance().createMessage("No tracing data available");
+      m.showCenteredInCurrentWindow(event.getData(CommonDataKeys.PROJECT));
     }
   }
 }

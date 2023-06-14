@@ -7,12 +7,11 @@ import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.refactoring.runtime.access.RefactoringAccess;
-import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
-import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.project.MPSProject;
 import java.awt.Frame;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -49,7 +48,7 @@ public class ChangeMethodSignature_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return RefactoringAccess.getInstance(((MPSProject) MapSequence.fromMap(_params).get("project"))).isApplicable("jetbrains.mps.baseLanguage.refactorings.ChangeMethodSignature", ((SNode) MapSequence.fromMap(_params).get("method")));
+    return RefactoringAccess.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT)).isApplicable("jetbrains.mps.baseLanguage.refactorings.ChangeMethodSignature", event.getData(MPSCommonDataKeys.NODE));
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -65,21 +64,18 @@ public class ChangeMethodSignature_Action extends BaseAction {
       if (node != null && !(SNodeOperations.isInstanceOf(node, CONCEPTS.BaseMethodDeclaration$kD))) {
         node = null;
       }
-      MapSequence.fromMap(_params).put("method", node);
       if (node == null) {
         return false;
       }
     }
     {
       MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-      MapSequence.fromMap(_params).put("project", p);
       if (p == null) {
         return false;
       }
     }
     {
       Frame p = event.getData(MPSCommonDataKeys.FRAME);
-      MapSequence.fromMap(_params).put("frame", p);
       if (p == null) {
         return false;
       }
@@ -90,20 +86,20 @@ public class ChangeMethodSignature_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Wrappers._T<SNode> baseMethod = new Wrappers._T<SNode>();
     final Wrappers._T<String> message = new Wrappers._T<String>("");
-    final SRepository repo = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository();
+    final SRepository repo = event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository();
     ModelAccess modelAccess = repo.getModelAccess();
 
     modelAccess.runWriteAction(() -> {
       repo.saveAll();
-      baseMethod.value = BaseMethodDeclaration__BehaviorDescriptor.getBaseMethod_id4mmymf_0z7l.invoke(((SNode) MapSequence.fromMap(_params).get("method")));
+      baseMethod.value = BaseMethodDeclaration__BehaviorDescriptor.getBaseMethod_id4mmymf_0z7l.invoke(event.getData(MPSCommonDataKeys.NODE));
       if (baseMethod.value != null) {
         SNode baseClass = SNodeOperations.getParent(baseMethod.value);
-        SNode methodClass = SNodeOperations.getParent(((SNode) MapSequence.fromMap(_params).get("method")));
+        SNode methodClass = SNodeOperations.getParent(event.getData(MPSCommonDataKeys.NODE));
 
         // Based on com.intellij.ide.util.SuperMethodWarningUtil
         HtmlBuilder labelText = new HtmlBuilder();
         int classType = (SNodeOperations.isInstanceOf(baseClass, CONCEPTS.Interface$db) ? 0 : 1);
-        labelText.append(JavaBundle.message("label.method", SNodeOperations.present(((SNode) MapSequence.fromMap(_params).get("method"))) + " of class " + SNodeOperations.present(methodClass))).br();
+        labelText.append(JavaBundle.message("label.method", SNodeOperations.present(event.getData(MPSCommonDataKeys.NODE)) + " of class " + SNodeOperations.present(methodClass))).br();
         final String className = SPropertyOperations.getString(SNodeOperations.as(baseClass, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL);
         labelText.append((SNodeOperations.isInstanceOf(methodClass, CONCEPTS.Interface$db) || !(SPropertyOperations.getBoolean(SNodeOperations.as(methodClass, CONCEPTS.ClassConcept$bK), PROPS.abstractClass$Ta1X)) ? JavaBundle.message("label.overrides.method.of_class_or_interface.name", classType, className) : JavaBundle.message("label.implements.method.of_class_or_interface.name", classType, className)));
         labelText.br().br();
@@ -112,10 +108,10 @@ public class ChangeMethodSignature_Action extends BaseAction {
       }
     });
 
-    final Wrappers._T<SNode> methodToRefactor = new Wrappers._T<SNode>(((SNode) MapSequence.fromMap(_params).get("method")));
+    final Wrappers._T<SNode> methodToRefactor = new Wrappers._T<SNode>(event.getData(MPSCommonDataKeys.NODE));
 
     if (baseMethod.value != null) {
-      int dialog = Messages.showYesNoCancelDialog(((Frame) MapSequence.fromMap(_params).get("frame")), message.value, JavaBundle.message("dialog.title.super.method.found"), JavaBundle.message("button.base.method"), JavaBundle.message("button.current.method"), Messages.getCancelButton(), Messages.getQuestionIcon());
+      int dialog = Messages.showYesNoCancelDialog(event.getData(MPSCommonDataKeys.FRAME), message.value, JavaBundle.message("dialog.title.super.method.found"), JavaBundle.message("button.base.method"), JavaBundle.message("button.current.method"), Messages.getCancelButton(), Messages.getQuestionIcon());
 
       if (dialog == Messages.CANCEL) {
         return;
@@ -124,21 +120,21 @@ public class ChangeMethodSignature_Action extends BaseAction {
       }
     }
 
-    ChangeMethodSignatureDialog dialog = new ChangeMethodSignatureDialog(((MPSProject) MapSequence.fromMap(_params).get("project")), methodToRefactor.value);
+    ChangeMethodSignatureDialog dialog = new ChangeMethodSignatureDialog(event.getData(MPSCommonDataKeys.MPS_PROJECT), methodToRefactor.value);
     dialog.show();
     final List<ChangeMethodSignatureRefactoring> myRefactorings = dialog.getAllRefactorings();
     if (ListSequence.fromList(myRefactorings).isEmpty()) {
       return;
     }
     modelAccess.runReadInEDT(() -> {
-      if (!(SNodeUtil.isAccessible(((SNode) MapSequence.fromMap(_params).get("method")), repo))) {
+      if (!(SNodeUtil.isAccessible(event.getData(MPSCommonDataKeys.NODE), repo))) {
         return;
       }
       if (!(SNodeUtil.isAccessible(methodToRefactor.value, repo))) {
         return;
       }
 
-      RefactoringAccess.getInstance(((MPSProject) MapSequence.fromMap(_params).get("project"))).getRefactoringFacade().execute(RefactoringContext.createRefactoringContextByName("jetbrains.mps.baseLanguage.refactorings.ChangeMethodSignature", Arrays.asList("myRefactorings"), Arrays.asList(myRefactorings), methodToRefactor.value, ((MPSProject) MapSequence.fromMap(_params).get("project"))));
+      RefactoringAccess.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT)).getRefactoringFacade().execute(RefactoringContext.createRefactoringContextByName("jetbrains.mps.baseLanguage.refactorings.ChangeMethodSignature", Arrays.asList("myRefactorings"), Arrays.asList(myRefactorings), methodToRefactor.value, event.getData(MPSCommonDataKeys.MPS_PROJECT)));
     });
   }
 

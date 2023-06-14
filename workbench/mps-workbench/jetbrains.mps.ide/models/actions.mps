@@ -15019,7 +15019,6 @@
     <property role="72QZ$" value="true" />
     <property role="2uzpH1" value="Rename" />
     <property role="3GE5qa" value="Menu.ProjectPane.Packages.Actions" />
-    <property role="1teQrl" value="true" />
     <node concept="1DS2jV" id="OqYxEj7HKG" role="1NuT2Z">
       <property role="TrG5h" value="project" />
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
@@ -24712,7 +24711,6 @@
     <property role="72QZ$" value="true" />
     <property role="3GE5qa" value="Menu.MessagesView" />
     <property role="2uzpH1" value="Submit to Issue Tracker" />
-    <property role="1teQrl" value="true" />
     <node concept="1DS2jV" id="4NDCWHeJ$bA" role="1NuT2Z">
       <property role="TrG5h" value="project" />
       <ref role="1DUlNI" to="qkt:~CommonDataKeys.PROJECT" resolve="PROJECT" />

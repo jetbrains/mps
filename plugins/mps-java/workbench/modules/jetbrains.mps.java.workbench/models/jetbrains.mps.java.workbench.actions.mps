@@ -667,7 +667,6 @@
     <property role="72QZ$" value="true" />
     <property role="3GE5qa" value="Actions" />
     <property role="2uzpH1" value="Change Method Signature" />
-    <property role="1teQrl" value="true" />
     <node concept="tnohg" id="5U9rQri5GcG" role="tncku">
       <node concept="3clFbS" id="5U9rQri5GcH" role="2VODD2">
         <node concept="3cpWs8" id="5U9rQri5GcI" role="3cqZAp">
@@ -3873,7 +3872,6 @@
     <property role="72QZ$" value="true" />
     <property role="2uzpH1" value="Models from Java Sources" />
     <property role="3GE5qa" value="Actions" />
-    <property role="1teQrl" value="true" />
     <property role="1WHSii" value="Adds BaseLanguage-authored models to context module from selected Java source files" />
     <node concept="2XrIbr" id="60HWYcsjXnh" role="32lrUH">
       <property role="TrG5h" value="getStereotype" />

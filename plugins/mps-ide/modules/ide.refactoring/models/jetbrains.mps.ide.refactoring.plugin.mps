@@ -75,7 +75,6 @@
     <import index="ekwn" ref="r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)" />
     <import index="6tbz" ref="r:e7c3bc1e-bce9-494c-bef3-a2cbdbbaff66(jetbrains.mps.ide.refactoring)" />
     <import index="ge2m" ref="r:bd8551c6-e2e3-4499-a261-45b0c886d1d1(jetbrains.mps.refactoring.framework)" />
-    <import index="xnls" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.icons(MPS.Platform/)" />
     <import index="l7us" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.icons(MPS.Platform/)" />
     <import index="exr9" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor(MPS.Editor/)" implicit="true" />
   </imports>
@@ -3056,7 +3055,6 @@
     <property role="TrG5h" value="RenameNode" />
     <property role="72QZ$" value="true" />
     <property role="2uzpH1" value="Rename" />
-    <property role="1teQrl" value="true" />
     <property role="3GE5qa" value="Menu.ProjectPane.Node.Actions" />
     <node concept="2XrIbr" id="1SNZnic04UL" role="32lrUH">
       <property role="TrG5h" value="canBeRenamed" />

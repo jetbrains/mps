@@ -8,12 +8,11 @@ import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.refactoring.runtime.access.RefactoringAccess;
-import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
-import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.project.MPSProject;
 import java.awt.Frame;
 import com.intellij.featureStatistics.FeatureUsageTracker;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
@@ -47,7 +46,7 @@ public class RenameNode_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return RefactoringAccess.getInstance(((MPSProject) MapSequence.fromMap(_params).get("project"))).isApplicable("jetbrains.mps.lang.core.refactorings.Rename", ((SNode) MapSequence.fromMap(_params).get("target")));
+    return RefactoringAccess.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT)).isApplicable("jetbrains.mps.lang.core.refactorings.Rename", event.getData(MPSCommonDataKeys.NODE));
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -63,21 +62,18 @@ public class RenameNode_Action extends BaseAction {
       if (node != null && !(SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$Kd))) {
         node = null;
       }
-      MapSequence.fromMap(_params).put("target", node);
       if (node == null) {
         return false;
       }
     }
     {
       MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-      MapSequence.fromMap(_params).put("project", p);
       if (p == null) {
         return false;
       }
     }
     {
       Frame p = event.getData(MPSCommonDataKeys.FRAME);
-      MapSequence.fromMap(_params).put("frame", p);
       if (p == null) {
         return false;
       }
@@ -90,19 +86,19 @@ public class RenameNode_Action extends BaseAction {
 
     final Wrappers._T<String> oldName = new Wrappers._T<String>();
     final Wrappers._boolean canBeRenamed = new Wrappers._boolean();
-    ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().runReadAction(() -> {
-      canBeRenamed.value = RenameNode_Action.this.canBeRenamed(_params);
-      oldName.value = SPropertyOperations.getString(((SNode) MapSequence.fromMap(_params).get("target")), PROPS.name$MnvL);
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(() -> {
+      canBeRenamed.value = RenameNode_Action.this.canBeRenamed(event);
+      oldName.value = SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.name$MnvL);
     });
     if (!(canBeRenamed.value)) {
-      JOptionPane.showMessageDialog(((Frame) MapSequence.fromMap(_params).get("frame")), "Nodes with getter and without setter for the \"name\" property can't be renamed", "Read-only property", JOptionPane.INFORMATION_MESSAGE);
+      JOptionPane.showMessageDialog(event.getData(MPSCommonDataKeys.FRAME), "Nodes with getter and without setter for the \"name\" property can't be renamed", "Read-only property", JOptionPane.INFORMATION_MESSAGE);
       return;
     }
-    RenameDialog dialog = new RenameDialog(((MPSProject) MapSequence.fromMap(_params).get("project")).getProject(), oldName.value, "node") {
+    RenameDialog dialog = new RenameDialog(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject(), oldName.value, "node") {
       @Nullable
       @Override
       protected String checkValue() {
-        if (!(RenameNode_Action.this.validateValue(getCurrentValue(), _params))) {
+        if (!(RenameNode_Action.this.validateValue(getCurrentValue(), event))) {
           return "Not a valid name";
         }
         return super.checkValue();
@@ -114,12 +110,12 @@ public class RenameNode_Action extends BaseAction {
     if (newName == null) {
       return;
     }
-    RefactoringProcessor.RefactoringBody refactoringBody = new RenameRefactoringBody("Rename node", ((SNode) MapSequence.fromMap(_params).get("target")), newName, ((MPSProject) MapSequence.fromMap(_params).get("project")));
-    RefactoringProcessor.performRefactoringInProject(((MPSProject) MapSequence.fromMap(_params).get("project")), new DefaultRefactoringUI(((MPSProject) MapSequence.fromMap(_params).get("project")), "Rename Node"), refactoringBody);
+    RefactoringProcessor.RefactoringBody refactoringBody = new RenameRefactoringBody("Rename node", event.getData(MPSCommonDataKeys.NODE), newName, event.getData(MPSCommonDataKeys.MPS_PROJECT));
+    RefactoringProcessor.performRefactoringInProject(event.getData(MPSCommonDataKeys.MPS_PROJECT), new DefaultRefactoringUI(event.getData(MPSCommonDataKeys.MPS_PROJECT), "Rename Node"), refactoringBody);
   }
-  private boolean canBeRenamed(final Map<String, Object> _params) {
+  private boolean canBeRenamed(final AnActionEvent event) {
     // we won't rename nodes, for which there is getter without setter
-    SAbstractConcept concept = SNodeOperations.getConcept(((SNode) MapSequence.fromMap(_params).get("target")));
+    SAbstractConcept concept = SNodeOperations.getConcept(event.getData(MPSCommonDataKeys.NODE));
     ConstraintsDescriptor cd = ConceptRegistry.getInstance().getConstraintsDescriptor(concept);
     PropertyConstraintsDescriptor propertyConstraint = cd.getProperty(PROPS.name$MnvL);
     if (propertyConstraint == null) {
@@ -130,11 +126,11 @@ public class RenameNode_Action extends BaseAction {
     }
     return !(propertyConstraint.isReadOnly());
   }
-  private boolean validateValue(String newValue, final Map<String, Object> _params) {
-    SAbstractConcept concept = SNodeOperations.getConcept(((SNode) MapSequence.fromMap(_params).get("target")));
+  private boolean validateValue(String newValue, final AnActionEvent event) {
+    SAbstractConcept concept = SNodeOperations.getConcept(event.getData(MPSCommonDataKeys.NODE));
     ConstraintsDescriptor cd = ConceptRegistry.getInstance().getConstraintsDescriptor(concept);
     PropertyConstraintsDescriptor propertyConstraints = cd.getProperty(PROPS.name$MnvL);
-    return propertyConstraints.validateValue(((SNode) MapSequence.fromMap(_params).get("target")), newValue, null);
+    return propertyConstraints.validateValue(event.getData(MPSCommonDataKeys.NODE), newValue, null);
   }
 
   private static final class CONCEPTS {

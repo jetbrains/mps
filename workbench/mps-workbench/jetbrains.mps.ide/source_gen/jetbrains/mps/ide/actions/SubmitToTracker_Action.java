@@ -9,7 +9,6 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import java.util.List;
 import jetbrains.mps.messages.IMessage;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.messages.MessageKind;
 import org.jetbrains.annotations.NotNull;
@@ -36,7 +35,7 @@ public class SubmitToTracker_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    List<IMessage> messages = ((List<IMessage>) MapSequence.fromMap(_params).get("messages"));
+    List<IMessage> messages = event.getData(MPSCommonDataKeys.MESSAGES);
     return ListSequence.fromList(messages).any((it) -> it.getKind() == MessageKind.ERROR);
   }
   @Override
@@ -50,21 +49,18 @@ public class SubmitToTracker_Action extends BaseAction {
     }
     {
       Project p = event.getData(CommonDataKeys.PROJECT);
-      MapSequence.fromMap(_params).put("project", p);
       if (p == null) {
         return false;
       }
     }
     {
       Frame p = event.getData(MPSCommonDataKeys.FRAME);
-      MapSequence.fromMap(_params).put("frame", p);
       if (p == null) {
         return false;
       }
     }
     {
       List<IMessage> p = event.getData(MPSCommonDataKeys.MESSAGES);
-      MapSequence.fromMap(_params).put("messages", p);
       if (p == null) {
         return false;
       }
@@ -76,10 +72,10 @@ public class SubmitToTracker_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    BlameDialog dialog = BlameDialogComponent.getInstance().createDialog(((Project) MapSequence.fromMap(_params).get("project")), ((Frame) MapSequence.fromMap(_params).get("frame")));
+    BlameDialog dialog = BlameDialogComponent.getInstance().createDialog(event.getData(CommonDataKeys.PROJECT), event.getData(MPSCommonDataKeys.FRAME));
     StringBuilder description = new StringBuilder();
     boolean first = true;
-    for (IMessage msg : ((List<IMessage>) MapSequence.fromMap(_params).get("messages"))) {
+    for (IMessage msg : event.getData(MPSCommonDataKeys.MESSAGES)) {
       if (first) {
         dialog.setIssueTitle(msg.getText());
         first = false;
@@ -87,7 +83,7 @@ public class SubmitToTracker_Action extends BaseAction {
         description.append(msg.getText()).append('\n');
       }
     }
-    dialog.addExceptions((Collection<Throwable>) ((List<IMessage>) MapSequence.fromMap(_params).get("messages")).stream().map((IMessage message) -> message.getException()).collect(Collectors.toList()));
+    dialog.addExceptions((Collection<Throwable>) event.getData(MPSCommonDataKeys.MESSAGES).stream().map((IMessage message) -> message.getException()).collect(Collectors.toList()));
     dialog.setDescription(description.toString());
     dialog.initDialog();
     dialog.show();
