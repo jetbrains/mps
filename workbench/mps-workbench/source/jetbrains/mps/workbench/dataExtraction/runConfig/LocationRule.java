@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,16 +23,11 @@ import jetbrains.mps.ide.actions.SNodeActionData;
 import jetbrains.mps.plugins.runconfigs.MPSLocation;
 import jetbrains.mps.plugins.runconfigs.MPSPsiElement;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.workbench.MPSDataKeys;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.module.SModule;
 
 import java.util.Collections;
-import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -79,27 +74,6 @@ public class LocationRule implements GetDataRule {
     if (modp != null && modp.isSingle()) {
       return new MPSLocation(mpsProject, new MPSPsiElement(modp.module(), mpsProject));
     }
-
-    // FIXME remove legacy keys once 2021.3 is out (left for compatibility with foreign providers not yet capable to
-    //       answer with S*ActionData. Just don't forget to keep default case with mpsProject only
-    return new ModelAccessHelper(mpsProject.getModelAccess()).runReadAction(() -> {
-      List<SNode> nodes = MPSDataKeys.NODES.getData(dataProvider);
-      if (nodes != null && nodes.size() > 1) {
-        return new MPSLocation(mpsProject, new MPSPsiElement(nodes, mpsProject));
-      }
-      SNode node = MPSDataKeys.NODE.getData(dataProvider);
-      if (node != null) {
-        return new MPSLocation(mpsProject, new MPSPsiElement(node, mpsProject));
-      }
-      SModel model =  MPSDataKeys.MODEL.getData(dataProvider);
-      if (model != null) {
-        return new MPSLocation(mpsProject, new MPSPsiElement(model, mpsProject));
-      }
-      SModule module = MPSDataKeys.MODULE.getData(dataProvider);
-      if (module != null) {
-        return new MPSLocation(mpsProject, new MPSPsiElement(module, mpsProject));
-      }
-      return new MPSLocation(mpsProject, new MPSPsiElement(mpsProject));
-    });
+    return new MPSLocation(mpsProject, new MPSPsiElement(mpsProject));
   }
 }
