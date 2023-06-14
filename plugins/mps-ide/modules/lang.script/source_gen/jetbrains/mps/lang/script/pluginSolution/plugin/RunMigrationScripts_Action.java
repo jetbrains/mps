@@ -70,33 +70,35 @@ public class RunMigrationScripts_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Wrappers._T<SearchScope> scope = new Wrappers._T<SearchScope>();
     final Wrappers._T<List<SNodeReference>> allScripts = new Wrappers._T<List<SNodeReference>>();
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(() -> {
+    final MPSProject mpsProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+    mpsProject.getRepository().getModelAccess().runReadAction(() -> {
       if (RunMigrationScripts_Action.this.global) {
         scope.value = AbstractMigrationScriptHelper.createMigrationScope(event.getData(MPSCommonDataKeys.MODULES), event.getData(MPSCommonDataKeys.MODELS));
       } else {
-        scope.value = AbstractMigrationScriptHelper.createMigrationScope(event.getData(MPSCommonDataKeys.MPS_PROJECT));
+        scope.value = AbstractMigrationScriptHelper.createMigrationScope(mpsProject);
       }
       if (!(scope.value.getModels().iterator().hasNext())) {
         return;
       }
 
-      ScriptsMenuBuilder menuBuilder = new ScriptsMenuBuilder(event.getData(MPSCommonDataKeys.MPS_PROJECT), RunMigrationScripts_Action.this.global);
+      ScriptsMenuBuilder menuBuilder = new ScriptsMenuBuilder(mpsProject, RunMigrationScripts_Action.this.global);
       allScripts.value = ListSequence.fromList(menuBuilder.getAllScripts()).sort((it) -> (SEnumOperations.getMemberName0(SPropertyOperations.getEnum(it, PROPS.type$NwlS)) == null ? "" : SEnumOperations.getMemberName0(SPropertyOperations.getEnum(it, PROPS.type$NwlS))), true).alsoSort((it) -> (SPropertyOperations.getString(it, PROPS.toBuild$NwNU) == null ? "" : SPropertyOperations.getString(it, PROPS.toBuild$NwNU)), true).select((it) -> it.getReference()).toList();
     });
-    final RunMigrationScriptsDialog dialog = new RunMigrationScriptsDialog(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSCommonDataKeys.FRAME), allScripts.value);
-    int x = event.getData(MPSCommonDataKeys.FRAME).getX() + event.getData(MPSCommonDataKeys.FRAME).getWidth() / 2 - dialog.getWidth() / 2;
-    int y = event.getData(MPSCommonDataKeys.FRAME).getY() + event.getData(MPSCommonDataKeys.FRAME).getHeight() / 2 - dialog.getHeight() / 2;
+    final Frame frame = event.getData(MPSCommonDataKeys.FRAME);
+    final RunMigrationScriptsDialog dialog = new RunMigrationScriptsDialog(mpsProject, frame, allScripts.value);
+    int x = frame.getX() + frame.getWidth() / 2 - dialog.getWidth() / 2;
+    int y = frame.getY() + frame.getHeight() / 2 - dialog.getHeight() / 2;
     // cast to Component eliminates out of search scope error in Java8 vs Java6
     //  setLocation() has got implementation in Window class since Java7
     ((Component) dialog).setLocation(x, y);
     dialog.setVisible(true);
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().executeCommand(() -> {
+    mpsProject.getRepository().getModelAccess().executeCommand(() -> {
       if (dialog.isRunChecked()) {
         List<SNodeReference> checked = dialog.getCheckedScripts();
-        AbstractMigrationScriptHelper.doRunScripts(ListSequence.fromList(checked).select((it) -> SNodeOperations.cast(it.resolve(event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository()), CONCEPTS.MigrationScript$KR)).toList(), scope.value, event.getData(MPSCommonDataKeys.MPS_PROJECT));
+        AbstractMigrationScriptHelper.doRunScripts(ListSequence.fromList(checked).select((it) -> SNodeOperations.cast(it.resolve(mpsProject.getRepository()), CONCEPTS.MigrationScript$KR)).toList(), scope.value, mpsProject);
       } else if (dialog.isOpenSelected()) {
         SNodeReference selectedScript = ListSequence.fromList(dialog.getSelectedScripts()).first();
-        new EditorNavigator(event.getData(MPSCommonDataKeys.MPS_PROJECT)).shallFocus(true).shallSelect(true).open(selectedScript);
+        new EditorNavigator(mpsProject).shallFocus(true).shallSelect(true).open(selectedScript);
       }
     });
   }
