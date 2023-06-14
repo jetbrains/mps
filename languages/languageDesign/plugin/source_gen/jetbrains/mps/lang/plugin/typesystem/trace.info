@@ -1451,7 +1451,7 @@
       </scope>
     </file>
     <file name="check_ActionDeclaration_NonTypesystemRule.java">
-      <node id="3662579279367664159" at="30,79,31,13" concept="7" />
+      <node id="3662579279367664159" at="30,146,31,13" concept="7" />
       <node id="3662579279367664366" at="32,5,33,68" concept="8" />
       <node id="4584567399974238606" at="33,68,34,152" concept="6" />
       <node id="4584567399974125969" at="34,152,35,353" concept="6" />
@@ -1465,18 +1465,19 @@
       <node id="3662579279367649836" at="50,50,51,41" concept="7" />
       <node id="3662579279367649836" at="53,68,54,102" concept="7" />
       <node id="3662579279367649836" at="56,30,57,17" concept="7" />
-      <node id="3662579279367649836" at="61,0,62,0" concept="10" trace="updateInBackground$6cga" />
-      <node id="3662579279367649836" at="62,0,63,0" concept="10" trace="value$5y_M" />
-      <node id="3662579279367649836" at="66,0,67,0" concept="10" trace="parameter$dZwh" />
-      <node id="3662579279367649836" at="67,0,68,0" concept="10" trace="key$K5Gi" />
-      <node id="3662579279367649836" at="68,0,69,0" concept="10" trace="annotation$K49I" />
-      <node id="3662579279367649836" at="69,0,70,0" concept="10" trace="annotation$12Ek" />
-      <node id="3662579279367649836" at="70,0,71,0" concept="10" trace="value$uK2B" />
-      <node id="3662579279367649836" at="71,0,72,0" concept="10" trace="key$bSmV" />
-      <node id="3662579279367649836" at="72,0,73,0" concept="10" trace="value$Y7om" />
-      <node id="3662579279367649836" at="76,0,77,0" concept="10" trace="ActionDataParameterDeclaration$Tg" />
-      <node id="3662579279367649836" at="77,0,78,0" concept="10" trace="BooleanConstant$n4" />
-      <node id="3662579279367649836" at="78,0,79,0" concept="10" trace="ActionDeclaration$T0" />
+      <node id="3662579279367649836" at="61,0,62,0" concept="10" trace="updateBlock$vQyi" />
+      <node id="3662579279367649836" at="62,0,63,0" concept="10" trace="parameter$dZwh" />
+      <node id="3662579279367649836" at="63,0,64,0" concept="10" trace="key$K5Gi" />
+      <node id="3662579279367649836" at="64,0,65,0" concept="10" trace="annotation$K49I" />
+      <node id="3662579279367649836" at="65,0,66,0" concept="10" trace="annotation$12Ek" />
+      <node id="3662579279367649836" at="66,0,67,0" concept="10" trace="value$uK2B" />
+      <node id="3662579279367649836" at="67,0,68,0" concept="10" trace="key$bSmV" />
+      <node id="3662579279367649836" at="68,0,69,0" concept="10" trace="value$Y7om" />
+      <node id="3662579279367649836" at="72,0,73,0" concept="10" trace="updateInBackground$6cga" />
+      <node id="3662579279367649836" at="73,0,74,0" concept="10" trace="value$5y_M" />
+      <node id="3662579279367649836" at="77,0,78,0" concept="10" trace="ActionDataParameterDeclaration$Tg" />
+      <node id="3662579279367649836" at="78,0,79,0" concept="10" trace="BooleanConstant$n4" />
+      <node id="3662579279367649836" at="79,0,80,0" concept="10" trace="ActionDeclaration$T0" />
       <node id="3662579279367649836" at="27,0,29,0" concept="2" trace="check_ActionDeclaration_NonTypesystemRule#()V" />
       <node id="3662579279367660119" at="29,115,32,5" concept="4" />
       <node id="3662579279367649836" at="50,0,53,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -1487,7 +1488,7 @@
       <node id="4584567399974217083" at="36,313,46,5" concept="4" />
       <node id="3662579279367649836" at="29,0,50,0" concept="5" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="3662579279367649836" at="27,54,27,54" />
-      <scope id="3662579279367660121" at="30,79,31,13" />
+      <scope id="3662579279367660121" at="30,146,31,13" />
       <scope id="3662579279367649836" at="50,50,51,41" />
       <scope id="3662579279367649836" at="53,68,54,102" />
       <scope id="3662579279367649836" at="56,30,57,17" />
@@ -1515,10 +1516,10 @@
         <var name="status" id="3662579279367649836" />
         <var name="typeCheckingContext" id="3662579279367649836" />
       </scope>
-      <unit id="3662579279367649836" at="60,0,64,0" name="jetbrains.mps.lang.plugin.typesystem.check_ActionDeclaration_NonTypesystemRule$PROPS" />
-      <unit id="3662579279367649836" at="75,0,80,0" name="jetbrains.mps.lang.plugin.typesystem.check_ActionDeclaration_NonTypesystemRule$CONCEPTS" />
-      <unit id="3662579279367649836" at="65,0,74,0" name="jetbrains.mps.lang.plugin.typesystem.check_ActionDeclaration_NonTypesystemRule$LINKS" />
-      <unit id="3662579279367649836" at="26,0,81,0" name="jetbrains.mps.lang.plugin.typesystem.check_ActionDeclaration_NonTypesystemRule" />
+      <unit id="3662579279367649836" at="71,0,75,0" name="jetbrains.mps.lang.plugin.typesystem.check_ActionDeclaration_NonTypesystemRule$PROPS" />
+      <unit id="3662579279367649836" at="76,0,81,0" name="jetbrains.mps.lang.plugin.typesystem.check_ActionDeclaration_NonTypesystemRule$CONCEPTS" />
+      <unit id="3662579279367649836" at="60,0,70,0" name="jetbrains.mps.lang.plugin.typesystem.check_ActionDeclaration_NonTypesystemRule$LINKS" />
+      <unit id="3662579279367649836" at="26,0,82,0" name="jetbrains.mps.lang.plugin.typesystem.check_ActionDeclaration_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)/3662579279367695174">
