@@ -41,7 +41,6 @@ import java.util.List;
       for (String id : toDisable) {
         ToolWindow toolWindow = toolWindowManager.getToolWindow(id);
         if (toolWindow != null) {
-          System.out.println(id + "  turned off");
           toolWindow.setAvailable(false);
         }
       }

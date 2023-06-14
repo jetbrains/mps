@@ -1902,6 +1902,9 @@
       <property role="TrG5h" value="fillActionContext" />
       <property role="IQ2nx" value="997079742910640235" />
       <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+      <node concept="t5JxF" id="54Z1k0$CypH" role="lGtFl">
+        <property role="t5JxN" value="With platform's DataContext caching values, there seems to be little use of this attribute now" />
+      </node>
     </node>
     <node concept="1TJgyi" id="44vtuGqwbnh" role="1TKVEl">
       <property role="IQ2nx" value="4692598989365753297" />
