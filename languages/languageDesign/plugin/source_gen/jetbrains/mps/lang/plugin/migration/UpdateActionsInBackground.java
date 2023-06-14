@@ -42,6 +42,10 @@ public class UpdateActionsInBackground extends MigrationScriptBase {
           SPropertyOperations.assign(ad, PROPS.updateInBackground$6cga, true);
           continue;
         }
+        if ((SLinkOperations.getTarget(ad, LINKS.updateBlock$vQyi) == null)) {
+          SPropertyOperations.assign(ad, PROPS.updateInBackground$6cga, true);
+          continue;
+        }
         Iterable<SNode> ai = Sequence.fromIterable(SLinkOperations.collectMany(SLinkOperations.collect(adpd, LINKS.key$K5Gi), LINKS.annotation$K49I)).where((it) -> SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.actions(MPS.Platform/)", "~MPSCommonDataKeys$Description")));
         Iterable<SNode> aiv = Sequence.fromIterable(SLinkOperations.collectMany(ai, LINKS.value$uK2B)).where((it) -> SLinkOperations.hasPointer(it, LINKS.key$bSmV, new SNodePointer("742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.actions(MPS.Platform/)", "~MPSCommonDataKeys$Description.edtOnAccess()")));
         // if none of the fields in use got edtOnAccess==true, assume BGT thread is ok
@@ -57,6 +61,7 @@ public class UpdateActionsInBackground extends MigrationScriptBase {
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink parameter$dZwh = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11b737b91a4L, "parameter");
+    /*package*/ static final SContainmentLink updateBlock$vQyi = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x1181d58b8d3L, "updateBlock");
     /*package*/ static final SReferenceLink key$K5Gi = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b69e025e0L, 0x11b69e95df5L, "key");
     /*package*/ static final SContainmentLink annotation$K49I = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
     /*package*/ static final SReferenceLink annotation$12Ek = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");

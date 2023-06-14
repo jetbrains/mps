@@ -1408,21 +1408,10 @@
             <node concept="3IZrLx" id="dpYjrH0Vek" role="3IZSJc">
               <node concept="3clFbS" id="dpYjrH0Vel" role="2VODD2">
                 <node concept="3clFbF" id="dpYjrH0Xcw" role="3cqZAp">
-                  <node concept="22lmx$" id="dpYjrH1zm$" role="3clFbG">
-                    <node concept="3clFbC" id="dpYjrH1Err" role="3uHU7w">
-                      <node concept="10Nm6u" id="dpYjrH1Guh" role="3uHU7w" />
-                      <node concept="2OqwBi" id="dpYjrH1CI2" role="3uHU7B">
-                        <node concept="30H73N" id="dpYjrH1AH3" role="2Oq$k0" />
-                        <node concept="3TrEf2" id="dpYjrH1DJp" role="2OqNvi">
-                          <ref role="3Tt5mk" to="tp4k:hwtmbzj" resolve="updateBlock" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="2OqwBi" id="dpYjrH0Zh2" role="3uHU7B">
-                      <node concept="30H73N" id="dpYjrH0Xcv" role="2Oq$k0" />
-                      <node concept="3TrcHB" id="dpYjrH10Z8" role="2OqNvi">
-                        <ref role="3TsBF5" to="tp4k:44vtuGqwbnh" resolve="updateInBackground" />
-                      </node>
+                  <node concept="2OqwBi" id="dpYjrH0Zh2" role="3clFbG">
+                    <node concept="30H73N" id="dpYjrH0Xcv" role="2Oq$k0" />
+                    <node concept="3TrcHB" id="dpYjrH10Z8" role="2OqNvi">
+                      <ref role="3TsBF5" to="tp4k:44vtuGqwbnh" resolve="updateInBackground" />
                     </node>
                   </node>
                 </node>

@@ -772,7 +772,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return true;
   }
   public static boolean ifMacro_Condition_0_5(final IfMacroContext _context) {
-    return SPropertyOperations.getBoolean(_context.getNode(), PROPS.updateInBackground$6cga) || SLinkOperations.getTarget(_context.getNode(), LINKS.updateBlock$vQyi) == null;
+    return SPropertyOperations.getBoolean(_context.getNode(), PROPS.updateInBackground$6cga);
   }
   public static boolean ifMacro_Condition_0_6(final IfMacroContext _context) {
     return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.updateBlock$vQyi), CONCEPTS.IsApplicableBlock$dM);
