@@ -4039,6 +4039,7 @@
     <property role="3GE5qa" value="Menu.EditorPopup.Actions" />
     <property role="1teQrl" value="true" />
     <property role="72QZ$" value="true" />
+    <property role="1rBW0U" value="true" />
     <node concept="tnohg" id="hGAImS0" role="tncku">
       <node concept="3clFbS" id="hGAImS1" role="2VODD2">
         <node concept="3clFbJ" id="1JP$BLmX5VU" role="3cqZAp">
@@ -13580,6 +13581,7 @@
     <property role="3GE5qa" value="Menu.MainMenu.SearchActions" />
     <property role="1teQrl" value="true" />
     <property role="2YLI8m" value="6u2MFnph2yg/read" />
+    <property role="1rBW0U" value="true" />
     <node concept="tnohg" id="cAZ8XCabSH" role="tncku">
       <node concept="3clFbS" id="cAZ8XCabSI" role="2VODD2">
         <node concept="3cpWs8" id="cAZ8XCabSJ" role="3cqZAp">
@@ -13799,6 +13801,7 @@
     <property role="2uzpH1" value="Highlight Usages" />
     <property role="3GE5qa" value="Menu.MainMenu.SearchActions" />
     <property role="1teQrl" value="true" />
+    <property role="1rBW0U" value="true" />
     <node concept="tnohg" id="4NbzjXXK6ut" role="tncku">
       <node concept="3clFbS" id="4NbzjXXK6uu" role="2VODD2">
         <node concept="3clFbF" id="6q3Z_tb_xrg" role="3cqZAp">
@@ -15668,6 +15671,7 @@
     <property role="2uzpH1" value="Show Node Info" />
     <property role="3GE5qa" value="DevKit" />
     <property role="1teQrl" value="true" />
+    <property role="1rBW0U" value="true" />
     <node concept="tnohg" id="4NhTXTAh4kw" role="tncku">
       <node concept="3clFbS" id="4NhTXTAh4kx" role="2VODD2">
         <node concept="3cpWs8" id="4NhTXTAhejK" role="3cqZAp">
@@ -20700,6 +20704,7 @@
     <property role="3GE5qa" value="Menu.FileView.Actions" />
     <property role="1teQrl" value="true" />
     <property role="2YLI8m" value="6u2MFnph2wS/none" />
+    <property role="1rBW0U" value="true" />
     <node concept="2XrIbr" id="6tNFAUMsC5$" role="32lrUH">
       <property role="TrG5h" value="isNotValid" />
       <node concept="10P_77" id="6tNFAUMsC5B" role="3clF45" />
@@ -36844,6 +36849,7 @@
     <property role="3GE5qa" value="Structure.Actions" />
     <property role="2uzpH1" value="Concept Implementation(s)" />
     <property role="1teQrl" value="true" />
+    <property role="1rBW0U" value="true" />
     <node concept="2XrIbr" id="5VO8AhfgrAG" role="32lrUH">
       <property role="TrG5h" value="captionFun" />
       <node concept="37vLTG" id="5VO8AhfgrAH" role="3clF46">
@@ -38936,6 +38942,7 @@
     <property role="2uzpH1" value="Find Text in Project" />
     <property role="1WHSii" value="Full-text search in property values" />
     <property role="72QZ$" value="true" />
+    <property role="1rBW0U" value="true" />
     <node concept="1DS2jV" id="1AwcMxRY0s2" role="1NuT2Z">
       <property role="TrG5h" value="mpsProject" />
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />

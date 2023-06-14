@@ -74,6 +74,7 @@
       <concept id="1203071646776" name="jetbrains.mps.lang.plugin.structure.ActionDeclaration" flags="ng" index="sE7Ow">
         <property id="1211298967294" name="outsideCommandExecution" index="72QZ$" />
         <property id="1205250923097" name="caption" index="2uzpH1" />
+        <property id="4692598989365753297" name="updateInBackground" index="1rBW0U" />
         <child id="1203083461638" name="executeFunction" index="tncku" />
         <child id="1205851242421" name="methodDeclaration" index="32lrUH" />
         <child id="1217413222820" name="parameter" index="1NuT2Z" />
@@ -7232,6 +7233,7 @@
     <property role="72QZ$" value="true" />
     <property role="3GE5qa" value="" />
     <property role="2uzpH1" value="Install IntelliJ IDEA Plugin" />
+    <property role="1rBW0U" value="true" />
     <node concept="2XrIbr" id="1TFxXPONz_h" role="32lrUH">
       <property role="TrG5h" value="getTargetDir" />
       <node concept="3uibUv" id="1TFxXPONz_i" role="3clF45">

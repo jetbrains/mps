@@ -2511,6 +2511,7 @@
     <property role="72QZ$" value="true" />
     <property role="3GE5qa" value="Goto" />
     <property role="2uzpH1" value="Go to Typesystem Rules" />
+    <property role="1rBW0U" value="true" />
     <node concept="1DS2jV" id="1wPwVvaJhqN" role="1NuT2Z">
       <property role="TrG5h" value="frame" />
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.FRAME" resolve="FRAME" />
@@ -4758,6 +4759,7 @@
     <property role="3GE5qa" value="InternalActions" />
     <property role="2uzpH1" value="Cell Properties" />
     <property role="72QZ$" value="true" />
+    <property role="1rBW0U" value="true" />
     <node concept="tnohg" id="2jM9X_IgWNO" role="tncku">
       <node concept="3clFbS" id="2jM9X_IgWNP" role="2VODD2">
         <node concept="3cpWs8" id="WGQpy6DFlX" role="3cqZAp">
@@ -4868,6 +4870,7 @@
     <property role="2uzpH1" value="Highlighted Cell's Dependent Nodes" />
     <property role="1teQrl" value="true" />
     <property role="72QZ$" value="true" />
+    <property role="1rBW0U" value="true" />
     <node concept="tnohg" id="2jM9X_IgWT2" role="tncku">
       <node concept="3clFbS" id="2jM9X_IgWT3" role="2VODD2">
         <node concept="3cpWs8" id="2jM9X_IgWT4" role="3cqZAp">
@@ -6521,6 +6524,7 @@
     <property role="3GE5qa" value="typesystem" />
     <property role="2uzpH1" value="Show Typesystem Trace" />
     <property role="72QZ$" value="true" />
+    <property role="1rBW0U" value="true" />
     <node concept="2S4$dB" id="7oAN7tz7mrk" role="1NuT2Z">
       <property role="TrG5h" value="node" />
       <node concept="1oajcY" id="7HZe2EwZDjA" role="1oa70y" />

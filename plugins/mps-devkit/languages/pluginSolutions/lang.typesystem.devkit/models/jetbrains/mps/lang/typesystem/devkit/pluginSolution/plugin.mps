@@ -525,6 +525,7 @@
     <property role="3GE5qa" value="Actions" />
     <property role="2uzpH1" value="Show Expected Type" />
     <property role="1teQrl" value="true" />
+    <property role="1rBW0U" value="true" />
     <node concept="1DS2jV" id="3U4Yh9n6v7g" role="1NuT2Z">
       <property role="TrG5h" value="mpsProject" />
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />

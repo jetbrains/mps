@@ -478,6 +478,7 @@
     <property role="2uzpH1" value="Rollback" />
     <property role="3GE5qa" value="Actions" />
     <property role="2YLI8m" value="6u2MFnph2yk/editorCommand" />
+    <property role="1rBW0U" value="true" />
     <node concept="1DS2jV" id="3w_vEw9Kvmm" role="1NuT2Z">
       <property role="TrG5h" value="mpsProject" />
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
@@ -740,6 +741,7 @@
     <property role="3GE5qa" value="Actions" />
     <property role="2uzpH1" value="Show Difference" />
     <property role="1teQrl" value="true" />
+    <property role="1rBW0U" value="true" />
     <node concept="1QGGSu" id="6XsdSphUfJT" role="3Uehp1">
       <node concept="10M0yZ" id="6XsdSphUjnP" role="3xaMm5">
         <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
