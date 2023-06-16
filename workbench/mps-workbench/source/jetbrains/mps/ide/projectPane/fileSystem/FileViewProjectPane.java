@@ -197,7 +197,7 @@ public class FileViewProjectPane extends AbstractProjectViewPane implements Data
   private void installListeners() {
     // TODO: Verify correct Disposable used
     FileStatusManager.getInstance(myProject).addFileStatusListener(myFileStatusListener = new FileStatusChangeListener(), this);
-    VirtualFileManager.getInstance().addVirtualFileManagerListener(myVirtualFileManagerListener = new RefreshListener());
+    VirtualFileManager.getInstance().addVirtualFileManagerListener(myVirtualFileManagerListener = new RefreshListener(), this);
     ChangeListManager.getInstance(myProject).addChangeListListener(myChangeListListener = new ChangeListUpdateListener());
     myMessageBusConnection = myProject.getMessageBus().connect(this);
     myMessageBusConnection.subscribe(VirtualFileManager.VFS_CHANGES, new FileChangesListener());

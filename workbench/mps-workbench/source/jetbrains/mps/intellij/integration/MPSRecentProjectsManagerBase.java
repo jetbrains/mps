@@ -8,6 +8,7 @@ import com.intellij.ide.impl.OpenProjectTask;
 import com.intellij.openapi.project.Project;
 import kotlin.coroutines.Continuation;
 import kotlin.jvm.functions.Function3;
+import kotlinx.coroutines.CoroutineScope;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -17,6 +18,12 @@ import java.lang.reflect.Method;
 import java.nio.file.Path;
 
 public class MPSRecentProjectsManagerBase extends RecentProjectsManagerBase {
+
+  // TODO: 232 platform API change
+  public MPSRecentProjectsManagerBase(@NotNull CoroutineScope coroutineScope) {
+    super(coroutineScope);
+  }
+
   @Nullable
   @Override
   public Object openProject(@NotNull Path projectFile, @NotNull OpenProjectTask options, @NotNull Continuation<? super Project> completion) {

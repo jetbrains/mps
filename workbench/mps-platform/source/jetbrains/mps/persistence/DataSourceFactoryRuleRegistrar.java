@@ -46,7 +46,8 @@ public final class DataSourceFactoryRuleRegistrar implements Disposable {
     DataSourceFactoryRuleService dsRegistry = myCoreComponents.getPlatform().findComponent(DataSourceFactoryRuleService.class);
     for (DataSourceFactoryRuleProvider provider : DataSourceFactoryRuleProvider.EP_DATA_SOURCE_FACTORY.getExtensions()) {
       try {
-        DataSourceFactoryRule factoryRule = provider.instantiate(provider.getImplementationClass(), ApplicationManager.getApplication().getPicoContainer());
+        // TODO: 232 platform API change
+        DataSourceFactoryRule factoryRule = provider.instantiate(provider.getImplementationClass(), null);//ApplicationManager.getApplication().getPicoContainer());
         myRegisteredRules.add(factoryRule);
         dsRegistry.register(factoryRule);
       } catch (ClassNotFoundException e) {

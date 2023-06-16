@@ -65,7 +65,7 @@ public class PlainTabsComponent extends BaseTabsComponent<PlainEditorTab> {
                             Project project) {
     super(baseNode, possibleTabs, editor, callback, showGrayed, createModeCallback, project);
 
-    myTabs = new JBTabsImpl(project, null, myJbTabsDisposable);
+    myTabs = new JBTabsImpl(project, myJbTabsDisposable);
     myTabs.setTabsPosition(JBTabsPosition.bottom);
 
     setContent(myTabs);

@@ -74,7 +74,7 @@ public class DebuggerToolContentBuilder implements Disposable {
     buildUi(ui, console);
     MyRunContentDescriptor contentDescriptor = createDescriptorInternal(ui, profile);
     ui.getOptions().setLeftToolbar(createActionToolbar(ui, contentDescriptor), ActionPlaces.DEBUGGER_TOOLBAR);
-    ui.getOptions().setTopToolbar(((BaseGroup) ActionManager.getInstance().getAction("jetbrains.mps.debugger.api.ui.actions.DebugStepsMenu_ActionGroup")), ActionPlaces.DEBUGGER_TOOLBAR);
+    ui.getOptions().setTopLeftToolbar(((BaseGroup) ActionManager.getInstance().getAction("jetbrains.mps.debugger.api.ui.actions.DebugStepsMenu_ActionGroup")), ActionPlaces.DEBUGGER_TOOLBAR);
     return contentDescriptor;
   }
   private MyRunContentDescriptor createDescriptorInternal(RunnerLayoutUi ui, RunProfile profile) {

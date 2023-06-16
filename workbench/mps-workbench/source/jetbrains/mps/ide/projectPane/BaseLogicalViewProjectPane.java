@@ -296,7 +296,7 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
   }
 
   protected void addListeners() {
-    VirtualFileManager.getInstance().addVirtualFileManagerListener(myRefreshListener);
+    VirtualFileManager.getInstance().addVirtualFileManagerListener(myRefreshListener, this);
     jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
     new RepoListenerRegistrar(mpsProject.getRepository(), myRepositoryListener).attach();
     mpsProject.getModelAccess().addCommandListener(myRepositoryListener);
