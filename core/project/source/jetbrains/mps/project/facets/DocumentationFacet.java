@@ -14,6 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.persistence.Memento;
 
 public class DocumentationFacet extends ModuleFacetBase implements GenerationTargetFacet {
 
@@ -55,12 +56,6 @@ public class DocumentationFacet extends ModuleFacetBase implements GenerationTar
   }
 
   public IFile getLocation() {
-    if (myOutputRoot == null && getModule() instanceof AbstractModule) {
-      // there's no output location for packaged/deployed modules
-      String outputPath = ProjectPathUtil.getGeneratorOutputPath(((AbstractModule) getModule()).getModuleDescriptor());
-      final String expanded = outputPath == null ? null : MacrosFactory.forModule(getModule()).expandPath(outputPath);
-      return outputPath == null ? null : ((AbstractModule) getModule()).getFileSystem().getFile(expanded);
-    }
     return myOutputRoot;
   }
 
@@ -69,6 +64,21 @@ public class DocumentationFacet extends ModuleFacetBase implements GenerationTar
     String packageName = model.getName().getLongName();
     String packagePath = packageName.replace('.', IFileSystem.SEPARATOR_CHAR);
     return IFileUtil.getDescendant(root, packagePath);
+  }
+
+  public void load(@NotNull Memento memento) {
+    String locationValue = memento.get("doc_src");
+    final AbstractModule am = (AbstractModule) getModule();
+    if (locationValue == null) {
+      locationValue = ProjectPathUtil.getGeneratorOutputPath(am.getModuleDescriptor());
+    }
+    final String expanded = MacrosFactory.forModule(getModule()).expandPath(locationValue);
+    myOutputRoot = am.getFileSystem().getFile(expanded);
+  }
+
+  public void save(@NotNull Memento memento) {
+    final String shrank = myOutputRoot.getPath();
+    memento.put("doc_src", shrank);
   }
 
 }

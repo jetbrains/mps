@@ -17,7 +17,6 @@ import com.intellij.util.ui.JBEmptyBorder;
 import jetbrains.mps.icons.MPSIcons.General;
 import jetbrains.mps.ide.ui.dialogs.properties.MPSPropertiesConfigurable;
 import jetbrains.mps.ide.ui.dialogs.properties.tabs.BaseTab;
-import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.project.facets.DocumentationFacet;
 import jetbrains.mps.vfs.IFileSystem;
 import org.jetbrains.annotations.NotNull;
@@ -61,11 +60,8 @@ public class DocumentationFacetTab extends BaseTab implements FacetTab {
     };
     FileChooserFactory.getInstance().installFileCompletion(genOutPath.getTextField(), outputPathsChooserDescriptor, true, null);
 
-    // todo: default path
-    if (myDocumentationFacet.getLocation() != null) {
-      fs = myDocumentationFacet.getLocation().getFS();
-      genOutPath.setText(myDocumentationFacet.getLocation().getPath());
-    }
+    fs = myDocumentationFacet.getLocation().getFS();
+    genOutPath.setText(myDocumentationFacet.getLocation().getPath());
 
     genOutPath.setBorder(new TitledBorder("Output root"));
     genOutPath.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -90,5 +86,4 @@ public class DocumentationFacetTab extends BaseTab implements FacetTab {
   public SModuleFacet getFacet() {
     return myDocumentationFacet;
   }
-
 }
