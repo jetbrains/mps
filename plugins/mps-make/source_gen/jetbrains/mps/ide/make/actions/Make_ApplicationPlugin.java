@@ -37,6 +37,7 @@ public class Make_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new CleanModule_Action());
     addAction(new CleanProject_Action());
     addAction(new CompileProject_Action());
+    addAction(new DocPreviewModel_Action());
     addAction(new MakeModule_Action());
     addAction(new MakeProject_Action());
     addAction(new MakeSelectedModels_Action());
