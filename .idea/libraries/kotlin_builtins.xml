@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="kotlin_builtins">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/3rd-party-rt.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

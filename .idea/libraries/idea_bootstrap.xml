@@ -2,7 +2,8 @@
   <library name="idea-bootstrap">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/app.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/util.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/platform-loader.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/util-8.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
