@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,16 +52,14 @@ import java.util.Set;
 public class FilePerRootFormatUtil {
 
   public static SModelHeader loadDescriptor(MultiStreamDataSource dataSource) throws ModelReadException {
-    InputStream in = null;
-    try {
-      in = dataSource.getStreamByNameOrFail(MPSExtentions.DOT_MODEL_HEADER).openInputStream();
+    try (InputStream in = dataSource.getStreamByNameOrFail(MPSExtentions.DOT_MODEL_HEADER).openInputStream()) {
       InputSource source = new InputSource(new InputStreamReader(in, FileUtil.DEFAULT_CHARSET));
 
       return ModelPersistence.loadDescriptor(source);
-    } catch (IOException e) {
-      throw new ModelReadException("Couldn't read descriptor from " + dataSource.getLocation() + ": " + e.getMessage(), e);
-    } finally {
-      FileUtil.closeFileSafe(in);
+    } catch (Exception e) {
+      // getStreamByNameOrFail() throws IAE which we need to handle here. In fact, no reason to pass any Exception as long
+      // as we've got explicit MRE here
+      throw new ModelReadException(String.format("Couldn't read descriptor from %s: %s", dataSource.getLocation(), e.getMessage()), e);
     }
   }
 
