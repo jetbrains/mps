@@ -76,7 +76,7 @@ public class ButtonTabsComponent extends BaseTabsComponent<ButtonEditorTab> {
   @Override
   public RelationDescriptor getCurrentTabAspect() {
     SNodeReference currentAspect = getEditedNode();
-    assert currentAspect != null;
+    if (currentAspect == null) return null;
 
     for (ButtonEditorTab bet : myRealTabs) {
       if (bet.isEditingTabFor(getEditedNode())) {
