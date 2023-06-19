@@ -338,37 +338,43 @@
     <file name="MakeSettingsPanel.java">
       <node id="2783053129206074262" at="18,0,19,0" concept="2" trace="myMakeConfig" />
       <node id="2783053129207291590" at="19,0,20,0" concept="2" trace="myMakeInBackground" />
-      <node id="2783053129205139093" at="21,45,22,65" concept="1" />
-      <node id="2783053129205599208" at="26,36,27,29" concept="5" />
-      <node id="2783053129206736499" at="27,29,28,61" concept="1" />
-      <node id="2783053129207044655" at="28,61,29,36" concept="1" />
-      <node id="2783053129207308090" at="29,36,30,65" concept="1" />
-      <node id="2783053129207612546" at="30,65,31,70" concept="1" />
-      <node id="5514400951963262347" at="31,70,32,50" concept="1" />
-      <node id="2783053129206686523" at="32,50,33,13" concept="6" />
-      <node id="4182099185160507711" at="37,31,38,80" concept="6" />
-      <node id="2783053129208318215" at="42,23,43,70" concept="1" />
-      <node id="2783053129208212788" at="47,23,48,70" concept="1" />
-      <node id="4182099185160500769" at="21,0,24,0" concept="0" trace="MakeSettingsPanel#(Lcom/intellij/openapi/project/Project;)V" />
-      <node id="4182099185160054244" at="36,0,40,0" concept="4" trace="isModified#()Z" />
-      <node id="4182099185160054252" at="41,0,45,0" concept="4" trace="apply#()V" />
-      <node id="4182099185160054258" at="46,0,50,0" concept="4" trace="reset#()V" />
-      <node id="4182099185160054236" at="25,0,35,0" concept="4" trace="getComponent#()Ljavax/swing/JComponent;" />
-      <scope id="4182099185160500773" at="21,45,22,65" />
-      <scope id="4182099185160054248" at="37,31,38,80" />
-      <scope id="4182099185160054256" at="42,23,43,70" />
-      <scope id="4182099185160054262" at="47,23,48,70" />
-      <scope id="4182099185160500769" at="21,0,24,0">
+      <node id="1328070768616795436" at="20,0,21,0" concept="2" trace="myDisableMakeOnStartup" />
+      <node id="2783053129205139093" at="22,45,23,65" concept="1" />
+      <node id="2783053129205599208" at="27,36,28,29" concept="5" />
+      <node id="2783053129206736499" at="28,29,29,61" concept="1" />
+      <node id="2783053129207044655" at="29,61,30,36" concept="1" />
+      <node id="2783053129207308090" at="30,36,31,65" concept="1" />
+      <node id="2783053129207612546" at="31,65,32,70" concept="1" />
+      <node id="5514400951963262347" at="32,70,33,50" concept="1" />
+      <node id="1328070768616802301" at="33,50,34,71" concept="1" />
+      <node id="1328070768616802307" at="34,71,35,78" concept="1" />
+      <node id="1328070768616802314" at="35,78,36,54" concept="1" />
+      <node id="2783053129206686523" at="36,54,37,13" concept="6" />
+      <node id="4182099185160507711" at="41,31,42,160" concept="6" />
+      <node id="2783053129208318215" at="46,23,47,70" concept="1" />
+      <node id="1328070768616860575" at="47,70,48,78" concept="1" />
+      <node id="2783053129208212788" at="52,23,53,70" concept="1" />
+      <node id="1328070768616874586" at="53,70,54,78" concept="1" />
+      <node id="4182099185160500769" at="22,0,25,0" concept="0" trace="MakeSettingsPanel#(Lcom/intellij/openapi/project/Project;)V" />
+      <node id="4182099185160054244" at="40,0,44,0" concept="4" trace="isModified#()Z" />
+      <node id="4182099185160054252" at="45,0,50,0" concept="4" trace="apply#()V" />
+      <node id="4182099185160054258" at="51,0,56,0" concept="4" trace="reset#()V" />
+      <node id="4182099185160054236" at="26,0,39,0" concept="4" trace="getComponent#()Ljavax/swing/JComponent;" />
+      <scope id="4182099185160500773" at="22,45,23,65" />
+      <scope id="4182099185160054248" at="41,31,42,160" />
+      <scope id="4182099185160054256" at="46,23,48,78" />
+      <scope id="4182099185160054262" at="52,23,54,78" />
+      <scope id="4182099185160500769" at="22,0,25,0">
         <var name="project" id="2783053129206043191" />
       </scope>
-      <scope id="4182099185160054244" at="36,0,40,0" />
-      <scope id="4182099185160054252" at="41,0,45,0" />
-      <scope id="4182099185160054258" at="46,0,50,0" />
-      <scope id="4182099185160054240" at="26,36,33,13">
+      <scope id="4182099185160054244" at="40,0,44,0" />
+      <scope id="4182099185160054252" at="45,0,50,0" />
+      <scope id="4182099185160054258" at="51,0,56,0" />
+      <scope id="4182099185160054240" at="27,36,37,13">
         <var name="p" id="2783053129205599209" />
       </scope>
-      <scope id="4182099185160054236" at="25,0,35,0" />
-      <unit id="4182099185160006907" at="16,0,51,0" name="jetbrains.mps.ide.make.MakeSettingsPanel" />
+      <scope id="4182099185160054236" at="26,0,39,0" />
+      <unit id="4182099185160006907" at="16,0,57,0" name="jetbrains.mps.ide.make.MakeSettingsPanel" />
     </file>
   </root>
 </debug-info>

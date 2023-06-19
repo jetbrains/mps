@@ -17,6 +17,7 @@ import com.intellij.ui.components.JBCheckBox;
 public final class MakeSettingsPanel implements ProjectPrefsExtraPanel {
   private final MakeServiceConfiguration myMakeConfig;
   private JCheckBox myMakeInBackground;
+  private JCheckBox myDisableMakeOnStartup;
 
   public MakeSettingsPanel(Project project) {
     myMakeConfig = MakeServiceConfiguration.getInstance(project);
@@ -30,21 +31,26 @@ public final class MakeSettingsPanel implements ProjectPrefsExtraPanel {
     myMakeInBackground = new JBCheckBox("Perform in background");
     myMakeInBackground.setSelected(myMakeConfig.isMakeInBackground());
     p.add(myMakeInBackground, BorderLayout.NORTH);
+    myDisableMakeOnStartup = new JBCheckBox("Disable Make On Startup");
+    myDisableMakeOnStartup.setSelected(myMakeConfig.isDisableMakeOnStartup());
+    p.add(myDisableMakeOnStartup, BorderLayout.SOUTH);
     return p;
   }
 
   @Override
   public boolean isModified() {
-    return myMakeConfig.isMakeInBackground() != myMakeInBackground.isSelected();
+    return myMakeConfig.isMakeInBackground() != myMakeInBackground.isSelected() || myMakeConfig.isDisableMakeOnStartup() != myDisableMakeOnStartup.isSelected();
   }
 
   @Override
   public void apply() {
     myMakeConfig.setMakeInBackground(myMakeInBackground.isSelected());
+    myMakeConfig.setDisableMakeOnStartup(myDisableMakeOnStartup.isSelected());
   }
 
   @Override
   public void reset() {
     myMakeInBackground.setSelected(myMakeConfig.isMakeInBackground());
+    myDisableMakeOnStartup.setSelected(myMakeConfig.isDisableMakeOnStartup());
   }
 }

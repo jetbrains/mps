@@ -18,6 +18,7 @@ import com.intellij.openapi.progress.PerformInBackgroundOption;
 @GeneratedClass(node = "r:abe0ad99-3ef3-4277-a170-d1efd7986b86(jetbrains.mps.ide.make)/3361535663822413166", model = "r:abe0ad99-3ef3-4277-a170-d1efd7986b86(jetbrains.mps.ide.make)")
 public final class MakeServiceConfiguration implements PersistentStateComponent<MakeServiceConfiguration> {
   private boolean myMakeInBackground = false;
+  private boolean myDisableMakeOnStartup = false;
   public static MakeServiceConfiguration getInstance(Project project) {
     // implementation inspired by c.i.openapi.vcs.VcsConfiguration
     return ServiceManager.getService(project, MakeServiceConfiguration.class);
@@ -31,6 +32,7 @@ public final class MakeServiceConfiguration implements PersistentStateComponent<
   @Override
   public void loadState(@NotNull MakeServiceConfiguration configuration) {
     myMakeInBackground = configuration.myMakeInBackground;
+    myDisableMakeOnStartup = configuration.myDisableMakeOnStartup;
   }
 
   public boolean isMakeInBackground() {
@@ -38,6 +40,13 @@ public final class MakeServiceConfiguration implements PersistentStateComponent<
   }
   public void setMakeInBackground(boolean value) {
     myMakeInBackground = value;
+  }
+
+  public boolean isDisableMakeOnStartup() {
+    return myDisableMakeOnStartup;
+  }
+  public void setDisableMakeOnStartup(boolean value) {
+    myDisableMakeOnStartup = value;
   }
 
   public PerformInBackgroundOption getMakeInBackgroundOption() {
