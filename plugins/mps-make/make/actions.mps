@@ -63,7 +63,6 @@
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="l46t" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.compiler(MPS.Core/)" />
-    <import index="alof" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.project(MPS.Platform/)" />
     <import index="drpk" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.make(MPS.Platform/)" />
     <import index="j936" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide.ui(MPS.IDEA/)" />
     <import index="mnlj" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.beans(JDK/)" />
@@ -87,6 +86,7 @@
     <import index="ao3" ref="7124e466-fc92-4803-a656-d7a6b7eb3910/java:jetbrains.mps.text(MPS.TextGen/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="v27p" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.startup(MPS.IDEA/)" />
+    <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" />
     <import index="7bx7" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.workbench.action(MPS.Platform/)" implicit="true" />
     <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" implicit="true" />
     <import index="31cb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.module(MPS.Core/)" implicit="true" />
@@ -521,6 +521,10 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+      <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7">
+        <property id="8575328350543493365" name="message" index="huDt6" />
+        <property id="2423417345669755629" name="filter" index="1eyWvh" />
       </concept>
       <concept id="709746936026466394" name="jetbrains.mps.lang.core.structure.ChildAttribute" flags="ng" index="3VBwX9">
         <property id="709746936026609031" name="linkId" index="3V$3ak" />
@@ -1284,16 +1288,69 @@
                 <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
               </node>
             </node>
-            <node concept="2YIFZM" id="70GEktGTOpl" role="33vP2m">
-              <ref role="37wK5l" to="33ny:~Collections.singleton(java.lang.Object)" resolve="singleton" />
-              <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
-              <node concept="2OqwBi" id="7bnM4mNCCYY" role="37wK5m">
-                <node concept="2WthIp" id="7bnM4mNCCYZ" role="2Oq$k0" />
-                <node concept="1DTwFV" id="7bnM4mNCCZ0" role="2OqNvi">
-                  <ref role="2WH_rO" node="65lOwkWEhYm" resolve="module" />
+            <node concept="2OqwBi" id="$l051RVfTh" role="33vP2m">
+              <node concept="2OqwBi" id="$l051RVe25" role="2Oq$k0">
+                <node concept="2OqwBi" id="$l051RVbNn" role="2Oq$k0">
+                  <node concept="2OqwBi" id="$l051RV9Mk" role="2Oq$k0">
+                    <node concept="2WthIp" id="$l051RV8H9" role="2Oq$k0" />
+                    <node concept="1DTwFV" id="$l051RVaIq" role="2OqNvi">
+                      <ref role="2WH_rO" node="$l051RTS5b" resolve="modules" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="$l051RVdiB" role="2OqNvi">
+                    <ref role="37wK5l" to="33ny:~Collection.stream()" resolve="stream" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="$l051RVfoQ" role="2OqNvi">
+                  <ref role="37wK5l" to="1ctc:~Stream.filter(java.util.function.Predicate)" resolve="filter" />
+                  <node concept="1bVj0M" id="$l051RVkrq" role="37wK5m">
+                    <node concept="37vLTG" id="$l051RVkrr" role="1bW2Oz">
+                      <property role="TrG5h" value="m" />
+                      <node concept="3uibUv" id="$l051RVkrs" role="1tU5fm">
+                        <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
+                      </node>
+                    </node>
+                    <node concept="3clFbS" id="$l051RVkrt" role="1bW5cS">
+                      <node concept="3clFbF" id="$l051RVkru" role="3cqZAp">
+                        <node concept="1Wc70l" id="$l051RVkrv" role="3clFbG">
+                          <node concept="2YIFZM" id="$l051RVkrw" role="3uHU7B">
+                            <ref role="37wK5l" to="z1c3:~SModuleOperations.isCompileInMps(org.jetbrains.mps.openapi.module.SModule)" resolve="isCompileInMps" />
+                            <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
+                            <node concept="37vLTw" id="$l051RVkrx" role="37wK5m">
+                              <ref role="3cqZAo" node="$l051RVkrr" resolve="m" />
+                            </node>
+                          </node>
+                          <node concept="3fqX7Q" id="$l051RVkry" role="3uHU7w">
+                            <node concept="2OqwBi" id="$l051RVkrz" role="3fr31v">
+                              <node concept="37vLTw" id="$l051RVkr$" role="2Oq$k0">
+                                <ref role="3cqZAo" node="$l051RVkrr" resolve="m" />
+                              </node>
+                              <node concept="liA8E" id="$l051RVkr_" role="2OqNvi">
+                                <ref role="37wK5l" to="lui2:~SModule.isReadOnly()" resolve="isReadOnly" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="liA8E" id="$l051RVhCx" role="2OqNvi">
+                <ref role="37wK5l" to="1ctc:~Stream.collect(java.util.stream.Collector)" resolve="collect" />
+                <node concept="2YIFZM" id="$l051RVjKZ" role="37wK5m">
+                  <ref role="37wK5l" to="1ctc:~Collectors.toSet()" resolve="toSet" />
+                  <ref role="1Pybhc" to="1ctc:~Collectors" resolve="Collectors" />
+                  <node concept="3uibUv" id="$l051RVws4" role="3PaCim">
+                    <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
+                  </node>
                 </node>
               </node>
             </node>
+          </node>
+          <node concept="15s5l7" id="$l051RVpRE" role="lGtFl">
+            <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;" />
+            <property role="huDt6" value="all typesystem messages" />
           </node>
         </node>
         <node concept="3clFbF" id="47QEcUfsm3a" role="3cqZAp">
@@ -1406,29 +1463,51 @@
     </node>
     <node concept="2ScWuX" id="47QEcUfsm3H" role="tmbBb">
       <node concept="3clFbS" id="47QEcUfsm3I" role="2VODD2">
-        <node concept="3clFbF" id="1WCLzfq7jty" role="3cqZAp">
-          <node concept="1Wc70l" id="70GEktGTHHR" role="3clFbG">
-            <node concept="3fqX7Q" id="70GEktGTHWu" role="3uHU7w">
-              <node concept="2OqwBi" id="70GEktGTIzP" role="3fr31v">
-                <node concept="2OqwBi" id="70GEktGTI6I" role="2Oq$k0">
-                  <node concept="2WthIp" id="70GEktGTI6L" role="2Oq$k0" />
-                  <node concept="1DTwFV" id="70GEktGTI6N" role="2OqNvi">
-                    <ref role="2WH_rO" node="65lOwkWEhYm" resolve="module" />
-                  </node>
-                </node>
-                <node concept="liA8E" id="70GEktGTJas" role="2OqNvi">
-                  <ref role="37wK5l" to="lui2:~SModule.isReadOnly()" resolve="isReadOnly" />
+        <node concept="3clFbF" id="$l051RUCQu" role="3cqZAp">
+          <node concept="2OqwBi" id="$l051RULjR" role="3clFbG">
+            <node concept="2OqwBi" id="$l051RUGKR" role="2Oq$k0">
+              <node concept="2OqwBi" id="$l051RUCQo" role="2Oq$k0">
+                <node concept="2WthIp" id="$l051RUCQr" role="2Oq$k0" />
+                <node concept="1DTwFV" id="$l051RUCQt" role="2OqNvi">
+                  <ref role="2WH_rO" node="$l051RTS5b" resolve="modules" />
                 </node>
               </node>
+              <node concept="liA8E" id="$l051RUK_b" role="2OqNvi">
+                <ref role="37wK5l" to="33ny:~Collection.stream()" resolve="stream" />
+              </node>
             </node>
-            <node concept="2YIFZM" id="1WCLzfq7jLl" role="3uHU7B">
-              <ref role="37wK5l" to="z1c3:~SModuleOperations.isCompileInMps(org.jetbrains.mps.openapi.module.SModule)" resolve="isCompileInMps" />
-              <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
-              <node concept="2OqwBi" id="1WCLzfq7kjd" role="37wK5m">
-                <node concept="1DTwFV" id="1WCLzfq7lDM" role="2OqNvi">
-                  <ref role="2WH_rO" node="65lOwkWEhYm" resolve="module" />
+            <node concept="liA8E" id="$l051RUNDO" role="2OqNvi">
+              <ref role="37wK5l" to="1ctc:~Stream.anyMatch(java.util.function.Predicate)" resolve="anyMatch" />
+              <node concept="1bVj0M" id="$l051RUOWs" role="37wK5m">
+                <node concept="37vLTG" id="$l051RV4di" role="1bW2Oz">
+                  <property role="TrG5h" value="m" />
+                  <node concept="3uibUv" id="$l051RV4df" role="1tU5fm">
+                    <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
+                  </node>
                 </node>
-                <node concept="2WthIp" id="1WCLzfq7jZ4" role="2Oq$k0" />
+                <node concept="3clFbS" id="$l051RUOWK" role="1bW5cS">
+                  <node concept="3clFbF" id="$l051RUS37" role="3cqZAp">
+                    <node concept="1Wc70l" id="70GEktGTHHR" role="3clFbG">
+                      <node concept="2YIFZM" id="1WCLzfq7jLl" role="3uHU7B">
+                        <ref role="37wK5l" to="z1c3:~SModuleOperations.isCompileInMps(org.jetbrains.mps.openapi.module.SModule)" resolve="isCompileInMps" />
+                        <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
+                        <node concept="37vLTw" id="$l051RUT4m" role="37wK5m">
+                          <ref role="3cqZAo" node="$l051RV4di" resolve="m" />
+                        </node>
+                      </node>
+                      <node concept="3fqX7Q" id="$l051RV6Pu" role="3uHU7w">
+                        <node concept="2OqwBi" id="$l051RV6Pw" role="3fr31v">
+                          <node concept="37vLTw" id="$l051RV6Px" role="2Oq$k0">
+                            <ref role="3cqZAo" node="$l051RV4di" resolve="m" />
+                          </node>
+                          <node concept="liA8E" id="$l051RV6Py" role="2OqNvi">
+                            <ref role="37wK5l" to="lui2:~SModule.isReadOnly()" resolve="isReadOnly" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
               </node>
             </node>
           </node>
@@ -1440,10 +1519,9 @@
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
       <node concept="1oajcY" id="70GEktGUhSR" role="1oa70y" />
     </node>
-    <node concept="1DS2jV" id="65lOwkWEhYm" role="1NuT2Z">
-      <property role="TrG5h" value="module" />
-      <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MODULE" resolve="MODULE" />
-      <node concept="1oajcY" id="65lOwkWEhYn" role="1oa70y" />
+    <node concept="1DS2jV" id="$l051RTS5b" role="1NuT2Z">
+      <property role="TrG5h" value="modules" />
+      <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MODULES" resolve="MODULES" />
     </node>
   </node>
   <node concept="sE7Ow" id="47QEcUfsm41">
@@ -1458,25 +1536,69 @@
         <node concept="3cpWs8" id="47QEcUfsm44" role="3cqZAp">
           <node concept="3cpWsn" id="47QEcUfsm45" role="3cpWs9">
             <property role="TrG5h" value="modules" />
-            <node concept="2YIFZM" id="4r0sY_pX7Et" role="33vP2m">
-              <ref role="37wK5l" to="33ny:~Collections.singleton(java.lang.Object)" resolve="singleton" />
-              <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
-              <node concept="3uibUv" id="4r0sY_pX86F" role="3PaCim">
-                <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
-              </node>
-              <node concept="2OqwBi" id="47QEcUfsm49" role="37wK5m">
-                <node concept="2WthIp" id="47QEcUfsm4a" role="2Oq$k0">
-                  <ref role="32nkFo" node="47QEcUfsm41" resolve="RebuildModule" />
-                </node>
-                <node concept="1DTwFV" id="47QEcUfsm4b" role="2OqNvi">
-                  <ref role="2WH_rO" node="47QEcUfsm4x" resolve="module" />
-                </node>
-              </node>
-            </node>
             <node concept="3uibUv" id="47QEcUfsm46" role="1tU5fm">
               <ref role="3uigEE" to="33ny:~Set" resolve="Set" />
               <node concept="3uibUv" id="4r0sY_pRDyR" role="11_B2D">
                 <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="$l051RVDLv" role="33vP2m">
+              <node concept="2OqwBi" id="$l051RVDLw" role="2Oq$k0">
+                <node concept="2OqwBi" id="$l051RVDLx" role="2Oq$k0">
+                  <node concept="2OqwBi" id="$l051RVDLy" role="2Oq$k0">
+                    <node concept="2WthIp" id="$l051RVDLz" role="2Oq$k0" />
+                    <node concept="1DTwFV" id="$l051RVDL$" role="2OqNvi">
+                      <ref role="2WH_rO" node="$l051RVywM" resolve="modules" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="$l051RVDL_" role="2OqNvi">
+                    <ref role="37wK5l" to="33ny:~Collection.stream()" resolve="stream" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="$l051RVDLA" role="2OqNvi">
+                  <ref role="37wK5l" to="1ctc:~Stream.filter(java.util.function.Predicate)" resolve="filter" />
+                  <node concept="1bVj0M" id="$l051RVDLB" role="37wK5m">
+                    <node concept="37vLTG" id="$l051RVDLC" role="1bW2Oz">
+                      <property role="TrG5h" value="m" />
+                      <node concept="3uibUv" id="$l051RVDLD" role="1tU5fm">
+                        <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
+                      </node>
+                    </node>
+                    <node concept="3clFbS" id="$l051RVDLE" role="1bW5cS">
+                      <node concept="3clFbF" id="$l051RVDLF" role="3cqZAp">
+                        <node concept="1Wc70l" id="$l051RVDLG" role="3clFbG">
+                          <node concept="2YIFZM" id="$l051RVDLH" role="3uHU7B">
+                            <ref role="37wK5l" to="z1c3:~SModuleOperations.isCompileInMps(org.jetbrains.mps.openapi.module.SModule)" resolve="isCompileInMps" />
+                            <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
+                            <node concept="37vLTw" id="$l051RVDLI" role="37wK5m">
+                              <ref role="3cqZAo" node="$l051RVDLC" resolve="m" />
+                            </node>
+                          </node>
+                          <node concept="3fqX7Q" id="$l051RVDLJ" role="3uHU7w">
+                            <node concept="2OqwBi" id="$l051RVDLK" role="3fr31v">
+                              <node concept="37vLTw" id="$l051RVDLL" role="2Oq$k0">
+                                <ref role="3cqZAo" node="$l051RVDLC" resolve="m" />
+                              </node>
+                              <node concept="liA8E" id="$l051RVDLM" role="2OqNvi">
+                                <ref role="37wK5l" to="lui2:~SModule.isReadOnly()" resolve="isReadOnly" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="liA8E" id="$l051RVDLN" role="2OqNvi">
+                <ref role="37wK5l" to="1ctc:~Stream.collect(java.util.stream.Collector)" resolve="collect" />
+                <node concept="2YIFZM" id="$l051RVDLO" role="37wK5m">
+                  <ref role="37wK5l" to="1ctc:~Collectors.toSet()" resolve="toSet" />
+                  <ref role="1Pybhc" to="1ctc:~Collectors" resolve="Collectors" />
+                  <node concept="3uibUv" id="$l051RVDLP" role="3PaCim">
+                    <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
+                  </node>
+                </node>
               </node>
             </node>
           </node>
@@ -1516,29 +1638,51 @@
     </node>
     <node concept="2ScWuX" id="47QEcUfsm4o" role="tmbBb">
       <node concept="3clFbS" id="47QEcUfsm4p" role="2VODD2">
-        <node concept="3clFbF" id="1WCLzfq7rD1" role="3cqZAp">
-          <node concept="1Wc70l" id="70GEktGTFov" role="3clFbG">
-            <node concept="3fqX7Q" id="70GEktGTGCY" role="3uHU7w">
-              <node concept="2OqwBi" id="70GEktGTGD0" role="3fr31v">
-                <node concept="2OqwBi" id="70GEktGTGD1" role="2Oq$k0">
-                  <node concept="2WthIp" id="70GEktGTGD2" role="2Oq$k0" />
-                  <node concept="1DTwFV" id="70GEktGTGD3" role="2OqNvi">
-                    <ref role="2WH_rO" node="47QEcUfsm4x" resolve="module" />
-                  </node>
-                </node>
-                <node concept="liA8E" id="70GEktGTGD4" role="2OqNvi">
-                  <ref role="37wK5l" to="lui2:~SModule.isReadOnly()" resolve="isReadOnly" />
+        <node concept="3clFbF" id="$l051RV_fp" role="3cqZAp">
+          <node concept="2OqwBi" id="$l051RV_fq" role="3clFbG">
+            <node concept="2OqwBi" id="$l051RV_fr" role="2Oq$k0">
+              <node concept="2OqwBi" id="$l051RV_fs" role="2Oq$k0">
+                <node concept="2WthIp" id="$l051RV_ft" role="2Oq$k0" />
+                <node concept="1DTwFV" id="$l051RV_fu" role="2OqNvi">
+                  <ref role="2WH_rO" node="$l051RVywM" resolve="modules" />
                 </node>
               </node>
+              <node concept="liA8E" id="$l051RV_fv" role="2OqNvi">
+                <ref role="37wK5l" to="33ny:~Collection.stream()" resolve="stream" />
+              </node>
             </node>
-            <node concept="2YIFZM" id="1WCLzfq7rD3" role="3uHU7B">
-              <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
-              <ref role="37wK5l" to="z1c3:~SModuleOperations.isCompileInMps(org.jetbrains.mps.openapi.module.SModule)" resolve="isCompileInMps" />
-              <node concept="2OqwBi" id="1WCLzfq7rD4" role="37wK5m">
-                <node concept="1DTwFV" id="1WCLzfq7rD5" role="2OqNvi">
-                  <ref role="2WH_rO" node="47QEcUfsm4x" resolve="module" />
+            <node concept="liA8E" id="$l051RV_fw" role="2OqNvi">
+              <ref role="37wK5l" to="1ctc:~Stream.anyMatch(java.util.function.Predicate)" resolve="anyMatch" />
+              <node concept="1bVj0M" id="$l051RV_fx" role="37wK5m">
+                <node concept="37vLTG" id="$l051RV_fy" role="1bW2Oz">
+                  <property role="TrG5h" value="m" />
+                  <node concept="3uibUv" id="$l051RV_fz" role="1tU5fm">
+                    <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
+                  </node>
                 </node>
-                <node concept="2WthIp" id="1WCLzfq7rD6" role="2Oq$k0" />
+                <node concept="3clFbS" id="$l051RV_f$" role="1bW5cS">
+                  <node concept="3clFbF" id="$l051RV_f_" role="3cqZAp">
+                    <node concept="1Wc70l" id="$l051RV_fA" role="3clFbG">
+                      <node concept="2YIFZM" id="$l051RV_fB" role="3uHU7B">
+                        <ref role="37wK5l" to="z1c3:~SModuleOperations.isCompileInMps(org.jetbrains.mps.openapi.module.SModule)" resolve="isCompileInMps" />
+                        <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
+                        <node concept="37vLTw" id="$l051RV_fC" role="37wK5m">
+                          <ref role="3cqZAo" node="$l051RV_fy" resolve="m" />
+                        </node>
+                      </node>
+                      <node concept="3fqX7Q" id="$l051RV_fD" role="3uHU7w">
+                        <node concept="2OqwBi" id="$l051RV_fE" role="3fr31v">
+                          <node concept="37vLTw" id="$l051RV_fF" role="2Oq$k0">
+                            <ref role="3cqZAo" node="$l051RV_fy" resolve="m" />
+                          </node>
+                          <node concept="liA8E" id="$l051RV_fG" role="2OqNvi">
+                            <ref role="37wK5l" to="lui2:~SModule.isReadOnly()" resolve="isReadOnly" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
               </node>
             </node>
           </node>
@@ -1550,10 +1694,9 @@
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
       <node concept="1oajcY" id="70GEktGVx5$" role="1oa70y" />
     </node>
-    <node concept="1DS2jV" id="47QEcUfsm4x" role="1NuT2Z">
-      <property role="TrG5h" value="module" />
-      <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MODULE" resolve="MODULE" />
-      <node concept="1oajcY" id="7HZe2EwZDmL" role="1oa70y" />
+    <node concept="1DS2jV" id="$l051RVywM" role="1NuT2Z">
+      <property role="TrG5h" value="modules" />
+      <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MODULES" resolve="MODULES" />
     </node>
   </node>
   <node concept="sE7Ow" id="47QEcUfsm4y">
@@ -1568,24 +1711,68 @@
         <node concept="3cpWs8" id="47QEcUfsm4_" role="3cqZAp">
           <node concept="3cpWsn" id="47QEcUfsm4A" role="3cpWs9">
             <property role="TrG5h" value="modules" />
-            <node concept="2YIFZM" id="4r0sY_pXaOf" role="33vP2m">
-              <ref role="37wK5l" to="33ny:~Collections.singleton(java.lang.Object)" resolve="singleton" />
-              <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
-              <node concept="3uibUv" id="4r0sY_pXaOg" role="3PaCim">
-                <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
-              </node>
-              <node concept="2OqwBi" id="4r0sY_pXaOh" role="37wK5m">
-                <node concept="1DTwFV" id="4r0sY_pXck0" role="2OqNvi">
-                  <ref role="2WH_rO" node="47QEcUfsm52" resolve="module" />
-                </node>
-                <node concept="2WthIp" id="4r0sY_pXaOi" role="2Oq$k0">
-                  <ref role="32nkFo" node="47QEcUfsm4y" resolve="MakeModule" />
-                </node>
-              </node>
-            </node>
             <node concept="2hMVRd" id="47QEcUfsm4B" role="1tU5fm">
               <node concept="3uibUv" id="4r0sY_pRBXX" role="2hN53Y">
                 <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="$l051RVBG6" role="33vP2m">
+              <node concept="2OqwBi" id="$l051RVBG7" role="2Oq$k0">
+                <node concept="2OqwBi" id="$l051RVBG8" role="2Oq$k0">
+                  <node concept="2OqwBi" id="$l051RVBG9" role="2Oq$k0">
+                    <node concept="2WthIp" id="$l051RVBGa" role="2Oq$k0" />
+                    <node concept="1DTwFV" id="$l051RVBGb" role="2OqNvi">
+                      <ref role="2WH_rO" node="$l051RVxEY" resolve="modules" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="$l051RVBGc" role="2OqNvi">
+                    <ref role="37wK5l" to="33ny:~Collection.stream()" resolve="stream" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="$l051RVBGd" role="2OqNvi">
+                  <ref role="37wK5l" to="1ctc:~Stream.filter(java.util.function.Predicate)" resolve="filter" />
+                  <node concept="1bVj0M" id="$l051RVBGe" role="37wK5m">
+                    <node concept="37vLTG" id="$l051RVBGf" role="1bW2Oz">
+                      <property role="TrG5h" value="m" />
+                      <node concept="3uibUv" id="$l051RVBGg" role="1tU5fm">
+                        <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
+                      </node>
+                    </node>
+                    <node concept="3clFbS" id="$l051RVBGh" role="1bW5cS">
+                      <node concept="3clFbF" id="$l051RVBGi" role="3cqZAp">
+                        <node concept="1Wc70l" id="$l051RVBGj" role="3clFbG">
+                          <node concept="2YIFZM" id="$l051RVBGk" role="3uHU7B">
+                            <ref role="37wK5l" to="z1c3:~SModuleOperations.isCompileInMps(org.jetbrains.mps.openapi.module.SModule)" resolve="isCompileInMps" />
+                            <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
+                            <node concept="37vLTw" id="$l051RVBGl" role="37wK5m">
+                              <ref role="3cqZAo" node="$l051RVBGf" resolve="m" />
+                            </node>
+                          </node>
+                          <node concept="3fqX7Q" id="$l051RVBGm" role="3uHU7w">
+                            <node concept="2OqwBi" id="$l051RVBGn" role="3fr31v">
+                              <node concept="37vLTw" id="$l051RVBGo" role="2Oq$k0">
+                                <ref role="3cqZAo" node="$l051RVBGf" resolve="m" />
+                              </node>
+                              <node concept="liA8E" id="$l051RVBGp" role="2OqNvi">
+                                <ref role="37wK5l" to="lui2:~SModule.isReadOnly()" resolve="isReadOnly" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="liA8E" id="$l051RVBGq" role="2OqNvi">
+                <ref role="37wK5l" to="1ctc:~Stream.collect(java.util.stream.Collector)" resolve="collect" />
+                <node concept="2YIFZM" id="$l051RVBGr" role="37wK5m">
+                  <ref role="37wK5l" to="1ctc:~Collectors.toSet()" resolve="toSet" />
+                  <ref role="1Pybhc" to="1ctc:~Collectors" resolve="Collectors" />
+                  <node concept="3uibUv" id="$l051RVBGs" role="3PaCim">
+                    <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
+                  </node>
+                </node>
               </node>
             </node>
           </node>
@@ -1625,29 +1812,51 @@
     </node>
     <node concept="2ScWuX" id="47QEcUfsm4T" role="tmbBb">
       <node concept="3clFbS" id="47QEcUfsm4U" role="2VODD2">
-        <node concept="3clFbF" id="1WCLzfq7pt4" role="3cqZAp">
-          <node concept="1Wc70l" id="70GEktGTobc" role="3clFbG">
-            <node concept="3fqX7Q" id="70GEktGTElO" role="3uHU7w">
-              <node concept="2OqwBi" id="70GEktGTElQ" role="3fr31v">
-                <node concept="2OqwBi" id="70GEktGTElR" role="2Oq$k0">
-                  <node concept="2WthIp" id="70GEktGTElS" role="2Oq$k0" />
-                  <node concept="1DTwFV" id="70GEktGTElT" role="2OqNvi">
-                    <ref role="2WH_rO" node="47QEcUfsm52" resolve="module" />
-                  </node>
-                </node>
-                <node concept="liA8E" id="70GEktGTElU" role="2OqNvi">
-                  <ref role="37wK5l" to="lui2:~SModule.isReadOnly()" resolve="isReadOnly" />
+        <node concept="3clFbF" id="$l051RVzU6" role="3cqZAp">
+          <node concept="2OqwBi" id="$l051RVzU7" role="3clFbG">
+            <node concept="2OqwBi" id="$l051RVzU8" role="2Oq$k0">
+              <node concept="2OqwBi" id="$l051RVzU9" role="2Oq$k0">
+                <node concept="2WthIp" id="$l051RVzUa" role="2Oq$k0" />
+                <node concept="1DTwFV" id="$l051RVzUb" role="2OqNvi">
+                  <ref role="2WH_rO" node="$l051RVxEY" resolve="modules" />
                 </node>
               </node>
+              <node concept="liA8E" id="$l051RVzUc" role="2OqNvi">
+                <ref role="37wK5l" to="33ny:~Collection.stream()" resolve="stream" />
+              </node>
             </node>
-            <node concept="2YIFZM" id="1WCLzfq7pt6" role="3uHU7B">
-              <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
-              <ref role="37wK5l" to="z1c3:~SModuleOperations.isCompileInMps(org.jetbrains.mps.openapi.module.SModule)" resolve="isCompileInMps" />
-              <node concept="2OqwBi" id="1WCLzfq7pt7" role="37wK5m">
-                <node concept="1DTwFV" id="1WCLzfq7pt8" role="2OqNvi">
-                  <ref role="2WH_rO" node="47QEcUfsm52" resolve="module" />
+            <node concept="liA8E" id="$l051RVzUd" role="2OqNvi">
+              <ref role="37wK5l" to="1ctc:~Stream.anyMatch(java.util.function.Predicate)" resolve="anyMatch" />
+              <node concept="1bVj0M" id="$l051RVzUe" role="37wK5m">
+                <node concept="37vLTG" id="$l051RVzUf" role="1bW2Oz">
+                  <property role="TrG5h" value="m" />
+                  <node concept="3uibUv" id="$l051RVzUg" role="1tU5fm">
+                    <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
+                  </node>
                 </node>
-                <node concept="2WthIp" id="1WCLzfq7pt9" role="2Oq$k0" />
+                <node concept="3clFbS" id="$l051RVzUh" role="1bW5cS">
+                  <node concept="3clFbF" id="$l051RVzUi" role="3cqZAp">
+                    <node concept="1Wc70l" id="$l051RVzUj" role="3clFbG">
+                      <node concept="2YIFZM" id="$l051RVzUk" role="3uHU7B">
+                        <ref role="37wK5l" to="z1c3:~SModuleOperations.isCompileInMps(org.jetbrains.mps.openapi.module.SModule)" resolve="isCompileInMps" />
+                        <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
+                        <node concept="37vLTw" id="$l051RVzUl" role="37wK5m">
+                          <ref role="3cqZAo" node="$l051RVzUf" resolve="m" />
+                        </node>
+                      </node>
+                      <node concept="3fqX7Q" id="$l051RVzUm" role="3uHU7w">
+                        <node concept="2OqwBi" id="$l051RVzUn" role="3fr31v">
+                          <node concept="37vLTw" id="$l051RVzUo" role="2Oq$k0">
+                            <ref role="3cqZAo" node="$l051RVzUf" resolve="m" />
+                          </node>
+                          <node concept="liA8E" id="$l051RVzUp" role="2OqNvi">
+                            <ref role="37wK5l" to="lui2:~SModule.isReadOnly()" resolve="isReadOnly" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
               </node>
             </node>
           </node>
@@ -1659,10 +1868,9 @@
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
       <node concept="1oajcY" id="70GEktGVurJ" role="1oa70y" />
     </node>
-    <node concept="1DS2jV" id="47QEcUfsm52" role="1NuT2Z">
-      <property role="TrG5h" value="module" />
-      <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MODULE" resolve="MODULE" />
-      <node concept="1oajcY" id="7HZe2EwZDoR" role="1oa70y" />
+    <node concept="1DS2jV" id="$l051RVxEY" role="1NuT2Z">
+      <property role="TrG5h" value="modules" />
+      <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MODULES" resolve="MODULES" />
     </node>
   </node>
   <node concept="312cEu" id="47QEcUfsm53">
