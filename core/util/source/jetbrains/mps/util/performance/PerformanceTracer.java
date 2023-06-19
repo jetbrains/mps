@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -67,12 +67,6 @@ public final class PerformanceTracer implements IPerformanceTracer {
   }
 
   @Override
-  public void push(String taskName, boolean isMajor) {
-    // name depending on isMajor is just a tribute to legacy code
-    push(isMajor ? "[" + taskName + "]" : taskName);
-  }
-
-  @Override
   public void push(String taskName) {
     top++;
     myStack[top].name = taskName;
@@ -126,6 +120,7 @@ public final class PerformanceTracer implements IPerformanceTracer {
     return report(0, separate);
   }
 
+  @Override
   public String report(long cutOffTimeMillis, String... separate) {
     if (top == 0) {
       myStack[0].task.merge(new HashSet<>(Arrays.asList(separate)));
