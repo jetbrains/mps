@@ -95,6 +95,7 @@
     <import index="439w" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.codeInsight.hint(MPS.IDEA/)" />
     <import index="gspm" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui.popup(MPS.IDEA/)" />
     <import index="8m69" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.editor.markup(MPS.IDEA/)" />
+    <import index="jlff" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vfs(MPS.IDEA/)" />
     <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" implicit="true" />
     <import index="rlg8" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor.highlighter(MPS.Editor/)" implicit="true" />
   </imports>
@@ -24225,6 +24226,39 @@
             </node>
           </node>
         </node>
+      </node>
+    </node>
+    <node concept="3clFb_" id="uXEzwlcA$d" role="jymVt">
+      <property role="TrG5h" value="getFile" />
+      <node concept="3Tm1VV" id="uXEzwlcA$f" role="1B3o_S" />
+      <node concept="3uibUv" id="uXEzwlcA$h" role="3clF45">
+        <ref role="3uigEE" to="jlff:~VirtualFile" resolve="VirtualFile" />
+      </node>
+      <node concept="3clFbS" id="uXEzwlcA$j" role="3clF47">
+        <node concept="3cpWs8" id="uXEzwld_Zd" role="3cqZAp">
+          <node concept="3cpWsn" id="uXEzwld_Ze" role="3cpWs9">
+            <property role="TrG5h" value="virtualFile" />
+            <node concept="3uibUv" id="uXEzwld_Zf" role="1tU5fm">
+              <ref role="3uigEE" to="kip1:~MPSNodeVirtualFile" resolve="MPSNodeVirtualFile" />
+            </node>
+            <node concept="2OqwBi" id="uXEzwldFkV" role="33vP2m">
+              <node concept="37vLTw" id="uXEzwldD_r" role="2Oq$k0">
+                <ref role="3cqZAo" node="2Y6GhaXyDRD" resolve="myEditor" />
+              </node>
+              <node concept="liA8E" id="uXEzwldIFE" role="2OqNvi">
+                <ref role="37wK5l" node="1lUccfUqUsD" resolve="getVirtualFile" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="uXEzwldMmC" role="3cqZAp">
+          <node concept="37vLTw" id="uXEzwldPbn" role="3cqZAk">
+            <ref role="3cqZAo" node="uXEzwld_Ze" resolve="virtualFile" />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="uXEzwlcA$k" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" />
       </node>
     </node>
   </node>
