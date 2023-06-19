@@ -200,6 +200,9 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   }
 
   /*package*/ void checkMigrationNeeded() {
+    if (myMpsProject.getProject().isDisposed()) {
+      return;
+    }
     IStatus checkProjectVersion = ProjectMigrationsRegistry.getInstance().checkMigratedToNewerVersion(myMpsProject);
     if (checkProjectVersion.isError()) {
       myNotifications.showProjectVersionError(checkProjectVersion.getMessage());

@@ -1662,6 +1662,24 @@
       <property role="od$2w" value="false" />
       <node concept="3cqZAl" id="285c2S_WYWJ" role="3clF45" />
       <node concept="3clFbS" id="285c2S_WYWA" role="3clF47">
+        <node concept="3clFbJ" id="4BBZRN1P9a8" role="3cqZAp">
+          <node concept="3clFbS" id="4BBZRN1P9aa" role="3clFbx">
+            <node concept="3cpWs6" id="4BBZRN1PCPQ" role="3cqZAp" />
+          </node>
+          <node concept="2OqwBi" id="4BBZRN1PxQz" role="3clFbw">
+            <node concept="2OqwBi" id="4BBZRN1Pk5P" role="2Oq$k0">
+              <node concept="37vLTw" id="4BBZRN1Peu5" role="2Oq$k0">
+                <ref role="3cqZAo" node="1AzqgyAfbh5" resolve="myMpsProject" />
+              </node>
+              <node concept="liA8E" id="4BBZRN1Puvi" role="2OqNvi">
+                <ref role="37wK5l" to="z1c4:~MPSProject.getProject()" resolve="getProject" />
+              </node>
+            </node>
+            <node concept="liA8E" id="4BBZRN1P$sh" role="2OqNvi">
+              <ref role="37wK5l" to="1m72:~ComponentManager.isDisposed()" resolve="isDisposed" />
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="6b$YhINm$ee" role="3cqZAp">
           <node concept="3cpWsn" id="6b$YhINm$ef" role="3cpWs9">
             <property role="TrG5h" value="checkProjectVersion" />
