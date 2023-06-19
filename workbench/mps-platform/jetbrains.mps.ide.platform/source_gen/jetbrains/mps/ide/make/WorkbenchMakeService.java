@@ -40,6 +40,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.make.runtime.util.FutureValue;
 import jetbrains.mps.make.dependencies.MakeSequence;
 import com.intellij.openapi.progress.PerformInBackgroundOption;
+import jetbrains.mps.make.service.CoreMakeTask;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.ide.IdeEventQueue;
 import com.intellij.openapi.progress.ProgressManager;
@@ -226,7 +227,14 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
 
     Project ideaPrj = ProjectHelper.toIdeaProject(session.getProject());
     PerformInBackgroundOption bg = MakeServiceConfiguration.getInstance(ideaPrj).getMakeInBackgroundOption();
-    final MakeTask task = new MakeTask(ideaPrj, scrName, makeSeq, new Controller(controller, mh), mh, bg) {
+    CoreMakeTask cmt = new CoreMakeTask(scrName, makeSeq, new Controller(controller, mh), mh) {
+
+      @Override
+      protected void displayInfo(String info) {
+        WorkbenchMakeService.this.displayInfo(info);
+      }
+    };
+    final MakeTask task = new MakeTask(ideaPrj, scrName, cmt, bg) {
       @Override
       protected void aboutToStart() {
         notifyListeners(new MakeNotification(WorkbenchMakeService.this, MakeNotification.Kind.SCRIPT_ABOUT_TO_START));
@@ -236,10 +244,6 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
         currentProcess.compareAndSet(this, null);
         attemptCloseSession();
         notifyListeners(new MakeNotification(WorkbenchMakeService.this, MakeNotification.Kind.SCRIPT_FINISHED));
-      }
-      @Override
-      protected void displayInfo(String info) {
-        WorkbenchMakeService.this.displayInfo(info);
       }
     };
 

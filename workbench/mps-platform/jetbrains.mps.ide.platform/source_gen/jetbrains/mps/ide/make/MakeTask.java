@@ -13,9 +13,6 @@ import jetbrains.mps.progress.ProgressMonitorAdapter;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.make.dependencies.MakeSequence;
-import jetbrains.mps.make.script.IScriptController;
-import jetbrains.mps.messages.IMessageHandler;
 import com.intellij.openapi.progress.PerformInBackgroundOption;
 import com.intellij.openapi.progress.ProgressIndicator;
 import java.util.concurrent.ExecutionException;
@@ -30,15 +27,14 @@ import java.util.concurrent.TimeoutException;
   private final CoreMakeTask coreTask;
   private ProgressMonitorAdapter myProgressMonitor;
 
-  public MakeTask(@Nullable Project project, @NotNull String title, MakeSequence makeSeq, IScriptController ctl, IMessageHandler mh, PerformInBackgroundOption bgoption) {
+  public MakeTask(@Nullable Project project, @NotNull String title, @NotNull CoreMakeTask makeTask, PerformInBackgroundOption bgoption) {
     super(project, title, true, bgoption);
-    // XXX might be nice to pass CoreMakeTask here, instead of long list of arguments to construct one.
-    // however not it's too much of refactoring for WorkbenchMakeTask
-    coreTask = new WorkbenchMakeTask(title, makeSeq, ctl, mh);
+    coreTask = makeTask;
   }
 
   @Override
   public void run(@NotNull final ProgressIndicator pi) {
+    aboutToStart();
     try {
       if (myState.compareAndSet(TaskState.NOT_STARTED, TaskState.RUNNING)) {
         coreTask.run(myProgressMonitor = new ProgressMonitorAdapter(pi));
@@ -104,29 +100,10 @@ import java.util.concurrent.TimeoutException;
     return coreTask.getResult();
   }
 
-  protected void displayInfo(String info) {
-  }
-
   protected void aboutToStart() {
   }
 
   protected void done() {
-  }
-
-  public class WorkbenchMakeTask extends CoreMakeTask {
-    public WorkbenchMakeTask(@NotNull String title, MakeSequence makeSeq, IScriptController ctl, IMessageHandler mh) {
-      super(title, makeSeq, ctl, mh);
-    }
-
-    @Override
-    protected void displayInfo(String info) {
-      MakeTask.this.displayInfo(info);
-    }
-
-    @Override
-    protected void aboutToStart() {
-      MakeTask.this.aboutToStart();
-    }
   }
 
   private enum TaskState {
