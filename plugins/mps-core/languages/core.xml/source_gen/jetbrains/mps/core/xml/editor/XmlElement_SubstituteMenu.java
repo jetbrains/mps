@@ -21,6 +21,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.regex.Matcher;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.core.xml.constraints.XmlNameUtil;
 import java.util.regex.Pattern;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -94,14 +95,16 @@ public class XmlElement_SubstituteMenu extends SubstituteMenuBase {
       public String getMatchingText(@NotNull String pattern) {
         Matcher _matcher_xunnx5_a0a9c3;
         if ((_matcher_xunnx5_a0a9c3 = REGEXP1.matcher(pattern)).find()) {
-          return "<" + _matcher_xunnx5_a0a9c3.group(1) + ">";
+          if (XmlNameUtil.isName(_matcher_xunnx5_a0a9c3.group(1))) {
+            return "<" + _matcher_xunnx5_a0a9c3.group(1) + ">";
+          }
         }
         return "<element/>";
       }
     }
   }
-  private static final Pattern REGEXP = Pattern.compile("^<([\\w0-9]+)>?$", 0);
-  private static final Pattern REGEXP1 = Pattern.compile("^<([\\w0-9]+)>?$", 0);
+  private static final Pattern REGEXP = Pattern.compile("^<(.+)>?$", 0);
+  private static final Pattern REGEXP1 = Pattern.compile("^<(.+)>?$", 0);
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept XmlElement$fP = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, "jetbrains.mps.core.xml.structure.XmlElement");
