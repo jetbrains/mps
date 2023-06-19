@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -360,7 +360,7 @@ public abstract class QueryProviderBase implements GeneratorQueryProvider {
     public boolean check(@NotNull IfMacroContext context) throws GenerationFailureException {
       String msg = "no required condition for IF macro";
       reportError(context, msg);
-      throw new GenerationFailureException(msg);
+      throw feedLocation(new GenerationFailureException(msg));
     }
 
     @Override
@@ -368,7 +368,7 @@ public abstract class QueryProviderBase implements GeneratorQueryProvider {
       // here comes the logic that used to live in DefaultQueryExecutionContext
       String msg = "condition required for case in inline switch";
       reportError(context, msg);
-      throw new GenerationFailureException(msg);
+      throw feedLocation(new GenerationFailureException(msg));
     }
 
     @Nullable
@@ -376,7 +376,7 @@ public abstract class QueryProviderBase implements GeneratorQueryProvider {
     public Object evaluate(@NotNull TemplateArgumentContext context) throws GenerationFailureException {
       String msg = "call argument query is missing";
       reportError(context, msg);
-      throw new GenerationFailureException(msg);
+      throw feedLocation(new GenerationFailureException(msg));
     }
 
     @Nullable
@@ -384,7 +384,7 @@ public abstract class QueryProviderBase implements GeneratorQueryProvider {
     public Object evaluate(@NotNull TemplateVarContext context) throws GenerationFailureException {
       String msg = "variable value query is missing";
       reportError(context, msg);
-      throw new GenerationFailureException(msg);
+      throw feedLocation(new GenerationFailureException(msg));
     }
 
     @Nullable
@@ -392,7 +392,7 @@ public abstract class QueryProviderBase implements GeneratorQueryProvider {
     public SNode evaluate(@NotNull InsertMacroContext context) throws GenerationFailureException {
       String msg = "insert node query is missing";
       reportError(context, msg);
-      throw new GenerationFailureException(msg);
+      throw feedLocation(new GenerationFailureException(msg));
     }
 
     @Nullable
@@ -400,18 +400,23 @@ public abstract class QueryProviderBase implements GeneratorQueryProvider {
     public SNode evaluate(@NotNull MapSrcMacroContext context) throws GenerationFailureException {
       String msg = "mapping function is missing";
       reportError(context, msg);
-      throw new GenerationFailureException(msg);
+      throw feedLocation(new GenerationFailureException(msg));
     }
 
     @Override
     public void invoke(@NotNull MapSrcMacroPostProcContext context) throws GenerationFailureException {
       String msg = "post-processing function is missing";
       reportError(context, msg);
-      throw new GenerationFailureException(msg);
+      throw feedLocation(new GenerationFailureException(msg));
     }
 
     private void reportError(TemplateQueryContext context, String message) {
       context.getGenerator().getLogger().error(myTemplate, message);
+    }
+
+    private GenerationFailureException feedLocation(GenerationFailureException ex) {
+      ex.setTemplateModelLocation(myTemplate);
+      return ex;
     }
   }
 }
