@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,6 +46,7 @@ import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.ide.actions.MPSActionPlaces;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.search.SearchHistoryStorage;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.messages.IMessageList;
@@ -88,7 +89,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Distinction between MessageList and its sole subclass in MessagesViewTool is subtle and perhaps not worth
  * effort. Latter knows about IDEA's MessageView and Content, former is more about Swing UI and actions, both though depend
- * from IDEA platform. I doubt anyone would reuse this class any time soon.
+ * on IDEA platform. I doubt anyone would reuse this class any time soon.
  */
 public abstract class MessageList implements IMessageList, SearchHistoryStorage, Disposable {
 
@@ -118,9 +119,8 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
   protected int myErrors;
   protected int myHintObjects;
   private final List<String> mySearches = new ArrayList<>();
-  private int myMaxListSize = 10000;
 
-  protected final FastListModel<IMessage> myModel = new FastListModel<>(this.myMaxListSize);
+  protected final FastListModel<IMessage> myModel = new FastListModel<>(10000);
   private final RootPanel myComponent = new RootPanel();
   protected final JList myList = new JBList(myModel);
   private ActionToolbar myToolbar;
@@ -264,8 +264,8 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
 
       private List<IMessage> safelyAdd(List<IMessage> messagesToAdd) {
         int messagesToRemove = 0;
-        if (myMessages.size() > MessageList.this.myMaxListSize) {
-          for (int i = myMessages.size() - MessageList.this.myMaxListSize; i > 0; i--) {
+        if (myMessages.size() > myModel.capacity()) {
+          for (int i = myMessages.size() - myModel.capacity(); i > 0; i--) {
             IMessage toRemove = myMessages.remove();
             updateMessageCounters(toRemove, -1);
             if (isVisible(toRemove)) {
@@ -276,7 +276,7 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
             messagesToRemove = myModel.getSize();
           }
           messagesToAdd = messagesToAdd.subList(
-              Math.max(messagesToAdd.size() - MessageList.this.myMaxListSize, 0),
+              Math.max(messagesToAdd.size() - myModel.capacity(), 0),
               messagesToAdd.size());
         }
 
@@ -589,7 +589,7 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
     myList.setFixedCellWidth(width);
 
     messagesToAdd = messagesToAdd.subList(
-        Math.max(messagesToAdd.size() - MessageList.this.myMaxListSize, 0),
+        Math.max(messagesToAdd.size() - myModel.capacity(), 0),
         messagesToAdd.size());
 
     myModel.addAll(messagesToAdd);
@@ -708,7 +708,7 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
       String result = Messages.showInputDialog(MessageList.this.myComponent, "Set max number of showing messages", "Messages Limit", null,
-                                               String.valueOf(MessageList.this.myMaxListSize),
+                                               String.valueOf(myModel.capacity()),
                                                new InputValidatorEx() {
                                                  @Nullable
                                                  @Override
@@ -735,14 +735,21 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
                                                  }
                                                });
       if (result != null) {
-        MessageList.this.myMaxListSize = Integer.valueOf(result);
+        try {
+          myModel.resize(Integer.parseUnsignedInt(result));
+          rebuildModel();
+        } catch (NumberFormatException ex) {
+          Logger.getLogger(MessageList.this.getClass()).warning(ex.getMessage(), ex);
+        }
       }
     }
   }
 
   /*package*/ MessageListState getState() {
-    return new MessageListState(myWarningsAction.isSelected(null), myInfoAction.isSelected(null), myAutoscrollToSourceAction.isSelected(null), mySearches,
-                                myMaxListSize);
+    final boolean warn = myWarningsAction.isSelected(null);
+    final boolean info = myInfoAction.isSelected(null);
+    final boolean scroll = myAutoscrollToSourceAction.isSelected(null);
+    return new MessageListState(warn, info, scroll, mySearches, myModel.capacity());
   }
 
   /*package*/ void loadState(MessageListState state) {
@@ -750,7 +757,7 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
     myInfoAction.setSelected(null, state.isInfo());
     myAutoscrollToSourceAction.setSelected(null, state.isAutoscrollToSource());
     setSearches(state.getSearches());
-    myMaxListSize = state.getMaxListSize();
+    myModel.resize(state.getMaxListSize());
   }
 
   @Override
@@ -772,7 +779,7 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
     private int myStart;
     private int myEnd;
     private int mySize;
-    private final T[] myItems;
+    private T[] myItems;
 
     @SuppressWarnings("unchecked")
     FastListModel(int size) {
@@ -784,6 +791,38 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
     @Override
     public int getSize() {
       return mySize;
+    }
+
+    public void resize(int newCapacity) {
+      assert newCapacity > 0;
+      if (newCapacity == capacity()) {
+        return;
+      }
+      Object[] newItems = new Object[newCapacity];
+      if (mySize == 0 || myStart == myEnd) {
+        myItems = (T[]) newItems;
+        myStart = myEnd = mySize = 0;
+        return;
+      }
+      final int count = Math.min(newCapacity, mySize);
+      if (myStart < myEnd) {
+        System.arraycopy(myItems, myStart, newItems, 0, count);
+      } else {
+        final int from = Math.max(0, myEnd - count);
+        final int copied = myEnd - from;
+        // start by copying last elements into tail
+        System.arraycopy(myItems, from, newItems, count - copied, copied);
+        final int left = count - copied;
+        // add (left = count - copied) elements into head
+        System.arraycopy(myItems, Math.max(myStart, myItems.length - left), newItems, 0, left);
+      }
+      myStart = 0; // we always copy 'count' elements
+      myEnd = mySize = count;
+      myItems = (T[]) newItems;
+    }
+
+    public int capacity() {
+      return myItems.length;
     }
 
     @Override
@@ -854,6 +893,8 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
     }
   }
 
+  // unused methods necessary for IDEA's state persistence logic
+  @SuppressWarnings("unused")
   public static class MessageListState {
     private boolean myWarnings;
     private boolean myInfo;
