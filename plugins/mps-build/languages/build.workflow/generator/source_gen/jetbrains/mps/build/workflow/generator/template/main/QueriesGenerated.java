@@ -159,10 +159,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(_context.getNode(), PROPS.outputFolder$CFP_);
   }
   public static Object propertyMacro_GetValue_3_1(final PropertyMacroContext _context) {
-    return "-jvm-target=" + SPropertyOperations.getString(_context.getNode(), PROPS.javaLevelTarget$RLO2);
+    return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_3_2(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
+    return "-jvm-target=" + SPropertyOperations.getString(_context.getNode(), PROPS.javaLevelTarget$RLO2);
   }
   public static Object propertyMacro_GetValue_3_3(final PropertyMacroContext _context) {
     // fixme
@@ -187,7 +187,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(_context.getNode(), PROPS.outputFolder$CFP_);
   }
   public static Object propertyMacro_GetValue_3_10(final PropertyMacroContext _context) {
-    return (String) BwfJavaModule__BehaviorDescriptor.getAntTargetName_id6pYRYgn8i1z.invoke(_context.getNode());
+    return _context.createIndexedName(BwfJavaModule__BehaviorDescriptor.getAntTargetName_id6pYRYgn8i1z.invoke(_context.getNode()), SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BwfProject$Z1, false, false), true);
   }
   public static Object propertyMacro_GetValue_3_11(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
@@ -248,10 +248,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return isNotEmptyString(SPropertyOperations.getString(_context.getNode(), PROPS.baseDirectory$BDIf));
   }
   public static boolean ifMacro_Condition_3_0(final IfMacroContext _context) {
-    return isNotEmptyString(SPropertyOperations.getString(_context.getNode(), PROPS.javaLevelTarget$RLO2));
+    return SPropertyOperations.getBoolean(_context.getNode(), PROPS.withKotlin$2$Am);
   }
   public static boolean ifMacro_Condition_3_1(final IfMacroContext _context) {
-    return SPropertyOperations.getBoolean(_context.getNode(), PROPS.withKotlin$2$Am);
+    return isNotEmptyString(SPropertyOperations.getString(_context.getNode(), PROPS.javaLevelTarget$RLO2));
   }
   public static boolean ifMacro_Condition_3_2(final IfMacroContext _context) {
     return isNotEmptyString(SPropertyOperations.getString(_context.getNode(), PROPS.compilerOptions$rUpp));
@@ -825,8 +825,8 @@ public class QueriesGenerated extends QueryProviderBase {
     pvqMethods.put("5178006408628612337", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "."));
     pvqMethods.put("2769948622284790883", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "antBuild.xml"));
     pvqMethods.put("7926701909975931928", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "build/temp/moduleName"));
-    pvqMethods.put("2180814945280166338", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "-jvm-target=1.7"));
     pvqMethods.put("4241779388557171275", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "myName"));
+    pvqMethods.put("2180814945280166338", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "-jvm-target=1.7"));
     pvqMethods.put("2059109515400317574", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b6L, "tagName"), "javac"));
     pvqMethods.put("6647099934207240059", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "build/temp/moduleName"));
     pvqMethods.put("4416461515995183052", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "true"));
@@ -950,8 +950,8 @@ public class QueriesGenerated extends QueryProviderBase {
     imcMethods.put("2529023923283158118", new IfMC(i++));
     imcMethods.put("6896005762093597670", new IfMC(i++));
     imcMethods.put("1841835149314837356", new IfMC(i++));
-    imcMethods.put("2180814945280166378", new IfMC(i++));
     imcMethods.put("7687809870062916485", new IfMC(i++));
+    imcMethods.put("2180814945280166378", new IfMC(i++));
     imcMethods.put("6823203400274310884", new IfMC(i++));
     imcMethods.put("5091697509629088379", new IfMC(i++));
     imcMethods.put("6823203400274789278", new IfMC(i++));
@@ -1354,10 +1354,10 @@ public class QueriesGenerated extends QueryProviderBase {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept BwfMacro$5R = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5fb388b43aa25d48L, "jetbrains.mps.build.workflow.structure.BwfMacro");
+    /*package*/ static final SConcept BwfProject$Z1 = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6271L, "jetbrains.mps.build.workflow.structure.BwfProject");
     /*package*/ static final SConcept BwfStatement$Vs = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5b4a1bL, "jetbrains.mps.build.workflow.structure.BwfStatement");
     /*package*/ static final SConcept BwfJavaModule$gv = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, "jetbrains.mps.build.workflow.structure.BwfJavaModule");
     /*package*/ static final SConcept CopyOutcome$us = MetaAdapterFactory.getConcept(0xedf22a442bc4e5dL, 0x954f06aaaf51df00L, 0x10f9f9812b8fca93L, "jetbrains.mps.lang.makeup.structure.CopyOutcome");
-    /*package*/ static final SConcept BwfProject$Z1 = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6271L, "jetbrains.mps.build.workflow.structure.BwfProject");
     /*package*/ static final SConcept BwfTaskPart$sR = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x36fb0dc9fd32c1b8L, "jetbrains.mps.build.workflow.structure.BwfTaskPart");
   }
 }
