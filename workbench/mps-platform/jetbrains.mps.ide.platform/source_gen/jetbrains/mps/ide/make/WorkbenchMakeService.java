@@ -41,6 +41,8 @@ import jetbrains.mps.internal.make.runtime.util.FutureValue;
 import jetbrains.mps.make.dependencies.MakeSequence;
 import com.intellij.openapi.progress.PerformInBackgroundOption;
 import jetbrains.mps.make.service.CoreMakeTask;
+import jetbrains.mps.messages.Message;
+import jetbrains.mps.messages.MessageKind;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.ide.IdeEventQueue;
 import com.intellij.openapi.progress.ProgressManager;
@@ -102,6 +104,8 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
         this.attemptCloseSession();
       }
     }
+    // FIXME I wonder if I can get 'composed' future here, the one that would report IResult, once ready, with displayInfo()
+    //      instead of done(). Perhaps, delegation? Just don't feel comfortable with access to this service instance.
     return result;
   }
 
@@ -214,12 +218,13 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
 
   private Future<IResult> _doMake(Iterable<? extends IResource> inputRes, final IScript defaultScript, IScriptController controller, @NotNull ProgressMonitor monitor) {
 
-    String scrName = ((this.getSession().isCleanMake() ? "Rebuild" : "Make"));
-    IMessageHandler mh = this.getSession().getMessageHandler();
+    final String scrName = ((this.getSession().isCleanMake() ? "Rebuild" : "Make"));
+    final IMessageHandler mh = this.getSession().getMessageHandler();
 
     if (Sequence.fromIterable(inputRes).isEmpty()) {
-      this.displayInfo("Everything is up to date");
-      return new FutureValue<IResult>(new IResult.SUCCESS(null));
+      String msg = "Everything is up to date";
+      displayInfo(msg);
+      return new FutureValue<IResult>(new IResult.SUCCESS(msg, null));
     }
 
     final MakeSession session = getSession();
@@ -227,13 +232,8 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
 
     Project ideaPrj = ProjectHelper.toIdeaProject(session.getProject());
     PerformInBackgroundOption bg = MakeServiceConfiguration.getInstance(ideaPrj).getMakeInBackgroundOption();
-    CoreMakeTask cmt = new CoreMakeTask(scrName, makeSeq, new Controller(controller, mh), mh) {
-
-      @Override
-      protected void displayInfo(String info) {
-        WorkbenchMakeService.this.displayInfo(info);
-      }
-    };
+    final CoreMakeTask cmt = new CoreMakeTask(makeSeq, new Controller(controller, mh), mh);
+    // XXX CoreMakeTask is simple runnable, can wrap run() to replace aboutToStart()/done() overrides here
     final MakeTask task = new MakeTask(ideaPrj, scrName, cmt, bg) {
       @Override
       protected void aboutToStart() {
@@ -241,6 +241,25 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
       }
       @Override
       protected void done() {
+        if (cmt.getResult() == null) {
+          // I work towards not null result, however, still seems to be possible in case MakeTask didn't start
+          displayInfo(scrName + " aborted");
+        } else if (cmt.getResult().isSucessful()) {
+          String msg = scrName + " successful";
+          if (isNotEmptyString(cmt.getResult().message())) {
+            msg = msg + ". " + cmt.getResult().message();
+          }
+          displayInfo(msg);
+        } else {
+          String msg = scrName + " failed";
+          if (isNotEmptyString(cmt.getResult().message())) {
+            msg = msg + ". " + cmt.getResult().message();
+          }
+          // displayBalloon would draw more attention to the failure, just need to make sure it works
+          displayInfo(msg);
+          // FIXME I hate this string formatting, but for the moment just need to move this out of CoreMakeTask
+          mh.handle(new Message(MessageKind.ERROR, msg + ". See previous messages for details."));
+        }
         currentProcess.compareAndSet(this, null);
         attemptCloseSession();
         notifyListeners(new MakeNotification(WorkbenchMakeService.this, MakeNotification.Kind.SCRIPT_FINISHED));
@@ -248,7 +267,7 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
     };
 
     try {
-
+      // FIXME suspicious try/catch around doExecute -> invokeLater(). It's highly unlikely anything goes wrong with doExecute
       getSession().doExecute(() -> ApplicationManager.getApplication().invokeLater(() -> {
         IdeEventQueue.getInstance().flushQueue();
         if (currentProcess.compareAndSet(null, task)) {
@@ -282,7 +301,7 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
   }
 
   public void checkValidSession(MakeSession session) {
-    if (!(this.getSession() == session)) {
+    if (this.getSession() != session) {
       throw new IllegalStateException("invalid session");
     }
   }
@@ -294,13 +313,13 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
     }
   }
 
-  private void displayBaloon(String text) {
+  private void displayBalloon(String text) {
+    // FIXME is there tool window with "Make" id? I would prefer to report IResult.FAILURE with a balloon rather than status bar.
     ToolWindowManager.getInstance(ProjectHelper.toIdeaProject(this.getSession().getProject())).notifyByBalloon("Make", MessageType.WARNING, text);
 
   }
 
   private class Controller implements IScriptController {
-    private ProgressMonitor progressMonitor;
     private final IScriptController delegateScrCtr;
     private IConfigMonitor delegateConfMon;
     private IConfigMonitor confMon;
@@ -378,5 +397,8 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
       };
       this.jobMon = confMon;
     }
+  }
+  private static boolean isNotEmptyString(String str) {
+    return str != null && str.length() > 0;
   }
 }

@@ -35,19 +35,33 @@ import jetbrains.mps.internal.collections.runtime.IMapping;
 @GeneratedClass(node = "r:7cb72aee-d3e2-47e9-9964-3abda6a73a9a(jetbrains.mps.make.service)/7184932954667864779", model = "r:7cb72aee-d3e2-47e9-9964-3abda6a73a9a(jetbrains.mps.make.service)")
 public class CoreMakeTask {
   private IResult myResult = null;
-  protected final String myScrName;
   private final MakeSequence myMakeSequence;
   private final IScriptController myController;
   private final IMessageHandler myMessageHandler;
 
-  public CoreMakeTask(@NotNull String scriptName, MakeSequence makeSeq, IScriptController ctl, IMessageHandler mh) {
-    myScrName = scriptName;
+  /**
+   * 
+   * @deprecated use constructor without unused script name
+   */
+  @Deprecated(forRemoval = true, since = "2023.2")
+  public CoreMakeTask(@NotNull String ignored, MakeSequence makeSeq, IScriptController ctl, IMessageHandler mh) {
+    myMakeSequence = makeSeq;
+    myController = ctl;
+    myMessageHandler = mh;
+  }
+
+  /**
+   * 
+   * @since 2023.2
+   */
+  public CoreMakeTask(MakeSequence makeSeq, IScriptController ctl, IMessageHandler mh) {
     myMakeSequence = makeSeq;
     myController = ctl;
     myMessageHandler = mh;
   }
 
   public void run(@NotNull ProgressMonitor monitor) {
+    myResult = new IResult.FAILURE("not started", null);
     try {
       doRun(monitor);
     } finally {
@@ -71,15 +85,19 @@ public class CoreMakeTask {
     try {
       final Wrappers._int idx = new Wrappers._int(0);
       myMakeSequence.iterate((IScript scr, Iterable<IResource> cl) -> {
-        boolean isEmptySeq = Sequence.fromIterable(cl).isEmpty();
-        if (isEmptySeq || !(scr.isValid())) {
-          String msg = myScrName + ((isEmptySeq ? " not started: empty make sequence" : " not started: invalid make sequence"));
-          myMessageHandler.handle(new Message((isEmptySeq ? MessageKind.WARNING : MessageKind.ERROR), CoreMakeTask.class, msg));
-          displayInfo(msg);
+        if (Sequence.fromIterable(cl).isEmpty()) {
+          String msg = "not started: empty make sequence";
+          myMessageHandler.handle(new Message(MessageKind.WARNING, CoreMakeTask.class, msg));
+          myResult = new IResult.SUCCESS(msg, null);
+          return false;
+        }
+        if (!(scr.isValid())) {
+          String msg = "not started: invalid make sequence";
+          myMessageHandler.handle(new Message(MessageKind.ERROR, CoreMakeTask.class, msg));
           for (IMessage err : scr.validationErrors()) {
             myMessageHandler.handle(err);
           }
-          CoreMakeTask.this.myResult = (isEmptySeq ? new IResult.SUCCESS(null) : new IResult.FAILURE(null));
+          CoreMakeTask.this.myResult = new IResult.FAILURE(msg, null);
           return false;
         }
 
@@ -121,26 +139,35 @@ public class CoreMakeTask {
     }
   }
 
+  /**
+   * 
+   * @deprecated not invoked any more
+   */
+  @Deprecated(forRemoval = true, since = "2023.2")
   protected void displayInfo(String info) {
   }
 
+  /**
+   * 
+   * @deprecated override run(ProgressMonitor) and do what you need to do *before* super.run() call
+   */
+  @Deprecated(forRemoval = true, since = "2023.2")
   protected void aboutToStart() {
   }
 
+  /**
+   * 
+   * @deprecated override run(ProgressMonitor) and do what you need to do *after* super.run() call
+   */
+  @Deprecated
   protected void reconcile() {
-    if (this.myResult == null) {
-      String msg = this.myScrName + " aborted";
-      displayInfo(msg);
-    } else if (!(this.myResult.isSucessful())) {
-      String msg = this.myScrName + " failed";
-      myMessageHandler.handle(new Message(MessageKind.ERROR, msg + ". See previous messages for details."));
-      displayInfo(msg);
-    } else {
-      String msg = this.myScrName + " successful";
-      displayInfo(msg);
-    }
   }
 
+  /**
+   * 
+   * @deprecated no idea what's this method for
+   */
+  @Deprecated(forRemoval = true, since = "2023.2")
   public IMessageHandler getMessageHandler() {
     return myMessageHandler;
   }
