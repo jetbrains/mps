@@ -181,7 +181,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(_context.getNode(), PROPS.outputFolder$CFP_);
   }
   public static Object propertyMacro_GetValue_3_10(final PropertyMacroContext _context) {
-    return (String) BwfJavaModule__BehaviorDescriptor.getAntTargetName_id6pYRYgn8i1z.invoke(_context.getNode());
+    return _context.createIndexedName(BwfJavaModule__BehaviorDescriptor.getAntTargetName_id6pYRYgn8i1z.invoke(_context.getNode()), SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BwfProject$Z1, false, false), true);
   }
   public static Object propertyMacro_GetValue_3_11(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
@@ -1292,10 +1292,10 @@ public class QueriesGenerated extends QueryProviderBase {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept BwfMacro$5R = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5fb388b43aa25d48L, "jetbrains.mps.build.workflow.structure.BwfMacro");
+    /*package*/ static final SConcept BwfProject$Z1 = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6271L, "jetbrains.mps.build.workflow.structure.BwfProject");
     /*package*/ static final SConcept BwfStatement$Vs = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5b4a1bL, "jetbrains.mps.build.workflow.structure.BwfStatement");
     /*package*/ static final SConcept BwfJavaModule$gv = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, "jetbrains.mps.build.workflow.structure.BwfJavaModule");
     /*package*/ static final SConcept CopyOutcome$us = MetaAdapterFactory.getConcept(0xedf22a442bc4e5dL, 0x954f06aaaf51df00L, 0x10f9f9812b8fca93L, "jetbrains.mps.lang.makeup.structure.CopyOutcome");
-    /*package*/ static final SConcept BwfProject$Z1 = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6271L, "jetbrains.mps.build.workflow.structure.BwfProject");
     /*package*/ static final SConcept BwfTaskPart$sR = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x36fb0dc9fd32c1b8L, "jetbrains.mps.build.workflow.structure.BwfTaskPart");
   }
 }
