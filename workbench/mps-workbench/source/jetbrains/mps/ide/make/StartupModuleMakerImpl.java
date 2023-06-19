@@ -65,6 +65,9 @@ public final class StartupModuleMakerImpl extends StartupModuleMaker implements 
 
   @Override
   public void runActivity(@NotNull final Project project) {
+    if (MakeServiceConfiguration.getInstance(project).isDisableMakeOnStartup()) {
+      return;
+    }
     if (ApplicationManager.getApplication().isUnitTestMode()) {
       return;
     }

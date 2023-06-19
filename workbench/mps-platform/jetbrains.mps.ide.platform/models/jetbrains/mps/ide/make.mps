@@ -3251,11 +3251,11 @@
         </node>
         <node concept="3clFbF" id="41innpAoe6j" role="3cqZAp">
           <node concept="37vLTI" id="41innpAoekN" role="3clFbG">
-            <node concept="37vLTw" id="22idfY1ofhu" role="37vLTx">
-              <ref role="3cqZAo" node="41innpAoC0y" resolve="makeTask" />
-            </node>
             <node concept="37vLTw" id="41innpAoe6i" role="37vLTJ">
               <ref role="3cqZAo" node="9D0Ba05uFq" resolve="coreTask" />
+            </node>
+            <node concept="37vLTw" id="22idfY1ofhu" role="37vLTx">
+              <ref role="3cqZAo" node="41innpAoC0y" resolve="makeTask" />
             </node>
           </node>
         </node>
@@ -3750,12 +3750,12 @@
               </node>
             </node>
             <node concept="3y3z36" id="9D0Ba05uDn" role="3uHU7B">
-              <node concept="37vLTw" id="22idfY1kwX$" role="3uHU7B">
-                <ref role="3cqZAo" node="22idfY1kwXw" resolve="" />
-              </node>
               <node concept="Rm8GO" id="9D0Ba05uDr" role="3uHU7w">
                 <ref role="Rm8GQ" node="9D0Ba05uJR" resolve="NOT_STARTED" />
                 <ref role="1Px2BO" node="9D0Ba05uHf" resolve="MakeTask.TaskState" />
+              </node>
+              <node concept="37vLTw" id="22idfY1kwX$" role="3uHU7B">
+                <ref role="3cqZAo" node="22idfY1kwXw" resolve="" />
               </node>
             </node>
           </node>
@@ -3942,6 +3942,12 @@
       <node concept="10P_77" id="2UA$I15Wznd" role="1tU5fm" />
       <node concept="3clFbT" id="2UA$I15WzzT" role="33vP2m" />
     </node>
+    <node concept="312cEg" id="19IglfvW4MV" role="jymVt">
+      <property role="TrG5h" value="myDisableMakeOnStartup" />
+      <node concept="3Tm6S6" id="19IglfvW4ty" role="1B3o_S" />
+      <node concept="10P_77" id="19IglfvW4Ku" role="1tU5fm" />
+      <node concept="3clFbT" id="19IglfvW544" role="33vP2m" />
+    </node>
     <node concept="2YIFZL" id="2UA$I15WtCC" role="jymVt">
       <property role="TrG5h" value="getInstance" />
       <node concept="3clFbS" id="2UA$I15WtBw" role="3clF47">
@@ -4033,6 +4039,21 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="19IglfvX1_v" role="3cqZAp">
+          <node concept="37vLTI" id="19IglfvX1_w" role="3clFbG">
+            <node concept="2OqwBi" id="19IglfvX1_x" role="37vLTx">
+              <node concept="37vLTw" id="19IglfvX1_y" role="2Oq$k0">
+                <ref role="3cqZAo" node="2UA$I15WvlH" resolve="configuration" />
+              </node>
+              <node concept="2OwXpG" id="19IglfvX1_z" role="2OqNvi">
+                <ref role="2Oxat5" node="19IglfvW4MV" resolve="myDisableStartupModuleMaker" />
+              </node>
+            </node>
+            <node concept="37vLTw" id="19IglfvX1_$" role="37vLTJ">
+              <ref role="3cqZAo" node="19IglfvW4MV" resolve="myDisableStartupModuleMaker" />
+            </node>
+          </node>
+        </node>
       </node>
       <node concept="2AHcQZ" id="2UA$I15WvlM" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
@@ -4073,6 +4094,40 @@
       </node>
     </node>
     <node concept="2tJIrI" id="2UA$I15WBMh" role="jymVt" />
+    <node concept="3clFb_" id="19IglfvX2ED" role="jymVt">
+      <property role="TrG5h" value="isDisableMakeOnStartup" />
+      <node concept="3clFbS" id="19IglfvX2EE" role="3clF47">
+        <node concept="3cpWs6" id="19IglfvX2EF" role="3cqZAp">
+          <node concept="37vLTw" id="19IglfvX2EG" role="3cqZAk">
+            <ref role="3cqZAo" node="19IglfvW4MV" resolve="myDisableStartupModuleMaker" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="19IglfvX2EH" role="1B3o_S" />
+      <node concept="10P_77" id="19IglfvX2EI" role="3clF45" />
+    </node>
+    <node concept="3clFb_" id="19IglfvX2EJ" role="jymVt">
+      <property role="TrG5h" value="setDisableMakeOnStartup" />
+      <node concept="3cqZAl" id="19IglfvX2EK" role="3clF45" />
+      <node concept="3Tm1VV" id="19IglfvX2EL" role="1B3o_S" />
+      <node concept="3clFbS" id="19IglfvX2EM" role="3clF47">
+        <node concept="3clFbF" id="19IglfvX2EN" role="3cqZAp">
+          <node concept="37vLTI" id="19IglfvX2EO" role="3clFbG">
+            <node concept="37vLTw" id="19IglfvX2EP" role="37vLTx">
+              <ref role="3cqZAo" node="19IglfvX2ER" resolve="value" />
+            </node>
+            <node concept="37vLTw" id="19IglfvX2EQ" role="37vLTJ">
+              <ref role="3cqZAo" node="19IglfvW4MV" resolve="myDisableStartupModuleMaker" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="19IglfvX2ER" role="3clF46">
+        <property role="TrG5h" value="value" />
+        <node concept="10P_77" id="19IglfvX2ES" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="19IglfvX2ET" role="jymVt" />
     <node concept="3clFb_" id="2UA$I15WCcN" role="jymVt">
       <property role="TrG5h" value="getMakeInBackgroundOption" />
       <node concept="3clFbS" id="2UA$I15WCcQ" role="3clF47">
