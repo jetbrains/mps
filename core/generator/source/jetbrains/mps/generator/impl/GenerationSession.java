@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -620,7 +620,9 @@ class GenerationSession {
         // greatly slow down the process as FNF assumes multi-thread access to its cache).
         FastNodeFinderManager.dispose(currentInputModel);
       }
+      ttrace.push(preMappingScript.getLongName());
       templateGenerator.executeScript(preMappingScript);
+      ttrace.pop();
     }
     if (needToCloneInputModel) {
       recycleWasteModel(toRecycle);
@@ -662,7 +664,9 @@ class GenerationSession {
       if (myLogger.needsInfo()) {
         myLogger.info(postMappingScript.getScriptNode(), "post-process " + postMappingScript.getLongName());
       }
+      ttrace.push(postMappingScript.getLongName());
       templateGenerator.executeScript(postMappingScript);
+      ttrace.pop();
     }
     if (needToCloneModel) {
       recycleWasteModel(toRecycle);

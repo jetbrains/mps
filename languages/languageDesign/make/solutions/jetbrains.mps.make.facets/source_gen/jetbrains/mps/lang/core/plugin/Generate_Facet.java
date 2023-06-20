@@ -50,9 +50,12 @@ import jetbrains.mps.generator.GeneratorTaskBase;
 import jetbrains.mps.generator.TransientModelsModule;
 import jetbrains.mps.generator.DefaultTaskBuilder;
 import jetbrains.mps.generator.GenerationFacade;
+import jetbrains.mps.util.performance.PerformanceTracer;
 import jetbrains.mps.generator.GenerationStatus;
 import jetbrains.mps.smodel.resources.GResource;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
+import jetbrains.mps.messages.Message;
+import jetbrains.mps.messages.MessageKind;
 
 public class Generate_Facet extends IFacet.Stub {
   private List<ITarget> targets = ListSequence.fromList(new ArrayList<ITarget>());
@@ -460,6 +463,10 @@ public class Generate_Facet extends IFacet.Stub {
 
                 transientsModuleRepo.getModelAccess().runWriteAction(() -> Target_configure.vars(pa.global()).transientModelsProvider().publishAll());
 
+                // FIXME reporting performance here is provisional until I learn(decide) how to publish it
+                //      for later consumption from a dedicated view (resource or a platform service/component)
+                PerformanceTracer pt = null;
+
                 for (GenerationStatus genStatus : taskHandler.getAllRecorded()) {
                   if (!(genStatus.isOk())) {
                     return new IResult.FAILURE(_output_fi61u2_a0d);
@@ -467,6 +474,19 @@ public class Generate_Facet extends IFacet.Stub {
                   SModel inputModel = genStatus.getInputModel();
                   GResource data = new GResource(inputModel.getModule(), inputModel, MapSequence.fromMap(retainedModels.value).get(inputModel.getModule()), genStatus);
                   _output_fi61u2_a0d = Sequence.fromIterable(_output_fi61u2_a0d).concat(Sequence.fromIterable(Sequence.<IResource>singleton(data)));
+                  if (genStatus.getPerformanceTrace() != null) {
+                    if (pt == null) {
+                      pt = new PerformanceTracer(String.format("Performance report transforming %d models", taskHandler.getAllRecorded().size()));
+                    }
+                    pt.push(inputModel.getName().getValue());
+                    pt.push(genStatus.getPerformanceTrace());
+                    pt.pop();
+                  }
+                }
+                if (pt != null) {
+                  for (String s : pt.report().split("\n")) {
+                    mh.handle(new Message(MessageKind.INFORMATION, s));
+                  }
                 }
               } finally {
                 progressMonitor.done();

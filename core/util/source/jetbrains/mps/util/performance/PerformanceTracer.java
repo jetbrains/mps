@@ -35,9 +35,9 @@ public final class PerformanceTracer implements IPerformanceTracer {
   private int top = 0;
   // stack elements are re-used as we push and pop tasks. Assumption it's unlikely for anyone to get interested in
   // traces deeper than a dozen of nested steps.
-  private StackElement[] myStack = new StackElement[MAX_TRACE_DEPTH];
-  private String traceName;
-  private List<String> externalText;
+  private final StackElement[] myStack = new StackElement[MAX_TRACE_DEPTH];
+  private final String traceName;
+  private final List<String> externalText;
 
   public PerformanceTracer(String name) {
     this.traceName = name;

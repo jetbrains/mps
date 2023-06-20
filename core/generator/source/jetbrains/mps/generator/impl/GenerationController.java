@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -79,13 +79,15 @@ public class GenerationController implements ITaskPoolProvider {
           myParallelTaskPool = null;
         }
       }
+      final long duration = System.currentTimeMillis() - startJobTime;
+
       if (generationOK) {
         if (myLogger.needsInfo()) {
-          myLogger.info("generation completed successfully in " + (System.currentTimeMillis() - startJobTime) + " ms");
+          myLogger.info(String.format("generation completed successfully in %d ms", duration));
         }
         monitor.advance(0);
       } else {
-        myLogger.error("generation completed with errors in " + (System.currentTimeMillis() - startJobTime) + " ms");
+        myLogger.error(String.format("generation completed with errors in %d ms", duration));
       }
       return generationOK;
     } catch (GenerationCanceledException gce) {
@@ -152,13 +154,12 @@ public class GenerationController implements ITaskPoolProvider {
         transientModule.publishTrace(inputModel.getReference(), genTrace);
       }
 
+      if (!(ttrace instanceof NullPerformanceTracer)) {
+        status.setPerformanceTrace(ttrace);
+      }
       myGenerationHandler.done(task, status);
       monitor.advance(1);
 
-      String report = ttrace.report();
-      if (report != null) {
-        myLogger.trace(report);
-      }
       return currentGenerationOK;
     } finally {
       generationSession.deactivateLogTracking();

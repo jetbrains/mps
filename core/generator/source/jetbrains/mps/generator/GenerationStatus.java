@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package jetbrains.mps.generator;
 import jetbrains.mps.generator.impl.dependencies.GenerationDependencies;
 import jetbrains.mps.generator.impl.plan.CrossModelEnvironment;
 import jetbrains.mps.util.IStatus;
+import jetbrains.mps.util.performance.IPerformanceTracer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -140,6 +141,14 @@ public final class GenerationStatus implements IStatus {
   }
   private Collection<SLanguage> myEmployedLanguages;
 
+  private IPerformanceTracer myTrace;
+  public void setPerformanceTrace(IPerformanceTracer trace) {
+    myTrace = trace;
+  }
+  @Nullable
+  public IPerformanceTracer getPerformanceTrace() {
+    return myTrace;
+  }
 
   public static GenerationStatus failure(@NotNull SModel inputModel) {
     return new GenerationStatus(inputModel, (SModel) null, null, true);
