@@ -6,9 +6,11 @@ import jetbrains.mps.project.Project;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.make.facet.IFacet;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import java.util.Collections;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.Generator;
@@ -16,7 +18,6 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.generator.GenerationFacade;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.make.resources.IResource;
-import java.util.Collections;
 import jetbrains.mps.generator.ModelGenerationStatusManager;
 import jetbrains.mps.smodel.resources.ModelsToResources;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -30,6 +31,7 @@ public class MakeActionParameters {
   private List<SModel> myModels;
   private List<SModule> myModules;
   private boolean myCleanBuild = false;
+  private List<IFacet.Name> myAdditionalFacets;
 
   public MakeActionParameters(@NotNull Project project) {
     myProject = project;
@@ -41,6 +43,18 @@ public class MakeActionParameters {
   public MakeActionParameters modules(Iterable<SModule> modules) {
     myModules = (modules != null ? ListSequence.fromListWithValues(new ArrayList<SModule>(), modules) : null);
     return this;
+  }
+  public MakeActionParameters additionalFacet(IFacet.Name makeFacet) {
+    if (myAdditionalFacets == null) {
+      myAdditionalFacets = Collections.singletonList(makeFacet);
+    } else {
+      myAdditionalFacets = ListSequence.fromListWithValues(new ArrayList<>(), myAdditionalFacets);
+      ListSequence.fromList(myAdditionalFacets).addElement(makeFacet);
+    }
+    return this;
+  }
+  public List<IFacet.Name> additionalFacets() {
+    return myAdditionalFacets;
   }
 
   public MakeActionParameters modules(@Nullable SModule contextModule, @Nullable Iterable<SModule> otherModules) {

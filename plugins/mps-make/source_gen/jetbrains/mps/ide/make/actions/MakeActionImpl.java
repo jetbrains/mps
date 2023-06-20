@@ -6,7 +6,10 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.ide.save.SaveRepositoryCommand;
 import jetbrains.mps.make.MakeSession;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.ide.make.DefaultMakeMessageHandler;
+import jetbrains.mps.make.script.IScript;
+import jetbrains.mps.make.script.ScriptBuilder;
 import jetbrains.mps.make.IMakeService;
 import jetbrains.mps.make.MakeServiceComponent;
 import java.util.List;
@@ -15,7 +18,6 @@ import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.resources.MResource;
 import jetbrains.mps.ide.generator.GenerationCheckHelper;
 
@@ -38,7 +40,18 @@ public class MakeActionImpl {
     new SaveRepositoryCommand(project.getRepository()).executeAndWait();
 
 
-    MakeSession session = new MakeSession(project, new DefaultMakeMessageHandler(project), myParams.isCleanMake());
+    MakeSession session;
+    if (ListSequence.fromList(myParams.additionalFacets()).isEmpty()) {
+      session = new MakeSession(project, new DefaultMakeMessageHandler(project), myParams.isCleanMake());
+    } else {
+      session = new MakeSession(project, new DefaultMakeMessageHandler(project), myParams.isCleanMake()) {
+        @Override
+        public IScript toScript(ScriptBuilder scriptBuilder) {
+          scriptBuilder.withFacetNames(myParams.additionalFacets());
+          return super.toScript(scriptBuilder);
+        }
+      };
+    }
     final IMakeService makeService = project.getComponent(MakeServiceComponent.class).get();
     if (makeService.openNewSession(session)) {
       // empty collection is fine, it's up to make service to report there's nothing to do (odd, but fine for now. Action could have do that instead)
