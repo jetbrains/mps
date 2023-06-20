@@ -393,19 +393,28 @@ public class Generate_Facet extends IFacet.Stub {
               final Project mpsProject = monitor.getSession().getProject();
               mpsProject.getModelAccess().runReadAction(() -> retainedModels.value = RetainedUtil.collectModelsToRetain(input));
 
-              if (Target_configure.vars(pa.global()).customPlan() == null) {
-                mpsProject.getModelAccess().runReadAction(new Runnable() {
-                  public void run() {
+              // XXX why is this code not part of configure? Not to analyze models omitted from transformation, perhaps?
+              mpsProject.getModelAccess().runReadAction(new Runnable() {
+                public void run() {
+                  final ModelGenerationPlan mgp = Target_configure.vars(pa.global()).customPlan();
+                  if (mgp == null) {
                     GenPlanExtractor planExtractor = new GenPlanExtractor(mpsProject.getRepository(), Target_configure.vars(pa.global()).generationOptions(), monitor.getSession().getMessageHandler());
                     for (MResource res : Sequence.fromIterable(input)) {
                       for (SModel m : Sequence.fromIterable(res.models())) {
                         planExtractor.configurePlanFor(m);
                       }
                     }
-                  }
-                });
-              }
+                  } else {
+                    for (MResource res : Sequence.fromIterable(input)) {
+                      for (SModel m : Sequence.fromIterable(res.models())) {
+                        Target_configure.vars(pa.global()).generationOptions().customPlan(m, mgp);
+                      }
+                    }
 
+                  }
+
+                }
+              });
               final GenerationTaskRecorder<GeneratorTask> taskHandler = new GenerationTaskRecorder<GeneratorTask>(null);
               final IMessageHandler mh = monitor.getSession().getMessageHandler();
 

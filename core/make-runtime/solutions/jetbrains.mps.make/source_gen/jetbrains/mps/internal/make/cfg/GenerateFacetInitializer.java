@@ -5,9 +5,12 @@ package jetbrains.mps.internal.make.cfg;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.make.script.PropertyPoolInitializer;
 import jetbrains.mps.generator.GenerationOptions;
+import jetbrains.mps.generator.ModelGenerationPlan;
 import jetbrains.mps.make.script.IPropertiesPool;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.make.facet.ITarget;
+import jetbrains.mps.generator.DefaultGenerationParametersProvider;
+import jetbrains.mps.generator.TransientModelsProvider;
 
 /**
  * Single facility that knows which properties of Generate facet to initialize.
@@ -18,12 +21,18 @@ import jetbrains.mps.make.facet.ITarget;
 @GeneratedClass(node = "r:dc013bd4-6bcf-44c3-9e08-a65e07c88df7(jetbrains.mps.internal.make.cfg)/9122198050634039886", model = "r:dc013bd4-6bcf-44c3-9e08-a65e07c88df7(jetbrains.mps.internal.make.cfg)")
 public final class GenerateFacetInitializer implements PropertyPoolInitializer {
   private GenerationOptions.OptionsBuilder myGenOptions;
+  private ModelGenerationPlan myPlan;
 
   public GenerateFacetInitializer() {
   }
 
   public GenerateFacetInitializer setGenerationOptions(GenerationOptions.OptionsBuilder optionsBuilder) {
     myGenOptions = optionsBuilder;
+    return this;
+  }
+
+  public GenerateFacetInitializer setGenerationPlan(ModelGenerationPlan genPlan) {
+    myPlan = genPlan;
     return this;
   }
 
@@ -34,6 +43,12 @@ public final class GenerateFacetInitializer implements PropertyPoolInitializer {
       Tuples._2<Boolean, GenerationOptions.OptionsBuilder> params = (Tuples._2<Boolean, GenerationOptions.OptionsBuilder>) ppool.properties(new ITarget.Name("jetbrains.mps.make.facets.Generate.configure"), Object.class);
       if (params != null) {
         params._1(myGenOptions);
+      }
+    }
+    if (myPlan != null) {
+      Tuples._5<Boolean, GenerationOptions.OptionsBuilder, DefaultGenerationParametersProvider, TransientModelsProvider, ModelGenerationPlan> params = (Tuples._5<Boolean, GenerationOptions.OptionsBuilder, DefaultGenerationParametersProvider, TransientModelsProvider, ModelGenerationPlan>) ppool.properties(new ITarget.Name("jetbrains.mps.make.facets.Generate.configure"), Object.class);
+      if (params != null) {
+        params._4(myPlan);
       }
     }
   }

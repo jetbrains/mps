@@ -715,6 +715,13 @@
         <ref role="3uigEE" to="ap4t:~GenerationOptions$OptionsBuilder" resolve="GenerationOptions.OptionsBuilder" />
       </node>
     </node>
+    <node concept="312cEg" id="6UgUnh3$hzT" role="jymVt">
+      <property role="TrG5h" value="myPlan" />
+      <node concept="3Tm6S6" id="6UgUnh3$hpi" role="1B3o_S" />
+      <node concept="3uibUv" id="6UgUnh3$hHE" role="1tU5fm">
+        <ref role="3uigEE" to="ap4t:~ModelGenerationPlan" resolve="ModelGenerationPlan" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="3D3uKT_Nmdn" role="jymVt" />
     <node concept="3clFbW" id="3D3uKT_NmCA" role="jymVt">
       <node concept="3cqZAl" id="3D3uKT_NmCC" role="3clF45" />
@@ -747,6 +754,35 @@
         <property role="TrG5h" value="optionsBuilder" />
         <node concept="3uibUv" id="5OeL7ncck1L" role="1tU5fm">
           <ref role="3uigEE" to="ap4t:~GenerationOptions$OptionsBuilder" resolve="GenerationOptions.OptionsBuilder" />
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="6UgUnh3$gP7" role="jymVt" />
+    <node concept="3clFb_" id="6UgUnh3$gFj" role="jymVt">
+      <property role="TrG5h" value="setGenerationPlan" />
+      <node concept="3uibUv" id="6UgUnh3$gFk" role="3clF45">
+        <ref role="3uigEE" node="7UozGIENo9e" resolve="GenerateFacetInitializer" />
+      </node>
+      <node concept="3Tm1VV" id="6UgUnh3$gFl" role="1B3o_S" />
+      <node concept="3clFbS" id="6UgUnh3$gFm" role="3clF47">
+        <node concept="3clFbF" id="6UgUnh3$gFn" role="3cqZAp">
+          <node concept="37vLTI" id="6UgUnh3$gFo" role="3clFbG">
+            <node concept="37vLTw" id="6UgUnh3$gFp" role="37vLTx">
+              <ref role="3cqZAo" node="6UgUnh3$gFt" resolve="optionsBuilder" />
+            </node>
+            <node concept="37vLTw" id="6UgUnh3$gFq" role="37vLTJ">
+              <ref role="3cqZAo" node="6UgUnh3$hzT" resolve="myPlan" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="6UgUnh3$gFr" role="3cqZAp">
+          <node concept="Xjq3P" id="6UgUnh3$gFs" role="3cqZAk" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="6UgUnh3$gFt" role="3clF46">
+        <property role="TrG5h" value="genPlan" />
+        <node concept="3uibUv" id="6UgUnh3$gFu" role="1tU5fm">
+          <ref role="3uigEE" to="ap4t:~ModelGenerationPlan" resolve="ModelGenerationPlan" />
         </node>
       </node>
     </node>
@@ -884,6 +920,97 @@
             <node concept="10Nm6u" id="5OeL7nccmKa" role="3uHU7w" />
             <node concept="37vLTw" id="5OeL7nccmiA" role="3uHU7B">
               <ref role="3cqZAo" node="5OeL7nccl2s" resolve="myGenOptions" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="6UgUnh3$iFC" role="3cqZAp">
+          <node concept="3clFbS" id="6UgUnh3$iFE" role="3clFbx">
+            <node concept="3cpWs8" id="6UgUnh3$svZ" role="3cqZAp">
+              <node concept="3cpWsn" id="6UgUnh3$sw0" role="3cpWs9">
+                <property role="TrG5h" value="params" />
+                <node concept="1LlUBW" id="6UgUnh3$sq0" role="1tU5fm">
+                  <node concept="10P_77" id="6UgUnh3$sqd" role="1Lm7xW" />
+                  <node concept="3uibUv" id="6UgUnh3$sqc" role="1Lm7xW">
+                    <ref role="3uigEE" to="ap4t:~GenerationOptions$OptionsBuilder" resolve="OptionsBuilder" />
+                  </node>
+                  <node concept="3uibUv" id="6UgUnh3$sqf" role="1Lm7xW">
+                    <ref role="3uigEE" to="ap4t:~DefaultGenerationParametersProvider" resolve="DefaultGenerationParametersProvider" />
+                  </node>
+                  <node concept="3uibUv" id="6UgUnh3$sqb" role="1Lm7xW">
+                    <ref role="3uigEE" to="ap4t:~TransientModelsProvider" resolve="TransientModelsProvider" />
+                  </node>
+                  <node concept="3uibUv" id="6UgUnh3$sqe" role="1Lm7xW">
+                    <ref role="3uigEE" to="ap4t:~ModelGenerationPlan" resolve="ModelGenerationPlan" />
+                  </node>
+                </node>
+                <node concept="10QFUN" id="6UgUnh3$sw1" role="33vP2m">
+                  <node concept="1LlUBW" id="6UgUnh3$sw2" role="10QFUM">
+                    <node concept="10P_77" id="6UgUnh3$sw3" role="1Lm7xW" />
+                    <node concept="3uibUv" id="6UgUnh3$sw4" role="1Lm7xW">
+                      <ref role="3uigEE" to="ap4t:~GenerationOptions$OptionsBuilder" resolve="OptionsBuilder" />
+                    </node>
+                    <node concept="3uibUv" id="6UgUnh3$sw5" role="1Lm7xW">
+                      <ref role="3uigEE" to="ap4t:~DefaultGenerationParametersProvider" resolve="DefaultGenerationParametersProvider" />
+                    </node>
+                    <node concept="3uibUv" id="6UgUnh3$sw6" role="1Lm7xW">
+                      <ref role="3uigEE" to="ap4t:~TransientModelsProvider" resolve="TransientModelsProvider" />
+                    </node>
+                    <node concept="3uibUv" id="6UgUnh3$sw7" role="1Lm7xW">
+                      <ref role="3uigEE" to="ap4t:~ModelGenerationPlan" resolve="ModelGenerationPlan" />
+                    </node>
+                  </node>
+                  <node concept="2OqwBi" id="6UgUnh3$sw8" role="10QFUP">
+                    <node concept="37vLTw" id="6UgUnh3$sw9" role="2Oq$k0">
+                      <ref role="3cqZAo" node="7UozGIENszH" resolve="ppool" />
+                    </node>
+                    <node concept="liA8E" id="6UgUnh3$swa" role="2OqNvi">
+                      <ref role="37wK5l" to="i9so:5XvfMqim0Fy" resolve="properties" />
+                      <node concept="29r_a" id="6UgUnh3$swb" role="37wK5m">
+                        <ref role="29tk1" to="tpcq:5L5h3brvz8m" resolve="configure" />
+                        <node concept="2n6ZRZ" id="6UgUnh3$swc" role="29tkj">
+                          <node concept="2e$Q_j" id="6UgUnh3$swd" role="2n6ZRX">
+                            <ref role="1Mm5Yu" to="tpcq:5L5h3brvz7i" resolve="Generate" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3VsKOn" id="6UgUnh3$swe" role="37wK5m">
+                        <ref role="3VsUkX" to="wyt6:~Object" resolve="Object" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbJ" id="6UgUnh3$trP" role="3cqZAp">
+              <node concept="3clFbS" id="6UgUnh3$trR" role="3clFbx">
+                <node concept="3clFbF" id="6UgUnh3$uVL" role="3cqZAp">
+                  <node concept="37vLTI" id="6UgUnh3$vEQ" role="3clFbG">
+                    <node concept="37vLTw" id="6UgUnh3$vRK" role="37vLTx">
+                      <ref role="3cqZAo" node="6UgUnh3$hzT" resolve="myPlan" />
+                    </node>
+                    <node concept="1LFfDK" id="6UgUnh3$vja" role="37vLTJ">
+                      <node concept="37vLTw" id="6UgUnh3$uVI" role="1LFl5Q">
+                        <ref role="3cqZAo" node="6UgUnh3$sw0" resolve="params" />
+                      </node>
+                      <node concept="3cmrfG" id="6UgUnh3$wlL" role="1LF_Uc">
+                        <property role="3cmrfH" value="4" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3y3z36" id="6UgUnh3$u$i" role="3clFbw">
+                <node concept="10Nm6u" id="6UgUnh3$uJK" role="3uHU7w" />
+                <node concept="37vLTw" id="6UgUnh3$tBT" role="3uHU7B">
+                  <ref role="3cqZAo" node="6UgUnh3$sw0" resolve="params" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3y3z36" id="6UgUnh3$j2Z" role="3clFbw">
+            <node concept="10Nm6u" id="6UgUnh3$ja7" role="3uHU7w" />
+            <node concept="37vLTw" id="6UgUnh3$iQ5" role="3uHU7B">
+              <ref role="3cqZAo" node="6UgUnh3$hzT" resolve="myPlan" />
             </node>
           </node>
         </node>
