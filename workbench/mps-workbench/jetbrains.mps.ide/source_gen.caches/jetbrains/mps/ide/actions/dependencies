@@ -3065,6 +3065,7 @@
     <classNode dependClassName="jetbrains.mps.ide.actions.ModelNamespaceInputValidator" />
     <classNode dependClassName="jetbrains.mps.ide.actions.NamespaceRenameHelper" />
     <classNode dependClassName="jetbrains.mps.ide.projectPane.ProjectPane" />
+    <classNode dependClassName="jetbrains.mps.ide.refactoring.ModelNameValidator" />
     <classNode dependClassName="jetbrains.mps.ide.ui.tree.module.NamespaceTextNode" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.MapSequence" />
@@ -3075,6 +3076,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModelName" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.ModelAccess" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.persistence.ModelRoot" />
     <classNode extendsClassName="jetbrains.mps.workbench.action.BaseAction" />
   </dependency>
   <dependency className="jetbrains.mps.ide.actions.RenameModule_Action">

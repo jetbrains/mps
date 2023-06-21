@@ -24,6 +24,8 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModelName;
+import org.jetbrains.mps.openapi.persistence.ModelRoot;
+import jetbrains.mps.ide.refactoring.ModelNameValidator;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.refactoring.Renamer;
 
@@ -91,17 +93,30 @@ public class RenameModelsNamespace_Action extends BaseAction {
     }
 
     final ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
+    final boolean[] errors = new boolean[1];
     modelAccess.executeCommandInEDT(() -> {
       ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().saveAll();
       for (SModel model : ListSequence.fromList(node.getModelsUnder())) {
         if (model instanceof EditableSModel) {
           SModelName originalModelName = model.getName();
           SModelName modifiedModelName = new SModelName(NamespaceRenameHelper.withReplacedPrefix(originalModelName.getNamespace(), originalNamespacePrefix, modifiedNamespacePrefix), originalModelName.getSimpleName(), originalModelName.getStereotype());
-          ((EditableSModel) model).rename(modifiedModelName.getValue(), model.getSource() instanceof FileDataSource);
+
+          ModelRoot modelRoot = model.getModelRoot();
+          if (modelRoot != null) {
+            String valid = new ModelNameValidator(model.getModelRoot()).validate(modifiedModelName);
+            if (valid == null) {
+              ((EditableSModel) model).rename(modifiedModelName.getValue(), model.getSource() instanceof FileDataSource);
+            } else {
+              errors[0] = true;
+            }
+          }
         }
       }
       Renamer.updateModelAndModuleReferences(((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository());
       ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().saveAll();
+      if (errors[0]) {
+        Messages.showWarningDialog(IdeBundle.message("dialogs.virtual.package.rename.on.models.collision.text"), IdeBundle.message("dialogs.virtual.package.rename.on.models.title"));
+      }
     });
   }
 }
