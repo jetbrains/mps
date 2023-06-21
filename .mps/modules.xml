@@ -44,6 +44,7 @@
       <modulePath path="$PROJECT_DIR$/core/tool/common/jetbrains.mps.tool.common.msd" folder="core.tool" />
       <modulePath path="$PROJECT_DIR$/core/tool/environment/jetbrains.mps.core.tool.environment.msd" folder="core.tool" />
       <modulePath path="$PROJECT_DIR$/core/typesystemEngine/solutions/jetbrains.mps.typesystemEngine/jetbrains.mps.typesystemEngine.msd" folder="core.aspects.typesystem" />
+      <modulePath path="$PROJECT_DIR$/devkits/jetbrains.mps.devkit.documentation/jetbrains.mps.devkit.documentation.devkit" folder="core.devkits" />
       <modulePath path="$PROJECT_DIR$/editor/actions-runtime/jetbrains.mps.actions.runtime.msd" folder="core.aspects.actions" />
       <modulePath path="$PROJECT_DIR$/editor/editing-runtime/jetbrains.mps.editing.runtime.msd" folder="core.aspects.actions" />
       <modulePath path="$PROJECT_DIR$/editor/editor-runtime/jetbrains.mps.editor.runtime.msd" folder="core.aspects.editor" />
@@ -115,6 +116,7 @@
       <modulePath path="$PROJECT_DIR$/languages/core/stub/netty/io.netty.msd" folder="core.stub" />
       <modulePath path="$PROJECT_DIR$/languages/core/stub/trove/gnu.trove.msd" folder="core.stub" />
       <modulePath path="$PROJECT_DIR$/languages/jetbrains.mps.lang.core.doc/jetbrains.mps.lang.core.doc.mpl" folder="core.languages" />
+      <modulePath path="$PROJECT_DIR$/languages/jetbrains.mps.lang.doctext/jetbrains.mps.lang.doctext.mpl" folder="core.languages" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/access/jetbrains.mps.lang.access.mpl" folder="core.languages" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/actions/jetbrains.mps.lang.actions.mpl" folder="core.aspects.actions" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/analyzers/jetbrains.mps.lang.dataFlow.analyzers.mpl" folder="core.aspects.dataflow" />
