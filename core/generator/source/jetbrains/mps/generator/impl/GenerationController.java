@@ -114,7 +114,7 @@ public class GenerationController implements ITaskPoolProvider {
     }
 
     IPerformanceTracer ttrace = myOptions.getTracingMode() != GenerationOptions.TRACE_OFF
-      ? new PerformanceTracer("model " + inputModel.getName().getSimpleName())
+      ? new PerformanceTracer("*** model " + inputModel.getName().getValue())
       : new NullPerformanceTracer();
 
     boolean traceTypes = myOptions.getTracingMode() == GenerationOptions.TRACE_TYPES;

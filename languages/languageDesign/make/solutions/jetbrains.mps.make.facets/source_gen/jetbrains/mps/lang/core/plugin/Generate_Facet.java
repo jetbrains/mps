@@ -478,9 +478,7 @@ public class Generate_Facet extends IFacet.Stub {
                     if (pt == null) {
                       pt = new PerformanceTracer(String.format("Performance report transforming %d models", taskHandler.getAllRecorded().size()));
                     }
-                    pt.push(inputModel.getName().getValue());
-                    pt.push(genStatus.getPerformanceTrace());
-                    pt.pop();
+                    pt.nested(genStatus.getPerformanceTrace());
                   }
                 }
                 if (pt != null) {

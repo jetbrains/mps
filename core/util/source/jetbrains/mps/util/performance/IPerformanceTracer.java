@@ -33,6 +33,16 @@ public interface IPerformanceTracer {
    */
   void push(IPerformanceTracer other);
 
+  /**
+   * Include trace information from another instance as a 'sub-step' of the active task.
+   * Comes handy when combining few traces into one with intention to distinguish individual traces in
+   * the scope of an outer one.
+   * @param other not null
+   */
+  default void nested(IPerformanceTracer other) {
+    push(other);
+  }
+
   void pop();
 
   void addText(String s);

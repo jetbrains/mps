@@ -7594,36 +7594,13 @@
                             </node>
                           </node>
                         </node>
-                        <node concept="3clFbF" id="6UgUnh3$XUu" role="3cqZAp">
-                          <node concept="2OqwBi" id="6UgUnh3$Y3i" role="3clFbG">
-                            <node concept="37vLTw" id="6UgUnh3$XUs" role="2Oq$k0">
-                              <ref role="3cqZAo" node="6UgUnh3$Ss1" resolve="pt" />
-                            </node>
-                            <node concept="liA8E" id="6UgUnh3$YjB" role="2OqNvi">
-                              <ref role="37wK5l" to="r862:~PerformanceTracer.push(java.lang.String)" resolve="push" />
-                              <node concept="2OqwBi" id="6UgUnh3_0OD" role="37wK5m">
-                                <node concept="2OqwBi" id="6UgUnh3_0BP" role="2Oq$k0">
-                                  <node concept="37vLTw" id="6UgUnh3_0wB" role="2Oq$k0">
-                                    <ref role="3cqZAo" node="6Ui2JNSUwl$" resolve="inputModel" />
-                                  </node>
-                                  <node concept="liA8E" id="6UgUnh3_0JH" role="2OqNvi">
-                                    <ref role="37wK5l" to="mhbf:~SModel.getName()" resolve="getName" />
-                                  </node>
-                                </node>
-                                <node concept="liA8E" id="6UgUnh3_159" role="2OqNvi">
-                                  <ref role="37wK5l" to="mhbf:~SModelName.getValue()" resolve="getValue" />
-                                </node>
-                              </node>
-                            </node>
-                          </node>
-                        </node>
                         <node concept="3clFbF" id="6UgUnh3$Z6f" role="3cqZAp">
                           <node concept="2OqwBi" id="6UgUnh3$Z7Z" role="3clFbG">
                             <node concept="37vLTw" id="6UgUnh3$Z6d" role="2Oq$k0">
                               <ref role="3cqZAo" node="6UgUnh3$Ss1" resolve="pt" />
                             </node>
                             <node concept="liA8E" id="6UgUnh3$Zd0" role="2OqNvi">
-                              <ref role="37wK5l" to="r862:~PerformanceTracer.push(jetbrains.mps.util.performance.IPerformanceTracer)" resolve="push" />
+                              <ref role="37wK5l" to="r862:~PerformanceTracer.nested(jetbrains.mps.util.performance.IPerformanceTracer)" resolve="nested" />
                               <node concept="2OqwBi" id="6UgUnh3_1py" role="37wK5m">
                                 <node concept="37vLTw" id="6UgUnh3_19Y" role="2Oq$k0">
                                   <ref role="3cqZAo" node="6Ui2JNSUtbp" resolve="genStatus" />
@@ -7632,16 +7609,6 @@
                                   <ref role="37wK5l" to="ap4t:~GenerationStatus.getPerformanceTrace()" resolve="getPerformanceTrace" />
                                 </node>
                               </node>
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="3clFbF" id="6UgUnh3$Zhe" role="3cqZAp">
-                          <node concept="2OqwBi" id="6UgUnh3$Zio" role="3clFbG">
-                            <node concept="37vLTw" id="6UgUnh3$Zhc" role="2Oq$k0">
-                              <ref role="3cqZAo" node="6UgUnh3$Ss1" resolve="pt" />
-                            </node>
-                            <node concept="liA8E" id="6UgUnh3$ZlD" role="2OqNvi">
-                              <ref role="37wK5l" to="r862:~PerformanceTracer.pop()" resolve="pop" />
                             </node>
                           </node>
                         </node>
