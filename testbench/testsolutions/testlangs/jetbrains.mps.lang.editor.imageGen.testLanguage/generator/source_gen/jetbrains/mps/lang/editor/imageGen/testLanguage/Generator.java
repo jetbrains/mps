@@ -8,10 +8,8 @@ import jetbrains.mps.smodel.language.LanguageRuntime;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.lang.editor.imageGen.testLanguage.generator.template.main.QueriesGenerated;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SLanguage;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
 
 public class Generator extends TemplateModuleInterpreted2 {
@@ -28,14 +26,12 @@ public class Generator extends TemplateModuleInterpreted2 {
 
   @Override
   protected void fillTemplateModels(TemplateModuleInterpreted2.TemplateModels models) {
-    models.templates("r:f1532bec-1ca0-47ff-a389-b3d97554a18c", QueriesGenerated.class);
   }
 
 
   @Override
   public Collection<SLanguage> getTargetLanguages() {
-    SLanguage[] rv = new SLanguage[1];
-    rv[0] = MetaAdapterFactory.getLanguage(0x1839bec5cea641dfL, 0xb9e0c405ff35c41eL, "jetbrains.mps.lang.editor.imageGen");
+    SLanguage[] rv = new SLanguage[0];
     return Arrays.asList(rv);
   }
 

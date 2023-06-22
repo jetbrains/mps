@@ -6282,12 +6282,12 @@
           <node concept="1BurEX" id="BXTDJgT$6" role="1SiIV1">
             <node concept="398BVA" id="BXTDJgTzX" role="1BurEY">
               <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
-              <node concept="2Ry0Ak" id="1w78goyS1zC" role="iGT6I">
-                <property role="2Ry0Am" value="app.jar" />
+              <node concept="2Ry0Ak" id="5XVi9oJSBZ9" role="iGT6I">
+                <property role="2Ry0Am" value="lib.jar" />
               </node>
             </node>
             <node concept="3yrxFa" id="BXTDJifSs" role="2gdwQb">
-              <ref role="3yrxFb" node="4LdE6kxkp0J" />
+              <ref role="3yrxFb" node="4SADOBb5p5j" />
             </node>
           </node>
         </node>
@@ -6381,8 +6381,8 @@
           <ref role="1E1SXG" node="3vjn6$4rsZc" resolve="util-core" />
           <node concept="398BVA" id="ROdlokvOU8" role="17Grwy">
             <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
-            <node concept="2Ry0Ak" id="ROdlokvOU9" role="iGT6I">
-              <property role="2Ry0Am" value="3rd-party-rt.jar" />
+            <node concept="2Ry0Ak" id="5XVi9oJSDrt" role="iGT6I">
+              <property role="2Ry0Am" value="util-8.jar" />
             </node>
           </node>
         </node>

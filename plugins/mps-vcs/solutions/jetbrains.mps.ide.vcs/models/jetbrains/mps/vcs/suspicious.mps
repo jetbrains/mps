@@ -1043,16 +1043,36 @@
             </node>
           </node>
         </node>
+        <node concept="3SKdUt" id="59YJMuAXcxe" role="3cqZAp">
+          <node concept="1PaTwC" id="59YJMuAXcxf" role="1aUNEU">
+            <node concept="3oM_SD" id="59YJMuAXcK9" role="1PaTwD">
+              <property role="3oM_SC" value="TODO:" />
+            </node>
+            <node concept="3oM_SD" id="59YJMuAXcIU" role="1PaTwD">
+              <property role="3oM_SC" value="232" />
+            </node>
+            <node concept="3oM_SD" id="59YJMuAXcIV" role="1PaTwD">
+              <property role="3oM_SC" value="platform" />
+            </node>
+            <node concept="3oM_SD" id="59YJMuAXcIW" role="1PaTwD">
+              <property role="3oM_SC" value="API" />
+            </node>
+            <node concept="3oM_SD" id="59YJMuAXcIX" role="1PaTwD">
+              <property role="3oM_SC" value="change" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="45jbFh0K4PU" role="3cqZAp">
           <node concept="2OqwBi" id="45jbFh0K4PV" role="3clFbG">
             <node concept="37vLTw" id="2BHiRxeulxD" role="2Oq$k0">
               <ref role="3cqZAo" node="45jbFh0K4Pr" resolve="myVirtualFileManager" />
             </node>
             <node concept="liA8E" id="45jbFh0K4PX" role="2OqNvi">
-              <ref role="37wK5l" to="jlff:~VirtualFileManager.addVirtualFileManagerListener(com.intellij.openapi.vfs.VirtualFileManagerListener)" resolve="addVirtualFileManagerListener" />
+              <ref role="37wK5l" to="jlff:~VirtualFileManager.addVirtualFileManagerListener(com.intellij.openapi.vfs.VirtualFileManagerListener,com.intellij.openapi.Disposable)" resolve="addVirtualFileManagerListener" />
               <node concept="37vLTw" id="2BHiRxeumMg" role="37wK5m">
                 <ref role="3cqZAo" node="45jbFh0K4Pb" resolve="myVirtualFileManagerListener" />
               </node>
+              <node concept="10Nm6u" id="59YJMuAXd8x" role="37wK5m" />
             </node>
           </node>
         </node>
