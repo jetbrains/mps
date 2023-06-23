@@ -28,7 +28,7 @@
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
@@ -121,7 +121,7 @@
       </concept>
       <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -141,7 +141,7 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1163670490218" name="jetbrains.mps.baseLanguage.structure.SwitchStatement" flags="nn" index="3KaCP$">
@@ -187,7 +187,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
       <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7">
@@ -483,10 +483,8 @@
                       </node>
                       <node concept="liA8E" id="1U" role="2OqNvi">
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.rawPresentation(java.lang.String)" resolve="rawPresentation" />
-                        <uo k="s:originTrace" v="n:1094247804558289146" />
                         <node concept="Xl_RD" id="1V" role="37wK5m">
-                          <property role="Xl_RC" value="bullet line" />
-                          <uo k="s:originTrace" v="n:1094247804558289146" />
+                          <property role="Xl_RC" value="- " />
                         </node>
                       </node>
                     </node>
@@ -549,14 +547,11 @@
                       </node>
                       <node concept="liA8E" id="2j" role="2OqNvi">
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.rawPresentation(java.lang.String)" resolve="rawPresentation" />
-                        <uo k="s:originTrace" v="n:3129707072769384643" />
                         <node concept="Xl_RD" id="2k" role="37wK5m">
                           <property role="Xl_RC" value="bullet point" />
-                          <uo k="s:originTrace" v="n:3129707072769384643" />
                         </node>
                         <node concept="t5JxF" id="2l" role="lGtFl">
                           <property role="t5JxN" value="Experimental. Use concepts such as TextConcept, Word, Line, etc. located outside of the &quot;textual&quot; virtual folder" />
-                          <uo k="s:originTrace" v="n:7498004847719251768" />
                         </node>
                       </node>
                     </node>
@@ -619,14 +614,11 @@
                       </node>
                       <node concept="liA8E" id="2H" role="2OqNvi">
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.rawPresentation(java.lang.String)" resolve="rawPresentation" />
-                        <uo k="s:originTrace" v="n:1711399190456599627" />
                         <node concept="Xl_RD" id="2I" role="37wK5m">
                           <property role="Xl_RC" value="EmptyParagraphLetter" />
-                          <uo k="s:originTrace" v="n:1711399190456599627" />
                         </node>
                         <node concept="t5JxF" id="2J" role="lGtFl">
                           <property role="t5JxN" value="Experimental. Use concepts such as TextConcept, Word, Line, etc. located outside of the &quot;textual&quot; virtual folder" />
-                          <uo k="s:originTrace" v="n:7498004847719251453" />
                         </node>
                       </node>
                     </node>
@@ -944,14 +936,11 @@
                       </node>
                       <node concept="liA8E" id="4F" role="2OqNvi">
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.rawPresentation(java.lang.String)" resolve="rawPresentation" />
-                        <uo k="s:originTrace" v="n:9143182410139347997" />
                         <node concept="Xl_RD" id="4G" role="37wK5m">
                           <property role="Xl_RC" value="letter" />
-                          <uo k="s:originTrace" v="n:9143182410139347997" />
                         </node>
                         <node concept="t5JxF" id="4H" role="lGtFl">
                           <property role="t5JxN" value="Experimental. Use concepts such as TextConcept, Word, Line, etc. located outside of the &quot;textual&quot; virtual folder" />
-                          <uo k="s:originTrace" v="n:6671109069287222313" />
                         </node>
                       </node>
                     </node>
@@ -1014,10 +1003,8 @@
                       </node>
                       <node concept="liA8E" id="55" role="2OqNvi">
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.rawPresentation(java.lang.String)" resolve="rawPresentation" />
-                        <uo k="s:originTrace" v="n:2535923850359271782" />
                         <node concept="Xl_RD" id="56" role="37wK5m">
                           <property role="Xl_RC" value="Line" />
-                          <uo k="s:originTrace" v="n:2535923850359271782" />
                         </node>
                       </node>
                     </node>
@@ -1093,10 +1080,8 @@
                       </node>
                       <node concept="liA8E" id="5z" role="2OqNvi">
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.rawPresentation(java.lang.String)" resolve="rawPresentation" />
-                        <uo k="s:originTrace" v="n:3133179214568824809" />
                         <node concept="Xl_RD" id="5$" role="37wK5m">
                           <property role="Xl_RC" value="node" />
-                          <uo k="s:originTrace" v="n:3133179214568824809" />
                         </node>
                       </node>
                     </node>
@@ -1172,14 +1157,11 @@
                       </node>
                       <node concept="liA8E" id="61" role="2OqNvi">
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.rawPresentation(java.lang.String)" resolve="rawPresentation" />
-                        <uo k="s:originTrace" v="n:3213792450771274575" />
                         <node concept="Xl_RD" id="62" role="37wK5m">
                           <property role="Xl_RC" value="wrapped node" />
-                          <uo k="s:originTrace" v="n:3213792450771274575" />
                         </node>
                         <node concept="t5JxF" id="63" role="lGtFl">
                           <property role="t5JxN" value="Experimental. Use concepts such as TextConcept, Word, Line, etc. located outside of the &quot;textual&quot; virtual folder" />
-                          <uo k="s:originTrace" v="n:6671109069287220610" />
                         </node>
                       </node>
                     </node>
@@ -1242,10 +1224,8 @@
                       </node>
                       <node concept="liA8E" id="6r" role="2OqNvi">
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.rawPresentation(java.lang.String)" resolve="rawPresentation" />
-                        <uo k="s:originTrace" v="n:6934061334344388674" />
                         <node concept="Xl_RD" id="6s" role="37wK5m">
                           <property role="Xl_RC" value="numbered line" />
-                          <uo k="s:originTrace" v="n:6934061334344388674" />
                         </node>
                       </node>
                     </node>
@@ -1308,14 +1288,11 @@
                       </node>
                       <node concept="liA8E" id="6O" role="2OqNvi">
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.rawPresentation(java.lang.String)" resolve="rawPresentation" />
-                        <uo k="s:originTrace" v="n:6746006958027317995" />
                         <node concept="Xl_RD" id="6P" role="37wK5m">
                           <property role="Xl_RC" value="numbered point" />
-                          <uo k="s:originTrace" v="n:6746006958027317995" />
                         </node>
                         <node concept="t5JxF" id="6Q" role="lGtFl">
                           <property role="t5JxN" value="Experimental. Use concepts such as TextConcept, Word, Line, etc. located outside of the &quot;textual&quot; virtual folder" />
-                          <uo k="s:originTrace" v="n:6671109069287220216" />
                         </node>
                       </node>
                     </node>
@@ -1378,14 +1355,11 @@
                       </node>
                       <node concept="liA8E" id="7e" role="2OqNvi">
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.rawPresentation(java.lang.String)" resolve="rawPresentation" />
-                        <uo k="s:originTrace" v="n:9143182410139364510" />
                         <node concept="Xl_RD" id="7f" role="37wK5m">
                           <property role="Xl_RC" value="Paragraph" />
-                          <uo k="s:originTrace" v="n:9143182410139364510" />
                         </node>
                         <node concept="t5JxF" id="7g" role="lGtFl">
                           <property role="t5JxN" value="Experimental. Use concepts such as TextConcept, Word, Line, etc. located outside of the &quot;textual&quot; virtual folder" />
-                          <uo k="s:originTrace" v="n:6671109069287219666" />
                         </node>
                       </node>
                     </node>
@@ -1448,10 +1422,8 @@
                       </node>
                       <node concept="liA8E" id="7C" role="2OqNvi">
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.rawPresentation(java.lang.String)" resolve="rawPresentation" />
-                        <uo k="s:originTrace" v="n:2535923850359206929" />
                         <node concept="Xl_RD" id="7D" role="37wK5m">
                           <property role="Xl_RC" value="Text" />
-                          <uo k="s:originTrace" v="n:2535923850359206929" />
                         </node>
                       </node>
                     </node>
@@ -1629,14 +1601,11 @@
                       </node>
                       <node concept="liA8E" id="8I" role="2OqNvi">
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.rawPresentation(java.lang.String)" resolve="rawPresentation" />
-                        <uo k="s:originTrace" v="n:8331485905611916945" />
                         <node concept="Xl_RD" id="8J" role="37wK5m">
                           <property role="Xl_RC" value="url" />
-                          <uo k="s:originTrace" v="n:8331485905611916945" />
                         </node>
                         <node concept="t5JxF" id="8K" role="lGtFl">
                           <property role="t5JxN" value="Experimental. Use concepts such as TextConcept, Word, Line, etc. located outside of the &quot;textual&quot; virtual folder" />
-                          <uo k="s:originTrace" v="n:6671109069287219326" />
                         </node>
                       </node>
                     </node>
@@ -1699,10 +1668,8 @@
                       </node>
                       <node concept="liA8E" id="98" role="2OqNvi">
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.rawPresentation(java.lang.String)" resolve="rawPresentation" />
-                        <uo k="s:originTrace" v="n:155656958578482948" />
                         <node concept="Xl_RD" id="99" role="37wK5m">
                           <property role="Xl_RC" value="Word" />
-                          <uo k="s:originTrace" v="n:155656958578482948" />
                         </node>
                       </node>
                     </node>
@@ -3359,7 +3326,7 @@
             <node concept="liA8E" id="iI" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.alias(java.lang.String)" resolve="alias" />
               <node concept="Xl_RD" id="iJ" role="37wK5m">
-                <property role="Xl_RC" value="bullet line" />
+                <property role="Xl_RC" value="- " />
               </node>
             </node>
           </node>
@@ -4253,18 +4220,14 @@
                   <node concept="2YIFZM" id="nZ" role="37wK5m">
                     <ref role="37wK5l" to="e8bb:~MetaIdFactory.dataTypeId(long,long,long)" resolve="dataTypeId" />
                     <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
-                    <uo k="s:originTrace" v="n:9143182410139348704" />
                     <node concept="1adDum" id="o0" role="37wK5m">
                       <property role="1adDun" value="0xc7fb639fbe784307L" />
-                      <uo k="s:originTrace" v="n:9143182410139348704" />
                     </node>
                     <node concept="1adDum" id="o1" role="37wK5m">
                       <property role="1adDun" value="0x89b0b5959c3fa8c8L" />
-                      <uo k="s:originTrace" v="n:9143182410139348704" />
                     </node>
                     <node concept="1adDum" id="o2" role="37wK5m">
                       <property role="1adDun" value="0x7ee31bf598f4aee0L" />
-                      <uo k="s:originTrace" v="n:9143182410139348704" />
                     </node>
                   </node>
                 </node>
