@@ -33,9 +33,13 @@
   <node concept="2VgMpV" id="2iKjvgosNNj">
     <property role="TrG5h" value="DocumentationPlan" />
     <node concept="2VgMA2" id="2iKjvgosNNk" role="2VgMA7">
-      <node concept="2V$Bhx" id="7hLyUbM9Dz$" role="1t_9vn">
+      <node concept="2V$Bhx" id="1HQJlWaGaLV" role="1t_9vn">
         <property role="2V$B1T" value="343f8205-dc88-465b-9c5b-ce46b5f1c193" />
         <property role="2V$B1Q" value="jetbrains.mps.lang.core.doc" />
+      </node>
+      <node concept="2V$Bhx" id="1HQJlWaFM7w" role="1t_9vn">
+        <property role="2V$B1T" value="d304f247-4944-479d-ac8b-972b953bcdfe" />
+        <property role="2V$B1Q" value="jetbrains.mps.lang.doctext" />
       </node>
     </node>
   </node>
