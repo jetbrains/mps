@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dev-kit name="jetbrains.mps.devkit.documentation" uuid="c9983bff-58c7-4465-88f7-3d854bbf1736">
   <exported-language name="343f8205-dc88-465b-9c5b-ce46b5f1c193(jetbrains.mps.lang.core.doc)" />
-  <exported-language name="c7fb639f-be78-4307-89b0-b5959c3fa8c8(jetbrains.mps.lang.text)" />
+  <exported-language name="d304f247-4944-479d-ac8b-972b953bcdfe(jetbrains.mps.lang.doctext)" />
 </dev-kit>
 
