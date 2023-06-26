@@ -5,8 +5,8 @@
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
-    <import index="zqge" ref="r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)" />
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" />
+    <import index="w5ms" ref="r:c17bb0de-76cd-48ca-9cc0-ce1b39396c8b(jetbrains.mps.lang.doctext.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
@@ -50,13 +50,6 @@
     <property role="EcuMT" value="4293932951803486388" />
     <property role="TrG5h" value="DocumentedNodeAnnotation" />
     <ref role="1TJDcQ" to="tpck:2ULFgo8_XDk" resolve="NodeAttribute" />
-    <node concept="1TJgyj" id="3In7kjTAHAa" role="1TKVEi">
-      <property role="IQ2ns" value="4293932951803713930" />
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="text" />
-      <property role="20lbJX" value="fLJekj4/_1" />
-      <ref role="20lvS9" to="zqge:2cLqkTm6vgh" resolve="Text" />
-    </node>
     <node concept="M6xJ_" id="3In7kjT_RH_" role="lGtFl">
       <property role="Hh88m" value="documentation" />
       <node concept="trNpa" id="3In7kjTA6oo" role="EQaZv">
@@ -65,6 +58,13 @@
       <node concept="tn0Fv" id="3In7kjTAhFP" role="HhnKV">
         <property role="tnX3d" value="true" />
       </node>
+    </node>
+    <node concept="1TJgyj" id="1V7fFCAbmPi" role="1TKVEi">
+      <property role="IQ2ns" value="2217810310728609106" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="text" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="w5ms:DvN_rQM1U_" resolve="Test" />
     </node>
   </node>
 </model>
