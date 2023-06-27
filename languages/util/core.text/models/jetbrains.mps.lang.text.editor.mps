@@ -35382,7 +35382,6 @@
     <property role="TrG5h" value="BulletLine_Component" />
     <ref role="1XX52x" to="zqge:WJz9iAWEzU" resolve="BulletLine" />
     <node concept="3EZMnI" id="1HQJlW9E71v" role="2wV5jI">
-      <node concept="3F0ifn" id="1HQJlW9GtKy" role="3EZMnx" />
       <node concept="3F0ifn" id="1HQJlW9E71w" role="3EZMnx">
         <property role="3F0ifm" value=" " />
         <node concept="VPM3Z" id="1HQJlW9E71x" role="3F10Kt">
