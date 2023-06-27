@@ -60,6 +60,9 @@
       <directory url="file://$PROJECT_DIR$/languages/baseLanguage/varVariable/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/core/core/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/core/core/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/languages/jetbrains.mps.lang.core.doc/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/languages/jetbrains.mps.lang.doctext/generator/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/languages/jetbrains.mps.lang.doctext/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/languageDesign/access/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/languageDesign/access/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/languageDesign/actions/generator/source_gen" includeSubdirectories="true" />
