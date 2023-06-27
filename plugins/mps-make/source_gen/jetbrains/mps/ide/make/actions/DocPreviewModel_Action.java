@@ -112,8 +112,7 @@ public class DocPreviewModel_Action extends BaseAction {
     final SNodeReference contextNode = (event.getData(MPSCommonDataKeys.NODE) == null ? null : event.getData(MPSCommonDataKeys.NODE).getReference());
     IMakeService makeService = event.getData(MPSCommonDataKeys.MPS_PROJECT).getComponent(MakeServiceComponent.class).get();
     if (makeService.openNewSession(session)) {
-      IScript scr = new ScriptBuilder(mpsProject.getComponent(FacetRegistry.class)).withFacetNames(new IFacet.Name("jetbrains.mps.lang.core.doc.Documentation"), new IFacet.Name("jetbrains.mps.make.facets.Generate"), new IFacet.Name("jetbrains.mps.make.facets.TextGen"), new IFacet.Name("jetbrains.mps.make.facets.Make")).withFinalTarget(new ITarget.Name("jetbrains.mps.make.facets.TextGen.textGenToMemory")).toScript();
-
+      IScript scr = new ScriptBuilder(mpsProject.getComponent(FacetRegistry.class)).withFacetNames(new IFacet.Name("jetbrains.mps.lang.core.doc.Documentation"), new IFacet.Name("jetbrains.mps.make.facets.Generate"), new IFacet.Name("jetbrains.mps.make.facets.TextGen"), new IFacet.Name("jetbrains.mps.make.facets.Make")).withFinalTarget(new ITarget.Name("jetbrains.mps.make.facets.TextGen.textGenToMemory")).withAuxTarget(new ITarget.Name("jetbrains.mps.lang.core.doc.Documentation.generateDocumentation")).toScript();
 
       SModel model = DocPreviewModel_Action.this.modelToGenerate(event);
       final SModelReference model2generateRef = model.getReference();

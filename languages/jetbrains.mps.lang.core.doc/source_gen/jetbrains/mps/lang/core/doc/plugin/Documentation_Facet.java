@@ -17,6 +17,7 @@ import jetbrains.mps.make.script.IJobMonitor;
 import jetbrains.mps.make.resources.IPropertiesAccessor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
+import jetbrains.mps.make.script.IConfig;
 import jetbrains.mps.smodel.resources.MResource;
 import jetbrains.mps.project.Project;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -33,16 +34,18 @@ import jetbrains.mps.generator.GenerationSettingsProvider;
 import jetbrains.mps.generator.IModifiableGenerationSettings;
 import jetbrains.mps.generator.GenerationOptions;
 import jetbrains.mps.lang.core.plugin.Generate_Facet.Target_configure;
-import jetbrains.mps.make.script.IConfig;
-import jetbrains.mps.make.script.IConfigMonitor;
-import java.util.Map;
+import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.make.script.IPropertiesPool;
+import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
+import java.util.Map;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
 
 public class Documentation_Facet extends IFacet.Stub {
   private List<ITarget> targets = ListSequence.fromList(new ArrayList<ITarget>());
   private IFacet.Name name = new IFacet.Name("jetbrains.mps.lang.core.doc.Documentation");
   public Documentation_Facet() {
-    ListSequence.fromList(targets).addElement(new Target_configureDoc());
+    ListSequence.fromList(targets).addElement(new Target_generateDocumentation());
+    ListSequence.fromList(targets).addElement(new Target_configureCustomGenPlan());
   }
   public Iterable<ITarget> targets() {
     return targets;
@@ -62,41 +65,19 @@ public class Documentation_Facet extends IFacet.Stub {
   public IPropertiesPersistence propertiesPersistence() {
     return new TargetProperties();
   }
-  public static class Target_configureDoc implements ITargetEx {
-    private static final ITarget.Name name = new ITarget.Name("jetbrains.mps.lang.core.doc.Documentation.configureDoc");
-    public Target_configureDoc() {
+  public static class Target_generateDocumentation implements ITargetEx {
+    private static final ITarget.Name name = new ITarget.Name("jetbrains.mps.lang.core.doc.Documentation.generateDocumentation");
+    public Target_generateDocumentation() {
     }
     public IJob createJob() {
       return new IJob.Stub() {
         @Override
         public IResult execute(final Iterable<IResource> rawInput, final IJobMonitor monitor, final IPropertiesAccessor pa, @NotNull final ProgressMonitor progressMonitor) {
           Iterable<IResource> _output_jqe2bx_a0a = null;
-          final Iterable<MResource> input = (Iterable<MResource>) (Iterable) rawInput;
+          final Iterable<IResource> input = (Iterable) (Iterable) rawInput;
           switch (0) {
             case 0:
-              Project project = monitor.getSession().getProject();
-
-              SModelReference genPlanModel = PersistenceFacade.getInstance().createModelReference("r:d60a90cf-2588-4702-a0e4-f4d58abef57b(jetbrains.mps.lang.descriptor.structure_doc@genplan)");
-              final SModel planModel = SPointerOperations.resolveModel(genPlanModel, project.getRepository());
-              MessagesViewTool messagesView = MessagesViewTool.getInstance(project);
-              IMessageHandler mh = messagesView.newHandler();
-              final ModelGenerationPlan.Provider mgpProvider = new InterpretedPlanProvider(LanguageRegistry.getInstance(project.getRepository()), mh, genPlanModel, project.getRepository());
-              final Wrappers._T<ModelGenerationPlan> plan = new Wrappers._T<ModelGenerationPlan>(null);
-              project.getRepository().getModelAccess().runReadAction(() -> plan.value = mgpProvider.getPlan(planModel));
-
-              GenerationSettingsProvider gsp = monitor.getSession().getProject().getComponent(GenerationSettingsProvider.class);
-              IModifiableGenerationSettings settings = gsp.getGenerationSettings();
-
-              GenerationOptions.OptionsBuilder optionsBuilder = GenerationOptions.fromSettings(settings);
-              Target_configure.vars(pa.global()).generationOptions(optionsBuilder);
-
-              for (MResource resource : input) {
-                Iterable<SModel> seq = resource._1();
-                for (SModel smodel : seq) {
-                  Target_configure.vars(pa.global()).customPlan(plan.value);
-                  Target_configure.vars(pa.global()).generationOptions().customPlan(smodel, plan.value);
-                }
-              }
+              Target_configureCustomGenPlan.vars(pa.global()).needCustomPlan(true);
             default:
               progressMonitor.done();
               return new IResult.SUCCESS(_output_jqe2bx_a0a);
@@ -105,16 +86,93 @@ public class Documentation_Facet extends IFacet.Stub {
       };
     }
     public IConfig createConfig() {
-      return new IConfig.Stub() {
+      return null;
+    }
+    public Iterable<ITarget.Name> notAfter() {
+      return null;
+    }
+    public Iterable<ITarget.Name> after() {
+      return null;
+    }
+    public Iterable<ITarget.Name> notBefore() {
+      return null;
+    }
+    public Iterable<ITarget.Name> before() {
+      return Sequence.fromArray(new ITarget.Name[]{new ITarget.Name("jetbrains.mps.lang.core.doc.Documentation.configureCustomGenPlan")});
+    }
+    public ITarget.Name getName() {
+      return name;
+    }
+    public boolean isOptional() {
+      return true;
+    }
+    public boolean requiresInput() {
+      return false;
+    }
+    public boolean producesOutput() {
+      return false;
+    }
+    public Iterable<Class<? extends IResource>> expectedInput() {
+      List<Class<? extends IResource>> rv = ListSequence.fromList(new ArrayList<Class<? extends IResource>>());
+      return rv;
+    }
+    public Iterable<Class<? extends IResource>> expectedOutput() {
+      return null;
+    }
+    public <T> T createParameters(Class<T> cls) {
+      return null;
+    }
+    public <T> T createParameters(Class<T> cls, T copyFrom) {
+      T t = createParameters(cls);
+      return t;
+    }
+  }
+  public static class Target_configureCustomGenPlan implements ITargetEx {
+    private static final ITarget.Name name = new ITarget.Name("jetbrains.mps.lang.core.doc.Documentation.configureCustomGenPlan");
+    public Target_configureCustomGenPlan() {
+    }
+    public IJob createJob() {
+      return new IJob.Stub() {
         @Override
-        public boolean configure(final IConfigMonitor cmonitor, final IPropertiesAccessor pa) {
+        public IResult execute(final Iterable<IResource> rawInput, final IJobMonitor monitor, final IPropertiesAccessor pa, @NotNull final ProgressMonitor progressMonitor) {
+          Iterable<IResource> _output_jqe2bx_a0b = null;
+          final Iterable<MResource> input = (Iterable<MResource>) (Iterable) rawInput;
           switch (0) {
             case 0:
+              if (vars(pa.global()).needCustomPlan() != null && ((Boolean) vars(pa.global()).needCustomPlan())) {
+                Project project = monitor.getSession().getProject();
+
+                SModelReference genPlanModel = PersistenceFacade.getInstance().createModelReference("r:d60a90cf-2588-4702-a0e4-f4d58abef57b(jetbrains.mps.lang.descriptor.structure_doc@genplan)");
+                final SModel planModel = SPointerOperations.resolveModel(genPlanModel, project.getRepository());
+                MessagesViewTool messagesView = MessagesViewTool.getInstance(project);
+                IMessageHandler mh = messagesView.newHandler();
+                final ModelGenerationPlan.Provider mgpProvider = new InterpretedPlanProvider(LanguageRegistry.getInstance(project.getRepository()), mh, genPlanModel, project.getRepository());
+                final Wrappers._T<ModelGenerationPlan> plan = new Wrappers._T<ModelGenerationPlan>(null);
+                project.getRepository().getModelAccess().runReadAction(() -> plan.value = mgpProvider.getPlan(planModel));
+
+                GenerationSettingsProvider gsp = monitor.getSession().getProject().getComponent(GenerationSettingsProvider.class);
+                IModifiableGenerationSettings settings = gsp.getGenerationSettings();
+
+                GenerationOptions.OptionsBuilder optionsBuilder = GenerationOptions.fromSettings(settings);
+                Target_configure.vars(pa.global()).generationOptions(optionsBuilder);
+
+                for (MResource resource : input) {
+                  Iterable<SModel> seq = resource._1();
+                  for (SModel smodel : seq) {
+                    Target_configure.vars(pa.global()).customPlan(plan.value);
+                    Target_configure.vars(pa.global()).generationOptions().customPlan(smodel, plan.value);
+                  }
+                }
+              }
             default:
-              return true;
+              progressMonitor.done();
+              return new IResult.SUCCESS(_output_jqe2bx_a0b);
           }
         }
       };
+    }
+    public IConfig createConfig() {
+      return null;
     }
     public Iterable<ITarget.Name> notAfter() {
       return null;
@@ -149,20 +207,54 @@ public class Documentation_Facet extends IFacet.Stub {
       return null;
     }
     public <T> T createParameters(Class<T> cls) {
-      return null;
+      return cls.cast(new Parameters());
     }
     public <T> T createParameters(Class<T> cls, T copyFrom) {
       T t = createParameters(cls);
+      if (t != null) {
+        ((Tuples._1) t).assign((Tuples._1) copyFrom);
+      }
       return t;
+    }
+    public static Parameters vars(IPropertiesPool ppool) {
+      return ppool.properties(name, Parameters.class);
+    }
+    public static class Parameters extends MultiTuple._1<Boolean> {
+      public Parameters() {
+        super();
+      }
+      public Parameters(Boolean needCustomPlan) {
+        super(needCustomPlan);
+      }
+      public Boolean needCustomPlan(Boolean value) {
+        return super._0(value);
+      }
+      public Boolean needCustomPlan() {
+        return super._0();
+      }
     }
   }
   public static class TargetProperties implements IPropertiesPersistence {
     public TargetProperties() {
     }
     public void storeValues(Map<String, String> store, IPropertiesPool properties) {
+      {
+        ITarget.Name name = new ITarget.Name("jetbrains.mps.lang.core.doc.Documentation.configureCustomGenPlan");
+        if (properties.hasProperties(name)) {
+          Target_configureCustomGenPlan.Parameters props = properties.properties(name, Target_configureCustomGenPlan.Parameters.class);
+          MapSequence.fromMap(store).put("jetbrains.mps.lang.core.doc.Documentation.configureCustomGenPlan.needCustomPlan", String.valueOf(props.needCustomPlan()));
+        }
+      }
     }
     public void loadValues(Map<String, String> store, IPropertiesPool properties) {
       try {
+        {
+          ITarget.Name name = new ITarget.Name("jetbrains.mps.lang.core.doc.Documentation.configureCustomGenPlan");
+          Target_configureCustomGenPlan.Parameters props = properties.properties(name, Target_configureCustomGenPlan.Parameters.class);
+          if (MapSequence.fromMap(store).containsKey("jetbrains.mps.lang.core.doc.Documentation.configureCustomGenPlan.needCustomPlan")) {
+            props.needCustomPlan(Boolean.valueOf(MapSequence.fromMap(store).get("jetbrains.mps.lang.core.doc.Documentation.configureCustomGenPlan.needCustomPlan")));
+          }
+        }
       } catch (RuntimeException re) {
       }
     }
