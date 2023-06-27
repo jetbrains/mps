@@ -742,7 +742,7 @@
               </node>
             </node>
             <node concept="liA8E" id="1S2xql_3x62" role="2OqNvi">
-              <ref role="37wK5l" to="hs1w:~LayoutViewOptions.setTopToolbar(com.intellij.openapi.actionSystem.ActionGroup,java.lang.String)" resolve="setTopToolbar" />
+              <ref role="37wK5l" to="hs1w:~LayoutViewOptions.setTopLeftToolbar(com.intellij.openapi.actionSystem.ActionGroup,java.lang.String)" resolve="setTopLeftToolbar" />
               <node concept="3$FqnI" id="4MN0nTvhup5" role="37wK5m">
                 <ref role="3$FqnG" to="1rri:7WbFayaFPHw" resolve="DebugStepsMenu" />
               </node>

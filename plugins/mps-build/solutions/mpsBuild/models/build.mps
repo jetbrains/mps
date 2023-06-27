@@ -3816,6 +3816,16 @@
             </node>
           </node>
         </node>
+        <node concept="1E1SXE" id="4sKwB0qaKtL" role="3bR37C">
+          <property role="1E1SXH" value="true" />
+          <ref role="1E1SXG" node="5d$B_bnZPNh" resolve="mps-boot-util" />
+          <node concept="398BVA" id="4sKwB0qaKtM" role="17Grwy">
+            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
+            <node concept="2Ry0Ak" id="4sKwB0qaKtN" role="iGT6I">
+              <property role="2Ry0Am" value="util-8.jar" />
+            </node>
+          </node>
+        </node>
         <node concept="1E1SXE" id="1w78goyS0$S" role="3bR37C">
           <property role="1E1SXH" value="true" />
           <ref role="1E1SXG" node="5d$B_bnZPNh" resolve="mps-boot-util" />

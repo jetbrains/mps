@@ -4,6 +4,7 @@
   <models>
     <modelRoot contentPath="${platform_lib}" type="java_classes">
       <sourceRoot location="util.jar" />
+      <sourceRoot location="util-8.jar" />
       <sourceRoot location="util_rt.jar" />
       <PackageScope skip-private="false">
         <include prefix="com.intellij.application" />
@@ -18,6 +19,7 @@
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="no">
       <library location="${platform_lib}/util.jar" />
+      <library location="${platform_lib}/util-8.jar" />
       <library location="${platform_lib}/util_rt.jar" />
       <library location="${mps_home}/lib/mps-boot-util.jar" />
     </facet>

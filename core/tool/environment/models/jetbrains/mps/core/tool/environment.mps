@@ -35,8 +35,8 @@
     <import index="w0gx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.structure.modules(MPS.Core/)" />
     <import index="et5u" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.messages(MPS.Core/)" />
     <import index="smlj" ref="3a8d80d2-32d9-f1f2-4443-6a1111e12ef3/java:jetbrains.mps.string(MPS.Boot/)" />
-    <import index="bd8o" ref="3a8d80d2-32d9-f1f2-4443-6a1111e12ef3/java:com.intellij.openapi.application(MPS.Boot/)" />
     <import index="18ex" ref="3a8d80d2-32d9-f1f2-4443-6a1111e12ef3/java:jetbrains.mps.util(MPS.Boot/)" />
+    <import index="bd8o" ref="3a8d80d2-32d9-f1f2-4443-6a1111e12ef3/java:com.intellij.openapi.application(MPS.Boot/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -2186,9 +2186,9 @@
               <node concept="2YIFZM" id="1HNHfSAwBsS" role="3clFbG">
                 <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
                 <ref role="37wK5l" to="wyt6:~System.setProperty(java.lang.String,java.lang.String)" resolve="setProperty" />
-                <node concept="10M0yZ" id="1HNHfSAxC5d" role="37wK5m">
-                  <ref role="1PxDUh" to="bd8o:~PathManager" resolve="PathManager" />
+                <node concept="10M0yZ" id="6qQvQxZ$r0l" role="37wK5m">
                   <ref role="3cqZAo" to="bd8o:~PathManager.PROPERTY_PATHS_SELECTOR" resolve="PROPERTY_PATHS_SELECTOR" />
+                  <ref role="1PxDUh" to="bd8o:~PathManager" resolve="PathManager" />
                 </node>
                 <node concept="Xl_RD" id="1HNHfSAwJYy" role="37wK5m">
                   <property role="Xl_RC" value="MPSNoPlatform" />
@@ -2201,7 +2201,7 @@
             <node concept="2YIFZM" id="1HNHfSAwmM9" role="3uHU7B">
               <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
               <ref role="37wK5l" to="wyt6:~System.getProperty(java.lang.String)" resolve="getProperty" />
-              <node concept="10M0yZ" id="1HNHfSAxBtK" role="37wK5m">
+              <node concept="10M0yZ" id="6qQvQxZ$oQf" role="37wK5m">
                 <ref role="3cqZAo" to="bd8o:~PathManager.PROPERTY_PATHS_SELECTOR" resolve="PROPERTY_PATHS_SELECTOR" />
                 <ref role="1PxDUh" to="bd8o:~PathManager" resolve="PathManager" />
               </node>
