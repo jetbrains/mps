@@ -113,6 +113,9 @@ public class Script implements IScript {
     }
     return trg;
   }
+  private boolean isRequestedTarget(ITarget trg) {
+    return targetRange.isRequested(trg.getName());
+  }
   @Override
   public String toString() {
     return "Script<" + finalTarget + ">";
@@ -244,7 +247,7 @@ with_targets:
         for (final ITarget trg : Sequence.fromIterable(toExecute)) {
           LOG.debug("Executing " + trg.getName());
           try {
-            Iterable<ITarget> impre = targetRange.immediatePrecursors(trg.getName());
+            Iterable<ITarget> impre = Sequence.fromIterable(targetRange.immediatePrecursors(trg.getName())).where((it) -> it.producesOutput());
             Iterable<IResource> preInput = Sequence.fromIterable(impre).select((t) -> results.getResult(t.getName())).translate((r) -> r.output());
             Iterable<? extends IResource> allinput = (Sequence.fromIterable(impre).isEmpty() ? scriptInput : preInput);
             Iterable<IResource> rawInput = Sequence.fromIterable(allinput).distinct().ofType(IResource.class).toList();
@@ -265,6 +268,10 @@ with_targets:
                   return;
                 }
               }
+            } else if (trg instanceof ITargetEx && ((ITargetEx) trg).isOptional() && !(isRequestedTarget(trg))) {
+              LOG.info(String.format("Skipping optional target '%s'.", trg.getName()));
+              results.addResult(trg.getName(), new IResult.SUCCESS(null));
+              continue with_targets;
             }
 
             ProgressMonitor subMonitor = monitor.subTask(workEstimate(trg));

@@ -126,7 +126,7 @@ public class ScriptBuilder {
     List<ITarget> allTargets = ListSequence.fromList(Sequence.fromIterable(sortedFacets).translate((fname) -> MapSequence.fromMap(facetsView).get(fname).targets()).toList()).reversedList();
     for (ITarget trg : ListSequence.fromList(allTargets)) {
       if (SetSequence.fromSet(requestedTargets).contains(trg.getName())) {
-        tr.addTarget(trg);
+        tr.addRequestedTarget(trg);
       }
     }
     for (ITarget.Name tn : SetSequence.fromSet(requestedTargets)) {
