@@ -54,7 +54,7 @@
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
@@ -120,7 +120,7 @@
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
-      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ngI" index="366HgL">
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ng" index="366HgL">
         <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
@@ -185,7 +185,7 @@
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -223,7 +223,7 @@
       <concept id="1184952934362" name="jetbrains.mps.baseLanguage.structure.DimensionExpression" flags="nn" index="3$GHV9">
         <child id="1184953288404" name="expression" index="3$I4v7" />
       </concept>
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1144226303539" name="jetbrains.mps.baseLanguage.structure.ForeachStatement" flags="nn" index="1DcWWT">
@@ -316,7 +316,7 @@
         <reference id="2679357232283750088" name="setter" index="3tyRfW" />
         <child id="2679357232283750106" name="value" index="3tyRfI" />
       </concept>
-      <concept id="7802271442981792228" name="jetbrains.mps.baseLanguage.builders.structure.BuilderContainer" flags="ngI" index="1$nplI">
+      <concept id="7802271442981792228" name="jetbrains.mps.baseLanguage.builders.structure.BuilderContainer" flags="ng" index="1$nplI">
         <child id="4797501453849924252" name="body" index="GGjiV" />
         <child id="4797501453850567416" name="builder" index="GIGjv" />
       </concept>
@@ -336,7 +336,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -3758,6 +3758,15 @@
         <property role="Xl_RC" value="${module}/source_gen" />
       </node>
     </node>
+    <node concept="312cEg" id="44xKh5JOxhh" role="jymVt">
+      <property role="TrG5h" value="DOC_GEN_DEFAULT" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="44xKh5JOxhi" role="1B3o_S" />
+      <node concept="17QB3L" id="44xKh5JOxhj" role="1tU5fm" />
+      <node concept="Xl_RD" id="44xKh5JOxhk" role="33vP2m">
+        <property role="Xl_RC" value="${module}/doc_gen" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="2wxE5_AHfMm" role="jymVt" />
     <node concept="3Tm1VV" id="IMUMWuHQMX" role="1B3o_S" />
     <node concept="312cEg" id="33oJVYhiVhr" role="jymVt">
@@ -3897,6 +3906,33 @@
                                 </node>
                                 <node concept="37vLTw" id="2wxE5_AHD7V" role="37wK5m">
                                   <ref role="3cqZAo" node="2wxE5_AHfZ6" resolve="SOURCE_GEN_DEFAULT" />
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="g8Q5y" id="44xKh5JNVoy" role="3cqZAp">
+                        <node concept="3clFbS" id="44xKh5JNVo$" role="GGjiV" />
+                        <node concept="3tyRfN" id="44xKh5JNVou" role="GIGjv">
+                          <ref role="3tyRfW" to="w0gx:~LanguageDescriptor.setDocPath(java.lang.String)" resolve="setDocPath" />
+                          <node concept="2OqwBi" id="44xKh5JO3UQ" role="3tyRfI">
+                            <node concept="37vLTw" id="44xKh5JO00U" role="2Oq$k0">
+                              <ref role="3cqZAo" node="33oJVYhiVhr" resolve="myMacroHelper" />
+                            </node>
+                            <node concept="liA8E" id="44xKh5JO8w6" role="2OqNvi">
+                              <ref role="37wK5l" to="18ew:~MacroHelper.expandPath(java.lang.String)" resolve="expandPath" />
+                              <node concept="2YIFZM" id="44xKh5JOevx" role="37wK5m">
+                                <ref role="37wK5l" to="7a2w:4eI2K_IuewV" resolve="stringWithDefault" />
+                                <ref role="1Pybhc" to="7a2w:4eI2K_Iuet$" resolve="XmlUtil" />
+                                <node concept="37vLTw" id="44xKh5JOh8z" role="37wK5m">
+                                  <ref role="3cqZAo" node="33oJVYhkaUU" resolve="languageElement" />
+                                </node>
+                                <node concept="Xl_RD" id="44xKh5JOn2Y" role="37wK5m">
+                                  <property role="Xl_RC" value="generatorOutputPathDoc" />
+                                </node>
+                                <node concept="37vLTw" id="44xKh5JOAsm" role="37wK5m">
+                                  <ref role="3cqZAo" node="44xKh5JOxhh" resolve="DOC_GEN_DEFAULT" />
                                 </node>
                               </node>
                             </node>
@@ -4984,6 +5020,78 @@
               </node>
               <node concept="liA8E" id="33oJVYhj4Vy" role="2OqNvi">
                 <ref role="37wK5l" to="w0gx:~LanguageDescriptor.getGenPath()" resolve="getGenPath" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="44xKh5JPFe4" role="3cqZAp">
+          <node concept="3clFbS" id="44xKh5JPFe5" role="3clFbx">
+            <node concept="3cpWs8" id="44xKh5JPFe6" role="3cqZAp">
+              <node concept="3cpWsn" id="44xKh5JPFe7" role="3cpWs9">
+                <property role="TrG5h" value="p" />
+                <node concept="3uibUv" id="44xKh5JPFe8" role="1tU5fm">
+                  <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+                </node>
+                <node concept="2OqwBi" id="44xKh5JPFe9" role="33vP2m">
+                  <node concept="37vLTw" id="44xKh5JPFea" role="2Oq$k0">
+                    <ref role="3cqZAo" node="33oJVYhiVhr" resolve="myMacroHelper" />
+                  </node>
+                  <node concept="liA8E" id="44xKh5JPFeb" role="2OqNvi">
+                    <ref role="37wK5l" to="18ew:~MacroHelper.shrinkPath(java.lang.String)" resolve="shrinkPath" />
+                    <node concept="2OqwBi" id="44xKh5JPFec" role="37wK5m">
+                      <node concept="37vLTw" id="44xKh5JPFed" role="2Oq$k0">
+                        <ref role="3cqZAo" node="33oJVYhj4UH" resolve="descriptor" />
+                      </node>
+                      <node concept="liA8E" id="44xKh5JPFee" role="2OqNvi">
+                        <ref role="37wK5l" to="w0gx:~LanguageDescriptor.getDocPath()" resolve="getDocPath" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbJ" id="44xKh5JPFef" role="3cqZAp">
+              <node concept="3clFbS" id="44xKh5JPFeg" role="3clFbx">
+                <node concept="3clFbF" id="44xKh5JPFeh" role="3cqZAp">
+                  <node concept="2OqwBi" id="44xKh5JPFei" role="3clFbG">
+                    <node concept="37vLTw" id="44xKh5JPFej" role="2Oq$k0">
+                      <ref role="3cqZAo" node="33oJVYhj4UN" resolve="languageElement" />
+                    </node>
+                    <node concept="liA8E" id="44xKh5JPFek" role="2OqNvi">
+                      <ref role="37wK5l" to="mmaq:~Element.setAttribute(java.lang.String,java.lang.String)" resolve="setAttribute" />
+                      <node concept="Xl_RD" id="44xKh5JPFel" role="37wK5m">
+                        <property role="Xl_RC" value="generatorOutputPathDoc" />
+                      </node>
+                      <node concept="37vLTw" id="44xKh5JPFem" role="37wK5m">
+                        <ref role="3cqZAo" node="44xKh5JPFe7" resolve="p" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3fqX7Q" id="44xKh5JPFen" role="3clFbw">
+                <node concept="2OqwBi" id="44xKh5JPFeo" role="3fr31v">
+                  <node concept="liA8E" id="44xKh5JPFeq" role="2OqNvi">
+                    <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
+                    <node concept="37vLTw" id="44xKh5JPFer" role="37wK5m">
+                      <ref role="3cqZAo" node="44xKh5JPFe7" resolve="p" />
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="44xKh5JPSTt" role="2Oq$k0">
+                    <ref role="3cqZAo" node="44xKh5JOxhh" resolve="DOC_GEN_DEFAULT" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3y3z36" id="44xKh5JPFes" role="3clFbw">
+            <node concept="10Nm6u" id="44xKh5JPFet" role="3uHU7w" />
+            <node concept="2OqwBi" id="44xKh5JPFeu" role="3uHU7B">
+              <node concept="37vLTw" id="44xKh5JPFev" role="2Oq$k0">
+                <ref role="3cqZAo" node="33oJVYhj4UH" resolve="descriptor" />
+              </node>
+              <node concept="liA8E" id="44xKh5JPFew" role="2OqNvi">
+                <ref role="37wK5l" to="w0gx:~LanguageDescriptor.getDocPath()" resolve="getDocPath" />
               </node>
             </node>
           </node>

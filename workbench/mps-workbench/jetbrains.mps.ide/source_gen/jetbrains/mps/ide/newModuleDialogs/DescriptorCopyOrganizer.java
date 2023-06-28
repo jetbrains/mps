@@ -141,6 +141,10 @@ import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
     if (genPath != null) {
       copyDescriptor.setGenPath(myModulePathConverter.source2Target(genPath));
     }
+    final String docPath = copyDescriptor.getDocPath();
+    if (docPath != null) {
+      copyDescriptor.setDocPath(myModulePathConverter.source2Target(docPath));
+    }
   }
 
   private void hackGeneratorDescriptor(@NotNull GeneratorDescriptor genDescriptor) {

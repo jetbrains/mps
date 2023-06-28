@@ -6,6 +6,7 @@ package jetbrains.mps.project.facets;
 import jetbrains.mps.extapi.module.ModuleFacetBase;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.ProjectPathUtil;
+import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.vfs.IFile;
@@ -70,7 +71,8 @@ public class DocumentationFacet extends ModuleFacetBase implements GenerationTar
     String locationValue = memento.get("doc_src");
     final AbstractModule am = (AbstractModule) getModule();
     if (locationValue == null) {
-      locationValue = ProjectPathUtil.getGeneratorOutputPath(am.getModuleDescriptor());
+      assert am.getModuleDescriptor() instanceof LanguageDescriptor;
+      locationValue = ProjectPathUtil.getGeneratorOutputDocPath((LanguageDescriptor) am.getModuleDescriptor());
     }
     final String expanded = MacrosFactory.forModule(getModule()).expandPath(locationValue);
     myOutputRoot = am.getFileSystem().getFile(expanded);
