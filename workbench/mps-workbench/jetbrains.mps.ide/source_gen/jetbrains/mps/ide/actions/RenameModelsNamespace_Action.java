@@ -28,6 +28,7 @@ import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import jetbrains.mps.ide.refactoring.ModelNameValidator;
+import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.refactoring.Renamer;
 
@@ -47,7 +48,7 @@ public class RenameModelsNamespace_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     event.getPresentation().setText(IdeBundle.message("actions.virtual.package.rename.on.models.text"));
-    NamespaceTextNode ntn = ((NamespaceTextNode) MapSequence.fromMap(_params).get("treeNode"));
+    NamespaceTextNode ntn = (NamespaceTextNode) ((NamespaceTextNode) MapSequence.fromMap(_params).get("treeNode"));
     return ProjectPane.getInstance(((MPSProject) MapSequence.fromMap(_params).get("project"))) != null && !(ntn.isFinalName()) && !(ntn.hasModulesUnder()) && ntn.hasModelsUnder();
   }
   @Override
@@ -87,7 +88,7 @@ public class RenameModelsNamespace_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final NamespaceTextNode ntn = ((NamespaceTextNode) MapSequence.fromMap(_params).get("treeNode"));
+    final NamespaceTextNode ntn = ((NamespaceTextNode) ((NamespaceTextNode) MapSequence.fromMap(_params).get("treeNode")));
     final String originalNamespacePrefix = ntn.getNamespace();
 
     InputValidatorEx inputValidator = new ModelNamespaceInputValidator(ntn, originalNamespacePrefix);
@@ -109,28 +110,60 @@ public class RenameModelsNamespace_Action extends BaseAction {
 
           ModelRoot modelRoot = model.getModelRoot();
           if (modelRoot != null) {
-            String validationMsg = new ModelNameValidator(modelRoot).validate(modifiedModelName, (EditableSModel) model);
-            if (validationMsg == null) {
-              ((EditableSModel) model).rename(modifiedModelName.getValue(), model.getSource() instanceof FileDataSource);
-            } else {
+            String validationMsg = new ModelNameValidator(modelRoot).validate(modifiedModelName);
+            if (validationMsg != null) {
               ListSequence.fromList(errors).addElement(validationMsg);
             }
           }
         }
       }
-      Renamer.updateModelAndModuleReferences(((MPSProject) MapSequence.fromMap(_params).get("project")));
-      ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().saveAll();
     });
 
+    int result = Messages.YES;
     if (ListSequence.fromList(errors).isNotEmpty()) {
-      StringBuilder builder = new StringBuilder("<html><p>Some models could not be renamed:</p><ul>");
+      StringBuilder builder = new StringBuilder("These models will not be renamed if you proceed:</p><ul>");
       for (String error : errors) {
         builder.append("<li>");
         builder.append(error);
         builder.append("</li>");
       }
       builder.append("</ul></html>");
-      Messages.showWarningDialog(builder.toString(), IdeBundle.message("dialogs.virtual.package.rename.on.models.title"));
+      result = Messages.showYesNoDialog(builder.toString(), IdeBundle.message("dialogs.virtual.package.rename.on.models.title"), "Rename", "Cancel", UIUtil.getWarningIcon());
+      ListSequence.fromList(errors).clear();
+    }
+
+    if (result == Messages.YES) {
+      modelAccess.executeCommand(() -> {
+        ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().saveAll();
+        for (SModel model : ListSequence.fromList(ntn.getModelsUnder())) {
+          if (model instanceof EditableSModel) {
+            SModelName originalModelName = model.getName();
+            SModelName modifiedModelName = new SModelName(NamespaceRenameHelper.withReplacedPrefix(originalModelName.getNamespace(), originalNamespacePrefix, modifiedNamespacePrefix), originalModelName.getSimpleName(), originalModelName.getStereotype());
+
+            ModelRoot modelRoot = model.getModelRoot();
+            if (modelRoot != null) {
+              String validationMsg = new ModelNameValidator(modelRoot).validate(modifiedModelName);
+              if (validationMsg == null) {
+                ((EditableSModel) model).rename(modifiedModelName.getValue(), model.getSource() instanceof FileDataSource);
+              } else {
+                ListSequence.fromList(errors).addElement(validationMsg);
+              }
+            }
+          }
+        }
+        Renamer.updateModelAndModuleReferences(((MPSProject) MapSequence.fromMap(_params).get("project")));
+        ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().saveAll();
+      });
+      if (ListSequence.fromList(errors).isNotEmpty()) {
+        StringBuilder builder = new StringBuilder("<html><p>Some models were not be renamed:</p><ul>");
+        for (String error : errors) {
+          builder.append("<li>");
+          builder.append(error);
+          builder.append("</li>");
+        }
+        builder.append("</ul></html>");
+        Messages.showWarningDialog(builder.toString(), IdeBundle.message("dialogs.virtual.package.rename.on.models.title"));
+      }
     }
   }
 }
