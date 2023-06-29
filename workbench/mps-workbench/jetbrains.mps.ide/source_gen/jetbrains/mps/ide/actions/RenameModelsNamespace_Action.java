@@ -28,7 +28,7 @@ import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import jetbrains.mps.ide.refactoring.ModelNameValidator;
-import jetbrains.mps.icons.MPSIcons;
+import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.refactoring.Renamer;
 
@@ -124,7 +124,7 @@ public class RenameModelsNamespace_Action extends BaseAction {
         builder.append("</li>");
       }
       builder.append("</ul></html>");
-      result = Messages.showYesNoDialog(builder.toString(), IdeBundle.message("dialogs.virtual.package.rename.on.models.title"), "Rename", "Cancel", MPSIcons.Actions.GroupByModel);
+      result = Messages.showYesNoDialog(builder.toString(), IdeBundle.message("dialogs.virtual.package.rename.on.models.title"), "Rename", "Cancel", UIUtil.getWarningIcon());
       ListSequence.fromList(errors).clear();
     }
 

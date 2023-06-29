@@ -52062,9 +52062,9 @@
                   <node concept="Xl_RD" id="fQeG$Ztdp6" role="37wK5m">
                     <property role="Xl_RC" value="Cancel" />
                   </node>
-                  <node concept="10M0yZ" id="fQeG$Ztdp7" role="37wK5m">
-                    <ref role="1PxDUh" to="l7us:~MPSIcons$Actions" resolve="Actions" />
-                    <ref role="3cqZAo" to="l7us:~MPSIcons$Actions.GroupByModel" resolve="GroupByModel" />
+                  <node concept="2YIFZM" id="BwuoDYBK1J" role="37wK5m">
+                    <ref role="37wK5l" to="g1qu:~UIUtil.getWarningIcon()" resolve="getWarningIcon" />
+                    <ref role="1Pybhc" to="g1qu:~UIUtil" resolve="UIUtil" />
                   </node>
                 </node>
                 <node concept="37vLTw" id="fQeG$ZtgqG" role="37vLTJ">
