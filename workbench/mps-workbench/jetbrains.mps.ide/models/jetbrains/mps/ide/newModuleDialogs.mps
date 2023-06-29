@@ -44,7 +44,7 @@
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
@@ -152,7 +152,7 @@
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -180,7 +180,7 @@
         <child id="8276990574895933172" name="throwable" index="1zc67B" />
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1144226303539" name="jetbrains.mps.baseLanguage.structure.ForeachStatement" flags="nn" index="1DcWWT">
@@ -222,7 +222,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
       <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7" />
@@ -1456,6 +1456,54 @@
                       <ref role="37wK5l" to="18ew:~ModulePathConverter.source2Target(java.lang.String)" resolve="source2Target" />
                       <node concept="37vLTw" id="6CFNGGphKnJ" role="37wK5m">
                         <ref role="3cqZAo" node="6CFNGGphKnu" resolve="genPath" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="3$rhPDJsGrw" role="3cqZAp">
+          <node concept="3cpWsn" id="3$rhPDJsGrx" role="3cpWs9">
+            <property role="3TUv4t" value="true" />
+            <property role="TrG5h" value="docPath" />
+            <node concept="3uibUv" id="3$rhPDJsGry" role="1tU5fm">
+              <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+            </node>
+            <node concept="2OqwBi" id="3$rhPDJsGrz" role="33vP2m">
+              <node concept="37vLTw" id="3$rhPDJsGr$" role="2Oq$k0">
+                <ref role="3cqZAo" node="6CFNGGphKnp" resolve="copyDescriptor" />
+              </node>
+              <node concept="liA8E" id="3$rhPDJsOHQ" role="2OqNvi">
+                <ref role="37wK5l" to="w0gx:~LanguageDescriptor.getDocPath()" resolve="getDocPath" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="3$rhPDJsGrA" role="3cqZAp">
+          <node concept="3y3z36" id="3$rhPDJsGrB" role="3clFbw">
+            <node concept="37vLTw" id="3$rhPDJsGrC" role="3uHU7B">
+              <ref role="3cqZAo" node="3$rhPDJsGrx" resolve="genPath" />
+            </node>
+            <node concept="10Nm6u" id="3$rhPDJsGrD" role="3uHU7w" />
+          </node>
+          <node concept="3clFbS" id="3$rhPDJsGrE" role="3clFbx">
+            <node concept="3clFbF" id="3$rhPDJsGrF" role="3cqZAp">
+              <node concept="2OqwBi" id="3$rhPDJsGrG" role="3clFbG">
+                <node concept="37vLTw" id="3$rhPDJsGrH" role="2Oq$k0">
+                  <ref role="3cqZAo" node="6CFNGGphKnp" resolve="copyDescriptor" />
+                </node>
+                <node concept="liA8E" id="3$rhPDJsGrI" role="2OqNvi">
+                  <ref role="37wK5l" to="w0gx:~LanguageDescriptor.setDocPath(java.lang.String)" resolve="setDocPath" />
+                  <node concept="2OqwBi" id="3$rhPDJsGrJ" role="37wK5m">
+                    <node concept="37vLTw" id="3$rhPDJsGrK" role="2Oq$k0">
+                      <ref role="3cqZAo" node="6CFNGGphKi8" resolve="myModulePathConverter" />
+                    </node>
+                    <node concept="liA8E" id="3$rhPDJsGrL" role="2OqNvi">
+                      <ref role="37wK5l" to="18ew:~ModulePathConverter.source2Target(java.lang.String)" resolve="source2Target" />
+                      <node concept="37vLTw" id="3$rhPDJsGrM" role="37wK5m">
+                        <ref role="3cqZAo" node="3$rhPDJsGrx" resolve="genPath" />
                       </node>
                     </node>
                   </node>
