@@ -21,6 +21,9 @@
       <concept id="1402906326896143883" name="jetbrains.mps.lang.editor.structure.CellKeyMap_FunctionParm_selectedNode" flags="nn" index="0GJ7k" />
       <concept id="1071666914219" name="jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration" flags="ig" index="24kQdi" />
       <concept id="1176897764478" name="jetbrains.mps.lang.editor.structure.QueryFunction_NodeFactory" flags="in" index="4$FPG" />
+      <concept id="6822301196700715228" name="jetbrains.mps.lang.editor.structure.ConceptEditorHintDeclarationReference" flags="ig" index="2aJ2om">
+        <reference id="5944657839026714445" name="hint" index="2$4xQ3" />
+      </concept>
       <concept id="1140524381322" name="jetbrains.mps.lang.editor.structure.CellModel_ListWithRole" flags="ng" index="2czfm3">
         <child id="1176897874615" name="nodeFactory" index="4_6I_" />
         <child id="1140524464360" name="cellLayout" index="2czzBx" />
@@ -32,6 +35,12 @@
       <concept id="1142886811589" name="jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_node" flags="nn" index="pncrf" />
       <concept id="1080736578640" name="jetbrains.mps.lang.editor.structure.BaseEditorComponent" flags="ig" index="2wURMF">
         <child id="1080736633877" name="cellModel" index="2wV5jI" />
+      </concept>
+      <concept id="5944657839000868711" name="jetbrains.mps.lang.editor.structure.ConceptEditorContextHints" flags="ig" index="2ABfQD">
+        <child id="5944657839000877563" name="hints" index="2ABdcP" />
+      </concept>
+      <concept id="5944657839003601246" name="jetbrains.mps.lang.editor.structure.ConceptEditorHintDeclaration" flags="ig" index="2BsEeg">
+        <property id="168363875802087287" name="showInUI" index="2gpH_U" />
       </concept>
       <concept id="1164824717996" name="jetbrains.mps.lang.editor.structure.CellMenuDescriptor" flags="ng" index="OXEIz">
         <child id="1164824815888" name="cellMenuPart" index="OY2wv" />
@@ -49,6 +58,7 @@
       <concept id="1136917288805" name="jetbrains.mps.lang.editor.structure.CellKeyMap_ExecuteFunction" flags="in" index="2PzhpH" />
       <concept id="1078938745671" name="jetbrains.mps.lang.editor.structure.EditorComponentDeclaration" flags="ig" index="PKFIW">
         <child id="7033942394258392116" name="overridenEditorComponent" index="1PM95z" />
+        <child id="7348800710862477686" name="contextHints" index="3XTboT" />
       </concept>
       <concept id="1164914519156" name="jetbrains.mps.lang.editor.structure.CellMenuPart_ReplaceNode_CustomNodeConcept" flags="ng" index="UkePV">
         <reference id="1164914727930" name="replacementConcept" index="Ul1FP" />
@@ -813,6 +823,9 @@
         </node>
       </node>
     </node>
+    <node concept="2aJ2om" id="3$rhPDJr2X$" role="3XTboT">
+      <ref role="2$4xQ3" node="3$rhPDJqXEK" resolve="documentation" />
+    </node>
   </node>
   <node concept="PKFIW" id="1HQJlW9D9Ff">
     <property role="TrG5h" value="DocNumberedLine_Component" />
@@ -984,6 +997,9 @@
           <property role="VOm3f" value="true" />
         </node>
       </node>
+    </node>
+    <node concept="2aJ2om" id="3$rhPDJqZti" role="3XTboT">
+      <ref role="2$4xQ3" node="3$rhPDJqXEK" resolve="documentation" />
     </node>
   </node>
   <node concept="PKFIW" id="1HQJlW9E7F_">
@@ -1163,6 +1179,9 @@
         </node>
       </node>
       <node concept="l2Vlx" id="WJz9iAWEMG" role="2iSdaV" />
+    </node>
+    <node concept="2aJ2om" id="3$rhPDJqXIg" role="3XTboT">
+      <ref role="2$4xQ3" node="3$rhPDJqXEK" resolve="documentation" />
     </node>
   </node>
   <node concept="312cEu" id="1axET_hZJhk">
@@ -1465,6 +1484,13 @@
     <node concept="3Tm1VV" id="1axET_hZNDb" role="1B3o_S" />
     <node concept="3uibUv" id="1axET_hZKAC" role="1zkMxy">
       <ref role="3uigEE" to="2u9v:5MT8pi2Fl6k" resolve="SplitWordStrategy" />
+    </node>
+  </node>
+  <node concept="2ABfQD" id="3$rhPDJqXBT">
+    <property role="TrG5h" value="Documentation" />
+    <node concept="2BsEeg" id="3$rhPDJqXEK" role="2ABdcP">
+      <property role="2gpH_U" value="true" />
+      <property role="TrG5h" value="documentation" />
     </node>
   </node>
 </model>
