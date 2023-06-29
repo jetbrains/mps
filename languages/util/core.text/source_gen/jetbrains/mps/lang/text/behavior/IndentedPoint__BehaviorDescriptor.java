@@ -32,10 +32,7 @@ public final class IndentedPoint__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static String getIndentString_idfcFkhVQ0er(@NotNull SNode __thisNode__) {
     StringBuilder builder = new StringBuilder();
     for (int i = 0; i < SPropertyOperations.getInteger(__thisNode__, PROPS.indentation$8ZOp); i++) {
-      builder.append(' ');
-      builder.append(' ');
-      builder.append(' ');
-      builder.append(' ');
+      builder.append("    ");
     }
     return builder.toString();
   }
