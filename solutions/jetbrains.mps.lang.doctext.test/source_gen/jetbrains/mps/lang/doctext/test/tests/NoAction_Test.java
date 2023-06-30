@@ -33,7 +33,7 @@ public class NoAction_Test extends BaseTransformationTest {
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("6473378169080505530", "6473378169080505590");
+      initEditorComponent("7972514449732500959", "7972514449731026351");
     }
   }
 }

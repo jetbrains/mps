@@ -33,7 +33,7 @@ public class LineToBulletLine_Test extends BaseTransformationTest {
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("6473378169081450945", "6473378169081451429");
+      initEditorComponent("7972514449732097240", "6473378169081451429");
       typeString(" ");
     }
   }

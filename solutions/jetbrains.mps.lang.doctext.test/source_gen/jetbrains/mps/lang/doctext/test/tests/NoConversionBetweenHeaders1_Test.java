@@ -33,7 +33,7 @@ public class NoConversionBetweenHeaders1_Test extends BaseTransformationTest {
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("6473378169081460001", "6473378169081461374");
+      initEditorComponent("7972514449732978036", "6473378169081461374");
       typeString(" ");
     }
   }

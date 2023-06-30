@@ -34,6 +34,7 @@ public class InsertWord_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("6473378169080510613", "6473378169080510532");
+      typeString("b");
     }
   }
 }
