@@ -62,15 +62,22 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
   private EditorCell createCollection_0() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
-    editorCell.setCellId("Collection_j5r5ao_a");
+    editorCell.setCellId("DWC_property_value");
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
     Word_ActionMap.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.addKeyMap(new Word_KeyMap());
-    editorCell.addEditorCell(createConstant_0());
-    editorCell.addEditorCell(createProperty_0());
-    editorCell.addEditorCell(createConstant_1());
+    try {
+      getCellFactory().pushCellContext();
+      getCellFactory().addCellContextHints(new String[]{});
+      editorCell.addEditorCell(createConstant_0());
+      editorCell.addEditorCell(createProperty_0());
+      editorCell.addEditorCell(createConstant_1());
+      setInnerCellsContext(editorCell);
+    } finally {
+      getCellFactory().popCellContext();
+    }
     return editorCell;
   }
   private EditorCell createConstant_0() {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-3h4ve59b0185atpf14bem6xkti4roo0">
-  <files names="DocBulletLine_Component.java:DocBulletLine_Component_ComponentBuilder_a.java:DocNumberedLine_Component.java:DocNumberedLine_Component_ComponentBuilder_a.java:DocSplitWordStratagy.java:DocText_Editor.java:DocText_EditorBuilder_a.java:DocWord_Component.java:DocWord_Component_ComponentBuilder_a.java:DocWord_KeyMap.java:EditorAspectDescriptorImpl.java:Header1_Editor.java:Header1_EditorBuilder_a.java:Header2_Editor.java:Header2_EditorBuilder_a.java:Header3_Editor.java:Header3_EditorBuilder_a.java" />
+<product version="3" modelHash="-32qkzlfl3oycrczvmq3fede3maowo36">
+  <files names="DocBulletLine_Component.java:DocBulletLine_Component_ComponentBuilder_a.java:DocLine_Component.java:DocLine_Component_ComponentBuilder_a.java:DocNumberedLine_Component.java:DocNumberedLine_Component_ComponentBuilder_a.java:DocSplitWordStratagy.java:DocText_Editor.java:DocText_EditorBuilder_a.java:DocWord_Component.java:DocWord_Component_ComponentBuilder_a.java:DocWord_KeyMap.java:EditorAspectDescriptorImpl.java:Header1_Editor.java:Header1_EditorBuilder_a.java:Header2_Editor.java:Header2_EditorBuilder_a.java:Header3_Editor.java:Header3_EditorBuilder_a.java" />
 </product>
 
