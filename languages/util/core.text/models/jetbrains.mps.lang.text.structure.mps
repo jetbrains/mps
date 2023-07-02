@@ -340,15 +340,6 @@
       <property role="t5JxN" value="Experimental. Use concepts such as TextConcept, Word, Line, etc. located outside of the &quot;textual&quot; virtual folder" />
     </node>
   </node>
-  <node concept="1TIwiD" id="WJz9iAWEzU">
-    <property role="EcuMT" value="1094247804558289146" />
-    <property role="TrG5h" value="BulletLine" />
-    <property role="34LRSv" value="bullet line" />
-    <ref role="1TJDcQ" node="2cLqkTm6J5A" resolve="Line" />
-    <node concept="PrWs8" id="WJz9iAWEzV" role="PzmwI">
-      <ref role="PrY4T" node="4ruP0NLeIr4" resolve="IndentedPoint" />
-    </node>
-  </node>
   <node concept="1TIwiD" id="60UJ0Isn_12">
     <property role="EcuMT" value="6934061334344388674" />
     <property role="TrG5h" value="NumberedLine" />
@@ -365,6 +356,50 @@
       <property role="t5JxN" value="Flag to trick the comment style for Words" />
     </node>
     <node concept="3MrDgS" id="1XU4lLpQq0V" role="lGtFl" />
+  </node>
+  <node concept="1TIwiD" id="WJz9iAWEzU">
+    <property role="EcuMT" value="1094247804558289146" />
+    <property role="TrG5h" value="BulletLine" />
+    <property role="34LRSv" value="bullet line" />
+    <ref role="1TJDcQ" node="2cLqkTm6J5A" resolve="Line" />
+    <node concept="PrWs8" id="WJz9iAWEzV" role="PzmwI">
+      <ref role="PrY4T" node="4ruP0NLeIr4" resolve="IndentedPoint" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="1V7fFC_R5yx">
+    <property role="EcuMT" value="2217810310723295393" />
+    <property role="TrG5h" value="Header" />
+    <property role="3GE5qa" value="doc" />
+  </node>
+  <node concept="1TIwiD" id="1V7fFC_QjsC">
+    <property role="EcuMT" value="2217810310723090216" />
+    <property role="TrG5h" value="Header2" />
+    <property role="34LRSv" value="header 2" />
+    <property role="3GE5qa" value="doc" />
+    <ref role="1TJDcQ" node="2cLqkTm6J5A" resolve="Line" />
+    <node concept="PrWs8" id="1V7fFC_R6Kc" role="PzmwI">
+      <ref role="PrY4T" node="1V7fFC_R5yx" resolve="Header" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="1V7fFC_NfH4">
+    <property role="EcuMT" value="2217810310722288452" />
+    <property role="TrG5h" value="Header1" />
+    <property role="34LRSv" value="header 1" />
+    <property role="3GE5qa" value="doc" />
+    <ref role="1TJDcQ" node="2cLqkTm6J5A" resolve="Line" />
+    <node concept="PrWs8" id="1V7fFC_R6GV" role="PzmwI">
+      <ref role="PrY4T" node="1V7fFC_R5yx" resolve="Header" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="1V7fFC_QkMo">
+    <property role="EcuMT" value="2217810310723095704" />
+    <property role="TrG5h" value="Header3" />
+    <property role="34LRSv" value="header 3" />
+    <property role="3GE5qa" value="doc" />
+    <ref role="1TJDcQ" node="2cLqkTm6J5A" resolve="Line" />
+    <node concept="PrWs8" id="1V7fFC_R6Nt" role="PzmwI">
+      <ref role="PrY4T" node="1V7fFC_R5yx" resolve="Header" />
+    </node>
   </node>
 </model>
 
