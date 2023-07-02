@@ -1,5 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="dcycnhkh66fcj7gm0ntgwv5eoj1v8zw">
-  <files names="BackspaceBulletLine1_Test.java:BackspaceBulletLine2_Test.java:BackspaceBulletLine3_Test.java:BackspaceBulletLine4_Test.java:BackspaceBulletLine5_Test.java:BackspaceHeader1_Test.java:BackspaceHeader2_Test.java:BackspaceHeader3_Test.java:BackspaceHeader4_Test.java:BackspaceHeader5_Test.java:BackspaceHeader6_Test.java:BackspaceNumberedLine1_Test.java:BackspaceNumberedLine2_Test.java:BackspaceNumberedLine3_Test.java:BackspaceNumberedLine4_Test.java:BackspaceNumberedLine5_Test.java:Concepts.xml:InsertWord_Test.java:LineToBulletLine_Test.java:LineToHeader1_Test.java:LineToHeader2_Test.java:LineToHeader3_Test.java:LineToNumberedLine_Test.java:NoAction_Test.java:NoConversionBetweenHeaders1_Test.java:NoConversionBetweenHeaders2_Test.java:NoConversionBetweenHeaders3_Test.java:NoConversionBetweenLists1_Test.java:NoConversionBetweenLists2_Test.java:NoConversionBetweenListsAndHeader1_Test.java:NoConversionBetweenListsAndHeader2_Test.java:WordToNode1_Test.java:WordToNode2_Test.java:WordToNode3_Test.java" />
-</product>
+<product version="3" modelHash="-95pvpi9u3lketkisk4bjgiz52hdp4i9" />
 
