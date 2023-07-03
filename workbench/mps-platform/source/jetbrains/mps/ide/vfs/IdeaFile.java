@@ -21,6 +21,7 @@ import com.intellij.openapi.fileTypes.FileTypes;
 import com.intellij.openapi.util.io.FileUtil;
 import com.intellij.openapi.vfs.JarFileSystem;
 import com.intellij.openapi.vfs.LocalFileSystem;
+import com.intellij.openapi.vfs.SavingRequestor;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileSystem;
 import com.intellij.openapi.vfs.newvfs.ArchiveFileSystem;
@@ -511,7 +512,8 @@ public class IdeaFile implements IFile, CachingFile {
       throw new UnsupportedOperationException("Cannot write to JAR files");
     } else {
       virtualFile = renameIfCaseSensitive(virtualFile);
-      return virtualFile.getOutputStream(getFileSystem());
+//      return virtualFile.getOutputStream(getFileSystem());
+      return virtualFile.getOutputStream(new SavingRequestor(){});
     }
   }
 

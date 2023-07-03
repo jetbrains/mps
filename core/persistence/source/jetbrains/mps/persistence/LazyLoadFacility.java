@@ -18,6 +18,7 @@ package jetbrains.mps.persistence;
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.generator.ModelDigestUtil;
 import jetbrains.mps.smodel.SModelHeader;
+import jetbrains.mps.smodel.event.SModelRenamedEvent;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
@@ -86,4 +87,8 @@ public abstract class LazyLoadFacility {
   public abstract boolean doesSaveUpgradePersistence(@NotNull SModelHeader header);
 
   public abstract void saveModel(@NotNull SModelHeader header, SModelData modelData) throws ModelSaveException, IOException;
+
+  public void afterModelRename(SModelRenamedEvent event) {
+    // Only needed for per-root persistence
+  }
 }

@@ -24,6 +24,7 @@ import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.LazyLoadFacility;
 import jetbrains.mps.persistence.PersistenceVersionAware;
 import jetbrains.mps.smodel.DefaultSModel.InvalidDefaultSModel;
+import jetbrains.mps.smodel.event.SModelRenamedEvent;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import org.apache.log4j.LogManager;
@@ -50,6 +51,13 @@ public class DefaultSModelDescriptor extends LazyEditableSModelBase implements G
     super(header.getModelReference(), persistence.getSource());
     myPersistence = persistence;
     myHeader = header;
+  }
+
+  @Override
+  public void rename(@NotNull String newModelName, boolean changeFile) {
+    String oldName = getReference().getModelName();
+    super.rename(newModelName, changeFile);
+    myPersistence.afterModelRename(new SModelRenamedEvent(this, oldName, newModelName));
   }
 
   public void replace(SModelData modelData) {

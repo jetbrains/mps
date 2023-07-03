@@ -15,6 +15,11 @@
  */
 package jetbrains.mps.persistence;
 
+import com.intellij.openapi.command.undo.GlobalUndoableAction;
+import com.intellij.openapi.command.undo.UndoManager;
+import com.intellij.openapi.command.undo.UnexpectedUndoException;
+import com.intellij.openapi.project.ProjectManager;
+import jetbrains.mps.extapi.model.EditableSModelBase;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
@@ -24,6 +29,7 @@ import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.smodel.DefaultSModelDescriptor;
 import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.smodel.SModelId;
+import jetbrains.mps.smodel.event.SModelRenamedEvent;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.persistence.def.FilePerRootFormatUtil;
@@ -300,6 +306,52 @@ public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFac
     @Override
     public void saveModel(@NotNull SModelHeader header, SModelData modelData) throws IOException {
       FilePerRootFormatUtil.saveModel((jetbrains.mps.smodel.SModel) modelData, getSource0(), header.getPersistenceVersion());
+    }
+
+    @Override
+    public void afterModelRename(SModelRenamedEvent event) {
+
+      final class PerRootPersistenceModelRename extends GlobalUndoableAction {
+        final EditableSModelBase myModel;
+        final String oldName;
+        final String newName;
+
+        public PerRootPersistenceModelRename(SModelRenamedEvent event) {
+          myModel = (EditableSModelBase) event.getModel();
+          oldName = event.getOldName();
+          newName = event.getNewName();
+        }
+
+        @Override
+        public void undo() throws UnexpectedUndoException {
+          myModel.getRepository().getModelAccess().runWriteAction(new Runnable() {
+            @Override
+            public void run() {
+              myModel.rename(oldName, false);
+            }
+          });
+        }
+
+        @Override
+        public void redo() throws UnexpectedUndoException {
+          myModel.getRepository().getModelAccess().runWriteAction(new Runnable() {
+            @Override
+            public void run() {
+              myModel.rename(newName, false);
+            }
+          });
+        }
+      }
+
+      //TODO do this project retrieval somewhere else
+      ProjectManager projectManager = ProjectManager.getInstanceIfCreated();
+      if (projectManager != null) {
+        for (com.intellij.openapi.project.Project project : projectManager.getOpenProjects()) {
+          //TODO discover the current project and use only that one
+          UndoManager.getInstance(project).undoableActionPerformed(new PerRootPersistenceModelRename(event));
+        }
+      }
+
     }
   }
 }

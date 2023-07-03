@@ -22,5 +22,6 @@
     <orderEntry type="module" module-name="testbench" scope="TEST" />
     <orderEntry type="module" module-name="environment" scope="TEST" />
     <orderEntry type="module" module-name="kotlin-stub" />
+    <orderEntry type="library" name="Idea-platform" level="project" />
   </component>
 </module>
