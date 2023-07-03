@@ -27,6 +27,7 @@ import jetbrains.mps.project.facets.PlainTextTargetFacet;
 import jetbrains.mps.project.facets.TestsFacet;
 import jetbrains.mps.project.facets.TestsFacetImpl;
 import jetbrains.mps.smodel.BootstrapLanguages;
+import jetbrains.mps.smodel.Language;
 import jetbrains.mps.util.containers.MultiMap;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -116,8 +117,7 @@ public class FacetsRegistry extends FacetsFacade implements CoreComponent {
 
     @Override
     public boolean isApplicable(@NotNull SModule module) {
-      // todo
-      return module instanceof jetbrains.mps.smodel.Language;
+      return module instanceof Language;
     }
   };
 
