@@ -414,6 +414,7 @@
       <excludeFolder url="file://$MODULE_DIR$/../../languages/languageDesign/smodel/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../languages/languageDesign/smodel/generator/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../languages/languageDesign/smodel/solutions/samples/classes_gen" />
+      <excludeFolder url="file://$MODULE_DIR$/../../languages/languageDesign/struct.ldgen/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../languages/languageDesign/structure/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../languages/languageDesign/structure/generator/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../languages/languageDesign/textGen/classes_gen" />
@@ -701,7 +702,6 @@
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-diagram-editor/test/jetbrains.mps.lang.editor.diagram.tests/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-diagram-editor/test/jetbrains.mps.lang.editor.figures.sandbox/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-diagram-editor/test/jetbrains.mps.testHybridEditor.diagram.generated/classes_gen" />
-      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-diagram-editor/test/jetbrains.mps.testHybridEditor.sandbox/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-diagram-editor/test/jetbrains.mps.testHybridEditor/classes_gen" />
     </content>
     <content url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/language">
@@ -759,9 +759,11 @@
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-kotlin/solutions/kotlin.baseLanguage.runtime/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-kotlin/solutions/kotlin.smodel.runtime/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-kotlin/solutions/kotlin.tests.editor/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-kotlin/solutions/kotlin.tests.misc/source_gen" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-kotlin/solutions/kotlin.baseLanguage.runtime/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-kotlin/solutions/kotlin.smodel.runtime/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-kotlin/solutions/kotlin.tests.editor/classes_gen" />
+      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-kotlin/solutions/kotlin.tests.misc/classes_gen" />
     </content>
     <content url="file://$MODULE_DIR$/../../plugins/mps-make">
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-make/source_gen" isTestSource="false" />
@@ -1652,3 +1654,4 @@
     <orderEntry type="library" name="junit.platform.launcher" level="project" />
   </component>
 </module>
+
