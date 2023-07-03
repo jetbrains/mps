@@ -54,6 +54,7 @@ public class DocumentationFacet extends ModuleFacetBase implements GenerationTar
   public void setLocation(@Nullable IFile location) {
     myOutputRoot = location;
     //todo: myOutputCacheRoot =
+    myOutputCacheRoot = location;
   }
 
   public IFile getLocation() {
@@ -76,6 +77,7 @@ public class DocumentationFacet extends ModuleFacetBase implements GenerationTar
     }
     final String expanded = MacrosFactory.forModule(getModule()).expandPath(locationValue);
     myOutputRoot = am.getFileSystem().getFile(expanded);
+    myOutputCacheRoot = myOutputRoot;
   }
 
   public void save(@NotNull Memento memento) {
