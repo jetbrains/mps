@@ -21,8 +21,6 @@ import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.MacrosFactory;
-import jetbrains.mps.vfs.FileSystem;
-import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -35,6 +33,7 @@ import javax.swing.ImageIcon;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
@@ -233,11 +232,13 @@ public class EditorCell_Image extends EditorCell_Basic {
       jetbrains.mps.nodeEditor.EditorContext ec = (jetbrains.mps.nodeEditor.EditorContext) context;
       Map<String, Icon> iconCache = ec.getIconCache();
       if (!iconCache.containsKey(fullPath)) {
-        // TODO this allows to handle jar files using proper URL, but is deprecated, how should we replace this? Cant MacrosFactory return IFile?
-        IFile iconFile = FileSystem.getInstance().getFile(fullPath);
+        // MPS-29452: this will not work with bundled icons (File -> URL do not mix well with jar protocol)
+        //            if there is a need for that, we would need some valid (non-deprecated) way to convert this
+        //            path to a proper URL (using deprecated FileSystem is not a great option)
+        File iconFile = new File(fullPath);
 
         try {
-          URL iconUrl = iconFile.getUrl();
+          URL iconUrl = iconFile.toURI().toURL();
           String extension = FileUtil.getExtension(fullPath);
           if ("svg".equals(extension) || "png".equals(extension)) {
             // IconLoader only supports SVG and PNG, which are also the supported formats for MPS images
