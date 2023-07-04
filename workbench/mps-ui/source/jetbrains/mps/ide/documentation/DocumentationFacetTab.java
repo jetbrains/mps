@@ -17,10 +17,21 @@ import com.intellij.util.ui.JBEmptyBorder;
 import jetbrains.mps.icons.MPSIcons.General;
 import jetbrains.mps.ide.ui.dialogs.properties.MPSPropertiesConfigurable;
 import jetbrains.mps.ide.ui.dialogs.properties.tabs.BaseTab;
+import jetbrains.mps.project.DevKit;
+import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.facets.DocumentationFacet;
+import jetbrains.mps.smodel.Language;
+import jetbrains.mps.smodel.LanguageAspect;
+import jetbrains.mps.smodel.ModelDependencyScanner;
+import jetbrains.mps.smodel.ModelImports;
+import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.vfs.IFileSystem;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.ui.persistence.FacetTab;
 
 import javax.swing.Box;
@@ -28,13 +39,20 @@ import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
+import java.util.UUID;
 
 public class DocumentationFacetTab extends BaseTab implements FacetTab {
 
   private final DocumentationFacet myDocumentationFacet;
   private JTextField myOutputFiled;
   private IFileSystem fs;
+  private final String DOC_DEVKIT_NAME = "jetbrains.mps.devkit.documentation";
+  private final ModuleId DOC_DEVKIT_ID = ModuleId.regular(
+      UUID.fromString("c9983bff-58c7-4465-88f7-3d854bbf1736"));
 
   public DocumentationFacetTab(@NotNull DocumentationFacet documentationFacet) {
     super("Documentation", /*todo: change icon */ General.ModelChecker, "Model transformation output as a documentation");
@@ -80,10 +98,49 @@ public class DocumentationFacetTab extends BaseTab implements FacetTab {
   @Override
   public void apply() {
     myDocumentationFacet.setLocation(fs.getFile(myOutputFiled.getText()));
+    addDocDevKit();
+  }
+
+  @Override
+  public void unapply() {
+    removeDocDevKit();
   }
 
   @Override
   public SModuleFacet getFacet() {
     return myDocumentationFacet;
+  }
+
+
+  private void addDocDevKit() {
+    assert myDocumentationFacet.getModule() instanceof Language;
+    SModel structureAspect = LanguageAspect.STRUCTURE.get((Language) myDocumentationFacet.getModule());
+    ModelImports imports = new ModelImports(structureAspect);
+    SModuleReference docDevkit = new jetbrains.mps.project.structure.modules.ModuleReference(DOC_DEVKIT_NAME, DOC_DEVKIT_ID);
+    imports.addUsedDevKit(docDevkit);
+  }
+
+  /**
+   * removing document.devkit if no devkit languages are used
+   */
+  private void removeDocDevKit() {
+    SModule module = myDocumentationFacet.getModule();
+    SModel structureAspect = LanguageAspect.STRUCTURE.get(((Language) module));
+    ModelImports imports = new ModelImports(structureAspect);
+    SModuleReference docDevKitSModelRef = new jetbrains.mps.project.structure.modules.ModuleReference(DOC_DEVKIT_NAME, DOC_DEVKIT_ID);
+    DevKit documentationDevKit = (DevKit) docDevKitSModelRef.resolve(module.getRepository());
+
+    // finding languages that are actually used
+    final ModelDependencyScanner ms = new ModelDependencyScanner().usedLanguages(true).crossModelReferences(false);
+    ms.walk(structureAspect);
+    Set<SLanguage> inUse = ms.getUsedLanguages();
+
+    // languages in devkit.documentation
+    List<Language> devKitLanguages = documentationDevKit.getExportedLanguages();
+    List<SLanguage> devKitSLanguages = devKitLanguages.stream().map(MetaAdapterByDeclaration::getLanguage).toList();
+
+    if (Collections.disjoint(inUse, devKitSLanguages)) {
+      imports.removeUsedDevKit(docDevKitSModelRef);
+    }
   }
 }

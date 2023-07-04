@@ -1556,8 +1556,8 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
     public void apply() {
       for (FacetCheckBox checkBox : myCheckBoxes) {
         SModuleFacet facet = checkBox.getFacet();
+        Tab tab = checkBox.getTab();
         if (checkBox.isNewlyCreated()) {
-          Tab tab = checkBox.getTab();
           if (tab != null) {
             // not all facets necessarily feature UI component, but in case they do, let the tab populate facet with updated values.
             // The reason is that apply() for AddFacetsTab comes earlier than apply to any newly added tab (due to natural order of tab addition).
@@ -1567,6 +1567,9 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
           myModuleDescriptor.addFacetDescriptor(facet);
           checkBox.created();
         } else if (checkBox.isExistingToRemove()) {
+          if (tab != null) {
+            tab.unapply();
+          }
           myModuleDescriptor.removeFacetDescriptor(checkBox.getFacet());
           checkBox.existingRemoved();
         }
