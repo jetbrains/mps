@@ -13,55 +13,31 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class NumberedLine__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x603abc0b9c5e5042L, "jetbrains.mps.lang.text.structure.NumberedLine");
 
-  public static final SMethod<Integer> calculatePosition_id60UJ0IsnRf8 = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("calculatePosition").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6934061334344463304L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
   public static final SMethod<Boolean> canBeTurnedToNumberedLine_id60UJ0Iso0yR = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeTurnedToNumberedLine").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6934061334344501431L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   /*package*/ static final SMethod<Boolean> startsWithNumberSpace_id60UJ0IsnXdF = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("startsWithNumberSpace").modifiers(1, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(6934061334344487787L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<String> wrapTextForClipboard_id2iG$EWuTXuU = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("wrapTextForClipboard").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2642648362195081146L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
   public static final SMethod<SNode> createParagraphInstance_id7q4Ywce6rMl = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createParagraphInstance").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8540225684429716629L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
   public static final SMethod<Void> initializeFromParagraphs_id2iG$EWuZbnH = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("initializeFromParagraps").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2642648362196448749L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(calculatePosition_id60UJ0IsnRf8, canBeTurnedToNumberedLine_id60UJ0Iso0yR, startsWithNumberSpace_id60UJ0IsnXdF, wrapTextForClipboard_id2iG$EWuTXuU, createParagraphInstance_id7q4Ywce6rMl, initializeFromParagraphs_id2iG$EWuZbnH);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canBeTurnedToNumberedLine_id60UJ0Iso0yR, startsWithNumberSpace_id60UJ0IsnXdF, wrapTextForClipboard_id2iG$EWuTXuU, createParagraphInstance_id7q4Ywce6rMl, initializeFromParagraphs_id2iG$EWuZbnH);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static int calculatePosition_id60UJ0IsnRf8(@NotNull SNode __thisNode__) {
-    for (SNode p : ListSequence.fromList(SNodeOperations.getPrevSiblings(__thisNode__, false)).reversedList()) {
-      if (SNodeOperations.isInstanceOf(p, CONCEPTS.IndentedPoint$BF)) {
-        if (SPropertyOperations.getInteger(SNodeOperations.as(p, CONCEPTS.IndentedPoint$BF), PROPS.indentation$8ZOp) > SPropertyOperations.getInteger(__thisNode__, PROPS.indentation$8ZOp)) {
-          continue;
-        }
-        if (SPropertyOperations.getInteger(SNodeOperations.as(p, CONCEPTS.IndentedPoint$BF), PROPS.indentation$8ZOp) < SPropertyOperations.getInteger(__thisNode__, PROPS.indentation$8ZOp)) {
-          return 1;
-        }
-        if (SPropertyOperations.getInteger(SNodeOperations.as(p, CONCEPTS.IndentedPoint$BF), PROPS.indentation$8ZOp) == SPropertyOperations.getInteger(__thisNode__, PROPS.indentation$8ZOp)) {
-          if (SNodeOperations.isInstanceOf(p, CONCEPTS.NumberedLine$k0)) {
-            return (int) NumberedLine__BehaviorDescriptor.calculatePosition_id60UJ0IsnRf8.invoke(SNodeOperations.as(p, CONCEPTS.NumberedLine$k0)) + 1;
-          } else {
-            return 1;
-          }
-        }
-      } else {
-        return 1;
-      }
-    }
-    return 1;
-  }
   /*package*/ static boolean canBeTurnedToNumberedLine_id60UJ0Iso0yR(@NotNull SAbstractConcept __thisConcept__, SNode l) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(l)), CONCEPTS.Line$yC)) {
       return ((boolean) NumberedLine__BehaviorDescriptor.startsWithNumberSpace_id60UJ0IsnXdF.invokeSpecial(__thisConcept__, l)) && (SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(l), CONCEPTS.NumberedLine$k0) || SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(l), CONCEPTS.NumberedLine$k0) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.getNextSibling(l))), CONCEPTS.Line$yC) && ((boolean) NumberedLine__BehaviorDescriptor.startsWithNumberSpace_id60UJ0IsnXdF.invokeSpecial(__thisConcept__, SNodeOperations.as(SNodeOperations.getNextSibling(l), CONCEPTS.Line$yC))));
@@ -77,7 +53,7 @@ public final class NumberedLine__BehaviorDescriptor extends BaseBHDescriptor {
     return b;
   }
   /*package*/ static String wrapTextForClipboard_id2iG$EWuTXuU(@NotNull SNode __thisNode__, String text) {
-    return IndentedPoint__BehaviorDescriptor.getIndentString_idfcFkhVQ0er.invoke(__thisNode__) + ((int) NumberedLine__BehaviorDescriptor.calculatePosition_id60UJ0IsnRf8.invoke(__thisNode__)) + ". " + text;
+    return IndentedPoint__BehaviorDescriptor.getIndentString_idfcFkhVQ0er.invoke(__thisNode__) + ((int) IndentedPoint__BehaviorDescriptor.calculatePosition_id5xPwFDOHiUa.invoke(__thisNode__)) + ". " + text;
   }
   /*package*/ static SNode createParagraphInstance_id7q4Ywce6rMl(@NotNull SNode __thisNode__) {
     return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x5d9ea196218822ebL, "jetbrains.mps.lang.text.structure.NumberedPoint"));
@@ -104,13 +80,11 @@ public final class NumberedLine__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
-      case 0:
-        return (T) ((Integer) calculatePosition_id60UJ0IsnRf8(node));
-      case 3:
+      case 2:
         return (T) ((String) wrapTextForClipboard_id2iG$EWuTXuU(node, (String) parameters[0]));
-      case 4:
+      case 3:
         return (T) ((SNode) createParagraphInstance_id7q4Ywce6rMl(node));
-      case 5:
+      case 4:
         initializeFromParagraphs_id2iG$EWuZbnH(node, (SNode) parameters[0]);
         return null;
       default:
@@ -125,9 +99,9 @@ public final class NumberedLine__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
-      case 1:
+      case 0:
         return (T) ((Boolean) canBeTurnedToNumberedLine_id60UJ0Iso0yR(concept, (SNode) parameters[0]));
-      case 2:
+      case 1:
         return (T) ((Boolean) startsWithNumberSpace_id60UJ0IsnXdF(concept, (SNode) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -147,14 +121,14 @@ public final class NumberedLine__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IndentedPoint$BF = MetaAdapterFactory.getInterfaceConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L, "jetbrains.mps.lang.text.structure.IndentedPoint");
-    /*package*/ static final SConcept NumberedLine$k0 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x603abc0b9c5e5042L, "jetbrains.mps.lang.text.structure.NumberedLine");
     /*package*/ static final SConcept Line$yC = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
+    /*package*/ static final SConcept NumberedLine$k0 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x603abc0b9c5e5042L, "jetbrains.mps.lang.text.structure.NumberedLine");
     /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
+    /*package*/ static final SInterfaceConcept IndentedPoint$BF = MetaAdapterFactory.getInterfaceConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L, "jetbrains.mps.lang.text.structure.IndentedPoint");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty indentation$8ZOp = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L, 0x46ded40cf13ae6fbL, "indentation");
     /*package*/ static final SProperty value$zQr_ = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
+    /*package*/ static final SProperty indentation$8ZOp = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L, 0x46ded40cf13ae6fbL, "indentation");
   }
 }
