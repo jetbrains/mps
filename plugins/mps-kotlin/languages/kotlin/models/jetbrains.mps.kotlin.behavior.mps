@@ -1590,6 +1590,28 @@
       <node concept="10P_77" id="4KPNZIZRSS0" role="3clF45" />
       <node concept="3Tm1VV" id="4KPNZIZRSS1" role="1B3o_S" />
     </node>
+    <node concept="13i0hz" id="9DkAreHOYu" role="13h7CS">
+      <property role="TrG5h" value="getSelfTypeKey" />
+      <ref role="13i0hy" node="9DkAreHC7z" resolve="getSelfTypeKey" />
+      <node concept="3Tm1VV" id="9DkAreHOYv" role="1B3o_S" />
+      <node concept="3clFbS" id="9DkAreHOYy" role="3clF47">
+        <node concept="3cpWs6" id="9DkAreHPCk" role="3cqZAp">
+          <node concept="2ShNRf" id="9DkAreHPFK" role="3cqZAk">
+            <node concept="1pGfFk" id="9DkAreHQ13" role="2ShVmc">
+              <property role="373rjd" value="true" />
+              <ref role="37wK5l" to="mx11:6GqgvHqjqbD" resolve="ClassTypeKey" />
+              <node concept="2OqwBi" id="9DkAreHQxP" role="37wK5m">
+                <node concept="13iPFW" id="9DkAreHQ5F" role="2Oq$k0" />
+                <node concept="iZEcu" id="9DkAreHRgS" role="2OqNvi" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="9DkAreHOYz" role="3clF45">
+        <ref role="3uigEE" to="mx11:6GqgvHqhqpA" resolve="TypeKey" />
+      </node>
+    </node>
   </node>
   <node concept="13h7C7" id="213J8cgLnji">
     <property role="3GE5qa" value="declaration.inheritance" />
@@ -32073,6 +32095,16 @@
         <ref role="2AI5Lk" to="mhfm:~ApiStatus$Experimental" resolve="ApiStatus.Experimental" />
       </node>
     </node>
+    <node concept="13i0hz" id="9DkAreHC7z" role="13h7CS">
+      <property role="13i0iv" value="true" />
+      <property role="13i0it" value="true" />
+      <property role="TrG5h" value="getSelfTypeKey" />
+      <node concept="3Tm1VV" id="9DkAreHC7$" role="1B3o_S" />
+      <node concept="3uibUv" id="9DkAreHCyo" role="3clF45">
+        <ref role="3uigEE" to="mx11:6GqgvHqhqpA" resolve="TypeKey" />
+      </node>
+      <node concept="3clFbS" id="9DkAreHC7A" role="3clF47" />
+    </node>
   </node>
   <node concept="13h7C7" id="4hE452RT_20">
     <property role="3GE5qa" value="statement.object" />
@@ -32179,6 +32211,28 @@
         </node>
       </node>
       <node concept="10P_77" id="5sK72SOpaO4" role="3clF45" />
+    </node>
+    <node concept="13i0hz" id="9DkAreHRRV" role="13h7CS">
+      <property role="TrG5h" value="getSelfTypeKey" />
+      <ref role="13i0hy" node="9DkAreHC7z" resolve="getSelfTypeKey" />
+      <node concept="3Tm1VV" id="9DkAreHRRW" role="1B3o_S" />
+      <node concept="3clFbS" id="9DkAreHRRX" role="3clF47">
+        <node concept="3cpWs6" id="9DkAreHRRY" role="3cqZAp">
+          <node concept="2ShNRf" id="9DkAreHRRZ" role="3cqZAk">
+            <node concept="1pGfFk" id="9DkAreHRS0" role="2ShVmc">
+              <property role="373rjd" value="true" />
+              <ref role="37wK5l" to="mx11:6GqgvHqjqbD" resolve="ClassTypeKey" />
+              <node concept="2OqwBi" id="9DkAreHRS1" role="37wK5m">
+                <node concept="13iPFW" id="9DkAreHRS2" role="2Oq$k0" />
+                <node concept="iZEcu" id="9DkAreHRS3" role="2OqNvi" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="9DkAreHRS4" role="3clF45">
+        <ref role="3uigEE" to="mx11:6GqgvHqhqpA" resolve="TypeKey" />
+      </node>
     </node>
   </node>
   <node concept="13h7C7" id="4hE452RvPM2">
