@@ -72,7 +72,6 @@
   </generators>
   <dependencies>
     <dependency reexport="false">ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)</dependency>
-    <dependency reexport="false">c7fb639f-be78-4307-89b0-b5959c3fa8c8(jetbrains.mps.lang.text)</dependency>
   </dependencies>
   <languageVersions>
     <language slang="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" version="12" />
@@ -104,6 +103,8 @@
     <module reference="d304f247-4944-479d-ac8b-972b953bcdfe(jetbrains.mps.lang.doctext)" version="0" />
     <module reference="c7fb639f-be78-4307-89b0-b5959c3fa8c8(jetbrains.mps.lang.text)" version="0" />
   </dependencyVersions>
-  <extendedLanguages />
+  <extendedLanguages>
+    <extendedLanguage>c7fb639f-be78-4307-89b0-b5959c3fa8c8(jetbrains.mps.lang.text)</extendedLanguage>
+  </extendedLanguages>
 </language>
 
