@@ -72,9 +72,6 @@
             <property role="lacIc" value="&gt;" />
           </node>
         </node>
-        <node concept="lc7rE" id="5IUrqbK7yzN" role="3cqZAp">
-          <node concept="l8MVK" id="5IUrqbK7y_C" role="lcghm" />
-        </node>
       </node>
     </node>
   </node>

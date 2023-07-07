@@ -17,7 +17,6 @@ public class XmlSimpleElement_TextGen extends TextGenDescriptorBase {
     tgs.append("<");
     tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.tagName$MA_o));
     tgs.append(">");
-    tgs.newLine();
   }
 
   private static final class PROPS {

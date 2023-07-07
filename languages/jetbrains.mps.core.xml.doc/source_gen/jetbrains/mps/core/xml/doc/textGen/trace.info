@@ -21,17 +21,16 @@
       <node id="6609715949700251776" at="16,18,17,20" concept="0" />
       <node id="6609715949700252169" at="17,20,18,89" concept="0" />
       <node id="6609715949700261424" at="18,89,19,20" concept="0" />
-      <node id="6609715949700262248" at="19,20,20,18" concept="0" />
-      <node id="6609715949700250677" at="24,0,25,0" concept="4" trace="tagName$MA_o" />
-      <node id="6609715949700250677" at="13,0,22,0" concept="1" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
-      <scope id="6609715949700250677" at="14,54,20,18">
+      <node id="6609715949700250677" at="23,0,24,0" concept="4" trace="tagName$MA_o" />
+      <node id="6609715949700250677" at="13,0,21,0" concept="1" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
+      <scope id="6609715949700250677" at="14,54,19,20">
         <var name="tgs" id="6609715949700250677" />
       </scope>
-      <scope id="6609715949700250677" at="13,0,22,0">
+      <scope id="6609715949700250677" at="13,0,21,0">
         <var name="ctx" id="6609715949700250677" />
       </scope>
-      <unit id="6609715949700250677" at="23,0,26,0" name="jetbrains.mps.core.xml.doc.textGen.XmlSimpleElement_TextGen$PROPS" />
-      <unit id="6609715949700250677" at="12,0,27,0" name="jetbrains.mps.core.xml.doc.textGen.XmlSimpleElement_TextGen" />
+      <unit id="6609715949700250677" at="22,0,25,0" name="jetbrains.mps.core.xml.doc.textGen.XmlSimpleElement_TextGen$PROPS" />
+      <unit id="6609715949700250677" at="12,0,26,0" name="jetbrains.mps.core.xml.doc.textGen.XmlSimpleElement_TextGen" />
     </file>
   </root>
 </debug-info>
