@@ -30,9 +30,10 @@ public final class LanguageConceptSwitch {
   public static final int Paragraph = 18;
   public static final int Text = 19;
   public static final int TextElement = 20;
-  public static final int TextualElement = 21;
-  public static final int UrlTextualElement = 22;
-  public static final int Word = 23;
+  public static final int TextNodeReference = 21;
+  public static final int TextualElement = 22;
+  public static final int UrlTextualElement = 23;
+  public static final int Word = 24;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L);
@@ -57,6 +58,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x7ee31bf598f4ec9eL, Paragraph);
     builder.put(0x2331694e5619f411L, Text);
     builder.put(0x229012ddae35ee7L, TextElement);
+    builder.put(0x6cc063b139472ce7L, TextNodeReference);
     builder.put(0x2c99af34e20d9cfbL, TextualElement);
     builder.put(0x739f6249ff2c0691L, UrlTextualElement);
     builder.put(0x229012ddae35f04L, Word);

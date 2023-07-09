@@ -371,16 +371,6 @@
     <property role="TrG5h" value="Header" />
     <property role="3GE5qa" value="doc" />
   </node>
-  <node concept="1TIwiD" id="1V7fFC_QjsC">
-    <property role="EcuMT" value="2217810310723090216" />
-    <property role="TrG5h" value="Header2" />
-    <property role="34LRSv" value="header 2" />
-    <property role="3GE5qa" value="doc" />
-    <ref role="1TJDcQ" node="2cLqkTm6J5A" resolve="Line" />
-    <node concept="PrWs8" id="1V7fFC_R6Kc" role="PzmwI">
-      <ref role="PrY4T" node="1V7fFC_R5yx" resolve="Header" />
-    </node>
-  </node>
   <node concept="1TIwiD" id="1V7fFC_NfH4">
     <property role="EcuMT" value="2217810310722288452" />
     <property role="TrG5h" value="Header1" />
@@ -388,6 +378,16 @@
     <property role="3GE5qa" value="doc" />
     <ref role="1TJDcQ" node="2cLqkTm6J5A" resolve="Line" />
     <node concept="PrWs8" id="1V7fFC_R6GV" role="PzmwI">
+      <ref role="PrY4T" node="1V7fFC_R5yx" resolve="Header" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="1V7fFC_QjsC">
+    <property role="EcuMT" value="2217810310723090216" />
+    <property role="TrG5h" value="Header2" />
+    <property role="34LRSv" value="header 2" />
+    <property role="3GE5qa" value="doc" />
+    <ref role="1TJDcQ" node="2cLqkTm6J5A" resolve="Line" />
+    <node concept="PrWs8" id="1V7fFC_R6Kc" role="PzmwI">
       <ref role="PrY4T" node="1V7fFC_R5yx" resolve="Header" />
     </node>
   </node>
@@ -399,6 +399,19 @@
     <ref role="1TJDcQ" node="2cLqkTm6J5A" resolve="Line" />
     <node concept="PrWs8" id="1V7fFC_R6Nt" role="PzmwI">
       <ref role="PrY4T" node="1V7fFC_R5yx" resolve="Header" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6N0oV4ThMNB">
+    <property role="EcuMT" value="7836372964445990119" />
+    <property role="TrG5h" value="TextNodeReference" />
+    <property role="3GE5qa" value="doc" />
+    <property role="34LRSv" value="reference" />
+    <ref role="1TJDcQ" node="8D0iRqSPVB" resolve="TextElement" />
+    <node concept="1TJgyj" id="rh3Y2YeW$V" role="1TKVEi">
+      <property role="IQ2ns" value="491191292298774843" />
+      <property role="20kJfa" value="reference" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
   </node>
 </model>

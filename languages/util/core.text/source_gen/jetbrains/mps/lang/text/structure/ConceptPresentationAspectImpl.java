@@ -30,6 +30,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_Paragraph;
   private ConceptPresentation props_Text;
   private ConceptPresentation props_TextElement;
+  private ConceptPresentation props_TextNodeReference;
   private ConceptPresentation props_TextualElement;
   private ConceptPresentation props_UrlTextualElement;
   private ConceptPresentation props_Word;
@@ -181,6 +182,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_TextElement = cpb.create();
         }
         return props_TextElement;
+      case LanguageConceptSwitch.TextNodeReference:
+        if (props_TextNodeReference == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("reference");
+          props_TextNodeReference = cpb.create();
+        }
+        return props_TextNodeReference;
       case LanguageConceptSwitch.TextualElement:
         if (props_TextualElement == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

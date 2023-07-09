@@ -183,6 +183,9 @@ public class NewElementStrategyFactory {
         case "```":
           SNodeOperations.replaceWithAnother(myElement, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, "jetbrains.mps.lang.text.structure.NodeWrapperElement")));
           break;
+        case "``":
+          SNodeOperations.replaceWithAnother(myElement, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cc063b139472ce7L, "jetbrains.mps.lang.text.structure.TextNodeReference")));
+          break;
       }
       if (ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(myElement), CONCEPTS.Line$yC), LINKS.elements$_j45)).count() == 2 && SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.getParent(myElement))), CONCEPTS.Line$yC)) {
         switch (SPropertyOperations.getString(SNodeOperations.cast(myElement, CONCEPTS.Word$Dn), PROPS.value$zQr_)) {
