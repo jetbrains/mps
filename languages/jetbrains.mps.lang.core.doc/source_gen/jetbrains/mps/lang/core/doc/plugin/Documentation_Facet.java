@@ -190,7 +190,7 @@ public class Documentation_Facet extends IFacet.Stub {
       return name;
     }
     public boolean isOptional() {
-      return false;
+      return true;
     }
     public boolean requiresInput() {
       return true;

@@ -250,6 +250,7 @@
     </node>
     <node concept="15KeUm" id="2iKjvgoq47_" role="15LFul">
       <property role="TrG5h" value="configureCustomGenPlan" />
+      <property role="3xojQC" value="true" />
       <node concept="15KeVb" id="2iKjvgosu5h" role="15LFui">
         <ref role="15KeV8" to="tpcq:5L5h3brvz8m" resolve="configure" />
       </node>
