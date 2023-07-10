@@ -15,6 +15,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.openapi.editor.selection.Selection;
 import jetbrains.mps.nodeEditor.selection.EditorCellLabelSelection;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -200,19 +201,22 @@ public class NewElementStrategyFactory {
             SNodeOperations.replaceWithAnother(SNodeOperations.getParent(myElement), newParentNumberedLine);
             break;
           case "#":
-            SNode newParentHeader1 = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x1ec73eba25ccfb44L, "jetbrains.mps.lang.text.structure.Header1"));
+            SNode newParentHeader1 = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb47accL, "jetbrains.mps.lang.text.structure.Header"));
+            SPropertyOperations.assignEnum(newParentHeader1, PROPS.level$YKTp, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb40ea2L, "jetbrains.mps.lang.text.structure.HeaderEnum"), 0x6cb23f222fb40ea3L, "Header1"));
             Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(newParentHeader1, SNodeOperations.cast(SNodeOperations.getChildren(SNodeOperations.getParent(myElement)).get(1), CONCEPTS.Word$Dn));
             SNodeOperations.replaceWithAnother(SNodeOperations.getParent(myElement), newParentHeader1);
             break;
           case "##":
-            SNode Header2 = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x1ec73eba25d93728L, "jetbrains.mps.lang.text.structure.Header2"));
-            Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(Header2, SNodeOperations.cast(SNodeOperations.getChildren(SNodeOperations.getParent(myElement)).get(1), CONCEPTS.Word$Dn));
-            SNodeOperations.replaceWithAnother(SNodeOperations.getParent(myElement), Header2);
+            SNode newParentHeader2 = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb47accL, "jetbrains.mps.lang.text.structure.Header"));
+            SPropertyOperations.assignEnum(newParentHeader2, PROPS.level$YKTp, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb40ea2L, "jetbrains.mps.lang.text.structure.HeaderEnum"), 0x6cb23f222fb40f40L, "Header2"));
+            Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(newParentHeader2, SNodeOperations.cast(SNodeOperations.getChildren(SNodeOperations.getParent(myElement)).get(1), CONCEPTS.Word$Dn));
+            SNodeOperations.replaceWithAnother(SNodeOperations.getParent(myElement), newParentHeader2);
             break;
           case "###":
-            SNode Header3 = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x1ec73eba25d94c98L, "jetbrains.mps.lang.text.structure.Header3"));
-            Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(Header3, SNodeOperations.cast(SNodeOperations.getChildren(SNodeOperations.getParent(myElement)).get(1), CONCEPTS.Word$Dn));
-            SNodeOperations.replaceWithAnother(SNodeOperations.getParent(myElement), Header3);
+            SNode newParentHeader3 = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb47accL, "jetbrains.mps.lang.text.structure.Header"));
+            SPropertyOperations.assignEnum(newParentHeader3, PROPS.level$YKTp, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb40ea2L, "jetbrains.mps.lang.text.structure.HeaderEnum"), 0x6cb23f222fb40fdfL, "Header3"));
+            Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(newParentHeader3, SNodeOperations.cast(SNodeOperations.getChildren(SNodeOperations.getParent(myElement)).get(1), CONCEPTS.Word$Dn));
+            SNodeOperations.replaceWithAnother(SNodeOperations.getParent(myElement), newParentHeader3);
             break;
         }
       }
@@ -277,6 +281,7 @@ public class NewElementStrategyFactory {
 
   private static final class PROPS {
     /*package*/ static final SProperty value$zQr_ = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
+    /*package*/ static final SProperty level$YKTp = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb47accL, 0x6cb23f222fb47b9dL, "level");
     /*package*/ static final SProperty url$SIrt = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
   }
 }

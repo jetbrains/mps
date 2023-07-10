@@ -14,9 +14,12 @@ import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class ConvertToHeader1_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -52,7 +55,8 @@ public final class ConvertToHeader1_Intention extends AbstractIntentionDescripto
 
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNodeFactoryOperations.replaceWithNewChild(SNodeOperations.getParent(node), CONCEPTS.Header1$9h);
+      SNode replaceWithNewInitialized = SNodeFactoryOperations.replaceWithNewChild(SNodeOperations.getParent(node), CONCEPTS.Header$d7);
+      SPropertyOperations.assignEnum(SNodeOperations.as(replaceWithNewInitialized, CONCEPTS.Header$d7), PROPS.level$YKTp, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb40ea2L, "jetbrains.mps.lang.text.structure.HeaderEnum"), 0x6cb23f222fb40ea3L, "Header1"));
     }
 
     @Override
@@ -64,7 +68,7 @@ public final class ConvertToHeader1_Intention extends AbstractIntentionDescripto
     }
 
     private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Line$yC) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Header1$9h));
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Line$yC) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Header$d7));
     }
 
 
@@ -76,7 +80,11 @@ public final class ConvertToHeader1_Intention extends AbstractIntentionDescripto
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Header1$9h = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x1ec73eba25ccfb44L, "jetbrains.mps.lang.text.structure.Header1");
+    /*package*/ static final SConcept Header$d7 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb47accL, "jetbrains.mps.lang.text.structure.Header");
     /*package*/ static final SConcept Line$yC = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty level$YKTp = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb47accL, 0x6cb23f222fb47b9dL, "level");
   }
 }

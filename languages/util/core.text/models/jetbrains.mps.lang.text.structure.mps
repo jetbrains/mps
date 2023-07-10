@@ -9,6 +9,14 @@
   </imports>
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
+      <concept id="3348158742936976480" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration" flags="ng" index="25R33">
+        <property id="1421157252384165432" name="memberId" index="3tVfz5" />
+        <property id="672037151186491528" name="presentation" index="1L1pqM" />
+      </concept>
+      <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclaration" flags="ng" index="25R3W">
+        <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
+        <child id="3348158742936976577" name="members" index="25R1y" />
+      </concept>
       <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
         <property id="7862711839422615217" name="text" index="t5JxN" />
       </concept>
@@ -366,41 +374,6 @@
       <ref role="PrY4T" node="4ruP0NLeIr4" resolve="IndentedPoint" />
     </node>
   </node>
-  <node concept="PlHQZ" id="1V7fFC_R5yx">
-    <property role="EcuMT" value="2217810310723295393" />
-    <property role="TrG5h" value="Header" />
-    <property role="3GE5qa" value="doc" />
-  </node>
-  <node concept="1TIwiD" id="1V7fFC_NfH4">
-    <property role="EcuMT" value="2217810310722288452" />
-    <property role="TrG5h" value="Header1" />
-    <property role="34LRSv" value="header 1" />
-    <property role="3GE5qa" value="doc" />
-    <ref role="1TJDcQ" node="2cLqkTm6J5A" resolve="Line" />
-    <node concept="PrWs8" id="1V7fFC_R6GV" role="PzmwI">
-      <ref role="PrY4T" node="1V7fFC_R5yx" resolve="Header" />
-    </node>
-  </node>
-  <node concept="1TIwiD" id="1V7fFC_QjsC">
-    <property role="EcuMT" value="2217810310723090216" />
-    <property role="TrG5h" value="Header2" />
-    <property role="34LRSv" value="header 2" />
-    <property role="3GE5qa" value="doc" />
-    <ref role="1TJDcQ" node="2cLqkTm6J5A" resolve="Line" />
-    <node concept="PrWs8" id="1V7fFC_R6Kc" role="PzmwI">
-      <ref role="PrY4T" node="1V7fFC_R5yx" resolve="Header" />
-    </node>
-  </node>
-  <node concept="1TIwiD" id="1V7fFC_QkMo">
-    <property role="EcuMT" value="2217810310723095704" />
-    <property role="TrG5h" value="Header3" />
-    <property role="34LRSv" value="header 3" />
-    <property role="3GE5qa" value="doc" />
-    <ref role="1TJDcQ" node="2cLqkTm6J5A" resolve="Line" />
-    <node concept="PrWs8" id="1V7fFC_R6Nt" role="PzmwI">
-      <ref role="PrY4T" node="1V7fFC_R5yx" resolve="Header" />
-    </node>
-  </node>
   <node concept="1TIwiD" id="6N0oV4ThMNB">
     <property role="EcuMT" value="7836372964445990119" />
     <property role="TrG5h" value="TextNodeReference" />
@@ -412,6 +385,38 @@
       <property role="20kJfa" value="reference" />
       <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6MMfM8JH7Fc">
+    <property role="EcuMT" value="7832392118012508876" />
+    <property role="3GE5qa" value="doc" />
+    <property role="TrG5h" value="Header" />
+    <ref role="1TJDcQ" node="2cLqkTm6J5A" resolve="Line" />
+    <node concept="1TJgyi" id="6MMfM8JH7It" role="1TKVEl">
+      <property role="IQ2nx" value="7832392118012509085" />
+      <property role="TrG5h" value="level" />
+      <ref role="AX2Wp" node="6MMfM8JH0Uy" resolve="HeaderEnum" />
+    </node>
+  </node>
+  <node concept="25R3W" id="6MMfM8JH0Uy">
+    <property role="3F6X1D" value="7832392118012481186" />
+    <property role="3GE5qa" value="doc" />
+    <property role="TrG5h" value="HeaderEnum" />
+    <ref role="1H5jkz" node="6MMfM8JH0Uz" resolve="Header1" />
+    <node concept="25R33" id="6MMfM8JH0Uz" role="25R1y">
+      <property role="3tVfz5" value="7832392118012481187" />
+      <property role="TrG5h" value="Header1" />
+      <property role="1L1pqM" value="1" />
+    </node>
+    <node concept="25R33" id="6MMfM8JH0X0" role="25R1y">
+      <property role="3tVfz5" value="7832392118012481344" />
+      <property role="TrG5h" value="Header2" />
+      <property role="1L1pqM" value="2" />
+    </node>
+    <node concept="25R33" id="6MMfM8JH0Zv" role="25R1y">
+      <property role="3tVfz5" value="7832392118012481503" />
+      <property role="TrG5h" value="Header3" />
+      <property role="1L1pqM" value="3" />
     </node>
   </node>
 </model>
