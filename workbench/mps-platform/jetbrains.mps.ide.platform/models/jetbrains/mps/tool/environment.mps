@@ -2409,6 +2409,18 @@
                             <ref role="3cqZAo" node="6qMd1Cr4xOU" resolve="openedProjects" />
                           </node>
                         </node>
+                        <node concept="3clFbF" id="2aedWm2WZF_" role="3cqZAp">
+                          <node concept="2YIFZM" id="2aedWm2X5m4" role="3clFbG">
+                            <ref role="37wK5l" to="anz6:~PlatformTestUtil.dispatchAllEventsInIdeEventQueue()" resolve="dispatchAllEventsInIdeEventQueue" />
+                            <ref role="1Pybhc" to="anz6:~PlatformTestUtil" resolve="PlatformTestUtil" />
+                          </node>
+                        </node>
+                        <node concept="3clFbF" id="2aedWm2Xbxx" role="3cqZAp">
+                          <node concept="2YIFZM" id="2aedWm2Xeqc" role="3clFbG">
+                            <ref role="37wK5l" to="cyhs:~JarFileSystemImpl.cleanupForNextTest()" resolve="cleanupForNextTest" />
+                            <ref role="1Pybhc" to="cyhs:~JarFileSystemImpl" resolve="JarFileSystemImpl" />
+                          </node>
+                        </node>
                         <node concept="3clFbF" id="2LK9TYv$UsL" role="3cqZAp">
                           <node concept="2OqwBi" id="2LK9TYv$UsM" role="3clFbG">
                             <node concept="liA8E" id="2LK9TYv$UsN" role="2OqNvi">
@@ -2516,53 +2528,9 @@
                   </node>
                 </node>
               </node>
-              <node concept="10M0yZ" id="4At3FtNygGS" role="37wK5m">
-                <ref role="1PxDUh" to="bd8o:~ModalityState" resolve="ModalityState" />
-                <ref role="3cqZAo" to="bd8o:~ModalityState.NON_MODAL" resolve="NON_MODAL" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="6w1R7bIZvzf" role="3cqZAp">
-          <node concept="2YIFZM" id="6w1R7bIZwd0" role="3clFbG">
-            <ref role="37wK5l" to="3a50:~ThreadUtils.runInUIThreadAndWait(java.lang.Runnable)" resolve="runInUIThreadAndWait" />
-            <ref role="1Pybhc" to="3a50:~ThreadUtils" resolve="ThreadUtils" />
-            <node concept="2ShNRf" id="6w1R7bIZwff" role="37wK5m">
-              <node concept="YeOm9" id="6w1R7bJ05xf" role="2ShVmc">
-                <node concept="1Y3b0j" id="6w1R7bJ05xi" role="YeSDq">
-                  <property role="2bfB8j" value="true" />
-                  <ref role="1Y3XeK" to="wyt6:~Runnable" resolve="Runnable" />
-                  <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
-                  <node concept="3Tm1VV" id="6w1R7bJ05xj" role="1B3o_S" />
-                  <node concept="3clFb_" id="6w1R7bJ05xo" role="jymVt">
-                    <property role="TrG5h" value="run" />
-                    <node concept="3Tm1VV" id="6w1R7bJ05xp" role="1B3o_S" />
-                    <node concept="3cqZAl" id="6w1R7bJ05xr" role="3clF45" />
-                    <node concept="3clFbS" id="6w1R7bJ05xs" role="3clF47">
-                      <node concept="3clFbF" id="6w1R7bJ09Xk" role="3cqZAp">
-                        <node concept="2YIFZM" id="6w1R7bJ0aaN" role="3clFbG">
-                          <ref role="37wK5l" to="g1qu:~UIUtil.dispatchAllInvocationEvents()" resolve="dispatchAllInvocationEvents" />
-                          <ref role="1Pybhc" to="g1qu:~UIUtil" resolve="UIUtil" />
-                        </node>
-                      </node>
-                      <node concept="3clFbF" id="6w1R7bJ0azJ" role="3cqZAp">
-                        <node concept="2YIFZM" id="6w1R7bJ0aDa" role="3clFbG">
-                          <ref role="37wK5l" to="cyhs:~JarFileSystemImpl.cleanupForNextTest()" resolve="cleanupForNextTest" />
-                          <ref role="1Pybhc" to="cyhs:~JarFileSystemImpl" resolve="JarFileSystemImpl" />
-                        </node>
-                      </node>
-                      <node concept="3clFbF" id="6w1R7bJ0bQK" role="3cqZAp">
-                        <node concept="2YIFZM" id="6w1R7bJ0bWi" role="3clFbG">
-                          <ref role="37wK5l" to="3fye:~LaterInvocator.dispatchPendingFlushes()" resolve="dispatchPendingFlushes" />
-                          <ref role="1Pybhc" to="3fye:~LaterInvocator" resolve="LaterInvocator" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="2AHcQZ" id="6w1R7bJ05xu" role="2AJF6D">
-                      <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-                    </node>
-                  </node>
-                </node>
+              <node concept="2YIFZM" id="2aedWm2Xhr0" role="37wK5m">
+                <ref role="37wK5l" to="bd8o:~ModalityState.nonModal()" resolve="nonModal" />
+                <ref role="1Pybhc" to="bd8o:~ModalityState" resolve="ModalityState" />
               </node>
             </node>
           </node>

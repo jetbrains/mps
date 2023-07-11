@@ -2180,6 +2180,24 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="2aedWm2K5hP" role="3cqZAp">
+          <node concept="2YIFZM" id="2aedWm2K5Hm" role="3clFbG">
+            <ref role="37wK5l" to="wyt6:~System.setProperty(java.lang.String,java.lang.String)" resolve="setProperty" />
+            <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
+            <node concept="Xl_RD" id="2aedWm2K66J" role="37wK5m">
+              <property role="Xl_RC" value="java.awt.headless" />
+            </node>
+            <node concept="2OqwBi" id="2aedWm2Kcds" role="37wK5m">
+              <node concept="10M0yZ" id="2aedWm2Kb5q" role="2Oq$k0">
+                <ref role="3cqZAo" to="wyt6:~Boolean.TRUE" resolve="TRUE" />
+                <ref role="1PxDUh" to="wyt6:~Boolean" resolve="Boolean" />
+              </node>
+              <node concept="liA8E" id="2aedWm2KfCm" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~Boolean.toString()" resolve="toString" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbJ" id="1HNHfSAwfxM" role="3cqZAp">
           <node concept="3clFbS" id="1HNHfSAwfxO" role="3clFbx">
             <node concept="3clFbF" id="1HNHfSAw$Vx" role="3cqZAp">

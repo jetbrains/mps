@@ -30,10 +30,8 @@ import com.intellij.openapi.application.Application;
 import jetbrains.mps.project.ProjectManager;
 import java.util.List;
 import java.util.ArrayList;
-import jetbrains.mps.ide.ThreadUtils;
-import com.intellij.util.ui.UIUtil;
+import com.intellij.testFramework.PlatformTestUtil;
 import com.intellij.openapi.vfs.impl.jar.JarFileSystemImpl;
-import com.intellij.openapi.application.impl.LaterInvocator;
 import jetbrains.mps.library.LibraryInitializer;
 import java.util.Collections;
 import jetbrains.mps.util.FileUtil;
@@ -42,7 +40,6 @@ import java.util.concurrent.TimeUnit;
 import jetbrains.mps.vfs.refresh.CachingFileSystem;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.vfs.refresh.DefaultCachingContext;
-import com.intellij.testFramework.PlatformTestUtil;
 import jetbrains.mps.core.platform.Platform;
 import com.intellij.ide.startup.StartupManagerEx;
 import kotlinx.coroutines.future.FutureKt;
@@ -264,6 +261,8 @@ public final class IdeaEnvironment extends EnvironmentBase {
             project.dispose();
           }
         }
+        PlatformTestUtil.dispatchAllEventsInIdeEventQueue();
+        JarFileSystemImpl.cleanupForNextTest();
         application.runWriteAction(new Runnable() {
           public void run() {
             // for IdeaTestApplication case (myUnitTestMode == true) dispose() eventually clears DTA.ourInstance field
@@ -274,15 +273,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
           }
         });
       }
-    }, ModalityState.NON_MODAL);
-    ThreadUtils.runInUIThreadAndWait(new Runnable() {
-      @Override
-      public void run() {
-        UIUtil.dispatchAllInvocationEvents();
-        JarFileSystemImpl.cleanupForNextTest();
-        LaterInvocator.dispatchPendingFlushes();
-      }
-    });
+    }, ModalityState.nonModal());
   }
 
   @Override
