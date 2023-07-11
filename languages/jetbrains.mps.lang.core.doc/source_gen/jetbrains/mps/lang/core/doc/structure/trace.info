@@ -45,8 +45,8 @@
       <node id="4293932951803486388" at="53,63,54,76" concept="0" />
       <node id="4293932951803486388" at="54,76,55,114" concept="0" />
       <node id="4293932951803486388" at="55,114,56,17" concept="0" />
-      <node id="2217810310728609106" at="56,17,57,198" concept="0" />
-      <node id="4293932951803486388" at="57,198,58,22" concept="4" />
+      <node id="2217810310728609106" at="56,17,57,197" concept="0" />
+      <node id="4293932951803486388" at="57,197,58,22" concept="4" />
       <node id="4293932951803486388" at="50,0,60,0" concept="7" trace="createDescriptorForDocumentedNodeAnnotation#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="4293932951803486388" at="38,58,39,49" />
       <scope id="4293932951803486388" at="50,82,58,22">

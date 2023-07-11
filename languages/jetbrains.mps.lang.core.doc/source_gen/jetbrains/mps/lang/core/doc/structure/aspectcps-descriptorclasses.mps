@@ -609,13 +609,13 @@
             <node concept="liA8E" id="2E" role="2OqNvi">
               <ref role="37wK5l" to="ze1i:~StructureAspectDescriptor$Dependencies.aggregatedLanguage(long,long,java.lang.String)" resolve="aggregatedLanguage" />
               <node concept="1adDum" id="2F" role="37wK5m">
-                <property role="1adDun" value="0xceab519525ea4f22L" />
+                <property role="1adDun" value="0xd304f2474944479dL" />
               </node>
               <node concept="1adDum" id="2G" role="37wK5m">
-                <property role="1adDun" value="0x9b92103b95ca8c0cL" />
+                <property role="1adDun" value="0xac8b972b953bcdfeL" />
               </node>
               <node concept="Xl_RD" id="2H" role="37wK5m">
-                <property role="Xl_RC" value="jetbrains.mps.lang.core" />
+                <property role="Xl_RC" value="jetbrains.mps.lang.doctext" />
               </node>
             </node>
           </node>
@@ -866,13 +866,13 @@
                       <node concept="liA8E" id="4b" role="2OqNvi">
                         <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2$AggregationLinkBuilder.target(long,long,long)" resolve="target" />
                         <node concept="1adDum" id="4g" role="37wK5m">
-                          <property role="1adDun" value="0xceab519525ea4f22L" />
+                          <property role="1adDun" value="0xd304f2474944479dL" />
                         </node>
                         <node concept="1adDum" id="4h" role="37wK5m">
-                          <property role="1adDun" value="0x9b92103b95ca8c0cL" />
+                          <property role="1adDun" value="0xac8b972b953bcdfeL" />
                         </node>
                         <node concept="1adDum" id="4i" role="37wK5m">
-                          <property role="1adDun" value="0x38518aff8a105fd6L" />
+                          <property role="1adDun" value="0xa5fce56f6c81ea5L" />
                         </node>
                       </node>
                     </node>
