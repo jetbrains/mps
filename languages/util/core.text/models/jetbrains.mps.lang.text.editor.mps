@@ -202,6 +202,9 @@
       <concept id="1088013125922" name="jetbrains.mps.lang.editor.structure.CellModel_RefCell" flags="sg" stub="730538219795941030" index="1iCGBv">
         <child id="1088186146602" name="editorComponent" index="1sWHZn" />
       </concept>
+      <concept id="1225456267680" name="jetbrains.mps.lang.editor.structure.RGBColor" flags="ng" index="1iSF2X">
+        <property id="1225456424731" name="value" index="1iTho6" />
+      </concept>
       <concept id="1381004262292414836" name="jetbrains.mps.lang.editor.structure.ICellStyle" flags="ng" index="1k5N5V">
         <reference id="1381004262292426837" name="parentStyleClass" index="1k5W1q" />
       </concept>
@@ -36101,7 +36104,6 @@
     <property role="3GE5qa" value="doc" />
     <ref role="1XX52x" to="zqge:6N0oV4ThMNB" resolve="TextNodeReference" />
     <node concept="3EZMnI" id="6qMaajV4KpE" role="2wV5jI">
-      <node concept="3F0ifn" id="2jcE11Zy_3$" role="3EZMnx" />
       <node concept="1iCGBv" id="rh3Y2YeXCF" role="3EZMnx">
         <ref role="1NtTu8" to="zqge:rh3Y2YeW$V" resolve="reference" />
         <node concept="1sVBvm" id="rh3Y2YeXCH" role="1sWHZn">
@@ -36110,12 +36112,13 @@
             <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
           </node>
         </node>
+        <node concept="VechU" id="DeMe6BJL8_" role="3F10Kt">
+          <node concept="1iSF2X" id="DeMe6BJLb6" role="VblUZ">
+            <property role="1iTho6" value="016dcc" />
+          </node>
+        </node>
       </node>
-      <node concept="3F0ifn" id="2jcE11Zy_4Y" role="3EZMnx" />
       <node concept="l2Vlx" id="6qMaajV4KpN" role="2iSdaV" />
-      <node concept="VPXOz" id="2jcE11ZxtQn" role="3F10Kt">
-        <property role="VOm3f" value="true" />
-      </node>
     </node>
   </node>
   <node concept="24kQdi" id="6MMfM8JH7OZ">
