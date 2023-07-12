@@ -111,7 +111,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   @NotNull
   @Override
   public Collection<KeyMap> getDeclaredKeyMaps() {
-    return Arrays.<KeyMap>asList(new HtmlTextValue_text(), new HtmlWord_KeyMap());
+    return Arrays.<KeyMap>asList(new HtmlTextValue_text(), new HtmlWord_KeyMap(), new Tag_LeftBrace_KeyMap(), new Tag_RightBrace_KeyMap());
   }
 
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x5c842a42c54b8df3L), MetaIdFactory.conceptId(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x5c842a42c54b10b3L), MetaIdFactory.conceptId(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x17c864b128244a51L), MetaIdFactory.conceptId(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x5e2f66f285946ac9L), MetaIdFactory.conceptId(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x5c842a42c54c94c0L), MetaIdFactory.conceptId(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0xbe995479a944fcL), MetaIdFactory.conceptId(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x17c864b1282447abL), MetaIdFactory.conceptId(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x5c842a42c54b10b2L), MetaIdFactory.conceptId(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x5c842a42c54cfd1fL), MetaIdFactory.conceptId(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x5c842a42c54cfd1cL), MetaIdFactory.conceptId(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x16838b3fce9aa513L)).seal();

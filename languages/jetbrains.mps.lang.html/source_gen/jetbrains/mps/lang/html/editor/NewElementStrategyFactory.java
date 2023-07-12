@@ -69,7 +69,6 @@ public class NewElementStrategyFactory {
           ListSequence.fromList(SLinkOperations.getChildren(newLine, LINKS.elements$M3SS)).addElement(currentSibling);
           currentSibling = next;
         }
-
         TextStrategy.createNewLineContainer(lineContainer, newLine);
         if (mySelectNewLine) {
           SelectionUtil.selectLabelCellAnSetCaret(myEditorContext, newElement, SelectionManager.FIRST_CELL, 0);

@@ -5,16 +5,15 @@ package jetbrains.mps.lang.html.editor;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import java.util.Objects;
-import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class HtmlWordActionMap {
+public class Tag_LeftBrace_ActionMap {
 
   /*package*/ static AbstractCellAction createAction_BACKSPACE(final SNode node) {
     return new AbstractCellAction() {
@@ -33,7 +32,10 @@ public class HtmlWordActionMap {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        TextDeleteStrategyFactory.createDeleteStrategy(node, editorContext, true).execute();
+        if (DeletionApproverUtil.approve(editorContext, node)) {
+          return;
+        }
+        SNodeOperations.deleteNode(node);
       }
 
     };
@@ -44,7 +46,7 @@ public class HtmlWordActionMap {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        NewElementStrategyFactory.createNewLineStrategy(SNodeOperations.cast(node, CONCEPTS.HtmlWord$P2), editorContext, true, false).execute();
+        NewElementStrategyFactory.createNewLineStrategy(node, editorContext, true, true).execute();
       }
 
     };
@@ -55,17 +57,7 @@ public class HtmlWordActionMap {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        NewElementStrategyFactory.createNewLineStrategy(SNodeOperations.cast(node, CONCEPTS.HtmlWord$P2), editorContext, true, false).execute();
-      }
-
-    };
-  }
-  /*package*/ static AbstractCellAction createAction_COMMENT(final SNode node) {
-    return new AbstractCellAction() {
-      public void execute(EditorContext editorContext) {
-        this.execute_internal(editorContext, node);
-      }
-      public void execute_internal(EditorContext editorContext, SNode node) {
+        NewElementStrategyFactory.createNewLineStrategy(node, editorContext, true, true).execute();
       }
 
     };
@@ -103,7 +95,6 @@ public class HtmlWordActionMap {
     editorCell.setAction(CellActionType.DELETE, createAction_DELETE(node));
     editorCell.setAction(CellActionType.INSERT, createAction_INSERT(node));
     editorCell.setAction(CellActionType.INSERT_BEFORE, createAction_INSERT_BEFORE(node));
-    editorCell.setAction(CellActionType.COMMENT, createAction_COMMENT(node));
   }
 
   public static void setDefinedCellActionsOfType(EditorCell editorCell, SNode node, EditorContext context, CellActionType actionType) {
@@ -123,12 +114,5 @@ public class HtmlWordActionMap {
     if (Objects.equals(actionType, CellActionType.INSERT_BEFORE)) {
       editorCell.setAction(actionType, createAction_INSERT_BEFORE(node));
     }
-    if (Objects.equals(actionType, CellActionType.COMMENT)) {
-      editorCell.setAction(actionType, createAction_COMMENT(node));
-    }
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept HtmlWord$P2 = MetaAdapterFactory.getConcept(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x16838b3fce9aa513L, "jetbrains.mps.lang.html.structure.HtmlWord");
   }
 }
