@@ -6,14 +6,14 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.openapi.editor.selection.Selection;
@@ -63,8 +63,13 @@ public class NewElementStrategyFactory {
 
       // Test if a new Line following the current Line should be created
       if (currentSibling != null || myIncludeCurrentElement || currentLine == lineContainer || isNotEmptyString(SPropertyOperations.getString(SNodeOperations.as(newElement, CONCEPTS.Word$Dn), PROPS.value$zQr_))) {
-        SNode newLine = SNodeFactoryOperations.createNewNode(SNodeOperations.getConcept(currentLine), currentLine);
-        ListSequence.fromList(SLinkOperations.getChildren(newLine, LINKS.elements$_j45)).clear();
+        SNode newLine;
+        if (SNodeOperations.isInstanceOf(currentLine, CONCEPTS.Header$d7)) {
+          newLine = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
+        } else {
+          newLine = SNodeFactoryOperations.createNewNode(SNodeOperations.getConcept(currentLine), currentLine);
+          ListSequence.fromList(SLinkOperations.getChildren(newLine, LINKS.elements$_j45)).clear();
+        }
         ListSequence.fromList(SLinkOperations.getChildren(newLine, LINKS.elements$_j45)).addElement(newElement);
         while (currentSibling != null) {
           SNode next = SNodeOperations.cast(SNodeOperations.getNextSibling(currentSibling), CONCEPTS.TextElement$WN);
@@ -273,6 +278,7 @@ public class NewElementStrategyFactory {
     /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
     /*package*/ static final SConcept Line$yC = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
     /*package*/ static final SConcept TextElement$WN = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L, "jetbrains.mps.lang.text.structure.TextElement");
+    /*package*/ static final SConcept Header$d7 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb47accL, "jetbrains.mps.lang.text.structure.Header");
   }
 
   private static final class LINKS {
