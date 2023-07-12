@@ -883,7 +883,7 @@
 }, {
   "name" : "pty4j",
   "url" : "https://github.com/JetBrains/pty4j",
-  "version" : "0.12.11",
+  "version" : "0.12.13",
   "license" : "Eclipse Public License 1.0",
   "licenseUrl" : "https://github.com/JetBrains/pty4j/blob/master/LICENSE"
 }, {
