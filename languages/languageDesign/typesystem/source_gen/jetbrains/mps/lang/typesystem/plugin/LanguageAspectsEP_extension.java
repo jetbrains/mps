@@ -8,6 +8,8 @@ import jetbrains.mps.smodel.language.LanguageAspectDescriptorBase;
 import jetbrains.mps.aspects.OrderDescriptor;
 import jetbrains.mps.lang.structure.plugin.MPSAspects_Order;
 import jetbrains.mps.aspects.OrderParticipant;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -29,6 +31,9 @@ public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspec
       public int compareTo(OrderParticipant<String> other) {
         return myOrderConstraints.compare(this.getId(), other.getId());
       }
+      public SModuleReference getDefaultDevkit() {
+        return PersistenceFacade.getInstance().createModuleReference("00000000-0000-4000-0000-1de82b3a4936(jetbrains.mps.devkit.aspect.typesystem)");
+      }
       @NotNull
       @Override
       public Collection<SLanguage> getMainLanguages() {
@@ -36,7 +41,7 @@ public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspec
       }
       @Nullable
       public IconResource getIconResource() {
-        return IconContainer.RESOURCE_a0a4a0a0a1;
+        return IconContainer.RESOURCE_a0a5a0a0a1;
       }
       @Nullable
       public String getHelpUrl() {
