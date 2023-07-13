@@ -20,19 +20,19 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-public class NewElementStrategyFactory {
+public class HtmlNewElementStrategyFactory {
 
-  private NewElementStrategyFactory() {
+  private HtmlNewElementStrategyFactory() {
   }
 
-  public static TextStrategy createNewLineStrategy(SNode node, EditorContext editorContext, boolean selectNewLine, boolean isFirstPosition) {
+  public static HtmlTextStrategy createNewLineStrategy(SNode node, EditorContext editorContext, boolean selectNewLine, boolean isFirstPosition) {
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.HtmlWord$P2)) {
       return new AddNewLineAndSplitWordStrategy(SNodeOperations.cast(node, CONCEPTS.HtmlWord$P2), editorContext, selectNewLine);
     } else {
       return new AddNewLineStrategy(node, editorContext, selectNewLine, isFirstPosition);
     }
   }
-  public static TextStrategy createNewElementStrategy(SNode node, EditorContext editorContext, boolean isFirstPosition) {
+  public static HtmlTextStrategy createNewElementStrategy(SNode node, EditorContext editorContext, boolean isFirstPosition) {
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.HtmlWord$P2)) {
       return new SplitWordStrategy(SNodeOperations.cast(node, CONCEPTS.HtmlWord$P2), editorContext, !(isFirstPosition));
     } else {
@@ -40,7 +40,7 @@ public class NewElementStrategyFactory {
     }
   }
 
-  private static class AddNewLineStrategy extends TextStrategy {
+  private static class AddNewLineStrategy extends HtmlTextStrategy {
     protected final SNode myElement;
     protected final boolean mySelectNewLine;
     protected final boolean myIncludeCurrentElement;
@@ -54,7 +54,7 @@ public class NewElementStrategyFactory {
     @Override
     /*package*/ void execute() {
       SNode currentLine = SNodeOperations.cast(SNodeOperations.getParent(myElement), CONCEPTS.HtmlLine$u);
-      SNode lineContainer = TextStrategy.findLineContainer(currentLine);
+      SNode lineContainer = HtmlTextStrategy.findLineContainer(currentLine);
 
       SNode currentSibling = SNodeOperations.cast(SNodeOperations.getNextSibling(myElement), CONCEPTS.HtmlContent$q8);
       SNode newElement = createNewElement();
@@ -69,7 +69,8 @@ public class NewElementStrategyFactory {
           ListSequence.fromList(SLinkOperations.getChildren(newLine, LINKS.elements$M3SS)).addElement(currentSibling);
           currentSibling = next;
         }
-        TextStrategy.createNewLineContainer(lineContainer, newLine);
+
+        HtmlTextStrategy.createNewLineContainer(lineContainer, newLine);
         if (mySelectNewLine) {
           SelectionUtil.selectLabelCellAnSetCaret(myEditorContext, newElement, SelectionManager.FIRST_CELL, 0);
         }
@@ -112,7 +113,7 @@ public class NewElementStrategyFactory {
 
   }
 
-  private static class AddNewWordStrategy extends TextStrategy {
+  private static class AddNewWordStrategy extends HtmlTextStrategy {
     protected final SNode myElement;
     protected final boolean myAddNext;
     /*package*/ AddNewWordStrategy(SNode element, EditorContext editorContext, boolean addNext) {

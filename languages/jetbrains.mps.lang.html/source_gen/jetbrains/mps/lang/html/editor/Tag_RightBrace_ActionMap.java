@@ -35,7 +35,7 @@ public class Tag_RightBrace_ActionMap {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        TextDeleteStrategyFactory.createDeleteStrategy(node, editorContext, true).execute();
+        HtmlTextDeleteStrategyFactory.createDeleteStrategy(node, editorContext, true).execute();
       }
 
     };
@@ -46,7 +46,7 @@ public class Tag_RightBrace_ActionMap {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        NewElementStrategyFactory.createNewLineStrategy(node, editorContext, true, false).execute();
+        HtmlNewElementStrategyFactory.createNewLineStrategy(node, editorContext, true, false).execute();
       }
 
     };
@@ -57,7 +57,7 @@ public class Tag_RightBrace_ActionMap {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        NewElementStrategyFactory.createNewLineStrategy(node, editorContext, false, false).execute();
+        HtmlNewElementStrategyFactory.createNewLineStrategy(node, editorContext, false, false).execute();
       }
 
     };

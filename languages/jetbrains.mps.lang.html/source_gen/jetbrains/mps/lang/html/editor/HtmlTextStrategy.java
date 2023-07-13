@@ -11,10 +11,10 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-/*package*/ abstract class TextStrategy {
+/*package*/ abstract class HtmlTextStrategy {
   protected EditorContext myEditorContext;
 
-  /*package*/ TextStrategy(EditorContext editorContext) {
+  /*package*/ HtmlTextStrategy(EditorContext editorContext) {
     myEditorContext = editorContext;
   }
 

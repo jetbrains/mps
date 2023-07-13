@@ -21,7 +21,7 @@ public class Tag_LeftBrace_ActionMap {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        TextDeleteStrategyFactory.createDeleteStrategy(node, editorContext, false).execute();
+        HtmlTextDeleteStrategyFactory.createDeleteStrategy(node, editorContext, false).execute();
       }
 
     };
@@ -46,7 +46,7 @@ public class Tag_LeftBrace_ActionMap {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        NewElementStrategyFactory.createNewLineStrategy(node, editorContext, true, true).execute();
+        HtmlNewElementStrategyFactory.createNewLineStrategy(node, editorContext, true, true).execute();
       }
 
     };
@@ -57,7 +57,7 @@ public class Tag_LeftBrace_ActionMap {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        NewElementStrategyFactory.createNewLineStrategy(node, editorContext, true, true).execute();
+        HtmlNewElementStrategyFactory.createNewLineStrategy(node, editorContext, true, true).execute();
       }
 
     };

@@ -677,7 +677,7 @@
     </node>
   </node>
   <node concept="1h_SRR" id="1ZLaG1TO5RT">
-    <property role="TrG5h" value="DeleteAttribute" />
+    <property role="TrG5h" value="DeleteHtmlAttribute" />
     <ref role="1h_SK9" to="7vgx:5M4a$b5iSRN" resolve="HtmlAttribute" />
     <node concept="1hA7zw" id="1ZLaG1TO6dw" role="1h_SK8">
       <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
@@ -1967,7 +1967,7 @@
     </node>
   </node>
   <node concept="1h_SRR" id="2YAlhTExpH">
-    <property role="TrG5h" value="HtmlWordActionMap" />
+    <property role="TrG5h" value="HtmlWord_ActionMap" />
     <ref role="1h_SK9" to="7vgx:1q3yNZeAEkj" resolve="HtmlWord" />
     <node concept="1hA7zw" id="2cLqkTm9Qid" role="1h_SK8">
       <property role="1hAc7j" value="7P1WhNABvta/backspace_action_id" />
@@ -1977,7 +1977,7 @@
             <node concept="2OqwBi" id="2cLqkTmdE$R" role="3clFbG">
               <node concept="2YIFZM" id="2cLqkTmd7cs" role="2Oq$k0">
                 <ref role="37wK5l" node="2cLqkTmc5IU" resolve="createDeleteStrategy" />
-                <ref role="1Pybhc" node="2cLqkTm9Ydq" resolve="TextDeleteStrategyFactory" />
+                <ref role="1Pybhc" node="2cLqkTm9Ydq" resolve="HtmlTextDeleteStrategyFactory" />
                 <node concept="0IXxy" id="2cLqkTmd7ey" role="37wK5m" />
                 <node concept="1Q80Hx" id="2cLqkTmd7hc" role="37wK5m" />
                 <node concept="3clFbT" id="2cLqkTmd7lb" role="37wK5m">
@@ -2000,7 +2000,7 @@
             <node concept="2OqwBi" id="2cLqkTmdESW" role="3clFbG">
               <node concept="2YIFZM" id="2cLqkTmd7nV" role="2Oq$k0">
                 <ref role="37wK5l" node="2cLqkTmc5IU" resolve="createDeleteStrategy" />
-                <ref role="1Pybhc" node="2cLqkTm9Ydq" resolve="TextDeleteStrategyFactory" />
+                <ref role="1Pybhc" node="2cLqkTm9Ydq" resolve="HtmlTextDeleteStrategyFactory" />
                 <node concept="0IXxy" id="2cLqkTmd7nW" role="37wK5m" />
                 <node concept="1Q80Hx" id="2cLqkTmd7nX" role="37wK5m" />
                 <node concept="3clFbT" id="2cLqkTmd7nY" role="37wK5m">
@@ -2023,7 +2023,7 @@
             <node concept="2OqwBi" id="5MT8pi2CjUs" role="3clFbG">
               <node concept="2YIFZM" id="2YAlhTHshW" role="2Oq$k0">
                 <ref role="37wK5l" node="5MT8pi2BJQr" resolve="createNewLineStrategy" />
-                <ref role="1Pybhc" node="2cLqkTm6DMC" resolve="NewElementStrategyFactory" />
+                <ref role="1Pybhc" node="2cLqkTm6DMC" resolve="HtmlNewElementStrategyFactory" />
                 <node concept="1PxgMI" id="2YAlhTHshX" role="37wK5m">
                   <node concept="chp4Y" id="2YAlhTHshY" role="3oSUPX">
                     <ref role="cht4Q" to="7vgx:1q3yNZeAEkj" resolve="HtmlWord" />
@@ -2052,7 +2052,7 @@
             <node concept="2OqwBi" id="5MT8pi2G17V" role="3clFbG">
               <node concept="2YIFZM" id="2YAlhTGw5q" role="2Oq$k0">
                 <ref role="37wK5l" node="5MT8pi2BJQr" resolve="createNewLineStrategy" />
-                <ref role="1Pybhc" node="2cLqkTm6DMC" resolve="NewElementStrategyFactory" />
+                <ref role="1Pybhc" node="2cLqkTm6DMC" resolve="HtmlNewElementStrategyFactory" />
                 <node concept="1PxgMI" id="2YAlhTGw5r" role="37wK5m">
                   <node concept="chp4Y" id="2YAlhTGw5s" role="3oSUPX">
                     <ref role="cht4Q" to="7vgx:1q3yNZeAEkj" resolve="HtmlWord" />
@@ -2081,7 +2081,7 @@
     </node>
   </node>
   <node concept="312cEu" id="2cLqkTm9Ydq">
-    <property role="TrG5h" value="TextDeleteStrategyFactory" />
+    <property role="TrG5h" value="HtmlTextDeleteStrategyFactory" />
     <property role="1sVAO0" value="false" />
     <node concept="3clFbW" id="5MT8pi2_rMJ" role="jymVt">
       <node concept="3cqZAl" id="5MT8pi2_rML" role="3clF45" />
@@ -2105,7 +2105,7 @@
       <node concept="2tJIrI" id="5MT8pi2BTrc" role="jymVt" />
       <node concept="3Tm6S6" id="5MT8pi2BM8Y" role="1B3o_S" />
       <node concept="3uibUv" id="2YAlhTEQMw" role="1zkMxy">
-        <ref role="3uigEE" node="5MT8pi2_dFl" resolve="TextStrategy" />
+        <ref role="3uigEE" node="5MT8pi2_dFl" resolve="HtmlTextStrategy" />
       </node>
       <node concept="3clFbW" id="5MT8pi2BUkQ" role="jymVt">
         <node concept="3cqZAl" id="5MT8pi2BUkR" role="3clF45" />
@@ -2381,7 +2381,7 @@
                   <node concept="3Tqbb2" id="13gAna055vo" role="1tU5fm" />
                   <node concept="2YIFZM" id="13gAna09EeU" role="33vP2m">
                     <ref role="37wK5l" node="13gAna09BWf" resolve="findLineContainer" />
-                    <ref role="1Pybhc" node="5MT8pi2_dFl" resolve="TextStrategy" />
+                    <ref role="1Pybhc" node="5MT8pi2_dFl" resolve="HtmlTextStrategy" />
                     <node concept="37vLTw" id="13gAna09F4G" role="37wK5m">
                       <ref role="3cqZAo" node="2cLqkTmc6_w" resolve="currentLine" />
                     </node>
@@ -2420,7 +2420,7 @@
                   </node>
                   <node concept="2YIFZM" id="13gAna096r6" role="33vP2m">
                     <ref role="37wK5l" node="13gAna08SJd" resolve="findLineInContainer" />
-                    <ref role="1Pybhc" node="5MT8pi2_dFl" resolve="TextStrategy" />
+                    <ref role="1Pybhc" node="5MT8pi2_dFl" resolve="HtmlTextStrategy" />
                     <node concept="37vLTw" id="13gAna09nAb" role="37wK5m">
                       <ref role="3cqZAo" node="13gAna09nA2" resolve="neighbourContainer" />
                     </node>
@@ -2518,7 +2518,7 @@
         <node concept="3clFbH" id="2cLqkTmc8kx" role="3cqZAp" />
       </node>
       <node concept="3uibUv" id="5MT8pi2_MBh" role="3clF45">
-        <ref role="3uigEE" node="5MT8pi2_dFl" resolve="TextStrategy" />
+        <ref role="3uigEE" node="5MT8pi2_dFl" resolve="HtmlTextStrategy" />
       </node>
       <node concept="37vLTG" id="2cLqkTmc5Jo" role="3clF46">
         <property role="TrG5h" value="currentNode" />
@@ -3588,7 +3588,7 @@
               <node concept="3clFbF" id="13gAna08YrW" role="3cqZAp">
                 <node concept="2OqwBi" id="13gAna091vM" role="3clFbG">
                   <node concept="2YIFZM" id="13gAna09DLm" role="2Oq$k0">
-                    <ref role="1Pybhc" node="5MT8pi2_dFl" resolve="TextStrategy" />
+                    <ref role="1Pybhc" node="5MT8pi2_dFl" resolve="HtmlTextStrategy" />
                     <ref role="37wK5l" node="13gAna09BWf" resolve="findLineContainer" />
                     <node concept="37vLTw" id="13gAna09DLn" role="37wK5m">
                       <ref role="3cqZAo" node="2cLqkTma$As" resolve="myNeighbourLine" />
@@ -3660,7 +3660,7 @@
                 <node concept="3clFbF" id="2J_7GX5fHTu" role="3cqZAp">
                   <node concept="2OqwBi" id="2J_7GX5fHTv" role="3clFbG">
                     <node concept="2YIFZM" id="2J_7GX5fHTw" role="2Oq$k0">
-                      <ref role="1Pybhc" node="5MT8pi2_dFl" resolve="TextStrategy" />
+                      <ref role="1Pybhc" node="5MT8pi2_dFl" resolve="HtmlTextStrategy" />
                       <ref role="37wK5l" node="13gAna09BWf" resolve="findLineContainer" />
                       <node concept="37vLTw" id="2J_7GX5fOTD" role="37wK5m">
                         <ref role="3cqZAo" node="2cLqkTmaK7p" resolve="myCurrentLine" />
@@ -3678,7 +3678,7 @@
                 <node concept="2OqwBi" id="2cLqkTmh7oA" role="3clFbG">
                   <node concept="2YIFZM" id="2cLqkTmfPGF" role="2Oq$k0">
                     <ref role="37wK5l" node="2cLqkTmc5IU" resolve="createDeleteStrategy" />
-                    <ref role="1Pybhc" node="2cLqkTm9Ydq" resolve="TextDeleteStrategyFactory" />
+                    <ref role="1Pybhc" node="2cLqkTm9Ydq" resolve="HtmlTextDeleteStrategyFactory" />
                     <node concept="37vLTw" id="2cLqkTmfQff" role="37wK5m">
                       <ref role="3cqZAo" node="2cLqkTmfJ6Q" resolve="myCurrentNode" />
                     </node>
@@ -3731,7 +3731,7 @@
   </node>
   <node concept="312cEu" id="5MT8pi2_dFl">
     <property role="1sVAO0" value="true" />
-    <property role="TrG5h" value="TextStrategy" />
+    <property role="TrG5h" value="HtmlTextStrategy" />
     <node concept="312cEg" id="5MT8pi2_dHf" role="jymVt">
       <property role="TrG5h" value="myEditorContext" />
       <node concept="3Tmbuc" id="5MT8pi2_dHg" role="1B3o_S" />
@@ -4117,7 +4117,7 @@
     <node concept="2tJIrI" id="5MT8pi2_dH4" role="jymVt" />
   </node>
   <node concept="312cEu" id="2cLqkTm6DMC">
-    <property role="TrG5h" value="NewElementStrategyFactory" />
+    <property role="TrG5h" value="HtmlNewElementStrategyFactory" />
     <property role="1sVAO0" value="false" />
     <node concept="2tJIrI" id="5MT8pi2Ac9s" role="jymVt" />
     <node concept="3clFbW" id="5MT8pi2Ad2A" role="jymVt">
@@ -4211,7 +4211,7 @@
         <node concept="10P_77" id="5MT8pi2FVzt" role="1tU5fm" />
       </node>
       <node concept="3uibUv" id="5MT8pi2ApWP" role="3clF45">
-        <ref role="3uigEE" node="5MT8pi2_dFl" resolve="TextStrategy" />
+        <ref role="3uigEE" node="5MT8pi2_dFl" resolve="HtmlTextStrategy" />
       </node>
       <node concept="3Tm1VV" id="4e00Si$wbba" role="1B3o_S" />
     </node>
@@ -4298,7 +4298,7 @@
         <node concept="10P_77" id="5MT8pi2FW6H" role="1tU5fm" />
       </node>
       <node concept="3uibUv" id="5MT8pi2FW6I" role="3clF45">
-        <ref role="3uigEE" node="5MT8pi2_dFl" resolve="TextStrategy" />
+        <ref role="3uigEE" node="5MT8pi2_dFl" resolve="HtmlTextStrategy" />
       </node>
       <node concept="3Tm1VV" id="4e00Si$wbhv" role="1B3o_S" />
     </node>
@@ -4429,7 +4429,7 @@
               <property role="TrG5h" value="lineContainer" />
               <node concept="3Tqbb2" id="7fQBo8T6n_w" role="1tU5fm" />
               <node concept="2YIFZM" id="13gAna09JMz" role="33vP2m">
-                <ref role="1Pybhc" node="5MT8pi2_dFl" resolve="TextStrategy" />
+                <ref role="1Pybhc" node="5MT8pi2_dFl" resolve="HtmlTextStrategy" />
                 <ref role="37wK5l" node="13gAna09BWf" resolve="findLineContainer" />
                 <node concept="37vLTw" id="13gAna09JM$" role="37wK5m">
                   <ref role="3cqZAo" node="qmyvdpMLfQ" resolve="currentLine" />
@@ -4621,7 +4621,7 @@
               <node concept="3clFbH" id="7fQBo8T6WKp" role="3cqZAp" />
               <node concept="3clFbF" id="13gAna09b4j" role="3cqZAp">
                 <node concept="2YIFZM" id="13gAna09JMB" role="3clFbG">
-                  <ref role="1Pybhc" node="5MT8pi2_dFl" resolve="TextStrategy" />
+                  <ref role="1Pybhc" node="5MT8pi2_dFl" resolve="HtmlTextStrategy" />
                   <ref role="37wK5l" node="13gAna09Cg6" resolve="createNewLineContainer" />
                   <node concept="37vLTw" id="13gAna09JMC" role="37wK5m">
                     <ref role="3cqZAo" node="7fQBo8T6n__" resolve="lineContainer" />
@@ -4823,7 +4823,7 @@
       </node>
       <node concept="3Tm6S6" id="5MT8pi2CX9a" role="1B3o_S" />
       <node concept="3uibUv" id="5MT8pi2CYGR" role="1zkMxy">
-        <ref role="3uigEE" node="5MT8pi2_dFl" resolve="TextStrategy" />
+        <ref role="3uigEE" node="5MT8pi2_dFl" resolve="HtmlTextStrategy" />
       </node>
     </node>
     <node concept="312cEu" id="5MT8pi2D$mR" role="jymVt">
@@ -4994,7 +4994,7 @@
         <node concept="10P_77" id="5MT8pi2AC4P" role="1tU5fm" />
       </node>
       <node concept="3uibUv" id="5MT8pi2AC4Q" role="1zkMxy">
-        <ref role="3uigEE" node="5MT8pi2_dFl" resolve="TextStrategy" />
+        <ref role="3uigEE" node="5MT8pi2_dFl" resolve="HtmlTextStrategy" />
       </node>
       <node concept="3clFbW" id="5MT8pi2AC4R" role="jymVt">
         <node concept="3cqZAl" id="5MT8pi2AC4S" role="3clF45" />
@@ -5747,7 +5747,7 @@
             <node concept="2OqwBi" id="5MT8pi2CpKs" role="3clFbG">
               <node concept="2YIFZM" id="5MT8pi2G1hB" role="2Oq$k0">
                 <ref role="37wK5l" node="5MT8pi2FW6d" resolve="createNewElementStrategy" />
-                <ref role="1Pybhc" node="2cLqkTm6DMC" resolve="NewElementStrategyFactory" />
+                <ref role="1Pybhc" node="2cLqkTm6DMC" resolve="HtmlNewElementStrategyFactory" />
                 <node concept="0GJ7k" id="5MT8pi2G1hC" role="37wK5m" />
                 <node concept="1Q80Hx" id="5MT8pi2G1hD" role="37wK5m" />
                 <node concept="3clFbT" id="5MT8pi2G1hE" role="37wK5m">
@@ -5771,7 +5771,7 @@
           <node concept="3clFbF" id="5MT8pi2G21d" role="3cqZAp">
             <node concept="2OqwBi" id="5MT8pi2G21e" role="3clFbG">
               <node concept="2YIFZM" id="5MT8pi2G21f" role="2Oq$k0">
-                <ref role="1Pybhc" node="2cLqkTm6DMC" resolve="NewElementStrategyFactory" />
+                <ref role="1Pybhc" node="2cLqkTm6DMC" resolve="HtmlNewElementStrategyFactory" />
                 <ref role="37wK5l" node="5MT8pi2FW6d" resolve="createNewElementStrategy" />
                 <node concept="0GJ7k" id="5MT8pi2G21g" role="37wK5m" />
                 <node concept="1Q80Hx" id="5MT8pi2G21h" role="37wK5m" />
@@ -5821,7 +5821,7 @@
           <node concept="3clFbF" id="5MT8pi2G27X" role="3cqZAp">
             <node concept="2OqwBi" id="5MT8pi2G27Y" role="3clFbG">
               <node concept="2YIFZM" id="5MT8pi2G27Z" role="2Oq$k0">
-                <ref role="1Pybhc" node="2cLqkTm6DMC" resolve="NewElementStrategyFactory" />
+                <ref role="1Pybhc" node="2cLqkTm6DMC" resolve="HtmlNewElementStrategyFactory" />
                 <ref role="37wK5l" node="5MT8pi2FW6d" resolve="createNewElementStrategy" />
                 <node concept="0GJ7k" id="5MT8pi2G280" role="37wK5m" />
                 <node concept="1Q80Hx" id="5MT8pi2G281" role="37wK5m" />
@@ -5847,7 +5847,7 @@
           <node concept="3clFbF" id="5MT8pi2G2hH" role="3cqZAp">
             <node concept="2OqwBi" id="5MT8pi2G2hI" role="3clFbG">
               <node concept="2YIFZM" id="5MT8pi2G2hJ" role="2Oq$k0">
-                <ref role="1Pybhc" node="2cLqkTm6DMC" resolve="NewElementStrategyFactory" />
+                <ref role="1Pybhc" node="2cLqkTm6DMC" resolve="HtmlNewElementStrategyFactory" />
                 <ref role="37wK5l" node="5MT8pi2FW6d" resolve="createNewElementStrategy" />
                 <node concept="0GJ7k" id="5MT8pi2G2hK" role="37wK5m" />
                 <node concept="1Q80Hx" id="5MT8pi2G2hL" role="37wK5m" />
@@ -5984,7 +5984,7 @@
             <node concept="2OqwBi" id="5MT8pi2G2oy" role="3clFbG">
               <node concept="2YIFZM" id="5MT8pi2G2oz" role="2Oq$k0">
                 <ref role="37wK5l" node="2cLqkTmc5IU" resolve="createDeleteStrategy" />
-                <ref role="1Pybhc" node="2cLqkTm9Ydq" resolve="TextDeleteStrategyFactory" />
+                <ref role="1Pybhc" node="2cLqkTm9Ydq" resolve="HtmlTextDeleteStrategyFactory" />
                 <node concept="0IXxy" id="3raGBnheFgv" role="37wK5m" />
                 <node concept="1Q80Hx" id="3raGBnhcObK" role="37wK5m" />
                 <node concept="3clFbT" id="5MT8pi2G2oA" role="37wK5m">
@@ -6031,7 +6031,7 @@
             <node concept="2OqwBi" id="5MT8pi2G2oQ" role="3clFbG">
               <node concept="2YIFZM" id="5MT8pi2G2oR" role="2Oq$k0">
                 <ref role="37wK5l" node="5MT8pi2BJQr" resolve="createNewLineStrategy" />
-                <ref role="1Pybhc" node="2cLqkTm6DMC" resolve="NewElementStrategyFactory" />
+                <ref role="1Pybhc" node="2cLqkTm6DMC" resolve="HtmlNewElementStrategyFactory" />
                 <node concept="0IXxy" id="5MT8pi2G2oS" role="37wK5m" />
                 <node concept="1Q80Hx" id="5MT8pi2G2oT" role="37wK5m" />
                 <node concept="3clFbT" id="5MT8pi2G2oU" role="37wK5m">
@@ -6057,7 +6057,7 @@
             <node concept="2OqwBi" id="5MT8pi2G2p1" role="3clFbG">
               <node concept="2YIFZM" id="5MT8pi2G2p2" role="2Oq$k0">
                 <ref role="37wK5l" node="5MT8pi2BJQr" resolve="createNewLineStrategy" />
-                <ref role="1Pybhc" node="2cLqkTm6DMC" resolve="NewElementStrategyFactory" />
+                <ref role="1Pybhc" node="2cLqkTm6DMC" resolve="HtmlNewElementStrategyFactory" />
                 <node concept="0IXxy" id="5MT8pi2G2p3" role="37wK5m" />
                 <node concept="1Q80Hx" id="5MT8pi2G2p4" role="37wK5m" />
                 <node concept="3clFbT" id="5MT8pi2G2p5" role="37wK5m">
@@ -6090,7 +6090,7 @@
             <node concept="2OqwBi" id="5MT8pi2CPUm" role="3clFbG">
               <node concept="2YIFZM" id="5MT8pi2G0ah" role="2Oq$k0">
                 <ref role="37wK5l" node="5MT8pi2FW6d" resolve="createNewElementStrategy" />
-                <ref role="1Pybhc" node="2cLqkTm6DMC" resolve="NewElementStrategyFactory" />
+                <ref role="1Pybhc" node="2cLqkTm6DMC" resolve="HtmlNewElementStrategyFactory" />
                 <node concept="0GJ7k" id="5MT8pi2G0ai" role="37wK5m" />
                 <node concept="1Q80Hx" id="5MT8pi2G0aj" role="37wK5m" />
                 <node concept="3clFbT" id="5MT8pi2G0al" role="37wK5m">
@@ -6141,7 +6141,7 @@
           <node concept="3clFbF" id="5MT8pi2_2SM" role="3cqZAp">
             <node concept="2OqwBi" id="5MT8pi2_2SN" role="3clFbG">
               <node concept="2YIFZM" id="5MT8pi2_2SO" role="2Oq$k0">
-                <ref role="1Pybhc" node="2cLqkTm9Ydq" resolve="TextDeleteStrategyFactory" />
+                <ref role="1Pybhc" node="2cLqkTm9Ydq" resolve="HtmlTextDeleteStrategyFactory" />
                 <ref role="37wK5l" node="2cLqkTmc5IU" resolve="createDeleteStrategy" />
                 <node concept="0IXxy" id="5MT8pi2_2SP" role="37wK5m" />
                 <node concept="1Q80Hx" id="5MT8pi2_2SQ" role="37wK5m" />
@@ -6164,7 +6164,7 @@
           <node concept="3clFbF" id="5MT8pi2CQVP" role="3cqZAp">
             <node concept="2OqwBi" id="5MT8pi2CQVQ" role="3clFbG">
               <node concept="2YIFZM" id="5MT8pi2CQVR" role="2Oq$k0">
-                <ref role="1Pybhc" node="2cLqkTm6DMC" resolve="NewElementStrategyFactory" />
+                <ref role="1Pybhc" node="2cLqkTm6DMC" resolve="HtmlNewElementStrategyFactory" />
                 <ref role="37wK5l" node="5MT8pi2BJQr" resolve="createNewLineStrategy" />
                 <node concept="0IXxy" id="5MT8pi2CR8K" role="37wK5m" />
                 <node concept="1Q80Hx" id="5MT8pi2CQVT" role="37wK5m" />
@@ -6189,7 +6189,7 @@
             <node concept="2OqwBi" id="5MT8pi2CRdf" role="3clFbG">
               <node concept="2YIFZM" id="5MT8pi2CRdg" role="2Oq$k0">
                 <ref role="37wK5l" node="5MT8pi2BJQr" resolve="createNewLineStrategy" />
-                <ref role="1Pybhc" node="2cLqkTm6DMC" resolve="NewElementStrategyFactory" />
+                <ref role="1Pybhc" node="2cLqkTm6DMC" resolve="HtmlNewElementStrategyFactory" />
                 <node concept="0IXxy" id="5MT8pi2CRdh" role="37wK5m" />
                 <node concept="1Q80Hx" id="5MT8pi2CRdi" role="37wK5m" />
                 <node concept="3clFbT" id="5MT8pi2CRdj" role="37wK5m" />
@@ -6218,7 +6218,7 @@
             <node concept="2OqwBi" id="5MT8pi2CQbY" role="3clFbG">
               <node concept="2YIFZM" id="5MT8pi2G0yy" role="2Oq$k0">
                 <ref role="37wK5l" node="5MT8pi2FW6d" resolve="createNewElementStrategy" />
-                <ref role="1Pybhc" node="2cLqkTm6DMC" resolve="NewElementStrategyFactory" />
+                <ref role="1Pybhc" node="2cLqkTm6DMC" resolve="HtmlNewElementStrategyFactory" />
                 <node concept="0GJ7k" id="5MT8pi2G0yz" role="37wK5m" />
                 <node concept="1Q80Hx" id="5MT8pi2G0y$" role="37wK5m" />
                 <node concept="3clFbT" id="5MT8pi2G0yA" role="37wK5m" />

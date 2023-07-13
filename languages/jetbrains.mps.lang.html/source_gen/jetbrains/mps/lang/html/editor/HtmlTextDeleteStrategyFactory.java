@@ -18,11 +18,11 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-/*package*/ class TextDeleteStrategyFactory {
-  private TextDeleteStrategyFactory() {
+/*package*/ class HtmlTextDeleteStrategyFactory {
+  private HtmlTextDeleteStrategyFactory() {
   }
 
-  private static abstract class TextDeleteStrategy extends TextStrategy {
+  private static abstract class TextDeleteStrategy extends HtmlTextStrategy {
     protected final boolean myIsForward;
 
     private TextDeleteStrategy(EditorContext editorContext, boolean isForward) {
@@ -31,7 +31,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     }
   }
 
-  /*package*/ static TextStrategy createDeleteStrategy(SNode currentNode, EditorContext editorContext, boolean isForward) {
+  /*package*/ static HtmlTextStrategy createDeleteStrategy(SNode currentNode, EditorContext editorContext, boolean isForward) {
     SNode neighbour = SNodeOperations.as(((isForward ? SNodeOperations.getNextSibling(currentNode) : SNodeOperations.getPrevSibling(currentNode))), CONCEPTS.HtmlContent$q8);
     if (SNodeOperations.isInstanceOf(currentNode, CONCEPTS.HtmlWord$P2) && (neighbour != null)) {
       if (SNodeOperations.isInstanceOf(neighbour, CONCEPTS.HtmlWord$P2)) {
@@ -48,10 +48,10 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       }
     } else {
       SNode currentLine = SNodeOperations.as(SNodeOperations.getParent(currentNode), CONCEPTS.HtmlLine$u);
-      SNode lineContainer = TextStrategy.findLineContainer(currentLine);
+      SNode lineContainer = HtmlTextStrategy.findLineContainer(currentLine);
 
       SNode neighbourContainer = (isForward ? SNodeOperations.getNextSibling(lineContainer) : SNodeOperations.getPrevSibling(lineContainer));
-      SNode neighbourLine = TextStrategy.findLineInContainer(neighbourContainer);
+      SNode neighbourLine = HtmlTextStrategy.findLineInContainer(neighbourContainer);
       if ((Objects.equals(SNodeOperations.getConcept(neighbourContainer), SNodeOperations.getConcept(lineContainer)) || SNodeOperations.isInstanceOf(neighbourContainer, CONCEPTS.HtmlLine$u)) && (neighbourLine != null)) {
         return new RemoveLineStrategy(currentNode, currentLine, neighbourLine, editorContext, isForward);
       } else {
@@ -197,14 +197,14 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       if (myIsForward) {
         edgeElement = ListSequence.fromList(SLinkOperations.getChildren(myNeighbourLine, LINKS.elements$M3SS)).first();
         ListSequence.fromList(SLinkOperations.getChildren(myNeighbourLine, LINKS.elements$M3SS)).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(myCurrentLine, LINKS.elements$M3SS)).addElement(it));
-        SNodeOperations.deleteNode(TextStrategy.findLineContainer(myNeighbourLine));
+        SNodeOperations.deleteNode(HtmlTextStrategy.findLineContainer(myNeighbourLine));
       } else {
         edgeElement = ListSequence.fromList(SLinkOperations.getChildren(myCurrentLine, LINKS.elements$M3SS)).first();
         ListSequence.fromList(SLinkOperations.getChildren(myCurrentLine, LINKS.elements$M3SS)).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(myNeighbourLine, LINKS.elements$M3SS)).addElement(it));
-        SNodeOperations.deleteNode(TextStrategy.findLineContainer(myCurrentLine));
+        SNodeOperations.deleteNode(HtmlTextStrategy.findLineContainer(myCurrentLine));
       }
       if (SNodeOperations.isInstanceOf(edgeElement, CONCEPTS.HtmlWord$P2) && SNodeOperations.isInstanceOf(myCurrentNode, CONCEPTS.HtmlWord$P2)) {
-        TextDeleteStrategyFactory.createDeleteStrategy(myCurrentNode, myEditorContext, myIsForward).execute();
+        HtmlTextDeleteStrategyFactory.createDeleteStrategy(myCurrentNode, myEditorContext, myIsForward).execute();
       }
     }
   }

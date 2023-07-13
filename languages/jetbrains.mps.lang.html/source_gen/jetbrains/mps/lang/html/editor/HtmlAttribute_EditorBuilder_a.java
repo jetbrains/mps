@@ -67,7 +67,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setCellId("Collection_omiukd_a");
     editorCell.setBig(true);
     setCellContext(editorCell);
-    DeleteAttribute.setCellActions(editorCell, myNode, getEditorContext());
+    DeleteHtmlAttribute.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.addEditorCell(createProperty_0());
     editorCell.addEditorCell(createConstant_0());
     editorCell.addEditorCell(createConstant_1());
@@ -106,7 +106,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     style.set(StyleAttributes.PUNCTUATION_LEFT, true);
     style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
     editorCell.getStyle().putAll(style);
-    DeleteAttribute.setCellActions(editorCell, myNode, getEditorContext());
+    DeleteHtmlAttribute.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
     return editorCell;
   }

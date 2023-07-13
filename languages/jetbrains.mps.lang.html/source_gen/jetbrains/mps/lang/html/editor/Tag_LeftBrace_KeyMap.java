@@ -46,7 +46,7 @@ public class Tag_LeftBrace_KeyMap extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      NewElementStrategyFactory.createNewElementStrategy(node, editorContext, true).execute();
+      HtmlNewElementStrategyFactory.createNewElementStrategy(node, editorContext, true).execute();
     }
     public String getKeyStroke() {
       return "  ";
