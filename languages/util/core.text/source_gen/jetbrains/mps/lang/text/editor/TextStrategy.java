@@ -11,14 +11,14 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-/*package*/ abstract class TextStrategy {
+public abstract class TextStrategy {
   protected EditorContext myEditorContext;
 
   /*package*/ TextStrategy(EditorContext editorContext) {
     myEditorContext = editorContext;
   }
 
-  /*package*/ abstract void execute();
+  public abstract void execute();
 
   /**
    * Finds the closest ancestor (inclusive) that is a member of a collection

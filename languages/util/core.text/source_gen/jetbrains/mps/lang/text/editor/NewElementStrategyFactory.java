@@ -54,7 +54,7 @@ public class NewElementStrategyFactory {
       myIncludeCurrentElement = includeCurrentElement;
     }
     @Override
-    /*package*/ void execute() {
+    public void execute() {
       SNode currentLine = SNodeOperations.cast(SNodeOperations.getParent(myElement), CONCEPTS.Line$yC);
       SNode lineContainer = TextStrategy.findLineContainer(currentLine);
 
@@ -107,7 +107,7 @@ public class NewElementStrategyFactory {
       mySplitter = new WordSplitter(word, editorContext);
     }
     @Override
-    /*package*/ void execute() {
+    public void execute() {
       SPropertyOperations.assign(SNodeOperations.cast(myElement, CONCEPTS.Word$Dn), PROPS.value$zQr_, mySplitter.getLeftText());
       super.execute();
     }
@@ -130,7 +130,7 @@ public class NewElementStrategyFactory {
     }
 
     @Override
-    /*package*/ void execute() {
+    public void execute() {
       SNode newWord = createNewWord();
       if (myAddNext) {
         SNodeOperations.insertNextSiblingChild(myElement, newWord);
@@ -156,7 +156,7 @@ public class NewElementStrategyFactory {
       mySplitter = new WordSplitter(word, editorContext);
     }
     @Override
-    /*package*/ void execute() {
+    public void execute() {
       if (myAddNext) {
         SPropertyOperations.assign(SNodeOperations.cast(myElement, CONCEPTS.Word$Dn), PROPS.value$zQr_, mySplitter.getLeftText());
       } else {
@@ -179,7 +179,7 @@ public class NewElementStrategyFactory {
       super(word, editorContext, addNext);
     }
 
-    /*package*/ void execute() {
+    public void execute() {
       super.execute();
       replaceTemplates();
     }
