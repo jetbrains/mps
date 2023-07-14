@@ -20,6 +20,7 @@ import jetbrains.mps.extapi.module.ModuleFacetBase;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
@@ -112,6 +113,19 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
   @Nullable
   public IFile getClassesGen() {
     return myGeneratedClassesLocation;
+  }
+
+  @Nullable
+  @Override
+  public IFile getOutputRoot() {
+    // FIXME not a field like myGeneratedClassesLocation but re-calculated each time as value editing happens
+    //  through MD and I'm not sure JMF instances get updated once MD.outputPath get changed (check usages of
+    //  ProjectPathUtil.setGeneratorOutputPath());
+    // This is copy of super.getOutputRoot(), just with macro resolution added for scenarios when module descriptor
+    //      has been read w/o macro resolution (e.g. in lang.build)
+    String outputPath = ProjectPathUtil.getGeneratorOutputPath(getAbstractModule().getModuleDescriptor());
+    outputPath = outputPath == null ? null : MacrosFactory.forModule(getModule()).expandPath(outputPath);
+    return outputPath == null ? null : getAbstractModule().getFileSystem().getFile(outputPath);
   }
 
   @Override
@@ -235,6 +249,10 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
       // FIXME in fact, JavaModuleFacetTab does the same, but only for Solution, while I need this to happen for every module with a new JMF.
       //       Merge these two approaches into 1 place.
       myGeneratedClassesLocation = getAbstractModule().getModuleSourceDir().findChild(AbstractModule.CLASSES_GEN);
+      // FIXME Once there's myOutputRoot, need to decide about its default value. On one hand, seems reasonable to do the same as
+      //       for myGeneratedClassesLocation. However, there was none and code that creates JMF seems to care about
+      //       source output explicitly (producers). Nevertheless, shall unify approach -
+      //       whether it's here we set defaults or external code does (and whether it uses JMF API or FacetDescriptor memento)
       // the rest of the fields get their defaults ok (myTransitionalNewValues == false, and compile/classes/ext are mostly fine)
       if (getModule() instanceof Language) {
         // this is the only setting different in L/G/D/S defaults
