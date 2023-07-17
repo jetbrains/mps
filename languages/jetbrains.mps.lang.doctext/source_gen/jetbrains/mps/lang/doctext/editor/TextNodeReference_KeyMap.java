@@ -10,19 +10,20 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
+import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
 import jetbrains.mps.lang.text.editor.NewElementStrategyFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class TextNodeReference_Left_KeyMap extends KeyMapImpl {
-  public TextNodeReference_Left_KeyMap() {
+public class TextNodeReference_KeyMap extends KeyMapImpl {
+  public TextNodeReference_KeyMap() {
     this.setApplicableToEveryModel(false);
     KeyMapAction action;
-    action = new TextNodeReference_Left_KeyMap_Action0();
+    action = new TextNodeReference_KeyMap_Action0();
     this.putAction("any", " ", action);
   }
-  public static class TextNodeReference_Left_KeyMap_Action0 extends KeyMapActionImpl {
-    public TextNodeReference_Left_KeyMap_Action0() {
+  public static class TextNodeReference_KeyMap_Action0 extends KeyMapActionImpl {
+    public TextNodeReference_KeyMap_Action0() {
       this.setShownInPopupMenu(false);
     }
     public boolean isMenuAlwaysShown() {
@@ -48,8 +49,8 @@ public class TextNodeReference_Left_KeyMap extends KeyMapImpl {
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       EditorCell cell = editorContext.getSelectedCell();
-      NewElementStrategyFactory.createNewElementStrategy(node, editorContext, true).execute();
-      editorContext.selectWRTFocusPolicy(cell);
+      int caretPosition = ((EditorCell_Label) cell).getCaretPosition();
+      NewElementStrategyFactory.createNewElementStrategy(node, editorContext, caretPosition == 0).execute();
     }
     public String getKeyStroke() {
       return "  ";

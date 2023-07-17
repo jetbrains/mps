@@ -7,6 +7,9 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.text.editor.NewElementStrategyFactory;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
+import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
@@ -21,6 +24,44 @@ public class TextNodeReference_Actions {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         NewElementStrategyFactory.createNewLineStrategy(node, editorContext, true, false).execute();
+      }
+
+    };
+  }
+  /*package*/ static AbstractCellAction createAction_INSERT_BEFORE(final SNode node) {
+    return new AbstractCellAction() {
+      public void execute(EditorContext editorContext) {
+        this.execute_internal(editorContext, node);
+      }
+      public void execute_internal(EditorContext editorContext, SNode node) {
+        NewElementStrategyFactory.createNewLineStrategy(node, editorContext, true, true).execute();
+      }
+
+    };
+  }
+  /*package*/ static AbstractCellAction createAction_BACKSPACE(final SNode node) {
+    return new AbstractCellAction() {
+      public void execute(EditorContext editorContext) {
+        this.execute_internal(editorContext, node);
+      }
+      public void execute_internal(EditorContext editorContext, SNode node) {
+        EditorCell currentCell = editorContext.getSelectedCell();
+        EditorCell prevCell = CellTraversalUtil.getPrevSibling(currentCell);
+        editorContext.selectWRTFocusPolicy(prevCell);
+      }
+
+    };
+  }
+  /*package*/ static AbstractCellAction createAction_DELETE(final SNode node) {
+    return new AbstractCellAction() {
+      public void execute(EditorContext editorContext) {
+        this.execute_internal(editorContext, node);
+      }
+      public void execute_internal(EditorContext editorContext, SNode node) {
+        if (DeletionApproverUtil.approve(editorContext, node)) {
+          return;
+        }
+        SNodeOperations.deleteNode(node);
       }
 
     };
@@ -55,6 +96,9 @@ public class TextNodeReference_Actions {
 
     // set cell actions defined directly in this action map
     editorCell.setAction(CellActionType.INSERT, createAction_INSERT(node));
+    editorCell.setAction(CellActionType.INSERT_BEFORE, createAction_INSERT_BEFORE(node));
+    editorCell.setAction(CellActionType.BACKSPACE, createAction_BACKSPACE(node));
+    editorCell.setAction(CellActionType.DELETE, createAction_DELETE(node));
   }
 
   public static void setDefinedCellActionsOfType(EditorCell editorCell, SNode node, EditorContext context, CellActionType actionType) {
@@ -64,6 +108,15 @@ public class TextNodeReference_Actions {
     // set cell action of the given type defined directly in this action map
     if (Objects.equals(actionType, CellActionType.INSERT)) {
       editorCell.setAction(actionType, createAction_INSERT(node));
+    }
+    if (Objects.equals(actionType, CellActionType.INSERT_BEFORE)) {
+      editorCell.setAction(actionType, createAction_INSERT_BEFORE(node));
+    }
+    if (Objects.equals(actionType, CellActionType.BACKSPACE)) {
+      editorCell.setAction(actionType, createAction_BACKSPACE(node));
+    }
+    if (Objects.equals(actionType, CellActionType.DELETE)) {
+      editorCell.setAction(actionType, createAction_DELETE(node));
     }
   }
 }

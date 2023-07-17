@@ -46,7 +46,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   @NotNull
   @Override
   public Collection<KeyMap> getDeclaredKeyMaps() {
-    return Arrays.<KeyMap>asList(new TextNodeReference_Left_KeyMap(), new TextNodeReference_Right_KeyMap());
+    return Arrays.<KeyMap>asList(new TextNodeReference_KeyMap());
   }
 
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xd304f2474944479dL, 0xac8b972b953bcdfeL, 0xa5fce56f6c81ea5L), MetaIdFactory.conceptId(0xd304f2474944479dL, 0xac8b972b953bcdfeL, 0x6cc063b139472ce7L)).seal();
