@@ -60,7 +60,7 @@ public class HtmlBaseAttribute_SubstituteMenu extends SubstituteMenuBase {
 
       _context.getEditorMenuTrace().pushTraceInfo();
       try {
-        _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:e53530cd-224e-499c-94ff-76ea1cff3ec4(jetbrains.mps.lang.html.editor)", "53648833668068109")));
+        _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:e53530cd-224e-499c-94ff-76ea1cff3ec4(jetbrains.mps.lang.html.editor)", "1741258697587214734")));
         item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
       } finally {
         _context.getEditorMenuTrace().popTraceInfo();
@@ -111,7 +111,9 @@ public class HtmlBaseAttribute_SubstituteMenu extends SubstituteMenuBase {
           if (pattern.endsWith("=")) {
             name = name.substring(0, name.length() - 1);
           }
-          return name + "=";
+          if (HtmlNameUtil.isName(name)) {
+            return name + "=";
+          }
         }
         return "name=\"\"";
       }
@@ -124,7 +126,7 @@ public class HtmlBaseAttribute_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_ivygjw_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     public SMP_Subconcepts_ivygjw_b() {
-      super(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "HtmlBaseAttribute", new SNodePointer("r:e53530cd-224e-499c-94ff-76ea1cff3ec4(jetbrains.mps.lang.html.editor)", "1741258697587214900")));
+      super(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "HtmlBaseAttribute", new SNodePointer("r:e53530cd-224e-499c-94ff-76ea1cff3ec4(jetbrains.mps.lang.html.editor)", "1067906505788451678")));
     }
 
     @Override
