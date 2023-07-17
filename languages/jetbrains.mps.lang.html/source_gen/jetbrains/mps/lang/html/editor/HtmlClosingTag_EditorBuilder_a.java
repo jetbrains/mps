@@ -80,7 +80,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
     style.set(StyleAttributes.MATCHING_LABEL, "openTag");
     editorCell.getStyle().putAll(style);
-    Tag_LeftBrace_ActionMap.setCellActions(editorCell, myNode, getEditorContext());
+    HtmlClosingTag_Convert_Actions.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.addKeyMap(new Tag_LeftBrace_KeyMap());
     editorCell.setDefaultText("");
     return editorCell;

@@ -16,13 +16,14 @@ import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.lang.html.editor.HtmlSS_StyleSheet.htmlTagPunctuationStyleClass;
+import jetbrains.mps.lang.editor.menus.transformation.DefaultTransformationMenuLookup;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.SPropertyAccessor;
 import jetbrains.mps.lang.html.editor.HtmlSS_StyleSheet.htmlTagNameStyleClass;
-import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
-import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.nodeEditor.cellMenu.SPropertySubstituteInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
@@ -37,7 +38,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
-import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -101,7 +101,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.getStyle().putAll(style);
     Tag_LeftBrace_ActionMap.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.addKeyMap(new Tag_LeftBrace_KeyMap());
+    editorCell.setTransformationMenuLookup(new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.HtmlOpeningTag$K));
     editorCell.setDefaultText("");
+    editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
     return editorCell;
   }
   private EditorCell createProperty_0() {
@@ -116,7 +118,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       new htmlTagNameStyleClass(this).apply(style, editorCell);
       style.set(StyleAttributes.MATCHING_LABEL, "htmltag");
       editorCell.getStyle().putAll(style);
-      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.HtmlOpeningTag$K, "jetbrains.mps.lang.html.editor.transform_ElementAttributes_HtmlOpeningTag"));
+      editorCell.setTransformationMenuLookup(new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.HtmlOpeningTag$K));
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
       Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
@@ -228,13 +230,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
     /*package*/ static final SContainmentLink attributes$Q0FE = MetaAdapterFactory.getContainmentLink(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x17c864b1282447abL, 0xbe9954797610a4L, "attributes");
   }
 
-  private static final class PROPS {
-    /*package*/ static final SProperty tagName$H2fv = MetaAdapterFactory.getProperty(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x17c864b1282447abL, 0x17c864b128250c53L, "tagName");
-  }
-
   private static final class CONCEPTS {
     /*package*/ static final SConcept HtmlOpeningTag$K = MetaAdapterFactory.getConcept(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x17c864b1282447abL, "jetbrains.mps.lang.html.structure.HtmlOpeningTag");
     /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
     /*package*/ static final SConcept HtmlBaseAttribute$Fd = MetaAdapterFactory.getConcept(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x5c842a42c54b10b3L, "jetbrains.mps.lang.html.structure.HtmlBaseAttribute");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty tagName$H2fv = MetaAdapterFactory.getProperty(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x17c864b1282447abL, 0x17c864b128250c53L, "tagName");
   }
 }
