@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -105,20 +105,6 @@ public final class Renamer {
     myHandler.accept(problem);
   }
 
-  private boolean checkModuleFolderIsAvailable(@NotNull AbstractModule module, String newModuleName) {
-    IFile moduleFolder = getModuleFolder(module);
-    String oldModuleName = module.getModuleName();
-    if (moduleFolder != null && moduleFolder.getName().equals(oldModuleName)) {
-      boolean canMove = !moduleFolder.getParent().findChild(newModuleName).exists();
-      if (!canMove) {
-        handleProblem(new NaiveRenameProblem(Severity.NO_PROBLEM,
-                                             "Module folder with the name '" + newModuleName + "' already exists, MPS will not rename the module directory"));
-        return false;
-      }
-    }
-    return true;
-  }
-
   private boolean checkDescriptorFileExists(@NotNull AbstractModule module) {
     IFile descriptorFile = module.getDescriptorFile();
     if (descriptorFile == null) {
@@ -129,19 +115,6 @@ public final class Renamer {
     return true;
   }
 
-  private boolean checkNewDescriptorFileIsAvailable(@NotNull AbstractModule module, @NotNull String newModuleName) {
-    final String oldModuleName = module.getModuleName();
-    assert (!oldModuleName.equals(newModuleName));
-    @NotNull IFile descriptorFile = module.getDescriptorFile();
-    final String newDescriptorName = getNewDescriptorName(newModuleName, descriptorFile);
-    return true;
-  }
-
-  @NotNull
-  private static String getNewDescriptorName(@NotNull String newModuleName, IFile descriptorFile) {
-    return newModuleName + DOT + FileUtil.getExtension(descriptorFile.getName());
-  }
-
   /**
    * For some obscure historical reasons, module name for generator uses `#` to keep two parts, left-hand expected to match
    * source language, right-hand to be unique. We gradually move towards regular module names for generators as well, but
@@ -150,42 +123,6 @@ public final class Renamer {
   private static String nameUpToSharp(@NotNull String generatorModuleName) {
     int sharp = generatorModuleName.indexOf("#");
     return sharp < 0 ? generatorModuleName : generatorModuleName.substring(0, sharp);
-  }
-
-  //models will be named like xxx.modelName, where xxx is a part of newName before sharp symbol
-  private void renameGenerator(@NotNull Generator generator, @NotNull String newModuleName) {
-    final String oldModuleName = generator.getModuleName();
-    final String oldModuleNameStem = nameUpToSharp(oldModuleName);
-    newModuleName = nameUpToSharp(newModuleName);
-    renameModelsIfNeeded(generator, oldModuleNameStem, newModuleName);
-
-    generator.save();
-
-    GeneratorDescriptor moduleDescriptor = generator.getModuleDescriptor();
-    int sharpIndexNew = newModuleName.indexOf('#');
-    if (sharpIndexNew > 0) {
-      // new name comes with a #suffix, no need to copy old one
-      moduleDescriptor.setNamespace(newModuleName);
-    } else {
-      // keep old #suffix, if any.
-      // XXX in fact, I see no reason to do that. Instead, caller shall supply complete name.
-      // Kept for compatibility reasons (rename comes with owner language's name, and we don't want module names to be the same
-      // for language and its generator)
-      int sharpIndexOld = oldModuleName.indexOf('#');
-      assert sharpIndexNew < 0; // new name without '#'
-      moduleDescriptor.setNamespace(sharpIndexOld > 0 ? newModuleName + oldModuleName.substring(sharpIndexOld)
-                                                      : newModuleName);
-    }
-    final IFile moduleFolder = generator.getModuleSourceDir();
-//     Only rename generation output path if we expect language folder rename (is equal to language name)
-    if (moduleFolder != null && moduleFolder.getName().equals(oldModuleNameStem)) {
-//       Update output path for generated files
-      final String generatorOutputPath = ProjectPathUtil.getGeneratorOutputPath(generator.getModuleDescriptor());
-      if (generatorOutputPath != null && generatorOutputPath.contains(oldModuleNameStem)) {
-        ProjectPathUtil.setGeneratorOutputPath(generator.getModuleDescriptor(), generatorOutputPath.replace(oldModuleNameStem, nameUpToSharp(newModuleName)));
-      }
-    }
-    generator.setModuleDescriptor(moduleDescriptor);
   }
 
   /**
@@ -440,11 +377,6 @@ public final class Renamer {
     }
   }
 
-  @NotNull
-  private static IFile getModuleFolder(@NotNull AbstractModule module) {
-    return module.getDescriptorFile().getParent();
-  }
-
   private void renameDescriptorFiles(Collection<ModuleRenameInfo> modules) {
     Map<IFile, IFile> justRenamed = new HashMap<>();
     for (ModuleRenameInfo ri : modules) {
@@ -561,34 +493,6 @@ public final class Renamer {
   @Deprecated(forRemoval = true)
   public static boolean needToRenameSubmodules(@NotNull AbstractModule module) {
     return module.getModuleName() != null && module.getModuleName().equals(module.getModuleSourceDir().getName());
-  }
-
-  /**
-   * @deprecated updates all modules in a repository, which is not the desired provided MPS got all modules (both
-   *             deployed and in source form inside single repository (project repository at the moment is not limited
-   *             to project modules). Either fix this old story (project.getRepository().getModules() to give project modules
-   *             only) or use alternative that takes project and limits its activities to project modules only
-   */
-  @Deprecated(since = "2022.2", forRemoval = true)
-  public static void updateModelAndModuleReferences(@NotNull SRepository repo) {
-    repo.getModelAccess().checkWriteAccess();
-
-    for (SModule m : repo.getModules()) {
-      if (m instanceof AbstractModule && !m.isReadOnly()) {
-        AbstractModule module = (AbstractModule) m;
-        module.updateExternalReferences();
-
-        for (SModel sm : m.getModels()) {
-          if (!sm.isReadOnly()) {
-            final SModelInternal model = (SModelInternal) sm;
-            if ((sm instanceof EditableSModel) && model.updateExternalReferences(repo)) {
-              // FIXME why SModelInternal.updateExternalReferences can't setChanged(true) itself?
-              ((EditableSModel) sm).setChanged(true);
-            }
-          }
-        }
-      }
-    }
   }
 
   public static void updateModelAndModuleReferences(@NotNull Project mpsProject) {
