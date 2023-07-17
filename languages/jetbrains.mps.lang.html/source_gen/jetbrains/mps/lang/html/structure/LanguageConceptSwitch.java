@@ -17,10 +17,11 @@ public final class LanguageConceptSwitch {
   public static final int HtmlFile = 5;
   public static final int HtmlLine = 6;
   public static final int HtmlOpeningTag = 7;
-  public static final int HtmlTag = 8;
-  public static final int HtmlTextValue = 9;
-  public static final int HtmlValuePart = 10;
-  public static final int HtmlWord = 11;
+  public static final int HtmlPart = 8;
+  public static final int HtmlTag = 9;
+  public static final int HtmlTextValue = 10;
+  public static final int HtmlValuePart = 11;
+  public static final int HtmlWord = 12;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x8a10cb27224943abL, 0xad374b804d24ba45L);
@@ -32,6 +33,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x5c842a42c54c94c0L, HtmlFile);
     builder.put(0xbe995479a944fcL, HtmlLine);
     builder.put(0x17c864b1282447abL, HtmlOpeningTag);
+    builder.put(0x17f818d073f11b34L, HtmlPart);
     builder.put(0x5c842a42c54b10b2L, HtmlTag);
     builder.put(0x5c842a42c54cfd1fL, HtmlTextValue);
     builder.put(0x5c842a42c54cfd1cL, HtmlValuePart);

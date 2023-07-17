@@ -14,7 +14,7 @@ import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class HtmlWordActionMap {
+public class HtmlWord_ActionMap {
 
   /*package*/ static AbstractCellAction createAction_BACKSPACE(final SNode node) {
     return new AbstractCellAction() {
@@ -22,7 +22,7 @@ public class HtmlWordActionMap {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        TextDeleteStrategyFactory.createDeleteStrategy(node, editorContext, false).execute();
+        HtmlTextDeleteStrategyFactory.createDeleteStrategy(node, editorContext, false).execute();
       }
 
     };
@@ -33,7 +33,7 @@ public class HtmlWordActionMap {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        TextDeleteStrategyFactory.createDeleteStrategy(node, editorContext, true).execute();
+        HtmlTextDeleteStrategyFactory.createDeleteStrategy(node, editorContext, true).execute();
       }
 
     };
@@ -44,7 +44,7 @@ public class HtmlWordActionMap {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        NewElementStrategyFactory.createNewLineStrategy(SNodeOperations.cast(node, CONCEPTS.HtmlWord$P2), editorContext, true, false).execute();
+        HtmlNewElementStrategyFactory.createNewLineStrategy(SNodeOperations.cast(node, CONCEPTS.HtmlWord$P2), editorContext, true, false).execute();
       }
 
     };
@@ -55,7 +55,7 @@ public class HtmlWordActionMap {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        NewElementStrategyFactory.createNewLineStrategy(SNodeOperations.cast(node, CONCEPTS.HtmlWord$P2), editorContext, true, false).execute();
+        HtmlNewElementStrategyFactory.createNewLineStrategy(SNodeOperations.cast(node, CONCEPTS.HtmlWord$P2), editorContext, true, false).execute();
       }
 
     };

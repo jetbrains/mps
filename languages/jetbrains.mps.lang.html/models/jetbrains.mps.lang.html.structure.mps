@@ -118,7 +118,7 @@
       <property role="20kJfa" value="elements" />
       <property role="20lbJX" value="fLJekj5/_0__n" />
       <property role="IQ2ns" value="6666499814681299055" />
-      <ref role="20lvS9" node="2YAlhTEkjW" resolve="HtmlLine" />
+      <ref role="20lvS9" node="1vS6d1NWhGO" resolve="HtmlPart" />
     </node>
   </node>
   <node concept="1TIwiD" id="5M4a$b5iL2M">
@@ -128,7 +128,7 @@
     <property role="34LRSv" value="&lt;element/&gt;" />
     <property role="EcuMT" value="6666499814681415858" />
     <property role="R4oN_" value="tag" />
-    <ref role="1TJDcQ" node="2YAlhTM27Z" resolve="HtmlContent" />
+    <ref role="1TJDcQ" node="1vS6d1NWhGO" resolve="HtmlPart" />
     <node concept="1TJgyi" id="5M4a$b5iL2Q" role="1TKVEl">
       <property role="TrG5h" value="tagName" />
       <property role="IQ2nx" value="6666499814681415862" />
@@ -151,7 +151,7 @@
       <property role="20kJfa" value="content" />
       <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="1622293396948928802" />
-      <ref role="20lvS9" node="2YAlhTEkjW" resolve="HtmlLine" />
+      <ref role="20lvS9" node="1vS6d1NWhGO" resolve="HtmlPart" />
     </node>
   </node>
   <node concept="1TIwiD" id="5M4a$b5j9j0">
@@ -217,6 +217,7 @@
     <property role="EcuMT" value="53648833672463612" />
     <property role="TrG5h" value="HtmlLine" />
     <property role="34LRSv" value="line" />
+    <ref role="1TJDcQ" node="1vS6d1NWhGO" resolve="HtmlPart" />
     <node concept="1TJgyj" id="2YAlhTEkQa" role="1TKVEi">
       <property role="IQ2ns" value="53648833672465802" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -229,6 +230,10 @@
     <property role="EcuMT" value="53648833674486271" />
     <property role="TrG5h" value="HtmlContent" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+  </node>
+  <node concept="1TIwiD" id="1vS6d1NWhGO">
+    <property role="EcuMT" value="1727157740674030388" />
+    <property role="TrG5h" value="HtmlPart" />
   </node>
 </model>
 

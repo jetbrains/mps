@@ -17,6 +17,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_HtmlFile;
   private ConceptPresentation props_HtmlLine;
   private ConceptPresentation props_HtmlOpeningTag;
+  private ConceptPresentation props_HtmlPart;
   private ConceptPresentation props_HtmlTag;
   private ConceptPresentation props_HtmlTextValue;
   private ConceptPresentation props_HtmlValuePart;
@@ -84,6 +85,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_HtmlOpeningTag = cpb.create();
         }
         return props_HtmlOpeningTag;
+      case LanguageConceptSwitch.HtmlPart:
+        if (props_HtmlPart == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("HtmlPart");
+          props_HtmlPart = cpb.create();
+        }
+        return props_HtmlPart;
       case LanguageConceptSwitch.HtmlTag:
         if (props_HtmlTag == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
