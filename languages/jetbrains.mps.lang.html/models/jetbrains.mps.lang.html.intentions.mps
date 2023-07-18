@@ -67,9 +67,6 @@
         <child id="1180636770616" name="createdType" index="3zrR0E" />
       </concept>
       <concept id="1144146199828" name="jetbrains.mps.lang.smodel.structure.Node_CopyOperation" flags="nn" index="1$rogu" />
-      <concept id="1139867745658" name="jetbrains.mps.lang.smodel.structure.Node_ReplaceWithNewOperation" flags="nn" index="1_qnLN">
-        <reference id="1139867957129" name="concept" index="1_rbq0" />
-      </concept>
       <concept id="1140131837776" name="jetbrains.mps.lang.smodel.structure.Node_ReplaceWithAnotherOperation" flags="nn" index="1P9Npp">
         <child id="1140131861877" name="replacementNode" index="1P9ThW" />
       </concept>
@@ -95,31 +92,6 @@
       <concept id="1227022159410" name="jetbrains.mps.baseLanguage.collections.structure.AddFirstElementOperation" flags="nn" index="2Ke4WJ" />
     </language>
   </registry>
-  <node concept="2S6QgY" id="1vS6d1NXU8W">
-    <property role="TrG5h" value="ConvertToTag" />
-    <ref role="2ZfgGC" to="7vgx:2YAlhTEkjW" resolve="HtmlLine" />
-    <node concept="2S6ZIM" id="1vS6d1NXU8X" role="2ZfVej">
-      <node concept="3clFbS" id="1vS6d1NXU8Y" role="2VODD2">
-        <node concept="3clFbF" id="1vS6d1NXUKm" role="3cqZAp">
-          <node concept="Xl_RD" id="1vS6d1NXUKl" role="3clFbG">
-            <property role="Xl_RC" value="Convert to tag" />
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="2Sbjvc" id="1vS6d1NXU8Z" role="2ZfgGD">
-      <node concept="3clFbS" id="1vS6d1NXU90" role="2VODD2">
-        <node concept="3clFbF" id="1vS6d1NXYh4" role="3cqZAp">
-          <node concept="2OqwBi" id="1vS6d1NXYho" role="3clFbG">
-            <node concept="2Sf5sV" id="1vS6d1NXYh3" role="2Oq$k0" />
-            <node concept="1_qnLN" id="1vS6d1NXYmN" role="2OqNvi">
-              <ref role="1_rbq0" to="7vgx:5M4a$b5iL2M" resolve="HtmlTag" />
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-  </node>
   <node concept="2S6QgY" id="VhXOWqJ6JT">
     <property role="TrG5h" value="WrapInTag" />
     <ref role="2ZfgGC" to="7vgx:2YAlhTM27Z" resolve="HtmlContent" />

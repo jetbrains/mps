@@ -38,13 +38,6 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
           intentions[0] = new WrapInTag_Intention();
         }
         break;
-      case 1:
-        if (true) {
-          // concept
-          intentions = new IntentionFactory[1];
-          intentions[0] = new ConvertToTag_Intention();
-        }
-        break;
       default:
     }
     myCached.put(concept, intentions);
@@ -54,10 +47,9 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
   @NotNull
   @Override
   public Collection<IntentionFactory> getAllIntentions() {
-    IntentionFactory[] rv = new IntentionFactory[2];
-    rv[0] = new ConvertToTag_Intention();
-    rv[1] = new WrapInTag_Intention();
+    IntentionFactory[] rv = new IntentionFactory[1];
+    rv[0] = new WrapInTag_Intention();
     return Arrays.asList(rv);
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0xbe995479c821ffL), MetaIdFactory.conceptId(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0xbe995479a944fcL)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0xbe995479c821ffL)).seal();
 }

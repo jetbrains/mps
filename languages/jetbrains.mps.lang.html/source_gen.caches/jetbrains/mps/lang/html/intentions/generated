@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="7ztm46tbiiy8ghffft8ou1mfeoui9v4">
-  <files names="ConvertToTag_Intention.java:IntentionsDescriptor.java:WrapInTag_Intention.java" />
+<product version="3" modelHash="drq93eus01sn58zs26eubaj0p3bdslk">
+  <files names="IntentionsDescriptor.java:WrapInTag_Intention.java" />
 </product>
 
