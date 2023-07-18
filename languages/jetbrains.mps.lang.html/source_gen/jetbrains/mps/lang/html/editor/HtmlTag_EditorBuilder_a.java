@@ -297,6 +297,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     Style style = new StyleImpl();
     new htmlTagPunctuationStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.PUNCTUATION_LEFT, true);
+    style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
     style.set(StyleAttributes.MATCHING_LABEL, "openTag");
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
