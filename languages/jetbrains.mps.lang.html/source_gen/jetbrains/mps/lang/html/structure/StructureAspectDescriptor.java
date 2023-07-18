@@ -166,7 +166,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   }
   private static ConceptDescriptor createDescriptorForHtmlPart() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.html", "HtmlPart", 0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x17f818d073f11b34L);
-    b.class_(false, false, false);
+    b.class_(false, true, false);
     b.origin("r:3b76a1f9-9c6e-4847-bffe-2a259b07008a(jetbrains.mps.lang.html.structure)/1727157740674030388");
     b.version(3);
     return b.create();
