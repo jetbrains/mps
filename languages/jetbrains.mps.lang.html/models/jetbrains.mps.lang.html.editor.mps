@@ -656,6 +656,18 @@
         <property role="3F0ifm" value="&gt;" />
         <ref role="1ERwB7" node="5MT8pi2_2S$" resolve="Tag_RightBrace_ActionMap" />
         <ref role="34QXea" node="5MT8pi2$bGr" resolve="Tag_RightBrace_KeyMap" />
+        <node concept="11LMrY" id="4IPEwEe29SN" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="11L4FC" id="4IPEwEe29SO" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="3mYdg7" id="4IPEwEe29SP" role="3F10Kt">
+          <property role="1413C4" value="openTag" />
+        </node>
+        <node concept="3CIbrd" id="4IPEwEe2MqA" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
       </node>
       <node concept="l2Vlx" id="1v8pb4C9gPu" role="2iSdaV" />
     </node>
@@ -690,6 +702,18 @@
         <property role="3F0ifm" value="&gt;" />
         <ref role="1ERwB7" node="5MT8pi2_2S$" resolve="Tag_RightBrace_ActionMap" />
         <ref role="34QXea" node="5MT8pi2$bGr" resolve="Tag_RightBrace_KeyMap" />
+        <node concept="11L4FC" id="4IPEwEe2sVg" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="11LMrY" id="4IPEwEe2sVh" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="3mYdg7" id="4IPEwEe2sVi" role="3F10Kt">
+          <property role="1413C4" value="openTag" />
+        </node>
+        <node concept="3CIbrd" id="4IPEwEe2Mvh" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
       </node>
       <node concept="l2Vlx" id="2YAlhTAJ0L" role="2iSdaV" />
     </node>
