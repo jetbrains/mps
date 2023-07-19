@@ -154,7 +154,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return LINKS.value$j0vy;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.HtmlTextValue$t2;
+      return CONCEPTS.HtmlValuePart$r_;
     }
     public SNode createNodeToInsert(EditorContext editorContext, SNode prevNode, SNode nextNode, int index) {
       return nodeFactory(prevNode, nextNode, index);
@@ -238,7 +238,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
-    /*package*/ static final SConcept HtmlTextValue$t2 = MetaAdapterFactory.getConcept(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x5c842a42c54cfd1fL, "jetbrains.mps.lang.html.structure.HtmlTextValue");
+    /*package*/ static final SConcept HtmlValuePart$r_ = MetaAdapterFactory.getConcept(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x5c842a42c54cfd1cL, "jetbrains.mps.lang.html.structure.HtmlValuePart");
     /*package*/ static final SConcept HtmlAttribute$Ke = MetaAdapterFactory.getConcept(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x5c842a42c54b8df3L, "jetbrains.mps.lang.html.structure.HtmlAttribute");
   }
 

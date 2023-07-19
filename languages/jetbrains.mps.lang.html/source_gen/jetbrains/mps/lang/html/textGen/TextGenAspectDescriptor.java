@@ -29,6 +29,10 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new HtmlClosingTag_TextGen();
       case LanguageConceptSwitch.HtmlDocument:
         return new HtmlDocument_TextGen();
+      case LanguageConceptSwitch.HtmlEntityRef:
+        return new HtmlEntityRef_TextGen();
+      case LanguageConceptSwitch.HtmlEntityRefValue:
+        return new HtmlEntityRefValue_TextGen();
       case LanguageConceptSwitch.HtmlFile:
         return new HtmlFile_TextGen();
       case LanguageConceptSwitch.HtmlLine:

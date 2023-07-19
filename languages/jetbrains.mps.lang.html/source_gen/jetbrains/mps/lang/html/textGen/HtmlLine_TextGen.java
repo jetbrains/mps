@@ -29,7 +29,7 @@ public class HtmlLine_TextGen extends TextGenDescriptorBase {
       for (SNode item : collection) {
         tgs.appendNode(item);
         if (item != lastItem) {
-          tgs.append(" ");
+          tgs.append("  ");
         }
       }
     }

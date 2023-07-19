@@ -219,7 +219,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
     style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
     style.set(StyleAttributes.PUNCTUATION_LEFT, true);
     style.set(StyleAttributes.MATCHING_LABEL, "openTag");
-    style.set(StyleAttributes.LAST_POSITION_ALLOWED, true);
     editorCell.getStyle().putAll(style);
     Tag_RightBrace_ActionMap.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.addKeyMap(new Tag_RightBrace_KeyMap());

@@ -94,7 +94,7 @@
       <property role="20kJfa" value="value" />
       <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="6666499814681541918" />
-      <ref role="20lvS9" node="5M4a$b5jfOv" resolve="HtmlTextValue" />
+      <ref role="20lvS9" node="5M4a$b5jfOs" resolve="HtmlValuePart" />
     </node>
     <node concept="1TJgyi" id="5M4a$b5iSRQ" role="1TKVEl">
       <property role="TrG5h" value="attrName" />
@@ -236,6 +236,34 @@
     <property role="EcuMT" value="1727157740674030388" />
     <property role="TrG5h" value="HtmlPart" />
     <property role="R5$K7" value="true" />
+  </node>
+  <node concept="1TIwiD" id="1q3yNZeB6Xd">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="R4oN_" value="entity reference" />
+    <property role="TrG5h" value="HtmlEntityRef" />
+    <property role="34LRSv" value="&amp;" />
+    <property role="EcuMT" value="1622293396949069645" />
+    <ref role="1TJDcQ" node="2YAlhTM27Z" resolve="HtmlContent" />
+    <node concept="1TJgyi" id="1q3yNZeB6Yf" role="1TKVEl">
+      <property role="TrG5h" value="entityName" />
+      <property role="IQ2nx" value="1622293396949069711" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="5M4a$b5jfOx">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="R4oN_" value="entity reference" />
+    <property role="TrG5h" value="HtmlEntityRefValue" />
+    <property role="34LRSv" value="&amp;" />
+    <property role="EcuMT" value="6666499814681541921" />
+    <ref role="1TJDcQ" node="5M4a$b5jfOs" resolve="HtmlValuePart" />
+    <node concept="1TJgyi" id="5M4a$b5jg9o" role="1TKVEl">
+      <property role="TrG5h" value="entityName" />
+      <property role="IQ2nx" value="6666499814681543256" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
   </node>
 </model>
 

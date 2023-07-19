@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-7ro3ogtqe8xkghvdvp4vmikf4egsi6f">
-  <files names="BehaviorAspectDescriptor.java:HtmlAttribute__BehaviorDescriptor.java:HtmlBaseAttribute__BehaviorDescriptor.java:HtmlFile__BehaviorDescriptor.java:HtmlTag__BehaviorDescriptor.java:HtmlTextValue__BehaviorDescriptor.java:HtmlValuePart__BehaviorDescriptor.java" />
+<product version="3" modelHash="-6kaw8pzveokja72igcaeilyqjmshnao">
+  <files names="BehaviorAspectDescriptor.java:HtmlFile__BehaviorDescriptor.java:HtmlTag__BehaviorDescriptor.java" />
 </product>
 

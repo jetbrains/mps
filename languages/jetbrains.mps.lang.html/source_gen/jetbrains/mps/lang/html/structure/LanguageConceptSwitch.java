@@ -14,14 +14,16 @@ public final class LanguageConceptSwitch {
   public static final int HtmlClosingTag = 2;
   public static final int HtmlContent = 3;
   public static final int HtmlDocument = 4;
-  public static final int HtmlFile = 5;
-  public static final int HtmlLine = 6;
-  public static final int HtmlOpeningTag = 7;
-  public static final int HtmlPart = 8;
-  public static final int HtmlTag = 9;
-  public static final int HtmlTextValue = 10;
-  public static final int HtmlValuePart = 11;
-  public static final int HtmlWord = 12;
+  public static final int HtmlEntityRef = 5;
+  public static final int HtmlEntityRefValue = 6;
+  public static final int HtmlFile = 7;
+  public static final int HtmlLine = 8;
+  public static final int HtmlOpeningTag = 9;
+  public static final int HtmlPart = 10;
+  public static final int HtmlTag = 11;
+  public static final int HtmlTextValue = 12;
+  public static final int HtmlValuePart = 13;
+  public static final int HtmlWord = 14;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x8a10cb27224943abL, 0xad374b804d24ba45L);
@@ -30,6 +32,8 @@ public final class LanguageConceptSwitch {
     builder.put(0x17c864b128244a51L, HtmlClosingTag);
     builder.put(0xbe995479c821ffL, HtmlContent);
     builder.put(0x5e2f66f285946ac9L, HtmlDocument);
+    builder.put(0x16838b3fce9c6f4dL, HtmlEntityRef);
+    builder.put(0x5c842a42c54cfd21L, HtmlEntityRefValue);
     builder.put(0x5c842a42c54c94c0L, HtmlFile);
     builder.put(0xbe995479a944fcL, HtmlLine);
     builder.put(0x17c864b1282447abL, HtmlOpeningTag);

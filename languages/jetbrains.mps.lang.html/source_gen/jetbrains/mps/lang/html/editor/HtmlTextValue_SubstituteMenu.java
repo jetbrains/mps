@@ -8,7 +8,7 @@ import jetbrains.mps.smodel.SNodePointer;
 
 public class HtmlTextValue_SubstituteMenu extends SubstituteMenuBase {
   public HtmlTextValue_SubstituteMenu() {
-    super(false, new EditorMenuDescriptorBase("default substitute menu for " + "HtmlTextValue", new SNodePointer("r:e53530cd-224e-499c-94ff-76ea1cff3ec4(jetbrains.mps.lang.html.editor)", "1741258697587214901")));
+    super(false, new EditorMenuDescriptorBase("default substitute menu for " + "HtmlTextValue", new SNodePointer("r:e53530cd-224e-499c-94ff-76ea1cff3ec4(jetbrains.mps.lang.html.editor)", "6991822193147052865")));
   }
 
 }

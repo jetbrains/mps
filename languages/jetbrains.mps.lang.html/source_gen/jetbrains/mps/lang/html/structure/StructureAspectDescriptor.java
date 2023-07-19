@@ -20,6 +20,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptHtmlClosingTag = createDescriptorForHtmlClosingTag();
   /*package*/ final ConceptDescriptor myConceptHtmlContent = createDescriptorForHtmlContent();
   /*package*/ final ConceptDescriptor myConceptHtmlDocument = createDescriptorForHtmlDocument();
+  /*package*/ final ConceptDescriptor myConceptHtmlEntityRef = createDescriptorForHtmlEntityRef();
+  /*package*/ final ConceptDescriptor myConceptHtmlEntityRefValue = createDescriptorForHtmlEntityRefValue();
   /*package*/ final ConceptDescriptor myConceptHtmlFile = createDescriptorForHtmlFile();
   /*package*/ final ConceptDescriptor myConceptHtmlLine = createDescriptorForHtmlLine();
   /*package*/ final ConceptDescriptor myConceptHtmlOpeningTag = createDescriptorForHtmlOpeningTag();
@@ -42,7 +44,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptHtmlAttribute, myConceptHtmlBaseAttribute, myConceptHtmlClosingTag, myConceptHtmlContent, myConceptHtmlDocument, myConceptHtmlFile, myConceptHtmlLine, myConceptHtmlOpeningTag, myConceptHtmlPart, myConceptHtmlTag, myConceptHtmlTextValue, myConceptHtmlValuePart, myConceptHtmlWord);
+    return Arrays.asList(myConceptHtmlAttribute, myConceptHtmlBaseAttribute, myConceptHtmlClosingTag, myConceptHtmlContent, myConceptHtmlDocument, myConceptHtmlEntityRef, myConceptHtmlEntityRefValue, myConceptHtmlFile, myConceptHtmlLine, myConceptHtmlOpeningTag, myConceptHtmlPart, myConceptHtmlTag, myConceptHtmlTextValue, myConceptHtmlValuePart, myConceptHtmlWord);
   }
 
   @Override
@@ -59,6 +61,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptHtmlContent;
       case LanguageConceptSwitch.HtmlDocument:
         return myConceptHtmlDocument;
+      case LanguageConceptSwitch.HtmlEntityRef:
+        return myConceptHtmlEntityRef;
+      case LanguageConceptSwitch.HtmlEntityRefValue:
+        return myConceptHtmlEntityRefValue;
       case LanguageConceptSwitch.HtmlFile:
         return myConceptHtmlFile;
       case LanguageConceptSwitch.HtmlLine:
@@ -93,7 +99,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:3b76a1f9-9c6e-4847-bffe-2a259b07008a(jetbrains.mps.lang.html.structure)/6666499814681447923");
     b.version(3);
     b.property("attrName", 0x5c842a42c54b8df6L).type(PrimitiveTypeId.STRING).origin("6666499814681447926").done();
-    b.aggregate("value", 0x5c842a42c54cfd1eL).target(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x5c842a42c54cfd1fL).optional(true).ordered(true).multiple(true).origin("6666499814681541918").done();
+    b.aggregate("value", 0x5c842a42c54cfd1eL).target(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x5c842a42c54cfd1cL).optional(true).ordered(true).multiple(true).origin("6666499814681541918").done();
     b.alias("attribute");
     return b.create();
   }
@@ -128,6 +134,28 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:3b76a1f9-9c6e-4847-bffe-2a259b07008a(jetbrains.mps.lang.html.structure)/6786756355279841993");
     b.version(3);
     b.aggregate("elements", 0x5c842a42c549486fL).target(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x17f818d073f11b34L).optional(true).ordered(true).multiple(true).origin("6666499814681299055").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForHtmlEntityRef() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.html", "HtmlEntityRef", 0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x16838b3fce9c6f4dL);
+    b.class_(false, false, false);
+    // extends: jetbrains.mps.lang.html.structure.HtmlContent
+    b.super_(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0xbe995479c821ffL);
+    b.origin("r:3b76a1f9-9c6e-4847-bffe-2a259b07008a(jetbrains.mps.lang.html.structure)/1622293396949069645");
+    b.version(3);
+    b.property("entityName", 0x16838b3fce9c6f8fL).type(PrimitiveTypeId.STRING).origin("1622293396949069711").done();
+    b.alias("&");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForHtmlEntityRefValue() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.html", "HtmlEntityRefValue", 0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x5c842a42c54cfd21L);
+    b.class_(false, false, false);
+    // extends: jetbrains.mps.lang.html.structure.HtmlValuePart
+    b.super_(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x5c842a42c54cfd1cL);
+    b.origin("r:3b76a1f9-9c6e-4847-bffe-2a259b07008a(jetbrains.mps.lang.html.structure)/6666499814681541921");
+    b.version(3);
+    b.property("entityName", 0x5c842a42c54d0258L).type(PrimitiveTypeId.STRING).origin("6666499814681543256").done();
+    b.alias("&");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForHtmlFile() {

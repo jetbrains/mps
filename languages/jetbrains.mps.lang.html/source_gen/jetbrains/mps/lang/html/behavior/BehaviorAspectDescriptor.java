@@ -13,11 +13,7 @@ import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 
 public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor {
   private final BHDescriptor myHtmlTag__BehaviorDescriptor = new HtmlTag__BehaviorDescriptor();
-  private final BHDescriptor myHtmlBaseAttribute__BehaviorDescriptor = new HtmlBaseAttribute__BehaviorDescriptor();
-  private final BHDescriptor myHtmlAttribute__BehaviorDescriptor = new HtmlAttribute__BehaviorDescriptor();
   private final BHDescriptor myHtmlFile__BehaviorDescriptor = new HtmlFile__BehaviorDescriptor();
-  private final BHDescriptor myHtmlValuePart__BehaviorDescriptor = new HtmlValuePart__BehaviorDescriptor();
-  private final BHDescriptor myHtmlTextValue__BehaviorDescriptor = new HtmlTextValue__BehaviorDescriptor();
 
   public BehaviorAspectDescriptor() {
   }
@@ -27,20 +23,12 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return myHtmlAttribute__BehaviorDescriptor;
-      case 1:
-        return myHtmlBaseAttribute__BehaviorDescriptor;
-      case 2:
         return myHtmlFile__BehaviorDescriptor;
-      case 3:
+      case 1:
         return myHtmlTag__BehaviorDescriptor;
-      case 4:
-        return myHtmlTextValue__BehaviorDescriptor;
-      case 5:
-        return myHtmlValuePart__BehaviorDescriptor;
       default:
     }
     return null;
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x5c842a42c54b8df3L), MetaIdFactory.conceptId(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x5c842a42c54b10b3L), MetaIdFactory.conceptId(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x5c842a42c54c94c0L), MetaIdFactory.conceptId(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x5c842a42c54b10b2L), MetaIdFactory.conceptId(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x5c842a42c54cfd1fL), MetaIdFactory.conceptId(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x5c842a42c54cfd1cL)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x5c842a42c54c94c0L), MetaIdFactory.conceptId(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x5c842a42c54b10b2L)).seal();
 }
