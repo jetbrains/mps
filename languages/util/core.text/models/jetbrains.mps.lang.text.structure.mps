@@ -103,7 +103,7 @@
     <node concept="1TJgyi" id="5vhYBWEWti5" role="1TKVEl">
       <property role="IQ2nx" value="6328114375520539781" />
       <property role="TrG5h" value="url" />
-      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+      <ref role="AX2Wp" node="647WjQbr3zI" resolve="Url" />
     </node>
   </node>
   <node concept="1TIwiD" id="2cLqkTm6vgh">
@@ -405,6 +405,11 @@
       <property role="TrG5h" value="Header3" />
       <property role="1L1pqM" value="3" />
     </node>
+  </node>
+  <node concept="Az7Fb" id="647WjQbr3zI">
+    <property role="3F6X1D" value="6991822193150408942" />
+    <property role="TrG5h" value="Url" />
+    <property role="FLfZY" value="https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&amp;//=]*)" />
   </node>
 </model>
 

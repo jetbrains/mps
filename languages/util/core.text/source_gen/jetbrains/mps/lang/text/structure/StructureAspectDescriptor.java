@@ -43,6 +43,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptWord = createDescriptorForWord();
   /*package*/ final EnumerationDescriptor myEnumerationHeaderEnum = new EnumerationDescriptor_HeaderEnum();
   /*package*/ final ConstrainedStringDatatypeDescriptor myCSDatatypeCharacterValueType = new ConstrainedStringDatatypeDescriptorImpl(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4aee0L, "CharacterValueType", "r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/9143182410139348704", ".");
+  /*package*/ final ConstrainedStringDatatypeDescriptor myCSDatatypeUrl = new ConstrainedStringDatatypeDescriptorImpl(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6107f13d8b6c38eeL, "Url", "r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/6991822193150408942", "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)");
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -114,7 +115,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<DataTypeDescriptor> getDataTypeDescriptors() {
-    return Arrays.asList(myEnumerationHeaderEnum, myCSDatatypeCharacterValueType);
+    return Arrays.asList(myEnumerationHeaderEnum, myCSDatatypeCharacterValueType, myCSDatatypeUrl);
   }
 
   /*package*/ int internalIndex(SAbstractConcept c) {
@@ -331,7 +332,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.property("bold", 0x57d1fa7f2af1d47eL).type(PrimitiveTypeId.BOOLEAN).origin("6328114375520539774").done();
     b.property("italic", 0x57d1fa7f2af1d481L).type(PrimitiveTypeId.BOOLEAN).origin("6328114375520539777").done();
     b.property("underlined", 0x57d1fa7f2af1d494L).type(PrimitiveTypeId.BOOLEAN).origin("6328114375520539796").done();
-    b.property("url", 0x57d1fa7f2af1d485L).type(PrimitiveTypeId.STRING).origin("6328114375520539781").done();
+    b.property("url", 0x57d1fa7f2af1d485L).type(MetaIdFactory.dataTypeId(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6107f13d8b6c38eeL)).origin("6328114375520539781").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     return b.create();
   }
