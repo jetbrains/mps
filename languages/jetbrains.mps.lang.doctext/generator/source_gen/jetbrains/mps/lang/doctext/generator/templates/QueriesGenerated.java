@@ -120,15 +120,15 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object propertyMacro_GetValue_9_2(final PropertyMacroContext _context) {
     if (isNotEmptyString(SPropertyOperations.getString(_context.getNode(), PROPS.conceptShortDescription$is9d))) {
-      SPropertyOperations.getString(_context.getNode(), PROPS.conceptShortDescription$is9d);
+      return SPropertyOperations.getString(_context.getNode(), PROPS.conceptShortDescription$is9d);
     }
     return "no short description";
   }
   public static Object propertyMacro_GetValue_9_3(final PropertyMacroContext _context) {
     if (isNotEmptyString(SPropertyOperations.getString(_context.getNode(), PROPS.conceptAlias$OL_L))) {
-      SPropertyOperations.getString(_context.getNode(), PROPS.conceptAlias$OL_L);
+      return SPropertyOperations.getString(_context.getNode(), PROPS.conceptAlias$OL_L);
     }
-    return "no alias";
+    return "no alias ";
   }
   public static Object propertyMacro_GetValue_9_4(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
