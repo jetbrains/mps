@@ -50,7 +50,7 @@ public class TextNodeReference_Actions {
         if (new CaretPositionHelper(editorContext).getLength() == 0) {
           SNodeOperations.deleteNode(node);
         } else {
-          if (SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(node), CONCEPTS.Word$Dn) && SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getPrevSibling(node), CONCEPTS.Word$Dn), PROPS.value$zQr_) == "") {
+          if (SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(node), CONCEPTS.Word$Dn) && isEmptyString(SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getPrevSibling(node), CONCEPTS.Word$Dn), PROPS.value$zQr_))) {
             SNodeOperations.deleteNode(SNodeOperations.getPrevSibling(node));
           } else {
             TextDeleteStrategyFactory.createDeleteStrategy(node, editorContext, false).execute();
@@ -130,6 +130,9 @@ public class TextNodeReference_Actions {
     if (Objects.equals(actionType, CellActionType.DELETE)) {
       editorCell.setAction(actionType, createAction_DELETE(node));
     }
+  }
+  private static boolean isEmptyString(String str) {
+    return str == null || str.isEmpty();
   }
 
   private static final class CONCEPTS {
