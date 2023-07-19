@@ -14,8 +14,8 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -26,11 +26,9 @@ public final class IndentedPoint__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L, "jetbrains.mps.lang.text.structure.IndentedPoint");
 
   public static final SMethod<String> getIndentString_idfcFkhVQ0er = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getIndentString").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(273784187009893275L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
-  public static final SMethod<Boolean> isFirstPosition_id5xPwFDOE8Ju = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFirstPosition").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6374144584945535966L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
-  public static final SMethod<Boolean> isLastPosition_id5xPwFDOE9mY = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLastPosition").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6374144584945538494L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
   public static final SMethod<Integer> calculatePosition_id5xPwFDOHiUa = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("calculatePosition").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6374144584946364042L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIndentString_idfcFkhVQ0er, isFirstPosition_id5xPwFDOE8Ju, isLastPosition_id5xPwFDOE9mY, calculatePosition_id5xPwFDOHiUa);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIndentString_idfcFkhVQ0er, calculatePosition_id5xPwFDOHiUa);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -41,27 +39,6 @@ public final class IndentedPoint__BehaviorDescriptor extends BaseBHDescriptor {
       builder.append("    ");
     }
     return builder.toString();
-  }
-  /*package*/ static boolean isFirstPosition_id5xPwFDOE8Ju(@NotNull SNode __thisNode__) {
-    return ((int) IndentedPoint__BehaviorDescriptor.calculatePosition_id5xPwFDOHiUa.invoke(__thisNode__)) == 1;
-  }
-  /*package*/ static boolean isLastPosition_id5xPwFDOE9mY(@NotNull SNode __thisNode__) {
-    for (SNode p : SNodeOperations.getNextSiblings(__thisNode__, false)) {
-      if (SNodeOperations.isInstanceOf(p, CONCEPTS.IndentedPoint$BF)) {
-        if (SPropertyOperations.getInteger(SNodeOperations.as(p, CONCEPTS.IndentedPoint$BF), PROPS.indentation$8ZOp) == SPropertyOperations.getInteger(__thisNode__, PROPS.indentation$8ZOp)) {
-          if (SNodeOperations.isInstanceOf(p, SNodeOperations.asSConcept(SNodeOperations.getConcept(__thisNode__)))) {
-            return false;
-          } else {
-            return true;
-          }
-        } else if (SPropertyOperations.getInteger(SNodeOperations.as(p, CONCEPTS.IndentedPoint$BF), PROPS.indentation$8ZOp) < SPropertyOperations.getInteger(__thisNode__, PROPS.indentation$8ZOp)) {
-          return true;
-        }
-      } else {
-        return true;
-      }
-    }
-    return true;
   }
   /*package*/ static int calculatePosition_id5xPwFDOHiUa(@NotNull SNode __thisNode__) {
     for (SNode p : ListSequence.fromList(SNodeOperations.getPrevSiblings(__thisNode__, false)).reversedList()) {
@@ -104,10 +81,6 @@ public final class IndentedPoint__BehaviorDescriptor extends BaseBHDescriptor {
       case 0:
         return (T) ((String) getIndentString_idfcFkhVQ0er(node));
       case 1:
-        return (T) ((Boolean) isFirstPosition_id5xPwFDOE8Ju(node));
-      case 2:
-        return (T) ((Boolean) isLastPosition_id5xPwFDOE9mY(node));
-      case 3:
         return (T) ((Integer) calculatePosition_id5xPwFDOHiUa(node));
       default:
         throw new BHMethodNotFoundException(this, method);
