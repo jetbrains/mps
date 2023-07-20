@@ -1495,12 +1495,12 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     result.setPopup(false);
     jetbrains.mps.openapi.editor.cells.EditorCell cell = getSelectedCell();
 
-    final EditorContext editorContext = createEditorContextForActions();
-    for (final KeyMapAction action : myKeymapHandler.getAllRegisteredActions(cell, editorContext)) {
+    // Action code is given an EditorContext which contains SNode. Guard it with model read.
+    EditorContext editorContext = createEditorContextForActions();
+    Collection<KeyMapAction> registeredActions = myKeymapHandler.getRegisteredActions(cell, editorContext,
+                                                                                      action -> action.isShownInPopupMenu() && action.canExecute(editorContext));
+    for (final KeyMapAction action : registeredActions) {
       try {
-        if (!(action.isShownInPopupMenu() && action.canExecute(editorContext))) {
-          continue;
-        }
         BaseAction mpsAction = new MyBaseAction(action, editorContext);
         mpsAction.addPlace(ActionPlace.EDITOR);
         result.add(mpsAction);
@@ -1508,6 +1508,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
         LOG.error(t);
       }
     }
+
     return result;
   }
 
