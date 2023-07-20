@@ -73,11 +73,8 @@ public class TextNodeReference_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (new CaretPositionHelper(editorContext).getCaretPosition() == 0) {
-          SNodeOperations.deleteNode(node);
-        } else {
-          TextDeleteStrategyFactory.createDeleteStrategy(node, editorContext, true).execute();
-        }
+        // only reached if CaretPosition == length of the TextNodeReference
+        TextDeleteStrategyFactory.createDeleteStrategy(node, editorContext, true).execute();
       }
 
     };
