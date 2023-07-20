@@ -1162,110 +1162,117 @@
   </root>
   <root nodeRef="r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/4393777506305219687">
     <file name="DiffFileEditor.java">
-      <node id="3424619260709346793" at="24,0,25,0" concept="7" trace="myEditor" />
-      <node id="3919304090411628610" at="26,81,27,19" concept="13" />
-      <node id="3424619260709350155" at="31,64,32,22" concept="6" />
-      <node id="4393777506305248995" at="35,36,36,16" concept="13" />
-      <node id="4393777506305249003" at="39,52,40,16" concept="13" />
-      <node id="4393777506305249012" at="44,27,45,16" concept="13" />
-      <node id="3384537078566943379" at="48,72,49,19" concept="13" />
-      <node id="5119136265383456327" at="51,56,52,20" concept="6" />
-      <node id="4393777506305249038" at="54,31,55,17" concept="13" />
-      <node id="4393777506305249045" at="57,28,58,17" concept="13" />
-      <node id="4393777506305249079" at="69,65,70,16" concept="13" />
-      <node id="4393777506305249087" at="73,50,74,16" concept="13" />
-      <node id="4393777506305249095" at="77,57,78,16" concept="13" />
-      <node id="4393777506305282320" at="81,49,82,16" concept="13" />
-      <node id="1547603040232931624" at="88,36,89,63" concept="12" />
-      <node id="1547603040233672195" at="90,30,91,29" concept="13" />
-      <node id="1547603040233698576" at="92,5,93,56" concept="12" />
-      <node id="1547603040233504037" at="93,56,94,75" concept="13" />
-      <node id="4393777506305249046" at="60,0,62,0" concept="11" trace="selectNotify#()V" />
-      <node id="4393777506305249051" at="62,0,64,0" concept="11" trace="deselectNotify#()V" />
-      <node id="4393777506305249056" at="64,0,66,0" concept="11" trace="addPropertyChangeListener#(Ljava/beans/PropertyChangeListener;)V" />
-      <node id="4393777506305249064" at="66,0,68,0" concept="11" trace="removePropertyChangeListener#(Ljava/beans/PropertyChangeListener;)V" />
-      <node id="4393777506305249109" at="84,0,86,0" concept="11" trace="putUserData#(Lcom/intellij/openapi/util/Key;null)V" />
-      <node id="4393777506305249124" at="86,0,88,0" concept="11" trace="dispose#()V" />
-      <node id="3919304090411628602" at="26,0,29,0" concept="11" trace="canBeMergedWith#(Lcom/intellij/openapi/fileEditor/FileEditorState;Lcom/intellij/openapi/fileEditor/FileEditorStateLevel;)Z" />
-      <node id="3424619260709348458" at="31,0,34,0" concept="3" trace="DiffFileEditor#(Ljetbrains/mps/vcs/diff/ui/common/DiffEditor/MainEditorComponent;)V" />
-      <node id="4393777506305249024" at="51,0,54,0" concept="11" trace="setState#(Lcom/intellij/openapi/fileEditor/FileEditorState;)V" />
-      <node id="4393777506305249032" at="54,0,57,0" concept="11" trace="isModified#()Z" />
-      <node id="4393777506305249039" at="57,0,60,0" concept="11" trace="isValid#()Z" />
-      <node id="1547603040233656673" at="89,63,92,5" concept="10" />
-      <node id="4393777506305248988" at="34,0,38,0" concept="11" trace="getComponent#()Ljavax/swing/JComponent;" />
-      <node id="4393777506305248996" at="38,0,42,0" concept="11" trace="getPreferredFocusedComponent#()Ljavax/swing/JComponent;" />
-      <node id="4393777506305249013" at="47,0,51,0" concept="11" trace="getState#(Lcom/intellij/openapi/fileEditor/FileEditorStateLevel;)Lcom/intellij/openapi/fileEditor/FileEditorState;" />
-      <node id="4393777506305249072" at="68,0,72,0" concept="11" trace="getBackgroundHighlighter#()Lcom/intellij/codeHighlighting/BackgroundEditorHighlighter;" />
-      <node id="4393777506305249080" at="72,0,76,0" concept="11" trace="getCurrentLocation#()Lcom/intellij/openapi/fileEditor/FileEditorLocation;" />
-      <node id="4393777506305249088" at="76,0,80,0" concept="11" trace="getStructureViewBuilder#()Lcom/intellij/ide/structureView/StructureViewBuilder;" />
-      <node id="4393777506305249096" at="80,0,84,0" concept="11" trace="getUserData#(Lcom/intellij/openapi/util/Key;)null" />
-      <node id="3919304090411623435" at="25,0,30,0" concept="7" trace="myState" />
-      <node id="4393777506305249004" at="42,0,47,0" concept="11" trace="getName#()Ljava/lang/String;" />
-      <node id="3424619260709341747" at="88,0,96,0" concept="11" trace="getDocuments#()[Lcom/intellij/openapi/editor/Document;" />
-      <scope id="4393777506305249050" at="60,30,60,30" />
-      <scope id="4393777506305249055" at="62,32,62,32" />
-      <scope id="4393777506305249063" at="64,83,64,83" />
-      <scope id="4393777506305249071" at="66,86,66,86" />
-      <scope id="4393777506305249123" at="84,67,84,67" />
-      <scope id="4393777506305249130" at="86,25,86,25" />
-      <scope id="3919304090411628609" at="26,81,27,19" />
-      <scope id="3424619260709348461" at="31,64,32,22" />
-      <scope id="4393777506305248993" at="35,36,36,16" />
-      <scope id="4393777506305249001" at="39,52,40,16" />
-      <scope id="4393777506305249010" at="44,27,45,16" />
-      <scope id="4393777506305249021" at="48,72,49,19" />
-      <scope id="4393777506305249031" at="51,56,52,20" />
-      <scope id="4393777506305249036" at="54,31,55,17" />
-      <scope id="4393777506305249043" at="57,28,58,17" />
-      <scope id="4393777506305249077" at="69,65,70,16" />
-      <scope id="4393777506305249085" at="73,50,74,16" />
-      <scope id="4393777506305249093" at="77,57,78,16" />
-      <scope id="4393777506305249108" at="81,49,82,16" />
-      <scope id="1547603040233656675" at="90,30,91,29" />
-      <scope id="4393777506305249046" at="60,0,62,0" />
-      <scope id="4393777506305249051" at="62,0,64,0" />
-      <scope id="4393777506305249056" at="64,0,66,0">
+      <node id="3424619260709346793" at="25,0,26,0" concept="7" trace="myEditor" />
+      <node id="3919304090411628610" at="27,81,28,19" concept="13" />
+      <node id="3424619260709350155" at="32,64,33,22" concept="6" />
+      <node id="4393777506305248995" at="36,36,37,16" concept="13" />
+      <node id="4393777506305249003" at="40,52,41,16" concept="13" />
+      <node id="4393777506305249012" at="45,27,46,16" concept="13" />
+      <node id="3384537078566943379" at="49,72,50,19" concept="13" />
+      <node id="5119136265383456327" at="52,56,53,20" concept="6" />
+      <node id="4393777506305249038" at="55,31,56,17" concept="13" />
+      <node id="4393777506305249045" at="58,28,59,17" concept="13" />
+      <node id="4393777506305249079" at="70,65,71,16" concept="13" />
+      <node id="4393777506305249087" at="74,50,75,16" concept="13" />
+      <node id="4393777506305249095" at="78,57,79,16" concept="13" />
+      <node id="4393777506305282320" at="82,49,83,16" concept="13" />
+      <node id="1547603040232931624" at="89,36,90,63" concept="12" />
+      <node id="1547603040233672195" at="91,30,92,29" concept="13" />
+      <node id="1547603040233698576" at="93,5,94,56" concept="12" />
+      <node id="1547603040233504037" at="94,56,95,75" concept="13" />
+      <node id="557789086714585037" at="98,32,99,63" concept="12" />
+      <node id="557789086714635688" at="99,63,100,23" concept="13" />
+      <node id="4393777506305249046" at="61,0,63,0" concept="11" trace="selectNotify#()V" />
+      <node id="4393777506305249051" at="63,0,65,0" concept="11" trace="deselectNotify#()V" />
+      <node id="4393777506305249056" at="65,0,67,0" concept="11" trace="addPropertyChangeListener#(Ljava/beans/PropertyChangeListener;)V" />
+      <node id="4393777506305249064" at="67,0,69,0" concept="11" trace="removePropertyChangeListener#(Ljava/beans/PropertyChangeListener;)V" />
+      <node id="4393777506305249109" at="85,0,87,0" concept="11" trace="putUserData#(Lcom/intellij/openapi/util/Key;null)V" />
+      <node id="4393777506305249124" at="87,0,89,0" concept="11" trace="dispose#()V" />
+      <node id="3919304090411628602" at="27,0,30,0" concept="11" trace="canBeMergedWith#(Lcom/intellij/openapi/fileEditor/FileEditorState;Lcom/intellij/openapi/fileEditor/FileEditorStateLevel;)Z" />
+      <node id="3424619260709348458" at="32,0,35,0" concept="3" trace="DiffFileEditor#(Ljetbrains/mps/vcs/diff/ui/common/DiffEditor/MainEditorComponent;)V" />
+      <node id="4393777506305249024" at="52,0,55,0" concept="11" trace="setState#(Lcom/intellij/openapi/fileEditor/FileEditorState;)V" />
+      <node id="4393777506305249032" at="55,0,58,0" concept="11" trace="isModified#()Z" />
+      <node id="4393777506305249039" at="58,0,61,0" concept="11" trace="isValid#()Z" />
+      <node id="1547603040233656673" at="90,63,93,5" concept="10" />
+      <node id="4393777506305248988" at="35,0,39,0" concept="11" trace="getComponent#()Ljavax/swing/JComponent;" />
+      <node id="4393777506305248996" at="39,0,43,0" concept="11" trace="getPreferredFocusedComponent#()Ljavax/swing/JComponent;" />
+      <node id="4393777506305249013" at="48,0,52,0" concept="11" trace="getState#(Lcom/intellij/openapi/fileEditor/FileEditorStateLevel;)Lcom/intellij/openapi/fileEditor/FileEditorState;" />
+      <node id="4393777506305249072" at="69,0,73,0" concept="11" trace="getBackgroundHighlighter#()Lcom/intellij/codeHighlighting/BackgroundEditorHighlighter;" />
+      <node id="4393777506305249080" at="73,0,77,0" concept="11" trace="getCurrentLocation#()Lcom/intellij/openapi/fileEditor/FileEditorLocation;" />
+      <node id="4393777506305249088" at="77,0,81,0" concept="11" trace="getStructureViewBuilder#()Lcom/intellij/ide/structureView/StructureViewBuilder;" />
+      <node id="4393777506305249096" at="81,0,85,0" concept="11" trace="getUserData#(Lcom/intellij/openapi/util/Key;)null" />
+      <node id="3919304090411623435" at="26,0,31,0" concept="7" trace="myState" />
+      <node id="4393777506305249004" at="43,0,48,0" concept="11" trace="getName#()Ljava/lang/String;" />
+      <node id="557789086714325261" at="97,0,102,0" concept="11" trace="getFile#()Lcom/intellij/openapi/vfs/VirtualFile;" />
+      <node id="3424619260709341747" at="89,0,97,0" concept="11" trace="getDocuments#()[Lcom/intellij/openapi/editor/Document;" />
+      <scope id="4393777506305249050" at="61,30,61,30" />
+      <scope id="4393777506305249055" at="63,32,63,32" />
+      <scope id="4393777506305249063" at="65,83,65,83" />
+      <scope id="4393777506305249071" at="67,86,67,86" />
+      <scope id="4393777506305249123" at="85,67,85,67" />
+      <scope id="4393777506305249130" at="87,25,87,25" />
+      <scope id="3919304090411628609" at="27,81,28,19" />
+      <scope id="3424619260709348461" at="32,64,33,22" />
+      <scope id="4393777506305248993" at="36,36,37,16" />
+      <scope id="4393777506305249001" at="40,52,41,16" />
+      <scope id="4393777506305249010" at="45,27,46,16" />
+      <scope id="4393777506305249021" at="49,72,50,19" />
+      <scope id="4393777506305249031" at="52,56,53,20" />
+      <scope id="4393777506305249036" at="55,31,56,17" />
+      <scope id="4393777506305249043" at="58,28,59,17" />
+      <scope id="4393777506305249077" at="70,65,71,16" />
+      <scope id="4393777506305249085" at="74,50,75,16" />
+      <scope id="4393777506305249093" at="78,57,79,16" />
+      <scope id="4393777506305249108" at="82,49,83,16" />
+      <scope id="1547603040233656675" at="91,30,92,29" />
+      <scope id="4393777506305249046" at="61,0,63,0" />
+      <scope id="4393777506305249051" at="63,0,65,0" />
+      <scope id="4393777506305249056" at="65,0,67,0">
         <var name="listener" id="4393777506305249060" />
       </scope>
-      <scope id="4393777506305249064" at="66,0,68,0">
+      <scope id="4393777506305249064" at="67,0,69,0">
         <var name="listener" id="4393777506305249068" />
       </scope>
-      <scope id="4393777506305249109" at="84,0,86,0">
+      <scope id="4393777506305249109" at="85,0,87,0">
         <var name="key" id="4393777506305249114" />
         <var name="t" id="4393777506305249118" />
       </scope>
-      <scope id="4393777506305249124" at="86,0,88,0" />
-      <scope id="3919304090411628602" at="26,0,29,0">
+      <scope id="4393777506305249124" at="87,0,89,0" />
+      <scope id="557789086714325267" at="98,32,100,23">
+        <var name="virtualFile" id="557789086714585038" />
+      </scope>
+      <scope id="3919304090411628602" at="27,0,30,0">
         <var name="p0" id="3919304090411628605" />
         <var name="p1" id="3919304090411628607" />
       </scope>
-      <scope id="3424619260709348458" at="31,0,34,0">
+      <scope id="3424619260709348458" at="32,0,35,0">
         <var name="editor" id="3424619260709349307" />
       </scope>
-      <scope id="4393777506305249024" at="51,0,54,0">
+      <scope id="4393777506305249024" at="52,0,55,0">
         <var name="state" id="4393777506305249028" />
       </scope>
-      <scope id="4393777506305249032" at="54,0,57,0" />
-      <scope id="4393777506305249039" at="57,0,60,0" />
-      <scope id="4393777506305248988" at="34,0,38,0" />
-      <scope id="4393777506305248996" at="38,0,42,0" />
-      <scope id="4393777506305249013" at="47,0,51,0">
+      <scope id="4393777506305249032" at="55,0,58,0" />
+      <scope id="4393777506305249039" at="58,0,61,0" />
+      <scope id="4393777506305248988" at="35,0,39,0" />
+      <scope id="4393777506305248996" at="39,0,43,0" />
+      <scope id="4393777506305249013" at="48,0,52,0">
         <var name="level" id="4393777506305249017" />
       </scope>
-      <scope id="4393777506305249072" at="68,0,72,0" />
-      <scope id="4393777506305249080" at="72,0,76,0" />
-      <scope id="4393777506305249088" at="76,0,80,0" />
-      <scope id="4393777506305249096" at="80,0,84,0">
+      <scope id="4393777506305249072" at="69,0,73,0" />
+      <scope id="4393777506305249080" at="73,0,77,0" />
+      <scope id="4393777506305249088" at="77,0,81,0" />
+      <scope id="4393777506305249096" at="81,0,85,0">
         <var name="key" id="4393777506305249101" />
       </scope>
-      <scope id="4393777506305249004" at="42,0,47,0" />
-      <scope id="3424619260709341752" at="88,36,94,75">
+      <scope id="4393777506305249004" at="43,0,48,0" />
+      <scope id="557789086714325261" at="97,0,102,0" />
+      <scope id="3424619260709341752" at="89,36,95,75">
         <var name="document" id="1547603040233698577" />
         <var name="virtualFile" id="1547603040232931625" />
       </scope>
-      <scope id="3424619260709341747" at="88,0,96,0" />
-      <unit id="3919304090411628600" at="25,40,29,3" name="jetbrains.mps.vcs.diff.ui.common.DiffFileEditor$1" />
-      <unit id="4393777506305219687" at="22,0,97,0" name="jetbrains.mps.vcs.diff.ui.common.DiffFileEditor" />
+      <scope id="3424619260709341747" at="89,0,97,0" />
+      <unit id="3919304090411628600" at="26,40,30,3" name="jetbrains.mps.vcs.diff.ui.common.DiffFileEditor$1" />
+      <unit id="4393777506305219687" at="23,0,103,0" name="jetbrains.mps.vcs.diff.ui.common.DiffFileEditor" />
     </file>
   </root>
   <root nodeRef="r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/4652592318748334972">
