@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,7 +40,6 @@ import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.List;
@@ -168,7 +167,7 @@ public class IntelligentInputUtil {
             target = (EditorCell_Label) errorCell;
           }
 
-          if (target != null && StringUtils.isNotBlank(tail)) {
+          if (target != null && !tail.isBlank()) {
             target.changeText(tail);
             target.end();
 
