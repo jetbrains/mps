@@ -26,8 +26,13 @@ import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
+import jetbrains.mps.nodeEditor.cells.ModelAccessor;
+import jetbrains.mps.openapi.editor.cells.CellActionType;
+import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 /*package*/ class Word_InspectorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -57,6 +62,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.addEditorCell(createCollection_2());
     editorCell.addEditorCell(createCollection_3());
     editorCell.addEditorCell(createCollection_4());
+    editorCell.addEditorCell(createCollection_5());
     return editorCell;
   }
   private EditorCell createCollection_1() {
@@ -207,15 +213,104 @@ import org.jetbrains.mps.openapi.language.SConcept;
       getCellFactory().popCellContext();
     }
   }
+  private EditorCell createCollection_5() {
+    EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
+    editorCell.setCellId("Collection_8g1p9d_5");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.SELECTABLE, false);
+    editorCell.getStyle().putAll(style);
+    editorCell.addEditorCell(createConstant_4());
+    editorCell.addEditorCell(createReadOnlyModelAccessor_0());
+    editorCell.addEditorCell(createAlternation_0());
+    return editorCell;
+  }
+  private EditorCell createConstant_4() {
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "line: ");
+    editorCell.setCellId("Constant_8g1p9d_4");
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createReadOnlyModelAccessor_0() {
+    EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
+      public String getText() {
+        return SNodeOperations.getConcept(SNodeOperations.getParent(myNode)).getName();
+      }
+    }, myNode);
+    editorCell.setAction(CellActionType.DELETE, EmptyCellAction.getInstance());
+    editorCell.setAction(CellActionType.BACKSPACE, EmptyCellAction.getInstance());
+    editorCell.setCellId("ReadOnlyModelAccessor_8g1p9d_0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
+    style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
+    style.set(StyleAttributes.SELECTABLE, false);
+    style.set(StyleAttributes.EDITABLE, false);
+    editorCell.getStyle().putAll(style);
+    return editorCell;
+  }
+  private EditorCell createAlternation_0() {
+    boolean alternationCondition = true;
+    alternationCondition = nodeCondition_8g1p9d_a2e0();
+    EditorCell editorCell = null;
+    if (alternationCondition) {
+      editorCell = createCollection_6();
+    } else {
+      editorCell = createConstant_6();
+    }
+    return editorCell;
+  }
+  private boolean nodeCondition_8g1p9d_a2e0() {
+    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(myNode), CONCEPTS.IndentedPoint$BF);
+  }
+  private EditorCell createCollection_6() {
+    EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
+    editorCell.setCellId("Collection_8g1p9d_6");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.SELECTABLE, false);
+    editorCell.getStyle().putAll(style);
+    editorCell.addEditorCell(createConstant_5());
+    editorCell.addEditorCell(createReadOnlyModelAccessor_1());
+    return editorCell;
+  }
+  private EditorCell createConstant_5() {
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ", indentation: ");
+    editorCell.setCellId("Constant_8g1p9d_5");
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createReadOnlyModelAccessor_1() {
+    EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
+      public String getText() {
+        return String.valueOf(SPropertyOperations.getInteger(SNodeOperations.as(SNodeOperations.getParent(myNode), CONCEPTS.IndentedPoint$BF), PROPS.indentation$8ZOp));
+      }
+    }, myNode);
+    editorCell.setAction(CellActionType.DELETE, EmptyCellAction.getInstance());
+    editorCell.setAction(CellActionType.BACKSPACE, EmptyCellAction.getInstance());
+    editorCell.setCellId("ReadOnlyModelAccessor_8g1p9d_1");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
+    style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
+    style.set(StyleAttributes.SELECTABLE, false);
+    style.set(StyleAttributes.EDITABLE, false);
+    editorCell.getStyle().putAll(style);
+    return editorCell;
+  }
+  private EditorCell createConstant_6() {
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
+    editorCell.setCellId("Constant_8g1p9d_6");
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
 
   private static final class PROPS {
     /*package*/ static final SProperty bold$SBR1 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d47eL, "bold");
     /*package*/ static final SProperty italic$SC$4 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d481L, "italic");
     /*package*/ static final SProperty underlined$SQS1 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d494L, "underlined");
     /*package*/ static final SProperty url$SIrt = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
+    /*package*/ static final SProperty indentation$8ZOp = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L, 0x46ded40cf13ae6fbL, "indentation");
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SInterfaceConcept IndentedPoint$BF = MetaAdapterFactory.getInterfaceConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L, "jetbrains.mps.lang.text.structure.IndentedPoint");
   }
 }
