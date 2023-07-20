@@ -26,7 +26,6 @@ import jetbrains.mps.util.annotation.Hack;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
-import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.Objects;
 
@@ -38,23 +37,27 @@ public class PropertyAccessor implements ModelAccessor, IPropertyAccessor {
   private final SNode myNode;
   private final boolean myReadOnly;
   private final boolean myAllowEmptyText;
-  private final SRepository myRepository;
   private final IPropertyPresentationProvider myPresentationProvider;
 
+  /**
+   * @deprecated use cons w/o EditorContext. The only difference of this constructor is that it respects read-only state of model/context.
+   *             However, it's Cell to deal with the context, not ModelAccessor impl.
+   */
+  @Deprecated(since = "2023.2", forRemoval = true)
   public PropertyAccessor(SNode node, SProperty property, boolean readOnly, boolean allowEmptyText, EditorContext editorContext) {
+    // FWIW, I don't feel it's correct to check model/EC read-only state here. The check has to be part of respective cell
+    // however, there are uses of this cons in MPS-extensions
+    this(node, property, readOnly || SModelOperations.isReadOnly(node.getModel()) || editorContext.getEditorComponent().isReadOnly(), allowEmptyText);
+  }
+
+  public PropertyAccessor(SNode node, SProperty property, boolean readOnly, boolean allowEmptyText) {
     myNode = node;
     myProperty = property;
-    // FWIW, I don't feel it's correct to check model/EC read-only state here. The check has to be part of respective cell
-    myReadOnly = readOnly || SModelOperations.isReadOnly(node.getModel()) || editorContext.getEditorComponent().isReadOnly();
+    myReadOnly = readOnly;
     myAllowEmptyText = allowEmptyText;
-    myRepository = editorContext.getRepository();
     // XXX property accessor w/o a property - isn't it kind of odd?
     myPresentationProvider = property == null ? IPropertyPresentationProvider.getDefaultPresentationProvider(SPrimitiveTypes.STRING)
                                               : IPropertyPresentationProvider.getPresentationProviderFor(property);
-  }
-
-  protected SRepository getRepository() {
-    return myRepository;
   }
 
   @Override
