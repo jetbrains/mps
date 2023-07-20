@@ -42,6 +42,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Predicate;
 
 /**
  * User: shatalin
@@ -50,11 +51,11 @@ import java.util.Set;
 public abstract class KeymapHandler<E> {
   private static final Logger LOG = Logger.getLogger(KeymapHandler.class);
 
-  public Collection<KeyMapAction> getAllRegisteredActions(EditorCell selectedCell, EditorContext context) {
+  public Collection<KeyMapAction> getRegisteredActions(EditorCell selectedCell, EditorContext context, Predicate<KeyMapAction> filter) {
     Set<KeyMapAction> result = new HashSet<>();
     new ModelAccessHelper(context.getRepository()).runReadAction(() -> {
       for (Pair<KeyMap, EditorCell> pair : getRegisteredKeymaps(selectedCell, context)) {
-        result.addAll(pair.o1.getAllActions());
+        pair.o1.getAllActions().stream().filter(filter).forEach(result::add);
       }
     });
     return result;
