@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,34 +30,31 @@ import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.Objects;
 
+/**
+ * FWIW, there's almost identical SPropertyAccessor
+ */
 public class PropertyAccessor implements ModelAccessor, IPropertyAccessor {
-  private SNode myNode;
-  private SProperty myProperty;
-  private boolean myReadOnly;
-  private boolean myAllowEmptyText;
+  private final SProperty myProperty;
+  private final SNode myNode;
+  private final boolean myReadOnly;
+  private final boolean myAllowEmptyText;
   private final SRepository myRepository;
   private final IPropertyPresentationProvider myPresentationProvider;
 
   public PropertyAccessor(SNode node, SProperty property, boolean readOnly, boolean allowEmptyText, EditorContext editorContext) {
     myNode = node;
     myProperty = property;
+    // FWIW, I don't feel it's correct to check model/EC read-only state here. The check has to be part of respective cell
     myReadOnly = readOnly || SModelOperations.isReadOnly(node.getModel()) || editorContext.getEditorComponent().isReadOnly();
     myAllowEmptyText = allowEmptyText;
     myRepository = editorContext.getRepository();
+    // XXX property accessor w/o a property - isn't it kind of odd?
     myPresentationProvider = property == null ? IPropertyPresentationProvider.getDefaultPresentationProvider(SPrimitiveTypes.STRING)
                                               : IPropertyPresentationProvider.getPresentationProviderFor(property);
   }
 
-  public SNode getNode() {
-    return myNode;
-  }
-
   protected SRepository getRepository() {
     return myRepository;
-  }
-
-  public SProperty getProperty(){
-    return myProperty;
   }
 
   @Override
@@ -69,10 +66,24 @@ public class PropertyAccessor implements ModelAccessor, IPropertyAccessor {
   public void setText(String text) {
     if (!myReadOnly && isValidEmptyText(text)) {
       Object value = myPresentationProvider.fromPresentation(StringUtil.nullIfEmpty(text));
-      if (ModelConstraints.validatePropertyValue(myNode, myProperty, value)) {
+      if (ModelConstraints.validatePropertyValue(myNode, myProperty, value, null)) {
         doSetValue(value);
       }
     }
+  }
+
+  @Override
+  @Hack
+  public boolean isValidText(String text) {
+    return isValidText_internal(text) && isValidEmptyText(text);
+  }
+
+  public SNode getNode() {
+    return myNode;
+  }
+
+  public SProperty getProperty() {
+    return myProperty;
   }
 
   protected Object doGetValue() {
@@ -88,19 +99,13 @@ public class PropertyAccessor implements ModelAccessor, IPropertyAccessor {
     SNodeAccessUtil.setPropertyValue(myNode, myProperty, newValue);
   }
 
-  @Override
-  @Hack
-  public boolean isValidText(String text) {
-    return isValidText_internal(text) && isValidEmptyText(text);
-  }
-
   private boolean isValidText_internal(String text) {
     text = StringUtil.nullIfEmpty(text);
     if (myReadOnly) {
       return Objects.equals(StringUtil.nullIfEmpty(getText()), text);
     }
 
-    return ModelConstraints.validatePropertyValue(myNode, myProperty, myPresentationProvider.fromPresentation(text));
+    return ModelConstraints.validatePropertyValue(myNode, myProperty, myPresentationProvider.fromPresentation(text), null);
   }
 
   @Hack

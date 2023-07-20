@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ import jetbrains.mps.nodeEditor.cellMenu.BooleanSPropertySubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.nodeEditor.cellProviders.CellProviderWithRole;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
-import jetbrains.mps.nodeEditor.cells.PropertyAccessor;
+import jetbrains.mps.nodeEditor.cells.SPropertyAccessor;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
@@ -36,7 +36,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 
 public class PropertyCellProvider extends CellProviderWithRole {
 
-  private SProperty myProperty;
+  private final SProperty myProperty;
 
   public PropertyCellProvider(@NotNull SNode node, SProperty property, EditorContext context) {
     super(node, context);
@@ -45,7 +45,7 @@ public class PropertyCellProvider extends CellProviderWithRole {
 
   @Override
   public EditorCell createEditorCell(EditorContext context) {
-    PropertyAccessor propertyAccessor = new PropertyAccessor(getSNode(), myProperty, myReadOnly, myAllowsEmptyTarget, context);
+    SPropertyAccessor propertyAccessor = new SPropertyAccessor(getSNode(), myProperty, myReadOnly, myAllowsEmptyTarget);
     EditorCell_Property editorCell = EditorCell_Property.create(context, propertyAccessor, getSNode());
     editorCell.setDefaultText(myNoTargetText);
     return editorCell;
