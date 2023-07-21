@@ -15,11 +15,12 @@
  */
 package jetbrains.mps.nodeEditor.cells;
 
+import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintContext;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.smodel.NodeReadAccessCasterInEditor;
 import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.smodel.adapter.structure.types.SPrimitiveTypes;
-import jetbrains.mps.smodel.constraints.ModelConstraints;
+import jetbrains.mps.smodel.constraints.ConstraintsChildAndPropFacade;
 import jetbrains.mps.smodel.presentation.IPropertyPresentationProvider;
 import jetbrains.mps.util.StringUtil;
 import jetbrains.mps.util.annotation.Hack;
@@ -69,7 +70,7 @@ public class PropertyAccessor implements ModelAccessor, IPropertyAccessor {
   public void setText(String text) {
     if (!myReadOnly && isValidEmptyText(text)) {
       Object value = myPresentationProvider.fromPresentation(StringUtil.nullIfEmpty(text));
-      if (ModelConstraints.validatePropertyValue(myNode, myProperty, value, null)) {
+      if (validatePropertyValue(myNode, myProperty, value)) {
         doSetValue(value);
       }
     }
@@ -108,11 +109,16 @@ public class PropertyAccessor implements ModelAccessor, IPropertyAccessor {
       return Objects.equals(StringUtil.nullIfEmpty(getText()), text);
     }
 
-    return ModelConstraints.validatePropertyValue(myNode, myProperty, myPresentationProvider.fromPresentation(text), null);
+    return validatePropertyValue(myNode, myProperty, myPresentationProvider.fromPresentation(text));
   }
 
   @Hack
   private boolean isValidEmptyText(String text) {
     return myAllowEmptyText || !StringUtil.isEmpty(text);
+  }
+
+  /*package*/ static boolean validatePropertyValue(SNode node, SProperty property, Object value) {
+    FailingPropertyConstraintContext context = new FailingPropertyConstraintContext(node, property, value);
+    return ConstraintsChildAndPropFacade.checkPropertyValue(context).isEmpty();
   }
 }

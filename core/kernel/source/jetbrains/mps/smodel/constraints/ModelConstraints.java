@@ -129,19 +129,17 @@ public class ModelConstraints {
 
   // properties part
 
-  @Deprecated(since = "2019.2", forRemoval = true)
-  public static boolean validatePropertyValue(SNode node, SProperty property, Object propertyValue) {
-    return validatePropertyValue(node, property, propertyValue, null);
-  }
-
   /**
    * Validates both structure constraints ({@link SType#isInstanceOf(Object)})
    * and language constraints (property validation functions in constraints aspect)
+   * @deprecated use {@link ConstraintsChildAndPropFacade#checkPropertyValue} directly
    */
+  @Deprecated(since = "2023.2", forRemoval = true)
   public static boolean validatePropertyValue(SNode node,
                                               SProperty property,
                                               Object propertyValue,
                                               @Nullable CheckingNodeContext checkingNodeContext) {
+    // there's 1 use in mps-extensions
     FailingPropertyConstraintContext context = new FailingPropertyConstraintContext(node, property, propertyValue);
     List<FailingPropertyConstraintProblem> result = ConstraintsChildAndPropFacade.checkPropertyValue(context);
     if (result.isEmpty()) {

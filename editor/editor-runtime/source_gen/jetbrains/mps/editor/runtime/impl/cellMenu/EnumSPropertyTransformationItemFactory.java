@@ -13,7 +13,8 @@ import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
-import jetbrains.mps.smodel.constraints.ModelConstraints;
+import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintContext;
+import jetbrains.mps.smodel.constraints.ConstraintsChildAndPropFacade;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.lang.editor.menus.transformation.PropertyTransformationMenuItem;
 
@@ -29,7 +30,8 @@ public class EnumSPropertyTransformationItemFactory {
     SEnumeration enumm = as_7biv4j_a0a2a1(type, SEnumeration.class);
     List<TransformationMenuItem> items = ListSequence.fromList(new ArrayList<TransformationMenuItem>(enumm.getLiterals().size()));
     for (final SEnumerationLiteral literal : enumm.getLiterals()) {
-      if (ModelConstraints.validatePropertyValue(transformationMenuContext.getNode(), property, literal)) {
+      FailingPropertyConstraintContext context = new FailingPropertyConstraintContext(transformationMenuContext.getNode(), property, literal);
+      if (ConstraintsChildAndPropFacade.checkPropertyValue(context).isEmpty()) {
         transformationMenuContext.getEditorMenuTrace().pushTraceInfo();
 
         try {

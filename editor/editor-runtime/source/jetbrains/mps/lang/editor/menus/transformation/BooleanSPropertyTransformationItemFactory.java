@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,13 @@
  */
 package jetbrains.mps.lang.editor.menus.transformation;
 
+import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintContext;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuContext;
 import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuItem;
-import jetbrains.mps.smodel.constraints.ModelConstraints;
+import jetbrains.mps.smodel.constraints.ConstraintsChildAndPropFacade;
 import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,12 +35,14 @@ class BooleanSPropertyTransformationItemFactory {
 
   public static List<TransformationMenuItem> createItems(TransformationMenuContext transformationMenuContext, SProperty property) {
     ArrayList<TransformationMenuItem> result = new ArrayList<>();
+    final SNode node = transformationMenuContext.getNode();
     for (boolean booleanValue : BOOLEAN_VALUES) {
-      if (ModelConstraints.validatePropertyValue(transformationMenuContext.getNode(), property, booleanValue)) {
+      FailingPropertyConstraintContext context = new FailingPropertyConstraintContext(node, property, booleanValue);
+      if (ConstraintsChildAndPropFacade.checkPropertyValue(context).isEmpty()) {
         transformationMenuContext.getEditorMenuTrace().pushTraceInfo();
         try {
           transformationMenuContext.getEditorMenuTrace()
-                                   .setDescriptor(new EditorMenuDescriptorBase("boolean action item with the " + booleanValue + " value", null));
+                                   .setDescriptor(new EditorMenuDescriptorBase(String.format("boolean action item with the %s value", booleanValue), null));
           result.add(new PropertyTransformationMenuItem(property, booleanValue, transformationMenuContext));
         } finally {
           transformationMenuContext.getEditorMenuTrace().popTraceInfo();

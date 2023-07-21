@@ -208,7 +208,7 @@ public class IntelligentInputUtil {
           && mySubstituteInfo.hasExactlyNActions(smallPattern + tail, false, 0)) {
         newNode = myCell.getSNode();
         cellForNewNode = myCell;
-        return applyRigthTransform(smallPattern, tail, cellForNewNode, newNode);
+        return applyRightTransform(smallPattern, tail, cellForNewNode, newNode);
       } else if (canCompleteSmallPatternImmediately(mySubstituteInfo, smallPattern, tail) ||
                  canCompleteSmallPatternImmediately(mySubstituteInfo, trimLeft(smallPattern), tail)) {
 
@@ -239,7 +239,7 @@ public class IntelligentInputUtil {
           return true;
         }
 
-        return applyRigthTransform(smallPattern, tail, cellForNewNode, newNode);
+        return applyRightTransform(smallPattern, tail, cellForNewNode, newNode);
       } else if (canCompleteTheWholeStringImmediately(mySubstituteInfo, smallPattern + tail) ||
                  canCompleteTheWholeStringImmediately(mySubstituteInfo, trimLeft(smallPattern) + tail)) {
 
@@ -273,7 +273,7 @@ public class IntelligentInputUtil {
       return false;
     }
 
-    private boolean applyRigthTransform(String smallPattern, final String tail,
+    private boolean applyRightTransform(String smallPattern, final String tail,
                                         final EditorCell cellForNewNode, SNode newNode) {
       EditorCell selectableLeaf = CellFinderUtil.findLastSelectableLeaf(cellForNewNode, true);
       CellAction rtAction = selectableLeaf != null ?

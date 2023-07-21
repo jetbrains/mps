@@ -20,6 +20,7 @@
     <import index="uddc" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.menus.transformation(MPS.Editor/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="ykok" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.constraints(MPS.Core/)" />
+    <import index="j809" ref="aaaaf3e2-decf-4e97-bf80-9109eab759ee/java:jetbrains.mps.core.aspects.feedback.messages(jetbrains.mps.lang.feedback.problem.legacy-constraints/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -71,6 +72,9 @@
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
+      </concept>
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ng" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
@@ -586,6 +590,34 @@
         </node>
         <node concept="1DcWWT" id="2snskYs2ecW" role="3cqZAp">
           <node concept="3clFbS" id="2snskYs2ecX" role="2LFqv$">
+            <node concept="3cpWs8" id="7bd0cO8cDSF" role="3cqZAp">
+              <node concept="3cpWsn" id="7bd0cO8cDSG" role="3cpWs9">
+                <property role="TrG5h" value="context" />
+                <node concept="3uibUv" id="7bd0cO8cDFC" role="1tU5fm">
+                  <ref role="3uigEE" to="j809:~FailingPropertyConstraintContext" resolve="FailingPropertyConstraintContext" />
+                </node>
+                <node concept="2ShNRf" id="7bd0cO8cDSH" role="33vP2m">
+                  <node concept="1pGfFk" id="7bd0cO8cDSI" role="2ShVmc">
+                    <property role="373rjd" value="true" />
+                    <ref role="37wK5l" to="j809:~FailingPropertyConstraintContext.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SProperty,java.lang.Object)" resolve="FailingPropertyConstraintContext" />
+                    <node concept="2OqwBi" id="7bd0cO8cDSJ" role="37wK5m">
+                      <node concept="37vLTw" id="7bd0cO8cDSK" role="2Oq$k0">
+                        <ref role="3cqZAo" node="2snskYs2eev" resolve="transformationMenuContext" />
+                      </node>
+                      <node concept="liA8E" id="7bd0cO8cDSL" role="2OqNvi">
+                        <ref role="37wK5l" to="uddc:~TransformationMenuContext.getNode()" resolve="getNode" />
+                      </node>
+                    </node>
+                    <node concept="37vLTw" id="7bd0cO8cDSM" role="37wK5m">
+                      <ref role="3cqZAo" node="2snskYs2eex" resolve="property" />
+                    </node>
+                    <node concept="37vLTw" id="7bd0cO8cDSN" role="37wK5m">
+                      <ref role="3cqZAo" node="2snskYs2eel" resolve="literal" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
             <node concept="3clFbJ" id="5c$7FAtaa7B" role="3cqZAp">
               <node concept="3clFbS" id="5c$7FAtaa7D" role="3clFbx">
                 <node concept="3clFbF" id="5MysbrZYXEb" role="3cqZAp">
@@ -706,22 +738,16 @@
                   </node>
                 </node>
               </node>
-              <node concept="2YIFZM" id="4_Hmj3Ofsmn" role="3clFbw">
-                <ref role="1Pybhc" to="ykok:~ModelConstraints" resolve="ModelConstraints" />
-                <ref role="37wK5l" to="ykok:~ModelConstraints.validatePropertyValue(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SProperty,java.lang.Object)" resolve="validatePropertyValue" />
-                <node concept="2OqwBi" id="4_Hmj3Oft51" role="37wK5m">
-                  <node concept="37vLTw" id="4_Hmj3OfsZr" role="2Oq$k0">
-                    <ref role="3cqZAo" node="2snskYs2eev" resolve="transformationMenuContext" />
-                  </node>
-                  <node concept="liA8E" id="4_Hmj3Oftp_" role="2OqNvi">
-                    <ref role="37wK5l" to="uddc:~TransformationMenuContext.getNode()" resolve="getNode" />
+              <node concept="2OqwBi" id="7bd0cO8cJcC" role="3clFbw">
+                <node concept="2YIFZM" id="7bd0cO8cGId" role="2Oq$k0">
+                  <ref role="37wK5l" to="ykok:~ConstraintsChildAndPropFacade.checkPropertyValue(jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintContext)" resolve="checkPropertyValue" />
+                  <ref role="1Pybhc" to="ykok:~ConstraintsChildAndPropFacade" resolve="ConstraintsChildAndPropFacade" />
+                  <node concept="37vLTw" id="7bd0cO8cHsY" role="37wK5m">
+                    <ref role="3cqZAo" node="7bd0cO8cDSG" resolve="context" />
                   </node>
                 </node>
-                <node concept="37vLTw" id="4_Hmj3Oftu2" role="37wK5m">
-                  <ref role="3cqZAo" node="2snskYs2eex" resolve="property" />
-                </node>
-                <node concept="37vLTw" id="4_Hmj3Ofty9" role="37wK5m">
-                  <ref role="3cqZAo" node="2snskYs2eel" resolve="literal" />
+                <node concept="liA8E" id="7bd0cO8cNlV" role="2OqNvi">
+                  <ref role="37wK5l" to="33ny:~List.isEmpty()" resolve="isEmpty" />
                 </node>
               </node>
             </node>

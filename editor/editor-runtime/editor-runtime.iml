@@ -35,5 +35,6 @@
     <orderEntry type="module" module-name="editing-runtime" exported="" />
     <orderEntry type="module" module-name="typechecking" />
     <orderEntry type="module" module-name="constraints-runtime" />
+    <orderEntry type="module" module-name="messages-for-legacy-constraints" />
   </component>
 </module>

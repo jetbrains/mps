@@ -1933,6 +1933,9 @@
       <node concept="nCB5N" id="SHPhCCYGBV" role="nCB5Z">
         <ref role="nCB5Y" node="SHPhCCYooj" resolve="constraints-runtime" />
       </node>
+      <node concept="nCB5N" id="7bd0cO7Vqcs" role="nCB5Z">
+        <ref role="nCB5Y" node="SHPhCCYuJN" resolve="messages-for-legacy-constraints" />
+      </node>
       <node concept="nCB5N" id="3cAdGiIRUkB" role="nCB5Z">
         <property role="1Sh$E4" value="true" />
         <ref role="nCB5Y" node="3cAdGiIRUkj" resolve="mps-editor-api" />
@@ -7103,6 +7106,11 @@
                 <property role="2Ry0Am" value="jetbrains.mps.editor.runtime.msd" />
               </node>
             </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="7bd0cO8cOZf" role="3bR37C">
+          <node concept="3bR9La" id="7bd0cO8cOZg" role="1SiIV1">
+            <ref role="3bR37D" node="3qkjbZn8cF0" resolve="jetbrains.mps.lang.feedback.problem.legacy-constraints" />
           </node>
         </node>
         <node concept="1SiIV0" id="6IZ_b08qD_A" role="3bR37C">
