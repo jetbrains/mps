@@ -430,14 +430,6 @@
       </node>
       <node concept="3Tm6S6" id="33vUo2uvKc3" role="1B3o_S" />
     </node>
-    <node concept="312cEg" id="33vUo2uvKc4" role="jymVt">
-      <property role="TrG5h" value="myManager" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3uibUv" id="33vUo2uvKc5" role="1tU5fm">
-        <ref role="3uigEE" to="jlcu:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
-      </node>
-      <node concept="3Tm6S6" id="33vUo2uvKc6" role="1B3o_S" />
-    </node>
     <node concept="3clFbW" id="33vUo2uvKc7" role="jymVt">
       <node concept="3Tm1VV" id="33vUo2uvKc8" role="1B3o_S" />
       <node concept="3cqZAl" id="33vUo2uvKc9" role="3clF45" />
@@ -448,13 +440,6 @@
           <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
         </node>
       </node>
-      <node concept="37vLTG" id="33vUo2uvKcc" role="3clF46">
-        <property role="TrG5h" value="manager" />
-        <property role="3TUv4t" value="true" />
-        <node concept="3uibUv" id="33vUo2uvKcd" role="1tU5fm">
-          <ref role="3uigEE" to="jlcu:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
-        </node>
-      </node>
       <node concept="3clFbS" id="33vUo2uvKce" role="3clF47">
         <node concept="3clFbF" id="33vUo2uvKcf" role="3cqZAp">
           <node concept="37vLTI" id="33vUo2uvKcg" role="3clFbG">
@@ -463,16 +448,6 @@
             </node>
             <node concept="37vLTw" id="2BHiRxghiZ8" role="37vLTx">
               <ref role="3cqZAo" node="33vUo2uvKca" resolve="project" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="33vUo2uvKcj" role="3cqZAp">
-          <node concept="37vLTI" id="33vUo2uvKck" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxeup6p" role="37vLTJ">
-              <ref role="3cqZAo" node="33vUo2uvKc4" resolve="myManager" />
-            </node>
-            <node concept="37vLTw" id="2BHiRxghizv" role="37vLTx">
-              <ref role="3cqZAo" node="33vUo2uvKcc" resolve="manager" />
             </node>
           </node>
         </node>
@@ -605,11 +580,15 @@
                         </node>
                         <node concept="1DcWWT" id="33vUo2uvKdf" role="3cqZAp">
                           <node concept="2OqwBi" id="33vUo2uvKdg" role="1DdaDG">
-                            <node concept="37vLTw" id="2BHiRxeuyX2" role="2Oq$k0">
-                              <ref role="3cqZAo" node="33vUo2uvKc4" resolve="myManager" />
-                            </node>
                             <node concept="liA8E" id="33vUo2uvKdi" role="2OqNvi">
                               <ref role="37wK5l" to="jlcu:~ProjectLevelVcsManager.getAllVcsRoots()" resolve="getAllVcsRoots" />
+                            </node>
+                            <node concept="2YIFZM" id="LSPZqiDtBn" role="2Oq$k0">
+                              <ref role="37wK5l" to="jlcu:~ProjectLevelVcsManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+                              <ref role="1Pybhc" to="jlcu:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
+                              <node concept="37vLTw" id="LSPZqiDua6" role="37wK5m">
+                                <ref role="3cqZAo" node="33vUo2uvKc1" resolve="myProject" />
+                              </node>
                             </node>
                           </node>
                           <node concept="3cpWsn" id="33vUo2uvKdj" role="1Duv9x">
