@@ -59,7 +59,6 @@
   </path>
   
   <path id="path.java.library.org.jdom">
-    <fileset file="${artifacts.IDEA}/lib/util.jar" />
     <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
   </path>
   

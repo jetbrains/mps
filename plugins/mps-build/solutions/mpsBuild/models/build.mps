@@ -51856,13 +51856,6 @@
     </node>
     <node concept="PiPfp" id="6FsijxbePt8" role="3989C9">
       <property role="TrG5h" value="org.jdom" />
-      <node concept="25yagZ" id="6FsijxbePt9" role="PiKyV">
-        <node concept="3yqu4x" id="6FsijxbePta" role="25yagT">
-          <node concept="3yrxFa" id="6FsijxbePtb" role="3yqu4I">
-            <ref role="3yrxFb" node="5DAo_J9amU0" />
-          </node>
-        </node>
-      </node>
       <node concept="25yagZ" id="2UXDqhrjcl2" role="PiKyV">
         <node concept="3yqu4x" id="2UXDqhrjcl3" role="25yagT">
           <node concept="3yrxFa" id="2UXDqhrjcl4" role="3yqu4I">
